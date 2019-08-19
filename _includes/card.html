@@ -1,11 +1,8 @@
----
-# this is an empty front matter
----
 <div class="card center" {% if include.height %}style="height: {{ include.height }};"{% endif %} onclick="window.open('{{ include.link }}', '_blank');">
 	{% if include.svg %}
 	<div style="display: grid; grid-template-columns: 30% 70%; grid-gap: 0px; padding-left: 0px;">
 		<div style="padding: 0px">
-		<span class="bluesvg" style="zoom: {{ include.zoom }};">{% include {{ include.svg }} %}</span>
+		<span class="bluesvg" style="zoom: {{ include.zoom }};"><img src="ur({{ include.svg }})"/></span>
 		</div>
 		<div style="padding: 0px"><h4 class="left">{{ include.title }}</h4></div>
 		<div style="padding: 0px"></div>
