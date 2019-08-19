@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ page.title }}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" type="text/css" href="/assets/css/defold.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/skeleton.css">
+</head>
+<body>
+	{% include topnav.html %}
+
+	<div class="narrowsection center dark">
+		<div class="container">
+			<div class="row">
+				<br/>
+			</div>
+		</div>
+	</div>
+
+	<div class="section light">
+		<div class="container">
+			<div class="row">
+				<div class="columns three">
+					{% for section in site.data.en.navigation.manuals %}
+						<b>{{ section.name }}</b>
+						<ul>
+							{% for manual in section.items %}
+							<li style="list-style: none;">
+								<a href="{{ manual.path }}">{{ manual.name }}</a>
+							</li>
+							{% endfor %}
+						</ul>
+					{% endfor %}
+				</div>
+				<div class="columns seven">
+					{{ content }}
+				</div>
+				<div class="columns two">
+					<h4>Quick nav</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include footer.html %}
+</body>
+</html>

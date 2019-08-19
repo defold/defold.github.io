@@ -3,11 +3,11 @@ layout: default
 title: Home
 ---
 
-<div class="section hero center" style='background-image: url("/assets/images/frontpage-hero-video-poster.jpg");'>
+<div class="section hero center blackwhite" style='background-image: url("/assets/images/frontpage-hero-video-poster.jpg");'>
 	<div class="container">
 		<div class="row">
 			<div>
-				<img src="assets/images/defold-logo-ver-classic-white.png" width="20%"/>
+				<img src="/assets/images/defold-logo-ver-classic-white.png" width="20%"/>
 				<h2>The ultimate game engine for web and mobile</h2>
 				{% include primary_button.html link="https://d.defold.com" text="Download for free" %}
 			</div>
@@ -50,7 +50,7 @@ title: Home
 				</div>
 			</div>
 			<div class="column one-half">
-				<img src="assets/images/nosetup-editor.png" style="display:block; margin: auto;"/>
+				<img src="/assets/images/nosetup-editor.png" style="display:block; margin: auto;"/>
 			</div>
 		</div>
 		<div class="row center">
@@ -58,7 +58,7 @@ title: Home
 		</div>
 		<div class="row">
 			<div class="column one-half">
-				<img src="assets/images/platforms-larger-blue.png" width="75%" style="display:block; margin: auto; "/>
+				<img src="/assets/images/platforms-larger-blue.png" width="75%" style="display:block; margin: auto; "/>
 			</div>
 			<div class="column one-half">
 				<h4>Truly cross-platform</h4>
@@ -79,6 +79,8 @@ title: Home
 		</div>
 		<div class="row center">
 			<br/>
+			<br/>
+			<br/>
 		</div>
 		<div class="row">
 			<div class="column one-half">
@@ -86,7 +88,7 @@ title: Home
 				<p>Work on your computer, test on your device. All changes you make can be reloaded and instantly previewed on your device. No need to rebuild and reinstall.</p>
 			</div>
 			<div class="column one-half">
-				<img src="assets/images/platforms-larger-blue.png" width="75%" style="display:block; margin: auto;"/>
+				<img src="/assets/images/editor/image-extensions.png" width="75%" style="display:block; margin: auto;"/>
 			</div>
 		</div>
 	</div>
@@ -99,13 +101,13 @@ title: Home
 		</div>
 		<div class="row">
 			<div class="column one-third">
-				{% include card.html title="Tutorials" body="Our tutorials section is the perfect starting point if you are new to Defold game development." link="https://www.defold.com/learn/tutorials" height="100%" svg="/assets/svg/icons-learn-export_ic-learn-tutorials.svg" %}
+				{% include card.html title="Tutorials" body="Our tutorials section is the perfect starting point if you are new to Defold game development." link="/tutorials" height="100%" svg="/assets/images/icons/icons-learn-export_ic-learn-tutorials.svg" %}
 			</div>
 			<div class="column one-third">
-				{% include card.html title="Manuals" body="In-depth manuals provide understanding on how the Defold engine and its API's work." link="https://www.defold.com/learn/manuals" height="100%" svg="assets/svg/icons-learn-export_ic-learn-manuals.svg" %}
+				{% include card.html title="Manuals" body="In-depth manuals provide understanding on how the Defold engine and its API's work." link="/manuals" height="100%" svg="/assets/images/icons/icons-learn-export_ic-learn-manuals.svg" %}
 			</div>
 			<div class="column one-third">
-				{% include card.html title="API Reference" body="Reference documentation to all Defold Lua and C++ extension API's." link="https://www.defold.com/ref"  height="100%" svg="assets/svg/icons-learn-export_ic-learn-apiref.svg" %}
+				{% include card.html title="API Reference" body="Reference documentation to all Defold Lua and C++ extension API's." link="/ref"  height="100%" svg="/assets/images/icons/icons-learn-export_ic-learn-apiref.svg" %}
 			</div>
 		</div>
 		<div class="row center">
@@ -114,10 +116,10 @@ title: Home
 		<div class="row">
 			<div class="columns two"><br/></div>
 			<div class="column one-third">
-				{% include card.html title="Examples" body="A selection of small and discrete code samples, examples and snippets to learn from." link="https://www.defold.com/examples" height="100%" svg="assets/svg/icons-learn-export_ic-learn-lego.svg" %}
+				{% include card.html title="Examples" body="A selection of small and discrete code samples, examples and snippets to learn from." link="/examples" height="100%" svg="/assets/images/icons/icons-learn-export_ic-learn-lego.svg" %}
 			</div>
 			<div class="column one-third">
-				{% include card.html title="Forum" body="Stuck? Not for long! Talk to the Defold team and our fantastic developer community." link="https://forum.defold.com" height="100%" svg="assets/svg/icons-learn-export_ic-learn-forum.svg" %}
+				{% include card.html title="Forum" body="Stuck? Not for long! Talk to the Defold team and our fantastic developer community." link="https://forum.defold.com" height="100%" svg="/assets/images/icons/icons-learn-export_ic-learn-forum.svg" %}
 			</div>
 			<div class="columns two"><br/></div>
 		</div>
