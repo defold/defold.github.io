@@ -1,28 +1,19 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>{{ page.title }}</title>
-		<!-- link to main stylesheet -->
-		<link rel="stylesheet" type="text/css" href="/css/main.css">
-	</head>
-	<body>
-		<nav>
-    		<ul>
-        		<li><a href="/">Home</a></li>
-        		<li><a href="/learn">Learn</a></li>
-    		</ul>
-		</nav>
-		<div class="container">
+<head>
+	<title>{{ page.title }}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
 
-		{{ content }}
+	<link rel="stylesheet" type="text/css" href="/assets/css/defold.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/skeleton.css">
+</head>
+<body>
+	{% include topnav.html %}
 
-		</div><!-- /.container -->
-		<footer>
-    		<ul>
-        		<li><a href="https://forum.defold.com">Forum</a></li>
-        		<li><a href="https://twitter.com/defold">Twitter</a></li>
-			</ul>
-			Copyright (c) 2019 Defold
-		</footer>
-	</body>
+	{{ content }}
+
+	{% include footer.html %}
+</body>
 </html>

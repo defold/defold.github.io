@@ -1,0 +1,13 @@
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div>
+				<h1>{{ include.title }}</h1>
+				<p>{{ include.text }}</p>
+				{% if include.button %}
+					{% include primary_button.html link="https://d.defold.com" text="Download" %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
