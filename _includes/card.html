@@ -1,4 +1,8 @@
-<div class="card center" {% if include.height %}style="height: {{ include.height }};"{% endif %}
+<div class="card center"
+	style="
+	{% if include.height %}height: {{ include.height }};{% endif %}
+	{% if include.min-height %}min-height: {{ include.min-height }};{% endif %}
+	"
 	onclick="window.open('{{ include.link }}', '{% if include.target %}{{ include.target }}{% else %}_self{% endif %}');">
 	{% if include.svg %}
 	<div style="display: grid; grid-template-columns: 30% 70%; grid-gap: 0px; padding-left: 0px;">

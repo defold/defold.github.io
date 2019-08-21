@@ -1,24 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{{ page.title }}</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
-
-	<link rel="stylesheet" type="text/css" href="/assets/css/defold.css">
-	<link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="/assets/css/skeleton.css">
+	{% include head.html %}
 </head>
 <body>
 	{% include topnav.html %}
-
-	<div class="narrowsection center dark">
-		<div class="container">
-			<div class="row">
-				<br/>
-			</div>
-		</div>
-	</div>
 
 	<div class="section light">
 		<div class="container">
@@ -26,9 +12,9 @@
 				<div class="columns three">
 					{% for section in site.data.en.navigation.manuals %}
 						<b>{{ section.name }}</b>
-						<ul>
+						<ul class="nobullet">
 							{% for manual in section.items %}
-							<li style="list-style: none;">
+							<li>
 								<a href="{{ manual.path }}">{{ manual.name }}</a>
 							</li>
 							{% endfor %}
@@ -39,6 +25,12 @@
 					{{ content }}
 				</div>
 				<div class="columns two">
+					<b>Language</b>
+					<ul>
+					{% for language in site.data.languages.languages %}
+						<li><a href="{{ language[0] }}">{{ language[1].name }}</a></li>
+					{% endfor %}
+					</ul>
 					<h4>Quick nav</h4>
 				</div>
 			</div>
