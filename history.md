@@ -1,7 +1,6 @@
 ---
-layout: basic
+layout: text
 title: Our History
-nav: narrowsection
 ---
 
 # Our History

@@ -47,14 +47,23 @@
     background-color: var(--light-bg-color);
     color: var(--light-color);
 }
+.light a {
+    color: var(--light-color);
+}
 
 .dark {
     background-color: var(--dark-bg-color);
     color: var(--dark-color);
 }
+.dark a {
+    color: var(--dark-color);
+}
 
 .blackwhite {
     background-color: black;
+    color: white;
+}
+.blackwhite a {
     color: white;
 }
 
@@ -107,6 +116,33 @@
 
 
 /*******************************************************************************
+ * Asset
+ ******************************************************************************/
+.asset {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-bottom: 0;
+    border-radius: 4px;
+}
+.asset a {
+    text-decoration: none;
+}
+.asset img {
+    border-radius: 4px 4px 0 0;
+}
+.asset div {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 0;
+}
+.asset:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+
+/*******************************************************************************
  * Card
  ******************************************************************************/
 .card {
@@ -114,6 +150,9 @@
     transition: 0.3s;
     margin-bottom: 2rem;
     border-radius: 4px;
+}
+.card a {
+    text-decoration: none;
 }
 .card div {
     padding-left: 2rem;
@@ -123,6 +162,7 @@
 }
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
 }
 
 

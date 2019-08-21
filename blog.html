@@ -1,17 +1,11 @@
 ---
-layout: default
+layout: text
 name: Defold blog
-nav: narrowsection
 ---
-
-<div class="section">
-	<div class="container">
-		{% for post in site.posts %}
-			<div class="row">
-				<h5><a href="{{ post.url }}">{{ post.title }}</a></h5>
-				<span><i>By {{ post.author }} on {{ post.date | date: "%b %d, %Y" }}</i><br/>
-				"{{ post.excerpt }}"</span>
-			</div>
-		{% endfor %}
+{% for post in site.posts %}
+	<div class="row">
+		<h5><a href="{{ post.url }}">{{ post.title }}</a></h5>
+		<span><i>By {{ post.author }} on {{ post.date | date: "%b %d, %Y" }}</i><br/>
+		"{{ post.excerpt }}"</span>
 	</div>
-</div>
+{% endfor %}

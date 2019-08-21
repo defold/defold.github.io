@@ -1,7 +1,6 @@
 ---
-layout: basic
+layout: text
 title: Contact
-nav: narrowsection
 ---
 
 # Contact

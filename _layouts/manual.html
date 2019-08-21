@@ -1,42 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{% include head.html %}
-</head>
-<body>
-	{% include topnav.html %}
-
-	<div class="section light">
-		<div class="container">
-			<div class="row">
-				<div class="columns three">
-					{% for section in site.data.en.navigation.manuals %}
-						<b>{{ section.name }}</b>
-						<ul class="nobullet">
-							{% for manual in section.items %}
-							<li>
-								<a href="{{ manual.path }}">{{ manual.name }}</a>
-							</li>
-							{% endfor %}
-						</ul>
-					{% endfor %}
-				</div>
-				<div class="columns seven">
-					{{ content }}
-				</div>
-				<div class="columns two">
-					<b>Language</b>
-					<ul>
-					{% for language in site.data.languages.languages %}
-						<li><a href="{{ language[0] }}">{{ language[1].name }}</a></li>
-					{% endfor %}
+---
+layout: base
+---
+<div class="section light">
+	<div class="container">
+		<div class="row">
+			<div class="columns three">
+				{% for section in site.data.en.navigation.manuals %}
+					<b>{{ section.name }}</b>
+					<ul class="nobullet">
+						{% for manual in section.items %}
+						<li>
+							<a href="{{ manual.path }}">{{ manual.name }}</a>
+						</li>
+						{% endfor %}
 					</ul>
-					<h4>Quick nav</h4>
-				</div>
+				{% endfor %}
+			</div>
+			<div class="columns seven">
+				{{ content }}
+			</div>
+			<div class="columns two">
+				<b>Language</b>
+				<ul>
+				{% for language in site.data.languages.languages %}
+					<li><a href="{{ language[0] }}">{{ language[1].name }}</a></li>
+				{% endfor %}
+				</ul>
+				<h4>Quick nav</h4>
 			</div>
 		</div>
 	</div>
-
-	{% include footer.html %}
-</body>
-</html>
+</div>

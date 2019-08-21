@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: text
 title:  It's all extensions baby!
 excerpt: The dream of the engine for-loop
 author: Björn Ritzl
