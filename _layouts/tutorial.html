@@ -1,0 +1,27 @@
+---
+layout: base
+---
+<div class="section light">
+	<div class="container">
+		<div class="row">
+			<div class="columns three">
+				{% for section in site.data.en.navigation.tutorials %}
+					<b>{{ section.name }}</b>
+					<ul class="nobullet">
+						{% for tutorial in section.items %}
+						<li style="padding-left: 2rem;">
+							<a href="{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }}</a>
+						</li>
+						{% endfor %}
+					</ul>
+				{% endfor %}
+			</div>
+			<div class="columns seven tutorial">
+				{{ content }}
+			</div>
+			<div class="columns two">
+				<br/>
+			</div>
+		</div>
+	</div>
+</div>

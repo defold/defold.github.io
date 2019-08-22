@@ -9,15 +9,15 @@ layout: base
 					<b>{{ section.name }}</b>
 					<ul class="nobullet">
 						{% for manual in section.items %}
-						<li>
-							<a href="{{ manual.path }}">{{ manual.name }}</a>
+						<li style="padding-left: 2rem;">
+							<a href="{{ manual.path }}" style="text-decoration: none;">{{ manual.name }}</a>
 						</li>
 						{% endfor %}
 					</ul>
 				{% endfor %}
 			</div>
-			<div class="columns seven">
-				{{ content }}
+			<div class="columns seven manual">
+				{% include anchor_headings.html html=content %}
 			</div>
 			<div class="columns two">
 				<b>Language</b>
@@ -26,7 +26,6 @@ layout: base
 					<li><a href="{{ language[0] }}">{{ language[1].name }}</a></li>
 				{% endfor %}
 				</ul>
-				<h4>Quick nav</h4>
 			</div>
 		</div>
 	</div>

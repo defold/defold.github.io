@@ -1,2 +1,21 @@
 name: Defold
 markdown: kramdown
+defaults:
+    -
+        scope:
+            path: "manuals/*"
+        values:
+            layout: "manual"
+    -
+        scope:
+            path: "faq/*"
+        values:
+            layout: "text"
+    -
+        scope:
+            path: "tutorials/*"
+        values:
+            layout: "tutorial"
+kramdown:
+    auto_ids: true
+    parse_block_html: true
