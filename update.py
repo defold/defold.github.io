@@ -122,6 +122,13 @@ def process_docs():
         if os.path.exists(shared_dir):
             shutil.rmtree(shared_dir)
         shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "shared"), shared_dir)
+        for file in find_files(shared_dir, "*.md"):
+            replace_in_file(file, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
+            replace_in_file(file, r"{srcset=.*?}", r"")
+            replace_in_file(file, r"::: sidenote(.*?):::", r"<div class='sidenote' markdown='1'>\1</div>", flags=re.DOTALL)
+            replace_in_file(file, r"::: important(.*?):::", r"<div class='important' markdown='1'>\1</div>", flags=re.DOTALL)
+            replace_in_file(file, r"\((.*?)#_(.*?)\)", r"(\1#\2)")
+            replace_in_file(file, r":\[.*?\]\(\.\.\/(.*?)\)", r"{% include \1 %}")
 
         print("...tutorials")
         tutorials_dir = "tutorials"
