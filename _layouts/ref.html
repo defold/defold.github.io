@@ -1,0 +1,164 @@
+---
+layout: base
+---
+<div class="section light">
+	<div class="container">
+		<div class="row">
+			<div class="columns three">
+				<ul class="nobullet">
+					{%- assign indices = site.data.refindex | sort: "namespace" -%}
+					{%- for foo in indices -%}
+					<li>
+						<a href="/ref/{{ foo.filename }}" style="text-decoration: none;">{{ foo.namespace }}.*</a>
+					</li>
+					{%- endfor -%}
+				</ul>
+
+			</div>
+			<div class="columns seven ref">
+				{%- assign ref = site.data.ref[page.ref] -%}
+				{%- assign functions = ref.elements | where: "type", "FUNCTION" -%}
+				{%- assign variables = ref.elements | where: "type", "VARIABLE" -%}
+				{%- assign messages = ref.elements | where: "type", "MESSAGE" -%}
+				{%- assign properties = ref.elements | where: "type", "PROPERTY" -%}
+
+				<h1>{{ ref.info.brief }}</h1>
+
+				{{ ref.info.description }}
+
+				{%- if functions.size > 0 -%}
+				<table>
+					<tr>
+						<th>FUNCTION</th>
+						<th></th>
+					</tr>
+					{%- for function in functions -%}
+					<tr>
+						<td><a href="#{% include ref_anchorlink.html element=function %}">{{ function.name }}()</a></td>
+						<td>{{ function.brief }}</td>
+					</tr>
+					{%- endfor -%}
+				</table>
+				{%- endif -%}
+
+				{%- if variables.size > 0 -%}
+				<table>
+					<tr>
+						<th>CONSTANT</th>
+						<th></th>
+					</tr>
+					{%- for variable in variables -%}
+					<tr>
+						<td><a href="#{% include ref_anchorlink.html element=variable %}">{{ variable.name }}</a></td>
+						<td>{{ variable.brief }}</td>
+					</tr>
+					{%- endfor -%}
+				</table>
+				{%- endif -%}
+
+				{%- if messages.size > 0 -%}
+				<table>
+					<tr>
+						<th>MESSAGE</th>
+						<th></th>
+					</tr>
+					{%- for message in messages -%}
+					<tr>
+						<td><a href="#{% include ref_anchorlink.html element=message %}">{{ message.name }}</a></td>
+						<td>{{ message.brief }}</td>
+					</tr>
+					{%- endfor -%}
+				</table>
+				{%- endif -%}
+
+				{%- if properties.size > 0 -%}
+				<table>
+					<tr>
+						<th>PROPERTIES</th>
+						<th></th>
+					</tr>
+					{%- for property in properties -%}
+					<tr>
+						<td><a href="#{% include ref_anchorlink.html element=property %}">{{ property.name }}</a></td>
+						<td>{{ property.brief }}</td>
+					</tr>
+					{%- endfor -%}
+				</table>
+				{%- endif -%}
+
+
+				{%- if functions.size > 0 -%}
+				<h2>Functions</h2>
+					{%- for function in functions -%}
+						<a name="{% include ref_anchorlink.html element=function %}"/>
+						<h4>{{ function.name }}()<a href="#{% include ref_anchorlink.html element=function %}" class="anchor-link"></a></h4>
+						<p>{{ function.name }}({%- for param in function.parameters -%}{{ param.name }}{%- if forloop.last != true -%}, {%- endif -%}{%- endfor -%})</p>
+						{{ function.description }}
+						<p><b>PARAMETERS</b></p>
+						<table>
+							{%- for param in function.parameters -%}
+							<tr>
+								<td><code>{{ param.name }}</code></td>
+								<td>{{ param.doc }}</td>
+							</tr>
+							{%- endfor -%}
+						</table>
+
+						{%- if function.returnvalues.size > 0 -%}
+						<p><b>RETURNS</b></p>
+						<table>
+							{%- for return in function.returnvalues -%}
+							<tr>
+								<td><code>{{ return.name }}</code></td>
+								<td>{{ return.doc }}</td>
+							</tr>
+							{%- endfor -%}
+						</table>
+						{%- endif -%}
+
+						{%- if function.examples.size > 0 -%}
+						<p><b>EXAMPLES</b></p>
+						{{ function.examples }}
+						{%- endif -%}
+						<hr/>
+					{%- endfor -%}
+				{%- endif -%}
+
+
+				{%- if variables.size > 0 -%}
+				<h2>Constants</h2>
+					{%- for variable in variables -%}
+					<a name="{% include ref_anchorlink.html element=variable %}"/>
+					<h4>{{ variable.name }}<a href="#{% include ref_anchorlink.html element=variable %}"><span class="anchor-link"/></a></h4>
+					<p>{{ variable.brief }}</p>
+					<hr/>
+					{%- endfor -%}
+				{%- endif -%}
+
+
+				{%- if messages.size > 0 -%}
+				<h2>Messages</h2>
+					{%- for message in messages -%}
+					<a name="{% include ref_anchorlink.html element=message %}"/>
+					<h4>{{ message.name }}<a href="#{% include ref_anchorlink.html element=message %}"><span class="anchor-link"/></a></h4>
+					<p>{{ message.brief }}</p>
+					<hr/>
+					{%- endfor -%}
+				{%- endif -%}
+
+
+				{%- if properties.size > 0 -%}
+				<h2>Properties</h2>
+					{%- for property in properties -%}
+					<a name="{% include ref_anchorlink.html element=property %}"/>
+					<h4>{{ property.name }}<a href="#{% include ref_anchorlink.html element=property %}"><span class="anchor-link"/></a></h4>
+					<p>{{ property.brief }}</p>
+					<hr/>
+					{%- endfor -%}
+				{%- endif -%}
+			</div>
+			<div class="columns two">
+			</div>
+		</div>
+	</div>
+</div>

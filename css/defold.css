@@ -9,8 +9,6 @@
   padding: 3rem 0 3rem;
 }
 
-
-
 .nobullet {
     list-style: none;
 }
@@ -21,13 +19,17 @@
     --dark-color: #77828c; */
     --dark-bg-color: #1e2226;
     --dark-color: #b0bac4;
-
     --light-bg-color: white;
     --light-color: #1c2c51;
-
     --defold-blue: #39a3e4;
+    --defold-orange: #fd6623;
 }
 
+
+/*******************************************************************************
+ * Limit width of images in manuals and tutorials.
+ * Also center them
+ ******************************************************************************/
 
 .manual img {
     max-width: 100%;
@@ -43,6 +45,34 @@
     margin-right: auto;
 }
 
+/*******************************************************************************
+ * Ref doc
+ ******************************************************************************/
+
+.ref .type {
+    border: 1px solid #d0d3db;
+    color: #6a7480;
+    padding: 2px 6px;
+    background-color: #f2f3f5;
+}
+
+.ref td {
+    vertical-align: top;
+}
+
+.ref h4 {
+    color: var(--defold-orange);
+}
+
+.ref a {
+    text-decoration: none;
+}
+.anchor-link::before {
+    font-family: fontello;
+    content: '';
+    color: #bfbfbf;
+    padding: 0.5em;
+}
 
 /*******************************************************************************
  * Manuals special markup ::: sidenote and ::: important

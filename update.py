@@ -66,10 +66,16 @@ def replace_in_file(filename, old, new, flags=None):
         f.write(content)
 
 
-
 DOCS_ZIP = "doc-master.zip"
 EXAMPLES_ZIP = "examples-master.zip"
+REFDOC_ZIP = "refdoc.zip"
 BOB_JAR = "bob.jar"
+
+
+def get_sha1():
+    print(download_string("https://d.defold.com/stable/info.json"))
+    info = json.loads(download_string("https://d.defold.com/stable/info.json"))
+    return info["sha1"]
 
 
 def download():
@@ -81,11 +87,15 @@ def download():
         os.remove(EXAMPLES_ZIP)
     download_file("https://github.com/defold/examples/archive/master.zip", ".", EXAMPLES_ZIP)
 
+    sha1 = get_sha1()
+
     if os.path.exists(BOB_JAR):
         os.remove(BOB_JAR)
-    info = json.loads(download_string("https://d.defold.com/stable/info.json"))
-    sha1 = info["sha1"]
     download_file("http://d.defold.com/archive/{}/bob/bob.jar".format(sha1), ".", BOB_JAR)
+
+    if os.path.exists(REFDOC_ZIP):
+        os.remove(REFDOC_ZIP)
+    download_file("http://d.defold.com/archive/{}/engine/share/ref-doc.zip".format(sha1), ".", REFDOC_ZIP)
 
 
 def process_docs():
@@ -175,15 +185,67 @@ def process_examples():
             shutil.rmtree(examples_dir)
         shutil.copytree(os.path.join(input_dir, "build", "default", "Defold-examples"), examples_dir)
 
+REF_MD = """---
+layout: ref
+ref: {}
+---
+{}
+"""
+
+def process_refdoc():
+    if not os.path.exists(REFDOC_ZIP):
+        print("File {} does not exist".format(REFDOC_ZIP))
+        sys.exit(1)
+
+    with tmpdir() as tmp_dir:
+        shutil.copyfile(REFDOC_ZIP, os.path.join(tmp_dir, REFDOC_ZIP))
+        unzip(os.path.join(tmp_dir, REFDOC_ZIP), tmp_dir)
+
+        ref_dir = "ref"
+        if os.path.exists(ref_dir):
+            shutil.rmtree(ref_dir)
+        os.mkdir(ref_dir)
+
+        data_dir = os.path.join("_data", "ref")
+        if os.path.exists(data_dir):
+            shutil.rmtree(data_dir)
+        os.mkdir(data_dir)
+
+        refindex = []
+        for file in os.listdir(os.path.join(tmp_dir, "doc")):
+            if file.endswith(".json"):
+                json_out_name = file.replace("_doc.json", "")
+                json_out_file = json_out_name + ".json"
+
+                # copy and rename file
+                shutil.copyfile(os.path.join(tmp_dir, "doc", file), os.path.join(data_dir, json_out_file))
+
+                # generate a dummy markdown page with some front matter for each ref doc
+                with open(os.path.join(ref_dir, file.replace("_doc.json", ".md")), "w") as f:
+                    f.write(REF_MD.format(json_out_name, "{% include anchor_headings.html html=content %}"))
+
+                # build refdoc index
+                with open(os.path.join(tmp_dir, "doc", file)) as f:
+                    r = json.load(f)
+                    refindex.append({
+                        "namespace": r["info"]["namespace"],
+                        "filename": json_out_name,
+                    })
+
+        # write refdoc index
+        with open(os.path.join("_data", "refindex.json"), "w") as f:
+            json.dump(refindex, f, indent=2)
+
 
 parser = ArgumentParser()
-parser.add_argument('commands', nargs="+", help='Commands (download, docs, examples, help)')
+parser.add_argument('commands', nargs="+", help='Commands (download, docs, examples, refdoc, help)')
 args = parser.parse_args()
 
 help = """
 COMMANDS:
 download = Download docs, examples and bob.jar
 docs = Process the docs (manuals, tutorials and faq)
+refdoc = Process the API reference
 examples = Build the examples
 """
 
@@ -201,3 +263,6 @@ for command in args.commands:
 
     if command == "examples":
         process_examples()
+
+    if command == "refdoc":
+        process_refdoc()
