@@ -3,19 +3,29 @@ markdown: kramdown
 defaults:
     -
         scope:
-            path: "manuals/*"
+            path: ""
+            type: "manuals"
         values:
             layout: "manual"
     -
         scope:
-            path: "faq/*"
+            path: ""
+            type: "faq"
         values:
             layout: "text"
     -
         scope:
-            path: "tutorials/*"
+            path: ""
+            type: "tutorials"
         values:
             layout: "tutorial"
+collections:
+    manuals:
+        output: true
+    faq:
+        output: true
+    tutorials:
+        output: true
 kramdown:
     auto_ids: true
     parse_block_html: true

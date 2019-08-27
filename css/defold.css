@@ -15,8 +15,6 @@
 
 /* Reusable color constants */
 :root {
-    /* --dark-bg-color: #171a1d;
-    --dark-color: #77828c; */
     --dark-bg-color: #1e2226;
     --dark-color: #b0bac4;
     --light-bg-color: white;
@@ -120,6 +118,9 @@
  * Light or dark background color with matching font color
  ******************************************************************************/
 
+.light-text {
+    color: var(--light-bg-color);
+}
 .light {
     background-color: var(--light-bg-color);
     color: var(--light-color);
@@ -128,6 +129,9 @@
     color: var(--light-color);
 }
 
+.dark-text {
+    color: var(--dark-bg-color);
+}
 .dark {
     background-color: var(--dark-bg-color);
     color: var(--dark-color);
