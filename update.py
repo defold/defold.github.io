@@ -68,6 +68,7 @@ def replace_in_file(filename, old, new, flags=None):
 
 DOCS_ZIP = "doc-master.zip"
 EXAMPLES_ZIP = "examples-master.zip"
+AWESOME_ZIP = "awesome-defold-master.zip"
 REFDOC_ZIP = "refdoc.zip"
 BOB_JAR = "bob.jar"
 
@@ -82,6 +83,10 @@ def download():
     if os.path.exists(DOCS_ZIP):
         os.remove(DOCS_ZIP)
     download_file("https://github.com/defold/doc/archive/master.zip", ".", DOCS_ZIP)
+
+    if os.path.exists(AWESOME_ZIP):
+        os.remove(AWESOME_ZIP)
+    download_file("https://github.com/defold/awesome-defold/archive/master.zip", ".", AWESOME_ZIP)
 
     if os.path.exists(EXAMPLES_ZIP):
         os.remove(EXAMPLES_ZIP)
@@ -185,6 +190,19 @@ def process_examples():
             shutil.rmtree(examples_dir)
         shutil.copytree(os.path.join(input_dir, "build", "default", "Defold-examples"), examples_dir)
 
+
+def process_assets():
+    if not os.path.exists(AWESOME_ZIP):
+        print("File {} does not exist".format(AWESOME_ZIP))
+        sys.exit(1)
+
+    with tmpdir() as tmp_dir:
+        shutil.copyfile(AWESOME_ZIP, os.path.join(tmp_dir, AWESOME_ZIP))
+        unzip(os.path.join(tmp_dir, AWESOME_ZIP), tmp_dir)
+
+        shutil.copyfile(os.path.join(tmp_dir, "awesome-defold-master", "assets.json"), os.path.join("_data", "assets.json"))
+
+
 REF_MD = """---
 layout: ref
 ref: {}
@@ -238,7 +256,7 @@ def process_refdoc():
 
 
 parser = ArgumentParser()
-parser.add_argument('commands', nargs="+", help='Commands (download, docs, examples, refdoc, help)')
+parser.add_argument('commands', nargs="+", help='Commands (download, docs, examples, refdoc, assets, help)')
 args = parser.parse_args()
 
 help = """
@@ -246,6 +264,7 @@ COMMANDS:
 download = Download docs, examples and bob.jar
 docs = Process the docs (manuals, tutorials and faq)
 refdoc = Process the API reference
+assets = Process the asset portal list
 examples = Build the examples
 """
 
@@ -266,3 +285,6 @@ for command in args.commands:
 
     if command == "refdoc":
         process_refdoc()
+
+    if command == "assets":
+        process_assets()

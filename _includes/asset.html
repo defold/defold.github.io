@@ -1,6 +1,6 @@
-<div class="asset center light">
-	<a href="{{ include.asset.github }}" target="_blank">
-		<img src="{{ include.asset.images.thumb }}" width="100%"/>
+<div class="asset center light-text">
+	<a href="{{ include.asset.project_url }}" target="_blank">
+		<img src="{% if include.asset.images.thumb.size > 0 %}{{ include.asset.images.thumb }}{% else %}/images/MediaPlaceholder.png{% endif %}" width="100%"/>
 		<div>
 			<p class="left">
 				<b class="left">{{ include.asset.name }}</b><br/>

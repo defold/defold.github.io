@@ -15,7 +15,9 @@
 
 /* Reusable color constants */
 :root {
+    --darker-bg-color: #171a1d;
     --dark-bg-color: #1e2226;
+    --darker-color: #79838e;
     --dark-color: #b0bac4;
     --light-bg-color: white;
     --light-color: #1c2c51;
@@ -144,6 +146,17 @@ input[type="submit"].button-primary {
     color: var(--dark-color);
 }
 
+.darker-text {
+    color: var(--darker-bg-color);
+}
+.darker {
+    background-color: var(--darker-bg-color);
+    color: var(--darker-color);
+}
+.darker a {
+    color: var(--darker-color);
+}
+
 .blackwhite {
     background-color: black;
     color: white;
@@ -208,6 +221,7 @@ input[type="submit"].button-primary {
     transition: 0.3s;
     margin-bottom: 0;
     border-radius: 4px;
+    background-color: #272c31;
 }
 .asset a {
     text-decoration: none;

@@ -2,16 +2,16 @@
 layout: base
 name: Asset Portal
 ---
-<div class="section">
+<div class="section dark">
 	<div class="container">
 		<div class="row">
 			<h1>Assets</h1>
 		</div>
 		<div class="row">
 			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
-				{% for asset in site.data.assets.assets %}
+				{%- for asset in site.data.assets.assets -%}
 					{% include asset.html asset=asset %}
-				{% endfor %}
+				{%- endfor -%}
 			</div>
 		</div>
 	</div>
