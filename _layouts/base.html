@@ -4,10 +4,14 @@
 	{% include head.html %}
 </head>
 <body>
+<div id="page">
 	{% include topnav.html style=page.nav %}
 
+	<div id="pagecontent">
 	{{ content }}
+	</div>
 
 	{% include footer.html %}
+</div>
 </body>
 </html>

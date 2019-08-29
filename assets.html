@@ -2,23 +2,44 @@
 layout: base
 name: Asset Portal
 ---
+<script type="text/javascript">
+	function show_all(selector) {
+		var x = document.querySelectorAll(selector);
+		for (var i = 0; i < x.length; i++) {
+			x[i].style.display = "block";
+		}
+	}
+	function hide_all(selector) {
+		var x = document.querySelectorAll(selector);
+		for (var i = 0; i < x.length; i++) {
+			x[i].style.display = "none";
+		}
+	}
+	function filter(tag) {
+		hide_all(".asset");
+		show_all("." + tag);
+	}
+</script>
 <div class="section dark">
 	<div class="container">
 		<div class="row">
 			<div class="columns two"><img src="/images/icons/community-assets-on-dark.svg"/></div>
 			<div class="columns eight">
 				<h1>Asset portal</h1>
-				<p>Whether you’re looking for extensions, pathfinders, sprite sets, example projects or code snippets—you name it, we've got it!</p>
+				<p>Whether you're looking for extensions, pathfinders, sprite sets, example projects or code snippets—you name it, we've got it!</p>
 			</div>
 			<div class="columns two"></div>
 		</div>
-		<div class="row">
+		<div class="row compact" style="margin-bottom: 50px">
 			{%- assign alltags = site.data.assets.assets | map: "tags" -%}
 			{%- assign tags = alltags | uniq | sort -%}
-			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 1rem; padding: 0px; margin-bottom: 50px">
+			<p>FILTER</p>
+			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 0 1rem;">
+				<a href="javascript: filter('asset');">ALL ({{ site.data.assets.assets.size }})</a>
 				{%- for tag in tags -%}
-					{% assign a = site.data.assets.assets | where: "tags", tag %}
-					<a>{{ tag }} ({{a.size}})</a>
+					{% assign tagged_assets = site.data.assets.assets | where: "tags", tag %}
+					{% assign tag_no_space = tag | replace: " ", "" | downcase %}
+					<a href="javascript: filter('{{ tag_no_space }}');">{{ tag }} ({{ tagged_assets.size }})</a>
 				{%- endfor -%}
 			</div>
 		</div>
