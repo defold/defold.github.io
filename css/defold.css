@@ -13,6 +13,12 @@
     list-style: none;
 }
 
+/* Ignore overflowing content */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 /* Reusable color constants */
 :root {
     --darker-bg-color: #171a1d;
@@ -22,12 +28,14 @@
     --light-bg-color: white;
     --light-color: #1c2c51;
     --defold-blue: #39a3e4;
+    --defold-blue-darker: #37a1e2;
     --defold-orange: #fd6623;
 }
 
 
 input[type="submit"].button-primary {
     background-color: var(--defold-blue);
+    border-color: var(--defold-blue-darker);
 }
 
 /*******************************************************************************
@@ -127,6 +135,9 @@ input[type="submit"].button-primary {
 .light-text {
     color: var(--light-bg-color);
 }
+.light-text a {
+    color: var(--light-bg-color);
+}
 .light {
     background-color: var(--light-bg-color);
     color: var(--light-color);
@@ -138,6 +149,9 @@ input[type="submit"].button-primary {
 .dark-text {
     color: var(--dark-bg-color);
 }
+.dark-text a {
+    color: var(--dark-bg-color);
+}
 .dark {
     background-color: var(--dark-bg-color);
     color: var(--dark-color);
@@ -147,6 +161,9 @@ input[type="submit"].button-primary {
 }
 
 .darker-text {
+    color: var(--darker-bg-color);
+}
+.darker-text a {
     color: var(--darker-bg-color);
 }
 .darker {
@@ -163,26 +180,6 @@ input[type="submit"].button-primary {
 }
 .blackwhite a {
     color: white;
-}
-
-
-/*******************************************************************************
- * svg
- ******************************************************************************/
-
-.bluesvg {
-    fill: var(--defold-blue);
-}
-.bluesvg svg {
-    height: 50px;
-    vertical-align: bottom;
-}
-.bluesvg img {
-    height: 50px;
-    vertical-align: bottom;
-}
-.bluesvg h4 {
-    display: inline;
 }
 
 
@@ -212,6 +209,13 @@ input[type="submit"].button-primary {
     column-count: 3;
 }
 
+/*******************************************************************************
+ * Tags in asset portal
+ ******************************************************************************/
+.tags li {
+    display: inline;
+    margin-right: 2rem;
+}
 
 /*******************************************************************************
  * Asset
@@ -262,6 +266,13 @@ input[type="submit"].button-primary {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     cursor: pointer;
 }
+.card .icon img {
+    height: 40px;
+    vertical-align: bottom;
+}
+.card h5 {
+    margin-bottom: 0;
+}
 
 
 /*******************************************************************************
@@ -270,6 +281,7 @@ input[type="submit"].button-primary {
  ******************************************************************************/
 .hero {
     background-size: cover;
+    background-position: center;
     display: block;
 }
 
