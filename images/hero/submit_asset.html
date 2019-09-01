@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://localhost:4000/submit_asset? -->
+<html><script type="text/javascript">
+    var spector;
+    var captureOnLoad = false;
+    var captureOffScreen = false;
+    window.__SPECTOR_Canvases = [];
+
+    (function() {
+        var __SPECTOR_Origin_EXTENSION_GetContext = HTMLCanvasElement.prototype.getContext;
+        HTMLCanvasElement.prototype.__SPECTOR_Origin_EXTENSION_GetContext = __SPECTOR_Origin_EXTENSION_GetContext;
+
+        HTMLCanvasElement.prototype.getContext = function () {
+            var context = null;
+            if (!arguments.length) {
+                return context;
+            }
+
+            if (arguments.length === 1) {
+                context = this.__SPECTOR_Origin_EXTENSION_GetContext(arguments[0]);
+                if (context === null) {
+                    return context;
+                }
+            }
+            else if (arguments.length === 2) {
+                context = this.__SPECTOR_Origin_EXTENSION_GetContext(arguments[0], arguments[1]);
+                if (context === null) {
+                    return context;
+                }
+            }
+
+            var contextNames = ["webgl", "experimental-webgl", "webgl2", "experimental-webgl2"];
+            if (contextNames.indexOf(arguments[0]) !== -1) {
+                context.canvas.setAttribute("__spector_context_type", arguments[0]);
+                // Notify the page a canvas is available.
+                var myEvent = new CustomEvent("SpectorWebGLCanvasAvailableEvent");
+                document.dispatchEvent(myEvent);
+
+                if (captureOffScreen) {
+                    var found = false;
+                    for (var i = 0; i < window.__SPECTOR_Canvases.length; i++) {
+                        if (window.__SPECTOR_Canvases[i] === this) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        window.__SPECTOR_Canvases.push(this);
+                    }
+                }
+
+                if (captureOnLoad) {
+                    // Ensures canvas is in the dom to capture the one we are currently tracking.
+                    if (this.parentElement || false) {
+                        spector.captureContext(context, 500, false);
+                        captureOnLoad = false;
+                    }
+                }
+            }
+
+            return context;
+        }
+    })()</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./submit_asset_files/css" rel="stylesheet" type="text/css">
+
+<link rel="shortcut icon" type="image/x-icon" href="http://localhost:4000/images/favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="./submit_asset_files/normalize.css">
+<link rel="stylesheet" type="text/css" href="./submit_asset_files/skeleton.css">
+<link rel="stylesheet" type="text/css" href="./submit_asset_files/defold.css">
+<link rel="stylesheet" type="text/css" href="./submit_asset_files/fruity.css">
+<link rel="stylesheet" type="text/css" href="./submit_asset_files/fontello.css">
+
+</head>
+<body style="">
+<div id="page">
+	<div class="nav dark">
+	<div class="container">
+		<div class="row">
+			<div class="nine columns">
+				<ul>
+					<li><a href="http://localhost:4000/">Home</a></li>
+					<li><a href="http://localhost:4000/technology">Product</a></li>
+					<li><a href="http://localhost:4000/learn">Learn</a></li>
+					<li><a href="http://localhost:4000/assets">Assets</a></li>
+					<li><a href="http://forum.defold.com/">Forum</a></li>
+					<li><a href="http://localhost:4000/blog">Blog</a></li>
+				</ul>
+			</div>
+			<div class="three columns">
+				<div><a href="https://www.github.com/defold" target="_blank"><img src="./submit_asset_files/GitHub-Mark-Light-32px.png" style="padding-right: 10px; vertical-align: middle;"> GitHub</a></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	<div id="pagecontent">
+	<div class="section dark" style="height: 100%; background: url(/images/beans/bean-magGlass-01.png) no-repeat fixed 100% 0%;">
+	<div class="container">
+		<div class="row">
+			<div class="columns two"><img src="./submit_asset_files/community-assets-on-dark.svg"></div>
+			<div class="columns eight">
+				<h1>Submit asset</h1>
+				<p>So you've created an asset? Cool! Here's how to share it with the community.</p>
+			</div>
+			<div class="columns two"><br></div>
+		</div>
+		<div class="row">
+			<div class="columns twelve">safsdf
+			</div>
+		</div>
+	</div>
+</div>
+
+	</div>
+
+	<footer class="darker">
+	<div class="container">
+		<div class="row">
+			<div class="one-third column">
+				<p><b>ABOUT</b></p>
+				<ul>
+					<li><a href="http://localhost:4000/history">Our history</a></li>
+					<li><a href="http://localhost:4000/contact">Contact</a></li>
+				</ul>
+			</div>
+			<div class="one-third column">
+				<p><b>LEGAL</b></p>
+				<ul>
+					<li><a href="http://localhost:4000/terms-and-conditions.html">Terms &amp; Conditions</a></li>
+					<li><a href="http://localhost:4000/privacy-policy.html">Privacy Policy</a></li>
+				</ul>
+			</div>
+			<div class="one-third column">
+				<p><b>COMMUNITY</b></p>
+				<ul>
+					<li><a href="https://forum.defold.com/" target="_blank">Forum</a></li>
+					<li><a href="https://twitter.com/defold" target="_blank">Twitter</a></li>
+					<li><a href="https://www.facebook.com/Defold" target="_blank">Facebook</a></li>
+					<li><a href="http://localhost:4000/slack/">Slack</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<p>Copyright © 2019 Defold</p>
+		</div>
+	</div>
+</footer>
+
+</div>
+
+
+</body></html>

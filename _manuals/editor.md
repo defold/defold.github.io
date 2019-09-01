@@ -98,7 +98,7 @@ Selecting objects
   Hold <kbd>Shift</kbd> or <kbd>⌘</kbd> (Mac) / <kbd>Ctrl</kbd> (Win/Linux) while clicking to expand the selection.
 
 The move tool
-: ![Move tool](images/editor/icon_move.png){.left}
+: ![Move tool](images/editor/icon_move.png)
   To move objects, use the *Move Tool*. You find it in the toolbar in the top right corner of the scene editor, or by pressing the <kbd>W</kbd> key.
 
   ![Move object](images/editor/move.jpg)
@@ -106,7 +106,7 @@ The move tool
   The selected object shows a set of manipulators (squares and arrows). Click and drag the green center square handle to move the object freely in screen space, click and drag the arrows to move the object along the X, Y or Z-axis. There arn also square handles for moving the object in the X-Y plane and (visible if rotating the camera in 3D) for moving the object in the X-Z and Y-Z planes.
 
 The rotate tool
-: ![Rotate tool](images/editor/icon_rotate.png){.left}
+: ![Rotate tool](images/editor/icon_rotate.png)
   To rotate objects, use the *Rotate Tool* by selecting it in the toolbar, or by pressing the <kbd>E</kbd> key.
 
   ![Move object](images/editor/rotate.jpg)
@@ -114,7 +114,7 @@ The rotate tool
   This tool consists of four circular manipulators. An orange manipulator that rotates the object in screen space and one for rotation around each of the X, Y and Z axes. Since the view is peripendicular to the X- and Y-axis, the circles only appear as two lines crossing the object.
 
 The scale tool
-: ![Scale tool](images/editor/icon_scale.png){.left}
+: ![Scale tool](images/editor/icon_scale.png)
   To scale objects, use the *Scale Tool* by selecting it in the toolbar, or by pressing the <kbd>R</kbd> key.
 
   ![Scale object](images/editor/scale.jpg)

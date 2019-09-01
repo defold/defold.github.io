@@ -112,7 +112,7 @@ Images are inserted into the document like this:
 
 ![A large image of sorts](images/test/large.png)
 
-![A small image of sorts](images/test/tiny.png){.left} An image that is put at the start of a paragraph---inline with a class `.left`. This is useful for small images like icons and the like. The rendering of these is not optimal since the image size is needed to figure out image placement in relation to the text. Still, in some cases it can be useful, for paragraph decoration or similar.
+![A small image of sorts](images/test/tiny.png) An image that is put at the start of a paragraph---inline with a class `.left`. This is useful for small images like icons and the like. The rendering of these is not optimal since the image size is needed to figure out image placement in relation to the text. Still, in some cases it can be useful, for paragraph decoration or similar.
 
 ![A small image of sorts](images/test/tiny.png){.right} An image that is put at the start of a paragraph---inline with a class `.right`. This is useful for small images like icons and the like. The rendering of these is not optimal since the image size is needed to figure out image placement in relation to the text. Still, in some cases it can be useful, for paragraph decoration or similar.
 

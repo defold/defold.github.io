@@ -1,18 +1,19 @@
-<div class='asset left light-text compact {{ include.asset.tags | join: "%%" | replace: " ", "" | split: "%%" | join: " " | downcase }}'>
-	<a href="{{ include.asset.project_url }}" target="_blank">
-		{%- if include.asset.images.thumb.size > 0 -%}
-			{%- assign thumb = include.asset.images.thumb -%}
-		{%- else -%}
-			{%- assign thumb = "/images/assets/no-thumb.png" -%}
-		{%- endif -%}
+{%- assign asset = site.data.assets[include.id] -%}
+{%- if asset.images.thumb.size > 0 -%}
+	{%- assign thumb = asset.images.thumb -%}
+{%- else -%}
+	{%- assign thumb = "/images/assets/no-thumb.png" -%}
+{%- endif -%}
+<div class='asset left light-text compact {{ asset.tags | join: "%%" | replace: " ", "" | split: "%%" | join: " " | downcase }}'>
+	<a href="/assets/{{ include.id }}">
 		<div id="image" style="background: url('{{ thumb }}') center/cover; padding: 0; margin: 0; height: 190px">
 			<div id="overlay" style="height: 190px; padding: 0; margin: 0; ">
-				<div><p id="description" style="height: 190px;">{{ include.asset.description }}</p></div>
+				<div><p id="description" style="height: 190px;">{{ asset.description }}</p></div>
 			</div>
 		</div>
 		<div>
-			<b>{{ include.asset.name }}</b>
-			<p style="font-size: small">{{ include.asset.tags | join: ", " | truncate: 30 }}</p>
+			<b>{{ asset.name }}</b>
+			<p style="font-size: small">{{ asset.tags | join: ", " | truncate: 30 }}</p>
 		</div>
 	</a>
 </div>

@@ -103,6 +103,16 @@ def download():
     download_file("http://d.defold.com/archive/{}/engine/share/ref-doc.zip".format(sha1), ".", REFDOC_ZIP)
 
 
+def process_doc_file(file):
+    replace_in_file(file, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
+    replace_in_file(file, r"{srcset=.*?}", r"")
+    replace_in_file(file, r"::: sidenote(.*?):::", r"<div class='sidenote' markdown='1'>\1</div>", flags=re.DOTALL)
+    replace_in_file(file, r"::: important(.*?):::", r"<div class='important' markdown='1'>\1</div>", flags=re.DOTALL)
+    replace_in_file(file, r"\((.*?)#_(.*?)\)", r"(\1#\2)")
+    replace_in_file(file, r":\[.*?\]\(\.\.\/(.*?)\)", r"{% include \1 %}")
+    replace_in_file(file, r"{.left}", r"")
+
+
 def process_docs():
     if not os.path.exists(DOCS_ZIP):
         print("File {} does not exists".format(DOCS_ZIP))
@@ -114,20 +124,15 @@ def process_docs():
 
         print("Processing doc")
         print("...manuals")
-        manuals_dir = "manuals"
+        manuals_dir = "_manuals"
         if os.path.exists(manuals_dir):
             shutil.rmtree(manuals_dir)
         shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "manuals"), manuals_dir)
-        for file in find_files(manuals_dir, "*.md"):
-            replace_in_file(file, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
-            replace_in_file(file, r"{srcset=.*?}", r"")
-            replace_in_file(file, r"::: sidenote(.*?):::", r"<div class='sidenote' markdown='1'>\1</div>", flags=re.DOTALL)
-            replace_in_file(file, r"::: important(.*?):::", r"<div class='important' markdown='1'>\1</div>", flags=re.DOTALL)
-            replace_in_file(file, r"\((.*?)#_(.*?)\)", r"(\1#\2)")
-            replace_in_file(file, r":\[.*?\]\(\.\.\/(.*?)\)", r"{% include \1 %}")
+        for filename in find_files(manuals_dir, "*.md"):
+            process_doc_file(filename)
 
         print("...faq")
-        faq_dir = "faq"
+        faq_dir = "_faq"
         if os.path.exists(faq_dir):
             shutil.rmtree(faq_dir)
         shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "faq"), faq_dir)
@@ -137,21 +142,16 @@ def process_docs():
         if os.path.exists(shared_dir):
             shutil.rmtree(shared_dir)
         shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "shared"), shared_dir)
-        for file in find_files(shared_dir, "*.md"):
-            replace_in_file(file, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
-            replace_in_file(file, r"{srcset=.*?}", r"")
-            replace_in_file(file, r"::: sidenote(.*?):::", r"<div class='sidenote' markdown='1'>\1</div>", flags=re.DOTALL)
-            replace_in_file(file, r"::: important(.*?):::", r"<div class='important' markdown='1'>\1</div>", flags=re.DOTALL)
-            replace_in_file(file, r"\((.*?)#_(.*?)\)", r"(\1#\2)")
-            replace_in_file(file, r":\[.*?\]\(\.\.\/(.*?)\)", r"{% include \1 %}")
+        for filename in find_files(shared_dir, "*.md"):
+            process_doc_file(filename)
 
         print("...tutorials")
-        tutorials_dir = "tutorials"
+        tutorials_dir = "_tutorials"
         if os.path.exists(tutorials_dir):
             shutil.rmtree(tutorials_dir)
         shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "tutorials"), tutorials_dir)
-        for file in find_files(tutorials_dir, "*.md"):
-            replace_in_file(file, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
+        for filename in find_files(tutorials_dir, "*.md"):
+            replace_in_file(filename, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
 
         print("...index")
         index_file = os.path.join("_data", "en.json")
@@ -191,6 +191,12 @@ def process_examples():
         shutil.copytree(os.path.join(input_dir, "build", "default", "Defold-examples"), examples_dir)
 
 
+ASSET_MD = """---
+layout: asset
+asset: {}
+---
+"""
+
 def process_assets():
     if not os.path.exists(AWESOME_ZIP):
         print("File {} does not exist".format(AWESOME_ZIP))
@@ -202,13 +208,49 @@ def process_assets():
 
         shutil.copyfile(os.path.join(tmp_dir, "awesome-defold-master", "assets.json"), os.path.join("_data", "assets.json"))
 
+        # Jekyll collection
+        collection_dir = "assets"
+        if os.path.exists(collection_dir):
+            shutil.rmtree(collection_dir)
+        os.mkdir(collection_dir)
+
+        # Jekyll data
+        data_dir = os.path.join("_data", "assets")
+        if os.path.exists(data_dir):
+            shutil.rmtree(data_dir)
+        os.mkdir(data_dir)
+
+        assetindex = []
+        for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "assets"), "*.json"):
+            basename = os.path.basename(filename)
+
+            # copy the data file as-is
+            shutil.copyfile(filename, os.path.join(data_dir, basename))
+
+            # generate a dummy markdown page with some front matter for each ref doc
+            with open(os.path.join(collection_dir, basename.replace(".json", ".md")), "w") as f:
+                f.write(ASSET_MD.format(basename.replace(".json", "")))
+
+            # build refdoc indexs
+            with open(filename) as f:
+                r = json.load(f)
+                assetindex.append({
+                    "id": basename.replace(".json", ""),
+                    "tags": r["tags"],
+                    "platforms": r["platforms"]
+                })
+
+        # write asset index
+        with open(os.path.join("_data", "assetindex.json"), "w") as f:
+            json.dump(assetindex, f, indent=2)
+
+
 
 REF_MD = """---
 layout: ref
 ref: {}
 ---
-{}
-"""
+""" + "{% include anchor_headings.html html=content %}"
 
 def process_refdoc():
     if not os.path.exists(REFDOC_ZIP):
@@ -219,11 +261,13 @@ def process_refdoc():
         shutil.copyfile(REFDOC_ZIP, os.path.join(tmp_dir, REFDOC_ZIP))
         unzip(os.path.join(tmp_dir, REFDOC_ZIP), tmp_dir)
 
-        ref_dir = "ref"
-        if os.path.exists(ref_dir):
-            shutil.rmtree(ref_dir)
-        os.mkdir(ref_dir)
+        # Jekyll collection
+        collection_dir = "ref"
+        if os.path.exists(collection_dir):
+            shutil.rmtree(collection_dir)
+        os.mkdir(collection_dir)
 
+        # Jekyll data
         data_dir = os.path.join("_data", "ref")
         if os.path.exists(data_dir):
             shutil.rmtree(data_dir)
@@ -239,10 +283,10 @@ def process_refdoc():
                 shutil.copyfile(os.path.join(tmp_dir, "doc", file), os.path.join(data_dir, json_out_file))
 
                 # generate a dummy markdown page with some front matter for each ref doc
-                with open(os.path.join(ref_dir, file.replace("_doc.json", ".md")), "w") as f:
-                    f.write(REF_MD.format(json_out_name, "{% include anchor_headings.html html=content %}"))
+                with open(os.path.join(collection_dir, file.replace("_doc.json", ".md")), "w") as f:
+                    f.write(REF_MD.format(json_out_name))
 
-                # build refdoc index
+                # build refdoc indexs
                 with open(os.path.join(tmp_dir, "doc", file)) as f:
                     r = json.load(f)
                     refindex.append({

@@ -96,7 +96,7 @@ You specify what icon to use for the app, the launch screen image(s) and so fort
 When your game launches on iOS, the launch images are used to set the correct screen resolution. If you do not supply the correct image size, you will get a lower resolution with resulting black bars.
 :::
 
-![ipa iOS application bundle](images/ios/ipa_file.png){.left}
+![ipa iOS application bundle](images/ios/ipa_file.png)
 
 ## Installing an iOS application bundle
 

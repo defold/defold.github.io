@@ -65,37 +65,37 @@ You can also <kbd>right click</kbd> on the folder icon for the type you want to 
 A GUI component is built from a set of nodes. Nodes are simple elements. They can be translated (moved, scaled and rotated) and ordered in parent-child hierarchies either in the editor or at runtime through scripting. The following node types exist:
 
 Box node
-: ![box node](images/icons/gui-box-node.png){.left}
+: ![box node](images/icons/gui-box-node.png)
   Rectangular node with either a single color, texture or flip-book animation. See the [Box node documentation](/manuals/gui-box) for details.
 
 <div style="clear: both;"></div>
 
 Text node
-: ![text node](images/icons/gui-text-node.png){.left}
+: ![text node](images/icons/gui-text-node.png)
   Displays text. See the [Text node documentation](/manuals/gui-text) for details.
 
 <div style="clear: both;"></div>
 
 Pie node
-: ![pie node](images/icons/gui-pie-node.png){.left}
+: ![pie node](images/icons/gui-pie-node.png)
   A circular or ellipsoid node that can be partially filled or inverted. A See the [Pie node documentation](/manuals/gui-pie) for details.
 
 <div style="clear: both;"></div>
 
 Template node
-: ![template node](images/icons/gui.png){.left}
+: ![template node](images/icons/gui.png)
   Templates are used to create instances based on other GUI scene files. See the [Template node documentation](/manuals/gui-template) for details.
 
 <div style="clear: both;"></div>
 
 Spine node
-: ![spine node](images/icons/spine-model.png){.left}
+: ![spine node](images/icons/spine-model.png)
   Displays and animates a spine model. See the [Spine node documentation](/manuals/gui-spine) for details.
 
 <div style="clear: both;"></div>
 
 ParticleFX node
-: ![particlefx node](images/icons/particlefx.png){.left}
+: ![particlefx node](images/icons/particlefx.png)
   Plays a particle effect. See the [ParticleFX node documentation](/manuals/gui-particlefx) for details.
 
 <div style="clear: both;"></div>

@@ -1,0 +1,4 @@
+---
+layout: asset
+asset: luascriptinstance
+---

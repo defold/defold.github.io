@@ -1,15 +1,64 @@
 ---
 layout: base
 ---
-<div class="section light">
+{%- assign asset = site.data.assets[page.asset] -%}
+{%- if asset.images.hero.size > 0 -%}
+	{%- assign hero = asset.images.hero -%}
+{%- else -%}
+	{%- assign hero = "/images/assets/no-thumb.png" -%}
+{%- endif -%}
+
+<div class="section hero center blackwhite" style='background-image: url("{{ hero }}");'>
 	<div class="container">
 		<div class="row">
+			<div>
+				<br/>
+				<br/>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section dark">
+	<div class="container">
+		<div class="row">
+			<div class="columns nine">
+				<h4>{{ asset.name }}</h4>
+				<p>{{ asset.description }}</p>
+
+				{%- if asset.library_url.size > 0 -%}
+				<h5>Use as library</h5>
+				<p>This asset can be added as a library dependency in your project:
+					<a href="{{ asset.library_url }}">{{ asset.library_url }}</a>
+				</p>
+				{%- endif -%}
+
+				{%- if asset.project_url.size > 0 -%}
+				<h5>Learn more</h5>
+				<p>Learn more about {{ asset.name }} on the external project page:<br/>
+					<a href="{{ asset.project_url }}">{{ asset.project_url }}</a>
+				</p>
+				{%- endif -%}
+			</div>
 			<div class="columns three">
-			</div>
-			<div class="columns seven">
-				{{ content }}
-			</div>
-			<div class="columns two">
+				<table>
+					<tr>
+						<td valign="top">Author</td>
+						<td valign="top">{{ asset.author }}</td>
+					</tr>
+					<tr>
+						<td valign="top">License</td>
+						<td valign="top">{{ asset.license }}</td>
+					</tr>
+					<tr>
+						<td valign="top">Platforms</td>
+						<td valign="top">{{ asset.platforms | join: "<br/>" }}</td>
+					</tr>
+					<tr>
+						<td valign="top">Tags</td>
+						<td valign="top">{{ asset.tags | join: "<br/>" }}</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
