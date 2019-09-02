@@ -154,16 +154,10 @@ def process_docs():
             replace_in_file(filename, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
 
         print("...index")
-        index_file = os.path.join("_data", "en.json")
+        index_file = os.path.join("_data", "learnindex.json")
         if os.path.exists(index_file):
             os.remove(index_file)
         shutil.copyfile(os.path.join(tmp_dir, "doc-master", "docs", "en", "en.json"), index_file)
-
-        print("...languages")
-        languages_file = os.path.join("_data", "languages.json")
-        if os.path.exists(languages_file):
-            os.remove(languages_file)
-        shutil.copyfile(os.path.join(tmp_dir, "doc-master", "docs", "languages.json"), languages_file)
 
         print("Done")
 
