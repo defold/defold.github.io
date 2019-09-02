@@ -11,93 +11,99 @@ name: Submit asset
 			<div class="columns two"><img src="/images/icons/community-assets-on-dark.svg"/></div>
 			<div class="columns eight">
 				<h1>Submit asset</h1>
-				<p>So you've created an asset? Cool! Here's how to share it with the community:</p>
+				<p>So you've created an asset? Cool! Fill out this form to share it with the community:</p>
 			</div>
 			<div class="columns two"><br/></div>
 		</div>
 		<div class="row">
+			{%- assign alltags = site.data.assetindex | map: "tags" -%}
+			{%- assign tags = alltags | uniq | sort -%}
 
-			<div class="columns ten">
+			<script type="text/javascript">
+				function submit_asset() {
+					var platforms = [];
+					if (document.getElementById("android").checked) { platforms.push("android"); }
+					if (document.getElementById("ios").checked) { platforms.push("ios"); }
+					if (document.getElementById("macos").checked) { platforms.push("macos"); }
+					if (document.getElementById("windows").checked) { platforms.push("windows"); }
+					if (document.getElementById("linux").checked) { platforms.push("linux"); }
+					if (document.getElementById("html5").checked) { platforms.push("html5"); }
 
+					var tags = [];
+					{%- for tag in tags -%}
+					if (document.getElementById("{{ tag | downcase}}").checked) { tags.push("{{ tag | downcase}}"); }
+					{% endfor %}
 
-				<form action="https://github.com/defold/awesome-defold/issues/new" target="_blank" method="get">
+					var name = document.getElementById("asset_name").value
+					var asset = {
+						name: name,
+						description: document.getElementById("asset_description").value,
+						license: document.getElementById("asset_license").value,
+						author: document.getElementById("asset_author").value,
+						library_url: document.getElementById("asset_library_url").value,
+						project_url: document.getElementById("asset_project_url").value,
+						website_url: document.getElementById("asset_website_url").value,
+						platforms: platforms,
+						tags: tags,
+						images: {
+							hero: "",
+							thumb: "",
+						}
+					}
+
+					var instructions = "Optionally also attach two images " + name + "-hero.[png|jpg] (max 2400x666) and " + name + "-thumb.[png|jpg] (max 580x380)."
+					var url = "https://github.com/defold/awesome-defold/issues/new"
+						+ "?title=" + encodeURI(asset["name"])
+						+ "&body=" + encodeURI(instructions + "\n" + JSON.stringify(asset, null, 4));
+					window.open(url, "_blank");
+				}
+			</script>
+
+			<div class="columns ten light-text">
+				<br/>
+				<form id="submit_asset" action="javascript: submit_asset()">
 					<label for="name">Name</label>
-					<input type="text" name="name" required/><br/>
+					<input id="asset_name" type="text" name="name" size="80" required/><br/>
 
-					<label for="description">Description</label>
-					<textarea name="description" rows="5" cols="80" required></textarea><br/>
+					<label for="description">Description (max 250 characters)</label>
+					<textarea id="asset_description" name="description" rows="5" cols="79" maxlength="250" required></textarea><br/>
 
 					<label for="project_url">Project URL</label>
-					<input type="text" name="project_url" required/><br/>
+					<input id="asset_project_url" type="text" name="project_url" size="80" required/><br/>
 
 					<label for="library_url">Library URL (optional)</label>
-					<input type="text" name="library_url"/><br/>
+					<input id="asset_library_url" type="text" name="library_url" size="80"/><br/>
 
 					<label for="website_url">Website URL (optional)</label>
-					<input type="text" name="website_url"/><br/>
+					<input id="asset_website_url" type="text" name="website_url" size="80"/><br/>
 
+					<label for="author">Author</label>
+					<input id="asset_author" type="text" name="author" size="80" required/><br/>
+
+					<label for="license">License</label>
+					<input id="asset_license" type="text" name="license" size="80" required/><br/>
+
+					<br/>
 					<label for="platforms">Platforms</label>
-					<select name="platforms" size="3">
-						<option value="android">Android</option>
-						<option value="iOS">iOS</option>
-						<option value="macos">macOS</option>
-						<option value="windows">Windows</option>
-						<option value="linux">Linux</option>
-						<option value="html5">HTML5</option>
-					</select>
+					<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); grid-gap: 0 1rem;">
+						<span><input type="checkbox" name="platforms" value="android" id="android" style="margin-right: 1rem"/><label for="android" style="display: inline">Android</label></span>
+						<span><input type="checkbox" name="platforms" value="ios" id="ios" style="margin-right: 1rem"/><label for="ios" style="display: inline">iOS</label></span>
+						<span><input type="checkbox" name="platforms" value="macos" id="macos" style="margin-right: 1rem"/><label for="macos" style="display: inline">macOS</label></span>
+						<span><input type="checkbox" name="platforms" value="windows" id="windows" style="margin-right: 1rem"/><label for="windows" style="display: inline">Windows</label></span>
+						<span><input type="checkbox" name="platforms" value="linux" id="linux" style="margin-right: 1rem"/><label for="linux" style="display: inline">Linux</label></span>
+						<span><input type="checkbox" name="platforms" value="html5" id="html5" style="margin-right: 1rem"/><label for="html5" style="display: inline">HTML5</label></span>
+					</div>
 
-					<label for="website_url">Website URL (optional)</label>
-					<input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
+					<br/>
+					<label for="tags">Tags (optional)</label>
+					<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); grid-gap: 0 1rem;">
+					{%- for tag in tags -%}
+						<span><input type="checkbox" name="tags" value="{{ tag | downcase}}" id="{{ tag | downcase}}" style="margin-right: 1rem"/><label for="{{ tag | downcase}}" style="display: inline">{{ tag }}</label></span>
+					{%- endfor -%}
+					</div>
 
-
-					<input type="submit" value="Submit"/>
+					<input class="primary-button" type="submit" style="color: white"/>
 				</form>
-{% capture x %}
-### Asset Repository
-The assets available from the Asset Portal are listed in the central asset repository located here:
-
-[https://github.com/defold/awesome-defold](https://github.com/defold/awesome-defold)
-
-You can submit a new asset in three easy steps:
-
- 1) Fork the asset repository:
-
-![For repository](/images/submit_asset/fork.png)
-
- 2) Add your asset to the bottom of the **assets.json** file. Example:
-
-```json
-			"library_url": "https://github.com/defold/defold-examples/releases/download/0.2.0/magic-link.zip",
-			"description": "Magic Link is a simple game where the goal is to connect a set of magic spheres.",
-			"author": "Defold",
-			"images": {
-				"thumb": "/images/assets/magiclink-thumb.jpg",
-				"hero": "/images/assets/magiclink-hero.jpg"
-			}
-		},
-		{
-			"name": "My cool new asset",
-			"tags": ["Extension", "Device control"],
-			"platforms": ["iOS", "Android", "macOS", "Windows", "Linux", "HTML5"],
-			"license": "CC0 1.0 Universal",
-			"website_url": "https://www.foobar.com/",
-			"project_url": "https://github.com/foo/bar",
-			"library_url": "https://github.com/foo/bar/archive/master.zip",
-			"description": "Put more foobar in your project.",
-			"author": "Mr Smith",
-			"images": {
-				"thumb": "/images/assets/foobar-thumb.jpg",
-				"hero": "/images/assets/foobar-hero.jpg"
-			}
-		},
-	]
-}
-```
-
- 3) Optionally add a thumbnail image and hero/banner image to the **images** folder. The thumbnail should be a maximum of 580x380 pixels and the the hero/banner image should be a maximum of 2400x666 pixels.
-
- 4) Submit a Pull Request back to the main asset repository.
-{% endcapture %}{{ x | markdownify }}
 			</div>
 			<div class="columns two"><br/></div>
 		</div>
