@@ -42,7 +42,7 @@ This tutorial is written as a step-by-step guide where we build the game on a co
 
 You need to start by creating a new project and importing the asset package:
 
-* Create a [new project](/manuals/project-setup/#_creating_a_new_project) from the "Empty Project" template
+* Create a [new project](/manuals/project-setup/#creating_a_new_project) from the "Empty Project" template
 * Download the "Magic Link" asset package and unpack it on your hard drive (the package is a ZIP archive)
 
 <a class="btn btn-primary btn-xs-block btn-icon" href="//storage.googleapis.com/defold-doc/assets/magic-link-assets.zip">Download asset package<span aria-hidden="true" class="icon icon-download"></span></a>
@@ -123,9 +123,9 @@ However, setting the max to 256 is not enough. Each time we clear and reset the 
 
 All necessary assets for the game has been prepared in advance. We're adding them as 512x512 pixel images and let the engine scale them down to the target size.
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 Enabling *hidpi* in the project settings mean that the backbuffer becomes high resolution. By drawing large images scaled down they will appear very crisp on retina screens.
-:::
+</div>
 
 ![Add images](images/magic-link/linker_add_images.png)
 

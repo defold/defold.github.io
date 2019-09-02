@@ -151,7 +151,7 @@ def process_docs():
             shutil.rmtree(tutorials_dir)
         shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "tutorials"), tutorials_dir)
         for filename in find_files(tutorials_dir, "*.md"):
-            replace_in_file(filename, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
+            process_doc_file(filename)
 
         print("...index")
         index_file = os.path.join("_data", "learnindex.json")

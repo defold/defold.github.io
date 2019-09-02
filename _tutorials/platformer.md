@@ -44,14 +44,14 @@ We assume that you're familiar with a bit of vector mathematics (linear algebra)
 
 If you are already using Defold, you can create a new project based on the _Platformer_ template-project and play around with that while reading this article.
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 Some readers has brought up that our suggested method is not possible with the default implementation of Box2D. We made a few modifications to Box2D to make this work:
 
 Collisions between kinematic and static objects are ignored. Change the checks in `b2Body::ShouldCollide` and `b2ContactManager::Collide`.
 
 Also, the contact distance (called separation in Box2D) is not supplied to the callback-function.
 Add a distance-member to `b2ManifoldPoint` and make sure it's updated in the `b2Collide*` functions.
-:::
+</div>
 
 ## Collision Detection
 
@@ -141,11 +141,11 @@ Since we are using a box, we might get multiple contact points during a frame. T
 
 To avoid making the same correction multiple times, we accumulate the corrections in a vector to make sure we don't over-compensate. This would make us end up too far away from the object we collided with. In the image above, you can see that we currently have two contact points, visualized by the two arrows (normals). The penetration distance is the same for both contacts, if we would use that blindly each time we would end up moving the player twice the intended amount.
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 It's important to reset the accumulated corrections each frame to the 0-vector.
 Put something like this at the end of the `update()` function:
 `self.corrections = vmath.vector3()`
-:::
+</div>
 
 Assuming there is a callback-function that will be called for each contact point, here's how to do the separation in that function:
 

@@ -272,9 +272,9 @@ For example, the RGB value `(0.63, 0.83, 0.4)` is found in the cell containing a
 
 Note that we need to treat red and green values `(0, 0)` as being in the *center* of the bottom left pixel and the values `(1.0, 1.0)` as being in the *center* of the top right pixel.
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 The reason we read starting at the center of the lower left pixel and up to the center of the top right one is that we don't want any pixels outside of the current cell to affect the sampled value. See below about filtering.
-:::
+</div>
 
 When sampling at these specific coordinates on the texture we see that we end up right between 4 pixels. So what color value will GL tell us that point has?
 

@@ -50,9 +50,9 @@ The end result will be a game where you control a frog that runs through an envi
 
 If you at any point get stuck on this tutorial or when creating your game don't hesitate to ask us for help at the [Defold Forum](//forum.defold.com). In the forum you can discuss Defold, ask for help from the Defold team, see how other game developers solved their problems and find new inspiration. Get started now.
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 Throughout the tutorial, detailed descriptions on concepts and how to do certain moments are marked like this paragraph. If you feel that these section go into too much detail, please skip them.
-:::
+</div>
 
 So let's begin. We hope you will have a lot of fun going through this tutorial and that it helps you getting going with Defold.
 
@@ -65,9 +65,9 @@ The first step is to download the following package. It is a zip package that co
 
 Now, if you haven't already downloaded and installed the Defold editor, it's time to do that:
 
-:[install](../shared/install.md)
+{% include shared/install.md %}
 
-When the editor is installed and started it's time to create a new project and getting it ready. Create a [new project](/manuals/project-setup/#_creating_a_new_project) from the "Empty Project" template.
+When the editor is installed and started it's time to create a new project and getting it ready. Create a [new project](/manuals/project-setup/#creating_a_new_project) from the "Empty Project" template.
 
 ## The editor
 
@@ -113,13 +113,13 @@ First of all, let's clean the *main.collection* file of the one game object it c
 * Save the file. Select <kbd>File ▸ Save</kbd> in the main menu.
 That's it!
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 The Defold editor works on files. By double-clicking a file in the *Project Explorer* you open it in a suitable editor. You can then work with the contents of the file.
 
 When you are done editing a file you have to save it. Select <kbd>File ▸ Save</kbd> in the main menu. The editor gives a hint by adding an asterisk '\*' to the filename in the tab for any file that contain unsaved changes.
 
 ![File with unsaved changes](images/runner/1/file_changed.png)
-:::
+</div>
 
 ![Delete game object](images/runner/1/delete_go.png)
 
@@ -135,9 +135,9 @@ Let's take the first baby steps and create an arena for our character, or rather
 1. Import the image assets into the project by dragging the files "ground01.png" and "ground02.png" image files (from the sub-folder "level-images" in the asset package) into a suitable location in the project, for instance the folder "images" inside the "main" folder.
 2. Create a new *Atlas* file to hold the ground textures (right-click a suitable folder, for instance the *main* folder, in the *Project Explorer* and select <kbd>New ▸ Atlas File</kbd>). Name the atlas file *level.atlas*.
 
-  ::: sidenote
+  <div class='sidenote' markdown='1'>
   An *Atlas* is a file that combines a set of separate images into one larger image file. The reason for doing that is to save space and also to gain performance. You can read more about Atlases and other 2D graphics features in the [2D graphics documentation](/manuals/2dgraphics).
-  :::
+  </div>
 
 3. Add the ground images to the new atlas by right-clicking the atlas root in the *Outline* and select <kbd>Add Images</kbd>. Select the imported images and click *OK*. Each image in the atlas is now accessible as a one-frame animation (still image) to use in sprites, particle effects and other visual elements. Save the file.
 
@@ -145,9 +145,9 @@ Let's take the first baby steps and create an arena for our character, or rather
 
   ![Add images to atlas](images/runner/1/add_images_to_atlas.png)
 
-  ::: sidenote
+  <div class='sidenote' markdown='1'>
   *Why doesn't it work!?* A common problem people have when they starting with Defold is forgetting to save! After adding images to an atlas you need to save the file before you can access that image.
-  :::
+  </div>
 
 4. Create a collection file *ground.collection* for the ground and add 7 game objects to it (right-click the root of the collection in the *Outline* view and select <kbd>Add Game Object</kbd>). Name the objects "ground0", "ground1", "ground2" etc by changing the *Id* property in the *Properties* view. Note that Defold automatically assigns new game objects a unique id.
 
@@ -161,11 +161,11 @@ Let's take the first baby steps and create an arena for our character, or rather
 
 7. Position all the _game objects_ in line. Set the X positions of the _game objects_ (not sprite components) to 0, 228, 456, 684, 912, 1140 and 1368 (multiples of the width 228 pixels).
 
-  ::: sidenote
+  <div class='sidenote' markdown='1'>
   It's probably easiest to create one complete scaled game object with a sprite component and then copy it. Mark it in the *Outline* view, then select <kbd>Edit ▸ Copy</kbd> and then <kbd>Edit ▸ Paste</kbd>.
 
   It is worth noticing that if you want larger or smaller tiles you can just change the scaling. However, doing so will also require that you change the X positions of all ground game objects to multiples of the new width.
-  :::
+  </div>
 
 8. Save the file, then add *ground.collection* to the *main.collection* file: first double click the *main.collection* file, then right-click the root object in the *Outline* view and select <kbd>Add Collection From File</kbd>. In the dialog, select *ground.collection* and click *OK*. Make sure you place *ground.collection* in position 0, 0, 0 or it will be offset visually. Save it.
 
@@ -222,11 +222,11 @@ end
 
 ![Ground script](images/runner/1/ground_script.png)
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 Defold is a fast engine core that manages your data and game objects. Any logic or behavior that you need for your game is created in the Lua language. Lua is a fast and light-weight programming language that is great for writing game logic. There are great resources available to learn the language, like the book http://www.lua.org/pil/[Programming in Lua] and the official http://www.lua.org/manual/5.3/[Lua reference manual].
 
 Defold adds a set of API:s on top of Lua, as well as a _message passing_ system that allows you to program communications between game objects. See the [Message passing manual](/manuals/message-passing) for details on how this works.
-:::
+</div>
 
 Now that we have a script file, we should add a reference to it to a component in a game object. That way, the script will be executed as part of the game object lifecycle. We do this by creating a new game object in *ground.collection* and add a *Script* component to the object that refers to the Lua script file we just created:
 
@@ -272,9 +272,9 @@ We also need to import the Spine animation data and set up a *Spine Scene* for i
 
 ![Hero spinescene](images/runner/2/hero_spinescene.png)
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 The file *hero.json* has been exported in Spine JSON format. You will need the Spine or Dragon Bones animation software to be able to create such files. If you want to use other animation software you can export your animations as sprite-sheets and use them as flip-book animations either from *Tile Source* or *Atlas* resources. See the manual on [Animation](/manuals/animation) for more information.
-:::
+</div>
 
 ### Building the game object
 
@@ -295,9 +295,9 @@ Now it's time to add physics for collision to work:
 3. Click the shapes and use the *Move Tool* (<kbd>Scene ▸ Move Tool</kbd>) to move the shapes into good positions.
 4. Mark the *Collision Object* component and set the *Type* property to "Kinematic".
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 "Kinematic" collision means that we want collisions to register, but the physics engine won't solve collisions automatically and simulate the objects. The physics engine supports a number of different types of collision objects. You can read more about them in the [Physics documentation](/manuals/physics).
-:::
+</div>
 
 It is important that we specify what the collision object should interact with:
 
@@ -311,11 +311,11 @@ Finally, create a new *hero.script* file and add it to the game object.
 1. Right-click the *hero* folder in the *Project Explorer*  and select <kbd>New ▸ Script File</kbd>. Name the new file *hero.script*.
 2. Open the new file, then copy and paste the following code into the script file, then save it. (The code is pretty straightforward apart from the solver that separates the hero collision shape from what it collides with. That is done by the `handle_geometry_contact()` function.)
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 The reason we are handling the collision ourselves is that if we instead set the type on the frog's collision object to dynamic, the engine will peform a Newtonian simulation of the bodies involved. For a game like this, such a simulation is far from optimal so instead of fighting the physics engine with various forces, we take full control.
 
-Now, to do that and handle collision properly requires a little bit of vector mathematics. A thorough explanation on how to solve kinematic collisions is given in the [Physics documentation](/manuals/physics#_resolving_kinematic_collisions).
-:::
+Now, to do that and handle collision properly requires a little bit of vector mathematics. A thorough explanation on how to solve kinematic collisions is given in the [Physics documentation](/manuals/physics#resolving_kinematic_collisions).
+</div>
 
 ```lua
 -- gravity pulling the player down in pixel units/sˆ2
@@ -441,11 +441,11 @@ Now that we have a hero character set up with collision and all, we need to also
 4. Now, create a new folder called *level* in the project root (right-click the white space below *game.project* and select <kbd>New ▸ Folder</kbd>), then move the level assets you have created so far to it: the files *level.collection*, *level.atlas*, the "images" folder holding the images for the level atlas, and the files *ground.collection* and *ground.script*.
 5. Open *main.collection*, delete *ground.collection* and instead add *level.collection* (right-click and <kbd>Add Collection from File</kbd>) which now contains the *ground.collection*. Make sure that you place the collection at position 0, 0, 0.
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 As you might have noticed by now, the file hierarchy seen in the *Project Explorer* is decoupled from the content structure you build in your collections. Individual files are referenced from collection- and game object files, but their location is completely arbitrary.
 
 If you want to move a file to a new location Defold helps by automatically updating references to the file (refactoring). When making a complex piece of software, like a game, it is extremely helpful to be able to change the structure of the project as it grows and changes. Defold encourages that and makes the process smooth so don't be afraid to move your files around!
-:::
+</div>
 
 We should also add a controller game object with a script component to the level collection:
 
@@ -470,11 +470,11 @@ We should also add a controller game object with a script component to the level
 
 ![Script property](images/runner/2/script_property.png)
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 The "controller" game object does not exist in a file but is created in-place in the level collection. This means that the game object instance is created from the in-place data. That is fine for single purpose game objects like this one. If you need multiple instances of some game object and want to be able to modify the prototype/template used to create each instance, just create a game object file and add the game object from file to the collection. That creates a game object with a reference to the file as prototype/template.
 
 Now, the purpose of this "controller" game object is to control everything that relates to the running level. Soon, this script will be in charge of spawning platforms and coins for the hero to interact with, but for now it will only set the speed of the level.
-:::
+</div>
 
 In the level controller script's `init()` function, it sends a message to the ground controller object's script component, addressed by its id:
 
@@ -563,9 +563,9 @@ To make life in frog-world a little less dull, we should add platforms to jump o
 
 ![Platform](images/runner/2/platform_long.png)
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 Note that both *platform.go* and *platform_long.go* has *Script* components that refer to the same script file. This is a good thing since any script changes we make to the script file will affect the behavior of both regular and long platforms.
-:::
+</div>
 
 ## Spawning platforms
 
@@ -667,9 +667,9 @@ The first thing we're gonna do is to bring life to the frog. Right now the poor 
 
 ![Insert hero code](images/runner/insert_hero_code.png)
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 Lua has "lexical scope" for local variables and is sensitive about the order that you place `local` functions in. The function `update()` calls the local functions `update_animation()` and `play_animation()` which means that the runtime must have seen the local functions to be able to call it. That is why we must put the functions before `update()`. If you switch order of the functions you will get an error. Note that this applies to `local` variables only. You can read more about Lua's scoping rules and local functions on http://www.lua.org/pil/6.2.html
-:::
+</div>
 
 That's all that's needed to add jump and fall animations to the hero. If you run the game you will notice that it feels much better to play. You might also realize that the platforms unfortunately can push the hero off the screen. That is a side-effect of the collision handling but the remedy is easy--add violence and make the edges of the platforms dangerous!
 
@@ -925,9 +925,9 @@ end
 1. By setting the parent of the spawned coin to the platform it will move along with the platform.
 2. The animation causes the coins to dance up and down, relative to the platform that is now the parent of the coins.
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 Parent-child relations are strictly a modification of the _scene graph_. A child will be transformed (moved, scaled or rotated) along with its parent. If you need additional "ownership" relations between game objects, you need to track that specifically in code.
-:::
+</div>
 
 The last step in this tutorial is to add a couple of lines to *controller.script*:
 

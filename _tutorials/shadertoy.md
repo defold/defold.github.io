@@ -23,9 +23,9 @@ We start by creating a quadratic plane mesh in Blender (or any other 3D modellin
 <a class="btn btn-primary btn-xs-block btn-icon" href="//storage.googleapis.com/defold-doc/assets/quad.dae.zip">Download quad.dae<span aria-hidden="true" class="icon icon-download"></span></a>
 
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 Blender is a free, open-source 3D software which can be downloaded from [blender.org](https://www.blender.org).
-:::
+</div>
 
 ![quad in Blender](images/shadertoy/quad_blender.png)
 
