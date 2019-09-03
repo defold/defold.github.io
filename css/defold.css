@@ -8,7 +8,9 @@
     --darkest: #171a1d;
 
     --defold-blue: #39a3e4;
-    --defold-blue-darker: #37a1e2;
+    --defold-blue-dark: #327fec;
+    --defold-blue-darker: #2477eb;
+    --defold-blue-darkest: #1a70eb;
 
     --defold-orange: #fd6623;
 }
@@ -17,6 +19,20 @@
 /*******************************************************************************
  * Light or dark background color with matching font color
  ******************************************************************************/
+
+.blue {
+    background-color: var(--defold-blue-darkest);
+    color: var(--lightest);
+}
+.blue a {
+    color: var(--lightest);
+}
+.blue-text {
+    color: var(--defold-blue-darkest);
+}
+.blue-text a {
+    color: var(--defold-blue-darkest);
+}
 
 .light-text {
     color: var(--lighter);
@@ -178,10 +194,13 @@ footer li a {
  ******************************************************************************/
 
 input[type="submit"].button-primary {
-    background-color: var(--defold-blue);
-    border-color: var(--defold-blue-darker);
+    background-color: var(--defold-blue-darkest);
+    border-color: var(--defold-blue-darkest);
 }
-
+input[type="submit"].button-primary:hover {
+    background-color: var(--defold-blue-dark);
+    border-color: var(--defold-blue-darkest);
+}
 input[type="submit"].button {
     color: var(--lighter);
 }
