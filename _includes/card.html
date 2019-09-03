@@ -1,28 +1,27 @@
 <div class="card center light"
 	style="
-	{% if include.height %}height: {{ include.height }};{% endif %}
-	{% if include.min-height %}min-height: {{ include.min-height }};{% endif %}
+	{%- if include.height -%}height: {{ include.height }};{%- endif -%}
+	{%- if include.min-height -%}min-height: {{ include.min-height }};{%- endif -%}
 	">
 	<a href="{{ include.link }}" target="{% if include.target %}{{ include.target }}{% else %}_self{% endif %}">
-		{% if include.topicon %}
+		{%- if include.topicon -%}
 		<div class="icon" style="zoom: 1.25;">
 			<img src="{{ include.topicon }}" align="left"/>
 			<br/>
 		</div>
-		{% endif %}
-
-		{% if include.icon %}
+		{%- endif -%}
+		{%- if include.icon -%}
 		<div style="display: grid; grid-template-columns: 30% 70%; grid-gap: 0px; padding-left: 0px;">
 			<div style="padding: 0px"><span class="icon" style="zoom: {{ include.zoom }};"><img src="{{ include.icon }}"/></span></div>
 			<div style="padding: 0px"><h5 class="left">{{ include.title }}</h5></div>
 			<div style="padding: 0px"></div>
 			<div style="padding: 0px"><p class="left">{{ include.body }}</p></div>
 		</div>
-		{% else %}
+		{%- else -%}
 		<div>
 			<h5 class="left">{{ include.title }}</h5>
 			<p class="left">{{ include.body }}</p>
 		</div>
-		{% endif %}
+		{%- endif -%}
 	</a>
 </div>
