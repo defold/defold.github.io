@@ -34,11 +34,25 @@
     color: var(--defold-blue-darkest);
 }
 
-.light-text {
+.lightest-text {
+    color: var(--lightest);
+}
+.lightest-text a {
+    color: var(--lightest);
+}
+
+.lighter-text {
     color: var(--lighter);
 }
-.light-text a {
+.lighter-text a {
     color: var(--lighter);
+}
+
+.light-text {
+    color: var(--light);
+}
+.light-text a {
+    color: var(--light);
 }
 .light {
     background-color: var(--lightest);
@@ -202,7 +216,12 @@ input[type="submit"].button-primary:hover {
     border-color: var(--defold-blue-darkest);
 }
 input[type="submit"].button {
-    color: var(--lighter);
+    color: var(--lightest);
+    border-color: var(--lighter);
+}
+input[type="submit"].button:hover {
+    color: white;
+    border-color: var(--lightest);
 }
 
 /*******************************************************************************
