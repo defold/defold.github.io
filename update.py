@@ -137,13 +137,20 @@ def process_docs():
             shutil.rmtree(faq_dir)
         shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "faq"), faq_dir)
 
-        print("...shared")
-        shared_dir = os.path.join("_includes", "shared")
-        if os.path.exists(shared_dir):
-            shutil.rmtree(shared_dir)
-        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "shared"), shared_dir)
-        for filename in find_files(shared_dir, "*.md"):
+        print("...shared includes")
+        shared_includes_dir = os.path.join("_includes", "shared")
+        if os.path.exists(shared_includes_dir):
+            shutil.rmtree(shared_includes_dir)
+        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "shared"), shared_includes_dir)
+        shutil.rmtree(os.path.join(shared_includes_dir, "images"))
+        for filename in find_files(shared_includes_dir, "*.md"):
             process_doc_file(filename)
+
+        print("...shared images")
+        shared_images_dir = os.path.join("shared", "images")
+        if os.path.exists(shared_images_dir):
+            shutil.rmtree(shared_images_dir)
+        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "shared", "images"), shared_images_dir)
 
         print("...tutorials")
         tutorials_dir = "_tutorials"
