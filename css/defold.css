@@ -1,6 +1,6 @@
 /* Reusable color constants */
 :root {
-    --lightest: white;
+    --lightest: #fafafa;
     --lighter: #b0bac4;
     --light: #79838e;
     --dark: #1e2226;
@@ -309,6 +309,9 @@ input[type="submit"].button:hover {
 .left {
     text-align: left;
 }
+.right {
+    text-align: right;
+}
 .center {
     text-align: center;
 }
@@ -318,10 +321,12 @@ input[type="submit"].button:hover {
  ******************************************************************************/
 .checkmark li {
     list-style: none;
+    padding-bottom: 0.75rem;
 }
 .checkmark li:before {
     content: "\2714\0020";
     color: var(--defold-blue);
+    padding-right: 0.75rem;
 }
 
 
@@ -397,8 +402,9 @@ input[type="submit"].button:hover {
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
     border-radius: 4px;
+    background-color: white;
 }
 .card a {
     text-decoration: none;

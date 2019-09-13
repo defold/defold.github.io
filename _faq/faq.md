@@ -78,7 +78,7 @@ Can I do 3D games in Defold?
 
 What programming language do I work with in Defold?
 
-: All application and game logic in your Defold project is controlled through script. The Defold engine has the Lua language embedded for scripting. Lua is a lightweight dynamic language that is fast and very powerful. Read more on our [technology summary](/technology).
+: All application and game logic in your Defold project is controlled through script. The Defold engine has the Lua language embedded for scripting. Lua is a lightweight dynamic language that is fast and very powerful. Read more on our [technology summary](/product).
 
   When building custom materials, OpenGL ES SL shader language is used to write vertex and fragment
 shaders.

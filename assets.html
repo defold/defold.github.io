@@ -23,7 +23,7 @@ name: Asset Portal
 <div class="section dark">
 	<div class="container">
 		<div class="row">
-			<div class="columns two"><img src="/images/icons/community-assets-on-dark.svg"/></div>
+			<div class="columns two"><img src="/images/icons/community-assets-on-dark.svg" style="max-width: 150px"/></div>
 			<div class="columns eight">
 				<h1>Asset portal</h1>
 				<p>Whether you're looking for extensions, pathfinders, sprite sets, example projects or code snippets—you name it, we've got it!</p>
@@ -34,7 +34,7 @@ name: Asset Portal
 			{%- assign alltags = site.data.assetindex | map: "tags" -%}
 			{%- assign tags = alltags | uniq | sort -%}
 			<p>FILTER</p>
-			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 0 1rem;">
+			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 0 1rem; font-size: 0.9em;">
 				<a href="javascript: filter('asset');">ALL ({{ site.data.assetindex.size }})</a>
 				{%- for tag in tags -%}
 					{% assign tagged_assets = site.data.assetindex | where: "tags", tag %}
@@ -42,6 +42,7 @@ name: Asset Portal
 					<a href="javascript: filter('{{ tag_no_space }}');">{{ tag }} ({{ tagged_assets.size }})</a>
 				{%- endfor -%}
 			</div>
+			<br/>
 		</div>
 		<div class="row">
 			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
