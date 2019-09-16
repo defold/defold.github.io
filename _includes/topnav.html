@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="nine columns">
-				<ul>
+				<ul class="navmenu">
 					<li><a href="/">Home</a></li>
 					<li><a href="/product">Product</a></li>
 					<li><a href="/showcase">Showcase</a></li>
@@ -11,9 +11,19 @@
 					<li><a href="//forum.defold.com">Forum</a></li>
 					<li><a href="/blog">Blog</a></li>
 				</ul>
+				<select class="navdropdown" onchange="location = this.value;">
+					<option value="/">Home</option>
+					<option value="/product">Product</option>
+					<option value="/showcase">Showcase</option>
+					<option value="/learn">Learn</option>
+					<option value="/assets">Assets</option>
+					<option value="//forum.defold.com">Forum</option>
+					<option value="/blog">Blog</option>
+					<option value="https://www.github.com/defold">GitHub</option>
+				</select>
 			</div>
 			<div class="three columns">
-				<div class="right"><a href="https://www.github.com/defold" target="_blank"><img src="/images/icons/GitHub-Mark-Light-32px.png" style="padding-right: 10px; vertical-align: middle;"/> GitHub</a></div>
+				<div class="right navmenu"><a href="https://www.github.com/defold" target="_blank"><img src="/images/icons/GitHub-Mark-Light-32px.png" style="padding-right: 10px; vertical-align: middle;"/> GitHub</a></div>
 			</div>
 		</div>
 	</div>
