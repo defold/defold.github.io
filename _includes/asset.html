@@ -6,7 +6,7 @@
 {%- endif -%}
 <div class='asset left light-text compact {{ asset.tags | join: "%%" | replace: " ", "" | split: "%%" | join: " " | downcase }}'>
 	<a href="/assets/{{ include.id }}">
-		<div id="image" style="background: url('{{ thumb }}') center/cover; padding: 0; margin: 0; height: 190px">
+		<div id="image" style="background: url('/images/assets/{{ thumb }}') center/cover; padding: 0; margin: 0; height: 190px">
 			<div id="overlay" style="height: 190px; padding: 0; margin: 0; ">
 				<div><p id="description" style="height: 190px;">{{ asset.description }}</p></div>
 			</div>

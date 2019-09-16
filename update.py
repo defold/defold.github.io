@@ -207,7 +207,6 @@ def process_assets():
         shutil.copyfile(AWESOME_ZIP, os.path.join(tmp_dir, AWESOME_ZIP))
         unzip(os.path.join(tmp_dir, AWESOME_ZIP), tmp_dir)
 
-        shutil.copyfile(os.path.join(tmp_dir, "awesome-defold-master", "assets.json"), os.path.join("_data", "assets.json"))
 
         # Jekyll collection
         collection_dir = "assets"
@@ -220,6 +219,12 @@ def process_assets():
         if os.path.exists(data_dir):
             shutil.rmtree(data_dir)
         os.mkdir(data_dir)
+
+        # image data
+        image_dir = os.path.join("images", "assets")
+        if os.path.exists(image_dir):
+            shutil.rmtree(image_dir)
+        shutil.copytree(os.path.join(tmp_dir, "awesome-defold-master", "assets", "images", "assets"), image_dir)
 
         assetindex = []
         for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "assets"), "*.json"):
