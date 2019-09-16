@@ -357,7 +357,6 @@ input[type="submit"].button:hover {
  ******************************************************************************/
 .asset {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
     margin-bottom: 0;
     border-radius: 4px;
     background-color: #272c31;
@@ -365,19 +364,21 @@ input[type="submit"].button:hover {
 .asset #image {
     border-radius: 4px 4px 0 0;
 }
+.asset #overlay {
+    opacity: 0;
+    transition: 0.5s;
+}
 .asset #overlay:hover {
     opacity: 1;
     background: rgba(0, 0, 0, 0.6);
     border-radius: 4px 4px 0 0;
 }
-.asset #overlay {
+.asset #description {
     opacity: 0;
+    transition: 0.3s;
 }
 .asset #description:hover {
     opacity: 1;
-}
-.asset #description {
-    opacity: 0;
 }
 .asset a {
     text-decoration: none;
@@ -407,7 +408,7 @@ input[type="submit"].button:hover {
     background-color: white;
 }
 .card a {
-    text-decoration: none;
+    text-decoration: none;§
 }
 .card div {
     padding-left: 2rem;
@@ -420,7 +421,8 @@ input[type="submit"].button:hover {
     cursor: pointer;
 }
 .card .icon img {
-    height: 40px;
+    width: 100%;
+    /* height: 40px; */
     vertical-align: bottom;
 }
 .card h5 {
@@ -428,6 +430,25 @@ input[type="submit"].button:hover {
 }
 
 
+/*******************************************************************************
+ * Hover flash
+ ******************************************************************************/
+.hoverflash:hover {
+    animation: flash 0.6s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes flash {
+    0% {
+        filter: brightness(100%);
+    }
+    50% {
+        filter: brightness(130%);
+    }
+    100% {
+        filter: brightness(100%);
+    }
+}
 /*******************************************************************************
  * Image and video hero banner
  * Text on top of it should be white
