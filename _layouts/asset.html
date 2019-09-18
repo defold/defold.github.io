@@ -5,10 +5,10 @@ layout: base
 {%- if asset.images.hero.size > 0 -%}
 	{%- assign hero = asset.images.hero -%}
 {%- else -%}
-	{%- assign hero = "/images/assets/no-thumb.png" -%}
+	{%- assign hero = "no-thumb.png" -%}
 {%- endif -%}
 
-<div class="section hero center blackwhite" style='background-image: url("{{ hero }}");'>
+<div class="section hero center blackwhite" style='background-image: url("/images/assets/{{ hero }}");'>
 	<div class="container">
 		<div class="row">
 			<div>
