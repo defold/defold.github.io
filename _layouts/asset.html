@@ -29,14 +29,21 @@ layout: base
 				{%- if asset.library_url.size > 0 -%}
 				<h5>Use as library</h5>
 				<p>This asset can be added as a library dependency in your project:<br/>
-					<a href="{{ asset.library_url }}">{{ asset.library_url }}</a>
+					<a href="{{ asset.library_url }}" target="_blank">{{ asset.library_url }}</a>
 				</p>
 				{%- endif -%}
 
 				{%- if asset.project_url.size > 0 -%}
 				<h5>Learn more</h5>
 				<p>Learn more about {{ asset.name }} on the external project page:<br/>
-					<a href="{{ asset.project_url }}">{{ asset.project_url }}</a>
+					<a href="{{ asset.project_url }}" target="_blank">{{ asset.project_url }}</a>
+				</p>
+				{%- endif -%}
+
+				{%- if asset.forum_url.size > 0 -%}
+				<h5>Discuss</h5>
+				<p>Discuss {{ asset.name }} on the Defold forum:<br/>
+					<a href="{{ asset.forum_url }}" target="_blank">{{ asset.name }}</a>
 				</p>
 				{%- endif -%}
 			</div>
