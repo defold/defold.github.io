@@ -13,6 +13,26 @@ import subprocess
 from argparse import ArgumentParser
 from contextlib import contextmanager
 
+SHA1 = None
+
+DOCS_ZIP = "doc-master.zip"
+EXAMPLES_ZIP = "examples-master.zip"
+CODEPAD_ZIP = "codepad-master.zip"
+AWESOME_ZIP = "awesome-defold-master.zip"
+REFDOC_ZIP = "refdoc.zip"
+
+ASSET_MD = """---
+layout: asset
+asset: {}
+---
+"""
+
+REFDOC_MD = """---
+layout: ref
+ref: {}
+---
+""" + "{% include anchor_headings.html html=content %}"
+
 
 @contextmanager
 def tmpdir():
@@ -47,6 +67,25 @@ def download_string(url):
     return handle.read()
 
 
+def get_sha1():
+    global SHA1
+    if not SHA1:
+        print(download_string("https://d.defold.com/stable/info.json"))
+        info = json.loads(download_string("https://d.defold.com/stable/info.json"))
+        SHA1 = info["sha1"]
+    return SHA1
+
+
+def get_bob_filename(sha1):
+    return "bob_{}.jar".format(sha1)
+
+
+def download_bob(sha1):
+    bob_filename = get_bob_filename(sha1)
+    if not os.path.exists(bob_filename):
+        download_file("http://d.defold.com/archive/{}/bob/bob.jar".format(sha1), ".", bob_filename)
+
+
 def find_files(root_dir, file_pattern):
     matches = []
     for root, dirnames, filenames in os.walk(root_dir):
@@ -66,41 +105,8 @@ def replace_in_file(filename, old, new, flags=None):
         f.write(content)
 
 
-DOCS_ZIP = "doc-master.zip"
-EXAMPLES_ZIP = "examples-master.zip"
-AWESOME_ZIP = "awesome-defold-master.zip"
-REFDOC_ZIP = "refdoc.zip"
-BOB_JAR = "bob.jar"
 
 
-def get_sha1():
-    print(download_string("https://d.defold.com/stable/info.json"))
-    info = json.loads(download_string("https://d.defold.com/stable/info.json"))
-    return info["sha1"]
-
-
-def download():
-    if os.path.exists(DOCS_ZIP):
-        os.remove(DOCS_ZIP)
-    download_file("https://github.com/defold/doc/archive/master.zip", ".", DOCS_ZIP)
-
-    if os.path.exists(AWESOME_ZIP):
-        os.remove(AWESOME_ZIP)
-    download_file("https://github.com/defold/awesome-defold/archive/master.zip", ".", AWESOME_ZIP)
-
-    if os.path.exists(EXAMPLES_ZIP):
-        os.remove(EXAMPLES_ZIP)
-    download_file("https://github.com/defold/examples/archive/master.zip", ".", EXAMPLES_ZIP)
-
-    sha1 = get_sha1()
-
-    if os.path.exists(BOB_JAR):
-        os.remove(BOB_JAR)
-    download_file("http://d.defold.com/archive/{}/bob/bob.jar".format(sha1), ".", BOB_JAR)
-
-    if os.path.exists(REFDOC_ZIP):
-        os.remove(REFDOC_ZIP)
-    download_file("http://d.defold.com/archive/{}/engine/share/ref-doc.zip".format(sha1), ".", REFDOC_ZIP)
 
 
 def process_doc_file(file):
@@ -113,7 +119,12 @@ def process_doc_file(file):
     replace_in_file(file, r"{.left}", r"")
 
 
-def process_docs():
+def process_docs(download = False):
+    if download:
+        if os.path.exists(DOCS_ZIP):
+            os.remove(DOCS_ZIP)
+        download_file("https://github.com/defold/doc/archive/master.zip", ".", DOCS_ZIP)
+
     if not os.path.exists(DOCS_ZIP):
         print("File {} does not exists".format(DOCS_ZIP))
         sys.exit(1)
@@ -169,22 +180,31 @@ def process_docs():
         print("Done")
 
 
-def process_examples():
+
+def process_examples(download = False):
+    if download:
+        if os.path.exists(EXAMPLES_ZIP):
+            os.remove(EXAMPLES_ZIP)
+        download_file("https://github.com/defold/examples/archive/master.zip", ".", EXAMPLES_ZIP)
+        download_bob(get_sha1())
+
     if not os.path.exists(EXAMPLES_ZIP):
         print("File {} does not exist".format(EXAMPLES_ZIP))
         sys.exit(1)
-    if not os.path.exists(BOB_JAR):
-        print("File {} does not exist".format(BOB_JAR))
+
+    bob_jar = get_bob_filename(get_sha1())
+    if not os.path.exists(bob_jar):
+        print("File {} does not exist".format(bob_jar))
         sys.exit(1)
 
     with tmpdir() as tmp_dir:
         shutil.copyfile(EXAMPLES_ZIP, os.path.join(tmp_dir, EXAMPLES_ZIP))
         unzip(os.path.join(tmp_dir, EXAMPLES_ZIP), tmp_dir)
 
-        shutil.copyfile(BOB_JAR, os.path.join(tmp_dir, BOB_JAR))
+        shutil.copyfile(bob_jar, os.path.join(tmp_dir, bob_jar))
 
         input_dir = os.path.join(tmp_dir, "examples-master")
-        subprocess.call([ "java", "-jar", os.path.join(tmp_dir, BOB_JAR), "--archive", "--platform", "js-web", "resolve", "distclean", "build", "bundle" ], cwd=input_dir)
+        subprocess.call([ "java", "-jar", os.path.join(tmp_dir, bob_jar), "--archive", "--platform", "js-web", "resolve", "distclean", "build", "bundle" ], cwd=input_dir)
 
         examples_dir = "examples"
         if os.path.exists(examples_dir):
@@ -192,13 +212,45 @@ def process_examples():
         shutil.copytree(os.path.join(input_dir, "build", "default", "Defold-examples"), examples_dir)
 
 
-ASSET_MD = """---
-layout: asset
-asset: {}
----
-"""
 
-def process_assets():
+def process_codepad(download = False):
+    if download:
+        if os.path.exists(CODEPAD_ZIP):
+            os.remove(CODEPAD_ZIP)
+        download_file("https://github.com/defold/codepad/archive/master.zip", ".", CODEPAD_ZIP)
+        download_bob(get_sha1())
+
+    if not os.path.exists(CODEPAD_ZIP):
+        print("File {} does not exist".format(CODEPAD_ZIP))
+        sys.exit(1)
+
+    bob_jar = get_bob_filename(get_sha1())
+    if not os.path.exists(bob_jar):
+        print("File {} does not exist".format(bob_jar))
+        sys.exit(1)
+
+    with tmpdir() as tmp_dir:
+        shutil.copyfile(CODEPAD_ZIP, os.path.join(tmp_dir, CODEPAD_ZIP))
+        unzip(os.path.join(tmp_dir, CODEPAD_ZIP), tmp_dir)
+
+        shutil.copyfile(bob_jar, os.path.join(tmp_dir, bob_jar))
+
+        input_dir = os.path.join(tmp_dir, "codepad-master")
+        subprocess.call([ "java", "-jar", os.path.join(tmp_dir, bob_jar), "--archive", "--platform", "js-web", "resolve", "distclean", "build", "bundle" ], cwd=input_dir)
+
+        codepad_dir = "codepad"
+        if os.path.exists(codepad_dir):
+            shutil.rmtree(codepad_dir)
+        shutil.copytree(os.path.join(input_dir, "build", "default", "DefoldCodePad"), codepad_dir)
+
+
+
+def process_assets(download = False):
+    if download:
+        if os.path.exists(AWESOME_ZIP):
+            os.remove(AWESOME_ZIP)
+        download_file("https://github.com/defold/awesome-defold/archive/master.zip", ".", AWESOME_ZIP)
+
     if not os.path.exists(AWESOME_ZIP):
         print("File {} does not exist".format(AWESOME_ZIP))
         sys.exit(1)
@@ -252,13 +304,12 @@ def process_assets():
 
 
 
-REF_MD = """---
-layout: ref
-ref: {}
----
-""" + "{% include anchor_headings.html html=content %}"
+def process_refdoc(download = False):
+    if download:
+        if os.path.exists(REFDOC_ZIP):
+            os.remove(REFDOC_ZIP)
+        download_file("http://d.defold.com/archive/{}/engine/share/ref-doc.zip".format(get_sha1()), ".", REFDOC_ZIP)
 
-def process_refdoc():
     if not os.path.exists(REFDOC_ZIP):
         print("File {} does not exist".format(REFDOC_ZIP))
         sys.exit(1)
@@ -290,7 +341,7 @@ def process_refdoc():
 
                 # generate a dummy markdown page with some front matter for each ref doc
                 with open(os.path.join(collection_dir, file.replace("_doc.json", ".md")), "w") as f:
-                    f.write(REF_MD.format(json_out_name))
+                    f.write(REFDOC_MD.format(json_out_name))
 
                 # build refdoc indexs
                 with open(os.path.join(tmp_dir, "doc", file)) as f:
@@ -305,17 +356,19 @@ def process_refdoc():
             json.dump(refindex, f, indent=2)
 
 
+
 parser = ArgumentParser()
-parser.add_argument('commands', nargs="+", help='Commands (download, docs, examples, refdoc, assets, help)')
+parser.add_argument('commands', nargs="+", help='Commands (docs, examples, refdoc, assets, codepad, help)')
+parser.add_argument("--download", dest="download", action='store_true', help="Download updated content for the command(s) in question")
 args = parser.parse_args()
 
 help = """
 COMMANDS:
-download = Download docs, examples and bob.jar
 docs = Process the docs (manuals, tutorials and faq)
 refdoc = Process the API reference
 assets = Process the asset portal list
 examples = Build the examples
+codepad = Build the Defold CodePad
 """
 
 for command in args.commands:
@@ -323,18 +376,15 @@ for command in args.commands:
         parser.print_help()
         print(help)
         sys.exit(0)
-
-    if command == "download":
-        download()
-
-    if command == "docs":
-        process_docs()
-
-    if command == "examples":
-        process_examples()
-
-    if command == "refdoc":
-        process_refdoc()
-
-    if command == "assets":
-        process_assets()
+    elif command == "docs":
+        process_docs(args.download)
+    elif command == "examples":
+        process_examples(args.download)
+    elif command == "refdoc":
+        process_refdoc(args.download)
+    elif command == "assets":
+        process_assets(args.download)
+    elif command == "codepad":
+        process_codepad(args.download)
+    else:
+        print("Unknown command {}".format(command))
