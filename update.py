@@ -89,8 +89,10 @@ def download_bob(sha1):
 def find_files(root_dir, file_pattern):
     matches = []
     for root, dirnames, filenames in os.walk(root_dir):
-        for filename in fnmatch.filter(filenames, file_pattern):
-            matches.append(os.path.join(root, filename))
+        for filename in filenames:
+            fullname = os.path.join(root, filename)
+            if fnmatch.fnmatch(filename, file_pattern):
+                matches.append(os.path.join(root, filename))
     return matches
 
 
@@ -197,20 +199,68 @@ def process_examples(download = False):
         print("File {} does not exist".format(bob_jar))
         sys.exit(1)
 
+    print("Processing examples")
     with tmpdir() as tmp_dir:
         shutil.copyfile(EXAMPLES_ZIP, os.path.join(tmp_dir, EXAMPLES_ZIP))
         unzip(os.path.join(tmp_dir, EXAMPLES_ZIP), tmp_dir)
 
+        print("..building app")
         shutil.copyfile(bob_jar, os.path.join(tmp_dir, bob_jar))
-
         input_dir = os.path.join(tmp_dir, "examples-master")
-        subprocess.call([ "java", "-jar", os.path.join(tmp_dir, bob_jar), "--archive", "--platform", "js-web", "resolve", "distclean", "build", "bundle" ], cwd=input_dir)
+        subprocess.call([ "java", "-jar", os.path.join(tmp_dir, bob_jar), "--archive", "--platform", "js-web", "resolve", "build", "bundle" ], cwd=input_dir)
 
+        print("...copying app")
         examples_dir = "examples"
         if os.path.exists(examples_dir):
             shutil.rmtree(examples_dir)
         shutil.copytree(os.path.join(input_dir, "build", "default", "Defold-examples"), examples_dir)
 
+        print("...processing index.html")
+        replace_in_file(os.path.join(examples_dir, "index.html"), "\<\!DOCTYPE html\>.*\<body\>", "", flags=re.DOTALL)
+        replace_in_file(os.path.join(examples_dir, "index.html"), "\<\/body\>.*", "", flags=re.DOTALL)
+        replace_in_file(os.path.join(examples_dir, "index.html"), "resize_game_canvas\(\)\;", "")
+        replace_in_file(os.path.join(examples_dir, "index.html"), "window.addEventListener.*", "")
+        replace_in_file(os.path.join(examples_dir, 'width=\"720\" height=\"720\"'), 'width="680" height="680"', "")
+
+        replace_in_file(os.path.join(examples_dir, "index.html"), "engine_arguments: \[", "engine_arguments: [ '--config=examples.start={{ page.collection }}'")
+        shutil.copyfile(os.path.join(examples_dir, "index.html"), "_includes/example.html")
+
+        print("...copying markdown")
+        examplesindex = []
+        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.md"):
+            basename = os.path.basename(filename)
+            collection = filename.replace(tmp_dir, "").replace("/examples-master/examples/", "").replace("/" + basename, "")
+            examplesindex.append({
+                "collection": collection,
+                "category": collection.split("/")[0].upper(),
+                "name": collection.split("/")[1].replace("_", " ").capitalize(),
+                "path": collection.split("/")[1]
+            })
+            replace_in_file(filename, "title:", "layout: example\ncollection: {}\ntitle:".format(collection))
+            shutil.copyfile(filename, os.path.join("examples", basename))
+
+        print("...copying images")
+        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.png"):
+            shutil.copyfile(filename, os.path.join("examples", os.path.basename(filename)))
+        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.jpg"):
+            shutil.copyfile(filename, os.path.join("examples", os.path.basename(filename)))
+
+        print("...copying scripts")
+        includes_dir = "_includes/examples"
+        if os.path.exists(includes_dir):
+            shutil.rmtree(includes_dir)
+        os.mkdir(includes_dir)
+        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.script"):
+            shutil.copyfile(filename, os.path.join(includes_dir, os.path.basename(filename).replace(".script", "_script.md")))
+        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.gui_script"):
+            shutil.copyfile(filename, os.path.join(includes_dir, os.path.basename(filename).replace(".gui_script", "_gui_script.md")))
+
+        print("...generating index")
+        index_file = os.path.join("_data", "examplesindex.json")
+        if os.path.exists(index_file):
+            os.remove(index_file)
+        with open(os.path.join("_data", "examplesindex.json"), "w") as f:
+            json.dump(examplesindex, f, indent=2)
 
 
 def process_codepad(download = False):

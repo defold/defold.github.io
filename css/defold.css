@@ -225,19 +225,28 @@ input[type="submit"].button-primary:hover {
     border-color: var(--defold-blue-darkest);
 }
 input[type="submit"].button {
-    color: var(--lightest);
+    color: var(--darker);
     border-color: var(--lighter);
 }
 input[type="submit"].button:hover {
-    color: white;
-    border-color: var(--lightest);
+    color: var(--light);
+    border-color: var(--lighter);
 }
 
 /*******************************************************************************
- * Limit width of images in manuals and tutorials.
+ * Limit width of images in examples, manuals and tutorials.
  * Also center them
  ******************************************************************************/
 
+.example img {
+    max-width: 100%;
+    display: block;
+}
+
+.example pre {
+    padding: 2rem;
+    font-size: small;
+}
 .manual img {
     max-width: 100%;
     display: block;

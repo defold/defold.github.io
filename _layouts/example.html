@@ -1,0 +1,48 @@
+---
+layout: base
+---
+<div class="section light" style="background-color: #fafafa">
+	<div class="container">
+		<div class="row">
+			<div class="columns three">
+				{% assign all_categories = site.data.examplesindex | map: "category" | uniq %}
+				{% for category in all_categories %}
+				<b>{{ category }}</b>
+				<ul class="nobullet">
+					{% assign examples = site.data.examplesindex | where: "category", category %}
+					{% for example in examples %}
+					<li style="padding-left: 2rem;">
+						<a href="/examples/{{ example.path }}" style="text-decoration: none;">{{ example.name }}</a>
+					</li>
+					{% endfor %}
+				</ul>
+				{% endfor %}
+			</div>
+			<div class="columns seven example" style="">
+				<h4>{{ page.title }}</h4>
+				{% include example.html %}
+				<br/>
+				<h4>Setup</h4>
+				{{ content }}
+
+				{%- if page.scripts.size > 0 -%}
+				<h4>Scripts</h4>
+				{% endif %}
+				{% assign scripts = page.scripts | split: "," %}
+				{% for script in scripts %}
+				<p>{{ script }}</p>
+				<pre class="dark">{% include examples/{{ script | lstrip | replace: ".script", "_script.md" | replace: ".gui_script", "_gui_script.md" }} %}</pre>
+				{% endfor %}
+			</div>
+			<div class="columns two">
+				<p>
+					If you want to play with these examples, you can get the project on Github.
+				</p>
+				<p>
+					Do you want to see more examples? Why not write a few yourself and submit a pull request? We love contributions.
+				</p>
+				{% include secondary_button.html text="CONTRIBUTE" link="https://github.com/defold/examples" %}
+			</div>
+		</div>
+	</div>
+</div>
