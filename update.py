@@ -21,17 +21,18 @@ CODEPAD_ZIP = "codepad-master.zip"
 AWESOME_ZIP = "awesome-defold-master.zip"
 REFDOC_ZIP = "refdoc.zip"
 
-ASSET_MD = """---
+ASSET_MD_FRONTMATTER = """---
 layout: asset
 asset: {}
 ---
 """
 
-REFDOC_MD = """---
+REFDOC_MD_FRONTMATTER = """---
 layout: ref
 ref: {}
 ---
-""" + "{% include anchor_headings.html html=content %}"
+"""
+REFDOC_MD_BODY = "{% include anchor_headings.html html=content %}"
 
 
 @contextmanager
@@ -220,7 +221,7 @@ def process_examples(download = False):
         replace_in_file(os.path.join(examples_dir, "index.html"), "\<\/body\>.*", "", flags=re.DOTALL)
         replace_in_file(os.path.join(examples_dir, "index.html"), "resize_game_canvas\(\)\;", "")
         replace_in_file(os.path.join(examples_dir, "index.html"), "window.addEventListener.*", "")
-        replace_in_file(os.path.join(examples_dir, 'width=\"720\" height=\"720\"'), 'width="680" height="680"', "")
+        replace_in_file(os.path.join(examples_dir, "index.html"), 'width=\"720\" height=\"720\"', 'width="680" height="680"')
 
         replace_in_file(os.path.join(examples_dir, "index.html"), "engine_arguments: \[", "engine_arguments: [ '--config=examples.start={{ page.collection }}'")
         shutil.copyfile(os.path.join(examples_dir, "index.html"), "_includes/example.html")
@@ -337,7 +338,7 @@ def process_assets(download = False):
 
             # generate a dummy markdown page with some front matter for each ref doc
             with open(os.path.join(collection_dir, basename.replace(".json", ".md")), "w") as f:
-                f.write(ASSET_MD.format(basename.replace(".json", "")))
+                f.write(ASSET_MD_FRONTMATTER.format(basename.replace(".json", "")))
 
             # build refdoc indexs
             with open(filename) as f:
@@ -391,7 +392,7 @@ def process_refdoc(download = False):
 
                 # generate a dummy markdown page with some front matter for each ref doc
                 with open(os.path.join(collection_dir, file.replace("_doc.json", ".md")), "w") as f:
-                    f.write(REFDOC_MD.format(json_out_name))
+                    f.write(REFDOC_MD_FRONTMATTER.format(json_out_name) + REFDOC_MD_BODY)
 
                 # build refdoc indexs
                 with open(os.path.join(tmp_dir, "doc", file)) as f:

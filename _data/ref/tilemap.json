@@ -161,6 +161,31 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "tilemap.set_tile"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the visibility of the tilemap layer</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the tile map</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> name of the layer for the tile</p>", 
+          "name": "layer"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> should the layer be visible</p>", 
+          "name": "visible"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set the visibility of a layer</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Disable rendering of the layer</span>\n<span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">set_visible</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/level#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">foreground&quot;</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "tilemap.set_visible"
     }
   ]
 }

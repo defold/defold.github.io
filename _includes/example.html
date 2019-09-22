@@ -48,7 +48,7 @@
 		var height = 720;
 		var targetRatio = width / height;
 		var actualRatio = innerWidth / innerHeight;
-
+	
 		//Downscale fit
 		if (innerWidth < width || innerHeight < height) {
 			if (actualRatio > targetRatio) {
@@ -68,18 +68,18 @@
 			app_container.style.marginLeft = ((innerWidth - width) / 2) + "px";
 			app_container.style.marginTop = ((innerHeight - height) / 2) + "px";
 		}
-
-
-
-
+	
+	
+	
+	
 		app_container.style.width = width + "px";
 		app_container.style.height = height + buttonHeight + "px";
 		game_canvas.width = width;
 		game_canvas.height = height;
 	}
-
-
-
+	
+	
+	
 
 	function load_engine() {
 		var engineJS = document.createElement('script');

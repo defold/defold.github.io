@@ -84,17 +84,17 @@ When you have the code signing identity and privisioning profile, you are ready 
 
 Select your code signing identity and browse for your mobile provisioning file. Select which architectures (32 bit, 64 bit and the iOS simulator) to bundle for as well as the variant (Debug or Release). You can optionally untick the `Sign application` checkbox to skip the signing process and then manually sign at a later stage.
 
-:::important
+<div class='important' markdown='1'>
 You **must** untick the `Sign application` checkbox when testing your game on the iOS simulator. You will be able to install the application but it will not boot.
-:::
+</div>
 
 Press *Create Bundle* and you will then be prompted to specify where on your computer the bundle will be created.
 
 You specify what icon to use for the app, the launch screen image(s) and so forth on the *game.project* project settings file.
 
-:::important
+<div class='important' markdown='1'>
 When your game launches on iOS, the launch images are used to set the correct screen resolution. If you do not supply the correct image size, you will get a lower resolution with resulting black bars.
-:::
+</div>
 
 ![ipa iOS application bundle](images/ios/ipa_file.png)
 

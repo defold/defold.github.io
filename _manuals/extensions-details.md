@@ -18,14 +18,14 @@ When creating libraries (such as extensions), it's good to keep the lowest commo
 
 ## Toolchain
 
-Clang - macOS, iOS, Win32
-GCC - Android, Linux
+Clang - macOS, iOS, Win32, Android
+GCC - Linux
 
-*We're plan make both Android and Linux to use Clang as well*
+*We plan to use clang for Linux aswell at some point*
 
 ### SDK Versions
 
-* Android: NDK 10e, Build Tools 23.0.2, Api Level 14
+* Android: NDK 20r, Build Tools 23.0.2, Api Level 16 for armv7 and Api level 21 for arm64
 * iOS: iPhoneOS11.2.sdk
 * MacOS: MacOSX10.13.sdk
 * Windows: WindowsKits 8.1 + 10.0, Microsoft Visual Studio 14.0
@@ -35,7 +35,7 @@ GCC - Android, Linux
 ### C++ version + ABI compatibility
 
 * Linux: `GCC 5.4.0`
-* Android:`GCC 4.8`
+* Android:`GCC 4.9`
 * Html5: `Emscripten 1.35.0`
 * Win32: `Microsoft Visual Studio 14.0` alt `clang-6.0`
 * iOS/MacOS: `apple-clang` alt `clang-6.0`
@@ -43,40 +43,6 @@ GCC - Android, Linux
 For iOS/MacOS, we use `-miphoneos-version-min=8.0` and `-mmacosx-version-min=10.7` respectively.
 
 We don't specify a specific C++ version, so we use the default of each compiler.
-
-## Android
-
-We include the following libraries into the Android bundle:
-```
-com.google.android.gms.play-services-ads-identifier:16.0.0
-com.google.android.gms.play-services-base:16.0.1
-com.google.android.gms.play-services-tasks:16.0.1
-com.google.android.gms.play-services-basement:16.0.1
-com.android.support.support-v4:27.1.1
-android.arch.lifecycle.extensions:1.1.1
-com.android.support.support-fragment:27.1.1
-com.android.support.support-core-ui:27.1.1
-com.android.support.support-core-utils:27.1.1
-com.android.support.support-media-compat:27.1.1
-com.android.support.support-compat:27.1.1
-android.arch.lifecycle.compiler:1.1.1
-android.arch.lifecycle.reactivestreams:1.1.1
-android.arch.lifecycle.runtime:1.1.1
-android.arch.lifecycle.livedata:1.1.1
-android.arch.lifecycle.livedata-core:1.1.1
-android.arch.lifecycle.common:1.1.1
-android.arch.core.runtime:1.1.1
-android.arch.core.common:1.1.1
-android.arch.lifecycle.viewmodel:1.1.1
-com.android.support.support-annotations:27.1.1
-org.jetbrains.kotlin.kotlin-stdlib:1.2.20
-com.google.auto.auto-common:0.6
-com.squareup.javapoet:1.8.0
-org.reactivestreams.reactive-streams:1.0.0
-org.jetbrains.annotations:13.0
-com.google.guava.guava:18.0
-```
-*We plan to move Google Play Services to its own extension.*
 
 ## Win32 + Clang
 
