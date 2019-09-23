@@ -21,6 +21,7 @@ layout: base
 				{%- assign variables = ref.elements | where: "type", "VARIABLE" -%}
 				{%- assign messages = ref.elements | where: "type", "MESSAGE" -%}
 				{%- assign properties = ref.elements | where: "type", "PROPERTY" -%}
+				{%- assign macros = ref.elements | where: "type", "MACRO" -%}
 
 				<h1>{{ ref.info.brief }}</h1>
 
@@ -155,6 +156,18 @@ layout: base
 					<h4>{{ message.name }}<a href="#{% include ref_anchorlink.html element=message %}"><span class="anchor-link"/></a></h4>
 					<p>{{ message.description }}</p>
 					<p>{{ message.brief }}</p>
+
+					{%- if message.parameters.size > 0 -%}
+					<table>
+					{%- for param in message.parameters -%}
+					<tr>
+						<td><code>{{ param.name }}</code></td>
+						<td>{{ param.doc }}</td>
+					</tr>
+					{%- endfor -%}
+					</table>
+					{%- endif -%}
+
 					{%- if message.examples.size > 0 -%}
 					<p><b>EXAMPLES</b></p>
 					{{ message.examples }}
@@ -162,7 +175,6 @@ layout: base
 					<hr/>
 					{%- endfor -%}
 				{%- endif -%}
-
 
 				{%- if properties.size > 0 -%}
 				<h2>Properties</h2>
@@ -174,6 +186,34 @@ layout: base
 					{%- if property.examples.size > 0 -%}
 					<p><b>EXAMPLES</b></p>
 					{{ property.examples }}
+					{%- endif -%}
+
+					<hr/>
+					{%- endfor -%}
+				{%- endif -%}
+
+				{%- if macros.size > 0 -%}
+				<h2>Macros</h2>
+					{%- for macro in macros -%}
+					<a name="{% include ref_anchorlink.html element=macro %}"/>
+					<h4>{{ macro.name }}<a href="#{% include ref_anchorlink.html element=macro %}"><span class="anchor-link"/></a></h4>
+					<p>{{ macro.description }}</p>
+					<p>{{ macro.brief }}</p>
+
+					{%- if macro.parameters.size > 0 -%}
+					<table>
+					{%- for param in macro.parameters -%}
+					<tr>
+						<td><code>{{ param.name }}</code></td>
+						<td>{{ param.doc }}</td>
+					</tr>
+					{%- endfor -%}
+					</table>
+					{%- endif -%}
+
+					{%- if macro.examples.size > 0 -%}
+					<p><b>EXAMPLES</b></p>
+					{{ macro.examples }}
 					{%- endif -%}
 
 					<hr/>
