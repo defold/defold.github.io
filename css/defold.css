@@ -216,6 +216,14 @@ footer li a {
  * Button styling
  ******************************************************************************/
 
+button.button-primary {
+     background-color: var(--defold-blue-darkest);
+     border-color: var(--defold-blue-darkest);
+ }
+button.button-primary:hover {
+     background-color: var(--defold-blue-dark);
+     border-color: var(--defold-blue-darkest);
+}
 input[type="submit"].button-primary {
     background-color: var(--defold-blue-darkest);
     border-color: var(--defold-blue-darkest);
@@ -229,6 +237,14 @@ input[type="submit"].button {
     border-color: var(--lighter);
 }
 input[type="submit"].button:hover {
+    color: var(--light);
+    border-color: var(--lighter);
+}
+input[type="button"].button {
+    color: var(--light);
+    border-color: var(--lighter);
+}
+input[type="button"].button:hover {
     color: var(--light);
     border-color: var(--lighter);
 }
