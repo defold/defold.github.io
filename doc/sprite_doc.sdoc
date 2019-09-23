@@ -1,0 +1,178 @@
+
+ÿanimation_done.<p>reports that an animation has completed</p>"°<p>This message is sent to the sender of a <code>play_animation</code> message when the
+animation has completed.</p>
+<p>Note that this message is sent only for animations that play with the following
+playback modes:</p>
+<ul>
+<li>Once Forward</li>
+<li>Once Backward</li>
+<li>Once Ping Pong</li>
+</ul>
+<p>See <a href="#play_animation">play_animation</a> for more information and examples of how to use
+this message.</p>2V
+current_tileF<p><span class="type">number</span> the current tile of the sprite</p>2R
+idL<p><span class="type">hash</span> id of the animation that was completed</p>:√<p>How to sequence two animations together.</p>
+<div class="codehilite"><pre><span></span><span class="k">function</span> <span class="nf">init</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+  <span class="c1">-- play jump animation at init</span>
+  <span class="n">msg</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">play_animation&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">id</span> <span class="o">=</span> <span class="n">hash</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">jump&quot;</span><span class="p">)})</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">message_id</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">sender</span><span class="p">)</span>
+  <span class="c1">-- check for animation done response</span>
+  <span class="k">if</span> <span class="n">message_id</span> <span class="o">==</span> <span class="n">hash</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">animation_done&quot;</span><span class="p">)</span> <span class="k">then</span>
+    <span class="c1">-- start the walk animation</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">play_animation&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="n">id</span> <span class="o">=</span> <span class="n">hash</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">walk&quot;</span><span class="p">)</span> <span class="p">})</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+≠cursor5<p><span class="type">number</span> sprite cursor</p>"K<p>The normalized animation cursor. The type of the property is number.</p>:ú<p>How to get the normalized cursor value:</p>
+<div class="codehilite"><pre><span></span><span class="k">function</span> <span class="nf">init</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+  <span class="c1">-- Get the cursor value on component &quot;sprite&quot;</span>
+  <span class="n">cursor</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">cursor&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+
+
+<p>How to animate the cursor from 0.0 to 1.0 using linear easing for 2.0 seconds:</p>
+<div class="codehilite"><pre><span></span><span class="k">function</span> <span class="nf">init</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+  <span class="c1">-- Get the current value on component &quot;sprite&quot;</span>
+  <span class="n">go</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">cursor&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+  <span class="c1">-- Animate the cursor value</span>
+  <span class="n">go</span><span class="p">.</span><span class="n">animate</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">cursor&quot;</span><span class="p">,</span> <span class="n">go</span><span class="p">.</span><span class="n">PLAYBACK_LOOP_FORWARD</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">go</span><span class="p">.</span><span class="n">EASING_LINEAR</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+⁄play_animation<p>play a sprite animation</p>"^<p>Post this message to a sprite component to make it play an animation from its tile set.</p>2K
+idE<p><span class="type">hash</span> the id of the animation to play</p>:¯<p>In the example, it is assumed that the instance of the script has a sprite-component with id "sprite". The sprite itself is assumed to be bound to a tile set with animations "walk" and "jump".</p>
+<div class="codehilite"><pre><span></span><span class="n">msg</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">play_animation&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">id</span> <span class="o">=</span> <span class="n">hash</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">jump&quot;</span><span class="p">)})</span>
+</pre></div>
+âplayback_rate<<p><span class="type">number</span> sprite playback_rate</p>"Ë<p>The animation playback rate. A multiplier to the animation playback rate. The type of the property is <span class="type">number</span>.</p>
+<p>The playback_rate is a non-negative number, a negative value will be clamped to 0.</p>:Ã	<p>How to set the playback_rate on component "sprite" to play at double the current speed:</p>
+<div class="codehilite"><pre><span></span><span class="k">function</span> <span class="nf">init</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+  <span class="c1">-- Get the current value on component &quot;sprite&quot;</span>
+  <span class="n">playback_rate</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">playback_rate&quot;</span><span class="p">)</span>
+  <span class="c1">-- Set the playback_rate to double the previous value.</span>
+  <span class="n">go</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">playback_rate&quot;</span><span class="p">,</span> <span class="n">playback_rate</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+Ç
+scale5<p><span class="type">vector3</span> sprite scale</p>"P<p>The non-uniform scale of the sprite. The type of the property is vector3.</p>:Ì<p>How to scale a sprite independently along the X and Y axis:</p>
+<div class="codehilite"><pre><span></span><span class="k">function</span> <span class="nf">init</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+  <span class="c1">-- Double the y-axis scaling on component &quot;sprite&quot;</span>
+     <span class="kd">local</span> <span class="n">yscale</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">scale.y&quot;</span><span class="p">)</span>
+     <span class="n">go</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">scale.y&quot;</span><span class="p">,</span> <span class="n">yscale</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+√size4<p><span class="type">vector3</span> sprite size</p>"¨<p><span class="mark">READ ONLY</span> Returns the size of the sprite, not allowing for any additional scaling that may be applied.
+The type of the property is vector3.</p>:”
+<p>How to query a sprite's size, either as a vector or selecting a specific dimension:</p>
+<div class="codehilite"><pre><span></span><span class="k">function</span> <span class="nf">init</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+  <span class="c1">-- get size from component &quot;sprite&quot;</span>
+  <span class="kd">local</span> <span class="n">size</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">size&quot;</span><span class="p">)</span>
+  <span class="kd">local</span> <span class="n">sx</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">size.x&quot;</span><span class="p">)</span>
+  <span class="c1">-- do something useful</span>
+  <span class="nb">assert</span><span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">x</span> <span class="o">==</span> <span class="n">sx</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+∂  sprite.play_flipbook.<p>Play an animation on a sprite component</p>"√<p>Play an animation on a sprite component from its tile set</p>
+<p>An optional completion callback function can be provided that will be called when
+the animation has completed playing. If no function is provided,
+a <a href="#animation_done">animation_done</a> message is sent to the script that started the animation.</p>2e
+url^<p><span class="type">string | hash | url</span> the sprite that should play the animation</p>24
+id.<p>hash name hash of the animation to play</p>2∆
+[complete_function]Æ<p><span class="type">function(self, message_id, message, sender))</span> function to call when the animation has completed.</p>
+<dl>
+<dt><code>self</code></dt>
+<dd><span class="type">object</span> The current object.</dd>
+<dt><code>message_id</code></dt>
+<dd><span class="type">hash</span> The name of the completion message, <code>"animation_done"</code>.</dd>
+<dt><code>message</code></dt>
+<dd><span class="type">table</span> Information about the completion:</dd>
+</dl>
+<ul>
+<li><span class="type">number</span> <code>current_tile</code> - the current tile of the sprite.</li>
+<li><span class="type">hash</span> <code>id</code> - id of the animation that was completed.</li>
+</ul>
+<dl>
+<dt><code>sender</code></dt>
+<dd><span class="type">url</span> The invoker of the callback: the sprite component.</dd>
+</dl>2ò
+[play_properties]Ç<p><span class="type">table</span> optional table with properties:</p>
+<dl>
+<dt><code>offset</code></dt>
+<dd><span class="type">number</span> the normalized initial value of the animation cursor when the animation starts playing.</dd>
+<dt><code>playback_rate</code></dt>
+<dd><span class="type">number</span> the rate with which the animation will be played. Must be positive.</dd>
+</dl>:§<p>The following examples assumes that the model has id "sprite".</p>
+<p>How to play the "jump" animation followed by the "run" animation:</p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="k">function</span> <span class="nf">anim_done</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">message_id</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">sender</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">message_id</span> <span class="o">==</span> <span class="n">hash</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">model_animation_done&quot;</span><span class="p">)</span> <span class="k">then</span>
+    <span class="k">if</span> <span class="n">message</span><span class="p">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">hash</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">jump&quot;</span><span class="p">)</span> <span class="k">then</span>
+      <span class="c1">-- open animation done, chain with &quot;run&quot;</span>
+      <span class="n">sprite</span><span class="p">.</span><span class="n">play_flipbook</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">run&quot;</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="k">function</span> <span class="nf">init</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+  <span class="kd">local</span> <span class="n">url</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">url</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">)</span>
+  <span class="n">sprite</span><span class="p">.</span><span class="n">play_flipbook</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">jump&quot;</span><span class="p">,</span> <span class="n">anim_done</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+‡
+ sprite.reset_constant+<p>reset a shader constant for a sprite</p>"£<p>Resets a shader constant for a sprite component.
+The constant must be defined in the material assigned to the sprite.
+Resetting a constant through this function implies that the value defined in the material will be used.
+Which sprite to reset a constant for is identified by the URL.</p>2h
+urla<p><span class="type">string | hash | url</span> the sprite that should have a constant reset</p>2O
+constantC<p><span class="type">string | hash</span> name of the constant</p>:∂<p>The following examples assumes that the sprite has id "sprite" and that the default-material in builtins is used, which defines the constant "tint".
+If you assign a custom material to the sprite, you can reset the constants defined there in the same manner.</p>
+<p>How to reset the tinting of a sprite:</p>
+<div class="codehilite"><pre><span></span><span class="k">function</span> <span class="nf">init</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+  <span class="n">sprite</span><span class="p">.</span><span class="n">reset_constant</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">tint&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+ç sprite.set_constant)<p>set a shader constant for a sprite</p>"<p>Sets a shader constant for a sprite component.
+The constant must be defined in the material assigned to the sprite.
+Setting a constant through this function will override the value set for that constant in the material.
+The value will be overridden until <code>sprite.reset_constant</code> is called.
+Which sprite to set a constant for is identified by the URL.</p>2f
+url_<p><span class="type">string | hash | url</span> the sprite that should have a constant set</p>2O
+constantC<p><span class="type">string | hash</span> name of the constant</p>2A
+value8<p><span class="type">vector4</span> of the constant</p>:Ÿ<p>The following examples assumes that the sprite has id "sprite" and that the default-material in builtins is used, which defines the constant "tint".
+If you assign a custom material to the sprite, you can set the constants defined there in the same manner.</p>
+<p>How to tint a sprite red:</p>
+<div class="codehilite"><pre><span></span><span class="k">function</span> <span class="nf">init</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+  <span class="n">sprite</span><span class="p">.</span><span class="n">set_constant</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s">tint&quot;</span><span class="p">,</span> <span class="n">vmath</span><span class="p">.</span><span class="n">vector4</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="k">end</span>
+</pre></div>
+Ω sprite.set_hflip7<p>set horizontal flipping on a sprite's animations</p>"‰<p>Sets horizontal flipping of the provided sprite's animations.
+The sprite is identified by its URL.
+If the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.</p>2f
+url_<p><span class="type">string | hash | url</span> the sprite that should flip its animations</p>2Ü
+flip~<p><span class="type">boolean</span> <code>true</code> if the sprite should flip its animations, <code>false</code> if not</p>:ï<p>How to flip a sprite so it faces the horizontal movement:</p>
+<div class="codehilite"><pre><span></span><span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+  <span class="c1">-- calculate self.velocity somehow</span>
+  <span class="n">sprite</span><span class="p">.</span><span class="n">set_hflip</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">velocity</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+
+
+<p>It is assumed that the sprite component has id "sprite" and that the original animations faces right.</p>
+Ú
+ sprite.set_vflip5<p>set vertical flipping on a sprite's animations</p>"‚<p>Sets vertical flipping of the provided sprite's animations.
+The sprite is identified by its URL.
+If the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.</p>2f
+url_<p><span class="type">string | hash | url</span> the sprite that should flip its animations</p>2Ü
+flip~<p><span class="type">boolean</span> <code>true</code> if the sprite should flip its animations, <code>false</code> if not</p>:Œ<p>How to flip a sprite in a game which negates gravity as a game mechanic:</p>
+<div class="codehilite"><pre><span></span><span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+  <span class="c1">-- calculate self.up_side_down somehow, then:</span>
+  <span class="n">sprite</span><span class="p">.</span><span class="n">set_vflip</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#sprite&quot;</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">up_side_down</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+
+
+<p>It is assumed that the sprite component has id "sprite" and that the original animations are up-right.</p>
+Ãtexture05<p><span class="type">hash</span> sprite texture0</p>"~<p><span class="mark">READ ONLY</span> Returns the texture path hash of the sprite. Used for getting/setting resource data</p>:Ü<p>See <a href="/ref/resource#resource.set_texture">resource.set_texture</a> for an example on how to set the texture of an atlas.</p>Ç
+spriteSprite<p>Sprite API documentation</p>"O<p>Functions, messages and properties used to manipulate sprite components.</p>

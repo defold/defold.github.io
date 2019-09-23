@@ -142,6 +142,10 @@ layout: base
 					<a name="{% include ref_anchorlink.html element=message %}"/>
 					<h4>{{ message.name }}<a href="#{% include ref_anchorlink.html element=message %}"><span class="anchor-link"/></a></h4>
 					<p>{{ message.brief }}</p>
+					{%- if message.examples.size > 0 -%}
+					<p><b>EXAMPLES</b></p>
+					{{ message.examples }}
+					{%- endif -%}
 					<hr/>
 					{%- endfor -%}
 				{%- endif -%}
@@ -153,6 +157,11 @@ layout: base
 					<a name="{% include ref_anchorlink.html element=property %}"/>
 					<h4>{{ property.name }}<a href="#{% include ref_anchorlink.html element=property %}"><span class="anchor-link"/></a></h4>
 					<p>{{ property.brief }}</p>
+					{%- if property.examples.size > 0 -%}
+					<p><b>EXAMPLES</b></p>
+					{{ property.examples }}
+					{%- endif -%}
+
 					<hr/>
 					{%- endfor -%}
 				{%- endif -%}
