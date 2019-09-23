@@ -17,7 +17,7 @@ To create a new tile map:
 - Name the file.
 - The new tile map automatically opens in the tile map editor.
 
-  ![new tilemap](images/tilemap/tilemap.png)
+  ![new tilemap](../images/tilemap/tilemap.png)
 
 - Set the *Tile Source* property to a tile source file that you have prepared.
 
@@ -26,15 +26,15 @@ To paint tiles on your tile map:
 1. Select or create a *Layer* to paint on in the *Outline* view.
 2. Select a tile to use as brush (press <kbd>Space</kbd> to show the tile palette)
 
-   ![Palette](images/tilemap/palette.png)
+   ![Palette](../images/tilemap/palette.png)
 
 3. Paint with the selected brush. To erase a tile, either pick an empty tile and use it as brush, or select the eraser (<kbd>Edit ▸ Select Eraser</kbd>).
 
-   ![Painting tiles](images/tilemap/paint_tiles.png)
+   ![Painting tiles](../images/tilemap/paint_tiles.png)
 
 You can pick tiles directly from a layer and use the selection as a brush. Hold <kbd>Shift</kbd> and click a tile to pick it up as the current brush. While holding <kbd>Shift</kbd> you can also click and drag to select a block of tiles to use as a larger brush.
 
-![Picking tiles](images/tilemap/pick_tiles.png)
+![Picking tiles](../images/tilemap/pick_tiles.png)
 
 ## Adding a tile map to your game
 
@@ -44,7 +44,7 @@ To add a tile map to your game:
 2. Right-click the root of the game object and select <kbd>Add Component File</kbd>.
 3. Select the tile map file.
 
-![Use tile map](images/tilemap/use_tilemap.png)
+![Use tile map](../images/tilemap/use_tilemap.png)
 
 ## Changing tiles from script
 

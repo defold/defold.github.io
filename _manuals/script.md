@@ -151,4 +151,4 @@ This is cleaner and easier to follow. We get rid of internal state variables tha
 
 The Defold editor supports Lua script editing with syntax coloring and auto-completion. To fill out Defold function names, press *Ctrl+Space* to bring up a list of the functions matching what you are typing.
 
-![Auto completion](images/script/completion.png)
+![Auto completion](../images/script/completion.png)

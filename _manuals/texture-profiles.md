@@ -34,13 +34,13 @@ To add texture compression:
 - Change the *texture_profiles* entry in *game.project* to point to the new file.
 - Open the *.texture_profiles* file and configure it according to your requirements.
 
-![New profiles file](images/texture_profiles/texture_profiles_new_file.png)
+![New profiles file](../images/texture_profiles/texture_profiles_new_file.png)
 
-![Setting the texture profile](images/texture_profiles/texture_profiles_game_project.png)
+![Setting the texture profile](../images/texture_profiles/texture_profiles_game_project.png)
 
 You can turn on and off the use of texture profiles in the editor preferences. Select <kbd>File ▸ Preferences...</kbd>. The *General* tab contains a checkbox item *Enable texture profiles*.
 
-![Texture profiles preferences](images/texture_profiles/texture_profiles_preferences.png)
+![Texture profiles preferences](../images/texture_profiles/texture_profiles_preferences.png)
 
 ## Path Settings
 
@@ -55,7 +55,7 @@ The *Path Settings* section of the texture profiles file contains a list of path
 `**`
 : Matches a complete directory tree, or---when used as the name of a directory---zero or more directories. For instance: `/gui/**` matches all files in the directory */gui* and all its subdirectories.
 
-![Paths](images/texture_profiles/texture_profiles_paths.png)
+![Paths](../images/texture_profiles/texture_profiles_paths.png)
 
 This example contains two path patterns and their corresponding profiles.
 
@@ -73,7 +73,7 @@ Texture resources that _do not_ match any path in the profiles file will be comp
 
 The *profiles* section of the texture profiles file contains a list of named profiles. Each profile contains one or more *plaforms*, each platform being described by a list of properties.
 
-![Profiles](images/texture_profiles/texture_profiles_profiles.png)
+![Profiles](../images/texture_profiles/texture_profiles_profiles.png)
 
 *Platforms*
 : Specifies a matching platform. `OS_ID_GENERIC` matches all platforms including dev-app builds on device, `OS_ID_WINDOWS` matches Windows target bundles, `OS_ID_IOS` matches iOS bundles and so on. Note that if `OS_ID_GENERIC` is specified, it will be included for all platforms.

@@ -13,11 +13,11 @@ First you have to import the animation data and set up a Spine Scene resource. T
 
 Second, the contents of your Spine Scene resource must be available in your GUI scene. Add it by <kbd>right-clicking</kbd> the *Spine Scenes* section of the scene in the *Outline* and select <kbd>Add ▸ Spine Scenes...</kbd>. Choose the Spine Scenes (one or more) you wish to use in the scene.
 
-![Add Spine Scene](images/gui-spine/add.png)
+![Add Spine Scene](../images/gui-spine/add.png)
 
 Third, create a Spine node by <kbd>right clicking</kbd> the *Nodes* section of the *Outline* and selecting <kbd>Add ▸ Spine</kbd>).
 
-![New spine node](images/gui-spine/new_node.png)
+![New spine node](../images/gui-spine/new_node.png)
 
 The new node is automatically selected. Make sure to set its properties:
 
@@ -46,7 +46,7 @@ end)
 
 The individual bones in the Spine skeleton can be accessed as GUI nodes. The nodes are named according to their names in the Spine setup.
 
-![Spine bone names](images/gui-spine/bone.png)
+![Spine bone names](../images/gui-spine/bone.png)
 
 For instance, to attach another node to an existing bone node, fetch the bone node by name with [`gui.get_spine_bone()`](/ref/gui#gui.get_spine_bone) and attach the child to it:
 

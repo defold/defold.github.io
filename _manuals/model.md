@@ -15,7 +15,7 @@ Blender is a powerful and popular 3D modeling, animation and rendering program. 
 
 Now we wish to bring this model to life in Defold.
 
-![Model in Blender](images/model/blender.png)
+![Model in Blender](../images/model/blender.png)
 
 When the model is done you select the Blender Collada exporter to produce a file with the *.dae* file extension. This exported mesh file contain all the vertices, edges and faces that make up the model, as well as _UV coordinates_ (what part of the texture image maps to a certain part of the mesh) if you have defined them, the bones in the skeleton and animation data.
 
@@ -23,7 +23,7 @@ A detailed description on polygon meshes can be found on http://en.wikipedia.org
 
 Now, to import the model, simply drag and drop the *.dae* file and the corresponding texture image into the *Project Explorer* somewhere.
 
-![Imported model assets](images/model/assets.png)
+![Imported model assets](../images/model/assets.png)
 
 ## Creating a model component
 
@@ -32,7 +32,7 @@ Model components are created just like any other game object component. You can 
 - Create a *Model file* by <kbd>right-clicking</kbd> a location in the *Assets* browser and select <kbd>New... ▸ Model</kbd>.
 - Create the component embedded directly into a game object by <kbd>right-clicking</kbd> a game object in the *Outline* view and selecting <kbd>Add Component ▸ Model</kbd>.
 
-![Model in game object](images/model/model.png)
+![Model in game object](../images/model/model.png)
 
 With the model created you need to specify a number of properties:
 
@@ -57,6 +57,6 @@ With the model created you need to specify a number of properties:
 
 With the model component in place you are free to edit and manipulate the component and/or the encapsulating game object with the regular *Scene Editor* tools to move, rotate and scale the model to your liking.
 
-![Wiggler ingame](images/model/ingame.png)
+![Wiggler ingame](../images/model/ingame.png)
 
 

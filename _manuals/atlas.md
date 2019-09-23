@@ -25,11 +25,11 @@ Adding single images
 
   A dialog opens from which you can find and select the images you want to add to the Atlas. Note that you can filter the image files and select multiple files at once.
 
-  ![Creating an atlas, adding images](images/atlas/add.png)
+  ![Creating an atlas, adding images](../images/atlas/add.png)
 
   The added images are listed in the *Outline* and the full atlas can be seen in the center editor view. You may need to press <kbd>F</kbd> (<kbd>View ▸ Frame Selection</kbd> from the menu) to reframe the selection.
 
-  ![Images added](images/atlas/single_images.png)
+  ![Images added](../images/atlas/single_images.png)
 
 Adding flip-book animations
 : <kbd>Right click</kbd> the root Atlas entry in the *Outline* pane.
@@ -42,11 +42,11 @@ Adding flip-book animations
 
   A dialog opens from which you can find and select the images you want to add to the animation group.
   
-  ![Creating an atlas, adding images](images/atlas/add_animation.png)
+  ![Creating an atlas, adding images](../images/atlas/add_animation.png)
 
   Press <kbd>Space</kbd> with the animation group selected to preview it. Adjust the *Properties* for the animation as needed (see below).
 
-  ![Animation group](images/atlas/animation_group.png)
+  ![Animation group](../images/atlas/animation_group.png)
 
 You can reorder the images in the Outline by selecting them and pressing <kbd>Alt + Up/down</kbd>. You can also easily create duplicates by copying and pasting images in the outline (From the <kbd>Edit</kbd> menu, the right click context menu or keyboard shortcuts).
 
@@ -68,7 +68,7 @@ Extrude Borders
 
 Here are examples of the different property settings with four square images of size 64x64 added to an atlas. Notice how the atlas jumps to 256x256 as soon as the images won't fit 128x128, resulting in much wasted texture space.
 
-![Atlas properties](images/atlas/atlas_properties.png)
+![Atlas properties](../images/atlas/atlas_properties.png)
 
 ## Animation properties
 

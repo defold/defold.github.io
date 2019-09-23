@@ -13,7 +13,7 @@ __________________
 
 *"Community page"* is the umbrella term for all the pages listed on Games and Assets. Creating a community page is very easy---simply sign in to your dashboard, choose a project, click the “Community page” tab next to “Settings”, and click “Try it” to create either a *game community page* or an *asset community page*. You can also create a community page from the Games section or the Asset portal.
 
-![How to create a community page from your Dashboard](images/community/create_page.png)
+![How to create a community page from your Dashboard](../images/community/create_page.png)
 
 *The two steps required to create a community page*
 
@@ -27,7 +27,7 @@ Game pages are *community pages specifically for games*—finished as well as in
 
 Asset pages are *community pages specifically for assets*—libraries, extensions, example projects, standalone tools, tutorials, or whatever form your asset might have. It has all the components of a game community page, but what differs game pages from asset pages is that you can *enable library use* and/or *add an attachment*—depending on how you want to share your asset with the community. All public asset community pages are furthermore listed on the Asset portal.
 
-![asset page](images/community/asset_page.png)
+![asset page](../images/community/asset_page.png)
 
 *Asset pages allow you to enable library use of your asset, or upload an attachment.*
 
@@ -44,7 +44,7 @@ HTML5 playable
 
 3. Click "Upload HTML5 playable" and upload the .zip file with the folder that was created in the bundling process.
 
-![add html5 playable](images/community/upload_html5.png)
+![add html5 playable](../images/community/upload_html5.png)
 
 HTML5 playable cover image
 : The HTML5 playable cover image is the *placeholder image* which is visible in the "Play it" section on your community page. A good idea is to use the title screen or a screenshot from your game.

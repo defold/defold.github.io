@@ -11,15 +11,15 @@ You can easily create a new project from within the Defold editor. You also have
 
 Click the <kbd>New Project</kbd> option and select what kind of project you would like to create. Specify a location on your hard drive where the project files will be stored. Click <kbd>Create New Project</kbd> to create the project in the location you've chosen. You can create a new project from a Template:
 
-![open project](images/workflow/open_project.png)
+![open project](../images/workflow/open_project.png)
 
 Or from a Tutorial with step by step instructions:
 
-![create project from tutorial](images/workflow/create_from_tutorial.png)
+![create project from tutorial](../images/workflow/create_from_tutorial.png)
 
 Or from a finished Sample game:
 
-![create project from sample](images/workflow/create_from_sample.png)
+![create project from sample](../images/workflow/create_from_sample.png)
 
 ### Adding the project to GitHub
 
@@ -35,7 +35,7 @@ The project is now under version control and you should [clone the project](http
 
 Click the <kbd>Import Project</kbd> option to bring up a list of Defold hosted projects that you have access to. If you are not already signed in you must first do so. Specify a location on your hard drive where the project files will be stored.
 
-![import project](images/workflow/import_project.png)
+![import project](../images/workflow/import_project.png)
 
 ### Migrating a project to GitHub
 
@@ -45,7 +45,7 @@ You can migrate a Defold hosted project to GitHub by following [this guide from 
 
 Click the <kbd>Open From Disk</kbd> option to open a project already located on your computer.
 
-![import project](images/workflow/open_from_disk.png)
+![import project](../images/workflow/open_from_disk.png)
 
 ## Open a recent project
 

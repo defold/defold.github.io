@@ -48,22 +48,22 @@ The procedure on iOS and Android is similar:
     - For Android, this is done on the [Google Play Developer Console](https://play.google.com/apps/publish/).
     - For iOS, this is done on [iTunes Connect](https://itunesconnect.apple.com/). Make sure that your App ID (created in the "Member Center" on https://developer.apple.com) has "In-App Purchase" enabled.
 
-    ![iTunes Connect and Google Play Dev Console](images/iap/itunes_connect_google_play.png)
+    ![iTunes Connect and Google Play Dev Console](../images/iap/itunes_connect_google_play.png)
 
 4. For Google Play, you need to _upload and publish_ an alpha *.apk* file. For iTunes Connect, you should _not upload_ the development binary to iTunes Connect until the application is ready for App Review approval. If you upload a binary to iTunes Connect and it is not fully functional, Apple will likely reject it.
 
 5. Create products for your app.
 
-    ![iTunes Products](images/iap/itunes_products.png)
+    ![iTunes Products](../images/iap/itunes_products.png)
 
-    ![Google Play Products](images/iap/google_play_products.png)
+    ![Google Play Products](../images/iap/google_play_products.png)
 
 6. Add test users.
     - The iTunes Connect page *Users and Roles* allow you to add users that can do test purchases in the _sandbox environment_. You should sign your app with a Developer certificate and use the sandbox account in Appstore on the test device.
     - From the Google Play Developer Console, choose *Settings > Account Details* where you can add user emails to the License Testing section. Separate the emails by commas. This allows your testers to use test purchases that don’t actually cost real money.
     - On Google Play, you also need to set up a Google Group for your testers. Google uses Groups to manage testers that can download your app from the Alpha and Beta stores. Click on the *Alpha Testing* tab and then *Manage list of testers* to add your Google Group as Alpha testers. The app must have passed through alpha publishing before you can see the opt-in link.
 
-![Alpha testers](images/iap/alpha_testers.png)
+![Alpha testers](../images/iap/alpha_testers.png)
 
 The procedure on Facebook:
 
@@ -139,11 +139,11 @@ end
 
 The device operating system will automatically show a pop-up window allowing the user to go through with the purchase. The interface clearly indicates when you are running in the test/sandbox environment.
 
-![Confirm purchase](images/iap/ios_confirm_purchase.png)
+![Confirm purchase](../images/iap/ios_confirm_purchase.png)
 
-![Android purchase](images/iap/android_purchase.png)
+![Android purchase](../images/iap/android_purchase.png)
 
-![Confirm purchase](images/iap/ios_purchase_done.png)
+![Confirm purchase](../images/iap/ios_purchase_done.png)
 
 ## Synchronous payments
 

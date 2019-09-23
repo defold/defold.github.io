@@ -16,8 +16,8 @@ Defold has built in support for many types of animation that you can use as a so
 
 A flip book animation consists of a series of still images that are shown in succession. The technique is very similar to traditional cell animation (see http://en.wikipedia.org/wiki/Traditional_animation). The technique offers limitless opportunities since each frame can be manipulated individually. However, since each frame is stored in a unique image, the memory footprint can be high. The smoothness of animation is also dependent on the number of images shown each second but increasing the number of images usually also increase the amount of work. Defold flip book animations are either stored as individual images added to an [Atlas](/manuals/atlas), or as a [Tile Source](/manuals/tilesource) with all frames laid out in a horizontal sequence.
 
-  ![Animation sheet](images/animation/animsheet.png){.inline}
-  ![Run loop](images/animation/runloop.gif){.inline}
+  ![Animation sheet](../images/animation/animsheet.png){.inline}
+  ![Run loop](../images/animation/runloop.gif){.inline}
 
 ## Spine animation
 
@@ -25,8 +25,8 @@ Spine animation provides 2D _skeletal animation_ support (see http://en.wikipedi
 
   For details on how to import Spine data into a Spine model for animation, see the [Spine documentation](/manuals/spine).
 
-  ![Spine animation](images/animation/spine_animation.png){.inline}
-  ![Run loop](images/animation/frog_runloop.gif){.inline}
+  ![Spine animation](../images/animation/spine_animation.png){.inline}
+  ![Run loop](../images/animation/frog_runloop.gif){.inline}
 
 ## 3D skinned animation
 
@@ -34,15 +34,15 @@ Skeletal animation of 3D models is similar to Spine animation but works in 3D as
 
   For details on how to import 3D data into a Model for animation, see the [Model documentation](/manuals/model).
 
-  ![Blender animation](images/animation/blender_animation.png){.inline srcset="images/animation/blender_animation@2x.png 2x"}
-  ![Wiggle loop](images/animation/suzanne.gif){.inline}
+  ![Blender animation](../images/animation/blender_animation.png){.inline srcset="images/animation/blender_animation@2x.png 2x"}
+  ![Wiggle loop](../images/animation/suzanne.gif){.inline}
 
 ## Property animation
 
 All numeric properties (numbers, vector3, vector4 and quaterions) and shader constants can be animated with the built in animation system, using the function `go.animate()`. The engine will automatically "tween" properties for you according to given playback modes and easing functions. You can also specify custom easing functions.
 
-  ![Property animation](images/animation/property_animation.png){.inline srcset="images/animation/property_animation@2x.png 2x"}
-  ![Bounce loop](images/animation/bounce.gif){.inline}
+  ![Property animation](../images/animation/property_animation.png){.inline srcset="images/animation/property_animation@2x.png 2x"}
+  ![Bounce loop](../images/animation/bounce.gif){.inline}
 
 ## Playing flip-book animations
 
@@ -138,7 +138,7 @@ function init(self)
 end
 ```
 
-![Spine model in game](images/animation/spine_ingame.png)
+![Spine model in game](../images/animation/spine_ingame.png)
 
 If an animation is played with any of the `go.PLAYBACK_ONCE_*` modes and you have provided a callback function to `spine.play_anim()` the callback is run on animation complete. See below for information on callbacks.
 
@@ -165,7 +165,7 @@ When tweening or setting the cursor, timeline events may not fire as expected.
 
 The individual bones in the Spine skeleton are represented internally as game objects. In the *Outline* view of the Spine model component, the full hierarchy is visible. You can see each bone's name and its place in the skeleton hierarchy.
 
-![Spine model hierarchy](images/animation/spine_bones.png)
+![Spine model hierarchy](../images/animation/spine_bones.png)
 
 With the bone name at hand, you are able to retrieve the instance id of the bone in runtime. The function [`spine.get_go()`](/ref/spine#spine.get_go) returns the id of the specified bone and you can, for instance, child other game objects under the animated game object:
 
@@ -181,7 +181,7 @@ Spine animations can trigger timed events by sending messages at precise moments
 
 Events are added in the Spine software and are visualized on the playback timeline:
 
-![Spine events](images/animation/spine_events.png)
+![Spine events](../images/animation/spine_events.png)
 
 Each event is referenced with a name identifier ("bump" in the example above) and each event instance on the timeline can contain additional information:
 
@@ -438,47 +438,47 @@ The following are valid easing values for `gui.animate()`:
     </script>
 </div>
 
-![Linear interpolation](images/properties/easing_linear.png){.inline}
-![In back](images/properties/easing_inback.png){.inline}
-![Out back](images/properties/easing_outback.png){.inline}
-![In-out back](images/properties/easing_inoutback.png){.inline}
-![Out-in back](images/properties/easing_outinback.png){.inline}
-![In bounce](images/properties/easing_inbounce.png){.inline}
-![Out bounce](images/properties/easing_outbounce.png){.inline}
-![In-out bounce](images/properties/easing_inoutbounce.png){.inline}
-![Out-in bounce](images/properties/easing_outinbounce.png){.inline}
-![In elastic](images/properties/easing_inelastic.png){.inline}
-![Out elastic](images/properties/easing_outelastic.png){.inline}
-![In-out elastic](images/properties/easing_inoutelastic.png){.inline}
-![Out-in elastic](images/properties/easing_outinelastic.png){.inline}
-![In sine](images/properties/easing_insine.png){.inline}
-![Out sine](images/properties/easing_outsine.png){.inline}
-![In-out sine](images/properties/easing_inoutsine.png){.inline}
-![Out-in sine](images/properties/easing_outinsine.png){.inline}
-![In exponential](images/properties/easing_inexpo.png){.inline}
-![Out exponential](images/properties/easing_outexpo.png){.inline}
-![In-out exponential](images/properties/easing_inoutexpo.png){.inline}
-![Out-in exponential](images/properties/easing_outinexpo.png){.inline}
-![In circlic](images/properties/easing_incirc.png){.inline}
-![Out circlic](images/properties/easing_outcirc.png){.inline}
-![In-out circlic](images/properties/easing_inoutcirc.png){.inline}
-![Out-in circlic](images/properties/easing_outincirc.png){.inline}
-![In quadratic](images/properties/easing_inquad.png){.inline}
-![Out quadratic](images/properties/easing_outquad.png){.inline}
-![In-out quadratic](images/properties/easing_inoutquad.png){.inline}
-![Out-in quadratic](images/properties/easing_outinquad.png){.inline}
-![In cubic](images/properties/easing_incubic.png){.inline}
-![Out cubic](images/properties/easing_outcubic.png){.inline}
-![In-out cubic](images/properties/easing_inoutcubic.png){.inline}
-![Out-in cubic](images/properties/easing_outincubic.png){.inline}
-![In quartic](images/properties/easing_inquart.png){.inline}
-![Out quartic](images/properties/easing_outquart.png){.inline}
-![In-out quartic](images/properties/easing_inoutquart.png){.inline}
-![Out-in quartic](images/properties/easing_outinquart.png){.inline}
-![In quintic](images/properties/easing_inquint.png){.inline}
-![Out quintic](images/properties/easing_outquint.png){.inline}
-![In-out quintic](images/properties/easing_inoutquint.png){.inline}
-![Out-in quintic](images/properties/easing_outinquint.png){.inline}
+![Linear interpolation](../images/properties/easing_linear.png){.inline}
+![In back](../images/properties/easing_inback.png){.inline}
+![Out back](../images/properties/easing_outback.png){.inline}
+![In-out back](../images/properties/easing_inoutback.png){.inline}
+![Out-in back](../images/properties/easing_outinback.png){.inline}
+![In bounce](../images/properties/easing_inbounce.png){.inline}
+![Out bounce](../images/properties/easing_outbounce.png){.inline}
+![In-out bounce](../images/properties/easing_inoutbounce.png){.inline}
+![Out-in bounce](../images/properties/easing_outinbounce.png){.inline}
+![In elastic](../images/properties/easing_inelastic.png){.inline}
+![Out elastic](../images/properties/easing_outelastic.png){.inline}
+![In-out elastic](../images/properties/easing_inoutelastic.png){.inline}
+![Out-in elastic](../images/properties/easing_outinelastic.png){.inline}
+![In sine](../images/properties/easing_insine.png){.inline}
+![Out sine](../images/properties/easing_outsine.png){.inline}
+![In-out sine](../images/properties/easing_inoutsine.png){.inline}
+![Out-in sine](../images/properties/easing_outinsine.png){.inline}
+![In exponential](../images/properties/easing_inexpo.png){.inline}
+![Out exponential](../images/properties/easing_outexpo.png){.inline}
+![In-out exponential](../images/properties/easing_inoutexpo.png){.inline}
+![Out-in exponential](../images/properties/easing_outinexpo.png){.inline}
+![In circlic](../images/properties/easing_incirc.png){.inline}
+![Out circlic](../images/properties/easing_outcirc.png){.inline}
+![In-out circlic](../images/properties/easing_inoutcirc.png){.inline}
+![Out-in circlic](../images/properties/easing_outincirc.png){.inline}
+![In quadratic](../images/properties/easing_inquad.png){.inline}
+![Out quadratic](../images/properties/easing_outquad.png){.inline}
+![In-out quadratic](../images/properties/easing_inoutquad.png){.inline}
+![Out-in quadratic](../images/properties/easing_outinquad.png){.inline}
+![In cubic](../images/properties/easing_incubic.png){.inline}
+![Out cubic](../images/properties/easing_outcubic.png){.inline}
+![In-out cubic](../images/properties/easing_inoutcubic.png){.inline}
+![Out-in cubic](../images/properties/easing_outincubic.png){.inline}
+![In quartic](../images/properties/easing_inquart.png){.inline}
+![Out quartic](../images/properties/easing_outquart.png){.inline}
+![In-out quartic](../images/properties/easing_inoutquart.png){.inline}
+![Out-in quartic](../images/properties/easing_outinquart.png){.inline}
+![In quintic](../images/properties/easing_inquint.png){.inline}
+![Out quintic](../images/properties/easing_outquint.png){.inline}
+![In-out quintic](../images/properties/easing_inoutquint.png){.inline}
+![Out-in quintic](../images/properties/easing_outinquint.png){.inline}
 
 ## Custom easing
 
@@ -493,7 +493,7 @@ local my_easing = vmath.vector(values)
 
 yields the following curve:
 
-![Custom curve](images/animation/custom_curve.png)
+![Custom curve](../images/animation/custom_curve.png)
 
 The following example causes the y position of a game object to jump between the current position and 200 according to a square curve:
 
@@ -510,7 +510,7 @@ local square_easing = vmath.vector(values)
 go.animate("go", "position.y", go.PLAYBACK_LOOP_PINGPONG, 200, square_easing, 2.0)
 ```
 
-![Square curve](images/animation/square_curve.png)
+![Square curve](../images/animation/square_curve.png)
 
 ## Completion callbacks
 

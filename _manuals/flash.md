@@ -21,11 +21,11 @@ Instead, this guide explores some of the key concepts of game development in Fla
 
 Movie clips are a key component of Flash game development. They are symbols, each containing a unique timeline. The closest equivalent concept in Defold is a game object.
 
-![game object and movieclip](images/flash/go_movieclip.png)
+![game object and movieclip](../images/flash/go_movieclip.png)
 
 Unlike Flash movie clips, Defold game objects do not have timelines. Instead, a game object consists of multiple components. Components include sprites, sounds, and scripts---among many others (for further details about the components available see the [building blocks documentation](/manuals/building-blocks) and related articles). The game object in the screenshot below consists of a sprite and a script. The script component is used to control the behavior and look of game objects throughout the object’s lifecycle:
 
-![script component](images/flash/script_component.png)
+![script component](../images/flash/script_component.png)
 
 While movie clips can contain other movie clips, game objects can not *contain* game objects. However, game objects can be *childed* to other game objects, creating hierarchies that can be moved, scaled or rotated in unison.
 
@@ -33,7 +33,7 @@ While movie clips can contain other movie clips, game objects can not *contain* 
 
 In Flash, instances of movie clips can be added to your scene manually by dragging them from the library and onto the timeline. This is illustrated in the screenshot below, where each Flash logo is an instance of the "logo" movieclip:
 
-![manual movie clips](images/flash/manual_movie_clips.png)
+![manual movie clips](../images/flash/manual_movie_clips.png)
 
 ## Defold—manually creating game objects
 
@@ -41,13 +41,13 @@ As mentioned previously, Defold does not have a timeline concept. Instead, game 
 
 In the example below, the "main" collection contains three instances (listed on the right, in the *Outline* window) of the "logo" game object (seen on the left, in the *Assets* browser window):
 
-![manual game objects](images/flash/manual_game_objects.png)
+![manual game objects](../images/flash/manual_game_objects.png)
 
 ## Flash—referencing manually created movie clips
 
 Referring to manually created movie clips in Flash requires the use of a manually defined instance name:
 
-![flash instance name](images/flash/flash_instance_name.png)
+![flash instance name](../images/flash/flash_instance_name.png)
 
 ## Defold—Game object id
 
@@ -61,7 +61,7 @@ In Defold, all game objects and components are referred to via an address. In mo
 
 The address of manually placed game objects is determined by the *Id* property assigned (see bottom right of screenshot). The id has to be unique for the current collection file you are working in. The editor automatically sets an id for you but you can change it for each game object instance that you create.
 
-![game object id](images/flash/game_object_id.png)
+![game object id](../images/flash/game_object_id.png)
 
 <div class='sidenote' markdown='1'>
 You can find the id of a game object by running the following code in its script component: `print(go.get_id())`. This will print the id of the current game object in the console.
@@ -73,7 +73,7 @@ The addressing model and message passing are key concepts in Defold game develop
 
 In order to dynamically create movie clips in Flash, ActionScript Linkage first needs to be set up:
 
-![actionscript linkage](images/flash/actionscript_linkage.png)
+![actionscript linkage](../images/flash/actionscript_linkage.png)
 
 This creates a class (Logo in this case), which then enables instantiation of new instances of this class. Adding an instance of the Logo class to the Stage could be done as below:
 
@@ -86,11 +86,11 @@ addChild(logo);
 
 In Defold, dynamic generation of game objects is achieved through the use of *factories*. Factories are components that are used to spawn copies of a specific game object. In this example, a factory has been created with the "logo" game object as a prototype:
 
-![logo factory](images/flash/logo_factory.png)
+![logo factory](../images/flash/logo_factory.png)
 
 It is important to note that factories, like all components, need to be added to a game object before they can be used. In this example, we have created a game object called "factories", to hold our factory component:
 
-![factory component](images/flash/factory_component.png)
+![factory component](../images/flash/factory_component.png)
 
 The function to call to generate an instance of the logo game object is:
 
@@ -104,7 +104,7 @@ The URL is a required parameter of `factory.create()`. In addition, you can add 
 
 In Flash, we are familiar with the Timeline (top section of the screenshot below) and the Stage (visible below the Timeline):
 
-![timeline and stage](images/flash/stage.png)
+![timeline and stage](../images/flash/stage.png)
 
 As discussed in the movie clips section above, the Stage is essentially the top level container of a Flash game and is created each time a project is exported. The Stage will by default have one child, the *MainTimeline*. Each movie clip generated in the project will have its own timeline, and can serve as a container for other symbols (including movie clips).
 
@@ -112,11 +112,11 @@ As discussed in the movie clips section above, the Stage is essentially the top 
 
 The Defold equivalent of the Flash Stage is a collection. When the engine starts up it creates a new game world based on the content of a collection file. By default, this file is called "main.collection" but you can change which collection is loaded at startup by accessing the *game.project* settings file that is in the root of every Defold project:
 
-![game.project](images/flash/game_project.png)
+![game.project](../images/flash/game_project.png)
 
 Collections are containers that are used in the editor to organize game objects and other collections. The contents of a collection can also be spawned via script into the runtime using a [collection factory](/manuals/collection-factory/#spawning_a_collection), which works the same way as a regular game object factory. This is useful for spawning groups of enemies, or a pattern of coin collectables, for instance. In the screenshot below, we have manually placed two instances of the "logos" collection into the "main" collection.
 
-![collection](images/flash/collection.png)
+![collection](../images/flash/collection.png)
 
 In some cases, you want to load a completely new game world. The [collection proxy](/manuals/collection-proxy/) component allows you to create a new game world based on the contents of a collection file. This would be useful for scenarios such as loading new game levels, mini games, or cutscenes.
 
@@ -126,11 +126,11 @@ The Flash timeline is primarily used for animation, using various frame by frame
 
 Shape tweens allow the interpolation of vector graphics between two states. It is mostly only useful for simple shapes and applications, as the below example of shape tweening a square into a triangle demonstrates:
 
-![timeline](images/flash/timeline.png)
+![timeline](../images/flash/timeline.png)
 
 Motion tweens allow the animation of various properties of an object, including size, position and rotation. In the example below, all the listed properties have been modified.
 
-![motion tween](images/flash/tween.png)
+![motion tween](../images/flash/tween.png)
 
 ## Defold—property animation
 
@@ -138,13 +138,13 @@ Defold works with pixel images as opposed to vector graphics, thus it does not h
 
 Where Flash makes use of keyframes of graphics on a timeline for animation, one of the main methods of graphic animation in Defold is by flipbook animation of imported image sequences. Animations are organised in a game object component known as an atlas. In this instance we have an atlas for a game character with an animation sequence called "run". This consists of a series of png files:
 
-![flipbook](images/flash/flipbook.png)
+![flipbook](../images/flash/flipbook.png)
 
 ## Flash—depth index
 
 In Flash, the display list determines what is shown and in what order. The ordering of objects in a container (such as the Stage) is handled by an index. Objects added to a container using the `addChild()` method will automatically occupy the top position of the index, starting from 0 and incrementing with each additional object. In the screenshot below, we have generated three instances of the "logo" movie clip:
 
-![depth index](images/flash/depth_index.png)
+![depth index](../images/flash/depth_index.png)
 
 The positions in the display list are indicated by the numbers next to each logo instance. Ignoring any code to handle the x/y position of the movie clips, the above could have been generated like so:
 
@@ -166,7 +166,7 @@ swapChildren(logo2,logo3);
 
 The result would look like the below (with the index position updated):
 
-![depth index](images/flash/depth_index_2.png)
+![depth index](../images/flash/depth_index_2.png)
 
 ## Defold—z position
 
@@ -178,11 +178,11 @@ Game objects with a z position outside the -1 to 1 range will not be rendered an
 
 Unlike in Flash where the editor only implies depth indexing (and allows modification using commands like *Bring Forward* and *Send Backward*), Defold allows you to set the z position of objects directly in the editor. In the screenshot below, you can see that "logo3" is displayed on top, and has a z position of 0.2. The other game objects have z positions of 0.0 and 0.1.
 
-![z-order](images/flash/z_order.png)
+![z-order](../images/flash/z_order.png)
 
 Note that the z position of a game object nested in one or more collections is decided by its own z position, together with that of all its parents. For instance, imagine the logo game objects above were placed in a "logos" collection which in turn was placed in "main" (see screenshot below). If the "logos" collection had a z position of 0.9, the z positions of the game objects contained within would be 0.9, 1.0, and 1.1. Therefore, "logo3" would not be rendered as its z position is greater than 1.
 
-![z-order](images/flash/z_order_outline.png)
+![z-order](../images/flash/z_order_outline.png)
 
 The z position of a game object can of course be changed using script. Assume the below is located in the script component of a game object:
 
@@ -196,7 +196,7 @@ go.set_position(pos)
 
 Basic collision detection in Flash is achieved by using the `hitTestObject()` method. In this example, we have two movie clips: "bullet" and "bullseye". These are illustrated in the screenshot below. The blue boundary box is visible when selecting the symbols in the Flash editor, and it is these boundary boxes that drive the result of the `hitTestObject()` method.
 
-![hit test](images/flash/hittest.png)
+![hit test](../images/flash/hittest.png)
 
 Collision detection using `hitTestObject()` is done as follows:
 
@@ -206,7 +206,7 @@ bullet.hitTestObject(bullseye);
 
 Using the boundary boxes in this case would not be appropriate, as a hit would be registered in the scenario below:
 
-![hit test bounding box](images/flash/hitboundingbox.png)
+![hit test bounding box](../images/flash/hitboundingbox.png)
 
 An alternative to `hitTestObject()` is the `hitTestPoint()` method. This method contains a `shapeFlag` parameter, which allows hit tests to be conducted against the actual pixels of an object as opposed to the bounding box. Collision detection using `hitTestPoint()` could be done as below:
 
@@ -220,21 +220,21 @@ This line would check the x and y position of the bullet (top left in this scena
 
 Defold includes a physics engine that can detect collisions and let a script react to it. Collision detection in Defold starts with assigning collision object components to game objects. In the screenshot below, we have added a collision object to the "bullet" game object. The collision object is indicated as the red transparent box (which is visible in the editor only):
 
-![collision object](images/flash/collision_object.png)
+![collision object](../images/flash/collision_object.png)
 
 Defold includes a modified version of the Box2D physics engine, which can simulate realistic collisions automatically. This guide assumes use of the kinematic collision objects, as these most closely resemble collision detection in Flash. Read more about the dynamic collision objects in the Defold [physics manual](/manuals/physics).
 
 The collision object includes the following properties:
 
-![collision object properties](images/flash/collision_object_properties.png)
+![collision object properties](../images/flash/collision_object_properties.png)
 
 A box shape has been used as this was most appropriate for the bullet graphic. The other shape used for 2D collisions, sphere, will be used for the target. Setting the type to Kinematic means resolving collisions is done by your script as opposed to the built-in physics engine (for more information on the other types, please refer to the [physics manual](/manuals/physics)). The group and mask properties determine what collision group the object belongs to and what collision group it should be checked against, respectively. The current setup means a "bullet" can only collide with a "target". Imagine the setup was changed to the below:
 
-![collision group/mask](images/flash/collision_groupmask.png)
+![collision group/mask](../images/flash/collision_groupmask.png)
 
 Now, bullets can collide with targets and other bullets. For reference, we have set up a collision object for the target that looks as follows:
 
-![collision object bullet](images/flash/collision_object_bullet.png)
+![collision object bullet](../images/flash/collision_object_bullet.png)
 
 Note how the *Group* property is set to "target" and *Mask* is set to "bullet".
 
@@ -276,7 +276,7 @@ As discussed in the collision detection section, collision events are dealt with
 
 Flash uses a dedicated symbol type for buttons. Buttons use specific event handler methods (e.g. `click` and `buttonDown`) to execute actions when user interaction is detected. The graphical shape of a button in the "Hit" section of the button symbol determines the hit area of the button.
 
-![button](images/flash/button.png)
+![button](../images/flash/button.png)
 
 ## Defold—GUI scenes and scripts
 
@@ -332,15 +332,15 @@ msg.post("@system:", "toggle_physics_debug")
 
 Physics debug can also be enabled in the project settings. Before toggling physics debug our project would look like this:
 
-![no debug](images/flash/no_debug.png)
+![no debug](../images/flash/no_debug.png)
 
 Toggling physics debug displays the collision objects added to our game objects:
 
-![with debug](images/flash/with_debug.png)
+![with debug](../images/flash/with_debug.png)
 
 When collisions occur, the relevant collision objects light up. In addition, the collision vector is displayed:
 
-![collision](images/flash/collision.png)
+![collision](../images/flash/collision.png)
 
 Finally, see the [profiler documentation](/ref/profiler/) for information on how to monitor CPU and memory usage. For more information on advanced debugging techniques, see the [debugging section](/manuals/debugging) in the Defold manual.
 

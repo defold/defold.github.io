@@ -11,7 +11,7 @@ iOS requires that _any_ app that you build and want to run on your phone or tabl
 
 The security associated with iOS apps consists of several components. You can get access to the required tools by singing up to the [Apple's iOS Developer Program](https://developer.apple.com/programs/). When you have enrolled, go to the [Apple's Developer Member Center](https://developer.apple.com/membercenter/index.action).
 
-![Apple Member Center](images/ios/apple_member_center.png)
+![Apple Member Center](../images/ios/apple_member_center.png)
 
 The section *Certificates, Identifiers & Profiles* contains all the tools that you need. From here you can create, delete and edit:
 
@@ -36,11 +36,11 @@ Some of the things you can do on the Member Center homepage you can also perform
 Device identifier (UDID)
 : The UDID for an iOS device can be found by connecting the device to a computer via wifi or cable. Open Xcode and select <kbd>Window ▸ Devices and Simulators</kbd>. The serial number and identifier are displayed when you select your device.
 
-  ![xcode devices](images/ios/xcode_devices.png)
+  ![xcode devices](../images/ios/xcode_devices.png)
 
   If you don't have Xcode installed you can find the identifier in iTunes. Click on the devices symbol and select your device.
 
-  ![itunes devices](images/ios/itunes_devices.png)
+  ![itunes devices](../images/ios/itunes_devices.png)
 
   1. On the *Summary* page, locate the *Serial Number*.
   2. Click the *Serial Number* once so the field changes into *UDID*. If you click repeatedly, several pieces of information about the device will show up. Just continue to click until *UDID* shows.
@@ -57,20 +57,20 @@ Since Xcode 7, anyone can install Xcode and do on-device development for free. Y
 5. Select your "Team" (auto created for you) and give the app a bundle identifier.
 6. Make sure that Xcode has created a *Provisioning Profile* and *Signing Certificate* for the app.
 
-   ![](images/ios/xcode_certificates.png)
+   ![](../images/ios/xcode_certificates.png)
 
 7. Build and launch the app on your device. The first time, Xcode will ask you to enable Developer mode and will prepare the device with debugger support. This may take a while.
 8. When you have verified that the app works, find it on your disk. You can see the build location in the Build report in the "Report Navigator".
 
-   ![](images/ios/app_location.png)
+   ![](../images/ios/app_location.png)
 
 9. Locate the app, right-click it and select <kbd>Show Package Contents</kbd>.
 
-   ![](images/ios/app_contents.png)
+   ![](../images/ios/app_contents.png)
 
 10. Copy the file "embedded.mobileprovision" to some place on your drive where you will find it.
 
-   ![](images/ios/free_provisioning.png)
+   ![](../images/ios/free_provisioning.png)
 
 This provision file can be used together with your code signing identity to sign apps in Defold for one week, for _one device_. There is no way to add additional device UDIDs to this generated provisioning profile.
 
@@ -80,7 +80,7 @@ When the provision expires, you need to build the app again in Xcode and get a n
 
 When you have the code signing identity and privisioning profile, you are ready to create a stand alone application bundle for your game from the editor. Simply select <kbd>Project ▸ Bundle... ▸ iOS Application...</kbd> from the menu.
 
-![Signing iOS bundle](images/ios/sign_bundle.png)
+![Signing iOS bundle](../images/ios/sign_bundle.png)
 
 Select your code signing identity and browse for your mobile provisioning file. Select which architectures (32 bit, 64 bit and the iOS simulator) to bundle for as well as the variant (Debug or Release). You can optionally untick the `Sign application` checkbox to skip the signing process and then manually sign at a later stage.
 
@@ -96,7 +96,7 @@ You specify what icon to use for the app, the launch screen image(s) and so fort
 When your game launches on iOS, the launch images are used to set the correct screen resolution. If you do not supply the correct image size, you will get a lower resolution with resulting black bars.
 </div>
 
-![ipa iOS application bundle](images/ios/ipa_file.png)
+![ipa iOS application bundle](../images/ios/ipa_file.png)
 
 ## Installing an iOS application bundle
 

@@ -33,7 +33,7 @@ We're not using this project to build things, only debug.
 
 * Create new XCode project, choose the `Game` template
 
-	![project_template](images/extensions/debugging/ios/project_template.png)
+	![project_template](../images/extensions/debugging/ios/project_template.png)
 
 * Choose a name (e.g. `debug`) and the default settings
 
@@ -41,30 +41,30 @@ We're not using this project to build things, only debug.
 
 * Add your code to the app
 
-	![add_files](images/extensions/debugging/ios/add_files.png)
+	![add_files](../images/extensions/debugging/ios/add_files.png)
 
 * Make sure the "Copy items if needed" is unchecked.
 
-	![add_source](images/extensions/debugging/ios/add_source.png)
+	![add_source](../images/extensions/debugging/ios/add_source.png)
 
 * This is the end result
 
-	![added_source](images/extensions/debugging/ios/added_source.png)
+	![added_source](../images/extensions/debugging/ios/added_source.png)
 
 
 * Disable the `Build` step
 
-	![edit_scheme](images/extensions/debugging/ios/edit_scheme.png)
+	![edit_scheme](../images/extensions/debugging/ios/edit_scheme.png)
 
-	![disable_build](images/extensions/debugging/ios/disable_build.png)
+	![disable_build](../images/extensions/debugging/ios/disable_build.png)
 
 * Set the `Deployment target` version so it's now larger than your device iOS version
 
-	![deployment_version](images/extensions/debugging/ios/deployment_version.png)
+	![deployment_version](../images/extensions/debugging/ios/deployment_version.png)
 
 * Select the target device
 
-	![select_device](images/extensions/debugging/ios/select_device.png)
+	![select_device](../images/extensions/debugging/ios/select_device.png)
 
 
 ### Launch the debugger
@@ -75,7 +75,7 @@ You have a few options to debug an app
 
 1. Or choose the `Attach to process by PID or Process name`
 
-	![select_device](images/extensions/debugging/ios/attach_to_process_name.png)
+	![select_device](../images/extensions/debugging/ios/attach_to_process_name.png)
 
 	1. Start the app on the device
 
@@ -89,7 +89,7 @@ You have a few options to debug an app
 
 		(lldb) add-dsym <PathTo.dSYM>
 
-	![add_dsym](images/extensions/debugging/ios/add_dsym.png)
+	![add_dsym](../images/extensions/debugging/ios/add_dsym.png)
 
 * Verify that `lldb` read the symbols successfully
 
@@ -120,7 +120,7 @@ You can check what source file a symbol was originating from using
 
 * Open a file in the project view, and set a breakpoint
 
-	![breakpoint](images/extensions/debugging/ios/breakpoint.png)
+	![breakpoint](../images/extensions/debugging/ios/breakpoint.png)
 
 ## Notes
 

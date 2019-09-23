@@ -77,7 +77,7 @@ Now that we have decided that the player character will be represented by a kine
 
 The movement will be acceleration-based, to give a sense of weight to the character. Like for a regular vehicle, the acceleration defines how fast the player character can reach the max speed and change direction. The acceleration is acting over the frame time-step---usually provided in a parameter `dt` (delta-`t`)---and then added to the velocity. Similarly, the velocity acts over the frame and the resulting translation is added to the position. In maths, this is called [integration over time](http://en.wikipedia.org/wiki/Integral).
 
-![Approximative velocity integration](images/platformer/integration.png)
+![Approximative velocity integration](../images/platformer/integration.png)
 
 The two vertical lines marks the beginning and end of the frame. The height of the lines is the velocity the player character has at these two points in time. Let us call these velocities `v`~0~ and `v`~1~ . `v`~1~ is given by applying the acceleration (the slope of the curve) for the time-step `dt`:
 
@@ -137,7 +137,7 @@ We obviously need to land and move along the level geometry. We will use the con
 A contact point carries a _normal_ of the contact (pointing out from the object we collide with, but might be different in other engines) as well as a _distance_, which measures how far we have penetrated the other object. This is all we need to separate the player from the level geometry.
 Since we are using a box, we might get multiple contact points during a frame. This happens for example when two corners of the box intersect the horizontal ground, or the player is moving into a corner.
 
-![Contact normals acting on the player character](images/platformer/collision.png)
+![Contact normals acting on the player character](../images/platformer/collision.png)
 
 To avoid making the same correction multiple times, we accumulate the corrections in a vector to make sure we don't over-compensate. This would make us end up too far away from the object we collided with. In the image above, you can see that we currently have two contact points, visualized by the two arrows (normals). The penetration distance is the same for both contacts, if we would use that blindly each time we would end up moving the player twice the intended amount.
 
@@ -205,14 +205,14 @@ The level geometry is the collision shapes of the environment that the player ch
 Either you create separate collision shapes on top of the levels you build. This method is very flexible and allows fine positioning of graphics. It is especially useful if you want soft slopes.
 The game [Braid](http://www.davidhellman.net/blog/archives/85) used this method of building levels, and it is the method the example level in this tutorial is built too. Here is how it looks in the Defold editor:
 
-![The Defold Editor with the level geometry and player placed into the world](images/platformer/editor.png)
+![The Defold Editor with the level geometry and player placed into the world](../images/platformer/editor.png)
 
 Another option is to build levels out of tiles and have the editor automatically generate the physics shapes, based on tile graphics. This means that the level geometry will be automatically updated when you change the levels which can be extremely useful.
 
 The placed tiles will get their physics shapes automatically merged into one if they align.
 This eliminates the gaps that can make your player character stop or bump when sliding across several horizontal tiles. This is done by replacing the tile polygons with edge shapes in Box2D at load-time.
 
-![Multiple tile-based polygons stitched into one](images/platformer/stitching.png)
+![Multiple tile-based polygons stitched into one](../images/platformer/stitching.png)
 
 Above is an example where we created five neighboring tiles out of a piece of the platformer graphics. In the image you can see how the placed tiles (top) correspond to one single shape that has been stitched together into one (bottom grey contour).
 

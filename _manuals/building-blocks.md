@@ -7,7 +7,7 @@ brief: This manual digs into the details of how game objects, components and col
 
 At the core of Defold's design are a few concepts that may take a little while to get a good grip on. This manual explains what the building blocks of Defold consist of. After having read this manual, move on to the [addressing manual](/manuals/addressing) and the [message passing manual](/manuals/message-passing). There are also a set of [tutorials](/tutorials/getting-started) available from within the editor to get you up and running quickly.
 
-![Building blocks](images/building_blocks/building_blocks.png)
+![Building blocks](../images/building_blocks/building_blocks.png)
 
 There are three basic types of building blocks that you use to construct a Defold game:
 
@@ -28,11 +28,11 @@ When the Defold engine starts, it loads a single _bootstrap collection_ as speci
 
 A collection can contain game objects and other collections (by reference to the sub-collection's file), nested arbitrarily deep. Here is an example file called "main.collection". It contains one game object (with the id "can") and one sub-collection (with the id "bean"). The sub-collection, in turn, contains two game objects: "bean" and "shield".
 
-![Collection](images/building_blocks/collection.png)
+![Collection](../images/building_blocks/collection.png)
 
 Notice that the sub-collection with id "bean" is stored in its own file, called "/main/bean.collection" and is only referenced in "main.collection":
 
-![Bean collection](images/building_blocks/bean_collection.png)
+![Bean collection](../images/building_blocks/bean_collection.png)
 
 You cannot address collections themselves since there are no runtime objects corresponding to the "main" and "bean" collections. However, you sometimes need to use the identity of a collection as part of the _path_ to a game object (See the [addressing manual](/manuals/addressing) for details):
 
@@ -78,25 +78,25 @@ You can see what file an object instance is based on in the outline view. The fi
 2. The "bean" script component in the "bean" game object in the "bean" sub-collection.
 3. The "can" script component in the "can" game object.
 
-![Instance](images/building_blocks/instance.png)
+![Instance](../images/building_blocks/instance.png)
 
 The benefit of creating blueprint files becomes apparent when you have multiple instances of a game object or collection and wishes to change all of them:
 
-![GO instances](images/building_blocks/go_instance.png)
+![GO instances](../images/building_blocks/go_instance.png)
 
 By changing the blueprint file, any instance that uses that file will immediately be updated.
 
-![GO instances updated](images/building_blocks/go_instance2.png)
+![GO instances updated](../images/building_blocks/go_instance2.png)
 
 ## Childing game objects
 
 In a collection file, you can build hierarchies of game objects so that one or more game objects are children to a single parent game object. By simply <kbd>dragging</kbd> one game object and <kbd>dropping</kbd> it onto another the dragged game object is childed under the target:
 
-![Childing game objects](images/building_blocks/childing.png)
+![Childing game objects](../images/building_blocks/childing.png)
 
 Object parent-child hierarchies is a dynamic relation affecting how objects react to transformations. Any transformation (movement, rotation or scaling) applied to an object will in turn be applied to the object’s children, both in the editor and in runtime:
 
-![Child transform](images/building_blocks/child_transform.png)
+![Child transform](../images/building_blocks/child_transform.png)
 
 Conversely, a child's translations are done in the local space of the parent. In the editor, you can choose to edit a child game object in the local space or world space by selecting <kbd>Edit ▸ World Space</kbd> (the default) or <kbd>Edit ▸ Local Space</kbd>.
 

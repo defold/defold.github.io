@@ -39,13 +39,13 @@ Console
 
 The "Empty" project template actually isn't completely empty. As you've already seen, it contains one game object with a simple image. Select <kbd>Project ▸ Build and Launch</kbd> to build the project and launch the game.
 
-![Build and launch](images/car/start_build_and_launch.png)
+![Build and launch](../images/car/start_build_and_launch.png)
 
 It's perhaps not very exciting, but it's a running Defold game application and we can easily modify it into something more interesting. So let's do that.
 
 First of all, let's clean the file *main.collection* of the one game object it contains. Select "logo" in the *Outline* view, right-click and select *Delete*. That's it. If you run the game again, the application window will be totally black.
 
-![Delete game object](images/car/start_delete_go.png)
+![Delete game object](../images/car/start_delete_go.png)
 
 ## Assembling the car
 
@@ -53,7 +53,7 @@ The first thing we're going to do is to create a new collection. A collection is
 
 Click on the *main* folder in the *Project Explorer*, then right-click and select <kbd>New ▸ Collection File</kbd>. You can also select <kbd>File ▸ New ▸ Collection File</kbd> from the main menu.
 
-![New Collection file](images/car/start_new_collection.png)
+![New Collection file](../images/car/start_new_collection.png)
 
 Name the new collection file *car.collection* and open it. We're going to use this new, empty collection to build a small car out of a couple of game objects. A game object is a container of components (like sprites, sounds, logic scripts etc) that you use to build your game. Each game object is uniquely identified in the game by its id. Game objects can communicate with each other through message passing, but more on that later.
 
@@ -61,7 +61,7 @@ Also, it's possible to create a game object in place in a collection, as we did 
 
 However, a game object that is stored in a _file_ works as a blueprint. When you place instances of a file stored game object in a collection each object is placed _by reference_---it is a clone based on the blueprint. If you decide you need to change the blueprint, every single placed game object based on that blueprint is instantly updated.
 
-![Add car gameobject](images/car/start_add_car_gameobject.png)
+![Add car gameobject](../images/car/start_add_car_gameobject.png)
 
 Select the root "Collection" node in the *Outline* view, right-click and select <kbd>Add Game Object</kbd>. A new game object with the id "go" will appear in the collection. Mark it and set its id to "car" in the *Properties* view. So far, "car" is very uninteresting. It is empty, has neither visual representation nor any logic. To add a visual representation, we need to add a sprite _component_.
 
@@ -69,7 +69,7 @@ Components are used to extend game objects with presence (graphics, sound) and f
 
 Note that you do not manipulate components directly---you can move, rotate, scale and animate properties of game objects that in turn contain components.
 
-![Add car component](images/car/start_add_car_component.png)
+![Add car component](../images/car/start_add_car_component.png)
 
 Select the "car" game object, right-click and select <kbd>Add Component</kbd>, then select *Sprite* and click *Ok*. If you mark the sprite in the *Outline* view you will see that it needs a few properties set:
 
@@ -78,14 +78,14 @@ Image
 
 Images for our game:
 
-![Car image](images/car/start_car.png)
-![Tire image](images/car/start_tire.png)
+![Car image](../images/car/start_car.png)
+![Tire image](../images/car/start_tire.png)
 
 Add these images to the atlas:
 
-![Sprites atlas](images/car/start_sprites_atlas.png)
+![Sprites atlas](../images/car/start_sprites_atlas.png)
 
-![Sprite properties](images/car/start_sprite_properties.png)
+![Sprite properties](../images/car/start_sprite_properties.png)
 
 Default Animation
 : Set this to "car" (or whatever you named the car image). Each sprite needs a default animation that is played when it is shown in the game. When you add images to an atlas, Defold conveniently creates one-frame (still) animations for each image file.
@@ -96,7 +96,7 @@ Continue by adding two more game objects in the collection. Call them "left_whee
 
 Move the tire game objects into place by selecting them and then choosing <kbd>Scene ▸ Move Tool</kbd>. Grab the arrow handlebars, or the center green square to move the object to a good spot. The final thing we need to do is to make sure that the tires are drawn below the car. We do that by setting the Z component of the position to -0.5. Every visual item in a game is drawn from the back to front, sorted on their Z value. An object with a Z-value of 0 will be drawn on top of an object with a Z-value of -0.5. Since the default Z-value of the car game object is 0, the new value on the tire objects will put them under the car image.
 
-![Car collection complete](images/car/start_car_collection_complete.png)
+![Car collection complete](../images/car/start_car_collection_complete.png)
 
 The last piece of the puzzle is a _script_ to control the car. A script is a component that contains a program that defines game object behaviors. With scripts you can specify the rules of your game, how objects should respond to various interactions (with the player as well as other objects). All scripts are written in the Lua programming language. To be able to work with Defold, you or someone on your team needs to learn how to program in Lua.
 
@@ -207,13 +207,13 @@ Constants
 
 There is no input actions set up yet, so let's fix that. Open the file */input/game.input_bindings* and add *key_trigger* bindings for "accelerate", "brake", "left" and "right". We set them to the arrow keys (KEY_LEFT, KEY_RIGHT, KEY_UP and KEY_DOWN):
 
-![Input bindings](images/car/start_input_bindings.png)
+![Input bindings](../images/car/start_input_bindings.png)
 
 ## Adding the car to the game
 
 Now the car is ready to roll. We have created it inside "car.collection" but it does not yet exist in the game. That is because the engine currently loads "main.collection" on startup. To fix that we simply have to add *car.collection* to *main.collection*. Open *main.collection*, mark the "Collection" root node in the *Outline* view, right-click and select <kbd>Add Collection From File</kbd>, select *car.collection* and click *OK*. Now the contents of the *car.collection* will be placed in *main.collection* as new instances. If you change the content of *car.collection*, each instance of the collection will be updated automatically when the game is built.
 
-![Adding the car collection](images/car/start_adding_car_collection.png)
+![Adding the car collection](../images/car/start_adding_car_collection.png)
 
 ## Trying the final game
 

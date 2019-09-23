@@ -9,7 +9,7 @@ The file *game.project* contains all project wide settings. It must stay in the 
 
 Every setting in the file belongs to a category. When you open the file Defold presents all settings grouped by category.
 
-![Project settings](images/project-settings/settings.jpg)
+![Project settings](../images/project-settings/settings.jpg)
 
 Below are all the available settings, arranged by section. Some settings are not yet exposed in the settings editor (these are marked "hidden setting" below), but can be set manually by right clicking "game.project" and selecting <kbd>Open With ▸ Text Editor</kbd>.
 

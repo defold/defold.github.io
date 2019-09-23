@@ -9,7 +9,7 @@ Defold supports building games for the HTML5 platform through the regular bundli
 
 The *game.project* file contains the HTML5 specific settings:
 
-![Project settings](images/html5/html5_project_settings.png)
+![Project settings](../images/html5/html5_project_settings.png)
 
 ## Heap size
 
@@ -22,7 +22,7 @@ Defold support for HTML5 is powered by Emscripten (See http://en.wikipedia.org/w
 
 For testing, HTML5 build needs an HTTP server. Defold creates one for you if you choose <kbd>Project ▸ Build HTML5</kbd>.
 
-![Build HTML5](images/html5/html5_build_launch.png)
+![Build HTML5](../images/html5/html5_build_launch.png)
 
 If you want to test your bundle, just upload it to your remote HTTP server or create a local server, for example, using python in the bundle folder.
 Python 2:
@@ -42,7 +42,7 @@ You can't test the HTML5 bundle by opening `index.html` file in a browser. This 
 
 Creating HTML5 content with Defold is simple and follows the same pattern as all other supported platforms: select <kbd>Project ▸ Bundle...​ ▸ HTML5 Application...</kbd> from the menu:
 
-![Application files](images/html5/html5_bundle.png)
+![Application files](../images/html5/html5_bundle.png)
 
 You will be prompted to select a folder in which to create your application. After the export process completes, you will find all of the files needed to run the application.
 
@@ -70,7 +70,7 @@ When generating an HTML5 version of your game, Defold provides a default web pag
 
 Each time the application is exported, this content is created afresh. If you wish to customize any of these elements you must make modifications to your project settings. To do so, open the *game.project* in the Defold editor and scroll to the *html5* section:
 
-![HTML5 Section](images/html5/html5_section.png)
+![HTML5 Section](../images/html5/html5_section.png)
 
 More information about every option is available in [project settings manual](/manuals/project-settings/#html5).
 
@@ -93,18 +93,18 @@ The calculations for all scale modes include current screen DPI in case if you t
 
 For the `Fit` mode canvas size will be changed to show full game canvas on the screen with original proportions. The only difference in `Downscale Fit` is changing size only if the inner size of the webpage is smaller than the original canvas of the game, but doesn't scale-up when a webpage is bigger than the original game canvas.
 
-![HTML5 Section](images/html5/html5_fit.png)
+![HTML5 Section](../images/html5/html5_fit.png)
 
 ### Stretch
 
 For the `Stretch` mode canvas size will be changed to fully fill the inner size of the webpage.
 
-![HTML5 Section](images/html5/html5_stretch.png)
+![HTML5 Section](../images/html5/html5_stretch.png)
 
 ### No Scale
 With `No Scale` mode the canvas size is exactly the same as you predefined in `game.project` file, `[display]` section.
 
-![HTML5 Section](images/html5/html5_no_scale.png)
+![HTML5 Section](../images/html5/html5_no_scale.png)
 
 ## Tokens
 
@@ -116,11 +116,11 @@ More information about Mustache template language is available in [manual](https
 
 Any `game.project` can be a token. For example, if you want to use `Width` value from `Display` section:
 
-![Display section](images/html5/html5_display.png)
+![Display section](../images/html5/html5_display.png)
 
 Open `game.project` as a text and check `[section_name]` and name of the field you want to use. Then you can use it as a token: `{% raw %}{{section_name.field}}{% endraw %}` or `{% raw %}{{{section_name.field}}}{% endraw %}`.
 
-![Display section](images/html5/html5_game_project.png)
+![Display section](../images/html5/html5_game_project.png)
 
 For example, in HTML template in JavaScript:
 

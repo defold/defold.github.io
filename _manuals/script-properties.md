@@ -43,11 +43,11 @@ end
 
 Any script component instance created from this script can then set the property values.
 
-![Component with properties](images/script-properties/component.png)
+![Component with properties](../images/script-properties/component.png)
 
  Select the script component in the *Outline* view in the editor and the properties appear in the *Properties* view allowing you to edit them:
 
-![Properties](images/script-properties/properties.png)
+![Properties](../images/script-properties/properties.png)
 
 Any property that is overridden with a new instance specific value is marked blue. Click the reset button by the property name to revert the value to the default (as set in the script).
 

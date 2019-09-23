@@ -17,7 +17,7 @@ Let's first look at a few simple usage examples. Suppose that you are building a
 1. A main bootstrap collection containing a game object with a GUI component (the GUI consists of a minimap and a score counter). There is also a collection with id "level".
 2. The collection named "level" contains two game objects: one hero player character and one enemy.
 
-![Message passing structure](images/message_passing/message_passing_structure.png)
+![Message passing structure](../images/message_passing/message_passing_structure.png)
 
 <div class='sidenote' markdown='1'>
 The content of this example lives in two separate files. There is one file for the main bootstrap collection and one for the collection with the id "level". However, file names _do not matter_ in Defold. The identity you assign instances does.
@@ -25,7 +25,7 @@ The content of this example lives in two separate files. There is one file for t
 
 The game contains a few simple mechanics that require communication between the objects:
 
-![Message passing](images/message_passing/message_passing.png)
+![Message passing](../images/message_passing/message_passing.png)
 
 ① The hero punches the enemy
 : As part of this mechanic, a `"punch"` message is sent from the "hero" script component to the "enemy" script component. Since both objects live in the same place in the collection hierarchy, relative addressing is preferred:
@@ -184,7 +184,7 @@ end
 
 If you use a collection proxy component to load a new game world into the runtime, you will want to pass messages between the game worlds. Suppose that you have loaded a collection via proxy and that the collection has its *Name* property set to "level":
 
-![Collection name](images/message_passing/collection_name.png)
+![Collection name](../images/message_passing/collection_name.png)
 
 As soon as the collection has been loaded, initiated and enabled, you can post messages to any component or object in the new world by specifying the game world name in the recipient address  "socket" field:
 

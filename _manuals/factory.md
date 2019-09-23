@@ -9,9 +9,9 @@ Factory components are used to dynamically spawn game objects from a pool of obj
 
 When you add a factory component to a game object you specify in the *Prototype* property what game object file the factory should use as a blueprint for all new game objects it creates.
 
-![Factory component](images/factory/factory_collection.png)
+![Factory component](../images/factory/factory_collection.png)
 
-![Factory component](images/factory/factory_component.png)
+![Factory component](../images/factory/factory_component.png)
 
 To trigger the creation of a game object, call `factory.create()`:
 
@@ -23,7 +23,7 @@ local component = "#star_factory"
 factory.create(component, p)
 ```
 
-![Spawned game object](images/factory/factory_spawned.png)
+![Spawned game object](../images/factory/factory_spawned.png)
 
 `factory.create()` takes 5 parameters:
 
@@ -80,7 +80,7 @@ end
 1. The "score" script property is defined with a default value.
 2. Reference the "score" script property as a value stored in "self".
 
-![Spawned game object with property and scaling](images/factory/factory_spawned2.png)
+![Spawned game object with property and scaling](../images/factory/factory_spawned2.png)
 
 <div class='sidenote' markdown='1'>
 Defold does not currently support non uniform scaling of collision shapes. If you provide a non uniform scale value, for instance `vmath.vector3(1.0, 2.0, 1.0)` the sprite will scale correctly but the collision shapes won't.
@@ -148,7 +148,7 @@ end
 
 By checking the *Load Dynamically* checkbox in the factory properties, the engine postpones the loading of the resources associated with the factory.
 
-![Load dynamically](images/factory/load_dynamically.png)
+![Load dynamically](../images/factory/load_dynamically.png)
 
 With the box unchecked the engine loads the prototype resources when the factory component is loaded so they are immediately ready for spawning.
 
@@ -207,7 +207,7 @@ Asynchronous loading
 
 The project setting *max_instances* in *Collection related settings* limits the total number of game object instances that can exist in a world (the main.collection loaded at startup or any world loaded via a collection proxy). All game objects that exist in the world are counted agaist that limit and it does not matter if they are placed by hand in the editor or spawned in runtime through a script.
 
-![Max instances](images/factory/factory_max_instances.png)
+![Max instances](../images/factory/factory_max_instances.png)
 
 So if you set *max_instances* to 1024 and have 24 manually placed game objects in your main collection, you can spawn an additional 1000 game objects. As soon as you delete a game object, you are free to spawn another instance.
 

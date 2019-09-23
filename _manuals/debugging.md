@@ -33,57 +33,57 @@ Note that you probably want to update this data every frame so posting the messa
 
 To run the debugger, either <kbd>Debug ▸ Run with Debugger</kbd> which starts up the game with the debugger attached, or select <kbd>Debug ▸ Attach Debugger</kbd> to attach the debugger to an already running game.
 
-![overview](images/debugging/overview.png)
+![overview](../images/debugging/overview.png)
 
 As soon as the debugger is attached, you have control of the execution of the game through the debugger control buttons in the console, or through the <kbd>Debug</kbd> menu:
 
 Break
-: ![pause](images/debugging/pause.svg){width=60px .left}
+: ![pause](../images/debugging/pause.svg){width=60px .left}
   Break execution of the game immediately. The game will break at its current point. You are now able to inspect the state of the game, advance the game step by step, or continue running it until the next breakpoint. The current point of execution is marked in the code editor:
 
-  ![script](images/debugging/script.png)
+  ![script](../images/debugging/script.png)
 
 Continue
-: ![play](images/debugging/play.svg){width=60px .left}
+: ![play](../images/debugging/play.svg){width=60px .left}
   Continue running the game. The game code will continue to run until you either press pause or the execution hits a breakpoint that you have set. If execution breaks at a set breakpoint, the the execution point is marked in the code editor on top of the breakpoint marker:
 
-  ![break](images/debugging/break.png)
+  ![break](../images/debugging/break.png)
 
 Stop
-: ![stop](images/debugging/stop.svg){width=60px .left}
+: ![stop](../images/debugging/stop.svg){width=60px .left}
   Stop the debugger. Pressing this button will immediately stop the debugger, detach it from the game and terminate the running game.
 
 Step Over
-: ![step over](images/debugging/step_over.svg){width=60px .left}
+: ![step over](../images/debugging/step_over.svg){width=60px .left}
   Advance execution of the program one step. If the execution involves running another Lua function, the execution _will not step into the function_ but continue running and stop on the next line below the function call. In this example, if the user presses "step over", the debugger will execute code and stop at the `end` statement below the line with the call to the function `nextspawn()`:
 
-  ![step](images/debugging/step.png)
+  ![step](../images/debugging/step.png)
 
 <div class='sidenote' markdown='1'>
 A line of Lua code does not correspond to a single expression. Stepping in the debugger moves ahead one expression at a time, meaning that currently you may have to hit the step button more than once to advance to the next line.
 </div>
 
 Step Into
-: ![step in](images/debugging/step_in.svg){width=60px .left}
+: ![step in](../images/debugging/step_in.svg){width=60px .left}
   Advance execution of the program one step. If the execution involves running another Lua function, the execution _will step into the function_. Calling the function adds an entry to the call stack. You can click each entry in the call stack list to view the entry point and the content of all variables in that closure. Here, the user has stepped into the function `nextspawn()`:
 
-  ![step into](images/debugging/step_into.png)
+  ![step into](../images/debugging/step_into.png)
 
 Step Out
-: ![step out](images/debugging/step_out.svg){width=60px .left}
+: ![step out](../images/debugging/step_out.svg){width=60px .left}
   Continue execution until it returns from the current function. If you have stepped execution into a function, pressing the button "step out" will continue execution until the function returns.
 
 Setting and clearing breakpoints
 : You can set an arbitrary number of breakpoints in your Lua code. When the game runs with the debugger attached, it will stop execution at the next breakpoint it encounters and wait for further interaction from you.
 
-  ![add breakpoint](images/debugging/add_breakpoint.png)
+  ![add breakpoint](../images/debugging/add_breakpoint.png)
 
   To set or clear a breakpoint, click in the column just right of the line numbers in the code editor. You can also select <kbd>Edit ▸ Toggle Breakpoint</kbd> from the menu.
 
 Evaluating Lua expressions
 : With the debugger attached and the game stopped at a breakpoint, a Lua runtime is available with the current context. Type Lua expressions in the bottom of the console and press <kbd>Enter</kbd> to evaluate them:
 
-  ![console](images/debugging/console.png)
+  ![console](../images/debugging/console.png)
 
   It is currently not possible to modify variables through the evaluator.
 
@@ -137,7 +137,7 @@ iOS
 
   Click the cog icon below the list and select <kbd>Download Container...</kbd>.
 
-  ![download container](images/debugging/download_container.png)
+  ![download container](../images/debugging/download_container.png)
 
   Once the container has been extracted it will be shown in *Finder*. Right click the container and select <kbd>Show Package Content</kbd>. Locate the file "log.txt", which should be located in "AppData/Documents/".
 
@@ -172,8 +172,8 @@ Happy hunting!
 
 If you have problems with physics and collisions aren't working as expected it is recommended to enable physics debugging. Check the *Debug* checkbox in the *Physics* section of the *game.project* file:
 
-![physics debug setting](images/debugging/physics_debug_setting.png)
+![physics debug setting](../images/debugging/physics_debug_setting.png)
 
 When this checkbox is enabled Defold will draw all collision shapes and contact points of collisions:
 
-![physics debug visualisation](images/debugging/physics_debug_visualisation.png)
+![physics debug visualisation](../images/debugging/physics_debug_visualisation.png)

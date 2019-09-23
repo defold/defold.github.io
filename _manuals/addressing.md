@@ -24,7 +24,7 @@ local id = go.get_id(".")
 
 Let's start with a very simple example. Suppose that you have a game object with a single sprite component. You also have a script component to control the game object. The setup in the editor would look something like this:
 
-![bean in editor](images/addressing/bean_editor.png)
+![bean in editor](../images/addressing/bean_editor.png)
 
 Now you want to disable the sprite when the game starts, so you can make it appear later. That is easily done by putting the following code in "controller.script":
 
@@ -37,7 +37,7 @@ end
 
 This will work as expected. When the game starts, the script component *addresses* the sprite component by its identifier "body" and uses that address to send it a *message* with the "disable". The effect of this special engine message is that the sprite component hides the sprite graphics. Schematically, the setup looks like this:
 
-![bean](images/addressing/bean.png)
+![bean](../images/addressing/bean.png)
 
 The identifiers in the setup are arbitrary. Here we have chosen to give the game object the identifier "bean", its sprite component has been named "body", and the script component that controls the character has been named "controller".
 
@@ -52,21 +52,21 @@ You can stick to these automatically assigned names if you want to, but we encou
 
 Now, let's add another sprite component and give the bean a shield:
 
-![bean](images/addressing/bean_shield_editor.png)
+![bean](../images/addressing/bean_shield_editor.png)
 
 The new component must be uniquely identified within the game object. If you would give it the name "body" the script code would be ambiguous as to which sprite it should send the "disable" message. Therefore we pick the unique (and descriptive) identifier "shield". Now we can enable and disable the "body" and "shield" sprites at will.
 
-![bean](images/addressing/bean_shield.png)
+![bean](../images/addressing/bean_shield.png)
 
 <div class='sidenote' markdown='1'>
 If you do try to use an identifier more than once, the editor will signal an error so this is never a problem in practice:
 
-![bean](images/addressing/name_collision.png)
+![bean](../images/addressing/name_collision.png)
 </div>
 
 Now, let's look at what happens if you add more game objects. Suppose you want to pair two "beans" into a small team. You decide to call one of the bean game objects "bean" and the other one "buddy". Furthermore, when "bean" has been idle for a while, it should tell "buddy" to start dancing. That is done by sending a custom message called "dance" from the "controller" script component in "bean" to the "controller" script in "buddy":
 
-![bean](images/addressing/bean_buddy.png)
+![bean](../images/addressing/bean_buddy.png)
 
 <div class='sidenote' markdown='1'>
 There are two separate components named "controller", one in each game object but this is perfectly legal since each game object creates a new naming context.
@@ -88,21 +88,21 @@ Collections makes it possible to create groups, or hierarchies, of game objects 
 
 Suppose that you want to create a great number of bean/buddy teams. A good way to do that is to create a template in a new *collection file* (name it "team.collection"). Build the team game objects in the collection file and save it. Then put an instance of that collection file's contents in your main bootstrap collection and give the instance an identifier (name it "team_1"):
 
-![bean](images/addressing/team_editor.png)
+![bean](../images/addressing/team_editor.png)
 
 With this structure, the "bean" game object can still refer to the "controller" component in "buddy" by the address `"buddy#controller"`.
 
-![bean](images/addressing/collection_team.png)
+![bean](../images/addressing/collection_team.png)
 
 And if you add a second instance of "team.collection" (name it "team_2"), the code running inside the "team_2" script components will work just as well. The "bean" game object instance from collection "team_2" can still address the "controller" component in "buddy" by the address `"buddy#controller"`.
 
-![bean](images/addressing/teams_editor.png)
+![bean](../images/addressing/teams_editor.png)
 
 ## Relative addressing
 
 The address `"buddy#controller"` works for the game objects in both collections because it is a *relative* address. Each of the collections "team_1" and "team_2" creates a new naming context, or "namespace" if you will. Defold avoids naming collisions by taking the naming context a collection creates into consideration for addressing:
 
-![relative id](images/addressing/relative_same.png)
+![relative id](../images/addressing/relative_same.png)
 
 - Within the naming context "team_1", the game objects "bean" and "buddy" are uniquely identified.
 - Similarly, within the naming context "team_2", the game objects "bean" and "buddy" are also uniquely identified.
@@ -156,7 +156,7 @@ It is possible to use the full identifiers described above when addressing. In m
 
 For example, suppose that you want an AI manager that tracks the state of each bean object. You want beans to report to their active status to the manager, and the manager makes tactical decisions and gives orders to the beans based on their status. It would make perfect sense in this case to create a single manager game object with a script component and place that alongside the team collections in the bootstrap collection.
 
-![manager object](images/addressing/manager_editor.png)
+![manager object](../images/addressing/manager_editor.png)
 
 Each bean is then responsible for sending status messages to the manager: "contact" if it spots an enemy or "ouch!" if it is hit and takes damage. For this to work, the bean controller scrips use absolute addressing to send messages to the component "controller" in "manager".
 
@@ -164,9 +164,9 @@ Any address that starts with a '/' will be resolved from the root of the game wo
 
 The absolute address of the manager script is `"/manager#controller"` and this absolute address will resolve to the right component no matter where it is used.
 
-![teams and manager](images/addressing/teams_manager.png)
+![teams and manager](../images/addressing/teams_manager.png)
 
-![absolute addressing](images/addressing/absolute.png)
+![absolute addressing](../images/addressing/absolute.png)
 
 ## Hashed identifiers
 

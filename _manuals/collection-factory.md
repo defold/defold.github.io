@@ -19,11 +19,11 @@ Suppose we want a character game object and a separate shield game object childe
 The *collection proxy* component is used to create a new game world, including a separate physics world, based on a collection. The new world is accessed through a new socket. All assets contained in the collection are loaded through the proxy when you message the proxy to start loading. This makes them very useful to, for instance, change levels in a game. New game worlds come with quite a lot of overhead though so do not use them for dynamic loading of small stuff. For more information, see the [Collection proxy documentation](/manuals/collection-proxy).
 </div>
 
-![Collection to spawn](images/collection_factory/collection.png)
+![Collection to spawn](../images/collection_factory/collection.png)
 
 We then add a *Collection factory* to a gameobject that will take care of the spawning and set "bean.collection" as the component's *Prototype*:
 
-![Collection factory](images/collection_factory/factory.png)
+![Collection factory](../images/collection_factory/factory.png)
 
 Spawning a bean and shield is now just a matter of calling the `collectionfactory.create()` function:
 
@@ -93,7 +93,7 @@ end
 
 By checking the *Load Dynamically* checkbox in the collection factory properties, the engine postpones the loading of the resources associated with the factory.
 
-![Load dynamically](images/collection_factory/load_dynamically.png)
+![Load dynamically](../images/collection_factory/load_dynamically.png)
 
 With the box unchecked the engine loads the prototype resources when the collection factory component is loaded so they are immediately ready for spawning.
 

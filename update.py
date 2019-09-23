@@ -120,6 +120,7 @@ def process_doc_file(file):
     replace_in_file(file, r"\((.*?)#_(.*?)\)", r"(\1#\2)")
     replace_in_file(file, r":\[.*?\]\(\.\.\/(.*?)\)", r"{% include \1 %}")
     replace_in_file(file, r"{.left}", r"")
+    replace_in_file(file, r"\(images\/", r"(../images/")
 
 
 def process_docs(download = False):

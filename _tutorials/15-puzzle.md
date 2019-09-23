@@ -49,11 +49,11 @@ The most common version of the puzzle shows the numbers 1--15 on the tiles. Howe
 
 Open the *game.project* settings file and set the dimensions of the game to 512⨉512. These dimensions will match the image you are going to use.
 
-![display settings](images/15-puzzle/display_settings.png)
+![display settings](../images/15-puzzle/display_settings.png)
 
 The next step is to download a suitable image for the puzzle. Pick any square image but make sure to scale it to 512 by 512 pixels. If you don't want to go out and search for an image, here's one:
 
-![Mona Lisa](images/15-puzzle/monalisa.png)
+![Mona Lisa](../images/15-puzzle/monalisa.png)
 
 Download the image, then drag it to the *main* folder of your project.
 
@@ -67,13 +67,13 @@ But before you create the tilemap, you need a *Tilesource* that the tilemap will
 
 Set the tile *Width* and *Height* properties to 128. This will split the 512⨉512 pixel image into 16 tiles. The tiles will be numbered 1--16 when you put them on the tilemap.
 
-![Tile source](images/15-puzzle/tilesource.png)
+![Tile source](../images/15-puzzle/tilesource.png)
 
 Next, <kbd>Right click</kbd> the *main* folder and select <kbd>New ▸ Tile Map</kbd>. Name the new file "grid.tilemap".
 
 Defold needs you to initialize the grid. To do that, select the "layer1" layer and paint the 4⨉4 grid of tiles just to the top-right of origin. It does not really matter what you set the tiles to. You will write code in a bit that will set the content of these tiles automatically. 
 
-![Tile map](images/15-puzzle/tilemap.png)
+![Tile map](../images/15-puzzle/tilemap.png)
 
 ## Putting the pieces together
 
@@ -85,7 +85,7 @@ Open *main.collection*. <kbd>Right click</kbd> the root node in the *Outline* an
 
 Set the Z position of the label to 1 to make sure it's drawn on top of the grid.
 
-![Main collection](images/15-puzzle/main_collection.png)
+![Main collection](../images/15-puzzle/main_collection.png)
 
 Next, create a Lua script file for the puzzle logic: <kbd>right click</kbd> the *main* folder and select <kbd>New ▸ Script</kbd>. Name the new file "game.script".
 
@@ -214,7 +214,7 @@ Moving a piece vertically, however, changes the parity of the number of inversio
 
 For example:
 
-![sliding a piece](images/15-puzzle/slide.png)
+![sliding a piece](../images/15-puzzle/slide.png)
 
 This move changes the tile order from:
 
@@ -283,7 +283,7 @@ end
 
 Open */input/game.input_bindings* and add a new *Mouse Trigger*. Set the name of the action to "press":
 
-![input](images/15-puzzle/input.png)
+![input](../images/15-puzzle/input.png)
 
 Go back to the script and create an `on_input()` function.
 

@@ -16,7 +16,7 @@ When you build a game in Defold, you statically declare the resource tree. Every
 - Collection proxy component references (collections).
 - Custom resources declared in "game.project".
 
-![Resource tree](images/resource/resource_tree.png)
+![Resource tree](../images/resource/resource_tree.png)
 
 When the game is *bundled*, only what is in the resource tree will be included. Anything that is not referenced in the tree is left out. There is no need to manually select what to include or exclude from the bundle.
 
@@ -33,13 +33,13 @@ However, the engine will not automatically load the following types of reference
 
 The default way Defold bundles and loads resources can be altered to give fine grained control over how and when resources enter memory.
 
-![Resource loading](images/resource/loading.png)
+![Resource loading](../images/resource/loading.png)
 
 ## Dynamically loading factory resources
 
 Resources referenced by factory components are normally loaded into memory when the component is loaded. The resources are then ready for being spawned into the game as soon as the factory exists in the runtime. To change the default behavior and postpone the loading of factory resources you can simply mark a factory with the *Load Dynamically* checkbox.
 
-![Load dynamically](images/resource/load_dynamically.png)
+![Load dynamically](../images/resource/load_dynamically.png)
 
 With this box checked, the engine will still include the referenced resources in the game bundle, but it will not automatically load the factory resources. Instead, you have two options:
 
@@ -58,6 +58,6 @@ For factories that are marked *Load Dynamically* you can call the [`factory.unlo
 
 With collection proxies, it is possible to leave out all the resources the component refers to from the bundling process. This is useful if you need to keep the bundle size to a minimum. For instance, when running games on the web as HTML5 the browser will download the whole bundle before executing the game.
 
-![Exclude](images/resource/exclude.png)
+![Exclude](../images/resource/exclude.png)
 
 By marking a collection proxy as *Exclude* the referenced resource will be left out of the game bundle. Instead, you can store excluded collections on selected cloud storage. The [Live update manual](/manuals/live-update/) explains how this feature works.

@@ -24,7 +24,7 @@ Clipping Inverted
 
 Then add the node(s) you want to be clipped as children to the clipping node.
 
-![Create clipping](images/gui-clipping/create.png)
+![Create clipping](../images/gui-clipping/create.png)
 
 ## Stencil mask
 
@@ -34,7 +34,7 @@ Clipping works by having nodes writing to a *stencil buffer*. This buffer contai
 - If a clipping node has a clipper parent it will instead clip the parent's clipping mask. A clipping child node can never _extend_ the current clipping mask, only clip it further.
 - Non clipper nodes that are children to clippers will be rendered with the clipping mask created by the parent hierarchy.
 
-![Clipping hierarchy](images/gui-clipping/setup.png)
+![Clipping hierarchy](../images/gui-clipping/setup.png)
 
 Here, three nodes are set up in a hierarchy:
 
@@ -44,7 +44,7 @@ Here, three nodes are set up in a hierarchy:
 
 Four combinations of normal and inverted clippers are possible for this hierarchy. The green area marks the part of the circle that is rendered. The rest is masked:
 
-![Stencil masks](images/gui-clipping/modes.png)
+![Stencil masks](../images/gui-clipping/modes.png)
 
 ## Stencil limitations
 
@@ -66,7 +66,7 @@ Layers can be used to control rendering order (and batching) of nodes. When usin
 A clipping node and its hierarchy will be drawn first if it has a layer assigned and in the regular order if no layer is assigned.
 </div>
 
-![Layers and clipping](images/gui-clipping/layers.png)
+![Layers and clipping](../images/gui-clipping/layers.png)
 
 Here the clipper node "ocular" is set to "layer3" and the "bean" node is set to "layer1". The ocular clipper's texture is therefore rendered on top of the clipped bean.
 

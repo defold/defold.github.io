@@ -507,7 +507,7 @@ end
 
 All variables that you declare are by default global, meaning that they are available through all parts of the Lua runtime context. Defold has a setting *shared_state* setting in *game.project* that controls this context. If the option is set, all scripts, GUI scripts and the render script are evaluated in the same Lua context and global variables are visible everywhere. If the option is not set, the engine executes scripts, GUI scripts and the render script in separate contexts.
 
-![Contexts](images/lua/lua_contexts.png)
+![Contexts](../images/lua/lua_contexts.png)
 
 Defold allows you to use the same script file in several separate game object components. Any locally declared variables are shared between components that runs the same script file.
 
@@ -613,19 +613,19 @@ A common implementation design consideration is how to structure code for shared
 Behaviors in a module
 : Encapsulating a behavior in a module allows you to easily share code between different game objects’ script components (and GUI scripts). When writing module functions it is generally best to write strictly functional code. There are cases where stored state or side effects are a necessity (or lead to cleaner design). If you have to store internal state in the module, be aware that components share Lua contexts. See the [Modules documentation](/manuals/modules) for details.
 
-  ![Module](images/lua/lua_module.png)
+  ![Module](../images/lua/lua_module.png)
 
   Also, even if it is possible to have module code directly modify the internals of a game object (by passing `self` to a module function) we strongly discourage you from doing so since you will create very tight coupling.
 
 A helper game object with encapsulated behavior
 : Just like you can contain script code in a Lua module, you can contain it in a game object with a script component. The difference is that if you contain it in a game object you can communicate with it strictly through message passing.
 
-  ![Helper](images/lua/lua_helper.png)
+  ![Helper](../images/lua/lua_helper.png)
 
 Grouping game object with helper behavior object inside a collection
 : In this design you can create a behavior game object that automatically acts upon another target game object, either by a predefined name (the user has to rename the target game object to match), or through a `go.property()` URL that points to the target game object.
 
-  ![Collection](images/lua/lua_collection.png)
+  ![Collection](../images/lua/lua_collection.png)
 
   The benefit with this setup is that you can drop a behavior game object into a collection containing the target object. Zero additional code is needed.
 

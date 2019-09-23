@@ -34,7 +34,7 @@ Skin
 
 You should now be able to view your Spine model in the editor:
 
-![Spine model in editor](images/spinemodel/spinemodel.png)
+![Spine model in editor](../images/spinemodel/spinemodel.png)
 
 ## Runtime animation
 

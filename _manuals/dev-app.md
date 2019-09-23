@@ -25,7 +25,7 @@ The stand-alone version will only work for projects without any [native extensio
 * Click on the version you want to download to expand a list of available engine builds.
 * Select *engine/armv7-android/dmengine.apk* for a debug enabled build for the Android platform (Armv7).
 
-![Download dmengine](images/dev-app/download_dmengine.png)
+![Download dmengine](../images/dev-app/download_dmengine.png)
 
 Download the file, then issue the following `adb` command from the location of the *.apk*:
 
@@ -38,7 +38,7 @@ Success
 
 The development "dmengine" app is now available on the device.
 
-![dmengine on the device](images/dev-app/dmengine_on_device.png)
+![dmengine on the device](../images/dev-app/dmengine_on_device.png)
 
 ## Launching your game
 
@@ -50,7 +50,7 @@ To launch your game on your device, the dev app and editor must be able to conne
 4. Select <kbd>Project ▸ Build And Launch</kbd> to run the game. It may take a while for the game to start since the game content is streamed to the device over the network.
 5. While the game is running, you can use [hot reloading](/manuals/debugging#hot_reloading) as usual.
 
-![launch](images/dev-app/launch.png)
+![launch](../images/dev-app/launch.png)
 
 ### Connecting to an iOS device using USB on Windows
 

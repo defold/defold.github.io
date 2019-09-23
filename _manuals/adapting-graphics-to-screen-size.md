@@ -29,17 +29,17 @@ Retro/8-bit graphics often refer to games emulating the graphical style of old g
 
 Let's take this tileset and player character ([source](https://ansimuz.itch.io/grotto-escape-game-art-pack)) and use them for an 8-bit retro game with a resolution of 320x200:
 
-![](images/screen_size/retro-player.png)
+![](../images/screen_size/retro-player.png)
 
-![](images/screen_size/retro-tiles.png)
+![](../images/screen_size/retro-tiles.png)
 
 Setting 320x200 in the *game.project* file and launching the game would look like this:
 
-![](images/screen_size/retro-original_320x200.png)
+![](../images/screen_size/retro-original_320x200.png)
 
 The window is absolutely tiny on a modern high resolution screen! Increasing the window size four times to 1280x800 makes it more suitable for a modern screen:
 
-![](images/screen_size/retro-original_1280x800.png)
+![](../images/screen_size/retro-original_1280x800.png)
 
 Now that the window size is more reasonable we also need to do something about the graphics. It's so small it's very hard to see what is going on in the game. We can use the render script to set a fixed and zoomed projection:
 
@@ -49,25 +49,25 @@ msg.post("@render:", "use_fixed_projection", { zoom = 4 })
 
 This will give the following result:
 
-![](images/screen_size/retro-zoomed_1280x800.png)
+![](../images/screen_size/retro-zoomed_1280x800.png)
 
 This is better. The window and graphics both have a good size, but if we look closer there is an obvious problem:
 
-![](images/screen_size/retro-zoomed_linear.png)
+![](../images/screen_size/retro-zoomed_linear.png)
 
 The graphics look blurred! This is caused by the way the zoomed in graphics is sampled from the texture when rendered by the GPU. The default setting in the *game.project* file under the Graphics section is *linear*:
 
-![](images/screen_size/retro-settings_linear.png)
+![](../images/screen_size/retro-settings_linear.png)
 
 Changing this to *nearest* will give the result we are after:
 
-![](images/screen_size/retro-settings_nearest.png)
+![](../images/screen_size/retro-settings_nearest.png)
 
-![](images/screen_size/retro-zoomed_nearest.png)
+![](../images/screen_size/retro-zoomed_nearest.png)
 
 Now we have crisp pixel-perfect graphics for our retro game. There are even more things to consider, such as disabling sub-pixels for sprites in *game.project*:
 
-![](images/screen_size/retro-subpixels.png)
+![](../images/screen_size/retro-subpixels.png)
 
 When the Subpixels option is disabled sprites will never get rendered on half pixels and instead always snap to the nearest full pixel.
 
@@ -89,7 +89,7 @@ You should configure the width and height in the *game.project* file to a size t
 
 If you also wish to support high resolution retina screens you can enable this in the *game.project* file in the Display section:
 
-![](images/screen_size/highdpi-enabled.png)
+![](../images/screen_size/highdpi-enabled.png)
 
 This will create a high dpi back buffer on displays that support it. The game will render in double the resolution than what is set in the Width and Height settings, which will still be the logical resolution used in scripts and properties. This means that all measurements stay the same and any content that is rendered at 1x scale will look the same. But if you import high res images and scale them to 0.5x they will be high dpi on screen.
 
@@ -117,4 +117,4 @@ Defold supports GUIs that automatically adapt to screen orientation changes on m
 
 The Debug menu contains an option to simulate the resolution of either a certain device model resolution or a custom resolution. While the application is running you can select <kbd>Debug->Simulate Resolution</kbd> and pick one of the device models from the list. The running application window will resize and you'll be able to see how your game looks in a different resolution or with a different aspect ratio.
 
-![](images/screen_size/simulate-resolution.png)
+![](../images/screen_size/simulate-resolution.png)

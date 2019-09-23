@@ -53,7 +53,7 @@ Open the *game.project* settings file and set the dimensions of the game to 768�
 
 Very little is needed in terms of graphics. One 16x16 segment for the snake, one for obstacles and one for the food. This image is the only asset you need. <kbd>Right click</kbd> the image, save it to your local disk and drag it to a location in the project folder.
 
-![snake sprites](images/snake/snake.png)
+![snake sprites](../images/snake/snake.png)
 
 Defold provides a built in *Tilemap* component that you will use to create the playfield. A tilemap allows you to set and read individual tiles, which suits this game perfectly. Since tilemaps fetch their graphics from a *Tilesource* so you need to create one:
 
@@ -63,7 +63,7 @@ Set the *Image* property to the graphics file you just imported.
 
 The *Width* and *Height* properties should be kept at 16. This will split the 32⨉32 pixel image into 4 tiles, numbered 1–4.
 
-![tilesource](images/snake/tilesource.png)
+![tilesource](../images/snake/tilesource.png)
 
 Note that the *Extrude Borders* property is set to 1 pixel. This is to prevent visual artifacts around the tiles that have graphics all the way out to the edge.
 
@@ -73,7 +73,7 @@ Now you have a tilesource ready for use so it's time to create the playfield til
 
 <kbd>Right click</kbd> the *main* folder and select <kbd>New ▸ Tile Map</kbd>. Name the new file "grid" (the editor will save the file as "grid.tilemap").
 
-![Set tilesource](images/snake/set_tilesource.png)
+![Set tilesource](../images/snake/set_tilesource.png)
 
 Set the *Tile Source* property of the new tile map to "snake.tilesource".
 
@@ -85,7 +85,7 @@ Choose the menu option <kbd>Edit ▸ Select Tile...</kbd> to display the tile pa
 
 Paint a border around the edge of the screen and some obstacles.
 
-![tilemap](images/snake/tilemap.png)
+![tilemap](../images/snake/tilemap.png)
 
 Save the tilemap when you are done.
 
@@ -93,11 +93,11 @@ Save the tilemap when you are done.
 
 Now open *main.collection*. This is the bootstrap collection that is loaded on engine start. <kbd>Right click</kbd> the root in the *Outline* and select <kbd>Add Game Object</kbd> which creates a new game object in the collection that is loaded when the game starts.
 
-![add game object](images/snake/add_game_object.png)
+![add game object](../images/snake/add_game_object.png)
 
 Then <kbd>Right click</kbd> then new game object and select <kbd>Add Component File</kbd>. Choose the file "grid.tilemap" that you just created.
 
-![add component](images/snake/add_component_file.png)
+![add component](../images/snake/add_component_file.png)
 
 <kbd>Right click</kbd> the folder *main* in the *Assets* browser and select <kbd>New ▸ Script</kbd>. Name the new script file "snake" (it is saved as "snake.script"). This file will hold all the logic for the game.
 
@@ -105,7 +105,7 @@ Go back to *main.collection* and <kbd>right click</kbd> then game object holding
 
 Now you have the tilemap component and the script in place. If you run the game you should see the playfield as you drew it on the tilemap.
 
-![main collection](images/snake/main_collection_no_gui.png)
+![main collection](../images/snake/main_collection_no_gui.png)
 
 ## The game script - initialization
 
@@ -191,13 +191,13 @@ end
 
 If you run the game now you should see the 4 segment long snake crawl from left to right over the play field.
 
-![run the game](images/snake/run_1.png)
+![run the game](../images/snake/run_1.png)
 
 ## Player input
 
 Before you add code to react to player input, you need to set up the input connections. Find the file *input/game.input_binding* in the *Assets* browser and <kbd>double click</kbd> to open it. Add a set of *Key Trigger* bindings for movement up, down, left and right.
 
-![input](images/snake/input.png)
+![input](../images/snake/input.png)
 
 The input binding file maps actual user input (keys, mouse movements etc) to action *names* that are fed to scripts that have requested input. With bindings in place, open *snake.script* and add the following code:
 

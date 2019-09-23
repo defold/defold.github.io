@@ -11,11 +11,11 @@ A camera in Defold is a component that changes the viewport and projection of th
 
 To create a camera, <kbd>right click</kbd> a game object and select <kbd>Add Component ▸ Camera</kbd>. You can alternatively create a component file in your project hierarchy and add the component file to the game object.
 
-![create camera component](images/camera/create.png)
+![create camera component](../images/camera/create.png)
 
 The camera component has the following properties that defines the camera *frustum* (perspective camera only):
 
-![camera settings](images/camera/settings.png)
+![camera settings](../images/camera/settings.png)
 
 Id
 : The id of the component
@@ -75,7 +75,7 @@ msg.post("@render:", "use_fixed_projection", { zoom = 2, near = -1, far = 1 })
 
 You can have the camera follow a game object by setting the game object the camera component is attached to as a child of the game object to follow:
 
-![follow game object](images/camera/follow.png)
+![follow game object](../images/camera/follow.png)
 
 An alternative way is to update the position of the game object the camera component is attached to every frame as the game object to follow moves.
 
@@ -106,7 +106,7 @@ end
 
 The camera component supplies the render script with a perspective projection. This is well suited for 3D games. For 2D games, it is often desirable to render the scene with *orthographic projection*. This means that the view of the camera is no longer dictated by a frustum, but by a box. Orthographic projection is unrealistic in that it does not alter the size of objects based on their distance. An object 1000 units away will render at the same size as an object right in front of the camera.
 
-![projections](images/camera/projections.png)
+![projections](../images/camera/projections.png)
 
 ### Orthographic projection (2D)
 To use an orthographic projection you ignore the projection matrix sent by the camera component and instead provide one yourself in the render script. The default render script supports three orthographic projections; `Stretch`, `Fixed` and `Fixed Fit`. You select which one to use by sending a message to the render script:

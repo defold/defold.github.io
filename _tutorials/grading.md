@@ -19,7 +19,7 @@ Now let's say that you want to render your whole game in black-and-white. One po
 
 A much more flexible approach is to instead do the rendering in two separate steps:
 
-![Render target](images/grading/render_target.png)
+![Render target](../images/grading/render_target.png)
 
 1. Draw all components as usual, but draw them to an off-screen buffer instead of the usual frame buffer. You do this by drawing to something called a *render target*.
 2. Draw a square polygon to the frame buffer and use the pixel data stored in the render target as the polygon's texture source. Also make sure that the square polygon is stretched to cover the whole screen.
@@ -34,11 +34,11 @@ We need to modify the built in render script and add the new rendering functiona
 2. Create a new render file called */main/grade.render* by right clicking *main* in the *Asset* view and selecting <kbd>New ▸ Render</kbd>.
 3. Open *grade.render* and set its *Script* property to "/main/grade.render_script".
 
-   ![grade.render](images/grading/grade_render.png)
+   ![grade.render](../images/grading/grade_render.png)
 
 4. Open *game.project* and set *Render* to "/main/grade.render".
 
-   ![game.project](images/grading/game_project.png)
+   ![game.project](../images/grading/game_project.png)
 
 Now the game is set up to run with a new render pipeline that we can modify. To test that our render script copy is used by the engine, run your game, then do a modification to the render script that will give a visual result, and then reload the script. For example, you can disable the drawing of tiles and sprites, then press <kbd>⌘ + R</kbd> to hot-relad the "broken" render script into the running game:
 
@@ -116,7 +116,7 @@ To draw the pixels in the render target's color buffer onto the screen, we need 
 
 Create a quadratic plane mesh in Blender (or any other 3D modelling program). Set the vertex coordinates to -1 and 1 on the X-axis and -1 and 1 on the Y axis. Blender has the Z-axis up by default so you need to rotate the mesh 90° around the X-axis. You should also make sure that you generate correct UV-coordinates for the mesh. In Blender, enter Edit Mode with the mesh selected, then select <kbd>Mesh ▸ UV unwrap... ▸ Unwrap</kbd>.
 
-![game.project](images/grading/quad_blender.png)
+![game.project](../images/grading/quad_blender.png)
 
 1. Export the model as a Collada file called *quad.dae* and drag it into your Defold project.
 2. Open *main.collection* and create a new game object called "grade".
@@ -132,11 +132,11 @@ Leave the game object unscaled at origin. Later, when we render the quad we will
 5. Add a *Sampler* called "original". This will be used to sample pixels from the off-screen render target color buffer.
 6. Add a *Tag* called "grade". We will make a new *render predicate* in the render script matching this tag to draw the quad.
 
-   ![grade.material](images/grading/grade_material.png)
+   ![grade.material](../images/grading/grade_material.png)
 
 7. Open *main.collection*, select the model component in game object "grade" and set its *Material* property to "/main/grade.material".
 
-   ![model properties](images/grading/model_properties.png)
+   ![model properties](../images/grading/model_properties.png)
 
 8. The vertex shader program can be left as created from the base template:
 
@@ -224,13 +224,13 @@ end
 
 Now let's run the game and see the result:
 
-![desaturated game](images/grading/desaturated_game.png)
+![desaturated game](../images/grading/desaturated_game.png)
 
 ## Color grading
 
 Colors are expressed as three component values where each component dictates the amount of red, green or blue a color consist of. The full color spectrum from black, through red, green, blue, yellow and pink to white can be fit into a cube shape:
 
-![color cube](images/grading/color_cube.png)
+![color cube](../images/grading/color_cube.png)
 
 Any color that can be displayed on screen can be found in this color cube. The basic idea of color grading is to use such a color cube, but with altered colors, as a 3D *lookup table*.
 
@@ -246,13 +246,13 @@ We can do this in our fragment shader:
 2. Look up the color position of the sampled pixel in a color-graded color cube.
 3. Set the output fragment color to the looked up value.
 
-![render target grading](images/grading/render_target_grading.png)
+![render target grading](../images/grading/render_target_grading.png)
 
 ## Representing the lookup table
 
 Open GL ES 2.0 does not support 3D textures so we need to figure out another way to represent the 3D color cube. A common way of doing that is to slice the cube along the Z-axis (blue) and lay each slice side by side in a 2-dimensional grid. Each of the 16 slices contains a 16⨉16 pixel grid. We store this in a texture that we can read from in the fragment shader with a sampler:
 
-![lookup texture](images/grading/lut.png)
+![lookup texture](../images/grading/lut.png)
 
 The resulting texture contains 16 cells (one for each blue color intensity) and within each cell 16 red colors along the X axis and 16 green colors along the Y axis. The texture represents the whole 16 million color RGB color space in just 4096 colors---merely 4 bits of color depth. By most standards this lousy but thanks to a feature of GL graphics hardware we can get very high color accuracy back. Let's see how.
 
@@ -268,7 +268,7 @@ Here `B` is the blue component value between 0 and 1 and `N` is the total number
 
 For example, the RGB value `(0.63, 0.83, 0.4)` is found in the cell containing all the colors with a blue value of `0.4`, which is cell number 6. Knowing that, the lookup of the final texture coordinates based on the green and red values is straightforward:
 
-![lut lookup](images/grading/lut_lookup.png)
+![lut lookup](../images/grading/lut_lookup.png)
 
 Note that we need to treat red and green values `(0, 0)` as being in the *center* of the bottom left pixel and the values `(1.0, 1.0)` as being in the *center* of the top right pixel.
 
@@ -278,7 +278,7 @@ The reason we read starting at the center of the lower left pixel and up to the 
 
 When sampling at these specific coordinates on the texture we see that we end up right between 4 pixels. So what color value will GL tell us that point has?
 
-![lut filtering](images/grading/lut_filtering.png)
+![lut filtering](../images/grading/lut_filtering.png)
 
 The answer depends on how we have specified the sampler's *filtering* in the material.
 
@@ -296,15 +296,15 @@ Let's implement the texture lookup in the fragment shader:
 2. Add a second sampler called "lut" (for lookup table).
 3. Set the *Filter min* property to `FILTER_MODE_MIN_LINEAR` and the *Filter mag* property to `FILTER_MODE_MAG_LINEAR`.
 
-    ![lut sampler](images/grading/material_lut_sampler.png)
+    ![lut sampler](../images/grading/material_lut_sampler.png)
 
 4. Download the following lookup table texture (*lut16.png*) and add it to your project.
 
-    ![16 colors lut lookup table](images/grading/lut16.png)
+    ![16 colors lut lookup table](../images/grading/lut16.png)
 
 5. Open *main.collection* and set the *lut* texture property to the downloaded lookup texture.
 
-    ![quad model lut](images/grading/quad_lut.png)
+    ![quad model lut](../images/grading/quad_lut.png)
 
 6. Finally, open *grade.fp* so we can add support for color lookup:
 
@@ -351,11 +351,11 @@ Let's implement the texture lookup in the fragment shader:
 
 Currently, the lookup table texture just returns the same color values that we look up. This means that the game should render with its original coloring:
 
-![world original look](images/grading/world_original.png)
+![world original look](../images/grading/world_original.png)
 
 So far it looks like we have done everything right, but there is a problem lurking beneath the surface. Look what happens when we add a sprite with a gradient test texture:
 
-![blue banding](images/grading/blue_banding.png)
+![blue banding](../images/grading/blue_banding.png)
 
 The blue gradient shows some really ugly banding. Why is that?
 
@@ -438,7 +438,7 @@ void main()
 
 Running the game again with the test texture now yields much better results. The banding on the blue channel is gone:
 
-![blue no banding](images/grading/blue_no_banding.png)
+![blue no banding](../images/grading/blue_no_banding.png)
 
 ## Grading the lookup texture
 
@@ -448,13 +448,13 @@ Okay, that was a lot of work to draw something that looks exactly like the origi
 2. Open the screenshot in your favorite image manipulation program.
 3. Apply any number of color adjustments (brightness, contrast, color curves, white balance, exposure etc, etc).
 
-    ![world in Affinity](images/grading/world_graded_affinity.png)
+    ![world in Affinity](../images/grading/world_graded_affinity.png)
 
 4. Apply the same color adjustments to the lookup table texture file (*lut16.png*).
 5. Save the color adjusted lookup table texture file.
 6. Replace the texture *lut16.png* used in your Defold project with the color adjusted one.
 7. Run the game!
 
-![world graded](images/grading/world_graded.png)
+![world graded](../images/grading/world_graded.png)
 
 Joy!

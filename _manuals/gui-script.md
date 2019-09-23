@@ -47,7 +47,7 @@ end
 
 To attach the script to a GUI component, open the GUI component blueprint file and select the root in the *Outline* to bring up GUI *Properties*. Set the *Script* property to the script file
 
-![Script](images/gui-script/set_script.png)
+![Script](../images/gui-script/set_script.png)
 
 If the GUI component has been added to a game object somewhere in your game, the script will now run.
 
@@ -79,13 +79,13 @@ local stats = { score = 4711, stars = 3, health = 6 }
 msg.post("hud#gui", "set_stats", stats)
 ```
 
-![message passing](images/gui-script/message_passing.png)
+![message passing](../images/gui-script/message_passing.png)
 
 ## Addressing nodes
 
 GUI nodes can be manipulated by a GUI script attached to the component. Each node must have a unique *Id* that is set in the editor:
 
-![message passing](images/gui-script/node_id.png)
+![message passing](../images/gui-script/node_id.png)
 
 The *Id* allows a script to get hold of a reference to the node and manipulate it with the [gui namespace functions](/ref/gui):
 
@@ -114,7 +114,7 @@ gui.set_font(new_textnode, "sourcesans")
 gui.set_color(new_textnode, vmath.vector4(0.69, 0.6, 0.8, 1.0))
 ```
 
-![dynamic node](images/gui-script/dynamic_nodes.png)
+![dynamic node](../images/gui-script/dynamic_nodes.png)
 
 The alternative way to create new nodes is to clone an existing node with the `gui.clone()` function or a tree of nodes with the `gui.clone_tree()` function:
 

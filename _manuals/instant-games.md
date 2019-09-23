@@ -7,7 +7,7 @@ brief: This manual explains how to create Facebook Instant Games with Defold.
 
 Instant Games is a new way for people to play games across Facebook platforms. Powered by HTML5 technology, it allows people to find and play games directly in the News Feed or Messenger conversations, on both desktops and mobile devices.
 
-![InstantGames](images/instant-games/instantgames.png)
+![InstantGames](../images/instant-games/instantgames.png)
 
 ## Publishing Instant Games
 
@@ -17,7 +17,7 @@ Before you can publish your Defold game to Facebook, you need to set up your gam
 
 2. Add a dependency to the Instant Games extension in your "game.project" file. Add "https://github.com/defold/extension-fbinstant/archive/master.zip" to the *Dependencies* property.
 
-   ![Project settings](images/instant-games/game_project.png)
+   ![Project settings](../images/instant-games/game_project.png)
 
 3. Make sure to include the Instant Games SDK in your "index.html" that is generated when you bundle your game.
 
@@ -61,7 +61,7 @@ Refer to the extension [API documentation](https://github.com/defold/extension-f
 
 A Defold version of the "Tic Tac Toe" example game for Instant Games is available with full source code and all assets in the [official GitHub repository](https://github.com/defold/extension-fbinstant). You can use it as a learning asset or reference while developing.
 
-![Tic Tac Toe](images/instant-games/tictactoe.png)
+![Tic Tac Toe](../images/instant-games/tictactoe.png)
 
 ## Reducing bundle size
 

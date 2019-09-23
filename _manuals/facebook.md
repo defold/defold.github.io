@@ -26,14 +26,14 @@ To develop for Facebook you must sign up as a Facebook developer. This allows yo
 * Log in with your Facebook account.
 * Follow the instructions to register and verify your developer account.
 
-![Register as a developer](images/facebook/register_dev.png)
-![ developer](images/facebook/register_verify.png)
+![Register as a developer](../images/facebook/register_dev.png)
+![ developer](../images/facebook/register_verify.png)
 
 ## Creating a Facebook app
 
 The next step is to create a Facebook application. The <kbd>My Apps</kbd> menu in the corner lists your apps, and there is an option to <kbd>Add a New App</kbd>.
 
-![Add new app](images/facebook/add_new_app_menu.png)
+![Add new app](../images/facebook/add_new_app_menu.png)
 
 You are presented with a selection of target platforms. Click *basic setup* to skip the wizards.
 
@@ -41,25 +41,25 @@ You are presented with a selection of target platforms. Click *basic setup* to s
 Most information provided through the wizards is irrelevant when developing on Defold. In particular, you usually don't need to edit *Info.plist* or *AndroidManifest.xml* yourself. Defold does that work for you.
 </div>
 
-![Add new app platform](images/facebook/add_new_app_platform.png)
+![Add new app platform](../images/facebook/add_new_app_platform.png)
 
 You can easily add, remove and change platform settings in the app dashboard. You are now asked to name your app and select *Display Name*, *Namespace* and *Category*. Again, these can all be edited in the app dashboard. When you have gone through this, Facebook creates an app with a unique app identifier for you. The *App ID* is not possible to change since it identifies this specific app.
 
-![New app id](images/facebook/new_app_id.png)
+![New app id](../images/facebook/new_app_id.png)
 
-![App dashboard settings](images/facebook/add_platform.png)
+![App dashboard settings](../images/facebook/add_platform.png)
 
 Click the *Settings* tab. Notice the numerical *App ID*. That identifier needs to go into the [project settings](/manuals/project-settings) of your Defold game. Open the  *game.project* file from the *Project Explorer* and scroll to the *Facebook* section and add the *App ID* to the `Appid` field.
 
 Now, back in the *Settings* tab on the Facebook app page, click *+ Add Platform* to add a new platform to the app. Each platform has a set of settings to fill in.
 
-![Select platform](images/facebook/select_platform.png)
+![Select platform](../images/facebook/select_platform.png)
 
 ## iOS
 
 For iOS you need to specify the game's `bundle_identifier` as specified in *game.project*.
 
-![iOS settings](images/facebook/settings_ios.png)
+![iOS settings](../images/facebook/settings_ios.png)
 
 ## Android
 
@@ -71,21 +71,21 @@ $ cat certificate.pem | openssl x509 -outform der | openssl sha1 -binary | opens
 
 (See [Creating certificates and keys](/manuals/android/#creating_certificates_and_keys) in the Android manual for details on how to create your own signing files.)
 
-![Android settings](images/facebook/settings_android.png)
+![Android settings](../images/facebook/settings_android.png)
 
 ## Facebook Canvas
 
 For HTML5 games, the process is a bit different. Facebook needs access to your game content from somewhere. There are two options:
 
-![Facebook Canvas settings](images/facebook/settings_canvas.png)
+![Facebook Canvas settings](../images/facebook/settings_canvas.png)
 
 1. Use Facebook's *Simple Application Hosting*. Click *Yes* to select managed hosting. Select *uploaded assets* to open the hosted asset manager.
 
-    ![Simple hosting](images/facebook/simple_hosting.png)
+    ![Simple hosting](../images/facebook/simple_hosting.png)
 
     Select that you want to host a "HTML5 Bundle":
 
-    ![HTML5 bundle](images/facebook/html5_bundle.png)
+    ![HTML5 bundle](../images/facebook/html5_bundle.png)
 
     Compress your HTML5 bundle into a .7z or .zip archive and upload it to Facebook. Make sure to click *Push to production* to start serving the game.
 
@@ -167,11 +167,11 @@ Facebook Analytics allows you as a developer to get aggregated demographics and 
 
 Before you can use Facebook Analytics you need to create a Facebook app and add the *App ID* to *game.project* as described above. Next step is to add the Analytics product to your Facebook app:
 
-![Add Facebook Analytics](images/facebook/add_facebook_analytics.png)
+![Add Facebook Analytics](../images/facebook/add_facebook_analytics.png)
 
 Once you have added the Facebook Analytics product to your Facebook app you can optionally configure the Analytics settings. Refer to the Facebook Developer documentation for more information about the different settings:
 
-![Add Facebook Analytics](images/facebook/facebook_analytics_settings.png)
+![Add Facebook Analytics](../images/facebook/facebook_analytics_settings.png)
 
 ### Usage
 
@@ -196,11 +196,11 @@ The Facebook SDK used by Defold will also automatically generate several events,
 
 Once you have sent some events they will show up in the Facebook Analytics dashboard, accessible from your Facebook app page via the *View Analytics* button:
 
-![Add Facebook Analytics](images/facebook/facebook_analytics_open_dashboard.png)
+![Add Facebook Analytics](../images/facebook/facebook_analytics_open_dashboard.png)
 
 Events are accessed from the *Events* option on the from the Facebook Analytics page:
 
-![Add Facebook Analytics](images/facebook/facebook_analytics_show_events.png)
+![Add Facebook Analytics](../images/facebook/facebook_analytics_show_events.png)
 
 ### Sharing events with Facebook
 

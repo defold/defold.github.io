@@ -137,7 +137,7 @@ This will result in a full screen webview being shown, loading a remote web page
 feedback form. Depending of how we setup our player feedback webpage it will look something like
 this:
 
-![Player feedback web page](images/webview/webview_player_feedback1.png)
+![Player feedback web page](../images/webview/webview_player_feedback1.png)
 
 Note: In our example we also included a link to google.com, just to verify that blocking any navigation
 that would lead away from our webpage.
@@ -230,7 +230,7 @@ local webview_id = webview.create(webview_callback)
 webview.set_position(webview_id, 0, 0, -1, 500)
 ```
 
-![Resized feedback page](images/webview/webview_player_feedback2.png)
+![Resized feedback page](../images/webview/webview_player_feedback2.png)
 
 If the user is on a device with poor performance, the page might not load instantly and display as
 white while loading. This might be jarring to our player, so let's hide the webview until the page

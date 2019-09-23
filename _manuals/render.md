@@ -15,7 +15,7 @@ At the heart of the rendering pipeline is the _render script_. This is a Lua scr
 
 In the "Builtins" folder of your projects you can find the default render resource ("default.render") and the default render script ("default.render_script").
 
-![Builtin render](images/render/builtin.png)
+![Builtin render](../images/render/builtin.png)
 
 To set up a custom renderer:
 
@@ -37,11 +37,11 @@ The camera component can be used for both orthographic and perspective projectio
 
 The stretch projection will always draw an area of your game that is equal to the dimensions set in "game.project", even when the window is resized. If the aspect ratio changes it will result in game content being stretched either vertically or horizontally:
 
-![Stretch projection](images/render/stretch_projection.png)
+![Stretch projection](../images/render/stretch_projection.png)
 
 *Stretch projection with original window size*
 
-![Stretch projection when resized](images/render/stretch_projection_resized.png)
+![Stretch projection when resized](../images/render/stretch_projection_resized.png)
 
 *Stretch projection with the window stretched horizontally*
 
@@ -55,15 +55,15 @@ msg.post("@render:", "use_stretch_projection", { near = -1, far = 1 })
 
 Just like the stretch projection the fixed fit projection will always show an area of the game that is equal to the dimensions set in "game.project", but if the window is resized and the aspect ratio changes the game content will retain the original aspect ratio and additional game content will be shown vertically or horizontally:
 
-![Fixed fit projection](images/render/fixed_fit_projection.png)
+![Fixed fit projection](../images/render/fixed_fit_projection.png)
 
 *Fixed with projection with original window size*
 
-![Fixed fit projection when resized](images/render/fixed_fit_projection_resized.png)
+![Fixed fit projection when resized](../images/render/fixed_fit_projection_resized.png)
 
 *Fixed with projection with the window stretched horizontally*
 
-![Fixed fit projection when smaller](images/render/fixed_fit_projection_resized_smaller.png)
+![Fixed fit projection when smaller](../images/render/fixed_fit_projection_resized_smaller.png)
 
 *Fixed with projection with the window reduced to 50% of original size*
 
@@ -77,15 +77,15 @@ msg.post("@render:", "use_fixed_fit_projection", { near = -1, far = 1 })
 
 The fixed projection will retain the original aspect ratio and render your game content with a fixed zoom level. This means that it if the zoom level is set to something other than 100% it will show more or less than the area of the game defined by the dimensions in "game.project":
 
-![Fixed projection](images/render/fixed_projection_zoom_2_0.png)
+![Fixed projection](../images/render/fixed_projection_zoom_2_0.png)
 
 *Fixed projection with zoom set to 2*
 
-![Fixed projection](images/render/fixed_projection_zoom_0_5.png)
+![Fixed projection](../images/render/fixed_projection_zoom_0_5.png)
 
 *Fixed projection with zoom set to 0.5*
 
-![Fixed projection](images/render/fixed_projection_zoom_2_0_resized.png)
+![Fixed projection](../images/render/fixed_projection_zoom_2_0_resized.png)
 
 *Fixed projection with zoom set to 2 and window reduced to 50% of original size*
 
@@ -114,7 +114,7 @@ Each object that is drawn onto the screen has a material attached to it that con
 
 In your render script, you can then create a *render predicate* and specify which tags should belong to that predicate. When you tell the engine to draw the predicate, each object with a material containing a tag matching the list specified for the predicate will be drawn.
 
-![Render predicate](images/render/render_predicate.png)
+![Render predicate](../images/render/render_predicate.png)
 
 A detailed description on how materials work can be found in the [Material documentation](/manuals/material).
 

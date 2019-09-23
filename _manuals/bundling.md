@@ -13,7 +13,7 @@ You can create an application bundle for all platforms that Defold supports from
 
 You create an application bundle from the Project menu and Bundle option:
 
-![](images/bundling/bundle_menu.png)
+![](../images/bundling/bundle_menu.png)
 
 Selecting any of the menu options will bring up the Bundle dialog for that specific platform.
 
@@ -21,7 +21,7 @@ Selecting any of the menu options will bring up the Bundle dialog for that speci
 
 When bundling your game there is an option to create a build report. This is very useful to get a grip on the size of all the assets that are part of your game bundle. Simply check the *Generate build report* checkbox when bundling the game.
 
-![build report](images/profiling/build_report.png)
+![build report](../images/profiling/build_report.png)
 
 To learn more about build reports please refer to the [Profiling manual](/manuals/profiling/#build_reports).
 

@@ -40,15 +40,15 @@ The editor lets you easily create a stand alone application bundle for your game
 
 If you want the editor to automatically create random debug certificates, leave the *Certificate* and *Private key* fields empty:
 
-![Signing Android bundle](images/android/sign_bundle.png)
+![Signing Android bundle](../images/android/sign_bundle.png)
 
 If you want to sign your bundle with a particular certificate and key, specify the *.pem* and *.pk8* files:
 
-![Signing Android bundle](images/android/sign_bundle2.png)
+![Signing Android bundle](../images/android/sign_bundle2.png)
 
 Press <kbd>Create Bundle</kbd> and you will then be prompted to specify where on your computer the bundle will be created.
 
-![Android Application Package file](images/android/apk_file.png)
+![Android Application Package file](../images/android/apk_file.png)
 
 ### Installing an Android application bundle
 
@@ -112,7 +112,7 @@ List of devices attached
 
 If your device does not show up, verify that you have enabled *USB debugging* on the Android device. Open the device *Settings* and look for *Developer options* (or *Development*).
 
-![Enable USB debugging](images/android/usb_debugging.png)
+![Enable USB debugging](../images/android/usb_debugging.png)
 
 ## Debugging an application bundle
 

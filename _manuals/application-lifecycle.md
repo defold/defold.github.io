@@ -7,7 +7,7 @@ brief: This manual details the lifecycle of Defold games and applications.
 
 The lifecycle of a Defold application or game is on the large scale simple. The engine moves through three stages of execution: initialization, the update loop (where apps and games spend most of their time) and finalization.
 
-![Lifecycle overview](images/application_lifecycle/application_lifecycle_overview.png)
+![Lifecycle overview](../images/application_lifecycle/application_lifecycle_overview.png)
 
 In many cases only a rudimentary understanding of Defold's inner workings is necessary. However, you might run into edge cases where the exact order Defold carries out its tasks becomes vital. This document describes how the engine runs an application from start to finish.
 
@@ -21,7 +21,7 @@ At some point the application's lifecycle will come to an end. Before the applic
 
 This diagram contains a more detailed breakdown of the initialization steps. The steps involved in the "dispatch messages" pass (right before "spawn dynamic objects") have been put in a separate block to the right for clarity.
 
-![Lifecycle overview](images/application_lifecycle/application_lifecycle_init.png)
+![Lifecycle overview](../images/application_lifecycle/application_lifecycle_init.png)
 
 The engine actually takes many more steps during initialization, before the main collection is loaded. The memory profiler, sockets, graphics, HID (input devices), sound, physics and much more are set up. The application configuration ("game.project") is also loaded and set up.
 
@@ -64,7 +64,7 @@ end
 
 The update loop runs through a long sequence once every frame. The update sequence in the diagram below is divided into logical sequence blocks for clarity. "Dispatch messages" is also broken out separately for the same reason:
 
-![Update loop](images/application_lifecycle/application_lifecycle_update.png)
+![Update loop](../images/application_lifecycle/application_lifecycle_update.png)
 
 ## Input
 
@@ -110,7 +110,7 @@ When the application exits, first it finishes the last update loop sequence, whi
 
 When that is done the engine enters a finalization sequence that handles the main collection and its objects:
 
-![Finalization](images/application_lifecycle/application_lifecycle_final.png)
+![Finalization](../images/application_lifecycle/application_lifecycle_final.png)
 
 Component `final()` functions are called first. A subsequent dispatching of messages follows. Finally, all game objects are deleted and the main collection is unloaded.
 

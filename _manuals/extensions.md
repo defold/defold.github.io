@@ -15,13 +15,13 @@ If you need custom interaction with external software or hardware on a low level
 
 Defold provides a zero setup entry point to native extensions with a cloud based build solution. Any native extension that is developed and added to a game project becomes part of the ordinary project content. There is no need to build special versions of the engine and distribute them to team members, that is handled automatically---any team member that builds and runs the project will get a project specific engine executable with all native extensions baked in.
 
-![Cloud build](images/extensions/cloud_build.png)
+![Cloud build](../images/extensions/cloud_build.png)
 
 ## Project layout
 
 To create a new extension, create a folder in the project root. This folder will contain all settings, source code, libraries and resources associated with the extension. The extension builder recognizes the folder structure and collects any source files and libraries.
 
-![Project layout](images/extensions/layout.png)
+![Project layout](../images/extensions/layout.png)
 
 *ext.manifest*
 : The extension folder _must_ contain an *ext.manifest* file. This file is a YAML format file that is picked up by the extension builder. A minimal manifest file should contain the name of the extension.
@@ -48,7 +48,7 @@ Extensions are treated just like any other assets in your project and they can b
 
 Let's build a very simple extension. First, we create a new root folder *myextension* and add a file *ext.manifest* containing the name of the extension "MyExtension". Note that the name is a C++ symbol and must match the first argument to `DM_DECLARE_EXTENSION` (see below).
 
-![Manifest](images/extensions/manifest.png)
+![Manifest](../images/extensions/manifest.png)
 
 ```yaml
 # C++ symbol in your extension
@@ -57,7 +57,7 @@ name: "MyExtension"
 
 The extension consists of a single C++ file, *myextension.cpp* that is created in the "src" folder.
 
-![C++ file](images/extensions/cppfile.png)
+![C++ file](../images/extensions/cppfile.png)
 
 The extension source file contains the following code:
 

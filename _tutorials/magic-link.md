@@ -47,11 +47,11 @@ You need to start by creating a new project and importing the asset package:
 
 <a class="btn btn-primary btn-xs-block btn-icon" href="//storage.googleapis.com/defold-doc/assets/magic-link-assets.zip">Download asset package<span aria-hidden="true" class="icon icon-download"></span></a>
 
-![Magic Link asset pack](images/magic-link/linker_assets.png)
+![Magic Link asset pack](../images/magic-link/linker_assets.png)
 
 ## Game rules
 
-![Game rules schematic](images/magic-link/linker_rules.png)
+![Game rules schematic](../images/magic-link/linker_rules.png)
 
 The board is randomly filled with colored blocks and a set of magic blocks each round. The colored blocks follow these rules:
 
@@ -80,7 +80,7 @@ As with all projects, we need to devise a plan how to approach the implementatio
 
 Since we're expecting the number of files to stay fairly low, we're gonna keep the project folder structure very simple:
 
-![Folder structure](images/magic-link/linker_folders.png)
+![Folder structure](../images/magic-link/linker_folders.png)
 
 *main*
 : This folder will hold all the logic for the game. All scripts, game object files, collection files, GUI files, so on and so forth will reside in this folder. If you want to split this folder into several, or keep sub-folders, that's perfectly fine.
@@ -100,11 +100,11 @@ The *game.project* file is mostly kept with the default settings but there are s
 
 We chose to set the resolution to 640x960 pixels, which is the native resolution of the iPhone 4. It's also a resolution that fits on many monitors, so playtesting on the computer becomes smooth. If you want to work on a different resolution, you will only have to tweak a few values differently.
 
-![Project settings](images/magic-link/linker_project_settings.png)
+![Project settings](../images/magic-link/linker_project_settings.png)
 
 We're also gonna need to increase the maximum number of sprites rendered. If you want, you can skip to the next section and return here when you get notified in the console that you have hit the sprite limit.
 
-![Game scale layout](images/magic-link/linker_layout.png)
+![Game scale layout](../images/magic-link/linker_layout.png)
 
 We can calculate a maximum number of sprites needed:
 
@@ -117,7 +117,7 @@ So, suppose we have a maximum of 30 magic blocks. The board is 63 blocks (sprite
 
 However, setting the max to 256 is not enough. Each time we clear and reset the board we're gonna delete all current game objects and spawn new ones. The sprite count will have to cater for all objects that are alive through the frame. That includes any deleted objects because they are removed at the end of the frame. So, setting the maximum number of sprites to 512 will suffice.
 
-![Max sprite count](images/magic-link/linker_sprite_max_count.png)
+![Max sprite count](../images/magic-link/linker_sprite_max_count.png)
 
 ## Adding the graphics assets
 
@@ -127,11 +127,11 @@ All necessary assets for the game has been prepared in advance. We're adding the
 Enabling *hidpi* in the project settings mean that the backbuffer becomes high resolution. By drawing large images scaled down they will appear very crisp on retina screens.
 </div>
 
-![Add images](images/magic-link/linker_add_images.png)
+![Add images](../images/magic-link/linker_add_images.png)
 
 In addition to the blocks, a "connector" image is included plus effect sprites. We also have two background images. One that will be used as backdrop for the game board and one that will be used for the main menu. Add all images to the *images* folder, then create an atlas file *sprites.atlas*. Open the atlas file and add all images.
 
-![Add images to Atlas](images/magic-link/linker_add_to_atlas.png)
+![Add images to Atlas](../images/magic-link/linker_add_to_atlas.png)
 
 There are a set of GUI images that are used to create GUI elements, like buttons and pop ups. These are added to a separate atlas called *gui.atlas*.
 
@@ -142,9 +142,9 @@ The first step is to build the board logic. The board will reside in its own col
 1. Create *board.collection* in the *main* folder. Make sure to name it "board" so we can address it later. If you add the background sprite component, make sure to set its Z position to -1, or it won't be drawn behind all the blocks we'll spawn later.
 2. Temporarily set *Main Collection* (under *Bootstrap*) in *game.project* to "/main/board.collection" so we can easily test.
 
-![Board collection](images/magic-link/linker_board_collection.png)
+![Board collection](../images/magic-link/linker_board_collection.png)
 
-![Board collection bootstrap](images/magic-link/linker_bootstrap_board.png)
+![Board collection bootstrap](../images/magic-link/linker_bootstrap_board.png)
 
 The script file *board.script* will contain all the logic for the board itself and the blocks in the board. Start by creating the board-building function and invoke it (temporarily) from `init()`. We're also adding two functions that we won't use now but that will come in handy later:
 
@@ -243,7 +243,7 @@ end
 
 The board logic spawns "block" game objects through the "blockfactory" factory component. We need to build the block game object for this to work. The block has a script and a sprite. We set the sprite's default animation to any of the colored blocks in *sprites.atlas*, then add code to *block.script* to make the block assume the right color when spawned:
 
-![Block game object](images/magic-link/linker_block.png)
+![Block game object](../images/magic-link/linker_block.png)
 
 ```lua
 -- block.script
@@ -262,17 +262,17 @@ end
 
 Set the "blockfactory" factory component's *Prototype* to the new *block.go* gameobject file.
 
-![Block factory](images/magic-link/linker_blockfactory.png)
+![Block factory](../images/magic-link/linker_blockfactory.png)
 
 Now you should be able to run the game and see the board filled with randomly colored blocks:
 
-![First screenshot](images/magic-link/linker_first_screenshot.png)
+![First screenshot](../images/magic-link/linker_first_screenshot.png)
 
 ## Interactions
 
 Now that we have a board, we should add user interaction. First, we define the input bindings in *game.input_binding* in the *input* folder. Make sure that the *game.project* settings use your input bindings file.
 
-![Input bindings](images/magic-link/linker_input_bindings.png)
+![Input bindings](../images/magic-link/linker_input_bindings.png)
 
 We only need one binding and we're assigning `MOUSE_BUTTON_LEFT` to the action name "touch". This game doesn't use multi touch and as a convenience, Defold translates one finger touch input into left mouse clicks.
 
@@ -328,9 +328,9 @@ Now we need  assets for the marker that will be used to indicate when the blocks
 
 We need to create a "connector" game object, that holds the connector sprite image as well as a "connectorfactory" factory component in the "board" game object:
 
-![Connector game object](images/magic-link/linker_connector.png)
+![Connector game object](../images/magic-link/linker_connector.png)
 
-![Connector factory](images/magic-link/linker_connector_factory.png)
+![Connector factory](../images/magic-link/linker_connector_factory.png)
 
 The script for this game object is minimal, it only needs to scale the graphics to make it match the rest of the game, and set the Z order correctly.
 
@@ -439,7 +439,7 @@ function on_input(self, action_id, action)
 end
 ```
 
-![Connectors in game](images/magic-link/linker_connector_screen.png)
+![Connectors in game](../images/magic-link/linker_connector_screen.png)
 
 ## Remove linked blocks
 
@@ -513,7 +513,7 @@ local function slide_board(self)
 end
 ```
 
-![Slide blocks down](images/magic-link/linker_blocks_slide.png)
+![Slide blocks down](../images/magic-link/linker_blocks_slide.png)
 
 Now we can simply add calls to these functions in `on_input()` when touch has been released and there are blocks in `self.chain`.
 
@@ -546,7 +546,7 @@ function on_input(self, action_id, action)
 
 Now it's time to add the magic blocks to the mix. First of all, let's add the ability for a block to become a magic block. That way we can just do a separate path on the filled board and convert the blocks we want into magic ones. To spice the magic blocks up a bit, let's create an animated magic effect first in the form of a game object *magic_fx.go* that we can spawn from the magic block.
 
-![Magic_fx.go](images/magic-link/linker_magic_fx.png)
+![Magic_fx.go](../images/magic-link/linker_magic_fx.png)
 
 This game object contains two sprites. One is the "magic" color (a sprite using the *magic-sphere_layer2.png* image) and the other is a "light" effect (a sprite using the *magic-sphere_layer3.png* image). The object is set to rotate when the object spawns, depending on the value of property "direction". We also make the object listen to two messages: "lights_on" and "lights_off" that control the light effect sprite.
 
@@ -578,7 +578,7 @@ end
 
 Now, the magic block will spawn two "magic_fx" game objects upon message "make_magic". Each will rotate in opposite direction creating a nice color dance inside the blocks. We also add an additional sprite to *block.go* with the image *magic-sphere_layer4.png*. This image is put at a Z higher than the spawned effect and draw the shell or "cover" of the magic sphere.
 
-![Cover sprite](images/magic-link/linker_cover.png)
+![Cover sprite](../images/magic-link/linker_cover.png)
 
 Note that we must add a *Factory* component to the block game object and tell it to use our *magic_fx.go* game object as *Prototype*. The block script need also to listen to messages `lights_on` and `lights_off` and propagate them down to the spawned objects. Note that the spawned objects need to be deleted when the block is deleted. This is taken care of in the block's `final()` function. All this happens in *block.script*.
 
@@ -635,7 +635,7 @@ end
 
 Now we are able to make magic blocks and also to light those up, an effect that we'll use to indicate that a magic block is sitting next to another magic block.
 
-![Magic block without and with light](images/magic-link/linker_magic_blocks.png)
+![Magic block without and with light](../images/magic-link/linker_magic_blocks.png)
 
 The code that fills the board with blocks now needs to be altered so we get some magic blocks there:
 
@@ -764,7 +764,7 @@ Now we need logic to detect if magic blocks are connected (sitting left, right, 
     2. Mark the block's all unmarked neighbors with the same region number `R` and iterate to their neighbors, their neighbors neighbors and so on.
     3. Increase the region number `R` by `1`.
 
-![Mark regions](images/magic-link/linker_regions.png)
+![Mark regions](../images/magic-link/linker_regions.png)
 
 Here's the implementation of the algorithm:
 
@@ -948,7 +948,7 @@ function on_input(self, action_id, action)
 
 Now it's possible to play the game and reach the winning state, even though nothing happens yet when you link all the magic blocks.
 
-![First win](images/magic-link/linker_first_win.png)
+![First win](../images/magic-link/linker_first_win.png)
 
 ## Drops
 
@@ -1008,13 +1008,13 @@ if #s > 0 then
 end
 ```
 
-![Drop](images/magic-link/linker_drop.png)
+![Drop](../images/magic-link/linker_drop.png)
 
 ## The main menu
 
 Now it's time to put the whole thing together. First of all, let's create a start-screen and separate it from the board. Step 1 is to create a *main_menu.gui* and set it up with a *Start* button (a text node and a textured box node), a title text node and some decorative blocks (textured box nodes). The script *main_menu.gui_script* that we attach to the GUI animates the decorative blocks in `init()`. It also contains an `on_input()` that sends a `start_game` message to a main script. We'll create that script in a minute.
 
-![Main menu GUI](images/magic-link/linker_main_menu.png)
+![Main menu GUI](../images/magic-link/linker_main_menu.png)
 
 ```lua
 -- main_menu.gui_script
@@ -1076,11 +1076,11 @@ The collection proxy allows us to dynamically load and unload collections into t
 
 In our case we set the *Collection* property of the collection proxy component to *board.collection* that contains the "level".
 
-![main collection](images/magic-link/linker_main_collection.png)
+![main collection](../images/magic-link/linker_main_collection.png)
 
 We should now open *game.project* and change the bootstrap *main_collection* to "/main/main.collectionc".
 
-![bootstrap main collection](images/magic-link/linker_bootstrap_main.png)
+![bootstrap main collection](../images/magic-link/linker_bootstrap_main.png)
 
 Now, starting a game means messaging our collection proxy to load, init and enable the board, and then to disable the main menu (to make it not show). Coming back to the main menu does the reverse (given that the proxy has loaded the collection).
 
@@ -1117,7 +1117,7 @@ end
 
 Before we add the final piece of logic to the board script, we should add a set of GUI elements to the board. First, on top of the board, we add a *RESTART* button and a *DROP* button.
 
-![board gui](images/magic-link/linker_board_gui.png)
+![board gui](../images/magic-link/linker_board_gui.png)
 
 The script for the board GUI sends messages to the restart GUI dialog element on click and back to the board script itself when clicking *DROP*:
 
@@ -1158,7 +1158,7 @@ end
 
 The *RESTART* dialog is simple. We build it as *restart.gui* and attach a simple script that does nothing if the player clicks *NO*, sends a `restart_level` message to the board script if the player clicks *YES* and a `to_main_menu` message to the main script if the player clicks *Quit to main menu*:
 
-![restart GUI](images/magic-link/linker_restart_gui.png)
+![restart GUI](../images/magic-link/linker_restart_gui.png)
 
 ```lua
 -- restart.gui_script
@@ -1197,7 +1197,7 @@ end
 
 We also construct a simple GUI dialog for level completion in *level_complete.gui* with a simple script that sends a `next_level` message to the board script when the player clicks *CONTINUE*:
 
-![level complete dialog](images/magic-link/linker_level_complete_gui.png)
+![level complete dialog](../images/magic-link/linker_level_complete_gui.png)
 
 ```lua
 -- level_complete.gui_script
@@ -1231,7 +1231,7 @@ end
 
 A dialog that is used to present the current level, with a script that just includes hiding and showing the dialog. When showing, the dialog message is set to a message including the current difficulty level:
 
-![present level GUI](images/magic-link/linker_present_level_gui.png)
+![present level GUI](../images/magic-link/linker_present_level_gui.png)
 
 ```lua
 -- present_level.gui_script
@@ -1252,7 +1252,7 @@ end
 
 We also add a dialog that shows if the player tries to do a drop but there is no room for it.
 
-![no drop room GUI](images/magic-link/linker_no_drop_room_gui.png)
+![no drop room GUI](../images/magic-link/linker_no_drop_room_gui.png)
 
 ```lua
 -- no_drop_room.gui_script
@@ -1281,7 +1281,7 @@ end
 
 Finally, we add these GUI components to *board.collection* and add the necessary code to *board.script*:
 
-![Final board collection](images/magic-link/linker_board_collection_final.png)
+![Final board collection](../images/magic-link/linker_board_collection_final.png)
 
 We need code for all messages that are sent to and from the board in `on_message()`.
 
@@ -1355,7 +1355,7 @@ end
 
 There you go! The game, and this tutorial, is now completed! Go enjoy playing this game!
 
-![Game finished](images/magic-link/linker_game_finished.png)
+![Game finished](../images/magic-link/linker_game_finished.png)
 
 ## Moving on
 

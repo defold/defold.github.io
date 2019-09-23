@@ -17,7 +17,7 @@ Libraries are useful for the following purposes:
 
 Suppose you want to build a library containing shared sprites and tile sources. You start by [setting up a new project](/manuals/project-setup/). Decide what folders you want to share from the project and add the names of those folders to the *include_dirs* property in the Project settings. If you want to list more than one folder, separate the names with spaces:
 
-![Include dirs](images/libraries/libraries_include_dirs.png)
+![Include dirs](../images/libraries/libraries_include_dirs.png)
 
 Before we can add this library to another project we need to a way to locate the library.
 
@@ -25,11 +25,11 @@ Before we can add this library to another project we need to a way to locate the
 
 Libraries are referred to via a standard URL. For a project hosted on GitHub it would be the URL to a project release:
 
-![GitHub Library URL](images/libraries/libraries_library_url_github.png)
+![GitHub Library URL](../images/libraries/libraries_library_url_github.png)
 
 For a project hosted on the Defold servers it would be the Library URL that can be found in the Dashboard. Just select the relevant project and write down or copy the URL:
 
-![Library URL](images/libraries/libraries_library_url.png)
+![Library URL](../images/libraries/libraries_library_url.png)
 
 <div class='important' markdown='1'>
 It is recommend to always depends on a specific release of a library project instead of on the master branch. This way it is up to you as a developer to decide when to incorporate changes from a library project as opposed to always getting the latest (and potentially breaking) changes from the master branch of a library project.
@@ -43,15 +43,15 @@ Note that you need read access to the Library URL. For GitHub projects, that mea
 
 Open the project that you would like to access the library from. In the project settings, add the Library URL to the *dependencies* property. You can specify multiple dependent projects if you want. Just add them one by one using the `+` button and remove using the `-` button:
 
-![Dependencies](images/libraries/libraries_dependencies.png)
+![Dependencies](../images/libraries/libraries_dependencies.png)
 
 Now, select <kbd>Project ▸ Fetch Libraries</kbd> to update library dependencies. This happens automatically whenever you open a project so you will only need to do this if the dependencies change without re-opening the project. This happens if you add or remove dependency libraries or if one of the dependency library projects is changed and synchronized by someone.
 
-![Fetch Libraries](images/libraries/libraries_fetch_libraries.png)
+![Fetch Libraries](../images/libraries/libraries_fetch_libraries.png)
 
 Now the folders that you shared appear in the Project Explorer and you can use everything you shared. Any synchronized changes done to the library project will be available in your project.
 
-![Library setup done](images/libraries/libraries_done.png)
+![Library setup done](../images/libraries/libraries_done.png)
 
 ## Broken references
 

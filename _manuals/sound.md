@@ -17,11 +17,11 @@ Sound groups
 
 Sound components can only be instanced in-place in a game object. Create a new game object, right click on it and select <kbd>Add Component ▸ Sound</kbd> and press *OK*.
 
-![Select component](images/sound/sound_add_component.jpg)
+![Select component](../images/sound/sound_add_component.jpg)
 
 The created component has a set of properties that should be set:
 
-![Select component](images/sound/sound_properties.png)
+![Select component](../images/sound/sound_properties.png)
 
 *Sound*
 : Should be set to a sound file in your project. The file should be in _Wave_ or _Ogg Vorbis_ format. Defold supports sound files saved at 16bit bit depth and with a sampling rate of 44100.
@@ -65,7 +65,7 @@ sound.stop("go#sound")
 
 ## Gain
 
-![Gain](images/sound/sound_gain.png)
+![Gain](../images/sound/sound_gain.png)
 
 The sound system has 4 levels of gain:
 
@@ -93,7 +93,7 @@ end
 
 The groups are identified with a hash value. The string name can be retrieved with [`sound.get_group_name()`](/ref/sound#sound.get_group_name) which can be used to display group names in development tools, for instance a mixer to test group levels.
 
-![Sound group mixer](images/sound/sound_mixer.png)
+![Sound group mixer](../images/sound/sound_mixer.png)
 
 <div class='important' markdown='1'>
 You should not write code that relies on the string value of a sound group since they are not available in release builds.
@@ -133,7 +133,7 @@ sound.set_group_gain("master", 1.995)
 
 If your game plays the same sound on an event and that event is triggered often, you run the risk of playing the same sound two times or more almost at the same time. If that happens, the sounds will be _phase shifted_ which can result in some very noticeable artifacts.
 
-![Phase shift](images/sound/sound_phase_shift.png)
+![Phase shift](../images/sound/sound_phase_shift.png)
 
 The easiest way to deal with this problem is to build a gate that filters sound messages and does not allow the same sound to be played more than once within a set interval:
 

@@ -11,7 +11,7 @@ Defold is built intended for small teams that work in intense collaboration to c
 
 When you save changes in your local working copy, Defold tracks all changes in the *Changed Files* editor pane, listing each file that has either been added, deleted or modified.
 
-![changed files](images/workflow/changed_files.png)
+![changed files](../images/workflow/changed_files.png)
 
 Select a file in the list and click <kbd>Diff</kbd> to view the changes that you have done to the file or <kbd>Revert</kbd> to undo all changes and restore the file to the state it had after the last synchronization.
 
@@ -28,18 +28,18 @@ To synchronize your project means that the project files are brought into sync w
 
 To start synchronizing, select <kbd>File ▸ Synchronize</kbd> in the menu. A series of dialogs guide you through the synchronization process.
 
-![Start sync](images/workflow/sync.png)
+![Start sync](../images/workflow/sync.png)
 
 Press <kbd>Pull</kbd> to pull changes from the server and merge them with your local changes. If there are conflicts, you are asked to resolve them:
 
-![Resolve](images/workflow/resolve.png)
+![Resolve](../images/workflow/resolve.png)
 
 Mark each conflicting file, right-click and select the action to take:
 
 View Diff
 : Bring up a textual diff view of your and the server version of the file.
 
-  ![diff view](images/workflow/diff.png)
+  ![diff view](../images/workflow/diff.png)
 
   On the left hand side is the file pulled from the server. The right hand side shows your local version. Any differences are clearly highlighted so you can quickly review them.
 
@@ -57,7 +57,7 @@ The editor does not allow you to pick changes from the two conflicting files. If
 
 When the editor is done pulling changes and any conflicts are resolved, a dialog asks you how to proceed.
 
-![pull done](images/workflow/push.png)
+![pull done](../images/workflow/push.png)
 
 * Press <kbd>Cancel</kbd> to abort and return the project to the state it was in prior to synchronization.
 * Press <kbd>Push</kbd> to continue committing and pushing your changes to the server.
@@ -65,7 +65,7 @@ When the editor is done pulling changes and any conflicts are resolved, a dialog
 
 If you continue pushing and have local changes, you are asked to commit them before pushing. A dialog allows you to select (stage) the files that should be included in the commit framed orange in the image below).
 
-![stage](images/workflow/stage.png)
+![stage](../images/workflow/stage.png)
 
 Press <kbd>Push</kbd> to commit and push your changes to the server.
 

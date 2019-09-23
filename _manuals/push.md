@@ -39,17 +39,17 @@ On iOS, you need the following information to send notifications:
 
 To get everything in place, head over to the [Apple Developer Member center](https://developer.apple.com/membercenter). Edit your AppID to enable Push Notifications.
 
-![AppID push notifications](images/push/push_ios_app_id.png)
+![AppID push notifications](../images/push/push_ios_app_id.png)
 
 You also need to create an Apple Push Notification service SSL certificate:
 
-![APN SSL certificate](images/push/push_ios_certificate.png)
+![APN SSL certificate](../images/push/push_ios_certificate.png)
 
 The certificate will be needed on your server that will send out push notifications. While developing, you can download and install the certificate on your machine and run a push test app such as [APNS-Pusher](https://github.com/KnuffApp/APNS-Pusher) or [NWPusher](https://github.com/noodlewerk/NWPusher).
 
 Make sure that you create a new provisioning profile from the AppID, and that you get it onto your device. You can do that manually from the "Member Center" page or through Xcode.
 
-![Provisioning profile](images/push/push_ios_provisioning_profile.png)
+![Provisioning profile](../images/push/push_ios_provisioning_profile.png)
 
 Note that it can take a while for Apple's sandbox servers to update so you might not get push to work immediately. Be patient.
 
@@ -111,7 +111,7 @@ DEBUG:SCRIPT: 1f8ba7869b84b10df69a07aa623cd7f55f62bca22cef61b51fedac643ec61ad8
 
 If you're running a push test app, you can now try to send notifications to your device using the device token and the APN service SSL certificate.
 
-![Pusher test](images/push/push_ios_pusher.png)
+![Pusher test](../images/push/push_ios_pusher.png)
 
 The notification should arrive at the client soon after you send it, from within your test application, arriving to the function `push_listener()`:
 
@@ -128,7 +128,7 @@ DEBUG:SCRIPT:
 
 And from the iOS homescreen:
 
-![iOS notification](images/push/push_ios_notification.png)
+![iOS notification](../images/push/push_ios_notification.png)
 
 If you wish to update the badge count from within the application, use the `push.set_badge_count()` function.
 
@@ -149,20 +149,20 @@ If you already have an application using Google Cloud Messaging platform, it nee
 
 The setup is quite straightforward. Start by heading over to [https://console.firebase.google.com](https://console.firebase.google.com), select your application or create a new one if neccessary. Then add Cloud Messaging support by navigating to *Grow* and *Cloud Messaging*.
 
-![Adding Cloud Messaging to a Firebase project](images/push/push_fcm_add_cm.png)
+![Adding Cloud Messaging to a Firebase project](../images/push/push_fcm_add_cm.png)
 
 Click on the Android icon to begin the configuration for push notifications.
 
 
-![Configure Cloud Messaging for Android](images/push/push_fcm_configure_android.png)
+![Configure Cloud Messaging for Android](../images/push/push_fcm_configure_android.png)
 
 Follow the initial instructions, enter the same package name as your Defold game project use.
 
-![Android cloud services info](images/push/push_fcm_register.png)
+![Android cloud services info](../images/push/push_fcm_register.png)
 
 Download the `google-services.json`, we will soon need some values from inside this file.
 
-![Google Cloud Messaging sender ID](images/push/push_fcm_download_json.png)
+![Google Cloud Messaging sender ID](../images/push/push_fcm_download_json.png)
 
 You can skip over the two remaining steps, *Add Firebase SDK* and *Run your app to verify installation*. The SDK is built into Defold, you don't need to add it yourself.
 
@@ -187,7 +187,7 @@ Open the `google-services.json` file in a text editor, and look for the *`projec
 
 ```
 
-![Settings applied to game.project](images/push/push_fcm_game_project.png)
+![Settings applied to game.project](../images/push/push_fcm_game_project.png)
 
 Now everything is ready on the client. The [above code](#above-code) example works for Android as well. Run it and copy the device token id.
 
@@ -197,7 +197,7 @@ DEBUG:SCRIPT: APA91bHkcKm0QHAMUCEQ_Dlpq2gzset6vh0cz46kDDV6230C5rFivyWZMCxGXcjxRD
 
 Before we can send any messages we need to get a key that will be used for authentication against the Firebase servers. You will find the key under *Settings* and *Cloud Messaging* on the Firebase dashboard.
 
-![Server Key location](images/push/push_fcm_server_key.png)
+![Server Key location](../images/push/push_fcm_server_key.png)
 
 Now we have all information we need. Firebase's notifications can be sent through a Web API so we can use *curl* to send test messages:
 

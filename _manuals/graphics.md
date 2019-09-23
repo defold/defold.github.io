@@ -11,7 +11,7 @@ Defold is a full 3D engine, but it is designed and built with strong support for
 
 Defold needs all assets that should be in your project hierarchy. Therefore you need to import all graphics asset files that you need for your graphics. To import an assets, simply drag the files from the file system on your computer and drop them in an appropriate place in the Defold editor _Project Explorer_.
 
-![Importing image files](images/graphics/import.png)
+![Importing image files](../images/graphics/import.png)
 
 Defold supports images in the PNG and JPEG image formats. For models, Defold uses the Collada DAE format.
 
@@ -19,17 +19,17 @@ Defold supports images in the PNG and JPEG image formats. For models, Defold use
 
 In Defold, there are two types of resources that are used as an image source for visual components:
 
-![atlas](images/icons/atlas.png){.icon} Atlas
+![atlas](../images/icons/atlas.png){.icon} Atlas
 : An atlas contains a list of separate images files, which are automatically combined into a larger texture image. Atlases can contain still images and *Animation Groups*, sets of images that together form a flipbook animation.
 
-  ![atlas](images/graphics/atlas.png)
+  ![atlas](../images/graphics/atlas.png)
 
 Learn more about the atlas resource in the [Atlas manual](/manuals/atlas).
 
-![tile source](images/icons/tilesource.png){.icon} Tile Source
+![tile source](../images/icons/tilesource.png){.icon} Tile Source
 : A tile source references an image file that is already made out to consist of smaller sub-images ordered on a uniform grid. Another term commonly used for this type of compound image is _sprite sheet_. Tile sources can contain flipbook animations, defined by the first and last tile for the animation. It is also possible to use an image to automatically attach collision shapes to tiles.
 
-  ![tile source](images/graphics/tilesource.png)
+  ![tile source](../images/graphics/tilesource.png)
 
 Learn more about the tile source resource in the [Tile source manual](/manuals/tilesource).
 
@@ -37,41 +37,41 @@ Learn more about the tile source resource in the [Tile source manual](/manuals/t
 
 There are several component types that get their image data from atlas or tile source image resources:
 
-![sprite](images/icons/sprite.png){.icon}
+![sprite](../images/icons/sprite.png){.icon}
 : A sprite is a simple image or flipbook animation that is displayed on screen.
 
-  ![sprite](images/graphics/sprite.png)
+  ![sprite](../images/graphics/sprite.png)
 
 Learn more about sprites in the [Sprite manual](/manuals/sprite).
 
-![tile map](images/icons/tilemap.png){.icon} Tile map
+![tile map](../images/icons/tilemap.png){.icon} Tile map
 : A tilemap component pieces together a map from tiles (image and collision shapes) that come from a tile source. Tile maps cannot use atlas sources.
 
-  ![tilemap](images/graphics/tilemap.png)
+  ![tilemap](../images/graphics/tilemap.png)
 
 Learn more about tilemaps in the [Tilemap manual](/manuals/tilemap).
 
-![particle effect](images/icons/particlefx.png){.icon} Particle fx
+![particle effect](../images/icons/particlefx.png){.icon} Particle fx
 : Particles that are spawned from a particle emitter consist of a still image or a flipbook animation from an atlas or tile source.
 
-  ![particles](images/graphics/particles.png)
+  ![particles](../images/graphics/particles.png)
 
 Learn more about particle effects in the [Particle fx manual](/manuals/particlefx).
 
-![gui](images/icons/gui.png){.icon} GUI
+![gui](../images/icons/gui.png){.icon} GUI
 : GUI box nodes and pie nodes can use still images and flip book animations from atlases and tile sources.
 
-  ![gui](images/graphics/gui.png)
+  ![gui](../images/graphics/gui.png)
 
 Learn more about GUIs in the [GUI manual](/manuals/gui).
 
-![spine](images/icons/spine-model.png){.icon} Spine model
+![spine](../images/icons/spine-model.png){.icon} Spine model
 : Spine models gets their data from Spine scene resources. Those contain two pieces of data:
 
   1. A Spine Json file that describes the bone animations.
   2. An atlas that contain the images that are attached to the bones. Spine models cannot use data from tile maps.
 
-  ![spine](images/graphics/spine.png)
+  ![spine](../images/graphics/spine.png)
 
 Learn more about Spine models in the [Spine model manual](/manuals/spine-model).
 
@@ -80,10 +80,10 @@ Learn more about Spine models in the [Spine model manual](/manuals/spine-model).
 
 Models get its image data directly from an image file that is mapped onto the model according to the model's UV map:
 
-![model](images/icons/model.png){.icon} Model
+![model](../images/icons/model.png){.icon} Model
 : 3D models
 
-  ![model](images/graphics/model.png)
+  ![model](../images/graphics/model.png)
 
 Learn more about models in the [Model manual](/manuals/model).
 
@@ -131,7 +131,7 @@ Rendering models
 
 All game objects and components are positioned in 3D space with positions expressed as vector3 objects. When you view your game's graphics content in 2D, the X and Y value determine the position of an object along the "width" and "height" axis, and the Z position determines the position along the "depth" axis. The Z position allows you to control the visibility of overlapping objects: a sprite with a Z value of 1 will appear in front of a sprite at Z position 0. By default, Defold uses a coordinate system allowing Z values between -1 and 1:
 
-![model](images/graphics/z-order.png)
+![model](../images/graphics/z-order.png)
 
 The numerical precision on the Z values with a near and far limit of -1 and 1 is very high. When working with 3D assets, you may need to change the near and far limits of the default projection in a custom render script. See the [Render manual](/manuals/render/) for more information.
 

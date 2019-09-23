@@ -17,19 +17,19 @@ The Live update functionality expands the concept of the collection proxy with a
 
 Suppose we are making a game containing large, high resolution image resources. The game keeps these images in collections with a game object and a sprite with the image:
 
-![Mona Lisa collection](images/live-update/mona-lisa.png)
+![Mona Lisa collection](../images/live-update/mona-lisa.png)
 
 To have the engine load such a collection dynamically, we can simply add a collection proxy component and point it to *monalisa.collection*. Now the game can choose when to load the content in the collection from storage into memory by sending a `load` message to the collection proxy. However, we want to go further and control the loading of the resources contained in the collection ourselves.
 
 This is done by simply checking the *Exclude* checkbox in the collection proxy properties, telling the bundler to leave any content in *monalisa.collection* out when creating an application bundle.
 
-![Collection proxy excluded](images/live-update/proxy-excluded.png)
+![Collection proxy excluded](../images/live-update/proxy-excluded.png)
 
 ## Live update settings
 
 When the bundler creates an application bundle it needs to store any excluded resources somewhere. The project settings for Live update govern the location for those resources. The settings are found under <kbd>Project ▸ Live update Settings...</kbd>. This will create a settings file if none exists. In `game.project`, select which liveupdate settings file to use when bundling. This allows for using different liveupdate settings for different environments, for example for live, QA, dev etc.
 
-![Live update settings](images/live-update/aws-settings.png)
+![Live update settings](../images/live-update/aws-settings.png)
 
 There are currently two ways that Defold can store the resources. Choose the method in the *Mode* dropdown in the settings window:
 
@@ -121,7 +121,7 @@ With the loading code in place, we can test the application. However, running it
 
 To bundle with Live update is easy. Select <kbd>Project ▸ Bundle ▸ ...</kbd> and then the platform you want to create an application bundle for. This opens the bundling dialog:
 
-![Bundle Live application](images/live-update/bundle-app.png)
+![Bundle Live application](../images/live-update/bundle-app.png)
 
 When bundling, any excluded resource will be left out of the application bundle. By checking the *Publish Live update content* checkbox, you tell Defold to either upload the excluded resources to Amazon or to create a Zip archive, depending on how you have set up your Live update settings (see above). The manifest file for the bundle will also be included in the excluded resources.
 
@@ -155,7 +155,7 @@ From the user's perspective the verification process is completely opaque but it
 ### Supported engine versions
 A manifest will always support the Defold version used when generating it. If you want to support any additional engine versions, add them to the list in the Live update settings. This can be useful if your live game uses a different Defold version than the one you are using to generate the manifest with.
 
-![Manifest supported engine versions](images/live-update/engine-versions-settings.png)
+![Manifest supported engine versions](../images/live-update/engine-versions-settings.png)
 
 ### Generating keys for signing
 The manifest signature is used to verify that no one with malicious intent has tampered with the content, and that the bundled manifest and the new manifest were signed using the same keys. The signing is done as a part of the bundling process.
@@ -168,7 +168,7 @@ $ openssl rsa -in private_raw.key -outform DER -RSAPublicKey_out -pubout -out pu
 ```
 This will output `private_raw.key` (can be safely deleted), `private.der`, and `public.der`. To use the keys for signing open the Live update settings view and point respective fields to the generated keys.
 
-![Manifest signature key-pair](images/live-update/manifest-keys.png)
+![Manifest signature key-pair](../images/live-update/manifest-keys.png)
 
 ### Scripting with Live update manifest
 Adding to the scripting example above, we add the following callback function
@@ -223,7 +223,7 @@ This section will explain how to create a new user with limited access on Amazon
 
     Open up the `Services` menu and select `S3` which is located under the _Storage_ category ([Amazon S3 Console](https://console.aws.amazon.com/s3)). You will see all your existing buckets together with the option to create a new bucket. Though it is possible to use an existing bucket, we recommend that you create a new bucket for Live update resources so that you can easily restrict access.
 
-    ![Create a bucket](images/live-update/01-create-bucket.png)
+    ![Create a bucket](../images/live-update/01-create-bucket.png)
 
 2. Add a bucket policy to your bucket
 
@@ -244,7 +244,7 @@ This section will explain how to create a new user with limited access on Amazon
     }
     ```
 
-    ![Bucket policy](images/live-update/02-bucket-policy.png)
+    ![Bucket policy](../images/live-update/02-bucket-policy.png)
 
 3. Add a CORS configuration to your bucket (Optional)
 
@@ -262,7 +262,7 @@ This section will explain how to create a new user with limited access on Amazon
     </CORSConfiguration>
     ```
 
-    ![CORS configuration](images/live-update/03-cors-configuration.png)
+    ![CORS configuration](../images/live-update/03-cors-configuration.png)
 
 4. Create IAM policy
 
@@ -299,7 +299,7 @@ This section will explain how to create a new user with limited access on Amazon
     }
     ```
 
-    ![IAM policy](images/live-update/04-create-policy.png)
+    ![IAM policy](../images/live-update/04-create-policy.png)
 
 5. Create a user for programmatic access
 
@@ -334,24 +334,24 @@ This section will explain how to create a new user with limited access on Amazon
 
     The identifier specified within the brackets, in this example _defold-liveupdate-example_, is the same identifier that you should provide when configuring your project's Live update settings in the Defold editor.
 
-    ![Live update settings](images/live-update/05-liveupdate-settings.png)
+    ![Live update settings](../images/live-update/05-liveupdate-settings.png)
 
 ## Development caveats
 
 Debugging
 : When running a bundled version of your game, you don't have direct access to a console. This causes problems for debugging. However, you can run the application from the command line or by double clicking the executable in the bundle directly:
 
-  ![Running a bundle application](images/live-update/run-bundle.png)
+  ![Running a bundle application](../images/live-update/run-bundle.png)
 
   Now the game starts with a shell window that will output any `print()` statements:
 
-  ![Console output](images/live-update/run-bundle-console.png)
+  ![Console output](../images/live-update/run-bundle-console.png)
 
 Forcing re-download of resources
 : When an application stores resources, they end up on disk on the local computer or handheld device. If you restart the application, the resources are there and ready. When developing you might want to remove resources and force the application to download them again.
 
   Defold creates a folder with the name of the hash of the created bundle on the device in the application support folder. If you delete the files in this folder, the application will invalidate the resources from the manifest and you can download and store them again.
 
-  ![Local storage](images/live-update/local-storage.png)
+  ![Local storage](../images/live-update/local-storage.png)
 
   The location of the application support folder depends on the operating system. It can be found with `print(sys.get_save_file("", ""))`.

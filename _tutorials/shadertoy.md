@@ -9,7 +9,7 @@ brief: In this tutorial you will convert a shader from shadertoy.com to Defold.
 
 The shader we will use is [Star Nest](https://www.shadertoy.com/view/XlfGRj) by Pablo Andrioli (user "Kali" on Shadertoy). It is a purely procedural mathematical black magickery fragment shader that renders a really cool starfield effect.
 
-![Star Nest](images/shadertoy/starnest.png)
+![Star Nest](../images/shadertoy/starnest.png)
 
 The shader is just 65 lines of quite complicated GLSL code, but don't worry. We're gonna treat it as a black box that does its thing based on a few simple inputs. Our job here is to modify the shader so it interfaces with Defold instead of Shadertoy.
 
@@ -27,7 +27,7 @@ We start by creating a quadratic plane mesh in Blender (or any other 3D modellin
 Blender is a free, open-source 3D software which can be downloaded from [blender.org](https://www.blender.org).
 </div>
 
-![quad in Blender](images/shadertoy/quad_blender.png)
+![quad in Blender](../images/shadertoy/quad_blender.png)
 
 1. Export the model as a *Collada* file called *quad.dae* and drag it into a new Defold project.
 2. Open your "main.collection" file in Defold and create a new game object "star-nest".
@@ -37,7 +37,7 @@ Blender is a free, open-source 3D software which can be downloaded from [blender
 
 The model should appear in the scene editor, but it is rendered all black. That is because it has no material set yet:
 
-![quad in Defold](images/shadertoy/quad_no_material.png)
+![quad in Defold](../images/shadertoy/quad_no_material.png)
 
 ## Creating the material
 
@@ -50,7 +50,7 @@ Create a new material file *star-nest.material*, a vertex shader program *star-n
 5. Set its *Type* to `CONSTANT_TYPE_VIEWPROJ`.
 6. Add a tag "tile" to the *Tags*. This is so that the quad is included in the render pass when sprites and tiles are drawn.
 
-    ![material](images/shadertoy/material.png)
+    ![material](../images/shadertoy/material.png)
 
 7. Open the vertex shader program file *star-nest.vp*. It should contain the following code. Leave the code as is.
 
@@ -87,13 +87,13 @@ Create a new material file *star-nest.material*, a vertex shader program *star-n
 
 Now the editor should render the model with the new shader and we can clearly see if the UV coordinates are correct; the bottom left corner should have black color (0, 0, 0), the top left corner green color (0, 1, 0), the top right corner yellow color (1, 1, 0) and the bottom right corner should have red color (1, 0, 0):
 
-![quad in Defold](images/shadertoy/quad_material.png)
+![quad in Defold](../images/shadertoy/quad_material.png)
 
 ## The star nest shader
 
 Now everything is in place to start working on the actual shader code. Let's first take a look at the original code. It consists of a few sections:
 
-![Star Nest shader code](images/shadertoy/starnest_code.png)
+![Star Nest shader code](../images/shadertoy/starnest_code.png)
 
 1. Lines 5--18 defines a bunch of constants. We can leve these as is.
 
@@ -197,7 +197,7 @@ void main() // <2>
 
 Save the fragment shader program. The model should now be nicely textured with a star field in the Scene editor:
 
-![quad with starnest](images/shadertoy/quad_starnest.png)
+![quad with starnest](../images/shadertoy/quad_starnest.png)
 
 
 ## Animation
@@ -208,7 +208,7 @@ The final piece of the puzzle is the introduction of time to make the stars move
 2. Add a *Fragment Constant* and name it "time".
 3. Set its *Type* to `CONSTANT_TYPE_USER`. Leave the x, y, z and w components at 0.
 
-![time constant](images/shadertoy/time_constant.png)
+![time constant](../images/shadertoy/time_constant.png)
 
 Now we need to modify the shader code to declare and use the new constant:
 
@@ -249,7 +249,7 @@ end
 3. Set the "time" constant on the model component. The constant is a `vector4` so we use the `x`component for the time value.
 4. Finally, add *star-nest.script* as a script component to the "star-nest" game object:
 
-    ![script component](images/shadertoy/script_component.png)
+    ![script component](../images/shadertoy/script_component.png)
 
 And that's it! We are done!
 

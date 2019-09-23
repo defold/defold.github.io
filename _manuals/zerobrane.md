@@ -16,13 +16,13 @@ In order for ZeroBrane to find the files in your project, you need to point it t
 1. Right click on *game.project*
 2. Choose <kbd>Show in Desktop</kbd>
 
-![Show in Finder](images/zerobrane/show_in_desktop.png){ srcset="images/zerobrane/show_in_desktop@2x.png 2x" }
+![Show in Finder](../images/zerobrane/show_in_desktop.png){ srcset="images/zerobrane/show_in_desktop@2x.png 2x" }
 
 ## To set up ZeroBrane
 
 To set up ZeroBrane, select <kbd>Project ▸ Project Directory ▸ Choose...</kbd>:
 
-![Set up](images/zerobrane/setup.png)
+![Set up](../images/zerobrane/setup.png)
 
 Once this has been set up to match the current Defold project directory, it should be possible to see the directory tree of the Defold project in ZeroBrane, and to navigate and open the files.
 
@@ -32,7 +32,7 @@ Other recommended, but not necessary configuration changes can be found further 
 
 Before starting a debugging session, the ZeroBrane built-in debugging server needs to be started. The menu option for starting it can be found under the <kbd>Project</kbd> menu. Just select <kbd>Project ▸ Start Debugger Server</kbd>:
 
-![Start debugger](images/zerobrane/startdebug.png)
+![Start debugger](../images/zerobrane/startdebug.png)
 
 ## Connecting your application to the debugger
 
@@ -63,7 +63,7 @@ Now it is possible to use the debugging features available in ZeroBrane; you can
 The debugging will only be enabled for the lua context from where debugging is initiated. Enabling "shared_state" in game.project means you can debug your whole application no matter where you started.
 </div>
 
-![Stepping](images/zerobrane/code.png)
+![Stepping](../images/zerobrane/code.png)
 
 Should the connection attempt fail (possibly because the debugging server is not running), your application will continue to run as normal after the connection attempt has been made.
 
@@ -96,4 +96,4 @@ The first step is to access the editor configuration file. It is recommended tha
 
 - Restart ZeroBrane
 
-![Other recommended settings](images/zerobrane/otherrecommended.png)
+![Other recommended settings](../images/zerobrane/otherrecommended.png)

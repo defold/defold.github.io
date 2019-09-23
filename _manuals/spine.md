@@ -39,11 +39,11 @@ The Spine JSON data format that Defold supports can be created by Esoteric Softw
 
 _Spine_ is available from http://esotericsoftware.com
 
-![Spine](images/spine/spine.png)
+![Spine](../images/spine/spine.png)
 
 _Dragon Bones_ is available from http://dragonbones.com
 
-![Dragon Bones](images/spine/dragonbones.png)
+![Dragon Bones](../images/spine/dragonbones.png)
 
 <div class='important' markdown='1'>
 _Dragon Bones_ should typically be able to export to Spine JSON data files without any problems. If your _Dragon Bones_ exported data file isn't rendered properly in Defold we recommend that you use the official [Spine Skeleton Viewer](http://esotericsoftware.com/spine-skeleton-viewer) to first verify that the data can be correctly parsed. If there is a problem with the exported data the Spine Skeleton Viewer can pinpoint problems in the JSON data file, for instance missing or incorrect fields.
@@ -59,11 +59,11 @@ When you have a model and animations that you have created in Spine, the process
 - Put all images associated with the model somewhere in your project hierarchy.
 - Create an _Atlas_ file and add all the images to it. (See [2D graphics documentation](/manuals/2dgraphics) for details on how to create an atlas and below for some caveats)
 
-![Export JSON from Spine](images/spine/spine_json_export.png)
+![Export JSON from Spine](../images/spine/spine_json_export.png)
 
 If you work in _Dragon Bones_, simply select *Spine* as your output data type. Also select *Images* as image type. This will export a *.json* file and all necessary images into a folder. Then add those to Defold as described above.
 
-![Export JSON from Dragon Bones](images/spine/dragonbones_json_export.png)
+![Export JSON from Dragon Bones](../images/spine/dragonbones_json_export.png)
 
 When you have the animation data and image files imported and set up in Defold, you need to create a _Spine scene_ resource file:
 
@@ -71,7 +71,7 @@ When you have the animation data and image files imported and set up in Defold, 
 - The new file opens in the spine scene editor.
 - Set the *Properties*.
 
-![Setup the Spine Scene](images/spine/spinescene.png)
+![Setup the Spine Scene](../images/spine/spinescene.png)
 
 Spine Json
 : The Spine JSON file to use as source for bone and animation data.
@@ -95,7 +95,7 @@ Defold gives you powerful runtime control of how animations should play through 
 
 The animation data references the images used for the bones by name with the file suffix stripped off. You add images to your Spine project in the Spine software and they are listed in the hierarchy under *Images*:
 
-![Spine images hierarchy](images/spine/spine_images.png)
+![Spine images hierarchy](../images/spine/spine_images.png)
 
 This example shows files laid out in a flat structure. It is, however, possible to organize the files in subfolders and the file references will reflect that. For instance, a file *head_parts/eyes.png* on disk will be referenced as *head_parts/eyes* when you use it in a slot. This is also the name used in the exported JSON file so when creating the Defold image atlas, all names must match an atlas animation.
 
@@ -103,6 +103,6 @@ If you select <kbd>Add Images</kbd> Defold will automatically create animation g
 
 So what do you do if your animation references "head_parts/eyes"? The easiest way to accomplish a match is to add an animation group (right click the root node in the Atlas *Outline* view and select *Add Animation Group*). You can then name that group "head_parts/eyes" (it's just a name, not a path and `/` characters are legal) and then add the file "eyes.png" to the group.
 
-![Atlas path names](images/spine/atlas_names.png)
+![Atlas path names](../images/spine/atlas_names.png)
 
 Moving on to animate your Spine model, please read the [Animation documentation](/manuals/animation).

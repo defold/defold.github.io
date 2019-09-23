@@ -59,7 +59,7 @@ A good way to discuss and get help with a problem is to post a question on our [
 
 The editor provides a convenient way to report issues. Select the <kbd>Help->Report Issue</kbd> menu option from within the editor to report an issue.
 
-![](images/getting_help/report_issue.png)
+![](../images/getting_help/report_issue.png)
 
 Selecting this menu option will bring you to an issue tracker on GitHub. Please fill out the form and include as much information as possible. Note that you need a GitHub account to submit a bug report this way.
 

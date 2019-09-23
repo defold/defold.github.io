@@ -75,7 +75,7 @@ The first time you start the editor, the editor starts blank, without any projec
 
 Now, in the *Project Explorer* you will see all files that are part of the project. If you double-click the file "main/main.collection" the file will open up in the editor view in the center:
 
-![Editor overview](images/runner/1/editor_overview.png)
+![Editor overview](../images/runner/1/editor_overview.png)
 
 The editor consists of the following main areas:
 
@@ -101,7 +101,7 @@ Console
 
 The "Empty" project template actually isn't completely empty. As you've already seen, it contains one game object with a simple image. Select <kbd>Project ▸ Build and Launch</kbd> to build the project and launch the game.
 
-![Build and launch](images/runner/1/build_and_launch.png)
+![Build and launch](../images/runner/1/build_and_launch.png)
 
 It's perhaps not very exciting, but it's a running Defold game application and we can easily modify it into something more interesting. So let's do that.
 
@@ -118,10 +118,10 @@ The Defold editor works on files. By double-clicking a file in the *Project Expl
 
 When you are done editing a file you have to save it. Select <kbd>File ▸ Save</kbd> in the main menu. The editor gives a hint by adding an asterisk '\*' to the filename in the tab for any file that contain unsaved changes.
 
-![File with unsaved changes](images/runner/1/file_changed.png)
+![File with unsaved changes](../images/runner/1/file_changed.png)
 </div>
 
-![Delete game object](images/runner/1/delete_go.png)
+![Delete game object](../images/runner/1/delete_go.png)
 
 If you run the game again, the application window will be totally black.
 
@@ -141,9 +141,9 @@ Let's take the first baby steps and create an arena for our character, or rather
 
 3. Add the ground images to the new atlas by right-clicking the atlas root in the *Outline* and select <kbd>Add Images</kbd>. Select the imported images and click *OK*. Each image in the atlas is now accessible as a one-frame animation (still image) to use in sprites, particle effects and other visual elements. Save the file.
 
-  ![Create new atlas](images/runner/1/new_atlas.png)
+  ![Create new atlas](../images/runner/1/new_atlas.png)
 
-  ![Add images to atlas](images/runner/1/add_images_to_atlas.png)
+  ![Add images to atlas](../images/runner/1/add_images_to_atlas.png)
 
   <div class='sidenote' markdown='1'>
   *Why doesn't it work!?* A common problem people have when they starting with Defold is forgetting to save! After adding images to an atlas you need to save the file before you can access that image.
@@ -153,11 +153,11 @@ Let's take the first baby steps and create an arena for our character, or rather
 
 5. In each object, add a sprite component (right-click the game object in the *Outline* view and select <kbd>Add Component</kbd>, then select *Sprite* and click *OK*), set the *Image* property of the sprite component to the atlas you just created and set the default animation of the sprite to one of the two ground images. Set the X position of the _sprite component_ (not the game object) to 190 and Y position to 40. Since the width of the image is 380 pixels and we shift it sideways half as many pixels, the pivot of the game object will be at the leftmost edge of the sprite image.
 
-  ![Create ground collection](images/runner/1/ground_collection.png)
+  ![Create ground collection](../images/runner/1/ground_collection.png)
 
 6. The graphics we're using is a bit too large so scale each game object to 60% (0.6 scaling in X and Y, resulting in 228 pixel wide ground pieces).
 
-  ![Scale ground](images/runner/1/scale_ground.png)
+  ![Scale ground](../images/runner/1/scale_ground.png)
 
 7. Position all the _game objects_ in line. Set the X positions of the _game objects_ (not sprite components) to 0, 228, 456, 684, 912, 1140 and 1368 (multiples of the width 228 pixels).
 
@@ -171,7 +171,7 @@ Let's take the first baby steps and create an arena for our character, or rather
 
 9. Start up the game (<kbd>Project ▸ Build and Launch</kbd> to see that everything is in place.
 
-  ![Still ground](images/runner/1/still_ground.png)
+  ![Still ground](../images/runner/1/still_ground.png)
 
 By now you might be confused and wonder about what all these things that we have been creating really are, so let us take a moment and look at the most basic building blocks in any Defold project:
 
@@ -220,7 +220,7 @@ end
 6. Decrease the current X-position with the set speed. Multiply with `dt` to get framerate independent speed in pixels/s.
 7. Update the object's position with the new speed.
 
-![Ground script](images/runner/1/ground_script.png)
+![Ground script](../images/runner/1/ground_script.png)
 
 <div class='sidenote' markdown='1'>
 Defold is a fast engine core that manages your data and game objects. Any logic or behavior that you need for your game is created in the Lua language. Lua is a fast and light-weight programming language that is great for writing game logic. There are great resources available to learn the language, like the book http://www.lua.org/pil/[Programming in Lua] and the official http://www.lua.org/manual/5.3/[Lua reference manual].
@@ -233,7 +233,7 @@ Now that we have a script file, we should add a reference to it to a component i
 1. Right-click the root of the collection and select <kbd>Add Game Object</kbd>. Set the object's *id* to "controller".
 2. Right-click the "controller" object and select <kbd>Add Component from file</kbd>, then select the *ground.script* file.
 
-![Ground controller](images/runner/1/ground_controller.png)
+![Ground controller](../images/runner/1/ground_controller.png)
 
 Now when you run the game, the "controller" game object will run the script in its *Script* component, causing the ground to scroll smoothly across the screen.
 
@@ -259,7 +259,7 @@ Start by importing the body part images, then add them to a new atlas that we ca
 5. Open *hero.atlas*, right-click the root node in the *Outline* and select <kbd>Add Images</kbd>. Mark all body part images and click *OK*.
 6. Save the atlas file.
 
-![Hero atlas](images/runner/2/hero_atlas.png)
+![Hero atlas](../images/runner/2/hero_atlas.png)
 
 We also need to import the Spine animation data and set up a *Spine Scene* for it:
 
@@ -270,7 +270,7 @@ We also need to import the Spine animation data and set up a *Spine Scene* for i
 5. Set the *atlas* property to refer to the *hero.atlas* file.
 6. Save the file.
 
-![Hero spinescene](images/runner/2/hero_spinescene.png)
+![Hero spinescene](../images/runner/2/hero_spinescene.png)
 
 <div class='sidenote' markdown='1'>
 The file *hero.json* has been exported in Spine JSON format. You will need the Spine or Dragon Bones animation software to be able to create such files. If you want to use other animation software you can export your animations as sprite-sheets and use them as flip-book animations either from *Tile Source* or *Atlas* resources. See the manual on [Animation](/manuals/animation) for more information.
@@ -286,7 +286,7 @@ Now we can start constructing the hero gameobject:
 4. Set the *Spine Scene* property of the component to the file *hero.spinescene* that you just created and select "run_right" as the default animation (we'll fix animation properly later)
 5. Save the file.
 
-![Spinemodel properties](images/runner/2/spinemodel_properties.png)
+![Spinemodel properties](../images/runner/2/spinemodel_properties.png)
 
 Now it's time to add physics for collision to work:
 
@@ -304,7 +304,7 @@ It is important that we specify what the collision object should interact with:
 1. Set the *Group* property to a new collision group called "hero".
 2. Setting the *Mask* property to another group "geometry" that this collision object should register collisions with. Note that the "geometry" group does not yet exist, but we will soon add collision objects belonging to it.
 
-![Hero game object](images/runner/2/hero_game_object.png)
+![Hero game object](../images/runner/2/hero_game_object.png)
 
 Finally, create a new *hero.script* file and add it to the game object.
 
@@ -428,7 +428,7 @@ The last thing we need for the hero to be functional is input. The script above 
 3. Add a touch trigger for "TOUCH_MULTI" and name the action "touch". (The action names are arbitrary but should match the names in your script. Note that you cannot have the same action name on multiple triggers)
 4. Save the file.
 
-![Input bindings](images/runner/2/input_bindings.png)
+![Input bindings](../images/runner/2/input_bindings.png)
 
 <a name="part-5"></a>
 ## STEP 5 - Refactoring the level
@@ -468,7 +468,7 @@ We should also add a controller game object with a script component to the level
 6. Right-click the "controller" game object in the *Outline* and select <kbd>Add Component from File</kbd> and select the *controller.script* file in the *level* folder.
 7. Save the file.
 
-![Script property](images/runner/2/script_property.png)
+![Script property](../images/runner/2/script_property.png)
 
 <div class='sidenote' markdown='1'>
 The "controller" game object does not exist in a file but is created in-place in the level collection. This means that the game object instance is created from the in-place data. That is fine for single purpose game objects like this one. If you need multiple instances of some game object and want to be able to modify the prototype/template used to create each instance, just create a game object file and add the game object from file to the collection. That creates a game object with a reference to the file as prototype/template.
@@ -498,7 +498,7 @@ end
 1. All messages are hashed internally when sent and must be compared to the hashed value.
 2. The message data is a Lua table with the data that is sent with the message.
 
-![Add ground code](images/runner/insert_ground_code.png)
+![Add ground code](../images/runner/insert_ground_code.png)
 
 <a name="part-6"></span></a>
 ## STEP 6 - Ground physics and platforms
@@ -513,7 +513,7 @@ At this point we should add physics collision for the ground:
 6. Set the collision object's *Group* property to "geometry" and the *Mask* to "hero". Now the hero's collision object and this one will register collisions between them.
 7. Save the file.
 
-![Ground collision](images/runner/2/ground_collision.png)
+![Ground collision](../images/runner/2/ground_collision.png)
 
 Now you should be able to try running the game (<kbd>Project ▸ Build and Launch</kbd>). The frog should run on the ground and it should be possible to jump with the  kbd:[Space] button. If you run the game on a mobile device, you can jump by tapping on the screen.
 
@@ -561,7 +561,7 @@ To make life in frog-world a little less dull, we should add platforms to jump o
 15. Use the *Move Tool* (<kbd>Scene ▸ Move Tool</kbd>) to place the *Sprite* components side by side.
 16. Use the *Move Tool* and the *Scale Tool* to make the shape in the *Collision Object* component cover both platforms.
 
-![Platform](images/runner/2/platform_long.png)
+![Platform](../images/runner/2/platform_long.png)
 
 <div class='sidenote' markdown='1'>
 Note that both *platform.go* and *platform_long.go* has *Script* components that refer to the same script file. This is a good thing since any script changes we make to the script file will affect the behavior of both regular and long platforms.
@@ -619,7 +619,7 @@ Now run the game (<kbd>Project ▸ Build and Launch</kbd>).
 
 Wow, this is starting to turn into something (almost) playable...
 
-![Running the game](images/runner/2/run_game.png)
+![Running the game](../images/runner/2/run_game.png)
 
 <a name="part-7"></span></a>
 ## STEP 7 - Animation and death
@@ -665,7 +665,7 @@ The first thing we're gonna do is to bring life to the frog. Right now the poor 
     ...
     ```
 
-![Insert hero code](images/runner/insert_hero_code.png)
+![Insert hero code](../images/runner/insert_hero_code.png)
 
 <div class='sidenote' markdown='1'>
 Lua has "lexical scope" for local variables and is sensitive about the order that you place `local` functions in. The function `update()` calls the local functions `update_animation()` and `play_animation()` which means that the runtime must have seen the local functions to be able to call it. That is why we must put the functions before `update()`. If you switch order of the functions you will get an error. Note that this applies to `local` variables only. You can read more about Lua's scoping rules and local functions on http://www.lua.org/pil/6.2.html
@@ -682,11 +682,11 @@ That's all that's needed to add jump and fall animations to the hero. If you run
 7. Add a box shape to the *Collision Object* (right-click and select <kbd>Add Shape</kbd>) and use the *Move Tool* (<kbd>Scene ▸ Move Tool</kbd>) and the *Scale Tool* to place the shape so the frog will collide with the "danger" object when hitting the platform from the side or from below.
 8. Save the file.
 
-    ![Platform spikes](images/runner/3/danger_edges.png)
+    ![Platform spikes](../images/runner/3/danger_edges.png)
 
 9. Open *hero.go*, mark the *Collision Object* and add the "danger" name to the *Mask* property. Then save the file.
 
-    ![Hero collision](images/runner/3/hero_collision.png)
+    ![Hero collision](../images/runner/3/hero_collision.png)
 
 10. Open *hero.script* and change the `on_message()` function so we get a reaction if the frog collides with a "danger" egde:
 
@@ -811,7 +811,7 @@ If you try the game now it quickly becomes apparent that the reset mechanism doe
     ...
     ```
 
-    ![Insert platform code](images/runner/insert_platform_code.png)
+    ![Insert platform code](../images/runner/insert_platform_code.png)
 
 4. Save the file.
 5. Open *hero.script*. Now, the last thing we need to do is to tell the level to do the reset. We have moved the message asking the hero to reset to the level controller script. It makes sense to centralize control of resetting like this because it allows us to, for instance, introduce a longer timed death sequence with greater ease:
@@ -826,7 +826,7 @@ go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position().y - 20
 ...
 ```
 
-![Insert hero code](images/runner/insert_hero_code_2.png)
+![Insert hero code](../images/runner/insert_hero_code_2.png)
 
 And now the main restart-die loop is in place!
 
@@ -867,7 +867,7 @@ and add a *Sphere* shape that covers the image (right-click the component and se
 
 10. Add the script file as a *Script* component to the coin object (right-click the root in *Outline* and select <kbd>Add Component from File</kbd>).
 
-    ![Coin game object](images/runner/3/coin.png)
+    ![Coin game object](../images/runner/3/coin.png)
 
 The plan is to spawn the coins from the platform objects so put factories for the coins in *platform.go* and *platform_long.go*.
 
@@ -876,7 +876,7 @@ The plan is to spawn the coins from the platform objects so put factories for th
 3. Now open *platform_long.go* and create an identical *Factory* component.
 4. Save the two files.
 
-![Coin factory](images/runner/3/coin_factory.png)
+![Coin factory](../images/runner/3/coin_factory.png)
 
 Now we need to modify *platform.script* so it spawns and deletes the coins:
 
@@ -960,7 +960,7 @@ table.insert(self.spawns, p)
 ...
 ```
 
-![Insert controller code](images/runner/insert_controller_code.png)
+![Insert controller code](../images/runner/insert_controller_code.png)
 
 And now we have a simple, but functional game! If you make it this far you might want to continue on your own and add the following:
 
