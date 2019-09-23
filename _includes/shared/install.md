@@ -2,7 +2,7 @@
 
 Go to the [Defold download page](https://d.defold.com/stable/) where you will find Download buttons for macOS, Windows and Linux (Ubuntu):
 
-![download editor](../shared/images/editor_download.png)
+![download editor](/shared/images/editor_download.png)
 
 ## Installation
 
@@ -14,7 +14,7 @@ Installation on macOS
 
   To start the editor, open your "Applications" folder and <kbd>double click</kbd> the file "Defold".
 
-  ![Defold macOS](../shared/images/macos_content.png)
+  ![Defold macOS](/shared/images/macos_content.png)
 
 Installation on Windows
 : The downloaded file is a ZIP archive that needs to be extracted:
@@ -24,7 +24,7 @@ Installation on Windows
 
   To start the editor, open the folder "Defold" and <kbd>double click</kbd> the file "Defold.exe".
 
-  ![Defold windows](../shared/images/windows_content.png)
+  ![Defold windows](/shared/images/windows_content.png)
 
 Installation on Linux
 : The downloaded file is a ZIP archive that needs to be extracted:
@@ -54,4 +54,4 @@ Installation on Linux
 
   Replace `%sha1%` by the editor release hash representing the version in question. The hash of each Defold version can be seen in the links to the released version on the download page at https://d.defold.com/stable/ (make sure to remove the initial # character and only copy the alpha-numeric part):
 
-![download editor](../shared/images/old_version_sha1.png)
+![download editor](/shared/images/old_version_sha1.png)
