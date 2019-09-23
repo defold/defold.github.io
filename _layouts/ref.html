@@ -130,7 +130,19 @@ layout: base
 					{%- for variable in variables -%}
 					<a name="{% include ref_anchorlink.html element=variable %}"/>
 					<h4>{{ variable.name }}<a href="#{% include ref_anchorlink.html element=variable %}"><span class="anchor-link"/></a></h4>
-					<p>{{ variable.brief }}</p>
+					<p>{{ variable.description }}</p>
+
+					{%- if variable.parameters.size > 0 -%}
+					<table>
+					{%- for param in variable.parameters -%}
+					<tr>
+						<td><code>{{ param.name }}</code></td>
+						<td>{{ param.doc }}</td>
+					</tr>
+					{%- endfor -%}
+					</table>
+					{%- endif -%}
+
 					<hr/>
 					{%- endfor -%}
 				{%- endif -%}
@@ -141,6 +153,7 @@ layout: base
 					{%- for message in messages -%}
 					<a name="{% include ref_anchorlink.html element=message %}"/>
 					<h4>{{ message.name }}<a href="#{% include ref_anchorlink.html element=message %}"><span class="anchor-link"/></a></h4>
+					<p>{{ message.description }}</p>
 					<p>{{ message.brief }}</p>
 					{%- if message.examples.size > 0 -%}
 					<p><b>EXAMPLES</b></p>
@@ -156,6 +169,7 @@ layout: base
 					{%- for property in properties -%}
 					<a name="{% include ref_anchorlink.html element=property %}"/>
 					<h4>{{ property.name }}<a href="#{% include ref_anchorlink.html element=property %}"><span class="anchor-link"/></a></h4>
+					<p>{{ property.description }}</p>
 					<p>{{ property.brief }}</p>
 					{%- if property.examples.size > 0 -%}
 					<p><b>EXAMPLES</b></p>
