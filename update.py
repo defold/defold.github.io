@@ -224,7 +224,9 @@ def process_examples(download = False):
         replace_in_file(os.path.join(examples_dir, "index.html"), "resize_game_canvas\(\)\;", "")
         replace_in_file(os.path.join(examples_dir, "index.html"), "window.addEventListener.*", "")
         replace_in_file(os.path.join(examples_dir, "index.html"), 'width=\"720\" height=\"720\"', 'width="680" height="680"')
-
+        replace_in_file(os.path.join(examples_dir, "index.html"), 'dmloader.js', '/examples/dmloader.js')
+        replace_in_file(os.path.join(examples_dir, "index.html"), '\"archive\"', '"/examples/archive"')
+        replace_in_file(os.path.join(examples_dir, "index.html"), 'engineJS\.src = \'Defoldexamples', 'engineJS.src = \'/examples/Defoldexamples')
         replace_in_file(os.path.join(examples_dir, "index.html"), "engine_arguments: \[", "engine_arguments: [ '--config=examples.start={{ page.collection }}'")
         shutil.copyfile(os.path.join(examples_dir, "index.html"), "_includes/example.html")
 

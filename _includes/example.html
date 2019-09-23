@@ -5,12 +5,12 @@
 		</div>
 	</div>
 	<!-- -->
-	<script id='engine-loader' type='text/javascript' src="dmloader.js"></script>
+	<script id='engine-loader' type='text/javascript' src="/examples/dmloader.js"></script>
 	<!-- -->
 	<script id='engine-setup' type='text/javascript'>
 	var extra_params = {
 		archive_location_filter: function( path ) {
-			return ("archive" + path + "");
+			return ("/examples/archive" + path + "");
 		},
 		engine_arguments: [ '--config=examples.start={{ page.collection }}'],
 		custom_heap_size: 268435456,
@@ -85,9 +85,9 @@
 		var engineJS = document.createElement('script');
 		engineJS.type = 'text/javascript';
 		if (Module['isWASMSupported']) {
-			engineJS.src = 'Defoldexamples_wasm.js';
+			engineJS.src = '/examples/Defoldexamples_wasm.js';
 		} else {
-			engineJS.src = 'Defoldexamples_asmjs.js';
+			engineJS.src = '/examples/Defoldexamples_asmjs.js';
 		}
 		document.head.appendChild(engineJS);
 	}
