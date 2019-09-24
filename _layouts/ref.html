@@ -87,7 +87,6 @@ layout: base
 				</table>
 				{%- endif -%}
 
-
 				{%- if functions.size > 0 -%}
 				<h2>Functions</h2>
 					{%- for function in functions -%}
@@ -125,12 +124,12 @@ layout: base
 					{%- endfor -%}
 				{%- endif -%}
 
-
 				{%- if variables.size > 0 -%}
 				<h2>Constants</h2>
 					{%- for variable in variables -%}
 					<a name="{% include ref_anchorlink.html element=variable %}"/>
 					<h4>{{ variable.name }}<a href="#{% include ref_anchorlink.html element=variable %}"><span class="anchor-link"/></a></h4>
+					<p>{{ variable.brief }}</p>
 					<p>{{ variable.description }}</p>
 
 					{%- if variable.parameters.size > 0 -%}
@@ -148,14 +147,13 @@ layout: base
 					{%- endfor -%}
 				{%- endif -%}
 
-
 				{%- if messages.size > 0 -%}
 				<h2>Messages</h2>
 					{%- for message in messages -%}
 					<a name="{% include ref_anchorlink.html element=message %}"/>
 					<h4>{{ message.name }}<a href="#{% include ref_anchorlink.html element=message %}"><span class="anchor-link"/></a></h4>
-					<p>{{ message.description }}</p>
 					<p>{{ message.brief }}</p>
+					<p>{{ message.description }}</p>
 
 					{%- if message.parameters.size > 0 -%}
 					<table>
@@ -197,8 +195,8 @@ layout: base
 					{%- for macro in macros -%}
 					<a name="{% include ref_anchorlink.html element=macro %}"/>
 					<h4>{{ macro.name }}<a href="#{% include ref_anchorlink.html element=macro %}"><span class="anchor-link"/></a></h4>
-					<p>{{ macro.description }}</p>
 					<p>{{ macro.brief }}</p>
+					<p>{{ macro.description }}</p>
 
 					{%- if macro.parameters.size > 0 -%}
 					<table>
