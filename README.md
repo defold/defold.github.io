@@ -1,13 +1,21 @@
 # defold.github.io
 
-New www.defold.com leveraging GitHub Pages and Jekyll+Liquid to generate a static site. This project pulls in additional content from a couple of repositories using the `update.py` file:
+New www.defold.com leveraging GitHub Pages and Jekyll+Liquid to generate a static site. This project pulls in additional content from a couple of repositories using the `update.py` script:
 
 ```
 python update.py [--download] docs codepad refdoc examples assets
 ```
 
-* docs - Import manuals, tutorials and FAQ from github.com/defold/doc
-* codepad - Import CodePad from github.com/defold/codepad
-* refdoc - Import API reference from latest release at d.defold.com
-* examples - Import examples from github.com/defold/examples
-* assets - Import Asset Portal content from github.com/defold/awesome-defold
+## Options
+The script accepts the following options:
+
+* `--download` - Download the required files for each command. If the option is omitted the files are expected to already exist on disk ready for processing.
+
+## Commands
+The script accepts the following commands:
+
+* `docs` - Import manuals, tutorials and FAQ from github.com/defold/doc
+* `codepad` - Import CodePad from github.com/defold/codepad
+* `refdoc` - Import API reference from latest release at d.defold.com
+* `examples` - Import examples from github.com/defold/examples
+* `assets` - Import Asset Portal content from github.com/defold/awesome-defold
