@@ -1,12 +1,15 @@
 ---
 layout: base
 ---
+{% include learnnav.html showmenu=true %}
+
 <div class="section light">
 	<div class="container">
 		<div class="row">
 			<div class="columns three">
 				{% for section in site.data.learnindex.navigation.tutorials %}
-					<b>{{ section.name }}</b>
+					<input id="collapsible_{{ section.name }}" class="toggle" type="checkbox"/>
+					<label for="collapsible_{{ section.name }}" class="togglelabel">{{ section.name }}</label>
 					<ul class="nobullet">
 						{% for tutorial in section.items %}
 						<li style="padding-left: 2rem;">

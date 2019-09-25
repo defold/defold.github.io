@@ -1,6 +1,7 @@
 /* Reusable color constants */
 :root {
     --lightest: #fafafa;
+    --almostlightest: #f0f2f6;
     --lighter: #b0bac4;
     --light: #79838e;
     --dark: #1e2226;
@@ -197,28 +198,44 @@ input[type="checkbox"].toggle:checked + .togglelabel + ul {
     cursor: pointer;
 }
 .togglelabel::after {
-    content: '▶';
+    /* content: '▶'; */
+    content: '▸';
+    position:absolute;;
     font-size: 70%;
     margin-left: 0.5rem;
+    padding-top: 0.25rem;
 }
 input[type="checkbox"].toggle:checked + .togglelabel::after {
-    content: '▼';
+    /* content: '▼'; */
+    content: '▾';
 }
 
 /*******************************************************************************
  * Horizontal navigation menu (class: nav)
  * Positioned at the top above other content
  ******************************************************************************/
+.nav.learn {
+    background-color: var(--almostlightest);
+    color: var(--darker);
+}
+.nav.learn input {
+    margin-bottom: 0;
+}
+.nav.learn ul {
+    margin-block-end: 0;
+    padding-top: 0.7rem;
+}
+
 .nav li {
     display: inline;
     margin-right: 2rem;
 }
 .nav a {
-    color: white;
+    /* color: white; */
     text-decoration: none;
 }
 .nav a:hover {
-    color: white;
+    /* color: white; */
     text-decoration: none;
 }
 .nav {
@@ -226,6 +243,10 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 }
 .nav div.container {
     padding-top: 3rem;
+}
+.nav.learn div.container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 .absolutetop {
     position: absolute;
@@ -386,6 +407,13 @@ input[type="button"].button:hover {
 }
 .center {
     text-align: center;
+}
+
+/*******************************************************************************
+ * Typography
+ ******************************************************************************/
+.bold {
+    font-weight: bold;
 }
 
 /*******************************************************************************

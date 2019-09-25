@@ -12,6 +12,7 @@ import re
 import subprocess
 from argparse import ArgumentParser
 from contextlib import contextmanager
+import lunr
 
 SHA1 = None
 
@@ -20,6 +21,9 @@ EXAMPLES_ZIP = "examples-master.zip"
 CODEPAD_ZIP = "codepad-master.zip"
 AWESOME_ZIP = "awesome-defold-master.zip"
 REFDOC_ZIP = "refdoc.zip"
+
+MANUALS_DIR = "_manuals"
+REF_DATA_DIR = os.path.join("_data", "ref")
 
 ASSET_MD_FRONTMATTER = """---
 layout: asset
@@ -140,11 +144,10 @@ def process_docs(download = False):
 
         print("Processing doc")
         print("...manuals")
-        manuals_dir = "_manuals"
-        if os.path.exists(manuals_dir):
-            shutil.rmtree(manuals_dir)
-        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "manuals"), manuals_dir)
-        for filename in find_files(manuals_dir, "*.md"):
+        if os.path.exists(MANUALS_DIR):
+            shutil.rmtree(MANUALS_DIR)
+        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "manuals"), MANUALS_DIR)
+        for filename in find_files(MANUALS_DIR, "*.md"):
             process_doc_file(filename)
 
         print("...faq")
@@ -380,10 +383,9 @@ def process_refdoc(download = False):
         os.mkdir(collection_dir)
 
         # Jekyll data
-        data_dir = os.path.join("_data", "ref")
-        if os.path.exists(data_dir):
-            shutil.rmtree(data_dir)
-        os.mkdir(data_dir)
+        if os.path.exists(REF_DATA_DIR):
+            shutil.rmtree(REF_DATA_DIR)
+        os.mkdir(REF_DATA_DIR)
 
         refindex = []
         for file in os.listdir(os.path.join(tmp_dir, "doc")):
@@ -392,7 +394,7 @@ def process_refdoc(download = False):
                 json_out_file = json_out_name + ".json"
 
                 # copy and rename file
-                shutil.copyfile(os.path.join(tmp_dir, "doc", file), os.path.join(data_dir, json_out_file))
+                shutil.copyfile(os.path.join(tmp_dir, "doc", file), os.path.join(REF_DATA_DIR, json_out_file))
 
                 # generate a dummy markdown page with some front matter for each ref doc
                 with open(os.path.join(collection_dir, file.replace("_doc.json", ".md")), "w") as f:
@@ -410,6 +412,53 @@ def process_refdoc(download = False):
         with open(os.path.join("_data", "refindex.json"), "w") as f:
             json.dump(refindex, f, indent=2)
 
+
+
+def process_file_for_indexing(filename):
+    with open(filename, 'r') as file:
+        data = file.read().replace('\n', '')
+        # data = re.sub("\!\[.*\]\(.*\)", "", data)
+        data = re.sub("\[(.*?)\]\(.*?\)", "\1", data)
+        return data
+
+
+def generate_searchindex():
+    searchindex = []
+    # for filename in find_files(MANUALS_DIR, "*.md"):
+    #     data = process_file_for_indexing(filename)
+    #     searchindex.append({
+    #         "id": filename.replace("_", "").replace(".md", ""),
+    #         "type": "manual",
+    #         "data": data
+    #     })
+
+    for filename in find_files(REF_DATA_DIR, "*.json"):
+        with open(filename) as f:
+            r = json.load(f)
+            for element in r["elements"]:
+                searchindex.append({
+                    "id": filename.replace("_data/", "").replace(".json", ""),
+                    "type": "refdoc",
+                    "data": element["name"]
+                })
+
+    builder = lunr.builder.Builder()
+    builder.ref("id")
+    for field in ('type', 'data'):
+        if isinstance(field, dict):
+            builder.field(**field)
+        else:
+            builder.field(field)
+    for document in searchindex:
+        if isinstance(document, (tuple, list)):
+            builder.add(document[0], attributes=document[1])
+        else:
+            builder.add(document)
+    lunrindex = builder.build()
+    # lunrindex = lunr.lunr(ref='id', fields=('type', 'data'), documents=searchindex)
+
+    with open("searchindex.json", "w") as f:
+        json.dump(lunrindex.serialize(), f)
 
 
 parser = ArgumentParser()
@@ -432,14 +481,16 @@ for command in args.commands:
         print(help)
         sys.exit(0)
     elif command == "docs":
-        process_docs(args.download)
+        process_docs(download = args.download)
     elif command == "examples":
-        process_examples(args.download)
+        process_examples(download = args.download)
     elif command == "refdoc":
-        process_refdoc(args.download)
+        process_refdoc(download = args.download)
     elif command == "assets":
-        process_assets(args.download)
+        process_assets(download = args.download)
     elif command == "codepad":
-        process_codepad(args.download)
+        process_codepad(download = args.download)
+    elif command == "searchindex":
+        generate_searchindex()
     else:
         print("Unknown command {}".format(command))

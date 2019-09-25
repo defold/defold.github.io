@@ -22,8 +22,20 @@ The script accepts the following commands:
 * `refdoc` - Import API reference from latest release at d.defold.com
 * `examples` - Import examples from github.com/defold/examples
 * `assets` - Import Asset Portal content from github.com/defold/awesome-defold
+* `searchindex` - Generates the search index
 
-## Testing locally
+
+# Testing locally
 Follow the Jekyll install instructions to build and test the site locally before pushing changes to this repository:
 
 https://jekyllrb.com/docs/github-pages/
+
+
+# Search
+The site search is based on [Lunr.js](https://github.com/olivernn/lunr.js). The search index is generated using the [Python equivalent of Lunr](https://github.com/yeraydiazdiaz/lunr.py). Install the python version using:
+
+```
+pip install --user lunr==0.5.5
+```
+
+Version 0.5.5 of lunr.py uses Lunr.js version 2.3.6.

@@ -1,0 +1,29 @@
+<div class="nav learn light">
+	<div class="container">
+		<div class="row">
+			<div class="nine columns">
+				{%- if include.showmenu -%}
+				<ul class="navmenu">
+					<li><a href="/examples/simple_move" class="{% if page.url contains 'examples' %}bold{% endif %}">Examples </a></li>
+					<li><a href="/tutorials/getting-started" class="{% if page.url contains 'tutorials' %}bold{% endif %}">Tutorials</a></li>
+					<li><a href="/manuals/introduction" class="{% if page.url contains 'manuals' %}bold{% endif %}">Manuals</a></li>
+					<li><a href="/ref/go" class="{% if page.url contains 'ref' %}bold{% endif %}">API Reference</a></li>
+				</ul>
+				<select class="navdropdown" onchange="location = this.value;">
+					<option value="/examples/simple_move">Examples</option>
+					<option value="/tutorials/getting-started">Tutorials</option>
+					<option value="/manuals/introduction">Manuals</option>
+					<option value="/ref/go">API Reference</option>
+				</select>
+				{%- else -%}
+				<br/>
+				{%- endif -%}
+			</div>
+			<div class="three columns right compact">
+				<form action="/search">
+					<input id="search" name="q" type="text" placeholder="Search..."/>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
