@@ -168,6 +168,44 @@ footer li a {
 }
 
 /*******************************************************************************
+ * Collapsible menu using checkbox+label
+ * checkbox unchecked -> Collapsed
+ * checkbox checked -> Expanded
+ ******************************************************************************/
+
+input[type="checkbox"].toggle {
+    display: none;
+}
+/* Padding between elements when collapsed */
+input[type="checkbox"].toggle + .togglelabel {
+    padding-bottom: 1rem;
+}
+/* No padding between elements when expanded */
+input[type="checkbox"].toggle:checked + .togglelabel {
+    padding-bottom: 0;
+}
+/* Hide the list if collapsed (not checked) */
+input[type="checkbox"].toggle + .togglelabel + ul {
+    display: none;
+}
+/* Show the list when expanded (checked) */
+input[type="checkbox"].toggle:checked + .togglelabel + ul {
+    display: block;
+}
+
+.togglelabel:hover {
+    cursor: pointer;
+}
+.togglelabel::after {
+    content: '▶';
+    font-size: 70%;
+    margin-left: 0.5rem;
+}
+input[type="checkbox"].toggle:checked + .togglelabel::after {
+    content: '▼';
+}
+
+/*******************************************************************************
  * Horizontal navigation menu (class: nav)
  * Positioned at the top above other content
  ******************************************************************************/

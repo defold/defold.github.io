@@ -6,7 +6,8 @@ layout: base
 		<div class="row">
 			<div class="columns three">
 				{% for section in site.data.learnindex.navigation.manuals %}
-					<b>{{ section.name }}</b>
+					<input id="collapsible_{{ section.name }}" class="toggle" type="checkbox"/>
+					<label for="collapsible_{{ section.name }}" class="togglelabel">{{ section.name }}</label>
 					<ul class="nobullet">
 						{% for manual in section.items %}
 						<li style="padding-left: 2rem;">
