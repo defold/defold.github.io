@@ -19,7 +19,7 @@ The tutorial is integrated with the Defold editor and easily accessible:
 
 The editor automatically opens the "README" file from the project root, containing the full tutorial text.
 
-![icon](../images/icon-tutorial.svg){.icon} [You can also read the full tutorial text on Github](https://github.com/defold/tutorial-side-scroller)
+![icon](../images/icon-tutorial.svg) [You can also read the full tutorial text on Github](https://github.com/defold/tutorial-side-scroller)
 
 If you get stuck, head over to the [Defold Forum](//forum.defold.com) where you will get help from the Defold team and many friendly users.
 

@@ -19,14 +19,14 @@ Defold supports images in the PNG and JPEG image formats. For models, Defold use
 
 In Defold, there are two types of resources that are used as an image source for visual components:
 
-![atlas](../images/icons/atlas.png){.icon} Atlas
+![atlas](../images/icons/atlas.png) Atlas
 : An atlas contains a list of separate images files, which are automatically combined into a larger texture image. Atlases can contain still images and *Animation Groups*, sets of images that together form a flipbook animation.
 
   ![atlas](../images/graphics/atlas.png)
 
 Learn more about the atlas resource in the [Atlas manual](/manuals/atlas).
 
-![tile source](../images/icons/tilesource.png){.icon} Tile Source
+![tile source](../images/icons/tilesource.png) Tile Source
 : A tile source references an image file that is already made out to consist of smaller sub-images ordered on a uniform grid. Another term commonly used for this type of compound image is _sprite sheet_. Tile sources can contain flipbook animations, defined by the first and last tile for the animation. It is also possible to use an image to automatically attach collision shapes to tiles.
 
   ![tile source](../images/graphics/tilesource.png)
@@ -37,35 +37,35 @@ Learn more about the tile source resource in the [Tile source manual](/manuals/t
 
 There are several component types that get their image data from atlas or tile source image resources:
 
-![sprite](../images/icons/sprite.png){.icon}
+![sprite](../images/icons/sprite.png)
 : A sprite is a simple image or flipbook animation that is displayed on screen.
 
   ![sprite](../images/graphics/sprite.png)
 
 Learn more about sprites in the [Sprite manual](/manuals/sprite).
 
-![tile map](../images/icons/tilemap.png){.icon} Tile map
+![tile map](../images/icons/tilemap.png) Tile map
 : A tilemap component pieces together a map from tiles (image and collision shapes) that come from a tile source. Tile maps cannot use atlas sources.
 
   ![tilemap](../images/graphics/tilemap.png)
 
 Learn more about tilemaps in the [Tilemap manual](/manuals/tilemap).
 
-![particle effect](../images/icons/particlefx.png){.icon} Particle fx
+![particle effect](../images/icons/particlefx.png) Particle fx
 : Particles that are spawned from a particle emitter consist of a still image or a flipbook animation from an atlas or tile source.
 
   ![particles](../images/graphics/particles.png)
 
 Learn more about particle effects in the [Particle fx manual](/manuals/particlefx).
 
-![gui](../images/icons/gui.png){.icon} GUI
+![gui](../images/icons/gui.png) GUI
 : GUI box nodes and pie nodes can use still images and flip book animations from atlases and tile sources.
 
   ![gui](../images/graphics/gui.png)
 
 Learn more about GUIs in the [GUI manual](/manuals/gui).
 
-![spine](../images/icons/spine-model.png){.icon} Spine model
+![spine](../images/icons/spine-model.png) Spine model
 : Spine models gets their data from Spine scene resources. Those contain two pieces of data:
 
   1. A Spine Json file that describes the bone animations.
@@ -80,7 +80,7 @@ Learn more about Spine models in the [Spine model manual](/manuals/spine-model).
 
 Models get its image data directly from an image file that is mapped onto the model according to the model's UV map:
 
-![model](../images/icons/model.png){.icon} Model
+![model](../images/icons/model.png) Model
 : 3D models
 
   ![model](../images/graphics/model.png)
