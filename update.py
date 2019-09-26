@@ -475,9 +475,10 @@ def generate_searchindex():
     with open("searchindex.json", "w") as f:
         json.dump(lunrindex.serialize(), f)
 
+ALL_COMMANDS = [ "docs", "examples", "refdoc", "assets", "codepad", "searchindex" ]
 
 parser = ArgumentParser()
-parser.add_argument('commands', nargs="+", help='Commands (docs, examples, refdoc, assets, codepad, help)')
+parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ', all, help)')
 parser.add_argument("--download", dest="download", action='store_true', help="Download updated content for the command(s) in question")
 args = parser.parse_args()
 
@@ -488,7 +489,13 @@ refdoc = Process the API reference
 assets = Process the asset portal list
 examples = Build the examples
 codepad = Build the Defold CodePad
+all = Run all of the above commands
+help = Show this help
 """
+
+if "all" in args.commands:
+    args.commands.remove("all")
+    args.commands.extend(ALL_COMMANDS)
 
 for command in args.commands:
     if command == "help":
