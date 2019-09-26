@@ -10,8 +10,7 @@ function search(searchfield_id, searchresult_id) {
 		};
 	}
 
-	var fmt = "<a href='/{0}'><p>{1}<br/>\n"
-	+ "<span style='font-size: smaller; text-decoration: none;'>{2}</span></p></a>\n";
+	var fmt = "<p><a href='/{0}?q={2}'>{1}</a></p>\n";
 
 	var query = new URLSearchParams(window.location.search).get('q');
 	if (query) {
@@ -26,11 +25,12 @@ function search(searchfield_id, searchresult_id) {
 				if (this.status == 200) {
 					div.innerHTML = "";
 					var idx = lunr.Index.load(JSON.parse(this.responseText));
-					var results = idx.search("*" + query + "*");
+					var results = idx.search(query);
 					results.forEach(function(result, index) {
-						var keys = Object.keys(result.matchData.metadata).join(", ");
-						if (keys.length > 50) { keys = keys.substring(0, 50) + "..."; }
-						div.innerHTML = div.innerHTML + String.format(fmt, result.ref, result.ref, keys)
+						// var keys = Object.keys(result.matchData.metadata).join(", ");
+						// if (keys.length > 50) { keys = keys.substring(0, 50) + "..."; }
+						// console.log("keys", keys);
+						div.innerHTML = div.innerHTML + String.format(fmt, result.ref, result.ref, query)
 					});
 				}
 				else {

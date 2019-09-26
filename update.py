@@ -419,29 +419,44 @@ def process_file_for_indexing(filename):
         data = file.read().replace('\n', '')
         # data = re.sub("\!\[.*\]\(.*\)", "", data)
         data = re.sub("\[(.*?)\]\(.*?\)", "\1", data)
-        return data
+        return data.decode('utf-8')
 
 
 def generate_searchindex():
     searchindex = []
-    # for filename in find_files(MANUALS_DIR, "*.md"):
-    #     data = process_file_for_indexing(filename)
-    #     searchindex.append({
-    #         "id": filename.replace("_", "").replace(".md", ""),
-    #         "type": "manual",
-    #         "data": data
-    #     })
+
+    def append_ref_doc(filename, data):
+        searchindex.append({
+            "id": filename.replace("_data/", "").replace(".json", ""),
+            "type": "refdoc",
+            "data": data
+        })
+
+    def append_manual(filename, data):
+        searchindex.append({
+            "id": filename.replace("_", "").replace(".md", ""),
+            "type": "manual",
+            "data": data
+        })
+
+    for filename in find_files(MANUALS_DIR, "*.md"):
+        data = process_file_for_indexing(filename)
+        append_manual(filename, data)
 
     for filename in find_files(REF_DATA_DIR, "*.json"):
         with open(filename) as f:
             r = json.load(f)
             for element in r["elements"]:
-                searchindex.append({
-                    "id": filename.replace("_data/", "").replace(".json", ""),
-                    "type": "refdoc",
-                    "data": element["name"]
-                })
+                name = element["name"]
+                append_ref_doc(filename, name)
 
+                if "." in name:
+                    for part in name.split("."):
+                        append_ref_doc(filename, part)
+
+    # manually create a builder without stemming, stop words etc
+    # if we use the standard builder pipeline functions we will end up
+    # with partial search words like go.get_posit instead of go.get_position
     builder = lunr.builder.Builder()
     builder.ref("id")
     for field in ('type', 'data'):
