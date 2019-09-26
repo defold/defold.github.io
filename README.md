@@ -43,4 +43,4 @@ pip install --user lunr==0.5.5
 Version 0.5.5 of lunr.py uses Lunr.js version 2.3.6.
 
 ## Page search
-Functionality for searching and marking within a single page using Mark.js.
+Functionality for searching and marking within a single page using [Mark.js](https://markjs.io/).
