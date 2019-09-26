@@ -120,8 +120,8 @@ Images are inserted into the document like this:
 
 Note that images are usually rendered centered in their own paragraph. Apply class `.inline` for inline behavior if you have several images as part of the same paragragh and you want to line up several images like this:
 
-<span style='display: inline'>![A small image of sorts](../images/test/small.png)</span>
-<span style='display: inline'>![A small image of sorts](../images/test/small.png)</span>
+![A small image of sorts](../images/test/small.png)
+![A small image of sorts](../images/test/small.png)
 
 ## Transclusion
 

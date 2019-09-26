@@ -16,8 +16,8 @@ Defold has built in support for many types of animation that you can use as a so
 
 A flip book animation consists of a series of still images that are shown in succession. The technique is very similar to traditional cell animation (see http://en.wikipedia.org/wiki/Traditional_animation). The technique offers limitless opportunities since each frame can be manipulated individually. However, since each frame is stored in a unique image, the memory footprint can be high. The smoothness of animation is also dependent on the number of images shown each second but increasing the number of images usually also increase the amount of work. Defold flip book animations are either stored as individual images added to an [Atlas](/manuals/atlas), or as a [Tile Source](/manuals/tilesource) with all frames laid out in a horizontal sequence.
 
-  <span style='display: inline'>![Animation sheet](../images/animation/animsheet.png)</span>
-  <span style='display: inline'>![Run loop](../images/animation/runloop.gif)</span>
+  ![Animation sheet](../images/animation/animsheet.png)
+  ![Run loop](../images/animation/runloop.gif)
 
 ## Spine animation
 
@@ -25,8 +25,8 @@ Spine animation provides 2D _skeletal animation_ support (see http://en.wikipedi
 
   For details on how to import Spine data into a Spine model for animation, see the [Spine documentation](/manuals/spine).
 
-  <span style='display: inline'>![Spine animation](../images/animation/spine_animation.png)</span>
-  <span style='display: inline'>![Run loop](../images/animation/frog_runloop.gif)</span>
+  ![Spine animation](../images/animation/spine_animation.png)
+  ![Run loop](../images/animation/frog_runloop.gif)
 
 ## 3D skinned animation
 
@@ -35,14 +35,14 @@ Skeletal animation of 3D models is similar to Spine animation but works in 3D as
   For details on how to import 3D data into a Model for animation, see the [Model documentation](/manuals/model).
 
   ![Blender animation](../images/animation/blender_animation.png){.inline srcset="images/animation/blender_animation@2x.png 2x"}
-  <span style='display: inline'>![Wiggle loop](../images/animation/suzanne.gif)</span>
+  ![Wiggle loop](../images/animation/suzanne.gif)
 
 ## Property animation
 
 All numeric properties (numbers, vector3, vector4 and quaterions) and shader constants can be animated with the built in animation system, using the function `go.animate()`. The engine will automatically "tween" properties for you according to given playback modes and easing functions. You can also specify custom easing functions.
 
   ![Property animation](../images/animation/property_animation.png){.inline srcset="images/animation/property_animation@2x.png 2x"}
-  <span style='display: inline'>![Bounce loop](../images/animation/bounce.gif)</span>
+  ![Bounce loop](../images/animation/bounce.gif)
 
 ## Playing flip-book animations
 
@@ -418,47 +418,47 @@ The following are valid easing values for `gui.animate()`:
 </script>
 </div>
 
-<span style='display: inline'>![Linear interpolation](../images/properties/easing_linear.png)</span>
-<span style='display: inline'>![In back](../images/properties/easing_inback.png)</span>
-<span style='display: inline'>![Out back](../images/properties/easing_outback.png)</span>
-<span style='display: inline'>![In-out back](../images/properties/easing_inoutback.png)</span>
-<span style='display: inline'>![Out-in back](../images/properties/easing_outinback.png)</span>
-<span style='display: inline'>![In bounce](../images/properties/easing_inbounce.png)</span>
-<span style='display: inline'>![Out bounce](../images/properties/easing_outbounce.png)</span>
-<span style='display: inline'>![In-out bounce](../images/properties/easing_inoutbounce.png)</span>
-<span style='display: inline'>![Out-in bounce](../images/properties/easing_outinbounce.png)</span>
-<span style='display: inline'>![In elastic](../images/properties/easing_inelastic.png)</span>
-<span style='display: inline'>![Out elastic](../images/properties/easing_outelastic.png)</span>
-<span style='display: inline'>![In-out elastic](../images/properties/easing_inoutelastic.png)</span>
-<span style='display: inline'>![Out-in elastic](../images/properties/easing_outinelastic.png)</span>
-<span style='display: inline'>![In sine](../images/properties/easing_insine.png)</span>
-<span style='display: inline'>![Out sine](../images/properties/easing_outsine.png)</span>
-<span style='display: inline'>![In-out sine](../images/properties/easing_inoutsine.png)</span>
-<span style='display: inline'>![Out-in sine](../images/properties/easing_outinsine.png)</span>
-<span style='display: inline'>![In exponential](../images/properties/easing_inexpo.png)</span>
-<span style='display: inline'>![Out exponential](../images/properties/easing_outexpo.png)</span>
-<span style='display: inline'>![In-out exponential](../images/properties/easing_inoutexpo.png)</span>
-<span style='display: inline'>![Out-in exponential](../images/properties/easing_outinexpo.png)</span>
-<span style='display: inline'>![In circlic](../images/properties/easing_incirc.png)</span>
-<span style='display: inline'>![Out circlic](../images/properties/easing_outcirc.png)</span>
-<span style='display: inline'>![In-out circlic](../images/properties/easing_inoutcirc.png)</span>
-<span style='display: inline'>![Out-in circlic](../images/properties/easing_outincirc.png)</span>
-<span style='display: inline'>![In quadratic](../images/properties/easing_inquad.png)</span>
-<span style='display: inline'>![Out quadratic](../images/properties/easing_outquad.png)</span>
-<span style='display: inline'>![In-out quadratic](../images/properties/easing_inoutquad.png)</span>
-<span style='display: inline'>![Out-in quadratic](../images/properties/easing_outinquad.png)</span>
-<span style='display: inline'>![In cubic](../images/properties/easing_incubic.png)</span>
-<span style='display: inline'>![Out cubic](../images/properties/easing_outcubic.png)</span>
-<span style='display: inline'>![In-out cubic](../images/properties/easing_inoutcubic.png)</span>
-<span style='display: inline'>![Out-in cubic](../images/properties/easing_outincubic.png)</span>
-<span style='display: inline'>![In quartic](../images/properties/easing_inquart.png)</span>
-<span style='display: inline'>![Out quartic](../images/properties/easing_outquart.png)</span>
-<span style='display: inline'>![In-out quartic](../images/properties/easing_inoutquart.png)</span>
-<span style='display: inline'>![Out-in quartic](../images/properties/easing_outinquart.png)</span>
-<span style='display: inline'>![In quintic](../images/properties/easing_inquint.png)</span>
-<span style='display: inline'>![Out quintic](../images/properties/easing_outquint.png)</span>
-<span style='display: inline'>![In-out quintic](../images/properties/easing_inoutquint.png)</span>
-<span style='display: inline'>![Out-in quintic](../images/properties/easing_outinquint.png)</span>
+![Linear interpolation](../images/properties/easing_linear.png)
+![In back](../images/properties/easing_inback.png)
+![Out back](../images/properties/easing_outback.png)
+![In-out back](../images/properties/easing_inoutback.png)
+![Out-in back](../images/properties/easing_outinback.png)
+![In bounce](../images/properties/easing_inbounce.png)
+![Out bounce](../images/properties/easing_outbounce.png)
+![In-out bounce](../images/properties/easing_inoutbounce.png)
+![Out-in bounce](../images/properties/easing_outinbounce.png)
+![In elastic](../images/properties/easing_inelastic.png)
+![Out elastic](../images/properties/easing_outelastic.png)
+![In-out elastic](../images/properties/easing_inoutelastic.png)
+![Out-in elastic](../images/properties/easing_outinelastic.png)
+![In sine](../images/properties/easing_insine.png)
+![Out sine](../images/properties/easing_outsine.png)
+![In-out sine](../images/properties/easing_inoutsine.png)
+![Out-in sine](../images/properties/easing_outinsine.png)
+![In exponential](../images/properties/easing_inexpo.png)
+![Out exponential](../images/properties/easing_outexpo.png)
+![In-out exponential](../images/properties/easing_inoutexpo.png)
+![Out-in exponential](../images/properties/easing_outinexpo.png)
+![In circlic](../images/properties/easing_incirc.png)
+![Out circlic](../images/properties/easing_outcirc.png)
+![In-out circlic](../images/properties/easing_inoutcirc.png)
+![Out-in circlic](../images/properties/easing_outincirc.png)
+![In quadratic](../images/properties/easing_inquad.png)
+![Out quadratic](../images/properties/easing_outquad.png)
+![In-out quadratic](../images/properties/easing_inoutquad.png)
+![Out-in quadratic](../images/properties/easing_outinquad.png)
+![In cubic](../images/properties/easing_incubic.png)
+![Out cubic](../images/properties/easing_outcubic.png)
+![In-out cubic](../images/properties/easing_inoutcubic.png)
+![Out-in cubic](../images/properties/easing_outincubic.png)
+![In quartic](../images/properties/easing_inquart.png)
+![Out quartic](../images/properties/easing_outquart.png)
+![In-out quartic](../images/properties/easing_inoutquart.png)
+![Out-in quartic](../images/properties/easing_outinquart.png)
+![In quintic](../images/properties/easing_inquint.png)
+![Out quintic](../images/properties/easing_outquint.png)
+![In-out quintic](../images/properties/easing_inoutquint.png)
+![Out-in quintic](../images/properties/easing_outinquint.png)
 
 ## Custom easing
 
