@@ -20,7 +20,7 @@ layout: base
 				{% endfor %}
 			</div>
 			<div class="columns seven tutorial">
-				{{ content }}
+				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
 			</div>
 			<div class="columns two">
 				<br/>

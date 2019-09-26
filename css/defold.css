@@ -355,14 +355,29 @@ input[type="button"].button:hover {
     color: var(--defold-orange);
 }
 
+/*******************************************************************************
+ * Ref doc, manuals, tutorials anchor links
+ ******************************************************************************/
+
 .ref a {
     text-decoration: none;
 }
+.manual a {
+    text-decoration: none;
+}
+.tutorial a {
+    text-decoration: none;
+}
+
 .anchor-link::before {
     font-family: fontello;
+    font-size: smaller;
     content: '';
+    color: #efefef;
+    padding: 0.25em;
+}
+.anchor-link:hover::before {
     color: #bfbfbf;
-    padding: 0.5em;
 }
 
 /*******************************************************************************
