@@ -32,6 +32,8 @@ https://jekyllrb.com/docs/github-pages/
 
 
 # Search
+
+## Site search
 The site search is based on [Lunr.js](https://github.com/olivernn/lunr.js). The search index is generated using the [Python equivalent of Lunr](https://github.com/yeraydiazdiaz/lunr.py). Install the python version using:
 
 ```
@@ -39,3 +41,6 @@ pip install --user lunr==0.5.5
 ```
 
 Version 0.5.5 of lunr.py uses Lunr.js version 2.3.6.
+
+## Page search
+Functionality for searching and marking within a single page using Mark.js.
