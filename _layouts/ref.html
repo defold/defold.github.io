@@ -94,7 +94,7 @@ layout: base
 					{%- for function in functions -%}
 						<a name="{% include ref_anchorlink.html element=function %}"/>
 						<h4>{{ function.name }}()<a href="#{% include ref_anchorlink.html element=function %}" class="anchor-link"></a></h4>
-						<p>{{ function.name }}({%- for param in function.parameters -%}{{ param.name }}{%- if forloop.last != true -%}, {%- endif -%}{%- endfor -%})</p>
+						<p><code>{{ function.name }}({%- for param in function.parameters -%}{{ param.name }}{%- if forloop.last != true -%}, {%- endif -%}{%- endfor -%})</code></p>
 						{{ function.description }}
 						<p><b>PARAMETERS</b></p>
 						<table>
