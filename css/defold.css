@@ -113,17 +113,22 @@
   padding: 8rem 0 7rem;
 }
 
-
-select{
+select {
     overflow:auto;
     height:auto;
 }
+
 /*******************************************************************************
  * Helper to reduce margins and padding
  ******************************************************************************/
 .compact > * {
     padding: 0;
     margin: 0;
+}
+
+.compact td p {
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 
 /*******************************************************************************
@@ -337,6 +342,17 @@ input[type="button"].button:hover {
 }
 
 /*******************************************************************************
+ * Icons (fontello.css)
+ ******************************************************************************/
+
+span[class^='icon-'] {
+    color: var(--defold-blue);
+}
+span .icon-attention {
+    color: var(--defold-orange);
+}
+
+/*******************************************************************************
  * Ref doc
  ******************************************************************************/
 
@@ -358,11 +374,6 @@ input[type="button"].button:hover {
 .ref p > a {
     color: var(--defold-blue);
 }
-
-.ref p > .icon-attention {
-    color: var(--defold-orange);
-}
-
 
 /*******************************************************************************
  * Ref doc, manuals, tutorials anchor links

@@ -30,7 +30,7 @@ layout: base
 				{{ ref.info.description }}
 
 				{%- if functions.size > 0 -%}
-				<table>
+				<table class="compact">
 					<tr>
 						<th>FUNCTION</th>
 						<th></th>
@@ -45,7 +45,7 @@ layout: base
 				{%- endif -%}
 
 				{%- if variables.size > 0 -%}
-				<table>
+				<table class="compact">
 					<tr>
 						<th>CONSTANT</th>
 						<th></th>
@@ -60,7 +60,7 @@ layout: base
 				{%- endif -%}
 
 				{%- if messages.size > 0 -%}
-				<table>
+				<table class="compact">
 					<tr>
 						<th>MESSAGE</th>
 						<th></th>
@@ -75,7 +75,7 @@ layout: base
 				{%- endif -%}
 
 				{%- if properties.size > 0 -%}
-				<table>
+				<table class="compact">
 					<tr>
 						<th>PROPERTIES</th>
 						<th></th>
