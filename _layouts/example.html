@@ -8,18 +8,31 @@ layout: base
 		<div class="row">
 			<div class="columns three">
 				{% assign all_categories = site.data.examplesindex | map: "category" | uniq %}
-				{% for category in all_categories %}
-				<input id="collapsible_{{ category }}" class="toggle" type="checkbox"/>
-				<label for="collapsible_{{ category }}" class="togglelabel">{{ category | capitalize  }}</label>
-				<ul class="nobullet">
-					{% assign examples = site.data.examplesindex | where: "category", category %}
-					{% for example in examples %}
-					<li style="padding-left: 2rem;">
-						<a href="/examples/{{ example.path }}" style="text-decoration: none;">{{ example.name }}</a>
-					</li>
+				<div class="navmenu">
+					{% for category in all_categories %}
+					<input id="collapsible_{{ category }}" class="toggle" type="checkbox"/>
+					<label for="collapsible_{{ category }}" class="togglelabel">{{ category | capitalize  }}</label>
+					<ul class="nobullet">
+						{% assign examples = site.data.examplesindex | where: "category", category %}
+						{% for example in examples %}
+						<li style="padding-left: 2rem;">
+							<a href="/examples/{{ example.path }}" style="text-decoration: none;">{{ example.name }}</a>
+						</li>
+						{% endfor %}
+					</ul>
 					{% endfor %}
-				</ul>
-				{% endfor %}
+				</div>
+				<div class="navdropdown">
+					<select class="navdropdown" onchange="location = this.value;">
+						{% for category in all_categories %}
+						<option value="">{{ category | capitalize }}</option>
+						{% assign examples = site.data.examplesindex | where: "category", category %}
+						{% for example in examples %}
+						<option value="/examples/{{ example.path }}" {% if page.url contains example.path %}selected{% endif %}> - {{ example.name }}</option>
+						{%- endfor -%}
+						{%- endfor -%}
+					</select>
+				</div>
 			</div>
 			<div class="columns seven example" style="">
 				<h4>{{ page.title }}</h4>

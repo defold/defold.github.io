@@ -7,15 +7,17 @@ layout: base
 	<div class="container">
 		<div class="row">
 			<div class="columns three">
-				<ul class="nobullet">
-					{%- assign indices = site.data.refindex | sort: "namespace" -%}
-					{%- for foo in indices -%}
-					<li>
-						<a href="/ref/{{ foo.filename }}" style="text-decoration: none;">{{ foo.namespace }}.*</a>
-					</li>
+				{%- assign indices = site.data.refindex | sort: "namespace" -%}
+				<ul class="navmenu nobullet">
+					{%- for ref in indices -%}
+					<li><a href="/ref/{{ ref.filename }}" style="text-decoration: none;">{{ ref.namespace }}</a></li>
 					{%- endfor -%}
 				</ul>
-
+				<select class="navdropdown" onchange="location = this.value;">
+					{%- for ref in indices -%}
+					<option value="/ref/{{ ref.filename }}">{{ ref.namespace }}</option>
+					{%- endfor -%}
+				</select>
 			</div>
 			<div class="columns seven ref">
 				{%- assign ref = site.data.ref[page.ref] -%}

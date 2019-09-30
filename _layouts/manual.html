@@ -7,17 +7,29 @@ layout: base
 	<div class="container">
 		<div class="row">
 			<div class="columns three">
-				{% for section in site.data.learnindex.navigation.manuals %}
+				<div class="navmenu">
+				{%- for section in site.data.learnindex.navigation.manuals -%}
 					<input id="collapsible_{{ section.name }}" class="toggle" type="checkbox"/>
 					<label for="collapsible_{{ section.name }}" class="togglelabel">{{ section.name | capitalize }}</label>
 					<ul class="nobullet">
-						{% for manual in section.items %}
+						{%- for manual in section.items -%}
 						<li style="padding-left: 2rem;">
 							<a href="{{ manual.path }}" style="text-decoration: none;">{{ manual.name }}</a>
 						</li>
-						{% endfor %}
+						{%- endfor -%}
 					</ul>
-				{% endfor %}
+				{%- endfor -%}
+				</div>
+				<div class="navdropdown">
+					<select class="navdropdown" onchange="location = this.value;">
+						{%- for section in site.data.learnindex.navigation.manuals -%}
+						<option value="">{{ section.name | capitalize }}</option>
+						{%- for manual in section.items -%}
+						<option value="{{ manual.path }}" {% if page.url contains manual.path %}selected{% endif %}> - {{ manual.name }}</option>
+						{%- endfor -%}
+						{%- endfor -%}
+					</select>
+				</div>
 			</div>
 			<div class="columns seven manual">
 				{% include anchor_headings.html html=content anchorClass="anchor-link" %}

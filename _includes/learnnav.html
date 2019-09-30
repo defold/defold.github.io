@@ -15,14 +15,21 @@
 					<option value="/manuals/introduction">Manuals</option>
 					<option value="/ref/go">API Reference</option>
 				</select>
+				<div class="right navdropdown compact">
+					<form action="/search">
+						<input id="search" name="q" type="text" placeholder="Search..."/>
+					</form>
+				</div>
 				{%- else -%}
 				<br/>
 				{%- endif -%}
 			</div>
-			<div class="three columns right compact">
-				<form action="/search">
-					<input id="search" name="q" type="text" placeholder="Search..."/>
-				</form>
+			<div class="three columns">
+				<div class="right navmenu compact">
+					<form action="/search">
+						<input id="search" name="q" type="text" placeholder="Search..."/>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
