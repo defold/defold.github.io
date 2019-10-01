@@ -282,8 +282,8 @@ A ready to use solution for using collision objects to detect user input can be 
 
 In both cases there is a need to convert from the screen space coordinates of the mouse or touch event and the world space coordinates of the game objects. This can be done in a couple of different ways:
 
-  * Manually keep track of which view and projection that is used by the render script and use this to convert to and from world space. See the [camera manual for an example of this](/manuals/camera/#converting_mouse_to_world_coordinates).
-  * Use a [third-party camera solution](/manuals/camera/#third_party_camera_solutions) and make use of the provided screen-to-world conversion functions.
+  * Manually keep track of which view and projection that is used by the render script and use this to convert to and from world space. See the [camera manual for an example of this](/manuals/camera/#converting-mouse-to-world-coordinates).
+  * Use a [third-party camera solution](/manuals/camera/#third-party-camera-solutions) and make use of the provided screen-to-world conversion functions.
 
 
 ## Gamepads settings file
