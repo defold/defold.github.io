@@ -10,10 +10,10 @@
 					<li><a href="/ref/go" class="{% if page.url contains 'ref' %}bold{% endif %}">API Reference</a></li>
 				</ul>
 				<select class="navdropdown" onchange="location = this.value;">
-					<option value="/examples/simple_move">Examples</option>
-					<option value="/tutorials/getting-started">Tutorials</option>
-					<option value="/manuals/introduction">Manuals</option>
-					<option value="/ref/go">API Reference</option>
+					<option value="/examples/simple_move" {% if page.url contains 'examples' %}selected{% endif %}>Examples</option>
+					<option value="/tutorials/getting-started" {% if page.url contains 'tutorials' %}selected{% endif %}>Tutorials</option>
+					<option value="/manuals/introduction" {% if page.url contains 'manuals' %}selected{% endif %}>Manuals</option>
+					<option value="/ref/go" {% if page.url contains 'ref' %}selected{% endif %}>API Reference</option>
 				</select>
 				<div class="right navdropdown compact">
 					<form action="/search">

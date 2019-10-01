@@ -7,6 +7,7 @@ layout: base
 	<div class="container">
 		<div class="row">
 			<div class="columns three">
+				<div class="navmenu">
 				{% for section in site.data.learnindex.navigation.tutorials %}
 					<input id="collapsible_{{ section.name }}" class="toggle" type="checkbox"/>
 					<label for="collapsible_{{ section.name }}" class="togglelabel">{{ section.name }}</label>
@@ -18,6 +19,17 @@ layout: base
 						{% endfor %}
 					</ul>
 				{% endfor %}
+				</div>
+				<div class="navdropdown">
+					<select class="navdropdown" onchange="location = this.value;">
+						{% for section in site.data.learnindex.navigation.tutorials %}
+						<option value="">{{ section.name | capitalize }}</option>
+						{% for tutorial in section.items %}
+						<option value="{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }}</option>
+						{% endfor %}
+						{% endfor %}
+					</select>
+				</div>
 			</div>
 			<div class="columns seven tutorial">
 				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
