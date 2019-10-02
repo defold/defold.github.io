@@ -9,7 +9,13 @@ layout: base
 			<div class="columns three">
 				<div class="navmenu">
 				{%- for section in site.data.learnindex.navigation.manuals -%}
-					<input id="collapsible_{{ section.name }}" class="toggle" type="checkbox"/>
+					{%- assign checked = "" -%}
+					{%- for manual in section.items -%}
+						{%- if page.url contains manual.path -%}
+							{%- assign checked = "checked" -%}
+						{%- endif -%}
+					{%- endfor -%}
+					<input id="collapsible_{{ section.name }}" class="toggle" type="checkbox" {{ checked }}/>
 					<label for="collapsible_{{ section.name }}" class="togglelabel">{{ section.name | capitalize }}</label>
 					<ul class="nobullet">
 						{%- for manual in section.items -%}
