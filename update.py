@@ -22,6 +22,8 @@ CODEPAD_ZIP = "codepad-master.zip"
 AWESOME_ZIP = "awesome-defold-master.zip"
 REFDOC_ZIP = "refdoc.zip"
 
+ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
+
 MANUALS_DIR = "_manuals"
 REF_DATA_DIR = os.path.join("_data", "ref")
 
@@ -100,6 +102,13 @@ def find_files(root_dir, file_pattern):
                 matches.append(os.path.join(root, filename))
     return matches
 
+def read_as_json(filename):
+    with open(filename) as f:
+        return json.load(f)
+
+def write_as_json(filename, data):
+    with open(filename, "w") as f:
+        json.dump(data, f, indent=2)
 
 def replace_in_file(filename, old, new, flags=None):
     with open(filename) as f:
@@ -270,8 +279,7 @@ def process_examples(download = False):
         index_file = os.path.join("_data", "examplesindex.json")
         if os.path.exists(index_file):
             os.remove(index_file)
-        with open(os.path.join("_data", "examplesindex.json"), "w") as f:
-            json.dump(examplesindex, f, indent=2)
+        write_as_json(os.path.join("_data", "examplesindex.json"), examplesindex)
 
 
 def process_codepad(download = False):
@@ -304,6 +312,28 @@ def process_codepad(download = False):
             shutil.rmtree(codepad_dir)
         shutil.copytree(os.path.join(input_dir, "build", "default", "DefoldCodePad"), codepad_dir)
 
+
+def update_github_star_count_for_assets():
+    assetindex = read_as_json(ASSETINDEX_JSON)
+
+    for filename in find_files(os.path.join("_data", "assets"), "*.json"):
+        asset = read_as_json(filename)
+        project_url = asset["project_url"]
+        if "github.com" in project_url:
+            print("Getting star count for %s" % (asset["name"]))
+            repo = re.sub(r"http.?:\/\/github.com\/", "", project_url)
+            url = "https://api.github.com/repos/%s/stargazers" % (repo)
+            stargazers = json.loads(download_string(url))
+            asset["stars"] = len(stargazers)
+            write_as_json(filename, asset)
+
+            id = os.path.basename(filename).replace(".json", "")
+            for asset in assetindex:
+                if asset["id"] == id:
+                    asset["stars"] = len(stargazers)
+                    break
+
+    write_as_json(ASSETINDEX_JSON, assetindex)
 
 
 def process_assets(download = False):
@@ -351,17 +381,15 @@ def process_assets(download = False):
                 f.write(ASSET_MD_FRONTMATTER.format(basename.replace(".json", "")))
 
             # build refdoc indexs
-            with open(filename) as f:
-                r = json.load(f)
-                assetindex.append({
-                    "id": basename.replace(".json", ""),
-                    "tags": r["tags"],
-                    "platforms": r["platforms"]
-                })
+            r = read_as_json(filename)
+            assetindex.append({
+                "id": basename.replace(".json", ""),
+                "tags": r["tags"],
+                "platforms": r["platforms"]
+            })
 
         # write asset index
-        with open(os.path.join("_data", "assetindex.json"), "w") as f:
-            json.dump(assetindex, f, indent=2)
+        write_as_json(ASSETINDEX_JSON, assetindex)
 
 
 
@@ -404,16 +432,14 @@ def process_refdoc(download = False):
                     f.write(REFDOC_MD_FRONTMATTER.format(json_out_name) + REFDOC_MD_BODY)
 
                 # build refdoc indexs
-                with open(os.path.join(tmp_dir, "doc", file)) as f:
-                    r = json.load(f)
-                    refindex.append({
-                        "namespace": r["info"]["namespace"],
-                        "filename": json_out_name,
-                    })
+                r = read_as_json(os.path.join(tmp_dir, "doc", file))
+                refindex.append({
+                    "namespace": r["info"]["namespace"],
+                    "filename": json_out_name,
+                })
 
         # write refdoc index
-        with open(os.path.join("_data", "refindex.json"), "w") as f:
-            json.dump(refindex, f, indent=2)
+        write_as_json(os.path.join("_data", "refindex.json"), refindex)
 
 
 
@@ -447,15 +473,14 @@ def generate_searchindex():
         append_manual(filename, data)
 
     for filename in find_files(REF_DATA_DIR, "*.json"):
-        with open(filename) as f:
-            r = json.load(f)
-            for element in r["elements"]:
-                name = element["name"]
-                append_ref_doc(filename, name)
+        r = read_as_json(filename)
+        for element in r["elements"]:
+            name = element["name"]
+            append_ref_doc(filename, name)
 
-                if "." in name:
-                    for part in name.split("."):
-                        append_ref_doc(filename, part)
+            if "." in name:
+                for part in name.split("."):
+                    append_ref_doc(filename, part)
 
     # manually create a builder without stemming, stop words etc
     # if we use the standard builder pipeline functions we will end up
@@ -475,10 +500,11 @@ def generate_searchindex():
     lunrindex = builder.build()
     # lunrindex = lunr.lunr(ref='id', fields=('type', 'data'), documents=searchindex)
 
-    with open("searchindex.json", "w") as f:
-        json.dump(lunrindex.serialize(), f)
+    write_as_json("searchindex.json", lunrindex.serialize())
 
-ALL_COMMANDS = [ "docs", "examples", "refdoc", "assets", "codepad", "searchindex" ]
+
+
+ALL_COMMANDS = [ "docs", "examples", "refdoc", "assets", "starcount", "codepad", "searchindex" ]
 
 parser = ArgumentParser()
 parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ', all, help)')
@@ -490,6 +516,7 @@ COMMANDS:
 docs = Process the docs (manuals, tutorials and faq)
 refdoc = Process the API reference
 assets = Process the asset portal list
+starcount = Add GitHub star count to all assets that have a GitHub project
 examples = Build the examples
 codepad = Build the Defold CodePad
 all = Run all of the above commands
@@ -513,6 +540,8 @@ for command in args.commands:
         process_refdoc(download = args.download)
     elif command == "assets":
         process_assets(download = args.download)
+    elif command == "starcount":
+        update_github_star_count_for_assets()
     elif command == "codepad":
         process_codepad(download = args.download)
     elif command == "searchindex":
