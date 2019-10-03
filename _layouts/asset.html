@@ -65,11 +65,14 @@ layout: base
 						<td valign="top">Tags</td>
 						<td valign="top">{{ asset.tags | join: "<br/>" }}</td>
 					</tr>
+					{%- if asset.stars.size > 0 -%}
 					<tr>
 						<td valign="top">Stars</td>
 						<td valign="top">{{ asset.stars }}</td>
 					</tr>
+					{%- endif -%}
 				</table>
+				{% include secondary_button.html link=asset.asset_url text="Update asset" target="_blank" %}
 			</div>
 		</div>
 	</div>

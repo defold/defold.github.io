@@ -11,9 +11,14 @@
 				<div><p id="description" style="height: 190px;">{{ asset.description }}</p></div>
 			</div>
 		</div>
-		<div>
-			<b>{{ asset.name }}</b>
-			<p style="font-size: small">{{ asset.tags | join: ", " | truncate: 30 }}</p>
+		<div style="display: grid; grid-template-columns: 70% auto; grid-gap: 0;">
+			<div style="padding: 0px">
+				<b>{{ asset.name }}</b>
+				<p style="font-size: small">{{ asset.tags | join: ", " | truncate: 30 }}</p>
+			</div>
+			<div style="padding: 0px">
+				<p class="right">★ {{ asset.stars }}</p>
+			</div>
 		</div>
 	</a>
 </div>
