@@ -8,10 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps: [
-      { name: 'Skip based on commit message', uses: veggiemonk/skip-commit@1.0.0 },
+      { name: 'Skip based on commit message', uses: veggiemonk/skip-commit@1.0.0, env: { COMMIT_FILTER: 'skip-ci' } },
       { name: 'Checkout', uses: actions/checkout@v1, with: { fetch-depth: 1 } },
       { name: 'Install Python', uses: actions/setup-python@v1, with: { python-version: 2.x, architecture: x64 } },
       { name: 'Install Lunr', run: 'pip install --user lunr==0.5.5' },
       { name: 'Update stars', run: 'python update.py starcount' },
       { name: 'Commit changes',
+        env: { SERVICES_GITHUB_TOKEN: '${{ secrets.SERVICES_GITHUB_TOKEN }}' }
         run: "git config --global user.name 'services@defold.se' && git config --global user.email 'services@defold.se' && git add -A && git commit -m 'Updated stars [skip-ci]' --allow-empty && git push 'https://${SERVICES_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git' HEAD:master" }]
