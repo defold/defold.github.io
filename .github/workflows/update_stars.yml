@@ -14,4 +14,4 @@ jobs:
       { name: 'Install Lunr', run: 'pip install --user lunr==0.5.5' },
       { name: 'Update stars', run: 'python update.py starcount' },
       { name: 'Commit changes',
-        run: "git config --global user.name 'services@defold.se' && git config --global user.email 'services@defold.se' && git add -A && git commit -m 'Updated stars [skip-ci]' --allow-empty && git push 'https://${{ secrets.SERVICES_GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git' HEAD:master" }]
+        run: "git config --global user.name 'services@defold.se' && git config --global user.email 'services@defold.se' && git add -A && git commit -m 'Updated stars [skip-ci]' --allow-empty && git push 'https://${{ secrets.SERVICES_GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git' HEAD:master" }]
