@@ -1,6 +1,9 @@
 name: CI
 
-on: [push]
+on:
+  schedule:
+    # hourly
+    - cron: 0 * * * *
 
 jobs:
   update_stars:
