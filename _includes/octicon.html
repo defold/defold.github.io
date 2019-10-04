@@ -1,0 +1,20 @@
+{%- if include.color.size > 0 -%}
+	{%- assign color = include.color -%}
+{%- else -%}
+	{%- assign color = "#FFF" -%}
+{%- endif -%}
+{%- if include.zoom.size > 0 -%}
+	{%- assign zoom = include.zoom -%}
+{%- else -%}
+	{%- assign zoom = 1 -%}
+{%- endif -%}
+{% if include.link.size > 0 -%}
+<a href="{{ include.link }}" target="{{ include.target }}">
+{%- endif -%}
+<span class="octicon" style="fill: {{ color }}; zoom: {{ zoom }}; padding-right: 2px; vertical-align: middle;">
+	{% include {{include.icon}} %}
+</span>
+{{ include.text }}
+{% if include.link.size > 0 -%}
+</a>
+{%- endif -%}

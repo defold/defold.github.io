@@ -1,7 +1,7 @@
 <div class="nav {% if include.style == "floating" %}absolutetop lightest-text{% else %}dark{% endif %}">
 	<div class="container">
 		<div class="row">
-			<div class="nine columns">
+			<div class="eight columns">
 				<ul class="navmenu">
 					<li><a href="/">Home</a></li>
 					<li><a href="/product">Product</a></li>
@@ -10,20 +10,25 @@
 					<li><a href="/assets">Assets</a></li>
 					<li><a href="//forum.defold.com">Forum</a></li>
 					<li><a href="/blog">Blog</a></li>
+					<li style="visibility: hidden;">{% include octicon.html icon="octicons/desktop-download.svg" color="#FFF" zoom="1.75" %} Download</li>
 				</ul>
 				<select class="navdropdown dark-text" onchange="location = this.value;">
 					<option value="/">Home</option>
 					<option value="/product" {% if page.url contains 'product' %}selected{% endif %}>Product</option>
 					<option value="/showcase" {% if page.url contains 'showcase' %}selected{% endif %}>Showcase</option>
-					<option value="/learn" {% if page.url contains 'learn' or page.url contains 'examples' or page.url contains 'manuals' or page.url contains 'ref' or page.url contains 'tutorials' or page.url contains 'faq' %}selected{% endif %}>Learn</option>
+					<option value="/learn">Learn</option>
 					<option value="/assets" {% if page.url contains 'assets' %}selected{% endif %}>Assets</option>
 					<option value="//forum.defold.com">Forum</option>
 					<option value="/blog">Blog</option>
+					<option value="/download" {% if page.url contains 'download' %}selected{% endif %}>Download</option>
 					<option value="https://www.github.com/defold">GitHub</option>
 				</select>
 			</div>
-			<div class="three columns">
-				<div class="right navmenu"><a href="https://www.github.com/defold" target="_blank"><img src="/images/icons/GitHub-Mark-Light-32px.png" style="padding-right: 10px; vertical-align: middle;"/> GitHub</a></div>
+			<div class="four columns">
+				<ul class="navmenu right">
+					<li>{% include octicon.html icon="octicons/desktop-download.svg" color="#FFF" zoom="1.75" text=" Download" link="/download" %}</li>
+					<li>{% include octicon.html icon="octicons/mark-github.svg" color="#FFF" zoom="1.75" text=" GitHub" link="https://www.github.com/defold" target="_blank" %}</li>
+				</ul>
 			</div>
 		</div>
 	</div>
