@@ -1,0 +1,23 @@
+name: CI
+
+on:
+    repository_dispatch: {}
+
+jobs:
+    update_site:
+
+        runs-on: ubuntu-latest
+
+        steps: [
+            { name: 'Skip based on commit message', uses: veggiemonk/skip-commit@1.0.0, env: { COMMIT_FILTER: 'skip-ci' } },
+            { name: 'Checkout', uses: actions/checkout@v1, with: { fetch-depth: 1 } },
+            { name: 'Install Python', uses: actions/setup-python@v1, with: { python-version: 2.x, architecture: x64 } },
+            { name: 'Install Lunr', run: 'pip install --user lunr==0.5.5' },
+            { name: 'Install Requests', run: 'pip install --user requests' },
+            { if: 'github.event.action == "assets"', name: 'Update assets', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} assets starcount commit' },
+            { if: 'github.event.action == "docs"', name: 'Update docs', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} docs commit' },
+            { if: 'github.event.action == "refdoc"', name: 'Update refdoc', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} refdoc commit' },
+            { if: 'github.event.action == "examples"', name: 'Update examples', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} examples commit' },
+            { if: 'github.event.action == "codepad"', name: 'Update codepad', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} codepad commit' },
+            { if: 'github.event.action == "docs"', name: 'Update docs', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} docs commit' },
+        ]

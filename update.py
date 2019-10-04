@@ -11,6 +11,7 @@ import tempfile
 import re
 import subprocess
 import requests
+import urlparse
 from argparse import ArgumentParser
 from contextlib import contextmanager
 import lunr
@@ -350,23 +351,21 @@ def update_github_star_count_for_assets(githubtoken):
         project_url = asset["project_url"]
         if "github.com" in project_url:
             print("Getting star count for %s" % (asset["name"]))
-            repo = re.sub(r"http.?:\/\/github.com\/", "", project_url)
+            repo = urlparse.urlparse(project_url).path[1:]
 
             url = "https://api.github.com/repos/%s/stargazers" % (repo)
             stargazers = github_request(url, githubtoken)
-            if stargazers is None:
-                return
+            if stargazers:
+                stars = len(stargazers)
+                print("...%d" % (stars))
+                asset["stars"] = stars
+                write_as_json(filename, asset)
 
-            stars = len(stargazers)
-            print("...%d" % (stars))
-            asset["stars"] = stars
-            write_as_json(filename, asset)
-
-            id = os.path.basename(filename).replace(".json", "")
-            for asset in assetindex:
-                if asset["id"] == id:
-                    asset["stars"] = stars
-                    break
+                id = os.path.basename(filename).replace(".json", "")
+                for asset in assetindex:
+                    if asset["id"] == id:
+                        asset["stars"] = stars
+                        break
 
     write_as_json(ASSETINDEX_JSON, assetindex)
 
@@ -597,6 +596,6 @@ for command in args.commands:
     elif command == "searchindex":
         generate_searchindex()
     elif command == "commit":
-        commit(args.githubtoken)
+        commit_changes(args.githubtoken)
     else:
         print("Unknown command {}".format(command))
