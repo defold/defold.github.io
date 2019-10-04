@@ -13,10 +13,10 @@
 				</ul>
 				<select class="navdropdown dark-text" onchange="location = this.value;">
 					<option value="/">Home</option>
-					<option value="/product">Product</option>
-					<option value="/showcase">Showcase</option>
-					<option value="/learn">Learn</option>
-					<option value="/assets">Assets</option>
+					<option value="/product" {% if page.url contains 'product' %}selected{% endif %}>Product</option>
+					<option value="/showcase" {% if page.url contains 'showcase' %}selected{% endif %}>Showcase</option>
+					<option value="/learn" {% if page.url contains 'learn' or page.url contains 'examples' or page.url contains 'manuals' or page.url contains 'ref' or page.url contains 'tutorials' or page.url contains 'faq' %}selected{% endif %}>Learn</option>
+					<option value="/assets" {% if page.url contains 'assets' %}selected{% endif %}>Assets</option>
 					<option value="//forum.defold.com">Forum</option>
 					<option value="/blog">Blog</option>
 					<option value="https://www.github.com/defold">GitHub</option>
