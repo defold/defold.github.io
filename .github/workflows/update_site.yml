@@ -19,6 +19,5 @@ jobs:
             { if: "github.event.action == 'docs'", name: 'Update docs', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} docs commit' },
             { if: "github.event.action == 'refdoc'", name: 'Update refdoc', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} refdoc commit' },
             { if: "github.event.action == 'examples'", name: 'Update examples', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} examples commit' },
-            { if: "github.event.action == 'codepad'", name: 'Update codepad', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} codepad commit' },
-            { if: "github.event.action == 'docs'", name: 'Update docs', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} docs commit' },
+            { if: "github.event.action == 'codepad'", name: 'Update codepad', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} codepad commit' }
         ]
