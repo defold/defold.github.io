@@ -1,10 +1,11 @@
 name: CI
 
 on:
-    - schedule:
+    repository_dispatch
+    schedule:
         # hourly
         - cron: 0 * * * *
-    - repository_dispatch
+
 
 jobs:
     update_stars:
