@@ -15,6 +15,4 @@ jobs:
       { name: 'Checkout', uses: actions/checkout@v1, with: { fetch-depth: 1 } },
       { name: 'Install Python', uses: actions/setup-python@v1, with: { python-version: 2.x, architecture: x64 } },
       { name: 'Install Lunr', run: 'pip install --user lunr==0.5.5' },
-      { name: 'Update stars', run: 'python update.py starcount' },
-      { name: 'Commit changes',
-        run: "git config --global user.name 'services@defold.se' && git config --global user.email 'services@defold.se' && git add -A && git commit -m 'Updated stars [skip-ci]' --allow-empty && git push 'https://${{ secrets.SERVICES_GITHUB_TOKEN }}@github.com/defold/defold.github.io.git' HEAD:master" }]
+      { name: 'Update stars', run: 'python update.py --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} starcount commit' }]

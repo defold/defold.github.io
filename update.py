@@ -10,6 +10,7 @@ import json
 import tempfile
 import re
 import subprocess
+import requests
 from argparse import ArgumentParser
 from contextlib import contextmanager
 import lunr
@@ -30,6 +31,7 @@ REF_DATA_DIR = os.path.join("_data", "ref")
 ASSET_MD_FRONTMATTER = """---
 layout: asset
 asset: {}
+title: {}
 ---
 """
 
@@ -49,6 +51,11 @@ def tmpdir():
     finally:
         shutil.rmtree(name)
 
+def call(args):
+    print(args)
+    ret = os.system(args)
+    if ret != 0:
+        sys.exit(1)
 
 def unzip(filename, destination):
     print("Unpacking {}".format(filename))
@@ -69,16 +76,35 @@ def download_file(url, destination, filename=None):
     return path
 
 
+def github_request(url, token):
+    try:
+        response = requests.get(url, headers={"Authorization": "token %s" % (token)})
+        response.raise_for_status()
+        return response.json()
+    except Exception as err:
+        print(err)
+
+
 def download_string(url):
-    handle = urllib.urlopen(url)
-    return handle.read()
+    response = requests.get(url)
+    if response.status_code != 200:
+        print("Unable to download from %s (%d)" % (url, response.status_code))
+        return None
+    return response.text
+
+
+def download_json(url):
+    response = requests.get(url)
+    if response.status_code != 200:
+        print("Unable to download from %s (%d)" % (url, response.status_code))
+        return None
+    return response.json()
 
 
 def get_sha1():
     global SHA1
     if not SHA1:
-        print(download_string("https://d.defold.com/stable/info.json"))
-        info = json.loads(download_string("https://d.defold.com/stable/info.json"))
+        info = download_json("https://d.defold.com/stable/info.json")
         SHA1 = info["sha1"]
     return SHA1
 
@@ -102,13 +128,16 @@ def find_files(root_dir, file_pattern):
                 matches.append(os.path.join(root, filename))
     return matches
 
+
 def read_as_json(filename):
     with open(filename) as f:
         return json.load(f)
 
+
 def write_as_json(filename, data):
     with open(filename, "w") as f:
         json.dump(data, f, indent=2, sort_keys=True)
+
 
 def replace_in_file(filename, old, new, flags=None):
     with open(filename) as f:
@@ -119,9 +148,6 @@ def replace_in_file(filename, old, new, flags=None):
 
     with open(filename, "w") as f:
         f.write(content)
-
-
-
 
 
 
@@ -198,7 +224,6 @@ def process_docs(download = False):
         shutil.copyfile(os.path.join(tmp_dir, "doc-master", "docs", "en", "en.json"), index_file)
 
         print("Done")
-
 
 
 def process_examples(download = False):
@@ -313,7 +338,11 @@ def process_codepad(download = False):
         shutil.copytree(os.path.join(input_dir, "build", "default", "DefoldCodePad"), codepad_dir)
 
 
-def update_github_star_count_for_assets():
+def update_github_star_count_for_assets(githubtoken):
+    if githubtoken is None:
+        print("No GitHub token specified")
+        sys.exit(1)
+
     assetindex = read_as_json(ASSETINDEX_JSON)
 
     for filename in find_files(os.path.join("_data", "assets"), "*.json"):
@@ -322,15 +351,21 @@ def update_github_star_count_for_assets():
         if "github.com" in project_url:
             print("Getting star count for %s" % (asset["name"]))
             repo = re.sub(r"http.?:\/\/github.com\/", "", project_url)
+
             url = "https://api.github.com/repos/%s/stargazers" % (repo)
-            stargazers = json.loads(download_string(url))
-            asset["stars"] = len(stargazers)
+            stargazers = github_request(url, githubtoken)
+            if stargazers is None:
+                return
+
+            stars = len(stargazers)
+            print("...%d" % (stars))
+            asset["stars"] = stars
             write_as_json(filename, asset)
 
             id = os.path.basename(filename).replace(".json", "")
             for asset in assetindex:
                 if asset["id"] == id:
-                    asset["stars"] = len(stargazers)
+                    asset["stars"] = stars
                     break
 
     write_as_json(ASSETINDEX_JSON, assetindex)
@@ -372,25 +407,25 @@ def process_assets(download = False):
         assetindex = []
         for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "assets"), "*.json"):
             basename = os.path.basename(filename)
+            asset_id = basename.replace(".json", "")
 
             # copy the data file as-is
             shutil.copyfile(filename, os.path.join(data_dir, basename))
 
-            # generate a dummy markdown page with some front matter for each ref doc
-            with open(os.path.join(collection_dir, basename.replace(".json", ".md")), "w") as f:
-                f.write(ASSET_MD_FRONTMATTER.format(basename.replace(".json", "")))
-
             # build refdoc indexs
             r = read_as_json(filename)
             assetindex.append({
-                "id": basename.replace(".json", ""),
+                "id": asset_id,
                 "tags": r["tags"],
                 "platforms": r["platforms"]
             })
 
+            # generate a dummy markdown page with some front matter for each ref doc
+            with open(os.path.join(collection_dir, basename.replace(".json", ".md")), "w") as f:
+                f.write(ASSET_MD_FRONTMATTER.format(asset_id, r["name"]))
+
         # write asset index
         write_as_json(ASSETINDEX_JSON, assetindex)
-
 
 
 def process_refdoc(download = False):
@@ -440,7 +475,6 @@ def process_refdoc(download = False):
 
         # write refdoc index
         write_as_json(os.path.join("_data", "refindex.json"), refindex)
-
 
 
 def process_file_for_indexing(filename):
@@ -503,11 +537,23 @@ def generate_searchindex():
     write_as_json("searchindex.json", lunrindex.serialize())
 
 
+def commit_changes(githubtoken):
+    if githubtoken is None:
+        print("You must specific a GitHub token")
+        sys.exit(1)
+
+    call("git config --global user.name 'services@defold.se'")
+    call("git config --global user.email 'services@defold.se'")
+    call("git add -A")
+    call("git commit -m 'Updated stars [skip-ci]' --allow-empty")
+    call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
+
 
 ALL_COMMANDS = [ "docs", "examples", "refdoc", "assets", "starcount", "codepad", "searchindex" ]
 
 parser = ArgumentParser()
 parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ', all, help)')
+parser.add_argument("--githubtoken", dest="githubtoken", help="Authentication token for GitHub API and ")
 parser.add_argument("--download", dest="download", action='store_true', help="Download updated content for the command(s) in question")
 args = parser.parse_args()
 
@@ -519,13 +565,17 @@ assets = Process the asset portal list
 starcount = Add GitHub star count to all assets that have a GitHub project
 examples = Build the examples
 codepad = Build the Defold CodePad
+commit = Commit changed files (requires --githubtoken)
 all = Run all of the above commands
 help = Show this help
 """
 
 if "all" in args.commands:
     args.commands.remove("all")
-    args.commands.extend(ALL_COMMANDS)
+    commands = []
+    commands.extend(ALL_COMMANDS)
+    commands.extend(args.commands)
+    args.commands = commands
 
 for command in args.commands:
     if command == "help":
@@ -541,10 +591,12 @@ for command in args.commands:
     elif command == "assets":
         process_assets(download = args.download)
     elif command == "starcount":
-        update_github_star_count_for_assets()
+        update_github_star_count_for_assets(args.githubtoken)
     elif command == "codepad":
         process_codepad(download = args.download)
     elif command == "searchindex":
         generate_searchindex()
+    elif command == "commit":
+        commit(args.githubtoken)
     else:
         print("Unknown command {}".format(command))
