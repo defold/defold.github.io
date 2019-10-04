@@ -108,7 +108,7 @@ def read_as_json(filename):
 
 def write_as_json(filename, data):
     with open(filename, "w") as f:
-        json.dump(data, f, indent=2)
+        json.dump(data, f, indent=2, sort_keys=True)
 
 def replace_in_file(filename, old, new, flags=None):
     with open(filename) as f:
