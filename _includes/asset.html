@@ -17,7 +17,9 @@
 				<p style="font-size: small">{{ asset.tags | join: ", " | truncate: 30 }}</p>
 			</div>
 			<div style="padding: 0px">
-				<p class="right">★ {{ asset.stars }}</p>
+				{%- if asset.stars.size > 0 -%}
+				<p class="right">{% include octicon.html icon="octicons/star.svg" color="#79838e" zoom="1" %} {{ asset.stars }}</p>
+				{%- endif -%}
 			</div>
 		</div>
 	</a>
