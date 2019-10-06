@@ -544,7 +544,9 @@ def commit_changes(githubtoken):
     call("git config --global user.name 'services@defold.se'")
     call("git config --global user.email 'services@defold.se'")
     call("git add -A")
-    call("git commit -m 'Site changes [skip-ci]'")
+    # only commit if the diff isn't empty, ie there is a change
+    # https://stackoverflow.com/a/8123841/1266551
+    call("git diff-index --quiet HEAD || git commit -m 'Site changes [skip-ci]'")
     call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
 
 
