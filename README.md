@@ -48,3 +48,10 @@ The site search is based on [Lunr.js](https://github.com/olivernn/lunr.js). The 
 
 ## Page search
 Functionality for searching and marking within a single page using [Mark.js](https://markjs.io/).
+
+
+# Credits
+
+This site uses the following assets:
+
+* [Octicons](https://octicons.github.com/)
