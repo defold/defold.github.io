@@ -411,7 +411,7 @@ def process_assets(download = False):
             # copy the data file as-is
             shutil.copyfile(filename, os.path.join(data_dir, basename))
 
-            # build refdoc indexs
+            # build asset index
             r = read_as_json(filename)
             assetindex.append({
                 "id": asset_id,
@@ -465,7 +465,7 @@ def process_refdoc(download = False):
                 with open(os.path.join(collection_dir, file.replace("_doc.json", ".md")), "w") as f:
                     f.write(REFDOC_MD_FRONTMATTER.format(json_out_name) + REFDOC_MD_BODY)
 
-                # build refdoc indexs
+                # build refdoc index
                 r = read_as_json(os.path.join(tmp_dir, "doc", file))
                 refindex.append({
                     "namespace": r["info"]["namespace"],
