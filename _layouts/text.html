@@ -5,7 +5,7 @@ layout: base
 	<div class="container">
 		<div class="row">
 			<div class="columns ten">
-				{{ content }}
+				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
 			</div>
 			<div class="columns two"><br/></div>
 		</div>
