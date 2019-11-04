@@ -406,6 +406,7 @@ def process_assets(download = False):
         assetindex = []
         for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "assets"), "*.json"):
             basename = os.path.basename(filename)
+            print("Processing asset: {}".format(basename))
             asset_id = basename.replace(".json", "")
 
             # copy the data file as-is
