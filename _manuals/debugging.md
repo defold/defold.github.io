@@ -38,23 +38,23 @@ To run the debugger, either <kbd>Debug ▸ Run with Debugger</kbd> which starts 
 As soon as the debugger is attached, you have control of the execution of the game through the debugger control buttons in the console, or through the <kbd>Debug</kbd> menu:
 
 Break
-: ![pause](../images/debugging/pause.svg){width=60px .left}
+: <img src='../images/debugging/pause.svg' width='60px'/>
   Break execution of the game immediately. The game will break at its current point. You are now able to inspect the state of the game, advance the game step by step, or continue running it until the next breakpoint. The current point of execution is marked in the code editor:
 
   ![script](../images/debugging/script.png)
 
 Continue
-: ![play](../images/debugging/play.svg){width=60px .left}
+: <img src='../images/debugging/play.svg' width='60px'/>
   Continue running the game. The game code will continue to run until you either press pause or the execution hits a breakpoint that you have set. If execution breaks at a set breakpoint, the the execution point is marked in the code editor on top of the breakpoint marker:
 
   ![break](../images/debugging/break.png)
 
 Stop
-: ![stop](../images/debugging/stop.svg){width=60px .left}
+: <img src='../images/debugging/stop.svg' width='60px'/>
   Stop the debugger. Pressing this button will immediately stop the debugger, detach it from the game and terminate the running game.
 
 Step Over
-: ![step over](../images/debugging/step_over.svg){width=60px .left}
+: <img src='../images/debugging/step_over.svg' width='60px'/>
   Advance execution of the program one step. If the execution involves running another Lua function, the execution _will not step into the function_ but continue running and stop on the next line below the function call. In this example, if the user presses "step over", the debugger will execute code and stop at the `end` statement below the line with the call to the function `nextspawn()`:
 
   ![step](../images/debugging/step.png)
@@ -64,13 +64,13 @@ A line of Lua code does not correspond to a single expression. Stepping in the d
 </div>
 
 Step Into
-: ![step in](../images/debugging/step_in.svg){width=60px .left}
+: <img src='../images/debugging/step_in.svg' width='60px'/>
   Advance execution of the program one step. If the execution involves running another Lua function, the execution _will step into the function_. Calling the function adds an entry to the call stack. You can click each entry in the call stack list to view the entry point and the content of all variables in that closure. Here, the user has stepped into the function `nextspawn()`:
 
   ![step into](../images/debugging/step_into.png)
 
 Step Out
-: ![step out](../images/debugging/step_out.svg){width=60px .left}
+: <img src='../images/debugging/step_out.svg' width='60px'/>
   Continue execution until it returns from the current function. If you have stepped execution into a function, pressing the button "step out" will continue execution until the function returns.
 
 Setting and clearing breakpoints
