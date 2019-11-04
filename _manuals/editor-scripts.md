@@ -24,13 +24,13 @@ Every editor script should return a module, like that:
 ```lua
 local M = {}
 
-function M.get_commands() 
+function M.get_commands()
   -- TODO
 end
 
 return M
 ```
-Editor then collects all editor scripts defined in project and libraries, loads them into single Lua VM and calls into them when needed (more on that in [commands](#commands) and [lifecycle hooks](#lifecycle_hooks) sections).
+Editor then collects all editor scripts defined in project and libraries, loads them into single Lua VM and calls into them when needed (more on that in [commands](#commands) and [lifecycle hooks](#lifecycle-hooks) sections).
 
 ## Editor API
 
@@ -45,7 +45,7 @@ You can interact with the editor using `editor` package that defines this API:
     - numbers
     - vec2/vec3/vec4
     - resources
-    
+
     Please note that some of these properties might be read-only, and some might be unavailable in different contexts, so you should use `editor.can_get` before reading them and `editor.can_set` before making editor set them. Hover over property name in Properties view to see a tooltip with information about how this property is named in editor scripts. You can set resource properties to nil by supplying `""` value.
 - `editor.can_get(node_id, property)` — check if you can get this property so `editor.get()` won't throw an error
 - `editor.can_set(node_id, property)` — check if `"set"` action with this property won't throw an error
@@ -72,13 +72,13 @@ function M.get_commands()
         local text = editor.get(opts.selection, "text")
         return {
           {
-            action = "set", 
-            node_id = opts.selection, 
-            property = "text", 
+            action = "set",
+            node_id = opts.selection,
+            property = "text",
             value = strip_comments(text)
           }
         }
-      end 
+      end
     },
     {
       label = "Minify JSON"
@@ -93,7 +93,7 @@ function M.get_commands()
         local path = editor.get(opts.selection, "path")
         return {
           {
-            action = "shell", 
+            action = "shell",
             command = {"./scripts/minify-json.sh", path:sub(2)}
           }
         }
@@ -119,7 +119,7 @@ Editor expects `get_commands()` to return an array of tables, each describing a 
 
 ## Actions
 
-Action is a table describing what editor should do. Every action has an `action` key. Actions come in 2 flavors: undoable and non-undoable. 
+Action is a table describing what editor should do. Every action has an `action` key. Actions come in 2 flavors: undoable and non-undoable.
 
 ### Undoable actions
 
@@ -150,7 +150,7 @@ Existing non-undoable actions:
   {
     action = "shell",
     command = {
-      "./scripts/minify-json.sh", 
+      "./scripts/minify-json.sh",
       editor.get(opts.selection, "path"):sub(2) -- trim leading "/"
     }
   }
@@ -161,7 +161,7 @@ Existing non-undoable actions:
 
 You can mix undoable and non-undoable actions. Actions are executed sequentially, hence depending on an order of actions you will end up losing ability to undo parts of that command.
 
-Instead of returning actions from functions that expect them, you can just read and write to files directly using `io.open()`. This will trigger a resource reload that will clear undo history. 
+Instead of returning actions from functions that expect them, you can just read and write to files directly using `io.open()`. This will trigger a resource reload that will clear undo history.
 
 ## Lifecycle hooks
 
@@ -169,7 +169,7 @@ There is a specially treated editor script file: `hooks.editor_script`, located 
 ```lua
 local M = {}
 
-function M.on_build_started(opts) 
+function M.on_build_started(opts)
   local file = io.open("assets/build.json", "w")
   file:write("{\"build_time\": \"".. os.date() .."\"}")
   file:close()
