@@ -1,12 +1,17 @@
 {%- assign asset = site.data.assets[include.id] -%}
-{%- if asset.images.thumb.size > 0 -%}
+{%- if asset.images.thumb contains "https" or asset.images.thumb contains "http" -%}
+	{%- assign thumb_base = "" -%}
+	{%- assign thumb = asset.images.thumb -%}
+{%- elsif asset.images.thumb.size > 0 -%}
+	{%- assign thumb_base = "/images/assets/" -%}
 	{%- assign thumb = asset.images.thumb -%}
 {%- else -%}
-	{%- assign thumb = "/images/assets/no-thumb.png" -%}
+	{%- assign thumb_base = "" -%}
+	{%- assign thumb = "/images/asset-nothumb.jpg" -%}
 {%- endif -%}
 <div class='asset left light-text compact {{ asset.tags | join: "%%" | replace: " ", "" | split: "%%" | join: " " | downcase }}'>
 	<a href="/assets/{{ include.id }}">
-		<div id="image" style="background: url('/images/assets/{{ thumb }}') center/cover; padding: 0; margin: 0; height: 190px">
+		<div id="image" style="background: url('{{thumb_base}}{{ thumb }}') center/cover; padding: 0; margin: 0; height: 190px">
 			<div id="overlay" style="height: 190px; padding: 0; margin: 0; ">
 				<div><p id="description" style="height: 190px;">{{ asset.description }}</p></div>
 			</div>
