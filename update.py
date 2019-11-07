@@ -12,6 +12,7 @@ import re
 import subprocess
 import requests
 import urlparse
+import hashlib
 from argparse import ArgumentParser
 from contextlib import contextmanager
 import lunr
@@ -25,6 +26,7 @@ AWESOME_ZIP = "awesome-defold-master.zip"
 REFDOC_ZIP = "refdoc.zip"
 
 ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
+AUTHORINDEX_JSON = os.path.join("_data", "authorindex.json")
 
 MANUALS_DIR = "_manuals"
 REF_DATA_DIR = os.path.join("_data", "ref")
@@ -32,6 +34,13 @@ REF_DATA_DIR = os.path.join("_data", "ref")
 ASSET_MD_FRONTMATTER = """---
 layout: asset
 asset: {}
+title: {}
+---
+"""
+
+AUTHOR_MD_FRONTMATTER = """---
+layout: author
+author: {}
 title: {}
 ---
 """
@@ -385,18 +394,29 @@ def process_assets(download = False):
         shutil.copyfile(AWESOME_ZIP, os.path.join(tmp_dir, AWESOME_ZIP))
         unzip(os.path.join(tmp_dir, AWESOME_ZIP), tmp_dir)
 
+        # Jekyll assets collection
+        asset_collection_dir = "assets"
+        if os.path.exists(asset_collection_dir):
+            shutil.rmtree(asset_collection_dir)
+        os.mkdir(asset_collection_dir)
 
-        # Jekyll collection
-        collection_dir = "assets"
-        if os.path.exists(collection_dir):
-            shutil.rmtree(collection_dir)
-        os.mkdir(collection_dir)
+        # Jekyll authors collection
+        author_collection_dir = "authors"
+        if os.path.exists(author_collection_dir):
+            shutil.rmtree(author_collection_dir)
+        os.mkdir(author_collection_dir)
 
-        # Jekyll data
-        data_dir = os.path.join("_data", "assets")
-        if os.path.exists(data_dir):
-            shutil.rmtree(data_dir)
-        os.mkdir(data_dir)
+        # Jekyll asset data
+        asset_data_dir = os.path.join("_data", "assets")
+        if os.path.exists(asset_data_dir):
+            shutil.rmtree(asset_data_dir)
+        os.mkdir(asset_data_dir)
+
+        # Jekyll author data
+        author_data_dir = os.path.join("_data", "authors")
+        if os.path.exists(author_data_dir):
+            shutil.rmtree(author_data_dir)
+        os.mkdir(author_data_dir)
 
         # image data
         image_dir = os.path.join("images", "assets")
@@ -405,28 +425,70 @@ def process_assets(download = False):
         shutil.copytree(os.path.join(tmp_dir, "awesome-defold-master", "assets", "images", "assets"), image_dir)
 
         assetindex = []
+        authorindex = []
         for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "assets"), "*.json"):
             basename = os.path.basename(filename)
             print("Processing asset: {}".format(basename))
             asset_id = basename.replace(".json", "")
 
             # copy the data file as-is
-            shutil.copyfile(filename, os.path.join(data_dir, basename))
+            asset_file = os.path.join(asset_data_dir, basename)
+            shutil.copyfile(filename, asset_file)
+
+            # read asset and add additional data
+            asset = read_as_json(asset_file)
+            author_name = asset["author"].encode('utf-8')
+            author_id = hashlib.md5(author_name).hexdigest()
+            asset["author_id"] = author_id
+            write_as_json(asset_file, asset)
 
             # build asset index
-            r = read_as_json(filename)
             assetindex.append({
                 "id": asset_id,
-                "tags": r["tags"],
-                "platforms": r["platforms"]
+                "tags": asset["tags"],
+                "platforms": asset["platforms"]
             })
 
-            # generate a dummy markdown page with some front matter for each ref doc
-            with open(os.path.join(collection_dir, basename.replace(".json", ".md")), "w") as f:
-                f.write(ASSET_MD_FRONTMATTER.format(asset_id, r["name"]))
+            # build author index
+            author = None
+            for a in authorindex:
+                if a["name"] == author_name:
+                    author = a
+                    break
+            if author is None:
+                author = {
+                    "id": author_id,
+                    "name": author_name,
+                    "assets": []
+                }
+                authorindex.append(author)
+
+            author["assets"].append({
+                "id": asset_id
+            })
+
+            # generate a dummy markdown page with some front matter for each asset
+            with open(os.path.join(asset_collection_dir, basename.replace(".json", ".md")), "w") as f:
+                f.write(ASSET_MD_FRONTMATTER.format(asset_id, asset["name"]))
+
+            # generate a dummy markdown page with some front matter for each author
+            with open(os.path.join(author_collection_dir, author_id + ".md"), "w") as f:
+                f.write(AUTHOR_MD_FRONTMATTER.format(author_id, author_name))
 
         # write asset index
         write_as_json(ASSETINDEX_JSON, assetindex)
+
+        # write author index
+        authorindex.sort(key=lambda x: x.get("name").lower())
+        write_as_json(AUTHORINDEX_JSON, authorindex)
+
+        # write author data
+        for author in authorindex:
+            author["assets"].sort(key=lambda x: x.get("id"))
+            filename = os.path.join(author_data_dir, author["id"] + ".json")
+            with open(filename, "w") as f:
+                f.write(json.dumps(author, indent=2, sort_keys=True))
+
 
 
 def process_refdoc(download = False):

@@ -1,0 +1,29 @@
+---
+layout: base
+---
+{%- assign author = site.data.authors[page.author] -%}
+
+<div class="section dark">
+	<div class="container">
+		<div class="row">
+			<div class="columns two"><img src="/images/icons/community-assets-on-dark.svg" style="max-width: 150px"/></div>
+			<div class="columns ten">
+				<h1>{{ author.name }}</h1>
+			</div>
+		</div>
+		<div class="row compact" style="margin-bottom: 30px">
+			<br/>
+		</div>
+		<div class="row" style="margin-bottom: 30px;">
+			<div class="columns twelve">
+				<h4>Assets</h4>
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
+					{%- assign assetids = author.assets | map: "id" -%}
+					{%- for id in assetids -%}
+						{% include asset.html id=id %}
+					{%- endfor -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
