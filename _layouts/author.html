@@ -11,19 +11,7 @@ layout: base
 				<h1>{{ author.name }}</h1>
 			</div>
 		</div>
-		<div class="row compact" style="margin-bottom: 30px">
-			<br/>
-		</div>
-		<div class="row" style="margin-bottom: 30px;">
-			<div class="columns twelve">
-				<h4>Assets</h4>
-				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
-					{%- assign assetids = author.assets | map: "id" -%}
-					{%- for id in assetids -%}
-						{% include asset.html id=id %}
-					{%- endfor -%}
-				</div>
-			</div>
-		</div>
+		{%- assign assetids = author.assets | map: "id" -%}
+		{%- include assetgrid.html assetids=assetids title="Assets" -%}
 	</div>
 </div>

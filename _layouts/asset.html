@@ -79,7 +79,7 @@ layout: base
 				<table>
 					<tr>
 						<td valign="top">Author</td>
-						<td valign="top"><a href="/authors/{{ asset.author_id }}" target="_blank">{{ asset.author }}</a></td>
+						<td valign="top"><a href="/authors/{{ asset.author_id }}">{{ asset.author }}</a></td>
 					</tr>
 					<tr>
 						<td valign="top">License</td>
@@ -91,7 +91,11 @@ layout: base
 					</tr>
 					<tr>
 						<td valign="top">Tags</td>
-						<td valign="top">{{ asset.tags | join: "<br/>" }}</td>
+						<td valign="top">
+							{%- for tag in asset.tags -%}
+								<a href="/tags/{{ tag | downcase | remove: ' ' }}">{{ tag }}</a><br/>
+							{%- endfor -%}
+						</td>
 					</tr>
 					{%- if asset.stars.size > 0 -%}
 					<tr>

@@ -1,0 +1,24 @@
+<div class="row compact" style="margin-bottom: 30px">
+	{%- assign alltags = site.data.assetindex | map: "tags" -%}
+	{%- assign tags = alltags | uniq | sort -%}
+	<p>FILTER</p>
+	<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 0 1rem; font-size: 0.9em;">
+		{%- if page.tag -%}
+			{%- assign class="" -%}
+		{%- else -%}
+			{%- assign class="active" -%}
+		{%- endif-%}
+		<a class="filter {{ class }}" href="/assets">ALL ({{ site.data.assetindex.size }})</a>
+		{%- for tag in tags -%}
+			{% assign tagged_assets = site.data.assetindex | where: "tags", tag %}
+			{% assign tag_no_space = tag | replace: " ", "" | downcase %}
+			{%- if tag_no_space == include.tag -%}
+				{%- assign class="active" -%}
+			{%- else -%}
+				{%- assign class="" -%}
+			{%- endif-%}
+			<a class="filter {{ class }}" href="/tags/{{ tag | replace: ' ' | downcase }}">{{ tag }} ({{ tagged_assets.size }})</a>
+		{%- endfor -%}
+	</div>
+	<br/>
+</div>

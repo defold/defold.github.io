@@ -1,0 +1,37 @@
+---
+layout: base
+name: Asset Portal
+---
+
+<div class="section dark">
+	<div class="container">
+		<div class="row">
+			<div class="columns two"><img src="/images/icons/community-assets-on-dark.svg" style="max-width: 150px"/></div>
+			<div class="columns eight">
+				<h1>Asset portal</h1>
+				<p>Whether you're looking for extensions, pathfinders, sprite sets, example projects or code snippets—you name it, we've got it!</p>
+			</div>
+			<div class="columns two" style="vertical-align: bottom; height: 100%">{% include secondary_button.html link="/submit_asset" text="Submit asset" %}</div>
+		</div>
+
+		{%- if page.tag -%}
+			{%- assign tag = site.data.tags[page.tag] -%}
+			{%- assign tagid = tag.id -%}
+			{%- assign assetids = tag.assets | map: "id" -%}
+			{%- assign assetname = tag.name -%}
+
+			{%- include tagfilter.html tag=tagid -%}
+			{%- include assetgrid.html assetids=assetids showfilter=true title=assetname -%}
+		{%- else -%}
+			{%- assign assetids = site.data.assetindex | map: "id" -%}
+
+			{%- include tagfilter.html -%}
+			{%- include assetgrid.html assetids=assetids showfilter=true title="All" -%}
+		{%- endif -%}
+
+		<div class="row" style="margin-top: 30px">
+			<div class="columns ten"><br/></div>
+			<div class="columns two">{% include secondary_button.html link="/submit_asset" text="Submit asset" %}</div>
+		</div>
+	</div>
+</div>

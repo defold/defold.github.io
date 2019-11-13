@@ -27,6 +27,7 @@ REFDOC_ZIP = "refdoc.zip"
 
 ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
 AUTHORINDEX_JSON = os.path.join("_data", "authorindex.json")
+TAGINDEX_JSON = os.path.join("_data", "tagindex.json")
 
 MANUALS_DIR = "_manuals"
 REF_DATA_DIR = os.path.join("_data", "ref")
@@ -41,6 +42,13 @@ title: {}
 AUTHOR_MD_FRONTMATTER = """---
 layout: author
 author: {}
+title: {}
+---
+"""
+
+TAG_MD_FRONTMATTER = """---
+layout: assetportal
+tag: {}
 title: {}
 ---
 """
@@ -406,6 +414,12 @@ def process_assets(download = False):
             shutil.rmtree(author_collection_dir)
         os.mkdir(author_collection_dir)
 
+        # Jekyll tags collection
+        tag_collection_dir = "tags"
+        if os.path.exists(tag_collection_dir):
+            shutil.rmtree(tag_collection_dir)
+        os.mkdir(tag_collection_dir)
+
         # Jekyll asset data
         asset_data_dir = os.path.join("_data", "assets")
         if os.path.exists(asset_data_dir):
@@ -418,6 +432,12 @@ def process_assets(download = False):
             shutil.rmtree(author_data_dir)
         os.mkdir(author_data_dir)
 
+        # Jekyll tag data
+        tag_data_dir = os.path.join("_data", "tags")
+        if os.path.exists(tag_data_dir):
+            shutil.rmtree(tag_data_dir)
+        os.mkdir(tag_data_dir)
+
         # image data
         image_dir = os.path.join("images", "assets")
         if os.path.exists(image_dir):
@@ -425,7 +445,8 @@ def process_assets(download = False):
         shutil.copytree(os.path.join(tmp_dir, "awesome-defold-master", "assets", "images", "assets"), image_dir)
 
         assetindex = []
-        authorindex = []
+        authorindex = {}
+        tagindex = {}
         for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "assets"), "*.json"):
             basename = os.path.basename(filename)
             print("Processing asset: {}".format(basename))
@@ -449,21 +470,26 @@ def process_assets(download = False):
                 "platforms": asset["platforms"]
             })
 
+            # build tag index
+            for tag in asset["tags"]:
+                if not tag in tagindex:
+                    tagindex[tag] = {
+                        "id": tag.lower().replace(" ", ""),
+                        "name": tag,
+                        "assets": []
+                    }
+                tagindex[tag]["assets"].append({
+                    "id": asset_id,
+                })
+
             # build author index
-            author = None
-            for a in authorindex:
-                if a["name"] == author_name:
-                    author = a
-                    break
-            if author is None:
-                author = {
+            if not author_id in authorindex:
+                authorindex[author_id] = {
                     "id": author_id,
                     "name": author_name,
                     "assets": []
                 }
-                authorindex.append(author)
-
-            author["assets"].append({
+            authorindex[author_id]["assets"].append({
                 "id": asset_id
             })
 
@@ -471,23 +497,36 @@ def process_assets(download = False):
             with open(os.path.join(asset_collection_dir, basename.replace(".json", ".md")), "w") as f:
                 f.write(ASSET_MD_FRONTMATTER.format(asset_id, asset["name"]))
 
-            # generate a dummy markdown page with some front matter for each author
-            with open(os.path.join(author_collection_dir, author_id + ".md"), "w") as f:
-                f.write(AUTHOR_MD_FRONTMATTER.format(author_id, author_name))
-
         # write asset index
         write_as_json(ASSETINDEX_JSON, assetindex)
 
         # write author index
-        authorindex.sort(key=lambda x: x.get("name").lower())
-        write_as_json(AUTHORINDEX_JSON, authorindex)
+        authorlist = authorindex.values()
+        authorlist.sort(key=lambda x: x.get("name").lower())
+        write_as_json(AUTHORINDEX_JSON, authorlist)
 
-        # write author data
-        for author in authorindex:
+        # write author data and a dummy markdown page with front matter
+        for author in authorlist:
             author["assets"].sort(key=lambda x: x.get("id"))
             filename = os.path.join(author_data_dir, author["id"] + ".json")
             with open(filename, "w") as f:
                 f.write(json.dumps(author, indent=2, sort_keys=True))
+            with open(os.path.join(author_collection_dir, author["id"] + ".md"), "w") as f:
+                f.write(AUTHOR_MD_FRONTMATTER.format(author["id"], author["name"]))
+
+        # write tag index
+        taglist = tagindex.values()
+        taglist.sort(key=lambda x: x.get("id").lower())
+        write_as_json(TAGINDEX_JSON, taglist)
+
+        # write tag data
+        for tag in taglist:
+            tag["assets"].sort(key=lambda x: x.get("id"))
+            filename = os.path.join(tag_data_dir, tag["id"] + ".json")
+            with open(filename, "w") as f:
+                f.write(json.dumps(tag, indent=2, sort_keys=True))
+            with open(os.path.join(tag_collection_dir, tag["id"] + ".md"), "w") as f:
+                f.write(TAG_MD_FRONTMATTER.format(tag["id"], tag["name"]))
 
 
 
