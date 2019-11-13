@@ -79,7 +79,7 @@ layout: base
 				<table>
 					<tr>
 						<td valign="top">Author</td>
-						<td valign="top"><a href="/authors/{{ asset.author_id }}">{{ asset.author }}</a></td>
+						<td valign="top"><a href="/authors/{{ asset.author_id }}" target="_blank">{{ asset.author }}</a></td>
 					</tr>
 					<tr>
 						<td valign="top">License</td>
@@ -96,7 +96,7 @@ layout: base
 					{%- if asset.stars.size > 0 -%}
 					<tr>
 						<td valign="top">Stars</td>
-						<td valign="top">{{ asset.stars }}</td>
+						<td valign="top"><a href="{{ asset.project_url }}" target="_blank">{{ asset.stars }}</a></td>
 					</tr>
 					{%- endif -%}
 				</table>
