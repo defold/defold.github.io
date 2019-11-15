@@ -13,22 +13,25 @@ name: Asset Portal
 			</div>
 			<div class="columns two" style="vertical-align: bottom; height: 100%">{% include secondary_button.html link="/submit_asset" text="Submit asset" %}</div>
 		</div>
-
 		{%- if page.tag -%}
 			{%- assign tag = site.data.tags[page.tag] -%}
 			{%- assign tagid = tag.id -%}
-			{%- assign assetids = tag.assets | map: "id" -%}
 			{%- assign assetname = tag.name -%}
+
+			{%- if page.sort == "stars" -%}
+			{%- assign assetids = tag.assets | sort: "stars" | reverse | map: "id" -%}
+			{%- else -%}
+			{%- assign assetids = tag.assets | map: "id" -%}
+			{% endif %}
 
 			{%- include tagfilter.html tag=tagid -%}
 			{%- include assetgrid.html assetids=assetids showfilter=true title=assetname -%}
 		{%- else -%}
-			{%- assign assetids = site.data.assetindex | map: "id" -%}
+			{%- assign assetids = site.data.assetindex | sort: "stars" | reverse | map: "id" -%}
 
 			{%- include tagfilter.html -%}
 			{%- include assetgrid.html assetids=assetids showfilter=true title="All" -%}
 		{%- endif -%}
-
 		<div class="row" style="margin-top: 30px">
 			<div class="columns ten"><br/></div>
 			<div class="columns two">{% include secondary_button.html link="/submit_asset" text="Submit asset" %}</div>
