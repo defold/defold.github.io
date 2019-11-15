@@ -53,6 +53,14 @@ title: {}
 ---
 """
 
+TAG_SORT_STARS_MD_FRONTMATTER = """---
+layout: assetportal
+tag: {}
+title: {}
+sort: stars
+---
+"""
+
 REFDOC_MD_FRONTMATTER = """---
 layout: ref
 ref: {}
@@ -357,37 +365,6 @@ def process_codepad(download = False):
         shutil.copytree(os.path.join(input_dir, "build", "default", "DefoldCodePad"), codepad_dir)
 
 
-def update_github_star_count_for_assets(githubtoken):
-    if githubtoken is None:
-        print("No GitHub token specified")
-        sys.exit(1)
-
-    assetindex = read_as_json(ASSETINDEX_JSON)
-
-    for filename in find_files(os.path.join("_data", "assets"), "*.json"):
-        asset = read_as_json(filename)
-        project_url = asset["project_url"]
-        if "github.com" in project_url:
-            print("Getting star count for %s" % (asset["name"]))
-            repo = urlparse.urlparse(project_url).path[1:]
-
-            url = "https://api.github.com/repos/%s/stargazers" % (repo)
-            stargazers = github_request(url, githubtoken)
-            if stargazers:
-                stars = len(stargazers)
-                print("...%d" % (stars))
-                asset["stars"] = stars
-                write_as_json(filename, asset)
-
-                id = os.path.basename(filename).replace(".json", "")
-                for asset in assetindex:
-                    if asset["id"] == id:
-                        asset["stars"] = stars
-                        break
-
-    write_as_json(ASSETINDEX_JSON, assetindex)
-
-
 def process_assets(download = False):
     if download:
         if os.path.exists(AWESOME_ZIP):
@@ -467,7 +444,8 @@ def process_assets(download = False):
             assetindex.append({
                 "id": asset_id,
                 "tags": asset["tags"],
-                "platforms": asset["platforms"]
+                "platforms": asset["platforms"],
+                "stars": asset.get("stars") or 0
             })
 
             # build tag index
@@ -480,6 +458,7 @@ def process_assets(download = False):
                     }
                 tagindex[tag]["assets"].append({
                     "id": asset_id,
+                    "stars": asset.get("stars") or 0
                 })
 
             # build author index
@@ -490,7 +469,8 @@ def process_assets(download = False):
                     "assets": []
                 }
             authorindex[author_id]["assets"].append({
-                "id": asset_id
+                "id": asset_id,
+                "stars": asset.get("stars") or 0
             })
 
             # generate a dummy markdown page with some front matter for each asset
@@ -527,6 +507,8 @@ def process_assets(download = False):
                 f.write(json.dumps(tag, indent=2, sort_keys=True))
             with open(os.path.join(tag_collection_dir, tag["id"] + ".md"), "w") as f:
                 f.write(TAG_MD_FRONTMATTER.format(tag["id"], tag["name"]))
+            with open(os.path.join(tag_collection_dir, tag["id"] + ".md"), "w") as f:
+                f.write(TAG_SORT_STARS_MD_FRONTMATTER.format(tag["id"], tag["name"]))
 
 
 
@@ -653,7 +635,7 @@ def commit_changes(githubtoken):
     call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
 
 
-ALL_COMMANDS = [ "docs", "examples", "refdoc", "assets", "starcount", "codepad", "searchindex" ]
+ALL_COMMANDS = [ "docs", "examples", "refdoc", "assets", "codepad", "searchindex" ]
 
 parser = ArgumentParser()
 parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ', all, help)')
@@ -666,7 +648,6 @@ COMMANDS:
 docs = Process the docs (manuals, tutorials and faq)
 refdoc = Process the API reference
 assets = Process the asset portal list
-starcount = Add GitHub star count to all assets that have a GitHub project
 examples = Build the examples
 codepad = Build the Defold CodePad
 commit = Commit changed files (requires --githubtoken)
@@ -694,8 +675,6 @@ for command in args.commands:
         process_refdoc(download = args.download)
     elif command == "assets":
         process_assets(download = args.download)
-    elif command == "starcount":
-        update_github_star_count_for_assets(args.githubtoken)
     elif command == "codepad":
         process_codepad(download = args.download)
     elif command == "searchindex":
