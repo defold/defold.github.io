@@ -77,6 +77,18 @@ def tmpdir():
     finally:
         shutil.rmtree(name)
 
+def rmtree(dir):
+    if os.path.exists(dir):
+        shutil.rmtree(dir)
+
+def rmmkdir(dir):
+    rmtree(dir)
+    os.mkdir(dir)
+
+def rmcopytree(src, dst):
+    rmtree(dst)
+    shutil.copytree(src, dst)
+
 def call(args):
     print(args)
     ret = os.system(args)
@@ -193,6 +205,12 @@ def process_doc_file(file):
     replace_in_file(file, r"\(\.\.\/shared\/", r"(/shared/")
 
 
+def get_language_specific_dir(language, dir):
+    if language != "en":
+        dir = os.path.join(language, dir)
+    return dir
+
+
 def process_docs(download = False):
     if download:
         if os.path.exists(DOCS_ZIP):
@@ -207,48 +225,82 @@ def process_docs(download = False):
         shutil.copyfile(DOCS_ZIP, os.path.join(tmp_dir, DOCS_ZIP))
         unzip(os.path.join(tmp_dir, DOCS_ZIP), tmp_dir)
 
-        print("Processing doc")
-        print("...manuals")
-        if os.path.exists(MANUALS_DIR):
-            shutil.rmtree(MANUALS_DIR)
-        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "manuals"), MANUALS_DIR)
-        for filename in find_files(MANUALS_DIR, "*.md"):
-            process_doc_file(filename)
+        print("Processing docs")
 
-        print("...faq")
-        faq_dir = "_faq"
-        if os.path.exists(faq_dir):
-            shutil.rmtree(faq_dir)
-        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "faq"), faq_dir)
-
-        print("...shared includes")
-        shared_includes_dir = os.path.join("_includes", "shared")
-        if os.path.exists(shared_includes_dir):
-            shutil.rmtree(shared_includes_dir)
-        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "shared"), shared_includes_dir)
-        shutil.rmtree(os.path.join(shared_includes_dir, "images"))
-        for filename in find_files(shared_includes_dir, "*.md"):
-            process_doc_file(filename)
-
-        print("...shared images")
-        shared_images_dir = os.path.join("shared", "images")
-        if os.path.exists(shared_images_dir):
-            shutil.rmtree(shared_images_dir)
-        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "shared", "images"), shared_images_dir)
-
-        print("...tutorials")
-        tutorials_dir = "_tutorials"
-        if os.path.exists(tutorials_dir):
-            shutil.rmtree(tutorials_dir)
-        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "tutorials"), tutorials_dir)
-        for filename in find_files(tutorials_dir, "*.md"):
-            process_doc_file(filename)
+        print("...languages")
+        languages = read_as_json(os.path.join(tmp_dir, "doc-master", "docs", "languages.json"))
+        language_list = []
+        for language in languages["languages"].keys():
+            language_data = languages["languages"][language]
+            if language_data["active"]:
+                language_data["language"] = language
+                if language == "en":
+                    language_data["urlprefix"] = ""
+                else:
+                    language_data["urlprefix"] = language
+                language_list.append(language_data)
+        write_as_json(os.path.join("_data", "languageindex.json"), language_list)
 
         print("...index")
         index_file = os.path.join("_data", "learnindex.json")
         if os.path.exists(index_file):
             os.remove(index_file)
         shutil.copyfile(os.path.join(tmp_dir, "doc-master", "docs", "en", "en.json"), index_file)
+        index = read_as_json(index_file)
+
+        for language in languages["languages"].keys():
+            print("...manuals ({})".format(language))
+            manuals_src_dir = os.path.join(tmp_dir, "doc-master", "docs", language, "manuals")
+            if os.path.exists(manuals_src_dir):
+                manuals_dst_dir = get_language_specific_dir(language, "manuals")
+                rmcopytree(manuals_src_dir, manuals_dst_dir)
+                for filename in find_files(manuals_dst_dir, "*.md"):
+                    process_doc_file(filename)
+                    replace_in_file(filename, r"title\:", r"layout: manual\ntitle:")
+                    replace_in_file(filename, r"title\:", r"language: {}\ntitle:".format(language))
+                    if language != "en":
+                        replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
+
+        print("...faq")
+        faq_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "faq")
+        faq_dst_dir = "faq"
+        rmcopytree(faq_src_dir, faq_dst_dir)
+        for filename in find_files(faq_dst_dir, "*.md"):
+            replace_in_file(filename, r"title\:", r"layout: text\ntitle:")
+
+        print("...shared includes")
+        shared_includes_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "shared")
+        shared_includes_dst_dir = os.path.join("_includes", "shared")
+        rmcopytree(shared_includes_src_dir, shared_includes_dst_dir)
+        shutil.rmtree(os.path.join(shared_includes_dst_dir, "images"))
+        for filename in find_files(shared_includes_dst_dir, "*.md"):
+            process_doc_file(filename)
+
+        print("...tutorials")
+        tutorials_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "tutorials")
+        tutorials_dst_dir = "tutorials"
+        rmcopytree(tutorials_src_dir, tutorials_dst_dir)
+        for filename in find_files(tutorials_dst_dir, "*.md"):
+            process_doc_file(filename)
+            replace_in_file(filename, r"title\:", r"layout: tutorial\ntitle:")
+
+        # figure in which languages each learn page exists
+        print("...index (incl. languages)")
+        for categories in index["navigation"]:
+            for section in index["navigation"][categories]:
+                for item in section["items"]:
+                    item["languages"] = []
+                    if not item["path"].startswith("http"):
+                        path = item["path"][1:]
+                        for language in languages["languages"].keys():
+                            if os.path.exists(get_language_specific_dir(language, path + ".md")):
+                                item["languages"].append(language)
+        write_as_json(index_file, index)
+
+        print("...shared images")
+        shared_images_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "shared", "images")
+        shared_images_dst_dir = os.path.join("shared", "images")
+        rmcopytree(shared_images_src_dir, shared_images_dst_dir)
 
         print("Done")
 
@@ -281,9 +333,7 @@ def process_examples(download = False):
 
         print("...copying app")
         examples_dir = "examples"
-        if os.path.exists(examples_dir):
-            shutil.rmtree(examples_dir)
-        shutil.copytree(os.path.join(input_dir, "build", "default", "Defold-examples"), examples_dir)
+        rmcopytree(os.path.join(input_dir, "build", "default", "Defold-examples"), examples_dir)
 
         print("...processing index.html")
         replace_in_file(os.path.join(examples_dir, "index.html"), "\<\!DOCTYPE html\>.*\<body\>", "", flags=re.DOTALL)
@@ -319,9 +369,7 @@ def process_examples(download = False):
 
         print("...copying scripts")
         includes_dir = "_includes/examples"
-        if os.path.exists(includes_dir):
-            shutil.rmtree(includes_dir)
-        os.mkdir(includes_dir)
+        rmmkdir(includes_dir)
         for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.script"):
             shutil.copyfile(filename, os.path.join(includes_dir, os.path.basename(filename).replace(".script", "_script.md")))
         for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.gui_script"):
@@ -360,9 +408,7 @@ def process_codepad(download = False):
         subprocess.call([ "java", "-jar", os.path.join(tmp_dir, bob_jar), "--archive", "--platform", "js-web", "resolve", "distclean", "build", "bundle" ], cwd=input_dir)
 
         codepad_dir = "codepad"
-        if os.path.exists(codepad_dir):
-            shutil.rmtree(codepad_dir)
-        shutil.copytree(os.path.join(input_dir, "build", "default", "DefoldCodePad"), codepad_dir)
+        rmcopytree(os.path.join(input_dir, "build", "default", "DefoldCodePad"), codepad_dir)
 
 
 def process_assets(download = False):
@@ -381,45 +427,31 @@ def process_assets(download = False):
 
         # Jekyll assets collection
         asset_collection_dir = "assets"
-        if os.path.exists(asset_collection_dir):
-            shutil.rmtree(asset_collection_dir)
-        os.mkdir(asset_collection_dir)
+        rmmkdir(asset_collection_dir)
 
         # Jekyll authors collection
         author_collection_dir = "authors"
-        if os.path.exists(author_collection_dir):
-            shutil.rmtree(author_collection_dir)
-        os.mkdir(author_collection_dir)
+        rmmkdir(author_collection_dir)
 
         # Jekyll tags collection
         tag_collection_dir = "tags"
-        if os.path.exists(tag_collection_dir):
-            shutil.rmtree(tag_collection_dir)
-        os.mkdir(tag_collection_dir)
+        rmmkdir(tag_collection_dir)
 
         # Jekyll asset data
         asset_data_dir = os.path.join("_data", "assets")
-        if os.path.exists(asset_data_dir):
-            shutil.rmtree(asset_data_dir)
-        os.mkdir(asset_data_dir)
+        rmmkdir(asset_data_dir)
 
         # Jekyll author data
         author_data_dir = os.path.join("_data", "authors")
-        if os.path.exists(author_data_dir):
-            shutil.rmtree(author_data_dir)
-        os.mkdir(author_data_dir)
+        rmmkdir(author_data_dir)
 
         # Jekyll tag data
         tag_data_dir = os.path.join("_data", "tags")
-        if os.path.exists(tag_data_dir):
-            shutil.rmtree(tag_data_dir)
-        os.mkdir(tag_data_dir)
+        rmmkdir(tag_data_dir)
 
         # image data
         image_dir = os.path.join("images", "assets")
-        if os.path.exists(image_dir):
-            shutil.rmtree(image_dir)
-        shutil.copytree(os.path.join(tmp_dir, "awesome-defold-master", "assets", "images", "assets"), image_dir)
+        rmcopytree(os.path.join(tmp_dir, "awesome-defold-master", "assets", "images", "assets"), image_dir)
 
         assetindex = []
         authorindex = {}
@@ -528,14 +560,10 @@ def process_refdoc(download = False):
 
         # Jekyll collection
         collection_dir = "ref"
-        if os.path.exists(collection_dir):
-            shutil.rmtree(collection_dir)
-        os.mkdir(collection_dir)
+        rmmkdir(collection_dir)
 
         # Jekyll data
-        if os.path.exists(REF_DATA_DIR):
-            shutil.rmtree(REF_DATA_DIR)
-        os.mkdir(REF_DATA_DIR)
+        rmmkdir(REF_DATA_DIR)
 
         refindex = []
         for file in os.listdir(os.path.join(tmp_dir, "doc")):

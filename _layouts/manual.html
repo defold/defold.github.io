@@ -3,6 +3,7 @@ layout: base
 ---
 {% include learnnav.html showmenu=true %}
 
+{%- assign language = site.data.languageindex | where: "language", page.language | first -%}
 <div class="section light" style="background-color: #fafafa">
 	<div class="container">
 		<div class="row">
@@ -20,7 +21,13 @@ layout: base
 					<ul class="nobullet">
 						{%- for manual in section.items -%}
 						<li style="padding-left: 2rem;">
-							<a href="{{ manual.path }}" style="text-decoration: none;">{{ manual.name }}</a>
+							{%- if language.language == "en" -%}
+								<a href="{{ manual.path }}" style="text-decoration: none;">{{ manual.name }}</a>
+							{%- elsif manual.languages contains language.language -%}
+								<a href="/{{ language.urlprefix }}{{ manual.path }}" style="text-decoration: none;">{{ manual.name }}</a>
+							{%- else -%}
+								<a href="{{ manual.path }}" style="text-decoration: none;">{{ manual.name }} (English)</a>
+							{%- endif -%}
 						</li>
 						{%- endfor -%}
 					</ul>
@@ -31,7 +38,13 @@ layout: base
 						{%- for section in site.data.learnindex.navigation.manuals -%}
 						<option value="">{{ section.name | capitalize }}</option>
 						{%- for manual in section.items -%}
-						<option value="{{ manual.path }}" {% if page.url contains manual.path %}selected{% endif %}> - {{ manual.name }}</option>
+						{%- if language.language == "en" -%}
+							<option value="{{ manual.path }}" {% if page.url contains manual.path %}selected{% endif %}> - {{ manual.name }}</option>
+						{%- elsif manual.languages contains language.language -%}
+							<option value="/{{ language.urlprefix }}{{ manual.path }}" {% if page.url contains manual.path %}selected{% endif %}> - {{ manual.name }}</option>
+						{%- else -%}
+							<option value="{{ manual.path }}" {% if page.url contains manual.path %}selected{% endif %}> - {{ manual.name }}</option>
+						{%- endif -%}
 						{%- endfor -%}
 						{%- endfor -%}
 					</select>
@@ -40,7 +53,23 @@ layout: base
 			<div class="columns seven manual">
 				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
 			</div>
-			<div class="columns two"><br/></div>
+			<div class="columns two"><br/>
+				{%- if site.data.languageindex.size > 1 -%}
+				<ul class="nobullet">
+				{%- for l in site.data.languageindex -%}
+					{%- if l.active -%}
+					<li>
+						{%- if l.language == "en" -%}
+							<a href='/manuals/introduction' style="text-decoration: none;">{{ l.name }}</a>
+						{%- else -%}
+							<a href='/{{ l.language }}/manuals/introduction' style="text-decoration: none;">{{ l.name }}</a>
+						{%- endif -%}
+					</li>
+					{%- endif -%}
+				{%- endfor -%}
+				</ul>
+				{%- endif -%}
+			</div>
 		</div>
 	</div>
 </div>
