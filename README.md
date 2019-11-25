@@ -41,7 +41,6 @@ The script accepts the following commands:
 * `refdoc` - Import API reference from latest release at d.defold.com
 * `examples` - Import examples from github.com/defold/examples
 * `assets` - Import Asset Portal content from github.com/defold/awesome-defold
-* `starcount` - Generate stars for assets from GitHub stars
 * `searchindex` - Generates the search index
 * `commit` - Commit changes to GitHub (for CI use)
 
