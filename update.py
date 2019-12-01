@@ -627,6 +627,9 @@ def generate_searchindex():
             if "." in name:
                 for part in name.split("."):
                     append_ref_doc(filename, part)
+            elif "::" in name:
+                for part in name.split("::"):
+                    append_ref_doc(filename, part)
 
     # manually create a builder without stemming, stop words etc
     # if we use the standard builder pipeline functions we will end up
