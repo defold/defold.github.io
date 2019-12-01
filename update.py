@@ -29,7 +29,7 @@ ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
 AUTHORINDEX_JSON = os.path.join("_data", "authorindex.json")
 TAGINDEX_JSON = os.path.join("_data", "tagindex.json")
 
-MANUALS_DIR = "_manuals"
+MANUALS_DIR = "manuals"
 REF_DATA_DIR = os.path.join("_data", "ref")
 
 ASSET_MD_FRONTMATTER = """---
