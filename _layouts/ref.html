@@ -7,20 +7,21 @@ layout: base
 	<div class="container">
 		<div class="row">
 			<div class="columns three">
-				{%- assign indices = site.data.refindex | sort: "namespace" -%}
+				{%- assign unsortedindices = site.data.refindex | where: "branch", "stable" -%}
+				{%- assign indices = unsortedindices | sort: "namespace" -%}
 				<ul class="navmenu nobullet">
 					{%- for ref in indices -%}
-					<li><a href="/ref/{{ ref.filename }}" style="text-decoration: none;">{{ ref.namespace }}</a></li>
+					<li><a href="/ref/{{ page.branch }}/{{ ref.filename }}" style="text-decoration: none;">{{ ref.namespace }}</a></li>
 					{%- endfor -%}
 				</ul>
 				<select class="navdropdown" onchange="location = this.value;">
 					{%- for ref in indices -%}
-					<option value="/ref/{{ ref.filename }}">{{ ref.namespace }}</option>
+					<option value="/ref/{{ page.branch }}/{{ ref.filename }}">{{ ref.namespace }}</option>
 					{%- endfor -%}
 				</select>
 			</div>
 			<div class="columns seven ref">
-				{%- assign ref = site.data.ref[page.ref] -%}
+				{%- assign ref = site.data.ref[page.branch][page.ref] -%}
 				{%- assign functions = ref.elements | where: "type", "FUNCTION" -%}
 				{%- assign variables = ref.elements | where: "type", "VARIABLE" -%}
 				{%- assign messages = ref.elements | where: "type", "MESSAGE" -%}
@@ -28,6 +29,7 @@ layout: base
 				{%- assign macros = ref.elements | where: "type", "MACRO" -%}
 
 				<h1>{{ ref.info.brief }}</h1>
+				<p>Version: {{ page.branch }}</p>
 
 				{{ ref.info.description }}
 
@@ -224,6 +226,13 @@ layout: base
 				{%- endif -%}
 			</div>
 			<div class="columns two">
+				<b>VERSIONS</b>
+				{%- assign branches = site.data.branchindex -%}
+				<ul class="navmenu nobullet">
+					{%- for branch in branches -%}
+					<li><a href="/ref/{{ branch }}/{{ page.ref }}" style="text-decoration: none;">{{ branch }}</a></li>
+					{%- endfor -%}
+				</ul>
 			</div>
 		</div>
 	</div>

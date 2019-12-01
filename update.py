@@ -17,19 +17,17 @@ from argparse import ArgumentParser
 from contextlib import contextmanager
 import lunr
 
-SHA1 = None
+SHA1 = {}
 
 DOCS_ZIP = "doc-master.zip"
 EXAMPLES_ZIP = "examples-master.zip"
 CODEPAD_ZIP = "codepad-master.zip"
 AWESOME_ZIP = "awesome-defold-master.zip"
-REFDOC_ZIP = "refdoc.zip"
 
 ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
 AUTHORINDEX_JSON = os.path.join("_data", "authorindex.json")
 TAGINDEX_JSON = os.path.join("_data", "tagindex.json")
 
-MANUALS_DIR = "manuals"
 REF_DATA_DIR = os.path.join("_data", "ref")
 
 ASSET_MD_FRONTMATTER = """---
@@ -63,6 +61,7 @@ sort: stars
 
 REFDOC_MD_FRONTMATTER = """---
 layout: ref
+branch: {}
 ref: {}
 ---
 """
@@ -139,12 +138,12 @@ def download_json(url):
     return response.json()
 
 
-def get_sha1():
+def get_sha1(branch = "stable"):
     global SHA1
-    if not SHA1:
-        info = download_json("https://d.defold.com/stable/info.json")
-        SHA1 = info["sha1"]
-    return SHA1
+    if not SHA1.get(branch):
+        info = download_json("https://d.defold.com/{}/info.json".format(branch))
+        SHA1[branch] = info["sha1"]
+    return SHA1[branch]
 
 
 def get_bob_filename(sha1):
@@ -545,48 +544,65 @@ def process_assets(download = False):
 
 
 def process_refdoc(download = False):
-    if download:
-        if os.path.exists(REFDOC_ZIP):
-            os.remove(REFDOC_ZIP)
-        download_file("http://d.defold.com/archive/{}/engine/share/ref-doc.zip".format(get_sha1()), ".", REFDOC_ZIP)
+    refindex = []
+    branchindex = [ "alpha", "beta", "stable" ]
+    ref_root_dir = "ref"
+    rmmkdir(ref_root_dir)
 
-    if not os.path.exists(REFDOC_ZIP):
-        print("File {} does not exist".format(REFDOC_ZIP))
-        sys.exit(1)
+    for branch in branchindex:
+        REFDOC_ZIP = "refdoc_{}.zip".format(branch)
+        REF_DATA_DIR = os.path.join("_data", "ref", branch)
+        REF_PAGE_DIR = os.path.join(ref_root_dir, branch)
 
-    with tmpdir() as tmp_dir:
-        shutil.copyfile(REFDOC_ZIP, os.path.join(tmp_dir, REFDOC_ZIP))
-        unzip(os.path.join(tmp_dir, REFDOC_ZIP), tmp_dir)
+        if download:
+            if os.path.exists(REFDOC_ZIP):
+                os.remove(REFDOC_ZIP)
+            download_file("http://d.defold.com/archive/{}/engine/share/ref-doc.zip".format(get_sha1(branch)), ".", REFDOC_ZIP)
 
-        # Jekyll collection
-        collection_dir = "ref"
-        rmmkdir(collection_dir)
+        if not os.path.exists(REFDOC_ZIP):
+            print("File {} does not exist".format(REFDOC_ZIP))
+            sys.exit(1)
 
-        # Jekyll data
-        rmmkdir(REF_DATA_DIR)
+        with tmpdir() as tmp_dir:
+            shutil.copyfile(REFDOC_ZIP, os.path.join(tmp_dir, REFDOC_ZIP))
+            unzip(os.path.join(tmp_dir, REFDOC_ZIP), tmp_dir)
 
-        refindex = []
-        for file in os.listdir(os.path.join(tmp_dir, "doc")):
-            if file.endswith(".json"):
-                json_out_name = file.replace("_doc.json", "")
-                json_out_file = json_out_name + ".json"
+            # Jekyll page and data dir
+            rmmkdir(REF_PAGE_DIR)
+            rmmkdir(REF_DATA_DIR)
 
-                # copy and rename file
-                shutil.copyfile(os.path.join(tmp_dir, "doc", file), os.path.join(REF_DATA_DIR, json_out_file))
+            for file in os.listdir(os.path.join(tmp_dir, "doc")):
+                if file.endswith(".json"):
+                    json_out_name = file.replace("_doc.json", "")
+                    json_out_file = json_out_name + ".json"
 
-                # generate a dummy markdown page with some front matter for each ref doc
-                with open(os.path.join(collection_dir, file.replace("_doc.json", ".md")), "w") as f:
-                    f.write(REFDOC_MD_FRONTMATTER.format(json_out_name) + REFDOC_MD_BODY)
+                    # copy and rename file
+                    shutil.copyfile(os.path.join(tmp_dir, "doc", file), os.path.join(REF_DATA_DIR, json_out_file))
 
-                # build refdoc index
-                r = read_as_json(os.path.join(tmp_dir, "doc", file))
-                refindex.append({
-                    "namespace": r["info"]["namespace"],
-                    "filename": json_out_name,
-                })
+                    # generate a dummy markdown page with some front matter for each ref doc
+                    with open(os.path.join(REF_PAGE_DIR, file.replace("_doc.json", ".md")), "w") as f:
+                        f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name) + REFDOC_MD_BODY)
 
-        # write refdoc index
-        write_as_json(os.path.join("_data", "refindex.json"), refindex)
+                    # build refdoc index
+                    r = read_as_json(os.path.join(tmp_dir, "doc", file))
+                    refindex.append({
+                        "namespace": r["info"]["namespace"],
+                        "filename": json_out_name,
+                        "branch": branch,
+                    })
+
+    # copy stable files to ref/ for backwards compatibility
+    for item in os.listdir(os.path.join("ref", "stable")):
+        s = os.path.join("ref", "stable", item)
+        d = os.path.join("ref", item)
+        if not os.path.isdir(s):
+            shutil.copy2(s, d)
+
+    # write refdoc index
+    write_as_json(os.path.join("_data", "refindex.json"), refindex)
+
+    # write branch index
+    write_as_json(os.path.join("_data", "branchindex.json"), branchindex)
 
 
 def process_file_for_indexing(filename):
@@ -614,11 +630,11 @@ def generate_searchindex():
             "data": data
         })
 
-    for filename in find_files(MANUALS_DIR, "*.md"):
+    for filename in find_files("manuals", "*.md"):
         data = process_file_for_indexing(filename)
         append_manual(filename, data)
 
-    for filename in find_files(REF_DATA_DIR, "*.json"):
+    for filename in find_files(os.path.join("_data", "ref", "stable"), "*.json"):
         r = read_as_json(filename)
         for element in r["elements"]:
             name = element["name"]
