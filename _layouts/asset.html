@@ -2,13 +2,41 @@
 layout: base
 ---
 {%- assign asset = site.data.assets[page.asset] -%}
-{%- if asset.images.hero.size > 0 -%}
+{%- if asset.images.hero contains "https" or asset.images.hero contains "http" -%}
+	{%- assign hero_base = "" -%}
+	{%- assign hero = asset.images.hero -%}
+{%- elsif asset.images.hero.size > 0 -%}
+	{%- assign hero_base = "/images/assets/" -%}
 	{%- assign hero = asset.images.hero -%}
 {%- else -%}
-	{%- assign hero = "no-thumb.png" -%}
+	{%- assign hero_base = "" -%}
+	{%- assign hero = "/images/asset-nohero.jpg" -%}
 {%- endif -%}
 
-<div class="section hero center blackwhite" style='background-image: url("/images/assets/{{ hero }}"); min-height: 240px; max-height: 260px'>
+<script>
+	function copy_library_url_to_clipboard(url) {
+		var textarea = document.createElement("textarea");
+		textarea.value = url;
+		document.body.appendChild(textarea);
+		textarea.select()
+		try {
+			var successful = document.execCommand('copy');
+			var msg = successful ? 'successful' : 'unsuccessful';
+			if (successful) {
+				document.getElementById("copy_library_url_to_clipboard_status").innerHTML = "Copied!";
+			}
+			else {
+				document.getElementById("copy_library_url_to_clipboard_status").innerHTML = "Failed!";
+				console.log('Oops, unable to copy');
+			}
+		} catch (err) {
+			console.log('Oops, unable to copy', err);
+		}
+		document.body.removeChild(textarea);
+	}
+</script>
+
+<div class="section hero center blackwhite" style='background-image: url("{{ hero_base }}{{ hero }}"); min-height: 240px; max-height: 260px'>
 	<div class="container">
 		<div class="row">
 			<div>
@@ -28,8 +56,8 @@ layout: base
 
 				{%- if asset.library_url.size > 0 -%}
 				<h5>Use as library</h5>
-				<p>This asset can be added as a library dependency in your project:<br/>
-					<a href="{{ asset.library_url }}" target="_blank">{{ asset.library_url }}</a>
+				<p>This asset can be added as a library dependency in your project (click to copy to clipboard):<br/>
+					<a href="#" onclick="copy_library_url_to_clipboard('{{ asset.library_url }}')">{{ asset.library_url }}</a><p id="copy_library_url_to_clipboard_status"></p>
 				</p>
 				{%- endif -%}
 
@@ -51,7 +79,7 @@ layout: base
 				<table>
 					<tr>
 						<td valign="top">Author</td>
-						<td valign="top">{{ asset.author }}</td>
+						<td valign="top"><a href="/authors/{{ asset.author_id }}">{{ asset.author }}</a></td>
 					</tr>
 					<tr>
 						<td valign="top">License</td>
@@ -63,12 +91,16 @@ layout: base
 					</tr>
 					<tr>
 						<td valign="top">Tags</td>
-						<td valign="top">{{ asset.tags | join: "<br/>" }}</td>
+						<td valign="top">
+							{%- for tag in asset.tags -%}
+								<a href="/tags/{{ tag | downcase | remove: ' ' }}">{{ tag }}</a><br/>
+							{%- endfor -%}
+						</td>
 					</tr>
 					{%- if asset.stars.size > 0 -%}
 					<tr>
 						<td valign="top">Stars</td>
-						<td valign="top">{{ asset.stars }}</td>
+						<td valign="top"><a href="{{ asset.project_url }}" target="_blank">{{ asset.stars }}</a></td>
 					</tr>
 					{%- endif -%}
 				</table>

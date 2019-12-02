@@ -12,12 +12,13 @@ jobs:
             { name: 'Skip based on commit message', uses: veggiemonk/skip-commit@1.0.0, env: { COMMIT_FILTER: 'skip-ci' } },
             { name: 'Checkout', uses: actions/checkout@v1, with: { fetch-depth: 1 } },
             { name: 'Install Python', uses: actions/setup-python@v1, with: { python-version: 2.x, architecture: x64 } },
+            { name: 'Install Java', uses: actions/setup-java@v1, with: { java-version: 11.x, architecture: x64 } },
             { name: 'Install Lunr', run: 'pip install --user lunr==0.5.5' },
             { name: 'Install Requests', run: 'pip install --user requests' },
             { name: 'Show action & event', run: 'echo "Event: ${{ github.event }} Action: ${{ github.event.action }}"' },
             { if: "github.event.action == 'assets'", name: 'Update assets', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} assets starcount commit' },
-            { if: "github.event.action == 'docs'", name: 'Update docs', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} docs commit' },
-            { if: "github.event.action == 'refdoc'", name: 'Update refdoc', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} refdoc commit' },
+            { if: "github.event.action == 'docs'", name: 'Update docs', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} docs searchindex commit' },
+            { if: "github.event.action == 'refdoc'", name: 'Update refdoc', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} refdoc searchindex commit' },
             { if: "github.event.action == 'examples'", name: 'Update examples', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} examples commit' },
             { if: "github.event.action == 'codepad'", name: 'Update codepad', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} codepad commit' }
         ]

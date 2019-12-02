@@ -1,0 +1,26 @@
+---
+layout: base
+name: Authors
+---
+<div class="section dark">
+	<div class="container">
+		<div class="row">
+			<div class="columns two"><img src="/images/icons/community-assets-on-dark.svg" style="max-width: 150px"/></div>
+			<div class="columns ten">
+				<h1>Authors</h1>
+				<p>The creators of all things great!</p>
+			</div>
+		</div>
+		<div class="row" style="margin-bottom: 30px;">
+		</div>
+		<div class="row" style="margin-bottom: 30px;">
+			<div class="columns twelve">
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); grid-gap: 0 1rem;">
+					{%- for author in site.data.authorindex -%}
+						<div><a href="/authors/{{ author.id }}">{{ author.name }}</a>&nbsp;({{ author.assets.size }})</div>
+					{%- endfor -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

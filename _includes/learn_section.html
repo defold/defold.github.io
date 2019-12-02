@@ -6,24 +6,24 @@
 			<br/>
 		</div>
 		<div class="row">
-			<div class="column one-third">
-				{% include card.html title="Tutorials" body="Our tutorials section is the perfect starting point if you are new to Defold game development." link="/tutorials/getting-started" icon="/images/icons/icons-learn-export_ic-learn-tutorials.svg" %}
-			</div>
-			<div class="column one-third">
-				{% include card.html title="Manuals" body="In-depth manuals provide understanding on how the Defold engine and its API's work." link="/manuals/introduction" icon="/images/icons/icons-learn-export_ic-learn-manuals.svg" %}
-			</div>
-			<div class="column one-third">
-				{% include card.html title="API Reference" body="Reference documentation to all Defold Lua and C++ extension API's.<br/><br/>" link="/ref/go" icon="/images/icons/icons-learn-export_ic-learn-apiref.svg" %}
+			<div class="columns twelve">
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
+					{% include card.html title="Tutorials" body="Our tutorials section is the perfect starting point if you are new to Defold game development." link="/tutorials/getting-started" icon="/images/icons/icons-learn-export_ic-learn-tutorials.svg" %}
+
+					{% include card.html title="Manuals" body="In-depth manuals provide understanding on how the Defold engine and its API's work." link="/manuals/introduction" icon="/images/icons/icons-learn-export_ic-learn-manuals.svg" %}
+
+					{% include card.html title="API Reference" body="Reference documentation to all Defold Lua and C++ extension API's.<br/><br/>" link="/ref/go" icon="/images/icons/icons-learn-export_ic-learn-apiref.svg" %}
+				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="columns two"><br/></div>
-			<div class="column one-third">
-				{% include card.html title="Examples" body="A selection of small and discrete code samples, examples and snippets to learn from." link="/examples/simple_move" icon="/images/icons/icons-learn-export_ic-learn-lego.svg" %}
-			</div>
-			<div class="column one-third">
-				{% include card.html title="Forum" body="Stuck? Not for long! Talk to the Defold team and our fantastic developer community." link="https://forum.defold.com" icon="/images/icons/icons-learn-export_ic-learn-forum.svg" %}
-			</div>
+			<div class="columns eight">
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
+					{% include card.html title="Examples" body="A selection of small and discrete code samples, examples and snippets to learn from." link="/examples/simple_move" icon="/images/icons/icons-learn-export_ic-learn-lego.svg" %}
+
+					{% include card.html title="Forum" body="Stuck? Not for long! Talk to the Defold team and our fantastic developer community." link="https://forum.defold.com" icon="/images/icons/icons-learn-export_ic-learn-forum.svg" %}
+				</div>
 			<div class="columns two"><br/></div>
 		</div>
 	</div>

@@ -1,6 +1,6 @@
 ## Downloading
 
-Go to the [Defold download page](https://d.defold.com/stable/) where you will find Download buttons for macOS, Windows and Linux (Ubuntu):
+Go to the [Defold download page](https://defold.com/download/) where you will find Download buttons for macOS, Windows and Linux (Ubuntu):
 
 ![download editor](/shared/images/editor_download.png)
 
@@ -42,7 +42,7 @@ Installation on Linux
   $ ./Defold
   ```
 
-  If you run into any problems starting the editor, opening a project or running a Defold game please refer to the [Linux section of the FAQ](/faq/faq.md#linux-issues).
+  If you run into any problems starting the editor, opening a project or running a Defold game please refer to the [Linux section of the FAQ](/faq/faq#linux-issues).
 
   ## Install an old version
 

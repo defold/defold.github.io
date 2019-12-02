@@ -15,281 +15,37 @@ nav: floating
 	</div>
 </div>
 
-<a href="https://king.com/game/petrescuepuzzle" target="_blank">
-<div class="section hero center dark-text hoverflash" style='background: url("/images/hero/games/hero-desktop-PetRescue.png") center top/cover no-repeat;'>
-	<div class="container">
-		<div class="row" style="height: 300px">
-		</div>
-	</div>
-</div>
-<div class="section dark left" style="padding-top: 3rem; padding-bottom: 0;">
+{% assign full = site.data.showcase | where: "show", "full" %}
+{%- for game in full -%}
+	{%- include showcase_full.html game=game -%}
+{%- endfor -%}
+
+<div class="section dark">
 	<div class="container">
 		<div class="row">
-			<div class="columns eight compact">
-				<h5>Pet Rescue Puzzle Saga</h5>
-				<p>Pet Rescue Puzzle Saga – a new puzzle game made with Defold by King – is out now!</p>
-			</div>
-			<div class="columns four">
-				<table>
-					<tr>
-						<td>Developer</td>
-						<td class="lightest-text">King</td>
-					</tr>
-					<tr>
-						<td>Platforms</td>
-						<td class="lightest-text">iOS, Android</td>
-					</tr>
-				</table>
+			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); grid-gap: 2rem; padding: 0px;">
+				{% assign half = site.data.showcase | where: "show", "half" %}
+				{%- for game in half -%}
+					{%- include showcase_half.html game=game -%}
+				{%- endfor -%}
 			</div>
 		</div>
 	</div>
 </div>
-</a>
 
-
-<a href="https://play.google.com/store/apps/details?id=com.test.familyage&hl=en" target="_blank">
-<div class="section hero center dark-text hoverflash" style='background: url("/images/hero/games/hero-desktop-FamilyAge.png") center top/cover no-repeat;'>
-	<div class="container">
-		<div class="row" style="height: 300px">
-		</div>
-	</div>
-</div>
-<div class="section dark left" style="padding-top: 3rem; padding-bottom: 0;">
+<div class="section dark">
 	<div class="container">
 		<div class="row">
-			<div class="columns eight compact">
-				<h5>Family Island</h5>
-				<p>What would your life be without modern technology on the deserted island? Dive into simplicity of the primal world with the modern Stone Age family in this thrilling offline adventure game. Stranded on the remote island, a family of four - Bruce, Eva and their kids - needs your guidance and help starting a new family home from scratch and navigating through various family life situations with humour.</p>
-			</div>
-			<div class="columns four">
-				<table>
-					<tr>
-						<td>Developer</td>
-						<td class="lightest-text">Melsoft</td>
-					</tr>
-					<tr>
-						<td>Platforms</td>
-						<td class="lightest-text">iOS, Android</td>
-					</tr>
-				</table>
+			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(275px, 1fr)); grid-gap: 2rem; padding: 0px;">
+				{% assign third = site.data.showcase | where: "show", "third" %}
+				{%- for game in third -%}
+					{%- include showcase_third.html game=game -%}
+				{%- endfor -%}
 			</div>
 		</div>
 	</div>
 </div>
-</a>
 
-
-<div class="section center dark" style="margin: 3rem 0 3rem 0">
-	<div class="container">
-		<div class="row left">
-			<a href="https://fb.gg/play/fb_omg_wsi" target="_blank">
-			<div class="columns six">
-				<img src="/images/games/word_search_1200x627_en.png" class="hoverflash" width="90%"/>
-				<br/><br/>
-				<span class="compact">
-				<h5>Word Search: Connect Letters</h5>
-				<p>Find as many words as you can! Train your mind and vocabulary!</p>
-				</span>
-				<table>
-					<tr>
-						<td>Developer</td>
-						<td class="lightest-text">OpenMyGame</td>
-					</tr>
-					<tr>
-						<td>Platforms</td>
-						<td class="lightest-text">Facebook Instant Games</td>
-					</tr>
-				</table>
-			</div>
-			</a>
-			<a href="https://www.fatesofort.com/" target="_blank">
-			<div class="columns six">
-				<img src="/images/games/fatesofort.png" class="hoverflash" width="90%"/>
-				<br/><br/>
-				<span class="compact">
-				<h5>Fates of Ort</h5>
-				<p>Fates of Ort is a retro inspired fantasy RPG with a focus on strategic action and a story driven by your decisions. It is a tale of sacrifice and difficult choices, in a world under threat of annihilation by the avaricious force of consumption magic.</p>
-				</span>
-				<table>
-					<tr>
-						<td>Developer</td>
-						<td class="lightest-text">8bit Skull</td>
-					</tr>
-					<tr>
-						<td>Platforms</td>
-						<td class="lightest-text">Desktop (Steam)</td>
-					</tr>
-				</table>
-			</div>
-			</a>
-		</div>
-	</div>
-</div>
-
-
-<a href="https://blastlands.com/" target="_blank">
-<div class="section hero center dark hoverflash" style='background: url("/images/hero/games/hero-desktop-Blastlands.png") center top/cover no-repeat;'>
-	<div class="container">
-		<div class="row" style="height: 300px">
-		</div>
-	</div>
-</div>
-<div class="section dark left" style="padding-top: 3rem; padding-bottom: 0;">
-	<div class="container">
-		<div class="row">
-			<div class="columns eight compact">
-				<h5>Blastlands</h5>
-				<p>Blastlands is an intense 3D multiplayer battle arena game, made by Strange Quest studio.</p>
-			</div>
-			<div class="columns four">
-				<table>
-					<tr>
-						<td>Developer</td>
-						<td class="lightest-text">Strange Quest</td>
-					</tr>
-					<tr>
-						<td>Platforms</td>
-						<td class="lightest-text">iOS, Android</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
-</div>
-</a>
-
-
-<a href="https://store.steampowered.com/app/348910/Faerie_Solitaire_Harvest/" target="_blank">
-<div class="section hero center dark-text hoverflash" style='background: url("/images/hero/games/hero-fsh.jpg") center center/cover no-repeat;'>
-	<div class="container">
-		<div class="row" style="height: 300px">
-		</div>
-	</div>
-</div>
-<div class="section dark left" style="padding-top: 3rem; padding-bottom: 0;">
-	<div class="container">
-		<div class="row">
-			<div class="columns eight compact">
-				<h5>Faerie Solitaire Harvest</h5>
-				<p>Match cards, rescue Faeries, and raise Magical Pets as you explore the many and vast enchanted worlds of Faerie Solitaire Harvest!.</p>
-			</div>
-			<div class="columns four">
-				<table>
-					<tr>
-						<td>Developer</td>
-						<td class="lightest-text">Subsoap</td>
-					</tr>
-					<tr>
-						<td>Publisher</td>
-						<td class="lightest-text">Puppygames</td>
-					</tr>
-					<tr>
-						<td>Platforms</td>
-						<td class="lightest-text">iOS, Android, Desktop</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
-</div>
-</a>
-
-
-<a href="https://play.google.com/store/apps/details?id=com.bringmecakes&hl=en/" target="_blank">
-<div class="section hero center dark-text hoverflash" style='background: url("/images/hero/games/hero-desktop-BMC.png") center top/cover no-repeat;'>
-	<div class="container">
-		<div class="row" style="height: 300px">
-		</div>
-	</div>
-</div>
-<div class="section dark left" style="padding-top: 3rem; padding-bottom: 0;">
-	<div class="container">
-		<div class="row">
-			<div class="columns eight compact">
-				<h5>Bring me Cakes</h5>
-				<p>Bring me Cakes is a brand new game based on a famous old story. You are playing as the Little Red Riding Hood who is carrying cakes to her sweet Granny. Granny in turn is waiting for you all the gameplay time. So don’t make her upset!.</p>
-			</div>
-			<div class="columns four">
-				<table>
-					<tr>
-						<td>Developer</td>
-						<td class="lightest-text">Potatojam</td>
-					</tr>
-					<tr>
-						<td>Platforms</td>
-						<td class="lightest-text">iOS, Android</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
-</div>
-</a>
-
-
-<a href="https://play.google.com/store/apps/details?id=com.dragosha.hamster" target="_blank">
-<div class="section hero center dark-text hoverflash" style='background: url("/images/games/lookyourloot.jpg") center/cover no-repeat; margin-top: 6rem'>
-	<div class="container">
-		<div class="row" style="height: 300px">
-		</div>
-	</div>
-</div>
-<div class="section dark left" style="padding-top: 3rem; padding-bottom: 0;">
-	<div class="container">
-		<div class="row">
-			<div class="columns eight compact">
-				<h5>Look Your Loot</h5>
-				<p>An involving card game with bits of magic and simple rules. You'll get a set of cards with the one representing your brave hero, which you move one step left or right, or up, or down. The hero is to go through dungeons, unlock chests, drink elixir, collect coins, cast fireballs, avoid spiked traps, defeat bosses. Break into a number of leaderboards!</p>
-				<br/><br/>
-			</div>
-			<div class="columns four">
-				<table>
-					<tr>
-						<td>Developer</td>
-						<td class="lightest-text">Dragosha</td>
-					</tr>
-					<tr>
-						<td>Platforms</td>
-						<td class="lightest-text">iOS, Android</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
-</div>
-</a>
-
-
-<div class="section center darker" style="margin: 3rem 0 3rem 0">
-	<div class="container">
-		<div class="row left">
-			<div class="columns four">
-				<a href="https://benjames171.itch.io/picoshot" target="_blank"><img src="/images/games/picoshot.png" class="hoverflash" width="100%"/></a>
-				<br/><br/>
-				<span class="compact">
-				<h5>Pico Shot</h5>
-				<p>By Ben James</p>
-				</span>
-			</div>
-			<div class="columns four">
-				<a href="https://benjames171.itch.io/star-jammer" target="_blank"><img src="/images/games/starjammer.png" class="hoverflash" width="100%"/></a>
-				<br/><br/>
-				<span class="compact">
-				<h5>Starjammer</h5>
-				<p>By Ben James</p>
-				</span>
-			</div>
-			<div class="columns four">
-				<a href="https://benjames171.itch.io/tiltnturn" target="_blank"><img src="/images/games/tiltnturn.png" class="hoverflash" width="100%"/></a>
-				<br/><br/>
-				<span class="compact">
-				<h5>Tilt'n'turn</h5>
-				<p>By Ben James</p>
-				</span>
-			</div>
-		</div>
-	</div>
-</div>
 
 <div class="section dark left">
 	<div class="container">

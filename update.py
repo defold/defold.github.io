@@ -12,21 +12,22 @@ import re
 import subprocess
 import requests
 import urlparse
+import hashlib
 from argparse import ArgumentParser
 from contextlib import contextmanager
 import lunr
 
-SHA1 = None
+SHA1 = {}
 
 DOCS_ZIP = "doc-master.zip"
 EXAMPLES_ZIP = "examples-master.zip"
 CODEPAD_ZIP = "codepad-master.zip"
 AWESOME_ZIP = "awesome-defold-master.zip"
-REFDOC_ZIP = "refdoc.zip"
 
 ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
+AUTHORINDEX_JSON = os.path.join("_data", "authorindex.json")
+TAGINDEX_JSON = os.path.join("_data", "tagindex.json")
 
-MANUALS_DIR = "_manuals"
 REF_DATA_DIR = os.path.join("_data", "ref")
 
 ASSET_MD_FRONTMATTER = """---
@@ -36,8 +37,31 @@ title: {}
 ---
 """
 
+AUTHOR_MD_FRONTMATTER = """---
+layout: author
+author: {}
+title: {}
+---
+"""
+
+TAG_MD_FRONTMATTER = """---
+layout: assetportal
+tag: {}
+title: {}
+---
+"""
+
+TAG_SORT_STARS_MD_FRONTMATTER = """---
+layout: assetportal
+tag: {}
+title: {}
+sort: stars
+---
+"""
+
 REFDOC_MD_FRONTMATTER = """---
 layout: ref
+branch: {}
 ref: {}
 ---
 """
@@ -51,6 +75,18 @@ def tmpdir():
         yield name
     finally:
         shutil.rmtree(name)
+
+def rmtree(dir):
+    if os.path.exists(dir):
+        shutil.rmtree(dir)
+
+def rmmkdir(dir):
+    rmtree(dir)
+    os.mkdir(dir)
+
+def rmcopytree(src, dst):
+    rmtree(dst)
+    shutil.copytree(src, dst)
 
 def call(args):
     print(args)
@@ -102,12 +138,12 @@ def download_json(url):
     return response.json()
 
 
-def get_sha1():
+def get_sha1(branch = "stable"):
     global SHA1
-    if not SHA1:
-        info = download_json("https://d.defold.com/stable/info.json")
-        SHA1 = info["sha1"]
-    return SHA1
+    if not SHA1.get(branch):
+        info = download_json("https://d.defold.com/{}/info.json".format(branch))
+        SHA1[branch] = info["sha1"]
+    return SHA1[branch]
 
 
 def get_bob_filename(sha1):
@@ -159,12 +195,19 @@ def process_doc_file(file):
     replace_in_file(file, r"::: important(.*?):::", r"<div class='important' markdown='1'>\1</div>", flags=re.DOTALL)
     replace_in_file(file, r"\((.*?)#_(.*?)\)", r"(\1#\2)")
     replace_in_file(file, r":\[.*?\]\(\.\.\/(.*?)\)", r"{% include \1 %}")
-    replace_in_file(file, r"{.left}", r"")
-    replace_in_file(file, r"{.icon}", r"")
-    replace_in_file(file, r"{.inline}", r"")
+    replace_in_file(file, r"\!\[.*?\]\((.*?)\){width=(.*) \.left}", r"<img src='../\1' width='\2'/>")
+    replace_in_file(file, r"{\.left}", r"")
+    replace_in_file(file, r"{\.icon}", r"")
+    replace_in_file(file, r"{\.inline}", r"")
     # replace_in_file(file, r"\!\[(.*?)\]\((.*?)\)\{\.inline\}", r"<span style='display: inline'>![\1](\2)</span>")
     replace_in_file(file, r"\(images\/", r"(../images/")
     replace_in_file(file, r"\(\.\.\/shared\/", r"(/shared/")
+
+
+def get_language_specific_dir(language, dir):
+    if language != "en":
+        dir = os.path.join(language, dir)
+    return dir
 
 
 def process_docs(download = False):
@@ -181,48 +224,82 @@ def process_docs(download = False):
         shutil.copyfile(DOCS_ZIP, os.path.join(tmp_dir, DOCS_ZIP))
         unzip(os.path.join(tmp_dir, DOCS_ZIP), tmp_dir)
 
-        print("Processing doc")
-        print("...manuals")
-        if os.path.exists(MANUALS_DIR):
-            shutil.rmtree(MANUALS_DIR)
-        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "manuals"), MANUALS_DIR)
-        for filename in find_files(MANUALS_DIR, "*.md"):
-            process_doc_file(filename)
+        print("Processing docs")
 
-        print("...faq")
-        faq_dir = "_faq"
-        if os.path.exists(faq_dir):
-            shutil.rmtree(faq_dir)
-        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "faq"), faq_dir)
-
-        print("...shared includes")
-        shared_includes_dir = os.path.join("_includes", "shared")
-        if os.path.exists(shared_includes_dir):
-            shutil.rmtree(shared_includes_dir)
-        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "shared"), shared_includes_dir)
-        shutil.rmtree(os.path.join(shared_includes_dir, "images"))
-        for filename in find_files(shared_includes_dir, "*.md"):
-            process_doc_file(filename)
-
-        print("...shared images")
-        shared_images_dir = os.path.join("shared", "images")
-        if os.path.exists(shared_images_dir):
-            shutil.rmtree(shared_images_dir)
-        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "shared", "images"), shared_images_dir)
-
-        print("...tutorials")
-        tutorials_dir = "_tutorials"
-        if os.path.exists(tutorials_dir):
-            shutil.rmtree(tutorials_dir)
-        shutil.copytree(os.path.join(tmp_dir, "doc-master", "docs", "en", "tutorials"), tutorials_dir)
-        for filename in find_files(tutorials_dir, "*.md"):
-            process_doc_file(filename)
+        print("...languages")
+        languages = read_as_json(os.path.join(tmp_dir, "doc-master", "docs", "languages.json"))
+        language_list = []
+        for language in languages["languages"].keys():
+            language_data = languages["languages"][language]
+            if language_data["active"]:
+                language_data["language"] = language
+                if language == "en":
+                    language_data["urlprefix"] = ""
+                else:
+                    language_data["urlprefix"] = language
+                language_list.append(language_data)
+        write_as_json(os.path.join("_data", "languageindex.json"), language_list)
 
         print("...index")
         index_file = os.path.join("_data", "learnindex.json")
         if os.path.exists(index_file):
             os.remove(index_file)
         shutil.copyfile(os.path.join(tmp_dir, "doc-master", "docs", "en", "en.json"), index_file)
+        index = read_as_json(index_file)
+
+        for language in languages["languages"].keys():
+            print("...manuals ({})".format(language))
+            manuals_src_dir = os.path.join(tmp_dir, "doc-master", "docs", language, "manuals")
+            if os.path.exists(manuals_src_dir):
+                manuals_dst_dir = get_language_specific_dir(language, "manuals")
+                rmcopytree(manuals_src_dir, manuals_dst_dir)
+                for filename in find_files(manuals_dst_dir, "*.md"):
+                    process_doc_file(filename)
+                    replace_in_file(filename, r"title\:", r"layout: manual\ntitle:")
+                    replace_in_file(filename, r"title\:", r"language: {}\ntitle:".format(language))
+                    if language != "en":
+                        replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
+
+        print("...faq")
+        faq_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "faq")
+        faq_dst_dir = "faq"
+        rmcopytree(faq_src_dir, faq_dst_dir)
+        for filename in find_files(faq_dst_dir, "*.md"):
+            replace_in_file(filename, r"title\:", r"layout: text\ntitle:")
+
+        print("...shared includes")
+        shared_includes_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "shared")
+        shared_includes_dst_dir = os.path.join("_includes", "shared")
+        rmcopytree(shared_includes_src_dir, shared_includes_dst_dir)
+        shutil.rmtree(os.path.join(shared_includes_dst_dir, "images"))
+        for filename in find_files(shared_includes_dst_dir, "*.md"):
+            process_doc_file(filename)
+
+        print("...tutorials")
+        tutorials_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "tutorials")
+        tutorials_dst_dir = "tutorials"
+        rmcopytree(tutorials_src_dir, tutorials_dst_dir)
+        for filename in find_files(tutorials_dst_dir, "*.md"):
+            process_doc_file(filename)
+            replace_in_file(filename, r"title\:", r"layout: tutorial\ntitle:")
+
+        # figure in which languages each learn page exists
+        print("...index (incl. languages)")
+        for categories in index["navigation"]:
+            for section in index["navigation"][categories]:
+                for item in section["items"]:
+                    item["languages"] = []
+                    if not item["path"].startswith("http"):
+                        path = item["path"][1:]
+                        for language in languages["languages"].keys():
+                            if os.path.exists(get_language_specific_dir(language, path + ".md")):
+                                item["languages"].append(language)
+        write_as_json(index_file, index)
+
+        print("...shared images")
+        shared_images_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "shared", "images")
+        shared_images_dst_dir = os.path.join("shared", "images")
+        rmcopytree(shared_images_src_dir, shared_images_dst_dir)
 
         print("Done")
 
@@ -255,9 +332,7 @@ def process_examples(download = False):
 
         print("...copying app")
         examples_dir = "examples"
-        if os.path.exists(examples_dir):
-            shutil.rmtree(examples_dir)
-        shutil.copytree(os.path.join(input_dir, "build", "default", "Defold-examples"), examples_dir)
+        rmcopytree(os.path.join(input_dir, "build", "default", "Defold-examples"), examples_dir)
 
         print("...processing index.html")
         replace_in_file(os.path.join(examples_dir, "index.html"), "\<\!DOCTYPE html\>.*\<body\>", "", flags=re.DOTALL)
@@ -293,9 +368,7 @@ def process_examples(download = False):
 
         print("...copying scripts")
         includes_dir = "_includes/examples"
-        if os.path.exists(includes_dir):
-            shutil.rmtree(includes_dir)
-        os.mkdir(includes_dir)
+        rmmkdir(includes_dir)
         for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.script"):
             shutil.copyfile(filename, os.path.join(includes_dir, os.path.basename(filename).replace(".script", "_script.md")))
         for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.gui_script"):
@@ -334,40 +407,7 @@ def process_codepad(download = False):
         subprocess.call([ "java", "-jar", os.path.join(tmp_dir, bob_jar), "--archive", "--platform", "js-web", "resolve", "distclean", "build", "bundle" ], cwd=input_dir)
 
         codepad_dir = "codepad"
-        if os.path.exists(codepad_dir):
-            shutil.rmtree(codepad_dir)
-        shutil.copytree(os.path.join(input_dir, "build", "default", "DefoldCodePad"), codepad_dir)
-
-
-def update_github_star_count_for_assets(githubtoken):
-    if githubtoken is None:
-        print("No GitHub token specified")
-        sys.exit(1)
-
-    assetindex = read_as_json(ASSETINDEX_JSON)
-
-    for filename in find_files(os.path.join("_data", "assets"), "*.json"):
-        asset = read_as_json(filename)
-        project_url = asset["project_url"]
-        if "github.com" in project_url:
-            print("Getting star count for %s" % (asset["name"]))
-            repo = urlparse.urlparse(project_url).path[1:]
-
-            url = "https://api.github.com/repos/%s/stargazers" % (repo)
-            stargazers = github_request(url, githubtoken)
-            if stargazers:
-                stars = len(stargazers)
-                print("...%d" % (stars))
-                asset["stars"] = stars
-                write_as_json(filename, asset)
-
-                id = os.path.basename(filename).replace(".json", "")
-                for asset in assetindex:
-                    if asset["id"] == id:
-                        asset["stars"] = stars
-                        break
-
-    write_as_json(ASSETINDEX_JSON, assetindex)
+        rmcopytree(os.path.join(input_dir, "build", "default", "DefoldCodePad"), codepad_dir)
 
 
 def process_assets(download = False):
@@ -384,96 +424,185 @@ def process_assets(download = False):
         shutil.copyfile(AWESOME_ZIP, os.path.join(tmp_dir, AWESOME_ZIP))
         unzip(os.path.join(tmp_dir, AWESOME_ZIP), tmp_dir)
 
+        # Jekyll assets collection
+        asset_collection_dir = "assets"
+        rmmkdir(asset_collection_dir)
 
-        # Jekyll collection
-        collection_dir = "assets"
-        if os.path.exists(collection_dir):
-            shutil.rmtree(collection_dir)
-        os.mkdir(collection_dir)
+        # Jekyll authors collection
+        author_collection_dir = "authors"
+        rmmkdir(author_collection_dir)
 
-        # Jekyll data
-        data_dir = os.path.join("_data", "assets")
-        if os.path.exists(data_dir):
-            shutil.rmtree(data_dir)
-        os.mkdir(data_dir)
+        # Jekyll tags collection
+        tag_collection_dir = "tags"
+        rmmkdir(tag_collection_dir)
+
+        # Jekyll asset data
+        asset_data_dir = os.path.join("_data", "assets")
+        rmmkdir(asset_data_dir)
+
+        # Jekyll author data
+        author_data_dir = os.path.join("_data", "authors")
+        rmmkdir(author_data_dir)
+
+        # Jekyll tag data
+        tag_data_dir = os.path.join("_data", "tags")
+        rmmkdir(tag_data_dir)
 
         # image data
         image_dir = os.path.join("images", "assets")
-        if os.path.exists(image_dir):
-            shutil.rmtree(image_dir)
-        shutil.copytree(os.path.join(tmp_dir, "awesome-defold-master", "assets", "images", "assets"), image_dir)
+        rmcopytree(os.path.join(tmp_dir, "awesome-defold-master", "assets", "images", "assets"), image_dir)
 
         assetindex = []
+        authorindex = {}
+        tagindex = {}
         for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "assets"), "*.json"):
             basename = os.path.basename(filename)
+            print("Processing asset: {}".format(basename))
             asset_id = basename.replace(".json", "")
 
             # copy the data file as-is
-            shutil.copyfile(filename, os.path.join(data_dir, basename))
+            asset_file = os.path.join(asset_data_dir, basename)
+            shutil.copyfile(filename, asset_file)
 
-            # build refdoc indexs
-            r = read_as_json(filename)
+            # read asset and add additional data
+            asset = read_as_json(asset_file)
+            author_name = asset["author"].encode('utf-8')
+            author_id = hashlib.md5(author_name).hexdigest()
+            asset["author_id"] = author_id
+            write_as_json(asset_file, asset)
+
+            # build asset index
             assetindex.append({
                 "id": asset_id,
-                "tags": r["tags"],
-                "platforms": r["platforms"]
+                "tags": asset["tags"],
+                "platforms": asset["platforms"],
+                "stars": asset.get("stars") or 0
             })
 
-            # generate a dummy markdown page with some front matter for each ref doc
-            with open(os.path.join(collection_dir, basename.replace(".json", ".md")), "w") as f:
-                f.write(ASSET_MD_FRONTMATTER.format(asset_id, r["name"]))
+            # build tag index
+            for tag in asset["tags"]:
+                if not tag in tagindex:
+                    tagindex[tag] = {
+                        "id": tag.lower().replace(" ", ""),
+                        "name": tag,
+                        "assets": []
+                    }
+                tagindex[tag]["assets"].append({
+                    "id": asset_id,
+                    "stars": asset.get("stars") or 0
+                })
+
+            # build author index
+            if not author_id in authorindex:
+                authorindex[author_id] = {
+                    "id": author_id,
+                    "name": author_name,
+                    "assets": []
+                }
+            authorindex[author_id]["assets"].append({
+                "id": asset_id,
+                "stars": asset.get("stars") or 0
+            })
+
+            # generate a dummy markdown page with some front matter for each asset
+            with open(os.path.join(asset_collection_dir, basename.replace(".json", ".md")), "w") as f:
+                f.write(ASSET_MD_FRONTMATTER.format(asset_id, asset["name"]))
 
         # write asset index
         write_as_json(ASSETINDEX_JSON, assetindex)
 
+        # write author index
+        authorlist = authorindex.values()
+        authorlist.sort(key=lambda x: x.get("name").lower())
+        write_as_json(AUTHORINDEX_JSON, authorlist)
+
+        # write author data and a dummy markdown page with front matter
+        for author in authorlist:
+            author["assets"].sort(key=lambda x: x.get("id"))
+            filename = os.path.join(author_data_dir, author["id"] + ".json")
+            with open(filename, "w") as f:
+                f.write(json.dumps(author, indent=2, sort_keys=True))
+            with open(os.path.join(author_collection_dir, author["id"] + ".md"), "w") as f:
+                f.write(AUTHOR_MD_FRONTMATTER.format(author["id"], author["name"]))
+
+        # write tag index
+        taglist = tagindex.values()
+        taglist.sort(key=lambda x: x.get("id").lower())
+        write_as_json(TAGINDEX_JSON, taglist)
+
+        # write tag data
+        for tag in taglist:
+            tag["assets"].sort(key=lambda x: x.get("id"))
+            filename = os.path.join(tag_data_dir, tag["id"] + ".json")
+            with open(filename, "w") as f:
+                f.write(json.dumps(tag, indent=2, sort_keys=True))
+            with open(os.path.join(tag_collection_dir, tag["id"] + ".md"), "w") as f:
+                f.write(TAG_MD_FRONTMATTER.format(tag["id"], tag["name"]))
+            with open(os.path.join(tag_collection_dir, tag["id"] + ".md"), "w") as f:
+                f.write(TAG_SORT_STARS_MD_FRONTMATTER.format(tag["id"], tag["name"]))
+
+
 
 def process_refdoc(download = False):
-    if download:
-        if os.path.exists(REFDOC_ZIP):
-            os.remove(REFDOC_ZIP)
-        download_file("http://d.defold.com/archive/{}/engine/share/ref-doc.zip".format(get_sha1()), ".", REFDOC_ZIP)
+    refindex = []
+    branchindex = [ "alpha", "beta", "stable" ]
+    ref_root_dir = "ref"
+    rmmkdir(ref_root_dir)
 
-    if not os.path.exists(REFDOC_ZIP):
-        print("File {} does not exist".format(REFDOC_ZIP))
-        sys.exit(1)
+    for branch in branchindex:
+        REFDOC_ZIP = "refdoc_{}.zip".format(branch)
+        REF_DATA_DIR = os.path.join("_data", "ref", branch)
+        REF_PAGE_DIR = os.path.join(ref_root_dir, branch)
 
-    with tmpdir() as tmp_dir:
-        shutil.copyfile(REFDOC_ZIP, os.path.join(tmp_dir, REFDOC_ZIP))
-        unzip(os.path.join(tmp_dir, REFDOC_ZIP), tmp_dir)
+        if download:
+            if os.path.exists(REFDOC_ZIP):
+                os.remove(REFDOC_ZIP)
+            download_file("http://d.defold.com/archive/{}/engine/share/ref-doc.zip".format(get_sha1(branch)), ".", REFDOC_ZIP)
 
-        # Jekyll collection
-        collection_dir = "ref"
-        if os.path.exists(collection_dir):
-            shutil.rmtree(collection_dir)
-        os.mkdir(collection_dir)
+        if not os.path.exists(REFDOC_ZIP):
+            print("File {} does not exist".format(REFDOC_ZIP))
+            sys.exit(1)
 
-        # Jekyll data
-        if os.path.exists(REF_DATA_DIR):
-            shutil.rmtree(REF_DATA_DIR)
-        os.mkdir(REF_DATA_DIR)
+        with tmpdir() as tmp_dir:
+            shutil.copyfile(REFDOC_ZIP, os.path.join(tmp_dir, REFDOC_ZIP))
+            unzip(os.path.join(tmp_dir, REFDOC_ZIP), tmp_dir)
 
-        refindex = []
-        for file in os.listdir(os.path.join(tmp_dir, "doc")):
-            if file.endswith(".json"):
-                json_out_name = file.replace("_doc.json", "")
-                json_out_file = json_out_name + ".json"
+            # Jekyll page and data dir
+            rmmkdir(REF_PAGE_DIR)
+            rmmkdir(REF_DATA_DIR)
 
-                # copy and rename file
-                shutil.copyfile(os.path.join(tmp_dir, "doc", file), os.path.join(REF_DATA_DIR, json_out_file))
+            for file in os.listdir(os.path.join(tmp_dir, "doc")):
+                if file.endswith(".json"):
+                    json_out_name = file.replace("_doc.json", "")
+                    json_out_file = json_out_name + ".json"
 
-                # generate a dummy markdown page with some front matter for each ref doc
-                with open(os.path.join(collection_dir, file.replace("_doc.json", ".md")), "w") as f:
-                    f.write(REFDOC_MD_FRONTMATTER.format(json_out_name) + REFDOC_MD_BODY)
+                    # copy and rename file
+                    shutil.copyfile(os.path.join(tmp_dir, "doc", file), os.path.join(REF_DATA_DIR, json_out_file))
 
-                # build refdoc indexs
-                r = read_as_json(os.path.join(tmp_dir, "doc", file))
-                refindex.append({
-                    "namespace": r["info"]["namespace"],
-                    "filename": json_out_name,
-                })
+                    # generate a dummy markdown page with some front matter for each ref doc
+                    with open(os.path.join(REF_PAGE_DIR, file.replace("_doc.json", ".md")), "w") as f:
+                        f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name) + REFDOC_MD_BODY)
 
-        # write refdoc index
-        write_as_json(os.path.join("_data", "refindex.json"), refindex)
+                    # build refdoc index
+                    r = read_as_json(os.path.join(tmp_dir, "doc", file))
+                    refindex.append({
+                        "namespace": r["info"]["namespace"],
+                        "filename": json_out_name,
+                        "branch": branch,
+                    })
+
+    # copy stable files to ref/ for backwards compatibility
+    for item in os.listdir(os.path.join("ref", "stable")):
+        s = os.path.join("ref", "stable", item)
+        d = os.path.join("ref", item)
+        if not os.path.isdir(s):
+            shutil.copy2(s, d)
+
+    # write refdoc index
+    write_as_json(os.path.join("_data", "refindex.json"), refindex)
+
+    # write branch index
+    write_as_json(os.path.join("_data", "branchindex.json"), branchindex)
 
 
 def process_file_for_indexing(filename):
@@ -501,11 +630,11 @@ def generate_searchindex():
             "data": data
         })
 
-    for filename in find_files(MANUALS_DIR, "*.md"):
+    for filename in find_files("manuals", "*.md"):
         data = process_file_for_indexing(filename)
         append_manual(filename, data)
 
-    for filename in find_files(REF_DATA_DIR, "*.json"):
+    for filename in find_files(os.path.join("_data", "ref", "stable"), "*.json"):
         r = read_as_json(filename)
         for element in r["elements"]:
             name = element["name"]
@@ -513,6 +642,9 @@ def generate_searchindex():
 
             if "." in name:
                 for part in name.split("."):
+                    append_ref_doc(filename, part)
+            elif "::" in name:
+                for part in name.split("::"):
                     append_ref_doc(filename, part)
 
     # manually create a builder without stemming, stop words etc
@@ -544,11 +676,13 @@ def commit_changes(githubtoken):
     call("git config --global user.name 'services@defold.se'")
     call("git config --global user.email 'services@defold.se'")
     call("git add -A")
-    call("git commit -m 'Site changes [skip-ci]'")
+    # only commit if the diff isn't empty, ie there is a change
+    # https://stackoverflow.com/a/8123841/1266551
+    call("git diff-index --quiet HEAD || git commit -m 'Site changes [skip-ci]'")
     call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
 
 
-ALL_COMMANDS = [ "docs", "examples", "refdoc", "assets", "starcount", "codepad", "searchindex" ]
+ALL_COMMANDS = [ "docs", "examples", "refdoc", "assets", "codepad", "searchindex" ]
 
 parser = ArgumentParser()
 parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ', all, help)')
@@ -561,7 +695,6 @@ COMMANDS:
 docs = Process the docs (manuals, tutorials and faq)
 refdoc = Process the API reference
 assets = Process the asset portal list
-starcount = Add GitHub star count to all assets that have a GitHub project
 examples = Build the examples
 codepad = Build the Defold CodePad
 commit = Commit changed files (requires --githubtoken)
@@ -589,8 +722,6 @@ for command in args.commands:
         process_refdoc(download = args.download)
     elif command == "assets":
         process_assets(download = args.download)
-    elif command == "starcount":
-        update_github_star_count_for_assets(args.githubtoken)
     elif command == "codepad":
         process_codepad(download = args.download)
     elif command == "searchindex":

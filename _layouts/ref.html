@@ -3,24 +3,31 @@ layout: base
 ---
 {% include learnnav.html showmenu=true %}
 
+{%- assign unsortedindices = site.data.refindex | where: "branch", "stable" -%}
+{%- assign indices = unsortedindices | sort: "namespace" -%}
+{%- assign branches = site.data.branchindex -%}
 <div class="section light">
 	<div class="container">
 		<div class="row">
 			<div class="columns three">
-				{%- assign indices = site.data.refindex | sort: "namespace" -%}
 				<ul class="navmenu nobullet">
 					{%- for ref in indices -%}
-					<li><a href="/ref/{{ ref.filename }}" style="text-decoration: none;">{{ ref.namespace }}</a></li>
+					<li><a href="/ref/{{ page.branch }}/{{ ref.filename }}" style="text-decoration: none;">{{ ref.namespace }}</a></li>
 					{%- endfor -%}
 				</ul>
 				<select class="navdropdown" onchange="location = this.value;">
 					{%- for ref in indices -%}
-					<option value="/ref/{{ ref.filename }}">{{ ref.namespace }}</option>
+					<option value="/ref/{{ page.branch }}/{{ ref.filename }}">{{ ref.namespace }}</option>
+					{%- endfor -%}
+				</select>
+				<select class="navdropdown" onchange="location = this.value;">
+					{%- for branch in branches -%}
+					<option value="/ref/{{ branch }}/{{ page.ref }}">{{ branch }}</option>
 					{%- endfor -%}
 				</select>
 			</div>
 			<div class="columns seven ref">
-				{%- assign ref = site.data.ref[page.ref] -%}
+				{%- assign ref = site.data.ref[page.branch][page.ref] -%}
 				{%- assign functions = ref.elements | where: "type", "FUNCTION" -%}
 				{%- assign variables = ref.elements | where: "type", "VARIABLE" -%}
 				{%- assign messages = ref.elements | where: "type", "MESSAGE" -%}
@@ -28,6 +35,7 @@ layout: base
 				{%- assign macros = ref.elements | where: "type", "MACRO" -%}
 
 				<h1>{{ ref.info.brief }}</h1>
+				<p>Version: {{ page.branch }}</p>
 
 				{{ ref.info.description }}
 
@@ -95,6 +103,7 @@ layout: base
 				<h2>Functions</h2>
 					{%- for function in functions -%}
 						<a name="{% include ref_anchorlink.html element=function %}"/>
+						<a name="{{ function.name }}"/>
 						<h4>{{ function.name }}()<a href="#{% include ref_anchorlink.html element=function %}" class="anchor-link"></a></h4>
 						<p><code>{{ function.name }}({%- for param in function.parameters -%}{{ param.name }}{%- if forloop.last != true -%}, {%- endif -%}{%- endfor -%})</code></p>
 						{{ function.description }}
@@ -223,6 +232,11 @@ layout: base
 				{%- endif -%}
 			</div>
 			<div class="columns two">
+				<ul class="navmenu nobullet">
+					{%- for branch in branches -%}
+					<li><a href="/ref/{{ branch }}/{{ page.ref }}" style="text-decoration: none;">{{ branch }}</a></li>
+					{%- endfor -%}
+				</ul>
 			</div>
 		</div>
 	</div>

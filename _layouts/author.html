@@ -1,0 +1,17 @@
+---
+layout: base
+---
+{%- assign author = site.data.authors[page.author] -%}
+
+<div class="section dark">
+	<div class="container">
+		<div class="row">
+			<div class="columns two"><img src="/images/icons/community-assets-on-dark.svg" style="max-width: 150px"/></div>
+			<div class="columns ten">
+				<h1>{{ author.name }}</h1>
+			</div>
+		</div>
+		{%- assign assetids = author.assets | map: "id" -%}
+		{%- include assetgrid.html assetids=assetids title="Assets" -%}
+	</div>
+</div>
