@@ -3,12 +3,13 @@ layout: base
 ---
 {% include learnnav.html showmenu=true %}
 
+{%- assign unsortedindices = site.data.refindex | where: "branch", "stable" -%}
+{%- assign indices = unsortedindices | sort: "namespace" -%}
+{%- assign branches = site.data.branchindex -%}
 <div class="section light">
 	<div class="container">
 		<div class="row">
 			<div class="columns three">
-				{%- assign unsortedindices = site.data.refindex | where: "branch", "stable" -%}
-				{%- assign indices = unsortedindices | sort: "namespace" -%}
 				<ul class="navmenu nobullet">
 					{%- for ref in indices -%}
 					<li><a href="/ref/{{ page.branch }}/{{ ref.filename }}" style="text-decoration: none;">{{ ref.namespace }}</a></li>
@@ -17,6 +18,11 @@ layout: base
 				<select class="navdropdown" onchange="location = this.value;">
 					{%- for ref in indices -%}
 					<option value="/ref/{{ page.branch }}/{{ ref.filename }}">{{ ref.namespace }}</option>
+					{%- endfor -%}
+				</select>
+				<select class="navdropdown" onchange="location = this.value;">
+					{%- for branch in branches -%}
+					<option value="/ref/{{ branch }}/{{ page.ref }}">{{ branch }}</option>
 					{%- endfor -%}
 				</select>
 			</div>
@@ -226,8 +232,6 @@ layout: base
 				{%- endif -%}
 			</div>
 			<div class="columns two">
-				<b>VERSIONS</b>
-				{%- assign branches = site.data.branchindex -%}
 				<ul class="navmenu nobullet">
 					{%- for branch in branches -%}
 					<li><a href="/ref/{{ branch }}/{{ page.ref }}" style="text-decoration: none;">{{ branch }}</a></li>
