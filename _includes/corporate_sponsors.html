@@ -1,0 +1,75 @@
+{%- assign platinum=site.data.sponsors.platinum -%}
+{%- assign gold=site.data.sponsors.gold -%}
+{%- assign silver=site.data.sponsors.silver -%}
+{%- assign bronze=site.data.sponsors.bronze -%}
+
+<div class="section darker">
+<!-- <div class="section hero blue" style='background-image: url("/images/hero/defold-king-internal-top-bg-transparent.png");'> -->
+	{%- if platinum.size > 0 or include.empty -%}
+	<div class="container">
+		<div class="row">
+			<div class="columns twelve center">
+				<h5>Corporate Platinum Sponsors</h5>
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 2rem; padding: 0px;">
+					{%- for sponsor in platinum -%}
+						<a href="{{ sponsor.link }}" target="_blank"><img src="{{ sponsor.logo }}" width="128px"></a>
+					{%- endfor -%}
+				</div>
+				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a sponsor" %}{%- endif -%}
+			</div>
+		</div>
+	</div>
+	<!-- <div class="container"><hr/></div> -->
+	{%- endif -%}
+
+	{%- if gold.size > 0 or include.empty -%}
+	<div class="container">
+		<div class="row">
+			<div class="columns twelve center">
+				<h5>Corporate Gold Sponsors</h5>
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); grid-gap: 1.5rem; padding: 0px;">
+					{%- for sponsor in gold -%}
+						<a href="{{ sponsor.link }}" target="_blank"><img src="{{ sponsor.logo }}" width="128px"></a>
+					{%- endfor -%}
+				</div>
+				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a sponsor" %}{%- endif -%}
+			</div>
+		</div>
+	</div>
+	<!-- <div class="container"><hr/></div> -->
+	{%- endif -%}
+
+	{%- if silver.size > 0 or include.empty -%}
+	<div class="container">
+		<div class="row">
+			<div class="columns twelve center">
+				<h5>Corporate Silver Sponsors</h5>
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); grid-gap: 1rem; padding: 0px;">
+					{%- for sponsor in silver -%}
+						<a href="{{ sponsor.link }}" target="_blank"><img src="{{ sponsor.logo }}" width="128px"></a>
+					{%- endfor -%}
+				</div>
+				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a sponsor" %}{%- endif -%}
+			</div>
+		</div>
+	</div>
+	<!-- <div class="container"><hr/></div> -->
+	{%- endif -%}
+
+	{%- if bronze.size > 0 or include.empty -%}
+	<div class="container">
+		<div class="row">
+			<div class="columns twelve center">
+				<h5>Corporate Bronze Sponsors</h5>
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); grid-gap: 0.5rem; padding: 0px;">
+					{%- for sponsor in bronze -%}
+						<a href="{{ sponsor.link }}" target="_blank"><img src="{{ sponsor.logo }}" width="128px"></a>
+					{%- endfor -%}
+				</div>
+				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a sponsor" %}{%- endif -%}
+			</div>
+		</div>
+	</div>
+	<!-- <div class="container"><hr/></div> -->
+	{%- endif -%}
+</div>

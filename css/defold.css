@@ -25,6 +25,12 @@
     background-color: var(--defold-blue-darkest);
     color: var(--lightest);
 }
+.blue input[type="submit"].button {
+    color: var(--lightest);
+}
+.blue input[type="button"].button {
+    color: var(--lightest);
+}
 .blue a {
     color: var(--lightest);
 }
@@ -236,10 +242,10 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 
 .nav li {
     display: inline;
-    margin-right: 2rem;
+    margin-right: 2.5rem;
 }
 .nav .right li {
-    margin-left: 2rem;
+    margin-left: 2.5rem;
     margin-right: 0rem;
 }
 .nav a {
@@ -492,16 +498,30 @@ img[alt="icon"] {
 /*******************************************************************************
  * List items on divs of this class will have a checkmark instead of a bullet
  ******************************************************************************/
-.checkmark li {
+ul.checkmark li {
     list-style: none;
     padding-bottom: 0.75rem;
 }
-.checkmark li:before {
+ul.checkmark li:before {
     content: "\2714\0020";
     color: var(--defold-blue);
     padding-right: 0.75rem;
 }
 
+.nobullet li {
+    list-style: none;
+    padding-bottom: 0.75rem;
+}
+.nobullet .ballot:before {
+    content: "\2718\0020";
+    color: red;
+    padding-right: 0.75rem;
+}
+.nobullet .checkmark:before {
+    content: "\2714\0020";
+    color: var(--defold-blue);
+    padding-right: 0.75rem;
+}
 
 /*******************************************************************************
  * Class to set on div surrounding an <ul> list to split it into multiple columns

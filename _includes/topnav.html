@@ -22,14 +22,16 @@
 					<option value="/opensource" {% if page.url contains 'opensource' %}selected{% endif %}>Open Source</option>
 					<option value="//forum.defold.com">Forum</option>
 					<option value="/blog">Blog</option>
+					<option value="/donate" {% if page.url contains 'donate' %}selected{% endif %}>Donate</option>
 					<option value="/download" {% if page.url contains 'download' %}selected{% endif %}>Download</option>
 					<option value="https://www.github.com/defold">GitHub</option>
 				</select>
 			</div>
 			<div class="four columns">
 				<ul class="navmenu right">
-					<li><nobr>{% include octicon.html icon="octicons/desktop-download.svg" color="#FFF" zoom="1.75" text=" Download" link="/download" %}</nobr></li>
-					<li><nobr>{% include octicon.html icon="octicons/mark-github.svg" color="#FFF" zoom="1.75" text=" GitHub" link="https://www.github.com/defold" target="_blank" %}</nobr></li>
+					<li><nobr>{% include octicon.html icon="octicons/heart.svg" color="#FFF" zoom="1.25" text=" Donate" link="/donate" %}</nobr></li>
+					<li><nobr>{% include octicon.html icon="octicons/arrow-down.svg" color="#FFF" zoom="1.35" text=" Download" link="/download" %}</nobr></li>
+					<li><nobr>{% include octicon.html icon="octicons/mark-github.svg" color="#FFF" zoom="1.25" text=" GitHub" link="https://www.github.com/defold" target="_blank" %}</nobr></li>
 				</ul>
 			</div>
 		</div>

@@ -1,1 +1,3 @@
-<button onclick="location.href='{{ include.link }}'" class="button-primary" type="button">{{ include.text }}</button>
+<form action="{{ include.link }}" method="get" {%- if include.target -%}target="{{ include.target }}"{%- endif-%}>
+<button type="submit" class="button-primary">{{ include.text }}</button>
+</form>

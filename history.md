@@ -20,4 +20,9 @@ Defold was developed as a side-project for some time before being turned into a 
 
 ## King
 
-Defold started a partnership with King in 2013 and made a couple of King games in Defold to prove that it worked for the type of games that King makes. That partnership resulted with King acquiring Defold in 2014. Defold was developed and used internally at King for a few years before the decision was made to make Defold available to developers outside of King. The announcement and release of Defold as a free to use tool was made at the Game Developers Conference in San Fancisco in 2016.
+Defold started a partnership with King in 2013 and made a couple of King games in Defold to prove that it worked for the type of games that King makes. That partnership resulted in King acquiring Defold in 2014. Defold was developed and used internally at King for a few years before the decision was made to make Defold available to developers outside of King. The announcement and release of Defold as a free to use tool was made at the Game Developers Conference in San Francisco in 2016.
+
+
+## Defold Foundation
+
+The [Defold Foundation](/foundation) was founded by King at the same time as Defold was made available as an open source project in December 2019. King donated all rights to Defold, including the Defold trademark and source code, to the foundation and tasked it with the continued development of Defold as an open source project.
