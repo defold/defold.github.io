@@ -62,7 +62,6 @@ Once the site has been built you can test it by pointing your browser to localho
 # Automatic site update using GitHub Actions
 The site uses [GitHub actions](https://github.com/defold/defold.github.io/actions) to automatically trigger `update.py` when an external source/repository has been updated. The script is also triggered once every hour to update the asset portal star count for GitHub hosted assets. The following workflows/jobs have been set up using GitHub Actions:
 
-* [Update star count](https://github.com/defold/defold.github.io/blob/master/.github/workflows/update_stars.yml) - hourly workflow
 * [Update site](https://github.com/defold/defold.github.io/blob/master/.github/workflows/update_site.yml) - on change in external repository (triggered using the repository_dispatch event)
   * Assets - Triggered from [awesome-defold workflow](https://github.com/defold/awesome-defold/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
   * Docs (manuals, tutorials, faq) - Triggered from [doc workflow](https://github.com/defold/doc/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
