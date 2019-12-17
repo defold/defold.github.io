@@ -1,6 +1,6 @@
 ---
 layout: assetportal
 tag: audio
-title: audio
+title: Audio
 sort: stars
 ---
