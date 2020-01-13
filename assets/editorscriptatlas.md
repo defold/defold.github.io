@@ -1,5 +1,5 @@
 ---
 layout: asset
 asset: editorscriptatlas
-title: Editor Script Atlas
+title: editor-script-atlas
 ---
