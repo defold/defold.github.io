@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/basics/z_order
+permalink: examples/basics/z_order/
 collection: basics/z_order
 title: Z-order
 brief: This example shows how to put one sprite in front of another

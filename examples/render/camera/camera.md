@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/render/camera
+permalink: examples/render/camera/
 collection: render/camera
 title: Camera
 brief: This example shows how to use use a camera component and have it follow a game object. Click to toggle between following the game object and staying stationary.

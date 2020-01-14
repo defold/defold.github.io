@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/gui/pointer_over
+permalink: examples/gui/pointer_over/
 collection: gui/pointer_over
 title: Pointer over
 brief: A GUI box node with an image texture and a script that react when pointer over this node.

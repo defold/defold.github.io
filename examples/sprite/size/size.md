@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/sprite/size
+permalink: examples/sprite/size/
 collection: sprite/size
 title: Sprite size
 brief: This example shows how to get the size of a sprite at run-time

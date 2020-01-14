@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/debug/profile
+permalink: examples/debug/profile/
 collection: debug/profile
 title: Visual profiler
 brief: This example shows the on-screen profiler. It displays useful runtime information.

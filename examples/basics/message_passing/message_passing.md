@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/basics/message_passing
+permalink: examples/basics/message_passing/
 collection: basics/message_passing
 title: Message passing
 brief: This example shows how to communicate between two script components in two separate game objects.

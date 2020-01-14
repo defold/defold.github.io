@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/basics/spawn
+permalink: examples/basics/spawn/
 collection: basics/spawn
 title: Spawn game object
 brief: This example shows how to dynamically spawn game objects with a factory component.

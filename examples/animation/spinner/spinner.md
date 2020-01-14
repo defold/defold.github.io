@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/animation/spinner
+permalink: examples/animation/spinner/
 collection: animation/spinner
 title: Spinner animation
 brief: This example shows how a game object is rotated in discrete steps, matching the graphics of the progress spinner.

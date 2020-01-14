@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/physics/dynamic
+permalink: examples/physics/dynamic/
 collection: physics/dynamic
 title: Dynamic physics
 brief: This example shows a simple setup with dynamic physics objects.

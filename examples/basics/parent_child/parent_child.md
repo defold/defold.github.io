@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/basics/parent_child
+permalink: examples/basics/parent_child/
 collection: basics/parent_child
 title: Parent/child
 brief: This example shows how to child a game object to a parent.

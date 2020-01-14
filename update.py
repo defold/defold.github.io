@@ -356,7 +356,7 @@ def process_examples(download = False):
         for filename in find_files(unzipped_examples_dir, "*.md"):
             basename = os.path.basename(filename)
             collection = filename.replace(tmp_dir, "").replace("/examples-master/examples/", "").replace("/" + basename, "")
-            permalink = "examples/" + collection
+            permalink = "examples/" + collection + "/"
             examplesindex.append({
                 "collection": collection,
                 "category": collection.split("/")[0].upper(),

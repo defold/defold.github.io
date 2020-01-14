@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/particles/modifiers
+permalink: examples/particles/modifiers/
 collection: particles/modifiers
 title: Modifiers
 brief: This example shows particle effect modifiers. Modifiers are used to alter the path of emitted particles.

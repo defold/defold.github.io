@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/physics/trigger
+permalink: examples/physics/trigger/
 collection: physics/trigger
 title: Trigger
 brief: This example shows how a physics trigger is used to trigger an event. In this case the bunny sprite is disabled and enabled.

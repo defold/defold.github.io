@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/gui/button
+permalink: examples/gui/button/
 collection: gui/button
 title: Button
 brief: A GUI box node with an image texture and a script to make it act as a button.

@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/collection/proxy
+permalink: examples/collection/proxy/
 collection: collection/proxy
 title: Proxy
 brief: This example shows how to use collection proxies to load and unload collections.

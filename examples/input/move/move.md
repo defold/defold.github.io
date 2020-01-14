@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/input/move
+permalink: examples/input/move/
 collection: input/move
 title: 8 ways movement
 brief: A very simple 8 ways movement setup with a single game object and a script that listens to input and updates the game object position accordingly.

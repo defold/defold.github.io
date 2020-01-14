@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/gui/load_texture
+permalink: examples/gui/load_texture/
 collection: gui/load_texture
 title: Load texture
 brief: This example shows how to load and set a dynamic texture on a gui box node.

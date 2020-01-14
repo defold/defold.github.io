@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/sound/fade_in_out
+permalink: examples/sound/fade_in_out/
 collection: sound/fade_in_out
 title: Fade In-Out
 brief: This example shows how to make Fade-In and fade Fade-Out music.

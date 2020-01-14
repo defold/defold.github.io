@@ -1,6 +1,6 @@
 ---
 layout: example
-permalink: examples/animation/flipbook
+permalink: examples/animation/flipbook/
 collection: animation/flipbook
 title: Flipbook animation
 brief: This example shows how to use a flipbook animation in a sprite
