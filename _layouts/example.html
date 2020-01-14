@@ -51,9 +51,10 @@ layout: base
 				<h4>Scripts</h4>
 				{% endif %}
 				{% assign scripts = page.scripts | split: "," %}
+				{% assign collection = page.collection %}
 				{% for script in scripts %}
 				<p>{{ script }}</p>
-				<pre class="dark">{% include examples/{{ script | lstrip | replace: ".script", "_script.md" | replace: ".gui_script", "_gui_script.md" }} %}</pre>
+				<pre class="dark">{% include examples/{{ collection}}/{{ script | lstrip | replace: ".script", "_script.md" | replace: ".gui_script", "_gui_script.md" }} %}</pre>
 				{% endfor %}
 			</div>
 			<div class="columns two">

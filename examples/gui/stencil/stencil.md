@@ -1,0 +1,10 @@
+---
+layout: example
+permalink: examples/gui/stencil
+collection: gui/stencil
+title: Stencil
+brief: A GUI box node with "Clipping mode" set to "STENCIL". This makes it mask its child node (which is called "bunny").
+scripts: stencil.gui_script
+---
+
+![stencil](stencil.png)

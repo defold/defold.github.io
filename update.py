@@ -88,6 +88,10 @@ def rmcopytree(src, dst):
     rmtree(dst)
     shutil.copytree(src, dst)
 
+def makedirs(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+
 def call(args):
     print(args)
     ret = os.system(args)
@@ -324,6 +328,7 @@ def process_examples(download = False):
     with tmpdir() as tmp_dir:
         shutil.copyfile(EXAMPLES_ZIP, os.path.join(tmp_dir, EXAMPLES_ZIP))
         unzip(os.path.join(tmp_dir, EXAMPLES_ZIP), tmp_dir)
+        unzipped_examples_dir = os.path.join(tmp_dir, "examples-master", "examples")
 
         print("..building app")
         shutil.copyfile(bob_jar, os.path.join(tmp_dir, bob_jar))
@@ -348,31 +353,43 @@ def process_examples(download = False):
 
         print("...copying markdown")
         examplesindex = []
-        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.md"):
+        for filename in find_files(unzipped_examples_dir, "*.md"):
             basename = os.path.basename(filename)
             collection = filename.replace(tmp_dir, "").replace("/examples-master/examples/", "").replace("/" + basename, "")
+            permalink = "examples/" + collection
             examplesindex.append({
                 "collection": collection,
                 "category": collection.split("/")[0].upper(),
                 "name": collection.split("/")[1].replace("_", " ").capitalize(),
-                "path": collection.split("/")[1]
+                "path": collection
             })
-            replace_in_file(filename, "title:", "layout: example\ncollection: {}\ntitle:".format(collection))
-            shutil.copyfile(filename, os.path.join("examples", basename))
+            replace_in_file(filename, "title:", "layout: example\npermalink: {}\ncollection: {}\ntitle:".format(permalink, collection))
+
+            md_file = os.path.join(examples_dir, filename.replace(unzipped_examples_dir, "")[1:])
+            makedirs(os.path.dirname(md_file))
+            shutil.copyfile(filename, md_file)
 
         print("...copying images")
-        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.png"):
-            shutil.copyfile(filename, os.path.join("examples", os.path.basename(filename)))
-        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.jpg"):
-            shutil.copyfile(filename, os.path.join("examples", os.path.basename(filename)))
+        for filename in find_files(unzipped_examples_dir, "*.png"):
+            png_file = os.path.join(examples_dir, filename.replace(unzipped_examples_dir, "")[1:])
+            makedirs(os.path.dirname(png_file))
+            shutil.copyfile(filename, png_file)
+        for filename in find_files(unzipped_examples_dir, "*.jpg"):
+            jpg_file = os.path.join(examples_dir, filename.replace(unzipped_examples_dir, "")[1:])
+            makedirs(os.path.dirname(jpg_file))
+            shutil.copyfile(filename, jpg_file)
 
         print("...copying scripts")
         includes_dir = "_includes/examples"
         rmmkdir(includes_dir)
-        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.script"):
-            shutil.copyfile(filename, os.path.join(includes_dir, os.path.basename(filename).replace(".script", "_script.md")))
-        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.gui_script"):
-            shutil.copyfile(filename, os.path.join(includes_dir, os.path.basename(filename).replace(".gui_script", "_gui_script.md")))
+        for filename in find_files(unzipped_examples_dir, "*.script"):
+            script_file = os.path.join(includes_dir, filename.replace(unzipped_examples_dir, "")[1:]).replace(".script", "_script.md")
+            makedirs(os.path.dirname(script_file))
+            shutil.copyfile(filename, script_file)
+        for filename in find_files(unzipped_examples_dir, "*.gui_script"):
+            script_file = os.path.join(includes_dir, filename.replace(unzipped_examples_dir, "")[1:]).replace(".gui_script", "_gui_script.md")
+            makedirs(os.path.dirname(script_file))
+            shutil.copyfile(filename, script_file)
 
         print("...generating index")
         index_file = os.path.join("_data", "examplesindex.json")
