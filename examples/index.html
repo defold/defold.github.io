@@ -1,6 +1,6 @@
 
 	<div id="app-container" class="canvas-app-container">
-		<canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="680" height="680"></canvas>
+		<canvas id="canvas" style="width: 100%;" class="canvas-app-canvas" tabindex="1" width="680" height="680"></canvas>
 		<div class="buttons-background">
 		</div>
 	</div>
@@ -13,7 +13,7 @@
 			return ("/examples/archive" + path + "");
 		},
 		engine_arguments: [ '--config=examples.start={{ page.collection }}'],
-		custom_heap_size: 268435456,
+		custom_heap_size: 134217728,
 		disable_context_menu: true
 	}
 
