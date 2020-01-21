@@ -44,10 +44,10 @@ local color = gui.get_color(node)
 
 All game objects, and some component types have properties that can be read and manipulated in runtime. Read these values with [`go.get()`](/ref/go#go.get) and write them with [`go.set()`](/ref/go#go.set). Depending on the property value type, you can animate the values with [`go.animate()`](/ref/go#go.animate). A small set of the properties are read only.
 
-`get`{.mark}
+`get`
 : Can be read with [`go.get()`](/ref/go#go.get).
 
-`get+set`{.mark}
+`get+set`
 : Can be read with [`go.get()`](/ref/go#go.get) and written with [`go.set()`](/ref/go#go.set). Numerical values can be animated with [`go.animate()`](/ref/go#go.animate).
 
 <div class='sidenote' markdown='1'>
@@ -58,56 +58,56 @@ Legacy functions for reading and writing game object properties also exist. They
 
 | property   | description                            | type            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
-| *position* | The local position of the game object. | `vector3`      | `get+set`{.mark} |
-| *rotation* | Local rotation of game object, expressed as a quaternion.  | `quaternion` | `get+set`{.mark} |
-| *euler*    | Local rotation of game object, Euler angles. | `vector3` | `get+set`{.mark} |
-| *scale*    | Local non uniform scale of the game object, expressed as a vector where each component contains a multiplier along each axis. To double the size in x and y, provide vmath.vector3(2.0, 2.0, 0) | `vector3` | `get+set`{.mark} |
+| *position* | The local position of the game object. | `vector3`      | `get+set` |
+| *rotation* | Local rotation of game object, expressed as a quaternion.  | `quaternion` | `get+set` |
+| *euler*    | Local rotation of game object, Euler angles. | `vector3` | `get+set` |
+| *scale*    | Local non uniform scale of the game object, expressed as a vector where each component contains a multiplier along each axis. To double the size in x and y, provide vmath.vector3(2.0, 2.0, 0) | `vector3` | `get+set` |
 
 *SPRITE COMPONENT PROPERTIES*
 
 | property   | description                            | type            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
-| *size*     | The non scaled size of the sprite---its size as taken from the source atlas. | `vector3` | `get`{.mark} |
-| *texture0* | The texture path hash of the sprite. | `hash` | `get`{.mark}|
-| *scale* | Non uniform scale of the sprite. | `vector3` | `get+set`{.mark}|
+| *size*     | The non scaled size of the sprite---its size as taken from the source atlas. | `vector3` | `get` |
+| *texture0* | The texture path hash of the sprite. | `hash` | `get`|
+| *scale* | Non uniform scale of the sprite. | `vector3` | `get+set`|
 
 *COLLISION OBJECT COMPONENT PROPERTIES*
 
 | property   | description                            | type            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
-| *mass*     | The mass of the collision object. | `number` | `get`{.mark} |
-| *linear_velocity* | The current linear velocity of the collision object. | `vector3` | `get`{.mark} |
-| *angular_velocity* | The current angular velocity of the collision object. | `vector3` | `get`{.mark} |
-| *linear_damping* | Linear damping of the collision object. | `vector3` | `get+set`{.mark} |
-| *angular_damping* | Angular damping of the collision object. | `vector3` | `get+set`{.mark} |
+| *mass*     | The mass of the collision object. | `number` | `get` |
+| *linear_velocity* | The current linear velocity of the collision object. | `vector3` | `get` |
+| *angular_velocity* | The current angular velocity of the collision object. | `vector3` | `get` |
+| *linear_damping* | Linear damping of the collision object. | `vector3` | `get+set` |
+| *angular_damping* | Angular damping of the collision object. | `vector3` | `get+set` |
 
 *SPINE MODEL COMPONENT PROPERTIES*
 
 | property   | description                            | type            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
-| *animation* | The current animation. | `hash` | `get`{.mark} |
-| *skin*     | The currently applied model skin. (cannot be animated!) | `hash` | `get+set`{.mark} |
-| *cursor*   | The current position (between 0-1) of the animation playback cursor. | `number` | `get+set`{.mark} |
-| *playback_rate* | The playback rate of the animation. A multiplier to the animation playback rate. | `number` | `get+set`{.mark} |
+| *animation* | The current animation. | `hash` | `get` |
+| *skin*     | The currently applied model skin. (cannot be animated!) | `hash` | `get+set` |
+| *cursor*   | The current position (between 0-1) of the animation playback cursor. | `number` | `get+set` |
+| *playback_rate* | The playback rate of the animation. A multiplier to the animation playback rate. | `number` | `get+set` |
 
 *MODEL (3D) COMPONENT PROPERTIES*
 
 | property   | description                            | type            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
-| *animation* | The current animation.                | `hash`          | `get`{.mark}     |
-| *texture0* | The texture path hash of the model. | `hash` | `get`{.mark}|
-| *cursor*  | Position (between 0--1) of playback cursor. | `number`   | `get+set`{.mark} |
-| *playback_rate* | The playback rate of the animation. A multiplier to the animation playback rate. | `number` | `get+set`{.mark} |
+| *animation* | The current animation.                | `hash`          | `get`     |
+| *texture0* | The texture path hash of the model. | `hash` | `get`|
+| *cursor*  | Position (between 0--1) of playback cursor. | `number`   | `get+set` |
+| *playback_rate* | The playback rate of the animation. A multiplier to the animation playback rate. | `number` | `get+set` |
 
 *LABEL COMPONENT PROPERTIES*
 
 | property   | description                            | type            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
-| *scale* | The scale of the label. | `vector3` | `get+set`{.mark} |
-| *color*     | The color of the label. | `vector4` | `get+set`{.mark} |
-| *outline* | The outline color of the label. | `vector4` | `get+set`{.mark} |
-| *shadow* | The shadow color of the label. | `vector4` | `get+set`{.mark} |
-| *size* | The size of the label. The size will constrain the text if line break is enabled. | `vector3` | `get+set`{.mark} |
+| *scale* | The scale of the label. | `vector3` | `get+set` |
+| *color*     | The color of the label. | `vector4` | `get+set` |
+| *outline* | The outline color of the label. | `vector4` | `get+set` |
+| *shadow* | The shadow color of the label. | `vector4` | `get+set` |
+| *size* | The size of the label. The size will constrain the text if line break is enabled. | `vector3` | `get+set` |
 
 ## GUI node properties
 
