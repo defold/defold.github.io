@@ -5,11 +5,9 @@ on:
 
 jobs:
     update_site:
-
         runs-on: ubuntu-latest
-
+        if: !contains(github.event.head_commit.message, 'skip-ci')
         steps: [
-            { name: 'Skip based on commit message', uses: veggiemonk/skip-commit@1.0.0, env: { COMMIT_FILTER: 'skip-ci' } },
             { name: 'Checkout', uses: actions/checkout@v1, with: { fetch-depth: 1 } },
             { name: 'Install Python', uses: actions/setup-python@v1, with: { python-version: 2.x, architecture: x64 } },
             { name: 'Install Java', uses: actions/setup-java@v1, with: { java-version: 11.x, architecture: x64 } },
