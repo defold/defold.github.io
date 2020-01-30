@@ -716,6 +716,7 @@ assets = Process the asset portal list
 examples = Build the examples
 codepad = Build the Defold CodePad
 commit = Commit changed files (requires --githubtoken)
+searchindex = Update the static Lunr search index
 all = Run all of the above commands
 help = Show this help
 """
