@@ -30,6 +30,7 @@ function search(searchfield_id, searchresult_id) {
 						// var keys = Object.keys(result.matchData.metadata).join(", ");
 						// if (keys.length > 50) { keys = keys.substring(0, 50) + "..."; }
 						// console.log("keys", keys);
+						console.log("fooo", result, index)
 						div.innerHTML = div.innerHTML + String.format(fmt, result.ref, result.ref, query)
 					});
 				}

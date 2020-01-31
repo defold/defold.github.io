@@ -11,7 +11,9 @@ title: Asset Portal
 				<h1>Asset portal</h1>
 				<p>Whether you're looking for extensions, pathfinders, sprite sets, example projects or code snippets—you name it, we've got it!</p>
 			</div>
-			<div class="columns two" style="vertical-align: bottom; height: 100%">{% include secondary_button.html link="/submit_asset" text="Submit asset" %}</div>
+			<div class="columns two" style="vertical-align: bottom; height: 100%">
+				{% include secondary_button.html link="/submit_asset" text="Submit asset" %}
+			</div>
 		</div>
 		{%- if page.tag -%}
 			{%- assign tag = site.data.tags[page.tag] -%}

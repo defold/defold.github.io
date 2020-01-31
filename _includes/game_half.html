@@ -1,5 +1,5 @@
 {%- assign game=include.game -%}
-<div class="showcase">
+<div class="game">
 	<a href="{{ game.url }}" target="_blank">
 		<img src="{{ game.images.half }}" class="hoverflash" width="100%"/>
 		<br/><br/>
@@ -16,6 +16,12 @@
 			<tr>
 				<td>Publisher</td>
 				<td class="lightest-text">{{ game.publisher }}</td>
+			</tr>
+			{%- endif -%}
+			{%- if game.releasedate != "" -%}
+			<tr>
+				<td>Release date</td>
+				<td class="lightest-text">{{ game.releasedate }}</td>
 			</tr>
 			{%- endif -%}
 			<tr>
