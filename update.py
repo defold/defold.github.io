@@ -648,9 +648,21 @@ def generate_searchindex():
             "data": data
         })
 
+    def append_asset(filename, data):
+        searchindex.append({
+            "id": filename.replace("_data/", "").replace(".json", ""),
+            "type": "asset",
+            "data": data
+        })
+
     for filename in find_files("manuals", "*.md"):
         data = process_file_for_indexing(filename)
         append_manual(filename, data)
+
+    for filename in find_files(os.path.join("_data", "assets"), "*.json"):
+        r = read_as_json(filename)
+        id = os.path.basename(filename).replace(".json", "")
+        append_asset(filename, id + " " + r["name"] + " " + r["description"])
 
     for filename in find_files(os.path.join("_data", "ref", "stable"), "*.json"):
         r = read_as_json(filename)
