@@ -1,6 +1,6 @@
 ---
 layout: assetportal
 tag: platform
-title: platform
+title: Platform
 sort: stars
 ---
