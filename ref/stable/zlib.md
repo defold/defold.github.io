@@ -2,5 +2,6 @@
 layout: ref
 branch: stable
 ref: zlib
+title: API reference (zlib)
 ---
 {% include anchor_headings.html html=content %}

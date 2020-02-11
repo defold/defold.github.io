@@ -63,6 +63,7 @@ REFDOC_MD_FRONTMATTER = """---
 layout: ref
 branch: {}
 ref: {}
+title: API reference ({})
 ---
 """
 REFDOC_MD_BODY = "{% include anchor_headings.html html=content %}"
@@ -599,7 +600,7 @@ def process_refdoc(download = False):
 
                     # generate a dummy markdown page with some front matter for each ref doc
                     with open(os.path.join(REF_PAGE_DIR, file.replace("_doc.json", ".md")), "w") as f:
-                        f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name) + REFDOC_MD_BODY)
+                        f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, json_out_name) + REFDOC_MD_BODY)
 
                     # build refdoc index
                     r = read_as_json(os.path.join(tmp_dir, "doc", file))
