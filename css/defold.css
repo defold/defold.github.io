@@ -292,37 +292,51 @@ li p {
  * Button styling
  ******************************************************************************/
 
-button.button-primary {
-     background-color: var(--defold-blue-darkest);
-     border-color: var(--defold-blue-darkest);
- }
-button.button-primary:hover {
-     background-color: var(--defold-blue-dark);
-     border-color: var(--defold-blue-darkest);
+.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    display: inline-block                           !important;
+    height: 38px                                    !important;
+    padding: 0 30px                                 !important;
+    text-align: center                              !important;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none                           !important;
+    white-space: nowrap                             !important;
+    border-radius: 4px                              !important;
+    border-style: solid                             !important;
+    cursor: pointer                                 !important;
+    box-sizing: border-box                          !important;
 }
-input[type="submit"].button-primary {
-    background-color: var(--defold-blue-darkest);
-    border-color: var(--defold-blue-darkest);
+.button:hover {
+    color: var(--lighter)                           !important;
+    border-color: var(--lighter)                    !important;
 }
-input[type="submit"].button-primary:hover {
-    background-color: var(--defold-blue-dark);
-    border-color: var(--defold-blue-darkest);
+
+.primary {
+    color: var(--lightest)                          !important;
+    background-color: var(--defold-blue-darkest)    !important;
+    border-color: var(--defold-blue-darkest)        !important;
 }
-input[type="submit"].button {
-    color: var(--light);
-    border-color: var(--lighter);
+.primary:hover {
+     background-color: var(--defold-blue-dark)      !important;
+     border-color: var(--defold-blue-darkest)       !important;
 }
-input[type="submit"].button:hover {
-    color: var(--lighter);
-    border-color: var(--lighter);
+
+.secondary {
+    color: var(--light)                             !important;
+    background-color: transparent                   !important;
+    border-color: var(--lighter)                    !important;
 }
-input[type="button"].button {
-    color: var(--light);
-    border-color: var(--lighter);
-}
-input[type="button"].button:hover {
-    color: var(--light);
-    border-color: var(--lighter);
+.secondary:hover {
+    color: var(--lighter)                           !important;
+    background-color: transparent                   !important;
+    border-color: var(--lighter)                    !important;
 }
 
 /*******************************************************************************
