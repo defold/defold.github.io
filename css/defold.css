@@ -556,22 +556,6 @@ img[alt="icon"] {
 .asset #image {
     border-radius: 4px 4px 0 0;
 }
-.asset #overlay {
-    opacity: 0;
-    transition: 0.5s;
-}
-.asset #overlay:hover {
-    opacity: 1;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 4px 4px 0 0;
-}
-.asset #description {
-    opacity: 0;
-    transition: 0.3s;
-}
-.asset #description:hover {
-    opacity: 1;
-}
 .asset a {
     text-decoration: none;
 }
@@ -585,8 +569,10 @@ img[alt="icon"] {
     padding-bottom: 0;
 }
 .asset:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
     cursor: pointer;
+    background-color: #373c41;
+    transition: background-color 200ms linear;
 }
 
 /*******************************************************************************
