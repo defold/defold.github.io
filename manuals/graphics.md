@@ -7,15 +7,7 @@ brief: This manual outlines Defold's support for graphical elements.
 
 # Graphics
 
-Defold is a full 3D engine, but it is designed and built with strong support for 2D games. The editor is currently best suited for making 2D games.
-
-## Importing Image Files
-
-Defold needs all assets that should be in your project hierarchy. Therefore you need to import all graphics asset files that you need for your graphics. To import an assets, simply drag the files from the file system on your computer and drop them in an appropriate place in the Defold editor _Project Explorer_.
-
-![Importing image files](../images/graphics/import.png)
-
-Defold supports images in the PNG and JPEG image formats. For models, Defold uses the Collada DAE format.
+Defold is a full 3D engine, but it is designed and built with strong support for 2D games.
 
 ## Image resources
 
@@ -90,7 +82,7 @@ Models get its image data directly from an image file that is mapped onto the mo
 Learn more about models in the [Model manual](/manuals/model).
 
 Collada support
-: Defold's 3D support requires you to save or export model, skeleton and animation data in the _Collada_ format. This is a widely adopted format that most 3D modelling software supports. So you should be able to create assets in in _Maya_, _3D Max_, _Blender_, _Sketchup_ or any other popular software and then bring the results into Defold.
+: Defold's 3D support requires you to save or export model, skeleton and animation data in the _Collada_ format. This is a widely adopted format that most 3D modeling software supports. So you should be able to create assets in in _Maya_, _3D Max_, _Blender_, _Sketchup_ or any other popular software and then bring the results into Defold.
 
   Defold currently only supports baked animations. Animations need to have matrices for each animated bone each keyframe, and not position, rotation and scale as separate keys.
 
@@ -127,31 +119,6 @@ Rendering models
   ```
 
   See the [Render documentation](/manuals/render) for details on how render scripts work.
-
-
-## Z order
-
-All game objects and components are positioned in 3D space with positions expressed as vector3 objects. When you view your game's graphics content in 2D, the X and Y value determine the position of an object along the "width" and "height" axis, and the Z position determines the position along the "depth" axis. The Z position allows you to control the visibility of overlapping objects: a sprite with a Z value of 1 will appear in front of a sprite at Z position 0. By default, Defold uses a coordinate system allowing Z values between -1 and 1:
-
-![model](../images/graphics/z-order.png)
-
-The numerical precision on the Z values with a near and far limit of -1 and 1 is very high. When working with 3D assets, you may need to change the near and far limits of the default projection in a custom render script. See the [Render manual](/manuals/render/) for more information.
-
-## Blend modes
-
-The *Blend Mode* property defines how the sprite should be blended with the graphics behind it. These are the available blend modes and how they are calculated:
-
-Alpha
-: Normal blending: a~0~ * rgb~0~ + (1 - a~0~) * rgb~1~
-
-Add
-: Brighten the background with the color values of the corresponding sprite pixels: rgb~0~ + rgb~1~
-
-Add Alpha (deprecated!)
-: Brighten the background with the corresponding visible sprite pixels: a~0~ * rgb~0~ + rgb~1~
-
-Multiply
-: Darken the background with values of the the corresponding sprite pixels: rgb~0~ * rgb~1~
 
 
 ## Texture filtering and sampling

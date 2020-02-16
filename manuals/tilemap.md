@@ -65,6 +65,22 @@ if tile == 2 then
 end
 ```
 
+## Tilemap properties
+
+Apart from the properties *Id*, *Position*, *Rotation* and *Scale* the following component specific properties exist:
+
+*Tile Source*
+: The tilesource resource to use for the tilemap.
+
+*Material*
+: The material to use for rendering the tilemap.
+
+*Blend Mode*
+: The blend mode to use when rendering the tilemap.
+
+### Blend modes
+{% include shared/blend-modes.md %}
+
 ### Changing properties
 
 A tilemap has a number of different properties that can be manipulated using `go.get()` and `go.set()`:

@@ -122,6 +122,9 @@ Inherit Velocity
 Stretch With Velocity
 : Check to scale any particle stretch in the direction of movement.
 
+### Blend modes
+{% include shared/blend-modes.md %}
+
 ## Keyable emitter properties
 
 These properties have two fields: a value and a spread. The spread is a variation which is applied randomly for each spawned particle. E.g. if the value is 50 and the spread is 3, each spawned particle will get a value between 47 and 53 (50 +/- 3).
