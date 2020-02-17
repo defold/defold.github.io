@@ -1,0 +1,45 @@
+{%- assign game=include.game -%}
+<a href="{{ game.url }}" target="_blank">
+	<div class="section hero center dark-text hoverflash game" style='background: url("{{ game.images.full }}") center top/cover no-repeat;'>
+		<div class="container">
+			<div class="row" style="height: 300px">
+			</div>
+		</div>
+	</div>
+	<div class="section dark left" style="padding-top: 3rem; padding-bottom: 0;">
+		<div class="container">
+			<div class="row">
+				<div class="columns eight compact">
+					<h5>{{ game.name }}</h5>
+					<p>{{ game.description }}</p>
+				</div>
+				<div class="columns four">
+					<table>
+						<tr>
+							<td>Developer</td>
+							<td class="lightest-text">{{ game.developer }}</td>
+						</tr>
+						{%- if game.publisher != "" -%}
+						<tr>
+							<td>Publisher</td>
+							<td class="lightest-text">{{ game.publisher }}</td>
+						</tr>
+						{%- endif -%}
+						{%- if game.releasedate != "" -%}
+						<tr>
+							<td>Release date</td>
+							<td class="lightest-text">{{ game.releasedate }}</td>
+						</tr>
+						{%- endif -%}
+						<tr>
+							<td>Platforms</td>
+							<td class="lightest-text">{{ game.platforms }}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br/>
+	<br/>
+</a>

@@ -33,6 +33,7 @@ layout: base
 				{%- assign messages = ref.elements | where: "type", "MESSAGE" -%}
 				{%- assign properties = ref.elements | where: "type", "PROPERTY" -%}
 				{%- assign macros = ref.elements | where: "type", "MACRO" -%}
+				{%- assign enums = ref.elements | where: "type", "ENUM" -%}
 
 				<h1>{{ ref.info.brief }}</h1>
 				<p>Version: {{ page.branch }}</p>
@@ -69,6 +70,21 @@ layout: base
 				</table>
 				{%- endif -%}
 
+				{%- if enums.size > 0 -%}
+				<table class="compact">
+					<tr>
+						<th>ENUMS</th>
+						<th></th>
+					</tr>
+					{%- for enum in enums -%}
+					<tr>
+						<td><a href="#{% include ref_anchorlink.html element=enum %}">{{ enum.name }}</a></td>
+						<td>{{ enum.brief }}</td>
+					</tr>
+					{%- endfor -%}
+				</table>
+				{%- endif -%}
+
 				{%- if messages.size > 0 -%}
 				<table class="compact">
 					<tr>
@@ -98,6 +114,8 @@ layout: base
 					{%- endfor -%}
 				</table>
 				{%- endif -%}
+
+
 
 				{%- if functions.size > 0 -%}
 				<h2>Functions</h2>
@@ -151,6 +169,29 @@ layout: base
 					<tr>
 						<td><code>{{ param.name }}</code></td>
 						<td>{{ param.doc }}</td>
+					</tr>
+					{%- endfor -%}
+					</table>
+					{%- endif -%}
+
+					<hr/>
+					{%- endfor -%}
+				{%- endif -%}
+
+				{%- if enums.size > 0 -%}
+				<h2>Enums</h2>
+					{%- for enum in enums -%}
+					<a name="{% include ref_anchorlink.html element=enum %}"/>
+					<h4>{{ enum.name }}<a href="#{% include ref_anchorlink.html element=enum %}"><span class="anchor-link"/></a></h4>
+					<p>{{ enum.brief }}</p>
+					<p>{{ enum.description }}</p>
+
+					{%- if enum.members.size > 0 -%}
+					<table>
+					{%- for member in enum.members -%}
+					<tr>
+						<td><code>{{ member.name }}</code></td>
+						<td>{{ member.doc }}</td>
 					</tr>
 					{%- endfor -%}
 					</table>

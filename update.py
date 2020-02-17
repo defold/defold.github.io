@@ -63,6 +63,7 @@ REFDOC_MD_FRONTMATTER = """---
 layout: ref
 branch: {}
 ref: {}
+title: API reference ({})
 ---
 """
 REFDOC_MD_BODY = "{% include anchor_headings.html html=content %}"
@@ -87,6 +88,10 @@ def rmmkdir(dir):
 def rmcopytree(src, dst):
     rmtree(dst)
     shutil.copytree(src, dst)
+
+def makedirs(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
 
 def call(args):
     print(args)
@@ -199,6 +204,7 @@ def process_doc_file(file):
     replace_in_file(file, r"{\.left}", r"")
     replace_in_file(file, r"{\.icon}", r"")
     replace_in_file(file, r"{\.inline}", r"")
+    replace_in_file(file, r"{\.mark}", r"")
     # replace_in_file(file, r"\!\[(.*?)\]\((.*?)\)\{\.inline\}", r"<span style='display: inline'>![\1](\2)</span>")
     replace_in_file(file, r"\(images\/", r"(../images/")
     replace_in_file(file, r"\(\.\.\/shared\/", r"(/shared/")
@@ -324,6 +330,7 @@ def process_examples(download = False):
     with tmpdir() as tmp_dir:
         shutil.copyfile(EXAMPLES_ZIP, os.path.join(tmp_dir, EXAMPLES_ZIP))
         unzip(os.path.join(tmp_dir, EXAMPLES_ZIP), tmp_dir)
+        unzipped_examples_dir = os.path.join(tmp_dir, "examples-master", "examples")
 
         print("..building app")
         shutil.copyfile(bob_jar, os.path.join(tmp_dir, bob_jar))
@@ -339,7 +346,7 @@ def process_examples(download = False):
         replace_in_file(os.path.join(examples_dir, "index.html"), "\<\/body\>.*", "", flags=re.DOTALL)
         replace_in_file(os.path.join(examples_dir, "index.html"), "resize_game_canvas\(\)\;", "")
         replace_in_file(os.path.join(examples_dir, "index.html"), "window.addEventListener.*", "")
-        replace_in_file(os.path.join(examples_dir, "index.html"), 'width=\"720\" height=\"720\"', 'width="680" height="680"')
+        replace_in_file(os.path.join(examples_dir, "index.html"), 'width=\"720\" height=\"720\"', 'width="680" height="680" style="max-width:100%"')
         replace_in_file(os.path.join(examples_dir, "index.html"), 'dmloader.js', '/examples/dmloader.js')
         replace_in_file(os.path.join(examples_dir, "index.html"), '\"archive\"', '"/examples/archive"')
         replace_in_file(os.path.join(examples_dir, "index.html"), 'engineJS\.src = \'Defoldexamples', 'engineJS.src = \'/examples/Defoldexamples')
@@ -348,31 +355,43 @@ def process_examples(download = False):
 
         print("...copying markdown")
         examplesindex = []
-        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.md"):
+        for filename in find_files(unzipped_examples_dir, "*.md"):
             basename = os.path.basename(filename)
             collection = filename.replace(tmp_dir, "").replace("/examples-master/examples/", "").replace("/" + basename, "")
+            permalink = "examples/" + collection + "/"
             examplesindex.append({
                 "collection": collection,
                 "category": collection.split("/")[0].upper(),
                 "name": collection.split("/")[1].replace("_", " ").capitalize(),
-                "path": collection.split("/")[1]
+                "path": collection
             })
-            replace_in_file(filename, "title:", "layout: example\ncollection: {}\ntitle:".format(collection))
-            shutil.copyfile(filename, os.path.join("examples", basename))
+            replace_in_file(filename, "title:", "layout: example\npermalink: {}\ncollection: {}\ntitle:".format(permalink, collection))
+
+            md_file = os.path.join(examples_dir, filename.replace(unzipped_examples_dir, "")[1:])
+            makedirs(os.path.dirname(md_file))
+            shutil.copyfile(filename, md_file)
 
         print("...copying images")
-        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.png"):
-            shutil.copyfile(filename, os.path.join("examples", os.path.basename(filename)))
-        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.jpg"):
-            shutil.copyfile(filename, os.path.join("examples", os.path.basename(filename)))
+        for filename in find_files(unzipped_examples_dir, "*.png"):
+            png_file = os.path.join(examples_dir, filename.replace(unzipped_examples_dir, "")[1:])
+            makedirs(os.path.dirname(png_file))
+            shutil.copyfile(filename, png_file)
+        for filename in find_files(unzipped_examples_dir, "*.jpg"):
+            jpg_file = os.path.join(examples_dir, filename.replace(unzipped_examples_dir, "")[1:])
+            makedirs(os.path.dirname(jpg_file))
+            shutil.copyfile(filename, jpg_file)
 
         print("...copying scripts")
         includes_dir = "_includes/examples"
         rmmkdir(includes_dir)
-        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.script"):
-            shutil.copyfile(filename, os.path.join(includes_dir, os.path.basename(filename).replace(".script", "_script.md")))
-        for filename in find_files(os.path.join(tmp_dir, "examples-master", "examples"), "*.gui_script"):
-            shutil.copyfile(filename, os.path.join(includes_dir, os.path.basename(filename).replace(".gui_script", "_gui_script.md")))
+        for filename in find_files(unzipped_examples_dir, "*.script"):
+            script_file = os.path.join(includes_dir, filename.replace(unzipped_examples_dir, "")[1:]).replace(".script", "_script.md")
+            makedirs(os.path.dirname(script_file))
+            shutil.copyfile(filename, script_file)
+        for filename in find_files(unzipped_examples_dir, "*.gui_script"):
+            script_file = os.path.join(includes_dir, filename.replace(unzipped_examples_dir, "")[1:]).replace(".gui_script", "_gui_script.md")
+            makedirs(os.path.dirname(script_file))
+            shutil.copyfile(filename, script_file)
 
         print("...generating index")
         index_file = os.path.join("_data", "examplesindex.json")
@@ -581,7 +600,7 @@ def process_refdoc(download = False):
 
                     # generate a dummy markdown page with some front matter for each ref doc
                     with open(os.path.join(REF_PAGE_DIR, file.replace("_doc.json", ".md")), "w") as f:
-                        f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name) + REFDOC_MD_BODY)
+                        f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, json_out_name) + REFDOC_MD_BODY)
 
                     # build refdoc index
                     r = read_as_json(os.path.join(tmp_dir, "doc", file))
@@ -630,9 +649,21 @@ def generate_searchindex():
             "data": data
         })
 
+    def append_asset(filename, data):
+        searchindex.append({
+            "id": filename.replace("_data/", "").replace(".json", ""),
+            "type": "asset",
+            "data": data
+        })
+
     for filename in find_files("manuals", "*.md"):
         data = process_file_for_indexing(filename)
         append_manual(filename, data)
+
+    for filename in find_files(os.path.join("_data", "assets"), "*.json"):
+        r = read_as_json(filename)
+        id = os.path.basename(filename).replace(".json", "")
+        append_asset(filename, id + " " + r["name"] + " " + r["description"])
 
     for filename in find_files(os.path.join("_data", "ref", "stable"), "*.json"):
         r = read_as_json(filename)
@@ -698,6 +729,7 @@ assets = Process the asset portal list
 examples = Build the examples
 codepad = Build the Defold CodePad
 commit = Commit changed files (requires --githubtoken)
+searchindex = Update the static Lunr search index
 all = Run all of the above commands
 help = Show this help
 """

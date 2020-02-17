@@ -7,4 +7,8 @@
 {{ element.name }}
 {%- elsif element.type == "PROPERTY" -%}
 {{ element.name }}
+{%- elsif element.type == "MACRO" -%}
+{{ element.name }}
+{%- elsif element.type == "ENUM" -%}
+{{ element.name }}
 {%- endif -%}

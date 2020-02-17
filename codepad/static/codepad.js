@@ -64,10 +64,14 @@ function dynload_multiple(sources, final_callback) {
     }
 }
 
+/**
+ * Load the code editor from CDN and set up editor panes
+ */
 function codepad_load_editor(callback) {
     console.log("loading editor...");
-    var js_libs = ["https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/split.js/1.5.10/split.min.js"];
+    var js_libs = [
+        "https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.7/ace.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/split.js/1.5.11/split.min.js"];
 
     dynload_multiple(js_libs, function() {
         console.log("editor loaded");
@@ -93,6 +97,9 @@ function codepad_load_editor(callback) {
     });
 }
 
+/**
+ * Load the Defold engine
+ */
 function codepad_load_engine(defold_archive_location_prefix, defold_archive_location_suffix, defold_binary_prefix) {
     console.log("codepad_load_engine", defold_archive_location_prefix, defold_archive_location_suffix, defold_binary_prefix);
     var extra_params = {
@@ -161,11 +168,19 @@ function codepad_load_engine(defold_archive_location_prefix, defold_archive_loca
     fix_canvas_size();
 }
 
+
+/**
+ * Get the currently selected scene from the scene drop-down
+ */
 function codepad_get_scene() {
     var scenes_elem = document.getElementById("scene");
     return scenes_elem.options[scenes_elem.selectedIndex].value;
 }
 
+/**
+ * Create the editor session for a scene. This will create the file tabs.
+ * This is called when changing scene.
+ */
 function codepad_create_edit_sessions(scene) {
     var files_div = document.getElementById("files");
     files_div.innerHTML = "";
@@ -206,6 +221,13 @@ function codepad_create_edit_sessions_from_shared_sources(scene) {
     }
 }
 
+/**
+ * Call this when the codepad should change scene. This usually gets triggered
+ * by a change in the scene selection drop-down menu.
+ * The function will do two main things:
+ * 1. It will set the codepad_should_change_scene flag. This will be read by Defold
+ * 2. Update the edit session with the code for the scene
+ */
 function codepad_change_scene() {
     codepad_should_change_scene = true;
     var scene_id = codepad_get_scene();
@@ -225,6 +247,11 @@ function codepad_change_scene() {
     }
 }
 
+/**
+ * Called by Defold when the codepad is ready for use. This will do two things:
+ * 1. Check if this codepad was started from a link containing code or from scratch
+ * 2. Show the initial/default scene
+ */
 function codepad_ready(scenes_json) {
     scenes = JSON.parse(unescape(scenes_json));
     var scenes_elem = document.getElementById("scene");
@@ -239,7 +266,10 @@ function codepad_ready(scenes_json) {
     codepad_change_scene();
 }
 
-
+/**
+ * Called when the user changed file tab. This will update the editor session with
+ * new code.
+ */
 function codepad_change_file() {
     var file_tabs = document.getElementsByName('current_file');
 
@@ -316,11 +346,14 @@ function codepad_trigger_url_check() {
                 }
             }
         }
-
     }
-
 }
 
+/**
+ * Called when the user has chosen to share the current codepad contents. This
+ * will update the browser URL to contain the full contents of the codepad for
+ * easy sharing.
+ */
 function codepad_share() {
     var share_url = "?c=" + codepad_get_scene();
     for (var i = 0; i < codepad_sessions.length; i++)

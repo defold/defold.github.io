@@ -295,41 +295,59 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
     list-style: none;
 }
 
+/* No break between the bullet and the paragraph */
+li p {
+    display: inline;
+}
+
 /*******************************************************************************
  * Button styling
  ******************************************************************************/
 
-button.button-primary {
-     background-color: var(--defold-blue-darkest);
-     border-color: var(--defold-blue-darkest);
- }
-button.button-primary:hover {
-     background-color: var(--defold-blue-dark);
-     border-color: var(--defold-blue-darkest);
+.button {
+    -moz-appearance: button;
+    appearance: button;
+
+    display: inline-block                           !important;
+    height: 38px                                    !important;
+    padding: 0 30px                                 !important;
+    text-align: center                              !important;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none                           !important;
+    white-space: nowrap                             !important;
+    border-radius: 4px                              !important;
+    border-style: solid                             !important;
+    cursor: pointer                                 !important;
+    box-sizing: border-box                          !important;
 }
-input[type="submit"].button-primary {
-    background-color: var(--defold-blue-darkest);
-    border-color: var(--defold-blue-darkest);
+.button:hover {
+    color: var(--lighter)                           !important;
+    border-color: var(--lighter)                    !important;
 }
-input[type="submit"].button-primary:hover {
-    background-color: var(--defold-blue-dark);
-    border-color: var(--defold-blue-darkest);
+
+.primary {
+    color: var(--lightest)                          !important;
+    background-color: var(--defold-blue-darkest)    !important;
+    border-color: var(--defold-blue-darkest)        !important;
 }
-input[type="submit"].button {
-    color: var(--light);
-    border-color: var(--lighter);
+.primary:hover {
+     background-color: var(--defold-blue-dark)      !important;
+     border-color: var(--defold-blue-darkest)       !important;
 }
-input[type="submit"].button:hover {
-    color: var(--lighter);
-    border-color: var(--lighter);
+
+.secondary {
+    color: var(--light)                             !important;
+    background-color: transparent                   !important;
+    border-color: var(--lighter)                    !important;
 }
-input[type="button"].button {
-    color: var(--light);
-    border-color: var(--lighter);
-}
-input[type="button"].button:hover {
-    color: var(--light);
-    border-color: var(--lighter);
+.secondary:hover {
+    color: var(--lighter)                           !important;
+    background-color: transparent                   !important;
+    border-color: var(--lighter)                    !important;
 }
 
 /*******************************************************************************
@@ -563,22 +581,6 @@ ul.checkmark li:before {
 .asset #image {
     border-radius: 4px 4px 0 0;
 }
-.asset #overlay {
-    opacity: 0;
-    transition: 0.5s;
-}
-.asset #overlay:hover {
-    opacity: 1;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 4px 4px 0 0;
-}
-.asset #description {
-    opacity: 0;
-    transition: 0.3s;
-}
-.asset #description:hover {
-    opacity: 1;
-}
 .asset a {
     text-decoration: none;
 }
@@ -592,14 +594,16 @@ ul.checkmark li:before {
     padding-bottom: 0;
 }
 .asset:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
     cursor: pointer;
+    background-color: #373c41;
+    transition: background-color 200ms linear;
 }
 
 /*******************************************************************************
- * Showcase
+ *
  ******************************************************************************/
-.showcase a {
+.game a {
     text-decoration: none;
 }
 

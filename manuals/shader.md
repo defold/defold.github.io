@@ -118,7 +118,7 @@ void main()
 }
 ```
 
-A more complete example is the built in sprite vertex shader:
+A more complete example is the built-in sprite vertex shader:
 
 ```glsl
 -- sprite.vp
@@ -159,7 +159,7 @@ void main()
 }
 ```
 
-Again, a more complete example is the built in sprite fragment shader:
+Again, a more complete example is the built-in sprite fragment shader:
 
 ```glsl
 // sprite.fp
