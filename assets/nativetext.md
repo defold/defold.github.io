@@ -1,5 +1,5 @@
 ---
 layout: asset
 asset: nativetext
-title: extension-directories
+title: extension-nativetext
 ---
