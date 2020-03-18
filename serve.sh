@@ -1,1 +1,1 @@
-bundle exec jekyll serve --incremental --verbose --profile
+bundle exec jekyll serve --incremental --verbose --profile --future

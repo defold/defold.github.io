@@ -1,0 +1,15 @@
+{%- assign alerts = site.data.alerts -%}
+{%- if alerts.size > 0 -%}
+<div class="section" style="padding-bottom: 0px">
+	<div class="container">
+		{%- for alert in alerts -%}
+		{%- assign title = alert.title -%}
+		{%- assign body = alert.body -%}
+		{%- assign url = alert.url -%}
+		<div class="row">
+			{% include card.html title=title body=body link=url %}
+		</div>
+		{%- endfor -%}
+	</div>
+</div>
+{%- endif -%}
