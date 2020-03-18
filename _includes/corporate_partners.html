@@ -1,7 +1,7 @@
-{%- assign platinum=site.data.sponsors.platinum -%}
-{%- assign gold=site.data.sponsors.gold -%}
-{%- assign silver=site.data.sponsors.silver -%}
-{%- assign bronze=site.data.sponsors.bronze -%}
+{%- assign platinum=site.data.partners.platinum -%}
+{%- assign gold=site.data.partners.gold -%}
+{%- assign silver=site.data.partners.silver -%}
+{%- assign bronze=site.data.partners.bronze -%}
 
 <div class="section darker">
 <!-- <div class="section hero blue" style='background-image: url("/images/hero/defold-king-internal-top-bg-transparent.png");'> -->
@@ -9,7 +9,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="columns twelve center">
-				<h5>Corporate Platinum Sponsors</h5>
+				<h5>Corporate Platinum Partners</h5>
 				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 2rem; padding: 0px;">
 					{%- for sponsor in platinum -%}
 						<a href="{{ sponsor.link }}" target="_blank"><img src="{{ sponsor.logo }}" width="128px"></a>
