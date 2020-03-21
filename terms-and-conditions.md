@@ -42,7 +42,7 @@ Sometimes in these Terms we use defined terms as an abbreviation, to make this d
 
  * **“Defold Game Templates”** mean the game templates we make available to you via the Website or Defold Software to help you develop your Game.
 
- * **“Defold Materials”** mean the marketing materials, art assets and any other materials that we make available to you via the Website or Defold Software which you can include in your Game, such as the **“Made with Defold”** logo.
+ * **“”** mean the marketing materials, art assets and any other materials that we make available to you via the Website or Defold Software which you can include in your Game, such as the **“Made with Defold”** logo.
 
  * **“Defold Software”** means, collectively, the Defold Editor, the Defold Games Engine and the Defold SDK.
 
@@ -382,7 +382,7 @@ The Defold software development kit is provided to you free of charge and consis
 
 **5. LICENCE TO THE DEFOLD ADDITIONAL MATERIALS**
 
-5.1 Subject to your compliance with the Defold Licence Terms, we grant you, for the duration of the legalprotection of the intellectual property rights contained therein a non-exclusive, non-transferable, worldwide, royalty-free licence to:
+5.1 Subject to your compliance with the Defold Licence Terms, we grant you, for the duration of the legal protection of the intellectual property rights contained therein a non-exclusive, non-transferable, worldwide, royalty-free licence to:
 
  * copy and redistribute the Defold Game Templates, the Built-In Files and the Defold Materials as part of the Games only;
 

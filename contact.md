@@ -1,11 +1,16 @@
 ---
-layout: text
+layout: hero_and_text
 title: Contact
+description: We look forward to hearing from you!
+nav: floating
 ---
 
-# Contact
+### Media and business inquiries
 
-We love hearing from our users! Depending on what you need, here are some options on how to reach us.
+For all media inquiries please email [press@defold.se](mailto:press@defold.se).
+
+For business inquiries please email [business@defold.se](mailto:business@defold.se).
+
 
 ### Support
 
@@ -16,6 +21,8 @@ If you've run into problems and need help then please reach out to us. We're hap
 
 
 ### Social
+
+Follow us for the latest news and to stay in touch in social media.
 
 * [Twitter](https://twitter.com/defold)
 * [Facebook](https://www.facebook.com/Defold)

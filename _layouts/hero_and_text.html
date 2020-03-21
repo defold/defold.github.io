@@ -1,0 +1,26 @@
+---
+layout: base
+---
+
+<div class="section hero center blackwhite" style='background-image: url("/images/hero/{{ page.hero_url | default: "testimonials-background-0.5x.png" }}");'>
+	<div class="container">
+		<div class="row">
+			<div class="column two-thirds left">
+				<h2>{{ page.title }}</h2>
+				<p>{{ page.description }}</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section hero dark">
+	<div class="container">
+		<div class="row">
+			<div class="columns twelve">
+				{{ content }}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include {{ page.after | default: "empty.html" }} %}

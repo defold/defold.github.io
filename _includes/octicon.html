@@ -13,8 +13,7 @@
 {%- endif -%}
 <span class="octicon" style="fill: {{ color }}; zoom: {{ zoom }}; padding-right: 2px; vertical-align: middle;">
 	{% include {{include.icon}} %}
-</span>
-{{ include.text }}
+</span>&nbsp;{{ include.text }}
 {% if include.link.size > 0 -%}
 </a>
 {%- endif -%}

@@ -1,0 +1,61 @@
+---
+layout: hero_and_text
+title: The Defold Foundation
+description: The Defold Foundation owns and develops Defold.
+nav: floating
+after: opensource_section.html
+---
+
+### Introduction
+The Defold Foundation was created by King in April 2020. The Defold Foundation is registered in Sweden under the name "Stiftelsen Defold Foundation" (org.no. 123456-7890). The foundation is governed by Swedish law and overseen by the County Administrative Board in Stockholm.
+
+### Objectives
+The objectives of the foundation are:
+
+* Make the Defold software available to the public
+* Make the Defold source code available to the public
+* Support the open source community and the use of open licenses
+
+### Vision
+We believe in a free and open internet where software and services use open standards to bring net neutrality and democracy to everyone. The Defold Foundation will work together with industry partners to apply the same principles of free and open source software and service to the work we do with Defold.
+
+### Board
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
+
+{%- include profile_card.html
+	image="/images/foundation/sara.jpeg"
+	name="Sara Cederberg"
+	bio="Sara is a creative and hands-on solution finder with strong focus on improvement and quality. She has solid experience within business analysis and process development, digital product development and Business Intelligence. Sara has worked as project manager, product owner and technical director for Defold since 2016. She is now working as a product manager at King and she is the chairperson of the Defold Foundation board."
+	email="sara@defold.se"
+-%}
+
+{%- include profile_card.html
+	image="/images/foundation/elin.jpeg"
+	name="Elin Eriksson"
+	bio="Elin describes herself as a problem solver, constantly looking for ways to improve - both herself and the things she work with. She has a long history working with the Bonnier Group, stretching back 15 years and spanning roles such as Visual Identity Manager, Brand Manager and Corporate Communications. Elin is also deeply involved in the Women In Tech conference working in the core team. She is the Director of Women in Tech Sweden since March 2019."
+	email="elin@defold.se"
+-%}
+
+{%- include profile_card.html
+	image="/images/foundation/romain.jpeg"
+	name="Romain Sididris"
+	bio="Romain works as Game Engine Director at King. Prior to King he worked as World Technical Director at Gameloft. He has a long background in software development and product management."
+	email="romain@defold.se"
+-%}
+
+{%- include profile_card.html
+	image="/images/foundation/mathias.jpeg"
+	name="Mathias Westerdahl"
+	bio="Mathias has worked as a game and game engine developer in the AAA industry for more than 20 years. He has worked at companies such as Avalanche and UDS and with titles such as Just Cause and Mad Max. Mathias started working at King as a senior game engine developer for Defold in 2015 and has since transitioned into the role of principal engineer and lead developer."
+	email="mathias@defold.se"
+-%}
+
+{%- include profile_card.html
+	image="/images/foundation/bjorn.jpeg"
+	name="Björn Ritzl"
+	bio="Björn has worked as a developer for two decades, primarily in the games industry, and even longer as a hobbyist writing his first lines of code on a C64 in the late 80s. He has worked with mobile game development since before the smart phones and he is a big fan of old school games from the days of the C64 and Amiga. Björn started working with Defold at King in 2015, initially as a developer and transitioning into a role as product owner in 2018. He is a strong believer in the power of open source development with more than 150 [open source projects on GitHub](https://www.github.com/britzl)."
+	email="bjorn@defold.se"
+	phone="+46-704-335333"
+-%}
+</div>
