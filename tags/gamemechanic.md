@@ -1,6 +1,6 @@
 ---
 layout: assetportal
 tag: gamemechanic
-title: Gamemechanic
+title: Game mechanic
 sort: stars
 ---
