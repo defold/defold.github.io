@@ -163,6 +163,6 @@ You also have the right to complain to your local data protection authority if t
 
 If any court or other competent authority finds any of the terms of this Services Privacy Policy to be invalid or unenforceable, the other terms of this Services Privacy Policy will not be affected.
 
-This Services Privacy Policy is governed by and interpreted in accordance with the laws of England. Any dispute arising in connection with this Services Privacy Policy will be subject to the exclusive jurisdiction of the courts of England unless you choose the courts of your home country.
+This Services Privacy Policy is governed by and interpreted in accordance with the laws of Sweden. Any dispute arising in connection with this Services Privacy Policy will be subject to the exclusive jurisdiction of the courts of Sweden unless you choose the courts of your home country.
 
 We are constantly innovating and looking for new ways to improve our Services and our games. We may therefore amend this Services Privacy Policy from time to time to reflect such improvements or any other changes to our business. We will endeavour to tell you about any significant changes to this Services Privacy Policy which we feel may disadvantage you in any material way. If you object to any of the changes you should immediately stop using our Services and close any account you may have with us.
