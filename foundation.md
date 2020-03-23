@@ -3,7 +3,7 @@ layout: hero_and_text
 title: The Defold Foundation
 description: The Defold Foundation owns and develops Defold.
 nav: floating
-after: opensource_section.html
+after: opensource_section.html,corporate_partners.html
 ---
 
 ### Introduction
@@ -21,7 +21,7 @@ We believe in a free and open internet where software and services use open stan
 
 ### Board
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-gap: 2rem; padding: 0px;">
 
 {%- include profile_card.html
 	image="/images/foundation/sara.jpeg"
@@ -54,7 +54,7 @@ We believe in a free and open internet where software and services use open stan
 {%- include profile_card.html
 	image="/images/foundation/bjorn.jpeg"
 	name="Björn Ritzl"
-	bio="Björn has worked as a developer for two decades, primarily in the games industry, and even longer as a hobbyist writing his first lines of code on a C64 in the late 80s. He has worked with mobile game development since before the smart phones and he is a big fan of old school games from the days of the C64 and Amiga. Björn started working with Defold at King in 2015, initially as a developer and transitioning into a role as product owner in 2018. He is a strong believer in the power of open source development with more than 150 [open source projects on GitHub](https://www.github.com/britzl)."
+	bio="Björn has worked as a developer for two decades, primarily in the games industry, and even longer as a hobbyist writing his first lines of code on a C64 in the late 80s. He has worked with mobile game development since before the smart phones and he is a big fan of old school games from the days of the C64 and Amiga. Björn started working with Defold at King in 2015, initially as a developer and transitioning into the role of product owner in 2018. He is a strong believer in the power of open source development with more than 100 [open source projects on GitHub](https://www.github.com/britzl)."
 	email="bjorn@defold.se"
 	phone="+46-704-335333"
 -%}

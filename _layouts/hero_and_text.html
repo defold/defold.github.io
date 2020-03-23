@@ -23,4 +23,7 @@ layout: base
 	</div>
 </div>
 
-{% include {{ page.after | default: "empty.html" }} %}
+{%- assign pages_after = page.after | split: "," -%}
+{%- for after in pages_after -%}
+{% include {{ after | default: "empty.html" }} %}
+{%- endfor -%}
