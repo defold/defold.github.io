@@ -42,7 +42,7 @@ Sometimes in these Terms we use defined terms as an abbreviation, to make this d
 
  * **“Defold Game Templates”** mean the game templates we make available to you via the Website or Defold Software to help you develop your Game.
 
- * **“”** mean the marketing materials, art assets and any other materials that we make available to you via the Website or Defold Software which you can include in your Game, such as the **“Made with Defold”** logo.
+ * **“Defold Materials”** mean the marketing materials, art assets and any other materials that we make available to you via the Website or Defold Software which you can include in your Game, such as the **“Made with Defold”** logo.
 
  * **“Defold Software”** means, collectively, the Defold Editor, the Defold Games Engine and the Defold SDK.
 
@@ -70,7 +70,7 @@ Sometimes in these Terms we use defined terms as an abbreviation, to make this d
 
 **1. About You and Us**
 
-1.1 These Terms (as defined below) create a legal agreement between you ("**you**" or "**your**") and Midasplayer Technology AB a company incorporated and registered in Sweden with company number 556896-0925 whose registered office is at Sveavagen 44, 111 34, Stockholm, Sweden, on behalf of our group companies ("**we**", "**us**" or "**our**").
+1.1 These Terms (as defined below) create a legal agreement between you ("**you**" or "**your**") and Stiftelsen Defold Foundation, a foundation incorporated and registered in Sweden with company number 123456-7890 whose registered office is at PO Box 6034, 129 06, Hägersten, Sweden, on behalf of our group companies ("**we**", "**us**" or "**our**").
 
 1.2 The following legal terms of service and privacy policies apply to our relationship with you in the following situations. Collectively, we refer to the terms and policies as the “Terms” throughout this agreement. If you do not agree with these Terms then do not use any of the Services we provide:
 
