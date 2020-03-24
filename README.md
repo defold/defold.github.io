@@ -71,29 +71,37 @@ Most macOS versions ship with Ruby preinstalled. It is however recommended that 
 The quickest way to install a new Ruby version on macOS/Linux us to use `rbenv`. To install `rbenv` on macOS you first need to install `brew`:
 
 #### 1.1 Install brew (macOS)
+Open a terminal window and install `brew` by running the following command:
 
 ```sh
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
 #### 1.2 Install rbenv
+Open a terminal window and install `rbenv` by running the following commands:
 
 ```sh
 	# use brew to install rbenv
 	brew install rbenv
-	# initialise rbenv
-	rbenv init
+	# install rbenv shell support every time a shel is started
+	echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+```
+
+Now close the terminal window. Open a new terminal window and install a new Ruby version (this version corresponds to the one defined in the `.ruby-version` file of this repository):
+
+```sh
 	# use rbenv to install ruby 2.6.5
 	rbenv install 2.6.5
 ```
 
 ### 2 Install gems
+Open a terminal window and install the required Ruby gems by running the following command:
 
 ```sh
 	gem install
 ```
 
-This will install the gems defined in the Gemfile (bundler, jekyll, github-pages). You are now ready to launch the site locally.
+This will install the gems defined in the Gemfile (`bundler`, `jekyll`, `github-pages`). You are now ready to launch the site locally.
 
 
 ## Usage
