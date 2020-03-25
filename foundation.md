@@ -33,7 +33,7 @@ We believe in a free and open internet where software and services use open stan
 {%- include profile_card.html
 	image="/images/foundation/elin.jpeg"
 	name="Elin Eriksson"
-	bio="Elin describes herself as a problem solver, constantly looking for ways to improve - both herself and the things she work with. She has a long history working with the Bonnier Group, stretching back 15 years and spanning roles such as Visual Identity Manager, Brand Manager and Corporate Communications. Elin is also deeply involved in the Women In Tech conference working in the core team. She is the Director of Women in Tech Sweden since March 2019."
+	bio="Elin Eriksson is an experienced communicator, creative director and graphic designer. Previously Brand Manager at the Bonnier Group, now freelancing consultant within corporate communications. She is currently Director at Women in Tech Sweden and has assignments for the Bonnier Group and Internetstiftelsen among others. Elin seamlessly switches between hands-on, nitty-gritty production and keeping an eye on the business strategy. She has documented experience of successfully developing and implementing internal and external communications strategies, providing communications support for management teams in major change and transformation projects, and is a highly competent graphic designer (yes, she is a formidable PowerPoint wizard)."
 	email="elin@defold.se"
 -%}
 
