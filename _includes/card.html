@@ -1,9 +1,12 @@
 
-<div class="{% if include.link.size > 0 %}clickable {% endif %}card center light"
+<div class="{% if include.link.size > 0 %}clickable {% endif %}card center {{ include.class | default: 'light' }}"
 style="{%- if include.height -%}height: {{ include.height }};{%- endif -%}
 {%- if include.min-height -%}min-height: {{ include.min-height }};{%- endif -%}">
 {% if include.link.size > 0 %}
 <a href="{{ include.link }}" target="{% if include.target %}{{ include.target }}{% else %}_self{% endif %}">
+{% endif %}
+{% if include.banner.size > 0 %}
+<p class="ribbon">{{ include.banner }}</p>
 {% endif %}
 {%- if include.icon -%}
 <div style="display: grid; grid-template-columns: 10% auto; grid-gap: 2rem;">

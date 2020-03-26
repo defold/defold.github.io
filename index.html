@@ -2,13 +2,13 @@
 layout: base
 title: Home
 nav: floating
+background: /images/hero/defold-top-bg-transparent-2.png
 ---
 
-<div class="section hero " style='background-image: url("/images/hero/defold-top-bg-transparent-2.png");'>
-	<div class="container lightest-text" style="padding-bottom: 3rem;">
+<div class="section narrow lightest-text">
+	<div class="container">
 		<div class="row center">
 			<div>
-				<br/>
 				<img src="/images/logo/defold/logo/logo-ver-classic-white-160.png"/>
 				<br/>
 				<br/>
@@ -24,36 +24,21 @@ nav: floating
 			</div>
 		</div>
 	</div>
+
 	<div class="container">
 		<div class="row">
 			<div class="columns twelve dark-text">
 				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
-					{% include card.html title="Free & Open Source" body="Defold is open source and completely free for both personal and commercial use.<br/><br/>" link="/opensource" min-height="225px" zoom="0.5" topicon="/images/icons/ic-64-box.svg" %}
+					{% include card.html title="Free & Open Source" body="Defold is open source and completely free for both personal and commercial use.<br/><p style='text-decoration:underline;'>Learn more</p>" link="/opensource" min-height="225px" zoom="0.5" topicon="/images/icons/ic-64-box.svg" banner="OPEN SOURCE!" %}
 
-					{% include card.html title="Games" body="Defold is used by game developers all over the world. It’s a proven tool for games of all genres.<br/><br/>" link="/showcase" min-height="225px" zoom="0.5" topicon="/images/icons/ic-64-rocket.svg" %}
+					{% include card.html title="Games" body="Defold is used by game developers all over the world. It’s a proven tool for games of all genres.<br/><p style='text-decoration:underline;'>Learn more</p>" link="/showcase" min-height="225px" zoom="0.5" topicon="/images/icons/ic-64-rocket.svg" %}
 
-					{% include card.html title="Performance first" body="Built from the ground up with a clear focus on performance. Spend time making games, not waiting for builds." link="/product" min-height="225px" zoom="0.5" topicon="/images/icons/ic-64-performance.svg" %}
+					{% include card.html title="Performance first" body="Built from the ground up with a clear focus on performance. Spend time making games, not waiting for builds.<br/><p style='text-decoration:underline;'>Learn more</p>" link="/product" min-height="225px" zoom="0.5" topicon="/images/icons/ic-64-performance.svg" %}
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-<!-- <div class="section hero center light" style='background-image: url("/images/hero/clouds-light-back@2x.png");'>
-	<div class="container">
-		<div class="row">
-			<div class="columns twelve">
-				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
-					{% include card.html title="Free & Open Source" body="Defold is open source and completely free to use for personal and commercial use.<br/><br/>" link="/opensource" min-height="225px" zoom="0.5" topicon="/images/icons/ic-64-opensource.svg" %}
-
-					{% include card.html title="Games" body="Defold is used by game developers all over the world. It’s a proven tool for games of all genres.<br/><br/>" link="/showcase" min-height="225px" zoom="0.5" topicon="/images/icons/ic-64-rocket.svg" %}
-
-					{% include card.html title="Performance first" body="Built from the ground up with a clear focus on performance. Spend time making games, not waiting for builds." link="/product" min-height="225px" zoom="0.5" topicon="/images/icons/ic-64-performance.svg" %}
-				</div>
-			</div>
-		</div>
-	</div>
-</div> -->
 
 {% include features_section.html %}
 

@@ -3,7 +3,8 @@ layout: hero_and_text
 title: The Defold Foundation
 description: The Defold Foundation owns and develops Defold.
 nav: floating
-after: opensource_section.html,corporate_partners.html
+background: /images/hero/defold-top-bg-transparent-2.png
+after: [opensource_section.html,corporate_partners.html]
 ---
 
 ### Introduction

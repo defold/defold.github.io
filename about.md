@@ -3,7 +3,8 @@ layout: hero_and_text
 title: About
 description: Learn more about Defold
 nav: floating
-after: yellow_download_section.html,corporate_partners.html
+background: /images/hero/defold-top-bg-transparent-2.png
+after: [yellow_download_section.html,corporate_partners.html]
 ---
 
 ### Defold

@@ -1,14 +1,14 @@
-<div class="nav {% if include.style == "floating" %}absolutetop lightest-text{% else %}dark{% endif %}">
+<div class="nav {% if include.style == "floating" %}lightest-text {% else %}dark{% endif %}">
 	<div class="container">
 		<div class="row">
 			<div class="eight columns">
 				<ul class="navmenu">
-					<li><a href="/">Home</a></li>
+					<li><nobr>{% include octicon.html icon="octicons/home.svg" color="#FFF" zoom="1.25" text=" Defold" link="/" %}</nobr></li>
 					<li><a href="/product">Product</a></li>
 					<li><a href="/showcase">Showcase</a></li>
 					<li><a href="/learn">Learn</a></li>
-					<li><a href="/assets">Asset Portal</a></li>
-					<li><a href="/opensource">Open Source</a></li>
+					<li><a href="/assets">Asset&nbsp;Portal</a></li>
+					<li><a href="/opensource">Open&nbsp;Source</a></li>
 					<li><a href="//forum.defold.com">Forum</a></li>
 					<li style="visibility: hidden">{% include octicon.html icon="octicons/desktop-download.svg" color="#FFF" zoom="1.75" %} Download</li>
 				</ul>

@@ -3,7 +3,8 @@ layout: hero_and_text
 title: Press
 description: Defold Newsroom
 nav: floating
-after: corporate_partners.html
+background: /images/hero/defold-top-bg-transparent-2.png
+after: [corporate_partners.html]
 ---
 
 ### Media inquiries

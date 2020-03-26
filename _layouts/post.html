@@ -1,0 +1,35 @@
+---
+layout: base
+---
+<div class="section lightest">
+	<div class="container">
+		<div class="row">
+			<div class="columns ten">
+				{%- if page.type == "press" -%}
+				<p><a href="/press">More news</a></p>
+				{%- else -%}
+				<p><a href="/blog">More posts</a></p>
+				{%- endif -%}
+				<h2>{{ page.title }}</h2>
+				<p><i>By {{ page.author }} on {{ page.date | date: "%b %d, %Y" }}</i></p>
+			</div>
+			<div class="columns two"><br/></div>
+		</div>
+		<div class="row">
+			<div class="columns ten">
+				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
+			</div>
+			<div class="columns two"><br/></div>
+		</div>
+		<div class="row">
+			<div class="columns ten">
+				{%- if page.type == "press" -%}
+				<p><a href="/press">More news</a></p>
+				{%- else -%}
+				<p><a href="/blog">More posts</a></p>
+				{%- endif -%}
+			</div>
+			<div class="columns two"><br/></div>
+		</div>
+	</div>
+</div>

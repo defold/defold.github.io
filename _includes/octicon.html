@@ -11,7 +11,7 @@
 {% if include.link.size > 0 -%}
 <a href="{{ include.link }}" target="{{ include.target }}">
 {%- endif -%}
-<span class="octicon" style="fill: {{ color }}; zoom: {{ zoom }}; padding-right: 2px; vertical-align: middle;">
+<span class="octicon" style="fill: {{ color }}; zoom: {{ zoom }}; vertical-align: middle;">
 	{% include {{include.icon}} %}
 </span>&nbsp;{{ include.text }}
 {% if include.link.size > 0 -%}

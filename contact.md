@@ -3,7 +3,8 @@ layout: hero_and_text
 title: Contact
 description: We look forward to hearing from you!
 nav: floating
-after: subscribe.html,corporate_partners.html
+background: /images/hero/defold-top-bg-transparent-2.png
+after: [subscribe.html,corporate_partners.html]
 ---
 
 ### Media and business inquiries
