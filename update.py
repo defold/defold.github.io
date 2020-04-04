@@ -27,6 +27,7 @@ AWESOME_ZIP = "awesome-defold-master.zip"
 ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
 AUTHORINDEX_JSON = os.path.join("_data", "authorindex.json")
 TAGINDEX_JSON = os.path.join("_data", "tagindex.json")
+PLATFORMINDEX_JSON = os.path.join("_data", "platformindex.json")
 
 REF_DATA_DIR = os.path.join("_data", "ref")
 
@@ -429,6 +430,26 @@ def process_codepad(download = False):
         rmcopytree(os.path.join(input_dir, "build", "default", "DefoldCodePad"), codepad_dir)
 
 
+def fix_tags_case(list):
+    if list:
+        for i,v in enumerate(list):
+            if v.islower():
+                list[i] = v.capitalize()
+    return list
+
+def fix_platforms_case(platforms):
+    if platforms:
+        for i,platform in enumerate(platforms):
+            if platform.lower() == "ios":
+                platforms[i] = "iOS"
+            elif platform.lower() == "html5":
+                platforms[i] = "HTML5"
+            elif platform.lower() == "macos":
+                platforms[i] = "macOS"
+            else:
+                platforms[i] = platform.capitalize()
+    return platforms
+
 def process_assets(download = False):
     if download:
         if os.path.exists(AWESOME_ZIP):
@@ -474,6 +495,7 @@ def process_assets(download = False):
         assetindex = []
         authorindex = {}
         tagindex = {}
+        platformindex = {}
         for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "assets"), "*.json"):
             basename = os.path.basename(filename)
             print("Processing asset: {}".format(basename))
@@ -485,11 +507,8 @@ def process_assets(download = False):
 
             # read asset and add additional data
             asset = read_as_json(asset_file)
-            tags = asset["tags"]
-            if tags:
-                for i,tag in enumerate(tags):
-                    if tag.islower():
-                        tags[i] = tag.capitalize()
+            fix_tags_case(asset["tags"])
+            fix_platforms_case(asset["platforms"])
             author_name = asset["author"].encode('utf-8')
             author_id = hashlib.md5(author_name).hexdigest()
             asset["author_id"] = author_id
@@ -512,6 +531,19 @@ def process_assets(download = False):
                         "assets": []
                     }
                 tagindex[tag]["assets"].append({
+                    "id": asset_id,
+                    "stars": asset.get("stars") or 0
+                })
+
+            # build platform index
+            for platform in asset["platforms"]:
+                if not platform in platformindex:
+                    platformindex[platform] = {
+                        "id": platform.lower().replace(" ", ""),
+                        "name": platform,
+                        "assets": []
+                    }
+                platformindex[platform]["assets"].append({
                     "id": asset_id,
                     "stars": asset.get("stars") or 0
                 })
@@ -553,6 +585,11 @@ def process_assets(download = False):
         taglist = tagindex.values()
         taglist.sort(key=lambda x: x.get("id").lower())
         write_as_json(TAGINDEX_JSON, taglist)
+
+        # write platform index
+        platformlist = platformindex.values()
+        platformlist.sort(key=lambda x: x.get("id").lower())
+        write_as_json(PLATFORMINDEX_JSON, platformlist)
 
         # write tag data
         for tag in taglist:
