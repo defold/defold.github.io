@@ -485,6 +485,11 @@ def process_assets(download = False):
 
             # read asset and add additional data
             asset = read_as_json(asset_file)
+            tags = asset["tags"]
+            if tags:
+                for i,tag in enumerate(tags):
+                    if tag.islower():
+                        tags[i] = tag.capitalize()
             author_name = asset["author"].encode('utf-8')
             author_id = hashlib.md5(author_name).hexdigest()
             asset["author_id"] = author_id
