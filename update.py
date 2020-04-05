@@ -52,11 +52,11 @@ title: {}
 ---
 """
 
-TAG_SORT_STARS_MD_FRONTMATTER = """---
+TAG_SORT_MD_FRONTMATTER = """---
 layout: assetportal
 tag: {}
 title: {}
-sort: stars
+sort: {}
 ---
 """
 
@@ -472,10 +472,6 @@ def process_assets(download = False):
         author_collection_dir = "authors"
         rmmkdir(author_collection_dir)
 
-        # Jekyll tags collection
-        tag_collection_dir = "tags"
-        rmmkdir(tag_collection_dir)
-
         # Jekyll asset data
         asset_data_dir = os.path.join("_data", "assets")
         rmmkdir(asset_data_dir)
@@ -519,7 +515,8 @@ def process_assets(download = False):
                 "id": asset_id,
                 "tags": asset["tags"],
                 "platforms": asset["platforms"],
-                "stars": asset.get("stars") or 0
+                "stars": asset.get("stars") or 0,
+                "timestamp": asset.get("timestamp") or 0
             })
 
             # build tag index
@@ -532,7 +529,8 @@ def process_assets(download = False):
                     }
                 tagindex[tag]["assets"].append({
                     "id": asset_id,
-                    "stars": asset.get("stars") or 0
+                    "stars": asset.get("stars") or 0,
+                    "timestamp": asset.get("timestamp") or 0
                 })
 
             # build platform index
@@ -591,14 +589,25 @@ def process_assets(download = False):
         platformlist.sort(key=lambda x: x.get("id").lower())
         write_as_json(PLATFORMINDEX_JSON, platformlist)
 
+        # Jekyll tags collection (one subdirectory per sort order)
+        tag_collection_dir = "tags"
+        sort_orders = ["stars", "timestamp"]
+        for sort_order in sort_orders:
+            rmmkdir(os.path.join(tag_collection_dir, sort_order))
+
         # write tag data
         for tag in taglist:
             tag["assets"].sort(key=lambda x: x.get("id"))
+
+            # _data/tags
             filename = os.path.join(tag_data_dir, tag["id"] + ".json")
             with open(filename, "w") as f:
                 f.write(json.dumps(tag, indent=2, sort_keys=True))
-            with open(os.path.join(tag_collection_dir, tag["id"] + ".md"), "w") as f:
-                f.write(TAG_SORT_STARS_MD_FRONTMATTER.format(tag["id"], tag["name"]))
+
+            # tags/stars, tags/timestamp
+            for sort_order in sort_orders:
+                with open(os.path.join(tag_collection_dir, sort_order, tag["id"] + ".md"), "w") as f:
+                    f.write(TAG_SORT_MD_FRONTMATTER.format(tag["id"], tag["name"], sort_order))
 
 
 
