@@ -598,8 +598,6 @@ def process_assets(download = False):
             with open(filename, "w") as f:
                 f.write(json.dumps(tag, indent=2, sort_keys=True))
             with open(os.path.join(tag_collection_dir, tag["id"] + ".md"), "w") as f:
-                f.write(TAG_MD_FRONTMATTER.format(tag["id"], tag["name"]))
-            with open(os.path.join(tag_collection_dir, tag["id"] + ".md"), "w") as f:
                 f.write(TAG_SORT_STARS_MD_FRONTMATTER.format(tag["id"], tag["name"]))
 
 
