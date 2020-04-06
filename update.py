@@ -272,6 +272,7 @@ def process_docs(download = False):
         faq_dst_dir = "faq"
         rmcopytree(faq_src_dir, faq_dst_dir)
         for filename in find_files(faq_dst_dir, "*.md"):
+            process_doc_file(filename)
             replace_in_file(filename, r"title\:", r"layout: text\ntitle:")
 
         print("...shared includes")
