@@ -152,10 +152,10 @@ Why am I getting a java exception when I try to start Defold?
   See [this link](https://github.com/defold/editor2-issues/blob/master/faq/pkixpathbuilding.md) for details on this error.
 
 ## Linux
-:[Linux FAQ](../shared/linux-faq.md)
+{% include shared/linux-faq.md %}
 
 ## Android
-:[Android FAQ](../shared/android-faq.md)
+{% include shared/android-faq.md %}
 
 ## Game content
 
