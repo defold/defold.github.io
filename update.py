@@ -435,7 +435,9 @@ def process_codepad(download = False):
 def fix_tags_case(list):
     if list:
         for i,v in enumerate(list):
-            if v.islower():
+            if v.lower() == "gui":
+                list[i] = "GUI"
+            elif v.islower():
                 list[i] = v.capitalize()
     return list
 

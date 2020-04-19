@@ -1,6 +1,6 @@
 ---
 layout: assetportal
 tag: gui
-title: Gui
+title: GUI
 sort: timestamp
 ---
