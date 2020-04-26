@@ -8,7 +8,7 @@ after: [yellow_download_section.html,corporate_partners.html]
 ---
 
 ### Defold
-Defold is a cross platform game engine used for development of desktop, mobile and web games. The Defold editor runs on Windows, Linux and macOS and it includes a code editor, debugger, profiler and advanced scene and UI editors. Game logic is written in Lua with the option to use native code to extend the engine with additional functionality. Defold has a zero-setup policy where no additional tools or configurations are required to use Defold. Developers can produce application bundles for all supported platforms without any additional build tools.
+Defold is a cross platform and open-source game engine used for development of desktop, mobile and web games. The Defold editor runs on Windows, Linux and macOS and it includes a code editor, debugger, profiler and advanced scene and UI editors. Game logic is written in Lua with the option to use native code to extend the engine with additional functionality. Defold has a zero-setup policy where no additional tools or configurations are required to use Defold. Developers can produce application bundles for all supported platforms without any additional build tools.
 
 Visit the [product page](/product) to see a full list of features and be sure to check out some of the great games [made with Defold](/showcase).
 
