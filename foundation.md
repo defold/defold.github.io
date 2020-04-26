@@ -18,7 +18,7 @@ The objectives of the foundation are:
 * Support the open source community and the use of open licenses
 
 ### Vision
-We believe in a free and open internet where software and services use open standards to bring net neutrality and democracy to everyone. The Defold Foundation will work together with industry partners to apply the same principles of free and open source software and service to the work we do with Defold.
+We believe in a free and open internet where software and services use open standards to bring net neutrality and democracy to everyone. The Defold Foundation works together with industry partners to provide open source software and services to game developers across the globe
 
 ### Board
 
