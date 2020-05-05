@@ -8,7 +8,7 @@ after: [opensource_section.html,corporate_partners.html]
 ---
 
 ### Introduction
-The Defold Foundation was created by King in April 2020. The Defold Foundation is registered in Sweden under the name "Stiftelsen Defold Foundation" (org.no. 123456-7890). The foundation is governed by Swedish law and overseen by the County Administrative Board in Stockholm.
+The Defold Foundation was created by King in May 2020. The Defold Foundation is registered in Sweden under the name "Stiftelsen Defold Foundation" (org.no. 123456-7890). The foundation is governed by Swedish law and overseen by the County Administrative Board in Stockholm.
 
 ### Objectives
 The objectives of the foundation are:
