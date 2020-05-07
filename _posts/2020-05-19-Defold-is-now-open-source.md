@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Defold is now open source
-excerpt: We are happy to announce that as of April 2020 Defold, the ultimate game engine for web and mobile, is available as an open source project!
+excerpt: We are happy to announce that as of May 2020 Defold, the ultimate game engine for web and mobile, is available as an open source project!
 author: Sara Cederberg
 type: press
 ---
@@ -16,7 +16,7 @@ Developers from the original development team will leave King to work full time 
 
 The Defold Foundation board will be headed by Sara Cederberg (King) and include industry profiles such as Elin Eriksson (Women in Tech Sweden).
 
-“We are impressed by the Defold team, and look forward to seeing many great gaming experiences come to life through the engine. It will be exciting to follow the community coming together, with the support of the Defold Foundation.” says Tjodolf Sommestad, Chief Development Officer, King.
+“We’re hugely impressed by the Defold team, and look forward to seeing many great gaming experiences come to life. We’ve seen millions of players already playing the King games run on the Defold engine and we’re excited to see the community come together even more, with the support of the Defold Foundation.” says Tjodolf Sommestad, Chief Development Officer, King.
 
 ##### About Defold Foundation
 The Defold Foundation is the owner of the free and open-source game engine Defold. The foundation works together with industry partners to provide open source software and services to game developers across the globe. The foundation was created in May 2020 and is registered in Stockholm, Sweden.
@@ -25,4 +25,4 @@ The Defold Foundation is the owner of the free and open-source game engine Defol
 Defold is a free and open-source game engine used for development of desktop, mobile and web games. Defold is used by a growing number of developers to create commercial hits as well as games for game jams and in schools to teach game development. Defold is known for its ease of use and it is praised for its technical documentation and friendly community of developers.
 
 ##### About King
-King is a leading interactive entertainment company for the mobile world. It had 249 million monthly active users as of fourth quarter 2019 across web, social and mobile platforms, and has developed more than 200 exclusive games that are enjoyed all around the world through its king.com, Facebook, and mobile distribution platforms such as the Apple App Store, Google Play Store, Microsoft Windows App Store and Amazon Appstore. King was acquired by Activision Blizzard (NASDAQ: ATVI) in February 2016. King has game studios in Stockholm, Malmo, London, Barcelona and Berlin, along with offices in Malta and San Francisco.
+King is a leading interactive entertainment company for the mobile world. It had 273 million monthly active users as of first quarter 2020 across web, social and mobile platforms, and has developed more than 200 exclusive games that are enjoyed all around the world through its king.com, Facebook, and mobile distribution platforms such as the Apple App Store, Google Play Store, Microsoft Windows App Store and Amazon Appstore. King was acquired by Activision Blizzard (NASDAQ: ATVI) in February 2016. King has game studios in Stockholm, Malmo, London, Barcelona and Berlin, along with offices in Malta and San Francisco.
