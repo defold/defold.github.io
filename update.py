@@ -600,36 +600,41 @@ def process_assets(tmp_dir):
             with open(os.path.join(tag_collection_dir, sort_order, tag["id"] + ".md"), "w") as f:
                 f.write(TAG_SORT_MD_FRONTMATTER.format(tag["id"], tag["name"], sort_order))
 
-
 def process_games(tmp_dir):
     # image data
     image_dir = os.path.join("images", "games")
     rmcopytree(os.path.join(tmp_dir, "awesome-defold-master", "games", "images"), image_dir)
 
-    # collect list of all games in the awesome list
-    new_games = []
+    # update existing games with new info (except show+placement)
+    # maintain existing order
+    # add new games last
+    games = read_as_json(GAMES_JSON)
+
+    # read new games
     for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "games"), "*.json"):
         basename = os.path.basename(filename)
         print("Processing game: {}".format(basename))
 
-        # read game and add additional data
+        # read new game and add additional data
         game_id = basename.replace(".json", "")
-        game = read_as_json(filename)
-        game["id"] = game_id
-        game["show"] = "half"
-        game["placement"] = "games"
-        new_games.append(game)
+        new_game = read_as_json(filename)
+        new_game["id"] = game_id
+        new_game["show"] = "half"
+        new_game["placement"] = "games"
 
-    # load existing list of games and keep those that exist in the new list of games
-    old_games = read_as_json(GAMES_JSON)
-    games = []
-    for old_game in old_games:
-        for new_game in new_games:
-            if old_game.get("id") == new_game.get("id"):
-                new_game["show"] = old_game.get("show", "half")
-                new_game["placement"] = old_game.get("placement", "games")
-                games.append(new_game)
-                break
+        # try to find game in existing list of games
+        found = False
+        for game in games:
+            if game.get("id") == new_game.get("id"):
+                found = True
+                # copy data from new game (except show+placement)
+                # we do this to maintain the order of games in games.json
+                for k,v in new_game.items():
+                    if k is not "show" and k is not "placement":
+                        game[k] = v
+        # append new games last
+        if not found:
+            games.append(new_game)
 
     write_as_json(GAMES_JSON, games)
 
@@ -803,7 +808,7 @@ def commit_changes(githubtoken):
     call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
 
 
-ALL_COMMANDS = [ "docs", "examples", "refdoc", "assets", "codepad", "searchindex" ]
+ALL_COMMANDS = [ "docs", "examples", "refdoc", "awesome", "codepad", "searchindex" ]
 
 parser = ArgumentParser()
 parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ', all, help)')
