@@ -27,7 +27,7 @@ We believe in a free and open internet where software and services use open stan
 {%- include profile_card.html
 	image="/images/foundation/sara.jpeg"
 	name="Sara Cederberg"
-	bio="Sara is a creative and hands-on solution finder with strong focus on improvement and quality. She has solid experience within business analysis and process development, digital product development and Business Intelligence. Sara has worked as project manager, product owner and technical director for Defold since 2016. She is now working as a product manager at King and she is the chairperson of the Defold Foundation board."
+	bio="Sara is a creative and hands-on solution finder with strong focus on improvement and quality. She has solid experience within business analysis and process development, digital product development and Business Intelligence. Sara has worked as project manager, product owner and director for Defold since 2016. She is now working as a producer director at King and she is the chairperson of the Defold Foundation board."
 	email="sara@defold.se"
 -%}
 
