@@ -25,11 +25,11 @@ By accessing and/or using our Services you consent to us collecting, processing,
 
 Capitalised terms which are not defined in this Services Privacy Policy have the same meaning as set out in the Defold Terms of Service, which you can access [here](/terms-and-conditions/#definition).
 
-This Services Privacy Policy was last updated on: March 23  - 2020.
+This Services Privacy Policy was last updated on: May 11  - 2020.
 
 **2. About Us**
 
-For information collected under this Privacy Policy, **Stiftelsen Defold Foundation** is the data controller. Stiftelsen Defold Foundation is a foundation incorporated and registered in Sweden with company number 123456-7890 whose registered office is at PO Box 6034, 129 06, Hägersten, Sweden.
+For information collected under this Privacy Policy, **Stiftelsen Defold Foundation** is the data controller. Stiftelsen Defold Foundation is a foundation incorporated and registered in Sweden with company number 802481-5162 whose registered office is at PO Box 6034, 129 06, Hägersten, Sweden.
 
 **3. Data We Collect on Developers**
 
@@ -84,7 +84,7 @@ Legal Bases
 
 In each case where we process your information, we do so lawfully in accordance with one of the legal basis set out under European data protection law. The legal bases which we rely upon are the following:
 
- * **Contractual Necessity.** This covers data used by us in order to provide you with Services that you have requested - and that we have agreed - to provide to you, such as the Defold Software, the Website and/or the Player Analytics feature;
+ * **Contractual Necessity.** This covers data used by us in order to provide you with Services that you have requested - and that we have agreed - to provide to you, such as the Defold Software, the Website and/or Services;
  * **Legal Obligation.** This covers data used by us to comply with a legal obligation, such as the prevention of crime or fraud;
  * **Legitimate Interests.** This covers data used by us for purposes that are not harmful to your privacy and can be reasonably expected within the context of your use of our Services, such as analytics and research, marketing and promotion and optimisation of our Services; and
  * **Consent.** Where we ask for your consent to use your data for a particular purpose, we will make this clear at the point of collection and we will also make clear how you can withdraw your consent.
