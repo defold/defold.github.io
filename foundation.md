@@ -39,9 +39,9 @@ We believe in a free and open internet where software and services use open stan
 -%}
 
 {%- include profile_card.html
-	image="/images/foundation/romain.jpeg"
+	image="/images/foundation/romain_thumb.jpeg"
 	name="Romain Sididris"
-	bio="Romain works as Game Engine Director at King. Prior to King he worked as World Technical Director at Gameloft. He has a long background in software development and product management."
+	bio="Romain started as a developer and one of the founders of Virtools middleware back in 1996, bringing fast prototyping and creation tools to the game industry. Passionate about creating optimized engines and tools, he had the chance to see them used in many games, interactive setups and virtual reality applications in many markets and platforms. He is a strong believer in innovative engines and tools as key to unlock the creative potential in content creators. He joined Gameloft as CTO in 2011 where he started focusing on mobiles games before joining King in 2014 where he is now working as director of engines."
 	email="romain@defold.se"
 -%}
 
