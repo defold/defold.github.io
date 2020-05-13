@@ -6,7 +6,7 @@
 	<a href="{{ include.link }}" target="{% if include.target %}{{ include.target }}{% else %}_self{% endif %}">
 		{%- if include.icon -%}
 		<div style="display: grid; grid-template-columns: 10% auto; grid-gap: 2rem;">
-			<div style="padding: 0px"><span class="icon" style="zoom: {{ include.zoom }};"><img src="{{ include.icon }}" width="100%"/></span></div>
+			<div style="padding: 0px"><span class="icon" style="zoom: {{ include.zoom }};"><img src="{{ include.icon }}" width="100%" alt="{{ include.icon_alt }}"/></span></div>
 			<div style="padding: 0px">
 				<h5 class="left">{{ include.title }}</h5>
 				<p class="left">{{ include.body }}</p>
@@ -15,7 +15,7 @@
 		{%- else -%}
 		<div>
 			{%- if include.topicon -%}
-			<span style="zoom: {{ include.zoom }};"><img src="{{ include.topicon }}" width="20%"/></span>
+			<span style="zoom: {{ include.zoom }};"><img src="{{ include.topicon }}" width="20%" alt="{{ include.topicon_alt }}"/></span>
 			{%- endif -%}
 			<h5 class="left">{{ include.title }}</h5>
 			<p class="left">{{ include.body }}</p>
