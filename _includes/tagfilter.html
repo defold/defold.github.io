@@ -3,12 +3,12 @@
 	{%- assign tags = alltags | uniq | sort -%}
 	<p>FILTER</p>
 	<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 0 1rem; font-size: 0.9em;">
-		{%- if page.tag -%}
+		{%- if include.tag -%}
 			{%- assign class="" -%}
 		{%- else -%}
 			{%- assign class="active" -%}
 		{%- endif-%}
-		<a class="filter {{ class }}" href="/assets">ALL ({{ site.data.assetindex.size }})</a>
+		<a class="filter {{ class }}" href="/assets_{{ include.sort }}">ALL ({{ site.data.assetindex.size }})</a>
 		{%- for tag in tags -%}
 			{% assign tagged_assets = site.data.assetindex | where: "tags", tag %}
 			{% assign tag_no_space = tag | replace: " ", "" | downcase %}
@@ -17,8 +17,13 @@
 			{%- else -%}
 				{%- assign class="" -%}
 			{%- endif-%}
-			<a class="filter {{ class }}" href="/tags/{{ tag | replace: ' ' | downcase }}">{{ tag }} ({{ tagged_assets.size }})</a>
+			<a class="filter {{ class }}" href="/tags/{{ include.sort }}/{{ tag | replace: ' ' | downcase }}">{{ tag }} ({{ tagged_assets.size }})</a>
 		{%- endfor -%}
 	</div>
 	<br/>
+	{%- if include.tag -%}
+		<p>SORT BY: <a href="/tags/stars/{{ include.tag }}">Stars</a>, <a href="/tags/timestamp/{{ include.tag }}">Latest</a></p>
+	{%- else -%}
+		<p>SORT BY: <a href="/assets_stars">Stars</a>, <a href="/assets_timestamp">Latest</a></p>
+	{%- endif-%}
 </div>

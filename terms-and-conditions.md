@@ -1,6 +1,6 @@
 ---
 layout: text
-title: Terms & Conditions
+title: Defold Terms & Conditions
 ---
 
 ## DEFOLD TERMS OF SERVICE

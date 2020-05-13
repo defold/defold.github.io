@@ -99,20 +99,29 @@ local function show_category(self, category)
 end
 
 function init(self)
-	self.index = { "basics", "physics", "animation", "gui", "input", "particles", "sound", "render", "debug", "collection", "sprite", "file" }
+	self.index = { "basics", "physics", "animation", "gui", "input", "particles", "sound", "render", "debug", "collection", "sprite", "file", "tilemap" }
+	self.index = {}
 	self.index["basics"] = { "simple_move", "message_passing", "follow", "parent_child", "spawn", "z_order" }
 	self.index["physics"] = { "dynamic", "kinematic", "raycast", "trigger" }
 	self.index["animation"] = { "spinner", "flipbook", "tween", "spine" }
-	self.index["gui"] = { "button", "stencil", "load_texture", "pointer_over"}
+	self.index["gui"] = { "button", "stencil", "load_texture", "pointer_over", "color"}
 	self.index["input"] = { "move", "text", "down duration" }
 	self.index["particles"] = { "particlefx", "modifiers" }
 	self.index["sound"] = { "music", "fade_in_out" }
 	self.index["render"] = { "camera" }
 	self.index["debug"] = { "physics", "profile" }
 	self.index["collection"] = { "proxy" }
-	self.index["sprite"] = { "size" }
+	self.index["sprite"] = { "size", "tint" }
 	self.index["file"] = { "sys_save_load" }
-
+	self.index["tilemap"] = { "collisions" }
+	local categories = {}
+	for k,_ in pairs(self.index) do
+		categories[#categories + 1] = k
+	end
+	for _,category in ipairs(categories) do
+		self.index[#self.index + 1] = category
+	end
+	
 	self.examples = {}
 	self.categories = {}
 

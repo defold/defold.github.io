@@ -93,7 +93,7 @@ layout: base
 						<td valign="top">Tags</td>
 						<td valign="top">
 							{%- for tag in asset.tags -%}
-								<a href="/tags/{{ tag | downcase | remove: ' ' }}">{{ tag }}</a><br/>
+								<a href="/tags/stars/{{ tag | downcase | remove: ' ' }}">{{ tag }}</a><br/>
 							{%- endfor -%}
 						</td>
 					</tr>

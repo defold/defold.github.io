@@ -2,24 +2,57 @@
 
 <title>{{ page.title }}</title>
 
-<!-- SOCIAL META DATA -->
-{%- assign meta_description="Defold is a multi-platform game engine that simplifies development of 2D games for all major platforms – HTML5, Android, iOS, Windows, Mac OS X and Linux" -%}
-{%- assign meta_title="Free 2D Game Engine for Cross-Platform Publishing" -%}
-<meta name="description" content="{{ meta_description }}">
+<!-- Google Structured Data (https://developers.google.com/search/docs/guides/intro-structured-data) -->
+<script type="application/ld+json">
+	{
+		"@context": "http://schema.org/",
+		"@type": "Organization",
+		"name": "Defold Foundation",
+		"url": "https://www.defold.com",
+		"email": "info@defold.com",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "Postbox 6034",
+			"addressLocality": "Hägersten",
+			"addressRegion": "Stockholm",
+			"addressCountry": "Sweden",
+			"postalCode": "12906"
+		},
+		"foundingDate": "2020",
+		"sameAs": [
+			"https://www.facebook.com/Defold",
+			"https://www.twitter.com/defold",
+			"https://www.github.com/defold",
+			"https://www.youtube.com/channel/UCrEYXG15n3V0Y8eK0RbCaLQ"
+		]
+	}
+</script>
 
+{%- assign meta_description="Defold is a free game engine used for development of desktop, mobile and web games." -%}
+{%- assign meta_title="The ultimate cross platform game engine for web and mobile" -%}
+
+<!-- META DATA -->
+<meta name="description" content="{{ meta_description }}">
+<meta name="author" content="Defold Foundation" />
+<meta name="keywords" content="defold, gameengine, game-engine, game-development, game-dev, gamedev, crossplatform, cross-platform, free, html5, web, android, ios, desktop" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- OPEN GRAPH -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.defold.com">
 <meta property="og:site_name" content="Defold game engine">
 <meta property="og:title" content="{{ meta_title}}">
 <meta property="og:description" content="{{ meta_description }}">
 <meta property="og:image" content="https://www.defold.com/images/social/facebook-share.jpg">
+<!-- end OPEN GRAPH -->
 
+<!-- TWITTER -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@defold">
 <meta name="twitter:title" content="{{ meta_title}}'">
 <meta name="twitter:description" content="{{ meta_description }}">
 <meta name="twitter:image" content="https://www.defold.com/images/social/twitter-share.jpg">
-<!-- end SOCIAL META DATA -->
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- end TWITTER -->
 
 <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
 
@@ -32,3 +65,8 @@
 <link rel="stylesheet" type="text/css" href="/css/fruity.css">
 <link rel="stylesheet" type="text/css" href="/css/fontello.css">
 <!-- end CSS -->
+
+<!-- SendInBlue CSS -->
+<link rel="stylesheet" type="text/css" href="/css/sendinblue.css">
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+<!-- end SendInBlue CSS -->

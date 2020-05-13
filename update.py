@@ -25,8 +25,10 @@ CODEPAD_ZIP = "codepad-master.zip"
 AWESOME_ZIP = "awesome-defold-master.zip"
 
 ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
+GAMES_JSON = os.path.join("_data", "games.json")
 AUTHORINDEX_JSON = os.path.join("_data", "authorindex.json")
 TAGINDEX_JSON = os.path.join("_data", "tagindex.json")
+PLATFORMINDEX_JSON = os.path.join("_data", "platformindex.json")
 
 REF_DATA_DIR = os.path.join("_data", "ref")
 
@@ -51,11 +53,11 @@ title: {}
 ---
 """
 
-TAG_SORT_STARS_MD_FRONTMATTER = """---
+TAG_SORT_MD_FRONTMATTER = """---
 layout: assetportal
 tag: {}
 title: {}
-sort: stars
+sort: {}
 ---
 """
 
@@ -178,7 +180,7 @@ def read_as_json(filename):
 
 def write_as_json(filename, data):
     with open(filename, "w") as f:
-        json.dump(data, f, indent=2, sort_keys=True)
+        json.dump(data, f, indent=4, sort_keys=True)
 
 
 def replace_in_file(filename, old, new, flags=None):
@@ -271,6 +273,7 @@ def process_docs(download = False):
         faq_dst_dir = "faq"
         rmcopytree(faq_src_dir, faq_dst_dir)
         for filename in find_files(faq_dst_dir, "*.md"):
+            process_doc_file(filename)
             replace_in_file(filename, r"title\:", r"layout: text\ntitle:")
 
         print("...shared includes")
@@ -429,7 +432,214 @@ def process_codepad(download = False):
         rmcopytree(os.path.join(input_dir, "build", "default", "DefoldCodePad"), codepad_dir)
 
 
-def process_assets(download = False):
+def fix_tags_case(list):
+    if list:
+        for i,v in enumerate(list):
+            if v.lower() == "gui":
+                list[i] = "GUI"
+            elif v.islower():
+                list[i] = v.capitalize()
+    return list
+
+def fix_platforms_case(platforms):
+    if platforms:
+        for i,platform in enumerate(platforms):
+            if platform.lower() == "ios":
+                platforms[i] = "iOS"
+            elif platform.lower() == "html5":
+                platforms[i] = "HTML5"
+            elif platform.lower() == "macos":
+                platforms[i] = "macOS"
+            else:
+                platforms[i] = platform.capitalize()
+    return platforms
+
+def process_assets(tmp_dir):
+    # Jekyll assets collection
+    asset_collection_dir = "assets"
+    rmmkdir(asset_collection_dir)
+
+    # Jekyll authors collection
+    author_collection_dir = "authors"
+    rmmkdir(author_collection_dir)
+
+    # Jekyll asset data
+    asset_data_dir = os.path.join("_data", "assets")
+    rmmkdir(asset_data_dir)
+
+    # Jekyll author data
+    author_data_dir = os.path.join("_data", "authors")
+    rmmkdir(author_data_dir)
+
+    # Jekyll tag data
+    tag_data_dir = os.path.join("_data", "tags")
+    rmmkdir(tag_data_dir)
+
+    # image data
+    image_dir = os.path.join("images", "assets")
+    rmcopytree(os.path.join(tmp_dir, "awesome-defold-master", "assets", "images"), image_dir)
+
+    assetindex = []
+    authorindex = {}
+    tagindex = {}
+    platformindex = {}
+    for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "assets"), "*.json"):
+        basename = os.path.basename(filename)
+        print("Processing asset: {}".format(basename))
+        asset_id = basename.replace(".json", "")
+
+        # copy the data file as-is
+        asset_file = os.path.join(asset_data_dir, basename)
+        shutil.copyfile(filename, asset_file)
+
+        # read asset and add additional data
+        asset = read_as_json(asset_file)
+        fix_tags_case(asset["tags"])
+        fix_platforms_case(asset["platforms"])
+        author_name = asset["author"].encode('utf-8')
+        author_id = hashlib.md5(author_name).hexdigest()
+        asset["author_id"] = author_id
+        write_as_json(asset_file, asset)
+
+        # build asset index
+        assetindex.append({
+            "id": asset_id,
+            "tags": asset["tags"],
+            "platforms": asset["platforms"],
+            "stars": asset.get("stars") or 0,
+            "timestamp": asset.get("timestamp") or 0
+        })
+
+        # build tag index
+        for tag in asset["tags"]:
+            if not tag in tagindex:
+                tagindex[tag] = {
+                    "id": tag.lower().replace(" ", ""),
+                    "name": tag,
+                    "assets": []
+                }
+            tagindex[tag]["assets"].append({
+                "id": asset_id,
+                "stars": asset.get("stars") or 0,
+                "timestamp": asset.get("timestamp") or 0
+            })
+
+        # build platform index
+        for platform in asset["platforms"]:
+            if not platform in platformindex:
+                platformindex[platform] = {
+                    "id": platform.lower().replace(" ", ""),
+                    "name": platform,
+                    "assets": []
+                }
+            platformindex[platform]["assets"].append({
+                "id": asset_id,
+                "stars": asset.get("stars") or 0
+            })
+
+        # build author index
+        if not author_id in authorindex:
+            authorindex[author_id] = {
+                "id": author_id,
+                "name": author_name,
+                "assets": []
+            }
+        authorindex[author_id]["assets"].append({
+            "id": asset_id,
+            "stars": asset.get("stars") or 0
+        })
+
+        # generate a dummy markdown page with some front matter for each asset
+        with open(os.path.join(asset_collection_dir, basename.replace(".json", ".md")), "w") as f:
+            f.write(ASSET_MD_FRONTMATTER.format(asset_id, asset["name"]))
+
+    # write asset index
+    write_as_json(ASSETINDEX_JSON, assetindex)
+
+    # write author index
+    authorlist = authorindex.values()
+    authorlist.sort(key=lambda x: x.get("name").lower())
+    write_as_json(AUTHORINDEX_JSON, authorlist)
+
+    # write author data and a dummy markdown page with front matter
+    for author in authorlist:
+        author["assets"].sort(key=lambda x: x.get("id"))
+        filename = os.path.join(author_data_dir, author["id"] + ".json")
+        with open(filename, "w") as f:
+            f.write(json.dumps(author, indent=2, sort_keys=True))
+        with open(os.path.join(author_collection_dir, author["id"] + ".md"), "w") as f:
+            f.write(AUTHOR_MD_FRONTMATTER.format(author["id"], author["name"]))
+
+    # write tag index
+    taglist = tagindex.values()
+    taglist.sort(key=lambda x: x.get("id").lower())
+    write_as_json(TAGINDEX_JSON, taglist)
+
+    # write platform index
+    platformlist = platformindex.values()
+    platformlist.sort(key=lambda x: x.get("id").lower())
+    write_as_json(PLATFORMINDEX_JSON, platformlist)
+
+    # Jekyll tags collection (one subdirectory per sort order)
+    tag_collection_dir = "tags"
+    sort_orders = ["stars", "timestamp"]
+    for sort_order in sort_orders:
+        rmmkdir(os.path.join(tag_collection_dir, sort_order))
+
+    # write tag data
+    for tag in taglist:
+        tag["assets"].sort(key=lambda x: x.get("id"))
+
+        # _data/tags
+        filename = os.path.join(tag_data_dir, tag["id"] + ".json")
+        with open(filename, "w") as f:
+            f.write(json.dumps(tag, indent=2, sort_keys=True))
+
+        # tags/stars, tags/timestamp
+        for sort_order in sort_orders:
+            with open(os.path.join(tag_collection_dir, sort_order, tag["id"] + ".md"), "w") as f:
+                f.write(TAG_SORT_MD_FRONTMATTER.format(tag["id"], tag["name"], sort_order))
+
+def process_games(tmp_dir):
+    # image data
+    image_dir = os.path.join("images", "games")
+    rmcopytree(os.path.join(tmp_dir, "awesome-defold-master", "games", "images"), image_dir)
+
+    # update existing games with new info (except show+placement)
+    # maintain existing order
+    # add new games last
+    games = read_as_json(GAMES_JSON)
+
+    # read new games
+    for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "games"), "*.json"):
+        basename = os.path.basename(filename)
+        print("Processing game: {}".format(basename))
+
+        # read new game and add additional data
+        game_id = basename.replace(".json", "")
+        new_game = read_as_json(filename)
+        new_game["id"] = game_id
+        new_game["show"] = "half"
+        new_game["placement"] = "games"
+
+        # try to find game in existing list of games
+        found = False
+        for game in games:
+            if game.get("id") == new_game.get("id"):
+                found = True
+                # copy data from new game (except show+placement)
+                # we do this to maintain the order of games in games.json
+                for k,v in new_game.items():
+                    if k is not "show" and k is not "placement":
+                        game[k] = v
+        # append new games last
+        if not found:
+            games.append(new_game)
+
+    write_as_json(GAMES_JSON, games)
+
+
+def process_awesome(download = False):
     if download:
         if os.path.exists(AWESOME_ZIP):
             os.remove(AWESOME_ZIP)
@@ -442,123 +652,8 @@ def process_assets(download = False):
     with tmpdir() as tmp_dir:
         shutil.copyfile(AWESOME_ZIP, os.path.join(tmp_dir, AWESOME_ZIP))
         unzip(os.path.join(tmp_dir, AWESOME_ZIP), tmp_dir)
-
-        # Jekyll assets collection
-        asset_collection_dir = "assets"
-        rmmkdir(asset_collection_dir)
-
-        # Jekyll authors collection
-        author_collection_dir = "authors"
-        rmmkdir(author_collection_dir)
-
-        # Jekyll tags collection
-        tag_collection_dir = "tags"
-        rmmkdir(tag_collection_dir)
-
-        # Jekyll asset data
-        asset_data_dir = os.path.join("_data", "assets")
-        rmmkdir(asset_data_dir)
-
-        # Jekyll author data
-        author_data_dir = os.path.join("_data", "authors")
-        rmmkdir(author_data_dir)
-
-        # Jekyll tag data
-        tag_data_dir = os.path.join("_data", "tags")
-        rmmkdir(tag_data_dir)
-
-        # image data
-        image_dir = os.path.join("images", "assets")
-        rmcopytree(os.path.join(tmp_dir, "awesome-defold-master", "assets", "images", "assets"), image_dir)
-
-        assetindex = []
-        authorindex = {}
-        tagindex = {}
-        for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "assets"), "*.json"):
-            basename = os.path.basename(filename)
-            print("Processing asset: {}".format(basename))
-            asset_id = basename.replace(".json", "")
-
-            # copy the data file as-is
-            asset_file = os.path.join(asset_data_dir, basename)
-            shutil.copyfile(filename, asset_file)
-
-            # read asset and add additional data
-            asset = read_as_json(asset_file)
-            author_name = asset["author"].encode('utf-8')
-            author_id = hashlib.md5(author_name).hexdigest()
-            asset["author_id"] = author_id
-            write_as_json(asset_file, asset)
-
-            # build asset index
-            assetindex.append({
-                "id": asset_id,
-                "tags": asset["tags"],
-                "platforms": asset["platforms"],
-                "stars": asset.get("stars") or 0
-            })
-
-            # build tag index
-            for tag in asset["tags"]:
-                if not tag in tagindex:
-                    tagindex[tag] = {
-                        "id": tag.lower().replace(" ", ""),
-                        "name": tag,
-                        "assets": []
-                    }
-                tagindex[tag]["assets"].append({
-                    "id": asset_id,
-                    "stars": asset.get("stars") or 0
-                })
-
-            # build author index
-            if not author_id in authorindex:
-                authorindex[author_id] = {
-                    "id": author_id,
-                    "name": author_name,
-                    "assets": []
-                }
-            authorindex[author_id]["assets"].append({
-                "id": asset_id,
-                "stars": asset.get("stars") or 0
-            })
-
-            # generate a dummy markdown page with some front matter for each asset
-            with open(os.path.join(asset_collection_dir, basename.replace(".json", ".md")), "w") as f:
-                f.write(ASSET_MD_FRONTMATTER.format(asset_id, asset["name"]))
-
-        # write asset index
-        write_as_json(ASSETINDEX_JSON, assetindex)
-
-        # write author index
-        authorlist = authorindex.values()
-        authorlist.sort(key=lambda x: x.get("name").lower())
-        write_as_json(AUTHORINDEX_JSON, authorlist)
-
-        # write author data and a dummy markdown page with front matter
-        for author in authorlist:
-            author["assets"].sort(key=lambda x: x.get("id"))
-            filename = os.path.join(author_data_dir, author["id"] + ".json")
-            with open(filename, "w") as f:
-                f.write(json.dumps(author, indent=2, sort_keys=True))
-            with open(os.path.join(author_collection_dir, author["id"] + ".md"), "w") as f:
-                f.write(AUTHOR_MD_FRONTMATTER.format(author["id"], author["name"]))
-
-        # write tag index
-        taglist = tagindex.values()
-        taglist.sort(key=lambda x: x.get("id").lower())
-        write_as_json(TAGINDEX_JSON, taglist)
-
-        # write tag data
-        for tag in taglist:
-            tag["assets"].sort(key=lambda x: x.get("id"))
-            filename = os.path.join(tag_data_dir, tag["id"] + ".json")
-            with open(filename, "w") as f:
-                f.write(json.dumps(tag, indent=2, sort_keys=True))
-            with open(os.path.join(tag_collection_dir, tag["id"] + ".md"), "w") as f:
-                f.write(TAG_MD_FRONTMATTER.format(tag["id"], tag["name"]))
-            with open(os.path.join(tag_collection_dir, tag["id"] + ".md"), "w") as f:
-                f.write(TAG_SORT_STARS_MD_FRONTMATTER.format(tag["id"], tag["name"]))
+        process_assets(tmp_dir)
+        process_games(tmp_dir)
 
 
 
@@ -713,7 +808,7 @@ def commit_changes(githubtoken):
     call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
 
 
-ALL_COMMANDS = [ "docs", "examples", "refdoc", "assets", "codepad", "searchindex" ]
+ALL_COMMANDS = [ "docs", "examples", "refdoc", "awesome", "codepad", "searchindex" ]
 
 parser = ArgumentParser()
 parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ', all, help)')
@@ -725,7 +820,7 @@ help = """
 COMMANDS:
 docs = Process the docs (manuals, tutorials and faq)
 refdoc = Process the API reference
-assets = Process the asset portal list
+awesome = Process the awesome assets and games lists (from awesome-defold)
 examples = Build the examples
 codepad = Build the Defold CodePad
 commit = Commit changed files (requires --githubtoken)
@@ -752,8 +847,8 @@ for command in args.commands:
         process_examples(download = args.download)
     elif command == "refdoc":
         process_refdoc(download = args.download)
-    elif command == "assets":
-        process_assets(download = args.download)
+    elif command == "awesome":
+        process_awesome(download = args.download)
     elif command == "codepad":
         process_codepad(download = args.download)
     elif command == "searchindex":

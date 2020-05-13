@@ -1,6 +1,6 @@
 ---
 layout: hero_and_text
-title: Contact
+title: Contact Defold
 description: We look forward to hearing from you!
 nav: floating
 background: /images/hero/defold-top-bg-transparent-2.png

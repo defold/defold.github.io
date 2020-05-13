@@ -1,6 +1,6 @@
 ---
 layout: text
-title: Privacy Policy
+title: Defold Privacy Policy
 ---
 
 ## PRIVACY POLICY FOR OUR SERVICES

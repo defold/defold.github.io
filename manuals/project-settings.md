@@ -67,6 +67,11 @@ A space separated list of directories that should be shared from your project vi
 #### Shared State
 Check to share a single Lua state between all script types, unchecked by default.
 
+## Engine
+
+#### Run While Iconified
+Allow the engine to continue running while the application window is iconified (desktop platforms only), `false` by default.
+
 ## Display
 
 #### Width
@@ -318,6 +323,12 @@ If specified, use this info.plist file when bundling your app.
 #### Entitlements
 If specified, can override wildcard entitlements defined in the supplied provisioning profile (.entitlements, .xcent, .plist).
 
+#### Default Language
+The language used if the application doesn't have user's preferred language in `Localizations` list (see [CFBundleDevelopmentRegion](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-130430)). Use the two-letter ISO 639-1 standard if preferred language is available there or the three-letter ISO 639-2.
+
+#### Localizations
+This field contains comma-separated strings identifying the language name or ISO language designator of the supported localizations (see [CFBundleLocalizations](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-109552)).
+
 ## Android
 
 #### App Icon 36x36--192x192
@@ -366,6 +377,12 @@ If set, use the specified info.plist file when bundling.
 
 #### Bundle Identifier
 The bundle identifier lets OS X recognize updates to your app. Your bundle ID must be registered with Apple and be unique to your app. You cannot use the same identifier for both iOS and OS X apps.
+
+#### Default Language
+The language used if the application doesn't have user's preferred language in `Localizations` list (see [CFBundleDevelopmentRegion](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-130430)). Use the two-letter ISO 639-1 standard if preferred language is available there or the three-letter ISO 639-2.
+
+#### Localizations
+This field contains comma-separated strings identifying the language name or ISO language designator of the supported localizations (see [CFBundleLocalizations](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-109552)).
 
 ## Windows
 
