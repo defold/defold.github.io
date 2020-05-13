@@ -18,12 +18,25 @@ background: /images/hero/defold-top-bg-transparent-2.png
 				<br/>
 				<br/>
 				<br/>
-				<br/>
-				<br/>
-				<br/>
 			</div>
 		</div>
 	</div>
+
+	{%- assign news = site.data.news -%}
+	{%- if news.size > 0 -%}
+	<div class="container">
+		{%- for n in news -%}
+		{%- assign title = n.title -%}
+		{%- assign body = n.body -%}
+		{%- assign url = n.url -%}
+		<div class="row">
+			<div class="columns twelve dark-text">
+			{% include card.html title=title body=body link=url %}
+			</div>
+		</div>
+		{%- endfor -%}
+	</div>
+	{%- endif -%}
 
 	<div class="container">
 		<div class="row">
