@@ -1,8 +1,8 @@
 <div class='asset left light-text compact'>
-<div id="image" style="background: url('{{ include.image }}') center/cover; padding: 0; margin: 0; height: 190px"></div>
-<div>
-<h5>{{ include.name }}</h5>
-<p style="font-size: smaller">{{ include.bio }}</p>
+<div id="image" style="background: url('{{ include.image }}') center/cover; padding: 0; margin: 0; height: 200px" onclick="location.href='{{ include.link }}';"></div>
+<div onclick="location.href='{{ include.link }}';">
+<h5><a href="{{ include.link }}">{{ include.name }}</a></h5>
+<p style="font-size: smaller"><a href="{{ include.link }}">{{ include.bio }}</a></p>
 <p><a href="mailto:{{ include.email }}">{{ include.email }}</a></p>
 <p><a href="tel:{{ include.phone }}">{{ include.phone }}</a></p>
 </div>

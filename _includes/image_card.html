@@ -1,12 +1,6 @@
 
-<div class="{% if include.link.size > 0 %}clickable {% endif %}card center {{ include.class | default: 'light'}}">
-{% if include.link.size > 0 %}
-<a href="{{ include.link }}">
-{% endif %}
+<div class="{% if include.link.size > 0 %}clickable {% endif %}card center compact {{ include.class | default: 'light'}}" onclick="location.href='{{ include.link }}';">
 <div>
 <img src="{{ include.image }}"/>
 </div>
-{% if include.link.size > 0 %}
-</a>
-{% endif %}
 </div>

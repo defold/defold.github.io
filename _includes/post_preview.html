@@ -1,8 +1,4 @@
 
 <div class="row">
-<h5><a href="{{ include.post.url }}">{{ include.post.title }}</a></h5>
-<span><i>By {{ include.post.author }} on {{ include.post.date | date: "%b %d, %Y" }}</i><br/>
-"{{ include.post.excerpt }}"</span>
-<br/>
-<br/>
+<h5><a href="{{ include.post.url }}">{{ include.post.title }} - {{ include.post.date | date: "%b %d, %Y" }}</a></h5>
 </div>

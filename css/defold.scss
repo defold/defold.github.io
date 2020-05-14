@@ -7,6 +7,7 @@
 	--almostlightest: #f0f2f6;
 	--lighter: #afb9c4; /* +21% from light*/
 	--light: #79838e;
+	--grey: #272c31;
 	--dark: #1e2226;
 	--darker: #191d21; /* -2% from dark */
 	--darkest: #14181c; /* -4% from dark*/
@@ -697,7 +698,7 @@ ul.checkmark li:before {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	margin-bottom: 0;
 	border-radius: 4px;
-	background-color: #272c31;
+	background-color: var(--grey);
 }
 .asset #image {
 	border-radius: 4px 4px 0 0;
@@ -771,6 +772,10 @@ ul.checkmark li:before {
 	background-color: white;
 	position: relative;
 	overflow: hidden;
+}
+
+.card.grey {
+	background-color: var(--grey);
 }
 
 .card.dark {
