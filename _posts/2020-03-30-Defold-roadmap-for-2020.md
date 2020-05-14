@@ -1,5 +1,5 @@
 ---
-layout: text
+layout: post
 title:  Defold roadmap for 2020
 excerpt: This roadmap outlines our long-term plans for Defold.
 author: Björn Ritzl
