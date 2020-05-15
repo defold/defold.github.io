@@ -1,0 +1,38 @@
+---
+layout: hero_and_text
+title: Defold Press and News Room
+description: The Defold Press and News Room is your one stop shop to Defold news stories and up to date press information and images.
+nav: floating
+background: /images/hero/defold-top-bg-transparent-2.png
+after: [subscribe.html, corporate_partners.html]
+---
+
+<div class="row">
+<h3>Defold in the News</h3>
+{%- assign counter = '0' -%}
+{%- for post in site.posts -%}
+{%- if post.type == "press" and counter < '3' -%}
+{% capture counter %}{{ counter | plus:'1' }}{% endcapture %}
+{%- include post_preview.html post=post -%}
+{%- endif -%}
+{%- endfor -%}
+
+<a href="/news">More News ⇢</a>
+</div>
+
+<br/>
+<br/>
+<br/>
+
+<div class="row">
+	<div class="columns six">
+		<h4>Press inquiries</h4>
+		<p>Contact us for press inquiries at <a href="mailto:press@defold.se">press@defold.se</a>.</p>
+		<p>For everything else, please see <a href="/contact">available options to get in touch</a>.</p>
+	</div>
+	<div class="columns six">
+		<h4>Press-kit</h4>
+		<p>Our current brand assets including the Defold logo and Defold Foundation images.</p>
+		<a href="/press-kit">Press-kit ⇢</a>
+	</div>
+</div>

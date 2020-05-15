@@ -7,20 +7,20 @@ background: /images/hero/defold-top-bg-transparent-2.png
 after: [opensource_section.html,corporate_partners.html]
 ---
 
-## About
+### About
 The Defold Foundation is the owner of the free and open-source game engine Defold. The foundation works together with industry partners to provide open source software and services to game developers across the globe. The foundation was created in May 2020 and is registered in Stockholm, Sweden.
 
-## Objectives
+### Objectives
 The objectives of the foundation are:
 
 * Make the Defold software available to the public
 * Make the Defold source code available to the public
 * Support the open source community and the use of open licenses
 
-## Vision
-We believe in a free and open internet where software and services use open standards to bring net neutrality and democracy to everyone. The Defold Foundation [works together with industry partners](/donate) to provide open source software and services to game developers across the globe.
+### Vision
+We believe in a free and open internet where software and services use open standards to bring net neutrality and democracy to everyone. The Defold Foundation works together with industry partners to provide open source software and services to game developers across the globe.
 
-## Board
+### Board
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-gap: 2rem; padding: 0px;">
 
@@ -59,8 +59,12 @@ We believe in a free and open internet where software and services use open stan
 {%- include profile_card.html
 	image="/images/foundation/thumbs/bjorn.jpeg"
 	name="Björn Ritzl"
-	bio="Björn has worked as a developer for almost two decades, primarily in the games industry, and even longer as a hobbyist writing his first lines of code on a C64 in the late 80s. He has worked with mobile game development since before the smart phones and he is a big fan of old school games from the days of the C64 and Amiga. Björn started working with Defold at King in 2015, initially as a developer and transitioning into the role of product owner in 2018. He is a strong believer in the power of open source development with more than 100 [open source projects on GitHub](https://www.github.com/britzl)."
+	bio="Björn has worked as a developer for almost two decades, primarily in the games industry, and even longer as a hobbyist writing his first lines of code on a C64 in the late 80s. He has worked with mobile game development since before the smart phones and he is a big fan of old school games from the days of the C64 and Amiga. Björn started working with Defold at King in 2015, initially as a developer and transitioning into the role of product owner in 2018. He is a strong believer in the power of open source development with more than 100 open source projects on GitHub."
 	email="bjorn@defold.se"
 	phone="+46-704-335333"
 -%}
 </div>
+
+<br/><br/>
+### Support the foundation
+The Defold Foundation invites individuals and corporations to support the objectives and vision of the foundation through community donations and corporate partnerships. [Learn more about how to get involved and support the foundation](/donate).

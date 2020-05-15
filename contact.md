@@ -13,6 +13,8 @@ For all press inquiries please email [press@defold.se](mailto:press@defold.se).
 
 For business inquiries please email [business@defold.se](mailto:business@defold.se).
 
+Get in touch with the Defold Foundation [here](/foundation).
+
 ### Support
 
 If you've run into a problem and need help then please reach out to us. We're happy to help!
