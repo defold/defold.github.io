@@ -1,7 +1,7 @@
 ---
 layout: text
 title:  Defold Newsletter 37
-excerpt: This roadmap outlines our long-term plans for Defold.
+excerpt: This newsletter contains three great new Defold games well worth spending a couple of hours (or more!) on. We also have some new shader assets to pimp up your Defold fonts with and two new YouTube videos to learn from.  Finally we also cover the public web monetization Call for Proposals from Grant for the Web. And the latest Defold beta release notes!
 author: Björn Ritzl
 ---
 
