@@ -27,7 +27,7 @@ background: /images/hero/defold-top-bg-transparent-2.png
 
 {%- include image_and_text_card.html image="/images/foundation/thumbs/Mathias Westerdahl_2020_RW.jpg" link="/images/foundation/highres/Mathias Westerdahl_2020_RW.jpg" title="Mathias Westerdahl" text="(Click for high-resolution image)" -%}
 
-{%- include image_and_text_card.html image="/images/foundation/thumbs/bjorn.jpeg" link="/images/foundation/highres/bjorn.jpeg" title="Björn Ritzl" text="(Click for high-resolution image)" -%}
+{%- include image_and_text_card.html image="/images/foundation/thumbs/Bjorn Ritzl_2020_RW.jpg" link="/images/foundation/highres/Bjorn Ritzl_2020_RW.jpg" title="Björn Ritzl" text="(Click for high-resolution image)" -%}
 
 </div>
 

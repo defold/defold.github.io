@@ -1,6 +1,6 @@
 ---
 layout: hero_and_text
-title: Press
+title: Defold News
 description: All Defold News
 nav: floating
 background: /images/hero/defold-top-bg-transparent-2.png

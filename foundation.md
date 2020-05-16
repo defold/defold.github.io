@@ -4,7 +4,7 @@ title: The Defold Foundation
 description: The Defold Foundation is the owner of the free and open-source game engine Defold. Learn about the foundation objectives and get to know the foundation board members.
 nav: floating
 background: /images/hero/defold-top-bg-transparent-2.png
-after: [opensource_section.html,corporate_partners.html]
+after: [opensource_section.html, corporate_partners.html]
 ---
 
 ### About
@@ -57,7 +57,7 @@ We believe in a free and open internet where software and services use open stan
 -%}
 
 {%- include profile_card.html
-	image="/images/foundation/thumbs/bjorn.jpeg"
+	image="/images/foundation/thumbs/Bjorn Ritzl_2020_RW.jpg"
 	name="Björn Ritzl"
 	bio="Björn has worked as a developer for almost two decades, primarily in the games industry, and even longer as a hobbyist writing his first lines of code on a C64 in the late 80s. He has worked with mobile game development since before the smart phones and he is a big fan of old school games from the days of the C64 and Amiga. Björn started working with Defold at King in 2015, initially as a developer and transitioning into the role of product owner in 2018. He is a strong believer in the power of open source development with more than 100 open source projects on GitHub."
 	email="bjorn@defold.se"
@@ -67,4 +67,6 @@ We believe in a free and open internet where software and services use open stan
 
 <br/><br/>
 ### Support the foundation
-The Defold Foundation invites individuals and corporations to support the objectives and vision of the foundation through community donations and corporate partnerships. [Learn more about how to get involved and support the foundation](/donate).
+The Defold Foundation invites individuals and corporations to support the objectives and vision of the foundation through community donations and corporate partnerships.
+
+{% include secondary_button.html link="/donate" text="Support the foundation!" %}
