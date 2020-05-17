@@ -8,23 +8,32 @@ after: [subscribe.html,corporate_partners.html]
 ---
 
 ### Press and business inquiries
-
 For all press inquiries please email [press@defold.se](mailto:press@defold.se).
 
 For business inquiries please email [business@defold.se](mailto:business@defold.se).
 
+
+### Open Source
+For [open source](/opensource) related questions:
+
+ * Send an email to [opensource@defold.se](mailto:opensource@defold.se).
+ * Ask us on [Slack](/slack) in the #opensource channel.
+ * Post your question in the [Open Source category](https://forum.defold.com/c/opensource) of the Forum.
+
+
+### Defold Foundation
 Get in touch with the Defold Foundation [here](/foundation).
 
-### Support
 
+### Support
 If you've run into a problem and need help then please reach out to us. We're happy to help!
 
 * [Forum](https://forum.defold.com) - for in-depth technical support or finding answers to already asked questions.
-* [Slack](https://www.defold.com/slack) - for quick questions and answers to simple technical questions. Also good for hanging out with your fellow Defold developers!
+* [Slack](/slack) - for quick questions and answers to simple technical questions. Also good for hanging out with your fellow Defold developers!
 * [Getting Help](/manuals/getting-help/) - learn what we need from you in order to give you the best possible support.
 
-### Social
 
+### Social
 Follow us for the latest news and to stay in touch in social media.
 
 * [Twitter](https://twitter.com/defold)
