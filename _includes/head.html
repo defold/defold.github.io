@@ -1,7 +1,11 @@
 {%- include googleanalytics.html -%}
 
+{%- assign page_heatmap = page.heatmap | default: false -%}
+{%- assign layout_heatmap = layout.heatmap | default: false -%}
+{%- assign heatmap = page_heatmap == true and layout_heatmap == true -%}
+{%- if page_heatmap == true and layout_heatmap == true -%}
 {%- include hotjar.html -%}
-
+{%- endif -%}
 <title>{{ page.title }}</title>
 
 <!-- Google Structured Data (https://developers.google.com/search/docs/guides/intro-structured-data) -->
