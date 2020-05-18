@@ -58,6 +58,7 @@ We believe in a free and open internet where software and services use open stan
 
 {%- include profile_card.html
 	image="/images/foundation/thumbs/Bjorn Ritzl_2020_RW.jpg"
+	link="/images/foundation/highres/Bjorn Ritzl_2020_RW.jpg"
 	name="Björn Ritzl"
 	bio="Björn has worked as a developer for almost two decades, primarily in the games industry, and even longer as a hobbyist writing his first lines of code on a C64 in the late 80s. He has worked with mobile game development since before the smart phones and he is a big fan of old school games from the days of the C64 and Amiga. Björn started working with Defold at King in 2015, initially as a developer and transitioning into the role of product owner in 2018. He is a strong believer in the power of open source development with more than 100 open source projects on GitHub."
 	email="bjorn@defold.se"
