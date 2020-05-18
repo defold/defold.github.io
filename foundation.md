@@ -52,7 +52,7 @@ We believe in a free and open internet where software and services use open stan
 	image="/images/foundation/thumbs/Mathias Westerdahl_2020_RW.jpg"
 	link="/images/foundation/highres/Mathias Westerdahl_2020_RW.jpg"
 	name="Mathias Westerdahl"
-	bio="Mathias has been in the industry since 2001, when he started programming racing games for the PlayStation 1. From there he moved on to tools and engine programming, most notably at Avalanche Studios. There he spent a decade working as a developer as well as a team and project lead on AAA titles such as Just Cause and Mad Max. Mathias has spent the last four years at King working with Defold as a principal engineer and lead engine developer, making the game engine accessible for a wide range of indie developers."
+	bio="Mathias has been in the industry since 2001, when he started programming racing games for the PlayStation 1. From there he moved on to tools and engine programming, most notably at Avalanche Studios. There he spent a decade working as a developer as well as a team lead on AAA titles such as Just Cause and Mad Max. Mathias has spent the last four years at King working with Defold as a principal engineer and lead engine developer, making the game engine accessible to a wide range of indie developers."
 	email="mathias@defold.se"
 -%}
 
