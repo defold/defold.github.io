@@ -36,3 +36,8 @@ Björn Ritzl
 Product Owner, Defold Foundation
 bjorn@defold.se
 +46 704 335333
+
+---
+
+### Learn more
+Head over to the [Defold Open Source page](/opensource) to learn how to contribute and how to support the foundation.
