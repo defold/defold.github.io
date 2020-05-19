@@ -1,14 +1,14 @@
 ---
 layout: hero_and_text
 title: The Defold Foundation
-description: The Defold Foundation is the owner of the free and open-source game engine Defold. Learn about the foundation objectives and get to know the foundation board members.
+description: The Defold Foundation is the owner of the free and open game engine Defold. Learn about the foundation objectives and get to know the foundation board members.
 nav: floating
 background: /images/hero/defold-top-bg-transparent-2.png
 after: [opensource_section.html, corporate_partners.html]
 ---
 
 ### About
-The Defold Foundation is the owner of the free and open-source game engine Defold. The foundation works together with industry partners to provide open source software and services to game developers across the globe. The foundation was created in May 2020 and is registered in Stockholm, Sweden.
+The Defold Foundation is the owner of the free and open game engine Defold. The foundation works together with industry partners to provide free and open software and services to game developers across the globe. The foundation was created in May 2020 and is registered in Stockholm, Sweden.
 
 ### Objectives
 The objectives of the foundation are:
@@ -18,7 +18,7 @@ The objectives of the foundation are:
 * Support the open source community and the use of open licenses
 
 ### Vision
-We believe in a free and open internet where software and services use open standards to bring net neutrality and democracy to everyone. The Defold Foundation works together with industry partners to provide open source software and services to game developers across the globe.
+We believe in a free and open internet where software and services use open standards to bring net neutrality and democracy to everyone. The Defold Foundation works together with industry partners to provide free and open software and services to game developers across the globe.
 
 ### Board
 

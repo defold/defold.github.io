@@ -13,12 +13,12 @@ For all press inquiries please email [press@defold.se](mailto:press@defold.se).
 For business inquiries please email [business@defold.se](mailto:business@defold.se).
 
 
-### Open Source
-For [open source](/opensource) related questions:
+### Source Code
+For [source code](/open) related questions:
 
- * Send an email to [opensource@defold.se](mailto:opensource@defold.se).
- * Ask us on [Slack](/slack) in the #opensource channel.
- * Post your question in the [Open Source category](https://forum.defold.com/c/open-source) of the Forum.
+ * Send an email to [sourcecode@defold.se](mailto:sourcecode@defold.se).
+ * Ask us on [Slack](/slack) in the #sourcecode channel.
+ * Post your question in the [Source Code category](https://forum.defold.com/c/source-code) of the Forum.
 
 
 ### Defold Foundation
