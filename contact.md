@@ -18,7 +18,7 @@ For [open source](/opensource) related questions:
 
  * Send an email to [opensource@defold.se](mailto:opensource@defold.se).
  * Ask us on [Slack](/slack) in the #opensource channel.
- * Post your question in the [Open Source category](https://forum.defold.com/c/opensource) of the Forum.
+ * Post your question in the [Open Source category](https://forum.defold.com/c/open-source) of the Forum.
 
 
 ### Defold Foundation
