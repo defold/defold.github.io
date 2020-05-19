@@ -1,52 +1,35 @@
 ---
-layout: base
+layout: hero_and_text
 title: Download Defold
+description: Defold is a fully-featured game development environment. There's nothing to set up or configure, not even when bundling. Simply download the editor and get creative!
 nav: floating
 heatmap: true
+background: /images/hero/defold-top-bg-transparent-2.png
+after: [subscribe.html, learn_section.html, corporate_partners.html]
 ---
 
-<div class="section hero center blackwhite" style='background-image: url("/images/hero/hero-background.jpg");'>
-	<div class="container">
-		<div class="row">
-			<div class="column one-half left">
-				<h2>Download Defold</h2>
-				<p>Defold is a fully-featured game development environment. There's nothing to set up or configure, not even when bundling. Simply download the editor and get creative!</p>
-			</div>
-		</div>
+<div class="row center">
+	<div class="columns four">
+		<span class="icon-apple blue-text" style="font-size: 50px"></span>
+		<p>Requires macOS 10.7 Lion or newer</p>
+		{% include primary_button.html link="https://d.defold.com/editor2/channels/editor-alpha/Defold-x86_64-darwin.dmg" text="Download for Mac" %}
+		<p><a href="https://forum.defold.com/c/releasenotes" target="_blank">Release notes</a></p>
+	</div>
+	<div class="columns four">
+		<span class="icon-windows blue-text" style="font-size: 50px"></span>
+		<p>Requires Windows Vista or newer</p>
+		{% include primary_button.html link="https://d.defold.com/editor2/channels/editor-alpha/Defold-x86_64-win32.zip" text="Download for Windows" %}
+		<p><a href="https://forum.defold.com/c/releasenotes" target="_blank">Release notes</a></p>
+	</div>
+	<div class="columns four">
+		<span class="icon-linux blue-text" style="font-size: 50px"></span>
+		<p>Requires Ubuntu 18.04 (64-bit) or newer</p>
+		{% include primary_button.html link="https://d.defold.com/editor2/channels/editor-alpha/Defold-x86_64-linux.zip" text="Download for Linux" %}
+		<p><a href="https://forum.defold.com/c/releasenotes" target="_blank">Release notes</a></p>
 	</div>
 </div>
 
-<div class="section light">
-	<div class="container">
-		<div class="row center">
-			<div class="columns four">
-				<span class="icon-apple blue-text" style="font-size: 50px"></span>
-				<p>Requires macOS 10.7 Lion or newer</p>
-				{% include primary_button.html link="https://d.defold.com/editor2/channels/editor-alpha/Defold-x86_64-darwin.dmg" text="Download for Mac" %}
-				<p><a href="https://forum.defold.com/c/releasenotes" target="_blank">Release notes</a></p>
-			</div>
-			<div class="columns four">
-				<span class="icon-windows blue-text" style="font-size: 50px"></span>
-				<p>Requires Windows Vista or newer</p>
-				{% include primary_button.html link="https://d.defold.com/editor2/channels/editor-alpha/Defold-x86_64-win32.zip" text="Download for Windows" %}
-				<p><a href="https://forum.defold.com/c/releasenotes" target="_blank">Release notes</a></p>
-			</div>
-			<div class="columns four">
-				<span class="icon-linux blue-text" style="font-size: 50px"></span>
-				<p>Requires Ubuntu 18.04 (64-bit) or newer</p>
-				{% include primary_button.html link="https://d.defold.com/editor2/channels/editor-alpha/Defold-x86_64-linux.zip" text="Download for Linux" %}
-				<p><a href="https://forum.defold.com/c/releasenotes" target="_blank">Release notes</a></p>
-			</div>
-		</div>
-		<div class="row center">
-			<div class="columns twelve">
-				<br/>
-				<p>Looking for older versions of Defold or the command line tools? Go to <a href="https://d.defold.com" target="_blank">d.defold.com</a></p>
-			</div>
-		</div>
-	</div>
+<div class="row center">
+	<br/>
+	<p>Looking for older versions of Defold or the command line tools? Go to <a href="https://d.defold.com" target="_blank">d.defold.com</a></p>
 </div>
-
-{% include subscribe.html %}
-
-{% include learn_section.html %}

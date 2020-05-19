@@ -1,33 +1,35 @@
-<div class="nav {% if include.style == "floating" %}absolutetop lightest-text{% else %}dark{% endif %}">
+<div class="nav {% if include.style == "floating" %}lightest-text {% else %}dark{% endif %}">
 	<div class="container">
 		<div class="row">
 			<div class="eight columns">
 				<ul class="navmenu">
-					<li><a href="/">Home</a></li>
+					<li><nobr>{% include octicon.html icon="octicons/home.svg" color="#FFF" zoom="1.25" text=" Defold" link="/" %}</nobr></li>
 					<li><a href="/product">Product</a></li>
 					<li><a href="/showcase">Showcase</a></li>
 					<li><a href="/learn">Learn</a></li>
-					<li><a href="/assets">Assets</a></li>
+					<li><a href="/assets">Asset&nbsp;Portal</a></li>
+					<li><a href="/opensource">Open&nbsp;Source</a></li>
 					<li><a href="//forum.defold.com">Forum</a></li>
-					<li><a href="/blog">Blog</a></li>
-					<li style="visibility: hidden;">{% include octicon.html icon="octicons/desktop-download.svg" color="#FFF" zoom="1.75" %} Download</li>
+					<li style="visibility: hidden">{% include octicon.html icon="octicons/desktop-download.svg" color="#FFF" zoom="1.75" %} Download</li>
 				</ul>
 				<select class="navdropdown dark-text" onchange="location = this.value;">
 					<option value="/">Home</option>
 					<option value="/product" {% if page.url contains 'product' %}selected{% endif %}>Product</option>
 					<option value="/showcase" {% if page.url contains 'showcase' %}selected{% endif %}>Showcase</option>
 					<option value="/learn">Learn</option>
-					<option value="/assets" {% if page.url contains 'assets' %}selected{% endif %}>Assets</option>
+					<option value="/assets" {% if page.url contains 'assets' %}selected{% endif %}>Asset Portal</option>
+					<option value="/opensource" {% if page.url contains 'opensource' %}selected{% endif %}>Open Source</option>
 					<option value="//forum.defold.com">Forum</option>
-					<option value="/blog">Blog</option>
+					<option value="/donate" {% if page.url contains 'donate' %}selected{% endif %}>Donate</option>
 					<option value="/download" {% if page.url contains 'download' %}selected{% endif %}>Download</option>
 					<option value="https://www.github.com/defold">GitHub</option>
 				</select>
 			</div>
 			<div class="four columns">
 				<ul class="navmenu right">
-					<li>{% include octicon.html icon="octicons/desktop-download.svg" color="#FFF" zoom="1.75" text=" Download" link="/download" %}</li>
-					<li>{% include octicon.html icon="octicons/mark-github.svg" color="#FFF" zoom="1.75" text=" GitHub" link="https://www.github.com/defold" target="_blank" %}</li>
+					<li><nobr>{% include octicon.html icon="octicons/heart.svg" color="#FFF" zoom="1.25" text=" Donate" link="/donate" %}</nobr></li>
+					<li><nobr>{% include octicon.html icon="octicons/arrow-down.svg" color="#FFF" zoom="1.35" text=" Download" link="/download" %}</nobr></li>
+					<li><nobr>{% include octicon.html icon="octicons/mark-github.svg" color="#FFF" zoom="1.25" text=" GitHub" link="https://www.github.com/defold" target="_blank" %}</nobr></li>
 				</ul>
 			</div>
 		</div>

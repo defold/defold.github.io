@@ -1,9 +1,15 @@
-<div class="card center light"
+{%- if include.link.size > 0 -%}
+{%- assign clickable="clickable" -%}
+{%- endif -%}
+<div class="card center light {{ clickable }}"
 	style="
 	{%- if include.height -%}height: {{ include.height }};{%- endif -%}
 	{%- if include.min-height -%}min-height: {{ include.min-height }};{%- endif -%}
 	">
-	<a href="{{ include.link }}" target="{% if include.target %}{{ include.target }}{% else %}_self{% endif %}">
+	{%- if include.link.size > 0 -%}<a href="{{ include.link }}" target="{% if include.target %}{{ include.target }}{% else %}_self{% endif %}">{%- endif -%}
+		{% if include.banner.size > 0 %}
+		<p class="ribbon">{{ include.banner }}</p>
+		{% endif %}
 		{%- if include.icon -%}
 		<div style="display: grid; grid-template-columns: 10% auto; grid-gap: 2rem;">
 			<div style="padding: 0px"><span class="icon" style="zoom: {{ include.zoom }};"><img src="{{ include.icon }}" width="100%" alt="{{ include.icon_alt }}"/></span></div>
@@ -21,5 +27,5 @@
 			<p class="left">{{ include.body }}</p>
 		</div>
 		{%- endif -%}
-	</a>
+	{%- if include.link.size > 0 -%}</a>{%- endif -%}
 </div>

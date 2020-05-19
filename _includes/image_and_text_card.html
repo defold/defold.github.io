@@ -1,0 +1,7 @@
+<div class='asset left light-text compact' onclick="location.href='{{ include.link }}';">
+<div id="image" style="background: url('{{ include.image }}') center/cover; padding: 0; margin: 0; height: {{ include.image_height | default: '200px'}}"></div>
+<div>
+{%- if include.title.size > 0 -%}<h5>{{ include.title }}</h5>{%- endif -%}
+<p>{{ include.text }}</p>
+</div>
+</div>

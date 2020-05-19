@@ -1,0 +1,5 @@
+{%- assign donor = include.donor -%}
+<div class="center">
+	{%- if donor.link.size > 0 -%}<a href="{{ donor.link }}" target="_blank">{%- endif -%}<img src="{{ donor.logo }}" width="128px">{%- if donor.link.size > 0 -%}</a>{%- endif -%}
+	{%- if donor.link.size > 0 -%}<a href="{{ donor.link }}" target="_blank">{%- endif -%}<p>{{ donor.name }}</p>{%- if donor.link.size > 0 -%}</a>{%- endif -%}
+</div>

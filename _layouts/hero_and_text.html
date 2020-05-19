@@ -1,0 +1,28 @@
+---
+layout: base
+---
+
+<div class="section narrow lightest-text">
+	<div class="container">
+		<div class="row">
+			<div class="column two-thirds left">
+				<h1>{{ page.title }}</h1>
+				<p>{{ page.description }}</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="columns twelve">
+				{{ content }}
+			</div>
+		</div>
+	</div>
+</div>
+
+{%- for after in page.after -%}
+{% include {{ after | default: "empty.html" }} %}
+{%- endfor -%}

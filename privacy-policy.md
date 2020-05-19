@@ -17,7 +17,7 @@ title: Defold Privacy Policy
 
 **1. Introduction**
 
-**King.com Limited** is the entity within our group with responsibility for the data which is collected, processed and stored in connection with a Developer’s use, and the use by others, of the Services. In this document we refer to King.com Limited as "**King**" "**us**", "**we**" or " **our**" and we refer to you as "**you**" or "**your**" (defined below).
+**Stiftelsen Defold Foundation** is the entity within our group with responsibility for the data which is collected, processed and stored in connection with a Developer’s use, and the use by others, of the Services. In this document we refer to Stiftelsen Defold Foundation as "**the Defold Foundation**" "**us**", "**we**" or " **our**" and we refer to you as "**you**" or "**your**" (defined below).
 
 This document, the "**Services Privacy Policy**", explains how we collect, process, store, share and potentially transfer any data about you when you act as a developer of a game using Defold, as a community member or if you visit our Website or otherwise use our Services.
 
@@ -25,11 +25,11 @@ By accessing and/or using our Services you consent to us collecting, processing,
 
 Capitalised terms which are not defined in this Services Privacy Policy have the same meaning as set out in the Defold Terms of Service, which you can access [here](/terms-and-conditions/#definition).
 
-This Services Privacy Policy was last updated on: January 30 - 2020.
+This Services Privacy Policy was last updated on: May 11  - 2020.
 
 **2. About Us**
 
-For information collected under this Privacy Policy, **King.com Limited** is the data controller. King.com Limited is a company registered in Malta, with registered number C42504. Our registered office is at Aragon House Business Centre, Level 4, Dragonara Road, St Julians STJ3140, Malta.
+For information collected under this Privacy Policy, **Stiftelsen Defold Foundation** is the data controller. Stiftelsen Defold Foundation is a foundation incorporated and registered in Sweden with company number 802481-5162 whose registered office is at PO Box 6034, 129 06, Hägersten, Sweden.
 
 **3. Data We Collect on Developers**
 
@@ -84,7 +84,7 @@ Legal Bases
 
 In each case where we process your information, we do so lawfully in accordance with one of the legal basis set out under European data protection law. The legal bases which we rely upon are the following:
 
- * **Contractual Necessity.** This covers data used by us in order to provide you with Services that you have requested - and that we have agreed - to provide to you, such as the Defold Software, the Website and/or the Player Analytics feature;
+ * **Contractual Necessity.** This covers data used by us in order to provide you with Services that you have requested - and that we have agreed - to provide to you, such as the Defold Software, the Website and/or Services;
  * **Legal Obligation.** This covers data used by us to comply with a legal obligation, such as the prevention of crime or fraud;
  * **Legitimate Interests.** This covers data used by us for purposes that are not harmful to your privacy and can be reasonably expected within the context of your use of our Services, such as analytics and research, marketing and promotion and optimisation of our Services; and
  * **Consent.** Where we ask for your consent to use your data for a particular purpose, we will make this clear at the point of collection and we will also make clear how you can withdraw your consent.
@@ -99,7 +99,7 @@ We will only share your data with third parties:
  * where your data is on an anonymous and aggregated basis, meaning an individual user could not be personally identified from it;
  * when you interact with our social media channels (for example, by providing a testimonial about one of our Services) we may publish the information submitted, alongside your name and home country on our websites and social media channels;
  * as we reasonably believe is permitted by law or regulation;
- * in order to comply with any legal obligation, or in order to enforce or apply our terms and conditions and/or any other agreement with you; or to protect the rights, property, or safety of King, our users, or others; or
+ * in order to comply with any legal obligation, or in order to enforce or apply our terms and conditions and/or any other agreement with you; or to protect the rights, property, or safety of the Defold Foundation, our users, or others; or
  * in the event that there is a sale of the assets of our company or Midasplayer Technology AB or corporate restructuring, or as a result of a change of control of our company or one of its group companies (including Midasplayer Technology AB), or in preparation of any of these events. Any third party to which we transfer or sell our assets will have the right to continue to use the personal and other information you provide to us in the manner set out in this Services Privacy Policy. We will not sell or rent your information to any third party outside of these circumstances.
 
 We may also share your information with our service providers if necessary to enable them to provide services to us.
@@ -107,7 +107,7 @@ We may also share your information with our service providers if necessary to en
 
 **8. Interaction with third party social networks or platforms**
 
-When you bundle your Game you may allow it to interact with a third party social network or platform provider, such as Facebook or Google. These applications or websites are created and maintained by a third party that is not a part of, or controlled by King. You should ensure that you read their terms of service and privacy policies to understand how they treat your data and your Players’ data.
+When you bundle your Game you may allow it to interact with a third party social network or platform provider, such as Facebook or Google. These applications or websites are created and maintained by a third party that is not a part of, or controlled by the Defold Foundation. You should ensure that you read their terms of service and privacy policies to understand how they treat your data and your Players’ data.
 
 You understand that we will not have access to any data you or your Players choose to share with such third party social network or platform provider.
 
@@ -149,17 +149,12 @@ Those rights include:
 
 **14. How to contact us**
 
-If you have any questions or concerns about any of the matters in relation to this Privacy Policy, including to exercise any of your rights, then there are several way of contacting us:
-
-* via an email to [info@defold.com](mailto:info@defold.com); or
-* in writing to King.com Ltd of Aragon House Business Centre, Level 4, Dragonara Road, St Julians STJ3140, Malta.
-
-Our Data Protection Officer can be contacted at: [dpo@king.com](mailto:DPO@king.com).
+If you have any questions or concerns about any of the matters in relation to this Privacy Policy, including to exercise any of your rights, you may contact us by email at [info@defold.com](mailto:info@defold.com).
 
 
 **15. Complaints**
 
-We hope that you won't have any complaints about us or our Services. If you are unhappy with our use of your information then please contact our customer services department by emailing [info@defold.com](mailto:info@defold.com) or our Data Protection Officer at [dpo@king.com](mailto:DPO@king.com).
+We hope that you won't have any complaints about us or our Services. If you are unhappy with our use of your information then please contact our customer services department by emailing [info@defold.com](mailto:info@defold.com).
 
 You also have the right to complain to your local data protection authority if there is a problem.
 
@@ -168,6 +163,6 @@ You also have the right to complain to your local data protection authority if t
 
 If any court or other competent authority finds any of the terms of this Services Privacy Policy to be invalid or unenforceable, the other terms of this Services Privacy Policy will not be affected.
 
-This Services Privacy Policy is governed by and interpreted in accordance with the laws of England. Any dispute arising in connection with this Services Privacy Policy will be subject to the exclusive jurisdiction of the courts of England unless you choose the courts of your home country.
+This Services Privacy Policy is governed by and interpreted in accordance with the laws of Sweden. Any dispute arising in connection with this Services Privacy Policy will be subject to the exclusive jurisdiction of the courts of Sweden unless you choose the courts of your home country.
 
 We are constantly innovating and looking for new ways to improve our Services and our games. We may therefore amend this Services Privacy Policy from time to time to reflect such improvements or any other changes to our business. We will endeavour to tell you about any significant changes to this Services Privacy Policy which we feel may disadvantage you in any material way. If you object to any of the changes you should immediately stop using our Services and close any account you may have with us.

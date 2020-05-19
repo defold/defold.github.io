@@ -1,0 +1,33 @@
+{%- assign donors=site.data.donors -%}
+{%- if donors.size > 0 -%}
+<div class="section darkest">
+	<div class="container">
+		<div class="row">
+			<div class="columns twelve center">
+				<h5>Top Community Donors</h5>
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); grid-gap: 2rem; padding: 0px;">
+					{%- for donor in donors -%}
+						{%- if donor.logo.size > 0 -%}
+						{%- include donor.html donor=donor -%}
+						{%- endif -%}
+					{%- endfor -%}
+				</div>
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); grid-gap: 2rem; padding: 0px;">
+					{%- for donor in donors -%}
+						{%- if donor.logo.size == 0 and donor.link.size > 0 -%}
+						{%- include donor.html donor=donor -%}
+						{%- endif -%}
+					{%- endfor -%}
+				</div>
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); grid-gap: 2rem; padding: 0px;">
+					{%- for donor in donors -%}
+						{%- if donor.logo.size == 0 and donor.link.size == 0 -%}
+						{%- include donor.html donor=donor -%}
+						{%- endif -%}
+					{%- endfor -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{%- endif -%}

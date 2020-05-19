@@ -10,22 +10,31 @@ New www.defold.com leveraging GitHub Pages and Jekyll+Liquid to generate a stati
   * Examples - www.defold.com/examples -> github.com/defold/examples
 * Codepad - www.defold.com/codepad -> github.com/defold/codepad
 
-## Site update script
-The site uses the `update.py` script from this repository to update the site with updated content from external sources/repositories:
+# HOW TO UPDATE THE SITE WITH NEW CONTENT
+The site uses the `update.py` script from this repository to update the site with updated content from external sources/repositories.
+
+## Requirements
+You need to make sure to have the following dependencies installed before using `update.py`:
+
+* Python 2.7.x
+* Lunr.py (search)
+* Requests (http requests)
+
+Install `lunr.py` and `requests` using:
+
+```
+pip install --user lunr==0.5.5
+pip install --user requests
+```
+
+## Usage
+The `update.py` script should be run from a terminal. The syntax is as follows:
 
 ```
 python update.py [--download] docs codepad refdoc examples assets
 ```
 
 You can use this script when testing locally (see below). The script is also used by GitHub Actions when automatically updating the site when one of the external sources/repositories have changed (see below).
-
-### Dependencies
-The `update.py` script depends on `lunr.py` (search) and `requests` (http requests). Install using:
-
-```
-pip install --user lunr==0.5.5
-pip install --user requests
-```
 
 ### Options
 The script accepts the following options:
@@ -45,18 +54,66 @@ The script accepts the following commands:
 * `commit` - Commit changes to GitHub (for CI use)
 
 
-# Testing locally
-Follow the Jekyll install instructions to build and test the site locally before pushing changes to this repository:
+# HOW TO TEST THE SITE LOCALLY
+It is recommended that you generate and test the site locally before pushing the changes to the repository. You generate and test the site locally by running `serve.sh`.
 
-https://jekyllrb.com/docs/github-pages/
+## Requirements
+You need to make sure you have the following dependencies installed before attempting to generate the site locally using `serve.sh`:
 
-Use the `update.py` script to pull in and process content from external sources and then launch/serve the site locally using:
+* Ruby
+* bundler gem
+* jekyll
+* github-pages gem
+
+### 1 Install Ruby
+Most macOS versions ship with Ruby preinstalled. It is however recommended that you install a separate Ruby version as you will very likely run into permission issues if trying to install any Ruby gems with the system version of Ruby.
+
+The quickest way to install a new Ruby version on macOS/Linux us to use `rbenv`. To install `rbenv` on macOS you first need to install `brew`:
+
+#### 1.1 Install brew (macOS)
+Open a terminal window and install `brew` by running the following command:
+
+```sh
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
+
+#### 1.2 Install rbenv
+Open a terminal window and install `rbenv` by running the following commands:
+
+```sh
+	# use brew to install rbenv
+	brew install rbenv
+	# install rbenv shell support every time a shel is started
+	echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+```
+
+Now close the terminal window. Open a new terminal window and install a new Ruby version (this version corresponds to the one defined in the `.ruby-version` file of this repository):
+
+```sh
+	# use rbenv to install ruby 2.6.5
+	rbenv install 2.6.5
+```
+
+### 2 Install gems
+Open a terminal window and install the required Ruby gems by running the following command:
+
+```sh
+	gem install
+```
+
+This will install the gems defined in the Gemfile (`bundler`, `jekyll`, `github-pages`). You are now ready to launch the site locally.
+
+
+## Usage
+Launch/serve the site locally using:
 
 ```
 ./serve.sh
 ```
 
 Once the site has been built you can test it by pointing your browser to localhost:4000.
+
+You can use the `update.py` script to pull in and process content from external sources (docs, asset portal etc)
 
 
 # Automatic site update using GitHub Actions
