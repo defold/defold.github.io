@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Defold, the game engine created by King, is now open source
+title:  King releases the Defold game engine as open source
 excerpt: We are happy to announce that as of May 2020 Defold, the ultimate game engine for web and mobile, is available as an open source project!
 author: Sara Cederberg
 type: press
