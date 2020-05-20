@@ -40,4 +40,4 @@ bjorn@defold.se
 ---
 
 ### Learn more
-Head over to the [Defold Open Project page](/open) to learn how to contribute and how to support the foundation.
+Head over to the [Defold Open Source page](/open) to learn how to contribute and how to support the foundation.
