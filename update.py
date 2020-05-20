@@ -552,7 +552,7 @@ def process_assets(tmp_dir):
 
         # generate a dummy markdown page with some front matter for each asset
         with open(os.path.join(asset_collection_dir, basename.replace(".json", ".md")), "w") as f:
-            f.write(ASSET_MD_FRONTMATTER.format(asset_id, asset["name"], asset["description"]))
+            f.write(ASSET_MD_FRONTMATTER.format(asset_id, asset["name"], asset["description"].encode('utf-8').strip()))
 
     # write asset index
     write_as_json(ASSETINDEX_JSON, assetindex)
