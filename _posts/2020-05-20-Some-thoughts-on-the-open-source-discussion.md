@@ -6,7 +6,7 @@ author: Björn Ritzl
 type: blog
 ---
 
-The release of the Defold source code and the transition to the Defold Foundation was the culmination of many months of preparations. While most things went smoothly (except an SVG which crashed the Firefox browser!) we never anticipated the amount of very negative feedback on our use of the term Open Source (we dare you to read the HackerNews post on the launch!). We want to take the opportunity to clarify a couple of things:
+The release of the Defold source code and the transition to the Defold Foundation was the culmination of many months of preparations. While most things went smoothly (except an SVG which crashed the Firefox browser!) we never anticipated the amount of feedback on our use of the term Open Source. We want to take the opportunity to clarify a couple of things:
 
 Let's start off by saying that there was absolutely no ill-intent on our part when said that Defold is open source. The source code is [available on GitHub](/contribute) for anyone to play around with and hopefully contribute to. This is what we meant, nothing else. [Our license](/license), which is derived from the popular Apache 2.0 license, has an additional clause to prevent someone from selling Defold (meaning the engine and editor). We want our community to always be able to use the best possible version of Defold for free with no upfront fees, no royalties and no licensing costs. Always free!
 
