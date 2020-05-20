@@ -3,7 +3,7 @@ layout: post
 title:  Some thoughts on the open source discussions yesterday
 excerpt: The release of the Defold source code and the transition to the Defold Foundation was the culmination of many months of preparations. While most things went smoothly we never anticipated the amount of very negative feedback on our use of the term Open Source. Here are our thoughts on the matter.
 author: Björn Ritzl
-type: press
+type: blog
 ---
 
 The release of the Defold source code and the transition to the Defold Foundation was the culmination of many months of preparations. While most things went smoothly (except an SVG which crashed the Firefox browser!) we never anticipated the amount of very negative feedback on our use of the term Open Source (we dare you to read the HackerNews post on the launch!). We want to take the opportunity to clarify a couple of things:
