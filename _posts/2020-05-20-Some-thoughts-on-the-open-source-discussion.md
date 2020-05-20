@@ -20,10 +20,10 @@ The problem with our wish that Defold should remain free to use, with the source
 
 We are in touch with the President of the Open Source Initiative to discuss these changes. We hope to put this matter to rest soon and instead focus our efforts on our community of amazing game developers. Thank you.
 
-Sincerly,
-Björn Ritzl
-Defold Product Owner
-The Defold Foundation
+Sincerly,<br/>
+Björn Ritzl<br/>
+Defold Product Owner<br/>
+The Defold Foundation<br/>
 
 ---
 
