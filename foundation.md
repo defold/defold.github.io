@@ -13,9 +13,13 @@ The Defold Foundation is the owner of the free to use, source available, game en
 ### Objectives
 The objectives of the foundation are:
 
-* Make the Defold software available to the public
-* Make the Defold source code available to the public
-* Support the open source community and the use of open licenses
+* Make the Defold software available to the public.
+* Make the Defold source code available free of charge to a third-party.
+* Manage the Defold software through updates, modifications, development and support.
+* Prevent the Defold software from being commercialised by a third-party.
+* Support the open source community and the use of open licenses.
+
+Note that according to Swedish law foundations have a separate legal status which sets them apart from corporations. According to Swedish law the foundation objectives cannot be changed once a foundation has been created. A violation of the foundation objectives can result in the dissolution of the foundation and the rights to Defold returning to the founder.
 
 ### Vision
 We believe in a free and open internet where software and services use open standards to bring net neutrality and democracy to everyone. The Defold Foundation works together with industry partners to provide free and open software and services to game developers across the globe.
