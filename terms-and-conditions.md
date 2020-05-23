@@ -181,7 +181,7 @@ If you breach these Terms and that breach causes us harm or a financial loss the
 
 **6. PRIVACY**
 
-We will only collect, process, use and share your personal information in accordance with our Services Privacy Policy [www.defold.com/privacy-policy/](https://www.defold.com/privacy-policy/) and as set out in these Terms. By accessing our Website or using our Services and/or the Defold Software, you agree to the collection, processing and use of your personal data by us. If you do not agree to our Privacy Policy you should not access and/or use our Website, Services and/or Defold Software.
+We will only collect, process, use and share your personal information in accordance with our Services Privacy Policy [www.defold.com/privacy-policy/](https://www.defold.com/privacy-policy/) and as set out in these Terms. By accessing our Website or using our Services and/or the Defold Editor, you agree to the collection, processing and use of your personal data by us. If you do not agree to our Privacy Policy you should not access and/or use our Website, Services and/or Defold Editor.
 
 
 **7. SUSPENSION AND CANCELLATION OF YOUR ACCOUNT(S)**
