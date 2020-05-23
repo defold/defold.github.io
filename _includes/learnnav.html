@@ -4,14 +4,14 @@
 			<div class="nine columns">
 				{%- if include.showmenu -%}
 				<ul class="navmenu">
-					<li><a href="/examples/basics/simple_move" class="{% if page.url contains 'examples' %}bold{% endif %}">Examples </a></li>
+					<li><a href="/examples/animation/basic_tween" class="{% if page.url contains 'examples' %}bold{% endif %}">Examples </a></li>
 					<li><a href="/tutorials/getting-started" class="{% if page.url contains 'tutorials' %}bold{% endif %}">Tutorials</a></li>
 					<li><a href="/manuals/introduction" class="{% if page.url contains 'manuals' %}bold{% endif %}">Manuals</a></li>
 					<li><a href="/ref/go" class="{% if page.url contains 'ref' %}bold{% endif %}">API Reference</a></li>
 					<li><a href="/faq/faq" class="{% if page.url contains 'faq' %}bold{% endif %}">FAQ</a></li>
 				</ul>
 				<select class="navdropdown" onchange="location = this.value;">
-					<option value="/examples/basics/simple_move" {% if page.url contains 'examples' %}selected{% endif %}>Examples</option>
+					<option value="/examples/animation/basic_tween" {% if page.url contains 'examples' %}selected{% endif %}>Examples</option>
 					<option value="/tutorials/getting-started" {% if page.url contains 'tutorials' %}selected{% endif %}>Tutorials</option>
 					<option value="/manuals/introduction" {% if page.url contains 'manuals' %}selected{% endif %}>Manuals</option>
 					<option value="/ref/go" {% if page.url contains 'ref' %}selected{% endif %}>API Reference</option>
