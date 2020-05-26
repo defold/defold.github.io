@@ -32,3 +32,8 @@ Björn Ritzl
 Product Owner, Defold Foundation
 [bjorn@defold.se](mailto:bjorn@defold.se)
 +46 704 335333
+
+---
+
+### Learn more
+Head over to the [Nakama Defold client repository on GitHub](https://github.com/heroiclabs/nakama-defold) to get started.
