@@ -1,5 +1,5 @@
 ---
-layout: text
+layout: post
 title:  Defold Newsletter 37
 excerpt: This newsletter contains three great new Defold games well worth spending a couple of hours (or more!) on. We also have some new shader assets to pimp up your Defold fonts with and two new YouTube videos to learn from.  Finally we also cover the public web monetization Call for Proposals from Grant for the Web. And the latest Defold beta release notes!
 author: Björn Ritzl
@@ -54,20 +54,20 @@ This is a BETA release, and it might have issues that could potentially be disru
 Download the editor and bob.jar from http://d.defold.com/beta/. Set the editor build server to https://build-stage.defold.com in the editor Preferences window.
 
 #### Engine
-4773 - Added: Added sound.pause function
-4725 - Fixed: Fix for getting sound properties before playing sounds
-4697 - Fixed: Fixed issue with calculating the font cache cell size
-4586 - Fixed: Make sure collection proxies get an update before rendering
-4778 - Fixed: The tilemap does not flip tiles when created
-3721 - Fixed: Ignore arrow keys as text events
-4758 - Fixed: Generate character/text event for spacebar
-4719 - Fixed: IE 11 compatibility (sounds and gamepads)
-4742 - Fixed: Configure CFBundleDevelopmentRegion and CFBundleLocalizations in game.project
-4747 - Fixed: Check that there’s a world before creating a collision object
-4727 - Fixed: Potential fix for writing save file that on rare occasions became corrupt
-4715 - Fixed: Updated android build tools to 29.0.3
-3712 - Fixed: Box2D crashes when setting a rotation with NaN (DEF-3177)
+* 4773 - Added: Added sound.pause function
+* 4725 - Fixed: Fix for getting sound properties before playing sounds
+* 4697 - Fixed: Fixed issue with calculating the font cache cell size
+* 4586 - Fixed: Make sure collection proxies get an update before rendering
+* 4778 - Fixed: The tilemap does not flip tiles when created
+* 3721 - Fixed: Ignore arrow keys as text events
+* 4758 - Fixed: Generate character/text event for spacebar
+* 4719 - Fixed: IE 11 compatibility (sounds and gamepads)
+* 4742 - Fixed: Configure CFBundleDevelopmentRegion and CFBundleLocalizations in game.project
+* 4747 - Fixed: Check that there’s a world before creating a collision object
+* 4727 - Fixed: Potential fix for writing save file that on rare occasions became corrupt
+* 4715 - Fixed: Updated android build tools to 29.0.3
+* 3712 - Fixed: Box2D crashes when setting a rotation with NaN (DEF-3177)
 
 #### Editor
-4753 - Added: Added native extension template to editor
-4755 - Fixed: DEFEDIT-4754 Crash when signing mobile dev app for iOS
+* 4753 - Added: Added native extension template to editor
+* 4755 - Fixed: DEFEDIT-4754 Crash when signing mobile dev app for iOS
