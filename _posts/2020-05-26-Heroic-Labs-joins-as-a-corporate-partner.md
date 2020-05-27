@@ -15,7 +15,7 @@ STOCKHOLM, SWEDEN - May. 26, 2020 - The Defold Foundation today announced that H
 “The attention to detail and stability of the Defold engine has impressed us greatly. The team's approach with their developer community is inspiring and we're excited to support and share in their journey as open-source technology providers to the games market. We believe that when you pair our two great technologies together the results will be successful games loved by many”, said Heroic Labs Cofounder & CTO Andrei Mihu.
 
 ##### About Heroic Labs
-Heroic Labs builds social infrastructure for games and apps. The company makes social, competitive, and multiplayer technology available to every game studio. The goal is to enable developers to build beautiful social and multiplayer games which work at massive scale. Heroic Labs is a Y Combinator company
+Heroic Labs builds social infrastructure for games and apps. The company makes social, competitive, and multiplayer technology available to every game studio. The goal is to enable developers to build beautiful social and multiplayer games which work at massive scale. Heroic Labs is a Y Combinator company.
 
 ##### About Defold Foundation
 The Defold Foundation is the owner of the free to use, developer-friendly and source available game engine Defold. The foundation works together with industry partners to provide free and open software and services to game developers across the globe. The foundation was created in May 2020 and is registered in Stockholm, Sweden.

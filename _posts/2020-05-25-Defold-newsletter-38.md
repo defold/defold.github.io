@@ -16,6 +16,7 @@ The Defold Foundation works together with industry partners to provide developer
 The foundation invites individuals and teams of developers to support Defold development through one-time or recurring donations. Depending on the size of your contribution you get access to a number of different rewards and benefits.
 
 ❤️ We thank our latest supporters:
+
 | | | |
 |-|-|-|
 |subsoap	|Jerakin		|Insality		|
