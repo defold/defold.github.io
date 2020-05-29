@@ -395,12 +395,12 @@
       "examples": "", 
       "members": [
         {
-          "doc": "<p><span class=\"type\">dmBuffer::HBuffer</span>    The buffer</p>", 
+          "doc": "<p><span class=\"type\">dmBuffer::HBuffer</span>            The buffer (or resource)</p>", 
           "name": "m_Buffer"
         }, 
         {
-          "doc": "<p><span class=\"type\">bool</span>               If true, it will be garbage collected by Lua. If false, the C++ extension still owns the reference.</p>", 
-          "name": "m_UseLuaGC"
+          "doc": "<p><span class=\"type\">dmScript::LuaBufferOwnership</span> What ownership the pointer has</p>", 
+          "name": "m_Owner"
         }
       ], 
       "error": "", 
@@ -452,7 +452,7 @@
       ], 
       "returnvalues": [], 
       "brief": "<p>push a LuaHBuffer onto the supplied lua state</p>", 
-      "examples": "<p>How to push a buffer and give Lua ownership of the buffer (GC)</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span> <span class=\"n\">luabuf</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"nb\">true</span> <span class=\"p\">};</span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">luabuf</span><span class=\"p\">);</span>\n</pre></div>\n\n\n<p>How to push a buffer and keep ownership in C++</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span> <span class=\"n\">luabuf</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"nb\">false</span> <span class=\"p\">};</span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">luabuf</span><span class=\"p\">);</span>\n</pre></div>", 
+      "examples": "<p>How to push a buffer and give Lua ownership of the buffer (GC)</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span> <span class=\"n\">luabuf</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">OWNER_LUA</span> <span class=\"p\">};</span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">luabuf</span><span class=\"p\">);</span>\n</pre></div>\n\n\n<p>How to push a buffer and keep ownership in C++</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span> <span class=\"n\">luabuf</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">OWNER_C</span> <span class=\"p\">};</span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">luabuf</span><span class=\"p\">);</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 
