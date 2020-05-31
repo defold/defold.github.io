@@ -28,7 +28,7 @@ When I started working at Avalanche Studios in 2004, the "Modern C++" way of doi
 
 We used C++ patterns to the left and right. Everyone on the team had to read "Effective C++". We felt a fresh breeze of "this is awesome" and rapidly added more and more code to the engine, containers and smart pointers etc. Perhaps you remember Singletons?
 
-The scene graph consisted of a virtual GameObject base class, and it has a list of children game objects. Each game object type inherited from the base class, and often implemented some variation of the virtual base class functions. The inheritance tree was deep, and sometimes you inherited from two base classes. There were a lot of game object types, and it became difficult to keep track of all the variations and nuances that the implementations added.
+The scene graph consisted of a virtual GameObject base class, and it had a list of child game objects. Each game object type inherited from the base class, and often implemented some variation of the virtual base class functions. The inheritance tree was deep, and sometimes you inherited from two base classes. There were a lot of game object types, and it became difficult to keep track of all the variations and nuances that the implementations added.
 
 The data flow problem also became more and more prominent. When _was_ the transform of an object actually updated, and safe to use?
 
@@ -183,3 +183,5 @@ I hope this gives some insight as to why _our_ code looks like it does, and why 
 ---
 
 If you want to learn more about our contribution process and how to help out then please [head over to our Contribution page](/contribute/).
+
+If you want to discuss the source code please join [the discussions in the sourcecode category on the Defold forum](https://forum.defold.com/c/source-code).
