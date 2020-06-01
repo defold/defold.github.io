@@ -23,7 +23,7 @@ background: /images/hero/defold-top-bg-transparent-2.png
 		</div>
 	</div>
 
-	{%- assign news = site.data.news -%}
+	{%- assign news = site.data.news | where: "show", "true" -%}
 	{%- if news.size > 0 -%}
 	<div class="container">
 		{%- for n in news -%}
