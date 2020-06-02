@@ -48,7 +48,7 @@ Sometimes in these Terms we use defined terms as an abbreviation, to make this d
 
  * **“Defold Software”** means, collectively, the Defold Editor, the Defold Engine and the Defold SDK.
 
- * **“Defold Licence Terms”** means the additional terms that apply when you use the Defold Software and, together with the General Terms and the Community Terms (if applicable), govern your use of the Defold Software.
+ * **“Defold License Terms”** means the additional terms that apply when you use the Defold Software and, together with the General Terms and the Community Terms (if applicable), govern your use of the Defold Software.
 
  * **“Developers”** means a developer of a Game using the Defold Engine.
 
@@ -75,7 +75,7 @@ Sometimes in these Terms we use defined terms as an abbreviation, to make this d
 
  * **The General Terms** – these terms apply in all circumstances and cover your use of the Website as well as the Defold Software and the Community Forums (if you register for these Services). You can access these terms [here](#part-b--general-terms-for-use-of-our-services-and-the-website).
 
- * **The Defold Licence Terms** – these additional terms apply when you use the Defold Software and, together with the general terms, govern your use of the Defold Software. You can access these terms [here](/license).
+ * **The Defold License Terms** – these additional terms apply when you use the Defold Software and, together with the general terms, govern your use of the Defold Software. You can access these terms [here](/license).
 
  * **The Community Account Terms** – these additional terms apply when you register for a Community Account and, together with the general terms, govern your use of the Community Forums. You can access these terms [here](#part-c--terms-for-the-community-account).
 
@@ -176,7 +176,7 @@ These general terms apply in all circumstances and cover your use of the Website
 
 **5. YOUR LIABILITY TO US**
 
-If you breach these Terms and that breach causes us harm or a financial loss then you agree to compensate us, according to law, for all losses, harm, claims and expenses we reasonably incur which may arise from that breach. Without limitation, some examples of the ways in which you could cause us harm, financial loss, claims and expenses are (i) through your unauthorised use of any third party intellectual property or third party materials you include in your Games; (ii) through your failure to obtain or maintain any third party registration, certification, licence or approval required by a third party to publish your Games via their platform(s); (iii) through your breach of any terms and conditions relevant to the publication of your Games on a third party’s platform; and/or (iv) through a breach of our Defold Software licence terms.
+If you breach these Terms and that breach causes us harm or a financial loss then you agree to compensate us, according to law, for all losses, harm, claims and expenses we reasonably incur which may arise from that breach. Without limitation, some examples of the ways in which you could cause us harm, financial loss, claims and expenses are (i) through your unauthorised use of any third party intellectual property or third party materials you include in your Games; (ii) through your failure to obtain or maintain any third party registration, certification, license or approval required by a third party to publish your Games via their platform(s); (iii) through your breach of any terms and conditions relevant to the publication of your Games on a third party’s platform; and/or (iv) through a breach of our Defold Software license terms.
 
 
 **6. PRIVACY**
@@ -237,7 +237,7 @@ We may wish to transfer all or a part of our rights or responsibilities under th
 
 **12. ENTIRE AGREEMENT**
 
-These Terms (including the Defold Software licence terms and the Community licence terms if you have a Community account) set out the entire agreement between you and us concerning our Website, Services and Defold Software and they replace all earlier agreements and understandings between you and us.
+These Terms (including the Defold Software license terms and the Community license terms if you have a Community account) set out the entire agreement between you and us concerning our Website, Services and Defold Software and they replace all earlier agreements and understandings between you and us.
 
 
 **13. CHANGES TO THESE TERMS**
@@ -303,7 +303,7 @@ These additional terms apply when you register for a Community Account and, toge
 
 ### PART D – DEFOLD LICENCE TERMS
 
-These additional terms together with the General Terms govern your use of the Defold Software. Capitalised terms which are not defined in these Defold Software licence terms have the meaning as set out in the General Terms, which you can access [here](#part-b--general-terms-for-use-of-our-services-and-the-website).
+These additional terms together with the General Terms govern your use of the Defold Software. Capitalised terms which are not defined in these Defold Software license terms have the meaning as set out in the General Terms, which you can access [here](#part-b--general-terms-for-use-of-our-services-and-the-website).
 
 **1. THE DEFOLD SOFTWARE**
 
@@ -319,18 +319,18 @@ The Defold software consists of:
 
 **2. LICENCE TO THE DEFOLD SOFTWARE**
 
-The Defold Software licence terms apply when you use the Defold Software and, together with the general terms, govern your use of the Defold Software. You can access these terms [here](/license).
+The Defold Software license terms apply when you use the Defold Software and, together with the general terms, govern your use of the Defold Software. You can access these terms [here](/license).
 
 
 **3. LICENCE TO THE DEFOLD ADDITIONAL MATERIALS**
 
-3.1 Subject to your compliance with the Defold Licence Terms, we grant you, for the duration of the legal protection of the intellectual property rights contained therein a non-exclusive, non-transferable, worldwide, royalty-free licence to:
+3.1 Subject to your compliance with the Defold License Terms, we grant you, for the duration of the legal protection of the intellectual property rights contained therein a non-exclusive, non-transferable, worldwide, royalty-free license to:
 
  * copy and redistribute the Defold Game Templates, the Built-In Files and the Defold Materials as part of the Games only;
 
  * remix, adapt, modify, transform, make derivate works from and build upon the Defold Game Templates, the Built-In Files and the Defold Materials; and
 
- * make available copies of, and distribute, the Defold Game Templates, the Built-In Files and the Defold Materials as part of a Game to third party distributors who licence or sell such Games on your behalf, including without limitation app store providers such as Apple, Google and Amazon.
+ * make available copies of, and distribute, the Defold Game Templates, the Built-In Files and the Defold Materials as part of a Game to third party distributors who license or sell such Games on your behalf, including without limitation app store providers such as Apple, Google and Amazon.
 
 3.2 We shall retain all rights in the Defold Game Templates, the Built-In Files and the Defold Materials that we provide to you. Between you and us, you shall own all intellectual property rights in and to any modifications, derivative works or any software or material which you develop and/or build upon the Defold Game Templates or using the Built-In Files.
 
@@ -342,14 +342,14 @@ We make no claim over your Games or any intellectual property rights that you in
 
 **5. USE OF THIRD PARTY SOFTWARE AND MATERIALS**
 
-5.1 We may provide you with certain shared files and open source software in connection with the Defold Software, the Built-In Files and/or the Defold Game Templates. Your use of any shared files and/or open source software which we provide shall be subject to the licence terms of such files and software.
+5.1 We may provide you with certain shared files and open source software in connection with the Defold Software, the Built-In Files and/or the Defold Game Templates. Your use of any shared files and/or open source software which we provide shall be subject to the license terms of such files and software.
 
 5.2 It is your choice as to whether you wish to include third party software and/or materials in your Games. If you choose to include third party software and/or materials in your Games then you, and not us, will be responsible for ensuring that you obtain and maintain on a fully paid up basis all necessary licenses, permissions, consents and approvals required from the applicable third parties for the purposes for which such software and/or materials in your Games.
 
 
 **6. SUPPORT/UPDATES**
 
-6.1 We may, but are not obliged to, provide updates and/or modifications to any of the Defold Software from time to time and without notice to you. Please check the Defold Website for details of any material updates/modification we make. Any updates and modifications we make available shall be governed by the Terms, unless accompanied by a separate licence agreement. You understand that such updates may require you to make changes to your Games in development.
+6.1 We may, but are not obliged to, provide updates and/or modifications to any of the Defold Software from time to time and without notice to you. Please check the Defold Website for details of any material updates/modification we make. Any updates and modifications we make available shall be governed by the Terms, unless accompanied by a separate license agreement. You understand that such updates may require you to make changes to your Games in development.
 
 6.2 We may, but are not obliged to, provide maintenance and support for the Defold Software. Should you require support in using the Defold Software we recommend that you use the Community Forum.
 
@@ -369,7 +369,7 @@ You acknowledge and agree that the Defold Editor may report back information to 
 
  * you comply with all of the terms and conditions of the applicable distribution platform; and
 
- * you have all the necessary certification, consents, permissions, licences and approvals needed in order to publish the Game on the applicable platform and in the territories in which you wish to make it available.
+ * you have all the necessary certification, consents, permissions, licenses and approvals needed in order to publish the Game on the applicable platform and in the territories in which you wish to make it available.
 
 8.2 It is your responsibility and not ours to obtain and maintain all applicable registrations, certifications and approvals you need to publish and distribute your Game on a platform from the relevant platform.
 
