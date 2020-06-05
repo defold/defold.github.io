@@ -30,7 +30,7 @@ When we weighed all of the above together, it was clear that making the source a
 
 Also worth pointing out is that it’s a pretty massive undertaking to transition a code base developed over the last 10 years into the open. We had to go through every single commit, pull request and branch for anything that could potentially be seen as a security risk (project names, links, keys, certificates etc). Luckily for us, there’s good tools to do this kind of thing. And while we have always tried to keep very high standards when it comes to code quality, it becomes a different thing once you decide to share the code with the world.
 
-![](/images/games/petrescue-full.png)
+![](/images/games/petrescue-half.png)
 
 Pet Resque Puzzle Saga, 2019 (King)
 
@@ -61,7 +61,7 @@ The Defold Foundation was created in May 2020 and it is the current owner of the
 
 It is registered in Sweden as a foundation and not as a corporation, which means that it has a separate legal status from a corporation. According to Swedish law, the objectives of a foundation cannot be changed once a foundation has been created. And this is important since it guarantees that the Defold source code and product will be made available and kept updated.
 
-![](/images/games/interrogation-full.png)
+![](/images/games/interrogation-half.png)
 
 Interrogation, 2019 (Critique Gaming)
 
@@ -81,7 +81,7 @@ The competition is fierce! There are a lot of good engines out there, but if I�
 
 There is a significant focus in the industry on AAA 3D console, PC and mobile games right now. If you look at the roadmap of some of the major engines and their recent development updates it’s clear that many engines are putting a lot of effort and money into competing in this space. This is not for Defold. Defold is a 3D engine, but our focus has primarily been on 2D games for web and mobile. We will continue to focus our efforts on staying very competitive in this space. Our engine is really tiny compared to a lot of our competitors (the HTML5 build takes around 800kb gzipped and an Android or iOS build is around 2Mb). This is not to say that we will completely ignore desktop and 3D and we have some things planned to improve in this space without compromising on our key strengths. We also have plans for console support which I believe will make Defold an even more interesting choice…
 
-![](/images/games/fatesofort-full.png)
+![](/images/games/fatesofort-half.png)
 
 Fates of Ort, 2020 (8bitskull)
 
@@ -109,7 +109,7 @@ Look Your Loot is a game that almost stopped all development in the Defold team 
 
 There are so many great games worth a mention that I feel bad for not spending the rest of this interview listing them!
 
-![](/images/games/familyisland-full.png)
+![](/images/games/familyisland-half.jpg)
 
 Family Island, 2019 (Melsoft)
 
@@ -129,7 +129,7 @@ Another powerful thing is our extension system. We have a small engine core with
 
 Finally I’d like to highlight the focus on an iterative workflow where we try to reduce build times as much as possible and where it is possible to modify game content and update it while the game is still running. This really helps to reduce friction and it enables developers to work more iteratively on their games as they don’t have to wait for new builds and install those to test their changes.
 
-![](/images/games/bouncer_story-full.png)
+![](/images/games/bouncer_story-half.png)
 
 Bouncer Story, 2019 (Helmi Games)
 
@@ -155,7 +155,7 @@ One which I’ve mentioned before is the fairly basic support for 3D. We provide
 
 Defold is also not as well known as for instance Unity, which means that there isn’t as much help to get. The Defold Forum combined with the Defold manuals and learn section on the website is usually enough, but if you compare it with the amount of resources available to Unity developers it is obviously a disadvantage. But on the other hand there’s also a lot of outdated Unity snippets and content that won’t work in the latest version of Unity…
 
-![](/images/games/witchcrafter-full.png)
+![](/images/games/witchcrafter-half.png)
 
 Witchcrafter: Empire Legends, late 2020 (Paweł Jarosz)
 
