@@ -67,8 +67,7 @@ You need to make sure you have the following dependencies installed before attem
 
 ### 1 Install Ruby
 Most macOS versions ship with Ruby preinstalled. It is however recommended that you install a separate Ruby version as you will very likely run into permission issues if trying to install any Ruby gems with the system version of Ruby.
-
-The quickest way to install a new Ruby version on macOS/Linux us to use `rbenv`. To install `rbenv` on macOS you first need to install `brew`:
+The quickest way to install a new Ruby version on macOS/Linux us to use `rbenv` or `ruby`. To install it on macOS you first need to install `brew`:
 
 #### 1.1 Install brew (macOS)
 Open a terminal window and install `brew` by running the following command:
@@ -77,7 +76,19 @@ Open a terminal window and install `brew` by running the following command:
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
-#### 1.2 Install rbenv
+#### 1.2 Install ruby
+
+```sh
+	brew install ruby
+```
+
+Also add the it to the PATH vaiable in you shell profile (e.g. `~/.zshrc`):
+
+```sh
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+```
+
+#### 1.3 Install rbenv (deprecated)
 Open a terminal window and install `rbenv` by running the following commands:
 
 ```sh
@@ -98,7 +109,7 @@ Now close the terminal window. Open a new terminal window and install a new Ruby
 Open a terminal window and install the required Ruby gems by running the following command:
 
 ```sh
-	gem install
+	gem install bundler jekyll github-pages
 ```
 
 This will install the gems defined in the Gemfile (`bundler`, `jekyll`, `github-pages`). You are now ready to launch the site locally.
@@ -106,6 +117,13 @@ This will install the gems defined in the Gemfile (`bundler`, `jekyll`, `github-
 
 ## Usage
 Launch/serve the site locally using:
+
+As a first step, you need to install dependencies:
+
+```sh
+    bundle install
+```
+
 
 ```
 ./serve.sh
