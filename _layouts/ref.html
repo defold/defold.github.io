@@ -27,7 +27,7 @@ layout: base
 					<label for="collapsible_{{ type }}" class="togglelabel">{{ type | capitalize  }}</label>
 					<ul class="nobullet">
 						{%- for ref in refs -%}
-						<li style="padding-left: 2rem;"><a href="/ref/{{ page.branch }}/{{ ref.filename }}" style="text-decoration: none;">{{ ref.namespace }}</a></li>
+						<li style="padding-left: 2rem; padding-bottom: 0px;"><a href="/ref/{{ page.branch }}/{{ ref.filename }}" style="text-decoration: none;">{{ ref.namespace }}</a></li>
 						{%- endfor -%}
 					</ul>
 					{%- endfor -%}
