@@ -16,6 +16,7 @@ import hashlib
 from argparse import ArgumentParser
 from contextlib import contextmanager
 import lunr
+from lunr import trimmer
 
 SHA1 = {}
 
@@ -727,9 +728,25 @@ def process_refdoc(download = False):
 
 def process_file_for_indexing(filename):
     with open(filename, 'r') as file:
-        data = file.read().replace('\n', '')
-        # data = re.sub("\!\[.*\]\(.*\)", "", data)
+        data = file.read().replace('\n', ' ')
+
+        # replace the math notations
+        data = re.sub("\$\$.*?\$\$", " ", data)
+
+        # remove the html tags (but leave the text behind)
+        data = re.sub(r"<(.*?)>(.*?)</\1>", "\2", data)
+
+        # remove closed html tags "<tag />"
+        data = re.sub(r"<\w+?\s.*?/>", " ", data)
+
+        # Cleanup markdown links
         data = re.sub("\[(.*?)\]\(.*?\)", "\1", data)
+
+        # finally, remove certain characters
+        # (do this last, so that any regexp above won't break)
+        #data = re.sub(r"(=|\.|\(|\))+", " ", data)
+        data = re.sub(r"(=|\(|\))+", " ", data)
+
         return data.decode('utf-8')
 
 
@@ -783,6 +800,7 @@ def generate_searchindex():
     # if we use the standard builder pipeline functions we will end up
     # with partial search words like go.get_posit instead of go.get_position
     builder = lunr.builder.Builder()
+    builder.pipeline.add(trimmer.trimmer)
     builder.ref("id")
     for field in ('type', 'data'):
         if isinstance(field, dict):
