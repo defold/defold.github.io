@@ -6,14 +6,32 @@ layout: base
 {%- assign unsortedindices = site.data.refindex | where: "branch", "stable" -%}
 {%- assign indices = unsortedindices | sort: "namespace" -%}
 {%- assign branches = site.data.branchindex -%}
+{%- assign types = indices | map: "type" | uniq -%}
 <div class="section lightest">
 	<div class="container">
 		<div class="row">
 			<div class="columns three">
 				<ul class="navmenu nobullet">
-					{%- for ref in indices -%}
-					<li><a href="/ref/{{ page.branch }}/{{ ref.filename }}" style="text-decoration: none;">{{ ref.namespace }}</a></li>
+					{%- for type in types -%}
+					{%- assign refs = indices | where: "type", type -%}
+
+					{%- assign checked = "" -%}
+					{%- for ref in refs -%}
+						{%- assign url = "/ref/" | append: page.branch | append: "/" | append: ref.filename -%}
+						{%- if page.url contains url -%}
+							{%- assign checked = "checked" -%}
+						{%- endif -%}
 					{%- endfor -%}
+
+					<input id="collapsible_{{ type }}" class="toggle" type="checkbox" {{ checked }}/>
+					<label for="collapsible_{{ type }}" class="togglelabel">{{ type | capitalize  }}</label>
+					<ul class="nobullet">
+						{%- for ref in refs -%}
+						<li style="padding-left: 2rem;"><a href="/ref/{{ page.branch }}/{{ ref.filename }}" style="text-decoration: none;">{{ ref.namespace }}</a></li>
+						{%- endfor -%}
+					</ul>
+					{%- endfor -%}
+
 				</ul>
 				<select class="navdropdown" onchange="location = this.value;">
 					{%- for ref in indices -%}

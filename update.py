@@ -700,10 +700,15 @@ def process_refdoc(download = False):
 
                     # build refdoc index
                     r = read_as_json(os.path.join(tmp_dir, "doc", file))
+                    namespace = r["info"]["namespace"]
+                    type = "lua"
+                    if namespace.startswith("dm"):
+                        type = "c"
                     refindex.append({
-                        "namespace": r["info"]["namespace"],
+                        "namespace": namespace,
                         "filename": json_out_name,
                         "branch": branch,
+                        "type": type
                     })
 
     # copy stable files to ref/ for backwards compatibility
