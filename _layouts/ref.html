@@ -44,7 +44,7 @@ layout: base
 					{%- endfor -%}
 				</select>
 			</div>
-			<div class="columns seven ref">
+			<div class="columns seven ref scrollable">
 				{%- assign ref = site.data.ref[page.branch][page.ref] -%}
 				{%- assign functions = ref.elements | where: "type", "FUNCTION" -%}
 				{%- assign variables = ref.elements | where: "type", "VARIABLE" -%}
