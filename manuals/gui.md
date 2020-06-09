@@ -170,7 +170,7 @@ Color
 : The color of the node. If the node is textured, the color tints the texture. The color can be animated from script.
 
 Alpha
-: The translucency of the node. The alpha value can be animated from script.
+: The translucency of the node. The alpha value can be animated from script using the `color.w` property.
 
 Inherit Alpha
 : Setting this checkbox makes a node inherit the alpha value of the parent node. The node's alpha value is then multiplied with the parent's alpha value.
