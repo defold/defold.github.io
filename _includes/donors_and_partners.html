@@ -4,6 +4,10 @@
 {%- assign bronze=site.data.partners.bronze -%}
 {%- assign special=site.data.partners.special -%}
 
+{%- assign logodonors=site.data.donors.logo -%}
+{%- assign linkdonors=site.data.donors.link -%}
+{%- assign namedonors=site.data.donors.name -%}
+
 <div class="section darkest">
 <!-- <div class="section hero blue" style='background-image: url("/images/hero/defold-king-internal-top-bg-transparent.png");'> -->
 	{%- if platinum.size > 0 or include.empty -%}
@@ -89,5 +93,26 @@
 		</div>
 	</div>
 	<!-- <div class="container"><hr/></div> -->
+	{%- endif -%}
+
+	{%- if logodonors.size > 0 or linkdonors.size > 0 or namedonors.size > 0 -%}
+	<div class="container">
+		<div class="row">
+			<div class="columns twelve center">
+				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Top Community Donors</h5>
+				<div class="lightest-text" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); grid-gap: 2rem; padding: 0px;">
+					{%- for donor in logodonors -%}
+						{%- include donor.html donor=donor -%}
+					{%- endfor -%}
+					{%- for donor in linkdonors -%}
+						{%- include donor.html donor=donor -%}
+					{%- endfor -%}
+					{%- for donor in namedonors -%}
+						{%- include donor.html donor=donor -%}
+					{%- endfor -%}
+				</div>
+			</div>
+		</div>
+	</div>
 	{%- endif -%}
 </div>

@@ -4,7 +4,7 @@ title: About
 description: Curious about Defold? Learn what how to create great games using Defold. You will also find a brief history of the creation of Defold and how the source code was made available.
 nav: floating
 background: /images/hero/defold-top-bg-transparent-2.png
-after: [yellow_download_section.html,corporate_partners.html]
+after: [yellow_download_section.html,donors_and_partners.html]
 ---
 
 ### What is Defold?

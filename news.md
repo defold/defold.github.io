@@ -4,7 +4,7 @@ title: Defold News
 description: All Defold News
 nav: floating
 background: /images/hero/defold-top-bg-transparent-2.png
-after: [corporate_partners.html]
+after: [donors_and_partners.html]
 ---
 
 [⇠ Back to Press room](/press)

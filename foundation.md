@@ -4,7 +4,7 @@ title: The Defold Foundation
 description: The Defold Foundation is the owner of the free to use, source available, game engine Defold. Learn about the foundation objectives and get to know the foundation board members.
 nav: floating
 background: /images/hero/defold-top-bg-transparent-2.png
-after: [opensource_section.html, corporate_partners.html]
+after: [opensource_section.html, donors_and_partners.html]
 ---
 
 ### About
