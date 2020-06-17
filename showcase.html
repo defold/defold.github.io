@@ -18,36 +18,7 @@ nav: floating
 	</div>
 </div>
 
-{% assign full = site.data.games | where: "show", "full" | where: "placement", "showcase" %}
-{%- for game in full -%}
-	{%- include game_full.html game=game -%}
-{%- endfor -%}
-
-<div class="section">
-	<div class="container">
-		<div class="row">
-			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); grid-gap: 2rem; padding: 0px;">
-				{% assign half = site.data.games | where: "show", "half" | where: "placement", "showcase" %}
-				{%- for game in half -%}
-					{%- include game_half.html game=game -%}
-				{%- endfor -%}
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="section">
-	<div class="container">
-		<div class="row">
-			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(275px, 1fr)); grid-gap: 2rem; padding: 0px;">
-				{% assign third = site.data.games | where: "show", "third" | where: "placement", "showcase" %}
-				{%- for game in third -%}
-					{%- include game_third.html game=game -%}
-				{%- endfor -%}
-			</div>
-		</div>
-	</div>
-</div>
+{%- include games.html placement="showcase" -%}
 
 <div class="section">
 	<div class="container center">

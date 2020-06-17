@@ -23,7 +23,7 @@ background: /images/hero/defold-top-bg-transparent-2.png
 		</div>
 	</div>
 
-	{%- assign news = site.data.news -%}
+	{%- assign news = site.data.news | where: "show", true -%}
 	{%- if news.size > 0 -%}
 	<div class="container">
 		{%- for n in news -%}
@@ -54,9 +54,11 @@ background: /images/hero/defold-top-bg-transparent-2.png
 	</div>
 </div>
 
-{% include newsletter_signup_link.html class="narrow" %}
-
 {% include features_section.html %}
+
+{%- include games_full.html placement="frontpage" limit=1 offset=0 -%}
+
+{% include news_section.html %}
 
 {% include learn_section.html %}
 

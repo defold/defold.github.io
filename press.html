@@ -9,12 +9,9 @@ after: [subscribe.html, donors_and_partners.html]
 
 <div class="row">
 <h3>Defold in the News</h3>
-{%- assign counter = '0' -%}
-{%- for post in site.posts -%}
-{%- if post.type == "press" and counter < '3' -%}
-{% capture counter %}{{ counter | plus:'1' }}{% endcapture %}
+{% assign posts = site.posts | where: "type", "press" %}
+{%- for post in posts limit: 3 -%}
 {%- include post_preview.html post=post -%}
-{%- endif -%}
 {%- endfor -%}
 
 <a href="/news">More News ⇢</a>

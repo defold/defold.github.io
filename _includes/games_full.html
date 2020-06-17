@@ -1,0 +1,7 @@
+{%- assign placement = include.placement -%}
+{%- assign full = site.data.games | where: placement, "full" -%}
+{%- assign limit = include.limit -%}
+{%- assign offset = include.offset -%}
+{%- for game in full limit: limit offset: offset -%}
+	{%- include game_full.html game=game -%}
+{%- endfor -%}
