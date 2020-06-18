@@ -4,7 +4,8 @@ title: Defold Terms & Conditions
 ---
 
 ## DEFOLD TERMS OF SERVICE
-### OVERVIEW:
+
+##### OVERVIEW
 
 **This overview provides a short explanation of the terms of service which govern your use of our Website, our Services and the Defold Software. By accessing and/or using our product and services, you are agreeing to these terms and our Privacy Policy(ies):**
 
@@ -23,7 +24,7 @@ title: Defold Terms & Conditions
  * **Issues/Feedback/Reporting Abuse/Complaints**: Please send any feedback, issues, complaints and let us know if you feel others are abusing the Website by emailing us at: [info@defold.com](mailto:info@defold.com).
 
 
-#### Defined Terms.
+##### DEFINED TERMS
 Sometimes in these Terms we use defined terms as an abbreviation, to make this document easier to read. You can see a list of the defined terms we use here:
 
  * **“Built-In Files”** mean the built-in code files that we make available to you via the Website or Defold Software to help you develop your Game.
@@ -66,7 +67,7 @@ Sometimes in these Terms we use defined terms as an abbreviation, to make this d
 
 ### PART A - INTRODUCTION
 
-**1. About You and Us**
+##### 1. ABOUT YOU AND US
 
 1.1 These Terms (as defined below) create a legal agreement between you (**“you”** or **“your”**) and Stiftelsen Defold Foundation, a foundation incorporated and registered in Sweden with company number 802481-5162 whose registered office is at PO Box 6034, 129 06, Hägersten, Sweden, on behalf of our group companies (**“we”**, **“us”** or **“our”**).
 
@@ -82,7 +83,7 @@ Sometimes in these Terms we use defined terms as an abbreviation, to make this d
 
 1.3 YOU AGREE THAT BY ACCESSING AND/OR USING OUR SERVICE, YOU ARE AGREEING TO THESE TERMS. IF YOU ARE ENTERING INTO THIS AGREEMENT ON BEHALF OF A COMPANY OR OTHER LEGAL ENTITY, YOU REPRESENT THAT YOU HAVE THE AUTHORITY TO BIND SUCH ENTITY, ITS AFFILIATES AND ALL USERS WHO ACCESS OUR SERVICES THROUGH YOUR ACCOUNT TO THESE TERMS AND CONDITIONS, IN WHICH CASE THE TERMS “YOU” OR “YOUR” SHALL REFER TO SUCH ENTITY, ITS AFFILIATES AND USERS ASSOCIATED WITH IT. IF YOU DO NOT HAVE SUCH AUTHORITY, OR IF YOU DO NOT AGREE WITH THESE TERMS AND CONDITIONS, YOU MUST NOT ACCEPT THESE TERMS AND MAY NOT USE THE SERVICES.
 
-**2. DEFOLD ACCOUNTS**
+##### 2. DEFOLD ACCOUNTS
 
 2.1 Please note that in order to create an account with us:
 
@@ -102,7 +103,7 @@ Sometimes in these Terms we use defined terms as an abbreviation, to make this d
 ### PART B – GENERAL TERMS FOR USE OF OUR SERVICES AND THE WEBSITE
 These general terms apply in all circumstances and cover your use of the Website, our Services and the Community Forums (if you register for these Services).
 
-**1. ACCESSING OUR SERVICES AND THE WEBSITE**
+##### 1. ACCESSING OUR SERVICES AND THE WEBSITE
 
 1.1 Charging - We do not charge you to use any of our Services or for accessing the Website or for using the Defold Software. You are responsible for the internet connection and/or mobile charges that you may incur for using our Services. You should ask your internet/mobile operator if you are unsure what these charges will be, before you use our Services.
 
@@ -110,7 +111,7 @@ These general terms apply in all circumstances and cover your use of the Website
 
 1.3 Downtime - There may also be times when the Website or Services (or any part of them) are not available for technical or maintenance related reasons, whether on a scheduled or unscheduled basis. Where possible we will try to give notice in advance of any planned downtime via the Website.
 
-**2. USER CONDUCT**
+##### 2. USER CONDUCT
 
 2.1 You must comply with all laws that apply to you when you access our Website and/or Services. If any laws applicable to you restrict or prohibit you from using our Website and/or Services, you must comply with those legal restrictions or, if applicable, stop accessing and/or using the same.
 
@@ -141,7 +142,7 @@ These general terms apply in all circumstances and cover your use of the Website
  * disobey any requirements or regulations of networks connected to our Website and/or Services.
 
 
-**3. NO WARRANTIES**
+##### 3. NO WARRANTIES
 
 3.1 YOUR USE OF THE DEFOLD TEMPLATES, DEFOLD MATERIALS, THE BUILT-IN FILES AND ANY MATERIAL DOWNLOADED OR OTHERWISE OBTAINED THROUGH THE USE OF THE DEFOLD SOFTWARE, DEFOLD TEMPLATES AND/OR THE BUILT-IN FILES IS AT YOUR OWN DISCRETION AND RISK AND YOU ARE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR COMPUTER SYSTEM OR OTHER DEVICE OR LOSS OF DATA OR USE OF DATA THAT RESULTS FROM SUCH USE.
 
@@ -150,7 +151,7 @@ These general terms apply in all circumstances and cover your use of the Website
 3.3 WE AND OUR LICENSORS HEREBY DISCLAIM ALL WARRANTIES AND CONDITIONS, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY IMPLIED WARRANTIES AND CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT, AND ANY WARRANTIES AND CONDITIONS ARISING OUT OF COURSE OF DEALING OR USAGE OF TRADE. NO ADVICE OR INFORMATION, WHETHER ORAL OR WRITTEN, OBTAINED FROM US OR ELSEWHERE WILL CREATE ANY WARRANTY OR CONDITION UNLESS EXPRESSLY STATED IN THESE TERMS.
 
 
-**4. OUR LIABILITY TO YOU**
+##### 4. OUR LIABILITY TO YOU
 
 4.1 We accept liability for death or personal injury resulting from our negligence or that of our employees or agents, and for losses or harm caused by fraud by us or any other liability which may not by law be excluded.
 
@@ -170,17 +171,17 @@ technical failures or the lack of availability of our website and/or social medi
 4.5 Any additional legal rights which you may have as a consumer remain unaffected by these terms.
 
 
-**5. YOUR LIABILITY TO US**
+##### 5. YOUR LIABILITY TO US
 
 If you breach these Terms and that breach causes us harm or a financial loss then you agree to compensate us, according to law, for all losses, harm, claims and expenses we reasonably incur which may arise from that breach. Without limitation, some examples of the ways in which you could cause us harm, financial loss, claims and expenses are (i) through your unauthorised use of any third party intellectual property or third party materials you include in your Games; (ii) through your failure to obtain or maintain any third party registration, certification, license or approval required by a third party to publish your Games via their platform(s); (iii) through your breach of any terms and conditions relevant to the publication of your Games on a third party’s platform; and/or (iv) through a breach of our Defold Software license terms.
 
 
-**6. PRIVACY**
+##### 6. PRIVACY
 
 We will only collect, process, use and share your personal information in accordance with our Services Privacy Policy [www.defold.com/privacy-policy/](/privacy-policy/) and as set out in these Terms. By accessing our Website or using our Services and/or the Defold Editor, you agree to the collection, processing and use of your personal data by us. If you do not agree to our Privacy Policy you should not access and/or use our Website, Services and/or Defold Editor.
 
 
-**7. SUSPENSION AND CANCELLATION OF YOUR ACCOUNT(S)**
+##### 7. SUSPENSION AND CANCELLATION OF YOUR ACCOUNT(S)
 
 **7.1 Cancellation by You.** You can cancel your use of our Website, Services and the Community Forums at any time by contacting us at info@defold.com and requesting us to delete any account you have registered with us.
 
@@ -189,7 +190,7 @@ We will only collect, process, use and share your personal information in accord
 **7.3 Account Suspension or Cancellation by Us for Your Inactivity.** We reserve the right to suspend or delete any of your accounts if no activity is conducted by you in relation to the account for 180 or more days. In such event, you will no longer be able to access and/or use your account or any Services associated with that account. Where we delete your account for inactivity we will give you at least three (3) month’s prior notice via email to the address you registered the account with.
 
 
-**8. EFFECT OF CANCELLATION**
+##### 8. EFFECT OF CANCELLATION
 
 **8.1 Cancellation of Your Accounts for Your breach of these Terms.** If we cancel your right to use any of your accounts with us or to access any or all of our Website and/or Services for your breach of these Terms then:
 
@@ -204,7 +205,7 @@ We will only collect, process, use and share your personal information in accord
  * you will no longer be able to use any of the Website and/or Services going forwards;
 
 
-**9. WITHDRAWAL OF THE SERVICES/WEBSITE**
+##### 9. WITHDRAWAL OF THE SERVICES/WEBSITE
 
 9.1 We have the right to withdraw or modify one or more of the Website and Services (in whole or in part) without liability to you from time to time:
 
@@ -221,47 +222,47 @@ We will only collect, process, use and share your personal information in accord
 9.2 Where we decide to withdraw our provision of the Website and/or Services we will announce this decision on the Website.
 
 
-**10. LINKS**
+##### 10. LINKS
 
 We may link to third party websites or services from our Website. You understand that we make no promises regarding any content, goods or services provided by such third parties and we do not endorse the same. We are also not responsible to you in relation to any losses or harm caused by such third parties. Any charges you incur in relation to those third parties are your responsibility. You understand that when you provide data to such third parties you are providing it in accordance with their privacy policy (if any) and our own privacy policy does not apply in relation to that data.
 
 
-**11. TRANSFERRING THESE TERMS**
+##### 11. TRANSFERRING THESE TERMS
 
 We may wish to transfer all or a part of our rights or responsibilities under these Terms to someone else without obtaining your consent. You agree that we may do so, provided that the transfer does not significantly disadvantage you. You may not transfer any of the rights we give you under these Terms unless we first agree to this transfer in writing.
 
 
-**12. ENTIRE AGREEMENT**
+##### 12. ENTIRE AGREEMENT
 
 These Terms (including the Defold Software license terms and the Community license terms if you have a Community account) set out the entire agreement between you and us concerning our Website, Services and Defold Software and they replace all earlier agreements and understandings between you and us.
 
 
-**13. CHANGES TO THESE TERMS**
+##### 13. CHANGES TO THESE TERMS
 
 We reserve the right to update these Terms from time to time by posting the updated version on the Website. You agree that if you do not accept any amendment to our Terms then you shall immediately stop accessing the Website and our Services.
 
 
-**14. SEVERABILITY**
+##### 14. SEVERABILITY
 
 If any part of these Terms is held to be invalid or unenforceable under any applicable local laws or by an applicable court, that part shall be interpreted in a manner consistent with applicable law to reflect as nearly as possible our original intentions and the remainder of these Terms shall remain valid and enforceable.
 
 
-**15. WAIVERS OF OUR RIGHTS**
+##### 15. WAIVERS OF OUR RIGHTS
 
 Our failure to exercise or enforce any of our rights under these Terms does not waive our right to enforce such right. Any waiver of such rights shall only be effective if it is in writing and signed by us.
 
 
-**16. COMPLAINTS AND DISPUTE RESOLUTION**
+##### 16. COMPLAINTS AND DISPUTE RESOLUTION
 
 Most concerns can be solved quickly by contacting us at: [info@defold.com](mailto:info@defold.se). In the unlikely event that we cannot solve your concern and you wish to bring legal action against us these Terms shall be governed by and construed in accordance with the laws of Sweden.
 
 
-**17. QUESTIONS ABOUT THESE TERMS…**
+##### 17. QUESTIONS ABOUT THESE TERMS
 
 If you have any questions about these Terms you may contact us by email at: [info@defold.com](mailto:info@defold.se).
 
 
-**18. FEEDBACK**
+##### 18. FEEDBACK
 
 We appreciate your feedback on how we can improve our site and the software and materials we make available to you through it. In order for us to continue to be able to make these items available to you and our other users we need to fully own the rights in them. Therefore, you agree that we shall own all rights (including all intellectual property rights) in all oral and written feedback that you provide to us in connection with your use of the Defold Software, the Defold Materials and our Website. If requested by us and at our expense, you agree to execute all documents and provide us with all assistance that we may reasonably require from you in order to: (i) vest such rights in us; and/or (ii) register such rights in our name or the name of one of our Affiliates; and/or (iii) assist us against any allegation of infringement by a third party. If you don’t wish to transfer ownership of your feedback to King, then please do not provide your feedback to us. This clause applies in respect of the items we own and make available to you only; nothing in this clause is intended to give us any rights (including any intellectual property rights) in your Game.
 
@@ -301,7 +302,7 @@ Should you wish to complain about any Content posted by any other user, or any u
 
 These additional terms together with the General Terms govern your use of the Defold Software. Capitalised terms which are not defined in these Defold Software license terms have the meaning as set out in the General Terms, which you can access [here](#part-b--general-terms-for-use-of-our-services-and-the-website).
 
-**1. THE DEFOLD SOFTWARE**
+##### 1. THE DEFOLD SOFTWARE
 
 The Defold software consists of:
 
@@ -316,12 +317,12 @@ The Defold software consists of:
 (collectively the **“Defold Software”**).
 
 
-**2. LICENCE TO THE DEFOLD SOFTWARE**
+##### 2. LICENCE TO THE DEFOLD SOFTWARE
 
 The Defold Software license terms apply when you use the Defold Software and, together with the general terms, govern your use of the Defold Software. You can access these terms [here](/license).
 
 
-**3. LICENCE TO THE DEFOLD ADDITIONAL MATERIALS**
+##### 3. LICENCE TO THE DEFOLD ADDITIONAL MATERIALS
 
 3.1 Subject to your compliance with the Defold License Terms, we grant you, for the duration of the legal protection of the intellectual property rights contained therein a non-exclusive, non-transferable, worldwide, royalty-free license to:
 
@@ -334,19 +335,19 @@ The Defold Software license terms apply when you use the Defold Software and, to
 3.2 We shall retain all rights in the Defold Game Templates, the Built-In Files and the Defold Materials that we provide to you. Between you and us, you shall own all intellectual property rights in and to any modifications, derivative works or any software or material which you develop and/or build upon the Defold Game Templates or using the Built-In Files.
 
 
-**4. OWNERSHIP OF YOUR GAMES**
+##### 4. OWNERSHIP OF YOUR GAMES
 
 We make no claim over your Games or any intellectual property rights that you include in your Games.
 
 
-**5. USE OF THIRD PARTY SOFTWARE AND MATERIALS**
+##### 5. USE OF THIRD PARTY SOFTWARE AND MATERIALS
 
 5.1 We may provide you with certain shared files and open source software in connection with the Defold Software, the Built-In Files and/or the Defold Game Templates. Your use of any shared files and/or open source software which we provide shall be subject to the license terms of such files and software.
 
 5.2 It is your choice as to whether you wish to include third party software and/or materials in your Games. If you choose to include third party software and/or materials in your Games then you, and not us, will be responsible for ensuring that you obtain and maintain on a fully paid up basis all necessary licenses, permissions, consents and approvals required from the applicable third parties for the purposes for which such software and/or materials in your Games.
 
 
-**6. SUPPORT/UPDATES**
+##### 6. SUPPORT/UPDATES
 
 6.1 We may, but are not obliged to, provide updates and/or modifications to any of the Defold Software from time to time and without notice to you. Please check the Defold Website for details of any material updates/modification we make. Any updates and modifications we make available shall be governed by the Terms, unless accompanied by a separate license agreement. You understand that such updates may require you to make changes to your Games in development.
 
@@ -355,12 +356,12 @@ We make no claim over your Games or any intellectual property rights that you in
 6.3 If you need to report any error or defect in any of the Defold Software, please contact us at: [info@defold.com](mailto:info@defold.com).
 
 
-**7. DATA COLLECTION**
+##### 7. DATA COLLECTION
 
 You acknowledge and agree that the Defold Editor may report back information to us, including data on your usage of the editor.
 
 
-**8. YOUR PRIVACY POLICY FOR PLAYERS**
+##### 8. YOUR PRIVACY POLICY FOR PLAYERS
 
 8.1 It is a condition of your License to the Defold Software that you shall distribute a privacy policy with your Games which complies with all applicable data privacy laws and which:
 explains to your users what data you collect, how, what you do with it and what measures you take to store and protect it;
@@ -368,12 +369,12 @@ explains to your users what data you collect, how, what you do with it and what 
 8.2 Failure to comply with the licensing agreement may result in us revoking your license as well as demanding compensation for any potential costs or damages incurred by us due to your failure to comply with these Terms.
 
 
-**9. INDEPENDENT DEVELOPMENT**
+##### 9. INDEPENDENT DEVELOPMENT
 
 Nothing in these Terms will impair our, or our group companies’ or affiliates’ right to develop, acquire, License, market, promote or distribute products or technologies that perform the same or similar functions as, or otherwise compete with products or technologies you may create, whether using the Defold Software or not.
 
 
-**10. BUNDLING YOUR GAME FOR PUBLICATION**
+##### 10. BUNDLING YOUR GAME FOR PUBLICATION
 
 10.1 When you are ready to extract your Game for publication you can use our bundling tool to compile the Game for the platform(s) on which you wish to publish it, **PROVIDED THAT**:
 
