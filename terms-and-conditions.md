@@ -298,7 +298,7 @@ We do not control or actively monitor Content posted on the Community Forums by 
 Should you wish to complain about any Content posted by any other user, or any use of your Content by us or any other user, please contact us at: [info@defold.com](mailto:info@defold.com).
 
 
-### PART D – DEFOLD LICENCE TERMS
+### PART D – DEFOLD LICENSE TERMS
 
 These additional terms together with the General Terms govern your use of the Defold Software. Capitalised terms which are not defined in these Defold Software license terms have the meaning as set out in the General Terms, which you can access [here](#part-b--general-terms-for-use-of-our-services-and-the-website).
 
@@ -317,12 +317,12 @@ The Defold software consists of:
 (collectively the **“Defold Software”**).
 
 
-##### 2. LICENCE TO THE DEFOLD SOFTWARE
+##### 2. LICENSE TO THE DEFOLD SOFTWARE
 
 The Defold Software license terms apply when you use the Defold Software and, together with the general terms, govern your use of the Defold Software. You can access these terms [here](/license).
 
 
-##### 3. LICENCE TO THE DEFOLD ADDITIONAL MATERIALS
+##### 3. LICENSE TO THE DEFOLD ADDITIONAL MATERIALS
 
 3.1 Subject to your compliance with the Defold License Terms, we grant you, for the duration of the legal protection of the intellectual property rights contained therein a non-exclusive, non-transferable, worldwide, royalty-free license to:
 
