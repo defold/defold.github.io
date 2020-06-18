@@ -3,5 +3,5 @@
 {%- assign limit = include.limit -%}
 {%- assign offset = include.offset -%}
 {%- for game in full limit: limit offset: offset -%}
-	{%- include game_full.html game=game -%}
+	{%- include game_full.html game=game url=include.url -%}
 {%- endfor -%}
