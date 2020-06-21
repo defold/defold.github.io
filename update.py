@@ -199,7 +199,7 @@ def replace_in_file(filename, old, new, flags=None):
 
 def process_doc_file(file):
     replace_in_file(file, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
-    replace_in_file(file, r"{srcset=.*?}", r"")
+    replace_in_file(file, r"{\s*srcset=.*?}", r"")
     replace_in_file(file, r"::: sidenote(.*?):::", r"<div class='sidenote' markdown='1'>\1</div>", flags=re.DOTALL)
     replace_in_file(file, r"::: important(.*?):::", r"<div class='important' markdown='1'>\1</div>", flags=re.DOTALL)
     replace_in_file(file, r"\((.*?)#_(.*?)\)", r"(\1#\2)")
