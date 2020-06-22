@@ -1,38 +1,39 @@
 ---
 layout: base
-title: Instant Games
+title: Create Instant Games with Defold
+description: Defold is the full-featured, turn-key solution capable of building fast, lightweight HTML5 games
 nav: floating
+background: /images/hero/bg-hero.svg
 ---
 
-<div class="section hero center blue" style='background-image: url("/images/hero/bg-hero.svg"); background-position: center bottom; background-size: cover;'>
+<div class="section narrow lightest-text">
 	<div class="container">
-		<div class="row">
-			<div class="columns two"><br/></div>
-			<div class="columns eight">
-				<img src="/images/logo/DefoldLogoColour.svg" width="35%"/>
+		<div class="row center">
+			<div>
+				<img src="/images/logo/defold/logo/logo-ver-classic-white-160.png" alt="Defold Logo with Text"/>
 				<br/>
 				<br/>
 				<h1>Create Instant Games with Defold</h1>
 				<p>Defold is the full-featured, turn-key solution capable of building fast, lightweight HTML5 games.</p>
 				<br/>
-				{% include secondary_button.html link="/manuals/instant-games" text="View manual" %}
+				{% include primary_button.html link="/manuals/instant-games" text="View manual" %}
+				<br/>
+				<br/>
+				<br/>
 			</div>
-			<div class="columns two"><br/></div>
 		</div>
 	</div>
-</div>
 
-<div class="section hero blue" style="margin-top: 0; padding-top: 0">
 	<div class="container">
 		<div class="row">
-			<div class="column one-third">
-				{% include card.html title="Tiny engine" body="Tiny engine footprint below 700 kB and OTA functionality enables instant startup times with content loading when needed." link="/product" min-height="300px" %}
-			</div>
-			<div class="column one-third">
-				{% include card.html title="Games for everyone" body="Defold’s focus on performance makes games accessible to everyone, regardless of which device they are on." link="/product" min-height="300px" %}
-			</div>
-			<div class="column one-third">
-				{% include card.html title="Full Instant Games support" body="Defold has full support for the Instant Games API, and is fully compatible with all Facebook game platforms." link="/product" min-height="300px" %}
+			<div class="columns twelve dark-text">
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
+					{% include card.html title="Tiny engine" body="Tiny engine footprint below 700 kB and OTA functionality enables instant startup times with content loading when needed.<br/><p style='text-decoration:underline;'>Learn more</p>" link="/product" min-height="225px" zoom="0.5" topicon="/images/icons/ic-64-feather.svg" topicon_alt="A feather" %}
+
+					{% include card.html title="Games for everyone" body="Defold’s focus on performance makes games accessible to everyone, regardless of which device they are on.<br/><p style='text-decoration:underline;'>Learn more</p>" link="/product" min-height="225px" zoom="0.5" topicon="/images/icons/ic-64-community.svg" topicon_alt="Cheering characters" %}
+
+					{% include card.html title="Instant Games" body="Defold has full support for the Instant Games API, and is fully compatible with all Facebook game platforms.<br/><p style='text-decoration:underline;'>Learn more</p>" link="/manuals/instant-games" min-height="225px" zoom="0.5" topicon="/images/icons/ic-64-rocket.svg" topicon_alt="A rocket" %}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -42,14 +43,14 @@ nav: floating
 	<div class="container">
 		<div class="row">
 			<div class="column one-half center">
-				<img src="/images/games/xoxo_logo.svg"/>
+				<img src="/images/logo/others/xoxo_logo.svg"/>
 				<br/>
 				<br/>
 				<p>XOXO is a fully-featured Facebook Instant Game example, made with Defold. Download it for free, if you’re the “learning-by-doing” type of person.</p>
-				{% include secondary_button.html link="https://github.com/defold/extension-fbinstant/#tic-tac-toe-example" text="View source on GitHub" %}
+				{% include primary_button.html link="https://github.com/defold/extension-fbinstant/#tic-tac-toe-example" text="View source on GitHub" %}
 			</div>
 			<div class="column one-half center">
-				<img src="/images/games/xoxo1.png" style="vertical-align: bottom;"/>
+				<img src="/images/xoxo1.png" style="vertical-align: bottom;"/>
 			</div>
 		</div>
 	</div>
