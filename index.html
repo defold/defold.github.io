@@ -32,9 +32,10 @@ background: /images/hero/defold-top-bg-transparent-2.png
 		{%- assign url = n.url -%}
 		{%- assign icon = n.icon -%}
 		{%- assign topicon = n.topicon -%}
+		{%- assign banner = n.banner -%}
 		<div class="row">
 			<div class="columns twelve dark-text">
-			{% include card.html title=title body=body link=url topicon=topicon icon=icon %}
+			{% include card.html title=title body=body link=url topicon=topicon icon=icon banner=banner %}
 			</div>
 		</div>
 		{%- endfor -%}

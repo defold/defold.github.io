@@ -30,4 +30,4 @@ bjorn@defold.se
 
 ---
 
-[Sign up for access and become a community donor](/community-donations).
+Learn more about how to start developing for Nintendo Switch using Defold in the [Nintendo Switch platform manual](/manuals/nintendo-switch).
