@@ -15,17 +15,28 @@ title: Defold Privacy Policy
 
 **We might change things** – This Policy is subject to change at times. We will try to let you know of any significant changes that are made.
 
+**Defined Terms**
+
+* **“Community Forum”** means the interactive community forum where we and other Community Account holders provide notifications, updates, guidance and advice on all things related to the Defold Software and Website. You can access and interact with this forum once you have a Community Account.
+
+* **“Community Account”** means the account required in order to access and use the Community Forum.
+
+* **“Services”** means all the services and tools which we make available to you.
+
+* **“Website”** means our website at [www.defold.com](https://www.defold.com)
+
+
 **1. Introduction**
 
 **Stiftelsen Defold Foundation** is the entity within our group with responsibility for the data which is collected, processed and stored in connection with a Developer’s use, and the use by others, of the Services. In this document we refer to Stiftelsen Defold Foundation as "**the Defold Foundation**" "**us**", "**we**" or " **our**" and we refer to you as "**you**" or "**your**" (defined below).
 
-This document, the "**Services Privacy Policy**", explains how we collect, process, store, share and potentially transfer any data about you when you act as a developer of a game using Defold, as a community member or if you visit our Website or otherwise use our Services.
+This document, the "**Services Privacy Policy**", explains how we collect, process, store, share and potentially transfer any data about you when you act as a developer of a game using Defold, as a Community Account holder or if you visit our Website or otherwise use our Services.
 
 By accessing and/or using our Services you consent to us collecting, processing, storing and sharing your data in the ways set out in this Services Privacy Policy. If you have any concerns about providing data to us or having it used in any manner permitted in this Services Privacy Policy, you may refer to the “Your rights in relation to your information” section in this Services Privacy Policy or discontinue using our Services or develop Games using Defold.
 
 Capitalised terms which are not defined in this Services Privacy Policy have the same meaning as set out in the Defold Terms of Service, which you can access [here](/terms-and-conditions/#definition).
 
-This Services Privacy Policy was last updated on: May 11  - 2020.
+This Services Privacy Policy was last updated on: June 14  - 2020.
 
 **2. About Us**
 
@@ -35,16 +46,16 @@ For information collected under this Privacy Policy, **Stiftelsen Defold Foundat
 
 We may collect, use, share and process data about you when you use our Website or our Services.
 
-Depending on which of our Services you use and interact with, we may collect and process the following data:
+When you use or visit our Services we may collect and process the following data:
 
  * data via cookies, as explained further below;
  * data you provide when you fill in forms when using our Services, or when creating an account with us, such as your name, email address and password;
  * information associated with your Google, Twitter or GitHub account which is passed to us when you create an account with us (including your name, user name and email address);
  * details about your use of our Services and the resources that you use to access our Services (for example, information about how and when you visit our Website, how many times you opened our emails or what device you use);
- * data contained in any correspondence that you send to us or we send to you, including when you communicate with us or others via our forum or contact our via info@defold.com; and
+ * data contained in any correspondence that you send to us or we send to you, including when you communicate with us or others via our forum or contact us via info@defold.com; and
  * data in connection with any Content you post or make available via the Website or any of our Services, such as the support forum.
 
-When using online forums such as our support forum, please be aware that in addition to your user name, any questions, answers, comments or submissions that you post will be publicly available and any data you provide can be read and/or used by other users. You should therefore only share content that you are comfortable sharing publicly.
+When using the Community Forum, please be aware that in addition to your user name, any questions, answers, comments or submissions that you post will be publicly available and any data you provide can be read and/or used by other users. You should therefore only share content that you are comfortable sharing publicly.
 
 
 **4. Cookies & Analytics**
@@ -69,7 +80,7 @@ We may obtain additional data about you from third parties such as marketers, pa
 
 **6. How will we use data?**
 
-We (or a supplier or group company acting on our behalf and only under our instructions) may use your data for the following purposes:
+We (or a supplier or affiliated company acting on our behalf and only under our instructions) may use your data for the following purposes:
 
  * contacting you, for example as part of customer service or to send updates about our Services;
  * managing your account and relationship with us and improving your experience when using our Services;
@@ -80,7 +91,7 @@ We (or a supplier or group company acting on our behalf and only under our instr
  * preventing cheating, crime or fraud. We may also need to pass your information to fraud prevention agencies and other organisations involved in crime and fraud prevention; and
  * as otherwise expressly set out in this Services Privacy Policy or as required by law.
 
-Legal Bases
+Legal Basis
 
 In each case where we process your information, we do so lawfully in accordance with one of the legal basis set out under European data protection law. The legal bases which we rely upon are the following:
 
@@ -100,7 +111,7 @@ We will only share your data with third parties:
  * when you interact with our social media channels (for example, by providing a testimonial about one of our Services) we may publish the information submitted, alongside your name and home country on our websites and social media channels;
  * as we reasonably believe is permitted by law or regulation;
  * in order to comply with any legal obligation, or in order to enforce or apply our terms and conditions and/or any other agreement with you; or to protect the rights, property, or safety of the Defold Foundation, our users, or others; or
- * in the event that there is a sale of the assets of our company or Midasplayer Technology AB or corporate restructuring, or as a result of a change of control of our company or one of its group companies (including Midasplayer Technology AB), or in preparation of any of these events. Any third party to which we transfer or sell our assets will have the right to continue to use the personal and other information you provide to us in the manner set out in this Services Privacy Policy. We will not sell or rent your information to any third party outside of these circumstances.
+ * in the event that there is a sale of the assets of our foundation or corporate restructuring, or as a result of a change of control of our foundation or in preparation of any of these events. Any third party to which we transfer or sell our assets will have the right to continue to use the personal and other information you provide to us in the manner set out in this Services Privacy Policy. We will not sell or rent your information to any third party outside of these circumstances.
 
 We may also share your information with our service providers if necessary to enable them to provide services to us.
 
@@ -114,7 +125,7 @@ You understand that we will not have access to any data you or your Players choo
 
 **9. For how long will we retain your information?**
 
-We will retain information collected about you for as long as is necessary to fulfill the purposes for which it was collected or as needed to provide you with Services. We may retain this information after you have closed any account you have with us or after we have ceased providing Services to you if retention of your information is reasonably necessary to comply with our legal obligations, meet regulatory requirements, resolve disputes between members, prevent fraud, cheating or abuse, or enforce this Services Privacy Policy or any other agreement we may have with a user.
+We will retain information collected about you for as long as is necessary to fulfil the purposes for which it was collected or as needed to provide you with Services. We may retain this information after you have closed any account you have with us or after we have ceased providing Services to you if retention of your information is reasonably necessary to comply with our legal obligations, meet regulatory requirements, resolve disputes between members, prevent fraud, cheating or abuse, or enforce this Services Privacy Policy or any other agreement we may have with a user.
 
 
 **10. Will we transfer your information overseas?**
@@ -124,7 +135,7 @@ Information may be transferred to, and stored at, a jurisdiction/country outside
 
 **11. How do we protect your information?**
 
-The security of your information is important to us. We maintain appropriate technical and physical safeguards to protect your information against accidental or unlawful destruction or loss, alteration, unauthorised disclosure or access, use and all other unlawful forms of processing of the data in our possession. However, since the internet is not a completely secure environment we cannot guarantee that information you transmit or store via your use of the Website or our Services will not be accessed, disclosed, altered or destroyed by breach of any of our safeguards.
+The security of your information is important to us. We maintain appropriate technical and physical safeguards to protect your information against accidental or unlawful destruction or loss, alteration, unauthorised disclosure or access, use and all other unlawful forms of processing of the data in our possession. We cannot guarantee that information you transmit or store via your use of the Website or our Services will not be accessed, disclosed, altered or destroyed by breach of any of our safeguards. We will not be held liable for any incorrect or unauthorized use of the information you have provided to us.
 
 
 **12. Links from our Services**
@@ -139,8 +150,8 @@ You have certain rights in connection with your personal information and how we 
 Those rights include:
 
  * **Right of access.** You have a right to know what information we hold about you and in some cases to have the information communicated to you. If you wish to exercise this right please contact us letting us know that you wish to exercise your right of access and what information in particular you would like to receive. We reserve the right to ask for reasonable evidence to verify your identity before we provide you with any information. Please note that we may not be able to provide all the information you ask for, for instance if the information includes personal information about another person. Where we are not able to provide you with information that you have asked for, we will endeavour to tell you why. We will try to respond to any request for a right of access as soon as possible, but we will always do so within 1 month of receipt of your request and verification of your identity.
- * **Right to correct personal information.** We try to keep the information that we hold about you accurate and up to date. Should you realise that any of the information that we hold about you is incorrect, please let us know by contacting us via any of the methods set out in the How to Contact Us section below and we will correct it as soon as we can.
- * **Data deletion.** In some circumstances you have a right to have some of the personal information that we hold about you deleted. Should you wish to have any information about you deleted, please log in to your Defold Community account, and proceed to delete your account under your user settings. Where we delete personal information about you, we may still retain some or all of that information for other purposes such as maintaining financial records, protecting or enforcing legal rights, maintaining marketing suppression lists or for technical reasons such as maintaining technical security or our database integrity. We may also retain your information in an anonymised form. Please note that where any third party copies information which you have made available via the use of our Services (for example, a collaborator that you allow to interact with you on one of your Projects), we may not be able to amend or delete it because it may not be in our control.
+ * **Right to correct personal information.** We try to keep the information that we hold about you accurate and up to date. Should you realise that any of the information that we hold about you is incorrect, please let us know by contacting us via any of the methods set out in the How to Contact Us section below and we will correct it as soon as we can. We will not be held liable for any incorrect information provided by you.
+ * **Data deletion.** In some circumstances you have a right to have some of the personal information that we hold about you deleted. Should you wish to have any information about you deleted, please log in to your Defold Community Account, and proceed to delete your account under your user settings. Where we delete personal information about you, we may still retain some or all of that information for other purposes such as maintaining financial records, protecting or enforcing legal rights, maintaining marketing suppression lists or for technical reasons such as maintaining technical security or our database integrity. We may also retain your information in an anonymised form. Please note that where any third party copies information which you have made available via the use of our Services (for example, a collaborator that you allow to interact with you on one of your Projects), we may not be able to amend or delete it because it may not be in our control. We will not be held liable for any third party use of the information you have provided.
  * **Data portability.** In some circumstances, you may have the right to request that data which you have provided to us is provided to you, so you can transfer this to another data controller.
  * **Restriction of processing.** In some cases, you may have the right to request a restriction of the processing of your personal data, such as when you are disputing the accuracy of your data held by us.
  * **Right to object**. You have the right to object to the processing of personal data about you which is processed on the grounds of legitimate interests (see Legal Bases above).
@@ -159,10 +170,10 @@ We hope that you won't have any complaints about us or our Services. If you are 
 You also have the right to complain to your local data protection authority if there is a problem.
 
 
-**17. Legal matters**
+**16. Legal matters**
 
 If any court or other competent authority finds any of the terms of this Services Privacy Policy to be invalid or unenforceable, the other terms of this Services Privacy Policy will not be affected.
 
-This Services Privacy Policy is governed by and interpreted in accordance with the laws of Sweden. Any dispute arising in connection with this Services Privacy Policy will be subject to the exclusive jurisdiction of the courts of Sweden unless you choose the courts of your home country.
+This Services Privacy Policy is governed by and interpreted in accordance with the laws of England. Any dispute arising in connection with this Services Privacy Policy will be subject to the exclusive jurisdiction of the courts of England unless you choose the courts of your home country.
 
 We are constantly innovating and looking for new ways to improve our Services and our games. We may therefore amend this Services Privacy Policy from time to time to reflect such improvements or any other changes to our business. We will endeavour to tell you about any significant changes to this Services Privacy Policy which we feel may disadvantage you in any material way. If you object to any of the changes you should immediately stop using our Services and close any account you may have with us.

@@ -4,11 +4,11 @@ title: About
 description: Curious about Defold? Learn what how to create great games using Defold. You will also find a brief history of the creation of Defold and how the source code was made available.
 nav: floating
 background: /images/hero/defold-top-bg-transparent-2.png
-after: [yellow_download_section.html,corporate_partners.html]
+after: [yellow_download_section.html,donors_and_partners.html]
 ---
 
 ### What is Defold?
-Defold is a completely free to use game engine for development of desktop, mobile and web games. There are no up-front costs, no licensing fees and no royalties. The source code is made available on GitHub with a developer-friendly license. The Defold editor runs on Windows, Linux and macOS and it includes a code editor, debugger, profiler and advanced scene and UI editors. Game logic is written in Lua with the option to use native code to extend the engine with additional functionality. Defold is used by a growing number of developers to create commercial hits as well as games for game jams and in schools to teach game development. Defold is known for its ease of use and it is praised for its technical documentation and friendly community of developers.
+Defold is a completely free to use game engine for development of desktop, mobile and web games. There are no up-front costs, no licensing fees and no royalties. The source code is made available on GitHub with a developer-friendly license. The Defold editor runs on Windows, Linux and macOS and includes a code editor, debugger, profiler and advanced scene and UI editors. Game logic is written in Lua with the option to use native code to extend the engine with additional functionality. Defold is used by a growing number of developers to create commercial hits as well as games for game jams and in schools to teach game development. Defold is known for its ease of use and it is praised for its technical documentation and friendly community of developers.
 
 Visit the [product page](/product) to see a full list of features and be sure to check out some of the great games [made with Defold](/showcase).
 

@@ -2,74 +2,103 @@
 {%- assign gold=site.data.partners.gold -%}
 {%- assign silver=site.data.partners.silver -%}
 {%- assign bronze=site.data.partners.bronze -%}
+{%- assign special=site.data.partners.special -%}
+{%- assign friends=site.data.partners.friends -%}
 
 <div class="section darkest">
-<!-- <div class="section hero blue" style='background-image: url("/images/hero/defold-king-internal-top-bg-transparent.png");'> -->
 	{%- if platinum.size > 0 or include.empty -%}
 	<div class="container">
 		<div class="row">
 			<div class="columns twelve center">
-				<h5>Corporate Platinum Partners</h5>
+				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Platinum Partners</h5>
 				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 2rem; padding: 0px;">
 					{%- for partner in platinum -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" width="128px"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="55px"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
 			</div>
 		</div>
 	</div>
-	<!-- <div class="container"><hr/></div> -->
 	{%- endif -%}
 
 	{%- if gold.size > 0 or include.empty -%}
 	<div class="container">
 		<div class="row">
 			<div class="columns twelve center">
-				<h5>Corporate Gold Partners</h5>
+				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Gold Partners</h5>
 				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); grid-gap: 1.5rem; padding: 0px;">
 					{%- for partner in gold -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" width="128px"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="44px"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
 			</div>
 		</div>
 	</div>
-	<!-- <div class="container"><hr/></div> -->
 	{%- endif -%}
 
 	{%- if silver.size > 0 or include.empty -%}
 	<div class="container">
 		<div class="row">
 			<div class="columns twelve center">
-				<h5>Corporate Silver Partners</h5>
+				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Silver Partners</h5>
 				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); grid-gap: 1rem; padding: 0px;">
 					{%- for partner in silver -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" width="128px"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="44px"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
 			</div>
 		</div>
 	</div>
-	<!-- <div class="container"><hr/></div> -->
 	{%- endif -%}
 
 	{%- if bronze.size > 0 or include.empty -%}
 	<div class="container">
 		<div class="row">
 			<div class="columns twelve center">
-				<h5>Corporate Bronze Partners</h5>
+				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Bronze Partners</h5>
 				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); grid-gap: 0.5rem; padding: 0px;">
 					{%- for partner in bronze -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" width="128px"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="33px"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
 			</div>
 		</div>
 	</div>
-	<!-- <div class="container"><hr/></div> -->
+	{%- endif -%}
+
+	{%- if special.size > 0 or include.empty -%}
+	<div class="container">
+		<div class="row">
+			<div class="columns twelve center">
+				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Special Partners</h5>
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); grid-gap: 0.5rem; padding: 0px;">
+					{%- for partner in special -%}
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="44px"></a>
+					{%- endfor -%}
+				</div>
+				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
+			</div>
+		</div>
+	</div>
+	{%- endif -%}
+
+	{%- if friends.size > 0 or include.empty -%}
+	<div class="container">
+		<div class="row">
+			<div class="columns twelve center">
+				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Friends of Defold</h5>
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); grid-gap: 0.5rem; padding: 0px;">
+					{%- for partner in friends -%}
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="33px"></a>
+					{%- endfor -%}
+				</div>
+				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
+			</div>
+		</div>
+	</div>
 	{%- endif -%}
 </div>

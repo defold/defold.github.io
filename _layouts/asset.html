@@ -99,9 +99,13 @@ layout: base
 					</tr>
 					{%- if asset.stars.size > 0 -%}
 					<tr>
+						<td valign="top">GitHub</td>
+						<td valign="top"><a class="github-button" href="{{ asset.project_url }}" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star {{ asset.name }} on GitHub"></a></td>
+					</tr>
+					<!-- <tr>
 						<td valign="top">Stars</td>
 						<td valign="top"><a href="{{ asset.project_url }}" target="_blank">{{ asset.stars }}</a></td>
-					</tr>
+					</tr> -->
 					{%- endif -%}
 				</table>
 				{% include secondary_button.html link=asset.asset_url text="Update asset" target="_blank" %}
@@ -109,3 +113,5 @@ layout: base
 		</div>
 	</div>
 </div>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>

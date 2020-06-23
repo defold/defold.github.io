@@ -1,29 +1,21 @@
-{%- assign donors=site.data.donors -%}
-{%- if donors.size > 0 -%}
+{%- assign logodonors=site.data.donors.logo -%}
+{%- assign linkdonors=site.data.donors.link -%}
+{%- assign namedonors=site.data.donors.name -%}
+{%- if logodonors.size > 0 or linkdonors.size > 0 or namedonors.size > 0 -%}
 <div class="section darkest">
 	<div class="container">
 		<div class="row">
 			<div class="columns twelve center">
 				<h5>Top Community Donors</h5>
 				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); grid-gap: 2rem; padding: 0px;">
-					{%- for donor in donors -%}
-						{%- if donor.logo.size > 0 -%}
+					{%- for donor in logodonors -%}
 						{%- include donor.html donor=donor -%}
-						{%- endif -%}
 					{%- endfor -%}
-				</div>
-				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); grid-gap: 2rem; padding: 0px;">
-					{%- for donor in donors -%}
-						{%- if donor.logo.size == 0 and donor.link.size > 0 -%}
+					{%- for donor in linkdonors -%}
 						{%- include donor.html donor=donor -%}
-						{%- endif -%}
 					{%- endfor -%}
-				</div>
-				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); grid-gap: 2rem; padding: 0px;">
-					{%- for donor in donors -%}
-						{%- if donor.logo.size == 0 and donor.link.size == 0 -%}
+					{%- for donor in namedonors -%}
 						{%- include donor.html donor=donor -%}
-						{%- endif -%}
 					{%- endfor -%}
 				</div>
 			</div>

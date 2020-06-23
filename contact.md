@@ -4,7 +4,7 @@ title: Contact Defold
 description: We look forward to hearing from you! We are here to support you if you need help getting started with Defold or if you have a question about Defold. We are also available for press and business inquiries. And make sure to follow us in social media for the latest updates!
 nav: floating
 background: /images/hero/defold-top-bg-transparent-2.png
-after: [subscribe.html,corporate_partners.html]
+after: [subscribe.html,donors_and_partners.html]
 ---
 
 ### Press and business inquiries

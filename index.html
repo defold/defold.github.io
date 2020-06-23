@@ -23,16 +23,18 @@ background: /images/hero/defold-top-bg-transparent-2.png
 		</div>
 	</div>
 
-	{%- assign news = site.data.news | where: "show", "true" -%}
+	{%- assign news = site.data.news | where: "show", true -%}
 	{%- if news.size > 0 -%}
 	<div class="container">
 		{%- for n in news -%}
 		{%- assign title = n.title -%}
 		{%- assign body = n.body -%}
 		{%- assign url = n.url -%}
+		{%- assign icon = n.icon -%}
+		{%- assign topicon = n.topicon -%}
 		<div class="row">
 			<div class="columns twelve dark-text">
-			{% include card.html title=title body=body link=url %}
+			{% include card.html title=title body=body link=url topicon=topicon icon=icon %}
 			</div>
 		</div>
 		{%- endfor -%}
@@ -54,9 +56,11 @@ background: /images/hero/defold-top-bg-transparent-2.png
 	</div>
 </div>
 
-{% include newsletter_signup_link.html class="narrow" %}
-
 {% include features_section.html %}
+
+{%- include games_full.html placement="frontpage" limit=1 offset=0 url="/showcase" -%}
+
+{% include news_section.html %}
 
 {% include learn_section.html %}
 
@@ -77,4 +81,4 @@ background: /images/hero/defold-top-bg-transparent-2.png
 	</div>
 </div>
 
-{% include corporate_partners.html %}
+{% include donors_and_partners.html %}

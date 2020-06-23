@@ -1,5 +1,6 @@
 {%- assign game=include.game -%}
-<a href="{{ game.url }}" target="_blank">
+{%- assign url=include.url -%}{%- unless url -%}{%- assign url = game.url -%}{%- endunless -%}
+<a href="{{ url }}" target="_blank">
 	<div class="section hero center dark-text hoverflash game" style='background: url("/images/games/{{ game.images.full }}") center top/cover no-repeat;'>
 		<div class="container">
 			<div class="row" style="height: 300px">

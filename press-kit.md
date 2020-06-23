@@ -4,7 +4,7 @@ title: Defold Press-kit
 description: Our current brand assets including the Defold and Made with Defold logos. You will also find a selection of high-resolution photos of the Defold Foundation board members.
 nav: floating
 background: /images/hero/defold-top-bg-transparent-2.png
-after: [corporate_partners.html]
+after: [donors_and_partners.html]
 ---
 
 [⇠ Back to Press room](/press)

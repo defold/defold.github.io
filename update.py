@@ -16,6 +16,7 @@ import hashlib
 from argparse import ArgumentParser
 from contextlib import contextmanager
 import lunr
+from lunr import trimmer
 
 SHA1 = {}
 
@@ -198,7 +199,7 @@ def replace_in_file(filename, old, new, flags=None):
 
 def process_doc_file(file):
     replace_in_file(file, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
-    replace_in_file(file, r"{srcset=.*?}", r"")
+    replace_in_file(file, r"{\s*srcset=.*?}", r"")
     replace_in_file(file, r"::: sidenote(.*?):::", r"<div class='sidenote' markdown='1'>\1</div>", flags=re.DOTALL)
     replace_in_file(file, r"::: important(.*?):::", r"<div class='important' markdown='1'>\1</div>", flags=re.DOTALL)
     replace_in_file(file, r"\((.*?)#_(.*?)\)", r"(\1#\2)")
@@ -700,10 +701,15 @@ def process_refdoc(download = False):
 
                     # build refdoc index
                     r = read_as_json(os.path.join(tmp_dir, "doc", file))
+                    namespace = r["info"]["namespace"]
+                    type = "lua"
+                    if namespace.startswith("dm"):
+                        type = "c"
                     refindex.append({
-                        "namespace": r["info"]["namespace"],
+                        "namespace": namespace,
                         "filename": json_out_name,
                         "branch": branch,
+                        "type": type
                     })
 
     # copy stable files to ref/ for backwards compatibility
@@ -722,9 +728,25 @@ def process_refdoc(download = False):
 
 def process_file_for_indexing(filename):
     with open(filename, 'r') as file:
-        data = file.read().replace('\n', '')
-        # data = re.sub("\!\[.*\]\(.*\)", "", data)
+        data = file.read().replace('\n', ' ')
+
+        # replace the math notations
+        data = re.sub("\$\$.*?\$\$", " ", data)
+
+        # remove the html tags (but leave the text behind)
+        data = re.sub(r"<(.*?)>(.*?)</\1>", "\2", data)
+
+        # remove closed html tags "<tag />"
+        data = re.sub(r"<\w+?\s.*?/>", " ", data)
+
+        # Cleanup markdown links
         data = re.sub("\[(.*?)\]\(.*?\)", "\1", data)
+
+        # finally, remove certain characters
+        # (do this last, so that any regexp above won't break)
+        #data = re.sub(r"(=|\.|\(|\))+", " ", data)
+        data = re.sub(r"(=|\(|\))+", " ", data)
+
         return data.decode('utf-8')
 
 
@@ -778,6 +800,7 @@ def generate_searchindex():
     # if we use the standard builder pipeline functions we will end up
     # with partial search words like go.get_posit instead of go.get_position
     builder = lunr.builder.Builder()
+    builder.pipeline.add(trimmer.trimmer)
     builder.ref("id")
     for field in ('type', 'data'):
         if isinstance(field, dict):

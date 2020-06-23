@@ -1,0 +1,16 @@
+{%- assign placement = include.placement -%}
+{% assign third = site.data.games | where: placement, "third" %}
+
+{%- if third.size > 0 -%}
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(275px, 1fr)); grid-gap: 2rem; padding: 0px;">
+				{%- for game in third -%}
+					{%- include game_third.html game=game -%}
+				{%- endfor -%}
+			</div>
+		</div>
+	</div>
+</div>
+{%- endif -%}
