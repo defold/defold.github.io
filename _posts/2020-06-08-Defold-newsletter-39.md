@@ -29,6 +29,19 @@ Nakama is Heroic Labs' open-source server designed to power modern games and app
 If you plan to ship your game on GoG you will have to implement the GoG Galaxy SDK. Luckily for you the Defold community already got you covered. We thank forum user @dapetcu for the contribution! [LEARN MORE](https://defold.com/assets/gog-galaxy/)
 
 
+## Support the Defold Foundation
+The foundation invites individuals and teams of developers to support Defold development through one-time or recurring donations. Depending on the size of your contribution you get access to a number of different rewards and benefits.
+
+We thank our latest supporters:
+
+* astrochili
+* rsaienz
+* d954mas
+* mikatuo
+* BlackMATov
+* Justin Stanczak
+
+
 ## Defold 1.2.170 BETA
 ### Disclaimer
 This is a BETA release, and it might have issues that could potentially be disruptive for you and your teams workflow. Use with caution. Use of source control for your projects is strongly recommended.
