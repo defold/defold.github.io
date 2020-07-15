@@ -108,3 +108,11 @@ So what do you do if your animation references "head_parts/eyes"? The easiest wa
 ![Atlas path names](../images/spine/atlas_names.png)
 
 Moving on to animate your Spine model, please read the [Animation documentation](/manuals/animation).
+
+## Material constants
+
+{% include shared/material-constants.md component='spine' variable='tint' %}
+
+`tint`
+: The color tint of the spine model (`vector4`). The vector4 is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.
+

@@ -124,6 +124,7 @@ As a first step, you need to install dependencies:
     bundle install
 ```
 
+Next, you can run the site locally with
 
 ```
 ./serve.sh
@@ -132,6 +133,17 @@ As a first step, you need to install dependencies:
 Once the site has been built you can test it by pointing your browser to localhost:4000.
 
 You can use the `update.py` script to pull in and process content from external sources (docs, asset portal etc)
+
+
+## Troubleshooting
+
+If you get an error like this:
+
+        $ ./serve.sh
+        Could not find ffi-1.13.1 in any of the sources
+
+Make sure you have the corresponding gem package installed, and check with the `Gemfile.lock`.
+You can try to run `gem pristine --all`, then try launching the site again.
 
 
 # Automatic site update using GitHub Actions

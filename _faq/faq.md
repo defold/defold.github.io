@@ -233,7 +233,7 @@ Can I tint my sprites or make them transparent, or do I have to write my own sha
   local green = 0.3
   local blue = 0.55
   local alpha = 1
-  sprite.set_constant("#sprite", "tint", vmath.vector4(red, green, blue, alpha))
+  go.set("#sprite", "tint", vmath.vector4(red, green, blue, alpha))
   ```
 
 If I set the z coordinate of a sprite to 100 then it's not rendered. Why?
