@@ -501,6 +501,7 @@ def process_assets(tmp_dir):
         author_name = asset["author"].encode('utf-8')
         author_id = hashlib.md5(author_name).hexdigest()
         asset["author_id"] = author_id
+        asset["asset_url"] = "https://github.com/defold/awesome-defold/blob/master/assets/%s.json" % asset_id
         write_as_json(asset_file, asset)
 
         # build asset index
