@@ -351,32 +351,6 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>The support file path is operating system specific and is typically located under the user's home directory.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> user defined id of the application, which helps define the location of the save-file</p>", 
-          "name": "application_id"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> file-name to get path for</p>", 
-          "name": "file_name"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> path to save-file</p>", 
-          "name": "path"
-        }
-      ], 
-      "brief": "<p>gets the application support-file path</p>", 
-      "examples": "<p>Find a path where we can store data (the example path is on the macOS platform):</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">my_file_path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_save_file</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_game&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_file&quot;</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">my_file_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; /Users/my_users/Library/Application Support/my_game/my_file</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "sys.get_save_file"
-    }, 
-    {
-      "replaces": "", 
       "description": "<p>Returns a table with system information.</p>", 
       "parameters": [], 
       "returnvalues": [
