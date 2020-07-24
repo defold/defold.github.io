@@ -1,63 +1,45 @@
 [
     {
-        "category": "TILEMAP", 
-        "collection": "tilemap/collisions", 
-        "name": "Collisions", 
-        "path": "tilemap/collisions"
+        "category": "PARTICLES", 
+        "collection": "particles/modifiers", 
+        "name": "Modifiers", 
+        "path": "particles/modifiers"
     }, 
     {
-        "category": "SPRITE", 
-        "collection": "sprite/tint", 
-        "name": "Tint", 
-        "path": "sprite/tint"
+        "category": "PARTICLES", 
+        "collection": "particles/particlefx", 
+        "name": "Particlefx", 
+        "path": "particles/particlefx"
     }, 
     {
-        "category": "SPRITE", 
-        "collection": "sprite/size", 
-        "name": "Size", 
-        "path": "sprite/size"
+        "category": "DEBUG", 
+        "collection": "debug/physics", 
+        "name": "Physics", 
+        "path": "debug/physics"
     }, 
     {
-        "category": "GUI", 
-        "collection": "gui/load_texture", 
-        "name": "Load texture", 
-        "path": "gui/load_texture"
+        "category": "DEBUG", 
+        "collection": "debug/profile", 
+        "name": "Profile", 
+        "path": "debug/profile"
     }, 
     {
-        "category": "GUI", 
-        "collection": "gui/color", 
-        "name": "Color", 
-        "path": "gui/color"
+        "category": "FILE", 
+        "collection": "file/sys_save_load", 
+        "name": "Sys save load", 
+        "path": "file/sys_save_load"
     }, 
     {
-        "category": "GUI", 
-        "collection": "gui/pointer_over", 
-        "name": "Pointer over", 
-        "path": "gui/pointer_over"
+        "category": "SOUND", 
+        "collection": "sound/fade_in_out", 
+        "name": "Fade in out", 
+        "path": "sound/fade_in_out"
     }, 
     {
-        "category": "GUI", 
-        "collection": "gui/button", 
-        "name": "Button", 
-        "path": "gui/button"
-    }, 
-    {
-        "category": "GUI", 
-        "collection": "gui/stencil", 
-        "name": "Stencil", 
-        "path": "gui/stencil"
-    }, 
-    {
-        "category": "PHYSICS", 
-        "collection": "physics/dynamic", 
-        "name": "Dynamic", 
-        "path": "physics/dynamic"
-    }, 
-    {
-        "category": "PHYSICS", 
-        "collection": "physics/kinematic", 
-        "name": "Kinematic", 
-        "path": "physics/kinematic"
+        "category": "SOUND", 
+        "collection": "sound/music", 
+        "name": "Music", 
+        "path": "sound/music"
     }, 
     {
         "category": "PHYSICS", 
@@ -67,51 +49,21 @@
     }, 
     {
         "category": "PHYSICS", 
+        "collection": "physics/kinematic", 
+        "name": "Kinematic", 
+        "path": "physics/kinematic"
+    }, 
+    {
+        "category": "PHYSICS", 
         "collection": "physics/trigger", 
         "name": "Trigger", 
         "path": "physics/trigger"
     }, 
     {
-        "category": "ANIMATION", 
-        "collection": "animation/flipbook", 
-        "name": "Flipbook", 
-        "path": "animation/flipbook"
-    }, 
-    {
-        "category": "ANIMATION", 
-        "collection": "animation/spine", 
-        "name": "Spine", 
-        "path": "animation/spine"
-    }, 
-    {
-        "category": "ANIMATION", 
-        "collection": "animation/basic_tween", 
-        "name": "Basic tween", 
-        "path": "animation/basic_tween"
-    }, 
-    {
-        "category": "ANIMATION", 
-        "collection": "animation/chained_tween", 
-        "name": "Chained tween", 
-        "path": "animation/chained_tween"
-    }, 
-    {
-        "category": "ANIMATION", 
-        "collection": "animation/spinner", 
-        "name": "Spinner", 
-        "path": "animation/spinner"
-    }, 
-    {
-        "category": "COLLECTION", 
-        "collection": "collection/proxy", 
-        "name": "Proxy", 
-        "path": "collection/proxy"
-    }, 
-    {
-        "category": "INPUT", 
-        "collection": "input/text", 
-        "name": "Text", 
-        "path": "input/text"
+        "category": "PHYSICS", 
+        "collection": "physics/dynamic", 
+        "name": "Dynamic", 
+        "path": "physics/dynamic"
     }, 
     {
         "category": "INPUT", 
@@ -132,6 +84,96 @@
         "path": "input/move"
     }, 
     {
+        "category": "INPUT", 
+        "collection": "input/text", 
+        "name": "Text", 
+        "path": "input/text"
+    }, 
+    {
+        "category": "ANIMATION", 
+        "collection": "animation/flipbook", 
+        "name": "Flipbook", 
+        "path": "animation/flipbook"
+    }, 
+    {
+        "category": "ANIMATION", 
+        "collection": "animation/chained_tween", 
+        "name": "Chained tween", 
+        "path": "animation/chained_tween"
+    }, 
+    {
+        "category": "ANIMATION", 
+        "collection": "animation/basic_tween", 
+        "name": "Basic tween", 
+        "path": "animation/basic_tween"
+    }, 
+    {
+        "category": "ANIMATION", 
+        "collection": "animation/spinner", 
+        "name": "Spinner", 
+        "path": "animation/spinner"
+    }, 
+    {
+        "category": "ANIMATION", 
+        "collection": "animation/spine", 
+        "name": "Spine", 
+        "path": "animation/spine"
+    }, 
+    {
+        "category": "RENDER", 
+        "collection": "render/camera", 
+        "name": "Camera", 
+        "path": "render/camera"
+    }, 
+    {
+        "category": "SPRITE", 
+        "collection": "sprite/tint", 
+        "name": "Tint", 
+        "path": "sprite/tint"
+    }, 
+    {
+        "category": "SPRITE", 
+        "collection": "sprite/size", 
+        "name": "Size", 
+        "path": "sprite/size"
+    }, 
+    {
+        "category": "COLLECTION", 
+        "collection": "collection/proxy", 
+        "name": "Proxy", 
+        "path": "collection/proxy"
+    }, 
+    {
+        "category": "GUI", 
+        "collection": "gui/button", 
+        "name": "Button", 
+        "path": "gui/button"
+    }, 
+    {
+        "category": "GUI", 
+        "collection": "gui/stencil", 
+        "name": "Stencil", 
+        "path": "gui/stencil"
+    }, 
+    {
+        "category": "GUI", 
+        "collection": "gui/pointer_over", 
+        "name": "Pointer over", 
+        "path": "gui/pointer_over"
+    }, 
+    {
+        "category": "GUI", 
+        "collection": "gui/load_texture", 
+        "name": "Load texture", 
+        "path": "gui/load_texture"
+    }, 
+    {
+        "category": "GUI", 
+        "collection": "gui/color", 
+        "name": "Color", 
+        "path": "gui/color"
+    }, 
+    {
         "category": "BASICS", 
         "collection": "basics/z_order", 
         "name": "Z order", 
@@ -139,15 +181,9 @@
     }, 
     {
         "category": "BASICS", 
-        "collection": "basics/follow", 
-        "name": "Follow", 
-        "path": "basics/follow"
-    }, 
-    {
-        "category": "BASICS", 
-        "collection": "basics/message_passing", 
-        "name": "Message passing", 
-        "path": "basics/message_passing"
+        "collection": "basics/spawn", 
+        "name": "Spawn", 
+        "path": "basics/spawn"
     }, 
     {
         "category": "BASICS", 
@@ -157,62 +193,26 @@
     }, 
     {
         "category": "BASICS", 
+        "collection": "basics/follow", 
+        "name": "Follow", 
+        "path": "basics/follow"
+    }, 
+    {
+        "category": "BASICS", 
         "collection": "basics/simple_move", 
         "name": "Simple move", 
         "path": "basics/simple_move"
     }, 
     {
         "category": "BASICS", 
-        "collection": "basics/spawn", 
-        "name": "Spawn", 
-        "path": "basics/spawn"
+        "collection": "basics/message_passing", 
+        "name": "Message passing", 
+        "path": "basics/message_passing"
     }, 
     {
-        "category": "FILE", 
-        "collection": "file/sys_save_load", 
-        "name": "Sys save load", 
-        "path": "file/sys_save_load"
-    }, 
-    {
-        "category": "SOUND", 
-        "collection": "sound/music", 
-        "name": "Music", 
-        "path": "sound/music"
-    }, 
-    {
-        "category": "SOUND", 
-        "collection": "sound/fade_in_out", 
-        "name": "Fade in out", 
-        "path": "sound/fade_in_out"
-    }, 
-    {
-        "category": "DEBUG", 
-        "collection": "debug/physics", 
-        "name": "Physics", 
-        "path": "debug/physics"
-    }, 
-    {
-        "category": "DEBUG", 
-        "collection": "debug/profile", 
-        "name": "Profile", 
-        "path": "debug/profile"
-    }, 
-    {
-        "category": "PARTICLES", 
-        "collection": "particles/particlefx", 
-        "name": "Particlefx", 
-        "path": "particles/particlefx"
-    }, 
-    {
-        "category": "PARTICLES", 
-        "collection": "particles/modifiers", 
-        "name": "Modifiers", 
-        "path": "particles/modifiers"
-    }, 
-    {
-        "category": "RENDER", 
-        "collection": "render/camera", 
-        "name": "Camera", 
-        "path": "render/camera"
+        "category": "TILEMAP", 
+        "collection": "tilemap/collisions", 
+        "name": "Collisions", 
+        "path": "tilemap/collisions"
     }
 ]
