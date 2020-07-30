@@ -348,13 +348,25 @@ def process_extension(extension, download = False):
         docs_dir = os.path.join(unzipped_extension_dir, "docs")
         rmcopytree(docs_dir, extension_dir)
         index = os.path.join(extension_dir, "index.md")
-        append_to_file(index, "{%- assign ref=data.extensions." + extension + " }\n")
+        append_to_file(index, "{%- assign ref=data.extensions." + extension + " -%}\n")
         append_to_file(index, "{% include api.html ref=ref %}\n")
 
+        refdoc = {}
         elements = []
+        refdoc["elements"] = elements
+        info = {}
+        refdoc["info"] = info
+
         for filename in find_files(os.path.join(unzipped_extension_dir, extension), "*.script_api"):
-            api = yaml.safe_load(read_as_string(filename))
-            for m in api[0]["members"]:
+            api = yaml.safe_load(read_as_string(filename))[0]
+
+            info["group"] = "EXTENSIONS"
+            info["description"] = api.get("desc", "")
+            info["namespace"] = api.get("name", "")
+            info["name"] = api.get("name", "")
+            info["brief"] = api.get("name", "")
+
+            for m in api["members"]:
                 element = {}
                 element["parameters"] = []
                 for p in m.get("parameters", []):
@@ -372,11 +384,12 @@ def process_extension(extension, download = False):
                 element["type"] = m.get("type").upper()
                 element["name"] = m.get("name")
                 elements.append(element)
+            break
 
         extension_data_dir = os.path.join("_data", "extensions")
         makedirs(extension_data_dir)
         extension_data_file = os.path.join(extension_data_dir, extension + ".json")
-        write_as_json(extension_data_file, elements)
+        write_as_json(extension_data_file, refdoc)
 
 
 

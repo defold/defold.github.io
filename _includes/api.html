@@ -1,3 +1,4 @@
+{%- assign ref = include.ref -%}
 {%- assign functions = ref.elements | where: "type", "FUNCTION" -%}
 {%- assign variables = ref.elements | where: "type", "VARIABLE" -%}
 {%- assign messages = ref.elements | where: "type", "MESSAGE" -%}
