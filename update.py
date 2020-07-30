@@ -315,6 +315,30 @@ def process_docs(download = False):
         print("Done")
 
 
+def process_extension(extension, download = False):
+    extension_zip = extension + ".zip"
+    if download:
+        if os.path.exists(extension_zip):
+            os.remove(extension_zip)
+        download_file("https://github.com/defold/" + extension + "/archive/master.zip", ".", extension_zip)
+
+    if not os.path.exists(extension_zip):
+        print("File {} does not exist".format(extension_zip))
+        sys.exit(1)
+
+    print("Processing %s" % extension_zip)
+    with tmpdir() as tmp_dir:
+        shutil.copyfile(extension_zip, os.path.join(tmp_dir, extension_zip))
+        unzip(os.path.join(tmp_dir, extension_zip), tmp_dir)
+        unzipped_extension_dir = os.path.join(tmp_dir, extension + "-master")
+
+        extension_dir = extension
+        rmmkdir(extension_dir)
+
+        docs_dir = os.path.join(unzipped_extension_dir, "docs")
+        rmcopytree(docs_dir, extension_dir)
+
+
 def process_examples(download = False):
     if download:
         if os.path.exists(EXAMPLES_ZIP):
@@ -833,7 +857,7 @@ def commit_changes(githubtoken):
     call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
 
 
-ALL_COMMANDS = [ "docs", "examples", "refdoc", "awesome", "codepad", "searchindex" ]
+ALL_COMMANDS = [ "docs", "refdoc", "awesome", "examples", "codepad", "commit", "searchindex", "extension-push" ]
 
 parser = ArgumentParser()
 parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ', all, help)')
@@ -850,6 +874,7 @@ examples = Build the examples
 codepad = Build the Defold CodePad
 commit = Commit changed files (requires --githubtoken)
 searchindex = Update the static Lunr search index
+extension-push = Process the docs for official push notification extension
 all = Run all of the above commands
 help = Show this help
 """
@@ -868,6 +893,8 @@ for command in args.commands:
         sys.exit(0)
     elif command == "docs":
         process_docs(download = args.download)
+    elif command == "extension-push":
+        process_extension("extension-push", download = args.download)
     elif command == "examples":
         process_examples(download = args.download)
     elif command == "refdoc":
