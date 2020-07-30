@@ -13,6 +13,7 @@ jobs:
             { name: 'Install Java', uses: actions/setup-java@v1, with: { java-version: 11.x, architecture: x64 } },
             { name: 'Install Lunr', run: 'pip install --user lunr==0.5.5' },
             { name: 'Install Requests', run: 'pip install --user requests' },
+            { name: 'Install PyYAML', run: 'pip install --user pyyaml' },
             { name: 'Show action & event', run: 'echo "Event: ${{ github.event }} Action: ${{ github.event.action }}"' },
             { if: "github.event.action == 'awesome'", name: 'Update assets and games', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} awesome commit' },
             { if: "github.event.action == 'docs'", name: 'Update docs', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} docs searchindex commit' },

@@ -13,6 +13,7 @@ import subprocess
 import requests
 import urlparse
 import hashlib
+import yaml
 from argparse import ArgumentParser
 from contextlib import contextmanager
 import lunr
@@ -71,6 +72,7 @@ title: API reference ({})
 ---
 """
 REFDOC_MD_BODY = "{% include anchor_headings.html html=content %}"
+
 
 
 @contextmanager
@@ -174,6 +176,9 @@ def find_files(root_dir, file_pattern):
                 matches.append(os.path.join(root, filename))
     return matches
 
+def read_as_string(filename):
+    with open(filename) as f:
+        return f.read()
 
 def read_as_json(filename):
     with open(filename) as f:
@@ -194,6 +199,11 @@ def replace_in_file(filename, old, new, flags=None):
 
     with open(filename, "w") as f:
         f.write(content)
+
+
+def append_to_file(filename, s):
+    with open(filename, "a") as f:
+        f.write(s)
 
 
 
@@ -337,6 +347,38 @@ def process_extension(extension, download = False):
 
         docs_dir = os.path.join(unzipped_extension_dir, "docs")
         rmcopytree(docs_dir, extension_dir)
+        index = os.path.join(extension_dir, "index.md")
+        append_to_file(index, "{%- assign ref=data.extensions." + extension + " }\n")
+        append_to_file(index, "{% include api.html ref=ref %}\n")
+
+        elements = []
+        for filename in find_files(os.path.join(unzipped_extension_dir, extension), "*.script_api"):
+            api = yaml.safe_load(read_as_string(filename))
+            for m in api[0]["members"]:
+                element = {}
+                element["parameters"] = []
+                for p in m.get("parameters", []):
+                    param = {}
+                    param["name"] = p.get("name")
+                    param["doc"] = p.get("desc")
+                    element["parameters"].append(param)
+                element["returnvalues"] = []
+                for r in m.get("returns", []):
+                    ret = {}
+                    ret["name"] = p.get("type", "")
+                    ret["doc"] = p.get("desc")
+                    element["returnvalues"].append(ret)
+                element["description"] = m.get("desc")
+                element["type"] = m.get("type").upper()
+                element["name"] = m.get("name")
+                elements.append(element)
+
+        extension_data_dir = os.path.join("_data", "extensions")
+        makedirs(extension_data_dir)
+        extension_data_file = os.path.join(extension_data_dir, extension + ".json")
+        write_as_json(extension_data_file, elements)
+
+
 
 
 def process_examples(download = False):
