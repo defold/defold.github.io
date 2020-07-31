@@ -75,5 +75,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-pus
 
 
 ## API reference
-{%- assign ref=data.extensions.extension-push }
-{% include api.html ref=ref %}
+[API Reference](/extension-push/api)
