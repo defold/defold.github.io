@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Script component properties
 brief: This manual explains how to add custom properties to script components and access them from the editor and runtime scripts.
 ---

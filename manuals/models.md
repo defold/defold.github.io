@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Deprecated 3D models doc
 brief: This document has been replaced
 ---

@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Defold markdown test
 brief: This document uses all Markdown features (Commonmark + a couple of extensions) that the Defold docs use.
 ---

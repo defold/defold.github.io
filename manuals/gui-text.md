@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Defold GUI text nodes
 brief: This manual describes how to add text to GUI scenes.
 ---

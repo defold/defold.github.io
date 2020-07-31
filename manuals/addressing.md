@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Addressing in Defold
 brief: This manual explains how Defold has solved the problem of addressing.
 ---

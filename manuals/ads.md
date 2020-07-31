@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Showing ads in Defold
 brief: Showing various kinds of ads is a common way to monetize web and mobile games. This manual shows a number of ways to monetize your game using ads.
 ---

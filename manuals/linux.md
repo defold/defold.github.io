@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Defold development for the Linux platform
 brief: This manual describes how to build and run Defold applications on Linux
 ---

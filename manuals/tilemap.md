@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Defold tile map manual
 brief: This manual details Defold's support for tile maps.
 ---

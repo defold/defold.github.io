@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Optimizing a Defold game
 brief: This manual describes how to optimize a Defold app for size and performance.
 ---

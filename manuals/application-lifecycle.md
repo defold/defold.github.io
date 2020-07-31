@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Defold application lifecycle manual
 brief: This manual details the lifecycle of Defold games and applications.
 ---

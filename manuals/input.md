@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Device input in Defold
 brief: This manual explains how input works, how to capture input actions and create interactive script reactions.
 ---

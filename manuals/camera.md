@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Camera component manual
 brief: This manual describes the functionality of the Defold camera component.
 ---

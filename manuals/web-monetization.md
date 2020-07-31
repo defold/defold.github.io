@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Web Monetization in Defold
 brief: Web Monetization is an exciting new and non-intrusive way for game developers to monetize their web games while at the same time offering premium content to their paying players.
 ---

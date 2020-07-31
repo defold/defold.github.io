@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Message passing in Defold
 brief: Message passing is the mechanism used by Defold to permit loosely coupled objects to communicate. This manual describes this mechanism in depth.
 ---

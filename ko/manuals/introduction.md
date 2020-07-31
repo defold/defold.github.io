@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: ko
+github: https://github.com/defold/doc
 title: Defold manual
 ---
 

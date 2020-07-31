@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Profiling in Defold
 brief: This manual explains the profiling facilities present in Defold.
 ---

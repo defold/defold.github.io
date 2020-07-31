@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Native extensions - Manifest Merge Tools
 brief: This manual describes how the merging of application manifests work
 ---

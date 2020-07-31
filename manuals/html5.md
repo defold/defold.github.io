@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Defold development for the HTML5 platform
 brief: This manual describes the process of creating HTML5 game, along with known issues and limitations.
 ---

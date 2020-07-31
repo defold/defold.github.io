@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Defold graphics manual
 brief: This manual outlines Defold's support for graphical elements.
 ---

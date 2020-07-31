@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Bundling an application
 brief: This manual covers how to create an application bundle.
 ---

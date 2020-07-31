@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Dynamic spawning in Defold
 brief: This manual describes how to dynamically spawn game objects.
 ---

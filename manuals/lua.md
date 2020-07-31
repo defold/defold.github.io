@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Lua programming in Defold
 brief: This manual will give a quick introduction to the basics of Lua programming in general and what you need to consider when working with Lua in Defold.
 ---

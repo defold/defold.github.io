@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Writing code
 brief: This manual briefly covers how to work with code in Defold.
 ---

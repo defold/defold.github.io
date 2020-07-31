@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Debugging in Defold
 brief: This manual explains the debugging facilities present in Defold.
 ---

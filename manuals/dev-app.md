@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Running the development app on device
 brief: This manual explains how to put the development app on your device for iterative development on device.
 ---

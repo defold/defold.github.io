@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Defold Facebook manual
 brief: This manual explains how to setup and integrate Facebook functionality in a Defold game.
 ---

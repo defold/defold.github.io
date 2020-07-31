@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Importing and editing assets
 brief: This manual covers how to import and edit assets.
 ---

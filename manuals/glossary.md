@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Defold glossary
 brief: This manual lists everything that you encounter working in Defold with a brief description.
 ---

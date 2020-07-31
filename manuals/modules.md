@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Lua modules in Defold
 brief: Lua modules allow you to structure your project and create reusable library code. This manual explains how to do that in Defold.
 ---

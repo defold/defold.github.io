@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Native extensions - Build variants
 brief: This manual describes the different builds variants that Defold can create and how they interact with native extensions and the engine.
 ---

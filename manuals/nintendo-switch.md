@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Defold development for Nintendo Switch
 brief: This manual describes how to get Nintendo Switch access
 ---

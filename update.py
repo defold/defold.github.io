@@ -73,7 +73,16 @@ title: API reference ({})
 """
 REFDOC_MD_BODY = "{% include anchor_headings.html html=content %}"
 
-
+EXTENSION_MD_FRONTMATTER = """---
+layout: manual
+branch: master
+title: API reference ({})
+---
+"""
+EXTENSION_MD_BODY = """
+{{%- assign ref=site.data.extensions.{} -%}}
+{{%- include api.html ref=ref -%}}
+"""
 
 @contextmanager
 def tmpdir():
@@ -277,6 +286,7 @@ def process_docs(download = False):
                     process_doc_file(filename)
                     replace_in_file(filename, r"title\:", r"layout: manual\ntitle:")
                     replace_in_file(filename, r"title\:", r"language: {}\ntitle:".format(language))
+                    replace_in_file(filename, r"title\:", r"github: {}\ntitle:".format("https://github.com/defold/doc"))
                     if language != "en":
                         replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
 
@@ -325,12 +335,13 @@ def process_docs(download = False):
         print("Done")
 
 
-def process_extension(extension, download = False):
-    extension_zip = extension + ".zip"
+def process_extension(extension_name, download = False):
+    extension_zip = extension_name + ".zip"
+    github_url = "https://github.com/defold/{}".format(extension_name)
     if download:
         if os.path.exists(extension_zip):
             os.remove(extension_zip)
-        download_file("https://github.com/defold/" + extension + "/archive/master.zip", ".", extension_zip)
+        download_file(github_url + "/archive/master.zip", ".", extension_zip)
 
     if not os.path.exists(extension_zip):
         print("File {} does not exist".format(extension_zip))
@@ -340,24 +351,32 @@ def process_extension(extension, download = False):
     with tmpdir() as tmp_dir:
         shutil.copyfile(extension_zip, os.path.join(tmp_dir, extension_zip))
         unzip(os.path.join(tmp_dir, extension_zip), tmp_dir)
-        unzipped_extension_dir = os.path.join(tmp_dir, extension + "-master")
+        unzipped_extension_dir = os.path.join(tmp_dir, extension_name + "-master")
 
-        extension_dir = extension
+        extension_dir = extension_name
         rmmkdir(extension_dir)
 
+        # copy the documentation
         docs_dir = os.path.join(unzipped_extension_dir, "docs")
         rmcopytree(docs_dir, extension_dir)
         index = os.path.join(extension_dir, "index.md")
-        append_to_file(index, "{%- assign ref=data.extensions." + extension + " -%}\n")
-        append_to_file(index, "{% include api.html ref=ref %}\n")
+        append_to_file(index, "[API Reference](/{}/api)".format(extension_name))
+        replace_in_file(index, r"title\:", r"layout: manual\ntitle:")
+        replace_in_file(index, r"title\:", r"language: en\ntitle:")
+        replace_in_file(index, r"title\:", r"github: {}\ntitle:".format(github_url))
 
+        # generate a dummy markdown page with some front matter for the api doc
+        with open(os.path.join(extension_dir, "api.html"), "w") as f:
+            f.write(EXTENSION_MD_FRONTMATTER.format(extension_name) + EXTENSION_MD_BODY.format(extension_name))
+
+        # create a json data file for the API reference
+        # we generate it from the .script_api file (YAML format)
         refdoc = {}
         elements = []
         refdoc["elements"] = elements
         info = {}
         refdoc["info"] = info
-
-        for filename in find_files(os.path.join(unzipped_extension_dir, extension), "*.script_api"):
+        for filename in find_files(os.path.join(unzipped_extension_dir, extension_name), "*.script_api"):
             api = yaml.safe_load(read_as_string(filename))[0]
 
             info["group"] = "EXTENSIONS"
@@ -386,12 +405,11 @@ def process_extension(extension, download = False):
                 elements.append(element)
             break
 
+        # write the json data file
         extension_data_dir = os.path.join("_data", "extensions")
         makedirs(extension_data_dir)
-        extension_data_file = os.path.join(extension_data_dir, extension + ".json")
+        extension_data_file = os.path.join(extension_data_dir, extension_name + ".json")
         write_as_json(extension_data_file, refdoc)
-
-
 
 
 def process_examples(download = False):

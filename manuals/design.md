@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: The design of Defold
 brief: The philosophy behind Defold's design
 ---

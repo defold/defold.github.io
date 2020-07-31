@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Collection proxy manual
 brief: This manual explains how to dynamically create new game worlds and switch between them.
 ---

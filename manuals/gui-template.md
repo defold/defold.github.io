@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: GUI templates manual
 brief: This manual explains the Defold GUI template system that is used to create reusable visual GUI components based on shared templates or 'prefabs'.
 ---

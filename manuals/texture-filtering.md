@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Texture filtering
 brief: This manual describes the available options for texture filtering when rendering graphics.
 ---

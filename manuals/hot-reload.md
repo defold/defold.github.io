@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Hot reloading
 brief: This manual explains the hot reloading feature in Defold.
 ---

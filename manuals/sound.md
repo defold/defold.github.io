@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Sound in Defold
 brief: This manual explains how you bring sounds into your Defold project, play back and control them.
 ---

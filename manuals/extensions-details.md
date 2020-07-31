@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Native extensions - Details
 brief: This manual describes some details about the build system used for native extensions.
 ---

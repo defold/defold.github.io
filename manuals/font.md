@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Fonts in Defold manual
 brief: This manual describes how Defold handles fonts and how to bring fonts onto the screen in your games.
 ---

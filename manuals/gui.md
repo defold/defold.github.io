@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: GUI scenes in Defold
 brief: This manual goes through the Defold GUI editor, the various types of GUI nodes and GUI scripting.
 ---

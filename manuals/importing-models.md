@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Importing models
 brief: This manual covers how to import 3D models used by the model component.
 ---

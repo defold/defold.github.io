@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: GUI clipping manual
 brief: This manual describes how to create GUI nodes that mask other nodes through stencil clipping.
 ---

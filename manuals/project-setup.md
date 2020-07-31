@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Project setup
 brief: This manual covers how to create or open a project in Defold.
 ---

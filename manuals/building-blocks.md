@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: The building blocks of Defold
 brief: This manual digs into the details of how game objects, components and collections work.
 ---

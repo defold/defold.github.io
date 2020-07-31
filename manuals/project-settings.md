@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Defold project settings
 brief: This manual describes how project specific settings work in Defold.
 ---

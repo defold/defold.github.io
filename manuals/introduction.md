@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Introduction to Defold
 brief: A brief introduction to Defold.
 ---

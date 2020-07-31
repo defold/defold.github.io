@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: Showing 2D images
 brief: This manual describes how to show 2D images and animations using the sprite component.
 ---

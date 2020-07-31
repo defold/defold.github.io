@@ -1,6 +1,7 @@
 ---
 layout: manual
 language: en
+github: https://github.com/defold/doc
 title: GUI scripts in Defold
 brief: This manual explains GUI scripting.
 ---
