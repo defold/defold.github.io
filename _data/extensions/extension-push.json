@@ -1,190 +1,199 @@
-[
-    {
-        "description": "Send a request for push notifications. Note that the notifications table parameter is iOS only and will be ignored on Android.", 
-        "name": "register", 
-        "parameters": [
-            {
-                "doc": "The types of notifications to listen to. [icon:ios]", 
-                "name": "notifications"
-            }, 
-            {
-                "doc": "Register callback function.", 
-                "name": "callback"
-            }
-        ], 
-        "returnvalues": [], 
-        "type": "FUNCTION"
-    }, 
-    {
-        "description": "Sets a listener function to listen to push notifications.", 
-        "name": "set_listener", 
-        "parameters": [
-            {
-                "doc": "Listener callback function.", 
-                "name": "listener"
-            }
-        ], 
-        "returnvalues": [], 
-        "type": "FUNCTION"
-    }, 
-    {
-        "description": "Set the badge count for application icon. This function is only available on iOS. [icon:ios]", 
-        "name": "set_badge_count", 
-        "parameters": [
-            {
-                "doc": "Badge count", 
-                "name": "count"
-            }
-        ], 
-        "returnvalues": [], 
-        "type": "FUNCTION"
-    }, 
-    {
-        "description": "Local push notifications are scheduled with this function.\nThe returned `id` value is uniquely identifying the scheduled notification and can be stored for later reference.", 
-        "name": "schedule", 
-        "parameters": [
-            {
-                "doc": "Number of seconds into the future until the notification should be triggered.", 
-                "name": "time"
-            }, 
-            {
-                "doc": "Localized title to be displayed to the user if the application is not running.", 
-                "name": "title"
-            }, 
-            {
-                "doc": "Localized body message of the notification to be displayed to the user if the application is not running.", 
-                "name": "alert"
-            }, 
-            {
-                "doc": "JSON string to be passed to the registered listener function.", 
-                "name": "payload"
-            }, 
-            {
-                "doc": "Table with notification and platform specific fields", 
-                "name": "notification_settings"
-            }
-        ], 
-        "returnvalues": [
-            {
-                "doc": "Table with notification and platform specific fields", 
-                "name": "table"
-            }, 
-            {
-                "doc": "Table with notification and platform specific fields", 
-                "name": "table"
-            }
-        ], 
-        "type": "FUNCTION"
-    }, 
-    {
-        "description": "Use this function to cancel a previously scheduled local push notification.\nThe notification is identified by a numeric id as returned by `push.schedule()`.", 
-        "name": "cancel", 
-        "parameters": [
-            {
-                "doc": "The numeric id of the local push notification", 
-                "name": "id"
-            }
-        ], 
-        "returnvalues": [], 
-        "type": "FUNCTION"
-    }, 
-    {
-        "description": "Returns a table with all data associated with a specified local push notification.\nThe notification is identified by a numeric id as returned by `push.schedule()`.", 
-        "name": "get_scheduled", 
-        "parameters": [
-            {
-                "doc": "The numeric id of the local push notification.", 
-                "name": "id"
-            }
-        ], 
-        "returnvalues": [
-            {
-                "doc": "The numeric id of the local push notification.", 
-                "name": "number"
-            }
-        ], 
-        "type": "FUNCTION"
-    }, 
-    {
-        "description": "Returns a table with all data associated with all scheduled local push notifications.\nThe table contains key, value pairs where the key is the push notification id and the value is a table with the notification data, corresponding to the data given by `push.get_scheduled(id)`.", 
-        "name": "get_all_scheduled", 
-        "parameters": [], 
-        "returnvalues": [
-            {
-                "doc": "The numeric id of the local push notification.", 
-                "name": "number"
-            }
-        ], 
-        "type": "FUNCTION"
-    }, 
-    {
-        "description": "Badge notification type.", 
-        "name": "NOTIFICATION_BADGE", 
-        "parameters": [], 
-        "returnvalues": [], 
-        "type": "NUMBER"
-    }, 
-    {
-        "description": "Sound notification type.", 
-        "name": "NOTIFICATION_SOUND", 
-        "parameters": [], 
-        "returnvalues": [], 
-        "type": "NUMBER"
-    }, 
-    {
-        "description": "Alert notification type.", 
-        "name": "NOTIFICATION_ALERT", 
-        "parameters": [], 
-        "returnvalues": [], 
-        "type": "NUMBER"
-    }, 
-    {
-        "description": "Local push origin.", 
-        "name": "ORIGIN_LOCAL", 
-        "parameters": [], 
-        "returnvalues": [], 
-        "type": "NUMBER"
-    }, 
-    {
-        "description": "Remote push origin.", 
-        "name": "ORIGIN_REMOTE", 
-        "parameters": [], 
-        "returnvalues": [], 
-        "type": "NUMBER"
-    }, 
-    {
-        "description": "This priority is for items might not be shown to the user except under special circumstances, such as detailed notification logs. Only available on Android. [icon:android]", 
-        "name": "PRIORITY_MIN", 
-        "parameters": [], 
-        "returnvalues": [], 
-        "type": "NUMBER"
-    }, 
-    {
-        "description": "Priority for items that are less important. Only available on Android. [icon:android]", 
-        "name": "PRIORITY_LOW", 
-        "parameters": [], 
-        "returnvalues": [], 
-        "type": "NUMBER"
-    }, 
-    {
-        "description": "The default notification priority. Only available on Android. [icon:android]", 
-        "name": "PRIORITY_DEFAULT", 
-        "parameters": [], 
-        "returnvalues": [], 
-        "type": "NUMBER"
-    }, 
-    {
-        "description": "Priority for more important notifications or alerts. Only available on Android. [icon:android]", 
-        "name": "PRIORITY_HIGH", 
-        "parameters": [], 
-        "returnvalues": [], 
-        "type": "NUMBER"
-    }, 
-    {
-        "description": "Set this priority for your application's most important items that require the user's prompt attention or input. Only available on Android. [icon:android]", 
-        "name": "PRIORITY_MAX", 
-        "parameters": [], 
-        "returnvalues": [], 
-        "type": "NUMBER"
+{
+    "elements": [
+        {
+            "description": "Send a request for push notifications. Note that the notifications table parameter is iOS only and will be ignored on Android.", 
+            "name": "register", 
+            "parameters": [
+                {
+                    "doc": "The types of notifications to listen to. [icon:ios]", 
+                    "name": "notifications"
+                }, 
+                {
+                    "doc": "Register callback function.", 
+                    "name": "callback"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Sets a listener function to listen to push notifications.", 
+            "name": "set_listener", 
+            "parameters": [
+                {
+                    "doc": "Listener callback function.", 
+                    "name": "listener"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Set the badge count for application icon. This function is only available on iOS. [icon:ios]", 
+            "name": "set_badge_count", 
+            "parameters": [
+                {
+                    "doc": "Badge count", 
+                    "name": "count"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Local push notifications are scheduled with this function.\nThe returned `id` value is uniquely identifying the scheduled notification and can be stored for later reference.", 
+            "name": "schedule", 
+            "parameters": [
+                {
+                    "doc": "Number of seconds into the future until the notification should be triggered.", 
+                    "name": "time"
+                }, 
+                {
+                    "doc": "Localized title to be displayed to the user if the application is not running.", 
+                    "name": "title"
+                }, 
+                {
+                    "doc": "Localized body message of the notification to be displayed to the user if the application is not running.", 
+                    "name": "alert"
+                }, 
+                {
+                    "doc": "JSON string to be passed to the registered listener function.", 
+                    "name": "payload"
+                }, 
+                {
+                    "doc": "Table with notification and platform specific fields", 
+                    "name": "notification_settings"
+                }
+            ], 
+            "returnvalues": [
+                {
+                    "doc": "Table with notification and platform specific fields", 
+                    "name": "table"
+                }, 
+                {
+                    "doc": "Table with notification and platform specific fields", 
+                    "name": "table"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Use this function to cancel a previously scheduled local push notification.\nThe notification is identified by a numeric id as returned by `push.schedule()`.", 
+            "name": "cancel", 
+            "parameters": [
+                {
+                    "doc": "The numeric id of the local push notification", 
+                    "name": "id"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Returns a table with all data associated with a specified local push notification.\nThe notification is identified by a numeric id as returned by `push.schedule()`.", 
+            "name": "get_scheduled", 
+            "parameters": [
+                {
+                    "doc": "The numeric id of the local push notification.", 
+                    "name": "id"
+                }
+            ], 
+            "returnvalues": [
+                {
+                    "doc": "The numeric id of the local push notification.", 
+                    "name": "number"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Returns a table with all data associated with all scheduled local push notifications.\nThe table contains key, value pairs where the key is the push notification id and the value is a table with the notification data, corresponding to the data given by `push.get_scheduled(id)`.", 
+            "name": "get_all_scheduled", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "The numeric id of the local push notification.", 
+                    "name": "number"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Badge notification type.", 
+            "name": "NOTIFICATION_BADGE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Sound notification type.", 
+            "name": "NOTIFICATION_SOUND", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Alert notification type.", 
+            "name": "NOTIFICATION_ALERT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Local push origin.", 
+            "name": "ORIGIN_LOCAL", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Remote push origin.", 
+            "name": "ORIGIN_REMOTE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "This priority is for items might not be shown to the user except under special circumstances, such as detailed notification logs. Only available on Android. [icon:android]", 
+            "name": "PRIORITY_MIN", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Priority for items that are less important. Only available on Android. [icon:android]", 
+            "name": "PRIORITY_LOW", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The default notification priority. Only available on Android. [icon:android]", 
+            "name": "PRIORITY_DEFAULT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Priority for more important notifications or alerts. Only available on Android. [icon:android]", 
+            "name": "PRIORITY_HIGH", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Set this priority for your application's most important items that require the user's prompt attention or input. Only available on Android. [icon:android]", 
+            "name": "PRIORITY_MAX", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }
+    ], 
+    "info": {
+        "brief": "push", 
+        "description": "Functions and constants for interacting with local, as well as Apple''s and Google''s push notification services. These API's only exist on mobile platforms. [icon:ios] [icon:android]", 
+        "group": "EXTENSIONS", 
+        "name": "push", 
+        "namespace": "push"
     }
-]
+}
