@@ -364,6 +364,7 @@ def process_extension(extension_name, download = False):
         replace_in_file(index, r"title\:", r"layout: manual\ntitle:")
         replace_in_file(index, r"title\:", r"language: en\ntitle:")
         replace_in_file(index, r"title\:", r"github: {}\ntitle:".format(github_url))
+        process_doc_file(index)
 
         # generate a dummy markdown page with some front matter for the api doc
         with open(os.path.join(extension_dir, "api.html"), "w") as f:
