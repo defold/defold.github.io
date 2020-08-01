@@ -377,7 +377,8 @@ def process_extension(extension_name, download = False):
         refdoc["elements"] = elements
         info = {}
         refdoc["info"] = info
-        for filename in find_files(os.path.join(unzipped_extension_dir, extension_name), "*.script_api"):
+
+        for filename in find_files(unzipped_extension_dir, "*.script_api"):
             api = yaml.safe_load(read_as_string(filename))[0]
 
             info["group"] = "EXTENSIONS"
@@ -397,8 +398,8 @@ def process_extension(extension_name, download = False):
                 element["returnvalues"] = []
                 for r in m.get("returns", []):
                     ret = {}
-                    ret["name"] = p.get("type", "")
-                    ret["doc"] = p.get("desc")
+                    ret["name"] = r.get("type", "")
+                    ret["doc"] = r.get("desc")
                     element["returnvalues"].append(ret)
                 element["description"] = m.get("desc")
                 element["type"] = m.get("type").upper()
@@ -931,7 +932,7 @@ def commit_changes(githubtoken):
     call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
 
 
-ALL_COMMANDS = [ "docs", "refdoc", "awesome", "examples", "codepad", "commit", "searchindex", "extension-push" ]
+ALL_COMMANDS = [ "docs", "refdoc", "awesome", "examples", "codepad", "commit", "searchindex", "extension-gpgs", "extension-push" ]
 
 parser = ArgumentParser()
 parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ', all, help)')
@@ -948,6 +949,7 @@ examples = Build the examples
 codepad = Build the Defold CodePad
 commit = Commit changed files (requires --githubtoken)
 searchindex = Update the static Lunr search index
+extension-gpgs = Process the docs for official Google Play Game Services extension
 extension-push = Process the docs for official push notification extension
 all = Run all of the above commands
 help = Show this help
