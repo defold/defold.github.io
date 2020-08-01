@@ -1,0 +1,605 @@
+{
+    "elements": [
+        {
+            "description": "Login to GPGS using a button.", 
+            "name": "login", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Silent login to GPGS.\nThis function is trying to retrieve the currently signed-in player\u2019s account.\n[icon:attention] By default login methods request `GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN`. But if you use Disk, we have to request extra scope `Drive.SCOPE_APPFOLDER`. Or if you use ID token, we have to request ID token with provided client_id. If so it causes the first time silent sign-in to fail, except for users who have already signed in successfully on a different device. Turn off GPGS features you don't want to use in `game.project`.", 
+            "name": "silent_login", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Logout from GPGS", 
+            "name": "logout", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Get the current GPGS player display name.", 
+            "name": "get_display_name", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "The player's display name.", 
+                    "name": "string"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Get the current GPGS player id.", 
+            "name": "get_id", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "The player ID.", 
+                    "name": "string"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Get the current GPGS player id token. Available only if \"gpgs.client_id\" is configured in game.project and \"gpgs.request_id_token = 1\".", 
+            "name": "get_id_token", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "The player ID token.", 
+                    "name": "string"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Returns a one-time server auth code to send to your web server which can be exchanged for access token", 
+            "name": "get_server_auth_code", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "The server auth code for logged in account.", 
+                    "name": "string"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Check if a user is logged in currently.", 
+            "name": "is_logged_in", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "Current login state.", 
+                    "name": "boolean"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "This method sets the position for the login popup.", 
+            "name": "set_popup_position", 
+            "parameters": [
+                {
+                    "doc": "An position can be one of the predefined constants below\n- `gpgs.POPUP_POS_TOP_LEFT`\n- `gpgs.POPUP_POS_TOP_CENTER`\n- `gpgs.POPUP_POS_TOP_RIGHT`\n- `gpgs.POPUP_POS_CENTER_LEFT`\n- `gpgs.POPUP_POS_CENTER`\n- `gpgs.POPUP_POS_CENTER_RIGHT`\n- `gpgs.POPUP_POS_BOTTOM_LEFT`\n- `gpgs.POPUP_POS_BOTTOM_CENTER`\n- `gpgs.POPUP_POS_BOTTOM_RIGHT`\n\nDefault value is `gpgs.POPUP_POS_TOP_CENTER`", 
+                    "name": "position"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Set callback for receiving messages from GPGS.", 
+            "name": "set_callback", 
+            "parameters": [
+                {
+                    "doc": "A callback taking the following parameters", 
+                    "name": "callback"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Provides a default saved games selection user interface.", 
+            "name": "snapshot_display_saves", 
+            "parameters": [
+                {
+                    "doc": "The title to display in the action bar. By default \"Game Saves\".", 
+                    "name": "popupTitle"
+                }, 
+                {
+                    "doc": "Whether or not to display a \"create new snapshot\" option in the selection UI. By default `true`.", 
+                    "name": "allowAddButton"
+                }, 
+                {
+                    "doc": "Whether or not to provide a delete overflow menu option for each snapshot in the selection UI. By default `true`.", 
+                    "name": "allowDelete"
+                }, 
+                {
+                    "doc": "The maximum number of snapshots to display in the UI. By default 5.", 
+                    "name": "maxNumberOfSavedGamesToShow"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Opens a snapshot with the given `saveName`. If `createIfNotFound` is set to `true`, the specified snapshot will be created if it does not already exist.", 
+            "name": "snapshot_open", 
+            "parameters": [
+                {
+                    "doc": "The name of the snapshot file to open. Must be between 1 and 100 non-URL-reserved characters (a-z, A-Z, 0-9, or the symbols \"-\", \".\", \"_\", or \"~\").", 
+                    "name": "saveName"
+                }, 
+                {
+                    "doc": "If `true`, the snapshot will be created if one cannot be found.", 
+                    "name": "createIfNotFound"
+                }, 
+                {
+                    "doc": "The conflict resolution policy to use for this snapshot that can be one of the predefined constants below\n- `gpgs.RESOLUTION_POLICY_MANUAL`\n- `gpgs.RESOLUTION_POLICY_LONGEST_PLAYTIME`\n- `gpgs.RESOLUTION_POLICY_LAST_KNOWN_GOOD`\n- `gpgs.RESOLUTION_POLICY_MOST_RECENTLY_MODIFIED`\n- `gpgs.RESOLUTION_POLICY_HIGHEST_PROGRESS`\n\nDefault value is `gpgs.RESOLUTION_POLICY_LAST_KNOWN_GOOD`", 
+                    "name": "conflictPolicy"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Save the currently opened save on the server and close it.", 
+            "name": "snapshot_commit_and_close", 
+            "parameters": [
+                {
+                    "doc": "A table with metadata for a save. It contains the fields below", 
+                    "name": "metadata"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Returns the currently opened snapshot data.", 
+            "name": "snapshot_get_data", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "The byte array data of the currently opened snapshot. `nil` if something goes wrong.", 
+                    "name": "string"
+                }, 
+                {
+                    "doc": "An error message if something goes wrong.", 
+                    "name": "string"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Sets the data for the currently opened snapshot.", 
+            "name": "snapshot_set_data", 
+            "parameters": [
+                {
+                    "doc": "The data to set.", 
+                    "name": "data"
+                }
+            ], 
+            "returnvalues": [
+                {
+                    "doc": "True if data was set for the currently opened snapshot.", 
+                    "name": "boolean"
+                }, 
+                {
+                    "doc": "An error message if something goes wrong.", 
+                    "name": "string"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Check if a snapshot was opened.", 
+            "name": "snapshot_is_opened", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "A current snapshot state.", 
+                    "name": "boolean"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Returns the maximum data size per snapshot cover image in bytes.", 
+            "name": "snapshot_get_max_image_size", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "The maximum data size per snapshot cover image in bytes.", 
+                    "name": "number"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Returns the maximum data size per snapshot in bytes.", 
+            "name": "snapshot_get_max_save_size", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "The maximum data size per snapshot in bytes.", 
+                    "name": "number"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Returns the conflicting snapshot data.", 
+            "name": "snapshot_get_conflicting_data", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "The byte array data of the conflicting snapshot. `nil` if something goes wrong.", 
+                    "name": "string"
+                }, 
+                {
+                    "doc": "An error message if something goes wrong.", 
+                    "name": "boolean"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Resolves a conflict using the data from the provided snapshot.", 
+            "name": "snapshot_resolve_conflict", 
+            "parameters": [
+                {
+                    "doc": "The conflict id that you want to resolve. Provided in `message` table with `STATUS_CONFLICT` message type.", 
+                    "name": "conflictId"
+                }, 
+                {
+                    "doc": "Type of the snapshot you want to use for conflict solving that can be one of the predefined constants below\n- `gpgs.SNAPSHOT_CURRENT`\n- `gpgs.SNAPSHOT_CONFLICTING`", 
+                    "name": "snapshotId"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Submit a score to a leaderboard for the currently signed-in player.", 
+            "name": "leaderboard_submit_score", 
+            "parameters": [
+                {
+                    "doc": null, 
+                    "name": "leaderboardId"
+                }, 
+                {
+                    "doc": null, 
+                    "name": "score"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Asynchronously gets the top page of scores for a leaderboard.", 
+            "name": "leaderboard_get_top_scores", 
+            "parameters": [
+                {
+                    "doc": null, 
+                    "name": "leaderboardId"
+                }, 
+                {
+                    "doc": "One of the gpgs.TIME_SPAN_ constants", 
+                    "name": "time_span"
+                }, 
+                {
+                    "doc": "One of the gpgs.COLLECTION_ constants", 
+                    "name": "collection"
+                }, 
+                {
+                    "doc": "Between 1-25", 
+                    "name": "max_results"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Asynchronously gets a player-centered page of scores for a leaderboard.", 
+            "name": "leaderboard_get_player_centered_scores", 
+            "parameters": [
+                {
+                    "doc": null, 
+                    "name": "leaderboardId"
+                }, 
+                {
+                    "doc": "One of the gpgs.TIME_SPAN_ constants", 
+                    "name": "time_span"
+                }, 
+                {
+                    "doc": "One of the gpgs.COLLECTION_ constants", 
+                    "name": "collection"
+                }, 
+                {
+                    "doc": "Between 1-25", 
+                    "name": "max_results"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Show a leaderboard for a game specified by a leaderboardId.", 
+            "name": "leaderboard_show", 
+            "parameters": [
+                {
+                    "doc": null, 
+                    "name": "leaderboardId"
+                }, 
+                {
+                    "doc": "One of the gpgs.TIME_SPAN_ constants", 
+                    "name": "time_span"
+                }, 
+                {
+                    "doc": "One of the gpgs.COLLECTION_ constants", 
+                    "name": "collection"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Show the list of leaderboards.", 
+            "name": "leaderboard_list", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Asynchronously gets a player-centered page of scores for a leaderboard.", 
+            "name": "leaderboard_get_player_score", 
+            "parameters": [
+                {
+                    "doc": null, 
+                    "name": "leaderboardId"
+                }, 
+                {
+                    "doc": "One of the gpgs.TIME_SPAN_ constants", 
+                    "name": "time_span"
+                }, 
+                {
+                    "doc": "One of the gpgs.COLLECTION_ constants", 
+                    "name": "collection"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "The login popup position at the top-left corner.", 
+            "name": "POPUP_POS_TOP_LEFT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The login popup position at the top-center.", 
+            "name": "POPUP_POS_TOP_CENTER", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The login popup position at the top-right corner.", 
+            "name": "POPUP_POS_TOP_RIGHT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The login popup position at the center-left.", 
+            "name": "POPUP_POS_CENTER_LEFT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The login popup position at the center of the screen.", 
+            "name": "POPUP_POS_CENTER", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The login popup position at the center-right.", 
+            "name": "POPUP_POS_CENTER_RIGHT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The login popup position at the bottom-left corner.", 
+            "name": "POPUP_POS_BOTTOM_LEFT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The login popup position at the bottom-centre.", 
+            "name": "POPUP_POS_BOTTOM_CENTER", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The login popup position at the bottom-right corner.", 
+            "name": "POPUP_POS_BOTTOM_RIGHT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_MANUAL) for this constant", 
+            "name": "RESOLUTION_POLICY_MANUAL", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_LONGEST_PLAYTIME) for this constant", 
+            "name": "RESOLUTION_POLICY_LONGEST_PLAYTIME", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_LAST_KNOWN_GOOD) for this constant", 
+            "name": "RESOLUTION_POLICY_LAST_KNOWN_GOOD", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_MOST_RECENTLY_MODIFIED) for this constant", 
+            "name": "RESOLUTION_POLICY_MOST_RECENTLY_MODIFIED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_HIGHEST_PROGRESS) for this constant", 
+            "name": "RESOLUTION_POLICY_HIGHEST_PROGRESS", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.login()`", 
+            "name": "MSG_SIGN_IN", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.silent_login()`", 
+            "name": "MSG_SILENT_SIGN_IN", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.logout()`", 
+            "name": "MSG_SIGN_OUT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.snapshot_display_saves()`", 
+            "name": "MSG_SHOW_SNAPSHOTS", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.snapshot_open()`", 
+            "name": "MSG_LOAD_SNAPSHOT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "An operation success.", 
+            "name": "STATUS_SUCCESS", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "An operation failed. Check the error field in the massage table.", 
+            "name": "STATUS_FAILED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "A user wants to create new save as a result of `gpgs.snapshot_display_saves()` method. Turn off this button in `gpgs.snapshot_display_saves()` if you don't want to have this functionality.", 
+            "name": "STATUS_CREATE_NEW_SAVE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The result of the calling `gpgs.snapshot_open()` or 'gpgs.snapshot_resolve_conflict()' is a conflict. You need to make decision on how to solve this conflict using 'gpgs.snapshot_resolve_conflict()'.", 
+            "name": "STATUS_CONFLICT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The second parameter for 'gpgs.snapshot_resolve_conflict()' method, which means that you want to choose the current snapshot as a snapshot for conflict solving.", 
+            "name": "SNAPSHOT_CURRENT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The second parameter for 'gpgs.snapshot_resolve_conflict()' method, which means that you want to choose the conflicting snapshot as a snapshot for conflict solving.", 
+            "name": "SNAPSHOT_CONFLICTING", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_NOT_FOUND) for this constant", 
+            "name": "ERROR_STATUS_SNAPSHOT_NOT_FOUND", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_CREATION_FAILED) for this constant", 
+            "name": "ERROR_STATUS_SNAPSHOT_CREATION_FAILED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE) for this constant", 
+            "name": "ERROR_STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_COMMIT_FAILED) for this constant", 
+            "name": "ERROR_STATUS_SNAPSHOT_COMMIT_FAILED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_FOLDER_UNAVAILABLE) for this constant", 
+            "name": "ERROR_STATUS_SNAPSHOT_FOLDER_UNAVAILABLE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_CONFLICT_MISSING) for this constant", 
+            "name": "ERROR_STATUS_SNAPSHOT_CONFLICT_MISSING", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }
+    ], 
+    "info": {
+        "brief": "gpgs", 
+        "description": "Functions and constants for interacting with Google Play Game Services (GPGS) APIs", 
+        "group": "EXTENSIONS", 
+        "name": "gpgs", 
+        "namespace": "gpgs"
+    }
+}

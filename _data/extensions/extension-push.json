@@ -67,12 +67,12 @@
             ], 
             "returnvalues": [
                 {
-                    "doc": "Table with notification and platform specific fields", 
-                    "name": "table"
+                    "doc": "Unique id that can be used to cancel or inspect the notification", 
+                    "name": "number"
                 }, 
                 {
-                    "doc": "Table with notification and platform specific fields", 
-                    "name": "table"
+                    "doc": "Error string if something went wrong, otherwise nil", 
+                    "name": "string"
                 }
             ], 
             "type": "FUNCTION"
@@ -100,8 +100,8 @@
             ], 
             "returnvalues": [
                 {
-                    "doc": "The numeric id of the local push notification.", 
-                    "name": "number"
+                    "doc": "Table with all data associated with the notification.", 
+                    "name": "table"
                 }
             ], 
             "type": "FUNCTION"
@@ -112,8 +112,8 @@
             "parameters": [], 
             "returnvalues": [
                 {
-                    "doc": "The numeric id of the local push notification.", 
-                    "name": "number"
+                    "doc": "Table with all data associated with all scheduled notifications.", 
+                    "name": "table"
                 }
             ], 
             "type": "FUNCTION"
