@@ -969,6 +969,8 @@ for command in args.commands:
         process_docs(download = args.download)
     elif command == "extension-push":
         process_extension("extension-push", download = args.download)
+    elif command == "extension-gpgs":
+        process_extension("extension-gpgs", download = args.download)
     elif command == "examples":
         process_examples(download = args.download)
     elif command == "refdoc":
