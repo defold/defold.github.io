@@ -1,7 +1,12 @@
 {%- if include.link.size > 0 -%}
 {%- assign clickable="clickable" -%}
 {%- endif -%}
-<div class="card center light {{ clickable }}"
+{%- if include.class -%}
+{%- assign class=include.class -%}
+{%- else -%}
+{%- assign class="light" -%}
+{%- endif -%}
+<div class="card center {{ class }} {{ clickable }}"
 	style="
 	{%- if include.height -%}height: {{ include.height }};{%- endif -%}
 	{%- if include.min-height -%}min-height: {{ include.min-height }};{%- endif -%}
