@@ -123,7 +123,7 @@ Not sure. I’m guessing it is a combination of factors. Some early adopters of 
 
 **When you attract new developers today, what things do you emphasise, what do you do best?**
 
-It’s very quick to get started with Defold. We have a zero-setup policy. You will be able to download Defold, launch it, select a project template and have a build up on your phone in minutes. There is no need to install any additional tools to create application bundles for any platform. No need for Android Studio. No need for XCode. No need for Visual Studio or any other tool. This is a real strength and something people are amazed at and give us praise for.
+It’s very quick to get started with Defold. We have a zero-setup policy. You will be able to download Defold, launch it, select a project template and have a build up on your phone in minutes. There is no need to install any additional tools to create application bundles for any platform. No need for Android Studio. No need for Xcode. No need for Visual Studio or any other tool. This is a real strength and something people are amazed at and give us praise for.
 
 Another powerful thing is our extension system. We have a small engine core with the essentials and then provide an easy to use system of extensions/plugins to extend the engine. If you want to use In-App Purchases on mobile or Facebook you add one line in your project settings. If you want to monetize using ads you add another line. And when you build your project we automatically include these dependencies into a custom engine with only the things you need. This ensures that the engine is kept small and that build times are reduced as much as possible. All of this is taken care of automatically as well.
 
