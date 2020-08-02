@@ -9,11 +9,13 @@ after: [yellow_download_section.html, donors_and_partners.html]
 ---
 
 <div class="row">
-	<p>Why use Defold and not some other engine? We get this question from time to time, but it is not really a question that can be answered without elaborating a bit on the design philosophy of Defold. Game developers today have a lot of options when it comes to the kind of tools and technology to use when creating games. The options range from the completely custom made engine created from scratch for a specific game to engines for certain platforms or genres and all the way to engines which seem capabale of creating any kind of game without any limitations.</p>
+	<p>Why use Defold and not some other engine? We get this question from time to time and while it may seem like a simple question it is not really a question that can be answered without elaborating a bit on the design philosophy of Defold. Game developers today have a lot of options when it comes to the kind of tools and technology to use when creating games. The options range from the completely custom made engine for a specific game to engines for certain platforms or genres and all the way to engines which seem capabale of creating any kind of game without any limitations.</p>
 
-	<p>How do you chose? Do you use the engine which seems to be able to do just about anything? Or do you use an engine that you are already familiar with? Or do you use the engine that is best suited for the game you are creating? It may be tempting to pick the engine which supports everything simply because you close no doors and have all the options available to you, but the question is at what cost? Are you going to encounter problems down the road? Going with familiarity and the use of an engine you already know is ofcourse a perfectly valid choice and you get can get by being very proficient with a tool, but it is rarely the case that one engine is the best choice to solve all problems and create all kinds of games.</p>
+	<p>So how do you chose? Do you use the engine which seems to be able to do just about anything? Or do you use an engine that you are already familiar with? Or do you use the engine that is best suited for the game you are creating? It may be tempting to pick the engine which supports everything simply because you close no doors and have all the options available to you, but the question is at what cost? Are you going to encounter problems down the road? Going with familiarity and the use of an engine you already know is ofcourse a perfectly valid choice and you get far by being very proficient with a tool, but it is rarely the case that one engine is the best choice to solve all problems and create all kinds of games.</p>
 
-	<p>The answer to the question of which engine to use or which engine that is "the best" usually becomes a vague "It depends on the game". But it is true, the kind of game you wish to create really should influence your choice of tools. Some examples:</p>
+	<p>The answer to the question of which engine to use or which engine that is "the best" usually becomes a vague "It depends on the game". But it is true, the kind of game you wish to create really should influence your choice of tools.</p>
+
+<!--	<p>The answer to the question of which engine to use or which engine that is "the best" usually becomes a vague "It depends on the game". But it is true, the kind of game you wish to create really should influence your choice of tools. Some examples:</p>
 
 	<ul>
 		<li>If you are creating a cross platform game you must consider how easy it is to build to multiple platforms.
@@ -55,7 +57,12 @@ after: [yellow_download_section.html, donors_and_partners.html]
 				<li>Can you quickly create particle effects?</li>
 			</ul>
 		</li>
-	</ul>
+	</ul>-->
+
+	<div class="center">
+		<br/>
+		<img src="/images/logo/defold/logo/logo-ver-outline-white-64.png"/>
+	</div>
 
 	<h3>Why Defold?</h3>
 
@@ -64,11 +71,29 @@ after: [yellow_download_section.html, donors_and_partners.html]
 	<h5>Truly cross platform</h5>
 	<p>Supporting multiple platforms can be a real pain, especially if you need to have a lot of branching code and exceptions to deal with the different platforms. With Defold this is a non issue. You create your game once, and can without making any changes export to all supported platforms: Windows, Linux, macOS, Android, iOS, HTML5 and Nintendo Switch. You should never have to care about which platform your game is running on. The Defold APIs work across all platforms and you do not have to worry about typical platform specific things such as file paths, texture formats, input methods, render pipelines, networking protocols or in-app purchasing systems. We got you covered!</p>
 
+	<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); grid-gap: 1rem;">
+		<img src="/images/logo/platform/100px-switch-white.png"		width="30%" style="display:block; margin: auto;" alt="Nintendo Switch logo"/>
+		<img src="/images/logo/platform/100px-android-white.png"		width="30%" style="display:block; margin: auto;" alt="Android logo"/>
+		<img src="/images/logo/platform/100px-ios-white.png"			width="30%" style="display:block; margin: auto;" alt="Apple logo"/>
+		<img src="/images/logo/platform/100px-macos-white.png"		width="30%" style="display:block; margin: auto;" alt="macOS logo"/>
+		<img src="/images/logo/platform/100px-linux-white.png"		width="30%" style="display:block; margin: auto;" alt="Linux logo"/>
+		<img src="/images/logo/platform/100px-windows-white.png"		width="30%" style="display:block; margin: auto;" alt="Windows logo"/>
+		<img src="/images/logo/platform/100px-steam-white.png"		width="30%" style="display:block; margin: auto;" alt="Steam logo"/>
+		<img src="/images/logo/platform/100px-html5-white.png"		width="30%" style="display:block; margin: auto;" alt="HTML5 logo"/>
+		<img src="/images/logo/platform/100px-facebook-white.png"	width="30%" style="display:block; margin: auto;" alt="Facebook logo"/>
+	</div>
+	<br/>
+	<br/>
+
 	<h5>Zero-setup policy</h5>
 	<p>There is nothing more tedious than keeping tools and SDKs updated with the latest changes and requirements, especially when all you want to do is create game right? We promise you this: You should never have to do more than download and install Defold once. Nothing else. You do not need to install and keep Xcode updated to make an iOS or macOS build. You do not need Android Studio or any of the Android command line tools to make an Android build. No Visual Studio install for Windows, and so on for the rest of the platforms. You should not have to worry about how your application is built, we promise to take care of this for you. PS You can still control the build process through our command line tools if you want to!</p>
 
+	<h5 class="center"><i>"You should never have to do more than download and install Defold once."</i></h5>
+
 	<h5>No breaking changes</h5>
 	<p>We know how frustrating it is to play catch-up with breaking changes and we promise to very rarely introduce breaking changes (hardly ever!). You should not have to worry about your game breaking just because there is a new version of Defold. And your old projects should always build using the latest version of Defold. We also make sure to always upgrade our tools to support the latest OS versions and the latest platform requirements.</p>
+
+	<h5 class="center"><i>"You should not have to worry about your game breaking."</i></h5>
 
 	<h5>Small and performant</h5>
 	<p>Defold has a very small engine runtime and it performs really well even on old hardware. We spend a significant amount of effort to make sure it stays that way. The engine is designed from the ground up to conserve memory, take up little disk space and not waste CPU cycles. Keeping the engine small allows you to release games on platforms which many other engines are unable to support.</p>
@@ -98,7 +123,7 @@ after: [yellow_download_section.html, donors_and_partners.html]
 			<td>2.9MB</td>
 		</tr>
 	</table>
-	<p>Source: <a href="https://github.com/Calinou/godot-size-benchmarks" target="_blank">https://github.com/Calinou/godot-size-benchmarks</a> and <a href="https://forum.defold.com/t/build-size-auto-stripping-or-manual-configuration/1819/65" target="_blank">Build size. Auto Stripping or manual configuration 3</a></p>
+	<p>Source: <a href="https://github.com/Calinou/godot-size-benchmarks" target="_blank">https://github.com/Calinou/godot-size-benchmarks</a> and <a href="https://forum.defold.com/t/build-size-auto-stripping-or-manual-configuration/1819/65" target="_blank">Build size. Auto Stripping or manual configuration</a></p>
 
 	<h5>Low level building blocks</h5>
 	<p>Defold provides low level building blocks to create high level things. The design philosophy of Defold is to provide developers with low level building blocks that can be used to create just about anything. But they are just that, low level, which means you have to do a bit more work yourself. On the other hand you are in full control of what you create. Two examples to show what we mean:</p>
@@ -107,9 +132,9 @@ after: [yellow_download_section.html, donors_and_partners.html]
 		<li>If you need a spaceship that can shoot bullets you create one from a game object (the basic building block of Defold games) to which you attach components. A sprite component for visuals, a factory component to spawn bullets and a script component for the logic.</li>
 	</ul>
 
-	<h5>Perfect for 2D</h5>
-	<p>Defold is perfect for 2D game development. Defold has full support for tilemaps, sprites, flipbook- and property animations, particle effects, spine models and GUI.</p>
-
-	<h5>Great community</h5>
+	<h5>A great community</h5>
 	<p>The myth of the lone developer really isn't true. Being able to share accomplishments, discuss design problems or implementation details is part of the process of developing games, and being able to do so in a friendly and inclusive environement is as important for the beginner as it is for the expert. We get a lot of praise for our friendly and active community, especially in the official Defold forum but also on Slack.</p>
+
+	<h5 class="center">❤️</h5>
+
 </div>
