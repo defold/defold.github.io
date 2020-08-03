@@ -148,52 +148,6 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Resets a shader constant for a sprite component.\nThe constant must be defined in the material assigned to the sprite.\nResetting a constant through this function implies that the value defined in the material will be used.\nWhich sprite to reset a constant for is identified by the URL.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the sprite that should have a constant reset</p>", 
-          "name": "url"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string | hash</span> name of the constant</p>", 
-          "name": "constant"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>reset a shader constant for a sprite</p>", 
-      "examples": "<p>The following examples assumes that the sprite has id \"sprite\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the sprite, you can reset the constants defined there in the same manner.</p>\n<p>How to reset the tinting of a sprite:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">sprite</span><span class=\"p\">.</span><span class=\"n\">reset_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "sprite.reset_constant"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Sets a shader constant for a sprite component.\nThe constant must be defined in the material assigned to the sprite.\nSetting a constant through this function will override the value set for that constant in the material.\nThe value will be overridden until <code>sprite.reset_constant</code> is called.\nWhich sprite to set a constant for is identified by the URL.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the sprite that should have a constant set</p>", 
-          "name": "url"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string | hash</span> name of the constant</p>", 
-          "name": "constant"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector4</span> of the constant</p>", 
-          "name": "value"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>set a shader constant for a sprite</p>", 
-      "examples": "<p>The following examples assumes that the sprite has id \"sprite\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the sprite, you can set the constants defined there in the same manner.</p>\n<p>How to tint a sprite red:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">sprite</span><span class=\"p\">.</span><span class=\"n\">set_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "sprite.set_constant"
-    }, 
-    {
-      "replaces": "", 
       "description": "<p>Sets horizontal flipping of the provided sprite's animations.\nThe sprite is identified by its URL.\nIf the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.</p>", 
       "parameters": [
         {
