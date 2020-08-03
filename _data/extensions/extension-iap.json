@@ -1,0 +1,168 @@
+{
+    "elements": [
+        {
+            "description": "Sets the listener function for In-app purchase events.", 
+            "name": "buy", 
+            "parameters": [
+                {
+                    "doc": "product to buy", 
+                    "name": "id"
+                }, 
+                {
+                    "doc": "optional parameters as properties. The following parameters can be set", 
+                    "name": "options"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Explicitly finish a product transaction. [icon:attention] Calling iap.finish is required on a successful transaction if `auto_finish_transactions` is disabled in project settings. Calling this function with `auto_finish_transactions` set will be ignored and a warning is printed. The `transaction.state` field must equal `iap.TRANS_STATE_PURCHASED`.", 
+            "name": "finish", 
+            "parameters": [
+                {
+                    "doc": "transaction table parameter as supplied in listener callback", 
+                    "name": "transaction"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Get current iap provider", 
+            "name": "get_provider_id", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "one of the following values\n- `iap.PROVIDER_ID_GOOGLE`\n- `iap.PROVIDER_ID_AMAZON`\n- `iap.PROVIDER_ID_APPLE`\n- `iap.PROVIDER_ID_FACEBOOK`", 
+                    "name": "constant"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Get a list of all avaliable iap products.", 
+            "name": "list", 
+            "parameters": [
+                {
+                    "doc": "table (array) of identifiers to get products from", 
+                    "name": "ids"
+                }, 
+                {
+                    "doc": "result callback taking the following parameters", 
+                    "name": "callback"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Restore previously purchased products.", 
+            "name": "restore", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "value is `true` if current store supports handling restored transactions, otherwise `false`.", 
+                    "name": "boolean"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Set the callback function to receive purchase transaction events.", 
+            "name": "set_listener", 
+            "parameters": [
+                {
+                    "doc": "listener callback function. Pass an empty function if you no longer wish to receive callbacks.", 
+                    "name": "listener"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "provider id for Amazon", 
+            "name": "PROVIDER_ID_AMAZON", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "provider id for Apple", 
+            "name": "PROVIDER_ID_APPLE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "provider id for Facebook", 
+            "name": "PROVIDER_ID_FACEBOOK", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "iap provider id for Google", 
+            "name": "PROVIDER_ID_GOOGLE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "unspecified error reason", 
+            "name": "REASON_UNSPECIFIED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "user canceled reason", 
+            "name": "REASON_USER_CANCELED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "transaction failed state", 
+            "name": "TRANS_STATE_FAILED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "transaction purchased state", 
+            "name": "TRANS_STATE_PURCHASED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "transaction purchasing state This is an intermediate mode followed by TRANS_STATE_PURCHASED. Store provider support dependent.", 
+            "name": "TRANS_STATE_PURCHASING", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "transaction restored state This is only available on store providers supporting restoring purchases.", 
+            "name": "TRANS_STATE_RESTORED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "transaction unverified state, requires verification of purchase", 
+            "name": "TRANS_STATE_UNVERIFIED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }
+    ], 
+    "info": {
+        "brief": "iap", 
+        "description": "Functions and constants for doing in-app purchases. Supported on iOS, Android (Google Play and Amazon) and Facebook Canvas platforms. [icon:ios] [icon:googleplay] [icon:amazon] [icon:facebook]", 
+        "group": "EXTENSIONS", 
+        "name": "iap", 
+        "namespace": "iap"
+    }
+}
