@@ -932,7 +932,7 @@ def commit_changes(githubtoken):
     call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
 
 
-ALL_COMMANDS = [ "docs", "refdoc", "awesome", "examples", "codepad", "commit", "searchindex", "extension-gpgs", "extension-push" ]
+ALL_COMMANDS = [ "docs", "refdoc", "awesome", "examples", "codepad", "commit", "searchindex", "extension-gpgs", "extension-push", "extension-iap" ]
 
 parser = ArgumentParser()
 parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ', all, help)')
@@ -951,6 +951,7 @@ commit = Commit changed files (requires --githubtoken)
 searchindex = Update the static Lunr search index
 extension-gpgs = Process the docs for official Google Play Game Services extension
 extension-push = Process the docs for official push notification extension
+extension-iap = Process the docs for official In-app purchase extension
 all = Run all of the above commands
 help = Show this help
 """
@@ -973,6 +974,8 @@ for command in args.commands:
         process_extension("extension-push", download = args.download)
     elif command == "extension-gpgs":
         process_extension("extension-gpgs", download = args.download)
+    elif command == "extension-iap":
+        process_extension("extension-iap", download = args.download)
     elif command == "examples":
         process_examples(download = args.download)
     elif command == "refdoc":
