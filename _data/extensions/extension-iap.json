@@ -29,6 +29,18 @@
             "type": "FUNCTION"
         }, 
         {
+            "description": "Acknowledge a transaction. [icon:attention] Calling iap.acknowledge is required on a successful transaction on Google Play unless iap.finish is called. The transaction.state field must equal iap.TRANS_STATE_PURCHASED.", 
+            "name": "acknowledge", 
+            "parameters": [
+                {
+                    "doc": "transaction table parameter as supplied in listener callback", 
+                    "name": "transaction"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
             "description": "Get current iap provider", 
             "name": "get_provider_id", 
             "parameters": [], 
