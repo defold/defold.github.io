@@ -51,14 +51,20 @@ layout: base
 				</div>
 			</div>
 			<div class="columns seven manual">
+				{%- if page.language != "en" -%}
+				{%- capture urlprefix -%}/{{ language.urlprefix }}/{%- endcapture -%}
+				<p><a href="{{ page.url | replace: urlprefix, "/" }}">Read this manual in English</a></p>
+				{%- endif -%}
 				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
 			</div>
-			<div class="columns two"><br/>
+			<div class="columns two">
 				{%- if site.data.languageindex.size > 1 -%}
+				<input class="toggle" type="checkbox" checked/>
+				<label class="togglelabel">Languages</label>
 				<ul class="nobullet">
 				{%- for l in site.data.languageindex -%}
 					{%- if l.active -%}
-					<li>
+					<li style="padding-left: 2rem;">
 						{%- if l.language == "en" -%}
 							<a href='/manuals/introduction' style="text-decoration: none;">{{ l.name }}</a>
 						{%- else -%}
@@ -69,6 +75,8 @@ layout: base
 				{%- endfor -%}
 				</ul>
 				{%- endif -%}
+
+				<hr/>
 
 				<p>
 					Did you spot an error or do you have a suggestion? Please let us know on GitHub!
