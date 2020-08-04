@@ -38,12 +38,13 @@ Civilization, obvs. But I’m also a huge fan of the Zelda series and have sunk 
 #### What are you working on right now?
 A hyper casual game called [Juump!](https://play.google.com/store/apps/details?id=com.winkelgames.juump), which was launched globally a few weeks ago. And a quite unique physics based game which is super-secret at this stage.
 
-![](/images/posts/juump.png)
 
 #### Which part of your current project are you most proud of?
 [Juump!](https://play.google.com/store/apps/details?id=com.winkelgames.juump) is designed by Winkel, a startup with an amazing amount of in-house talent. I’m really proud of having been able to take their vision to a final product relatively quickly, despite all of us working remotely. Defold has made collaboration easy, with the artists actually downloading Defold and running the game themselves.
 
 Technically I’m really happy with the procedural level generation, the screen transitions and the slimey paint particles. And the sound. And the localisation. And the analytics. And the IAP and ads. It’s a small game, but it’s using almost all of Defold’s features!
+
+![](/images/posts/juump.png)
 
 
 #### Tell us about your ugliest hack to get a job done!
