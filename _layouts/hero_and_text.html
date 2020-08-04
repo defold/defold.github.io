@@ -3,6 +3,16 @@ layout: base
 ---
 
 <div class="section narrow lightest-text">
+	{%- if page.logo -%}
+	<div class="container">
+		<div class="row center">
+			<div>
+				<img src="/images/logo/defold/logo/logo-ver-classic-white-160.png" alt="Defold Logo"/>
+			</div>
+		</div>
+	</div>
+	{%- endif -%}
+	{%- if page.text != false -%}
 	<div class="container">
 		<div class="row">
 			<div class="column two-thirds left">
@@ -11,6 +21,7 @@ layout: base
 			</div>
 		</div>
 	</div>
+	{%- endif -%}
 </div>
 
 <div class="section">
