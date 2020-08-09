@@ -68,21 +68,11 @@ REFDOC_MD_FRONTMATTER = """---
 layout: ref
 branch: {}
 ref: {}
+type: {}
 title: API reference ({})
 ---
 """
 REFDOC_MD_BODY = "{% include anchor_headings.html html=content %}"
-
-EXTENSION_MD_FRONTMATTER = """---
-layout: manual
-branch: master
-title: API reference ({})
----
-"""
-EXTENSION_MD_BODY = """
-{{%- assign ref=site.data.extensions.{} -%}}
-{{%- include api.html ref=ref -%}}
-"""
 
 @contextmanager
 def tmpdir():
@@ -368,7 +358,7 @@ def process_extension(extension_name, download = False):
 
         # generate a dummy markdown page with some front matter for the api doc
         with open(os.path.join(extension_dir, "api.html"), "w") as f:
-            f.write(EXTENSION_MD_FRONTMATTER.format(extension_name) + EXTENSION_MD_BODY.format(extension_name))
+            f.write(REFDOC_MD_FRONTMATTER.format("stable", extension_name, "extension", extension_name) + REFDOC_MD_BODY)
 
         # create a json data file for the API reference
         # we generate it from the .script_api file (YAML format)
@@ -789,28 +779,42 @@ def process_refdoc(download = False):
 
             for file in os.listdir(os.path.join(tmp_dir, "doc")):
                 if file.endswith(".json"):
-                    json_out_name = file.replace("_doc.json", "")
-                    json_out_file = json_out_name + ".json"
+                    api = read_as_json(os.path.join(tmp_dir, "doc", file))
+                    # ignore empty APIs (such as those moved to extensions)
+                    if len(api["elements"]) > 0:
+                        json_out_name = file.replace("_doc.json", "")
+                        json_out_file = json_out_name + ".json"
 
-                    # copy and rename file
-                    shutil.copyfile(os.path.join(tmp_dir, "doc", file), os.path.join(REF_DATA_DIR, json_out_file))
+                        # copy and rename file
+                        shutil.copyfile(os.path.join(tmp_dir, "doc", file), os.path.join(REF_DATA_DIR, json_out_file))
 
-                    # generate a dummy markdown page with some front matter for each ref doc
-                    with open(os.path.join(REF_PAGE_DIR, file.replace("_doc.json", ".md")), "w") as f:
-                        f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, json_out_name) + REFDOC_MD_BODY)
+                        namespace = api["info"]["namespace"]
+                        type = "lua"
+                        if namespace.startswith("dm"):
+                            type = "c"
 
-                    # build refdoc index
-                    r = read_as_json(os.path.join(tmp_dir, "doc", file))
-                    namespace = r["info"]["namespace"]
-                    type = "lua"
-                    if namespace.startswith("dm"):
-                        type = "c"
-                    refindex.append({
-                        "namespace": namespace,
-                        "filename": json_out_name,
-                        "branch": branch,
-                        "type": type
-                    })
+                        # generate a dummy markdown page with some front matter for each ref doc
+                        with open(os.path.join(REF_PAGE_DIR, file.replace("_doc.json", ".md")), "w") as f:
+                            f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, type, json_out_name) + REFDOC_MD_BODY)
+
+                        # build refdoc index
+                        refindex.append({
+                            "namespace": namespace,
+                            "filename": json_out_name,
+                            "url": "/ref/" + branch + "/" + json_out_name,
+                            "branch": branch,
+                            "type": type
+                        })
+
+        # add extensions
+        extensions = [ "extension-iap", "extension-push", "extension-gpgs" ]
+        for extension in extensions:
+            refindex.append({
+                "namespace": extension,
+                "url": "/" + extension + "/api",
+                "branch": branch,
+                "type": "extension"
+            })
 
     # copy stable files to ref/ for backwards compatibility
     for item in os.listdir(os.path.join("ref", "stable")):
@@ -818,6 +822,7 @@ def process_refdoc(download = False):
         d = os.path.join("ref", item)
         if not os.path.isdir(s):
             shutil.copy2(s, d)
+
 
     # write refdoc index
     write_as_json(os.path.join("_data", "refindex.json"), refindex)

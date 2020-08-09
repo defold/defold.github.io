@@ -101,6 +101,52 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Resets a shader constant for a tile map component.\nThe constant must be defined in the material assigned to the tile map.\nResetting a constant through this function implies that the value defined in the material will be used.\nWhich tile map to reset a constant for is identified by the URL.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the tile map that should have a constant reset</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> name of the constant</p>", 
+          "name": "constant"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>reset a shader constant for a tile map</p>", 
+      "examples": "<p>The following examples assumes that the tile map has id \"tilemap\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the tile map, you can reset the constants defined there in the same manner.</p>\n<p>How to reset the tinting of a tile map:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">reset_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "tilemap.reset_constant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets a shader constant for a tile map component.\nThe constant must be defined in the material assigned to the tile map.\nSetting a constant through this function will override the value set for that constant in the material.\nThe value will be overridden until tilemap.reset_constant is called.\nWhich tile map to set a constant for is identified by the URL.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the tile map that should have a constant set</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> name of the constant</p>", 
+          "name": "constant"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector4</span> value of the constant</p>", 
+          "name": "value"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set a shader constant for a tile map</p>", 
+      "examples": "<p>The following examples assumes that the tile map has id \"tile map\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the tile map, you can set the constants defined there in the same manner.</p>\n<p>How to tint a tile map to red:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">set_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "tilemap.set_constant"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Replace a tile in a tile map with a new tile.\nThe coordinates of the tiles are indexed so that the \"first\" tile just\nabove and to the right of origo has coordinates 1,1.\nTiles to the left of and below origo are indexed 0, -1, -2 and so forth.</p>\n<pre>\n+-------+-------+------+------+\n|  0,3  |  1,3  | 2,3  | 3,3  |\n+-------+-------+------+------+\n|  0,2  |  1,2  | 2,2  | 3,2  |\n+-------+-------+------+------+\n|  0,1  |  1,1  | 2,1  | 3,1  |\n+-------O-------+------+------+\n|  0,0  |  1,0  | 2,0  | 3,0  |\n+-------+-------+------+------+\n</pre>\n\n<p>The coordinates must be within the bounds of the tile map as it were created.\nThat is, it is not possible to extend the size of a tile map by setting tiles outside the edges.\nTo clear a tile, set the tile to number 0. Which tile map and layer to manipulate is identified by the URL and the layer name parameters.</p>", 
       "parameters": [
         {

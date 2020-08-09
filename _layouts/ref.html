@@ -3,10 +3,16 @@ layout: base
 ---
 {% include learnnav.html showmenu=true %}
 
-{%- assign unsortedindices = site.data.refindex | where: "branch", "stable" -%}
+{%- assign branch = page.branch -%}
+{%- assign unsortedindices = site.data.refindex | where: "branch", branch -%}
 {%- assign indices = unsortedindices | sort: "namespace" -%}
 {%- assign branches = site.data.branchindex -%}
 {%- assign types = indices | map: "type" | uniq -%}
+{%- if page.type == "extension" -%}
+	{%- assign ref = site.data.extensions[page.ref] -%}
+{%- else -%}
+	{%- assign ref = site.data.ref[page.branch][page.ref] -%}
+{%- endif -%}
 <div class="section lightest">
 	<div class="container">
 		<div class="row">
@@ -16,8 +22,8 @@ layout: base
 					{%- assign refs = indices | where: "type", type -%}
 
 					{%- assign checked = "" -%}
-					{%- for ref in refs -%}
-						{%- assign url = "/ref/" | append: page.branch | append: "/" | append: ref.filename -%}
+					{%- for r in refs -%}
+						{%- assign url = r.url -%}
 						{%- if page.url contains url -%}
 							{%- assign checked = "checked" -%}
 						{%- endif -%}
@@ -26,8 +32,8 @@ layout: base
 					<input id="collapsible_{{ type }}" class="toggle" type="checkbox" {{ checked }}/>
 					<label for="collapsible_{{ type }}" class="togglelabel">{{ type | capitalize  }}</label>
 					<ul class="nobullet">
-						{%- for ref in refs -%}
-						<li style="padding-left: 2rem; padding-bottom: 0px;"><a href="/ref/{{ page.branch }}/{{ ref.filename }}" style="text-decoration: none;">{{ ref.namespace }}</a></li>
+						{%- for r in refs -%}
+						<li style="padding-left: 2rem; padding-bottom: 0px;"><a href="{{ r.url }}" style="text-decoration: none;">{{ r.namespace }}</a></li>
 						{%- endfor -%}
 					</ul>
 					{%- endfor -%}
@@ -35,24 +41,23 @@ layout: base
 					<input id="branch" class="toggle" type="checkbox" checked/>
 					<label for="branch" class="togglelabel">Version</label>
 					<ul class="nobullet">
-						{%- for branch in branches -%}
-						<li style="padding-left: 2rem; padding-bottom: 0px;"><a href="/ref/{{ branch }}/{{ page.ref }}" style="text-decoration: none;">{{ branch }}</a></li>
+						{%- for b in branches -%}
+						<li style="padding-left: 2rem; padding-bottom: 0px;"><a href="{{ page.url | replace: branch, b }}" style="text-decoration: none;">{{ b }}</a></li>
 						{%- endfor -%}
 					</ul>
 				</ul>
 				<select class="navdropdown" onchange="location = this.value;">
-					{%- for ref in indices -%}
-					<option value="/ref/{{ page.branch }}/{{ ref.filename }}">{{ ref.namespace }}</option>
+					{%- for r in indices -%}
+					<option value="{{ r.url }}">{{ r.namespace }}</option>
 					{%- endfor -%}
 				</select>
 				<select class="navdropdown" onchange="location = this.value;">
-					{%- for branch in branches -%}
-					<option value="/ref/{{ branch }}/{{ page.ref }}">{{ branch }}</option>
+					{%- for b in branches -%}
+					<option value="{{ page.url | replace: branch, b }}">{{ b }}</option>
 					{%- endfor -%}
 				</select>
 			</div>
 			<div class="columns nine ref scrollable">
-				{%- assign ref = site.data.ref[page.branch][page.ref] -%}
 				{%- include api.html ref=ref -%}
 			</div>
 		</div>
