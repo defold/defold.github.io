@@ -121,52 +121,6 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Resets a shader constant for a model component.\nThe constant must be defined in the material assigned to the model.\nResetting a constant through this function implies that the value defined in the material will be used.\nWhich model to reset a constant for is identified by the URL.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the model that should have a constant reset.</p>", 
-          "name": "url"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string | hash</span> name of the constant.</p>", 
-          "name": "constant"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>reset a shader constant for a model</p>", 
-      "examples": "<p>The following examples assumes that the model has id \"model\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the model, you can reset the constants defined there in the same manner.</p>\n<p>How to reset the tinting of a model:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">reset_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "model.reset_constant"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Sets a shader constant for a model component.\nThe constant must be defined in the material assigned to the model.\nSetting a constant through this function will override the value set for that constant in the material.\nThe value will be overridden until model.reset_constant is called.\nWhich model to set a constant for is identified by the URL.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the model that should have a constant set</p>", 
-          "name": "url"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string | hash</span> name of the constant</p>", 
-          "name": "constant"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector4</span> value of the constant</p>", 
-          "name": "value"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>set a shader constant for a model</p>", 
-      "examples": "<p>The following examples assumes that the model has id \"model\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the model, you can set the constants defined there in the same manner.</p>\n<p>How to tint a model to red:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">set_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "model.set_constant"
-    }, 
-    {
-      "replaces": "", 
       "description": "<p>This message is sent when a Model animation has finished playing back to the script\nthat started the animation.</p>\n<p><span class=\"icon-attention\"></span> No message is sent if a completion callback function was supplied\nwhen the animation was started. No message is sent if the animation is cancelled with\nmodel.cancel(). This message is sent only for animations that play with\nthe following playback modes:</p>\n<ul>\n<li><code>go.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>\n</ul>", 
       "parameters": [
         {
