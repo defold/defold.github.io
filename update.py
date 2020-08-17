@@ -280,13 +280,17 @@ def process_docs(download = False):
                     if language != "en":
                         replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
 
-        print("...faq")
-        faq_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "faq")
-        faq_dst_dir = "faq"
-        rmcopytree(faq_src_dir, faq_dst_dir)
-        for filename in find_files(faq_dst_dir, "*.md"):
-            process_doc_file(filename)
-            replace_in_file(filename, r"title\:", r"layout: text\ntitle:")
+            print("...faq ({})".format(language))
+            faq_src_dir = os.path.join(tmp_dir, "doc-master", "docs", language, "faq")
+            if os.path.exists(faq_src_dir):
+                faq_dst_dir = get_language_specific_dir(language, "faq")
+                rmcopytree(faq_src_dir, faq_dst_dir)
+                for filename in find_files(faq_dst_dir, "*.md"):
+                    process_doc_file(filename)
+                    replace_in_file(filename, r"title\:", r"language: {}\ntitle:".format(language))
+                    replace_in_file(filename, r"title\:", r"layout: faq\ntitle:")
+                    if language != "en":
+                        replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
 
         print("...shared includes")
         shared_includes_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "shared")
