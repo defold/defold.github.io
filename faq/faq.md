@@ -1,5 +1,6 @@
 ---
-layout: text
+language: en
+layout: faq
 title: Defold engine and editor FAQ
 brief: Frequently asked questions about the Defold game engine, editor and platform.
 ---
