@@ -279,6 +279,8 @@ def process_docs(download = False):
                     replace_in_file(filename, r"title\:", r"github: {}\ntitle:".format("https://github.com/defold/doc"))
                     if language != "en":
                         replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
+                        replace_in_file(filename, r"\.\.\/images\/", r"/manuals/images/".format(language))
+                        replace_in_file(filename, r"\.\.\/assets\/", r"/manuals/assets/".format(language))
 
             print("...faq ({})".format(language))
             faq_src_dir = os.path.join(tmp_dir, "doc-master", "docs", language, "faq")
@@ -291,6 +293,8 @@ def process_docs(download = False):
                     replace_in_file(filename, r"title\:", r"layout: faq\ntitle:")
                     if language != "en":
                         replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
+                        replace_in_file(filename, r"\.\.\/images\/", r"/manuals/images/".format(language))
+                        replace_in_file(filename, r"\.\.\/assets\/", r"/manuals/assets/".format(language))
 
         print("...shared includes")
         shared_includes_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "shared")
