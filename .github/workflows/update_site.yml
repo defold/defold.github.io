@@ -22,6 +22,7 @@ jobs:
             { if: "github.event.action == 'extension-push'", name: 'Update extension-push', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} extension-push commit' },
             { if: "github.event.action == 'extension-iap'", name: 'Update extension-iap', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} extension-iap commit' },
             { if: "github.event.action == 'extension-webview'", name: 'Update extension-webview', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} extension-webview commit' },
+            { if: "github.event.action == 'extension-facebook'", name: 'Update extension-facebook', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} extension-facebook commit' },
             { if: "github.event.action == 'extension-firebase'", name: 'Update extension-firebase', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} extension-firebase commit' },
             { if: "github.event.action == 'extension-gpgs'", name: 'Update extension-gpgs', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} extension-gpgs commit' },
             { if: "github.event.action == 'codepad'", name: 'Update codepad', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} codepad commit' }

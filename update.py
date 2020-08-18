@@ -21,6 +21,8 @@ from lunr import trimmer
 
 SHA1 = {}
 
+EXTENSIONS = [ "extension-push", "extension-gpgs", "extension-iac", "extension-iap", "extension-webview", "extension-facebook", "extension-firebase" ]
+
 DOCS_ZIP = "doc-master.zip"
 EXAMPLES_ZIP = "examples-master.zip"
 CODEPAD_ZIP = "codepad-master.zip"
@@ -945,7 +947,8 @@ def commit_changes(githubtoken):
     call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
 
 
-ALL_COMMANDS = [ "docs", "refdoc", "awesome", "examples", "codepad", "commit", "searchindex", "extension-gpgs", "extension-push", "extension-iap" ]
+ALL_COMMANDS = [ "docs", "refdoc", "awesome", "examples", "codepad", "commit", "searchindex" ]
+ALL_COMMANDS.append(EXTENSIONS)
 
 parser = ArgumentParser()
 parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ', all, help)')
@@ -962,9 +965,7 @@ examples = Build the examples
 codepad = Build the Defold CodePad
 commit = Commit changed files (requires --githubtoken)
 searchindex = Update the static Lunr search index
-extension-gpgs = Process the docs for official Google Play Game Services extension
-extension-push = Process the docs for official push notification extension
-extension-iap = Process the docs for official In-app purchase extension
+extension-xyz = Process the docs for official extension
 all = Run all of the above commands
 help = Show this help
 """
@@ -976,6 +977,7 @@ if "all" in args.commands:
     commands.extend(args.commands)
     args.commands = commands
 
+
 for command in args.commands:
     if command == "help":
         parser.print_help()
@@ -983,12 +985,8 @@ for command in args.commands:
         sys.exit(0)
     elif command == "docs":
         process_docs(download = args.download)
-    elif command == "extension-push":
-        process_extension("extension-push", download = args.download)
-    elif command == "extension-gpgs":
-        process_extension("extension-gpgs", download = args.download)
-    elif command == "extension-iap":
-        process_extension("extension-iap", download = args.download)
+    elif command in EXTENSIONS:
+        process_extension(command, download = args.download)
     elif command == "examples":
         process_examples(download = args.download)
     elif command == "refdoc":
