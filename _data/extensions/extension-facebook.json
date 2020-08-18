@@ -1,0 +1,413 @@
+{
+    "elements": [
+        {
+            "description": "Login to Facebook and request a set of publish permissions.\nThe user is prompted to authorize the application using the login dialog of the specific platform. Even if the user is already logged in to Facebook this function can still be used to request additional publish permissions.\nA comprehensive list of permissions can be found in the [Facebook permissions](https://developers.facebook.com/docs/facebook-login/permissions) documentation, as well as in their [guide to best practices for login management](https://developers.facebook.com/docs/facebook-login/best-practices).", 
+            "name": "login_with_permissions", 
+            "parameters": [
+                {
+                    "doc": "table with the requested publish permission strings.", 
+                    "name": "permissions"
+                }, 
+                {
+                    "doc": "The audience that should be able to see the publications. Can be any of\n- `facebook.AUDIENCE_NONE`\n- `facebook.AUDIENCE_ONLYME`\n- `facebook.AUDIENCE_FRIENDS`\n- `facebook.AUDIENCE_EVERYONE`", 
+                    "name": "audience"
+                }, 
+                {
+                    "doc": "Callback function that is executed when the permission request dialog is closed.", 
+                    "name": "callback"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Logout from Facebook", 
+            "name": "logout", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Get the current Facebook access token.\nThis function returns the currently stored access token after a previous successful login. If it returns nil no access token exists and you need to perform a login to get the wanted permissions.", 
+            "name": "access_token", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "the access token or nil if the user is not logged in", 
+                    "name": "string"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Get the currently granted permissions.\nThis function returns a table with all the currently granted permission strings.", 
+            "name": "permissions", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "The permissions", 
+                    "name": "table"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Post an event to Facebook Analytics\nThis function will post an event to Facebook Analytics where it can be used in the Facebook Insights system.", 
+            "name": "post_event", 
+            "parameters": [
+                {
+                    "doc": "An event can either be one of the predefined constants below or a text string which can be used to define a custom event that is registered with Facebook Analytics.\n- `facebook.EVENT_ACHIEVED_LEVEL` - `facebook.EVENT_ADDED_PAYMENT_INFO` - `facebook.EVENT_ADDED_TO_CART` - `facebook.EVENT_ADDED_TO_WISHLIST` - `facebook.EVENT_COMPLETED_REGISTRATION` - `facebook.EVENT_COMPLETED_TUTORIAL` - `facebook.EVENT_INITIATED_CHECKOUT` - `facebook.EVENT_PURCHASED` - `facebook.EVENT_RATED` - `facebook.EVENT_SEARCHED` - `facebook.EVENT_SPENT_CREDITS` - `facebook.EVENT_TIME_BETWEEN_SESSIONS` - `facebook.EVENT_UNLOCKED_ACHIEVEMENT` - `facebook.EVENT_VIEWED_CONTENT`", 
+                    "name": "event"
+                }, 
+                {
+                    "doc": "A numeric value for the event. This should represent the value of the event, such as the level achieved, price for an item or number of orcs killed.", 
+                    "name": "value"
+                }, 
+                {
+                    "doc": "Optional table with parameters and their values. A key in the table can either be one of the predefined constants below or a text which can be used to define a custom parameter.\n- `facebook.PARAM_CONTENT_ID` - `facebook.PARAM_CONTENT_TYPE` - `facebook.PARAM_CURRENCY` - `facebook.PARAM_DESCRIPTION` - `facebook.PARAM_LEVEL` - `facebook.PARAM_MAX_RATING_VALUE` - `facebook.PARAM_NUM_ITEMS` - `facebook.PARAM_PAYMENT_INFO_AVAILABLE` - `facebook.PARAM_REGISTRATION_METHOD` - `facebook.PARAM_SEARCH_STRING` - `facebook.PARAM_SOURCE_APPLICATION` - `facebook.PARAM_SUCCESS`", 
+                    "name": "params"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Enable event usage with Facebook Analytics This function will enable event usage for Facebook Analytics which means that Facebook will be able to use event data for ad-tracking.\n[icon:attention] Event usage cannot be controlled and is always enabled for the Facebook Canvas platform, therefore this function has no effect on Facebook Canvas.", 
+            "name": "enable_event_usage", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Disable event usage with Facebook Analytics This function will disable event usage for Facebook Analytics which means that Facebook won't be able to use event data for ad-tracking. Events will still be sent to Facebook for insights.\n[icon:attention] Event usage cannot be controlled and is always enabled for the Facebook Canvas platform, therefore this function has no effect on Facebook Canvas.", 
+            "name": "disable_event_usage", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Show facebook web dialog\nDisplay a Facebook web dialog of the type specified in the `dialog` parameter.\n\nThe `param` table should be set up according to the requirements of each dialog type. Note that some parameters are mandatory. Below is the list of available dialogs and where to find Facebook's developer documentation on parameters and response data.\n\n`\"apprequests\"`\nShows a Game Request dialog. Game Requests allows players to invite their friends to play a game. Available parameters\n- [type:string] `title`\n- [type:string] `message`\n- [type:number] `action_type`\n- [type:number] `filters`\n- [type:string] `data`\n- [type:string] `object_id`\n- [type:table] `suggestions`\n- [type:table] `recipients`\n- [type:string] `to`\n\n\nOn success, the \"result\" table parameter passed to the callback function will include the following fields\n- [type:string] `request_id`\n- [type:table] `to`\n\n[Details for each parameter](https://developers.facebook.com/docs/games/services/gamerequests/v2.6#dialogparameters)\n\n`\"feed\"`\nThe Feed Dialog allows people to publish individual stories to their timeline.\n\n- [type:string] `caption`\n- [type:string] `description`\n- [type:string] `picture`\n- [type:string] `link`\n- [type:table] `people_ids`\n- [type:string] `place_id`\n- [type:string] `ref`\n\n\nOn success, the \"result\" table parameter passed to the callback function will include the following fields\n- [type:string] `post_id`\n\n[Details for each parameter](https://developers.facebook.com/docs/sharing/reference/feed-dialog/v2.6#params)\n\n`\"appinvite\"`\nThe App Invite dialog is available only on iOS and Android. Note that the `url` parameter corresponds to the appLinkURL (iOS) and setAppLinkUrl (Android) properties.\n- [type:string] `url`\n- [type:string] `preview_image`\n[Details for each parameter](https://developers.facebook.com/docs/reference/ios/current/class/FBSDKAppInviteContent)", 
+            "name": "show_dialog", 
+            "parameters": [
+                {
+                    "doc": "Dialog to show\n- `\"apprequests\"`\n- `\"feed\"`\n- `\"appinvite\"`", 
+                    "name": "dialog"
+                }, 
+                {
+                    "doc": "table with dialog parameters", 
+                    "name": "param"
+                }, 
+                {
+                    "doc": "Callback function that is called when the dialog is closed.", 
+                    "name": "callback"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Get the version of the Facebook SDK used by the extension.", 
+            "name": "get_version", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "The Facebook SDK version", 
+                    "name": "string"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Allows receiving deferred deep link URL and parameters.\n[More info about Referred Deep Links](https://developers.facebook.com/docs/app-ads/deep-linking/)", 
+            "name": "deferred_deep_link", 
+            "parameters": [
+                {
+                    "doc": "Callback function that is called when information is ready.", 
+                    "name": "callback"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "The Facebook login session is open", 
+            "name": "STATE_OPEN", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The Facebook login session has closed because login failed", 
+            "name": "STATE_CLOSED_LOGIN_FAILED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Game request action type \"none\" for \"apprequests\" dialog", 
+            "name": "GAMEREQUEST_ACTIONTYPE_NONE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Game request action type \"send\" for \"apprequests\" dialog", 
+            "name": "GAMEREQUEST_ACTIONTYPE_SEND", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Game request action type \"askfor\" for \"apprequests\" dialog", 
+            "name": "GAMEREQUEST_ACTIONTYPE_ASKFOR", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Game request action type \"turn\" for \"apprequests\" dialog", 
+            "name": "GAMEREQUEST_ACTIONTYPE_TURN", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Game request filter type \"none\" for \"apprequests\" dialog", 
+            "name": "GAMEREQUEST_FILTER_NONE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Game request filter type \"app_users\" for \"apprequests\" dialog", 
+            "name": "GAMEREQUEST_FILTER_APPUSERS", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Game request filter type \"app_non_users\" for \"apprequests\" dialog", 
+            "name": "GAMEREQUEST_FILTER_APPNONUSERS", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Log this event when the user has achieved a level", 
+            "name": "EVENT_ACHIEVED_LEVEL", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Log this event when the user has entered their payment info", 
+            "name": "EVENT_ADDED_PAYMENT_INFO", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Log this event when the user has added an item to their cart The value_to_sum passed to facebook.post_event should be the item's price.", 
+            "name": "EVENT_ADDED_TO_CART", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Log this event when the user has added an item to their wish list The value_to_sum passed to facebook.post_event should be the item's price.", 
+            "name": "EVENT_ADDED_TO_WISHLIST", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Log this event when a user has completed registration with the app", 
+            "name": "EVENT_COMPLETED_REGISTRATION", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Log this event when the user has completed a tutorial in the app", 
+            "name": "EVENT_COMPLETED_TUTORIAL", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Log this event when the user has entered the checkout process The value_to_sum passed to facebook.post_event should be the total price in the cart.", 
+            "name": "EVENT_INITIATED_CHECKOUT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Log this event when the user has completed a purchase. The value_to_sum passed to facebook.post_event should be the numeric rating.", 
+            "name": "EVENT_PURCHASED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Log this event when the user has rated an item in the app", 
+            "name": "EVENT_RATED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Log this event when a user has performed a search within the app", 
+            "name": "EVENT_SEARCHED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Log this event when the user has spent app credits The value_to_sum passed to facebook.post_event should be the number of credits spent.", 
+            "name": "EVENT_SPENT_CREDITS", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Log this event when measuring the time between user sessions", 
+            "name": "EVENT_TIME_BETWEEN_SESSIONS", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Log this event when the user has unlocked an achievement in the app", 
+            "name": "EVENT_UNLOCKED_ACHIEVEMENT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Log this event when a user has viewed a form of content in the app", 
+            "name": "EVENT_VIEWED_CONTENT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Parameter key used to specify an ID for the content being logged about\nThe parameter key could be an EAN, article identifier, etc., depending on the nature of the app.", 
+            "name": "PARAM_CONTENT_ID", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Parameter key used to specify a generic content type/family for the logged event\nThe key is an arbitrary type/family (e.g. \"music\", \"photo\", \"video\") depending on the nature of the app.", 
+            "name": "PARAM_CONTENT_TYPE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Parameter key used to specify currency used with logged event\nUse a currency value key, e.g. \"USD\", \"EUR\", \"GBP\" etc. See See ISO-4217 for specific values.", 
+            "name": "PARAM_CURRENCY", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Parameter key used to specify a description appropriate to the event being logged\nUse this for app specific event description, for instance the name of the achievement unlocked in the facebook.EVENT_UNLOCKED_ACHIEVEMENT event.", 
+            "name": "PARAM_DESCRIPTION", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Parameter key used to specify the level achieved", 
+            "name": "PARAM_LEVEL", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Parameter key used to specify the maximum rating available\nSet to specify the max rating available for the facebook.EVENT_RATED event. E.g., \"5\" or \"10\".", 
+            "name": "PARAM_MAX_RATING_VALUE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Parameter key used to specify how many items are being processed\nSet to specify the number of items being processed for an facebook.EVENT_INITIATED_CHECKOUT or facebook.EVENT_PURCHASED event.", 
+            "name": "PARAM_NUM_ITEMS", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Parameter key used to specify whether payment info is available\nSet to specify if payment info is available for the facebook.EVENT_INITIATED_CHECKOUT event.", 
+            "name": "PARAM_PAYMENT_INFO_AVAILABLE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Parameter key used to specify method user has used to register for the app\nSet to specify what registation method a user used for the app, e.g. \"Facebook\", \"email\", \"Twitter\", etc.", 
+            "name": "PARAM_REGISTRATION_METHOD", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Parameter key used to specify user search string\nSet this to the the string that the user provided for a search operation.", 
+            "name": "PARAM_SEARCH_STRING", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Parameter key used to specify source application package", 
+            "name": "PARAM_SOURCE_APPLICATION", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Parameter key used to specify activity success\nSet this key to indicate whether the activity being logged about was successful or not.", 
+            "name": "PARAM_SUCCESS", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Publish permission to reach no audience", 
+            "name": "AUDIENCE_NONE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Publish permission to reach only me (private to current user)", 
+            "name": "AUDIENCE_ONLYME", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Publish permission to reach user friends", 
+            "name": "AUDIENCE_FRIENDS", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Publish permission to reach everyone", 
+            "name": "AUDIENCE_EVERYONE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }
+    ], 
+    "info": {
+        "brief": "facebook", 
+        "description": "Functions and constants for interacting with Facebook APIs", 
+        "group": "EXTENSIONS", 
+        "name": "facebook", 
+        "namespace": "facebook"
+    }
+}
