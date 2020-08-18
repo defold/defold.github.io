@@ -14,13 +14,13 @@ title: Defold manual
 라벨 컴포넌트를 만드는 방법은 아래와 같습니다.
 
 * 게임 오브젝트에 마우스 오른쪽 버튼을 누르고 **Add Component**를 선택한 후 **Label**을 선택하고 **OK**를 누릅니다. 그러면 해당 게임 오브젝트의 내장 컴포넌트로 라벨이 추가됩니다.
-![Add label](../images/label/add_label.png)
+![Add label](/manuals/images/label/add_label.png)
 
 * 만약 같은 템플릿으로 부터 다수의 라벨을 인스턴스화 하고 싶다면 새 **Label File**을 만들고 (**Assets pane** 창의 한 폴더에서 오른쪽 클릭하고 **New ▸ Label File** 선택) 게임 오브젝트에 오른쪽 클릭해서 **Add Component From File**을 선택한 후 아까 만든 라벨 파일을 선택하는 방식으로 여러 번 쓸 수 있습니다.
 
 라벨 컴포넌트는 런타임 중에 혹은 개발 중에 변경 가능한 특별한 속성들을 가지고 있습니다.
 
-![New Label component](../images/label/label_component.png)
+![New Label component](/manuals/images/label/label_component.png)
 
 #### Size
 텍스트 경계 상자(text bounding box)의 크기입니다. 아래 있는 **Line Break** 속성을 설정하면 이 값을 기준으로 텍스트가 줄바꿈 됩니다.
@@ -61,7 +61,7 @@ pivot을 "West" 로 설정하면, 텍스트가 왼쪽 정렬됩니다.
 #### Right
 pivot을 "East" 로 설정하면, 텍스트가 오른쪽 정렬됩니다.
 
-![Text alignment](../images/label/align.png)
+![Text alignment](/manuals/images/label/align.png)
 
 ## Runtime manipulation
 런타임시에 라벨 텍스트를 읽고 설정할 수 있을 뿐 아니라 아래와 같은 다양한 속성을 다룰 수도 있습니다.

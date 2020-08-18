@@ -16,7 +16,7 @@ brief: 本教程解释了 Defold GUI 的粒子特效如何工作.
 
 也可以使用 GUI 里已经存在的资源创建粒子特效. 在 *outline 视图* 的 *Particle FX* 文件夹上点击 <kbd>鼠标右键</kbd> 选择 <kbd>Add ▸ Particle FX...</kbd>. 然后设置节点的 *Particlefx* 属性:
 
-![Particle fx](../images/gui-particlefx/create.png)
+![Particle fx](/manuals/images/gui-particlefx/create.png)
 
 ## 控制特效
 

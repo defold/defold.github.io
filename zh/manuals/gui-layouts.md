@@ -27,11 +27,11 @@ Height
 Device Models
 : A comma separated list of device models. The device model matches the start of the device model name, e.g. `iPhone10` will match "iPhone10,\*" models. Model names with commas should be enclosed in quotes, i.e. `"iPhone10,3", "iPhone10,6"` matches iPhone X models (see https://www.theiphonewiki.com/wiki/Models). Note that the only platforms reporting a device model when calling `sys.get_sys_info()` is Android and iOS. Other platforms return an empty string and will therefore never pick a display profile that has a device model qualifier.
 
-![New display profiles](../images/gui-layouts/new_profiles.png)
+![New display profiles](/manuals/images/gui-layouts/new_profiles.png)
 
 You also need to specify that the engine should use your new profiles. Open "game.project" and select the display profiles file in the *Display Profiles* setting under *display*:
 
-![Settings](../images/gui-layouts/settings.png)
+![Settings](/manuals/images/gui-layouts/settings.png)
 
 <div class='sidenote' markdown='1'>
 The current development app for iOS does not respect the *Dynamic Orientation* setting but will always change orientation dynamically.
@@ -43,17 +43,17 @@ If you want the engine to automatically switch between portrait and landscape la
 
 The current set of display profiled can be used to create layout variants of your GUI node setup. To add a new layout to a GUI scene, right-click the *Layouts* icon in the *Outline* view and select <kbd>Add ▸ Layout ▸ ...</kbd>:
 
-![Add layout to scene](../images/gui-layouts/add_layout.png)
+![Add layout to scene](/manuals/images/gui-layouts/add_layout.png)
 
 When editing a GUI scene, all nodes are edited on a particular layout. The currently selected layout is indicated in the GUI scene layout dropdown in the toolbar. If no layout is chosen, the nodes are edited in the *Default* layout.
 
-![Layouts toolbar](../images/gui-layouts/toolbar.png)
+![Layouts toolbar](/manuals/images/gui-layouts/toolbar.png)
 
-![portrait edit](../images/gui-layouts/portrait.png)
+![portrait edit](/manuals/images/gui-layouts/portrait.png)
 
 Each change to a node property that you do with a layout selected _overrides_ the property in respect to the *Default* layout. Properties that are overridden are marked in blue. Nodes with overridden properties are also marked in blue. You can click on the reset button next to any overridden property to reset it to the original value.
 
-![landscape edit](../images/gui-layouts/landscape.png)
+![landscape edit](/manuals/images/gui-layouts/landscape.png)
 
 A layout cannot delete or create new nodes, only override properties. If you need to remove a node from a layout you can either move the node off-screen or delete it with script logic. You should also pay attention to the currently selected layout. If you add a layout to your project, the new layout will be set up according to the currently selected layout. Also, copying and pasting nodes considers the currently selected layout, when copying *and* when pasting.
 

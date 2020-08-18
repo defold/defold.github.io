@@ -20,11 +20,11 @@ Defold 支持声音但是不那么强大. 要注意两个概念:
 
 声音组件只能在游戏对象里创建. 创建好游戏对象, 在其上面右键点击选择 <kbd>Add Component ▸ Sound</kbd> 然后点击 *OK*.
 
-![Select component](../images/sound/sound_add_component.jpg)
+![Select component](/manuals/images/sound/sound_add_component.jpg)
 
 声音组件有一系列属性可以设置:
 
-![Select component](../images/sound/sound_properties.png)
+![Select component](/manuals/images/sound/sound_properties.png)
 
 *Sound*
 : 从项目中选择一个声音文件. 文件需要 _Wave_ 或者 _Ogg Vorbis_ 格式. Defold 支持 16bit 位深和 44100 采样率的声音文件.
@@ -68,7 +68,7 @@ sound.stop("go#sound")
 
 ## 增益
 
-![Gain](../images/sound/sound_gain.png)
+![Gain](/manuals/images/sound/sound_gain.png)
 
 声音系统有 4 级增益:
 
@@ -96,7 +96,7 @@ end
 
 组名是个哈希值. 其字符串值可以使用 [`sound.get_group_name()`](/ref/sound#sound.get_group_name) 获得, 可以用来显示音轨名称.
 
-![Sound group mixer](../images/sound/sound_mixer.png)
+![Sound group mixer](/manuals/images/sound/sound_mixer.png)
 
 ::: 注意
 代码里不要依赖字符串组名因为编译后不保存字符串组名.
@@ -136,7 +136,7 @@ sound.set_group_gain("master", 1.995)
 
 如果用什么事件来触发声音播放, 就有可能造成同时播放2个或多个重复的声音. 这样的话, 声音会产生 _偏移重叠_ 现象效果非常不好.
 
-![Phase shift](../images/sound/sound_phase_shift.png)
+![Phase shift](/manuals/images/sound/sound_phase_shift.png)
 
 最简单的办法是设置一个过滤时间段对最近播放过的声音进行过滤:
 

@@ -42,11 +42,11 @@ Defold 支持的 Spine JSON 数据文件可以用 Esoteric Software 的 _Spine_ 
 
 _Spine_ 软件主页 http://esotericsoftware.com
 
-![Spine](../images/spine/spine.png)
+![Spine](/manuals/images/spine/spine.png)
 
 _Dragon Bones_ 软件主页 http://dragonbones.com
 
-![Dragon Bones](../images/spine/dragonbones.png)
+![Dragon Bones](/manuals/images/spine/dragonbones.png)
 
 ::: 注意
 _Dragon Bones_ 输出的 Spine JSON 数据文件应该能正常使用. 如果发现 _Dragon Bones_ 输出文件在 Defold 中显示不正确, 我们推荐先用官方 [Spine Skeleton Viewer](http://esotericsoftware.com/spine-skeleton-viewer) 检查数据是否能正确读出. Spine Skeleton Viewer 能够指出数据文件问题所在, 比如实例或者数据项缺失.
@@ -62,11 +62,11 @@ _Dragon Bones_ 输出的 Spine JSON 数据文件应该能正常使用. 如果发
 - 把所需所有碎图放入项目目录中.
 - 把所有碎图建立 _图集_. (建立图集相关内容请参考 [2D 图像教程](/zh/manuals/2dgraphics) 以及下面列举的一些注意事项)
 
-![Export JSON from Spine](../images/spine/spine_json_export.png)
+![Export JSON from Spine](/manuals/images/spine/spine_json_export.png)
 
 如果使用 _Dragon Bones_, 选择 *Spine* 作为输出类型. 选择 *Images* 作为图片类型. 这样可以把 *.json* 及其所需图片输出到一个文件夹中. 如上所属导入 Defold 即可.
 
-![Export JSON from Dragon Bones](../images/spine/dragonbones_json_export.png)
+![Export JSON from Dragon Bones](/manuals/images/spine/dragonbones_json_export.png)
 
 数据存入 Defold 后, 就可以创建 _Spine scene_ 资源文件了:
 
@@ -74,7 +74,7 @@ _Dragon Bones_ 输出的 Spine JSON 数据文件应该能正常使用. 如果发
 - 双击文件打开 spine scene 编辑器.
 - 设置 *Properties*.
 
-![Setup the Spine Scene](../images/spine/spinescene.png)
+![Setup the Spine Scene](/manuals/images/spine/spinescene.png)
 
 Spine Json
 : Spine JSON 数据文件.
@@ -98,7 +98,7 @@ Defold 通过 Lua 接口实现了全方位控制 Spine 动画播放的运行环�
 
 动画通过去掉图片文件后缀的方法识别引用图片. 在 Spine 软件里图片文件位于 *Images* 目录下:
 
-![Spine images hierarchy](../images/spine/spine_images.png)
+![Spine images hierarchy](/manuals/images/spine/spine_images.png)
 
 上图中图片没有嵌套关系. 但是通常, 图片会被分组放入子目录下, 其引用就包含了子目录前缀. 比如, 骨骼插槽对文件 *head_parts/eyes.png* 的引用就是 *head_parts/eyes*. 输出的 JSON 文件图片引用也是这个所以 Defold 图集中图片名要与之相匹配.
 
@@ -106,6 +106,6 @@ Defold 通过 Lua 接口实现了全方位控制 Spine 动画播放的运行环�
 
 对于带路径的 "head_parts/eyes" 该怎么办? 最简单的办法就是建立动画组 (图集 *Outline* 视图根节点右键选择 *Add Animation Group*). 然后手动命名为 "head_parts/eyes" (名字里的 `/` 字符合法) 再把 "eyes.png" 放入这个动画组.
 
-![Atlas path names](../images/spine/atlas_names.png)
+![Atlas path names](/manuals/images/spine/atlas_names.png)
 
 关于 Spine 动画控制详情请见 [动画教程](/zh/manuals/animation).

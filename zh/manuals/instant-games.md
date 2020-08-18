@@ -10,7 +10,7 @@ brief: 本教程介绍了如何使用 Defold 创建 Facebook Instant Games.
 
 Instant Games 可以让玩家在 Facebook 平台上随时玩到游戏的新方式. 基于 HTML5 技术, 可以让玩家直接从新闻Feed或者聊天消息中打开游戏, 同时支持桌面和移动设备.
 
-![InstantGames](../images/instant-games/instantgames.png)
+![InstantGames](/manuals/images/instant-games/instantgames.png)
 
 ## 发布 Instant Games
 
@@ -20,7 +20,7 @@ Instant Games 可以让玩家在 Facebook 平台上随时玩到游戏的新方�
 
 2. 在你的 "game.project" 文件中添加 Instant Games 扩展依赖. 即把 "https://github.com/defold/extension-fbinstant/archive/master.zip" 添加到 *Dependencies* 属性中.
 
-   ![Project settings](../images/instant-games/game_project.png)
+   ![Project settings](/manuals/images/instant-games/game_project.png)
 
 3. 确保在你打包游戏生成的 "index.html" 文件包含了 Instant Games SDK.
 
@@ -64,7 +64,7 @@ end)
 
 有个 Defold 游戏 "Tic Tac Toe" 的 Instant Games 版本在 [官方 GitHub 代码库](https://github.com/defold/extension-fbinstant) 提供了完整的源码和素材. 可以作为学习资料或者素材来使用.
 
-![Tic Tac Toe](../images/instant-games/tictactoe.png)
+![Tic Tac Toe](/manuals/images/instant-games/tictactoe.png)
 
 ## 减小包体
 

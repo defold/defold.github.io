@@ -25,13 +25,13 @@ Defold는 자동 텍스쳐 프로세싱과 이미지 데이터 압축(**Atlas, T
 2. "game.project"의 **texture_profiles** 항목을 새 파일을 지정하도록 수정
 3. **.texture_profiles** 파일을 열어서 원하는 대로 수정함
 
-![New profiles file](../images/texture_profiles/texture_profiles_new_file.png)
+![New profiles file](/manuals/images/texture_profiles/texture_profiles_new_file.png)
 
-![Setting the texture profile](../images/texture_profiles/texture_profiles_game_project.png)
+![Setting the texture profile](/manuals/images/texture_profiles/texture_profiles_game_project.png)
 
 editor preferences에서 텍스쳐 프로파일 사용 여부를 켜고 끌 수 있습니다. **File > Preferences** 를 선택하고 **Defold** 창에 포함된 **Enable texture profiles** 체크박스로 변경 가능합니다.
 
-![Texture profiles preferences](../images/texture_profiles/texture_profiles_preferences.png)
+![Texture profiles preferences](/manuals/images/texture_profiles/texture_profiles_preferences.png)
 
 ## Paths
 텍스쳐 프로파일 파일의  **path_settings** 섹션은 경로 정규 표현식(path regular expressions)과 경로와 일치하는 리소스를 처리할 때 사용하는 **profile**의 이름을 포함하고 있습니다. 이 경로 정규 표현식은 "Ant Glob" 패턴 (자세한 것은  http://ant.apache.org/manual/dirtasks.html#patterns 참고)으로 표현됩니다. 패턴은 아래 처럼 와일드 카드(\*)를 사용해 표현될 수 있습니다.
@@ -43,7 +43,7 @@ editor preferences에서 텍스쳐 프로파일 사용 여부를 켜고 끌 수 
 #### '\*\*'
 완전한 디렉토리 트리, 혹은 디렉토리의 이름으로 사용될 때 0개 이상의 디렉토리와 일치합니다. 예를 들어 "/gui/\*\*"는 "/gui" 디렉토리의 모든 하위디렉토리 및 모든 파일들과 일치합니다.
 
-![Paths](../images/texture_profiles/texture_profiles_paths.png)
+![Paths](/manuals/images/texture_profiles/texture_profiles_paths.png)
 
 이 예제는 두 개의 경로 패턴(path patterns)과 해당 프로파일을 포함하고 있습니다.
 
@@ -59,7 +59,7 @@ editor preferences에서 텍스쳐 프로파일 사용 여부를 켜고 끌 수 
 ## Profiles
 텍스쳐 프로파일 파일의  **profiles** 섹션에는 명명된 프로파일의 목록을 포함하고 있습니다. 각 프로파일은 한 개 이상의 플랫폼이 있으며, 각  **platform**은 프로퍼티의 목록에 의해 설명되어집니다.
 
-![Profiles](../images/texture_profiles/texture_profiles_profiles.png)
+![Profiles](/manuals/images/texture_profiles/texture_profiles_profiles.png)
 
 #### os
 일치하는 OS 플랫폼을 지정합니다. "OS_ID_GENERIC"는 장치의 dev-app builds를 포함하는 모든 플랫폼과 일치하며, "OS_ID_WINDOWS" 는 Windows 타겟 번들과 일치하며, "OS_ID_IOS"는 iOS 번들과 일치합니다.

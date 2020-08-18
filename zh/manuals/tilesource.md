@@ -14,7 +14,7 @@ brief: 本教程介绍了如何使用瓷砖图源资源.
 
 你需要把瓷砖合并到一张大图里. 网格里的瓷砖都拥有一致的大小. Defold 支持瓷砖间的 _spacing_  和每个瓷砖周围的 _margin_ .
 
-![瓷砖图源](../images/tilemap/small_map.png)
+![瓷砖图源](/manuals/images/tilemap/small_map.png)
 
 大图资源创建完成, 就可以使用瓷砖图源了:
 
@@ -25,7 +25,7 @@ brief: 本教程介绍了如何使用瓷砖图源资源.
 - 点击 *Image* 属性旁边的浏览按钮选择你的大图. 此时大图就会在编辑器里显示出来了.
 - 调整 *Properties* 来匹配瓷砖图源. 调好了的话每个瓷砖就能完美对齐了.
 
-![创建瓷砖图源](../images/tilemap/tilesource.png)
+![创建瓷砖图源](/manuals/images/tilemap/tilesource.png)
 
 Size
 : 大图的大小.
@@ -57,7 +57,7 @@ Collision
 
 点选动画以显示动画 *属性*.
 
-![Tile Source animation](../images/tilemap/animation.png)
+![Tile Source animation](/manuals/images/tilemap/animation.png)
 
 Id
 : 动画标志. 对于每个瓷砖图源, 动画id必须唯一.
@@ -98,6 +98,6 @@ outline 视图会显示出你加在瓷砖图源上的碰撞组. 新创建的瓷�
 
 要指定一个组的碰撞形状, 在 *outline 视图* 中选中碰撞组, 然后点击希望加入该组的瓷砖. 瓷砖轮廓颜色会变得和碰撞组颜色一直. 编辑器会为每个碰撞组自动分配颜色.
 
-![碰撞形状](../images/tilemap/collision.png)
+![碰撞形状](/manuals/images/tilemap/collision.png)
 
 要从碰撞组里剔除瓷砖, 选中 *outline 视图* 里瓷砖图源根节点, 然后点击瓷砖.

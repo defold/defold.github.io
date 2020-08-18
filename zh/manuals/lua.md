@@ -510,7 +510,7 @@ end
 
 你定义的所有变量默认是全局的, 也就是说在 Lua 运行时上下文中到处都可以访问. Defold 在 *game.project*里有个 *shared_state* 设置用以控制上下文. 如果此项开启, 所有脚本, GUI 脚本和渲染脚本全部运行在一个 Lua 环境中而且全局变量随处可见. 如果此项关闭, 引擎会使用不同的环境运行 GUI 脚本和渲染脚本.
 
-![Contexts](../images/lua/lua_contexts.png)
+![Contexts](/manuals/images/lua/lua_contexts.png)
 
 Defold 允许在多个游戏对象上使用相同的脚本组件. 相同脚本的本地变量在各个使用它的组件中共享.
 
@@ -616,19 +616,19 @@ print(collectgarbage("count") * 1024)
 封装到模块里
 : 把行为封装在模块里可以方便地在代码中共享 (包括 GUI 代码). 写模块函数时最好使用严格模式. 很多情况下有必要保存状态和其他信息 (或者使用更为简洁的设计). 如果要在模块内部保存状态, 要注意那些共享 Lua 上下文的组件. 详情请见 [模块教程](/zh/manuals/modules).
 
-  ![Module](../images/lua/lua_module.png)
+  ![Module](/manuals/images/lua/lua_module.png)
 
   虽然有办法让模块直接访问游戏对象内部 (通过向模块函数发送 `self` 参数), 但是非常不鼓励这么做因为会造成严重耦合.
 
 封装到工具游戏对象里
 : 可以把代码写进 Lua 模块, 就能把代码写进游戏对象脚本组件. 好处是游戏对象可以使用消息机制互相交流.
 
-  ![Helper](../images/lua/lua_helper.png)
+  ![Helper](/manuals/images/lua/lua_helper.png)
 
 把游戏对象和工具游戏对象封装成集合
 : 这种方法就是使用工具游戏对象控制目标游戏对象, 或者通过预定义的对象名 (用户需要说动修改以便匹配), 或者通过 `go.property()` URL 引用目标游戏对象.
 
-  ![Collection](../images/lua/lua_collection.png)
+  ![Collection](/manuals/images/lua/lua_collection.png)
 
   好处是拖放即可以使用, 不需要额外写代码.
 

@@ -11,26 +11,26 @@ Defold는 오브젝트 컴포넌트의 그래픽 소스로 사용할 수 있는 
 #### Flip-book animation
 플립북 애니메이션은 연속적으로 표시되는 일련의 스틸컷 이미지들로 구성됩니다. 이 기술은 전통적인 셀 에니메이션과 매우 비슷합니다(http://en.wikipedia.org/wiki/Traditional_animation 참고). 이 방식은 각각의 프레임을 개별적으로 조작하므로 무한한 가능성이 있습니다. 하지만 프레임 마다 고유한 이미지로 저장해야 하므로 메모리 공간이 많이 필요할 수 있습니다. 또한 애니메이션을 부드럽게 표현하려면 매 초마다 나타나는 이미지의 수를 늘리는데 의존해야 하므로 그만큼 작업량 또한 증가하게 됩니다. Defold의 플립북 애니메이션은 개별 이미지를 아틀라스에 추가하여 저장하거나 모든 프레임이 수평적으로 배치된 타일 소스에 저장됩니다.
 
-![](../images/animation/animsheet.png) ![](../images/animation/runloop.gif)
+![](/manuals/images/animation/animsheet.png) ![](/manuals/images/animation/runloop.gif)
 
 #### Spine animation
 스파인 애니메이션은 2D 스켈레톤 애니메이션을 제공합니다 (http://en.wikipedia.org/wiki/Skeletal_animation 참고). 이는 컷아웃 애니메이션과는 근본적으로 다른 기술입니다.  컷아웃 애니메이션에서는 애니메이션 오브젝트의 개별 조각들(예를 들어 몸체, 눈, 입 등)이 각 프레임간 개별적으로 움직입니다. 스파인 애니메이션은 서로 연결된 뼈대 구조로 구성된 보이지 않는 가상의 골격을 만듭니다. 개별 이미지를 각 뼈대에 붙이고 이 골격(skeleton) 혹은 릭(rig)을 애니메이션 처리 할 수 있습니다. Defold는 [스파인 JSON 포멧](http://ko.esotericsoftware.com/spine-json-format)으로 애니메이션을 생성하거나 익스포트 하는 것을 지원합니다. 스켈레톤 애니메이션은 엔진이 매 프레임마다 각 뼈대의 위치를 보간(interpolate)해 주기 때문에 매우 부드럽게 움직입니다.
 
 스파인 데이터를 어떻게 임포트 하는지 자세히 보려면 [Spine](/ko/manuals/spine) 문서를 참고 바랍니다.
 
-![](../images/animation/spine_animation.png) ![](../images/animation/frog_runloop.gif)
+![](/manuals/images/animation/spine_animation.png) ![](/manuals/images/animation/frog_runloop.gif)
 
 #### 3D skinned animation
 3D 모델의 스켈레톤 애니메이션은 스파인 애니메이션과 비슷하지만 2D가 아니라 3D로 동작합니다. 3D 모델은 별도의 파트로 잘리지 않고 컷아웃 애니메이션 처럼 뼈대로 묶입니다. 대신 이 뼈대들은 모델의 버텍스(vertex)에 변형(deformation)을 적용할 수 있으며, 뼈대가 버텍스에 영향을 미치는 정도를 제어할 수 있습니다.
 
 3D 데이터를 애니메이션 모델로 임포트 하는 자세한 방법은 [3D graphics](/ko/manuals/3dgraphics) 문서를 참고 바랍니다.
 
-![](../images/animation/blender_animation.png) ![](../images/animation/wiggle.gif)
+![](/manuals/images/animation/blender_animation.png) ![](/manuals/images/animation/wiggle.gif)
 
 #### Property animation
 숫자로 된 모든 속성(숫자, vector3, vector4, 쿼터니온(quaterion))은 내장된 애니메이션 시스템에서 go.animate() 함수를 사용해서 애니메이션 효과를 줄 수 있으며 셋팅한 플레이백 모드(playback mode)나 이징(easing) 함수에 따라 엔진이 자동적으로 속성값들을 트위닝(tween) 합니다. 또한 이징 함수를 커스텀하게 변경할 수도 있습니다.
 
-![](../images/animation/property_animation.png) ![](../images/animation/bounce.gif)
+![](/manuals/images/animation/property_animation.png) ![](/manuals/images/animation/bounce.gif)
 
 ## Playing flip-book animations
 스프라이트와 GUI 박스 노드는 플립북 애니메이션을 재생할 수 있으며 런타임시 이를 제어할 수 있습니다.
@@ -116,7 +116,7 @@ function init(self)
 end
 ```
 
-![Spine model in game](../images/animation/spine_model_ingame.png)
+![Spine model in game](/manuals/images/animation/spine_model_ingame.png)
 
 애니메이션이 **go.PLAYBACK_ONCE_** 모드로 플레이되고 spine.play_anim() 함수에 콜백 함수를 넘기면 애니메이션 완료시 이 콜백 함수가 실행됩니다. 아래의 콜백(callback) 정보를 참고바랍니다.
 
@@ -139,7 +139,7 @@ go.animate("#spinemodel", "cursor", go.PLAYBACK_LOOP_PINGPONG, 1, go.EASING_INOU
 ### The bone hierarchy
 스파인 스켈레톤의 개별 뼈대들은 게임 오브젝트에 내부적으로 나타납니다. 스파인 모델 컴포넌트의 아웃라인 창(**Outline**)에서 전체 계층구조가 표시됩니다. 여기서 스켈레톤 구조의 각 뼈대의 이름과 위치를 볼 수 있습니다.
 
-![Spine model hierarchy](../images/animation/spine_model_hierarchy.png)
+![Spine model hierarchy](/manuals/images/animation/spine_model_hierarchy.png)
 
 뼈대의 이름을  사용하여, 런타임시 뼈대의 인스턴스 아이디를 검색할 수 있습니다. spine.get_go() 함수는 특정 뼈대의 아이디를 반환합니다. 예를 들어, 움직이는 게임 오브젝트 아래에 다른 오브젝트를 자식 객체로 넣을 수 있습니다:
 
@@ -154,7 +154,7 @@ msg.post("pistol", "set_parent", { parent_id = hand })
 
 이벤트들은 스파인 소프트웨어에서 추가할 수 있으며 플레이백 타임라인(playback timeline)에서 시각화 됩니다:
 
-![Spine events](../images/animation/spine_events.png)
+![Spine events](/manuals/images/animation/spine_events.png)
 
 각 이벤트는 이름 식별자(name identifier: 위 예제에서 "bump")로 참조되며 타임라인의 각 이벤트 인스턴스는 추가 정보를 포함할 수 있습니다:
 
@@ -213,7 +213,7 @@ end
 ### The bone hierarchy
 모델 스켈레톤의 뼈대들은 게임 오브젝트에 내부적으로 나타납니다. 모델 컴포넌트의 아웃라인 창(**Outline**)에서 뼈대의 계층구조와 각 뼈대의 이름을 볼 수 있습니다.
 
-![Model hierarchy](../images/animation/model_hierarchy.png)
+![Model hierarchy](/manuals/images/animation/model_hierarchy.png)
 
 런타임시 뼈대 게임오브젝트의 인스턴스 아이디를 탐색할 수 있습니다. model.get_go() 함수는 특정 뼈대의 아이디를 반환합니다.
 
@@ -299,7 +299,7 @@ go.animate() 를 호출할 때 사용하는 적당한 값은 go.EASING_LINEAR, g
 
 gui.animate() 를 호출할 때  사용하는 값은 gui.EASING_LINEAR, gui.EASING_INBACK, gui.EASING_OUTBACK 등입니다.
 
-![](../images/properties/easing_linear.png) ![](../images/properties/easing_inback.png) ![](../images/properties/easing_outback.png) ![](../images/properties/easing_inoutback.png) ![](../images/properties/easing_outinback.png) ![](../images/properties/easing_inbounce.png) ![](../images/properties/easing_outbounce.png) ![](../images/properties/easing_inoutbounce.png) ![](../images/properties/easing_outinbounce.png) ![](../images/properties/easing_inelastic.png) ![](../images/properties/easing_outelastic.png) ![](../images/properties/easing_inoutelastic.png) ![](../images/properties/easing_outinelastic.png) ![](../images/properties/easing_insine.png) ![](../images/properties/easing_outsine.png) ![](../images/properties/easing_inoutsine.png) ![](../images/properties/easing_outinsine.png) ![](../images/properties/easing_inexpo.png) ![](../images/properties/easing_outexpo.png) ![](../images/properties/easing_inoutexpo.png) ![](../images/properties/easing_outinexpo.png) ![](../images/properties/easing_incirc.png) ![](../images/properties/easing_outcirc.png) ![](../images/properties/easing_inoutcirc.png) ![](../images/properties/easing_outincirc.png) ![](../images/properties/easing_inquad.png) ![](../images/properties/easing_outquad.png) ![](../images/properties/easing_inoutquad.png) ![](../images/properties/easing_outinquad.png) ![](../images/properties/easing_incubic.png) ![](../images/properties/easing_outcubic.png) ![](../images/properties/easing_inoutcubic.png) ![](../images/properties/easing_outincubic.png) ![](../images/properties/easing_inquart.png) ![](../images/properties/easing_outquart.png) ![](../images/properties/easing_inoutquart.png) ![](../images/properties/easing_outinquart.png) ![](../images/properties/easing_inquint.png) ![](../images/properties/easing_outquint.png) ![](../images/properties/easing_inoutquint.png) ![](../images/properties/easing_outinquint.png)
+![](/manuals/images/properties/easing_linear.png) ![](/manuals/images/properties/easing_inback.png) ![](/manuals/images/properties/easing_outback.png) ![](/manuals/images/properties/easing_inoutback.png) ![](/manuals/images/properties/easing_outinback.png) ![](/manuals/images/properties/easing_inbounce.png) ![](/manuals/images/properties/easing_outbounce.png) ![](/manuals/images/properties/easing_inoutbounce.png) ![](/manuals/images/properties/easing_outinbounce.png) ![](/manuals/images/properties/easing_inelastic.png) ![](/manuals/images/properties/easing_outelastic.png) ![](/manuals/images/properties/easing_inoutelastic.png) ![](/manuals/images/properties/easing_outinelastic.png) ![](/manuals/images/properties/easing_insine.png) ![](/manuals/images/properties/easing_outsine.png) ![](/manuals/images/properties/easing_inoutsine.png) ![](/manuals/images/properties/easing_outinsine.png) ![](/manuals/images/properties/easing_inexpo.png) ![](/manuals/images/properties/easing_outexpo.png) ![](/manuals/images/properties/easing_inoutexpo.png) ![](/manuals/images/properties/easing_outinexpo.png) ![](/manuals/images/properties/easing_incirc.png) ![](/manuals/images/properties/easing_outcirc.png) ![](/manuals/images/properties/easing_inoutcirc.png) ![](/manuals/images/properties/easing_outincirc.png) ![](/manuals/images/properties/easing_inquad.png) ![](/manuals/images/properties/easing_outquad.png) ![](/manuals/images/properties/easing_inoutquad.png) ![](/manuals/images/properties/easing_outinquad.png) ![](/manuals/images/properties/easing_incubic.png) ![](/manuals/images/properties/easing_outcubic.png) ![](/manuals/images/properties/easing_inoutcubic.png) ![](/manuals/images/properties/easing_outincubic.png) ![](/manuals/images/properties/easing_inquart.png) ![](/manuals/images/properties/easing_outquart.png) ![](/manuals/images/properties/easing_inoutquart.png) ![](/manuals/images/properties/easing_outinquart.png) ![](/manuals/images/properties/easing_inquint.png) ![](/manuals/images/properties/easing_outquint.png) ![](/manuals/images/properties/easing_inoutquint.png) ![](/manuals/images/properties/easing_outinquint.png)
 
 ### Custom easing
 값의 모음(set of values)으로 벡터(vector)를 정의해서 위에서 미리 정의된 이징 상수(easing constants) 대신에 이징 커브(easing curve)를 커스텀하게 만들 수 있습니다:

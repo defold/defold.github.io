@@ -12,9 +12,9 @@ brief: 本教程介绍了如何使用工厂组件在游戏运行时创建游戏�
 
 工厂组件的 *Prototype* 属性就是动态创建游戏对象的蓝图.
 
-![Factory component](../images/factory/factory_collection.png)
+![Factory component](/manuals/images/factory/factory_collection.png)
 
-![Factory component](../images/factory/factory_component.png)
+![Factory component](/manuals/images/factory/factory_component.png)
 
 要创建游戏对象, 调用 `factory.create()`:
 
@@ -26,7 +26,7 @@ local component = "#star_factory"
 factory.create(component, p)
 ```
 
-![Spawned game object](../images/factory/factory_spawned.png)
+![Spawned game object](/manuals/images/factory/factory_spawned.png)
 
 `factory.create()` 有5个参数:
 
@@ -83,7 +83,7 @@ end
 1. "score" 脚本属性初始化时要有默认值.
 2. "score" 脚本属性保存在 "self" 中.
 
-![Spawned game object with property and scaling](../images/factory/factory_spawned2.png)
+![Spawned game object with property and scaling](/manuals/images/factory/factory_spawned2.png)
 
 ::: 注意
 Defold 目前不支持碰撞形状的非等比缩放. 如果赋了非等比值, 比如 `vmath.vector3(1.0, 2.0, 1.0)` 则 sprite 会正确缩放但是碰撞形状不会正确缩放.
@@ -151,7 +151,7 @@ end
 
 开启工厂属性的 *Load Dynamically*, 工厂资源将会被延迟加载.
 
-![Load dynamically](../images/factory/load_dynamically.png)
+![Load dynamically](/manuals/images/factory/load_dynamically.png)
 
 关闭动态加载, 则加载工厂组件时会同时加载其需要的资源以便工厂可以尽快创建新游戏对象.
 
@@ -210,7 +210,7 @@ end
 
 项目设置 *Collection related settings* 部分 *max_instances* 限制了游戏世界 (启动集合 main.collection 或者通过集合代理加载的集合) 中游戏对象的最大数目. 不论是子编辑器里创建的还是用脚本动态创建的游戏对象综合不得超过这个最大值.
 
-![Max instances](../images/factory/factory_max_instances.png)
+![Max instances](/manuals/images/factory/factory_max_instances.png)
 
 比如如果把 *max_instances* 设置为 1024 然后手动拖放 24 游戏对象到主集合, 那么最多还能创建 1000 个游戏对象. 如果删除一个对象, 就能再创建一个对象.
 

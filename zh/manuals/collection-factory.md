@@ -22,11 +22,11 @@ Defold 提供了集合或者称为 "prefabs" 的可重用模板机制 . 关于�
 *集合代理* 组件用于创建基于集合的游戏世界, 里面可以包含独立的物理世界. 通过新建一个接口, 集合中的所有内容通过集合代理加载. 这样可以实现诸如切换关卡之类的功能. 游戏世界通常包含很多东西, 如果加载少量内容, 不要使用集合代理. 详情请见 [集合代理教程](/zh/manuals/collection-proxy).
 :::
 
-![Collection to spawn](../images/collection_factory/collection.png)
+![Collection to spawn](/manuals/images/collection_factory/collection.png)
 
 把 *集合工厂* 加入游戏对象然后设置其 *原型* 为 "bean.collection":
 
-![Collection factory](../images/collection_factory/factory.png)
+![Collection factory](/manuals/images/collection_factory/factory.png)
 
 这样只需调用 `collectionfactory.create()` 函数即可创建角色加盾牌的组合了:
 
@@ -96,7 +96,7 @@ end
 
 开启工厂属性的 *Load Dynamically*, 工厂资源将会被延迟加载.
 
-![Load dynamically](../images/collection_factory/load_dynamically.png)
+![Load dynamically](/manuals/images/collection_factory/load_dynamically.png)
 
 关闭动态加载, 则加载集合工厂组件时会同时加载其需要的资源以便工厂可以尽快创建新游戏对象.
 

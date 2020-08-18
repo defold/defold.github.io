@@ -14,7 +14,7 @@ iOS 要求 _所有_ 运行于手机或者平板电脑上的应用 _必须_ 使�
 
 iOS 应用安全包含几个要素. 通过访问 [Apple's iOS Developer Program](https://developer.apple.com/programs/) 可以得到必要的工具. 如需注册, 请访问 [Apple's Developer Member Center](https://developer.apple.com/membercenter/index.action).
 
-![Apple Member Center](../images/ios/apple_member_center.png)
+![Apple Member Center](/manuals/images/ios/apple_member_center.png)
 
 *Certificates, Identifiers & Profiles* 部分包含了所有所需工具. 在这里可以创建, 删除和编辑:
 
@@ -39,11 +39,11 @@ Member Center 页面的一些功能在 XCode 里也可以进行---前提是先�
 Device identifier (UDID)
 : iOS 设备的 UDID 可以通过wifi或者线路连接计算机查找. 打开 Xcode 选择 <kbd>Window ▸ Devices and Simulators</kbd>. 选中设备就会显示出序列号和UDID.
 
-  ![xcode devices](../images/ios/xcode_devices.png)
+  ![xcode devices](/manuals/images/ios/xcode_devices.png)
 
   如果没安装 Xcode也可以从 iTunes 里查看. 首先选中要查看的设备.
 
-  ![itunes devices](../images/ios/itunes_devices.png)
+  ![itunes devices](/manuals/images/ios/itunes_devices.png)
 
   1. 在 *Summary* 页, 可以找到 *Serial Number*.
   2. 点击 *Serial Number* 一次, 它会切换成 *UDID*. 再点击下去还会显示其他设备信息. 这里我们找到 *UDID* 即可.
@@ -60,20 +60,20 @@ Device identifier (UDID)
 5. 选择 "Team" (自动生成) 并为app设置 bundle identifier.
 6. 确保 Xcode 为app生成了 *Provisioning Profile* 和 *Signing Certificate*.
 
-   ![](../images/ios/xcode_certificates.png)
+   ![](/manuals/images/ios/xcode_certificates.png)
 
 7. 编译并且在设备上运行. 首次运行, Xcode 会提示打开开发者模式并为调试做好准备. 可能要等待一会儿.
 8. 确定应用正常运行后, 在硬盘上找到编译好的app. 可以在 "Report Navigator" 的编译报告里找到app位置.
 
-   ![](../images/ios/app_location.png)
+   ![](/manuals/images/ios/app_location.png)
 
 9. 找到app, 右键选择 <kbd>Show Package Contents</kbd>.
 
-   ![](../images/ios/app_contents.png)
+   ![](/manuals/images/ios/app_contents.png)
 
 10. 把 "embedded.mobileprovision" 文件拷贝出来.
 
-   ![](../images/ios/free_provisioning.png)
+   ![](/manuals/images/ios/free_provisioning.png)
 
 这个供应商档案文件连同加密证书可以在 Defold 为应用签名, 有效期一周, _限一个设备_. 这样生成的供应商档案无法向其增加更多的 UDID.
 
@@ -83,7 +83,7 @@ Device identifier (UDID)
 
 如果你有加密证书和这个供应商档案文件, 就可以在编辑器里打包应用了. 从菜单中选择 <kbd>Project ▸ Bundle... ▸ iOS Application...</kbd>.
 
-![Signing iOS bundle](../images/ios/sign_bundle.png)
+![Signing iOS bundle](/manuals/images/ios/sign_bundle.png)
 
 选择证书和档案. 设置架构 (32 bit, 64 bit 和 iOS 模拟器) 再选择打包模式 (Debug 或者 Release). 也可以取消选择 `Sign application` 跳过签名步骤留待后面完成.
 
@@ -99,7 +99,7 @@ Device identifier (UDID)
 iOS 上的应用, 启动图片决定了应用分辨率. 如果图片分辨率错误, 应用可能也会分辨率错误带黑边.
 :::
 
-![ipa iOS application bundle](../images/ios/ipa_file.png)
+![ipa iOS application bundle](/manuals/images/ios/ipa_file.png)
 
 ## 安装 iOS 打包应用
 

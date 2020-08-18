@@ -459,7 +459,7 @@ end
 ## Defold scripts
 Defold 에디터는 Lua 스크립팅을 위해 문법 컬러링과 자동완성 기능을 지원합니다. Defold 함수 이름을 완성시키기 위해 Ctrl+Space를 누르면 입력중인 함수명에 알맞은 함수 목록을 보여줍니다.
 
-![Auto completion](../images/lua/lua_completion.png)
+![Auto completion](/manuals/images/lua/lua_completion.png)
 
 Defold의 Lua 스크립트는 3가지 형식으로 구분되며, 각각 다른 Defold 라이브러리를 사용할 수 있습니다.
 
@@ -583,7 +583,7 @@ end
 ## Lua contexts in Defold
 선언한 모든 변수들은 기본적으로 전역(global)변수이므로 Lua 런타임 컨텍스트의 모든 부분에서 사용할 수 있습니다. Defold에는 이 컨텍스트를 제어하는 "game.project"에 shared_state 설정이 있습니다. 이 옵션을 설정하면 스크립트, GUI스크립트, 렌더스크립트 모두는 같은 Lua 컨텍스트에서 실행되고 global변수들은 어디에서든 사용 가능해 집니다. 이 옵션을 설정하지 않으면 게임 엔진은 스크립트들과 GUI스크립트, 렌더스크립트들을 각각의 컨텍스트에서 실행합니다.
 
-![Contexts](../images/lua/lua_contexts.png)
+![Contexts](/manuals/images/lua/lua_contexts.png)
 
 Defold allows you to use the same script file in several separate game object components. Any locally declared variables are shared between components that runs the same script file.
 Defold는 여러 개의 게임 오브젝트 컴포넌트에서 같은 스크립트 파일을 사용할 수도 있습니다. 로컬로 선언된 변수들은 같은 스크립트 파일을 실행하는 컴포넌트간에 공유됩니다.
@@ -684,19 +684,19 @@ print(collectgarbage("count") * 1024)
 일반적인 구현 및 설계의 고려사항은 공유된 동작(Behaviors)을 위한 코드를 구조화 하는데 있습니다. 여기에는 여러가지 접근 방법이 있습니다.
 
 #### Behaviors in a module (모듈에서 동작을 사용하기)
-![Module](../images/lua/lua_module.png)
+![Module](/manuals/images/lua/lua_module.png)
 
 모듈에서의 캡슐화 된 동작은 각기 다른 게임 오브젝트의 스크립트 컴포넌트(GUI스크립트 포함) 간에 쉽게 코드를 공유할 수 있게 해 줍니다. 모듈에 함수를 작성하는 것은 엄격하게 기능적인 코드를 작성하는 것이 일반적인 최선의 방법입니다. 저장된 상태 또는 부작용이 필수적인 경우(또는 깔끔한 설계를 이끄는 경우)가 있습니다. 만약 모듈에서 내부 상태값을 저장해야 한다면 컴포넌트들은 Lua컨텍스트를 공유한다는 것을 알아두기 바랍니다. 자세한 것은 모듈에 관한 문서를 참고 바랍니다.
 
 또한, 모듈 코드가 게임 오브젝트의 내부를 직접 수정하는 것이 가능하더라도 ("self"값을 모듈 함수에 전달하는 방법으로) 이 방법은 너무 강력한 결합(coupling)이 되므로 권장하지 않습니다.
 
 #### A helper game object with encapsulated behavior (캡슐화된 동작을 헬퍼 게임오브젝트로 사용하기)
-![Helper](../images/lua/lua_helper.png)
+![Helper](/manuals/images/lua/lua_helper.png)
 
 Lua 모듈에 스크립트 코드를 추가할 수 있는 것 처럼, 스크립트 컴포넌트를 사용하여 게임 오브젝트에도 스크립트 코드를 추가할 수 있습니다. 차이점은 게임 오브젝트에 추가된다는 것과 이럴 경우 메세지 전달을 통해 엄격하게 통신해야 한다는 점이 다릅니다.
 
 #### Grouping game object with helper behavior object inside a collection (동작을 처리하는 헬퍼 게임오브젝트를 컬렉션에서 그룹화하여 사용하기)
-![Collection](../images/lua/lua_collection.png)
+![Collection](/manuals/images/lua/lua_collection.png)
 
 이 설계방법에서는 미리 정의된 이름으로(사용자가 직접 대상 게임 오브젝트의 이름을 일치시켜야함) 혹은 go.property() URL을 통해 다른 대상의 게임 오브젝트를 자동으로 실행하는 동작 게임 오브젝트(behavior game object)를 생성할 수 있습니다.
 

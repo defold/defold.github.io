@@ -19,18 +19,18 @@ title: Defold manual
 ## Preparing content for Live update
 우리가 큰 고해상도 이미지 리소스들을 포함한 게임을 만들고 있다고 가정해 봅시다. 이 게임은 이 이미지들을 스프라이트 게임 오브젝트에 넣어 컬렉션에서 유지 시키려고 합니다.
 
-![Mona Lisa collection](../images/live-update/mona-lisa.png)
+![Mona Lisa collection](/manuals/images/live-update/mona-lisa.png)
 
 이러한 컬렉션을 동적으로 로드하려면, 간단하게는 컬렉션 프록시 컴포넌트를 추가하고 "monalisa.collection"를 지정하면 됩니다. 이제 게임은 "load" 메세지를 컬렉션 프록시로 보내서 스토리지에서 메모리로 컬렉션에 있는 컨텐츠를 언제 로드할지 선택할 수 있습니다. 하지만 우리는 한 발 더 나아가서 컬렉션에 포함된 리소스의 로딩을 제어하려고 합니다.
 
 이 작업은 컬렉션 프록시 프로퍼티의 **Exclude** 체크박스를 체크하면, 어플리케이션 번들을 생성할때 번들러(bundler)에게  "monalisa.collection"의 모든 컨텐츠를 남겨 달라고 말해 줌으로써 수행됩니다.
 
-![Collection proxy excluded](../images/live-update/proxy-excluded.png)
+![Collection proxy excluded](/manuals/images/live-update/proxy-excluded.png)
 
 ## Live update settings
 번들러가 어플리케이션 번들을 생성할때, 제외 된 리소스를 어딘가에는 저장해야 합니다. 라이브 업데이트를 위한 프로젝트 셋팅은 이들 리소스들의 위치를 다룹니다. 이 셋팅은 **Project ▸ Live update Settings…** 에서 찾을 수 있습니다.
 
-![Live update settings](../images/live-update/aws-settings.png)
+![Live update settings](/manuals/images/live-update/aws-settings.png)
 
 여기엔 Defold가 설정을 저장할 수 있는 두 가지 방법이 있습니다. 라이브 업데이트 셋팅 창에서 **Mode** 드롭다운 버튼을 열어 저장 방식을 선택해 보세요.
 
@@ -119,7 +119,7 @@ end
 ## Bundling with Live update
 라이브 업데이트를 이용해 번들을 만드는 것은 쉽습니다. **Project ▸ Bundle** 메뉴를 선택하고 어플리케이션 번들을 만들기 원하는 플랫폼을 선택하면 번들링 다이얼로그 창이 열립니다.
 
-![Bundle Live application](../images/live-update/bundle-app.png)
+![Bundle Live application](/manuals/images/live-update/bundle-app.png)
 
 번들링(dundling) 할 때, 제외 리소스(excluded resource)들은 어플리케이션 번들에서 제외됩니다.  **Publish Live update content** 체크박스를 체크하면 라이브 업데이트를 어떻게 셋팅했는지(위 내용 참고)에 따라 아마존에 올릴지 Zip 파일을 생성할지를 Defold에게 알려줍니다.
 
@@ -133,7 +133,7 @@ end
 ### 1. Create a bucket for Live update resources
 Services 메뉴를 열고 Storage 카테고리([Amazon S3 Console](https://console.aws.amazon.com/s3))에 있는 S3를 선택합니다. 기존 버켓(bucket)들과 새 버켓을 만드는 옵션을 볼 수 있습니다. 기존 버켓을 사용할 수도 있지만, 액세스 영역을 쉽게 제한할 수 있도록 라이브 업데이트 리소스(Live update resources)를 위한 새 버켓을 만들기 추천합니다.
 
-![Create a bucket](../images/live-update/01-create-bucket.png)
+![Create a bucket](/manuals/images/live-update/01-create-bucket.png)
 
 ### 2. Add a bucket policy to your bucket
 사용하려는 버켓을 선택하고 **Properties** 패널을 열어 패널에서 **Permissions** 옵션을 확장하세요. **Add bucket policy** 버튼을 클릭해서 버켓 정책을 열어보세요. 이 샘플의 버켓 정책은 아무 유저나 버켓의 파일들을 탐색할 수 있게 해주고, 게임 클라이언트가 라이브 업데이트 리소스를 다운로드 할 수 있게 해줍니다. 버켓 정책에 대한 추가정보를 보고 싶다면, [Amazon 문서](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html)를 참고하세요.
@@ -153,7 +153,7 @@ Services 메뉴를 열고 Storage 카테고리([Amazon S3 Console](https://conso
 }
 ```
 
-![Bucket policy](../images/live-update/02-bucket-policy.png)
+![Bucket policy](/manuals/images/live-update/02-bucket-policy.png)
 
 ### 3. Add a CORS configuration to your bucket (Optional)
 [Cross-Origin Resource Sharing (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)는 JavsScript를 사용하여 웹사이트에서 서로 다른 도메인의 리소스를 탐색하게 해 주는 메커니즘입니다. 만약 당신의 게임을 HTML5로 배포하려 한다면, CORS 설정을 당신의 버켓에 추가해야 합니다.
@@ -170,7 +170,7 @@ Services 메뉴를 열고 Storage 카테고리([Amazon S3 Console](https://conso
 </CORSConfiguration>
 ```
 
-![CORS configuration](../images/live-update/03-cors-configuration.png)
+![CORS configuration](/manuals/images/live-update/03-cors-configuration.png)
 
 ### 4. Create IAM policy
 **Services** 메뉴를 열고 Security, Identity & Compliance 카테고리([Amazon IAM Console](https://console.aws.amazon.com/iam))에 있는 **IAM**를 선택합니다. 왼쪽에 있는 메뉴에서 **Policies**를 선택하면 기존 정책들과 새 정책을 만드는 옵션을 볼 수 있습니다.
@@ -207,7 +207,7 @@ Services 메뉴를 열고 Storage 카테고리([Amazon S3 Console](https://conso
 }
 ```
 
-![IAM policy](../images/live-update/04-create-policy.png)
+![IAM policy](/manuals/images/live-update/04-create-policy.png)
 
 ### 5. Create a user for programmatic access
 **Services** 메뉴를 열고 Security, Identity & Compliance 카테고리([Amazon IAM Console](https://console.aws.amazon.com/iam))에 있는 **IAM**를 선택합니다. 왼쪽에 있는 메뉴에서 **Users** 를 선택하면 기존 유저들과 새 유저를 만드는 옵션을 볼 수 있습니다. 기존 유저를 사용하는 것도 좋지만, 액세스 영역을 쉽게 제한할 수 있도록 라이브 업데이트 리소스(Live update resources)를 위한 새 유저를 만들기 추천합니다.
@@ -238,7 +238,7 @@ aws_secret_access_key = <Secret access key>
 
 이 defold-liveupdate-example 예제에서 <>괄호 안에 지정해야 하는 식별자는 Defold 편집기에서 프로젝트의 라이브 업데이트 셋팅을 구성할때 제공했던 식별자와 동일합니다.
 
-![Live update settings](../images/live-update/05-liveupdate-settings.png)
+![Live update settings](/manuals/images/live-update/05-liveupdate-settings.png)
 
 ## The manifest
 메니페스트는 각 리소스의 해쉬값 뿐만 아니라 빌드에 포함된 모든 리소스들의 목록을 들고 있는 내부 데이터 구조(internal data structure)입니다. 라이브 업데이트 기능은 메니페스트를 사용하여 빌드된 게임의 파트를 추척하고, 로드할 수 있는 외부 소스를 나열하고, 로드된 데이터가 손상되지 않았는지 확인합니다.
@@ -251,16 +251,16 @@ aws_secret_access_key = <Secret access key>
 ### Debugging
 게임을 번들 버전으로 실행하면, 콘솔에 직접 액세스 할 수 없게 되어 디버깅에 문제가 발생합니다. 하지만, 커맨드 라인 혹은 번들 디렉토리의 실행파일을 직접 더블클릭해서 어블리케이션을 실행 할 수 있습니다.
 
-![Running a bundle application](../images/live-update/run-bundle.png)
+![Running a bundle application](/manuals/images/live-update/run-bundle.png)
 
 이제 게임이 시작되고 쉘 윈도우에 print() 문을 출력하게 됩니다.
 
-![Console output](../images/live-update/run-bundle-console.png)
+![Console output](/manuals/images/live-update/run-bundle-console.png)
 
 ### Forcing re-download of resources
 어플리케이션이 리소스를 저장하려 하면, 로컬 컴퓨터나 휴대장치의 디스크에 저장됩니다. 만약 어플리케이션을 재시작해도, 이 리소스들은 여전히 그대로 있습니다. 개발중인 경우는 때로 리소스들을 삭제해야할 경우도 있고 강제로 다시 다운로드 해야할 경우도 있습니다. sys.get_save_file() 함수는 Defold가 리소스를 저장하는 경로를 반환합니다. 저 폴더에서, Defold는 생성된 번들의 해쉬 이름을 사용하여 폴더를 만듭니다. 만약 이 폴더의 파일들을 삭제하면, 어플리케이션은 메니페스트의 리소스를 무효처리(invalidate) 하므로 당신은 이를 다시 다운로드하고 저장할 수 있게 됩니다.
 
-![Local storage](../images/live-update/local-storage.png)
+![Local storage](/manuals/images/live-update/local-storage.png)
 
 ## Known issues
 * 현재는 빌드타임에 생성한 메니페스트만 액세스할 수 있습니다. 가까운 시일 내에 새 메니페스트를 저장하도록 할 예정입니다. 이는 기존 리소스를 수정하거나 라이브 업데이트를 통해 새 리소스를 게임에 추가할 수 있게 해 줍니다.

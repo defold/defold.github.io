@@ -49,7 +49,7 @@ List of devices attached
 
 장치(device)가 나타나지 않으면, Android에서 **USB 디버깅(USB debugging)** 이 활성화 되어 있는지 확인하세요. **설정(Settings)** 에서 **개발자 옵션(Developer options)** (또는 **Development**)에서 찾을 수 있습니다.
 
-![Enable USB debugging](../images/android/usb_debugging.png)
+![Enable USB debugging](/manuals/images/android/usb_debugging.png)
 
 ## development dmengine 설치하고 실행하기
 Defold 엔진의 stand-alone 버전은 준비된 **.apk** 파일을 무선으로 장치에 설치하고 반복적인 개발을 가능하게 해 줍니다.
@@ -58,7 +58,7 @@ Defold 엔진의 stand-alone 버전은 준비된 **.apk** 파일을 무선으로
 * 다운로드할 버전을 클릭해서 사용 가능한 엔진 빌드 목록을 펼칩니다.
 * Android 플랫폼(Armv7)의 디버그 활성 빌드(debug enabled build)를 위해 "engine/armv7-android/dmengine.apk"를 선택합니다.
 
-![Download dmengine](../images/android/download_dmengine.png)
+![Download dmengine](/manuals/images/android/download_dmengine.png)
 
 이 파일을 다운로드 한 후, **.apk**가 있는 위치에서 아래의 adb 명령을 실행합니다.
 
@@ -71,7 +71,7 @@ Success
 
 이제 개발용 "dmengine" 앱이 기기에 설치 되었습니다.
 
-![dmengine on the device](../images/android/dmengine_on_device.png)
+![dmengine on the device](/manuals/images/android/dmengine_on_device.png)
 
 ### Launching the game
 Android 장치에서 게임을 실행하려면, dmengine 앱과 에디터가 동일한 와이파이 네트워크에 연결되어 있어야 합니다.
@@ -86,11 +86,11 @@ Android 장치에서 게임을 실행하려면, dmengine 앱과 에디터가 동
 ## Android 어플리케이션 번들 만들기
 에디터는 게임을 위한 standalone 어플리케이션 번들을 쉽게 만들 수 있게 해 줍니다. **Project > Bundle…​ > Android Application…​** 메뉴를 선택해 보세요.
 
-![Signing Android bundle](../images/android/sign_bundle.png)
+![Signing Android bundle](/manuals/images/android/sign_bundle.png)
 
 인증서와 비공개 키(Private Key)를 선택하고 **Package** 버튼을 누르면 컴퓨터에서 번들이 생성될 위치를 지정하라는 창이 뜹니다.
 
-![Android Application Package file](../images/android/apk_file.png)
+![Android Application Package file](/manuals/images/android/apk_file.png)
 
 에디터는 Android 어플리케이션 번들인 **.apk** 파일을 생성합니다. 이 파일은 adb 도구를 사용해 기기로 복사하거나 [Google Play developer console](https://play.google.com/apps/publish/) 을 통해서 Google Play에도 복사할 수 있습니다.  "game.project" 프로젝트 설정 파일에서 버전 코드나 앱에서 사용할 아이콘 등을 지정할 수 있습니다.
 
@@ -122,7 +122,7 @@ $ openssl pkcs8 -topk8 -outform DER -in key.pem -inform PEM -out key.pk8 -nocryp
 
 이렇게 해서 어플리케이션 번들을 서명하는데 사용되는 "certificate.pem" 및 "key.pk8" 파일이 생성됩니다.
 
-![Signing Android bundle](../images/android/sign_bundle2.png)
+![Signing Android bundle](/manuals/images/android/sign_bundle2.png)
 
 > 인증서와 키가 안전하게 저장되었는지 확인하십시오. 만약 이 파일들을 잃어버리면 Google Play에 **.apk** 업데이트 버전의 파일을 다신 업로드 할 수 없게 됩니다.
 

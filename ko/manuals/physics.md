@@ -27,7 +27,7 @@ Defold는 2D 물리 시뮬레이션을 위해 [Box2D](http://www.box2d.org/) 물
 ## Editing collision objects
 에디터는 충돌 오브젝트를 게임 오브젝트에 쉽게 배치할 수 있게 해 줍니다.
 
-![Physics collision object](../images/physics/physics_collisionobject.png)
+![Physics collision object](/manuals/images/physics/physics_collisionobject.png)
 
 충돌 오브젝트는 하나 혹은 그 이상의 물리 모형(physics shapes)으로 구성됩니다.
 
@@ -37,7 +37,7 @@ Defold는 2D 물리 시뮬레이션을 위해 [Box2D](http://www.box2d.org/) 물
 
 당신은 위의 모형(shape)을 추가하고 변형 도구(transform tool)을 사용하여 스케일, 회전, 포지션을 수정할 수 있습니다. 각 충돌 오브젝트는 아래와 같은 속성들을 가집니다.
 
-![Physics properties](../images/physics/physics_properties.png)
+![Physics properties](/manuals/images/physics/physics_properties.png)
 
 "Collision Shape" 속성은 일반 원시 모형(primitive shape)을 사용하지 않는 타일맵의 지형(geometry)을 사용합니다. 자세한 것은 [Tilesource collision shapes](#tilesource-collision-shapes) 에서 살펴 보도록 하겠습니다.
 
@@ -94,7 +94,7 @@ Box2D는 안정성과 성능때문에 감쇠값을 대략적으로 계산합니�
 
 > 각 충돌은 두 개의 오브젝트와 관련되어 있으므로, 두 오브젝트 상호간에 Group의 이름을 Mask 필드에 서로 지정해야 합니다.
 
-![Collision groups and masks](../images/physics/physics_group_mask.png)
+![Collision groups and masks](/manuals/images/physics/physics_group_mask.png)
 
 위의 샘플 슈팅게임의 충돌 계획을 달성하려면, 아래와 같이 설정하면 됩니다.
 
@@ -110,17 +110,17 @@ Group: "world", Mask: "players, enemies"
 ## Tilesource collision shapes
 Defold 에디터에는 타일 소스를 위한 물리 모양(shape)을 빠르게 생성하는 도구가 있습니다. 타일소스 에디터에서, 충돌을 위해 기초로 사용할 이미지를 선택하기만 하면 됩니다. 이 에디터는 100%로 투명하지 않은 픽셀을 고려하여, 각 타일 주변으로 볼록한 모형(convex shape)을 자동으로 생성합니다.
 
-![Physics tilesource](../images/physics/physics_tilesource.png)
+![Physics tilesource](/manuals/images/physics/physics_tilesource.png)
 
 이 에디터는 타일에 할당된 충돌 그룹의 색상으로 이 모형(shape)들을 그려줍니다. 타일 소스당 여러 개의 충돌 그룹을 가질 수 있으며 에디터에 의해 그룹 색상이 자동으로 선택됩니다.
 
-![Add collision group](../images/physics/physics_add_collision_group.png)
+![Add collision group](/manuals/images/physics/physics_add_collision_group.png)
 
 타일 물리 모양(tile physics shape)을 특정한 충돌 그룹으로 설정하고 싶다면, group을 선택하고 shape을 클릭하세요. 이들 충돌 그룹으로부터 타일 모형(tile shape)을 삭제하려면, "Tile source"의 최상위(root)를 선택하고 타일을 클릭하세요.
 
 타일 소스로부터 충돌 모형(collision shape)을 사용하려면, 원하는 게임 오브젝트에 충돌 오브젝트(Collision Object)를 만들고 Collision Shape 속성에 타일 소스를 선택하면 됩니다.
 
-![Physics level example](../images/physics/physics_level.png)
+![Physics level example](/manuals/images/physics/physics_level.png)
 
 1. 타일 맵에 연결된 타일소스가 충돌을 위해 설정된 이미지를 가지고 있는지 확인하세요. 이는 에디터 창에서 텍스쳐의 상단에 선으로 렌더링 되어야 합니다.
 2. 충돌을 지원하는 타일들에 대하여 타일 소스의 충돌 그룹이 색칠 되었는지 확인하세요.
@@ -194,21 +194,21 @@ end
 
 이 코드는 상대 물리 오브젝트가 키네마틱 오브젝트를 뚫고 들어왔을 경우 서로 떼어놓는 처리를 하지만, 이는 많은 경우에 너무 나가거나(overshoots) 흔들려(jitter) 보이게 됩니다. 키네마틱 오브젝트를 충돌로부터 적절하게 처리하려면 아래와 같은 상황을 고려해야 합니다.
 
-![Physics collision](../images/physics/physics_collision.png)
+![Physics collision](/manuals/images/physics/physics_collision.png)
 
 여기서 우리는 Object A와 Object B, 두 개의 contact point 메세지를 얻을 것입니다. 위의 단순한 분리 과정을 실행하면, 침투 벡터(penetration vectors)가 각각 추가되어, 아래 처럼 분리될 것입니다.
 
-![Physics separation naive](../images/physics/physics_separate_naive.png)
+![Physics separation naive](/manuals/images/physics/physics_separate_naive.png)
 
 대신, 우리는 접촉 지점(contact point)을 반복하면서 이미 이전 분리(previous separation)가 완전히 혹은 부분적으로 해결되었는지 확인해야 합니다. 위의 충돌 예제에서는 Object A 에서부터 Character Collision Shape의 분리작업을 시작합니다.
 
-![Physics separation, step 1](../images/physics/physics_separate_1.png)
+![Physics separation, step 1](/manuals/images/physics/physics_separate_1.png)
 
 우리는 Object A의 법선을 따라서 캐릭터 오브젝트를 침투거리(위에서 붉은색 점선 화살표)만큼 이동시킵니다. Object B의 법선을 따라 우리가 수행해야 하는 마지막 움직임이 이미 첫번째로 분리된 Object A에 대하여 부분적으로 겹쳐진 것을 쉽게 알 수 있습니다. 우리는 원래의 화살표(녹색 점선) 대신에 녹색으로 채워진 화살표의 벡터를 따라 분리작업을 하기만 하면 됩니다.
 
 Object B에서 이전 움직임(previous movement)의 거리를 계산하는 것은 간단합니다.
 
-![Physics projection](../images/physics/physics_projection.png)
+![Physics projection](/manuals/images/physics/physics_projection.png)
 
 이 거리는 Object B에 대한 Object A의 침투벡터를 투영하여 계산할 수 있습니다. 마지막 이동(movement)을 찾으려면 그저 원래의 침투 백터에서 l을 빼면(subtract) 됩니다. 임의의 침투 수가 있다면, 벡터로 실제 이동값들을 합산하고 각 침투벡터에 대하여 차례대로 투영하면 됩니다.  전체 구현은 아래와 같습니다.
 
@@ -248,7 +248,7 @@ end
 
 여러 문제 중 하나를 예를 들면, 가장자리(edges)에서 발생하는 문제가 있는데, 플레이어가 플랫폼 가장자리에 걸쳐지면 현실의 상자처럼 모서리에 걸쳐 기울어 지게 됩니다.
 
-![Dynamic physics](../images/physics/physics_dynamic.png)
+![Dynamic physics](/manuals/images/physics/physics_dynamic.png)
 
 이 문제는 캐릭터 충돌 오브젝트의 "Locked Rotation" 속성을 설정해서 해결할 수 있습니다. 그러나 이 문제의 핵심은 이 제한적인 물리 시뮬레이션을 넘어 직접 통제하려면 디자이너나 프로그래머의 힘을 빌어 캐릭터를 움직이는 것이 낫다는 것입니다.
 

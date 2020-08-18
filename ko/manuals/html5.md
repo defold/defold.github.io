@@ -11,7 +11,7 @@ title: Defold manual
 ## Project configuration
 "game.project" 파일에는 HTML5 을 위한 몇 가지 특정 설정값이 있으며  **html5** 섹션에서 찾을 수 있습니다.
 
-![Project settings](../images/html5/html5_project_settings.png)
+![Project settings](/manuals/images/html5/html5_project_settings.png)
 
 ### Customizing heap size
 Defold는 Emscripten(http://en.wikipedia.org/wiki/Emscripten 참고) 를 사용하여 HTML5 을 지원하고 있습니다. 즉 어플리케이션 동작이 힙(heap) 안에서 이루어지는 샌드박스 메모리를 생성한다는 뜻입니다. 기본적으로 엔진은 많은 양의 메모리(256MB)를 할당합니다. 이는 일반적인 게임에는 충분하지만 최적화를 통해서 더 작은 메모리를 사용할 수도 있습니다. 다음 단계를 따라해 보세요.
@@ -29,16 +29,16 @@ Defold는 Emscripten(http://en.wikipedia.org/wiki/Emscripten 참고) 를 사용�
 ### Creating HTML5 content
 Defold에서 HTML5 컨텐츠를 생성하는 것은 간단하며 다른 모든 지원되는 플랫폼들 처럼 동일한 패턴으로 따라하기만 하면 됩니다. 메뉴에서 **Project > Bundle > HTML5 Application…​** 를 선택합니다.
 
-![Build HTML5](../images/html5/html5_build_launch.png)
+![Build HTML5](/manuals/images/html5/html5_build_launch.png)
 
 어플리케이션을 생성하기위한 폴더를 선택하라는 창이 뜹니다. 익스포트 과정이 완료되면 어플리케이션을 실행하는데 필요한 모든 파일을 볼 수 있습니다.
 
-![Application files](../images/html5/html5_files.png)
+![Application files](/manuals/images/html5/html5_files.png)
 
 ### Testing HTML5 Content
 이제 이 컨텐츠를 웹서버가 액세스 할 수 있는 디렉토리에 설치해야 합니다. 사용 가능한 테스트 환경은 프로젝트에 따라 달라집니다. 이 환경에서는 그냥 .html 페이지를 열기만 해도 됩니다.
 
-![Application](../images/html5/html5_goat.png)
+![Application](/manuals/images/html5/html5_goat.png)
 
 또한 에디터에서 HTML 컨텐츠를 직접 실행해서 로컬 브라우저에서 열 수도 있습니다. 하지만 게임의 기능에 따라 웹 서버에서 어플리케이션을 테스트 하는 것이 더 좋습니다.
 
@@ -68,7 +68,7 @@ Microsoft는 WebGL API (https://www.khronos.org/registry/webgl/specs/latest/ 참
 
 이 컨텐츠는 어플리케이션을 익스포트 할 때마다 새로 생성됩니다. 만약 이 요소들을 커스터마이징 하려면 프로젝트 설정을 수정해야 합니다. Defold 에디터의 **game.project** 를 열어서 **html5** 섹션을 찾아 보세요.
 
-![HTML5 settings](../images/html5/html5_styling_settings.png)
+![HTML5 settings](/manuals/images/html5/html5_styling_settings.png)
 
 이 설정은 커스텀 HTML 파일, 스타일시트(css), 스플래시 이미지를 추가할 수 있게 해 줍니다.
 
@@ -193,7 +193,7 @@ function doSomething() {
 ## HTML5 Memory Tracker
 개발 중에는 간단한 메모리 추적 도구를 포함하는 HTML5 번들을 생성할 수 있습니다. 어플리케이션에 이 도구를 포함시키기 위해서는 우선 "game.project" 파일을 열어 **html5** 섹션으로 이동해야 합니다.
 
-![Include devtool](../images/html5/html5_devtool_include.png)
+![Include devtool](/manuals/images/html5/html5_devtool_include.png)
 
 **include_dev_tool** 옵션을 체크하면 번들 작업이 수행될 때 이 도구를 자동으로 활성화 하고 포함시킵니다.
 
@@ -202,7 +202,7 @@ function doSomething() {
 ### Tool features
 브라우저에서 어플리케이션을 정상적으로 실행하면 이 도구가 화면에 나타나게 됩니다.
 
-![Devtool example](../images/html5/html5_devtool_goatgold.png)
+![Devtool example](/manuals/images/html5/html5_devtool_goatgold.png)
 
 토글 버튼을 눌러서 다양한 메모리 리포팅 섹션을 활성화 하고 비활성화 할 수 있습니다. 이 섹션들은 아래의 정보를 포함하고 있습니다.
 

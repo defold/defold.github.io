@@ -27,7 +27,7 @@ Clipping Inverted
 
 然后把被裁剪节点作为蒙版子节点加入进来.
 
-![Create clipping](../images/gui-clipping/create.png)
+![Create clipping](/manuals/images/gui-clipping/create.png)
 
 ## 裁剪蒙版
 
@@ -37,7 +37,7 @@ Clipping Inverted
 - 如果一个蒙版节点有父蒙版那么它会继续裁剪父蒙版. 子蒙版不会 _继承_ 当前蒙版, 只会继续剪裁当前蒙版.
 - 非蒙版节点作为蒙版的子节点的话, 会被父蒙版层级裁剪渲染.
 
-![Clipping hierarchy](../images/gui-clipping/setup.png)
+![Clipping hierarchy](/manuals/images/gui-clipping/setup.png)
 
 这里, 我们建立了节点的三层结构:
 
@@ -47,7 +47,7 @@ Clipping Inverted
 
 这种结构下可以有四种裁剪方式. 绿色标志出园被裁剪以后的样子. 结果如下所示:
 
-![Stencil masks](../images/gui-clipping/modes.png)
+![Stencil masks](/manuals/images/gui-clipping/modes.png)
 
 ## 蒙版局限性
 
@@ -69,7 +69,7 @@ Clipping Inverted
 蒙版节点及其层级有层设置的话会优先显示, 没有设置的话按照普通顺序显示.
 :::
 
-![Layers and clipping](../images/gui-clipping/layers.png)
+![Layers and clipping](/manuals/images/gui-clipping/layers.png)
 
 这里蒙版节点 "ocular" 层设置为 "layer3" 然后 "bean" 节点设置成 "layer1". 所以被 ocular 剪裁的纹理显示在了 bean 的上层.
 

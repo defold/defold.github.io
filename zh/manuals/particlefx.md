@@ -10,7 +10,7 @@ brief: 本教程介绍了粒子特效组件的使用以及特效的编辑方法.
 
 粒子特效用以为游戏呈现视觉效果.可以用来表现爆炸, 喷血, 拖尾, 天气等等效果.
 
-![ParticleFX Editor](../images/particlefx/editor.png)
+![ParticleFX Editor](/manuals/images/particlefx/editor.png)
 
 粒子特效包含一些发射器以及可选的修改器:
 
@@ -26,15 +26,15 @@ Select <kbd>New... ▸ Particle FX</kbd> from the context menu in the *Assets* b
 
 The *Outline* pane shows the default emitter. Select the emitter to bring up its properties in the *Properties* pane below.
 
-![Default particles](../images/particlefx/default.png)
+![Default particles](/manuals/images/particlefx/default.png)
 
 To add a new emitter to the effect, <kbd>right click</kbd> the root of the *Outline* and select <kbd>Add Emitter ▸ [type]</kbd> from the context menu. Note that you can change the type of the emitter in the emitter properties.
 
 To add a new modifier, <kbd>right click</kbd> the location of the modifier in the *Outline* (the effect root or a particular emitter) and select <kbd>Add Modifier</kbd>, then select the modifier type.
 
-![Add modifier](../images/particlefx/add_modifier.png)
+![Add modifier](/manuals/images/particlefx/add_modifier.png)
 
-![Add modifier select](../images/particlefx/add_modifier_select.png)
+![Add modifier select](/manuals/images/particlefx/add_modifier_select.png)
 
 A modifier that sits on the effect root (not childed to an emitter) affects all particles in the effect.
 
@@ -48,7 +48,7 @@ A modifier that is added as a child to an emitter affects only that emitter.
 
 When editing an emitter or modifier the result is immediately visible in the editor, even with the effect paused:
 
-![Edit particles](../images/particlefx/rotate.gif)
+![Edit particles](/manuals/images/particlefx/rotate.gif)
 
 ## Emitter properties
 
@@ -109,7 +109,7 @@ Emitter Type
 
   - `Cone` emits particles from a random location inside a 3D cone. The particles are directed out through the top disc of the cone. *Emitter Size X* defines the diameter of the top disc and *Y* defines the height of the cone.
 
-  ![emitter types](../images/particlefx/emitter_types.png)
+  ![emitter types](/manuals/images/particlefx/emitter_types.png)
 
 Particle Orientation
 : How the emitted particles are oriented:
@@ -127,15 +127,15 @@ Stretch With Velocity
 
 These properties have two fields: a value and a spread. The spread is a variation which is applied randomly for each spawned particle. E.g. if the value is 50 and the spread is 3, each spawned particle will get a value between 47 and 53 (50 +/- 3).
 
-![Property](../images/particlefx/property.png)
+![Property](/manuals/images/particlefx/property.png)
 
 By checking the key button, the value of the property is controlled by a curve over the duration of the emitter. To reset a keyed property, uncheck the key button.
 
-![Property keyed](../images/particlefx/key.png)
+![Property keyed](/manuals/images/particlefx/key.png)
 
 The *Curve Editor* (available among the tabs in the bottom view) is used to modify the curve. Keyed properties can't be edited in the *Properties* view, only in the *Curve Editor*. <kbd>Click and drag</kbd> the points and tangents to modify the shape of the curve. <kbd>Double-click</kbd> on the curve to add control points. To remove a control point, <kbd>double click</kbd> on it.
 
-![ParticleFX Curve Editor](../images/particlefx/curve_editor.png)
+![ParticleFX Curve Editor](/manuals/images/particlefx/curve_editor.png)
 
 To auto-zoom the Curve Editor to display all curves, press <kbd>F</kbd>.
 
@@ -201,7 +201,7 @@ There are four types of modifiers available that affect the velocity of particle
 `Vortex`
 : Affects particles in a circular or spiraling direction around its position.
 
-  ![modifiers](../images/particlefx/modifiers.png)
+  ![modifiers](/manuals/images/particlefx/modifiers.png)
 
 ## Modifier properties
 

@@ -14,11 +14,11 @@ Defold 的摄像机组件控制游戏世界的视口与映射. 摄像机组件�
 
 要创建摄像机, 在游戏对象上 <kbd>右键点击</kbd> 选择 <kbd>Add Component ▸ Camera</kbd>. 或者先创建组件文件再链接到游戏对象上.
 
-![create camera component](../images/camera/create.png)
+![create camera component](/manuals/images/camera/create.png)
 
 摄像机有以下属性用以建立 *视锥* (透视摄像机可用):
 
-![camera settings](../images/camera/settings.png)
+![camera settings](/manuals/images/camera/settings.png)
 
 Id
 : 组件id
@@ -78,7 +78,7 @@ msg.post("@render:", "use_fixed_projection", { zoom = 2, near = -1, far = 1 })
 
 把摄像机对象放在要跟随的游戏对象子级就能实现摄像机跟随:
 
-![follow game object](../images/camera/follow.png)
+![follow game object](/manuals/images/camera/follow.png)
 
 或者自己写脚本每帧更新摄像机位置也可以.
 
@@ -109,7 +109,7 @@ end
 
 摄像机提供了用于透视映射的渲染脚本. 非常适合 3D 游戏. 对于 2D 游戏, 通常使用的是 *平视映射*. 这种摄像机的视口不是视锥, 而是方盒. 平视口没有近大远小. 同样大小的东西无论离摄像机远还是近映射出来都一样大.
 
-![projections](../images/camera/projections.png)
+![projections](/manuals/images/camera/projections.png)
 
 ### 平视映射 (2D)
 平视映射的渲染脚本不采用摄像机发来的映射矩阵自己实现渲染算法. 默认提供三种适配方式: `Stretch`, `Fixed` 和 `Fixed Fit`. 可以通过发送消息设置适配方式:

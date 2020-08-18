@@ -29,7 +29,7 @@ brief: 本教程介绍了如何在设备上安装开发用app以方便开发流�
 * 从列表中选择所需引擎版本.
 * 选择 *engine/armv7-android/dmengine.apk* Android开发用app (Armv7).
 
-![Download dmengine](../images/dev-app/download_dmengine.png)
+![Download dmengine](/manuals/images/dev-app/download_dmengine.png)
 
 下载此文件, 在下载存放目录下输入以下 `adb` 命令安装 *.apk*:
 
@@ -42,7 +42,7 @@ Success
 
 此时 "dmengine" 应用已安装好.
 
-![dmengine on the device](../images/dev-app/dmengine_on_device.png)
+![dmengine on the device](/manuals/images/dev-app/dmengine_on_device.png)
 
 ## 启动游戏
 
@@ -54,7 +54,7 @@ Success
 4. 选择 <kbd>Project ▸ Build And Launch</kbd> 运行游戏. 如果用网络连接的话可能需要等一小会儿.
 5. 游戏运行时, 就可以照常使用 [热重载](/zh/manuals/hot-reload/) 功能了.
 
-![launch](../images/dev-app/launch.png)
+![launch](/manuals/images/dev-app/launch.png)
 
 ### 在 Windows 上使用 USB 连接 iOS 设备
 

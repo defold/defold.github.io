@@ -16,7 +16,7 @@ brief: 本教程介绍了如何打包应用.
 
 使用 Project 菜单的 Bundle 选项进行打包:
 
-![](../images/bundling/bundle_menu.png)
+![](/manuals/images/bundling/bundle_menu.png)
 
 选择不同的打包平台会出现不同的对话窗.
 
@@ -24,7 +24,7 @@ brief: 本教程介绍了如何打包应用.
 
 有一个编译选项控制编译时是否生成报告. 从报告中可以方便检查游戏包中各个资源占用的空间. 在编译时打开 *Generate build report* 选项即可.
 
-![build report](../images/profiling/build_report.png)
+![build report](/manuals/images/profiling/build_report.png)
 
 To learn more about build reports please refer to the [Profiling manual](/zh/manuals/profiling/#编译报告).
 

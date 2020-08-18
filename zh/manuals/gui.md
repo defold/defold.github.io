@@ -22,17 +22,17 @@ GUI components are rendered independently of the game view. Because of this it i
 
 GUI components are created from a GUI scene blueprint file. To to create a new GUI component, <kbd>right click</kbd> a location in the *Assets* browser and select <kbd>New ▸ Gui</kbd>. Type a name for the new GUI file and press <kbd>Ok</kbd>.
 
-![New gui file](../images/gui/new_gui_file.png)
+![New gui file](/manuals/images/gui/new_gui_file.png)
 
 Defold now automatically opens the file in the GUI scene editor.
 
-![New gui](../images/gui/new_gui.png)
+![New gui](/manuals/images/gui/new_gui.png)
 
 The *Outline* lists all the GUI:s content: it's list of nodes and any dependencies (see below).
 
 The central editing area shows the GUI. The toolbar in the top right corner of the editing area contains *Move*, *Rotate* and *Scale* tools, as well as a [layout](/zh/manuals/gui-layouts) selector.
 
-![toolbar](../images/gui/toolbar.png)
+![toolbar](/manuals/images/gui/toolbar.png)
 
 A white rectangle shows the bounds of the currently selected layout, of the default display width and height as set in the project settings.
 
@@ -57,7 +57,7 @@ Max Nodes
 
 The resource tree in a Defold game is static so any dependences that you need for your GUI nodes need to be added to the component. The *Outline* groups all dependencies by type under "folders":
 
-![dependencies](../images/gui/dependencies.png)
+![dependencies](/manuals/images/gui/dependencies.png)
 
 To add a new dependency, <kbd>right click</kbd> the "Gui" root in the *Outline*, then select <kbd>Add ▸ [type]</kbd> from the popup context menu.
 
@@ -68,44 +68,44 @@ You can also <kbd>right click</kbd> on the folder icon for the type you want to 
 A GUI component is built from a set of nodes. Nodes are simple elements. They can be translated (moved, scaled and rotated) and ordered in parent-child hierarchies either in the editor or at runtime through scripting. The following node types exist:
 
 Box node
-: ![box node](../images/icons/gui-box-node.png)
+: ![box node](/manuals/images/icons/gui-box-node.png)
   Rectangular node with either a single color, texture or flip-book animation. See the [Box node documentation](/zh/manuals/gui-box) for details.
 
 <div style="clear: both;"></div>
 
 Text node
-: ![text node](../images/icons/gui-text-node.png)
+: ![text node](/manuals/images/icons/gui-text-node.png)
   Displays text. See the [Text node documentation](/zh/manuals/gui-text) for details.
 
 <div style="clear: both;"></div>
 
 Pie node
-: ![pie node](../images/icons/gui-pie-node.png)
+: ![pie node](/manuals/images/icons/gui-pie-node.png)
   A circular or ellipsoid node that can be partially filled or inverted. A See the [Pie node documentation](/zh/manuals/gui-pie) for details.
 
 <div style="clear: both;"></div>
 
 Template node
-: ![template node](../images/icons/gui.png)
+: ![template node](/manuals/images/icons/gui.png)
   Templates are used to create instances based on other GUI scene files. See the [Template node documentation](/zh/manuals/gui-template) for details.
 
 <div style="clear: both;"></div>
 
 Spine node
-: ![spine node](../images/icons/spine-model.png)
+: ![spine node](/manuals/images/icons/spine-model.png)
   Displays and animates a spine model. See the [Spine node documentation](/zh/manuals/gui-spine) for details.
 
 <div style="clear: both;"></div>
 
 ParticleFX node
-: ![particlefx node](../images/icons/particlefx.png)
+: ![particlefx node](/manuals/images/icons/particlefx.png)
   Plays a particle effect. See the [ParticleFX node documentation](/zh/manuals/gui-particlefx) for details.
 
 <div style="clear: both;"></div>
 
 Add nodes by right-clicking on the *Nodes* folder and selecting <kbd>Add ▸</kbd> and then <kbd>Box</kbd>, <kbd>Text</kbd>, <kbd>Pie</kbd>, <kbd>Template</kbd>, <kbd>Spine</kbd> or <kbd>ParticleFx</kbd>.
 
-![Add nodes](../images/gui/add_node.png)
+![Add nodes](/manuals/images/gui/add_node.png)
 
 You can also press <kbd>A</kbd> and select the type you want to add to the GUI.
 
@@ -196,14 +196,14 @@ Pivot
 
   Possible values are `Center`, `North`, `South`, `East`, `West`, `North West`, `North East`, `South West` or `South East`.
 
-  ![pivot point](../images/gui/pivot.png)
+  ![pivot point](/manuals/images/gui/pivot.png)
 
   If you change the pivot of a node, the node will be moved so that the new pivot will be at the node's position. Text nodes are aligned so that `Center` sets the text center-aligned, `West` sets the text left-aligned and `East` sets the text right-aligned.
 
 X Anchor, Y Anchor
 : Anchoring controls how the node's vertical and horizontal position is altered when the scene boundaries, or the parent node's boundaries are stretched to fit the physical screen size.
 
-  ![Anchor unadjusted](../images/gui/anchoring_unadjusted.png)
+  ![Anchor unadjusted](/manuals/images/gui/anchoring_unadjusted.png)
 
   The following anchoring modes are available:
 
@@ -211,14 +211,14 @@ X Anchor, Y Anchor
   - `Left` or `Right` (*X Anchor*) scales the horizontal position of the node so it keeps the position from the left and right edges of the parent node or scene at the same percentage.
   - `Top` or `Bottom` (*Y Anchor*) scales the vertical position of the node so it keeps the position from the top and bottom edges of the parent node or scene at the same percentage.
 
-  ![Anchoring](../images/gui/anchoring.png)
+  ![Anchoring](/manuals/images/gui/anchoring.png)
 
 Adjust Mode
 : Sets the adjust mode for the node. The adjust mode setting controls what happens to a node when the scene boundaries, or the parent node's boundaries, are adjusted to fit the physical screen size.
 
   A node created in a scene where the logical resolution is a typical landscape resolution:
 
-  ![Unadjusted](../images/gui/unadjusted.png)
+  ![Unadjusted](/manuals/images/gui/unadjusted.png)
 
   Fitting the scene to a portrait screen cause the scene to be stretched. Each node's bounding box is similarly stretched. However, by setting the adjust mode, the aspect ratio of the node's content can be kept intact. The following modes are available:
 
@@ -226,7 +226,7 @@ Adjust Mode
   - `Zoom` scales the node content so that it is equal to the stretched bounding box width or height, whichever is largest. In other words, the content will fully cover the stretched node bounding box.
   - `Stretch` stretches the node content so it fills the stretched node bounding box.
 
-  ![Adjust modes](../images/gui/adjusted.png)
+  ![Adjust modes](/manuals/images/gui/adjusted.png)
 
   If the GUI scene property *Adjust Reference* is set to `Disabled`, this setting will be ignored.
 
@@ -249,48 +249,48 @@ Clipping Inverted (box, pie and spine nodes)
 
 The combination of Pivot, Anchors and Adjust Mode properties allows for a very flexible design of GUIs but it can be somewhat hard to understand how it all works without looking at a concrete example. Let's take this GUI mockup created for a 640x1136 screen as an example:
 
-![](../images/gui/adjustmode_example_original.png)
+![](/manuals/images/gui/adjustmode_example_original.png)
 
 The UI is created with X and Y Anchors set to None and the Adjust Mode for each node is left at the default value of Fit. The Pivot point for the top panel is North, the pivot for the bottom panel is South and the pivot point for the bars in the top panel are set to West. The rest of the nodes have pivot points set to Center. If we resize the window to make it wider this is what happens:
 
-![](../images/gui/adjustmode_example_resized.png)
+![](/manuals/images/gui/adjustmode_example_resized.png)
 
 Now, what if we want the top and bottom bars to always be as wide as the screen? We can change the Adjust Mode for the grey background panels at the top and bottom to Stretch:
 
-![](../images/gui/adjustmode_example_resized_stretch.png)
+![](/manuals/images/gui/adjustmode_example_resized_stretch.png)
 
 This is better. The grey background panels will now always stretch to the width of the window, but the bars in the top panel as well as the two boxes at the bottom aren't positioned properly. If we want to keep the bars at the top positioned to the left we need to change the X Anchor from None to Left:
 
-![](../images/gui/adjustmode_example_top_anchor_left.png)
+![](/manuals/images/gui/adjustmode_example_top_anchor_left.png)
 
 That is exactly as we want it for the top panel. The bars in the top panel already had their Pivot points set to West which means that they will position themselves nicely with the left/west edge of the bars (Pivot) anchored to the left edge of the parent panel (X Anchor).
 
 Now, if we set the X Anchor to Left for the box on the left and the X Anchor to Right for the box on the right we get the following result:
 
-![](../images/gui/adjustmode_example_bottom_anchor_left_right.png)
+![](/manuals/images/gui/adjustmode_example_bottom_anchor_left_right.png)
 
 This is not quite the expected result. The two boxes should stay as close to the left and right edges as the two bars did in the top panel. The reason for this is that the Pivot point is wrong:
 
-![](../images/gui/adjustmode_example_bottom_pivot_center.png)
+![](/manuals/images/gui/adjustmode_example_bottom_pivot_center.png)
 
 Both boxes have a Pivot point set to Center. What this means is that when the screen becomes wider the center point (the pivot point) of the boxes will stay at the same relative distance from the edges. In the case of the left box it was 17% from the left edge with the original 640x1136 window:
 
-![](../images/gui/adjustmode_example_original_ratio.png)
+![](/manuals/images/gui/adjustmode_example_original_ratio.png)
 
 When the screen is resized the center point of the left box remains at the same distance of 17% from the left edge:
 
-![](../images/gui/adjustmode_example_resized_stretch_ratio.png)
+![](/manuals/images/gui/adjustmode_example_resized_stretch_ratio.png)
 
 If we change the Pivot point from Center to West for the box on the left and to East for the box on the right and reposition the boxes we get the result we're after even when the screen is resized:
 
-![](../images/gui/adjustmode_example_bottom_pivot_west_east.png)
+![](/manuals/images/gui/adjustmode_example_bottom_pivot_west_east.png)
 
 
 ## Draw order
 
 All nodes are rendered in the order they are listed under the "Nodes" folder. The node at the top of the list is drawn first and will thus appear behind every other node. The last node in the list is drawn last, meaning it will appear in front of all other nodes. Altering the Z-value on a node does not control its draw order; however, if you set the Z-value outside of your render script's render range the node will no longer be rendered to screen. You can override the index ordering of nodes with layers (see below).
 
-![Draw order](../images/gui/draw_order.png)
+![Draw order](/manuals/images/gui/draw_order.png)
 
 Select a node and press <kbd>Alt + Up/Down</kbd> to move a node up or down and change its index order.
 
@@ -309,7 +309,7 @@ end
 
 A node is made the child of another node by dragging it onto the node that you wish to be the child's parent. A node with a parent inherits the transform (position, rotation and scale) applied to the parent and relative to the parent pivot.
 
-![Parent child](../images/gui/parent_child.png)
+![Parent child](/manuals/images/gui/parent_child.png)
 
 Parents are drawn before their children. Use layers to change the draw order of parent and child nodes and to optimize the rendering of nodes (see below).
 
@@ -327,13 +327,13 @@ If a node differs from the previous one on any of these points, it will break th
 
 The ability to arrange nodes in hierarchies makes it easy to group nodes into manageable units. But hierarchies can effectively break batch rendering if you mix different node types:
 
-![Breaking batch hierarchy](../images/gui/break_batch.png)
+![Breaking batch hierarchy](/manuals/images/gui/break_batch.png)
 
 When the rendering pipeline walks through the list of nodes, it is forced to set up a separate batch for each separate node because the types are different. All in all these three buttons will require six draw calls.
 
 By assigning layers to the nodes, they can be ordered differently, allowing the render pipeline to group the nodes together in fewer draw calls. Start by adding the layers you need to the scene. <kbd>Right click</kbd> the "Layers" folder icon in the *Outline* and select <kbd>Add ▸ Layer</kbd>. Mark the new layer and assign it a *Name* property in the *Properties* view.
 
-![Layers](../images/gui/layers.png)
+![Layers](/manuals/images/gui/layers.png)
 
 Then set the *Layer* property on each node to the corresponding layer. The layer drawing order takes precedence over the regular indexed node order, so setting the button graphics box-nodes to "graphics" and the button text nodes to "text" will result in the following draw order:
 

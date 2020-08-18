@@ -34,11 +34,11 @@ Defold가 지원하는 스파인 JSON 데이터 포멧은 Esoteric Software의 �
 
 스파인은 http://esotericsoftware.com 에서 사용 가능합니다.
 
-![Spine](../images/spine/spine.png)
+![Spine](/manuals/images/spine/spine.png)
 
 드래곤 본스는 http://dragonbones.com 에서 사용 가능합니다.
 
-![Dragon Bones](../images/spine/dragonbones.png)
+![Dragon Bones](/manuals/images/spine/dragonbones.png)
 
 ## Importing a Spine character and animations
 스파인에서 제작한 애니메이션과 모델이 있다면, Defold로 임포트하는 과정은 간단합니다:
@@ -48,18 +48,18 @@ Defold가 지원하는 스파인 JSON 데이터 포멧은 Esoteric Software의 �
 3. 모델과 관련된 모든 이미지를 프로젝트 아무데나 복사함
 4. 아틀라스 파일을 만들어 이미지들을 추가함 (아틀라스를 만드는 방법은 [2D graphics](/ko/manuals/2dgraphics) 문서를 참고)
 
-![Export JSON from Spine](../images/spine/spine_json_export.png)
+![Export JSON from Spine](/manuals/images/spine/spine_json_export.png)
 
 드래곤 본즈(Dragon Bones)에서 작업하는 경우, 간단하게 Export Data Type을 **Spine**으로 하면 됩니다. 또한 Image Type으로는 **Images**를 선택하세요. 이렇게 하면 **.json** 파일과 필수적인 모든 이미지가 폴더로 익스포트됩니다. 그리고 나서 위의 설명대로 Defold에 추가하면 됩니다.
 
-![Export JSON from Dragon Bones](../images/spine/dragonbones_json_export.png)
+![Export JSON from Dragon Bones](/manuals/images/spine/dragonbones_json_export.png)
 
 Defold에서 에니메이션 데이터와 이미지 파일을 임포트하고 셋업한 경우, 스파인 씬 파일(Spine scene file)을 생성해야 합니다:
 
 1. 새로운 스파인 씬 파일을 생성함 (메인 메뉴에서 **New > Spine Scene File** 선택)
 2. 스파인 씬 파일에서 **spine_json** 과 **atlas** 속성을 설정해서 임포트된 JSON 파일과 새로 생성한 아틀라스 파일을 참조함
 
-![Setup the Spine Scene](../images/spine/spine_spinescene.png)
+![Setup the Spine Scene](/manuals/images/spine/spine_spinescene.png)
 
 ## Creating SpineModel components
 모든 데이터를 임포트하고 스파인 씬 파일을 준비하면, 스파인 모델을 만들 수 있습니다. 자세한 것은  [SpineModel](/ko/manuals/spinemodel) 문서를 참고 바랍니다.
@@ -73,7 +73,7 @@ Defold는 Lua 인터페이스를 통해 애니메이션을 재생하는 방법�
 ## Atlas caveats
 애니메이션 데이터는 뼈대에 사용된 이미지를 파일 접미사(suffix)가 생략된 이름으로 참조합니다. 스파인 소프트웨어에서 스파인 프로젝트로 이미지를 추가 하면 **Images** 아래의 계층에 리스트업 됩니다:
 
-![Spine images hierarchy](../images/spine/spine_images.png)
+![Spine images hierarchy](/manuals/images/spine/spine_images.png)
 
 이 예제는 평평한 구조(flat structure)로 배치된 파일을 보여줍니다. 하지만 하위 폴더로 파일들을 정리할 수 있으며 이 파일들의 참조가 반영됩니다. 예를 들어, 디스크의 "head_parts/eyes.png" 파일을 슬롯에 사용하면 "head_parts/eyes"로 참조됩니다. 또한 이 이름은 JSON 파일로 익스포트 되어도 사용되므로, Defold 이미지 아틀라스를 생성할 때 모든 이름을 아틀라스 애니메이션과 일치시켜야 합니다.
 
@@ -81,6 +81,6 @@ Defold는 Lua 인터페이스를 통해 애니메이션을 재생하는 방법�
 
 그렇다면 애니메이션이 "head_parts/eyes"를 참조하고 있다면 어떻게 해야 할까요? 이름을 일치시키기 위한 가장 쉬운 방법은 애니메이션 그룹을 추가(아웃라인 창(**Outline**)의 Atlas 루트 노드에 마우스 오른쪽 클릭 후 **Add Animation Group** 선택)하는 것 입니다. 그리고 애니메이션 그룹의 이름을 "head_parts/eyes"로 바꾸고(경로가 아니고 / 문자가 들어간 이름일 뿐) 이 그룹에 "eyes.png"파일을 추가하면 됩니다.
 
-![Atlas path names](../images/spine/spine_atlas_names.png)
+![Atlas path names](/manuals/images/spine/spine_atlas_names.png)
 
 스파인 모델(Spine model)을 애니메이션으로 움직이게 하려면  [Animation](/ko/manuals/animation) 문서를 참고 바랍니다.

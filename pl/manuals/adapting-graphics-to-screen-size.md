@@ -32,17 +32,17 @@ Retro grafika często odnosi się do gier naśladujących styl graficzny starych
 
 Weźmy ten zestaw kafelków i postać ([stąd](https://ansimuz.itch.io/grotto-escape-game-art-pack)) i użyjmy do stworzenia gry w rozdzielczości 320x200:
 
-![](../images/screen_size/retro-player.png)
+![](/manuals/images/screen_size/retro-player.png)
 
-![](../images/screen_size/retro-tiles.png)
+![](/manuals/images/screen_size/retro-tiles.png)
 
 Ustaw rozdzielczość 320x200 w pliku *game.project* i uruchom grę - po uruchomieniu ujrzysz:
 
-![](../images/screen_size/retro-original_320x200.png)
+![](/manuals/images/screen_size/retro-original_320x200.png)
 
 Okno na nowoczesnym monitorze o wysokiej rozdzielczości jest niezwykle małe! Powiększając rozmiar okna czterokrotnie do 1280x800 będzie bardziej przystępne:
 
-![](../images/screen_size/retro-original_1280x800.png)
+![](/manuals/images/screen_size/retro-original_1280x800.png)
 
 Rozmiar okna jest w porządku, więc teraz potrzeba zmienić sposób wyświetlania grafiki wewnątrz, ponieważ w chwili oecnej jest zbyt mała i ciężko jest zobaczyć cokolwiek co się dzieje w grze. Możemy użyć render scriptu aby ustawić stałą i przybliżoną projekcję:
 
@@ -52,25 +52,25 @@ msg.post("@render:", "use_fixed_projection", { zoom = 4 })
 
 Co da nam rezultat:
 
-![](../images/screen_size/retro-zoomed_1280x800.png)
+![](/manuals/images/screen_size/retro-zoomed_1280x800.png)
 
 Jest lepiej. Okno i grafika mają odpowiedni rozmiar, ale po przyjrzeniu się bliżej widzimy problem:
 
-![](../images/screen_size/retro-zoomed_linear.png)
+![](/manuals/images/screen_size/retro-zoomed_linear.png)
 
 Obraz jest rozmazany! Jest to spowodowane domyślnym sposobem próbkowania grafiki renderowanej przez GPU podczas przybliżania widoku. Domyślne ustawienie w pliku *game.project* w sekcji *Graphics* to *linear* (liniowe):
 
-![](../images/screen_size/retro-settings_linear.png)
+![](/manuals/images/screen_size/retro-settings_linear.png)
 
 Zmiana na *nearest* (najbliższy) da nam rezultat:
 
-![](../images/screen_size/retro-settings_nearest.png)
+![](/manuals/images/screen_size/retro-settings_nearest.png)
 
-![](../images/screen_size/retro-zoomed_nearest.png)
+![](/manuals/images/screen_size/retro-zoomed_nearest.png)
 
 I mamy przejrzystą grafikę pikselową do naszej gry retro! Jest nawet więcej elementów do rozważenia, jak na przykład wyłączenie sub-pikseli dla sprite'ów w *game.project*:
 
-![](../images/screen_size/retro-subpixels.png)
+![](/manuals/images/screen_size/retro-subpixels.png)
 
 Gdy opcja Subpixels jest wyłączona grafiki nigdy nie będą wyświetlana w częściach piskeli, a zamiast tego przystosowane do siatki pełnych pikseli.
 
@@ -92,7 +92,7 @@ Powinno się określić wysokość i szerokość obrazu w pliku *game.project* d
 
 Jeśli chcesz również wspierać ekrany Retina możesz to włączyć w pliku *game.project* w sekcji *Display*(Wyświetlacz):
 
-![](../images/screen_size/highdpi-enabled.png)
+![](/manuals/images/screen_size/highdpi-enabled.png)
 
 Pozwoli to na tworzenie bufora High DPI na wyświetlaczach/ekranach, które wspierają taką technologię. Gra będzie wyświetlana w rozdzielczości dwukrotnie większej niż ta ustawiona oryginalnie, która jednak nadal pozostanie rozdzielczościa postrzeganą przez logikę gry. Oznacza to, że wszystkie pomiary pozostają takie same i zawartość renderowana w skali 1x również. Ale gdy zaimportujesz obrazy w wysokiej rozdzielczości i zmniejszysz dwukrotnie, będą nadal wyświetlane jako High DPI na ekranie.
 
@@ -120,4 +120,4 @@ Defold oferuje interfejsy GUI, które automatycznie dopasowują się do różnyc
 
 Defold oferuje menu do debugowania, które zawiera opcję symulowania rozdzielczości konretnego urządzenia lub dowolnej rozdzielczości. Gdy aplikacja jest uruchomiona możesz kliknąć <kbd>Debug->Simulate Resolution</kbd> i wybrać jedno z urządzeń z listy. Okno aplikacji zmieni rozmiar i będziesz widzieć, jak Twoja gra wygląda na ekranie o danej rozdzielczości z danym współczynnikiem proporcji.
 
-![](../images/screen_size/simulate-resolution.png)
+![](/manuals/images/screen_size/simulate-resolution.png)

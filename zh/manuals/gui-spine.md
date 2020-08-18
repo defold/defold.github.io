@@ -16,11 +16,11 @@ Spine 动画模型可以作为 GUI 节点也可以作为游戏对象加入场景
 
 接着, Spine Scene 资源的内容要加入到 GUI 场景中去. 加入方法 <kbd>右键点击</kbd>  *Outline* 中的 *Spine Scenes* 部分, 选择 <kbd>Add ▸ Spine Scenes...</kbd>. 选择要加入的 Spine Scenes (可加多个).
 
-![添加 Spine Scene](../images/gui-spine/add.png)
+![添加 Spine Scene](/manuals/images/gui-spine/add.png)
 
 最后, <kbd>右键点击</kbd> *Outline* 中的 *Nodes* 部分, 选择 <kbd>Add ▸ Spine</kbd> 来创建 Spine 节点.
 
-![New spine node](../images/gui-spine/new_node.png)
+![New spine node](/manuals/images/gui-spine/new_node.png)
 
 新节点自动被选中. 注意设置其属性:
 
@@ -49,7 +49,7 @@ end)
 
 Spine 骨架中的各个骨骼都可以像 GUI 节点一样使用. 节点名就是 Spine 里设置的骨骼名.
 
-![Spine 骨骼名](../images/gui-spine/bone.png)
+![Spine 骨骼名](/manuals/images/gui-spine/bone.png)
 
 比如, 要做一个骨骼节点下增添一个节点, 使用 [`gui.get_spine_bone()`](/ref/gui#gui.get_spine_bone) 函数加节点名来获取此节点, 然后再在上面加入一个节点:
 

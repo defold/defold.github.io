@@ -32,7 +32,7 @@ GUI 컴포넌트는 여러 개의 노드로 구성됩니다. 노드는 아래 �
 
 "Nodes" 폴더에서 마우스 오른쪽 버튼을 눌러 "Add Box", "Add Text", "Add Pie", "Add Template", "Add Spine Node" 중 하나를 선택해 노드를 추가합니다.
 
-![Add nodes](../images/gui/gui_add_nodes.png)
+![Add nodes](/manuals/images/gui/gui_add_nodes.png)
 
 상단의 GUI 메뉴를 사용하거나 키보드 단축키 "I" 와 "O"를 사용하여 box나 text 노드를 추가할 수 있습니다. 배치된 노드는 게임 오브젝트를 움직이는 것과 같은 방법으로 컬렉션 에디터상에서 이동하고 회전시킬 수 있습니다.
 
@@ -56,36 +56,36 @@ GUI 인터페이스 컴포넌트의 일부분으로 텍스쳐 아틀라스나 �
 
 GUI에 추가된 텍스쳐는 box나 pie 노드에 반영할 수 있습니다.
 
-![Textures](../images/gui/gui_texture.png)
+![Textures](/manuals/images/gui/gui_texture.png)
 
 선택된 텍스쳐 애니메이션(혹은 싱글 프레임 이미지)은 GUI 컴포넌트가 화면에 그려지면 자동적으로 재생됩니다.
 
 box 노드의 색은 애니메이션의 색조를 조정(tint)합니다. 색조(tint color)는 이미지 데이터에 곱해지게 되는데, 즉 흰색(기본값)으로 설정하면 색조가 적용되지 않습니다.
 
-![Tinted texture](../images/gui/gui_tinted_texture.png)
+![Tinted texture](/manuals/images/gui/gui_tinted_texture.png)
 
 > Box 노드는 텍스쳐가 할당되지 않았거나 알파값이 0이거나 사이즈가 0,0,0이어도 항상 렌더링 됩니다. Box 노드는 텍스쳐를 항상 할당해 두는 것이 좋습니다. 만약 빈(empty) 노드가 필요하다면 텍스쳐를 할당해 둔 채 사이즈를 0,0,0 으로 설정하십시오.
 
 ## Slice-9 texturing
 많은 GUI와 HUD는 크기와 관련한 민감한 문제가 있습니다. 패널과 다이얼로그는 포함된 컨텐츠의 크기에 맞게 리사이즈할 필요가 종종 있는데, 텍스쳐를 스케일된 노드에 반영할 경우 문제가 발생합니다. 예를 들어, 버튼에 작성할 텍스트의 길이 만큼 넓이가 고정된 큰 버튼을 사용하려 한다고 칩시다. Box 노드를 만들어 텍스쳐를 반영하고 스케일을 변경하면 아래와 같이 됩니다.
 
-![GUI bad scaling](../images/gui/gui_scaling.png)
+![GUI bad scaling](/manuals/images/gui/gui_scaling.png)
 
 Defold는 이 같은 문제를 해결하기 위해 slice-9 texturing 이라는 기능을 포함하고 있습니다. 이 기능은 노드의 스케일이 변경될 때 노드 텍스쳐 일부분의 사이즈를 유지해 줍니다. 이를 노드에 반영하면 버튼 텍스쳐는 조각나게 되고 버튼 노드의 가로 사이즈를 변경해도 양 끝의 부분은 스케일 되지 않습니다.
 
-![Sliced scaling](../images/gui/gui_slice9_scaling.png)
+![Sliced scaling](/manuals/images/gui/gui_slice9_scaling.png)
 
 따라서 이 간단한 테크닉을 사용하면 어떠한 넓이의 버튼도 예쁘게 만들 수 있습니다. box 노드의 **Slice9** 프로퍼티는 텍스쳐를 어떻게 잘라낼(slice) 것인지를 제어합니다.
 
-![Slice 9 properties](../images/gui/gui_slice9_properties.png)
+![Slice 9 properties](/manuals/images/gui/gui_slice9_properties.png)
 
 **Slice9**는 노드가 리사이징 될 때 고정할 마진 넓이(margin width)를 지정하는 픽셀단위의 4개 숫자로 제어합니다. 모서리 부분(corner segments)은 스케일 되지 않고 이동만 되며, 가장자리 부분(edge segments)은 하나의 축(axis)을 따라 스케일 되고, 중앙 부분(center segment)은 가로세로 둘 다 스케일 됩니다. 이 마진값은 왼쪽 부터 시계 방향으로 설정 됩니다.
 
-![Slice 9 property sections](../images/gui/gui_slice9_sections.png)
+![Slice 9 property sections](/manuals/images/gui/gui_slice9_sections.png)
 
 렌더러에서 밉맵(mipmap)이 작동하는 방식 때문에, 텍스쳐 세그먼트(texture segments)의 스케일링은 때로 이상하게 보일 수도 있습니다. 이는 원래의 텍스쳐 사이즈보다 작게 세그먼트의 스케일을 줄이는 경우 발생하므로 렌더러는 세그먼트를 위한 낮은 해상도의 밉맵을 선택하여 이상현상을 해결합니다.
 
-![Slice 9 mipmapping](../images/gui/gui_slice9_mipmap.png)
+![Slice 9 mipmapping](/manuals/images/gui/gui_slice9_mipmap.png)
 
 이 문제를 피하는 것은 쉽습니다. 원본 텍스쳐(source texture)에서 스케일 할 영역(segment)을 더 이상 스케일 다운이 불가능하고 오로지 스케일 업만 가능하게끔 충분히 작게 만들면 됩니다.
 
@@ -104,7 +104,7 @@ Defold는 이 같은 문제를 해결하기 위해 slice-9 texturing 이라는 �
 ## Layers
 레이어(layer)를 사용하면 노드를 그리는 방법을 좀 더 세밀하게 제어할 수 있습니다. 레이어를 노드에 반영하면 레이어의 일부로서 그려지게 됩니다. 레이어 그리기 순서는 일반적인 노드의 순서보다 우선하게 됩니다.
 
-![Layers](../images/gui/gui_layers.png)
+![Layers](/manuals/images/gui/gui_layers.png)
 
 이 예제에서 "box2" 오렌지색 box 노드는 "front" 레이어의 일부이며 레이어 순서에 따라서 맨 마지막에 그려지게 됩니다. 즉 "front" 레이어의 모든 노드는 레이어에 속하지 않은 노드들과 "back" 레이어의 노드들을 뒤로 한 채 최상위에 그려지게 됩니다.
 
@@ -123,7 +123,7 @@ GUI를 가능한 효율적으로 렌더링 하기 위해서, 엔진이 GUI 노�
 
 계층구조(hierarchies)에서 노드들을 정렬 하는 기능은 강력하며, 노드의 복잡한 계층을 관리 가능한 단위로 그룹화 하기 쉽습니다. 하지만 계층구조(hierarchies)는 효과적으로 배치 렌더링(batch rendering)을 중단할 수도 있습니다. 아래 간단한 예제를 봅시다.
 
-![Batch hierarchy](../images/gui/gui_batch_hierarchy.png)
+![Batch hierarchy](/manuals/images/gui/gui_batch_hierarchy.png)
 
 여기서는 노드 3개씩 2개의 버튼이 있으며 그림자용 텍스쳐가 있는 box 노드와 음영(shaded) 버튼 텍스쳐를 사용한 box노드, 버튼의 텍스트를 사용한 text 노드로 되어 있습니다. 우리는 이들 노드를 논리적으로 관리 가능한 계층에 넣었습니다. 버튼 그래픽은 "alpha" 블렌드 모드로 그려지고, 그림자는 "mutliply" 블렌드 모드로 그려집니다.
 
@@ -137,7 +137,7 @@ GUI를 가능한 효율적으로 렌더링 하기 위해서, 엔진이 GUI 노�
 
 노드를 해당 레이어에 할당하고 Layers 목록에서 레이어가 올바른 렌더링 순서로 배치되어 있는지 확인합니다.
 
-![Batch layers](../images/gui/gui_batch_layers.png)
+![Batch layers](/manuals/images/gui/gui_batch_layers.png)
 
 레이어 그리기 순서가 일반적인 노드 순서보다 우선하므로 노드들은 아래 순서대로 그려지게 됩니다.
 
@@ -157,7 +157,7 @@ Lua 스크립트를 사용하면 GUI의 로직을 제어하고 노드에 애니�
 
 프로젝트에서 GUI 스크립트 파일을 생성하고 Outline 창에서 최상위(root) GUI 컴포넌트를 선택해서 Properties 창에서 Script 항목에 생성한 GUI 스크립트 파일을 지정합니다.
 
-![Script](../images/gui/gui_script.png)
+![Script](/manuals/images/gui/gui_script.png)
 
 이 스크립트 파일은 기본적으로 게임 오브젝트 스크립트와 같은 함수를 가지고 있습니다.
 
@@ -197,11 +197,11 @@ Defold는 GUI 컴포넌트를 게임 컨텐츠와 다르게 스케일을 처리�
 
 GUI를 사용해 게임 앱을 만들어서 간단한 실험을 해 보도록 합시다. 화면 사이즈를 1024x1024 크기의 정사각형으로 설정하고 배경 이미지 위에 레벨 메뉴를 GUI 컴포넌트로 배치합니다. 컴퓨터에서 이를 실행하면 어떻게 보일까요?
 
-![Square](../images/gui/gui_square.png)
+![Square](/manuals/images/gui/gui_square.png)
 
 이제 이 앱을 iPad에서 실행하면(종횡비가 4:3이고 화면 크기가 다름) 아래와 같이 보이게 됩니다.
 
-![iPad square](../images/gui/gui_ipad.png)
+![iPad square](/manuals/images/gui/gui_ipad.png)
 
 우리는 iPad에서 게임이 화면에 채워지도록 늘어난(stretche) 것을 볼 수 있습니다. 배경의 문어 이미지는 변형되었지만 GUI 컴포넌트는 그렇지 않았습니다. text 노드는 올바른 종횡비로 렌더링 되어 화면 중앙의 위치를 유지합니다.
 
@@ -219,11 +219,11 @@ GUI를 사용해 게임 앱을 만들어서 간단한 실험을 해 보도록 �
 * 참고용으로 배경에 모눈 텍스쳐(grid texture)를 가진 box 노드를 배치하고 **Adjust Mode**를 "Stretch"로 셋팅함
 * Defold 로고 텍스쳐를 사용한 256x256 픽셀 box 노드 세 개를 배치하고 **Adjust Mode**를 각각 "Fit", "Zoom", "Stretch"로 셋팅함
 
-![Adjust mode](../images/gui/gui_adjust.png)
+![Adjust mode](/manuals/images/gui/gui_adjust.png)
 
 이제 윈도우 사이즈가 변경될 때 box 노드들이 어떻게 바뀌는지 봅시다.
 
-![Resized window](../images/gui/gui_adjust_resize.png)
+![Resized window](/manuals/images/gui/gui_adjust_resize.png)
 
 "Stretch"  노드는 새로운 모양에 따라 변경되지만 "Fit"과 "Zoom" 노드는 종횡비를 유지합니다. "Fit" 노드는 모양이 변형된 바운딩 박스(모눈 사각형 안에서)의 안쪽에서 비율을 유지하고 "Zoom" 노드는 모양이 변경된 바운딩 박스를 덮어버리며 비율을 유지합니다.
 
@@ -240,11 +240,11 @@ Text 노드도 똑같은 방식으로 동작합니다. adjust mode는 텍스트�
 
 즉 앵커가 없는 노드들은 화면의 중앙을 기준으로 상대거리를 유지합니다. 예를 들어, 윈도우가 좌우로 늘어난다면, 추가 넓이는 GUI의 양 측면에 균등하게 분배됩니다.
 
-![No anchor size up](../images/gui/gui_no_anchor_sizeup.png)
+![No anchor size up](/manuals/images/gui/gui_no_anchor_sizeup.png)
 
 또한, 윈도우가 축소(shrunk)되어 상대적으로 좁아진다면, 추가 높이는 GUI의 위 아래로 균등하게 분배됩니다.
 
-![No anchor size down](../images/gui/gui_no_anchor_sizedown.png)
+![No anchor size down](/manuals/images/gui/gui_no_anchor_sizedown.png)
 
 ### Node repositioning with anchors
 Xanchor와 Yanchor 프로퍼티를 셋팅하면 바운딩 박스의 가장 자리를 기준으로 노드의 위치를 잠금(lock) 할 수 있습니다.
@@ -256,7 +256,7 @@ Xanchor와 Yanchor 프로퍼티를 셋팅하면 바운딩 박스의 가장 자�
 
 실제로 Xanchor 프로퍼티를 "Right"로 설정하고 Yanchor 프로퍼티를 "Top"으로 설정하면, 노드는 box의 오른쪽 위 모서리를 기준으로 위치를 유지하며 오른쪽 가장자리와 상단 가장자리까지와의 거리도 유지됩니다. **"Pivot"** 은 기본값 "Center"로 중심점을 유지하며, 모서리로 앵커를 지정하려면 **Pivot** 값을 적절히 조정하면 됩니다.
 
-![Anchor top right](../images/gui/gui_anchor_topright.png)
+![Anchor top right](/manuals/images/gui/gui_anchor_topright.png)
 
 이 예제는 "Top"과 "Right"로 앵커가 지정된 노드를 보여줍니다. "Fit"이 조정되고 **Pivot**을 "North East"로 설정하면 윈도우 창이 늘어날 때 노드는 변형될 박스(파란색 점선 사각형) 내에서 앵커가 지정되어 맞춰지게 됩니다.
 
@@ -271,7 +271,7 @@ Xanchor와 Yanchor 프로퍼티를 셋팅하면 바운딩 박스의 가장 자�
 
 다음 그림은 각 pivot 설정의 위치를 보여줍니다.
 
-![Pivot points](../images/gui/pivot_points.png)
+![Pivot points](/manuals/images/gui/pivot_points.png)
 
 노드의 pivot을 변경하면 노드는 새 pivot에 주어진 위치로 이동하게 됩니다. Text 노드는 "Center"일 경우 중앙 정렬되며 "West"일 경우 왼쪽 정렬, "East"일 경우 오른쪽으로 정렬됩니다.
 
@@ -312,7 +312,7 @@ gui.set_rotation(new_textnode, vmath.vector3(0, 0, 10))
 
 이 코드를 GUI 스크립트의 init() 함수에 넣어 실행하면 아래와 같이 됩니다.
 
-![Script create node](../images/gui/gui_script_create_nodes.png)
+![Script create node](/manuals/images/gui/gui_script_create_nodes.png)
 
 또 다른 방법으로는 이미 존재하는 노드를 복제하여 새 노드를 생성할 수도 있습니다.
 
@@ -398,4 +398,4 @@ render.draw(self.text_pred)
 
 이것은 렌더링되는 모든 GUI 컴포넌트들에게 영향을 줍니다. 위에서 만든 레벨 메뉴에 수정된 렌더 스크립트를 적용하면 아래 처럼 나타납니다.
 
-![Render script](../images/gui/gui_renderscript.png)
+![Render script](/manuals/images/gui/gui_renderscript.png)

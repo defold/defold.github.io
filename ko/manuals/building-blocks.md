@@ -10,7 +10,7 @@ title: Defold manual
 
 Defold에서 만든 것 중 일부는 다른 소프트웨어와는 다르게 설계되어 있습니다. 이 블록들을 왜 합치며 어떻게 합치는지에 대한 이해가 조금 어려울 수도 있습니다. Defold가 어떻게 게임 리소스를 관리하고 접근하는지 이해하기 위해서는, 이 문서와 [Message passing](/ko/manuals/message-passing) 문서를 참고 바랍니다. 여기에 있는 것들 중 일부 혹은 대부분은 생소하고 처음에는 이해하기 힘들겠지만, 걱정 마세요. 시간을 내서 에디터와 게임엔진을 다뤄보고 실행에 문제가 생기면 문서들을 둘러 보시기 바랍니다.
 
-![Building blocks](../images/building_blocks/building_blocks.png)
+![Building blocks](/manuals/images/building_blocks/building_blocks.png)
 
 ## Game objects
 게임 오브젝트는 게임이 실행되는 동안에 각각의 수명을 가지는 간단한 객체입니다. 일반적으로 게임 오브젝트는 비주얼이나 오디오를 나타내는 요소들(예를 들어 스프라이트 컴포넌트나 사운드 컴포넌트)을 장착하여 사용됩니다.  또한 스크립트 컴포넌트를 장착해서 특정한 동작을 구현할 수도 있습니다. 따라서 게임 오브젝트는 이런 다양한 컴포넌트들을 위한 컨테이너라는 점에서 스프라이트, 모델, 사운드와는 구분됩니다. 당신은 게임 오브젝트를 생성하여 에디터상의 컬렉션에 배치시킬 수 있으며 혹은 팩토리를 사용하여 런타임시 동적으로 스폰되게 할 수도 있습니다.
@@ -25,24 +25,24 @@ Defold에서 만든 것 중 일부는 다른 소프트웨어와는 다르게 설
 #### Prototypes and instances
 게임 오브젝트 파일을 생성해서 게임 오브젝트를 위한 설계도(blueprint)나 프로토타입(prototype)을 만듭니다. 나중에 이 프로토타입으로 하나 혹은 다수의 게임오브젝트 인스턴스를 생성할 수 있습니다.
 
-![Game object file](../images/building_blocks/building_blocks_gameobject_file.png)
+![Game object file](/manuals/images/building_blocks/building_blocks_gameobject_file.png)
 
 게임 오브젝트 파일을 만들어도 게임 실행시에는 아무것도 추가되는 것이 없습니다. 이 게임 오브젝트는 아직 존재하지 않으며, 실제 오브젝트를 만들 수 있는 공식만 존재할 뿐입니다. 미리 만들어 놓은 설계도를 기반으로 실제 게임 오브젝트를 만들기 위해서는, 컬렉션을 오른쪽 클릭하고 **Add Game Object File**을 선택해서 프로젝트의 컬렉션에 게임오브젝트의 인스턴스를 추가하면 됩니다.
 
-![Game object instance](../images/building_blocks/building_blocks_gameobject_instance.png)
+![Game object instance](/manuals/images/building_blocks/building_blocks_gameobject_instance.png)
 
 이제 게임 오브젝트는 작동을 시작할 수 있습니다. 당신은 많은 수의 인스턴스를 만들 수도 있는데, 각각의 인스턴스는 아까 게임 오브젝트 파일에 저장된 것과 똑같은 복제본입니다.
 
-![Game object clones](../images/building_blocks/building_blocks_gameobject_clones.png)
+![Game object clones](/manuals/images/building_blocks/building_blocks_gameobject_clones.png)
 
 이러한 방식의 좋은 점은 게임 오브젝트 파일을 변경하여 프로토타입을 바꾸는 경우, 이 파일을 기반으로 생성된 인스턴스들도 즉시 변경된다는 것입니다.
 
-![Game object alter file](../images/building_blocks/building_blocks_gameobject_alter.png)
+![Game object alter file](/manuals/images/building_blocks/building_blocks_gameobject_alter.png)
 
 #### Childing game objects
 이제는 처음으로 특이하게 보이는 사례를 살펴 보도록 합시다. 위의 프로토타입 파일의 "my_gameobject" 인스턴스를 컬렉션에 추가하고, "heart"라는 이름의 게임 오브젝트를 몇몇 컴포넌트들과 함께 생성해 봅시다. (컬렉션에 오른쪽클릭 후 **Add Game Object** 선택) 마지막으로, "heart" 오브젝트를 "my_gameobject"로 드래그해서 자식 오브젝트로 만듭니다.  이제 컬렉션이 다음과 같이 수정되었습니다:
 
-![Game object instance with child](../images/building_blocks/building_blocks_gameobject_instance_child.png)
+![Game object instance with child](/manuals/images/building_blocks/building_blocks_gameobject_instance_child.png)
 
 "heart" 오브젝트를 "my_gameobject"로 드래그하는 것으로 인해 "my_gameobject.go"파일이 바뀌는 것이 아닌지 생각할 수도 있지만, 그런 일은 발생하지 않습니다. 이 작업의 영향은 오직 "my_gameobject"라는 게임 오브젝트 인스턴스가 자식 오브젝트를 가지는 것 뿐입니다. 이 게임 오브젝트 인스턴스는 프로토타입과 자식오브젝트에 관한 두 가지 다른 속성을 가집니다. 게임 오브젝트 인스턴스에 자식 오브젝트들을 추가하면 프로토타입은 건드리지 않은 채로 해당 오브젝트의 **자식 속성(children property)** 이 추가됩니다.
 
@@ -117,7 +117,7 @@ end
 
 스크립트 속성이 어떻게 동작하는지 어떻게 사용하는지 자세한 설명이 알고 싶다면 [Script properties](/ko/manuals/script-properties) 문서를 참고 바랍니다.  스크립트 속성을 정의하면 그 속성과 연관된 자료형으로 다른 보통의 속성들처럼 파일에 저장됩니다. 게임 오브젝트가 프로토타입에 의해 인스턴스화 된 경우엔 별도의 **component_properties** 속성이 스크립트 속성(향우엔 다른 컴포넌트에도 가능할지도)을 포함하는 오브젝트 인스턴스에 추가됩니다:
 
-![Script properties](../images/building_blocks/building_blocks_properties.png)
+![Script properties](/manuals/images/building_blocks/building_blocks_properties.png)
 
 ```json
   component_properties {
@@ -132,7 +132,7 @@ end
 
 반대로 임베디드 된 게임 오브젝트에서 모든 컴포넌트 속성은 명시적으로 **properties** 속성으로 컬렉션 파일에 표시됩니다:
 
-![Embedded script properties](../images/building_blocks/building_blocks_properties_embedded.png)
+![Embedded script properties](/manuals/images/building_blocks/building_blocks_properties_embedded.png)
 
 ```json
 data: "components {\n  id: \"some_script\"\n  component: \"/a_simple_test/my_thing.script\"\n  position {\n    x: 0.0\n    y: 0.0\n    z: 0.0\n  }\n  rotation {\n    x: 0.0\n    y: 0.0\n    z: 0.0\n    w: 1.0\n  }\n  properties {\n    id: \"my_property\"\n    value: \"4713.0\"\n    type: PROPERTY_TYPE_NUMBER\n  }\n}\ncomponents {\n  id: \"sprite\"\n  component: \"/a_simple_test/my_heart.sprite\"\n  position {\n    x: 0.0\n    y: 0.0\n    z: 0.0\n  }\n  rotation {\n    x: 0.0\n    y: 0.0\n    z: 0.0\n    w: 1.0\n  }\n}\n"
@@ -144,13 +144,13 @@ data: "components {\n  id: \"some_script\"\n  component: \"/a_simple_test/my_thi
 1. 빌드시 컬렉션을 에디터상의 다른 컬렉션에 배치하는 방법
 2. 런타임시 컬렉션 프록시(Collection proxy)를 사용해서 컬렉션에 모인 모든 리소스를 동적으로 로딩하는 방법(자세한 것은 [Collection proxy](/ko/manuals/collection-proxy)문서를 참고 바랍니다.)
 
-![Collection instances](../images/building_blocks/building_blocks_collection_instances.png)
+![Collection instances](/manuals/images/building_blocks/building_blocks_collection_instances.png)
 
 에디터에 위치한 컬렉션들은 수정할 수 없습니다. 예를 들어 배치된 컬렉션의 일부인 게임 오브젝트에 하위 항목을 추가할 수 없습니다. 컬렉션 인스턴스에 저장된 데이터를 보면 잘 될거 같은데 왜 안될까요? 게임 오브젝트를 포함하고 있는 이 데이터는 "my_collection.collection"이라는 참조된 컬렉션 파일 안에 있고 이것은 수정되는 것이 아닙니다.
 
 컬렉션 파일 원본을 수정하지 않고는 컬렉션의 내용을 수정할 수 없지만, 에디터는 컬렉션에서 컴포넌트들과 연관된 스크립트 속성과 동일하게 속성값들의 수정을 허용합니다.
 
-![Properties in a collection](../images/building_blocks/building_blocks_collection_properties.png)
+![Properties in a collection](/manuals/images/building_blocks/building_blocks_collection_properties.png)
 
 ```json
 collection_instances {

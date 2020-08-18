@@ -19,8 +19,8 @@ Defold 内置支持多种动画:
 
 逐帧动画就是由一些列静态图片轮流显示生成的动画. 这种技术类似于老式翻页动画 (详见 http://en.wikipedia.org/wiki/Traditional_animation). 由于每帧的独立性使得这种技术很自由. 但是每帧一张图片会很耗费内存. 相似图片越多动画过渡越平滑同时也带来了巨大的工作量. Defold 逐帧动画使用来自于 [图集](/zh/manuals/atlas), 或者 [瓷砖图源](/zh/manuals/tilesource) 里水平排列的图片.
 
-  ![Animation sheet](../images/animation/animsheet.png)
-  ![Run loop](../images/animation/runloop.gif)
+  ![Animation sheet](/manuals/images/animation/animsheet.png)
+  ![Run loop](/manuals/images/animation/runloop.gif)
 
 ## Spine 动画
 
@@ -28,8 +28,8 @@ Spine 动画提供 2D _骨骼动画_ 支持 (详见 http://en.wikipedia.org/wiki
 
   关于导入 Spine 数据作为 Spine 模型和动画, 详见 [Spine 教程](/zh/manuals/spine).
 
-  ![Spine animation](../images/animation/spine_animation.png)
-  ![Run loop](../images/animation/frog_runloop.gif)
+  ![Spine animation](/manuals/images/animation/spine_animation.png)
+  ![Run loop](/manuals/images/animation/frog_runloop.gif)
 
 ## 3D 蒙皮动画
 
@@ -37,15 +37,15 @@ Spine 动画提供 2D _骨骼动画_ 支持 (详见 http://en.wikipedia.org/wiki
 
   关于如何导入 3D 模型动画, 详情请见 [模型教程](/zh/manuals/model).
 
-  ![Blender animation](../images/animation/blender_animation.png){.inline srcset="images/animation/blender_animation@2x.png 2x"}
-  ![Wiggle loop](../images/animation/suzanne.gif)
+  ![Blender animation](/manuals/images/animation/blender_animation.png){.inline srcset="images/animation/blender_animation@2x.png 2x"}
+  ![Wiggle loop](/manuals/images/animation/suzanne.gif)
 
 ## 属性动画
 
 数值类的属性 (numbers, vector3, vector4 和 quaterions) 以及着色器常量都可以由内置的属性动画系统制作属性动画, 即使用 `go.animate()` 函数. 引擎会在属性值之间进行 "补间" 依照指定的播放和缓动模式进行播放. 你也可以自定义缓动函数.
 
-  ![Property animation](../images/animation/property_animation.png){.inline srcset="images/animation/property_animation@2x.png 2x"}
-  ![Bounce loop](../images/animation/bounce.gif)
+  ![Property animation](/manuals/images/animation/property_animation.png){.inline srcset="images/animation/property_animation@2x.png 2x"}
+  ![Bounce loop](/manuals/images/animation/bounce.gif)
 
 ## 播放逐帧动画
 
@@ -141,7 +141,7 @@ function init(self)
 end
 ```
 
-![Spine model in game](../images/animation/spine_ingame.png)
+![Spine model in game](/manuals/images/animation/spine_ingame.png)
 
 如果动画是以 `go.PLAYBACK_ONCE_*` 模式播放, 然后在 `spine.play_anim()` 里指定回调函数, 则动画播放完成后会调用回调函数. 关于回调函数详见下文.
 
@@ -168,7 +168,7 @@ go.animate("#spinemodel", "cursor", go.PLAYBACK_LOOP_PINGPONG, 1, go.EASING_INOU
 
 Spine 骨架的各个骨骼实例在游戏对象内展示出来. 在 Spine model 组件的 *Outline* 视图内, 可以看到完整的嵌套关系. 在此层级嵌套关系中你可以看到骨骼的名称和其所在的位置.
 
-![Spine model hierarchy](../images/animation/spine_bones.png)
+![Spine model hierarchy](/manuals/images/animation/spine_bones.png)
 
 通过骨骼名称, 就可以在运行时得到骨骼实例. 函数 [`spine.get_go()`](/ref/spine#spine.get_go) 返回指定骨骼的 id, 然后就可以用来进行设置父级之类的操作:
 
@@ -184,7 +184,7 @@ Spine 动画可以基于精确的时间触发事件. 对于需要做同步行为
 
 在 Spine 软件里可以使用时间轴设置事件:
 
-![Spine events](../images/animation/spine_events.png)
+![Spine events](/manuals/images/animation/spine_events.png)
 
 各种事件由事件 id 表示 (上例中是 "bump") 而且时间轴上的事件可以包含一些数据:
 
@@ -421,47 +421,47 @@ pingpong 模式先正向播放, 再反向播放. GUI 属性动画也有这些播
 </script>
 </div>
 
-![Linear interpolation](../images/properties/easing_linear.png)
-![In back](../images/properties/easing_inback.png)
-![Out back](../images/properties/easing_outback.png)
-![In-out back](../images/properties/easing_inoutback.png)
-![Out-in back](../images/properties/easing_outinback.png)
-![In bounce](../images/properties/easing_inbounce.png)
-![Out bounce](../images/properties/easing_outbounce.png)
-![In-out bounce](../images/properties/easing_inoutbounce.png)
-![Out-in bounce](../images/properties/easing_outinbounce.png)
-![In elastic](../images/properties/easing_inelastic.png)
-![Out elastic](../images/properties/easing_outelastic.png)
-![In-out elastic](../images/properties/easing_inoutelastic.png)
-![Out-in elastic](../images/properties/easing_outinelastic.png)
-![In sine](../images/properties/easing_insine.png)
-![Out sine](../images/properties/easing_outsine.png)
-![In-out sine](../images/properties/easing_inoutsine.png)
-![Out-in sine](../images/properties/easing_outinsine.png)
-![In exponential](../images/properties/easing_inexpo.png)
-![Out exponential](../images/properties/easing_outexpo.png)
-![In-out exponential](../images/properties/easing_inoutexpo.png)
-![Out-in exponential](../images/properties/easing_outinexpo.png)
-![In circlic](../images/properties/easing_incirc.png)
-![Out circlic](../images/properties/easing_outcirc.png)
-![In-out circlic](../images/properties/easing_inoutcirc.png)
-![Out-in circlic](../images/properties/easing_outincirc.png)
-![In quadratic](../images/properties/easing_inquad.png)
-![Out quadratic](../images/properties/easing_outquad.png)
-![In-out quadratic](../images/properties/easing_inoutquad.png)
-![Out-in quadratic](../images/properties/easing_outinquad.png)
-![In cubic](../images/properties/easing_incubic.png)
-![Out cubic](../images/properties/easing_outcubic.png)
-![In-out cubic](../images/properties/easing_inoutcubic.png)
-![Out-in cubic](../images/properties/easing_outincubic.png)
-![In quartic](../images/properties/easing_inquart.png)
-![Out quartic](../images/properties/easing_outquart.png)
-![In-out quartic](../images/properties/easing_inoutquart.png)
-![Out-in quartic](../images/properties/easing_outinquart.png)
-![In quintic](../images/properties/easing_inquint.png)
-![Out quintic](../images/properties/easing_outquint.png)
-![In-out quintic](../images/properties/easing_inoutquint.png)
-![Out-in quintic](../images/properties/easing_outinquint.png)
+![Linear interpolation](/manuals/images/properties/easing_linear.png)
+![In back](/manuals/images/properties/easing_inback.png)
+![Out back](/manuals/images/properties/easing_outback.png)
+![In-out back](/manuals/images/properties/easing_inoutback.png)
+![Out-in back](/manuals/images/properties/easing_outinback.png)
+![In bounce](/manuals/images/properties/easing_inbounce.png)
+![Out bounce](/manuals/images/properties/easing_outbounce.png)
+![In-out bounce](/manuals/images/properties/easing_inoutbounce.png)
+![Out-in bounce](/manuals/images/properties/easing_outinbounce.png)
+![In elastic](/manuals/images/properties/easing_inelastic.png)
+![Out elastic](/manuals/images/properties/easing_outelastic.png)
+![In-out elastic](/manuals/images/properties/easing_inoutelastic.png)
+![Out-in elastic](/manuals/images/properties/easing_outinelastic.png)
+![In sine](/manuals/images/properties/easing_insine.png)
+![Out sine](/manuals/images/properties/easing_outsine.png)
+![In-out sine](/manuals/images/properties/easing_inoutsine.png)
+![Out-in sine](/manuals/images/properties/easing_outinsine.png)
+![In exponential](/manuals/images/properties/easing_inexpo.png)
+![Out exponential](/manuals/images/properties/easing_outexpo.png)
+![In-out exponential](/manuals/images/properties/easing_inoutexpo.png)
+![Out-in exponential](/manuals/images/properties/easing_outinexpo.png)
+![In circlic](/manuals/images/properties/easing_incirc.png)
+![Out circlic](/manuals/images/properties/easing_outcirc.png)
+![In-out circlic](/manuals/images/properties/easing_inoutcirc.png)
+![Out-in circlic](/manuals/images/properties/easing_outincirc.png)
+![In quadratic](/manuals/images/properties/easing_inquad.png)
+![Out quadratic](/manuals/images/properties/easing_outquad.png)
+![In-out quadratic](/manuals/images/properties/easing_inoutquad.png)
+![Out-in quadratic](/manuals/images/properties/easing_outinquad.png)
+![In cubic](/manuals/images/properties/easing_incubic.png)
+![Out cubic](/manuals/images/properties/easing_outcubic.png)
+![In-out cubic](/manuals/images/properties/easing_inoutcubic.png)
+![Out-in cubic](/manuals/images/properties/easing_outincubic.png)
+![In quartic](/manuals/images/properties/easing_inquart.png)
+![Out quartic](/manuals/images/properties/easing_outquart.png)
+![In-out quartic](/manuals/images/properties/easing_inoutquart.png)
+![Out-in quartic](/manuals/images/properties/easing_outinquart.png)
+![In quintic](/manuals/images/properties/easing_inquint.png)
+![Out quintic](/manuals/images/properties/easing_outquint.png)
+![In-out quintic](/manuals/images/properties/easing_inoutquint.png)
+![Out-in quintic](/manuals/images/properties/easing_outinquint.png)
 
 ## 自定义缓动
 
@@ -476,7 +476,7 @@ local my_easing = vmath.vector(values)
 
 生成的缓动曲线如下:
 
-![Custom curve](../images/animation/custom_curve.png)
+![Custom curve](/manuals/images/animation/custom_curve.png)
 
 下面的例子是让游戏对象的 y 轴位置依照自定义曲线从当前位置到 200 来回跳跃:
 
@@ -493,7 +493,7 @@ local square_easing = vmath.vector(values)
 go.animate("go", "position.y", go.PLAYBACK_LOOP_PINGPONG, 200, square_easing, 2.0)
 ```
 
-![Square curve](../images/animation/square_curve.png)
+![Square curve](/manuals/images/animation/square_curve.png)
 
 ## 播放完成回调函数
 

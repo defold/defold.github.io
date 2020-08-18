@@ -13,7 +13,7 @@ iOS 개발은 개발중에도 iOS 기기에 앱이나 게임을 올릴 수 있�
 ## Apple’s code signing process
 iOS 앱과 관련된 보안은 여러가지 요소로 구성되어 있습니다. 필요한 도구에 액세스 하려면 우선 [Apple’s iOS Developer Program](https://developer.apple.com/programs/)에 가입해야 합니다. 등록 후에는 [Apple’s Developer Member Center](https://developer.apple.com/membercenter/index.action) 로 이동하기 바랍니다.
 
-![Apple Member Center](../images/ios/apple_member_center.png)
+![Apple Member Center](/manuals/images/ios/apple_member_center.png)
 
 **Certificates, Identifiers & Profiles** 섹션은 필요한 모든 도구를 포함하고 있으며 여기에서 생성, 삭제, 수정이 가능합니다.
 
@@ -36,15 +36,15 @@ Defold에서 게임이나 앱에 서명할 때에는 유효한 인증서와 유�
 ## Device UDID
 iOS 장치의 UDID는 와이파이나 케이블로 컴퓨터에 연결해서 알아낼 수 있습니다. iTunes 를 열어서 장치 아이콘을 클릭하고 당신의 장치를 선택하세요.
 
-![iTunes devices](../images/ios/itunes_devices.png)
+![iTunes devices](/manuals/images/ios/itunes_devices.png)
 
 **Summary** 페이지에서 **Serial Number** 를 찾습니다.
 
-![Device UDID step 1](../images/ios/udid.png)
+![Device UDID step 1](/manuals/images/ios/udid.png)
 
 **Serial Number**를 클릭해서 이 필드를 **UDID**로 변경합니다. 반복적으로 클릭하면 이 장치에 대한 여러 정보들이 표시되므로 **UDID**가 나올 때 까지 계속 클릭해도 됩니다. 긴 UDID 문자열을 마우스 오른쪽 클릭해서 **Copy** 를 눌러 식별자를 클립보드로 복사합니다. 그러면 Apple’s Developer Member Center에서 장치를 등록할 때 UDID 필드에 쉽게 붙여넣기 할 수 있습니다.
 
-![Device UDID step 2](../images/ios/udid_2.png)
+![Device UDID step 2](/manuals/images/ios/udid_2.png)
 
 ## Signing the Defold development app
 development app은 와이파이를 통해 컨텐츠를 설치할 수 있는 아주 편리한 버전입니다. 장치에 development app을 설치하고 앱을 시작한 다음 에디터에서 해당 장치를 빌드 대상으로 선택합니다.
@@ -62,7 +62,7 @@ development app은 와이파이를 통해 컨텐츠를 설치할 수 있는 아�
 3. 당신의 mobile provisioning 파일 찾기
 4. **Sign and upload** 버튼 누르기
 
-![Signing the app](../images/ios/sign.png)
+![Signing the app](/manuals/images/ios/sign.png)
 
 Defold dev app은 Dashboard의 프로젝트 페이지로 업로드 됩니다. 각 프로젝트 멤버는 다음 작업을 할 수 있습니다.
 
@@ -85,11 +85,11 @@ iOS 장치에서 게임을 실행하려면 Defold dev app과 에디터가 같은
 ## Creating an iOS application bundle
 에디터에서 게임용 독립 어플리케이션 번들(stand alone application bundle)도 쉽게 생성할 수 있습니다. 메뉴에서 **Project > Bundle…​ > iOS Application…​** 를 선택하기만 하면 됩니다.
 
-![Signing iOS bundle](../images/ios/sign_bundle.png)
+![Signing iOS bundle](/manuals/images/ios/sign_bundle.png)
 
 당신의 code signing identity를 선택하고 당신의 mobile provisioning 파일을 탐색합니다. **Package** 버튼을 누르면 컴퓨터에서 번들이 생성될 위치를 지정하라는 창이 뜹니다.
 
-![ipa iOS application bundle](../images/ios/ipa_file.png)
+![ipa iOS application bundle](/manuals/images/ios/ipa_file.png)
 
 에디터는 iOS 어플리케이션 번들로  **.ipa** 파일을 생성합니다. 이 파일은 iTunes로 드래그-앤-드롭 해서 다음 동기화 중에 당신의 장치에 설치하게 됩니다. "game.project" 프로젝트 설정 파일에서 실행 스크린 이미지나 앱에서 사용할 아이콘 등을 지정할 수도 있습니다.
 

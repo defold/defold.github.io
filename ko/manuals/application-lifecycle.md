@@ -10,7 +10,7 @@ title: Defold manual
 
 Defold의 어플리케이션이나 게임의 라이프사이클은 매우 단순합니다. 엔진은 초기화(initialization), 업데이트 루프(update loop: 여기서 대부분의 시간이 소비됨), 마무리(finalization) 세 단계로 진행합니다.
 
-![Lifecycle overview](../images/application_lifecycle/application_lifecycle_overview.png)
+![Lifecycle overview](/manuals/images/application_lifecycle/application_lifecycle_overview.png)
 
 대부분의 경우엔 Defold 내부 동작의 기본적인 이해만 해도 되지만, 이 작업의 정확한 순서를 이해하지 못하면 난관에 빠질 수도 있습니다. 이 문서는 게임엔진이 어떻게 어플리케이션을 시작부터 끝까지 실행하는지 설명합니다
 
@@ -22,7 +22,7 @@ Defold의 어플리케이션이나 게임의 라이프사이클은 매우 단순
 
 ## Initialization
 
-![Lifecycle overview](../images/application_lifecycle/application_lifecycle_init.png)
+![Lifecycle overview](/manuals/images/application_lifecycle/application_lifecycle_init.png)
 
 이 다이어그램은 초기화 단계를 더 자세히 설명하고 있습니다. 이 단계의 더 정확한 설명을 위해 라이프 사이클과 관련이 있는 "dispatch messages" 단계("spawn dynamic objects"단계 바로 직전에 호출됨)에 대한 자세한 설명을 오른쪽 블록에 배치했습니다.
 
@@ -66,7 +66,7 @@ end
 ## The update loop
 업데이트 루프는 매 프레임 마다 한 번씩 긴 시퀀스로 실행됩니다. 명확한 이해를 위해 아래 그림에선 이 업데이트 시퀀스를 논리적인 시퀀스 블록으로 구분했습니다. 또한 "Dispatch messages" 블록도 같은 이유로 분리해서 보여줍니다:
 
-![Update loop](../images/application_lifecycle/application_lifecycle_update.png)
+![Update loop](/manuals/images/application_lifecycle/application_lifecycle_update.png)
 
 #### Input
 입력(input)은 사용 가능한 디바이스로부터 읽혀지며, [인풋 바인딩(input binding)](/ko/manuals/input)에 대해 매핑되어 디스패치 됩니다. 입력 포커스를 획득한 게임 오브젝트는 사용자의 입력을 받아 on_input() 함수가 있는 모든 컴포넌트에게 전송합니다. 스크립트 컴포넌트와 GUI스크립트가 있는 GUI컴포넌트를 사용하는 게임 오브젝트가 입력을 받아 이들 컴포넌트의 on_input() 함수로 보냅니다.
@@ -104,7 +104,7 @@ main 컬렉션의 각 게임 오브젝트 컴포넌트 순환하며 수행됩니
 
 엔진은 마지막으로 main 컬렉션과 오브젝트들을 다루기 위한 마무리(finalization) 시퀀스에 진입합니다.
 
-![Finalization](../images/application_lifecycle/application_lifecycle_final.png)
+![Finalization](/manuals/images/application_lifecycle/application_lifecycle_final.png)
 
 먼저 컴포넌트의 final() 함수를 호출한 후, 남은 메세지들을 전달합니다. 마지막으로, 모든 게임 오브젝트가 삭제되고 main 컬렉션이 언로드 됩니다.
 

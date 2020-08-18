@@ -17,7 +17,7 @@ title: Defold manual
 ## Spawning a collection
 컬렉션을 스폰 하는 것은 게임 오브젝트를 스폰하는 방식과 똑같이 수행됩니다. 간단한 예를 들자면, 우리가 행성 스프라이트를 만들고 이 행성 표면에 복합적인 게임 오브젝트로 구성된 우주인 모형 여러 개를 스폰해야 한다고 칩시다. 우리는 그냥 컬렉션 프록시(**Collection factory**)를 "planet" 게임오브젝트에 추가하고 **Prototype** 속성을 "astronaut.collection" (일단 존재한다고 치고)으로 설정하면 됩니다.
 
-![Collection factory](../images/collection_factory/collection_factory_factory.png)
+![Collection factory](/manuals/images/collection_factory/collection_factory_factory.png)
 
 이번엔 팩토리에게 우주인을 스폰하라는 메세지를 보내면 됩니다.
 
@@ -26,7 +26,7 @@ local astro = collectionfactory.create("#factory", nil, nil, {}, nil)
 ```
 스폰된 우주인은 게임 오브젝트들의 트리구조로 되어 있으며, 스폰 이후에 이 오브젝트들을 다루기 위한 주소를 받을 수 있습니다.
 
-![Collection to spawn](../images/collection_factory/collection_factory_collection.png)
+![Collection to spawn](/manuals/images/collection_factory/collection_factory_collection.png)
 
 보통의 팩토리 컴포넌트라면 스폰된 오브젝트의 아이디(id)를 반환하지만, 컬렉션 팩토리는 각 오브젝트들의 런타임 아이디를 컬렉션명-로컬명(collection-local id)의 해쉬값으로 만들고 이들을 테이블에 매핑해 반환합니다. 접두사 "/collectionNN/" 가 각 아이디에 추가되어 각 인스턴스를 유니크하게 식별해 줍니다.
 
@@ -68,4 +68,4 @@ function init(self)
 
 우주인 여러 명을 스폰하고 적당히 배치하여 알맞은 속성 값들을 보내면, 아래처럼 사랑이 넘치는 행성을 만들 수 있습니다.
 
-![Populated planet](../images/collection_factory/collection_factory_game.png)
+![Populated planet](/manuals/images/collection_factory/collection_factory_game.png)

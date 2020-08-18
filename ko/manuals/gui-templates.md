@@ -13,25 +13,25 @@ GUI 템플릿은 다른 컬렉션 내에 배치할 수 있는 서브 컬렉션 �
 ## Creating and using a template
 GUI 템플릿은 일반적인 GUI 씬이므로, 템플릿을 만드는 방법은 특별한 차이가 없습니다. 우리가 버튼 템플릿 하나를 만들어 사용한다고 가정해 봅시다. 우리는 GUI 씬에 기본 버튼 하나를 만들어 파일로 저장할 수 있습니다.
 
-![Button template](../images/gui-templates/gui-templates-button.png)
+![Button template](/manuals/images/gui-templates/gui-templates-button.png)
 
 이제 다른 GUI 씬에 이 버튼의 인스턴스 여러 개를 추가할 수 있습니다. 새 씬을 열거나 생성해서 **Gui ▸ Add Template Node**를 선택하고, 아니면 **Outline** 창에서  **Nodes** 폴더에 마우스 오른쪽 버튼을 눌러 드롭 다운 메뉴에서 **Add Template**를 선택합니다.
 
-![Add template](../images/gui-templates/gui-templates-add-template.png)
+![Add template](/manuals/images/gui-templates/gui-templates-add-template.png)
 
 템플릿으로 사용할 GUI 씬 파일(이 예제에서는 "button.gui")을 선택합니다. 동일한 템플릿으로 기반한 인스턴스를 여러 개 추가할 수 있습니다. 만약 템플릿을 수정하면, 각 인스턴스도 에디터상에서 즉시 업데이트 되어 변경사항이 반영됩니다. 템플릿 노드에 표시되는 모든 노드들은 **Outline** 창에서 액세스 할 수 있습니다. 템플릿 밑에 있는 노드들은 "[템플릿 노드 id]/"를 접두어로 사용해 자동으로 이름이 정해집니다.
 
-![Node instances](../images/gui-templates/gui-templates-instances.png)
+![Node instances](/manuals/images/gui-templates/gui-templates-instances.png)
 
 ### Overloading properties
 각 인스턴스 노드는 템플릿에 설정된 모든 프로퍼티를 오버로드(overload) 할 수 있습니다. 그냥 편집하려는 노드를 선택하고 변경하려는 프로퍼티를 수정하기만 하면 됩니다. 오버로드된 프로퍼티를 가진 노드들은 **Outline** 창에서 녹색으로 표시되며 오버로드된 프로퍼티는 파란색으로 표시됩니다. 파란색 프로퍼티 이름을 클릭해서 프로퍼티의 값을 기본값으로 리셋할 수 있습니다.
 
-![Overloaded properties](../images/gui-templates/gui-templates-overloaded.png)
+![Overloaded properties](/manuals/images/gui-templates/gui-templates-overloaded.png)
 
 ## Layers
 레이어는 그냥 우리가 예상한대로 동작합니다. 템플릿 파일의 특정 레이아웃으로 셋팅된 프로퍼티는 해당 레이어가 존재하는 경우에 인스턴스 노드의 레이아웃에 반영됩니다. 반대로, 템플릿 노드 인스턴스에 오버로드(overloads)하면 현재 선택된 레이아웃에 영향을 줍니다.
 
-![Overloading in layers](../images/gui-templates/gui-templates-layers.png)
+![Overloading in layers](/manuals/images/gui-templates/gui-templates-layers.png)
 
 ## Scripting
 템플릿 노드 메커니즘을 통해 Lua 스크립트로 추가된 노드들을 다루거나 쿼리할 수 있습니다. 노드들은 접두어 기반 템플릿 노드를 포함한 전체 이름으로 지정해야 합니다.

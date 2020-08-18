@@ -20,14 +20,14 @@ Home
 New
 : Click if you want to create a new Defold project, then select if you want to base your project on a basic template (from the *From Template* tab), if you would like to follow a tutorial (the *From Tutorial* tab), or try one of the sample projects (the *From Sample* tab).
 
-  ![new project](../images/editor/new_project.png)
+  ![new project](/manuals/images/editor/new_project.png)
 
   When you create a new project it is stored on your local drive and any edits you do are saved locally. To share the project with members of your team, use the *Synchronize* feature in the editor. It creates a Defold cloud Git storage project for you through which you and your team can synchronize work.
 
 Import project
 : Create a working copy from an existing project from you Defold cloud Git storage account. The local copy is linked to the cloud Git project so it's ready for team synchronization.
 
-  ![import project](../images/editor/import_project.png)
+  ![import project](/manuals/images/editor/import_project.png)
 
   Access to the Defold cloud git storage requires that you provide your Defold account credentials.
 
@@ -37,7 +37,7 @@ You can learn more about the different options in the [Project Setup manual](htt
 
 The Defold editor is separated into a set of panes, or views, that display specific information.
 
-![Editor 2](../images/editor/editor2_overview.png)
+![Editor 2](/manuals/images/editor/editor2_overview.png)
 
 The *Assets* view
 : Lists all the files that are part of your project. Click and scroll to navigate the list. All file oriented operations can be made in this view:
@@ -56,7 +56,7 @@ The *Editor* view
 
 There is a toolbar in the top right corner of the scene view where you find object manipulation tools: *Move*, *Rotate* and *Scale*.
 
-![toolbar](../images/editor/toolbar.png)
+![toolbar](/manuals/images/editor/toolbar.png)
 
 The *Outline*
 : This view shows the content of the file currently being edited, but in a hierarchial tree structure. The outline reflects the editor view and allows you to perform operations on your items:
@@ -80,7 +80,7 @@ The *Changed Files* view:
 
 If you have multiple files open, a separate tab for each file is shown at the top of the editor view. It is possible to open 2 editor views side by side. <kbd>Right click</kbd> the tab for the editor you want to move and select <kbd>Move to Other Tab Pane</kbd>.
 
-![2 panes](../images/editor/2-panes.png)
+![2 panes](/manuals/images/editor/2-panes.png)
 
 You can also use the tab menu to swap the position of the two panes and join them to a single pane.
 
@@ -88,7 +88,7 @@ You can also use the tab menu to swap the position of the two panes and join the
 
 Double clicking a collection or game object file brings up the *Scene Editor*:
 
-![Select object](../images/editor/select.jpg)
+![Select object](/manuals/images/editor/select.jpg)
 
 Selecting objects
 : Click on objects in the main window to select them. The rectangle surrounding the object in the editor view will highlight green to indicate what item is selected. The selected object is also highlighted in the *Outline* view.
@@ -101,26 +101,26 @@ Selecting objects
   Hold <kbd>Shift</kbd> or <kbd>⌘</kbd> (Mac) / <kbd>Ctrl</kbd> (Win/Linux) while clicking to expand the selection.
 
 The move tool
-: ![Move tool](../images/editor/icon_move.png)
+: ![Move tool](/manuals/images/editor/icon_move.png)
   To move objects, use the *Move Tool*. You find it in the toolbar in the top right corner of the scene editor, or by pressing the <kbd>W</kbd> key.
 
-  ![Move object](../images/editor/move.jpg)
+  ![Move object](/manuals/images/editor/move.jpg)
 
   The selected object shows a set of manipulators (squares and arrows). Click and drag the green center square handle to move the object freely in screen space, click and drag the arrows to move the object along the X, Y or Z-axis. There arn also square handles for moving the object in the X-Y plane and (visible if rotating the camera in 3D) for moving the object in the X-Z and Y-Z planes.
 
 The rotate tool
-: ![Rotate tool](../images/editor/icon_rotate.png)
+: ![Rotate tool](/manuals/images/editor/icon_rotate.png)
   To rotate objects, use the *Rotate Tool* by selecting it in the toolbar, or by pressing the <kbd>E</kbd> key.
 
-  ![Move object](../images/editor/rotate.jpg)
+  ![Move object](/manuals/images/editor/rotate.jpg)
 
   This tool consists of four circular manipulators. An orange manipulator that rotates the object in screen space and one for rotation around each of the X, Y and Z axes. Since the view is peripendicular to the X- and Y-axis, the circles only appear as two lines crossing the object.
 
 The scale tool
-: ![Scale tool](../images/editor/icon_scale.png)
+: ![Scale tool](/manuals/images/editor/icon_scale.png)
   To scale objects, use the *Scale Tool* by selecting it in the toolbar, or by pressing the <kbd>R</kbd> key.
 
-  ![Scale object](../images/editor/scale.jpg)
+  ![Scale object](/manuals/images/editor/scale.jpg)
 
   This tool consists of a set of square handles. The center one scales the object uniformly in all axes (including Z). There also one handle for scaling along each of the X, Y and Z axes and one handle for scaling in the X-Y plane, the X-Z plane and the Y-Z plane.
 
@@ -130,14 +130,14 @@ To create new resource files, either select <kbd>File ▸ New...</kbd> and then 
 
 <kbd>Right click</kbd> the target location in the *Assets* browser, then select <kbd>New... ▸ [file type]</kbd>:
 
-![create file](../images/editor/create_file.png)
+![create file](/manuals/images/editor/create_file.png)
 
 Type a suitable name for the new file. The full file name including the file type suffix is shown under *Path* in the dialog:
 
-![create file name](../images/editor/create_file_name.png)
+![create file name](/manuals/images/editor/create_file_name.png)
 
 ## Importing files to your project
 
 To add asset files (images, sounds, models etc) to your project, simply drag and drop them to the correct position in the *Assets* browser. This will make _copies_ of the files at the selected location in the project file structure.
 
-![Import files](../images/editor/import.png)
+![Import files](/manuals/images/editor/import.png)

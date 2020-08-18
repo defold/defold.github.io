@@ -12,7 +12,7 @@ brief: 本教程介绍了 HTML5 游戏开发, 及其已知问题和局限性.
 
 *game.project* 文件包含了 HTML5 相关设置:
 
-![Project settings](../images/html5/html5_project_settings.png)
+![Project settings](/manuals/images/html5/html5_project_settings.png)
 
 ## Heap size
 
@@ -25,7 +25,7 @@ Defold 通过 Emscripten (详见 http://en.wikipedia.org/wiki/Emscripten) 支持
 
 要测试 HTML5 游戏, 需要先启动一个 HTTP 服务程序. Defold 可以通过 <kbd>Project ▸ Build HTML5</kbd> 启动内建 HTTP 服务.
 
-![Build HTML5](../images/html5/html5_build_launch.png)
+![Build HTML5](/manuals/images/html5/html5_build_launch.png)
 
 要测试 HTML5 游戏, 把游戏上传到远程 HTTP 服务器或者使用本地服务程序, 比如, 使用 python 自带的 HTTP 服务.
 Python 2:
@@ -45,7 +45,7 @@ Python 3:
 
 Defold 打包 HTML5 游戏很简单, 跟其他平台一样: 从菜单栏选择 <kbd>Project ▸ Bundle...​ ▸ HTML5 Application...</kbd>:
 
-![Application files](../images/html5/html5_bundle.png)
+![Application files](/manuals/images/html5/html5_bundle.png)
 
 会弹出提示框让你选择游戏存放位置. 打包结束后, 就可以看到输出的所有文件.
 
@@ -65,7 +65,7 @@ Defold 打包 HTML5 游戏很简单, 跟其他平台一样: 从菜单栏选择 <
 
 游戏输出时, 这个页面也会重新生成. 如果想要自定义网页模板需要在项目设置里手动配置. 要配置的话, 打开 Defold 编辑器的 *game.project* 文件然后找到 *html5* 部分:
 
-![HTML5 Section](../images/html5/html5_section.png)
+![HTML5 Section](/manuals/images/html5/html5_section.png)
 
 关于每个选项详情请见 [形目设置教程](/zh/manuals/project-settings/#html5).
 
@@ -88,18 +88,18 @@ Defold 提供了 index.html 文件的亮暗两种风格. 默认亮风格但是�
 
 使用 `Fit` 模式 canvas 会以原始比例缩放来适配当前屏幕. `Downscale Fit` 的区别在于, 如果内嵌网页比游戏 canvas 小, 则游戏缩小；反之则以原始大小显示而并不放大=.
 
-![HTML5 Section](../images/html5/html5_fit.png)
+![HTML5 Section](/manuals/images/html5/html5_fit.png)
 
 ### Stretch
 
 使用 `Stretch` 模式 canvas 会充满整个内嵌网页.
 
-![HTML5 Section](../images/html5/html5_stretch.png)
+![HTML5 Section](/manuals/images/html5/html5_stretch.png)
 
 ### No Scale
 使用 `No Scale` 模式游戏 canvas 大小保持在 `game.project` 文件里 `[display]` 部分设置的值.
 
-![HTML5 Section](../images/html5/html5_no_scale.png)
+![HTML5 Section](/manuals/images/html5/html5_no_scale.png)
 
 ## Tokens
 
@@ -111,11 +111,11 @@ Defold 提供了 index.html 文件的亮暗两种风格. 默认亮风格但是�
 
 `game.project` 里的设置都可以使用标注来引用. 比如说, 引用 `Display` 里 `Width` 的值:
 
-![Display section](../images/html5/html5_display.png)
+![Display section](/manuals/images/html5/html5_display.png)
 
 用普通文本编辑器打开 `game.project` 找到想引用的 `[section_name]` 部分. 像这样引用设置的值: `{% raw %}{{section_name.field}}{% endraw %}` 或者 `{% raw %}{{{section_name.field}}}{% endraw %}`.
 
-![Display section](../images/html5/html5_game_project.png)
+![Display section](/manuals/images/html5/html5_game_project.png)
 
 比如, 在 HTML 模板的 JavaScript 里:
 

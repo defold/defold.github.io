@@ -19,11 +19,11 @@ brief: 本教程介绍了如何使用材质, 着色器常量和采样.
 
 要创建材质, 在 *Assets* 浏览器里目标文件夹上 <kbd>右键点击</kbd> 然后选择 <kbd>New... ▸ Material</kbd>. (还可以从菜单选择 <kbd>File ▸ New...</kbd> , 再选择 <kbd>Material</kbd>). 给材质命名并点击 <kbd>Ok</kbd>.
 
-![Material file](../images/materials/material_file.png)
+![Material file](/manuals/images/materials/material_file.png)
 
 新材质会在 *材质编辑器* 里打开.
 
-![Material editor](../images/materials/material.png)
+![Material editor](/manuals/images/materials/material.png)
 
 材质文件包含以下信息:
 
@@ -79,7 +79,7 @@ Samplers are used to sample the color information from a texture (a tile source 
 
 Sprite, tilemap, GUI and particle effect components automatically gets a `sampler2D` set. The first declared `sampler2D` in the shader program is automatically bound to the image referenced in the graphics component. Therefore there is currently no need to specify any samplers in the materials file for those components. Furthermore, those component types currently only support a single texture. (If you need multiple textures in a shader, you can use [`render.enable_texture()`](/ref/render/#render.enable_texture) and set texture samplers manually from your render script.)
 
-![Sprite sampler](../images/materials/sprite_sampler.png)
+![Sprite sampler](/manuals/images/materials/sprite_sampler.png)
 
 ```glsl
 -- mysprite.fp
@@ -93,11 +93,11 @@ void main()
 
 You can specify a component's sampler settings by adding the sampler by name in the materials file. If you don't set up your sampler in the materials file, the global *graphics* project settings are used.
 
-![Sampler settings](../images/materials/my_sampler.png)
+![Sampler settings](/manuals/images/materials/my_sampler.png)
 
 For model components, you need to specify your samplers in the material file with the settings you want. The editor will then allow you to set textures for any model component that use the material:
 
-![Model samplers](../images/materials/model_samplers.png)
+![Model samplers](/manuals/images/materials/model_samplers.png)
 
 ```glsl
 -- mymodel.fp
@@ -112,7 +112,7 @@ void main()
 }
 ```
 
-![Model](../images/materials/model.png)
+![Model](/manuals/images/materials/model.png)
 
 ## Sampler settings
 

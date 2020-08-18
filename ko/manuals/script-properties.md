@@ -69,13 +69,13 @@ end
 
 이 스크립트를 포함하는 모든 게임 오브젝트는 값을 구체적으로 설정할 수 있습니다. 에디터의 Outline 창에서 스크립트 노드를 선택하면 Properties 창에서 프로퍼티가 노출되어 값을 수정할 수 있게 됩니다.
 
-![Script Properties](../images/script_properties/script_properties.png)
+![Script Properties](/manuals/images/script_properties/script_properties.png)
 
 > 하위 컬렉션 내에 게임 오브젝트가 있는 경우, 컬렉션의 게임 오브젝트 노드를 확장하여 스크립트를 선택하면 됩니다.
 
 이 에디터 프로퍼티 인스펙터(editor property inspector)는 선언된 프로퍼티의 유형에 맞게 위젯을 자동적으로 보여줍니다. 숫자형은 텍스트 박스로, 벡터나 쿼터니온 형은 여러개의 텍스트 박스로, 해쉬값은 문자열을 해쉬시켜 주고, URL은 관련된 모든 로컬 오브젝트나 컴포넌트를(동일한 컬렉션에 위치한 것만) 드롭다운 리스트로 보여줍니다. 또한 URL을 수동으로 입력하는 것도 가능합니다.
 
-![](../images/script_properties/script_properties_example.png)
+![](/manuals/images/script_properties/script_properties_example.png)
 
 ## Factory created objects
 팩토리를 사용하여 게임 오브젝트를 생성하는 경우, 생성시에 스크립트 프로퍼티를 셋팅하는 것도 가능합니다.

@@ -45,17 +45,17 @@ Aby stworzyć paczkę kliknij <kbd>Project ▸ Bundle... ▸ Android Application
 
 Jeśli chcesz, aby Defold automatycznie stworzył certyfikat, zostaw pola *Certificate* i *Private key* puste:
 
-![Signing Android bundle](../images/android/sign_bundle.png)
+![Signing Android bundle](/manuals/images/android/sign_bundle.png)
 
 Jeśli chcesz podpisać paczkę własnym certyfikatem i kluczem, wskaż odpowiednie pliki *.pem* i *.pk8*:
 
-![Signing Android bundle](../images/android/sign_bundle2.png)
+![Signing Android bundle](/manuals/images/android/sign_bundle2.png)
 
 Defold wspiera tworzenie zarówno paczek APK i AAB. Wybierz APK lub AAB z rozwijanej listy "Bundle Format".
 
 Kliknij <kbd>Create Bundle</kbd> po skonfigurowaniu wszystkich ustawień. Będziesz poproszony o wskazanie lokalizacji na Twoim urządzeniu do zapisania zbudowanej paczki.
 
-![Android Application Package file](../images/android/apk_file.png)
+![Android Application Package file](/manuals/images/android/apk_file.png)
 
 ### Instalowanie paczek na Androidzie
 
@@ -122,7 +122,7 @@ List of devices attached
 
 Jeśli Twoje urządzenie się nie pojawi, upewnij się najpierw czy zezwolono na *USB debugging* na urządzeniu mobilnym. Otwórz ustawienia *Settings* i wyszukaj *Developer options* (lub *Development*).
 
-![Enable USB debugging](../images/android/usb_debugging.png)
+![Enable USB debugging](/manuals/images/android/usb_debugging.png)
 
 ## Debugowanie paczki z aplikacją
 

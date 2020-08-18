@@ -27,7 +27,7 @@ local id = go.get_id(".")
 
 先看一个简单的例子. 比如你有一个含有Sprite的游戏对象. 然后附加一个脚本来控制这个对象. 在编辑器里的设置就差不多这样:
 
-![bean in editor](../images/addressing/bean_editor.png)
+![bean in editor](/manuals/images/addressing/bean_editor.png)
 
 你想开始先关闭这个sprite, 留待以后显示. 我们来简单创建一个脚本 "controller.script":
 
@@ -40,7 +40,7 @@ end
 
 就像设计的那样, 游戏一开始脚本组件 *定位* 到了sprite组件 "body" 对其地址发出了一个  "disable" 的 *消息* . 这个消息的结果就是把sprite隐藏了. 也就是说, 整个流程是这样的:
 
-![bean](../images/addressing/bean.png)
+![bean](/manuals/images/addressing/bean.png)
 
 id可以随意设置. 当前我们对游戏对象设置了一个id "bean", sprite组件叫做 "body", 控制这个对象的脚本组件叫做 "controller".
 
@@ -55,21 +55,21 @@ id可以随意设置. 当前我们对游戏对象设置了一个id "bean", sprit
 
 现在, 再增加一个sprite来给豆子先生添加一个盾牌:
 
-![bean](../images/addressing/bean_shield_editor.png)
+![bean](/manuals/images/addressing/bean_shield_editor.png)
 
 每个游戏对象的组件id必须唯一. 再叫 "body" 的话脚本就不知道该给谁发送 "disable" 信息了. 所以我们选择了 (更具意义的) id "shield". 这样不管是 "body" 还是 "shield" 我们都能自由控制了.
 
-![bean](../images/addressing/bean_shield.png)
+![bean](/manuals/images/addressing/bean_shield.png)
 
 ::: 注意
 如果你非要设置成一样的id, 系统会提示错误阻止你这样做:
 
-![bean](../images/addressing/name_collision.png)
+![bean](/manuals/images/addressing/name_collision.png)
 :::
 
 现在再多加一些游戏对象进来试试. 假设你要让两个 "豆子先生" 组个队. 一个叫 "bean" 另一个叫 "buddy". 然后, 当 "bean" 等待一段时间后, 它就让 "buddy" 开始跳舞. 也就是从 "bean" 的脚本组件 "controller" 发送一个自定义消息 "dance" 到 "buddy" 的 "controller" :
 
-![bean](../images/addressing/bean_buddy.png)
+![bean](/manuals/images/addressing/bean_buddy.png)
 
 ::: 注意
 这两个脚本组件都叫 "controller", 但是由于唯一性是对每个游戏对象来说的, 所以这样做是可以的.
@@ -91,21 +91,21 @@ id可以随意设置. 当前我们对游戏对象设置了一个id "bean", sprit
 
 比如你想建立许多 bean/buddy 二人组. 最好把它们做成 *集合文件* (命名为 "team.collection"). 编译并保存好. 然后在引导启动集合里就可以实例化并命名 (比如 "team_1"):
 
-![bean](../images/addressing/team_editor.png)
+![bean](/manuals/images/addressing/team_editor.png)
 
 这种结构下, "bean" 游戏对象依旧可以使用地址 `"buddy#controller"` 来引用"buddy"的"controller"组件.
 
-![bean](../images/addressing/collection_team.png)
+![bean](/manuals/images/addressing/collection_team.png)
 
 如果你再实例化一个 "team.collection" (命名 "team_2"), 那么 "team_2" 的脚本也能顺利运行. "team_2"中的"bean" 对象同样使用地址 `"buddy#controller"` 来引用"buddy"的"controller"组件.
 
-![bean](../images/addressing/teams_editor.png)
+![bean](/manuals/images/addressing/teams_editor.png)
 
 ## 相对地址
 
 地址 `"buddy#controller"` 在两组实例下都能运行因为它是一个 *相对* 地址. 集合 "team_1" 和 "team_2" 都有自己的上下文, 或者叫做 "命名空间". Defold 认为集合内这样的相对地址与命名是合理的:
 
-![relative id](../images/addressing/relative_same.png)
+![relative id](/manuals/images/addressing/relative_same.png)
 
 - "team_1"的命名空间里 "bean" 和 "buddy" 都是唯一id.
 - 同样在"team_2"的命名空间里 "bean" 和 "buddy" 也都是唯一id.
@@ -159,7 +159,7 @@ id可以随意设置. 当前我们对游戏对象设置了一个id "bean", sprit
 
 比如, 你需要一个 AI 管理器管理每个豆子先生. 豆子先生要向管理器报告自身的激活状态, 管理器根据它们的状态决定它们的排序. 这就需要创建一个带脚本的管理器对象然后把它放在引导启动集合的根目录下.
 
-![manager object](../images/addressing/manager_editor.png)
+![manager object](/manuals/images/addressing/manager_editor.png)
 
 Each bean is then responsible for sending status messages to the manager: "contact" if it spots an enemy or "ouch!" if it is hit and takes damage. For this to work, the bean controller scrips use absolute addressing to send messages to the component "controller" in "manager".
 
@@ -167,9 +167,9 @@ Any address that starts with a '/' will be resolved from the root of the game wo
 
 The absolute address of the manager script is `"/manager#controller"` and this absolute address will resolve to the right component no matter where it is used.
 
-![teams and manager](../images/addressing/teams_manager.png)
+![teams and manager](/manuals/images/addressing/teams_manager.png)
 
-![absolute addressing](../images/addressing/absolute.png)
+![absolute addressing](/manuals/images/addressing/absolute.png)
 
 ## Hashed identifiers
 

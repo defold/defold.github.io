@@ -14,15 +14,15 @@ brief: 本教程介绍了文本组件 label 的使用方法.
 
 要创建一个 Label 组件, 在游戏对象上 <kbd>右键点击</kbd> 选择 <kbd>Add Component ▸ Label</kbd>.
 
-![Add label](../images/label/add_label.png)
+![Add label](/manuals/images/label/add_label.png)
 
 (如果你希望从一个模板创建多个 label 可以: 在 *Assets* 浏览器里的文件夹上 <kbd>右键点击</kbd> 选择 <kbd>New... ▸ Label</kbd> 来创建Label文件, 然后再在任意游戏对象上把它作为组件添加上去)
 
-![New label](../images/label/label.png)
+![New label](/manuals/images/label/label.png)
 
 设置 *Font* 属性为需要使用的字体还要确定 *Material* 属性的设置与字体相匹配:
 
-![Font and material](../images/label/font_material.png)
+![Font and material](/manuals/images/label/font_material.png)
 
 ## Label 属性
 
@@ -81,7 +81,7 @@ brief: 本教程介绍了文本组件 label 的使用方法.
 *Right*
 : 如果锚点设置成任何 `East` 模式, 则文本右对齐.
 
-![Text alignment](../images/label/align.png)
+![Text alignment](/manuals/images/label/align.png)
 
 ## 运行时控制操作
 

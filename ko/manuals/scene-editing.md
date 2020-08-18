@@ -20,7 +20,7 @@ Defold에는 여러 종류의 에디터가 있지만 씬에디터는 가장 많�
 #### Selecting
 메인 창에서 오브젝트를 클릭하여 선택할 수 있으며, 에디터 뷰에서 오브젝트를 둘러싼 녹색 박스가 나타나 강조표시 됩니다.
 
-![Select object](../images/scene_editing/scene_editing_select.png)
+![Select object](/manuals/images/scene_editing/scene_editing_select.png)
 
 또한 다음 방법으로도 선택할 수 있습니다:
 
@@ -33,23 +33,23 @@ Defold에는 여러 종류의 에디터가 있지만 씬에디터는 가장 많�
 #### Move Tool
 오브젝트를 옮기기 위해서는 **Move Tool**을 사용합니다. **Scene > Move Tool** 메뉴를 선택하거나 **``W``**키를 누르면 활성화 됩니다.
 
-![Scene menu](../images/scene_editing/scene_editing_scene.png)
+![Scene menu](/manuals/images/scene_editing/scene_editing_scene.png)
 
 오브젝트를 선택하면 이 오브젝트를 이동시키는데 사용되는 3개의 조작 지점이 나타납니다. 중앙의 작은 녹색 사각형을 클릭한채로 드래그하면 오브젝트를 자유롭게 이동시킬 수 있습니다.
 
-![Move object](../images/scene_editing/scene_editing_move.png)
+![Move object](/manuals/images/scene_editing/scene_editing_move.png)
 
 또한 화살표를 클릭한 채 드래그하면 선택된 축에 따라 오브젝트를 이동시킬 수도 있습니다. 붉은 색 화살표는 **X**축으로만 이동시킬 수 있으며, 녹색 화살표는 **Y**축으로만 이동시킬 수 있습니다.
 
 #### Moving against the grid(그리드에 맞춰 이동하기)
 **``Shift``**를 누른채로 Move Tool을 사용하여 게임 오브젝트의 중앙을 격자에 맞추어 이동시킬 수 있습니다. 기본 격자 크기는 100입니다. 격자 크기를 변경하려면 **Defold Editor > Preferences…** 메뉴에서  grid size값을 변경할 수 있습니다.
 
-![Grid size](../images/scene_editing/scene_editing_grid.png)
+![Grid size](/manuals/images/scene_editing/scene_editing_grid.png)
 
 #### Rotate Tool
 **Rotate Tool**은 **Scene > Rotate Tool** 메뉴 혹은 **``E``**키를 눌러서 선택할 수 있습니다.
 
-![Rotate object](../images/scene_editing/scene_editing_rotate.png)
+![Rotate object](/manuals/images/scene_editing/scene_editing_rotate.png)
 
 이 도구는 사용자가 조작할 수 있게 3개의 핸들로 구성되어 있습니다. 2D 오브젝트에서는 **Z**축을 기준으로 회전하는 핸들을 사용 할 수 있으며, 오브젝트 주변에 파란색 원형으로 표시됩니다. 바로 그 핸들을 클릭/드래그 하여 오브젝트를 회전시킬 수 있습니다.
 
@@ -58,7 +58,7 @@ Defold에는 여러 종류의 에디터가 있지만 씬에디터는 가장 많�
 #### Scale Tool
 **Scale Tool**은 **Scene > Scale Tool**메뉴 혹은 **``R``**버튼으로 선택할 수 있습니다.
 
-![Scale object](../images/scene_editing/scene_editing_scale.png)
+![Scale object](/manuals/images/scene_editing/scene_editing_scale.png)
 
 붉은색이나 녹색의 핸들을 클릭/드래그하여 오브젝트의 크기를 조절할 수 있습니다. 게임 오브젝트는 **X**축이나 **Y**축으로 자유롭게 늘이거나 줄여서 확대축소가 가능합니다.
 
@@ -67,6 +67,6 @@ Defold에는 여러 종류의 에디터가 있지만 씬에디터는 가장 많�
 ## Selecting what is showing in the Scene Editor (씬 에디터에서 표시할 항목 선택하기)
 수 많은 오브젝트와 물리객체, 트리거, 그래픽에셋들이 겹쳐진 레이어가 있는 복잡한 컬렉션에서 작업하는 경우 씬 에디터에서 특정한 타입의 시각적 정보를 비활성화 하는것은 종종 편리합니다. 씬 에디터는 에디터 상에서 각기 다른 종류의 렌더링 정보를 활성화 혹은 비활성화 할 수 있습니다. **Scene > Show** 메뉴를 선택하여 에디터에 표시될 항목을 선택하십시오.
 
-![Showing information](../images/scene_editing/scene_editing_show.png)
+![Showing information](/manuals/images/scene_editing/scene_editing_show.png)
 
 이 선택사항은 에디터에 저장되어 모든 씬에디터 인스턴스에 적용됩니다. 또한 당신의 선택은 세션 사이에서도 저장되어 Defold 에디터를 닫고 다음날 열어도 이 설정은 그대로 유지됩니다.

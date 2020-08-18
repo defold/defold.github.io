@@ -13,7 +13,7 @@ title: Defold manual
 ## Creating a font
 Defold에서 사용할 폰트를 만들려면, **File > New > Font File** 메뉴를 선택해서 새 폰트파일을 생성할 수 있습니다. (혹은 **Assets pane**에서 마우스 오른쪽 버튼 눌러서 파일 생성)
 
-![Create font](../images/font/fonts_create.png)
+![Create font](/manuals/images/font/fonts_create.png)
 
 또한 Defold 프로젝트로 폰트를 임포트 해야합니다. TrueType이나 OpenType (혹은 BMFont, 아래 참고)  파일을 **Assets pane**의 원하는 위치에 드래그-앤-드롭 하면 됩니다.
 
@@ -74,30 +74,30 @@ Defold 프로젝트에 **.fnt**와 **.png** 파일을 추가해 보세요. 이 �
 * Glyph Designer, 71 Squared의 유료 MacOS 툴
 * bmGlyph, Sovapps의 유료 MacOS 툴
 
-![BMFont](../images/font/fonts_bmfont.png)
+![BMFont](/manuals/images/font/fonts_bmfont.png)
 
 ## Distance field fonts
 디스턴스 필드(distance field) 폰트를 만들기 위해서는, **output_format** 속성에 "TYPE_DISTANCE_FIELD"를 선택하면 됩니다. 그러면 폰트로부터 디스턴스 필드 맵(distance field map)을 생성합니다. 엔진이 폰트를 렌더링하게되면, 이 디스턴스 데이터를 해석하여 날카로운 폰트의 가장자리(sharp font edge)를 만들어주는 특수한 쉐이더를 필요로 합니다. 디스턴스 필드 폰트는 비트맵 폰트에 비해 많은 성능을 소모하지만 글자의 사이즈를 조절하는데 매우 유연합니다.
 
-![Distance field font](../images/font/fonts_distance_field.png)
+![Distance field font](/manuals/images/font/fonts_distance_field.png)
 
 이 폰트를 만들 경우(혹은 화면에 렌더링 될 때 폰트가 알맞은 쉐이더를 사용하지 않을 경우)에는 **material** 속성값을 "builtins/fonts/font-df.material"(혹은 디스턴스 필드 데이터를 다룰 수 있는 다른 메터리얼)로 변경해야 합니다.
 
-![Distance field font material](../images/font/fonts_distance_field_material.png)
+![Distance field font material](/manuals/images/font/fonts_distance_field_material.png)
 
 ## Artifacts and best practices
 일반적으로, 비트맵 폰트는 스케일링 없이 렌더링 될 경우엔 최선의 선택입니다. 비트맵 폰트는 디스턴스 필드 폰트보다 화면에 빠르게 렌더링 됩니다.
 
 디스턴스 필드 폰트(Distance field font)는 폰트사이즈를 키울(upscaling) 경우에 아주 좋습니다. 반면 비트맵 폰트는 단지 픽셀로 된 이미지 이기 때문에 폰트 사이즈가 증가할 경우 픽셀의 크기도 커지게 되어 결과적으로 울퉁불퉁한 모양(blocky artifacts)이 됩니다. 아래는 48픽셀 크기의 폰트를 약 8배 정도 스케일-업 한 예제입니다.
 
-![Font type comparison](../images/font/fonts_comparison.png)
+![Font type comparison](/manuals/images/font/fonts_comparison.png)
 
 스케일-다운하면, 상황은 반대가 됩니다. 픽셀 텍스쳐는 작아지면 렌더링 하드웨어에 의해서 안티알리아싱 처리됩니다. 아래는 위와 같은 48픽셀 크기의 폰트를 절반 크기로 줄인 예제입니다.
 
-![Font type comparison, scale down](../images/font/fonts_comparison_scaledown.png)
+![Font type comparison, scale down](/manuals/images/font/fonts_comparison_scaledown.png)
 
 디스턴스 필드 폰트는 특정 상황에서 또 다른 유형의 이상현상(artifacts)을 만들어 냅니다. 만약 폰트 모양에 아주 얇은 선이 있을 경우 이 폰트를 작은 사이즈(**size** 속성)로 렌더링 하면, 디스턴스 필드 텍스쳐가 문자 모양에 중요한 점을 표현하는데 데이터가 충분하지 않으므로 아마 아래와 같이 렌더링 될 것입니다.
 
-![Thin line artifacts](../images/font/fonts_thin_line_artifacts.png)
+![Thin line artifacts](/manuals/images/font/fonts_thin_line_artifacts.png)
 
 이 문제를 해결하려면, 더 큰 사이즈로 폰트를 만드시기 바랍니다.

@@ -20,7 +20,7 @@ brief: 本教程介绍了 Defold 对于瓷砖地图的支持.
 - 新的瓷砖地图会在瓷砖地图编辑器中打开.
 - 给新文件命名.
 
-  ![新瓷砖地图](../images/tilemap/tilemap.png)
+  ![新瓷砖地图](/manuals/images/tilemap/tilemap.png)
 
 - 用事先准备好的瓷砖图源设置 *Tile Source* 属性.
 
@@ -29,15 +29,15 @@ brief: 本教程介绍了 Defold 对于瓷砖地图的支持.
 1. 在 *Outline* 视图中选择或者创建一个 *Layer* 用于绘制瓷砖.
 2. 选取一个瓷砖当作笔刷 (按 <kbd>空格</kbd> 键显示瓷砖表)
 
-   ![Palette](../images/tilemap/palette.png)
+   ![Palette](/manuals/images/tilemap/palette.png)
 
 3. 用选取的笔刷铺设瓷砖. 要清除一个瓷砖, 可以选择一个空白瓷砖当笔刷覆盖掉它, 也可以使用橡皮擦工具 (<kbd>Edit ▸ Select Eraser</kbd>).
 
-   ![铺瓷砖](../images/tilemap/paint_tiles.png)
+   ![铺瓷砖](/manuals/images/tilemap/paint_tiles.png)
 
 你可以直接从层里选择一块瓷砖当作笔刷. 按住 <kbd>Shift</kbd> 键点击瓷砖即可把它用作当前笔刷. 按住 <kbd>Shift</kbd> 键并拖动还可以选择一片瓷砖作为大笔刷.
 
-![选取瓷砖](../images/tilemap/pick_tiles.png)
+![选取瓷砖](/manuals/images/tilemap/pick_tiles.png)
 
 ## 把瓷砖地图加入到游戏中
 
@@ -47,7 +47,7 @@ brief: 本教程介绍了 Defold 对于瓷砖地图的支持.
 2. 右键点击游戏对象根节点选择 <kbd>Add Component File</kbd>.
 3. 选取瓷砖地图文件.
 
-![使用瓷砖地图](../images/tilemap/use_tilemap.png)
+![使用瓷砖地图](/manuals/images/tilemap/use_tilemap.png)
 
 ## 用脚本更改瓷砖
 

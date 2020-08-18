@@ -28,7 +28,7 @@ Defold는 에셋이 사용되는 방식을 추적하여 효과적으로 리펙�
 
 예를 들어, Tilemap 컴포넌트를 게임 오브젝트에 추가하고나서 다시 이 컴포넌트 파일을 삭제하면, 게임 실행시 Defold 컴파일러는 에러를 발생할 것입니다. 이때 에디터는 프로젝트뷰, 게임오브젝트 또는 컬렉션 계층에서 모든 관련된 에러를 아이콘으로 표시하므로 해당 문제의 위치를 빠르게 찾는데 도움이 됩니다.
 
-![Error propagation](../images/workflow/workflow_error_propagation.png)
+![Error propagation](/manuals/images/workflow/workflow_error_propagation.png)
 
 에러중에 일부는 당신이 에셋을 열어 수정했을 때 Defold가 즉시 에러항목을 표시되기도 하지만, 프로젝트뷰의 에러마크는 컴파일러가 실행될때에만 표시됩니다.
 
@@ -39,7 +39,7 @@ Defold는 강력한 협업을 기반으로 개발되었습니다. 여러 팀의 
 
 처음 프로젝트 작업을 시작하면 (**File > Open Project** 메뉴 선택), Defold는 이 프로젝트의 새로운 local branch를 생성할 것인지를 묻습니다.
 
-![New branch](../images/workflow/workflow_new_branch.png)
+![New branch](/manuals/images/workflow/workflow_new_branch.png)
 
 **New branch**를 클릭하여 branch의 이름을 정합니다. 그리고 나면 Defold는 프로젝트 서버에 존재하는것과 똑같은 프로젝트 구조의 완전한 복제품을 생성합니다.  생성된 branch는 당신의 컴퓨터에만 존재합니다. 당신은 원하는 만큼 많이 만들거나 줄일 수도 있으며, 새 것을 만들거나 오래된 것을 삭제 할 수도 있습니다.
 
@@ -50,7 +50,7 @@ Defold는 강력한 협업을 기반으로 개발되었습니다. 여러 팀의 
 
 다른 프로젝트 팀과 공유하는 당신의 현재 브랜치의 몇몇 작업을 막 끝냈다면, **File > Synchronize** 메뉴를 선택하여 변경사항을 점검하고 유용한 커밋 메세지를 입력할 수도 있습니다.
 
-![Commit changes](../images/workflow/workflow_commit.png)
+![Commit changes](/manuals/images/workflow/workflow_commit.png)
 
 프로젝트에서 변경,추가,삭제된 모든 파일들은 이 창의 상단에 나열됩니다. 각 파일의 앞에는 주석이 달립니다:
 
@@ -63,26 +63,26 @@ Defold는 강력한 협업을 기반으로 개발되었습니다. 여러 팀의 
 
 파일에 반영된 변경사항을 확인하려면, 간단히 commit-list의 파일을 더블클릭하여 비교 창을 띄울 수 있습니다:
 
-![Compare changes](../images/workflow/workflow_compare_script.png)
+![Compare changes](/manuals/images/workflow/workflow_compare_script.png)
 
 이 창은 파일의 두가지 버전을 보여줍니다. (수정된 파일의 경우와 추가/삭제된 파일의 경우가 다름) 왼쪽은 마지막으로 동기화 된 후에 서버에서 보여지는 파일이고, 오른쪽은 당신의 로컬 버전을 보여줍니다. 차이점을 명확하게 강조표시하여 신속하게 리뷰할 수 있습니다.
 
 내장된 파일 비교 툴은 텍스트 파일에서만 동작합니다. 그러나 Defold는 모든 작업 파일(게임 오브젝트, 컬렉션, 아틀라스 등등)을 쉽게 이해할 수 있는 JSON 파일로 저장하므로 각 파일에 적용된 변경사항의 의미를 파악할 수 있습니다:
 
-![Compare Gameobject](../images/workflow/workflow_compare_gameobject.png)
+![Compare Gameobject](/manuals/images/workflow/workflow_compare_gameobject.png)
 
 #### Resolving conflicts
 만약 당신이 팀으로 일하고 있다면, 당신이 당신의 브랜치에서 작업하는 동안 다른 사람의 브랜치가 서버 레포지토리에 동기화 되었을 수도 있습니다. 당신이 서버로 변경사항을 푸쉬하기 직전에 몇몇 다른 팀 멤버 (혹은 다른 이유로 또 다른 브랜치를 사용하는 당신)가 변경사항을 푸쉬할 수도 있습니다.
 
 이것은 문제가 되지 않으며, 대부분의 충돌은 자동적으로 해결될 수 있습니다. 하지만 변경 사항이 서버의 변경사항과 완전히 똑같은 위치의 파일이라면, Defold는 경고 메세지를 표시하고 충돌을 해결하기 위해 도움을 요청합니다.
 
-![Resolve Conflict](../images/workflow/workflow_resolve_conflict.png)
+![Resolve Conflict](/manuals/images/workflow/workflow_resolve_conflict.png)
 
 당신의 버전을 유지할 것인지 서버의 버전을 유지할 것인지 선택할 수 있습니다. 충돌 내용을 보려면, 파일을 더블클릭하여 충돌을 강조표시한 비교창을 띄워 보시기 바랍니다.
 
 > 이 에디터는 충돌하는 두 파일에서 변경사항을 선택하도록 하지는 않습니다. 이러한 작업이 필요한 경우는 별도의 병합툴(merge tool)을 사용하고 커맨드라인에서 Git 명령어를 사용하시기 바랍니다.
 
-![Compare conflicting files](../images/workflow/workflow_compare.png)
+![Compare conflicting files](/manuals/images/workflow/workflow_compare.png)
 
 ## External editors and tools(외부 편집기 그리고 도구)
 Defold는 이미지를 드로잉하거나, 사운드 파일을 만들거나, 본 애니메이션을 만드는 등의 에디팅 도구를 제공하지 않습니다. 대부분 에셋들은 Defold가 아닌 특별한 도구를 활용하여 제작할 필요가 있습니다. Defold는 선호하는 외부도구에 관해서는 관심이 없습니다. 단지 어떤 이미지 프로그램이던 PNG 파일을 생성하고 어떤 사운드 프로그램이던 WAV파일을 저장할 수 있으며 어떤 캐릭터 애니메이션 프로그램이던 Spine JSON 파일을 추출(자세한 것은 [Spine 문서](/ko/manuals/spine) 참고) 할 수만 있으면 됩니다.
@@ -102,17 +102,17 @@ Defold는 편집하려는 항목에 적합한 에디터를 자동적으로 선�
 
 텍스트 에디터에서 파일을 열기 위해, 프로젝트 뷰의 파일에 오른쪽-클릭하고 **Open With > Text Editor** 메뉴를 선택하세요:
 
-![Open with Text Editor](../images/workflow/workflow_open_with_texteditor.png)
+![Open with Text Editor](/manuals/images/workflow/workflow_open_with_texteditor.png)
 
 Defold는 특정 파일에 대해 에디터를 선택한 것을 기억합니다. 특정 파일을 텍스트 에디터(Text Editor)로 열었다면, 그 파일을 더블클릭하는 것으로 자동적으로 텍스트 에디터에서 열리게 할 수 있습니다. 파일에 대해 선택된 에디터 정보를 초기화 하려면, 그냥 파일에 오른쪽-클릭후에 **Open With > [Filetype Editor]** 를 선택하십시오. [Filetype Editor]는 파일의 종류에 맞게 사용되는 에디터의 종류입니다. (예: 게임오브젝트를 위한 씬에디터(Scene Editor), 타일소스를 위한 타일소스에디터(Tile Source Editor) 등등)
 
 텍스트 에디터를 통해 파일을 작업하는 것은 추가적인 주의가 필요합니다. 만약 파일내용이 꼬인다면 지정된 에디터에서 파일을 열 수 없게 됩니다. 예를 들어, 게임 오브젝트 파일을 수정하는데 오브젝트 이름의 끝에 쌍따옴표하나를 빼먹었다고 칩시다.
 
-![Missing Quote](../images/workflow/workflow_texteditor_noquote.png)
+![Missing Quote](/manuals/images/workflow/workflow_texteditor_noquote.png)
 
 텍스트 에디터에서 이 파일을 저장하고 씬에디터로 다시 열려고 하면, Defold는 에러를 발생하고 당신은 이 에러를 직접 고쳐야(재편집하거나 변경사항을 되돌리거나) 합니다:
 
-![Missing Quote](../images/workflow/workflow_quote_error.png)
+![Missing Quote](/manuals/images/workflow/workflow_quote_error.png)
 
 Defold는 문제를 해결하기에 유용한 에러메세지를 보여주고 때로는 에러를 쉽게 추적할 수 있습니다. 추가적인 도움이 필요하다면 변경된 파일창(Changed Files pane)의 파일을 더블클릭하여 마지막 동기화 이후의 모든 변경사항을 볼 수 있습니다.
 
@@ -155,18 +155,18 @@ Carriage Return 문자 다음으로 Line Feed 문자 (CR+LF, "\r\n", 0x0D0A)
 
 한편, Mac OS X를 사용중인 다른 팀원이 동일한 파일을 열어 편집하고 있습니다. 일반적으로두 팀원간의 변경작업이 완료되면 스크립트 파일의 동일하지 않은 부분만 Git이 자동적으로 충돌을 해결하고 병합하는게 보통입니다. 하지만 두번째 팀원이 동기화 작업후 Defold가 충돌을 감지하고  파일을 더블클릭하여 비교창을 띄워보면, 모든 줄마다 충돌에 대한 하이라이트가 표시되게 됩니다:
 
-![Line endings conflict](../images/workflow/workflow_line_endings_conflict.png)
+![Line endings conflict](/manuals/images/workflow/workflow_line_endings_conflict.png)
 
 두 파일의 개행문자가 서로 다르게 인코딩되었기 때문에 발생한 문제입니다. 한쪽은 **LF**를 개행문자로 사용했고 다른 한쪽은 **CR+LF**를 개행문자로 사용했기 때문에 각 줄마다 충돌이 발생했고 이 문제를 해결해야만 합니다. 팀원들이 외부 툴들을 자주 사용한다면 개행문자 충돌은 매 번 발생할 수 있습니다.
 
 #### Line endings in Defold(디폴드의 개행문자)
 Defold는 개행문자를 볼 수 있거나 변경할 수 있는 도구를 내장하고 있습니다. **File > Preferences…** 메뉴를 선택하여 환경설정(preferences)에서 공백문자(whitespace)가 보이게 켤 수 있습니다:
 
-![Configure show whitespace](../images/workflow/workflow_config_show_whitespace.png)
+![Configure show whitespace](/manuals/images/workflow/workflow_config_show_whitespace.png)
 
 이 셋팅은 에디터에서 **LF, CR, Space, Tab**과 같은 모든 공백문자를 나타나게 합니다:
 
-![Visible whitespace](../images/workflow/workflow_visible_whitespace.png)
+![Visible whitespace](/manuals/images/workflow/workflow_visible_whitespace.png)
 
 또한 **File > Convert Line Delimiters To > …** 메뉴 옵션을 통해서 현재 열린 파일을 셋팅하기 위해 원하는 구분기호(delimiter)의 종류를 선택할 수 있습니다.
 

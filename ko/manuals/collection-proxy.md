@@ -34,15 +34,15 @@ Defold는 컬렉션에 모든 게임 오브젝트를 구성합니다. 이 매뉴
 
 아래 예제에서는 게임 월드를 컬렉션 프록시를 통해 동적으로 로드되는 두 개의 컬렉션으로 분할했습니다. 두 컬렉션의 로드 및 언로드는 "loader"라는 게임 오브젝트에 의해 제어되며 이 오브젝트는 메인 컬렉션인 "worlds"에 들어 있습니다. 게임이 시작될때  "worlds.collection" 파일을 자동으로 로드하도록 구성([Project settings](/ko/manuals/project-settings) 참고)합니다. "world" 컬렉션은 "loader" 오브젝트 뿐만아니라 우리가 캐릭터를 움직일 수 있게 해주는 GUI 요소도 포함하고 있습니다.
 
-![Worlds 1](../images/collection_proxies/collection_proxy_worlds_loader.png)
+![Worlds 1](/manuals/images/collection_proxies/collection_proxy_worlds_loader.png)
 
 첫번째 컬렉션 "world1"은 왼편에 보라색 바닥의 타일이 있습니다. 오른편의 "exit" 표지판과 녹색 바닥 타일은 "world2" 컬렉션입니다.
 
-![Worlds 1](../images/collection_proxies/collection_proxy_worlds_1.png)
+![Worlds 1](/manuals/images/collection_proxies/collection_proxy_worlds_1.png)
 
 우리의 플레이어 캐릭터는 레벨의 모든 바닥 타일에 대해 물리 충돌이 셋팅되어 있으며 플레이어가 바닥 위의 캐릭터를 데굴데굴 굴릴 수 있게 해 줍니다. 하지만 플레이어가 "world1" 컬렉션의 끝에 닿으면 어떤 일이 일어나는지 봅시다.
 
-![Worlds 2](../images/collection_proxies/collection_proxy_worlds_2.png)
+![Worlds 2](/manuals/images/collection_proxies/collection_proxy_worlds_2.png)
 
 "world2"의 타일은 "world1"과 완전히 동일하게 충돌 셋팅이 되어 있지만, "world1" 에 소속된 플레이어 캐릭터 게임 오브젝트는 충돌이 발생하지 않고 캐릭터가 그냥 아래로 뚝 떨어져 버립니다.
 
@@ -53,12 +53,12 @@ Defold는 컬렉션에 모든 게임 오브젝트를 구성합니다. 이 매뉴
 ## Editing
 컬렉션 프록시를 설정하기 위해서는, 게임 오브젝트에 컬렉션 프록시 컴포넌트를 추가하고 프록시의 이름을 정하고(id 지정) 어떤 컬렉션 파일이 이를 대신하여 작동할지 지정하면 됩니다.
 
-![Editing](../images/collection_proxies/collection_proxy_editing.png)
+![Editing](/manuals/images/collection_proxies/collection_proxy_editing.png)
 
 ## Naming collections
 컬렉션 프록시와 커뮤니케이션을 시작하기 전에, 각 컬렉션들의 이름을 확인 해야 합니다. 에디터에서 생성한 각 컬렉션은 "default"라는 이름으로 자동 할당 됩니다. 프록시를 통해 컬렉션을 동적으로 로드하지 않는 한, 이 이름을 유지할 수 있습니다.
 
-![Naming](../images/collection_proxies/collection_proxy_name.png)
+![Naming](/manuals/images/collection_proxies/collection_proxy_name.png)
 
 하지만 컬렉션 프록시를 통해 두 개 이상의 최상위 레벨 컬렉션을 로드하는 경우, 각 컬렉션은 URL의 소켓 부분을 통해 주소가 지정되어야 하고, 이 소켓 이름은 반드시 유니크해야만 합니다.
 
@@ -116,7 +116,7 @@ msg.post(sender, "enable")
 
 다시 플랫포머 예제로 돌아와서, "world1" 컬렉션에 트리거를 하나 넣고 "world2"를 로드할 위치에 배치 하도록 합니다.
 
-![Trigger](../images/collection_proxies/collection_proxy_trigger.png)
+![Trigger](/manuals/images/collection_proxies/collection_proxy_trigger.png)
 
 
 우리는 "worldswitch"라는 게임 오브젝트에 전환 로직(switching logic)이 포함된 트리거를 만들고, 오브젝트를 재사용 할 수 있게 해 주는 두 프로퍼티를 묶습니다. 이 프로퍼티는 해쉬 형식이므로 프록시들이 커뮤니케이션 할 수 있도록 URL을 구성해야 합니다. 우리는 "loader" 게임 오브젝트가 추가된 "worlds" 컬렉션에 이 메세지들를 보낼 계획입니다.
@@ -140,7 +140,7 @@ end
 
 여기서는 "world2" 컬렉션을 셋팅합니다.
 
-![Trigger world 2](../images/collection_proxies/collection_proxy_trigger_2.png)
+![Trigger world 2](/manuals/images/collection_proxies/collection_proxy_trigger_2.png)
 
 "exit" 표지판을 두 컬렉션에서 완전히 동일한 좌표에 배치해서 하나의 타일로 겹쳐 보이게 합니다.
 또한 "world1" 뿐만 아니라 "world2" 에도 "player" 오브젝트가 필요 합니다. 각 컬렉션은 각자 자체의 물리 세계(physics world)를 가지고 있기 때문에 플레이어 또한 별도로 있어야 하며 월드 사이를 넘어 갈 때  입력 제어(input control)와 포지션을 한 쪽 플레이어에서 다른 쪽 플레이어로 넘길 것입니다.
@@ -199,11 +199,11 @@ function on_message(self, message_id, message, sender)
 
 이제 게임을 실행하면 "world1"에서 "world2"로 이동할 수 있지만 "world1"의 플레이어 오브젝트가 아직도 존재하고 있고 "world2"의 월드로 넘어가면 뚝 떨어지게 됩니다.
 
-![Loading 1](../images/collection_proxies/collection_proxy_loading_1.png)
+![Loading 1](/manuals/images/collection_proxies/collection_proxy_loading_1.png)
 
 그러나 이제 우리는 "world2"의 플레이어를 제어할 수 있고 새 레벨로 캐릭터를 굴릴 수 있습니다.
 
-![Loading 2](../images/collection_proxies/collection_proxy_loading_2.png)
+![Loading 2](/manuals/images/collection_proxies/collection_proxy_loading_2.png)
 
 
 ## Unloading
@@ -249,14 +249,14 @@ msg.post(self.selfurl, "unload")
 
 이제 왼쪽의 컬렉션은 플레이어를 뒤로 하고 언로드 되게 됩니다.
 
-![Unloading](../images/collection_proxies/collection_proxy_unloading.png)
+![Unloading](/manuals/images/collection_proxies/collection_proxy_unloading.png)
 
 실제 게임에서라면 화면에 보이는 상태에서는 컬렉션을 언로드하지 않는게 좋습니다. 만약 플레이어의 전환(switching)을 더욱 부드럽게 만들고 싶다면, 플레이어 컨트롤에 따른 가속도(momentum)와 플레이어의 애니메이션 상태(animation state)를 상속 받아 처리하거나 전환 지점을 특정 효과 같은거로 가려 버리는 것도 좋은 방법입니다. 이 심플한 예제는 단지 이전 플레이어의 포지션만 상속할 뿐이라 각도(angular)와 선형 속도(linear velocity)가 0으로 설정됩니다.
 
 ## Input
 만약 로드된 컬렉션에서 인풋 액션(input action)이 필요한 오브젝트가 있다면, 컬렉션 프록시를 포함하고 있는 게임 오브젝트가 입력을 획득(acquire)하는지 확인할 필요가 있습니다. 게임 오브젝트가 입력 메세지를 수신하면, 이들은 오브젝트의 컴포넌트, 즉 컬렉션 프록시들에게 전파(propagated)됩니다. 인풋 액션은 로드된 컬렉션에게 프록시를 통해서 전달되게 됩니다.
 
-![Input](../images/collection_proxies/collection_proxy_input.png)
+![Input](/manuals/images/collection_proxies/collection_proxy_input.png)
 
 "world1"이나 "world2"에 소속된 오브젝트에서 인풋액션을 받기 원한다면, 간단하게 "loader" 게임오브젝트의 스크립트에서 인풋 포커스(input focus)를 획득하면 됩니다.
 

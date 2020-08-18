@@ -27,7 +27,7 @@ local id = go.get_id(".")
 
 Rozpocznijmy bardzo prostym przykładem. Załóżmy, że masz obiekt (game object) z pojedynczym komponentem typu sprite. Masz również pod tym obiektem komponent typu skrypt, który kontroluje ten obiekt. Taka hierarchia w edytorze powinna wyglądać tak:
 
-![bean in editor](../images/addressing/bean_editor.png)
+![bean in editor](/manuals/images/addressing/bean_editor.png)
 
 Załóżmy, że chcesz wyłączyć komponent typu sprite zaraz, gdy gra się uruchomi, aby pokazać go później. Można to z łatwością zrobić przez umieszczenie poniższego kodu w pliku *"controller.script"*:
 
@@ -40,7 +40,7 @@ end
 
 Będzie to działać tak jak oczekiwaliśmy. Gdy gra się uruchomi, skrypt *adresując* komponent typu sprite poprzez jego identyfikator "body" i użyje tego adresu aby wysłać do niego specjalną *wiadomość* o treści "disable" (ang. wyłącz). Efektem tej specjalnej wiadomości silnika jest to, że w komponencie sprite zostanie ukryty/wyłączony. Schematowo, ustawienie wygląda następująco:
 
-![bean](../images/addressing/bean.png)
+![bean](/manuals/images/addressing/bean.png)
 
 Identyfkatory w ustawieniu są arbitralne. Tutaj, my wybraliśmy aby nadać obiektowi identyfikator "bean" (ang. fasola), a jego komponent typu sprite ma identyfikator "body" (ang. ciało), a skrypt kontrolujący postać został nazwany "controller".
 
@@ -55,21 +55,21 @@ Oczywiście możesz pozostać przy tak wygenerowanych nazwach, ale zachęcamy do
 
 Teraz dodajmy kolejny komponent typu sprite dając postaci tarczę:
 
-![bean](../images/addressing/bean_shield_editor.png)
+![bean](/manuals/images/addressing/bean_shield_editor.png)
 
 Nowy komponent musi mieć unikalną nazwę w obrębie danego obiektu. Jeśli spróbujesz ponownie nazwać komponent "body", będzie to niejednoznaczne i skrypt nie będzie "wiedział", do którego "body" ma wysłać wiadomość "disable". Dlatego wybieramy nową, znaczącą i unikalną nazwę "shield" (ang. tarcza). Teraz można dowolnie włączać i wyłączać sprite'y "body" i "shield".
 
-![bean](../images/addressing/bean_shield.png)
+![bean](/manuals/images/addressing/bean_shield.png)
 
 <div class='sidenote' markdown='1'>
 Jeśli spróbujesz nadać nieunikalną nazwę, edytor i tak zasygnalizuje błąd, więc w praktyce to nigdy nie jest problem nie do zauważenia:
 
-![bean](../images/addressing/name_collision.png)
+![bean](/manuals/images/addressing/name_collision.png)
 </div>
 
 Zobaczmy teraz co się stanie, gdy dodamy więcej obiektów. Załóżmy, że chcesz stworzyć małą drużynę "fasolek". Decydujesz się nazwać jeden z obiektów "bean", a drugi "buddy" (ang. kolega). Ponadto, kiedy "bean" będzie przez chwilę bezczynny, powinien powiedzieć swojemu koledze "buddy", aby zaczął tańczyć. Można to zrobić przez wysłanie niestandradowej wiadomości o treści "dance" (ang. tańcz) ze skryptu "controller" obiektu "bean" do skryptu "controller" obiektu "buddy":
 
-![bean](../images/addressing/bean_buddy.png)
+![bean](/manuals/images/addressing/bean_buddy.png)
 
 <div class='sidenote' markdown='1'>
 Są tutaj dwa komponenty typu skrypt nazwane "controller", ale każdy w osobnym obiekcie, więc jest to całkowicie dozwolone, ponieważ ich całkowite nazwy (adresy) uwzględniające identyfikatory obiektów są od siebie różne. Nowy obiekt tworzy więc tzw. nowy kontekst nazewniczy.
@@ -91,21 +91,21 @@ Kolekce (ang. collections) umożliwiają tworzenie grup i hierarchi obiektów (g
 
 Załóżmy, że chcesz utworzyć grupę "fasolek" jak powyżej, ale do ogólnego użytku. Dobrym sposobem na to jest stworzenie szablonu w nowym pliku *collection file* (nazwij go "team.collection"). Umieść obiekty w tym pliku (w taki sam sposób jak tworzyłeś grupę powyżej w głównej kolekcji (main bootstrap collection)) i zapisz go. Następnie utwórz instancję tej kolekcji (tego pliku) w głównej kolekcji gry i nadaj mu identyfikator "team_1":
 
-![bean](../images/addressing/team_editor.png)
+![bean](/manuals/images/addressing/team_editor.png)
 
 Z taką strukturą obiekt "bean" może wciąż odnosić się do komponentu "controller" w skrypcie obiektu "buddy" poprzez adres `"buddy#controller"`.
 
-![bean](../images/addressing/collection_team.png)
+![bean](/manuals/images/addressing/collection_team.png)
 
 I jeśli dodasz kolejną instancję kolekcji "team.collection" (nazwij ją "team_2"), kod uruchomiony wewnątrz kolekcji "team_2" również będzie działał. Obiekt "bean" z instancji kolekcji "team_2" może wciąż wysyłać wiadomości do skryptu "controller" w obiekcie "buddy" poprzez adres `"buddy#controller"`. Dzieje się tak z tego samego powodu, z którego mogliśmy to doprowadzić do działania w przypadku dwóch obiektów:
 
-![bean](../images/addressing/teams_editor.png)
+![bean](/manuals/images/addressing/teams_editor.png)
 
 ## Adresowanie relatywne
 
 Adres `"buddy#controller"` działa dla obiektów z obu kolekcji, ponieważ jest *relatywny* czy też względny. Każda z instancji kolekcji "team_1" i "team_2" tworzy nowy kotekst nazweniczy (czy też "namespace"). Defold omija więc duplikowanie nazw przez używanie zarówno identyfikatorów komponentów i obiektów jak i kolekcji w celu tworzenia adresu:
 
-![relative id](../images/addressing/relative_same.png)
+![relative id](/manuals/images/addressing/relative_same.png)
 
 - W obrębie kontekstu nazewniczego kolekcji "team_1", obiekty "bean" i "buddy" mają unikalne adresy.
 - Analogicznie, W obrębie kontekstu nazewniczego kolekcji "team_2", obiekty "bean" i "buddy" mają również unikalne adresy.
@@ -144,7 +144,7 @@ Jest oczywiście możliwe używanie bezwzględnych (absolutnych) adresów kompon
 
 Na przykład, załóżmy, że chcesz stworzyć jeden manager AI, który będzie śledził stan wszytkich obiektów "fasolek". Chcesz, żeby "fasolki" raportowały swój status do managera, a manager podejmował taktyczne decyzje i wydawał rozkazy każdej "fasolce" bazując na jej stanie. W tym przypadku jest całkowicie sensowne użycie absolutnego adresowania do wysyłania wiadomości do managera, którego jedną instancję utworzysz w głównej kolekcji bootstrapowej obok wielu instancji "fasolek".
 
-![manager object](../images/addressing/manager_editor.png)
+![manager object](/manuals/images/addressing/manager_editor.png)
 
 Każda "fasolka" jest odpowiedzialna za wysyłanie wiadomości ze statusem do managera AI: "contact", jeśli zauważy wroga lub "ouch!", gdy otrzyma obrażenia. Aby to działało, skrypt obiektu "fasolki" może użyć absolutnego adresu skryptu "controller" managera AI nazwanego pragmatycznie "manager".
 
@@ -152,9 +152,9 @@ Każdy adres, który rozpoczyna się znakiem '/' będzie właśnie rozkodowywany
 
 Adres absolutny skryptu managera to `"/manager#controller"` i będzie on zawsze opisywał ten skrypt, niezależnie od tego, skąd wiadomość zostanie wysłana.
 
-![teams and manager](../images/addressing/teams_manager.png)
+![teams and manager](/manuals/images/addressing/teams_manager.png)
 
-![absolute addressing](../images/addressing/absolute.png)
+![absolute addressing](/manuals/images/addressing/absolute.png)
 
 ## Identyfikatory haszowane (skrócone)
 

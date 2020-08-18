@@ -19,43 +19,43 @@ Facebook 연동 개발을 하려면 Facebook developer에 가입해야 합니다
 * Facebook 계정으로 로그인 합니다.
 * 지침에 따라 개발자 계정을 등록하고 확인합니다.
 
-![Register as a developer](../images/facebook/register_dev.png)
+![Register as a developer](/manuals/images/facebook/register_dev.png)
 
-![developer](../images/facebook/register_verify.png)
+![developer](/manuals/images/facebook/register_verify.png)
 
 ## Creating a Facebook app
 다음 단계는 Facebook application을 생성하는 것입니다. 구석에 My Apps 메뉴를 열어서 생성한 앱 목록을 볼 수 있습니다. 여기서 Add a New App 을 선택합니다.
 
-![Add new app](../images/facebook/add_new_app_menu.png)
+![Add new app](/manuals/images/facebook/add_new_app_menu.png)
 
 타겟 플랫폼 선택화면이 나타나면 **basic setup** 를 클릭해서 마법사(wizards)를 스킵합니다.
 
 > 마법사를 통해 제공되는 대부분의 정보는 Defold의 개발과는 무관합니다. 특히 일반적으로  "Info.plist" 또는 "AndroidManifest.xml" 을 직접 편집할 필요가 없습니다.
 
-![Add new app platform](../images/facebook/add_new_app_platform.png)
+![Add new app platform](/manuals/images/facebook/add_new_app_platform.png)
 
 앱 대쉬보드에서는 플랫폼 설정을 쉽게 추가, 삭제, 변경할 수 있습니다. 이제 앱의 이름을 지정하고 **Display Name**, **Namespace**, **Category** 를 선택할 수 있습니다. 다시 말하지만, 이 모든 값들은 앱 대쉬보드에서 수정해야 합니다. 이 과정을 마치면 Facebook은 고유한 앱 식별자로 앱을 생성합니다. **App ID** 는 특정 앱을 식별한 이후로는 변경하는 것이 불가능합니다.
 
-![New app id](../images/facebook/new_app_id.png)
+![New app id](/manuals/images/facebook/new_app_id.png)
 
-![App dashboard settings](../images/facebook/add_platform.png)
+![App dashboard settings](/manuals/images/facebook/add_platform.png)
 
 **Settings** 탭을 클릭해서 숫자로 된 **App ID**를 확인합니다. 이 식별자는 Defold 게임의 [project settings](/ko/manuals/project-settings)에 필요한 값입니다. 불행히도 이 설정은 에디터에서는 숨겨져 있지만(곧 변경될 예정임), "game.project"에 마우스 오른쪽 클릭해서 **Open With ▸ Text Editor** 메뉴를 선택해서 식별자를 쉽게 추가할 수 있습니다.
 
-![Open project settings with](../images/facebook/project_open_with.png)
+![Open project settings with](/manuals/images/facebook/project_open_with.png)
 
 [facebook] 섹션에 **App ID**에 해당하는 appid=456788687846098 를 추가합니다. 숫자가 맞는지 확인하고 파일을 저장합니다.
 
-![Game project](../images/facebook/game_project.png)
+![Game project](/manuals/images/facebook/game_project.png)
 
 이제, Facebook 앱 페이지의 **Settings** 탭으로 돌아와서 **\+ Add Platform** 를 클릭해서 앱에 새 플랫폼을 추가합니다. 각 플랫폼 별로 채워야하는 설정 항목들이 있습니다.
 
-![Select platform](../images/facebook/select_platform.png)
+![Select platform](/manuals/images/facebook/select_platform.png)
 
 ## iOS
 iOS의 경우 "game.project"에 설정한 **bundle_identifier** 를 Bundle ID에 지정해야 합니다.
 
-![iOS settings](../images/facebook/settings_ios.png)
+![iOS settings](/manuals/images/facebook/settings_ios.png)
 
 ## Android
 Android의 경우 **Google Play Package Name**에 "game.project"에서 설정한 **package** 식별자를 지정해야 합니다.  또한 인증서의 해쉬값을 생성해서 **Key Hashes** 필드에 입력해야 합니다. openssl 을 사용하여  "certificate.pem"에서 해쉬를 생성할 수 있습니다.
@@ -66,17 +66,17 @@ $ cat certificate.pem | openssl x509 -outform der | openssl sha1 -binary | opens
 
 (서명 파일을 생성하는 자세한 방법은 Android 매뉴얼의 [Creating certificates and keys](/ko/manuals/android#Creating-certificates-and-keys)에서 참고 바랍니다.)
 
-![Android settings](../images/facebook/settings_android.png)
+![Android settings](/manuals/images/facebook/settings_android.png)
 
 ## Facebook Canvas
 HTML5 게임의 경우에는 작업과정이 약간 다릅니다. Facebook은 어딘가로부터 게임 컨텐츠를 액세스 할 수 있게 해야합니다. 여기 두 가지 옵션이 있습니다.
 
-![Facebook Canvas settings](../images/facebook/settings_canvas.png)
+![Facebook Canvas settings](/manuals/images/facebook/settings_canvas.png)
 
 1. Facebook의 **Simple Application Hosting** 를 사용합니다. **Yes**를 클릭해서 페이스북이 관리하는 호스팅을 선택합니다. **uploaded assets** 를 선택해서 hosted asset manager를 엽니다.
-![Simple hosting](../images/facebook/simple_hosting.png)
+![Simple hosting](/manuals/images/facebook/simple_hosting.png)
 "HTML5 Bundle"을 선택합니다:
-![HTML5 bundle](../images/facebook/html5_bundle.png)
+![HTML5 bundle](/manuals/images/facebook/html5_bundle.png)
 HTML5 bundle을 .7z 또는 .zip 으로 압축해서 Facebook에 업로드 합니다. **Push to production** 를 클릭해서 게임 서비스를 시작합니다.
 
 2. Facebook 호스팅의 대안으로는 HTTPS 를 통해 게임을 서비스하는 특정 서버로 HTML5 bundle 을 업로드 하는 방법이 있습니다. **Secure Canvas URL**를 게임의 URL로 설정합니다.
