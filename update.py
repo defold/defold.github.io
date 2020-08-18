@@ -948,7 +948,7 @@ def commit_changes(githubtoken):
 
 
 ALL_COMMANDS = [ "docs", "refdoc", "awesome", "examples", "codepad", "commit", "searchindex" ]
-ALL_COMMANDS.append(EXTENSIONS)
+ALL_COMMANDS.extend(EXTENSIONS)
 
 parser = ArgumentParser()
 parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ', all, help)')
