@@ -23,9 +23,9 @@ Defold에서 에셋을 사용하려면 프로젝트 계층구조(project hierarc
 
 > 현재, Defold는 오직 PNG 이미지 포멧 만을 지원합니다.
 
-![Importing image files](../images/2dgraphics/2dgraphics_import1.png)
+![Importing image files](/manuals/images/2dgraphics/2dgraphics_import1.png)
 
-![Importing image files](../images/2dgraphics/2dgraphics_import2.png)
+![Importing image files](/manuals/images/2dgraphics/2dgraphics_import2.png)
 
 ## Creating an Atlas
 아틀라스를 사용하기 전에, 먼저 아틀라스에 이미지를 채우는 것이 필요합니다. 아틀라스에 이미지나 애니메이션을 추가하면, 스프라이트나 파티클FX 컴포넌트와 같이 오브젝트 컴포넌트에 그래픽 소스로 사용 할 수 있습니다. (아래의 Sprite 와 ParticleFX 가이드 참고)
@@ -36,9 +36,9 @@ Defold에서 에셋을 사용하려면 프로젝트 계층구조(project hierarc
 
 이렇게 하면 아틀라스에 추가하길 원하는 이미지들을 검색하고 선택할 수 있는 대화상자가 열리게 됩니다. 이미지 파일을 필터링하거나 한 번에 여러 파일들을 선택할 수 있습니다.
 
-![Creating an atlas, adding images](../images/2dgraphics/2dgraphics_atlas_add.png)
+![Creating an atlas, adding images](/manuals/images/2dgraphics/2dgraphics_atlas_add.png)
 
-![Creating an atlas](../images/2dgraphics/2dgraphics_atlas.png)
+![Creating an atlas](/manuals/images/2dgraphics/2dgraphics_atlas.png)
 
 #### Defining flip-book animations
 아틀라스에서 하위 이미지들을 선탁해여 플립-북 애니메이션을 정의 할 수 있습니다:
@@ -59,7 +59,7 @@ Defold에서 에셋을 사용하려면 프로젝트 계층구조(project hierarc
 3. 속성창의 **Image** 속성에서 검색[...] 버튼을 눌러 이미지를 선택합니다. 이제 이미지가 에디터에 표시됩니다.
 4. 타일의 높이(**Tile Height**)나, 넓이(**Tile Width**), 마진(**Tile Margin**), 간격(**Tile Spacing**)을 원본 이미지에 알맞게 조절합니다. 각 셀이 투명한 그리드에 정확하게 정렬되면 모든 것이 올바르게 설정된 것입니다.
 
-![Creating a Tile Source](../images/2dgraphics/2dgraphics_tilesource.png)
+![Creating a Tile Source](/manuals/images/2dgraphics/2dgraphics_tilesource.png)
 
 > 선형 필터링(linear filtering - 아래 참조)과 함께 타일들이 다닥 다닥 붙어있는(외곽선이 없는) 타일 소스를 사용하면 edge bleeding으로 불리는 visual artifact가 발생할 위험이 있습니다. 만약 이웃한 타일의 가장자리가 컬러가 있는 픽셀로 되어 있다면, 이 가장자리 부분의 색상이 흘러 넘치는 것 처럼 이상하게 보일 수도 있습니다. 이 문제를 해결하기 위한 가장 쉬운 방법은 **Extrude Border** 속성(아틀라스나 타일 소스에서 찾을 수 있음)을 설정하는 것입니다. 이 값은 가장자리의 픽셀이 게임 실행에 사용된 최종 텍스쳐에서 자동적으로 몇 번이나 복제되어야 하는 지를 지정합니다.
 
@@ -68,25 +68,25 @@ Defold에서 에셋을 사용하려면 프로젝트 계층구조(project hierarc
 ## Tile Source Collision Shapes
 타일 맵(Tile Map)을 사용하여 물리 상호작용을 활성화하는 충돌 영역(Collision shape)은 자동적으로 생성될 수 있습니다. Defold는 **Collision** 속성에 명시된 이미지로부터 각 타일에 볼록한 영역(Convex shape)을 생성하기 위해 알파 채널(alpha channel)을 사용합니다. 이 속성에는 이미지와 똑같은 충돌 영역을 위해 동일한 이미지를 사용하여 충돌 영역을 생성하는 것이 대부분이겠지만, 보이는 것과 다른 충돌 영역을 원한다면 다른 이미지를 선택해도 됩니다. 충돌(collision) 이미지를 지정하면, 생성된 충돌 영역을 나타내는 각 타일의 윤곽선으로 미리보기가 업데이트 됩니다. 자세한 것은 [Physics](/ko/manuals/physics) 문서를 참고 바랍니다.
 
-![Collision Shapes](../images/2dgraphics/2dgraphics_tilesource_collision.png)
+![Collision Shapes](/manuals/images/2dgraphics/2dgraphics_tilesource_collision.png)
 
 ## Tile Source flip-book animations
 타일 소스에 애니메이션을 정의하려면 각 프레임에 타일을 하나 씩 할당(동일한 넓이와 높이로 격자에 들어맞게)해야 하며 왼쪽에서 오른쪽 순서로 나란히 놓아야 합니다. 다음 줄로 행이 넘어가면 다시 맨 왼쪽부터 시작됩니다. 새로 생성된 타일 소스에는 "anim"이라고 하는 기본 애니메이션이 있습니다. 이것을 클릭하면 이름(id), 시작과 끝 프레임(Start Tile, End Tile), 재생(Playback) 방법 및 속도(Fps), 애니메이션이 가로나 세로로 뒤집혀야 하는지(Flip Horizontally, Flip Vertically)를 설정하는 애니메이션 속성창(**Properties**)이 나타납니다.
 
-![Tile Source add animation](../images/2dgraphics/2dgraphics_tilesource_animation.png)
+![Tile Source add animation](/manuals/images/2dgraphics/2dgraphics_tilesource_animation.png)
 
 아웃라인(Outline) 창의 **Tile Source**를 마우스 오른쪽 클릭하여 컨텍스트 메뉴를 열고 **Add Animation**를 선택하여 타일 소스에 애니메이션을 쉽게 더 추가할 수 있습니다.
 
-![Tile Source animation](../images/2dgraphics/2dgraphics_tilesource_add_animation.png)
+![Tile Source animation](/manuals/images/2dgraphics/2dgraphics_tilesource_add_animation.png)
 
 ## Manipulating Game Objects and components
 게임 오브젝트에 시각적 구성요소(스프라이트, 파티클FX 등)를 추가하면, 컴포넌트의 위치값과 회전 값을 설정할 수 있습니다. 이 값은 게임 오브젝트의 위치, 회전에 대한 오프셋으로 사용됩니다. 게다가 이 값은 게임 오브젝트를 조립(assemble)할때 컴포넌트에 설정 됩니다.
 
-![Component position](../images/2dgraphics/2dgraphics_component_position.png)
+![Component position](/manuals/images/2dgraphics/2dgraphics_component_position.png)
 
 Defold의 게임 오브젝트는 이동, 회전이 가능하며 이 속성들을 애니메이션 처리 할 수 있습니다. 게임 오브젝트를 이동, 회전하면 하위의 컴포넌트도 같이 움직이게 되지만, 게임 오브젝트에 상대적인 위치값과 회전값(relative position and rotation)은 유지됩니다. 컴포넌트는 끄고 켤 수 있지만 동적으로 이동, 회전하거나 애니메이션 효과를 주는것은 불가능합니다(아래의 예외사항 참고). 그러므로 그래픽의 위치, 회전을 변경하길 원한다면 별도의 게임오브젝트로 집어 넣어야 합니다. 게임 오브젝트의 그룹이나 게임오브젝트 계층(hierarchy)은 컬렉션에 편리하게 조립(assemble)된 후 이 오브젝트들을 스크립트를 통해 자유롭게 다룰 수 있습니다:
 
-![Component position](../images/2dgraphics/2dgraphics_gameobject_position.png)
+![Component position](/manuals/images/2dgraphics/2dgraphics_gameobject_position.png)
 
 ```lua
     -- wand 게임 오브젝트에 이동, 회전 애니메이션 시키기
@@ -149,12 +149,12 @@ go.animate("my_object#sprite", "scale.x", go.PLAYBACK_ONCE_FORWARD, 1.5, go.EASI
 3. Outline 창에서 페인팅하려는 레이어를 선택하거나 생성합니다.
 4. 브러시로 사용할 타일을 선택합니다. (타일 팔레트를 보기 위해서 **Space** 키를 눌러 보세요.)
 
-![Painting tiles](../images/2dgraphics/2dgraphics_tilemap.png)
+![Painting tiles](/manuals/images/2dgraphics/2dgraphics_tilemap.png)
 
 #### Picking Tiles
 타일맵에서 타일을 직접 선택해서 브러시를 사용할 수도 있습니다. **Shift**를 누른 채로 타일을 클릭하면 브러시가 선택됩니다. **Shift**를 누른 채로 클릭과 드래그를 사용해 타일의 구역을 선택하면 더 큰 브러시를 사용할 수 있습니다.
 
-![Picking tiles](../images/2dgraphics/2dgraphics_tiles_pick.png)
+![Picking tiles](/manuals/images/2dgraphics/2dgraphics_tiles_pick.png)
 
 #### Erasing Tiles
 지우개 툴은 페인팅한 타일을 지우는데 사용됩니다. 지우개를 선택하려면 아래 방법들이 있습니다:
@@ -188,7 +188,7 @@ msg.post("/level#tilemap", "set_tile", { layer_id = hash("layer1"), position = d
 
 게임 오브젝트가 타일맵을 포함하고 있으며 이제 원하는 위치에 게임 오브젝트를 배치하거나 스폰 할 수 있습니다.
 
-![Placed tile map](../images/2dgraphics/2dgraphics_tilemap_go.png)
+![Placed tile map](/manuals/images/2dgraphics/2dgraphics_tilemap_go.png)
 
 ## Texture Filtering and Sampling
 Defold는 텍스쳐 샘플링을 위해 두가지 방식을 지원하고 있습니다. 이 방식들은 texel(텍스쳐의 픽셀)이 완벽하게 화면의 픽셀에 정렬되어 들어맞지 않는 경우에 시각적 결과(visual result)를 제어하는데, 이 문제는 심리스(seamlessly: 이음새가 없는)한 텍스쳐를 포함하는 스프라이트를 움직일 경우(예를 들어 방향 상관없이 0.2픽셀을 움직여 보면...) 이거나 카메라를 심리스하게 움직이거나 줌 인/아웃 할 경우 발생합니다:

@@ -154,4 +154,4 @@ end
 
 Defold 编辑器支持 Lua 脚本编辑, 还提供语法高亮和自动补全功能. 要让 Defold 补全函数名, 按 *Ctrl+Space* 会弹出相关函名数列表.
 
-![Auto completion](../images/script/completion.png)
+![Auto completion](/manuals/images/script/completion.png)

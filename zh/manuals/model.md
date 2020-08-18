@@ -18,7 +18,7 @@ Blender 是一个著名的3D软件. 它可以运行在 Windows, Mac OS X and Lin
 
 现在我们把它来导入 Defold.
 
-![Model in Blender](../images/model/blender.png)
+![Model in Blender](/manuals/images/model/blender.png)
 
 首先需要使用 Blender Collada 导出器输出 *.dae* 格式的文件. 导出的文件包含模型的所有点, 线和面, 还包含 _UV 坐标_ (模型与纹理的部位对部位的映射). 如果做了, 还包含骨骼和动画数据.
 
@@ -26,7 +26,7 @@ Blender 是一个著名的3D软件. 它可以运行在 Windows, Mac OS X and Lin
 
 现在要导入模型, 简单的拖拽 *.dae* 文件及其相应的纹理图到 *Project 浏览器* 的某个位置.
 
-![Imported model assets](../images/model/assets.png)
+![Imported model assets](/manuals/images/model/assets.png)
 
 ## 创建 model 组件
 
@@ -35,7 +35,7 @@ Model 组件和其他游戏对象组件一样, 两种创建办法:
 - *Assets* 浏览器里 <kbd>右键点击</kbd> 选择 <kbd>New... ▸ Model</kbd> 创建 *Model 文件*.
 - 直接在 *Outline* 视图的游戏对象上 <kbd>右键点击</kbd> 然后选择 <kbd>Add Component ▸ Model</kbd>.
 
-![Model in game object](../images/model/model.png)
+![Model in game object](/manuals/images/model/model.png)
 
 模型组件需要设置一些属性:
 
@@ -60,6 +60,6 @@ Model 组件和其他游戏对象组件一样, 两种创建办法:
 
 有了模型组件就可以使用随意使用组件功能同时可以使用 *Scene Editor* 工具移动, 旋转和缩放模型游戏对象了.
 
-![Wiggler ingame](../images/model/ingame.png)
+![Wiggler ingame](/manuals/images/model/ingame.png)
 
 

@@ -10,7 +10,7 @@ brief: 本教程介绍了如何使用 sprite 组件显示 2D 图片和动画.
 
 Sprite 组件可以是屏幕上显示的简单图片或者逐帧动画.
 
-![sprite](../images/graphics/sprite.png)
+![sprite](/manuals/images/graphics/sprite.png)
 
 Sprite 组件使用 [图集](/zh/manuals/atlas) 或者 [瓷砖图源](/zh/manuals/tilesource) 进行图像显示.
 

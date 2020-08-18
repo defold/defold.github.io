@@ -20,7 +20,7 @@ Defold 把所有游戏对象组织在集合里. 集合可以包含游戏对象�
 
 2. 设置 *Collection* 属性来引用一个集合, 就是你希望动态加载进运行环境的集合. 这些引用是静态的, 所以确保把游戏所需的各个部分都通过集合引用到.
 
-![add proxy component](../images/collection-proxy/create_proxy.png)
+![add proxy component](/manuals/images/collection-proxy/create_proxy.png)
 
 (也可以编译时排除一部分内容需要的时候用代码下载而不使用 *Exclude* 选项和 [热更新功能](/zh/manuals/live-update/).)
 
@@ -28,13 +28,13 @@ Defold 把所有游戏对象组织在集合里. 集合可以包含游戏对象�
 
 当 Defold 引擎开始工作最先把 *启动集合* 导入运行环境并对其中的所有游戏对象进行初始化. 然后开启游戏对象和它们的组件. 在 [项目配置](/zh/manuals/project-settings) 里设置把哪个集合作为启动集合使用. 依照惯例启动集合都叫做 "main.collection".
 
-![bootstrap](../images/collection-proxy/bootstrap.png)
+![bootstrap](/manuals/images/collection-proxy/bootstrap.png)
 
 To fit the game objects and their components the engine allocates the memory needed for the whole "game world" into which the contents of the bootstrap collection are instanciated. A separate physics world is also created for any collision objects and physics simulation.
 
 Since script components need to be able to address all objects in the game, even from outside the bootstrap world, it is given a unique name: the *Name* property that you set in the collection file:
 
-![bootstrap](../images/collection-proxy/collection_id.png)
+![bootstrap](/manuals/images/collection-proxy/collection_id.png)
 
 If the collection that is loaded contains collection proxy components, the collections that those refer to are *not* loaded automatically. You need to control the loading of these resources through scripts.
 
@@ -47,7 +47,7 @@ Dynamically loading a collection via proxy is done by sending a message called `
 msg.post("#myproxy", "load")
 ```
 
-![load](../images/collection-proxy/proxy_load.png)
+![load](/manuals/images/collection-proxy/proxy_load.png)
 
 The proxy component will instruct the engine to allocate space for a new world. A separate runtime physics world is also created and all the game objects in the collection "mylevel.collection" are instantiated.
 
@@ -93,7 +93,7 @@ The *Name* set in the collection file properties is used to address game objects
 msg.post("main:/loader#script", "load_level", { level_id = 2 })
 ```
 
-![load](../images/collection-proxy/message_passing.png)
+![load](/manuals/images/collection-proxy/message_passing.png)
 
 ## Unloading a world
 

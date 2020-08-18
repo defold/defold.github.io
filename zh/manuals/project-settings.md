@@ -12,7 +12,7 @@ brief: 本教程介绍了如何在 Defold 中进行项目配置工作.
 
 各种设置划分成各个类目. 打开该文件时 Defold 会把设置分门别类显示出来.
 
-![Project settings](../images/project-settings/settings.jpg)
+![Project settings](/manuals/images/project-settings/settings.jpg)
 
 下面是根据不同模块排序的各种设置. 其中有一些不在编辑器中显示 (标注为 "隐藏设置"), 但是可以右键点击 "game.project" 然后选择 <kbd>Open With ▸ Text Editor</kbd> 来进行手动编辑.
 

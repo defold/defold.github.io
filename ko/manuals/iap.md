@@ -45,14 +45,14 @@ iOS 와 Android 의 구매 절차는 비슷합니다.
 3. 테스트용 앱을 설정합니다:
     * Android는 [Google Play Developer Console](https://play.google.com/apps/publish/) 에서 할 수 있습니다.
     * iOS는 [iTunes Connect](https://itunesconnect.apple.com/) 에서 할 수 있습니다. App ID (https://developer.apple.com 의 "Member Center"에서 만들었던) 에서 "In-App Purchase" 가 활성화 되어있는지 확인하십시오.
-![iTunes Connect and Google Play Dev Console](../images/iap/itunes_connect_google_play.png)
+![iTunes Connect and Google Play Dev Console](/manuals/images/iap/itunes_connect_google_play.png)
 
 4. Google Play의 경우, 알파 **.apk** 파일을 업로드하고 게시(publish)해야 합니다. iTunes Connect의 경우에는 어플리케이션이 App Review 승인을 받을 때 까지는 바이너리를 업로드 하지 마십시오. iTunes Connect에 업로드 했는데 제대로 동작하지 않는다면 Apple이 이를 리젝(reject)할 수도 있습니다.
 
 5. 앱을 위한 프로덕트를 생성합니다.
-![iTunes Products](../images/iap/itunes_products.png)
+![iTunes Products](/manuals/images/iap/itunes_products.png)
 --
-![Google Play Products](../images/iap/google_play_products.png)
+![Google Play Products](/manuals/images/iap/google_play_products.png)
 
 6. 테스트 사용자를 추가합니다.
     *  iTunes Connect 페이지의 **Users and Roles**에서는 샌드박스 환경에서 결제를 테스트할 수 있는 사용자를 추가할 수 있습니다. Developer 인증서를 앱에 서명하고 테스트 장치의 Appstore에서 샌드박스 계정을 사용해야 합니다.
@@ -61,7 +61,7 @@ iOS 와 Android 의 구매 절차는 비슷합니다.
 
     * 또한 Google Play 에서는 Google Group 을 설정해서 Alpha와 Beta 스토어에서 앱을 다운로드 할 수 있게 테스터 그룹을 관리할 수도 있습니다. **Alpha Testing** 탭을 클릭하고 **Manage list of testers**를 눌러서 Alpha 테스터로 Google Group을 추가한 후 나타나는 링크를 공유하면 됩니다.
 
-![Alpha testers](../images/iap/alpha_testers.png)
+![Alpha testers](/manuals/images/iap/alpha_testers.png)
 
 Facebook에서의 절차:
 
@@ -143,11 +143,11 @@ end
 
 장치의 운영체제는 사용자가 구매를 할 수 있는 팝업창을 자동으로 띄워줍니다. 이 인터페이스는 테스트/샌드박스 환경에서 실행중인지 여부를 보여줍니다.
 
-![Confirm purchase](../images/iap/ios_confirm_purchase.png)
+![Confirm purchase](/manuals/images/iap/ios_confirm_purchase.png)
 
-![Android purchase](../images/iap/android_purchase.png)
+![Android purchase](/manuals/images/iap/android_purchase.png)
 
-![Confirm purchase](../images/iap/ios_purchase_done.png)
+![Confirm purchase](/manuals/images/iap/ios_purchase_done.png)
 
 ## Synchronous payments
 대부분의 결제 제공자(payment providers)는 동기식 결제만을 지원합니다. 즉 클라이언트(당신의 어플리케이션)은 결제가 완료될 때 TRANS_STATE_PURCHASED 와 같은 알림을 받는다는 것을 뜻합니다. 이는 결제의 마지막 상태(final state)이며 이 트랜잭션에서 더 이상의 콜백을 제공하지 않습니다.

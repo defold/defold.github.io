@@ -41,7 +41,7 @@ brief: 本教程介绍了如何使用 XCode 进行调试.
 
 *新建 XCode 项目, 选择 `Game` 模板
 
-	![project_template](../images/extensions/debugging/ios/project_template.png)
+	![project_template](/manuals/images/extensions/debugging/ios/project_template.png)
 
 * 指定一个名字 (例如 `debug`) 并且使用默认设置
 
@@ -49,30 +49,30 @@ brief: 本教程介绍了如何使用 XCode 进行调试.
 
 * 为应用加入代码文件
 
-	![add_files](../images/extensions/debugging/ios/add_files.png)
+	![add_files](/manuals/images/extensions/debugging/ios/add_files.png)
 
 * 确保 "Copy items if needed" 未选中.
 
-	![add_source](../images/extensions/debugging/ios/add_source.png)
+	![add_source](/manuals/images/extensions/debugging/ios/add_source.png)
 
 * 结果是这样
 
-	![added_source](../images/extensions/debugging/ios/added_source.png)
+	![added_source](/manuals/images/extensions/debugging/ios/added_source.png)
 
 
 * 关闭 `Build` 步骤
 
-	![edit_scheme](../images/extensions/debugging/ios/edit_scheme.png)
+	![edit_scheme](/manuals/images/extensions/debugging/ios/edit_scheme.png)
 
-	![disable_build](../images/extensions/debugging/ios/disable_build.png)
+	![disable_build](/manuals/images/extensions/debugging/ios/disable_build.png)
 
 * 设置 `Deployment target` 版本
 
-	![deployment_version](../images/extensions/debugging/ios/deployment_version.png)
+	![deployment_version](/manuals/images/extensions/debugging/ios/deployment_version.png)
 
 * 设置目标设备
 
-	![select_device](../images/extensions/debugging/ios/select_device.png)
+	![select_device](/manuals/images/extensions/debugging/ios/select_device.png)
 
 
 ### 启动调试器
@@ -83,7 +83,7 @@ brief: 本教程介绍了如何使用 XCode 进行调试.
 
 * 也可以选择 `Attach to process by PID or Process name`
 
-	![select_device](../images/extensions/debugging/ios/attach_to_process_name.png)
+	![select_device](/manuals/images/extensions/debugging/ios/attach_to_process_name.png)
 
 	然后在设备上启动应用
 
@@ -97,7 +97,7 @@ brief: 本教程介绍了如何使用 XCode 进行调试.
 
 		(lldb) add-dsym <PathTo.dSYM>
 
-	![add_dsym](../images/extensions/debugging/ios/add_dsym.png)
+	![add_dsym](/manuals/images/extensions/debugging/ios/add_dsym.png)
 
 * 确认 `lldb` 成功读取 symbols
 
@@ -128,7 +128,7 @@ brief: 本教程介绍了如何使用 XCode 进行调试.
 
 * 从 project 视图打开一个文件, 然后设置断点
 
-	![breakpoint](../images/extensions/debugging/ios/breakpoint.png)
+	![breakpoint](/manuals/images/extensions/debugging/ios/breakpoint.png)
 
 ## 注意
 

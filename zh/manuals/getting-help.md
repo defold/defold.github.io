@@ -62,7 +62,7 @@ brief: 本教程介绍了使用 Defold 遇到麻烦时该如何寻求帮助.
 
 编辑器提供了一个汇报错误的方便的方法. 选择 <kbd>Help->Report Issue</kbd> 菜单项来汇报错误.
 
-![](../images/getting_help/report_issue.png)
+![](/manuals/images/getting_help/report_issue.png)
 
 选择此菜单项会在 GitHub 上提交一个 issue tracker. 请把尽量多的信息填入报表. 注意此种方法需要你有 GitHub 账号.
 

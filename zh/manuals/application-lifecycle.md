@@ -10,7 +10,7 @@ brief: 本教程详述了 Defold 游戏的生命周期.
 
 Defold 应用或者游戏的生命周期相当简单. 引擎切换运行三种状态: 初始化, 更新循环 (游戏主要耗时状态) 以及析构.
 
-![Lifecycle overview](../images/application_lifecycle/application_lifecycle_overview.png)
+![Lifecycle overview](/manuals/images/application_lifecycle/application_lifecycle_overview.png)
 
 通常对于 Defold 的内部运作机制稍作了解就足够了. 然而, 有时了解 Defold 内部的运行顺序还是有必要的. 本教程介绍了 Defold 应用从始至终是按什么顺序运行的.
 
@@ -24,7 +24,7 @@ Defold 应用或者游戏的生命周期相当简单. 引擎切换运行三种�
 
 下图包含了初始化的分解步骤. 其中 "dispatch messages" 阶段 (在 "spawn dynamic objects" 上方) 单独在右侧图表进行详细分解.
 
-![Lifecycle overview](../images/application_lifecycle/application_lifecycle_init.png)
+![Lifecycle overview](/manuals/images/application_lifecycle/application_lifecycle_init.png)
 
 其实初始化阶段启动集合被加载之前引擎还做了许多别的工作. 内存分析, 接口, 图像, HID (输入设备), 声音, 物理等等的初始化. 应用配置文件 ("game.project") 也在此时被加载.
 
@@ -67,7 +67,7 @@ end
 
 每帧都会循环更新长长的序列. 下图展示了更新循环的详细步骤. "Dispatch messages" 阶段还是单独在右侧独立详细展示:
 
-![Update loop](../images/application_lifecycle/application_lifecycle_update.png)
+![Update loop](/manuals/images/application_lifecycle/application_lifecycle_update.png)
 
 ## 输入
 
@@ -113,7 +113,7 @@ end
 
 然后引擎进入析构阶段处理启动集合里的内容:
 
-![Finalization](../images/application_lifecycle/application_lifecycle_final.png)
+![Finalization](/manuals/images/application_lifecycle/application_lifecycle_final.png)
 
 组件的 `final()` 函数被调用. 后跟一轮消息传递. 最后, 所有游戏对象被删除, 启动集合被卸载.
 

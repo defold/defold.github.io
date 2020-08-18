@@ -23,17 +23,17 @@ iOS에서는 알림을 보내기 위해 다음 정보가 필요합니다.
 
 이 모든 것을 위해서는 [Apple Developer Member center](https://developer.apple.com/membercenter) 로 이동해서 푸쉬 알림을 활성화 하기 위한 AppI를 수정해야 합니다.
 
-![AppID push notifications](../images/push/push_ios_app_id.png)
+![AppID push notifications](/manuals/images/push/push_ios_app_id.png)
 
 또한 Apple 푸쉬 알림 서비스의 SSL 인증서(Certificate)를 생성해야 합니다.
 
-![APN SSL certificate](../images/push/push_ios_certificate.png)
+![APN SSL certificate](/manuals/images/push/push_ios_certificate.png)
 
 푸쉬 알림을 보낼 서버에는 인증서가 필요합니다. 개발 중에는 인증서를 다운로드, 설치하고 [APNS-Pusher](https://github.com/KnuffApp/APNS-Pusher) 또는 [NWPusher](https://github.com/noodlewerk/NWPusher) 과 같은 푸쉬 테스트 앱을 실행해 볼 수 있습니다.
 
 AppID에서 새 프로비져닝 프로파일을 생성하고 당신의 장치에 넣는 작업을 해야 합니다. Xcode를 통하거나 "Member Center" 페이지에서 직접 수행할 수 있습니다.
 
-![Provisioning profile](../images/push/push_ios_provisioning_profile.png)
+![Provisioning profile](/manuals/images/push/push_ios_provisioning_profile.png)
 
 Apple의 샌드박스 서버가 업데이트 되는 동안 시간이 걸리므로 푸쉬 작업이 즉시 동작하지 않을 수 있습니다.
 
@@ -94,7 +94,7 @@ DEBUG:SCRIPT: 1f8ba7869b84b10df69a07aa623cd7f55f62bca22cef61b51fedac643ec61ad8
 
 푸쉬 테스트 앱을 실행중인 경우, device token과 APN service SSL certificate을 사용하여 당신의 장치에 알림을 보내 보도록 합니다.
 
-![Pusher test](../images/push/push_ios_pusher.png)
+![Pusher test](/manuals/images/push/push_ios_pusher.png)
 
 알림은 테스트 어플리케이션 내에서 push_listener() 함수에 도달한 후 즉시 클라이언트에 도착해야 합니다.
 
@@ -111,7 +111,7 @@ DEBUG:SCRIPT:
 
 그러면 iOS 홈 화면에서 아래와 같이 나타납니다.
 
-![iOS notification](../images/push/push_ios_notification.png)
+![iOS notification](/manuals/images/push/push_ios_notification.png)
 
 어플리케이션 내에서 뱃지 개수(badge count)를 업데이트 하려면, push.set_badge_count() 함수를 사용하시기 바랍니다.
 
@@ -126,19 +126,19 @@ Android에서는 알림을 보내려면 아래와 같은 정보가 필요합니�
 
 이 설정은 매우 간단하며 http://developers.google.com 에서 "Android"를 클릭 후 "Google Cloud Messaging" 항목을 참고하여 시작할 수 있습니다.
 
-![Android getting started](../images/push/push_android_get_started.png)
+![Android getting started](/manuals/images/push/push_android_get_started.png)
 
 페이지 하단에는 "Get a configuration file" 이라는 버튼이 있습니다.
 
-![Android configuration file](../images/push/push_android_configuration_file.png)
+![Android configuration file](/manuals/images/push/push_android_configuration_file.png)
 
 이 버튼을 클릭하고 다음 순서를 따라하면 마지막에 Server API Key 와 Sender ID 를 획득할 수 있습니다.
 
-![Android cloud services info](../images/push/push_android_cloud_services.png)
+![Android cloud services info](/manuals/images/push/push_android_cloud_services.png)
 
 Sender ID 를 복사해서 Defold 프로젝트 셋팅의  **gcm_sender_id** 필드에 붙여넣기 합니다.
 
-![Google Cloud Messaging sender ID](../images/push/push_android_gcm_sender_id.png)
+![Google Cloud Messaging sender ID](/manuals/images/push/push_android_gcm_sender_id.png)
 
 이제 클라이언트의 모든 준비가 끝났습니다. 위의 코드 예제는 Android에서도 잘 동작하므로 이를 실행하고 device token id를 복사해 둡니다.
 

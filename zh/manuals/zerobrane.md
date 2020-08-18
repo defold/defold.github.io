@@ -19,13 +19,13 @@ Defold 自带内置调试器, 但是还可以使用免费开源的 Lua 编辑器
 1. 右键点击 *game.project*
 2. 选择 <kbd>Show in Desktop</kbd>
 
-![Show in Finder](../images/zerobrane/show_in_desktop.png)
+![Show in Finder](/manuals/images/zerobrane/show_in_desktop.png)
 
 ## ZeroBrane 打开项目
 
 在 ZeroBrane 打开项目, 选择 <kbd>Project ▸ Project Directory ▸ Choose...</kbd>:
 
-![Set up](../images/zerobrane/setup.png)
+![Set up](/manuals/images/zerobrane/setup.png)
 
 当指定了 Defold 项目目录之后, 就可以在 ZeroBrane 中看到 Defold 项目的结构, 可以跳转和打开文件.
 
@@ -35,7 +35,7 @@ Defold 自带内置调试器, 但是还可以使用免费开源的 Lua 编辑器
 
 调试之前, 需要启动 ZeroBrane 内置调试服务器. 此选项位于菜单栏 <kbd>Project</kbd> 中. 选择 <kbd>Project ▸ Start Debugger Server</kbd> 即可:
 
-![Start debugger](../images/zerobrane/startdebug.png)
+![Start debugger](/manuals/images/zerobrane/startdebug.png)
 
 ## 把应用连接到调试器
 
@@ -66,7 +66,7 @@ Debugging session started in '/Users/my_user/Documents/Projects/Defold_project'.
 调试只在其初始化位置开启调试lua上下文. 在 game.project 中打开 "shared_state" 就可以在任意位置调试整个应用.
 :::
 
-![Stepping](../images/zerobrane/code.png)
+![Stepping](/manuals/images/zerobrane/code.png)
 
 如果连接失败 (可能由于调试服务器未启动), 你的应用会在尝试连接后继续运行.
 
@@ -99,4 +99,4 @@ dbg.start("192.168.5.101")
 
 - 重启 ZeroBrane
 
-![Other recommended settings](../images/zerobrane/otherrecommended.png)
+![Other recommended settings](/manuals/images/zerobrane/otherrecommended.png)

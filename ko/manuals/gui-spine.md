@@ -14,13 +14,13 @@ title: Defold manual
 
 GUI 씬에서 스파인 씬 리소스의 컨텐츠를 사용하려면, **Outline** 창의 **Spine Scenes** 폴더에 마우스 오른쪽 버튼을 눌려 **Add Spine Scene** 메뉴를 선택하고 사용하려는 스파인 씬을 선택합니다.
 
-![Add Spine Scene](../images/gui/gui_spine_add_scene.png)
+![Add Spine Scene](/manuals/images/gui/gui_spine_add_scene.png)
 
-![Added Spine Scene](../images/gui/gui_spine_added_scene.png)
+![Added Spine Scene](/manuals/images/gui/gui_spine_added_scene.png)
 
 이제 스파인 노드를 만들면(**Outline** 창의 **Nodes** 폴더에 마우스 오른쪽 버튼 누르고 **Add Spine Node** 선택) 그에 따른 새 스파인 노드의 프로퍼티들을 설정할 수 있습니다.
 
-![Spine node](../images/gui/gui_spine_node.png)
+![Spine node](/manuals/images/gui/gui_spine_node.png)
 
 #### Spine Scene
 이 노드의 데이터 소스로 사용할 스파인 씬
@@ -43,7 +43,7 @@ end)
 ## The bone hierarchy
 스파인 스켈레톤에서 뼈 각각은 GUI 노드로 존재하게 됩니다. 이 노드들은 스파인 설정에서 지정된 이름에 따라 지어집니다.
 
-![Spine bone names](../images/gui/gui_spine_bones.png)
+![Spine bone names](/manuals/images/gui/gui_spine_bones.png)
 
 예를 들어, 어떤 노드를 다른 본 노드에 연결하려면, [gui.get_spine_bone()](http://www.defold.com/ref/gui/#gui.get_spine_bone) 를 사용하여 하위의 본 노드를 이름으로 조회해서 자식 노드로 연결할 수 있습니다.
 

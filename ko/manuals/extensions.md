@@ -15,12 +15,12 @@ title: Defold manual
 ## The build platform
 Defold는 클라우드 기반 빌드 솔루션을 사용하여 네이티브 익스텐션에 대한 무설정 진입 지점(zero setup entry point)을 제공합니다. 게임 프로젝트에 추가된 네이티브 익스텐션은 일반적인 프로젝트 컨텐츠의 일부가 됩니다. 엔진의 특정 버전으로 빌드하거나 팀원에게 배포할 필요도 없으며 이 작업들은 자동으로 이루어집니다. 프로젝트를 빌드하거나 실행하려는 모든 팀원들은 모든 네이티브 익스텐션과 함께 특정 프로젝트 엔진 실행파일을 받을 수 있습니다.
 
-![Cloud build](../images/extensions/cloud_build.png)
+![Cloud build](/manuals/images/extensions/cloud_build.png)
 
 ## Project layout
 새 익스텐션을 만들기 위해서는 프로젝트 루트에 폴더를 하나 만들어야 합니다. 이 폴더에는 익스텐션과 관계된 모든 셋팅, 소스코드, 라이브러리, 리소스들을 포함시켜야 합니다. 이 익스텐션 빌더는 폴더 구조를 인식하고 모든 소스파일과 라이브러리를 수집합니다.
 
-![Project layout](../images/extensions/layout.png)
+![Project layout](/manuals/images/extensions/layout.png)
 
 #### "ext.manifest"
 익스텐션 폴더에는 "ext.manifest" 파일이 있어야 합니다. 이 파일은 익스텐션 빌더에 의해 선택되는 YAML 형식의 파일입니다. 메니페스트 파일에는 최소한 익스텐션의 이름이 포함되어 있어야 합니다.
@@ -36,7 +36,7 @@ Defold는 클라우드 기반 빌드 솔루션을 사용하여 네이티브 익�
 ## A simple example extension
 아주 간단한 익스텐션을 개발해 봅시다. 우선, "myextension" 이라는 새 루트 폴더를 만들고 익스텐션의 이름이 있는 "ext.manifest" 파일을 추가해 봅시다.
 
-![Manifest](../images/extensions/manifest.png)
+![Manifest](/manuals/images/extensions/manifest.png)
 
 *ext.manifest*
 ```yaml
@@ -47,7 +47,7 @@ name: "MyExtension"
 
 Defold 에디터는 기본적으로 .cpp 파일을 열 수 없으므로 파일을 더블 클릭해서 해당 파일 타입에 사용되는 시스템 에디터를 사용합니다. 물론 해당 파일에 마우스 오른쪽 클릭해서  **Open With ▸ Text Editor** 메뉴를 선택해 내장된 텍스트 에디터를 사용해도 되지만, Defold는 C++ 파일을 지원하지 않으므로 최소한의 편집 기능만 사용 가능합니다.
 
-![C++ file](../images/extensions/cppfile.png)
+![C++ file](/manuals/images/extensions/cppfile.png)
 
 익스텐션 소스 파일은 아래 코드를 포함합니다.
 

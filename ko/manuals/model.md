@@ -15,7 +15,7 @@ Defold는 3D 에셋이나 모델을 컬렉션에 포함해서 3D 컨텐츠를 �
 
 > 블렌더(Blender)는 강력하고 유명한 3D 모델링, 애니메이션, 렌더링 프로그램입니다. http://www.blender.org 에서 무료로 다운로드 가능하고 Windows, Max OS X, Linux 에서 동작합니다.
 
-![Model in Blender](../images/model/blender.png)
+![Model in Blender](/manuals/images/model/blender.png)
 
 모델이 완료되면 확장자가 **.dae**인 파일을 생성하기 위해 Blender Collada exporter를 선택합니다. 여기서 모델을 구성하는 모든 점(vertex), 선(edge), 면(face) 뿐만아니라 UV좌표(UV coordinate: 텍스쳐 이미지 일부분이 특정 메쉬의 어느 부분으로 매핑되는지), 스켈레톤의 뼈대, 애니메이션 데이터를 포함하는 메쉬(mesh) 파일을 익스포트 할 수 있습니다.
 
@@ -23,7 +23,7 @@ Defold는 3D 에셋이나 모델을 컬렉션에 포함해서 3D 컨텐츠를 �
 
 이제, 모델을 임포트 하기 위해,  **.dae** 파일과 텍스쳐 이미지를 **Assets pane**의 원하는 위치로 간단히 드래그-앤-드롭 하면 됩니다.
 
-![Imported model assets](../images/model/imported_assets.png)
+![Imported model assets](/manuals/images/model/imported_assets.png)
 
 ## Creating a model component
 모델 컴포넌트는 다른 게임 오브젝트 컴포넌트와 마찬가지로 아래 두 가지 방법으로 생성할 수 있습니다:
@@ -31,7 +31,7 @@ Defold는 3D 에셋이나 모델을 컬렉션에 포함해서 3D 컨텐츠를 �
 1. **Assets pane**창에서 마우스 오른쪽 버튼을 누르고 **New > Model File** 선택해서 **Model file** 생성하기
 2. **Outline**창에서 게임 오브젝트에 마우스 오른쪽 버튼 누르고 **Add Component** 선택하고 **Model**을 선택해서 게임 오브젝트에 직접 내장(embed)되는 컴포넌트 생성하기
 
-![Model in game object](../images/model/model.png)
+![Model in game object](/manuals/images/model/model.png)
 
 배치된 모델은 몇 가지 속성을 지정할 수 있습니다.
 
@@ -50,4 +50,4 @@ Defold는 3D 에셋이나 모델을 컬렉션에 포함해서 3D 컨텐츠를 �
 
 배치된 모델 컴포넌트를 사용해서 컴포넌트와 캡슐화된 게임 객체를  자유롭게 다루고 편집할 수 있으며, 일반 씬 에디터(**Scene Editor**) 도구를 사용하여 모델을 취향대로 자유롭게 이동(move), 회전(rotate), 확대축소(scale)할 수 있습니다.
 
-![Wiggler ingame](../images/model/ingame.png)
+![Wiggler ingame](/manuals/images/model/ingame.png)

@@ -14,7 +14,7 @@ title: Defold manual
 [유튜브 링크: https://youtu.be/qzyB1lXNDKQ
 ![](https://img.youtube.com/vi/qzyB1lXNDKQ/0.jpg)](https://www.youtube.com/watch?v=qzyB1lXNDKQ)
 
-![ParticleFX Editor](../images/particlefx/effect_editor.png)
+![ParticleFX Editor](/manuals/images/particlefx/effect_editor.png)
 
 ## Concepts
 * **ParticleFX** - 파티클 효과를 나타내는 컴포넌트
@@ -24,9 +24,9 @@ title: Defold manual
 
 파티클FX 파일을 생성하고 열어보면 Outline창에서 마우스 오른쪽 버튼을 눌러 emiter와 modifier를 추가할 수 있습니다.
 
-![](../images/particlefx/effect_outline.png)
+![](/manuals/images/particlefx/effect_outline.png)
 
-![](../images/particlefx/emitter_properties.png)
+![](/manuals/images/particlefx/emitter_properties.png)
 
 ## Previewing
 파티클 효과를 미리보기 하려면, 씬 에디터를 사용하면 됩니다. [Scene Editing](/ko/manuals/scene-editing) 에서 자세한 설명을 볼 수 있습니다. 스페이스 키를 사용하면 파티클 효과의 미리보기를 시작하고 중지할 수 있습니다. 파티클 효과가 플레이중인지 아닌지와 상관 없이, 실시간으로 조정(tweak)하면서 파티클을 업데이트 할 수 있습니다.
@@ -36,7 +36,7 @@ title: Defold manual
 
 ## Keying Properties
 
-![](../images/particlefx/curve_editor.png)
+![](/manuals/images/particlefx/curve_editor.png)
 
 시간 대에 따라 다른 속성값을 키를 만들어 삽입(keying)할 수 있습니다. 다시 말해, 이들 값은 시간에 따라 변할 수 있다는 것을 의미합니다. 아래에서 이 기능을 가진 속성들을 볼 수 있습니다:
 
@@ -98,13 +98,13 @@ title: Defold manual
     * Vortex - 회오리형(vortex)은 중심점 주위에 원형이나 나선형 방향으로 파티클 입자들에 영향을 줌. 블랙홀이나 토네이도 같은걸 표현할 때 사용
 * Max Distance - 파티클 입자들이 현재 Modifier에 영향을 받게 되는 최대 거리를 설정함. Radial과 Vortex에서만 설정 가능함.
 
-![](../images/particlefx/drag.png)
+![](/manuals/images/particlefx/drag.png)
 
-![](../images/particlefx/radial.png)
+![](/manuals/images/particlefx/radial.png)
 
-![](../images/particlefx/acceleration.png)
+![](/manuals/images/particlefx/acceleration.png)
 
-![](../images/particlefx/vortex.png)
+![](/manuals/images/particlefx/vortex.png)
 
 ### Keyable Modifier Properties (조정 가능한 수정자 속성들)
 이들 속성들은 값(value)과 스프레드(spread)라는 2개의 필드를 가지고 있습니다. 이 값들은 emitter의 플레이 시간(duration) 동안 조정될 수 있습니다. 스프레드는 각각 스폰된 파티클 입자들이 랜덤하게 변하는 값의 범위를 어떻게 할 것인지 정의합니다. 스프레드는 현재 값에 합산됩니다.

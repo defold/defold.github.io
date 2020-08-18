@@ -19,7 +19,7 @@ Defold의 사운드 구현은 간단하지만 강력합니다.  알아 두어야
 ## Creating a sound component
 사운드 컴포넌트는 게임 오브젝트의 내장 오브젝트로만 만들 수 있습니다. 새 게임 오브젝트를 만들고 오른쪽 클릭하고 **Add Component**를 선택합니다. **Sound**를 선택하고 **OK**를 누르세요.
 
-![Select component](../images/sound/sound_select_component.png)
+![Select component](/manuals/images/sound/sound_select_component.png)
 
 생성된 컴포넌트에는 아래와 같은 속성들이 있습니다.
 
@@ -35,10 +35,10 @@ Sound는 프로젝트에 있는 사운드 파일로 설정되며 Wave나 Ogg Vor
 #### Group
 사운드가 속할 사운드 그룹의 이름입니다. 이 속성값이 비어있다면, 사운드는 기본적으로 "master" 그룹에 할당됩니다.
 
-![Create component](../images/sound/sound_create_component.png)
+![Create component](/manuals/images/sound/sound_create_component.png)
 
 ## Gain
-![Gain](../images/sound/sound_gain.png)
+![Gain](/manuals/images/sound/sound_gain.png)
 
 사운드 시스템은 4가지 단계로 게인(gain)을 계산하여 처리합니다.
 
@@ -65,7 +65,7 @@ end
 
 이 그룹들은 해쉬(hash) 값으로 식별됩니다. 문자열로 된 이름은 sound.get_group_name() 을 사용하여 가져올 수 있으며 이 이름은 개발도구에서 사운드 그룹 이름을 표시해야할 경우 사용될 수 있습니다. (예들 들어 사운드를 조절하는 믹서 등)
 
-![Sound group mixer](../images/sound/sound_mixer.png)
+![Sound group mixer](/manuals/images/sound/sound_mixer.png)
 
 > 릴리즈된 빌드에서는 사용할 수 없으므로 사운드 그룹의 문자열값에 의존하는 코드를 작성하면 안됩니다.
 
@@ -98,7 +98,7 @@ sound.set_group_gain("master", 1.995)
 ## Gating sounds
 만약 게임이 특정 이벤트마다 동일한 사운드로 재생되고 이 이벤트가 자주 트리거 된다면, 동일 사운드를 거의 동시에 재생되어 버리는 문제가 발생합니다. 눈에 띄는 현상으로는 위상 변이(phase-shift ) 현상이 생기는 문제가 있습니다.
 
-![Phase shift](../images/sound/sound_phase_shift.png)
+![Phase shift](/manuals/images/sound/sound_phase_shift.png)
 
 이 문제를 해결하는 가장 쉬운 방법은 사운드 메세지를 필터링하는 기능(gate)을 만들어 특정 시간 간격 내에서는 동일한 사운드가 재생되는 것을 막는 방법이 있습니다.
 

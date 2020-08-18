@@ -43,15 +43,15 @@ $ openssl pkcs8 -topk8 -outform DER -in key.pem -inform PEM -out key.pk8 -nocryp
 
 如果希望编辑器自动生成调试用证书, 把 *Certificate* 和 *Private key* 置空即可:
 
-![Signing Android bundle](../images/android/sign_bundle.png)
+![Signing Android bundle](/manuals/images/android/sign_bundle.png)
 
 如果希望使用自己的证书和密匙, 配置 *.pem* 和 *.pk8* 文件即可:
 
-![Signing Android bundle](../images/android/sign_bundle2.png)
+![Signing Android bundle](/manuals/images/android/sign_bundle2.png)
 
 点击 <kbd>Create Bundle</kbd> 会提示选择打包文件存放位置.
 
-![Android Application Package file](../images/android/apk_file.png)
+![Android Application Package file](/manuals/images/android/apk_file.png)
 
 ### 安装 Android 应用包
 
@@ -112,7 +112,7 @@ List of devices attached
 
 如果连接不上, 确保在 Android 设备上开启了 *USB debugging*. 在设备 *设置* 里找 *开发者选项* (或称 *开发选项*).
 
-![Enable USB debugging](../images/android/usb_debugging.png)
+![Enable USB debugging](/manuals/images/android/usb_debugging.png)
 
 ## 应用包调试
 

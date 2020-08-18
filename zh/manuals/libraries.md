@@ -20,7 +20,7 @@ brief: 项目间可以使用库共享资源. 本教程解释了其工作方式.
 
 比如你想创建一个包含共享 sprite 和瓷砖图源的库. 先从 [新建项目设置](/zh/manuals/project-setup/) 开始. 确定项目中你要共享的文件夹然后把它加入到项目设置的 *include_dirs* 属性列表里. 如果需要加入多个, 以空格分隔文件夹名称:
 
-![Include dirs](../images/libraries/libraries_include_dirs.png)
+![Include dirs](/manuals/images/libraries/libraries_include_dirs.png)
 
 我们需要先定位库才能把它导入到项目里.
 
@@ -28,7 +28,7 @@ brief: 项目间可以使用库共享资源. 本教程解释了其工作方式.
 
 库使用标准 URL 来引用. 对于托管在 GitHub 上的项目, 就是项目发布的 URL:
 
-![GitHub Library URL](../images/libraries/libraries_library_url_github.png)
+![GitHub Library URL](/manuals/images/libraries/libraries_library_url_github.png)
 
 ::: 注意
 最好使用库项目的发布地址而不是主分支来引用库. 作为开发者你要决定什么时候该合并更新而不是时刻保持主分支最新代码 (使用主分支最新版可能引入潜在的不稳定性).
@@ -42,15 +42,15 @@ brief: 项目间可以使用库共享资源. 本教程解释了其工作方式.
 
 打开需要引入库的项目. 在项目设置里, 把 URL 加入到 *dependencies* 属性下. 如果需要可以加入多个. 使用 `+` 按钮一个一个加入, 使用 `-` 按钮移除:
 
-![Dependencies](../images/libraries/libraries_dependencies.png)
+![Dependencies](/manuals/images/libraries/libraries_dependencies.png)
 
 然后, 选择 <kbd>Project ▸ Fetch Libraries</kbd> 来更新库依赖. 这项工作会在打开项目时自动执行所以只有当库需要更新而不想重新打开项目时才会用到这个命令. 比如你修改了库依赖或者库本身被修改和同步了的时候.
 
-![Fetch Libraries](../images/libraries/libraries_fetch_libraries.png)
+![Fetch Libraries](/manuals/images/libraries/libraries_fetch_libraries.png)
 
 此时你共享的文件夹就会出现在项目浏览器中等待使用. 库的各种修改都会同步到你的项目之中.
 
-![Library setup done](../images/libraries/libraries_done.png)
+![Library setup done](/manuals/images/libraries/libraries_done.png)
 
 ## 引用破坏
 

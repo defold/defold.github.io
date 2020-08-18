@@ -15,9 +15,9 @@ title: Defold manual
 
 > Defold는 휴대장치에서 OpenGL ES 2.0 기반으로 렌더링 됩니다. 데스크탑에서는 보통의 Open GL을 사용하므로 OpenGL ES 2.0에서 지원하지 않는 기능을 사용하여 쉐이더를 작성하는 것이 가능하지만 이는 데스크탑과 휴대장치간의 상호 호환을 깨트릴 수 있습니다.
 
-![Builtin render](../images/rendering/rendering_builtins.png)
+![Builtin render](/manuals/images/rendering/rendering_builtins.png)
 
-![Default render](../images/rendering/rendering_default_render.png)
+![Default render](/manuals/images/rendering/rendering_default_render.png)
 
 커스텀 렌더러를 설정하는 방법은 아래와 같습니다.
 
@@ -33,7 +33,7 @@ title: Defold manual
 ## Render predicates
 render predicates(렌더 술어 or 조건자)는 오브젝트의 그리기 순서(draw order)를 제어할 수 있습니다. predicate는 메터리얼 태그의 선택을 기반으로 무엇을 그릴 것인지 선언합니다. 화면에 그려지는 각 오브젝트는 메터리얼을 포함하고 있으며, 오브젝트를 어떻게 정확히 화면에 그릴지, 어떤 쉐이더 프로그램을 실행할지를 제어합니다. 메터리얼에서는, 메터리얼과 연관된 한 개 이상의 태그를 지정할 수 있습니다. 이것은 게임을 빌드할 때 비트 필드(bit field)로 컴파일 되지만, 에디터상에서는 보통의 텍스트 태그로 나타납니다. 렌더 스크립트에서 한두개 렌더 predicate를 만들고 이 predicate가 속할 태그를 지정해 보세요. 마지막으로 predicate를 그릴 때에는, predicate에 지정된 목록과 일치하는 태그를 포함한 메터리얼이 있는 각 오브젝트가 그려집니다. 메터리얼에 대한 더 자세한 설명은 [Material](/ko/manuals/material) 문서에서 찾을 수 있습니다.
 
-![Render predicate](../images/rendering/rendering_predicate.png)
+![Render predicate](/manuals/images/rendering/rendering_predicate.png)
 
 ## The render script
 렌더 스크립트가 어떻게 동작하는지 더 이해하기 위해서 기본 내장된 스크립트를 조금 수정한 버전으로 자세히 살펴 보도록 하겠습니다. init() 이 시작되면 predicate, view, clear color를 설정하는데, 이 변수들은 실제 렌더링 중에 사용됩니다.

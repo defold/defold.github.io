@@ -14,7 +14,7 @@ Defold是一个全3D引擎, 但是设计上还是为2D提供强大支持的. 目
 
 Defold使用的资源全部保存在项目目录下. 需要显示什么样的图像, 就要先导入图像资源. 要导入一个资源只要简单的把文件从电脑上拖拽到Defold编辑器的 _资源目录_.
 
-![Importing image files](../images/graphics/import.png)
+![Importing image files](/manuals/images/graphics/import.png)
 
 Defold支持PNG和JPEG图片格式. 如果需要模型, Defold支持Collada DAE格式.
 
@@ -22,17 +22,17 @@ Defold支持PNG和JPEG图片格式. 如果需要模型, Defold支持Collada DAE�
 
 Defold中, 可视组件使用两种图片资源:
 
-![atlas](../images/icons/atlas.png) 图集
+![atlas](/manuals/images/icons/atlas.png) 图集
 : 图集由一组图片组成, 它们自动组成一张大图片. 图集中保存有图片和 *动画组*, 也就是逐帧动画的一组图片.
 
-  ![atlas](../images/graphics/atlas.png)
+  ![atlas](/manuals/images/graphics/atlas.png)
 
 更多详情参见 [图集教程](/zh/manuals/atlas).
 
-![tile source](../images/icons/tilesource.png) Tile Source
+![tile source](/manuals/images/icons/tilesource.png) Tile Source
 : 瓷砖图源是由一系列小图块按顺序拼贴而成的图片. 就像 _Sprite动画表_ 一样. 瓷砖图源可以包含逐帧动画, 只需指定动画的首尾帧. 瓷砖图块也可以自动生成其碰撞图形.
 
-  ![tile source](../images/graphics/tilesource.png)
+  ![tile source](/manuals/images/graphics/tilesource.png)
 
 更多详情参见 [Tile source manual](/zh/manuals/tilesource).
 
@@ -40,41 +40,41 @@ Defold中, 可视组件使用两种图片资源:
 
 从图集或者瓷砖图源资源获得的数据可以用于几种可视组件:
 
-![sprite](../images/icons/sprite.png)
+![sprite](/manuals/images/icons/sprite.png)
 : Sprite是可以在屏幕上显示的图片或者逐帧动画.
 
-  ![sprite](../images/graphics/sprite.png)
+  ![sprite](/manuals/images/graphics/sprite.png)
 
 Sprite更多详情请见 [Sprite manual](/zh/manuals/sprite).
 
-![tile map](../images/icons/tilemap.png) Tile Map
+![tile map](/manuals/images/icons/tilemap.png) Tile Map
 : 瓷砖地图组件是由瓷砖图源中的瓷砖 (包括瓷砖图及其碰撞图形) 组成的地图. 瓷砖地图不能使用普通图集资源.
 
-  ![tilemap](../images/graphics/tilemap.png)
+  ![tilemap](/manuals/images/graphics/tilemap.png)
 
 瓷砖地图更多详情请见 [Tilemap manual](/zh/manuals/tilemap).
 
-![particle effect](../images/icons/particlefx.png) Particle FX
+![particle effect](/manuals/images/icons/particlefx.png) Particle FX
 : 粒子是粒子发射器所发射出来的, 来自于图集或者瓷砖图源的一个个静态图片或者逐帧动画.
 
-  ![particles](../images/graphics/particles.png)
+  ![particles](/manuals/images/graphics/particles.png)
 
 粒子特效更多详情请见 [Particle fx manual](/zh/manuals/particlefx).
 
-![gui](../images/icons/gui.png) GUI（图形用户界面）
+![gui](/manuals/images/icons/gui.png) GUI（图形用户界面）
 : GUI box 节点和 pie 节点同样使用来自图集和瓷砖图源的静态图片或者逐帧动画.
 
-  ![gui](../images/graphics/gui.png)
+  ![gui](/manuals/images/graphics/gui.png)
 
 GUI更多详情请见 [GUI manual](/zh/manuals/gui).
 
-![spine](../images/icons/spine-model.png) Spine 模型
+![spine](/manuals/images/icons/spine-model.png) Spine 模型
 : Spine 模型从 Spine 场景资源 中获取数据. 分为两部分:
 
   1. 一个记录骨骼动画的Spine Json文件.
   2. 一个由附加在骨骼上的图片组成的图集. Spine模型不能使用来自瓷砖地图的数据.
 
-  ![spine](../images/graphics/spine.png)
+  ![spine](/manuals/images/graphics/spine.png)
 
 Spine模型更多详情请见 [Spine model manual](/zh/manuals/spine-model).
 
@@ -83,10 +83,10 @@ Spine模型更多详情请见 [Spine model manual](/zh/manuals/spine-model).
 
 模型直接从图片文件获取数据, 然后根据模型的UV映射到模型上:
 
-![model](../images/icons/model.png) Model
+![model](/manuals/images/icons/model.png) Model
 : 3D模型
 
-  ![model](../images/graphics/model.png)
+  ![model](/manuals/images/graphics/model.png)
 
 模型更多详情请见 [Model manual](/zh/manuals/model).
 
@@ -134,7 +134,7 @@ Collada 支持
 
 所有游戏对象和组件在 3D 空间中的位置由 vector3 对象来决定. 在2D图像中, X 和 Y 值决定了物体在"横" , "竖" 轴的位置, Z 值决定了其在"深度"上的位置. Z轴位置可以让你控制可见物体的遮挡情况: Z 值为 1 的sprite会出现在 Z 值为 0 的sprite前面. 默认情况下, Defold 允许的 Z 值范围是 -1 到 1:
 
-![model](../images/graphics/z-order.png)
+![model](/manuals/images/graphics/z-order.png)
 
 -1 到 1 的远近限制使得Z轴的数值精度很高. 在制作3D游戏时, 你可能需要在自定义渲染脚本里调整这个限制. 更多详情请见 [Render manual](/zh/manuals/render/).
 

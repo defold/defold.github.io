@@ -15,7 +15,7 @@ Defold는 공유 코드를 사용하여 스크립트 파일에 다른 스크립�
 ## Requiring files
 우리가 여러 종류의 나비를 특징으로 가진 어플리케이션을 개발중이라고 가정해 봅시다. 우리는 이 나비들의 몇몇 동작을 만들고 이 동작을 공유하려 합니다. 이 작업을 위해서는 우선 게임 오브젝트에 스크립트 파일을 생성하도록 합니다.
 
-![Blue butterfly](../images/modules/modules_blue_butterfly.png)
+![Blue butterfly](/manuals/images/modules/modules_blue_butterfly.png)
 
 "blue_butterfly.script"에 아래 코드를 입력합니다:
 
@@ -41,9 +41,9 @@ end
 
 "flying.lua"을 생성하려면 프로젝트에 새 Lua Module File을 추가하고 이름을 바꾸면 됩니다.
 
-![New module](../images/modules/modules_new.png)
+![New module](/manuals/images/modules/modules_new.png)
 
-![New module name](../images/modules/modules_new_name.png)
+![New module name](/manuals/images/modules/modules_new_name.png)
 
 
 ```lua
@@ -80,7 +80,7 @@ end
 
 이 코드는 아주 잘 동작하며 나비를 원래 위치(origin) 주변으로 랜덤하게 움직이게 합니다. 이제 우리는 노란색 나비의 게임 오브젝트를 컬렉션에 추가해 보도록 합시다.
 
-![Blue and yellow butterflies](../images/modules/modules_blue_and_yellow.png)
+![Blue and yellow butterflies](/manuals/images/modules/modules_blue_and_yellow.png)
 
 랜덤하게 날아다니는 코드는 이미 있으므로, 노란색 나비에 아래 스크립트를 추가해 봅시다.
 

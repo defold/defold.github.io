@@ -14,15 +14,15 @@ brief: 本教程介绍了如何在 Defold 中创建和打开项目.
 
 点击 <kbd>New Project</kbd> 选项, 然后选择创建何种项目. 为项目指定一个硬盘保存位置. 点击 <kbd>Create New Project</kbd> 即完成项目创建. 还可以使用模板创建项目:
 
-![open project](../images/workflow/open_project.png)
+![open project](/manuals/images/workflow/open_project.png)
 
 或者创建教程项目:
 
-![create project from tutorial](../images/workflow/create_from_tutorial.png)
+![create project from tutorial](/manuals/images/workflow/create_from_tutorial.png)
 
 亦或是完整的示例项目:
 
-![create project from sample](../images/workflow/create_from_sample.png)
+![create project from sample](/manuals/images/workflow/create_from_sample.png)
 
 ### 上传项目至 GitHub
 
@@ -38,7 +38,7 @@ brief: 本教程介绍了如何在 Defold 中创建和打开项目.
 
 点击 <kbd>Open From Disk</kbd> 选项以打开已有项目.
 
-![import project](../images/workflow/open_from_disk.png)
+![import project](/manuals/images/workflow/open_from_disk.png)
 
 ## 打开常用项目
 

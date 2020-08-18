@@ -16,20 +16,20 @@ Defold는 기본적인 카메라 컴포넌트(primitive camera component)를 가
 
 OpenGL의 카메라는 viewer, eye, position, near or far clipping plane 를 사용하여 좌표 시스템으로 표현 할 수 있습니다.  near clipping plane은  viewing plane 혹은 화면(screen)과 동일합니다.
 
-![Camera planes](../images/cameras/cameras_planes.png)
+![Camera planes](/manuals/images/cameras/cameras_planes.png)
 
 보통 3D카메라는 viewing volume, frustum, cut off pyramid 과 같은 모양(shape)을 가지고 있습니다. 이들의 효과로는 카메라로부터 멀리 있는 오브젝트를 작게 렌더링 해서, 시각(perspective)적으로 현실감 있게 보이게 합니다. 시야각(field of view)이 넓을 수록, 카메라로 더 넓은 풍경을 볼 수 있고, 가깝고 먼 오브젝트들을 더욱 드라마틱하게 보여줍니다.
 
-![Camera field of view](../images/cameras/cameras_fov.png)
+![Camera field of view](/manuals/images/cameras/cameras_fov.png)
 
 ## Creating a camera
 카메라를 생성하려면, 게임 오브젝트에 Camera component를 추가하세요.
 
-![Create camera component](../images/cameras/cameras_create_component.png)
+![Create camera component](/manuals/images/cameras/cameras_create_component.png)
 
 카메라 컴포넌트는 카메라의 frustum(절두체)를 정의하는 프로퍼티의 모음을 가지고 있습니다.
 
-![Camera properties](../images/cameras/cameras_properties.png)
+![Camera properties](/manuals/images/cameras/cameras_properties.png)
 
 > 현재 기본 FOV 값은 오해의 소지가 있습니다. 각도(degrees)가 아니라 라디안(radians)으로 표시됩니다.  45 degree FOV를 하려면, 0.785 (PI / 4) 값으로 변경해야 합니다.
 
@@ -112,7 +112,7 @@ function on_message(self, message_id, message, sender)
 end
 ```
 
-![Camera speed distance](../images/cameras/cameras_speed_distance.png)
+![Camera speed distance](/manuals/images/cameras/cameras_speed_distance.png)
 
 물론, 우리는 카메라를 움직이는데 제약을 두고 있지 않습니다. 또한 X,Y,Z axis 축을 기반으로 회전할 수도 있습니다.
 
@@ -121,12 +121,12 @@ end
 go.set_rotation(vmath.quat_rotation_z(0.314) * vmath.quat_rotation_y(0.314))
 ```
 
-![Rotated camera](../images/cameras/cameras_camera_rotated.png)
+![Rotated camera](/manuals/images/cameras/cameras_camera_rotated.png)
 
 ## Orthographic projection
 많은 2D 게임에서, 앞 뒤로 움직이는 카메라를 사용하는 게임이 픽셀 퍼펙트(pixel perfect)로 렌더링 하려는 컨텐츠가 있다면 문제가 될 수 있습니다. 카메라를 완벽한 Z 거리(perfect Z distance)에 배치해서 원하는 시야(view)를 얻는 대신, 직교 투영(orthographic projection)으로 카메라를 설정하여 대신하는 것이 좋습니다. 즉, 카메라의 시야(view)가 더 이상 절두체(frustum)에 의해 좌우되지 않고, 더욱 간단한 상자(box)에 의해 좌우된다는 것을 의미합니다.
 
-![Orthographic projection](../images/cameras/cameras_orthographic.png)
+![Orthographic projection](/manuals/images/cameras/cameras_orthographic.png)
 
 직교 투영(Orthographic projection)은 거리에 따라 오브젝트의 크기를 변경하지 않으므로 비현실적으로 보이게 됩니다. 만약 한 사람이 카메라 10000 미터 멀리 서 있어도 카메라 바로 앞에 서 있는 사람과 동일한 크기로 렌더링 됩니다. 하지만, 이러한 그래픽 투영 방법은 때로 유용하며 2D 게임에서 자주 사용됩니다. 직교 투영(orthographic projection)을 사용하려면 렌더 스크립트를 수정해야 합니다.
 

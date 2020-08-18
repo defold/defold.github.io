@@ -32,17 +32,17 @@ Defold 渲染脚本提供整个渲染流程的控制. 渲染脚本控制着显�
 
 比如使用这个瓷砖图源和角色 ([source](https://ansimuz.itch.io/grotto-escape-game-art-pack)) 来模拟一个8位 320x200 分辨率游戏:
 
-![](../images/screen_size/retro-player.png)
+![](/manuals/images/screen_size/retro-player.png)
 
-![](../images/screen_size/retro-tiles.png)
+![](/manuals/images/screen_size/retro-tiles.png)
 
 在 *game.project* 文件中设置分辨率 320x200  然后编译, 游戏看起来是这样:
 
-![](../images/screen_size/retro-original_320x200.png)
+![](/manuals/images/screen_size/retro-original_320x200.png)
 
 对于现代分辨率屏幕来说窗口也太小了! 把窗口拖动放大到 1280x800 还舒服些:
 
-![](../images/screen_size/retro-original_1280x800.png)
+![](/manuals/images/screen_size/retro-original_1280x800.png)
 
 现在窗口感觉好多了, 我们还需调整图像, 因为太小了难以看清游戏内容. 我们用渲染脚本来设置一个固定放大的映射:
 
@@ -52,25 +52,25 @@ msg.post("@render:", "use_fixed_projection", { zoom = 4 })
 
 结果会变成这样:
 
-![](../images/screen_size/retro-zoomed_1280x800.png)
+![](/manuals/images/screen_size/retro-zoomed_1280x800.png)
 
 好多了. 窗口和图像都可以, 但是仔细看会发现一个明显的问题:
 
-![](../images/screen_size/retro-zoomed_linear.png)
+![](/manuals/images/screen_size/retro-zoomed_linear.png)
 
 图像模糊了! 因为GPU渲染纹理时放大了图形采样. 默认 *game.project* 文件里 Graphics 部分设置是 *linear*:
 
-![](../images/screen_size/retro-settings_linear.png)
+![](/manuals/images/screen_size/retro-settings_linear.png)
 
 现在改成 *nearest* 试试:
 
-![](../images/screen_size/retro-settings_nearest.png)
+![](/manuals/images/screen_size/retro-settings_nearest.png)
 
-![](../images/screen_size/retro-zoomed_nearest.png)
+![](/manuals/images/screen_size/retro-zoomed_nearest.png)
 
 现在我们的游戏图像是像素对齐的了. 还可以想想其他办法, 比如在*game.project*的sprite里关闭 sub-pixels:
 
-![](../images/screen_size/retro-subpixels.png)
+![](/manuals/images/screen_size/retro-subpixels.png)
 
 当Subpixels选项关闭后所有 sprites 就不会渲染在半个像素上而是永远像素对齐.
 
@@ -92,7 +92,7 @@ msg.post("@render:", "use_fixed_fit_projection")
 
 想要支持高分辨率视网膜屏幕可以在 *game.project* 文件里打开这个选项:
 
-![](../images/screen_size/highdpi-enabled.png)
+![](/manuals/images/screen_size/highdpi-enabled.png)
 
 选中这个选项就打开了高分辨率后台缓冲. 游戏会以设置好的宽高双倍比例渲染, 但是游戏分辨率不变. 也就是说游戏内容是1倍大小的就照常显示. 但是如果内容是双倍大小再在游戏里缩小为1倍的话就是高清渲染了.
 
@@ -120,4 +120,4 @@ Defold支持GUI在手机上自动适配屏幕方向. 此功能让你能把GUI设
 
 Debug 菜单有用来模拟特定设备分辨率或者自定义分辨率的选项. 当应用运行时你可以通过选择 <kbd>Debug->Simulate Resolution</kbd> 然后从列表中选择一个模拟设备. 运行中的应用会自动缩放来测试游戏运行在不同分辨率和屏幕比例的设备上的样子.
 
-![](../images/screen_size/simulate-resolution.png)
+![](/manuals/images/screen_size/simulate-resolution.png)

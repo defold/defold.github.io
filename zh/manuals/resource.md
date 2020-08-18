@@ -19,7 +19,7 @@ brief: 本教程介绍了 Defold 如何自动管理资源以及如何手动加�
 - 集合代理组件数据 (集合).
 - 在 "game.project" 中定义的用户数据.
 
-![Resource tree](../images/resource/resource_tree.png)
+![Resource tree](/manuals/images/resource/resource_tree.png)
 
 游戏 *打包时*, 只保留资源树链接了的内容. 没被链接到的被剔除. 所以打包时不必手动选择哪些资源需要打包哪些资源不需要打包.
 
@@ -36,13 +36,13 @@ brief: 本教程介绍了 Defold 如何自动管理资源以及如何手动加�
 
 Defold 打包和加载资源的方法可以被修改具体到如何, 何时把资源读入内存.
 
-![Resource loading](../images/resource/loading.png)
+![Resource loading](/manuals/images/resource/loading.png)
 
 ## 动态加载的工厂资源
 
 工厂组件所链接的资源一般连同该组件直接载入内存. 这使得工厂组件可以尽快创建所需的游戏对象. 如果希望延迟加载可以开启工厂组件的 *Load Dynamically* 选项.
 
-![Load dynamically](../images/resource/load_dynamically.png)
+![Load dynamically](/manuals/images/resource/load_dynamically.png)
 
 开启动态加载后, 引擎打包时会加入工厂链接资源, 但是加载工厂组件时不会主动加载这些资源. 需要加载时, 有两个办法:
 
@@ -61,6 +61,6 @@ Defold 持有所有资源的引用计数. 引用数为0则表示资源不被使�
 
 使用集合代理, 就可以把一些资源从打包排除出去. 这样有助于保持包体最小化. 因为比如, 浏览器在运行 HTML5 游戏时会先下载完整的游戏包体再启动游戏.
 
-![Exclude](../images/resource/exclude.png)
+![Exclude](/manuals/images/resource/exclude.png)
 
 开启 *Exclude* 选项的集合代理的资源会被排除在打包之外. 所以, 你需要把这些被排除的集合保存在云端. 详情请见 [热更新教程](/zh/manuals/live-update/).

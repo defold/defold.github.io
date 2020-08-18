@@ -14,7 +14,7 @@ Defold 支持专门用于GUI场景中显示文本的GUI节点. 各种字体资�
 
 需要在文本节点使用的字体首先要应用到 GUI 组件之中. 或者使用右键点击 *Fonts* 文件夹, 使用 <kbd>GUI</kbd> 顶级菜单或者快捷键.
 
-![Fonts](../images/gui-text/fonts.png)
+![Fonts](/manuals/images/gui-text/fonts.png)
 
 文本节点有一些特有属性:
 
@@ -40,7 +40,7 @@ Defold 支持专门用于GUI场景中显示文本的GUI节点. 各种字体资�
 *Right*
 : 如果锚点设置成任何 `East` 模式, 则文本右对齐.
 
-![文本对齐](../images/gui-text/align.png)
+![文本对齐](/manuals/images/gui-text/align.png)
 
 ## 运行时控制操作
 

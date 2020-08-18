@@ -14,7 +14,7 @@ Defold 为密切合作的小游戏团队而设计. 团队成员可以并行工�
 
 本地项目文件改变时, Defold 在 *Changed Files* 面板中追踪这些改变, 把每个新增, 删除或者修改了的文件罗列出来.
 
-![changed files](../images/workflow/changed_files.png)
+![changed files](/manuals/images/workflow/changed_files.png)
 
 选中一个文件点击 <kbd>Diff</kbd> 来查看更改, 或者点击 <kbd>Revert</kbd> 来把文件还原回上次同步后的状态.
 
@@ -31,18 +31,18 @@ Defold 为密切合作的小游戏团队而设计. 团队成员可以并行工�
 
 要同步项目, 选择菜单栏 <kbd>File ▸ Synchronize</kbd>. 会有一系列引导对话框帮助你完成同步.
 
-![Start sync](../images/workflow/sync.png)
+![Start sync](/manuals/images/workflow/sync.png)
 
 点击 <kbd>Pull</kbd> 从服务器拉取更新并混合到本地. 如果发现冲突, 会提示你来解决:
 
-![Resolve](../images/workflow/resolve.png)
+![Resolve](/manuals/images/workflow/resolve.png)
 
 对于每个冲突文件, 右键点击后从弹出菜单选择解决方法:
 
 View Diff
 : 打开对比差别的文本编辑器.
 
-  ![diff view](../images/workflow/diff.png)
+  ![diff view](/manuals/images/workflow/diff.png)
 
   左边是从服务器上拉取的文件内容. 右边是本地的文件内容. 差别之处会做高亮显示便于查看.
 
@@ -60,7 +60,7 @@ Use Theirs
 
 拉取更新并解决冲突之后, 会提示完成对话框.
 
-![pull done](../images/workflow/push.png)
+![pull done](/manuals/images/workflow/push.png)
 
 * 点击 <kbd>Cancel</kbd> 取消此次同步.
 * 点击 <kbd>Push</kbd> 把本地更新提交并推送到服务器.
@@ -68,7 +68,7 @@ Use Theirs
 
 如果打算向服务器推送更新, 第一步必须做提交工作. 推送对话框会让你选择哪些文件需要提交并推送 (下图以橙色方框标明).
 
-![stage](../images/workflow/stage.png)
+![stage](/manuals/images/workflow/stage.png)
 
 点击 <kbd>Push</kbd> 即可提交并推送到服务器.
 

@@ -17,27 +17,27 @@ title: Defold manual
 ## Setting up library sharing
 예를 들어 공유된 스프라이트와 타일 소스를 포함하는 라이브러리를 개발하려 한다고 가정해 봅시다. 당신은 Defold 대쉬보드(자세한 내용은 [Workflow 문서](/ko/manuals/workflow) 참고)에서 새 프로젝트를 설정하는 것으로 시작합니다. 프로젝트에서 공유하려는 폴더를 결정하고 프로젝트 셋팅에서 "include_dirs" 프로퍼티에 이 폴더들의 이름을 추가합니다. 여러 개의 폴더를 추가하려면 공백(space)로 이름을 구분하면 됩니다.
 
-![Include dirs](../images/libraries/libraries_include_dirs.png)
+![Include dirs](/manuals/images/libraries/libraries_include_dirs.png)
 
 Defold 서버는 프로젝트가 공유되는 폴더를 포함하고 있다는걸 알아야 하므로 프로젝트를 Synchronize 해야 합니다. 이제 이 라이브러리를 다른 프로젝트에 추가하기 전에, 라이브러리의 위치부터 알아야 합니다.
 
 ### Library URL
 라이브러리는 표준 URL을 통해 참조됩니다. 각 프로젝트는 Dashboard에서 찾을 수 있는 Library URL을 가지고 있습니다. 관련 프로젝트를 선택하고 URL을 복사거나 적어두기 바랍니다.
 
-![Library URL](../images/libraries/libraries_library_url.png)
+![Library URL](/manuals/images/libraries/libraries_library_url.png)
 
 ## Setting up library dependencies
 라이브러리에 엑세스 하려는 프로젝트를 엽니다. Project settings에서 "dependencies" 프로퍼티에 아까 복사한 URL을 추가합니다. 원하는 경우 여러 종속 프로젝트를 지정할 수도 있습니다. 그냥 공백(space)으로 구분해주기만 하면 됩니다.
 
-![Dependencies](../images/libraries/libraries_dependencies.png)
+![Dependencies](/manuals/images/libraries/libraries_dependencies.png)
 
 이제, 라이브러리 종속성을 업데이트 하기 위해 **Project > Fetch Libraries**  를 선택합니다. 이는 프로젝트를 열 때마다 자동으로 발생하므로 프로젝트를 다시 열 필요 없이 종속성이 변경될 경우에 이 작업이 수행 됩니다. 종속성 라이브러리를 추가/삭제 하거나 종속 라이브러리 중 하나가 누군가에 의해 변경되거나 동기화 되는 경우에도 발생합니다.
 
-![Fetch Libraries](../images/libraries/libraries_fetch_libraries.png)
+![Fetch Libraries](/manuals/images/libraries/libraries_fetch_libraries.png)
 
 이제  Assets pane에 공유된 폴더가 표시되고 공유된 모든것을 사용할 수 있습니다. 변경사항을 라이브러리 프로젝트에 동기화 하면 프로젝트에서 사용할 수 있게 됩니다.
 
-![Library setup done](../images/libraries/libraries_done.png)
+![Library setup done](/manuals/images/libraries/libraries_done.png)
 
 ## Troubleshooting
 ### Broken references
@@ -45,7 +45,7 @@ Defold 서버는 프로젝트가 공유되는 폴더를 포함하고 있다는�
 
 예를 들어, "shared_sprites" 라이브러리 폴더에는 아틀라스가 포함되어 있습니다. 아틀라스에는 PNG 이미지들이 모여져 있지만 실제로 이 이미지들은 공유되지 않은 라이브러리 프로젝트의 폴더에 있습니다.
 
-![Bad references](../images/libraries/libraries_bad_references.png)
+![Bad references](/manuals/images/libraries/libraries_bad_references.png)
 
 Text Editor(기본 Atlas Editor 말고)로 아틀라스를 열어보면 수집된 이미지들의 경로를 볼 수 있습니다.
 

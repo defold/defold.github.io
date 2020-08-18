@@ -37,7 +37,7 @@ To add a collision object component to a game object:
 3. Use the move, rotate and scale tools to edit the shapes.
 4. Select the component in the *Outline* and edit the collision object's *Properties*.
 
-![Physics collision object](../images/physics/collision_object.png)
+![Physics collision object](/manuals/images/physics/collision_object.png)
 
 Id
 : The identity of the component.
@@ -98,7 +98,7 @@ The physics engine allows you to group your physics objects and filter how they 
 
 For a collision between two objects to register both objects must mutually specify each other's groups in their *Mask* field.
 
-![Physics collision group](../images/physics/collision_group.png)
+![Physics collision group](/manuals/images/physics/collision_group.png)
 
 The *Mask* field can contain multiple group names, allowing for complex interaction scenarios.
 
@@ -113,7 +113,7 @@ To add collision to a tile map:
 3. Instead of adding shapes to the component, set the *Collision Shape* property to the *tilemap* file.
 4. Set up the collision object component *Properties* as usual.
 
-![Tilesource collision](../images/physics/collision_tilemap.png)
+![Tilesource collision](/manuals/images/physics/collision_tilemap.png)
 
 <div class='important' markdown='1'>
 Note that the *Group* property is **not** used here since the collision groups are defined in the tile map's tile source.
@@ -226,7 +226,7 @@ end
 
 This code will separate your kinematic object from other physics object it penetrates, but the separation often overshoots and you will see jitter in many cases. To understand the problem better, consider the following case where a player character has collided with two objects, *A* and *B*:
 
-![Physics collision](../images/physics/collision_multi.png)
+![Physics collision](/manuals/images/physics/collision_multi.png)
 
 The physics engine will send multiple `"contact_point_response"` message, one for object *A* and one for object *B* the frame the collision occurs. If you move the character in response to each penetration, as in the naive code above, the resulting separation would be:
 
@@ -235,17 +235,17 @@ The physics engine will send multiple `"contact_point_response"` message, one fo
 
 The order of these is arbitrary but the result is the same either way: a total separation that is the *sum of the individual penetration vectors*:
 
-![Physics separation naive](../images/physics/separation_naive.png)
+![Physics separation naive](/manuals/images/physics/separation_naive.png)
 
 To properly separate the character from objects *A* and *B*, you need to handle each contact point's penetration distance and check if any previous separations have already, wholly or partially, solved the separation.
 
 Suppose that the first contact point message comes from object *A* and that you move the character out by *A*'s penetration vector:
 
-![Physics separation step 1](../images/physics/separation_step1.png)
+![Physics separation step 1](/manuals/images/physics/separation_step1.png)
 
 Then the character has already been partially separated from *B*. The final compensation necessary to perform full separation from object *B* is indicated by the black arrow above. The length of the compensation vector can be calculated by projecting the penetration vector of *A* onto the penetration vector of *B*:
 
-![Projection](../images/physics/projection.png)
+![Projection](/manuals/images/physics/projection.png)
 
 $$l = vmath.project(A, B) \times vmath.length(B)$$
 

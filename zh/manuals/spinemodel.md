@@ -37,7 +37,7 @@ Skin
 
 此时就可以在编辑器里看到Spine模型了:
 
-![编辑器中的Spine模型](../images/spinemodel/spinemodel.png)
+![编辑器中的Spine模型](/manuals/images/spinemodel/spinemodel.png)
 
 ## 运行时动画
 

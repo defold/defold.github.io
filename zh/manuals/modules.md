@@ -14,7 +14,7 @@ Lua 模块使你的项目更具结构化还可以创建可重用库代码. 这�
 
 Lua 代码保存在游戏项目中的 ".lua" 文件里, 可以由脚本和gui脚本引入. 创建Lua模块, 在 *Assets* 视图右键点击, 选择 <kbd>New... ▸ Lua Module</kbd>. 输入文件名点击 <kbd>Ok</kbd>:
 
-![new file](../images/modules/new_name.png)
+![new file](/manuals/images/modules/new_name.png)
 
 假设 "main/anim.lua" 有如下代码:
 

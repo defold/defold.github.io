@@ -46,11 +46,11 @@ end
 
 加入此脚本组件的任何对象都可以设置属性值了.
 
-![Component with properties](../images/script-properties/component.png)
+![Component with properties](/manuals/images/script-properties/component.png)
 
 在编辑器里选择 *Outline* 视图,  可编辑的属性值会出现在 *Properties* 部分:
 
-![Properties](../images/script-properties/properties.png)
+![Properties](/manuals/images/script-properties/properties.png)
 
 被修改过的属性值以蓝色显示. 点击属性名旁边的重置按钮可以重置回默认值 (脚本里定义属性时的初始值).
 

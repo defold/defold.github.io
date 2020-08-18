@@ -21,7 +21,7 @@ function on_reload(self)
 end
 ```
 
-![Visual profiler](../images/profiling/visual_profiler.png)
+![Visual profiler](/manuals/images/profiling/visual_profiler.png)
 
 ## 网页版分析器
 
@@ -32,18 +32,18 @@ end
 1. 在目标设备上启动游戏.
 2. 选择菜单 <kbd> Debug ▸ Open Web Profiler</kbd>. 或者比如说, 同时调试多个设备时, 可以打开浏览器访问地址 `http://<device IP>:8002` 其中 `<device IP>` 是设备 IP 地址. 你可以从菜单 <kbd>Project ▸ Target</kbd> 找到设备的 IP 地址. 如果调试计算机本机游戏, 访问 http://localhost:8002 即可.
 
-![Web profiler mode](../images/profiling/webprofiler_mode.png)
+![Web profiler mode](/manuals/images/profiling/webprofiler_mode.png)
 最上面, 挨着 *Capture* 按钮有一个开关用来切换 *CPU/Frame 分析器* 和 *Resource 分析器*.
 
 ### CPU/Frame 分析器
 CPU 分析器对当前采样的数据分析图表分为4个部分. 要更新采样数据, 点击最上面的 *Capture* 按钮即可.
 
-![Web profiler](../images/profiling/webprofiler_page.png)
+![Web profiler](/manuals/images/profiling/webprofiler_page.png)
 
 帧预览
 : 帧预览视图把最近采集的 20 帧并排放置. 每个方块的高度代表这个帧的耗时. 最左边显示这些帧最大耗时.
 
-  ![Frames overview](../images/profiling/webprofiler_frames_overview.png)
+  ![Frames overview](/manuals/images/profiling/webprofiler_frames_overview.png)
 
   帧预览下面是采样数据的详细展示.
 
@@ -52,24 +52,24 @@ CPU 分析器对当前采样的数据分析图表分为4个部分. 要更新采�
 帧数据
 : 帧数据显示了当前选择帧的详细数据表格. 这里可以看到引擎范围 (左边) 耗时（单位毫秒）和每个范围内的各个采样点 (中间). 右边是计数表格. 便于跟踪每帧 draw call 之类的数据.
 
-  ![Frame data](../images/profiling/webprofiler_frame_data.png)
+  ![Frame data](/manuals/images/profiling/webprofiler_frame_data.png)
 
   勾选视图中的复选框可以给出下面的曲线图.
 
 帧曲线图
 : 帧曲线图显示了你选择的特定数据项在每个采样帧中的耗时曲线图. X 轴是帧编号 Y 轴是耗时 (单位毫秒). 曲线颜色就是选择的数据项的颜色.
 
-  ![Frames plot](../images/profiling/webprofiler_frames_plot.png)
+  ![Frames plot](/manuals/images/profiling/webprofiler_frames_plot.png)
 
 帧瀑布图
 :  帧瀑布图展示了一帧中引擎耗时的各个部分.
 
-  ![Frame timechart](../images/profiling/webprofiler_frame_timechart.png)
+  ![Frame timechart](/manuals/images/profiling/webprofiler_frame_timechart.png)
 
 ### 资源分析器
 资源分析图表分为2个部分, 一个是集合层级关系, 显示了游戏中所有对象和组件实例, 另一个展示了加载的各种资源.
 
-![Resource profiler](../images/profiling/webprofiler_resources_page.png)
+![Resource profiler](/manuals/images/profiling/webprofiler_resources_page.png)
 
 集合视图
 : 集合视图展示了游戏里各个集合下所实例化出的各个游戏对象和组件的层级关系. 便于查找实例化对象与其原型的对应关系.
@@ -81,11 +81,11 @@ CPU 分析器对当前采样的数据分析图表分为4个部分. 要更新采�
 
 编译游戏时有个选项可以生成编译报告. 通过报告可以整体把握游戏包中各个资源的空间占用情况. 编译游戏时开启 *Generate build report* 选项即可.
 
-![build report](../images/profiling/build_report.png)
+![build report](/manuals/images/profiling/build_report.png)
 
 游戏编译完成后将生成 "report.html" 文件. 用浏览器打开这个文件进行查阅:
 
-![build report](../images/profiling/build_report_html.png)
+![build report](/manuals/images/profiling/build_report_html.png)
 
 *Overview* 按资源类别给出空间占用饼图.
 
@@ -107,25 +107,25 @@ ProFi (Lua)
 Instruments (macOS and iOS)
 : Xcode 包含一个性能分析可视化工具. 使用它可以跟踪检查一个或多个应用或进程的行为, 测试设备功能 (比如 Wi-Fi 和 Bluetooth) 等等.
 
-  ![instruments](../images/profiling/instruments.png)
+  ![instruments](/manuals/images/profiling/instruments.png)
 
 OpenGL 分析器 (macOS)
 : 可以将 OpenGL 分析器作为 "Additional Tools for Xcode" 下载下来 (Xcode 菜单选择 <kbd>Xcode ▸ Open Developer Tool ▸ More Developer Tools...</kbd>).
 
   此工具可以用来分析运行中的 Defold 应用如何使用 OpenGL. 可以用来跟踪 OpenGL 函数调用, 在 OpenGL 函数上打断点, 调查应用资源 (纹理, 程序, 着色器之类的), 查看缓存内容, 以及 OpenGL 的各方面状态.
 
-  ![opengl profiler](../images/profiling/opengl.png)
+  ![opengl profiler](/manuals/images/profiling/opengl.png)
 
 Android 分析器 (Android)
 : https://developer.android.com/studio/profile/android-profiler.html
 
   Android 分析器是一组能够试试捕捉游戏 CPU, 内存及网络使用情况的工具. 可以基于取样跟踪代码执行, 堆栈使用, 内存分配及网络文件传输. 要使用这个工具需要在 "AndroidManifest.xml" 里设置 `android:debuggable="true"`.
 
-  ![android profiler](../images/profiling/android_profiler.png)
+  ![android profiler](/manuals/images/profiling/android_profiler.png)
 
 图像 API 调试器 (Android)
 : https://github.com/google/gapid
 
   这组工具可以用来查看, 微调和重放从程序到显卡驱动的功能调用. 要使用这个工具需要在 "AndroidManifest.xml" 里设置 `android:debuggable="true"`.
 
-  ![graphics api debugger](../images/profiling/gapid.png)
+  ![graphics api debugger](/manuals/images/profiling/gapid.png)
