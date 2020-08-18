@@ -4,6 +4,14 @@ layout: base
 {% include learnnav.html showmenu=true %}
 
 {%- assign language = site.data.languageindex | where: "language", page.language | first -%}
+{%- for section in site.data.learnindex.navigation.manuals -%}
+	{%- for manual in section.items -%}
+		{%- if page.url contains manual.path -%}
+			{%- assign current_manual = manual -%}
+			{%- assign current_section = section -%}
+		{%- endif -%}
+	{%- endfor -%}
+{%- endfor -%}
 <div class="section lightest">
 	<div class="container">
 		<div class="row">
@@ -11,11 +19,9 @@ layout: base
 				<div class="navmenu">
 				{%- for section in site.data.learnindex.navigation.manuals -%}
 					{%- assign checked = "" -%}
-					{%- for manual in section.items -%}
-						{%- if page.url contains manual.path -%}
-							{%- assign checked = "checked" -%}
-						{%- endif -%}
-					{%- endfor -%}
+					{%- if current_section == section -%}
+						{%- assign checked = "checked" -%}
+					{%- endif -%}
 					<input id="collapsible_{{ section.name }}" class="toggle" type="checkbox" {{ checked }}/>
 					<label for="collapsible_{{ section.name }}" class="togglelabel">{{ section.name | capitalize }}</label>
 					<ul class="nobullet">
@@ -66,7 +72,9 @@ layout: base
 					{%- if l.active -%}
 					<li style="padding-left: 2rem;">
 						{%- if l.language == "en" -%}
-							<a href='/manuals/introduction' style="text-decoration: none;">{{ l.name }}</a>
+							<a href='{{ current_manual.path }}' style="text-decoration: none;">{{ l.name }}</a>
+						{%- elsif current_manual.languages contains l.language -%}
+							<a href='/{{ l.urlprefix }}{{ current_manual.path }}' style="text-decoration: none;">{{ l.name }}</a>
 						{%- else -%}
 							<a href='/{{ l.language }}/manuals/introduction' style="text-decoration: none;">{{ l.name }}</a>
 						{%- endif -%}

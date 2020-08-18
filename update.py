@@ -308,7 +308,7 @@ def process_docs(download = False):
             process_doc_file(filename)
             replace_in_file(filename, r"title\:", r"layout: tutorial\ntitle:")
 
-        # figure in which languages each learn page exists
+        # figure out in which languages each learn page exists
         print("...index (incl. languages)")
         for categories in index["navigation"]:
             for section in index["navigation"][categories]:
