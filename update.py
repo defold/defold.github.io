@@ -21,7 +21,8 @@ from lunr import trimmer
 
 SHA1 = {}
 
-EXTENSIONS = [ "extension-push", "extension-gpgs", "extension-iac", "extension-iap", "extension-webview", "extension-facebook", "extension-firebase" ]
+EXTENSIONS = [ "extension-push", "extension-gpgs", "extension-iac", "extension-iap", "extension-webview", "extension-facebook", "extension-firebase", "extension-fbinstant" ]
+EXTENSIONS.sort()
 
 DOCS_ZIP = "doc-master.zip"
 EXAMPLES_ZIP = "examples-master.zip"
@@ -817,8 +818,7 @@ def process_refdoc(download = False):
                         })
 
         # add extensions
-        extensions = [ "extension-iap", "extension-push", "extension-gpgs" ]
-        for extension in extensions:
+        for extension in EXTENSIONS:
             refindex.append({
                 "namespace": extension,
                 "url": "/" + extension + "/api",
