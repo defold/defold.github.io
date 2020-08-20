@@ -1,6 +1,9 @@
 ---
-τίτλος: διεύθυνση addressing στο Defold
-ενσυντομία: Αυτό το εγχειρίδιο εξηγεί πώς η Defold έχει λύσει το πρόβλημα της διεύθυνσης.
+layout: manual
+language: gr
+github: https://github.com/defold/doc
+title: διεύθυνση addressing στο Defold
+brief: Αυτό το εγχειρίδιο εξηγεί πώς η Defold έχει λύσει το πρόβλημα της διεύθυνσης.
 ---
 
 # διεύθυνση

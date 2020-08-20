@@ -1,6 +1,9 @@
 ---
-τίτλος: Εισαγωγή στο Defold
-ενσυντομία: Μια σύντομη εισαγωγή στο Defold.
+layout: manual
+language: gr
+github: https://github.com/defold/doc
+title: Εισαγωγή στο Defold
+brief: Μια σύντομη εισαγωγή στο Defold.
 ---
 
 # Καλώς ήλθατε στο Defold

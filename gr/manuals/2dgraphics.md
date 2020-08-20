@@ -1,6 +1,9 @@
 ---
-τίτλος: Εγχειρίδιο γραφικών Defold 2D
-ενσυντομία: Αυτό το εγχειρίδιο είναι ξεπερασμένο
+layout: manual
+language: gr
+github: https://github.com/defold/doc
+title: Εγχειρίδιο γραφικών Defold 2D
+brief: Αυτό το εγχειρίδιο είναι ξεπερασμένο
 ---
 
 # 2D Γραφικά
