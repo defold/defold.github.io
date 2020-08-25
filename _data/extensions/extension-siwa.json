@@ -1,0 +1,95 @@
+{
+    "elements": [
+        {
+            "description": "Check if Sign in with Apple is available (iOS 13+).", 
+            "name": "is_supported", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Get the credential state of a user.", 
+            "name": "get_credential_state", 
+            "parameters": [
+                {
+                    "doc": "User id to get credential state for.", 
+                    "name": "user_id"
+                }, 
+                {
+                    "doc": "Credential state callback function.", 
+                    "name": "callback"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Show the Sign in with Apple UI", 
+            "name": "authenticate", 
+            "parameters": [
+                {
+                    "doc": "Authentication callback function.", 
+                    "name": "callback"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "The user can\u2019t be found.", 
+            "name": "STATE_NOT_FOUND", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Unknown credential state.", 
+            "name": "STATE_UNKNOWN", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The user is authorized.", 
+            "name": "STATE_AUTHORIZED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "Authorization for the given user has been revoked.", 
+            "name": "STATE_REVOKED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The system hasn\u2019t determined whether the user might be a real person.", 
+            "name": "STATUS_UNKNOWN", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The system can\u2019t determine this user\u2019s status as a real person.", 
+            "name": "STATUS_UNSUPPORTED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The user appears to be a real person.", 
+            "name": "STATUS_LIKELY_REAL", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }
+    ], 
+    "info": {
+        "brief": "siwa", 
+        "description": "Functions and constants for interacting Sign in with Apple. [icon:ios]", 
+        "group": "EXTENSIONS", 
+        "name": "siwa", 
+        "namespace": "siwa"
+    }
+}
