@@ -21,7 +21,7 @@ from lunr import trimmer
 
 SHA1 = {}
 
-EXTENSIONS = [ "extension-push", "extension-gpgs", "extension-iac", "extension-iap", "extension-webview", "extension-facebook", "extension-firebase", "extension-fbinstant" ]
+EXTENSIONS = [ "extension-push", "extension-gpgs", "extension-iac", "extension-iap", "extension-webview", "extension-facebook", "extension-firebase", "extension-fbinstant", "extension-siwa" ]
 EXTENSIONS.sort()
 
 DOCS_ZIP = "doc-master.zip"

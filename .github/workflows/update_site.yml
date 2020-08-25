@@ -26,5 +26,6 @@ jobs:
             { if: "github.event.action == 'extension-fbinstant'", name: 'Update extension-fbinstant', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} extension-fbinstant commit' },
             { if: "github.event.action == 'extension-firebase'", name: 'Update extension-firebase', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} extension-firebase commit' },
             { if: "github.event.action == 'extension-gpgs'", name: 'Update extension-gpgs', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} extension-gpgs commit' },
+            { if: "github.event.action == 'extension-siwa'", name: 'Update extension-siwa', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} extension-siwa commit' },
             { if: "github.event.action == 'codepad'", name: 'Update codepad', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} codepad commit' }
         ]
