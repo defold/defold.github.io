@@ -722,7 +722,6 @@ def process_games(tmp_dir):
         game_id = basename.replace(".json", "")
         new_game = read_as_json(filename)
         new_game["id"] = game_id
-        new_game["show"] = "half"
         new_game["placement"] = "games"
 
         # try to find game in existing list of games
