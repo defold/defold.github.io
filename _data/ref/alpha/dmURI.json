@@ -1,0 +1,86 @@
+{
+  "info": {
+    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/uri.h&gt;</span></p>\n<p>URI functions.</p>", 
+    "namespace": "dmURI", 
+    "name": "URI", 
+    "brief": "<p>SDK URI API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Decodes an URL encoded buffer</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const char*</span> Input</p>", 
+          "name": "src"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">char*</span> Decoded output</p>", 
+          "name": "dst"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmURI::Decode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Performs URL encoding of the supplied buffer</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const char*</span> string to encode</p>", 
+          "name": "src"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">char*</span> the destination buffer</p>", 
+          "name": "dst"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> size of the provided out buffer</p>", 
+          "name": "dst_size"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> number of bytes written</p>", 
+          "name": "bytes_written[out]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmURI::Encode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Parse URI and split in three parts. (scheme, location, path)</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const char*</span> URI to parse</p>", 
+          "name": "uri"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmURI::Parts</span> Result</p>", 
+          "name": "parts"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmURI::Parse"
+    }
+  ]
+}
