@@ -42,9 +42,12 @@ layout: base
 			</div>
 			<div class="columns seven example" style="">
 				<h4>{{ page.title }}</h4>
+				{%- if page.collection -%}
 				{% include example.html %}
 				<br/>
 				<h4>Setup</h4>
+				{% endif %}
+
 				{{ content }}
 
 				{%- if page.scripts.size > 0 -%}
