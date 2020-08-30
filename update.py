@@ -444,7 +444,9 @@ def process_examples(download = False):
 
         print("...copying app")
         examples_dir = "examples"
-        rmcopytree(os.path.join(input_dir, "build", "default", "Defold-examples"), examples_dir)
+        rmcopytree(os.path.join(input_dir, "build", "default", "Defold-examples", "archive"), os.path.join(examples_dir, "archive"))
+        for file in ["Defoldexamples_asmjs.js", "Defoldexamples_wasm.js", "Defoldexamples.wasm", "dmloader.js", "index.html"]:
+            shutil.copyfile(os.path.join(input_dir, "build", "default", "Defold-examples", file), os.path.join(examples_dir, file))
 
         print("...processing index.html")
         replace_in_file(os.path.join(examples_dir, "index.html"), "\<\!DOCTYPE html\>.*\<body\>", "", flags=re.DOTALL)
@@ -456,7 +458,7 @@ def process_examples(download = False):
         replace_in_file(os.path.join(examples_dir, "index.html"), '\"archive\"', '"/examples/archive"')
         replace_in_file(os.path.join(examples_dir, "index.html"), 'engineJS\.src = \'Defoldexamples', 'engineJS.src = \'/examples/Defoldexamples')
         replace_in_file(os.path.join(examples_dir, "index.html"), "engine_arguments: \[", "engine_arguments: [ '--config=examples.start={{ page.collection }}'")
-        shutil.copyfile(os.path.join(examples_dir, "index.html"), "_includes/example.html")
+        os.rename(os.path.join(examples_dir, "index.html"), "_includes/example.html")
 
         print("...copying markdown")
         examplesindex = []
