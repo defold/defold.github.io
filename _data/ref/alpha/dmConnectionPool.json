@@ -1,0 +1,306 @@
+{
+  "info": {
+    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/connection_pool.h&gt;</span></p>\n<p>Connection pool</p>", 
+    "namespace": "dmConnectionPool", 
+    "name": "Connection Pool", 
+    "brief": "<p>SDK Connection pool API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>Connection handle</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "TYPEDEF", 
+      "name": "HConnection"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>Connection pool handle</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "TYPEDEF", 
+      "name": "HPool"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Close connection. Use this function whenever an error occur in eg http.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmConnectionPool::HPool</span> pool</p>", 
+          "name": "pool"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmConnectionPool::HConnection</span></p>", 
+          "name": "connection"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmConnectionPool::Close"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Delete connnection pool</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmConnectionPool::HPool</span> pool</p>", 
+          "name": "pool"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "dmConnectionPool::RESULT_OK"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmConnectionPool::Delete"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Connection to a host/port</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmConnectionPool::HPool</span> pool</p>", 
+          "name": "pool"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">const char*</span> host</p>", 
+          "name": "host"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">uint16_t</span> port</p>", 
+          "name": "port"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmDNS::HChannel</span> The DNS channel that will be used for translating the host to an address</p>", 
+          "name": "dns_channel"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">bool</span> true for ssl connection</p>", 
+          "name": "ssl"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> The timeout (micro seconds) for the connection and ssl handshake</p>", 
+          "name": "timeout"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmConnectionPool::HConnection*</span> connection (out)</p>", 
+          "name": "connection"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Result*</span> socket-result code on failure</p>", 
+          "name": "sock_res"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "dmConnectionPool::RESULT_OK"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmConnectionPool::Dial"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get secure socket.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmConnectionPool::HPool</span> pool</p>", 
+          "name": "pool"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmConnectionPool::HConnection</span></p>", 
+          "name": "connection"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "[type:dmSSLSocket::Socket]"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmConnectionPool::GetSSLSocket"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get socket for connection</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmConnectionPool::HPool</span> pool</p>", 
+          "name": "pool"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmConnectionPool::HConnection</span></p>", 
+          "name": "connection"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "[type:dmSocket::Socket]"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmConnectionPool::GetSocket"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Create a new connection pool</p>", 
+      "parameters": [
+        {
+          "doc": "", 
+          "name": "params"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmConnectionPool::HPool*</span> pool (out)</p>", 
+          "name": "pool"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "dmConnectionPool::RESULT_OK"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmConnectionPool::New"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Creation parameters</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "<p><span class=\"type\">int</span> Max connection in pool</p>", 
+          "name": "m_MaxConnections"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Default max-keep-alive time in seconds</p>", 
+          "name": "m_MaxKeepAlive"
+        }
+      ], 
+      "error": "", 
+      "type": "STRUCT", 
+      "name": "dmConnectionPool::Params"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Result enumeration.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>result enumeration</p>", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "<p>0</p>", 
+          "name": "dmConnectionPool::RESULT_OK"
+        }, 
+        {
+          "doc": "<p>-1</p>", 
+          "name": "dmConnectionPool::RESULT_OUT_OF_RESOURCES"
+        }, 
+        {
+          "doc": "<p>-2</p>", 
+          "name": "dmConnectionPool::RESULT_SOCKET_ERROR"
+        }, 
+        {
+          "doc": "<p>-3</p>", 
+          "name": "dmConnectionPool::RESULT_HANDSHAKE_FAILED"
+        }, 
+        {
+          "doc": "<p>-4</p>", 
+          "name": "dmConnectionPool::RESULT_SHUT_DOWN"
+        }
+      ], 
+      "error": "", 
+      "type": "ENUM", 
+      "name": "dmConnectionPool::Result"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Return connection to pool</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmConnectionPool::HPool</span> pool</p>", 
+          "name": "pool"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmConnectionPool::HConnection</span></p>", 
+          "name": "connection"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmConnectionPool::Return"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Shuts down all open sockets in the pool and block new connection attempts. The function can be\ncalled repeatedly on the same pool until it returns no more connections in use.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmConnectionPool::HPool</span> pool</p>", 
+          "name": "pool"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmSocket::ShutdownType</span> shutdown type to pass to socket shutdown function</p>", 
+          "name": "how"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>number of connections in use</p>", 
+          "name": "current"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmConnectionPool::Shutdown"
+    }
+  ]
+}

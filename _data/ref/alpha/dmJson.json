@@ -9,79 +9,6 @@
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Deallocates a previously created dmJson::Document</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">dmJson::Document*</span> The document</p>", 
-          "name": "document"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>deallocates json document</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "Free"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Parses an (utf-8) string into a dmJson::Document\nThe document must later be freed with dmJson::Free()</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">const char*</span> The input data (Utf-8)</p>", 
-          "name": "buffer"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">uint32_t</span> The size of the json buffer (in bytes)</p>", 
-          "name": "buffer_length"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">dmJson::Document*</span> The output document</p>", 
-          "name": "document"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p>on success</p>", 
-          "name": "dmJson::RESULT_OK"
-        }
-      ], 
-      "brief": "<p>parse json data</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "Parse"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Parses a null terminated (utf-8) string into a dmJson::Document\nThe document must later be freed with dmJson::Free()</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">const char*</span> The input data (Utf-8)</p>", 
-          "name": "buffer"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">dmJson::Document*</span> The output document</p>", 
-          "name": "document"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p>on success</p>", 
-          "name": "dmJson::RESULT_OK"
-        }
-      ], 
-      "brief": "<p>parse json data</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "Parse"
-    }, 
-    {
-      "replaces": "", 
       "description": "<p>Holds a full json document</p>", 
       "parameters": [], 
       "returnvalues": [], 
@@ -108,6 +35,23 @@
       "error": "", 
       "type": "STRUCT", 
       "name": "dmJson::Document"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Deallocates a previously created dmJson::Document</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmJson::Document*</span> The document</p>", 
+          "name": "document"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>deallocates json document</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmJson::Free"
     }, 
     {
       "replaces": "", 
@@ -141,6 +85,62 @@
       "error": "", 
       "type": "STRUCT", 
       "name": "dmJson::Node"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Parses an (utf-8) string into a dmJson::Document\nThe document must later be freed with dmJson::Free()</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const char*</span> The input data (Utf-8)</p>", 
+          "name": "buffer"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> The size of the json buffer (in bytes)</p>", 
+          "name": "buffer_length"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmJson::Document*</span> The output document</p>", 
+          "name": "document"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "dmJson::RESULT_OK"
+        }
+      ], 
+      "brief": "<p>parse json data</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmJson::Parse"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Parses a null terminated (utf-8) string into a dmJson::Document\nThe document must later be freed with dmJson::Free()</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const char*</span> The input data (Utf-8)</p>", 
+          "name": "buffer"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmJson::Document*</span> The output document</p>", 
+          "name": "document"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "dmJson::RESULT_OK"
+        }
+      ], 
+      "brief": "<p>parse json data</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmJson::Parse"
     }, 
     {
       "replaces": "", 
