@@ -8,7 +8,7 @@ brief: 本教程介绍了如何使用瓷砖图源资源.
 
 # Tile Source
 
-[Tilemap 组件](/zh/manuals/tilemap) 使用 *瓷砖图源* 来绘制瓷砖地图也可以由 [Sprite](/zh/manuals/sprite) 或 [粒子系统组件](/zh/manuals/particlefx) 来使用. 瓷砖地图还可以使用瓷砖图源里的 *碰撞形状*  [碰撞检测和物理模拟](/zh/manuals/physics).
+[Tilemap 组件](/zh/manuals/tilemap) 使用 *瓷砖图源* 来绘制瓷砖地图也可以由 [Sprite](/zh/manuals/sprite) 或 [粒子系统组件](/zh/manuals/particlefx) 来使用. 瓷砖地图还可以使用瓷砖图源里的 *碰撞形状*  [碰撞检测和物理模拟](/zh/manuals/physics) ([example](/examples/tilemap/collisions/))..
 
 ## 创建 Tile Source
 

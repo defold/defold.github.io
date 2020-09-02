@@ -373,6 +373,166 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Select for pending data</p>", 
+      "parameters": [
+        {
+          "doc": "<p>Selector</p>", 
+          "name": "selector"
+        }, 
+        {
+          "doc": "<p>Timeout. For blocking pass -1. (microseconds)</p>", 
+          "name": "timeout"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::Select"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Selector</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "STRUCT", 
+      "name": "dmSocket::Selector"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Clear selector for socket. Similar to FD_CLR</p>", 
+      "parameters": [
+        {
+          "doc": "<p>Selector</p>", 
+          "name": "selector"
+        }, 
+        {
+          "doc": "<p>Kind to clear</p>", 
+          "name": "selector_kind"
+        }, 
+        {
+          "doc": "<p>Socket to clear</p>", 
+          "name": "socket"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SelectorClear"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Check if selector is set. Similar to FD_ISSET</p>", 
+      "parameters": [
+        {
+          "doc": "<p>Selector</p>", 
+          "name": "selector"
+        }, 
+        {
+          "doc": "<p>Selector kind</p>", 
+          "name": "selector_kind"
+        }, 
+        {
+          "doc": "<p>Socket to check for</p>", 
+          "name": "socket"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>if set.</p>", 
+          "name": "True"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SelectorIsSet"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Selector kind</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "name": "dmSocket::SELECTOR_KIND_READ"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmSocket::SELECTOR_KIND_WRITE"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmSocket::SELECTOR_KIND_EXCEPT"
+        }
+      ], 
+      "error": "", 
+      "type": "ENUM", 
+      "name": "dmSocket::SelectorKind"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set selector for socket. Similar to FD_SET</p>", 
+      "parameters": [
+        {
+          "doc": "<p>Selector</p>", 
+          "name": "selector"
+        }, 
+        {
+          "doc": "<p>Kind to clear</p>", 
+          "name": "selector_kind"
+        }, 
+        {
+          "doc": "<p>Socket to set</p>", 
+          "name": "socket"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SelectorSet"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Clear selector (all kinds). Similar to FD_ZERO</p>", 
+      "parameters": [
+        {
+          "doc": "<p>Selector</p>", 
+          "name": "selector"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SelectorZero"
+    }, 
+    {
+      "replaces": "", 
       "description": "", 
       "parameters": [
         {
