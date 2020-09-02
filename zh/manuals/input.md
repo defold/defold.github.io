@@ -19,7 +19,7 @@ Devices
 
   1. Keyboard (single key as well as text input)
   2. Mouse (position, button clicks and mouse wheel actions)
-  3. Single and multi-touch (on iOS and Android devices)
+  3. Single and multi-touch (on iOS, Android devices and HTML5 on mobile)
   4. Gamepads (as supported through the operating system and mapped in the [gamepads](#gamepads-settings-file) file)
 
 Input bindings
@@ -111,6 +111,10 @@ Touch Triggers
 
 <div class='important' markdown='1'>
 Multi-touch must not be assigned the same action as the mouse button input for `MOUSE_BUTTON_LEFT` or `MOUSE_BUTTON_1`. Assigning the same action will effectively override single-touch and prevent you from receiving any single-touch events.
+</div>
+
+<div class='sidenote' markdown='1'>
+The [Defold-Input asset](https://defold.com/assets/defoldinput/) can be used to easily set up virtual on-screen controls such as buttons and analog sticks with support for multi touch.
 </div>
 
 Text Triggers
