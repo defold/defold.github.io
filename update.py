@@ -21,9 +21,6 @@ from lunr import trimmer
 
 SHA1 = {}
 
-EXTENSIONS = [ "extension-push", "extension-gpgs", "extension-iac", "extension-iap", "extension-webview", "extension-facebook", "extension-firebase", "extension-fbinstant", "extension-siwa" ]
-EXTENSIONS.sort()
-
 DOCS_ZIP = "doc-master.zip"
 EXAMPLES_ZIP = "examples-master.zip"
 CODEPAD_ZIP = "codepad-master.zip"
@@ -819,13 +816,14 @@ def process_refdoc(download = False):
                         })
 
         # add extensions
-        for extension in EXTENSIONS:
-            refindex.append({
-                "namespace": extension,
-                "url": "/" + extension + "/api",
-                "branch": branch,
-                "type": "extension"
-            })
+        for filename in os.listdir("."):
+            if filename.startswith("extension-") and os.path.isdir(filename):
+                refindex.append({
+                    "namespace": filename,
+                    "url": "/" + filename + "/api",
+                    "branch": branch,
+                    "type": "extension"
+                })
 
     # copy stable files to ref/ for backwards compatibility
     for item in os.listdir(os.path.join("ref", "stable")):
@@ -948,12 +946,13 @@ def commit_changes(githubtoken):
     call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
 
 
-ALL_COMMANDS = [ "docs", "refdoc", "awesome", "examples", "codepad", "commit", "searchindex" ]
-ALL_COMMANDS.extend(EXTENSIONS)
+ALL_COMMANDS = [ "docs", "refdoc", "awesome", "examples", "codepad", "commit", "searchindex", "extensions" ]
+ALL_COMMANDS.sort()
 
 parser = ArgumentParser()
 parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ', all, help)')
 parser.add_argument("--githubtoken", dest="githubtoken", help="Authentication token for GitHub API and ")
+parser.add_argument("--extension", dest="extensions", action='append', help="Which extension to process")
 parser.add_argument("--download", dest="download", action='store_true', help="Download updated content for the command(s) in question")
 args = parser.parse_args()
 
@@ -966,7 +965,7 @@ examples = Build the examples
 codepad = Build the Defold CodePad
 commit = Commit changed files (requires --githubtoken)
 searchindex = Update the static Lunr search index
-extension-xyz = Process the docs for official extension
+extensions = Process the docs for official extensions (use --extension to specify which extensions to process)
 all = Run all of the above commands
 help = Show this help
 """
@@ -986,8 +985,9 @@ for command in args.commands:
         sys.exit(0)
     elif command == "docs":
         process_docs(download = args.download)
-    elif command in EXTENSIONS:
-        process_extension(command, download = args.download)
+    elif command == "extensions":
+        for extension in args.extensions:
+            process_extension(extension, download = args.download)
     elif command == "examples":
         process_examples(download = args.download)
     elif command == "refdoc":
