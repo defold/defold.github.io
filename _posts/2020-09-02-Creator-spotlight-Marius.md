@@ -9,7 +9,7 @@ In the Creator Spotlight posts we invite Defold users to present themselves and 
 
 In the third Defold Creator Spotlight we invited Marius, lead developer at [Critique Gaming](https://critique-gaming.com/), to tell us a little bit about himself and his current project.
 
-
+![Marius](/images/posts/marius.png)
 
 #### What is your name?
 Marius Petcu.
@@ -53,6 +53,6 @@ Still in Interrogation, I remember having an issue with Defold on macOS Mojave o
 
 
 #### How can the community follow your progress (Twitter, blog, website etc)?
-* Our website (you can find our Social Media links over there): https://critique-gaming.com
-* Our GitHub: https://github.com/critique-gaming
-* My GitHub: https://github.com/dapetcu21
+* Our [website](https://critique-gaming.com) (you can find our Social Media links over there)
+* Our [GitHub](https://github.com/critique-gaming)
+* My [GitHub](https://github.com/dapetcu21)
