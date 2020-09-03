@@ -13,6 +13,13 @@ layout: base
 {%- else -%}
 	{%- assign ref = site.data.ref[page.branch][page.ref] -%}
 {%- endif -%}
+
+{%- if page.url contains branch -%}
+	{%- assign page_url = page.url | replace: branch, "BRANCH" -%}
+{%- else -%}
+	{%- assign page_url = page.url | replace: "ref/", "ref/BRANCH/" -%}
+{%- endif -%}
+
 <div class="section lightest">
 	<div class="container">
 		<div class="row">
@@ -42,7 +49,7 @@ layout: base
 					<label for="branch" class="togglelabel">Version</label>
 					<ul class="nobullet">
 						{%- for b in branches -%}
-						<li style="padding-left: 2rem; padding-bottom: 0px;"><a href="{{ page.url | replace: branch, b }}" style="text-decoration: none;">{{ b }}</a></li>
+						<li style="padding-left: 2rem; padding-bottom: 0px;"><a href="{{ page_url | replace: 'BRANCH', b }}" style="text-decoration: none;">{{ b }}</a></li>
 						{%- endfor -%}
 					</ul>
 				</ul>
@@ -53,7 +60,7 @@ layout: base
 				</select>
 				<select class="navdropdown" onchange="location = this.value;">
 					{%- for b in branches -%}
-					<option value="{{ page.url | replace: branch, b }}">{{ b }}</option>
+					<option value="{{ page_url | replace: 'BRANCH', b }}">{{ b }}</option>
 					{%- endfor -%}
 				</select>
 			</div>
