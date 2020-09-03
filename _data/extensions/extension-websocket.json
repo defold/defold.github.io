@@ -1,0 +1,76 @@
+{
+    "elements": [
+        {
+            "description": "Connects to a remote address", 
+            "name": "connect", 
+            "parameters": [
+                {
+                    "doc": "url of the remote connection", 
+                    "name": "url"
+                }, 
+                {
+                    "doc": "optional parameters as properties. The following parameters can be set", 
+                    "name": "params"
+                }, 
+                {
+                    "doc": "callback that receives all messages from the connection", 
+                    "name": "callback"
+                }
+            ], 
+            "returnvalues": [
+                {
+                    "doc": "the connection", 
+                    "name": "object"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Explicitly close a websocket", 
+            "name": "disconnect", 
+            "parameters": [
+                {
+                    "doc": "the websocket connection", 
+                    "name": "connection"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "The websocket was connected", 
+            "name": "EVENT_CONNECTED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The websocket disconnected", 
+            "name": "EVENT_DISCONNECTED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The websocket received data", 
+            "name": "EVENT_MESSAGE", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }, 
+        {
+            "description": "The websocket encountered an error", 
+            "name": "EVENT_ERROR", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "NUMBER"
+        }
+    ], 
+    "info": {
+        "brief": "websocket", 
+        "description": "Functions and constants for using websockets. Supported on all platforms.", 
+        "group": "EXTENSIONS", 
+        "name": "websocket", 
+        "namespace": "websocket"
+    }
+}
