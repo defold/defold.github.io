@@ -44,6 +44,48 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Network addresses were previously represented as an uint32_t, but in\norder to support IPv6 the internal representation was changed to a struct.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>network address</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "STRUCT", 
+      "name": "dmSocket::Address"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Initiate a connection on a socket</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> Socket to initiate connection on</p>", 
+          "name": "socket"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Address</span> Address to connect to</p>", 
+          "name": "address"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Port to connect to</p>", 
+          "name": "port"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "<p>make a connection</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::Connect"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Delete a socket. Corresponds to BSD socket function close()</p>", 
       "parameters": [
         {
@@ -114,6 +156,40 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "dmSocket::GetFD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get host by name</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const char*</span> Hostname to resolve</p>", 
+          "name": "name"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Address*</span> Host address result</p>", 
+          "name": "address"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">bool</span> Whether or not to search for IPv4 addresses</p>", 
+          "name": "ipv4"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">bool</span> Whether or not to search for IPv6 addresses</p>", 
+          "name": "ipv6"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "<p>get host by name</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::GetHostByName"
     }, 
     {
       "replaces": "", 
@@ -645,6 +721,32 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Set TCP_QUICKACK on socket</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> Socket to set TCP_QUICKACK on</p>", 
+          "name": "socket"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">bool</span> False to disable quick ack</p>", 
+          "name": "use_quick_ack"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SetQuickAck"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Set socket receive timeout</p>", 
       "parameters": [
         {
@@ -720,6 +822,32 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "dmSocket::SetSendTimeout"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Shutdown part of a socket connection</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> Socket to shutdown connection ow</p>", 
+          "name": "socket"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmSocket::ShutdownType</span> Shutdown type</p>", 
+          "name": "how"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "<p>close socket</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::Shutdown"
     }, 
     {
       "replaces": "", 
