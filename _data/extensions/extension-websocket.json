@@ -40,6 +40,23 @@
             "type": "FUNCTION"
         }, 
         {
+            "description": "Send data on a websocket", 
+            "examples": "<div class=\"codehilite\"><pre><span></span>  <span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">websocket_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">conn</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">EVENT_CONNECTED</span> <span class=\"k\">then</span>\n      <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">send</span><span class=\"p\">(</span><span class=\"n\">conn</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">Hello from the other side&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">url</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">ws://echo.websocket.org&quot;</span>\n    <span class=\"kd\">local</span> <span class=\"n\">params</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">connection</span> <span class=\"o\">=</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"n\">params</span><span class=\"p\">,</span> <span class=\"n\">websocket_callback</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n</pre></div>", 
+            "name": "send", 
+            "parameters": [
+                {
+                    "doc": "the websocket connection", 
+                    "name": "connection"
+                }, 
+                {
+                    "doc": "the message to send", 
+                    "name": "message"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
             "description": "The websocket was connected", 
             "examples": "", 
             "name": "EVENT_CONNECTED", 
