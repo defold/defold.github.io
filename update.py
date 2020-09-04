@@ -408,7 +408,10 @@ def process_extension(extension_name, download = False):
                     ret["doc"] = r.get("desc")
                     element["returnvalues"].append(ret)
                 element["description"] = m.get("desc")
-                element["type"] = m.get("type").upper()
+                type = m.get("type").upper()
+                if type == "NUMBER":
+                    type = "VARIABLE"
+                element["type"] = type
                 element["name"] = m.get("name")
                 examples = []
                 for e in m.get("examples", []):
