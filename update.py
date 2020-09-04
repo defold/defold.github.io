@@ -19,6 +19,12 @@ from contextlib import contextmanager
 import lunr
 from lunr import trimmer
 
+from markdown import Markdown
+from markdown import Extension
+from markdown.util import etree, AtomicString
+from markdown.inlinepatterns import Pattern
+
+
 SHA1 = {}
 
 DOCS_ZIP = "doc-master.zip"
@@ -334,6 +340,8 @@ def process_docs(download = False):
 
 
 def process_extension(extension_name, download = False):
+    md = Markdown(extensions=['markdown.extensions.fenced_code','markdown.extensions.def_list', 'markdown.extensions.codehilite','markdown.extensions.tables'])
+
     extension_zip = extension_name + ".zip"
     github_url = "https://github.com/defold/{}".format(extension_name)
     if download:
@@ -402,6 +410,11 @@ def process_extension(extension_name, download = False):
                 element["description"] = m.get("desc")
                 element["type"] = m.get("type").upper()
                 element["name"] = m.get("name")
+                examples = []
+                for e in m.get("examples", []):
+                    desc = e.get("desc", "")
+                    examples.append(md.convert(desc))
+                element["examples"] = "".join(examples)
                 elements.append(element)
             break
 

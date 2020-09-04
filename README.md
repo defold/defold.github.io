@@ -26,6 +26,8 @@ Install `lunr.py` and `requests` using:
 pip install --user lunr==0.5.5
 pip install --user requests
 pip install --user pyyaml
+pip install --user markdown==2.6.7
+pip install --user pygments==2.1.3
 ```
 
 ## Usage
