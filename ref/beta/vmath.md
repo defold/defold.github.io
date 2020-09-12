@@ -2,7 +2,7 @@
 layout: ref
 branch: beta
 ref: vmath
-type: lua
+type: defold
 title: API reference (vmath)
 ---
 {% include anchor_headings.html html=content %}

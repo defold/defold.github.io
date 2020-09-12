@@ -773,6 +773,7 @@ def process_awesome(download = False):
         process_games(tmp_dir)
 
 
+LUA_APIS = [ "base", "bit", "coroutine", "debug", "io", "math", "os", "package", "socket", "string", "table" ]
 
 def process_refdoc(download = False):
     refindex = []
@@ -814,9 +815,13 @@ def process_refdoc(download = False):
                         shutil.copyfile(os.path.join(tmp_dir, "doc", file), os.path.join(REF_DATA_DIR, json_out_file))
 
                         namespace = api["info"]["namespace"]
-                        type = "lua"
-                        if namespace.startswith("dm"):
+                        type = "defold"
+                        if namespace in LUA_APIS:
+                            type = "lua"
+                        elif namespace.startswith("dm"):
                             type = "c"
+
+                        print("REFDOC " + json_out_name + " type: " + type)
 
                         # generate a dummy markdown page with some front matter for each ref doc
                         with open(os.path.join(REF_PAGE_DIR, file.replace("_doc.json", ".md")), "w") as f:

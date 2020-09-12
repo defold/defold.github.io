@@ -2,7 +2,7 @@
 layout: ref
 branch: beta
 ref: spine
-type: lua
+type: defold
 title: API reference (spine)
 ---
 {% include anchor_headings.html html=content %}

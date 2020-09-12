@@ -2,7 +2,7 @@
 layout: ref
 branch: stable
 ref: particlefx
-type: lua
+type: defold
 title: API reference (particlefx)
 ---
 {% include anchor_headings.html html=content %}

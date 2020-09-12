@@ -2,7 +2,7 @@
 layout: ref
 branch: alpha
 ref: tilemap
-type: lua
+type: defold
 title: API reference (tilemap)
 ---
 {% include anchor_headings.html html=content %}

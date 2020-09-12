@@ -2,7 +2,7 @@
 layout: ref
 branch: stable
 ref: json
-type: lua
+type: defold
 title: API reference (json)
 ---
 {% include anchor_headings.html html=content %}

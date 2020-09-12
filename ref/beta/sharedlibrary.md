@@ -2,7 +2,7 @@
 layout: ref
 branch: beta
 ref: sharedlibrary
-type: lua
+type: defold
 title: API reference (sharedlibrary)
 ---
 {% include anchor_headings.html html=content %}

@@ -2,7 +2,7 @@
 layout: ref
 branch: stable
 ref: label
-type: lua
+type: defold
 title: API reference (label)
 ---
 {% include anchor_headings.html html=content %}

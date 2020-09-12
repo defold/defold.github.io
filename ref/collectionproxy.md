@@ -2,7 +2,7 @@
 layout: ref
 branch: stable
 ref: collectionproxy
-type: lua
+type: defold
 title: API reference (collectionproxy)
 ---
 {% include anchor_headings.html html=content %}

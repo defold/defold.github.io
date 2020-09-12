@@ -1,6 +1,7 @@
 ---
 ---
 
+
 /* Reusable color constants */
 :root {
 	--lightest: #fafafa;
@@ -394,9 +395,25 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 	display: none;
 }
 
+/*******************************************************************************
+* Vertical navigation menu (class: navmenu)
+* Positioned at left or right side of some pages
+******************************************************************************/
+
+
 @media (max-width: 800px) {
 	.navmenu     { display: none; }
 	.navdropdown { display: inline-block; }
+}
+
+.navmenu {
+	line-height: 1;
+}
+
+.sticky {
+	position: fixed;
+	top: 0;
+	z-index: 100;
 }
 
 

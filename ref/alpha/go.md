@@ -2,7 +2,7 @@
 layout: ref
 branch: alpha
 ref: go
-type: lua
+type: defold
 title: API reference (go)
 ---
 {% include anchor_headings.html html=content %}

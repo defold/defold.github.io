@@ -2,7 +2,7 @@
 layout: ref
 branch: stable
 ref: physics
-type: lua
+type: defold
 title: API reference (physics)
 ---
 {% include anchor_headings.html html=content %}
