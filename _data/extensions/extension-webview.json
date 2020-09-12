@@ -1,0 +1,195 @@
+{
+    "elements": [
+        {
+            "description": "Creates a webview instance. It can show HTML pages as well as evaluate Javascript. The view remains hidden until the first call. There can exist a maximum of 4 webviews at the same time.\nOn iOS, the callback will never get a `webview.CALLBACK_RESULT_EVAL_ERROR`, due to the iOS SDK implementation.\"", 
+            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">webview_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">webview_id</span><span class=\"p\">,</span> <span class=\"n\">request_id</span><span class=\"p\">,</span> <span class=\"nb\">type</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"nb\">type</span> <span class=\"o\">==</span> <span class=\"n\">webview</span><span class=\"p\">.</span><span class=\"n\">CALLBACK_RESULT_URL_OK</span> <span class=\"k\">then</span>\n        <span class=\"c1\">-- the page is now loaded, let&#39;s show it</span>\n        <span class=\"n\">webview</span><span class=\"p\">.</span><span class=\"n\">set_visible</span><span class=\"p\">(</span><span class=\"n\">webview_id</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n    <span class=\"k\">elseif</span> <span class=\"nb\">type</span> <span class=\"o\">==</span> <span class=\"n\">webview</span><span class=\"p\">.</span><span class=\"n\">CALLBACK_RESULT_URL_ERROR</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Failed to load url: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">data</span><span class=\"p\">[</span><span class=\"s2\">&quot;</span><span class=\"s\">url&quot;</span><span class=\"p\">])</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Error: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">data</span><span class=\"p\">[</span><span class=\"s2\">&quot;</span><span class=\"s\">error&quot;</span><span class=\"p\">])</span>\n    <span class=\"k\">elseif</span> <span class=\"nb\">type</span> <span class=\"o\">==</span> <span class=\"n\">webview</span><span class=\"p\">.</span><span class=\"n\">CALLBACK_RESULT_URL_LOADING</span> <span class=\"k\">then</span>\n        <span class=\"c1\">-- a page is loading</span>\n        <span class=\"c1\">-- return false to prevent it from loading</span>\n        <span class=\"c1\">-- return true or nil to continue loading the page</span>\n        <span class=\"k\">if</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">url</span> <span class=\"o\">~=</span> <span class=\"s2\">&quot;</span><span class=\"s\">https://www.defold.com/&quot;</span> <span class=\"k\">then</span>\n            <span class=\"k\">return</span> <span class=\"kc\">false</span>\n        <span class=\"k\">end</span>\n    <span class=\"k\">elseif</span> <span class=\"nb\">type</span> <span class=\"o\">==</span> <span class=\"n\">webview</span><span class=\"p\">.</span><span class=\"n\">CALLBACK_RESULT_EVAL_OK</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Eval ok. Result: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">data</span><span class=\"p\">[</span><span class=\"s1\">&#39;</span><span class=\"s\">result&#39;</span><span class=\"p\">])</span>\n    <span class=\"k\">elseif</span> <span class=\"nb\">type</span> <span class=\"o\">==</span> <span class=\"n\">webview</span><span class=\"p\">.</span><span class=\"n\">CALLBACK_RESULT_EVAL_ERROR</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Eval not ok. Request # &quot;</span> <span class=\"o\">..</span> <span class=\"n\">request_id</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n<span class=\"kd\">local</span> <span class=\"n\">webview_id</span> <span class=\"o\">=</span> <span class=\"n\">webview</span><span class=\"p\">.</span><span class=\"n\">create</span><span class=\"p\">(</span><span class=\"n\">webview_callback</span><span class=\"p\">)</span>\n</pre></div>", 
+            "name": "create", 
+            "parameters": [
+                {
+                    "doc": "A callback which receives info about finished requests taking the following parameters:", 
+                    "name": "callback"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Destroys an instance of a webview.", 
+            "examples": "", 
+            "name": "destroy", 
+            "parameters": [
+                {
+                    "doc": "The webview id (returned by the `webview.create()` call)", 
+                    "name": "webview_id"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Opens a web page in the webview, using an URL. Once the request is done, the callback (registered in `webview.create()`) is invoked.", 
+            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">request_id</span> <span class=\"o\">=</span> <span class=\"n\">webview</span><span class=\"p\">.</span><span class=\"n\">open</span><span class=\"p\">(</span><span class=\"n\">webview_id</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">http://www.defold.com&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">hidden</span> <span class=\"o\">=</span> <span class=\"kc\">true</span><span class=\"p\">})</span>\n</pre></div>", 
+            "name": "open", 
+            "parameters": [
+                {
+                    "doc": "The webview id", 
+                    "name": "webview_id"
+                }, 
+                {
+                    "doc": "The URL to open", 
+                    "name": "url"
+                }, 
+                {
+                    "doc": "A table of options for the request. Currently it holds these options:", 
+                    "name": "options"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": ""
+        }, 
+        {
+            "description": "Opens a web page in the webview, using HTML data. Once the request is done, the callback (registered in `webview.create()`) is invoked.", 
+            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">html</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load_resource</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/main/data/test.html&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">request_id</span> <span class=\"o\">=</span> <span class=\"n\">webview</span><span class=\"p\">.</span><span class=\"n\">open_raw</span><span class=\"p\">(</span><span class=\"n\">webview_id</span><span class=\"p\">,</span> <span class=\"n\">html</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">hidden</span> <span class=\"o\">=</span> <span class=\"kc\">true</span><span class=\"p\">})</span>\n</pre></div>", 
+            "name": "open_raw", 
+            "parameters": [
+                {
+                    "doc": "The webview id", 
+                    "name": "webview_id"
+                }, 
+                {
+                    "doc": "The HTML data to display", 
+                    "name": "html"
+                }, 
+                {
+                    "doc": "A table of options for the request. See `webview.open()`", 
+                    "name": "options"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Evaluates JavaScript within the context of the currently loaded page (if any). Once the request is done, the callback (registered in `webview.create()`) is invoked. The callback will get the result in the `data[\"result\"]` field.", 
+            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">request_id</span> <span class=\"o\">=</span> <span class=\"n\">webview</span><span class=\"p\">.</span><span class=\"n\">eval</span><span class=\"p\">(</span><span class=\"n\">webview_id</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">GetMyFormData()&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
+            "name": "eval", 
+            "parameters": [
+                {
+                    "doc": "The webview id", 
+                    "name": "webview_id"
+                }, 
+                {
+                    "doc": "The JavaScript code to evaluate", 
+                    "name": "code"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Shows or hides a webview", 
+            "examples": "", 
+            "name": "set_visible", 
+            "parameters": [
+                {
+                    "doc": "The webview id", 
+                    "name": "webview_id"
+                }, 
+                {
+                    "doc": "If `0`, hides the webview. If non zero, shows the view", 
+                    "name": "visible"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Returns the visibility state of the webview.", 
+            "examples": "", 
+            "name": "is_visible", 
+            "parameters": [
+                {
+                    "doc": "The webview id", 
+                    "name": "webview_id"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Sets the position and size of the webview", 
+            "examples": "", 
+            "name": "set_position", 
+            "parameters": [
+                {
+                    "doc": "The webview id", 
+                    "name": "webview_id"
+                }, 
+                {
+                    "doc": "The x position of the webview", 
+                    "name": "x"
+                }, 
+                {
+                    "doc": "The y position of the webview", 
+                    "name": "y"
+                }, 
+                {
+                    "doc": "The width of the webview (-1 to match screen width)", 
+                    "name": "width"
+                }, 
+                {
+                    "doc": "The height of the webview (-1 to match screen height)", 
+                    "name": "height"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "", 
+            "examples": "", 
+            "name": "CALLBACK_RESULT_URL_OK", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "VARIABLE"
+        }, 
+        {
+            "description": "", 
+            "examples": "", 
+            "name": "CALLBACK_RESULT_URL_ERROR", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "VARIABLE"
+        }, 
+        {
+            "description": "", 
+            "examples": "", 
+            "name": "CALLBACK_RESULT_URL_LOADING", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "VARIABLE"
+        }, 
+        {
+            "description": "", 
+            "examples": "", 
+            "name": "CALLBACK_RESULT_EVAL_OK", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "VARIABLE"
+        }, 
+        {
+            "description": "", 
+            "examples": "", 
+            "name": "CALLBACK_RESULT_EVAL_ERROR", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "VARIABLE"
+        }
+    ], 
+    "info": {
+        "brief": "webview", 
+        "description": "Functions and constants for interacting with webview APIs", 
+        "group": "EXTENSIONS", 
+        "name": "webview", 
+        "namespace": "webview"
+    }
+}

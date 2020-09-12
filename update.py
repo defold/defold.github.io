@@ -398,21 +398,21 @@ def process_extension(extension_name, download = False):
                 element["parameters"] = []
                 for p in m.get("parameters", []):
                     param = {}
-                    param["name"] = p.get("name")
-                    param["doc"] = p.get("desc")
+                    param["name"] = p.get("name", "")
+                    param["doc"] = p.get("desc", "")
                     element["parameters"].append(param)
                 element["returnvalues"] = []
                 for r in m.get("returns", []):
                     ret = {}
                     ret["name"] = r.get("type", "")
-                    ret["doc"] = r.get("desc")
+                    ret["doc"] = r.get("desc", "")
                     element["returnvalues"].append(ret)
-                element["description"] = m.get("desc")
-                type = m.get("type").upper()
+                element["description"] = m.get("desc", "")
+                type = m.get("type", "").upper()
                 if type == "NUMBER":
                     type = "VARIABLE"
                 element["type"] = type
-                element["name"] = m.get("name")
+                element["name"] = m.get("name", "")
                 examples = []
                 for e in m.get("examples", []):
                     desc = e.get("desc", "")
