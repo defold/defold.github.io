@@ -135,4 +135,4 @@ D/defold  ( 6210): DEBUG:SCRIPT: Hello there, log!
 ...
 ```
 ## 常见问题
-{% include shared/android-faq.md %}
+{% include shared/zh/android-faq.md %}

@@ -130,6 +130,6 @@ Note that images are usually rendered centered in their own paragraph. Apply cla
 
 Pieces of text that are used in multiple places can be transcluded into a document. See https://github.com/jamesramsay/hercule for details on the transcluder plugin used.
 
-{% include shared/test.md %}
+{% include shared/en/test.md %}
 
 The end

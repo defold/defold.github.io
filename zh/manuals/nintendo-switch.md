@@ -42,4 +42,4 @@ When we have verified you as a donor with Nintendo Switch access we will provide
 
 
 ## FAQ
-{% include shared/nintendo-switch-faq.md %}
+{% include shared/zh/nintendo-switch-faq.md %}

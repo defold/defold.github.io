@@ -69,7 +69,7 @@ brief: 本教程介绍了文本组件 label 的使用方法.
 : 用于渲染此 label 所使用的材质. 确保选中的材质是为你所使用的字体 (bitmap, distance field or BMFont) 创建的.
 
 ### 混合模式
-{% include shared/blend-modes.md %}
+{% include shared/zh/blend-modes.md %}
 
 ### 锚点和对齐
 

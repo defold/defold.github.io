@@ -116,7 +116,7 @@ end
 
 Το Defold παρέχει δύο εύχρηστες στενογραφίες που μπορείτε να χρησιμοποιήσετε για να στείλετε μήνυμα χωρίς να καθορίσετε μια πλήρη διεύθυνση URL:
 
-{% include shared/url-shorthands.md %}
+{% include shared/gr/url-shorthands.md %}
 
 ## Game object paths, Διαδρομές αντικειμένου παιχνιδιού
 

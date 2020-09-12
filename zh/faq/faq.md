@@ -143,22 +143,22 @@ See [this link](https://github.com/defold/editor2-issues/blob/master/faq/pkixpat
 
 
 ## Linux
-{% include shared/linux-faq.md %}
+{% include shared/zh/linux-faq.md %}
 
 
 ## Android
-{% include shared/android-faq.md %}
+{% include shared/zh/android-faq.md %}
 
 
 ## HTML5
-{% include shared/html5-faq.md %}
+{% include shared/zh/html5-faq.md %}
 
 
 ## Windows
-{% include shared/windows-faq.md %}
+{% include shared/zh/windows-faq.md %}
 
 ## Nintendo Switch
-{% include shared/nintendo-switch-faq.md %}
+{% include shared/zh/nintendo-switch-faq.md %}
 
 
 ## Game content

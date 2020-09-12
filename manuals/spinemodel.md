@@ -42,7 +42,7 @@ You should now be able to view your Spine model in the editor:
 ![Spine model in editor](../images/spinemodel/spinemodel.png)
 
 ### Blend modes
-{% include shared/blend-modes.md %}
+{% include shared/en/blend-modes.md %}
 
 ## Runtime manipulation
 

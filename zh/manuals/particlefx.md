@@ -124,7 +124,7 @@ Stretch With Velocity
 : Check to scale any particle stretch in the direction of movement.
 
 ### 混合模式
-{% include shared/blend-modes.md %}
+{% include shared/zh/blend-modes.md %}
 
 ## Keyable emitter properties
 

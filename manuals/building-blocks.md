@@ -67,7 +67,7 @@ Game objects are either added in-place in a collection, or added to a collection
 
 ## Components
 
-{% include shared/components.md %}
+{% include shared/en/components.md %}
 
 Refer to the [component overview](/manuals/components/) for a list of all available component types.
 

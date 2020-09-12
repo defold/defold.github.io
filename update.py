@@ -100,6 +100,15 @@ def rmcopytree(src, dst):
     rmtree(dst)
     shutil.copytree(src, dst)
 
+def copytree(src, dst, overwrite = False):
+    if os.path.isdir(src):
+        if not os.path.isdir(dst):
+            os.makedirs(dst)
+        for f in os.listdir(src):
+            copytree(os.path.join(src, f), os.path.join(dst, f))
+    elif overwrite or not os.path.exists(dst):
+        shutil.copyfile(src, dest)
+
 def makedirs(path):
     if not os.path.exists(path):
         os.makedirs(path)
@@ -212,7 +221,7 @@ def append_to_file(filename, s):
 
 
 
-def process_doc_file(file):
+def process_doc_file(file, language):
     replace_in_file(file, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
     replace_in_file(file, r"{\s*srcset=.*?}", r"")
     replace_in_file(file, r"::: sidenote(.*?):::", r"<div class='sidenote' markdown='1'>\1</div>", flags=re.DOTALL)
@@ -227,6 +236,7 @@ def process_doc_file(file):
     # replace_in_file(file, r"\!\[(.*?)\]\((.*?)\)\{\.inline\}", r"<span style='display: inline'>![\1](\2)</span>")
     replace_in_file(file, r"\(images\/", r"(../images/")
     replace_in_file(file, r"\(\.\.\/shared\/", r"(/shared/")
+    replace_in_file(file, r"\{\% include shared\/(.*?)\.md \%\}", r"{}".format("{% include shared/" + language + "/\\1.md %}"))
 
 
 def get_language_specific_dir(language, dir):
@@ -279,7 +289,7 @@ def process_docs(download = False):
                 manuals_dst_dir = get_language_specific_dir(language, "manuals")
                 rmcopytree(manuals_src_dir, manuals_dst_dir)
                 for filename in find_files(manuals_dst_dir, "*.md"):
-                    process_doc_file(filename)
+                    process_doc_file(filename, language)
                     replace_in_file(filename, r"title\:", r"layout: manual\ntitle:")
                     replace_in_file(filename, r"title\:", r"language: {}\ntitle:".format(language))
                     replace_in_file(filename, r"title\:", r"github: {}\ntitle:".format("https://github.com/defold/doc"))
@@ -294,7 +304,7 @@ def process_docs(download = False):
                 faq_dst_dir = get_language_specific_dir(language, "faq")
                 rmcopytree(faq_src_dir, faq_dst_dir)
                 for filename in find_files(faq_dst_dir, "*.md"):
-                    process_doc_file(filename)
+                    process_doc_file(filename, language)
                     replace_in_file(filename, r"title\:", r"language: {}\ntitle:".format(language))
                     replace_in_file(filename, r"title\:", r"layout: faq\ntitle:")
                     if language != "en":
@@ -302,20 +312,23 @@ def process_docs(download = False):
                         replace_in_file(filename, r"\.\.\/images\/", r"/manuals/images/".format(language))
                         replace_in_file(filename, r"\.\.\/assets\/", r"/manuals/assets/".format(language))
 
-        print("...shared includes")
-        shared_includes_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "shared")
-        shared_includes_dst_dir = os.path.join("_includes", "shared")
-        rmcopytree(shared_includes_src_dir, shared_includes_dst_dir)
-        shutil.rmtree(os.path.join(shared_includes_dst_dir, "images"))
-        for filename in find_files(shared_includes_dst_dir, "*.md"):
-            process_doc_file(filename)
+        for language in languages["languages"].keys():
+            print("...shared includes ({})".format(language))
+            shared_includes_src_dir_en = os.path.join(tmp_dir, "doc-master", "docs", "en", "shared")
+            shared_includes_src_dir = os.path.join(tmp_dir, "doc-master", "docs", language, "shared")
+            shared_includes_dst_dir = os.path.join("_includes", "shared", language)
+            rmcopytree(shared_includes_src_dir_en, shared_includes_dst_dir)
+            copytree(shared_includes_src_dir, shared_includes_dst_dir)
+            shutil.rmtree(os.path.join(shared_includes_dst_dir, "images"))
+            for filename in find_files(shared_includes_dst_dir, "*.md"):
+                process_doc_file(filename, language)
 
         print("...tutorials")
         tutorials_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "tutorials")
         tutorials_dst_dir = "tutorials"
         rmcopytree(tutorials_src_dir, tutorials_dst_dir)
         for filename in find_files(tutorials_dst_dir, "*.md"):
-            process_doc_file(filename)
+            process_doc_file(filename, "en")
             replace_in_file(filename, r"title\:", r"layout: tutorial\ntitle:")
 
         # figure out in which languages each learn page exists
@@ -370,7 +383,7 @@ def process_extension(extension_name, download = False):
         replace_in_file(index, r"title\:", r"layout: manual\ntitle:")
         replace_in_file(index, r"title\:", r"language: en\ntitle:")
         replace_in_file(index, r"title\:", r"github: {}\ntitle:".format(github_url))
-        process_doc_file(index)
+        process_doc_file(index, "en")
 
         # generate a dummy markdown page with some front matter for the api doc
         with open(os.path.join(extension_dir, "api.html"), "w") as f:

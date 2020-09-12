@@ -15,4 +15,4 @@ Developing Defold applications for the Linux platform is a straight forward proc
 Linux specific application configuration is done from the [Linux section](/zh/manuals/project-settings/#linux) of the *game.project* settings file.
 
 ## FAQ
-{% include shared/linux-faq.md %}
+{% include shared/zh/linux-faq.md %}

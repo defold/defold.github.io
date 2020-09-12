@@ -31,7 +31,7 @@ Apart from the properties *Id*, *Position* and *Rotation* the following componen
 : The blend mode to use when rendering the sprite.
 
 ### Blend modes
-{% include shared/blend-modes.md %}
+{% include shared/en/blend-modes.md %}
 
 ## Runtime manipulation
 

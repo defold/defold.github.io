@@ -21,4 +21,4 @@ Windows游戏的图标要使用 .ico 格式. 你可以拿一个 .png 文件, 使
 ![Windows icon sizes](/manuals/images/windows/windows-icon.png)
 
 ## FAQ
-{% include shared/windows-faq.md %}
+{% include shared/zh/windows-faq.md %}

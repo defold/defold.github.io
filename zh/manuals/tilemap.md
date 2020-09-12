@@ -80,7 +80,7 @@ end
 : 瓷砖地图的混合模式.
 
 ### 混合模式
-{% include shared/blend-modes.md %}
+{% include shared/zh/blend-modes.md %}
 
 ### 修改属性
 

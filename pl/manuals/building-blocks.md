@@ -69,7 +69,7 @@ Jest to jeszcze dogłębniej wytłumaczone poniżej.
 
 ## Komponenty
 
-{% include shared/components.md %}
+{% include shared/pl/components.md %}
 
 Odsyłamy do osobnej [Instrukcji do komponentów](/pl/manuals/components/), gdzie znajduje się lista wszystkich komponentów silnika Defold.
 

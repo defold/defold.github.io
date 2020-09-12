@@ -55,7 +55,7 @@ To create a new extension, create a folder in the project root. This folder will
 *lib*
 : This optional folder contains any compiled libraries that the extension depends on. Library files should be placed in subfolders named by `platform`, or `architecure-platform`, depending on what architectures are supported by your libraries.
 
-  {% include shared/platforms.md %}
+  {% include shared/en/platforms.md %}
 
 *manifests*
 : This optional folder contains additional files used in the build or bundling process. See below for details.

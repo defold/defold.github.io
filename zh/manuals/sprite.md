@@ -31,7 +31,7 @@ Sprite 组件使用 [图集](/zh/manuals/atlas) 或者 [瓷砖图源](/zh/manual
 : 组件渲染时使用的混合模式.
 
 ### 混合模式
-{% include shared/blend-modes.md %}
+{% include shared/zh/blend-modes.md %}
 
 # 运行时操作
 

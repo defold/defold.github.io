@@ -116,7 +116,7 @@ Relative addressing works by automatically prepending the current naming context
 
 Defold provides two handy shorthands that you can use to send message without specifying a complete URL:
 
-{% include shared/url-shorthands.md %}
+{% include shared/en/url-shorthands.md %}
 
 ## Game object paths
 

@@ -69,7 +69,7 @@ Note that the default material has shadow rendering disabled for performance rea
 : The material to use for rendering this label. Make sure to select a material that is created for the font type that you use (bitmap, distance field or BMFont).
 
 ### Blend modes
-{% include shared/blend-modes.md %}
+{% include shared/en/blend-modes.md %}
 
 ### Pivot and alignment
 

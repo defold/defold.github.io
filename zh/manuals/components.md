@@ -8,7 +8,7 @@ brief: 本教程提供了游戏对象组件概览及其使用方法.
 
 #  组件
 
-{% include shared/components.md %}
+{% include shared/zh/components.md %}
 
 ## 组件类型
 

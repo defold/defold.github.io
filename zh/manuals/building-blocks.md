@@ -67,7 +67,7 @@ go.animate("can", "position.x", go.PLAYBACK_LOOP_PINGPONG, 100, go.EASING_LINEAR
 
 ## 组件
 
-{% include shared/components.md %}
+{% include shared/zh/components.md %}
 
 可用组件列表详见 [组件概述](/zh/manuals/components/).
 

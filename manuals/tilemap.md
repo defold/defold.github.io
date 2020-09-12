@@ -80,7 +80,7 @@ Apart from the properties *Id*, *Position*, *Rotation* and *Scale* the following
 : The blend mode to use when rendering the tilemap.
 
 ### Blend modes
-{% include shared/blend-modes.md %}
+{% include shared/en/blend-modes.md %}
 
 ### Changing properties
 
