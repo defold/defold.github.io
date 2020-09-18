@@ -654,6 +654,7 @@ def process_assets(tmp_dir):
                 "stars": asset.get("stars") or 0,
                 "timestamp": asset.get("timestamp") or 0
             })
+            tagindex[tag]["assets"].sort(key=lambda x: x.get("id").lower())
 
         # build platform index
         for platform in asset["platforms"]:
@@ -667,6 +668,7 @@ def process_assets(tmp_dir):
                 "id": asset_id,
                 "stars": asset.get("stars") or 0
             })
+            platformindex[platform]["assets"].sort(key=lambda x: x.get("id").lower())
 
         # build author index
         if not author_id in authorindex:
@@ -679,12 +681,14 @@ def process_assets(tmp_dir):
             "id": asset_id,
             "stars": asset.get("stars") or 0
         })
+        authorindex[author_id]["assets"].sort(key=lambda x: x.get("id").lower())
 
         # generate a dummy markdown page with some front matter for each asset
         with open(os.path.join(asset_collection_dir, basename.replace(".json", ".md")), "w") as f:
             f.write(ASSET_MD_FRONTMATTER.format(asset_id, asset["name"], asset["description"].encode('utf-8').strip()))
 
     # write asset index
+    assetindex.sort(key=lambda x: x.get("id").lower())
     write_as_json(ASSETINDEX_JSON, assetindex)
 
     # write author index
@@ -707,9 +711,9 @@ def process_assets(tmp_dir):
     write_as_json(TAGINDEX_JSON, taglist)
 
     # write platform index
-    platformlist = platformindex.values()
-    platformlist.sort(key=lambda x: x.get("id").lower())
-    write_as_json(PLATFORMINDEX_JSON, platformlist)
+    # platformlist = platformindex.values()
+    # platformlist.sort(key=lambda x: x.get("id").lower())
+    # write_as_json(PLATFORMINDEX_JSON, platformlist)
 
     # Jekyll tags collection (one subdirectory per sort order)
     tag_collection_dir = "tags"
