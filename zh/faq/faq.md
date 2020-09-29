@@ -2,7 +2,7 @@
 language: zh
 layout: faq
 title: Defold 引擎与编辑器常见问题和解答
-brief:有关 Defold 游戏引擎和编辑器及平台的常见问题和解答.
+brief: 有关 Defold 游戏引擎和编辑器及平台的常见问题和解答.
 ---
 
 # 常见问题
