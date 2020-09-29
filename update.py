@@ -107,7 +107,7 @@ def copytree(src, dst, overwrite = False):
         for f in os.listdir(src):
             copytree(os.path.join(src, f), os.path.join(dst, f))
     elif overwrite or not os.path.exists(dst):
-        shutil.copyfile(src, dest)
+        shutil.copyfile(src, dst)
 
 def makedirs(path):
     if not os.path.exists(path):
