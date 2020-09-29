@@ -236,7 +236,7 @@ def process_doc_file(file, language):
     # replace_in_file(file, r"\!\[(.*?)\]\((.*?)\)\{\.inline\}", r"<span style='display: inline'>![\1](\2)</span>")
     replace_in_file(file, r"\(images\/", r"(../images/")
     replace_in_file(file, r"\(\.\.\/shared\/", r"(/shared/")
-    replace_in_file(file, r"\{\% include shared\/(.*?)\.md \%\}", r"{}".format("{% include shared/" + language + "/\\1.md %}"))
+    replace_in_file(file, r"\{\% include shared\/(.*?)\.md(.*?)\%\}", r"{}".format("{% include shared/" + language + "/\\1.md\\2%}"))
 
 
 def get_language_specific_dir(language, dir):
