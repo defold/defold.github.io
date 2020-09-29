@@ -38,7 +38,7 @@ Defold 支持 PNG 和 JPEG 图片格式. 其他格式要先转换成支持格式
 ![bitmap font](/manuals/images/icons/font.png) Bitmap Font
 : 位图字体是 PNG 图片格式的文字表. 这种字体比起 TrueType 或者 OpenType 字体文件并没有性能优势, 但是由于是图片, 颜色阴影等效果可以随意加入.
 
-关于字体资源详情请见 [字体教程](/zh/manuals/font/#bitmap-bmfonts).
+关于字体资源详情请见 [字体教程](/zh/manuals/font/#位图 BMFont).
 
   ![BMfont](/manuals/images/font/bm_font.png)
 

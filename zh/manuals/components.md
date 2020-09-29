@@ -6,7 +6,7 @@ title: 游戏对象组件
 brief: 本教程提供了游戏对象组件概览及其使用方法.
 ---
 
-#  组件
+# 组件
 
 {% include shared/zh/components.md %}
 
@@ -21,6 +21,7 @@ Defold 提供以下组件类型:
 * [Factory](/zh/manuals/factory) - 创建游戏对象实例
 * [GUI](/zh/manuals/gui) - 渲染图形用户界面
 * [Label](/zh/manuals/label) - 渲染文本
+* [Mesh](/zh/manuals/mesh) - 显示3D网格 (同时具有实时创建和维护功能)
 * [Model](/zh/manuals/model) 显示3D模型 (可以带动画)
 * [Particle FX](/zh/manuals/particlefx) -  创建粒子
 * [Script](/zh/manuals/script) - 添加游戏逻辑
@@ -56,7 +57,7 @@ msg.post("#weapon", "enable")
 
 ## 组件属性
 
-Defold 组件属性各不相同.在 [Outline 视图](/zh/manuals/editor/#编辑器视图) 中当前选中的组件属性会显示在编辑器的 [Properties 面板](/zh/manuals/editor/#the-editor-views) 中. 可用组件的详细属性详情请见API教程.
+Defold 组件属性各不相同.在 [Outline 面板](/zh/manuals/editor/#Outline 面板) 中当前选中的组件属性会显示在编辑器的 [Properties 面板](/zh/manuals/editor/#Properties 面板) 中. 可用组件的详细属性详情请见API教程.
 
 ## 位置, 旋转和缩放
 
@@ -69,7 +70,7 @@ Defold 组件属性各不相同.在 [Outline 视图](/zh/manuals/editor/#编辑�
 可视组件的渲染顺序取决于两个方面:
 
 ### 渲染脚本的渲染优先级
-每个组件都有 [材质](/zh/manuals/material/) 而且每个材质都有一个或多个标签. 渲染脚本依次定义一系列优先级, 每个优先级匹配一个或多个材质标签. 渲染脚本在 *update()* 函数里 [按优先级依次渲染](/zh/manuals/render/#render-predicates) , 匹配优先级标签的组件会被显示出来. 默认渲染脚本先绘制 sprites 和 tilemaps, 再渲染粒子特效, 二者都使用世界坐标系. 最后渲染脚本会在屏幕坐标系中渲染 GUI 组件.
+每个组件都有 [材质](/zh/manuals/material/) 而且每个材质都有一个或多个标签. 渲染脚本依次定义一系列优先级, 每个优先级匹配一个或多个材质标签. 渲染脚本在 *update()* 函数里 [按优先级依次渲染](/zh/manuals/render/#渲染优先级) , 匹配优先级标签的组件会被显示出来. 默认渲染脚本先绘制 sprites 和 tilemaps, 再渲染粒子特效, 二者都使用世界坐标系. 最后渲染脚本会在屏幕坐标系中渲染 GUI 组件.
 
 ### 组件z值
 所有游戏对象都使用一个 vector3 作为其在 3D 空间中的位置. 如果是 2D 游戏, 则 X 和 Y 表示其在 "横向" 和 "纵向" 轴上的位置, 而 Z 值表示其在 "深度" 轴上的位置. 使用Z值可以操控游戏对象之间的层叠关系: Z 值是 1 的总是显示在 Z 值是 0 的对象上面. 默认情况下, Defold 使用 Z 值范围是 -1 到 1:

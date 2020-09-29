@@ -31,11 +31,11 @@ brief: 本教程介绍了如何打包应用.
 
 ### Android
 
-建立安卓应用 (.apk 文件) 详见 [安卓教程](/zh/manuals/android/#creating-an-android-application-bundle).
+建立安卓应用 (.apk 文件) 详见 [安卓教程](/zh/manuals/android/#安卓应用打包).
 
 ### iOS
 
-建立苹果移动应用 (.ipa 文件) 详见 [iOS 教程](/zh/manuals/ios/#creating-an-ios-application-bundle).
+建立苹果移动应用 (.ipa 文件) 详见 [iOS 教程](/zh/manuals/ios/#iOS应用打包).
 
 ### OSX
 
@@ -43,7 +43,7 @@ brief: 本教程介绍了如何打包应用.
 
 ### Linux
 
-建立Linux应用无需特别设置 "game.project" [项目配置文件](/zh/manuals/project-settings/#linux).
+建立Linux应用无需特别设置.
 
 ### Windows
 
@@ -51,7 +51,7 @@ brief: 本教程介绍了如何打包应用.
 
 ### HTML5
 
-建立HTML5应用及其参数设置详见 [HTML5 教程](/zh/manuals/html5/#打包html5应用).
+建立HTML5应用及其参数设置详见 [HTML5 教程](/zh/manuals/html5/#HTML5游戏打包).
 
 #### Facebook Instant Games
 
