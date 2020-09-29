@@ -62,7 +62,7 @@ A sprite also has a number of different properties that can be manipulated using
 
 ## Material constants
 
-{% include shared/material-constants.md component='sprite' variable='tint' %}
+{% include shared/en/material-constants.md component='sprite' variable='tint' %}
 
 `tint`
 : The color tint of the sprite (`vector4`). The vector4 is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.

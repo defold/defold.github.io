@@ -53,7 +53,7 @@ You can manipulate meshes at runtime using Defold buffers.
 
 ## Material constants
 
-{% include shared/material-constants.md component='mesh' variable='tint' %}
+{% include shared/en/material-constants.md component='mesh' variable='tint' %}
 
 `tint`
 : The color tint of the mesh (`vector4`). The vector4 is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.

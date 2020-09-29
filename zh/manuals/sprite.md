@@ -62,7 +62,7 @@ Sprite 组件使用 [图集](/zh/manuals/atlas) 或者 [瓷砖图源](/zh/manual
 
 ## 材质常量
 
-{% include shared/material-constants.md component='sprite' variable='tint' %}
+{% include shared/zh/material-constants.md component='sprite' variable='tint' %}
 
 `tint`
 : 3D网格颜色 (`vector4`). 四元数 x, y, z, 和 w 分别对应红, 绿, 蓝和不透明度.

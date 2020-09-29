@@ -100,7 +100,7 @@ There is a simple 3D model material available in the built-in materials folder. 
 
 ### Material constants
 
-{% include shared/material-constants.md component='model' variable='tint' %}
+{% include shared/en/material-constants.md component='model' variable='tint' %}
 
 `tint`
 : The color tint of the model (`vector4`). The vector4 is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.

@@ -87,7 +87,7 @@ Spine模型可以使用 `go.get()` 和 `go.set()` 方法修改其属性:
 
 ## 材质常量
 
-{% include shared/material-constants.md component='spine' variable='tint' %}
+{% include shared/zh/material-constants.md component='spine' variable='tint' %}
 
 `tint`
 : 3D网格颜色 (`vector4`). 四元数 x, y, z, 和 w 分别对应红, 绿, 蓝和不透明度.
