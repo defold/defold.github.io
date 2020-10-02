@@ -130,6 +130,14 @@
 }
 
 /*******************************************************************************
+* grey
+******************************************************************************/
+.grey {
+	background-color: var(--grey);
+	color: var(--lighter);
+}
+
+/*******************************************************************************
 * dark
 ******************************************************************************/
 .dark-text {
@@ -722,6 +730,7 @@ ul.checkmark li:before {
 	margin-bottom: 0;
 	border-radius: 4px;
 	background-color: var(--grey);
+	color: var(--lighter);
 }
 .asset #image {
 	border-radius: 4px 4px 0 0;
@@ -738,7 +747,7 @@ ul.checkmark li:before {
 	padding-top: 1rem;
 	padding-bottom: 0;
 }
-.asset:hover {
+.asset.clickable:hover {
 	box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
 	cursor: pointer;
 	background-color: #373c41;
