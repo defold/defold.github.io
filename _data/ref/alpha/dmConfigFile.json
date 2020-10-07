@@ -12,7 +12,7 @@
       "description": "<p>Get config value as float, returns default if the key isn't found\nNote: default_value is returned for invalid float values</p>", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">dmBuffer::HConfig</span> Config file handle</p>", 
+          "doc": "<p><span class=\"type\">dmConfigFile::HConfig</span> Config file handle</p>", 
           "name": "config"
         }, 
         {
@@ -31,7 +31,7 @@
         }
       ], 
       "brief": "<p>get config value as float</p>", 
-      "examples": "", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">static</span> <span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">AppInitialize</span><span class=\"p\">(</span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">AppParams</span><span class=\"o\">*</span> <span class=\"n\">params</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"kt\">float</span> <span class=\"n\">gravity</span> <span class=\"o\">=</span> <span class=\"n\">dmConfigFile</span><span class=\"o\">::</span><span class=\"n\">GetFloat</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"o\">-&gt;</span><span class=\"n\">m_ConfigFile</span><span class=\"p\">,</span> <span class=\"s\">&quot;physics.gravity_y&quot;</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mf\">9.8f</span><span class=\"p\">);</span>\n<span class=\"p\">}</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 
@@ -42,7 +42,7 @@
       "description": "<p>Get config value as int, returns default if the key isn't found\nNote: default_value is returned for invalid integer values</p>", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">dmBuffer::HConfig</span> Config file handle</p>", 
+          "doc": "<p><span class=\"type\">dmConfigFile::HConfig</span> Config file handle</p>", 
           "name": "config"
         }, 
         {
@@ -61,7 +61,7 @@
         }
       ], 
       "brief": "<p>get config value as int</p>", 
-      "examples": "", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">static</span> <span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">AppInitialize</span><span class=\"p\">(</span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">AppParams</span><span class=\"o\">*</span> <span class=\"n\">params</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"kt\">int32_t</span> <span class=\"n\">displayWidth</span> <span class=\"o\">=</span> <span class=\"n\">dmConfigFile</span><span class=\"o\">::</span><span class=\"n\">GetInt</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"o\">-&gt;</span><span class=\"n\">m_ConfigFile</span><span class=\"p\">,</span> <span class=\"s\">&quot;display.width&quot;</span><span class=\"p\">,</span> <span class=\"mi\">640</span><span class=\"p\">);</span>\n<span class=\"p\">}</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 
@@ -72,7 +72,7 @@
       "description": "<p>Get config value as string, returns default if the key isn't found</p>", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">dmBuffer::HConfig</span> Config file handle</p>", 
+          "doc": "<p><span class=\"type\">dmConfigFile::HConfig</span> Config file handle</p>", 
           "name": "config"
         }, 
         {
@@ -91,7 +91,7 @@
         }
       ], 
       "brief": "<p>get config value as string</p>", 
-      "examples": "", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">static</span> <span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">AppInitialize</span><span class=\"p\">(</span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">AppParams</span><span class=\"o\">*</span> <span class=\"n\">params</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"k\">const</span> <span class=\"kt\">char</span><span class=\"o\">*</span> <span class=\"n\">projectTitle</span> <span class=\"o\">=</span> <span class=\"n\">dmConfigFile</span><span class=\"o\">::</span><span class=\"n\">GetString</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"o\">-&gt;</span><span class=\"n\">m_ConfigFile</span><span class=\"p\">,</span> <span class=\"s\">&quot;project.title&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;Untitled&quot;</span><span class=\"p\">);</span>\n<span class=\"p\">}</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 
