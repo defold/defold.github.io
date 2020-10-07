@@ -1,0 +1,44 @@
+- name: adinfo
+  type: table 
+  desc: Function for receiving AD ID and AD tracking status. Supported on iOS and Android.
+        [icon:ios] [icon:android]
+  members:
+
+#*****************************************************************************************************
+
+  - name: get
+    type: function
+    desc: Returns a table with AD information.
+          [icon:attention] function returns nil if values do not ready
+    returns:
+    - type: table
+      members:
+      - name: ad_ident
+        type: string
+        desc: |-
+              [icon:ios]"advertisingIdentifier" on iOS. [icon:android] advertising ID provided by Google Play on Android.
+
+      - name: ad_tracking_enabled
+        type: boolean
+        desc: |-
+              `true` if ad tracking is enabled, false otherwise.
+
+    examples:
+    - desc: |-
+            ```lua
+            local function update_info()
+              if not adinfo then
+                return
+              end
+              local info = adinfo.get()
+              if info then
+                send_ad_data(info.ad_ident, info.ad_tracking_enabled)
+              else
+                timer.delay(1, false, update_info)
+              end
+            end
+
+            function init(self)
+              update_info()
+            end
+            ```
