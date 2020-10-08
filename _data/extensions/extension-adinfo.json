@@ -1,22 +1,17 @@
 {
     "elements": [
         {
-            "description": "Returns a table with AD information. [icon:attention] function returns nil if values do not ready", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">update_info</span><span class=\"p\">()</span>\n  <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">adinfo</span> <span class=\"k\">then</span>\n    <span class=\"k\">return</span>\n  <span class=\"k\">end</span>\n  <span class=\"kd\">local</span> <span class=\"n\">info</span> <span class=\"o\">=</span> <span class=\"n\">adinfo</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n  <span class=\"k\">if</span> <span class=\"n\">info</span> <span class=\"k\">then</span>\n    <span class=\"n\">send_ad_data</span><span class=\"p\">(</span><span class=\"n\">info</span><span class=\"p\">.</span><span class=\"n\">ad_ident</span><span class=\"p\">,</span> <span class=\"n\">info</span><span class=\"p\">.</span><span class=\"n\">ad_tracking_enabled</span><span class=\"p\">)</span>\n  <span class=\"k\">else</span>\n    <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">delay</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">,</span> <span class=\"n\">update_info</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">update_info</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+            "description": "Get a table with advertising information. [icon:attention] function returns nil if values do not ready", 
+            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">adinfo</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"k\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">info</span><span class=\"p\">)</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">info</span><span class=\"p\">.</span><span class=\"n\">ad_ident</span><span class=\"p\">,</span> <span class=\"n\">info</span><span class=\"p\">.</span><span class=\"n\">ad_tracking_enabled</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
             "name": "get", 
             "parameters": [], 
-            "returnvalues": [
-                {
-                    "doc": "", 
-                    "name": "table"
-                }
-            ], 
+            "returnvalues": [], 
             "type": "FUNCTION"
         }
     ], 
     "info": {
         "brief": "adinfo", 
-        "description": "Function for receiving AD ID and AD tracking status. Supported on iOS and Android. [icon:ios] [icon:android]", 
+        "description": "Provides functionality to get the advertising id and tracking status. Supported on iOS and Android. [icon:ios] [icon:android]", 
         "group": "EXTENSIONS", 
         "name": "adinfo", 
         "namespace": "adinfo"
