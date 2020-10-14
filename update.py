@@ -858,7 +858,7 @@ def process_refdoc(download = False):
             if filename.startswith("extension-") and os.path.isdir(filename):
                 refindex.append({
                     "namespace": filename,
-                    "url": "/" + filename + "/api/index.html",
+                    "url": "/" + filename + "/api",
                     "branch": branch,
                     "type": "extension"
                 })
