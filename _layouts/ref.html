@@ -41,7 +41,11 @@ layout: base
 					<label for="collapsible_{{ type }}" class="togglelabel">{{ type | capitalize  }}</label>
 					<ul class="nobullet">
 						{%- for r in refs -%}
-						<li style="padding-left: 2rem; padding-bottom: 0px;"><a href="{{ r.url }}" style="text-decoration: none;">{{ r.namespace }}</a></li>
+							{%- assign textstyle = "text-decoration: none;" -%}
+							{%- if page.url contains r.url -%}
+								{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
+							{%- endif -%}
+						<li style="padding-left: 2rem; padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{{ r.namespace }}</a></li>
 						{%- endfor -%}
 					</ul>
 					{%- endfor -%}
@@ -50,7 +54,11 @@ layout: base
 					<label for="branch" class="togglelabel">Version</label>
 					<ul class="nobullet">
 						{%- for b in branches -%}
-						<li style="padding-left: 2rem; padding-bottom: 0px;"><a href="{{ page_url | replace: 'BRANCH', b }}" style="text-decoration: none;">{{ b }}</a></li>
+							{%- assign textstyle = "text-decoration: none;" -%}
+							{%- if page.branch == b -%}
+								{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
+							{%- endif -%}
+						<li style="padding-left: 2rem; padding-bottom: 0px;"><a href="{{ page_url | replace: 'BRANCH', b }}" style="{{ textstyle }}">{{ b }}</a></li>
 						{%- endfor -%}
 					</ul>
 				</ul>
@@ -66,8 +74,12 @@ layout: base
 				</select>
 				&nbsp;
 			</div>
-			<div class="columns nine ref">
-				{%- include api.html ref=ref -%}
+			<div class="columns nine ref scrollable">
+				{%- if ref.info.group == "DEFOLD SDK" -%}
+					{%- include api_dmsdk.html ref=ref -%}
+				{%- else -%}
+					{%- include api.html ref=ref -%}
+				{%- endif -%}
 			</div>
 		</div>
 	</div>

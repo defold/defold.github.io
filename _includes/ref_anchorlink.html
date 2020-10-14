@@ -11,4 +11,10 @@
 {{ element.name }}
 {%- elsif element.type == "ENUM" -%}
 {{ element.name }}
+{%- elsif element.type == "STRUCT" -%}
+{{ element.name }}
+{%- elsif element.type == "CLASS" -%}
+{{ element.name }}
+{%- elsif element.type == "TYPEDEF" -%}
+{{ element.name }}
 {%- endif -%}

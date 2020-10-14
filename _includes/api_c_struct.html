@@ -1,0 +1,50 @@
+{%- assign struct=include.struct -%}
+{%- assign full=include.full -%}
+
+{%- if full == "yes" -%}
+
+    {%- assign templatetypes = "" | split: "," -%}
+    {%- for param in struct.tparams -%}
+        {%- assign templatetypes = templatetypes | push: param.type -%}
+    {%- endfor -%}
+
+    {%- assign templatestring = "" -%}
+    {%- if templatetypes.size > 0 -%}
+        {%- assign templatestring = template &lt;{{ templatetypes | join: ", " }}&gt;&nbsp; -%}
+    {%- endif -%}
+
+    <p>
+        <p><b>TYPE</b></p>
+        <code>{{ templatestring }}{{ struct.type | downcase }}&nbsp;{{ struct.name }}</code><br>
+    </p>
+
+    <p>{{ struct.description }}</p>
+
+    {%- for member in struct.members -%}
+
+        {%- if forloop.first == true -%}<p><b>MEMBERS</b>{%- endif -%}
+        {%- if forloop.first == true -%}<table>{%- endif -%}
+
+        <tr>
+            <td><code>{{ member.type }}</code></td>
+            <td><code>{{ member.name }}</code></td>
+            <td>{{ member.doc }}</td>
+        </tr>
+
+        {%- if forloop.last == true -%}</table></p>{%- endif -%}
+    {%- endfor -%}
+
+
+{%- else -%}
+
+    {%- assign template_names = "" -%}
+    {%- for param in struct.tparams -%}
+        {%- if forloop.first == true -%}{%- assign template_names = template_names | append: "&lt;" -%}{%- endif -%}
+        {%- assign template_names = template_names | append: param.name + "&nbsp;" -%}
+        {%- if forloop.last != true -%}{%- assign template_names = template_names | append: ",&nbsp;" -%}{%- endif -%}
+        {%- if forloop.last == true -%}{%- assign template_names = template_names | append: "&gt;" -%}{%- endif -%}
+    {%- endfor -%}
+
+    {{ struct.type | downcase }}&nbsp;{{ struct.name }}{{ template_names }}
+
+{%- endif -%}

@@ -1,0 +1,89 @@
+{%- assign function=include.function -%}
+{%- assign full=include.full -%}
+
+{%- assign returntype = "void" -%}
+{%- for retval in function.returnvalues -%}
+    {%- for type in retval.types -%}
+        {%- assign returntype = type -%}
+    {%- endfor -%}
+{%- endfor -%}
+
+{%- assign paramlist = "" | split: "," -%}
+{%- for param in function.parameters -%}
+    {%- assign s = "" -%}
+    {%- for type in param.types -%}
+        {%- assign s = s | append: type -%}
+    {%- endfor -%}
+    {%- assign s = s | append: "&nbsp;" -%}
+    {%- assign s = s | append: param.name -%}
+    {%- assign paramlist = paramlist | push: s -%}
+{%- endfor -%}
+
+
+{%- if full == "yes" -%}
+
+    {%- assign templatetypes = "" | split: "," -%}
+    {%- for param in function.tparams -%}
+        {%- assign templatetypes = templatetypes | push: param.type -%}
+    {%- endfor -%}
+    {%- assign templatetypes = templatetypes | join: ",&nbsp;" -%}
+
+    {%- assign templatestring = "" -%}
+    {%- if templatetypes.size > 0 -%}
+        {%- assign templatestring = templatestring | append: "template &lt;" -%}
+        {%- assign templatestring = templatestring | append: templatetypes | join: ",&nbsp;" -%}
+        {%- assign templatestring = templatestring | append: "&gt;&nbsp;" -%}
+    {%- endif -%}
+
+
+    <p><code>{{ templatestring }}{{ returntype }}&nbsp;{{ function.name }}({{ paramlist | join: ", " }})</code><p>
+
+    {{ function.description }}
+    <p><b>PARAMETERS</b></p>
+    <table>
+        {%- for param in function.parameters -%}
+        <tr>
+            {%- for type in param.types -%}
+                <td><code>{{ type }}</code></td>
+                <td><code>{{ param.name }}</code></td>
+                <td>{{ param.doc }}</td>
+            {%- endfor -%}
+        </tr>
+        {%- endfor -%}
+    </table>
+
+    {%- if function.returnvalues.size > 0 -%}
+    <p><b>RETURNS</b></p>
+    <table>
+        {%- for return in function.returnvalues -%}
+            {%- for type in return.types -%}
+            <tr>
+                <td><code>{{ type }}</code></td>
+                <td>{{ return.doc }}</td>
+            </tr>
+            {%- endfor -%}
+        {%- endfor -%}
+    </table>
+    {%- endif -%}
+
+    {%- if function.examples.size > 0 -%}
+    <p><b>EXAMPLES</b></p>
+    {{ function.examples }}
+    {%- endif -%}
+    <hr/>
+
+
+
+{%- else -%}
+
+    {%- assign template_names = "" -%}
+    {%- for param in function.tparams -%}
+        {%- if forloop.first == true -%}{%- assign template_names = template_names | append: "template &lt;" -%}{%- endif -%}
+        {%- assign template_names = template_names | append: param.name + "&nbsp;" -%}
+        {%- if forloop.last != true -%}{%- assign template_names = template_names | append: ",&nbsp;" -%}{%- endif -%}
+        {%- if forloop.last == true -%}{%- assign template_names = template_names | append: "&gt;&nbsp;" -%}{%- endif -%}
+    {%- endfor -%}
+
+    {{ template_names }}{{ returntype }}&nbsp;{{ function.name }}({{ paramlist | join: ", " }})
+
+{%- endif -%}
