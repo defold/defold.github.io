@@ -8,7 +8,7 @@ brief: This manual explains how to create Google Play Instant game with Defold.
 
 # Google Play Instant
 
-Google Play Instant enables native games to launch on devices running Android 6.0+ without being installed.
+With Google Play Instant, people can use a game without installing it first. Use it to increase engagement or gain more installs by surfacing your instant game across the Play Store and Google Play Games app. ([official Google Play Instant docs](https://developer.android.com/topic/google-play-instant))
 
 ![GooglePlayInstant](gpi-try-now.png)
 
@@ -40,7 +40,7 @@ This is what it would look like with the default AndroidManifest.xml:
       <dist:module dist:instant="true" />
 ```
 
-2. Add a dependency to the Google Instant Apps extension in your **game.project** file. Add 
+2. Add a dependency to the Google Instant Apps extension in your **game.project** file. Add
 
 >https://github.com/defold/extension-googleplayinstant/archive/master.zip
 
@@ -70,6 +70,15 @@ Once an app is installed, you can only update its target sandbox value to a high
 Even if you set different `android:targetSandboxVersion` in the installable game and instant game you are still able to use `instantapp.set_cookie()` and `instantapp.get_cookie()` for communication between the game versions.
 
 
+
+## Technical Requirements
+According to the [Google Play Instant Technical Requirements](https://developer.android.com/topic/google-play-instant/game-tech-requirements) `apk` size must be less than or equal to 15 MB. Information about application size optimisation available [here](https://www.defold.com/extension-fbinstant/#reducing-bundle-size).
+
+<div class='sidenote' markdown='1'>
+Google Play Instant is only available to Android devices running Android OS 6.0 or higher.
+</div>
+
+
 ## API Usage
 
 The Google Play Instant extension is accessible through the `instantapp.*` namespace where it wraps Java [PackageManagerCompat methods](https://developers.google.com/android/reference/com/google/android/gms/instantapps/PackageManagerCompat) in a Lua API.
@@ -97,17 +106,7 @@ else
 end
 ```
 
-
-## API
-
-If you are working on cross-platform application the best practice to check the existence of `instantapp` module, this module exists only in android bundle:
-```lua
-if instantapp then
-  -- call instantapp methods
-end
-```
-
-#### `instantapp.is_instant_app()` [Original DOC](https://developers.google.com/android/reference/com/google/android/gms/instantapps/PackageManagerCompat#isInstantApp%28%29)
+#### `instantapp.is_instant_app()` [Google Developer docs](https://developers.google.com/android/reference/com/google/android/gms/instantapps/PackageManagerCompat#isInstantApp%28%29)
 Returns true if this application is an instant app.
 
 ```lua
@@ -116,7 +115,7 @@ if instantapp.is_instant_app() then
 end
 ```
 
-#### `instantapp.show_install_prompt()` [Original DOC](https://developers.google.com/android/reference/com/google/android/gms/instantapps/InstantApps#showInstallPrompt(android.app.Activity,%20android.content.Intent,%20int,%20java.lang.String))
+#### `instantapp.show_install_prompt()` [Google Developer docs](https://developers.google.com/android/reference/com/google/android/gms/instantapps/InstantApps#showInstallPrompt(android.app.Activity,%20android.content.Intent,%20int,%20java.lang.String))
 Shows a dialog that allows the user to install the current instant app.
 
 ```lua
@@ -131,29 +130,25 @@ Popup example:
 
 ![2019-04-07 20 54 02](popup-example.jpg)
 
-#### `instantapp.get_cookie_max_size()` [Original DOC](https://developers.google.com/android/reference/com/google/android/gms/instantapps/PackageManagerCompat.html#getInstantAppCookieMaxSize%28%29)
+#### `instantapp.get_cookie_max_size()` [Google Developer docs](https://developers.google.com/android/reference/com/google/android/gms/instantapps/PackageManagerCompat.html#getInstantAppCookieMaxSize%28%29)
 Gets the maximum size in bytes of the cookie data an instant app can store on the device.
 ```lua
 local cookie_size = instantapp.get_cookie_max_size() --number, for example 16384
 ```
 
-#### `instantapp.get_cookie()` [Original DOC](https://developers.google.com/android/reference/com/google/android/gms/instantapps/PackageManagerCompat.html#getInstantAppCookie%28%29)
+#### `instantapp.get_cookie()` [Google Developer docs](https://developers.google.com/android/reference/com/google/android/gms/instantapps/PackageManagerCompat.html#getInstantAppCookie%28%29)
 Gets the instant application cookie for this app. Non instant apps and apps that were instant but were upgraded to normal apps can still access this API.
 
 ```lua
 local cookie_byte_array = instantapp.get_cookie()
 ```
 
-#### `instantapp.set_cookie()` [Original DOC](https://developers.google.com/android/reference/com/google/android/gms/instantapps/PackageManagerCompat.html#setInstantAppCookie%28byte%5B%5D%29)
+#### `instantapp.set_cookie()` [Google Developer docs](https://developers.google.com/android/reference/com/google/android/gms/instantapps/PackageManagerCompat.html#setInstantAppCookie%28byte%5B%5D%29)
 Sets the instant application cookie for the calling app. Non instant apps and apps that were instant but were upgraded to normal apps can still access this API.
 
 ```lua
 instantapp.set_cookie(bytes)
 ```
-
-
-## Technical Requirements
-According to the [Google Play Instant Technical Requirements](https://developer.android.com/topic/google-play-instant/game-tech-requirements) `apk` size must be less than or equal to 15 MB. Information about application size optimisation available [here](https://www.defold.com/extension-fbinstant/#reducing-bundle-size).
 
 
 ## Testing
@@ -198,8 +193,6 @@ sh ./android-sdk/tools/android update sdk --no-ui --all --filter extra-google-in
 ```
 
 More information about debugging on mobile devices available in the [Debugging manual](https://www.defold.com/manuals/debugging/#debugging_on_mobile_devices).
-
-
 
 
 ## Source code
