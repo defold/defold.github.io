@@ -40,7 +40,11 @@ This is what it would look like with the default AndroidManifest.xml:
       <dist:module dist:instant="true" />
 ```
 
-2. Add a dependency to the Google Instant Apps extension in your **game.project** file. Add “https://github.com/defold/extension-googleplayinstant/archive/master.zip” or point to the ZIP file of a [specific release](https://github.com/defold/extension-googleplayinstant/releases) to the Dependencies property.
+2. Add a dependency to the Google Instant Apps extension in your **game.project** file. Add 
+
+>https://github.com/defold/extension-googleplayinstant/archive/master.zip
+
+or point to the ZIP file of a [specific release](https://github.com/defold/extension-googleplayinstant/releases) to the Dependencies property.
 
 ![Project settings](game_project.png)
 
