@@ -80,7 +80,7 @@ Apart from the properties *Id*, *Position*, *Rotation* and *Scale* the following
 : The blend mode to use when rendering the tilemap.
 
 ### Blend modes
-{% include shared/blend-modes.md %}
+{% include shared/en/blend-modes.md %}
 
 ### Changing properties
 
@@ -94,10 +94,10 @@ A tilemap has a number of different properties that can be manipulated using `go
 
 ### Material constants
 
-The default tile map material has the following constants that can be changed using `tilemap.set_constant()` and reset using `tilemap.reset_constant()` (refer to the [Material manual for more details](/manuals/material/#vertex-and-fragment-constants)):
+{% include shared/en/material-constants.md component='tilemap' variable='tint' %}
 
 `tint`
-: The color tint of the tile map (`vector4`). The vector4 is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint. Refer to the [API reference for an example](/ref/tilemap/#tilemap.set_constant:url-constant-value).
+: The color tint of the tile map (`vector4`). The vector4 is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.
 
 ## Project configuration
 

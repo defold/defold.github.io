@@ -2,6 +2,7 @@
     "elements": [
         {
             "description": "Check if Sign in with Apple is available (iOS 13+).", 
+            "examples": "", 
             "name": "is_supported", 
             "parameters": [], 
             "returnvalues": [], 
@@ -9,6 +10,7 @@
         }, 
         {
             "description": "Get the credential state of a user.", 
+            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">siwa</span><span class=\"p\">.</span><span class=\"n\">get_credential_state</span><span class=\"p\">(</span><span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"k\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">credential_state</span> <span class=\"o\">==</span> <span class=\"n\">siwa</span><span class=\"p\">.</span><span class=\"n\">STATE_AUTHORIZED</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">User has still authorized the application&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">user_id</span><span class=\"p\">)</span>\n    <span class=\"k\">elseif</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">credential_state</span> <span class=\"o\">==</span> <span class=\"n\">siwa</span><span class=\"p\">.</span><span class=\"n\">STATE_REVOKED</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">User has revoked authorization for the application&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">user_id</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span><span class=\"p\">)</span>\n</pre></div>", 
             "name": "get_credential_state", 
             "parameters": [
                 {
@@ -25,6 +27,7 @@
         }, 
         {
             "description": "Show the Sign in with Apple UI", 
+            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">siwa</span><span class=\"p\">.</span><span class=\"n\">authenticate</span><span class=\"p\">(</span><span class=\"k\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">identity_token</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">user_id</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">first_name</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">family_name</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">email</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">user_status</span> <span class=\"o\">==</span> <span class=\"n\">siwa</span><span class=\"p\">.</span><span class=\"n\">STATUS_LIKELY_REAL</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Likely a real person&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span><span class=\"p\">)</span>\n</pre></div>", 
             "name": "authenticate", 
             "parameters": [
                 {
@@ -37,52 +40,59 @@
         }, 
         {
             "description": "The user can\u2019t be found.", 
+            "examples": "", 
             "name": "STATE_NOT_FOUND", 
             "parameters": [], 
             "returnvalues": [], 
-            "type": "NUMBER"
+            "type": "VARIABLE"
         }, 
         {
             "description": "Unknown credential state.", 
+            "examples": "", 
             "name": "STATE_UNKNOWN", 
             "parameters": [], 
             "returnvalues": [], 
-            "type": "NUMBER"
+            "type": "VARIABLE"
         }, 
         {
             "description": "The user is authorized.", 
+            "examples": "", 
             "name": "STATE_AUTHORIZED", 
             "parameters": [], 
             "returnvalues": [], 
-            "type": "NUMBER"
+            "type": "VARIABLE"
         }, 
         {
             "description": "Authorization for the given user has been revoked.", 
+            "examples": "", 
             "name": "STATE_REVOKED", 
             "parameters": [], 
             "returnvalues": [], 
-            "type": "NUMBER"
+            "type": "VARIABLE"
         }, 
         {
             "description": "The system hasn\u2019t determined whether the user might be a real person.", 
+            "examples": "", 
             "name": "STATUS_UNKNOWN", 
             "parameters": [], 
             "returnvalues": [], 
-            "type": "NUMBER"
+            "type": "VARIABLE"
         }, 
         {
             "description": "The system can\u2019t determine this user\u2019s status as a real person.", 
+            "examples": "", 
             "name": "STATUS_UNSUPPORTED", 
             "parameters": [], 
             "returnvalues": [], 
-            "type": "NUMBER"
+            "type": "VARIABLE"
         }, 
         {
             "description": "The user appears to be a real person.", 
+            "examples": "", 
             "name": "STATUS_LIKELY_REAL", 
             "parameters": [], 
             "returnvalues": [], 
-            "type": "NUMBER"
+            "type": "VARIABLE"
         }
     ], 
     "info": {

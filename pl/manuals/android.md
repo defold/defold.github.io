@@ -142,4 +142,4 @@ D/defold  ( 6210): DEBUG:SCRIPT: Hello there, log!
 ```
 
 ## FAQ
-{% include shared/android-faq.md %}
+{% include shared/pl/android-faq.md %}

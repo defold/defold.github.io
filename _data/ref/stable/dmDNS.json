@@ -1,0 +1,133 @@
+{
+  "info": {
+    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/dns.h&gt;</span></p>\n<p>Dns functions.</p>", 
+    "namespace": "dmDNS", 
+    "name": "Dns", 
+    "brief": "<p>SDK DNS API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Deletes the current channel and cancels all requests.\nNote: You must always make sure to call StopChannel(channel) before calling this function.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmDNS::HChannel</span> Handle to the channel</p>", 
+          "name": "channel"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>delete channel</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmDNS::DeleteChannel"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>A channel roughly translates to a socket on which to put the name lookup requests on.\nInternal implementation resides in dns.cpp.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "TYPEDEF", 
+      "name": "dmDNS::HChannel"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Creates a new channel that can be used for DNS queries.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmDNS::HChannel*</span> Pointer to the created channel if successful, will be left alone otherwise</p>", 
+          "name": "channel"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on succcess</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "<p>create a new channel</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmDNS::NewChannel"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Refreshes the channel configuration so that the latest DNS servers are used.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmDNS::HChannel</span> Handle to the channel</p>", 
+          "name": "channel"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on succcess</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "<p>refresh to the latest dns servers</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmDNS::RefreshChannel"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Result type</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>result type</p>", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "<p>0</p>", 
+          "name": "dmDNS::RESULT_OK"
+        }, 
+        {
+          "doc": "<p>-1</p>", 
+          "name": "dmDNS::RESULT_INIT_ERROR"
+        }, 
+        {
+          "doc": "<p>-2</p>", 
+          "name": "dmDNS::RESULT_HOST_NOT_FOUND"
+        }, 
+        {
+          "doc": "<p>-3</p>", 
+          "name": "dmDNS::RESULT_CANCELLED"
+        }, 
+        {
+          "doc": "<p>-4</p>", 
+          "name": "dmDNS::RESULT_UNKNOWN_ERROR"
+        }
+      ], 
+      "error": "", 
+      "type": "ENUM", 
+      "name": "dmDNS::Result"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Stops the current request (if available) on a channel.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmDNS::HChannel</span> Handle to the channel</p>", 
+          "name": "channel"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>stop current request</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmDNS::StopChannel"
+    }
+  ]
+}

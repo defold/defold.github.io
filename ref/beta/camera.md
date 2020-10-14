@@ -2,7 +2,7 @@
 layout: ref
 branch: beta
 ref: camera
-type: lua
+type: defold
 title: API reference (camera)
 ---
 {% include anchor_headings.html html=content %}

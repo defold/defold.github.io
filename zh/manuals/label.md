@@ -69,7 +69,7 @@ brief: 本教程介绍了文本组件 label 的使用方法.
 : 用于渲染此 label 所使用的材质. 确保选中的材质是为你所使用的字体 (bitmap, distance field or BMFont) 创建的.
 
 ### 混合模式
-{% include shared/blend-modes.md %}
+{% include shared/zh/blend-modes.md %}
 
 ### 锚点和对齐
 
@@ -128,3 +128,7 @@ function init(self)
     go.set("#my_label", "scale.x", scale_x * 2)
 end
 ```
+
+## 相关项目配置
+
+在 *game.project* 文件里有些关于标签的 [设置项目](/zh/manuals/project-settings#label).

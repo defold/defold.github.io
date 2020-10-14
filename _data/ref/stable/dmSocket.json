@@ -1,0 +1,899 @@
+{
+  "info": {
+    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/socket.h&gt;</span></p>\n<p>Socket functions.</p>", 
+    "namespace": "dmSocket", 
+    "name": "Socket", 
+    "brief": "<p>SDK Socket API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Invalid socket handle</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "INVALID_SOCKET_HANDLE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Socket default timeout value</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "SOCKET_TIMEOUT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>Socket type definition</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "TYPEDEF", 
+      "name": "Socket"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Network addresses were previously represented as an uint32_t, but in\norder to support IPv6 the internal representation was changed to a struct.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>network address</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "STRUCT", 
+      "name": "dmSocket::Address"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Initiate a connection on a socket</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> Socket to initiate connection on</p>", 
+          "name": "socket"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Address</span> Address to connect to</p>", 
+          "name": "address"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Port to connect to</p>", 
+          "name": "port"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "<p>make a connection</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::Connect"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Delete a socket. Corresponds to BSD socket function close()</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> Socket to close</p>", 
+          "name": "socket"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "<p>delete a socket</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::Delete"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Domain type</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>domain type</p>", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "name": "dmSocket::DOMAIN_MISSING"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmSocket::DOMAIN_IPV4"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmSocket::DOMAIN_IPV6"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmSocket::DOMAIN_UNKNOWN"
+        }
+      ], 
+      "error": "", 
+      "type": "ENUM", 
+      "name": "dmSocket::Domain"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get underlying file descriptor</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> socket to get fd for</p>", 
+          "name": "socket"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "file-descriptor"
+        }
+      ], 
+      "brief": "<p>get underlying file descriptor</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::GetFD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get host by name</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const char*</span> Hostname to resolve</p>", 
+          "name": "name"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Address*</span> Host address result</p>", 
+          "name": "address"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">bool</span> Whether or not to search for IPv4 addresses</p>", 
+          "name": "ipv4"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">bool</span> Whether or not to search for IPv6 addresses</p>", 
+          "name": "ipv6"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "<p>get host by name</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::GetHostByName"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Create a new socket. Corresponds to BSD socket function socket().</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Type</span> Socket type</p>", 
+          "name": "type"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Protocol</span> Protocol</p>", 
+          "name": "protocol"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket*</span> Pointer to socket</p>", 
+          "name": "socket"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on succcess</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "<p>create a socket</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::New"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Network protocol</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>network protocol</p>", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "name": "dmSocket::PROTOCOL_TCP"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmSocket::PROTOCOL_UDP"
+        }
+      ], 
+      "error": "", 
+      "type": "ENUM", 
+      "name": "dmSocket::Protocol"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> Socket to receive data on</p>", 
+          "name": "socket"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">void*</span> Buffer to receive to</p>", 
+          "name": "buffer[out]"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Receive buffer length</p>", 
+          "name": "length"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int*</span> Number of received bytes (result)</p>", 
+          "name": "received_bytes[out]"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "<p>Receive data on a socket</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::Receive"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Socket result</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>socket result</p>", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "<p>0</p>", 
+          "name": "dmSocket::RESULT_OK"
+        }, 
+        {
+          "doc": "<p>-1</p>", 
+          "name": "dmSocket::RESULT_ACCES"
+        }, 
+        {
+          "doc": "<p>-2</p>", 
+          "name": "dmSocket::RESULT_AFNOSUPPORT"
+        }, 
+        {
+          "doc": "<p>-3</p>", 
+          "name": "dmSocket::RESULT_WOULDBLOCK"
+        }, 
+        {
+          "doc": "<p>-4</p>", 
+          "name": "dmSocket::RESULT_BADF"
+        }, 
+        {
+          "doc": "<p>-5</p>", 
+          "name": "dmSocket::RESULT_CONNRESET"
+        }, 
+        {
+          "doc": "<p>-6</p>", 
+          "name": "dmSocket::RESULT_DESTADDRREQ"
+        }, 
+        {
+          "doc": "<p>-7</p>", 
+          "name": "dmSocket::RESULT_FAULT"
+        }, 
+        {
+          "doc": "<p>-8</p>", 
+          "name": "dmSocket::RESULT_HOSTUNREACH"
+        }, 
+        {
+          "doc": "<p>-9</p>", 
+          "name": "dmSocket::RESULT_INTR"
+        }, 
+        {
+          "doc": "<p>-10</p>", 
+          "name": "dmSocket::RESULT_INVAL"
+        }, 
+        {
+          "doc": "<p>-11</p>", 
+          "name": "dmSocket::RESULT_ISCONN"
+        }, 
+        {
+          "doc": "<p>-12</p>", 
+          "name": "dmSocket::RESULT_MFILE"
+        }, 
+        {
+          "doc": "<p>-13</p>", 
+          "name": "dmSocket::RESULT_MSGSIZE"
+        }, 
+        {
+          "doc": "<p>-14</p>", 
+          "name": "dmSocket::RESULT_NETDOWN"
+        }, 
+        {
+          "doc": "<p>-15</p>", 
+          "name": "dmSocket::RESULT_NETUNREACH"
+        }, 
+        {
+          "doc": "<p>-17</p>", 
+          "name": "dmSocket::RESULT_NOBUFS"
+        }, 
+        {
+          "doc": "<p>-20</p>", 
+          "name": "dmSocket::RESULT_NOTCONN"
+        }, 
+        {
+          "doc": "<p>-22</p>", 
+          "name": "dmSocket::RESULT_NOTSOCK"
+        }, 
+        {
+          "doc": "<p>-23</p>", 
+          "name": "dmSocket::RESULT_OPNOTSUPP"
+        }, 
+        {
+          "doc": "<p>-24</p>", 
+          "name": "dmSocket::RESULT_PIPE"
+        }, 
+        {
+          "doc": "<p>-25</p>", 
+          "name": "dmSocket::RESULT_PROTONOSUPPORT"
+        }, 
+        {
+          "doc": "<p>-26</p>", 
+          "name": "dmSocket::RESULT_PROTOTYPE"
+        }, 
+        {
+          "doc": "<p>-27</p>", 
+          "name": "dmSocket::RESULT_TIMEDOUT"
+        }, 
+        {
+          "doc": "<p>-28</p>", 
+          "name": "dmSocket::RESULT_ADDRNOTAVAIL"
+        }, 
+        {
+          "doc": "<p>-29</p>", 
+          "name": "dmSocket::RESULT_CONNREFUSED"
+        }, 
+        {
+          "doc": "<p>-30</p>", 
+          "name": "dmSocket::RESULT_ADDRINUSE"
+        }, 
+        {
+          "doc": "<p>-31</p>", 
+          "name": "dmSocket::RESULT_CONNABORTED"
+        }, 
+        {
+          "doc": "<p>-32</p>", 
+          "name": "dmSocket::RESULT_INPROGRESS"
+        }, 
+        {
+          "doc": "<p>-100</p>", 
+          "name": "dmSocket::RESULT_HOST_NOT_FOUND"
+        }, 
+        {
+          "doc": "<p>-101</p>", 
+          "name": "dmSocket::RESULT_TRY_AGAIN"
+        }, 
+        {
+          "doc": "<p>-102</p>", 
+          "name": "dmSocket::RESULT_NO_RECOVERY"
+        }, 
+        {
+          "doc": "<p>-103</p>", 
+          "name": "dmSocket::RESULT_NO_DATA"
+        }, 
+        {
+          "doc": "<p>-1000</p>", 
+          "name": "dmSocket::RESULT_UNKNOWN"
+        }
+      ], 
+      "error": "", 
+      "type": "ENUM", 
+      "name": "dmSocket::Result"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Result</span> Result to convert</p>", 
+          "name": "result"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>as string</p>", 
+          "name": "Result"
+        }
+      ], 
+      "brief": "<p>Convert result value to string</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::ResultToString"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Select for pending data</p>", 
+      "parameters": [
+        {
+          "doc": "<p>Selector</p>", 
+          "name": "selector"
+        }, 
+        {
+          "doc": "<p>Timeout. For blocking pass -1. (microseconds)</p>", 
+          "name": "timeout"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::Select"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Selector</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "STRUCT", 
+      "name": "dmSocket::Selector"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Clear selector for socket. Similar to FD_CLR</p>", 
+      "parameters": [
+        {
+          "doc": "<p>Selector</p>", 
+          "name": "selector"
+        }, 
+        {
+          "doc": "<p>Kind to clear</p>", 
+          "name": "selector_kind"
+        }, 
+        {
+          "doc": "<p>Socket to clear</p>", 
+          "name": "socket"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SelectorClear"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Check if selector is set. Similar to FD_ISSET</p>", 
+      "parameters": [
+        {
+          "doc": "<p>Selector</p>", 
+          "name": "selector"
+        }, 
+        {
+          "doc": "<p>Selector kind</p>", 
+          "name": "selector_kind"
+        }, 
+        {
+          "doc": "<p>Socket to check for</p>", 
+          "name": "socket"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>if set.</p>", 
+          "name": "True"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SelectorIsSet"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Selector kind</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "name": "dmSocket::SELECTOR_KIND_READ"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmSocket::SELECTOR_KIND_WRITE"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmSocket::SELECTOR_KIND_EXCEPT"
+        }
+      ], 
+      "error": "", 
+      "type": "ENUM", 
+      "name": "dmSocket::SelectorKind"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set selector for socket. Similar to FD_SET</p>", 
+      "parameters": [
+        {
+          "doc": "<p>Selector</p>", 
+          "name": "selector"
+        }, 
+        {
+          "doc": "<p>Kind to clear</p>", 
+          "name": "selector_kind"
+        }, 
+        {
+          "doc": "<p>Socket to set</p>", 
+          "name": "socket"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SelectorSet"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Clear selector (all kinds). Similar to FD_ZERO</p>", 
+      "parameters": [
+        {
+          "doc": "<p>Selector</p>", 
+          "name": "selector"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SelectorZero"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> Socket to send a message on</p>", 
+          "name": "socket"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">void*</span> Buffer to send</p>", 
+          "name": "buffer"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Length of buffer to send</p>", 
+          "name": "length"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int*</span> Number of bytes sent (result)</p>", 
+          "name": "sent_bytes[out]"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "<p>Send a message on a socket</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::Send"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set blocking option on a socket</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> Socket to set blocking on</p>", 
+          "name": "socket"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">bool</span> True to block</p>", 
+          "name": "blocking"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SetBlocking"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set broadcast address option on socket. Socket option SO_BROADCAST on most platforms.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> Socket to set reuse address to</p>", 
+          "name": "socket"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">bool</span> True if broadcast</p>", 
+          "name": "broadcast"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SetBroadcast"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set TCP_NODELAY on socket</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> Socket to set TCP_NODELAY on</p>", 
+          "name": "socket"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">bool</span> True for no delay</p>", 
+          "name": "no_delay"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SetNoDelay"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set TCP_QUICKACK on socket</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> Socket to set TCP_QUICKACK on</p>", 
+          "name": "socket"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">bool</span> False to disable quick ack</p>", 
+          "name": "use_quick_ack"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SetQuickAck"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set socket receive timeout</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> socket</p>", 
+          "name": "socket"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">uint64_t</span> timeout in microseconds</p>", 
+          "name": "timeout"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SetReceiveTimeout"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set reuse socket address option on socket. Socket option SO_REUSEADDR on most platforms</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> Socket to set reuse address to</p>", 
+          "name": "socket"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">bool</span> True if reuse</p>", 
+          "name": "reuse"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SetReuseAddress"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set socket send timeout</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> socket</p>", 
+          "name": "socket"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">uint64_t</span> timeout in microseconds</p>", 
+          "name": "timeout"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::SetSendTimeout"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Shutdown part of a socket connection</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmSocket::Socket</span> Socket to shutdown connection ow</p>", 
+          "name": "socket"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmSocket::ShutdownType</span> Shutdown type</p>", 
+          "name": "how"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "RESULT_OK"
+        }
+      ], 
+      "brief": "<p>close socket</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmSocket::Shutdown"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Socket shutdown type</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>socket shutdown type</p>", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "name": "dmSocket::SHUTDOWNTYPE_READ"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmSocket::SHUTDOWNTYPE_WRITE"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmSocket::SHUTDOWNTYPE_READWRITE"
+        }
+      ], 
+      "error": "", 
+      "type": "ENUM", 
+      "name": "dmSocket::ShutdownType"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Socket type</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>socket type</p>", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "name": "dmSocket::TYPE_STREAM"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmSocket::TYPE_DGRAM"
+        }
+      ], 
+      "error": "", 
+      "type": "ENUM", 
+      "name": "dmSocket::Type"
+    }
+  ]
+}

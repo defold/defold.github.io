@@ -12,7 +12,7 @@ brief: 本教程介绍了在 Windows 平台下如何编译和运行 Defold 应�
 
 ## 项目设置
 
-Windows 相关设置位于*game.project* 文件的 [Windows部分](/zh/manuals/project-settings/#windows)  .
+Windows 相关设置位于*game.project* 文件的 [Windows部分](/zh/manuals/project-settings/#Windows)  .
 
 ## 应用图标
 
@@ -20,5 +20,5 @@ Windows游戏的图标要使用 .ico 格式. 你可以拿一个 .png 文件, 使
 
 ![Windows icon sizes](/manuals/images/windows/windows-icon.png)
 
-## FAQ
-{% include shared/windows-faq.md %}
+## 问答
+{% include shared/zh/windows-faq.md %}

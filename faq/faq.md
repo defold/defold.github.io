@@ -143,22 +143,22 @@ See [this link](https://github.com/defold/editor2-issues/blob/master/faq/pkixpat
 
 
 ## Linux
-{% include shared/linux-faq.md %}
+{% include shared/en/linux-faq.md %}
 
 
 ## Android
-{% include shared/android-faq.md %}
+{% include shared/en/android-faq.md %}
 
 
 ## HTML5
-{% include shared/html5-faq.md %}
+{% include shared/en/html5-faq.md %}
 
 
 ## Windows
-{% include shared/windows-faq.md %}
+{% include shared/en/windows-faq.md %}
 
 ## Nintendo Switch
-{% include shared/nintendo-switch-faq.md %}
+{% include shared/en/nintendo-switch-faq.md %}
 
 
 ## Game content
@@ -192,7 +192,7 @@ A: The built-in sprite shader that is used by default for all sprites has a cons
   local green = 0.3
   local blue = 0.55
   local alpha = 1
-  sprite.set_constant("#sprite", "tint", vmath.vector4(red, green, blue, alpha))
+  go.set("#sprite", "tint", vmath.vector4(red, green, blue, alpha))
   ```
 
 

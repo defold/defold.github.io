@@ -2,7 +2,7 @@
 layout: ref
 branch: stable
 ref: crash
-type: lua
+type: defold
 title: API reference (crash)
 ---
 {% include anchor_headings.html html=content %}

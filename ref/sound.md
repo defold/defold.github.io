@@ -2,7 +2,7 @@
 layout: ref
 branch: stable
 ref: sound
-type: lua
+type: defold
 title: API reference (sound)
 ---
 {% include anchor_headings.html html=content %}

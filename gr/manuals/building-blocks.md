@@ -66,7 +66,7 @@ go.animate("can", "position.x", go.PLAYBACK_LOOP_PINGPONG, 100, go.EASING_LINEAR
 
 
 ## Components Συστατικό
-{% include shared/components.md %}
+{% include shared/gr/components.md %}
 
 Ανατρέξτε στο [component overview](/gr/manuals/components/) για μία λίστα των τύπων των συστατικών.
 

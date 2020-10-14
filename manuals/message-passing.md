@@ -156,7 +156,7 @@ There is a hard limit to the `message` parameter table size. This limit is set t
 
 Defold provides two handy shorthands that you can use to send message without specifying a complete URL:
 
-{% include shared/url-shorthands.md %}
+{% include shared/en/url-shorthands.md %}
 
 
 ## Receiving messages

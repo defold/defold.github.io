@@ -2,7 +2,7 @@
 layout: ref
 branch: beta
 ref: gui
-type: lua
+type: defold
 title: API reference (gui)
 ---
 {% include anchor_headings.html html=content %}

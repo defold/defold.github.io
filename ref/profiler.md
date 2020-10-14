@@ -2,7 +2,7 @@
 layout: ref
 branch: stable
 ref: profiler
-type: lua
+type: defold
 title: API reference (profiler)
 ---
 {% include anchor_headings.html html=content %}

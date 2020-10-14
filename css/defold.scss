@@ -1,6 +1,7 @@
 ---
 ---
 
+
 /* Reusable color constants */
 :root {
 	--lightest: #fafafa;
@@ -126,6 +127,14 @@
 }
 .light a:hover {
 	color: var(--dark);
+}
+
+/*******************************************************************************
+* grey
+******************************************************************************/
+.grey {
+	background-color: var(--grey);
+	color: var(--lighter);
 }
 
 /*******************************************************************************
@@ -394,9 +403,25 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 	display: none;
 }
 
+/*******************************************************************************
+* Vertical navigation menu (class: navmenu)
+* Positioned at left or right side of some pages
+******************************************************************************/
+
+
 @media (max-width: 800px) {
 	.navmenu     { display: none; }
 	.navdropdown { display: inline-block; }
+}
+
+.navmenu.ref {
+	line-height: 1;
+}
+
+.sticky {
+	position: fixed;
+	top: 0;
+	z-index: 100;
 }
 
 
@@ -705,12 +730,18 @@ ul.checkmark li:before {
 	margin-bottom: 0;
 	border-radius: 4px;
 	background-color: var(--grey);
+	color: var(--lighter);
 }
 .asset #image {
 	border-radius: 4px 4px 0 0;
 }
 .asset a {
 	text-decoration: none;
+	color: var(--lightest);
+}
+.asset a:hover {
+	text-decoration: underline;
+	color: var(--lightest);
 }
 .asset img {
 	border-radius: 4px 4px 0 0;
@@ -721,7 +752,7 @@ ul.checkmark li:before {
 	padding-top: 1rem;
 	padding-bottom: 0;
 }
-.asset:hover {
+.asset.clickable:hover {
 	box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
 	cursor: pointer;
 	background-color: #373c41;
@@ -788,9 +819,25 @@ ul.checkmark li:before {
 .card.grey {
 	background-color: var(--grey);
 }
+.card.grey a {
+	text-decoration: none;
+	color: var(--lightest);
+}
+.card.grey a:hover {
+	text-decoration: underline;
+	color: var(--lightest);
+}
 
 .card.dark {
 	background-color: var(--dark);
+}
+.card.dark a {
+	text-decoration: none;
+	color: var(--lighter);
+}
+.card.dark a:hover {
+	text-decoration: underline;
+	color: var(--lighter);
 }
 
 .card.blue {

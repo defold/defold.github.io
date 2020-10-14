@@ -1,0 +1,71 @@
+{
+    "elements": [
+        {
+            "description": "Shows a dialog that allows the user to install the current instant app.", 
+            "examples": "", 
+            "name": "show_install_prompt", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Checks if application loaded as instant experience.", 
+            "examples": "", 
+            "name": "is_instant_app", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "Returns true if this application is an instant app.", 
+                    "name": "boolean"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Gets the maximum size in bytes of the cookie data an instant app can store on the device.", 
+            "examples": "", 
+            "name": "get_cookie_max_size", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "The maximum size in bytes of the cookie data an instant app can store on the device.", 
+                    "name": "number"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Load byte array from cookies that were saved in instant application.", 
+            "examples": "", 
+            "name": "get_cookie", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "The byte array data of cookies saved in instant application.", 
+                    "name": "string"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Save byte array in cookies to be able get access to this data in installable application.", 
+            "examples": "", 
+            "name": "set_cookie", 
+            "parameters": [
+                {
+                    "doc": "The byte array data will be saved in cookies for access in installable application.", 
+                    "name": "bytes"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }
+    ], 
+    "info": {
+        "brief": "instantapp", 
+        "description": "Functions and constants for interacting with InstantApp APIs", 
+        "group": "EXTENSIONS", 
+        "name": "instantapp", 
+        "namespace": "instantapp"
+    }
+}

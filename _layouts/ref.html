@@ -20,11 +20,12 @@ layout: base
 	{%- assign page_url = page.url | replace: "ref/", "ref/BRANCH/" -%}
 {%- endif -%}
 
+
 <div class="section lightest">
 	<div class="container">
 		<div class="row">
-			<div class="columns three">
-				<ul class="navmenu nobullet">
+			<div class="columns two">
+				<ul id="navmenu" class="navmenu ref nobullet">
 					{%- for type in types -%}
 					{%- assign refs = indices | where: "type", type -%}
 
@@ -71,6 +72,7 @@ layout: base
 					<option value="{{ page_url | replace: 'BRANCH', b }}">{{ b }}</option>
 					{%- endfor -%}
 				</select>
+				&nbsp;
 			</div>
 			<div class="columns nine ref scrollable">
 				{%- if ref.info.group == "DEFOLD SDK" -%}
@@ -84,3 +86,18 @@ layout: base
 </div>
 
 {%- include marksearchhits.html div="ref" -%}
+
+<script type="text/javascript">
+	var menu = document.getElementById("navmenu");
+	if (menu != null) {
+		var viewportOffset = menu.getBoundingClientRect();
+		window.onscroll = function() {
+			if (window.pageYOffset > viewportOffset.top) {
+				menu.classList.add("sticky");
+			}
+			else {
+				menu.classList.remove("sticky");
+			}
+		};
+	}
+</script>

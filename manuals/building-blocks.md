@@ -67,7 +67,7 @@ Game objects are either added in-place in a collection, or added to a collection
 
 ## Components
 
-{% include shared/components.md %}
+{% include shared/en/components.md %}
 
 Refer to the [component overview](/manuals/components/) for a list of all available component types.
 
@@ -110,4 +110,6 @@ local parent = go.get_id("bean")
 msg.post("child_bean", "set_parent", { parent_id = parent })
 ```
 
+<div class='important' markdown='1'>
 A common misunderstanding is that a game object's place in the collection hierarchy changes when it becomes part of a parent-child hierarchy. However, these are two very different things. Parent-child hierarchies dynamically alters the scene graph which allows objects to be visually attached to each other. The only thing that dictates a game object's address is its place in the collection hierarchy. The address is static throughout the lifetime of the object.
+</div>

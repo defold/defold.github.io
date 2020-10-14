@@ -35,7 +35,7 @@ The first step is to [download the following file](https://github.com/defold/def
 
 Now, if you haven't already downloaded and installed the Defold editor, it's time to do that:
 
-{% include shared/install.md %}
+{% include shared/en/install.md %}
 
 When the editor is installed and started it's time to create a new project and getting it ready. Create a [new project](/manuals/project-setup/#creating-a-new-project) from the "Empty Project" template.
 

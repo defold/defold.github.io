@@ -8,7 +8,7 @@ brief: This manual gives an overview of the components and how to use them.
 
 #  Components
 
-{% include shared/components.md %}
+{% include shared/en/components.md %}
 
 ## Component types
 

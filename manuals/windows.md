@@ -21,4 +21,4 @@ The application icon used for a Windows game must be in the .ico format. You can
 ![Windows icon sizes](../images/windows/windows-icon.png)
 
 ## FAQ
-{% include shared/windows-faq.md %}
+{% include shared/en/windows-faq.md %}

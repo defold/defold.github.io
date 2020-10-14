@@ -31,7 +31,7 @@ Sprite 组件使用 [图集](/zh/manuals/atlas) 或者 [瓷砖图源](/zh/manual
 : 组件渲染时使用的混合模式.
 
 ### 混合模式
-{% include shared/blend-modes.md %}
+{% include shared/zh/blend-modes.md %}
 
 # 运行时操作
 
@@ -60,9 +60,13 @@ Sprite 组件使用 [图集](/zh/manuals/atlas) 或者 [瓷砖图源](/zh/manual
 `size`
 : Sprite大小 (`vector3`) (只读).
 
-## 材质属性
+## 材质常量
 
-sprite的默认材质属性可以用 `sprite.set_constant()` 和 `sprite.reset_constant()` 方法来设置和重置. (详情参见 [材质教程](/zh/manuals/material/#vertex-and-fragment-constants)):
+{% include shared/zh/material-constants.md component='sprite' variable='tint' %}
 
 `tint`
-: sprite染色 (`vector4`). 四元数 x, y, z, 和 w 代表染色的红, 绿, 蓝 和不透明度. 参见 [这个例子的 API 用法](/ref/sprite/#sprite.set_constant:url-constant-value).
+: 3D网格颜色 (`vector4`). 四元数 x, y, z, 和 w 分别对应红, 绿, 蓝和不透明度.
+
+## 相关项目配置
+
+在 *game.project* 文件里有些关于Sprite的 [设置项目](/zh/manuals/project-settings#sprite).

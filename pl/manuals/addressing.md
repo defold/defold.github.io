@@ -116,7 +116,7 @@ Adresowanie relatywne (względne) działa dzięki automatycznemu używaniu ident
 
 Defold pozwala na używanie dwóch przydatnych skrótów przy tworzeniu adresu, bez określania konkretnego adresu URL komponentu ("#") czy obiektu ("."):
 
-{% include shared/url-shorthands.md %}
+{% include shared/pl/url-shorthands.md %}
 
 ## Ścieżki do obiektów
 
