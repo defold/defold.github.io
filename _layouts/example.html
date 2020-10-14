@@ -6,7 +6,7 @@ layout: base
 <div class="section lightest">
 	<div class="container">
 		<div class="row">
-			<div class="columns three">
+			<div class="columns two">
 				{% assign all_categories = site.data.examplesindex | map: "category" | uniq %}
 				<div class="navmenu">
 				{% for category in all_categories %}
@@ -40,7 +40,7 @@ layout: base
 					</select>
 				</div>
 			</div>
-			<div class="columns seven example" style="">
+			<div class="columns eight example" style="">
 				<h4>{{ page.title }}</h4>
 				{%- if page.collection -%}
 				{% include example.html %}
