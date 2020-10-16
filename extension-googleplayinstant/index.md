@@ -16,18 +16,19 @@ With Google Play Instant, people can use a game without installing it first. Use
 
 To be able to publish your game as Google Play Instant app you need to set up your project properly:
 
-1. Create custom `AndroidManifest.xml` file and add the following attributes to the `<manifest>` element:
+* Create a custom `AndroidManifest.xml` file (copy the default from `builtins/manifests/android/AndroidManifest.xml`) and add the following attributes to the `<manifest>` element:
 
 ```lua
 xmlns:dist="http://schemas.android.com/apk/distribution"
 android:targetSandboxVersion="2"
 ```
 The following declaration need to be added right after manifest element:
+
 ```lua
 <dist:module dist:instant="true" />
 ```
 
-This is what it would look like with the default AndroidManifest.xml:
+This is what it would look like with the default `AndroidManifest.xml`:
 
 ```lua
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -40,17 +41,19 @@ This is what it would look like with the default AndroidManifest.xml:
       <dist:module dist:instant="true" />
 ```
 
-2. Add a dependency to the Google Instant Apps extension in your **game.project** file. Add
+* Add a dependency to the Google Play Instant extension in your **game.project** file. Add:
 
->https://github.com/defold/extension-googleplayinstant/archive/master.zip
+```
+https://github.com/defold/extension-googleplayinstant/archive/master.zip
+```
 
 or point to the ZIP file of a [specific release](https://github.com/defold/extension-googleplayinstant/releases) to the Dependencies property.
 
 ![Project settings](game_project.png)
 
-3. Download libraries: Project->Fetch Libraries
-4. Bundle `aab` Project->Bundle->Android Application
-5. Upload your `aab` in Google Play Console as Android Instant App
+* Download libraries: Project->Fetch Libraries
+* Bundle `aab` Project->Bundle->Android Application
+* Upload your `aab` in Google Play Console as Android Instant App
 
 
 ### Version codes
@@ -60,19 +63,18 @@ Pay attention to [the recommendations about the version codes](https://developer
 
 
 ### android:targetSandboxVersion="2"
-
-If you set `android:targetSandboxVersion="2"` in the main installable game you will be able to access the same files as instant game (a save file for example). But then you would have restrictions in the main application. More information in [the official documentation](https://developer.android.com/guide/topics/manifest/manifest-element#targetSandboxVersion).
+If you set `android:targetSandboxVersion="2"` in the main installable game you will be able to access the same files as the instant game (a save file for example). Note that certain restrictions apply to a level 2 sandbox. More information in [the official documentation](https://developer.android.com/guide/topics/manifest/manifest-element#targetSandboxVersion).
 
 <div class='sidenote' markdown='1'>
 Once an app is installed, you can only update its target sandbox value to a higher value. To downgrade the target sandbox value, you must uninstall the app and replace it with a version whose manifest contains a lower value for this attribute.
 </div>
 
-Even if you set different `android:targetSandboxVersion` in the installable game and instant game you are still able to use `instantapp.set_cookie()` and `instantapp.get_cookie()` for communication between the game versions.
+Even if you set a different `android:targetSandboxVersion` in the installable game and instant game you are still able to use `instantapp.set_cookie()` and `instantapp.get_cookie()` for communication between the game versions.
 
 
 
 ## Technical Requirements
-According to the [Google Play Instant Technical Requirements](https://developer.android.com/topic/google-play-instant/game-tech-requirements) `apk` size must be less than or equal to 15 MB. Information about application size optimisation available [here](https://www.defold.com/extension-fbinstant/#reducing-bundle-size).
+According to the [Google Play Instant Technical Requirements](https://developer.android.com/topic/google-play-instant/game-tech-requirements) `apk` size must be less than or equal to 15 MB. Recommendations for application size optimisation are available in the [optimization manual](https://defold.com/manuals/optimization/#optimize-application-size).
 
 <div class='sidenote' markdown='1'>
 Google Play Instant is only available to Android devices running Android OS 6.0 or higher.
@@ -80,10 +82,9 @@ Google Play Instant is only available to Android devices running Android OS 6.0 
 
 
 ## API Usage
-
 The Google Play Instant extension is accessible through the `instantapp.*` namespace where it wraps Java [PackageManagerCompat methods](https://developers.google.com/android/reference/com/google/android/gms/instantapps/PackageManagerCompat) in a Lua API.
 
-If you are working on a cross-platform application the best practice is to check the existence of `instantapp` module since this module exists only in android bundle:
+If you are working on a cross-platform application the best practice is to check the existence of the `instantapp` module since this module exists only in an Android bundle:
 
 ```lua
 if instantapp then
@@ -111,7 +112,7 @@ Returns true if this application is an instant app.
 
 ```lua
 if instantapp.is_instant_app() then
-  --do something specific for instant app
+  -- do something specific for instant app
 end
 ```
 
@@ -132,6 +133,7 @@ Popup example:
 
 #### `instantapp.get_cookie_max_size()` [Google Developer docs](https://developers.google.com/android/reference/com/google/android/gms/instantapps/PackageManagerCompat.html#getInstantAppCookieMaxSize%28%29)
 Gets the maximum size in bytes of the cookie data an instant app can store on the device.
+
 ```lua
 local cookie_size = instantapp.get_cookie_max_size() --number, for example 16384
 ```
@@ -154,49 +156,51 @@ instantapp.set_cookie(bytes)
 ## Testing
 ![Testing Instant game](start_instant.png)
 
-1. Download Android SDK tools:
-- macOS: [https://dl.google.com/android/repository/tools_r25.2.3-macosx.zip](https://dl.google.com/android/repository/tools_r25.2.3-macosx.zip)
-- Windows: [https://dl.google.com/android/repository/tools_r25.2.3-windows.zip](https://dl.google.com/android/repository/tools_r25.2.3-windows.zip)
-- Linux: [https://dl.google.com/android/repository/tools_r25.2.3-linux.zip](https://dl.google.com/android/repository/tools_r25.2.3-linux.zip)
-2. Unpack and copy the `tools` folder into `android-sdk` folder.
-3. Install build tools:
+* Download Android SDK command line tools from the [official download page](https://developer.android.com/studio) (scroll to the bottom of the page) or from these direct download links:
+
+- macOS: [https://dl.google.com/android/repository/commandlinetools-mac-6609375_latest.zip](https://dl.google.com/android/repository/commandlinetools-mac-6609375_latest.zip)
+
+- Windows: [https://dl.google.com/android/repository/commandlinetools-win-6609375_latest.zip](https://dl.google.com/android/repository/commandlinetools-win-6609375_latest.zip)
+
+- Linux: [https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip](https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip)
+
+* Unpack the downloaded archive and create the following folder structure:
+
+```
+|
++-android-sdk
+  |
+  +-cmdline-tools
+    |
+    +-latest
+      |
+      +-bin (from unpacked archive)
+      +-lib (from unpacked archive)
+```
+
+* Install the Android build tools:
 
 ```console
-./android-sdk/tools/bin/sdkmanager --verbose “build-tools;25.0.3”
+./android-sdk/cmdline-tools/latest/bin/sdkmanager --verbose "build-tools;29.0.3"
 ```
-4. Install `extra-google-instantapps` tools:
+
+* Install `extra-google-instantapps` tools:
 
 ```console
-sh ./android-sdk/tools/android update sdk --no-ui --all --filter extra-google-instantapps
+./android-sdk/cmdline-tools/latest/bin/sdkmanager --verbose "extras;google;instantapps"
 ```
 
-5. Launch `apk` as Instant game on your device:
+* Launch `apk` as Instant game on your device:
 
 ```console
 android-sdk/extras/google/instantapps/ia run path_to_your_game.apk
 ```
 
-It's also possible to use this script for preparation instead of p.1-p.4:
-
-```console
-mkdir ~/android
-cd ~/android
-mkdir android-sdk
-# Supported: macosx,linux,windows
-PLATFORM=macosx
-TOOL_VERSION=25.2.3
-wget https://dl.google.com/android/repository/tools_r$TOOL_VERSION-$PLATFORM.zip
-tar xvf tools_r$TOOL_VERSION-$PLATFORM.zip
-mv tools android-sdk/tools
-./android-sdk/tools/bin/sdkmanager --verbose "build-tools;25.0.3"
-sh ./android-sdk/tools/android update sdk --no-ui --all --filter extra-google-instantapps
-```
 
 More information about debugging on mobile devices available in the [Debugging manual](https://www.defold.com/manuals/debugging/#debugging_on_mobile_devices).
 
 
 ## Source code
-
 The source code is available on [GitHub](https://github.com/defold/extension-googleplayinstant)
 
 
