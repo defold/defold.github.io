@@ -1,0 +1,180 @@
+{
+    "elements": [
+        {
+            "description": "Log an event with no parameters. (Official docs \"https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#logevent_5\")", 
+            "examples": "", 
+            "name": "analytics.log", 
+            "parameters": [
+                {
+                    "doc": "Event name", 
+                    "name": "name"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Log an event with one string parameter. (Official docs \"https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#logevent\")", 
+            "examples": "", 
+            "name": "analytics.log_string", 
+            "parameters": [
+                {
+                    "doc": "Event name", 
+                    "name": "name"
+                }, 
+                {
+                    "doc": "Parameter name", 
+                    "name": "parameter_name"
+                }, 
+                {
+                    "doc": "Parameter value", 
+                    "name": "parameter_value"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Log an event with one integer parameter. (Official docs \"https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#logevent_4\")", 
+            "examples": "", 
+            "name": "analytics.log_int", 
+            "parameters": [
+                {
+                    "doc": "Event name", 
+                    "name": "name"
+                }, 
+                {
+                    "doc": "Parameter name", 
+                    "name": "parameter_name"
+                }, 
+                {
+                    "doc": "Parameter value", 
+                    "name": "parameter_value"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Log an event with one float parameter. (Official docs \"https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#logevent_2\")", 
+            "examples": "", 
+            "name": "analytics.log_number", 
+            "parameters": [
+                {
+                    "doc": "Event name", 
+                    "name": "name"
+                }, 
+                {
+                    "doc": "Parameter name", 
+                    "name": "parameter_name"
+                }, 
+                {
+                    "doc": "Parameter value", 
+                    "name": "parameter_value"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Log an event with table parameters. (Official docs \"https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#logevent_6\")", 
+            "examples": "", 
+            "name": "analytics.log_table", 
+            "parameters": [
+                {
+                    "doc": "Event name", 
+                    "name": "name"
+                }, 
+                {
+                    "doc": "Table with parameters (key-value pairs)", 
+                    "name": "parameters_table"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Sets the current screen name and screen class, which specifies the current visual context in your app. (Official docs \"https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#setcurrentscreen\")", 
+            "examples": "", 
+            "name": "analytics.set_screen", 
+            "parameters": [
+                {
+                    "doc": "Screen name", 
+                    "name": "screen_name"
+                }, 
+                {
+                    "doc": "Screen class", 
+                    "name": "screen_name"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Sets the minimum engagement time required before starting a session. (Official docs \"https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#setminimumsessionduration\")", 
+            "examples": "", 
+            "name": "analytics.set_minimum_session_duration", 
+            "parameters": [
+                {
+                    "doc": "Minimum engagement", 
+                    "name": "milliseconds"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Sets the user ID property. (Official docs \"https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#setuserid\")", 
+            "examples": "", 
+            "name": "analytics.set_user_id", 
+            "parameters": [
+                {
+                    "doc": "User ID property", 
+                    "name": "user_id"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Set a user property to the given value. (Official docs \"https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#setuserproperty\")", 
+            "examples": "", 
+            "name": "analytics.set_user_property", 
+            "parameters": [
+                {
+                    "doc": "User property name", 
+                    "name": "name"
+                }, 
+                {
+                    "doc": "User property value", 
+                    "name": "property"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Clears all analytics data for this app from the device and resets the app instance id. (Official docs \"https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#resetanalyticsdata\")", 
+            "examples": "", 
+            "name": "analytics.reset", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Get the instance ID from the analytics service. (Official docs \"https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#getanalyticsinstanceid\")", 
+            "examples": "", 
+            "name": "analytics.get_id", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }
+    ], 
+    "info": {
+        "brief": "firebase", 
+        "description": "Functions and constants for interacting with Firebase", 
+        "group": "EXTENSIONS", 
+        "name": "firebase", 
+        "namespace": "firebase"
+    }
+}
