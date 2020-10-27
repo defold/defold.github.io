@@ -223,6 +223,7 @@ def append_to_file(filename, s):
 
 def process_doc_file(file, language):
     replace_in_file(file, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
+    replace_in_file(file, r"{% raw %}({{{?)(.*?include\..*?)(}}}?){% endraw %}", r"\1\2\3")
     replace_in_file(file, r"{\s*srcset=.*?}", r"")
     replace_in_file(file, r"::: sidenote(.*?):::", r"<div class='sidenote' markdown='1'>\1</div>", flags=re.DOTALL)
     replace_in_file(file, r"::: important(.*?):::", r"<div class='important' markdown='1'>\1</div>", flags=re.DOTALL)
