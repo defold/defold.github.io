@@ -972,7 +972,7 @@
       "description": "Reads data from a client object, according to the specified <code>read pattern</code>. Patterns follow the Lua file I/O format, and the difference in performance between patterns is negligible.", 
       "parameters": [
         {
-          "doc": "the read pattern that can be any of the following:", 
+          "doc": "the read pattern that can be any of the following:\n<dl>\n<dt><code>\"*a\"</code></dt>\n<dd>reads from the socket until the connection is closed. No end-of-line translation is performed;</dd>\n<dt><code>\"*l\"</code></dt>\n<dd>reads a line of text from the socket. The line is terminated by a LF character (ASCII 10), optionally preceded by a CR character (ASCII 13). The CR and LF characters are not included in the returned line. In fact, all CR characters are ignored by the pattern. This is the default pattern;</dd>\n<dt><code>number</code></dt>\n<dd>causes the method to read a specified number of bytes from the socket.</dd>\n</dl>", 
           "name": "[pattern]", 
           "types": [
             "string", 
@@ -1082,7 +1082,7 @@
       "description": "Sets options for the TCP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.", 
       "parameters": [
         {
-          "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:", 
+          "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"keepalive\"</code></dt>\n<dd>Setting this option to <code>true</code> enables the periodic transmission of messages on a connected socket. Should the connected party fail to respond to these messages, the connection is considered broken and processes using the socket are notified;</dd>\n<dt><code>\"linger\"</code></dt>\n<dd>Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with the following keys:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">boolean</span> <code>on</code></li>\n<li><span class=\"type\">number</span> <code>timeout</code> (seconds)</li>\n</ul>\nIf the 'on' field is set to true, the system will block the process on the close attempt until it is able to transmit the data or until <code>timeout</code> has passed. If 'on' is false and a close is issued, the system will process the close in a manner that allows the process to continue as quickly as possible. It is not advised to set this to anything other than zero;\n<dl>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Setting this option indicates that the rules used in validating addresses supplied in a call to <code>bind</code> should allow reuse of local addresses;</dd>\n<dt><code>\"tcp-nodelay\"</code></dt>\n<dd>Setting this option to <code>true</code> disables the Nagle's algorithm for the connection;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Setting this option to <code>true</code> restricts an inet6 socket to sending and receiving only IPv6 packets.</dd>\n</dl>", 
           "name": "option", 
           "types": [
             "string"
@@ -1126,7 +1126,7 @@
       "description": "Sets options for the TCP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.", 
       "parameters": [
         {
-          "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:", 
+          "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"keepalive\"</code></dt>\n<dd>Setting this option to <code>true</code> enables the periodic transmission of messages on a connected socket. Should the connected party fail to respond to these messages, the connection is considered broken and processes using the socket are notified;</dd>\n<dt><code>\"linger\"</code></dt>\n<dd>Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with the following keys:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">boolean</span> <code>on</code></li>\n<li><span class=\"type\">number</span> <code>timeout</code> (seconds)</li>\n</ul>\nIf the 'on' field is set to true, the system will block the process on the close attempt until it is able to transmit the data or until <code>timeout</code> has passed. If 'on' is false and a close is issued, the system will process the close in a manner that allows the process to continue as quickly as possible. It is not advised to set this to anything other than zero;\n<dl>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Setting this option indicates that the rules used in validating addresses supplied in a call to <code>bind</code> should allow reuse of local addresses;</dd>\n<dt><code>\"tcp-nodelay\"</code></dt>\n<dd>Setting this option to <code>true</code> disables the Nagle's algorithm for the connection;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Setting this option to <code>true</code> restricts an inet6 socket to sending and receiving only IPv6 packets.</dd>\n</dl>", 
           "name": "option", 
           "types": [
             "string"
@@ -1170,7 +1170,7 @@
       "description": "Gets options for the TCP object. See <a href=\"#client:setoption\">client:setoption</a> for description of the option names and values.", 
       "parameters": [
         {
-          "doc": "the name of the option to get:", 
+          "doc": "the name of the option to get:\n<ul>\n<li><code>\"keepalive\"</code></li>\n<li><code>\"linger\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"tcp-nodelay\"</code></li>\n</ul>", 
           "name": "option", 
           "types": [
             "string"
@@ -1207,7 +1207,7 @@
       "description": "Gets options for the TCP object. See <a href=\"#server:setoption\">server:setoption</a> for description of the option names and values.", 
       "parameters": [
         {
-          "doc": "the name of the option to get:", 
+          "doc": "the name of the option to get:\n<ul>\n<li><code>\"keepalive\"</code></li>\n<li><code>\"linger\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"tcp-nodelay\"</code></li>\n</ul>", 
           "name": "option", 
           "types": [
             "string"
@@ -1383,7 +1383,7 @@
           ]
         }, 
         {
-          "doc": "optional timeout mode to set:", 
+          "doc": "optional timeout mode to set:\n<dl>\n<dt><code>\"b\"</code></dt>\n<dd>block timeout. Specifies the upper limit on the amount of time LuaSocket can be blocked by the operating system while waiting for completion of any single I/O operation. This is the default mode;</dd>\n<dt><code>\"t\"</code></dt>\n<dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>\n</dl>", 
           "name": "[mode]", 
           "types": [
             "string"
@@ -1412,7 +1412,7 @@
           ]
         }, 
         {
-          "doc": "optional timeout mode to set:", 
+          "doc": "optional timeout mode to set:\n<dl>\n<dt><code>\"b\"</code></dt>\n<dd>block timeout. Specifies the upper limit on the amount of time LuaSocket can be blocked by the operating system while waiting for completion of any single I/O operation. This is the default mode;</dd>\n<dt><code>\"t\"</code></dt>\n<dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>\n</dl>", 
           "name": "[mode]", 
           "types": [
             "string"
@@ -1441,7 +1441,7 @@
           ]
         }, 
         {
-          "doc": "optional timeout mode to set:", 
+          "doc": "optional timeout mode to set:\n<dl>\n<dt><code>\"b\"</code></dt>\n<dd>block timeout. Specifies the upper limit on the amount of time LuaSocket can be blocked by the operating system while waiting for completion of any single I/O operation. This is the default mode;</dd>\n<dt><code>\"t\"</code></dt>\n<dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>\n</dl>", 
           "name": "[mode]", 
           "types": [
             "string"
@@ -1463,7 +1463,7 @@
       "description": "Shuts down part of a full-duplex connection.", 
       "parameters": [
         {
-          "doc": "which way of the connection should be shut down:", 
+          "doc": "which way of the connection should be shut down:\n<dl>\n<dt><code>\"both\"</code></dt>\n<dd>disallow further sends and receives on the object. This is the default mode;</dd>\n<dt><code>\"send\"</code></dt>\n<dd>disallow further sends on the object;</dd>\n<dt><code>\"receive\"</code></dt>\n<dd>disallow further receives on the object.</dd>\n</dl>", 
           "name": "mode", 
           "types": [
             "string"
@@ -1903,7 +1903,7 @@
       "description": "Gets an option value from the UDP object. See <a href=\"#connected:setoption\">connected:setoption</a> for description of the option names and values.", 
       "parameters": [
         {
-          "doc": "the name of the option to get:", 
+          "doc": "the name of the option to get:\n<ul>\n<li><code>\"dontroute\"</code></li>\n<li><code>\"broadcast\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"reuseport\"</code></li>\n<li><code>\"ip-multicast-loop\"</code></li>\n<li><code>\"ipv6-v6only\"</code></li>\n<li><code>\"ip-multicast-if\"</code></li>\n<li><code>\"ip-multicast-ttl\"</code></li>\n<li><code>\"ip-add-membership\"</code></li>\n<li><code>\"ip-drop-membership\"</code></li>\n</ul>", 
           "name": "option", 
           "types": [
             "string"
@@ -1940,7 +1940,7 @@
       "description": "Gets an option value from the UDP object. See <a href=\"#unconnected:setoption\">unconnected:setoption</a> for description of the option names and values.", 
       "parameters": [
         {
-          "doc": "the name of the option to get:", 
+          "doc": "the name of the option to get:\n<ul>\n<li><code>\"dontroute\"</code></li>\n<li><code>\"broadcast\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"reuseport\"</code></li>\n<li><code>\"ip-multicast-loop\"</code></li>\n<li><code>\"ipv6-v6only\"</code></li>\n<li><code>\"ip-multicast-if\"</code></li>\n<li><code>\"ip-multicast-ttl\"</code></li>\n<li><code>\"ip-add-membership\"</code></li>\n<li><code>\"ip-drop-membership\"</code></li>\n</ul>", 
           "name": "option", 
           "types": [
             "string"
@@ -2190,7 +2190,7 @@
       "description": "Sets options for the UDP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.", 
       "parameters": [
         {
-          "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:", 
+          "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"dontroute\"</code></dt>\n<dd>Indicates that outgoing messages should bypass the standard routing facilities. Receives a boolean value;</dd>\n<dt><code>\"broadcast\"</code></dt>\n<dd>Requests permission to send broadcast datagrams on the socket. Receives a boolean value;</dd>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Indicates that the rules used in validating addresses supplied in a <code>bind</code> call should allow reuse of local addresses. Receives a boolean value;</dd>\n<dt><code>\"reuseport\"</code></dt>\n<dd>Allows completely duplicate bindings by multiple processes if they all set <code>\"reuseport\"</code> before binding the port. Receives a boolean value;</dd>\n<dt><code>\"ip-multicast-loop\"</code></dt>\n<dd>Specifies whether or not a copy of an outgoing multicast datagram is delivered to the sending host as long as it is a member of the multicast group. Receives a boolean value;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Specifies whether to restrict inet6 sockets to sending and receiving only IPv6 packets. Receive a boolean value;</dd>\n<dt><code>\"ip-multicast-if\"</code></dt>\n<dd>Sets the interface over which outgoing multicast datagrams are sent. Receives an IP address;</dd>\n<dt><code>\"ip-multicast-ttl\"</code></dt>\n<dd>Sets the Time To Live in the IP header for outgoing multicast datagrams. Receives a number;</dd>\n</dl>\n<code>\"ip-add-membership\"</code>: Joins the multicast group specified. Receives a table with fields:\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>\n<dl>\n<dt>\"'ip-drop-membership\"`</dt>\n<dd>Leaves the multicast group specified. Receives a table with fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>", 
           "name": "option", 
           "types": [
             "string"
@@ -2234,7 +2234,7 @@
       "description": "Sets options for the UDP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.", 
       "parameters": [
         {
-          "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:", 
+          "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"dontroute\"</code></dt>\n<dd>Indicates that outgoing messages should bypass the standard routing facilities. Receives a boolean value;</dd>\n<dt><code>\"broadcast\"</code></dt>\n<dd>Requests permission to send broadcast datagrams on the socket. Receives a boolean value;</dd>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Indicates that the rules used in validating addresses supplied in a <code>bind</code> call should allow reuse of local addresses. Receives a boolean value;</dd>\n<dt><code>\"reuseport\"</code></dt>\n<dd>Allows completely duplicate bindings by multiple processes if they all set <code>\"reuseport\"</code> before binding the port. Receives a boolean value;</dd>\n<dt><code>\"ip-multicast-loop\"</code></dt>\n<dd>Specifies whether or not a copy of an outgoing multicast datagram is delivered to the sending host as long as it is a member of the multicast group. Receives a boolean value;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Specifies whether to restrict inet6 sockets to sending and receiving only IPv6 packets. Receive a boolean value;</dd>\n<dt><code>\"ip-multicast-if\"</code></dt>\n<dd>Sets the interface over which outgoing multicast datagrams are sent. Receives an IP address;</dd>\n<dt><code>\"ip-multicast-ttl\"</code></dt>\n<dd>Sets the Time To Live in the IP header for outgoing multicast datagrams. Receives a number;</dd>\n</dl>\n<code>\"ip-add-membership\"</code>: Joins the multicast group specified. Receives a table with fields:\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>\n<dl>\n<dt>\"'ip-drop-membership\"`</dt>\n<dd>Leaves the multicast group specified. Receives a table with fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>", 
           "name": "option", 
           "types": [
             "string"

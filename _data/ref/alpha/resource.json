@@ -262,14 +262,14 @@
           ]
         }, 
         {
-          "doc": "A table containing info about the texture. Supported entries:", 
+          "doc": "A table containing info about the texture. Supported entries:\n<dl>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> The texture type. Supported values:</dd>\n</dl>\n<ul>\n<li><code>resource.TEXTURE_TYPE_2D</code></li>\n</ul>\n<dl>\n<dt><code>width</code></dt>\n<dd><span class=\"type\">number</span> The width of the texture (in pixels)</dd>\n<dt><code>height</code></dt>\n<dd><span class=\"type\">number</span> The width of the texture (in pixels)</dd>\n<dt><code>format</code></dt>\n<dd><span class=\"type\">number</span> The texture format. Supported values:</dd>\n</dl>\n<ul>\n<li><code>resource.TEXTURE_FORMAT_LUMINANCE</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGB</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA</code></li>\n</ul>", 
           "name": "table", 
           "types": [
             "table"
           ]
         }, 
         {
-          "doc": "The buffer of precreated pixel data", 
+          "doc": "The buffer of precreated pixel data\n<span class=\"icon-attention\"></span> Currently, only 1 mipmap is generated.", 
           "name": "buffer", 
           "types": [
             "buffer"
@@ -556,14 +556,14 @@
           ]
         }, 
         {
-          "doc": "The expected hash for the resource,", 
+          "doc": "The expected hash for the resource,\nretrieved through collectionproxy.missing_resources.", 
           "name": "hexdigest", 
           "types": [
             "string"
           ]
         }, 
         {
-          "doc": "The callback", 
+          "doc": "The callback\nfunction that is executed once the engine has been attempted to store\nthe resource.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>hexdigest</code></dt>\n<dd><span class=\"type\">string</span> The hexdigest of the resource.</dd>\n<dt><code>status</code></dt>\n<dd><span class=\"type\">boolean</span> Whether or not the resource was successfully stored.</dd>\n</dl>", 
           "name": "callback", 
           "types": [
             "function(self, hexdigest, status)"
@@ -592,7 +592,7 @@
           ]
         }, 
         {
-          "doc": "the callback function", 
+          "doc": "the callback function\nexecuted once the engine has attempted to store the manifest.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>status</code></dt>\n<dd><span class=\"type\">constant</span> the status of the store operation:</dd>\n</dl>\n<ul>\n<li><code>resource.LIVEUPATE_OK</code></li>\n<li><code>resource.LIVEUPATE_INVALID_RESOURCE</code></li>\n<li><code>resource.LIVEUPATE_VERSION_MISMATCH</code></li>\n<li><code>resource.LIVEUPATE_ENGINE_VERSION_MISMATCH</code></li>\n<li><code>resource.LIVEUPATE_SIGNATURE_MISMATCH</code></li>\n<li><code>resource.LIVEUPDATE_BUNDLED_RESOURCE_MISMATCH</code></li>\n<li><code>resource.LIVEUPDATE_FORMAT_ERROR</code></li>\n</ul>", 
           "name": "callback", 
           "types": [
             "function(self, status)"
