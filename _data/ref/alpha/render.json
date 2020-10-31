@@ -258,7 +258,7 @@
       "description": "Enables a particular render state. The state will be enabled until disabled.", 
       "parameters": [
         {
-          "doc": "state to enable", 
+          "doc": "state to enable\n<ul>\n<li><code>render.STATE_DEPTH_TEST</code></li>\n<li><code>render.STATE_STENCIL_TEST</code></li>\n<li><code>render.STATE_BLEND</code></li>\n<li><code>render.STATE_ALPHA_TEST</code> (<span class=\"icon-ios\"></span><span class=\"icon-android\"></span> not available on iOS and Android)</li>\n<li><code>render.STATE_CULL_FACE</code></li>\n<li><code>render.STATE_POLYGON_OFFSET_FILL</code></li>\n</ul>", 
           "name": "state", 
           "types": [
             "constant"
@@ -280,7 +280,7 @@
       "description": "Disables a render state.", 
       "parameters": [
         {
-          "doc": "state to disable", 
+          "doc": "state to disable\n<ul>\n<li><code>render.STATE_DEPTH_TEST</code></li>\n<li><code>render.STATE_STENCIL_TEST</code></li>\n<li><code>render.STATE_BLEND</code></li>\n<li><code>render.STATE_ALPHA_TEST</code> (<span class=\"icon-ios\"></span><span class=\"icon-android\"></span> not available on iOS and Android)</li>\n<li><code>render.STATE_CULL_FACE</code></li>\n<li><code>render.STATE_POLYGON_OFFSET_FILL</code></li>\n</ul>", 
           "name": "state", 
           "types": [
             "constant"
@@ -635,7 +635,7 @@
           ]
         }, 
         {
-          "doc": "optional table with behaviour parameters", 
+          "doc": "optional table with behaviour parameters\n<dl>\n<dt><code>transient</code></dt>\n<dd><span class=\"type\">table</span> Transient frame buffer types are only valid while the render target is active, i.e becomes undefined when a new target is set by a subsequent call to set_render_target.\n Default is all non-transient. Be aware that some hardware uses a combined depth stencil buffer and when this is the case both are considered non-transient if exclusively selected!\n A buffer type defined that doesn't exist in the render target is silently ignored.</dd>\n</dl>\n<ul>\n<li><code>render.BUFFER_COLOR_BIT</code></li>\n<li><code>render.BUFFER_DEPTH_BIT</code></li>\n<li><code>render.BUFFER_STENCIL_BIT</code></li>\n</ul>", 
           "name": "[options]", 
           "types": [
             "table"
@@ -707,7 +707,7 @@
           ]
         }, 
         {
-          "doc": "buffer type from which to enable the texture", 
+          "doc": "buffer type from which to enable the texture\n<ul>\n<li><code>render.BUFFER_COLOR_BIT</code></li>\n<li><code>render.BUFFER_DEPTH_BIT</code></li>\n<li><code>render.BUFFER_STENCIL_BIT</code></li>\n</ul>", 
           "name": "buffer_type", 
           "types": [
             "constant"
@@ -758,7 +758,7 @@
           ]
         }, 
         {
-          "doc": "which type of buffer to retrieve the width from", 
+          "doc": "which type of buffer to retrieve the width from\n<ul>\n<li><code>render.BUFFER_COLOR_BIT</code></li>\n<li><code>render.BUFFER_DEPTH_BIT</code></li>\n<li><code>render.BUFFER_STENCIL_BIT</code></li>\n</ul>", 
           "name": "buffer_type", 
           "types": [
             "constant"
@@ -795,7 +795,7 @@
           ]
         }, 
         {
-          "doc": "which type of buffer to retrieve the height from", 
+          "doc": "which type of buffer to retrieve the height from\n<ul>\n<li><code>render.BUFFER_COLOR_BIT</code></li>\n<li><code>render.BUFFER_DEPTH_BIT</code></li>\n<li><code>render.BUFFER_STENCIL_BIT</code></li>\n</ul>", 
           "name": "buffer_type", 
           "types": [
             "constant"
@@ -867,7 +867,7 @@
       "description": "Clear buffers in the currently enabled render target with specified value.", 
       "parameters": [
         {
-          "doc": "table with keys specifying which buffers to clear and values set to clear values. Available keys are:", 
+          "doc": "table with keys specifying which buffers to clear and values set to clear values. Available keys are:\n<ul>\n<li><code>render.BUFFER_COLOR_BIT</code></li>\n<li><code>render.BUFFER_DEPTH_BIT</code></li>\n<li><code>render.BUFFER_STENCIL_BIT</code></li>\n</ul>", 
           "name": "buffers", 
           "types": [
             "table"
@@ -1662,7 +1662,7 @@
       "description": "Specifies whether front- or back-facing polygons can be culled\nwhen polygon culling is enabled. Polygon culling is initially disabled.\nIf mode is <code>render.FACE_FRONT_AND_BACK</code>, no polygons are drawn, but other\nprimitives such as points and lines are drawn. The initial value for\n<code>face_type</code> is <code>render.FACE_BACK</code>.", 
       "parameters": [
         {
-          "doc": "face type", 
+          "doc": "face type\n<ul>\n<li><code>render.FACE_FRONT</code></li>\n<li><code>render.FACE_BACK</code></li>\n<li><code>render.FACE_FRONT_AND_BACK</code></li>\n</ul>", 
           "name": "face_type", 
           "types": [
             "constant"

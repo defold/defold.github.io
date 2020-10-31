@@ -79,7 +79,7 @@
           ]
         }, 
         {
-          "doc": "optional callback function that will be called when an emitter attached to this particlefx changes state.", 
+          "doc": "optional callback function that will be called when an emitter attached to this particlefx changes state.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The id of the particle fx component</dd>\n<dt><code>emitter</code></dt>\n<dd><span class=\"type\">hash</span> The id of the emitter</dd>\n<dt><code>state</code></dt>\n<dd><span class=\"type\">constant</span> the new state of the emitter:</dd>\n</dl>\n<ul>\n<li><code>particlefx.EMITTER_STATE_SLEEPING</code></li>\n<li><code>particlefx.EMITTER_STATE_PRESPAWN</code></li>\n<li><code>particlefx.EMITTER_STATE_SPAWNING</code></li>\n<li><code>particlefx.EMITTER_STATE_POSTSPAWN</code></li>\n</ul>", 
           "name": "[emitter_state_function]", 
           "types": [
             "function(self, id, emitter, state)"

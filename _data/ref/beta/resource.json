@@ -12,7 +12,15 @@
     {
       "replaces": "", 
       "description": "Constructor-like function with two purposes:\n<ul>\n<li>Load the specified resource as part of loading the script</li>\n<li>Return a hash to the run-time version of the resource</li>\n</ul>\n<span class=\"icon-attention\"></span> This function can only be called within <a href=\"/ref/go#go.property\">go.property</a> function calls.", 
-      "parameters": [], 
+      "parameters": [
+        {
+          "doc": "optional resource path string to the resource", 
+          "name": "path", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
       "returnvalues": [
         {
           "doc": "a path hash to the binary version of the resource", 
@@ -34,7 +42,15 @@
     {
       "replaces": "", 
       "description": "Constructor-like function with two purposes:\n<ul>\n<li>Load the specified resource as part of loading the script</li>\n<li>Return a hash to the run-time version of the resource</li>\n</ul>\n<span class=\"icon-attention\"></span> This function can only be called within <a href=\"/ref/go#go.property\">go.property</a> function calls.", 
-      "parameters": [], 
+      "parameters": [
+        {
+          "doc": "optional resource path string to the resource", 
+          "name": "path", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
       "returnvalues": [
         {
           "doc": "a path hash to the binary version of the resource", 
@@ -56,7 +72,15 @@
     {
       "replaces": "", 
       "description": "Constructor-like function with two purposes:\n<ul>\n<li>Load the specified resource as part of loading the script</li>\n<li>Return a hash to the run-time version of the resource</li>\n</ul>\n<span class=\"icon-attention\"></span> This function can only be called within <a href=\"/ref/go#go.property\">go.property</a> function calls.", 
-      "parameters": [], 
+      "parameters": [
+        {
+          "doc": "optional resource path string to the resource", 
+          "name": "path", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
       "returnvalues": [
         {
           "doc": "a path hash to the binary version of the resource", 
@@ -78,7 +102,15 @@
     {
       "replaces": "", 
       "description": "Constructor-like function with two purposes:\n<ul>\n<li>Load the specified resource as part of loading the script</li>\n<li>Return a hash to the run-time version of the resource</li>\n</ul>\n<span class=\"icon-attention\"></span> This function can only be called within <a href=\"/ref/go#go.property\">go.property</a> function calls.", 
-      "parameters": [], 
+      "parameters": [
+        {
+          "doc": "optional resource path string to the resource", 
+          "name": "path", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
       "returnvalues": [
         {
           "doc": "a path hash to the binary version of the resource", 
@@ -100,7 +132,15 @@
     {
       "replaces": "", 
       "description": "Constructor-like function with two purposes:\n<ul>\n<li>Load the specified resource as part of loading the script</li>\n<li>Return a hash to the run-time version of the resource</li>\n</ul>\n<span class=\"icon-attention\"></span> This function can only be called within <a href=\"/ref/go#go.property\">go.property</a> function calls.", 
-      "parameters": [], 
+      "parameters": [
+        {
+          "doc": "optional resource path string to the resource", 
+          "name": "path", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
       "returnvalues": [
         {
           "doc": "a path hash to the binary version of the resource", 
@@ -122,7 +162,15 @@
     {
       "replaces": "", 
       "description": "Constructor-like function with two purposes:\n<ul>\n<li>Load the specified resource as part of loading the script</li>\n<li>Return a hash to the run-time version of the resource</li>\n</ul>\n<span class=\"icon-attention\"></span> This function can only be called within <a href=\"/ref/go#go.property\">go.property</a> function calls.", 
-      "parameters": [], 
+      "parameters": [
+        {
+          "doc": "optional resource path string to the resource", 
+          "name": "path", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
       "returnvalues": [
         {
           "doc": "a path hash to the binary version of the resource", 
@@ -214,14 +262,14 @@
           ]
         }, 
         {
-          "doc": "A table containing info about the texture. Supported entries:", 
+          "doc": "A table containing info about the texture. Supported entries:\n<dl>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> The texture type. Supported values:</dd>\n</dl>\n<ul>\n<li><code>resource.TEXTURE_TYPE_2D</code></li>\n</ul>\n<dl>\n<dt><code>width</code></dt>\n<dd><span class=\"type\">number</span> The width of the texture (in pixels)</dd>\n<dt><code>height</code></dt>\n<dd><span class=\"type\">number</span> The width of the texture (in pixels)</dd>\n<dt><code>format</code></dt>\n<dd><span class=\"type\">number</span> The texture format. Supported values:</dd>\n</dl>\n<ul>\n<li><code>resource.TEXTURE_FORMAT_LUMINANCE</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGB</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA</code></li>\n</ul>", 
           "name": "table", 
           "types": [
             "table"
           ]
         }, 
         {
-          "doc": "The buffer of precreated pixel data", 
+          "doc": "The buffer of precreated pixel data\n<span class=\"icon-attention\"></span> Currently, only 1 mipmap is generated.", 
           "name": "buffer", 
           "types": [
             "buffer"
@@ -508,14 +556,14 @@
           ]
         }, 
         {
-          "doc": "The expected hash for the resource,", 
+          "doc": "The expected hash for the resource,\nretrieved through collectionproxy.missing_resources.", 
           "name": "hexdigest", 
           "types": [
             "string"
           ]
         }, 
         {
-          "doc": "The callback", 
+          "doc": "The callback\nfunction that is executed once the engine has been attempted to store\nthe resource.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>hexdigest</code></dt>\n<dd><span class=\"type\">string</span> The hexdigest of the resource.</dd>\n<dt><code>status</code></dt>\n<dd><span class=\"type\">boolean</span> Whether or not the resource was successfully stored.</dd>\n</dl>", 
           "name": "callback", 
           "types": [
             "function(self, hexdigest, status)"
@@ -544,7 +592,7 @@
           ]
         }, 
         {
-          "doc": "the callback function", 
+          "doc": "the callback function\nexecuted once the engine has attempted to store the manifest.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>status</code></dt>\n<dd><span class=\"type\">constant</span> the status of the store operation:</dd>\n</dl>\n<ul>\n<li><code>resource.LIVEUPATE_OK</code></li>\n<li><code>resource.LIVEUPATE_INVALID_RESOURCE</code></li>\n<li><code>resource.LIVEUPATE_VERSION_MISMATCH</code></li>\n<li><code>resource.LIVEUPATE_ENGINE_VERSION_MISMATCH</code></li>\n<li><code>resource.LIVEUPATE_SIGNATURE_MISMATCH</code></li>\n<li><code>resource.LIVEUPDATE_BUNDLED_RESOURCE_MISMATCH</code></li>\n<li><code>resource.LIVEUPDATE_FORMAT_ERROR</code></li>\n</ul>", 
           "name": "callback", 
           "types": [
             "function(self, status)"
@@ -560,6 +608,57 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "resource.store_manifest"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Stores a zip file and uses it for live update content.\nThe path is renamed and stored in the (internal) live update location", 
+      "parameters": [
+        {
+          "doc": "the path to the original file on disc", 
+          "name": "path", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "the callback function\nexecuted after the storage has completed\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>status</code></dt>\n<dd><span class=\"type\">constant</span> the status of the store operation (See resource.store_manifest)</dd>\n</dl>", 
+          "name": "callback", 
+          "types": [
+            "function(self, status)"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "register and store a live update zip file", 
+      "examples": "How to download an archive with HTTP and store it on device.\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">LIVEUPDATE_URL</span> <span class=\"o\">=</span> <span class=\"o\">&lt;</span><span class=\"n\">a</span> <span class=\"n\">file</span> <span class=\"n\">server</span> <span class=\"n\">url</span><span class=\"o\">&gt;</span>\n\n<span class=\"c1\">-- This can be anything, but you should keep the platform bundles apart</span>\n<span class=\"kd\">local</span> <span class=\"n\">ZIP_FILENAME</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;</span><span class=\"s\">defold.resourcepack.zip&#39;</span>\n\n<span class=\"kd\">local</span> <span class=\"n\">APP_SAVE_DIR</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">LiveUpdateDemo&quot;</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">proxy</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">levels#level1&quot;</span>\n\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">INIT: is_using_liveupdate_data:&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">is_using_liveupdate_data</span><span class=\"p\">())</span>\n    <span class=\"c1\">-- let&#39;s download the archive</span>\n    <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">attempt_download_archive&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n\n<span class=\"c1\">-- helper function to store headers from the http request (e.g. the ETag)</span>\n<span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">store_http_response_headers</span><span class=\"p\">(</span><span class=\"n\">name</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_save_file</span><span class=\"p\">(</span><span class=\"n\">APP_SAVE_DIR</span><span class=\"p\">,</span> <span class=\"n\">name</span><span class=\"p\">)</span>\n    <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">save</span><span class=\"p\">(</span><span class=\"n\">path</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">load_http_response_headers</span><span class=\"p\">(</span><span class=\"n\">name</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_save_file</span><span class=\"p\">(</span><span class=\"n\">APP_SAVE_DIR</span><span class=\"p\">,</span> <span class=\"n\">name</span><span class=\"p\">)</span>\n    <span class=\"k\">return</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"n\">path</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n\n<span class=\"c1\">-- returns headers that can potentially generate a 304</span>\n<span class=\"c1\">-- without redownloading the file again</span>\n<span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">get_http_request_headers</span><span class=\"p\">(</span><span class=\"n\">name</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"n\">load_http_response_headers</span><span class=\"p\">(</span><span class=\"n\">name</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">headers</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"k\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"k\">in</span> <span class=\"nb\">pairs</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n        <span class=\"k\">if</span> <span class=\"nb\">string.lower</span><span class=\"p\">(</span><span class=\"n\">k</span><span class=\"p\">)</span> <span class=\"o\">==</span> <span class=\"s1\">&#39;</span><span class=\"s\">etag&#39;</span> <span class=\"k\">then</span>\n            <span class=\"n\">headers</span><span class=\"p\">[</span><span class=\"s1\">&#39;</span><span class=\"s\">If-None-Match&#39;</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">v</span>\n        <span class=\"k\">elseif</span> <span class=\"nb\">string.lower</span><span class=\"p\">(</span><span class=\"n\">k</span><span class=\"p\">)</span> <span class=\"o\">==</span> <span class=\"s1\">&#39;</span><span class=\"s\">last-modified&#39;</span> <span class=\"k\">then</span>\n            <span class=\"n\">headers</span><span class=\"p\">[</span><span class=\"s1\">&#39;</span><span class=\"s\">If-Modified-Since&#39;</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">v</span>\n        <span class=\"k\">end</span>\n    <span class=\"k\">end</span>\n    <span class=\"k\">return</span> <span class=\"n\">headers</span>\n<span class=\"k\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">store_archive_cb</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">path</span><span class=\"p\">,</span> <span class=\"n\">status</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"kc\">true</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Successfully stored live update archive!&quot;</span><span class=\"p\">,</span> <span class=\"n\">path</span><span class=\"p\">)</span>\n        <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">reboot</span><span class=\"p\">()</span>\n    <span class=\"k\">else</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Failed to store live update archive, &quot;</span><span class=\"p\">,</span> <span class=\"n\">path</span><span class=\"p\">)</span>\n        <span class=\"c1\">-- remove the path</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">attempt_download_archive&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n\n        <span class=\"c1\">-- by supplying the ETag, we don&#39;t have to redownload the file again</span>\n        <span class=\"c1\">-- if we already have downloaded it.</span>\n        <span class=\"kd\">local</span> <span class=\"n\">headers</span> <span class=\"o\">=</span> <span class=\"n\">get_http_request_headers</span><span class=\"p\">(</span><span class=\"n\">ZIP_FILENAME</span> <span class=\"o\">..</span> <span class=\"s1\">&#39;</span><span class=\"s\">.json&#39;</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">is_using_liveupdate_data</span><span class=\"p\">()</span> <span class=\"k\">then</span>\n            <span class=\"n\">headers</span> <span class=\"o\">=</span> <span class=\"p\">{}</span> <span class=\"c1\">-- live update data has been purged, and we need do a fresh download</span>\n        <span class=\"k\">end</span>\n\n        <span class=\"kd\">local</span> <span class=\"n\">path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_save_file</span><span class=\"p\">(</span><span class=\"n\">APP_SAVE_DIR</span><span class=\"p\">,</span> <span class=\"n\">ZIP_FILENAME</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">options</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n            <span class=\"n\">path</span> <span class=\"o\">=</span> <span class=\"n\">path</span><span class=\"p\">,</span>        <span class=\"c1\">-- a temporary file on disc. will be removed upon successful liveupdate storage</span>\n            <span class=\"n\">ignore_cache</span> <span class=\"o\">=</span> <span class=\"kc\">true</span> <span class=\"c1\">-- we don&#39;t want to store a (potentially large) duplicate in our http cache</span>\n        <span class=\"p\">}</span>\n\n        <span class=\"kd\">local</span> <span class=\"n\">url</span> <span class=\"o\">=</span> <span class=\"n\">LIVEUPDATE_URL</span> <span class=\"o\">..</span> <span class=\"n\">ZIP_FILENAME</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Downloading&quot;</span><span class=\"p\">,</span> <span class=\"n\">url</span><span class=\"p\">)</span>\n        <span class=\"n\">http</span><span class=\"p\">.</span><span class=\"n\">request</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">GET&quot;</span><span class=\"p\">,</span> <span class=\"k\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">)</span>\n            <span class=\"k\">if</span> <span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"mi\">304</span> <span class=\"k\">then</span>\n                <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"nb\">string.format</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">%d: Archive zip file up-to-date&quot;</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">status</span><span class=\"p\">))</span>\n            <span class=\"k\">elseif</span> <span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"mi\">200</span> <span class=\"ow\">and</span> <span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">error</span> <span class=\"o\">==</span> <span class=\"kc\">nil</span> <span class=\"k\">then</span>\n                <span class=\"c1\">-- register the path to the live update system</span>\n                <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">store_archive</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">path</span><span class=\"p\">,</span> <span class=\"n\">store_archive_cb</span><span class=\"p\">)</span>\n                <span class=\"c1\">-- at this point, the &quot;path&quot; has been moved internally to a different location</span>\n\n                <span class=\"c1\">-- save the ETag for the next run</span>\n                <span class=\"n\">store_http_response_headers</span><span class=\"p\">(</span><span class=\"n\">ZIP_FILENAME</span> <span class=\"o\">..</span> <span class=\"s1\">&#39;</span><span class=\"s\">.json&#39;</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">headers</span><span class=\"p\">)</span>\n            <span class=\"k\">else</span>\n                <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Error when downloading&quot;</span><span class=\"p\">,</span> <span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">to&quot;</span><span class=\"p\">,</span> <span class=\"n\">path</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">:&quot;</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">status</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n            <span class=\"k\">end</span>\n\n            <span class=\"c1\">-- If we got a 200, we would call store_archive_cb() then reboot</span>\n            <span class=\"c1\">-- Second time, if we get here, it should be after a 304, and then</span>\n            <span class=\"c1\">-- we can load the missing resources from the liveupdate archive</span>\n            <span class=\"k\">if</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">is_using_liveupdate_data</span><span class=\"p\">()</span> <span class=\"k\">then</span>\n                <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">proxy</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">load&quot;</span><span class=\"p\">)</span>\n            <span class=\"k\">end</span>\n        <span class=\"k\">end</span><span class=\"p\">,</span>\n        <span class=\"n\">headers</span><span class=\"p\">,</span> <span class=\"kc\">nil</span><span class=\"p\">,</span> <span class=\"n\">options</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "resource.store_archive"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Is any liveupdate data mounted and currently in use?\nThis can be used to determine if a new manifest or zip file should be downloaded.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "true if a liveupdate archive (any format) has been loaded", 
+          "name": "bool", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "is any liveupdate data mounted and currently in use", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "resource.is_using_liveupdate_data"
     }
   ]
 }

@@ -836,7 +836,7 @@
           ]
         }, 
         {
-          "doc": "property to animate", 
+          "doc": "property to animate\n<ul>\n<li><code>\"position\"</code></li>\n<li><code>\"rotation\"</code></li>\n<li><code>\"scale\"</code></li>\n<li><code>\"color\"</code></li>\n<li><code>\"outline\"</code></li>\n<li><code>\"shadow\"</code></li>\n<li><code>\"size\"</code></li>\n<li><code>\"fill_angle\"</code> (pie)</li>\n<li><code>\"inner_radius\"</code> (pie)</li>\n<li><code>\"slice9\"</code> (slice9)</li>\n</ul>\nThe following property constants are defined equaling the corresponding property string names.\n<ul>\n<li><code>gui.PROP_POSITION</code></li>\n<li><code>gui.PROP_ROTATION</code></li>\n<li><code>gui.PROP_SCALE</code></li>\n<li><code>gui.PROP_COLOR</code></li>\n<li><code>gui.PROP_OUTLINE</code></li>\n<li><code>gui.PROP_SHADOW</code></li>\n<li><code>gui.PROP_SIZE</code></li>\n<li><code>gui.PROP_FILL_ANGLE</code></li>\n<li><code>gui.PROP_INNER_RADIUS</code></li>\n<li><code>gui.PROP_SLICE9</code></li>\n</ul>", 
           "name": "property", 
           "types": [
             "string", 
@@ -852,7 +852,7 @@
           ]
         }, 
         {
-          "doc": "easing to use during animation.", 
+          "doc": "easing to use during animation.\n     Either specify one of the <code>gui.EASING_*</code> constants or provide a\n     <span class=\"type\">vector</span> with a custom curve. See the <a href=\"/manuals/animation#_easing\">animation guide</a> for more information.", 
           "name": "easing", 
           "types": [
             "constant", 
@@ -874,14 +874,14 @@
           ]
         }, 
         {
-          "doc": "function to call when the", 
+          "doc": "function to call when the\n     animation has completed", 
           "name": "[complete_function]", 
           "types": [
             "function(self, node)"
           ]
         }, 
         {
-          "doc": "playback mode", 
+          "doc": "playback mode\n<ul>\n<li><code>gui.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>gui.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>gui.PLAYBACK_ONCE_PINGPONG</code></li>\n<li><code>gui.PLAYBACK_LOOP_FORWARD</code></li>\n<li><code>gui.PLAYBACK_LOOP_BACKWARD</code></li>\n<li><code>gui.PLAYBACK_LOOP_PINGPONG</code></li>\n</ul>", 
           "name": "[playback]", 
           "types": [
             "constant"
@@ -910,7 +910,7 @@
           ]
         }, 
         {
-          "doc": "property for which the animation should be canceled", 
+          "doc": "property for which the animation should be canceled\n<ul>\n<li><code>\"position\"</code></li>\n<li><code>\"rotation\"</code></li>\n<li><code>\"scale\"</code></li>\n<li><code>\"color\"</code></li>\n<li><code>\"outline\"</code></li>\n<li><code>\"shadow\"</code></li>\n<li><code>\"size\"</code></li>\n<li><code>\"fill_angle\"</code> (pie)</li>\n<li><code>\"inner_radius\"</code> (pie)</li>\n<li><code>\"slice9\"</code> (slice9)</li>\n</ul>", 
           "name": "property", 
           "types": [
             "string", 
@@ -1213,7 +1213,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "blend mode", 
+          "doc": "blend mode\n<ul>\n<li><code>gui.BLEND_ALPHA</code></li>\n<li><code>gui.BLEND_ADD</code></li>\n<li><code>gui.BLEND_ADD_ALPHA</code></li>\n<li><code>gui.BLEND_MULT</code></li>\n</ul>", 
           "name": "blend_mode", 
           "types": [
             "constant"
@@ -1241,7 +1241,7 @@
           ]
         }, 
         {
-          "doc": "blend mode to set", 
+          "doc": "blend mode to set\n<ul>\n<li><code>gui.BLEND_ALPHA</code></li>\n<li><code>gui.BLEND_ADD</code></li>\n<li><code>gui.BLEND_ADD_ALPHA</code></li>\n<li><code>gui.BLEND_MULT</code></li>\n</ul>", 
           "name": "blend_mode", 
           "types": [
             "constant"
@@ -1368,14 +1368,14 @@
           ]
         }, 
         {
-          "doc": "optional function to call when the animation has completed", 
+          "doc": "optional function to call when the animation has completed\n<dl>\n<dt><code>self</code></dt>\n<dd>\n<span class=\"type\">object</span> The current object.\n</dd>\n<dt><code>node</code></dt>\n<dd>\n<span class=\"type\">node</span> The node that is animated.\n</dd>\n</dl>", 
           "name": "[complete_function]", 
           "types": [
             "function(self, node)"
           ]
         }, 
         {
-          "doc": "optional table with properties", 
+          "doc": "optional table with properties\n<dl>\n<dt><code>offset</code></dt>\n<dd><span class=\"type\">number</span> The normalized initial value of the animation cursor when the animation starts playing</dd>\n<dt><code>playback_rate</code></dt>\n<dd><span class=\"type\">number</span> The rate with which the animation will be played. Must be positive</dd>\n</dl>", 
           "name": "[play_properties]", 
           "types": [
             "table"
@@ -1441,7 +1441,7 @@
           ]
         }, 
         {
-          "doc": "texture type", 
+          "doc": "texture type\n<ul>\n<li><code>\"rgb\"</code> - RGB</li></li>\n<li><code>\"rgba\"</code> - RGBA</li></li>\n<li><code>\"l\"</code> - LUMINANCE</li></li>\n</ul>", 
           "name": "type", 
           "types": [
             "string", 
@@ -1531,7 +1531,7 @@
           ]
         }, 
         {
-          "doc": "texture type", 
+          "doc": "texture type\n<ul>\n  <li><code>\"rgb\"</code> - RGB</li>\n  <li><code>\"rgba\"</code> - RGBA</li>\n  <li><code>\"l\"</code> - LUMINANCE</li>\n</ul>", 
           "name": "type", 
           "types": [
             "string", 
@@ -1727,7 +1727,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "clipping mode", 
+          "doc": "clipping mode\n<ul>\n  <li><code>gui.CLIPPING_MODE_NONE</code></li>\n  <li><code>gui.CLIPPING_MODE_STENCIL</code></li>\n</ul>", 
           "name": "clipping_mode", 
           "types": [
             "constant"
@@ -1755,7 +1755,7 @@
           ]
         }, 
         {
-          "doc": "clipping mode to set", 
+          "doc": "clipping mode to set\n<ul>\n  <li><code>gui.CLIPPING_MODE_NONE</code></li>\n  <li><code>gui.CLIPPING_MODE_STENCIL</code></li>\n</ul>", 
           "name": "clipping_mode", 
           "types": [
             "constant"
@@ -1904,7 +1904,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "a table with the following fields:", 
+          "doc": "a table with the following fields:\n<ul>\n<li>width</li>\n<li>height</li>\n<li>max_ascent</li>\n<li>max_descent</li>\n</ul>", 
           "name": "metrics", 
           "types": [
             "table"
@@ -1970,7 +1970,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "a table with the following fields:", 
+          "doc": "a table with the following fields:\n<ul>\n<li>width</li>\n<li>height</li>\n<li>max_ascent</li>\n<li>max_descent</li>\n</ul>", 
           "name": "metrics", 
           "types": [
             "table"
@@ -2000,7 +2000,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "anchor constant", 
+          "doc": "anchor constant\n<ul>\n<li><code>gui.ANCHOR_NONE</code></li>\n<li><code>gui.ANCHOR_LEFT</code></li>\n<li><code>gui.ANCHOR_RIGHT</code></li>\n</ul>", 
           "name": "anchor", 
           "types": [
             "constant"
@@ -2028,7 +2028,7 @@
           ]
         }, 
         {
-          "doc": "anchor constant", 
+          "doc": "anchor constant\n<ul>\n<li><code>gui.ANCHOR_NONE</code></li>\n<li><code>gui.ANCHOR_LEFT</code></li>\n<li><code>gui.ANCHOR_RIGHT</code></li>\n</ul>", 
           "name": "anchor", 
           "types": [
             "constant"
@@ -2059,7 +2059,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "anchor constant", 
+          "doc": "anchor constant\n<ul>\n<li><code>gui.ANCHOR_NONE</code></li>\n<li><code>gui.ANCHOR_TOP</code></li>\n<li><code>gui.ANCHOR_BOTTOM</code></li>\n</ul>", 
           "name": "anchor", 
           "types": [
             "constant"
@@ -2087,7 +2087,7 @@
           ]
         }, 
         {
-          "doc": "anchor constant", 
+          "doc": "anchor constant\n<ul>\n<li><code>gui.ANCHOR_NONE</code></li>\n<li><code>gui.ANCHOR_TOP</code></li>\n<li><code>gui.ANCHOR_BOTTOM</code></li>\n</ul>", 
           "name": "anchor", 
           "types": [
             "constant"
@@ -2118,7 +2118,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "pivot constant", 
+          "doc": "pivot constant\n<ul>\n  <li><code>gui.PIVOT_CENTER</code></li>\n  <li><code>gui.PIVOT_N</code></li>\n  <li><code>gui.PIVOT_NE</code></li>\n  <li><code>gui.PIVOT_E</code></li>\n  <li><code>gui.PIVOT_SE</code></li>\n  <li><code>gui.PIVOT_S</code></li>\n  <li><code>gui.PIVOT_SW</code></li>\n  <li><code>gui.PIVOT_W</code></li>\n  <li><code>gui.PIVOT_NW</code></li>\n</ul>", 
           "name": "pivot", 
           "types": [
             "constant"
@@ -2146,7 +2146,7 @@
           ]
         }, 
         {
-          "doc": "pivot constant", 
+          "doc": "pivot constant\n<ul>\n  <li><code>gui.PIVOT_CENTER</code></li>\n  <li><code>gui.PIVOT_N</code></li>\n  <li><code>gui.PIVOT_NE</code></li>\n  <li><code>gui.PIVOT_E</code></li>\n  <li><code>gui.PIVOT_SE</code></li>\n  <li><code>gui.PIVOT_S</code></li>\n  <li><code>gui.PIVOT_SW</code></li>\n  <li><code>gui.PIVOT_W</code></li>\n  <li><code>gui.PIVOT_NW</code></li>\n</ul>", 
           "name": "pivot", 
           "types": [
             "constant"
@@ -2455,7 +2455,7 @@
           ]
         }, 
         {
-          "doc": "the outer bounds mode of the pie node:", 
+          "doc": "the outer bounds mode of the pie node:\n<ul>\n<li><code>gui.PIEBOUNDS_RECTANGLE</code></li>\n<li><code>gui.PIEBOUNDS_ELLIPSE</code></li>\n</ul>", 
           "name": "bounds_mode", 
           "types": [
             "constant"
@@ -2486,7 +2486,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "the outer bounds mode of the pie node:", 
+          "doc": "the outer bounds mode of the pie node:\n<ul>\n<li><code>gui.PIEBOUNDS_RECTANGLE</code></li>\n<li><code>gui.PIEBOUNDS_ELLIPSE</code></li>\n</ul>", 
           "name": "bounds_mode", 
           "types": [
             "constant"
@@ -2737,7 +2737,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "the current adjust mode", 
+          "doc": "the current adjust mode\n<ul>\n<li><code>gui.ADJUST_FIT</code></li>\n<li><code>gui.ADJUST_ZOOM</code></li>\n<li><code>gui.ADJUST_STRETCH</code></li>\n</ul>", 
           "name": "adjust_mode", 
           "types": [
             "constant"
@@ -2765,7 +2765,7 @@
           ]
         }, 
         {
-          "doc": "adjust mode to set", 
+          "doc": "adjust mode to set\n<ul>\n<li><code>gui.ADJUST_FIT</code></li>\n<li><code>gui.ADJUST_ZOOM</code></li>\n<li><code>gui.ADJUST_STRETCH</code></li>\n</ul>", 
           "name": "adjust_mode", 
           "types": [
             "constant"
@@ -2796,7 +2796,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "the current size mode", 
+          "doc": "the current size mode\n<ul>\n<li><code>gui.SIZE_MODE_MANUAL</code></li>\n<li><code>gui.SIZE_MODE_AUTO</code></li>\n</ul>", 
           "name": "size_mode", 
           "types": [
             "constant"
@@ -2824,7 +2824,7 @@
           ]
         }, 
         {
-          "doc": "size mode to set", 
+          "doc": "size mode to set\n<ul>\n<li><code>gui.SIZE_MODE_MANUAL</code></li>\n<li><code>gui.SIZE_MODE_AUTO</code></li>\n</ul>", 
           "name": "size_mode", 
           "types": [
             "constant"
@@ -3124,7 +3124,7 @@
       "description": "Shows the on-display touch keyboard.\nThe specified type of keyboard is displayed if it is available on\nthe device.\nThis function is only available on iOS and Android. <span class=\"icon-ios\"></span> <span class=\"icon-android\"></span>.", 
       "parameters": [
         {
-          "doc": "keyboard type", 
+          "doc": "keyboard type\n<ul>\n<li><code>gui.KEYBOARD_TYPE_DEFAULT</code></li>\n<li><code>gui.KEYBOARD_TYPE_EMAIL</code></li>\n<li><code>gui.KEYBOARD_TYPE_NUMBER_PAD</code></li>\n<li><code>gui.KEYBOARD_TYPE_PASSWORD</code></li>\n</ul>", 
           "name": "type", 
           "types": [
             "constant"
@@ -3646,14 +3646,14 @@
           ]
         }, 
         {
-          "doc": "playback mode", 
+          "doc": "playback mode\n<ul>\n<li><code>gui.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>gui.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>gui.PLAYBACK_ONCE_PINGPONG</code></li>\n<li><code>gui.PLAYBACK_LOOP_FORWARD</code></li>\n<li><code>gui.PLAYBACK_LOOP_BACKWARD</code></li>\n<li><code>gui.PLAYBACK_LOOP_PINGPONG</code></li>\n</ul>", 
           "name": "playback", 
           "types": [
             "constant"
           ]
         }, 
         {
-          "doc": "optional table with properties", 
+          "doc": "optional table with properties\n<dl>\n<dt><code>blend_duration</code></dt>\n<dd><span class=\"type\">number</span> The duration of a linear blend between the current and new animation</dd>\n<dt><code>offset</code></dt>\n<dd><span class=\"type\">number</span> The normalized initial value of the animation cursor when the animation starts playing</dd>\n<dt><code>playback_rate</code></dt>\n<dd><span class=\"type\">number</span> The rate with which the animation will be played. Must be positive</dd>\n</dl>", 
           "name": "[play_properties]", 
           "types": [
             "table"
@@ -4182,7 +4182,7 @@
           ]
         }, 
         {
-          "doc": "optional callback function that will be called when an emitter attached to this particlefx changes state.", 
+          "doc": "optional callback function that will be called when an emitter attached to this particlefx changes state.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>node</code></dt>\n<dd><span class=\"type\">hash</span> The particle fx node, or <code>nil</code> if the node was deleted</dd>\n<dt><code>emitter</code></dt>\n<dd><span class=\"type\">hash</span> The id of the emitter</dd>\n<dt><code>state</code></dt>\n<dd><span class=\"type\">constant</span> the new state of the emitter:</dd>\n</dl>\n<ul>\n<li><code>particlefx.EMITTER_STATE_SLEEPING</code></li>\n<li><code>particlefx.EMITTER_STATE_PRESPAWN</code></li>\n<li><code>particlefx.EMITTER_STATE_SPAWNING</code></li>\n<li><code>particlefx.EMITTER_STATE_POSTSPAWN</code></li>\n</ul>", 
           "name": "[emitter_state_function]", 
           "types": [
             "function(self, node, emitter, state)"
