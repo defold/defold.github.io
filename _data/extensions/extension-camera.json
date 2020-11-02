@@ -1,0 +1,115 @@
+{
+    "elements": [
+        {
+            "description": "Start camera capture using the specified camera (front/back) and capture quality. This may trigger a camera usage permission popup. When the popup has been dismissed the callback will be invoked with camera start status.", 
+            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">start_capture</span><span class=\"p\">(</span><span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">CAMERA_TYPE_BACK</span><span class=\"p\">,</span> <span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">CAPTURE_QUALITY_HIGH</span><span class=\"p\">,</span> <span class=\"k\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">message</span> <span class=\"o\">==</span> <span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">CAMERA_STARTED</span> <span class=\"k\">then</span>\n        <span class=\"c1\">-- do stuff</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span><span class=\"p\">)</span>\n</pre></div>", 
+            "name": "start_capture", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Stops a previously started capture session.", 
+            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">stop_capture</span><span class=\"p\">()</span>\n</pre></div>", 
+            "name": "stop_capture", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Gets the info from the current capture session.", 
+            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">info</span> <span class=\"o\">=</span> <span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">get_info</span><span class=\"p\">()</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">width&quot;</span><span class=\"p\">,</span> <span class=\"n\">info</span><span class=\"p\">.</span><span class=\"n\">width</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">height&quot;</span><span class=\"p\">,</span> <span class=\"n\">info</span><span class=\"p\">.</span><span class=\"n\">height</span><span class=\"p\">)</span>\n</pre></div>", 
+            "name": "get_info", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Get captured frame.", 
+            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">cameraframe</span> <span class=\"o\">=</span> <span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">get_frame</span><span class=\"p\">()</span>\n</pre></div>", 
+            "name": "get_frame", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Constant for the front camera.", 
+            "examples": "", 
+            "name": "CAMERA_TYPE_FRONT", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "STRING"
+        }, 
+        {
+            "description": "Constant for the back camera.", 
+            "examples": "", 
+            "name": "CAMERA_TYPE_BACK", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "STRING"
+        }, 
+        {
+            "description": "High quality capture session.", 
+            "examples": "", 
+            "name": "CAPTURE_QUALITY_HIGH", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "STRING"
+        }, 
+        {
+            "description": "Medium quality capture session.", 
+            "examples": "", 
+            "name": "CAPTURE_QUALITY_MEDIUM", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "STRING"
+        }, 
+        {
+            "description": "Low quality capture session.", 
+            "examples": "", 
+            "name": "CAPTURE_QUALITY_LOW", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "STRING"
+        }, 
+        {
+            "description": "The capture session has started.", 
+            "examples": "", 
+            "name": "CAMERA_STARTED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "STRING"
+        }, 
+        {
+            "description": "The capture session has stopped.", 
+            "examples": "", 
+            "name": "CAMERA_STOPPED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "STRING"
+        }, 
+        {
+            "description": "The user did not give permission to start the capture session.", 
+            "examples": "", 
+            "name": "CAMERA_NOT_PERMITTED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "STRING"
+        }, 
+        {
+            "description": "Something went wrong when starting the capture session.", 
+            "examples": "", 
+            "name": "CAMERA_ERROR", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "STRING"
+        }
+    ], 
+    "info": {
+        "brief": "camera", 
+        "description": "Provides functionality to capture images using the camera. Supported on macOS, iOS and Android. [icon:ios] [icon:android]", 
+        "group": "EXTENSIONS", 
+        "name": "camera", 
+        "namespace": "camera"
+    }
+}
