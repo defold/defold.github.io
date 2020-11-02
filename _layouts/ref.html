@@ -45,7 +45,7 @@ layout: base
 							{%- if page.url contains r.url -%}
 								{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
 							{%- endif -%}
-						<li style="padding-left: 2rem; padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{{ r.namespace }}</a></li>
+						<li style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{{ r.namespace }}</a></li>
 						{%- endfor -%}
 					</ul>
 					{%- endfor -%}
