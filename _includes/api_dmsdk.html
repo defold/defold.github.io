@@ -1,0 +1,282 @@
+{%- assign ref = include.ref -%}
+
+{%- assign struct_type_list = "STRUCT~CLASS" | split:"~" -%}
+{%- assign structs = ref.elements | where_exp: "item", "struct_type_list contains item.type" -%}
+{%- assign typedefs = ref.elements | where: "type", "TYPEDEF" -%}
+{%- assign functions = ref.elements | where: "type", "FUNCTION" -%}
+{%- assign variables = ref.elements | where: "type", "VARIABLE" -%}
+{%- assign messages = ref.elements | where: "type", "MESSAGE" -%}
+{%- assign properties = ref.elements | where: "type", "PROPERTY" -%}
+{%- assign macros = ref.elements | where: "type", "MACRO" -%}
+{%- assign enums = ref.elements | where: "type", "ENUM" -%}
+
+{%- assign global_namespaces = "dmAlign~dmArray~dmHash~dmStringFunc~dmLog" | split:"~" -%}
+
+<h2>{{ ref.info.brief | capitalize }}</h2>
+<p>{{ ref.info.description }}</p>
+
+<table class="compact">
+	<tr>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		{%- unless global_namespaces contains ref.info.namespace -%}
+		<td>Namespace:</td>
+		<td><code>{{ ref.info.namespace }}</code></td>
+		{%- endunless -%}
+	</tr>
+	<tr>
+		<td>Include:</td>
+		<td><code>#include &lt;<a href="https://github.com/defold/defold/blob/dev/{{ ref.info.path }}">{{ ref.info.file }}</a>&gt;</code></td>
+	</tr>
+
+</table>
+
+{%- if variables.size > 0 -%}
+<table class="compact">
+	<tr>
+		<th>CONSTANTS</th>
+		<th></th>
+	</tr>
+	{%- for variable in variables -%}
+	<tr>
+		<td><a href="#{% include ref_anchorlink.html element=variable %}">{{ variable.name }}</a></td>
+		<td>{{ variable.brief }}</td>
+	</tr>
+	{%- endfor -%}
+</table>
+{%- endif -%}
+
+{%- if enums.size > 0 -%}
+<table class="compact">
+	<tr>
+		<th>ENUMS</th>
+		<th></th>
+	</tr>
+	{%- for enum in enums -%}
+	<tr>
+		<td><a href="#{% include ref_anchorlink.html element=enum %}">{{ enum.name }}</a></td>
+		<td>{{ enum.brief }}</td>
+	</tr>
+	{%- endfor -%}
+</table>
+{%- endif -%}
+
+{%- if messages.size > 0 -%}
+<table class="compact">
+	<tr>
+		<th>MESSAGES</th>
+		<th></th>
+	</tr>
+	{%- for message in messages -%}
+	<tr>
+		<td><a href="#{% include ref_anchorlink.html element=message %}">{{ message.name }}</a></td>
+		<td>{{ message.brief }}</td>
+	</tr>
+	{%- endfor -%}
+</table>
+{%- endif -%}
+
+{%- if properties.size > 0 -%}
+<table class="compact">
+	<tr>
+		<th>PROPERTIES</th>
+		<th></th>
+	</tr>
+	{%- for property in properties -%}
+	<tr>
+		<td><a href="#{% include ref_anchorlink.html element=property %}">{{ property.name }}</a></td>
+		<td>{{ property.brief }}</td>
+	</tr>
+	{%- endfor -%}
+</table>
+{%- endif -%}
+
+{%- if structs.size > 0 -%}
+<table class="compact">
+	<tr>
+		<th>STRUCTS</th>
+		<th></th>
+	</tr>
+	{%- for struct in structs -%}
+	<tr>
+		<td><a href="#{% include ref_anchorlink.html element=struct %}">{% include api_c_struct.html struct=struct full="no" %}</a></td>
+		<td>{{ struct.brief }}</td>
+	</tr>
+	{%- endfor -%}
+</table>
+{%- endif -%}
+
+{%- if functions.size > 0 -%}
+<table class="compact">
+	<tr>
+		<th>FUNCTIONS</th>
+		<th></th>
+	</tr>
+	{%- for function in functions -%}
+	<tr>
+		<td><a href="#{% include ref_anchorlink.html element=function %}">{% include api_c_function.html function=function full="no" %}</a></td>
+		<td>{{ function.brief }}</td>
+	</tr>
+
+	{%- endfor -%}
+</table>
+{%- endif -%}
+
+
+{%- if macros.size > 0 -%}
+<table class="compact">
+	<tr>
+		<th>MACROS</th>
+		<th></th>
+	</tr>
+	{%- for macro in macros -%}
+	<tr>
+		<td><a href="#{% include ref_anchorlink.html element=function %}">{{ macro.name }}({%- for param in macro.parameters -%}{{ param.name }}{%- if forloop.last != true -%},&nbsp{%- endif -%}{%- endfor -%})</a></td>
+		<td>{{ macro.brief }}</td>
+	</tr>
+	{%- endfor -%}
+</table>
+{%- endif -%}
+
+
+
+
+{%- if functions.size > 0 -%}
+<h2>Functions</h2>
+	{%- for function in functions -%}
+		<a name="{% include ref_anchorlink.html element=function %}"/>
+		<h4>{{ function.name }}<a href="#{% include ref_anchorlink.html element=function %}" class="anchor-link"></a></h4>
+			{% include api_c_function.html function=function full="yes" %}
+	{%- endfor -%}
+{%- endif -%}
+
+{%- if structs.size > 0 -%}
+<h2>Structs</h2>
+	{%- for struct in structs -%}
+	<a name="{% include ref_anchorlink.html element=struct %}"/>
+	<h4>{{ struct.name }}<a href="#{% include ref_anchorlink.html element=struct %}"><span class="anchor-link"/></a></h4>
+
+		{% include api_c_struct.html struct=struct full="yes" %}
+
+	<hr/>
+	{%- endfor -%}
+{%- endif -%}
+
+{%- if variables.size > 0 -%}
+<h2>Constants</h2>
+	{%- for variable in variables -%}
+	<a name="{% include ref_anchorlink.html element=variable %}"/>
+	<h4>{{ variable.name }}<a href="#{% include ref_anchorlink.html element=variable %}"><span class="anchor-link"/></a></h4>
+	<p>{{ variable.brief }}</p>
+	<p>{{ variable.description }}</p>
+
+	{%- if variable.parameters.size > 0 -%}
+	<table>
+	{%- for param in variable.parameters -%}
+	<tr>
+		<td><code>{{ param.name }}</code></td>
+		<td>{{ param.doc }}</td>
+	</tr>
+	{%- endfor -%}
+	</table>
+	{%- endif -%}
+
+	<hr/>
+	{%- endfor -%}
+{%- endif -%}
+
+{%- if enums.size > 0 -%}
+<h2>Enums</h2>
+	{%- for enum in enums -%}
+	<a name="{% include ref_anchorlink.html element=enum %}"/>
+	<h4>{{ enum.name }}<a href="#{% include ref_anchorlink.html element=enum %}"><span class="anchor-link"/></a></h4>
+	<p>{{ enum.brief }}</p>
+	<p>{{ enum.description }}</p>
+
+	{%- if enum.members.size > 0 -%}
+	<table>
+	{%- for member in enum.members -%}
+	<tr>
+		<td><code>{{ member.name }}</code></td>
+		<td>{{ member.doc }}</td>
+	</tr>
+	{%- endfor -%}
+	</table>
+	{%- endif -%}
+
+	<hr/>
+	{%- endfor -%}
+{%- endif -%}
+
+{%- if messages.size > 0 -%}
+<h2>Messages</h2>
+	{%- for message in messages -%}
+	<a name="{% include ref_anchorlink.html element=message %}"/>
+	<h4>{{ message.name }}<a href="#{% include ref_anchorlink.html element=message %}"><span class="anchor-link"/></a></h4>
+	<p>{{ message.brief }}</p>
+	<p>{{ message.description }}</p>
+
+	{%- if message.parameters.size > 0 -%}
+	<table>
+	{%- for param in message.parameters -%}
+	<tr>
+		<td><code>{{ param.name }}</code></td>
+		<td>{{ param.doc }}</td>
+	</tr>
+	{%- endfor -%}
+	</table>
+	{%- endif -%}
+
+	{%- if message.examples.size > 0 -%}
+	<p><b>EXAMPLES</b></p>
+	{{ message.examples }}
+	{%- endif -%}
+	<hr/>
+	{%- endfor -%}
+{%- endif -%}
+
+{%- if properties.size > 0 -%}
+<h2>Properties</h2>
+	{%- for property in properties -%}
+	<a name="{% include ref_anchorlink.html element=property %}"/>
+	<h4>{{ property.name }}<a href="#{% include ref_anchorlink.html element=property %}"><span class="anchor-link"/></a></h4>
+	<p>{{ property.description }}</p>
+	<p>{{ property.brief }}</p>
+	{%- if property.examples.size > 0 -%}
+	<p><b>EXAMPLES</b></p>
+	{{ property.examples }}
+	{%- endif -%}
+
+	<hr/>
+	{%- endfor -%}
+{%- endif -%}
+
+{%- if macros.size > 0 -%}
+<h2>Macros</h2>
+	{%- for macro in macros -%}
+	<a name="{% include ref_anchorlink.html element=macro %}"/>
+	<h4>{{ macro.name }}<a href="#{% include ref_anchorlink.html element=macro %}"><span class="anchor-link"/></a></h4>
+	<p>{{ macro.brief }}</p>
+	<p>{{ macro.description }}</p>
+
+	{%- if macro.parameters.size > 0 -%}
+	<table>
+	{%- for param in macro.parameters -%}
+	<tr>
+		<td><code>{{ param.name }}</code></td>
+		<td>{{ param.doc }}</td>
+	</tr>
+	{%- endfor -%}
+	</table>
+	{%- endif -%}
+
+	{%- if macro.examples.size > 0 -%}
+	<p><b>EXAMPLES</b></p>
+	{{ macro.examples }}
+	{%- endif -%}
+
+	<hr/>
+	{%- endfor -%}
+{%- endif -%}

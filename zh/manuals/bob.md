@@ -34,7 +34,6 @@ usage: bob [options] [commands]
                                      报告为HTML格式
     --build-server <arg>             编译服务器 (当使用原生扩展
                                      时使用)
- -ce,--certificate <arg>             指定证书 (Android)
  -d,--debug                          使用dmengine的debug版本(当
                                      编译时). 弃用, 使用--variant
                                      代替
@@ -53,7 +52,6 @@ usage: bob [options] [commands]
  -o,--output <arg>                   输出目录. 默认是
                                      "build/default"
  -p,--platform <arg>                 发布平台 (打包时)
- -pk,--private-key <arg>             指定私匙 (Android)
  -r,--root <arg>                     指定编译目录. 默认是
                                      当前目录
     --settings <arg>                 指定项目设置文件的
@@ -75,6 +73,11 @@ usage: bob [options] [commands]
                                      版本号
     --with-symbols                   生成标记文件 (如果
                                      可用)
+    --bundle-format <apk|aab>        使用哪种格式打 Android 包.
+    --keystore <arg>                 使用哪个密匙注册
+                                     Android 包.
+    --keystore-pass <arg>            密匙密码路径用于打 Android 包.
+    --keystore-alias <arg>           密匙别名用于打 Android 包.
 ```
 
 支持的命令:
@@ -97,7 +100,7 @@ usage: bob [options] [commands]
 可用平台:
 
 `x86_64-darwin`
-: Mac OSX 64 bit
+: macOS 64 bit
 
 `x86_64-win32`
 : Windows 64 bit
@@ -115,7 +118,7 @@ usage: bob [options] [commands]
 : iOS 32 bit
 
 `x86_64-ios`
-: iOS Mac OSX 64 bit (iOS Simulator)
+: iOS macOS 64 bit (iOS Simulator)
 
 `armv7-android`
 : Android 32 bit
@@ -132,7 +135,7 @@ $ java -jar bob.jar
 $
 ```
 
-还可以把命令连成一行一起执行. 下面的例子包含了解析库, 清理编译目录, 编译数据包然后打包成 OSX 应用 (命名为 *My Game.app*):
+还可以把命令连成一行一起执行. 下面的例子包含了解析库, 清理编译目录, 编译数据包然后打包成 macOS 应用 (命名为 *My Game.app*):
 
 ```sh
 $ java -jar bob.jar --archive --platform x86-darwin resolve distclean build bundle

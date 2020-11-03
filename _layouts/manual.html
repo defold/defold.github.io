@@ -15,7 +15,7 @@ layout: base
 <div class="section lightest">
 	<div class="container">
 		<div class="row">
-			<div class="columns three">
+			<div class="columns two">
 				<div class="navmenu">
 				{%- for section in site.data.learnindex.navigation.manuals -%}
 					{%- assign checked = "" -%}
@@ -56,7 +56,7 @@ layout: base
 					</select>
 				</div>
 			</div>
-			<div class="columns seven manual">
+			<div class="columns eight manual">
 				{%- if page.language != "en" -%}
 				{%- capture urlprefix -%}/{{ language.urlprefix }}/{%- endcapture -%}
 				<p><a href="{{ page.url | replace: urlprefix, "/" }}">Read this manual in English</a></p>

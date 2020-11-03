@@ -1,6 +1,6 @@
 ---
 layout: assetportal
 tag: ai
-title: AI
+title: Ai
 sort: timestamp
 ---

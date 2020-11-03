@@ -319,7 +319,7 @@ Storyboard 文件 (.storyboard). 其创建方法详情请见 [iOS 教程](/zh/ma
 (iOS 6 及更早) 设置图标是否预渲染. 如果关闭则图标自动添加平滑高光效果.
 
 #### Bundle Identifier
-打包id使得 iOS 认识你的应用的版本更新. 你的打包 ID 必须在 Apple 注册且确保应用唯一性. iOS 与 OS X 应用不可以使用同一id.
+打包id使得 iOS 认识你的应用的版本更新. 你的打包 ID 必须在 Apple 注册且确保应用唯一性. iOS 与 macOS 应用不可以使用同一id.
 
 #### Info.plist
 如果设置了, 则打包应用时使用此 info.plist 文件.
@@ -371,16 +371,16 @@ Google Cloud Messaging Sender Id. 此值由 Google 签发, 设置后才能开启
 #### Debuggable
 指定应用是否可以使用诸如 [GAPID](https://github.com/google/gapid) 或者 [Android Studio](https://developer.android.com/studio/profile/android-profiler) 之类的工具来调试. 这将开启 Android manifest 的 `android:debuggable` 选项.
 
-## MacOS 和 OS X
+## macOS
 
 #### App Icon
-用于MacOS应用图标的图片 (.png) 文件.
+用于macOS应用图标的图片 (.png) 文件.
 
 #### Info.plist
 如果设置了, 则编译时使用指定的 info.plist 文件.
 
 #### Bundle Identifier
-打包id使得 OS X 认识你的应用的版本更新. 你的打包 ID 必须在 Apple 注册且确保应用唯一性. iOS 与 OS X 应用不可以使用同一id.
+打包id使得 macOS 认识你的应用的版本更新. 你的打包 ID 必须在 Apple 注册且确保应用唯一性. iOS 与 macOS 应用不可以使用同一id.
 
 ## Windows
 
@@ -497,7 +497,7 @@ local my_value = tonumber(sys.get_config("test.my_value"))
 目前, Defold 在初始化时查询屏幕刷新率并且把它作为固定 `dt` 的依据. 如果你需要支持可变刷新率 (比如 GSync 或者 FreeSync) 或者其他刷新率不是很有参考性的情况下, 关闭 `Vsync`来使引擎测量每帧实际 `dt` 而不是固定dt.
 
 
-### Defold 中的垂直同步与帧数锁定*
+### Defold 中的垂直同步与帧数锁定
 
 <table>
   <tr>

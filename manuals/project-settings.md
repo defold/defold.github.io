@@ -316,7 +316,7 @@ Storyboard file (.storyboard). Learn more about how to create one in the [iOS ma
 (iOS 6 and earlier) Check if your icons are pre-rendered. If this is unchecked the icons will get a glossy highlight added automatically.
 
 #### Bundle Identifier
-The bundle identifier lets iOS recognize any updates to your app. Your bundle ID must be registered with Apple and be unique to your app. You cannot use the same identifier for both iOS and OS X apps.
+The bundle identifier lets iOS recognize any updates to your app. Your bundle ID must be registered with Apple and be unique to your app. You cannot use the same identifier for both iOS and macOS apps.
 
 #### Info.plist
 If specified, use this info.plist file when bundling your app.
@@ -368,16 +368,16 @@ If set, hides the navigation and status bars and lets your app capture all touch
 #### Debuggable
 Whether or not the application can be debugged using tools such as [GAPID](https://github.com/google/gapid) or [Android Studio](https://developer.android.com/studio/profile/android-profiler). This will set the `android:debuggable` flag in the Android manifest.
 
-## MacOS / OS X
+## macOS
 
 #### App Icon
-Image file (.png) to use as application icon on MacOS.
+Image file (.png) to use as application icon on macOS.
 
 #### Info.plist
 If set, use the specified info.plist file when bundling.
 
 #### Bundle Identifier
-The bundle identifier lets OS X recognize updates to your app. Your bundle ID must be registered with Apple and be unique to your app. You cannot use the same identifier for both iOS and OS X apps.
+The bundle identifier lets macOS recognize updates to your app. Your bundle ID must be registered with Apple and be unique to your app. You cannot use the same identifier for both iOS and macOS apps.
 
 #### Default Language
 The language used if the application doesn't have user's preferred language in `Localizations` list (see [CFBundleDevelopmentRegion](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-130430)). Use the two-letter ISO 639-1 standard if preferred language is available there or the three-letter ISO 639-2.
@@ -500,7 +500,7 @@ Swap interval is the interval with which to swap the front and back buffers in s
 Currently, Defold queries for monitor refresh rate at init and uses that as a basis for picking a fixed `dt`. If you want to support monitors using variable refresh rate (GSync or FreeSync for example) or other scenarios where the refresh rate might not be trivial to query, uncheck `Vsync`to let the engine measure actual `dt` each frame instead of relying on a fixed time step.
 
 
-### Vsync and frame cap in Defold*
+### Vsync and frame cap in Defold
 
 <table>
   <tr>
