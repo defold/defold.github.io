@@ -56,7 +56,7 @@ We believe in a free and open internet where software and services use open stan
 	image="/images/foundation/thumbs/Mathias Westerdahl_2020_RW.jpg"
 	link="/images/foundation/highres/Mathias Westerdahl_2020_RW.jpg"
 	name="Mathias Westerdahl"
-	bio="Mathias has been in the industry since 2001, when he started programming racing games for the PlayStation 1. From there he moved on to tools and engine programming, most notably at Avalanche Studios. There he spent a decade working as a developer as well as a team lead on AAA titles such as Just Cause and Mad Max. Mathias has spent the last four years at King working with Defold as a principal engineer and lead engine developer, making the game engine accessible to a wide range of indie developers."
+	bio="Mathias has been in the industry since 2001 when he started programming racing games for the PlayStation 1. From there he moved on to tools and engine programming, most notably at Avalanche Studios where he spent a decade working as a developer as well as a team lead on AAA titles such as Just Cause and Mad Max. Mathias has spent the last four years at King working with Defold as a principal engineer and lead engine developer, making the game engine accessible to a wide range of indie developers. Mathias is now working full time on Defold on behalf of the Defold Foundation."
 	email="mathias@defold.se"
 -%}
 
@@ -64,7 +64,7 @@ We believe in a free and open internet where software and services use open stan
 	image="/images/foundation/thumbs/Bjorn Ritzl_2020_RW.jpg"
 	link="/images/foundation/highres/Bjorn Ritzl_2020_RW.jpg"
 	name="Björn Ritzl"
-	bio="Björn has worked as a developer for almost two decades, primarily in the games industry, and even longer as a hobbyist writing his first lines of code on a C64 in the late 80s. He has worked with mobile game development since before the smart phones and he is a big fan of old school games from the days of the C64 and Amiga. Björn started working with Defold at King in 2015, initially as a developer and transitioning into the role of product owner in 2018. He is a strong believer in the power of open source development with more than 100 open source projects on GitHub."
+	bio="Björn has worked as a developer for almost two decades, primarily in the games industry, and even longer as a hobbyist writing his first lines of code on a C64 in the late 80s. He has worked with mobile game development since before smart phones and he is a big fan of old school games from the days of the C64 and Amiga. Björn started working with Defold at King in 2015, initially as a developer and transitioning into the role of product owner in 2018. He is a strong believer in the power of open source development with more than 100 open source projects on GitHub. Björn is now working full time on Defold on behalf of the Defold Foundation."
 	email="bjorn@defold.se"
 	phone="+46-704-335333"
 -%}
