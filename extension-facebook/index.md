@@ -67,13 +67,7 @@ For iOS you need to specify the game's `bundle_identifier` as specified in *game
 
 ## Android
 
-For Android you need to specify a *Google Play Package Name*, which is the game's *package* identifier specified in *game.project*. You should also generate hashes of the certificate(s) you use and enter them into the *Key Hashes* field. You can generate a hash from a *certificate.pem* with openssl:
-
-```sh
-$ cat certificate.pem | openssl x509 -outform der | openssl sha1 -binary | openssl base64
-```
-
-(See [Creating certificates and keys](/manuals/android/#creating-certificates-and-keys) in the Android manual for details on how to create your own signing files.)
+For Android you need to specify a *Google Play Package Name*, which is the game's *package* identifier specified in *game.project*. You should also generate hashes of the certificate(s) you use and enter them into the *Key Hashes* field. [Follow the instructions](https://developers.facebook.com/docs/android/getting-started/#release-key-hash) in the Facebook Developer pages to generate the hashes.
 
 ![Android settings](settings_android.png)
 
@@ -207,6 +201,7 @@ Once you have sent some events they will show up in the Facebook Analytics dashb
 Events are accessed from the *Events* option on the from the Facebook Analytics page:
 
 ![Add Facebook Analytics](facebook_analytics_show_events.png)
+
 
 ### Sharing events with Facebook
 
