@@ -58,6 +58,11 @@ Since Xcode 7, anyone can install Xcode and do on-device development for free. Y
 3. Add a new account to Xcode and sign in with your Apple ID.
 4. Create a new project. The simplest "Single View App" works fine.
 5. Select your "Team" (auto created for you) and give the app a bundle identifier.
+
+<div class='important' markdown='1'>
+Make a note of the bundle identifier as you must use the same bundle identifier in your Defold project.
+</div>
+
 6. Make sure that Xcode has created a *Provisioning Profile* and *Signing Certificate* for the app.
 
    ![](../images/ios/xcode_certificates.png)
@@ -200,3 +205,7 @@ xcrun simctl install booted your.app
 # launch the simulator
 open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
 ```
+
+
+## FAQ
+{% include shared/en/ios-faq.md %}

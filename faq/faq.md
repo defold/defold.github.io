@@ -153,6 +153,8 @@ See [this link](https://github.com/defold/editor2-issues/blob/master/faq/pkixpat
 ## HTML5
 {% include shared/en/html5-faq.md %}
 
+## IOS
+{% include shared/en/ios-faq.md %}
 
 ## Windows
 {% include shared/en/windows-faq.md %}
