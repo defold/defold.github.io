@@ -144,14 +144,14 @@ A: Defold 使用 OpenGL ES 2.0 进行图像渲染, 全平台有效. （如果平
 ## Linux
 {% include shared/zh/linux-faq.md %}
 
-
 ## Android
 {% include shared/zh/android-faq.md %}
 
+## IOS
+{% include shared/zh/ios-faq.md %}
 
 ## HTML5
 {% include shared/zh/html5-faq.md %}
-
 
 ## Windows
 {% include shared/zh/windows-faq.md %}
