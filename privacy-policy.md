@@ -36,7 +36,7 @@ By accessing and/or using our Services you consent to us collecting, processing,
 
 Capitalised terms which are not defined in this Services Privacy Policy have the same meaning as set out in the Defold Terms of Service, which you can access [here](/terms-and-conditions/#definition).
 
-This Services Privacy Policy was last updated on: June 14  - 2020.
+This Services Privacy Policy was last updated on: November 15 - 2020.
 
 **2. About Us**
 
@@ -66,7 +66,7 @@ We use cookies and similar technologies:
 
  * to allow us to recognise your device, for example by identifying the IP address;
  * to obtain data about how our Website and Services are used, using both our own analytics tools and third party analytics tools such as Google Analytics. Please visit [http://www.google.com/policies/privacy/partners/](http://www.google.com/policies/privacy/partners/) for more information, including how you may prevent your data from being used by Google Analytics;
- * to collect data such as: your device model, operating system and screen size, and information about how the you use the Services;
+ * to collect data such as: your device model, operating system and screen size, and information about how you use the Services;
  * to provide you with more customized Services, for example to provide our Services in the correct language; and
 * to obtain data which will allow us to understand how people are using our Services so that we can improve them.
 
@@ -174,6 +174,6 @@ You also have the right to complain to your local data protection authority if t
 
 If any court or other competent authority finds any of the terms of this Services Privacy Policy to be invalid or unenforceable, the other terms of this Services Privacy Policy will not be affected.
 
-This Services Privacy Policy is governed by and interpreted in accordance with the laws of England. Any dispute arising in connection with this Services Privacy Policy will be subject to the exclusive jurisdiction of the courts of England unless you choose the courts of your home country.
+This Services Privacy Policy is governed by and interpreted in accordance with the laws of Sweden. Any dispute arising in connection with this Services Privacy Policy will be subject to the exclusive jurisdiction of the courts of Sweden unless you choose the courts of your home country.
 
 We are constantly innovating and looking for new ways to improve our Services and our games. We may therefore amend this Services Privacy Policy from time to time to reflect such improvements or any other changes to our business. We will endeavour to tell you about any significant changes to this Services Privacy Policy which we feel may disadvantage you in any material way. If you object to any of the changes you should immediately stop using our Services and close any account you may have with us.
