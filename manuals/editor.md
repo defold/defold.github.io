@@ -257,3 +257,7 @@ You can also get access to editor logs while the editor is running if it is star
 ```
 $ > ./path/to/Defold.app/Contents/MacOS/Defold
 ```
+
+
+## FAQ
+{% include shared/en/editor-faq.md %}
