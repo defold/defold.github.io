@@ -7,7 +7,7 @@ author: Björn Ritzl
 
 In the Creator Spotlight posts we invite Defold users to present themselves and share a bit of their background, their work and things that inspire them. It is an excellent opportunity for the community to come together, to recognise achievements and to share some of the great work done by Defold users.
 
-In this Defold Creator Spotlight we invited Denbis Volkov to tell us a little bit about himself and his ambitious project "Zoo Economy".
+In this Defold Creator Spotlight we invited Denis Volkov to tell us a little bit about himself and his ambitious project "Zoo Economy".
 
 
 #### What is your name?
