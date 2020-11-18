@@ -9,7 +9,7 @@ In the Creator Spotlight posts we invite Defold users to present themselves and 
 
 In the third Defold Creator Spotlight we invited Sergey, long time Defold user and creator of several Defold extensions, to tell us a little bit about himself and his projects.
 
-![Sergey](/images/posts/sergey-wide.jpg)
+![Sergey](/images/posts/developer-spotlight-sergey-lerg/sergey-wide.jpg)
 
 #### What is your name?
 Sergey Lerg.
@@ -28,7 +28,7 @@ Things changed when I came across Corona SDK and everything just snapped togethe
 #### When and how did you learn of Defold?
 It got on my radar in 2016, I saw an article about it on [Habr](https://habr.com/) - Russian dev community. Back then I was actively using the Corona engine (now it's called Solar2D), it's a Lua 2D engine and Defold seemed like a good option. I was mostly making simple mobile games as a freelancer, also I made two mobile games of my own - [Laser Puzzle](https://apps.apple.com/us/app/laser-puzzle-logic-game/id1338580310) and [2048 Hex](https://apps.apple.com/us/app/2048-hex-match-numbers-puzzle/id841721448).
 
-![Laser Puzzle](/images/posts/laserpuzzle.png)
+![Laser Puzzle](/images/posts/developer-spotlight-sergey-lerg/laserpuzzle.png)
 
 <div align="center"><p><i>"It was a challenge to wrap my head around Defold's API usage and development approach"</i></p></div>
 
@@ -54,7 +54,7 @@ I don't have one favorite. I like many games. Dune 1 & 2, StarCraft, [Hyper Ligh
 #### What are you working on right now?
 At the moment I am working at 7Spot Games, the creators of [Duo Survival](https://poki.com/en/g/duo-survival). Making a new game in a great team.
 
-![Duo Survival by 7Spot Games](/images/posts/duosurvival.png)
+![Duo Survival by 7Spot Games](/images/posts/developer-spotlight-sergey-lerg/duosurvival.png)
 
 In my spare time (like I have any spare time, haha, life stop it) I am working on my own game - a 3D village builder slash strategy game, heavily inspired by the irregular grid of Townscaper. Currently there is the first [devlog on my YouTube channel](https://youtu.be/Jm3pLya3d9c). Despite my affection to Defold, I am making this game in Godot because 3D support in Defold is far from what is desired. I don't like Unity, so Godot was an obvious choice. Unity is great and powerful, but sometimes illogical and a pain to work with compared to Defold or Godot. As a shameless self-promotion you should definitely subscribe to my channel, the next video is on procedural terrain generation with Defold.
 

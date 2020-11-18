@@ -20,7 +20,7 @@ I moved from Sweden to London about 20 years ago. After a couple of years of web
 #### When and how did you learn of Defold?
 I had self published a few games in 2015 using Gideros, another Lua engine, when I first heard about Defold. At the time monetisation was too limited for it to be an option, but I kept an eye on the development. In 2019 I made my first game, Monkey Kick, in Defold. It was a [Facebook Instant game](/manuals/instant-games) which needed to load quickly, and at that time Gideros’ export size was a bit too big.
 
-![](/images/posts/monkeykick.png)
+![](/images/posts/developer-spotlight-niclas-aberg/monkeykick.png)
 
 I’m not a fan of tutorials, so I very much appreciated the exhaustive API reference. That, and the ever-helpful forum, helped me get up to speed quickly.
 
@@ -32,7 +32,7 @@ The IDE. Having used Flash for years, I feel right at home with the way I can vi
 #### What is your favourite game of all times?
 Civilization, obvs. But I’m also a huge fan of the Zelda series and have sunk many hours into No Man’s Sky, too. And Wipeout. And Lemmings and Worms on the Amiga. And Sim City on the C64. And Mario World on the original GameBoy, that was a classic.
 
-![](/images/posts/totebo-games.png)
+![](/images/posts/developer-spotlight-niclas-aberg/totebo-games.png)
 
 
 #### What are you working on right now?
@@ -44,7 +44,7 @@ A hyper casual game called [Juump!](https://play.google.com/store/apps/details?i
 
 Technically I’m really happy with the procedural level generation, the screen transitions and the slimey paint particles. And the sound. And the localisation. And the analytics. And the IAP and ads. It’s a small game, but it’s using almost all of Defold’s features!
 
-![](/images/posts/juump.png)
+![](/images/posts/developer-spotlight-niclas-aberg/juump.png)
 
 
 #### Tell us about your ugliest hack to get a job done!

@@ -9,7 +9,7 @@ In the Creator Spotlight posts we invite Defold users to present themselves and 
 
 In the third Defold Creator Spotlight we invited Marius, lead developer at [Critique Gaming](https://critique-gaming.com/), to tell us a little bit about himself and his current project.
 
-![Marius](/images/posts/marius.png)
+![Marius](/images/posts/developer-spotlight-marius-petcu/marius.png)
 
 #### What is your name?
 Marius Petcu.
@@ -36,7 +36,7 @@ We're not really at a stage where we can share more details, but it's really exc
 
 Meanwhile, maybe check out our previous project, [Interrogation: You will be deceived](https://interrogation-game.com/).
 
-![Interrogation: You will be deceived](/images/posts/interrogation.png)
+![Interrogation: You will be deceived](/images/posts/developer-spotlight-marius-petcu/interrogation.png)
 
 #### Which part of your current project are you most proud of?
 If I'm talking personal pride, probably the way the data propagates through the game. It's quite a numbers-heavy game with a lot of data dependencies. I made a small Observable module that allows you to pub/sub to other values, which makes reacting to data changes or calculating derived values quite easy. I'm going to open source it in Crit pretty soon. ([Crit is a small, open source](https://github.com/critique-gaming/crit), poorly documented but quite thrifty collection of modules that we made and tweaked over the years and that we carry over from project to project).

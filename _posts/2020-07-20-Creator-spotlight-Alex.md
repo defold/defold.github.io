@@ -9,7 +9,7 @@ In the Creator Spotlight posts we invite Defold users to present themselves and 
 
 In the first ever Creator Spotlight we invited Alex (aka Topbraj), the creator of [Fates of Ort](https://store.steampowered.com/app/895480/Fates_of_Ort/), to tell us a little bit about himself and his current project.
 
-![](/images/posts/fatesofort.png)
+![](/images/posts/developer-spotlight-alex-svegren/fatesofort.png)
 
 #### What is your name?
 Hi! My name is Alex, but I go by topbraj on the Defold forums.
