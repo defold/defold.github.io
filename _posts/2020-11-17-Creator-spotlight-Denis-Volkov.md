@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Creator Spotlight - Denis Volkov
-excerpt: In this Defold Creator Spotlight we invited Denbis Volkov to tell us a little bit about himself and his ambitious project "Zoo Economy".
+excerpt: In this Defold Creator Spotlight we invited Denis Volkov to tell us a little bit about himself and his ambitious project "Zoo Economy".
 author: Björn Ritzl
 ---
 
