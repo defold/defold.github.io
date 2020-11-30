@@ -134,6 +134,9 @@ Android 分析器 (Android)
 
   ![android profiler](/manuals/images/profiling/android_profiler.png)
 
+  注意: 從 Android Studio 版本 4.1 開始, 也可以 [不用運行 Android Studio 而直接進行分析](https://developer.android.com/studio/profile/android-profiler.html#standalone-profilers).
+
+
 图像 API 调试器 (Android)
 : https://github.com/google/gapid
 

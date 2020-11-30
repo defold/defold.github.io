@@ -257,3 +257,7 @@ Defold 编辑器被划分为许多面板, 或称视图, 以展示和编辑数据
 ```
 $ > ./path/to/Defold.app/Contents/MacOS/Defold
 ```
+
+
+## 常見問題
+{% include shared/zh/editor-faq.md %}
