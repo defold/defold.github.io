@@ -1,6 +1,19 @@
 {
     "elements": [
         {
+            "description": "Check if Google Play Services are available & ready on the device.", 
+            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">is_supported</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">is_supported</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+            "name": "is_supported", 
+            "parameters": [], 
+            "returnvalues": [
+                {
+                    "doc": "Status of Google Play Services on the device.", 
+                    "name": "boolean"
+                }
+            ], 
+            "type": "FUNCTION"
+        }, 
+        {
             "description": "Login to GPGS using a button.", 
             "examples": "<p>Log in to GPGS using a button:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">login</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
             "name": "login", 
