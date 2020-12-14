@@ -493,38 +493,6 @@
     }, 
     {
       "replaces": "", 
-      "description": "Get the parent for a game object instance.", 
-      "parameters": [
-        {
-          "doc": "optional id of the game object instance to get parent for, defaults to the instance containing the calling script", 
-          "name": "[id]", 
-          "types": [
-            "string", 
-            "hash", 
-            "url"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "parent instance or nil", 
-          "name": "parent_id", 
-          "types": [
-            "hash"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "get the parent for a specific game object instance", 
-      "examples": "Get parent of the instance containing the calling script:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">parent_id</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_parent</span><span class=\"p\">()</span>\n</pre></div>\n\n\nGet parent of the instance with id \"x\":\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">parent_id</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_parent</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">x&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "go.get_parent"
-    }, 
-    {
-      "replaces": "", 
       "description": "Use <a href=\"/ref/go#go.get_position\">go.get_position</a> to retrieve the position relative to the parent.", 
       "parameters": [
         {
