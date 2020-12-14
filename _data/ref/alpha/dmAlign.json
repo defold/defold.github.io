@@ -1,64 +1,49 @@
 {
   "info": {
     "group": "DEFOLD SDK", 
-    "description": "Alignment macros. Use for compiler compatibility", 
+    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/align.h&gt;</span></p>\n<p>Alignment macros. Use for compiler compatibility</p>", 
     "namespace": "dmAlign", 
-    "brief": "SDK Align API documentation", 
-    "file": "dmsdk/dlib/align.h", 
-    "path": "engine/dlib/src/dmsdk/dlib/align.h", 
-    "name": "Align"
+    "name": "Align", 
+    "brief": "<p>SDK Align API documentation</p>"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "Data structure alignment", 
+      "description": "<p>Align a value to a boundary</p>", 
       "parameters": [
         {
-          "doc": "number of bytes to align to", 
-          "name": "a", 
-          "types": [
-            "int"
-          ]
+          "doc": "<p><span class=\"type\">int</span> value to align</p>", 
+          "name": "x"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> alignment boundary</p>", 
+          "name": "a"
         }
       ], 
       "returnvalues": [], 
-      "notes": [], 
-      "brief": "data structure alignment macro", 
-      "examples": "Align m_Data to 16 bytes alignment boundary:\n<div class=\"codehilite\"><pre><span></span><span class=\"kt\">int</span> <span class=\"nf\">DM_ALIGNED</span><span class=\"p\">(</span><span class=\"mi\">16</span><span class=\"p\">)</span> <span class=\"n\">m_Data</span><span class=\"p\">;</span>\n</pre></div>", 
+      "brief": "<p>value alignment macro</p>", 
+      "examples": "<p>Align 24 to 16 alignment boundary. results is 32:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kt\">int</span> <span class=\"n\">result</span> <span class=\"o\">=</span> <span class=\"n\">DM_ALIGN</span><span class=\"p\">(</span><span class=\"mi\">24</span><span class=\"p\">,</span> <span class=\"mi\">16</span><span class=\"p\">);</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
-      "tparams": [], 
       "type": "MACRO", 
-      "name": "DM_ALIGNED"
+      "name": "DM_ALIGN"
     }, 
     {
       "replaces": "", 
-      "description": "Align a value to a boundary", 
+      "description": "<p>Data structure alignment</p>", 
       "parameters": [
         {
-          "doc": "value to align", 
-          "name": "x", 
-          "types": [
-            "int"
-          ]
-        }, 
-        {
-          "doc": "alignment boundary", 
-          "name": "a", 
-          "types": [
-            "int"
-          ]
+          "doc": "<p><span class=\"type\">int</span> number of bytes to align to</p>", 
+          "name": "a"
         }
       ], 
       "returnvalues": [], 
-      "notes": [], 
-      "brief": "value alignment macro", 
-      "examples": "Align 24 to 16 alignment boundary. results is 32:\n<div class=\"codehilite\"><pre><span></span><span class=\"kt\">int</span> <span class=\"n\">result</span> <span class=\"o\">=</span> <span class=\"n\">DM_ALIGN</span><span class=\"p\">(</span><span class=\"mi\">24</span><span class=\"p\">,</span> <span class=\"mi\">16</span><span class=\"p\">);</span>\n</pre></div>", 
+      "brief": "<p>data structure alignment macro</p>", 
+      "examples": "<p>Align m_Data to 16 bytes alignment boundary:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kt\">int</span> <span class=\"nf\">DM_ALIGNED</span><span class=\"p\">(</span><span class=\"mi\">16</span><span class=\"p\">)</span> <span class=\"n\">m_Data</span><span class=\"p\">;</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
-      "tparams": [], 
       "type": "MACRO", 
-      "name": "DM_ALIGN"
+      "name": "DM_ALIGNED"
     }
   ]
 }

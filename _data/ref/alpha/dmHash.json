@@ -1,94 +1,71 @@
 {
   "info": {
     "group": "DEFOLD SDK", 
-    "description": "Hash functions.", 
+    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/hash.h&gt;</span></p>\n<p>Hash functions.</p>", 
     "namespace": "dmHash", 
-    "brief": "SDK Hash API documentation", 
-    "file": "dmsdk/dlib/hash.h", 
-    "path": "engine/dlib/src/dmsdk/dlib/hash.h", 
-    "name": "Hash"
+    "name": "Hash", 
+    "brief": "<p>SDK Hash API documentation</p>"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">typedef</span> <span class=\"kt\">uint64_t</span> <span class=\"n\">dmhash_t</span>\n</pre></div>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "dmhash_t type definition", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "dmhash_t"
-    }, 
-    {
-      "replaces": "", 
-      "description": "calculate 64-bit hash value from buffer", 
+      "description": "", 
       "parameters": [
         {
-          "doc": "Buffer", 
-          "name": "buffer", 
-          "types": [
-            "const void*"
-          ]
+          "doc": "<p><span class=\"type\">const void*</span> Buffer</p>", 
+          "name": "buffer"
         }, 
         {
-          "doc": "Length of buffer", 
-          "name": "buffer_len", 
-          "types": [
-            "uint32_t"
-          ]
+          "doc": "<p><span class=\"type\">uint32_t</span> Length of buffer</p>", 
+          "name": "buffer_len"
         }
       ], 
       "returnvalues": [
         {
-          "doc": "hash value", 
-          "name": "hash", 
-          "types": [
-            "uint64_t"
-          ]
+          "doc": "<p><span class=\"type\">uint64_t</span> hash value</p>", 
+          "name": "hash"
         }
       ], 
-      "notes": [], 
-      "brief": "calculate 64-bit hash value from buffer", 
+      "brief": "<p>calculate 64-bit hash value from buffer</p>", 
       "examples": "", 
       "members": [], 
       "error": "", 
-      "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmHashBuffer64"
     }, 
     {
       "replaces": "", 
-      "description": "calculate 64-bit hash value from string", 
+      "description": "", 
       "parameters": [
         {
-          "doc": "Null terminated string", 
-          "name": "string", 
-          "types": [
-            "const char*"
-          ]
+          "doc": "<p><span class=\"type\">const char*</span> Null terminated string</p>", 
+          "name": "string"
         }
       ], 
       "returnvalues": [
         {
-          "doc": "hash value", 
-          "name": "hash", 
-          "types": [
-            "uint64_t"
-          ]
+          "doc": "<p><span class=\"type\">uint64_t</span> hash value</p>", 
+          "name": "hash"
         }
       ], 
-      "notes": [], 
-      "brief": "calculate 64-bit hash value from string", 
+      "brief": "<p>calculate 64-bit hash value from string</p>", 
       "examples": "", 
       "members": [], 
       "error": "", 
-      "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmHashString64"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">typedef</span> <span class=\"kt\">uint64_t</span> <span class=\"n\">dmhash_t</span>\n</pre></div>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>dmhash_t type definition</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "TYPEDEF", 
+      "name": "dmhash_t"
     }
   ]
 }
