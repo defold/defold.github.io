@@ -8,7 +8,7 @@ type: press
 
 _The Defold Foundation welcomes GameDistribution as a corporate partner. The Defold Foundation will work together with GameDistribution to offer their publishing services to Defold developers_
 
-STOCKHOLM, SWEDEN - Dec. 15, 2020 - The Defold Foundation today announced that GameDistribution joins the foundation as a corporate partner. The Defold Foundation will work together with Game Distribution to offer their publishing services to Defold developers.
+STOCKHOLM, SWEDEN - Dec. 15, 2020 - The Defold Foundation today announced that GameDistribution joins the foundation as a corporate partner. The Defold Foundation will work together with GameDistribution to offer their publishing services to Defold developers.
 
 “We are very happy to welcome GameDistribution as a Defold Foundation corporate partner. In the past year Defold has seen a steady increase in popularity among web game developers and thanks to the partnership with GameDistribution we are now able to offer a great way for our developers to increase the reach and revenue of their web games,” said Defold Product Owner Björn Ritzl.
 
