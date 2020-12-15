@@ -8,9 +8,7 @@ type: press
 
 We recently hosted a game jam as part of [the grant we received from Grant for the Web](https://defold.com/2020/06/09/Defold-is-awarded-a-grant-from-Grant-for-the-Web/). The game jam was [hosted on itch.io](https://itch.io/jam/the-web-monetization-challenge-2020) and ran for the entire month of November.
 
-The goal of the game jam was to create a game which uses Web Monetization in interesting ways and incorporates the theme "Secrets" into the game design. You can read more about the game jam here:
-
-https://defold.com/web-monetization-challenge-2020/
+The goal of the game jam was to create a game which uses Web Monetization in interesting ways and incorporates the theme "Secrets" into the game design. You can [read more about the game jam here](https://defold.com/web-monetization-challenge-2020/).
 
 Our great judges concluded their work playing and rating all of the submissions this weekend and the top 10 positions were announced today:
 
