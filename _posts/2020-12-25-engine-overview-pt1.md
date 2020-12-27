@@ -44,7 +44,7 @@ For the base hash function, we use MurmurHash2A which is very small, and works v
 We use it to hash short strings and file paths. It's also used to generate unique ID's for game objects when they're spawned.
 We store the hash state (a `uint32_t`) for later use, which allows us to incrementally hash more data.
 
-Hashes can also stored in the save games, which is one reason we haven't updated the hash function to any newer version.
+Hashes are also stored in the save games, which is one reason we haven't updated the hash function to any newer version.
 
 #### C++ containers
 
@@ -59,8 +59,7 @@ They are not "modern C++", and they're implemented to support POD types.
 
 #### Backends
 
-We've supported OpenGL for quite some time, but we've recently added support for Vulkan. This transition was fairly straight forward, as we already had our own
-graphics api, with an OpenGL backend. Our graphics api is currently geared towards how OpenGL works, but we'll add a more modern api later on to reflect the newer functionalities of the Vulkan backend.
+We've supported OpenGL for quite some time, but we've recently added support for Vulkan. This transition was fairly straight forward, as we already had our own graphics api, with an OpenGL backend. Our graphics api is currently geared towards how OpenGL works, but we'll add a more modern api later on to reflect the newer functionalities of the Vulkan backend.
 
 #### Rendering
 
@@ -86,7 +85,7 @@ Supported formats are Wav and Ogg. Depending on platform, the backends are OpenA
 
 ### Input
 
-Our input is split into two libraries: Hid and Input.
+Our input is split into two libraries: HID and Input.
 HID is the hardware abstraction, and Input is the high level processing.
 
 ### Physics
@@ -100,9 +99,9 @@ The physics is currently updated on the main thread, and this is also something 
 
 Extensions are implementations of a certain api in the engine. In this case we refer to implementations that hook into the life cycle of the app.
 These are the current functions available: AppInitialize/Initialize/Update/OnEvent/Finalize/AppFinalize
-Using these functions, it's easy to add new functionality to the engine, using wither C++, Objective-C or Java.
+Using these functions, it's easy to add new functionality to the engine, using either C++, Objective-C or Java.
 
-We are continuousely working on moving parts of the engine into extensions. This allows for better decoupling, removing parts a certain game doesn't need, slimming down the executable size.
+We are continuously working on moving parts of the engine into extensions. This allows for better decoupling, removing parts a certain game doesn't need, slimming down the executable size.
 It also adds the possibility for our users to help out updating the extension, and finding/fixing bugs.
 
 In the future, we'll support more api's to hook into, e.g. resources, components etc.
