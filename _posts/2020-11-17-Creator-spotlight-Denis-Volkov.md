@@ -13,7 +13,7 @@ In this Defold Creator Spotlight we invited Denis Volkov to tell us a little bit
 #### What is your name?
 Denis Volkov.
 
-![Zoo Economy world map](/images/posts/developer-spotlight-denis-volkov/denis-volkov.png)
+![Photo of Denis Volkov](/images/posts/developer-spotlight-denis-volkov/denis-volkov.png)
 
 #### What is your background?
 I'm 26. I live in Russia and right now I am mostly working on games and work part time on sport events and as a teacher. I have a technical background and from the age 15 or 16 I've wanted to make games. Over the years I experimented with UE 3 UDK, UE 4 and a little bit with Unity. One of the project from that time is now on the 'shelf' waiting for better times and money. I transitioned to Defold to make smaller but finished games :)
