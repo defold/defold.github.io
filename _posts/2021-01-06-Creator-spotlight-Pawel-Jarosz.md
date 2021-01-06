@@ -36,9 +36,8 @@ The community. Warm, patient, helpful. The Defold team is among us always and th
 The Editor itself is also very tidy and I like the workflow in Defold - a smooth and fast transition between writing a line of code and actually testing it on a live hardware.
 
 
-#### How do you recommend developers that are new to Defold to get started with Defold?
+#### What is your recommendation for developers that are new to Defold?
 In my opinion there is no better way than following any of the tutorials for beginners - I did that and got a grasp really quickly. After feeling more confident with the basic structure of the Editor and core components of Defold engine I recommend to make a very simple game and see on the way what is needed; be it some GUI manipulation for displaying score, passing this score via a message and so on. There will always be something new to learn, but with the help of the Defold documentation and community, you will surely manage to complete it!
-
 
 ![](/images/posts/developer-spotlight-pawel-jarosz/cdp_witcher_gate_bg.jpg)
 
