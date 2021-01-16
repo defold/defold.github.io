@@ -17,7 +17,7 @@
 				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Platinum Partners</h5>
 				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 2rem; padding: 0px;">
 					{%- for partner in platinum -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="55px"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="55" alt="{{ partner.name }} logo"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
@@ -33,7 +33,7 @@
 				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Gold Partners</h5>
 				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); grid-gap: 1.5rem; padding: 0px;">
 					{%- for partner in gold -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="44px"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="44" alt="{{ partner.name }} logo"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
@@ -49,7 +49,7 @@
 				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Silver Partners</h5>
 				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); grid-gap: 1rem; padding: 0px;">
 					{%- for partner in silver -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="44px"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="44" alt="{{ partner.name }} logo"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
@@ -65,7 +65,7 @@
 				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Bronze Partners</h5>
 				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); grid-gap: 0.5rem; padding: 0px;">
 					{%- for partner in bronze -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="33px"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="33" alt="{{ partner.name }} logo"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
@@ -81,7 +81,7 @@
 				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Special Partners</h5>
 				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); grid-gap: 0.5rem; padding: 0px;">
 					{%- for partner in special -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="44px"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="44" alt="{{ partner.name }} logo"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
@@ -97,7 +97,7 @@
 				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Friends of Defold</h5>
 				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); grid-gap: 0.5rem; padding: 0px;">
 					{%- for partner in friends -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="33px"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" height="33" alt="{{ partner.name }} logo"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
