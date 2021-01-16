@@ -28,22 +28,20 @@ Apart from the properties *Id*, *Position* and *Rotation* the following componen
 *Material*
 : The material to use for rendering the mesh.
 
-*texture0*
-: Set this to texture to use for the mesh.
-
 *Vertices*
 : A buffer file describing the mesh data per stream.
 
+*Primitive Type*
+: Lines, Triangles or Triangle Strip.
 
-	*Primitive Type*
-	: Lines, Triangles or Triangle Strip.
+*Position Stream*
+: This property should be the name of the *position* stream. The stream is automatically provided as input to the vertex shader.
 
-	*Position Stream*
-	: This property should be the name of the *position* stream. The stream is automatically provided as input to the vertex shader.
+*Normal Stream*
+: This property should be the name of the *normal* stream. The stream is automatically provided as input to the vertex shader.
 
-	*Normal Stream*
-	: This property should be the name of the *normal* stream. The stream is automatically provided as input to the vertex shader.
-
+*tex0*
+: Set this to texture to use for the mesh.
 
 ## Editor manipulation
 
