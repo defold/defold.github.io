@@ -45,6 +45,8 @@ local color = gui.get_color(node)
 
 All game objects, and some component types have properties that can be read and manipulated in runtime. Read these values with [`go.get()`](/ref/go#go.get) and write them with [`go.set()`](/ref/go#go.set). Depending on the property value type, you can animate the values with [`go.animate()`](/ref/go#go.animate). A small set of the properties are read only.
 
+If the component has a material, the material properties can also be set for the particula component.
+
 `get`
 : Can be read with [`go.get()`](/ref/go#go.get).
 
@@ -99,6 +101,15 @@ Legacy functions for reading and writing game object properties also exist. They
 | *texture0* | The texture path hash of the model. | `hash` | `get`|
 | *cursor*  | Position (between 0--1) of playback cursor. | `number`   | `get+set` |
 | *playback_rate* | The playback rate of the animation. A multiplier to the animation playback rate. | `number` | `get+set` |
+| *skin*  | The skin of the model | `hash`   | `get+set` |
+
+*MESH COMPONENT PROPERTIES*
+
+| property   | description                            | type            |                  |
+| ---------- | -------------------------------------- | --------------- | ---------------- |
+| *vertices* | The vertices of the mesh. | `buffer` | `get+set`|
+| *material* | The material path hash of the mesh. | `hash` | `get+set`|
+| *texture0* | The texture path hash of the mesh. | `hash` | `get+set`|
 
 *LABEL COMPONENT PROPERTIES*
 
@@ -109,6 +120,14 @@ Legacy functions for reading and writing game object properties also exist. They
 | *outline* | The outline color of the label. | `vector4` | `get+set` |
 | *shadow* | The shadow color of the label. | `vector4` | `get+set` |
 | *size* | The size of the label. The size will constrain the text if line break is enabled. | `vector3` | `get+set` |
+
+*SOUND COMPONENT PROPERTIES*
+
+| property   | description                            | type            |                  |
+| ---------- | -------------------------------------- | --------------- | ---------------- |
+| *speed*    | The speed at which the sound is played | `number` | `get+set` |
+| *pan*      | The panning between left and right channels | `number` | `get+set`|
+| *gain*     | The sound gain | `number` | `get+set`|
 
 ## GUI node properties
 
