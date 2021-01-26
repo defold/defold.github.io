@@ -3,6 +3,7 @@ layout: post
 title:  Shaders for Beginners
 excerpt: In this guest post we invited Pawel Jarosz, developer of Witchcrafter - Empire Legends, to share his experience learning shader programming.
 author: Paweł Jarosz
+tags: ["shaders", "code", "tutorial"]
 ---
 
 In this guest post we invited Paweł Jarosz, developer of [Witchcrafter: Empire Legends](https://store.steampowered.com/app/1374370/Witchcrafter_Empire_Legends/), to share his experience learning shader programming in general and for Defold in particular.

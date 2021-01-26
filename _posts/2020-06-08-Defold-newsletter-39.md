@@ -3,6 +3,7 @@ layout: post
 title:  Defold Newsletter 39
 excerpt: Things are still very busy since the launch of the Defold Foundation and the source code for Defold was made available. This newsletter tries to sum up some of the great things that have happened since last time. Read on to learn about the Defold Foundation's first corporate partner, some great new games in the making, two very useful extensions and of course the latest Defold beta!
 author: Björn Ritzl
+tags: ["newsletter"]
 ---
 
 Hello, Defolder! 👋

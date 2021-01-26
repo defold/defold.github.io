@@ -4,6 +4,7 @@ title:  The Defold Foundation is awarded a grant from Grant for the Web
 excerpt: The Defold Foundation is awarded a grant from Grant for the Web to bring the Web Monetization standard to web games.
 author: Björn Ritzl
 type: press
+tags: ["webmonetization", "news", "partner"]
 ---
 
 _The Defold Foundation is awarded a grant from Grant for the Web to bring the Web Monetization standard to web games._

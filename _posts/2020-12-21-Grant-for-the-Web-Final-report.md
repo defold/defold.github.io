@@ -3,6 +3,7 @@ layout: post
 title:  Grant for the Web final report
 excerpt: With the Web Monetization Challenge (game jam) concluded and the winners announced we are now proud to say that the entire Defold Web Monetization project is officially completed!
 author: Björn Ritzl
+tags: ["webmonetization"]
 ---
 
 ## Intro

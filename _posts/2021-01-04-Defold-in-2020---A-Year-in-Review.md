@@ -3,7 +3,7 @@ layout: post
 title:  Defold in 2020 - A Year in Review
 excerpt: Last year was one of the most ground breaking in the history of Defold. Here is a look a some of the major milestones of 2020.
 author: Björn Ritzl
-type: blog
+tags: ["news"]
 ---
 
 Last year was one of the most ground breaking in the history of Defold. Here is a look a some of the major milestones of 2020.

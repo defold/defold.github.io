@@ -3,7 +3,7 @@ layout: post
 title:  The Defold engine code style
 excerpt: Since we opened up our source code to contributors, we also get some questions from time to time regarding our choice of coding conventions. These are some of our experiences over the years, and what has led us to our way of developing today.
 author: Mathias Westerdahl
-type: blog
+tags: ["engine", "code"]
 ---
 
 Since we opened up our source code to contributors, we also get some questions from time to time regarding our choice of coding conventions. We recently updated our [code guidelines](https://github.com/defold/defold/blob/dev/README_ENGINE.md#code) to be a bit more specific. But we also feel that it might be good to add some context to how we settled on our particular approach.

@@ -3,6 +3,7 @@ layout: post
 title:  Defold Newsletter 43
 excerpt: This week we have some new games to share, a community driven game jam for you to join, an interview with one of our community members and finally also the latest Defold release notes.
 author: Björn Ritzl
+tags: ["newsletter"]
 ---
 
 Hello, Defolder! 👋

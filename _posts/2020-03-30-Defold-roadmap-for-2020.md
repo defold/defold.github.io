@@ -3,6 +3,7 @@ layout: post
 title:  Defold roadmap for 2020
 excerpt: This roadmap outlines our long-term plans for Defold.
 author: Björn Ritzl
+tags: ["roadmap"]
 ---
 
 This roadmap outlines our long-term plans for Defold. Keep in mind that ehe list contains our **current** plans for Defold and while we do our best to plan for and work towards long-term goals the priorities may change over time and what we end up with at the end of the year may not be exactly what we had planned at the beginning of the year.

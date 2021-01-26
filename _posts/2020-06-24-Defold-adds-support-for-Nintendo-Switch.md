@@ -3,7 +3,7 @@ layout: post
 title:  Defold adds support for Nintendo Switch
 excerpt: We are happy to announce the immediate availability of Nintendo Switch support for the Defold game engine. Nintendo Switch is the first console supported by Defold. Approved Nintendo Switch developers can request access to Defold through the Nintendo Developer Portal. Access will be granted to Defold community members with Nintendo Switch included in their membership tier. Source code access is available as a separate membership tier.
 author: Björn Ritzl
-type: press
+tags: ["news", "nintendo"]
 ---
 
 _The Defold Foundation is pleased to announce Nintendo Switch as a new supported platform._

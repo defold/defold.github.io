@@ -3,6 +3,7 @@ layout: post
 title:  Defold Newsletter 41
 excerpt: A lot of things have happened since the last newsletter was sent only a week ago. We have an extension update, some project milestones and goals, Nintendo Switch support and an online conference for HTML5 developers.
 author: Björn Ritzl
+tags: ["newsletter"]
 ---
 
 Hello, Defolder! 👋

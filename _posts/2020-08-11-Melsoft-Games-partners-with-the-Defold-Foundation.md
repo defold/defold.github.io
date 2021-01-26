@@ -3,7 +3,7 @@ layout: post
 title:  Melsoft Games partners with the Defold Foundation
 excerpt: The Defold Foundation welcomes Melsoft Games as a corporate partner. The Defold Foundation will work together with Melsoft Games to accelerate development of new features in the Defold engine.
 author: Björn Ritzl
-type: press
+tags: ["news", "partner"]
 ---
 
 _The Defold Foundation welcomes Melsoft Games as a corporate partner. The Defold Foundation will work together with Melsoft Games to accelerate development of new features in the Defold engine._

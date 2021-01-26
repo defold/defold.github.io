@@ -3,6 +3,7 @@ layout: post
 title:  Creator Spotlight - Niclas
 excerpt: In this second edition of the Creator Spotlight we invited Niclas (aka Totebo), the creator of Juump!, Rainbow Pop, Monkey Kick and several others, to tell us a little bit about himself and his current project.
 author: Björn Ritzl
+tags: ["creator spotlight", "interview"]
 ---
 
 In the Creator Spotlight posts we invite Defold users to present themselves and share a bit of their background, their work and things that inspire them. It is an excellent opportunity for the community to come together, to recognise achievements and to share some of the great work done by Defold users.

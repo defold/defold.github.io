@@ -3,6 +3,7 @@ layout: post
 title:  Defold Newsletter 38
 excerpt: What a week we have had! In case you missed it we're happy to let you know that last week we announced that the Defold source code was made available free of charge and that Defold was transferred to the Defold Foundation. We've seen a tremendous interest in Defold since the announcement and we are happy to welcome so many new developers. We will share more exciting news later this week and until then we invite you to read this newsletter. We have a new Defold release, some fresh new Defold games and a pretty cool new feature.
 author: Björn Ritzl
+tags: ["newsletter"]
 ---
 
 Hello, Defolder! 👋

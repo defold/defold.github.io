@@ -3,7 +3,7 @@ layout: post
 title:  Defold in 2019 - A Year in Review
 excerpt: Another year has gone by, but before we put the old year completely behind us we should look at some of the great accomplishments of 2019
 author: Björn Ritzl
-type: blog
+tags: ["news"]
 ---
 
 Another year has gone by, but before we put the old year completely behind us we should look at some of the great accomplishments of 2019.

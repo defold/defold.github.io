@@ -10,10 +10,9 @@ after: [donors_and_partners.html]
 [⇠ Back to Press room](/press)
 
 ### All news
-{%- for post in site.posts -%}
-{%- if post.type == "press" -%}
+{% assign posts = site.posts | where: "tags", "news" %}
+{%- for post in posts -%}
 {%- include post_preview.html post=post -%}
-{%- endif -%}
 {%- endfor -%}
 
 [⇠ Back to Press room](/press)

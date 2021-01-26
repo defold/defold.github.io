@@ -3,6 +3,7 @@ layout: post
 title:  Defold Newsletter 48
 excerpt: Here's another packed newsletter with games, exciting news and the latest release notes.
 author: Björn Ritzl
+tags: ["newsletter"]
 ---
 
 ## Games

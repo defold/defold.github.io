@@ -3,7 +3,7 @@ layout: post
 title:  King shares the Defold game engine source code and invites collaborators and partners
 excerpt: We are happy to announce that as of May 2020 Defold, the ultimate game engine for web and mobile, is available as a free to use and developer-friendly project!
 author: Sara Cederberg
-type: press
+tags: ["news", "open-source"]
 ---
 
 _Mobile games company King today announced that the free to use Defold game engine is sharing all source code and inviting collaborators and partners. As part of this process King has transferred Defold to a software foundation; the Defold Foundation._

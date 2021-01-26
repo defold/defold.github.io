@@ -3,6 +3,7 @@ layout: post
 title:  Defold Newsletter 40
 excerpt: Things have slowed down somewhat since the very busy launch of the Defold Foundation but we still have some exciting things to share.
 author: Björn Ritzl
+tags: ["newsletter"]
 ---
 
 Hello, Defolder! 👋
