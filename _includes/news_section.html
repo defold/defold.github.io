@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="columns eight">
 		<h3>Defold in the News</h3>
-		{% assign posts = site.posts | where: "type", "press" %}
+		{% assign posts = site.posts | where: "tags", "news" %}
 		{%- for post in posts limit: 3 -%}
 		{%- include post_preview_small.html post=post -%}
 		{%- endfor -%}
