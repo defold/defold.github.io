@@ -39,7 +39,7 @@ end
 ```
 
 <div class='important' markdown='1'>
-**`MOUSE_BUTTON_LEFT` (or `MOUSE_BUTTON_1`) input actions are sent for single touch inputs as well**.
+`MOUSE_BUTTON_LEFT` (or `MOUSE_BUTTON_1`) input actions are sent for single touch inputs as well.
 </div>
 
 ## Mouse wheel
