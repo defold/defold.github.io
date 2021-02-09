@@ -1470,11 +1470,18 @@
           "types": [
             "boolean"
           ]
+        }, 
+        {
+          "doc": "one of the gui.RESULT_* codes if unsuccessful", 
+          "name": "code", 
+          "types": [
+            "number"
+          ]
         }
       ], 
       "notes": [], 
       "brief": "create new texture", 
-      "examples": "How to create a texture and apply it to a new box node:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n     <span class=\"kd\">local</span> <span class=\"n\">w</span> <span class=\"o\">=</span> <span class=\"mi\">200</span>\n     <span class=\"kd\">local</span> <span class=\"n\">h</span> <span class=\"o\">=</span> <span class=\"mi\">300</span>\n\n     <span class=\"c1\">-- A nice orange. String with the RGB values.</span>\n     <span class=\"kd\">local</span> <span class=\"n\">orange</span> <span class=\"o\">=</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0xff</span><span class=\"p\">)</span> <span class=\"o\">..</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0x80</span><span class=\"p\">)</span> <span class=\"o\">..</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0x10</span><span class=\"p\">)</span>\n\n     <span class=\"c1\">-- Create the texture. Repeat the color string for each pixel.</span>\n     <span class=\"k\">if</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">new_texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">orange_tx&quot;</span><span class=\"p\">,</span> <span class=\"n\">w</span><span class=\"p\">,</span> <span class=\"n\">h</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">rgb&quot;</span><span class=\"p\">,</span> <span class=\"nb\">string.rep</span><span class=\"p\">(</span><span class=\"n\">orange</span><span class=\"p\">,</span> <span class=\"n\">w</span> <span class=\"o\">*</span> <span class=\"n\">h</span><span class=\"p\">))</span> <span class=\"k\">then</span>\n         <span class=\"c1\">-- Create a box node and apply the texture to it.</span>\n         <span class=\"kd\">local</span> <span class=\"n\">n</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">new_box_node</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"n\">w</span><span class=\"p\">,</span> <span class=\"n\">h</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">))</span>\n         <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_texture</span><span class=\"p\">(</span><span class=\"n\">n</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">orange_tx&quot;</span><span class=\"p\">)</span>\n     <span class=\"k\">else</span>\n         <span class=\"c1\">-- Could not create texture...</span>\n         <span class=\"o\">...</span>\n     <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "examples": "How to create a texture and apply it to a new box node:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n     <span class=\"kd\">local</span> <span class=\"n\">w</span> <span class=\"o\">=</span> <span class=\"mi\">200</span>\n     <span class=\"kd\">local</span> <span class=\"n\">h</span> <span class=\"o\">=</span> <span class=\"mi\">300</span>\n\n     <span class=\"c1\">-- A nice orange. String with the RGB values.</span>\n     <span class=\"kd\">local</span> <span class=\"n\">orange</span> <span class=\"o\">=</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0xff</span><span class=\"p\">)</span> <span class=\"o\">..</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0x80</span><span class=\"p\">)</span> <span class=\"o\">..</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0x10</span><span class=\"p\">)</span>\n\n     <span class=\"c1\">-- Create the texture. Repeat the color string for each pixel.</span>\n     <span class=\"kd\">local</span> <span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"n\">reason</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">new_texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">orange_tx&quot;</span><span class=\"p\">,</span> <span class=\"n\">w</span><span class=\"p\">,</span> <span class=\"n\">h</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">rgb&quot;</span><span class=\"p\">,</span> <span class=\"nb\">string.rep</span><span class=\"p\">(</span><span class=\"n\">orange</span><span class=\"p\">,</span> <span class=\"n\">w</span> <span class=\"o\">*</span> <span class=\"n\">h</span><span class=\"p\">))</span>\n     <span class=\"k\">if</span> <span class=\"n\">ok</span> <span class=\"k\">then</span>\n         <span class=\"c1\">-- Create a box node and apply the texture to it.</span>\n         <span class=\"kd\">local</span> <span class=\"n\">n</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">new_box_node</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"n\">w</span><span class=\"p\">,</span> <span class=\"n\">h</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">))</span>\n         <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_texture</span><span class=\"p\">(</span><span class=\"n\">n</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">orange_tx&quot;</span><span class=\"p\">)</span>\n     <span class=\"k\">else</span>\n         <span class=\"c1\">-- Could not create texture for some reason...</span>\n         <span class=\"k\">if</span> <span class=\"n\">reason</span> <span class=\"o\">==</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">RESULT_TEXTURE_ALREADY_EXISTS</span> <span class=\"k\">then</span>\n             <span class=\"o\">...</span>\n         <span class=\"k\">else</span>\n             <span class=\"o\">...</span>\n         <span class=\"k\">end</span>\n     <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "tparams": [], 
@@ -1715,7 +1722,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Clipping mode defines how the node will clipping it's children nodes", 
+      "description": "Clipping mode defines how the node will clip it's children nodes", 
       "parameters": [
         {
           "doc": "node from which to get the clipping mode", 
@@ -1745,7 +1752,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Clipping mode defines how the node will clipping it's children nodes", 
+      "description": "Clipping mode defines how the node will clip it's children nodes", 
       "parameters": [
         {
           "doc": "node to set clipping mode for", 
@@ -4849,6 +4856,48 @@
       "tparams": [], 
       "type": "VARIABLE", 
       "name": "gui.SIZE_MODE_AUTO"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The texture id already exists when trying to use gui.new_texture().", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "texture already exists", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "gui.RESULT_TEXTURE_ALREADY_EXISTS"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The system is out of resources, for instance when trying to create a new\ntexture using gui.new_texture().", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "out of resource", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "gui.RESULT_OUT_OF_RESOURCES"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The provided data is not in the expected format or is in some other way\nincorrect, for instance the image data provided to gui.new_texture().", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "data error", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "gui.RESULT_DATA_ERROR"
     }, 
     {
       "replaces": "", 
