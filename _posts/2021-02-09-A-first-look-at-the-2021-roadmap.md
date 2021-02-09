@@ -41,6 +41,9 @@ Yes, we know what you think "PS4! Why not PS5?". We will start with PS4 for two 
 ### Xbox
 We would like to also add support for Xbox in 2021, but if that happens it will likely not be until late this year. If you have a game you want to publish on Xbox you can increase the priority of this task by reaching out to your Xbox representative and request Defold support.
 
+### Editor on Linux
+The Defold editor runs well on Linux but there are a few pain points and problems related to Linux distributions, window managers and graphics drivers. This year we plan to invest time in order to fix at least some of these issues.
+
 ---
 
 ## Extensions
@@ -88,6 +91,9 @@ The Mesh component and font rendered will both receive a significant performance
 ### Reduced draw calls for sprites
 We plan to explore a way to batch draw calls for sprites with different tints by writing additional data per vertex. This becomes a trade-off between draw calls and the amount of vertex data required per sprite but should in most cases result in a performance increase.
 
+### Editor performance on large projects
+We will investigate and come up with solutions to improve editor performance on large projects.
+
 ---
 
 ## New features
@@ -101,8 +107,11 @@ With that said we still plan to add a number of new features to Defold this year
 * 9-slice support for sprites
 * Run-time modification of collision object groups and masks
 * Use Mesh data as shapes for physics collisions
+* Set initial enabled or disabled state on game objects and gui nodes from the editor
 
 ---
 
-## Summary
+## Summary and final thoughts
+As we mentioned at the beginning of this post working on a cross platform game engine means working towards a constantly evolving goal where you are never quite finished and you often have to revise your plans. What this means from a financial and resource allocation standpoint is that we must spend a majority of our effort on the Defold engine and on platform and third-party integrations. Focus a lot of resources on the engine obviously comes at a cost, and in this case it means that we aren't able to invest as much on the Defold editor as we would like. As you can see from the roadmap we still have a few improvements planned for the editor to address some of the most highly requested issues.
+
 That's it for now. We hope you agree with the direction we are taking with Defold. If not then please let us know!
