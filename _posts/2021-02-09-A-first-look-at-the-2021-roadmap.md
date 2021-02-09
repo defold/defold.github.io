@@ -99,7 +99,7 @@ We will investigate and come up with solutions to improve editor performance on 
 ## New features
 Another very important design principle of Defold is to avoid breaking changes at all costs. We do not want our developers to worry about breaking changes every time they update to a new version of Defold (we release a new version every four weeks). As a developer you can rest assured that the project you worked on a year ago will still work with no (or very small) changes using the latest version of Defold.
 
-This design principle of no breaking changes combined with our focus on low memory usage and small engine size results in an engine core with a feature set that is evolving at a much more moderate rate compared to other engines which seem to add new features without any regard to engine size or the stability of the APIs. We believe it is better to provide stable and efficient low level building blocks and let the end user build their game specific solutions using these low level blocks.
+This means that we carefully design all of our APIs to be stable and long lasting. Once something has been added to our public APIs it becomes a permanent part of the Defold APIs and it becomes a commitment from us to make sure it keeps working for many many years. We also favour low level APIs that can be used to solve many different problems instead of highly specialised APIs. This helps us keep the set of available APIs small while also playing into our focus on low memory usage and a small engine size.
 
 With that said we still plan to add a number of new features to Defold this year:
 
@@ -114,4 +114,4 @@ With that said we still plan to add a number of new features to Defold this year
 ## Summary and final thoughts
 As we mentioned at the beginning of this post working on a cross platform game engine means working towards a constantly evolving goal where you are never quite finished and you often have to revise your plans. What this means from a financial and resource allocation standpoint is that we must spend a majority of our effort on the Defold engine and on platform and third-party integrations. Focus a lot of resources on the engine obviously comes at a cost, and in this case it means that we aren't able to invest as much on the Defold editor as we would like. As you can see from the roadmap we still have a few improvements planned for the editor to address some of the most highly requested issues.
 
-That's it for now. We hope you agree with the direction we are taking with Defold. If not then please let us know!
+That's it for now. We hope you agree with the direction we are taking with Defold. If not then please [let us know us know on the Defold forum](https://forum.defold.com/)!
