@@ -34,7 +34,7 @@ On iOS we will upgrade to iOS 15 when it is released (usually announced at WWDC 
 For both iOS and Android we'd also like to look into controller/gamepad support, but that is more of a stretch goal for the year than a hard promise.
 
 ### PlayStation 4
-Our first foray into the world of consoles was with the release of Nintendo Switch support in June of 2020. The investment we did on Nintendo Switch was rather significant but the return was great as Defold has become even more attractive as a cross platform engine. We also saw the release of a first batch of games made with Defold on Nintendo Switch. This year we plan to expand our console support to also include support for PlayStation 4.
+Our first foray into the world of consoles was with [the release of Nintendo Switch support in June of 2020](https://defold.com/2020/06/24/Defold-adds-support-for-Nintendo-Switch/). The investment we did on Nintendo Switch was rather significant but the return was great as Defold has become even more attractive as a cross platform engine. We also saw the release of a first batch of games made with Defold on Nintendo Switch. This year we plan to expand our console support to also include support for PlayStation 4.
 
 Yes, we know what you think "PS4! Why not PS5?". We will start with PS4 for two reasons: 1) The PS4 will be around for a few more years. 2) Access to PS5 is currently restricted to select middleware and tools providers. Once we have PS4 support in Defold it is easier to become an approved tools provider for PS5.
 
@@ -47,7 +47,7 @@ The Defold editor runs well on Linux but there are a few pain points and problem
 ---
 
 ## Extensions
-The ability to extend the game engine with new features using native extensions has been an amazing enabler for developers around the world. Developers can use native code in their games to get access to platform integrations and third-party SDKs. Extensions can easily be shared with others as they require no additional setup of build tools or SDKs. Most extensions can be found in the Defold [Asset Portal](/assets). Adding support for Google Play Game Services, Steamworks or FMOD to your project is as easy as adding the URL to a packaged version of the extension (usually hosted on GitHub) to the *game.project* file and then rebuilding your project. No additional setup is required and the functionality becomes immediately available through a Lua API.
+The ability to [extend the game engine with new features using native extensions](/manuals/extensions/) has been an amazing enabler for developers around the world. Developers can use native code in their games to get access to platform integrations and third-party SDKs. Extensions can easily be shared with others as they require no additional setup of build tools or SDKs. Most extensions can be found in the Defold [Asset Portal](/assets). Adding support for Google Play Game Services, Steamworks or FMOD to your project is as easy as adding the URL to a packaged version of the extension (usually hosted on GitHub) to the *game.project* file and then rebuilding your project. No additional setup is required and the functionality becomes immediately available through a Lua API.
 
 This year we plan to continue building on the success of the extension system and add more features and new officially supported extensions.
 
@@ -64,10 +64,10 @@ Spine is currently tightly integrated with the engine and editor and is in its c
 
 In order to move Spine and Box2D/Bullet to extension and enable faster updates and community contributions we will make a number of significant improvements to the extension system:
 
-* **Component resource API** - Extension will be able to register new resource types and hook into our resource pipeline. Example: the Spine scene resource tying together a Spine JSON file with a Defold atlas.
-* **Component type API** - Extension will be able to register component types and associate them with resource types. Example: The Spine model component which uses the Spine scene resource.
-* **Game Object API** - Extension will be able to create and manipulate game objects (the basic building block of any Defold game). Example: The Spine bones of a model are represented as game objects to which you can attach other objects.
-* **Graphics API** - Extension will be able to create vertex/index buffers and register renderable objects to our renderer. Example: The Spine model component generates the required data to draw a frame of a Spine model animation.
+* **Component resource API** - Extensions will be able to register new resource types and hook into our resource pipeline. Example: the Spine scene resource tying together a Spine JSON file with a Defold atlas.
+* **Component type API** - Extensions will be able to register component types and associate them with resource types. Example: The Spine model component which uses the Spine scene resource.
+* **Game Object API** - Extensions will be able to create and manipulate game objects (the basic building block of any Defold game). Example: The Spine bones of a model are represented as game objects to which you can attach other objects.
+* **Graphics API** - Extensions will be able to create vertex/index buffers and register renderable objects to our renderer. Example: The Spine model component generates the required data to draw a frame of a Spine model animation.
 
 Once we have these extension APIs in place we'll be able to move Spine and Box2D/Bullet to extensions. Not only will this allow the community to contribute updates and improvements but it will open the field for other tightly integrated yet flexible and easily modifiable extension.
 
