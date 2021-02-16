@@ -17,7 +17,7 @@ The Defold Foundation will work in parallel on the engine integration of the Riv
 "We are so excited to bring Rive to the gaming world through our partnership with Defold! Their product is exceptional and shares astonishingly similar principles with Rive: the best tools should be accessible to everybody, simple to use with no setup, and truly cross-platform", said Rive co-founder Guido Rosso.
 
 ##### About Rive
-Rive is a design tool that allows you to create and ship beautiful animations to multiple platforms. Create motion graphics that respond to different states and user inputs with Rive's collaborative editor. Then load those animations into apps, games, and websites with Rive's open-source runtimes.
+[Rive](https://rive.app/) is a design tool that allows you to create and ship beautiful animations to multiple platforms. Create motion graphics that respond to different states and user inputs with Rive's collaborative editor. Then load those animations into apps, games, and websites with Rive's open-source runtimes.
 
 ##### About Defold Foundation
 The Defold Foundation is the owner of the free to use game engine Defold. The foundation works together with industry partners to provide free and open software and services to game developers across the globe. The foundation was created in May 2020 and is registered in Stockholm, Sweden.
