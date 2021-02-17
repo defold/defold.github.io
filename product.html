@@ -7,180 +7,293 @@ heatmap: true
 background: /images/hero/defold-top-bg-transparent-2.png
 after: [opensource_section.html, learn_section.html, yellow_download_section.html, donors_and_partners.html]
 ---
+
 <div class="row">
 	<div class="columns twelve center">
 		<img src="/images/editor/editor2-screenshots.png"/>
 	</div>
 </div>
 
-<div class="section dark">
-	<div class="container">
-		<div class="row">
-			<div class="column one-third">
-				<img src="/images/icons/ic-64-community-blue.svg" style="margin-top: 2rem; width: 20%;"/>
-				<h4>Animation</h4>
-				<ul class="checkmark">
-					<li>Flipbook animations for sprites, GUI nodes and particles</li>
-					<li>Spine bone animations with full support for blending</li>
-					<li>Keyframe events</li>
-					<li>Inverse kinematics in keyframes and dynamically scriptable</li>
-					<li>All sprite and GUI properties can be animated</li>
-					<li>Predefined or custom easing functions for all property animations</li>
-				</ul>
-
-				<img src="/images/icons/ic-64-ship-blue.svg" style="margin-top: 2rem; width: 20%;"/>
-				<h4>Cross-platform</h4>
-				<ul class="checkmark">
-					<li>One-click deployment to all target platforms (Nintendo Switch, iOS, Android, HTML5, macOS, Windows, Linux) from the same code and content</li>
-					<li>Additional platforms such as Steam and Facebook Instant Games supported via extensions</li>
-					<li>Editor and tools running on Mac OS X (10.7 Lion or later), Windows Vista and later, Linux (Ubuntu LTS and Debian 7 has been verified to work)</li>
-				</ul>
-
-				<img src="/images/icons/ic-64-performance-blue.svg" style="margin-top: 2rem; width: 20%;"/>
-				<h4>Surprisingly lightweight</h4>
-				<ul class="checkmark" style="margin-bottom: 0">
-					<li>Small engine overhead</li>
-				</ul>
-				<table style="width:100%">
-					<tr>
-						<th>PLATFORM</th>
-						<th>SIZE</th>
-					</tr>
-					<tr>
-						<td>Android (32+64 bit)</td>
-						<td>3.3MB</td>
-					</tr>
-					<tr>
-						<td>iOS</td>
-						<td>2.6MB</td>
-					</tr>
-					<tr>
-						<td>HTML5</td>
-						<td>881KB</td>
-					</tr>
-				</table>
-				<ul class="checkmark">
-					<li>Fast build times. All build targets, even HTML5, are completed in seconds</li>
-					<li>Static content dependencies and automatic resource management. Only used assets are included in game builds</li>
-					<li>Sprite packing to atlases</li>
-					<li>Per platform configurable texture compression</li>
-					<li>Dynamic batching in the render pipeline</li>
-					<li>Asynchronous (or synchronous) loading of asset data</li>
-				</ul>
-
-				<h4>Audio</h4>
-				<ul class="checkmark">
-					<li>Ogg and Wav sound support</li>
-					<li>Hierarchy of mixers, fully scriptable</li>
-					<li>Pan and pitch (speed)</li>
-					<li>FMOD and OpenAL 3D as extensions</li>
-				</ul>
-			</div>
-
-
-			<div class="column one-third">
-				<img src="/images/icons/ic-64-2d3d-blue.svg" style="margin-top: 2rem; width: 20%;"/>
-				<h4>2D focused, 3D capable</h4>
-				<ul class="checkmark">
-					<li>Fully scriptable rendering pipeline with low level access</li>
-					<li>Custom materials and shaders</li>
-					<li>OpenGL, Vulkan and Metal</li>
-					<li>Particle effects editor with live preview of emitter and modifier behavior</li>
-					<li>Curve editor for controlling particle parameter changes over particle lifespan</li>
-				</ul>
-				<img src="/images/editor/editor-pfx-small.png" style="width: 100%;"/>
-				<ul class="checkmark">
-					<li>2D and 3D particle effects</li>
-					<li>2D sprites</li>
-					<li>3D models and meshes</li>
-					<li>Spine models</li>
-					<li>Tile editor for building 2D level geometry</li>
-					<li>GUI editor</li>
-					<li>Layered GUI with text, images and pie nodes</li>
-					<li>GUI clipping/stencil masks</li>
-					<li>GUI image nodes support slice-9 texturing</li>
-					<li>Automatic GUI layout and support for orientation changes</li>
-					<li>Bitmap and distance field fonts</li>
-					<li>Truetype, Opentype and BMFont supported</li>
-				</ul>
-
-				<img src="/images/icons/ic-64-feather-blue.svg" style="margin-top: 2rem; width: 20%;"/>
-				<h4>Physics</h4>
-				<ul class="checkmark">
-					<li>2D and 3D physics (Box 2D and Bullet) fully integrated</li>
-					<li>Shape based and ray-cast collision detection</li>
-					<li>Precise collision detection for tilemaps</li>
-					<li>Static, dynamic and kinematic (scriptable) physics objects</li>
-					<li>Robust triggers</li>
-					<li>Joint and motor support</li>
-				</ul>
-
-				<img src="/images/icons/ic-64-lua-blue.svg" style="margin-top: 2rem; width: 20%;"/>
-				<h4>Script with Lua</h4>
-				<ul class="checkmark">
-					<li>Lua language fully integrated for expressing game logic safely and with good performance</li>
-					<li>Engine supports reactive-style Lua scripting for low overhead and great performance</li>
-					<li>Asynchronous communication between game objects</li>
-				</ul>
-			</div>
-
-
-			<div class="column one-third">
-				<img src="/images/icons/ic-64-rocket-blue.svg" style="margin-top: 2rem; width: 20%;"/>
-				<h4>Rapid workflow</h4>
-				<ul class="checkmark">
-					<li>Turn-key software with no dependencies on other programs. No need for Xcode or Android Studio for mobile deployment</li>
-					<li>Hot reloading of updated assets and logic</li>
-				</ul>
-				<img src="/images/animations/hot-reload.gif" style="width: 100%;"/>
-				<ul class="checkmark">
-					<li>Wireless hot reloading, debugging and visual profiling on device</li>
-					<li>Scene editor for assembling and laying out assets and logic</li>
-					<li>Automatic refactoring of assets</li>
-					<li>Prefab construction of game assets with collections and GUI with templates</li>
-					<li>Stand alone build pipeline for custom workflows</li>
-					<li>Headless engine for automated testing</li>
-					<li>Library sharing between projects</li>
-					<li>Asset Portal with reusable components</li>
-					<li>All data in easily merged text files</li>
-				</ul>
-
-				<img src="/images/icons/ic-32-magglass-blue.svg" style="margin-top: 2rem; width: 20%;"/>
-				<h4>Debug & test</h4>
-				<ul class="checkmark">
-					<li>Hot reload with custom Lua hooks for setup and inspection</li>
-					<li>Live on-screen visual profiler</li>
-					<li>Remote web-based profiler with visual frame sampling</li>
-					<li>Lua debugging from within the editor</li>
-					<li>Built-in video capture of game footage</li>
-					<li>Native crash log APIs</li>
-				</ul>
-
-				<img src="/images/icons/icons-learn-export_ic-learn-lego-blue.svg" style="margin-top: 2rem; width: 20%;"/>
-				<h4>Extensions</h4>
-				<ul class="checkmark">
-					<li>Google and Apple push notification APIs</li>
-					<li>Google, Apple, Amazon and Facebook in-app purchases APIs</li>
-					<li>Facebook SDK APIs</li>
-					<li>Google Play Game Services</li>
-					<li>Firebase Analytics</li>
-					<li>HTTP and Lua socket network APIs</li>
-					<li>More extensions in the <a href="/assets">Asset Portal</a></li>
-				</ul>
-			</div>
+<div class="row">
+	<div class="columns twelve">
+		<h3>2D focused, 3D capable</h3>
+		<p>Defold is built from the ground up as a 3D engine with special focus on top-notch tools for 2D game creation. Build your games using a component based system for maximum performance and modularity.</p>
+	</div>
+	<div class="row">
+		<div class="column one-third">
+			<h5>2D component</h5>
+			<ul class="checkmark">
+				<li>2D sprites</li>
+				<li>Spine models</li>
+				<li>Tile map editor for 2D levels</li>
+			</ul>
+		</div>
+		<div class="column one-third">
+			<h5>3D components</h5>
+			<ul class="checkmark">
+				<li>3D models - load models and animations</li>
+				<li>3D mesh - create and modify 3D geometry at runtime</li>
+				<li>Custom materials and shaders - Shaders written in GLSL</li>
+			</ul>
+		</div>
+		<div class="column one-third">
+			<h5>Particle effects</h5>
+			<ul class="checkmark">
+				<li>Particle effects editor with live preview of emitter and modifier behavior</li>
+				<li>Curve editor for controlling particle parameter changes over particle lifespan</li>
+				<li>2D and 3D particle emitters</li>
+			</ul>
 		</div>
 	</div>
 </div>
 
-<br/>
-<br/>
+<div class="row"><div class="columns twelve"><br/><br/></div></div>
 
 <div class="row">
 	<div class="columns six">
-		<img src="/images/editor/image-extensions.png" style="width: 100%;"/>
+		<span class="center"><img src="/images/editor/editor-screenshot-hero2-left.png" class="slideinleft"></img><br/><br/></span>
 	</div>
 	<div class="columns six">
-		<h4>Add Engine Features with Native Extensions</h4>
+		<span class="center"><img src="/images/editor/editor-screenshot-3d-right.png" class="slideinright"></img><br/><br/></span>
+	</div>
+</div>
+<div class="row">
+	<div class="columns twelve">
+		<h3>Animation</h3>
+		<p>Defold has a powerful animation system for visual components and scripts. Use flipbook animations animation for sprites and other 2D components, bone animations for models and property animations for movement, rotation, tweens and other properties.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="column one-third">
+		<h5>Flipbook animations</h5>
+		<ul class="checkmark">
+			<li>Flipbook animations for sprites</li>
+			<li>Flipbook animations for GUI nodes</li>
+			<li>Flipbook animations for particles</li>
+		</ul>
+	</div>
+	<div class="column one-third">
+		<h5>Spine and model animations</h5>
+		<ul class="checkmark">
+			<li>Spine bone and model animations with full support for blending</li>
+			<li>Keyframe events</li>
+			<li>Inverse kinematics in keyframes and dynamically scriptable</li>
+		</ul>
+	</div>
+	<div class="column one-third">
+		<h5>Property animations</h5>
+		<ul class="checkmark">
+			<li>All sprite and GUI properties can be animated</li>
+			<li>Custom script property animations</li>
+			<li>Predefined or custom easing functions for all property animations</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row"><div class="columns twelve"><br/><br/></div></div>
+
+<div class="row">
+	<div class="columns twelve">
+	</div>
+	<div class="row">
+		<div class="columns six">
+			<img src="/images/editor/editor-screenshot-gui-left.png" class="slideinleft" style="max-width: 60vw"></img>
+		</div>
+		<div class="columns six">
+			<h3>Artist friendly</h3>
+			<p>Assemble and layout your game in the artist friendly scene editor. Build levels, player characters, bosses, screens and user interface components all from within the editor.</p>
+			<h5>GUI editor</h5>
+			<ul class="checkmark">
+				<li>Layered GUI with text, images and pie nodes</li>
+				<li>GUI clipping/stencil masks</li>
+				<li>GUI image nodes support slice-9 texturing</li>
+				<li>Automatic GUI layout and support for orientation changes</li>
+				<li>Bitmap and distance field fonts</li>
+			</ul>
+			<h5>Scene editor</h5>
+			<ul class="checkmark">
+				<li>Scene editor for assembling and laying out assets</li>
+				<li>Prefab construction of game assets with collections and GUI with templates</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="row"><div class="columns twelve"><br/><br/></div></div>
+
+<div class="row">
+	<div class="columns twelve">
+		<h3>Advanced physics simulations</h3>
+		<p>Attach collision shapes and physics properties to your objects and have them interact in real time. React to collisions using code to create complex interactions.</p>
+	</div>
+	<div class="row">
+		<div class="column one-third">
+			<ul class="checkmark">
+				<li>2D and 3D physics (Box 2D and Bullet) fully integrated</li>
+				<li>Static, dynamic and kinematic (scriptable) physics objects</li>
+			</ul>
+		</div>
+		<div class="column one-third">
+			<ul class="checkmark">
+				<li>Shape based and ray-cast collision detection</li>
+				<li>Precise collision detection for tilemaps</li>
+			</ul>
+		</div>
+		<div class="column one-third">
+			<ul class="checkmark">
+				<li>Robust triggers</li>
+				<li>Joint and motor support</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="row"><div class="columns twelve"><br/><br/></div></div>
+
+<div class="row">
+	<div class="row">
+		<div class="column one-half">
+			<h3>Fully scriptable</h3>
+			<p>Write all of your game logic using the Lua scripting language. Lua is a commonly used scripting language for games with an easy to learn syntax and great performance.</p>
+			<h5>Lua</h5>
+			<ul class="checkmark">
+				<li>Integrated code editor with syntax highlighting and code completion</li>
+				<li>Integrated debugger - step through code and inspect variable</li>
+				<li>Fully scriptable rendering pipeline with low level access</li>
+			</ul>
+			<h5>Reactive code style</h5>
+			<ul class="checkmark">
+				<li>Engine supports reactive-style Lua scripting for low overhead and great performance</li>
+				<li>Asynchronous communication between game objects</li>
+			</ul>
+		</div>
+		<div class="column one-half">
+			<img src="/images/editor/editor-screenshot-code-right.png" class="slideinright" ></img>
+		</div>
+	</div>
+</div>
+
+<div class="row"><div class="columns twelve"><br/><br/></div></div>
+
+<div class="row">
+	<div class="columns twelve center">
+		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); grid-gap: 1rem; padding: 0px;">
+			<img src="/images/logo/platform/100px-switch-blue.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="Nintendo Switch logo"/>
+			<img src="/images/logo/platform/100px-android-blue.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="Android logo"/>
+			<img src="/images/logo/platform/100px-ios-blue.png"			class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="Apple logo"/>
+			<img src="/images/logo/platform/100px-macos-blue.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="macOS logo"/>
+			<img src="/images/logo/platform/100px-linux-blue.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="Linux logo"/>
+			<img src="/images/logo/platform/100px-windows-blue.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="Windows logo"/>
+			<img src="/images/logo/platform/100px-steam-blue.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="Steam logo"/>
+			<img src="/images/logo/platform/100px-html5-blue.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="HTML5 logo"/>
+			<img src="/images/logo/platform/100px-facebook-blue.png"	class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="Facebook logo"/>
+		</div>
+		<br/><br/>
+	</div>
+</div>
+<div class="row">
+	<div class="columns twelve">
+		<h3>Cross-platform</h3>
+		<p>With Defold you create your game once and export to all supported platforms without making any changes. The Defold APIs work across all platforms and you do not have to worry about typical platform specific things such as file paths, texture formats, input methods, render pipelines, networking protocols or in-app purchasing systems. We got you covered!</p>
+	</div>
+</div>
+<div class="row">
+	<div class="column one-third">
+		<h5>Truly-cross platform</h5>
+		<ul class="checkmark">
+			<li>One-click deployment to all target platforms from the same code and content</li>
+			<li>Additional platforms such as Steam and Facebook Instant Games supported via extensions</li>
+			<li>Editor and tools running on Mac OS X, Windows and Linux</li>
+			<li>Turn-key software with no dependencies on other programs - No need for Xcode or Android Studio for mobile deployment!</li>
+			<li>OpenGL, Vulkan and Metal</li>
+		</ul>
+	</div>
+	<div class="column one-third">
+		<h5>Surprisingly lightweight</h5>
+		<ul class="checkmark">
+			<li>Static content dependencies and automatic resource management. Only used assets are included in game builds</li>
+			<li>Sprite packing to atlases</li>
+			<li>Per platform configurable texture compression</li>
+			<li>Dynamic batching in the render pipeline</li>
+		</ul>
+	</div>
+	<div class="column one-third">
+		<h5>Small engine</h5>
+		<table style="width:100%">
+			<tr>
+				<th>PLATFORM</th>
+				<th>SIZE</th>
+			</tr>
+			<tr>
+				<td>Android (32+64 bit)</td>
+				<td>3.3MB</td>
+			</tr>
+			<tr>
+				<td>iOS</td>
+				<td>2.6MB</td>
+			</tr>
+			<tr>
+				<td>HTML5</td>
+				<td>881KB</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div class="row"><div class="columns twelve"><br/><br/></div></div>
+
+<div class="row">
+	<div class="columns twelve">
+		<h3>Rapid workflow</h3>
+		<p>Long turnaround times kills productivity and hampers creativity. Developers should be able to rapidly test new ideas, iterate on game mechanics or tweak levels. That is why a Defold build usually takes only a couple of seconds. You're even able to push new or updated content and game logic to an already running game on your desktop, phone or console.</p>
+	</div>
+	<div class="row">
+		<div class="columns three">
+			<h5>Hot reload</h5>
+			<ul class="checkmark">
+				<li>Hot reloading of updated assets and logic - change anything and instantly see the change in your game</li>
+			</ul>
+			<img src="/images/animations/hot-reload.gif" style="width: 100%;"/>
+			<ul class="checkmark">
+				<li>Wireless hot reloading, debugging and visual profiling on device</li>
+				<li>Hot reload with custom Lua hooks for setup and inspection</li>
+			</ul>
+		</div>
+		<div class="columns three">
+			<h5>Custom workflows</h5>
+			<ul class="checkmark">
+				<li>Stand alone build pipeline for custom workflows - integrate with your own scripts or CI framework</li>
+				<li>Headless builds for automated testing</li>
+				<li>Library sharing between projects - reuse code and assets</li>
+				<li>Asset Portal with reusable components - official and community developed</li>
+				<li>All data in easily merged text files</li>
+			</ul>
+		</div>
+		<div class="columns three">
+			<h5>Build and refactor</h5>
+			<ul class="checkmark">
+				<li>Fast build times. All build targets, even HTML5, are completed in seconds</li>
+				<li>Asynchronous (or synchronous) loading of asset data</li>
+				<li>Automatic refactoring of assets</li>
+			</ul>
+		</div>
+		<div class="columns three">
+			<h5>Optimize and debug</h5>
+			<ul class="checkmark">
+				<li>Live on-screen visual profiler</li>
+				<li>Remote web-based profiler with visual frame sampling</li>
+				<li>Built-in video capture of game footage</li>
+				<li>Native crash log APIs</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="row"><div class="columns twelve"><br/><br/></div></div>
+
+<div class="row">
+	<div class="columns six">
+		<h3>Add Engine Features with Native Extensions</h3>
 		<p>The Defold SDK allows you to write extension to the engine in C, C++, ObjectiveC, Java and JavaScript.</p>
 		<p>Develop extensions directly in Defold without the need for setup or extra compilers. We build a custom engine for you in the cloud.</p>
 		<p>Typical use cases are:</p>
@@ -191,11 +304,40 @@ after: [opensource_section.html, learn_section.html, yellow_download_section.htm
 		</ul>
 		<a href="/manuals/extensions"><p>Learn more about Native Extensions</p></a>
 	</div>
+	<div class="columns six">
+		<img src="/images/editor/image-extensions.png" class="slideinright"/>
+	</div>
+</div>
+<div class="row">
+	<div class="columns twelve">
+		<h5>Popular integrations ready for use</h5>
+	</div>
+</div>
+<div class="row">
+	<div class="column one-third">
+		<ul class="checkmark">
+			<li>Google and Apple push notification APIs</li>
+			<li>Google, Apple, Amazon and Facebook in-app purchases APIs</li>
+			<li>Facebook SDK APIs</li>
+		</ul>
+	</div>
+	<div class="column one-third">
+		<ul class="checkmark">
+			<li>Google Play Game Services</li>
+			<li>Firebase Analytics</li>
+			<li>AdMob and other ad integrations</li>
+		</ul>
+	</div>
+	<div class="column one-third">
+		<ul class="checkmark">
+			<li>Web Sockets</li>
+			<li>Nakama, PlayFab, Colyseus and other game backends</li>
+			<li>More extensions in the <a href="/assets">Asset Portal</a></li>
+		</ul>
+	</div>
 </div>
 
-<br/>
-<br/>
-
+<div class="row"><div class="columns twelve"><br/><br/></div></div>
 
 <div class="row">
 	<h2>Why use Defold and not some other engine?</h2>
@@ -206,3 +348,6 @@ after: [opensource_section.html, learn_section.html, yellow_download_section.htm
 	{%- include primary_button.html text="Why Defold?" link="/why" -%}
 	</div>
 </div>
+
+
+<script src="/js/transition.js"></script>

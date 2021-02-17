@@ -4,7 +4,7 @@
 			<div class="eight columns">
 				<ul class="navmenu">
 					<li><nobr>{% include octicon.html icon="octicons/home.svg" color="#FFF" zoom="1.25" text=" Defold" link="/" %}</nobr></li>
-					<li><a href="/product">Product</a></li>
+					<li><a href="/product">Features</a></li>
 					<li><a href="/showcase">Showcase</a></li>
 					<li><a href="/learn">Learn</a></li>
 					<li><a href="/assets">Asset&nbsp;Portal</a></li>
@@ -14,7 +14,7 @@
 				</ul>
 				<select class="navdropdown dark-text" onchange="location = this.value;">
 					<option value="/">Home</option>
-					<option value="/product" {% if page.url contains 'product' %}selected{% endif %}>Product</option>
+					<option value="/product" {% if page.url contains 'product' %}selected{% endif %}>Features</option>
 					<option value="/showcase" {% if page.url contains 'showcase' %}selected{% endif %}>Showcase</option>
 					<option value="/learn">Learn</option>
 					<option value="/assets" {% if page.url contains 'assets' %}selected{% endif %}>Asset Portal</option>
