@@ -17,7 +17,6 @@ For business inquiries please email [business@defold.se](mailto:business@defold.
 For [source code](/open) related questions:
 
  * Send an email to [sourcecode@defold.se](mailto:sourcecode@defold.se).
- * Ask us on [Slack](/slack) in the #sourcecode channel.
  * Post your question in the [Source Code category](https://forum.defold.com/c/source-code) of the Forum.
 
 
@@ -29,7 +28,7 @@ Get in touch with the Defold Foundation [here](/foundation).
 If you've run into a problem and need help then please reach out to us. We're happy to help!
 
 * [Forum](https://forum.defold.com) - for in-depth technical support or finding answers to already asked questions.
-* [Slack](/slack) - for quick questions and answers to simple technical questions. Also good for hanging out with your fellow Defold developers!
+* [Discord](/discord) - for quick questions and answers to simple technical questions. Also good for hanging out with your fellow Defold developers!
 * [Getting Help](/manuals/getting-help/) - learn what we need from you in order to give you the best possible support.
 
 
@@ -39,3 +38,4 @@ Follow us for the latest news and to stay in touch in social media.
 * [Twitter](https://twitter.com/defold)
 * [Facebook](https://www.facebook.com/Defold)
 * [YouTube](https://www.youtube.com/user/defoldvideos)
+* [LinkedIn](https://www.linkedin.com/company/defold-foundation)

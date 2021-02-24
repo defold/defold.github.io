@@ -11,7 +11,7 @@ title: Defold Terms & Conditions
 
  * **Yep, it’s free** - Defold is provided free of charge. You don’t have to pay us anything for developing or publishing the Games you create using our Services.
 
- * **How can I get involved?** - You can get involved as a community member by registering here: [forum.defold.com](https://forum.defold.com) and here [www.defold.com/slack](https://www.defold.com/slack).
+ * **How can I get involved?** - You can get involved as a community member by registering here: [forum.defold.com](https://forum.defold.com) and here [www.defold.com/discord](https://www.defold.com/discord).
 
  * **You own your stuff** - You will retain the rights and ownership of your creations in Defold and any intellectual property, code and assets you upload.
 
