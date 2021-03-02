@@ -19,12 +19,12 @@ Throughout this post we will use a Tic-Tac-Toe game which we have decided to cal
 
 The source code for the game is available on GitHub and we will refer to the code throughout this article:
 
-* Game client (https://github.com/defold/game-xoxo-nakama-client)
-* Game server (https://github.com/defold/game-xoxo-nakama-server)
+* [Game client](https://github.com/defold/game-xoxo-nakama-client)
+* [Game server](https://github.com/defold/game-xoxo-nakama-server)
 
 The server uses authoritative multiplayer code which means that the moves made by the players are validated by the server and the updated game state is sent back to the players when it changes.
 
-Try the game in your browser: https://defold.com/game-xoxo-nakama-client/ (ask a friend to do the same or open two browser tabs to play against yourself).
+[Try the game in your browser](https://defold.com/game-xoxo-nakama-client/) (ask a friend to do the same or open two browser tabs to play against yourself).
 
 
 ### A note on the two ways to call Nakama functions
