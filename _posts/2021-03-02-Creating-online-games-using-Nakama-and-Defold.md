@@ -91,7 +91,7 @@ config.engine = defold -- Tell Nakama to use Defold (it can theoretically also w
 local client = nakama.create_client(config)
 ```
 
-Server config in XOXO: https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L136-L146
+Server config in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L136-L146](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L136-L146)
 
 
 ## Authentication
@@ -117,7 +117,7 @@ local function device_login(client)
 end
 ```
 
-Device login in XOXO: https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L19-L32
+Device login in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L19-L32](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L19-L32)
 
 
 ## Creating a socket connection
@@ -133,7 +133,7 @@ if not ok then
 end
 ```
 
-Creating the socket in XOXO: https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L162-L171
+Creating the socket in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L162-L171](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L162-L171)
 
 
 ## Finding an opponent using the matchmaker
@@ -157,7 +157,7 @@ if result.error then
 end
 ```
 
-Adding the player to the matchmaker in XOXO: https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L80-L87
+Adding the player to the matchmaker in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L80-L87](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L80-L87)
 
 
 ### Getting matched
@@ -175,7 +175,7 @@ nakama.on_matchmakermatched(socket, function(message)
 end)
 ```
 
-Matched event listener in XOXO: https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L70-L77
+Matched event listener in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L70-L77](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L70-L77)
 
 
 ### Joining the match
@@ -190,7 +190,7 @@ if result.match then
 end
 ```
 
-Joining the match in XOXO: https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L38-L49
+Joining the match in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L38-L49](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L38-L49)
 
 
 ## Playing a match of Tic-Tac-Toe
@@ -217,7 +217,7 @@ if result.error then
 end
 ```
 
-Sending a move in XOXO: https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L94-L104
+Sending a move in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L94-L104](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L94-L104)
 
 
 ### Receiving match data
@@ -232,7 +232,7 @@ nakama.on_matchdata(socket, function(message)
 end)
 ```
 
-Receiving match data in XOXO: https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L94-L104
+Receiving match data in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L94-L104](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L94-L104)
 
 
 ### Handle players leaving during a match
@@ -278,7 +278,7 @@ end
 nk.register_matchmaker_matched(makematch)
 ```
 
-Matchmaker matched hook in XOXO: https://github.com/defold/game-xoxo-nakama-server/blob/main/main.lua#L23-L40
+Matchmaker matched hook in XOXO: [https://github.com/defold/game-xoxo-nakama-server/blob/main/main.lua#L23-L40](https://github.com/defold/game-xoxo-nakama-server/blob/main/main.lua#L23-L40)
 
 
 ## Match handler
@@ -287,8 +287,8 @@ The match handler is a separate Lua module (or JavaScript or Go code) with the m
 
 For XOXO we decided to separate the match handler from the actual Tic-Tac-Toe game logic. The responsibility of the match handler module is to react to the different life-cycle events of a match and to forward any received moves to the actual Tic-Tac-Toe game logic and send back an updated game state to the players.
 
-* The match handler logic for XOXO: https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua
-* The Tic-Tac-Toe game logic for XOXO: https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_state.lua
+* The match handler logic for XOXO: [https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua](https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua)
+* The Tic-Tac-Toe game logic for XOXO: [https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_state.lua](https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_state.lua)
 
 Separating the server side game logic from the match handler is useful since it allows you to run the game logic in isolation, for instance when running tests or when playing a local match against bots.
 
@@ -318,7 +318,7 @@ function M.match_init(context, setupstate)
 end
 ```
 
-Match handler init in XOXO: https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L58-L64
+Match handler init in XOXO: [https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L58-L64](https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L58-L64)
 
 
 #### Match join attempt
@@ -332,7 +332,7 @@ function M.match_join_attempt(context, dispatcher, tick, gamestate, presence, me
 end
 ```
 
-Match join attempt in XOXO: https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L66-L70
+Match join attempt in XOXO: [https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L66-L70]https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L66-L70
 
 
 #### Match join
@@ -348,7 +348,7 @@ function M.match_join(context, dispatcher, tick, gamestate, presences)
 end
 ```
 
-In the XOXO game the players are added to the match and when the match contains two players an initial game state (an empty Tic-Tac-Toe board) is sent to the connected clients: https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L72-L81
+In the XOXO game the players are added to the match and when the match contains two players an initial game state (an empty Tic-Tac-Toe board) is sent to the connected clients: [https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L72-L81](https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L72-L81)
 
 
 #### Match leave
@@ -382,14 +382,14 @@ end
 
 As XOXO is a server authoritative game any received player move is validated before the game state is updated and sent back to the players. If the game is finished a 10 second countdown is started before the board is cleared and a new game is started. Note that the new game is run in the same match handler but with a game state that has been reset.
 
-The match loop in XOXO: https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L83-L87
+The match loop in XOXO: [https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L83-L87](https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L83-L87)
 
 
 ### Ending a match
 
 If you look at all of the lifecycle functions of the match handler you notice that all of them return a game state. The match will keep on running on the server for as long as you return a game state. This is true even after all players have left! The match will end immediately when you return nil from any of the lifecycle functions.
 
-In the XOXO game this is used to end the match as soon as one of the players leave the match: https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L85-L86
+In the XOXO game this is used to end the match as soon as one of the players leave the match: [https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L85-L86](https://github.com/defold/game-xoxo-nakama-server/blob/main/tictactoe_match.lua#L85-L86)
 
 
 # Conclusions
