@@ -34,25 +34,26 @@
 	}
 </script>
 
+{%- if page.description.size > 0 -%}
+{%- assign page_description=page.description -%}
+{%- elsif page.excerpt.size > 0 -%}
+{%- assign page_description=page.excerpt -%}
+{%- else -%}
+{%- assign page_description="Defold is a free and open game engine used for development of console, desktop, mobile and web games." -%}
+{%- endif -%}
+
 <!-- META DATA -->
-<meta name="description" content="Defold is a free and open game engine used for development of console, desktop, mobile and web games.">
-<meta name="author" content="Defold Foundation" />
+<meta name="description" content="{{ page_description }}">
+<meta name="author" content="Defold Foundation"/>
 <meta name="keywords" content="defold, gameengine, game-engine, game-development, game-dev, gamedev, open-source, opensource, crossplatform, cross-platform, free, nintendo-switch, console, html5, web, android, ios, desktop" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{%- if page.description.size > 0 -%}
-{%- assign og_description=page.description -%}
-{%- elsif page.excerpt.size > 0 -%}
-{%- assign og_description=page.excerpt -%}
-{%- else -%}
-{%- assign og_description="Defold is a free and open game engine used for development of console, desktop, mobile and web games." -%}
-{%- endif -%}
 <!-- OPEN GRAPH -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 <meta property="og:site_name" content="Defold game engine">
 <meta property="og:title" content="{{ page.title }}">
-<meta property="og:description" content="{{ og_description }}">
+<meta property="og:description" content="{{ page_description }}">
 <meta property="og:image" content="https://www.defold.com/images/social/facebook-share.jpg">
 <!-- end OPEN GRAPH -->
 
@@ -60,7 +61,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@defold">
 <meta name="twitter:title" content="{{ page.title }}">
-<meta name="twitter:description" content="{{ og_description }}">
+<meta name="twitter:description" content="{{ page_description }}">
 <meta name="twitter:image" content="https://www.defold.com/images/social/twitter-share.jpg">
 <!-- end TWITTER -->
 
