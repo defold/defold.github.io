@@ -112,7 +112,7 @@ local function device_login(client)
 		nakama.set_bearer_token(client, result.token)
 		return true
 	end
-	log("Unable to login")
+	print("Unable to login")
 	return false
 end
 ```
@@ -125,10 +125,10 @@ Device login in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/ma
 We are now connected to the Nakama server and have authenticated the user. The last step before we can use the full range of Nakama APIs is to create a socket connection. We need the socket connection for matchmaking, real-time multiplayer games, chat and notifications.
 
 ```Lua
-socket = nakama.create_socket(client)
+local socket = nakama.create_socket(client)
 local ok, err = nakama.socket_connect(socket)
 if not ok then
-	log("Unable to connect: ", err)
+	print("Unable to connect: ", err)
 	return
 end
 ```
@@ -153,7 +153,7 @@ The first step is to add the player to the matchmaking pool of users:
 local message = nakama.create_matchmaker_add_message("*", 2, 2)
 local result = nakama.socket_send(socket, message)
 if result.error then
-	log(result.error.message)
+	print(result.error.message)
 end
 ```
 
@@ -169,8 +169,8 @@ nakama.on_matchmakermatched(socket, function(message)
 	-- make sure we got matched
 	local matched = message.matchmaker_matched
 	if matched then
-		log(matched.match_id)
-		log(matched.token)
+		print(matched.match_id)
+		print(matched.token)
 	end
 end)
 ```
@@ -186,7 +186,7 @@ When a match has been found the player has a choice of either joining the match 
 local message = nakama.create_match_join_message(match_id, token)
 local result = nakama.socket_send(socket, message)
 if result.match then
-	log("Match joined!")
+	print("Match joined!")
 end
 ```
 
@@ -212,7 +212,7 @@ local data = json.encode({
 local message = nakama.create_match_data_message(match_id, OP_CODE_MOVE, data)
 local result = nakama.socket_send(socket, message)
 if result.error then
-	log(result.error.message)
+	print(result.error.message)
 	pprint(result)
 end
 ```
