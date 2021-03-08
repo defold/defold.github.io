@@ -38,6 +38,8 @@
 {%- assign page_description=page.description -%}
 {%- elsif page.excerpt.size > 0 -%}
 {%- assign page_description=page.excerpt -%}
+{%- elsif page.brief.size > 0 -%}
+{%- assign page_description=page.brief -%}
 {%- else -%}
 {%- assign page_description="Defold is a free and open game engine used for development of console, desktop, mobile and web games." -%}
 {%- endif -%}
