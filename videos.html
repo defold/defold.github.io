@@ -1,6 +1,6 @@
 ---
 layout: base
-title: Defold tutorials
+title: Defold videos
 nav: floating
 ---
 
@@ -8,8 +8,8 @@ nav: floating
 	<div class="container">
 		<div class="row">
 			<div class="column one-half left">
-				<h1>Learn by doing!</h1>
-				<p>Our tutorials section is the perfect place to start from if you are new to Defold game development.</p>
+				<h1>Learn by watching!</h1>
+				<p>The Defold video tutorials are a great starting point if you are a visual learner.</p>
 			</div>
 		</div>
 	</div>
@@ -21,15 +21,14 @@ nav: floating
 	<div class="container">
 		<div class="row">
 			<div class="columns full">
-				<h3>Tutorials</h3>
+				<h3>Videos</h3>
 			</div>
 		</div>
 		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
 			{%- for section in site.data.learnindex.navigation.tutorials -%}
-				{%- if section.name == "Tutorials" -%}
+				{%- if section.name == "Videos" -%}
 					{%- for tutorial in section.items -%}
-						{%- assign image=tutorial.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}
-						{% include learn_card.html title=tutorial.name description=tutorial.description link=tutorial.path min-height="250px" image=image %}
+						{% include learn_card.html title=tutorial.name description=tutorial.description link=tutorial.path min-height="250px" image="/images/icons/yt_icon_rgb.svg" %}
 					{%- endfor -%}
 				{%- endif -%}
 			{%- endfor -%}
