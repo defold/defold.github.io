@@ -39,7 +39,6 @@ This extension provides a cairo based UI for Defold to make building interesting
 
 
 ## Community sponsor goal
-
 Goal: COVER 50% OF NATIVE EXTENSION BUILD SERVER COSTS FROM GITHUB SPONSORS. [Learn more](https://github.com/sponsors/defold)
 
 We thank our latest contributor: **potatojam**
@@ -50,7 +49,6 @@ Currently at $497 of $650
 
 
 ## Defold 1.2.180 Beta
-
-https://forum.defold.com/t/defold-1-2-180-beta/67615
+The latest Defold version has been released. The new version contains several great improvements such as new texture compression formats and OpenGL 3 support and also a couple of bug fixes.
 
 [RELEASE NOTES](https://forum.defold.com/t/defold-1-2-179-beta/67371)
