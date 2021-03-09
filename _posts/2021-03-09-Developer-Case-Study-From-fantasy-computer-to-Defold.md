@@ -43,9 +43,6 @@ First of all, TIC-80 is a great tool and made it possible for me to have a worki
 
 As the prototype evolved and I was having fun playtesting the game, I thought that maybe I could try to release a polished version as my first commercial game. Moving from TIC-80 to Defold would also allow me to add things like achievements, a level editor and some accessibility options. Knowing that Defold could easily deploy to multiple platforms was also a big plus.
 
-![](/images/posts/developer-case-study-from-fantasy-computer-to-defold/nullptr-defold.png)
-[ current defold version ]
-
 
 #### What was it like porting the game from the TIC-80 to Defold?
 
@@ -54,6 +51,9 @@ At first I thought it would be an easy job and that I'd only have to change part
 Now that I changed my mindset to the reactive approach of Defold, the rewriting process is much faster even not reusing old code from the TIC-80 prototype. I am much happier with the resulting code quality too.
 
 Both TIC-80 and Defold use Lua which I guess helped during the porting process. A lot of other things are probably quite different between the two engines.
+
+![](/images/posts/developer-case-study-from-fantasy-computer-to-defold/nullptr-defold.png)
+[ current defold version ]
 
 
 #### What, if anything, did you struggle with when moving from TIC-80 to Defold?
