@@ -23,7 +23,7 @@ I'm 26. I live in Russia and right now I am mostly working on games and work par
 #### What would you say is the biggest difference between UE or Unity compared to Defold?
 The main difference is in engine purpose. UE and Unity mostly focused on cutting-edge 3D games, with advanced techniques in rendering and visuals. Yes, you can build 2D games as well, but you will be limited in some ways (may vary from one game genre/style to another), and not using engine 100%.
 
-<div align="center"><p><i>"You can shoot a bird with both a rifle and with a cannon, but what will be reasonable to do?"</i></p></div>
+<div align="center"><p style="font-size: larger"><i>"You can shoot a bird with both a rifle and with a cannon, but what will be reasonable to do?"</i></p></div>
 
 And yes you can also build 3D games with Defold, but you will probably lack some features available in UE and Unity. My point is that you need to find suitable tool for your work and use it. You can shoot a bird with both a rifle and with a cannon, but what will be reasonable to do?
 

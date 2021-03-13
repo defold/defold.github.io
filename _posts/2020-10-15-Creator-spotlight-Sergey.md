@@ -19,7 +19,7 @@ Sergey Lerg.
 #### What is your background?
 I am 34, living in Russia. When I was at school, computers were really rare in my city. I only got my hands on a Pentium III machine two years before graduation, with almost no internet. A productive usage of the computer only began during my university days. Even there we didn't have enough programming classes, my major was in radio engineering and we only studied Visual Basic and Assembly for microcontrollers. Now that I think of it that it's quite an odd choice of languages to teach students, hah!
 
-<div align="center"><p><i>"All hail the internet!"</i></p></div>
+<div align="center"><p style="font-size: larger"><i>"All hail the internet!"</i></p></div>
 
 Only after university I was able to pick up C++, PHP, JavaScript and later on during the years Python, Lua, Java, Objective-C, Go and C#. All thanks to the internet and the great services it makes available like tutorials and getting help from the community. All hail the internet! Still after learning C++ I wasn't able to make games, I just didn't know how, the OpenGL book was too tough for me, all I could do is to rotate a few primitives with a keyboard.
 
@@ -31,15 +31,15 @@ It got on my radar in 2016, I saw an article about it on [Habr](https://habr.com
 
 ![Laser Puzzle](/images/posts/developer-spotlight-sergey-lerg/laserpuzzle.png)
 
-<div align="center"><p><i>"It was a challenge to wrap my head around Defold's API usage and development approach"</i></p></div>
+<div align="center"><p style="font-size: larger"><i>"It was a challenge to wrap my head around Defold's API usage and development approach"</i></p></div>
 
 I started learning Defold in 2017 and it was a challenge to wrap my head around Defold's API usage and development approach. I got used to doing everything with code and have OOP interfaces for game objects. Defold on the other hand doesn't provide such things out of the box, for its own reasons, mainly performance. Defold API is like a C API for kinda OOP framework - you have objects, but you don't have a direct access to them, they are somewhere in the RAM, you don't get C++ classes, only functions to work on the objects.
 
-<div align="center"><p><i>"The ability to change the cross-platform rendering pipeline with Lua is mind blowing"</i></p></div>
+<div align="center"><p style="font-size: larger"><i>"The ability to change the cross-platform rendering pipeline with Lua is mind blowing"</i></p></div>
 
 Thankfully, Defold is flexible enough and I wrote my own framework for it, bringing the stuff I like from Solar2D into Defold, which greatly reduces the amount of code I have to write for my projects and eases the development overall. There are things I don't agree with Defold, but for the most of it - I really like it. The thing that struck me the most is the render script, the ability to change the cross-platform rendering pipeline with Lua is mind blowing.
 
-<div align="center"><p><i>"I put my own Box2D extension into the box"</i></p></div>
+<div align="center"><p style="font-size: larger"><i>"I put my own Box2D extension into the box"</i></p></div>
 
 Another great feature of Defold is being able to change parts of the engine. I didn't like the out of the box Box2D support, so I put my own Box2D extension into the box (pun intended). Or the audio system. Saying all that it's apparent that learning Defold is both easy and hard. Easy to learn if you intend to use the out of the box features, and hard to learn if you dive into the render script, native extensions and writing your own frameworks.
 

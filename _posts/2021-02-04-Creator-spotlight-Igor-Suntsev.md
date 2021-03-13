@@ -38,7 +38,7 @@ After making a pack of games for Flash portals like Armorgames and Kongregate, I
 ##### Speaking of "Look, your Loot" the game has a surprising depth and variation despite (or maybe thanks to) the restricted playing area. Can you tell us about the game design process and the design decisions you made for the game?
 For a long time I wanted to make a card game and periodically wrote down ideas in a special notebook. I made sketches of game situations and simple calculations. The game finally took shape after the playable prototype, where basic game mechanics were matched to graphics.
 
-<div align="center"><p><i>"I finished that prototype in two weeks and this was my first experience with Defold."</i></p></div>
+<div align="center"><p style="font-size: larger"><i>"I finished that prototype in two weeks and this was my first experience with Defold."</i></p></div>
 
 By the way, I finished that prototype in two weeks and this was my first experience with Defold (thanks to the Defold community!). But polishing the game took a couple of years (thanks to the game community and tons of feedback!)
 
@@ -79,7 +79,7 @@ You’re right, it’s too ambitious for solo dev. Oh, I’m not sure. It’s to
 ##### Which part of your current project are you most proud of?
 I like how the game looks in general. Some animation and effects. But the current prototype is so far from the whole completed game. So many tasks left to do!
 
-<div align="center"><p><i>"Switching between programming and drawing takes time and some brain adaptation."</i></p></div>
+<div align="center"><p style="font-size: larger"><i>"Switching between programming and drawing takes time and some brain adaptation."</i></p></div>
 
 ##### The game does look really great! You are something as uncommon as both a game developer and an artist. Are you as comfortable coding as you are drawing?
 In fact, the most difficult part of solo development is planning and designing all systems. Of course, switching between programming and drawing takes time and some brain adaptation, sometimes a long one. For example, I can’t start writing character AI right after the character animation process since it takes time to switch.
@@ -88,7 +88,7 @@ In fact, the most difficult part of solo development is planning and designing a
 
 This is a kind of problem but I’m probably used to it. There are both bonuses and disadvantages here: no need to waste time on discussions, at the same time you often want to hear advice on where to go next or how to do this or that thing.
 
-<div align="center"><p><i>"A table inside a table inside a table."</i></p></div>
+<div align="center"><p style="font-size: larger"><i>"A table inside a table inside a table."</i></p></div>
 
 ##### Tell us about your ugliest hack to get a job done!
 Oh, I'm feeling that all my code is one big hack and pack of sticks. But it works, sometimes. Well, ok. In 2000 we needed to support the [Netscape Navigator browser](https://en.wikipedia.org/wiki/Netscape_Navigator) and made a table inside a table inside a table to make just a simple table with borders outlined. Modern front end developers can't feel how much of a hell it was.

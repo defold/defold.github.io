@@ -30,7 +30,7 @@ I heard about Defold from a fellow gamedev friend on a Steam chat back in 2016 a
 #### What would you say is the biggest difference between the community and the engine back then and what we have today?
 Back then the community was much smaller, and there were no real community projects. Now the community is larger, and there are many community projects. The community has filled in many of the gaps for what commercial games need.
 
-<div align="center"><p><i>"Defold is a powerful secret weapon."</i></p></div>
+<div align="center"><p style="font-size: larger"><i>"Defold is a powerful secret weapon."</i></p></div>
 
 Back then it did not take me long to be impressed by Defold, but I still had some reservations. Since then all of my reservations were long ago addressed and I am very happy to use Defold and recommend Defold to other developers. Defold is a powerful secret weapon, it’s a best kept secret even though we all try to share it as much as possible.
 
@@ -68,7 +68,7 @@ I really enjoy the story / lore / characters / world of FSD.
 #### There is indeed quite a bit of story in your games. How do you approach story and lore creation in games?
 I have doubts about my own writing and others can be critical sometimes (though often I feel unfairly so). Mostly I write what I personally enjoy, that’s the best I can do. I’m freely inspired by many other things.
 
-<div align="center"><p><i>"Many story / plot ideas come from dreams."</i></p></div>
+<div align="center"><p style="font-size: larger"><i>"Many story / plot ideas come from dreams."</i></p></div>
 
 For the Faerie/FaeVerse world it’s inspired greatly by European fantasy (the old folk tales and pagan beliefs), but it still has other inspiration / cultural exchange with other fantasy (like by [Studio Ghibli](https://en.wikipedia.org/wiki/Studio_Ghibli) or [From Software](https://en.wikipedia.org/wiki/FromSoftware) or Wuxia). Many story / plot ideas come from dreams. The Dire story had several complete rewrites until the current form manifested itself.
 

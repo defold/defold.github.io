@@ -32,7 +32,7 @@ I can’t deny family is my priority, then comes work and in the end there is ga
 #### What do you like the most about Defold?
 The community. Warm, patient, helpful. The Defold team is among us always and they are always there to help, even with the dumbest problems, being always polite. It means a lot for beginners. Solving problem is almost always instant. It is very easy, because the documentation is always up to date, clear, concise and I learned all the needed skills there in a very efficient way.
 
-<div align="center"><p><i>"A smooth and fast transition between writing a line of code and actually testing it on a live hardware."</i></p></div>
+<div align="center"><p style="font-size: larger"><i>"A smooth and fast transition between writing a line of code and actually testing it on a live hardware."</i></p></div>
 
 The Editor itself is also very tidy and I like the workflow in Defold - a smooth and fast transition between writing a line of code and actually testing it on a live hardware.
 
@@ -64,7 +64,7 @@ I am using Tiled or the built-in tilemap editor for creating levels - and I am n
 The magic system I am trying to create struggles to provide immersive simulation in which you can propagate fire over burnable elements, cease the fire with water or air or freeze the water to create a bridge and so on. Aside from the obvious combat possibilities it should also allow smarter exploration and help with some puzzles. I am trying to use natural physics for as much of the objects as I can, taking into account their diverse state - being wet, dry, movable, static, burnt or broken, etc.
 
 
-<div align="center"><p><i>"Altering the reality around you, in a constructive and destructive way."</i></p></div>
+<div align="center"><p style="font-size: larger"><i>"Altering the reality around you, in a constructive and destructive way."</i></p></div>
 
 This is something I am lacking the most in many games with magic or superpowers - to feel that you really are altering the reality around you, in a constructive and destructive way and with permanent results. Thanks to Witchcrafter’s side-scrolling pixel art formula I can use some simplifications and 2D physics, but nonetheless it should still give you an impression of a truly interactive world.
 
@@ -76,7 +76,7 @@ World building! It is what I admire the most in the games, books and movies and 
 #### Tell us about your ugliest hack to get a job done!
 In the current demo of Witchcrafter - people complained about a lack of checkpoint near the final boss, so they don't need to go there from the beginning of the cave after death (and the boss is pretty powerful). But the truth was - I didn't have a checkpoint system at the moment! The level was just restarting after a death. So there was an ugly, but quick solution - I copied the whole collection representing the level and modified it, so the first one is ending just in the moment when the battle begins, and the second is starting with that fight.
 
-<div align="center"><p><i>"Defold is really efficient, so the loading in-between is instant."</i></p></div>
+<div align="center"><p style="font-size: larger"><i>"Defold is really efficient, so the loading in-between is instant."</i></p></div>
 
 Defold is really efficient, so the loading in-between is instant. As a result, restarting the level after a death in the second part looks like I just put a checkpoint before the boss battle, additionally adding a short, suspense blackout transition that made this scene more memorable.
 
