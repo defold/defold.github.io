@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Releasing HTML5 games on Game Distribution
-excerpt: In this post we'll look at the process of releasing games for Game Distribution.
+excerpt: In this blog post we'll look at how to add the Game Distribution SDK to an existing game or how to create one from scratch. We will also look at how to submit your game for distribution through the Game Distribution network.
 author: Björn Ritzl
 tags: ["tutorial", "gamedistribution", "html5"]
 ---
