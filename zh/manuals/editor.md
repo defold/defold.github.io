@@ -135,6 +135,14 @@ Defold 编辑器被划分为许多面板, 或称视图, 以展示和编辑数据
 
 ![Import files](/manuals/images/editor/import.png)
 
+## 编辑器更新
+
+编辑器自动检查更新. 检测到新版本的话就会在编辑器右下角或者项目选择视图里显示出来. 点击即可自动更新.
+
+![Update from project selection](/manuals/images/editor/update-project-selection.png)
+
+![Update from editor](/manuals/images/editor/update-main.png)
+
 ## 快捷键
 
 ### 默認快捷鍵
