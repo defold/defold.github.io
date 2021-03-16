@@ -15,9 +15,9 @@ For details on how to import Spine data into a Spine model for animation, see th
   ![Spine animation](../images/animation/spine_animation.png)
   ![Run loop](../images/animation/frog_runloop.gif)
 
-:::sidenote
+<div class='sidenote' markdown='1'>
 Spine animations can also be used within a GUI. Refer to the [GUI manual](/manuals/gui-spine) manual for more information.
-:::
+</div>
 
 ## Playing animations
 
