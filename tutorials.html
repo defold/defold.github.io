@@ -25,13 +25,9 @@ nav: floating
 			</div>
 		</div>
 		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
-			{%- for section in site.data.learnindex.navigation.tutorials -%}
-				{%- if section.name == "Tutorials" -%}
-					{%- for tutorial in section.items -%}
-						{%- assign image=tutorial.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}
-						{% include learn_card.html title=tutorial.name description=tutorial.description link=tutorial.path min-height="250px" image=image %}
-					{%- endfor -%}
-				{%- endif -%}
+			{%- for tutorial in site.data.learnindex.navigation.tutorials -%}
+				{%- assign image=tutorial.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}
+				{% include learn_card.html title=tutorial.name description=tutorial.description link=tutorial.path min-height="250px" image=image %}
 			{%- endfor -%}
 		</div>
 	</div>

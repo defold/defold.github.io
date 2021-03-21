@@ -25,12 +25,8 @@ nav: floating
 			</div>
 		</div>
 		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
-			{%- for section in site.data.learnindex.navigation.tutorials -%}
-				{%- if section.name == "Videos" -%}
-					{%- for tutorial in section.items -%}
-						{% include learn_card.html title=tutorial.name description=tutorial.description link=tutorial.path min-height="250px" image="/images/icons/yt_icon_rgb.svg" %}
-					{%- endfor -%}
-				{%- endif -%}
+			{%- for tutorial in site.data.learnindex.navigation.videos -%}
+				{% include learn_card.html title=tutorial.name description=tutorial.description link=tutorial.path author=tutorial.author min-height="250px" image="/images/icons/yt_icon_rgb.svg" %}
 			{%- endfor -%}
 		</div>
 	</div>

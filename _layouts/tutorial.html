@@ -8,31 +8,22 @@ layout: base
 		<div class="row">
 			<div class="columns two">
 				<div class="navmenu">
-				{% for section in site.data.learnindex.navigation.tutorials %}
-					{%- assign checked = "" -%}
-					{%- for tutorial in section.items -%}
+					<ul class="nobullet">
+					{% for tutorial in site.data.learnindex.navigation.tutorials %}
+						{%- assign checked = "" -%}
 						{%- if page.url contains tutorial.path -%}
 							{%- assign checked = "checked" -%}
 						{%- endif -%}
-					{%- endfor -%}
-					<input id="collapsible_{{ section.name }}" class="toggle" type="checkbox" {{ checked }}/>
-					<label for="collapsible_{{ section.name }}" class="togglelabel">{{ section.name }}</label>
-					<ul class="nobullet">
-						{% for tutorial in section.items %}
 						<li style="padding-left: 2rem;">
 							<a href="{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }}</a>
 						</li>
-						{% endfor %}
+					{% endfor %}
 					</ul>
-				{% endfor %}
 				</div>
 				<div class="navdropdown">
 					<select class="navdropdown" onchange="location = this.value;">
-						{% for section in site.data.learnindex.navigation.tutorials %}
-						<option value="">{{ section.name | capitalize }}</option>
-						{% for tutorial in section.items %}
+						{% for tutorial in site.data.learnindex.navigation.tutorials %}
 						<option value="{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }}</option>
-						{% endfor %}
 						{% endfor %}
 					</select>
 				</div>

@@ -332,17 +332,16 @@ def process_docs(download = False):
             process_doc_file(filename, "en")
             replace_in_file(filename, r"title\:", r"layout: tutorial\ntitle:")
 
-        # figure out in which languages each learn page exists
+        # figure out in which languages each manual exists
         print("...index (incl. languages)")
-        for categories in index["navigation"]:
-            for section in index["navigation"][categories]:
-                for item in section["items"]:
-                    item["languages"] = []
-                    if not item["path"].startswith("http"):
-                        path = item["path"][1:]
-                        for language in languages["languages"].keys():
-                            if os.path.exists(get_language_specific_dir(language, path + ".md")):
-                                item["languages"].append(language)
+        for section in index["navigation"]["manuals"]:
+            for item in section["items"]:
+                item["languages"] = []
+                if not item["path"].startswith("http"):
+                    path = item["path"][1:]
+                    for language in languages["languages"].keys():
+                        if os.path.exists(get_language_specific_dir(language, path + ".md")):
+                            item["languages"].append(language)
         write_as_json(index_file, index)
 
         print("...shared images")
