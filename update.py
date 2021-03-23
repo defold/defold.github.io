@@ -567,6 +567,8 @@ def fix_tags_case(list):
         for i,v in enumerate(list):
             if v.lower() == "gui":
                 list[i] = "GUI"
+            elif v.lower() == "ai":
+                list[i] = "AI"
             elif v.islower():
                 list[i] = v.capitalize()
     return list
