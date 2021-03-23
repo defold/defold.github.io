@@ -1,6 +1,6 @@
 ---
 layout: assetportal
 tag: ai
-title: Ai
+title: AI
 sort: stars
 ---
