@@ -10,6 +10,7 @@
 					<li><a href="/manuals/introduction" class="{% if page.url contains 'manuals' %}bold{% endif %}">Manuals</a></li>
 					<li><a href="/ref/stable/go" class="{% if page.url contains 'ref' %}bold{% endif %}">API Reference</a></li>
 					<li><a href="/faq/faq" class="{% if page.url contains 'faq' %}bold{% endif %}">FAQ</a></li>
+					<li><a href="/codepad/" class="{% if page.url contains 'codepad' %}bold{% endif %}">Codepad</a></li>
 				</ul>
 				<select class="navdropdown" onchange="location = this.value;">
 					<option value="/examples/animation/basic_tween" {% if page.url contains 'examples' %}selected{% endif %}>Examples</option>
@@ -18,6 +19,7 @@
 					<option value="/manuals/introduction" {% if page.url contains 'manuals' %}selected{% endif %}>Manuals</option>
 					<option value="/ref/stable/go" {% if page.url contains 'ref' %}selected{% endif %}>API Reference</option>
 					<option value="/faq/faq" {% if page.url contains 'faq' %}selected{% endif %}>FAQ</option>
+					<option value="/codepad" {% if page.url contains 'codepad' %}selected{% endif %}>Codepad</option>
 				</select>
 				<div class="right navdropdown compact">
 					<form action="/search">
