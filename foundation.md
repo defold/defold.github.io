@@ -32,7 +32,7 @@ We believe in a free and open internet where software and services use open stan
 	image="/images/foundation/thumbs/Sara Cederberg_2020_RW.jpg"
 	link="/images/foundation/highres/Sara Cederberg_2020_RW.jpg"
 	name="Sara Cederberg"
-	bio="Sara is a creative and hands-on solution finder with strong focus on improvement and quality. She has solid experience within business analysis and process development, digital product development and Business Intelligence. Sara has worked as project manager, product owner and director for Defold since 2016. She is now working as a producer director at King and she is the chairperson of the Defold Foundation board."
+	bio="Sara is a creative and hands-on solution finder with strong focus on improvement and quality. She has solid experience within business analysis and process development, digital product development and Business Intelligence. Sara has worked as project manager, product owner and director for Defold from 2016 to 2020. She is now working as a manager working with shared tech at Spotify."
 	email="sara@defold.se"
 -%}
 
@@ -64,7 +64,7 @@ We believe in a free and open internet where software and services use open stan
 	image="/images/foundation/thumbs/Bjorn Ritzl_2020_RW.jpg"
 	link="/images/foundation/highres/Bjorn Ritzl_2020_RW.jpg"
 	name="Björn Ritzl"
-	bio="Björn has worked as a developer for almost two decades, primarily in the games industry, and even longer as a hobbyist writing his first lines of code on a C64 in the late 80s. He has worked with mobile game development since before smart phones and he is a big fan of old school games from the days of the C64 and Amiga. Björn started working with Defold at King in 2015, initially as a developer and transitioning into the role of product owner in 2018. He is a strong believer in the power of open source development with more than 100 open source projects on GitHub. Björn is now working full time on Defold on behalf of the Defold Foundation."
+	bio="Björn has worked as a developer for almost two decades, primarily in the games industry, and even longer as a hobbyist writing his first lines of code on a C64 in the late 80s. He has worked with mobile game development since before smart phones and he is a big fan of old school games from the days of the C64 and Amiga. Björn started working with Defold at King in 2015, initially as a developer and transitioning into the role of product owner in 2018. He is a strong believer in the power of open source development with more than 100 open source projects on GitHub. Björn is now working full time on Defold on behalf of the Defold Foundation. Björn is also the current chairperson of the Defold Foundation."
 	email="bjorn@defold.se"
 	phone="+46-704-335333"
 -%}
