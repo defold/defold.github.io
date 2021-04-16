@@ -96,7 +96,7 @@ payment_pointer = ADD PAYMENT POINTER HERE
 
 ## How to use Web Monetization in Defold
 
-When you have the Web Monetization extension and payment pointer added to your project you are ready to start using Web Monetization in your game. The API consosts of only two functions:
+When you have the Web Monetization extension and payment pointer added to your project you are ready to start using Web Monetization in your game. The API consists of only two functions:
 
 Check if a player is monetized (ie is streaming payments to you):
 
