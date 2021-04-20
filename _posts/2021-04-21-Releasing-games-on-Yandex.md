@@ -6,7 +6,7 @@ author: Björn Ritzl
 tags: ["tutorial", "yandex", "html5"]
 ---
 
-Yandex.Games is a catalog of browser-based online games that can be played on smartphones or desktop devices and require no installation. Most games are also available offline (code for these games is added to the device cache during the first gaming session).
+[Yandex.Games](https://yandex.com/games/) is a catalog of browser-based online games that can be played on smartphones or desktop devices and require no installation. Most games are also available offline (code for these games is added to the device cache during the first gaming session).
 
 ![](/images/posts/releasing-games-on-yandex/yandex-games.png)
 
