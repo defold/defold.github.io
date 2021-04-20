@@ -62,13 +62,13 @@ Yandex supports a number of different ad formats, each with their own use-case. 
 
 * **Rewarded Ads** - Use Rewarded Ads to give the user premium content, extra lives, in-game currency and so on. This type of ad is typically shown when the player dies or fails a level and you wish to give the player another chance to continue playing. Rewarded Ads can't be skipped.
 * **Interstitial Ads** - Use Interstitial Ads at screen transitions, between sessions and in other situations where there is a natural pause in game play.
-* **Real Time Bidding Ads** - Use Real Time Bidding Ads (also known as a banner ad) at your discretion but make sure to not cover any of your game content.
+* **Real Time Bidding Ads** - Use Real Time Bidding Ads (also known as banner ads) at your discretion but make sure to not cover any of your game content.
 
 When showing interstitial and rewarded ads it is important that you pause your game and mute sounds while the ad is shown.
 
 
 ### Showing Interstitial Ads
-Interstitial ad blocks are displayed in full-screen mode. To make ads less obtrusive, [Yandex recommends](https://yandex.ru/dev/games/doc/dg/console/work-with-adv.html) that you limit ads to three inserts: before the game starts, before the user proceeds to the next level, and at the end of the game (for example, after the user has lost).
+Interstitial ads are displayed in full-screen mode. To make ads less obtrusive, [Yandex recommends](https://yandex.ru/dev/games/doc/dg/console/work-with-adv.html) that you limit ads to three inserts: before the game starts, before the user proceeds to the next level, and at the end of the game (for example, after the user has lost).
 
 You show an Interstitial Ad like this:
 
@@ -110,7 +110,7 @@ The close callback is called in any situations, even if there was an error.
 
 
 ### Showing Rewarded Ads
-Rewarded videos are video ad blocks used to monetize games and earn a reward or in-game currency. As opposed to the limitations on frequency of interstitial ads you can show rewarded ads as often as you want.
+Rewarded videos are video ads used to give the player a reward or in-game currency for watching an ad. As opposed to the limitations on frequency of interstitial ads you can show rewarded ads as often as you want.
 
 You show a Rewarded Ad like this:
 
@@ -156,7 +156,9 @@ Showing banner ads is a little bit more involved and it is recommended that you 
 
 
 ### Expanding beyond ads
-The Yandex.Games SDK contain many additional features besides ads. You can use the SDK to do user authentications, read player information and handle payments and sales of in-game goods. Learn more about the full capabilities in the [documentation of the Yandex.Games SDK integration for Defold](https://github.com/indiesoftby/defold-yagames#lua-api).
+The Yandex.Games SDK contain many additional features besides ads. You can use the SDK to do user authentications, read player information and handle payments and sale of in-game goods.
+
+Learn more about the full capabilities in the [documentation of the Yandex.Games SDK integration for Defold](https://github.com/indiesoftby/defold-yagames#lua-api).
 
 
 ## Submit your game
@@ -188,7 +190,7 @@ We hope this tutorial will kickstart your journey towards success on Yandex.Game
 
 Below you will find a list of games made with Defold on Yandex. We wish you good luck with your own game!
 
-* [Sea of ​​Words](https://yandex.ru/games/app/98073/) - OpenMyGame
-* [Mahjong Fruit: Connect Pairs](https://yandex.ru/games/app/100734/) - Potato Jam
-* [Catapult](https://yandex.ru/games/app/96919/) - MaratGiliazov
-* [Mahjong Cards](https://yandex.ru/games/app/134586/) - Indiesoft
+* [Sea of ​​Words](https://yandex.ru/games/app/98073/) by OpenMyGame
+* [Mahjong Fruit: Connect Pairs](https://yandex.ru/games/app/100734/) by Potato Jam
+* [Catapult](https://yandex.ru/games/app/96919/) by MaratGiliazov
+* [Mahjong Cards](https://yandex.ru/games/app/134586/) by Indiesoft
