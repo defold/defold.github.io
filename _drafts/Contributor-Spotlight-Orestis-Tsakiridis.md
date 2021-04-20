@@ -69,3 +69,4 @@ No, not currently. At present I'm more interested in the engineering side of thi
 
 
 ##### Thank you so much for participating! Can the Defold community follow your work somehow?
+You can follow me on Twitter: https://twitter.com/otsakir
