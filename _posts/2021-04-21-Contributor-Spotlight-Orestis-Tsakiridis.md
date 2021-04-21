@@ -61,11 +61,11 @@ _(Editor side-note: This and some other feedback from Orestis will be looked at 
 ##### What does your development setup look like? Any essential tools that help you get the job done?
 I typically work on Linux. I've used [Geany](https://www.geany.org/) as a text editor but recently moved to [Qt Creator IDE](https://www.qt.io/product/development-tools) in an effort to accelerate. I'm still not very satisfied. In general, since the project is relatively big, it's important to have proper code navigation built into the IDE to quickly jump from one location to another. The rest is done from the console.
 
-Git console client, grep, gdb for debugging (gdb is a life saver and Defold cooperates seamlessly with it). There is also having a Defold editor to play with as well as some custom bash scripts to buy me some more time in boilerplate operations.
+Git console client, grep, gdb for debugging (gdb is a life saver and Defold cooperates seamlessly with it). I typically have a running Defold instance to play with as well as some custom bash scripts to buy me some more time in boilerplate operations.
 
 
 ##### Are you also using Defold to create any games?
-No, not currently. At present I'm more interested in the engineering side of things than in the purely creative side. I tend to believe that I can do it better too. My target is to get a decent job in the field.
+No, not currently. At present I'm more interested in the engineering side of things than in the purely creative side. I tend to believe that I can do it better too.
 
 
 ##### Thank you so much for participating! Can the Defold community follow your work somehow?

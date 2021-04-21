@@ -14,22 +14,31 @@ In this Defold Creator Spotlight we invited Adam Engebretson to tell us a little
 ##### What is your name?
 👋 Hi, I'm Adam Engebretson.
 
+
 ##### What is your background?
 After spending far too much money earning my Bachelor's in Biological Chemistry, I decided to become a freelance web developer. It started as simple Wordpress hosting for small business, then quickly evolved into working on projects with the likes of AAA and David Letterman. I was then hired by a small medical software company and proceeded to grow my "fullstack engineer" resume, featuring boring web languages like HTML, CSS, JS, and PHP.
 
-My priorities at work then shifted to requiring software to run directly on workstations, so I decided to learn Golang. I haven't looked back at PHP since. The most significant aspect of this transition was learning the functional difference between interpreted and compiled languages. With no exposure to any of the C-flavored languages, Golang's type system was a fantastic way for me to understand this new (to me, anyway) way of programming.
+My priorities at work then shifted to requiring software to run directly on workstations, so I decided to learn [Golang](https://golang.org/). I haven't looked back at PHP since. The most significant aspect of this transition was learning the functional difference between interpreted and compiled languages. With no exposure to any of the C-flavored languages, Golang's type system was a fantastic way for me to understand this new (to me, anyway) way of programming.
 
 I got really sick of writing B2B software for end-users, so I transitioned into a DevOps role where I have the luxury of having my fellow engineers as my end-users. My team focuses on enabling our feature teams to ship our software rapidly and effectively. This is comprised of Infrastructure as Code, Continuous Integration and Deployment, and Kubernetes as the infrastructure platform.
+
 
 ##### When and how did you learn of Defold?
 I can't recall for certain, but it was either a Reddit or HackerNews post that caused me to open Defold.com as a tab on my phone. Weeks later, I came across said open tab and decided to give it a look!
 
+
+![](/images/posts/developer-spotlight-adam-engebretson/computercraft.png)
+
+[ Source: computercraft.info]
+
 ##### What do you like the most about Defold?
-As someone who comes from the world of web application development, game development appeared mysterious felt inaccessible to me. Defold's approach to object addressing (URL/path-style) and signaling (msg.post()) immediately made sense to me and I felt like I could grasp some of the concepts more easily than in some of the other game engines I've looked into.
+As someone who comes from the world of web application development, game development appeared mysterious felt inaccessible to me. [Defold's approach to object addressing](https://defold.com/manuals/addressing/) (URL/path-style) and signaling (msg.post()) immediately made sense to me and I felt like I could grasp some of the concepts more easily than in some of the other game engines I've looked into.
 
 <div align="center"><p style="font-size: larger"><i>"The syntax is stupidly simple to learn, and the APIs are beautifully documented"</i></p></div>
 
 Additionally, Lua came very easy to me having used it for a handful of work-related and [Computercraft](https://www.computercraft.info/)-related applications. The syntax is stupidly simple to learn, and the APIs are beautifully documented on [Defold.com](https://defold.com/ref/stable/go/). Following the quick-start guides and tutorial projects was an absolute breeze, and I was able to follow the logic of the simple examples enough to become dangerous.
+
+![](/images/posts/developer-spotlight-adam-engebretson/haxe-logo-horizontal.png)
 
 I should also mention... Before I decided to dive in, I did notice that [Haxe](https://haxe.org/) was listed in the [Asset Portal](https://defold.com/assets/haxesupport/). Even though I said all the nice things I said about Lua, I hate Lua lol! I've been spoiled by the static typing and "it-just-works" IDE Intellisense that comes with Golang, that I wouldn't feel confident at all in my code if I had to write it all in Lua. Knowing that I'd be able to learn the platform/concepts in Lua quickly and easily, then subsequently reimplement it in a statically typed language, was the deal maker.
 
@@ -38,6 +47,10 @@ I should also mention... Before I decided to dive in, I did notice that [Haxe](h
 I find myself to be a "less than creative" individual. I have no design skills, and coming up with game ideas is not my strong suit. Thus, as an exercise in learning, I'm attempting to re-implement Minecraft in Defold using Haxe. I'll also probably progress to writing server-authoritative multiplayer (for me, that’s the easy part) using [Nakama from Heroic Labs](https://heroiclabs.com/) and their [Golang plugin support](https://heroiclabs.com/docs/runtime-code-basics/).
 
 I did spend some time trying to write a Nakama server plugin in Haxe and then compile it down to Lua, but I decided against it since Nakama's types are already declared in Golang, and I'd have to go through the process of doing that myself if I wanted to work in Haxe.
+
+
+##### What is your experience with Nakama? Have you been using Nakama in the past?
+I tackled a Nakama server implementation on my first Defold project. It was really simple; just people walking around on a screen picking up beer sprites. My experience in backend APIs made this a trivial task. The Nakama [server module](https://github.com/adamgoose/walker-server) and [Defold client](https://github.com/adamgoose/walker) (probably out of sync) are both on GitHub.
 
 
 ##### What is your experience with Haxe?
@@ -60,12 +73,20 @@ It's really quite simple to set up, but it took me a little bit of time to get f
 I tried creating a `hooks.editor_script` that would trigger the Haxe build at compile time, however the Defold engine appears to load the generated `app.lua` file before this hooks gets called, so you effectively have to compile your game twice to see your changes. Something tells me, however, that there will soon be an update that provides a solution to this problem.
 
 
+##### Are you also active in the Haxe community?
+No, I'm not active in the Haxe community. I've only begun using Haxe within the context of Defold. I've really come to enjoy the language and aspire to find an application outside of game development, but I'm simply more efficient in other languages today.
+
+
 ##### Which part of your current project are you most proud of?
 I'm most proud of the confidence I have in my code every time I go to run my game. That is not to say I'm confident in my game logic, but that's a different conversation entirely (on which I'm not qualified to comment lol).
 
 I know many readers out there might say something like, "well if you want a statically typed language, use a game engine that utilizes one." That's sound advice, for certain. However, I've gone down that road before with minimal success. Perhaps now that I have a better understanding of Haxe, I'd be more effective in a C-flavored language (I have noticed quite a few similarities between them, and have certainly been able to interpreted C-flavored code better since learning Haxe).
 
 The success story here is the approachability of Defold for folks new to game development, whether you have experience with coding or not. Addressing Game Objects with a URL/Path-style identifier is genius, and passing named messages back and forth is so flexible and easy to understand.
+
+
+##### What kind of goals and limitations have you set yourself for your re-implementation of Minecraft? Re-implementing the whole thing would be a monumental task!
+I'm just hoping to learn. As I make progress in the Minecraft implementation, I come across new challenges and decide to tackle them one thing at a time. Each "feature" helps me understand a little more about game design, game development, and Defold itself!
 
 
 ##### Tell us about your ugliest hack to get a job done!
