@@ -48,6 +48,8 @@ I find myself to be a "less than creative" individual. I have no design skills, 
 
 I did spend some time trying to write a Nakama server plugin in Haxe and then compile it down to Lua, but I decided against it since Nakama's types are already declared in Golang, and I'd have to go through the process of doing that myself if I wanted to work in Haxe.
 
+![](/images/posts/developer-spotlight-adam-engebretson/haxecraft.mp4)
+
 
 ##### What is your experience with Nakama? Have you been using Nakama in the past?
 I tackled a Nakama server implementation on my first Defold project. It was really simple; just people walking around on a screen picking up beer sprites. My experience in backend APIs made this a trivial task. The Nakama [server module](https://github.com/adamgoose/walker-server) and [Defold client](https://github.com/adamgoose/walker) (probably out of sync) are both on GitHub.
