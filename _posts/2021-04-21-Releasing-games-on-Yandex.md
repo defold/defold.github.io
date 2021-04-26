@@ -110,7 +110,7 @@ The close callback is called in any situations, even if there was an error.
 
 
 ### Showing Rewarded Ads
-Rewarded videos are video ads used to give the player a reward or in-game currency for watching an ad. As opposed to the limitations on frequency of interstitial ads you can show rewarded ads as often as you want.
+Rewarded ads are video ads used to give the player a reward or in-game currency for watching an ad. As opposed to the limitations on frequency of interstitial ads you can show rewarded ads as often as you want.
 
 You show a Rewarded Ad like this:
 
@@ -162,7 +162,7 @@ Learn more about the full capabilities in the [documentation of the Yandex.Games
 
 
 ## Submit your game
-When your game has integrated the Yandex.Games SDK and implemented the functionality to initialise the SDK and show ads it is ready to be submitted to Yandex.Games. Before we can submit the game we need to register the game on the Yandex.Games developer dashboard. Login to the Yandex.Games developer dashboard and select the "Add app" option and fill out the form. All of the field of the form are described in the ["Add new game" manual in the official documentation](https://yandex.ru/dev/games/doc/dg/console/add-new-game.html).
+When your game has integrated the Yandex.Games SDK and implemented the functionality to initialise the SDK and show ads it is ready to be submitted to Yandex.Games. Before you can submit the game you need to register the game on the Yandex.Games developer dashboard. Login to the Yandex.Games developer dashboard and select the "Add app" option and fill out the form. All of the field of the form are described in the ["Add new game" manual in the official documentation](https://yandex.ru/dev/games/doc/dg/console/add-new-game.html).
 
 ![](/images/posts/releasing-games-on-yandex/add-app.png)
 
@@ -170,7 +170,7 @@ When your game has integrated the Yandex.Games SDK and implemented the functiona
 
 
 ### Test your game
-Once the game has been submitted it must pass moderation before it can be added to the Yandex.Games catalog. This will take up to three business days. Make sure to test the game before sending it for moderation to catch simple mistakes.
+Once the game has been submitted it must pass moderation before it can be added to the Yandex.Games catalog. This will take up to three business days. Make sure your game follows [the Yandex.Games requirements](https://yandex.ru/dev/games/doc/dg/concepts/requirements.html?lang=en). You should also test your game before sending it for moderation to catch simple mistakes.
 
 To open a game in test mode:
 
