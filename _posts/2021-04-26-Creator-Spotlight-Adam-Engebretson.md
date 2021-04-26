@@ -48,7 +48,10 @@ I find myself to be a "less than creative" individual. I have no design skills, 
 
 I did spend some time trying to write a Nakama server plugin in Haxe and then compile it down to Lua, but I decided against it since Nakama's types are already declared in Golang, and I'd have to go through the process of doing that myself if I wanted to work in Haxe.
 
-![](/images/posts/developer-spotlight-adam-engebretson/haxecraft.mp4)
+<video width="640" height="420" controls>
+  <source src="/images/posts/developer-spotlight-adam-engebretson/haxecraft.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
 
 ##### What is your experience with Nakama? Have you been using Nakama in the past?
