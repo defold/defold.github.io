@@ -3,7 +3,7 @@ layout: post
 title:  Developer case study - Open My Game
 excerpt: In this developer case study we'll take a look at how Belarusian game developer OpenMyGame are using Defold to create web games on Yandex.Games.
 author: Björn Ritzl
-tags: ["developer case study", "interview", "html5"]
+tags: ["developer case study", "interview", "html5", "yandex"]
 ---
 
 One would think that the long and agonizing death of Flash spelled the end for games played in the browser and that the heyday of browser games was long gone. Fortunately this couldn't be further from the truth!
