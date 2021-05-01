@@ -1,8 +1,8 @@
 ---
 layout: ref
 branch: alpha
-ref: dmDNS
+ref: dmMessage
 type: c
-title: API reference (dmDNS)
+title: API reference (dmMessage)
 ---
 {% include anchor_headings.html html=content %}
