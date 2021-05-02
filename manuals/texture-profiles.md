@@ -22,11 +22,11 @@ Since all available hardware texture compression is lossy, you will get artifact
 
 You can select what software image compression is applied on the final texture data (compressed or raw) in the bundle archives. Defold supports [Basis Universal](https://github.com/BinomialLLC/basis_universal) texture compression, which compresses the image into a intermediary format. This format is transcoded at runtime to a hardware format appropriate for the current device's GPU.
 The Basis Universal format is a high quality but lossy format.
-All images are also compressed using LZ4 for further reduction of file size when we atore them into the game archive.
+All images are also compressed using LZ4 for further reduction of file size when we store them into the game archive.
 
-<div class='sidenote' markdown='1'>
+::: sidenote
 Compression is a resource intensive and time consuming operation that can cause _very_ long build times depending on the number of texture images to compress and also the chosen texture formats and type of software compression.
-</div>
+:::
 
 ## Texture profiles
 
@@ -120,12 +120,12 @@ Since Basis Universal compression transcoding is dependent on the device's GPU c
 The Basis Universal transcoder supports many output formats, like `ASTC4x4`, `BCx`, `ETC2`, `ETC1` and `PVRTC1`.
 For a complete, up-to-date list, see
 
-<div class='sidenote' markdown='1'>
+::: sidenote
 The hardware specific output formats are currently disable due to the recent upgrade to our usage of Basis Universal encoder.
 
 We are currently looking into how to reintroduce support for both these formats, as well as readding support for WEBP compression.
 Our current long running task of introducing content pipeline plugins aim to fix this.
-</div>
+:::
 
 The following lossy compression formats are currently supported:
 
@@ -154,12 +154,12 @@ ETC
 
 The following software image compression types are supported. The data is uncompressed when the texture file is loaded into memory.
 
-<div class='sidenote' markdown='1'>
+::: sidenote
 Currently the `WEBP` compression will always fallback to `BASIS_UASTC` compression.
 
 We are currently looking into how to reintroduce support for both these formats, as well as readding support for WEBP compression.
 Our current long running task of introducing content pipeline plugins aim to fix this.
-</div>
+:::
 
 | Type                              | Formats                   | Note |
 | --------------------------------- | ------------------------- | ---- |
