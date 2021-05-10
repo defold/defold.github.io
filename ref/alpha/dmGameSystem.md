@@ -1,8 +1,8 @@
 ---
 layout: ref
-branch: stable
-ref: dmDNS
+branch: alpha
+ref: dmGameSystem
 type: c
-title: API reference (dmDNS)
+title: API reference (dmGameSystem)
 ---
 {% include anchor_headings.html html=content %}
