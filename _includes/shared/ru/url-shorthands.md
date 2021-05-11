@@ -1,17 +1,17 @@
   `.`
-  : Shorthand resolving to the current game object.
+  : Сокращение, вычисляющее текущий игровой объект.
 
   `#`
-  : Shorthand resolving to the current component.
+  : Сокращение, вычисляющее текущий компонент.
 
-  For example:
+  Пример:
 
   ```lua
-   -- Let this game object acquire input focus
+   -- Позволить игровому объекту получить фокус ввода
    msg.post(".", "acquire_input_focus")
   ```
 
   ```lua
-   -- Post "reset" to the current script
+   -- Передать "reset" текущему скрипту
    msg.post("#", "reset")
   ```

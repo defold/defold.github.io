@@ -1,9 +1,9 @@
-#### Q: Is it possible to hide the navigation and status bars on Android?
-A: Yes, set the *immersive_mode* setting in the *Android* section of your *game.project* file. This lets your app take over the whole screen and capture all touch events on the screen.
+#### Q: ¿Es posible esconder la barra de navegación y estado en Android?
+A: Si, activa la opción *immersive_mode* en la sección de *Android* de tu archivo *game.project*. Esto deja a tu aplicación tomar la pantalla completa y capturar todos los eventos touch de la pantalla.
 
 
-#### Q: Why am I'm getting "Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]" when installing a Defold game on device?
-A: Android detects that you try to install the app with a new certificate. When bundling debug builds, each build will be signed with a temporary certificate. Uninstall the old app before installing the new version:
+#### Q: ¿Por qué obtengo "Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]" cuando instalo un archivo de juego Defold en mi dispositivo?
+A: Android detecta que hayas tratado de instalar la aplicación con un nuevo certificado. Cuando creas builds de depuración, cada build será firmada con un certificado temporal. Desinstala la aplicación anterior antes de instalar la nueva versión:
 
 ```
 $ adb uninstall com.defold.examples

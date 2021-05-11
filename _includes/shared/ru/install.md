@@ -1,63 +1,63 @@
-## Downloading
+## Загрузка
 
-Go to the [Defold download page](https://defold.com/download/) where you will find Download buttons for macOS, Windows and Linux (Ubuntu):
+Перейдите на [страницу загрузки Defold](https://defold.com/download/), где найдете кнопку загрузки для macOS, Windows и Linux (Ubuntu):
 
 ![download editor](/shared/images/editor_download.png)
 
-## Installation
+## Установка
 
-Installation on macOS
-: The downloaded file is a DMG image containing the program.
+Установка в macOS
+: Загруженный файл представляет собой DMG-образ, содержащий программу.
 
-  1. Locate the file "Defold-x86_64-darwin.dmg" and double click it to open the image.
-  2. Drag the application "Defold" to the "Applications" folder link.
+  1. Перейдите к расположению файла "Defold-x86_64-darwin.dmg" и выполните двойной клик по нему, чтобы открыть этот образ.
+  2. Перетащите приложение "Defold" на ссылку папки "Applications".
 
-  To start the editor, open your "Applications" folder and <kbd>double click</kbd> the file "Defold".
+  Чтобы запустить редактор, откройте папку "Applications" и выполните <kbd>двойной клик</kbd> по файлу "Defold".
 
   ![Defold macOS](/shared/images/macos_content.png)
 
-Installation on Windows
-: The downloaded file is a ZIP archive that needs to be extracted:
+Установка в Windows
+: Загруженный файл представляет собой ZIP-архив, который необходимо распаковать:
 
-  1. Locate the archive file "Defold-x86_64-win32.zip", <kbd>press and hold</kbd> (or <kbd>right-click</kbd>) the folder, select *Extract All*, and then follow the instructions to extract the archive to a folder named "Defold".
-  2. Move the folder "Defold" to "C:\Program Files (x86)\"
+  1. Перейдите к расположению файла архива "Defold-x86_64-win32.zip", <kbd>кликните ПКМ</kbd> по папке и выберите команду *Extract All*, затем следуйте инструкциям, чтобы извлечь архив в папку с именем "Defold".
+  2. Переместите папку "Defold" в "C:\Program Files (x86)\".
 
-  To start the editor, open the folder "Defold" and <kbd>double click</kbd> the file "Defold.exe".
+  Чтобы запустить редактор, откройте папку "Defold" и выполните <kbd>двойной клик</kbd> по файлу "Defold.exe".
 
   ![Defold windows](/shared/images/windows_content.png)
 
-Installation on Linux
-: The downloaded file is a ZIP archive that needs to be extracted:
+Установка в Linux
+: Загруженный файл представляет собой ZIP-архив, который необходимо распаковать:
 
-  1. From a terminal, locate the archive file "Defold-x86_64-linux.zip" unzip it to a target Directory called "Defold".
+  1. В терминале перейдите к расположению файла архива "Defold-x86_64-linux.zip" и распакуйте его в целевой каталог с именем "Defold".
 
      ```bash
      $ unzip Defold-x86_64-linux.zip -d Defold
      ```
 
-  To start the editor, change directory to where you extracted the application, then run the `Defold` executable, or <kbd>double click</kbd> it on your desktop.
+  Чтобы запустить редактор, перейдите в каталог, куда было извлечено приложение, затем запустите исполняемый файл `Defold` или выполните по нему <kbd>двойной клик</kbd> в файловом менеджере.
 
   ```bash
   $ cd Defold
   $ ./Defold
   ```
 
-  If you run into any problems starting the editor, opening a project or running a Defold game please refer to the [Linux section of the FAQ](/faq/faq#linux-issues).
+  Если возникнут проблемы с запуском редактора, открытием проекта или запуском игры на Defold, обращайтесь к разделу [часто задаваемых попросов по Linux](/faq/faq#linux-issues).
 
-## Install an old version
+## Установка устаревших версий
 
-### From Defold GitHub release page
+### Со страницы релиза Defold на GitHub
 
-Every stable version of Defold is also [released on GitHub](https://github.com/defold/defold/releases).
+Каждая стабильная версия Defold также [публикуется на GitHub](https://github.com/defold/defold/releases).
 
-### From Defold download page
+### Со страницы загрузки Defold
 
-You can download and install old editor versions using the following link pattern:
+Старые версии редактора можно загрузить и установить по следующим ссылкам:
 
 * Windows: https://d.defold.com/archive/%sha1%/stable/editor2/Defold-x86_64-win32.zip
 * macOS: https://d.defold.com/archive/%sha1%/stable/editor2/Defold-x86_64-darwin.dmg
 * Linux: https://d.defold.com/archive/%sha1%/stable/editor2/Defold-x86_64-linux.zip
 
-Replace `%sha1%` by the editor release hash representing the version in question. The hash of each Defold version can be seen in the links to the released version on the download page at https://d.defold.com/stable/ (make sure to remove the initial # character and only copy the alpha-numeric part):
+Следует заменить `%sha1%` на хэш релиза редактора, представляющего требуемую версию. Хэш каждой версии Defold можно обнаружить в ссылках на выпущенную версию на странице загрузки по адресу https://d.defold.com/stable/ (убедитесь, что скопировали только буквенно-цифровую часть без предшествующего символа "#"):
 
 ![download editor](/shared/images/old_version_sha1.png)

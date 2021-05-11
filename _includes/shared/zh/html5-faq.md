@@ -1,12 +1,12 @@
-#### Q: Why does my HTML5-app freeze at the splash screen in Chrome?
+#### Q: 我的HTML5游戏在Chrome里一到溅射屏幕就卡死了?
 
-A: In some cases it is not possible to run a game in the browser locally from the filesystem. Running from the editor serves the game from a local web server. You can, for instance, use SimpleHTTPServer in Python:
+A: 很多浏览器不允许从本地磁盘文件来启动程序. 从编辑器里运行就能自动生成临时本地服务器. 另外, 你也可以使用 Python 之类的程序快速搭建本地服务器 SimpleHTTPServer:
 
 ```sh
 $ python -m SimpleHTTPServer [port]
 ```
 
 
-#### Q: Why does my game crash with error "Unexpected data size" while loading?
+#### Q: 游戏加载时报 "Unexpected data size" 错误然后崩溃?
 
-A: This usually happens when you are using Windows and make a build and commit it to Git. If you have the wrong line-ending configuration in Git it will change your line endings and thus also the data size. Follow these instructions to solve the problem: https://docs.github.com/en/free-pro-team@latest/github/using-git/configuring-git-to-handle-line-endings
+A: 这种情况可能发生在使用 Windows 编译并且提交到 Git 上的时候. 如果 Git 配置文件里含有不正确的行尾符上传的时候就会被自动改正造成数据大小变化. 解决方案详见: https://docs.github.com/en/free-pro-team@latest/github/using-git/configuring-git-to-handle-line-endings

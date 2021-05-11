@@ -79,29 +79,7 @@ Reducing script execution time is needed if the profiler shows high values for t
 Don't poll for changes if you can get a callback. Don't manually animate something or perform a task that can be handed over to the engine (eg go.animate vs manually animating something).
 
 #### Reduce garbage collection
-If you create loads of short lived objects such as Lua tables or user data objects (vector3, quaternion, matrix etc) every frame this will eventually trigger the garbage collector of Lua. When this happens it can manifest itself as small hitches/spikes in frame time. Re-use tables and other objects where you can and really try to avoid creating Lua tables and objects inside loops and similar constructs if possible.
-
-```
--- avoid creating objects such as tables and vector3 in loops with many iterations
-for i=1,10000 do
-    local properties = {
-        speed = math.random(50, 100)
-    }
-    local position = vmath.vector3(i, 100, 0)
-    factory.create("#factory", position, nil, properties)
-end
-
--- create the objects outside the loop and modify as needed in the loop
-local properties = {
-    speed = 0
-}
-local position = vmath.vector3(0, 100, 0)
-for i=1,10000 do
-    properties.speed = math.random(50, 100)
-    position.x = i
-    factory.create("#factory", position, nil, properties)
-end
-```
+If you create loads of short lived objects such as Lua tables every frame this will eventually trigger the garbage collector of Lua. When this happens it can manifest itself as small hitches/spikes in frame time. Re-use tables where you can and really try to avoid creating Lua tables inside loops and similar constructs if possible.
 
 #### Pre-hash message and action ids
 If you do a lot of message handling or have many input events to deal with it is recommended to pre-hash the strings. Consider this piece of code:

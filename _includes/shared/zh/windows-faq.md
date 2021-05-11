@@ -1,7 +1,7 @@
-#### Q: Why are GUI box nodes without a texture transparent in the editor but show up as expected when I build and run?
+#### Q: 为什么编辑器中无纹理的 GUI box 节点透明显示, 但是构建运行后能正常显示?
 
-A: This error can happen on [computers using AMD Radeon GPUs](https://github.com/defold/editor2-issues/issues/2723). Make sure to update your graphics drivers.
+A: 这个错误发生在 [使用 AMD Radeon GPU 的机器](https://github.com/defold/editor2-issues/issues/2723) 上. 注意更新显卡驱动.
 
-#### Q: Why am I getting 'com.sun.jna.Native.open.class java.lang.Error: Access is denied' when opening an atlas or a scene view?
+#### Q: 打开图集或者场景视图时报错 'com.sun.jna.Native.open.class java.lang.Error: Access is denied'?
 
-A: Try running Defold as administrator. Right-click on the Defold executable and select "Run as Administrator".
+A: 试试以管理员身份打开 Defold. 右键点击 Defold 可执行程序选择 "以管理员身份运行".

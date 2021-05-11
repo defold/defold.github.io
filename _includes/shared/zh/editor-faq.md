@@ -1,22 +1,20 @@
-#### Q: What are the system requirements for the editor?
-A: The editor will use up to 75% of the available memory of the system. On a computer with 4 GB of RAM this should be enough for smaller Defold projects. For mid-sized or large projects it is recommended to use 6 GB or more of RAM.
+
+#### 问: 运行编辑器需要什么硬件系统?
+
+答: 编辑器最多占用 75% 的空闲系统内存. 一般 4 GB 内存的电脑就可以运行 Defold 小项目了. 中大型项目建议配备 6 GB 或更多内存.
 
 
-#### Q: Are Defold beta versions auto-updating?
-A: Yes. The Defold beta editor checks for an update at startup, just like the Defold stable version does.
+#### 问: Defold 测试版会自动更新吗?
+
+答: Defold 测试版编辑器会在启动时检查并自动更新, 正式版也是.
+
+#### 问: 编辑器不启动, 项目不加载?
+
+答: 检查 Defold 安装路径里是否有空格. 比如, 把编辑器放在mac系统 *Applications* 中的 *Defold-macosx* 文件夹里, 就能运行.  改成 *Defold macosx* 就无法运行. 在 Windows 上, 像 *C:\\Program Files\\* 这样的路径都不行. 这归因于 Eclipse 框架的一个已知 bug.
 
 
-#### Q: Why am I getting an error saying "java.awt.AWTError: Assistive Technology not found" when launching the editor?
-A: This error is related to problems with Java assistive technology such as the [NVDA screen reader](https://www.nvaccess.org/download/). You probably have an `.accessibility.properties` file in your home folder. Remove the file and try launching the editor again. (Note: If you do use any assistive technology and require that file to be present then please reach out to us at info@defold.se to discuss alternative solutions).
+#### 问: 启动 Defold 时报了 "sun.security.validator.ValidatorException: PKIX path building failed" 的错?
 
-Discussed [here on the Defold forum](https://forum.defold.com/t/editor-endless-loading-windows-10-1-2-169-solved/65481/3).
+答: 这个错是由于编辑器尝试建立 https 连接而服务器证书无法验证导致.
 
-
-#### Q: Why doesn't the editor start or open my project?
-A: Check if there are spaces in the path leading up to the Defold application. For instance, if you put the folder *Defold-macosx* containing the macOS version of the editor in your *Applications* folder, then you should be ok.  If you rename the folder *Defold macosx* the editor might not start anymore. On Windows, putting Defold under *C:\\Program Files\\* can trigger this problem. This is due to a known bug in the underlying Eclipse framework.
-
-
-#### Q: Why am I getting an error saying "sun.security.validator.ValidatorException: PKIX path building failed" when launching the editor?
-A: This exception occurs when the editor tries to make an https connection but the certificate chain provided by the server cannot be verified.
-
-See [this link](https://github.com/defold/defold/blob/master/editor/README_TROUBLESHOOTING_PKIX.md) for details on this error.
+详情请见 [这里](https://github.com/defold/defold/blob/master/editor/README_TROUBLESHOOTING_PKIX.md).

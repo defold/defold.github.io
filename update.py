@@ -105,7 +105,7 @@ def copytree(src, dst, overwrite = False):
         if not os.path.isdir(dst):
             os.makedirs(dst)
         for f in os.listdir(src):
-            copytree(os.path.join(src, f), os.path.join(dst, f))
+            copytree(os.path.join(src, f), os.path.join(dst, f), overwrite)
     elif overwrite or not os.path.exists(dst):
         shutil.copyfile(src, dst)
 
@@ -319,7 +319,8 @@ def process_docs(download = False):
             shared_includes_src_dir = os.path.join(tmp_dir, "doc-master", "docs", language, "shared")
             shared_includes_dst_dir = os.path.join("_includes", "shared", language)
             rmcopytree(shared_includes_src_dir_en, shared_includes_dst_dir)
-            copytree(shared_includes_src_dir, shared_includes_dst_dir)
+            if os.path.exists(shared_includes_src_dir):
+                copytree(shared_includes_src_dir, shared_includes_dst_dir, overwrite = True)
             shutil.rmtree(os.path.join(shared_includes_dst_dir, "images"))
             for filename in find_files(shared_includes_dst_dir, "*.md"):
                 process_doc_file(filename, language)

@@ -1,22 +1,22 @@
-#### Q: What are the system requirements for the editor?
-A: The editor will use up to 75% of the available memory of the system. On a computer with 4 GB of RAM this should be enough for smaller Defold projects. For mid-sized or large projects it is recommended to use 6 GB or more of RAM.
+#### Q: ¿Cuáles son los requisitos del sistema para el editor?
+A: El editor utilizará el 75% de tu memoria disponible en el sistema. Una computadora con 4GB de RAM debe ser suficiente para proyectos menores de Defold. Para proyectos de tamaño medio o grandes es recomendado 6GB de RAM o más.
 
 
-#### Q: Are Defold beta versions auto-updating?
-A: Yes. The Defold beta editor checks for an update at startup, just like the Defold stable version does.
+#### Q: ¿Las versiones beta de Defold se actualizan automáticamente?
+A: Sí. El editor beta de Defold verifica por una actualización al inicio, tal como la versión estable de Defold.
 
 
-#### Q: Why am I getting an error saying "java.awt.AWTError: Assistive Technology not found" when launching the editor?
-A: This error is related to problems with Java assistive technology such as the [NVDA screen reader](https://www.nvaccess.org/download/). You probably have an `.accessibility.properties` file in your home folder. Remove the file and try launching the editor again. (Note: If you do use any assistive technology and require that file to be present then please reach out to us at info@defold.se to discuss alternative solutions).
+#### Q: ¿Por qué obtengo un error diciendo "java.awt.AWTError: Assistive Technology not found" cuando lanzo el editor?
+A: Este error está relacionado a problemas con Java assistive technology como el [NVDA screen reader](https://www.nvaccess.org/download/). Probablemente tienes un archivo `.accessibility.properties` en tu carpeta home. Remueve el archivo y trata de lanzar el editor de nuevo. (Nota: Si utilizas cualquier tecnología de asistencia y requieres que el archivo esté presente entonces por favor escríbenos a info@defold.se para discutir soluciones alternativas).
 
-Discussed [here on the Defold forum](https://forum.defold.com/t/editor-endless-loading-windows-10-1-2-169-solved/65481/3).
-
-
-#### Q: Why doesn't the editor start or open my project?
-A: Check if there are spaces in the path leading up to the Defold application. For instance, if you put the folder *Defold-macosx* containing the macOS version of the editor in your *Applications* folder, then you should be ok.  If you rename the folder *Defold macosx* the editor might not start anymore. On Windows, putting Defold under *C:\\Program Files\\* can trigger this problem. This is due to a known bug in the underlying Eclipse framework.
+Se ha discutido [aquí en el foro de Defold](https://forum.defold.com/t/editor-endless-loading-windows-10-1-2-169-solved/65481/3).
 
 
-#### Q: Why am I getting an error saying "sun.security.validator.ValidatorException: PKIX path building failed" when launching the editor?
-A: This exception occurs when the editor tries to make an https connection but the certificate chain provided by the server cannot be verified.
+#### Q: ¿Por qué el editor no inicia o abre mi proyecto?
+A: Verifica si hay espacios en la ruta de la aplicación Defold. Por ejemplo, si pones la carpeta *Defold-macosx* que contiene la versión macOS del editor en tu carpeta de *Applications*, entonces debes estar bien. Si renombraste la carpeta a *Defold macosx* el editor puede que no inicie. En windows, poner Defold bajo *C:\\Program Files\\* puede ocasionar este problema. Esto es debido a un bug conocido en el framework de Eclipse.
 
-See [this link](https://github.com/defold/defold/blob/master/editor/README_TROUBLESHOOTING_PKIX.md) for details on this error.
+
+#### Q: ¿Por qué estoy obteniendo un error diciendo "sun.security.validator.ValidatorException: PKIX path building failed" cuando lanzo el editor?
+A: Esta excepción ocurre cuando el editor trata de hacer una conexión https pero la cadena de certificado provisto por el servidor no puede ser verificado.
+
+Mira [este link](https://github.com/defold/defold/blob/master/editor/README_TROUBLESHOOTING_PKIX.md) para más detalles en este error.
