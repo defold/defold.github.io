@@ -1,10 +1,10 @@
-The *Blend Mode* property defines how the component graphics should be blended with the graphics behind it. These are the available blend modes and how they are calculated:
+Свойство *Blend Mode* определяет, как графика компонента должна смешиваться с графикой, расположенной позади. Ниже представлены доступные режимы наложения и способы их вычисления:
 
 Alpha
-: Normal blending: `src.a * src.rgb + (1 - src.a) * dst.rgb`
+: Нормальное смешивание: `src.a * src.rgb + (1 - src.a) * dst.rgb`
 
 Add
-: Brighten the background with the color values of the corresponding pixels of the component: `src.rgb + dst.rgb`
+: Осветляет фон цветовыми значениями соответствующих пикселей компонента: `src.rgb + dst.rgb`
 
 Multiply
-: Darken the background with values of the the corresponding pixels of the component: `src.rgb * dst.rgb`
+: Затемняет фон значениями соответствующих пикселей компонента: `src.rgb * dst.rgb`
