@@ -3,7 +3,7 @@ layout: post
 title:  Heroic Labs joins the Defold Foundation as a corporate partner
 excerpt: The Defold Foundation welcomes Heroic Labs as a corporate partner. The Defold Foundation will work together with Heroic Labs to make the Nakama open-source realtime server for apps and games available to Defold developers.
 author: Björn Ritzl
-tags: ["news", "partner"]
+tags: ["news", "partner", "heroiclabs", "nakama"]
 ---
 
 _The Defold Foundation welcomes Heroic Labs as a corporate partner. The Defold Foundation will work together with Heroic Labs to make the Nakama open-source realtime server for apps and games available to Defold developers._
