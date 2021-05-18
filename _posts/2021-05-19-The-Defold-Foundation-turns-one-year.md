@@ -42,6 +42,6 @@ Finally, [Ben James has continued to be extremely productive](https://benjames17
 ### Final thoughts
 Defold has come a long way since it was first launched by King in 2016 as a closed source, but free to use game engine. At times the engine has evolved rapidly at a pace where it is hard to keep up, and other times a bit more slowly, but ever improving! We've had the pleasure and privilege of making this journey together with an absolutely amazing community of game developers. The community has encouraged us at every step of the way and we are truly grateful for their support. Defold could not exist without all of the great developers out there releasing games using our engine. Thank you!
 
-Sincerely,</br>
-Björn Ritzl</br>
+Sincerely,\
+Björn Ritzl\
 The Defold Foundation
