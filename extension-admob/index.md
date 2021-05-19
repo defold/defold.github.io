@@ -14,7 +14,7 @@ This extension provides a unified, simple to use interface to show AdMob ads on 
 ## Installation
 To use this library in your Defold project, add the following URL to your `game.project` dependencies:
 
-https://github.com/defold/extension-admob/archive/master.zip
+[https://github.com/defold/extension-admob/archive/master.zip](https://github.com/defold/extension-admob/archive/master.zip)
 
 We recommend using a link to a zip file of a [specific release](https://github.com/defold/extension-admob/releases).
 
@@ -23,7 +23,6 @@ We recommend using a link to a zip file of a [specific release](https://github.c
 The extension can be configured by adding the following fields to game.project:
 
 ```
-
 [admob]
 app_id_ios = ca-app-pub-3940256099942544~1458002511
 app_id_android = ca-app-pub-3940256099942544~3347511713
