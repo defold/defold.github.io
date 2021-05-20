@@ -1,5 +1,5 @@
 ---
-layout: ref
+layout: api
 branch: stable
 ref: dmHid
 type: c

@@ -1,5 +1,5 @@
 ---
-layout: ref
+layout: api
 branch: beta
 ref: dmTime
 type: c

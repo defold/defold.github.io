@@ -1,5 +1,5 @@
 ---
-layout: ref
+layout: api
 branch: beta
 ref: model
 type: defold

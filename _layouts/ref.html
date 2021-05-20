@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: page
 ---
 {% include learnnav.html showmenu=true %}
 
@@ -25,7 +25,7 @@ layout: base
 	<div class="container">
 		<div class="row">
 			<div class="columns two">
-				<ul id="navmenu" class="navmenu ref nobullet">
+				<ul id="sidemenu" class="sidemenu ref nobullet scrollable">
 					{%- for type in types -%}
 					{%- assign refs = indices | where: "type", type -%}
 
@@ -62,12 +62,12 @@ layout: base
 						{%- endfor -%}
 					</ul>
 				</ul>
-				<select class="navdropdown" onchange="location = this.value;">
+				<select class="dropdownmenu" onchange="location = this.value;">
 					{%- for r in indices -%}
 					<option value="{{ r.url }}">{{ r.namespace }}</option>
 					{%- endfor -%}
 				</select>
-				<select class="navdropdown" onchange="location = this.value;">
+				<select class="dropdownmenu" onchange="location = this.value;">
 					{%- for b in branches -%}
 					<option value="{{ page_url | replace: 'BRANCH', b }}">{{ b }}</option>
 					{%- endfor -%}
@@ -87,8 +87,8 @@ layout: base
 
 {%- include marksearchhits.html div="ref" -%}
 
-<script type="text/javascript">
-	var menu = document.getElementById("navmenu");
+<!-- <script type="text/javascript">
+	var menu = document.getElementById("sidemenu");
 	if (menu != null) {
 		var viewportOffset = menu.getBoundingClientRect();
 		window.onscroll = function() {
@@ -100,4 +100,4 @@ layout: base
 			}
 		};
 	}
-</script>
+</script> -->

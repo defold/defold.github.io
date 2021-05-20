@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="eight columns">
-				<ul class="navmenu">
+				<ul class="sidemenu">
 					<li><nobr>{% include octicon.html icon="octicons/home.svg" color="#FFF" zoom="1.25" text=" Defold" link="/" %}</nobr></li>
 					<li><a href="/product">Features</a></li>
 					<li><a href="/showcase">Showcase</a></li>
@@ -12,7 +12,7 @@
 					<li><a href="//forum.defold.com">Forum</a></li>
 					<li style="visibility: hidden">{% include octicon.html icon="octicons/desktop-download.svg" color="#FFF" zoom="1.75" %} Download</li>
 				</ul>
-				<select class="navdropdown dark-text" onchange="location = this.value;">
+				<select class="dropdownmenu dark-text" onchange="location = this.value;">
 					<option value="/">Home</option>
 					<option value="/product" {% if page.url contains 'product' %}selected{% endif %}>Features</option>
 					<option value="/showcase" {% if page.url contains 'showcase' %}selected{% endif %}>Showcase</option>
@@ -26,7 +26,7 @@
 				</select>
 			</div>
 			<div class="four columns">
-				<ul class="navmenu right">
+				<ul class="sidemenu right">
 					<li><nobr>{% include octicon.html icon="octicons/heart.svg" color="#FFF" zoom="1.25" text=" Donate" link="/donate" %}</nobr></li>
 					<li><nobr>{% include octicon.html icon="octicons/arrow-down.svg" color="#FFF" zoom="1.35" text=" Download" link="/download" %}</nobr></li>
 					<li><nobr>{% include octicon.html icon="octicons/mark-github.svg" color="#FFF" zoom="1.25" text=" GitHub" link="https://www.github.com/defold" target="_blank" %}</nobr></li>

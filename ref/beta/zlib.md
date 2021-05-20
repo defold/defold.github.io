@@ -1,5 +1,5 @@
 ---
-layout: ref
+layout: api
 branch: beta
 ref: zlib
 type: defold

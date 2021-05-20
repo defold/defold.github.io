@@ -1,5 +1,5 @@
 ---
-layout: ref
+layout: api
 branch: stable
 ref: crash
 type: defold

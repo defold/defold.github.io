@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: page
 ---
 {% include learnnav.html showmenu=true %}
 
@@ -8,7 +8,7 @@ layout: base
 		<div class="row">
 			<div class="columns two">
 				{% assign all_categories = site.data.examplesindex | map: "category" | uniq %}
-				<div class="navmenu">
+				<div class="sidemenu">
 				{% for category in all_categories %}
 					{%- assign examples = site.data.examplesindex | where: "category", category -%}
 					{%- assign checked = "" -%}
@@ -28,8 +28,8 @@ layout: base
 					</ul>
 				{% endfor %}
 				</div>
-				<div class="navdropdown">
-					<select class="navdropdown" onchange="location = this.value;">
+				<div class="dropdownmenu">
+					<select class="dropdownmenu" onchange="location = this.value;">
 					{% for category in all_categories %}
 						<option value="">{{ category | capitalize }}</option>
 						{% assign examples = site.data.examplesindex | where: "category", category %}

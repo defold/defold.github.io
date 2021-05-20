@@ -1,5 +1,5 @@
 ---
-layout: ref
+layout: api
 branch: alpha
 ref: html5
 type: defold

@@ -4,15 +4,6 @@
 	{% include head.html %}
 </head>
 <body>
-<div id="page">
-	<div id="pagecontent" {%- if page.background.size > 0 -%} style='background-image: url("{{ page.background }}");' {%- endif -%}>
-	{% include topnav.html style=page.nav %}
-
-	{% include alerts.html %}
-	{{ content }}
-	</div>
-
-	{% include footer.html %}
-</div>
+{{ content }}
 </body>
 </html>

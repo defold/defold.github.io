@@ -1,5 +1,5 @@
 ---
-layout: ref
+layout: api
 branch: alpha
 ref: sprite
 type: defold

@@ -71,7 +71,7 @@ sort: {}
 """
 
 REFDOC_MD_FRONTMATTER = """---
-layout: ref
+layout: api
 branch: {}
 ref: {}
 type: {}

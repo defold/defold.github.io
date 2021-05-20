@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="nine columns">
 				{%- if include.showmenu -%}
-				<ul class="navmenu">
+				<ul class="sidemenu">
 					<li><a href="/examples/animation/basic_tween" class="{% if page.url contains 'examples' %}bold{% endif %}">Examples </a></li>
 					<li><a href="/videos" class="{% if page.url contains 'videos' %}bold{% endif %}">Videos</a></li>
 					<li><a href="/tutorials" class="{% if page.url contains 'tutorials' %}bold{% endif %}">Tutorials</a></li>
@@ -12,7 +12,7 @@
 					<li><a href="/faq/faq" class="{% if page.url contains 'faq' %}bold{% endif %}">FAQ</a></li>
 					<li><a href="/codepad/" class="{% if page.url contains 'codepad' %}bold{% endif %}">Codepad</a></li>
 				</ul>
-				<select class="navdropdown" onchange="location = this.value;">
+				<select class="dropdownmenu" onchange="location = this.value;">
 					<option value="/examples/animation/basic_tween" {% if page.url contains 'examples' %}selected{% endif %}>Examples</option>
 					<option value="/videos" {% if page.url contains 'videos' %}selected{% endif %}>Videos</option>
 					<option value="/tutorials" {% if page.url contains 'tutorials' %}selected{% endif %}>Tutorials</option>
@@ -21,7 +21,7 @@
 					<option value="/faq/faq" {% if page.url contains 'faq' %}selected{% endif %}>FAQ</option>
 					<option value="/codepad" {% if page.url contains 'codepad' %}selected{% endif %}>Codepad</option>
 				</select>
-				<div class="right navdropdown compact">
+				<div class="right dropdownmenu compact">
 					<form action="/search">
 						<input id="search" name="q" type="text" placeholder="Search..."/>
 					</form>
@@ -31,7 +31,7 @@
 				{%- endif -%}
 			</div>
 			<div class="three columns">
-				<div class="right navmenu compact">
+				<div class="right sidemenu compact">
 					<form action="/search">
 						<input id="search" name="q" type="text" placeholder="Search..."/>
 					</form>

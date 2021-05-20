@@ -1,0 +1,97 @@
+---
+layout: base
+---
+{%- assign branch = page.branch -%}
+{%- assign unsortedindices = site.data.refindex | where: "branch", branch -%}
+{%- assign indices = unsortedindices | sort: "namespace" -%}
+{%- assign branches = site.data.branchindex -%}
+{%- assign types = indices | map: "type" | uniq -%}
+{%- if page.type == "extension" -%}
+	{%- assign ref = site.data.extensions[page.ref] -%}
+{%- else -%}
+	{%- assign ref = site.data.ref[page.branch][page.ref] -%}
+{%- endif -%}
+
+{%- if page.url contains branch -%}
+	{%- assign page_url = page.url | replace: branch, "BRANCH" -%}
+{%- else -%}
+	{%- assign page_url = page.url | replace: "ref/", "ref/BRANCH/" -%}
+{%- endif -%}
+
+<div id="page" style="position: relative;">
+	<div id="pagecontent">
+		<div class="apimenu sidemenu">
+			<p><a href="/learn"><img src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png"/></a></p>
+			<form action="/search">
+				<input id="search" name="q" type="text" placeholder="Search..."/>
+			</form>
+			<hr>
+			<ul class="nobullet">
+				{%- for type in types -%}
+				{%- assign refs = indices | where: "type", type -%}
+
+				{%- assign checked = "" -%}
+				{%- for r in refs -%}
+					{%- assign url = r.url -%}
+					{%- if page.url contains url -%}
+						{%- assign checked = "checked" -%}
+					{%- endif -%}
+				{%- endfor -%}
+
+				<input id="collapsible_{{ type }}" class="toggle" type="checkbox" {{ checked }}/>
+				<label for="collapsible_{{ type }}" class="togglelabel">{{ type | capitalize  }}</label>
+				<ul class="nobullet">
+					{%- for r in refs -%}
+						{%- assign textstyle = "text-decoration: none;" -%}
+						{%- if page.url contains r.url -%}
+							{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
+						{%- endif -%}
+					<li style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{{ r.namespace }}</a></li>
+					{%- endfor -%}
+				</ul>
+				{%- endfor -%}
+
+				<input id="branch" class="toggle" type="checkbox" checked/>
+				<label for="branch" class="togglelabel">Version</label>
+				<ul class="nobullet">
+					{%- for b in branches -%}
+						{%- assign textstyle = "text-decoration: none;" -%}
+						{%- if page.branch == b -%}
+							{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
+						{%- endif -%}
+					<li style="padding-left: 2rem; padding-bottom: 0px;"><a href="{{ page_url | replace: 'BRANCH', b }}" style="{{ textstyle }}">{{ b }}</a></li>
+					{%- endfor -%}
+				</ul>
+			</ul>
+
+		</div>
+
+		<div class="apicontent lightest">
+			<div class="dropdownmenu">
+				<p>
+					<a href="/learn"><img src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png"/></a>
+				</p>
+				<form action="/search">
+					<input id="search" name="q" type="text" placeholder="Search..."/>
+				</form>
+			</div>
+			<select class="dropdownmenu" onchange="location = this.value;">
+				{%- for r in indices -%}
+				<option value="{{ r.url }}">{{ r.namespace }}</option>
+				{%- endfor -%}
+			</select>
+			<select class="dropdownmenu" onchange="location = this.value;">
+				{%- for b in branches -%}
+				<option value="{{ page_url | replace: 'BRANCH', b }}">{{ b }}</option>
+				{%- endfor -%}
+			</select>
+			{%- if ref.info.group == "DEFOLD SDK" -%}
+				{%- include api_dmsdk.html ref=ref -%}
+			{%- else -%}
+				{%- include api.html ref=ref -%}
+			{%- endif -%}
+		</div>
+	</div>
+</div>
+
+{%- include marksearchhits.html div="ref" -%}

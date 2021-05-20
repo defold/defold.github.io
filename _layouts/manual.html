@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: page
 ---
 {% include learnnav.html showmenu=true %}
 
@@ -16,7 +16,7 @@ layout: base
 	<div class="container">
 		<div class="row">
 			<div class="columns two">
-				<div class="navmenu">
+				<div class="sidemenu">
 				{%- for section in site.data.learnindex.navigation.manuals -%}
 					{%- assign checked = "" -%}
 					{%- if current_section == section -%}
@@ -39,8 +39,8 @@ layout: base
 					</ul>
 				{%- endfor -%}
 				</div>
-				<div class="navdropdown">
-					<select class="navdropdown" onchange="location = this.value;">
+				<div class="dropdownmenu">
+					<select class="dropdownmenu" onchange="location = this.value;">
 						{%- for section in site.data.learnindex.navigation.manuals -%}
 						<option value="">{{ section.name | capitalize }}</option>
 						{%- for manual in section.items -%}
