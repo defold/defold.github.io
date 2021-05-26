@@ -88,9 +88,9 @@ $ ./generate_xml_from_google_services_json.py -i google-services.json -o google-
 
 ```lua
 function init(self)
-	-- use firebase only if it is supported on the current platform
-	if firebase then
-		local ok, err = firebase.init()
+    -- use firebase only if it is supported on the current platform
+    if firebase then
+        local ok, err = firebase.init()
         if not ok then
             print(err)
             return
