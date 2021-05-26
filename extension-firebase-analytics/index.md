@@ -15,9 +15,9 @@ This extension allows you to interact with Firebase Analytics in a uniform way f
 To use this library in your Defold project, add the following URL to your `game.project` dependencies:
 
 * [https://github.com/defold/extension-firebase/archive/master.zip](https://github.com/defold/extension-firebase/archive/master.zip)
-* [https://github.com/defold/extension-firebase-remoteconfig/archive/master.zip](https://github.com/defold/extension-firebase-remoteconfig/archive/master.zip)
+* [https://github.com/defold/extension-firebase-analytics/archive/master.zip](https://github.com/defold/extension-firebase-analytics/archive/master.zip)
 
-We recommend using a link to a zip file of a [specific release](https://github.com/defold/extension-firebase-remoteconfig/releases).
+We recommend using a link to a zip file of a [specific release](https://github.com/defold/extension-firebase-analytics/releases).
 
 
 ## Setup
@@ -30,8 +30,25 @@ Follow the [main setup guide for integration of Firebase in Defold](https://www.
 ```lua
 function init(self)
 	-- use firebase only if it is supported on the current platform
-	if firebase then
-		firebase.init()
+    if not firebase then
+        return
+    end
+
+	-- initialise firebase and check that it was successful
+    local ok, err = firebase.init()
+    if not ok then
+        print(err)
+        return
+    end
+
+	-- initialise analytics
+	firebase.analytics.init(function(self, ok, err)
+		if not ok then
+			print(err)
+			return
+		end
+
+		-- log data
 		firebase.analytics.set_screen("myscreen", "collection")
 		firebase.analytics.log_string("character", "storm trooper")
 		firebase.analytics.log_int("kills", 152)
@@ -42,7 +59,7 @@ function init(self)
 			string = "some_string"
 		}
 		firebase.analytics.log_table("stats", t)
-	end
+	end)
 end
 ```
 
