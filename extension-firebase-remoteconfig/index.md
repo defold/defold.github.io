@@ -39,16 +39,43 @@ function init(self)
         return
     end
 
+    -- initialise remote config and set up a listener to react to
+    -- remote config state changes
     firebase.remoteconfig.init(function(self, event)
+        -- an error was detected when performing a remote config operation
         if event == firebase.remoteconfig.CONFIG_ERROR then
             return
-        elseif event == firebase.remoteconfig.CONFIG_INITIALIZED then
-            firebase.remoteconfig.set_defaults({ hello = "world" })
-        elseif event == firebase.remoteconfig.CONFIG_DEFAULTS_SET then
-            print(firebase.remoteconfig.get_string("hello")) -- world
+        end
+
+        -- setup default values for your remote config
+        -- these values will be used until you have loaded updated values from
+        -- the server
+        if event == firebase.remoteconfig.CONFIG_INITIALIZED then
+            firebase.remoteconfig.set_defaults({
+                score_bonus = 0,
+                score_multiplier = 1,
+                holiday_theme = "Christmas",
+                holiday_promo_enabled = false,
+            })
+            return
+        end
+
+        -- the defaults have been set and we're now ready to use remote config
+        if event == firebase.remoteconfig.CONFIG_DEFAULTS_SET then
+            -- you can use get_string(), get_boolean(), get_number() and get_data()
+            print("Theme:", firebase.remoteconfig.get_string("holiday_theme"))                  -- Christmas
+            print("Promo enabled:", firebase.remoteconfig.get_boolean("holiday_promo_enabled")) -- false
+            print("Score multiplier:", firebase.remoteconfig.get_number("score_multiplier"))    -- 1
+
+            -- get and activate new remote config values from the server
             firebase.remoteconfig.fetch_and_activate()
-        elseif event == firebase.remoteconfig.CONFIG_ACTIVATED then
-            print(firebase.remoteconfig.get_string("hello")) -- (depends on if it has changed on the server or not)
+            return
+        end
+
+        -- a recently fetched remote config has been activated and is now ready
+        -- for use
+        if event == firebase.remoteconfig.CONFIG_ACTIVATED then
+            print(firebase.remoteconfig.get_string("holiday_theme")) -- Easter
         end
     end)
 end
