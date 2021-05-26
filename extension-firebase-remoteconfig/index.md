@@ -12,12 +12,11 @@ This extension allows you to interact with Firebase Remote Config in a uniform w
 
 
 ## Installation
-To use this library in your Defold project, add the following URL to your `game.project` dependencies:
+To use this library in your Defold project, add the following URLs to your `game.project` dependencies:
 
-* [https://github.com/defold/extension-firebase/archive/master.zip](https://github.com/defold/extension-firebase/archive/master.zip)
-* [https://github.com/defold/extension-firebase-remoteconfig/archive/master.zip](https://github.com/defold/extension-firebase-remoteconfig/archive/master.zip)
-
-We recommend using a link to a zip file of a [specific release](https://github.com/defold/extension-firebase-remoteconfig/releases).
+| Firebase C++ SDK       | Dependencies |
+|------------------------|--------------|
+| Firebase C++ SDK 7.3.0 | [https://github.com/defold/extension-firebase/archive/refs/tags/1.1.2.zip](https://github.com/defold/extension-firebase/archive/master.zip)<br>[https://github.com/defold/extension-firebase-remoteconfig/archive/refs/tags/1.0.0.zip](https://github.com/defold/extension-firebase-remoteconfig/archive/refs/tags/1.0.0.zip) |
 
 
 ## Setup
@@ -33,6 +32,7 @@ function init(self)
         return
     end
 
+    -- initialise firebase and check that it was successful
     local ok, err = firebase.init()
     if not ok then
         print(err)
@@ -43,7 +43,7 @@ function init(self)
         if event == firebase.remoteconfig.CONFIG_ERROR then
             return
         elseif event == firebase.remoteconfig.CONFIG_INITIALIZED then
-            firebase.remoteconfig.set_defaults({ hello = world })
+            firebase.remoteconfig.set_defaults({ hello = "world" })
         elseif event == firebase.remoteconfig.CONFIG_DEFAULTS_SET then
             print(firebase.remoteconfig.get_string("hello")) -- world
             firebase.remoteconfig.fetch_and_activate()
