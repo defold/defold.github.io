@@ -23,7 +23,7 @@ layout: page
 						{%- assign checked = "checked" -%}
 					{%- endif -%}
 					<input id="collapsible_{{ section.name }}" class="toggle" type="checkbox" {{ checked }}/>
-					<label for="collapsible_{{ section.name }}" class="togglelabel">{{ section.name | capitalize }}</label>
+					<label for="collapsible_{{ section.name }}" class="togglelabel">{{ section.name }}</label>
 					<ul class="nobullet">
 						{%- for manual in section.items -%}
 						<li style="padding-left: 2rem;">
@@ -45,7 +45,7 @@ layout: page
 				<div class="dropdownmenu">
 					<select class="dropdownmenu" onchange="location = this.value;">
 						{%- for section in site.data.learnindex.navigation.manuals -%}
-						<option value="">{{ section.name | capitalize }}</option>
+						<option value="">{{ section.name }}</option>
 						{%- for manual in section.items -%}
 						{%- if language.language == "en" -%}
 							<option value="{{ manual.path }}" {% if page.url contains manual.path %}selected{% endif %}> - {{ manual.name }}</option>
