@@ -2,5 +2,5 @@
 layout: asset
 asset: camera
 title: Camera
-description: Example of interacting with the camera through native extensions.
+description: Capture images and show a live camera preview using the native camera APIs.
 ---

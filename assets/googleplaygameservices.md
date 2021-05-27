@@ -2,5 +2,5 @@
 layout: asset
 asset: googleplaygameservices
 title: Google Play Game Services
-description: This extension provides functions for interacting with Google Play Game Services. Supported on Android. The extension supports Achievements, Authentication, Cloud save, Events and Leaderboards
+description: Google Play games services provide a seamless zero-click sign-in system for players and a range of other ready-to-use features. This extension supports Achievements, Authentication, Cloud save, Events and Leaderboards
 ---

@@ -1,21 +1,13 @@
 {
     "elements": [
         {
-            "description": "Initialise Firebase", 
+            "description": "Initialise analytics", 
             "examples": "", 
-            "name": "init", 
-            "parameters": [], 
-            "returnvalues": [], 
-            "type": "FUNCTION"
-        }, 
-        {
-            "description": "Log an event with no parameters. (Official docs https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#logevent_5)", 
-            "examples": "", 
-            "name": "analytics.log", 
+            "name": "analytics.init", 
             "parameters": [
                 {
-                    "doc": "Event name", 
-                    "name": "name"
+                    "doc": "Function to invoke when initialised (self, ok, err)", 
+                    "name": "callback"
                 }
             ], 
             "returnvalues": [], 
@@ -166,10 +158,10 @@
         }
     ], 
     "info": {
-        "brief": "firebase", 
-        "description": "Functions and constants for interacting with Firebase", 
+        "brief": "firebase.analytics", 
+        "description": "Functions and constants for interacting with Firebase Analytics", 
         "group": "EXTENSIONS", 
-        "name": "firebase", 
-        "namespace": "firebase"
+        "name": "firebase.analytics", 
+        "namespace": "firebase.analytics"
     }
 }
