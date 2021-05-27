@@ -47,6 +47,7 @@ function init(self)
             return
         end
 
+        -- remote config is initialized and ready for use
         -- setup default values for your remote config
         -- these values will be used until you have loaded updated values from
         -- the server
@@ -76,6 +77,7 @@ function init(self)
         -- for use
         if event == firebase.remoteconfig.CONFIG_ACTIVATED then
             print(firebase.remoteconfig.get_string("holiday_theme")) -- Easter
+            return
         end
     end)
 end
