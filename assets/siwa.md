@@ -2,5 +2,5 @@
 layout: asset
 asset: siwa
 title: Sign in with Apple
-description: Defold native extension which provides access to Sign in with Apple functionality on iOS.
+description: Sign in with Apple makes it easy for users to sign in to your apps and websites using their Apple ID.
 ---

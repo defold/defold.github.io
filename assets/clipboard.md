@@ -2,5 +2,5 @@
 layout: asset
 asset: clipboard
 title: Clipboard
-description: Clipboard access to enable copy / paster operations.
+description: Clipboard access to enable copy / paste operations.
 ---

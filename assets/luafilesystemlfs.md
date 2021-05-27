@@ -2,5 +2,5 @@
 layout: asset
 asset: luafilesystemlfs
 title: Lua File System (LFS)
-description: Native extension for the LuaFileSystem library.
+description: LuaFileSystem offers a portable way to access the underlying directory structure and file attributes.
 ---
