@@ -16,7 +16,7 @@ To use this library in your Defold project, add the following URLs to your `game
 
 | Firebase C++ SDK       | Dependencies |
 |------------------------|--------------|
-| Firebase C++ SDK 7.3.0 | [https://github.com/defold/extension-firebase/archive/refs/tags/1.1.2.zip](https://github.com/defold/extension-firebase/archive/master.zip)<br>[https://github.com/defold/extension-firebase-remoteconfig/archive/refs/tags/1.0.0.zip](https://github.com/defold/extension-firebase-remoteconfig/archive/refs/tags/1.0.0.zip) |
+| Firebase C++ SDK 7.3.0 | [https://github.com/defold/extension-firebase/archive/refs/tags/1.1.3.zip](https://github.com/defold/extension-firebase/archive/refs/tags/1.1.3.zip)<br>[https://github.com/defold/extension-firebase-remoteconfig/archive/refs/tags/1.0.1.zip](https://github.com/defold/extension-firebase-remoteconfig/archive/refs/tags/1.0.1.zip) |
 
 
 ## Setup
@@ -47,6 +47,7 @@ function init(self)
             return
         end
 
+        -- remote config is initialized and ready for use
         -- setup default values for your remote config
         -- these values will be used until you have loaded updated values from
         -- the server
@@ -76,6 +77,7 @@ function init(self)
         -- for use
         if event == firebase.remoteconfig.CONFIG_ACTIVATED then
             print(firebase.remoteconfig.get_string("holiday_theme")) -- Easter
+            return
         end
     end)
 end
