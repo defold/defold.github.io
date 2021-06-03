@@ -23,7 +23,7 @@ title: Defold Privacy Policy
 
 * **“Services”** means all the services and tools which we make available to you.
 
-* **“Website”** means our website at [www.defold.com](https://www.defold.com)
+* **“Website”** means our website at [www.defold.se](https://www.defold.se)
 
 
 **1. Introduction**
@@ -52,7 +52,7 @@ When you use or visit our Services we may collect and process the following data
  * data you provide when you fill in forms when using our Services, or when creating an account with us, such as your name, email address and password;
  * information associated with your Google, Twitter or GitHub account which is passed to us when you create an account with us (including your name, user name and email address);
  * details about your use of our Services and the resources that you use to access our Services (for example, information about how and when you visit our Website, how many times you opened our emails or what device you use);
- * data contained in any correspondence that you send to us or we send to you, including when you communicate with us or others via our forum or contact us via info@defold.com; and
+ * data contained in any correspondence that you send to us or we send to you, including when you communicate with us or others via our forum or contact us via info@defold.se; and
  * data in connection with any Content you post or make available via the Website or any of our Services, such as the support forum.
 
 When using the Community Forum, please be aware that in addition to your user name, any questions, answers, comments or submissions that you post will be publicly available and any data you provide can be read and/or used by other users. You should therefore only share content that you are comfortable sharing publicly.
@@ -86,7 +86,7 @@ We (or a supplier or affiliated company acting on our behalf and only under our 
  * managing your account and relationship with us and improving your experience when using our Services;
  * improving our Services, for example by helping us fix bugs or providing Service updates;
  * research, surveying, and engaging with you, for example by sending communications (including by email) for these purposes;
- * marketing and promotion of our Services or related products, for example sending communications (including by email) for these purposes on our, or a third party's behalf. If you do not want us to use your data in this way please let us know by contacting us at: info@defold.com;
+ * marketing and promotion of our Services or related products, for example sending communications (including by email) for these purposes on our, or a third party's behalf. If you do not want us to use your data in this way please let us know by contacting us at: info@defold.se;
  * to create reports, analysis or similar services for use by us for the purposes of research or business intelligence, for example to track potential problems or trends with our Services;
  * preventing cheating, crime or fraud. We may also need to pass your information to fraud prevention agencies and other organisations involved in crime and fraud prevention; and
  * as otherwise expressly set out in this Services Privacy Policy or as required by law.
@@ -151,7 +151,7 @@ Those rights include:
 
  * **Right of access.** You have a right to know what information we hold about you and in some cases to have the information communicated to you. If you wish to exercise this right please contact us letting us know that you wish to exercise your right of access and what information in particular you would like to receive. We reserve the right to ask for reasonable evidence to verify your identity before we provide you with any information. Please note that we may not be able to provide all the information you ask for, for instance if the information includes personal information about another person. Where we are not able to provide you with information that you have asked for, we will endeavour to tell you why. We will try to respond to any request for a right of access as soon as possible, but we will always do so within 1 month of receipt of your request and verification of your identity.
  * **Right to correct personal information.** We try to keep the information that we hold about you accurate and up to date. Should you realise that any of the information that we hold about you is incorrect, please let us know by contacting us via any of the methods set out in the How to Contact Us section below and we will correct it as soon as we can. We will not be held liable for any incorrect information provided by you.
- * **Data deletion.** In some circumstances you have a right to have some of the personal information that we hold about you deleted. Should you wish to have any information about you deleted, please log in to your Defold Community Account, and proceed to delete your account under your user settings. Where we delete personal information about you, we may still retain some or all of that information for other purposes such as maintaining financial records, protecting or enforcing legal rights, maintaining marketing suppression lists or for technical reasons such as maintaining technical security or our database integrity. We may also retain your information in an anonymised form. Please note that where any third party copies information which you have made available via the use of our Services (for example, a collaborator that you allow to interact with you on one of your Projects), we may not be able to amend or delete it because it may not be in our control. We will not be held liable for any third party use of the information you have provided.
+ * **Data deletion.** In some circumstances you have a right to have some of the personal information that we hold about you deleted. Should you wish to have any information about you deleted, please log in to your Defold Community Account, and proceed to delete your account under your user settings. Where we delete personal information about you, we may still retain some or all of that information for other purposes such as maintaining financial records, protecting or enforcing legal rights, maintaining marketing suppression lists or for technical reasons such as maintaining technical security or our database integrity. We may also retain your information in an anonymised form. Please note that where any third party copies information which you have made available via the use of our Services, we may not be able to amend or delete it because it may not be in our control. We will not be held liable for any third party use of the information you have provided.
  * **Data portability.** In some circumstances, you may have the right to request that data which you have provided to us is provided to you, so you can transfer this to another data controller.
  * **Restriction of processing.** In some cases, you may have the right to request a restriction of the processing of your personal data, such as when you are disputing the accuracy of your data held by us.
  * **Right to object**. You have the right to object to the processing of personal data about you which is processed on the grounds of legitimate interests (see Legal Bases above).
@@ -160,12 +160,12 @@ Those rights include:
 
 **14. How to contact us**
 
-If you have any questions or concerns about any of the matters in relation to this Privacy Policy, including to exercise any of your rights, you may contact us by email at [info@defold.com](mailto:info@defold.com).
+If you have any questions or concerns about any of the matters in relation to this Privacy Policy, including to exercise any of your rights, you may contact us by email at [support@defold.se](mailto:support@defold.se).
 
 
 **15. Complaints**
 
-We hope that you won't have any complaints about us or our Services. If you are unhappy with our use of your information then please contact our customer services department by emailing [info@defold.com](mailto:info@defold.com).
+We hope that you won't have any complaints about us or our Services. If you are unhappy with our use of your information then please contact our customer services department by emailing [support@defold.se](mailto:support@defold.se).
 
 You also have the right to complain to your local data protection authority if there is a problem.
 
