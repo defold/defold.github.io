@@ -3,7 +3,7 @@ layout: post
 title:  Creating online games using Nakama and Defold
 excerpt: In this post we will look at how to create online multiplayer games in Defold using the open-source Nakama game server from Heroic Labs
 author: Björn Ritzl
-tags: ["nakama", "tutorial"]
+tags: ["nakama", "tutorial", "heroiclabs"]
 ---
 
 # Introduction
