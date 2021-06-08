@@ -757,20 +757,19 @@ def process_games(tmp_dir):
         game_id = basename.replace(".json", "")
         new_game = read_as_json(filename)
         new_game["id"] = game_id
-        new_game["placement"] = "games"
 
         # try to find game in existing list of games
         found = False
         for game in games:
             if game.get("id") == new_game.get("id"):
                 found = True
-                # copy data from new game (except show+placement)
+                # copy data from new game
                 # we do this to maintain the order of games in games.json
                 for k,v in new_game.items():
-                    if k is not "show" and k is not "placement":
-                        game[k] = v
+                    game[k] = v
         # append new games last
         if not found:
+            new_game["games"] = "half"
             games.append(new_game)
 
     write_as_json(GAMES_JSON, games)
