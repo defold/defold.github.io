@@ -798,6 +798,30 @@
     }, 
     {
       "replaces": "", 
+      "description": "Collision objects tend to fall asleep when inactive for a small period of time for\nefficiency reasons. This function wakes them up.", 
+      "parameters": [
+        {
+          "doc": "the collision object to wake.\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_input</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">action_id</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">action_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">test&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">pressed</span> <span class=\"k\">then</span>\n        <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">wakeup</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+          "name": "url", 
+          "types": [
+            "string", 
+            "hash", 
+            "url"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "explicitly wakeup a collision object", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "physics.wakeup"
+    }, 
+    {
+      "replaces": "", 
       "description": "Post this message to a collision-object-component to apply the specified force on the collision object.\nThe collision object must be dynamic.", 
       "parameters": [
         {
