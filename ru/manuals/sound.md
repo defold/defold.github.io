@@ -2,7 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
-title: Звук в Defold
+title: Компонент Sound
 brief: В этом руководстве объясняется порядок внесения звукового контента в проект Defold, его воспроизведения и управления им.
 ---
 

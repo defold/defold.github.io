@@ -2,7 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
-title: Импортирование моделей
+title: Импортирование 3D-моделей
 brief: В данном руководстве описано, как импортировать 3D-модели, используемые компонентом Model.
 ---
 

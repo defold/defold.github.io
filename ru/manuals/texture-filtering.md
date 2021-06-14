@@ -2,7 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
-title: Фильтрация текстур
+title: Фильтрация и сэмплинг текстур
 brief: В данном руководстве описаны доступные опции фильтрации текстур при рендеринге графики.
 ---
 

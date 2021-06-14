@@ -2,11 +2,11 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
-title: Тайловый источник
+title: Ресурс Tile Source
 brief: Описывается способ создания и использования источника тайлов.
 ---
 
-# Тайловый источник
+# Ресурс Tile Source
 
 Ресурс *Tile Source* может использоваться [компонентом Tile Map](/ru/manuals/tilemap) для нанесения тайлов поверх сетчатой области, или в качестве источника графики для компонентов [Sprite](/ru/manuals/sprite) и [Particle FX](/ru/manuals/particlefx). Также допускается использование *форм столкновений* из источника тайлов в Tilemap для [обнаружения столкновений и физических симуляций](/ru/manuals/physics) ([пример](/examples/tilemap/collisions/)).
 

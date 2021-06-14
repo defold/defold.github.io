@@ -2,7 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
-title: Введение в Defold
+title: Добро пожаловать в Defold
 brief: Краткое введение в Defold.
 ---
 

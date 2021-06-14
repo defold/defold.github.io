@@ -2,7 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
-title: Компонент Spine Model в Defold
+title: Компонент Spine Model
 brief: Это руководство объясняет процесс создания компонентов Spine Model в Defold.
 ---
 

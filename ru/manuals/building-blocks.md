@@ -2,7 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
-title: Структурные элементы Defold
+title: Структурные элементы
 brief: В этом руководстве подробно описан принцип работы игровых объектов, компонентов и коллекций.
 ---
 

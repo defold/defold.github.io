@@ -2,7 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
-title: 3D-модели в Defold
+title: Компонент Model
 brief: В этом руководстве описывается порядок внесения 3D-моделей, скелетов и анимации в игру.
 ---
 
