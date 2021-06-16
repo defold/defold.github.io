@@ -50,6 +50,7 @@ I learned about Defold in 2018, but I started working with it only in the second
 
 We used to to develop games with Solar 2D (formerly know as Corona SDK). We have developed 12 games with it but we used to suffer from the lack of plugins and support. We started searching for a replacement for the Solar2D. We were considering Unity, Godot, Defold and some JS based engines. As we planned to create mainly 2D games fast and reliably we decided on Defold. We have also enjoyed the number of plugins that Defold had and the simplicity of developing them. Defold is also a lot more flexible and has a lot more granular control when compared to Solar2D.
 
+<div align="center"><p style="font-size: larger"><i>"I didn’t even need tutorials to start using Defold. I was able to just start coding."</i></p></div>
 
 #### What, if anything, did you struggle with when shifting from Solar2D to Defold?
 
@@ -68,4 +69,4 @@ Currently I am working on my next game which is a hyper casual puzzle. Additiona
 
 #### Thank you for taking the time to answer our questions! How can the community follow your progress?
 
-You can learn about new games at https://bigbutton.co and https://twitter.com/BigbuttonC
+You can learn about new games at [https://bigbutton.co](https://bigbutton.co) and [https://twitter.com/BigbuttonC](https://twitter.com/BigbuttonC).
