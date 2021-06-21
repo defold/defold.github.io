@@ -80,7 +80,7 @@ A: With one click you can publish to Nintendo Switch, iOS, Android and HTML5 as 
 
 A: As a developer you only have to worry about a single render API using a [fully scriptable rendering pipeline](/manuals/render/). The Defold render script API translates render operations into the following graphics APIs:
 
-{% include shared/en/editor-faq.md %}
+{% include shared/en/graphics-api.md %}
 
 #### Q: Is there a way to know what version I'm running?
 
