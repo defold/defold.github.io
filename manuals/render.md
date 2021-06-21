@@ -253,6 +253,12 @@ on_message()
   msg.post("@render:", "clear_color", { color = vmath.vector4(0.3, 0.4, 0.5, 0) })
   ```
 
+## Supported graphics APIs
+The Defold render script API translates render operations into the following graphics APIs:
+
+{% include shared/en/editor-faq.md %}
+
+
 ## System messages
 
 `"set_view_projection"`
