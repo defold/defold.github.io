@@ -60,10 +60,10 @@
 		var height = 720;
 		var targetRatio = width / height;
 		var actualRatio = innerWidth / innerHeight;
-	
-	
-	
-	
+
+
+
+
 		//No scale
 		var margin_left = ((innerWidth - width) / 2);
 		margin_left = margin_left > 0 ? margin_left : 0;
@@ -71,18 +71,18 @@
 		margin_top = margin_top > 0 ? margin_top : 0;
 		app_container.style.marginLeft = margin_left + "px";
 		app_container.style.marginTop = margin_top + "px";
-	
+
 		app_container.style.width = width + "px";
 		app_container.style.height = height + buttonHeight + "px";
 		game_canvas.width = width;
 		game_canvas.height = height;
 	}
-	
-	
-	
-	
+
+
+
+
 	</script>
 
 	<script id='engine-start' type='text/javascript'>
-		EngineLoader.load("canvas", "Defoldexamples");
+		EngineLoader.load("canvas", "/examples/Defoldexamples");
 	</script>
