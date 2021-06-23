@@ -3,6 +3,8 @@ title = Defold-examples
 version = 0.1
 write_log = 0
 compress_archive = 1
+publisher = unnamed
+developer = unnamed
 
 [display]
 width = 720
@@ -14,6 +16,7 @@ update_frequency = 0
 vsync = 1
 display_profiles = /builtins/render/default.display_profilesc
 dynamic_orientation = 0
+display_device_info = 0
 
 [render]
 clear_color_red = 0
@@ -30,7 +33,7 @@ world_count = 4
 gravity_x = 0
 gravity_z = 0
 scale = 0.02
-allow_dynamic_transforms = 0
+allow_dynamic_transforms = 1
 debug_scale = 30
 max_collisions = 64
 max_contacts = 128
@@ -51,6 +54,7 @@ max_characters = 8192
 max_debug_vertices = 10000
 texture_profiles = /builtins/graphics/default.texture_profiles
 verify_graphics_calls = 1
+memory_size = 512
 
 [shader]
 output_spirv = 0
@@ -62,6 +66,7 @@ max_sound_buffers = 32
 max_sound_sources = 16
 max_sound_instances = 256
 max_component_count = 32
+use_thread = 1
 
 [resource]
 http_cache = 0
@@ -82,6 +87,9 @@ subpixels = 1
 max_count = 128
 
 [model]
+max_count = 128
+
+[mesh]
 max_count = 128
 
 [gui]
@@ -125,6 +133,7 @@ debuggable = 0
 [osx]
 infoplist = /builtins/manifests/osx/Info.plist
 bundle_identifier = com.defold.examples
+bundle_version = 1
 default_language = en
 localizations = en
 
@@ -150,6 +159,8 @@ auto_finish_transactions = 1
 
 [network]
 http_timeout = 0
+http_thread_count = 4
+http_cache_enabled = 1
 
 [library]
 
@@ -165,6 +176,7 @@ track_cpu = 0
 
 [liveupdate]
 settings = /liveupdate.settings
+enabled = 1
 
 [tilemap]
 max_count = 16
