@@ -214,6 +214,66 @@
     }, 
     {
       "replaces": "", 
+      "description": "Tests if a socket is valid (not deleted).", 
+      "parameters": [
+        {
+          "doc": "Socket", 
+          "name": "socket", 
+          "types": [
+            "dmMessage::HSocket"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "if the socket is valid or not", 
+          "name": "result", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Tests if a socket is valid (not deleted).", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "IsSocketValid"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get socket name", 
+      "parameters": [
+        {
+          "doc": "Socket", 
+          "name": "socket", 
+          "types": [
+            "dmMessage::HSocket"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "socket name. 0 if it was not found", 
+          "name": "name", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Get socket name", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetSocketName"
+    }, 
+    {
+      "replaces": "", 
       "description": "Get the message path", 
       "parameters": [
         {
@@ -357,6 +417,71 @@
       "tparams": [], 
       "type": "TYPEDEF", 
       "name": "dmMMessage::MessageDestroyCallback"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Message data desc used at dispatch callback. When a message is posted,\nthe actual object is copied into the sockets internal buffer.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Message data desc used at dispatch callback. When ...", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "Sender uri", 
+          "type": "dmMessage::URL", 
+          "name": "m_Sender"
+        }, 
+        {
+          "doc": "Receiver uri", 
+          "type": "dmMessage::URL", 
+          "name": "m_Receiver"
+        }, 
+        {
+          "doc": "Unique id of message", 
+          "type": "dmhash_t", 
+          "name": "m_Id"
+        }, 
+        {
+          "doc": "User data pointer", 
+          "type": "uintptr_t", 
+          "name": "m_UserData1"
+        }, 
+        {
+          "doc": "User data pointer", 
+          "type": "uintptr_t", 
+          "name": "m_UserData2"
+        }, 
+        {
+          "doc": "User specified descriptor of the message data", 
+          "type": "uintptr_t", 
+          "name": "m_Descriptor"
+        }, 
+        {
+          "doc": "Size of message data in bytes", 
+          "type": "uint32_t", 
+          "name": "m_DataSize"
+        }, 
+        {
+          "doc": "Ptr to next message (or 0 if last)", 
+          "type": "dmMessage::Message*", 
+          "name": "m_Next"
+        }, 
+        {
+          "doc": "If set, will be called after each dispatch", 
+          "type": "dmMessage::MessageDestroyCallback", 
+          "name": "m_DestroyCallback"
+        }, 
+        {
+          "doc": "Payload", 
+          "type": "uint8_t*", 
+          "name": "m_Data"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "Message"
     }, 
     {
       "replaces": "", 
