@@ -145,7 +145,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Retrieve the index of the specified node.\nThe index defines the order in which a node appear in a GUI scene.\nHigher index means the node is drawn on top of lower indexed nodes.", 
+      "description": "Retrieve the index of the specified node among its siblings.\nThe index defines the order in which a node appear in a GUI scene.\nHigher index means the node is drawn on top of lower indexed nodes.", 
       "parameters": [
         {
           "doc": "the node to retrieve the id from", 
@@ -166,7 +166,7 @@
       ], 
       "notes": [], 
       "brief": "gets the index of the specified node", 
-      "examples": "Compare the index order of two nodes:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">node1</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_node_1&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">node2</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_node_2&quot;</span><span class=\"p\">)</span>\n\n<span class=\"k\">if</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_index</span><span class=\"p\">(</span><span class=\"n\">node1</span><span class=\"p\">)</span> <span class=\"o\">&lt;</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_index</span><span class=\"p\">(</span><span class=\"n\">node2</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- node1 is drawn below node2</span>\n<span class=\"k\">else</span>\n    <span class=\"c1\">-- node2 is drawn below node1</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "examples": "Compare the index order of two sibling nodes:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">node1</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_node_1&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">node2</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_node_2&quot;</span><span class=\"p\">)</span>\n\n<span class=\"k\">if</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_index</span><span class=\"p\">(</span><span class=\"n\">node1</span><span class=\"p\">)</span> <span class=\"o\">&lt;</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_index</span><span class=\"p\">(</span><span class=\"n\">node2</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- node1 is drawn below node2</span>\n<span class=\"k\">else</span>\n    <span class=\"c1\">-- node2 is drawn below node1</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "tparams": [], 
