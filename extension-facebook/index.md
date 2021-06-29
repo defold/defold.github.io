@@ -161,6 +161,11 @@ DEBUG:SCRIPT:
 * The Facebook Graph API is documented here: https://developers.facebook.com/docs/graph-api
 
 
+## Deferred Facebook SDK initialization
+
+The Facebook SDK must be initialized before any of the functions of the SDK can be used. The default behaviour is for the Facebook SDK to be automatically initialized on startup. If manual Facebook SDK initialization is preferred then set the `facebook.autoinit` property to 0 in *game.project* and call `facebook.init()` to initialize the SDK.
+
+
 ## Facebook Analytics
 
 Facebook Analytics allows you as a developer to get aggregated demographics and rich insights, like how many people launch your app, how often people make purchases and many other interactions.
