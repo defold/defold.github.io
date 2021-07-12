@@ -34,6 +34,8 @@ Before requesting advertising info and status on iOS 14 the application must req
 
 Apple documentation: https://developer.apple.com/documentation/apptrackingtransparency?language=objc
 
+Note: If this field is omitted the generated `Info.plist` file will not contain a `<key>NSUserTrackingUsageDescription</key>` key and value.
+
 ### register_for_attribution
 
 The extension can automatically register the application for ad network attribution using `SkAdNetwork` and the `registerAppForAdNetworkAttribution()` function. Enable this functionality by setting `adinfo.register_for_attribution` to 1 in game.project.
