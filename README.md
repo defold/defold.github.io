@@ -148,7 +148,7 @@ Copy the `refdoc.zip` to the main folder:
 
 ## How to test local documentaion
 
-By setting the `DM_DOC_DIR` environment variable, you can load the documentation directory from your load folder:
+By setting the `DM_DOC_DIR` environment variable, you can load the documentation directory from your local folder:
 
     $ DM_DOC_DIR=/Users/username/work/doc python update.py docs
 
