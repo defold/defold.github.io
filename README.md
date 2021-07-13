@@ -140,11 +140,17 @@ You can use the `update.py` script to pull in and process content from external 
 
 Copy the `refdoc.zip` to the main folder:
 
-        $ cp $DYNAMO_HOME/share/ref-doc.zip refdoc_alpha.zip
-        $ cp $DYNAMO_HOME/share/ref-doc.zip refdoc_beta.zip
-        $ cp $DYNAMO_HOME/share/ref-doc.zip refdoc_stable.zip
+        $ cp $DYNAMO_HOME/share/ref-doc.zip refdoc_alpha.zip
+        $ cp $DYNAMO_HOME/share/ref-doc.zip refdoc_beta.zip
+        $ cp $DYNAMO_HOME/share/ref-doc.zip refdoc_stable.zip
         $ ./update.py refdoc
         $ ./serve.sh
+
+## How to test local documentaion
+
+By setting the `DM_DOC_DIR` environment variable, you can load the documentation directory from your local folder:
+
+    $ DM_DOC_DIR=/Users/username/work/doc python update.py docs
 
 # Automatic site update using GitHub Actions
 The site uses [GitHub actions](https://github.com/defold/defold.github.io/actions) to automatically trigger `update.py` when an external source/repository has been updated. The script is also triggered once every hour to update the asset portal star count for GitHub hosted assets. The following workflows/jobs have been set up using GitHub Actions:

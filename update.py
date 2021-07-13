@@ -256,14 +256,18 @@ def process_docs(download = False):
         print("File {} does not exists".format(DOCS_ZIP))
         sys.exit(1)
 
+    DOC_DIR=os.environ.get('DM_DOC_DIR', None)
+
     with tmpdir() as tmp_dir:
-        shutil.copyfile(DOCS_ZIP, os.path.join(tmp_dir, DOCS_ZIP))
-        unzip(os.path.join(tmp_dir, DOCS_ZIP), tmp_dir)
+        if not DOC_DIR:
+            shutil.copyfile(DOCS_ZIP, os.path.join(tmp_dir, DOCS_ZIP))
+            unzip(os.path.join(tmp_dir, DOCS_ZIP), tmp_dir)
+            DOC_DIR = os.path.join(tmp_dir, "doc-master")
 
         print("Processing docs")
 
         print("...languages")
-        languages = read_as_json(os.path.join(tmp_dir, "doc-master", "docs", "languages.json"))
+        languages = read_as_json(os.path.join(DOC_DIR, "docs", "languages.json"))
         language_list = []
         for language in languages["languages"].keys():
             language_data = languages["languages"][language]
@@ -280,12 +284,12 @@ def process_docs(download = False):
         index_file = os.path.join("_data", "learnindex.json")
         if os.path.exists(index_file):
             os.remove(index_file)
-        shutil.copyfile(os.path.join(tmp_dir, "doc-master", "docs", "en", "en.json"), index_file)
+        shutil.copyfile(os.path.join(DOC_DIR, "docs", "en", "en.json"), index_file)
         index = read_as_json(index_file)
 
         for language in languages["languages"].keys():
             print("...manuals ({})".format(language))
-            manuals_src_dir = os.path.join(tmp_dir, "doc-master", "docs", language, "manuals")
+            manuals_src_dir = os.path.join(DOC_DIR, "docs", language, "manuals")
             if os.path.exists(manuals_src_dir):
                 manuals_dst_dir = get_language_specific_dir(language, "manuals")
                 rmcopytree(manuals_src_dir, manuals_dst_dir)
@@ -300,7 +304,7 @@ def process_docs(download = False):
                         replace_in_file(filename, r"\.\.\/assets\/", r"/manuals/assets/".format(language))
 
             print("...faq ({})".format(language))
-            faq_src_dir = os.path.join(tmp_dir, "doc-master", "docs", language, "faq")
+            faq_src_dir = os.path.join(DOC_DIR, "docs", language, "faq")
             if os.path.exists(faq_src_dir):
                 faq_dst_dir = get_language_specific_dir(language, "faq")
                 rmcopytree(faq_src_dir, faq_dst_dir)
@@ -315,8 +319,8 @@ def process_docs(download = False):
 
         for language in languages["languages"].keys():
             print("...shared includes ({})".format(language))
-            shared_includes_src_dir_en = os.path.join(tmp_dir, "doc-master", "docs", "en", "shared")
-            shared_includes_src_dir = os.path.join(tmp_dir, "doc-master", "docs", language, "shared")
+            shared_includes_src_dir_en = os.path.join(DOC_DIR, "docs", "en", "shared")
+            shared_includes_src_dir = os.path.join(DOC_DIR, "docs", language, "shared")
             shared_includes_dst_dir = os.path.join("_includes", "shared", language)
             rmcopytree(shared_includes_src_dir_en, shared_includes_dst_dir)
             if os.path.exists(shared_includes_src_dir):
@@ -326,7 +330,7 @@ def process_docs(download = False):
                 process_doc_file(filename, language)
 
         print("...tutorials")
-        tutorials_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "tutorials")
+        tutorials_src_dir = os.path.join(DOC_DIR, "docs", "en", "tutorials")
         tutorials_dst_dir = "tutorials"
         rmcopytree(tutorials_src_dir, tutorials_dst_dir)
         for filename in find_files(tutorials_dst_dir, "*.md"):
@@ -346,7 +350,7 @@ def process_docs(download = False):
         write_as_json(index_file, index)
 
         print("...shared images")
-        shared_images_src_dir = os.path.join(tmp_dir, "doc-master", "docs", "en", "shared", "images")
+        shared_images_src_dir = os.path.join(DOC_DIR, "docs", "en", "shared", "images")
         shared_images_dst_dir = os.path.join("shared", "images")
         rmcopytree(shared_images_src_dir, shared_images_dst_dir)
 
