@@ -16,7 +16,7 @@ To use this library in your Defold project, add the following URLs to your `game
 
 | Firebase C++ SDK       | Dependencies |
 |------------------------|--------------|
-| Firebase C++ SDK 7.3.0 | [https://github.com/defold/extension-firebase/archive/refs/tags/1.1.3.zip](https://github.com/defold/extension-firebase/archive/refs/tags/1.1.3.zip)<br>[https://github.com/defold/extension-firebase-analytics/archive/refs/tags/2.0.1.zip](https://github.com/defold/extension-firebase-analytics/archive/refs/tags/2.0.1.zip) |
+| Firebase C++ SDK 7.3.0 | [https://github.com/defold/extension-firebase/archive/refs/tags/1.1.3.zip](https://github.com/defold/extension-firebase/archive/refs/tags/1.1.3.zip)<br>[https://github.com/defold/extension-firebase-analytics/archive/refs/tags/2.0.2.zip](https://github.com/defold/extension-firebase-analytics/archive/refs/tags/2.0.2.zip) |
 
 
 ## Setup
@@ -41,24 +41,19 @@ function init(self)
     end
 
 	-- initialise analytics
-	firebase.analytics.init(function(self, ok, err)
-		if not ok then
-			print(err)
-			return
-		end
+	firebase.analytics.init()
 
-		-- log data
-		firebase.analytics.set_screen("myscreen", "collection")
-		firebase.analytics.log_string("character", "storm trooper")
-		firebase.analytics.log_int("kills", 152)
-		firebase.analytics.log_number("speed", 1.15)
-		local t = {
-			number = math.random(1,100),
-			boolean = true,
-			string = "some_string"
-		}
-		firebase.analytics.log_table("stats", t)
-	end)
+	-- log data
+	firebase.analytics.set_screen("myscreen", "collection")
+	firebase.analytics.log_string("character", "storm trooper")
+	firebase.analytics.log_int("kills", 152)
+	firebase.analytics.log_number("speed", 1.15)
+	local t = {
+		number = math.random(1,100),
+		boolean = true,
+		string = "some_string"
+	}
+	firebase.analytics.log_table("stats", t)
 end
 ```
 
