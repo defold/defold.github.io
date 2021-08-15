@@ -1,10 +1,10 @@
   `.`
-  : Shorthand resolving to the current game object.
+  : Dirección del objeto actual.
 
   `#`
-  : Shorthand resolving to the current component.
+  : Dirección del componente actual.
 
-  For example:
+  Ejemplo:
 
   ```lua
    -- Let this game object acquire input focus
