@@ -19,7 +19,7 @@ The objectives of the foundation are:
 * Prevent the Defold software from being commercialised by a third-party.
 * Support the open source community and the use of open licenses.
 
-Note that according to Swedish law foundations have a separate legal status which sets them apart from corporations. According to Swedish law the foundation objectives cannot be changed once a foundation has been created. A violation of the foundation objectives can result in the dissolution of the foundation and the rights to Defold returning to the founder.
+As a registered Swedish foundation the Defold Foundation has a legal status somewhat similar to traditional corporation. One key difference from a corporation is that the objectives of the foundation cannot be changed once the foundation has been created. The objectives defined by the founder are protected by Swedish foundation law. A violation of the foundation objectives may lead to the dissolution of the foundation and the rights to Defold returning to the founder.
 
 ### Vision
 We believe in a free and open internet where software and services use open standards to bring net neutrality and democracy to everyone. The Defold Foundation works together with industry partners to provide free and open software and services to game developers across the globe.
@@ -32,7 +32,7 @@ We believe in a free and open internet where software and services use open stan
 	image="/images/foundation/thumbs/Sara Cederberg_2020_RW.jpg"
 	link="/images/foundation/highres/Sara Cederberg_2020_RW.jpg"
 	name="Sara Cederberg"
-	bio="Sara is a creative and hands-on solution finder with strong focus on improvement and quality. She has solid experience within business analysis and process development, digital product development and Business Intelligence. Sara has worked as project manager, product owner and director for Defold from 2016 to 2020. She is now working as a manager working with shared tech at Spotify."
+	bio="Sara is a creative and hands-on solution finder with strong focus on improvement and quality. She has solid experience within business analysis and process development, digital product development and Business Intelligence. Sara has worked as project manager, product owner and director for Defold from 2016 to 2020. She is now a manager working with shared tech at Spotify."
 	email="sara@defold.se"
 -%}
 
