@@ -1,0 +1,14 @@
+<div class="section blue">
+	<div class="container">
+		<div class="row">
+			<div class="columns twelve">
+				<h4>Frequently Asked Questions</h4>
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); grid-gap: 2rem; padding: 0px;">
+					{%- for question in site.data.yandexgamesjamfaq -%}
+						{% include card.html title=question.q body=question.a %}
+					{%- endfor -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

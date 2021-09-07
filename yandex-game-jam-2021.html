@@ -1,0 +1,159 @@
+---
+layout: hero_and_text
+title: Yandex.Games Jam 2021
+description: The Defold Foundation and Yandex.Games is inviting Defold developers to join a month long game jam.
+nav: floating
+heatmap: true
+background: /images/hero/defold-top-bg-transparent-2.png
+after: [yandexgamesjam_faq.html, donors_and_partners.html]
+---
+
+
+<div class="row">
+	<div class="columns twelve">
+		<h2>October 1st 2021 to November 1st 2020</h2>
+		<p></p>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="columns twelve">
+		<p>The Defold Foundation and Yandex.Games is hereby inviting Defold developers across the world to join a month long game jam. Developers will be challenged to create a themed web game showing their creative and developer skills as well as a good integration with the Yandex.Games SDK. The proud winner and runner-ups will receive marketing and advertisment for their submitted game, hardware, swag and bragging rights!</p>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="columns twelve">
+		<div class="center">
+			<br/>
+			<br/>
+			<img src="/images/logo/others/yandex.png"/>
+			<br/>
+		</div>
+		<h4>Yandex.Games</h4>
+		<p><a href="https://yandex.com/games/" target='_blank'>Yandex.Games</a> is a catalog of browser-based online games that can be played on smartphones or desktop devices and require no installation. Most games are also available offline (code for these games is added to the device cache during the first gaming session).</p>
+		<p>Yandex.Games is the home of several succesful games made with Defold. Here's a selection of games:</p>
+	</div>
+</div>
+
+
+{% assign third = site.data.games | where: "yandex", "yes" %}
+{%- if third.size > 0 -%}
+<div class="row">
+	<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(275px, 1fr)); grid-gap: 2rem; padding: 0px;">
+		{%- for game in third limit:3 -%}
+			{%- include game_third.html game=game -%}
+		{%- endfor -%}
+	</div>
+</div>
+{%- endif -%}
+
+<br/>
+<br/>
+<br/>
+
+<div class="row">
+	<div class="columns twelve">
+		<h4>Theme: TBA</h4>
+		<p>The theme for the game jam has not been announced yet.</p>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="columns twelve">
+		<h4>Rules</h4>
+	</div>
+</div>
+<div class="row">
+	<div class="columns six">
+		<ul class="checkmark">
+			<li>You must create an original game for the game jam and you must develop it during the game jam.</li>
+			<li>You are allowed to use existing tools, frameworks and libraries when creating the game.</li>
+			<li>You must use the Defold game engine when you create your game.</li>
+		</ul>
+	</div>
+	<div class="columns six">
+		<ul class="checkmark">
+			<li>You must incorporate some aspect of the theme in the game.</li>
+			<li>You must integrate and use the <a href="https://github.com/indiesoftby/defold-yagames" target="_blank">Yandex.Games SDK</a> in the game.</li>
+			<li>You can create the game on your own or as part of a team.</li>
+		</ul>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="columns twelve">
+		<div class="center">
+			<img src="/images/beans/placeholder-beans-image.png"/>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="columns twelve">
+		<h4>Judging</h4>
+		<p>The submitted games will be judged and ranked in three categories:</p>
+		<ul>
+			<li><b>Player's Choice</b> - The games will be ranked based on the average star rating given by the players</li>
+			<li><b>Yandex' Choice</b> - The team at Yandex will rank the games based on how well they believe the games will perform on the Yandex platform</li>
+			<li><b>Defold's Choice</b> - The Defold Foundation will rank the games based on technical excellence</li>
+		</ul>
+		<p>The winners will be announced two weeks after the game jam has ended. The announcement will be made here, on <a href="https://defold.com/blog" target='_blank'>the Defold blog</a> and on <a href="https://www.twitter.com/defold" target='_blank'>Twitter</a>.</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="columns twelve">
+		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); grid-gap: 2rem; padding: 0px;">
+			<div class="card grey">
+				<div>
+					<h4>People's Choice</h4>
+					<p>The winner and runner-ups in the People's Choice category will win the following:</p>
+					<ul>
+						<li>1st place - TBA</li>
+						<li>2nd place - TBA</li>
+						<li>3rd place - TBA</li>
+						<li>4th-10th place - TBA</li>
+					</ul>
+				</div>
+			</div>
+			<div class="card grey">
+				<div>
+					<h4>Yandex' Choice</h4>
+					<p>The winner and runner-ups in the Yandex' Choice category will win the following:</p>
+					<ul>
+						<li>1st place - Yandex.Games featuring and advertising equivalent to TBA USD</li>
+						<li>2nd place - Yandex.Games featuring and advertising equivalent to TBA USD</li>
+						<li>3rd place - Yandex.Games featuring and advertising equivalent to TBA USD</li>
+						<li>4th-10th place - TBA</li>
+					</ul>
+				</div>
+			</div>
+			<div class="card grey">
+				<div>
+					<h4>Defold's Choice</h4>
+					<p>The winner and runner-ups in the Defold's Choice category will win the following:</p>
+					<ul>
+						<li>1st place - TBA</li>
+						<li>2nd place - TBA</li>
+						<li>3rd place - TBA</li>
+						<li>4th-10th place - TBA</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="columns twelve">
+		<h4>Submissions</h4>
+		<p>Submissions to this jam must be made through the <a href="https://yandex.ru/dev/games/doc/dg/concepts/quick-start.html">Yandex.Games dashboard</a>. The game must pass Yandex moderation before it is accepted into the competition. You have two weeks from the end of the game jam to submit updates to the Yandex.Games SDK integration to pass moderation. You are not allowed to make any significant changes to the game itself during this period.</p>
+	</div>
+</div>
