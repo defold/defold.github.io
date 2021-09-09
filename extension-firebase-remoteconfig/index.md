@@ -85,7 +85,7 @@ end
 
 ## Source code
 
-The source code is available on [GitHub](https://github.com/defold/extension-firebase-analytics)
+The source code is available on [GitHub](https://github.com/defold/extension-firebase-remoteconfig)
 
 
 ## API reference
