@@ -91,6 +91,8 @@ msg.post("#weapon", "enable")
 | B        | 1       |
 | B#sprite | 0.5     |
 
+![](/manuals/images/graphics/component-hierarchy.png)
+
 С помощью приведенной выше иерархии окончательное значение по Z спрайта в объекте B равно 2 + 1 + 0.5 = 3.5.
 
 <div class='important' markdown='1'>
