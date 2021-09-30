@@ -715,7 +715,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "This is only supported for numerical properties. If the node property is already being\nanimated, that animation will be canceled and replaced by the new one.\nIf a <code>complete_function</code> (lua function) is specified, that function will be called when the animation has completed.\nBy starting a new animation in that function, several animations can be sequenced together. See the examples for more information.\n<span class=\"icon-attention\"></span> If you call <code>go.animate()</code> from a game object's <code>final()</code> function,\nany passed <code>complete_function</code> will be ignored and never called upon animation completion.\nSee the <a href=\"/manuals/properties\">properties guide</a> for which properties can be animated and the <a href=\"/manuals/animation\">animation guide</a> for how to animate them.", 
+      "description": "This is only supported for numerical properties. If the node property is already being\nanimated, that animation will be canceled and replaced by the new one.\nIf a <code>complete_function</code> (lua function) is specified, that function will be called when the animation has completed.\nBy starting a new animation in that function, several animations can be sequenced together. See the examples for more information.\n<span class=\"icon-attention\"></span> If you call <code>go.animate()</code> from a game object's <code>final()</code> function,\nany passed <code>complete_function</code> will be ignored and never called upon animation completion.\nSee the <a href=\"/manuals/properties\">properties guide</a> for which properties can be animated and the <a href=\"/manuals/animation\">animation guide</a> for how\nthem.", 
       "parameters": [
         {
           "doc": "url of the game object or component having the property", 
@@ -805,7 +805,7 @@
           ]
         }, 
         {
-          "doc": "ide of the property to animate", 
+          "doc": "id of the property to cancel", 
           "name": "property", 
           "types": [
             "string", 
