@@ -1,0 +1,91 @@
+{
+    "elements": [
+        {
+            "description": "Plays the specified animation on a Rive model", 
+            "examples": "", 
+            "name": "play_anim", 
+            "parameters": [
+                {
+                    "doc": "The Rive model for which to play an animation", 
+                    "name": "url"
+                }, 
+                {
+                    "doc": "Id of the animation to play", 
+                    "name": "anim_id"
+                }, 
+                {
+                    "doc": "Playback mode of the animation (from go.PLAYBACK_*)", 
+                    "name": "playback"
+                }, 
+                {
+                    "doc": "Playback options", 
+                    "name": "options"
+                }, 
+                {
+                    "doc": "function to call when the animation has completed", 
+                    "name": "complete_function"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Plays the specified animation on a Rive model", 
+            "examples": "", 
+            "name": "play_state_machine", 
+            "parameters": [
+                {
+                    "doc": "The Rive model for which to play an animation", 
+                    "name": "url"
+                }, 
+                {
+                    "doc": "Id of the state machine to play", 
+                    "name": "state_machine_id"
+                }, 
+                {
+                    "doc": "Playback options", 
+                    "name": "options"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Cancels all running animations on a specified spine model component", 
+            "examples": "", 
+            "name": "cancel", 
+            "parameters": [
+                {
+                    "doc": "The Rive model for which to cancel the animation", 
+                    "name": "url"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Returns the id of the game object that corresponds to a specified skeleton bone.", 
+            "examples": "", 
+            "name": "get_go", 
+            "parameters": [
+                {
+                    "doc": "The Rive model to query", 
+                    "name": "url"
+                }, 
+                {
+                    "doc": "Id of the corresponding bone", 
+                    "name": "bone_id"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }
+    ], 
+    "info": {
+        "brief": "rive", 
+        "description": "Functions and constants for interacting with Rive models", 
+        "group": "EXTENSIONS", 
+        "name": "rive", 
+        "namespace": "rive"
+    }
+}
