@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import urllib
+import urllib2
 import zipfile
 import os
 import sys
@@ -134,7 +134,12 @@ def download_file(url, destination, filename=None):
         print("File %s already exists" % (path))
         sys.exit(1)
     print("Downloading {} to {}".format(url, path))
-    urllib.urlretrieve(url, path)
+    try:
+        f = urllib2.urlopen(url)
+        with open(path, 'wb') as output:
+            output.write(f.read())
+    except:
+        path = None
     return path
 
 
@@ -365,7 +370,11 @@ def process_extension(extension_name, download = False):
     if download:
         if os.path.exists(extension_zip):
             os.remove(extension_zip)
-        download_file(github_url + "/archive/master.zip", ".", extension_zip)
+
+        for branch in ("master", "main"):
+            url = github_url + "/archive/" + branch + ".zip"
+            if download_file(url, ".", extension_zip):
+                break
 
     if not os.path.exists(extension_zip):
         print("File {} does not exist".format(extension_zip))
@@ -375,7 +384,11 @@ def process_extension(extension_name, download = False):
     with tmpdir() as tmp_dir:
         shutil.copyfile(extension_zip, os.path.join(tmp_dir, extension_zip))
         unzip(os.path.join(tmp_dir, extension_zip), tmp_dir)
-        unzipped_extension_dir = os.path.join(tmp_dir, extension_name + "-master")
+        unzipped_extension_dir = None
+        for suffix in ("master", "main"):
+            unzipped_extension_dir = os.path.join(tmp_dir, extension_name + "-" + suffix)
+            if os.path.exists(unzipped_extension_dir):
+                break
 
         extension_dir = extension_name
         rmmkdir(extension_dir)
