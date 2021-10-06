@@ -1,0 +1,30 @@
+
+<div class="section dark">
+	<div class="container">
+		<div class="row">
+			<div class="columns six">
+				<h3>Blog updates</h3>
+				{%- assign posts = site.posts -%}
+				{%- assign count = 0 -%}
+				{%- for post in posts -%}
+				{%- if post.tags contains "news" or post.tags contains "newsletter" -%}
+				{%- else -%}
+					{%- include post_preview_excerpt.html post=post -%}
+					{%- assign count = count | plus: 1 -%}
+				{%- endif -%}
+
+				{%- if count == 3 -%}
+					{%- break -%}
+				{%- endif -%}
+				{%- endfor -%}
+			</div>
+			<div class="columns six">
+				<h3>Latest News</h3>
+				{%- assign posts = site.posts | where: "type", "news" -%}
+				{%- for post in posts limit: 3-%}
+					{%- include post_preview_excerpt.html post=post -%}
+				{%- endfor -%}
+			</div>
+		</div>
+	</div>
+</div>

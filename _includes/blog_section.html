@@ -1,0 +1,23 @@
+
+<div class="section">
+<div class="container">
+<div class="row">
+	<div class="columns twelve">
+		<h3>Blog updates</h3>
+		{%- assign posts = site.posts -%}
+		{%- assign count = 0 -%}
+		{%- for post in posts -%}
+		{%- if post.tags contains "news" or post.tags contains "newsletter" -%}
+		{%- else -%}
+			{%- include post_preview_excerpt.html post=post -%}
+			{%- assign count = count | plus: 1 -%}
+		{%- endif -%}
+
+		{%- if count == 3 -%}
+			{%- break -%}
+		{%- endif -%}
+		{%- endfor -%}
+	</div>
+</div>
+</div>
+</div>
