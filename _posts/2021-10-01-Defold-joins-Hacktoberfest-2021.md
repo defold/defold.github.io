@@ -24,7 +24,7 @@ The Defold Foundation is participating in Hacktoberfest as the maintainer of a n
 
 You can join Hacktoberfest by signing up on the Hacktoberfest webpage and then contribute through quality pull requests to the repositories listed above (or any other open-source repository participating in this years event).
 
-Learn more and join Hactoberfest 2021 on [the official Hacktoberfest website](https://hacktoberfest.digitalocean.com/).
+Learn more and join Hacktoberfest 2021 on [the official Hacktoberfest website](https://hacktoberfest.digitalocean.com/).
 
 Hacktoberfest is presented by:
 
