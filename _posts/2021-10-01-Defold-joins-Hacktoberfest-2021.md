@@ -28,10 +28,10 @@ Learn more and join Hactoberfest 2021 on [the official Hacktoberfest website](ht
 
 Hacktoberfest is presented by:
 
-* ![](/images/logo/hacktoberfest/appwrite.png)
+![](/images/logo/hacktoberfest/appwrite.png)<br/><br/>
 
-* ![](/images/logo/hacktoberfest/digitalocean.png)
+![](/images/logo/hacktoberfest/digitalocean.png)<br/><br/>
 
-* ![](/images/logo/hacktoberfest/deepsource.png)
+![](/images/logo/hacktoberfest/deepsource.png)<br/><br/>
 
-* ![](/images/logo/hacktoberfest/intel.png)
+![](/images/logo/hacktoberfest/intel.png)<br/><br/>
