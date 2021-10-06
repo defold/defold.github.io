@@ -20,7 +20,7 @@
 			</div>
 			<div class="columns six">
 				<h3>Latest News</h3>
-				{%- assign posts = site.posts | where: "type", "news" -%}
+				{%- assign posts = site.posts | where: "tags", "news" -%}
 				{%- for post in posts limit: 3-%}
 					{%- include post_preview_excerpt.html post=post -%}
 				{%- endfor -%}
