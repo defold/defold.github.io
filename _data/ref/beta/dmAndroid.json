@@ -1,0 +1,151 @@
+{
+  "info": {
+    "group": "DEFOLD SDK", 
+    "description": "Android utility functions", 
+    "namespace": "dmAndroid", 
+    "brief": "SDK Android API documentation", 
+    "file": "dmsdk/dlib/android.h", 
+    "path": "engine/dlib/src/dmsdk/dlib/android.h", 
+    "name": "Android"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "Struct attaching the JNI environment. Detaches the", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Struct attaching the JNI environment. Detaches the", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "CLASS", 
+      "name": "ThreadAttacher"
+    }, 
+    {
+      "replaces": "", 
+      "description": "constructor", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "constructor", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"p\">{</span>\n  <span class=\"n\">ThreadAttacher</span> <span class=\"kr\">thread</span><span class=\"p\">;</span>\n  <span class=\"n\">SomeFunction</span><span class=\"p\">(</span> <span class=\"kr\">thread</span><span class=\"p\">.</span><span class=\"n\">GetEnv</span><span class=\"p\">()</span> <span class=\"p\">);</span>\n  <span class=\"c1\">// Automatically detaches</span>\n<span class=\"p\">}</span>\n</pre></div>\n\n\n<div class=\"codehilite\"><pre><span></span><span class=\"p\">{</span>\n  <span class=\"n\">ThreadAttacher</span> <span class=\"kr\">thread</span><span class=\"p\">;</span>\n  <span class=\"n\">JNIEnv</span><span class=\"o\">*</span> <span class=\"n\">env</span> <span class=\"o\">=</span> <span class=\"kr\">thread</span><span class=\"p\">.</span><span class=\"n\">GetEnv</span><span class=\"p\">();</span>\n  <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"o\">!</span><span class=\"n\">env</span><span class=\"p\">)</span>\n    <span class=\"k\">return</span><span class=\"p\">;</span>\n  <span class=\"p\">...</span>\n<span class=\"p\">}</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ThreadAttacher"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Detaches the jni environment", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "true if there was no java exceptions. False if there was an exception.", 
+          "name": "ok", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Detaches the jni environment", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Detach"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Is the environment attached and valid?", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "true if the environment is valid", 
+          "name": "isattached", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Is the environment attached and valid?", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">Result</span> <span class=\"nf\">SomeFunc</span><span class=\"p\">()</span> <span class=\"p\">{</span>\n  <span class=\"n\">ThreadAttacher</span> <span class=\"kr\">thread</span><span class=\"p\">;</span>\n  <span class=\"n\">JNIEnv</span><span class=\"o\">*</span> <span class=\"n\">env</span> <span class=\"o\">=</span> <span class=\"kr\">thread</span><span class=\"p\">.</span><span class=\"n\">GetEnv</span><span class=\"p\">();</span>\n  <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"o\">!</span><span class=\"n\">env</span><span class=\"p\">)</span>\n    <span class=\"k\">return</span> <span class=\"n\">RESULT_ATTACH_FAILED</span><span class=\"p\">;</span>\n  <span class=\"p\">...</span> <span class=\"n\">calls</span> <span class=\"k\">using</span> <span class=\"n\">jni</span>\n  <span class=\"k\">return</span> <span class=\"kr\">thread</span><span class=\"p\">.</span><span class=\"n\">Detach</span><span class=\"p\">()</span> <span class=\"o\">?</span> <span class=\"nl\">RESULT_OK</span> <span class=\"p\">:</span> <span class=\"n\">RESULT_JNI_CALLS_FAILED</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "IsAttached"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets the JNI environment", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "the attached environment", 
+          "name": "env", 
+          "types": [
+            "JNIENV*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Gets the JNI environment", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetEnv"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets the app native activity", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "the app native activity", 
+          "name": "activity", 
+          "types": [
+            "ANativeActivity*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Gets the app native activity", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetActivity"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Load a class", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "the activity class loader", 
+          "name": "class", 
+          "types": [
+            "jclass"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Load a class", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "LoadClass"
+    }
+  ]
+}
