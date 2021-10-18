@@ -712,6 +712,71 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "GetMaterialTagListKey"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets a render constant on a render object", 
+      "parameters": [
+        {
+          "doc": "the render object", 
+          "name": "ro", 
+          "types": [
+            "dmRender::RenderObject*"
+          ]
+        }, 
+        {
+          "doc": "the name of the material constant", 
+          "name": "name_hash", 
+          "types": [
+            "dmhash_t"
+          ]
+        }, 
+        {
+          "doc": "the constant", 
+          "name": "value", 
+          "types": [
+            "dmVMath::Vector4"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Sets a render constant on a render object", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "EnableRenderObjectConstant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Disables a previously set render constant on a render object", 
+      "parameters": [
+        {
+          "doc": "the render object", 
+          "name": "ro", 
+          "types": [
+            "dmRender::RenderObject*"
+          ]
+        }, 
+        {
+          "doc": "the name of the material constant", 
+          "name": "name_hash", 
+          "types": [
+            "dmhash_t"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Disables a previously set render constant on a ren...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "DisableRenderObjectConstant"
     }
   ]
 }
