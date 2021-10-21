@@ -237,6 +237,11 @@
           "name": "m_Constants"
         }, 
         {
+          "doc": "the data memory block for the constant values", 
+          "type": "dmVMath::Vector4[]", 
+          "name": "m_ConstantsData"
+        }, 
+        {
           "doc": "the world transform (usually identity for batched objects)", 
           "type": "dmVMath::Matrix4", 
           "name": "m_WorldTransform"
@@ -732,10 +737,17 @@
           ]
         }, 
         {
-          "doc": "the constant", 
-          "name": "value", 
+          "doc": "the constant values", 
+          "name": "values", 
           "types": [
-            "dmVMath::Vector4"
+            "dmVMath::Vector4*"
+          ]
+        }, 
+        {
+          "doc": "length of value array", 
+          "name": "num_values", 
+          "types": [
+            "uint32_t"
           ]
         }
       ], 

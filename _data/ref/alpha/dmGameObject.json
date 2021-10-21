@@ -1160,6 +1160,26 @@
     }, 
     {
       "replaces": "", 
+      "description": "A table of options for getting and setting properties.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Property Options", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "The index of the property to set, only applicable if property is array.", 
+          "type": "int32_t", 
+          "name": "m_Index"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "PropertyOptions"
+    }, 
+    {
+      "replaces": "", 
       "description": "Property variant that holds the data for a variable", 
       "parameters": [], 
       "returnvalues": [], 
@@ -1231,6 +1251,16 @@
           "doc": "Determines whether we are permitted to write to this property.", 
           "type": "bool", 
           "name": "m_ReadOnly"
+        }, 
+        {
+          "doc": "The number of elements the property holds (if array).", 
+          "type": "uint8_t", 
+          "name": "m_ArraySize"
+        }, 
+        {
+          "doc": "Indicates if this property is an array or not.", 
+          "type": "uint8_t", 
+          "name": "m_IsArray"
         }
       ], 
       "error": "", 
