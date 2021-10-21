@@ -1294,6 +1294,50 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "RefInInstance"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Converts a URL into a readable string. Useful for e.g. error messages", 
+      "parameters": [
+        {
+          "doc": "url", 
+          "name": "url", 
+          "types": [
+            "dmMessage::URL*"
+          ]
+        }, 
+        {
+          "doc": "the output buffer", 
+          "name": "buffer", 
+          "types": [
+            "char*"
+          ]
+        }, 
+        {
+          "doc": "the output buffer size", 
+          "name": "buffer_size", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "returns the passed in buffer", 
+          "name": "buffer", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Converts a URL into a readable string. Useful for ...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "UrlToString"
     }
   ]
 }
