@@ -19,6 +19,7 @@ update_frequency = 0
 vsync = 1
 display_profiles = /builtins/render/default.display_profilesc
 dynamic_orientation = 0
+display_device_info = 0
 
 [render]
 clear_color_red = 0
@@ -35,7 +36,7 @@ world_count = 4
 gravity_x = 0
 gravity_z = 0
 scale = 0.02
-allow_dynamic_transforms = 0
+allow_dynamic_transforms = 1
 debug_scale = 30
 max_collisions = 64
 max_contacts = 128
@@ -123,7 +124,7 @@ localizations = en
 [android]
 version_code = 1
 minimum_sdk_version = 16
-target_sdk_version = 29
+target_sdk_version = 30
 package = com.example.todo
 manifest = /builtins/manifests/android/AndroidManifest.xml
 iap_provider = GooglePlay
@@ -135,6 +136,7 @@ debuggable = 0
 [osx]
 infoplist = /builtins/manifests/osx/Info.plist
 bundle_identifier = example.unnamed
+bundle_version = 1
 default_language = en
 localizations = en
 
@@ -148,6 +150,7 @@ cssfile = /builtins/manifests/web/light_theme.css
 archive_location_prefix = archive
 show_fullscreen_button = 1
 show_made_with_defold = 1
+show_console_banner = 1
 scale_mode = downscale_fit
 
 [particle_fx]
