@@ -33,6 +33,21 @@
 
 </table>
 
+{%- if typedefs.size > 0 -%}
+<table class="compact">
+	<tr>
+		<th>TYPES</th>
+		<th></th>
+	</tr>
+	{%- for typedef in typedefs -%}
+	<tr>
+		<td><a href="#{% include ref_anchorlink.html element=typedef %}">{{ typedef.name }}</a></td>
+		<td>{{ typedef.brief }}</td>
+	</tr>
+	{%- endfor -%}
+</table>
+{%- endif -%}
+
 {%- if variables.size > 0 -%}
 <table class="compact">
 	<tr>
@@ -183,6 +198,16 @@
 	</table>
 	{%- endif -%}
 
+	<hr/>
+	{%- endfor -%}
+{%- endif -%}
+
+{%- if typedefs.size > 0 -%}
+<h2>Types</h2>
+	{%- for typedef in typedefs -%}
+	<a name="{% include ref_anchorlink.html element=typedef %}"/>
+	<h4>{{ typedef.name }}<a href="#{% include ref_anchorlink.html element=typedef %}" class="anchor-link"/></a></h4>
+	<p>{{ typedef.description }}</p>
 	<hr/>
 	{%- endfor -%}
 {%- endif -%}
