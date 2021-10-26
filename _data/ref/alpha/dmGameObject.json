@@ -68,6 +68,64 @@
     }, 
     {
       "replaces": "", 
+      "description": "Sends a script message. Wraps the message in a dmGameSystemDDF::ScriptMessage struct.", 
+      "parameters": [
+        {
+          "doc": "The ddf message to send", 
+          "name": "message", 
+          "types": [
+            "TDDFType*"
+          ]
+        }, 
+        {
+          "doc": "The sender", 
+          "name": "sender", 
+          "types": [
+            "dmMessage::Message*"
+          ]
+        }, 
+        {
+          "doc": "The receiver", 
+          "name": "receiver", 
+          "types": [
+            "dmMessage::Message*"
+          ]
+        }, 
+        {
+          "doc": "The function ref. 0 wil cause the \"on_message\" to be called", 
+          "name": "function_ref", 
+          "types": [
+            "int"
+          ]
+        }, 
+        {
+          "doc": "call dmScript::UnrefInInstance on the function_ref after the dmScript::PCall is made", 
+          "name": "unref_function_after_call", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "true if successful", 
+          "name": "success", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Sends a script message", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmScript::PostDDF"
+    }, 
+    {
+      "replaces": "", 
       "description": "Callback when iterating over the properties for a component.", 
       "parameters": [], 
       "returnvalues": [], 

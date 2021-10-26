@@ -1296,7 +1296,7 @@
           "doc": "Lua state", 
           "name": "L", 
           "types": [
-            ""
+            "lua_State*"
           ]
         }
       ], 
@@ -1305,7 +1305,7 @@
           "doc": "ref to value or LUA_NOREF\nLua stack on entry\n [-1] value\nLua stack on exit", 
           "name": "lua", 
           "types": [
-            ""
+            "int"
           ]
         }
       ], 
@@ -1317,6 +1317,35 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "RefInInstance"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Deletes the instance local lua reference\nExpects SetInstance() to have been set with an value that has a meta table\nwith META_GET_INSTANCE_CONTEXT_TABLE_REF method.", 
+      "parameters": [
+        {
+          "doc": "Lua state", 
+          "name": "L", 
+          "types": [
+            "lua_State*"
+          ]
+        }, 
+        {
+          "doc": "ref to value or LUA_NOREF\nLua stack on entry\nLua stack on exit", 
+          "name": "ref", 
+          "types": [
+            "int"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Deletes the instance local lua reference\nExpects ...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "UnrefInInstance"
     }, 
     {
       "replaces": "", 
