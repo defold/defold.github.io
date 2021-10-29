@@ -484,7 +484,7 @@ def process_examples(download = False):
         print("..building app")
         shutil.copyfile(bob_jar, os.path.join(tmp_dir, bob_jar))
         input_dir = os.path.join(tmp_dir, "examples-master")
-        subprocess.call([ "java", "-jar", os.path.join(tmp_dir, bob_jar), "--archive", "--platform", "js-web", "resolve", "build", "bundle" ], cwd=input_dir)
+        subprocess.call([ "java", "-jar", os.path.join(tmp_dir, bob_jar), "--archive", "--platform", "js-web", "--variant", "debug", "resolve", "build", "bundle" ], cwd=input_dir)
 
         print("...copying app")
         examples_dir = "examples"
