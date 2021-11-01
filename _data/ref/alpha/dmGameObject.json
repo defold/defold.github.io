@@ -150,10 +150,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentNewWorld"
           ]
         }
       ], 
@@ -179,10 +179,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentDeleteWorld"
           ]
         }
       ], 
@@ -208,10 +208,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentCreate"
           ]
         }
       ], 
@@ -237,10 +237,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentDestroy"
           ]
         }
       ], 
@@ -266,10 +266,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentInit"
           ]
         }
       ], 
@@ -295,10 +295,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentFinal"
           ]
         }
       ], 
@@ -324,10 +324,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentAddToUpdate"
           ]
         }
       ], 
@@ -353,10 +353,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentGet"
           ]
         }
       ], 
@@ -382,10 +382,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentsRender"
           ]
         }
       ], 
@@ -411,10 +411,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentsUpdate"
           ]
         }
       ], 
@@ -440,10 +440,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentsPostUpdate"
           ]
         }
       ], 
@@ -469,10 +469,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentOnMessage"
           ]
         }
       ], 
@@ -498,10 +498,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentOnInput"
           ]
         }
       ], 
@@ -527,10 +527,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentOnReload"
           ]
         }
       ], 
@@ -556,10 +556,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentSetProperties"
           ]
         }
       ], 
@@ -585,10 +585,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentGetProperty"
           ]
         }
       ], 
@@ -614,10 +614,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentSetProperty"
           ]
         }
       ], 
@@ -643,10 +643,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "global context", 
+          "name": "context", 
           "types": [
-            ""
+            "void*"
           ]
         }
       ], 
@@ -672,10 +672,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "transform dependency flag", 
+          "name": "reads_transforms", 
           "types": [
-            ""
+            "bool"
           ]
         }
       ], 
@@ -701,10 +701,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "prio order", 
+          "name": "prio", 
           "types": [
-            ""
+            "uint16_t"
           ]
         }
       ], 
@@ -730,10 +730,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "does each component instance need user data", 
+          "name": "has_user_data", 
           "types": [
-            ""
+            "bool"
           ]
         }
       ], 
@@ -749,7 +749,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "set the component property iterator function. Called during inspection", 
+      "description": "set the component child iterator function. Called during inspection", 
       "parameters": [
         {
           "doc": "the type", 
@@ -759,22 +759,22 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "child iterator function", 
+          "name": "fn", 
           "types": [
-            ""
+            "FIteratorChildren"
           ]
         }
       ], 
       "returnvalues": [], 
       "notes": [], 
-      "brief": "set the component property iterator function", 
+      "brief": "set the component child iterator function", 
       "examples": "", 
       "members": [], 
       "error": "", 
       "tparams": [], 
       "type": "FUNCTION", 
-      "name": "ComponentTypeSetChilldIteratorFn"
+      "name": "ComponentTypeSetChildIteratorFn"
     }, 
     {
       "replaces": "", 
@@ -788,10 +788,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "property iterator function", 
+          "name": "fn", 
           "types": [
-            ""
+            "FIteratorProperties"
           ]
         }
       ], 
