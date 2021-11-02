@@ -68,6 +68,64 @@
     }, 
     {
       "replaces": "", 
+      "description": "Sends a script message. Wraps the message in a dmGameSystemDDF::ScriptMessage struct.", 
+      "parameters": [
+        {
+          "doc": "The ddf message to send", 
+          "name": "message", 
+          "types": [
+            "TDDFType*"
+          ]
+        }, 
+        {
+          "doc": "The sender", 
+          "name": "sender", 
+          "types": [
+            "dmMessage::Message*"
+          ]
+        }, 
+        {
+          "doc": "The receiver", 
+          "name": "receiver", 
+          "types": [
+            "dmMessage::Message*"
+          ]
+        }, 
+        {
+          "doc": "The function ref. 0 wil cause the \"on_message\" to be called", 
+          "name": "function_ref", 
+          "types": [
+            "int"
+          ]
+        }, 
+        {
+          "doc": "call dmScript::UnrefInInstance on the function_ref after the dmScript::PCall is made", 
+          "name": "unref_function_after_call", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "true if successful", 
+          "name": "success", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Sends a script message", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmScript::PostDDF"
+    }, 
+    {
+      "replaces": "", 
       "description": "Callback when iterating over the properties for a component.", 
       "parameters": [], 
       "returnvalues": [], 
@@ -92,10 +150,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentNewWorld"
           ]
         }
       ], 
@@ -121,10 +179,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentDeleteWorld"
           ]
         }
       ], 
@@ -150,10 +208,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentCreate"
           ]
         }
       ], 
@@ -179,10 +237,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentDestroy"
           ]
         }
       ], 
@@ -208,10 +266,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentInit"
           ]
         }
       ], 
@@ -237,10 +295,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentFinal"
           ]
         }
       ], 
@@ -266,10 +324,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentAddToUpdate"
           ]
         }
       ], 
@@ -295,10 +353,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentGet"
           ]
         }
       ], 
@@ -324,10 +382,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentsRender"
           ]
         }
       ], 
@@ -353,10 +411,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentsUpdate"
           ]
         }
       ], 
@@ -382,10 +440,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentsPostUpdate"
           ]
         }
       ], 
@@ -411,10 +469,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentOnMessage"
           ]
         }
       ], 
@@ -440,10 +498,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentOnInput"
           ]
         }
       ], 
@@ -469,10 +527,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentOnReload"
           ]
         }
       ], 
@@ -498,10 +556,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentSetProperties"
           ]
         }
       ], 
@@ -527,10 +585,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentGetProperty"
           ]
         }
       ], 
@@ -556,10 +614,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "callback", 
+          "name": "fn", 
           "types": [
-            ""
+            "ComponentSetProperty"
           ]
         }
       ], 
@@ -585,10 +643,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "global context", 
+          "name": "context", 
           "types": [
-            ""
+            "void*"
           ]
         }
       ], 
@@ -614,10 +672,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "transform dependency flag", 
+          "name": "reads_transforms", 
           "types": [
-            ""
+            "bool"
           ]
         }
       ], 
@@ -643,10 +701,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "prio order", 
+          "name": "prio", 
           "types": [
-            ""
+            "uint16_t"
           ]
         }
       ], 
@@ -672,10 +730,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "does each component instance need user data", 
+          "name": "has_user_data", 
           "types": [
-            ""
+            "bool"
           ]
         }
       ], 
@@ -691,7 +749,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "set the component property iterator function. Called during inspection", 
+      "description": "set the component child iterator function. Called during inspection", 
       "parameters": [
         {
           "doc": "the type", 
@@ -701,22 +759,22 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "child iterator function", 
+          "name": "fn", 
           "types": [
-            ""
+            "FIteratorChildren"
           ]
         }
       ], 
       "returnvalues": [], 
       "notes": [], 
-      "brief": "set the component property iterator function", 
+      "brief": "set the component child iterator function", 
       "examples": "", 
       "members": [], 
       "error": "", 
       "tparams": [], 
       "type": "FUNCTION", 
-      "name": "ComponentTypeSetChilldIteratorFn"
+      "name": "ComponentTypeSetChildIteratorFn"
     }, 
     {
       "replaces": "", 
@@ -730,10 +788,10 @@
           ]
         }, 
         {
-          "doc": "", 
-          "name": "", 
+          "doc": "property iterator function", 
+          "name": "fn", 
           "types": [
-            ""
+            "FIteratorProperties"
           ]
         }
       ], 
@@ -1087,6 +1145,11 @@
           "doc": "", 
           "type": "", 
           "name": "dmGameObject::PROPERTY_RESULT_RESOURCE_NOT_FOUND"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_RESULT_INVALID_INDEX"
         }
       ], 
       "error": "", 
@@ -1157,6 +1220,26 @@
       "tparams": [], 
       "type": "ENUM", 
       "name": "Result"
+    }, 
+    {
+      "replaces": "", 
+      "description": "A table of options for getting and setting properties.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Property Options", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "The index of the property to set, only applicable if property is array.", 
+          "type": "int32_t", 
+          "name": "m_Index"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "PropertyOptions"
     }, 
     {
       "replaces": "", 
@@ -1231,6 +1314,16 @@
           "doc": "Determines whether we are permitted to write to this property.", 
           "type": "bool", 
           "name": "m_ReadOnly"
+        }, 
+        {
+          "doc": "The number of elements the property holds (if array).", 
+          "type": "uint8_t", 
+          "name": "m_ArraySize"
+        }, 
+        {
+          "doc": "Indicates if this property is an array or not.", 
+          "type": "uint8_t", 
+          "name": "m_IsArray"
         }
       ], 
       "error": "", 

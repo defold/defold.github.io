@@ -1610,6 +1610,37 @@
     }, 
     {
       "replaces": "", 
+      "description": "This is only useful for text nodes. The font must be mapped to the gui scene in the gui editor.", 
+      "parameters": [
+        {
+          "doc": "font of which to get the path hash", 
+          "name": "font_name", 
+          "types": [
+            "hash", 
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "path hash to resource", 
+          "name": "hash", 
+          "types": [
+            "hash"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets the node font resource", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "gui.get_font_resource"
+    }, 
+    {
+      "replaces": "", 
       "description": "This is only useful for text nodes.\nThe font must be mapped to the gui scene in the gui editor.", 
       "parameters": [
         {
@@ -1896,102 +1927,6 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "gui.set_clipping_inverted"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get the text metrics from a text node.", 
-      "parameters": [
-        {
-          "doc": "text node to measure text from", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "a table with the following fields:\n<ul>\n<li>width</li>\n<li>height</li>\n<li>max_ascent</li>\n<li>max_descent</li>\n</ul>", 
-          "name": "metrics", 
-          "types": [
-            "table"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "get text metrics from node", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.get_text_metrics_from_node"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get text metrics given the provided font, text and parameters.", 
-      "parameters": [
-        {
-          "doc": "font id", 
-          "name": "font", 
-          "types": [
-            "string", 
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "text to measure", 
-          "name": "text", 
-          "types": [
-            "string"
-          ]
-        }, 
-        {
-          "doc": "max-width. Use for line-breaks (default=FLT_MAX)", 
-          "name": "width", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "true to break lines accordingly to width (default=false)", 
-          "name": "line_break", 
-          "types": [
-            "boolean"
-          ]
-        }, 
-        {
-          "doc": "scale value for line spacing (default=1)", 
-          "name": "leading", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "scale value for letter spacing (default=0)", 
-          "name": "tracking", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "a table with the following fields:\n<ul>\n<li>width</li>\n<li>height</li>\n<li>max_ascent</li>\n<li>max_descent</li>\n</ul>", 
-          "name": "metrics", 
-          "types": [
-            "table"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "get text metrics", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.get_text_metrics"
     }, 
     {
       "replaces": "", 
