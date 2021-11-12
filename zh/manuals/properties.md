@@ -69,8 +69,11 @@ local color = gui.get_color(node)
 | 属性   | 描述                            | 类型            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
 | *size*     | sprite 原始尺寸 --- 从图集图片而定的尺寸. | `vector3` | `get` |
-| *texture0* | sprite 纹理路径hash. | `hash` | `get`|
+| *image* | sprite 纹理路径hash. | `hash` | `get`|
 | *scale* | sprite 非等比缩放. | `vector3` | `get+set`|
+| *material* | sprite 使用的材质. | `hash` | `get+set`|
+| *cursor* | 动画播放头位置 (取值范围 0--1). | `number` | `get+set`|
+| *playback_rate* | 逐帧动画播放速率. | `number` | `get+set`|
 
 *COLLISION OBJECT 组件属性*
 
@@ -99,6 +102,7 @@ local color = gui.get_color(node)
 | *texture0* | 模型的纹理路径hash. | `hash` | `get`|
 | *cursor*  | 当前动画播放头 (取值范围 0-1). | `number`   | `get+set` |
 | *playback_rate* | 当前动画播放速率. 即播放速度倍数. | `number` | `get+set` |
+| *material* | 模型所用材质. | `hash` | `get+set`|
 
 *LABEL 组件属性*
 
@@ -109,6 +113,8 @@ local color = gui.get_color(node)
 | *outline* | 文本标签的轮廓. | `vector4` | `get+set` |
 | *shadow* | 文本标签的阴影. | `vector4` | `get+set` |
 | *size* | 文本标签的大小. 如果开启换行的话文本标签大小会被约束. | `vector3` | `get+set` |
+| *material* | 文本标签所用材质. | `hash` | `get+set`|
+| *font* | 文本标签所用字体. | `hash` | `get+set`|
 
 ## GUI 节点属性
 
