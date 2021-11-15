@@ -1,7 +1,7 @@
 {
   "info": {
     "group": "SYSTEM", 
-    "description": "GUI API documentation", 
+    "description": "GUI core hooks, functions, messages, properties and constants for\ncreation and manipulation of GUI nodes. The \"gui\" namespace is\naccessible only from gui scripts.", 
     "namespace": "gui", 
     "brief": "GUI API documentation", 
     "file": "", 
@@ -9,6 +9,35 @@
     "name": "GUI"
   }, 
   "elements": [
+    {
+      "replaces": "", 
+      "description": "This message is broadcast to every GUI component when a layout change has been initiated\non device.", 
+      "parameters": [
+        {
+          "doc": "the id of the layout the engine is changing to", 
+          "name": "id", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "the id of the layout the engine is changing from", 
+          "name": "previous_id", 
+          "types": [
+            "hash"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "reports a layout change", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n   <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">layout_changed&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Landscape&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n       <span class=\"c1\">-- switching layout to &quot;Landscape&quot;...</span>\n       <span class=\"o\">...</span>\n   <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "layout_changed"
+    }, 
     {
       "replaces": "", 
       "description": "The material used when rendering the gui. The type of the property is hash.", 
@@ -1610,6 +1639,37 @@
     }, 
     {
       "replaces": "", 
+      "description": "This is only useful for text nodes. The font must be mapped to the gui scene in the gui editor.", 
+      "parameters": [
+        {
+          "doc": "font of which to get the path hash", 
+          "name": "font_name", 
+          "types": [
+            "hash", 
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "path hash to resource", 
+          "name": "hash", 
+          "types": [
+            "hash"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets the node font resource", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "gui.get_font_resource"
+    }, 
+    {
+      "replaces": "", 
       "description": "This is only useful for text nodes.\nThe font must be mapped to the gui scene in the gui editor.", 
       "parameters": [
         {
@@ -1896,102 +1956,6 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "gui.set_clipping_inverted"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get the text metrics from a text node.", 
-      "parameters": [
-        {
-          "doc": "text node to measure text from", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "a table with the following fields:\n<ul>\n<li>width</li>\n<li>height</li>\n<li>max_ascent</li>\n<li>max_descent</li>\n</ul>", 
-          "name": "metrics", 
-          "types": [
-            "table"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "get text metrics from node", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.get_text_metrics_from_node"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get text metrics given the provided font, text and parameters.", 
-      "parameters": [
-        {
-          "doc": "font id", 
-          "name": "font", 
-          "types": [
-            "string", 
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "text to measure", 
-          "name": "text", 
-          "types": [
-            "string"
-          ]
-        }, 
-        {
-          "doc": "max-width. Use for line-breaks (default=FLT_MAX)", 
-          "name": "width", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "true to break lines accordingly to width (default=false)", 
-          "name": "line_break", 
-          "types": [
-            "boolean"
-          ]
-        }, 
-        {
-          "doc": "scale value for line spacing (default=1)", 
-          "name": "leading", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "scale value for letter spacing (default=0)", 
-          "name": "tracking", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "a table with the following fields:\n<ul>\n<li>width</li>\n<li>height</li>\n<li>max_ascent</li>\n<li>max_descent</li>\n</ul>", 
-          "name": "metrics", 
-          "types": [
-            "table"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "get text metrics", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.get_text_metrics"
     }, 
     {
       "replaces": "", 
@@ -5080,35 +5044,6 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "on_reload"
-    }, 
-    {
-      "replaces": "", 
-      "description": "This message is broadcast to every GUI component when a layout change has been initiated\non device.", 
-      "parameters": [
-        {
-          "doc": "the id of the layout the engine is changing to", 
-          "name": "id", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "the id of the layout the engine is changing from", 
-          "name": "previous_id", 
-          "types": [
-            "hash"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reports a layout change", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n   <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">layout_changed&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Landscape&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n       <span class=\"c1\">-- switching layout to &quot;Landscape&quot;...</span>\n       <span class=\"o\">...</span>\n   <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "layout_changed"
     }
   ]
 }
