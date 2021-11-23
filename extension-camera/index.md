@@ -19,37 +19,10 @@ https://github.com/defold/extension-camera/archive/master.zip
 We recommend using a link to a zip file of a [specific release](https://github.com/defold/extension-camera/releases).
 
 
-## Configuration
-The extension can be configured by adding the following fields to game.project:
-
-```
-[adinfo]
-tracking_usage_description = We would like to show you relevant ads.
-register_for_attribution = 1
-```
-
-### tracking_usage_description
-
-Before requesting advertising info and status on iOS 14 the application must request user authorization to access app-related data for tracking the user or the device. This is done automatically when `adinfo.get()` is called. The string set in `adinfo.tracking_usage_description` will be shown to the user.
-
-Apple documentation: https://developer.apple.com/documentation/apptrackingtransparency?language=objc
-
-### register_for_attribution
-
-The extension can automatically register the application for ad network attribution using `SkAdNetwork` and the `registerAppForAdNetworkAttribution()` function. Enable this functionality by setting `adinfo.register_for_attribution` to 1 in game.project.
-
-Apple documentation: https://developer.apple.com/documentation/storekit/skadnetwork
-
-
 ## Example
 
-```lua
-function init(self)
-    adinfo.get(function(self, info)
-      print(info.ad_ident, info.ad_tracking_enabled)
-    end)
-end
-```
+Refer to the [example project](https://github.com/defold/extension-camera/blob/master/main/main.script).
+
 
 ## FAQ
 
