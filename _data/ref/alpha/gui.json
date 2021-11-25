@@ -1632,7 +1632,7 @@
       ], 
       "notes": [], 
       "brief": "gets the node font resource", 
-      "examples": "", 
+      "examples": "Get the text metrics for a text\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">name&quot;</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">font_name</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_font</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">font</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_font_resource</span><span class=\"p\">(</span><span class=\"n\">font_name</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">metrics</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">get_text_metrics</span><span class=\"p\">(</span><span class=\"n\">font</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">The quick brown fox</span><span class=\"se\">\\n</span><span class=\"s\"> jumps over the lazy dog&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "tparams": [], 
