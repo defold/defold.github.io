@@ -7,7 +7,7 @@ layout: page
 	<div class="container">
 		<div class="row">
 			<div class="columns two">
-				{% assign all_categories = site.data.examplesindex | map: "category" | uniq %}
+				{% assign all_categories = site.data.examplesindex | map: "category" | uniq | sort %}
 				<div class="sidemenu">
 				{% for category in all_categories %}
 					{%- assign examples = site.data.examplesindex | where: "category", category -%}
