@@ -25,6 +25,34 @@
     }, 
     {
       "replaces": "", 
+      "description": "The textures used in the gui. The type of the property is hash.\nKey must be specified in options table.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "<span class=\"type\">hash</span> gui textures", 
+      "examples": "How to set texture using a script property (see <a href=\"/ref/resource#resource.atlas\">resource.atlas</a>)\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_atlas&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">atlas</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/atlas.atlas&quot;</span><span class=\"p\">))</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">textures&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_atlas</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_atlas&quot;</span><span class=\"p\">})</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "PROPERTY", 
+      "name": "textures"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The fonts used in the gui. The type of the property is hash.\nKey must be specified in options table.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "<span class=\"type\">hash</span> gui fonts", 
+      "examples": "How to set font using a script property (see <a href=\"/ref/resource#resource.font\">resource.font</a>)\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_font&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">atlas</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/font.font&quot;</span><span class=\"p\">))</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">fonts&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_font</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_font&quot;</span><span class=\"p\">})</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "PROPERTY", 
+      "name": "fonts"
+    }, 
+    {
+      "replaces": "", 
       "description": "Retrieves the node with the specified id.", 
       "parameters": [
         {
