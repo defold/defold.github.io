@@ -1,7 +1,7 @@
 {
   "info": {
     "group": "SYSTEM", 
-    "description": "GUI core hooks, functions, messages, properties and constants for\ncreation and manipulation of GUI nodes. The \"gui\" namespace is\naccessible only from gui scripts.", 
+    "description": "GUI API documentation", 
     "namespace": "gui", 
     "brief": "GUI API documentation", 
     "file": "", 
@@ -9,35 +9,6 @@
     "name": "GUI"
   }, 
   "elements": [
-    {
-      "replaces": "", 
-      "description": "This message is broadcast to every GUI component when a layout change has been initiated\non device.", 
-      "parameters": [
-        {
-          "doc": "the id of the layout the engine is changing to", 
-          "name": "id", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "the id of the layout the engine is changing from", 
-          "name": "previous_id", 
-          "types": [
-            "hash"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reports a layout change", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n   <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">layout_changed&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Landscape&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n       <span class=\"c1\">-- switching layout to &quot;Landscape&quot;...</span>\n       <span class=\"o\">...</span>\n   <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "layout_changed"
-    }, 
     {
       "replaces": "", 
       "description": "The material used when rendering the gui. The type of the property is hash.", 
@@ -51,6 +22,34 @@
       "tparams": [], 
       "type": "PROPERTY", 
       "name": "material"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The textures used in the gui. The type of the property is hash.\nKey must be specified in options table.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "<span class=\"type\">hash</span> gui textures", 
+      "examples": "How to set texture using a script property (see <a href=\"/ref/resource#resource.atlas\">resource.atlas</a>)\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_atlas&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">atlas</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/atlas.atlas&quot;</span><span class=\"p\">))</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">textures&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_atlas</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_atlas&quot;</span><span class=\"p\">})</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "PROPERTY", 
+      "name": "textures"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The fonts used in the gui. The type of the property is hash.\nKey must be specified in options table.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "<span class=\"type\">hash</span> gui fonts", 
+      "examples": "How to set font using a script property (see <a href=\"/ref/resource#resource.font\">resource.font</a>)\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_font&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">atlas</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/font.font&quot;</span><span class=\"p\">))</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">fonts&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_font</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_font&quot;</span><span class=\"p\">})</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "PROPERTY", 
+      "name": "fonts"
     }, 
     {
       "replaces": "", 
@@ -1661,7 +1660,7 @@
       ], 
       "notes": [], 
       "brief": "gets the node font resource", 
-      "examples": "", 
+      "examples": "Get the text metrics for a text\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">name&quot;</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">font_name</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_font</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">font</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_font_resource</span><span class=\"p\">(</span><span class=\"n\">font_name</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">metrics</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">get_text_metrics</span><span class=\"p\">(</span><span class=\"n\">font</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">The quick brown fox</span><span class=\"se\">\\n</span><span class=\"s\"> jumps over the lazy dog&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "tparams": [], 
@@ -4312,6 +4311,57 @@
     }, 
     {
       "replaces": "", 
+      "description": "gets the node alpha", 
+      "parameters": [
+        {
+          "doc": "node from which to get alpha", 
+          "name": "node", 
+          "types": [
+            "node"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "gets the node alpha", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "gui.get_alpha"
+    }, 
+    {
+      "replaces": "", 
+      "description": "sets the node alpha", 
+      "parameters": [
+        {
+          "doc": "node for which to set alpha", 
+          "name": "node", 
+          "types": [
+            "node"
+          ]
+        }, 
+        {
+          "doc": "0..1 alpha color", 
+          "name": "alpha", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "sets the node alpha", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "gui.set_alpha"
+    }, 
+    {
+      "replaces": "", 
       "description": "position property", 
       "parameters": [], 
       "returnvalues": [], 
@@ -5044,6 +5094,35 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "on_reload"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This message is broadcast to every GUI component when a layout change has been initiated\non device.", 
+      "parameters": [
+        {
+          "doc": "the id of the layout the engine is changing to", 
+          "name": "id", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "the id of the layout the engine is changing from", 
+          "name": "previous_id", 
+          "types": [
+            "hash"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "reports a layout change", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n   <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">layout_changed&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Landscape&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n       <span class=\"c1\">-- switching layout to &quot;Landscape&quot;...</span>\n       <span class=\"o\">...</span>\n   <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "layout_changed"
     }
   ]
 }
