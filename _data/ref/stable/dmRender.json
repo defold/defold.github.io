@@ -1228,7 +1228,9 @@
           "types": [
             "uint32_t*"
           ]
-        }, 
+        }
+      ], 
+      "returnvalues": [
         {
           "doc": "true if constant existed.", 
           "name": "ok", 
@@ -1237,7 +1239,6 @@
           ]
         }
       ], 
-      "returnvalues": [], 
       "notes": [], 
       "brief": "Gets a named constant from the buffer", 
       "examples": "", 
@@ -1246,6 +1247,36 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "GetNamedConstant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets number of constants in the buffer", 
+      "parameters": [
+        {
+          "doc": "the constants buffer", 
+          "name": "buffer", 
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "true if constant existed.", 
+          "name": "ok", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Gets number of constants in the buffer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetNamedConstantCount"
     }
   ]
 }
