@@ -128,7 +128,66 @@
     {
       "replaces": "", 
       "description": "Load a class", 
-      "parameters": [], 
+      "parameters": [
+        {
+          "doc": "", 
+          "name": "env", 
+          "types": [
+            "JNIEnv*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "class_name", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the activity class loader", 
+          "name": "class", 
+          "types": [
+            "jclass"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Load a class", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "LoadClass"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Load a class", 
+      "parameters": [
+        {
+          "doc": "", 
+          "name": "env", 
+          "types": [
+            "JNIEnv*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "activity", 
+          "types": [
+            "jobject"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "class_name", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
       "returnvalues": [
         {
           "doc": "the activity class loader", 
