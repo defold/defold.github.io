@@ -24,6 +24,36 @@
     }, 
     {
       "replaces": "", 
+      "description": "Get the component type index. Used for with e.g. dmGameObject::GetWorld()/GetContext()", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "The type index.", 
+          "name": "type_index", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Get the component type index. Used for with e.g. d...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeGetTypeIndex"
+    }, 
+    {
+      "replaces": "", 
       "description": "Set the new world callback. Called when a collection (i.e. a \"world\") is created.", 
       "parameters": [
         {
@@ -527,7 +557,7 @@
           ]
         }, 
         {
-          "doc": "global context", 
+          "doc": "component type global context", 
           "name": "context", 
           "types": [
             "void*"
@@ -543,6 +573,36 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "ComponentTypeSetContext"
+    }, 
+    {
+      "replaces": "", 
+      "description": "get the component type global context", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "component type global context", 
+          "name": "context", 
+          "types": [
+            "void*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get the component type global context", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeGetContext"
     }, 
     {
       "replaces": "", 
@@ -721,7 +781,7 @@
         {
           "doc": "Mappings between names and contextx", 
           "type": "dmHashTable64<void*>", 
-          "name": "m_Contextx"
+          "name": "m_Contexts"
         }
       ], 
       "error": "", 
