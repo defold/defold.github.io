@@ -54,7 +54,7 @@ This option is obviously available to anyone. If you require a specific feature 
 
 
 # Reviewing 2021 from a roadmap perspective
-In the 2021 roadmap (https://defold.com/2021/02/09/A-first-look-at-the-2021-roadmap/) we focused on four main areas of work. Let's have a look at how we performed in each of these areas:
+In the [2021 roadmap](https://defold.com/2021/02/09/A-first-look-at-the-2021-roadmap/) we focused on four main areas of work. Let's have a look at how we performed in each of these areas:
 
 * Platforms
 * Extensions
