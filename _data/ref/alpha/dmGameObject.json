@@ -1894,7 +1894,22 @@
     {
       "replaces": "", 
       "description": "Callback when iterating over the properties for a component.", 
-      "parameters": [], 
+      "parameters": [
+        {
+          "doc": "the property iterator", 
+          "name": "pit", 
+          "types": [
+            "dmGameObject::SceneNodePropertyIterator"
+          ]
+        }, 
+        {
+          "doc": "the scene node", 
+          "name": "node", 
+          "types": [
+            "dmGameObject::SceneNode*"
+          ]
+        }
+      ], 
       "returnvalues": [], 
       "notes": [], 
       "brief": "Callback when iterating over the properties for a ...", 
@@ -1903,7 +1918,7 @@
       "error": "", 
       "tparams": [], 
       "type": "FUNCTION", 
-      "name": ""
+      "name": "ComponentIterProperties"
     }, 
     {
       "replaces": "", 

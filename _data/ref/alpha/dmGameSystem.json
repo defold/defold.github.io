@@ -10,6 +10,77 @@
   "elements": [
     {
       "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GuiNodeTypeDestroyFunction"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GuiNodeTypeDestroyFunction"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Registers a new gui node type to the Gui component", 
+      "parameters": [
+        {
+          "doc": "The unique C++ symbol name", 
+          "name": "symbol", 
+          "types": [
+            "C++ symbol name"
+          ]
+        }, 
+        {
+          "doc": "The name of the node type", 
+          "name": "name", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "the create function", 
+          "name": "type_create_fn", 
+          "types": [
+            "GuiNodeTypeCreateFunction"
+          ]
+        }, 
+        {
+          "doc": "the destroy function. May be 0", 
+          "name": "type_destroy_fn", 
+          "types": [
+            "GuiNodeTypeDestroyFunction"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Registers a new gui node type to the Gui component", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "DM_DECLARE_COMPGUI_TYPE"
+    }, 
+    {
+      "replaces": "", 
       "description": "Render constants handle", 
       "parameters": [], 
       "returnvalues": [], 
