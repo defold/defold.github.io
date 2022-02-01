@@ -9,7 +9,7 @@ tags: ["news", "yandex", "gamejam"]
 The [Defold Foundation and Yandex.Games game jam](/yandex-game-jam-2021) was a month long jam running all through November of last year. Developers were challenged to create a themed web game showing their creative and developer skills as well as a good integration with the Yandex.Games SDK. After some delays during the post-jam period we finally have the results!
 
 ## People's Choice
-The games will be ranked based on the average star rating given by the players
+The games were ranked based on the average star rating given by the players
 
 1. [Connect to Target](https://yandex.com/games/play/180319)
 2. [One More Tank](https://yandex.com/games/play/179759)
@@ -31,7 +31,7 @@ Prizes:
 
 
 ## Yandex' Choice
-The team at Yandex will rank the games based on how well the games perform on the Yandex platform.
+The team at Yandex ranked the games based on how well the games perform on the Yandex platform.
 
 1. [Knife Attack](https://yandex.ru/games/play/180332)
 2. [Operation Yolka](https://yandex.com/games/play/179783)
@@ -55,7 +55,7 @@ The games will be featured in the "Our Choice" category on Yandex and the games 
 
 
 ## Defold's Choice
-The Defold Foundation will rank the games based on technical excellence and theme usage.
+The Defold Foundation ranked the games based on technical excellence and theme usage.
 
 1. [Sea Battle: Universe](https://yandex.com/games/play/178820)
 2. [Foggy Fox](https://yandex.com/games/play/181065)
