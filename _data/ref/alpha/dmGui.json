@@ -489,6 +489,117 @@
     }, 
     {
       "replaces": "", 
+      "description": "Get the parent of a gui node", 
+      "parameters": [
+        {
+          "doc": "the gui scene", 
+          "name": "scene", 
+          "types": [
+            "dmGui::HScene"
+          ]
+        }, 
+        {
+          "doc": "the gui node", 
+          "name": "node", 
+          "types": [
+            "dmGui::HNode"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the parent, or INVALID_HANDLE is unsuccessful", 
+          "name": "parent", 
+          "types": [
+            "dmGui::HNode"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Get the parent of a gui node", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetNodeParent"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get first child node", 
+      "parameters": [
+        {
+          "doc": "the gui scene", 
+          "name": "scene", 
+          "types": [
+            "dmGui::HScene"
+          ]
+        }, 
+        {
+          "doc": "Gets the first child node. If 0, gets the first top level node.", 
+          "name": "node", 
+          "types": [
+            "dmGui::HNode"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "The first child node", 
+          "name": "child", 
+          "types": [
+            "dmGui::HNode"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Get first child node", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetFirstChildNode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get next sibling", 
+      "parameters": [
+        {
+          "doc": "the gui scene", 
+          "name": "scene", 
+          "types": [
+            "dmGui::HScene"
+          ]
+        }, 
+        {
+          "doc": "the current sibling", 
+          "name": "node", 
+          "types": [
+            "dmGui::HNode"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the next sibling, or INVALID_HANDLE if no more siblings", 
+          "name": "sibling", 
+          "types": [
+            "dmGui::HNode"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Get next sibling", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetNextNode"
+    }, 
+    {
+      "replaces": "", 
       "description": "Query if the node is a bone", 
       "parameters": [
         {
