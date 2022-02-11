@@ -127,6 +127,6 @@ It is also possible to use a local font instead of a web font:
 }
 ```
 
-:::sidenote
+<div class='sidenote' markdown='1'>
 The code editor font is defined separately in the editor Preferences!
-:::
+</div>
