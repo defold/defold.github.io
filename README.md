@@ -104,8 +104,8 @@ Open a terminal window and install `rbenv` by running the following commands:
 Now close the terminal window. Open a new terminal window and install a new Ruby version (this version corresponds to the one defined in the `.ruby-version` file of this repository):
 
 ```sh
-	# use rbenv to install ruby 2.6.5
-	rbenv install 2.6.5
+	# use rbenv to install user local version of ruby 2.7.5
+	rbenv install --local 2.7.5
 ```
 
 ### 2 Install gems
