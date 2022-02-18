@@ -103,6 +103,19 @@
             "type": "FUNCTION"
         }, 
         {
+            "description": "Sets the minimum fetch interval. (Official docs https://firebase.google.com/docs/reference/cpp/struct/firebase/remote-config/config-settings)", 
+            "examples": "", 
+            "name": "remoteconfig.set_minimum_fetch_interval", 
+            "parameters": [
+                {
+                    "doc": "The minimum interval in milliseconds between successive fetch calls. Generates SETTINGS_UPDATED or SETTINGS_ERROR", 
+                    "name": "minimum_fetch_interval"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
             "description": "Event generated when remote config has been initialized and is ready for use", 
             "examples": "", 
             "name": "remoteconfig.CONFIG_INITIALIZED", 
@@ -138,6 +151,22 @@
             "description": "Event generated when the remote config has been activated", 
             "examples": "", 
             "name": "remoteconfig.CONFIG_ACTIVATED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "VARIABLE"
+        }, 
+        {
+            "description": "Event generated when remote config settings have been updated", 
+            "examples": "", 
+            "name": "remoteconfig.SETTINGS_UPDATED", 
+            "parameters": [], 
+            "returnvalues": [], 
+            "type": "VARIABLE"
+        }, 
+        {
+            "description": "Event generated when an error occurred during updating settings", 
+            "examples": "", 
+            "name": "remoteconfig.SETTINGS_ERROR", 
             "parameters": [], 
             "returnvalues": [], 
             "type": "VARIABLE"
