@@ -3566,6 +3566,72 @@
     }, 
     {
       "replaces": "", 
+      "description": "Set the screen position to the supplied node", 
+      "parameters": [
+        {
+          "doc": "node to set the screen position to", 
+          "name": "node", 
+          "types": [
+            "node"
+          ]
+        }, 
+        {
+          "doc": "screen position", 
+          "name": "screen_position", 
+          "types": [
+            "vector3"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "sets screen position to the node", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "gui.set_screen_position"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Convert the screen position to the local position of supplied node", 
+      "parameters": [
+        {
+          "doc": "node used for getting local transformation matrix", 
+          "name": "node", 
+          "types": [
+            "node"
+          ]
+        }, 
+        {
+          "doc": "screen position", 
+          "name": "screen_position", 
+          "types": [
+            "vector3"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "local position", 
+          "name": "local_position", 
+          "types": [
+            "vector3"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "convert screen position to the local node position", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "gui.screen_to_local"
+    }, 
+    {
+      "replaces": "", 
       "description": "This is only useful nodes with flipbook animations. Gets the normalized cursor of the flipbook animation on a node.", 
       "parameters": [
         {
