@@ -1,0 +1,129 @@
+{
+    "elements": [
+        {
+            "description": "Plays the specified animation on a Spine model. A [ref:spine_animation_done] message is sent to the callback (or message handler). Any spine events will also be handled in the same way. [icon:attention] The callback is not called (or message sent) if the animation is cancelled with [ref:spine.cancel]. The callback is called (or message sent) only for animations that play with the following playback modes * `go.PLAYBACK_ONCE_FORWARD` * `go.PLAYBACK_ONCE_BACKWARD` * `go.PLAYBACK_ONCE_PINGPONG`", 
+            "examples": "", 
+            "name": "play_anim", 
+            "parameters": [
+                {
+                    "doc": "The Spine model for which to play an animation", 
+                    "name": "url"
+                }, 
+                {
+                    "doc": "Id of the animation to play", 
+                    "name": "anim_id"
+                }, 
+                {
+                    "doc": "Playback mode of the animation (from go.PLAYBACK_*)", 
+                    "name": "playback"
+                }, 
+                {
+                    "doc": "Playback options", 
+                    "name": "options"
+                }, 
+                {
+                    "doc": "function to call when the animation has completed or a Spine event occured", 
+                    "name": "callback_function"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Cancels all running animations on a specified spine model component", 
+            "examples": "", 
+            "name": "cancel", 
+            "parameters": [
+                {
+                    "doc": "The Spine model for which to cancel the animation", 
+                    "name": "url"
+                }, 
+                {
+                    "doc": "Cancel options", 
+                    "name": "options"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Returns the id of the game object that corresponds to a specified skeleton bone.", 
+            "examples": "", 
+            "name": "get_go", 
+            "parameters": [
+                {
+                    "doc": "The Spine model to query", 
+                    "name": "url"
+                }, 
+                {
+                    "doc": "Id of the corresponding bone", 
+                    "name": "bone_id"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Returns the id of the game object that corresponds to a specified skeleton bone.", 
+            "examples": "", 
+            "name": "set_skin", 
+            "parameters": [
+                {
+                    "doc": "The Spine model to query", 
+                    "name": "url"
+                }, 
+                {
+                    "doc": "Id of the corresponding skin", 
+                    "name": "skin"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Returns the id of the game object that corresponds to a specified skeleton bone.", 
+            "examples": "", 
+            "name": "set_attachment", 
+            "parameters": [
+                {
+                    "doc": "The Spine model to query", 
+                    "name": "url"
+                }, 
+                {
+                    "doc": "Id of the slot", 
+                    "name": "slot"
+                }, 
+                {
+                    "doc": "Id of the attachment", 
+                    "name": "attachment"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }, 
+        {
+            "description": "Resets a shader constant for a spine model component. (Previously set with `go.set()`)", 
+            "examples": "", 
+            "name": "reset_constant", 
+            "parameters": [
+                {
+                    "doc": "The Spine model to query", 
+                    "name": "url"
+                }, 
+                {
+                    "doc": "name of the constant", 
+                    "name": "constant"
+                }
+            ], 
+            "returnvalues": [], 
+            "type": "FUNCTION"
+        }
+    ], 
+    "info": {
+        "brief": "spine", 
+        "description": "Functions and constants for interacting with Spine models", 
+        "group": "EXTENSIONS", 
+        "name": "spine", 
+        "namespace": "spine"
+    }
+}
