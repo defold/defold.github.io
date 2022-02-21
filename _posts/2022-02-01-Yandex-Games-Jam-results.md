@@ -51,7 +51,7 @@ Prizes:
 * 3rd place - iPhone 12 128 GB, Featuring and advertising of your game, worth $500
 * 4th-10th place - Featuring and advertising of your game, worth $200
 
-The games will be featured in the "Our Choice" category on Yandex and the games will be advertised in Yandex advertisinig channels.
+The games will be advertised in Yandex advertisinig channels.
 
 
 ## Defold's Choice
