@@ -8,7 +8,7 @@ brief: This manual covers how to import and use 2D graphics.
 
 # Importing 2D graphics
 
-Defold supports many kinds of visual components frequently used in 2D games. You can use Defold to create static and animated sprites, UI components, particle effects, tile maps, bitmap fonts and Spine animations. Before you can create any of these visual components you need to import image files with the graphics that you wish to use. To import image files you simply drag the files from the file system on your computer and drop them in an appropriate place in the Defold editor *Assets pane*.
+Defold supports many kinds of visual components frequently used in 2D games. You can use Defold to create static and animated sprites, UI components, particle effects, tile maps and bitmap fonts. Before you can create any of these visual components you need to import image files with the graphics that you wish to use. To import image files you simply drag the files from the file system on your computer and drop them in an appropriate place in the Defold editor *Assets pane*.
 
 ![Importing files](../images/graphics/import.png)
 
@@ -74,13 +74,3 @@ Learn more about particle effects in the [Particle fx manual](/manuals/particlef
   ![gui](../images/graphics/gui.png)
 
 Learn more about GUIs in the [GUI manual](/manuals/gui).
-
-![spine](../images/icons/spine-model.png) Spine model
-: Spine models gets their data from Spine scene resources. Those contain two pieces of data:
-
-  1. A Spine Json file that describes the bone animations.
-  2. An atlas that contain the images that are attached to the bones. Spine models cannot use data from tile maps.
-
-  ![spine](../images/graphics/spine.png)
-
-Learn more about Spine models in the [Spine model manual](/manuals/spinemodel).
