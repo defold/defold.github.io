@@ -85,15 +85,6 @@ local color = gui.get_color(node)
 | *linear_damping* | 碰撞对象当前的线性阻尼. | `vector3` | `get+set` |
 | *angular_damping* | 碰撞对象当前的旋转阻尼. | `vector3` | `get+set` |
 
-*SPINE MODEL 组件属性*
-
-| 属性   | 描述                            | 类型            |                  |
-| ---------- | -------------------------------------- | --------------- | ---------------- |
-| *animation* | 当前动画. | `hash` | `get` |
-| *skin*     | 当前皮肤. (不支持属性动画) | `hash` | `get+set` |
-| *cursor*   | 当前动画播放头 (取值范围 0-1). | `number` | `get+set` |
-| *playback_rate* | 当前动画播放速率. 即播放速度倍数. | `number` | `get+set` |
-
 *MODEL (3D) 组件属性*
 
 | 属性   | 描述                            | 类型            |                  |

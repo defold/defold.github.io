@@ -26,9 +26,14 @@ Defold 提供以下组件类型:
 * [Particle FX](/zh/manuals/particlefx) -  创建粒子
 * [Script](/zh/manuals/script) - 添加游戏逻辑
 * [Sound](/zh/manuals/sound) - 播放音效音乐
-* [Spine model](/zh/manuals/spinemodel) - 渲染spine动画
 * [Sprite](/zh/manuals/sprite) - 显示2D图像 (可以带逐帧动画)
 * [Tilemap](/zh/manuals/tilemap) - 显示一组瓷砖图
+
+其他组件可以通过载入扩展插件的方式导入项目:
+
+* [Rive model](/extension-rive) - 渲染 Rive 动画
+* [Spine model](/extension-spine) - 渲染 Spine 动画
+
 
 ## 开启关闭组件
 
