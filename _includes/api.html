@@ -96,15 +96,11 @@
 		<p>{{ function.description }}</p>
 
 		<p><b>PARAMETERS</b></p>
-		<table>
-			{%- for param in function.parameters -%}
-			<tr>
-				<td><code>{{ param.name }}</code></td>
-				<td>{{ param.types | join: ", " }}</td>
-				<td>{{ param.doc }}</td>
-			</tr>
-			{%- endfor -%}
-		</table>
+		{%- if function.parameters.size > 0 -%}
+		{% include api_parameters.html parameters=function.parameters %}
+		{%- else -%}
+		<p>None</p>
+		{%- endif -%}
 
 		{%- if function.returnvalues.size > 0 -%}
 		<p><b>RETURNS</b></p>
@@ -135,15 +131,7 @@
 	<p>{{ variable.description }}</p>
 
 	{%- if variable.parameters.size > 0 -%}
-	<table>
-	{%- for param in variable.parameters -%}
-	<tr>
-		<td><code>{{ param.name }}</code></td>
-		<td>{{ param.types | join: ", " }}</td>
-		<td>{{ param.doc }}</td>
-	</tr>
-	{%- endfor -%}
-	</table>
+	{% include api_parameters.html parameters=variable.parameters %}
 	{%- endif -%}
 
 	<hr/>
@@ -158,15 +146,7 @@
 	<p>{{ message.description }}</p>
 
 	{%- if message.parameters.size > 0 -%}
-	<table>
-	{%- for param in message.parameters -%}
-	<tr>
-		<td><code>{{ param.name }}</code></td>
-		<td>{{ param.types | join: ", " }}</td>
-		<td>{{ param.doc }}</td>
-	</tr>
-	{%- endfor -%}
-	</table>
+	{% include api_parameters.html parameters=message.parameters %}
 	{%- endif -%}
 
 	{%- if message.examples.size > 0 -%}

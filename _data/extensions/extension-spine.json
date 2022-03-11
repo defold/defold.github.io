@@ -7,23 +7,158 @@
             "parameters": [
                 {
                     "doc": "The Spine model for which to play an animation", 
-                    "name": "url"
+                    "name": "url", 
+                    "types": [
+                        "string", 
+                        "hash", 
+                        "url"
+                    ]
                 }, 
                 {
                     "doc": "Id of the animation to play", 
-                    "name": "anim_id"
+                    "name": "anim_id", 
+                    "types": [
+                        "hash"
+                    ]
                 }, 
                 {
                     "doc": "Playback mode of the animation (from go.PLAYBACK_*)", 
-                    "name": "playback"
+                    "name": "playback", 
+                    "types": [
+                        "number"
+                    ]
                 }, 
                 {
                     "doc": "Playback options", 
-                    "name": "options"
+                    "name": "options", 
+                    "parameters": [
+                        {
+                            "doc": "Duration of a linear blend between the current and new animation.", 
+                            "name": "blend_duration", 
+                            "types": [
+                                "number"
+                            ]
+                        }, 
+                        {
+                            "doc": "The normalized initial value of the animation cursor when the animation starts playing.", 
+                            "name": "offset", 
+                            "types": [
+                                "number"
+                            ]
+                        }, 
+                        {
+                            "doc": "The rate with which the animation will be played. Must be positive.", 
+                            "name": "playback_rate", 
+                            "types": [
+                                "constant"
+                            ]
+                        }, 
+                        {
+                            "doc": "The track index of the animation. Defaults to 1. Animations on different tracks play in parallel.", 
+                            "name": "track", 
+                            "types": [
+                                "number"
+                            ]
+                        }
+                    ], 
+                    "types": [
+                        "table"
+                    ]
                 }, 
                 {
                     "doc": "function to call when the animation has completed or a Spine event occured", 
-                    "name": "callback_function"
+                    "name": "callback_function", 
+                    "parameters": [
+                        {
+                            "doc": "The context of the calling script", 
+                            "name": "self", 
+                            "types": [
+                                "object"
+                            ]
+                        }, 
+                        {
+                            "doc": "The name of the message (\"spine_animation_done\" or \"spine_event\")", 
+                            "name": "message_id", 
+                            "types": [
+                                "hash"
+                            ]
+                        }, 
+                        {
+                            "doc": "A table that contains the response", 
+                            "name": "message", 
+                            "parameters": [
+                                {
+                                    "doc": "The animation that was completed", 
+                                    "name": "animation_id", 
+                                    "types": [
+                                        "hash"
+                                    ]
+                                }, 
+                                {
+                                    "doc": "The track index of the animation", 
+                                    "name": "track", 
+                                    "types": [
+                                        "number"
+                                    ]
+                                }, 
+                                {
+                                    "doc": "(spine_animation_done only!) The playback mode for the animation", 
+                                    "name": "playback", 
+                                    "types": [
+                                        "constant"
+                                    ]
+                                }, 
+                                {
+                                    "doc": "(spine_event only!) the event that was triggered.", 
+                                    "name": "event_id", 
+                                    "types": [
+                                        "hash"
+                                    ]
+                                }, 
+                                {
+                                    "doc": "(spine_event only!) the time at which the event occurred (seconds)", 
+                                    "name": "t", 
+                                    "types": [
+                                        "float"
+                                    ]
+                                }, 
+                                {
+                                    "doc": "(spine_event only!) a custom integer associated with the event (0 by default).", 
+                                    "name": "integer", 
+                                    "types": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "doc": "(spine_event only!) a custom float associated with the event (0 by default)", 
+                                    "name": "float", 
+                                    "types": [
+                                        "float"
+                                    ]
+                                }, 
+                                {
+                                    "doc": "(spine_event only!) a custom string associated with the event (hash(\"\") by default)", 
+                                    "name": "string", 
+                                    "types": [
+                                        "hash"
+                                    ]
+                                }
+                            ], 
+                            "types": [
+                                "table"
+                            ]
+                        }, 
+                        {
+                            "doc": "The invoker of the callback - the Spine model component", 
+                            "name": "sender", 
+                            "types": [
+                                "url"
+                            ]
+                        }
+                    ], 
+                    "types": [
+                        "function"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -36,11 +171,28 @@
             "parameters": [
                 {
                     "doc": "The Spine model for which to cancel the animation", 
-                    "name": "url"
+                    "name": "url", 
+                    "types": [
+                        "string", 
+                        "hash", 
+                        "url"
+                    ]
                 }, 
                 {
                     "doc": "Cancel options", 
-                    "name": "options"
+                    "name": "options", 
+                    "parameters": [
+                        {
+                            "doc": "The index of the track which to cancel the animation on. Defaults to all animations on all tracks.", 
+                            "name": "track", 
+                            "types": [
+                                "number"
+                            ]
+                        }
+                    ], 
+                    "types": [
+                        "table"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -53,11 +205,19 @@
             "parameters": [
                 {
                     "doc": "The Spine model to query", 
-                    "name": "url"
+                    "name": "url", 
+                    "types": [
+                        "string", 
+                        "hash", 
+                        "url"
+                    ]
                 }, 
                 {
                     "doc": "Id of the corresponding bone", 
-                    "name": "bone_id"
+                    "name": "bone_id", 
+                    "types": [
+                        "hash"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -70,11 +230,20 @@
             "parameters": [
                 {
                     "doc": "The Spine model to query", 
-                    "name": "url"
+                    "name": "url", 
+                    "types": [
+                        "string", 
+                        "hash", 
+                        "url"
+                    ]
                 }, 
                 {
                     "doc": "Id of the corresponding skin", 
-                    "name": "skin"
+                    "name": "skin", 
+                    "types": [
+                        "string", 
+                        "hash"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -87,15 +256,28 @@
             "parameters": [
                 {
                     "doc": "The Spine model to query", 
-                    "name": "url"
+                    "name": "url", 
+                    "types": [
+                        "string", 
+                        "hash", 
+                        "url"
+                    ]
                 }, 
                 {
                     "doc": "Id of the slot", 
-                    "name": "slot"
+                    "name": "slot", 
+                    "types": [
+                        "string", 
+                        "hash"
+                    ]
                 }, 
                 {
                     "doc": "Id of the attachment", 
-                    "name": "attachment"
+                    "name": "attachment", 
+                    "types": [
+                        "string", 
+                        "hash"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -108,11 +290,20 @@
             "parameters": [
                 {
                     "doc": "The Spine model to query", 
-                    "name": "url"
+                    "name": "url", 
+                    "types": [
+                        "string", 
+                        "hash", 
+                        "url"
+                    ]
                 }, 
                 {
                     "doc": "name of the constant", 
-                    "name": "constant"
+                    "name": "constant", 
+                    "types": [
+                        "string", 
+                        "hash"
+                    ]
                 }
             ], 
             "returnvalues": [], 

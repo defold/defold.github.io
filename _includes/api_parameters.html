@@ -1,0 +1,15 @@
+{%- assign parameters=include.parameters -%}
+
+<table>
+	{%- for param in parameters -%}
+	<tr>
+		<td><code>{{ param.name }}</code></td>
+		<td><code>{{ param.types | join: ", " }}</code></td>
+		<td>{{ param.doc }}
+			{%- if param.parameters -%}
+				{% include api_parameters.html parameters=param.parameters %}
+			{%- endif -%}
+		</td>
+	</tr>
+	{%- endfor -%}
+</table>

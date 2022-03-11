@@ -362,6 +362,21 @@ def process_docs(download = False):
         print("Done")
 
 
+def parse_extension_parameters(parameters):
+    params = []
+    if parameters:
+        for p in parameters:
+            param = {}
+            param["name"] = p.get("name", "")
+            param["types"] = p.get("type", "").split("|")
+            param["doc"] = p.get("desc", "")
+            subp = parse_extension_parameters(p.get("parameters"))
+            if subp:
+                param["parameters"] = subp
+            params.append(param)
+    return params
+
+
 def process_extension(extension_name, download = False):
     md = Markdown(extensions=['markdown.extensions.fenced_code','markdown.extensions.def_list', 'markdown.extensions.codehilite','markdown.extensions.tables'])
 
@@ -426,12 +441,7 @@ def process_extension(extension_name, download = False):
 
             for m in api["members"]:
                 element = {}
-                element["parameters"] = []
-                for p in m.get("parameters", []):
-                    param = {}
-                    param["name"] = p.get("name", "")
-                    param["doc"] = p.get("desc", "")
-                    element["parameters"].append(param)
+                element["parameters"] = parse_extension_parameters(m.get("parameters", []))
                 element["returnvalues"] = []
                 for r in m.get("returns", []):
                     ret = {}
