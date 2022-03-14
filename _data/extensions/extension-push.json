@@ -7,11 +7,40 @@
             "parameters": [
                 {
                     "doc": "The types of notifications to listen to. [icon:ios]", 
-                    "name": "notifications"
+                    "name": "notifications", 
+                    "types": [
+                        "table"
+                    ]
                 }, 
                 {
                     "doc": "Register callback function.", 
-                    "name": "callback"
+                    "name": "callback", 
+                    "parameters": [
+                        {
+                            "doc": "The current object.", 
+                            "name": "self", 
+                            "types": [
+                                "object"
+                            ]
+                        }, 
+                        {
+                            "doc": "The returned push token if registration is successful.", 
+                            "name": "token", 
+                            "types": [
+                                "string"
+                            ]
+                        }, 
+                        {
+                            "doc": "A table containing eventual error information.", 
+                            "name": "error", 
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ], 
+                    "types": [
+                        "function"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -24,7 +53,40 @@
             "parameters": [
                 {
                     "doc": "Listener callback function.", 
-                    "name": "listener"
+                    "name": "listener", 
+                    "parameters": [
+                        {
+                            "doc": "The current object.", 
+                            "name": "self", 
+                            "types": [
+                                "object"
+                            ]
+                        }, 
+                        {
+                            "doc": "The push payload", 
+                            "name": "payload", 
+                            "types": [
+                                "table"
+                            ]
+                        }, 
+                        {
+                            "doc": "Origin of the push that can be one of the predefined constants below\n- `push.ORIGIN_LOCAL`\n- `push.ORIGIN_REMOTE`", 
+                            "name": "origin", 
+                            "types": [
+                                "constant"
+                            ]
+                        }, 
+                        {
+                            "doc": "If the application was activated via the notification.", 
+                            "name": "activated", 
+                            "types": [
+                                "boolean"
+                            ]
+                        }
+                    ], 
+                    "types": [
+                        "function"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -37,7 +99,10 @@
             "parameters": [
                 {
                     "doc": "Badge count", 
-                    "name": "count"
+                    "name": "count", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -50,23 +115,38 @@
             "parameters": [
                 {
                     "doc": "Number of seconds into the future until the notification should be triggered.", 
-                    "name": "time"
+                    "name": "time", 
+                    "types": [
+                        "number"
+                    ]
                 }, 
                 {
                     "doc": "Localized title to be displayed to the user if the application is not running.", 
-                    "name": "title"
+                    "name": "title", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "Localized body message of the notification to be displayed to the user if the application is not running.", 
-                    "name": "alert"
+                    "name": "alert", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "JSON string to be passed to the registered listener function.", 
-                    "name": "payload"
+                    "name": "payload", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "Table with notification and platform specific fields", 
-                    "name": "notification_settings"
+                    "name": "notification_settings", 
+                    "types": [
+                        "table"
+                    ]
                 }
             ], 
             "returnvalues": [
@@ -88,7 +168,10 @@
             "parameters": [
                 {
                     "doc": "The numeric id of the local push notification", 
-                    "name": "id"
+                    "name": "id", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -109,7 +192,10 @@
             "parameters": [
                 {
                     "doc": "The numeric id of the local push notification.", 
-                    "name": "id"
+                    "name": "id", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [
