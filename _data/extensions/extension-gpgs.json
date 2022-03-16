@@ -109,7 +109,10 @@
             "parameters": [
                 {
                     "doc": "An position can be one of the predefined constants below\n- `gpgs.POPUP_POS_TOP_LEFT`\n- `gpgs.POPUP_POS_TOP_CENTER`\n- `gpgs.POPUP_POS_TOP_RIGHT`\n- `gpgs.POPUP_POS_CENTER_LEFT`\n- `gpgs.POPUP_POS_CENTER`\n- `gpgs.POPUP_POS_CENTER_RIGHT`\n- `gpgs.POPUP_POS_BOTTOM_LEFT`\n- `gpgs.POPUP_POS_BOTTOM_CENTER`\n- `gpgs.POPUP_POS_BOTTOM_RIGHT`\n\nDefault value is `gpgs.POPUP_POS_TOP_CENTER`", 
-                    "name": "position"
+                    "name": "position", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -122,7 +125,33 @@
             "parameters": [
                 {
                     "doc": "A callback taking the following parameters", 
-                    "name": "callback"
+                    "name": "callback", 
+                    "parameters": [
+                        {
+                            "doc": "The calling script", 
+                            "name": "self", 
+                            "types": [
+                                "object"
+                            ]
+                        }, 
+                        {
+                            "doc": "An message_id can be one of the predefined constants below\n- `gpgs.MSG_SIGN_IN`\n- `gpgs.MSG_SILENT_SIGN_IN`\n- `gpgs.MSG_SIGN_OUT`\n- `gpgs.MSG_SHOW_SNAPSHOTS`\n- `gpgs.MSG_LOAD_SNAPSHOT`", 
+                            "name": "message_id", 
+                            "types": [
+                                "number"
+                            ]
+                        }, 
+                        {
+                            "doc": "Contains information that depends on message_id.", 
+                            "name": "message", 
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ], 
+                    "types": [
+                        "function"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -135,19 +164,31 @@
             "parameters": [
                 {
                     "doc": "The title to display in the action bar. By default \"Game Saves\".", 
-                    "name": "popupTitle"
+                    "name": "popupTitle", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "Whether or not to display a \"create new snapshot\" option in the selection UI. By default `true`.", 
-                    "name": "allowAddButton"
+                    "name": "allowAddButton", 
+                    "types": [
+                        "boolean"
+                    ]
                 }, 
                 {
                     "doc": "Whether or not to provide a delete overflow menu option for each snapshot in the selection UI. By default `true`.", 
-                    "name": "allowDelete"
+                    "name": "allowDelete", 
+                    "types": [
+                        "boolean"
+                    ]
                 }, 
                 {
                     "doc": "The maximum number of snapshots to display in the UI. By default 5.", 
-                    "name": "maxNumberOfSavedGamesToShow"
+                    "name": "maxNumberOfSavedGamesToShow", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -160,15 +201,24 @@
             "parameters": [
                 {
                     "doc": "The name of the snapshot file to open. Must be between 1 and 100 non-URL-reserved characters (a-z, A-Z, 0-9, or the symbols \"-\", \".\", \"_\", or \"~\").", 
-                    "name": "saveName"
+                    "name": "saveName", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "If `true`, the snapshot will be created if one cannot be found.", 
-                    "name": "createIfNotFound"
+                    "name": "createIfNotFound", 
+                    "types": [
+                        "boolean"
+                    ]
                 }, 
                 {
                     "doc": "The conflict resolution policy to use for this snapshot that can be one of the predefined constants below\n- `gpgs.RESOLUTION_POLICY_MANUAL`\n- `gpgs.RESOLUTION_POLICY_LONGEST_PLAYTIME`\n- `gpgs.RESOLUTION_POLICY_LAST_KNOWN_GOOD`\n- `gpgs.RESOLUTION_POLICY_MOST_RECENTLY_MODIFIED`\n- `gpgs.RESOLUTION_POLICY_HIGHEST_PROGRESS`\n\nDefault value is `gpgs.RESOLUTION_POLICY_LAST_KNOWN_GOOD`", 
-                    "name": "conflictPolicy"
+                    "name": "conflictPolicy", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -181,7 +231,10 @@
             "parameters": [
                 {
                     "doc": "A table with metadata for a save. It contains the fields below", 
-                    "name": "metadata"
+                    "name": "metadata", 
+                    "types": [
+                        "table"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -211,7 +264,10 @@
             "parameters": [
                 {
                     "doc": "The data to set.", 
-                    "name": "data"
+                    "name": "data", 
+                    "types": [
+                        "string"
+                    ]
                 }
             ], 
             "returnvalues": [
@@ -289,11 +345,17 @@
             "parameters": [
                 {
                     "doc": "The conflict id that you want to resolve. Provided in `message` table with `STATUS_CONFLICT` message type.", 
-                    "name": "conflictId"
+                    "name": "conflictId", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "Type of the snapshot you want to use for conflict solving that can be one of the predefined constants below\n- `gpgs.SNAPSHOT_CURRENT`\n- `gpgs.SNAPSHOT_CONFLICTING`", 
-                    "name": "snapshotId"
+                    "name": "snapshotId", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -306,11 +368,17 @@
             "parameters": [
                 {
                     "doc": "", 
-                    "name": "leaderboardId"
+                    "name": "leaderboardId", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "", 
-                    "name": "score"
+                    "name": "score", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -323,19 +391,31 @@
             "parameters": [
                 {
                     "doc": "", 
-                    "name": "leaderboardId"
+                    "name": "leaderboardId", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "One of the gpgs.TIME_SPAN_ constants", 
-                    "name": "time_span"
+                    "name": "time_span", 
+                    "types": [
+                        "number"
+                    ]
                 }, 
                 {
                     "doc": "One of the gpgs.COLLECTION_ constants", 
-                    "name": "collection"
+                    "name": "collection", 
+                    "types": [
+                        "number"
+                    ]
                 }, 
                 {
                     "doc": "Between 1-25", 
-                    "name": "max_results"
+                    "name": "max_results", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -348,19 +428,31 @@
             "parameters": [
                 {
                     "doc": "", 
-                    "name": "leaderboardId"
+                    "name": "leaderboardId", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "One of the gpgs.TIME_SPAN_ constants", 
-                    "name": "time_span"
+                    "name": "time_span", 
+                    "types": [
+                        "number"
+                    ]
                 }, 
                 {
                     "doc": "One of the gpgs.COLLECTION_ constants", 
-                    "name": "collection"
+                    "name": "collection", 
+                    "types": [
+                        "number"
+                    ]
                 }, 
                 {
                     "doc": "Between 1-25", 
-                    "name": "max_results"
+                    "name": "max_results", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -373,15 +465,24 @@
             "parameters": [
                 {
                     "doc": "", 
-                    "name": "leaderboardId"
+                    "name": "leaderboardId", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "One of the gpgs.TIME_SPAN_ constants", 
-                    "name": "time_span"
+                    "name": "time_span", 
+                    "types": [
+                        "number"
+                    ]
                 }, 
                 {
                     "doc": "One of the gpgs.COLLECTION_ constants", 
-                    "name": "collection"
+                    "name": "collection", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -402,15 +503,24 @@
             "parameters": [
                 {
                     "doc": "", 
-                    "name": "leaderboardId"
+                    "name": "leaderboardId", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "One of the gpgs.TIME_SPAN_ constants", 
-                    "name": "time_span"
+                    "name": "time_span", 
+                    "types": [
+                        "number"
+                    ]
                 }, 
                 {
                     "doc": "One of the gpgs.COLLECTION_ constants", 
-                    "name": "collection"
+                    "name": "collection", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -423,7 +533,10 @@
             "parameters": [
                 {
                     "doc": "", 
-                    "name": "achievementId"
+                    "name": "achievementId", 
+                    "types": [
+                        "string"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -436,7 +549,10 @@
             "parameters": [
                 {
                     "doc": "", 
-                    "name": "achievementId"
+                    "name": "achievementId", 
+                    "types": [
+                        "string"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -449,11 +565,17 @@
             "parameters": [
                 {
                     "doc": "", 
-                    "name": "achievementId"
+                    "name": "achievementId", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "", 
-                    "name": "steps"
+                    "name": "steps", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -466,11 +588,17 @@
             "parameters": [
                 {
                     "doc": "", 
-                    "name": "achievementId"
+                    "name": "achievementId", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "", 
-                    "name": "steps"
+                    "name": "steps", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -499,11 +627,17 @@
             "parameters": [
                 {
                     "doc": "", 
-                    "name": "eventId"
+                    "name": "eventId", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "", 
-                    "name": "amount"
+                    "name": "amount", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
