@@ -7,23 +7,100 @@
             "parameters": [
                 {
                     "doc": "The Rive model for which to play an animation", 
-                    "name": "url"
+                    "name": "url", 
+                    "types": [
+                        "url"
+                    ]
                 }, 
                 {
                     "doc": "Id of the animation to play", 
-                    "name": "anim_id"
+                    "name": "anim_id", 
+                    "types": [
+                        "hash"
+                    ]
                 }, 
                 {
                     "doc": "Playback mode of the animation (from go.PLAYBACK_*)", 
-                    "name": "playback"
+                    "name": "playback", 
+                    "types": [
+                        "number"
+                    ]
                 }, 
                 {
                     "doc": "Playback options", 
-                    "name": "options"
+                    "name": "options", 
+                    "parameters": [
+                        {
+                            "doc": "The normalized initial value of the animation cursor when the animation starts playing", 
+                            "name": "offset", 
+                            "types": [
+                                "number"
+                            ]
+                        }, 
+                        {
+                            "doc": "The rate with which the animation will be played. Must be positive.", 
+                            "name": "playback_rate", 
+                            "types": [
+                                "constant"
+                            ]
+                        }
+                    ], 
+                    "types": [
+                        "table"
+                    ]
                 }, 
                 {
                     "doc": "function to call when the animation has completed", 
-                    "name": "complete_function"
+                    "name": "complete_function", 
+                    "parameters": [
+                        {
+                            "doc": "The context of the calling script", 
+                            "name": "self", 
+                            "types": [
+                                "object"
+                            ]
+                        }, 
+                        {
+                            "doc": "The name of the completion message (\"rive_animation_done\")", 
+                            "name": "message_id", 
+                            "types": [
+                                "hash"
+                            ]
+                        }, 
+                        {
+                            "doc": "A table that contains the response", 
+                            "name": "message", 
+                            "parameters": [
+                                {
+                                    "doc": "the animation that was completed", 
+                                    "name": "animation_id", 
+                                    "types": [
+                                        "hash"
+                                    ]
+                                }, 
+                                {
+                                    "doc": "the playback mode for the animation", 
+                                    "name": "playback", 
+                                    "types": [
+                                        "constant"
+                                    ]
+                                }
+                            ], 
+                            "types": [
+                                "table"
+                            ]
+                        }, 
+                        {
+                            "doc": "The invoker of the callback - the Rive model component", 
+                            "name": "sender", 
+                            "types": [
+                                "url"
+                            ]
+                        }
+                    ], 
+                    "types": [
+                        "function"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -36,15 +113,33 @@
             "parameters": [
                 {
                     "doc": "The Rive model for which to play an animation", 
-                    "name": "url"
+                    "name": "url", 
+                    "types": [
+                        "url"
+                    ]
                 }, 
                 {
                     "doc": "Id of the state machine to play", 
-                    "name": "state_machine_id"
+                    "name": "state_machine_id", 
+                    "types": [
+                        "hash"
+                    ]
                 }, 
                 {
                     "doc": "Playback options", 
-                    "name": "options"
+                    "name": "options", 
+                    "parameters": [
+                        {
+                            "doc": "The rate with which the animation will be played. Must be positive.", 
+                            "name": "playback_rate", 
+                            "types": [
+                                "constant"
+                            ]
+                        }
+                    ], 
+                    "types": [
+                        "table"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -57,7 +152,10 @@
             "parameters": [
                 {
                     "doc": "The Rive model for which to cancel the animation", 
-                    "name": "url"
+                    "name": "url", 
+                    "types": [
+                        "url"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -70,11 +168,17 @@
             "parameters": [
                 {
                     "doc": "The Rive model to query", 
-                    "name": "url"
+                    "name": "url", 
+                    "types": [
+                        "url"
+                    ]
                 }, 
                 {
                     "doc": "Id of the corresponding bone", 
-                    "name": "bone_id"
+                    "name": "bone_id", 
+                    "types": [
+                        "hash"
+                    ]
                 }
             ], 
             "returnvalues": [], 
