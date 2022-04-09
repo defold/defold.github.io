@@ -7,15 +7,47 @@
             "parameters": [
                 {
                     "doc": "url of the remote connection", 
-                    "name": "url"
+                    "name": "url", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "optional parameters as properties. The following parameters can be set", 
-                    "name": "params"
+                    "name": "params", 
+                    "types": [
+                        "table"
+                    ]
                 }, 
                 {
                     "doc": "callback that receives all messages from the connection", 
-                    "name": "callback"
+                    "name": "callback", 
+                    "parameters": [
+                        {
+                            "doc": "The script instance that was used to register the callback", 
+                            "name": "self", 
+                            "types": [
+                                "object"
+                            ]
+                        }, 
+                        {
+                            "doc": "the connection", 
+                            "name": "connection", 
+                            "types": [
+                                "object"
+                            ]
+                        }, 
+                        {
+                            "doc": "the event payload", 
+                            "name": "data", 
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ], 
+                    "types": [
+                        "function"
+                    ]
                 }
             ], 
             "returnvalues": [
@@ -33,7 +65,10 @@
             "parameters": [
                 {
                     "doc": "the websocket connection", 
-                    "name": "connection"
+                    "name": "connection", 
+                    "types": [
+                        "object"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -46,15 +81,24 @@
             "parameters": [
                 {
                     "doc": "the websocket connection", 
-                    "name": "connection"
+                    "name": "connection", 
+                    "types": [
+                        "object"
+                    ]
                 }, 
                 {
                     "doc": "the message to send", 
-                    "name": "message"
+                    "name": "message", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "options for this particular message. May be `nil`", 
-                    "name": "options"
+                    "name": "options", 
+                    "types": [
+                        "table"
+                    ]
                 }
             ], 
             "returnvalues": [], 
