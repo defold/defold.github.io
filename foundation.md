@@ -37,14 +37,6 @@ We believe in a free and open internet where software and services use open stan
 -%}
 
 {%- include profile_card.html
-	image="/images/foundation/thumbs/Elin Eriksson_2020_RW.jpg"
-	link="/images/foundation/highres/Elin Eriksson_2020_RW.jpg"
-	name="Elin Eriksson"
-	bio="Elin Eriksson is an experienced communicator, creative director and graphic designer. Previously Brand Manager at the Bonnier Group, now freelancing consultant within corporate communications. She is currently Director at Women in Tech Sweden and has assignments for the Bonnier Group and Internetstiftelsen among others. Elin seamlessly switches between hands-on, nitty-gritty production and keeping an eye on the business strategy. She has documented experience of successfully developing and implementing internal and external communications strategies, providing communications support for management teams in major change and transformation projects, and is a highly competent graphic designer (yes, she is a formidable PowerPoint wizard)."
-	email="elin@defold.se"
--%}
-
-{%- include profile_card.html
 	image="/images/foundation/thumbs/romain.jpg"
 	image="/images/foundation/highres/romain.jpg"
 	name="Romain Sididris"
