@@ -7,11 +7,17 @@
             "parameters": [
                 {
                     "doc": "product to buy", 
-                    "name": "id"
+                    "name": "id", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "optional parameters as properties. The following parameters can be set", 
-                    "name": "options"
+                    "name": "options", 
+                    "types": [
+                        "table"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -24,7 +30,10 @@
             "parameters": [
                 {
                     "doc": "transaction table parameter as supplied in listener callback", 
-                    "name": "transaction"
+                    "name": "transaction", 
+                    "types": [
+                        "table"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -37,7 +46,10 @@
             "parameters": [
                 {
                     "doc": "transaction table parameter as supplied in listener callback", 
-                    "name": "transaction"
+                    "name": "transaction", 
+                    "types": [
+                        "table"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -63,11 +75,40 @@
             "parameters": [
                 {
                     "doc": "table (array) of identifiers to get products from", 
-                    "name": "ids"
+                    "name": "ids", 
+                    "types": [
+                        "table"
+                    ]
                 }, 
                 {
                     "doc": "result callback taking the following parameters", 
-                    "name": "callback"
+                    "name": "callback", 
+                    "parameters": [
+                        {
+                            "doc": "The current object.", 
+                            "name": "self", 
+                            "types": [
+                                "object"
+                            ]
+                        }, 
+                        {
+                            "doc": "a table describing the available iap products.", 
+                            "name": "products", 
+                            "types": [
+                                "table"
+                            ]
+                        }, 
+                        {
+                            "doc": "a table containing error information. `nil` if there is no error. - `error` (the error message)", 
+                            "name": "error", 
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ], 
+                    "types": [
+                        "function"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -93,7 +134,33 @@
             "parameters": [
                 {
                     "doc": "listener callback function. Pass an empty function if you no longer wish to receive callbacks.", 
-                    "name": "listener"
+                    "name": "listener", 
+                    "parameters": [
+                        {
+                            "doc": "The current object.", 
+                            "name": "self", 
+                            "types": [
+                                "object"
+                            ]
+                        }, 
+                        {
+                            "doc": "a table describing the transaction.", 
+                            "name": "transaction", 
+                            "types": [
+                                "table"
+                            ]
+                        }, 
+                        {
+                            "doc": "a table containing error information. `nil` if there is no error. `error` - the error message. `reason` - the reason for the error, value can be one of the following constants\n- `iap.REASON_UNSPECIFIED`\n- `iap.REASON_USER_CANCELED`", 
+                            "name": "error", 
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ], 
+                    "types": [
+                        "function"
+                    ]
                 }
             ], 
             "returnvalues": [], 
