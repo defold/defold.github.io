@@ -171,7 +171,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "Original string value", 
+          "doc": "Original string value or \"<unknown>\" if it wasn't found.", 
           "name": "", 
           "types": [
             "const char*"
@@ -223,6 +223,73 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmHashReverseSafe64"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the original string used to produce a hash.\nAlways returns a null terminated string. Returns \"<unknown>\" if the original string wasn't found.", 
+      "parameters": [
+        {
+          "doc": "hash value", 
+          "name": "hash", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Original string value or \"<unknown>\" if it wasn't found.", 
+          "name": "", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get string value from hash", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashReverseSafe32"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Reverse hash lookup. Maps hash to original data. It is guaranteed that the returned\nbuffer is null-terminated. If the buffer contains a valid c-string\nit can safely be used in printf and friends.", 
+      "parameters": [
+        {
+          "doc": "hash to lookup", 
+          "name": "hash", 
+          "types": [
+            "uint32_t"
+          ]
+        }, 
+        {
+          "doc": "original data length. Optional argument and NULL-pointer is accepted.", 
+          "name": "length", 
+          "types": [
+            "uint32_t*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "pointer to buffer. 0 if no reverse exists or if reverse lookup is disabled", 
+          "name": "", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get string value from hash", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashReverseSafe32"
     }, 
     {
       "replaces": "", 
