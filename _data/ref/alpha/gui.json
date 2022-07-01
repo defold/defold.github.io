@@ -2692,6 +2692,65 @@
     }, 
     {
       "replaces": "", 
+      "description": "Returns <code>true</code> if a node is visible and <code>false</code> if it's not.\nInvisible nodes are not rendered.", 
+      "parameters": [
+        {
+          "doc": "node to query", 
+          "name": "node", 
+          "types": [
+            "node"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "whether the node is visible or not", 
+          "name": "visible", 
+          "types": [
+            "boolean"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "returns if a node is visible or not", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "gui.get_visible"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set if a node should be visible or not. Only visible nodes are rendered.", 
+      "parameters": [
+        {
+          "doc": "node to be visible or not", 
+          "name": "node", 
+          "types": [
+            "node"
+          ]
+        }, 
+        {
+          "doc": "whether the node should be visible or not", 
+          "name": "visible", 
+          "types": [
+            "boolean"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set visibility for a node", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "gui.set_visible"
+    }, 
+    {
+      "replaces": "", 
       "description": "Returns the adjust mode of a node.\nThe adjust mode defines how the node will adjust itself to screen\nresolutions that differs from the one in the project settings.", 
       "parameters": [
         {
