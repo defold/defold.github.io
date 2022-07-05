@@ -187,6 +187,64 @@
     }, 
     {
       "replaces": "", 
+      "description": "Send a text to the profiler", 
+      "parameters": [
+        {
+          "doc": "the string to send to the profiler", 
+          "name": "text", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "send a text to the profiler", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">log_text</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Event: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">name</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "profiler.log_text"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Starts a profile scope.", 
+      "parameters": [
+        {
+          "doc": "The name of the scope", 
+          "name": "name", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "start a profile scope", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Go back one frame</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">scope_begin</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">test_function&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">test_function</span><span class=\"p\">()</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">scope_end</span><span class=\"p\">()</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "profiler.scope_begin"
+    }, 
+    {
+      "replaces": "", 
+      "description": "End the current profile scope.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "end the current profile scope", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "profiler.scope_end"
+    }, 
+    {
+      "replaces": "", 
       "description": "continously show latest frame", 
       "parameters": [], 
       "returnvalues": [], 
