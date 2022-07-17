@@ -238,7 +238,7 @@
     },
     {
       "type": "ENUM",
-      "name": "dmLog::Severity",
+      "name": "LogSeverity",
       "brief": "Log severity",
       "description": "Log severity",
       "returnvalues": [],
@@ -249,32 +249,32 @@
       "tparams": [],
       "members": [
         {
-          "name": "dmLog::LOG_SEVERITY_DEBUG",
+          "name": "LOG_SEVERITY_DEBUG",
           "doc": "",
           "type": ""
         },
         {
-          "name": "dmLog::LOG_SEVERITY_USER_DEBUG",
+          "name": "LOG_SEVERITY_USER_DEBUG",
           "doc": "",
           "type": ""
         },
         {
-          "name": "dmLog::LOG_SEVERITY_INFO",
+          "name": "LOG_SEVERITY_INFO",
           "doc": "",
           "type": ""
         },
         {
-          "name": "dmLog::LOG_SEVERITY_WARNING",
+          "name": "LOG_SEVERITY_WARNING",
           "doc": "",
           "type": ""
         },
         {
-          "name": "dmLog::LOG_SEVERITY_ERROR",
+          "name": "LOG_SEVERITY_ERROR",
           "doc": "",
           "type": ""
         },
         {
-          "name": "dmLog::LOG_SEVERITY_FATAL",
+          "name": "LOG_SEVERITY_FATAL",
           "doc": "",
           "type": ""
         }
@@ -292,7 +292,7 @@
           "name": "severity",
           "doc": "",
           "types": [
-            "dmLog::Severity"
+            "LogSeverity"
           ]
         },
         {
@@ -319,16 +319,82 @@
     },
     {
       "type": "FUNCTION",
-      "name": "dmLog::RegisterLogListener",
-      "brief": "register dmLog listener.",
-      "description": "Registers a dmLog listener.\nThis listener recieve logs even in release bundle.",
+      "name": "dmLogRegisterListener",
+      "brief": "register a log listener.",
+      "description": "Registers a log listener.\nThis listener receive logs even in release bundle.",
       "returnvalues": [],
       "parameters": [
         {
           "name": "listener",
           "doc": "",
           "types": [
-            "dmLog::LogListener"
+            "FLogListener"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmLogUnregisterListener",
+      "brief": "unregister a log listener.",
+      "description": "Unregisters a log listener.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "[type:FLogListener]",
+          "doc": "listener",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmLogSetLevel",
+      "brief": "set log system severity level.",
+      "description": "set log system severity level.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "[type:dmLog::Severity]",
+          "doc": "severity",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmLog::RegisterLogListener",
+      "brief": "register dmLog listener.",
+      "description": "Registers a dmLog listener.\nThis listener receive logs even in release bundle.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "listener",
+          "doc": "",
+          "types": [
+            "FLogListener"
           ]
         }
       ],
@@ -347,7 +413,7 @@
       "returnvalues": [],
       "parameters": [
         {
-          "name": "[type:dmLog::LogListener]",
+          "name": "[type:FLogListener]",
           "doc": "listener",
           "types": [
             ""
