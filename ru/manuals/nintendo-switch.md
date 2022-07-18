@@ -42,4 +42,4 @@ brief: В данном руководстве описано, как получ�
 
 
 ## Часто задаваемые вопросы
-{% include shared/ru/nintendo-switch-faq.md %}
+{% include shared/ru/consoles-faq.md %}

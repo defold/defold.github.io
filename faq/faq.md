@@ -119,8 +119,8 @@ A: Yes, check out [`sys.get_sys_info()`](/ref/sys#sys.get_sys_info).
 {% include shared/en/windows-faq.md %}
 
 
-## Nintendo Switch Questions
-{% include shared/en/nintendo-switch-faq.md %}
+## Console Questions
+{% include shared/en/consoles-faq.md %}
 
 
 ## Publishing games

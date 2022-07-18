@@ -118,8 +118,8 @@ A: Sí, checa [`sys.get_sys_info()`](/ref/sys#sys.get_sys_info).
 {% include shared/es/windows-faq.md %}
 
 
-## Preguntas de Nintendo Switch
-{% include shared/es/nintendo-switch-faq.md %}
+## Preguntas de Consoles
+{% include shared/es/consoles-faq.md %}
 
 
 ## Publicando juegos

@@ -42,4 +42,4 @@ brief: 本教程介绍了 Nintendo Switch 开发许可
 
 
 ## 问答
-{% include shared/zh/nintendo-switch-faq.md %}
+{% include shared/zh/consoles-faq.md %}
