@@ -102,9 +102,16 @@
             "hash",
             "url"
           ]
+        },
+        {
+          "name": "options",
+          "doc": "Options when stopping the particle fx. Supported options:\n<ul>\n<li><span class=\"type\">boolean</span> <code>clear</code>: instantly clear spawned particles</li>\n</ul>",
+          "types": [
+            "table"
+          ]
         }
       ],
-      "examples": "How to stop a particle fx when a game object is deleted:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">final</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">particlefx</span><span class=\"p\">.</span><span class=\"n\">stop</span><span class=\"p\">(</span><span class=\"s2\">&quot;#particlefx&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "examples": "How to stop a particle fx when a game object is deleted and immediately also clear\nany spawned particles:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">final</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">particlefx</span><span class=\"p\">.</span><span class=\"n\">stop</span><span class=\"p\">(</span><span class=\"s2\">&quot;#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">clear</span> <span class=\"o\">=</span> <span class=\"kc\">true</span> <span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],
