@@ -1,13 +1,13 @@
-#### Q: Why is console access not free?
+#### Q: 为什么开发主机游戏不免费?
 
-A: One of the objectives of the Defold Foundation is to make sure that the Defold software is available to developers world-wide and that the source code is available free of charge. The Defold Foundation will never compromise on this objective, but in this case access to the Sony PlayStation and Nintendo Switch SDK, tools and resources is strictly controlled by Sony and Nintendo. This means that the source code for the console platform implementations in Defold, including the editor and command line tools, can not be made available. This also means that the Defold Foundation is unable to receive community contributions to the code and documentation and it is the foundation which must provide all of the support and updates to the platform for as long as it is required to. The console access fee will help ensure that the foundation has the resources necessary to support the platform.
-
-
-#### Q: Do I need to install additional tools to build for consoles?
-
-A: You will be able to create application bundles from the command line tools. Information about how to test on Sony PlayStation and Nintendo Switch hardware will be provided to you when you are given access to the respective platforms.
+A: Defold 基金会的目标之一就是让 Defold 软件和代码面向全世界免费. 我们不会食言, 但是接入 Nintendo Switch 和 Sony PlayStation 的 SDK 是人家说了算. 也就是说对 Nintendo 和 Sony 的支持, 编辑器, 各种工具, 我们没法自己做出来. 同样 Defold 基金会的社区贡献者也没法自己做出来, 为了确保对主机平台的合法长远的技术支持, 就必须缴费了.
 
 
-#### Q: Is it still easy to use a single code base if I decide to also target consoles?
+#### Q: 开发主机游戏需要什么别的工具吗?
 
-A: Yes, all of the standard Defold API functions are available also for the console platforms. In addition to the standard functionality you will also have access to a couple of Sony PlaytStation and Nintendo Switch specific functions, but in general the code should be able to remain exactly the same across multiple platforms.
+A: 使用 Defold 编辑器和命令行工具都可以打包主机游戏. 一旦你取得了相应开发资格, 关于如何调试 Nintendo Switch 和 Sony PlayStation 游戏的方法也会发送给你.
+
+
+#### Q: 开发跨平台游戏加上主机游戏, 一个代码库够用吗?
+
+A: 够用, 所有标准 Defold API 功能在主机游戏平台同样有效. 除此之外也许需要调用一些 Nintendo Switch 和 Sony PlayStation 的原生功能, 但总体上讲一套代码跨平台没问题.
