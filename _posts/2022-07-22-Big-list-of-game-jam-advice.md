@@ -73,4 +73,4 @@ A game jam is a video game development marathon where you have a fixed amount of
 
 Best of luck!
 
-If you have any other good tips then feel free to share them on [the Defold forum](https://forum.defold.com/t/gmtk-game-jam-next-weekend-jam-tips/71228!
+If you have any other good tips then feel free to share them on [the Defold forum](https://forum.defold.com/t/gmtk-game-jam-next-weekend-jam-tips/71228)!
