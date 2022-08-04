@@ -14,21 +14,20 @@ The game consists of 3 parts, each consisting of 20 base levels, and 1 bonus lev
 
 ![](/images/posts/the-making-of-boxrob/boxrob-half.jpg)
 
-![](/images/posts/the-making-of-boxrob/boxrob_1.mp4)
+{% include video.html url="/images/posts/the-making-of-boxrob/boxrob_1.mp4" %}
 
 [You can play the game on Poki](https://poki.com/en/g/boxrob).
 
 
 In BoxRob 2 ([PLAY](https://poki.com/en/g/boxrob-2)) there are conveyor belts and moving hooks.
 
-
-![](/images/posts/the-making-of-boxrob/conveyorbelts.mp4)
-![](/images/posts/the-making-of-boxrob/movinghooks.mp4)
+{% include video.html url="/images/posts/the-making-of-boxrob/conveyorbelts.mp4" %}
+{% include video.html url="/images/posts/the-making-of-boxrob/movinghooks.mp4" %}
 
 
 BoxRob 3 ([PLAY](https://poki.com/en/g/boxrob-3)) introduced explosions:
 
-![](/images/posts/the-making-of-boxrob/explosions.mp4)
+{% include video.html url="/images/posts/the-making-of-boxrob/explosions.mp4" %}
 
 
 ### TIMELINE
@@ -92,43 +91,43 @@ Below is a number of stages of development show. Between each of these stages, t
 #### WHEELBASE (11.05.21)
 The wheelbase was created.
 
-![](/images/posts/the-making-of-boxrob/wheelbase.mp4)
+{% include video.html url="/images/posts/the-making-of-boxrob/wheelbase.mp4" %}
 
 
 #### ART (18.05.21)
 The art was added. The robot can jump and the hand was added. The hand is a physical rectangle that is always at a certain angle to the wheelbase. When turning the base, it keeps the right angle.
 
-![](/images/posts/the-making-of-boxrob/addedart.mp4)
+{% include video.html url="/images/posts/the-making-of-boxrob/addedart.mp4" %}
 
 
 #### MOVING THE HAND (24.05.21)
 The hand is a set of physical bodies. Now it’s moving. When making contact with the box, it connects to the hand.
 
-![](/images/posts/the-making-of-boxrob/movingthehand.mp4)
+{% include video.html url="/images/posts/the-making-of-boxrob/movingthehand.mp4" %}
 
 
 #### CARRYING A BOX (7.06.21)
 Passability increased. The hand can take the a and ride with it and when changing the direction of movement, the hand turns.
 
-![](/images/posts/the-making-of-boxrob/carryingabox.mp4)
+{% include video.html url="/images/posts/the-making-of-boxrob/carryingabox.mp4" %}
 
 
 #### THROWING A BOX (09.06.21)
 The first version of throwing a box. The hand swings and throws and the player has the ability to aim.
 
-![](/images/posts/the-making-of-boxrob/throwingabox.mp4)
+{% include video.html url="/images/posts/the-making-of-boxrob/throwingabox.mp4" %}
 
 
 #### THROWING A BOX (AGAIN) (10.06.21)
 The second version of throwing a box. The player can "shoot the box" and this option, without the ability to aim, is used in the game.
 
-![](/images/posts/the-making-of-boxrob/throwingabox2.mp4)
+{% include video.html url="/images/posts/the-making-of-boxrob/throwingabox2.mp4" %}
 
 
 #### PROTOTYPE COMPLETED (17.07.21)
 The prototype is done and all mechanics work. It is possible to complete the level from the start until the victory screen appears.
 
-![](/images/posts/the-making-of-boxrob/prototype_done.mp4)
+{% include video.html url="/images/posts/the-making-of-boxrob/prototype_done.mp4" %}
 
 
 ### INTERESTING FACTS
@@ -142,7 +141,7 @@ The box, when picked up by hand, changes its physical body from a rectangle to a
 #### PLACING THE BOX INSIDE THE TRUCK
 Throwing a box into the truck is tricky, and there are levels where you need to stack the boxes on top of each other. Therefore, when entering a truck, the throwing mechanics are replaced by the laying mechanics. Moreover, to make it obvious to the player, the hand changes its position and extends forward.
 
-![](/images/posts/the-making-of-boxrob/in_truck.mp4)
+{% include video.html url="/images/posts/the-making-of-boxrob/in_truck.mp4" %}
 
 
 #### INVISBLE WALLS
@@ -162,19 +161,19 @@ When you collect 60 stars, you open a bonus level. On the bonus level, you don�
 #### BUGS WITH PHYSICS
 Physics bugs can look funny. For example, when the robot’s arm is torn apart, but it tries to get back together:
 
-![](/images/posts/the-making-of-boxrob/physics_bug.mp4)
+{% include video.html url="/images/posts/the-making-of-boxrob/physics_bug.mp4" %}
 
 
 #### EXPLOSIONS
 When the box exploded, a bunch of small round bodies with velocity were created. This is a simulation of what happens in an explosion. It is easy to implement and it looks realistic.
 
-![](/images/posts/the-making-of-boxrob/explosion_physics.mp4)
+{% include video.html url="/images/posts/the-making-of-boxrob/explosion_physics.mp4" %}
 
 
 #### PICKING UP THE BOX
 When robot tries to take a box with hand, force is applied to the end of the hand, so the hand moves to the box. When the hand is near the box a distance joint is created between the hand and the box grip point. This joint is elastic. It tries to move the box to the hand. This makes it look juicier and faster.
 
-![](/images/posts/the-making-of-boxrob/boxpickup.mp4)
+{% include video.html url="/images/posts/the-making-of-boxrob/boxpickup.mp4" %}
 
 
 ### CONCLUSION
