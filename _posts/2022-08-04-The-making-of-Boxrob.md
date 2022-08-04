@@ -14,20 +14,22 @@ The game consists of 3 parts, each consisting of 20 base levels, and 1 bonus lev
 
 ![](/images/posts/the-making-of-boxrob/boxrob-half.jpg)
 
-{% include video.html url="/images/posts/the-making-of-boxrob/boxrob_1.mp4" %}
+<video width=100% preload="auto" muted controls loop><source src="/images/posts/the-making-of-boxrob/boxrob_1.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 
 [You can play the game on Poki](https://poki.com/en/g/boxrob).
 
 
 In BoxRob 2 ([PLAY](https://poki.com/en/g/boxrob-2)) there are conveyor belts and moving hooks.
 
-{% include video.html url="/images/posts/the-making-of-boxrob/conveyorbelts.mp4" %}
-{% include video.html url="/images/posts/the-making-of-boxrob/movinghooks.mp4" %}
+<video width=100% preload="auto" muted controls loop><source src="/images/posts/the-making-of-boxrob/conveyorbelts.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+
+<video width=100% preload="auto" muted controls loop><source src="/images/posts/the-making-of-boxrob/movinghooks.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 
 
 BoxRob 3 ([PLAY](https://poki.com/en/g/boxrob-3)) introduced explosions:
 
 {% include video.html url="/images/posts/the-making-of-boxrob/explosions.mp4" %}
+<video width=100% preload="auto" muted controls loop><source src="/images/posts/the-making-of-boxrob/explosions.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 
 
 ### TIMELINE
@@ -61,7 +63,7 @@ Defold already has a built-in version of Box2d but the functionality is limited.
 #### LEVEL EDITOR
 It is possible to make levels in the Defold editor, but it was decided to use Tiled since it was more convenient and flexible. [Tiled](https://www.mapeditor.org/) is a cross-platform open-source tile map editor for games. From Tiled levels are exported to .lua and later converted to .json using a script. The script gets rid of the unused data, makes some fixes (for example, changes the coordinate system from y-down to y-up) and performs validation (checks that player spawn exists, that elevators use an existing trajectory, and that there are no objects with the same name, etc.)
 
-![](/images/posts/the-making-of-boxrob/tiled.png)
+![](/images/posts/the-making-of-boxrob/tiled.jpg)
 
 #### ENTITY COMPONENT SYSTEM
 BoxRob uses a data-oriented approach with a custom made entity component system (or ECS). In brief, ECS is a pattern for decomposition. The idea is that each game object (entity) consists of a set of components. For example, position component, acceleration component and so on.
@@ -91,43 +93,43 @@ Below is a number of stages of development show. Between each of these stages, t
 #### WHEELBASE (11.05.21)
 The wheelbase was created.
 
-{% include video.html url="/images/posts/the-making-of-boxrob/wheelbase.mp4" %}
+<video width=100% preload="auto" muted controls loop><source src="/images/posts/the-making-of-boxrob/wheelbase.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 
 
 #### ART (18.05.21)
 The art was added. The robot can jump and the hand was added. The hand is a physical rectangle that is always at a certain angle to the wheelbase. When turning the base, it keeps the right angle.
 
-{% include video.html url="/images/posts/the-making-of-boxrob/addedart.mp4" %}
+<video width=100% preload="auto" muted controls loop><source src="/images/posts/the-making-of-boxrob/addedart.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 
 
 #### MOVING THE HAND (24.05.21)
 The hand is a set of physical bodies. Now it’s moving. When making contact with the box, it connects to the hand.
 
-{% include video.html url="/images/posts/the-making-of-boxrob/movingthehand.mp4" %}
+<video width=100% preload="auto" muted controls loop><source src="/images/posts/the-making-of-boxrob/movingthehand.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 
 
 #### CARRYING A BOX (7.06.21)
 Passability increased. The hand can take the a and ride with it and when changing the direction of movement, the hand turns.
 
-{% include video.html url="/images/posts/the-making-of-boxrob/carryingabox.mp4" %}
+<video width=100% preload="auto" muted controls loop><source src="/images/posts/the-making-of-boxrob/carryingabox.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 
 
 #### THROWING A BOX (09.06.21)
 The first version of throwing a box. The hand swings and throws and the player has the ability to aim.
 
-{% include video.html url="/images/posts/the-making-of-boxrob/throwingabox.mp4" %}
+<video width=100% preload="auto" muted controls loop><source src="/images/posts/the-making-of-boxrob/throwingabox.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 
 
 #### THROWING A BOX (AGAIN) (10.06.21)
 The second version of throwing a box. The player can "shoot the box" and this option, without the ability to aim, is used in the game.
 
-{% include video.html url="/images/posts/the-making-of-boxrob/throwingabox2.mp4" %}
+<video width=100% preload="auto" muted controls loop><source src="/images/posts/the-making-of-boxrob/throwingabox2.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 
 
 #### PROTOTYPE COMPLETED (17.07.21)
 The prototype is done and all mechanics work. It is possible to complete the level from the start until the victory screen appears.
 
-{% include video.html url="/images/posts/the-making-of-boxrob/prototype_done.mp4" %}
+<video width=100% preload="auto" muted controls loop><source src="/images/posts/the-making-of-boxrob/prototype_done.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 
 
 ### INTERESTING FACTS
@@ -161,19 +163,19 @@ When you collect 60 stars, you open a bonus level. On the bonus level, you don�
 #### BUGS WITH PHYSICS
 Physics bugs can look funny. For example, when the robot’s arm is torn apart, but it tries to get back together:
 
-{% include video.html url="/images/posts/the-making-of-boxrob/physics_bug.mp4" %}
+<video width=100% preload="auto" muted controls loop><source src="/images/posts/the-making-of-boxrob/physics_bug.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 
 
 #### EXPLOSIONS
 When the box exploded, a bunch of small round bodies with velocity were created. This is a simulation of what happens in an explosion. It is easy to implement and it looks realistic.
 
-{% include video.html url="/images/posts/the-making-of-boxrob/explosion_physics.mp4" %}
+<video width=100% preload="auto" muted controls loop><source src="/images/posts/the-making-of-boxrob/explosion_physics.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 
 
 #### PICKING UP THE BOX
 When robot tries to take a box with hand, force is applied to the end of the hand, so the hand moves to the box. When the hand is near the box a distance joint is created between the hand and the box grip point. This joint is elastic. It tries to move the box to the hand. This makes it look juicier and faster.
 
-{% include video.html url="/images/posts/the-making-of-boxrob/boxpickup.mp4" %}
+<video width=100% preload="auto" muted controls loop><source src="/images/posts/the-making-of-boxrob/boxpickup.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 
 
 ### CONCLUSION
