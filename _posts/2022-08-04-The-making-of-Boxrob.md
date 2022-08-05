@@ -14,21 +14,21 @@ The game consists of 3 parts, each consisting of 20 base levels, and 1 bonus lev
 
 ![](/images/posts/the-making-of-boxrob/boxrob-half.jpg)
 
-{% include video.html url="https://youtu.be/kvfmboFPsTM" %}
+{% include video.html url="https://www.youtube.com/embed/kvfmboFPsTM" %}
 
 [You can play the game on Poki](https://poki.com/en/g/boxrob).
 
 
 In BoxRob 2 ([PLAY](https://poki.com/en/g/boxrob-2)) there are conveyor belts and moving hooks.
 
-{% include video.html url="https://youtu.be/qv3IR5vgdJs" %}
+{% include video.html url="https://www.youtube.com/embed/qv3IR5vgdJs" %}
 
-{% include video.html url="https://youtu.be/GUVK9y6l0T8" %}
+{% include video.html url="https://www.youtube.com/embed/GUVK9y6l0T8" %}
 
 
 BoxRob 3 ([PLAY](https://poki.com/en/g/boxrob-3)) introduced explosions:
 
-{% include video.html url="https://youtu.be/u_TYCuXGd6g" %}
+{% include video.html url="https://www.youtube.com/embed/u_TYCuXGd6g" %}
 
 
 ### TIMELINE
@@ -92,43 +92,43 @@ Below is a number of stages of development show. Between each of these stages, t
 #### WHEELBASE (11.05.21)
 The wheelbase was created.
 
-{% include video.html url="https://youtu.be/CYk9Hb1YxHE" %}
+{% include video.html url="https://www.youtube.com/embed/CYk9Hb1YxHE" %}
 
 
 #### ART (18.05.21)
 The art was added. The robot can jump and the hand was added. The hand is a physical rectangle that is always at a certain angle to the wheelbase. When turning the base, it keeps the right angle.
 
-{% include video.html url="https://youtu.be/3KmQ5MN4JPs" %}
+{% include video.html url="https://www.youtube.com/embed/3KmQ5MN4JPs" %}
 
 
 #### MOVING THE HAND (24.05.21)
 The hand is a set of physical bodies. Now it’s moving. When making contact with the box, it connects to the hand.
 
-{% include video.html url="https://youtu.be/6BYfj9lgtvg" %}
+{% include video.html url="https://www.youtube.com/embed/6BYfj9lgtvg" %}
 
 
 #### CARRYING A BOX (7.06.21)
 Passability increased. The hand can take the a and ride with it and when changing the direction of movement, the hand turns.
 
-{% include video.html url="https://youtu.be/UNa0c1xPiCQ" %}
+{% include video.html url="https://www.youtube.com/embed/UNa0c1xPiCQ" %}
 
 
 #### THROWING A BOX (09.06.21)
 The first version of throwing a box. The hand swings and throws and the player has the ability to aim.
 
-{% include video.html url="https://youtu.be/_8OktQ7spy8" %}
+{% include video.html url="https://www.youtube.com/embed/_8OktQ7spy8" %}
 
 
 #### THROWING A BOX (AGAIN) (10.06.21)
 The second version of throwing a box. The player can "shoot the box" and this option, without the ability to aim, is used in the game.
 
-{% include video.html url="https://youtu.be/TQIUbWqQwoc" %}
+{% include video.html url="https://www.youtube.com/embed/TQIUbWqQwoc" %}
 
 
 #### PROTOTYPE COMPLETED (17.07.21)
 The prototype is done and all mechanics work. It is possible to complete the level from the start until the victory screen appears.
 
-{% include video.html url="https://youtu.be/b6S0TuyBnho" %}
+{% include video.html url="https://www.youtube.com/embed/b6S0TuyBnho" %}
 
 
 ### INTERESTING FACTS
@@ -142,7 +142,7 @@ The box, when picked up by hand, changes its physical body from a rectangle to a
 #### PLACING THE BOX INSIDE THE TRUCK
 Throwing a box into the truck is tricky, and there are levels where you need to stack the boxes on top of each other. Therefore, when entering a truck, the throwing mechanics are replaced by the laying mechanics. Moreover, to make it obvious to the player, the hand changes its position and extends forward.
 
-{% include video.html url="https://youtu.be/OoDreFLYN-4" %}
+{% include video.html url="https://www.youtube.com/embed/OoDreFLYN-4" %}
 
 #### INVISBLE WALLS
 On one level you need to put the boxes in a pit and then press the button to push them into the car with the door. But there was a problem with the boxes clinging to the wall. So, the wall collider was made smaller than it looks. But a new problem appeared; the robot could enter this hole. To solve this an invisible wall that only collides with the robot was added.
@@ -161,19 +161,19 @@ When you collect 60 stars, you open a bonus level. On the bonus level, you don�
 #### BUGS WITH PHYSICS
 Physics bugs can look funny. For example, when the robot’s arm is torn apart, but it tries to get back together:
 
-{% include video.html url="https://youtu.be/3S9pXqfVMY4" %}
+{% include video.html url="https://www.youtube.com/embed/3S9pXqfVMY4" %}
 
 
 #### EXPLOSIONS
 When the box exploded, a bunch of small round bodies with velocity were created. This is a simulation of what happens in an explosion. It is easy to implement and it looks realistic.
 
-{% include video.html url="https://youtu.be/Bq0Ev3HwwpQ" %}
+{% include video.html url="https://www.youtube.com/embed/Bq0Ev3HwwpQ" %}
 
 
 #### PICKING UP THE BOX
 When robot tries to take a box with hand, force is applied to the end of the hand, so the hand moves to the box. When the hand is near the box a distance joint is created between the hand and the box grip point. This joint is elastic. It tries to move the box to the hand. This makes it look juicier and faster.
 
-{% include video.html url="https://youtu.be/qseAbZspzfA" %}
+{% include video.html url="https://www.youtube.com/embed/qseAbZspzfA" %}
 
 
 ### CONCLUSION
