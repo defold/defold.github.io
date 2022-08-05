@@ -31,7 +31,7 @@ BoxRob 3 ([PLAY](https://poki.com/en/g/boxrob-3)) introduced explosions:
 {% include video.html url="https://www.youtube.com/embed/u_TYCuXGd6g" %}
 
 
-### TIMELINE
+### Timeline
 It took about five and a half months to make the three parts.
 
 * 03.05.2021 - Initial commit
@@ -41,7 +41,7 @@ It took about five and a half months to make the three parts.
 
 Polishing for release and creation of levels for parts 2 and 3 went in parallel.
 
-### BUILD SIZE
+### Build Size
 
 Since the game target platform is HTML5 the build size was crucial. The final size of BoxRob 1 is 5.8 MB (3.8 MB gzipped). Approximately 900kb of the gzipped size is the Defold engine. The rest (2.91 MB) is assets:
 
@@ -54,30 +54,30 @@ Since the game target platform is HTML5 the build size was crucial. The final si
 * 46.65 KB levels (json)
 
 
-### DEVELOPMENT
+### Development
 
-####  PHYSICS
+####  Physics
 Defold already has a built-in version of Box2d but the functionality is limited. Luckily you can take the built-in Box2d out of the engine and use a native extension to add full-fledged physics, in which everything is available. For physics the game used a fork of [Sergey Lerg's box2d native extension](https://github.com/Lerg/extension-box2d). Later this fork was used as a base for a [full Box2d native extension](https://github.com/d954mas/defold-box2d).
 
-#### LEVEL EDITOR
+#### Level Editor
 It is possible to make levels in the Defold editor, but it was decided to use Tiled since it was more convenient and flexible. [Tiled](https://www.mapeditor.org/) is a cross-platform open-source tile map editor for games. From Tiled levels are exported to .lua and later converted to .json using a script. The script gets rid of the unused data, makes some fixes (for example, changes the coordinate system from y-down to y-up) and performs validation (checks that player spawn exists, that elevators use an existing trajectory, and that there are no objects with the same name, etc.)
 
 ![](/images/posts/the-making-of-boxrob/tiled.jpg)
 
-#### ENTITY COMPONENT SYSTEM
+#### Entity Component System
 BoxRob uses a data-oriented approach with a custom made entity component system (or ECS). In brief, ECS is a pattern for decomposition. The idea is that each game object (entity) consists of a set of components. For example, position component, acceleration component and so on.
 
 All logic is written in the system. For example, the movement system takes all entities that have position and acceleration component, and performs the necessary operations with them.  In the end, the game has 44 systems, and even more components. This approach results in a flexible game architecture that is easy and pleasant to work with, easy to extend, and optimize. You can [read more about ECS here](https://www.gamedev.net/articles/programming/general-and-gameplay-programming/understanding-component-entity-systems-r3013/).
 
 ![](/images/posts/the-making-of-boxrob/ecs_systems.png)
 
-#### SCRIPTS
+#### Scripts
 All logic is written in Lua modules and there is only one .script file in scene, the `controller.script`. This script update ECS and captures input from player.
 
 ![](/images/posts/the-making-of-boxrob/scripts.png)
 
 
-### PROTOTYPE
+### Prototype
 
 The creation of the game started with a prototype. The prototype was used to make sure that there are no problems with physics and that the game is fun to play. The Tiled level editor was also tested to create a level where the robot would move around. After that the physics was added, and the creation of the robot began. When working with physics, the box2d documentation helped a lot, as well as Google, and various tutorials for box2d.
 
@@ -89,62 +89,62 @@ As a result, the way the robot behaves in the release version is a set of physic
 Below is a number of stages of development show. Between each of these stages, there were a large number of iterations to select the necessary properties of physical bodies and to solve other problems:
 
 
-#### WHEELBASE (11.05.21)
+#### Wheelbase (11.05.21)
 The wheelbase was created.
 
 {% include video.html url="https://www.youtube.com/embed/CYk9Hb1YxHE" %}
 
 
-#### ART (18.05.21)
+#### Art (18.05.21)
 The art was added. The robot can jump and the hand was added. The hand is a physical rectangle that is always at a certain angle to the wheelbase. When turning the base, it keeps the right angle.
 
 {% include video.html url="https://www.youtube.com/embed/3KmQ5MN4JPs" %}
 
 
-#### MOVING THE HAND (24.05.21)
+#### Moving the Hand (24.05.21)
 The hand is a set of physical bodies. Now it’s moving. When making contact with the box, it connects to the hand.
 
 {% include video.html url="https://www.youtube.com/embed/6BYfj9lgtvg" %}
 
 
-#### CARRYING A BOX (7.06.21)
+#### Carrying a Box (7.06.21)
 Passability increased. The hand can take the a and ride with it and when changing the direction of movement, the hand turns.
 
 {% include video.html url="https://www.youtube.com/embed/UNa0c1xPiCQ" %}
 
 
-#### THROWING A BOX (09.06.21)
+#### Throwin a Box (09.06.21)
 The first version of throwing a box. The hand swings and throws and the player has the ability to aim.
 
 {% include video.html url="https://www.youtube.com/embed/_8OktQ7spy8" %}
 
 
-#### THROWING A BOX (AGAIN) (10.06.21)
+#### Throwin a Box (again) (10.06.21)
 The second version of throwing a box. The player can "shoot the box" and this option, without the ability to aim, is used in the game.
 
 {% include video.html url="https://www.youtube.com/embed/TQIUbWqQwoc" %}
 
 
-#### PROTOTYPE COMPLETED (17.07.21)
+#### Prototype Completed (17.07.21)
 The prototype is done and all mechanics work. It is possible to complete the level from the start until the victory screen appears.
 
 {% include video.html url="https://www.youtube.com/embed/b6S0TuyBnho" %}
 
 
-### INTERESTING FACTS
+### Interesting Facts
 
-#### ROUND BOXES
+#### Round Boxes
 The box, when picked up by hand, changes its physical body from a rectangle to a circle, so it doesn’t get stuck in narrow places and cling to corners.
 
 ![](/images/posts/the-making-of-boxrob/round_boxes.png)
 
 
-#### PLACING THE BOX INSIDE THE TRUCK
+#### Placing The Box Inside The Truck
 Throwing a box into the truck is tricky, and there are levels where you need to stack the boxes on top of each other. Therefore, when entering a truck, the throwing mechanics are replaced by the laying mechanics. Moreover, to make it obvious to the player, the hand changes its position and extends forward.
 
 {% include video.html url="https://www.youtube.com/embed/OoDreFLYN-4" %}
 
-#### INVISBLE WALLS
+#### Invisible Walls
 On one level you need to put the boxes in a pit and then press the button to push them into the car with the door. But there was a problem with the boxes clinging to the wall. So, the wall collider was made smaller than it looks. But a new problem appeared; the robot could enter this hole. To solve this an invisible wall that only collides with the robot was added.
 
 Yellow is the wall collider. Red is an invisible wall:
@@ -152,31 +152,31 @@ Yellow is the wall collider. Red is an invisible wall:
 ![](/images/posts/the-making-of-boxrob/collider_wall.jpg)
 
 
-#### TRUCK ON BONUS LEVELS
+#### Truck on Bonus Levels
 When you collect 60 stars, you open a bonus level. On the bonus level, you don’t need to load cargo. Instead you need to collect all the stars within a certain time. But the game logic expects a truck to be on the level. Therefore, at the bonus level, there is a truck, but it is out of the player’s sight!
 
 ![](/images/posts/the-making-of-boxrob/truck_bonus.png)
 
 
-#### BUGS WITH PHYSICS
+#### Physics Bugs
 Physics bugs can look funny. For example, when the robot’s arm is torn apart, but it tries to get back together:
 
 {% include video.html url="https://www.youtube.com/embed/3S9pXqfVMY4" %}
 
 
-#### EXPLOSIONS
+#### Explosions
 When the box exploded, a bunch of small round bodies with velocity were created. This is a simulation of what happens in an explosion. It is easy to implement and it looks realistic.
 
 {% include video.html url="https://www.youtube.com/embed/Bq0Ev3HwwpQ" %}
 
 
-#### PICKING UP THE BOX
+#### Picking up the Box
 When robot tries to take a box with hand, force is applied to the end of the hand, so the hand moves to the box. When the hand is near the box a distance joint is created between the hand and the box grip point. This joint is elastic. It tries to move the box to the hand. This makes it look juicier and faster.
 
 {% include video.html url="https://www.youtube.com/embed/qseAbZspzfA" %}
 
 
-### CONCLUSION
+### Conslusions
 It turned out to be a cool game that was enjoyable to work on. There were a lot of difficult and funny moments when working with physics, and overall, this game was interesting to make. It was a pleasure to see the prototype getting better and better with each iteration!
 
 Reach out to [d954mas on the forum](https://forum.defold.com/t/boxrob/71377) if you have any questions!
