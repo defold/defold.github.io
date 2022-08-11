@@ -15,7 +15,33 @@
             "parameters": [
                 {
                     "doc": "Callback function that is executed on any event in the SDK.", 
-                    "name": "callback"
+                    "name": "callback", 
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance", 
+                            "name": "self", 
+                            "types": [
+                                "object"
+                            ]
+                        }, 
+                        {
+                            "doc": "One of message types: `admob.MSG_INITIALIZATION` initialization, `admob.MSG_INTERSTITIAL` message from Interstitial ad unit, `admob.MSG_REWARDED` message from Rewarded ad unit, `admob.MSG_BANNER` message from Banner ad unit", 
+                            "name": "message_id", 
+                            "types": [
+                                "number"
+                            ]
+                        }, 
+                        {
+                            "doc": "A table holding the data", 
+                            "name": "message", 
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ], 
+                    "types": [
+                        "function"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -28,7 +54,10 @@
             "parameters": [
                 {
                     "doc": "", 
-                    "name": "bool"
+                    "name": "bool", 
+                    "types": [
+                        "boolean"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -57,7 +86,10 @@
             "parameters": [
                 {
                     "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/1033173712\"`, or on iOS `\"ca-app-pub-3940256099942544/4411468910\"` Original docs [Android](https://developers.google.com/admob/android/interstitial-fullscreen), [iOS](https://developers.google.com/admob/ios/interstitial)", 
-                    "name": "ad_unit_id"
+                    "name": "ad_unit_id", 
+                    "types": [
+                        "string"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -91,7 +123,10 @@
             "parameters": [
                 {
                     "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/1712485313\"`, or on iOS `\"ca-app-pub-3940256099942544/4411468910\"` Original docs [Android](https://developers.google.com/admob/android/rewarded-fullscreen), [iOS](https://developers.google.com/admob/ios/rewarded-ads)", 
-                    "name": "ad_unit_id"
+                    "name": "ad_unit_id", 
+                    "types": [
+                        "string"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -125,11 +160,17 @@
             "parameters": [
                 {
                     "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/6300978111\"`, or on iOS `\"ca-app-pub-3940256099942544/2934735716\"` Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)", 
-                    "name": "ad_unit_id"
+                    "name": "ad_unit_id", 
+                    "types": [
+                        "string"
+                    ]
                 }, 
                 {
                     "doc": "Requested Banner Ad size, possible values: `admob.SIZE_ADAPTIVE_BANNER` (default), `admob.SIZE_BANNER`, `admob.SIZE_FLUID`, `admob.SIZE_FULL_BANNER`, `admob.SIZE_LARGE_BANNER`, `admob.SIZE_LEADEARBOARD`, `admob.SIZE_MEDIUM_RECTANGLE`, `admob.SIZE_SEARH`, `admob.SIZE_SKYSCRAPER`, `admob.SIZE_SMART_BANNER`. Original docs [Android](https://developers.google.com/admob/android/banner#banner_sizes), [iOS](https://developers.google.com/admob/ios/banner#banner_sizes)", 
-                    "name": "size"
+                    "name": "size", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
@@ -142,7 +183,10 @@
             "parameters": [
                 {
                     "doc": "Banner Ad position, possible values: `admob.POS_NONE` (default), `admob.POS_TOP_LEFT`, `admob.POS_TOP_CENTER`, `admob.POS_TOP_RIGHT`, `admob.POS_BOTTOM_LEFT`, `admob.POS_BOTTOM_CENTER`, `admob.POS_BOTTOM_RIGHT`, `admob.POS_CENTER`", 
-                    "name": "position"
+                    "name": "position", 
+                    "types": [
+                        "number"
+                    ]
                 }
             ], 
             "returnvalues": [], 
