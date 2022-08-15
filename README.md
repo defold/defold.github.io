@@ -23,18 +23,18 @@ You need to make sure to have the following dependencies installed before using 
 Install `lunr.py` and `requests` using:
 
 ```
-pip install --user lunr==0.5.5
-pip install --user requests
-pip install --user pyyaml
-pip install --user markdown==2.6.7
-pip install --user pygments==2.1.3
+pip2 install --user lunr==0.5.5
+pip2 install --user requests
+pip2 install --user pyyaml
+pip2 install --user markdown==2.6.7
+pip2 install --user pygments==2.1.3
 ```
 
 ## Usage
 The `update.py` script should be run from a terminal. The syntax is as follows:
 
 ```
-python update.py [--download] docs codepad refdoc examples assets
+python2 update.py [--download] docs codepad refdoc examples assets
 ```
 
 You can use this script when testing locally (see below). The script is also used by GitHub Actions when automatically updating the site when one of the external sources/repositories have changed (see below).
