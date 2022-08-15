@@ -1,893 +1,893 @@
 {
-  "info": {
-    "group": "DEFOLD SDK", 
-    "description": "Profiling macros", 
-    "namespace": "dmProfile", 
-    "brief": "Profiling API documentation", 
-    "file": "dmsdk/dlib/profile.h", 
-    "path": "engine/dlib/src/dmsdk/dlib/profile.h", 
-    "name": "Profile"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Adds a profiling scope. Excluded by default in release builds.", 
+      "type": "MACRO",
+      "name": "DM_PROFILE",
+      "brief": "add profile scope",
+      "description": "Adds a profiling scope. Excluded by default in release builds.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "A name for the scope", 
-          "name": "a", 
+          "name": "a",
+          "doc": "A name for the scope",
           "types": [
             "const char*"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "add profile scope", 
-      "examples": "Profile a scope\n<div class=\"codehilite\"><pre><span></span><span class=\"p\">{</span>\n    <span class=\"n\">DM_PROFILE</span><span class=\"p\">(</span><span class=\"s\">&quot;DoWork&quot;</span><span class=\"p\">);</span>\n    <span class=\"n\">DoWork1</span><span class=\"p\">();</span>\n    <span class=\"n\">DoWork2</span><span class=\"p\">();</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROFILE"
-    }, 
+      ],
+      "examples": "Profile a scope\n<div class=\"codehilite\"><pre><span></span><code><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">DM_PROFILE</span><span class=\"p\">(</span><span class=\"s\">&quot;DoWork&quot;</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">DoWork1</span><span class=\"p\">();</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">DoWork2</span><span class=\"p\">();</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Adds a profiling scope. Excluded by default in release builds.\nAccepts a name cache value for performance.", 
+      "type": "MACRO",
+      "name": "DM_PROFILE_DYN",
+      "brief": "add dynamic profile scope",
+      "description": "Adds a profiling scope. Excluded by default in release builds.\nAccepts a name cache value for performance.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The scope name", 
-          "name": "a", 
+          "name": "a",
+          "doc": "The scope name",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "The scope name hash value pointer. May be 0.", 
-          "name": "a", 
+          "name": "a",
+          "doc": "The scope name hash value pointer. May be 0.",
           "types": [
             "dmhash_t*"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "add dynamic profile scope", 
-      "examples": "Create a dynamic profiling scope\n<div class=\"codehilite\"><pre><span></span><span class=\"p\">{</span>\n    <span class=\"n\">DM_PROFILE_DYN</span><span class=\"p\">(</span><span class=\"n\">work</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Name</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">work</span><span class=\"o\">-&gt;</span><span class=\"n\">m_NameHash</span><span class=\"p\">);</span>\n    <span class=\"n\">work</span><span class=\"o\">-&gt;</span><span class=\"n\">DoWork</span><span class=\"p\">();</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROFILE_DYN"
-    }, 
+      ],
+      "examples": "Create a dynamic profiling scope\n<div class=\"codehilite\"><pre><span></span><code><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">DM_PROFILE_DYN</span><span class=\"p\">(</span><span class=\"n\">work</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Name</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">work</span><span class=\"o\">-&gt;</span><span class=\"n\">m_NameHash</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">work</span><span class=\"o\">-&gt;</span><span class=\"n\">DoWork</span><span class=\"p\">();</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Send text to the profiler", 
+      "type": "MACRO",
+      "name": "DM_PROFILE_TEXT",
+      "brief": "send text to the profiler",
+      "description": "Send text to the profiler",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The format string", 
-          "name": "a", 
+          "name": "a",
+          "doc": "The format string",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "The variable argument list", 
-          "name": "a", 
+          "name": "a",
+          "doc": "The variable argument list",
           "types": [
             "va_list"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "send text to the profiler", 
-      "examples": "Send a string to the profiler\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROFILE_TEXT</span><span class=\"p\">(</span><span class=\"s\">&quot;Some value: %d&quot;</span><span class=\"p\">,</span> <span class=\"n\">value</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROFILE_TEXT"
-    }, 
+      ],
+      "examples": "Send a string to the profiler\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROFILE_TEXT</span><span class=\"p\">(</span><span class=\"s\">&quot;Some value: %d&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">value</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Declare an extern property", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_EXTERN",
+      "brief": "Declare an extern property",
+      "description": "Declare an extern property",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The symbol name", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The symbol name",
           "types": [
             "symbol"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Declare an extern property", 
-      "examples": "Use a property declared elsewhere in the same library\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_EXTERN</span><span class=\"p\">(</span><span class=\"n\">rmtp_GameObject</span><span class=\"p\">);</span>\n<span class=\"n\">DM_PROPERTY_U32</span><span class=\"p\">(</span><span class=\"n\">rmtp_ComponentsAnim</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">FrameReset</span><span class=\"p\">,</span> <span class=\"s\">&quot;#&quot;</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">rmtp_GameObject</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_EXTERN"
-    }, 
+      ],
+      "examples": "Use a property declared elsewhere in the same library\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_EXTERN</span><span class=\"p\">(</span><span class=\"n\">rmtp_GameObject</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">DM_PROPERTY_U32</span><span class=\"p\">(</span><span class=\"n\">rmtp_ComponentsAnim</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;#&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_GameObject</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Declare a property group", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_GROUP",
+      "brief": "Declare a property group",
+      "description": "Declare a property group",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The group name", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The group name",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The description", 
-          "name": "desc", 
+          "name": "desc",
+          "doc": "The description",
           "types": [
             "const char*"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Declare a property group", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_GROUP</span><span class=\"p\">(</span><span class=\"n\">rmtp_GameObject</span><span class=\"p\">,</span> <span class=\"s\">&quot;My Group&quot;</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_GROUP"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_GROUP</span><span class=\"p\">(</span><span class=\"n\">rmtp_GameObject</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;My Group&quot;</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Declare a property of type <code>bool</code>", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_BOOL",
+      "brief": "bool property",
+      "description": "Declare a property of type <code>bool</code>",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property symbol/name", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property symbol/name",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The default value", 
-          "name": "default", 
+          "name": "default",
+          "doc": "The default value",
           "types": [
             "bool"
           ]
-        }, 
+        },
         {
-          "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.", 
-          "name": "flags", 
+          "name": "flags",
+          "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.",
           "types": [
             "uint32_t"
           ]
-        }, 
+        },
         {
-          "doc": "The description", 
-          "name": "desc", 
+          "name": "desc",
+          "doc": "The description",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "The parent group", 
-          "name": "group", 
+          "name": "group",
+          "doc": "The parent group",
           "types": [
             "property*] [optional"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "bool property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_BOOL</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyBool</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">FrameReset</span><span class=\"p\">,</span> <span class=\"s\">&quot;true or false&quot;</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_BOOL"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_BOOL</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyBool</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;true or false&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Declare a property of type <code>int32_t</code>", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_S32",
+      "brief": "int32_t property",
+      "description": "Declare a property of type <code>int32_t</code>",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property symbol/name", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property symbol/name",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The default value", 
-          "name": "default", 
+          "name": "default",
+          "doc": "The default value",
           "types": [
             "int32_t"
           ]
-        }, 
+        },
         {
-          "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.", 
-          "name": "flags", 
+          "name": "flags",
+          "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.",
           "types": [
             "uint32_t"
           ]
-        }, 
+        },
         {
-          "doc": "The description", 
-          "name": "desc", 
+          "name": "desc",
+          "doc": "The description",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "The parent group", 
-          "name": "group", 
+          "name": "group",
+          "doc": "The parent group",
           "types": [
             "property*] [optional"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "int32_t property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_S32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">FrameReset</span><span class=\"p\">,</span> <span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_S32"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_S32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Declare a property of type <code>uint32_t</code>", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_U32",
+      "brief": "uint32_t property",
+      "description": "Declare a property of type <code>uint32_t</code>",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property symbol/name", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property symbol/name",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The default value", 
-          "name": "default", 
+          "name": "default",
+          "doc": "The default value",
           "types": [
             "uint32_t"
           ]
-        }, 
+        },
         {
-          "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.", 
-          "name": "flags", 
+          "name": "flags",
+          "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.",
           "types": [
             "uint32_t"
           ]
-        }, 
+        },
         {
-          "doc": "The description", 
-          "name": "desc", 
+          "name": "desc",
+          "doc": "The description",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "The parent group", 
-          "name": "group", 
+          "name": "group",
+          "doc": "The parent group",
           "types": [
             "property*] [optional"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "uint32_t property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_U32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">FrameReset</span><span class=\"p\">,</span> <span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_U32"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_U32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Declare a property of type <code>float</code>", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_F32",
+      "brief": "float property",
+      "description": "Declare a property of type <code>float</code>",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property symbol/name", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property symbol/name",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The default value", 
-          "name": "default", 
+          "name": "default",
+          "doc": "The default value",
           "types": [
             "float"
           ]
-        }, 
+        },
         {
-          "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.", 
-          "name": "flags", 
+          "name": "flags",
+          "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.",
           "types": [
             "uint32_t"
           ]
-        }, 
+        },
         {
-          "doc": "The description", 
-          "name": "desc", 
+          "name": "desc",
+          "doc": "The description",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "The parent group", 
-          "name": "group", 
+          "name": "group",
+          "doc": "The parent group",
           "types": [
             "property*] [optional"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "float property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_F32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">FrameReset</span><span class=\"p\">,</span> <span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_F32"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_F32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Declare a property of type <code>int64_t</code>", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_S64",
+      "brief": "int64_t property",
+      "description": "Declare a property of type <code>int64_t</code>",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property symbol/name", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property symbol/name",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The default value", 
-          "name": "default", 
+          "name": "default",
+          "doc": "The default value",
           "types": [
             "int64_t"
           ]
-        }, 
+        },
         {
-          "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.", 
-          "name": "flags", 
+          "name": "flags",
+          "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.",
           "types": [
             "uint32_t"
           ]
-        }, 
+        },
         {
-          "doc": "The description", 
-          "name": "desc", 
+          "name": "desc",
+          "doc": "The description",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "The parent group", 
-          "name": "group", 
+          "name": "group",
+          "doc": "The parent group",
           "types": [
             "property*] [optional"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "int64_t property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_S64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">FrameReset</span><span class=\"p\">,</span> <span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_S64"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_S64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Declare a property of type <code>uint64_t</code>", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_U64",
+      "brief": "uint64_t property",
+      "description": "Declare a property of type <code>uint64_t</code>",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property symbol/name", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property symbol/name",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The default value", 
-          "name": "default", 
+          "name": "default",
+          "doc": "The default value",
           "types": [
             "uint64_t"
           ]
-        }, 
+        },
         {
-          "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.", 
-          "name": "flags", 
+          "name": "flags",
+          "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.",
           "types": [
             "uint32_t"
           ]
-        }, 
+        },
         {
-          "doc": "The description", 
-          "name": "desc", 
+          "name": "desc",
+          "doc": "The description",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "The parent group", 
-          "name": "group", 
+          "name": "group",
+          "doc": "The parent group",
           "types": [
             "property*] [optional"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "uint64_t property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_U64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">FrameReset</span><span class=\"p\">,</span> <span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_U64"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_U64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Declare a property of type <code>double</code>", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_F64",
+      "brief": "double property",
+      "description": "Declare a property of type <code>double</code>",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property symbol/name", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property symbol/name",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The default value", 
-          "name": "default", 
+          "name": "default",
+          "doc": "The default value",
           "types": [
             "double"
           ]
-        }, 
+        },
         {
-          "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.", 
-          "name": "flags", 
+          "name": "flags",
+          "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.",
           "types": [
             "uint32_t"
           ]
-        }, 
+        },
         {
-          "doc": "The description", 
-          "name": "desc", 
+          "name": "desc",
+          "doc": "The description",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "The parent group", 
-          "name": "group", 
+          "name": "group",
+          "doc": "The parent group",
           "types": [
             "property*] [optional"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "double property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_F64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">FrameReset</span><span class=\"p\">,</span> <span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_F64"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_F64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Set the value of a bool property", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_SET_BOOL",
+      "brief": "set bool property",
+      "description": "Set the value of a bool property",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The value", 
-          "name": "value", 
+          "name": "value",
+          "doc": "The value",
           "types": [
             "bool"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set bool property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_SET_BOOL</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyBool</span><span class=\"p\">,</span> <span class=\"nb\">false</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_SET_BOOL"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_SET_BOOL</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyBool</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"nb\">false</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Set the value of a int32_t property", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_SET_S32",
+      "brief": "set int32_t property",
+      "description": "Set the value of a int32_t property",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The value", 
-          "name": "value", 
+          "name": "value",
+          "doc": "The value",
           "types": [
             "int32_t"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set int32_t property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_SET_S32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_SET_S32"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_SET_S32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">-1</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Set the value of a uint32_t property", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_SET_U32",
+      "brief": "set uint32_t property",
+      "description": "Set the value of a uint32_t property",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The value", 
-          "name": "value", 
+          "name": "value",
+          "doc": "The value",
           "types": [
             "uint32_t"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set uint32_t property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_SET_U32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_SET_U32"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_SET_U32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">1</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Set the value of a float property", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_SET_F32",
+      "brief": "set float property",
+      "description": "Set the value of a float property",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The value", 
-          "name": "value", 
+          "name": "value",
+          "doc": "The value",
           "types": [
             "float"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set float property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_SET_F32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"mf\">1.5</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_SET_F32"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_SET_F32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mf\">1.5</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Set the value of a int64_t property", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_SET_S64",
+      "brief": "set int64_t property",
+      "description": "Set the value of a int64_t property",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The value", 
-          "name": "value", 
+          "name": "value",
+          "doc": "The value",
           "types": [
             "int64_t"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set int64_t property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_SET_S64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_SET_S64"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_SET_S64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">-1</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Set the value of a uint64_t property", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_SET_U64",
+      "brief": "set uint64_t property",
+      "description": "Set the value of a uint64_t property",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The value", 
-          "name": "value", 
+          "name": "value",
+          "doc": "The value",
           "types": [
             "uint64_t"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set uint64_t property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_SET_U64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_SET_U64"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_SET_U64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">1</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Set the value of a double property", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_SET_F64",
+      "brief": "set double property",
+      "description": "Set the value of a double property",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The value", 
-          "name": "value", 
+          "name": "value",
+          "doc": "The value",
           "types": [
             "double"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set double property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_SET_F64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"mf\">1.5</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_SET_F64"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_SET_F64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mf\">1.5</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Add a value to int32_t property", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_ADD_S32",
+      "brief": "add to int32_t property",
+      "description": "Add a value to int32_t property",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The value", 
-          "name": "value", 
+          "name": "value",
+          "doc": "The value",
           "types": [
             "int32_t"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "add to int32_t property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_ADD_S32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_ADD_S32"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_ADD_S32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">-1</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Add a value to uint32_t property", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_ADD_U32",
+      "brief": "add to uint32_t property",
+      "description": "Add a value to uint32_t property",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The value", 
-          "name": "value", 
+          "name": "value",
+          "doc": "The value",
           "types": [
             "uint32_t"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "add to uint32_t property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_ADD_U32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_ADD_U32"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_ADD_U32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">1</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Add a value to float property", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_ADD_F32",
+      "brief": "add to float property",
+      "description": "Add a value to float property",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The value", 
-          "name": "value", 
+          "name": "value",
+          "doc": "The value",
           "types": [
             "float"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "add to float property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_ADD_F32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"mf\">1.5</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_ADD_F32"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_ADD_F32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mf\">1.5</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Add a value to int64_t property", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_ADD_S64",
+      "brief": "add to int64_t property",
+      "description": "Add a value to int64_t property",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The value", 
-          "name": "value", 
+          "name": "value",
+          "doc": "The value",
           "types": [
             "int64_t"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "add to int64_t property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_ADD_S64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_ADD_S64"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_ADD_S64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">-1</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Add a value to uint64_t property", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_ADD_U64",
+      "brief": "add to uint64_t property",
+      "description": "Add a value to uint64_t property",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The value", 
-          "name": "value", 
+          "name": "value",
+          "doc": "The value",
           "types": [
             "uint64_t"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "add to uint64_t property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_ADD_U64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_ADD_U64"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_ADD_U64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">1</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Add a value to double property", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_ADD_F64",
+      "brief": "add to double property",
+      "description": "Add a value to double property",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property",
           "types": [
             "symbol"
           ]
-        }, 
+        },
         {
-          "doc": "The value", 
-          "name": "value", 
+          "name": "value",
+          "doc": "The value",
           "types": [
             "double"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "add to double property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_ADD_F64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span> <span class=\"mf\">1.5</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_ADD_F64"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_ADD_F64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mf\">1.5</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Reset a property to its default value", 
+      "type": "MACRO",
+      "name": "DM_PROPERTY_RESET",
+      "brief": "reset property",
+      "description": "Reset a property to its default value",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The property", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The property",
           "types": [
             "symbol"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reset property", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_PROPERTY_RESET</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_PROPERTY_RESET"
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_RESET</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "dmProfile",
+    "name": "Profile",
+    "brief": "Profiling API documentation",
+    "description": "Profiling macros",
+    "path": "engine/dlib/src/dmsdk/dlib/profile.h",
+    "file": "dmsdk/dlib/profile.h",
+    "group": "DEFOLD SDK"
+  }
 }
