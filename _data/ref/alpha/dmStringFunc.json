@@ -212,6 +212,43 @@
       "tparams": [],
       "members": [],
       "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmStrError",
+      "brief": "Error code to string representation",
+      "description": "Error code to string representation. Wrapper for thread-safe strerror_s/r variants.\nIf the size of the buffer is too small, the message will be truncated to fit the buffer.\nIf the buffer is null, or if size is zero, nothing will happen.",
+      "returnvalues": [
+        {
+          "name": "a",
+          "doc": "null-terminated error message",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "dst",
+          "doc": "Destination string that carries the error message",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "size",
+          "doc": "Max size of destination string in bytes",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kt\">char</span><span class=\"w\"> </span><span class=\"n\">buf</span><span class=\"p\">[</span><span class=\"mi\">128</span><span class=\"p\">];</span><span class=\"w\"></span>\n<span class=\"n\">dmStrError</span><span class=\"p\">(</span><span class=\"n\">buf</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"k\">sizeof</span><span class=\"p\">(</span><span class=\"n\">buf</span><span class=\"p\">),</span><span class=\"w\"> </span><span class=\"n\">ENOENT</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// buf =&gt; &quot;No such file or directory&quot;</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
   ],
   "info": {
