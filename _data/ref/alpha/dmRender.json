@@ -1197,8 +1197,8 @@
     {
       "type": "FUNCTION",
       "name": "SetNamedConstant",
-      "brief": "Sets a named constant to the buffer",
-      "description": "Sets a named constant to the buffer",
+      "brief": "Sets one or more named constants to the buffer",
+      "description": "Sets one or more named constants to the buffer",
       "returnvalues": [],
       "parameters": [
         {
@@ -1261,6 +1261,49 @@
         {
           "name": "num_constants",
           "doc": "the number of constants",
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "SetNamedConstantAtIndex",
+      "brief": "Sets a named constant in the buffer at a specific ...",
+      "description": "Sets a named constant in the buffer at a specific index",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "the constants buffer",
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "the name of the constant",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "value",
+          "doc": "the value",
+          "types": [
+            "dmVMath::Vector4"
+          ]
+        },
+        {
+          "name": "value_index",
+          "doc": "the index of the value to set",
           "types": [
             "uint32_t"
           ]
