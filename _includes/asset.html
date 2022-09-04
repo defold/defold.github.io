@@ -9,7 +9,7 @@
 	{%- assign thumb_base = "" -%}
 	{%- assign thumb = "/images/asset-nothumb.jpg" -%}
 {%- endif -%}
-<div class='asset clickable left light-text compact {{ asset.tags | join: "%%" | replace: " ", "" | split: "%%" | join: " " | downcase }}'>
+<div class='asset clickable left light-text compact {{ asset.tags | join: "%%" | replace: " ", "" | split: "%%" | join: " " | downcase }}' data-name="{{ asset.name }}" data-description="{{ asset.description }}">
 	<a href="/assets/{{ include.id }}">
 		<div id="image" style="background: url('{{thumb_base}}{{ thumb }}') center/cover; padding: 0; margin: 0; height: 190px">
 		</div>

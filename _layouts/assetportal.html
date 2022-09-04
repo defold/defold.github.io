@@ -16,21 +16,27 @@ nav: floating
 				{% include secondary_button.html link="/submit_asset" text="Submit asset" %}
 			</div>
 		</div>
+
 		{%- assign sort_order = page.sort | default: "stars" -%}
 		{%- if page.tag -%}
 			{%- assign tag = site.data.tags[page.tag] -%}
 			{%- assign tagid = tag.id -%}
+			{%- include tagfilter.html tag=tagid sort=sort_order -%}
+		{%- else -%}
+			{%- include tagfilter.html sort=sort_order -%}
+		{%- endif -%}
+
+		{%- assign sort_order = page.sort | default: "stars" -%}
+		{%- if page.tag -%}
+			{%- assign tag = site.data.tags[page.tag] -%}
 			{%- assign assetname = tag.name -%}
 			{%- assign assetids = tag.assets | sort: sort_order | reverse | map: "id" -%}
-
-			{%- include tagfilter.html tag=tagid sort=sort_order -%}
 			{%- include assetgrid.html assetids=assetids showfilter=true title=assetname -%}
 		{%- else -%}
 			{%- assign assetids = site.data.assetindex | sort: sort_order | reverse | map: "id" -%}
-
-			{%- include tagfilter.html sort=sort_order -%}
 			{%- include assetgrid.html assetids=assetids showfilter=true title="All" -%}
 		{%- endif -%}
+
 		<div class="row" style="margin-top: 30px">
 			<div class="columns ten"><br/></div>
 			<div class="columns two">{% include secondary_button.html link="/submit_asset" text="Submit asset" %}</div>

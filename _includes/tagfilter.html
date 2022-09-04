@@ -1,7 +1,7 @@
 <div class="row compact" style="margin-bottom: 30px">
 	{%- assign alltags = site.data.assetindex | map: "tags" -%}
 	{%- assign tags = alltags | uniq | sort -%}
-	<p>FILTER</p>
+	<p>TAGS</p>
 	<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 0 1rem; font-size: 0.9em;">
 		{%- if include.tag -%}
 			{%- assign class="" -%}
@@ -20,6 +20,7 @@
 			<a class="filter {{ class }}" href="/tags/{{ include.sort }}/{{ tag | replace: ' ' | downcase }}">{{ tag }} ({{ tagged_assets.size }})</a>
 		{%- endfor -%}
 	</div>
+
 	<br/>
 	{%- if include.tag -%}
 		<p>SORT BY: <a href="/tags/stars/{{ include.tag }}">Stars</a>, <a href="/tags/timestamp/{{ include.tag }}">Latest</a></p>
