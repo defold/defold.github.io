@@ -1239,6 +1239,56 @@
     },
     {
       "type": "FUNCTION",
+      "name": "SetNamedConstant",
+      "brief": "Sets one or more named constants to the buffer wit...",
+      "description": "Sets one or more named constants to the buffer with a specified data type.\nCurrently only dmRenderDDF::MaterialDesc::CONSTANT_TYPE_USER and dmRenderDDF::MaterialDesc::CONSTANT_TYPE_USER_MATRIX4\nare supported.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "the constants buffer",
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "the name of the constant",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "values",
+          "doc": "the values",
+          "types": [
+            "dmVMath::Vector4*"
+          ]
+        },
+        {
+          "name": "num_values",
+          "doc": "the number of values",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "constant_type",
+          "doc": "The constant type",
+          "types": [
+            "dmRenderDDF::MaterialDesc::ConstantType"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "SetNamedConstants",
       "brief": "Sets a list of named constants to the buffer",
       "description": "Sets a list of named constants to the buffer",
@@ -1278,7 +1328,15 @@
       "name": "SetNamedConstantAtIndex",
       "brief": "Sets a named constant in the buffer at a specific ...",
       "description": "Sets a named constant in the buffer at a specific index",
-      "returnvalues": [],
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "the result",
+          "types": [
+            "Result"
+          ]
+        }
+      ],
       "parameters": [
         {
           "name": "buffer",
@@ -1357,6 +1415,64 @@
           "doc": "(out) the number of values. May not be null.",
           "types": [
             "uint32_t*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetNamedConstant",
+      "brief": "Gets a named constant from the buffer - with type ...",
+      "description": "Gets a named constant from the buffer - with type information",
+      "returnvalues": [
+        {
+          "name": "ok",
+          "doc": "true if constant existed.",
+          "types": [
+            "bool"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "the constants buffer",
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "the name of the constant",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "values",
+          "doc": "(out) the values. May not be null.",
+          "types": [
+            "dmVMath::Vector4**"
+          ]
+        },
+        {
+          "name": "num_values",
+          "doc": "(out) the number of values. May not be null.",
+          "types": [
+            "uint32_t*"
+          ]
+        },
+        {
+          "name": "constant_type",
+          "doc": "(out) the constant type.",
+          "types": [
+            "dmRenderDDF::MaterialDesc::ConstantType*"
           ]
         }
       ],
