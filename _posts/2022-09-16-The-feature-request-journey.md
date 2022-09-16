@@ -6,11 +6,11 @@ author: Björn Ritzl
 tags: ["code", "engine", "open-source"]
 ---
 
-We were recently asked about the development process for feature requests. How are features requested and what is the process from from initial request to released feature? In this blog post we'll describe the process on a high level. If you have questions about the process then don't hesitate to reach out to us on [Discord server](https://defold.com/discord) or the [user forum](https://forum.defold.com/).
+We were recently asked about the development process for feature requests. How are features requested and what is the process from initial request to released feature? In this blog post we'll describe the process on a high level. If you have questions about the process then please don't hesitate to reach out to us on [Discord server](https://defold.com/discord) or the [user forum](https://forum.defold.com/).
 
 
 ### Feature request
-Everything starts with a feature request. Feature requests usually originate from a Defold user, corporate partner or from the Defold development team. Feature requests can be raised on our [user forum](https://forum.defold.com/), [Discord server](https://defold.com/discord) or directly on [GitHub](https://github.com/defold/defold/issues/new?assignees=&labels=feature+request&template=feature_request.md&title=). We want all feature requests on GitHub and will usually ask the person requesting the feature to submit the request on GitHub. We require the following information to be able to evaluate a feature request:
+Everything starts with a problem and and a missing solution. Feature requests usually originate from a Defold user, corporate partner or from the Defold development team. Feature requests can be raised on our [user forum](https://forum.defold.com/), [Discord server](https://defold.com/discord) or directly on [GitHub](https://github.com/defold/defold/issues/new?assignees=&labels=feature+request&template=feature_request.md&title=). We want all feature requests on GitHub and will usually ask the person requesting the feature to submit the request on GitHub. We require the following information to be able to evaluate a feature request:
 
 **Is your feature request related to a problem?**
 Here we ask for a clear and concise description of what the problem is. Example: I'm always frustrated when [...]
@@ -41,11 +41,11 @@ Now is the time to let the feature request mature together with all of the other
 
 
 ### Planning
-At this point we have decided to start working on the feature request. We review all comments and information in the feature request and the feature request is assigned to an upcoming release project on GitHub (example: https://github.com/defold/defold/projects/69).
+At this point we have decided to start working on the feature request. We review all comments and information in the feature request and the feature request is assigned to an upcoming release project on GitHub ([example](https://github.com/defold/defold/projects/69)).
 
 
 ### Design
-We almost always start with a design document where we try to answer the following questions:
+We almost always start with a design document where we answer the following questions:
 
 * **What do we want to do?**
 "We want to add frustum culling for labels"
@@ -67,11 +67,11 @@ Once the design document has been discussed and we agree on a solution we can fi
 
 
 ### Pull request
-When development is done we create a pull request. The pull request will link to the issue it solves and it will be reviewed by peers. During the review process things such as unit test coverage, code convention and naming standards are checked. The pull request is merged when it has been approved and all checks (unit tests) pass.
+When development is done we create a pull request. The pull request will link to the issue it solves and it will be reviewed one or more members of the development team. During the review process things such as unit test coverage, code convention and naming standards are checked. The pull request is merged when it has been approved and all checks (unit tests) pass.
 
 
 ### Release
-The feature will be included in the next release when the merged code make it into the beta and master (stable) branch.
+The feature will be included in the next release when the merged code make it into the beta and master (stable) branch. At the moment we have a four week development cycle, then a two week beta period which ends with a release to the stable branch of Defold.
 
 
-
+We hope this sheds some light on the development process. If you have questions about the process then please don't hesitate to reach out to us on [Discord server](https://defold.com/discord) or the [user forum](https://forum.defold.com/).
