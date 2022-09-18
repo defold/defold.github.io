@@ -75,7 +75,7 @@ end
 return M
 ```
 
-The module can then be used. Again, it is prefered to assign it to a local variable:
+The module can then be used. Again, it is preferred to assign it to a local variable:
 
 ```lua
 local m = require "mymodule"

@@ -3,7 +3,7 @@ layout: manual
 language: en
 github: https://github.com/defold/doc
 title: Defold resource management
-brief: This manual explains how Defold automatically manages resources and how you can manually manage loading of resources to adher to memory footprint and bundle size constraints.
+brief: This manual explains how Defold automatically manages resources and how you can manually manage loading of resources to adhere to memory footprint and bundle size constraints.
 ---
 
 # Resource management
