@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-import urllib2
+from urllib.request import urlopen
+from urllib.parse import urlparse
 import zipfile
 import os
 import sys
@@ -11,7 +12,6 @@ import tempfile
 import re
 import subprocess
 import requests
-import urlparse
 import hashlib
 import yaml
 from argparse import ArgumentParser
@@ -21,7 +21,8 @@ from lunr import trimmer
 
 from markdown import Markdown
 from markdown import Extension
-from markdown.util import etree, AtomicString
+from markdown.util import AtomicString
+import xml.etree.ElementTree as etree
 from markdown.inlinepatterns import Pattern
 
 
@@ -135,7 +136,7 @@ def download_file(url, destination, filename=None):
         sys.exit(1)
     print("Downloading {} to {}".format(url, path))
     try:
-        f = urllib2.urlopen(url)
+        f = urlopen(url)
         with open(path, 'wb') as output:
             output.write(f.read())
     except:
