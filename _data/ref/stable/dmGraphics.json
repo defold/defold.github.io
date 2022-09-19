@@ -444,6 +444,241 @@
     },
     {
       "type": "ENUM",
+      "name": "HandleResult",
+      "brief": "",
+      "description": "",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [
+        {
+          "name": "HANDLE_RESULT_OK",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "HANDLE_RESULT_NOT_AVAILABLE",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "HANDLE_RESULT_ERROR",
+          "doc": "",
+          "type": ""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "type": "ENUM",
+      "name": "RenderTargetAttachment",
+      "brief": "",
+      "description": "",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [
+        {
+          "name": "ATTACHMENT_COLOR",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "ATTACHMENT_DEPTH",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "ATTACHMENT_STENCIL",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "MAX_ATTACHMENT_COUNT",
+          "doc": "",
+          "type": ""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "type": "ENUM",
+      "name": "TextureFormat",
+      "brief": "",
+      "description": "",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [
+        {
+          "name": "TEXTURE_FORMAT_LUMINANCE",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_LUMINANCE_ALPHA",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGB",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGBA",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGB_16BPP",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGBA_16BPP",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_DEPTH",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_STENCIL",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGB_PVRTC_2BPPV1",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGB_PVRTC_4BPPV1",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGBA_PVRTC_2BPPV1",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGBA_PVRTC_4BPPV1",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGB_ETC1",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_R_ETC2",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RG_ETC2",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGBA_ETC2",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGBA_ASTC_4x4",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGB_BC1",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGBA_BC3",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_R_BC4",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RG_BC5",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGBA_BC7",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGB16F",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGB32F",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGBA16F",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RGBA32F",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_R16F",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RG16F",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_R32F",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_RG32F",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TEXTURE_FORMAT_COUNT",
+          "doc": "",
+          "type": ""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "type": "ENUM",
       "name": "CompareFunc",
       "brief": "",
       "description": "",
@@ -764,7 +999,7 @@
     },
     {
       "type": "ENUM",
-      "name": "Type",
+      "name": "BlendFactor",
       "brief": "Blend factor",
       "description": "Blend factor",
       "returnvalues": [],
@@ -1447,9 +1682,46 @@
         },
         {
           "name": "extension",
-          "doc": "the extension. Comparison is",
+          "doc": "the extension.",
           "types": [
             "const char*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "IsTextureFormatSupported",
+      "brief": "check if a specific texture format is supported",
+      "description": "check if a specific texture format is supported",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "true if the texture format was supported",
+          "types": [
+            "bool"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "context",
+          "doc": "the context",
+          "types": [
+            "dmGraphics::HContext"
+          ]
+        },
+        {
+          "name": "format",
+          "doc": "the texture format.",
+          "types": [
+            "TextureFormat"
           ]
         }
       ],
