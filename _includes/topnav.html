@@ -5,7 +5,7 @@
 				<div style="float: left">
 					<a href="/" class="sidemenu"><img src="/images/logo/defold/logo/logo-ver-outline-white-64.png" height="32px"/></a>
 				</div>
-				<div style="float: left; padding-left: 20px;">
+				<div style="float: left; padding-left: 20px; padding-top: 0.5rem;">
 					<ul class="sidemenu">
 						<li><a href="/product">Features</a></li>
 						<li><a href="/showcase">Showcase</a></li>
@@ -13,7 +13,6 @@
 						<li><a href="/assets">Assets</a></li>
 						<li><a href="/open">Open&nbsp;Source</a></li>
 						<li><a href="//forum.defold.com">Community</a></li>
-						<li><a href="/download">Download</a></li>
 					</ul>
 					<select class="dropdownmenu dark-text" onchange="location = this.value;">
 						<option value="/">Home</option>
@@ -25,6 +24,11 @@
 						<option value="//forum.defold.com">Forum</option>
 						<option value="/download" {% if page.url contains 'download' %}selected{% endif %}>Download</option>
 					</select>
+				</div>
+				<div class="right" style="float: right; padding-top: 0.5rem;">
+					<ul class="sidemenu">
+						<li><a href="/download">Download</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
