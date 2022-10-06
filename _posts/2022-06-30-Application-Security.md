@@ -32,22 +32,8 @@ Applying source code obfuscation is an automated process where the source code i
 
 It is possible to apply source code obfuscation in Defold either as a pre-build step or as an integrated part of the Defold build process. With pre-build obfuscation the source code is obfuscated using an obfuscation tool before the Defold build process is started.
 
-Build-time obfuscation on the other hand is integrated into the build process using a Lua builder plugin. A Lua builder plugin takes the raw source code as input and returns an obfuscated version of the source code as output. One example of build-time obfuscation is shown in the [Prometheus extension](https://github.com/defold/extension-prometheus), based on the Prometheus Lua obfuscator available on GitHub. Below you will find an example of using Prometheus to aggressively obfuscate a snippet of code (note that this kind of heavy obfuscation will have an impact on the runtime performance of the Lua code):
+Build-time obfuscation on the other hand is integrated into the build process using a Lua builder plugin. A Lua builder plugin takes the raw source code as input and returns an obfuscated version of the source code as output. One example of build-time obfuscation is shown in the [Prometheus extension](https://github.com/defold/extension-prometheus), based on the Prometheus Lua obfuscator available on GitHub.
 
-Example:
-
-```
-function init(self)
- print("hello")
- test.greet("Bob")
-end
-```
-
-Obfuscated output:
-
-```
-local v={"+qdW","ZK0tEKf=";"XP/IX3+="}for o,J in ipairs({{1;3};{1,1},{2,3}})do while J[1]<J[2]do v[J[1]],v[J[2]],J[1],J[2]=v[J[2]],v[J[1]],J[1]+1,J[2]-1 end end local function J(o)return v[o+45816]end do local o={["/"]=9;["8"]=48;["9"]=1;q=38,o=62;V=33;y=43,d=61,B=50,L=54;v=2;["0"]=21,n=31;p=63;R=5;N=3;i=10;e=35;C=7;l=56;a=47,J=58;m=59;["2"]=36;z=11;M=12;Z=26;O=18;["5"]=20;s=8,["4"]=30,P=55;w=4;U=29;Q=28;r=24,h=41;G=45;c=19;W=34,k=57;T=14,t=44,S=0;f=60;F=42,E=27;u=40;X=25,j=17;["3"]=23,b=13;["1"]=53;Y=32,A=22,K=6,["+"]=16,["6"]=46;["7"]=51;I=37;D=52;H=15,x=49,g=39}local J=type local x=string.sub local d=v local l=string.len local W=string.char local L=table.insert local w=table.concat local h=math.floor for v=1,#d,1 do local X=d[v]if J(X)=="string"then local J=l(X)local H={}local S=1 local k=0 local K=0 while S<=J do local v=x(X,S,S)local d=o[v]if d then k=k+d*64^(3-K)K=K+1 if K==4 then K=0 local o=h(k/65536)local v=h((k%65536)/256)local J=k%256 L(H,W(o,v,J))k=0 end elseif v=="="then L(H,W(h(k/65536)))if S>=J or x(X,S+1,S+1)~="="then L(H,W(h((k%65536)/256)))end break end S=S+1 end d[v]=w(H)end end end local function o(o)test[J(-45815)](o)end function init(v)print(J(-45813))o(J(-45814))end
-```
 
 ### Resource encryption
 During the Defold build process the game resources are processed and transformed into formats suitable for runtime consumption by the Defold engine. Textures are compiled into the Basis Universal format, the collections, game objects and components are converted from human readable text representation to binary counterparts and the Lua source code is processed and compiled into bytecode. Other assets such as sound files are used as-is.
