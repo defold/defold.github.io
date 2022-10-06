@@ -3,7 +3,7 @@ layout: post
 title:  Yandex.Games Jam Results
 excerpt: After some delays during the post-jam period we finally have the results!
 author: Björn Ritzl
-tags: ["news", "yandex", "gamejam"]
+tags: ["news", "yandex", "game jam"]
 ---
 
 The [Defold Foundation and Yandex.Games game jam](/yandex-game-jam-2021) was a month long jam running all through November of last year. Developers were challenged to create a themed web game showing their creative and developer skills as well as a good integration with the Yandex.Games SDK. After some delays during the post-jam period we finally have the results!
