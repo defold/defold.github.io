@@ -3,7 +3,7 @@ layout: post
 title:  Yandex.Games Jam Results
 excerpt: After some delays during the post-jam period we finally have the results!
 author: Björn Ritzl
-tags: ["news", "yandex", "gamejam"]
+tags: ["news", "yandex", "game jam"]
 ---
 
 The [Defold Foundation and Yandex.Games game jam](/yandex-game-jam-2021) was a month long jam running all through November of last year. Developers were challenged to create a themed web game showing their creative and developer skills as well as a good integration with the Yandex.Games SDK. After some delays during the post-jam period we finally have the results!
@@ -46,10 +46,10 @@ The team at Yandex ranked the games based on how well the games perform on the Y
 
 Prizes:
 
-* 1st place - iPhone 12 128 GB, Featuring and advertising of your game, worth $1500
-* 2nd place - iPhone 12 128 GB, Featuring and advertising of your game, worth $1000
-* 3rd place - iPhone 12 128 GB, Featuring and advertising of your game, worth $500
-* 4th-10th place - Featuring and advertising of your game, worth $200
+* 1st place - iPhone 12 128 GB, Featuring and advertising of your game, worth \$1500
+* 2nd place - iPhone 12 128 GB, Featuring and advertising of your game, worth \$1000
+* 3rd place - iPhone 12 128 GB, Featuring and advertising of your game, worth \$500
+* 4th-10th place - Featuring and advertising of your game, worth \$200
 
 The games will be advertised in Yandex advertisinig channels.
 
