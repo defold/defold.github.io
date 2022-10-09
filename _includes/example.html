@@ -14,7 +14,7 @@
 		archive_location_filter: function( path ) {
 			return ("/examples/archive" + path + "");
 		},
-		engine_arguments: [ '--config=examples.start={{ page.collection }}', '--verify-graphics-calls=false'],
+		engine_arguments: [ '--config=examples.start={{ page.collection }}', '--verify-graphics-calls=false'"--verify-graphics-calls=false",],
 		custom_heap_size: 268435456,
 		full_screen_container: "#canvas-container",
 		disable_context_menu: true
@@ -84,5 +84,6 @@
 	</script>
 
 	<script id='engine-start' type='text/javascript'>
+		EngineLoader.stream_wasm = "false" === "true";
 		EngineLoader.load("canvas", "/examples/Defoldexamples");
 	</script>
