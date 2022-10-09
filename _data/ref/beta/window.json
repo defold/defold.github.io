@@ -24,6 +24,28 @@
     },
     {
       "type": "FUNCTION",
+      "name": "window.set_mouse_lock",
+      "brief": "set the locking state for current mouse cursor",
+      "description": "Set the locking state for current mouse cursor on a PC platform.\nThis function locks or unlocks the mouse cursor to the center point of the window. While the cursor is locked,\nmouse position updates will still be sent to the scripts as usual.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "flag",
+          "doc": "The lock state for the mouse cursor",
+          "types": [
+            "boolean"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "window.set_dim_mode",
       "brief": "set the mode for screen dimming",
       "description": "<span class=\"icon-ios\"></span> <span class=\"icon-android\"></span> Sets the dimming mode on a mobile device.\nThe dimming mode specifies whether or not a mobile device should dim the screen after a period without user interaction. The dimming mode will only affect the mobile device while the game is in focus on the device, but not when the game is running in the background.\nThis function has no effect on platforms that does not support dimming.",
@@ -84,6 +106,28 @@
           "doc": "The window height",
           "types": [
             "number"
+          ]
+        }
+      ],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "window.get_mouse_lock",
+      "brief": "get the cursor lock state",
+      "description": "This returns the current lock state of the mouse cursor",
+      "returnvalues": [
+        {
+          "name": "state",
+          "doc": "The lock state",
+          "types": [
+            "boolean"
           ]
         }
       ],

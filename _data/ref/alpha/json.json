@@ -29,6 +29,36 @@
       "tparams": [],
       "members": [],
       "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "json.encode",
+      "brief": "encode a lua table to a JSON string",
+      "description": "Encode a lua table to a JSON string.\nA Lua error is raised for syntax errors.",
+      "returnvalues": [
+        {
+          "name": "json",
+          "doc": "encoded json",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "tbl",
+          "doc": "lua table to encode",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "examples": "Convert a lua table to a JSON string:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n     <span class=\"kd\">local</span> <span class=\"n\">tbl</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n          <span class=\"n\">persons</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n               <span class=\"p\">{</span> <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;John Doe&quot;</span><span class=\"p\">},</span>\n               <span class=\"p\">{</span> <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;Darth Vader&quot;</span><span class=\"p\">}</span>\n          <span class=\"p\">}</span>\n     <span class=\"p\">}</span>\n     <span class=\"kd\">local</span> <span class=\"n\">jsonstring</span> <span class=\"o\">=</span> <span class=\"n\">json</span><span class=\"p\">.</span><span class=\"n\">encode</span><span class=\"p\">(</span><span class=\"n\">tbl</span><span class=\"p\">)</span>\n     <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">jsonstring</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\nResults in the following printout:\n<div class=\"codehilite\"><pre><span></span><code>{&quot;persons&quot;:[{&quot;name&quot;:&quot;John Doe&quot;},{&quot;name&quot;:&quot;Darth Vader&quot;}]}\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
   ],
   "info": {
