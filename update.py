@@ -511,7 +511,7 @@ def process_examples(download = False):
         replace_in_file(os.path.join(examples_dir, "index.html"), 'dmloader.js', '/examples/dmloader.js')
         replace_in_file(os.path.join(examples_dir, "index.html"), '\"archive\"', '"/examples/archive"')
         replace_in_file(os.path.join(examples_dir, "index.html"), 'EngineLoader\.load\(\"canvas\", \"Defoldexamples\"\)', 'EngineLoader.load("canvas", "/examples/Defoldexamples")')
-        replace_in_file(os.path.join(examples_dir, "index.html"), "engine_arguments: \[", "engine_arguments: [ '--config=examples.start={{ page.collection }}', '--verify-graphics-calls=false'")
+        replace_in_file(os.path.join(examples_dir, "index.html"), "engine_arguments: \[", "engine_arguments: [ '--config=examples.start={{ page.collection }}', ")
         os.rename(os.path.join(examples_dir, "index.html"), "_includes/example.html")
 
         print("...copying markdown")
