@@ -2,5 +2,5 @@
 layout: asset
 asset: dirtylarry
 title: Dirty Larry
-description: A quick and dirty GUI library.
+description: b'A quick and dirty GUI library.'
 ---

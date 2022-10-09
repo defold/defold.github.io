@@ -204,7 +204,6 @@ def read_as_json(filename):
     with open(filename) as f:
         return json.load(f)
 
-
 def write_as_json(filename, data):
     with open(filename, "w") as f:
         json.dump(data, f, indent=4, sort_keys=True)
@@ -657,8 +656,9 @@ def process_assets(tmp_dir):
         asset = read_as_json(asset_file)
         fix_tags_case(asset["tags"])
         fix_platforms_case(asset["platforms"])
-        author_name = asset["author"].encode('utf-8')
-        author_id = hashlib.md5(author_name).hexdigest()
+        author_name = asset["author"]
+
+        author_id = hashlib.md5(author_name.encode('utf-8')).hexdigest()
         asset["author_id"] = author_id
         asset["asset_url"] = "https://github.com/defold/awesome-defold/blob/master/assets/%s.json" % asset_id
         write_as_json(asset_file, asset)
@@ -724,21 +724,20 @@ def process_assets(tmp_dir):
 
     # write author index
     authorlist = authorindex.values()
-    authorlist.sort(key=lambda x: x.get("name").lower())
+    authorlist = sorted(authorlist, key=lambda x: x.get("name").lower())
     write_as_json(AUTHORINDEX_JSON, authorlist)
 
     # write author data and a dummy markdown page with front matter
     for author in authorlist:
         author["assets"].sort(key=lambda x: x.get("id"))
         filename = os.path.join(author_data_dir, author["id"] + ".json")
-        with open(filename, "w") as f:
-            f.write(json.dumps(author, indent=2, sort_keys=True))
+        write_as_json(filename, author)
         with open(os.path.join(author_collection_dir, author["id"] + ".md"), "w") as f:
             f.write(AUTHOR_MD_FRONTMATTER.format(author["id"], author["name"]))
 
     # write tag index
     taglist = tagindex.values()
-    taglist.sort(key=lambda x: x.get("id").lower())
+    taglist = sorted(taglist, key=lambda x: x.get("id").lower())
     write_as_json(TAGINDEX_JSON, taglist)
 
     # write platform index

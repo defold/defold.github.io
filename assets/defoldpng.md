@@ -2,5 +2,5 @@
 layout: asset
 asset: defoldpng
 title: Defold-PNG
-description: Decode and encode PNG images
+description: b'Decode and encode PNG images'
 ---

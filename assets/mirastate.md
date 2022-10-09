@@ -2,5 +2,5 @@
 layout: asset
 asset: mirastate
 title: MiraState
-description: Hierarchical State Machine.
+description: b'Hierarchical State Machine.'
 ---

@@ -2,5 +2,5 @@
 layout: asset
 asset: defunico
 title: DefUniCo
-description: DefUniCo is a coroutine library
+description: b'DefUniCo is a coroutine library'
 ---

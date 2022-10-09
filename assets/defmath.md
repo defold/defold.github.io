@@ -2,5 +2,5 @@
 layout: asset
 asset: defmath
 title: DefMath
-description: A set of math functions.
+description: b'A set of math functions.'
 ---

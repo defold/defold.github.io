@@ -2,5 +2,5 @@
 layout: asset
 asset: platypus
 title: Platypus
-description: 2D Platformer engine
+description: b'2D Platformer engine'
 ---

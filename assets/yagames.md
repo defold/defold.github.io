@@ -2,5 +2,5 @@
 layout: asset
 asset: yagames
 title: YaGames
-description: YaGames is the Yandex.Games SDK extension for the Defold game engine.
+description: b'YaGames is the Yandex.Games SDK extension for the Defold game engine.'
 ---

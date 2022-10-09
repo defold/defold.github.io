@@ -2,5 +2,5 @@
 layout: asset
 asset: defos
 title: DefOS
-description: Extra native OS functions.
+description: b'Extra native OS functions.'
 ---

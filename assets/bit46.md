@@ -2,5 +2,5 @@
 layout: asset
 asset: bit46
 title: bit46
-description: bit46 is a module for 46bit bitwise operations.
+description: b'bit46 is a module for 46bit bitwise operations.'
 ---

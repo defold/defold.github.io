@@ -2,5 +2,5 @@
 layout: asset
 asset: imp
 title: Imp
-description: Image processing via convolution between a kernel and the image.
+description: b'Image processing via convolution between a kernel and the image.'
 ---

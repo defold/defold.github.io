@@ -2,5 +2,5 @@
 layout: asset
 asset: defvideoads
 title: Def Video Ads
-description: Show UnityAds.
+description: b'Show UnityAds.'
 ---

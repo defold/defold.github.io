@@ -2,5 +2,5 @@
 layout: asset
 asset: colyseus
 title: Colyseus
-description: Multiplayer Game Client.
+description: b'Multiplayer Game Client.'
 ---

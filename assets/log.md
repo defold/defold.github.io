@@ -2,5 +2,5 @@
 layout: asset
 asset: log
 title: Log
-description: General purpose logging.
+description: b'General purpose logging.'
 ---

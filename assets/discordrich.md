@@ -2,5 +2,5 @@
 layout: asset
 asset: discordrich
 title: DiscordRich
-description: Rich Presence for games on Discord.
+description: b'Rich Presence for games on Discord.'
 ---

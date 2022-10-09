@@ -2,5 +2,5 @@
 layout: asset
 asset: emthree
 title: Emthree
-description: A match three engine.
+description: b'A match three engine.'
 ---

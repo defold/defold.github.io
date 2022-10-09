@@ -2,5 +2,5 @@
 layout: asset
 asset: err
 title: Err
-description: Error logging helper.
+description: b'Error logging helper.'
 ---

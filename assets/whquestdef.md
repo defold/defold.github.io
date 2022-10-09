@@ -2,5 +2,5 @@
 layout: asset
 asset: whquestdef
 title: whQuestDef
-description: A little helper library for quest games.
+description: b'A little helper library for quest games.'
 ---

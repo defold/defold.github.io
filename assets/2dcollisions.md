@@ -2,5 +2,5 @@
 layout: asset
 asset: 2dcollisions
 title: 2D Collisions
-description: Efficiently find collisions between rects and circles
+description: b'Efficiently find collisions between rects and circles'
 ---

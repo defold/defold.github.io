@@ -2,5 +2,5 @@
 layout: asset
 asset: vibration
 title: Vibration
-description: Adds support for device vibration service.
+description: b'Adds support for device vibration service.'
 ---

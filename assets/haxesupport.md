@@ -2,5 +2,5 @@
 layout: asset
 asset: haxesupport
 title: Haxe Support
-description: This library allows writing beautiful Haxe code for the Defold game engine \o/
+description: b'This library allows writing beautiful Haxe code for the Defold game engine \\o/'
 ---

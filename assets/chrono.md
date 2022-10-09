@@ -2,5 +2,5 @@
 layout: asset
 asset: chrono
 title: Chrono
-description: Reliable server based time.
+description: b'Reliable server based time.'
 ---

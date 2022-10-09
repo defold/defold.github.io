@@ -2,5 +2,5 @@
 layout: asset
 asset: defwindow
 title: DefWindow
-description: Extra functionality for the Window API.
+description: b'Extra functionality for the Window API.'
 ---

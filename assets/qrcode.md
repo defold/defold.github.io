@@ -2,5 +2,5 @@
 layout: asset
 asset: qrcode
 title: QR Code
-description: Encode and decode QR codes
+description: b'Encode and decode QR codes'
 ---

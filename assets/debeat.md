@@ -2,5 +2,5 @@
 layout: asset
 asset: debeat
 title: Debeat
-description: Debeat, a simple but effective library for audio support.
+description: b'Debeat, a simple but effective library for audio support.'
 ---
