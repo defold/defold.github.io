@@ -908,7 +908,7 @@ def process_refdoc(download = False):
 
 
 def process_file_for_indexing(filename):
-    with open(filename, 'r') as file:
+    with open(filename, 'r', encoding="utf-8") as file:
         data = file.read().replace('\n', ' ')
 
         # replace the math notations
@@ -928,7 +928,7 @@ def process_file_for_indexing(filename):
         #data = re.sub(r"(=|\.|\(|\))+", " ", data)
         data = re.sub(r"(=|\(|\))+", " ", data)
 
-        return data.decode('utf-8')
+        return data
 
 
 def generate_searchindex():
