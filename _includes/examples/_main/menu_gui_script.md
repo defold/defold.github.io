@@ -107,7 +107,7 @@ function init(self)
 	self.index["animation"] = { "spinner", "flipbook", "chained_tween", "basic_tween", "spine", "cursor" }
 	self.index["gui"] = { "button", "stencil", "load_texture", "progress", "pointer_over", "color", "slice9" }
 	self.index["input"] = { "move", "text", "down_duration", "mouse_and_touch" }
-	self.index["particles"] = { "particlefx", "modifiers" }
+	self.index["particles"] = { "particlefx", "modifiers", "fire_and_smoke" }
 	self.index["sound"] = { "music", "fade_in_out", "panning" }
 	self.index["render"] = { "camera" }
 	self.index["debug"] = { "physics", "profile" }
@@ -115,7 +115,7 @@ function init(self)
 	self.index["sprite"] = { "size", "tint", "flip" }
 	self.index["file"] = { "sys_save_load" }
 	self.index["tilemap"] = { "collisions", "get_set_tile" }
-	self.index["timer"] = { "repeating_timer", "trigger_timer" }
+	self.index["timer"] = { "repeating_timer", "trigger_timer", "cancel_timer" }
 	local categories = {}
 	for k,_ in pairs(self.index) do
 		categories[#categories + 1] = k
