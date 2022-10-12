@@ -10,15 +10,11 @@ brief: This manual describes the functionality of the Defold camera component.
 
 A camera in Defold is a component that changes the viewport and projection of the game world. The camera component defines a bare bones perspective or orthographic camera that provides a view and projection matrix to the render script.
 
-A perspective camera is typically used for 3D games where view of the camera and the size and perspective of objects is based on a view frustum and the distance and view angle from the camera to the objects in the game.
+A perspective camera is typically used for 3D games where the view of the camera and the size and perspective of objects is based on a view frustum and the distance and view angle from the camera to the objects in the game.
 
 For 2D games, it is often desirable to render the scene with an orthographic projection. This means that the view of the camera is no longer dictated by a view frustum, but by a box. Orthographic projection is unrealistic in that it does not alter the size of objects based on their distance. An object 1000 units away will render at the same size as an object right in front of the camera.
 
 ![projections](../images/camera/projections.png)
-
-
-If you need advanced features like chasing or shake etc you will need to implement it yourself (see section on [third-party camera solutions](https://www.defold.com/manuals/camera/#third-party-camera-solutions) below).
-
 
 
 ## Creating a camera
@@ -81,7 +77,7 @@ end
 The camera component supplies the render script with either a perspective or orthographic projection matrix depending on the *Orthographic Projection* property of the camera.
 
 <div class='important' markdown='1'>
-For reasons of backwards compatibility the default render script ignores the projection provided by the camera and always uses an orthographic stretch projection.
+For reasons of backwards compatibility the default render script ignores the projection provided by the camera and always uses an orthographic stretch projection. Learn more about the render script and the view and projection matrices in the [Render manual](/manuals/render/#default-view-projection).
 </div>
 
 You can tell the render script to use the projection provided by the camera by sending a message to the render script:
@@ -89,8 +85,6 @@ You can tell the render script to use the projection provided by the camera by s
 ```lua
 msg.post("@render:", "use_camera_projection")
 ```
-
-Learn more about the render script and the view and projection matrices in the [Render manual](/manuals/render/#default-view-projection).
 
 
 ### Panning the camera
@@ -159,7 +153,7 @@ A camera has a number of different properties that can be manipulated using `go.
 
 ## Third-party camera solutions
 
-There are a few library camera solutions that implements common camera features such as game object follow, screen to world coordinate conversion and so on. They are available from the Defold community assets portal:
+There are a few library camera solutions that implements common camera features such as game object follow, screen shake, screen to world coordinate conversion and so on. They are available from the Defold community assets portal:
 
 - [Rendercam](https://defold.com/assets/rendercam/) (2D & 3D) by Ross Grams.
 - [Ortographic camera](https://defold.com/assets/orthographic/) (2D only) by Björn Ritzl.
