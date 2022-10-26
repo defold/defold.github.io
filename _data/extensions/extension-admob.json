@@ -1,552 +1,552 @@
 {
     "elements": [
         {
-            "description": "Initialize the Mobile Ads SDK. Warning: If you need to obtain consent from users in the European Economic Area (EEA), set any request-specific flags, or otherwise take action before loading ads, ensure you do so before initializing the Mobile Ads SDK.\nOriginal docs [Android](https://developers.google.com/admob/android/quick-start#initialize_the_mobile_ads_sdk), [iOS](https://developers.google.com/admob/ios/quick-start#initialize_the_mobile_ads_sdk)", 
-            "examples": "", 
-            "name": "initialize", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Initialize the Mobile Ads SDK. Warning: If you need to obtain consent from users in the European Economic Area (EEA), set any request-specific flags, or otherwise take action before loading ads, ensure you do so before initializing the Mobile Ads SDK.\nOriginal docs [Android](https://developers.google.com/admob/android/quick-start#initialize_the_mobile_ads_sdk), [iOS](https://developers.google.com/admob/ios/quick-start#initialize_the_mobile_ads_sdk)",
+            "examples": "",
+            "name": "initialize",
+            "parameters": [],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Sets a callback function for receiving events from the SDK. Call `admob.set_callback(nil)` to remove callback", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">admob_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">)</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">MSG_INITIALIZATION</span> <span class=\"k\">then</span>\n       <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_COMPLETE</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_COMPLETE: Initialization complete&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_JSON_ERROR</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_JSON_ERROR: Internal NE json error &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"k\">end</span>\n   <span class=\"k\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">MSG_IDFA</span> <span class=\"k\">then</span>\n       <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_STATUS_AUTORIZED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_STATUS_AUTORIZED: ATTrackingManagerAuthorizationStatusAuthorized&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_STATUS_DENIED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_STATUS_DENIED: ATTrackingManagerAuthorizationStatusDenied&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_STATUS_NOT_DETERMINED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_STATUS_NOT_DETERMINED: ATTrackingManagerAuthorizationStatusNotDetermined&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_STATUS_RESTRICTED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_STATUS_RESTRICTED: ATTrackingManagerAuthorizationStatusRestricted&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_NOT_SUPPORTED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_NOT_SUPPORTED: IDFA request not supported on this platform or OS version&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">end</span>\n   <span class=\"k\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">MSG_INTERSTITIAL</span> <span class=\"k\">then</span>\n       <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_CLOSED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_CLOSED: Interstitial AD closed&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_FAILED_TO_SHOW</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_FAILED_TO_SHOW: Interstitial AD failed to show</span><span class=\"se\">\\n</span><span class=\"s\">Code: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">code</span><span class=\"o\">..</span><span class=\"s2\">&quot;</span><span class=\"se\">\\n</span><span class=\"s\">Error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_OPENING</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_OPENING: Interstitial AD is opening&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_FAILED_TO_LOAD</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_FAILED_TO_LOAD: Interstitial AD failed to load</span><span class=\"se\">\\n</span><span class=\"s\">Code: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">code</span><span class=\"o\">..</span><span class=\"s2\">&quot;</span><span class=\"se\">\\n</span><span class=\"s\">Error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_LOADED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_LOADED: Interstitial AD loaded&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_NOT_LOADED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_NOT_LOADED: can&#39;t call show_interstitial() before EVENT_LOADED</span><span class=\"se\">\\n</span><span class=\"s\">Error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_IMPRESSION_RECORDED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_IMPRESSION_RECORDED: Interstitial did record impression&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_JSON_ERROR</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_JSON_ERROR: Internal NE json error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"k\">end</span>\n   <span class=\"k\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">MSG_REWARDED</span> <span class=\"k\">then</span>\n       <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_CLOSED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_CLOSED: Rewarded AD closed&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_FAILED_TO_SHOW</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_FAILED_TO_SHOW: Rewarded AD failed to show</span><span class=\"se\">\\n</span><span class=\"s\">Code: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">code</span><span class=\"o\">..</span><span class=\"s2\">&quot;</span><span class=\"se\">\\n</span><span class=\"s\">Error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_OPENING</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_OPENING: Rewarded AD is opening&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_FAILED_TO_LOAD</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_FAILED_TO_LOAD: Rewarded AD failed to load</span><span class=\"se\">\\n</span><span class=\"s\">Code: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">code</span><span class=\"o\">..</span><span class=\"s2\">&quot;</span><span class=\"se\">\\n</span><span class=\"s\">Error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_LOADED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_LOADED: Rewarded AD loaded&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_NOT_LOADED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_NOT_LOADED: can&#39;t call show_rewarded() before EVENT_LOADED</span><span class=\"se\">\\n</span><span class=\"s\">Error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_EARNED_REWARD</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_EARNED_REWARD: Reward: &quot;</span> <span class=\"o\">..</span> <span class=\"nb\">tostring</span><span class=\"p\">(</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">amount</span><span class=\"p\">)</span> <span class=\"o\">..</span> <span class=\"s2\">&quot;</span><span class=\"s\"> &quot;</span> <span class=\"o\">..</span> <span class=\"nb\">tostring</span><span class=\"p\">(</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">type</span><span class=\"p\">))</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_IMPRESSION_RECORDED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_IMPRESSION_RECORDED: Rewarded did record impression&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_JSON_ERROR</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_JSON_ERROR: Internal NE json error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"k\">end</span>\n   <span class=\"k\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">MSG_BANNER</span> <span class=\"k\">then</span>\n       <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_LOADED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_LOADED: Banner AD loaded. Height: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">height</span><span class=\"o\">..</span><span class=\"s2\">&quot;</span><span class=\"s\">px Width: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">width</span><span class=\"o\">..</span><span class=\"s2\">&quot;</span><span class=\"s\">px&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_OPENING</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_OPENING: Banner AD is opening&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_FAILED_TO_LOAD</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_FAILED_TO_LOAD: Banner AD failed to load</span><span class=\"se\">\\n</span><span class=\"s\">Code: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">code</span><span class=\"o\">..</span><span class=\"s2\">&quot;</span><span class=\"se\">\\n</span><span class=\"s\">Error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_CLICKED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_CLICKED: Banner AD loaded&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_CLOSED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_CLOSED: Banner AD closed&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_DESTROYED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_DESTROYED: Banner AD destroyed&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_IMPRESSION_RECORDED</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_IMPRESSION_RECORDED: Banner did record impression&quot;</span><span class=\"p\">)</span>\n       <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_JSON_ERROR</span> <span class=\"k\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">EVENT_JSON_ERROR: Internal NE json error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"k\">end</span>\n   <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">admob</span> <span class=\"k\">then</span>\n        <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">set_callback</span><span class=\"p\">(</span><span class=\"n\">admob_callback</span><span class=\"p\">)</span>\n        <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">initialize</span><span class=\"p\">()</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "set_callback", 
+            "description": "Sets a callback function for receiving events from the SDK. Call `admob.set_callback(nil)` to remove callback",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">admob_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">)</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">MSG_INITIALIZATION</span> <span class=\"kr\">then</span>\n       <span class=\"kr\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_COMPLETE</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_COMPLETE: Initialization complete&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_JSON_ERROR</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_JSON_ERROR: Internal NE json error &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"kr\">end</span>\n   <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">MSG_IDFA</span> <span class=\"kr\">then</span>\n       <span class=\"kr\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_STATUS_AUTHORIZED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_STATUS_AUTHORIZED: ATTrackingManagerAuthorizationStatusAuthorized&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_STATUS_DENIED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_STATUS_DENIED: ATTrackingManagerAuthorizationStatusDenied&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_STATUS_NOT_DETERMINED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_STATUS_NOT_DETERMINED: ATTrackingManagerAuthorizationStatusNotDetermined&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_STATUS_RESTRICTED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_STATUS_RESTRICTED: ATTrackingManagerAuthorizationStatusRestricted&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_NOT_SUPPORTED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_NOT_SUPPORTED: IDFA request not supported on this platform or OS version&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">end</span>\n   <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">MSG_INTERSTITIAL</span> <span class=\"kr\">then</span>\n       <span class=\"kr\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_CLOSED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_CLOSED: Interstitial AD closed&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_FAILED_TO_SHOW</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_FAILED_TO_SHOW: Interstitial AD failed to show</span><span class=\"se\">\\n</span><span class=\"s2\">Code: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">code</span><span class=\"o\">..</span><span class=\"s2\">&quot;</span><span class=\"se\">\\n</span><span class=\"s2\">Error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_OPENING</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_OPENING: Interstitial AD is opening&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_FAILED_TO_LOAD</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_FAILED_TO_LOAD: Interstitial AD failed to load</span><span class=\"se\">\\n</span><span class=\"s2\">Code: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">code</span><span class=\"o\">..</span><span class=\"s2\">&quot;</span><span class=\"se\">\\n</span><span class=\"s2\">Error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_LOADED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_LOADED: Interstitial AD loaded&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_NOT_LOADED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_NOT_LOADED: can&#39;t call show_interstitial() before EVENT_LOADED</span><span class=\"se\">\\n</span><span class=\"s2\">Error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_IMPRESSION_RECORDED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_IMPRESSION_RECORDED: Interstitial did record impression&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_JSON_ERROR</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_JSON_ERROR: Internal NE json error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"kr\">end</span>\n   <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">MSG_REWARDED</span> <span class=\"kr\">then</span>\n       <span class=\"kr\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_CLOSED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_CLOSED: Rewarded AD closed&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_FAILED_TO_SHOW</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_FAILED_TO_SHOW: Rewarded AD failed to show</span><span class=\"se\">\\n</span><span class=\"s2\">Code: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">code</span><span class=\"o\">..</span><span class=\"s2\">&quot;</span><span class=\"se\">\\n</span><span class=\"s2\">Error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_OPENING</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_OPENING: Rewarded AD is opening&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_FAILED_TO_LOAD</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_FAILED_TO_LOAD: Rewarded AD failed to load</span><span class=\"se\">\\n</span><span class=\"s2\">Code: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">code</span><span class=\"o\">..</span><span class=\"s2\">&quot;</span><span class=\"se\">\\n</span><span class=\"s2\">Error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_LOADED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_LOADED: Rewarded AD loaded&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_NOT_LOADED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_NOT_LOADED: can&#39;t call show_rewarded() before EVENT_LOADED</span><span class=\"se\">\\n</span><span class=\"s2\">Error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_EARNED_REWARD</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_EARNED_REWARD: Reward: &quot;</span> <span class=\"o\">..</span> <span class=\"nb\">tostring</span><span class=\"p\">(</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">amount</span><span class=\"p\">)</span> <span class=\"o\">..</span> <span class=\"s2\">&quot; &quot;</span> <span class=\"o\">..</span> <span class=\"nb\">tostring</span><span class=\"p\">(</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">type</span><span class=\"p\">))</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_IMPRESSION_RECORDED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_IMPRESSION_RECORDED: Rewarded did record impression&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_JSON_ERROR</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_JSON_ERROR: Internal NE json error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"kr\">end</span>\n   <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">MSG_BANNER</span> <span class=\"kr\">then</span>\n       <span class=\"kr\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_LOADED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_LOADED: Banner AD loaded. Height: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">height</span><span class=\"o\">..</span><span class=\"s2\">&quot;px Width: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">width</span><span class=\"o\">..</span><span class=\"s2\">&quot;px&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_OPENING</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_OPENING: Banner AD is opening&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_FAILED_TO_LOAD</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_FAILED_TO_LOAD: Banner AD failed to load</span><span class=\"se\">\\n</span><span class=\"s2\">Code: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">code</span><span class=\"o\">..</span><span class=\"s2\">&quot;</span><span class=\"se\">\\n</span><span class=\"s2\">Error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_CLICKED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_CLICKED: Banner AD loaded&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_CLOSED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_CLOSED: Banner AD closed&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_DESTROYED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_DESTROYED: Banner AD destroyed&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_IMPRESSION_RECORDED</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_IMPRESSION_RECORDED: Banner did record impression&quot;</span><span class=\"p\">)</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">EVENT_JSON_ERROR</span> <span class=\"kr\">then</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;EVENT_JSON_ERROR: Internal NE json error: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n       <span class=\"kr\">end</span>\n   <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">admob</span> <span class=\"kr\">then</span>\n        <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">set_callback</span><span class=\"p\">(</span><span class=\"n\">admob_callback</span><span class=\"p\">)</span>\n        <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">initialize</span><span class=\"p\">()</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "set_callback",
             "parameters": [
                 {
-                    "doc": "Callback function that is executed on any event in the SDK.", 
-                    "name": "callback", 
+                    "doc": "Callback function that is executed on any event in the SDK.",
+                    "name": "callback",
                     "parameters": [
                         {
-                            "doc": "The calling script instance", 
-                            "name": "self", 
+                            "doc": "The calling script instance",
+                            "name": "self",
                             "types": [
                                 "object"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "One of message types: `admob.MSG_INITIALIZATION` initialization, `admob.MSG_INTERSTITIAL` message from Interstitial ad unit, `admob.MSG_REWARDED` message from Rewarded ad unit, `admob.MSG_BANNER` message from Banner ad unit", 
-                            "name": "message_id", 
+                            "doc": "One of message types: `admob.MSG_INITIALIZATION` initialization, `admob.MSG_INTERSTITIAL` message from Interstitial ad unit, `admob.MSG_REWARDED` message from Rewarded ad unit, `admob.MSG_BANNER` message from Banner ad unit",
+                            "name": "message_id",
                             "types": [
                                 "number"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "A table holding the data", 
-                            "name": "message", 
+                            "doc": "A table holding the data",
+                            "name": "message",
                             "types": [
                                 "table"
                             ]
                         }
-                    ], 
+                    ],
                     "types": [
                         "function"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Sets user privacy preferences (must be called before `admob.initialize()`). Original docs [Android](https://developers.google.com/admob/android/ccpa), [iOS](https://developers.google.com/admob/ios/ccpa)", 
-            "examples": "", 
-            "name": "set_privacy_settings", 
+            "description": "Sets user privacy preferences (must be called before `admob.initialize()`). Original docs [Android](https://developers.google.com/admob/android/ccpa), [iOS](https://developers.google.com/admob/ios/ccpa)",
+            "examples": "",
+            "name": "set_privacy_settings",
             "parameters": [
                 {
-                    "doc": "", 
-                    "name": "bool", 
+                    "doc": "",
+                    "name": "bool",
                     "types": [
                         "boolean"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Display the App Tracking Transparency authorization request for accessing the IDFA. Original docs [iOS](https://developers.google.com/admob/ios/ios14#request)", 
-            "examples": "", 
-            "name": "request_idfa", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Display the App Tracking Transparency authorization request for accessing the IDFA. Original docs [iOS](https://developers.google.com/admob/ios/ios14#request)",
+            "examples": "",
+            "name": "request_idfa",
+            "parameters": [],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Show Ad Inspector. This is an in-app overlay that enables authorized devices to perform realtime analysis of test ad requests directly within a mobile app. Ad Inspector only launces on [test devices](https://support.google.com/admob/answer/9691433). Original docs [Android](https://developers.google.com/admob/android/ad-inspector), [iOS](https://developers.google.com/admob/ios/ad-inspector)", 
-            "examples": "", 
-            "name": "show_ad_inspector", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Show Ad Inspector. This is an in-app overlay that enables authorized devices to perform realtime analysis of test ad requests directly within a mobile app. Ad Inspector only launces on [test devices](https://support.google.com/admob/answer/9691433). Original docs [Android](https://developers.google.com/admob/android/ad-inspector), [iOS](https://developers.google.com/admob/ios/ad-inspector)",
+            "examples": "",
+            "name": "show_ad_inspector",
+            "parameters": [],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Starts loading an Interstitial Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/interstitial-fullscreen), [iOS](https://developers.google.com/admob/ios/interstitial)", 
-            "examples": "", 
-            "name": "load_interstitial", 
+            "description": "Starts loading an Interstitial Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/interstitial-fullscreen), [iOS](https://developers.google.com/admob/ios/interstitial)",
+            "examples": "",
+            "name": "load_interstitial",
             "parameters": [
                 {
-                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/1033173712\"`, or on iOS `\"ca-app-pub-3940256099942544/4411468910\"` Original docs [Android](https://developers.google.com/admob/android/interstitial-fullscreen), [iOS](https://developers.google.com/admob/ios/interstitial)", 
-                    "name": "ad_unit_id", 
+                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/1033173712\"`, or on iOS `\"ca-app-pub-3940256099942544/4411468910\"` Original docs [Android](https://developers.google.com/admob/android/interstitial-fullscreen), [iOS](https://developers.google.com/admob/ios/interstitial)",
+                    "name": "ad_unit_id",
                     "types": [
                         "string"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Shows loaded Interstitial Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/interstitial-fullscreen), [iOS](https://developers.google.com/admob/ios/interstitial)", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">admob</span> <span class=\"ow\">and</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">is_interstitial_loaded</span><span class=\"p\">()</span> <span class=\"k\">then</span>\n    <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">show_interstitial</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "show_interstitial", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Shows loaded Interstitial Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/interstitial-fullscreen), [iOS](https://developers.google.com/admob/ios/interstitial)",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">admob</span> <span class=\"ow\">and</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">is_interstitial_loaded</span><span class=\"p\">()</span> <span class=\"kr\">then</span>\n    <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">show_interstitial</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "show_interstitial",
+            "parameters": [],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Checks if Interstitial Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/interstitial-fullscreen), [iOS](https://developers.google.com/admob/ios/interstitial)", 
-            "examples": "", 
-            "name": "is_interstitial_loaded", 
-            "parameters": [], 
+            "description": "Checks if Interstitial Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/interstitial-fullscreen), [iOS](https://developers.google.com/admob/ios/interstitial)",
+            "examples": "",
+            "name": "is_interstitial_loaded",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "", 
+                    "doc": "",
                     "name": "boolean"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Starts loading a Rewarded Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/rewarded-fullscreen), [iOS](https://developers.google.com/admob/ios/rewarded-ads)", 
-            "examples": "", 
-            "name": "load_rewarded", 
+            "description": "Starts loading a Rewarded Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/rewarded-fullscreen), [iOS](https://developers.google.com/admob/ios/rewarded-ads)",
+            "examples": "",
+            "name": "load_rewarded",
             "parameters": [
                 {
-                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/1712485313\"`, or on iOS `\"ca-app-pub-3940256099942544/4411468910\"` Original docs [Android](https://developers.google.com/admob/android/rewarded-fullscreen), [iOS](https://developers.google.com/admob/ios/rewarded-ads)", 
-                    "name": "ad_unit_id", 
+                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/1712485313\"`, or on iOS `\"ca-app-pub-3940256099942544/4411468910\"` Original docs [Android](https://developers.google.com/admob/android/rewarded-fullscreen), [iOS](https://developers.google.com/admob/ios/rewarded-ads)",
+                    "name": "ad_unit_id",
                     "types": [
                         "string"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Shows loaded Rewarded Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/rewarded-fullscreen), [iOS](https://developers.google.com/admob/ios/rewarded-ads)", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">admob</span> <span class=\"ow\">and</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">is_rewarded_loaded</span><span class=\"p\">()</span> <span class=\"k\">then</span>\n    <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">show_rewarded</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "show_rewarded", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Shows loaded Rewarded Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/rewarded-fullscreen), [iOS](https://developers.google.com/admob/ios/rewarded-ads)",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">admob</span> <span class=\"ow\">and</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">is_rewarded_loaded</span><span class=\"p\">()</span> <span class=\"kr\">then</span>\n    <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">show_rewarded</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "show_rewarded",
+            "parameters": [],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Checks if Rewarded Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/rewarded-fullscreen), [iOS](https://developers.google.com/admob/ios/rewarded-ads)", 
-            "examples": "", 
-            "name": "is_rewarded_loaded", 
-            "parameters": [], 
+            "description": "Checks if Rewarded Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/rewarded-fullscreen), [iOS](https://developers.google.com/admob/ios/rewarded-ads)",
+            "examples": "",
+            "name": "is_rewarded_loaded",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "", 
+                    "doc": "",
                     "name": "boolean"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Starts loading a Banner Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)", 
-            "examples": "", 
-            "name": "load_banner", 
+            "description": "Starts loading a Banner Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)",
+            "examples": "",
+            "name": "load_banner",
             "parameters": [
                 {
-                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/6300978111\"`, or on iOS `\"ca-app-pub-3940256099942544/2934735716\"` Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)", 
-                    "name": "ad_unit_id", 
+                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/6300978111\"`, or on iOS `\"ca-app-pub-3940256099942544/2934735716\"` Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)",
+                    "name": "ad_unit_id",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "Requested Banner Ad size, possible values: `admob.SIZE_ADAPTIVE_BANNER` (default), `admob.SIZE_BANNER`, `admob.SIZE_FLUID`, `admob.SIZE_FULL_BANNER`, `admob.SIZE_LARGE_BANNER`, `admob.SIZE_LEADEARBOARD`, `admob.SIZE_MEDIUM_RECTANGLE`, `admob.SIZE_SEARH`, `admob.SIZE_SKYSCRAPER`, `admob.SIZE_SMART_BANNER`. Original docs [Android](https://developers.google.com/admob/android/banner#banner_sizes), [iOS](https://developers.google.com/admob/ios/banner#banner_sizes)", 
-                    "name": "size", 
+                    "doc": "Requested Banner Ad size, possible values: `admob.SIZE_ADAPTIVE_BANNER` (default), `admob.SIZE_BANNER`, `admob.SIZE_FLUID`, `admob.SIZE_FULL_BANNER`, `admob.SIZE_LARGE_BANNER`, `admob.SIZE_LEADEARBOARD`, `admob.SIZE_MEDIUM_RECTANGLE`, `admob.SIZE_SEARH`, `admob.SIZE_SKYSCRAPER`, `admob.SIZE_SMART_BANNER`. Original docs [Android](https://developers.google.com/admob/android/banner#banner_sizes), [iOS](https://developers.google.com/admob/ios/banner#banner_sizes)",
+                    "name": "size",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Shows loaded Banner Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">admob</span> <span class=\"ow\">and</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">is_banner_loaded</span><span class=\"p\">()</span> <span class=\"k\">then</span>\n    <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">show_banner</span><span class=\"p\">(</span><span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">POS_TOP_CENTER</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "show_banner", 
+            "description": "Shows loaded Banner Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">admob</span> <span class=\"ow\">and</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">is_banner_loaded</span><span class=\"p\">()</span> <span class=\"kr\">then</span>\n    <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">show_banner</span><span class=\"p\">(</span><span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">POS_TOP_CENTER</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "show_banner",
             "parameters": [
                 {
-                    "doc": "Banner Ad position, possible values: `admob.POS_NONE` (default), `admob.POS_TOP_LEFT`, `admob.POS_TOP_CENTER`, `admob.POS_TOP_RIGHT`, `admob.POS_BOTTOM_LEFT`, `admob.POS_BOTTOM_CENTER`, `admob.POS_BOTTOM_RIGHT`, `admob.POS_CENTER`", 
-                    "name": "position", 
+                    "doc": "Banner Ad position, possible values: `admob.POS_NONE` (default), `admob.POS_TOP_LEFT`, `admob.POS_TOP_CENTER`, `admob.POS_TOP_RIGHT`, `admob.POS_BOTTOM_LEFT`, `admob.POS_BOTTOM_CENTER`, `admob.POS_BOTTOM_RIGHT`, `admob.POS_CENTER`",
+                    "name": "position",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Temporarily hides Banner Ad, banner can be shown again using `admob.show_banner()` Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)", 
-            "examples": "", 
-            "name": "hide_banner", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Temporarily hides Banner Ad, banner can be shown again using `admob.show_banner()` Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)",
+            "examples": "",
+            "name": "hide_banner",
+            "parameters": [],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Checks if Banner Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)", 
-            "examples": "", 
-            "name": "is_banner_loaded", 
-            "parameters": [], 
+            "description": "Checks if Banner Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)",
+            "examples": "",
+            "name": "is_banner_loaded",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "", 
+                    "doc": "",
                     "name": "boolean"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Hides and unloads Banner Ad (needs to call `admob.load_banner()` later to show Banner Ad) Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)", 
-            "examples": "", 
-            "name": "destroy_banner", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Hides and unloads Banner Ad (needs to call `admob.load_banner()` later to show Banner Ad) Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)",
+            "examples": "",
+            "name": "destroy_banner",
+            "parameters": [],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "MSG_INITIALIZATION", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "MSG_INITIALIZATION",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "MSG_INTERSTITIAL", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "MSG_INTERSTITIAL",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "MSG_REWARDED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "MSG_REWARDED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "MSG_BANNER", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "MSG_BANNER",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "MSG_IDFA", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "MSG_IDFA",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_CLOSED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_CLOSED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_FAILED_TO_SHOW", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_FAILED_TO_SHOW",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_OPENING", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_OPENING",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_FAILED_TO_LOAD", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_FAILED_TO_LOAD",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_LOADED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_LOADED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_NOT_LOADED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_NOT_LOADED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_EARNED_REWARD", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_EARNED_REWARD",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_COMPLETE", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_COMPLETE",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_CLICKED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_CLICKED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_DESTROYED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_DESTROYED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_JSON_ERROR", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_JSON_ERROR",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_IMPRESSION_RECORDED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_IMPRESSION_RECORDED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_STATUS_AUTORIZED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_STATUS_AUTHORIZED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_STATUS_DENIED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_STATUS_DENIED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_STATUS_NOT_DETERMINED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_STATUS_NOT_DETERMINED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_STATUS_RESTRICTED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_STATUS_RESTRICTED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "EVENT_NOT_SUPPORTED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "EVENT_NOT_SUPPORTED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "SIZE_ADAPTIVE_BANNER", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "SIZE_ADAPTIVE_BANNER",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "SIZE_BANNER", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "SIZE_BANNER",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "SIZE_FLUID", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "SIZE_FLUID",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "SIZE_FULL_BANNER", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "SIZE_FULL_BANNER",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "SIZE_LARGE_BANNER", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "SIZE_LARGE_BANNER",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "SIZE_LEADEARBOARD", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "SIZE_LEADEARBOARD",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "SIZE_MEDIUM_RECTANGLE", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "SIZE_MEDIUM_RECTANGLE",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "SIZE_SEARH", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "SIZE_SEARH",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "SIZE_SKYSCRAPER", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "SIZE_SKYSCRAPER",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "SIZE_SMART_BANNER", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "SIZE_SMART_BANNER",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "POS_NONE", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "POS_NONE",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "POS_TOP_LEFT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "POS_TOP_LEFT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "POS_TOP_CENTER", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "POS_TOP_CENTER",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "POS_TOP_RIGHT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "POS_TOP_RIGHT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "POS_BOTTOM_LEFT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "POS_BOTTOM_LEFT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "POS_BOTTOM_CENTER", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "POS_BOTTOM_CENTER",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "POS_BOTTOM_RIGHT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "POS_BOTTOM_RIGHT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "POS_CENTER", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "POS_CENTER",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
         }
-    ], 
+    ],
     "info": {
-        "brief": "admob", 
-        "description": "Functions and constants for interacting with [Google AdMob APIs](https://developers.google.com/admob)", 
-        "group": "EXTENSIONS", 
-        "name": "admob", 
+        "brief": "admob",
+        "description": "Functions and constants for interacting with [Google AdMob APIs](https://developers.google.com/admob)",
+        "group": "EXTENSIONS",
+        "name": "admob",
         "namespace": "admob"
     }
 }
