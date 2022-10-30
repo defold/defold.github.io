@@ -1,310 +1,310 @@
 {
     "elements": [
         {
-            "description": "Send a request for push notifications. Note that the notifications table parameter is iOS only and will be ignored on Android.", 
-            "examples": "<p>Register for push notifications on iOS. Note that the token needs to be converted on this platform.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">push_listener</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">payload</span><span class=\"p\">,</span> <span class=\"n\">origin</span><span class=\"p\">)</span>\n     <span class=\"c1\">-- The payload arrives here.</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n     <span class=\"kd\">local</span> <span class=\"n\">alerts</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">NOTIFICATION_BADGE</span><span class=\"p\">,</span> <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">NOTIFICATION_SOUND</span><span class=\"p\">,</span> <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">NOTIFICATION_ALERT</span><span class=\"p\">}</span>\n     <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">register</span><span class=\"p\">(</span><span class=\"n\">alerts</span><span class=\"p\">,</span> <span class=\"k\">function</span> <span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">token</span><span class=\"p\">,</span> <span class=\"nb\">error</span><span class=\"p\">)</span>\n     <span class=\"k\">if</span> <span class=\"n\">token</span> <span class=\"k\">then</span>\n          <span class=\"c1\">-- NOTE: %02x to pad byte with leading zero</span>\n          <span class=\"kd\">local</span> <span class=\"n\">token_string</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">&quot;</span>\n          <span class=\"k\">for</span> <span class=\"n\">i</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"o\">#</span><span class=\"n\">token</span> <span class=\"k\">do</span>\n              <span class=\"n\">token_string</span> <span class=\"o\">=</span> <span class=\"n\">token_string</span> <span class=\"o\">..</span> <span class=\"nb\">string.format</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">%02x&quot;</span><span class=\"p\">,</span> <span class=\"nb\">string.byte</span><span class=\"p\">(</span><span class=\"n\">token</span><span class=\"p\">,</span> <span class=\"n\">i</span><span class=\"p\">))</span>\n          <span class=\"k\">end</span>\n          <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">token_string</span><span class=\"p\">)</span>\n          <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"n\">push_listener</span><span class=\"p\">)</span>\n     <span class=\"k\">else</span>\n          <span class=\"c1\">-- Push registration failed.</span>\n          <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n     <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>Register for push notifications on Android.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">push_listener</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">payload</span><span class=\"p\">,</span> <span class=\"n\">origin</span><span class=\"p\">)</span>\n     <span class=\"c1\">-- The payload arrives here.</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n     <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">register</span><span class=\"p\">({},</span> <span class=\"k\">function</span> <span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">token</span><span class=\"p\">,</span> <span class=\"nb\">error</span><span class=\"p\">)</span>\n         <span class=\"k\">if</span> <span class=\"n\">token</span> <span class=\"k\">then</span>\n              <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">token</span><span class=\"p\">)</span>\n              <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"n\">push_listener</span><span class=\"p\">)</span>\n         <span class=\"k\">else</span>\n              <span class=\"c1\">-- Push registration failed.</span>\n              <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n         <span class=\"k\">end</span>\n    <span class=\"k\">end</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "register", 
+            "description": "Send a request for push notifications. Note that the notifications table parameter is iOS only and will be ignored on Android.",
+            "examples": "<p>Register for push notifications on iOS. Note that the token needs to be converted on this platform.</p>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">push_listener</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">payload</span><span class=\"p\">,</span> <span class=\"n\">origin</span><span class=\"p\">)</span>\n     <span class=\"c1\">-- The payload arrives here.</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n     <span class=\"kd\">local</span> <span class=\"n\">alerts</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">NOTIFICATION_BADGE</span><span class=\"p\">,</span> <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">NOTIFICATION_SOUND</span><span class=\"p\">,</span> <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">NOTIFICATION_ALERT</span><span class=\"p\">}</span>\n     <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">register</span><span class=\"p\">(</span><span class=\"n\">alerts</span><span class=\"p\">,</span> <span class=\"kr\">function</span> <span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">token</span><span class=\"p\">,</span> <span class=\"nb\">error</span><span class=\"p\">)</span>\n     <span class=\"kr\">if</span> <span class=\"n\">token</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- NOTE: %02x to pad byte with leading zero</span>\n          <span class=\"kd\">local</span> <span class=\"n\">token_string</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;&quot;</span>\n          <span class=\"kr\">for</span> <span class=\"n\">i</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"o\">#</span><span class=\"n\">token</span> <span class=\"kr\">do</span>\n              <span class=\"n\">token_string</span> <span class=\"o\">=</span> <span class=\"n\">token_string</span> <span class=\"o\">..</span> <span class=\"nb\">string.format</span><span class=\"p\">(</span><span class=\"s2\">&quot;%02x&quot;</span><span class=\"p\">,</span> <span class=\"nb\">string.byte</span><span class=\"p\">(</span><span class=\"n\">token</span><span class=\"p\">,</span> <span class=\"n\">i</span><span class=\"p\">))</span>\n          <span class=\"kr\">end</span>\n          <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">token_string</span><span class=\"p\">)</span>\n          <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"n\">push_listener</span><span class=\"p\">)</span>\n     <span class=\"kr\">else</span>\n          <span class=\"c1\">-- Push registration failed.</span>\n          <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n     <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\n<p>Register for push notifications on Android.</p>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">push_listener</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">payload</span><span class=\"p\">,</span> <span class=\"n\">origin</span><span class=\"p\">)</span>\n     <span class=\"c1\">-- The payload arrives here.</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n     <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">register</span><span class=\"p\">({},</span> <span class=\"kr\">function</span> <span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">token</span><span class=\"p\">,</span> <span class=\"nb\">error</span><span class=\"p\">)</span>\n         <span class=\"kr\">if</span> <span class=\"n\">token</span> <span class=\"kr\">then</span>\n              <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">token</span><span class=\"p\">)</span>\n              <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"n\">push_listener</span><span class=\"p\">)</span>\n         <span class=\"kr\">else</span>\n              <span class=\"c1\">-- Push registration failed.</span>\n              <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n         <span class=\"kr\">end</span>\n    <span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "register",
             "parameters": [
                 {
-                    "doc": "The types of notifications to listen to. [icon:ios]", 
-                    "name": "notifications", 
+                    "doc": "The types of notifications to listen to. [icon:ios]",
+                    "name": "notifications",
                     "types": [
                         "table"
                     ]
-                }, 
+                },
                 {
-                    "doc": "Register callback function.", 
-                    "name": "callback", 
+                    "doc": "Register callback function.",
+                    "name": "callback",
                     "parameters": [
                         {
-                            "doc": "The current object.", 
-                            "name": "self", 
+                            "doc": "The current object.",
+                            "name": "self",
                             "types": [
                                 "object"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "The returned push token if registration is successful.", 
-                            "name": "token", 
+                            "doc": "The returned push token if registration is successful.",
+                            "name": "token",
                             "types": [
                                 "string"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "A table containing eventual error information.", 
-                            "name": "error", 
+                            "doc": "A table containing eventual error information.",
+                            "name": "error",
                             "types": [
                                 "table"
                             ]
                         }
-                    ], 
+                    ],
                     "types": [
                         "function"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Sets a listener function to listen to push notifications.", 
-            "examples": "<p>Set the push notification listener.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">push_listener</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">payload</span><span class=\"p\">,</span> <span class=\"n\">origin</span><span class=\"p\">,</span> <span class=\"n\">activated</span><span class=\"p\">)</span>\n     <span class=\"c1\">-- The payload arrives here.</span>\n     <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">payload</span><span class=\"p\">)</span>\n     <span class=\"k\">if</span> <span class=\"n\">origin</span> <span class=\"o\">==</span> <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">ORIGIN_LOCAL</span> <span class=\"k\">then</span>\n         <span class=\"c1\">-- This was a local push</span>\n         <span class=\"o\">...</span>\n     <span class=\"k\">end</span>\n\n     <span class=\"k\">if</span> <span class=\"n\">origin</span> <span class=\"o\">==</span> <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">ORIGIN_REMOTE</span> <span class=\"k\">then</span>\n         <span class=\"c1\">-- This was a remote push</span>\n         <span class=\"o\">...</span>\n     <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"n\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n     <span class=\"o\">...</span>\n     <span class=\"c1\">-- Assuming that push.register() has been successfully called earlier</span>\n     <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"n\">push_listener</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "set_listener", 
+            "description": "Sets a listener function to listen to push notifications.",
+            "examples": "<p>Set the push notification listener.</p>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">push_listener</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">payload</span><span class=\"p\">,</span> <span class=\"n\">origin</span><span class=\"p\">,</span> <span class=\"n\">activated</span><span class=\"p\">)</span>\n     <span class=\"c1\">-- The payload arrives here.</span>\n     <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">payload</span><span class=\"p\">)</span>\n     <span class=\"kr\">if</span> <span class=\"n\">origin</span> <span class=\"o\">==</span> <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">ORIGIN_LOCAL</span> <span class=\"kr\">then</span>\n         <span class=\"c1\">-- This was a local push</span>\n         <span class=\"p\">...</span>\n     <span class=\"kr\">end</span>\n\n     <span class=\"kr\">if</span> <span class=\"n\">origin</span> <span class=\"o\">==</span> <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">ORIGIN_REMOTE</span> <span class=\"kr\">then</span>\n         <span class=\"c1\">-- This was a remote push</span>\n         <span class=\"p\">...</span>\n     <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"n\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n     <span class=\"p\">...</span>\n     <span class=\"c1\">-- Assuming that push.register() has been successfully called earlier</span>\n     <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"n\">push_listener</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "set_listener",
             "parameters": [
                 {
-                    "doc": "Listener callback function.", 
-                    "name": "listener", 
+                    "doc": "Listener callback function.",
+                    "name": "listener",
                     "parameters": [
                         {
-                            "doc": "The current object.", 
-                            "name": "self", 
+                            "doc": "The current object.",
+                            "name": "self",
                             "types": [
                                 "object"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "The push payload", 
-                            "name": "payload", 
+                            "doc": "The push payload",
+                            "name": "payload",
                             "types": [
                                 "table"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "Origin of the push that can be one of the predefined constants below\n- `push.ORIGIN_LOCAL`\n- `push.ORIGIN_REMOTE`", 
-                            "name": "origin", 
+                            "doc": "Origin of the push that can be one of the predefined constants below\n- `push.ORIGIN_LOCAL`\n- `push.ORIGIN_REMOTE`",
+                            "name": "origin",
                             "types": [
                                 "constant"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "If the application was activated via the notification.", 
-                            "name": "activated", 
+                            "doc": "If the application was activated via the notification.",
+                            "name": "activated",
                             "types": [
                                 "boolean"
                             ]
                         }
-                    ], 
+                    ],
                     "types": [
                         "function"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Set the badge count for application icon. This function is only available on iOS. [icon:ios]", 
-            "examples": "", 
-            "name": "set_badge_count", 
+            "description": "Set the badge count for application icon. This function is only available on iOS. [icon:ios]",
+            "examples": "",
+            "name": "set_badge_count",
             "parameters": [
                 {
-                    "doc": "Badge count", 
-                    "name": "count", 
+                    "doc": "Badge count",
+                    "name": "count",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Local push notifications are scheduled with this function.\nThe returned `id` value is uniquely identifying the scheduled notification and can be stored for later reference.", 
-            "examples": "<p>This example demonstrates how to schedule a local notification:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Schedule a local push in 3 seconds</span>\n<span class=\"kd\">local</span> <span class=\"n\">payload</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;</span><span class=\"s\">{ &quot;data&quot; : { &quot;field&quot; : &quot;Some value&quot;, &quot;field2&quot; : &quot;Other value&quot; } }&#39;</span>\n<span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"n\">err</span> <span class=\"o\">=</span> <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">schedule</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">Update!&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">There are new stuff in the app&quot;</span><span class=\"p\">,</span> <span class=\"n\">payload</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">action</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">check it out&quot;</span> <span class=\"p\">})</span>\n<span class=\"k\">if</span> <span class=\"n\">err</span> <span class=\"k\">then</span>\n     <span class=\"c1\">-- Something went wrong</span>\n     <span class=\"o\">...</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "schedule", 
+            "description": "Local push notifications are scheduled with this function.\nThe returned `id` value is uniquely identifying the scheduled notification and can be stored for later reference.",
+            "examples": "<p>This example demonstrates how to schedule a local notification:</p>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- Schedule a local push in 3 seconds</span>\n<span class=\"kd\">local</span> <span class=\"n\">payload</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;{ &quot;data&quot; : { &quot;field&quot; : &quot;Some value&quot;, &quot;field2&quot; : &quot;Other value&quot; } }&#39;</span>\n<span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"n\">err</span> <span class=\"o\">=</span> <span class=\"n\">push</span><span class=\"p\">.</span><span class=\"n\">schedule</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"s2\">&quot;Update!&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;There are new stuff in the app&quot;</span><span class=\"p\">,</span> <span class=\"n\">payload</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">action</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;check it out&quot;</span> <span class=\"p\">})</span>\n<span class=\"kr\">if</span> <span class=\"n\">err</span> <span class=\"kr\">then</span>\n     <span class=\"c1\">-- Something went wrong</span>\n     <span class=\"p\">...</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "schedule",
             "parameters": [
                 {
-                    "doc": "Number of seconds into the future until the notification should be triggered.", 
-                    "name": "time", 
+                    "doc": "Number of seconds into the future until the notification should be triggered.",
+                    "name": "time",
                     "types": [
                         "number"
                     ]
-                }, 
+                },
                 {
-                    "doc": "Localized title to be displayed to the user if the application is not running.", 
-                    "name": "title", 
+                    "doc": "Localized title to be displayed to the user if the application is not running.",
+                    "name": "title",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "Localized body message of the notification to be displayed to the user if the application is not running.", 
-                    "name": "alert", 
+                    "doc": "Localized body message of the notification to be displayed to the user if the application is not running.",
+                    "name": "alert",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "JSON string to be passed to the registered listener function.", 
-                    "name": "payload", 
+                    "doc": "JSON string to be passed to the registered listener function.",
+                    "name": "payload",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "Table with notification and platform specific fields", 
-                    "name": "notification_settings", 
+                    "doc": "Table with notification and platform specific fields",
+                    "name": "notification_settings",
                     "types": [
                         "table"
                     ]
                 }
-            ], 
+            ],
             "returnvalues": [
                 {
-                    "doc": "Unique id that can be used to cancel or inspect the notification", 
+                    "doc": "Unique id that can be used to cancel or inspect the notification",
                     "name": "number"
-                }, 
+                },
                 {
-                    "doc": "Error string if something went wrong, otherwise nil", 
+                    "doc": "Error string if something went wrong, otherwise nil",
                     "name": "string"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Use this function to cancel a previously scheduled local push notification.\nThe notification is identified by a numeric id as returned by `push.schedule()`.", 
-            "examples": "", 
-            "name": "cancel", 
+            "description": "Use this function to cancel a previously scheduled local push notification.\nThe notification is identified by a numeric id as returned by `push.schedule()`.",
+            "examples": "",
+            "name": "cancel",
             "parameters": [
                 {
-                    "doc": "The numeric id of the local push notification", 
-                    "name": "id", 
+                    "doc": "The numeric id of the local push notification",
+                    "name": "id",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Use this function to cancel a previously issued local push notifications.", 
-            "examples": "", 
-            "name": "cancel_all_issued", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Use this function to cancel a previously issued local push notifications.",
+            "examples": "",
+            "name": "cancel_all_issued",
+            "parameters": [],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Returns a table with all data associated with a specified local push notification.\nThe notification is identified by a numeric id as returned by `push.schedule()`.", 
-            "examples": "", 
-            "name": "get_scheduled", 
+            "description": "Returns a table with all data associated with a specified local push notification.\nThe notification is identified by a numeric id as returned by `push.schedule()`.",
+            "examples": "",
+            "name": "get_scheduled",
             "parameters": [
                 {
-                    "doc": "The numeric id of the local push notification.", 
-                    "name": "id", 
+                    "doc": "The numeric id of the local push notification.",
+                    "name": "id",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
+            ],
             "returnvalues": [
                 {
-                    "doc": "Table with all data associated with the notification.", 
+                    "doc": "Table with all data associated with the notification.",
                     "name": "table"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Returns a table with all data associated with all scheduled local push notifications.\nThe table contains key, value pairs where the key is the push notification id and the value is a table with the notification data, corresponding to the data given by `push.get_scheduled(id)`.", 
-            "examples": "", 
-            "name": "get_all_scheduled", 
-            "parameters": [], 
+            "description": "Returns a table with all data associated with all scheduled local push notifications.\nThe table contains key, value pairs where the key is the push notification id and the value is a table with the notification data, corresponding to the data given by `push.get_scheduled(id)`.",
+            "examples": "",
+            "name": "get_all_scheduled",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "Table with all data associated with all scheduled notifications.", 
+                    "doc": "Table with all data associated with all scheduled notifications.",
                     "name": "table"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Badge notification type.", 
-            "examples": "", 
-            "name": "NOTIFICATION_BADGE", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Badge notification type.",
+            "examples": "",
+            "name": "NOTIFICATION_BADGE",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "Sound notification type.", 
-            "examples": "", 
-            "name": "NOTIFICATION_SOUND", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Sound notification type.",
+            "examples": "",
+            "name": "NOTIFICATION_SOUND",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "Alert notification type.", 
-            "examples": "", 
-            "name": "NOTIFICATION_ALERT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Alert notification type.",
+            "examples": "",
+            "name": "NOTIFICATION_ALERT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "Local push origin.", 
-            "examples": "", 
-            "name": "ORIGIN_LOCAL", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Local push origin.",
+            "examples": "",
+            "name": "ORIGIN_LOCAL",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "Remote push origin.", 
-            "examples": "", 
-            "name": "ORIGIN_REMOTE", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Remote push origin.",
+            "examples": "",
+            "name": "ORIGIN_REMOTE",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "This priority is for items might not be shown to the user except under special circumstances, such as detailed notification logs. Only available on Android. [icon:android]", 
-            "examples": "", 
-            "name": "PRIORITY_MIN", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "This priority is for items might not be shown to the user except under special circumstances, such as detailed notification logs. Only available on Android. [icon:android]",
+            "examples": "",
+            "name": "PRIORITY_MIN",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "Priority for items that are less important. Only available on Android. [icon:android]", 
-            "examples": "", 
-            "name": "PRIORITY_LOW", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Priority for items that are less important. Only available on Android. [icon:android]",
+            "examples": "",
+            "name": "PRIORITY_LOW",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The default notification priority. Only available on Android. [icon:android]", 
-            "examples": "", 
-            "name": "PRIORITY_DEFAULT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The default notification priority. Only available on Android. [icon:android]",
+            "examples": "",
+            "name": "PRIORITY_DEFAULT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "Priority for more important notifications or alerts. Only available on Android. [icon:android]", 
-            "examples": "", 
-            "name": "PRIORITY_HIGH", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Priority for more important notifications or alerts. Only available on Android. [icon:android]",
+            "examples": "",
+            "name": "PRIORITY_HIGH",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "Set this priority for your application's most important items that require the user's prompt attention or input. Only available on Android. [icon:android]", 
-            "examples": "", 
-            "name": "PRIORITY_MAX", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Set this priority for your application's most important items that require the user's prompt attention or input. Only available on Android. [icon:android]",
+            "examples": "",
+            "name": "PRIORITY_MAX",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
         }
-    ], 
+    ],
     "info": {
-        "brief": "push", 
-        "description": "Functions and constants for interacting with local, as well as Apple''s and Google''s push notification services. These API's only exist on mobile platforms. [icon:ios] [icon:android]", 
-        "group": "EXTENSIONS", 
-        "name": "push", 
+        "brief": "push",
+        "description": "Functions and constants for interacting with local, as well as Apple''s and Google''s push notification services. These API's only exist on mobile platforms. [icon:ios] [icon:android]",
+        "group": "EXTENSIONS",
+        "name": "push",
         "namespace": "push"
     }
 }
