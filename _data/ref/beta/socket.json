@@ -1018,9 +1018,9 @@
       "returnvalues": [
         {
           "name": "index",
-          "doc": "that has been sent, or <code>nil</code> in case of error. Notice that, if <code>i</code> is 1 or absent, this is effectively the total number of bytes sent.",
+          "doc": "the index of the last byte within [i, j] that has been sent, or <code>nil</code> in case of error. Notice that, if <code>i</code> is 1 or absent, this is effectively the total number of bytes sent.",
           "types": [
-            "number] the index of the last byte within [i, j"
+            "number"
           ]
         },
         {
@@ -1032,9 +1032,9 @@
         },
         {
           "name": "lastindex",
-          "doc": "that has been sent. You might want to try again from the byte following that. <code>nil</code> if no error occurred.",
+          "doc": "in case of error, the index of the last byte within [i, j] that has been sent. You might want to try again from the byte following that. <code>nil</code> if no error occurred.",
           "types": [
-            "number] in case of error, the index of the last byte within [i, j"
+            "number"
           ]
         }
       ],

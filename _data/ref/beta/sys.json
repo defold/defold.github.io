@@ -283,8 +283,8 @@
       ],
       "parameters": [
         {
-          "name": "options",
-          "doc": "(optional) options table\n- ignore_secure <span class=\"type\">boolean</span> this flag ignores values might be secured by OS e.g. <code>device_ident</code>",
+          "name": "[options]",
+          "doc": "optional options table\n- ignore_secure <span class=\"type\">boolean</span> this flag ignores values might be secured by OS e.g. <code>device_ident</code>",
           "types": [
             "table"
           ]
@@ -509,7 +509,7 @@
           ]
         }
       ],
-      "examples": "How to reboot engine with a specific bootstrap collection.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;--config=bootstrap.main_collection=/my.collectionc&#39;</span>\n<span class=\"kd\">local</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;build/default/game.projectc&#39;</span>\n<span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">reboot</span><span class=\"p\">(</span><span class=\"n\">arg1</span><span class=\"p\">,</span> <span class=\"n\">arg2</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "examples": "How to reboot engine with a specific bootstrap collection.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;--config=bootstrap.main_collection=/my.collectionc&#39;</span>\n<span class=\"kd\">local</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;build/game.projectc&#39;</span>\n<span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">reboot</span><span class=\"p\">(</span><span class=\"n\">arg1</span><span class=\"p\">,</span> <span class=\"n\">arg2</span><span class=\"p\">)</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],
@@ -812,7 +812,7 @@
           ]
         }
       ],
-      "examples": "How to reboot engine with a specific bootstrap collection.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;--config=bootstrap.main_collection=/my.collectionc&#39;</span>\n<span class=\"kd\">local</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;build/default/game.projectc&#39;</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;reboot&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"n\">arg1</span><span class=\"p\">,</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"n\">arg2</span><span class=\"p\">})</span>\n</code></pre></div>",
+      "examples": "How to reboot engine with a specific bootstrap collection.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;--config=bootstrap.main_collection=/my.collectionc&#39;</span>\n<span class=\"kd\">local</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;build/game.projectc&#39;</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;reboot&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"n\">arg1</span><span class=\"p\">,</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"n\">arg2</span><span class=\"p\">})</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],
