@@ -1002,9 +1002,9 @@
     },
     {
       "type": "FUNCTION",
-      "name": "dmJson::Type",
-      "brief": "convert a dmJson::Document to a Lua table",
-      "description": "Convert a dmJson::Document document to Lua table.",
+      "name": "dmScript::JsonToLua",
+      "brief": "convert a Json string to a Lua table",
+      "description": "Convert a Json string to Lua table.",
       "returnvalues": [
         {
           "name": "int",
@@ -1023,31 +1023,61 @@
           ]
         },
         {
-          "name": "doc",
-          "doc": "JSON document",
+          "name": "json",
+          "doc": "json string",
           "types": [
-            "dmJson::Document"
+            "const char*"
           ]
         },
         {
-          "name": "index",
-          "doc": "index of JSON node",
+          "name": "json_len",
+          "doc": "length of json string",
+          "types": [
+            "size_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::LuaToJson",
+      "brief": "convert a Lua table to a Json string",
+      "description": "Convert a Lua table to a Json string",
+      "returnvalues": [
+        {
+          "name": "int",
+          "doc": "&lt;0 if it fails. &gt;=0 if it succeeds.",
           "types": [
             "int"
           ]
-        },
+        }
+      ],
+      "parameters": [
         {
-          "name": "error_str_out",
-          "doc": "if an error is encountered, the error string is written to this argument",
+          "name": "L",
+          "doc": "lua state",
           "types": [
-            "char*"
+            "lua_State*"
           ]
         },
         {
-          "name": "error_str_size",
-          "doc": "size of error_str_out",
+          "name": "json",
+          "doc": "[out] Pointer to char*, which will receive a newly allocated string. Use free().",
           "types": [
-            "size_t"
+            "char**"
+          ]
+        },
+        {
+          "name": "json_len",
+          "doc": "length of json string",
+          "types": [
+            "size_t*"
           ]
         }
       ],
