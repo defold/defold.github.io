@@ -1,265 +1,265 @@
 {
     "elements": [
         {
-            "description": "Purchase a product.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span>  <span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">iap_listener</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">transaction</span><span class=\"p\">,</span> <span class=\"nb\">error</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"nb\">error</span> <span class=\"o\">==</span> <span class=\"kc\">nil</span> <span class=\"k\">then</span>\n      <span class=\"c1\">-- purchase is successful.</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">transaction</span><span class=\"p\">.</span><span class=\"n\">date</span><span class=\"p\">)</span>\n      <span class=\"c1\">-- required if auto finish transactions is disabled in project settings</span>\n      <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">transaction</span><span class=\"p\">.</span><span class=\"n\">state</span> <span class=\"o\">==</span> <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">TRANS_STATE_PURCHASED</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"c1\">-- do server-side verification of purchase here..</span>\n        <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">finish</span><span class=\"p\">(</span><span class=\"n\">transaction</span><span class=\"p\">)</span>\n      <span class=\"k\">end</span>\n    <span class=\"k\">else</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">,</span> <span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">reason</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n      <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"n\">iap_listener</span><span class=\"p\">)</span>\n      <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">buy</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_iap&quot;</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n</pre></div>", 
-            "name": "buy", 
+            "description": "Purchase a product.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code>  <span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">iap_listener</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">transaction</span><span class=\"p\">,</span> <span class=\"nb\">error</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"nb\">error</span> <span class=\"o\">==</span> <span class=\"kc\">nil</span> <span class=\"kr\">then</span>\n      <span class=\"c1\">-- purchase is successful.</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">transaction</span><span class=\"p\">.</span><span class=\"n\">date</span><span class=\"p\">)</span>\n      <span class=\"c1\">-- required if auto finish transactions is disabled in project settings</span>\n      <span class=\"kr\">if</span> <span class=\"p\">(</span><span class=\"n\">transaction</span><span class=\"p\">.</span><span class=\"n\">state</span> <span class=\"o\">==</span> <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">TRANS_STATE_PURCHASED</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- do server-side verification of purchase here..</span>\n        <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">finish</span><span class=\"p\">(</span><span class=\"n\">transaction</span><span class=\"p\">)</span>\n      <span class=\"kr\">end</span>\n    <span class=\"kr\">else</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">,</span> <span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">reason</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span>\n\n  <span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n      <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"n\">iap_listener</span><span class=\"p\">)</span>\n      <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">buy</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_iap&quot;</span><span class=\"p\">)</span>\n  <span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "buy",
             "parameters": [
                 {
-                    "doc": "product to buy", 
-                    "name": "id", 
+                    "doc": "product to buy",
+                    "name": "id",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "optional parameters as properties. The following parameters can be set", 
-                    "name": "options", 
+                    "doc": "optional parameters as properties. The following parameters can be set",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Explicitly finish a product transaction. [icon:attention] Calling iap.finish is required on a successful transaction if `auto_finish_transactions` is disabled in project settings. Calling this function with `auto_finish_transactions` set will be ignored and a warning is printed. The `transaction.state` field must equal `iap.TRANS_STATE_PURCHASED`.", 
-            "examples": "", 
-            "name": "finish", 
+            "description": "Explicitly finish a product transaction. [icon:attention] Calling iap.finish is required on a successful transaction if `auto_finish_transactions` is disabled in project settings. Calling this function with `auto_finish_transactions` set will be ignored and a warning is printed. The `transaction.state` field must equal `iap.TRANS_STATE_PURCHASED`.",
+            "examples": "",
+            "name": "finish",
             "parameters": [
                 {
-                    "doc": "transaction table parameter as supplied in listener callback", 
-                    "name": "transaction", 
+                    "doc": "transaction table parameter as supplied in listener callback",
+                    "name": "transaction",
                     "types": [
                         "table"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Acknowledge a transaction. [icon:attention] Calling iap.acknowledge is required on a successful transaction on Google Play unless iap.finish is called. The transaction.state field must equal iap.TRANS_STATE_PURCHASED.", 
-            "examples": "", 
-            "name": "acknowledge", 
+            "description": "Acknowledge a transaction. [icon:attention] Calling iap.acknowledge is required on a successful transaction on Google Play unless iap.finish is called. The transaction.state field must equal iap.TRANS_STATE_PURCHASED.",
+            "examples": "",
+            "name": "acknowledge",
             "parameters": [
                 {
-                    "doc": "transaction table parameter as supplied in listener callback", 
-                    "name": "transaction", 
+                    "doc": "transaction table parameter as supplied in listener callback",
+                    "name": "transaction",
                     "types": [
                         "table"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Get current iap provider", 
-            "examples": "", 
-            "name": "get_provider_id", 
-            "parameters": [], 
+            "description": "Get current iap provider",
+            "examples": "",
+            "name": "get_provider_id",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "one of the following values\n- `iap.PROVIDER_ID_GOOGLE`\n- `iap.PROVIDER_ID_AMAZON`\n- `iap.PROVIDER_ID_APPLE`\n- `iap.PROVIDER_ID_FACEBOOK`", 
+                    "doc": "one of the following values\n- `iap.PROVIDER_ID_GOOGLE`\n- `iap.PROVIDER_ID_AMAZON`\n- `iap.PROVIDER_ID_APPLE`\n- `iap.PROVIDER_ID_FACEBOOK`",
                     "name": "constant"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Get a list of all avaliable iap products.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span>  <span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">iap_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">products</span><span class=\"p\">,</span> <span class=\"nb\">error</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"nb\">error</span> <span class=\"o\">==</span> <span class=\"kc\">nil</span> <span class=\"k\">then</span>\n      <span class=\"k\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span><span class=\"n\">p</span> <span class=\"k\">in</span> <span class=\"nb\">pairs</span><span class=\"p\">(</span><span class=\"n\">products</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n        <span class=\"c1\">-- present the product</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">title</span><span class=\"p\">)</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">description</span><span class=\"p\">)</span>\n      <span class=\"k\">end</span>\n    <span class=\"k\">else</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n      <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">list</span><span class=\"p\">({</span><span class=\"s2\">&quot;</span><span class=\"s\">my_iap&quot;</span><span class=\"p\">},</span> <span class=\"n\">iap_callback</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n</pre></div>", 
-            "name": "list", 
+            "description": "Get a list of all avaliable iap products.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code>  <span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">iap_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">products</span><span class=\"p\">,</span> <span class=\"nb\">error</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"nb\">error</span> <span class=\"o\">==</span> <span class=\"kc\">nil</span> <span class=\"kr\">then</span>\n      <span class=\"kr\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span><span class=\"n\">p</span> <span class=\"kr\">in</span> <span class=\"nb\">pairs</span><span class=\"p\">(</span><span class=\"n\">products</span><span class=\"p\">)</span> <span class=\"kr\">do</span>\n        <span class=\"c1\">-- present the product</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">title</span><span class=\"p\">)</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">description</span><span class=\"p\">)</span>\n      <span class=\"kr\">end</span>\n    <span class=\"kr\">else</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span>\n\n  <span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n      <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">list</span><span class=\"p\">({</span><span class=\"s2\">&quot;my_iap&quot;</span><span class=\"p\">},</span> <span class=\"n\">iap_callback</span><span class=\"p\">)</span>\n  <span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "list",
             "parameters": [
                 {
-                    "doc": "table (array) of identifiers to get products from", 
-                    "name": "ids", 
+                    "doc": "table (array) of identifiers to get products from",
+                    "name": "ids",
                     "types": [
                         "table"
                     ]
-                }, 
+                },
                 {
-                    "doc": "result callback taking the following parameters", 
-                    "name": "callback", 
+                    "doc": "result callback taking the following parameters",
+                    "name": "callback",
                     "parameters": [
                         {
-                            "doc": "The current object.", 
-                            "name": "self", 
+                            "doc": "The current object.",
+                            "name": "self",
                             "types": [
                                 "object"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "a table describing the available iap products.", 
-                            "name": "products", 
+                            "doc": "a table describing the available iap products.",
+                            "name": "products",
                             "types": [
                                 "table"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "a table containing error information. `nil` if there is no error. - `error` (the error message)", 
-                            "name": "error", 
+                            "doc": "a table containing error information. `nil` if there is no error. - `error` (the error message)",
+                            "name": "error",
                             "types": [
                                 "table"
                             ]
                         }
-                    ], 
+                    ],
                     "types": [
                         "function"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Restore previously purchased products.", 
-            "examples": "", 
-            "name": "restore", 
-            "parameters": [], 
+            "description": "Restore previously purchased products.",
+            "examples": "",
+            "name": "restore",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "value is `true` if current store supports handling restored transactions, otherwise `false`.", 
+                    "doc": "value is `true` if current store supports handling restored transactions, otherwise `false`.",
                     "name": "boolean"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Set the callback function to receive purchase transaction events.", 
-            "examples": "", 
-            "name": "set_listener", 
+            "description": "Set the callback function to receive purchase transaction events.",
+            "examples": "",
+            "name": "set_listener",
             "parameters": [
                 {
-                    "doc": "listener callback function. Pass an empty function if you no longer wish to receive callbacks.", 
-                    "name": "listener", 
+                    "doc": "listener callback function. Pass an empty function if you no longer wish to receive callbacks.",
+                    "name": "listener",
                     "parameters": [
                         {
-                            "doc": "The current object.", 
-                            "name": "self", 
+                            "doc": "The current object.",
+                            "name": "self",
                             "types": [
                                 "object"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "a table describing the transaction.", 
-                            "name": "transaction", 
+                            "doc": "a table describing the transaction.",
+                            "name": "transaction",
                             "types": [
                                 "table"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "a table containing error information. `nil` if there is no error. `error` - the error message. `reason` - the reason for the error, value can be one of the following constants\n- `iap.REASON_UNSPECIFIED`\n- `iap.REASON_USER_CANCELED`", 
-                            "name": "error", 
+                            "doc": "a table containing error information. `nil` if there is no error. `error` - the error message. `reason` - the reason for the error, value can be one of the following constants\n- `iap.REASON_UNSPECIFIED`\n- `iap.REASON_USER_CANCELED`",
+                            "name": "error",
                             "types": [
                                 "table"
                             ]
                         }
-                    ], 
+                    ],
                     "types": [
                         "function"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "provider id for Amazon", 
-            "examples": "", 
-            "name": "PROVIDER_ID_AMAZON", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "provider id for Amazon",
+            "examples": "",
+            "name": "PROVIDER_ID_AMAZON",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "provider id for Apple", 
-            "examples": "", 
-            "name": "PROVIDER_ID_APPLE", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "provider id for Apple",
+            "examples": "",
+            "name": "PROVIDER_ID_APPLE",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "provider id for Facebook", 
-            "examples": "", 
-            "name": "PROVIDER_ID_FACEBOOK", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "provider id for Facebook",
+            "examples": "",
+            "name": "PROVIDER_ID_FACEBOOK",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "iap provider id for Google", 
-            "examples": "", 
-            "name": "PROVIDER_ID_GOOGLE", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "iap provider id for Google",
+            "examples": "",
+            "name": "PROVIDER_ID_GOOGLE",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "unspecified error reason", 
-            "examples": "", 
-            "name": "REASON_UNSPECIFIED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "unspecified error reason",
+            "examples": "",
+            "name": "REASON_UNSPECIFIED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "user canceled reason", 
-            "examples": "", 
-            "name": "REASON_USER_CANCELED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "user canceled reason",
+            "examples": "",
+            "name": "REASON_USER_CANCELED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "transaction failed state", 
-            "examples": "", 
-            "name": "TRANS_STATE_FAILED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "transaction failed state",
+            "examples": "",
+            "name": "TRANS_STATE_FAILED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "transaction purchased state", 
-            "examples": "", 
-            "name": "TRANS_STATE_PURCHASED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "transaction purchased state",
+            "examples": "",
+            "name": "TRANS_STATE_PURCHASED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "transaction purchasing state This is an intermediate mode followed by TRANS_STATE_PURCHASED. Store provider support dependent.", 
-            "examples": "", 
-            "name": "TRANS_STATE_PURCHASING", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "transaction purchasing state This is an intermediate mode followed by TRANS_STATE_PURCHASED. Store provider support dependent.",
+            "examples": "",
+            "name": "TRANS_STATE_PURCHASING",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "transaction restored state This is only available on store providers supporting restoring purchases.", 
-            "examples": "", 
-            "name": "TRANS_STATE_RESTORED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "transaction restored state This is only available on store providers supporting restoring purchases.",
+            "examples": "",
+            "name": "TRANS_STATE_RESTORED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "transaction unverified state, requires verification of purchase", 
-            "examples": "", 
-            "name": "TRANS_STATE_UNVERIFIED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "transaction unverified state, requires verification of purchase",
+            "examples": "",
+            "name": "TRANS_STATE_UNVERIFIED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
         }
-    ], 
+    ],
     "info": {
-        "brief": "iap", 
-        "description": "Functions and constants for doing in-app purchases. Supported on iOS, Android (Google Play and Amazon) and Facebook Canvas platforms. [icon:ios] [icon:googleplay] [icon:amazon] [icon:facebook]", 
-        "group": "EXTENSIONS", 
-        "name": "iap", 
+        "brief": "iap",
+        "description": "Functions and constants for doing in-app purchases. Supported on iOS, Android (Google Play and Amazon) and Facebook Canvas platforms. [icon:ios] [icon:googleplay] [icon:amazon] [icon:facebook]",
+        "group": "EXTENSIONS",
+        "name": "iap",
         "namespace": "iap"
     }
 }
