@@ -14,7 +14,7 @@ Lands of Blight is an action adventure game where you take control of a characte
 Lands of Blight was developed by forum user d954mas for 7Spot Games. In this blog post d954mas will share his experience optimising the game to run in a mobile browser with stable FPS and more than 1000 enemies.
 
 <video width="640" height="480" controls>
-  <source src="/images/performance-optimizations-in-lands-of-blight/landsofblight.mp4" type="video/mp4">
+  <source src="/images/posts/performance-optimizations-in-lands-of-blight/landsofblight.mp4" type="video/mp4">
 </video>
 
 In Lands of Blight there are three critical parts for performance:
@@ -28,7 +28,7 @@ In Lands of Blight there are three critical parts for performance:
 Defold has a really fast renderer which can draw a lot of sprites per frame. Overall, the render was not a blocker for the game, but there was one problem with the rendered; the enemy blinking on hit. The blink effect can either be made using a shader or by a flipbook animation. The shader uses a uniform variable for blink which means that it would break batching and dramatically increase draw calls.
 
 <video width="640" height="480" controls>
-  <source src="/images/performance-optimizations-in-lands-of-blight/lob-enemy-blink.mp4" type="video/mp4">
+  <source src="/images/posts/performance-optimizations-in-lands-of-blight/lob-enemy-blink.mp4" type="video/mp4">
 </video>
 
 Instead of a shader for the blink effect, we decided to create an animation for every enemy. All enemy animations (blink, die etc) were made in [JuiceFx](https://codemanu.itch.io/juicefx). Thanks to [@CodeManuPro](https://twitter.com/CodeManuPro) for an awesome animation generation tool!
@@ -95,7 +95,7 @@ scale.y = 1 / scale.x
 The problem with this is that if we run this calculation for every enemy every frame it will be slow.
 
 <video width="640" height="480" controls>
-  <source src="/images/performance-optimizations-in-lands-of-blight/lob-enemy-squash-animation.mp4" type="video/mp4">
+  <source src="/images/posts/performance-optimizations-in-lands-of-blight/lob-enemy-squash-animation.mp4" type="video/mp4">
 </video>
 
 
