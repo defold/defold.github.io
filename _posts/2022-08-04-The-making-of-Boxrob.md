@@ -176,7 +176,7 @@ When robot tries to take a box with hand, force is applied to the end of the han
 {% include video.html url="https://www.youtube.com/embed/qseAbZspzfA" %}
 
 
-### Conslusions
+### Conclusions
 It turned out to be a cool game that was enjoyable to work on. There were a lot of difficult and funny moments when working with physics, and overall, this game was interesting to make. It was a pleasure to see the prototype getting better and better with each iteration!
 
 Reach out to [d954mas on the forum](https://forum.defold.com/t/boxrob/71377) if you have any questions!
