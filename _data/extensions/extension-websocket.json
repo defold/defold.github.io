@@ -1,147 +1,147 @@
 {
     "elements": [
         {
-            "description": "Connects to a remote address", 
-            "examples": "<div class=\"codehilite\"><pre><span></span>  <span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">websocket_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">conn</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">EVENT_DISCONNECTED</span> <span class=\"k\">then</span>\n      <span class=\"n\">log</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Disconnected: &quot;</span> <span class=\"o\">..</span> <span class=\"nb\">tostring</span><span class=\"p\">(</span><span class=\"n\">conn</span><span class=\"p\">))</span>\n      <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">connection</span> <span class=\"o\">=</span> <span class=\"kc\">nil</span>\n      <span class=\"n\">update_gui</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"k\">elseif</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">EVENT_CONNECTED</span> <span class=\"k\">then</span>\n      <span class=\"n\">update_gui</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n      <span class=\"n\">log</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Connected: &quot;</span> <span class=\"o\">..</span> <span class=\"nb\">tostring</span><span class=\"p\">(</span><span class=\"n\">conn</span><span class=\"p\">))</span>\n    <span class=\"k\">elseif</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">EVENT_ERROR</span> <span class=\"k\">then</span>\n      <span class=\"n\">log</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Error: &#39;&quot;</span> <span class=\"o\">..</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">message</span> <span class=\"o\">..</span> <span class=\"s2\">&quot;</span><span class=\"s\">&#39;&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">elseif</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">EVENT_MESSAGE</span> <span class=\"k\">then</span>\n      <span class=\"n\">log</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Receiving: &#39;&quot;</span> <span class=\"o\">..</span> <span class=\"nb\">tostring</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">message</span><span class=\"p\">)</span> <span class=\"o\">..</span> <span class=\"s2\">&quot;</span><span class=\"s\">&#39;&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">url</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">ws://echo.websocket.events&quot;</span>\n    <span class=\"kd\">local</span> <span class=\"n\">params</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n      <span class=\"n\">timeout</span> <span class=\"o\">=</span> <span class=\"mi\">3000</span><span class=\"p\">,</span>\n      <span class=\"n\">headers</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">Sec-WebSocket-Protocol: chat</span><span class=\"se\">\\r\\n</span><span class=\"s\">Origin: mydomain.com</span><span class=\"se\">\\r\\n</span><span class=\"s\">&quot;</span>\n    <span class=\"p\">}</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">connection</span> <span class=\"o\">=</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"n\">params</span><span class=\"p\">,</span> <span class=\"n\">websocket_callback</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"k\">function</span> <span class=\"nf\">finalize</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n      <span class=\"k\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">connection</span> <span class=\"o\">~=</span> <span class=\"kc\">nil</span> <span class=\"k\">then</span>\n        <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">disconnect</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">connection</span><span class=\"p\">)</span>\n      <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n</pre></div>", 
-            "name": "connect", 
+            "description": "Connects to a remote address",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code>  <span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">websocket_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">conn</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">EVENT_DISCONNECTED</span> <span class=\"kr\">then</span>\n      <span class=\"n\">log</span><span class=\"p\">(</span><span class=\"s2\">&quot;Disconnected: &quot;</span> <span class=\"o\">..</span> <span class=\"nb\">tostring</span><span class=\"p\">(</span><span class=\"n\">conn</span><span class=\"p\">))</span>\n      <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">connection</span> <span class=\"o\">=</span> <span class=\"kc\">nil</span>\n      <span class=\"n\">update_gui</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">EVENT_CONNECTED</span> <span class=\"kr\">then</span>\n      <span class=\"n\">update_gui</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n      <span class=\"n\">log</span><span class=\"p\">(</span><span class=\"s2\">&quot;Connected: &quot;</span> <span class=\"o\">..</span> <span class=\"nb\">tostring</span><span class=\"p\">(</span><span class=\"n\">conn</span><span class=\"p\">))</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">EVENT_ERROR</span> <span class=\"kr\">then</span>\n      <span class=\"n\">log</span><span class=\"p\">(</span><span class=\"s2\">&quot;Error: &#39;&quot;</span> <span class=\"o\">..</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">message</span> <span class=\"o\">..</span> <span class=\"s2\">&quot;&#39;&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">EVENT_MESSAGE</span> <span class=\"kr\">then</span>\n      <span class=\"n\">log</span><span class=\"p\">(</span><span class=\"s2\">&quot;Receiving: &#39;&quot;</span> <span class=\"o\">..</span> <span class=\"nb\">tostring</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">message</span><span class=\"p\">)</span> <span class=\"o\">..</span> <span class=\"s2\">&quot;&#39;&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span>\n\n  <span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">url</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;ws://echo.websocket.events&quot;</span>\n    <span class=\"kd\">local</span> <span class=\"n\">params</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n      <span class=\"n\">timeout</span> <span class=\"o\">=</span> <span class=\"mi\">3000</span><span class=\"p\">,</span>\n      <span class=\"n\">headers</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;Sec-WebSocket-Protocol: chat</span><span class=\"se\">\\r\\n</span><span class=\"s2\">Origin: mydomain.com</span><span class=\"se\">\\r\\n</span><span class=\"s2\">&quot;</span>\n    <span class=\"p\">}</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">connection</span> <span class=\"o\">=</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"n\">params</span><span class=\"p\">,</span> <span class=\"n\">websocket_callback</span><span class=\"p\">)</span>\n  <span class=\"kr\">end</span>\n\n  <span class=\"kr\">function</span> <span class=\"nf\">finalize</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n      <span class=\"kr\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">connection</span> <span class=\"o\">~=</span> <span class=\"kc\">nil</span> <span class=\"kr\">then</span>\n        <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">disconnect</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">connection</span><span class=\"p\">)</span>\n      <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "connect",
             "parameters": [
                 {
-                    "doc": "url of the remote connection", 
-                    "name": "url", 
+                    "doc": "url of the remote connection",
+                    "name": "url",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "optional parameters as properties. The following parameters can be set", 
-                    "name": "params", 
+                    "doc": "optional parameters as properties. The following parameters can be set",
+                    "name": "params",
                     "types": [
                         "table"
                     ]
-                }, 
+                },
                 {
-                    "doc": "callback that receives all messages from the connection", 
-                    "name": "callback", 
+                    "doc": "callback that receives all messages from the connection",
+                    "name": "callback",
                     "parameters": [
                         {
-                            "doc": "The script instance that was used to register the callback", 
-                            "name": "self", 
+                            "doc": "The script instance that was used to register the callback",
+                            "name": "self",
                             "types": [
                                 "object"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "the connection", 
-                            "name": "connection", 
+                            "doc": "the connection",
+                            "name": "connection",
                             "types": [
                                 "object"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "the event payload", 
-                            "name": "data", 
+                            "doc": "the event payload",
+                            "name": "data",
                             "types": [
                                 "table"
                             ]
                         }
-                    ], 
+                    ],
                     "types": [
                         "function"
                     ]
                 }
-            ], 
+            ],
             "returnvalues": [
                 {
-                    "doc": "the connection", 
+                    "doc": "the connection",
                     "name": "object"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Explicitly close a websocket", 
-            "examples": "", 
-            "name": "disconnect", 
+            "description": "Explicitly close a websocket",
+            "examples": "",
+            "name": "disconnect",
             "parameters": [
                 {
-                    "doc": "the websocket connection", 
-                    "name": "connection", 
+                    "doc": "the websocket connection",
+                    "name": "connection",
                     "types": [
                         "object"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Send data on a websocket", 
-            "examples": "<div class=\"codehilite\"><pre><span></span>  <span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">websocket_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">conn</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">EVENT_CONNECTED</span> <span class=\"k\">then</span>\n      <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">send</span><span class=\"p\">(</span><span class=\"n\">conn</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">Hello from the other side&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">url</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">ws://echo.websocket.org&quot;</span>\n    <span class=\"kd\">local</span> <span class=\"n\">params</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">connection</span> <span class=\"o\">=</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"n\">params</span><span class=\"p\">,</span> <span class=\"n\">websocket_callback</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n</pre></div>", 
-            "name": "send", 
+            "description": "Send data on a websocket",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code>  <span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">websocket_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">conn</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">EVENT_CONNECTED</span> <span class=\"kr\">then</span>\n      <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">send</span><span class=\"p\">(</span><span class=\"n\">conn</span><span class=\"p\">,</span> <span class=\"s2\">&quot;Hello from the other side&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span>\n\n  <span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">url</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;ws://echo.websocket.org&quot;</span>\n    <span class=\"kd\">local</span> <span class=\"n\">params</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">connection</span> <span class=\"o\">=</span> <span class=\"n\">websocket</span><span class=\"p\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"n\">params</span><span class=\"p\">,</span> <span class=\"n\">websocket_callback</span><span class=\"p\">)</span>\n  <span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "send",
             "parameters": [
                 {
-                    "doc": "the websocket connection", 
-                    "name": "connection", 
+                    "doc": "the websocket connection",
+                    "name": "connection",
                     "types": [
                         "object"
                     ]
-                }, 
+                },
                 {
-                    "doc": "the message to send", 
-                    "name": "message", 
+                    "doc": "the message to send",
+                    "name": "message",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "options for this particular message. May be `nil`", 
-                    "name": "options", 
+                    "doc": "options for this particular message. May be `nil`",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "The websocket was connected", 
-            "examples": "", 
-            "name": "EVENT_CONNECTED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The websocket was connected",
+            "examples": "",
+            "name": "EVENT_CONNECTED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The websocket disconnected", 
-            "examples": "", 
-            "name": "EVENT_DISCONNECTED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The websocket disconnected",
+            "examples": "",
+            "name": "EVENT_DISCONNECTED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The websocket received data", 
-            "examples": "", 
-            "name": "EVENT_MESSAGE", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The websocket received data",
+            "examples": "",
+            "name": "EVENT_MESSAGE",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The websocket encountered an error", 
-            "examples": "", 
-            "name": "EVENT_ERROR", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The websocket encountered an error",
+            "examples": "",
+            "name": "EVENT_ERROR",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
         }
-    ], 
+    ],
     "info": {
-        "brief": "websocket", 
-        "description": "Functions and constants for using websockets. Supported on all platforms.", 
-        "group": "EXTENSIONS", 
-        "name": "websocket", 
+        "brief": "websocket",
+        "description": "Functions and constants for using websockets. Supported on all platforms.",
+        "group": "EXTENSIONS",
+        "name": "websocket",
         "namespace": "websocket"
     }
 }
