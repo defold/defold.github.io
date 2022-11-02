@@ -1,910 +1,910 @@
 {
     "elements": [
         {
-            "description": "Check if Google Play Services are available & ready on the device.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">is_supported</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">is_supported</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "is_supported", 
-            "parameters": [], 
+            "description": "Check if Google Play Services are available & ready on the device.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">is_supported</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">is_supported</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "is_supported",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "Status of Google Play Services on the device.", 
+                    "doc": "Status of Google Play Services on the device.",
                     "name": "boolean"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Login to GPGS using a button.", 
-            "examples": "<p>Log in to GPGS using a button:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">login</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "login", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Login to GPGS using a button.",
+            "examples": "<p>Log in to GPGS using a button:</p>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">login</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "login",
+            "parameters": [],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Silent login to GPGS.\nThis function is trying to retrieve the currently signed-in player\u2019s account.\n[icon:attention] By default login methods request `GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN`. But if you use Disk, we have to request extra scope `Drive.SCOPE_APPFOLDER`. Or if you use ID token, we have to request ID token with provided client_id. If so it causes the first time silent sign-in to fail, except for users who have already signed in successfully on a different device. Turn off GPGS features you don't want to use in `game.project`.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n    <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">silent_login</span><span class=\"p\">()</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "silent_login", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Silent login to GPGS.\nThis function is trying to retrieve the currently signed-in player\u2019s account.\n[icon:attention] By default login methods request `GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN`. But if you use Disk, we have to request extra scope `Drive.SCOPE_APPFOLDER`. Or if you use ID token, we have to request ID token with provided client_id. If so it causes the first time silent sign-in to fail, except for users who have already signed in successfully on a different device. Turn off GPGS features you don't want to use in `game.project`.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n    <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">silent_login</span><span class=\"p\">()</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "silent_login",
+            "parameters": [],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Logout from GPGS", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">logout</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "logout", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Logout from GPGS",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">logout</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "logout",
+            "parameters": [],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Get the current GPGS player display name.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">get_display_name</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "get_display_name", 
-            "parameters": [], 
+            "description": "Get the current GPGS player display name.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">get_display_name</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "get_display_name",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "The player's display name.", 
+                    "doc": "The player's display name.",
                     "name": "string"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Get the current GPGS player id.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">get_id</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "get_id", 
-            "parameters": [], 
+            "description": "Get the current GPGS player id.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">get_id</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "get_id",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "The player ID.", 
+                    "doc": "The player ID.",
                     "name": "string"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Get the current GPGS player id token. Available only if \"gpgs.client_id\" is configured in game.project and \"gpgs.request_id_token = 1\".", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">id_token</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">get_id_token</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "get_id_token", 
-            "parameters": [], 
+            "description": "Get the current GPGS player id token. Available only if \"gpgs.client_id\" is configured in game.project and \"gpgs.request_id_token = 1\".",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">id_token</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">get_id_token</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "get_id_token",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "The player ID token.", 
+                    "doc": "The player ID token.",
                     "name": "string"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Returns a one-time server auth code to send to your web server which can be exchanged for access token", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">server_auth_code</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">get_server_auth_code</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "get_server_auth_code", 
-            "parameters": [], 
+            "description": "Returns a one-time server auth code to send to your web server which can be exchanged for access token",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">server_auth_code</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">get_server_auth_code</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "get_server_auth_code",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "The server auth code for logged in account.", 
+                    "doc": "The server auth code for logged in account.",
                     "name": "string"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Check if a user is logged in currently.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">is_loggedin</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">is_logged_in</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "is_logged_in", 
-            "parameters": [], 
+            "description": "Check if a user is logged in currently.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">is_loggedin</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">is_logged_in</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "is_logged_in",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "Current login state.", 
+                    "doc": "Current login state.",
                     "name": "boolean"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "This method sets the position for the login popup.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">set_popup_position</span><span class=\"p\">(</span><span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">POPUP_POS_BOTTOM_CENTER</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "set_popup_position", 
+            "description": "This method sets the position for the login popup.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">set_popup_position</span><span class=\"p\">(</span><span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">POPUP_POS_BOTTOM_CENTER</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "set_popup_position",
             "parameters": [
                 {
-                    "doc": "An position can be one of the predefined constants below\n- `gpgs.POPUP_POS_TOP_LEFT`\n- `gpgs.POPUP_POS_TOP_CENTER`\n- `gpgs.POPUP_POS_TOP_RIGHT`\n- `gpgs.POPUP_POS_CENTER_LEFT`\n- `gpgs.POPUP_POS_CENTER`\n- `gpgs.POPUP_POS_CENTER_RIGHT`\n- `gpgs.POPUP_POS_BOTTOM_LEFT`\n- `gpgs.POPUP_POS_BOTTOM_CENTER`\n- `gpgs.POPUP_POS_BOTTOM_RIGHT`\n\nDefault value is `gpgs.POPUP_POS_TOP_CENTER`", 
-                    "name": "position", 
+                    "doc": "An position can be one of the predefined constants below\n- `gpgs.POPUP_POS_TOP_LEFT`\n- `gpgs.POPUP_POS_TOP_CENTER`\n- `gpgs.POPUP_POS_TOP_RIGHT`\n- `gpgs.POPUP_POS_CENTER_LEFT`\n- `gpgs.POPUP_POS_CENTER`\n- `gpgs.POPUP_POS_CENTER_RIGHT`\n- `gpgs.POPUP_POS_BOTTOM_LEFT`\n- `gpgs.POPUP_POS_BOTTOM_CENTER`\n- `gpgs.POPUP_POS_BOTTOM_RIGHT`\n\nDefault value is `gpgs.POPUP_POS_TOP_CENTER`",
+                    "name": "position",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Set callback for receiving messages from GPGS.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_SIGN_IN</span> <span class=\"ow\">or</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_SILENT_SIGN_IN</span> <span class=\"k\">then</span>\n    <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">STATUS_SUCCESS</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- do something after login</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_SIGN_OUT</span> <span class=\"k\">then</span>\n  <span class=\"c1\">-- do something after logout</span>\n  <span class=\"k\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_LOAD_SNAPSHOT</span> <span class=\"k\">then</span>\n  <span class=\"c1\">-- do something when a save was loaded</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">set_callback</span><span class=\"p\">(</span><span class=\"n\">callback</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">set_callback</span><span class=\"p\">(</span><span class=\"kc\">nil</span><span class=\"p\">)</span> <span class=\"c1\">-- remove callback</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "set_callback", 
+            "description": "Set callback for receiving messages from GPGS.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">)</span>\n  <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_SIGN_IN</span> <span class=\"ow\">or</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_SILENT_SIGN_IN</span> <span class=\"kr\">then</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">STATUS_SUCCESS</span> <span class=\"kr\">then</span>\n    <span class=\"c1\">-- do something after login</span>\n    <span class=\"kr\">end</span>\n  <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_SIGN_OUT</span> <span class=\"kr\">then</span>\n  <span class=\"c1\">-- do something after logout</span>\n  <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_LOAD_SNAPSHOT</span> <span class=\"kr\">then</span>\n  <span class=\"c1\">-- do something when a save was loaded</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">set_callback</span><span class=\"p\">(</span><span class=\"n\">callback</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">set_callback</span><span class=\"p\">(</span><span class=\"kc\">nil</span><span class=\"p\">)</span> <span class=\"c1\">-- remove callback</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "set_callback",
             "parameters": [
                 {
-                    "doc": "A callback taking the following parameters", 
-                    "name": "callback", 
+                    "doc": "A callback taking the following parameters",
+                    "name": "callback",
                     "parameters": [
                         {
-                            "doc": "The calling script", 
-                            "name": "self", 
+                            "doc": "The calling script",
+                            "name": "self",
                             "types": [
                                 "object"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "An message_id can be one of the predefined constants below\n- `gpgs.MSG_SIGN_IN`\n- `gpgs.MSG_SILENT_SIGN_IN`\n- `gpgs.MSG_SIGN_OUT`\n- `gpgs.MSG_SHOW_SNAPSHOTS`\n- `gpgs.MSG_LOAD_SNAPSHOT`", 
-                            "name": "message_id", 
+                            "doc": "An message_id can be one of the predefined constants below\n- `gpgs.MSG_SIGN_IN`\n- `gpgs.MSG_SILENT_SIGN_IN`\n- `gpgs.MSG_SIGN_OUT`\n- `gpgs.MSG_SHOW_SNAPSHOTS`\n- `gpgs.MSG_LOAD_SNAPSHOT`",
+                            "name": "message_id",
                             "types": [
                                 "number"
                             ]
-                        }, 
+                        },
                         {
-                            "doc": "Contains information that depends on message_id.", 
-                            "name": "message", 
+                            "doc": "Contains information that depends on message_id.",
+                            "name": "message",
                             "types": [
                                 "table"
                             ]
                         }
-                    ], 
+                    ],
                     "types": [
                         "function"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Provides a default saved games selection user interface.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_display_saves</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Choose the save of the game&quot;</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "snapshot_display_saves", 
+            "description": "Provides a default saved games selection user interface.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_display_saves</span><span class=\"p\">(</span><span class=\"s2\">&quot;Choose the save of the game&quot;</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "snapshot_display_saves",
             "parameters": [
                 {
-                    "doc": "The title to display in the action bar. By default \"Game Saves\".", 
-                    "name": "popupTitle", 
+                    "doc": "The title to display in the action bar. By default \"Game Saves\".",
+                    "name": "popupTitle",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "Whether or not to display a \"create new snapshot\" option in the selection UI. By default `true`.", 
-                    "name": "allowAddButton", 
+                    "doc": "Whether or not to display a \"create new snapshot\" option in the selection UI. By default `true`.",
+                    "name": "allowAddButton",
                     "types": [
                         "boolean"
                     ]
-                }, 
+                },
                 {
-                    "doc": "Whether or not to provide a delete overflow menu option for each snapshot in the selection UI. By default `true`.", 
-                    "name": "allowDelete", 
+                    "doc": "Whether or not to provide a delete overflow menu option for each snapshot in the selection UI. By default `true`.",
+                    "name": "allowDelete",
                     "types": [
                         "boolean"
                     ]
-                }, 
+                },
                 {
-                    "doc": "The maximum number of snapshots to display in the UI. By default 5.", 
-                    "name": "maxNumberOfSavedGamesToShow", 
+                    "doc": "The maximum number of snapshots to display in the UI. By default 5.",
+                    "name": "maxNumberOfSavedGamesToShow",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Opens a snapshot with the given `saveName`. If `createIfNotFound` is set to `true`, the specified snapshot will be created if it does not already exist.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_open</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_save_1&quot;</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">RESOLUTION_POLICY_LONGEST_PLAYTIME</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "snapshot_open", 
+            "description": "Opens a snapshot with the given `saveName`. If `createIfNotFound` is set to `true`, the specified snapshot will be created if it does not already exist.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_open</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_save_1&quot;</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">RESOLUTION_POLICY_LONGEST_PLAYTIME</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "snapshot_open",
             "parameters": [
                 {
-                    "doc": "The name of the snapshot file to open. Must be between 1 and 100 non-URL-reserved characters (a-z, A-Z, 0-9, or the symbols \"-\", \".\", \"_\", or \"~\").", 
-                    "name": "saveName", 
+                    "doc": "The name of the snapshot file to open. Must be between 1 and 100 non-URL-reserved characters (a-z, A-Z, 0-9, or the symbols \"-\", \".\", \"_\", or \"~\").",
+                    "name": "saveName",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "If `true`, the snapshot will be created if one cannot be found.", 
-                    "name": "createIfNotFound", 
+                    "doc": "If `true`, the snapshot will be created if one cannot be found.",
+                    "name": "createIfNotFound",
                     "types": [
                         "boolean"
                     ]
-                }, 
+                },
                 {
-                    "doc": "The conflict resolution policy to use for this snapshot that can be one of the predefined constants below\n- `gpgs.RESOLUTION_POLICY_MANUAL`\n- `gpgs.RESOLUTION_POLICY_LONGEST_PLAYTIME`\n- `gpgs.RESOLUTION_POLICY_LAST_KNOWN_GOOD`\n- `gpgs.RESOLUTION_POLICY_MOST_RECENTLY_MODIFIED`\n- `gpgs.RESOLUTION_POLICY_HIGHEST_PROGRESS`\n\nDefault value is `gpgs.RESOLUTION_POLICY_LAST_KNOWN_GOOD`", 
-                    "name": "conflictPolicy", 
+                    "doc": "The conflict resolution policy to use for this snapshot that can be one of the predefined constants below\n- `gpgs.RESOLUTION_POLICY_MANUAL`\n- `gpgs.RESOLUTION_POLICY_LONGEST_PLAYTIME`\n- `gpgs.RESOLUTION_POLICY_LAST_KNOWN_GOOD`\n- `gpgs.RESOLUTION_POLICY_MOST_RECENTLY_MODIFIED`\n- `gpgs.RESOLUTION_POLICY_HIGHEST_PROGRESS`\n\nDefault value is `gpgs.RESOLUTION_POLICY_LAST_KNOWN_GOOD`",
+                    "name": "conflictPolicy",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Save the currently opened save on the server and close it.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">png_img</span><span class=\"p\">,</span> <span class=\"n\">w</span><span class=\"p\">,</span> <span class=\"n\">h</span> <span class=\"o\">=</span> <span class=\"n\">screenshot</span><span class=\"p\">.</span><span class=\"n\">png</span><span class=\"p\">()</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_commit_and_close</span><span class=\"p\">({</span>\n      <span class=\"n\">coverImage</span> <span class=\"o\">=</span> <span class=\"n\">png_img</span><span class=\"p\">,</span>\n      <span class=\"n\">description</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">LEVEL 31, CAVE&quot;</span><span class=\"p\">,</span>\n      <span class=\"n\">playedTime</span> <span class=\"o\">=</span> <span class=\"mi\">12345667</span><span class=\"p\">,</span>\n      <span class=\"n\">progressValue</span> <span class=\"o\">=</span> <span class=\"mi\">657</span>\n  <span class=\"p\">})</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "snapshot_commit_and_close", 
+            "description": "Save the currently opened save on the server and close it.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">png_img</span><span class=\"p\">,</span> <span class=\"n\">w</span><span class=\"p\">,</span> <span class=\"n\">h</span> <span class=\"o\">=</span> <span class=\"n\">screenshot</span><span class=\"p\">.</span><span class=\"n\">png</span><span class=\"p\">()</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_commit_and_close</span><span class=\"p\">({</span>\n      <span class=\"n\">coverImage</span> <span class=\"o\">=</span> <span class=\"n\">png_img</span><span class=\"p\">,</span>\n      <span class=\"n\">description</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;LEVEL 31, CAVE&quot;</span><span class=\"p\">,</span>\n      <span class=\"n\">playedTime</span> <span class=\"o\">=</span> <span class=\"mi\">12345667</span><span class=\"p\">,</span>\n      <span class=\"n\">progressValue</span> <span class=\"o\">=</span> <span class=\"mi\">657</span>\n  <span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "snapshot_commit_and_close",
             "parameters": [
                 {
-                    "doc": "A table with metadata for a save. It contains the fields below", 
-                    "name": "metadata", 
+                    "doc": "A table with metadata for a save. It contains the fields below",
+                    "name": "metadata",
                     "types": [
                         "table"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Returns the currently opened snapshot data.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">bytes</span><span class=\"p\">,</span> <span class=\"n\">error_message</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_get_data</span><span class=\"p\">()</span>\n  <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">bytes</span> <span class=\"k\">then</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">snapshot_get_data ERROR:&quot;</span><span class=\"p\">,</span> <span class=\"n\">error_message</span><span class=\"p\">)</span>\n  <span class=\"k\">else</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">snapshot_get_data&quot;</span><span class=\"p\">,</span><span class=\"n\">bytes</span><span class=\"p\">)</span>\n      <span class=\"c1\">-- Do something with your data</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "snapshot_get_data", 
-            "parameters": [], 
+            "description": "Returns the currently opened snapshot data.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">bytes</span><span class=\"p\">,</span> <span class=\"n\">error_message</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_get_data</span><span class=\"p\">()</span>\n  <span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"n\">bytes</span> <span class=\"kr\">then</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;snapshot_get_data ERROR:&quot;</span><span class=\"p\">,</span> <span class=\"n\">error_message</span><span class=\"p\">)</span>\n  <span class=\"kr\">else</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;snapshot_get_data&quot;</span><span class=\"p\">,</span><span class=\"n\">bytes</span><span class=\"p\">)</span>\n      <span class=\"c1\">-- Do something with your data</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "snapshot_get_data",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "The byte array data of the currently opened snapshot. `nil` if something goes wrong.", 
+                    "doc": "The byte array data of the currently opened snapshot. `nil` if something goes wrong.",
                     "name": "string"
-                }, 
+                },
                 {
-                    "doc": "An error message if something goes wrong.", 
+                    "doc": "An error message if something goes wrong.",
                     "name": "string"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Sets the data for the currently opened snapshot.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span>  <span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n    <span class=\"kd\">local</span> <span class=\"n\">success</span><span class=\"p\">,</span> <span class=\"n\">error_message</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_set_data</span><span class=\"p\">(</span><span class=\"n\">my_data</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">success</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">snapshot_set_data ERROR:&quot;</span><span class=\"p\">,</span> <span class=\"n\">error_message</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n</pre></div>", 
-            "name": "snapshot_set_data", 
+            "description": "Sets the data for the currently opened snapshot.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code>  <span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n    <span class=\"kd\">local</span> <span class=\"n\">success</span><span class=\"p\">,</span> <span class=\"n\">error_message</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_set_data</span><span class=\"p\">(</span><span class=\"n\">my_data</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"n\">success</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;snapshot_set_data ERROR:&quot;</span><span class=\"p\">,</span> <span class=\"n\">error_message</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "snapshot_set_data",
             "parameters": [
                 {
-                    "doc": "The data to set.", 
-                    "name": "data", 
+                    "doc": "The data to set.",
+                    "name": "data",
                     "types": [
                         "string"
                     ]
                 }
-            ], 
+            ],
             "returnvalues": [
                 {
-                    "doc": "True if data was set for the currently opened snapshot.", 
+                    "doc": "True if data was set for the currently opened snapshot.",
                     "name": "boolean"
-                }, 
+                },
                 {
-                    "doc": "An error message if something goes wrong.", 
+                    "doc": "An error message if something goes wrong.",
                     "name": "string"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Check if a snapshot was opened.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">is_opened</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_is_opened</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "snapshot_is_opened", 
-            "parameters": [], 
+            "description": "Check if a snapshot was opened.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">is_opened</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_is_opened</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "snapshot_is_opened",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "A current snapshot state.", 
+                    "doc": "A current snapshot state.",
                     "name": "boolean"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Returns the maximum data size per snapshot cover image in bytes.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">image_size</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_get_max_image_size</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "snapshot_get_max_image_size", 
-            "parameters": [], 
+            "description": "Returns the maximum data size per snapshot cover image in bytes.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">image_size</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_get_max_image_size</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "snapshot_get_max_image_size",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "The maximum data size per snapshot cover image in bytes.", 
+                    "doc": "The maximum data size per snapshot cover image in bytes.",
                     "name": "number"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Returns the maximum data size per snapshot in bytes.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">data_size</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_get_max_save_size</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "snapshot_get_max_save_size", 
-            "parameters": [], 
+            "description": "Returns the maximum data size per snapshot in bytes.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">data_size</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_get_max_save_size</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "snapshot_get_max_save_size",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "The maximum data size per snapshot in bytes.", 
+                    "doc": "The maximum data size per snapshot in bytes.",
                     "name": "number"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Returns the conflicting snapshot data.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">bytes</span><span class=\"p\">,</span> <span class=\"n\">error_message</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_get_conflicting_data</span><span class=\"p\">()</span>\n  <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">bytes</span> <span class=\"k\">then</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">snapshot_get_conflicting_data ERROR:&quot;</span><span class=\"p\">,</span> <span class=\"n\">error_message</span><span class=\"p\">)</span>\n  <span class=\"k\">else</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">snapshot_get_conflicting_data:&quot;</span><span class=\"p\">,</span><span class=\"n\">bytes</span><span class=\"p\">)</span>\n      <span class=\"c1\">-- Do something with conflicting data data</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "snapshot_get_conflicting_data", 
-            "parameters": [], 
+            "description": "Returns the conflicting snapshot data.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">bytes</span><span class=\"p\">,</span> <span class=\"n\">error_message</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_get_conflicting_data</span><span class=\"p\">()</span>\n  <span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"n\">bytes</span> <span class=\"kr\">then</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;snapshot_get_conflicting_data ERROR:&quot;</span><span class=\"p\">,</span> <span class=\"n\">error_message</span><span class=\"p\">)</span>\n  <span class=\"kr\">else</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;snapshot_get_conflicting_data:&quot;</span><span class=\"p\">,</span><span class=\"n\">bytes</span><span class=\"p\">)</span>\n      <span class=\"c1\">-- Do something with conflicting data data</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "snapshot_get_conflicting_data",
+            "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "The byte array data of the conflicting snapshot. `nil` if something goes wrong.", 
+                    "doc": "The byte array data of the conflicting snapshot. `nil` if something goes wrong.",
                     "name": "string"
-                }, 
+                },
                 {
-                    "doc": "An error message if something goes wrong.", 
+                    "doc": "An error message if something goes wrong.",
                     "name": "boolean"
                 }
-            ], 
+            ],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Resolves a conflict using the data from the provided snapshot.", 
-            "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">gpgs</span> <span class=\"k\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_resolve_conflict</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">conflictId</span><span class=\"p\">,</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">SNAPSHOT_CONFLICTING</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-            "name": "snapshot_resolve_conflict", 
+            "description": "Resolves a conflict using the data from the provided snapshot.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">snapshot_resolve_conflict</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">conflictId</span><span class=\"p\">,</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">SNAPSHOT_CONFLICTING</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "snapshot_resolve_conflict",
             "parameters": [
                 {
-                    "doc": "The conflict id that you want to resolve. Provided in `message` table with `STATUS_CONFLICT` message type.", 
-                    "name": "conflictId", 
+                    "doc": "The conflict id that you want to resolve. Provided in `message` table with `STATUS_CONFLICT` message type.",
+                    "name": "conflictId",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "Type of the snapshot you want to use for conflict solving that can be one of the predefined constants below\n- `gpgs.SNAPSHOT_CURRENT`\n- `gpgs.SNAPSHOT_CONFLICTING`", 
-                    "name": "snapshotId", 
+                    "doc": "Type of the snapshot you want to use for conflict solving that can be one of the predefined constants below\n- `gpgs.SNAPSHOT_CURRENT`\n- `gpgs.SNAPSHOT_CONFLICTING`",
+                    "name": "snapshotId",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Submit a score to a leaderboard for the currently signed-in player.", 
-            "examples": "", 
-            "name": "leaderboard_submit_score", 
+            "description": "Submit a score to a leaderboard for the currently signed-in player.",
+            "examples": "",
+            "name": "leaderboard_submit_score",
             "parameters": [
                 {
-                    "doc": "", 
-                    "name": "leaderboardId", 
+                    "doc": "",
+                    "name": "leaderboardId",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "", 
-                    "name": "score", 
+                    "doc": "",
+                    "name": "score",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Asynchronously gets the top page of scores for a leaderboard.", 
-            "examples": "", 
-            "name": "leaderboard_get_top_scores", 
+            "description": "Asynchronously gets the top page of scores for a leaderboard.",
+            "examples": "",
+            "name": "leaderboard_get_top_scores",
             "parameters": [
                 {
-                    "doc": "", 
-                    "name": "leaderboardId", 
+                    "doc": "",
+                    "name": "leaderboardId",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "One of the gpgs.TIME_SPAN_ constants", 
-                    "name": "time_span", 
+                    "doc": "One of the gpgs.TIME_SPAN_ constants",
+                    "name": "time_span",
                     "types": [
                         "number"
                     ]
-                }, 
+                },
                 {
-                    "doc": "One of the gpgs.COLLECTION_ constants", 
-                    "name": "collection", 
+                    "doc": "One of the gpgs.COLLECTION_ constants",
+                    "name": "collection",
                     "types": [
                         "number"
                     ]
-                }, 
+                },
                 {
-                    "doc": "Between 1-25", 
-                    "name": "max_results", 
+                    "doc": "Between 1-25",
+                    "name": "max_results",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Asynchronously gets a player-centered page of scores for a leaderboard.", 
-            "examples": "", 
-            "name": "leaderboard_get_player_centered_scores", 
+            "description": "Asynchronously gets a player-centered page of scores for a leaderboard.",
+            "examples": "",
+            "name": "leaderboard_get_player_centered_scores",
             "parameters": [
                 {
-                    "doc": "", 
-                    "name": "leaderboardId", 
+                    "doc": "",
+                    "name": "leaderboardId",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "One of the gpgs.TIME_SPAN_ constants", 
-                    "name": "time_span", 
+                    "doc": "One of the gpgs.TIME_SPAN_ constants",
+                    "name": "time_span",
                     "types": [
                         "number"
                     ]
-                }, 
+                },
                 {
-                    "doc": "One of the gpgs.COLLECTION_ constants", 
-                    "name": "collection", 
+                    "doc": "One of the gpgs.COLLECTION_ constants",
+                    "name": "collection",
                     "types": [
                         "number"
                     ]
-                }, 
+                },
                 {
-                    "doc": "Between 1-25", 
-                    "name": "max_results", 
+                    "doc": "Between 1-25",
+                    "name": "max_results",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Show a leaderboard for a game specified by a leaderboardId.", 
-            "examples": "", 
-            "name": "leaderboard_show", 
+            "description": "Show a leaderboard for a game specified by a leaderboardId.",
+            "examples": "",
+            "name": "leaderboard_show",
             "parameters": [
                 {
-                    "doc": "", 
-                    "name": "leaderboardId", 
+                    "doc": "",
+                    "name": "leaderboardId",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "One of the gpgs.TIME_SPAN_ constants", 
-                    "name": "time_span", 
+                    "doc": "One of the gpgs.TIME_SPAN_ constants",
+                    "name": "time_span",
                     "types": [
                         "number"
                     ]
-                }, 
+                },
                 {
-                    "doc": "One of the gpgs.COLLECTION_ constants", 
-                    "name": "collection", 
-                    "types": [
-                        "number"
-                    ]
-                }
-            ], 
-            "returnvalues": [], 
-            "type": "FUNCTION"
-        }, 
-        {
-            "description": "Show the list of leaderboards.", 
-            "examples": "", 
-            "name": "leaderboard_list", 
-            "parameters": [], 
-            "returnvalues": [], 
-            "type": "FUNCTION"
-        }, 
-        {
-            "description": "Asynchronously gets a player-centered page of scores for a leaderboard.", 
-            "examples": "", 
-            "name": "leaderboard_get_player_score", 
-            "parameters": [
-                {
-                    "doc": "", 
-                    "name": "leaderboardId", 
-                    "types": [
-                        "string"
-                    ]
-                }, 
-                {
-                    "doc": "One of the gpgs.TIME_SPAN_ constants", 
-                    "name": "time_span", 
-                    "types": [
-                        "number"
-                    ]
-                }, 
-                {
-                    "doc": "One of the gpgs.COLLECTION_ constants", 
-                    "name": "collection", 
+                    "doc": "One of the gpgs.COLLECTION_ constants",
+                    "name": "collection",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Reveal achievement", 
-            "examples": "", 
-            "name": "achievement_reveal", 
+            "description": "Show the list of leaderboards.",
+            "examples": "",
+            "name": "leaderboard_list",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Asynchronously gets a player-centered page of scores for a leaderboard.",
+            "examples": "",
+            "name": "leaderboard_get_player_score",
             "parameters": [
                 {
-                    "doc": "", 
-                    "name": "achievementId", 
+                    "doc": "",
+                    "name": "leaderboardId",
                     "types": [
                         "string"
                     ]
-                }
-            ], 
-            "returnvalues": [], 
-            "type": "FUNCTION"
-        }, 
-        {
-            "description": "Unlock achievement", 
-            "examples": "", 
-            "name": "achievement_unlock", 
-            "parameters": [
+                },
                 {
-                    "doc": "", 
-                    "name": "achievementId", 
+                    "doc": "One of the gpgs.TIME_SPAN_ constants",
+                    "name": "time_span",
                     "types": [
-                        "string"
+                        "number"
                     ]
-                }
-            ], 
-            "returnvalues": [], 
-            "type": "FUNCTION"
-        }, 
-        {
-            "description": "Set achievement progress", 
-            "examples": "", 
-            "name": "achievement_set", 
-            "parameters": [
+                },
                 {
-                    "doc": "", 
-                    "name": "achievementId", 
-                    "types": [
-                        "string"
-                    ]
-                }, 
-                {
-                    "doc": "", 
-                    "name": "steps", 
+                    "doc": "One of the gpgs.COLLECTION_ constants",
+                    "name": "collection",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Increase achievement progress", 
-            "examples": "", 
-            "name": "achievement_increment", 
+            "description": "Reveal achievement",
+            "examples": "",
+            "name": "achievement_reveal",
             "parameters": [
                 {
-                    "doc": "", 
-                    "name": "achievementId", 
+                    "doc": "",
+                    "name": "achievementId",
                     "types": [
                         "string"
                     ]
-                }, 
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Unlock achievement",
+            "examples": "",
+            "name": "achievement_unlock",
+            "parameters": [
                 {
-                    "doc": "", 
-                    "name": "steps", 
+                    "doc": "",
+                    "name": "achievementId",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set achievement progress",
+            "examples": "",
+            "name": "achievement_set",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "achievementId",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "steps",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "Show achivements", 
-            "examples": "", 
-            "name": "achievement_show", 
-            "parameters": [], 
-            "returnvalues": [], 
-            "type": "FUNCTION"
-        }, 
-        {
-            "description": "", 
-            "examples": "", 
-            "name": "achievement_get", 
-            "parameters": [], 
-            "returnvalues": [], 
-            "type": "FUNCTION"
-        }, 
-        {
-            "description": "", 
-            "examples": "", 
-            "name": "event_increment", 
+            "description": "Increase achievement progress",
+            "examples": "",
+            "name": "achievement_increment",
             "parameters": [
                 {
-                    "doc": "", 
-                    "name": "eventId", 
+                    "doc": "",
+                    "name": "achievementId",
                     "types": [
                         "string"
                     ]
-                }, 
+                },
                 {
-                    "doc": "", 
-                    "name": "amount", 
+                    "doc": "",
+                    "name": "steps",
                     "types": [
                         "number"
                     ]
                 }
-            ], 
-            "returnvalues": [], 
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "", 
-            "examples": "", 
-            "name": "event_get", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Show achivements",
+            "examples": "",
+            "name": "achievement_show",
+            "parameters": [],
+            "returnvalues": [],
             "type": "FUNCTION"
-        }, 
+        },
         {
-            "description": "The login popup position at the top-left corner.", 
-            "examples": "", 
-            "name": "POPUP_POS_TOP_LEFT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "",
+            "examples": "",
+            "name": "achievement_get",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "event_increment",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "eventId",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "amount",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "event_get",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "The login popup position at the top-left corner.",
+            "examples": "",
+            "name": "POPUP_POS_TOP_LEFT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The login popup position at the top-center.", 
-            "examples": "", 
-            "name": "POPUP_POS_TOP_CENTER", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The login popup position at the top-center.",
+            "examples": "",
+            "name": "POPUP_POS_TOP_CENTER",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The login popup position at the top-right corner.", 
-            "examples": "", 
-            "name": "POPUP_POS_TOP_RIGHT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The login popup position at the top-right corner.",
+            "examples": "",
+            "name": "POPUP_POS_TOP_RIGHT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The login popup position at the center-left.", 
-            "examples": "", 
-            "name": "POPUP_POS_CENTER_LEFT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The login popup position at the center-left.",
+            "examples": "",
+            "name": "POPUP_POS_CENTER_LEFT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The login popup position at the center of the screen.", 
-            "examples": "", 
-            "name": "POPUP_POS_CENTER", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The login popup position at the center of the screen.",
+            "examples": "",
+            "name": "POPUP_POS_CENTER",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The login popup position at the center-right.", 
-            "examples": "", 
-            "name": "POPUP_POS_CENTER_RIGHT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The login popup position at the center-right.",
+            "examples": "",
+            "name": "POPUP_POS_CENTER_RIGHT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The login popup position at the bottom-left corner.", 
-            "examples": "", 
-            "name": "POPUP_POS_BOTTOM_LEFT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The login popup position at the bottom-left corner.",
+            "examples": "",
+            "name": "POPUP_POS_BOTTOM_LEFT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The login popup position at the bottom-centre.", 
-            "examples": "", 
-            "name": "POPUP_POS_BOTTOM_CENTER", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The login popup position at the bottom-centre.",
+            "examples": "",
+            "name": "POPUP_POS_BOTTOM_CENTER",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The login popup position at the bottom-right corner.", 
-            "examples": "", 
-            "name": "POPUP_POS_BOTTOM_RIGHT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The login popup position at the bottom-right corner.",
+            "examples": "",
+            "name": "POPUP_POS_BOTTOM_RIGHT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_MANUAL) for this constant", 
-            "examples": "", 
-            "name": "RESOLUTION_POLICY_MANUAL", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_MANUAL) for this constant",
+            "examples": "",
+            "name": "RESOLUTION_POLICY_MANUAL",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_LONGEST_PLAYTIME) for this constant", 
-            "examples": "", 
-            "name": "RESOLUTION_POLICY_LONGEST_PLAYTIME", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_LONGEST_PLAYTIME) for this constant",
+            "examples": "",
+            "name": "RESOLUTION_POLICY_LONGEST_PLAYTIME",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_LAST_KNOWN_GOOD) for this constant", 
-            "examples": "", 
-            "name": "RESOLUTION_POLICY_LAST_KNOWN_GOOD", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_LAST_KNOWN_GOOD) for this constant",
+            "examples": "",
+            "name": "RESOLUTION_POLICY_LAST_KNOWN_GOOD",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_MOST_RECENTLY_MODIFIED) for this constant", 
-            "examples": "", 
-            "name": "RESOLUTION_POLICY_MOST_RECENTLY_MODIFIED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_MOST_RECENTLY_MODIFIED) for this constant",
+            "examples": "",
+            "name": "RESOLUTION_POLICY_MOST_RECENTLY_MODIFIED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_HIGHEST_PROGRESS) for this constant", 
-            "examples": "", 
-            "name": "RESOLUTION_POLICY_HIGHEST_PROGRESS", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_HIGHEST_PROGRESS) for this constant",
+            "examples": "",
+            "name": "RESOLUTION_POLICY_HIGHEST_PROGRESS",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.login()`", 
-            "examples": "", 
-            "name": "MSG_SIGN_IN", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.login()`",
+            "examples": "",
+            "name": "MSG_SIGN_IN",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.silent_login()`", 
-            "examples": "", 
-            "name": "MSG_SILENT_SIGN_IN", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.silent_login()`",
+            "examples": "",
+            "name": "MSG_SILENT_SIGN_IN",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.logout()`", 
-            "examples": "", 
-            "name": "MSG_SIGN_OUT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.logout()`",
+            "examples": "",
+            "name": "MSG_SIGN_OUT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.snapshot_display_saves()`", 
-            "examples": "", 
-            "name": "MSG_SHOW_SNAPSHOTS", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.snapshot_display_saves()`",
+            "examples": "",
+            "name": "MSG_SHOW_SNAPSHOTS",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.snapshot_open()`", 
-            "examples": "", 
-            "name": "MSG_LOAD_SNAPSHOT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.snapshot_open()`",
+            "examples": "",
+            "name": "MSG_LOAD_SNAPSHOT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "An operation success.", 
-            "examples": "", 
-            "name": "STATUS_SUCCESS", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "An operation success.",
+            "examples": "",
+            "name": "STATUS_SUCCESS",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "An operation failed. Check the error field in the massage table.", 
-            "examples": "", 
-            "name": "STATUS_FAILED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "An operation failed. Check the error field in the massage table.",
+            "examples": "",
+            "name": "STATUS_FAILED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "A user wants to create new save as a result of `gpgs.snapshot_display_saves()` method. Turn off this button in `gpgs.snapshot_display_saves()` if you don't want to have this functionality.", 
-            "examples": "", 
-            "name": "STATUS_CREATE_NEW_SAVE", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "A user wants to create new save as a result of `gpgs.snapshot_display_saves()` method. Turn off this button in `gpgs.snapshot_display_saves()` if you don't want to have this functionality.",
+            "examples": "",
+            "name": "STATUS_CREATE_NEW_SAVE",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The result of the calling `gpgs.snapshot_open()` or 'gpgs.snapshot_resolve_conflict()' is a conflict. You need to make decision on how to solve this conflict using 'gpgs.snapshot_resolve_conflict()'.", 
-            "examples": "", 
-            "name": "STATUS_CONFLICT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The result of the calling `gpgs.snapshot_open()` or 'gpgs.snapshot_resolve_conflict()' is a conflict. You need to make decision on how to solve this conflict using 'gpgs.snapshot_resolve_conflict()'.",
+            "examples": "",
+            "name": "STATUS_CONFLICT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The second parameter for 'gpgs.snapshot_resolve_conflict()' method, which means that you want to choose the current snapshot as a snapshot for conflict solving.", 
-            "examples": "", 
-            "name": "SNAPSHOT_CURRENT", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The second parameter for 'gpgs.snapshot_resolve_conflict()' method, which means that you want to choose the current snapshot as a snapshot for conflict solving.",
+            "examples": "",
+            "name": "SNAPSHOT_CURRENT",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "The second parameter for 'gpgs.snapshot_resolve_conflict()' method, which means that you want to choose the conflicting snapshot as a snapshot for conflict solving.", 
-            "examples": "", 
-            "name": "SNAPSHOT_CONFLICTING", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "The second parameter for 'gpgs.snapshot_resolve_conflict()' method, which means that you want to choose the conflicting snapshot as a snapshot for conflict solving.",
+            "examples": "",
+            "name": "SNAPSHOT_CONFLICTING",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_NOT_FOUND) for this constant", 
-            "examples": "", 
-            "name": "ERROR_STATUS_SNAPSHOT_NOT_FOUND", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_NOT_FOUND) for this constant",
+            "examples": "",
+            "name": "ERROR_STATUS_SNAPSHOT_NOT_FOUND",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_CREATION_FAILED) for this constant", 
-            "examples": "", 
-            "name": "ERROR_STATUS_SNAPSHOT_CREATION_FAILED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_CREATION_FAILED) for this constant",
+            "examples": "",
+            "name": "ERROR_STATUS_SNAPSHOT_CREATION_FAILED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE) for this constant", 
-            "examples": "", 
-            "name": "ERROR_STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE) for this constant",
+            "examples": "",
+            "name": "ERROR_STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_COMMIT_FAILED) for this constant", 
-            "examples": "", 
-            "name": "ERROR_STATUS_SNAPSHOT_COMMIT_FAILED", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_COMMIT_FAILED) for this constant",
+            "examples": "",
+            "name": "ERROR_STATUS_SNAPSHOT_COMMIT_FAILED",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_FOLDER_UNAVAILABLE) for this constant", 
-            "examples": "", 
-            "name": "ERROR_STATUS_SNAPSHOT_FOLDER_UNAVAILABLE", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_FOLDER_UNAVAILABLE) for this constant",
+            "examples": "",
+            "name": "ERROR_STATUS_SNAPSHOT_FOLDER_UNAVAILABLE",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
-        }, 
+        },
         {
-            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_CONFLICT_MISSING) for this constant", 
-            "examples": "", 
-            "name": "ERROR_STATUS_SNAPSHOT_CONFLICT_MISSING", 
-            "parameters": [], 
-            "returnvalues": [], 
+            "description": "This constant is used in `message.error_status` table when `MSG_LOAD_SNAPSHOT` is `STATUS_FAILED`. [Official GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/GamesStatusCodes.html#STATUS_SNAPSHOT_CONFLICT_MISSING) for this constant",
+            "examples": "",
+            "name": "ERROR_STATUS_SNAPSHOT_CONFLICT_MISSING",
+            "parameters": [],
+            "returnvalues": [],
             "type": "VARIABLE"
         }
-    ], 
+    ],
     "info": {
-        "brief": "gpgs", 
-        "description": "Functions and constants for interacting with Google Play Game Services (GPGS) APIs", 
-        "group": "EXTENSIONS", 
-        "name": "gpgs", 
+        "brief": "gpgs",
+        "description": "Functions and constants for interacting with Google Play Game Services (GPGS) APIs",
+        "group": "EXTENSIONS",
+        "name": "gpgs",
         "namespace": "gpgs"
     }
 }
