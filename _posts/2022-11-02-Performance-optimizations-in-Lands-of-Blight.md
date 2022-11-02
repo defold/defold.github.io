@@ -47,11 +47,6 @@ To test the performance of the game we use an HTML5 build using a scene with 204
 
 ![](/images/posts/performance-optimizations-in-lands-of-blight/lob-many-enemies.jpeg)
 
-For collisions we use Box2D, but it turned out to be a bad choice as thosands of enemies simply was too much for Box2D to handle. To increase performance we use two Box2D worlds:
-
-1. One world for the player, enemies and projectiles
-2. Another world for pickups
-
 With ECS it is very easy to find bottlenecks by measuring the time spent in each system. The most time consuming systems are:
 
 1. `UpdateBox2dSystem` - Average: 4.67ms
@@ -82,7 +77,6 @@ System update written in C++:
 ![](/images/posts/performance-optimizations-in-lands-of-blight/lob-system-cpp.jpeg)
 
 
-
 #### Animations
 
 To make enemies look better when they move we use a squash animation:
@@ -102,6 +96,16 @@ The problem with this is that if we run this calculation for every enemy every f
 Instead of calculating it every frame we precalculate 100 points and let the engine do the animation using `go.animate()` instead of doing it in Lua code. We start by calculating the points in system init and in a second step we start the scale animation and let `go.animate()` linearly interpolate the scale between the precalculated points.
 
 ![](/images/posts/performance-optimizations-in-lands-of-blight/lob-enemy-squash-animation.jpeg)
+
+
+#### Physics
+
+For collisions we use Box2D, but it turned out to be a bad choice as thosands of enemies simply was too much for Box2D to handle. To increase performance we use two Box2D worlds:
+
+1. One world for the player, enemies and projectiles
+2. Another world for pickups
+
+The main idea behind this split is to reduce the number objects per world as it should be faster to update 2 worlds with 100 objects each compared to 1 world with 200 objects. There will also be much fewer velocity and position iterations in the world used for the pickups. In the world used for the pickups there collision detection between the player and pickups can be simplified as well.
 
 
 ### Garbage collection
