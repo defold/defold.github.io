@@ -6,7 +6,14 @@ layout: page
 {%- assign language = site.data.languageindex | where: "language", page.language | first -%}
 {%- for section in site.data.learnindex.navigation.manuals -%}
 	{%- for manual in section.items -%}
-		{%- if page.url contains manual.path -%}
+		{% comment %}https://stackoverflow.com/a/37026674{% endcomment %}
+		{%- assign manual_path = manual.path | append: "/" -%}
+		{%- assign manual_path_size = manual_path | size -%}
+		{%- assign page_url_size = page.url | size -%}
+		{%- assign start_index = page_url_size | minus: manual_path_size -%}
+		{%- assign result = page.url | slice: start_index, manual_path_size -%}
+		
+		{%- if result == manual_path -%}
 			{%- assign current_manual = manual -%}
 			{%- assign current_section = section -%}
 		{%- endif -%}
