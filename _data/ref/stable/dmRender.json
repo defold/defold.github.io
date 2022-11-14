@@ -228,8 +228,8 @@
       "members": [
         {
           "name": "m_Constants",
-          "doc": "the shader constants",
-          "type": "dmRender::HConstant[]"
+          "doc": "] the shader constants",
+          "type": "dmRender::HConstant["
         },
         {
           "name": "m_WorldTransform",
@@ -263,8 +263,8 @@
         },
         {
           "name": "m_Textures",
-          "doc": "the textures",
-          "type": "dmGraphics::HTexture[]"
+          "doc": "] the textures",
+          "type": "dmGraphics::HTexture["
         },
         {
           "name": "m_PrimitiveType",
@@ -1503,6 +1503,42 @@
           "doc": "the constants buffer",
           "types": [
             "dmRender::HNamedConstantBuffer"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "IterateNamedConstants",
+      "brief": "Iterates over the constants",
+      "description": "Iterates over the constants",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "the constants buffer",
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        },
+        {
+          "name": "callback",
+          "doc": "the callback function void (<em>callback)(dmhash_t name_hash, void</em> ctx)",
+          "types": [
+            "void (*callback)(dmhash_t name_hash, void* ctx)"
+          ]
+        },
+        {
+          "name": "ctx",
+          "doc": "the callback context",
+          "types": [
+            "void*"
           ]
         }
       ],
