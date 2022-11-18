@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Improving on our json Lua module
-excerpt: We've had a long standing request to implement a json.encode() function in our json Lua module.
+excerpt: We've had a long standing request to implement a JSON decode function in our json Lua module.
 Previously, our users have had to resort to using a plugin, such as the excellent defold-cjson extension from our community.
 author: Mathias Westerdahl
 tags: ["code", "engine"]
