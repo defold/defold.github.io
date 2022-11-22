@@ -694,6 +694,114 @@
       "tparams": [],
       "members": [],
       "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmBuffer::SetMetaData",
+      "brief": "set a metadata entry",
+      "description": "Create or update a new metadata entry with a number of values of a specific type.\nIt will allocate space to store these values.",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "RESULT_OK if the metadata entry was successfully stored",
+          "types": [
+            "dmBuffer::Result"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "hbuffer",
+          "doc": "A buffer handle",
+          "types": [
+            "dmBuffer::HBuffer"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "The entry name as a hash",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "data",
+          "doc": "A pointer to an array of the values",
+          "types": [
+            "void*"
+          ]
+        },
+        {
+          "name": "count",
+          "doc": "Number of values in the array",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "type",
+          "doc": "The type of the values",
+          "types": [
+            "dmBuffer::ValueType"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmBuffer::GetMetaData",
+      "brief": "retrieve a metadata entry",
+      "description": "Retrieve metadata entry information",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "hbuffer",
+          "doc": "A buffer handle",
+          "types": [
+            "dmBuffer::HBuffer"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "The entry name as a hash",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "data",
+          "doc": "Gets the internal address of metadata values",
+          "types": [
+            "void**"
+          ]
+        },
+        {
+          "name": "count",
+          "doc": "Gets the number of metadata values stored",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "type",
+          "doc": "Gets the type of values of the metadata",
+          "types": [
+            "dmBuffer::ValueType"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
   ],
   "info": {
