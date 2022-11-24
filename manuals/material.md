@@ -81,6 +81,10 @@ go.set("#sprite", "tint", vmath.vector4(1,0,0,1))
 go.animate("#sprite", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1), go.EASING_LINEAR, 2)
 ```
 
+<div class='sidenote' markdown='1'>
+In order for a material constant of type `CONSTANT_TYPE_USER` to be available using `go.get()` and `go.set()` it has to be used in the shader program. If the constant is defined in the material but not used in the program it will be removed from the material and it will not be available at run-time.
+</div>
+
 ## Samplers
 
 Samplers are used to sample the color information from a texture (a tile source or atlas). The color information can then be used for calculations in the shader program.
