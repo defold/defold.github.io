@@ -128,43 +128,13 @@
     },
     {
       "type": "FUNCTION",
-      "name": "sys.get_config",
-      "brief": "get config value",
-      "description": "Get config value from the game.project configuration file.\nIn addition to the project file, configuration values can also be passed\nto the runtime as command line arguments with the <code>--config</code> argument.",
+      "name": "sys.get_config_string",
+      "brief": "get string config value with optional default value",
+      "description": "Get string config value from the game.project configuration file with optional default value",
       "returnvalues": [
         {
           "name": "value",
-          "doc": "config value as a string. nil if the config key doesn't exists",
-          "types": [
-            "string"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "key",
-          "doc": "key to get value for. The syntax is SECTION.KEY",
-          "types": [
-            "string"
-          ]
-        }
-      ],
-      "examples": "Get display width\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">width</span> <span class=\"o\">=</span> <span class=\"nb\">tonumber</span><span class=\"p\">(</span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config</span><span class=\"p\">(</span><span class=\"s2\">&quot;display.width&quot;</span><span class=\"p\">))</span>\n</code></pre></div>\n\nStart the engine with a bootstrap config override and a custom config value\n<div class=\"codehilite\"><pre><span></span><code>$ mygame --config<span class=\"o\">=</span>bootstrap.main_collection<span class=\"o\">=</span>/mytest.collectionc --config<span class=\"o\">=</span>mygame.testmode<span class=\"o\">=</span><span class=\"m\">1</span>\n</code></pre></div>\n\nSet and read a custom config value\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">testmode</span> <span class=\"o\">=</span> <span class=\"nb\">tonumber</span><span class=\"p\">(</span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config</span><span class=\"p\">(</span><span class=\"s2\">&quot;mygame.testmode&quot;</span><span class=\"p\">))</span>\n</code></pre></div>",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "sys.get_config",
-      "brief": "get config value with default value",
-      "description": "Get config value from the game.project configuration file with default value",
-      "returnvalues": [
-        {
-          "name": "value",
-          "doc": "config value as a string. default_value if the config key does not exist",
+          "doc": "config value as a string. default_value if the config key does not exist. nil if no default value was supplied.",
           "types": [
             "string"
           ]
@@ -179,14 +149,88 @@
           ]
         },
         {
-          "name": "default_value",
-          "doc": "default value to return if the value does not exist",
+          "name": "[default_value]",
+          "doc": "(optional) default value to return if the value does not exist",
           "types": [
             "string"
           ]
         }
       ],
-      "examples": "Get user config value\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">speed</span> <span class=\"o\">=</span> <span class=\"nb\">tonumber</span><span class=\"p\">(</span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game.speed&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;10.23&quot;</span><span class=\"p\">))</span>\n</code></pre></div>",
+      "examples": "Get user config value\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config_string</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game.text&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;default text&quot;</span><span class=\"p\">))</span>\n</code></pre></div>\n\nStart the engine with a bootstrap config override and add a custom config value\n<div class=\"codehilite\"><pre><span></span><code>$ dmengine --config<span class=\"o\">=</span>bootstrap.main_collection<span class=\"o\">=</span>/mytest.collectionc --config<span class=\"o\">=</span>mygame.testmode<span class=\"o\">=</span><span class=\"m\">1</span>\n</code></pre></div>\n\nRead the custom config value from the command line\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">testmode</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config_int</span><span class=\"p\">(</span><span class=\"s2\">&quot;mygame.testmode&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "sys.get_config_int",
+      "brief": "get integer config value with optional default value",
+      "description": "Get integer config value from the game.project configuration file with optional default value",
+      "returnvalues": [
+        {
+          "name": "value",
+          "doc": "config value as an integer. default_value if the config key does not exist. nil if no default value was supplied.",
+          "types": [
+            "integer"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "doc": "key to get value for. The syntax is SECTION.KEY",
+          "types": [
+            "string"
+          ]
+        },
+        {
+          "name": "[default_value]",
+          "doc": "(optional) default value to return if the value does not exist",
+          "types": [
+            "integer"
+          ]
+        }
+      ],
+      "examples": "Get user config value\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">speed</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config_int</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game.speed&quot;</span><span class=\"p\">,</span> <span class=\"mi\">20</span><span class=\"p\">)</span> <span class=\"c1\">-- with default value</span>\n</code></pre></div>\n\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">testmode</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config_int</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game.testmode&quot;</span><span class=\"p\">)</span> <span class=\"c1\">-- without default value</span>\n<span class=\"kr\">if</span> <span class=\"n\">testmode</span> <span class=\"o\">~=</span> <span class=\"kc\">nil</span> <span class=\"kr\">then</span>\n    <span class=\"c1\">-- do stuff</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "sys.get_config_number",
+      "brief": "get number config value with optional default value",
+      "description": "Get number config value from the game.project configuration file with optional default value",
+      "returnvalues": [
+        {
+          "name": "value",
+          "doc": "config value as an number. default_value if the config key does not exist. nil if no default value was supplied.",
+          "types": [
+            "number"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "doc": "key to get value for. The syntax is SECTION.KEY",
+          "types": [
+            "string"
+          ]
+        },
+        {
+          "name": "[default_value]",
+          "doc": "(optional) default value to return if the value does not exist",
+          "types": [
+            "number"
+          ]
+        }
+      ],
+      "examples": "Get user config value\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">speed</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config_float</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game.speed&quot;</span><span class=\"p\">,</span> <span class=\"mf\">20.0</span><span class=\"p\">)</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],

@@ -145,6 +145,63 @@
       "tparams": [],
       "members": [],
       "notes": []
+    },
+    {
+      "type": "MACRO",
+      "name": "DM_DECLARE_CONFIGFILE_EXTENSION",
+      "brief": "declare a new config file extension",
+      "description": "Declare and register new config file extension to the engine.\nEach get function should return true if it sets a proper value. Otherwise return false.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "symbol",
+          "doc": "external extension symbol description (no quotes).",
+          "types": [
+            "symbol"
+          ]
+        },
+        {
+          "name": "name",
+          "doc": "extension name. Human readable.",
+          "types": [
+            "const char*"
+          ]
+        },
+        {
+          "name": "init",
+          "doc": "init function. May be null.",
+          "types": [
+            "function(dmConfigFile::HConfig)"
+          ]
+        },
+        {
+          "name": "get_string",
+          "doc": "Gets a string property. May be null.",
+          "types": [
+            "function(const char* section_plus_name, const char* default, const char** out)"
+          ]
+        },
+        {
+          "name": "get_int",
+          "doc": "Gets an int property. May be null.",
+          "types": [
+            "function(const char* section_plus_name, int default, int* out)"
+          ]
+        },
+        {
+          "name": "get_float",
+          "doc": "Gets a float property. May be null.",
+          "types": [
+            "function(const char* section_plus_name, float default, float* out)"
+          ]
+        }
+      ],
+      "examples": "Register a new config file extension:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_DECLARE_CONFIGFILE_EXTENSION</span><span class=\"p\">(</span><span class=\"n\">MyConfigfileExtension</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;MyConfigfileExtension&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">create</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">destroy</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">get_string</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">get_int</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">get_float</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
   ],
   "info": {
