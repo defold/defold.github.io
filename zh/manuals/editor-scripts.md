@@ -38,7 +38,7 @@ return M
 ## Editor API
 
 可以使用API中 `editor` 包与编辑器进行交互:
-- `editor.platform` —字符串, 在Windows上是 `"x86_64-win32"`, 在macOS上是 `"x86_64-darwin"`, 在Linux上是 `"x86_64-linux"`.
+- `editor.platform` —字符串, 在Windows上是 `"x86_64-win32"`, 在macOS上是 `"x86_64-macos"`, 在Linux上是 `"x86_64-linux"`.
 - `editor.get(node_id, property)` — 得到编辑器里某些节点的值. 编辑器里的节点是可变实体, 比如脚本或者集合文件, 集合中的游戏对象, 作为资源加载的 json 文件, 等等. `node_id` is a userdata that is passed to the editor script by the editor. Alternatively, you can pass resource path instead of node id, for example `"/main/game.script"`. `property` is a string. Currently these properties are supported:
   - `"path"` — file path from the project folder for *resources* — entities that exist as files. Example of returned value: `"/main/game.script"`
   - `"text"` — text content of a resource editable as text (such as script files or json). Example of returned value: `"function init(self)\nend"`. Please note that this is not the same as reading file with `io.open()`, because you can edit a file without saving it, and these edits are available only when accessing `"text"` property.

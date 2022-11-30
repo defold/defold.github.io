@@ -89,7 +89,7 @@ Defold неплохо протестирован и очень редко дае
 Если вы делаете сборки без нативных расширений, символы отладки доступны на [веб-сайте для скачивания Defold](http://d.defold.com): 
 
 * iOS - Файлы `engine/armv7-darwin/dmengine_release.dSYM.zip` и` engine/arm64-darwin/dmengine_release.dSYM.zip` содержат символы отладки для 32- и 64-битных версий движка.
-* macOS - Файл `engine/x86_64-darwin/dmengine_release.dSYM.zip` содержит символы отладки.
+* macOS - Файл `engine/x86_64-macos/dmengine_release.dSYM.zip` содержит символы отладки.
 * Android - Файлы движков `engine/armv7-android/dmengine.apk` и `engine/arm64-android/dmengine.apk` включают символы отладки для 32- и 64-битных версий движка.
 * Linux - Файл движка `engine/x86_64-linux/dmengine_release` включает символы отладки.
 * Windows - Файл `engine/x86_64-win32/dmengine_release.pdb` содержит символы отладки.
