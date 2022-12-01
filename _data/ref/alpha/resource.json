@@ -339,6 +339,67 @@
     },
     {
       "type": "FUNCTION",
+      "name": "resource.set_atlas",
+      "brief": "set atlas data",
+      "description": "Sets the data for a specific atlas resource. Setting new atlas data is specified by passing in\na texture path for the backing texture of the atlas, a list of geometries and a list of animations\nthat map to the entries in the geometry list. The geometry entries are represented by three lists:\nvertices, uvs and indices that together represent triangles that are used in other parts of the\nengine to produce render objects from.\nVertex and uv coordinates for the geometries are expected to be\nin pixel coordinates where 0,0 is the top left corner of the texture.\nNote that there is no automatic padding or margin support when setting custom data,\nwhich could potentially cause filtering artifacts if used with a material sampler that has linear filtering.\nIf that is an issue, you need to calculate padding and margins manually before passing in the geometry data to\nthis function.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "path",
+          "doc": "The path to the atlas resource",
+          "types": [
+            "hash",
+            "string"
+          ]
+        },
+        {
+          "name": "table",
+          "doc": "A table containing info about the atlas. Supported entries:\n<ul>\n<li>\n<dl>\n<dt><code>texture</code></dt>\n<dd><span class=\"type\">string</span> the path to the texture resource, e.g \"/main/my_texture.texturec\"</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>animations</code></dt>\n<dd><span class=\"type\">table</span> a list of the animations in the atlas. Supports the following fields:</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">string</span> the id of the animation, used in e.g sprite.play_animation</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>width</code></dt>\n<dd><span class=\"type\">integer</span> the width of the animation</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>height</code></dt>\n<dd><span class=\"type\">integer</span> the height of the animation</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>frame_start</code></dt>\n<dd><span class=\"type\">integer</span> index to the first geometry of the animation. Indices are lua based and must be in the range of 1 .. <number-of-geometries> in atlas.</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>frame_end</code></dt>\n<dd><span class=\"type\">integer</span> index to the last geometry of the animation (non-inclusive). Indices are lua based and must be in the range of 1 .. <number-of-geometries> in atlas.</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>playback</code></dt>\n<dd><span class=\"type\">constant</span> optional playback mode of the animation, the default value is <a href=\"/ref/go#go.PLAYBACK_ONCE_FORWARD\">go.PLAYBACK_ONCE_FORWARD</a></dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>fps</code></dt>\n<dd><span class=\"type\">integer</span> optional fps of the animation, the default value is 30</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>flip_vertical</code></dt>\n<dd><span class=\"type\">boolean</span> optional flip the animation vertically, the default value is false</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>flip_horizontal</code></dt>\n<dd><span class=\"type\">boolean</span> optional flip the animation horizontally, the default value is false</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>geometries</code></dt>\n<dd><span class=\"type\">table</span> A list of the geometries that should map to the texture data. Supports the following fields:</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>vertices</code></dt>\n<dd><span class=\"type\">table</span> a list of the vertices in texture space of the geometry in the form {px0, py0, px1, py1, ..., pxn, pyn}</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>uvs</code></dt>\n<dd><span class=\"type\">table</span> a list of the uv coordinates in texture space of the geometry in the form of {u0, v0, u1, v1, ..., un, vn}</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>indices</code></dt>\n<dd><span class=\"type\">table</span> a list of the indices of the geometry in the form {i0, i1, i2, ..., in}. Each tripe in the list represents a triangle.</dd>\n</dl>\n</li>\n</ul>",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "examples": "Sets atlas data for a 256x256 texture with a single animation being rendered as a quad\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">params</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n        <span class=\"n\">texture</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;/main/my_256x256_texture.texturec&quot;</span><span class=\"p\">,</span>\n        <span class=\"n\">animations</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n            <span class=\"p\">{</span>\n                <span class=\"n\">id</span>          <span class=\"o\">=</span> <span class=\"s2\">&quot;my_animation&quot;</span><span class=\"p\">,</span>\n                <span class=\"n\">width</span>       <span class=\"o\">=</span> <span class=\"mi\">256</span><span class=\"p\">,</span>\n                <span class=\"n\">height</span>      <span class=\"o\">=</span> <span class=\"mi\">256</span><span class=\"p\">,</span>\n                <span class=\"n\">frame_start</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span>\n                <span class=\"n\">frame_end</span>   <span class=\"o\">=</span> <span class=\"mi\">2</span><span class=\"p\">,</span>\n            <span class=\"p\">}</span>\n        <span class=\"p\">},</span>\n        <span class=\"n\">geometries</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n            <span class=\"p\">{</span>\n                <span class=\"n\">vertices</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n                    <span class=\"mi\">0</span><span class=\"p\">,</span>   <span class=\"mi\">0</span><span class=\"p\">,</span>\n                    <span class=\"mi\">0</span><span class=\"p\">,</span>   <span class=\"mi\">256</span><span class=\"p\">,</span>\n                    <span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">256</span><span class=\"p\">,</span>\n                    <span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">0</span>\n                <span class=\"p\">},</span>\n                <span class=\"n\">uvs</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n                    <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span>\n                    <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">256</span><span class=\"p\">,</span>\n                    <span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">256</span><span class=\"p\">,</span>\n                    <span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">0</span>\n                <span class=\"p\">},</span>\n                <span class=\"n\">indices</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">3</span> <span class=\"p\">}</span>\n            <span class=\"p\">}</span>\n        <span class=\"p\">}</span>\n    <span class=\"p\">}</span>\n    <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">set_atlas</span><span class=\"p\">(</span><span class=\"s2\">&quot;/main/test.a.texturesetc&quot;</span><span class=\"p\">,</span> <span class=\"n\">params</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "resource.get_atlas",
+      "brief": "Get atlas data",
+      "description": "Returns the atlas data for an atlas",
+      "returnvalues": [
+        {
+          "name": "data",
+          "doc": "A table with the following entries:\n<ul>\n<li>texture</li>\n<li>geometries</li>\n<li>animations</li>\n</ul>\nSee <a href=\"/ref/resource#resource.set_atlas\">resource.set_atlas</a> for a detailed description of each field",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "path",
+          "doc": "The path to the atlas resource",
+          "types": [
+            "hash",
+            "string"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "resource.set_sound",
       "brief": "Update internal sound resource",
       "description": "Update internal sound resource (wavc/oggc) with new data",
