@@ -63,7 +63,10 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "This is a simplified URI parser and does not conform to rfc2396.\n      Missing features are: parameters, query, fragment part of URI and support for escaped sequences",
+        "For http m_Port is set to 80 if not specified in uri."
+      ]
     },
     {
       "type": "FUNCTION",
@@ -106,7 +109,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "If dst=0 the bytes_written will return the number of required bytes (including null character)"
+      ]
     },
     {
       "type": "FUNCTION",
@@ -135,7 +140,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "The output will never be larger than the input."
+      ]
     }
   ],
   "info": {
@@ -145,6 +152,7 @@
     "description": "URI functions.",
     "path": "engine/dlib/src/dmsdk/dlib/uri.h",
     "file": "dmsdk/dlib/uri.h",
+    "notes": [],
     "group": "DEFOLD SDK"
   }
 }

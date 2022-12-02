@@ -48,7 +48,9 @@
           "type": "dmWebServer::HServer"
         }
       ],
-      "notes": []
+      "notes": [
+        "This struct is kept as-is for backwards compatibility. In practice, the struct passed to the callbacks is of the type dmEngine::ExtensionAppParams"
+      ]
     },
     {
       "type": "STRUCT",
@@ -220,7 +222,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "Can only be called within the AppInit function for an extension."
+      ]
     },
     {
       "type": "MACRO",
@@ -313,7 +317,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "Note that the delegate needs to be registered before the UIApplicationMain in order to\nhandle any earlier callbacks.\n\nThis function is only available on iOS. [icon:ios]"
+      ]
     },
     {
       "type": "FUNCTION",
@@ -429,6 +435,7 @@
     "description": "Functions for creating and controlling engine native extension libraries.",
     "path": "engine/dlib/src/dmsdk/extension/extension.h",
     "file": "dmsdk/extension/extension.h",
+    "notes": [],
     "group": "DEFOLD SDK"
   }
 }

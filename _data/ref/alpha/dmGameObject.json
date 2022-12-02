@@ -27,7 +27,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "This function is only available/used in debug builds, when traversing the scene graph in order to export\nthis data for external tools (e.g. external testing libraries like Poco)"
+      ]
     },
     {
       "type": "FUNCTION",
@@ -1515,7 +1517,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "Calling this function during update is not permitted. Use #Spawn instead for deferred creation"
+      ]
     },
     {
       "type": "FUNCTION",
@@ -2320,7 +2324,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "The concept of a `scene node` only exists here, for the purposes of inspecting the scene graph for inspection and testing purposes only."
+      ]
     },
     {
       "type": "STRUCT",
@@ -2371,7 +2377,10 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "The dmGameObject::HRegister is obtained from the `dmEngine::GetGameObjectRegister(dmExtension::AppParams)`",
+        "Traversing the scene like this is not efficient. These functions are here for inspection and testing purposes only."
+      ]
     },
     {
       "type": "FUNCTION",
@@ -2491,7 +2500,9 @@
           "type": ""
         }
       ],
-      "notes": []
+      "notes": [
+        "Since we don't support text properties, we'll keep a separate enum here for now"
+      ]
     },
     {
       "type": "STRUCT",
@@ -2571,7 +2582,10 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "Getting the properties like this is not efficient. These functions are here for inspection and testing purposes only.",
+        "Reverse hashes via `dmHashReverseSafe64()` isn't available in release builds."
+      ]
     },
     {
       "type": "FUNCTION",
@@ -2725,6 +2739,7 @@
     "brief": "SDK GameObject script API documentation",
     "description": "<span class=\"file\"><dmsdk/gameobject/script.h></span>",
     "path": "",
-    "file": ""
+    "file": "",
+    "notes": []
   }
 }
