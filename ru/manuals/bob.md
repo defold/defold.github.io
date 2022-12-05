@@ -149,7 +149,7 @@ usage: bob [options] [commands]
 Доступные платформы и архитектуры
 Available platforms and architectures:
 
-`x86_64-macos`
+`x86_64-darwin`
 : macOS 64 бита 
 
 `x86_64-win32`
