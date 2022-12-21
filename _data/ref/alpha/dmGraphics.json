@@ -443,6 +443,20 @@
       "notes": []
     },
     {
+      "type": "TYPEDEF",
+      "name": "HVertexStreamDeclaration",
+      "brief": "Vertex stream declaration handle",
+      "description": "Vertex stream declaration handle",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
       "type": "ENUM",
       "name": "HandleResult",
       "brief": "",
@@ -1088,56 +1102,16 @@
       "notes": []
     },
     {
-      "type": "STRUCT",
-      "name": "VertexElement",
-      "brief": "",
-      "description": "",
-      "returnvalues": [],
-      "parameters": [],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [
-        {
-          "name": "m_Name",
-          "doc": "name of the element (e.g. \"position\")",
-          "type": "const char*"
-        },
-        {
-          "name": "m_Stream",
-          "doc": "stream index",
-          "type": "uint32_t"
-        },
-        {
-          "name": "m_Size",
-          "doc": "number of elements (e.g. 3 for \"position\")",
-          "type": "uint32_t"
-        },
-        {
-          "name": "m_Type",
-          "doc": "data type",
-          "type": "dmGraphics::Type"
-        },
-        {
-          "name": "m_Normalize",
-          "doc": "if set, will normalize the output in the program",
-          "type": "bool"
-        }
-      ],
-      "notes": []
-    },
-    {
       "type": "FUNCTION",
-      "name": "NewVertexDeclaration",
-      "brief": "Create new vertex declaration",
-      "description": "Create new vertex declaration",
+      "name": "NewVertexStreamDeclaration",
+      "brief": "Create new vertex stream declaration. A stream dec...",
+      "description": "Create new vertex stream declaration. A stream declaration contains a list of vertex streams\nthat should be used to create a vertex declaration from.",
       "returnvalues": [
         {
           "name": "declaration",
           "doc": "the vertex declaration",
           "types": [
-            "dmGraphics::HVertexDeclaration"
+            "dmGraphics::HVertexStreamDeclaration"
           ]
         }
       ],
@@ -1148,19 +1122,77 @@
           "types": [
             "dmGraphics::HContext"
           ]
-        },
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "AddVertexStream",
+      "brief": "Adds a stream to a stream declaration",
+      "description": "Adds a stream to a stream declaration",
+      "returnvalues": [],
+      "parameters": [
         {
-          "name": "element",
-          "doc": "the array of vertex elements",
+          "name": "context",
+          "doc": "the context",
           "types": [
-            "dmGraphics::VertexElement*"
+            "dmGraphics::HContext"
           ]
         },
         {
-          "name": "count",
-          "doc": "the number of items in the element array",
+          "name": "name",
+          "doc": "the name of the stream",
+          "types": [
+            "const char*"
+          ]
+        },
+        {
+          "name": "size",
+          "doc": "the size of the stream, i.e number of components",
           "types": [
             "uint32_t"
+          ]
+        },
+        {
+          "name": "type",
+          "doc": "the data type of the stream",
+          "types": [
+            "dmGraphics::Type"
+          ]
+        },
+        {
+          "name": "normalize",
+          "doc": "true if the stream should be normalized in the 0..1 range",
+          "types": [
+            "bool"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "DeleteVertexStreamDeclaration",
+      "brief": "Delete vertex stream declaration",
+      "description": "Delete vertex stream declaration",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "stream_declaration",
+          "doc": "the vertex stream declaration",
+          "types": [
+            "dmGraphics::HVertexStreamDeclaration"
           ]
         }
       ],
@@ -1174,8 +1206,8 @@
     {
       "type": "FUNCTION",
       "name": "NewVertexDeclaration",
-      "brief": "Create new vertex declaration",
-      "description": "Create new vertex declaration",
+      "brief": "Create new vertex declaration from a vertex stream...",
+      "description": "Create new vertex declaration from a vertex stream declaration",
       "returnvalues": [
         {
           "name": "declaration",
@@ -1194,17 +1226,47 @@
           ]
         },
         {
-          "name": "element",
-          "doc": "the array of vertex elements",
+          "name": "stream_declaration",
+          "doc": "the vertex stream declaration",
           "types": [
-            "dmGraphics::VertexElement*"
+            "dmGraphics::HVertexStreamDeclaration"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "NewVertexDeclaration",
+      "brief": "Create new vertex declaration from a vertex stream...",
+      "description": "Create new vertex declaration from a vertex stream declaration and an explicit stride value,\nwhere the stride is the number of bytes between each consecutive vertex in a vertex buffer",
+      "returnvalues": [
+        {
+          "name": "declaration",
+          "doc": "the vertex declaration",
+          "types": [
+            "dmGraphics::HVertexDeclaration"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "context",
+          "doc": "the context",
+          "types": [
+            "dmGraphics::HContext"
           ]
         },
         {
-          "name": "count",
-          "doc": "the number of items in the element array",
+          "name": "stream_declaration",
+          "doc": "the vertex stream declaration",
           "types": [
-            "uint32_t"
+            "dmGraphics::HVertexStreamDeclaration"
           ]
         },
         {
