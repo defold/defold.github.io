@@ -12,7 +12,7 @@ Skeletal animation of 3D models use the bones of the model to apply deformation 
 
 For details on how to import 3D data into a Model for animation, see the [Model documentation](/manuals/model).
 
-  ![Blender animation](../images/animation/blender_animation.png){.inline srcset="images/animation/blender_animation@2x.png 2x"}
+  ![Blender animation](../images/animation/blender_animation.png)
   ![Wiggle loop](../images/animation/suzanne.gif)
 
 
