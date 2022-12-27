@@ -1,6 +1,6 @@
 
 <div class="{% if include.link.size > 0 %}clickable {% endif %}card center compact {{ include.class | default: 'light'}}" onclick="location.href='{{ include.link }}';">
 <div>
-<img src="{{ include.image }}"/>
+<img src="{{ include.image }}" loading="lazy"/>
 </div>
 </div>
