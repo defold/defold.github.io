@@ -4,7 +4,6 @@
 {%- assign layout_heatmap = layout.heatmap | default: false -%}
 {%- assign heatmap = page_heatmap == true and layout_heatmap == true -%}
 {%- if page_heatmap == true or layout_heatmap == true -%}
-{%- include hotjar.html -%}
 {%- endif -%}
 <title>{{ page.title }}</title>
 
