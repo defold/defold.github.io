@@ -91,7 +91,7 @@ config.engine = defold -- Tell Nakama to use Defold (it can theoretically also w
 local client = nakama.create_client(config)
 ```
 
-Server config in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L136-L146](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L136-L146)
+Server config in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L136-L146](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L134-L144)
 
 
 ## Authentication
@@ -101,12 +101,11 @@ We are now ready to get your game online, but first we need a way for players to
 We generate a UUID (Unique User Id), based on the MAC address of the network adapter, and use it to authenticate with:
 
 ```Lua
--- our login function using a device token
+-- authentication using device id
 local function device_login(client)
-	local body = nakama.create_api_account_device(defold.uuid())
 	-- login using the token and create an account if the user
 	-- doesn't already exist
-	local result = nakama.authenticate_device(client, body, true)
+	local result = nakama.authenticate_device(client, defold.uuid(), nil, true)
 	if result.token then
 		-- store the token and use it when communicating with the server
 		nakama.set_bearer_token(client, result.token)
@@ -117,7 +116,7 @@ local function device_login(client)
 end
 ```
 
-Device login in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L19-L32](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L19-L32)
+Device login in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L19-L32](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L20-L32)
 
 
 ## Creating a socket connection
@@ -133,7 +132,7 @@ if not ok then
 end
 ```
 
-Creating the socket in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L162-L171](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L162-L171)
+Creating the socket in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L160-L170](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L162-L171)
 
 
 ## Finding an opponent using the matchmaker
@@ -150,14 +149,13 @@ The first step is to add the player to the matchmaking pool of users:
 ```Lua
 -- find a match with any other player
 -- make sure the match contains exactly 2 users (min 2 and max 2)
-local message = nakama.create_matchmaker_add_message("*", 2, 2)
-local result = nakama.socket_send(socket, message)
+local result = realtime.matchmaker_add(socket, 2, 2, "*")
 if result.error then
 	print(result.error.message)
 end
 ```
 
-Adding the player to the matchmaker in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L80-L87](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L80-L87)
+Adding the player to the matchmaker in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L79-L86](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L80-L87)
 
 
 ### Getting matched
@@ -165,17 +163,15 @@ Adding the player to the matchmaker in XOXO: [https://github.com/defold/game-xox
 Now that we have added the authenticated user to the matchmaking pool we also need to make sure we are notified when a match is found. Nakama has a number of different events which you can subscribe to and among them is an event when the matchmaker has found a match:
 
 ```Lua
-nakama.on_matchmakermatched(socket, function(message)
-	-- make sure we got matched
+realtime.on_matchmaker_matched(socket, function(message)
 	local matched = message.matchmaker_matched
-	if matched then
-		print(matched.match_id)
-		print(matched.token)
+	if matched and (matched.match_id or matched.token) then
+		print("Joined match")
 	end
 end)
 ```
 
-Matched event listener in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L70-L77](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L70-L77)
+Matched event listener in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L68-L75](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L70-L77)
 
 
 ### Joining the match
@@ -183,14 +179,14 @@ Matched event listener in XOXO: [https://github.com/defold/game-xoxo-nakama-clie
 When a match has been found the player has a choice of either joining the match or declining. Here's how to join a match given a match id and a token:
 
 ```Lua
-local message = nakama.create_match_join_message(match_id, token)
-local result = nakama.socket_send(socket, message)
+local result = realtime.match_join(socket, match_id, token)
 if result.match then
 	print("Match joined!")
 end
+
 ```
 
-Joining the match in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L38-L49](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L38-L49)
+Joining the match in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L38-L48](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L38-L49)
 
 
 ## Playing a match of Tic-Tac-Toe
@@ -209,15 +205,15 @@ local data = json.encode({
 	row = row,
 	col = col,
 })
-local message = nakama.create_match_data_message(match_id, OP_CODE_MOVE, data)
-local result = nakama.socket_send(socket, message)
+print("Sending match_data message")
+local result = realtime.match_data_send(socket, match_id, OP_CODE_MOVE, data)
 if result.error then
 	print(result.error.message)
 	pprint(result)
 end
 ```
 
-Sending a move in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L94-L104](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L94-L104)
+Sending a move in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L93-L102](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L94-L104)
 
 
 ### Receiving match data
@@ -225,14 +221,13 @@ Sending a move in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/
 Your game will receive match data updates for as long as the match lasts. Just like with the moves you sent the received match data can also be in any format, as long as it can be encoded and decoded as a string of bytes. The match data also contain an op-code to tell different match data messages apart.
 
 ```Lua
-nakama.on_matchdata(socket, function(message)
-	local match_data = message.match_data
-	local op_code = tonumber(match_data.op_code)
+realtime.on_match_data(socket, function(message)
 	local data = json.decode(match_data.data)
+	local op_code = tonumber(match_data.op_code)
 end)
 ```
 
-Receiving match data in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L94-L104](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L94-L104)
+Receiving match data in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L108-L116](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L94-L104)
 
 
 ### Handle players leaving during a match
@@ -242,7 +237,7 @@ Online games must be able to handle players leaving in the middle of a match. In
 Nakama can handle all of these scenarios on the server and on the client you can get notified as players leave and join an ongoing match. In XOXO the match is considered over as soon as a player disconnects.
 
 ```Lua
-nakama.on_matchpresence(socket, function(message)
+realtime.on_matchpresence(socket, function(message)
 	local match_presence_event = message.match_presence_event
 	pprint(match_presence_event.leaves) -- list of players that left
 	pprint(match_presence_event.joins) -- list of players that joined
