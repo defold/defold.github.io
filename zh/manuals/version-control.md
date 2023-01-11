@@ -20,9 +20,9 @@ Defold 为密切合作的小游戏团队而设计. 团队成员可以并行工�
 
 ## Synchronizing
 
-::: 注意
+<div class='sidenote' markdown='1'>
 可以使用各种外部 Git 工具进行同步. [GitHub Desktop](https://desktop.github.com/), [GitTower](https://www.git-tower.com), [Git Kraken](https://www.gitkraken.com/git-client) 还有 [SourceTree](https://www.sourcetreeapp.com/) 都是很常用的.
-:::
+</div>
 
 项目同步意味着使本地项目文件与远程保持一致. 在以下情况下项目需要同步:
 
@@ -54,9 +54,9 @@ Use Ours
 Use Theirs
 : 使用网络文件覆盖本地文件.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 编辑器不提供对每个差别选择保留哪个的功能. 如果需要此功能可以使用 Git 命令行的混合工具.
-:::
+</div>
 
 拉取更新并解决冲突之后, 会提示完成对话框.
 

@@ -6,22 +6,22 @@ title: Defold 鼠标和触摸输入教程
 brief: 本教程介绍了鼠标和触摸输入的功能.
 ---
 
-::: 注意
+<div class='sidenote' markdown='1'>
 建议首先熟练掌握 Defold 中常规输入的消息处理方式, 例如输入消息获取以及脚本间输入消息广播顺序等. 关于输入系统详情请见 [输入系统教程](/zh/manuals/input).
-:::
+</div>
 
 # Mouse Triggers
 鼠标触发器可以绑定鼠标按键和滚轮输入到游戏功能的映射.
 
 ![](/manuals/images/input/mouse_bindings.png)
 
-::: 注意
+<div class='sidenote' markdown='1'>
 鼠标按键输入 `MOUSE_BUTTON_LEFT`, `MOUSE_BUTTON_RIGHT` 和 `MOUSE_BUTTON_MIDDLE` 等同于 `MOUSE_BUTTON_1`, `MOUSE_BUTTON_2` 和 `MOUSE_BUTTON_3`.
-:::
+</div>
 
-::: 注意
+<div class='sidenote' markdown='1'>
 下面的例子中使用了上图的映射绑定配置. 映射与命名可以根据项目需要自由设置.
-:::
+</div>
 
 ## 鼠标键
 鼠标键可以生成按下, 抬起和连按消息. 获取鼠标键消息的方法如下 (按下和抬起):
@@ -38,9 +38,9 @@ function on_input(self, action_id, action)
 end
 ```
 
-::: 注意
+<div class='sidenote' markdown='1'>
 单点触摸也会触发 `MOUSE_BUTTON_LEFT` (或 `MOUSE_BUTTON_1`) 事件.
-:::
+</div>
 
 ## 鼠标滚轮
 鼠标滚轮可以生成滚动消息. 如果 `action.value` 为 `1` 代表转动, 为 `0` 代表不转动. (滚轮转动被当作一种按钮消息来处理. Defold 目前不支持触摸板上的滚轮输入.)
@@ -93,13 +93,13 @@ function on_input(self, action_id, action)
 end
 ```
 
-::: 注意
+<div class='sidenote' markdown='1'>
 多点触摸动作名不能与 `MOUSE_BUTTON_LEFT` 或 `MOUSE_BUTTON_1` 的动作名重名. 否则的话将导致事件覆盖, 就监听不到单点触摸事件了.
-:::
+</div>
 
-::: 注意
+<div class='sidenote' markdown='1'>
 公共资源 [Defold 输入手柄](https://defold.com/assets/defoldinput/) 可以用来在多点触摸屏上模拟手柄输入.
-:::
+</div>
 
 
 ## 拾取检测
@@ -114,9 +114,9 @@ end
   1. 追踪游戏对象的位置和大小然后检测点选位置是否包含在内.
   2. 给游戏对象加入碰撞组件再在点选位置生成一个碰撞对象检查二者碰撞情况.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 公共资源 [Defold 输入库](https://github.com/britzl/defold-input) 是一个开箱即用的输入检测库.
-:::
+</div>
 
 无论哪种方案都必须将鼠标手点选的屏幕坐标转换成游戏对象的世界坐标. 实现思路如下:
 

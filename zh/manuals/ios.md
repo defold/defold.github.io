@@ -8,9 +8,9 @@ brief: 本教程介绍了如何在 Defold 里编译运行 iOS 设备应用.
 
 # iOS 开发
 
-::: 注意
+<div class='sidenote' markdown='1'>
 必須使用 Mac版 Defold編輯器 才能打包 iOS 項目.
-:::
+</div>
 
 iOS 要求 _所有_ 运行于手机或者平板电脑上的应用 _必须_ 使用 Apple 核发的 certificate 和 provisioning profile 进行签名. 本教程介绍了 iOS 平台的游戏打包. 在开发阶段, 推荐使用 [开发用app](/zh/manuals/dev-app) 以利用热重载功能实现对移动设备的无线推送.
 
@@ -36,9 +36,9 @@ Provisioning Profiles
 
 在 Defold 中给应用做签名时, 需要提供加密证书和提供商档案文件.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 Member Center 页面的一些功能在 Xcode 里也可以进行---前提是先安装好Xcode.
-:::
+</div>
 
 Device identifier (UDID)
 : iOS 设备的 UDID 可以通过wifi或者线路连接计算机查找. 打开 Xcode 选择 <kbd>Window ▸ Devices and Simulators</kbd>. 选中设备就会显示出序列号和UDID.
@@ -91,9 +91,9 @@ Device identifier (UDID)
 
 选择证书和档案. 设置架构 (32 bit, 64 bit 和 iOS 模拟器) 再选择打包模式 (Debug 或者 Release). 也可以取消选择 `Sign application` 跳过签名步骤留待后面完成.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 要在模拟器中测试游戏 **必须取消** `Sign application` 选项. 否则的话游戏能安装却不能运行.
-:::
+</div>
 
 点击 *Create Bundle* 并选择打包应用存放位置.
 
@@ -133,9 +133,9 @@ Device identifier (UDID)
 
 摆放好位置定义好组件, 比如可以加个标签什么的. 配置好之后选择 "Build -> Any iOS Device (arm64, armv7)"(或者 "Generic iOS Device") 然后 Product -> Build. 等待编译完成.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 如果你的 "Any iOS Device (arm64)" 里只有一个 `arm64` 选项, 则需要把 "Project -> Basic -> Deployment" 里的 `iOS Deployment target` 设置为 10.3. 这样你的 storyboard 才能支持 `armv7` 设备 (比如 iPhone5c)  
-:::
+</div>
 
 在 storyboard 里使用的图片不会自动包含进 `LaunchScreen.storyboardc` 里. 要在 `game.project` 的 `Bundle Resources` 选项中配置需要包含的图片资源.
 例如, 在 Defold 项目目录下有个 `LaunchScreen` 文件夹, 里面包含 `ios` 文件夹 (`ios` 文件夹下的文件只针对 ios 打包使用), 所以先要把资源文件放入 `LaunchScreen/ios/`. 然后配置 `Bundle Resources` 为此路径.
@@ -147,18 +147,18 @@ Device identifier (UDID)
 
     /Library/Developer/Xcode/DerivedData/YOUR-PRODUCT-NAME-cbqnwzfisotwygbybxohrhambkjy/Build/Intermediates.noindex/YOUR-PRODUCT-NAME.build/Debug-iphonesimulator/YOUR-PRODUCT-NAME.build/Base.lproj/LaunchScreen.storyboardc
 
-::: 注意
+<div class='sidenote' markdown='1'>
 社区牛人 Sergey Lerg 已把上述步骤 [录成了视频](https://www.youtube.com/watch?v=6jU8wGp3OwA&feature=emb_logo) 供大家参考.
-:::
+</div>
 
 得到 storyboard 文件之後就可以在 *game.project* 裏引用它了.
 
 
 ### 建立圖標資源列表
 
-::: 注意
+<div class='sidenote' markdown='1'>
 從 Defold 1.2.175 版本開始需要這個設置.
-:::
+</div>
 
 Apple 建議使用圖標資源列表來管理應用圖標. 這也是能讓你的圖標在 App Store 裏展示出來的唯一方法. 建立圖標資源表跟建立 storyboard 類似, 也要使用 Xcode. 啓動 Xcode 新建項目. 選擇 iOS and Single View App:
 
@@ -176,15 +176,15 @@ Apple 建議使用圖標資源列表來管理應用圖標. 這也是能讓你的
 
 ![Add icons](/manuals/images/ios/xcode_icons_add_icons.png)
 
-::: 注意
+<div class='sidenote' markdown='1'>
 Notifications, Settings 和 Spotlight 這三項不要拖放圖標.
-:::
+</div>
 
 完成之后, 配置好之后选择 "Build -> Any iOS Device (arm64, armv7)"(或者 "Generic iOS Device") 然后 Product -> Build. 等待编译完成.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 确保编译目标为 "Any iOS Device (arm64)" 或者 "Generic iOS Device", 否则上传游戏时会报 `ERROR ITMS-90704` 错误.
-:::
+</div>
 
 ![Build project](/manuals/images/ios/xcode_icons_build.png)
 
@@ -196,9 +196,9 @@ Notifications, Settings 和 Spotlight 這三項不要拖放圖標.
 
 ![Add icon and asset catalog to game.project](/manuals/images/ios/defold_icons_game_project.png)
 
-::: 注意
+<div class='sidenote' markdown='1'>
 無需在 *game.project* 裏設置 App Store 的圖標. App 上傳到 iTunes Connect 時, 圖標會自動從 `Assets.car` 文件中選取並解壓出來.
-:::
+</div>
 
 
 ## 安装 iOS 打包应用

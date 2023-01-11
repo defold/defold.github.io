@@ -6,9 +6,9 @@ title: Defold 游戏手柄输入教程
 brief: 本教程介绍了游戏手柄输入的功能.
 ---
 
-::: 注意
+<div class='sidenote' markdown='1'>
 建议首先熟练掌握 Defold 中常规输入的消息处理方式, 例如输入消息获取以及脚本间输入消息广播顺序等. 关于输入系统详情请见 [输入系统教程](/zh/manuals/input).
-:::
+</div>
 
 # Gamepads
 游戏手柄触发器可以绑定标准手柄输入到游戏功能的映射. 游戏手柄可以绑定:
@@ -21,9 +21,9 @@ brief: 本教程介绍了游戏手柄输入的功能.
 
 ![](/manuals/images/input/gamepad_bindings.png)
 
-::: 注意
+<div class='sidenote' markdown='1'>
 下面的例子中使用了上图的映射绑定配置. 映射与命名可以根据项目需要自由设置.
-:::
+</div>
 
 ## 十字键
 十字键可以生成按下, 抬起和连按消息. 获取十字键消息的方法如下 (按下和抬起):

@@ -142,9 +142,9 @@ end
 
 ![Action dispatch to proxies](/manuals/images/input/proxy.png)
 
-::: 注意
+<div class='sidenote' markdown='1'>
 开发者经常会忘记发送 `acquire_input_focus` 来使集合代理所在的游戏对象获得输入焦点. 不这么做的话此集合代理加载的所有游戏世界都无法获得输入消息.
-:::
+</div>
 
 
 ### 释放输入焦点

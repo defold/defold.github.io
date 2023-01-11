@@ -27,13 +27,13 @@ function init(self)
 end
 ```
 
-::: 注意
+<div class='sidenote' markdown='1'>
 Defold 目前只支持烘焙动画. 动画每个骨骼每一帧都要有矩阵数据, 而不是单独的位置, 旋转和缩放数据.
 
 动画是线性插值的. 如果需要曲线插值动画要在输出时烘焙.
 
 不支持 Collada 中的动画剪辑. 想要一个模型多个动画, 就要分别导出为 *.dae* 文件然后在 Defold 里组成 *.animationset* 文件.
-:::
+</div>
 
 
 ### 骨骼层级

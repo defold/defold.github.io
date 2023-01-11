@@ -43,9 +43,9 @@ brief: 本教程介绍了文本组件 label 的使用方法.
 *Shadow*
 : 阴影的颜色.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 默认材质出于性能原因关闭了阴影渲染.
-:::
+</div>
 
 *Leading*
 : 行间距倍数. 设置为 0 则没有行间距. 默认是 1.

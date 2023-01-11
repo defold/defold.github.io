@@ -49,7 +49,7 @@ profiler.view_recorded_frame()
 
 ![Web profiler](/manuals/images/profiling/webprofiler_page.png)
 
-::: 注意
+<div class='sidenote' markdown='1'>
 同时使用多个目标设备时, 可以随时手动切换. 方法是修改页面上方 Connection Address 框内的地址来匹配控制台输出的远程分析器 URL:
 
 ```
@@ -57,7 +57,7 @@ INFO:ENGINE: Defold Engine 1.3.4 (80b1b73)
 INFO:DLIB: Initialized Remotery (ws://127.0.0.1:17815/rmt)
 INFO:ENGINE: Loading data from: build/default
 ```
-:::
+</div>
 
 Sample Timeline
 : 采样时间轴显示出引擎采样数据的帧, 一个进程对应一个横向时间轴. Main 表示游戏逻辑和引擎代码运行的主线程. Remotery 表示分析器自身. Sound 表示混音和播放进程. 可以放大缩小 (用鼠标滚轮) 并选择某一帧来分析在 Frame Data view 中所展示的该帧的详细数据.

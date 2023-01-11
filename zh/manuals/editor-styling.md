@@ -127,6 +127,6 @@ and so on...
 }
 ```
 
-::: 注意
+<div class='sidenote' markdown='1'>
 代码编辑器所用字体是在编辑器设置中定义的!
-:::
+</div>

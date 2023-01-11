@@ -75,9 +75,9 @@ end
 
 摄像机组件支持基于摄像机属性 *Orthographic Projection* 的, 使用透视或者平视透视矩阵的渲染脚本.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 出于向后兼容性的原因，默认渲染脚本会忽略相机提供的透视，并始终使用平视透视. 关于渲染脚本, 视口和透视矩阵更多详情参见 [渲染教程](/zh/manuals/render/#default-view-projection).
-:::
+</div>
 
 可以用以下代码告诉渲染脚本使用摄像机提供的透视:
 
@@ -112,9 +112,9 @@ go.set("#camera", "orthographic_zoom", 2)
 
 摄像机平移缩放后 `on_input()` 函数提供的鼠标位置就不再与世界坐标匹配了. 此时需要进行手动矫正. 默认渲染脚本里把鼠标/屏幕坐标转换为世界坐标的代码如下:
 
-::: 注意
+<div class='sidenote' markdown='1'>
 [本教程第三方摄像机解决方案部分](/zh/manuals/camera/#第三方摄像机解决方案) 提供了坐标转换方法.
-:::
+</div>
 
 ```Lua
 -- builtins/render/default.render_script

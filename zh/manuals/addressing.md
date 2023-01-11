@@ -44,14 +44,14 @@ end
 
 id可以随意设置. 当前我们对游戏对象设置了一个id "bean", sprite组件叫做 "body", 控制这个对象的脚本组件叫做 "controller".
 
-::: 注意
+<div class='sidenote' markdown='1'>
 如果你不手动命名, 编辑器会自动设置一个命名. 每当新建一个游戏对象或组件, 系统会将唯一 *Id* 赋值给它.
 
 - 游戏对象就是go后面跟一个数字 ("go2", "go3" 以此类推).
 - 组件就是组件名后面跟一个数字 ("sprite", "sprite2" 以此类推).
 
 自动命名虽然能用, 但是我们鼓励你自己将命名设计的更好, 更有意义.
-:::
+</div>
 
 现在, 再增加一个sprite来给豆子先生添加一个盾牌:
 
@@ -61,19 +61,19 @@ id可以随意设置. 当前我们对游戏对象设置了一个id "bean", sprit
 
 ![bean](/manuals/images/addressing/bean_shield.png)
 
-::: 注意
+<div class='sidenote' markdown='1'>
 如果你非要设置成一样的id, 系统会提示错误阻止你这样做:
 
 ![bean](/manuals/images/addressing/name_collision.png)
-:::
+</div>
 
 现在再多加一些游戏对象进来试试. 假设你要让两个 "豆子先生" 组个队. 一个叫 "bean" 另一个叫 "buddy". 然后, 当 "bean" 等待一段时间后, 它就让 "buddy" 开始跳舞. 也就是从 "bean" 的脚本组件 "controller" 发送一个自定义消息 "dance" 到 "buddy" 的 "controller" :
 
 ![bean](/manuals/images/addressing/bean_buddy.png)
 
-::: 注意
+<div class='sidenote' markdown='1'>
 这两个脚本组件都叫 "controller", 但是由于唯一性是对每个游戏对象来说的, 所以这样做是可以的.
-:::
+</div>
 
 这次的消息是发给本游戏对象 ("bean") 之外的地方, 代码需要知道哪个 "controller" 来接收这个消息. 既需要对象id也需要组件id. 完整的地址是 `"buddy#controller"` 它包含两个方面内容.
 
@@ -132,9 +132,9 @@ Defold 提供两种简化写法用来简化消息传递时需要输入的完整�
 - /team_2/bean
 - /team_2/buddy
 
-::: 注意
+<div class='sidenote' markdown='1'>
 游戏里的各种id存储为哈希值. 包括集合里的相对路径也哈希成绝对路径.
-:::
+</div>
 
 运行时, 不存在集合的概念. 编译前, 对象是不属于集合的. 也无法对集合本身施加操作. 有必要的话, 需要用代码维护集合里的对象. 每个对象id都是静态的, 并且在它们的生命周期中都保持不变. 所以保存一个对象的id后总可以使用此id引用它.
 

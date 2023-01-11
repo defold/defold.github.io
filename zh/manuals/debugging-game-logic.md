@@ -69,9 +69,9 @@ Step Over
 
   ![step](/manuals/images/debugging/step.png)
 
-::: 注意
+<div class='sidenote' markdown='1'>
 一行Lua代码不一定就是一句Lua表达式. 调试器按表达式步进, 也就是说有可能出现一行多个表达式的情况就要多按几下步进才会运行到下一行.
-:::
+</div>
 
 Step Into
 : <img src='/manuals/images/debugging/step_in.svg' width='60px'/>

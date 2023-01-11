@@ -17,9 +17,9 @@ Defold 要求其所用资源全部位于项目文件夹内. 先导入后使用. 
 
 ![Importing files](/manuals/images/graphics/import.png)
 
-::: 注意
+<div class='sidenote' markdown='1'>
 Defold 支持 PNG 和 JPEG 图片格式. 其中 PNG 图片必须是 32 位 RGBA 格式的. 其他格式要先转换成支持格式后再使用.
-:::
+</div>
 
 ## 使用资源
 

@@ -16,9 +16,9 @@ Debug  模式下编译的任何 iOS 或 Android 应用都可以作为开发用ap
 
 ![launch](/manuals/images/dev-app/launch.png)
 
-::: 注意
+<div class='sidenote' markdown='1'>
 只有在不使用 [原生扩展](/zh/manuals/extensions/) 的项目可以使用我们提供的开发用apk. 否则你需要自己手动打debug包并且加入你所使用的原生扩展.
-:::
+</div>
 
 从 Defold 1.4.0 版本开始可以给项目打空的 debug 包. 使用这个选项可以创建带原生扩展的应用版本, 适合于教程里提到的开发迭代.
 

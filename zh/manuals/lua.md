@@ -15,9 +15,9 @@ Defold 引擎嵌入了 Lua 语言用以编写脚本. Lua 是一种轻量级脚�
 ## Lua 版本
 我们力争让 Defold 在各个平台表现一致, 但是不同平台对于 Lua 版本使用略有不同. 对 HTML5 和 iOS 64 bit 平台我们使用 Lua 5.1 对其他平台我们使用 LuaJIT. LuaJIT 基于 5.1 还包含了一些特有功能.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 要真正做到跨所有平台建议只使用 Lua 5.1 功能.
-:::
+</div>
 
 Defold 包含所有 [Lua 5.1 标准库](http://www.lua.org/manual/5.1/manual.html#5) 连同 socket 和少量操作系统功能库:
 

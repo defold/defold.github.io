@@ -36,9 +36,9 @@ java -jar bob.jar --resource-cache-local /Users/john.doe/defold_local_cache
 
 本地缓存通过基于 Defold 引擎版本, 资源文件, 项目编译参数等计算出的校验码进行访问. 这样做就能保证不同 Defold 版本之间资源缓存的唯一性.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 本地缓存文件永远存在. 想要清除只能手动删除这些文件.
-:::
+</div>
 
 
 ## 远程缓存

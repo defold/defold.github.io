@@ -71,9 +71,9 @@ brief: 本教程介绍了 Defold 如何处理和在游戏中使用字体.
 *Shadow Alpha*
 : 阴影透明度. 范围 0.0--1.0.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 内置文字材质着色器单层多层渲染模式下都支持文字阴影. 如果不需要分层渲染或者阴影渲染, 最好使用 builtins/font-singlelayer.fp 之类的简单版着色器.
-:::
+</div>
 
 *Shadow Blur*
 : 对于位图字体, 此设置代表文字阴影叠加计算次数. 对于 distance field 字体, 此设置代表文字阴影宽度像素数.
@@ -84,10 +84,10 @@ brief: 本教程介绍了 Defold 如何处理和在游戏中使用字体.
 *Extra Characters*
 : 默认字体包含 ASCII 字母表字符 (字符码 32-126). 如果需要更多字符, 需要手动在这里输入.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 ASCII 字母表字符包含:
 space ! " # $ % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ \ ] ^ _ \` a b c d e f g h i j k l m n o p q r s t u v w x y z { | } ~
-:::
+</div>
 
 *All Chars*
 : 把字体可以显示的所有字符都打包进游戏中来.
@@ -113,7 +113,7 @@ Defold 还支持 "BMFont" 格式字体. 这种字体的字符都是由位图组�
 
 把 *.fnt* 和 *.png* 文件加入 Defold 项目中. 这些文件要保存在同一文件夹中. 新建字体然后设置 *font* 属性为 *.fnt* 文件. 确保 *output_format* 属性为 `TYPE_BITMAP`. Defold 会直接使用 PNG 文件而不用再生成位图.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 要使用 BMFont, 需要使用工具软件来生成所需文件. 下面列举一些这样的工具:
 
 * [Bitmap Font Generator](http://www.angelcode.com/products/bmfont/), AngelCode 开发的 Windows 版软件.
@@ -121,7 +121,7 @@ Defold 还支持 "BMFont" 格式字体. 这种字体的字符都是由位图组�
 * [Hiero](https://github.com/libgdx/libgdx/wiki/Hiero), 基于 Java 的开源软件.
 * [Glyph Designer](https://71squared.com/glyphdesigner), 71 Squared 开发的付费 macOS 应用.
 * [bmGlyph](https://www.bmglyph.com), Sovapps 开发的付费 macOS 应用.
-:::
+</div>
 
 ![BMfont](/manuals/images/font/bm_font.png)
 

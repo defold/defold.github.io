@@ -43,9 +43,9 @@ Facebook API 文档位于 [fb扩展主页](https://defold.github.io/extension-fa
 
 然后是选择目标平台界面. 点击 *basic setup* 可以略过引导界面.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 引导界面里绝大多数内容与开发 Defold 游戏无关. 而且, 一般不需要自己修改 *Info.plist* 或者 *AndroidManifest.xml* 文件. Defold 会自动完成.
-:::
+</div>
 
 ![Add new app platform](/manuals/images/facebook/add_new_app_platform.png)
 

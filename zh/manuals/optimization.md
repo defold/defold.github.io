@@ -38,9 +38,9 @@ Defold 支持 .ogg 和 .wav 文件其中 .ogg 一般用于音乐 .wav 一般用�
 ### 图片优化
 对游戏的图片优化有几种办法, 首先要做的就是检查图集和瓷砖图源内容图片的大小. 导入的图片尺寸不要超过游戏所需大小. 导入大图片再缩小使用是现存资源的浪费. 可以使用第三方图片编辑器先把图片修改成所需大小. 对于背景图之类的有时可以导入小图片再放大使用. 小图改好了还要考虑图集和瓷砖图源本身的大小. 不同平台和显示硬件的纹理尺寸限制可能不一样.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 [这个帖子](https://forum.defold.com/t/texture-management-in-defold/8921/17?u=britzl) 在使用脚本与第三方软件修改图片大小的方面给出了许多建议.
-:::
+</div>
 
 * HTML5 游戏最大纹理: https://webglstats.com/webgl/parameter/MAX_TEXTURE_SIZE
 * iOS 游戏最大纹理:
@@ -52,9 +52,9 @@ Defold 支持 .ogg 和 .wav 文件其中 .ogg 一般用于音乐 .wav 一般用�
 
 如果图集太大就需要切分成小图集或者使用 texture profile 缩小整个图集. Defold 的 texture profile 系统不但可以缩小图集还可以通过应用压缩算法减小图集占用空间. 详见 [纹理档教程](/zh/manuals/texture-profiles/).
 
-::: 注意
+<div class='sidenote' markdown='1'>
 优化和管理纹理可以参考 [这个帖子](https://forum.defold.com/t/texture-management-in-defold/8921).
-:::
+</div>
 
 ### 排除内容按需下载
 另一个减小包体的办法是打包时把部分内容排除在外, 需要时再下载. 一开始被排除的东西可以是锁住的关卡, 未激活的角色, 皮肤, 武器或者是车辆. Defold 提供了叫做热更新的按需下载内容的方案. 详情请见 [热更新教程](/zh/manuals/live-update/).

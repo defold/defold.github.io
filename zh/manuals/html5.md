@@ -37,13 +37,13 @@ Python 3:
 或者
 > python3 -m http.server
 
-::: 注意
+<div class='sidenote' markdown='1'>
 不能直接用浏览器打开 HTML5 游戏的 `index.html` 文件. 要通过服务器访问打开.
-:::
+</div>
 
-::: 注意
+<div class='sidenote' markdown='1'>
 如果在控制台见到 "wasm streaming compile failed: TypeError: Failed to execute ‘compile’ on ‘WebAssembly’: Incorrect response MIME type. Expected ‘application/wasm’." 错误, 请确保你的服务器设置了 `application/wasm` MIME 类型对应 .wasm 文件.
-:::
+</div>
 
 ## HTML5游戏打包
 
@@ -74,20 +74,20 @@ Defold 打包 HTML5 游戏很简单, 跟其他平台一样: 从菜单栏选择 <
 
 关于每个选项详情请见 [形目设置教程](/zh/manuals/project-settings/#HTML5).
 
-::: 注意
+<div class='sidenote' markdown='1'>
 `builtins` 文件夹下的默认 html/css 模板文件是不能直接修改的. 要先从 `builtins` 里把文件拷贝出来然后再在 `game.project` 文件里指明要使用的文件的位置.
-:::
+</div>
 
-::: 注意
+<div class='sidenote' markdown='1'>
 网页 canvas 不能有 border 或者 padding. 否则的话, 鼠标输入坐标会产生偏差.
-:::
+</div>
 
 可以在 `game.project` 文件里禁用 `Fullscreen` 按钮以及 `Made with Defold` 链接.
 Defold 提供了 index.html 文件的亮暗两种风格. 默认亮风格但是可以在 `Custom CSS` 修改成暗风格. 在 `Scale Mode` 部分还预定义了四种缩放模式可供选择.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 各种缩放模式计算时考虑了当前屏幕 DPI 以支持 `game.project` 里的 `High Dpi` 选项 (在 `Display` 部分)
-:::
+</div>
 
 ### Fit 和 Downscale Fit
 
@@ -110,9 +110,9 @@ Defold 提供了 index.html 文件的亮暗两种风格. 默认亮风格但是�
 
 使用 [Mustache 模板语言](https://mustache.github.io/mustache.5.html) 创建 `index.html` 文件. 编译或打包时, HTML 和 CSS 文件会基于项目设置填充模板里面对应的 Tokens. 这些 Tokens 通常使用双大括号或者三层大括号标注 (`{% raw %}{{TOKEN}}{% endraw %}` 或者 `{% raw %}{{{TOKEN}}}{% endraw %}`), 用哪种取决于标注里面有没有转义字符. 这种方法便于频繁修改以及代码重用.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 关于 Mustache 模板语言详情请见 [官方手册](https://mustache.github.io/mustache.5.html).
-:::
+</div>
 
 `game.project` 里的设置都可以使用标注来引用. 比如说, 引用 `Display` 里 `Width` 的值:
 
@@ -157,9 +157,9 @@ DEFOLD_CUSTOM_CSS_INLINE
 </style>
 ```
 
-::: 注意
+<div class='sidenote' markdown='1'>
 内联块要出现在主程序脚本加载之前. 因为里面有 HTML 标签, 所以要用三层大括号 `{% raw %}{{{TOKEN}}}{% endraw %}` 来引用它.
-:::
+</div>
 
 DEFOLD_SCALE_MODE_IS_DOWNSCALE_FIT
 : 如果 `html5.scale_mode` 是 `Downscale Fit` 的话则值为 `true`.

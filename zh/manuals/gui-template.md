@@ -44,11 +44,11 @@ GUI 模板也是一种场景, 创建和普通场景一样. 在 *Assets* 面板�
 
 有些模板实例会自动以 模板名加正斜杠 (`"/"`) 加 *Id* 的形式命名.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 修改模板实例中 *Layouts* 属性在目前2代编辑器中无效. 必须使用的话请使用1代编辑器.
 
 参见 https://github.com/defold/editor2-issues/issues/1124
-:::
+</div>
 
 ## 运行时修改模板
 

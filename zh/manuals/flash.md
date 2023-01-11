@@ -66,9 +66,9 @@ Defold 通过地址引用所有对象. 多数情况下使用快捷地址或者�
 
 ![game object id](/manuals/images/flash/game_object_id.png)
 
-::: 注意
+<div class='sidenote' markdown='1'>
 对象的id可以使用脚本: `print(go.get_id())` 查看. 它会在控制台打印出当前游戏对象的id.
-:::
+</div>
 
 地址定位和消息传递是 Defold 游戏开发的核心概念. [定位教程](/zh/manuals/addressing) 和 [消息传递教程](/zh/manuals/message-passing) 里有更详细的介绍.
 
@@ -175,9 +175,9 @@ swapChildren(logo2,logo3);
 
 Defold 里游戏对象的位置向量包含三部分: x, y, 和 z. 其中 z 轴位置决定了其深度. 在默认 [渲染脚本](/zh/manuals/render) 中, z 轴位置范围是 -1 到 1.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 如果游戏对象的 z 轴位置不在 -1 到 1 的范围内就不会被渲染也就是不可见. Defold 新手经常会因为这个感到困惑, 所以如果发现该显示的东西不显示想想是不是这个原因.
-:::
+</div>
 
 不同于 Flash 由编辑器决定显示索引 (然后可以使用 *Bring Forward* 和 *Send Backward* 之类的命令修改索引), Defold 可以在编辑器里直接设置游戏对象的 z 轴位置. 下图中, 你会看到 "logo3" 显示在最上层, 其 z 轴位置是 0.2. 其他两个的 z 轴位置是 0.0 和 0.1.
 

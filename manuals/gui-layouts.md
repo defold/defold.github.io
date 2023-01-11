@@ -33,10 +33,6 @@ You also need to specify that the engine should use your new profiles. Open "gam
 
 ![Settings](../images/gui-layouts/settings.png)
 
-<div class='sidenote' markdown='1'>
-The current development app for iOS does not respect the *Dynamic Orientation* setting but will always change orientation dynamically.
-</div>
-
 If you want the engine to automatically switch between portrait and landscape layouts on device rotation, check the *Dynamic Orientation* box. The engine will dynamically select a matching layout and also change the selection if the device changes orientation.
 
 ## GUI layouts

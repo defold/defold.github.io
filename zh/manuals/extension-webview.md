@@ -42,7 +42,7 @@ local request_id = webview.open(webview_id, "http://www.defold.com") --广告无
 
 如果一切顺利你将看到神奇的网页占满了屏幕, 就是 Defold 官方首页.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 要在 iOS 里访问的网页必须遵循在 `Info.plist` 文件中的 `NSAppTransportSecurity` 里面设置好的键值对.
 ```
 <key>NSAllowsArbitraryLoads</key>
@@ -51,7 +51,7 @@ local request_id = webview.open(webview_id, "http://www.defold.com") --广告无
 
 开发的时候可以随便设置, 但是发布到 App Store 之后就只能通过使用 `NSExceptionDomains` 键代替. 这有点超出本教程讨论范围,
 详情可以参考 [Apple 开发者文档](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35).
-:::
+</div>
 
 ## 回调函数
 顺利打开网页固然是好, 但要是 URL 无效或者出现其他不可预知的问题时要给用户显示错误信息怎么办? 或者要在用户离开网页时做些什么该怎么办?

@@ -77,9 +77,9 @@ print("Hello code!")
 
 这样就会在 GitHub 上生成一个错误报告. 请提供 [日志文件](#log-files), 操作系统, 重现方法, 临时绕过错误的方法等信息.
 
-::: 注意
+<div class='sidenote' markdown='1'>
 报告之前确保你已经拥有 GitHub 账户.
-:::
+</div>
 
 
 ## 在 Discord 上讨论问题
