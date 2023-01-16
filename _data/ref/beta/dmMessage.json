@@ -76,7 +76,10 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "Currently has a hard limit of 32 bytes",
+        "This struct is a part of the save file APi (see script_table.cpp)"
+      ]
     },
     {
       "type": "TYPEDEF",
@@ -121,7 +124,9 @@
           "type": "uint32_t"
         }
       ],
-      "notes": []
+      "notes": [
+        "The sizes do not include the null character. There is no null character since the dmMessage::ParseURL is non destructive."
+      ]
     },
     {
       "type": "FUNCTION",
@@ -143,7 +148,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "Previously the URL wasn't reset in the constructor and certain calls to ResetURL might currently be redundant"
+      ]
     },
     {
       "type": "FUNCTION",
@@ -510,7 +517,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "No allocation occurs, thus no cleanup is needed."
+      ]
     }
   ],
   "info": {
@@ -519,6 +528,7 @@
     "brief": "Message API documentation",
     "description": "<span class=\"file\"><dmsdk/dlib/message.h></span>\nApi for sending messages",
     "path": "",
-    "file": ""
+    "file": "",
+    "notes": []
   }
 }

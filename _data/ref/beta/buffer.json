@@ -337,6 +337,95 @@
       "tparams": [],
       "members": [],
       "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "buffer.set_metadata",
+      "brief": "set a metadata entry on a buffer",
+      "description": "Creates or updates a metadata array entry on a buffer.\n<span class=\"icon-attention\"></span> The value type and count given when updating the entry should match those used when first creating it.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "buf",
+          "doc": "the buffer to set the metadata on",
+          "types": [
+            "buffer"
+          ]
+        },
+        {
+          "name": "metadata_name",
+          "doc": "name of the metadata entry",
+          "types": [
+            "hash",
+            "string"
+          ]
+        },
+        {
+          "name": "values",
+          "doc": "actual metadata, an array of numeric values",
+          "types": [
+            "table"
+          ]
+        },
+        {
+          "name": "value_type",
+          "doc": "type of values when stored",
+          "types": [
+            "constant"
+          ]
+        }
+      ],
+      "examples": "How to set a metadata entry on a buffer\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- create a new metadata entry with three floats</span>\n<span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">set_metadata</span><span class=\"p\">(</span><span class=\"n\">buf</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;somefloats&quot;</span><span class=\"p\">),</span> <span class=\"p\">{</span><span class=\"mf\">1.5</span><span class=\"p\">,</span> <span class=\"mf\">3.2</span><span class=\"p\">,</span> <span class=\"mf\">7.9</span><span class=\"p\">},</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">VALUE_TYPE_FLOAT32</span><span class=\"p\">)</span>\n<span class=\"c1\">-- ...</span>\n<span class=\"c1\">-- update to a new set of values</span>\n<span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">set_metadata</span><span class=\"p\">(</span><span class=\"n\">buf</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;somefloats&quot;</span><span class=\"p\">),</span> <span class=\"p\">{</span><span class=\"o\">-</span><span class=\"mf\">2.5</span><span class=\"p\">,</span> <span class=\"mf\">10.0</span><span class=\"p\">,</span> <span class=\"mf\">32.2</span><span class=\"p\">},</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">VALUE_TYPE_FLOAT32</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "buffer.get_metadata",
+      "brief": "retrieve a metadata entry from a buffer",
+      "description": "Get a named metadata entry from a buffer along with its type.",
+      "returnvalues": [
+        {
+          "name": "values",
+          "doc": "table of metadata values or nil if the entry does not exist",
+          "types": [
+            "table"
+          ]
+        },
+        {
+          "name": "value_type",
+          "doc": "numeric type of values or nil",
+          "types": [
+            "constant"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "buf",
+          "doc": "the buffer to get the metadata from",
+          "types": [
+            "buffer"
+          ]
+        },
+        {
+          "name": "metadata_name",
+          "doc": "name of the metadata entry",
+          "types": [
+            "hash",
+            "string"
+          ]
+        }
+      ],
+      "examples": "How to get a metadata entry from a buffer\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- retrieve a metadata entry named &quot;somefloats&quot; and its nomeric type</span>\n<span class=\"kd\">local</span> <span class=\"n\">values</span><span class=\"p\">,</span> <span class=\"nb\">type</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">get_metadata</span><span class=\"p\">(</span><span class=\"n\">buf</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;somefloats&quot;</span><span class=\"p\">))</span>\n<span class=\"kr\">if</span> <span class=\"n\">metadata</span> <span class=\"kr\">then</span> <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"o\">#</span><span class=\"n\">metadata</span><span class=\"o\">..</span><span class=\"s2\">&quot; values in &#39;somefloats&#39;&quot;</span><span class=\"p\">)</span> <span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
   ],
   "info": {
@@ -346,6 +435,7 @@
     "description": "Functions for manipulating buffers and streams",
     "path": "",
     "file": "",
+    "notes": [],
     "group": "SCRIPT"
   }
 }

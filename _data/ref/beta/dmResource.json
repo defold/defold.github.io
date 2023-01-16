@@ -124,6 +124,50 @@
     },
     {
       "type": "FUNCTION",
+      "name": "Get",
+      "brief": "Get a resource from factory",
+      "description": "Get a resource from factory",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "RESULT_OK on success",
+          "types": [
+            "dmResource::Result"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "factory",
+          "doc": "Factory handle",
+          "types": [
+            "dmResource::HFactory"
+          ]
+        },
+        {
+          "name": "name",
+          "doc": "Resource name",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "resource",
+          "doc": "Created resource",
+          "types": [
+            "void**"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "Release",
       "brief": "Release resource",
       "description": "Release resource",
@@ -196,6 +240,7 @@
     "description": "Functions for managing resource types.",
     "path": "engine/resource/src/dmsdk/resource/resource.h",
     "file": "dmsdk/resource/resource.h",
+    "notes": [],
     "group": "DEFOLD SDK"
   }
 }

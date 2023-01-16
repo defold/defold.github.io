@@ -47,6 +47,122 @@
     },
     {
       "type": "FUNCTION",
+      "name": "dmCrypt::Encrypt",
+      "brief": "Encrypt data in place",
+      "description": "Encrypt data in place",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "the encryption result",
+          "types": [
+            "dmCrypt::Result"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "algo",
+          "doc": "algorithm",
+          "types": [
+            "dmCrypt::Algorithm"
+          ]
+        },
+        {
+          "name": "data",
+          "doc": "data",
+          "types": [
+            "const uint8_t*"
+          ]
+        },
+        {
+          "name": "datalen",
+          "doc": "data length in bytes",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "key",
+          "doc": "key",
+          "types": [
+            "const uint8_t*"
+          ]
+        },
+        {
+          "name": "keylen",
+          "doc": "key length",
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmCrypt::Decrypt",
+      "brief": "Decrypt data in place",
+      "description": "Decrypt data in place",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "the decryption result",
+          "types": [
+            "dmCrypt::Result"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "algo",
+          "doc": "algorithm",
+          "types": [
+            "dmCrypt::Algorithm"
+          ]
+        },
+        {
+          "name": "data",
+          "doc": "data",
+          "types": [
+            "const uint8_t*"
+          ]
+        },
+        {
+          "name": "datalen",
+          "doc": "data length in bytes",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "key",
+          "doc": "key",
+          "types": [
+            "const uint8_t*"
+          ]
+        },
+        {
+          "name": "keylen",
+          "doc": "key length",
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "dmCrypt::HashSha1",
       "brief": "Hash buffer using SHA1",
       "description": "Hash buffer using SHA1",
@@ -238,7 +354,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "Call this function with *dst_len = 0 to obtain the required buffer size in *dst_len"
+      ]
     },
     {
       "type": "FUNCTION",
@@ -289,7 +407,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "Call this function with *dst_len = 0 to obtain the required buffer size in *dst_len"
+      ]
     }
   ],
   "info": {
@@ -298,6 +418,7 @@
     "brief": "SDK Crypt API documentation",
     "description": "<span class=\"file\"><dmsdk/dlib/crypt.h></span>\nVarious hash and encode/decode functions.",
     "path": "",
-    "file": ""
+    "file": "",
+    "notes": []
   }
 }

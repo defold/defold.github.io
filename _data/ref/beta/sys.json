@@ -102,7 +102,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "Setting the environment variable `DM_SAVE_HOME` overrides the default application support path."
+      ]
     },
     {
       "type": "FUNCTION",
@@ -171,7 +173,7 @@
       "returnvalues": [
         {
           "name": "value",
-          "doc": "config value as an integer. default_value if the config key does not exist. nil if no default value was supplied.",
+          "doc": "config value as an integer. default_value if the config key does not exist. 0 if no default value was supplied.",
           "types": [
             "integer"
           ]
@@ -208,7 +210,7 @@
       "returnvalues": [
         {
           "name": "value",
-          "doc": "config value as an number. default_value if the config key does not exist. nil if no default value was supplied.",
+          "doc": "config value as an number. default_value if the config key does not exist. 0 if no default value was supplied.",
           "types": [
             "number"
           ]
@@ -915,6 +917,7 @@
     "description": "Functions and messages for using system resources, controlling the engine,\nerror handling and debugging.",
     "path": "",
     "file": "",
+    "notes": [],
     "group": "SYSTEM"
   }
 }
