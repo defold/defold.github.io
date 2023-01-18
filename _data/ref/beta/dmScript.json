@@ -1671,45 +1671,8 @@
     {
       "type": "FUNCTION",
       "name": "dmScript::CheckBuffer",
-      "brief": "retrieve a HBuffer from the supplied lua state",
-      "description": "Check if the value in the supplied index on the lua stack is a HBuffer and returns it.",
-      "returnvalues": [
-        {
-          "name": "buffer",
-          "doc": "pointer to dmScript::LuaHBuffer",
-          "types": [
-            "LuaHBuffer*"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "L",
-          "doc": "lua state",
-          "types": [
-            "lua_State*"
-          ]
-        },
-        {
-          "name": "index",
-          "doc": "Index of the value",
-          "types": [
-            "int"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "dmScript::CheckBufferNoError",
-      "brief": "retrieve a HBuffer from the supplied lua state.",
-      "description": "Retrieve a HBuffer from the supplied lua state.\nCheck if the value in the supplied index on the lua stack is a HBuffer and returns it.",
+      "brief": "retrieve a LuaHBuffer from the supplied lua state",
+      "description": "Retrieve a LuaHBuffer from the supplied lua state.\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and returns it.",
       "returnvalues": [
         {
           "name": "buffer",
@@ -1741,7 +1704,125 @@
       "tparams": [],
       "members": [],
       "notes": [
-        "Returns 0 on error. Does not invoke lua_error."
+        "The dmBuffer::IsBufferValid is already called on the returned buffer"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::CheckBufferNoError",
+      "brief": "retrieve a LuaHBuffer from the supplied lua state.",
+      "description": "Retrieve a LuaHBuffer from the supplied lua state.\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and returns it.",
+      "returnvalues": [
+        {
+          "name": "buffer",
+          "doc": "pointer to dmScript::LuaHBuffer or 0 if not valid",
+          "types": [
+            "LuaHBuffer*"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Returns 0 on error. Does not invoke lua_error.",
+        "The dmBuffer::IsBufferValid is already called on the returned buffer"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::CheckBufferUnpack",
+      "brief": "retrieve a HBuffer from the supplied lua state",
+      "description": "Retrieve a HBuffer from the supplied lua state\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and it's valid, returns the HBuffer.",
+      "returnvalues": [
+        {
+          "name": "buffer",
+          "doc": "buffer if valid, 0 otherwise",
+          "types": [
+            "dmBuffer::HBuffer"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "The dmBuffer::IsBufferValid is already called on the returned buffer"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::CheckBufferUnpackNoError",
+      "brief": "retrieve a HBuffer from the supplied lua state",
+      "description": "Retrieve a HBuffer from the supplied lua state\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and it's valid, returns the HBuffer.",
+      "returnvalues": [
+        {
+          "name": "buffer",
+          "doc": "buffer if valid, 0 otherwise",
+          "types": [
+            "dmBuffer::HBuffer"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "The dmBuffer::IsBufferValid is already called on the returned buffer"
       ]
     }
   ],
