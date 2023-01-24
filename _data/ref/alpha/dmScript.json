@@ -1513,7 +1513,7 @@
           "name": "instance",
           "doc": "gameobject instance",
           "types": [
-            "lua_State*"
+            "dmGameObject::HInstance"
           ]
         }
       ],
@@ -1540,6 +1540,104 @@
       "members": [],
       "notes": [
         "The function only accepts instances in \"this\" collection. Otherwise a lua-error will be raised."
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "CheckCollection",
+      "brief": "Get current gameobject's collection handle",
+      "description": "Get current gameobject's collection handle",
+      "returnvalues": [
+        {
+          "name": "instance",
+          "doc": "gameobject instance",
+          "types": [
+            "lua_State*"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "lua-arg",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Works from both a .script/.gui_script"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetComponentFromLua",
+      "brief": "Get component user data from a url.",
+      "description": "Get component user data from a url.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "index to argument (a url)",
+          "types": [
+            "int"
+          ]
+        },
+        {
+          "name": "component_type",
+          "doc": "E.g. \"factoryc\". The call will fail if the found component does not have the specified extension",
+          "types": [
+            "const char*"
+          ]
+        },
+        {
+          "name": "world",
+          "doc": "The world associated owning the component. May be 0",
+          "types": [
+            "void**"
+          ]
+        },
+        {
+          "name": "component",
+          "doc": "The component data associated with the url. May be 0",
+          "types": [
+            "void**"
+          ]
+        },
+        {
+          "name": "url",
+          "doc": "The resolved url. May be 0",
+          "types": [
+            "dmMessage::URL*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "The object referenced by the url must be in the same collection as the caller."
       ]
     },
     {
