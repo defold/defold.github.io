@@ -158,9 +158,9 @@ Once the texture has been created you can use [`resource.set_texture(path, param
   resource.set_texture(my_texture_id, params, buf)
 ```
 
-:::sidenote
+<div class='sidenote' markdown='1'>
 It is possible to use `resource.set_texture()` to also update a sub-region of the texture by using a buffer width and height less than the full size of the texture and by changing the x and y parameters to `resource.set_texture()`.
-:::
+</div>
 
 The texture can be used directly on a [model component](/manuals/model/) using `go.set()`:
 
