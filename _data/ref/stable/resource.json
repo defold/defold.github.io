@@ -244,7 +244,7 @@
       "type": "FUNCTION",
       "name": "resource.create_texture",
       "brief": "create a texture",
-      "description": "Creates a new texture resource.",
+      "description": "Creates a new texture resource that can be used in the same way as any texture created during build time.\nThe path used for creating the texture must be unique, trying to create a resource at a path that is already\nregistered will trigger an error. If the intention is to instead modify an existing texture, use the <a href=\"/ref/resource#resource.set_texture\">resource.set_texture</a>\nfunction. Also note that the path to the new texture resource must have a '.texturec' extension,\nmeaning \"/path/my_texture\" is not a valid path but \"/path/my_texture.texturec\" is.",
       "returnvalues": [
         {
           "name": "path",
@@ -264,13 +264,13 @@
         },
         {
           "name": "table",
-          "doc": "A table containing info about how to create the texture. Supported entries:\n<dl>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> The texture type. Supported values:</dd>\n</dl>\n<ul>\n<li><code>resource.TEXTURE_TYPE_2D</code></li>\n<li><code>resource.TEXTURE_TYPE_CUBE_MAP</code></li>\n</ul>\n<dl>\n<dt><code>width</code></dt>\n<dd><span class=\"type\">number</span> The width of the texture (in pixels)</dd>\n<dt><code>height</code></dt>\n<dd><span class=\"type\">number</span> The width of the texture (in pixels)</dd>\n<dt><code>format</code></dt>\n<dd><span class=\"type\">number</span> The texture format. Supported values:</dd>\n</dl>\n<ul>\n<li><code>resource.TEXTURE_FORMAT_LUMINANCE</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGB</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA</code></li>\n</ul>\n<dl>\n<dt><code>max_mipmaps</code></dt>\n<dd><span class=\"type\">number</span> optional max number of mipmaps. Defaults to zero, i.e no mipmap support</dd>\n</dl>",
+          "doc": "A table containing info about how to create the texture. Supported entries:\n<dl>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> The texture type. Supported values:</dd>\n</dl>\n<ul>\n<li><code>resource.TEXTURE_TYPE_2D</code></li>\n<li><code>resource.TEXTURE_TYPE_CUBE_MAP</code></li>\n</ul>\n<dl>\n<dt><code>width</code></dt>\n<dd><span class=\"type\">number</span> The width of the texture (in pixels)</dd>\n<dt><code>height</code></dt>\n<dd><span class=\"type\">number</span> The width of the texture (in pixels)</dd>\n<dt><code>format</code></dt>\n<dd><span class=\"type\">number</span> The texture format, note that some of these formats are platform specific. Supported values:</dd>\n</dl>\n<ul>\n<li><code>resource.TEXTURE_FORMAT_LUMINANCE</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGB</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGB_PVRTC_2BPPV1</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGB_PVRTC_4BPPV1</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA_PVRTC_2BPPV1</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA_PVRTC_4BPPV1</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGB_ETC1</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA_ETC2</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA_ASTC_4x4</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGB_BC1</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA_BC3</code></li>\n<li><code>resource.TEXTURE_FORMAT_R_BC4</code></li>\n<li><code>resource.TEXTURE_FORMAT_RG_BC5</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA_BC7</code></li>\n</ul>\n<dl>\n<dt><code>max_mipmaps</code></dt>\n<dd><span class=\"type\">number</span> optional max number of mipmaps. Defaults to zero, i.e no mipmap support</dd>\n</dl>",
           "types": [
             "table"
           ]
         }
       ],
-      "examples": "How to create an 128x128 RGBA texture resource and assign it to a model\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">tparams</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n       <span class=\"n\">width</span>          <span class=\"o\">=</span> <span class=\"mi\">128</span><span class=\"p\">,</span>\n       <span class=\"n\">height</span>         <span class=\"o\">=</span> <span class=\"mi\">128</span><span class=\"p\">,</span>\n       <span class=\"nb\">type</span>           <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_TYPE_2D</span><span class=\"p\">,</span>\n       <span class=\"n\">format</span>         <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FORMAT_RGBA</span><span class=\"p\">,</span>\n   <span class=\"p\">}</span>\n   <span class=\"kd\">local</span> <span class=\"n\">my_texture_id</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">create_texture</span><span class=\"p\">(</span><span class=\"n\">path</span><span class=\"p\">,</span> <span class=\"n\">tparams</span><span class=\"p\">)</span>\n   <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;texture0&quot;</span><span class=\"p\">,</span> <span class=\"n\">my_texture_id</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "examples": "How to create an 128x128 RGBA texture resource and assign it to a model\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">tparams</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n       <span class=\"n\">width</span>          <span class=\"o\">=</span> <span class=\"mi\">128</span><span class=\"p\">,</span>\n       <span class=\"n\">height</span>         <span class=\"o\">=</span> <span class=\"mi\">128</span><span class=\"p\">,</span>\n       <span class=\"nb\">type</span>           <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_TYPE_2D</span><span class=\"p\">,</span>\n       <span class=\"n\">format</span>         <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FORMAT_RGBA</span><span class=\"p\">,</span>\n   <span class=\"p\">}</span>\n   <span class=\"kd\">local</span> <span class=\"n\">my_texture_id</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">create_texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;/my_custom_texture.texturec&quot;</span><span class=\"p\">,</span> <span class=\"n\">tparams</span><span class=\"p\">)</span>\n   <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;texture0&quot;</span><span class=\"p\">,</span> <span class=\"n\">my_texture_id</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],
@@ -281,7 +281,7 @@
       "type": "FUNCTION",
       "name": "resource.release",
       "brief": "release a resource",
-      "description": "Release a resource.",
+      "description": "Release a resource.\n<span class=\"icon-attention\"></span> This is a potentially dangerous operation, releasing resources currently being used can cause unexpected behaviour.",
       "returnvalues": [],
       "parameters": [
         {
@@ -317,7 +317,7 @@
         },
         {
           "name": "table",
-          "doc": "A table containing info about the texture. Supported entries:\n<dl>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> The texture type. Supported values:</dd>\n</dl>\n<ul>\n<li><code>resource.TEXTURE_TYPE_2D</code></li>\n<li><code>resource.TEXTURE_TYPE_CUBE_MAP</code></li>\n</ul>\n<dl>\n<dt><code>width</code></dt>\n<dd><span class=\"type\">number</span> The width of the texture (in pixels)</dd>\n<dt><code>height</code></dt>\n<dd><span class=\"type\">number</span> The width of the texture (in pixels)</dd>\n<dt><code>format</code></dt>\n<dd><span class=\"type\">number</span> The texture format. Supported values:</dd>\n</dl>\n<ul>\n<li><code>resource.TEXTURE_FORMAT_LUMINANCE</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGB</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA</code></li>\n</ul>\n<dl>\n<dt><code>x</code></dt>\n<dd><span class=\"type\">number</span> optional x offset of the texture (in pixels)</dd>\n<dt><code>y</code></dt>\n<dd><span class=\"type\">number</span> optional y offset of the texture (in pixels)</dd>\n<dt><code>mipmap</code></dt>\n<dd><span class=\"type\">number</span> optional mipmap to upload the data to</dd>\n</dl>",
+          "doc": "A table containing info about the texture. Supported entries:\n<dl>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> The texture type. Supported values:</dd>\n</dl>\n<ul>\n<li><code>resource.TEXTURE_TYPE_2D</code></li>\n<li><code>resource.TEXTURE_TYPE_CUBE_MAP</code></li>\n</ul>\n<dl>\n<dt><code>width</code></dt>\n<dd><span class=\"type\">number</span> The width of the texture (in pixels)</dd>\n<dt><code>height</code></dt>\n<dd><span class=\"type\">number</span> The width of the texture (in pixels)</dd>\n<dt><code>format</code></dt>\n<dd><span class=\"type\">number</span> The texture format, note that some of these formats are platform specific. Supported values:</dd>\n</dl>\n<ul>\n<li><code>resource.TEXTURE_FORMAT_LUMINANCE</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGB</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGB_PVRTC_2BPPV1</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGB_PVRTC_4BPPV1</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA_PVRTC_2BPPV1</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA_PVRTC_4BPPV1</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGB_ETC1</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA_ETC2</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA_ASTC_4x4</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGB_BC1</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA_BC3</code></li>\n<li><code>resource.TEXTURE_FORMAT_R_BC4</code></li>\n<li><code>resource.TEXTURE_FORMAT_RG_BC5</code></li>\n<li><code>resource.TEXTURE_FORMAT_RGBA_BC7</code></li>\n</ul>\n<dl>\n<dt><code>x</code></dt>\n<dd><span class=\"type\">number</span> optional x offset of the texture (in pixels)</dd>\n<dt><code>y</code></dt>\n<dd><span class=\"type\">number</span> optional y offset of the texture (in pixels)</dd>\n<dt><code>mipmap</code></dt>\n<dd><span class=\"type\">number</span> optional mipmap to upload the data to</dd>\n<dt><code>compression_type</code></dt>\n<dd><span class=\"type\">number</span> optional specify the compression type for the data in the buffer object that holds the texture data. Defaults to resource.COMPRESSION_TYPE_DEFAULT, i.e no compression. Supported values:</dd>\n</dl>\n<ul>\n<li><code>COMPRESSION_TYPE_DEFAULT</code></li>\n<li><code>COMPRESSION_TYPE_BASIS_UASTC</code></li>\n</ul>",
           "types": [
             "table"
           ]
@@ -331,6 +331,109 @@
         }
       ],
       "examples": "How to update a specific region of an atlas by using the x,y values. Assumes the already set atlas is a 128x128 texture.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"mi\">16</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">y</span> <span class=\"o\">=</span> <span class=\"mi\">16</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"mi\">128</span> <span class=\"o\">-</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">x</span> <span class=\"o\">*</span> <span class=\"mi\">2</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">width</span> <span class=\"o\">=</span> <span class=\"mi\">128</span> <span class=\"o\">-</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">y</span> <span class=\"o\">*</span> <span class=\"mi\">2</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">buffer</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">create</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">width</span> <span class=\"o\">*</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">height</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"p\">{</span><span class=\"n\">name</span><span class=\"o\">=</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;rgb&quot;</span><span class=\"p\">),</span> <span class=\"nb\">type</span><span class=\"o\">=</span><span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">VALUE_TYPE_UINT8</span><span class=\"p\">,</span> <span class=\"n\">count</span><span class=\"o\">=</span><span class=\"mi\">3</span><span class=\"p\">}</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">stream</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">get_stream</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;rgb&quot;</span><span class=\"p\">))</span>\n\n  <span class=\"kr\">for</span> <span class=\"n\">y</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">height</span> <span class=\"kr\">do</span>\n      <span class=\"kr\">for</span> <span class=\"n\">x</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">width</span> <span class=\"kr\">do</span>\n          <span class=\"kd\">local</span> <span class=\"n\">index</span> <span class=\"o\">=</span> <span class=\"p\">(</span><span class=\"n\">y</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"o\">*</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">width</span> <span class=\"o\">*</span> <span class=\"mi\">3</span> <span class=\"o\">+</span> <span class=\"p\">(</span><span class=\"n\">x</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"o\">*</span> <span class=\"mi\">3</span> <span class=\"o\">+</span> <span class=\"mi\">1</span>\n          <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">stream</span><span class=\"p\">[</span><span class=\"n\">index</span> <span class=\"o\">+</span> <span class=\"mi\">0</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mh\">0xff</span>\n          <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">stream</span><span class=\"p\">[</span><span class=\"n\">index</span> <span class=\"o\">+</span> <span class=\"mi\">1</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mh\">0x80</span>\n          <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">stream</span><span class=\"p\">[</span><span class=\"n\">index</span> <span class=\"o\">+</span> <span class=\"mi\">2</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mh\">0x10</span>\n      <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span>\n\n  <span class=\"kd\">local</span> <span class=\"n\">resource_path</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;texture0&quot;</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">args</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">width</span><span class=\"o\">=</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">width</span><span class=\"p\">,</span> <span class=\"n\">height</span><span class=\"o\">=</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">height</span><span class=\"p\">,</span> <span class=\"n\">x</span><span class=\"o\">=</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"n\">y</span><span class=\"o\">=</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">y</span><span class=\"p\">,</span> <span class=\"nb\">type</span><span class=\"o\">=</span><span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_TYPE_2D</span><span class=\"p\">,</span> <span class=\"n\">format</span><span class=\"o\">=</span><span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FORMAT_RGB</span><span class=\"p\">,</span> <span class=\"n\">num_mip_maps</span><span class=\"o\">=</span><span class=\"mi\">1</span> <span class=\"p\">}</span>\n  <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">set_texture</span><span class=\"p\">(</span> <span class=\"n\">resource_path</span><span class=\"p\">,</span> <span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">buffer</span> <span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "resource.create_atlas",
+      "brief": "create an atlas resource",
+      "description": "This function creates a new atlas resource that can be used in the same way as any atlas created during build time.\nThe path used for creating the atlas must be unique, trying to create a resource at a path that is already\nregistered will trigger an error. If the intention is to instead modify an existing atlas, use the <a href=\"/ref/resource#resource.set_atlas\">resource.set_atlas</a>\nfunction. Also note that the path to the new atlas resource must have a '.texturesetc' extension,\nmeaning \"/path/my_atlas\" is not a valid path but \"/path/my_atlas.texturesetc\" is.\nWhen creating the atlas, at least one geometry and one animation is required, and an error will be\nraised if these requirements are not met. A reference to the resource will be held by the collection\nthat created the resource and will automatically be released when that collection is destroyed.\nNote that releasing a resource essentially means decreasing the reference count of that resource,\nand not necessarily that it will be deleted.",
+      "returnvalues": [
+        {
+          "name": "path",
+          "doc": "Returns the atlas resource path",
+          "types": [
+            "hash"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "path",
+          "doc": "The path to the resource.",
+          "types": [
+            "string"
+          ]
+        },
+        {
+          "name": "table",
+          "doc": "A table containing info about how to create the texture. Supported entries:\n<ul>\n<li>\n<dl>\n<dt><code>texture</code></dt>\n<dd><span class=\"type\">string | hash</span> the path to the texture resource, e.g \"/main/my_texture.texturec\"</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>animations</code></dt>\n<dd><span class=\"type\">table</span> a list of the animations in the atlas. Supports the following fields:</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">string</span> the id of the animation, used in e.g sprite.play_animation</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>width</code></dt>\n<dd><span class=\"type\">integer</span> the width of the animation</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>height</code></dt>\n<dd><span class=\"type\">integer</span> the height of the animation</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>frame_start</code></dt>\n<dd><span class=\"type\">integer</span> index to the first geometry of the animation. Indices are lua based and must be in the range of 1 .. <number-of-geometries> in atlas.</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>frame_end</code></dt>\n<dd><span class=\"type\">integer</span> index to the last geometry of the animation (non-inclusive). Indices are lua based and must be in the range of 1 .. <number-of-geometries> in atlas.</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>playback</code></dt>\n<dd><span class=\"type\">constant</span> optional playback mode of the animation, the default value is <a href=\"/ref/go#go.PLAYBACK_ONCE_FORWARD\">go.PLAYBACK_ONCE_FORWARD</a></dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>fps</code></dt>\n<dd><span class=\"type\">integer</span> optional fps of the animation, the default value is 30</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>flip_vertical</code></dt>\n<dd><span class=\"type\">boolean</span> optional flip the animation vertically, the default value is false</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>flip_horizontal</code></dt>\n<dd><span class=\"type\">boolean</span> optional flip the animation horizontally, the default value is false</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>geometries</code></dt>\n<dd><span class=\"type\">table</span> A list of the geometries that should map to the texture data. Supports the following fields:</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>vertices</code></dt>\n<dd><span class=\"type\">table</span> a list of the vertices in texture space of the geometry in the form {px0, py0, px1, py1, ..., pxn, pyn}</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>uvs</code></dt>\n<dd><span class=\"type\">table</span> a list of the uv coordinates in texture space of the geometry in the form of {u0, v0, u1, v1, ..., un, vn}</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>indices</code></dt>\n<dd><span class=\"type\">table</span> a list of the indices of the geometry in the form {i0, i1, i2, ..., in}. Each tripe in the list represents a triangle.</dd>\n</dl>\n</li>\n</ul>",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "examples": "Create a backing texture and an atlas\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- create an empty texture</span>\n    <span class=\"kd\">local</span> <span class=\"n\">my_texture_id</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">create_texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;/my_texture.texturec&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n        <span class=\"n\">width</span>          <span class=\"o\">=</span> <span class=\"mi\">128</span><span class=\"p\">,</span>\n        <span class=\"n\">height</span>         <span class=\"o\">=</span> <span class=\"mi\">128</span><span class=\"p\">,</span>\n        <span class=\"nb\">type</span>           <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_TYPE_2D</span><span class=\"p\">,</span>\n        <span class=\"n\">format</span>         <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FORMAT_RGBA</span><span class=\"p\">,</span>\n    <span class=\"p\">})</span>\n\n    <span class=\"c1\">-- optionally use resource.set_texture to upload data to texture</span>\n\n    <span class=\"c1\">-- create an atlas with one animation and one square geometry</span>\n    <span class=\"c1\">-- note that the function doesn&#39;t support hashes for the texture,</span>\n    <span class=\"c1\">-- you need to use a string for the texture path here aswell</span>\n    <span class=\"kd\">local</span> <span class=\"n\">my_atlas_id</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">create_atlas</span><span class=\"p\">(</span><span class=\"s2\">&quot;/my_atlas.texturesetc&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n        <span class=\"n\">texture</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;/my_texture.texturec&quot;</span><span class=\"p\">,</span>\n        <span class=\"n\">animations</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n            <span class=\"p\">{</span>\n                <span class=\"n\">id</span>          <span class=\"o\">=</span> <span class=\"s2\">&quot;my_animation&quot;</span><span class=\"p\">,</span>\n                <span class=\"n\">width</span>       <span class=\"o\">=</span> <span class=\"mi\">128</span><span class=\"p\">,</span>\n                <span class=\"n\">height</span>      <span class=\"o\">=</span> <span class=\"mi\">128</span><span class=\"p\">,</span>\n                <span class=\"n\">frame_start</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span>\n                <span class=\"n\">frame_end</span>   <span class=\"o\">=</span> <span class=\"mi\">2</span><span class=\"p\">,</span>\n            <span class=\"p\">}</span>\n        <span class=\"p\">},</span>\n        <span class=\"n\">geometries</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n            <span class=\"p\">{</span>\n                <span class=\"n\">vertices</span>  <span class=\"o\">=</span> <span class=\"p\">{</span>\n                    <span class=\"mi\">0</span><span class=\"p\">,</span>   <span class=\"mi\">0</span><span class=\"p\">,</span>\n                    <span class=\"mi\">0</span><span class=\"p\">,</span>   <span class=\"mi\">128</span><span class=\"p\">,</span>\n                    <span class=\"mi\">128</span><span class=\"p\">,</span> <span class=\"mi\">128</span><span class=\"p\">,</span>\n                    <span class=\"mi\">128</span><span class=\"p\">,</span> <span class=\"mi\">0</span>\n                <span class=\"p\">},</span>\n                <span class=\"n\">uvs</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n                    <span class=\"mi\">0</span><span class=\"p\">,</span>   <span class=\"mi\">0</span><span class=\"p\">,</span>\n                    <span class=\"mi\">0</span><span class=\"p\">,</span>   <span class=\"mi\">128</span><span class=\"p\">,</span>\n                    <span class=\"mi\">128</span><span class=\"p\">,</span> <span class=\"mi\">128</span><span class=\"p\">,</span>\n                    <span class=\"mi\">128</span><span class=\"p\">,</span> <span class=\"mi\">0</span>\n                <span class=\"p\">},</span>\n                <span class=\"n\">indices</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">3</span><span class=\"p\">}</span>\n            <span class=\"p\">}</span>\n        <span class=\"p\">}</span>\n    <span class=\"p\">})</span>\n\n    <span class=\"c1\">-- assign the atlas to the &#39;sprite&#39; component on the same go</span>\n    <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;image&quot;</span><span class=\"p\">,</span> <span class=\"n\">my_atlas_id</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "The index values are zero based where zero refers to the first entry of the vertex and uv lists"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "resource.set_atlas",
+      "brief": "set atlas data",
+      "description": "Sets the data for a specific atlas resource. Setting new atlas data is specified by passing in\na texture path for the backing texture of the atlas, a list of geometries and a list of animations\nthat map to the entries in the geometry list. The geometry entries are represented by three lists:\nvertices, uvs and indices that together represent triangles that are used in other parts of the\nengine to produce render objects from.\nVertex and uv coordinates for the geometries are expected to be\nin pixel coordinates where 0,0 is the top left corner of the texture.\nThere is no automatic padding or margin support when setting custom data,\nwhich could potentially cause filtering artifacts if used with a material sampler that has linear filtering.\nIf that is an issue, you need to calculate padding and margins manually before passing in the geometry data to\nthis function.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "path",
+          "doc": "The path to the atlas resource",
+          "types": [
+            "hash",
+            "string"
+          ]
+        },
+        {
+          "name": "table",
+          "doc": "A table containing info about the atlas. Supported entries:\n<ul>\n<li>\n<dl>\n<dt><code>texture</code></dt>\n<dd><span class=\"type\">string | hash</span> the path to the texture resource, e.g \"/main/my_texture.texturec\"</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>animations</code></dt>\n<dd><span class=\"type\">table</span> a list of the animations in the atlas. Supports the following fields:</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">string</span> the id of the animation, used in e.g sprite.play_animation</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>width</code></dt>\n<dd><span class=\"type\">integer</span> the width of the animation</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>height</code></dt>\n<dd><span class=\"type\">integer</span> the height of the animation</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>frame_start</code></dt>\n<dd><span class=\"type\">integer</span> index to the first geometry of the animation. Indices are lua based and must be in the range of 1 .. <number-of-geometries> in atlas.</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>frame_end</code></dt>\n<dd><span class=\"type\">integer</span> index to the last geometry of the animation (non-inclusive). Indices are lua based and must be in the range of 1 .. <number-of-geometries> in atlas.</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>playback</code></dt>\n<dd><span class=\"type\">constant</span> optional playback mode of the animation, the default value is <a href=\"/ref/go#go.PLAYBACK_ONCE_FORWARD\">go.PLAYBACK_ONCE_FORWARD</a></dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>fps</code></dt>\n<dd><span class=\"type\">integer</span> optional fps of the animation, the default value is 30</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>flip_vertical</code></dt>\n<dd><span class=\"type\">boolean</span> optional flip the animation vertically, the default value is false</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>flip_horizontal</code></dt>\n<dd><span class=\"type\">boolean</span> optional flip the animation horizontally, the default value is false</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>geometries</code></dt>\n<dd><span class=\"type\">table</span> A list of the geometries that should map to the texture data. Supports the following fields:</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>vertices</code></dt>\n<dd><span class=\"type\">table</span> a list of the vertices in texture space of the geometry in the form {px0, py0, px1, py1, ..., pxn, pyn}</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>uvs</code></dt>\n<dd><span class=\"type\">table</span> a list of the uv coordinates in texture space of the geometry in the form of {u0, v0, u1, v1, ..., un, vn}</dd>\n</dl>\n</li>\n<li>\n<dl>\n<dt><code>indices</code></dt>\n<dd><span class=\"type\">table</span> a list of the indices of the geometry in the form {i0, i1, i2, ..., in}. Each tripe in the list represents a triangle.</dd>\n</dl>\n</li>\n</ul>",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "examples": "Sets atlas data for a 256x256 texture with a single animation being rendered as a quad\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">params</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n        <span class=\"n\">texture</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;/main/my_256x256_texture.texturec&quot;</span><span class=\"p\">,</span>\n        <span class=\"n\">animations</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n            <span class=\"p\">{</span>\n                <span class=\"n\">id</span>          <span class=\"o\">=</span> <span class=\"s2\">&quot;my_animation&quot;</span><span class=\"p\">,</span>\n                <span class=\"n\">width</span>       <span class=\"o\">=</span> <span class=\"mi\">256</span><span class=\"p\">,</span>\n                <span class=\"n\">height</span>      <span class=\"o\">=</span> <span class=\"mi\">256</span><span class=\"p\">,</span>\n                <span class=\"n\">frame_start</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span>\n                <span class=\"n\">frame_end</span>   <span class=\"o\">=</span> <span class=\"mi\">2</span><span class=\"p\">,</span>\n            <span class=\"p\">}</span>\n        <span class=\"p\">},</span>\n        <span class=\"n\">geometries</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n            <span class=\"p\">{</span>\n                <span class=\"n\">vertices</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n                    <span class=\"mi\">0</span><span class=\"p\">,</span>   <span class=\"mi\">0</span><span class=\"p\">,</span>\n                    <span class=\"mi\">0</span><span class=\"p\">,</span>   <span class=\"mi\">256</span><span class=\"p\">,</span>\n                    <span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">256</span><span class=\"p\">,</span>\n                    <span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">0</span>\n                <span class=\"p\">},</span>\n                <span class=\"n\">uvs</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n                    <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span>\n                    <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">256</span><span class=\"p\">,</span>\n                    <span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">256</span><span class=\"p\">,</span>\n                    <span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">0</span>\n                <span class=\"p\">},</span>\n                <span class=\"n\">indices</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">3</span> <span class=\"p\">}</span>\n            <span class=\"p\">}</span>\n        <span class=\"p\">}</span>\n    <span class=\"p\">}</span>\n    <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">set_atlas</span><span class=\"p\">(</span><span class=\"s2\">&quot;/main/test.a.texturesetc&quot;</span><span class=\"p\">,</span> <span class=\"n\">params</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Custom atlas data is not compatible with slice-9 for sprites",
+        "The index values are zero based where zero refers to the first entry of the vertex and uv lists"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "resource.get_atlas",
+      "brief": "Get atlas data",
+      "description": "Returns the atlas data for an atlas",
+      "returnvalues": [
+        {
+          "name": "data",
+          "doc": "A table with the following entries:\n<ul>\n<li>texture</li>\n<li>geometries</li>\n<li>animations</li>\n</ul>\nSee <a href=\"/ref/resource#resource.set_atlas\">resource.set_atlas</a> for a detailed description of each field",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "path",
+          "doc": "The path to the atlas resource",
+          "types": [
+            "hash",
+            "string"
+          ]
+        }
+      ],
+      "examples": "",
       "replaces": "",
       "error": "",
       "tparams": [],
@@ -533,6 +636,202 @@
       "name": "resource.TEXTURE_FORMAT_RGBA",
       "brief": "RGBA type texture format",
       "description": "RGBA type texture format",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "resource.TEXTURE_FORMAT_RGB_PVRTC_2BPPV1",
+      "brief": "RGB_PVRTC_2BPPV1 type texture format",
+      "description": "RGB_PVRTC_2BPPV1 type texture format",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "resource.TEXTURE_FORMAT_RGB_PVRTC_4BPPV1",
+      "brief": "RGB_PVRTC_4BPPV1 type texture format",
+      "description": "RGB_PVRTC_4BPPV1 type texture format",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "resource.TEXTURE_FORMAT_RGBA_PVRTC_2BPPV1",
+      "brief": "RGBA_PVRTC_2BPPV1 type texture format",
+      "description": "RGBA_PVRTC_2BPPV1 type texture format",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "resource.TEXTURE_FORMAT_RGBA_PVRTC_4BPPV1",
+      "brief": "RGBA_PVRTC_4BPPV1 type texture format",
+      "description": "RGBA_PVRTC_4BPPV1 type texture format",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "resource.TEXTURE_FORMAT_RGB_ETC1",
+      "brief": "RGB_ETC1 type texture format",
+      "description": "RGB_ETC1 type texture format",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "resource.TEXTURE_FORMAT_RGBA_ETC2",
+      "brief": "RGBA_ETC2 type texture format",
+      "description": "RGBA_ETC2 type texture format",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "resource.TEXTURE_FORMAT_RGBA_ASTC_4x4",
+      "brief": "RGBA_ASTC_4x4 type texture format",
+      "description": "RGBA_ASTC_4x4 type texture format",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "resource.TEXTURE_FORMAT_RGB_BC1",
+      "brief": "RGB_BC1 type texture format",
+      "description": "RGB_BC1 type texture format",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "resource.TEXTURE_FORMAT_RGBA_BC3",
+      "brief": "RGBA_BC3 type texture format",
+      "description": "RGBA_BC3 type texture format",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "resource.TEXTURE_FORMAT_R_BC4",
+      "brief": "R_BC4 type texture format",
+      "description": "R_BC4 type texture format",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "resource.TEXTURE_FORMAT_RG_BC5",
+      "brief": "RG_BC5 type texture format",
+      "description": "RG_BC5 type texture format",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "resource.TEXTURE_FORMAT_RGBA_BC7",
+      "brief": "RGBA_BC7 type texture format",
+      "description": "RGBA_BC7 type texture format",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "resource.COMPRESSION_TYPE_DEFAULT",
+      "brief": "COMPRESSION_TYPE_DEFAULT compression type",
+      "description": "COMPRESSION_TYPE_DEFAULT compression type",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "resource.COMPRESSION_TYPE_BASIS_UASTC",
+      "brief": "BASIS_UASTC compression type",
+      "description": "BASIS_UASTC compression type",
       "returnvalues": [],
       "parameters": [],
       "examples": "",
@@ -814,6 +1113,7 @@
     "description": "Functions and constants to access resources.",
     "path": "",
     "file": "",
+    "notes": [],
     "group": "SYSTEM"
   }
 }

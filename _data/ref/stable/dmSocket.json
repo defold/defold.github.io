@@ -26,7 +26,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "Use dmSocket::INVALID_SOCKET_HANDLE instead of zero for unset values. This is an exception\nfrom all other handles."
+      ]
     },
     {
       "type": "VARIABLE",
@@ -398,7 +400,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "SIGPIPE is disabled on applicable platforms. This has the implication\nthat Receive can return zero bytes when the connection is closed by remote peer."
+      ]
     },
     {
       "type": "FUNCTION",
@@ -724,7 +728,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "This is a no op on platforms that doesn't support it"
+      ]
     },
     {
       "type": "FUNCTION",
@@ -761,7 +767,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "Timeout resolution might be in milliseconds, e.g. windows. Use values\n      larger than or equal to 1000."
+      ]
     },
     {
       "type": "FUNCTION",
@@ -798,7 +806,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "Timeout resolution might be in milliseconds, e.g. windows. Use values\n      larger than or equal to 1000"
+      ]
     },
     {
       "type": "FUNCTION",
@@ -849,7 +859,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "For dmSocket::Recv() and dmSocket::Send() function ETIMEDOUT is translated to EWOULDBLOCK\non win32 for compatibility with BSD sockets."
+      ]
     },
     {
       "type": "FUNCTION",
@@ -900,7 +912,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "For dmSocket::Recv() and dmSocket::Send() function ETIMEDOUT is translated to EWOULDBLOCK\non win32 for compatibility with BSD sockets."
+      ]
     },
     {
       "type": "FUNCTION",
@@ -1016,7 +1030,9 @@
       "error": "",
       "tparams": [],
       "members": [],
-      "notes": []
+      "notes": [
+        "On HTML5, this function is a wrapper for dmSocket::GetHostByName"
+      ]
     },
     {
       "type": "FUNCTION",
@@ -1299,6 +1315,7 @@
     "description": "Socket functions.",
     "path": "engine/dlib/src/dmsdk/dlib/socket.h",
     "file": "dmsdk/dlib/socket.h",
+    "notes": [],
     "group": "DEFOLD SDK"
   }
 }
