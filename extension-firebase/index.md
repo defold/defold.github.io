@@ -106,6 +106,8 @@ function init(self)
 end
 ```
 
+It is possible to override the values within GoogleService-Info.plist/google-services.xml by passing an optional table of options to init(). See the [Defold manual](https://defold.com/extension-firebase/api/) for details but be aware of implications for analytics as described in Google's [Firebase documentation](https://firebase.google.com/docs/projects/multiprojects#reliable-analytics)
+
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-firebase)
