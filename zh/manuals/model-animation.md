@@ -12,8 +12,8 @@ brief: 本教程介绍了如何在 Defold 中使用 3D 动画.
 
 关于如何导入 3D 模型动画, 详情请见 [模型教程](/zh/manuals/model).
 
-![Blender animation](/manuals/images/animation/blender_animation.png){.inline srcset="images/animation/blender_animation@2x.png 2x"}
-![Wiggle loop](/manuals/images/animation/suzanne.gif)
+  ![Blender animation](/manuals/images/animation/blender_animation.png)
+  ![Wiggle loop](/manuals/images/animation/suzanne.gif)
 
 
 ## 3D Model 动画
