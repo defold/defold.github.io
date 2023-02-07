@@ -15,6 +15,22 @@
                 {
                     "doc": "optional parameters as properties. The following parameters can be set",
                     "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "Facebook only [icon:facebook]. Optional custom unique request id to set for this transaction. The id becomes attached to the payment within the Graph API.",
+                            "name": "request_id",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "Google Play only [icon:googleplay]. Which subscription offer to use when buying a subscription. The token can be retrieved from the subscriptions table returned when calling iap.list()",
+                            "name": "token",
+                            "types": [
+                                "string"
+                            ]
+                        }
+                    ],
                     "types": [
                         "table"
                     ]
@@ -94,6 +110,117 @@
                         {
                             "doc": "a table describing the available iap products.",
                             "name": "products",
+                            "parameters": [
+                                {
+                                    "doc": "The product identifier.",
+                                    "name": "ident",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The product title.",
+                                    "name": "title",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The product description.",
+                                    "name": "description",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The price of the product. For Google Play [icon:googleplay] this is used only for in-app products",
+                                    "name": "price",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "The price of the product, as a formatted string (amount and currency symbol). For Google Play [icon:googleplay] this is used only for in-app products",
+                                    "name": "price_string",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The currency code. For Google Play [icon:googleplay] this is the merchant's locale, instead of the user's. For Google Play [icon:googleplay] this is used only for in-app products",
+                                    "name": "currency_code",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Only available for Google Play [icon:googleplay]. List of subscription offers. Each offer contains a token and a list of price and billing options. See https://developer.android.com/reference/com/android/billingclient/api/ProductDetails.PricingPhase",
+                                    "name": "subscriptions",
+                                    "parameters": [
+                                        {
+                                            "doc": "The token associated with the pricing phases for the subscription.",
+                                            "name": "token",
+                                            "types": [
+                                                "string"
+                                            ]
+                                        },
+                                        {
+                                            "doc": "The pricing phases for the subscription.",
+                                            "name": "pricing",
+                                            "parameters": [
+                                                {
+                                                    "doc": "Formatted price for the payment cycle, including currency sign.",
+                                                    "name": "price_string",
+                                                    "types": [
+                                                        "string"
+                                                    ]
+                                                },
+                                                {
+                                                    "doc": "Price of the payment cycle in micro-units.",
+                                                    "name": "price",
+                                                    "types": [
+                                                        "number"
+                                                    ]
+                                                },
+                                                {
+                                                    "doc": "ISO 4217 currency code",
+                                                    "name": "currency_code",
+                                                    "types": [
+                                                        "string"
+                                                    ]
+                                                },
+                                                {
+                                                    "doc": "Billing period of the payment cycle, specified in ISO 8601 format",
+                                                    "name": "billing_period",
+                                                    "types": [
+                                                        "string"
+                                                    ]
+                                                },
+                                                {
+                                                    "doc": "Number of cycles for which the billing period is applied.",
+                                                    "name": "billing_cycle_count",
+                                                    "types": [
+                                                        "number"
+                                                    ]
+                                                },
+                                                {
+                                                    "doc": "FINITE, INFINITE or NONE",
+                                                    "name": "recurrence_mode",
+                                                    "types": [
+                                                        "string"
+                                                    ]
+                                                }
+                                            ],
+                                            "types": [
+                                                "table"
+                                            ]
+                                        }
+                                    ],
+                                    "types": [
+                                        "table"
+                                    ]
+                                }
+                            ],
                             "types": [
                                 "table"
                             ]
@@ -146,6 +273,99 @@
                         {
                             "doc": "a table describing the transaction.",
                             "name": "transaction",
+                            "parameters": [
+                                {
+                                    "doc": "The product identifier.",
+                                    "name": "ident",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The transaction state. One of the following\n- `iap.TRANS_STATE_FAILED`\n- `iap.TRANS_STATE_PURCHASED`\n- `iap.TRANS_STATE_PURCHASING`\n- `iap.TRANS_STATE_RESTORED`\n- `iap.TRANS_STATE_UNVERIFIED`",
+                                    "name": "state",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The date and time for the transaction.",
+                                    "name": "date",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The transaction identifier. This field is only set when `state` is `TRANS_STATE_RESTORED`, `TRANS_STATE_UNVERIFIED` or `TRANS_STATE_PURCHASED`.",
+                                    "name": "trans_ident",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The transaction receipt. This field is only set when `state` is `TRANS_STATE_PURCHASED` or `TRANS_STATE_UNVERIFIED`.",
+                                    "name": "receipt",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Apple only [icon:apple]. The original transaction. This field is only set when `state` is `TRANS_STATE_RESTORED`.",
+                                    "name": "original_trans",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Android only [icon:android]. The purchase order details in JSON format.",
+                                    "name": "original_json",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Google Play only [icon:googleplay]. A string containing the signature of the purchase data that was signed with the private key of the developer.",
+                                    "name": "signature",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Facebook only [icon:facebook]. This field is set to the optional custom unique request id `request_id` if set in the `iap.buy()` call parameters.",
+                                    "name": "request_id",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Amazon Pay only [icon:amazon]. The user ID.",
+                                    "name": "user_id",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Amazon Pay only [icon:amazon]. If `true`, the SDK is running in Sandbox mode. This only allows interactions with the Amazon AppTester. Use this mode only for testing locally.",
+                                    "name": "is_sandbox_mode",
+                                    "types": [
+                                        "boolean"
+                                    ]
+                                },
+                                {
+                                    "doc": "Amazon Pay only [icon:amazon]. The cancel date for the purchase. This field is only set if the purchase is canceled.",
+                                    "name": "cancel_date",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Amazon Pay only [icon:amazon]. Is set to `true` if the receipt was canceled or has expired; otherwise `false`.",
+                                    "name": "canceled",
+                                    "types": [
+                                        "string"
+                                    ]
+                                }
+                            ],
                             "types": [
                                 "table"
                             ]

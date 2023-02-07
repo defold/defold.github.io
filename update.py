@@ -367,10 +367,11 @@ def parse_extension_parameters(parameters):
     if parameters:
         for p in parameters:
             param = {}
+            param_type = p.get("type", "")
             param["name"] = p.get("name", "")
-            param["types"] = p.get("type", "").split("|")
+            param["types"] = param_type.split("|") if isinstance(param_type, str) else param_type
             param["doc"] = p.get("desc", "")
-            subp = parse_extension_parameters(p.get("parameters"))
+            subp = parse_extension_parameters(p.get("parameters")) + parse_extension_parameters(p.get("members"))
             if subp:
                 param["parameters"] = subp
             params.append(param)
@@ -864,7 +865,7 @@ def process_refdoc(download = False):
                         type = "defold"
                         if namespace in LUA_APIS:
                             type = "lua"
-                        elif namespace.startswith("dm"):
+                        elif namespace.startswith("dm") or namespace == "sharedlibrary":
                             type = "c"
 
                         print("REFDOC " + json_out_name + " type: " + type)

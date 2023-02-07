@@ -144,6 +144,50 @@
                         {
                             "doc": "Contains information that depends on message_id.",
                             "name": "message",
+                            "parameters": [
+                                {
+                                    "doc": "Status of the current operation. It can be one of the predefined constants below\n- `gpgs.STATUS_SUCCESS`\n- `gpgs.STATUS_FAILED`\n- `gpgs.STATUS_CREATE_NEW_SAVE`\n- `gpgs.STATUS_CONFLICT`",
+                                    "name": "status",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "The error message. Available only if `status` is `gpgs.STATUS_FAILED`.",
+                                    "name": "error",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The error code. Available only if `status` is `gpgs.STATUS_FAILED` and GPGS provide this code. It can be one of the predefined constants below\n- `gpgs.ERROR_STATUS_SNAPSHOT_COMMIT_FAILED`\n- `gpgs.ERROR_STATUS_SNAPSHOT_CONFLICT_MISSING`\n- `gpgs.ERROR_STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE`\n- `gpgs.ERROR_STATUS_SNAPSHOT_CREATION_FAILED`\n- `gpgs.ERROR_STATUS_SNAPSHOT_FOLDER_UNAVAILABLE`\n- `gpgs.ERROR_STATUS_SNAPSHOT_NOT_FOUND`\nOr it can be ApiException.getStatusCode() (if ApiException was thrown)",
+                                    "name": "error_status",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "Metadata of the loaded save. Available only if `message_id` is `gpgs.MSG_LOAD_SNAPSHOT`.",
+                                    "name": "metadata",
+                                    "types": [
+                                        "table"
+                                    ]
+                                },
+                                {
+                                    "doc": "The conflict id. Available only if `status` is `gpgs.STATUS_CONFLICT`.",
+                                    "name": "conflictId",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The conflicting metadata. Available only if `status` is `gpgs.STATUS_CONFLICT`.",
+                                    "name": "conflictMetadata",
+                                    "types": [
+                                        "table"
+                                    ]
+                                }
+                            ],
                             "types": [
                                 "table"
                             ]
@@ -232,6 +276,36 @@
                 {
                     "doc": "A table with metadata for a save. It contains the fields below",
                     "name": "metadata",
+                    "parameters": [
+                        {
+                            "doc": "The new played time to set for the snapshot in ms.",
+                            "name": "playedTime",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "The new progress value to set for the snapshot.",
+                            "name": "progressValue",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "The new description to set for the snapshot.",
+                            "name": "description",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "The new cover image to set for the snapshot in `png`.",
+                            "name": "coverImage",
+                            "types": [
+                                "object"
+                            ]
+                        }
+                    ],
                     "types": [
                         "table"
                     ]

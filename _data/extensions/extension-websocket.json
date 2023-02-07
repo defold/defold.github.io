@@ -15,6 +15,29 @@
                 {
                     "doc": "optional parameters as properties. The following parameters can be set",
                     "name": "params",
+                    "parameters": [
+                        {
+                            "doc": "Timeout for the connection sequence (milliseconds). Not used on HTML5. (Default is 3000)",
+                            "name": "timeout",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "the protocol to use (e.g. 'chat'). If not set, no `Sec-WebSocket-Protocol` header is sent.",
+                            "name": "protocol",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "list of http headers. Each pair is separated with \"\\r\\n\". Not used on HTML5.",
+                            "name": "headers",
+                            "types": [
+                                "string"
+                            ]
+                        }
+                    ],
                     "types": [
                         "table"
                     ]
@@ -40,6 +63,36 @@
                         {
                             "doc": "the event payload",
                             "name": "data",
+                            "parameters": [
+                                {
+                                    "doc": "The current event. One of the following\n- `websocket.EVENT_CONNECTED`\n- `websocket.EVENT_DISCONNECTED`\n- `websocket.EVENT_ERROR`\n- `websocket.EVENT_MESSAGE`",
+                                    "name": "event",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "The received data if event is `websocket.EVENT_MESSAGE`. Error message otherwise",
+                                    "name": "message",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Handshake response information (status, headers etc)",
+                                    "name": "handshake_response",
+                                    "types": [
+                                        "table"
+                                    ]
+                                },
+                                {
+                                    "doc": "Status code received from the server if the server closed the connection. Only present if event is `EVENT_DISCONNECTED`.",
+                                    "name": "code",
+                                    "types": [
+                                        "number"
+                                    ]
+                                }
+                            ],
                             "types": [
                                 "table"
                             ]
@@ -96,6 +149,15 @@
                 {
                     "doc": "options for this particular message. May be `nil`",
                     "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "The data type of the message\n- `websocket.DATA_TYPE_BINARY` (default)\n- `websocket.DATA_TYPE_TEXT`",
+                            "name": "type",
+                            "types": [
+                                "number"
+                            ]
+                        }
+                    ],
                     "types": [
                         "table"
                     ]
