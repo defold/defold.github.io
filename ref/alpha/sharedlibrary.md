@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: sharedlibrary
-type: defold
+type: c
 title: API reference (sharedlibrary)
 ---
 {% include anchor_headings.html html=content %}
