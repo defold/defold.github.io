@@ -1,414 +1,123 @@
 {
     "elements": [
         {
-            "description": "Plays the specified animation on a Spine model. A [ref:spine_animation_done] message is sent to the callback (or message handler). Any spine events will also be handled in the same way. [icon:attention] The callback is not called (or message sent) if the animation is cancelled with [ref:spine.cancel]. The callback is called (or message sent) only for animations that play with the following playback modes * `go.PLAYBACK_ONCE_FORWARD` * `go.PLAYBACK_ONCE_BACKWARD` * `go.PLAYBACK_ONCE_PINGPONG`",
+            "description": "Create a new spine node",
             "examples": "",
-            "name": "play_anim",
-            "parameters": [
-                {
-                    "doc": "The Spine model for which to play an animation",
-                    "name": "url",
-                    "types": [
-                        "string",
-                        "hash",
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "Id of the animation to play",
-                    "name": "anim_id",
-                    "types": [
-                        "hash"
-                    ]
-                },
-                {
-                    "doc": "Playback mode of the animation (from go.PLAYBACK_*)",
-                    "name": "playback",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "Playback options",
-                    "name": "options",
-                    "parameters": [
-                        {
-                            "doc": "Duration of a linear blend between the current and new animation.",
-                            "name": "blend_duration",
-                            "types": [
-                                "number"
-                            ]
-                        },
-                        {
-                            "doc": "The normalized initial value of the animation cursor when the animation starts playing.",
-                            "name": "offset",
-                            "types": [
-                                "number"
-                            ]
-                        },
-                        {
-                            "doc": "The rate with which the animation will be played. Must be positive.",
-                            "name": "playback_rate",
-                            "types": [
-                                "constant"
-                            ]
-                        },
-                        {
-                            "doc": "The track index of the animation. Defaults to 1. Animations on different tracks play in parallel.",
-                            "name": "track",
-                            "types": [
-                                "number"
-                            ]
-                        }
-                    ],
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "function to call when the animation has completed or a Spine event occured",
-                    "name": "callback_function",
-                    "parameters": [
-                        {
-                            "doc": "The context of the calling script",
-                            "name": "self",
-                            "types": [
-                                "object"
-                            ]
-                        },
-                        {
-                            "doc": "The name of the message (\"spine_animation_done\" or \"spine_event\")",
-                            "name": "message_id",
-                            "types": [
-                                "hash"
-                            ]
-                        },
-                        {
-                            "doc": "A table that contains the response",
-                            "name": "message",
-                            "parameters": [
-                                {
-                                    "doc": "The animation that was completed",
-                                    "name": "animation_id",
-                                    "types": [
-                                        "hash"
-                                    ]
-                                },
-                                {
-                                    "doc": "The track index of the animation",
-                                    "name": "track",
-                                    "types": [
-                                        "number"
-                                    ]
-                                },
-                                {
-                                    "doc": "(spine_animation_done only!) The playback mode for the animation",
-                                    "name": "playback",
-                                    "types": [
-                                        "constant"
-                                    ]
-                                },
-                                {
-                                    "doc": "(spine_event only!) the event that was triggered.",
-                                    "name": "event_id",
-                                    "types": [
-                                        "hash"
-                                    ]
-                                },
-                                {
-                                    "doc": "(spine_event only!) the time at which the event occurred (seconds)",
-                                    "name": "t",
-                                    "types": [
-                                        "float"
-                                    ]
-                                },
-                                {
-                                    "doc": "(spine_event only!) a custom integer associated with the event (0 by default).",
-                                    "name": "integer",
-                                    "types": [
-                                        "int"
-                                    ]
-                                },
-                                {
-                                    "doc": "(spine_event only!) a custom float associated with the event (0 by default)",
-                                    "name": "float",
-                                    "types": [
-                                        "float"
-                                    ]
-                                },
-                                {
-                                    "doc": "(spine_event only!) a custom string associated with the event (hash(\"\") by default)",
-                                    "name": "string",
-                                    "types": [
-                                        "hash"
-                                    ]
-                                }
-                            ],
-                            "types": [
-                                "table"
-                            ]
-                        },
-                        {
-                            "doc": "The invoker of the callback - the Spine model component",
-                            "name": "sender",
-                            "types": [
-                                "url"
-                            ]
-                        }
-                    ],
-                    "types": [
-                        "function"
-                    ]
-                }
-            ],
+            "name": "new_spine_node",
+            "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Cancels all running animations on a specified spine model component",
+            "description": "Plays the specified animation on a Spine node",
             "examples": "",
-            "name": "cancel",
-            "parameters": [
-                {
-                    "doc": "The Spine model for which to cancel the animation",
-                    "name": "url",
-                    "types": [
-                        "string",
-                        "hash",
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "Cancel options",
-                    "name": "options",
-                    "parameters": [
-                        {
-                            "doc": "The index of the track which to cancel the animation on. Defaults to all animations on all tracks.",
-                            "name": "track",
-                            "types": [
-                                "number"
-                            ]
-                        }
-                    ],
-                    "types": [
-                        "table"
-                    ]
-                }
-            ],
+            "name": "play_spine_anim",
+            "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Returns the id of the game object that corresponds to a specified skeleton bone.",
+            "description": "Cancels all running animations on a specified spine node",
             "examples": "",
-            "name": "get_go",
-            "parameters": [
-                {
-                    "doc": "The Spine model to query",
-                    "name": "url",
-                    "types": [
-                        "string",
-                        "hash",
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "Id of the corresponding bone",
-                    "name": "bone_id",
-                    "types": [
-                        "hash"
-                    ]
-                }
-            ],
+            "name": "cancel_spine",
+            "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Sets the spine skin on a spine model.",
+            "description": "Get a bone node",
             "examples": "",
-            "name": "set_skin",
-            "parameters": [
-                {
-                    "doc": "The Spine model to query",
-                    "name": "url",
-                    "types": [
-                        "string",
-                        "hash",
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "Id of the corresponding skin",
-                    "name": "skin",
-                    "types": [
-                        "string",
-                        "hash"
-                    ]
-                }
-            ],
+            "name": "get_spine_bone",
+            "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Set the attachment of a lot on a spine model.",
+            "description": "Set the spine scene used by a spine node",
             "examples": "",
-            "name": "set_attachment",
-            "parameters": [
-                {
-                    "doc": "The Spine model to query",
-                    "name": "url",
-                    "types": [
-                        "string",
-                        "hash",
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "Id of the slot",
-                    "name": "slot",
-                    "types": [
-                        "string",
-                        "hash"
-                    ]
-                },
-                {
-                    "doc": "Id of the attachment",
-                    "name": "attachment",
-                    "types": [
-                        "string",
-                        "hash"
-                    ]
-                }
-            ],
+            "name": "set_spine_scene",
+            "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Resets a shader constant for a spine model component. (Previously set with `go.set()`)",
+            "description": "get the spine scene used by a spine node",
             "examples": "",
-            "name": "reset_constant",
-            "parameters": [
-                {
-                    "doc": "The Spine model to query",
-                    "name": "url",
-                    "types": [
-                        "string",
-                        "hash",
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "name of the constant",
-                    "name": "constant",
-                    "types": [
-                        "string",
-                        "hash"
-                    ]
-                }
-            ],
+            "name": "get_spine_scene",
+            "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "reset the IK constraint target position to default of a spinemodel.",
+            "description": "Set the skin to use on a spine node",
             "examples": "",
-            "name": "reset_ik_target",
-            "parameters": [
-                {
-                    "doc": "The Spine model",
-                    "name": "url",
-                    "types": [
-                        "string",
-                        "hash",
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "id of the corresponding IK constraint",
-                    "name": "ik_constraint_id",
-                    "types": [
-                        "string",
-                        "hash"
-                    ]
-                }
-            ],
+            "name": "set_spine_skin",
+            "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "set the target position of an IK constraint object.",
+            "description": "Get the skin used by a spine node",
             "examples": "",
-            "name": "set_ik_target_position",
-            "parameters": [
-                {
-                    "doc": "The Spine model",
-                    "name": "url",
-                    "types": [
-                        "string",
-                        "hash",
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "id of the corresponding IK constraint",
-                    "name": "ik_constraint_id",
-                    "types": [
-                        "string",
-                        "hash"
-                    ]
-                },
-                {
-                    "doc": "target position",
-                    "name": "position",
-                    "types": [
-                        "vector3"
-                    ]
-                }
-            ],
+            "name": "get_spine_skin",
+            "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "set the IK constraint object target position to follow position.",
+            "description": "Get the current animation of a spine node",
             "examples": "",
-            "name": "set_ik_target",
-            "parameters": [
-                {
-                    "doc": "The Spine model to query",
-                    "name": "url",
-                    "types": [
-                        "string",
-                        "hash",
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "id of the corresponding IK constraint",
-                    "name": "ik_constraint_id",
-                    "types": [
-                        "string",
-                        "hash"
-                    ]
-                },
-                {
-                    "doc": "target game object",
-                    "name": "target_url",
-                    "types": [
-                        "string",
-                        "hash",
-                        "url"
-                    ]
-                }
-            ],
+            "name": "get_spine_animation",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set the animation cursor for a spine node",
+            "examples": "",
+            "name": "set_spine_cursor",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get the animation cursor for a spine node",
+            "examples": "",
+            "name": "get_spine_cursor",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set the animation playback rate of a spine node",
+            "examples": "",
+            "name": "set_spine_playback_rate",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get the animation playback rate for a spine node",
+            "examples": "",
+            "name": "get_spine_playback_rate",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets an attachment to a slot",
+            "examples": "",
+            "name": "set_spine_attachment",
+            "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         }
     ],
     "info": {
-        "brief": "spine",
-        "description": "Functions and constants for interacting with Spine models",
+        "brief": "gui",
+        "description": "Functions and constants for interacting with Spine models in GUI",
         "group": "EXTENSIONS",
-        "name": "spine",
-        "namespace": "spine"
+        "name": "gui",
+        "namespace": "gui"
     }
 }
