@@ -105,6 +105,36 @@
       "notes": []
     },
     {
+      "type": "FUNCTION",
+      "name": "timer.get_info",
+      "brief": "get information about timer",
+      "description": "Get information about timer.",
+      "returnvalues": [
+        {
+          "name": "data",
+          "doc": "or nil if timer is cancelled/completed. table with data in the following fields:\n<dl>\n<dt><code>time_remaining</code></dt>\n<dd><span class=\"type\">number</span> Time remaining until the next time a timer.delay() fires.</dd>\n<dt><code>delay</code></dt>\n<dd><span class=\"type\">number</span> Time interval.</dd>\n<dt><code>repeat</code></dt>\n<dd><span class=\"type\">boolean</span> true = repeat timer until cancel, false = one-shot timer.</dd>\n</dl>",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "handle",
+          "doc": "the timer handle returned by timer.delay()",
+          "types": [
+            "hash"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
       "type": "VARIABLE",
       "name": "timer.INVALID_TIMER_HANDLE",
       "brief": "Indicates an invalid timer handle",
