@@ -1,0 +1,44 @@
+{
+    "elements": [
+        {
+            "description": "Initialise Firebase",
+            "examples": "",
+            "name": "firebase.init",
+            "parameters": [
+                {
+                    "doc": "Optional table with initialisation parameters to use instead of those specified in google-services.xml/plist When passing this, disable creation of the default Firebase App by specifying firebase.no_auto_init in game.project Valid keys in the table are api_key, app_id, database_url, messaging_sender_id, project_id, storage_bucket. All values are strings.",
+                    "name": "options",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get the Firebase Installation auth token",
+            "examples": "",
+            "name": "firebase.get_installation_auth_token",
+            "parameters": [
+                {
+                    "doc": "Function to invoke with the auth token (self, token)",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "api": "extension-firebase/firebase_api",
+        "brief": "firebase",
+        "description": "Functions and constants for interacting with Firebase",
+        "group": "EXTENSIONS",
+        "name": "extension-firebase",
+        "namespace": "firebase"
+    }
+}

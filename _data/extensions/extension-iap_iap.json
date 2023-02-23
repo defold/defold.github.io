@@ -1,0 +1,486 @@
+{
+    "elements": [
+        {
+            "description": "Purchase a product.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code>  <span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">iap_listener</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">transaction</span><span class=\"p\">,</span> <span class=\"nb\">error</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"nb\">error</span> <span class=\"o\">==</span> <span class=\"kc\">nil</span> <span class=\"kr\">then</span>\n      <span class=\"c1\">-- purchase is successful.</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">transaction</span><span class=\"p\">.</span><span class=\"n\">date</span><span class=\"p\">)</span>\n      <span class=\"c1\">-- required if auto finish transactions is disabled in project settings</span>\n      <span class=\"kr\">if</span> <span class=\"p\">(</span><span class=\"n\">transaction</span><span class=\"p\">.</span><span class=\"n\">state</span> <span class=\"o\">==</span> <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">TRANS_STATE_PURCHASED</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- do server-side verification of purchase here..</span>\n        <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">finish</span><span class=\"p\">(</span><span class=\"n\">transaction</span><span class=\"p\">)</span>\n      <span class=\"kr\">end</span>\n    <span class=\"kr\">else</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">,</span> <span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">reason</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span>\n\n  <span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n      <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"n\">iap_listener</span><span class=\"p\">)</span>\n      <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">buy</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_iap&quot;</span><span class=\"p\">)</span>\n  <span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "iap.buy",
+            "parameters": [
+                {
+                    "doc": "product to buy",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "optional parameters as properties. The following parameters can be set",
+                    "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "Facebook only [icon:facebook]. Optional custom unique request id to set for this transaction. The id becomes attached to the payment within the Graph API.",
+                            "name": "request_id",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "Google Play only [icon:googleplay]. Which subscription offer to use when buying a subscription. The token can be retrieved from the subscriptions table returned when calling iap.list()",
+                            "name": "token",
+                            "types": [
+                                "string"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Explicitly finish a product transaction. [icon:attention] Calling iap.finish is required on a successful transaction if `auto_finish_transactions` is disabled in project settings. Calling this function with `auto_finish_transactions` set will be ignored and a warning is printed. The `transaction.state` field must equal `iap.TRANS_STATE_PURCHASED`.",
+            "examples": "",
+            "name": "iap.finish",
+            "parameters": [
+                {
+                    "doc": "transaction table parameter as supplied in listener callback",
+                    "name": "transaction",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Acknowledge a transaction. [icon:attention] Calling iap.acknowledge is required on a successful transaction on Google Play unless iap.finish is called. The transaction.state field must equal iap.TRANS_STATE_PURCHASED.",
+            "examples": "",
+            "name": "iap.acknowledge",
+            "parameters": [
+                {
+                    "doc": "transaction table parameter as supplied in listener callback",
+                    "name": "transaction",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get current iap provider",
+            "examples": "",
+            "name": "iap.get_provider_id",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "one of the following values\n- `iap.PROVIDER_ID_GOOGLE`\n- `iap.PROVIDER_ID_AMAZON`\n- `iap.PROVIDER_ID_APPLE`\n- `iap.PROVIDER_ID_FACEBOOK`",
+                    "name": "constant"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get a list of all avaliable iap products.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code>  <span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">iap_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">products</span><span class=\"p\">,</span> <span class=\"nb\">error</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"nb\">error</span> <span class=\"o\">==</span> <span class=\"kc\">nil</span> <span class=\"kr\">then</span>\n      <span class=\"kr\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span><span class=\"n\">p</span> <span class=\"kr\">in</span> <span class=\"nb\">pairs</span><span class=\"p\">(</span><span class=\"n\">products</span><span class=\"p\">)</span> <span class=\"kr\">do</span>\n        <span class=\"c1\">-- present the product</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">title</span><span class=\"p\">)</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">description</span><span class=\"p\">)</span>\n      <span class=\"kr\">end</span>\n    <span class=\"kr\">else</span>\n      <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span>\n\n  <span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n      <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">list</span><span class=\"p\">({</span><span class=\"s2\">&quot;my_iap&quot;</span><span class=\"p\">},</span> <span class=\"n\">iap_callback</span><span class=\"p\">)</span>\n  <span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "iap.list",
+            "parameters": [
+                {
+                    "doc": "table (array) of identifiers to get products from",
+                    "name": "ids",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "result callback taking the following parameters",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The current object.",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "a table describing the available iap products.",
+                            "name": "products",
+                            "parameters": [
+                                {
+                                    "doc": "The product identifier.",
+                                    "name": "ident",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The product title.",
+                                    "name": "title",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The product description.",
+                                    "name": "description",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The price of the product. For Google Play [icon:googleplay] this is used only for in-app products",
+                                    "name": "price",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "The price of the product, as a formatted string (amount and currency symbol). For Google Play [icon:googleplay] this is used only for in-app products",
+                                    "name": "price_string",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The currency code. For Google Play [icon:googleplay] this is the merchant's locale, instead of the user's. For Google Play [icon:googleplay] this is used only for in-app products",
+                                    "name": "currency_code",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Only available for Google Play [icon:googleplay]. List of subscription offers. Each offer contains a token and a list of price and billing options. See https://developer.android.com/reference/com/android/billingclient/api/ProductDetails.PricingPhase",
+                                    "name": "subscriptions",
+                                    "parameters": [
+                                        {
+                                            "doc": "The token associated with the pricing phases for the subscription.",
+                                            "name": "token",
+                                            "types": [
+                                                "string"
+                                            ]
+                                        },
+                                        {
+                                            "doc": "The pricing phases for the subscription.",
+                                            "name": "pricing",
+                                            "parameters": [
+                                                {
+                                                    "doc": "Formatted price for the payment cycle, including currency sign.",
+                                                    "name": "price_string",
+                                                    "types": [
+                                                        "string"
+                                                    ]
+                                                },
+                                                {
+                                                    "doc": "Price of the payment cycle in micro-units.",
+                                                    "name": "price",
+                                                    "types": [
+                                                        "number"
+                                                    ]
+                                                },
+                                                {
+                                                    "doc": "ISO 4217 currency code",
+                                                    "name": "currency_code",
+                                                    "types": [
+                                                        "string"
+                                                    ]
+                                                },
+                                                {
+                                                    "doc": "Billing period of the payment cycle, specified in ISO 8601 format",
+                                                    "name": "billing_period",
+                                                    "types": [
+                                                        "string"
+                                                    ]
+                                                },
+                                                {
+                                                    "doc": "Number of cycles for which the billing period is applied.",
+                                                    "name": "billing_cycle_count",
+                                                    "types": [
+                                                        "number"
+                                                    ]
+                                                },
+                                                {
+                                                    "doc": "FINITE, INFINITE or NONE",
+                                                    "name": "recurrence_mode",
+                                                    "types": [
+                                                        "string"
+                                                    ]
+                                                }
+                                            ],
+                                            "types": [
+                                                "table"
+                                            ]
+                                        }
+                                    ],
+                                    "types": [
+                                        "table"
+                                    ]
+                                }
+                            ],
+                            "types": [
+                                "table"
+                            ]
+                        },
+                        {
+                            "doc": "a table containing error information. `nil` if there is no error. - `error` (the error message)",
+                            "name": "error",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Restore previously purchased products.",
+            "examples": "",
+            "name": "iap.restore",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "value is `true` if current store supports handling restored transactions, otherwise `false`.",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set the callback function to receive purchase transaction events.",
+            "examples": "",
+            "name": "iap.set_listener",
+            "parameters": [
+                {
+                    "doc": "listener callback function. Pass an empty function if you no longer wish to receive callbacks.",
+                    "name": "listener",
+                    "parameters": [
+                        {
+                            "doc": "The current object.",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "a table describing the transaction.",
+                            "name": "transaction",
+                            "parameters": [
+                                {
+                                    "doc": "The product identifier.",
+                                    "name": "ident",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The transaction state. One of the following\n- `iap.TRANS_STATE_FAILED`\n- `iap.TRANS_STATE_PURCHASED`\n- `iap.TRANS_STATE_PURCHASING`\n- `iap.TRANS_STATE_RESTORED`\n- `iap.TRANS_STATE_UNVERIFIED`",
+                                    "name": "state",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The date and time for the transaction.",
+                                    "name": "date",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The transaction identifier. This field is only set when `state` is `TRANS_STATE_RESTORED`, `TRANS_STATE_UNVERIFIED` or `TRANS_STATE_PURCHASED`.",
+                                    "name": "trans_ident",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "The transaction receipt. This field is only set when `state` is `TRANS_STATE_PURCHASED` or `TRANS_STATE_UNVERIFIED`.",
+                                    "name": "receipt",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Apple only [icon:apple]. The original transaction. This field is only set when `state` is `TRANS_STATE_RESTORED`.",
+                                    "name": "original_trans",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Android only [icon:android]. The purchase order details in JSON format.",
+                                    "name": "original_json",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Google Play only [icon:googleplay]. A string containing the signature of the purchase data that was signed with the private key of the developer.",
+                                    "name": "signature",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Facebook only [icon:facebook]. This field is set to the optional custom unique request id `request_id` if set in the `iap.buy()` call parameters.",
+                                    "name": "request_id",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Amazon Pay only [icon:amazon]. The user ID.",
+                                    "name": "user_id",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Amazon Pay only [icon:amazon]. If `true`, the SDK is running in Sandbox mode. This only allows interactions with the Amazon AppTester. Use this mode only for testing locally.",
+                                    "name": "is_sandbox_mode",
+                                    "types": [
+                                        "boolean"
+                                    ]
+                                },
+                                {
+                                    "doc": "Amazon Pay only [icon:amazon]. The cancel date for the purchase. This field is only set if the purchase is canceled.",
+                                    "name": "cancel_date",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Amazon Pay only [icon:amazon]. Is set to `true` if the receipt was canceled or has expired; otherwise `false`.",
+                                    "name": "canceled",
+                                    "types": [
+                                        "string"
+                                    ]
+                                }
+                            ],
+                            "types": [
+                                "table"
+                            ]
+                        },
+                        {
+                            "doc": "a table containing error information. `nil` if there is no error. `error` - the error message. `reason` - the reason for the error, value can be one of the following constants\n- `iap.REASON_UNSPECIFIED`\n- `iap.REASON_USER_CANCELED`",
+                            "name": "error",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "provider id for Amazon",
+            "examples": "",
+            "name": "PROVIDER_ID_AMAZON",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "provider id for Apple",
+            "examples": "",
+            "name": "PROVIDER_ID_APPLE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "provider id for Facebook",
+            "examples": "",
+            "name": "PROVIDER_ID_FACEBOOK",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "iap provider id for Google",
+            "examples": "",
+            "name": "PROVIDER_ID_GOOGLE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "unspecified error reason",
+            "examples": "",
+            "name": "REASON_UNSPECIFIED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "user canceled reason",
+            "examples": "",
+            "name": "REASON_USER_CANCELED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "transaction failed state",
+            "examples": "",
+            "name": "TRANS_STATE_FAILED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "transaction purchased state",
+            "examples": "",
+            "name": "TRANS_STATE_PURCHASED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "transaction purchasing state This is an intermediate mode followed by TRANS_STATE_PURCHASED. Store provider support dependent.",
+            "examples": "",
+            "name": "TRANS_STATE_PURCHASING",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "transaction restored state This is only available on store providers supporting restoring purchases.",
+            "examples": "",
+            "name": "TRANS_STATE_RESTORED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "transaction unverified state, requires verification of purchase",
+            "examples": "",
+            "name": "TRANS_STATE_UNVERIFIED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        }
+    ],
+    "info": {
+        "api": "extension-iap/iap_api",
+        "brief": "iap",
+        "description": "Functions and constants for doing in-app purchases. Supported on iOS, Android (Google Play and Amazon) and Facebook Canvas platforms. [icon:ios] [icon:googleplay] [icon:amazon] [icon:facebook]",
+        "group": "EXTENSIONS",
+        "name": "extension-iap",
+        "namespace": "iap"
+    }
+}

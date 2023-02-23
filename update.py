@@ -419,26 +419,34 @@ def process_extension(extension_name, download = False):
         replace_in_file(index, r"title\:", r"github: {}\ntitle:".format(github_url))
         process_doc_file(index, "en")
 
-        # generate a dummy markdown page with some front matter for the api doc
-        with open(os.path.join(extension_dir, "api.html"), "w") as f:
-            f.write(REFDOC_MD_FRONTMATTER.format("stable", extension_name, "extension", extension_name) + REFDOC_MD_BODY)
-
-        # create a json data file for the API reference
-        # we generate it from the .script_api file (YAML format)
-        refdoc = {}
-        elements = []
-        refdoc["elements"] = elements
-        info = {}
-        refdoc["info"] = info
-
         for filename in find_files(unzipped_extension_dir, "*.script_api"):
+
+            # create a json data file for the API reference
+            # we generate it from the .script_api file (YAML format)
+            refdoc = {}
+            elements = []
+            refdoc["elements"] = elements
+            info = {}
+            refdoc["info"] = info
+
             api = yaml.safe_load(read_as_string(filename))[0]
+            api_name = api.get("name", "")
+
+            # generate a dummy markdown page with some front matter for the api doc
+            api_filename = os.path.join(extension_dir, api_name + "_api.html")
+            with open(api_filename, "w") as f:
+                fm_branch = "stable"
+                fm_ref = extension_name + "_" + api_name
+                fm_type = "extension"
+                fm_title = extension_name
+                f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_type, fm_title) + REFDOC_MD_BODY)
 
             info["group"] = "EXTENSIONS"
             info["description"] = api.get("desc", "")
-            info["namespace"] = api.get("name", "")
-            info["name"] = api.get("name", "")
-            info["brief"] = api.get("name", "")
+            info["namespace"] = api_name
+            info["name"] = extension_name
+            info["brief"] = api_name
+            info["api"] = os.path.join(extension_dir, api_name + "_api")
 
             for m in api["members"]:
                 element = {}
@@ -454,20 +462,22 @@ def process_extension(extension_name, download = False):
                 if type == "NUMBER":
                     type = "VARIABLE"
                 element["type"] = type
-                element["name"] = m.get("name", "")
+                if type == "FUNCTION":
+                    element["name"] = api_name + "." + m.get("name", "")
+                else:
+                    element["name"] = m.get("name", "")
                 examples = []
                 for e in m.get("examples", []):
                     desc = e.get("desc", "")
                     examples.append(md.convert(desc))
                 element["examples"] = "".join(examples)
                 elements.append(element)
-            break
 
-        # write the json data file
-        extension_data_dir = os.path.join("_data", "extensions")
-        makedirs(extension_data_dir)
-        extension_data_file = os.path.join(extension_data_dir, extension_name + ".json")
-        write_as_json(extension_data_file, refdoc)
+            # write the json data file
+            extension_data_dir = os.path.join("_data", "extensions")
+            makedirs(extension_data_dir)
+            extension_data_file = os.path.join(extension_data_dir, extension_name + "_" + api_name + ".json")
+            write_as_json(extension_data_file, refdoc)
 
 
 def process_examples(download = False):
@@ -877,6 +887,7 @@ def process_refdoc(download = False):
                         # build refdoc index
                         refindex.append({
                             "namespace": namespace,
+                            "name": api["info"]["name"],
                             "filename": json_out_name,
                             "url": "/ref/" + branch + "/" + json_out_name,
                             "branch": branch,
@@ -884,14 +895,16 @@ def process_refdoc(download = False):
                         })
 
         # add extensions
-        for filename in os.listdir("."):
-            if filename.startswith("extension-") and os.path.isdir(filename):
-                refindex.append({
-                    "namespace": filename,
-                    "url": "/" + filename + "/api",
-                    "branch": branch,
-                    "type": "extension"
-                })
+        extensions_data_dir = os.path.join("_data", "extensions")
+        for filename in os.listdir(extensions_data_dir):
+            extension = read_as_json(os.path.join(extensions_data_dir, filename))
+            refindex.append({
+                "namespace": extension["info"]["namespace"],
+                "name": extension["info"]["name"],
+                "url": "/" + extension["info"]["api"],
+                "branch": branch,
+                "type": "extension"
+            })
 
     # copy stable files to ref/ for backwards compatibility
     for item in os.listdir(os.path.join("ref", "stable")):

@@ -1,0 +1,24 @@
+DOWNLOAD=""
+
+./update.py --extension=extension-adinfo ${DOWNLOAD} extensions
+./update.py --extension=extension-admob ${DOWNLOAD} extensions
+./update.py --extension=extension-camera ${DOWNLOAD} extensions
+./update.py --extension=extension-crypt ${DOWNLOAD} extensions
+./update.py --extension=extension-facebook ${DOWNLOAD} extensions
+./update.py --extension=extension-fbinstant ${DOWNLOAD} extensions
+./update.py --extension=extension-firebase-analytics ${DOWNLOAD} extensions
+./update.py --extension=extension-firebase-remoteconfig ${DOWNLOAD} extensions
+./update.py --extension=extension-firebase ${DOWNLOAD} extensions
+./update.py --extension=extension-googleplayinstant ${DOWNLOAD} extensions
+./update.py --extension=extension-gpgs ${DOWNLOAD} extensions
+./update.py --extension=extension-iap ${DOWNLOAD} extensions
+./update.py --extension=extension-googleplayinstant ${DOWNLOAD} extensions
+./update.py --extension=extension-push ${DOWNLOAD} extensions
+./update.py --extension=extension-review ${DOWNLOAD} extensions
+./update.py --extension=extension-rive ${DOWNLOAD} extensions
+./update.py --extension=extension-safearea ${DOWNLOAD} extensions
+./update.py --extension=extension-siwa ${DOWNLOAD} extensions
+./update.py --extension=extension-spine ${DOWNLOAD} extensions
+./update.py --extension=extension-webmonetization ${DOWNLOAD} extensions
+./update.py --extension=extension-websocket ${DOWNLOAD} extensions
+./update.py --extension=extension-webview ${DOWNLOAD} extensions
