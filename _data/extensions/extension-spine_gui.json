@@ -1,114 +1,318 @@
 {
     "elements": [
         {
-            "description": "Create a new spine node",
+            "description": "Dynamically create a new spine node.",
             "examples": "",
-            "name": "gui.new_spine_node",
-            "parameters": [],
+            "name": "gui.gui.new_spine_node",
+            "parameters": [
+                {
+                    "doc": "node position",
+                    "name": "pos",
+                    "types": [
+                        "vector3",
+                        "vector4"
+                    ]
+                },
+                {
+                    "doc": "spine scene id",
+                    "name": "spine_scene",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Plays the specified animation on a Spine node",
+            "description": "Starts a spine animation.",
             "examples": "",
-            "name": "gui.play_spine_anim",
-            "parameters": [],
+            "name": "gui.gui.play_spine_anim",
+            "parameters": [
+                {
+                    "doc": "spine node that should play the animation",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "id of the animation to play",
+                    "name": "animation_id",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "playback mode - `gui.PLAYBACK_ONCE_FORWARD` - `gui.PLAYBACK_ONCE_BACKWARD` - `gui.PLAYBACK_ONCE_PINGPONG` - `gui.PLAYBACK_LOOP_FORWARD` - `gui.PLAYBACK_LOOP_BACKWARD` - `gui.PLAYBACK_LOOP_PINGPONG`",
+                    "name": "playback",
+                    "types": [
+                        "type:constant"
+                    ]
+                },
+                {
+                    "doc": "optional table with properties - `blend_duration` [number] The duration of a linear blend between the current and new animation - `offset` [number] The normalized initial value of the animation cursor when the animation starts playing - `playback_rate` [number] The rate with which the animation will be played. Must be positive",
+                    "name": "play_properties",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "function to call when the animation has completed",
+                    "name": "complete_function",
+                    "types": [
+                        "function(self, node)"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Cancels all running animations on a specified spine node",
+            "description": "cancel a spine animation",
             "examples": "",
-            "name": "gui.cancel_spine",
-            "parameters": [],
+            "name": "gui.gui.cancel_spine",
+            "parameters": [
+                {
+                    "doc": "spine node that should cancel its animation",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Get a bone node",
+            "description": "The returned node can be used for parenting and transform queries. This function has complexity O(n), where n is the number of bones in the spine model skeleton.",
             "examples": "",
-            "name": "gui.get_spine_bone",
-            "parameters": [],
+            "name": "gui.gui.get_spine_bone",
+            "parameters": [
+                {
+                    "doc": "spine node to query for bone node",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "id of the corresponding bone",
+                    "name": "bone_id",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Set the spine scene used by a spine node",
+            "description": "Set the spine scene on a spine node. The spine scene must be mapped to the gui scene in the gui editor.",
             "examples": "",
-            "name": "gui.set_spine_scene",
-            "parameters": [],
+            "name": "gui.gui.set_spine_scene",
+            "parameters": [
+                {
+                    "doc": "node to set spine scene for",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "spine scene id",
+                    "name": "spine_scene",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "get the spine scene used by a spine node",
+            "description": "Returns the spine scene id of the supplied node. This is currently only useful for spine nodes. The returned spine scene must be mapped to the gui scene in the gui editor.",
             "examples": "",
-            "name": "gui.get_spine_scene",
-            "parameters": [],
+            "name": "gui.gui.get_spine_scene",
+            "parameters": [
+                {
+                    "doc": "node to get texture from",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Set the skin to use on a spine node",
-            "examples": "",
-            "name": "gui.set_spine_skin",
-            "parameters": [],
+            "description": "Sets the spine skin on a spine node.",
+            "examples": "<p>Change skin of a Spine node</p>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_spine_skin</span><span class=\"p\">(</span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;spine_node&quot;</span><span class=\"p\">),</span> <span class=\"s2\">&quot;monster&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "gui.gui.set_spine_skin",
+            "parameters": [
+                {
+                    "doc": "node to set the spine skin on",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "spine skin id",
+                    "name": "spine_skin",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Get the skin used by a spine node",
+            "description": "Gets the spine skin of a spine node",
             "examples": "",
-            "name": "gui.get_spine_skin",
-            "parameters": [],
+            "name": "gui.gui.get_spine_skin",
+            "parameters": [
+                {
+                    "doc": "node to get spine skin from",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Get the current animation of a spine node",
+            "description": "Gets the playing animation on a spine node",
             "examples": "",
-            "name": "gui.get_spine_animation",
-            "parameters": [],
+            "name": "gui.gui.get_spine_animation",
+            "parameters": [
+                {
+                    "doc": "node to get spine skin from",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Set the animation cursor for a spine node",
+            "description": "This is only useful for spine nodes. The cursor is normalized.",
             "examples": "",
-            "name": "gui.set_spine_cursor",
-            "parameters": [],
+            "name": "gui.gui.set_spine_cursor",
+            "parameters": [
+                {
+                    "doc": "spine node to set the cursor for",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "cursor value",
+                    "name": "cursor",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Get the animation cursor for a spine node",
+            "description": "This is only useful for spine nodes. Gets the normalized cursor of the animation on a spine node.",
             "examples": "",
-            "name": "gui.get_spine_cursor",
-            "parameters": [],
+            "name": "gui.gui.get_spine_cursor",
+            "parameters": [
+                {
+                    "doc": "spine node to get the cursor for (node)",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Set the animation playback rate of a spine node",
+            "description": "This is only useful for spine nodes. Sets the playback rate of the animation on a spine node. Must be positive.",
             "examples": "",
-            "name": "gui.set_spine_playback_rate",
-            "parameters": [],
+            "name": "gui.gui.set_spine_playback_rate",
+            "parameters": [
+                {
+                    "doc": "spine node to set the cursor for",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "playback rate",
+                    "name": "playback_rate",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Get the animation playback rate for a spine node",
+            "description": "This is only useful for spine nodes. Gets the playback rate of the animation on a spine node.",
             "examples": "",
-            "name": "gui.get_spine_playback_rate",
-            "parameters": [],
+            "name": "gui.gui.get_spine_playback_rate",
+            "parameters": [
+                {
+                    "doc": "spine node to set the cursor for",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Sets an attachment to a slot",
+            "description": "This is only useful for spine nodes. Sets an attachment to a slot on a spine node.",
             "examples": "",
-            "name": "gui.set_spine_attachment",
-            "parameters": [],
+            "name": "gui.gui.set_spine_attachment",
+            "parameters": [
+                {
+                    "doc": "spine node to set the slot for",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "slot name",
+                    "name": "slot",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "attachment name. May be nil.",
+                    "name": "attachment",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         }
