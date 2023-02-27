@@ -77,7 +77,7 @@ layout: base
 			</div>
 			<select class="dropdownmenu" onchange="location = this.value;">
 				{%- for r in indices -%}
-				<option value="{{ r.url }}">{{ r.namespace }}</option>
+				<option value="{{ r.url }}">{{ r.namespace }}{%- if r.type == "extension" -%}&nbsp;-&nbsp;({{r.name}}){%- endif -%}</option>
 				{%- endfor -%}
 			</select>
 			<select class="dropdownmenu" onchange="location = this.value;">
