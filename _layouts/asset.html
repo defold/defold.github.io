@@ -35,10 +35,10 @@ layout: page
 				<h5>Use as library</h5>
 				<p>This asset can be added as a <a href="https://defold.com/manuals/libraries/#setting-up-library-dependencies">library dependency</a> in your project:</p>
 				<ul>
-					<li>Use the latest version for testing purpose: <a href="{{ asset.library_url }}" target="_blank">{{ asset.library_url }}</a></li>
 					{%- if asset.github_url.size > 0 -%}
-					<li>Use a specific version for development and release: <a href="{{ asset.github_url }}/releases" target="_blank">{{ asset.github_url }}/releases</a></li>
+					<li>Use a specific version for development and release to avoid breaking changes: <a href="{{ asset.github_url }}/releases" target="_blank">{{ asset.github_url }}/releases</a></li>
 					{%- endif -%}
+					<li>Use the latest version only while evaluating and testing the asset: <a href="{{ asset.library_url }}" target="_blank">{{ asset.library_url }}</a></li>
 				</ul>
 				{%- endif -%}
 
