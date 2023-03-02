@@ -56,9 +56,11 @@ layout: page
 
 				{%- if asset.library_url.size > 0 -%}
 				<h5>Use as library</h5>
-				<p>This asset can be added as a library dependency in your project (click to copy to clipboard):<br/>
-					<a href="#" onclick="copy_library_url_to_clipboard('{{ asset.library_url }}')">{{ asset.library_url }}</a><p id="copy_library_url_to_clipboard_status"></p>
-				</p>
+				<p>This asset can be added as a library dependency in your project:</p>
+				<ul>
+					<li>Use the latest version for testing purpose (click to copy to clipboard): <a href="#" onclick="copy_library_url_to_clipboard('{{ asset.library_url }}')">{{ asset.library_url }}</a>&nbsp;<p id="copy_library_url_to_clipboard_status"></p></li>
+					<li>Use a specific version for development and release: <a href="{{ asset.project_url }}/releases">{{ asset.project_url }}/releases</a></li>
+				</ul>
 				{%- endif -%}
 
 				{%- if asset.project_url.size > 0 -%}
