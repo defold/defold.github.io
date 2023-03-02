@@ -674,7 +674,7 @@ def process_assets(tmp_dir):
         asset["author_id"] = author_id
         asset["asset_url"] = "https://github.com/defold/awesome-defold/blob/master/assets/%s.json" % asset_id
         if "github.com" in library_url:
-            asset["github_url"] = re.sub(r"(.*github.com/.*?/.*?/).*", r"\1", library_url)
+            asset["github_url"] = re.sub(r"(.*github.com/.*?/.*?)/.*", r"\1", library_url)
         write_as_json(asset_file, asset)
 
         # build asset index
