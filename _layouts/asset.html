@@ -13,29 +13,6 @@ layout: page
 	{%- assign hero = "/images/asset-nohero.jpg" -%}
 {%- endif -%}
 
-<script>
-	function copy_library_url_to_clipboard(url) {
-		var textarea = document.createElement("textarea");
-		textarea.value = url;
-		document.body.appendChild(textarea);
-		textarea.select()
-		try {
-			var successful = document.execCommand('copy');
-			var msg = successful ? 'successful' : 'unsuccessful';
-			if (successful) {
-				document.getElementById("copy_library_url_to_clipboard_status").innerHTML = "Copied!";
-			}
-			else {
-				document.getElementById("copy_library_url_to_clipboard_status").innerHTML = "Failed!";
-				console.log('Oops, unable to copy');
-			}
-		} catch (err) {
-			console.log('Oops, unable to copy', err);
-		}
-		document.body.removeChild(textarea);
-	}
-</script>
-
 <div class="section hero center blackwhite" style='background-image: url("{{ hero_base }}{{ hero }}"); min-height: 240px; max-height: 260px'>
 	<div class="container">
 		<div class="row">
@@ -56,10 +33,12 @@ layout: page
 
 				{%- if asset.library_url.size > 0 -%}
 				<h5>Use as library</h5>
-				<p>This asset can be added as a library dependency in your project:</p>
+				<p>This asset can be added as a <a href="https://defold.com/manuals/libraries/#setting-up-library-dependencies">library dependency</a> in your project:</p>
 				<ul>
-					<li>Use the latest version for testing purpose (click to copy to clipboard): <a href="#" onclick="copy_library_url_to_clipboard('{{ asset.library_url }}')">{{ asset.library_url }}</a>&nbsp;<p id="copy_library_url_to_clipboard_status"></p></li>
-					<li>Use a specific version for development and release: <a href="{{ asset.project_url }}/releases">{{ asset.project_url }}/releases</a></li>
+					<li>Use the latest version for testing purpose: <a href="{{ asset.library_url }}" target="_blank">{{ asset.library_url }}</a></li>
+					{%- if asset.github_url.size > 0 -%}
+					<li>Use a specific version for development and release: <a href="{{ asset.github_url }}/releases" target="_blank">{{ asset.github_url }}/releases</a></li>
+					{%- endif -%}
 				</ul>
 				{%- endif -%}
 
@@ -73,7 +52,7 @@ layout: page
 				{%- if asset.forum_url.size > 0 -%}
 				<h5>Discuss</h5>
 				<p>Discuss {{ asset.name }} on the Defold forum:<br/>
-					<a href="{{ asset.forum_url }}" target="_blank">{{ asset.name }}</a>
+					<a href="{{ asset.forum_url }}" target="_blank">{{ asset.forum_url }}</a>
 				</p>
 				{%- endif -%}
 			</div>

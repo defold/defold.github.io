@@ -668,10 +668,13 @@ def process_assets(tmp_dir):
         fix_tags_case(asset["tags"])
         fix_platforms_case(asset["platforms"])
         author_name = asset["author"]
+        library_url = asset["library_url"]
 
         author_id = hashlib.md5(author_name.encode('utf-8')).hexdigest()
         asset["author_id"] = author_id
         asset["asset_url"] = "https://github.com/defold/awesome-defold/blob/master/assets/%s.json" % asset_id
+        if "github.com" in library_url:
+            asset["github_url"] = re.sub(r"(.*github.com/.*?/.*?/).*", r"\1", library_url)
         write_as_json(asset_file, asset)
 
         # build asset index
