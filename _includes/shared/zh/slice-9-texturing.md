@@ -1,37 +1,37 @@
-## Slice-9 texturing
+## 九宫格纹理
 
-GUI box nodes and Sprite components sometimes feature elements that are context sensitive in regard to their size: panels and dialogs that need to be resized to fit the containing content or a health bar that need to be resized to show the remaining health of an enemy. These may cause visual problems when you apply texturing to the resized node or sprite.
+GUIs 对于其元素的大小改变是积极的: 面板和对话框总是应该填满其容纳的区域. 但是在缩放节点时纹理可能会产生问题.
 
-Normally, the engine scales the texture to fit the rectangular boundaries, but by defining slice-9 edge areas it is possible to limit what parts of the texture that should scale:
+通常, 引擎把纹理整个填充到方块节点的边界, 但是九宫格纹理可以指定纹理里的那些内容需要缩放:
 
-![GUI scaling](/shared/images/gui_slice9_scaling.png)
+![GUI 缩放](../images/gui-box/scaling.png)
 
-The *Slice9* box node consists of 4 numbers that specify the number of pixels for the left, top, right and bottom margin that should not be regularly scaled:
+九宫格方块节点包含4个像素数值分别代表左, 上, 右, 下有多少边缘不参与缩放:
 
-![Slice 9 properties](/shared/images/gui_slice9_properties.png)
+![九宫格属性](../images/gui-box/slice9_properties.png)
 
-The margins are set clockwise, starting on the left edge:
+从左边开始, 顺时针设置:
 
-![Slice 9 sections](/shared/images/gui_slice9.png)
+![九宫格设置](../images/gui-box/slice9.png)
 
-- Corner segments are never scaled.
-- Edge segments are scaled along a single axis. The left and right edge segments are scaled vertically. The top and bottom edge segments are scaled horizontally.
-- The central texture area is scaled horizontally and vertically as needed.
+- 角落部分不会被缩放.
+- 边缘部分延单轴缩放. 左右边缘竖直缩放. 上下边缘水平缩放.
+- 中央部分正常延两个轴缩放.
 
-The *Slice9* texture scaling described above is only applied when you change box node's or sprite's size:
+上述关于 *九宫格* 纹理缩放的描述仅在节点 size 改变时生效:
 
-![GUI box node size](/shared/images/gui_slice9_size.png)
+![GUI box node size](../images/gui-box/slice9_size.png)
 
 ![Sprite size](/shared/images/sprite_slice9_size.png)
 
 <div class='important' markdown='1'>
-If you change scale parameter of the box node or sprite (or on the game object) - the node or sprite and texture is scaled without applying *Slice9* parameters.
+如果更改 sprite 或方块节点的缩放属性 (或者游戏对象自身的缩放属性) - sprite 或节点和纹理的缩放都不会带 *Slice9* 效果.
 </div>
 
 
-### Mipmaps and slice-9
-Due to the way mipmapping works in the renderer, scaling of texture segments can sometimes exhibit artifacts. This happens when you _scale down_ segments below the original texture size. The renderer then selects a lower resolution mipmap for the segment, resulting in visual artifacts.
+### Mipmaps 和 slice-9
+因为渲染器里 mipmapping 的工作方式, 部分缩放纹理可能会造成小问题. 当你把纹理一部分 _缩小_ 到比本身小的时候. 渲染器会自动选择一个低分辨率的 mipmap 来渲染这部分, 导致了这个小问题.
 
 ![Slice 9 mipmapping](/shared/images/gui_slice9_mipmap.png)
 
-To avoid this problem, make sure that the texture's segments that will be scaled are small enough never to be scaled down, only up.
+为避免这类问题, 使用小图导进来之后只放大别缩小就行了.
