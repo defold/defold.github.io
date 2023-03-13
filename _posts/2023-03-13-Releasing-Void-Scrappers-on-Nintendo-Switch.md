@@ -6,7 +6,7 @@ author: Björn Ritzl
 tags: ["creator spotlight", "interview", "nintendo switch"]
 ---
 
-__It's been a few months since the release of [Void Scrappers on Steam](https://store.steampowered.com/app/2005210/Void_Scrappers/) and [our initial interview](https://defold.com/2022/11/24/Void-Scrappers-post-mortem/). The game received very positive reviews on Steam and seems to have been well received overall. How has these post-launch period been?__
+__Welcome back to the blog Alex! It's been a few months since the release of [Void Scrappers on Steam](https://store.steampowered.com/app/2005210/Void_Scrappers/) and [our initial interview](https://defold.com/2022/11/24/Void-Scrappers-post-mortem/). The game received very positive reviews on Steam and seems to have been well received overall. How has these post-launch period been?__
 
 *Alex: The first month after launch was intense. We spent a lot of time fixing bugs and frantically implementing the community's feature requests. The effort was well worth it, as the new features significantly improved the reception of the game. After that we took a break for the holidays, then changed our focus to releasing on the Nintendo Switch. We also tentatively started thinking about our next project (watch this space)...*
 
