@@ -413,7 +413,7 @@ def process_extension(extension_name, download = False):
         docs_dir = os.path.join(unzipped_extension_dir, "docs")
         rmcopytree(docs_dir, extension_dir)
         index = os.path.join(extension_dir, "index.md")
-        append_to_file(index, "[API Reference](/{}/{}_api)".format(extension_name, extension_name))
+        append_to_file(index, "[API Reference](/{}/{}_api)".format(extension_name, extension_name.replace("extension-", "")))
         replace_in_file(index, r"title\:", r"layout: manual\ntitle:")
         replace_in_file(index, r"title\:", r"language: en\ntitle:")
         replace_in_file(index, r"title\:", r"github: {}\ntitle:".format(github_url))

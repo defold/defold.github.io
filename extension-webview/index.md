@@ -266,4 +266,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-web
 ## API reference
 
 https://defold.com/extension-webview/api/
-[API Reference](/extension-webview/api)
+[API Reference](/extension-webview/webview_api)

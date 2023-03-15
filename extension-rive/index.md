@@ -180,4 +180,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-riv
 
 
 ## API reference
-[API Reference](/extension-rive/api)
+[API Reference](/extension-rive/rive_api)

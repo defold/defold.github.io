@@ -295,4 +295,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-pus
 
 
 ## API reference
-[API Reference](/extension-push/api)
+[API Reference](/extension-push/push_api)

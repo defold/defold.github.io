@@ -41,4 +41,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-cam
 
 
 ## API reference
-[API Reference](/extension-camera/api)
+[API Reference](/extension-camera/camera_api)

@@ -240,4 +240,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-iap
 
 
 ## API reference
-[API Reference](/extension-iap/api)
+[API Reference](/extension-iap/iap_api)

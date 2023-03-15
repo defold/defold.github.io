@@ -115,4 +115,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-fir
 
 
 ## API reference
-[API Reference](/extension-firebase/api)
+[API Reference](/extension-firebase/firebase_api)

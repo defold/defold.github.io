@@ -89,4 +89,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-fir
 
 
 ## API reference
-[API Reference](/extension-firebase-remoteconfig/api)
+[API Reference](/extension-firebase-remoteconfig/firebase-remoteconfig_api)

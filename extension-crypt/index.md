@@ -35,4 +35,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-cry
 
 
 ## API reference
-[API Reference](/extension-crypt/api)
+[API Reference](/extension-crypt/crypt_api)

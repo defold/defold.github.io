@@ -59,4 +59,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-adi
 
 
 ## API reference
-[API Reference](/extension-adinfo/api)
+[API Reference](/extension-adinfo/adinfo_api)

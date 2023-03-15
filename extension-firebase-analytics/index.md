@@ -64,4 +64,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-fir
 
 
 ## API reference
-[API Reference](/extension-firebase-analytics/api)
+[API Reference](/extension-firebase-analytics/firebase-analytics_api)
