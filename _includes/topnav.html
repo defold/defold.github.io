@@ -19,16 +19,18 @@
 						<option value="/">Home</option>
 						<option value="/product" {% if page.url contains 'product' %}selected{% endif %}>Features</option>
 						<option value="/showcase" {% if page.url contains 'showcase' %}selected{% endif %}>Showcase</option>
-						<option value="/learn">Learn</option>
+						<option value="/learn" {% if page.url contains 'learn' %}selected{% endif %}>Learn</option>
 						<option value="/assets" {% if page.url contains 'assets' %}selected{% endif %}>Asset Portal</option>
 						<option value="/open" {% if page.url contains 'open' %}selected{% endif %}>Open Source</option>
 						<option value="//forum.defold.com">Community</option>
+						<option value="/support" {% if page.url contains 'support' %}selected{% endif %}>Support</option>
+						<option value="https://github.com/defold/defold">GitHub</option>
 						<option value="/download" {% if page.url contains 'download' %}selected{% endif %}>Download</option>
-						<option value="/support">Support</option>
 					</select>
 				</div>
 				<div class="right" style="float: right; padding-top: 0.5rem;">
 					<ul class="sidemenu">
+						<li><a href="https://github.com/defold/defold">GitHub</a></li>
 						<li><a href="/download">Download</a></li>
 					</ul>
 				</div>
