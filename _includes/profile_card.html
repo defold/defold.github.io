@@ -1,6 +1,6 @@
 <div class='asset left light-text compact'>
-<div id="image" style="background: url('{{ include.image }}') center/cover; padding: 0; margin: 0; height: 200px" onclick="location.href='{{ include.link }}';"></div>
-{%- if include.link -%}<div onclick="location.href='{{ include.link }}';">{%- else -%}<div>{%- endif -%}
+<div id="image" class="hoverflash" style="background: url('{{ include.image }}') center/cover; padding: 0; margin: 0; height: 200px" onclick="location.href='{{ include.link }}';"></div>
+<div>
 <h5>{{ include.name }}</h5>
 <p style="font-size: small">{{ include.bio }}</p>
 {%- if include.email -%}<p><a href="mailto:{{ include.email }}">{{ include.email }}</a></p>{%- endif -%}
