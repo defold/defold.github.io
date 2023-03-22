@@ -17,11 +17,10 @@ _Spine_ is a third party animation tool by Esoteric Software. Spine animation pr
 ## Requirements
 
 ### Installation
-To use this library in your Defold project, add the following URL to your `game.project` dependencies:
+To use this library in your Defold project, add the needed version URL to your game.project dependencies from [Releases](https://github.com/defold/extension-spine/releases):
 
-[https://github.com/defold/extension-spine/archive/main.zip](https://github.com/defold/extension-spine/archive/main.zip)
 
-We recommend using a link to a zip file of a [specific release](https://github.com/defold/extension-spine/releases).
+![Releases](releases.png)
 
 
 ## Migration guide
@@ -34,7 +33,7 @@ Spine animations used to be part of the main Defold engine. Starting with Defold
     - Set this as the output suffix in the Spine Editor
 
 * Update the spine source files to latest version
-    - The new runtime is based on Spine 4.0.xx
+    - The new runtime is based on Spine 4.1.xx
 
     - NOTE: The old spine version json files won't work as they are too old!
 

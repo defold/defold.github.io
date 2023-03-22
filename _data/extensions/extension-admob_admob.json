@@ -193,6 +193,22 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Sets a maximum ad content rating. AdMob ads returned for your app will have a content rating at or below that level. Original docs [Android](https://developers.google.com/admob/android/targeting#ad_content_filtering), [iOS](https://developers.google.com/admob/ios/targeting#ad_content_filtering)",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code>  <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">set_max_ad_content_rating</span><span class=\"p\">(</span><span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">MAX_AD_CONTENT_RATING_PG</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "name": "admob.set_max_ad_content_rating",
+            "parameters": [
+                {
+                    "doc": "Max Ad Rating, possible values: `admob.MAX_AD_CONTENT_RATING_G`, `admob.MAX_AD_CONTENT_RATING_PG`, `admob.MAX_AD_CONTENT_RATING_T`, `admob.MAX_AD_CONTENT_RATING_MA`",
+                    "name": "max_ad_rating",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Temporarily hides Banner Ad, banner can be shown again using `admob.show_banner()` Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)",
             "examples": "",
             "name": "admob.hide_banner",
@@ -537,6 +553,38 @@
             "description": "",
             "examples": "",
             "name": "POS_CENTER",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MAX_AD_CONTENT_RATING_G",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MAX_AD_CONTENT_RATING_PG",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MAX_AD_CONTENT_RATING_T",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MAX_AD_CONTENT_RATING_MA",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
