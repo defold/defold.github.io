@@ -68,7 +68,7 @@ __How did you approach the challenge of balancing game-play in Monkey Mart? Isn'
 
 *N & S: Good question. While balancing the game, we were guided by a "playtime per level" value, in our case "playtime per mart". We wanted the player to set up the first store in about 20-25 minutes (with the advertising reward faster) and it was important to us that, within the first 5-10 minutes, the player "got into the game" without getting bored somewhere. This is a very important indicator for web games, which is why the balance in our web version is very casual.*
 
-*But for mobile devices (I mean, for the version that we will release in mobile stores) we will have to redesign the balance, because here players are willing to spend more time. I.e. we will have to focus on a different "playtime". The difficulty curve for mobile players will be different. Working on the balance takes a lot of time and you have to play your own game for hours.*
+*For mobile devices (we plan to release a version of Monkey Mart in mobile app stores) we will have to redesign the balance, because here players are willing to spend more time. This means we will have to focus on a different "playtime". The difficulty curve for mobile players will be different. Working on the balance takes a lot of time and you have to play your own game for hours.*
 
 
 __What can you say about the launch? The game seems to be very popular on Poki.com. Has the launch met your expectations?__
@@ -87,4 +87,4 @@ __Will Monkey Mart Mobile be your first released mobile game?__
 *N & S: Yes! All our games can be played from mobile browsers, but we’re going to mobile stores for the first time. Also this is the reason why we chose to develop the engine on Defold, cross-platform development, small final size of builds, very good performance on various mobile devices. This allows us to do web releases and to have publishing opportunities in mobile markets at the same time.*
 
 
-__Nikita and Stanislav, thank you so much for answering our questions! Best of luck with the mobile release of Monkey Mart!__
+__Nikita and Stanislav, thank you so much and best of luck with the mobile release of Monkey Mart!__
