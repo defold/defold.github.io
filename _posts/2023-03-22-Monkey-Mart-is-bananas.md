@@ -4,6 +4,7 @@ title:  Monkey Mart is bananas!
 excerpt: Moneky Mart is Tiny Dobbins latest hit-game released on Poki. Learn about the development process in this interview.
 author: Björn Ritzl
 tags: ["creator spotlight", "interview", "poki"]
+twitter_image: https://defold.se/images/games/monkeymart-third.png
 ---
 
 Welcome to the Defold blog. This time we'll take a look at [Monkey Mart](https://poki.com/en/g/monkey-mart), a new resource management game released on Poki.com and made with Defold. We've invited Nikita and Stanislav Borisov from [TinyDobbins](https://tinydobbins.com/) to learn more.

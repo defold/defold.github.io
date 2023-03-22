@@ -43,6 +43,12 @@
 {%- assign page_description="Defold is a free and open game engine used for development of console, desktop, mobile and web games." -%}
 {%- endif -%}
 
+{%- if page.opengraph_image.size > 0 -%}
+{%- assign page_opengraph_image=page.description -%}
+{%- else -%}
+{%- assign page_description="Defold is a free and open game engine used for development of console, desktop, mobile and web games." -%}
+{%- endif -%}
+
 <!-- META DATA -->
 <meta name="description" content="{{ page_description }}">
 <meta name="author" content="Defold Foundation"/>
@@ -55,7 +61,7 @@
 <meta property="og:site_name" content="Defold game engine">
 <meta property="og:title" content="{{ page.title }}">
 <meta property="og:description" content="{{ page_description }}">
-<meta property="og:image" content="https://www.defold.com/images/social/facebook-share.jpg">
+<meta property="og:image" content="{{page.opengraph_image}}">
 <!-- end OPEN GRAPH -->
 
 <!-- TWITTER -->
@@ -63,7 +69,7 @@
 <meta name="twitter:site" content="@defold">
 <meta name="twitter:title" content="{{ page.title }}">
 <meta name="twitter:description" content="{{ page_description }}">
-<meta name="twitter:image" content="https://www.defold.com/images/social/twitter-share.jpg">
+<meta name="twitter:image" content="{{page.twitter_image}}">
 <!-- end TWITTER -->
 
 <!-- web monetization -->
