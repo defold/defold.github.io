@@ -2,5 +2,7 @@
 layout: asset
 asset: defoldandroidpermissions
 title: Defold Android Permissions
-description: b'This is Native Extension that adds support for Android Runtime Permissions'
+description: This is Native Extension that adds support for Android Runtime Permissions
+opengraph_image: https://defold.com/images/assets/defoldandroidpermissions-thumb.jpg
+twitter_image: https://defold.com/images/assets/defoldandroidpermissions-thumb.jpg
 ---

@@ -2,5 +2,7 @@
 layout: asset
 asset: oyster
 title: Oyster
-description: b'Manage global variables.'
+description: Manage global variables.
+opengraph_image: https://defold.com/images/assets/oyster-thumb.png
+twitter_image: https://defold.com/images/assets/oyster-thumb.png
 ---

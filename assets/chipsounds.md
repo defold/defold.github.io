@@ -2,5 +2,7 @@
 layout: asset
 asset: chipsounds
 title: Chip Sounds
-description: b'A collection of lowfi retro like sound effects.'
+description: A collection of lowfi retro like sound effects.
+opengraph_image: https://defold.com/images/assets/chipsounds-thumb.png
+twitter_image: https://defold.com/images/assets/chipsounds-thumb.png
 ---

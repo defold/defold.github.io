@@ -2,5 +2,7 @@
 layout: asset
 asset: editor-script-distribute
 title: editor-script-distribute
-description: b'Adds a menu items under Edit to evenly distribute GUI nodes. Currently only supports root items due to Defold limitations.'
+description: Adds a menu items under Edit to evenly distribute GUI nodes. Currently only supports root items due to Defold limitations.
+opengraph_image: https://defold.com/images/asset-nohero.jpg
+twitter_image: https://defold.com/images/asset-nohero.jpg
 ---

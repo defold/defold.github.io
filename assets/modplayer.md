@@ -2,5 +2,7 @@
 layout: asset
 asset: modplayer
 title: MOD Player
-description: b'Chiptune player native extension.'
+description: Chiptune player native extension.
+opengraph_image: https://defold.com/images/assets/modplayer-thumb.png
+twitter_image: https://defold.com/images/assets/modplayer-thumb.png
 ---

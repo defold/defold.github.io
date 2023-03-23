@@ -2,5 +2,7 @@
 layout: asset
 asset: define
 title: DeFine!
-description: b'A UI/UX library providing fundamental components to build a rich graphical user interface in no time.'
+description: A UI/UX library providing fundamental components to build a rich graphical user interface in no time.
+opengraph_image: https://defold.com/images/assets/define-thumb.png
+twitter_image: https://defold.com/images/assets/define-thumb.png
 ---

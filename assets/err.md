@@ -2,5 +2,7 @@
 layout: asset
 asset: err
 title: Err
-description: b'Error logging helper.'
+description: Error logging helper.
+opengraph_image: https://defold.com/images/assets/err-thumb.png
+twitter_image: https://defold.com/images/assets/err-thumb.png
 ---

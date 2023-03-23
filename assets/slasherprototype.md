@@ -2,5 +2,7 @@
 layout: asset
 asset: slasherprototype
 title: Slasher Prototype
-description: b'Game prototype. 2.5D perspective view. Levels loader, the hero controller, monsters and basic AI logic.'
+description: Game prototype. 2.5D perspective view. Levels loader, the hero controller, monsters and basic AI logic.
+opengraph_image: https://defold.com/images/assets/slasherprototype-thumb.jpg
+twitter_image: https://defold.com/images/assets/slasherprototype-thumb.jpg
 ---

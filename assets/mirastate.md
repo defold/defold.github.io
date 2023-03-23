@@ -2,5 +2,7 @@
 layout: asset
 asset: mirastate
 title: MiraState
-description: b'Hierarchical State Machine.'
+description: Hierarchical State Machine.
+opengraph_image: https://defold.com/images/assets/mirastate-thumb.png
+twitter_image: https://defold.com/images/assets/mirastate-thumb.png
 ---

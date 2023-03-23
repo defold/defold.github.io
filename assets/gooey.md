@@ -2,5 +2,7 @@
 layout: asset
 asset: gooey
 title: Gooey
-description: b'Gooey is a GUI system with buttons, checkbox, radio button, text input and list support.'
+description: Gooey is a GUI system with buttons, checkbox, radio button, text input and list support.
+opengraph_image: https://defold.com/images/assets/gooey-thumb.png
+twitter_image: https://defold.com/images/assets/gooey-thumb.png
 ---

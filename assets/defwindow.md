@@ -2,5 +2,7 @@
 layout: asset
 asset: defwindow
 title: DefWindow
-description: b'Extra functionality for the Window API.'
+description: Extra functionality for the Window API.
+opengraph_image: https://defold.com/images/assets/defwindow-thumb.jpg
+twitter_image: https://defold.com/images/assets/defwindow-thumb.jpg
 ---

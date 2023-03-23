@@ -2,5 +2,7 @@
 layout: asset
 asset: protobuf
 title: Protobuf
-description: b'This extension allow you work with google protobuf protocol (files .proto), encode and decode them.'
+description: This extension allow you work with google protobuf protocol (files .proto), encode and decode them.
+opengraph_image: https://defold.com/images/assets/protobuf-thumb.png
+twitter_image: https://defold.com/images/assets/protobuf-thumb.png
 ---

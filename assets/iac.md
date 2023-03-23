@@ -2,5 +2,7 @@
 layout: asset
 asset: iac
 title: Inter-app communication
-description: b'Defold provides a unified, simple to use interface to get application invocation information such as deep links and install referrer.'
+description: Defold provides a unified, simple to use interface to get application invocation information such as deep links and install referrer.
+opengraph_image: https://defold.com/images/asset-nohero.jpg
+twitter_image: https://defold.com/images/asset-nohero.jpg
 ---

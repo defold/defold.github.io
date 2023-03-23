@@ -2,5 +2,7 @@
 layout: asset
 asset: druid
 title: Druid
-description: b'Druid - powerful Defold component UI library. Use basic Druid components or make your own game-specific components to make amazing GUI in your games'
+description: Druid - powerful Defold component UI library. Use basic Druid components or make your own game-specific components to make amazing GUI in your games
+opengraph_image: https://defold.com/images/asset-nohero.jpg
+twitter_image: https://defold.com/images/asset-nohero.jpg
 ---

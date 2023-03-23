@@ -2,5 +2,7 @@
 layout: asset
 asset: defold-api-emmylua
 title: IntelliJ Defold API
-description: b'Defold api headers for emmylua plugin'
+description: Defold api headers for emmylua plugin
+opengraph_image: https://defold.com/images/assets/defold-api-emmylua-thumb.png
+twitter_image: https://defold.com/images/assets/defold-api-emmylua-thumb.png
 ---

@@ -2,5 +2,7 @@
 layout: asset
 asset: tenjin
 title: Tenjin
-description: b'Native extension for the Tenjin SDK'
+description: Native extension for the Tenjin SDK
+opengraph_image: https://defold.com/images/asset-nohero.jpg
+twitter_image: https://defold.com/images/asset-nohero.jpg
 ---

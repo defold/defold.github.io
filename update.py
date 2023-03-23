@@ -46,6 +46,8 @@ layout: asset
 asset: {}
 title: {}
 description: {}
+opengraph_image: {}
+twitter_image: {}
 ---
 """
 
@@ -730,7 +732,14 @@ def process_assets(tmp_dir):
 
         # generate a dummy markdown page with some front matter for each asset
         with open(os.path.join(asset_collection_dir, basename.replace(".json", ".md")), "w") as f:
-            f.write(ASSET_MD_FRONTMATTER.format(asset_id, asset["name"], asset["description"].encode('utf-8').strip()))
+            asset_name = asset["name"]
+            asset_desc = asset["description"].strip()
+            asset_image = asset.get("images", {}).get("thumb", None)
+            if asset_image and not asset_image.startswith("http"):
+                asset_image = "https://defold.com/images/assets/" + asset_image
+            else:
+                asset_image = "https://defold.com/images/asset-nohero.jpg"
+            f.write(ASSET_MD_FRONTMATTER.format(asset_id, asset_name, asset_desc, asset_image, asset_image))
 
     # write asset index
     assetindex.sort(key=lambda x: x.get("id").lower())

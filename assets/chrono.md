@@ -2,5 +2,7 @@
 layout: asset
 asset: chrono
 title: Chrono
-description: b'Reliable server based time.'
+description: Reliable server based time.
+opengraph_image: https://defold.com/images/assets/chrono-thumb.png
+twitter_image: https://defold.com/images/assets/chrono-thumb.png
 ---

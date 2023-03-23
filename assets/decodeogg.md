@@ -2,5 +2,7 @@
 layout: asset
 asset: decodeogg
 title: DecodeOgg
-description: b'Native extension for decoding ogg files in wav.'
+description: Native extension for decoding ogg files in wav.
+opengraph_image: https://defold.com/images/assets/decodeogg-thumb.png
+twitter_image: https://defold.com/images/assets/decodeogg-thumb.png
 ---

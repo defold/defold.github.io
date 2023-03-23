@@ -2,5 +2,7 @@
 layout: asset
 asset: defmnu
 title: Def-Mnu
-description: b'Simpe cross-platform (OSX + Windows) native context and app menu library.'
+description: Simpe cross-platform (OSX + Windows) native context and app menu library.
+opengraph_image: https://defold.com/images/assets/defmnu-thumb.png
+twitter_image: https://defold.com/images/assets/defmnu-thumb.png
 ---

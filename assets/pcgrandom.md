@@ -2,5 +2,7 @@
 layout: asset
 asset: pcgrandom
 title: PCG Random
-description: b'PCG Random Number Generator Native Extension.'
+description: PCG Random Number Generator Native Extension.
+opengraph_image: https://defold.com/images/assets/pcgrandom-thumb.png
+twitter_image: https://defold.com/images/assets/pcgrandom-thumb.png
 ---

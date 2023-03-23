@@ -2,5 +2,7 @@
 layout: asset
 asset: clipboard
 title: Clipboard
-description: b'Clipboard access to enable copy / paste operations.'
+description: Clipboard access to enable copy / paste operations.
+opengraph_image: https://defold.com/images/assets/clipboard-thumb.png
+twitter_image: https://defold.com/images/assets/clipboard-thumb.png
 ---

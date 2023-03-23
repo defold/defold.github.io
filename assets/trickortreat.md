@@ -2,5 +2,7 @@
 layout: asset
 asset: trickortreat
 title: TrickOrTreat
-description: b'Fun and Free Halloween themed art asset pack.'
+description: Fun and Free Halloween themed art asset pack.
+opengraph_image: https://defold.com/images/assets/trickortreat-thumb.png
+twitter_image: https://defold.com/images/assets/trickortreat-thumb.png
 ---

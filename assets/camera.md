@@ -2,5 +2,7 @@
 layout: asset
 asset: camera
 title: Camera
-description: b'Capture images and show a live camera preview using the native camera APIs.'
+description: Capture images and show a live camera preview using the native camera APIs.
+opengraph_image: https://defold.com/images/assets/camera-thumb.png
+twitter_image: https://defold.com/images/assets/camera-thumb.png
 ---

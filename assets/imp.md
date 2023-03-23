@@ -2,5 +2,7 @@
 layout: asset
 asset: imp
 title: Imp
-description: b'Image processing via convolution between a kernel and the image.'
+description: Image processing via convolution between a kernel and the image.
+opengraph_image: https://defold.com/images/assets/imp-thumb.jpg
+twitter_image: https://defold.com/images/assets/imp-thumb.jpg
 ---

@@ -2,5 +2,7 @@
 layout: asset
 asset: gyro
 title: Gyro
-description: b'Read gyroscope data'
+description: Read gyroscope data
+opengraph_image: https://defold.com/images/assets/gyro-thumb.png
+twitter_image: https://defold.com/images/assets/gyro-thumb.png
 ---

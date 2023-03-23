@@ -2,5 +2,7 @@
 layout: asset
 asset: nativetext
 title: extension-nativetext
-description: b'Native Text Rendering extension for Defold.'
+description: Native Text Rendering extension for Defold.
+opengraph_image: https://defold.com/images/asset-nohero.jpg
+twitter_image: https://defold.com/images/asset-nohero.jpg
 ---

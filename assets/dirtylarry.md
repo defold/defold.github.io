@@ -2,5 +2,7 @@
 layout: asset
 asset: dirtylarry
 title: Dirty Larry
-description: b'A quick and dirty GUI library.'
+description: A quick and dirty GUI library.
+opengraph_image: https://defold.com/images/assets/dirtylarry-thumb.png
+twitter_image: https://defold.com/images/assets/dirtylarry-thumb.png
 ---
