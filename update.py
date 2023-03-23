@@ -736,9 +736,9 @@ def process_assets(tmp_dir):
             asset_desc = asset["description"].strip()
             asset_image = asset.get("images", {}).get("thumb", None)
             if asset_image and not asset_image.startswith("http"):
-                asset_image = "https://defold.com/images/assets/" + asset_image
+                asset_image = "https://www.defold.com/images/assets/" + asset_image
             else:
-                asset_image = "https://defold.com/images/asset-nohero.jpg"
+                asset_image = "https://www.defold.com/images/asset-nohero.jpg"
             f.write(ASSET_MD_FRONTMATTER.format(asset_id, asset_name, asset_desc, asset_image, asset_image))
 
     # write asset index

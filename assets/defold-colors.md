@@ -3,6 +3,6 @@ layout: asset
 asset: defold-colors
 title: Defold Colors
 description: Defold Colors (dcolors) provides customizable palettes and color utility features in a Defold game engine project.
-opengraph_image: https://defold.com/images/assets/defoldcolors-thumb.png
-twitter_image: https://defold.com/images/assets/defoldcolors-thumb.png
+opengraph_image: https://www.defold.com/images/assets/defoldcolors-thumb.png
+twitter_image: https://www.defold.com/images/assets/defoldcolors-thumb.png
 ---

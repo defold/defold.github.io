@@ -3,6 +3,6 @@ layout: asset
 asset: log
 title: Log
 description: General purpose logging.
-opengraph_image: https://defold.com/images/assets/log-thumb.png
-twitter_image: https://defold.com/images/assets/log-thumb.png
+opengraph_image: https://www.defold.com/images/assets/log-thumb.png
+twitter_image: https://www.defold.com/images/assets/log-thumb.png
 ---
