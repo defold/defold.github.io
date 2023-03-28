@@ -898,6 +898,38 @@
     },
     {
       "type": "FUNCTION",
+      "name": "go.exists",
+      "brief": "check if the specified game object exists",
+      "description": "check if the specified game object exists",
+      "returnvalues": [
+        {
+          "name": "exists",
+          "doc": "true if the game object exists",
+          "types": [
+            "bool"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "url",
+          "doc": "url of the game object to check",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        }
+      ],
+      "examples": "Check if game object \"my_game_object\" exists\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">exists</span><span class=\"p\">(</span><span class=\"s2\">&quot;/my_game_object&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "init",
       "brief": "called when a script component is initialized",
       "description": "This is a callback-function, which is called by the engine when a script component is initialized. It can be used\nto set the initial state of the script.",
