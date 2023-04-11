@@ -1,6 +1,6 @@
 ---
 layout: assetportal
-tag: editorscript
-title: Editor Script
+tag: lua
+title: Lua
 sort: timestamp
 ---
