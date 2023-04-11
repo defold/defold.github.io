@@ -29,7 +29,7 @@ layout: page
 		<div class="row">
 			<div class="columns nine">
 				<h4>{{ asset.name }}</h4>
-				<p>{{ asset.description }}</p>
+				<p>{%- if asset.description_long.size > 0 -%}{{ asset.description_long }}{%- else -%}{{ asset.description }}{%- endif -%}</p>
 
 				{%- if asset.library_url.size > 0 -%}
 				<h5>Use as library</h5>
