@@ -122,7 +122,7 @@ end
 ./gdc
 ```
 
-这个工具通过收集连接控制器的输入自动生成映射文件. 新的映射文件可以在 "game.project" 里进行指定或者混合使用:
+这个工具通过收集连接控制器的输入自动生成映射文件. 新的映射文件可以在 *game.project* 里进行指定或者混合使用:
 
 ![Gamepad settings](/manuals/images/input/gamepad_setting.png)
 
