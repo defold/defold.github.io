@@ -1,6 +1,6 @@
 ---
 layout: assetportal
 tag: editorscript
-title: Editor Script
+title: Editor script
 sort: timestamp
 ---
