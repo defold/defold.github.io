@@ -1,6 +1,6 @@
 ---
 layout: assetportal
 tag: editorscript
-title: Editor script
+title: Editor Script
 sort: stars
 ---
