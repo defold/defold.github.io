@@ -31,3 +31,7 @@ CTO, Defold Foundation
 mathias@defold.se
 
 PlayStation is a trademark or registered trademark of Sony Interactive Entertainment Inc.
+
+---
+
+Learn more about how to start developing for PlayStation®4 using Defold in the [PlayStation®4 platform manual](/manuals/sony-playstation).
