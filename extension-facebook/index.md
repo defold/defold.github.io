@@ -55,6 +55,8 @@ Click the *Settings* tab. Notice the numerical *App ID*. That identifier needs t
 
 ![game.project settings](game_project.png)
 
+Next, in the Advanced section of the *Settings* tab on the Facebook app page, scroll to the *Security* section and copy the *Client token*. Go back to the *game.project* file and add this to the `Clienttoken` field.
+
 Now, back in the *Settings* tab on the Facebook app page, click *+ Add Platform* to add a new platform to the app. Each platform has a set of settings to fill in.
 
 ![Select platform](select_platform.png)
