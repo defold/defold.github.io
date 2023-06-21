@@ -81,7 +81,7 @@ local defold = require "nakama.engine.defold"
 
 -- The Nakama server configuration
 local config = {}
-config.host = 127.0.0.1 -- localhost, ie your own machine
+config.host = "127.0.0.1" -- localhost, ie your own machine
 config.port = 7350
 config.use_ssl = (config.port == 443)
 config.username = "defaultkey" -- your Nakama server key, default is "defaultkey"
@@ -91,7 +91,7 @@ config.engine = defold -- Tell Nakama to use Defold (it can theoretically also w
 local client = nakama.create_client(config)
 ```
 
-Server config in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L136-L146](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L134-L144)
+Server config in XOXO: [https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L136-L144](https://github.com/defold/game-xoxo-nakama-client/blob/main/main/xoxo_nakama.lua#L134-L144)
 
 
 ## Authentication
