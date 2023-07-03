@@ -3019,6 +3019,36 @@
     },
     {
       "type": "FUNCTION",
+      "name": "gui.get_tree",
+      "brief": "get a node including its children",
+      "description": "Get a node and all its children as a Lua table.",
+      "returnvalues": [
+        {
+          "name": "clones",
+          "doc": "a table mapping node ids to the corresponding nodes",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "node",
+          "doc": "root node to get node tree from",
+          "types": [
+            "node"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "gui.reset_nodes",
       "brief": "resets all nodes to initial state",
       "description": "Resets all nodes in the current GUI scene to their initial state.\nThe reset only applies to static node loaded from the scene.\nNodes that are created dynamically from script are not affected.",
