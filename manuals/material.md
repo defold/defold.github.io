@@ -64,9 +64,9 @@ Semantic type
   - `SEMANTIC_TYPE_PAGE_INDEX` Produces per-vertex page indices for the attribute.
   - `SEMANTIC_TYPE_COLOR` Affects how the editor interprets the attribute. If an attribute is configured with a color semantic, a color picked widget will be shown in the inspector.
 
-<div class='sidenote' markdown='1'>
+::: sidenote
 The material system will assign a default semantic type automatically based on the name of the attribute during run-time for a specific set of names: position, texcoord0, page_index. If you have entries for these attributes in the material, the default semantic type will be overridden with whatever you have configured in the material editor!
-</div>
+:::
 
 Data type
 : The data type of the backing data for the attribute.
@@ -91,13 +91,13 @@ Coordinate space
 Value
 : The value of the attribute. Attribute values can be overridden on a per-component basis, but otherwise this will act as the default value of the vertex attribute. Note: for *default* attributes (position, texture coordinates and page indices) the value will be ignored.
 
-<div class='sidenote' markdown='1'>
+::: sidenote
 Custom attributes can also be used to trim memory footprint on both CPU and GPU by reconfiguring the streams to use a smaller data type, or a different element count.
-</div>
+:::
 
-<div class='important' markdown='1'>
+::: important
 Custom attributes are available starting from Defold 1.4.8!
-</div>
+:::
 
 ## Vertex and fragment constants
 
@@ -141,9 +141,9 @@ Example:
 go.set("#sprite", "m", vmath.matrix4())
 ```
 
-<div class='sidenote' markdown='1'>
+::: important
 In order for a material constant of type `CONSTANT_TYPE_USER` or `CONSTANT_TYPE_MATRIX4` to be available using `go.get()` and `go.set()` it has to be used in the shader program. If the constant is defined in the material but not used in the program it will be removed from the material and it will not be available at run-time.
-</div>
+:::
 
 ## Samplers
 

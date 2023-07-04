@@ -83,9 +83,9 @@ The attributes specified in the material will show up as regular properties in t
 
 ![sprite-attributes](../images/graphics/sprite-attributes.png)
 
-<div class='important' markdown='1'>
+::: sidenote
 Custom attributes are available starting from Defold 1.4.8!
-</div>
+:::
 
 ## Project configuration
 
