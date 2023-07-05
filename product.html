@@ -201,17 +201,17 @@ after: [opensource_section.html, learn_section.html, yellow_download_section.htm
 	</div>
 </div>
 <div class="row">
-	<div class="column one-third">
+	<div class="column one-half">
 		<h5>Truly cross-platform</h5>
 		<ul class="checkmark">
 			<li>One-click deployment to all target platforms from the same code and content</li>
 			<li>Additional platforms such as Steam and Facebook Instant Games supported via extensions</li>
 			<li>Editor and tools running on Mac OS X, Windows and Linux</li>
 			<li>Turn-key software with no dependencies on other programs - No need for Xcode or Android Studio for mobile deployment!</li>
-			<li>OpenGL, Vulkan and Metal</li>
+			<li>WebGL, OpenGL, Vulkan and Metal</li>
 		</ul>
 	</div>
-	<div class="column one-third">
+	<div class="column one-half">
 		<h5>Surprisingly lightweight</h5>
 		<ul class="checkmark">
 			<li>Static content dependencies and automatic resource management. Only used assets are included in game builds</li>
@@ -220,12 +220,32 @@ after: [opensource_section.html, learn_section.html, yellow_download_section.htm
 			<li>Dynamic batching in the render pipeline</li>
 		</ul>
 	</div>
-	<div class="column one-third">
+</div>
+<div class="row">
+	<div class="columns twelve">
+		<h3>Performance and stability</h3>
+		<p>Defold has a very small engine runtime and it performs really well even on old hardware. We spend a significant amount of effort to make sure it stays that way. The engine is designed from the ground up to conserve memory, take up little disk space and not waste CPU cycles. Keeping the engine small allows you to release games on platforms which many other engines are unable to support.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="column two-thirds">
 		<h5>Small engine</h5>
 		{%- include engine_size.html -%}
 	</div>
+	<div class="column one-third">
+		<h5>Performant</h5>
+		<ul class="checkmark">
+			<li>Renders tens of thousands of game objects without flinching (see <a href="/examples/sprite/bunnymark/">this example</a>)</li>
+			<li>Runs well on old hardware and in mobile phone browsers</li>
+		</ul>
+		<h5>Stable</h5>
+		<ul class="checkmark">
+			<li>Four week release cycle with two week beta period</li>
+			<li>Breaking changes are extremely rare</li>
+			<li>Engine crashes are few and far between</li>
+		</ul>
+	</div>
 </div>
-
 <div class="row"><div class="columns twelve"><br/><br/></div></div>
 
 <div class="row">
