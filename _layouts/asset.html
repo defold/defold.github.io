@@ -42,10 +42,17 @@ layout: page
 				</ul>
 				{%- endif -%}
 
-				{%- if asset.project_url.size > 0 -%}
+				{%- if asset.project_url.size > 0 || asset.website_url.size > 0 -%}
 				<h5>Learn more</h5>
 				<p>Learn more about {{ asset.name }} on the external project page:<br/>
-					<a href="{{ asset.project_url }}" target="_blank">{{ asset.project_url }}</a>
+					<ul>
+						{%- if asset.project_url.size > 0 -%}
+						<li><a href="{{ asset.project_url }}" target="_blank">{{ asset.project_url }}</a></li>
+						{%- endif -%}
+						{%- if asset.website_url.size > 0 -%}
+						<li><a href="{{ asset.website_url }}" target="_blank">{{ asset.website_url }}</a></li>
+						{%- endif -%}
+					</ul>
 				</p>
 				{%- endif -%}
 
