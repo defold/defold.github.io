@@ -52,33 +52,7 @@ after: [yellow_download_section.html, donors_and_partners.html]
 
 	<h5>Small and performant</h5>
 	<p>Defold has a very small engine runtime and it performs really well even on old hardware. We spend a significant amount of effort to make sure it stays that way. The engine is designed from the ground up to conserve memory, take up little disk space and not waste CPU cycles. Keeping the engine small allows you to release games on platforms which many other engines are unable to support.</p>
-	<table>
-		<tr>
-			<th>PLATFORM</th>
-			<th>DEFOLD 1.4.7</th>
-			<th>UNITY 2022.3.3f1</th>
-			<th>GODOT 4.0.3</th>
-		</tr>
-		<tr>
-			<td>Android (32+64 bit)</td>
-			<td>3.4MB</td>
-			<td>18.9MB</td>
-			<td>39.6MB</td>
-		</tr>
-		<tr>
-			<td>iOS (64 bit)</td>
-			<td>1.3MB</td>
-			<td>7.3MB</td>
-			<td>?</td>
-		</tr>
-		<tr>
-			<td>HTML5 (wasm, gzip)</td>
-			<td>956KB</td>
-			<td>2.7MB</td>
-			<td>9.8MB</td>
-		</tr>
-	</table>
-	<p>Test made using an empty project. Exported to target platform using default settings. Release builds.</p>
+	{%- include engine_size.html -%}
 
 	<h5>Low level building blocks</h5>
 	<p>Defold provides low level building blocks to create high level things. The design philosophy of Defold is to provide developers with low level building blocks that can be used to create just about anything. But they are just that, low level, which means you have to do a bit more work yourself. On the other hand you are in full control of what you create. Two examples to show what we mean:</p>
