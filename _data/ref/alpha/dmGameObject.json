@@ -516,12 +516,17 @@
         {
           "name": "m_ReadOnly",
           "doc": "Determines whether we are permitted to write to this property.",
-          "type": "bool"
+          "type": "uint16_t"
         },
         {
           "name": "m_ValueType",
-          "doc": "Indicates type of the property.",
-          "type": "uint8_t"
+          "doc": "Indicates type of the property (of type PropertyValueType).",
+          "type": "uint16_t"
+        },
+        {
+          "name": "m_ArrayLength",
+          "doc": "Number of array entries, if the property is an array and zero otherwise. Max supported length is 2^14 (16384 elements)",
+          "type": "uint16_t"
         }
       ],
       "notes": []
