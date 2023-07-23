@@ -1922,6 +1922,57 @@
       "tparams": [],
       "members": [],
       "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "CheckTable",
+      "brief": "Serialize a table to a buffer\nSupported types: LUA...",
+      "description": "Serialize a table to a buffer\nSupported types: LUA_TBOOLEAN, LUA_TNUMBER, LUA_TSTRING, Point3, Vector3, Vector4 and Quat\nKeys must be strings",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "Number of bytes used in buffer",
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "buffer",
+          "doc": "Buffer that will be written to (must be DM_ALIGNED(16))",
+          "types": [
+            "char*"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "doc": "Buffer size",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the table",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
   ],
   "info": {

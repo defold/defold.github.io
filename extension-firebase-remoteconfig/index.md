@@ -14,9 +14,9 @@ This extension allows you to interact with Firebase Remote Config in a uniform w
 ## Installation
 To use this library in your Defold project, add the following URLs to your `game.project` dependencies:
 
-| Firebase C++ SDK       | Dependencies |
-|------------------------|--------------|
-| Firebase C++ SDK 7.3.0 | [https://github.com/defold/extension-firebase/archive/refs/tags/1.1.3.zip](https://github.com/defold/extension-firebase/archive/refs/tags/1.1.3.zip)<br>[https://github.com/defold/extension-firebase-remoteconfig/archive/refs/tags/1.0.2.zip](https://github.com/defold/extension-firebase-remoteconfig/archive/refs/tags/1.0.2.zip) |
+| Firebase C++ SDK        | Firebase iOS SDK        | Dependencies |
+|-------------------------|-------------------------|--------------|
+| Firebase C++ SDK 8.10.0 | Firebase iOS SDK 8.13.0 | [https://github.com/defold/extension-firebase/archive/refs/tags/1.4.2.zip](https://github.com/defold/extension-firebase/archive/refs/tags/1.4.2.zip)<br>[https://github.com/defold/extension-firebase-remoteconfig/archive/refs/tags/1.3.1.zip](https://github.com/defold/extension-firebase-remoteconfig/archive/refs/tags/1.3.1.zip) |
 
 
 ## Setup
