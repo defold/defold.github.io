@@ -1,0 +1,96 @@
+{
+    "elements": [
+        {
+            "description": "Determine whether you have been granted a particular permission.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">result</span> <span class=\"o\">=</span> <span class=\"n\">permissions</span><span class=\"p\">.</span><span class=\"n\">check</span><span class=\"p\">(</span><span class=\"s2\">&quot;android.permission.ACCESS_NETWORK_STATE&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">if</span> <span class=\"n\">result</span> <span class=\"o\">==</span> <span class=\"n\">permissions</span><span class=\"p\">.</span><span class=\"n\">PERMISSION_DENIED</span> <span class=\"kr\">then</span>\n    <span class=\"c1\">-- You can directly ask for the permission.</span>\n<span class=\"kr\">elseif</span> <span class=\"n\">result</span> <span class=\"o\">==</span> <span class=\"n\">permissions</span><span class=\"p\">.</span><span class=\"n\">PERMISSION_GRANTED</span> <span class=\"kr\">then</span>\n    <span class=\"c1\">-- You can use the API that requires the permission.</span>\n<span class=\"kr\">elseif</span> <span class=\"n\">result</span> <span class=\"o\">==</span> <span class=\"n\">permissions</span><span class=\"p\">.</span><span class=\"n\">PERMISSION_SHOW_RATIONALE</span> <span class=\"kr\">then</span>\n    <span class=\"c1\">-- In an educational UI, explain to the user why your app requires this</span>\n    <span class=\"c1\">-- permission for a specific feature to behave as expected, and what</span>\n    <span class=\"c1\">-- features are disabled if it&#39;s declined. In this UI, include a</span>\n    <span class=\"c1\">-- &quot;cancel&quot; or &quot;no thanks&quot; button that lets the user continue</span>\n    <span class=\"c1\">-- using your app without granting the permission.</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "permissions.check",
+            "parameters": [
+                {
+                    "doc": "A constant that represent permission, for example `android.permission.ACCESS_NETWORK_STATE`",
+                    "name": "permission",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "A result can be one of the predefined constants below\n- `permissions.PERMISSION_GRANTED`\n- `permissions.PERMISSION_DENIED`\n- `permissions.PERMISSION_SHOW_RATIONALE`",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Requests permissions to be granted to this application.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">permissions_table</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s2\">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;android.permission.READ_CONTACTS&quot;</span><span class=\"p\">}</span>\n<span class=\"n\">permissions</span><span class=\"p\">.</span><span class=\"n\">request</span><span class=\"p\">(</span><span class=\"n\">permissions_table</span><span class=\"p\">,</span>\n    <span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">)</span>\n        <span class=\"kr\">for</span> <span class=\"n\">permission</span><span class=\"p\">,</span> <span class=\"n\">result</span> <span class=\"kr\">in</span> <span class=\"nb\">pairs</span><span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"kr\">do</span>\n          <span class=\"kr\">if</span> <span class=\"n\">result</span> <span class=\"o\">==</span> <span class=\"n\">permissions</span><span class=\"p\">.</span><span class=\"n\">PERMISSION_DENIED</span> <span class=\"kr\">then</span>\n              <span class=\"c1\">-- You can directly ask for the permission.</span>\n          <span class=\"kr\">elseif</span> <span class=\"n\">result</span> <span class=\"o\">==</span> <span class=\"n\">permissions</span><span class=\"p\">.</span><span class=\"n\">PERMISSION_GRANTED</span> <span class=\"kr\">then</span>\n              <span class=\"c1\">-- You can use the API that requires the permission.</span>\n          <span class=\"kr\">elseif</span> <span class=\"n\">result</span> <span class=\"o\">==</span> <span class=\"n\">permissions</span><span class=\"p\">.</span><span class=\"n\">PERMISSION_SHOW_RATIONALE</span> <span class=\"kr\">then</span>\n              <span class=\"c1\">-- In an educational UI, explain to the user why your app requires this</span>\n              <span class=\"c1\">-- permission for a specific feature to behave as expected, and what</span>\n              <span class=\"c1\">-- features are disabled if it&#39;s declined. In this UI, include a</span>\n              <span class=\"c1\">-- &quot;cancel&quot; or &quot;no thanks&quot; button that lets the user continue</span>\n              <span class=\"c1\">-- using your app without granting the permission.</span>\n          <span class=\"kr\">end</span>\n        <span class=\"kr\">end</span>\n    <span class=\"kr\">end</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "name": "permissions.request",
+            "parameters": [
+                {
+                    "doc": "An array with constants that represent permissions.",
+                    "name": "request_tbl",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "A callback taking the following parameters",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "A table where key is permission string and key is one of the following constants\n- `permissions.PERMISSION_GRANTED`\n- `permissions.PERMISSION_DENIED`",
+                            "name": "result",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "The permission has been granted to the given package.",
+            "examples": "",
+            "name": "PERMISSION_GRANTED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The permission has not been granted to the given package.",
+            "examples": "",
+            "name": "PERMISSION_DENIED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Explain why your app needs the permission [Android doc](https://developer.android.com/training/permissions/requesting#explain)",
+            "examples": "",
+            "name": "PERMISSION_SHOW_RATIONALE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        }
+    ],
+    "info": {
+        "api": "extension-permissions/permissions_api",
+        "brief": "permissions",
+        "description": "Functions and constants for interacting with permissions related APIs",
+        "group": "EXTENSIONS",
+        "name": "extension-permissions",
+        "namespace": "permissions"
+    }
+}
