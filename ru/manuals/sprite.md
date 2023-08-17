@@ -60,6 +60,8 @@ brief: Данное руководство описывает, как отобр
 `size`
 : Размер спрайта (`vector3`) (READ ONLY).
 
+{% include shared/ru/slice-9-texturing.md %}
+
 ## Константы материала
 
 {% include shared/ru/material-constants.md component='sprite' variable='tint' %}
