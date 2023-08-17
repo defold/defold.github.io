@@ -1,37 +1,32 @@
-## Slice-9 texturing
+## Текстурирование Slice9
 
-GUI box nodes and Sprite components sometimes feature elements that are context sensitive in regard to their size: panels and dialogs that need to be resized to fit the containing content or a health bar that need to be resized to show the remaining health of an enemy. These may cause visual problems when you apply texturing to the resized node or sprite.
+В графических интерфейсах часто встречаются элементы, чувствительные к контексту в отношении их размера: панели и диалоговые окна, размер которых необходимо изменять, чтобы вместить содержащееся в них содержимое. Это может вызвать визуальные проблемы, если применять текстурирование к изменяемой в размерах ноде.
 
-Normally, the engine scales the texture to fit the rectangular boundaries, but by defining slice-9 edge areas it is possible to limit what parts of the texture that should scale:
+Обычно движок масштабирует текстуру, чтобы она соответствовала границам ноды Box, но, определив краевые области Slice9, можно определить границы того, какие части текстуры должны масштабироваться:
 
 ![GUI scaling](/shared/images/gui_slice9_scaling.png)
 
-The *Slice9* box node consists of 4 numbers that specify the number of pixels for the left, top, right and bottom margin that should not be regularly scaled:
+
+Нода Box *Slice9* включает в себя 4 числа, которые определяют количество пикселей для левого, верхнего, правого и нижнего полей, которые не должны подвергаться регулярному масштабированию:
 
 ![Slice 9 properties](/shared/images/gui_slice9_properties.png)
 
-The margins are set clockwise, starting on the left edge:
+Поля устанавливаются по часовой стрелке, начиная с левого края:
 
 ![Slice 9 sections](/shared/images/gui_slice9.png)
 
-- Corner segments are never scaled.
-- Edge segments are scaled along a single axis. The left and right edge segments are scaled vertically. The top and bottom edge segments are scaled horizontally.
-- The central texture area is scaled horizontally and vertically as needed.
+- Угловые сегменты никогда не масштабируются.
+- Краевые сегменты масштабируются вдоль одной оси. Левый и правый краевые сегменты масштабируются по вертикали. Верхний и нижний краевые сегменты масштабируются по горизонтали.
+- Центральная область текстуры масштабируется по горизонтали и вертикали по мере необходимости.
 
-The *Slice9* texture scaling described above is only applied when you change box node's or sprite's size:
+Описанное выше масштабирование текстуры *Slice9* применяется только при изменении размера ноды Box:
 
 ![GUI box node size](/shared/images/gui_slice9_size.png)
 
-![Sprite size](/shared/images/sprite_slice9_size.png)
+Если изменить параметр Scale ноды Box --- нода и текстура будут масштабироваться без применения параметров *Slice9*.
 
-<div class='important' markdown='1'>
-If you change scale parameter of the box node or sprite (or on the game object) - the node or sprite and texture is scaled without applying *Slice9* parameters.
-</div>
-
-
-### Mipmaps and slice-9
-Due to the way mipmapping works in the renderer, scaling of texture segments can sometimes exhibit artifacts. This happens when you _scale down_ segments below the original texture size. The renderer then selects a lower resolution mipmap for the segment, resulting in visual artifacts.
+Из-за того, как работает мипмаппинг в рендере, при масштабировании сегментов текстуры иногда могут возникать артефакты. Это происходит при _масштабировании_ сегментов ниже исходного размера текстуры. Затем рендерер выбирает для сегмента мипмап с более низким разрешением, что приводит к появлению визуальных артефактов.
 
 ![Slice 9 mipmapping](/shared/images/gui_slice9_mipmap.png)
 
-To avoid this problem, make sure that the texture's segments that will be scaled are small enough never to be scaled down, only up.
+Чтобы избежать этой проблемы, убедитесь, что сегменты текстуры, которые будут масштабироваться, достаточно малы, чтобы никогда не масштабироваться в меньшую сторону, а только в большую.
