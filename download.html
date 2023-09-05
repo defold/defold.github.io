@@ -7,12 +7,23 @@ heatmap: false
 background: /images/hero/defold-top-bg-transparent-2.png
 after: [subscribe.html, learn_section.html, donors_and_partners.html]
 ---
-
+<script type="text/javascript">
+	function downloadEditor(select) {
+		window.location.href = select.value;
+		select.value = "Download for Mac";
+	}
+</script>
 <div class="row center">
 	<div class="columns four">
 		<span class="icon-apple blue-text" style="font-size: 50px"></span>
 		<p>Requires macOS 11 Big Sur or newer</p>
-		{% include primary_button.html link="https://d.defold.com/editor2/channels/editor-alpha/Defold-x86_64-macos.dmg" text="Download for Mac" %}
+		<form style="margin: 0;">
+			<select name="select" class="button primary download-select" onChange="downloadEditor(this)">
+				<option selected disabled hidden>Download for Mac</option>
+				<option value="https://d.defold.com/editor2/channels/editor-alpha/Defold-arm64-macos.dmg">Apple Silicon Mac</option>
+				<option value="https://d.defold.com/editor2/channels/editor-alpha/Defold-x86_64-macos.dmg">Intel Mac</option>
+			</select>
+		</form>
 		<p><a href="https://forum.defold.com/c/releasenotes" target="_blank">Release notes</a></p>
 	</div>
 	<div class="columns four">
