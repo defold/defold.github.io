@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Defold x Luden.io
-excerpt: 
+excerpt: Learn why Luden.io are using Defold for their games and prototypes.
 author: Oleg Chumakov
 tags: ["creator spotlight", "luden.io"]
 ---
