@@ -13,7 +13,7 @@ I asked the developers of Luden.io about it and recalled some memories from a fe
 ## Previous experience
 We at Luden.io have been experimenting with Defold for a while now. We are a small studio focused on educational games, which we release on Steam, consoles, and mobile devices. Mostly our games are about tech, engineering, and system design. We have used Unreal Engine, Unity, and Defold. You can find all the titles [on our website](https://luden.io/).
 
-![](/images/posts/ludenio/whiletruelearn.png)
+![](/images/posts/ludenio/whiletruelearn.jpg)
 
 <div align="center">
 _while True: learn() is a game about machine learning and cats_
@@ -69,7 +69,7 @@ The decision formula for us was something like “Chromebooks + Early playtest c
 
 We heard about this engine before thanks to Defold evangelist and our big friend [Olle Pridiuksson](https://twitter.com/iwozik). Some of us even used it on game jams. Also, some of the students from Game Development 101 (_we help with this introductory course in Neapolis University Paphos and Faculty of Computer Science - HSE University since 2013_) were using Defold, and some of our friends were using Defold and also making Defold :)
 
-![](/images/posts/ludenio/naturalresources.png)
+![](/images/posts/ludenio/naturalresources.jpg)
 
 <div align="center">
 _[Natural Resources](https://ludenio.itch.io/naturalresources) is one of the students’ games made with Defold_
@@ -77,7 +77,7 @@ _[Natural Resources](https://ludenio.itch.io/naturalresources) is one of the stu
 
 Defold at this time was something like — the super lightweight 2D game engine with Lua and C++ which somehow made programmers fall in love with it. Maybe it’s because of the Swedish [Demoscene](https://en.wikipedia.org/wiki/Demoscene) background of the engine founders, maybe because of the super tiny build size — it’s a mystery. 
 
-![](/images/posts/ludenio/generatedadventure.png)
+![](/images/posts/ludenio/generatedadventure.jpg)
 
 
 <div align="center">
@@ -178,7 +178,7 @@ Craftomation 101 is made completely on Lua and C++ but now, when we have around 
 ## Generated Adventure
 Defold now is also our primary tool for experiments. Generated Adventure and Warnament are great games to illustrate what I mean.
 
-![](/images/posts/ludenio/generatedadventure-levels.png)
+![](/images/posts/ludenio/generatedadventure-levels.jpg)
 
 <div align="center">
 _Three levels of Generated Adventure_
@@ -193,7 +193,7 @@ My old friend [Alexey Gulev](https://twitter.com/AGulev) who is a wonderful game
 
 Warnament is now available as a closed beta and as a free demo for Android, Windows, macOS, and Linux. All the things are happening in our [Discord](https://discord.gg/2t6vqYjjG8) and [on the Steam page](https://store.steampowered.com/app/1201700/Warnament/).
 
-![](/images/posts/ludenio/warnament-europe.png)
+![](/images/posts/ludenio/warnament-europe.jpg)
 
 <div align="center">
 _Map of Warnament is made with huge procedurally generated mesh_
@@ -203,7 +203,7 @@ Map Engine of Warnament is written half in plain Lua (not TypeScript) and half i
 
 Since Warnament is a community thing we can’t even imagine what maps they will decide to make. That’s why the map engine should be ready for everything, even for the highly detailed map of the whole planet (and not only the Earth to be honest). So there are a lot of high-performance C/C++ injections in this part.
 
-![](/images/posts/ludenio/warnament-community.png)
+![](/images/posts/ludenio/warnament-community.jpg)
 
 <div align="center">
 _Yes, it’s one of the community-made maps for Warnament_
@@ -211,7 +211,7 @@ _Yes, it’s one of the community-made maps for Warnament_
 
 And of course, you can enjoy the game 100% only in multiplayer. More than that — you can maintain your server with custom rules (e.g. no wars at all, only diplomacy). To make it easier to deploy and customize we put some parts of Lua logic into independent modules which can be run with Defold game client or server or any tool you want to build for Warnament. It shines bright for community events like Tournaments, Roleplay servers, and custom maps-based games.
 
-![](/images/posts/ludenio/warnament-research.png)
+![](/images/posts/ludenio/warnament-research.jpg)
 
 <div align="center">
 _Political research screen in Warnament_
