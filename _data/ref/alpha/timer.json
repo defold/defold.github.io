@@ -112,9 +112,10 @@
       "returnvalues": [
         {
           "name": "data",
-          "doc": "or nil if timer is cancelled/completed. table with data in the following fields:\n<dl>\n<dt><code>time_remaining</code></dt>\n<dd><span class=\"type\">number</span> Time remaining until the next time a timer.delay() fires.</dd>\n<dt><code>delay</code></dt>\n<dd><span class=\"type\">number</span> Time interval.</dd>\n<dt><code>repeating</code></dt>\n<dd><span class=\"type\">boolean</span> true = repeat timer until cancel, false = one-shot timer.</dd>\n</dl>",
+          "doc": "table or <code>nil</code> if timer is cancelled/completed. table with data in the following fields:\n<dl>\n<dt><code>time_remaining</code></dt>\n<dd><span class=\"type\">number</span> Time remaining until the next time a timer.delay() fires.</dd>\n<dt><code>delay</code></dt>\n<dd><span class=\"type\">number</span> Time interval.</dd>\n<dt><code>repeating</code></dt>\n<dd><span class=\"type\">boolean</span> true = repeat timer until cancel, false = one-shot timer.</dd>\n</dl>",
           "types": [
-            "table"
+            "table",
+            "nil"
           ]
         }
       ],
