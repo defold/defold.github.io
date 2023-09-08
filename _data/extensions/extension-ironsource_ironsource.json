@@ -1,0 +1,607 @@
+{
+    "elements": [
+        {
+            "description": "Initialize the IronSource SDK",
+            "examples": "",
+            "name": "ironsource.init",
+            "parameters": [
+                {
+                    "doc": "App key you can get in the IronSource dashboard",
+                    "name": "app_key",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets a callback function for receiving events from the SDK. Call `ironsource.set_callback(nil)` to remove callback",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">ironsource_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">)</span>\n  <span class=\"n\">callback_logger</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">)</span>\n  <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">MSG_INIT</span> <span class=\"kr\">then</span>\n      <span class=\"kr\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_INIT_COMPLETE</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- ironSource SDK is initialized</span>\n          <span class=\"c1\">-- massage{}</span>\n      <span class=\"kr\">end</span>\n  <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">MSG_REWARDED</span> <span class=\"kr\">then</span>\n      <span class=\"kr\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_AD_AVAILABLE</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- Indicates that there&#39;s an available ad. </span>\n          <span class=\"c1\">-- The adInfo object includes information about the ad that was loaded successfully</span>\n          <span class=\"c1\">-- massage{AdInfo}</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_AD_UNAVAILABLE</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- Indicates that no ads are available to be displayed</span>\n          <span class=\"c1\">-- massage{}</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_AD_OPENED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- The Rewarded Video ad view has opened. Your activity will loose focus</span>\n          <span class=\"c1\">-- massage{AdInfo}</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_AD_CLOSED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- The Rewarded Video ad view is about to be closed. Your activity will regain its focus</span>\n          <span class=\"c1\">-- massage{AdInfo}</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_AD_REWARDED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- The user completed to watch the video, and should be rewarded.</span>\n          <span class=\"c1\">-- The placement parameter will include the reward data.</span>\n          <span class=\"c1\">-- When using server-to-server callbacks, you may ignore this event and wait for the ironSource server callback</span>\n          <span class=\"c1\">-- massage{AdInfo, Placement}</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_AD_SHOW_FAILED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- The rewarded video ad was failed to show</span>\n          <span class=\"c1\">-- massage{AdInfo, IronSourceError}</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_AD_CLICKED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- Invoked when the video ad was clicked.</span>\n          <span class=\"c1\">-- This callback is not supported by all networks, and we recommend using it </span>\n          <span class=\"c1\">-- only if it&#39;s supported by all networks you included in your build</span>\n          <span class=\"c1\">-- massage{AdInfo, Placement}</span>\n      <span class=\"kr\">end</span>\n  <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">MSG_INTERSTITIAL</span> <span class=\"kr\">then</span>\n      <span class=\"kr\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_AD_READY</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- Invoked when the interstitial ad was loaded successfully.</span>\n          <span class=\"c1\">-- AdInfo parameter includes information about the loaded ad</span>\n          <span class=\"c1\">-- massage{AdInfo}</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_AD_LOAD_FAILED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- Indicates that the ad failed to be loaded</span>\n          <span class=\"c1\">-- massage{IronSourceError}</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_AD_OPENED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- Invoked when the Interstitial Ad Unit has opened, and user left the application screen.</span>\n          <span class=\"c1\">-- This is the impression indication.</span>\n          <span class=\"c1\">-- massage{AdInfo}</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_AD_CLOSED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- Invoked when the interstitial ad closed and the user went back to the application screen.</span>\n          <span class=\"c1\">-- massage{AdInfo}</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_AD_SHOW_FAILED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- Invoked when the ad failed to show</span>\n          <span class=\"c1\">-- massage{AdInfo, IronSourceError}</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_AD_CLICKED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- Invoked when end user clicked on the interstitial ad</span>\n          <span class=\"c1\">-- massage{AdInfo}</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_AD_SHOW_SUCCEEDED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- Invoked before the interstitial ad was opened, and before the InterstitialOnAdOpenedEvent is reported.</span>\n          <span class=\"c1\">-- This callback is not supported by all networks, and we recommend using it only if</span>\n          <span class=\"c1\">-- it&#39;s supported by all networks you included in your build.</span>\n          <span class=\"c1\">-- massage{AdInfo}</span>\n      <span class=\"kr\">end</span>\n  <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">MSG_CONSENT</span> <span class=\"kr\">then</span>\n      <span class=\"kr\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_CONSENT_LOADED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- Consent View was loaded successfully</span>\n          <span class=\"c1\">-- massage.consent_view_type</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_CONSENT_SHOWN</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- Consent view was displayed successfully </span>\n          <span class=\"c1\">-- massage.consent_view_type</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_CONSENT_LOAD_FAILED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- Consent view was failed to load</span>\n          <span class=\"c1\">-- massage.consent_view_type, massage.error_code, massage.error_message</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_CONSENT_SHOW_FAILED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- Consent view was not displayed, due to error</span>\n          <span class=\"c1\">-- massage.consent_view_type, massage.error_code, massage.error_message</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_CONSENT_ACCEPTED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- The user pressed the Settings or Next buttons</span>\n          <span class=\"c1\">-- massage.consent_view_type</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_CONSENT_DISMISSED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- The user dismiss consent</span>\n          <span class=\"c1\">-- massage.consent_view_type</span>\n      <span class=\"kr\">end</span>\n  <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">MSG_IDFA</span> <span class=\"kr\">then</span>\n      <span class=\"kr\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_STATUS_AUTHORIZED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- ATTrackingManagerAuthorizationStatusAuthorized</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_STATUS_DENIED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- ATTrackingManagerAuthorizationStatusDenied</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_STATUS_NOT_DETERMINED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- ATTrackingManagerAuthorizationStatusNotDetermined</span>\n      <span class=\"kr\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">ironsource</span><span class=\"p\">.</span><span class=\"n\">EVENT_STATUS_RESTRICTED</span> <span class=\"kr\">then</span>\n          <span class=\"c1\">-- ATTrackingManagerAuthorizationStatusRestricted</span>\n      <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "ironsource.set_callback",
+            "parameters": [
+                {
+                    "doc": "Callback function that is executed on any event in the SDK.",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "One of message types: `ironsource.MSG_INIT` initialization, `ironsource.MSG_INTERSTITIAL` message from Interstitial ad unit, `ironsource.MSG_REWARDED` message from Rewarded ad unit",
+                            "name": "message_id",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "A table holding the data. It always contains `event`, and also some other values depends on a message",
+                            "name": "message",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "If the user provided consent, set the following flag to true (must be called before `ironsource.init()`). [Original docs](https://developers.is.com/ironsource-mobile/general/making-sure-youre-compliant-post-gdpr/#step-2) [Android](https://developers.is.com/ironsource-mobile/android/regulation-advanced-settings/), [iOS](https://developers.is.com/ironsource-mobile/ios/regulation-advanced-settings/)",
+            "examples": "",
+            "name": "ironsource.set_consent",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "is_consent_provided",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "The ironSource SDK provides an easy way to verify that you\u2019ve successfully integrated the ironSource SDK and any additional adapters; it also makes sure all required dependencies and frameworks were added for the various mediated ad networks. The Integration Helper will now also portray the compatibility between the SDK and adapter versions. Original docs [Android](https://developers.is.com/ironsource-mobile-android/integration-helper-android/), [iOS](https://developers.is.com/ironsource-mobile/ios/integration-helper-ios/)",
+            "examples": "",
+            "name": "ironsource.validate_integration",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Function used for setting different parameterd for adapters and the SDK itself.",
+            "examples": "",
+            "name": "ironsource.set_metadata",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "key",
+                    "types": [
+                        "String"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "value",
+                    "types": [
+                        "String"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "If you\u2019re serving the offerwall ad unit or using server-to-server callbacks to reward your users with ironSource SDK rewarded ad units, you must define a unique identifier for each user (\u201cUserID\u201d), using the setUserID method.\nSet the UserID before the init request, to make sure you avoid any data loses, related to the user. Use a unique identifier, with up to 64 alphanumeric characters.\nOriginal docs [Android](https://developers.is.com/ironsource-mobile/android/advanced-settings/), [iOS](https://developers.is.com/ironsource-mobile/ios/advanced-settings-2/)",
+            "examples": "",
+            "name": "ironsource.set_user_id",
+            "parameters": [
+                {
+                    "doc": null,
+                    "name": "user_id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "The LevelPlay integration test suite enables you to quickly and easily test your app\u2019s integration, verify platform setup and review ads related to your configured networks. Original docs [Android](https://developers.is.com/ironsource-mobile/android/unity-levelplay-test-suite/#step-1), [iOS](https://developers.is.com/ironsource-mobile/ios/unity-levelplay-test-suite/)",
+            "examples": "",
+            "name": "ironsource.launch_test_suite",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "iOS Only. Display the App Tracking Transparency authorization request for accessing the IDFA. Original docs [iOS](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/3547037-requesttrackingauthorization)",
+            "examples": "",
+            "name": "ironsource.request_idfa",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "iOS Only. Returns current authorization status for the IDFA One of event types: `ironsource.EVENT_STATUS_AUTHORIZED` `ironsource.EVENT_STATUS_DENIED` `ironsource.EVENT_STATUS_NOT_DETERMINED` `ironsource.EVENT_STATUS_RESTRICTED` or nil if not supported Original docs [iOS](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/3547037-requesttrackingauthorization)",
+            "examples": "",
+            "name": "ironsource.get_idfa_status",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Manage the debug logs for your integrated mediation ad networks with this boolean. When set to TRUE it enables debug logs to help you troubleshoot issues with all of the mediation ad networks that permit to do so. Remove this code before your app goes live with our ad units!",
+            "examples": "",
+            "name": "ironsource.set_adapters_debug",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "iOS Only. Load the IronSource permission pop-up. [iOS](https://developers.is.com/ironsource-mobile/ios/permission-popup-ios/#step-1)",
+            "examples": "",
+            "name": "ironsource.load_consent_view",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "one of the folowing values \"pre\" or \"post\"",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "iOS Only. Display the IronSource permission pop-up. [iOS](https://developers.is.com/ironsource-mobile/ios/permission-popup-ios/#step-1)",
+            "examples": "",
+            "name": "ironsource.show_consent_view",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "one of the folowing values \"pre\" or \"post\"",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "You can determine and monitor the internet connection on the user\u2019s device through the ironSource Network Change Status function. This enables the SDK to change its availability according to network modifications, i.e. in the case of no network connection, the availability will turn to FALSE. The default of this function is false; if you\u2019d like to listen to it for changes in connectivity, activate it in the SDK initialization [Android shouldTrackNetworkState](https://developers.is.com/ironsource-mobile/android/rewarded-video-integration-android/#step-1), [iOS shouldTrackReachability](https://developers.is.com/ironsource-mobile/ios/rewarded-video-integration-ios/#step-1)",
+            "examples": "",
+            "name": "ironsource.should_track_network_state",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "should_track",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "You can receive the availability status of the AD Unit through the callback. Alternatively, ask for ad availability directly by calling this function. [Android](https://developers.is.com/ironsource-mobile/android/rewarded-video-integration-android/#step-1), [iOS](https://developers.is.com/ironsource-mobile/ios/rewarded-video-integration-ios/#step-1)",
+            "examples": "",
+            "name": "ironsource.is_rewarded_video_available",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "You can show a video ad to your users and define the exact Placement you want to show an ad. The Reward settings of this Placement will be pulled from the ironSource server. Original docs [Android](https://developers.is.com/ironsource-mobile/android/rewarded-video-integration-android/#step-1), [iOS](https://developers.is.com/ironsource-mobile/ios/rewarded-video-integration-ios/#step-1)",
+            "examples": "",
+            "name": "ironsource.show_rewarded_video",
+            "parameters": [
+                {
+                    "doc": "maybe nil - then default placement used",
+                    "name": "placement_name",
+                    "types": [
+                        "String"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get details about the specific Reward associated with each Ad Placement. Original docs [Android](https://developers.is.com/ironsource-mobile/android/rewarded-video-integration-android/#step-1), [iOS](https://developers.is.com/ironsource-mobile/ios/rewarded-video-integration-ios/#step-1)",
+            "examples": "",
+            "name": "ironsource.get_rewarded_video_placement_info",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "placement_name",
+                    "types": [
+                        "String"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get details about the specific Reward associated with each Ad Placement. Original docs [Android](https://developers.is.com/ironsource-mobile/android/rewarded-video-integration-android/#step-1), [iOS](https://developers.is.com/ironsource-mobile/ios/rewarded-video-integration-ios/#step-1)",
+            "examples": "",
+            "name": "ironsource.get_rewarded_video_placement_info",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "placement_name",
+                    "types": [
+                        "String"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "contains the following fields `placement_id`, `placement_name`, `is_default`, `reward_name`, `reward_amount`",
+                    "name": "table"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "To ensure you don\u2019t show the traffic driver (Rewarded Video button) to prompt the user to watch an ad when the placement is capped, you must call the below method to verify if a specific placement has reached its ad limit. When requesting availability, you might receive a TRUE response but in the case your placement has reached its capping limit, the ad will not be served to the user. Original docs [Android isRewardedVideoPlacementCapped](https://developers.is.com/ironsource-mobile/android/rewarded-video-integration-android/#step-2), [iOS isRewardedVideoCappedForPlacement](https://developers.is.com/ironsource-mobile/ios/rewarded-video-integration-ios/#step-2)",
+            "examples": "",
+            "name": "ironsource.is_rewarded_video_placement_capped",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "placement_name",
+                    "types": [
+                        "String"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "The Dynamic UserID is a parameter to verify AdRewarded transactions and can be changed throughout the session. To receive this parameter through the server to server callbacks, it must be set before calling showRewardedVideo. You will receive a dynamicUserId parameter in the callback URL with the reward details. [Android](https://developers.is.com/ironsource-mobile/android/rewarded-video-integration-android/#step-2), [iOS](https://developers.is.com/ironsource-mobile/ios/rewarded-video-integration-ios/#step-2)",
+            "examples": "",
+            "name": "ironsource.set_dynamic_user_id",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "dynamic_user_id",
+                    "types": [
+                        "String"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "We recommend requesting an Interstitial Ad a short while before you plan on showing it to your users as the loading process can take time. [Android](https://developers.is.com/ironsource-mobile/android/interstitial-mediation-integration-android/#step-2), [iOS](https://developers.is.com/ironsource-mobile/ios/interstitial-integration-ios/#step-2)",
+            "examples": "",
+            "name": "ironsource.load_interstitial",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "You can receive the availability status of the AD Unit through the callback. Alternatively, ask for ad availability directly by calling this function. [Android](https://developers.is.com/ironsource-mobile/android/interstitial-mediation-integration-android/#step-2), [iOS](https://developers.is.com/ironsource-mobile/ios/interstitial-integration-ios/#step-2)",
+            "examples": "",
+            "name": "ironsource.is_interstitial_ready",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Android Only. Get details about the specific Ad Placement. Original docs [Android](https://developers.is.com/ironsource-mobile/android/interstitial-mediation-integration-android/#step-3), [iOS](https://developers.is.com/ironsource-mobile/ios/interstitial-integration-ios/#step-3)",
+            "examples": "",
+            "name": "ironsource.get_interstitial_placement_info",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "placement_name",
+                    "types": [
+                        "String"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "contains the following fields `placement_id`, `placement_name`, `is_default`",
+                    "name": "table"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "In addition to LevelPlay\u2018s Ad Placements, you can now configure capping and pacing settings for selected placements. Capping and pacing improve the user experience in your app by limiting the number of ads served within a defined timeframe. Original docs [Android](https://developers.is.com/ironsource-mobile/android/interstitial-mediation-integration-android/#step-3), [iOS](https://developers.is.com/ironsource-mobile/ios/interstitial-integration-ios/#step-3)",
+            "examples": "",
+            "name": "ironsource.is_interstitial_placement_capped",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "placement_name",
+                    "types": [
+                        "String"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Serve an Interstitial ad to your users. Call it once you receive the ironsource.EVENT_AD_READY callback, you are ready to show an Interstitial Ad to your users. To provide the best experience for your users, make sure to pause any game action, including audio, during the time the ad is displayed. Original docs [Android](https://developers.is.com/ironsource-mobile/android/rewarded-video-integration-android/#step-1), [iOS](https://developers.is.com/ironsource-mobile/ios/rewarded-video-integration-ios/#step-1)",
+            "examples": "",
+            "name": "ironsource.show_interstitial",
+            "parameters": [
+                {
+                    "doc": "maybe nil - then default placement used",
+                    "name": "placement_name",
+                    "types": [
+                        "String"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MSG_INTERSTITIAL",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MSG_REWARDED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MSG_CONSENT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MSG_INIT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MSG_IDFA",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_AVAILABLE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_UNAVAILABLE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_OPENED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_CLOSED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_REWARDED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_CLICKED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_SHOW_FAILED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_READY",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_SHOW_SUCCEEDED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_LOAD_FAILED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_JSON_ERROR",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_INIT_COMPLETE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_CONSENT_LOADED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_CONSENT_SHOWN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_CONSENT_LOAD_FAILED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_CONSENT_SHOW_FAILED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_CONSENT_ACCEPTED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_CONSENT_DISMISSED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_STATUS_AUTHORIZED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_STATUS_DENIED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_STATUS_NOT_DETERMINED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_STATUS_RESTRICTED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        }
+    ],
+    "info": {
+        "api": "extension-ironsource/ironsource_api",
+        "brief": "ironsource",
+        "description": "Functions and constants for interacting with IronSource API",
+        "group": "EXTENSIONS",
+        "name": "extension-ironsource",
+        "namespace": "ironsource"
+    }
+}
