@@ -89,7 +89,7 @@ Since this article is mainly for developers we should stop on programming langua
 ![](/images/posts/ludenio/pointermeme.png)
 
 <div align="center">
-I can’t stand not adding this meme here in the c++ section
+_I can’t stand not adding this meme here in the c++ section_
 </div>
 
 In the current state of the industry of 2023, C++ is still the king of the second one. The first one is always a product of your team experience, tastes, ability to hire, and a zillion other things. For some of us, C++-with-a-lot-of-macros of Unreal Engine is good, some of us think that even C# is too tight for moving fast. Python is great but the toolset is quite huge, JavaScript is now crazy fast but... This is an infinite series of options.
@@ -100,7 +100,7 @@ In the current state of the industry of 2023, C++ is still the king of the secon
 _Luau is syntactically backward-compatible with Lua 5.1_
 </div>
 
-Lua is the ultra-compact scripting language that in hard times of dealing with a huge codebase can be covered with statically typed TypeScript. Also, there is a [Luau](https://luau-lang.org/) made by folks from Roblox which seems great, but it’s not supported by Defold as of August 2023.
+Lua is the ultra-compact scripting language that in hard times of dealing with a huge codebase can be covered with statically typed TypeScript. Also, there is a [Luau](https://luau-lang.org/) made by folks from Roblox which seems great, but it’s [not supported by Defold as of August 2023](https://github.com/defold/defold/issues/6398).
 
 I heard a number of stories about conversations with publishers when Defold is a thing publishers are not experienced with as well as their porting teams. In comparison with using Unity or Unreal Engine, it’s a risk for them, and that’s understandable. The only thing I can add here is that it probably makes sense to highlight what exact platforms are supported by Defold in your presentation for the publisher.
 
@@ -110,7 +110,7 @@ I heard a number of stories about conversations with publishers when Defold is a
 _Defold profiler and an early version of Craftomation 101_
 </div>
 
-Another thing we love in Defold is a community. Since it’s not too big we always succeed in finding the right practical advice from someone without getting into holy wars and off-topic. Along with it, there are some wonderful open-source additions like [Druid](https://github.com/Insality/druid) — UI component framework and [Tiled](https://github.com/mapeditor/tiled) map editor. Especially it’s a big benefit for students who can learn by making tiny improvements to the open-source projects not as huge as the engine itself. For example, one of our students implemented Integration Tests for the unit testing system of Defold and another one made Input Text Field for Druid UI component framework.
+Another thing we love in Defold is the community. Since it’s not too big we always succeed in finding the right practical advice from someone without getting into holy wars and off-topic. Along with it, there are some wonderful open-source additions like [Druid](https://github.com/Insality/druid) — UI component framework and [Tiled](https://github.com/mapeditor/tiled) map editor. Especially it’s a big benefit for students who can learn by making tiny improvements to the open-source projects not as huge as the engine itself. For example, one of our students implemented Integration Tests for the unit testing system of Defold and another one made Input Text Field for Druid UI component framework.
 
 Defold development team is always super responsive and we can have a clear and transparent conversation about everything we are stuck with. This experience is more like customer support of a nice growing startup when you can see your issues being fixed in almost real time.
 
@@ -130,7 +130,7 @@ The biggest technical challenge in this type of “system design” game is to m
 
 Craftomation 101 is on a 2-week update cycle, players know that we’ll roll out a new update every 2 weeks. On this tight schedule, it’s wonderful to have Defold updates that are not destroying compatibility or bringing critical issues. That’s why we almost always followed the latest stable version of the engine which was not our regular practice with other game engines.
 
-![](/images/posts/ludenio/craftomation-selfreplicating.gif)
+![](/images/posts/ludenio/craftomation-visualprogramming.gif)
 
 <div align="center">
 _Visual programming of Craftomation 101_
