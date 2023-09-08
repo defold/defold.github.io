@@ -1003,13 +1003,13 @@
         },
         {
           "name": "[options]",
-          "doc": "optional table with properties:\n<dl>\n<dt><code>frustum</code></dt>\n<dd><span class=\"type\">vmath.matrix4</span> A frustum matrix used to cull renderable items. (E.g. <code>local frustum = proj * view</code>). May be nil.</dd>\n<dt><code>constants</code></dt>\n<dd><span class=\"type\">constant_buffer</span> optional constants to use while rendering</dd>\n</dl>",
+          "doc": "optional table with properties:\n<dl>\n<dt><code>frustum</code></dt>\n<dd><span class=\"type\">vmath.matrix4</span> A frustum matrix used to cull renderable items. (E.g. <code>local frustum = proj * view</code>). default=nil</dd>\n<dt><code>frustum_planes</code></dt>\n<dd><span class=\"type\">int</span> Determines which sides of the frustum will be used. Default is render.FRUSTUM_PLANES_SIDES.</dd>\n</dl>\n<ul>\n<li>render.FRUSTUM_PLANES_SIDES : The left, right, top and bottom sides of the frustum.</li>\n<li>render.FRUSTUM_PLANES_ALL : All 6 sides of the frustum.</li>\n</ul>\n<dl>\n<dt><code>constants</code></dt>\n<dd><span class=\"type\">constant_buffer</span> optional constants to use while rendering</dd>\n</dl>",
           "types": [
             "table"
           ]
         }
       ],
-      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- define a predicate matching anything with material tag &quot;my_tag&quot;</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">predicate</span><span class=\"p\">({</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_tag&quot;</span><span class=\"p\">)})</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- draw everything in the my_pred predicate</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\nDraw predicate with constants:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">constant_buffer</span><span class=\"p\">()</span>\n<span class=\"n\">constants</span><span class=\"p\">.</span><span class=\"n\">tint</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">constants</span><span class=\"p\">})</span>\n</code></pre></div>\n\nDraw with predicate and frustum culling:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">frustum</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">proj</span> <span class=\"o\">*</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">view</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">frustum</span> <span class=\"o\">=</span> <span class=\"n\">frustum</span><span class=\"p\">,</span> <span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">constants</span><span class=\"p\">})</span>\n</code></pre></div>",
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- define a predicate matching anything with material tag &quot;my_tag&quot;</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">predicate</span><span class=\"p\">({</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_tag&quot;</span><span class=\"p\">)})</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- draw everything in the my_pred predicate</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\nDraw predicate with constants:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">constant_buffer</span><span class=\"p\">()</span>\n<span class=\"n\">constants</span><span class=\"p\">.</span><span class=\"n\">tint</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">constants</span><span class=\"p\">})</span>\n</code></pre></div>\n\nDraw with predicate and frustum culling (without near+far planes):\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">frustum</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">proj</span> <span class=\"o\">*</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">view</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">frustum</span> <span class=\"o\">=</span> <span class=\"n\">frustum</span><span class=\"p\">})</span>\n</code></pre></div>\n\nDraw with predicate and frustum culling (with near+far planes):\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">frustum</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">proj</span> <span class=\"o\">*</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">view</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">frustum</span> <span class=\"o\">=</span> <span class=\"n\">frustum</span><span class=\"p\">,</span> <span class=\"n\">frustum_planes</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">FRUSTUM_PLANES_ALL</span><span class=\"p\">})</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],
@@ -1025,7 +1025,7 @@
       "parameters": [
         {
           "name": "[options]",
-          "doc": "optional table with properties:\n<dl>\n<dt><code>frustum</code></dt>\n<dd><span class=\"type\">vmath.matrix4</span> A frustum matrix used to cull renderable items. (E.g. <code>local frustum = proj * view</code>). May be nil.</dd>\n</dl>",
+          "doc": "optional table with properties:\n<dl>\n<dt><code>frustum</code></dt>\n<dd><span class=\"type\">vmath.matrix4</span> A frustum matrix used to cull renderable items. (E.g. <code>local frustum = proj * view</code>). May be nil.</dd>\n<dt><code>frustum_planes</code></dt>\n<dd><span class=\"type\">int</span> Determines which sides of the frustum will be used. Default is render.FRUSTUM_PLANES_SIDES.</dd>\n</dl>\n<ul>\n<li>render.FRUSTUM_PLANES_SIDES : The left, right, top and bottom sides of the frustum.</li>\n<li>render.FRUSTUM_PLANES_ALL : All sides of the frustum.</li>\n</ul>",
           "types": [
             "table"
           ]
@@ -1076,6 +1076,34 @@
         }
       ],
       "examples": "How to set the projection to orthographic with world origo at lower left,\nwidth and height as set in project settings and depth (z) between -1 and 1:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_projection</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_orthographic</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_width</span><span class=\"p\">(),</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_height</span><span class=\"p\">(),</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">))</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "render.FRUSTUM_PLANES_SIDES",
+      "brief": "",
+      "description": "",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "render.FRUSTUM_PLANES_ALL",
+      "brief": "",
+      "description": "",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
       "replaces": "",
       "error": "",
       "tparams": [],
