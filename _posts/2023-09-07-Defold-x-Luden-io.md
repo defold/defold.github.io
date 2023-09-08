@@ -130,7 +130,7 @@ The biggest technical challenge in this type of “system design” game is to m
 
 Craftomation 101 is on a 2-week update cycle, players know that we’ll roll out a new update every 2 weeks. On this tight schedule, it’s wonderful to have Defold updates that are not destroying compatibility or bringing critical issues. That’s why we almost always followed the latest stable version of the engine which was not our regular practice with other game engines.
 
-![](/images/posts/ludenio/craftomation-visualprogramming.gif)
+![](/images/posts/ludenio/craftomation-visualprogramming.png)
 
 <div align="center">
 _Visual programming of Craftomation 101_
