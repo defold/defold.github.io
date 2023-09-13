@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Defold x Luden.io
+title: Choosing Defold for Steam games production - the story of Luden.io
 excerpt: Learn why Luden.io are using Defold for their games and prototypes.
 author: Oleg Chumakov
 tags: ["creator spotlight", "luden.io"]
