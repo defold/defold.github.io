@@ -24,7 +24,7 @@ Knowing this, we had to come up with an approach that was not too far from our c
 Depending on your resources and experience, your approach may of course vary.
 Here I'm describing what we considered and tried. I'm not suggesting it is the ultimate approach, only that it works for us currently.
 
-The Defold team is a small group of 6 people so we need to minimize the time spent on maintaining code. This means it was natual to start looking at workflows we are already familiar with.
+The Defold team is a small group of 6 people so we need to minimize the time spent on maintaining code. This means it was natural to start looking at workflows we are already familiar with.
 
 ### Mono repo
 
@@ -135,13 +135,30 @@ It allows us to dynamically check for existing build scripts that we can augment
 
 In our case, we check for e.g. `build_vendor.py`, in which we setup platform specific paths and variables. And, since it is named "vendor" it won't be copied back into the public repository.
 
+#### Defines and code blocks
+
+Another option to control the code is to enable/disable code blocks by setting defines from the build scripts. That way code path remains generic. E.g:
+
+```c++
+#if defined(DM_SUPPORTS_POSIX_FEATURE)
+    #include <some_posix_header.h>
+    int feature_func(int) {
+        return some_posix_func();
+    }
+#else
+    int feature_func(int) {
+        return 0;
+    }
+#endif
+```
+
 ### Future improvements
 
 #### Automated integrations
 
 It has happened sometimes that during our bi-weekly release cycle, we forget to do a release from a private repository. Or that we forget to merge good changes back to the public repository.
 
-An idea we'd like to try is to do automatic merges from our public repo to the private one. if it works, the code could be checked in, if it fails, we'd know about it each morning.
+An idea we'd like to try is to do automatic merges from our public repo to the private one. If it works, the code could be checked in. And if it fails, we'd know about it each morning.
 
 ## Wrapping it up
 
