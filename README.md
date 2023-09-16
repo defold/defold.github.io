@@ -22,7 +22,7 @@ You need to make sure to have the following dependencies installed before using 
 
 Install `lunr.py` and `requests` using:
 
-```
+```sh
 pip2 install --user lunr==0.5.5
 pip2 install --user requests
 pip2 install --user pyyaml
@@ -33,7 +33,7 @@ pip2 install --user pygments==2.1.3
 ## Usage
 The `update.py` script should be run from a terminal. The syntax is as follows:
 
-```
+```sh
 python2 update.py [--download] docs codepad refdoc examples assets
 ```
 
@@ -76,13 +76,13 @@ The quickest way to install a new Ruby version on macOS/Linux us to use `rbenv` 
 Open a terminal window and install `brew` by running the following command:
 
 ```sh
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
 #### 1.2 Install ruby
 
 ```sh
-	brew install ruby
+brew install ruby
 ```
 
 Also add the it to the PATH vaiable in you shell profile (e.g. `~/.zshrc`):
@@ -95,24 +95,24 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 Open a terminal window and install `rbenv` by running the following commands:
 
 ```sh
-	# use brew to install rbenv
-	brew install rbenv
-	# install rbenv shell support every time a shel is started
-	echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+# use brew to install rbenv
+brew install rbenv
+# install rbenv shell support every time a shel is started
+echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 ```
 
 Now close the terminal window. Open a new terminal window and install a new Ruby version (this version corresponds to the one defined in the `.ruby-version` file of this repository):
 
 ```sh
-	# use rbenv to install user local version of ruby 2.7.5
-	rbenv install --local 2.7.5
+# use rbenv to install user local version of ruby 2.7.5
+rbenv install --local 2.7.5
 ```
 
 ### 2 Install gems
 Open a terminal window and install the required Ruby gems by running the following command:
 
 ```sh
-	gem install bundler jekyll github-pages
+gem install bundler jekyll github-pages
 ```
 
 This will install the gems defined in the Gemfile (`bundler`, `jekyll`, `github-pages`). You are now ready to launch the site locally.
@@ -124,11 +124,11 @@ Launch/serve the site locally using:
 As a first step, you need to install dependencies:
 
 ```sh
-    bundle install
+bundle install
 ```
 
 
-```
+```sh
 ./serve.sh
 ```
 
@@ -140,17 +140,21 @@ You can use the `update.py` script to pull in and process content from external 
 
 Copy the `refdoc.zip` to the main folder:
 
-        $ cp $DYNAMO_HOME/share/ref-doc.zip refdoc_alpha.zip
-        $ cp $DYNAMO_HOME/share/ref-doc.zip refdoc_beta.zip
-        $ cp $DYNAMO_HOME/share/ref-doc.zip refdoc_stable.zip
-        $ ./update.py refdoc
-        $ ./serve.sh
+```sh
+cp $DYNAMO_HOME/share/ref-doc.zip refdoc_alpha.zip
+cp $DYNAMO_HOME/share/ref-doc.zip refdoc_beta.zip
+cp $DYNAMO_HOME/share/ref-doc.zip refdoc_stable.zip
+./update.py refdoc
+./serve.sh
+```
 
 ## How to test local documentaion
 
 By setting the `DM_DOC_DIR` environment variable, you can load the documentation directory from your local folder:
 
-    $ DM_DOC_DIR=/Users/username/work/doc python update.py docs
+```sh
+DM_DOC_DIR=/Users/username/work/doc python update.py docs
+```
 
 # Automatic site update using GitHub Actions
 The site uses [GitHub actions](https://github.com/defold/defold.github.io/actions) to automatically trigger `update.py` when an external source/repository has been updated. The script is also triggered once every hour to update the asset portal star count for GitHub hosted assets. The following workflows/jobs have been set up using GitHub Actions:
