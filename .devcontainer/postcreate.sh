@@ -1,7 +1,7 @@
 sudo apt update
 sudo apt install -y python3-pip
 
-# Requirements
+# requirements
 pip3 install --user lunr==0.5.5
 pip3 install --user requests
 pip3 install --user pyyaml
