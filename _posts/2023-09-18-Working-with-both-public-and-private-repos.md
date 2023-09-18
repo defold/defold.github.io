@@ -64,7 +64,7 @@ The source code for the cloud builder is available under MIT license in our [ext
 
 ### SDK's
 
-Each vendor has their own SDK, which you you need to hide from public eyes.
+Each vendor has their own SDK, which you need to hide from public eyes.
 They also have their own custom toolchains to produce object files and a linker to produce the executable. Very high level info such as the platform triplet are generally considered public knowledge, but more detailed info than that should be kept private.
 
 The vendors we currently work with support the standard C and C++ libraries.
