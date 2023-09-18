@@ -4,4 +4,8 @@
 {%- assign offset = include.offset -%}
 {%- for game in full limit: limit offset: offset -%}
 	{%- include game_full.html game=game url=include.url -%}
+	{%- if forloop.last != true -%}
+	<br/>
+	<br/>
+	{%- endif -%}
 {%- endfor -%}
