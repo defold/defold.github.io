@@ -39,6 +39,8 @@ It would however make refactorings easier which would be a plus.
 
 When starting out porting to our first console platform, we tested a simple approach: to copy the public repo into a private one.
 
+The reason we didn't want to use forks, was that we didn't want to risk any commit messages etc to divulge any implementations under NDA.
+
 We're using Git, and since the repositories would then be unrelated, it might make merging code trickier, but we decided to try it.
 
 The initial phase for porting to any platform consists of porting some lower level systems, such as file I/O, network, input, user handling, sound and graphics.
