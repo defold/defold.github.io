@@ -13,13 +13,13 @@
 			<td>Developer</td>
 			<td class="lightest-text">{{ game.developer }}</td>
 		</tr>
-		{%- if game.publisher != "" -%}
+		{%- if game.publisher and game.publisher != "" -%}
 		<tr>
 			<td>Publisher</td>
 			<td class="lightest-text">{{ game.publisher }}</td>
 		</tr>
 		{%- endif -%}
-		{%- if game.releasedate != "" -%}
+		{%- if game.releasedate and game.releasedate != "" -%}
 		<tr>
 			<td>Release date</td>
 			<td class="lightest-text">{{ game.releasedate }}</td>
@@ -29,5 +29,10 @@
 			<td>Platforms</td>
 			<td class="lightest-text">{{ game.platforms }}</td>
 		</tr>
+		{%- if game.extrainfo and game.extrainfo != "" -%}
+		<tr>
+			<td colspan="2">{{ game.extrainfo }}</td>
+		</tr>
+		{%- endif -%}
 	</table>
 </div>

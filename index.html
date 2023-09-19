@@ -1,30 +1,62 @@
 ---
 layout: page
 title: Defold - Official Homepage - Cross platform game engine
-nav: floating
+_nav: floating
 heatmap: false
-background: /images/hero/defold-top-bg-transparent-2.png
+_background: /images/games/voidscrappers-dark.jpg
 ---
 
-<div class="section narrow lightest-text">
+<div class="section narrow lightest-text" style="background-image: url('/images/games/voidscrappers.jpg'); background-blend-mode: darken; background-color: rgb(0,0,0,0.5);">
 	<div class="container">
 		<div class="row center">
-			<div>
+			<div class="columns twelve">
+				<br/>
+				<br/>
 				<img src="/images/logo/defold/logo_with_text/logo-ver-classic-white-160.png" alt="Defold Logo"/>
 				<br/>
 				<br/>
-				<h1>The ultimate game engine for web and mobile</h1>
+				<h1><b>The game engine for high-performance cross-platform games</b></h1>
 				<br/>
-				{% include primary_button.html link="/download" text="Download for free" %}
 				<br/>
 				<br/>
 				<br/>
 			</div>
 		</div>
+		<div class="row center">
+			<div class="columns three">
+				<a href="/download"><h3><b>Free.</br>Forever.</b></h3></a>
+				<a href="/download"><img src="/images/icons/down-arrow.svg" width="20%"/></a>
+				<br/>
+				<br/>
+			</div>
+			<div class="columns three">
+				<a href="/showcase"><h3><b>Production</br>ready</b></h3></a>
+				<a href="/showcase"><img src="/images/icons/down-arrow.svg" width="20%"/></a>
+				<br/>
+				<br/>
+			</div>
+			<div class="columns three">
+				<a href="#cross-platform"><h3><b>Cross</br>platform</b></h3></a>
+				<a href="#cross-platform"><img src="/images/icons/down-arrow.svg" width="20%"/></a>
+				<br/>
+				<br/>
+			</div>
+			<div class="columns three">
+				<a href="/open"><h3><b>Source</br>available</b></h3></a>
+				<a href="/open"><img src="/images/icons/down-arrow.svg" width="20%"/></a>
+				<br/>
+				<br/>
+			</div>
+		</div>
 	</div>
+	<div class="right narrow lighter-text">
+		<a href="https://store.steampowered.com/app/2005210/Void_Scrappers/" target="_blank" style="text-decoration: none;"><p style="margin-right: 5em;">Void Scrappers - 8BitSkull</p></a>
+	</div>
+</div>
 
-	{%- assign news = site.data.news | where: "show", true -%}
-	{%- if news.size > 0 -%}
+{%- assign news = site.data.news | where: "show", true -%}
+{%- if news.size > 0 -%}
+<div class="section">
 	<div class="container">
 		{%- for n in news -%}
 		{%- assign title = n.title -%}
@@ -40,8 +72,11 @@ background: /images/hero/defold-top-bg-transparent-2.png
 		</div>
 		{%- endfor -%}
 	</div>
-	{%- endif -%}
+</div>
+{%- endif -%}
 
+<!--
+<div class="section">
 	<div class="container">
 		<div class="row">
 			<div class="columns twelve dark-text">
@@ -56,10 +91,21 @@ background: /images/hero/defold-top-bg-transparent-2.png
 		</div>
 	</div>
 </div>
+-->
 
 {% include features_section.html %}
 
-{%- include games_full.html placement="frontpage" limit=3 offset=0 url="/showcase" -%}
+{%- include games_full.html placement="frontpage" limit=1 offset=0 url="/showcase" -%}
+
+<div class="section narrow center">
+	<div class="container">
+		<div class="row">
+			<div>
+				{% include primary_button.html link="/showcase" text="More games made with Defold" %}
+			</div>
+		</div>
+	</div>
+</div>
 
 {% include news_and_blog_section.html %}
 
