@@ -58,8 +58,8 @@ layout: page
 				{% for script in scripts %}
 				<p>{{ script }}</p>
 {% comment %}
-	The indentation of the following "highlight" block is intentional so that there
-	are no extra spaces in the generated <code></code> block
+	The indentation of the following "highlight" block is intentional
+	so that there are no extra spaces in the generated <code></code> block
 {% endcomment %}
 {% highlight lua %}
 {% include examples/{{ collection}}/{{ script | lstrip | replace: ".script", "_script.md" | replace: ".gui_script", "_gui_script.md" }} %}
