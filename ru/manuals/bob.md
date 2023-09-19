@@ -159,6 +159,7 @@ Available platforms and architectures:
 
 `x86_64-macos`
 : macOS 64 бита
+
 `arm64-macos`
 : macOS Apple Silicon (ARM)
 
