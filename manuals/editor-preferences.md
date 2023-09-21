@@ -48,7 +48,24 @@ Open File at Line
 
 Code editor font
 : Name of a system installed font to use in the code editor.
-◊
+
+
+### Open script files in Visual Studio Code
+
+![](../images/editor/preferences_vscode.png)
+
+To open script files from the Defold Editor directly in Visual Studio Code, you must set the following settings by specifying the path to the executable file:
+
+- MacOS: `/Applications/Visual Studio Code.app/Contents/MacOS/Electron`
+- Linux: `/usr/bin/code`
+- Windows: `C:\Program Files\Microsoft VS Code\Code.exe`
+
+ Set these parameters to open specific files and lines:
+
+- Open File: `. {file}`
+- Open File at Line: `. -g {file}:{line}`
+
+The `.` character here is required to open the entire workspace, not an individual file.
 
 
 ## Extensions
