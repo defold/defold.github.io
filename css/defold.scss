@@ -19,17 +19,15 @@
 
 	--defold-orange: #fd6623;
 }
-$color-darker: #191d21;
-$color-lighter: #afb9c4;
 
 /*******************************************************************************
 * dark mode
 ******************************************************************************/
 
 .dark-mode {
-    .dark\:dark {
-        background-color: var(--dark) !important;
-        color: var(--lighter) !important;
+	.dark\:dark {
+		background-color: var(--dark) !important;
+		color: var(--lighter) !important;
 
 		a {
 			color: var(--lighter);
@@ -75,17 +73,17 @@ $color-lighter: #afb9c4;
 		// span.type - for API Reference page
 		code, span.type {
 			background-color: var(--darker);
-			border: 1px solid lighten($color-darker, 10%);
+			border: 1px solid var(--grey);
 		}
 		span.type {
-			color: darken($color-lighter, 10%);
+			color: var(--light);
 		}
 		.sidenote {
-			background-color: #574910;
+			background-color: var(--grey);
 			color: var(--almostlightest);
 		}
 		.important {
-			background-color: #591515;
+			background-color: var(--defold-blue-darkest);
 			color: var(--almostlightest);
 		}
 		input[type="text"] {
@@ -94,11 +92,11 @@ $color-lighter: #afb9c4;
 		img.logo-hor-classic-160 {
 			content: url("/images/logo/defold/logo_with_text/logo-hor-classic-white-160.png");
 		}
-    }
+	}
 
-    .dark\:darkest {
-        background-color: var(--darkest) !important;
-        color: var(--light) !important;
+	.dark\:darkest {
+		background-color: var(--darkest) !important;
+		color: var(--light) !important;
 
 		a {
 			color: var(--lighter);
@@ -132,7 +130,7 @@ $color-lighter: #afb9c4;
 		input[type="text"] {
 			background-color: var(--dark);
 		}
-    }
+	}
 }
 
 /*******************************************************************************
