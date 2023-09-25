@@ -1,7 +1,6 @@
 ---
 ---
 
-
 /* Reusable color constants */
 :root {
 	--lightest: #fafafa;
@@ -21,6 +20,118 @@
 	--defold-orange: #fd6623;
 }
 
+/*******************************************************************************
+* dark mode
+******************************************************************************/
+
+.dark-mode {
+	.dark\:dark {
+		background-color: var(--dark) !important;
+		color: var(--lighter) !important;
+
+		a {
+			color: var(--lighter);
+		}
+		a.anchor-link {
+			opacity: 0.3;
+
+			&:hover {
+				opacity: 0.7;
+			}
+		}
+		a:hover {
+			color: var(--lightest);
+		}
+		h1 {
+			color: var(--lightest);
+		}
+		h2 {
+			color: var(--lightest);
+		}
+		h3 {
+			color: var(--lightest);
+		}
+		h4 {
+			color: var(--lightest);
+		}
+		h5 {
+			color: var(--lightest);
+		}
+		.card {
+			background-color: var(--grey);
+
+			a {
+				text-decoration: none;
+				color: var(--lightest);
+
+				&:hover {
+					text-decoration: underline;
+					color: var(--lightest);
+				}
+			}
+		}
+		// span.type - for API Reference page
+		code, span.type {
+			background-color: var(--darker);
+			border: 1px solid var(--grey);
+		}
+		span.type {
+			color: var(--light);
+		}
+		.sidenote {
+			background-color: var(--grey);
+			color: var(--almostlightest);
+		}
+		.important {
+			background-color: var(--defold-blue-darkest);
+			color: var(--almostlightest);
+		}
+		input[type="text"] {
+			background-color: var(--darker);
+		}
+		img.logo-hor-classic-160 {
+			content: url("/images/logo/defold/logo_with_text/logo-hor-classic-white-160.png");
+		}
+	}
+
+	.dark\:darkest {
+		background-color: var(--darkest) !important;
+		color: var(--light) !important;
+
+		a {
+			color: var(--lighter);
+
+			&:hover {
+				color: var(--lightest);
+			}
+		}
+		a.anchor-link {
+			opacity: 0.3;
+
+			&:hover {
+				opacity: 0.7;
+			}
+		}
+		h1 {
+			color: var(--lighter);
+		}
+		h2 {
+			color: var(--lighter);
+		}
+		h3 {
+			color: var(--lighter);
+		}
+		h4 {
+			color: var(--lighter);
+		}
+		h5 {
+			color: var(--lighter);
+		}
+		input[type="text"] {
+			background-color: var(--dark);
+		}
+	}
+}
 
 /*******************************************************************************
 * blue
@@ -571,8 +682,10 @@ input[type=text].assetsearch {
 	display: block;
 }
 
+.example figure.highlight {
+	margin: 0;
+}
 .example pre {
-	padding: 2rem;
 	font-size: small;
 }
 .manual img {
