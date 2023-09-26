@@ -57,13 +57,12 @@ layout: page
 				{% assign collection = page.collection %}
 				{% for script in scripts %}
 				<p>{{ script }}</p>
-{% comment %}
-	The indentation of the following "highlight" block is intentional
-	so that there are no extra spaces in the generated <code></code> block
-{% endcomment %}
-{% highlight lua %}
-{% include examples/{{ collection}}/{{ script | lstrip | replace: ".script", "_script.md" | replace: ".gui_script", "_gui_script.md" }} %}
-{% endhighlight %}
+				{% comment %}
+					Assign content of the script into a variable and then
+					replace each tab with 4 spaces to have consistent indentations
+				{% endcomment %}
+				{% capture script_content %}{% include examples/{{ collection }}/{{ script | lstrip | replace: ".script", "_script.md" | replace: ".gui_script", "_gui_script.md" }} %}{% endcapture %}
+				{% highlight lua %}{{ script_content | replace: "	", "    " }}{% endhighlight %}
 				{% endfor %}
 			</div>
 			<div class="columns two">
