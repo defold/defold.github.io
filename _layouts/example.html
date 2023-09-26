@@ -59,7 +59,7 @@ layout: page
 				<p>{{ script }}</p>
 				{% comment %}
 					Assign content of the script into a variable and then
-					replace tabs with 4 slaces to have consistent indentations
+					replace each tab with 4 spaces to have consistent indentations
 				{% endcomment %}
 				{% capture script_content %}{% include examples/{{ collection }}/{{ script | lstrip | replace: ".script", "_script.md" | replace: ".gui_script", "_gui_script.md" }} %}{% endcapture %}
 				{% highlight lua %}{{ script_content | replace: "	", "    " }}{% endhighlight %}
