@@ -31,7 +31,8 @@ SHA1 = {}
 DOCS_ZIP = "doc-master.zip"
 EXAMPLES_ZIP = "examples-master.zip"
 CODEPAD_ZIP = "codepad-master.zip"
-AWESOME_ZIP = "awesome-defold-master.zip"
+ASSETPORTAL_ZIP = "asset-portal-master.zip"
+GAMESSHOWCASE_ZIP = "games-showcase-master.zip"
 
 ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
 GAMES_JSON = os.path.join("_data", "games.json")
@@ -825,20 +826,34 @@ def process_games(tmp_dir):
     write_as_json(GAMES_JSON, games)
 
 
-def process_awesome(download = False):
+def process_assetportal(download = False):
     if download:
-        if os.path.exists(AWESOME_ZIP):
-            os.remove(AWESOME_ZIP)
-        download_file("https://github.com/defold/awesome-defold/archive/master.zip", ".", AWESOME_ZIP)
+        if os.path.exists(ASSETPORTAL_ZIP):
+            os.remove(ASSETPORTAL_ZIP)
+        download_file("https://github.com/defold/asset-portal/archive/master.zip", ".", ASSETPORTAL_ZIP)
 
-    if not os.path.exists(AWESOME_ZIP):
-        print("File {} does not exist".format(AWESOME_ZIP))
+    if not os.path.exists(ASSETPORTAL_ZIP):
+        print("File {} does not exist".format(ASSETPORTAL_ZIP))
         sys.exit(1)
 
     with tmpdir() as tmp_dir:
-        shutil.copyfile(AWESOME_ZIP, os.path.join(tmp_dir, AWESOME_ZIP))
-        unzip(os.path.join(tmp_dir, AWESOME_ZIP), tmp_dir)
+        shutil.copyfile(ASSETPORTAL_ZIP, os.path.join(tmp_dir, ASSETPORTAL_ZIP))
+        unzip(os.path.join(tmp_dir, ASSETPORTAL_ZIP), tmp_dir)
         process_assets(tmp_dir)
+
+def process_games_showcase(download = False):
+    if download:
+        if os.path.exists(GAMESSHOWCASE_ZIP):
+            os.remove(GAMESSHOWCASE_ZIP)
+        download_file("https://github.com/defold/games-showcase/archive/master.zip", ".", GAMESSHOWCASE_ZIP)
+
+    if not os.path.exists(GAMESSHOWCASE_ZIP):
+        print("File {} does not exist".format(GAMESSHOWCASE_ZIP))
+        sys.exit(1)
+
+    with tmpdir() as tmp_dir:
+        shutil.copyfile(GAMESSHOWCASE_ZIP, os.path.join(tmp_dir, GAMESSHOWCASE_ZIP))
+        unzip(os.path.join(tmp_dir, GAMESSHOWCASE_ZIP), tmp_dir)
         process_games(tmp_dir)
 
 
@@ -1085,8 +1100,10 @@ for command in args.commands:
         process_examples(download = args.download)
     elif command == "refdoc":
         process_refdoc(download = args.download)
-    elif command == "awesome":
-        process_awesome(download = args.download)
+    elif command == "asset-portal":
+        process_asset_portal(download = args.download)
+    elif command == "games-showcase":
+        process_games_showcase(download = args.download)
     elif command == "codepad":
         process_codepad(download = args.download)
     elif command == "searchindex":
