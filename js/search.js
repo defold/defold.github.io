@@ -59,8 +59,8 @@ function search(searchfield_id, searchresult_id) {
 						for (var j = 0; j < keys.length; j++) {
 							var key = keys[j];
 							var key_query = is_api_reference(ref) ?
-								// Adding "#..." fragment often helps to navigate directly to the section in docs,
-								// useful mostly for functions and constants
+								// Added "#..." fragment helps to navigate directly to Lua functions and constants in the docs,
+								// it also works for almost all C API ref elements that are in the dm* namespaces
 								"q=" + encodeURIComponent(key) + "#" + encodeURIComponent(anchor_link_for_key(ref, key)) :
 								"q=" + encodeURIComponent(key);
 
