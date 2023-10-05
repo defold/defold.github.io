@@ -1134,3 +1134,42 @@ ul.checkmark li:before {
 	opacity: 1;
 	transform: translateY(0);
 }
+
+.spin {
+	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+	0% {
+	-webkit-transform:rotate(0deg);
+	transform:rotate(0deg)
+	}
+	to {
+	-webkit-transform:rotate(1turn);
+	transform:rotate(1turn)
+	}
+}
+@keyframes spin {
+	0% {
+	-webkit-transform:rotate(0deg);
+	transform:rotate(0deg)
+	}
+	to {
+	-webkit-transform:rotate(1turn);
+	transform:rotate(1turn)
+	}
+}
+
+/* Search */
+
+#searchresults {
+	.spinner {
+		height: 25px;
+		margin-right: 7px;
+		display: inline-block;
+  		vertical-align: middle;
+	}
+	.search-text {
+		vertical-align: middle;
+	}
+}
