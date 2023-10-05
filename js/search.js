@@ -1,7 +1,7 @@
 function search(searchfield_id, searchresult_id) {
 	if (!String.format) { String.format = string_format; }
 
-	var fmt = "<p><a href='/{0}?{2}'>{1}</a> - {3}</p>\n";
+	var fmt = "<p><a href='/{0}'>{1}</a> - {2}</p>\n";
 	var link_fmt = "<a href='/{0}?{1}'>{2}</a>";
 	var query_fmt = "*{0}*^{1}";
 
@@ -56,13 +56,10 @@ function search(searchfield_id, searchresult_id) {
 						// Creates the top link for all queries
 						var keys_str = ""; // a list of links to each keyword: https://domain/path/to/page?q=key
 						var keys_str_length = 0; // counts the _visual_ length
-						var is_truncated = false;
 						for (var j = 0; j < keys.length; j++) {
-							if (is_truncated) continue;
-
 							var key = keys[j];
 							var key_query = is_api_reference(ref) ?
-								// adding "#..." fragment often helps to navigate directly to the section in docs,
+								// Adding "#..." fragment often helps to navigate directly to the section in docs,
 								// useful mostly for functions and constants
 								"q=" + encodeURIComponent(key) + "#" + encodeURIComponent(anchor_link_for_key(ref, key)) :
 								"q=" + encodeURIComponent(key);
@@ -72,19 +69,12 @@ function search(searchfield_id, searchresult_id) {
 								keys_str += (keys_str.length > 0 ? ", " : "") + String.format(link_fmt, ref, key_query, key);
 							}
 							else {
-								is_truncated = true;
+								keys_str += ", ...";
+								break; // Don't make the list too long...
 							}
 						}
 
-						// Don't make the list too long...
-						if (is_truncated)
-							keys_str += ", ...";
-
-						// Since the key words already their own query,
-						// it seems best to just make the page link to the top of the page
-						var page_query = "";
-
-						var str = String.format(fmt, ref, ref, page_query, keys_str);
+						var str = String.format(fmt, ref, ref, keys_str);
 
 						div.innerHTML = div.innerHTML + str;
 					}
@@ -101,19 +91,19 @@ function search(searchfield_id, searchresult_id) {
 	//////////////////////////
 
 	function anchor_link_for_key(ref, key) {
-		// namespace could be present in the key, search result examples:
+		// Namespace could be present in the key, search result examples:
 		// ref/stable/gui - animate, gui.animate
 		// ref/stable/go - animate, go.animate
 		if (key.indexOf(".") !== -1)
 			return key.toLowerCase();
 
-		// for dm* methods we do not neet to prepend namespace, search result examples:
+		// For dm* methods we do not neet to prepend namespace, search result examples:
 		// ref/stable/dmBuffer - dmbuffer, dmbuffer::validatebuffer
 		// ref/stable/dmProfile - dm_property_u64, dm_property_u32
 		if (ref.indexOf("/dm") !== -1)
 			return key.toLowerCase();
 
-		// prepend namespace to match anchor links in API Reference
+		// Prepend namespace to match anchor links in API Reference
 		return (get_api_namespace(ref) + "." + key).toLowerCase();
 	}
 
@@ -137,7 +127,6 @@ function search(searchfield_id, searchresult_id) {
 			var keys = Object.keys(result.matchData.metadata);
 			var keys_str = keys.join(", ");
 			if (keys_str.length > 50) { keys_str = keys_str.substring(0, 50) + "..."; }
-			//console.log("result", result, index, keys);
 
 			var score = result.score + get_score_from_results(search_keys, keys);
 			weighted_results.push( {score: score, keys: keys, ref: result.ref} );
