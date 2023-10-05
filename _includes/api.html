@@ -89,8 +89,7 @@
 {%- if functions.size > 0 -%}
 <h2>Functions</h2>
 	{%- for function in functions -%}
-		<a name="{% include ref_anchorlink.html element=function %}"/>
-		<a name="{{ function.name }}"/>
+		{% include ref_anchor_target.html element=function %}
 		<h4>{{ function.name }}()<a href="#{% include ref_anchorlink.html element=function %}" class="anchor-link"></a></h4>
 		<p><code>{{ function.name }}({%- for param in function.parameters -%}{{ param.name }}{%- if forloop.last != true -%}, {%- endif -%}{%- endfor -%})</code></p>
 		<p>{{ function.description }}</p>
@@ -126,7 +125,7 @@
 {%- if variables.size > 0 -%}
 <h2>Constants</h2>
 	{%- for variable in variables -%}
-	<a name="{% include ref_anchorlink.html element=variable %}"/>
+	{% include ref_anchor_target.html element=variable %}
 	<h4>{{ variable.name }}<a href="#{% include ref_anchorlink.html element=variable %}" class="anchor-link"/></a></h4>
 	<p>{{ variable.description }}</p>
 
@@ -141,7 +140,7 @@
 {%- if messages.size > 0 -%}
 <h2>Messages</h2>
 	{%- for message in messages -%}
-	<a name="{% include ref_anchorlink.html element=message %}"/>
+	{% include ref_anchor_target.html element=message %}
 	<h4>{{ message.name }}<a href="#{% include ref_anchorlink.html element=message %}" class="anchor-link"/></a></h4>
 	<p>{{ message.description }}</p>
 
@@ -160,7 +159,7 @@
 {%- if properties.size > 0 -%}
 <h2>Properties</h2>
 	{%- for property in properties -%}
-	<a name="{% include ref_anchorlink.html element=property %}"/>
+	{% include ref_anchor_target.html element=property %}
 	<h4>{{ property.name }}<a href="#{% include ref_anchorlink.html element=property %}" class="anchor-link"/></a></h4>
 	<p>{{ property.description }}</p>
 	{%- if property.examples.size > 0 -%}
