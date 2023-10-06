@@ -382,11 +382,90 @@
           "type": ""
         },
         {
+          "name": "TEXTURE_FORMAT_RGBA32UI",
+          "doc": "",
+          "type": ""
+        },
+        {
           "name": "TEXTURE_FORMAT_COUNT",
           "doc": "",
           "type": ""
         }
       ],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetRenderTargetAttachment",
+      "brief": "Get the attachment texture from a render target. R...",
+      "description": "Get the attachment texture from a render target. Returns zero if no such attachment texture exists.",
+      "returnvalues": [
+        {
+          "name": "attachment",
+          "doc": "the attachment texture",
+          "types": [
+            "dmGraphics::HTexture"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "render_target",
+          "doc": "the render target",
+          "types": [
+            "dmGraphics::HRenderTarget"
+          ]
+        },
+        {
+          "name": "attachment_type",
+          "doc": "the attachment to get",
+          "types": [
+            "dmGraphics::RenderTargetAttachment"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetTextureHandle",
+      "brief": "Get the native graphics API texture object from an...",
+      "description": "Get the native graphics API texture object from an engine texture handle. This depends on the graphics backend and is not\nguaranteed to be implemented on the currently running adapter.",
+      "returnvalues": [
+        {
+          "name": "handle_result",
+          "doc": "the result of the query",
+          "types": [
+            "dmGraphics::HandleResult"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "texture",
+          "doc": "the texture handle",
+          "types": [
+            "dmGraphics::HTexture"
+          ]
+        },
+        {
+          "name": "out_handle",
+          "doc": "a pointer to where the raw object should be stored",
+          "types": [
+            "void**"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
       "notes": []
     },
     {
