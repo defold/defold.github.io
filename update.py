@@ -651,13 +651,13 @@ def process_assets(tmp_dir):
 
     # image data
     image_dir = os.path.join("images", "assets")
-    rmcopytree(os.path.join(tmp_dir, "awesome-defold-master", "assets", "images"), image_dir)
+    rmcopytree(os.path.join(tmp_dir, "asset-portal-master", "assets", "images"), image_dir)
 
     assetindex = []
     authorindex = {}
     tagindex = {}
     platformindex = {}
-    for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "assets"), "*.json"):
+    for filename in find_files(os.path.join(tmp_dir, "asset-portal-master", "assets"), "*.json"):
         basename = os.path.basename(filename)
         print("Processing asset: {}".format(basename))
         asset_id = basename.replace(".json", "")
@@ -675,7 +675,7 @@ def process_assets(tmp_dir):
 
         author_id = hashlib.md5(author_name.encode('utf-8')).hexdigest()
         asset["author_id"] = author_id
-        asset["asset_url"] = "https://github.com/defold/awesome-defold/blob/master/assets/%s.json" % asset_id
+        asset["asset_url"] = "https://github.com/defold/asset-portal/blob/master/assets/%s.json" % asset_id
         if "github.com" in library_url:
             asset["github_url"] = re.sub(r"(.*github.com/.*?/.*?)/.*", r"\1", library_url)
         write_as_json(asset_file, asset)
@@ -792,7 +792,7 @@ def process_assets(tmp_dir):
 def process_games(tmp_dir):
     # image data
     image_dir = os.path.join("images", "games")
-    rmcopytree(os.path.join(tmp_dir, "awesome-defold-master", "games", "images"), image_dir)
+    rmcopytree(os.path.join(tmp_dir, "games-showcase-master", "games", "images"), image_dir)
 
     # update existing games with new info (except show+placement)
     # maintain existing order
@@ -800,7 +800,7 @@ def process_games(tmp_dir):
     games = read_as_json(GAMES_JSON)
 
     # read new games
-    for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "games"), "*.json"):
+    for filename in find_files(os.path.join(tmp_dir, "games-showcase-master", "games"), "*.json"):
         basename = os.path.basename(filename)
         print("Processing game: {}".format(basename))
 
@@ -826,7 +826,7 @@ def process_games(tmp_dir):
     write_as_json(GAMES_JSON, games)
 
 
-def process_assetportal(download = False):
+def process_asset_portal(download = False):
     if download:
         if os.path.exists(ASSETPORTAL_ZIP):
             os.remove(ASSETPORTAL_ZIP)
@@ -1054,7 +1054,7 @@ def commit_changes(githubtoken):
     call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
 
 
-ALL_COMMANDS = [ "docs", "refdoc", "awesome", "examples", "codepad", "commit", "searchindex", "extensions" ]
+ALL_COMMANDS = [ "docs", "refdoc", "asset-portal", "games-showcase", "examples", "codepad", "commit", "searchindex", "extensions" ]
 ALL_COMMANDS.sort()
 
 parser = ArgumentParser()
@@ -1068,7 +1068,8 @@ help = """
 COMMANDS:
 docs = Process the docs (manuals, tutorials and faq)
 refdoc = Process the API reference
-awesome = Process the awesome assets and games lists (from awesome-defold)
+asset-portal = Process the assets list (from asset-portal)
+games-showcase = Process the games list (from games-showcase)
 examples = Build the examples
 codepad = Build the Defold CodePad
 commit = Commit changed files (requires --githubtoken)
