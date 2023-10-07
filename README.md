@@ -34,7 +34,7 @@ pip2 install --user pygments==2.1.3
 The `update.py` script should be run from a terminal. The syntax is as follows:
 
 ```sh
-python2 update.py [--download] docs codepad refdoc examples assets
+python2 update.py [--download] docs codepad refdoc examples asset-portal games-showcase
 ```
 
 You can use this script when testing locally (see below). The script is also used by GitHub Actions when automatically updating the site when one of the external sources/repositories have changed (see below).
@@ -52,7 +52,8 @@ The script accepts the following commands:
 * `codepad` - Import CodePad from github.com/defold/codepad
 * `refdoc` - Import API reference from latest release at d.defold.com
 * `examples` - Import examples from github.com/defold/examples
-* `assets` - Import Asset Portal content from github.com/defold/awesome-defold
+* `asset-portal` - Import Asset Portal content from github.com/defold/asset-portal
+* `games-showcase` - Import Showcase content from github.com/defold/games-showcase
 * `searchindex` - Generates the search index
 * `commit` - Commit changes to GitHub (for CI use)
 
@@ -160,7 +161,8 @@ DM_DOC_DIR=/Users/username/work/doc python update.py docs
 The site uses [GitHub actions](https://github.com/defold/defold.github.io/actions) to automatically trigger `update.py` when an external source/repository has been updated. The script is also triggered once every hour to update the asset portal star count for GitHub hosted assets. The following workflows/jobs have been set up using GitHub Actions:
 
 * [Update site](https://github.com/defold/defold.github.io/blob/master/.github/workflows/update_site.yml) - on change in external repository (triggered using the repository_dispatch event)
-  * Assets - Triggered from [asset-portal workflow](https://github.com/defold/asset-portal/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
+  * Asset-portal - Triggered from [asset-portal workflow](https://github.com/defold/asset-portal/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
+  * Games-showcase - Triggered from [games-showcase workflow](https://github.com/defold/games-showcase/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
   * Docs (manuals, tutorials, faq) - Triggered from [doc workflow](https://github.com/defold/doc/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
   * Docs (examples) - Triggered from [examples workflow](https://github.com/defold/examples/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
   * Codepad - Triggered from [codepad workflow](https://github.com/defold/codepad/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
