@@ -160,7 +160,7 @@ DM_DOC_DIR=/Users/username/work/doc python update.py docs
 The site uses [GitHub actions](https://github.com/defold/defold.github.io/actions) to automatically trigger `update.py` when an external source/repository has been updated. The script is also triggered once every hour to update the asset portal star count for GitHub hosted assets. The following workflows/jobs have been set up using GitHub Actions:
 
 * [Update site](https://github.com/defold/defold.github.io/blob/master/.github/workflows/update_site.yml) - on change in external repository (triggered using the repository_dispatch event)
-  * Assets - Triggered from [awesome-defold workflow](https://github.com/defold/awesome-defold/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
+  * Assets - Triggered from [asset-portal workflow](https://github.com/defold/asset-portal/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
   * Docs (manuals, tutorials, faq) - Triggered from [doc workflow](https://github.com/defold/doc/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
   * Docs (examples) - Triggered from [examples workflow](https://github.com/defold/examples/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
   * Codepad - Triggered from [codepad workflow](https://github.com/defold/codepad/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
