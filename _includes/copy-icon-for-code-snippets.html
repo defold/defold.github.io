@@ -15,12 +15,12 @@
 			}
 		});
 
-		function onDocumentLoad(initialize) {
+		function onDocumentLoad(callback) {
 			var hasRun = false;
 			var loadHandler = function (evt) {
 				if (hasRun) return;
 				hasRun = true;
-				initialize();
+				callback();
 			};
 
 			document.addEventListener('DOMContentLoaded', loadHandler, false);
