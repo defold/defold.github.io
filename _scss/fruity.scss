@@ -13,12 +13,16 @@
 }
 
 div.codehilite {
-	padding-left: 2rem;
-	padding-right: 2rem;
-	padding-top: 1rem;
 	padding-bottom: 1rem;
+	margin-top: 2rem;
 	margin-bottom: 1rem;
 	font-size: smaller;
+	max-width: 1000px;
+
+	/* fix copy icon position for code snippets with a single line */
+	.clipboard-container {
+		padding: 0.5rem 0.6em;
+	}
 }
 .codehilite .hll { background-color: #333333 }
 .codehilite  { background: var(--background); color: var(--text) }

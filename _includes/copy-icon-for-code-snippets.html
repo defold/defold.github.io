@@ -1,0 +1,31 @@
+<script src="/js/clipboard.js"></script>
+
+<script>
+	(function() {
+		onDocumentLoad(function() {
+			var elementsWithCode = document.querySelectorAll([
+				'pre.highlight', 			// Manuals
+				'div.codehilite pre', 		// API Reference
+				'figure.highlight > pre', 	// Examples
+			].join(','));
+			for (var el of elementsWithCode) {
+				var container = createCopyToClipboardButtonFor(el);
+				el.parentNode.style.position = 'relative';
+				el.parentNode.appendChild(container);
+			}
+		});
+
+		function onDocumentLoad(initialize) {
+			var hasRun = false;
+			var loadHandler = function (evt) {
+				if (hasRun) return;
+				hasRun = true;
+				console.log('BINGO');
+				initialize();
+			};
+
+			document.addEventListener('DOMContentLoaded', loadHandler, false);
+			window.addEventListener('load', loadHandler, false); // older browsers
+		}
+	})();
+</script>

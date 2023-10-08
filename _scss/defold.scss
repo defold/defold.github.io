@@ -15,6 +15,7 @@
 	--defold-blue-darkest: #1a70eb;
 
 	--defold-orange: #fd6623;
+	--defold-green: #57ab5a;
 }
 
 /*******************************************************************************
@@ -88,6 +89,16 @@
 		}
 		img.logo-hor-classic-160 {
 			content: url("/images/logo/defold/logo_with_text/logo-hor-classic-white-160.png");
+		}
+		.clipboard-button {
+			&:hover {
+				background-color: var(--grey);
+				border-color: var(--lighter);
+			}
+			&:active {
+				background-color: var(--dark);
+				border-color: var(--light);
+			}
 		}
 	}
 
@@ -1161,8 +1172,9 @@ ul.checkmark li:before {
 	display: inline-block;
 }
 
-
-/* Search */
+/*******************************************************************************
+* Search
+******************************************************************************/
 
 #searchresults {
 	.spinner {
@@ -1172,4 +1184,53 @@ ul.checkmark li:before {
 	.search-text {
 		vertical-align: middle;
 	}
+}
+
+/*******************************************************************************
+* Copy code snippets to clipboard
+******************************************************************************/
+
+.clipboard-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0.7rem 1rem;
+}
+.clipboard-button {
+	position: relative;
+	border: 1px solid var(--light);
+	padding: 0.4rem 0.6rem;
+	border-radius: 4px;
+	font-size: 12px;
+	line-height: 20px;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+  	transition-property: color, background-color, border-color;
+
+	&:hover {
+		background-color: var(--lightest);
+  		border-color: var(--lighter);
+		transition-duration: .1s;
+	}
+	&:active {
+		background-color: var(--almostlightest);
+  		border-color: var(--lighter);
+		transition: none;
+	}
+
+	&.clipboard-copy-success {
+		border-color: var(--defold-green) !important;
+		color: var(--defold-green) !important;
+		.clipboard-copy-icon { display: none; }
+		.clipboard-check-icon { display: inline-block; }
+	}
+
+	svg {
+		overflow: visible !important;
+		vertical-align: text-bottom;
+		fill: currentColor;
+	}
+
+	.clipboard-check-icon { display: none; }
 }
