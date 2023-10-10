@@ -18,7 +18,9 @@
 		<div class="row">
 		{%- if include.icon -%}
 			<div class="columns two">
-				<span class="icon" style="zoom: {{ include.zoom }};"><img src="{{ include.icon }}" alt="{{ include.icon_alt }}"/></span>
+				<span class="icon" style="zoom: {{ include.zoom }};">
+					{% include_relative {{include.icon}} %}
+				</span>
 			</div>
 			<div class="columns ten">
 				<h5 class="left">{{ include.title }}</h5>
