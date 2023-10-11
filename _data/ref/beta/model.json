@@ -188,6 +188,87 @@
       "notes": []
     },
     {
+      "type": "FUNCTION",
+      "name": "model.set_mesh_enabled",
+      "brief": "enable or disable a mesh",
+      "description": "Enable or disable visibility of a mesh",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "url",
+          "doc": "the model",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        },
+        {
+          "name": "mesh_id",
+          "doc": "the id of the mesh",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        },
+        {
+          "name": "enabled",
+          "doc": "true if the mesh should be visible, false if it should be hideen",
+          "types": [
+            "boolean"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">set_mesh_enabled</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;Sword&quot;</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">)</span> <span class=\"c1\">-- hide the sword</span>\n    <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">set_mesh_enabled</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;Axe&quot;</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">)</span>    <span class=\"c1\">-- show the axe</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "model.get_mesh_enabled",
+      "brief": "get the enabled state of a mesh",
+      "description": "Get the enabled state of a mesh",
+      "returnvalues": [
+        {
+          "name": "enabled",
+          "doc": "true if the mesh is visible, false otherwise",
+          "types": [
+            "boolean"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "url",
+          "doc": "the model",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        },
+        {
+          "name": "mesh_id",
+          "doc": "the id of the mesh",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">get_mesh_enabled</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;Sword&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n       <span class=\"c1\">-- set properties specific for the sword</span>\n       <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">weapon_properties</span> <span class=\"o\">=</span> <span class=\"n\">game</span><span class=\"p\">.</span><span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">weapons</span><span class=\"p\">[</span><span class=\"s2\">&quot;Sword&quot;</span><span class=\"p\">]</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
       "type": "MESSAGE",
       "name": "model_animation_done",
       "brief": "reports the completion of a Model animation",
