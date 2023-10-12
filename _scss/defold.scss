@@ -23,6 +23,11 @@
 ******************************************************************************/
 
 .dark-mode {
+	.dark\:darken-10 {
+		background-blend-mode: darken;
+		background-color: rgba(0, 0, 0, 0.10);
+	}
+
 	.dark\:dark {
 		background-color: var(--dark) !important;
 		color: var(--lighter) !important;
@@ -1052,6 +1057,12 @@ ul.checkmark li:before {
 }
 .card .icon img {
 	vertical-align: bottom;
+}
+.card .icon svg path {
+	fill: currentColor !important;
+}
+.card.compact .icon svg {
+	max-height: 8em;
 }
 .card h5 {
 	margin-bottom: 0;
