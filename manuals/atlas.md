@@ -69,11 +69,6 @@ Inner Padding
 Extrude Borders
 : The number of edge pixels that should be repeatedly padded around each image. When the fragment shader samples pixels at the edge of an image, pixels of a neighbor image (on the same atlas texture) may bleed over. Extruding the border solves this problem.
 
-Rename Patterns
-: A comma (´,´) separated list of search-and-replace patterns, where each pattern is of the form `search=replace`.
-Each image's original name (the file base name) will be transformed using these patterns. (E.g. a pattern of `hat=cat,_normal=`, will rename an image of name `hat_normal` to `cat`). This is useful when matching animations between atlases.
-
-
 Here are examples of the different property settings with four square images of size 64x64 added to an atlas. Notice how the atlas jumps to 256x256 as soon as the images won't fit 128x128, resulting in much wasted texture space.
 
 ![Atlas properties](../images/atlas/atlas_properties.png)
