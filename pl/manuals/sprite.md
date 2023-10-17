@@ -12,16 +12,16 @@ Komponent typu Sprite (z ang. dosłownie: chochlik/duszek/krasnoludek - popularn
 
 ![sprite](/manuals/images/graphics/sprite.png)
 
-Komponent typu Sprite może wykorzystywać jako teksturę [Galerię - Atlas](/pl/manuals/atlas) lub [Źródło kafelków - Tile Source](/pl/manuals/tilesource).
+Komponent typu Sprite może wykorzystywać jako teksturę galerię obrazów, tzw. [Atlas](/pl/manuals/atlas) lub [Źródło kafelków - Tile Source](/pl/manuals/tilesource).
 
 ## Właściwości Sprite'ów
 
-Poza właściwościami takimi jak *Id*, *Position* i *Rotation* komponenty te posiadają swoje specyficzne właściwości:
+Poza właściwościami takimi jak *Id*, *Position* i *Rotation* komponenty te posiadają swoje specyficzne właściwości (properties):
 
 *Image*
 : Obraz/tekstura dwuwymiarowa - może nią być Galeria - `Atlas` lub Źródło kafelków - `Tile Source`.
 
-*DefaultAnimation*
+*Default Animation*
 : Domyślna animacja używana przy wyświetlaniu obrazu.
 
 *Material*
@@ -29,6 +29,14 @@ Poza właściwościami takimi jak *Id*, *Position* i *Rotation* komponenty te po
 
 *Blend Mode*
 : Tryb "mieszania"/blendowania używany również przy renderowaniu. Więcej szczegółów poniżej.
+
+*Size Mode*
+: Tryb rozmiaru - jeśli ustawiony na `Automatic`, to Edytor będzie ustawiał rozmiar sprite'a. Jeśli ustawiony na `Manual`, to możesz dopasować rozmiar sprite'a.
+
+*Slice 9*
+: Przekrój na 9 części - ustaw tę właściwość aby zachować prawidłowość pikseli na rogach sprite'a, kiedy jego rozmiar jest zmieniany.
+
+{% include shared/pl/slice-9-texturing.md %}
 
 ### Blend modes - tryby blendowania
 {% include shared/pl/blend-modes.md %}
@@ -66,6 +74,18 @@ Sprite posiada również różne właściwości, którymi można manipulować pr
 
 `tint`
 : Kolor zabarwienia/odcienia obrazka (`vector4`). Wektor czterech komponentów reprezentuje zabarwienie, gdzie komponenty x, y, z, w odpowiadają składowym: czerwony, zielony, niebieski i przezroczystość (red, green, blue, alpha).
+
+## Atrybuty materiału
+
+Sprite może nadpisywać atrybuty wierzchołków (vertex attributes) aktualnie przypisanego materiały i przekazywać je do shadera wierzchołków (vertex shader) z komponentu (szczegóły znajdziesz w [instrukcji do materiałów](/pl/manuals/material/#attributes)).
+
+Atrybuty określone w materiale pokażą się jako zwykłe właściwości w widoku inspekcyjnym i mogą być ustawione na indywidualne komponenty sprite. Jeśli jakikolwiek atrybut jest nadpisany, zostanie on zaznaczony jako nadpisana właściwość i przechowana w pliku komponenty sprite na dysku.
+
+![sprite-attributes](/manuals/images/graphics/sprite-attributes.png)
+
+<div class='sidenote' markdown='1'>
+Niestandardowe atrybuty są dostępne od wersji Defold 1.4.8!
+</div>
 
 ## Konfiguracja projektu
 
