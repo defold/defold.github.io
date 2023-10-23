@@ -528,6 +528,49 @@
     },
     {
       "type": "FUNCTION",
+      "name": "dmArray",
+      "brief": "Set user-allocated memory",
+      "description": "user-allocated array with initial size and capacity",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "user_array",
+          "doc": "User-allocated array to be used as storage.",
+          "types": [
+            "T*"
+          ]
+        },
+        {
+          "name": "size",
+          "doc": "Initial size",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "capacity",
+          "doc": "Initial capacity",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "user_allocated",
+          "doc": "If false, the ownership is transferred to the dmArray",
+          "types": [
+            "bool"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "EraseSwap",
       "brief": "array eraseswap",
       "description": "Remove the element at the specified index.\nThe removed element is replaced by the element at the end (if any), thus potentially altering the order.\nWhile operation changes the array size, it is guaranteed to be O(1).",
