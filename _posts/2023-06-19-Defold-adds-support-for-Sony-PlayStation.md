@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Defold adds support for PlayStation®44
+title:  Defold adds support for PlayStation®4
 excerpt: We are happy to announce the immediate availability of PlayStation®4 development in the Defold game engine for approved PlayStation™ developers.
 author: Björn Ritzl
 tags: ["news", "playstation"]
