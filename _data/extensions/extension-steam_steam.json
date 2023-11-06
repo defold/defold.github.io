@@ -96,12 +96,12 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Set a listener",
+            "description": "Set a listener.",
             "examples": "",
             "name": "steam.set_listener",
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "Listener function to call",
                     "name": "listener",
                     "types": [
                         "function"
@@ -469,6 +469,30 @@
                     ]
                 }
             ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the appID of the current process.",
+            "examples": "",
+            "name": "steam.SteamUtils_GetAppId",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Return the number of seconds since the user.",
+            "examples": "",
+            "name": "steam.SteamUtils_GetSecondsSinceAppActive",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns true if currently running on the Steam Deck device.",
+            "examples": "",
+            "name": "steam.SteamUtils_IsSteamRunningOnSteamDeck",
+            "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         }
