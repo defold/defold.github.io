@@ -318,7 +318,7 @@ end
 We do this before re-calculating the bounding box positions. We'll also want to initialize `self.dragging` and `self.mouse_position` in the `init` function.
 
 Now we can drag the window around and see the changes our grayscale shader applies to the world!
-![Part 3 Demo](/images/posts/mastering-render-targets/part_3.webm)
+![Part 3 Demo](/images/posts/mastering-render-targets/part_3.gif)
 
 Find the code for [Part 3 here.](https://github.com/davabase/mastering_render_targets/tree/master/part_3)
 
@@ -500,7 +500,7 @@ end
 ```
 
 Now even if the window game object changes size, the render target will have the same size and will therefore only use up as much memory as necessary.
-![Part 4 Demo](/images/posts/mastering-render-targets/part_4.webm)
+![Part 4 Demo](/images/posts/mastering-render-targets/part_4.gif)
 
 
 ### Part 5
@@ -512,7 +512,7 @@ To gain maximum performance we want to set our render target to a static size, p
 Although setting the size to the smallest resolution you can get away with is a good idea away with is a good way to save on memory.
 
 In the extreme cases it can create neat pixelation effects as the render target is stretched out on a larger surface.
-![Part 5 Demo](/images/posts/mastering-render-targets/part_5.webm)
+![Part 5 Demo](/images/posts/mastering-render-targets/part_5.gif)
 
 
 ### Conclusion
@@ -522,4 +522,4 @@ Using render targets and partial screen projection you can create numerous effec
 That’s all for now, I’ll leave you with this one last demo of some practical effects:
 
 
-![Conclusion](/images/posts/mastering-render-targets/conclusion.webm)
+![Conclusion](/images/posts/mastering-render-targets/conclusion.gif)
