@@ -80,17 +80,17 @@ void main()
 
 We have to make sure we add a `view_proj` vertex constant.
 
-![Vertex Constant settings with a Viewproj type constant.](/FOO/view_proj_setting.png)
+![Vertex Constant settings with a Viewproj type constant.](/images/posts/mastering-render-targets/view_proj_setting.png)
 
 We also need to add a texture sampler to set the render target to.
 
 We call it `texture_sampler` because that is what is specified in the fragment shader:
 
-![texture_sampler added to Samplers](/FOO/texture_sampler_setting.png)
+![texture_sampler added to Samplers](/images/posts/mastering-render-targets/texture_sampler_setting.png)
 
 Finally we add a tag to specify when this material will be drawn. We don't want to use "tile" because that will cause a loop. Let's call it "window."
 
-![New "window" tag added.|614x86](/FOO/tag_settings.png)
+![New "window" tag added.|614x86](/images/posts/mastering-render-targets/tag_settings.png)
 
 Phew, that was a lot of setup just to create something to draw our target to but now we can do just that.
 
@@ -119,7 +119,7 @@ I'll set this one to 320 by 180 to be a quarter the size of the 1280 by 720 game
 
 And viola! We have a mini version of the game screen!
 
-![The render texture drawn to the screen.](/FOO/part_1.png)
+![The render texture drawn to the screen.](/images/posts/mastering-render-targets/part_1.png)
 
 Find the code for [Part 1 here.](https://github.com/davabase/mastering_render_targets/tree/master/part_1)
 
@@ -159,7 +159,7 @@ void main()
 
 Now we have a tiny grayscale version of the game drawn on the screen!
 
-![Grayscale version of our game drawn to the window.](/FOO/part_2.png)
+![Grayscale version of our game drawn to the window.](/images/posts/mastering-render-targets/part_2.png)
 
 Find the code for [Part 2 here](https://github.com/davabase/mastering_render_targets/tree/master/part_2).
 
@@ -226,7 +226,7 @@ render.set_projection(proj)
 
 We can reorganize the code in the render script a little bit so that we only set this projection once. Now if we move the window game object in the main collection so that it's slightly over the Defold logo, we should see that half of it is grayscale:
 
-![Partial screen grayscale.](/FOO/part_3.png)
+![Partial screen grayscale.](/images/posts/mastering-render-targets/part_3.png)
 
 Alright, now this is pretty rad. Let's add some interactivity so we can drag the window around.
 
@@ -273,7 +273,7 @@ end
 
 In the input bindings in `game.input_binding` we'll add a new mouse left button input called `mouse_button_left`:
 
-![Left mouse button added to input bindings.](/FOO/input_binding_setting.png)
+![Left mouse button added to input bindings.](/images/posts/mastering-render-targets/input_binding_setting.png)
 
 Now we can acquire input focus in the `init` function of `window.script`:
 
@@ -318,7 +318,7 @@ end
 We do this before re-calculating the bounding box positions. We'll also want to initialize `self.dragging` and `self.mouse_position` in the `init` function.
 
 Now we can drag the window around and see the changes our grayscale shader applies to the world!
-![Part 3 Demo](/FOO/part_3.webm)
+![Part 3 Demo](/images/posts/mastering-render-targets/part_3.webm)
 
 Find the code for [Part 3 here.](https://github.com/davabase/mastering_render_targets/tree/master/part_3)
 
@@ -331,7 +331,7 @@ Now we can change the shape of the window to be anything we want, but it's kind 
 local color_params = { format = render.FORMAT_RGBA, width = 320, height = 180 }
 ```
 
-![Incorrect rendering.](/FOO/part_4.png)
+![Incorrect rendering.](/images/posts/mastering-render-targets/part_4.png)
 
 The mapping of the game coordinates no longer match the mapping to the render target coordinates and we get this weird zoomed in and offset view.
 
@@ -500,7 +500,7 @@ end
 ```
 
 Now even if the window game object changes size, the render target will have the same size and will therefore only use up as much memory as necessary.
-![Part 4 Demo](/FOO/part_4.webm)
+![Part 4 Demo](/images/posts/mastering-render-targets/part_4.webm)
 
 
 ### Part 5
@@ -512,7 +512,7 @@ To gain maximum performance we want to set our render target to a static size, p
 Although setting the size to the smallest resolution you can get away with is a good idea away with is a good way to save on memory.
 
 In the extreme cases it can create neat pixelation effects as the render target is stretched out on a larger surface.
-![Part 5 Demo](/FOO/part_5.webm)
+![Part 5 Demo](/images/posts/mastering-render-targets/part_5.webm)
 
 
 ### Conclusion
@@ -522,4 +522,4 @@ Using render targets and partial screen projection you can create numerous effec
 That’s all for now, I’ll leave you with this one last demo of some practical effects:
 
 
-![Conclusion](/FOO/conclusion.webm)
+![Conclusion](/images/posts/mastering-render-targets/conclusion.webm)
