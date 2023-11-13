@@ -17,8 +17,6 @@ I've spent the past few weeks playing around with Defold and one thing I wanted 
 This was a bit trickier than anticipated so I decided to make this blog post about it to share what I've learned. There's also companion code associated with each section on [GitHub](https://github.com/davabase/mastering_render_targets).
 
 
-# Mastering Render Targets in Defold
-
 ### Part 1: Creating a render target
 
 From a mostly default Defold desktop template we're going to duplicate the builtin render script and renderer and call them both "pipeline" since this is going to act as our render pipeline.
