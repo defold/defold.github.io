@@ -3,7 +3,7 @@ layout: post
 title:  The Defold Foundation partners with Rive Inc.
 excerpt: The Defold Foundation partners with Rive Inc. to add support for Rive real-time animations in the Defold game engine.
 author: Björn Ritzl
-tags: ["news", "partner"]
+tags: ["news", "partner", "rive"]
 ---
 
 _The Defold Foundation partners with Rive Inc. to add support for Rive real-time animations in the Defold game engine._
