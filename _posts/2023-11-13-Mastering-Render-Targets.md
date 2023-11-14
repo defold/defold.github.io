@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Mastering Render Targets
-excerpt: The Defold Foundation partners with Poki as a preferred partner for web game developers.
+excerpt: Learn how to master render targets in this guest post by forum user David.
 author: Björn Ritzl
 tags: ["shaders", "code", "tutorial"]
 ---
