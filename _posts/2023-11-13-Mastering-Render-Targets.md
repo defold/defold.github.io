@@ -2,7 +2,7 @@
 layout: post
 title:  Mastering Render Targets
 excerpt: Learn how to master render targets in this guest post by forum user David.
-author: Björn Ritzl
+author: David Davabase
 tags: ["shaders", "code", "tutorial"]
 ---
 
