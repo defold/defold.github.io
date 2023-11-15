@@ -89,6 +89,86 @@
             "type": "VARIABLE"
         },
         {
+            "description": "Passed as parameter to ActivateGameOverlayToWebPage",
+            "examples": "",
+            "name": "EActivateGameOverlayToWebPageMode_Default",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Passed as parameter to ActivateGameOverlayToWebPage",
+            "examples": "",
+            "name": "EActivateGameOverlayToWebPageMode_Modal",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Friend is not currently logged on",
+            "examples": "",
+            "name": "EPersonaStateOffline",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Friend is logged on",
+            "examples": "",
+            "name": "EPersonaStateOnline",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "User is on, but busy",
+            "examples": "",
+            "name": "EPersonaStateBusy",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Auto-away feature",
+            "examples": "",
+            "name": "EPersonaStateAway",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Auto-away for a long time",
+            "examples": "",
+            "name": "EPersonaStateSnooze",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Online, trading",
+            "examples": "",
+            "name": "EPersonaStateLookingToTrade",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Online, wanting to play",
+            "examples": "",
+            "name": "EPersonaStateLookingToPlay",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Online, but appears offline to friends.  This status is never published to clients.",
+            "examples": "",
+            "name": "EPersonaStateInvisible",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
             "description": "Takes AppID of DLC and checks if the user owns the DLC &amp; if the DLC is installed.",
             "examples": "",
             "name": "steam.apps_is_dlc_installed",
@@ -121,6 +201,70 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Returns the local players name - guaranteed to not be NULL. This is the same name as on the users community profile page. This is stored in UTF-8 format.",
+            "examples": "",
+            "name": "steam.friends_get_persona_name",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Gets the status of the current user. Returned as EPersonaState.",
+            "examples": "",
+            "name": "steam.friends_get_persona_state",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the current status of the specified user. This will only be known by the local user if steamIDFriend is in their friends list; on the same game server; in a chat room or lobby; or in a small group with the local user.",
+            "examples": "",
+            "name": "steam.friends_get_friend_persona_state",
+            "parameters": [
+                {
+                    "doc": "Id of friend",
+                    "name": "steamIDFriend",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get friends steam level.",
+            "examples": "",
+            "name": "steam.friends_get_friend_steam_level",
+            "parameters": [
+                {
+                    "doc": "Id of friend",
+                    "name": "steamIDFriend",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns a relationship to a user.",
+            "examples": "",
+            "name": "steam.friends_get_friend_relationship",
+            "parameters": [
+                {
+                    "doc": "Id of friend",
+                    "name": "steamIDFriend",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Activates game overlay to store page for app.",
             "examples": "",
             "name": "steam.friends_activate_game_overlay_to_store",
@@ -135,6 +279,29 @@
                 {
                     "doc": "EOverlayToStoreFlag",
                     "name": "flag",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Activates game overlay web browser directly to the specified URL. Full address with protocol type is required, e.g. http://www.steamgames.com/",
+            "examples": "",
+            "name": "steam.friends_activate_game_overlay_to_web_page",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "url",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "EActivateGameOverlayToWebPageMode",
+                    "name": "mode",
                     "types": [
                         "number"
                     ]
@@ -541,6 +708,45 @@
             "examples": "",
             "name": "steam.utils_is_steam_running_on_steam_deck",
             "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get size of image",
+            "examples": "",
+            "name": "steam.utils_get_image_size",
+            "parameters": [
+                {
+                    "doc": "Image handle",
+                    "name": "image",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get image in RGBA format.",
+            "examples": "",
+            "name": "steam.utils_get_image_rgba",
+            "parameters": [
+                {
+                    "doc": "Image handle",
+                    "name": "image",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Size of image",
+                    "name": "size",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         }
