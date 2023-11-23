@@ -17,7 +17,7 @@ The Defold Foundation will work on general performance improvements to the web v
 _"We’re super excited to kickstart this new partnership. Defold has been instrumental in powering some of the biggest hits on the web such as Monkey Mart (by Tinydobbins) and Cow Bay (by 7Spot Games). By teaming up it will become a lot easier for Defold developers to join the platform, reach millions of players, and utilize our set of game development tools"_, said Joep van Duinen, Head of Game Developer Operations & Partnerships at Poki. 
 
 ##### About Poki
-[Poki](https://poki.com/) is on a mission to create the ultimate online playground: a platform for play where players and game developers come together to play and create. Based in Amsterdam, they reach 50 million monthly players on desktop and mobile devices, making them the global leaders in the web games market. The games on their platform are created by a diverse game developer community of over 350 game developer teams from 62 different countries. Got a game? Submit it via [developers.poki.com](developers.poki.com).
+[Poki](https://poki.com/) is on a mission to create the ultimate online playground: a platform for play where players and game developers come together to play and create. Based in Amsterdam, they reach 50 million monthly players on desktop and mobile devices, making them the global leaders in the web games market. The games on their platform are created by a diverse game developer community of over 350 game developer teams from 62 different countries. Got a game? Submit it via [developers.poki.com](https://developers.poki.com).
 
 ##### About Defold Foundation
 The Defold Foundation is the owner of the free to use game engine Defold. The foundation works together with industry partners to provide free and open software and services to game developers across the globe. The foundation was created in May 2020 and is registered in Stockholm, Sweden.
@@ -29,7 +29,7 @@ Defold is a free to use, source available, game engine with a developer-friendly
 Joep van Duinen 
 Head of Game Developer Operations & Partnerships at Poki
 [joep@poki.com](mailto:joep@poki.com) 
-Got a game? Submit via [developers.poki.com](developers.poki.com)
+Got a game? Submit via [developers.poki.com](https://developers.poki.com)
 
 Björn Ritzl
 Product Owner, Defold Foundation
