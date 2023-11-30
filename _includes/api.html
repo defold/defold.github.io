@@ -85,6 +85,22 @@
 {%- endif -%}
 
 
+{%- if macros.size > 0 -%}
+<table class="compact">
+	<tr>
+		<th>MACROS</th>
+		<th></th>
+	</tr>
+	{%- for macro in macros -%}
+	<tr>
+		<td><a href="#{% include ref_anchorlink.html element=enum %}">{{ macro.name }}</a></td>
+		<td>{{ macro.brief }}</td>
+	</tr>
+	{%- endfor -%}
+</table>
+{%- endif -%}
+
+
 
 {%- if functions.size > 0 -%}
 <h2>Functions</h2>
@@ -165,6 +181,22 @@
 	{%- if property.examples.size > 0 -%}
 	<p><b>EXAMPLES</b></p>
 	{{ property.examples }}
+	{%- endif -%}
+
+	<hr/>
+	{%- endfor -%}
+{%- endif -%}
+
+
+{%- if macros.size > 0 -%}
+<h2>Macros</h2>
+	{%- for macro in macros -%}
+	{% include ref_anchor_target.html element=macro %}
+	<h4>{{ macro.name }}<a href="#{% include ref_anchorlink.html element=macro %}" class="anchor-link"/></a></h4>
+	<p>{{ macro.description }}</p>
+	{%- if macro.examples.size > 0 -%}
+	<p><b>EXAMPLES</b></p>
+	{{ macro.examples }}
 	{%- endif -%}
 
 	<hr/>
