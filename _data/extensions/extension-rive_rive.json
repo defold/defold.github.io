@@ -140,6 +140,36 @@
                     "types": [
                         "table"
                     ]
+                },
+                {
+                    "doc": "function to call when a playback event occurs",
+                    "name": "callback_function",
+                    "parameters": [
+                        {
+                            "doc": "The context of the calling script",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "The name of the event",
+                            "name": "message_id",
+                            "types": [
+                                "hash"
+                            ]
+                        },
+                        {
+                            "doc": "A table that contains the event properties",
+                            "name": "message",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
                 }
             ],
             "returnvalues": [],
