@@ -157,7 +157,7 @@ Możesz tworzyć własne funkcje wygładzania zdefiniowane jako specjalny `vecto
 For example, the vector:
 
 ```lua
-local values = { 0, 0.4, 0.2, 0.2, 0.5. 1 }
+local values = { 0, 0.4, 0.2, 0.2, 0.5, 1 }
 local my_easing = vmath.vector(values)
 ```
 
