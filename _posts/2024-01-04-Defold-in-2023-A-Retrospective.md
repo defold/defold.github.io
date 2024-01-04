@@ -38,7 +38,7 @@ No end-of-year-review is complete without some Android and iOS updates! During 2
 
 ### Shader and graphics API updates
 
-2023 was the year when we really started to put all of the critical pieces in place to enable great 3D game development using Defold. We've already started seeing more 3D games released in Defold and we are looking forward to seeing what our community of game developers will create in 2024! Some of the key features of 2023 were:
+2023 was the year when we really started to put all of the critical pieces in place to enable great 3D game development using Defold. We've already started seeing more 3D games released in Defold and we are looking forward to what our community of game developers will create in 2024! Some of the key features of 2023 were:
 
 * Shader include support ([#6902](https://github.com/defold/defold/pull/6902))
 * Create depth / stencil buffers as textures for render targets ([#7681](https://github.com/defold/defold/pull/7681))
