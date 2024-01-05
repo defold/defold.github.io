@@ -26,7 +26,7 @@ The releases made in 2023 included around 70 new features and 160 bug fixes. Let
 
 ### Runtime creation of textures and atlases
 
-We've started losening up our "everything needs to be defined up-front" engine design to allow more dynamic content creation at runtime. End of 2022 we added runtime creation of textures ([#7154](https://github.com/defold/defold/pull/7154)) and during 2023 we also added support for full atlas creation at runtime ([#7196](https://github.com/defold/defold/pull/7196)).
+We've started loosening up our "everything needs to be defined up-front" engine design to allow more dynamic content creation at runtime. End of 2022 we added runtime creation of textures ([#7154](https://github.com/defold/defold/pull/7154)) and during 2023 we also added support for full atlas creation at runtime ([#7196](https://github.com/defold/defold/pull/7196)).
 
 We also added support for paged texture atlases to more efficiently pack and draw images ([#6845](https://github.com/defold/defold/pull/6845)).
 
@@ -43,7 +43,7 @@ No end-of-year-review is complete without some Android and iOS updates! During 2
 * Shader include support ([#6902](https://github.com/defold/defold/pull/6902))
 * Create depth / stencil buffers as textures for render targets ([#7681](https://github.com/defold/defold/pull/7681))
 * Frustum culling of meshes ([#7093](https://github.com/defold/defold/pull/7093)) and models ([[#7378](https://github.com/defold/defold/pull/7378))
-* Texture handles ([[#7559](https://github.com/defold/defold/pull/7559) and [#7583](https://github.com/defold/defold/pull/7583))
+* Texture handles ([#7559](https://github.com/defold/defold/pull/7559) and [#7583](https://github.com/defold/defold/pull/7583))
 * Floating point texture formats ([#8225](https://github.com/defold/defold/pull/8225) and [#7238](https://github.com/defold/defold/pull/7238))
 * Cubemap fixes ([#7625](https://github.com/defold/defold/pull/7625))
 * Custom vertex formats (sprite [#7508](https://github.com/defold/defold/pull/7508) and pfx [#7866](https://github.com/defold/defold/pull/7866))
