@@ -38,7 +38,7 @@ No end-of-year-review is complete without some Android and iOS updates! During 2
 
 ### Shader and graphics API updates
 
-2023 was the year when we really started to put all of the critical pieces in place to enable great 3D game development using Defold. We've already started seeing more 3D games released in Defold and we are looking forward to what our community of game developers will create in 2024! Some of the key features of 2023 were:
+2023 was the year when we really started to put all of the critical pieces in place to enable great 3D game development using Defold. We are slowly but surely moving towards a more GPU driven rendering architecture. In 2023 we started seeing more 3D games made with Defold and we are looking forward to what our community will create in 2024! Some of the key features of 2023 were:
 
 * Shader include support ([#6902](https://github.com/defold/defold/pull/6902))
 * Create depth / stencil buffers as textures for render targets ([#7681](https://github.com/defold/defold/pull/7681))
@@ -54,6 +54,13 @@ No end-of-year-review is complete without some Android and iOS updates! During 2
 ### Apple Silicon support
 
 We finally added Apple Silicon support to our command line tools, the Defold editor and the game engine runtime. The difference in performance is absolutely amazing!
+
+
+## Editor improvements
+
+The editor received a lot of great updates too. We now have [support for the Language Server Protocol through an extension](https://forum.defold.com/t/linting-and-code-navigation-in-the-code-editor/72465) and the editor will show workspace diagnostics, code completions, annotations, documentation and much more. You can expect these extension features to become a part of the standard editor installation in 2024.
+
+The editor also received the ability to directly install iOS and Android bundles if the command line tools are present on the system.
 
 
 ## Extensions
@@ -98,7 +105,7 @@ We would also like to take this opportunity to thank our corporate partners, wit
 
 ## What's in store for 2024?
 
-This year will be the year when 3D games in Defold will really take off. We've now reached a point where Defold has the required building blocks to build visually impressive 3D games. We still miss a few things (for instance instancing and compute shaders) but these will be added in 2024 together with new 3D examples to help developers get started.
+This year will be the year when 3D games in Defold will really take off. We've now reached a point where Defold has the required building blocks to build visually impressive 3D games. We still miss a few things (for instance compute shaders, instancing and GPU skinning) but these will be added in 2024 together with new 3D examples to help developers get started.
 
 We will continue to focus on the web as one of our primary platforms. We will continue to improve stability and performance and most likely also look into WebGPU as a new graphics backend.
 
