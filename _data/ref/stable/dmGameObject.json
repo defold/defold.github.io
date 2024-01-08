@@ -2,64 +2,6 @@
   "elements": [
     {
       "type": "FUNCTION",
-      "name": "dmScript::PostDDF",
-      "brief": "Sends a script message",
-      "description": "Sends a script message. Wraps the message in a dmGameSystemDDF::ScriptMessage struct.",
-      "returnvalues": [
-        {
-          "name": "success",
-          "doc": "true if successful",
-          "types": [
-            "bool"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "message",
-          "doc": "The ddf message to send",
-          "types": [
-            "TDDFType*"
-          ]
-        },
-        {
-          "name": "sender",
-          "doc": "The sender",
-          "types": [
-            "dmMessage::Message*"
-          ]
-        },
-        {
-          "name": "receiver",
-          "doc": "The receiver",
-          "types": [
-            "dmMessage::Message*"
-          ]
-        },
-        {
-          "name": "function_ref",
-          "doc": "The function ref. 0 wil cause the \"on_message\" to be called",
-          "types": [
-            "int"
-          ]
-        },
-        {
-          "name": "unref_function_after_call",
-          "doc": "call dmScript::UnrefInInstance on the function_ref after the dmScript::PCall is made",
-          "types": [
-            "bool"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
       "name": "ComponentIterProperties",
       "brief": "Callback when iterating over the properties for a ...",
       "description": "Callback when iterating over the properties for a component.",
@@ -883,6 +825,64 @@
           "type": "dmHashTable64<void*>"
         }
       ],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::PostDDF",
+      "brief": "Sends a script message",
+      "description": "Sends a script message. Wraps the message in a dmGameSystemDDF::ScriptMessage struct.",
+      "returnvalues": [
+        {
+          "name": "success",
+          "doc": "true if successful",
+          "types": [
+            "bool"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "message",
+          "doc": "The ddf message to send",
+          "types": [
+            "TDDFType*"
+          ]
+        },
+        {
+          "name": "sender",
+          "doc": "The sender",
+          "types": [
+            "dmMessage::Message*"
+          ]
+        },
+        {
+          "name": "receiver",
+          "doc": "The receiver",
+          "types": [
+            "dmMessage::Message*"
+          ]
+        },
+        {
+          "name": "function_ref",
+          "doc": "The function ref. 0 wil cause the \"on_message\" to be called",
+          "types": [
+            "int"
+          ]
+        },
+        {
+          "name": "unref_function_after_call",
+          "doc": "call dmScript::UnrefInInstance on the function_ref after the dmScript::PCall is made",
+          "types": [
+            "bool"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
       "notes": []
     },
     {
