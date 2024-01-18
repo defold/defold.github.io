@@ -1,13 +1,44 @@
 {
     "elements": [
         {
-            "description": "Initialise Firebase Remote Config. Generates CONFIG_INITIALIZE or CONFIG_ERROR",
+            "description": "Initialise Firebase Remote Config. Generates MSG_INITIALIZED or MSG_ERROR",
             "examples": "",
-            "name": "remoteconfig.remoteconfig.init",
+            "name": "remoteconfig.initialize",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets a callback function for receiving events from the SDK. Call `firebase.set_callback(nil)` to remove callback",
+            "examples": "",
+            "name": "remoteconfig.set_callback",
             "parameters": [
                 {
-                    "doc": "Function to call when a remote config event has happened",
+                    "doc": "Callback function that is executed on any event in the SDK.",
                     "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "One of message types: `firebase.remoteconfig.MSG_INITIALIZED` `firebase.remoteconfig.MSG_INSTALLATION_AUTH_TOKEN` `firebase.remoteconfig.MSG_INSTALLATION_ID` `firebase.remoteconfig.MSG_DEFAULTS_SET` `firebase.remoteconfig.MSG_FETCHED` `firebase.remoteconfig.MSG_ACTIVATED` `firebase.remoteconfig.MSG_SETTINGS_UPDATED` `firebase.remoteconfig.MSG_ERROR`",
+                            "name": "message_id",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "A table holding the data",
+                            "name": "message",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
                     "types": [
                         "function"
                     ]
@@ -17,33 +48,33 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Fetches config data from the server. (Official docs https://firebase.google.com/docs/reference/cpp/class/firebase/remote-config/remote-config#fetch). Generates CONFIG_FETCHED or CONFIG_ERROR",
+            "description": "Fetches config data from the server. Generates MSG_FETCHED or MSG_ERROR",
             "examples": "",
-            "name": "remoteconfig.remoteconfig.fetch",
+            "name": "remoteconfig.fetch",
             "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Asynchronously activates the most recently fetched configs, so that the fetched key value pairs take effect. (Official docs https://firebase.google.com/docs/reference/cpp/class/firebase/remote-config/remote-config#activate). Generates CONFIG_ACTIVATED or CONFIG_ERROR",
+            "description": "Asynchronously activates the most recently fetched configs, so that the fetched key value pairs take effect. Generates MSG_ACTIVATED or MSG_ERROR",
             "examples": "",
-            "name": "remoteconfig.remoteconfig.activate",
+            "name": "remoteconfig.activate",
             "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Asynchronously fetches and then activates the fetched configs. (Official docs https://firebase.google.com/docs/reference/cpp/class/firebase/remote-config/remote-config#fetchandactivate). Generates CONFIG_FETCHED and CONFIG_ACTIVATED or CONFIG_ERROR",
+            "description": "Asynchronously fetches and then activates the fetched configs. Generates MSG_FETCHED and MSG_ACTIVATED or MSG_ERROR",
             "examples": "",
-            "name": "remoteconfig.remoteconfig.fetch_and_activate",
+            "name": "remoteconfig.fetch_and_activate",
             "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Returns the value associated with a key, converted to a bool. (Official docs https://firebase.google.com/docs/reference/cpp/class/firebase/remote-config/remote-config#getboolean)",
+            "description": "Returns the value associated with a key, converted to a bool.",
             "examples": "",
-            "name": "remoteconfig.remoteconfig.get_boolean",
+            "name": "remoteconfig.get_boolean",
             "parameters": [
                 {
                     "doc": "Key of the value to be retrieved",
@@ -57,9 +88,9 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Returns the value associated with a key, as a vector of raw byte-data. (Official docs https://firebase.google.com/docs/reference/cpp/class/firebase/remote-config/remote-config#getdata)",
+            "description": "Returns the value associated with a key, as a vector of raw byte-data.",
             "examples": "",
-            "name": "remoteconfig.remoteconfig.get_data",
+            "name": "remoteconfig.get_data",
             "parameters": [
                 {
                     "doc": "Key of the value to be retrieved",
@@ -73,9 +104,9 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Returns the value associated with a key, converted to a double. (Official docs https://firebase.google.com/docs/reference/cpp/class/firebase/remote-config/remote-config#getdouble)",
+            "description": "Returns the value associated with a key, converted to a double.",
             "examples": "",
-            "name": "remoteconfig.remoteconfig.get_number",
+            "name": "remoteconfig.get_number",
             "parameters": [
                 {
                     "doc": "Key of the value to be retrieved",
@@ -89,9 +120,9 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Returns the value associated with a key, converted to a string. (Official docs https://firebase.google.com/docs/reference/cpp/class/firebase/remote-config/remote-config#getstring)",
+            "description": "Returns the value associated with a key, converted to a string.",
             "examples": "",
-            "name": "remoteconfig.remoteconfig.get_string",
+            "name": "remoteconfig.get_string",
             "parameters": [
                 {
                     "doc": "Key of the value to be retrieved",
@@ -105,20 +136,20 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Gets the set of all keys. (Official docs https://firebase.google.com/docs/reference/cpp/class/firebase/remote-config/remote-config#getkeys)",
+            "description": "Gets the set of all keys.",
             "examples": "",
-            "name": "remoteconfig.remoteconfig.get_keys",
+            "name": "remoteconfig.get_keys",
             "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Sets the default values. (Official docs https://firebase.google.com/docs/reference/cpp/class/firebase/remote-config/remote-config#setdefaults)",
+            "description": "Sets the default values.",
             "examples": "",
-            "name": "remoteconfig.remoteconfig.set_defaults",
+            "name": "remoteconfig.set_defaults",
             "parameters": [
                 {
-                    "doc": "Key-value pairs representing the default values. Generates CONFIG_DEFAULTS_SET or CONFIG_ERROR",
+                    "doc": "Key-value pairs representing the default values. Generates MSG_DEFAULTS_SET or MSG_ERROR",
                     "name": "defaults",
                     "types": [
                         "table"
@@ -129,12 +160,28 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Sets the minimum fetch interval. (Official docs https://firebase.google.com/docs/reference/cpp/struct/firebase/remote-config/config-settings)",
+            "description": "Sets the minimum fetch interval.",
             "examples": "",
-            "name": "remoteconfig.remoteconfig.set_minimum_fetch_interval",
+            "name": "remoteconfig.set_minimum_fetch_interval",
             "parameters": [
                 {
-                    "doc": "The minimum interval in milliseconds between successive fetch calls. Generates SETTINGS_UPDATED or SETTINGS_ERROR",
+                    "doc": "The minimum interval in milliseconds between successive fetch calls. Generates MSG_SETTINGS_UPDATED or MSG_ERROR",
+                    "name": "minimum_fetch_interval",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets the timeout that specifies how long the client should wait for a connection to the Firebase Remote Config servers",
+            "examples": "",
+            "name": "remoteconfig.set_timeout",
+            "parameters": [
+                {
+                    "doc": "The timeout interval in milliseconds. Generates MSG_SETTINGS_UPDATED or MSG_ERROR",
                     "name": "minimum_fetch_interval",
                     "types": [
                         "int"
@@ -147,7 +194,7 @@
         {
             "description": "Event generated when remote config has been initialized and is ready for use",
             "examples": "",
-            "name": "remoteconfig.CONFIG_INITIALIZED",
+            "name": "MSG_INITIALIZED",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
@@ -155,7 +202,7 @@
         {
             "description": "Event generated when an error occurred.",
             "examples": "",
-            "name": "remoteconfig.CONFIG_ERROR",
+            "name": "MSG_ERROR",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
@@ -163,7 +210,7 @@
         {
             "description": "Event generated when the default values have been set",
             "examples": "",
-            "name": "remoteconfig.CONFIG_DEFAULTS_SET",
+            "name": "MSG_DEFAULTS_SET",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
@@ -171,7 +218,7 @@
         {
             "description": "Event generated when the remote config has been fetched",
             "examples": "",
-            "name": "remoteconfig.CONFIG_FETCHED",
+            "name": "MSG_FETCHED",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
@@ -179,7 +226,7 @@
         {
             "description": "Event generated when the remote config has been activated",
             "examples": "",
-            "name": "remoteconfig.CONFIG_ACTIVATED",
+            "name": "MSG_ACTIVATED",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
@@ -187,15 +234,7 @@
         {
             "description": "Event generated when remote config settings have been updated",
             "examples": "",
-            "name": "remoteconfig.SETTINGS_UPDATED",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "VARIABLE"
-        },
-        {
-            "description": "Event generated when an error occurred during updating settings",
-            "examples": "",
-            "name": "remoteconfig.SETTINGS_ERROR",
+            "name": "MSG_SETTINGS_UPDATED",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
