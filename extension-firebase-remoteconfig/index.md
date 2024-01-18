@@ -25,12 +25,12 @@ Follow the [main setup guide for integration of Firebase in Defold](https://www.
 
 ```lua
 local function firebase_config_callback(self, message_id, message)
-    if message_id == remoteconfig.MSG_ERROR then
+    if message_id == firebase.remoteconfig.MSG_ERROR then
         -- an error was detected when performing a remote config operation
         print("Firebase Remote Config error: ", message.error)
         return
     end
-    if message_id == remoteconfig.MSG_INITIALIZED then
+    if message_id == firebase.remoteconfig.MSG_INITIALIZED then
         -- remote config is initialized and ready for use
         -- setup default values for your remote config
         -- these values will be used until you have loaded updated values from
@@ -41,7 +41,7 @@ local function firebase_config_callback(self, message_id, message)
             holiday_theme = "Christmas",
             holiday_promo_enabled = false,
         })
-    elseif message_id == remoteconfig.MSG_DEFAULTS_SET then
+    elseif message_id == firebase.remoteconfig.MSG_DEFAULTS_SET then
         -- you can use get_string(), get_boolean(), get_number() and get_data()
         print("Theme:", firebase.remoteconfig.get_string("holiday_theme"))                  -- Christmas
         print("Promo enabled:", firebase.remoteconfig.get_boolean("holiday_promo_enabled")) -- false
@@ -49,14 +49,14 @@ local function firebase_config_callback(self, message_id, message)
 
         -- get and activate new remote config values from the server
         firebase.remoteconfig.fetch_and_activate()
-    elseif message_id == remoteconfig.MSG_FETCHED then
+    elseif message_id == irebase.remoteconfig.MSG_FETCHED then
         print("Data Fetched")
-        pprint("KEYS:", remoteconfig.get_keys())
-    elseif message_id == remoteconfig.MSG_ACTIVATED then
+        pprint("KEYS:", firebase.remoteconfig.get_keys())
+    elseif message_id == firebase.remoteconfig.MSG_ACTIVATED then
         -- a recently fetched remote config has been activated and is now ready
         -- for use
         print(firebase.remoteconfig.get_string("holiday_theme")) -- Easter
-    elseif message_id == remoteconfig.MSG_SETTINGS_UPDATED then
+    elseif message_id == firebase.remoteconfig.MSG_SETTINGS_UPDATED then
         print("Settings updated")
     end
 end
