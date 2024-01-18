@@ -3,13 +3,68 @@
         {
             "description": "Initialise analytics",
             "examples": "",
-            "name": "analytics.init",
+            "name": "analytics.initialize",
             "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "Log an event with one string parameter. (Official docs https://firebase.google.com/docs/reference/cpp/namespace/firebase/logevent)",
+            "description": "Sets a callback function for receiving events from the SDK. Call `firebase.analytics.set_callback(nil)` to remove callback",
+            "examples": "",
+            "name": "analytics.set_callback",
+            "parameters": [
+                {
+                    "doc": "Callback function that is executed on any event in the SDK.",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "One of message types: `firebase.analytics.MSG_ERROR` `firebase.analytics.MSG_INSTANCE_ID`",
+                            "name": "message_id",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "A table holding the data",
+                            "name": "message",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Log an event without parameters.",
+            "examples": "",
+            "name": "analytics.log",
+            "parameters": [
+                {
+                    "doc": "Event name",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Log an event with one string parameter.",
             "examples": "",
             "name": "analytics.log_string",
             "parameters": [
@@ -39,7 +94,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Log an event with one integer parameter. (Official docs https://firebase.google.com/docs/reference/cpp/namespace/firebase/logevent_4)",
+            "description": "Log an event with one integer parameter.",
             "examples": "",
             "name": "analytics.log_int",
             "parameters": [
@@ -69,7 +124,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Log an event with one float parameter. (Official docs https://firebase.google.com/docs/reference/cpp/namespace/firebase/logevent_2)",
+            "description": "Log an event with one float parameter.",
             "examples": "",
             "name": "analytics.log_number",
             "parameters": [
@@ -99,7 +154,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Log an event with table parameters. (Official docs https://firebase.google.com/docs/reference/cpp/namespace/firebase/logevent_6)",
+            "description": "Log an event with table parameters.",
             "examples": "",
             "name": "analytics.log_table",
             "parameters": [
@@ -122,15 +177,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "DEPRECATED. Use log_string(analytics.EVENT_SCREENVIEW, \"screen name\", \"screen class\").",
-            "examples": "",
-            "name": "analytics.set_screen",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Sets the user ID property. (Official docs https://firebase.google.com/docs/reference/cpp/namespace/firebase/setuserid)",
+            "description": "Sets the user ID property.",
             "examples": "",
             "name": "analytics.set_user_id",
             "parameters": [
@@ -146,7 +193,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Set a user property to the given value. (Official docs https://firebase.google.com/docs/reference/cpp/namespace/firebase/setuserproperty)",
+            "description": "Set a user property to the given value.",
             "examples": "",
             "name": "analytics.set_user_property",
             "parameters": [
@@ -169,7 +216,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Clears all data for this app from the device and resets the app instance id. (Official docs https://firebase.google.com/docs/reference/cpp/namespace/firebase/resetata)",
+            "description": "Clears all data for this app from the device and resets the app instance id.",
             "examples": "",
             "name": "analytics.reset",
             "parameters": [],
@@ -177,15 +224,23 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Get the instance ID from the service. (Official docs https://firebase.google.com/docs/reference/cpp/namespace/firebase/getnstanceid)",
+            "description": "Get the instance ID from the service. Returned in callback with MSG_INSTANCE_ID message_id.",
             "examples": "",
             "name": "analytics.get_id",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets whether analytics collection is enabled for this app on this device.",
+            "examples": "",
+            "name": "analytics.set_enabled",
             "parameters": [
                 {
-                    "doc": "Function to invoke with the id (self, id)",
-                    "name": "callback",
+                    "doc": "The value",
+                    "name": "key",
                     "types": [
-                        "function"
+                        "boolean"
                     ]
                 }
             ],
@@ -193,9 +248,41 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Event generated when an error occurred.",
+            "examples": "",
+            "name": "MSG_ERROR",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Event generated when instance_id ready after `firebase.analytics.get_id()` call",
+            "examples": "",
+            "name": "MSG_INSTANCE_ID",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Predefined event",
+            "examples": "",
+            "name": "EVENT_ADIMPRESSION",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
             "description": "Predefined event",
             "examples": "",
             "name": "EVENT_ADDPAYMENTINFO",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined event",
+            "examples": "",
+            "name": "EVENT_ADDSHIPPINGINFO",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -212,14 +299,6 @@
             "description": "Predefined event",
             "examples": "",
             "name": "EVENT_ADDTOWISHLIST",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined event",
-            "examples": "",
-            "name": "EVENT_ADIMPRESSION",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -251,23 +330,7 @@
         {
             "description": "Predefined event",
             "examples": "",
-            "name": "EVENT_CHECKOUTPROGRESS",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined event",
-            "examples": "",
             "name": "EVENT_EARNVIRTUALCURRENCY",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined event",
-            "examples": "",
-            "name": "EVENT_ECOMMERCEPURCHASE",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -331,7 +394,7 @@
         {
             "description": "Predefined event",
             "examples": "",
-            "name": "EVENT_PRESENTOFFER",
+            "name": "EVENT_PURCHASE",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -339,7 +402,7 @@
         {
             "description": "Predefined event",
             "examples": "",
-            "name": "EVENT_PURCHASEREFUND",
+            "name": "EVENT_REFUND",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -379,7 +442,15 @@
         {
             "description": "Predefined event",
             "examples": "",
-            "name": "EVENT_SETCHECKOUTOPTION",
+            "name": "EVENT_SELECTITEM",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined event",
+            "examples": "",
+            "name": "EVENT_SELECTPROMOTION",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -435,6 +506,14 @@
         {
             "description": "Predefined event",
             "examples": "",
+            "name": "EVENT_VIEWCART",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined event",
+            "examples": "",
             "name": "EVENT_VIEWITEM",
             "parameters": [],
             "returnvalues": [],
@@ -451,71 +530,15 @@
         {
             "description": "Predefined event",
             "examples": "",
-            "name": "EVENT_VIEWSEARCHRESULTS",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined event",
-            "examples": "",
-            "name": "EVENT_ADDSHIPPINGINFO",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined event",
-            "examples": "",
-            "name": "EVENT_PURCHASE",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined event",
-            "examples": "",
-            "name": "EVENT_REFUND",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined event",
-            "examples": "",
-            "name": "EVENT_SELECTITEM",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined event",
-            "examples": "",
-            "name": "EVENT_SELECTPROMOTION",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined event",
-            "examples": "",
-            "name": "EVENT_VIEWCART",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined event",
-            "examples": "",
             "name": "EVENT_VIEWPROMOTION",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
         },
         {
-            "description": "Predefined parameter",
+            "description": "Predefined event",
             "examples": "",
-            "name": "PARAM_ACHIEVEMENTID",
+            "name": "EVENT_VIEWSEARCHRESULTS",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -571,6 +594,14 @@
         {
             "description": "Predefined parameter",
             "examples": "",
+            "name": "PARAM_CP1",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
             "name": "PARAM_CAMPAIGN",
             "parameters": [],
             "returnvalues": [],
@@ -579,23 +610,15 @@
         {
             "description": "Predefined parameter",
             "examples": "",
+            "name": "PARAM_CAMPAIGNID",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
             "name": "PARAM_CHARACTER",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_CHECKOUTSTEP",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_CHECKOUTOPTION",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -627,7 +650,7 @@
         {
             "description": "Predefined parameter",
             "examples": "",
-            "name": "PARAM_CP1",
+            "name": "PARAM_CREATIVEFORMAT",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -667,7 +690,23 @@
         {
             "description": "Predefined parameter",
             "examples": "",
+            "name": "PARAM_DISCOUNT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
             "name": "PARAM_ENDDATE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
+            "name": "PARAM_EXTENDSESSION",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -715,6 +754,38 @@
         {
             "description": "Predefined parameter",
             "examples": "",
+            "name": "PARAM_ITEMCATEGORY2",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
+            "name": "PARAM_ITEMCATEGORY3",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
+            "name": "PARAM_ITEMCATEGORY4",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
+            "name": "PARAM_ITEMCATEGORY5",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
             "name": "PARAM_ITEMID",
             "parameters": [],
             "returnvalues": [],
@@ -723,7 +794,15 @@
         {
             "description": "Predefined parameter",
             "examples": "",
-            "name": "PARAM_ITEMLOCATIONID",
+            "name": "PARAM_ITEMLISTID",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
+            "name": "PARAM_ITEMLISTNAME",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -739,7 +818,7 @@
         {
             "description": "Predefined parameter",
             "examples": "",
-            "name": "PARAM_ITEMLIST",
+            "name": "PARAM_ITEMVARIANT",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -747,7 +826,7 @@
         {
             "description": "Predefined parameter",
             "examples": "",
-            "name": "PARAM_ITEMVARIANT",
+            "name": "PARAM_ITEMS",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -763,6 +842,14 @@
         {
             "description": "Predefined parameter",
             "examples": "",
+            "name": "PARAM_LEVELNAME",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
             "name": "PARAM_LOCATION",
             "parameters": [],
             "returnvalues": [],
@@ -771,7 +858,31 @@
         {
             "description": "Predefined parameter",
             "examples": "",
+            "name": "PARAM_LOCATIONID",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
+            "name": "PARAM_MARKETINGTACTIC",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
             "name": "PARAM_MEDIUM",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
+            "name": "PARAM_METHOD",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -811,7 +922,31 @@
         {
             "description": "Predefined parameter",
             "examples": "",
+            "name": "PARAM_PAYMENTTYPE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
             "name": "PARAM_PRICE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
+            "name": "PARAM_PROMOTIONID",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
+            "name": "PARAM_PROMOTIONNAME",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -867,15 +1002,7 @@
         {
             "description": "Predefined parameter",
             "examples": "",
-            "name": "PARAM_SIGNUPMETHOD",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_METHOD",
+            "name": "PARAM_SHIPPINGTIER",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -891,7 +1018,23 @@
         {
             "description": "Predefined parameter",
             "examples": "",
+            "name": "PARAM_SOURCEPLATFORM",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
             "name": "PARAM_STARTDATE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "STRING"
+        },
+        {
+            "description": "Predefined parameter",
+            "examples": "",
+            "name": "PARAM_SUCCESS",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
@@ -945,129 +1088,17 @@
             "type": "STRING"
         },
         {
-            "description": "Predefined parameter",
+            "description": "Predefined property",
             "examples": "",
-            "name": "PARAM_LEVELNAME",
+            "name": "PROP_ALLOWADPERSONALIZATIONSIGNALS",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
         },
         {
-            "description": "Predefined parameter",
+            "description": "Predefined property",
             "examples": "",
-            "name": "PARAM_SUCCESS",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_EXTENDSESSION",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_DISCOUNT",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_ITEMCATEGORY2",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_ITEMCATEGORY3",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_ITEMCATEGORY4",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_ITEMCATEGORY5",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_ITEMLISTID",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_ITEMLISTNAME",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_ITEMS",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_LOCATIONID",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_PAYMENTTYPE",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_PROMOTIONID",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_PROMOTIONNAME",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "STRING"
-        },
-        {
-            "description": "Predefined parameter",
-            "examples": "",
-            "name": "PARAM_SHIPPINGTIER",
+            "name": "PROP_SIGNUPMETHOD",
             "parameters": [],
             "returnvalues": [],
             "type": "STRING"
