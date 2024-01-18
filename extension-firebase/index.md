@@ -108,6 +108,7 @@ function init(self)
                 print("ERROR:", message.error)
             end
         end)
+        firebase.initialize()
     end
 end
 ```
