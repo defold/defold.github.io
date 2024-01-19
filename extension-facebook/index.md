@@ -233,4 +233,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-fac
 
 
 ## API reference
-[API Reference](/extension-facebook/facebook_api)
+[API Reference - facebook](/extension-facebook/facebook_api)

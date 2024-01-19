@@ -205,4 +205,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-goo
 
 
 ## API reference
-[API Reference](/extension-googleplayinstant/googleplayinstant_api)
+[API Reference - instantapp](/extension-googleplayinstant/instantapp_api)

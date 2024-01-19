@@ -380,10 +380,42 @@ def parse_extension_parameters(parameters):
             params.append(param)
     return params
 
+def parse_script_api_members(api_name, api):
+    md = Markdown(extensions=['markdown.extensions.fenced_code','markdown.extensions.def_list', 'markdown.extensions.codehilite','markdown.extensions.tables'])
+    elements = []
+    members = api["members"]
+    for m in members:
+        element = {}
+        element["parameters"] = parse_extension_parameters(m.get("parameters", []))
+        element["returnvalues"] = []
+        for r in m.get("returns", []):
+            ret = {}
+            ret["name"] = r.get("type", "")
+            ret["doc"] = r.get("desc", "")
+            element["returnvalues"].append(ret)
+        element["description"] = m.get("desc", "")
+        member_name = m.get("name", "")
+        member_type = m.get("type", "").upper()
+        if member_type == "NUMBER":
+            member_type = "VARIABLE"
+        element["type"] = member_type
+        if member_type == "FUNCTION":
+            element["name"] = api_name + "." + member_name
+        elif member_type == "TABLE":
+            if m.get("members"):
+                print("HAS MEMBERS")
+                elements.extend(parse_script_api_members(api_name + "." + member_name, m))
+        else:
+            element["name"] = m.get("name", "")
+        examples = []
+        for e in m.get("examples", []):
+            desc = e.get("desc", "")
+            examples.append(md.convert(desc))
+        element["examples"] = "".join(examples)
+        elements.append(element)
+    return elements
 
 def process_extension(extension_name, download = False):
-    md = Markdown(extensions=['markdown.extensions.fenced_code','markdown.extensions.def_list', 'markdown.extensions.codehilite','markdown.extensions.tables'])
-
     extension_zip = extension_name + ".zip"
     github_url = "https://github.com/defold/{}".format(extension_name)
     if download:
@@ -416,7 +448,6 @@ def process_extension(extension_name, download = False):
         docs_dir = os.path.join(unzipped_extension_dir, "docs")
         rmcopytree(docs_dir, extension_dir)
         index = os.path.join(extension_dir, "index.md")
-        append_to_file(index, "[API Reference](/{}/{}_api)".format(extension_name, extension_name.replace("extension-", "")))
         replace_in_file(index, r"title\:", r"layout: manual\ntitle:")
         replace_in_file(index, r"title\:", r"language: en\ntitle:")
         replace_in_file(index, r"title\:", r"github: {}\ntitle:".format(github_url))
@@ -435,6 +466,9 @@ def process_extension(extension_name, download = False):
             api = yaml.safe_load(read_as_string(filename))[0]
             api_name = api.get("name", "")
 
+            # append links to api reference to the end of the file
+            append_to_file(index, "[API Reference - {}](/{}/{}_api)\n".format(api_name, extension_dir, api_name))
+
             # generate a dummy markdown page with some front matter for the api doc
             api_filename = os.path.join(extension_dir, api_name + "_api.html")
             with open(api_filename, "w") as f:
@@ -451,30 +485,7 @@ def process_extension(extension_name, download = False):
             info["brief"] = api_name
             info["api"] = os.path.join(extension_dir, api_name + "_api")
 
-            for m in api["members"]:
-                element = {}
-                element["parameters"] = parse_extension_parameters(m.get("parameters", []))
-                element["returnvalues"] = []
-                for r in m.get("returns", []):
-                    ret = {}
-                    ret["name"] = r.get("type", "")
-                    ret["doc"] = r.get("desc", "")
-                    element["returnvalues"].append(ret)
-                element["description"] = m.get("desc", "")
-                type = m.get("type", "").upper()
-                if type == "NUMBER":
-                    type = "VARIABLE"
-                element["type"] = type
-                if type == "FUNCTION":
-                    element["name"] = api_name + "." + m.get("name", "")
-                else:
-                    element["name"] = m.get("name", "")
-                examples = []
-                for e in m.get("examples", []):
-                    desc = e.get("desc", "")
-                    examples.append(md.convert(desc))
-                element["examples"] = "".join(examples)
-                elements.append(element)
+            elements.extend(parse_script_api_members(api_name, api))
 
             # write the json data file
             extension_data_dir = os.path.join("_data", "extensions")

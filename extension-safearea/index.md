@@ -64,4 +64,4 @@ safearea.set_background_color(vmath.vector4(0,0,0,0))
 -- safearea.STATUS_NOT_AVAILABLE - functionality isn't available on this platform or OS version. Values will be 0
 -- safearea.STATUS_NOT_READY_YET - values aren't ready yet. Depends on platform and OS it may take a while (usually up to 200ms) to be ready, check later. Values will be 0
 ```
-[API Reference](/extension-safearea/safearea_api)
+[API Reference - safearea](/extension-safearea/safearea_api)

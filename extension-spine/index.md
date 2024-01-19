@@ -444,4 +444,5 @@ If you select <kbd>Add Images</kbd> Defold will automatically create animation g
 So what do you do if your animation references "head_parts/eyes"? The easiest way to accomplish a match is to add an animation group (right click the root node in the Atlas *Outline* view and select *Add Animation Group*). You can then name that group "head_parts/eyes" (it's just a name, not a path and `/` characters are legal) and then add the file "eyes.png" to the group.
 
 ![Atlas path names](atlas_names.png)
-[API Reference](/extension-spine/spine_api)
+[API Reference - spine](/extension-spine/spine_api)
+[API Reference - gui](/extension-spine/gui_api)

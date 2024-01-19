@@ -39,4 +39,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-per
 
 
 ## API reference
-[API Reference](/extension-permissions/permissions_api)
+[API Reference - permissions](/extension-permissions/permissions_api)

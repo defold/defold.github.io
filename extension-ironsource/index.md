@@ -49,4 +49,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-iro
 
 
 ## API reference
-[API Reference](/extension-ironsource/ironsource_api)
+[API Reference - ironsource](/extension-ironsource/ironsource_api)

@@ -118,4 +118,4 @@ local value = poki_sdk.get_url_param(key) -- in JS it's PokiSDK.getURLParam('id'
 
 
 ## API reference
-[API Reference](/extension-poki-sdk/poki-sdk_api)
+[API Reference - poki_sdk](/extension-poki-sdk/poki_sdk_api)

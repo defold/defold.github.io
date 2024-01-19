@@ -36,4 +36,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-rev
 
 
 ## API reference
-[API Reference](/extension-review/review_api)
+[API Reference - review](/extension-review/review_api)

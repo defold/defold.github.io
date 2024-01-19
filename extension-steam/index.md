@@ -68,4 +68,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-ste
 
 
 ## API reference
-[API Reference](/extension-steam/steam_api)
+[API Reference - steam](/extension-steam/steam_api)

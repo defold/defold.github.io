@@ -224,4 +224,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-adm
 
 
 ## API reference
-[API Reference](/extension-admob/admob_api)
+[API Reference - admob](/extension-admob/admob_api)
