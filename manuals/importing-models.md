@@ -42,7 +42,6 @@ Defold imposes some limitations on exported animation data:
 When you export a model you need to make sure that it fulfills the following requirements:
 
 * The model must consist of a single mesh
-* The model must use a single material
 * The exported *.gltf* file must use embedded mesh data. Mesh data in a separate binary file is not supported. 
 
 
