@@ -30,10 +30,9 @@ brief: 碰撞对象的形状可以包含多个简单形状组成也可以由一�
 
 ![Sphere shape](/manuals/images/physics/capsule.png)
 
-<div class='sidenote' markdown='1'>
+<div class='important' markdown='1'>
 胶囊形仅用于 3D 物理 (在 *game.project* 文件的物理部分进行设置).
 </div>
-
 
 ### 复杂形状
 复杂形状可以由瓷砖地图生成或者使用凸多边形.
@@ -50,7 +49,7 @@ Defold 包含一个功能就是从瓷砖地图中自动生成瓷磚圖源的物�
 
 ![Tilesource collision](/manuals/images/physics/collision_tilemap.png)
 
-<div class='sidenote' markdown='1'>
+<div class='important' markdown='1'>
 这里的 *Group* 属性 **不会** 生效, 因为碰撞组已在瓷砖图源中定义好了.
 </div>
 
@@ -73,6 +72,7 @@ Defold 有一个功能就是让你用3个或多个点建立凸多边形. 可以�
 
 ## 在3D物理世界中旋转碰撞形状
 在3D物理中物体在各个轴上都可以进行旋转.
+
 
 ## 在2D物理世界中旋转碰撞形状
 在3D物理中物体只能在z轴上旋转. 其他轴旋转会造成错误结果, 即使旋转180度用于翻转形状也不行. 要翻转物理形状推荐使用 [`physics.set_hlip(url, flip)`](/ref/stable/physics/?#physics.set_hflip:url-flip) 和 [`physics.set_vlip(url, flip)`](/ref/stable/physics/?#physics.set_vflip:url-flip) 函数.

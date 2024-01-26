@@ -21,7 +21,7 @@ brief: 本教程介绍了游戏手柄输入的功能.
 
 ![](/manuals/images/input/gamepad_bindings.png)
 
-<div class='sidenote' markdown='1'>
+<div class='important' markdown='1'>
 下面的例子中使用了上图的映射绑定配置. 映射与命名可以根据项目需要自由设置.
 </div>
 
