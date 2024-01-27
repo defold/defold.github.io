@@ -402,7 +402,7 @@
       "type": "FUNCTION",
       "name": "physics.raycast_async",
       "brief": "requests a ray cast to be performed",
-      "description": "Ray casts are used to test for intersections against collision objects in the physics world.\nCollision objects of types kinematic, dynamic and static are tested against. Trigger objects\ndo not intersect with ray casts.\nWhich collision objects to hit is filtered by their collision groups and can be configured\nthrough <code>groups</code>.\nThe actual ray cast will be performed during the physics-update.\n<ul>\n<li>If an object is hit, the result will be reported via a <code>ray_cast_response</code> message.</li>\n<li>If there is no object hit, the result will be reported via a <code>ray_cast_missed</code> message.</li>\n</ul>",
+      "description": "Ray casts are used to test for intersections against collision objects in the physics world.\nCollision objects of types kinematic, dynamic and static are tested against. Trigger objects\ndo not intersect with ray casts.\nWhich collision objects to hit is filtered by their collision groups and can be configured\nthrough <code>groups</code>.\nThe actual ray cast will be performed during the physics-update.\n<ul>\n<li>If an object is hit, the result will be reported via a <a href=\"#ray_cast_response\">ray_cast_response</a> message.</li>\n<li>If there is no object hit, the result will be reported via a <a href=\"#ray_cast_missed\">ray_cast_missed</a> message.</li>\n</ul>",
       "returnvalues": [],
       "parameters": [
         {
@@ -449,7 +449,7 @@
       "returnvalues": [
         {
           "name": "result",
-          "doc": "It returns a list. If missed it returns <code>nil</code>. See <code>ray_cast_response</code> for details on the returned values.",
+          "doc": "It returns a list. If missed it returns <code>nil</code>. See <a href=\"#ray_cast_response\">ray_cast_response</a> for details on the returned values.",
           "types": [
             "table",
             "nil"
@@ -1103,6 +1103,29 @@
       "notes": []
     },
     {
+      "type": "FUNCTION",
+      "name": "physics.set_listener",
+      "brief": "sets a physics world event listener. If a function is set, physics messages will no longer be sent.",
+      "description": "sets a physics world event listener. If a function is set, physics messages will no longer be sent.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "callback",
+          "doc": "A callback that receives information about all the physics interactions in this physics world.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The calling script</dd>\n<dt><code>event</code></dt>\n<dd><span class=\"type\">constant</span> The type of event. Can be one of these messages:</dd>\n</dl>\n<ul>\n<li><a href=\"#contact_point_event\">contact_point_event</a></li>\n<li><a href=\"#collision_event\">collision_event</a></li>\n<li><a href=\"#trigger_event\">trigger_event</a></li>\n<li><a href=\"#ray_cast_response\">ray_cast_response</a></li>\n<li><a href=\"#ray_cast_missed\">ray_cast_missed</a></li>\n</ul>\n<dl>\n<dt><code>data</code></dt>\n<dd><span class=\"type\">table</span> The callback value data is a table that contains event-related data. See the documentation for details on the messages.</dd>\n</dl>",
+          "types": [
+            "function(self, event, data)",
+            "nil"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">physics_world_listener</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">event</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n  <span class=\"kr\">if</span> <span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;contact_point_event&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- {</span>\n    <span class=\"c1\">--  distance = 0.0714111328125,</span>\n    <span class=\"c1\">--  applied_impulse = 310.00769042969,</span>\n    <span class=\"c1\">--  a = {</span>\n    <span class=\"c1\">--      position = vmath.vector3(446, 371, 0),</span>\n    <span class=\"c1\">--      relative_velocity = vmath.vector3(1.1722083854693e-06, -20.667181015015, -0),</span>\n    <span class=\"c1\">--      mass = 0,</span>\n    <span class=\"c1\">--      group = hash: [default],</span>\n    <span class=\"c1\">--      id = hash: [/flat],</span>\n    <span class=\"c1\">--      normal = vmath.vector3(-0, -1, -0)</span>\n    <span class=\"c1\">--  },</span>\n    <span class=\"c1\">--  b = {</span>\n    <span class=\"c1\">--      position = vmath.vector3(185, 657.92858886719, 0),</span>\n    <span class=\"c1\">--      relative_velocity = vmath.vector3(-1.1722083854693e-06, 20.667181015015, 0),</span>\n    <span class=\"c1\">--      mass = 10,</span>\n    <span class=\"c1\">--      group = hash: [default],</span>\n    <span class=\"c1\">--      id = hash: [/go2],</span>\n    <span class=\"c1\">--      normal = vmath.vector3(0, 1, 0)</span>\n    <span class=\"c1\">--  }</span>\n    <span class=\"c1\">-- }</span>\n  <span class=\"kr\">elseif</span> <span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;collision_event&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- {</span>\n    <span class=\"c1\">--  a = {</span>\n    <span class=\"c1\">--          group = hash: [default],</span>\n    <span class=\"c1\">--          position = vmath.vector3(183, 666, 0),</span>\n    <span class=\"c1\">--          id = hash: [/go1]</span>\n    <span class=\"c1\">--      },</span>\n    <span class=\"c1\">--  b = {</span>\n    <span class=\"c1\">--          group = hash: [default],</span>\n    <span class=\"c1\">--          position = vmath.vector3(185, 704.05865478516, 0),</span>\n    <span class=\"c1\">--          id = hash: [/go2]</span>\n    <span class=\"c1\">--      }</span>\n    <span class=\"c1\">-- }</span>\n  <span class=\"kr\">elseif</span> <span class=\"n\">event</span> <span class=\"o\">==</span>  <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;trigger_event&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- {</span>\n    <span class=\"c1\">--  enter = true,</span>\n    <span class=\"c1\">--  b = {</span>\n    <span class=\"c1\">--      group = hash: [default],</span>\n    <span class=\"c1\">--      id = hash: [/go2]</span>\n    <span class=\"c1\">--  },</span>\n    <span class=\"c1\">--  a = {</span>\n    <span class=\"c1\">--      group = hash: [default],</span>\n    <span class=\"c1\">--      id = hash: [/go1]</span>\n    <span class=\"c1\">--  }</span>\n    <span class=\"c1\">-- },</span>\n  <span class=\"kr\">elseif</span> <span class=\"n\">event</span> <span class=\"o\">==</span>  <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;ray_cast_response&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"c1\">--{</span>\n    <span class=\"c1\">--  group = hash: [default],</span>\n    <span class=\"c1\">--  request_id = 0,</span>\n    <span class=\"c1\">--  position = vmath.vector3(249.92222595215, 249.92222595215, 0),</span>\n    <span class=\"c1\">--  fraction = 0.68759721517563,</span>\n    <span class=\"c1\">--  normal = vmath.vector3(0, 1, 0),</span>\n    <span class=\"c1\">--  id = hash: [/go]</span>\n    <span class=\"c1\">-- }</span>\n  <span class=\"kr\">elseif</span> <span class=\"n\">event</span> <span class=\"o\">==</span>  <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;ray_cast_missed&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- {</span>\n    <span class=\"c1\">--  request_id = 0</span>\n    <span class=\"c1\">--},</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"n\">physics_world_listener</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
       "type": "MESSAGE",
       "name": "apply_force",
       "brief": "applies a force on a collision object",
@@ -1154,14 +1177,14 @@
         },
         {
           "name": "other_group",
-          "doc": "the collision group of the other collision object (hash)",
+          "doc": "the collision group of the other collision object",
           "types": [
             "hash"
           ]
         },
         {
           "name": "own_group",
-          "doc": "the collision group of the own collision object (hash)",
+          "doc": "the collision group of the own collision object",
           "types": [
             "hash"
           ]
@@ -1253,14 +1276,14 @@
         },
         {
           "name": "other_group",
-          "doc": "the collision group of the other collision object (hash)",
+          "doc": "the collision group of the other collision object",
           "types": [
             "hash"
           ]
         },
         {
           "name": "own_group",
-          "doc": "the collision group of the own collision object (hash)",
+          "doc": "the collision group of the own collision object",
           "types": [
             "hash"
           ]
@@ -1282,7 +1305,7 @@
       "parameters": [
         {
           "name": "other_id",
-          "doc": "the id of the instance the collision object collided with (hash)",
+          "doc": "the id of the instance the collision object collided with",
           "types": [
             "hash"
           ]
@@ -1296,14 +1319,14 @@
         },
         {
           "name": "other_group",
-          "doc": "the collision group of the triggering collision object (hash)",
+          "doc": "the collision group of the triggering collision object",
           "types": [
             "hash"
           ]
         },
         {
           "name": "own_group",
-          "doc": "the collision group of the own collision object (hash)",
+          "doc": "the collision group of the own collision object",
           "types": [
             "hash"
           ]
@@ -1320,7 +1343,7 @@
       "type": "MESSAGE",
       "name": "ray_cast_response",
       "brief": "reports a ray cast hit",
-      "description": "This message is sent back to the sender of a <code>ray_cast_request</code>, if the ray hit a\ncollision object. See <code>physics.raycast_async</code> for examples of how to use it.",
+      "description": "This message is sent back to the sender of a <a href=\"#ray_cast_request\">ray_cast_request</a>, or to the physics world listener\nif it is set (see <a href=\"/ref/physics#physics.set_listener\">physics.set_listener</a>), if the ray hits a collision object.\nSee <a href=\"/ref/physics#physics.raycast_async\">physics.raycast_async</a> for examples of how to use it.",
       "returnvalues": [],
       "parameters": [
         {
@@ -1377,7 +1400,7 @@
       "type": "MESSAGE",
       "name": "ray_cast_missed",
       "brief": "reports a ray cast miss",
-      "description": "This message is sent back to the sender of a <code>ray_cast_request</code>, if the ray didn't hit any\ncollision object. See <code>physics.raycast_async</code> for examples of how to use it.",
+      "description": "This message is sent back to the sender of a <a href=\"#ray_cast_request\">ray_cast_request</a>, or to the physics world listener\nif it is set (see <a href=\"/ref/physics#physics.set_listener\">physics.set_listener</a>), if the ray didn't hit any collision object.\nSee <a href=\"/ref/physics#physics.raycast_async\">physics.raycast_async</a> for examples of how to use it.",
       "returnvalues": [],
       "parameters": [
         {
@@ -1389,6 +1412,114 @@
         }
       ],
       "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "MESSAGE",
+      "name": "contact_point_event",
+      "brief": "reports a contact point between two collision objects in cases where a listener is specified.",
+      "description": "See <a href=\"/ref/physics#physics.set_listener\">physics.set_listener</a>.\nThis message is sent to a function specified in <a href=\"/ref/physics#physics.set_listener\">physics.set_listener</a> when\na collision object has contact points with another collision object.\nSince multiple contact points can occur for two colliding objects, this event can be sent\nmultiple times in the same frame for the same two colliding objects. To only be notified once\nwhen the collision occurs, check for the <a href=\"#collision_event\">collision_event</a> event instead.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "applied_impulse",
+          "doc": "the impulse the contact resulted in",
+          "types": [
+            "number"
+          ]
+        },
+        {
+          "name": "distance",
+          "doc": "the penetration distance between the objects, which is always positive",
+          "types": [
+            "number"
+          ]
+        },
+        {
+          "name": "a",
+          "doc": "contact point information for object A\n<dl>\n<dt><code>position</code></dt>\n<dd><span class=\"type\">vector3</span> The world position of object A</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object A</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object A</dd>\n<dt><code>relative_velocity</code></dt>\n<dd><span class=\"type\">vector3</span> The relative velocity of the collision object A as observed from B object</dd>\n<dt><code>mass</code></dt>\n<dd><span class=\"type\">number</span> The mass of the collision object A in kg</dd>\n<dt><code>normal</code></dt>\n<dd><span class=\"type\">vector3</span> normal in world space of the contact point, which points from B object towards A object</dd>\n</dl>",
+          "types": [
+            "table"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "contact point information for object B\n<dl>\n<dt><code>position</code></dt>\n<dd><span class=\"type\">vector3</span> The world position of object B</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object B</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object B</dd>\n<dt><code>relative_velocity</code></dt>\n<dd><span class=\"type\">vector3</span> The relative velocity of the collision object B as observed from A object</dd>\n<dt><code>mass</code></dt>\n<dd><span class=\"type\">number</span> The mass of the collision object B in kg</dd>\n<dt><code>normal</code></dt>\n<dd><span class=\"type\">vector3</span> normal in world space of the contact point, which points from A object towards B object</dd>\n</dl>",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "examples": "How to take action when a contact point occurs:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">event</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n <span class=\"kr\">if</span> <span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;contact_point_event&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n     <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n     <span class=\"c1\">-- {</span>\n     <span class=\"c1\">--  applied_impulse = 310.00769042969,</span>\n     <span class=\"c1\">--  distance = 0.0714111328125,</span>\n     <span class=\"c1\">--  a = {</span>\n     <span class=\"c1\">--      position = vmath.vector3(446, 371, 0),</span>\n     <span class=\"c1\">--      relative_velocity = vmath.vector3(1.1722083854693e-06, -20.667181015015, -0),</span>\n     <span class=\"c1\">--      mass = 0,</span>\n     <span class=\"c1\">--      group = hash: [default],</span>\n     <span class=\"c1\">--      id = hash: [/flat],</span>\n     <span class=\"c1\">--      normal = vmath.vector3(-0, -1, -0)</span>\n     <span class=\"c1\">--  },</span>\n     <span class=\"c1\">--  b = {</span>\n     <span class=\"c1\">--      position = vmath.vector3(185, 657.92858886719, 0),</span>\n     <span class=\"c1\">--      relative_velocity = vmath.vector3(-1.1722083854693e-06, 20.667181015015, 0),</span>\n     <span class=\"c1\">--      mass = 10,</span>\n     <span class=\"c1\">--      group = hash: [default],</span>\n     <span class=\"c1\">--      id = hash: [/go2],</span>\n     <span class=\"c1\">--      normal = vmath.vector3(0, 1, 0)</span>\n     <span class=\"c1\">--  },</span>\n     <span class=\"c1\">-- }</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "MESSAGE",
+      "name": "collision_event",
+      "brief": "reports a collision between two collision objects in cases where a listener is specified.",
+      "description": "See <a href=\"/ref/physics#physics.set_listener\">physics.set_listener</a>.\nThis message is sent to a function specified in <a href=\"/ref/physics#physics.set_listener\">physics.set_listener</a>\nwhen two collision objects collide.\nThis message only reports that a collision has occurred and will be sent once per frame and per colliding pair.\nFor more detailed information, check for the <a href=\"#contact_point_event\">contact_point_event</a>.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "a",
+          "doc": "collision information for object A\n<dl>\n<dt><code>position</code></dt>\n<dd><span class=\"type\">vector3</span> The world position of object A</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object A</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object A</dd>\n</dl>",
+          "types": [
+            "table"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "collision information for object B\n<dl>\n<dt><code>position</code></dt>\n<dd><span class=\"type\">vector3</span> The world position of object B</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object B</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object B</dd>\n</dl>",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "examples": "How to take action when a collision occurs:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">event</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n  <span class=\"kr\">if</span> <span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;collision_event&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n      <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n      <span class=\"c1\">-- {</span>\n      <span class=\"c1\">--  a = {</span>\n      <span class=\"c1\">--          group = hash: [default],</span>\n      <span class=\"c1\">--          position = vmath.vector3(183, 666, 0),</span>\n      <span class=\"c1\">--          id = hash: [/go1]</span>\n      <span class=\"c1\">--      },</span>\n      <span class=\"c1\">--  b = {</span>\n      <span class=\"c1\">--          group = hash: [default],</span>\n      <span class=\"c1\">--          position = vmath.vector3(185, 704.05865478516, 0),</span>\n      <span class=\"c1\">--          id = hash: [/go2]</span>\n      <span class=\"c1\">--      }</span>\n      <span class=\"c1\">-- }</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "MESSAGE",
+      "name": "trigger_event",
+      "brief": "reports interaction (enter/exit) between a trigger collision object and another collision object",
+      "description": "See <a href=\"/ref/physics#physics.set_listener\">physics.set_listener</a>.\nThis message is sent to a function specified in <a href=\"/ref/physics#physics.set_listener\">physics.set_listener</a>\nwhen a collision object interacts with another collision object and one of them is a trigger.\nThis message only reports that an interaction actually happened and will be sent once per colliding pair and frame.\nFor more detailed information, check for the <a href=\"#contact_point_event\">contact_point_event</a>.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "enter",
+          "doc": "if the interaction was an entry or not",
+          "types": [
+            "boolean"
+          ]
+        },
+        {
+          "name": "a",
+          "doc": "<dl>\n<dt>interaction information for object A</dt>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object A</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object A</dd>\n</dl>",
+          "types": [
+            "table"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "collision information for object B\n<dl>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object B</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object B</dd>\n</dl>",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "examples": "How to take action when a trigger interaction occurs:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">event</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n <span class=\"kr\">if</span> <span class=\"n\">event</span> <span class=\"o\">==</span>  <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;trigger_event&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n     <span class=\"kr\">if</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">enter</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- take action for entry</span>\n     <span class=\"kr\">else</span>\n        <span class=\"c1\">-- take action for exit</span>\n     <span class=\"kr\">end</span>\n     <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n     <span class=\"c1\">-- {</span>\n     <span class=\"c1\">--  enter = true,</span>\n     <span class=\"c1\">--  b = {</span>\n     <span class=\"c1\">--      group = hash: [default],</span>\n     <span class=\"c1\">--      id = hash: [/go2]</span>\n     <span class=\"c1\">--  },</span>\n     <span class=\"c1\">--  a = {</span>\n     <span class=\"c1\">--      group = hash: [default],</span>\n     <span class=\"c1\">--      id = hash: [/go1]</span>\n     <span class=\"c1\">--  }</span>\n     <span class=\"c1\">-- },</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span><span class=\"p\">)</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],
