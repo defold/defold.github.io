@@ -6,7 +6,7 @@ GUIs 对于其元素的大小改变是积极的: 面板和对话框总是应该�
 
 ![GUI 缩放](../images/gui-box/scaling.png)
 
-九宫格方块节点包含4个像素数值分别代表左, 上, 右, 下有多少边缘不参与缩放:
+*九宫格* 方块节点包含4个像素数值分别代表左, 上, 右, 下有多少边缘不参与缩放:
 
 ![九宫格属性](../images/gui-box/slice9_properties.png)
 
@@ -26,6 +26,10 @@ GUIs 对于其元素的大小改变是积极的: 面板和对话框总是应该�
 
 <div class='important' markdown='1'>
 如果更改 sprite 或方块节点的缩放属性 (或者游戏对象自身的缩放属性) - sprite 或节点和纹理的缩放都不会带 *Slice9* 效果.
+</div>
+
+<div class='important' markdown='1'>
+要在 Sprite 上启用九宫格 [Sprite 图片的 Trim Mode](https://defold.com/manuals/atlas/#image-properties) 必须关闭.
 </div>
 
 

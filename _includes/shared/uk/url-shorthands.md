@@ -1,10 +1,10 @@
   `.`
-  : Shorthand resolving to the current game object.
+  : Скорочення для поточного ігрового обʼєкта.
 
   `#`
-  : Shorthand resolving to the current component.
+  : Скорочення для поточного компонента.
 
-  For example:
+  Наприклад:
 
   ```lua
    -- Let this game object acquire input focus

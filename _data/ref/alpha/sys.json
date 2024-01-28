@@ -2,6 +2,115 @@
   "elements": [
     {
       "type": "FUNCTION",
+      "name": "sys.load_buffer",
+      "brief": "loads a buffer from a resource or disk path",
+      "description": "The sys.load_buffer function will first try to load the resource\nfrom any of the mounted resource locations and return the data if\nany matching entries found. If not, the path will be tried\nas is from the primary disk on the device.\nIn order for the engine to include custom resources in the build process, you need\nto specify them in the \"custom_resources\" key in your \"game.project\" settings file.\nYou can specify single resource files or directories. If a directory is included\nin the resource list, all files and directories in that directory is recursively\nincluded:\nFor example \"main/data/,assets/level_data.json\".",
+      "returnvalues": [
+        {
+          "name": "buffer",
+          "doc": "the buffer with data",
+          "types": [
+            "buffer"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "path",
+          "doc": "the path to load the buffer from",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "examples": "Load binary data from a custom project resource:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">my_buffer</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load_buffer</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/my_level_data.bin&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">data_str</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">get_bytes</span><span class=\"p\">(</span><span class=\"n\">my_buffer</span><span class=\"p\">,</span> <span class=\"s2\">&quot;data&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">has_my_header</span> <span class=\"o\">=</span> <span class=\"nb\">string.sub</span><span class=\"p\">(</span><span class=\"n\">data_str</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">6</span><span class=\"p\">)</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;D3F0LD&quot;</span>\n</code></pre></div>\n\nLoad binary data from non-custom resource files on disk:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">asset_1</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load_buffer</span><span class=\"p\">(</span><span class=\"s2\">&quot;folder_next_to_binary/my_level_asset.txt&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">asset_2</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load_buffer</span><span class=\"p\">(</span><span class=\"s2\">&quot;/my/absolute/path&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "sys.load_buffer_async",
+      "brief": "loads a buffer from a resource or disk path asynchronously",
+      "description": "The sys.load_buffer function will first try to load the resource\nfrom any of the mounted resource locations and return the data if\nany matching entries found. If not, the path will be tried\nas is from the primary disk on the device.\nIn order for the engine to include custom resources in the build process, you need\nto specify them in the \"custom_resources\" key in your \"game.project\" settings file.\nYou can specify single resource files or directories. If a directory is included\nin the resource list, all files and directories in that directory is recursively\nincluded:\nFor example \"main/data/,assets/level_data.json\".\nNote that issuing multiple requests of the same resource will yield\nindividual buffers per request. There is no implic caching of the buffers\nbased on request path.",
+      "returnvalues": [
+        {
+          "name": "handle",
+          "doc": "a handle to the request",
+          "types": [
+            "handle"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "path",
+          "doc": "the path to load the buffer from",
+          "types": [
+            "string"
+          ]
+        },
+        {
+          "name": "status_callback",
+          "doc": "A status callback that will be invoked when a request has been handled, or an error occured. The result is a table containing:\n<dl>\n<dt><code>status</code></dt>\n<dd><span class=\"type\">number</span> The status of the request, supported values are:</dd>\n</dl>\n<ul>\n<li><code>resource.REQUEST_STATUS_FINISHED</code></li>\n<li><code>resource.REQUEST_STATUS_ERROR_IO_ERROR</code></li>\n<li><code>resource.REQUEST_STATUS_ERROR_NOT_FOUND</code></li>\n</ul>\n<dl>\n<dt><code>buffer</code></dt>\n<dd><span class=\"type\">buffer</span> If the request was successfull, this will contain the request payload in a buffer object, and nil otherwise. Make sure to check the status before doing anything with the buffer value!</dd>\n</dl>",
+          "types": [
+            "function(self, request_id, result)"
+          ]
+        }
+      ],
+      "examples": "Load binary data from a custom project resource and update a texture resource:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">my_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">request_id</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">)</span>\n  <span class=\"kr\">if</span> <span class=\"n\">result</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">REQUEST_STATUS_FINISHED</span> <span class=\"kr\">then</span>\n     <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">set_texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;/my_texture&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"p\">...</span> <span class=\"p\">},</span> <span class=\"n\">result</span><span class=\"p\">.</span><span class=\"n\">buf</span><span class=\"p\">)</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"n\">my_request</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load_buffer_async</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/my_level_data.bin&quot;</span><span class=\"p\">,</span> <span class=\"n\">my_callback</span><span class=\"p\">)</span>\n</code></pre></div>\n\nLoad binary data from non-custom resource files on disk:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">my_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">request_id</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">)</span>\n  <span class=\"kr\">if</span> <span class=\"n\">result</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">~=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">REQUEST_STATUS_FINISHED</span> <span class=\"kr\">then</span>\n    <span class=\"c1\">-- uh oh! File could not be found, do something graceful</span>\n  <span class=\"kr\">elseif</span> <span class=\"n\">request_id</span> <span class=\"o\">==</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">first_asset</span> <span class=\"kr\">then</span>\n    <span class=\"c1\">-- result.buffer contains data from my_level_asset.bin</span>\n  <span class=\"n\">elif</span> <span class=\"n\">request_id</span> <span class=\"o\">==</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">second_asset</span> <span class=\"kr\">then</span>\n    <span class=\"c1\">-- result.buffer contains data from &#39;my_level.bin&#39;</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">first_asset</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;folder_next_to_binary/my_level_asset.bin&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">second_asset</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;/some_absolute_path/my_level.bin&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">first_request</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load_buffer_async</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">first_asset</span><span class=\"p\">,</span> <span class=\"n\">my_callback</span><span class=\"p\">)</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">second_request</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load_buffer_async</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">second_asset</span><span class=\"p\">,</span> <span class=\"n\">my_callback</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "sys.REQUEST_STATUS_FINISHED",
+      "brief": "an asyncronous request has finished successfully",
+      "description": "an asyncronous request has finished successfully",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "sys.REQUEST_STATUS_ERROR_IO_ERROR",
+      "brief": "an asyncronous request is unable to read the resource",
+      "description": "an asyncronous request is unable to read the resource",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "sys.REQUEST_STATUS_ERROR_NOT_FOUND",
+      "brief": "an asyncronous request is unable to locate the resource",
+      "description": "an asyncronous request is unable to locate the resource",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "sys.save",
       "brief": "saves a lua table to a file stored on disk",
       "description": "The table can later be loaded by <code>sys.load</code>.\nUse <code>sys.get_save_file</code> to obtain a valid location for the file.\nInternally, this function uses a workspace buffer sized output file sized 512kb.\nThis size reflects the output file size which must not exceed this limit.\nAdditionally, the total number of rows that any one table may contain is limited to 65536\n(i.e. a 16 bit range). When tables are used to represent arrays, the values of\nkeys are permitted to fall within a 32 bit range, supporting sparse arrays, however\nthe limit on the total number of rows remains in effect.",
