@@ -356,20 +356,27 @@
       "type": "FUNCTION",
       "name": "sound.stop",
       "brief": "stop a playing a sound(s)",
-      "description": "Stop playing all active voices",
+      "description": "Stop playing all active voices or just one voice if <code>play_id</code> provided",
       "returnvalues": [],
       "parameters": [
         {
           "name": "url",
-          "doc": "the sound that should stop",
+          "doc": "the sound component that should stop",
           "types": [
             "string",
             "hash",
             "url"
           ]
+        },
+        {
+          "name": "[stop_properties]",
+          "doc": "<dl>\n<dt>optional table with properties:</dt>\n<dt><code>play_id</code></dt>\n<dd><span class=\"type\">number</span> the sequential play identifier that should be stopped (was given by the sound.play() function)</dd>\n</dl>",
+          "types": [
+            "table"
+          ]
         }
       ],
-      "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component stop all playing voices:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">stop</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component stop all playing voices:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">stop</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">stop</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">play_id</span> <span class=\"o\">=</span> <span class=\"n\">id</span><span class=\"p\">})</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],

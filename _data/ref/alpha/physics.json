@@ -1126,6 +1126,37 @@
       "notes": []
     },
     {
+      "type": "FUNCTION",
+      "name": "physics.update_mass",
+      "brief": "updates the mass of a dynamic 2D collision object in the physics world.",
+      "description": "The function recalculates the density of each shape based on the total area of all shapes and the specified mass, then updates the mass of the body accordingly.\nNote: Currently only supported in 2D physics.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "collisionobject",
+          "doc": "the collision object whose mass needs to be updated.",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        },
+        {
+          "name": "mass",
+          "doc": "the new mass value to set for the collision object.",
+          "types": [
+            "number"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">update_mass</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"mi\">14</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
       "type": "MESSAGE",
       "name": "apply_force",
       "brief": "applies a force on a collision object",
