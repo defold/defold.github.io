@@ -325,18 +325,6 @@ def process_docs(download = False):
         shutil.copyfile(os.path.join(DOC_DIR, "docs", "en", "en.json"), index_file)
         index = read_as_json(index_file)
 
-        # figure out in which languages each manual exists
-        print("...index (incl. languages)")
-        for section in index["navigation"]["manuals"]:
-            for item in section["items"]:
-                item["languages"] = []
-                if not item["path"].startswith("http"):
-                    path = item["path"][1:]
-                    for language in languages["languages"].keys():
-                        if os.path.exists(get_language_specific_dir(language, path + ".md")):
-                            item["languages"].append(language)
-        write_as_json(index_file, index)
-
         for language in languages["languages"].keys():
             print("...manuals ({})".format(language))
             manuals_src_dir = os.path.join(DOC_DIR, "docs", language, "manuals")
