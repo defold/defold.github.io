@@ -253,6 +253,36 @@ def get_language_specific_dir(language, dir):
         dir = os.path.join(language, dir)
     return dir
 
+def update_file_links_with_lang(filename, pattern, language):
+    # Open the file and read its content
+    with open(filename, 'r') as f:
+        content = f.read()
+    
+    def is_valid_path_and_lang(path, language):
+        # Normalize the path to ensure it doesn't end with a slash
+        normalized_path = path.rstrip('/').lstrip('/')
+        if os.path.exists(os.path.join(language, normalized_path + ".md")) or os.path.exists(os.path.join(language, normalized_path)):
+            return True
+        return False
+
+    
+    # Use regex to find all patterns and update them if valid
+    def replacement(match):
+        path = match.group(0)
+        # Check if the path exists and has the specified language
+        if is_valid_path_and_lang(path, language):
+            return '/{}/{}'.format(language, path.lstrip('/'))
+        else:
+            return path
+    
+    # Compile the pattern and substitute
+    compiled_pattern = re.compile(pattern)
+    updated_content = compiled_pattern.sub(replacement, content)
+    
+    # Optionally, write the updated content back to the file or return it
+    with open(filename, 'w') as f:
+        f.write(updated_content)
+
 
 def process_docs(download = False):
     if download:
@@ -295,6 +325,18 @@ def process_docs(download = False):
         shutil.copyfile(os.path.join(DOC_DIR, "docs", "en", "en.json"), index_file)
         index = read_as_json(index_file)
 
+        # figure out in which languages each manual exists
+        print("...index (incl. languages)")
+        for section in index["navigation"]["manuals"]:
+            for item in section["items"]:
+                item["languages"] = []
+                if not item["path"].startswith("http"):
+                    path = item["path"][1:]
+                    for language in languages["languages"].keys():
+                        if os.path.exists(get_language_specific_dir(language, path + ".md")):
+                            item["languages"].append(language)
+        write_as_json(index_file, index)
+
         for language in languages["languages"].keys():
             print("...manuals ({})".format(language))
             manuals_src_dir = os.path.join(DOC_DIR, "docs", language, "manuals")
@@ -307,7 +349,8 @@ def process_docs(download = False):
                     replace_in_file(filename, r"title\:", r"language: {}\ntitle:".format(language))
                     replace_in_file(filename, r"title\:", r"github: {}\ntitle:".format("https://github.com/defold/doc"))
                     if language != "en":
-                        replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
+                        # replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
+                        update_file_links_with_lang(filename, r'/manuals/[^)#]+', language)
                         replace_in_file(filename, r"\.\.\/images\/", r"/manuals/images/".format(language))
                         replace_in_file(filename, r"\.\.\/assets\/", r"/manuals/assets/".format(language))
 
@@ -321,7 +364,8 @@ def process_docs(download = False):
                     replace_in_file(filename, r"title\:", r"language: {}\ntitle:".format(language))
                     replace_in_file(filename, r"title\:", r"layout: faq\ntitle:")
                     if language != "en":
-                        replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
+                        # replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
+                        update_file_links_with_lang(filename, r'\/manuals\/[^)#]+', language)
                         replace_in_file(filename, r"\.\.\/images\/", r"/manuals/images/".format(language))
                         replace_in_file(filename, r"\.\.\/assets\/", r"/manuals/assets/".format(language))
 
