@@ -80,7 +80,7 @@ Komponent kamery dostarcza skryptowi renderującemu macierz projekcji albo persp
 Macierz widoku dostarczana przez kamerę określa położenie i orientację kamery. Kamera z Projekcją Ortograficzną (*Orthographic Projection*) będzie miała widok wycentrowany na pozycji obiektu gry, do którego jest podłączona, podczas gdy kamera z Projekcją Perspektywiczną (*Perspective Projection*) będzie miała lewy dolny róg widoku na obiekcie gry, do którego jest podłączona.
 
 <div class='important' markdown='1'>
-Dla zachowania kompatybilności wstecznej domyślny skrypt renderujący ignoruje projekcję dostarczoną przez kamerę i zawsze używa rzutu ortograficznego. Dowiedz się więcej o skrypcie renderującym oraz macierzach widoku i projekcji w [instrukcji do renderowania](/pl/manuals/render/#default-view-projection).
+Dla zachowania kompatybilności wstecznej domyślny skrypt renderujący ignoruje projekcję dostarczoną przez kamerę i zawsze używa rzutu ortograficznego. Dowiedz się więcej o skrypcie renderującym oraz macierzach widoku i projekcji w [instrukcji do renderowania](/manuals/render/#default-view-projection).
 </div>
 
 Możesz powiedzieć skryptowi renderującemu, aby używał projekcji dostarczonej przez kamerę, wysyłając wiadomość do skryptu renderującego.

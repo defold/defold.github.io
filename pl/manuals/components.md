@@ -26,7 +26,7 @@ Defold wspiera następujące typy komponentów:
 * [Particle FX](/pl/manuals/particlefx) -  Efekty cząsteczkowe
 * [Script](/pl/manuals/script) - Skrypt, dodający logikę do gry
 * [Sound](/pl/manuals/sound) - Odtwarzanie dźwięku lub muzyki
-* [Spine model](/pl/manuals/spinemodel) - Model szkieletowy animacji
+* [Spine model](/manuals/spinemodel) - Model szkieletowy animacji
 * [Sprite](/pl/manuals/sprite) - Obraz dwuwymiarowy (z opcjonalną animacją poklatkową)
 * [Tilemap](/pl/manuals/tilemap) - Mapa kafelków
 
@@ -70,14 +70,14 @@ Jeśli potrzebujesz zmienić pozycję, rotację czy skalę komponentu w czasie d
 Kolejność rysowania komponentów zależy od:
 
 ### Predykaty skryptu renderowania
-Każdy komponent ma przypisany [materiał](/pl/manuals/material/), a każdy materiał ma jeden lub więcej tagów. Skrypt renderowania z kolei określa liczbę predykatów, z których każdy odpowiada tagowi. [Predykaty są rysowane jeden nad poprzednim](/pl/manuals/render/#render-predicates) w funkcji *update()*, a komponenty, których materiały mają tagi określone dla danego predykatu są wtedy rysowane. Domyślny skrypt renderowania wyrysuje najpierw sprite'y i mapy kafelków, następnie efekty cząsteczkowe osobno w przestrzeni świata gry, a na końcu komponenty GUI w przestrzeni ekranu.
+Każdy komponent ma przypisany [materiał](/manuals/material/), a każdy materiał ma jeden lub więcej tagów. Skrypt renderowania z kolei określa liczbę predykatów, z których każdy odpowiada tagowi. [Predykaty są rysowane jeden nad poprzednim](/manuals/render/#render-predicates) w funkcji *update()*, a komponenty, których materiały mają tagi określone dla danego predykatu są wtedy rysowane. Domyślny skrypt renderowania wyrysuje najpierw sprite'y i mapy kafelków, następnie efekty cząsteczkowe osobno w przestrzeni świata gry, a na końcu komponenty GUI w przestrzeni ekranu.
 
 ### Wartość współrzędnej Z
 Wszystkie obiekty gry i komponenty są umieszczone w przestrzeni 3D z pozycją jako wektor trzech współrzędnych. Kiedy oglądasz swoją grę w 2D, wspołrzędne X i Y pozycję elementu na ekranie wzdłuż szerokości i wysokości, a współrzędna Z określa głębokość. Umożliwia to więc określanie pozycji nachodzących się na siebie kształtów: sprite z wartością Z = 1 pojawi się przed sprite'm z pozycją Z = 0. Domyślnie, Defold umożliwia rysowanie obiektów na osi Z o wartościach z przedziału -1 i 1:
 
 ![model](/manuals/images/graphics/z-order.png)
 
-Komponenty, których materiały mają tagi określone dla danego [predykatu](/pl/manuals/render/#render-predicates) są rysowane razem, a kolejność ich rysowania zależy od ostatecznej wartości współrzędnej Z. Ostateczna wartość Z jest sumą wartości Z komponentu, obiektu gry i każdego obiektu, do którego należy dany obiektu (rodzica).
+Komponenty, których materiały mają tagi określone dla danego [predykatu](/manuals/render/#render-predicates) są rysowane razem, a kolejność ich rysowania zależy od ostatecznej wartości współrzędnej Z. Ostateczna wartość Z jest sumą wartości Z komponentu, obiektu gry i każdego obiektu, do którego należy dany obiektu (rodzica).
 
 <div class='sidenote' markdown='1'>
 Kolejność, w której rysowane są komponenty GUI components **NIE** jest określona przez współrzędne Z komponentów GUI. Kolejność ta jest kontrolowana przez funkcję [gui.set_render_order()](/ref/gui/#gui.set_render_order:order).
@@ -98,5 +98,5 @@ Przy powyższej hierarchi ostateczna wartość Z komponentu typu sprite to 2 + 1
 <div class='important' markdown='1'>
 Jeśli dwa komponenty mają dokładnie taką samą wartość komponentu Z, to kolejność rysowania jest nieokreślona i obiekty mogą migać zmieniając nieustannie tę kolejność w zależności od platformy.
 
-Domyślny skrypt renderowania określa najbliższą i najdalszą powierzchnię na osi Z (równoległą do płaszczyzny XY), która zostanie wyrysowana. Każdy komponent, który miałby być wyrysowany poza tymi wartościami nie będzie renderowany. Domyślny przedział wartości Z to -1 do 1, ale z łatwością [można go zmienić](/pl/manuals/render/#default-view-projection). Precyzja numeryczna wartości Z pomiędzy wartościa -1 i 1 jest bardzo wysoka. Pracując z zasobami 3D, możesz chciceć zmienić limity najbliższej i najdalszej powierzchni w Twoim skrypie renderowania. Więcej szczegółów znajdziesz w [instrucji do renderowania](/pl/manuals/render/).
+Domyślny skrypt renderowania określa najbliższą i najdalszą powierzchnię na osi Z (równoległą do płaszczyzny XY), która zostanie wyrysowana. Każdy komponent, który miałby być wyrysowany poza tymi wartościami nie będzie renderowany. Domyślny przedział wartości Z to -1 do 1, ale z łatwością [można go zmienić](/manuals/render/#default-view-projection). Precyzja numeryczna wartości Z pomiędzy wartościa -1 i 1 jest bardzo wysoka. Pracując z zasobami 3D, możesz chciceć zmienić limity najbliższej i najdalszej powierzchni w Twoim skrypie renderowania. Więcej szczegółów znajdziesz w [instrucji do renderowania](/manuals/render/).
 </div>

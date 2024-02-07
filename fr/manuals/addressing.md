@@ -189,7 +189,7 @@ Une URL est un GameObject, généralement écrit sous forme de strings spéciale
 `[socket:][path][#fragment]`
 
 Socket (prise)
-: Identifie le "game world" (monde de jeu) de la cible (ex: les niveaux, les menus, écrans de chargement...). Ceci est important lorsque vous travaillez avec des [Proxies de collection](/fr/manuals/collection-proxy) et est ensuite utilisé pour identifier la _collection chargée dynamiquement_.
+: Identifie le "game world" (monde de jeu) de la cible (ex: les niveaux, les menus, écrans de chargement...). Ceci est important lorsque vous travaillez avec des [Proxies de collection](/manuals/collection-proxy) et est ensuite utilisé pour identifier la _collection chargée dynamiquement_.
 
 path
 : Cette partie de l'URL contient l'id complet du GameObject cible.

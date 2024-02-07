@@ -46,7 +46,7 @@ A: ¡Absolutamente! El motor es un motor 3D completo. Sin embargo, las herramien
 
 #### Q: ¿Qué lenguaje de programación utilizo en Defold?
 
-A: La lógica del juego en tu proyecto Defold está escrita principalmente en el lenguaje Lua (específicamente Lua 5.1/LuaJIT, refiere al [manual Lua](/es/manuals/lua) para más detalles). Lua es un lenguaje dinámico ligero que es rápido y poderoso. También puedes usar lenguaje nativo (C/C++, Objective-C, Java and JavaScript dependiendo de la plataforma) para extender el motor Defold con nuevas funcionalidades. Cuando crees materiales personalizados, se utiliza OpenGL ES SL shader language para escribir vértices y fragmentos
+A: La lógica del juego en tu proyecto Defold está escrita principalmente en el lenguaje Lua (específicamente Lua 5.1/LuaJIT, refiere al [manual Lua](/manuals/lua) para más detalles). Lua es un lenguaje dinámico ligero que es rápido y poderoso. También puedes usar lenguaje nativo (C/C++, Objective-C, Java and JavaScript dependiendo de la plataforma) para extender el motor Defold con nuevas funcionalidades. Cuando crees materiales personalizados, se utiliza OpenGL ES SL shader language para escribir vértices y fragmentos
 shaders.
 
 
@@ -184,7 +184,7 @@ A: El shader de sprites integrado que es usado por defecto en todos los sprites 
 
 #### Q: Si selecciono la coordenada z de un sprite a 100 no se renderiza. ¿Por qué?
 
-A: La posición Z de un objeto de juego controla el orden del renderizado. Los valores bajos son dibujados antes de los valores más altos. En el script de render por defecto los objetos del juego con una profundidad del rango -1 a 1 son dibujados, cualquier cosa con el número más bajo o alto no serán dibujados. Puedes leer más sobre el script de render en la [documentación de Render](/es/manuals/render) oficial. En nodos GUI el valor Z es ignorado y no afecta el orden del renderizado. En lugar de eso los nodos son renderizados en el orden que son enlistados y de acuerdo a las jerarquías de los hijos (y por capas). Lee más sobre el renderizado de GUI y optimización de llamadas de dibujo (draw call) utilizando capas en la [documentación de GUI](/es/manuals/gui) oficial.
+A: La posición Z de un objeto de juego controla el orden del renderizado. Los valores bajos son dibujados antes de los valores más altos. En el script de render por defecto los objetos del juego con una profundidad del rango -1 a 1 son dibujados, cualquier cosa con el número más bajo o alto no serán dibujados. Puedes leer más sobre el script de render en la [documentación de Render](/manuals/render) oficial. En nodos GUI el valor Z es ignorado y no afecta el orden del renderizado. En lugar de eso los nodos son renderizados en el orden que son enlistados y de acuerdo a las jerarquías de los hijos (y por capas). Lee más sobre el renderizado de GUI y optimización de llamadas de dibujo (draw call) utilizando capas en la [documentación de GUI](/manuals/gui) oficial.
 
 
 #### Q: ¿Cambiar la proyección del rango Z a -100 hasta 100 afectaría el rendimiento?
@@ -214,7 +214,7 @@ A: Todo está basado por componente. Es posible crear un objeto sin cabeza con m
 
 #### Q: ¿Es posible cambiar el archivo de audio asociado con un componente de audio en ejecución?
 
-A: En general todos los recursos están estadísticamente declarados con el beneficio que obtienes control de recursos de manera libre. Puedes usar las [propiedades de recursos](/es/manuals/script-properties/#resource-properties) para cambiar qué recurso es asignado al componente.
+A: En general todos los recursos están estadísticamente declarados con el beneficio que obtienes control de recursos de manera libre. Puedes usar las [propiedades de recursos](/manuals/script-properties/#resource-properties) para cambiar qué recurso es asignado al componente.
 
 
 #### Q: ¿Hay una forma de accesar a las propiedades de la forma de colisión de físicas?
@@ -224,12 +224,12 @@ A: No, por el momento no es posible.
 
 #### Q: ¿Hay alguna forma rápida de renderizar los objetos colisionadores en mi escena? (como Box2D's debugdraw)
 
-A: Si, utiliza la bandera *physics.debug* en *game.project*. (Refiere a la [documentación de opciones del proyecto](/es/manuals/project-settings/#debug) oficial).
+A: Si, utiliza la bandera *physics.debug* en *game.project*. (Refiere a la [documentación de opciones del proyecto](/manuals/project-settings/#debug) oficial).
 
 
 #### Q: ¿Cuáles son los costos de rendimiento por tener muchos contactos/colisiones?
 
-A: Defold utiliza una versión modificada de Box2D en el fondo y el costo de rendimiento debe ser similar. Siempre puedes ver cuánto tiempo el motor tarda en las físicas sacando el [profiler](/es/manuals/debugging). También deberías considerar que tipo de colisiones usas. Objetos estáticos utilizan menos rendimiento, por ejemplo. Refiere a la [documentación de Físicas](/es/manuals/physics) en Defold para más detalles.
+A: Defold utiliza una versión modificada de Box2D en el fondo y el costo de rendimiento debe ser similar. Siempre puedes ver cuánto tiempo el motor tarda en las físicas sacando el [profiler](/manuals/debugging). También deberías considerar que tipo de colisiones usas. Objetos estáticos utilizan menos rendimiento, por ejemplo. Refiere a la [documentación de Físicas](/manuals/physics) en Defold para más detalles.
 
 
 #### Q: ¿Cuál es el impacto en el rendimiento por tener muchos componentes de efectos de partículas?
@@ -239,12 +239,12 @@ A: Depende de si están reproduciéndose o no. Un ParticleFx que no esté reprod
 
 #### Q: ¿Cómo recibo input a un objeto del juego dentro de una colección cargada por un proxy de colección?
 
-A: Cada proxy de colección cargado tiene su propio input stack. El Input está enrutado desde el input stack de la colección principal por el componente de proxy a los objetos en la colección. Esto significa que no es suficiente para el objeto del juego cargado en la colección el adquirir enfoque en el input, el objeto que aún mantiene _(holds_) el componente proxy necesita adquirir el enfoque de input también. Mira la [documentación de Input](/es/manuals/input) para más detalles.
+A: Cada proxy de colección cargado tiene su propio input stack. El Input está enrutado desde el input stack de la colección principal por el componente de proxy a los objetos en la colección. Esto significa que no es suficiente para el objeto del juego cargado en la colección el adquirir enfoque en el input, el objeto que aún mantiene _(holds_) el componente proxy necesita adquirir el enfoque de input también. Mira la [documentación de Input](/manuals/input) para más detalles.
 
 
 #### Q: ¿Puedo usar propiedades de script de tipo string?
 
-A: No. Defold soporta propiedades de tipo [hash](/ref/builtins#hash). Éstas pueen ser usadas para indicar tipos, identificadores de estado o claves de cualquier tipo. Los Hashes también pueden ser usados para guardar id's de objeto (paths) pero propiedades de [url](/ref/msg#msg.url) son usualmente prefereidas ya que el editor automáticamente puebla un desplegable con URLs relevantes para ti. Ver la [documentación de propiedades de Script](/es/manuals/script-properties) para más detalles.
+A: No. Defold soporta propiedades de tipo [hash](/ref/builtins#hash). Éstas pueen ser usadas para indicar tipos, identificadores de estado o claves de cualquier tipo. Los Hashes también pueden ser usados para guardar id's de objeto (paths) pero propiedades de [url](/ref/msg#msg.url) son usualmente prefereidas ya que el editor automáticamente puebla un desplegable con URLs relevantes para ti. Ver la [documentación de propiedades de Script](/manuals/script-properties) para más detalles.
 
 
 #### Q: ¿Cómo acceso a las células individuales de una matrix? (creadas usando [vmath.matrix4()](/ref/vmath/#vmath.matrix4:m1) o similares)?

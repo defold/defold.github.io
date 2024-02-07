@@ -34,4 +34,4 @@ default_texture_mag_filter = nearest
 
 Jeśli nie określisz niczego, oba są domyślnie ustawione na `linear`.
 
-Zauważ, że ustawienie w *game.project* jest używane w domyślnych narzędziach do próbkowania (samplers). Jeśli określisz samplery we własnym, niestandardowym materiale, możesz ustawić metodę filtrowania dla każdego samplera osobno. Zobacz szczegóły w [instrukcji do materiałów](/pl/manuals/material/).
+Zauważ, że ustawienie w *game.project* jest używane w domyślnych narzędziach do próbkowania (samplers). Jeśli określisz samplery we własnym, niestandardowym materiale, możesz ustawić metodę filtrowania dla każdego samplera osobno. Zobacz szczegóły w [instrukcji do materiałów](/manuals/material/).

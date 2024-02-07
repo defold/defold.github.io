@@ -20,7 +20,7 @@ Defold wykorzystuje trzy poziomy bufora:
 
 Defold domyślnie buforuje skompilowane zasoby w katalogu `build/default` projektu w Defoldzie. Bufor projektu przyspieszy kolejne kompilacje, ponieważ będą ponownie kompilowane tylko zmienione zasoby, podczas gdy zasoby bez zmian będą wykorzystywane z bufora projektu. Ten bufor jest zawsze włączony i używany zarówno przez edytor, jak i narzędzia wiersza poleceń.
 
-Bufor projektu można usunąć ręcznie, usuwając pliki w katalogu `build/default`, lub wydając polecenie `clean` za pomocą [narzędzia do kompilacji wiersza poleceń Bob](/pl/manuals/bob).
+Bufor projektu można usunąć ręcznie, usuwając pliki w katalogu `build/default`, lub wydając polecenie `clean` za pomocą [narzędzia do kompilacji wiersza poleceń Bob](/manuals/bob).
 
 ## Local cache (Bufor lokalny)
 

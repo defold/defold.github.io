@@ -310,7 +310,7 @@ Maksymalna liczba fabryk, domyślnie `128`.
 Plik graficzny (.png) używany jako ikona aplikacji o podanych wymiarach `W` &times; `H`.
 
 #### Launch Screen
-Plik Storyboard (.storyboard). Więcej szczegółów znajdziesz w [instrukcji do systemu iOS](/pl/manuals/ios/#creating-a-storyboard).
+Plik Storyboard (.storyboard). Więcej szczegółów znajdziesz w [instrukcji do systemu iOS](/manuals/ios/#creating-a-storyboard).
 
 #### Pre Rendered Icons
 (Dotyczy iOS 6 i wcześniejszych wersji) Zaznacz, żeby ikony były pre-renderowane. Jeśli ta opcja nie jest zaznaczona ikony będą miały automatycznie dodany świetlistą poświatę.
@@ -388,7 +388,7 @@ Ustawienia regionalne - pole zawiera oddzielone przecinkami słowa (strings) ide
 ## Windows
 
 #### App Icon
-Plik graficzny (.ico) używany jako ikona aplikacji w systemie Windows. Więcej szczegółów na temat tworzenia plików .ico znajdziesz w [instrukcji do systemu Windows](/pl/manuals/windows).
+Plik graficzny (.ico) używany jako ikona aplikacji w systemie Windows. Więcej szczegółów na temat tworzenia plików .ico znajdziesz w [instrukcji do systemu Windows](/manuals/windows).
 
 #### Iap Provider
 Określa jakiego sklepu używać do zakupów wewnątrz aplikacji (ang. In App Purchases). Możliwe opcje to `None`(domyślnie) i `Gameroom`.

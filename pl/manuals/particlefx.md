@@ -237,7 +237,7 @@ Zobacz szczegóły w [dokumentacji Efektów Cząsteczkowych]](/ref/particlefx).
 
 ## Stałe materiału
 
-Domyślny materiał Efektu cząsteczkowego posiada następujące stałe, które można zmieniać za pomocą `particlefx.set_constant()` i resetować za pomocą `particlefx.reset_constant()` (zobacz szczegóły w [instrukcji do Materiałów](/pl/manuals/material/#vertex-and-fragment-constants)):
+Domyślny materiał Efektu cząsteczkowego posiada następujące stałe, które można zmieniać za pomocą `particlefx.set_constant()` i resetować za pomocą `particlefx.reset_constant()` (zobacz szczegóły w [instrukcji do Materiałów](/manuals/material/#vertex-and-fragment-constants)):
 
 `tint`
 : Kolor odcienia efektu cząsteczkowego (`vector4`). Wektor 4-składnikowy jest używany do reprezentowania odcienia koloru, gdzie X, Y, Z i W odpowiadają czerwieni, zieleni, niebieskiemu i odcieniowi alfa. Więcej szczegółów w [dokumentacji API](/ref/particlefx/#particlefx.set_constant:url-constant-value).

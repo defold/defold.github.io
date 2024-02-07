@@ -83,4 +83,4 @@ Więcej szczegółów na ten temat znajdziejsz w [tej instrukcji do interfejsów
 
   ![spine](/manuals/images/graphics/spine.png)
 
-Więcej szczegółów na ten temat znajdziejsz w [tej instrukcji do modeli Spine](/pl/manuals/spinemodel).
+Więcej szczegółów na ten temat znajdziejsz w [tej instrukcji do modeli Spine](/manuals/spinemodel).

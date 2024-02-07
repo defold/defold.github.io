@@ -37,4 +37,4 @@ Pełnomocnicy kolekcji
 : za pomocą pełnomocników kolekcji (collection proxies) można załadować więcej niż jedną kolekcję najwyższego poziomu lub inaczej *świat gry* do silnika. Przy takim rozwiązaniu ważne jest, aby wiedzieć, że każda kolekcja najwyższego poziomu to *osobny* świat fizyczny. Interakcje fizyczne ([kolizje, trigery/wyzwalacze](/pl/manuals/physics-messages) i [promienie ray-cast](/pl/manuals/physics-ray-casts))
 
 Kolizje nie wykrywane
-: Jeśli masz problemy z obsługą lub właściwym wykrywaniem kolizji, upewnij się, że zapoznałeś się z [debugowaniem fizyki w instrukcji debugowania](/pl/manuals/debugging/#debugging-problems-with-physics).
+: Jeśli masz problemy z obsługą lub właściwym wykrywaniem kolizji, upewnij się, że zapoznałeś się z [debugowaniem fizyki w instrukcji debugowania](/manuals/debugging/#debugging-problems-with-physics).

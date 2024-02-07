@@ -16,7 +16,7 @@ Defold używa Lua 5.1 i LuaJIT (w zależności od docelowej platformy) i należy
 
 ## Pisanie kodu natywnego
 
-Defold pozwala na rozszerzenie silnika gry kodem natywnym (native extensions), aby uzyskać dostęp do funkcji specyficznych dla danej platformy, których nie dostarcza sam silnik. Możesz również użyć kodu natywnego, gdy wydajność Lua nie jest wystarczająca (obliczenia wymagające dużych zasobów, przetwarzanie obrazów itp.). Aby dowiedzieć się więcej, zajrzyj do naszych [podręczników dotyczących Rozszerzeń Natywnych](/pl/manuals/extensions/).
+Defold pozwala na rozszerzenie silnika gry kodem natywnym (native extensions), aby uzyskać dostęp do funkcji specyficznych dla danej platformy, których nie dostarcza sam silnik. Możesz również użyć kodu natywnego, gdy wydajność Lua nie jest wystarczająca (obliczenia wymagające dużych zasobów, przetwarzanie obrazów itp.). Aby dowiedzieć się więcej, zajrzyj do naszych [podręczników dotyczących Rozszerzeń Natywnych](/manuals/extensions/).
 
 ## Używanie wbudowanego Edytora kodu
 

@@ -94,7 +94,7 @@ Model ma również wiele różnych właściwości, które można manipulować za
 
 Oprogramowanie 3D zwykle pozwala na ustawienie właściwości wierzchołków obiektu, takie jak kolor i nakładanie tekstur. Te informacje trafiają do pliku glTF *.gltf* lub Collada *.dae*, który eksportujesz z oprogramowania 3D. W zależności od wymagań gry będziesz musiał wybrać lub utworzyć odpowiednie i _wydajne_ materiały dla swoich obiektów. Materiał łączy w sobie programy cieniowania (shadery) z zestawem parametrów do renderowania obiektu.
 
-Dostępny jest prosty materiał modelu 3D w wbudowanym folderze materiałów. Jeśli potrzebujesz tworzyć niestandardowe materiały dla swoich modeli, zobacz [dokumentację materiałów](/pl/manuals/material) w celu uzyskania dalszych informacji. W [dokumentacji shaderów](/pl/manuals/shader) znajdziesz informacje na temat działania takich programów cieniowania.
+Dostępny jest prosty materiał modelu 3D w wbudowanym folderze materiałów. Jeśli potrzebujesz tworzyć niestandardowe materiały dla swoich modeli, zobacz [dokumentację materiałów](/manuals/material) w celu uzyskania dalszych informacji. W [dokumentacji shaderów](/manuals/shader) znajdziesz informacje na temat działania takich programów cieniowania.
 
 ### Stałe materiału
 
@@ -125,4 +125,4 @@ Domyślny skryp renderowanie (render script) jest napisany pod gry 2D i nie dzia
   end
   ```
 
-Zobacz [dokumnetację renderowania](/pl/manuals/render) w celu uzyskania dalszych informacji o skryptach renderowania.
+Zobacz [dokumnetację renderowania](/manuals/render) w celu uzyskania dalszych informacji o skryptach renderowania.

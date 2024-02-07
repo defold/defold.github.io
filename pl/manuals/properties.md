@@ -13,7 +13,7 @@ Defold udostępnia właściwości (ang. properties) dla obiektów gry, komponent
 * Systemowo zdefiniowane transformacje obiektów gry (pozycja, rotacja i skala) oraz specyficzne dla komponentów właściwości (na przykład rozmiar pikseli sprite'a lub masa obiektu kolizyjnego).
 * Właściwości zdefiniowane przez użytkownika w komponentach skryptów Lua (zobacz [dokumentację właściwości skryptów](/pl/manuals/script-properties)).
 * Właściwości węzłów GUI.
-* Stałe shaderów zdefiniowane w shaderach i plikach materiałów (zobacz [dokumentację materiałów](/pl/manuals/material)).
+* Stałe shaderów zdefiniowane w shaderach i plikach materiałów (zobacz [dokumentację materiałów](/manuals/material)).
 
 W zależności od miejsca, w którym znajduje się właściwość, dostęp do niej uzyskuje się za pomocą funkcji ogólnej lub funkcji przeznaczonej do właściwości. Wiele z tych właściwości można automatycznie animować. Zaleca się animowanie właściwości za pomocą wbudowanego systemu, zarówno z powodów wydajnościowych, jak i wygody, zamiast manipulować nimi samodzielnie (wewnątrz funkcji `update()`).
 

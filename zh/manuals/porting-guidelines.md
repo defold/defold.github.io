@@ -71,7 +71,7 @@ end
 
 ## 应用优化
 
-参考 [优化教程](/zh/manuals/optimizations) 优化应用的性能, 大小, 内存占用和耗电量.
+参考 [优化教程](/manuals/optimizations) 优化应用的性能, 大小, 内存占用和耗电量.
 
 
 

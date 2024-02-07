@@ -77,7 +77,7 @@ Sprite posiada również różne właściwości, którymi można manipulować pr
 
 ## Atrybuty materiału
 
-Sprite może nadpisywać atrybuty wierzchołków (vertex attributes) aktualnie przypisanego materiały i przekazywać je do shadera wierzchołków (vertex shader) z komponentu (szczegóły znajdziesz w [instrukcji do materiałów](/pl/manuals/material/#attributes)).
+Sprite może nadpisywać atrybuty wierzchołków (vertex attributes) aktualnie przypisanego materiały i przekazywać je do shadera wierzchołków (vertex shader) z komponentu (szczegóły znajdziesz w [instrukcji do materiałów](/manuals/material/#attributes)).
 
 Atrybuty określone w materiale pokażą się jako zwykłe właściwości w widoku inspekcyjnym i mogą być ustawione na indywidualne komponenty sprite. Jeśli jakikolwiek atrybut jest nadpisany, zostanie on zaznaczony jako nadpisana właściwość i przechowana w pliku komponenty sprite na dysku.
 

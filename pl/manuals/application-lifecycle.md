@@ -102,7 +102,7 @@ Po aktualizacji uruchamiana jest sekwencja tzw. post-aktualizacji. Zwalnia ona z
 
 Każdy komponent typu fabryka (ang. factory), który został oznaczony jako gotowy do utworzenia obiektu, w tym momencie utworzy taki obiekt. Na końcu obiekty, które są przeznaczone do usunięcia zostają usunięte.
 
-Ostatnim krokiem pętli aktualizacyjnej jest obsługa wiadomości kolejnego, specjalnego gniazda `@system` (wiadomości `exit`, `reboot`, przełączanie profilera, startowanie i zatrzymywanie przechwytywania video, itp.). Następnie renderowana jest grafika. Podczas renderowania grafiki, tworzone jest przychwytywanie video, tak samo jak i wizualizacja profilera (zobacz [dokumentację do debugowania](/pl/manuals/debugging).)
+Ostatnim krokiem pętli aktualizacyjnej jest obsługa wiadomości kolejnego, specjalnego gniazda `@system` (wiadomości `exit`, `reboot`, przełączanie profilera, startowanie i zatrzymywanie przechwytywania video, itp.). Następnie renderowana jest grafika. Podczas renderowania grafiki, tworzone jest przychwytywanie video, tak samo jak i wizualizacja profilera (zobacz [dokumentację do debugowania](/manuals/debugging).)
 
 ## Klatki na sekundę i krok czasowy kolekcji
 

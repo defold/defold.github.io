@@ -38,7 +38,7 @@ A ordem em que a função do objeto componente `init()` é chamada não é espec
 
 Desde que o código do seu `init()` possa postar novas mensagens, dizer as fábricas para spawnarem novos objetos, marcar objetos para serem deletados e fazer todo tipo de coisas, a engine performa um full "post-update" em seguida. Esse pass carrega uma mensagem, que contem o objeto factory spawnando e deletando objetos. Perceba que o post-update inclui uma sequencia de "mensagens despachadas" que não somente envia mensagens que estão na fila mas também lida com mensagens enviadas para coletores proxies. Qualquer updates subsequentes nos proxies (habilitados ou desabilitados, carregando e marcado para descarregamento) são realizados durante esses pasos.
 
-Estudando o diagrama acima revela que é possível carregar uma [coleção proxy](/pt/manuals/collection-proxy) durante o `init()`, isso assegura que objetos contidos serão inicializados, e então descarregam a coleção pelo proxy---isso tudo antes do primeiro componente `update()` ser chamado, i.e. antes da engine deixar a fase de incialização e entrar no loop de update:
+Estudando o diagrama acima revela que é possível carregar uma [coleção proxy](/manuals/collection-proxy) durante o `init()`, isso assegura que objetos contidos serão inicializados, e então descarregam a coleção pelo proxy---isso tudo antes do primeiro componente `update()` ser chamado, i.e. antes da engine deixar a fase de incialização e entrar no loop de update:
 
 ```lua
 function init(self)
@@ -71,7 +71,7 @@ O loop de update roda durante uma longa sequencia em cada frama. A sequência no
 
 ## Input
 
-Input é lido de dispositivos disponíveis, mapeados contra [binds de input](/pt/manuals/input) e então despachados. Qualquer objeto que adquirir foco de imput pega inputs enviados para todos as funções de componentes `on_input()`. Um objeto com um componente de script e um GUI componente com um script GUI vai pegar um input para ambas funções de componentes `on_input()` ---dado que eles são definidos e tenham foco de input.
+Input é lido de dispositivos disponíveis, mapeados contra [binds de input](/manuals/input) e então despachados. Qualquer objeto que adquirir foco de imput pega inputs enviados para todos as funções de componentes `on_input()`. Um objeto com um componente de script e um GUI componente com um script GUI vai pegar um input para ambas funções de componentes `on_input()` ---dado que eles são definidos e tenham foco de input.
 
 Qualquer objecto que tenha adquirido foco de input e contenha coleções proxy com componentes dispachaveis com input para componentes dentro da coleção da proxy. Esse processo continua recursivamente abaixo em coleções proxyes dentro de coleções proxies ativas.
 
@@ -83,7 +83,7 @@ Cada componente game object na coleção principal é atravessado. Se qualquer u
 A ordem em cada função de componende de game object `update()` não é específica. Você não deve assumir que a engine atualiza os objetos pertencentes a mesma coleção em uma certa ordem. 
 </div>
 
-No próximo passo, todas as mensagens são despachadas. Desde que qualquer componenente receptor `on_message()` pode postar mensagens adicionais o dispachante de mensagens irá continuar a dispachar mensagens postadas, ate que a fila esteja vazia. Entretanto tem-se um limite a quantas rodadas na fila de mensagens podem ser rodadas pelo dispacher. Veja [Passagem de mensagem](/pt/manuals/message-passing) e a sessão "Tópicos avançados" para maiores detalhes.
+No próximo passo, todas as mensagens são despachadas. Desde que qualquer componenente receptor `on_message()` pode postar mensagens adicionais o dispachante de mensagens irá continuar a dispachar mensagens postadas, ate que a fila esteja vazia. Entretanto tem-se um limite a quantas rodadas na fila de mensagens podem ser rodadas pelo dispacher. Veja [Passagem de mensagem](/manuals/message-passing) e a sessão "Tópicos avançados" para maiores detalhes.
 
 Para componentes de objeto de colisão, mensagens de physics (colisões, gatilhos, respostas ray_cast e etc) são dispachados pelo encompassing game object para todos os componentes que contêm funções de script com uma `on_message()`.
 
@@ -105,7 +105,7 @@ O último passo no loop de updates envolve as mensagens do dispatching `@system`
 
 O número de frases atualizadas por segundo (que iguala o número runs de loops de update por segundo) podem ser settadas nas configurações do projeto, ou programavelmente enviando uma mensagem de `set_update_frequency` ao socket do `@system`. Em adição, é possível settar o _time step_ para cada coleção de proxies individualmente enviando a mensagem `set_time_step` para o proxy. Mudando o time step da coleção não afeta a frama rate. Afeta o time step do update da física  assim como as variaveis `dt` passadas para o `update().` Também perceba que alterando o time step nao altera o número maximo de `update().` chamados por frame---é sempre um.
 
-(Veja [Manual de coleção de proxy](/pt/manuals/collection-proxy) e [`set_time_step`](/ref/collectionproxy#set-time-step) para detalhes)
+(Veja [Manual de coleção de proxy](/manuals/collection-proxy) e [`set_time_step`](/ref/collectionproxy#set-time-step) para detalhes)
 
 ## Finalização
 

@@ -205,7 +205,7 @@ Una URL es un objeto, normalmente escrito como una string. Una URL genérica se 
 '[socket:][path][#fragment]'
 
 socket
-: Identifica el contexto del objetivo. Esto es importante cuando trabajamos con [Collection Proxies](/es/manuals/collection-proxy) y usado para identificar la "_dynamically loaded collection_".
+: Identifica el contexto del objetivo. Esto es importante cuando trabajamos con [Collection Proxies](/manuals/collection-proxy) y usado para identificar la "_dynamically loaded collection_".
 
 path
 : Esta parte de la URL contiene la identificación completa del objeto de destino.

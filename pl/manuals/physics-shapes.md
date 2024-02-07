@@ -61,7 +61,7 @@ Defold zawiera funkcję, która umożliwia tworzenie kształtu wypukłego (conve
 2. Zamiast dodawać kształty do komponentu obiektu kolizji, ustaw właściwość *Collision Shape* na plik *convex shape*.
 
 <div class='sidenote' markdown='1'>
-Kształt taki nie będzie rysowany w Edytorze. Możesz włączyć [debugowanie fizyki](/pl/manuals/debugging/#debugging-problems-with-physics) podczas działania programu, aby zobaczyć kształt.
+Kształt taki nie będzie rysowany w Edytorze. Możesz włączyć [debugowanie fizyki](/manuals/debugging/#debugging-problems-with-physics) podczas działania programu, aby zobaczyć kształt.
 </div>
 
 # Skalowanie kształtów kolizji

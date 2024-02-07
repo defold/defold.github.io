@@ -18,7 +18,7 @@ Bibliotecas são úteis para os seguintes propósitos:
 
 ## Configurando o compartilhamento de Bibliotecas
 
-Supondo que voce queira construir uma Biblioteca contendo sprites compartilhados e tile sources. Voce começa com [setting up a new project](/pt/manuals/project-setup/). Decida quais pastas do seu projeto que você quer compartilhar e adicione o nome dessas pastas ao *include_dirs* nas property em Project settings. Se você quiser listar mais de uma pasta separe os nomes usando espaço.
+Supondo que voce queira construir uma Biblioteca contendo sprites compartilhados e tile sources. Voce começa com [setting up a new project](/manuals/project-setup/). Decida quais pastas do seu projeto que você quer compartilhar e adicione o nome dessas pastas ao *include_dirs* nas property em Project settings. Se você quiser listar mais de uma pasta separe os nomes usando espaço.
 
 ![Include dirs](/manuals/images/libraries/libraries_include_dirs.png)
 

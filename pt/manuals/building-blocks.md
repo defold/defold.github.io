@@ -8,7 +8,7 @@ brief: Esse manual mostra detalhes relacionados ao funcionameno de objetos compo
 
 #  Building blocks
 
-No núcleo de design do Defold existem alguns conceitos que demandão um certo tempo para se acostumar. Esse manual explica como os building blocks do Defold funcionam. Após ler esse manual, vá para o [addressing manual](/pt/manuals/addressing) e o [message passing manual](/pt/manuals/message-passing). Existem também alguns [tutorials](/tutorials/getting-started) no editor, tutoriais esses que o farão decolar na utilização do Defold.
+No núcleo de design do Defold existem alguns conceitos que demandão um certo tempo para se acostumar. Esse manual explica como os building blocks do Defold funcionam. Após ler esse manual, vá para o [addressing manual](/pt/manuals/addressing) e o [message passing manual](/manuals/message-passing). Existem também alguns [tutorials](/tutorials/getting-started) no editor, tutoriais esses que o farão decolar na utilização do Defold.
 
 ![Building blocks](/manuals/images/building_blocks/building_blocks.png)
 
@@ -69,7 +69,7 @@ Game objects ou são adicionados no local exato na collection, ou adicionados a 
 
 {% include shared/pt/components.md %}
 
-Refere-se ao [component overview](/pt/manuals/components/) para uma lista completa de todos tipos de  component.
+Refere-se ao [component overview](/manuals/components/) para uma lista completa de todos tipos de  component.
 
 ## Objects added in-place or by reference
 

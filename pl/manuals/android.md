@@ -8,7 +8,7 @@ brief: Instrukcja odpowiada na pytania jak zbudować i uruchomić grę lub aplik
 
 # Android development
 
-Urządzenia z systemem Android pozwalają na swobodne otwieranie Twoich własnych aplikacji i gier. Jest bardzo łatwo zbudować wersję gry i skopiować ją na takie urządzenie. Instrukcja ta opisuje kroki procesu pakowania aplikacji na system Android. Podczas tworzenia oprogramowania z Defoldem, otwieranie i testowanie Twojej gry poprzez specjalną aplikacją zwaną [development app](/pl/manuals/dev-app) jest często preferowane, ponieważ umożliwia szybkie przeładowanie zawartości nawet podczas działania programu i programowanie urządzenia bezprzewodowo.
+Urządzenia z systemem Android pozwalają na swobodne otwieranie Twoich własnych aplikacji i gier. Jest bardzo łatwo zbudować wersję gry i skopiować ją na takie urządzenie. Instrukcja ta opisuje kroki procesu pakowania aplikacji na system Android. Podczas tworzenia oprogramowania z Defoldem, otwieranie i testowanie Twojej gry poprzez specjalną aplikacją zwaną [development app](/manuals/dev-app) jest często preferowane, ponieważ umożliwia szybkie przeładowanie zawartości nawet podczas działania programu i programowanie urządzenia bezprzewodowo.
 
 ## Proces podpisywania Android i Google Play
 

@@ -8,7 +8,7 @@ brief: Este manual se adentra en los detalles de cómo los objetos, componentes 
 
 #  Bloques de construcción
 
-En el núcleo del diseño de Defold hay unos conceptos que pueden llevar tiempo dominarlos. Este manual explica en qué consisten los bloques de construcción de Defold. Después de leer este manual, sigue al [addressing manual](/es/manuals/addressing) y al [message passing manual](/es/manuals/message-passing). También hay una serie de [tutoriales](/tutorials/getting-started) disponibles desde el editor para tenerte listo rápidamente.
+En el núcleo del diseño de Defold hay unos conceptos que pueden llevar tiempo dominarlos. Este manual explica en qué consisten los bloques de construcción de Defold. Después de leer este manual, sigue al [addressing manual](/es/manuals/addressing) y al [message passing manual](/manuals/message-passing). También hay una serie de [tutoriales](/tutorials/getting-started) disponibles desde el editor para tenerte listo rápidamente.
 
 ![Bloques de construcción](/manuals/images/building_blocks/building_blocks.png)
 
@@ -69,7 +69,7 @@ Los objetos del juego son ya sea añadidos en una colección, o añadidos en una
 
 {% include shared/es/components.md %}
 
-Refiere al [component overview](/es/manuals/components/) para una lista de todos los tipos de componentes..
+Refiere al [component overview](/manuals/components/) para una lista de todos los tipos de componentes..
 
 ## Objetos añadidos en el lugar o por referencia
 

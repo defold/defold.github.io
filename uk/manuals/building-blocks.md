@@ -69,7 +69,7 @@ go.animate("can", "position.x", go.PLAYBACK_LOOP_PINGPONG, 100, go.EASING_LINEAR
 
 {% include shared/uk/components.md %}
 
-Див. [огляд компонентів](/uk/manuals/components/) із переліком всіх доступних типів компонентів.
+Див. [огляд компонентів](/manuals/components/) із переліком всіх доступних типів компонентів.
 
 ## Додавання обʼєктів на місці (in-place) або за посиланням (by reference)
 

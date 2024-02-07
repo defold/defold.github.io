@@ -82,7 +82,7 @@ R: Absolutamente! A engine é uma engine 3D madura. Entretanto o conjunto de fer
 
 #### P: Com quais linguagens de programação eu posso trabalhar com a Defold?
 
-R: Lógica de jogo no seu projeto Defold é principalmente escrito usando a linguagem Lua (especificamente Lua 5.1/LuaJIT, recorrer ao [manual Lua](/pt/manuals/lua) para detalhes). Lua é uma linguagem leve e dinâmica que é rápida e muito poderosa. Você também pode usar código nativo (C/C++, Objective-C, Java e Javascript dependendo da plataforma) para estender a engine Defold com novas funcionalidades. Quando construindo materiais personalizados, a linguagem de shading (shader language) do OpenGL ES SL é usada para escrever vertex e fragment shaders.
+R: Lógica de jogo no seu projeto Defold é principalmente escrito usando a linguagem Lua (especificamente Lua 5.1/LuaJIT, recorrer ao [manual Lua](/manuals/lua) para detalhes). Lua é uma linguagem leve e dinâmica que é rápida e muito poderosa. Você também pode usar código nativo (C/C++, Objective-C, Java e Javascript dependendo da plataforma) para estender a engine Defold com novas funcionalidades. Quando construindo materiais personalizados, a linguagem de shading (shader language) do OpenGL ES SL é usada para escrever vertex e fragment shaders.
 
 
 

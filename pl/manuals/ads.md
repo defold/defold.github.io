@@ -53,7 +53,7 @@ Jeśli wybrałeś już dostawcę reklam i ich format postępuj zgodnie z krokami
 
 # Łączenie reklam i zakupów wewnątrz aplikacji
 
-Popularnym rozwiązaniem jest umożliwienie wyłączenia reklam po uiszczeniu opłaty poprzez zakup wewnątrz aplikacji, czyli [In-app purchase](/pl/manuals/iap).
+Popularnym rozwiązaniem jest umożliwienie wyłączenia reklam po uiszczeniu opłaty poprzez zakup wewnątrz aplikacji, czyli [In-app purchase](/manuals/iap).
 
 
 ## Więcej

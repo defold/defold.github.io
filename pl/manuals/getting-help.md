@@ -87,9 +87,9 @@ W razie problemów możesz również zadać pytanie na oficjalnym [Discord](http
 
 Silnik, Edytor i serwer do budowania Defolda generują logi (informacje), które mogą być bardzo przydatne podczas rozwiązywania problemów. Zawsze dodawaj pliki z logami do zgłaszanego problemu, których lokalizację możesz sprawdzić poniżej:
 
-* [Logi Silnika](/pl/manuals/debugging-game-and-system-logs)
+* [Logi Silnika](/manuals/debugging-game-and-system-logs)
 * Logi Edytora
   * Windows: `C:\Users\ **Your Username** \AppData\Local\Defold`
   * macOS: `/Users/ **Your Username** /Library/Application Support/` or `~/Library/Application Support/Defold`
   * Linux: `~/.Defold`
-* [Logi serwera do budowania](/pl/manuals/extensions#build-server-logs)
+* [Logi serwera do budowania](/manuals/extensions#build-server-logs)

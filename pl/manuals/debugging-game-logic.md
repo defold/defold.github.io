@@ -8,11 +8,11 @@ brief: Ta instrukcja wyjaśnia narzędzia do debugowania dostępne w Defoldzie.
 
 # Debugowanie logiki gry
 
-Defold zawiera zintegrowany debugger Lua z narzędziem do inspekcji. Razem z wbudowanymi [narzędziami profilowania](/pl/manuals/profiling) stanowi potężne narzędzie, które może pomóc w znalezieniu przyczyny błędów w logice gry lub analizie problemów wydajnościowych.
+Defold zawiera zintegrowany debugger Lua z narzędziem do inspekcji. Razem z wbudowanymi [narzędziami profilowania](/manuals/profiling) stanowi potężne narzędzie, które może pomóc w znalezieniu przyczyny błędów w logice gry lub analizie problemów wydajnościowych.
 
 ## Debugowanie za pomocą wydruków i wizualne
 
-Najprostszym sposobem debugowania w Defold jest korzystanie z [debugowania za pomocą wydruków](http://en.wikipedia.org/wiki/Debugging#Techniques). Używaj funkcji `print()` lub [`pprint()`](/ref/builtins#pprint) do monitorowania zmiennych lub wskazywania przepływu wykonania. Jeśli obiekt gry bez skryptu działa dziwnie, możesz dołączyć do niego skrypt wyłącznie w celu debugowania. Korzystanie z dowolnej z funkcji drukowania spowoduje wydruk na panelu *Console* (konsola) w Edytorze oraz w [logach gry](/pl/manuals/debugging-game-and-system-logs).
+Najprostszym sposobem debugowania w Defold jest korzystanie z [debugowania za pomocą wydruków](http://en.wikipedia.org/wiki/Debugging#Techniques). Używaj funkcji `print()` lub [`pprint()`](/ref/builtins#pprint) do monitorowania zmiennych lub wskazywania przepływu wykonania. Jeśli obiekt gry bez skryptu działa dziwnie, możesz dołączyć do niego skrypt wyłącznie w celu debugowania. Korzystanie z dowolnej z funkcji drukowania spowoduje wydruk na panelu *Console* (konsola) w Edytorze oraz w [logach gry](/manuals/debugging-game-and-system-logs).
 
 Oprócz drukowania/wyświetlania, silnik może również rysować teksty debugowania i proste linie na ekranie. To jest realizowane poprzez przesyłanie wiadomości do gniazda (socket) `@render`:
 

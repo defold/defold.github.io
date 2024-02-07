@@ -164,4 +164,4 @@ Na przykład, aby wygenerować gradient w fragmencie shadera, wystarczy napisać
 
 `float horizontal_gradient = fract(var_texcoord0.y / texture_size_recip.w);`
 
-Aby uzyskać więcej informacji na temat jednolitych shaderów, zobacz [instrukcje do shaderów](/pl/manuals/shader).
+Aby uzyskać więcej informacji na temat jednolitych shaderów, zobacz [instrukcje do shaderów](/manuals/shader).
