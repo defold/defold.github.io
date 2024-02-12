@@ -378,6 +378,38 @@
     },
     {
       "type": "FUNCTION",
+      "name": "resource.get_render_target_info",
+      "brief": "get render target info",
+      "description": "Gets render target info from a render target resource path or a render target handle",
+      "returnvalues": [
+        {
+          "name": "table",
+          "doc": "A table containing info about the render target:\n<dl>\n<dt><code>handle</code></dt>\n<dd><span class=\"type\">handle</span> the opaque handle to the texture resource</dd>\n<dt>'attachments'</dt>\n<dd><span class=\"type\">table</span> a table of attachments, where each attachment contains the following entries:</dd>\n<dt><code>handle</code></dt>\n<dd><span class=\"type\">handle</span> the opaque handle to the texture resource</dd>\n<dt><code>width</code></dt>\n<dd><span class=\"type\">integer</span> width of the texture</dd>\n<dt><code>height</code></dt>\n<dd><span class=\"type\">integer</span> height of the texture</dd>\n<dt><code>depth</code></dt>\n<dd><span class=\"type\">integer</span> depth of the texture (i.e 1 for a 2D texture and 6 for a cube map)</dd>\n<dt><code>mipmaps</code></dt>\n<dd><span class=\"type\">integer</span> number of mipmaps of the texture</dd>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> The texture type. Supported values:</dd>\n</dl>\n<ul>\n<li><code>resource.TEXTURE_TYPE_2D</code></li>\n<li><code>resource.TEXTURE_TYPE_CUBE_MAP</code></li>\n<li><code>resource.TEXTURE_TYPE_2D_ARRAY</code></li>\n</ul>\n<dl>\n<dt><code>buffer_type</code></dt>\n<dd><span class=\"type\">number</span> The attachment buffer type. Supported values:</dd>\n</dl>\n<ul>\n<li><code>resource.BUFFER_TYPE_COLOR0</code></li>\n<li><code>resource.BUFFER_TYPE_COLOR1</code></li>\n<li><code>resource.BUFFER_TYPE_COLOR2</code></li>\n<li><code>resource.BUFFER_TYPE_COLOR3</code></li>\n<li><code>resource.BUFFER_TYPE_DEPTH</code></li>\n<li><code>resource.BUFFER_TYPE_STENCIL</code></li>\n</ul>",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "path",
+          "doc": "The path to the resource or a render target handle",
+          "types": [
+            "hash",
+            "string",
+            "handle"
+          ]
+        }
+      ],
+      "examples": "Get the metadata from a render target resource\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">info</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">get_render_target_info</span><span class=\"p\">(</span><span class=\"s2\">&quot;/my_render_target.render_targetc&quot;</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- the info table contains meta data about all the render target attachments</span>\n    <span class=\"c1\">-- so it&#39;s not necessary to use resource.get_texture here, but we do it here</span>\n    <span class=\"c1\">-- just to show that it&#39;s possible:</span>\n    <span class=\"kd\">local</span> <span class=\"n\">info_attachment_1</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">get_texture_info</span><span class=\"p\">(</span><span class=\"n\">info</span><span class=\"p\">.</span><span class=\"n\">attachments</span><span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">].</span><span class=\"n\">handle</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "resource.create_atlas",
       "brief": "create an atlas resource",
       "description": "This function creates a new atlas resource that can be used in the same way as any atlas created during build time.\nThe path used for creating the atlas must be unique, trying to create a resource at a path that is already\nregistered will trigger an error. If the intention is to instead modify an existing atlas, use the <a href=\"/ref/resource#resource.set_atlas\">resource.set_atlas</a>\nfunction. Also note that the path to the new atlas resource must have a '.texturesetc' extension,\nmeaning \"/path/my_atlas\" is not a valid path but \"/path/my_atlas.texturesetc\" is.\nWhen creating the atlas, at least one geometry and one animation is required, and an error will be\nraised if these requirements are not met. A reference to the resource will be held by the collection\nthat created the resource and will automatically be released when that collection is destroyed.\nNote that releasing a resource essentially means decreasing the reference count of that resource,\nand not necessarily that it will be deleted.",
