@@ -18,7 +18,9 @@ brief: 本教程介绍了 Defold 能创建的各种 Build variants 以及它们�
 
 不同类型即是 `Build variants`
 
-注意: 使用 `Build and run` 时使用的是 debug 版引擎.
+<div class='sidenote' markdown='1'>
+使用 <kbd>Project ▸ Build</kbd> 时使用的是 debug 版引擎.
+</div>
 
 ### Debug
 

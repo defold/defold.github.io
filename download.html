@@ -1,16 +1,17 @@
 ---
 layout: hero_and_text
 title: Download Defold
-description: Defold is a fully-featured game development environment. There's nothing to set up or configure, not even when bundling. Simply download the editor and get creative!
+description: Defold is a completely free to use game engine for development of console, desktop, mobile and web games. There's nothing to set up or configure, not even when building. Simply download the editor and get creative!
 nav: floating
 heatmap: false
 background: /images/hero/defold-top-bg-transparent-2.png
-after: [subscribe.html, learn_section.html, donors_and_partners.html]
+after: [always_free.html, learn_section.html, donors_and_partners.html]
 ---
+
 <script type="text/javascript">
 	function downloadEditor(select) {
 		window.location.href = select.value;
-		select.value = "Download for Mac";
+		select.value = select.options[0].value;
 	}
 </script>
 <div class="row center">
@@ -18,7 +19,7 @@ after: [subscribe.html, learn_section.html, donors_and_partners.html]
 		<span class="icon-apple blue-text" style="font-size: 50px"></span>
 		<p>Requires macOS 11 Big Sur or newer</p>
 		<form style="margin: 0;">
-			<select name="select" class="button primary download-select" onChange="downloadEditor(this)">
+			<select name="select" class="button primary download-select download-select-mac" onChange="downloadEditor(this)">
 				<option selected disabled hidden>Download for Mac</option>
 				<option value="https://d.defold.com/editor2/channels/editor-alpha/Defold-arm64-macos.dmg">Apple Silicon Mac</option>
 				<option value="https://d.defold.com/editor2/channels/editor-alpha/Defold-x86_64-macos.dmg">Intel Mac</option>
@@ -35,14 +36,20 @@ after: [subscribe.html, learn_section.html, donors_and_partners.html]
 	<div class="columns four">
 		<span class="icon-linux blue-text" style="font-size: 50px"></span>
 		<p>Requires Ubuntu 18.04 (64-bit) or newer</p>
-		{% include primary_button.html link="https://d.defold.com/editor2/channels/editor-alpha/Defold-x86_64-linux.zip" text="Download for Linux" %}
+		<form style="margin: 0;">
+			<select name="select" class="button primary download-select download-select-linux" onChange="downloadEditor(this)">
+				<option selected disabled hidden>Download for Linux</option>
+				<option value="https://d.defold.com/editor2/channels/editor-alpha/Defold-x86_64-linux.zip">As ZIP File</option>
+				<option value="https://d.defold.com/editor2/channels/editor-alpha/Defold-x86_64-linux.tar.gz">As TAR.GZ File</option>
+			</select>
+		</form>
 		<p><a href="https://forum.defold.com/c/releasenotes" target="_blank">Release notes</a></p>
 	</div>
 </div>
 
 <div class="row center">
 	<br/>
-	<p>Looking for older versions of Defold or the command line tools? Go to <a href="https://d.defold.com" target="_blank">d.defold.com</a></p>
+	<p>Looking for older versions of Defold or the command line tools? Find them on <a href="https://github.com/defold/defold/releases" target="_blank">github.com</a></p>
 	<br/>
 </div>
 

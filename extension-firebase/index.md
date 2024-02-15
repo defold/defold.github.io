@@ -90,18 +90,25 @@ $ ./generate_xml_from_google_services_json.py -i google-services.json -o google-
 function init(self)
     -- use firebase only if it is supported on the current platform
     if firebase then
-        local ok, err = firebase.init()
-        if not ok then
-            print(err)
-            return
-        end
-        
-        -- firebase is ready to use!
-        
-        -- installation auth token can be used for configuring test devices for A/B tests
-        firebase.get_installation_auth_token(function(self, token)
-            print("installation auth token is " .. token)
+         firebase.set_callback(function(self, message_id, message)
+            if message_id == firebase.MSG_INITIALIZED then
+               -- firebase is ready to use!
+
+               -- installation auth token can be used for configuring test devices for A/B tests
+               firebase.get_installation_auth_token()
+               -- retrieve Firebase installation ID for example, to create segments of app installs for BiqQuery import,
+               -- or toperform testing during Firebase In-App Messaging development,
+               -- you can identify and target the correct devices using the corresponding Firebase installation IDs.
+               firebase.get_installation_id()
+            elseif message_id == firebase.MSG_INSTALLATION_ID then
+                print("id:", message.id)
+            elseif message_id == firebase.MSG_INSTALLATION_AUTH_TOKEN then
+                print("token:", message.token)
+            elseif message_id == firebase.MSG_ERROR then
+                print("ERROR:", message.error)
+            end
         end)
+        firebase.initialize()
     end
 end
 ```
@@ -115,4 +122,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-fir
 
 
 ## API reference
-[API Reference](/extension-firebase/firebase_api)
+[API Reference - firebase](/extension-firebase/firebase_api)

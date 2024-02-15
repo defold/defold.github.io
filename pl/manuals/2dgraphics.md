@@ -8,5 +8,5 @@ brief: Materiał jest przestarzały
 
 # Grafika 2D
 
-Przeniesiono do [Instrukcja do grafiki](/pl/manuals/graphics).
+Przeniesiono do [Instrukcja do grafiki](/manuals/graphics).
 

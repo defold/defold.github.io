@@ -12,5 +12,5 @@ brief: Данное руководство объясняет как можно 
 
 * [HTTP Запросы](/ru/manuals/http-requests)
 * [Сокеты](/ru/manuals/socket-connections)
-* [Соединения по веб-сокету](/ru/manuals/websocket-connections)
+* [Соединения по веб-сокету](/manuals/websocket-connections)
 * [Онлайн сервисы](/ru/manuals/online-services)

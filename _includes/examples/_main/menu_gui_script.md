@@ -101,7 +101,7 @@ end
 function init(self)
 	self.index = {}
 	self.index["basics"] = { "message_passing", "parent_child", "z_order" }
-	self.index["factory"] = { "basic", "bullets" }
+	self.index["factory"] = { "basic", "bullets", "dynamic" }
 	self.index["movement"] = { "simple_move", "follow", "move_to", "move_forward", "movement_speed", "look_at" }
 	self.index["physics"] = { "dynamic", "kinematic", "raycast", "trigger", "hinge_joint", "pendulum", "knockback"}
 	self.index["animation"] = { "spinner", "flipbook", "chained_tween", "basic_tween", "spine", "cursor", "easing" }
@@ -116,6 +116,8 @@ function init(self)
 	self.index["file"] = { "sys_save_load" }
 	self.index["tilemap"] = { "collisions", "get_set_tile" }
 	self.index["timer"] = { "repeating_timer", "trigger_timer", "cancel_timer" }
+	self.index["resource"] = { "modify_atlas" }
+
 	local categories = {}
 	for k,_ in pairs(self.index) do
 		categories[#categories + 1] = k

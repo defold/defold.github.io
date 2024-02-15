@@ -943,4 +943,3 @@ For fbinstant.get_stores() activity store status
 #### fbinstant.ERROR_SAME_CONTEXT
 #### fbinstant.ERROR_UNKNOWN
 #### fbinstant.ERROR_USER_INPUT
-[API Reference](/extension-fbinstant/fbinstant_api)

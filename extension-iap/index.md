@@ -3,7 +3,7 @@ layout: manual
 language: en
 github: https://github.com/defold/extension-iap
 title: Defold In-app purchase extension API documentation
-brief: This manual covers how to setup and use Google Play Game Services in Defold.
+brief: This manual covers how to setup and use In-App Purchases in Defold.
 ---
 
 # Defold In-app purchase extension API documentation
@@ -240,4 +240,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-iap
 
 
 ## API reference
-[API Reference](/extension-iap/iap_api)
+[API Reference - iap](/extension-iap/iap_api)

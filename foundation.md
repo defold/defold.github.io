@@ -19,7 +19,7 @@ The objectives of the foundation are:
 * Prevent the Defold software from being commercialised by a third-party.
 * Support the open source community and the use of open licenses.
 
-As a registered Swedish foundation the Defold Foundation has a legal status somewhat similar to traditional corporation. One key difference from a corporation is that the objectives of the foundation cannot be changed once the foundation has been created. The objectives defined by the founder are protected by Swedish foundation law. A violation of the foundation objectives may lead to the dissolution of the foundation and the rights to Defold returning to the founder.
+As a registered Swedish foundation the Defold Foundation has a legal status somewhat similar to traditional corporation. One key difference from a corporation is that __the objectives of the foundation cannot be changed once the foundation has been created__. The objectives defined by the founder are protected by Swedish foundation law. A violation of the foundation objectives may lead to the dissolution of the foundation and the rights to Defold returning to the founder.
 
 ### Vision
 We believe in a free and open internet where software and services use open standards to bring net neutrality and democracy to everyone. The Defold Foundation works together with industry partners to provide free and open software and services to game developers across the globe.

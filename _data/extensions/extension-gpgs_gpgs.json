@@ -135,7 +135,7 @@
                             ]
                         },
                         {
-                            "doc": "An message_id can be one of the predefined constants below\n- `gpgs.MSG_SIGN_IN`\n- `gpgs.MSG_SILENT_SIGN_IN`\n- `gpgs.MSG_SIGN_OUT`\n- `gpgs.MSG_SHOW_SNAPSHOTS`\n- `gpgs.MSG_LOAD_SNAPSHOT`",
+                            "doc": "An message_id can be one of the predefined constants below\n- `gpgs.MSG_SIGN_IN`\n- `gpgs.MSG_SILENT_SIGN_IN`\n- `gpgs.MSG_SIGN_OUT`\n- `gpgs.MSG_SHOW_SNAPSHOTS`\n- `gpgs.MSG_LOAD_SNAPSHOT`\n- `gpgs.MSG_SAVE_SNAPSHOT`",
                             "name": "message_id",
                             "types": [
                                 "number"
@@ -873,6 +873,14 @@
             "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.snapshot_open()`",
             "examples": "",
             "name": "MSG_LOAD_SNAPSHOT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.snapshot_commit_and_close()`",
+            "examples": "",
+            "name": "MSG_SAVE_SNAPSHOT",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"

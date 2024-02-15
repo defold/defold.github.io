@@ -142,4 +142,3 @@ The details table contains additional information about the event. Example:
   * New game modes
   * Additional levels
 * If your game contains ads you should also consider removing the ads for web monetized players
-[API Reference](/extension-webmonetization/webmonetization_api)

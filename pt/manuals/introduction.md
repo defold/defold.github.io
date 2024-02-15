@@ -17,16 +17,16 @@ Nos gastamos muito tempo e muita dedicação para ter certeza de que certos elem
 Nos encorajamos você a experimentar, seguir tutoriais, ler nossos manuais e documentação de API, e ser ativo no forum para aprender com outros usuários e acompanhar o desenvolvimento do Defold. Existe muita Documentação, na forma de manuais, documentação de referência de API, exemplos e tutoriais. Se você não sabe por onde começar, aqui vão algumas dicas:
 
 #### O Editor
-![Editor overview](/manuals/images/introduction/editor.png) [A Visão Geral do Editor](/pt/manuals/editor/) da uma boa introdução ao editor e vai te ajudar a se acostumar a utilizar as ferramentas visuais e a escrever os códigos. Se você já é familiarizado com programas de modelagem 3D e interfaces de programação, você não terá muitas surpresas, mas sempre existirão coisas que serão diferentes do seu software favorito.
+![Editor overview](/manuals/images/introduction/editor.png) [A Visão Geral do Editor](/manuals/editor/) da uma boa introdução ao editor e vai te ajudar a se acostumar a utilizar as ferramentas visuais e a escrever os códigos. Se você já é familiarizado com programas de modelagem 3D e interfaces de programação, você não terá muitas surpresas, mas sempre existirão coisas que serão diferentes do seu software favorito.
 
 #### Exemplos Simples
 ![Examples](/manuals/images/introduction/examples.jpg) [Nossa Coleção De Exemplos Simples ](/examples/) é uma boa introdução de como fazer as coisas funcionarem. Você encontrará exemplos de como fazer diversas coisas no Defold.
 
 #### A Linguagem LUA
-![Lua overview](/manuals/images/introduction/lua.png) [Defold usa a LUA](/pt/manuals/lua/) para todo o seu controle lógico. A engine é uma rápida ferramenta em C++ , mas é controlada em alto nível por programas LUA. Se você ja programou em Python, Javascript ou qualquer outra linguagem de alto nível, a LUA vai ser de fácil aprendizado e você conseguirá seguir um tutorial facilmente. Caso contrário, leia nosso manual sobre a LUA e comece por ai.
+![Lua overview](/manuals/images/introduction/lua.png) [Defold usa a LUA](/manuals/lua/) para todo o seu controle lógico. A engine é uma rápida ferramenta em C++ , mas é controlada em alto nível por programas LUA. Se você ja programou em Python, Javascript ou qualquer outra linguagem de alto nível, a LUA vai ser de fácil aprendizado e você conseguirá seguir um tutorial facilmente. Caso contrário, leia nosso manual sobre a LUA e comece por ai.
 
 #### Tutoriais de Games
-![Tutorials](/manuals/images/introduction/tutorials.jpg) Nos acreditamos que você so aprenderá fazendo. Portanto disponiblizamos tutoriais dos mais diversos níveis de habilidade e complexidade, que são retirados diretamente do [editor](/pt/manuals/editor/). Assista um ou dois tutoriais para aprender como construir coisas e sobre o funcionamento do Defold.
+![Tutorials](/manuals/images/introduction/tutorials.jpg) Nos acreditamos que você so aprenderá fazendo. Portanto disponiblizamos tutoriais dos mais diversos níveis de habilidade e complexidade, que são retirados diretamente do [editor](/manuals/editor/). Assista um ou dois tutoriais para aprender como construir coisas e sobre o funcionamento do Defold.
 
 #### Os Blocos de Construção do Defold
 ![Building blocks](/manuals/images/introduction/building_blocks.png) [Os games no Defold são construidos pela composição simples de blocos](/pt/manuals/building-blocks/), sendo alguns familiares se você já usou outra engine. Existem alguns designs de arquitetura que fazem os blocos do Defold serem especiais e demora um pouco para se acostumar a trabalhar com eles. O nosso manual de contrução de blocos é uma boa opção inicial se você quer entender como eles funcionam.

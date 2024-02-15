@@ -131,6 +131,7 @@ Before an ad unit can be displayed it has to be loaded:
 ```lua
 admob.load_interstitial(ad_unit)
 admob.load_rewarded(ad_unit)
+admob.load_rewarded_interstitial(ad_unit)
 admob.load_banner(ad_unit, size)
 ```
 
@@ -148,6 +149,8 @@ local function admob_callback(self, message_id, message)
         end
     elseif message_id == admob.MSG_REWARDED then
         -- same as above
+    elseif message_id == admob.MSG_REWARDED_INTERSTITIAL then
+        -- same as above
     elseif message_id == admob.MSG_BANNER then
         -- same as above
     end
@@ -159,6 +162,7 @@ It is also possible to query if an ad type is loaded and ready to show:
 admob.is_banner_loaded()
 admob.is_interstitial_loaded()
 admob.is_rewarded_loaded()
+admob.is_rewarded_interstitial_loaded()
 ```
 
 
@@ -168,6 +172,7 @@ Once an ad unit has been loaded it is ready to be shown:
 ```lua
 admob.show_interstitial()
 admob.show_rewarded()
+admob.show_rewarded_interstitial()
 admob.show_banner(position)
 ```
 
@@ -190,6 +195,8 @@ local function admob_callback(self, message_id, message)
             print("Internal error: " .. message.error)
         end
     elseif message_id == admob.MSG_REWARDED then
+        -- same as above
+    elseif message_id == admob.MSG_REWARDED_INTERSTITIAL then
         -- same as above
     elseif message_id == admob.MSG_BANNER then
         -- same as above
@@ -217,4 +224,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-adm
 
 
 ## API reference
-[API Reference](/extension-admob/admob_api)
+[API Reference - admob](/extension-admob/admob_api)

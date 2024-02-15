@@ -5,6 +5,7 @@ write_log = 0
 compress_archive = 1
 publisher = unnamed
 developer = unnamed
+custom_resources = examples/resource/modify_atlas/resources
 title_as_file_name = Defoldexamples
 
 [display]
@@ -100,6 +101,7 @@ max_count = 128
 max_count = 64
 max_particlefx_count = 64
 max_particle_count = 1024
+max_animation_count = 1024
 
 [collection]
 max_instances = 32765
@@ -152,7 +154,7 @@ iap_provider =
 
 [html5]
 custom_heap_size = 0
-heap_size = 256
+heap_size = 64
 htmlfile = /builtins/manifests/web/engine_template.html
 cssfile = /builtins/manifests/web/light_theme.css
 archive_location_prefix = archive

@@ -45,16 +45,15 @@ R: A Defold foi criada por Ragnar Svensson e Christian Murray. Eles começaram a
 
 R: As seguintes plataformas são suportadas para o editor/ferramentas e o tempo de execução da engine (engine runtime):
 
-  | Sistema                    | Suportado            |
-  | -------------------------- | -------------------- |
-  | macOS 11 Big Sur           | Editor               |
-  | macOS 10.13 High Sierra    | Runtime              | 
-  | Windows Vista              | Editor e runtime     |
-  | Ubuntu 18.04 (64 bit)(1)   | Editor               |
-  | Linux (64 bit)(2)          | Runtime              |
-  | iOS 11.0                   | Runtime              |
-  | Android 4.4 (API level 19) | Runtime              |
-  | HTML5                      | Runtime              |
+  | System             | Version            | Architectures  | Supported            |
+  | ------------------ | ------------------ | -------------- | -------------------- |
+  | macOS              | 11 Big Sur         | x86-64, arm-64 | Editor and Engine    |
+  | Windows            | Vista              | x86-32, x86-64 | Editor and Engine    |
+  | Ubuntu (1)         | 18.04              | x86-64         | Editor               |
+  | Linux (2)          | Any                | x86-64         | Engine               |
+  | iOS                | 11.0               | arm-64         | Engine               |
+  | Android            | 4.4 (API level 19) | arm-32, arm-64 | Engine               |
+  | HTML5              |                    | asm.js, wasm   | Engine               |
 
   (1 O editor é construído e testado para Ubuntu 18.04 64-bit. Deve funcionar em outras distribuições também, mas não damos garantias.)
 
@@ -83,7 +82,7 @@ R: Absolutamente! A engine é uma engine 3D madura. Entretanto o conjunto de fer
 
 #### P: Com quais linguagens de programação eu posso trabalhar com a Defold?
 
-R: Lógica de jogo no seu projeto Defold é principalmente escrito usando a linguagem Lua (especificamente Lua 5.1/LuaJIT, recorrer ao [manual Lua](/pt/manuals/lua) para detalhes). Lua é uma linguagem leve e dinâmica que é rápida e muito poderosa. Você também pode usar código nativo (C/C++, Objective-C, Java e Javascript dependendo da plataforma) para estender a engine Defold com novas funcionalidades. Quando construindo materiais personalizados, a linguagem de shading (shader language) do OpenGL ES SL é usada para escrever vertex e fragment shaders.
+R: Lógica de jogo no seu projeto Defold é principalmente escrito usando a linguagem Lua (especificamente Lua 5.1/LuaJIT, recorrer ao [manual Lua](/manuals/lua) para detalhes). Lua é uma linguagem leve e dinâmica que é rápida e muito poderosa. Você também pode usar código nativo (C/C++, Objective-C, Java e Javascript dependendo da plataforma) para estender a engine Defold com novas funcionalidades. Quando construindo materiais personalizados, a linguagem de shading (shader language) do OpenGL ES SL é usada para escrever vertex e fragment shaders.
 
 
 

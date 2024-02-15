@@ -198,7 +198,7 @@ Uma URL é um object, geralmente escritos como specially formatted strings, ou s
 `[socket:][path][#fragment]`
 
 socket
-: Identifica o mundo do jogo do target. Isso é importante quando trabalhando com o [Collection Proxies](/pt/manuals/collection-proxy) e então é utilizado para identificar o  _dynamically loaded collection_.
+: Identifica o mundo do jogo do target. Isso é importante quando trabalhando com o [Collection Proxies](/manuals/collection-proxy) e então é utilizado para identificar o  _dynamically loaded collection_.
 
 path
 : Essa parte da URL contem o full id do target game object.

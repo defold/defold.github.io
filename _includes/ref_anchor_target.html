@@ -1,0 +1,25 @@
+{%- assign element=include.element -%}
+
+{% capture anchor %}{% include ref_anchorlink.html element=element %}{% endcapture %}
+
+<a name="{{ anchor }}"/>
+
+{% comment %}
+    anchor (ref_anchorlink.html) for functions contains
+    parameter names so we also have to generate one without
+    parameters
+{% endcomment %}
+{%- if element.type == "FUNCTION" -%}
+    {% assign anchor = element.name %}
+    <a name="{{ anchor }}"/>
+{%- endif -%}
+
+{% comment %}
+    on /search page all urls will be in lowercase so
+    we have to make sure that there are lowercase anchor
+    targets available in API Reference
+{% endcomment %}
+{% assign anchor_downcase = anchor | downcase %}
+{%- if anchor != anchor_downcase -%}
+    <a name="{{ anchor_downcase }}"/>
+{%- endif -%}

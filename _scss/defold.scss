@@ -1,0 +1,1252 @@
+/* Reusable color constants */
+:root {
+	--lightest: #fafafa;
+	--almostlightest: #f0f2f6;
+	--lighter: #afb9c4; /* +21% from light*/
+	--light: #79838e;
+	--grey: #272c31;
+	--dark: #1e2226;
+	--darker: #191d21; /* -2% from dark */
+	--darkest: #14181c; /* -4% from dark*/
+
+	--defold-blue: #39a3e4;
+	--defold-blue-dark: #327fec;
+	--defold-blue-darker: #2477eb;
+	--defold-blue-darkest: #1a70eb;
+
+	--defold-orange: #fd6623;
+	--defold-green: #57ab5a;
+}
+
+/*******************************************************************************
+* dark mode
+******************************************************************************/
+
+.dark-mode {
+	.dark\:darken-10 {
+		background-blend-mode: darken;
+		background-color: rgba(0, 0, 0, 0.10);
+	}
+
+	.dark\:dark {
+		background-color: var(--dark) !important;
+		color: var(--lighter) !important;
+
+		a {
+			color: var(--lightest);
+		}
+		a.anchor-link {
+			opacity: 0.3;
+
+			&:hover {
+				opacity: 0.7;
+			}
+		}
+		a:hover {
+			color: var(--lighter);
+		}
+		h1 {
+			color: var(--lightest);
+		}
+		h2 {
+			color: var(--lightest);
+		}
+		h3 {
+			color: var(--lightest);
+		}
+		h4 {
+			color: var(--lightest);
+		}
+		h5 {
+			color: var(--lightest);
+		}
+		.card {
+			background-color: var(--grey);
+
+			a {
+				text-decoration: none;
+				color: var(--lightest);
+
+				&:hover {
+					text-decoration: underline;
+					color: var(--lightest);
+				}
+			}
+		}
+		// span.type - for API Reference page
+		code, span.type {
+			background-color: var(--darker);
+			border: 1px solid var(--grey);
+		}
+		span.type {
+			color: var(--light);
+		}
+		.sidenote {
+			background-color: var(--grey);
+			color: var(--almostlightest);
+		}
+		.important {
+			background-color: var(--defold-blue-darkest);
+			color: var(--almostlightest);
+		}
+		input[type="text"] {
+			background-color: var(--darker);
+		}
+		img.logo-hor-classic-160 {
+			content: url("/images/logo/defold/logo_with_text/logo-hor-classic-white-160.png");
+		}
+		.clipboard-button {
+			&:hover {
+				background-color: var(--grey);
+				border-color: var(--lighter);
+			}
+			&:active {
+				background-color: var(--dark);
+				border-color: var(--light);
+			}
+		}
+	}
+
+	.dark\:darkest {
+		background-color: var(--darkest) !important;
+		color: var(--light) !important;
+
+		a {
+			color: var(--lighter);
+
+			&:hover {
+				color: var(--lightest);
+			}
+		}
+		a.anchor-link {
+			opacity: 0.3;
+
+			&:hover {
+				opacity: 0.7;
+			}
+		}
+		h1 {
+			color: var(--lighter);
+		}
+		h2 {
+			color: var(--lighter);
+		}
+		h3 {
+			color: var(--lighter);
+		}
+		h4 {
+			color: var(--lighter);
+		}
+		h5 {
+			color: var(--lighter);
+		}
+		input[type="text"] {
+			background-color: var(--dark);
+		}
+	}
+}
+
+/*******************************************************************************
+* blue
+******************************************************************************/
+.blue {
+	background-color: var(--defold-blue-darkest);
+	color: var(--lightest);
+}
+.blue input[type="submit"].button {
+	color: var(--lightest);
+}
+.blue input[type="button"].button {
+	color: var(--lightest);
+}
+.blue a {
+	color: var(--lightest);
+}
+.blue a:hover {
+	color: white;
+}
+.blue-text {
+	color: var(--defold-blue-darkest);
+}
+.blue-text a {
+	color: var(--defold-blue-darkest);
+}
+.blue-text a:hover {
+	color: var(--defold-blue-darker);
+}
+
+/*******************************************************************************
+* lightest
+******************************************************************************/
+.lightest {
+	background-color: var(--lightest);
+	color: var(--dark);
+}
+.lightest a {
+	color: var(--dark);
+}
+.lightest a:hover {
+	color: var(--dark);
+}
+.lightest-background {
+	background-color: var(--lightest);
+}
+.lightest-text {
+	color: var(--lightest);
+}
+.lightest-text a {
+	color: var(--lightest);
+}
+.lightest-text a:hover {
+	color: white;
+}
+
+/*******************************************************************************
+* lighter
+******************************************************************************/
+.lighter {
+	background-color: var(--lighter);
+	color: var(--darker);
+}
+.lighter a {
+	color: var(--darker);
+}
+.lighter a:hover {
+	color: var(--dark);
+}
+.lighter-background {
+	background-color: var(--lighter);
+}
+.lighter-text {
+	color: var(--lighter);
+}
+.lighter-text a {
+	color: var(--lighter);
+}
+.lighter-text a:hover {
+	color: var(--lightest);
+}
+
+/*******************************************************************************
+* light
+******************************************************************************/
+.light-text {
+	color: var(--light);
+}
+.light-text a {
+	color: var(--light);
+}
+.light-text a:hover {
+	color: var(--lighter);
+}
+.light-background {
+	background-color: var(--light);
+}
+.light {
+	background-color: var(--light);
+	color: var(--darker);
+}
+.light a {
+	color: var(--darker);
+}
+.light a:hover {
+	color: var(--dark);
+}
+
+/*******************************************************************************
+* grey
+******************************************************************************/
+.grey {
+	background-color: var(--grey);
+	color: var(--lighter);
+}
+
+/*******************************************************************************
+* dark
+******************************************************************************/
+.dark-text {
+	color: var(--dark);
+}
+.dark-text a {
+	color: var(--dark);
+}
+.dark-text a:hover {
+	color: var(--dark);
+}
+.dark-background {
+	background-color: var(--dark);
+}
+.dark {
+	background-color: var(--dark);
+	color: var(--lighter);
+}
+.dark a {
+	color: var(--lighter);
+}
+.dark a:hover {
+	color: var(--lightest);
+}
+.dark h1 {
+	color: var(--lightest)
+}
+.dark h2 {
+	color: var(--lightest)
+}
+.dark h3 {
+	color: var(--lightest)
+}
+.dark h4 {
+	color: var(--lightest)
+}
+.dark h5 {
+	color: var(--lightest)
+}
+/*******************************************************************************
+* darker
+******************************************************************************/
+.darker-text {
+	color: var(--darkest);
+}
+.darker-text a {
+	color: var(--darkest);
+}
+.darker-text a:hover {
+	color: var(--dark);
+}
+.darker-background {
+	background-color: var(--darker);
+}
+.darker {
+	background-color: var(--darker);
+	color: var(--light);
+}
+.darker a {
+	color: var(--light);
+}
+.darker a:hover {
+	color: var(--lighter);
+}
+
+/*******************************************************************************
+* darkest
+******************************************************************************/
+.darkest {
+	background-color: var(--darkest);
+	color: var(--light);
+}
+
+.blackwhite {
+	background-color: black;
+	color: white;
+}
+.blackwhite a {
+	color: white;
+}
+.blackwhite a:hover {
+	color: white;
+}
+.white {
+	color: white;
+}
+
+/*******************************************************************************
+* Skeleton.css overrides
+******************************************************************************/
+
+/* Make container wider than default skeleton.css*/
+.container {
+	max-width: 1200px;
+}
+/* Overide section padding in skeleton.css */
+.section {
+	padding: 8rem 0 7rem;
+}
+.section.narrow {
+	padding: 1rem 0 1rem;
+}
+
+select {
+	overflow:auto;
+}
+.download-select {
+	background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23FFFFFF'><polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
+	background-size: 10px;
+	background-position: calc(100% - 10px) calc(50% + 3px);
+    -moz-appearance: none; 
+    -webkit-appearance: none;
+    appearance: none;
+	overflow: hidden;
+	&-mac {
+		width: 200px;
+	}
+	&-linux {
+		width: 210px;
+	}
+}
+
+mark {
+	background: var(--defold-blue);
+	color: var(--darkest);
+	padding: 2px 4px 2px 4px;
+}
+
+/*******************************************************************************
+* Helper to reduce margins and padding
+******************************************************************************/
+.compact > * {
+	padding: 0;
+	margin: 0;
+}
+
+.compact td p {
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+
+/*******************************************************************************
+* Page setup (to keep footer always at the bottom)
+* Used in _layouts/base.html
+******************************************************************************/
+
+/* Ignore overflowing content */
+html, body {
+	max-width: 100%;
+}
+
+#page {
+	position: relative;
+	min-height: 100vh;
+}
+#pagecontent {
+	overflow-x: hidden; /* Hide overflowing content such as images */
+	background-repeat: no-repeat;
+	background-size: auto;
+	background-position: center top;
+	display: block;
+}
+
+body {
+	background-color: var(--dark);
+	color: var(--lighter)
+}
+
+body a {
+	color: var(--lighter)
+}
+
+body a:hover {
+	color: var(--lightest)
+}
+
+/*******************************************************************************
+* Page footer
+******************************************************************************/
+footer {
+	font-size: smaller;
+}
+footer li {
+	list-style: none;
+}
+footer li a {
+	text-decoration: none;
+	color: var(--lighter);
+}
+
+/*******************************************************************************
+* Collapsible menu using checkbox+label
+* checkbox unchecked -> Collapsed
+* checkbox checked -> Expanded
+******************************************************************************/
+
+input[type="checkbox"].toggle {
+	display: none;
+}
+/* Padding between elements when collapsed */
+input[type="checkbox"].toggle + .togglelabel {
+	padding-bottom: 1rem;
+}
+/* No padding between elements when expanded */
+input[type="checkbox"].toggle:checked + .togglelabel {
+	padding-bottom: 0;
+}
+/* Hide the list if collapsed (not checked) */
+input[type="checkbox"].toggle + .togglelabel + ul {
+	display: none;
+}
+/* Show the list when expanded (checked) */
+input[type="checkbox"].toggle:checked + .togglelabel + ul {
+	display: block;
+}
+
+.togglelabel:hover {
+	cursor: pointer;
+}
+.togglelabel::after {
+	/* content: '▶'; */
+	content: '▸';
+	position:absolute;;
+	font-size: 70%;
+	margin-left: 0.5rem;
+	padding-top: 0.25rem;
+}
+input[type="checkbox"].toggle:checked + .togglelabel::after {
+	/* content: '▼'; */
+	content: '▾';
+}
+
+/*******************************************************************************
+* Horizontal navigation menu (class: nav)
+* Positioned at the top above other content
+******************************************************************************/
+.nav.learn {
+	background-color: var(--almostlightest);
+	color: var(--darker);
+}
+.nav.learn input {
+	margin-bottom: 0;
+}
+.nav.learn ul {
+	padding-top: 0.7rem;
+}
+
+.nav ul {
+	margin-block-end: 0;
+}
+
+.nav li {
+	display: inline;
+	margin-right: 2.5rem;
+}
+.nav .right li {
+	margin-left: 2.5rem;
+	margin-right: 0rem;
+}
+.nav a {
+	/* color: white; */
+	text-decoration: none;
+}
+.nav a:hover {
+	/* color: white; */
+	text-decoration: none;
+}
+.nav {
+	width: 100%;
+}
+.nav div.container {
+	padding-top: 2rem;
+}
+.nav.learn div.container {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+.absolutetop {
+	position: absolute;
+	top: 0;
+	z-index: 1;
+}
+
+
+/*******************************************************************************
+* Side menu vs drop-down menu
+******************************************************************************/
+
+.dropdownmenu {
+	display: none;
+}
+
+@media (max-width: 800px) {
+	.sidemenu     { display: none; }
+	.dropdownmenu { display: inline-block; }
+}
+
+.sidemenu hr {
+	margin-top: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+/*******************************************************************************
+* Sidemenu on API pages
+******************************************************************************/
+
+.apimenu {
+	overflow-y: scroll;
+	width: 250px; position:
+	fixed; top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	padding-left: 2%;
+	padding-right: 2%;
+	padding-top: 2%;
+	background-color: var(--almostlightest);
+	color: var(--dark);
+}
+
+.apimenu a {
+	color: var(--dark);
+	text-decoration: none;
+}
+.apimenu a:hover {
+	color: var(--grey);
+	text-decoration: none;
+}
+
+.apimenu input {
+	width: 100%
+}
+
+.apicontent {
+	margin-left: 250px;
+	padding-left: 6%;
+	padding-top: 2%;
+	padding-right: 2%;
+}
+
+@media (max-width: 800px) {
+	.apicontent  { margin-left: 0px; }
+}
+
+/*******************************************************************************
+* List styling
+******************************************************************************/
+
+.nobullet {
+	list-style: none;
+}
+
+/* No break between the bullet and the paragraph */
+li p {
+	display: inline;
+}
+
+/*******************************************************************************
+* Button styling
+******************************************************************************/
+
+.button {
+	display: inline-block                           !important;
+	height: 38px                                    !important;
+	padding: 0 30px                                 !important;
+	text-align: center                              !important;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 38px;
+	letter-spacing: .1rem;
+	text-transform: uppercase;
+	text-decoration: none                           !important;
+	white-space: nowrap                             !important;
+	border-radius: 4px                              !important;
+	border-style: solid                             !important;
+	cursor: pointer                                 !important;
+	box-sizing: border-box                          !important;
+}
+.button:hover {
+	color: var(--lighter)                           !important;
+	border-color: var(--lighter)                    !important;
+}
+
+input[type="submit"] {
+	color: var(--lighter)                           !important;
+	border-color: var(--lighter)                    !important;
+}
+input[type="submit"]:hover {
+	color: var(--lightest)                          !important;
+	border-color: var(--lightest)                   !important;
+}
+
+.primary {
+	color: var(--lightest)                          !important;
+	background-color: var(--defold-blue-darkest)    !important;
+	border-color: var(--defold-blue-darkest)        !important;
+}
+.primary:hover {
+	background-color: var(--defold-blue-dark)      !important;
+	border-color: var(--defold-blue-darkest)       !important;
+}
+
+.secondary {
+	color: var(--lighter)                           !important;
+	background-color: transparent                   !important;
+	border-color: var(--lighter)                    !important;
+}
+.secondary:hover {
+	color: var(--lightest)                          !important;
+	background-color: transparent                   !important;
+	border-color: var(--lightest)                   !important;
+}
+
+/*******************************************************************************
+* Text input styling
+******************************************************************************/
+
+input[type=text].assetsearch {
+	color: var(--lighter)                           !important;
+	background-color: transparent                   !important;
+	border-top: none                                !important;
+	border-left: none                               !important;
+	border-right: none                              !important;
+	border-bottom: 1px solid var(--lighter);
+	line-height: 80%;
+	padding: 0px;
+}
+
+/*******************************************************************************
+* Limit width of images in examples, manuals and tutorials.
+* Also center them
+******************************************************************************/
+
+.example img {
+	max-width: 100%;
+	display: block;
+}
+
+.example figure.highlight {
+	margin: 0;
+}
+.example pre {
+	font-size: small;
+}
+.manual img {
+	max-width: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tutorial img {
+	max-width: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.post img {
+	max-width: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.center img {
+	max-width: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*******************************************************************************
+* Icons (fontello.css)
+******************************************************************************/
+
+span[class^='icon-'] {
+	color: var(--defold-blue);
+}
+span[class='icon-attention'] {
+	color: var(--defold-orange);
+}
+
+/*******************************************************************************
+* Ref doc
+******************************************************************************/
+
+.apicontent .type {
+	border: 1px solid #d0d3db;
+	color: #6a7480;
+	padding: 2px 6px;
+	background-color: #f2f3f5;
+}
+
+.apicontent td {
+	vertical-align: top;
+}
+
+.apicontent h4 > a {
+	color: var(--defold-orange);
+}
+
+.apicontent p > a {
+	color: var(--defold-blue);
+}
+
+/*******************************************************************************
+* Ref doc, manuals, tutorials anchor links
+******************************************************************************/
+
+.apicontent h1 > a { text-decoration: none; }
+.apicontent h2 > a { text-decoration: none; }
+.apicontent h3 > a { text-decoration: none; }
+.apicontent h4 > a { text-decoration: none; }
+.apicontent h5 > a { text-decoration: none; }
+.apicontent h6 > a { text-decoration: none; }
+.manual h1 > a { text-decoration: none; }
+.manual h2 > a { text-decoration: none; }
+.manual h3 > a { text-decoration: none; }
+.manual h4 > a { text-decoration: none; }
+.manual h5 > a { text-decoration: none; }
+.manual h6 > a { text-decoration: none; }
+.tutorial h1 > a { text-decoration: none; }
+.tutorial h2 > a { text-decoration: none; }
+.tutorial h3 > a { text-decoration: none; }
+.tutorial h4 > a { text-decoration: none; }
+.tutorial h5 > a { text-decoration: none; }
+.tutorial h6 > a { text-decoration: none; }
+
+a.anchor-link {
+	text-decoration: none;
+}
+
+.anchor-link::before {
+	font-family: fontello;
+	font-size: smaller;
+	content: '';
+	color: #efefef;
+	padding: 0.25em;
+}
+.anchor-link:hover::before {
+	color: #bfbfbf;
+}
+
+/*******************************************************************************
+* Icons ![icon](foobar.png)
+******************************************************************************/
+
+img[alt="icon"] {
+	display: inline;
+	vertical-align: middle;
+}
+
+/*******************************************************************************
+* Manuals special markup ::: sidenote and ::: important
+******************************************************************************/
+.sidenote {
+	background-color: #fff7d4;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 2px;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	margin-bottom: 1rem;
+}
+.sidenote p {
+	margin: 0;
+}
+
+.important {
+	background-color: #f9afaf;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 2px;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	margin-bottom: 1rem;
+}
+.important p {
+	margin: 0;
+}
+
+/*******************************************************************************
+* Text alignment
+******************************************************************************/
+.left {
+	text-align: left;
+}
+.right {
+	text-align: right;
+}
+.center {
+	text-align: center;
+}
+
+/*******************************************************************************
+* Text shadow
+******************************************************************************/
+
+.textshadow {
+	text-shadow: 3px 3px 3px black;
+}
+
+
+/*******************************************************************************
+* Typography
+******************************************************************************/
+.bold {
+	font-weight: bold;
+}
+
+
+/*******************************************************************************
+* Tag filter
+******************************************************************************/
+.filter.active {
+	font-weight: bold;
+	color: white;
+}
+
+/*******************************************************************************
+* List items on divs of this class will have a checkmark instead of a bullet
+******************************************************************************/
+ul.checkmark li {
+	list-style: none;
+	padding-bottom: 0.75rem;
+}
+ul.checkmark li:before {
+	content: "\2714\0020";
+	color: var(--defold-blue);
+	padding-right: 0.75rem;
+}
+
+.nobullet li {
+	list-style: none;
+	padding-bottom: 0.75rem;
+}
+.nobullet .ballot:before {
+	content: "\2718\0020";
+	color: red;
+	padding-right: 0.75rem;
+}
+.nobullet .checkmark:before {
+	content: "\2714\0020";
+	color: var(--defold-blue);
+	padding-right: 0.75rem;
+}
+
+/*******************************************************************************
+* Class to set on div surrounding an <ul> list to split it into multiple columns
+******************************************************************************/
+.twocolumnlist {
+	-webkit-column-count: 2; /* Chrome, Safari, Opera */
+	-moz-column-count: 2; /* Firefox */
+	column-count: 2;
+}
+.threecolumnlist {
+	-webkit-column-count: 3; /* Chrome, Safari, Opera */
+	-moz-column-count: 3; /* Firefox */
+	column-count: 3;
+}
+
+/*******************************************************************************
+* Tags in asset portal
+******************************************************************************/
+.tags li {
+	display: inline;
+	margin-right: 2rem;
+}
+
+/*******************************************************************************
+* Asset
+******************************************************************************/
+.asset {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	margin-bottom: 0;
+	border-radius: 4px;
+	background-color: var(--grey);
+	color: var(--lighter);
+}
+.asset #image {
+	border-radius: 4px 4px 0 0;
+}
+.asset a {
+	text-decoration: none;
+	color: var(--lightest);
+}
+.asset a:hover {
+	text-decoration: underline;
+	color: var(--lightest);
+}
+.asset img {
+	border-radius: 4px 4px 0 0;
+}
+.asset div {
+	padding-left: 2rem;
+	padding-right: 2rem;
+	padding-top: 1rem;
+	padding-bottom: 0;
+}
+.asset.clickable:hover {
+	box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
+	cursor: pointer;
+	background-color: #373c41;
+	transition: background-color 200ms linear;
+}
+
+/*******************************************************************************
+*
+******************************************************************************/
+.game a {
+	text-decoration: none;
+}
+
+
+
+/*******************************************************************************
+* Ribbon (https://www.kirilv.com/fork-ribbon-css-builder/)
+******************************************************************************/
+.ribbon {
+	/* positioning */
+	position: absolute;
+	padding: 5px 45px;
+	width: 128px;
+	/* top right of the page */
+	top: 40px;
+	right: -60px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	/* effects with some shadow */
+	box-shadow: 0 0 0 3px var(--defold-orange), 0 0 20px -3px rgba(0, 0, 0, 0.5);
+	text-shadow: 0 0 0 #ffffff, 0 0 5px rgba(0, 0, 0, 0.3);
+	/* looks */
+	background-color: var(--defold-orange);
+	color: #ffffff;
+	/* font-weight: bold; */
+	font-size: xx-small;
+	/* ribbon effects */
+	border: 1px dashed var(--lightest);
+	/* webkit antialias fix */
+	-webkit-backface-visibility: hidden;
+	letter-spacing: .5px;
+}
+
+
+/*******************************************************************************
+* Card
+******************************************************************************/
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	margin-bottom: 4rem;
+	border-radius: 4px;
+	background-color: white;
+	position: relative;
+	overflow: hidden;
+
+	padding-left: 2rem;
+	padding-right: 2rem;
+	padding-top: 3rem;
+	padding-bottom: 1rem;
+}
+
+.card.grey {
+	background-color: var(--grey);
+}
+.card.grey a {
+	text-decoration: none;
+	color: var(--lightest);
+}
+.card.grey a:hover {
+	text-decoration: underline;
+	color: var(--lightest);
+}
+
+.card.dark {
+	background-color: var(--dark);
+}
+.card.dark a {
+	text-decoration: none;
+	color: var(--lighter);
+}
+.card.dark a:hover {
+	text-decoration: underline;
+	color: var(--lighter);
+}
+
+.card.blue {
+	background-color: var(--defold-blue);
+}
+.card .icon img {
+	vertical-align: bottom;
+}
+.card .icon svg path {
+	fill: currentColor !important;
+}
+.card.compact .icon svg {
+	max-height: 8em;
+}
+.card h5 {
+	margin-bottom: 0;
+}
+
+.card.clickable a {
+	text-decoration: none;
+}
+.card.clickable {
+	transition: 0.3s;
+}
+.card.clickable:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	cursor: pointer;
+}
+
+
+/*******************************************************************************
+* Hover flash
+******************************************************************************/
+.hoverflash:hover {
+	animation: flash 0.6s;
+	animation-timing-function: ease-in-out;
+	cursor: pointer;
+}
+
+@keyframes flash {
+	0% {
+		filter: brightness(100%);
+	}
+	50% {
+		filter: brightness(115%);
+	}
+	100% {
+		filter: brightness(100%);
+	}
+}
+/*******************************************************************************
+* Image and video hero banner
+* Text on top of it should be white
+******************************************************************************/
+.hero {
+	background-size: cover;
+	background-position: center;
+	display: block;
+}
+
+.octicon svg {
+	padding-top: 4px;
+	padding-right: 0px;
+}
+
+/*******************************************************************************
+* Transitions
+******************************************************************************/
+.slideinleft {
+	left: 25%;
+	position: relative;
+	opacity: 0;
+	transform: translateX(-100%);
+	transition: transform 3s .25s cubic-bezier(0,1,.3,1), opacity .6s .25s ease-out;
+	will-change: transform, opacity;
+}
+.slideinleft.is-visible {
+	opacity: 1;
+	transform: translateX(-50%);
+}
+.slideinright {
+	opacity: 0;
+	transform: translateX(50%);
+	transition: transform 3s .25s cubic-bezier(0,1,.3,1), opacity .6s .25s ease-out;
+	will-change: transform, opacity;
+}
+.slideinright.is-visible {
+	opacity: 1;
+	transform: translateX(0);
+}
+.fadein {
+	opacity: 0;
+	transition: opacity .6s .25s ease-out;
+	will-change: opacity;
+}
+.fadein.is-visible {
+	opacity: 1;
+}
+.slideinbottom {
+	opacity: 0;
+	transform: translateY(50%);
+	transition: transform 3s .25s cubic-bezier(0,1,.3,1), opacity .6s .25s ease-out;
+	will-change: transform, opacity;
+}
+.slideinbottom.is-visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.spin {
+	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+	0% {
+	-webkit-transform:rotate(0deg);
+	transform:rotate(0deg)
+	}
+	to {
+	-webkit-transform:rotate(1turn);
+	transform:rotate(1turn)
+	}
+}
+@keyframes spin {
+	0% {
+	-webkit-transform:rotate(0deg);
+	transform:rotate(0deg)
+	}
+	to {
+	-webkit-transform:rotate(1turn);
+	transform:rotate(1turn)
+	}
+}
+.spinner {
+	height: 25px;
+	display: inline-block;
+}
+
+/*******************************************************************************
+* Search
+******************************************************************************/
+
+#searchresults {
+	.spinner {
+		vertical-align: middle;
+		margin-right: 7px;
+	}
+	.search-text {
+		vertical-align: middle;
+	}
+}
+
+/*******************************************************************************
+* Copy code snippets to clipboard
+******************************************************************************/
+
+.clipboard-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0.7rem 1rem;
+}
+.clipboard-button {
+	position: relative;
+	border: 1px solid var(--light);
+	padding: 0.4rem 0.6rem;
+	border-radius: 4px;
+	font-size: 12px;
+	line-height: 20px;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+  	transition-property: color, background-color, border-color;
+
+	&:hover {
+		background-color: var(--lightest);
+  		border-color: var(--lighter);
+		transition-duration: .1s;
+	}
+	&:active {
+		background-color: var(--almostlightest);
+  		border-color: var(--lighter);
+		transition: none;
+	}
+
+	&.clipboard-copy-success {
+		border-color: var(--defold-green) !important;
+		color: var(--defold-green) !important;
+		.clipboard-copy-icon { display: none; }
+		.clipboard-check-icon { display: inline-block; }
+	}
+
+	svg {
+		overflow: visible !important;
+		vertical-align: text-bottom;
+		fill: currentColor;
+	}
+
+	.clipboard-check-icon { display: none; }
+}

@@ -67,4 +67,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-siw
 
 
 ## API reference
-[API Reference](/extension-siwa/siwa_api)
+[API Reference - siwa](/extension-siwa/siwa_api)

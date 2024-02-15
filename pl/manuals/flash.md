@@ -173,7 +173,7 @@ Wynik wygląda następująco (ze zaktualizowanymi indeksami):
 
 ## Defold — pozycja w osi Z
 
-Pozycja obiektów gry w Defoldzie jest reprezentowana przez wektor składający się z trzech składowych: x, y, z. Pozycja w osi Z determinuje pozycję głębii, tak jak indeks we Flashu. W domyślnym, wbudowanym [skrypcie renderowania](/pl/manuals/render), pozycje na osi Z są ograniczone między -1 a 1.
+Pozycja obiektów gry w Defoldzie jest reprezentowana przez wektor składający się z trzech składowych: x, y, z. Pozycja w osi Z determinuje pozycję głębii, tak jak indeks we Flashu. W domyślnym, wbudowanym [skrypcie renderowania](/manuals/render), pozycje na osi Z są ograniczone między -1 a 1.
 
 <div class='sidenote' markdown='1'>
 Wtedy obiekty gry z pozycją poza zakresem -1 do 1 nie będę wyświetlane. Jest to częsta pułapka, w którą mogą wpaść nowi użytkownicy Defolda, więc warto pamiętać o tym, jeśli dany obiekt nie jest widoczny, kiedy spodziewasz się, że powinien być.
@@ -348,7 +348,7 @@ A kiedy dojdzie do kolizji, dane obiekty są podświetlone i wyświetlony jest w
 
 ![collision](/manuals/images/flash/collision.png)
 
-Dodatkowo, jest jeszcze zaawansowany profiler, a więcej informacji o nim znajdziesz w [dokumentacji profilera](/ref/profiler/), np. monitorowanie wykorzystania CPU czy pamięci. Więcej technik debugowania znajdziesz w sekcji [debugowanie](/pl/manuals/debugging).
+Dodatkowo, jest jeszcze zaawansowany profiler, a więcej informacji o nim znajdziesz w [dokumentacji profilera](/ref/profiler/), np. monitorowanie wykorzystania CPU czy pamięci. Więcej technik debugowania znajdziesz w sekcji [debugowanie](/manuals/debugging).
 
 ## Gdzie dalej?
 

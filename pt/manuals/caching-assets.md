@@ -21,7 +21,7 @@ O Defold utiliza um cache de três camadas
 
 O Defold por padrão ira dar cache nos recursos já compilados na pasta `build/default` de um projeto Defold. O projeto cache vai acelerar builds subsequentes sendo que elas so modifica recursos que precisam ser re-compilados, enquanto recursos sem mudanças serão usados do cache do projeto. Esse cache sempre está ativado e é utilizado tanto pelo editor como pelas ferramentas da linha de comando.
 
-O projeto de cache pode ser deletado manualmente simplesmente deletandos os arquivos em `build/default` ou insinuando o comando `clean` da [Ferramenta de construção da linha de comando Bob](/pt/manuals/bob).
+O projeto de cache pode ser deletado manualmente simplesmente deletandos os arquivos em `build/default` ou insinuando o comando `clean` da [Ferramenta de construção da linha de comando Bob](/manuals/bob).
 
 
 ## Cache Local

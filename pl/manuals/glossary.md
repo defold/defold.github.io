@@ -12,7 +12,7 @@ Słowniczek ten zawiera krótkie opisy i wyjaśnienia wszystkich terminów jakie
 
 ## Animation set (Zestaw do animowania)
 
-![Animation set](/manuals/images/icons/animationset.png) Zestaw do animowania zawiera listę plików .dae lub innych .animationset, z których odczytywać można animacje. Dodawnia jednego pliku .animationset do drugiego jest wygodne przy udostępnianiu części animacji wielu modelom. Więcej szczegółów znajdziesz w [instrukcji do grafiki 3D](/pl/manuals/graphics/).
+![Animation set](/manuals/images/icons/animationset.png) Zestaw do animowania zawiera listę plików .dae lub innych .animationset, z których odczytywać można animacje. Dodawnia jednego pliku .animationset do drugiego jest wygodne przy udostępnianiu części animacji wielu modelom. Więcej szczegółów znajdziesz w [instrukcji do grafiki 3D](/manuals/graphics/).
 
 ## Atlas (Galeria obrazów)
 
@@ -52,7 +52,7 @@ Komponenty pozwalają nadać obiektowi gry specyficzne właściwości lub funkcj
 
 ## Debugging (Debugowanie)
 
-Kiedy Twoja gra w pewnym momencie zachowuje się w nieoczekiwany sposób, musisz zrozumieć co się dokładnie dzieje i co jest tego przyczyną. Nauczenie się jak debugować jest sztuką, a Defold ułatwia debugowanie dostarczając zestaw gotowych narzędzi - wbudowany debugger. Więcej szczegółów znajdziesz w [instrukcji do Debugowania](/pl/manuals/debugging).
+Kiedy Twoja gra w pewnym momencie zachowuje się w nieoczekiwany sposób, musisz zrozumieć co się dokładnie dzieje i co jest tego przyczyną. Nauczenie się jak debugować jest sztuką, a Defold ułatwia debugowanie dostarczając zestaw gotowych narzędzi - wbudowany debugger. Więcej szczegółów znajdziesz w [instrukcji do Debugowania](/manuals/debugging).
 
 ## Display profiles (Profile wyświetlania)
 
@@ -68,7 +68,7 @@ Kiedy Twoja gra w pewnym momencie zachowuje się w nieoczekiwany sposób, musisz
 
 ## Fragment shader (Shader fragmentu)
 
-![Fragment shader](/manuals/images/icons/fragment-shader.png) Shader to specjalny program, który jest uruchamiany na karcie graficznej dla każdego rysowanego piksela (fragmentu) w wielokącie (polygon) w momencie rysowania go na ekranie. The purpose of the fragment shader is to decide the color of each resulting fragment. This is done by calculation, texture lookups (one or several) or a combination of lookups and computations. Więcej szczegółów znajdziesz w [instrukcji do Shader'ów](/pl/manuals/shader).
+![Fragment shader](/manuals/images/icons/fragment-shader.png) Shader to specjalny program, który jest uruchamiany na karcie graficznej dla każdego rysowanego piksela (fragmentu) w wielokącie (polygon) w momencie rysowania go na ekranie. The purpose of the fragment shader is to decide the color of each resulting fragment. This is done by calculation, texture lookups (one or several) or a combination of lookups and computations. Więcej szczegółów znajdziesz w [instrukcji do Shader'ów](/manuals/shader).
 
 ## Gamepads (Kontroler)
 
@@ -88,7 +88,7 @@ Kiedy Twoja gra w pewnym momencie zachowuje się w nieoczekiwany sposób, musisz
 
 ## Hot reload (Szybkie przeładowanie)
 
-Edytor Defold pozwala na szybkie zaktualizowanie już uruchomionej gry na pulpicie komputera lub ekranie smartfona bez przebudowywania całości. Taka opcja znacząco ułatwia proces tworzenia gier i aplikacji. Więcej szczegółów znajdziesz w [instrukcji do Hot reload](/pl/manuals/hot-reload).
+Edytor Defold pozwala na szybkie zaktualizowanie już uruchomionej gry na pulpicie komputera lub ekranie smartfona bez przebudowywania całości. Taka opcja znacząco ułatwia proces tworzenia gier i aplikacji. Więcej szczegółów znajdziesz w [instrukcji do Hot reload](/manuals/hot-reload).
 
 ## Input binding (Wiązania wejść)
 
@@ -112,7 +112,7 @@ Lua jest językiem programowania wykorzystywanym przez Defold do tworzenia logik
 
 ## Material (Materiał)
 
-![Material](/manuals/images/icons/material.png) Materiały definiują jak obiekt ma być renderowany i wyświetlany poprzez wykorzystanie właściwości i odpowiednich programów wykonywanych na karcie graficznej - shaderów. . Więcej szczegółów znajdziesz w [instrukcji do Materiałów](/pl/manuals/material).
+![Material](/manuals/images/icons/material.png) Materiały definiują jak obiekt ma być renderowany i wyświetlany poprzez wykorzystanie właściwości i odpowiednich programów wykonywanych na karcie graficznej - shaderów. . Więcej szczegółów znajdziesz w [instrukcji do Materiałów](/manuals/material).
 
 ## Message (Wiadomość)
 
@@ -136,15 +136,15 @@ Gdzie, `"#weapon"` jest adresem komponentu obecnego obiektu (z którego wysłana
 
 ## Profiling (Profilowanie)
 
-Wysoka wydajność jest kluczowa w grach, więc dla deweloperów jest niezwykle ważne, żeby móc monitorować wydajność i pamięć Twojej gry i zidentyfikować wąskie gardła i problemy z pamięcią, które wymagają naprawy. Defold oddaje więc w ręce twórców zestaw narzędzi do profilowania. Więcej szczegółów znajdziesz w [instrukcji do Profilowania](/pl/manuals/profiling).
+Wysoka wydajność jest kluczowa w grach, więc dla deweloperów jest niezwykle ważne, żeby móc monitorować wydajność i pamięć Twojej gry i zidentyfikować wąskie gardła i problemy z pamięcią, które wymagają naprawy. Defold oddaje więc w ręce twórców zestaw narzędzi do profilowania. Więcej szczegółów znajdziesz w [instrukcji do Profilowania](/manuals/profiling).
 
 ## Render
 
-![Render](/manuals/images/icons/render.png) Pliki typu Render zawierają ustawienia używane podczas renderowania i wyświetlania grafiki w Twojej grze. Definiują one, który skrypt do renderowania i jakie materiały będą wykorzystywane. Więcej szczegółów znajdziesz w [instrukcji do Renderowania](/pl/manuals/render/).
+![Render](/manuals/images/icons/render.png) Pliki typu Render zawierają ustawienia używane podczas renderowania i wyświetlania grafiki w Twojej grze. Definiują one, który skrypt do renderowania i jakie materiały będą wykorzystywane. Więcej szczegółów znajdziesz w [instrukcji do Renderowania](/manuals/render/).
 
 ## Render script (skrypt do renderowania)
 
-![Render script](/manuals/images/icons/script.png) Skrypt do renderowania jest specjalnym skryptem w języku Lua kontrolującym jak gra lub aplikacja jest renderowana i wyświetlana na ekranie urządzenia. Domyślnie projekt używa domyślnego skryptu renderowania, ale nic nie stoi na przeszkodzie, żeby używać innego lub własnego skryptu, wspierającego przykładowo oświetlenie czy inne efekty wizualne. Więcej szczegółów znajdziesz w [instrukcji do Renderowania](/pl/manuals/render/) oraz w [instrukcji do skryptów w Defoldzie pisanych w języku Lua](/pl/manuals/lua) for details on how Lua scripts are used in Defold.
+![Render script](/manuals/images/icons/script.png) Skrypt do renderowania jest specjalnym skryptem w języku Lua kontrolującym jak gra lub aplikacja jest renderowana i wyświetlana na ekranie urządzenia. Domyślnie projekt używa domyślnego skryptu renderowania, ale nic nie stoi na przeszkodzie, żeby używać innego lub własnego skryptu, wspierającego przykładowo oświetlenie czy inne efekty wizualne. Więcej szczegółów znajdziesz w [instrukcji do Renderowania](/manuals/render/) oraz w [instrukcji do skryptów w Defoldzie pisanych w języku Lua](/pl/manuals/lua) for details on how Lua scripts are used in Defold.
 
 ## Script (Skrypt)
 
@@ -156,7 +156,7 @@ Wysoka wydajność jest kluczowa w grach, więc dla deweloperów jest niezwykle 
 
 ## Spine model (Model szkieletowy)
 
-![Spine model](/manuals/images/icons/spine-model.png) Model szkieletowy wykorzystuje animację szkieletową Spine do tworzenia animacji w Defoldzie. Więcej szczegółów znajdziesz w [instrukcji do modeli Spine](/pl/manuals/spinemodel).
+![Spine model](/manuals/images/icons/spine-model.png) Model szkieletowy wykorzystuje animację szkieletową Spine do tworzenia animacji w Defoldzie. Więcej szczegółów znajdziesz w [instrukcji do modeli Spine](/manuals/spinemodel).
 
 ## Spine scene (Scena Spine)
 
@@ -180,4 +180,4 @@ Wysoka wydajność jest kluczowa w grach, więc dla deweloperów jest niezwykle 
 
 ## Vertex shader (Shader wierzchołków)
 
-![Vertex shader](/manuals/images/icons/vertex-shader.png) Shader wierzchołków to specjlany program wykonywany na karcie graficznej, którego zadaniem jest przetwarzanie trójwymiarowej geometrii elementarnych kształtów - wielokątów (ang. polygon) na ekran urządzenia. Dla każego elementu wizualnego (sprite, model Spine czy 3D) kształt jest reprezentowant przez zestaw wielokątów z określonymi pozycjami wierzchołków w przestrzeni. Shader wierzchołków przetwarza każdy z wierzchołków w przestrzeni i oblicza wynikowe współrzędne na ekranie. Więcej szczegółów znajdziesz w [instrukcji do Shader'ów](/pl/manuals/shader).
+![Vertex shader](/manuals/images/icons/vertex-shader.png) Shader wierzchołków to specjlany program wykonywany na karcie graficznej, którego zadaniem jest przetwarzanie trójwymiarowej geometrii elementarnych kształtów - wielokątów (ang. polygon) na ekran urządzenia. Dla każego elementu wizualnego (sprite, model Spine czy 3D) kształt jest reprezentowant przez zestaw wielokątów z określonymi pozycjami wierzchołków w przestrzeni. Shader wierzchołków przetwarza każdy z wierzchołków w przestrzeni i oblicza wynikowe współrzędne na ekranie. Więcej szczegółów znajdziesz w [instrukcji do Shader'ów](/manuals/shader).

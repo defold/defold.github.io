@@ -339,7 +339,7 @@
           "name": "[complete_function]",
           "doc": "function to call when the sound has finished playing or stopped manually via <a href=\"/ref/sound#sound.stop\">sound.stop</a>.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>message_id</code></dt>\n<dd><span class=\"type\">hash</span> The name of the completion message, which can be either <code>\"sound_done\"</code> if the sound has finished playing, or <code>\"sound_stopped\"</code> if it was stopped manually.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">table</span> Information about the completion:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>play_id</code> - the sequential play identifier that was given by the sound.play function.</li>\n</ul>\n<dl>\n<dt><code>sender</code></dt>\n<dd><span class=\"type\">url</span> The invoker of the callback: the sound component.</dd>\n</dl>",
           "types": [
-            "function(self, message_id, message, sender))"
+            "function(self, message_id, message, sender)"
           ]
         }
       ],
@@ -356,20 +356,27 @@
       "type": "FUNCTION",
       "name": "sound.stop",
       "brief": "stop a playing a sound(s)",
-      "description": "Stop playing all active voices",
+      "description": "Stop playing all active voices or just one voice if <code>play_id</code> provided",
       "returnvalues": [],
       "parameters": [
         {
           "name": "url",
-          "doc": "the sound that should stop",
+          "doc": "the sound component that should stop",
           "types": [
             "string",
             "hash",
             "url"
           ]
+        },
+        {
+          "name": "[stop_properties]",
+          "doc": "<dl>\n<dt>optional table with properties:</dt>\n<dt><code>play_id</code></dt>\n<dd><span class=\"type\">number</span> the sequential play identifier that should be stopped (was given by the sound.play() function)</dd>\n</dl>",
+          "types": [
+            "table"
+          ]
         }
       ],
-      "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component stop all playing voices:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">stop</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component stop all playing voices:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">stop</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">stop</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">play_id</span> <span class=\"o\">=</span> <span class=\"n\">id</span><span class=\"p\">})</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],

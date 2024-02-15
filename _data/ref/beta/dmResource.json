@@ -272,8 +272,8 @@
     {
       "type": "FUNCTION",
       "name": "RegisterResourceDecryptionFunction",
-      "brief": "Returns the canonical path hash of a resource",
-      "description": "Returns the canonical path hash of a resource",
+      "brief": "Registers a custom resource decryption function",
+      "description": "Registers a custom resource decryption function",
       "returnvalues": [],
       "parameters": [
         {
@@ -281,6 +281,94 @@
           "doc": "The decryption function",
           "types": [
             "dmResource::FDecryptResource"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "AddFile",
+      "brief": "Adds a file to the resource system\nAny request for...",
+      "description": "Adds a file to the resource system\nAny request for this path will go through any existing mounts first.\nIf you wish to provide file overrides, please use the LiveUpdate feature for that.\nThe file isn't persisted between sessions.",
+      "returnvalues": [
+        {
+          "name": "RESULT_OK",
+          "doc": "on success.",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "factory",
+          "doc": "Factory handle",
+          "types": [
+            "dmResource::HFactory"
+          ]
+        },
+        {
+          "name": "path",
+          "doc": "The path of the resource",
+          "types": [
+            "const char*"
+          ]
+        },
+        {
+          "name": "size",
+          "doc": "The size of the resource (in bytes)",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "resource",
+          "doc": "The resource payload",
+          "types": [
+            "const void*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "RemoveFile",
+      "brief": "Removes a previously registered file from the reso...",
+      "description": "Removes a previously registered file from the resource system",
+      "returnvalues": [
+        {
+          "name": "RESULT_OK",
+          "doc": "on success.",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "factory",
+          "doc": "Factory handle",
+          "types": [
+            "dmResource::HFactory"
+          ]
+        },
+        {
+          "name": "path",
+          "doc": "The path of the resource",
+          "types": [
+            "const char*"
           ]
         }
       ],

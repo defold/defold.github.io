@@ -21,6 +21,13 @@
           "types": [
             "string"
           ]
+        },
+        {
+          "name": "options",
+          "doc": "table with decode options\n<ul>\n<li><span class=\"type\">bool</span> <code>decode_null_as_userdata</code>: wether to decode a JSON null value as json.null or nil (default is nil)</li>\n</ul>",
+          "types": [
+            "table"
+          ]
         }
       ],
       "examples": "Converting a string containing JSON data into a Lua table:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">jsonstring</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;{&quot;persons&quot;:[{&quot;name&quot;:&quot;John Doe&quot;},{&quot;name&quot;:&quot;Darth Vader&quot;}]}&#39;</span>\n    <span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"n\">json</span><span class=\"p\">.</span><span class=\"n\">decode</span><span class=\"p\">(</span><span class=\"n\">jsonstring</span><span class=\"p\">)</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\nResults in the following printout:\n<div class=\"codehilite\"><pre><span></span><code>{\n  persons = {\n    1 = {\n      name = John Doe,\n    }\n    2 = {\n      name = Darth Vader,\n    }\n  }\n}\n</code></pre></div>",
@@ -48,6 +55,13 @@
         {
           "name": "tbl",
           "doc": "lua table to encode",
+          "types": [
+            "table"
+          ]
+        },
+        {
+          "name": "options",
+          "doc": "table with encode options\n<ul>\n<li><span class=\"type\">string</span> <code>encode_empty_table_as_object</code>: wether to encode an empty table as an JSON object or array (default is object)</li>\n</ul>",
           "types": [
             "table"
           ]

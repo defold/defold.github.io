@@ -154,6 +154,43 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Starts loading a Rewarded Interstitial Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/rewarded-interstitial#load_an_ad), [iOS](https://developers.google.com/admob/ios/rewarded-interstitial#load_an_ad)",
+            "examples": "",
+            "name": "admob.load_rewarded_interstitial",
+            "parameters": [
+                {
+                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/5354046379\"`, or on iOS `\"ca-app-pub-3940256099942544/6978759866\"` Original docs [Android](https://developers.google.com/admob/android/rewarded-interstitial#load_an_ad), [iOS](https://developers.google.com/admob/ios/rewarded-interstitial#load_an_ad)",
+                    "name": "ad_unit_id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Shows loaded Rewarded Interstitial Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/rewarded-interstitial#show_the_ad), [iOS](https://developers.google.com/admob/ios/rewarded-interstitial#display_the_ad_and_handle_the_reward_event)",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">admob</span> <span class=\"ow\">and</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">is_rewarded_interstitial_loaded</span><span class=\"p\">()</span> <span class=\"kr\">then</span>\n    <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">show_rewarded_interstitial</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "admob.show_rewarded_interstitial",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Checks if Rewarded Interstitial Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/rewarded-interstitial), [iOS](https://developers.google.com/admob/ios/rewarded-interstitial)",
+            "examples": "",
+            "name": "admob.is_rewarded_interstitial_loaded",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Starts loading a Banner Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)",
             "examples": "",
             "name": "admob.load_banner",
@@ -273,6 +310,14 @@
             "description": "",
             "examples": "",
             "name": "MSG_IDFA",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MSG_REWARDED_INTERSTITIAL",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"

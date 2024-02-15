@@ -24,6 +24,10 @@ layout: page
 	{%- endif -%}
 </div>
 
+{%- for before in page.before -%}
+{% include {{ before | default: "empty.html" }} %}
+{%- endfor -%}
+
 <div class="section">
 	<div class="container">
 		<div class="row">

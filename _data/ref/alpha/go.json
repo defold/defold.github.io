@@ -1005,6 +1005,35 @@
     },
     {
       "type": "FUNCTION",
+      "name": "fixed_update",
+      "brief": "called at fixed intervals to update the script component",
+      "description": "This is a callback-function, which is called by the engine at fixed intervals to update the state of a script\ncomponent. The function will be called if 'Fixed Update Frequency' is enabled in the Engine section of game.project.\nIt can for instance be used to update game logic with the physics simulation if using a fixed timestep for the\nphysics (enabled by ticking 'Use Fixed Timestep' in the Physics section of game.project).",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "self",
+          "doc": "reference to the script state to be used for storing data",
+          "types": [
+            "object"
+          ]
+        },
+        {
+          "name": "dt",
+          "doc": "the time-step of the frame update",
+          "types": [
+            "number"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "on_message",
       "brief": "called when a message has been sent to the script component",
       "description": "This is a callback-function, which is called by the engine whenever a message has been sent to the script component.\nIt can be used to take action on the message, e.g. send a response back to the sender of the message.\nThe <code>message</code> parameter is a table containing the message data. If the message is sent from the engine, the\ndocumentation of the message specifies which data is supplied.",

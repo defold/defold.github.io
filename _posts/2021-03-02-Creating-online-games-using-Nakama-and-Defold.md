@@ -60,7 +60,7 @@ end)
 
 ## Server setup
 
-Let's get started! The first step is to set up a Nakama server that we can connect to. The quickest way to get up and running is to follow the setup guide for running Nakama using Docker on your own machine. This will run an instance of Nakama and an associated database in a Docker container, with all configuration taken care of. Follow the [Nakama Docker quickstart](https://heroiclabs.com/docs/install-docker-quickstart/) and you'll be ready in a matter of minutes!
+Let's get started! The first step is to set up a Nakama server that we can connect to. The quickest way to get up and running is to follow the setup guide for running Nakama using Docker on your own machine. This will run an instance of Nakama and an associated database in a Docker container, with all configuration taken care of. Follow the [Nakama Docker setup guide](https://heroiclabs.com/docs/nakama/getting-started/install/docker/) and you'll be ready in a matter of minutes!
 
 Note that for production use it is recommended to use a binary install on your server. Heroic Labs also provide hosted instances of Nakama through Heroic Cloud. A perfect setup if you want to focus on your game and let Heroic Labs manage and scale the infrastructure as your user base grows.
 

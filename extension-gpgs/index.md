@@ -185,4 +185,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-gpg
 
 
 ## API reference
-[API Reference](/extension-gpgs/gpgs_api)
+[API Reference - gpgs](/extension-gpgs/gpgs_api)

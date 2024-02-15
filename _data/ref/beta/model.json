@@ -112,7 +112,7 @@
           "name": "[complete_function]",
           "doc": "function to call when the animation has completed.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>message_id</code></dt>\n<dd><span class=\"type\">hash</span> The name of the completion message, <code>\"model_animation_done\"</code>.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">table</span> Information about the completion:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">hash</span> <code>animation_id</code> - the animation that was completed.</li>\n<li><span class=\"type\">constant</span> <code>playback</code> - the playback mode for the animation.</li>\n</ul>\n<dl>\n<dt><code>sender</code></dt>\n<dd><span class=\"type\">url</span> The invoker of the callback: the model component.</dd>\n</dl>",
           "types": [
-            "function(self, message_id, message, sender))"
+            "function(self, message_id, message, sender)"
           ]
         }
       ],
@@ -181,6 +181,87 @@
         }
       ],
       "examples": "The following examples assumes that the model component has id \"model\".\nHow to parent the game object of the calling script to the \"right_hand\" bone of the model in a player game object:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">parent</span> <span class=\"o\">=</span> <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">get_go</span><span class=\"p\">(</span><span class=\"s2\">&quot;player#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;right_hand&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;.&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;set_parent&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">parent_id</span> <span class=\"o\">=</span> <span class=\"n\">parent</span><span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "model.set_mesh_enabled",
+      "brief": "enable or disable a mesh",
+      "description": "Enable or disable visibility of a mesh",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "url",
+          "doc": "the model",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        },
+        {
+          "name": "mesh_id",
+          "doc": "the id of the mesh",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        },
+        {
+          "name": "enabled",
+          "doc": "true if the mesh should be visible, false if it should be hideen",
+          "types": [
+            "boolean"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">set_mesh_enabled</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;Sword&quot;</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">)</span> <span class=\"c1\">-- hide the sword</span>\n    <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">set_mesh_enabled</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;Axe&quot;</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">)</span>    <span class=\"c1\">-- show the axe</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "model.get_mesh_enabled",
+      "brief": "get the enabled state of a mesh",
+      "description": "Get the enabled state of a mesh",
+      "returnvalues": [
+        {
+          "name": "enabled",
+          "doc": "true if the mesh is visible, false otherwise",
+          "types": [
+            "boolean"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "url",
+          "doc": "the model",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        },
+        {
+          "name": "mesh_id",
+          "doc": "the id of the mesh",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">get_mesh_enabled</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;Sword&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n       <span class=\"c1\">-- set properties specific for the sword</span>\n       <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">weapon_properties</span> <span class=\"o\">=</span> <span class=\"n\">game</span><span class=\"p\">.</span><span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">weapons</span><span class=\"p\">[</span><span class=\"s2\">&quot;Sword&quot;</span><span class=\"p\">]</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],

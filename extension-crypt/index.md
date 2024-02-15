@@ -27,6 +27,8 @@ The API provides the following functions:
 * `crypt.hash_md5(source)`
 * `crypt.encode_base64(source)`
 * `crypt.decode_base64(source)`
+* `crypt.encrypt_xtea(source, key)`
+* `crypt.decrypt_xtea(source, key)`
 
 
 ## Source code
@@ -35,4 +37,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-cry
 
 
 ## API reference
-[API Reference](/extension-crypt/crypt_api)
+[API Reference - crypt](/extension-crypt/crypt_api)

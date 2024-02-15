@@ -3,7 +3,7 @@
         {
             "description": "Initialise Firebase",
             "examples": "",
-            "name": "firebase.init",
+            "name": "firebase.initialize",
             "parameters": [
                 {
                     "doc": "Optional table with initialisation parameters to use instead of those specified in google-services.xml/plist When passing this, disable creation of the default Firebase App by specifying firebase.no_auto_init in game.project Valid keys in the table are api_key, app_id, database_url, messaging_sender_id, project_id, storage_bucket. All values are strings.",
@@ -20,10 +20,41 @@
             "description": "Get the Firebase Installation auth token",
             "examples": "",
             "name": "firebase.get_installation_auth_token",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets a callback function for receiving events from the SDK. Call `firebase.set_callback(nil)` to remove callback",
+            "examples": "",
+            "name": "firebase.set_callback",
             "parameters": [
                 {
-                    "doc": "Function to invoke with the auth token (self, token)",
+                    "doc": "Callback function that is executed on any event in the SDK.",
                     "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "One of message types: `firebase.MSG_INITIALIZED` `firebase.MSG_INSTALLATION_AUTH_TOKEN` `firebase.MSG_INSTALLATION_ID` `firebase.MSG_ERROR`",
+                            "name": "message_id",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "A table holding the data",
+                            "name": "message",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
                     "types": [
                         "function"
                     ]
@@ -31,6 +62,46 @@
             ],
             "returnvalues": [],
             "type": "FUNCTION"
+        },
+        {
+            "description": "Get the Firebase Installation id",
+            "examples": "",
+            "name": "firebase.get_installation_id",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MSG_ERROR",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MSG_INITIALIZED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MSG_INSTALLATION_AUTH_TOKEN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MSG_INSTALLATION_ID",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
         }
     ],
     "info": {

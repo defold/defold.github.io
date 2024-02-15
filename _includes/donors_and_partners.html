@@ -9,6 +9,8 @@
 {%- assign linkdonors=site.data.donors.link -%}
 {%- assign namedonors=site.data.donors.name -%}
 
+{%- assign memberships=site.data.memberships -%}
+
 <div class="section darkest">
 	{%- if platinum.size > 0 or include.empty -%}
 	<div class="container">
@@ -120,6 +122,21 @@
 					{%- endfor -%}
 					{%- for donor in namedonors -%}
 						{%- include donor.html donor=donor -%}
+					{%- endfor -%}
+				</div>
+			</div>
+		</div>
+	</div>
+	{%- endif -%}
+
+	{%- if memberships.size > 0 -%}
+	<div class="container">
+		<div class="row">
+			<div class="columns twelve center">
+				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Memberships</h5>
+				<div class="lightest-text" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); grid-gap: 2rem; padding: 0px;">
+					{%- for membership in memberships -%}
+						<a href="{{ membership.link }}" target="_blank"><img src="{{ membership.logo }}" style="max-height: 55px" alt="{{ membership.name }} logo"></a>
 					{%- endfor -%}
 				</div>
 			</div>

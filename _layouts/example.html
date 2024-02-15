@@ -3,7 +3,7 @@ layout: page
 ---
 {% include learnnav.html showmenu=true %}
 
-<div class="section lightest">
+<div class="section lightest dark:dark">
 	<div class="container">
 		<div class="row">
 			<div class="columns two">
@@ -57,7 +57,12 @@ layout: page
 				{% assign collection = page.collection %}
 				{% for script in scripts %}
 				<p>{{ script }}</p>
-				<pre class="dark">{% include examples/{{ collection}}/{{ script | lstrip | replace: ".script", "_script.md" | replace: ".gui_script", "_gui_script.md" }} %}</pre>
+				{% comment %}
+					Assign content of the script into a variable and then
+					replace each tab with 4 spaces to have consistent indentations
+				{% endcomment %}
+				{% capture script_content %}{% include examples/{{ collection }}/{{ script | lstrip | replace: ".script", "_script.md" | replace: ".gui_script", "_gui_script.md" }} %}{% endcapture %}
+				{% highlight lua %}{{ script_content | replace: "	", "    " }}{% endhighlight %}
 				{% endfor %}
 			</div>
 			<div class="columns two">
@@ -72,3 +77,5 @@ layout: page
 		</div>
 	</div>
 </div>
+
+{%- include copy-icon-for-code-snippets.html -%}

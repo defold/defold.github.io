@@ -15,7 +15,7 @@ brief: Вы можете изменить настройки редактора 
 ![](/manuals/images/editor/preferences_general.png)
 
 Включить Сжатие Текстур
-: Включает [сжатие текстур](/ru/manuals/texture-profiles) для всех сборок, сделанных в редакторе.
+: Включает [сжатие текстур](/manuals/texture-profiles) для всех сборок, сделанных в редакторе.
 
 Escape Quits Game
 : Завершите запущенную сборку вашей игры с помощью кнопки <kbd>Esc</kbd>.

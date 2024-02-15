@@ -128,4 +128,4 @@ go.animate("#model", "cursor", go.PLAYBACK_LOOP_PINGPONG, 1, go.EASING_LINEAR, 1
   end
   ```
 
-关于渲染脚本详情请见 [Render documentation](/zh/manuals/render).
+关于渲染脚本详情请见 [渲染教程](/zh/manuals/render).

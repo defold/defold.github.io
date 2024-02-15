@@ -31,7 +31,8 @@ SHA1 = {}
 DOCS_ZIP = "doc-master.zip"
 EXAMPLES_ZIP = "examples-master.zip"
 CODEPAD_ZIP = "codepad-master.zip"
-AWESOME_ZIP = "awesome-defold-master.zip"
+ASSETPORTAL_ZIP = "asset-portal-master.zip"
+GAMESSHOWCASE_ZIP = "games-showcase-master.zip"
 
 ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
 GAMES_JSON = os.path.join("_data", "games.json")
@@ -252,6 +253,36 @@ def get_language_specific_dir(language, dir):
         dir = os.path.join(language, dir)
     return dir
 
+def update_file_links_with_lang(filename, pattern, language):
+    # Open the file and read its content
+    with open(filename, 'r') as f:
+        content = f.read()
+    
+    def is_valid_path_and_lang(path, language):
+        # Normalize the path to ensure it doesn't end with a slash
+        normalized_path = path.rstrip('/').lstrip('/')
+        if os.path.exists(os.path.join(language, normalized_path + ".md")) or os.path.exists(os.path.join(language, normalized_path)):
+            return True
+        return False
+
+    
+    # Use regex to find all patterns and update them if valid
+    def replacement(match):
+        path = match.group(0)
+        # Check if the path exists and has the specified language
+        if is_valid_path_and_lang(path, language):
+            return '/{}/{}'.format(language, path.lstrip('/'))
+        else:
+            return path
+    
+    # Compile the pattern and substitute
+    compiled_pattern = re.compile(pattern)
+    updated_content = compiled_pattern.sub(replacement, content)
+    
+    # Optionally, write the updated content back to the file or return it
+    with open(filename, 'w') as f:
+        f.write(updated_content)
+
 
 def process_docs(download = False):
     if download:
@@ -306,7 +337,8 @@ def process_docs(download = False):
                     replace_in_file(filename, r"title\:", r"language: {}\ntitle:".format(language))
                     replace_in_file(filename, r"title\:", r"github: {}\ntitle:".format("https://github.com/defold/doc"))
                     if language != "en":
-                        replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
+                        # replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
+                        update_file_links_with_lang(filename, r'/manuals/[^)#]+', language)
                         replace_in_file(filename, r"\.\.\/images\/", r"/manuals/images/".format(language))
                         replace_in_file(filename, r"\.\.\/assets\/", r"/manuals/assets/".format(language))
 
@@ -320,7 +352,8 @@ def process_docs(download = False):
                     replace_in_file(filename, r"title\:", r"language: {}\ntitle:".format(language))
                     replace_in_file(filename, r"title\:", r"layout: faq\ntitle:")
                     if language != "en":
-                        replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
+                        # replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
+                        update_file_links_with_lang(filename, r'\/manuals\/[^)#]+', language)
                         replace_in_file(filename, r"\.\.\/images\/", r"/manuals/images/".format(language))
                         replace_in_file(filename, r"\.\.\/assets\/", r"/manuals/assets/".format(language))
 
@@ -379,10 +412,42 @@ def parse_extension_parameters(parameters):
             params.append(param)
     return params
 
+def parse_script_api_members(api_name, api):
+    md = Markdown(extensions=['markdown.extensions.fenced_code','markdown.extensions.def_list', 'markdown.extensions.codehilite','markdown.extensions.tables'])
+    elements = []
+    members = api["members"]
+    for m in members:
+        element = {}
+        element["parameters"] = parse_extension_parameters(m.get("parameters", []))
+        element["returnvalues"] = []
+        for r in m.get("returns", []):
+            ret = {}
+            ret["name"] = r.get("type", "")
+            ret["doc"] = r.get("desc", "")
+            element["returnvalues"].append(ret)
+        element["description"] = m.get("desc", "")
+        member_name = m.get("name", "")
+        member_type = m.get("type", "").upper()
+        if member_type == "NUMBER":
+            member_type = "VARIABLE"
+        element["type"] = member_type
+        if member_type == "FUNCTION":
+            element["name"] = api_name + "." + member_name
+        elif member_type == "TABLE":
+            if m.get("members"):
+                print("HAS MEMBERS")
+                elements.extend(parse_script_api_members(api_name + "." + member_name, m))
+        else:
+            element["name"] = m.get("name", "")
+        examples = []
+        for e in m.get("examples", []):
+            desc = e.get("desc", "")
+            examples.append(md.convert(desc))
+        element["examples"] = "".join(examples)
+        elements.append(element)
+    return elements
 
 def process_extension(extension_name, download = False):
-    md = Markdown(extensions=['markdown.extensions.fenced_code','markdown.extensions.def_list', 'markdown.extensions.codehilite','markdown.extensions.tables'])
-
     extension_zip = extension_name + ".zip"
     github_url = "https://github.com/defold/{}".format(extension_name)
     if download:
@@ -415,7 +480,6 @@ def process_extension(extension_name, download = False):
         docs_dir = os.path.join(unzipped_extension_dir, "docs")
         rmcopytree(docs_dir, extension_dir)
         index = os.path.join(extension_dir, "index.md")
-        append_to_file(index, "[API Reference](/{}/{}_api)".format(extension_name, extension_name.replace("extension-", "")))
         replace_in_file(index, r"title\:", r"layout: manual\ntitle:")
         replace_in_file(index, r"title\:", r"language: en\ntitle:")
         replace_in_file(index, r"title\:", r"github: {}\ntitle:".format(github_url))
@@ -434,6 +498,9 @@ def process_extension(extension_name, download = False):
             api = yaml.safe_load(read_as_string(filename))[0]
             api_name = api.get("name", "")
 
+            # append links to api reference to the end of the file
+            append_to_file(index, "[API Reference - {}](/{}/{}_api)\n".format(api_name, extension_dir, api_name))
+
             # generate a dummy markdown page with some front matter for the api doc
             api_filename = os.path.join(extension_dir, api_name + "_api.html")
             with open(api_filename, "w") as f:
@@ -450,30 +517,7 @@ def process_extension(extension_name, download = False):
             info["brief"] = api_name
             info["api"] = os.path.join(extension_dir, api_name + "_api")
 
-            for m in api["members"]:
-                element = {}
-                element["parameters"] = parse_extension_parameters(m.get("parameters", []))
-                element["returnvalues"] = []
-                for r in m.get("returns", []):
-                    ret = {}
-                    ret["name"] = r.get("type", "")
-                    ret["doc"] = r.get("desc", "")
-                    element["returnvalues"].append(ret)
-                element["description"] = m.get("desc", "")
-                type = m.get("type", "").upper()
-                if type == "NUMBER":
-                    type = "VARIABLE"
-                element["type"] = type
-                if type == "FUNCTION":
-                    element["name"] = api_name + "." + m.get("name", "")
-                else:
-                    element["name"] = m.get("name", "")
-                examples = []
-                for e in m.get("examples", []):
-                    desc = e.get("desc", "")
-                    examples.append(md.convert(desc))
-                element["examples"] = "".join(examples)
-                elements.append(element)
+            elements.extend(parse_script_api_members(api_name, api))
 
             # write the json data file
             extension_data_dir = os.path.join("_data", "extensions")
@@ -650,13 +694,13 @@ def process_assets(tmp_dir):
 
     # image data
     image_dir = os.path.join("images", "assets")
-    rmcopytree(os.path.join(tmp_dir, "awesome-defold-master", "assets", "images"), image_dir)
+    rmcopytree(os.path.join(tmp_dir, "asset-portal-master", "assets", "images"), image_dir)
 
     assetindex = []
     authorindex = {}
     tagindex = {}
     platformindex = {}
-    for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "assets"), "*.json"):
+    for filename in find_files(os.path.join(tmp_dir, "asset-portal-master", "assets"), "*.json"):
         basename = os.path.basename(filename)
         print("Processing asset: {}".format(basename))
         asset_id = basename.replace(".json", "")
@@ -674,7 +718,7 @@ def process_assets(tmp_dir):
 
         author_id = hashlib.md5(author_name.encode('utf-8')).hexdigest()
         asset["author_id"] = author_id
-        asset["asset_url"] = "https://github.com/defold/awesome-defold/blob/master/assets/%s.json" % asset_id
+        asset["asset_url"] = "https://github.com/defold/asset-portal/blob/master/assets/%s.json" % asset_id
         if "github.com" in library_url:
             asset["github_url"] = re.sub(r"(.*github.com/.*?/.*?)/.*", r"\1", library_url)
         write_as_json(asset_file, asset)
@@ -791,7 +835,7 @@ def process_assets(tmp_dir):
 def process_games(tmp_dir):
     # image data
     image_dir = os.path.join("images", "games")
-    rmcopytree(os.path.join(tmp_dir, "awesome-defold-master", "games", "images"), image_dir)
+    rmcopytree(os.path.join(tmp_dir, "games-showcase-master", "games", "images"), image_dir)
 
     # update existing games with new info (except show+placement)
     # maintain existing order
@@ -799,7 +843,7 @@ def process_games(tmp_dir):
     games = read_as_json(GAMES_JSON)
 
     # read new games
-    for filename in find_files(os.path.join(tmp_dir, "awesome-defold-master", "games"), "*.json"):
+    for filename in find_files(os.path.join(tmp_dir, "games-showcase-master", "games"), "*.json"):
         basename = os.path.basename(filename)
         print("Processing game: {}".format(basename))
 
@@ -825,20 +869,34 @@ def process_games(tmp_dir):
     write_as_json(GAMES_JSON, games)
 
 
-def process_awesome(download = False):
+def process_asset_portal(download = False):
     if download:
-        if os.path.exists(AWESOME_ZIP):
-            os.remove(AWESOME_ZIP)
-        download_file("https://github.com/defold/awesome-defold/archive/master.zip", ".", AWESOME_ZIP)
+        if os.path.exists(ASSETPORTAL_ZIP):
+            os.remove(ASSETPORTAL_ZIP)
+        download_file("https://github.com/defold/asset-portal/archive/master.zip", ".", ASSETPORTAL_ZIP)
 
-    if not os.path.exists(AWESOME_ZIP):
-        print("File {} does not exist".format(AWESOME_ZIP))
+    if not os.path.exists(ASSETPORTAL_ZIP):
+        print("File {} does not exist".format(ASSETPORTAL_ZIP))
         sys.exit(1)
 
     with tmpdir() as tmp_dir:
-        shutil.copyfile(AWESOME_ZIP, os.path.join(tmp_dir, AWESOME_ZIP))
-        unzip(os.path.join(tmp_dir, AWESOME_ZIP), tmp_dir)
+        shutil.copyfile(ASSETPORTAL_ZIP, os.path.join(tmp_dir, ASSETPORTAL_ZIP))
+        unzip(os.path.join(tmp_dir, ASSETPORTAL_ZIP), tmp_dir)
         process_assets(tmp_dir)
+
+def process_games_showcase(download = False):
+    if download:
+        if os.path.exists(GAMESSHOWCASE_ZIP):
+            os.remove(GAMESSHOWCASE_ZIP)
+        download_file("https://github.com/defold/games-showcase/archive/master.zip", ".", GAMESSHOWCASE_ZIP)
+
+    if not os.path.exists(GAMESSHOWCASE_ZIP):
+        print("File {} does not exist".format(GAMESSHOWCASE_ZIP))
+        sys.exit(1)
+
+    with tmpdir() as tmp_dir:
+        shutil.copyfile(GAMESSHOWCASE_ZIP, os.path.join(tmp_dir, GAMESSHOWCASE_ZIP))
+        unzip(os.path.join(tmp_dir, GAMESSHOWCASE_ZIP), tmp_dir)
         process_games(tmp_dir)
 
 
@@ -1039,7 +1097,7 @@ def commit_changes(githubtoken):
     call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
 
 
-ALL_COMMANDS = [ "docs", "refdoc", "awesome", "examples", "codepad", "commit", "searchindex", "extensions" ]
+ALL_COMMANDS = [ "docs", "refdoc", "asset-portal", "games-showcase", "examples", "codepad", "commit", "searchindex", "extensions" ]
 ALL_COMMANDS.sort()
 
 parser = ArgumentParser()
@@ -1053,7 +1111,8 @@ help = """
 COMMANDS:
 docs = Process the docs (manuals, tutorials and faq)
 refdoc = Process the API reference
-awesome = Process the awesome assets and games lists (from awesome-defold)
+asset-portal = Process the assets list (from asset-portal)
+games-showcase = Process the games list (from games-showcase)
 examples = Build the examples
 codepad = Build the Defold CodePad
 commit = Commit changed files (requires --githubtoken)
@@ -1085,8 +1144,10 @@ for command in args.commands:
         process_examples(download = args.download)
     elif command == "refdoc":
         process_refdoc(download = args.download)
-    elif command == "awesome":
-        process_awesome(download = args.download)
+    elif command == "asset-portal":
+        process_asset_portal(download = args.download)
+    elif command == "games-showcase":
+        process_games_showcase(download = args.download)
     elif command == "codepad":
         process_codepad(download = args.download)
     elif command == "searchindex":

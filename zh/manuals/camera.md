@@ -53,8 +53,12 @@ Orthographic Zoom
 
 ## 使用摄像机
 
-通过发送 `acquire_camera_focus` 消息, 激活摄像机并填充视口同时向渲染脚本提供映射矩阵:
+通过调用 `camera.acquire_focus` 函数或者向组件发送 `acquire_camera_focus` 消息, 激活摄像机并填充视口同时向渲染脚本提供映射矩阵:
 
+```lua
+camera.acquire_focus("#camera")
+```
+或者
 ```lua
 msg.post("#camera", "acquire_camera_focus")
 ```
@@ -150,6 +154,15 @@ end
 
 `orthographic_zoom`
 : 平视摄像机缩放 (`number`).
+
+`aspect_ratio`
+: 自从 Defold 1.4.8 加入. 视口宽高比. 在计算透视摄像机投射时使用. (`number`).
+
+`view`
+: 自从 Defold 1.4.8 加入. 摄像机视口矩阵值. 只读. (`matrix4`).
+
+`projection`
+: 自从 Defold 1.4.8 加入. 摄像机投射矩阵值. 只读. (`matrix4`).
 
 
 ## 第三方摄像机解决方案

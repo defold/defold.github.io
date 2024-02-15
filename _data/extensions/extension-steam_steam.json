@@ -1,0 +1,997 @@
+{
+    "elements": [
+        {
+            "description": "Initialize Steamworks.",
+            "examples": "",
+            "name": "steam.init",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "True if successful",
+                    "name": "Boolean"
+                },
+                {
+                    "doc": "Error message if unsuccessful.",
+                    "name": "String"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Update Steamworks. Call this from a script component.",
+            "examples": "",
+            "name": "steam.update",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Restart Steamworks.",
+            "examples": "",
+            "name": "steam.restart",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "appid",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Finalize Steamworks.",
+            "examples": "",
+            "name": "steam.finalize",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Requests rows in the leaderboard from the full table",
+            "examples": "",
+            "name": "ELeaderboardDataRequestGlobal",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Requests rows in the leaderboard from rows around the user",
+            "examples": "",
+            "name": "ELeaderboardDataRequestGlobalAroundUser",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Requests all the rows for friends of the current user",
+            "examples": "",
+            "name": "ELeaderboardDataRequestFriends",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Passed as parameter to the store",
+            "examples": "",
+            "name": "EOverlayToStoreFlag_None",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Passed as parameter to the store",
+            "examples": "",
+            "name": "EOverlayToStoreFlag_AddToCart",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Passed as parameter to the store",
+            "examples": "",
+            "name": "EOverlayToStoreFlag_AddToCartAndShow",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Passed as parameter to ActivateGameOverlayToWebPage",
+            "examples": "",
+            "name": "EActivateGameOverlayToWebPageMode_Default",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Passed as parameter to ActivateGameOverlayToWebPage",
+            "examples": "",
+            "name": "EActivateGameOverlayToWebPageMode_Modal",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Friend is not currently logged on",
+            "examples": "",
+            "name": "EPersonaStateOffline",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Friend is logged on",
+            "examples": "",
+            "name": "EPersonaStateOnline",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "User is on, but busy",
+            "examples": "",
+            "name": "EPersonaStateBusy",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Auto-away feature",
+            "examples": "",
+            "name": "EPersonaStateAway",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Auto-away for a long time",
+            "examples": "",
+            "name": "EPersonaStateSnooze",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Online, trading",
+            "examples": "",
+            "name": "EPersonaStateLookingToTrade",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Online, wanting to play",
+            "examples": "",
+            "name": "EPersonaStateLookingToPlay",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Online, but appears offline to friends.  This status is never published to clients.",
+            "examples": "",
+            "name": "EPersonaStateInvisible",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Takes AppID of DLC and checks if the user owns the DLC &amp; if the DLC is installed.",
+            "examples": "",
+            "name": "steam.apps_is_dlc_installed",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "app_id",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "bool"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the name of another user. Same rules as GetFriendPersonaState() apply as to whether or not the user knowns the name of the other user note that on first joining a lobby, chat room or game server the local user will not known the name of the other users automatically; that information will arrive asyncronously.",
+            "examples": "",
+            "name": "steam.friends_get_friend_persona_name",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "CSteamID",
+                    "types": [
+                        "friendId"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Name of user",
+                    "name": "name"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the local players name - guaranteed to not be NULL. This is the same name as on the users community profile page. This is stored in UTF-8 format.",
+            "examples": "",
+            "name": "steam.friends_get_persona_name",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "Name of user",
+                    "name": "name"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Gets the status of the current user. Returned as EPersonaState.",
+            "examples": "",
+            "name": "steam.friends_get_persona_state",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "Status of user.",
+                    "name": "state"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the current status of the specified user. This will only be known by the local user if steamIDFriend is in their friends list; on the same game server; in a chat room or lobby; or in a small group with the local user.",
+            "examples": "",
+            "name": "steam.friends_get_friend_persona_state",
+            "parameters": [
+                {
+                    "doc": "Id of friend",
+                    "name": "steamIDFriend",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "State of friend",
+                    "name": "state"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get friends steam level.",
+            "examples": "",
+            "name": "steam.friends_get_friend_steam_level",
+            "parameters": [
+                {
+                    "doc": "Id of friend",
+                    "name": "steamIDFriend",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Steam level of friend",
+                    "name": "level"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns a relationship to a user.",
+            "examples": "",
+            "name": "steam.friends_get_friend_relationship",
+            "parameters": [
+                {
+                    "doc": "Id of friend",
+                    "name": "steamIDFriend",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Relationship to the user.",
+                    "name": "relationship"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Activates game overlay to store page for app.",
+            "examples": "",
+            "name": "steam.friends_activate_game_overlay_to_store",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "app_id",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "EOverlayToStoreFlag",
+                    "name": "flag",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Activates game overlay web browser directly to the specified URL. Full address with protocol type is required, e.g. http://www.steamgames.com/",
+            "examples": "",
+            "name": "steam.friends_activate_game_overlay_to_web_page",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "url",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "EActivateGameOverlayToWebPageMode",
+                    "name": "mode",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set a listener.",
+            "examples": "",
+            "name": "steam.set_listener",
+            "parameters": [
+                {
+                    "doc": "Listener function to call",
+                    "name": "listener",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the CSteamID of the account currently logged into the Steam client. A CSteamID is a unique identifier for an account, and used to differentiate users in all parts of the Steamworks API.",
+            "examples": "",
+            "name": "steam.user_get_steam_id",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "CSteamID"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Gets the Steam Level of the user, as shown on their profile.",
+            "examples": "",
+            "name": "steam.user_get_player_steam_level",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Trading Card badges data access. If you only have one set of cards, the series will be 1. The user has can have two different badges for a series; the regular (max level 5) and the foil (max level 1).",
+            "examples": "",
+            "name": "steam.user_get_game_badge_level",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "number"
+                },
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns true if the Steam client current has a live connection to the Steam Servers.",
+            "examples": "",
+            "name": "steam.user_logged_on",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns true if this users looks like they are behind a NAT device. Only valid once the user has connected to steam .",
+            "examples": "",
+            "name": "steam.user_is_behind_nat",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Gets whether the users phone number is verified.",
+            "examples": "",
+            "name": "steam.user_is_phone_verified",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Gets whether the users phone number is identifying.",
+            "examples": "",
+            "name": "steam.user_is_phone_identifying",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Gets whether the users phone number is awaiting (re)verification.",
+            "examples": "",
+            "name": "steam.user_is_phone_requiring_verification",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Gets whether the user has two factor enabled on their account.",
+            "examples": "",
+            "name": "steam.user_is_two_factor_enabled",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get user stat as an integer.",
+            "examples": "",
+            "name": "steam.user_stats_get_stat_int",
+            "parameters": [
+                {
+                    "doc": "Id of the stat to get",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "ok"
+                },
+                {
+                    "doc": "The stat or nil",
+                    "name": "stat"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set user stat.",
+            "examples": "",
+            "name": "steam.user_stats_set_stat_int",
+            "parameters": [
+                {
+                    "doc": "Id of the stat to set",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Number to set",
+                    "name": "stat",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get user stat as a floating point number.",
+            "examples": "",
+            "name": "steam.user_stats_get_stat_float",
+            "parameters": [
+                {
+                    "doc": "Id of the stat to get",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "Boolean"
+                },
+                {
+                    "doc": "The stat",
+                    "name": "Number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set user stat.",
+            "examples": "",
+            "name": "steam.user_stats_set_stat_float",
+            "parameters": [
+                {
+                    "doc": "Id of the stat to set",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Number to set",
+                    "name": "stat",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "Boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Ask the server to send down this user&#x27;s data and achievements for this game.",
+            "examples": "",
+            "name": "steam.user_stats_request_current_stats",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "True if successful",
+                    "name": "Boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Requests global stats data, which is available for stats marked as &quot;aggregated&quot;. This call is asynchronous, with the results returned in GlobalStatsReceived_t. nHistoryDays specifies how many days of day-by-day history to retrieve in addition to the overall totals. The limit is 60.",
+            "examples": "",
+            "name": "steam.user_stats_request_global_stats",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "history_days",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "Boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Store the current data on the server. Will get a callback when set and one callback for every new achievement  If the callback has a result of k_EResultInvalidParam, one or more stats uploaded has been rejected, either because they broke constraints or were out of date. In this case the server sends back updated values. The stats should be re-iterated to keep in sync.",
+            "examples": "",
+            "name": "steam.user_stats_store_stats",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "Boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Reset stats.",
+            "examples": "",
+            "name": "steam.user_stats_reset_all_stats",
+            "parameters": [
+                {
+                    "doc": "True if achievements should be reset as well.",
+                    "name": "achievements",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "Boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set achievement.",
+            "examples": "",
+            "name": "steam.user_stats_set_achievement",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "Boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get achievement.",
+            "examples": "",
+            "name": "steam.user_stats_get_achievement",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "Boolean"
+                },
+                {
+                    "doc": "",
+                    "name": "Boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Clear achievement.",
+            "examples": "",
+            "name": "steam.user_stats_clear_achievement",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "Boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Used for iterating achievements. In general games should not need these functions because they should have a list of existing achievements compiled into them.",
+            "examples": "",
+            "name": "steam.user_stats_get_num_achievements",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "Number of achievements.",
+                    "name": "Number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get achievement name iAchievement in [0,GetNumAchievements)",
+            "examples": "",
+            "name": "steam.user_stats_get_achievement_name",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "index",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "String"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get general attributes for an achievement. Accepts the following keys * &quot;name&quot; and &quot;desc&quot; for retrieving the localized achievement name and description (returned in UTF8) * &quot;hidden&quot; for retrieving if an achievement is hidden (returns &quot;0&quot; when not hidden, &quot;1&quot; when hidden)",
+            "examples": "",
+            "name": "steam.user_stats_get_achievement_display_attribute",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Either &quot;name&quot;, &quot;desc&quot; or &quot;hidden&quot;",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "String"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the percentage of users who have achieved the specified achievement.",
+            "examples": "",
+            "name": "steam.user_stats_get_achievement_achieved_percent",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "Boolean"
+                },
+                {
+                    "doc": "",
+                    "name": "Number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Asks the Steam back-end for a set of rows in the leaderboard. This call is asynchronous, with the result returned in a listener callback with event set to LeaderboardScoresDownloaded_t. LeaderboardScoresDownloaded_t will contain a handle to pull the results from GetDownloadedLeaderboardEntries(). You can ask for more entries than exist, and it will return as many as do exist. * k_ELeaderboardDataRequestGlobal requests rows in the leaderboard from the full table, with nRangeStart &amp; nRangeEnd in the range [1, TotalEntries] * k_ELeaderboardDataRequestGlobalAroundUser requests rows around the current user, nRangeStart being negate e.g. DownloadLeaderboardEntries( hLeaderboard, k_ELeaderboardDataRequestGlobalAroundUser, -3, 3 ) will return 7 rows, 3 before the user, 3 after * k_ELeaderboardDataRequestFriends requests all the rows for friends of the current user",
+            "examples": "",
+            "name": "steam.user_stats_download_leaderboard_entries",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "leaderboard",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "request",
+                    "types": [
+                        "ELeaderboardDataRequest"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "start",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "end",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns data about a single leaderboard entry",
+            "examples": "",
+            "name": "steam.user_stats_get_downloaded_leaderboard_entry",
+            "parameters": [
+                {
+                    "doc": "Leaderboard handle",
+                    "name": "leaderboard",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Which entry to get",
+                    "name": "index",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "Boolean"
+                },
+                {
+                    "doc": "The requested leaderboard entry.",
+                    "name": "Table"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the appID of the current process.",
+            "examples": "",
+            "name": "steam.utils_get_app_id",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "Number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Return the number of seconds since the user.",
+            "examples": "",
+            "name": "steam.utils_get_seconds_since_app_active",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "Number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns true if currently running on the Steam Deck device.",
+            "examples": "",
+            "name": "steam.utils_is_steam_running_on_steam_deck",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "Boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get size of image",
+            "examples": "",
+            "name": "steam.utils_get_image_size",
+            "parameters": [
+                {
+                    "doc": "Image handle",
+                    "name": "image",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "True if size of image was read successfully",
+                    "name": "Boolean"
+                },
+                {
+                    "doc": "Image width or nil",
+                    "name": "Number"
+                },
+                {
+                    "doc": "Image height or nil",
+                    "name": "Number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get image in RGBA format.",
+            "examples": "",
+            "name": "steam.utils_get_image_rgba",
+            "parameters": [
+                {
+                    "doc": "Image handle",
+                    "name": "image",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Size of image",
+                    "name": "size",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "True if size of image was read successfully",
+                    "name": "Boolean"
+                },
+                {
+                    "doc": "",
+                    "name": "String"
+                }
+            ],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "api": "extension-steam/steam_api",
+        "brief": "steam",
+        "description": "Functions and constants for interacting Steamworks",
+        "group": "EXTENSIONS",
+        "name": "extension-steam",
+        "namespace": "steam"
+    }
+}

@@ -140,6 +140,36 @@
                     "types": [
                         "table"
                     ]
+                },
+                {
+                    "doc": "function to call when a playback event occurs",
+                    "name": "callback_function",
+                    "parameters": [
+                        {
+                            "doc": "The context of the calling script",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "The name of the event",
+                            "name": "message_id",
+                            "types": [
+                                "hash"
+                            ]
+                        },
+                        {
+                            "doc": "A table that contains the event properties",
+                            "name": "message",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
                 }
             ],
             "returnvalues": [],
@@ -178,6 +208,96 @@
                     "name": "bone_id",
                     "types": [
                         "hash"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Forward mouse/touch movement to a component",
+            "examples": "",
+            "name": "rive.pointer_move",
+            "parameters": [
+                {
+                    "doc": "The Rive model",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "Horizontal position",
+                    "name": "x",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Vertical position",
+                    "name": "y",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Forward mouse/touch release event to a component",
+            "examples": "",
+            "name": "rive.pointer_up",
+            "parameters": [
+                {
+                    "doc": "The Rive model",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "Horizontal position",
+                    "name": "x",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Vertical position",
+                    "name": "y",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Forward mouse/touch press event to a component",
+            "examples": "",
+            "name": "rive.pointer_down",
+            "parameters": [
+                {
+                    "doc": "The Rive model",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "Horizontal position",
+                    "name": "x",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Vertical position",
+                    "name": "y",
+                    "types": [
+                        "number"
                     ]
                 }
             ],
