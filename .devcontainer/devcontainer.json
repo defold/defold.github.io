@@ -2,7 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/jekyll
 {
 	"name": "Jekyll",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	// More info: https://containers.dev/guide/dockerfile
 	"build": { "dockerfile": "Dockerfile" },
 	"runArgs": ["--platform=linux/amd64"],
 
@@ -20,7 +20,7 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
-	// Uncomment the next line to run commands after the container is created.
+	// Run commands after the container is created.
 	"postCreateCommand": "sh ./.devcontainer/postcreate.sh",
 	"postStartCommand": "./serve.sh"
 
