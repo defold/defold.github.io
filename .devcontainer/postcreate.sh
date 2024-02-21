@@ -13,9 +13,11 @@ pip3 install --user pygments==2.1.3
 sudo apt install -y libxtst6 libxt6
 sudo ln -s /usr/local/lib/R/lib/libR.so /lib/x86_64-linux-gnu/libR.so
 
+#  fix "Problem reading font data" error
+sudo apt-get -y install fontconfig
+
 # download content from other repositories
 python3 update.py --download docs refdoc
 python3 update.py --download asset-portal games-showcase
-
-# python3 update.py --download codepad
-# python3 update.py --download examples
+python3 update.py --download codepad
+python3 update.py --download examples
