@@ -932,6 +932,84 @@
     },
     {
       "type": "FUNCTION",
+      "name": "go.world_to_local_position",
+      "brief": "convert position to game object's coordinate space",
+      "description": "convert position to game object's coordinate space",
+      "returnvalues": [
+        {
+          "name": "converted_postion",
+          "doc": "converted position",
+          "types": [
+            "vector3"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "position",
+          "doc": "position which need to be converted",
+          "types": [
+            "vector3"
+          ]
+        },
+        {
+          "name": "url",
+          "doc": "url of the game object which coordinate system convert to",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        }
+      ],
+      "examples": "Convert position of \"test\" game object into coordinate space of \"child\" object.\n<div class=\"codehilite\"><pre><span></span><code>  <span class=\"kd\">local</span> <span class=\"n\">test_pos</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_position</span><span class=\"p\">(</span><span class=\"s2\">&quot;/test&quot;</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">child_pos</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_position</span><span class=\"p\">(</span><span class=\"s2\">&quot;/child&quot;</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">new_position</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">world_to_local_position</span><span class=\"p\">(</span><span class=\"n\">test_pos</span><span class=\"p\">,</span> <span class=\"s2\">&quot;/child&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "go.world_to_local_transform",
+      "brief": "convert transformation matrix to game object's coordinate space",
+      "description": "convert transformation matrix to game object's coordinate space",
+      "returnvalues": [
+        {
+          "name": "converted_transform",
+          "doc": "converted transformation",
+          "types": [
+            "matrix4"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "transformation",
+          "doc": "transformation which need to be converted",
+          "types": [
+            "matrix4"
+          ]
+        },
+        {
+          "name": "url",
+          "doc": "url of the game object which coordinate system convert to",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        }
+      ],
+      "examples": "Convert transformation of \"test\" game object into coordinate space of \"child\" object.\n<div class=\"codehilite\"><pre><span></span><code>   <span class=\"kd\">local</span> <span class=\"n\">test_transform</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_transform</span><span class=\"p\">(</span><span class=\"s2\">&quot;/test&quot;</span><span class=\"p\">)</span>\n   <span class=\"kd\">local</span> <span class=\"n\">child_transform</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_transform</span><span class=\"p\">(</span><span class=\"s2\">&quot;/child&quot;</span><span class=\"p\">)</span>\n   <span class=\"kd\">local</span> <span class=\"n\">result_transform</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">world_to_local_transform</span><span class=\"p\">(</span><span class=\"n\">test_transform</span><span class=\"p\">,</span> <span class=\"s2\">&quot;/child&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "init",
       "brief": "called when a script component is initialized",
       "description": "This is a callback-function, which is called by the engine when a script component is initialized. It can be used\nto set the initial state of the script.",
