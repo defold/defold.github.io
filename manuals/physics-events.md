@@ -21,6 +21,10 @@ end)
 
 ```
 
+<div class='important' markdown='1'>
+If a listener is set, [physics messages](/manuals/physics-messages) will no longer be sent.
+</div>
+
 ## Event Data Structure
 
 Each physics event provides a `data` table containing specific information relevant to the event.
