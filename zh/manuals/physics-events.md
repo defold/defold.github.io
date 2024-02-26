@@ -21,6 +21,10 @@ end)
 
 ```
 
+<div class='important' markdown='1'>
+如果设置了监听器, [物理消息](/zh/manuals/physics-messages) 就不会再发送了.
+</div>
+
 ## 事件数据结构
 
 每个物理事件提供 `data` 表, 包含了与事件相关的特定信息.
