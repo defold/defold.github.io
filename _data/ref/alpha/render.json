@@ -752,10 +752,12 @@
           ]
         },
         {
-          "name": "handle",
-          "doc": "render target or texture handle that should be bound",
+          "name": "handle_or_name",
+          "doc": "render target or texture handle that should be bound, or a named resource in the \"Render Resource\" table in the currently assigned .render file",
           "types": [
-            "texture"
+            "texture",
+            "string",
+            "hash"
           ]
         },
         {
