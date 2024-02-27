@@ -1,6 +1,54 @@
 {
   "elements": [
     {
+      "type": "FUNCTION",
+      "name": "camera.acquire_focus",
+      "brief": "makes camera active",
+      "description": "makes camera active",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "url",
+          "doc": "url of camera component",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">acquire_focus</span><span class=\"p\">(</span><span class=\"s2\">&quot;/observer#main_camera&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "camera.release_focus",
+      "brief": "deactivate camera",
+      "description": "deactivate camera",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "url",
+          "doc": "url of camera component",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">release_focus</span><span class=\"p\">(</span><span class=\"s2\">&quot;/observer#main_camera&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
       "type": "MESSAGE",
       "name": "set_camera",
       "brief": "sets camera properties",

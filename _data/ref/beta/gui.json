@@ -1,35 +1,6 @@
 {
   "elements": [
     {
-      "type": "MESSAGE",
-      "name": "layout_changed",
-      "brief": "reports a layout change",
-      "description": "This message is broadcast to every GUI component when a layout change has been initiated\non device.",
-      "returnvalues": [],
-      "parameters": [
-        {
-          "name": "id",
-          "doc": "the id of the layout the engine is changing to",
-          "types": [
-            "hash"
-          ]
-        },
-        {
-          "name": "previous_id",
-          "doc": "the id of the layout the engine is changing from",
-          "types": [
-            "hash"
-          ]
-        }
-      ],
-      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n   <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;layout_changed&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;Landscape&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n       <span class=\"c1\">-- switching layout to &quot;Landscape&quot;...</span>\n       <span class=\"p\">...</span>\n   <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
       "type": "PROPERTY",
       "name": "material",
       "brief": "<span class=\"type\">hash</span> gui material",
@@ -1232,7 +1203,7 @@
       "returnvalues": [
         {
           "name": "blend_mode",
-          "doc": "blend mode\n<ul>\n<li><code>gui.BLEND_ALPHA</code></li>\n<li><code>gui.BLEND_ADD</code></li>\n<li><code>gui.BLEND_ADD_ALPHA</code></li>\n<li><code>gui.BLEND_MULT</code></li>\n</ul>",
+          "doc": "blend mode\n<ul>\n<li><code>gui.BLEND_ALPHA</code></li>\n<li><code>gui.BLEND_ADD</code></li>\n<li><code>gui.BLEND_ADD_ALPHA</code></li>\n<li><code>gui.BLEND_MULT</code></li>\n<li><code>gui.BLEND_SCREEN</code></li>\n</ul>",
           "types": [
             "constant"
           ]
@@ -1270,7 +1241,7 @@
         },
         {
           "name": "blend_mode",
-          "doc": "blend mode to set\n<ul>\n<li><code>gui.BLEND_ALPHA</code></li>\n<li><code>gui.BLEND_ADD</code></li>\n<li><code>gui.BLEND_ADD_ALPHA</code></li>\n<li><code>gui.BLEND_MULT</code></li>\n</ul>",
+          "doc": "blend mode to set\n<ul>\n<li><code>gui.BLEND_ALPHA</code></li>\n<li><code>gui.BLEND_ADD</code></li>\n<li><code>gui.BLEND_ADD_ALPHA</code></li>\n<li><code>gui.BLEND_MULT</code></li>\n<li><code>gui.BLEND_SCREEN</code></li>\n</ul>",
           "types": [
             "constant"
           ]
@@ -4405,6 +4376,20 @@
     },
     {
       "type": "VARIABLE",
+      "name": "gui.BLEND_SCREEN",
+      "brief": "screen blending",
+      "description": "screen blending",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
       "name": "gui.CLIPPING_MODE_NONE",
       "brief": "clipping mode none",
       "description": "clipping mode none",
@@ -4942,13 +4927,42 @@
       "tparams": [],
       "members": [],
       "notes": []
+    },
+    {
+      "type": "MESSAGE",
+      "name": "layout_changed",
+      "brief": "reports a layout change",
+      "description": "This message is broadcast to every GUI component when a layout change has been initiated\non device.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "id",
+          "doc": "the id of the layout the engine is changing to",
+          "types": [
+            "hash"
+          ]
+        },
+        {
+          "name": "previous_id",
+          "doc": "the id of the layout the engine is changing from",
+          "types": [
+            "hash"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n   <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;layout_changed&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;Landscape&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n       <span class=\"c1\">-- switching layout to &quot;Landscape&quot;...</span>\n       <span class=\"p\">...</span>\n   <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
   ],
   "info": {
     "namespace": "gui",
     "name": "GUI",
     "brief": "GUI API documentation",
-    "description": "GUI core hooks, functions, messages, properties and constants for\ncreation and manipulation of GUI nodes. The \"gui\" namespace is\naccessible only from gui scripts.",
+    "description": "GUI API documentation",
     "path": "",
     "file": "",
     "notes": [],

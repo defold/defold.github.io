@@ -738,22 +738,26 @@
     {
       "type": "FUNCTION",
       "name": "render.enable_texture",
-      "brief": "enables a texture for a render target",
-      "description": "Sets the specified render target's specified buffer to be\nused as texture with the specified unit.\nA material shader can then use the texture to sample from.",
+      "brief": "sets a texture to the render state",
+      "description": "Sets the specified texture handle for a render target attachment or a regular texture\nthat should be used for rendering. The texture can be bound to either a texture unit\nor to a sampler name by a hash or a string.\nA texture can be bound to multiple units and sampler names at the same time,\nthe actual binding will be applied to the shaders when a shader program is bound.\nWhen mixing binding using both units and sampler names, you might end up in situations\nwhere two different textures will be applied to the same bind location in the shader.\nIn this case, the texture set to the named sampler will take precedence over the unit.\nNote that you can bind multiple sampler names to the same texture, in case you want to reuse\nthe same texture for differnt use-cases. It is however recommended that you use the same name\neverywhere for the textures that should be shared across different materials.",
       "returnvalues": [],
       "parameters": [
         {
-          "name": "unit",
-          "doc": "texture unit to enable texture for",
+          "name": "binding",
+          "doc": "texture binding, either by texture unit, string or hash for the sampler name that the texture should be bound to",
           "types": [
-            "number"
+            "number",
+            "string",
+            "hash"
           ]
         },
         {
-          "name": "render_target",
-          "doc": "render target or texture from which to enable the specified texture unit",
+          "name": "handle_or_name",
+          "doc": "render target or texture handle that should be bound, or a named resource in the \"Render Resource\" table in the currently assigned .render file",
           "types": [
-            "handle"
+            "texture",
+            "string",
+            "hash"
           ]
         },
         {
@@ -764,7 +768,7 @@
           ]
         }
       ],
-      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- enable target so all drawing is done to it</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- draw a predicate to the render target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- disable target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_render_target</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">RENDER_TARGET_DEFAULT</span><span class=\"p\">)</span>\n\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_texture</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BUFFER_COLOR_BIT</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- draw a predicate with the render target available as texture 0 in the predicate</span>\n    <span class=\"c1\">-- material shader.</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- enable target so all drawing is done to it</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- draw a predicate to the render target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- disable target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_render_target</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">RENDER_TARGET_DEFAULT</span><span class=\"p\">)</span>\n\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_texture</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BUFFER_COLOR_BIT</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- draw a predicate with the render target available as texture 0 in the predicate</span>\n    <span class=\"c1\">-- material shader.</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- bind a texture to the texture unit 0</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_texture</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_texture_handle</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- bind the same texture to a named sampler</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_texture_sampler&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_texture_handle</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],
@@ -774,15 +778,17 @@
     {
       "type": "FUNCTION",
       "name": "render.disable_texture",
-      "brief": "disables a texture for a render target",
-      "description": "Disables a texture unit for a render target that has previourly been enabled.",
+      "brief": "disables a texture on the render state",
+      "description": "Disables a texture that has previourly been enabled.",
       "returnvalues": [],
       "parameters": [
         {
-          "name": "unit",
-          "doc": "texture unit to disable",
+          "name": "binding",
+          "doc": "texture binding, either by texture unit, string or hash that should be disabled",
           "types": [
-            "number"
+            "number",
+            "string",
+            "hash"
           ]
         }
       ],
