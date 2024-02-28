@@ -55,6 +55,11 @@ Any script component instance created from this script can then set the property
 
 Any property that is overridden with a new instance specific value is marked blue. Click the reset button by the property name to revert the value to the default (as set in the script).
 
+
+<div class='important' markdown='1'>
+Script properties are parsed when building the project. Value expressions are not evaluated. This means that something like `go.property("hp", 3+6)` will not work while `go.property("hp", 9)` will.
+</div>
+
 ## Accessing script properties
 
 Any defined script property is available as a stored member in `self`, the script instance reference:
