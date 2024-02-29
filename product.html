@@ -179,18 +179,8 @@ after: [opensource_section.html, learn_section.html, yellow_download_section.htm
 
 <div class="row">
 	<div class="columns twelve center">
-		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); grid-gap: 1rem; padding: 0px;">
-			<img src="/images/logo/platform/100px-ps4-white.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="PlayStation®4 logo" loading="lazy"/>
-			<img src="/images/logo/platform/100px-switch-red.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="Nintendo Switch logo" loading="lazy"/>
-			<img src="/images/logo/platform/100px-android.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="Android logo" loading="lazy"/>
-			<img src="/images/logo/platform/100px-ios-white.png"			class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="Apple logo" loading="lazy"/>
-			<img src="/images/logo/platform/100px-macos-white.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="macOS logo" loading="lazy"/>
-			<img src="/images/logo/platform/100px-linux.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="Linux logo" loading="lazy"/>
-			<img src="/images/logo/platform/100px-windows.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="Windows logo" loading="lazy"/>
-			<img src="/images/logo/platform/100px-steam.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="Steam logo" loading="lazy"/>
-			<img src="/images/logo/platform/100px-html5.png"		class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="HTML5 logo" loading="lazy"/>
-			<img src="/images/logo/platform/100px-facebook.png"	class="slideinbottom" width="50%" style="display:block; margin: auto;" alt="Facebook logo" loading="lazy"/>
-		</div>
+		{%- include platforms.html minmax=80 transition="slideinbottom" -%}
+
 		<br/><br/>
 	</div>
 </div>

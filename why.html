@@ -28,18 +28,8 @@ after: [yellow_download_section.html, donors_and_partners.html]
 	<h5>Truly cross platform</h5>
 	<p>Supporting multiple platforms can be a real pain, especially if you need to have a lot of branching code and exceptions to deal with the different platforms. With Defold this is a non issue. You create your game once, and can without making any changes export to all supported platforms: Windows, Linux, macOS, Android, iOS, HTML5, Nintendo Switch and PlayStation®4. You should never have to care about which platform your game is running on. The Defold APIs work across all platforms and you do not have to worry about typical platform specific things such as file paths, texture formats, input methods, render pipelines, networking protocols or in-app purchasing systems. We got you covered!</p>
 
-	<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); grid-gap: 1rem; margin-bottom: 4rem;">
-		<img src="/images/logo/platform/100px-ps4-white.png"		width="30%" style="display:block; margin: auto;" alt="PlayStation®4 logo"/>
-		<img src="/images/logo/platform/100px-switch-red.png"		width="30%" style="display:block; margin: auto;" alt="Nintendo Switch logo"/>
-		<img src="/images/logo/platform/100px-android.png"	width="30%" style="display:block; margin: auto;" alt="Android logo"/>
-		<img src="/images/logo/platform/100px-ios-white.png"		width="30%" style="display:block; margin: auto;" alt="Apple logo"/>
-		<img src="/images/logo/platform/100px-macos-white.png"		width="30%" style="display:block; margin: auto;" alt="macOS logo"/>
-		<img src="/images/logo/platform/100px-linux.png"		width="30%" style="display:block; margin: auto;" alt="Linux logo"/>
-		<img src="/images/logo/platform/100px-windows.png"	width="30%" style="display:block; margin: auto;" alt="Windows logo"/>
-		<img src="/images/logo/platform/100px-steam.png"		width="30%" style="display:block; margin: auto;" alt="Steam logo"/>
-		<img src="/images/logo/platform/100px-html5.png"		width="30%" style="display:block; margin: auto;" alt="HTML5 logo"/>
-		<img src="/images/logo/platform/100px-facebook.png"	width="30%" style="display:block; margin: auto;" alt="Facebook logo"/>
-	</div>
+	{%- include platforms.html minmax=50 transition="" -%}
+	</br>
 
 	<h5>Zero-setup policy</h5>
 	<p>There is nothing more tedious than keeping tools and SDKs updated with the latest changes and requirements, especially when all you want to do is to create a game right? We promise you this: You should never have to do more than download and install Defold once. Nothing else. You do not need to install and keep Xcode updated to make an iOS or macOS build. You do not need Android Studio or any of the Android command line tools to make an Android build. No Visual Studio install for Windows, and so on for the rest of the platforms. You should not have to worry about how your application is built, we promise to take care of this for you. PS You can still control the build process through our command line tools if you want to!</p>

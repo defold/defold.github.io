@@ -23,24 +23,14 @@
 		</div>
 		<div class="row">
 			<div class="columns six">
-				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); grid-gap: 2rem; padding: 0px;">
-					<img src="/images/logo/platform/100px-ps4-white.png"		width="60%" style="display:block; margin: auto;" class="fadein" alt="PlayStation®4 logo" loading="lazy"/>
-					<img src="/images/logo/platform/100px-switch-red.png"		width="60%" style="display:block; margin: auto;" class="fadein" alt="Nintendo Switch logo" loading="lazy"/>
-					<img src="/images/logo/platform/100px-android.png"		width="60%" style="display:block; margin: auto;" class="fadein" alt="Android logo" loading="lazy"/>
-					<img src="/images/logo/platform/100px-ios-white.png"			width="60%" style="display:block; margin: auto;" class="fadein" alt="Apple logo" loading="lazy"/>
-					<img src="/images/logo/platform/100px-macos-white.png"		width="60%" style="display:block; margin: auto;" class="fadein" alt="macOS logo" loading="lazy"/>
-					<img src="/images/logo/platform/100px-linux.png"		width="60%" style="display:block; margin: auto;" class="fadein" alt="Linux logo" loading="lazy"/>
-					<img src="/images/logo/platform/100px-windows.png"		width="60%" style="display:block; margin: auto;" class="fadein" alt="Windows logo" loading="lazy"/>
-					<img src="/images/logo/platform/100px-steam.png"		width="60%" style="display:block; margin: auto;" class="fadein" alt="Steam logo" loading="lazy"/>
-					<img src="/images/logo/platform/100px-html5.png"		width="60%" style="display:block; margin: auto;" class="fadein" alt="HTML5 logo" loading="lazy"/>
-					<img src="/images/logo/platform/100px-facebook.png"	width="60%" style="display:block; margin: auto;" class="fadein" alt="Facebook logo" loading="lazy"/>
-				</div>
+				{%- include platforms.html minmax=100 transition="fadein" -%}
 			</div>
 			<div class="columns six">
 				<h4 id="cross-platform">Truly cross-platform</h4>
 				<p>Using just one code base, and without the need for external tools, Defold lets you publish your game to all of the major platforms:</p>
 				<div class="twocolumnlist">
 					<ul class="checkmark">
+						<li>PlayStation®5</li>
 						<li>PlayStation®4</li>
 						<li>Nintendo Switch</li>
 						<li>Android</li>
@@ -51,8 +41,7 @@
 						<li>Steam</li>
 						<li>HTML5</li>
 						<li>Facebook</li>
-						<li>Q3 2023 PlayStation®5</li>
-						<li>Q2 2024 XBox</li>
+						<li>Q3 2024 XBox</li>
 					</ul>
 				</div>
 			</div>
