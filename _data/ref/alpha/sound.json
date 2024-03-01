@@ -311,7 +311,7 @@
       "description": "Make the sound component play its sound. Multiple voices are supported. The limit is set to 32 voices per sound component.\n<span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.\n<span class=\"icon-attention\"></span> A sound will continue to play even if the game object the sound component belonged to is deleted. You can call <code>sound.stop()</code> to stop the sound.",
       "returnvalues": [
         {
-          "name": "id",
+          "name": "play_id",
           "doc": "The identifier for the sound voice",
           "types": [
             "number"
@@ -482,7 +482,7 @@
       "type": "MESSAGE",
       "name": "play_sound",
       "brief": "plays a sound",
-      "description": "Post this message to a sound-component to make it play its sound. Multiple voices is supported. The limit is set to 32 voices per sound component.\n<span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.\n<span class=\"icon-attention\"></span> A sound will continue to play even if the game object the sound component belonged to is deleted. You can send a <code>stop_sound</code> to stop the sound.",
+      "description": "Post this message to a sound-component to make it play its sound. Multiple voices is supported. The limit is set to 32 voices per sound component.\n<span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.\n<span class=\"icon-attention\"></span> A sound will continue to play even if the game object the sound component belonged to is deleted. You can send a <code>stop_sound</code> to stop the sound.\n<span class=\"icon-attention\"></span> <code>play_id</code> should be specified in case you want to receive <code>sound_done</code> or <code>sound_stopped</code> in <code>on_message()</code>.",
       "returnvalues": [],
       "parameters": [
         {
@@ -507,7 +507,7 @@
           ]
         }
       ],
-      "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component play its sound after 1 second:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;play_sound&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">delay</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">})</span>\n</code></pre></div>",
+      "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component play its sound after 1 second:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;play_sound&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">delay</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">})</span>\n</code></pre></div>\n\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- use `play_id` and `msg.post()` if you want to recieve `sound_done` or `sound_stopped` in on_message()</span>\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">()</span>\n <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;play_sound&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">play_id</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">delay</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">)</span>\n <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;sound_done&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n     <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Sound play id: &quot;</span><span class=\"o\">..</span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">play_id</span><span class=\"p\">)</span>\n <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],
@@ -554,7 +554,7 @@
       "type": "MESSAGE",
       "name": "sound_done",
       "brief": "reports when a sound has finished playing",
-      "description": "This message is sent back to the sender of a <code>play_sound</code> message, if the sound\ncould be played to completion.",
+      "description": "This message is sent back to the sender of a <code>play_sound</code> message\nif the sound could be played to completion and a <code>play_id</code> was provided with the <code>play_sound</code> message.",
       "returnvalues": [],
       "parameters": [
         {
@@ -576,7 +576,7 @@
       "type": "MESSAGE",
       "name": "sound_stopped",
       "brief": "reports when a sound has been manually stopped",
-      "description": "This message is sent back to the sender of a <code>play_sound</code> message, if the sound\nhas been manually stopped.",
+      "description": "This message is sent back to the sender of a <code>play_sound</code> message, if the sound\nhas been manually stopped and a <code>play_id</code> was provided with the <code>play_sound</code> message.",
       "returnvalues": [],
       "parameters": [
         {
