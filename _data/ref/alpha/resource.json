@@ -244,7 +244,7 @@
       "type": "FUNCTION",
       "name": "resource.create_texture",
       "brief": "create a texture",
-      "description": "Creates a new texture resource that can be used in the same way as any texture created during build time.\nThe path used for creating the texture must be unique, trying to create a resource at a path that is already\nregistered will trigger an error. If the intention is to instead modify an existing texture, use the <a href=\"/ref/resource#resource.set_texture\">resource.set_texture</a>\nfunction. Also note that the path to the new texture resource must have a '.texturec' extension,\nmeaning \"/path/my_texture\" is not a valid path but \"/path/my_texture.texturec\" is.",
+      "description": "Creates a new texture resource that can be used in the same way as any texture created during build time.\nThe path used for creating the texture must be unique, trying to create a resource at a path that is already\nregistered will trigger an error. If the intention is to instead modify an existing texture, use the <a href=\"/ref/resource#resource.set_texture\">resource.set_texture</a>\nfunction. Also note that the path to the new texture resource must have a '.texturec' extension,\nmeaning \"/path/my_texture\" is not a valid path but \"/path/my_texture.texturec\" is.\nIf the texture is created without a buffer, the pixel data will be blank.",
       "returnvalues": [
         {
           "name": "path",
