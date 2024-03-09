@@ -938,21 +938,21 @@ def process_refdoc(download = False):
                         json_out_name = file.replace("_doc.json", "")
                         json_out_file = json_out_name + ".json"
 
-                        # copy and rename file
-                        shutil.copyfile(os.path.join(tmp_dir, "doc", file), os.path.join(REF_DATA_DIR, json_out_file))
+                        api["elements"].sort(key=lambda x: x.get("name").lower())
+                        write_as_json(os.path.join(REF_DATA_DIR, json_out_file), api)
 
                         namespace = api["info"]["namespace"]
-                        type = "defold"
+                        api_type = "defold"
                         if namespace in LUA_APIS:
-                            type = "lua"
+                            api_type = "lua"
                         elif namespace.startswith("dm") or namespace == "sharedlibrary":
-                            type = "c"
+                            api_type = "c"
 
-                        print("REFDOC " + json_out_name + " type: " + type)
+                        print("REFDOC " + json_out_name + " type: " + api_type)
 
                         # generate a dummy markdown page with some front matter for each ref doc
                         with open(os.path.join(REF_PAGE_DIR, file.replace("_doc.json", ".md")), "w") as f:
-                            f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, type, json_out_name) + REFDOC_MD_BODY)
+                            f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, api_type, json_out_name) + REFDOC_MD_BODY)
 
                         # build refdoc index
                         refindex.append({
@@ -961,7 +961,7 @@ def process_refdoc(download = False):
                             "filename": json_out_name,
                             "url": "/ref/" + branch + "/" + json_out_name,
                             "branch": branch,
-                            "type": type
+                            "type": api_type
                         })
 
         # add extensions
