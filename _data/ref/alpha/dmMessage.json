@@ -1,534 +1,534 @@
 {
-  "elements": [
-    {
-      "type": "ENUM",
-      "name": "dmMessage::Result",
-      "brief": "Result enum",
-      "description": "Result enum",
-      "returnvalues": [],
-      "parameters": [],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [
+    "elements": [
         {
-          "name": "RESULT_OK",
-          "doc": "= 0",
-          "type": ""
+            "brief": "Result enum",
+            "description": "Result enum",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "= 0",
+                    "name": "RESULT_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "= -1",
+                    "name": "RESULT_SOCKET_EXISTS",
+                    "type": ""
+                },
+                {
+                    "doc": "= -2",
+                    "name": "RESULT_SOCKET_NOT_FOUND",
+                    "type": ""
+                },
+                {
+                    "doc": "= -3",
+                    "name": "RESULT_SOCKET_OUT_OF_RESOURCES",
+                    "type": ""
+                },
+                {
+                    "doc": "= -4",
+                    "name": "RESULT_INVALID_SOCKET_NAME",
+                    "type": ""
+                },
+                {
+                    "doc": "= -5",
+                    "name": "RESULT_MALFORMED_URL",
+                    "type": ""
+                },
+                {
+                    "doc": "= -6",
+                    "name": "RESULT_NAME_OK_SOCKET_NOT_FOUND",
+                    "type": ""
+                }
+            ],
+            "name": "dmMessage::Result",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
         },
         {
-          "name": "RESULT_SOCKET_EXISTS",
-          "doc": "= -1",
-          "type": ""
+            "brief": "Helper struct for parsing a string of the form \"so...",
+            "description": "Helper struct for parsing a string of the form \"socket:path#fragment\"",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "The socket",
+                    "name": "m_Socket",
+                    "type": "const char*"
+                },
+                {
+                    "doc": "The socket length",
+                    "name": "m_SocketSize",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "The path",
+                    "name": "m_Path",
+                    "type": "const char*"
+                },
+                {
+                    "doc": "The path length",
+                    "name": "m_PathSize",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "The fragment",
+                    "name": "m_Fragment",
+                    "type": "const char*"
+                },
+                {
+                    "doc": "The fragment length",
+                    "name": "m_FragmentSize",
+                    "type": "uint32_t"
+                }
+            ],
+            "name": "dmMessage::StringURL",
+            "notes": [
+                "The sizes do not include the null character. There is no null character since the dmMessage::ParseURL is non destructive."
+            ],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
         },
         {
-          "name": "RESULT_SOCKET_NOT_FOUND",
-          "doc": "= -2",
-          "type": ""
+            "brief": "URL specifying a sender/receiver of messages",
+            "description": "URL specifying a sender/receiver of messages",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "dmMessage::URL",
+            "notes": [
+                "Currently has a hard limit of 32 bytes",
+                "This struct is a part of the save file APi (see script_table.cpp)"
+            ],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
-          "name": "RESULT_SOCKET_OUT_OF_RESOURCES",
-          "doc": "= -3",
-          "type": ""
+            "brief": "A callback for messages that needs cleanup after b...",
+            "description": "A callback for messages that needs cleanup after being dispatched. E.g. for freeing resources/memory.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "dmMMessage::MessageDestroyCallback",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
         },
         {
-          "name": "RESULT_INVALID_SOCKET_NAME",
-          "doc": "= -4",
-          "type": ""
+            "brief": "Get the message fragment",
+            "description": "Get the message fragment",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "GetFragment",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "url",
+                    "name": "url",
+                    "types": [
+                        "dmMessage::URL"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "fragment",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
-          "name": "RESULT_MALFORMED_URL",
-          "doc": "= -5",
-          "type": ""
+            "brief": "Get the message path",
+            "description": "Get the message path",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "GetPath",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "url",
+                    "name": "url",
+                    "types": [
+                        "dmMessage::URL"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "path",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
-          "name": "RESULT_NAME_OK_SOCKET_NOT_FOUND",
-          "doc": "= -6",
-          "type": ""
+            "brief": "Get the message socket",
+            "description": "Get the message socket",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "GetSocket",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "url",
+                    "name": "url",
+                    "types": [
+                        "dmMessage::URL"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "socket",
+                    "types": [
+                        "dmMessage::HSocket"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get socket name",
+            "description": "Get socket name",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "GetSocketName",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Socket",
+                    "name": "socket",
+                    "types": [
+                        "dmMessage::HSocket"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "socket name. 0 if it was not found",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Socket handle",
+            "description": "Socket handle",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "HSocket",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Tests if a socket is valid (not deleted).",
+            "description": "Tests if a socket is valid (not deleted).",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "IsSocketValid",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Socket",
+                    "name": "socket",
+                    "types": [
+                        "dmMessage::HSocket"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the socket is valid or not",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "Message",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Message data desc used at dispatch callback. When ...",
+            "description": "Message data desc used at dispatch callback. When a message is posted,\nthe actual object is copied into the sockets internal buffer.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Sender uri",
+                    "name": "m_Sender",
+                    "type": "dmMessage::URL"
+                },
+                {
+                    "doc": "Receiver uri",
+                    "name": "m_Receiver",
+                    "type": "dmMessage::URL"
+                },
+                {
+                    "doc": "Unique id of message",
+                    "name": "m_Id",
+                    "type": "dmhash_t"
+                },
+                {
+                    "doc": "User data pointer",
+                    "name": "m_UserData1",
+                    "type": "uintptr_t"
+                },
+                {
+                    "doc": "User data pointer",
+                    "name": "m_UserData2",
+                    "type": "uintptr_t"
+                },
+                {
+                    "doc": "User specified descriptor of the message data",
+                    "name": "m_Descriptor",
+                    "type": "uintptr_t"
+                },
+                {
+                    "doc": "Size of message data in bytes",
+                    "name": "m_DataSize",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Ptr to next message (or 0 if last)",
+                    "name": "m_Next",
+                    "type": "dmMessage::Message*"
+                },
+                {
+                    "doc": "If set, will be called after each dispatch",
+                    "name": "m_DestroyCallback",
+                    "type": "dmMessage::MessageDestroyCallback"
+                },
+                {
+                    "doc": "Payload",
+                    "name": "m_Data",
+                    "type": "uint8_t*"
+                }
+            ],
+            "name": "Message",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Convert a string to a URL struct",
+            "description": "Convert a string to a URL struct",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ParseUrl",
+            "notes": [
+                "No allocation occurs, thus no cleanup is needed."
+            ],
+            "parameters": [
+                {
+                    "doc": "string of the format <span class=\"socket\">][path</span>[#fragment]",
+                    "name": "uri",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "url in string format, must not be 0x0",
+                    "name": "out",
+                    "types": [
+                        "dmMessage::StringUrl"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success\n- RESULT_MALFORMED_URL if the uri could not be parsed",
+                    "name": "-",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Resets the given URL to default values.",
+            "description": "Resets the given URL to default values.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ResetUrl",
+            "notes": [
+                "Previously the URL wasn't reset in the constructor and certain calls to ResetURL might currently be redundant"
+            ],
+            "parameters": [
+                {
+                    "doc": "URL to reset",
+                    "name": "url",
+                    "types": [
+                        "dmMessage::URL"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the message fragment",
+            "description": "Set the message fragment",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "SetFragment",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "url",
+                    "name": "url",
+                    "types": [
+                        "dmMessage::URL"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "fragment",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the message path",
+            "description": "Set the message path",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "SetPath",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "url",
+                    "name": "url",
+                    "types": [
+                        "dmMessage::URL"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "path",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the socket",
+            "description": "Set the socket",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "SetSocket",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "url",
+                    "name": "url",
+                    "types": [
+                        "dmMessage::URL"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "socket",
+                    "types": [
+                        "dmMessage::HSocket"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
         }
-      ],
-      "notes": []
-    },
-    {
-      "type": "TYPEDEF",
-      "name": "HSocket",
-      "brief": "Socket handle",
-      "description": "Socket handle",
-      "returnvalues": [],
-      "parameters": [],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "STRUCT",
-      "name": "dmMessage::URL",
-      "brief": "URL specifying a sender/receiver of messages",
-      "description": "URL specifying a sender/receiver of messages",
-      "returnvalues": [],
-      "parameters": [],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": [
-        "Currently has a hard limit of 32 bytes",
-        "This struct is a part of the save file APi (see script_table.cpp)"
-      ]
-    },
-    {
-      "type": "TYPEDEF",
-      "name": "dmMessage::StringURL",
-      "brief": "Helper struct for parsing a string of the form \"so...",
-      "description": "Helper struct for parsing a string of the form \"socket:path#fragment\"",
-      "returnvalues": [],
-      "parameters": [],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [
-        {
-          "name": "m_Socket",
-          "doc": "The socket",
-          "type": "const char*"
-        },
-        {
-          "name": "m_SocketSize",
-          "doc": "The socket length",
-          "type": "uint32_t"
-        },
-        {
-          "name": "m_Path",
-          "doc": "The path",
-          "type": "const char*"
-        },
-        {
-          "name": "m_PathSize",
-          "doc": "The path length",
-          "type": "uint32_t"
-        },
-        {
-          "name": "m_Fragment",
-          "doc": "The fragment",
-          "type": "const char*"
-        },
-        {
-          "name": "m_FragmentSize",
-          "doc": "The fragment length",
-          "type": "uint32_t"
-        }
-      ],
-      "notes": [
-        "The sizes do not include the null character. There is no null character since the dmMessage::ParseURL is non destructive."
-      ]
-    },
-    {
-      "type": "FUNCTION",
-      "name": "ResetUrl",
-      "brief": "Resets the given URL to default values.",
-      "description": "Resets the given URL to default values.",
-      "returnvalues": [],
-      "parameters": [
-        {
-          "name": "url",
-          "doc": "URL to reset",
-          "types": [
-            "dmMessage::URL"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": [
-        "Previously the URL wasn't reset in the constructor and certain calls to ResetURL might currently be redundant"
-      ]
-    },
-    {
-      "type": "FUNCTION",
-      "name": "GetSocket",
-      "brief": "Get the message socket",
-      "description": "Get the message socket",
-      "returnvalues": [
-        {
-          "name": "socket",
-          "doc": "",
-          "types": [
-            "dmMessage::HSocket"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "url",
-          "doc": "url",
-          "types": [
-            "dmMessage::URL"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "SetSocket",
-      "brief": "Set the socket",
-      "description": "Set the socket",
-      "returnvalues": [],
-      "parameters": [
-        {
-          "name": "url",
-          "doc": "url",
-          "types": [
-            "dmMessage::URL"
-          ]
-        },
-        {
-          "name": "socket",
-          "doc": "",
-          "types": [
-            "dmMessage::HSocket"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "IsSocketValid",
-      "brief": "Tests if a socket is valid (not deleted).",
-      "description": "Tests if a socket is valid (not deleted).",
-      "returnvalues": [
-        {
-          "name": "result",
-          "doc": "if the socket is valid or not",
-          "types": [
-            "bool"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "socket",
-          "doc": "Socket",
-          "types": [
-            "dmMessage::HSocket"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "GetSocketName",
-      "brief": "Get socket name",
-      "description": "Get socket name",
-      "returnvalues": [
-        {
-          "name": "name",
-          "doc": "socket name. 0 if it was not found",
-          "types": [
-            "const char*"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "socket",
-          "doc": "Socket",
-          "types": [
-            "dmMessage::HSocket"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "GetPath",
-      "brief": "Get the message path",
-      "description": "Get the message path",
-      "returnvalues": [
-        {
-          "name": "path",
-          "doc": "",
-          "types": [
-            "dmhash_t"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "url",
-          "doc": "url",
-          "types": [
-            "dmMessage::URL"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "SetPath",
-      "brief": "Set the message path",
-      "description": "Set the message path",
-      "returnvalues": [],
-      "parameters": [
-        {
-          "name": "url",
-          "doc": "url",
-          "types": [
-            "dmMessage::URL"
-          ]
-        },
-        {
-          "name": "path",
-          "doc": "",
-          "types": [
-            "dmhash_t"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "GetFragment",
-      "brief": "Get the message fragment",
-      "description": "Get the message fragment",
-      "returnvalues": [
-        {
-          "name": "fragment",
-          "doc": "",
-          "types": [
-            "dmhash_t"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "url",
-          "doc": "url",
-          "types": [
-            "dmMessage::URL"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "SetFragment",
-      "brief": "Set the message fragment",
-      "description": "Set the message fragment",
-      "returnvalues": [],
-      "parameters": [
-        {
-          "name": "url",
-          "doc": "url",
-          "types": [
-            "dmMessage::URL"
-          ]
-        },
-        {
-          "name": "fragment",
-          "doc": "",
-          "types": [
-            "dmhash_t"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "STRUCT",
-      "name": "Message",
-      "brief": "",
-      "description": "",
-      "returnvalues": [],
-      "parameters": [],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "TYPEDEF",
-      "name": "dmMMessage::MessageDestroyCallback",
-      "brief": "A callback for messages that needs cleanup after b...",
-      "description": "A callback for messages that needs cleanup after being dispatched. E.g. for freeing resources/memory.",
-      "returnvalues": [],
-      "parameters": [],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "STRUCT",
-      "name": "Message",
-      "brief": "Message data desc used at dispatch callback. When ...",
-      "description": "Message data desc used at dispatch callback. When a message is posted,\nthe actual object is copied into the sockets internal buffer.",
-      "returnvalues": [],
-      "parameters": [],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [
-        {
-          "name": "m_Sender",
-          "doc": "Sender uri",
-          "type": "dmMessage::URL"
-        },
-        {
-          "name": "m_Receiver",
-          "doc": "Receiver uri",
-          "type": "dmMessage::URL"
-        },
-        {
-          "name": "m_Id",
-          "doc": "Unique id of message",
-          "type": "dmhash_t"
-        },
-        {
-          "name": "m_UserData1",
-          "doc": "User data pointer",
-          "type": "uintptr_t"
-        },
-        {
-          "name": "m_UserData2",
-          "doc": "User data pointer",
-          "type": "uintptr_t"
-        },
-        {
-          "name": "m_Descriptor",
-          "doc": "User specified descriptor of the message data",
-          "type": "uintptr_t"
-        },
-        {
-          "name": "m_DataSize",
-          "doc": "Size of message data in bytes",
-          "type": "uint32_t"
-        },
-        {
-          "name": "m_Next",
-          "doc": "Ptr to next message (or 0 if last)",
-          "type": "dmMessage::Message*"
-        },
-        {
-          "name": "m_DestroyCallback",
-          "doc": "If set, will be called after each dispatch",
-          "type": "dmMessage::MessageDestroyCallback"
-        },
-        {
-          "name": "m_Data",
-          "doc": "Payload",
-          "type": "uint8_t*"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "ParseUrl",
-      "brief": "Convert a string to a URL struct",
-      "description": "Convert a string to a URL struct",
-      "returnvalues": [
-        {
-          "name": "-",
-          "doc": "RESULT_OK on success\n- RESULT_MALFORMED_URL if the uri could not be parsed",
-          "types": [
-            ""
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "uri",
-          "doc": "string of the format <span class=\"socket\">][path</span>[#fragment]",
-          "types": [
-            "const char*"
-          ]
-        },
-        {
-          "name": "out",
-          "doc": "url in string format, must not be 0x0",
-          "types": [
-            "dmMessage::StringUrl"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": [
-        "No allocation occurs, thus no cleanup is needed."
-      ]
+    ],
+    "info": {
+        "brief": "Message API documentation",
+        "description": "<span class=\"file\"><dmsdk/dlib/message.h></span>\nApi for sending messages",
+        "file": "",
+        "name": "Message",
+        "namespace": "dmMessage",
+        "notes": [],
+        "path": ""
     }
-  ],
-  "info": {
-    "namespace": "dmMessage",
-    "name": "Message",
-    "brief": "Message API documentation",
-    "description": "<span class=\"file\"><dmsdk/dlib/message.h></span>\nApi for sending messages",
-    "path": "",
-    "file": "",
-    "notes": []
-  }
 }

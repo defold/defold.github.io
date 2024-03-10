@@ -1,111 +1,111 @@
 {
-  "elements": [
-    {
-      "type": "ENUM",
-      "name": "ParseResult",
-      "brief": "header parse result enumeration",
-      "description": "Header parse result enumeration.",
-      "returnvalues": [],
-      "parameters": [],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [
+    "elements": [
         {
-          "name": "dmHttpClient::PARSE_RESULT_NEED_MORE_DATA",
-          "doc": "= 1",
-          "type": ""
+            "brief": "parse the headers",
+            "description": "Parse the header data and make callbacks for each header/version entry and the start of the body.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ParseHeader",
+            "notes": [
+                "This function is destructive to the input data."
+            ],
+            "parameters": [
+                {
+                    "doc": "http response headers. Must be a null terminated string.",
+                    "name": "header_str",
+                    "types": [
+                        "char*"
+                    ]
+                },
+                {
+                    "doc": "user data to the callbacks.",
+                    "name": "user_data",
+                    "types": [
+                        "const void*"
+                    ]
+                },
+                {
+                    "doc": "true if there is no more data",
+                    "name": "end_of_receive",
+                    "types": [
+                        "bool"
+                    ]
+                },
+                {
+                    "doc": "callback for the http version\n    void (<em>version_cbk)(void</em> user_data, int major, int minor, int status, const char* status_str);",
+                    "name": "version_cbk",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "callback for each header/value pair\n    void (<em>header_cbk)(void</em> user_data, const char<em> key, const char</em> value);",
+                    "name": "header_cbk",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "callback to note the start offset of the body data.\n    void (<em>body_cbk)(void</em> user_data, int offset)",
+                    "name": "body_cbk",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the parse result",
+                    "name": "result",
+                    "types": [
+                        "dmHttpClient::ParseResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
-          "name": "dmHttpClient::PARSE_RESULT_OK",
-          "doc": "= 0",
-          "type": ""
-        },
-        {
-          "name": "dmHttpClient::PARSE_RESULT_SYNTAX_ERROR",
-          "doc": "= -1",
-          "type": ""
+            "brief": "header parse result enumeration",
+            "description": "Header parse result enumeration.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "= 1",
+                    "name": "dmHttpClient::PARSE_RESULT_NEED_MORE_DATA",
+                    "type": ""
+                },
+                {
+                    "doc": "= 0",
+                    "name": "dmHttpClient::PARSE_RESULT_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "= -1",
+                    "name": "dmHttpClient::PARSE_RESULT_SYNTAX_ERROR",
+                    "type": ""
+                }
+            ],
+            "name": "ParseResult",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
         }
-      ],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "ParseHeader",
-      "brief": "parse the headers",
-      "description": "Parse the header data and make callbacks for each header/version entry and the start of the body.",
-      "returnvalues": [
-        {
-          "name": "result",
-          "doc": "the parse result",
-          "types": [
-            "dmHttpClient::ParseResult"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "header_str",
-          "doc": "http response headers. Must be a null terminated string.",
-          "types": [
-            "char*"
-          ]
-        },
-        {
-          "name": "user_data",
-          "doc": "user data to the callbacks.",
-          "types": [
-            "const void*"
-          ]
-        },
-        {
-          "name": "end_of_receive",
-          "doc": "true if there is no more data",
-          "types": [
-            "bool"
-          ]
-        },
-        {
-          "name": "version_cbk",
-          "doc": "callback for the http version\n    void (<em>version_cbk)(void</em> user_data, int major, int minor, int status, const char* status_str);",
-          "types": [
-            "function"
-          ]
-        },
-        {
-          "name": "header_cbk",
-          "doc": "callback for each header/value pair\n    void (<em>header_cbk)(void</em> user_data, const char<em> key, const char</em> value);",
-          "types": [
-            "function"
-          ]
-        },
-        {
-          "name": "body_cbk",
-          "doc": "callback to note the start offset of the body data.\n    void (<em>body_cbk)(void</em> user_data, int offset)",
-          "types": [
-            "function"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": [
-        "This function is destructive to the input data."
-      ]
+    ],
+    "info": {
+        "brief": "SDK Http Client API documentation",
+        "description": "Http client functions.",
+        "file": "dmsdk/dlib/hash.h",
+        "group": "DEFOLD SDK",
+        "name": "Http Client",
+        "namespace": "dmHttpClient",
+        "notes": [],
+        "path": "engine/dlib/src/dmsdk/dlib/hash.h"
     }
-  ],
-  "info": {
-    "namespace": "dmHttpClient",
-    "name": "Http Client",
-    "brief": "SDK Http Client API documentation",
-    "description": "Http client functions.",
-    "path": "engine/dlib/src/dmsdk/dlib/hash.h",
-    "file": "dmsdk/dlib/hash.h",
-    "notes": [],
-    "group": "DEFOLD SDK"
-  }
 }

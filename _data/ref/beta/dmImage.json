@@ -1,79 +1,79 @@
 {
-  "elements": [
-    {
-      "type": "ENUM",
-      "name": "Result",
-      "brief": "result enumeration",
-      "description": "result enumeration",
-      "returnvalues": [],
-      "parameters": [],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [
+    "elements": [
         {
-          "name": "dmImage::RESULT_OK",
-          "doc": "= 0",
-          "type": ""
+            "brief": "result enumeration",
+            "description": "result enumeration",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "= 0",
+                    "name": "dmImage::RESULT_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "= -1",
+                    "name": "dmImage::RESULT_UNSUPPORTED_FORMAT",
+                    "type": ""
+                },
+                {
+                    "doc": "= -2",
+                    "name": "dmImage::RESULT_IMAGE_ERROR",
+                    "type": ""
+                }
+            ],
+            "name": "Result",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
         },
         {
-          "name": "dmImage::RESULT_UNSUPPORTED_FORMAT",
-          "doc": "= -1",
-          "type": ""
-        },
-        {
-          "name": "dmImage::RESULT_IMAGE_ERROR",
-          "doc": "= -2",
-          "type": ""
+            "brief": "type enumeration",
+            "description": "type enumeration",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "= 0",
+                    "name": "dmImage::TYPE_RGB",
+                    "type": ""
+                },
+                {
+                    "doc": "= 1",
+                    "name": "dmImage::TYPE_RGBA",
+                    "type": ""
+                },
+                {
+                    "doc": "= 2",
+                    "name": "dmImage::TYPE_LUMINANCE",
+                    "type": ""
+                },
+                {
+                    "doc": "= 3",
+                    "name": "dmImage::TYPE_LUMINANCE_ALPHA",
+                    "type": ""
+                }
+            ],
+            "name": "Type",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
         }
-      ],
-      "notes": []
-    },
-    {
-      "type": "ENUM",
-      "name": "Type",
-      "brief": "type enumeration",
-      "description": "type enumeration",
-      "returnvalues": [],
-      "parameters": [],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [
-        {
-          "name": "dmImage::TYPE_RGB",
-          "doc": "= 0",
-          "type": ""
-        },
-        {
-          "name": "dmImage::TYPE_RGBA",
-          "doc": "= 1",
-          "type": ""
-        },
-        {
-          "name": "dmImage::TYPE_LUMINANCE",
-          "doc": "= 2",
-          "type": ""
-        },
-        {
-          "name": "dmImage::TYPE_LUMINANCE_ALPHA",
-          "doc": "= 3",
-          "type": ""
-        }
-      ],
-      "notes": []
+    ],
+    "info": {
+        "brief": "SDK Image API documentation",
+        "description": "Image API functions.",
+        "file": "dmsdk/dlib/image.h",
+        "group": "DEFOLD SDK",
+        "name": "Image",
+        "namespace": "dmImage",
+        "notes": [],
+        "path": "engine/dlib/src/dmsdk/dlib/image.h"
     }
-  ],
-  "info": {
-    "namespace": "dmImage",
-    "name": "Image",
-    "brief": "SDK Image API documentation",
-    "description": "Image API functions.",
-    "path": "engine/dlib/src/dmsdk/dlib/image.h",
-    "file": "dmsdk/dlib/image.h",
-    "notes": [],
-    "group": "DEFOLD SDK"
-  }
 }
