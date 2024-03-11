@@ -1569,6 +1569,84 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "convert position to game object's coordinate space",
+            "description": "<span class=\"icon-attention\"></span> The function uses world transformation calculated at the end of previous frame.",
+            "error": "",
+            "examples": "Convert position of \"test\" game object into coordinate space of \"child\" object.\n<div class=\"codehilite\"><pre><span></span><code>  <span class=\"kd\">local</span> <span class=\"n\">test_pos</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_position</span><span class=\"p\">(</span><span class=\"s2\">&quot;/test&quot;</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">child_pos</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_position</span><span class=\"p\">(</span><span class=\"s2\">&quot;/child&quot;</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">new_position</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">world_to_local_position</span><span class=\"p\">(</span><span class=\"n\">test_pos</span><span class=\"p\">,</span> <span class=\"s2\">&quot;/child&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "members": [],
+            "name": "go.world_to_local_position",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "position which need to be converted",
+                    "name": "position",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "url of the game object which coordinate system convert to",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "converted position",
+                    "name": "converted_postion",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "convert transformation matrix to game object's coordinate space",
+            "description": "<span class=\"icon-attention\"></span> The function uses world transformation calculated at the end of previous frame.",
+            "error": "",
+            "examples": "Convert transformation of \"test\" game object into coordinate space of \"child\" object.\n<div class=\"codehilite\"><pre><span></span><code>   <span class=\"kd\">local</span> <span class=\"n\">test_transform</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_transform</span><span class=\"p\">(</span><span class=\"s2\">&quot;/test&quot;</span><span class=\"p\">)</span>\n   <span class=\"kd\">local</span> <span class=\"n\">child_transform</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_transform</span><span class=\"p\">(</span><span class=\"s2\">&quot;/child&quot;</span><span class=\"p\">)</span>\n   <span class=\"kd\">local</span> <span class=\"n\">result_transform</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">world_to_local_transform</span><span class=\"p\">(</span><span class=\"n\">test_transform</span><span class=\"p\">,</span> <span class=\"s2\">&quot;/child&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "members": [],
+            "name": "go.world_to_local_transform",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "transformation which need to be converted",
+                    "name": "transformation",
+                    "types": [
+                        "matrix4"
+                    ]
+                },
+                {
+                    "doc": "url of the game object which coordinate system convert to",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "converted transformation",
+                    "name": "converted_transform",
+                    "types": [
+                        "matrix4"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "called when a script component is initialized",
             "description": "This is a callback-function, which is called by the engine when a script component is initialized. It can be used\nto set the initial state of the script.",
             "error": "",

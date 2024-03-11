@@ -281,6 +281,20 @@
             "type": "VARIABLE"
         },
         {
+            "brief": "screen blending",
+            "description": "screen blending",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "gui.BLEND_SCREEN",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
             "brief": "cancels an ongoing animation",
             "description": "If an animation of the specified node is currently running (started by <code>gui.animate</code>), it will immediately be canceled.",
             "error": "",
@@ -1111,7 +1125,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "blend mode\n<ul>\n<li><code>gui.BLEND_ALPHA</code></li>\n<li><code>gui.BLEND_ADD</code></li>\n<li><code>gui.BLEND_ADD_ALPHA</code></li>\n<li><code>gui.BLEND_MULT</code></li>\n</ul>",
+                    "doc": "blend mode\n<ul>\n<li><code>gui.BLEND_ALPHA</code></li>\n<li><code>gui.BLEND_ADD</code></li>\n<li><code>gui.BLEND_ADD_ALPHA</code></li>\n<li><code>gui.BLEND_MULT</code></li>\n<li><code>gui.BLEND_SCREEN</code></li>\n</ul>",
                     "name": "blend_mode",
                     "types": [
                         "constant"
@@ -2705,7 +2719,7 @@
             "parameters": [
                 {
                     "doc": "texture id",
-                    "name": "texture",
+                    "name": "texture_id",
                     "types": [
                         "string",
                         "hash"
@@ -3467,7 +3481,7 @@
                     ]
                 },
                 {
-                    "doc": "blend mode to set\n<ul>\n<li><code>gui.BLEND_ALPHA</code></li>\n<li><code>gui.BLEND_ADD</code></li>\n<li><code>gui.BLEND_ADD_ALPHA</code></li>\n<li><code>gui.BLEND_MULT</code></li>\n</ul>",
+                    "doc": "blend mode to set\n<ul>\n<li><code>gui.BLEND_ALPHA</code></li>\n<li><code>gui.BLEND_ADD</code></li>\n<li><code>gui.BLEND_ADD_ALPHA</code></li>\n<li><code>gui.BLEND_MULT</code></li>\n<li><code>gui.BLEND_SCREEN</code></li>\n</ul>",
                     "name": "blend_mode",
                     "types": [
                         "constant"

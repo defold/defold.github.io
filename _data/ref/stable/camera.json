@@ -29,6 +29,54 @@
             "type": "PROPERTY"
         },
         {
+            "brief": "makes camera active",
+            "description": "makes camera active",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">acquire_focus</span><span class=\"p\">(</span><span class=\"s2\">&quot;/observer#main_camera&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "members": [],
+            "name": "camera.acquire_focus",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "url of camera component",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "deactivate camera",
+            "description": "deactivate camera",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">release_focus</span><span class=\"p\">(</span><span class=\"s2\">&quot;/observer#main_camera&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "members": [],
+            "name": "camera.release_focus",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "url of camera component",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "<span class=\"type\">float</span> camera far_z",
             "description": "Camera frustum far plane.\nThe type of the property is float.",
             "error": "",
