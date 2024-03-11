@@ -1570,7 +1570,7 @@
         },
         {
             "brief": "convert position to game object's coordinate space",
-            "description": "convert position to game object's coordinate space",
+            "description": "<span class=\"icon-attention\"></span> The function uses world transformation calculated at the end of previous frame.",
             "error": "",
             "examples": "Convert position of \"test\" game object into coordinate space of \"child\" object.\n<div class=\"codehilite\"><pre><span></span><code>  <span class=\"kd\">local</span> <span class=\"n\">test_pos</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_position</span><span class=\"p\">(</span><span class=\"s2\">&quot;/test&quot;</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">child_pos</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_position</span><span class=\"p\">(</span><span class=\"s2\">&quot;/child&quot;</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">new_position</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">world_to_local_position</span><span class=\"p\">(</span><span class=\"n\">test_pos</span><span class=\"p\">,</span> <span class=\"s2\">&quot;/child&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
             "members": [],
@@ -1609,7 +1609,7 @@
         },
         {
             "brief": "convert transformation matrix to game object's coordinate space",
-            "description": "convert transformation matrix to game object's coordinate space",
+            "description": "<span class=\"icon-attention\"></span> The function uses world transformation calculated at the end of previous frame.",
             "error": "",
             "examples": "Convert transformation of \"test\" game object into coordinate space of \"child\" object.\n<div class=\"codehilite\"><pre><span></span><code>   <span class=\"kd\">local</span> <span class=\"n\">test_transform</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_transform</span><span class=\"p\">(</span><span class=\"s2\">&quot;/test&quot;</span><span class=\"p\">)</span>\n   <span class=\"kd\">local</span> <span class=\"n\">child_transform</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_transform</span><span class=\"p\">(</span><span class=\"s2\">&quot;/child&quot;</span><span class=\"p\">)</span>\n   <span class=\"kd\">local</span> <span class=\"n\">result_transform</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">world_to_local_transform</span><span class=\"p\">(</span><span class=\"n\">test_transform</span><span class=\"p\">,</span> <span class=\"s2\">&quot;/child&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
             "members": [],
