@@ -602,14 +602,11 @@ def process_examples(download = False):
         print("...copying scripts")
         includes_dir = "_includes/examples"
         rmmkdir(includes_dir)
-        for filename in find_files(unzipped_examples_dir, "*.script"):
-            script_file = os.path.join(includes_dir, filename.replace(unzipped_examples_dir, "")[1:]).replace(".script", "_script.md")
-            makedirs(os.path.dirname(script_file))
-            shutil.copyfile(filename, script_file)
-        for filename in find_files(unzipped_examples_dir, "*.gui_script"):
-            script_file = os.path.join(includes_dir, filename.replace(unzipped_examples_dir, "")[1:]).replace(".gui_script", "_gui_script.md")
-            makedirs(os.path.dirname(script_file))
-            shutil.copyfile(filename, script_file)
+        for ext in ["script", "gui_script", "vp", "fp"]:
+            for source in find_files(unzipped_examples_dir, "*." + ext):
+                target = os.path.join(includes_dir, source.replace(unzipped_examples_dir, "")[1:]).replace("." + ext, "_" + ext + ".md")
+                makedirs(os.path.dirname(target))
+                shutil.copyfile(source, target)
 
         print("...generating index")
         index_file = os.path.join("_data", "examplesindex.json")
