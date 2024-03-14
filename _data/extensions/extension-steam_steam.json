@@ -74,6 +74,22 @@
             "type": "VARIABLE"
         },
         {
+            "description": "Leaderboard will keep user&#x27;s best score",
+            "examples": "",
+            "name": "ELeaderboardUploadScoreMethodKeepBest",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Leaderboard will always replace score with specified",
+            "examples": "",
+            "name": "ELeaderboardUploadScoreMethodForceUpdate",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
             "description": "Passed as parameter to the store",
             "examples": "",
             "name": "EOverlayToStoreFlag_None",
@@ -881,6 +897,41 @@
                 {
                     "doc": "The requested leaderboard entry.",
                     "name": "Table"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Uploads a user score to a specified leaderboard. This call is asynchronous, with the result returned in a listener callback with event set to LeaderboardScoresUploaded_t.",
+            "examples": "",
+            "name": "steam.user_stats_upload_leaderboard_score",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "leaderboard",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "eLeaderboardUploadScoreMethod",
+                    "types": [
+                        "ELeaderboardUploadScoreMethod"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "nScore",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "string"
                 }
             ],
             "type": "FUNCTION"
