@@ -74,6 +74,22 @@
             "type": "VARIABLE"
         },
         {
+            "description": "Top-score is lowest number",
+            "examples": "",
+            "name": "ELeaderboardSortMethodAscending",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Top-score is highest number",
+            "examples": "",
+            "name": "ELeaderboardSortMethodNone",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
             "description": "Leaderboard will keep user&#x27;s best score",
             "examples": "",
             "name": "ELeaderboardUploadScoreMethodKeepBest",
@@ -85,6 +101,30 @@
             "description": "Leaderboard will always replace score with specified",
             "examples": "",
             "name": "ELeaderboardUploadScoreMethodForceUpdate",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Simple numerical score",
+            "examples": "",
+            "name": "ELeaderboardDisplayTypeNumeric",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The score represents a time, in seconds",
+            "examples": "",
+            "name": "ELeaderboardDisplayTypeTimeSeconds",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The score represents a time, in milliseconds",
+            "examples": "",
+            "name": "ELeaderboardDisplayTypeTimeMilliSeconds",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
@@ -828,6 +868,41 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Gets a leaderboard by name, it will create it if it&#x27;s not yet created. This call is asynchronous, with the result returned in a listener callback with event set to LeaderboardFindResult_t.",
+            "examples": "",
+            "name": "steam.user_stats_find_or_create_leaderboard",
+            "parameters": [
+                {
+                    "doc": "The name of the leaderboard to find or create.",
+                    "name": "leaderboard_name",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The sort order of the new leaderboard if it&#x27;s created.",
+                    "name": "eLeaderboardSortMethod",
+                    "types": [
+                        "ELeaderboardSortMethod"
+                    ]
+                },
+                {
+                    "doc": "The display type (used by the Steam Community web site) of the new leaderboard if it&#x27;s created.",
+                    "name": "eLeaderboardDisplayType",
+                    "types": [
+                        "ELeaderboardDisplayType"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Asks the Steam back-end for a set of rows in the leaderboard. This call is asynchronous, with the result returned in a listener callback with event set to LeaderboardScoresDownloaded_t. LeaderboardScoresDownloaded_t will contain a handle to pull the results from GetDownloadedLeaderboardEntries(). You can ask for more entries than exist, and it will return as many as do exist. * k_ELeaderboardDataRequestGlobal requests rows in the leaderboard from the full table, with nRangeStart &amp; nRangeEnd in the range [1, TotalEntries] * k_ELeaderboardDataRequestGlobalAroundUser requests rows around the current user, nRangeStart being negate e.g. DownloadLeaderboardEntries( hLeaderboard, k_ELeaderboardDataRequestGlobalAroundUser, -3, 3 ) will return 7 rows, 3 before the user, 3 after * k_ELeaderboardDataRequestFriends requests all the rows for friends of the current user",
             "examples": "",
             "name": "steam.user_stats_download_leaderboard_entries",
@@ -875,8 +950,8 @@
             "name": "steam.user_stats_get_downloaded_leaderboard_entry",
             "parameters": [
                 {
-                    "doc": "Leaderboard handle",
-                    "name": "leaderboard",
+                    "doc": "Leaderboard entries handle",
+                    "name": "hSteamLeaderboardEntries",
                     "types": [
                         "string"
                     ]
