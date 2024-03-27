@@ -243,6 +243,8 @@ xcrun simctl install booted your.app
 open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
 ```
 
+{% include shared/en/apple-privacy-manifest.md %}
+
 
 ## Export Compliance information
 
