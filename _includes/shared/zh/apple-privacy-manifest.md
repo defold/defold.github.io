@@ -1,8 +1,8 @@
 
-## Apple Privacy Manifest
+## Apple 隐私清单
 
-The privacy manifest is a property list that records the types of data collected by your app or third-party SDK, and the required reasons APIs your app or third-party SDK uses. For each type of data your app or third-party SDK collects and category of required reasons API it uses, the app or third-party SDK needs to record the reasons in its bundled privacy manifest file.
+隐私清单是一个属性列表, 用于记录您的应用或第三方 SDK 收集的数据类型, 以及使用 API 的理由. 对于您的应用或第三方 SDK 收集的每种类型的数据以及使用 API 的理由, 需要记录在其捆绑的隐私清单文件中.
 
-Defold provides a default privacy manifest through the Privacy Manifest field in the game.project file. When creating an application bundle the privacy manifest will be merged with any privacy manifests in the project dependencies and included in the application bundle.
+Defold 在 game.project 文件里的 Privacy Manifest 项提供了默认的清单文件. 创建应用程序包时, 隐私清单将与项目依赖项中的各个隐私清单合并, 包含在应用程序包中.
 
-Read more about privacy manifests in the [official documentation from Apple](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files?language=objc).
+关于隐私清单更多详情请参考 [Apple 的官方文档](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files?language=objc).

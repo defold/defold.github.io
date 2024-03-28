@@ -123,3 +123,5 @@ $ xcrun stapler staple "Game.app"
 这在 [Apple 开发者文档](https://developer.apple.com/macos/submit/) 里已经详细说明. 注意提交前要确保已加入权限和签名.
 
 注意: 发布到 Mac App Store 不需要任何认证.
+
+{% include shared/zh/apple-privacy-manifest.md %}

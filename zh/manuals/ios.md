@@ -244,6 +244,8 @@ xcrun simctl install booted your.app
 open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
 ```
 
+{% include shared/zh/apple-privacy-manifest.md %}
+
 
 ## 出口合规信息
 
