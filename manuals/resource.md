@@ -22,7 +22,7 @@ When you build a game in Defold, you statically declare the resource tree. Every
 ![Resource tree](../images/resource/resource_tree.png)
 
 <div class='sidenote' markdown='1'>
-Defold also has a concept of [bundle resources](/manuals/project-settings/#bundle-resources). Bundle resources are included with the application bundle, but are not part of the resource tree. The bundle resources can be anything from platform specific support files to external files [loaded from the file system](/manuals/file-access/#how-to-access-files-bundled-with-the-application) and used by your game. One such examples is FMOD sound banks.
+Defold also has a concept of [bundle resources](/manuals/project-settings/#bundle-resources). Bundle resources are included with the application bundle, but are not part of the resource tree. The bundle resources can be anything from platform specific support files to external files [loaded from the file system](/manuals/file-access/#how-to-access-files-bundled-with-the-application) and used by your game (for instance FMOD sound banks).
 </div>
 
 When the game is *bundled*, only what is in the resource tree will be included. Anything that is not referenced in the tree is left out. There is no need to manually select what to include or exclude from the bundle.
