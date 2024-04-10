@@ -96,6 +96,21 @@ For HTML5 games, the process is a bit different. Facebook needs access to your g
 
 The game now works through the Facebook URL provided as *Canvas Page*.
 
+## Limited Login (iOS)
+
+Starting with Facebook SDK 17.0 (Defold Facebook Extension 8.0.0+), new APIs has been added for the use of Limited Login.
+
+* `facebook.login_with_tracking_preference()` - Login to Facebook and request a set of permissions. Allows developers to signal that a login is limited in terms of tracking users.
+* `facebook.get_current_authentication_token()` -  This function returns the currently stored authentication token after a previous successful login.
+* `facebook.get_current_profile()` - After your application receives the logged-in user’s authentication token, you can use this function to read information that user has granted to your application.
+* `facebook.LOGIN_TRACKING_ENABLED` - available only if in App Tracking Transparency request user enabled tracking.
+* `facebook.LOGIN_TRACKING_LIMITED` - should beused if in App Tracking Transparency request user disabled tracking.
+
+If the user has disabled tracking but you still attempt to log in using `facebook.login_with_permissions()` or its equivalent `facebook.login_with_tracking_preference()` with `facebook.LOGIN_TRACKING_ENABLED`, you will receive a Facebook Access token.
+
+More information about the changes is available in the official Facebook documentation:
+* [Changes made to Facebook Login SDK for iOS](https://developers.facebook.com/blog/post/2024/03/28/changes-made-to-fb-login-sdk/)
+* [Limited Login for iOS](https://developers.facebook.com/docs/facebook-login/limited-login/ios)
 
 ## Testing the setup
 
@@ -199,7 +214,7 @@ function init(self)
 end
 ```
 
-Available predefined events and parameters can be seen in the [Facebook extension API reference](https://defold.github.io/extension-facebook/). These should correlate to the [Standard Events](https://developers.facebook.com/docs/analytics/send_data/events#standard) and [Parameters](https://developers.facebook.com/docs/analytics/send_data/events#parameter) from the Facebook developer documentation.
+Available predefined events and parameters can be seen in the [Facebook extension API reference](https://defold.com/extension-facebook/facebook_api/). These should correlate to the [Standard Events](https://developers.facebook.com/docs/analytics/send_data/events#standard) and [Parameters](https://developers.facebook.com/docs/analytics/send_data/events#parameter) from the Facebook developer documentation.
 
 The Facebook SDK used by Defold will also automatically generate several events, such as app install and app launch. Refer to the [Auto-logged events](https://developers.facebook.com/docs/analytics/send_data/events#autologged) in the Facebook developer documentation.
 

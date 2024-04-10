@@ -47,11 +47,98 @@
             "type": "FUNCTION"
         },
         {
+            "description": "iOS ONLY. Login to Facebook and request a set of permissions. Allows developers to signal that a login is limited in terms of tracking users.\nThe user is prompted to authorize the application using the login dialog of the specific platform. Even if the user is already logged in to Facebook this function can still be used to request additional publish permissions.\nA comprehensive list of permissions can be found in the [Facebook permissions](https://developers.facebook.com/docs/facebook-login/permissions) documentation, as well as in their [guide to best practices for login management](https://developers.facebook.com/docs/facebook-login/best-practices). For Limited Login the list of permissions can be found in the [Permissions in Limited Login](https://developers.facebook.com/docs/facebook-login/limited-login/permissions) documentation.",
+            "examples": "<p>Log in to Facebook with a set of publish permissions</p>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">permissions</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s2\">&quot;publish_actions&quot;</span><span class=\"p\">}</span>\n<span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">login_with_permissions</span><span class=\"p\">(</span><span class=\"n\">permissions</span><span class=\"p\">,</span> <span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">AUDIENCE_FRIENDS</span><span class=\"p\">,</span> <span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">STATE_OPEN</span> <span class=\"ow\">and</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">error</span> <span class=\"o\">==</span> <span class=\"kc\">nil</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Successfully logged into Facebook&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">permissions</span><span class=\"p\">())</span>\n    <span class=\"kr\">else</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Failed to get permissions (&quot;</span> <span class=\"o\">..</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">..</span> <span class=\"s2\">&quot;)&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span><span class=\"p\">)</span>\n</code></pre></div>\n\n<p>Log in to Facebook with a set of read permissions</p>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">permissions</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s2\">&quot;public_profile&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;email&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;user_friends&quot;</span><span class=\"p\">}</span>\n<span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">login_with_tracking_preference</span><span class=\"p\">(</span><span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">LOGIN_TRACKING_LIMITED</span><span class=\"p\">,</span> <span class=\"n\">permissions</span><span class=\"p\">,</span> <span class=\"s2\">&quot;customcryptononce&quot;</span><span class=\"p\">,</span> <span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">STATE_OPEN</span> <span class=\"ow\">and</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">error</span> <span class=\"o\">==</span> <span class=\"kc\">nil</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Successfully logged into Facebook&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">permissions</span><span class=\"p\">())</span>\n    <span class=\"kr\">else</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Failed to get permissions (&quot;</span> <span class=\"o\">..</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">..</span> <span class=\"s2\">&quot;)&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "name": "facebook.login_with_tracking_preference",
+            "parameters": [
+                {
+                    "doc": "The tracking type for the login. Can be any of\n- `facebook.LOGIN_TRACKING_LIMITED`\n- `facebook.LOGIN_TRACKING_ENABLED`",
+                    "name": "login_tracking",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "table with the requested publish permission strings.",
+                    "name": "permissions",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Nonce that the configuration was created with. A unique nonce will be used if none is provided to the factory method.",
+                    "name": "crypto_nonce",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Callback function that is executed when the permission request dialog is closed.",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The context of the calling script",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "A table that contains the response",
+                            "name": "data",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Logout from Facebook",
             "examples": "",
             "name": "facebook.logout",
             "parameters": [],
             "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "iOS ONLY. The audience that should be able to see the publications. Should be called before `facebook.login_with_tracking_preference()`; Can be any of\n- `facebook.AUDIENCE_NONE`\n- `facebook.AUDIENCE_ONLYME`\n- `facebook.AUDIENCE_FRIENDS`\n- `facebook.AUDIENCE_EVERYONE`",
+            "examples": "",
+            "name": "facebook.set_default_audience",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "iOS ONLY. Get the current AuthenticationToken.\nThis function returns the currently stored authentication token after a previous successful login. If it returns nil no access token exists and you need to perform a login to get the wanted permissions.",
+            "examples": "",
+            "name": "facebook.get_current_authentication_token",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "the authentication token or nil if the user is not logged in",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "iOS ONLY. Get the users [FBSDKProfile.currentProfile](https://developers.facebook.com/docs/facebook-login/limited-login/ios/). [Reading From Profile Helper Class](https://developers.facebook.com/docs/facebook-login/limited-login/permissions/profile-helper)",
+            "examples": "",
+            "name": "facebook.get_current_profile",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "After your application receives the logged-in user\u2019s authentication token, you can use this function to read information that user has granted to your application.",
+                    "name": "table"
+                }
+            ],
             "type": "FUNCTION"
         },
         {
@@ -587,6 +674,22 @@
             "description": "Publish permission to reach everyone",
             "examples": "",
             "name": "AUDIENCE_EVERYONE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Login tracking Limited",
+            "examples": "",
+            "name": "LOGIN_TRACKING_LIMITED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Login tracking enabled",
+            "examples": "",
+            "name": "LOGIN_TRACKING_ENABLED",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
