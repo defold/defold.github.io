@@ -106,7 +106,7 @@ Starting with Facebook SDK 17.0 (Defold Facebook Extension 8.0.0+), new APIs has
 * `facebook.LOGIN_TRACKING_ENABLED` - available only if in App Tracking Transparency request user enabled tracking.
 * `facebook.LOGIN_TRACKING_LIMITED` - should beused if in App Tracking Transparency request user disabled tracking.
 
-If the user has disabled tracking but you still attempt to log in using `facebook.login_with_permissions()` or its equivalent `facebook.login_with_tracking_preference()` with `facebook.LOGIN_TRACKING_ENABLED`, you will receive a Facebook Access token.
+If the user has disabled tracking but you still attempt to log in using `facebook.login_with_permissions()` or its equivalent `facebook.login_with_tracking_preference()` with `facebook.LOGIN_TRACKING_ENABLED`, you will receive a Facebook Access token, but it will not be valid.
 
 More information about the changes is available in the official Facebook documentation:
 * [Changes made to Facebook Login SDK for iOS](https://developers.facebook.com/blog/post/2024/03/28/changes-made-to-fb-login-sdk/)
