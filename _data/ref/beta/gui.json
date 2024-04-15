@@ -1287,6 +1287,36 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "gets the node rotation",
+            "description": "Returns the rotation of the supplied node.\nThe rotation is expressed in degree Euler angles.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "gui.get_euler",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "node to get the rotation from",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "node rotation",
+                    "name": "rotation",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "gets the angle for the filled pie sector",
             "description": "Returns the sector angle of a pie node.",
             "error": "",
@@ -1979,7 +2009,7 @@
         },
         {
             "brief": "gets the node rotation",
-            "description": "Returns the rotation of the supplied node.\nThe rotation is expressed in degree Euler angles.",
+            "description": "Returns the rotation of the supplied node.\nThe rotation is expressed as a quaternion",
             "error": "",
             "examples": "",
             "members": [],
@@ -2000,7 +2030,7 @@
                     "doc": "node rotation",
                     "name": "rotation",
                     "types": [
-                        "vector3"
+                        "quat"
                     ]
                 }
             ],
@@ -3726,6 +3756,36 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "sets the node rotation",
+            "description": "Sets the rotation of the supplied node.\nThe rotation is expressed in degree Euler angles.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "gui.set_euler",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "node to set the rotation for",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "new rotation",
+                    "name": "rotation",
+                    "types": [
+                        "vector3",
+                        "vector4"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "sets the angle for the filled pie sector",
             "description": "Set the sector angle of a pie node.",
             "error": "",
@@ -4285,7 +4345,7 @@
         },
         {
             "brief": "sets the node rotation",
-            "description": "Sets the rotation of the supplied node.\nThe rotation is expressed in degree Euler angles.",
+            "description": "Sets the rotation of the supplied node.\nThe rotation is expressed as a quaternion",
             "error": "",
             "examples": "",
             "members": [],
@@ -4303,7 +4363,7 @@
                     "doc": "new rotation",
                     "name": "rotation",
                     "types": [
-                        "vector3",
+                        "quat",
                         "vector4"
                     ]
                 }
