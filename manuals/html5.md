@@ -188,7 +188,11 @@ DEFOLD_ENGINE_ARGUMENTS
 
 ## Extra parameters
 
-If you create your custom template, you can redefine set of parameters for the engine loader. To achieve that you need to add `<script>` section and redefine values inside `CUSTOM_PARAMETERS`. For example:
+If you create your custom template, you can redefine set of parameters for the engine loader. To achieve that you need to add `<script>` section and redefine values inside `CUSTOM_PARAMETERS`. 
+<div class='important' markdown='1'>
+Your custom `<script>` should be placed after `<script>` section with reference to dmloader.js but before call `EngineLoader.load` function.
+</div>
+For example:
 
 ```
     <script id='custom_setup' type='text/javascript'>
@@ -225,7 +229,9 @@ If you create your custom template, you can redefine set of parameters for the e
 
 'can_not_download_file_callback':
     Function that is called if you can't download file after 'retry_count' attempts.
-*/
+
+'resize_window_callback':
+    Function that is called when resize/orientationchanges/focus events happened
 ```
 
 ## File operations in HTML5
