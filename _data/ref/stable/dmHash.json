@@ -1,6 +1,35 @@
 {
     "elements": [
         {
+            "brief": "Allocate stack memory context for safely reversing...",
+            "description": "Allocate stack memory context for safely reversing hash values into strings",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "DM_HASH_REVERSE_MEM",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The name of the dmAllocator struct",
+                    "name": "name",
+                    "types": [
+                        "symbol"
+                    ]
+                },
+                {
+                    "doc": "The max size of the stack allocated context",
+                    "name": "size",
+                    "types": [
+                        "size_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "dmhash_t type definition",
             "description": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">typedef</span><span class=\"w\"> </span><span class=\"kt\">uint64_t</span><span class=\"w\"> </span><span class=\"n\">dmhash_t</span><span class=\"w\"></span>\n</code></pre></div>",
             "error": "",
@@ -395,6 +424,46 @@
         },
         {
             "brief": "get string value from hash",
+            "description": "Returns the original string used to produce a hash.",
+            "error": "",
+            "examples": "Get the string representaiton of a hash value\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_HASH_REVERSE_MEM</span><span class=\"p\">(</span><span class=\"n\">hash_ctx</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">128</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"k\">const</span><span class=\"w\"> </span><span class=\"kt\">char</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">reverse</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"k\">const</span><span class=\"w\"> </span><span class=\"kt\">char</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"n\">dmHashReverseSafe32Alloc</span><span class=\"p\">(</span><span class=\"o\">&amp;</span><span class=\"n\">hash_ctx</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">hash</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "members": [],
+            "name": "dmHashReverseSafe32Alloc",
+            "notes": [
+                "This function is thread safe",
+                "The pointer is valid during the scope of the allocator"
+            ],
+            "parameters": [
+                {
+                    "doc": "The reverse hash allocator",
+                    "name": "allocator",
+                    "types": [
+                        "dmAllocator*"
+                    ]
+                },
+                {
+                    "doc": "hash value",
+                    "name": "hash",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Original string value or \"<unknown:value>\" if it wasn't found,\n                           or \"<unknown>\" if the allocator failed to allocate more memory.\n                           Always returns a null terminated string.",
+                    "name": "",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get string value from hash",
             "description": "Returns the original string used to produce a hash.\nAlways returns a null terminated string. Returns \"<unknown>\" if the original string wasn't found.",
             "error": "",
             "examples": "",
@@ -455,6 +524,46 @@
             "returnvalues": [
                 {
                     "doc": "pointer to buffer. 0 if no reverse exists or if reverse lookup is disabled",
+                    "name": "",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get string value from hash",
+            "description": "Returns the original string used to produce a hash.",
+            "error": "",
+            "examples": "Get the string representaiton of a hash value\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_HASH_REVERSE_MEM</span><span class=\"p\">(</span><span class=\"n\">hash_ctx</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">128</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"k\">const</span><span class=\"w\"> </span><span class=\"kt\">char</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">reverse</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"k\">const</span><span class=\"w\"> </span><span class=\"kt\">char</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"n\">dmHashReverseSafe64Alloc</span><span class=\"p\">(</span><span class=\"o\">&amp;</span><span class=\"n\">hash_ctx</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">hash</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "members": [],
+            "name": "dmHashReverseSafe64Alloc",
+            "notes": [
+                "This function is thread safe",
+                "The pointer is valid during the scope of the allocator"
+            ],
+            "parameters": [
+                {
+                    "doc": "The reverse hash allocator",
+                    "name": "allocator",
+                    "types": [
+                        "dmAllocator*"
+                    ]
+                },
+                {
+                    "doc": "hash value",
+                    "name": "hash",
+                    "types": [
+                        "uint64_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Original string value or \"<unknown:value>\" if it wasn't found,\n                           or \"<unknown>\" if the allocator failed to allocate more memory.\n                           Always returns a null terminated string.",
                     "name": "",
                     "types": [
                         "const char*"

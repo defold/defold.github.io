@@ -165,7 +165,7 @@
                     ]
                 },
                 {
-                    "doc": "property to animate\n<ul>\n<li><code>\"position\"</code></li>\n<li><code>\"rotation\"</code></li>\n<li><code>\"scale\"</code></li>\n<li><code>\"color\"</code></li>\n<li><code>\"outline\"</code></li>\n<li><code>\"shadow\"</code></li>\n<li><code>\"size\"</code></li>\n<li><code>\"fill_angle\"</code> (pie)</li>\n<li><code>\"inner_radius\"</code> (pie)</li>\n<li><code>\"slice9\"</code> (slice9)</li>\n</ul>\nThe following property constants are defined equaling the corresponding property string names.\n<ul>\n<li><code>gui.PROP_POSITION</code></li>\n<li><code>gui.PROP_ROTATION</code></li>\n<li><code>gui.PROP_SCALE</code></li>\n<li><code>gui.PROP_COLOR</code></li>\n<li><code>gui.PROP_OUTLINE</code></li>\n<li><code>gui.PROP_SHADOW</code></li>\n<li><code>gui.PROP_SIZE</code></li>\n<li><code>gui.PROP_FILL_ANGLE</code></li>\n<li><code>gui.PROP_INNER_RADIUS</code></li>\n<li><code>gui.PROP_SLICE9</code></li>\n</ul>",
+                    "doc": "property to animate\n<ul>\n<li><code>\"position\"</code></li>\n<li><code>\"rotation\"</code></li>\n<li><code>\"euler\"</code></li>\n<li><code>\"scale\"</code></li>\n<li><code>\"color\"</code></li>\n<li><code>\"outline\"</code></li>\n<li><code>\"shadow\"</code></li>\n<li><code>\"size\"</code></li>\n<li><code>\"fill_angle\"</code> (pie)</li>\n<li><code>\"inner_radius\"</code> (pie)</li>\n<li><code>\"slice9\"</code> (slice9)</li>\n</ul>\nThe following property constants are defined equaling the corresponding property string names.\n<ul>\n<li><code>gui.PROP_POSITION</code></li>\n<li><code>gui.PROP_ROTATION</code></li>\n<li><code>gui.PROP_EULER</code></li>\n<li><code>gui.PROP_SCALE</code></li>\n<li><code>gui.PROP_COLOR</code></li>\n<li><code>gui.PROP_OUTLINE</code></li>\n<li><code>gui.PROP_SHADOW</code></li>\n<li><code>gui.PROP_SIZE</code></li>\n<li><code>gui.PROP_FILL_ANGLE</code></li>\n<li><code>gui.PROP_INNER_RADIUS</code></li>\n<li><code>gui.PROP_SLICE9</code></li>\n</ul>",
                     "name": "property",
                     "types": [
                         "string",
@@ -311,7 +311,7 @@
                     ]
                 },
                 {
-                    "doc": "property for which the animation should be canceled\n<ul>\n<li><code>\"position\"</code></li>\n<li><code>\"rotation\"</code></li>\n<li><code>\"scale\"</code></li>\n<li><code>\"color\"</code></li>\n<li><code>\"outline\"</code></li>\n<li><code>\"shadow\"</code></li>\n<li><code>\"size\"</code></li>\n<li><code>\"fill_angle\"</code> (pie)</li>\n<li><code>\"inner_radius\"</code> (pie)</li>\n<li><code>\"slice9\"</code> (slice9)</li>\n</ul>",
+                    "doc": "property for which the animation should be canceled\n<ul>\n<li><code>\"position\"</code></li>\n<li><code>\"rotation\"</code></li>\n<li><code>\"euler\"</code></li>\n<li><code>\"scale\"</code></li>\n<li><code>\"color\"</code></li>\n<li><code>\"outline\"</code></li>\n<li><code>\"shadow\"</code></li>\n<li><code>\"size\"</code></li>\n<li><code>\"fill_angle\"</code> (pie)</li>\n<li><code>\"inner_radius\"</code> (pie)</li>\n<li><code>\"slice9\"</code> (slice9)</li>\n</ul>",
                     "name": "property",
                     "types": [
                         "string",
@@ -1054,6 +1054,37 @@
             "type": "VARIABLE"
         },
         {
+            "brief": "gets the named property of a specified gui node",
+            "description": "Instead of using specific getters such as gui.get_position or gui.get_scale,\nyou can use gui.get instead and supply the property as a string or a hash.\nWhile this function is similar to go.get, there are a few more restrictions\nwhen operating in the gui namespace. Most notably, only these propertie identifiers are supported:\n<ul>\n<li><code>\"position\"</code></li>\n<li><code>\"rotation\"</code></li>\n<li><code>\"euler\"</code></li>\n<li><code>\"scale\"</code></li>\n<li><code>\"color\"</code></li>\n<li><code>\"outline\"</code></li>\n<li><code>\"shadow\"</code></li>\n<li><code>\"size\"</code></li>\n<li><code>\"fill_angle\"</code> (pie)</li>\n<li><code>\"inner_radius\"</code> (pie)</li>\n<li><code>\"slice9\"</code> (slice9)</li>\n</ul>\nThe value returned will either be a vmath.vector4 or a single number, i.e getting the \"position\"\nproperty will return a vec4 while getting the \"position.x\" property will return a single value.",
+            "error": "",
+            "examples": "Get properties on existing nodes:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_box_node&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">node_position</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;position&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "members": [],
+            "name": "gui.get",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "node to get the property for",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "the property to retrieve",
+                    "name": "property",
+                    "types": [
+                        "string",
+                        "hash",
+                        "constant"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "gets the node adjust mode",
             "description": "Returns the adjust mode of a node.\nThe adjust mode defines how the node will adjust itself to screen\nresolutions that differs from the one in the project settings.",
             "error": "",
@@ -1249,6 +1280,36 @@
                     "name": "color",
                     "types": [
                         "vector4"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "gets the node rotation",
+            "description": "Returns the rotation of the supplied node.\nThe rotation is expressed in degree Euler angles.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "gui.get_euler",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "node to get the rotation from",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "node rotation",
+                    "name": "rotation",
+                    "types": [
+                        "vector3"
                     ]
                 }
             ],
@@ -1948,7 +2009,7 @@
         },
         {
             "brief": "gets the node rotation",
-            "description": "Returns the rotation of the supplied node.\nThe rotation is expressed in degree Euler angles.",
+            "description": "Returns the rotation of the supplied node.\nThe rotation is expressed as a quaternion",
             "error": "",
             "examples": "",
             "members": [],
@@ -1969,7 +2030,7 @@
                     "doc": "node rotation",
                     "name": "rotation",
                     "types": [
-                        "vector3"
+                        "quat"
                     ]
                 }
             ],
@@ -3152,6 +3213,20 @@
             "type": "VARIABLE"
         },
         {
+            "brief": "euler property",
+            "description": "euler property",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "gui.PROP_EULER",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
             "brief": "fill_angle property",
             "description": "fill_angle property",
             "error": "",
@@ -3407,6 +3482,47 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "sets the named property of a specified gui node",
+            "description": "Instead of using specific setteres such as gui.set_position or gui.set_scale,\nyou can use gui.set instead and supply the property as a string or a hash.\nWhile this function is similar to go.get and go.set, there are a few more restrictions\nwhen operating in the gui namespace. Most notably, only these propertie identifiers are supported:\n<ul>\n<li><code>\"position\"</code></li>\n<li><code>\"rotation\"</code></li>\n<li><code>\"euler\"</code></li>\n<li><code>\"scale\"</code></li>\n<li><code>\"color\"</code></li>\n<li><code>\"outline\"</code></li>\n<li><code>\"shadow\"</code></li>\n<li><code>\"size\"</code></li>\n<li><code>\"fill_angle\"</code> (pie)</li>\n<li><code>\"inner_radius\"</code> (pie)</li>\n<li><code>\"slice9\"</code> (slice9)</li>\n</ul>\nThe value to set must either be a vmath.vector4, vmath.vector3, vmath.quat or a single number and depends on the property name you want to set.\nI.e when setting the \"position\" property, you need to use a vmath.vector4 and when setting a single component of the property,\nsuch as \"position.x\", you need to use a single value.\nNote: When setting the rotation using the \"rotation\" property, you need to pass in a vmath.quat. This behaviour is different than from the gui.set_rotation function,\nthe intention is to move new functionality closer to go namespace so that migrating between gui and go is easier. To set the rotation using degrees instead,\nuse the \"euler\" property instead. The rotation and euler properties are linked, changing one of them will change the backing data of the other.",
+            "error": "",
+            "examples": "Updates the position property on an existing node:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_box_node&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">node_position</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;position&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;position.x&quot;</span><span class=\"p\">,</span> <span class=\"n\">node_position</span><span class=\"p\">.</span><span class=\"n\">x</span> <span class=\"o\">+</span> <span class=\"mi\">128</span><span class=\"p\">)</span>\n</code></pre></div>\n\nUpdates the rotation property on an existing node:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_box_node&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;rotation&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"nb\">math.rad</span><span class=\"p\">(</span><span class=\"mi\">45</span><span class=\"p\">)))</span>\n<span class=\"c1\">-- this is equivalent to:</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;euler.z&quot;</span><span class=\"p\">,</span> <span class=\"mi\">45</span><span class=\"p\">)</span>\n<span class=\"c1\">-- or using the entire vector:</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;euler&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">45</span><span class=\"p\">))</span>\n<span class=\"c1\">-- or using the set_rotation</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_rotation</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">45</span><span class=\"p\">))</span>\n</code></pre></div>",
+            "members": [],
+            "name": "gui.set",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "node to set the property for",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "the property to set",
+                    "name": "property",
+                    "types": [
+                        "string",
+                        "hash",
+                        "constant"
+                    ]
+                },
+                {
+                    "doc": "the property to set",
+                    "name": "value",
+                    "types": [
+                        "number",
+                        "vector4",
+                        "vector3",
+                        "quat"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "sets node adjust mode",
             "description": "Sets the adjust mode on a node.\nThe adjust mode defines how the node will adjust itself to screen\nresolutions that differs from the one in the project settings.",
             "error": "",
@@ -3631,6 +3747,36 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "sets the node rotation",
+            "description": "Sets the rotation of the supplied node.\nThe rotation is expressed in degree Euler angles.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "gui.set_euler",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "node to set the rotation for",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "new rotation",
+                    "name": "rotation",
+                    "types": [
+                        "vector3",
+                        "vector4"
                     ]
                 }
             ],
@@ -4199,7 +4345,7 @@
         },
         {
             "brief": "sets the node rotation",
-            "description": "Sets the rotation of the supplied node.\nThe rotation is expressed in degree Euler angles.",
+            "description": "Sets the rotation of the supplied node.\nThe rotation is expressed as a quaternion",
             "error": "",
             "examples": "",
             "members": [],
@@ -4217,7 +4363,7 @@
                     "doc": "new rotation",
                     "name": "rotation",
                     "types": [
-                        "vector3",
+                        "quat",
                         "vector4"
                     ]
                 }
