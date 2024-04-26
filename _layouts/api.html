@@ -6,10 +6,11 @@ layout: base
 {%- assign indices = unsortedindices | sort: "namespace" -%}
 {%- assign branches = site.data.branchindex -%}
 {%- assign types = indices | map: "type" | uniq -%}
+{% assign clean_ref = page.ref | remove: '.' %}
 {%- if page.type == "extension" -%}
-	{%- assign ref = site.data.extensions[page.ref] -%}
+	{%- assign ref = site.data.extensions[clean_ref] -%}
 {%- else -%}
-	{%- assign ref = site.data.ref[page.branch][page.ref] -%}
+	{%- assign ref = site.data.ref[page.branch][clean_ref] -%}
 {%- endif -%}
 
 {%- if page.url contains branch -%}
