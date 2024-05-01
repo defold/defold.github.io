@@ -57,6 +57,8 @@ Kliknij <kbd>Create Bundle</kbd> po skonfigurowaniu wszystkich ustawień. Będzi
 
 ![Android Application Package file](/manuals/images/android/apk_file.png)
 
+{% include shared/pl/build-variants.md %}
+
 ### Instalowanie paczek na Androidzie
 
 #### Instalowanie APK

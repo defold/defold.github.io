@@ -59,6 +59,8 @@ Defold поддерживает создание файлов APK и AAB. Выб
 
 ![Файл пакета приложения Android](/manuals/images/android/apk_file.png)
 
+{% include shared/ru/build-variants.md %}
+
 ### Установка пакета приложений для Android
 
 ### Установка APK
