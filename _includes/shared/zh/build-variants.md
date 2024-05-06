@@ -1,37 +1,34 @@
 ## Build variants
 
-When you bundle a game, you need to choose what type of engine you wish to use. You have three basic options:
+打包游戏时, 需要选择你想用的引擎类型. 有三个基本类型可以选择:
 
   * Debug
   * Release
   * Headless
 
-These different versions are also referred to as `Build variants`
+这些类型即是 `Build variants`
 
 <div class='sidenote' markdown='1'>
-When you choose <kbd>Project ▸ Build</kbd> you'll always get the debug version.
+使用 <kbd>Project ▸ Build</kbd> 时使用的是 debug 版引擎.
 </div>
-
 
 ### Debug
 
-This type of executable is typically used during development of a game as it has several useful debugging features included:
+此版本通常在游戏开发阶段使用, 因为它具有许多有用的调试功能:
 
-* Profiler - Used for gathering performance and usage counters. Learn how to use the profiler in the [Profiling manual](/manuals/profiling/).
-* Logging - The engine will log system information, warnings and errors when logging is enabled. The engine will also output logs from the Lua `print()` function and from native extensions logging using `dmLogInfo()`, `dmLogError()` and so on. Learn how to read these logs in the [Game and System Logs manual](https://defold.com/manuals/debugging-game-and-system-logs/).
-* Hot reload - Hot-reload is a powerful feature which lets a developer reload resource while the game is running. Learn how to use this in the [Hot-Reload manual](https://defold.com/manuals/hot-reload/).
-* Engine services - It is possible to connect to and interact with a debug version of a game through a number of different open TCP ports and services. The services include the hot-reload feature, remote log access and the profiler mentioned above, but also other services to remotely interact with the engine. Learn more about the engine services [in the developer documentation](https://github.com/defold/defold/blob/dev/engine/docs/DEBUG_PORTS_AND_SERVICES.md).
-
+* 分析器 - 用于收集性能和使用计数器. 如何使用分析器参见 [分析器教程](/manuals/profiling/).
+* 日志 - 日志开启后引擎会记录系统信息, 警告和错误. 引擎也会通过 Lua `print()` 功能, 原生扩展使用 `dmLogInfo()`, `dmLogError()` 之类的功能记录日志. 如何阅读日志参见 [游戏和系统日志教程](https://defold.com/manuals/debugging-game-and-system-logs/).
+* 热重载 - 热重载是一个强大的功能, 能让开发者在游戏运行时重新载入资源. 如何使用热重载参见 [热重载教程](https://defold.com/manuals/hot-reload/).
+* 引擎服务 - 游戏的调试版本可以连结一些开启的 TCP 端口和服务并与之交互. 这些服务包括热重载功能, 远程日志存取和上述的分析器功能, 以及其他一些各种各样的服务. 关于引擎服务参见 [开发者教程](https://github.com/defold/defold/blob/dev/engine/docs/DEBUG_PORTS_AND_SERVICES.md).
 
 ### Release
 
-This variant has the debugging features disabled. This options should be chosen when the game is ready to be released to the app store or in other ways shared with players. It is not recommended to release a game with the debugging features enabled for a number of reasons:
+此版本移除调试功能. 准备发布到应用商店时使用此版本. 基于以下原因不推荐发布包含调试功能的游戏:
 
-* The debugging features take up a little bit of size in the binary, and [it is a best practice to try to keep the binary size of a released game as small as possible](https://defold.com/manuals/optimization/#optimize-application-size).
-* The debugging features takes a little bit of CPU time as well. This can impact the performance of the game if a user has a low-end hardware. On mobile phones the increased CPU usage will also contribute to heating and battery drain.
-* The debugging features may expose information about the game that is not intended for the eyes of the players, either from a security, cheating or fraud perspective.
-
+* 调试功能会使包体略微变大, [我们应该尽量使发布游戏包体最小](https://defold.com/manuals/optimization/#optimize-application-size).
+* 调试功能也会占用一点 CPU 时长. 这可能使用户的老机型卡顿. 在手机上增加 CPU 使用也会造成过热和电池消耗.
+* 调试功能可能会给用户暴露不应暴露的信息, 无论从安全, 作弊还是欺诈角度.
 
 ### Headless
 
-This executable runs without any graphics and sound. It means that you can run the game unit/smoke tests on a CI server, or even have it as a game server in the cloud.
+此版本没有图像和声音. 也就是说它可以 CI 服务器上进行 unit/smoke 测试, 甚至可以在云端作为服务器程序使用.
