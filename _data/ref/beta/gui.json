@@ -2481,7 +2481,7 @@
                 },
                 {
                     "doc": "check hierarchy recursively",
-                    "name": "recursive",
+                    "name": "[recursive]",
                     "types": [
                         "boolean"
                     ]
@@ -4184,15 +4184,15 @@
                     ]
                 },
                 {
-                    "doc": "parent node to set",
-                    "name": "parent",
+                    "doc": "parent node to set, pass <code>nil</code> to remove parent",
+                    "name": "[parent]",
                     "types": [
                         "node"
                     ]
                 },
                 {
                     "doc": "optional flag to make the scene position being perserved",
-                    "name": "keep_scene_transform",
+                    "name": "[keep_scene_transform]",
                     "types": [
                         "boolean"
                     ]
@@ -4570,7 +4570,8 @@
                     "doc": "text to set",
                     "name": "text",
                     "types": [
-                        "string"
+                        "string",
+                        "number"
                     ]
                 }
             ],
@@ -4867,7 +4868,7 @@
                 },
                 {
                     "doc": "options when stopping the particle fx. Supported options:\n<ul>\n<li><span class=\"type\">boolean</span> <code>clear</code>: instantly clear spawned particles</li>\n</ul>",
-                    "name": "options",
+                    "name": "[options]",
                     "types": [
                         "table"
                     ]
