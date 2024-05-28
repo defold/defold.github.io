@@ -1329,6 +1329,37 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "sets the current render camera to be used for rendering",
+            "description": "Sets the current render camera to be used for rendering. If a render camera\nhas been set by the render script, the renderer will be using its projection and view matrix\nduring rendering. If a projection and/or view matrix has been set by the render script,\nthey will not be used until the current render camera has been reset by calling <code>render.set_camera()</code>.\nIf the 'use_frustum' flag in the options table has been set to true, the renderer will automatically use the\ncamera frustum for frustum culling regardless of what frustum is being passed into the render.draw() function.\nNote that the frustum plane option in render.draw can still be used together with the camera.",
+            "error": "",
+            "examples": "Set the current camera to be used for rendering\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_camera</span><span class=\"p\">(</span><span class=\"s2\">&quot;main:/my_go#camera&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_camera</span><span class=\"p\">(</span><span class=\"kc\">nil</span><span class=\"p\">)</span>\n</code></pre></div>\n\nUse the camera frustum for frustum culling together with a specific frustum plane option for the draw command\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- The camera frustum will take precedence over the frustum plane option in render.draw</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_camera</span><span class=\"p\">(</span><span class=\"s2\">&quot;main:/my_go#camera&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">use_frustum</span> <span class=\"o\">=</span> <span class=\"kc\">true</span> <span class=\"p\">})</span>\n<span class=\"c1\">-- However, we can still customize the frustum planes regardless of the camera option!</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">frustum_planes</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">FRUSTUM_PLANES_ALL</span> <span class=\"p\">})</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_camera</span><span class=\"p\">()</span>\n</code></pre></div>",
+            "members": [],
+            "name": "render.set_camera",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "camera id to use, or nil to reset",
+                    "name": "camera",
+                    "types": [
+                        "url",
+                        "handle",
+                        "nil"
+                    ]
+                },
+                {
+                    "doc": "optional table with properties:\n<dl>\n<dt><code>use_frustum</code></dt>\n<dd><span class=\"type\">boolean</span> If true, the renderer will use the cameras view-projection matrix for frustum culling (default: false)</dd>\n</dl>",
+                    "name": "[options]",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "sets the color mask",
             "description": "Specifies whether the individual color components in the frame buffer is enabled for writing (<code>true</code>) or disabled (<code>false</code>). For example, if <code>blue</code> is <code>false</code>, nothing is written to the blue component of any pixel in any of the color buffers, regardless of the drawing operation attempted. Note that writing are either enabled or disabled for entire color components, not the individual bits of a component.\nThe component masks are all initially <code>true</code>.",
             "error": "",

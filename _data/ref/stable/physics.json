@@ -1027,7 +1027,7 @@
                 },
                 {
                     "doc": "a lua table containing options for the raycast.\n<dl>\n<dt><code>all</code></dt>\n<dd><span class=\"type\">boolean</span> Set to <code>true</code> to return all ray cast hits. If <code>false</code>, it will only return the closest hit.</dd>\n</dl>",
-                    "name": "options",
+                    "name": "[options]",
                     "types": [
                         "table"
                     ]
@@ -1301,7 +1301,7 @@
                     ]
                 },
                 {
-                    "doc": "the shape data to update the shape with.\nSee <a href=\"/ref/physics#physics.get_shape\">physics.get_shape</a> for a detailed description of each field in the data table.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">set_shape_data</span><span class=\"p\">()</span>\n    <span class=\"c1\">-- set capsule shape data</span>\n    <span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">diameter</span> <span class=\"o\">=</span> <span class=\"mi\">10</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"mi\">20</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_capsule_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- set sphere shape data</span>\n    <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">diameter</span> <span class=\"o\">=</span> <span class=\"mi\">10</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_sphere_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- set box shape data</span>\n    <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">dimensions</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">5</span><span class=\"p\">)</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_box_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+                    "doc": "the shape data to update the shape with.\nSee <a href=\"/ref/physics#physics.get_shape\">physics.get_shape</a> for a detailed description of each field in the data table.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">set_shape_data</span><span class=\"p\">()</span>\n    <span class=\"c1\">-- set capsule shape data</span>\n    <span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_CAPSULE</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">diameter</span> <span class=\"o\">=</span> <span class=\"mi\">10</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"mi\">20</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_capsule_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- set sphere shape data</span>\n    <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_SPHERE</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">diameter</span> <span class=\"o\">=</span> <span class=\"mi\">10</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_sphere_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- set box shape data</span>\n    <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_BOX</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">dimensions</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">5</span><span class=\"p\">)</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_box_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
                     "name": "table",
                     "types": [
                         "table"
@@ -1343,6 +1343,62 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "physics.SHAPE_TYPE_BOX",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "physics.SHAPE_TYPE_CAPSULE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "physics.SHAPE_TYPE_HULL",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "physics.SHAPE_TYPE_SPHERE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
         },
         {
             "brief": "updates the mass of a dynamic 2D collision object in the physics world.",
