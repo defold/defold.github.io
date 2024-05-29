@@ -47,7 +47,7 @@ sprites 通常使用单个的小图片, 但是处于性能考虑, 最好把小�
   
   ![Creating an atlas, adding images](/manuals/images/atlas/add_animation.png)
 
-  选中动画组后按 <kbd>空格键</kbd> 即可预览动画. 动画 *Properties* 可以自由修改 (见下文).
+  选中动画组后按 <kbd>空格键</kbd> 即可预览动画, <kbd>Ctrl/Cmd+T</kbd> 关闭预览. 动画 *Properties* 可以自由修改 (见下文).
 
   ![Animation group](/manuals/images/atlas/animation_group.png)
 

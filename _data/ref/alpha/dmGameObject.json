@@ -60,6 +60,573 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Component add to update function. Only components ...",
+            "description": "Component add to update function. Only components called with this function should be included in the update passes.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentAddToUpdate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentAddToUpdateParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "CREATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "CreateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentAddToUpdate callback.",
+            "description": "Parameters to ComponentAddToUpdate callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Collection handle",
+                    "name": "m_Collection",
+                    "type": "HCollection"
+                },
+                {
+                    "doc": "Game object instance",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                }
+            ],
+            "name": "ComponentAddToUpdateParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component create function. Should allocate all nec...",
+            "description": "Component create function. Should allocate all necessary resources for the component.\nThe game object instance is guaranteed to have its id, scene hierarchy and transform data updated when this is called.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentCreate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentCreateParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "CREATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "CreateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentCreate callback.",
+            "description": "Parameters to ComponentCreate callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Game object instance",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Local component position",
+                    "name": "m_Position",
+                    "type": "dmVMath::Point3"
+                },
+                {
+                    "doc": "Local component rotation",
+                    "name": "m_Rotation",
+                    "type": "dmVMath::Quat"
+                },
+                {
+                    "doc": "Local component scale",
+                    "name": "m_Scale",
+                    "type": "dmVMath::Vector3"
+                },
+                {
+                    "doc": "Set of properties",
+                    "name": "m_PropertySet",
+                    "type": "PropertySet"
+                },
+                {
+                    "doc": "Component resource",
+                    "name": "m_Resource",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Component world, as created in the ComponentNewWorld callback",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                },
+                {
+                    "doc": "Index of the component type being created (among all component types)",
+                    "name": "m_ComponentIndex",
+                    "type": "uint16_t"
+                }
+            ],
+            "name": "ComponentCreateParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component world destroy function",
+            "description": "Component world destroy function",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentDeleteWorld",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentDeleteWorldParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "CREATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "CreateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentDeleteWorld callback.",
+            "description": "Parameters to ComponentDeleteWorld callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "[type void*] Context for the component type",
+                    "name": "m_Context",
+                    "type": ""
+                },
+                {
+                    "doc": "[type void*] The pointer to the world to destroy",
+                    "name": "m_World",
+                    "type": ""
+                }
+            ],
+            "name": "ComponentDeleteWorldParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component destroy function. Should deallocate all ...",
+            "description": "Component destroy function. Should deallocate all necessary resources.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentDestroy",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentDestroyParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "CREATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "CreateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentDestroy callback.",
+            "description": "Parameters to ComponentDestroy callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Collection handle",
+                    "name": "m_Collection",
+                    "type": "HCollection"
+                },
+                {
+                    "doc": "Game object instance",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                }
+            ],
+            "name": "ComponentDestroyParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component finalize function. Should clean up as it...",
+            "description": "Component finalize function. Should clean up as it is called when the component is disabled.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentFinal",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentFinalParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "CREATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "CreateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentFinal callback.",
+            "description": "Parameters to ComponentFinal callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Collection handle",
+                    "name": "m_Collection",
+                    "type": "HCollection"
+                },
+                {
+                    "doc": "Game object instance",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                }
+            ],
+            "name": "ComponentFinalParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "A simple way to get the component instance from th...",
+            "description": "A simple way to get the component instance from the user_data (which was set during creation)",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentGet",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Update parameters",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentGetParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The internal component pointer",
+                    "name": "component",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentGet callback.",
+            "description": "Parameters to ComponentGet callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "HComponentWorld"
+                },
+                {
+                    "doc": "Component internal representation",
+                    "name": "m_UserData",
+                    "type": "HComponentInternal"
+                }
+            ],
+            "name": "ComponentGetParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Callback for retrieving a property value of the co...",
+            "description": "Callback for retrieving a property value of the component.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentGetProperty",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the parameters",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentGetPropertyParams&"
+                    ]
+                },
+                {
+                    "doc": "(out) the property",
+                    "name": "out_value",
+                    "types": [
+                        "dmGameObject::PropertyDesc&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "PROPERTY_RESULT_OK if retrieving the property was ok",
+                    "name": "result",
+                    "types": [
+                        "dmGameObject::PropertyResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentGetProperty callback.",
+            "description": "Parameters to ComponentGetProperty callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Context for the component type",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Game object instance",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Id of the property",
+                    "name": "m_PropertyId",
+                    "type": "dmhash_t"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                },
+                {
+                    "doc": "Options for getting the property",
+                    "name": "m_Options",
+                    "type": "PropertyOptions"
+                }
+            ],
+            "name": "ComponentGetPropertyParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component init function. Should set the components...",
+            "description": "Component init function. Should set the components initial state as it is called when the component is enabled.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentInit",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentInitParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "CREATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "CreateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentInit callback.",
+            "description": "Parameters to ComponentInit callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Collection handle",
+                    "name": "m_Collection",
+                    "type": "HCollection"
+                },
+                {
+                    "doc": "Game object instance",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                }
+            ],
+            "name": "ComponentInitParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
             "brief": "Callback when iterating over the properties for a ...",
             "description": "Callback when iterating over the properties for a component.",
             "error": "",
@@ -88,7 +655,663 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Component world create function",
+            "description": "Component world create function",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentNewWorld",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentNewWorldParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "CREATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "CreateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentNewWorld callback.",
+            "description": "Parameters to ComponentNewWorld callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Context for the component type",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Component type index that can be used later with GetWorld()",
+                    "name": "m_ComponentIndex",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "Max component game object instance count (if applicable)",
+                    "name": "m_MaxInstances",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Out-parameter of the pointer in which to store the created world",
+                    "name": "m_World",
+                    "type": "void**"
+                },
+                {
+                    "doc": "Max components count of this type in current collection counted at the build stage.\n                                        If component in factory then value is 0xFFFFFFFF",
+                    "name": "m_MaxComponentInstances",
+                    "type": "uint32_t"
+                }
+            ],
+            "name": "ComponentNewWorldParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component on-input function. Called when input is ...",
+            "description": "Component on-input function. Called when input is sent to this component",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentOnInput",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Input parameters",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentOnInputParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "How the component handled the input",
+                    "name": "result",
+                    "types": [
+                        "InputResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentOnInput callback.",
+            "description": "Parameters to ComponentOnInput callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Instance handle",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Information about the input that occurred (note that input being released is also treated as input)",
+                    "name": "m_InputAction",
+                    "type": "const InputAction*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                }
+            ],
+            "name": "ComponentOnInputParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component on-message function. Called when message...",
+            "description": "Component on-message function. Called when message is sent to this component",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentOnMessage",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Update parameters",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentOnMessageParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UPDATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "UpdateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentOnMessage callback.",
+            "description": "Parameters to ComponentOnMessage callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Instance handle",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "World",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                },
+                {
+                    "doc": "Message",
+                    "name": "m_Message",
+                    "type": "dmMessage::Message*"
+                }
+            ],
+            "name": "ComponentOnMessageParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Called when the resource the component is based on...",
+            "description": "Called when the resource the component is based on has been reloaded.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentOnReload",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the parameters",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentOnReloadParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Parameters to ComponentOnReload callback.",
+            "description": "Parameters to ComponentOnReload callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Instance handle",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Resource that was reloaded",
+                    "name": "m_Resource",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                }
+            ],
+            "name": "ComponentOnReloadParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Set a property set for the component.",
+            "description": "Set a property set for the component.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentSetProperties",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the parameters",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentSetPropertiesParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "PROPERTY_RESULT_OK if property was set",
+                    "name": "result",
+                    "types": [
+                        "dmGameObject::PropertyResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentSetProperties callback.",
+            "description": "Parameters to ComponentSetProperties callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Instance handle",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Property set to use",
+                    "name": "m_PropertySet",
+                    "type": "PropertySet"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                }
+            ],
+            "name": "ComponentSetPropertiesParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Callback for setting a property value of the compo...",
+            "description": "Callback for setting a property value of the component.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentSetProperty",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the parameters",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentSetPropertyParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "PROPERTY_RESULT_OK if property was set",
+                    "name": "result",
+                    "types": [
+                        "dmGameObject::PropertyResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentSetProperty callback.",
+            "description": "Parameters to ComponentSetProperty callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Context for the component type",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Game object instance",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Id of the property",
+                    "name": "m_PropertyId",
+                    "type": "dmhash_t"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                },
+                {
+                    "doc": "New value of the property",
+                    "name": "m_Value",
+                    "type": "PropertyVar"
+                },
+                {
+                    "doc": "Options for setting the property",
+                    "name": "m_Options",
+                    "type": "PropertyOptions"
+                }
+            ],
+            "name": "ComponentSetPropertyParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component fixed update function. Updates all compo...",
+            "description": "Component fixed update function. Updates all component of this type for all game objects",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentsFixedUpdate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Update parameters",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentsUpdateParams&"
+                    ]
+                },
+                {
+                    "doc": "(out) Update result",
+                    "name": "params",
+                    "types": [
+                        "dmGameObject::ComponentsUpdateResult&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UPDATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "UpdateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Component post update function. The component stat...",
+            "description": "Component post update function. The component state should never be modified in this function.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentsPostUpdate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Update parameters",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentsPostUpdateParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UPDATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "UpdateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters for ComponentsPostUpdate callback.",
+            "description": "Parameters for ComponentsPostUpdate callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Collection handle",
+                    "name": "m_Collection",
+                    "type": "HCollection"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                }
+            ],
+            "name": "ComponentsPostUpdateParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component render function.",
+            "description": "Component render function.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentsRender",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Update parameters",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentsRenderParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UPDATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "UpdateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentsRender callback.",
+            "description": "Parameters to ComponentsRender callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Collection handle",
+                    "name": "m_Collection",
+                    "type": "HCollection"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                }
+            ],
+            "name": "ComponentsRenderParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component update function. Updates all component o...",
+            "description": "Component update function. Updates all component of this type for all game objects",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "ComponentsUpdate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Update parameters",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentsUpdateParams&"
+                    ]
+                },
+                {
+                    "doc": "(out) Update result",
+                    "name": "params",
+                    "types": [
+                        "dmGameObject::ComponentsUpdateResult&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UPDATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "UpdateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentsUpdate callback.",
+            "description": "Parameters to ComponentsUpdate callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "Collection handle",
+                    "name": "m_Collection",
+                    "type": "HCollection"
+                },
+                {
+                    "doc": "Update context",
+                    "name": "m_UpdateContext",
+                    "type": "const UpdateContext*"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                }
+            ],
+            "name": "ComponentsUpdateParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Parameters to ComponentsUpdate callback.",
+            "description": "Parameters to ComponentsUpdate callback.",
+            "error": "",
+            "examples": "",
+            "members": [
+                {
+                    "doc": "True if a component type updated any game object transforms",
+                    "name": "m_TransformsUpdated",
+                    "type": "bool"
+                }
+            ],
+            "name": "ComponentsUpdateResult",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "Context used when registering a new component type",
@@ -143,7 +1366,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 }
             ],
@@ -173,7 +1396,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 }
             ],
@@ -203,7 +1426,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -232,7 +1455,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -261,7 +1484,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -290,7 +1513,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -319,7 +1542,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -348,7 +1571,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -377,7 +1600,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -406,7 +1629,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -435,7 +1658,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -464,7 +1687,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -493,7 +1716,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -522,7 +1745,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -551,7 +1774,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -580,7 +1803,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -609,7 +1832,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -638,7 +1861,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -667,7 +1890,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -696,7 +1919,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -725,7 +1948,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -754,7 +1977,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -783,7 +2006,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -812,7 +2035,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -841,7 +2064,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -870,7 +2093,7 @@
                     "doc": "the type",
                     "name": "type",
                     "types": [
-                        "ComponentType*"
+                        "HComponentType"
                     ]
                 },
                 {
@@ -1111,10 +2334,10 @@
                     ]
                 },
                 {
-                    "doc": "[type: dmhash_t* Component id as out-argument",
+                    "doc": "Component id as out-argument",
                     "name": "component_id",
                     "types": [
-                        ""
+                        "dmhash_t*"
                     ]
                 }
             ],
@@ -1125,6 +2348,43 @@
                     "name": "result",
                     "types": [
                         "dmGameObject::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the component type index",
+            "description": "Get the component type index",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "GetComponentTypeIndex",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Collection handle",
+                    "name": "collection",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "The hashed name of the registered component type (e.g. dmHashString(\"guic\"))",
+                    "name": "type_hash",
+                    "types": [
+                        "dhmash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The component type index. 0xFFFFFFFF if not found",
+                    "name": "type_index",
+                    "types": [
+                        "uint32_t"
                     ]
                 }
             ],
@@ -1506,6 +2766,62 @@
             "type": "TYPEDEF"
         },
         {
+            "brief": "Opaque handle to component instance",
+            "description": "Opaque handle to component instance",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "HComponent",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Opaque handle to internal representation of a comp...",
+            "description": "Opaque handle to internal representation of a component instance",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "HComponentInternal",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Component type handle. It holds the life time func...",
+            "description": "Component type handle. It holds the life time functions for a type.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "HComponentType",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Opaque handle to a component world",
+            "description": "Opaque handle to a component world",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "HComponentWorld",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "Gameobject instance handle",
             "description": "Gameobject instance handle",
             "error": "",
@@ -1526,6 +2842,48 @@
             "examples": "",
             "members": [],
             "name": "HProperties",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Handle to a list of properties (gameobject_props.h...",
+            "description": "Handle to a list of properties (gameobject_props.h)",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "HPropertyContainer",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Opaque handle to a list of properties",
+            "description": "Opaque handle to a list of properties",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "HPropertyContainer",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Opaque handle to a property container builder",
+            "description": "Opaque handle to a property container builder",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "HPropertyContainerBuilder",
             "notes": [],
             "parameters": [],
             "replaces": "",
@@ -1678,6 +3036,20 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "PropertyContainerBuilderParams",
+            "description": "Helper struct to create a property container builder.\nIt is required to fill out how many items of each type that is wanted.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "m_BoolCount [type:int32_t] Number of items of type bool",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
             "brief": "Create a new gameobject instance",
             "description": "Create a new gameobject instance",
             "error": "",
@@ -1729,6 +3101,443 @@
             "returnvalues": [],
             "tparams": [],
             "type": "ENUM"
+        },
+        {
+            "brief": "Allocates and copies a property container",
+            "description": "Allocates and copies a property container",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "PropertyContainerCopy",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The original property container",
+                    "name": "original",
+                    "types": [
+                        "HPropertyContainer"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The new property container",
+                    "name": "container",
+                    "types": [
+                        "HPropertyContainer"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Creates the final property container",
+            "description": "Creates the final property container",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "PropertyContainerCreate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The property container builder",
+                    "name": "builder",
+                    "types": [
+                        "HPropertyContainerBuilder"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The property container",
+                    "name": "container",
+                    "types": [
+                        "HPropertyContainer"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Create a property container builder with memory pr...",
+            "description": "Create a property container builder with memory preallocated",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "PropertyContainerCreateBuilder",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The params holding the memory requirements",
+                    "name": "params",
+                    "types": [
+                        "PropertyContainerBuilderParams"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The builder",
+                    "name": "container",
+                    "types": [
+                        "HPropertyContainerBuilder"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Deallocates a property container",
+            "description": "Deallocates a property container",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "PropertyContainerDestroy",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The property container",
+                    "name": "container",
+                    "types": [
+                        "HPropertyContainer"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Merges two containers into a newly allocated conta...",
+            "description": "Merges two containers into a newly allocated container\nThe properties in the <code>overrides</code> container will take presedence.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "PropertyContainerMerge",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The original property container",
+                    "name": "original",
+                    "types": [
+                        "HPropertyContainer"
+                    ]
+                },
+                {
+                    "doc": "The container with override properties",
+                    "name": "overrides",
+                    "types": [
+                        "HPropertyContainer"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The merged property container",
+                    "name": "container",
+                    "types": [
+                        "HPropertyContainer"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Add a property of type bool to the container",
+            "description": "Add a property of type bool to the container",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "PropertyContainerPushBool",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The container builder",
+                    "name": "builder",
+                    "types": [
+                        "HPropertyContainerBuilder"
+                    ]
+                },
+                {
+                    "doc": "The id of the property",
+                    "name": "id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The value of the property",
+                    "name": "value",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Add a property of type float to the container",
+            "description": "Add a property of type float to the container",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "PropertyContainerPushFloat",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The container builder",
+                    "name": "builder",
+                    "types": [
+                        "HPropertyContainerBuilder"
+                    ]
+                },
+                {
+                    "doc": "The id of the property",
+                    "name": "id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The value of the property",
+                    "name": "value",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Add a property of type dmhash_t to the container",
+            "description": "Add a property of type dmhash_t to the container",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "PropertyContainerPushHash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The container builder",
+                    "name": "builder",
+                    "types": [
+                        "HPropertyContainerBuilder"
+                    ]
+                },
+                {
+                    "doc": "The id of the property",
+                    "name": "id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The value of the property",
+                    "name": "value",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Add a property of type float4 to the container",
+            "description": "Add a property of type float4 to the container",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "PropertyContainerPushQuat",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The container builder",
+                    "name": "builder",
+                    "types": [
+                        "HPropertyContainerBuilder"
+                    ]
+                },
+                {
+                    "doc": "The id of the property",
+                    "name": "id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The value of the property (4 floats)",
+                    "name": "values",
+                    "types": [
+                        "float*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Add a property of type dmMessage::URL to the conta...",
+            "description": "Add a property of type dmMessage::URL to the container",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "PropertyContainerPushURL",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The container builder",
+                    "name": "builder",
+                    "types": [
+                        "HPropertyContainerBuilder"
+                    ]
+                },
+                {
+                    "doc": "The id of the property",
+                    "name": "id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The value of the property",
+                    "name": "value",
+                    "types": [
+                        "dmMessage::URL"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Add a property of type (url) string to the contain...",
+            "description": "Add a property of type (url) string to the container",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "PropertyContainerPushURLString",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The container builder",
+                    "name": "builder",
+                    "types": [
+                        "HPropertyContainerBuilder"
+                    ]
+                },
+                {
+                    "doc": "The id of the property",
+                    "name": "id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The value of the property",
+                    "name": "value",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Add a property of type float3 to the container",
+            "description": "Add a property of type float3 to the container",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "PropertyContainerPushVector3",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The container builder",
+                    "name": "builder",
+                    "types": [
+                        "HPropertyContainerBuilder"
+                    ]
+                },
+                {
+                    "doc": "The id of the property",
+                    "name": "id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The value of the property (3 floats)",
+                    "name": "values",
+                    "types": [
+                        "float*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Add a property of type float4 to the container",
+            "description": "Add a property of type float4 to the container",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "PropertyContainerPushVector4",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The container builder",
+                    "name": "builder",
+                    "types": [
+                        "HPropertyContainerBuilder"
+                    ]
+                },
+                {
+                    "doc": "The id of the property",
+                    "name": "id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The value of the property (4 floats)",
+                    "name": "values",
+                    "types": [
+                        "float*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "Description of a property",
@@ -2468,6 +4277,77 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "spawn a new game object",
+            "description": "Spawns a new gameobject instance. The actual creation is performed after the update is completed.",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "Spawn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Gameobject collection",
+                    "name": "collection",
+                    "types": [
+                        "HCollection"
+                    ]
+                },
+                {
+                    "doc": "Prototype",
+                    "name": "prototype",
+                    "types": [
+                        "HPrototype"
+                    ]
+                },
+                {
+                    "doc": "Prototype file name (.goc)",
+                    "name": "prototype_name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Id of the spawned instance",
+                    "name": "id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Container with override properties",
+                    "name": "properties",
+                    "types": [
+                        "HPropertyContainer"
+                    ]
+                },
+                {
+                    "doc": "Position of the spawed object",
+                    "name": "position",
+                    "types": [
+                        "dmVMath::Vector3"
+                    ]
+                },
+                {
+                    "doc": "Rotation of the spawned object",
+                    "name": "rotation",
+                    "types": [
+                        "dmVMath::Quat"
+                    ]
+                },
+                {
+                    "doc": "Scale of the spawned object\nreturn instance <span class=\"type\"> HInstance</span> the spawned instance, 0 at failure",
+                    "name": "scale",
+                    "types": [
+                        "dmVMath::Vector3"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Gets the top node of the whole game (the main coll...",
             "description": "Gets the top node of the whole game (the main collection)",
             "error": "",
@@ -2687,12 +4567,13 @@
         }
     ],
     "info": {
-        "brief": "SDK GameObject script API documentation",
-        "description": "<span class=\"file\"><dmsdk/gameobject/script.h></span>",
-        "file": "",
-        "name": "Script",
+        "brief": "Game object property container",
+        "description": "API for game object property container",
+        "file": "dmsdk/gameobject/gameobject_props.h",
+        "group": "DEFOLD SDK",
+        "name": "PropertyContainer",
         "namespace": "dmGameObject",
         "notes": [],
-        "path": ""
+        "path": "engine/gameobject/src/dmsdk/gameobject/gameobject_props.h"
     }
 }

@@ -47,7 +47,7 @@ Adding flipbook animations
 
   ![Creating an atlas, adding images](../images/atlas/add_animation.png)
 
-  Press <kbd>Space</kbd> with the animation group selected to preview it. Adjust the *Properties* for the animation as needed (see below).
+  Press <kbd>Space</kbd> with the animation group selected to preview it, and <kbd>Ctrl/Cmd+T</kbd> to close the preview. Adjust the *Properties* for the animation as needed (see below).
 
   ![Animation group](../images/atlas/animation_group.png)
 
