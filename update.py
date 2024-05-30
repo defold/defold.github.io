@@ -84,6 +84,13 @@ title: API reference ({})
 """
 REFDOC_MD_BODY = "{% include anchor_headings.html html=content %}"
 
+EXAMPLES_ENGINE_LOADER = """
+        CUSTOM_PARAMETERS.archive_location_filter = function(path) { return ("/examples/archive" + path); };
+        CUSTOM_PARAMETERS.engine_arguments = [ '--config=examples.start={{ page.collection }}', '--verify-graphics-calls=false' ];
+        CUSTOM_PARAMETERS.resize_window_callback = function() {};
+        EngineLoader.load("canvas", "/examples/Defoldexamples");
+"""
+
 @contextmanager
 def tmpdir():
     name = tempfile.mkdtemp()
@@ -562,13 +569,10 @@ def process_examples(download = False):
         print("...processing index.html")
         replace_in_file(os.path.join(examples_dir, "index.html"), "\<\!DOCTYPE html\>.*\<body\>", "", flags=re.DOTALL)
         replace_in_file(os.path.join(examples_dir, "index.html"), "\<\/body\>.*", "", flags=re.DOTALL)
-        replace_in_file(os.path.join(examples_dir, "index.html"), "resize_game_canvas\(\)\;", "")
-        replace_in_file(os.path.join(examples_dir, "index.html"), "window.addEventListener.*", "")
+        replace_in_file(os.path.join(examples_dir, "index.html"), "\(\)\;", "")
         replace_in_file(os.path.join(examples_dir, "index.html"), 'width=\"720\" height=\"720\"', 'width="680" height="680" style="max-width:100%"')
         replace_in_file(os.path.join(examples_dir, "index.html"), 'dmloader.js', '/examples/dmloader.js')
-        replace_in_file(os.path.join(examples_dir, "index.html"), '\"archive\"', '"/examples/archive"')
-        replace_in_file(os.path.join(examples_dir, "index.html"), 'EngineLoader\.load\(\"canvas\", \"Defoldexamples\"\)', 'EngineLoader.load("canvas", "/examples/Defoldexamples")')
-        replace_in_file(os.path.join(examples_dir, "index.html"), "engine_arguments: \[", "engine_arguments: [ '--config=examples.start={{ page.collection }}', ")
+        replace_in_file(os.path.join(examples_dir, "index.html"), 'EngineLoader\.load\(\"canvas\", \"Defoldexamples\"\);', EXAMPLES_ENGINE_LOADER)
         os.rename(os.path.join(examples_dir, "index.html"), "_includes/example.html")
 
         print("...copying markdown")
