@@ -6,8 +6,6 @@ author: Björn Ritzl
 tags: ["survey"]
 ---
 
-# Defold user feedback survey results
-
 Some time ago we shared a survey with our users on Discord and on the Defold forum. The survey focused on three questions:
 
 * What aspects of Defold do you like the most?
