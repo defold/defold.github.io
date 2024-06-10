@@ -384,6 +384,14 @@ def process_docs(download = False):
             process_doc_file(filename, "en")
             replace_in_file(filename, r"title\:", r"layout: tutorial\ntitle:")
 
+        print("...courses")
+        courses_src_dir = os.path.join(DOC_DIR, "docs", "en", "courses")
+        courses_dst_dir = "courses"
+        rmcopytree(courses_src_dir, courses_dst_dir)
+        for filename in find_files(courses_dst_dir, "*.md"):
+            process_doc_file(filename, "en")
+            replace_in_file(filename, r"title\:", r"layout: course\ntitle:")
+
         # figure out in which languages each manual exists
         print("...index (incl. languages)")
         for section in index["navigation"]["manuals"]:
