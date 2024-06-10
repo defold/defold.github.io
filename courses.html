@@ -1,0 +1,36 @@
+---
+layout: page
+title: Defold courses
+nav: floating
+---
+
+<div class="section hero center blackwhite dark:darken-10" style='background-image: url("/images/hero/testimonials-background-0.5x.png");'>
+	<div class="container">
+		<div class="row">
+			<div class="column one-half left">
+				<h1>Get educated!</h1>
+				<p>Find online courses and other educational material that will help you master Defold.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include learnnav.html showmenu=true %}
+
+<div class="section lightest dark:dark">
+	<div class="container">
+		<div class="row">
+			<div class="columns full">
+				<h3>Courses</h3>
+			</div>
+		</div>
+		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
+			{%- for course in site.data.learnindex.navigation.courses -%}
+				{%- assign image=course.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}
+				{% include tutorial_card.html title=course.name description=course.description link=course.path min-height="250px" image=image %}
+			{%- endfor -%}
+		</div>
+	</div>
+</div>
+
+{% include learn_section.html %}
