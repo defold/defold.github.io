@@ -16,7 +16,7 @@
         },
         {
             "brief": "return an indexed table of all the resources of a collection proxy",
-            "description": "return an indexed table of resources for a collection proxy. Each\nentry is a hexadecimal string that represents the data of the specific\nresource. This representation corresponds with the filename for each\nindividual resource that is exported when you bundle an application with\nLiveUpdate functionality.",
+            "description": "return an indexed table of resources for a collection proxy where the\nreferenced collection has been excluded using LiveUpdate. Each entry is a\nhexadecimal string that represents the data of the specific resource.\nThis representation corresponds with the filename for each individual\nresource that is exported when you bundle an application with LiveUpdate\nfunctionality.",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">print_resources</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">cproxy</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">resources</span> <span class=\"o\">=</span> <span class=\"n\">collectionproxy</span><span class=\"p\">.</span><span class=\"n\">get_resources</span><span class=\"p\">(</span><span class=\"n\">cproxy</span><span class=\"p\">)</span>\n    <span class=\"kr\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"kr\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">resources</span><span class=\"p\">)</span> <span class=\"kr\">do</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Resource: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">v</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "members": [],
@@ -34,7 +34,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "the resources",
+                    "doc": "the resources, or an empty list if the\ncollection was not excluded.",
                     "name": "resources",
                     "types": [
                         "table"

@@ -44,7 +44,7 @@
                     "doc": "on success.",
                     "name": "RESULT_OK",
                     "types": [
-                        ""
+                        "dmResource::Result"
                     ]
                 }
             ],
@@ -52,56 +52,15 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "declare a new extension",
-            "description": "Declare and register new extension to the engine.\nThis macro is used to declare the extension callback functions used by the engine to communicate with the extension.",
-            "error": "",
-            "examples": "Register a new type:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">static</span><span class=\"w\"> </span><span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"nf\">ResourceTypeScriptCreate</span><span class=\"p\">(...)</span><span class=\"w\"> </span><span class=\"p\">{}</span><span class=\"w\"></span>\n<span class=\"k\">static</span><span class=\"w\"> </span><span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"nf\">ResourceTypeScriptDestroy</span><span class=\"p\">(...)</span><span class=\"w\"> </span><span class=\"p\">{}</span><span class=\"w\"></span>\n<span class=\"k\">static</span><span class=\"w\"> </span><span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"nf\">ResourceTypeScriptRecreate</span><span class=\"p\">(...)</span><span class=\"w\"> </span><span class=\"p\">{}</span><span class=\"w\"></span>\n\n<span class=\"k\">struct</span><span class=\"w\"> </span><span class=\"nc\">BlobContext</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">...</span><span class=\"w\"></span>\n<span class=\"p\">};</span><span class=\"w\"></span>\n\n<span class=\"k\">static</span><span class=\"w\"> </span><span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"nf\">RegisterResourceTypeBlob</span><span class=\"p\">(</span><span class=\"n\">ResourceTypeRegisterContext</span><span class=\"o\">&amp;</span><span class=\"w\"> </span><span class=\"n\">ctx</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// The engine.cpp creates the contexts for our built in types.</span>\n<span class=\"w\">    </span><span class=\"c1\">// Here we register a custom type</span>\n<span class=\"w\">    </span><span class=\"n\">BlobContext</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">context</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"k\">new</span><span class=\"w\"> </span><span class=\"n\">BlobContext</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_Contexts</span><span class=\"p\">.</span><span class=\"n\">Put</span><span class=\"p\">(</span><span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_NameHash</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"n\">context</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"w\">    </span><span class=\"k\">return</span><span class=\"w\"> </span><span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">RegisterType</span><span class=\"p\">(</span><span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_Factory</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">                                       </span><span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_Name</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">                                       </span><span class=\"n\">context</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">                                       </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">                                       </span><span class=\"n\">ResourceTypeScriptCreate</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">                                       </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">                                       </span><span class=\"n\">ResourceTypeScriptDestroy</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">                                       </span><span class=\"n\">ResourceTypeScriptRecreate</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n\n<span class=\"k\">static</span><span class=\"w\"> </span><span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"nf\">DeregisterResourceTypeScript</span><span class=\"p\">(</span><span class=\"n\">ResourceTypeRegisterContext</span><span class=\"o\">&amp;</span><span class=\"w\"> </span><span class=\"n\">ctx</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">BlobContext</span><span class=\"o\">**</span><span class=\"w\"> </span><span class=\"n\">context</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">BlobContext</span><span class=\"o\">**</span><span class=\"p\">)</span><span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_Contexts</span><span class=\"p\">.</span><span class=\"n\">Get</span><span class=\"p\">(</span><span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_NameHash</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">delete</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"n\">context</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n\n\n<span class=\"n\">DM_DECLARE_RESOURCE_TYPE</span><span class=\"p\">(</span><span class=\"n\">ResourceTypeBlob</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;blobc&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">RegisterResourceTypeBlob</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">DeregisterResourceTypeScript</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
-            "members": [],
-            "name": "DM_DECLARE_RESOURCE_TYPE",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "external extension symbol description (no quotes).",
-                    "name": "symbol",
-                    "types": [
-                        "symbol"
-                    ]
-                },
-                {
-                    "doc": "The file resource suffix, without a \".\".",
-                    "name": "suffix",
-                    "types": [
-                        "const char*"
-                    ]
-                },
-                {
-                    "doc": "type register function\n<dl>\n<dt><code>ctx</code></dt>\n<dd><span class=\"type\">dmResource::ResourceTypeRegisterContext&amp;</span> Reference to an <code>ResourceTypeRegisterContext</code> structure.</dd>\n</dl>",
-                    "name": "register_fn",
-                    "types": [
-                        "function(dmResource::ResourceTypeRegisterContext& ctx)"
-                    ]
-                },
-                {
-                    "doc": "type deregister function. May be null.\n<dl>\n<dt><code>ctx</code></dt>\n<dd><span class=\"type\">dmResource::ResourceTypeRegisterContext&amp;</span> Reference to an <code>ResourceTypeRegisterContext</code> structure.</dd>\n</dl>",
-                    "name": "deregister_fn",
-                    "types": [
-                        "function(dmResource::ResourceTypeRegisterContext& ctx)"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "MACRO"
-        },
-        {
-            "brief": "Returns the canonical path hash of a resource",
-            "description": "Returns the canonical path hash of a resource",
+            "brief": "Decrypts a file",
+            "description": "Decrypts a file",
             "error": "",
             "examples": "",
             "members": [],
             "name": "FDecryptResource",
-            "notes": [],
+            "notes": [
+                "Currently, the function requires the final resource to be the same length (or less)"
+            ],
             "parameters": [
                 {
                     "doc": "The input/output buffer",
@@ -232,7 +191,7 @@
                     "doc": "Preloader handle",
                     "name": "factory",
                     "types": [
-                        "dmResource::HPreloadHintInfo"
+                        "dmResource::HResourcePreloadHintInfo"
                     ]
                 },
                 {
@@ -273,6 +232,22 @@
                     ]
                 }
             ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "RegisterType",
+            "notes": [
+                "Deprecated in favor of ResourceRegisterTypeCreatorDesc"
+            ],
+            "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
@@ -337,7 +312,7 @@
                     "doc": "on success.",
                     "name": "RESULT_OK",
                     "types": [
-                        ""
+                        "dmResource::Result"
                     ]
                 }
             ],
@@ -345,34 +320,15 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Resource descriptor",
-            "description": "Resource descriptor",
+            "brief": "Setup function pointers and context for a resource...",
+            "description": "Setup function pointers and context for a resource type",
             "error": "",
             "examples": "",
-            "members": [
-                {
-                    "doc": "Hash of resource name",
-                    "name": "m_NameHash",
-                    "type": "uint64_t"
-                },
-                {
-                    "doc": "Resource pointer. Must be unique and not NULL.",
-                    "name": "m_Resource",
-                    "type": "void*"
-                },
-                {
-                    "doc": "Resource pointer. Resource pointer to a previous version of the resource, iff it exists. Only used when recreating resources.",
-                    "name": "m_PrevResource",
-                    "type": "void*"
-                },
-                {
-                    "doc": "Resource size in memory. I.e. the payload of m_Resource",
-                    "name": "m_ResourceSize",
-                    "type": "uint32_t"
-                }
+            "members": [],
+            "name": "SetupType",
+            "notes": [
+                "C++ Helper function. Deprecated in favor of ResourceRegisterTypeCreatorDesc et al"
             ],
-            "name": "SResourceDescriptor",
-            "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
@@ -383,11 +339,11 @@
     "info": {
         "brief": "Resource",
         "description": "Functions for managing resource types.",
-        "file": "dmsdk/resource/resource.h",
+        "file": "dmsdk/resource/resource.hpp",
         "group": "DEFOLD SDK",
         "name": "Resource",
         "namespace": "dmResource",
         "notes": [],
-        "path": "engine/resource/src/dmsdk/resource/resource.h"
+        "path": "engine/resource/src/dmsdk/resource/resource.hpp"
     }
 }
