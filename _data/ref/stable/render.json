@@ -641,6 +641,49 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "dispatches the currently enabled compute program",
+            "description": "Dispatches the currently enabled compute program. The dispatch call takes three arguments x,y,z which constitutes\nthe 'global working group' of the compute dispatch. Together with the 'local working group' specified in the compute shader\nas a layout qualifier, these two sets of parameters forms the number of invocations the compute shader will execute.\nAn optional constant buffer can be provided to override the default constants. If no constants buffer is provided, a default\nsystem constants buffer is used containing constants as defined in the compute program.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">color_params</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">format</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">FORMAT_RGBA</span><span class=\"p\">,</span>\n                           <span class=\"n\">width</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_width</span><span class=\"p\">(),</span>\n                           <span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_height</span><span class=\"p\">()}</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">scene_rt</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">render_target</span><span class=\"p\">({[</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BUFFER_COLOR_BIT</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">color_params</span><span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_compute</span><span class=\"p\">(</span><span class=\"s2\">&quot;bloom&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_texture</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">backing_texture</span><span class=\"p\">)</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_texture</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">scene_rt</span><span class=\"p\">)</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">dispatch_compute</span><span class=\"p\">(</span><span class=\"mi\">128</span><span class=\"p\">,</span> <span class=\"mi\">128</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_compute</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\nDispatch a compute program with a constant buffer:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">constant_buffer</span><span class=\"p\">()</span>\n<span class=\"n\">constants</span><span class=\"p\">.</span><span class=\"n\">tint</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">dispatch_compute</span><span class=\"p\">(</span><span class=\"mi\">32</span><span class=\"p\">,</span> <span class=\"mi\">32</span><span class=\"p\">,</span> <span class=\"mi\">32</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">constants</span><span class=\"p\">})</span>\n</code></pre></div>",
+            "members": [],
+            "name": "render.dispatch_compute",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "global work group size X",
+                    "name": "x",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "global work group size Y",
+                    "name": "y",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "global work group size Z",
+                    "name": "z",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "optional table with properties:\n<dl>\n<dt><code>constants</code></dt>\n<dd><span class=\"type\">constant_buffer</span> optional constants to use while rendering</dd>\n</dl>",
+                    "name": "[options]",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "draws all objects matching a predicate",
             "description": "Draws all objects that match a specified predicate. An optional constant buffer can be\nprovided to override the default constants. If no constants buffer is provided, a default\nsystem constants buffer is used containing constants as defined in materials and set through\n<a href=\"/ref/go#go.set\">go.set</a> (or <a href=\"/ref/particlefx#particlefx.set_constant\">particlefx.set_constant</a>) on visual components.",
             "error": "",
@@ -1394,6 +1437,30 @@
                     "name": "alpha",
                     "types": [
                         "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the current compute program",
+            "description": "The name of the compute program must be specified in the \".render\" resource set\nin the \"game.project\" setting. If nil (or no arguments) are passed to this function,\nthe current compute program will instead be disabled.",
+            "error": "",
+            "examples": "Enable compute program named \"fractals\", then dispatch it.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_compute</span><span class=\"p\">(</span><span class=\"s2\">&quot;fractals&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_texture</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">backing_texture</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">dispatch_compute</span><span class=\"p\">(</span><span class=\"mi\">128</span><span class=\"p\">,</span> <span class=\"mi\">128</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_compute</span><span class=\"p\">()</span>\n</code></pre></div>",
+            "members": [],
+            "name": "render.set_compute",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "compute id to use, or nil to disable",
+                    "name": "compute",
+                    "types": [
+                        "string",
+                        "hash",
+                        "nil"
                     ]
                 }
             ],
