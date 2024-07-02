@@ -80,6 +80,43 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Starts loading an AppOpen Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/app-open), [iOS](https://developers.google.com/admob/ios/app-open)",
+            "examples": "",
+            "name": "admob.load_appopen",
+            "parameters": [
+                {
+                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/9257395921\"`, or on iOS `\"ca-app-pub-3940256099942544/5575463023\"` Original docs [Android](https://developers.google.com/admob/android/app-open), [iOS](https://developers.google.com/admob/ios/app-open)",
+                    "name": "ad_unit_id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Shows loaded AppOpen Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/app-open), [iOS](https://developers.google.com/admob/ios/app-open)",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">admob</span> <span class=\"ow\">and</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">is_appopen_loaded</span><span class=\"p\">()</span> <span class=\"kr\">then</span>\n    <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">show_appopen</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "admob.show_appopen",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Checks if AppOpen Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/app-open), [iOS](https://developers.google.com/admob/ios/app-open)",
+            "examples": "",
+            "name": "admob.is_appopen_loaded",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Starts loading an Interstitial Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/interstitial-fullscreen), [iOS](https://developers.google.com/admob/ios/interstitial)",
             "examples": "",
             "name": "admob.load_interstitial",
@@ -318,6 +355,14 @@
             "description": "",
             "examples": "",
             "name": "MSG_REWARDED_INTERSTITIAL",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "MSG_APPOPEN",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
