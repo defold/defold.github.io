@@ -14,7 +14,7 @@ This extension allows you to interact with Facebook's game connectivity features
 ## Installation
 To use this library in your Defold project, add the following URL to your `game.project` dependencies:
 
-https://github.com/defold/extension-facebook/archive/master.zip
+[https://github.com/defold/extension-facebook/archive/master.zip](https://github.com/defold/extension-facebook/archive/master.zip)
 
 We recommend using a link to a zip file of a [specific release](https://github.com/defold/extension-facebook/releases).
 
@@ -51,16 +51,27 @@ You can easily add, remove and change platform settings in the app dashboard. Yo
 
 ![App dashboard settings](add_platform.png)
 
-Click the *Settings* tab. Notice the numerical *App ID*. That identifier needs to go into the [project settings](/manuals/project-settings) of your Defold game. Open the  *game.project* file from the *Assets pane* and scroll to the *Facebook* section and add the *App ID* to the `Appid` field.
-
-![game.project settings](game_project.png)
-
-Next, in the Advanced section of the *Settings* tab on the Facebook app page, scroll to the *Security* section and copy the *Client token*. Go back to the *game.project* file and add this to the `Clienttoken` field.
+Click the *Settings* tab and note the numerical *App ID*.  Next, in the Advanced section of the *Settings* tab on the Facebook app page, scroll to the *Security* section and note the *Client token*.
 
 Now, back in the *Settings* tab on the Facebook app page, click *+ Add Platform* to add a new platform to the app. Each platform has a set of settings to fill in.
 
 ![Select platform](select_platform.png)
 
+
+## Configuring your Defold app
+
+The *App ID* and *Client token* need to go into the [project settings](/manuals/project-settings) of your Defold game. Start by opening the *game.project* file **using an external text editor** and add the following lines to the end of the file (remember to save the changes):
+
+```
+[facebook]
+appid = 0
+autoinit = 0
+clienttoken = 0
+```
+
+Next, go back to Defold and Open the *game.project* file from the *Assets pane* and scroll to the *Facebook* section and add the *App ID* to the `Appid` field and the *Client token* to the `Clienttoken` field.
+
+![game.project settings](game_project.png)
 
 ## iOS
 
