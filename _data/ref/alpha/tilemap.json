@@ -190,6 +190,46 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "get all the tiles from a layer in a tilemap",
+            "description": "Retrieves all the tiles for the specified layer in the tilemap.\nIt returns a table of rows where the keys are the\ntile positions (see <a href=\"/ref/tilemap#tilemap.get_bounds()\">tilemap.get_bounds()</a>).\nYou can iterate it using <code>tiles[row_index][column_index]</code>.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">left</span><span class=\"p\">,</span> <span class=\"n\">bottom</span><span class=\"p\">,</span> <span class=\"n\">columns_count</span><span class=\"p\">,</span> <span class=\"n\">rows_count</span> <span class=\"o\">=</span> <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">get_bounds</span><span class=\"p\">(</span><span class=\"s2\">&quot;#tilemap&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">tiles</span> <span class=\"o\">=</span> <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">get_tiles</span><span class=\"p\">(</span><span class=\"s2\">&quot;#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;layer&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">tile</span><span class=\"p\">,</span> <span class=\"n\">count</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span>\n<span class=\"kr\">for</span> <span class=\"n\">row_index</span> <span class=\"o\">=</span> <span class=\"n\">bottom</span><span class=\"p\">,</span> <span class=\"n\">bottom</span> <span class=\"o\">+</span> <span class=\"n\">rows_count</span> <span class=\"o\">-</span> <span class=\"mi\">1</span> <span class=\"kr\">do</span>\n    <span class=\"kr\">for</span> <span class=\"n\">column_index</span> <span class=\"o\">=</span> <span class=\"n\">left</span><span class=\"p\">,</span> <span class=\"n\">left</span> <span class=\"o\">+</span> <span class=\"n\">columns_count</span> <span class=\"o\">-</span> <span class=\"mi\">1</span> <span class=\"kr\">do</span>\n        <span class=\"n\">tile</span> <span class=\"o\">=</span> <span class=\"n\">tiles</span><span class=\"p\">[</span><span class=\"n\">row_index</span><span class=\"p\">][</span><span class=\"n\">column_index</span><span class=\"p\">]</span>\n        <span class=\"n\">count</span> <span class=\"o\">=</span> <span class=\"n\">count</span> <span class=\"o\">+</span> <span class=\"mi\">1</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "members": [],
+            "name": "tilemap.get_tiles",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the tilemap",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "the name of the layer for the tiles",
+                    "name": "layer",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "a table of rows representing the layer",
+                    "name": "tiles",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "flip tile horizontally",
             "description": "flip tile horizontally",
             "error": "",
