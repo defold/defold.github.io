@@ -16,25 +16,25 @@ The site uses the `update.py` script from this repository to update the site wit
 ## Requirements
 You need to make sure to have the following dependencies installed before using `update.py`:
 
-* Python 2.7.x
+* Python 3.x
 * Lunr.py (search)
 * Requests (http requests)
 
 Install `lunr.py` and `requests` using:
 
 ```sh
-pip2 install --user lunr==0.5.5
-pip2 install --user requests
-pip2 install --user pyyaml
-pip2 install --user markdown==2.6.7
-pip2 install --user pygments==2.1.3
+pip3 install --user lunr==0.5.5
+pip3 install --user requests
+pip3 install --user pyyaml
+pip3 install --user markdown==3.4.1
+pip3 install --user pygments==2.13.0
 ```
 
 ## Usage
 The `update.py` script should be run from a terminal. The syntax is as follows:
 
 ```sh
-python2 update.py [--download] docs codepad refdoc examples asset-portal games-showcase
+python3 update.py [--download] docs codepad refdoc examples asset-portal games-showcase
 ```
 
 You can use this script when testing locally (see below). The script is also used by GitHub Actions when automatically updating the site when one of the external sources/repositories have changed (see below).
@@ -89,7 +89,7 @@ brew install ruby
 Also add the it to the PATH vaiable in you shell profile (e.g. `~/.zshrc`):
 
 ```sh
-export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 ```
 
 #### 1.3 Install rbenv (deprecated)
@@ -98,7 +98,7 @@ Open a terminal window and install `rbenv` by running the following commands:
 ```sh
 # use brew to install rbenv
 brew install rbenv
-# install rbenv shell support every time a shel is started
+# install rbenv shell support every time a shell is started
 echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 ```
 
