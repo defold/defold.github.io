@@ -2281,6 +2281,50 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Sends an unref script message",
+            "description": "Sends a script message to unreference a script object",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "dmScript::PostScriptUnrefMessage",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The sender",
+                    "name": "sender",
+                    "types": [
+                        "dmMessage::Message*"
+                    ]
+                },
+                {
+                    "doc": "The receiver",
+                    "name": "receiver",
+                    "types": [
+                        "dmMessage::Message*"
+                    ]
+                },
+                {
+                    "doc": "The reference to remove",
+                    "name": "reference",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "success",
+                    "types": [
+                        "Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Retrieve a collection from the specified instance",
             "description": "Retrieve a collection from the specified instance",
             "error": "",
@@ -4567,10 +4611,10 @@
         }
     ],
     "info": {
-        "brief": "SDK Component API documentation",
-        "description": "<span class=\"file\"><dmsdk/gameobject/component.h></span>\nApi for manipulating game object components (WIP)",
+        "brief": "SDK GameObject script API documentation",
+        "description": "<span class=\"file\"><dmsdk/gameobject/script.h></span>",
         "file": "",
-        "name": "Component",
+        "name": "Script",
         "namespace": "dmGameObject",
         "notes": [],
         "path": ""
