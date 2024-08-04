@@ -2281,6 +2281,50 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Sends an unref script message",
+            "description": "Sends a script message to unreference a script object",
+            "error": "",
+            "examples": "",
+            "members": [],
+            "name": "dmScript::PostScriptUnrefMessage",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The sender",
+                    "name": "sender",
+                    "types": [
+                        "dmMessage::Message*"
+                    ]
+                },
+                {
+                    "doc": "The receiver",
+                    "name": "receiver",
+                    "types": [
+                        "dmMessage::Message*"
+                    ]
+                },
+                {
+                    "doc": "The reference to remove",
+                    "name": "reference",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "success",
+                    "types": [
+                        "Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Retrieve a collection from the specified instance",
             "description": "Retrieve a collection from the specified instance",
             "error": "",
@@ -2850,8 +2894,8 @@
             "type": "TYPEDEF"
         },
         {
-            "brief": "Opaque handle to a list of properties",
-            "description": "Opaque handle to a list of properties",
+            "brief": "Handle to a list of properties (gameobject_props.h...",
+            "description": "Handle to a list of properties (gameobject_props.h)",
             "error": "",
             "examples": "",
             "members": [],
@@ -2864,8 +2908,8 @@
             "type": "TYPEDEF"
         },
         {
-            "brief": "Handle to a list of properties (gameobject_props.h...",
-            "description": "Handle to a list of properties (gameobject_props.h)",
+            "brief": "Opaque handle to a list of properties",
+            "description": "Opaque handle to a list of properties",
             "error": "",
             "examples": "",
             "members": [],
@@ -4567,12 +4611,13 @@
         }
     ],
     "info": {
-        "brief": "SDK Component API documentation",
-        "description": "<span class=\"file\"><dmsdk/gameobject/component.h></span>\nApi for manipulating game object components (WIP)",
-        "file": "",
-        "name": "Component",
+        "brief": "Game object property container",
+        "description": "API for game object property container",
+        "file": "dmsdk/gameobject/gameobject_props.h",
+        "group": "DEFOLD SDK",
+        "name": "PropertyContainer",
         "namespace": "dmGameObject",
         "notes": [],
-        "path": ""
+        "path": "engine/gameobject/src/dmsdk/gameobject/gameobject_props.h"
     }
 }
