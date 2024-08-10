@@ -81,9 +81,9 @@ When saving and loading application specific files such as high scores, user set
 [Check the example showing how to use sys.save() and sys.load()](/examples/file/sys_save_load/).
 
 ### How to access files bundled with the application
-You can bundle files with your application in two ways:
+You can include files with your application using bundle resources and custom resources.
 
-1. **CUSTOM RESOURCES**
+#### Custom Resources
 {% include shared/en/custom-resources.md %}
 
 ```lua
@@ -98,7 +98,7 @@ else
 end
 ```
 
-2. **BUNDLE RESOURES**
+#### Bundle Resources
 {% include shared/en/bundle-resources.md %}
 
 ```lua
