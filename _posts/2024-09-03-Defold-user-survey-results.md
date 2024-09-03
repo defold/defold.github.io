@@ -130,7 +130,7 @@ The lack of good samples and guides was also identified as a problem previously 
 
 ![](/images/posts/defold-user-survey-results-2024/third-party-sdks.png)
 
-We are pretty happy with this result. The Defold Foundation maintains almost 70 open source extensions and the Defold Asset Portal as a while contains almost 250 assets that can be used in Defold. With that said, it will be very hard to support and maintain integrations with every conceivable service and SDK out there. Fortunately the native extension system can be used by individual developers to create integrations with the services they need.
+We are pretty happy with this result. The Defold Foundation maintains almost 70 open source extensions and the Defold Asset Portal as a whole contains almost 250 assets that can be used in Defold. With that said, it will be very hard to support and maintain integrations with every conceivable service and SDK out there. Fortunately the native extension system can be used by individual developers to create integrations with the services they need.
 
 
 ## Which third party SDKs, services and tools are you missing the most?
