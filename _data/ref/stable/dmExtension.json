@@ -1,0 +1,819 @@
+{
+    "elements": [
+        {
+            "brief": "extra callback type",
+            "description": "Extra callback type for RegisterCallback function.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "EXTENSION_CALLBACK_PRE_RENDER",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_CALLBACK_POST_RENDER",
+                    "type": ""
+                }
+            ],
+            "name": "CallbackType",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "declare a new extension",
+            "description": "Declare and register new extension to the engine.\nThis macro is used to declare the extension callback functions used by the engine to communicate with the extension.",
+            "error": "",
+            "examples": "Register a new extension:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_DECLARE_EXTENSION</span><span class=\"p\">(</span><span class=\"n\">MyExt</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;MyExt&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">AppInitializeMyExt</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">AppFinalizeMyExt</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">InitializeMyExt</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">UpdateMyExt</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">OnEventMyExt</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FinalizeMyExt</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "C",
+            "members": [],
+            "name": "DM_DECLARE_EXTENSION",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MACRO"
+        },
+        {
+            "brief": "Set if the platform is Android <span class=\"icon-android\"></span>",
+            "description": "Set if the platform is Android <span class=\"icon-android\"></span>",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "DM_PLATFORM_ANDROID",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MACRO"
+        },
+        {
+            "brief": "Set if the platform is Html5 <span class=\"icon-html5\"></span>",
+            "description": "Set if the platform is Html5 <span class=\"icon-html5\"></span>",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "DM_PLATFORM_HTML5",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MACRO"
+        },
+        {
+            "brief": "Set if the platform is iPhoneOS <span class=\"icon-ios\"></span>",
+            "description": "Set if the platform is iPhoneOS <span class=\"icon-ios\"></span>",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "DM_PLATFORM_IOS",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MACRO"
+        },
+        {
+            "brief": "Set if the platform is Linux <span class=\"icon-linux\"></span>",
+            "description": "Set if the platform is Linux <span class=\"icon-linux\"></span>",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "DM_PLATFORM_LINUX",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MACRO"
+        },
+        {
+            "brief": "Set if the platform is OSX <span class=\"icon-macos\"></span>",
+            "description": "Set if the platform is OSX <span class=\"icon-macos\"></span>",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "DM_PLATFORM_OSX",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MACRO"
+        },
+        {
+            "brief": "Set if the platform is Windows <span class=\"icon-windows\"></span> (on both x86 and x86_64)",
+            "description": "Set if the platform is Windows <span class=\"icon-windows\"></span> (on both x86 and x86_64)",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "DM_PLATFORM_WINDOWS",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MACRO"
+        },
+        {
+            "brief": "event id enumeration",
+            "description": "Event id enumeration.\nEVENT_ID_ICONIFYAPP and EVENT_ID_DEICONIFYAPP only available on <span class=\"icon-osx\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span>",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "EXTENSION_EVENT_ID_ACTIVATEAPP",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_EVENT_ID_DEACTIVATEAPP",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_EVENT_ID_ICONIFYAPP",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_EVENT_ID_DEICONIFYAPP",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_EVENT_ID_ENGINE_INITIALIZED",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_EVENT_ID_ENGINE_DELETE",
+                    "type": ""
+                }
+            ],
+            "name": "EventID",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "extra callback type",
+            "description": "Extra callback type for RegisterCallback function.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "EXTENSION_CALLBACK_PRE_RENDER",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_CALLBACK_POST_RENDER",
+                    "type": ""
+                }
+            ],
+            "name": "ExtensionCallbackType",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Used when registering new extensions",
+            "description": "Used when registering new extensions",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionDescBufferSize",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "event id enumeration",
+            "description": "Event id enumeration.\nEVENT_ID_ICONIFYAPP and EVENT_ID_DEICONIFYAPP only available on <span class=\"icon-osx\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span>",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "EXTENSION_EVENT_ID_ACTIVATEAPP",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_EVENT_ID_DEACTIVATEAPP",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_EVENT_ID_ICONIFYAPP",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_EVENT_ID_DEICONIFYAPP",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_EVENT_ID_ENGINE_INITIALIZED",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_EVENT_ID_ENGINE_DELETE",
+                    "type": ""
+                }
+            ],
+            "name": "ExtensionEventID",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "The global parameters avalable when registering an...",
+            "description": "The global parameters avalable when registering and unregistering an extensioin",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [
+                {
+                    "doc": "The game project settings (including overrides and plugins)",
+                    "name": "m_ConfigFile",
+                    "type": "HConfigFile"
+                },
+                {
+                    "doc": "The game resource factory / repository",
+                    "name": "m_ResourceFactory",
+                    "type": "HResourceFactory"
+                },
+                {
+                    "doc": "The Lua state.",
+                    "name": "m_L",
+                    "type": "lua_State*"
+                }
+            ],
+            "name": "ExtensionParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Extension declaration helper. Internal function. U...",
+            "description": "Extension declaration helper. Internal function. Use DM_DECLARE_EXTENSION",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionRegister",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "A persistent buffer of at least 128 bytes.",
+                    "name": "desc",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "size of buffer holding desc. in bytes",
+                    "name": "desc_size",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "extension name. human readble. max 16 characters long.",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "app-init function. May be null",
+                    "name": "app_initialize",
+                    "types": [
+                        "FExtensionAppInitialize"
+                    ]
+                },
+                {
+                    "doc": "app-final function. May be null",
+                    "name": "app_finalize",
+                    "types": [
+                        "FExtensionAppFinalize"
+                    ]
+                },
+                {
+                    "doc": "init function. May not be 0",
+                    "name": "initialize",
+                    "types": [
+                        "FExtensionInitialize"
+                    ]
+                },
+                {
+                    "doc": "finalize function. May not be 0",
+                    "name": "finalize",
+                    "types": [
+                        "FExtensionFinalize"
+                    ]
+                },
+                {
+                    "doc": "update function. May be null",
+                    "name": "update",
+                    "types": [
+                        "FExtensionUpdate"
+                    ]
+                },
+                {
+                    "doc": "event callback function. May be null",
+                    "name": "on_event",
+                    "types": [
+                        "FExtensionOnEvent"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Register application delegate",
+            "description": "Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)",
+            "error": "",
+            "examples": "```objective-c\n// myextension_ios.mm\nid<UIApplicationDelegate> g_MyApplicationDelegate;",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionRegisteriOSUIApplicationDelegate",
+            "notes": [
+                "Note that the delegate needs to be registered before the UIApplicationMain in order to\nhandle any earlier callbacks.\n\nThis function is only available on iOS. [icon:ios]"
+            ],
+            "parameters": [
+                {
+                    "doc": "An UIApplicationDelegate, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc",
+                    "name": "delegate",
+                    "types": [
+                        "id<UIApplicationDelegate>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "result enumeration",
+            "description": "Result enumeration.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "EXTENSION_RESULT_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_RESULT_INIT_ERROR",
+                    "type": ""
+                }
+            ],
+            "name": "ExtensionResult",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Unregister an application delegate",
+            "description": "Deregister a previously registered iOS application delegate\nThis function is only available on iOS. <span class=\"icon-ios\"></span>",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionUnregisteriOSUIApplicationDelegate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "an id<UIApplicationDelegate>",
+                    "name": "delegate",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Extra extension callback typedef",
+            "description": "Callback typedef for functions passed to RegisterCallback().",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "FCallback",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "ExtensionParams"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "",
+                    "types": [
+                        "ExtensionResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Callback when the app is being initialized. Called...",
+            "description": "Callback when the app is being initialized. Called before <a href=\"#FExtensionInitialize\">FExtensionInitialize</a>",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "FExtensionAppInitialize",
+            "notes": [
+                "There is no guarantuee of initialization order. If an extension requires another extension to be initialized,\n      that should be handled in [ref:FExtensionInitialize]."
+            ],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "EXTENSION_RESULT_OK if all went ok",
+                    "name": "result",
+                    "types": [
+                        "ExtensionResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Extra extension callback typedef",
+            "description": "Callback typedef for functions passed to RegisterCallback().",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "FExtensionCallback",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "ExtensionParams"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "",
+                    "types": [
+                        "ExtensionResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Calls for the finalization of an extension",
+            "description": "Calls for the finalization of an extension",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "FExtensionFinalize",
+            "notes": [
+                "All extensions will be called with `FExtensionFinalize` before moving on to the next step, the [ref:FExtensionAppFinalize]"
+            ],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "ExtensionParams"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "EXTENSION_RESULT_OK if all went ok",
+                    "name": "result",
+                    "types": [
+                        "ExtensionResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Callback when the app is being finalized",
+            "description": "Callback when the app is being finalized",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "FExtensionInitialize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "EXTENSION_RESULT_OK if all went ok",
+                    "name": "result",
+                    "types": [
+                        "ExtensionResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Callback when the app is being finalized",
+            "description": "Callback when the app is being finalized",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "FExtensionInitialize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "EXTENSION_RESULT_OK if all went ok",
+                    "name": "result",
+                    "types": [
+                        "ExtensionResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Receives an event from the engine",
+            "description": "Receives an event from the engine",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "FExtensionOnEvent",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "ExtensionParams"
+                    ]
+                },
+                {
+                    "doc": "The current event",
+                    "name": "event",
+                    "types": [
+                        "ExtensionEvent"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Updates an extension. Called for each game frame.",
+            "description": "Updates an extension. Called for each game frame.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "FExtensionUpdate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "ExtensionParams"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "EXTENSION_RESULT_OK if all went ok",
+                    "name": "result",
+                    "types": [
+                        "ExtensionResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "The global parameters avalable when registering an...",
+            "description": "The global parameters avalable when registering and unregistering an extensioin",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [
+                {
+                    "doc": "The game project settings (including overrides and plugins)",
+                    "name": "m_ConfigFile",
+                    "type": "HConfigFile"
+                },
+                {
+                    "doc": "The game resource factory / repository",
+                    "name": "m_ResourceFactory",
+                    "type": "HResourceFactory"
+                },
+                {
+                    "doc": "The Lua state.",
+                    "name": "m_L",
+                    "type": "lua_State*"
+                }
+            ],
+            "name": "Params",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Register application delegate",
+            "description": "Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)",
+            "error": "",
+            "examples": "```objective-c\n// myextension_ios.mm\nid<UIApplicationDelegate> g_MyApplicationDelegate;",
+            "language": "C++",
+            "members": [],
+            "name": "RegisteriOSUIApplicationDelegate",
+            "notes": [
+                "Note that the delegate needs to be registered before the UIApplicationMain in order to\nhandle any earlier callbacks.\n\nThis function is only available on iOS. [icon:ios]"
+            ],
+            "parameters": [
+                {
+                    "doc": "An UIApplicationDelegate, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc",
+                    "name": "delegate",
+                    "types": [
+                        "id<UIApplicationDelegate>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "result enumeration",
+            "description": "Result enumeration.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "EXTENSION_RESULT_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_RESULT_INIT_ERROR",
+                    "type": ""
+                }
+            ],
+            "name": "Result",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Unregister an application delegate",
+            "description": "Deregister a previously registered iOS application delegate\nThis function is only available on iOS. <span class=\"icon-ios\"></span>",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "UnregisteriOSUIApplicationDelegate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "an id<UIApplicationDelegate>",
+                    "name": "delegate",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "SDK Extension API documentation",
+        "description": "Functions for creating and controlling engine native extension libraries.",
+        "file": "dmsdk/extension/extension_gen.hpp",
+        "group": "DEFOLD SDK",
+        "language": "C++",
+        "name": "Extension",
+        "namespace": "dmExtension",
+        "notes": [],
+        "path": "engine/extension/src/dmsdk/extension/extension_gen.hpp"
+    }
+}

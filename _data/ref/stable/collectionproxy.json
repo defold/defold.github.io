@@ -5,6 +5,7 @@
             "description": "Post this message to a collection-proxy-component to start background loading of the referenced collection.\nWhen the loading has completed, the message <a href=\"#proxy_loaded\">proxy_loaded</a> will be sent back to the script.\nA loaded collection must be initialized (message <a href=\"#init\">init</a>) and enabled (message <a href=\"#enable\">enable</a>) in order to be simulated and drawn.",
             "error": "",
             "examples": "In this example we use a collection proxy to load/unload a level (collection).\nThe example assume the script belongs to an instance with collection-proxy-component with id \"proxy\".\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;start_level&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- some script tells us to start loading the level</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#proxy&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;async_load&quot;</span><span class=\"p\">)</span>\n        <span class=\"c1\">-- store sender for later notification</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">loader</span> <span class=\"o\">=</span> <span class=\"n\">sender</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;proxy_loaded&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- enable the collection and let the loader know</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">sender</span><span class=\"p\">,</span> <span class=\"s2\">&quot;enable&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">loader</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
             "members": [],
             "name": "async_load",
             "notes": [],
@@ -19,6 +20,7 @@
             "description": "return an indexed table of resources for a collection proxy where the\nreferenced collection has been excluded using LiveUpdate. Each entry is a\nhexadecimal string that represents the data of the specific resource.\nThis representation corresponds with the filename for each individual\nresource that is exported when you bundle an application with LiveUpdate\nfunctionality.",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">print_resources</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">cproxy</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">resources</span> <span class=\"o\">=</span> <span class=\"n\">collectionproxy</span><span class=\"p\">.</span><span class=\"n\">get_resources</span><span class=\"p\">(</span><span class=\"n\">cproxy</span><span class=\"p\">)</span>\n    <span class=\"kr\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"kr\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">resources</span><span class=\"p\">)</span> <span class=\"kr\">do</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Resource: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">v</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
             "members": [],
             "name": "collectionproxy.get_resources",
             "notes": [],
@@ -49,6 +51,7 @@
             "description": "return an array of missing resources for a collection proxy. Each\nentry is a hexadecimal string that represents the data of the specific\nresource. This representation corresponds with the filename for each\nindividual resource that is exported when you bundle an application with\nLiveUpdate functionality. It should be considered good practise to always\ncheck whether or not there are any missing resources in a collection proxy\nbefore attempting to load the collection proxy.",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">expected</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">resources</span><span class=\"p\">[</span><span class=\"n\">id</span><span class=\"p\">]</span>\n    <span class=\"kr\">if</span> <span class=\"n\">response</span> <span class=\"o\">~=</span> <span class=\"kc\">nil</span> <span class=\"ow\">and</span> <span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"mi\">200</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Successfully downloaded resource: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">expected</span><span class=\"p\">)</span>\n        <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">store_resource</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">response</span><span class=\"p\">)</span>\n    <span class=\"kr\">else</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Failed to download resource: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">expected</span><span class=\"p\">)</span>\n        <span class=\"c1\">-- error handling</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">download_resources</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">cproxy</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">resources</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"kd\">local</span> <span class=\"n\">resources</span> <span class=\"o\">=</span> <span class=\"n\">collectionproxy</span><span class=\"p\">.</span><span class=\"n\">missing_resources</span><span class=\"p\">(</span><span class=\"n\">cproxy</span><span class=\"p\">)</span>\n    <span class=\"kr\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"kr\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">resources</span><span class=\"p\">)</span> <span class=\"kr\">do</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Downloading resource: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">v</span><span class=\"p\">)</span>\n\n        <span class=\"kd\">local</span> <span class=\"n\">uri</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;http://example.defold.com/&quot;</span> <span class=\"o\">..</span> <span class=\"n\">v</span>\n        <span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">http</span><span class=\"p\">.</span><span class=\"n\">request</span><span class=\"p\">(</span><span class=\"n\">uri</span><span class=\"p\">,</span> <span class=\"s2\">&quot;GET&quot;</span><span class=\"p\">,</span> <span class=\"n\">callback</span><span class=\"p\">)</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">resources</span><span class=\"p\">[</span><span class=\"n\">id</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">v</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
             "members": [],
             "name": "collectionproxy.missing_resources",
             "notes": [],
@@ -75,10 +78,104 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "collection proxy is already loaded",
+            "description": "It's impossible to change the collection if the collection is already loaded.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "collectionproxy.RESULT_ALREADY_LOADED",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "collection proxy is loading now",
+            "description": "It's impossible to change the collection while the collection proxy is loading.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "collectionproxy.RESULT_LOADING",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "collection proxy isn't excluded",
+            "description": "It's impossible to change the collection for a proxy that isn't excluded.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "collectionproxy.RESULT_NOT_EXCLUDED",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "changes the collection for a collection proxy.",
+            "description": "The collection should be loaded by the collection proxy.\nSetting the collection to \"nil\" will revert it back to the original collection.\nThe collection proxy shouldn't be loaded and should have the 'Exclude' checkbox checked.\nThis functionality is designed to simplify the management of Live Update resources.",
+            "error": "",
+            "examples": "The example assume the script belongs to an instance with collection-proxy-component with id \"proxy\".\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"nb\">error</span> <span class=\"o\">=</span> <span class=\"n\">collectionproxy</span><span class=\"p\">.</span><span class=\"n\">set_collection</span><span class=\"p\">(</span><span class=\"s2\">&quot;/go#collectionproxy&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;/LU/3.collectionc&quot;</span><span class=\"p\">)</span>\n <span class=\"kr\">if</span> <span class=\"n\">ok</span> <span class=\"kr\">then</span>\n     <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;The collection has been changed to /LU/3.collectionc&quot;</span><span class=\"p\">)</span>\n <span class=\"kr\">else</span>\n     <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Error changing collection to /LU/3.collectionc &quot;</span><span class=\"p\">,</span> <span class=\"nb\">error</span><span class=\"p\">)</span>\n <span class=\"kr\">end</span>\n <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;/go#collectionproxy&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;load&quot;</span><span class=\"p\">)</span>\n <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;/go#collectionproxy&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;init&quot;</span><span class=\"p\">)</span>\n <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;/go#collectionproxy&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;enable&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "collectionproxy.set_collection",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the collection proxy component",
+                    "name": "[url]",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "the path to the new collection, or <code>nil</code>",
+                    "name": "[prototype]",
+                    "types": [
+                        "string",
+                        "nil"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "collection change was successful",
+                    "name": "success",
+                    "types": [
+                        "boolean"
+                    ]
+                },
+                {
+                    "doc": "one of the collectionproxy.RESULT_* codes if unsuccessful",
+                    "name": "code",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "tells a collection proxy to disable the referenced collection",
             "description": "Post this message to a collection-proxy-component to disable the referenced collection, which in turn disables the contained game objects and components.",
             "error": "",
             "examples": "In this example we use a collection proxy to load/unload a level (collection).\nThe example assumes the script belongs to an instance with a collection-proxy-component with id \"proxy\".\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;end_level&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">proxy</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">(</span><span class=\"s2\">&quot;#proxy&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">proxy</span><span class=\"p\">,</span> <span class=\"s2\">&quot;disable&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">proxy</span><span class=\"p\">,</span> <span class=\"s2\">&quot;final&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">proxy</span><span class=\"p\">,</span> <span class=\"s2\">&quot;unload&quot;</span><span class=\"p\">)</span>\n        <span class=\"c1\">-- store sender for later notification</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">unloader</span> <span class=\"o\">=</span> <span class=\"n\">sender</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;proxy_unloaded&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- let unloader know</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">unloader</span><span class=\"p\">,</span> <span class=\"s2\">&quot;level_ended&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
             "members": [],
             "name": "disable",
             "notes": [],
@@ -93,6 +190,7 @@
             "description": "Post this message to a collection-proxy-component to enable the referenced collection, which in turn enables the contained game objects and components.\nIf the referenced collection was not initialized prior to this call, it will automatically be initialized.",
             "error": "",
             "examples": "In this example we use a collection proxy to load/unload a level (collection).\nThe example assume the script belongs to an instance with collection-proxy-component with id \"proxy\".\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;start_level&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- some script tells us to start loading the level</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#proxy&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;load&quot;</span><span class=\"p\">)</span>\n        <span class=\"c1\">-- store sender for later notification</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">loader</span> <span class=\"o\">=</span> <span class=\"n\">sender</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;proxy_loaded&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- enable the collection and let the loader know</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">sender</span><span class=\"p\">,</span> <span class=\"s2\">&quot;enable&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">loader</span><span class=\"p\">,</span> <span class=\"s2\">&quot;level_started&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
             "members": [],
             "name": "enable",
             "notes": [],
@@ -107,6 +205,7 @@
             "description": "Post this message to a collection-proxy-component to finalize the referenced collection, which in turn finalizes the contained game objects and components.",
             "error": "",
             "examples": "In this example we use a collection proxy to load/unload a level (collection).\nThe example assumes the script belongs to an instance with a collection-proxy-component with id \"proxy\".\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;end_level&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">proxy</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">(</span><span class=\"s2\">&quot;#proxy&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">proxy</span><span class=\"p\">,</span> <span class=\"s2\">&quot;disable&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">proxy</span><span class=\"p\">,</span> <span class=\"s2\">&quot;final&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">proxy</span><span class=\"p\">,</span> <span class=\"s2\">&quot;unload&quot;</span><span class=\"p\">)</span>\n        <span class=\"c1\">-- store sender for later notification</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">unloader</span> <span class=\"o\">=</span> <span class=\"n\">sender</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;proxy_unloaded&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- let unloader know</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">unloader</span><span class=\"p\">,</span> <span class=\"s2\">&quot;level_ended&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
             "members": [],
             "name": "final",
             "notes": [],
@@ -121,6 +220,7 @@
             "description": "Post this message to a collection-proxy-component to initialize the game objects and components in the referenced collection.\nSending <a href=\"#enable\">enable</a> to an uninitialized collection proxy automatically initializes it.\nThe <a href=\"#init\">init</a> message simply provides a higher level of control.",
             "error": "",
             "examples": "In this example we use a collection proxy to load/unload a level (collection).\nThe example assume the script belongs to an instance with collection-proxy-component with id \"proxy\".\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;load_level&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- some script tells us to start loading the level</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#proxy&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;load&quot;</span><span class=\"p\">)</span>\n        <span class=\"c1\">-- store sender for later notification</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">loader</span> <span class=\"o\">=</span> <span class=\"n\">sender</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;proxy_loaded&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- only initialize the proxy at this point since we want to enable it at a later time for some reason</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">sender</span><span class=\"p\">,</span> <span class=\"s2\">&quot;init&quot;</span><span class=\"p\">)</span>\n        <span class=\"c1\">-- let loader know</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">loader</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
             "members": [],
             "name": "init",
             "notes": [],
@@ -135,6 +235,7 @@
             "description": "Post this message to a collection-proxy-component to start the loading of the referenced collection.\nWhen the loading has completed, the message <a href=\"#proxy_loaded\">proxy_loaded</a> will be sent back to the script.\nA loaded collection must be initialized (message <a href=\"#init\">init</a>) and enabled (message <a href=\"#enable\">enable</a>) in order to be simulated and drawn.",
             "error": "",
             "examples": "In this example we use a collection proxy to load/unload a level (collection).\nThe example assume the script belongs to an instance with collection-proxy-component with id \"proxy\".\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;start_level&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- some script tells us to start loading the level</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#proxy&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;load&quot;</span><span class=\"p\">)</span>\n        <span class=\"c1\">-- store sender for later notification</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">loader</span> <span class=\"o\">=</span> <span class=\"n\">sender</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;proxy_loaded&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- enable the collection and let the loader know</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">sender</span><span class=\"p\">,</span> <span class=\"s2\">&quot;enable&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">loader</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
             "members": [],
             "name": "load",
             "notes": [],
@@ -149,6 +250,7 @@
             "description": "This message is sent back to the script that initiated a collection proxy load when the referenced\ncollection is loaded. See documentation for <a href=\"#load\">load</a> for examples how to use.",
             "error": "",
             "examples": "",
+            "language": "",
             "members": [],
             "name": "proxy_loaded",
             "notes": [],
@@ -163,6 +265,7 @@
             "description": "This message is sent back to the script that initiated an unload with a collection proxy when\nthe referenced collection is unloaded. See documentation for <a href=\"#unload\">unload</a> for examples how to use.",
             "error": "",
             "examples": "",
+            "language": "",
             "members": [],
             "name": "proxy_unloaded",
             "notes": [],
@@ -177,6 +280,7 @@
             "description": "Post this message to a collection-proxy-component to modify the time-step used when updating the collection controlled by the proxy.\nThe time-step is modified by a scaling <code>factor</code> and can be incremented either continuously or in discrete steps.\nThe continuous mode can be used for slow-motion or fast-forward effects.\nThe discrete mode is only useful when scaling the time-step to pass slower than real time (<code>factor</code> is below 1).\nThe time-step will then be set to 0 for as many frames as the scaling demands and then take on the full real-time-step for one frame,\nto simulate pulses. E.g. if <code>factor</code> is set to <code>0.1</code> the time-step would be 0 for 9 frames, then be 1/60 for one\nframe, 0 for 9 frames, and so on. The result in practice is that the game looks like it's updated at a much lower frequency than 60 Hz,\nwhich can be useful for debugging when each frame needs to be inspected.",
             "error": "",
             "examples": "The examples assumes the script belongs to an instance with a collection-proxy-component with id \"proxy\".\nUpdate the collection twice as fast:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#proxy&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;set_time_step&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">factor</span> <span class=\"o\">=</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">mode</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">})</span>\n</code></pre></div>\n\nUpdate the collection twice as slow:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#proxy&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;set_time_step&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">factor</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"n\">mode</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">})</span>\n</code></pre></div>\n\nSimulate 1 FPS for the collection:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#proxy&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;set_time_step&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">factor</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"o\">/</span><span class=\"mi\">60</span><span class=\"p\">,</span> <span class=\"n\">mode</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">})</span>\n</code></pre></div>",
+            "language": "",
             "members": [],
             "name": "set_time_step",
             "notes": [],
@@ -206,6 +310,7 @@
             "description": "Post this message to a collection-proxy-component to start the unloading of the referenced collection.\nWhen the unloading has completed, the message <a href=\"#proxy_unloaded\">proxy_unloaded</a> will be sent back to the script.",
             "error": "",
             "examples": "In this example we use a collection proxy to load/unload a level (collection).\nThe example assumes the script belongs to an instance with a collection-proxy-component with id \"proxy\".\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;end_level&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">proxy</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">(</span><span class=\"s2\">&quot;#proxy&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">proxy</span><span class=\"p\">,</span> <span class=\"s2\">&quot;disable&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">proxy</span><span class=\"p\">,</span> <span class=\"s2\">&quot;final&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">proxy</span><span class=\"p\">,</span> <span class=\"s2\">&quot;unload&quot;</span><span class=\"p\">)</span>\n        <span class=\"c1\">-- store sender for later notification</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">unloader</span> <span class=\"o\">=</span> <span class=\"n\">sender</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;proxy_unloaded&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- let unloader know</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">unloader</span><span class=\"p\">,</span> <span class=\"s2\">&quot;level_ended&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
             "members": [],
             "name": "unload",
             "notes": [],
@@ -221,6 +326,7 @@
         "description": "Messages for controlling and interacting with collection proxies\nwhich are used to dynamically load collections into the runtime.",
         "file": "",
         "group": "COMPONENTS",
+        "language": "",
         "name": "Collection proxy",
         "namespace": "collectionproxy",
         "notes": [],
