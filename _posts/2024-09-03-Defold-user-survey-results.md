@@ -34,7 +34,7 @@ We are not happy with the fact that many developers chose "Not enough code sampl
 
 The "Requires internet connection" option when building nagtive extensions will see some improvements soon. We have been busy improving the build server infrastructure and one of our goals is that it should be much simpler to set up a local build server on a developer machine instead of building nagtive code in the cloud.
 
-## Which platforms are the most important to you?
+## Which platforms are the most important to you? (pick 3)
 
 ![](/images/posts/defold-user-survey-results-2024/platforms.png)
 
