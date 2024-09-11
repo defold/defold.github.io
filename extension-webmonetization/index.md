@@ -22,24 +22,6 @@ Three things are required in order to send and receive payments:
 3. The developer must add a **Payment Pointer** on the webpage containing content that should be monetized - The payment pointer tells the provider which wallet to send the money to.
 
 
-### Web Monetization Providers
-
-Players must have an account with a Web Monetization Provider to be able to stream payments to game developers:
-
-[![Coil logo](coil_logo.svg)](https://coil.com)
-
-Coil is currently the only provider but others will likely be available in the future
-
-
-### Web Monetization Wallets
-
-Game developers must have a Web Monetization enabled wallet to hold received payments. There are several different services which provide wallets with support for Web Monetization:
-
-[![Uphold logo](uphold_logo.svg)](https://www.uphold.com/signup)
-
-[![GateHub logo](gatehub_logo.svg)](https://gatehub.net)
-
-
 ### Payment Pointers
 
 The wallet provider will assign a payment pointer to the wallet. The payment pointer is a public address for a wallet that can be shared with anyone that wants to make a payment to the owner of the wallet. Learn more at [paymentpointers.org](https://paymentpointers.org/). The format of a payment pointer is similar to a URL, but starts with a $:
