@@ -6,8 +6,6 @@ author: Björn Ritzl
 tags: ["news", "gcp", "extender"]
 ---
 
-# Defold cloud builder improvements
-
 When the Defold extension system and the cloud builders were launched eight years ago it marked a milestone for Defold when game developers no longer had to rely on the Defold development team to provide integrations to third party services and platform specific features. Instead developers could write native code and add Lua bindings and have the code seamlessly integrated into the engine without installing any additional tools or SDKs. 
 
 The release of the extension system has resulted in a large ecosystem of plugins, available from the [Asset Portal](/assets) and integrated into games in a few simple steps. Many of the plugins are maintained by the Defold Foundation, but there are also plenty of examples of popular community created plugins. The extension system has without a doubt been a large contributing factor to the continued adoption and use of Defold among game developers!
