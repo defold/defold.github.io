@@ -131,7 +131,7 @@ Several profiles can be passed to the command line. The following example runs A
 docker compose -p extender -f server/docker/docker-compose.yml --profile android --profile web --profile windows up
 ```
 
-For more information about docker compose arguments see https://docs.docker.com/reference/cli/docker/compose/. When docker compose is up you can use http://localhost:9000 as Build server address in the Editor's preference or as `--build-server` value if you use Bob to build the project.
+For more information about docker compose arguments see [https://docs.docker.com/reference/cli/docker/compose/](https://docs.docker.com/reference/cli/docker/compose/). When docker compose is up you can use [http://localhost:9000](http://localhost:9000) as Build server address in the Editor's preference or as `--build-server` value if you use Bob to build the project.
 
 To stop services press Ctrl+C if docker compose runs in non-detached mode, or if docker compose was run in detached mode (e.g. '-d' flag was passed to docker compose up command):
 
