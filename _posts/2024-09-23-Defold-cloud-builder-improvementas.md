@@ -32,32 +32,32 @@ You also need a Google account to download the containers with the platform spec
 
 Once you have the above mentioned software installed follow these steps to install and run the Defold cloud builders:
 
-- 1. Authorize to Google Cloud and create Application default credentials:
+1) Authorize to Google Cloud and create Application default credentials:
 
 ```sh
 gcloud auth application-default login
 ```
 
-- 2. Configure Docker to use Artifact registries:
+2) Configure Docker to use Artifact registries:
 
 ```sh
 gcloud auth configure-docker europe-west1-docker.pkg.dev
 ```
 
-- 3. Check that everything set up correctly by pulling base image (make sure Docker Desktop is running!):
+3) Check that everything set up correctly by pulling base image (make sure Docker Desktop is running!):
 
 ```sh
 docker pull --platform linux/amd64 europe-west1-docker.pkg.dev/extender-426409/extender-public-registry/extender-base-env:latest
 ```
 
-- 4. Clone `Extender` repository and switch to cloned repository root folder:
+4) Clone `Extender` repository and switch to cloned repository root folder:
 
 ```sh
 git clone https://github.com/defold/extender.git
 cd extender
 ```
 
-- 5. Download prebuilt jars:
+5) Download prebuilt jars:
 
 
 ```sh
@@ -110,7 +110,7 @@ cp ${TMP_DIR}/$(ls ${TMP_DIR} | grep server-${EXTENDER_VERSION}.jar) ${APPLICATI
 cp ${TMP_DIR}/$(ls ${TMP_DIR} | grep manifestmergetool-${MANIFESTMERGETOOL_VERSION}.jar) ${APPLICATION_DIR}/manifestmergetool.jar
 ```
 
-- 6. Run docker compose main command to start the server:
+6) Run docker compose main command to start the server:
 
 ```sh
 docker compose -p extender -f server/docker/docker-compose.yml --profile <profile> up
