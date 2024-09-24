@@ -32,33 +32,42 @@ You also need a Google account to download the containers with the platform spec
 
 Once you have the above mentioned software installed follow these steps to install and run the Defold cloud builders:
 
-1) Authorize to Google Cloud and create Application default credentials:
+#### Step 1 - Authorize to Google Cloud and create Application default credentials
+
+You need to have a Google account when downloading the Docker container images for the build servers. We require a Google account so that we can monitor and ensure fair use of the public container registry and temporarily suspend accounts which download images excessively.
 
 ```sh
 gcloud auth application-default login
 ```
 
-2) Configure Docker to use Artifact registries:
+#### Step 2 - Configure Docker to use Google Cloud when authenticating
+
+Docker needs to be configured to use `gcloud` as a credential helper when downloading container images from the public container registry at `europe-west1-docker.pkg.dev`.
 
 ```sh
 gcloud auth configure-docker europe-west1-docker.pkg.dev
 ```
 
-3) Check that everything set up correctly by pulling base image (make sure Docker Desktop is running!):
+#### Step 3 - Verify that Docker and Google Cloud are configured correctly
+
+Verify that Docker and Google Cloud are set up successfully by pulling the base image used by all of the build server container images. Make sure that Docker Desktop is running before running the command below:
 
 ```sh
 docker pull --platform linux/amd64 europe-west1-docker.pkg.dev/extender-426409/extender-public-registry/extender-base-env:latest
 ```
 
-4) Clone `Extender` repository and switch to cloned repository root folder:
+#### Step 4 - Clone `Extender` repository
+
+With Docker and Google Cloud correctly set up we are almost ready to start the servers. Before we can start the server we need to clone the Git repository containing the build server:
 
 ```sh
 git clone https://github.com/defold/extender.git
 cd extender
 ```
 
-5) Download prebuilt jars:
+#### Step 5 - Download prebuilt jar files
 
+Next step is to download the prebuilt server jar (`extender.jar`) and additional tools jar (`manifestmergetool.jar`):
 
 ```sh
 TMP_DIR=$(pwd)/server/_tmp
@@ -110,7 +119,9 @@ cp ${TMP_DIR}/$(ls ${TMP_DIR} | grep server-${EXTENDER_VERSION}.jar) ${APPLICATI
 cp ${TMP_DIR}/$(ls ${TMP_DIR} | grep manifestmergetool-${MANIFESTMERGETOOL_VERSION}.jar) ${APPLICATION_DIR}/manifestmergetool.jar
 ```
 
-6) Run docker compose main command to start the server:
+#### Step 6 - Start the server
+
+We can now start the server by running the docker compose main command:
 
 ```sh
 docker compose -p extender -f server/docker/docker-compose.yml --profile <profile> up
