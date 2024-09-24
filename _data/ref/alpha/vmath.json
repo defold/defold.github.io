@@ -1,6 +1,59 @@
 {
     "elements": [
         {
+            "brief": "clamp input value in range [min, max] and return clamped value",
+            "description": "Clamp input value to be in range of [min, max]. In case if input value has vector3|vector4 type\nreturn new vector3|vector4 with clamped value at every vector's element.\nMin/max arguments can be vector3|vector4. In that case clamp excuted per every vector's element",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "vmath.clamp",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Input value or vector of values",
+                    "name": "value",
+                    "types": [
+                        "number",
+                        "vector3",
+                        "vector4"
+                    ]
+                },
+                {
+                    "doc": "Min value(s) border",
+                    "name": "min",
+                    "types": [
+                        "number",
+                        "vector3",
+                        "vector4"
+                    ]
+                },
+                {
+                    "doc": "Max value(s) border",
+                    "name": "max",
+                    "types": [
+                        "number",
+                        "vector3",
+                        "vector4"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Clamped value or vector",
+                    "name": "clamped_value",
+                    "types": [
+                        "number",
+                        "vector3",
+                        "vector4"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "calculates the conjugate of a quaternion",
             "description": "Calculates the conjugate of a quaternion. The result is a\nquaternion with the same magnitudes but with the sign of\nthe imaginary (vector) parts changed:\n<code>q<super>*</super> = [w, -v]</code>",
             "error": "",
@@ -437,28 +490,43 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "creates a matrix from a quaternion",
-            "description": "The resulting matrix describes the same rotation as the quaternion, but does not have any translation (also like the quaternion).",
+            "brief": "creates a new matrix4 from translation, rotation and scale",
+            "description": "Creates a new matrix constructed from separate\ntranslation vector, roation quaternion and scale vector",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">quat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_from_quat</span><span class=\"p\">(</span><span class=\"n\">quat</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span> <span class=\"o\">*</span> <span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4_frustum(-1, 1, -1, 1, 1, 1000)</span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">translation</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">103</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">95</span><span class=\"p\">,</span> <span class=\"mi\">14</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">quat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">scale</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">result</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_compose</span><span class=\"p\">(</span><span class=\"n\">translation</span><span class=\"p\">,</span> <span class=\"n\">quat</span><span class=\"p\">,</span> <span class=\"n\">scale</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4(-25, -10, 11, 103, 28, -9.5, 2, -95, -10, 10, -4.5, 14, 0, 0, 0, 1)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
-            "name": "vmath.matrix4_from_quat",
+            "name": "vmath.matrix4_compose",
             "notes": [],
             "parameters": [
                 {
-                    "doc": "quaternion to create matrix from",
-                    "name": "q",
+                    "doc": "translation",
+                    "name": "translation",
+                    "types": [
+                        "vector3",
+                        "vecto4"
+                    ]
+                },
+                {
+                    "doc": "rotation",
+                    "name": "rotation",
                     "types": [
                         "quaternion"
+                    ]
+                },
+                {
+                    "doc": "scale",
+                    "name": "scale",
+                    "types": [
+                        "vector3"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "matrix represented by quaternion",
-                    "name": "m",
+                    "doc": "new matrix4",
+                    "name": "matrix",
                     "types": [
                         "matrix4"
                     ]
@@ -697,6 +765,37 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "creates a matrix from a quaternion",
+            "description": "The resulting matrix describes the same rotation as the quaternion, but does not have any translation (also like the quaternion).",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">quat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_quat</span><span class=\"p\">(</span><span class=\"n\">quat</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span> <span class=\"o\">*</span> <span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4_frustum(-1, 1, -1, 1, 1, 1000)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "vmath.matrix4_quat",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "quaternion to create matrix from",
+                    "name": "q",
+                    "types": [
+                        "quaternion"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "matrix represented by quaternion",
+                    "name": "m",
+                    "types": [
+                        "matrix4"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "creates a matrix from rotation around x-axis",
             "description": "The resulting matrix describes a rotation around the x-axis\nby the specified angle.",
             "error": "",
@@ -781,6 +880,113 @@
                 {
                     "doc": "matrix from rotation around z-axis",
                     "name": "m",
+                    "types": [
+                        "matrix4"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "creates a new matrix4 from scale vector",
+            "description": "Creates a new matrix constructed from scale vector",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">scale</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">result</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_scale</span><span class=\"p\">(</span><span class=\"n\">scale</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4(1, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 1)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "vmath.matrix4_scale",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "scale",
+                    "name": "scale",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "new matrix4",
+                    "name": "matrix",
+                    "types": [
+                        "matrix4"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "creates a new matrix4 from uniform scale",
+            "description": "creates a new matrix4 from uniform scale",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">result</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_scale</span><span class=\"p\">(</span><span class=\"mf\">0.5</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4(0.5, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 1)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "vmath.matrix4_scale",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "scale",
+                    "name": "scale",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "new matrix4",
+                    "name": "matrix",
+                    "types": [
+                        "matrix4"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "creates a new matrix4 from three scale components",
+            "description": "Creates a new matrix4 from three scale components",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">result</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_scale</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4(1, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 1)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "vmath.matrix4_scale",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "scale along X axis",
+                    "name": "scale_x",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "sclae along Y axis",
+                    "name": "scale_y",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "scale along Z asis",
+                    "name": "scale_z",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "new matrix4",
+                    "name": "matrix",
                     "types": [
                         "matrix4"
                     ]
@@ -1184,6 +1390,37 @@
             "returnvalues": [
                 {
                     "doc": "quaternion representing the rotation from first to second vector",
+                    "name": "q",
+                    "types": [
+                        "quaternion"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "creates a new quaternion from matrix4",
+            "description": "Creates a new quaternion with the components set\naccording to the supplied parameter values.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "vmath.quat_matrix4",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "source matrix4",
+                    "name": "matrix",
+                    "types": [
+                        "matrix4"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "new quaternion",
                     "name": "q",
                     "types": [
                         "quaternion"
