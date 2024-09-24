@@ -67,7 +67,7 @@ cd extender
 
 #### Step 5 - Download prebuilt jar files
 
-Next step is to download the prebuilt server jar (`extender.jar`) and additional tools jar (`manifestmergetool.jar`):
+Next step is to download the prebuilt server (`extender.jar`) and manifest merge tool (`manifestmergetool.jar`):
 
 ```sh
 TMP_DIR=$(pwd)/server/_tmp
@@ -149,6 +149,11 @@ To stop services press Ctrl+C if docker compose runs in non-detached mode, or if
 ```sh
 docker compose -p extender down
 ```
+
+
+## What about macOS and iOS?
+
+The macOS and iOS builds are done on real Apple hardware using a build server running in stand-alone mode without Docker. Instead XCode, Java and other required tools are installed directly on the machine and the build server is running as a normal Java process. You can learn how to set this up in the [build server documentation on GitHub](https://github.com/defold/extender?tab=readme-ov-file#running-as-a-stand-alone-server-on-macos).
 
 
 ## Getting help and reporting problems
