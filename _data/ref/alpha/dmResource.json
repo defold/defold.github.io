@@ -424,6 +424,96 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get resource descriptor from resource (name)",
+            "description": "Get resource descriptor from resource (name)",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "GetDescriptor",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "name": "factory",
+                    "types": [
+                        "HResourceFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource path",
+                    "name": "path",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Returned resource descriptor",
+                    "name": "descriptor",
+                    "types": [
+                        "HResourceDescriptor*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "ResourceResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get resource descriptor from resource (name)",
+            "description": "Get resource descriptor from resource (name)",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "GetDescriptorByHash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "name": "factory",
+                    "types": [
+                        "HResourceFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource path hash",
+                    "name": "path_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Returned resource descriptor",
+                    "name": "descriptor",
+                    "types": [
+                        "HResourceDescriptor*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "ResourceResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Returns the canonical path hash of a resource",
             "description": "Returns the canonical path hash of a resource",
             "error": "",
@@ -683,14 +773,14 @@
             "description": "Hint the preloader what to load before Create is called on the resource.\nThe resources are not guaranteed to be loaded before Create is called.\nThis function can be called from a worker thread.",
             "error": "",
             "examples": "",
-            "language": "C",
+            "language": "C++",
             "members": [],
             "name": "PreloadHint",
             "notes": [],
             "parameters": [
                 {
                     "doc": "Preloader handle",
-                    "name": "factory",
+                    "name": "preloader",
                     "types": [
                         "dmResource::HResourcePreloadHintInfo"
                     ]
@@ -791,7 +881,7 @@
             "description": "Release resource",
             "error": "",
             "examples": "",
-            "language": "C",
+            "language": "C++",
             "members": [],
             "name": "Release",
             "notes": [
@@ -1179,6 +1269,44 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Hint the preloader what to load before Create is c...",
+            "description": "Hint the preloader what to load before Create is called on the resource.\nThe resources are not guaranteed to be loaded before Create is called.\nThis function can be called from a worker thread.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ResourcePreloadHint",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Preloader handle",
+                    "name": "preloader",
+                    "types": [
+                        "dmResource::HResourcePreloadHintInfo"
+                    ]
+                },
+                {
+                    "doc": "Resource path",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if successfully invoking preloader.",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Parameters to ResourcePreload function of the reso...",
             "description": "Parameters to ResourcePreload function of the resource type",
             "error": "",
@@ -1223,6 +1351,38 @@
                     "name": "decrypt_resource",
                     "types": [
                         "dmResource::FDecryptResource"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Release resource",
+            "description": "Release resource",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ResourceRelease",
+            "notes": [
+                "Decreases ref count by 1. If it reaches 0, the resource destroy function is called."
+            ],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "name": "factory",
+                    "types": [
+                        "HResourceFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource pointer",
+                    "name": "resource",
+                    "types": [
+                        "void*"
                     ]
                 }
             ],
