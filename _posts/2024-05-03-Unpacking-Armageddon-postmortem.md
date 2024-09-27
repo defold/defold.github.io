@@ -12,7 +12,7 @@ In this guest post we invited forum user PlayMedusa to share the story of how Un
 
 ---
 
-![Splash](/images/posts/unpacking-armageddon/unpacking-splash.png)
+![Splash](https://www.defold.com/images/posts/unpacking-armageddon/unpacking-splash.png)
 
 "Unpacking Armageddon" is my entry for Ludum Dare 55, themed "SUMMONER". Given the theme’s specificity, it’s no wonder that many entries gravitated towards pentagrams and summoning demons. However, I’ve noticed a significant decrease in platformers and a broader diversity in game genres in this edition?
 
@@ -21,11 +21,11 @@ In this guest post we invited forum user PlayMedusa to share the story of how Un
 
 For some reason I felt like making an arcade puzzle game. Fortunately, knowing I wouldn’t have much spare time that weekend, I came up with an idea much more quickly than in previous editions: Sokoban for someone who doesn’t really enjoy Sokoban puzzles, pushing and pulling boxes that are just in the way, so you are forced to constantly shuffle them around in a shrinking space. This allowed me to start working early on Saturday morning.
 
-![Sketch](/images/posts/unpacking-armageddon/sketch.jpeg)
+![Sketch](https://www.defold.com/images/posts/unpacking-armageddon/sketch.jpeg)
 
 And thus, the story emerged from the mechanics and the theme: Armageddon has begun, you are a hell-designated summoner, but it caught you in the middle of moving into a new home. All your belongings are in cardboard boxes lying around the invocation basement! Demons are eager to enter our realm, but can’t do it if something is on top of the pentagram that serves as a gateway. You have to clear pentagrams free by pushing and pulling boxes in order to let demons enter our real and fullfill your summoning quota.
 
-![Progress 1](/images/posts/unpacking-armageddon/game1.png)
+![Progress 1](https://www.defold.com/images/posts/unpacking-armageddon/game1.png)
 
 After the Unity Fee mess last year I also started looking for alternative game engines, and found that Defold is pretty interesting for pure 2D games. Early this year I entered the Global Game Jam with Defold, making a ‘full’ game for the first time with this engine, and the experience was superb. So I have switched from Pico8 to Defold. I still miss Pico8, but Defold makes some things just easier. At some point I might try Picotron…
 
@@ -33,13 +33,13 @@ I enjoy, however, working with really low resolutions, so I stuck to Pico8’s 1
 
 By 13:30 I had some final art (main character, boxes and the background), and the character could move and detect boxes.
 
-![Progress 2](/images/posts/unpacking-armageddon/game2.gif)
+![Progress 2](https://www.defold.com/images/posts/unpacking-armageddon/game2.gif)
 
 A friend was visiting, so I left home to have lunch and didn’t come back until 19:00 - totally worth it, though. I still managed to work two more hours at night and finished the main mechanic: pushing boxes around to set pentagrams free. If not done quick enough, pentagrams explode- Otherwise they glow and disappeared, scoring.
 
 Not much for the first day, but pretty good for roughly 5-7 hours of work, considering art was final already. I expected a hard second day.
 
-![Progress 3](/images/posts/unpacking-armageddon/game3.gif)
+![Progress 3](https://www.defold.com/images/posts/unpacking-armageddon/game3.gif)
 
 ### DAY 2
 
@@ -47,13 +47,13 @@ Woke up early on Sunday and went for the next basic mechanic, pulling boxes! And
 
 By lunch time I came up with the last game mechanic: while you have to clear pentagrams from boxes, you have to place the Ritual Candle on them to complete the summoning. Game felt quite fun! So all that remained was adding sound, UI and good/bad endings.
 
-![Progress 4](/images/posts/unpacking-armageddon/game4.gif)
+![Progress 4](https://www.defold.com/images/posts/unpacking-armageddon/game4.gif)
 
 [Freesound.org](https://freesound.org/) is great for sound effects, but one of the last things I added to the game wa the summoners’ chant when the Ritual Candle is placed on a pentagram. Shouting KLAATU BARADA NICTO! to the mic at 11pm while the family was already sleeping was too fun.
 
 Extra points if you get the RIGHT movie reference!
 
-![Gameplay](/images/posts/unpacking-armageddon/unpacking-armageddon.gif)
+![Gameplay](https://www.defold.com/images/posts/unpacking-armageddon/unpacking-armageddon.gif)
 
 
 ### WHAT WENT GOOD

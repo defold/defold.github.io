@@ -20,13 +20,13 @@ There was also a free-form feedback field at the end of the survey. The survey w
 
 ## Which aspects of Defold do you like the most? (pick 5)
 
-![](/images/posts/defold-user-survey-results-2024/like.png)
+![](https://www.defold.com/images/posts/defold-user-survey-results-2024/like.png)
 
 There were not really any big surprises in these results. We know that a lot of users are very happy with the runtime performance of Defold. We are also happy that many users still value the free support we provide and the friendly community we foster over at the Defold forum and Discord. Thank you to everyone for helping the Defold community remain a friendly place for developers from all over the world!
 
 ## Which aspects of Defold do you dislike the most? (pick 5)
 
-![](/images/posts/defold-user-survey-results-2024/dislike.png)
+![](https://www.defold.com/images/posts/defold-user-survey-results-2024/dislike.png)
 
 We were not surprised that "Poor 3D support" was chosen by a lot of users. Interest in 3D game development using Defold has grown a lot since we started working on more 3D features. We still have a long way to go and by the time of the next survey we expect the number of developers picking "Poor 3D support" to have decreased by quite a bit.
 
@@ -36,7 +36,7 @@ The "Requires internet connection" option when building nagtive extensions will 
 
 ## Which platforms are the most important to you? (pick 3)
 
-![](/images/posts/defold-user-survey-results-2024/platforms.png)
+![](https://www.defold.com/images/posts/defold-user-survey-results-2024/platforms.png)
 
 The fact that HTML5 is the most popular platform really shows how Defold developers have embraced the web as a valid target platform for their games. We also see many success stories on sites such as Poki, CrazyGames, Cool Math Games and the like.
 
@@ -46,17 +46,17 @@ Compared to the results from last year's survey Android has dropped from second 
 
 ## How do you prefer to learn new things?
 
-![](/images/posts/defold-user-survey-results-2024/ways-of-learning.png)
+![](https://www.defold.com/images/posts/defold-user-survey-results-2024/ways-of-learning.png)
 
 At least among our community developers prefer to learn from code samples and written manuals over video tutorials. From our point of view this is a good thing because high quality videos are expensive and time consuming to make. We will not focus efforts into video production and instead leave that to experts such as Unfolding Defold and other good game development channels.
 
 ## How would you describe your interest in 3D game development?
 
-![](/images/posts/defold-user-survey-results-2024/3d-interest.png)
+![](https://www.defold.com/images/posts/defold-user-survey-results-2024/3d-interest.png)
 
 We were a bit surprised by the fact that more than 50% of developers are interested in 3D game development in Defold. The strong response will help guide future development efforts, but we will have to tread carefully to also maintain very strong 2D support.
 
-![](/images/posts/defold-user-survey-results-2024/3d-support.png)
+![](https://www.defold.com/images/posts/defold-user-survey-results-2024/3d-support.png)
 
 We knew that we would score low on this question. It also showed in the previous question where many users said that they dislike the lack of good 3D support in Defold. Perhaps a little bit surprising is that so many developers are still interested in 3D game development using Defold despite these shortcomings.
 
@@ -128,7 +128,7 @@ The lack of good samples and guides was also identified as a problem previously 
 
 ## Third party SDK support
 
-![](/images/posts/defold-user-survey-results-2024/third-party-sdks.png)
+![](https://www.defold.com/images/posts/defold-user-survey-results-2024/third-party-sdks.png)
 
 We are pretty happy with this result. The Defold Foundation maintains almost 70 open source extensions and the Defold Asset Portal as a whole contains almost 250 assets that can be used in Defold. With that said, it will be very hard to support and maintain integrations with every conceivable service and SDK out there. Fortunately the native extension system can be used by individual developers to create integrations with the services they need.
 
