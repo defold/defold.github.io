@@ -384,14 +384,14 @@ function createWasm() {
 var tempDouble;
 var tempI64;
 var ASM_CONSTS = {
-  674016: function _() {
+  674192: function _() {
     if (navigator.userAgent.toLowerCase().indexOf("chrome") > -1) {
       console.log("%c    %c    Made with Defold    %c    %c    https://www.defold.com", "background: #fd6623; padding:5px 0; border: 5px;", "background: #272c31; color: #fafafa; padding:5px 0;", "background: #39a3e4; padding:5px 0;", "background: #ffffff; color: #000000; padding:5px 0;");
     } else {
       console.log("Made with Defold -=[ https://www.defold.com ]=-");
     }
   },
-  674444: function _($0) {
+  674620: function _($0) {
     var jsResult;
     var isSuccess = 1;
     try {
@@ -405,13 +405,13 @@ var ASM_CONSTS = {
     var stringOnWasmHeap = stringToNewUTF8(jsResult);
     return stringOnWasmHeap;
   },
-  674712: function _() {
+  674888: function _() {
     document.removeEventListener("click", Module.__defold_interaction_listener);
     document.removeEventListener("keyup", Module.__defold_interaction_listener);
     document.removeEventListener("touchend", Module.__defold_interaction_listener);
     Module.__defold_interaction_listener = undefined;
   },
-  675e3: function _() {
+  675176: function _() {
     Module.__defold_interaction_listener = function () {
       _dmScript_RunInteractionCallback();
     };
@@ -419,10 +419,10 @@ var ASM_CONSTS = {
     document.addEventListener("keyup", Module.__defold_interaction_listener);
     document.addEventListener("touchend", Module.__defold_interaction_listener);
   },
-  675321: function _($0) {
+  675497: function _($0) {
     Module.printErr(UTF8ToString($0));
   },
-  675360: function _($0) {
+  675536: function _($0) {
     Module.print(UTF8ToString($0));
   }
 };
