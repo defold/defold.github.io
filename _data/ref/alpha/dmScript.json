@@ -855,10 +855,10 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "if the value at #index is a hash",
-                    "name": "true",
+                    "doc": "true if the value at #index is a hash",
+                    "name": "result",
                     "types": [
-                        ""
+                        "bool"
                     ]
                 }
             ],
@@ -1523,6 +1523,44 @@
             ],
             "replaces": "",
             "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Check if the value at #index is a hash",
+            "description": "Check if the value at #index is a hash",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmScript::ToHash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Lua state",
+                    "name": "L",
+                    "types": [
+                        "lua_State*"
+                    ]
+                },
+                {
+                    "doc": "Index of the value",
+                    "name": "index",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "pointer to hash or 0 if it's not a hash",
+                    "name": "hash",
+                    "types": [
+                        "dmhash_t*"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
