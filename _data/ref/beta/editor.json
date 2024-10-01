@@ -1,0 +1,1913 @@
+{
+    "elements": [
+        {
+            "brief": "check if you can get this property so <code>editor.get()</code> won't throw an error",
+            "description": "Check if you can get this property so <code>editor.get()</code> won't throw an error",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.can_get",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Either resource path (e.g. <code>\"/main/game.script\"</code>), or internal node id passed to the script by the editor",
+                    "name": "node",
+                    "types": [
+                        "string",
+                        "userdata"
+                    ]
+                },
+                {
+                    "doc": "Either <code>\"path\"</code>, <code>\"text\"</code>, or a property from the Outline view (hover the label to see its editor script name)",
+                    "name": "property",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "value",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "check if <code>\"set\"</code> action with this property won't throw an error",
+            "description": "Check if <code>\"set\"</code> action with this property won't throw an error",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.can_set",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Either resource path (e.g. <code>\"/main/game.script\"</code>), or internal node id passed to the script by the editor",
+                    "name": "node",
+                    "types": [
+                        "string",
+                        "userdata"
+                    ]
+                },
+                {
+                    "doc": "Either <code>\"path\"</code>, <code>\"text\"</code>, or a property from the Outline view (hover the label to see its editor script name)",
+                    "name": "property",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "value",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create a directory if it does not exist, and all non-existent parent directories.",
+            "description": "Create a directory if it does not exist, and all non-existent parent directories.\nThrows an error if the directory can't be created.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code>editor.create_directory(&quot;/assets/gen&quot;)\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "editor.create_directory",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Resource path (starting with <code>/</code>) of a directory to create",
+                    "name": "resource_path",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "delete a directory if it exists, and all existent child directories and files.",
+            "description": "Delete a directory if it exists, and all existent child directories and files.\nThrows an error if the directory can't be deleted.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code>editor.delete_directory(&quot;/assets/gen&quot;)\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "editor.delete_directory",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Resource path (starting with <code>/</code>) of a directory to delete",
+                    "name": "resource_path",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "a string, SHA1 of Defold editor",
+            "description": "A string, SHA1 of Defold editor",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.editor_sha1",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "a string, SHA1 of Defold engine",
+            "description": "A string, SHA1 of Defold engine",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.engine_sha1",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "execute a shell command.",
+            "description": "Execute a shell command.\nAny shell command arguments should be provided as separate argument strings to this function. If the exit code of the process is not zero, this function throws error. By default, the function returns <code>nil</code>, but it can be configured to capture the output of the shell command as string and return it \u2014 set <code>out</code> option to <code>\"capture\"</code> to do it.<br>By default, after this shell command is executed, the editor will reload resources from disk.",
+            "error": "",
+            "examples": "Make a directory with spaces in it:\n<div class=\"codehilite\"><pre><span></span><code>editor.execute(&quot;mkdir&quot;, &quot;new dir&quot;)\n</code></pre></div>\n\nRead the git status:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">local</span><span class=\"w\"> </span><span class=\"n\">status</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">editor</span><span class=\"o\">.</span><span class=\"n\">execute</span><span class=\"p\">(</span><span class=\"s2\">&quot;git&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s2\">&quot;status&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s2\">&quot;--porcelain&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"n\">reload_resources</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"bp\">false</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"n\">out</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"s2\">&quot;capture&quot;</span><span class=\"w\"></span>\n<span class=\"p\">})</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "editor.execute",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Shell command name to execute",
+                    "name": "command",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional shell command arguments",
+                    "name": "[...]",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional options table. Supported entries:                                            <ul>                                              <li>                                                <span class=\"type\">boolean</span> <code>reload_resources</code>: make the editor reload the resources from disk after the command is executed, default <code>true</code>                                              </li>                                              <li>                                                <span class=\"type\">string</span> <code>out</code>: standard output mode, either:                                                <ul>                                                  <li>                                                    <code>\"pipe\"</code>: the output is piped to the editor console (this is the default behavior).                                                  </li>                                                  <li>                                                    <code>\"capture\"</code>: capture and return the output to the editor script with trailing newlines trimmed.                                                  </li>                                                  <li>                                                    <code>\"discard\"</code>: the output is discarded completely.                                                  </li>                                                </ul>                                              </li>                                              <li>                                                <span class=\"type\">string</span> <code>err</code>: standard error output mode, either:                                                <ul>                                                  <li>                                                    <code>\"pipe\"</code>: the error output is piped to the editor console (this is the default behavior).                                                  </li>                                                  <li>                                                    <code>\"stdout\"</code>: the error output is redirected to the standard output of the process.                                                  </li>                                                  <li>                                                    <code>\"discard\"</code>: the error output is discarded completely.                                                  </li>                                                </ul>                                              </li>                                            </ul>",
+                    "name": "[options]",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "If <code>out</code> option is set to <code>\"capture\"</code>, returns the output as string with trimmed trailing newlines. Otherwise, returns <code>nil</code>.",
+                    "name": "result",
+                    "types": [
+                        "nil",
+                        "string"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "query information about file system path",
+            "description": "Query information about file system path",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.external_file_attributes",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "External file path, resolved against project root if relative",
+                    "name": "path",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "A table with the following keys:<dl>                                                  <dt><code>path <small>string</small></code></dt>                                                  <dd>resolved file path</dd>                                                  <dt><code>exists <small>boolean</small></code></dt>                                                  <dd>whether there is a file system entry at the path</dd>                                                  <dt><code>is_file <small>boolean</small></code></dt>                                                  <dd>whether the path corresponds to a file</dd>                                                  <dt><code>is_directory <small>boolean</small></code></dt>                                                  <dd>whether the path corresponds to a directory</dd>                                                </dl>",
+                    "name": "attributes",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get a value of a node property inside the editor.",
+            "description": "Get a value of a node property inside the editor.\nSome properties might be read-only, and some might be unavailable in different contexts, so you should use <code>editor.can_get()</code> before reading them and <code>editor.can_set()</code> before making the editor set them.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.get",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Either resource path (e.g. <code>\"/main/game.script\"</code>), or internal node id passed to the script by the editor",
+                    "name": "node",
+                    "types": [
+                        "string",
+                        "userdata"
+                    ]
+                },
+                {
+                    "doc": "Either <code>\"path\"</code>, <code>\"text\"</code>, or a property from the Outline view (hover the label to see its editor script name)",
+                    "name": "property",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "property value",
+                    "name": "value",
+                    "types": [
+                        "any"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "editor platform id.",
+            "description": "Editor platform id.\nA <code>string</code>, either:\n- <code>\"x86_64-win32\"</code>\n- <code>\"x86_64-macos\"</code>\n- <code>\"arm64-macos\"</code>\n- <code>\"x86_64-linux\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.platform",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "query information about a project resource",
+            "description": "Query information about a project resource",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.resource_attributes",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Resource path (starting with <code>/</code>) of a resource to look up",
+                    "name": "resource_path",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "A table with the following keys:<dl><dt><code>exists <small>boolean</small></code></dt><dd>whether a resource identified by the path exists in the project</dd><dt><code>is_file <small>boolean</small></code></dt><dd>whether the resource represents a file with some content</dd><dt><code>is_directory <small>boolean</small></code></dt><dd>whether the resource represents a directory</dd></dl>",
+                    "name": "value",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "persist any unsaved changes to disk",
+            "description": "Persist any unsaved changes to disk",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.save",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "change the editor state in a single, undoable transaction",
+            "description": "Change the editor state in a single, undoable transaction",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.transact",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "] An array of transaction steps created using <code>editor.tx.*</code> functions",
+                    "name": "txs",
+                    "types": [
+                        "transaction_step["
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create a set transaction step.",
+            "description": "Create a set transaction step.\nWhen the step is transacted using <code>editor.transact()</code>, it will set the node's property to a supplied value",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.tx.set",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Either resource path (e.g. <code>\"/main/game.script\"</code>), or internal node id passed to the script by the editor",
+                    "name": "node",
+                    "types": [
+                        "string",
+                        "userdata"
+                    ]
+                },
+                {
+                    "doc": "Either <code>\"path\"</code>, <code>\"text\"</code>, or a property from the Outline view (hover the label to see its editor script name)",
+                    "name": "property",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "A new value for the property",
+                    "name": "value",
+                    "types": [
+                        "any"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "A transaction step",
+                    "name": "result",
+                    "types": [
+                        "transaction_step"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "<code>\"bottom\"</code>",
+            "description": "<code>\"bottom\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ALIGNMENT.BOTTOM",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"bottom-left\"</code>",
+            "description": "<code>\"bottom-left\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ALIGNMENT.BOTTOM_LEFT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"bottom-right\"</code>",
+            "description": "<code>\"bottom-right\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ALIGNMENT.BOTTOM_RIGHT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"center\"</code>",
+            "description": "<code>\"center\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ALIGNMENT.CENTER",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"left\"</code>",
+            "description": "<code>\"left\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ALIGNMENT.LEFT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"right\"</code>",
+            "description": "<code>\"right\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ALIGNMENT.RIGHT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"top\"</code>",
+            "description": "<code>\"top\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ALIGNMENT.TOP",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"top-left\"</code>",
+            "description": "<code>\"top-left\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ALIGNMENT.TOP_LEFT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"top-right\"</code>",
+            "description": "<code>\"top-right\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ALIGNMENT.TOP_RIGHT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "button with a label and/or an icon",
+            "description": "Button with a label and/or an icon",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.button",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>on_pressed <small>function</small></code></dt><dd>button press callback, will be invoked without arguments when the user presses the button</dd><dt><code>text <small>string</small></code></dt><dd>the text</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>icon <small>string</small></code></dt><dd>predefined icon name; either: <ul><li><code>editor.ui.ICON.OPEN_RESOURCE</code></li><li><code>editor.ui.ICON.PLUS</code></li><li><code>editor.ui.ICON.MINUS</code></li><li><code>editor.ui.ICON.CLEAR</code></li></ul></dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "check box with a label",
+            "description": "Check box with a label",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.check_box",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>value <small>boolean</small></code></dt><dd>determines if the checkbox should appear checked</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>change callback, will receive the new value</dd><dt><code>text <small>string</small></code></dt><dd>the text</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string</small></code></dt><dd>issue message, will be shown in a tooltip</dd></dl></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "<code>\"error\"</code>",
+            "description": "<code>\"error\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.COLOR.ERROR",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"hint\"</code>",
+            "description": "<code>\"hint\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.COLOR.HINT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"override\"</code>",
+            "description": "<code>\"override\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.COLOR.OVERRIDE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"text\"</code>",
+            "description": "<code>\"text\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.COLOR.TEXT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"warning\"</code>",
+            "description": "<code>\"warning\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.COLOR.WARNING",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "convert a function to a UI component.",
+            "description": "Convert a function to a UI component.\nThe wrapped function may call any hooks functions (<code>editor.ui.use_*</code>), but on any function invocation, the hooks calls must be the same, and in the same order. This means that hooks should not be used inside loops and conditions or after a conditional return statement.\nThe following props are supported automatically:<dl><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.component",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "function, will receive a single table of props when called",
+                    "name": "fn",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "decorated component function that may be invoked with a props table create component",
+                    "name": "value",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "dialog component, a top-level window component that can't be used as a child of other components",
+            "description": "Dialog component, a top-level window component that can't be used as a child of other components",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.dialog",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Required props: <dl><dt><code>title <small>string</small></code></dt><dd>OS dialog window title</dd></dl>  Optional props: <dl><dt><code>header <small>component</small></code></dt><dd>top part of the dialog, defaults to <code>editor.ui.heading({text = props.title})</code></dd><dt><code>content <small>component</small></code></dt><dd>content of the dialog</dd><dt><code>buttons <small>component[]</small></code></dt><dd>array of <code>editor.ui.dialog_button(...)</code> components, footer of the dialog. Defaults to a single Close button</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "dialog button shown in the footer of a dialog",
+            "description": "Dialog button shown in the footer of a dialog",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.dialog_button",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Required props: <dl><dt><code>text <small>string</small></code></dt><dd>button text</dd></dl>  Optional props: <dl><dt><code>result <small>any</small></code></dt><dd>value returned by <code>editor.ui.show_dialog(...)</code> if this button is pressed</dd><dt><code>default <small>boolean</small></code></dt><dd>if set, pressing <code>Enter</code> in the dialog will trigger this button</dd><dt><code>cancel <small>boolean</small></code></dt><dd>if set, pressing <code>Escape</code> in the dialog will trigger this button</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the button can be interacted with</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "input component for selecting files from the file system",
+            "description": "Input component for selecting files from the file system",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.external_file_field",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>value <small>string</small></code></dt><dd>file or directory path; resolved against project root if relative</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive the absolute path of a selected file/folder or nil if the field was cleared; even though the selector dialog allows selecting only files, it's possible to receive directories and non-existent file system entries using text field input</dd><dt><code>title <small>string</small></code></dt><dd>OS window title</dd><dt><code>filters <small>table[]</small></code></dt><dd>File filters, an array of filter tables, where each filter has following keys:<dl><dt><code>description <small>string</small></code></dt><dd>string explaining the filter, e.g. <code>\"Text files (<em>.txt)\"</code></dd><dt><code>extensions <small>string[]</small></code></dt><dd>array of file extension patterns, e.g. <code>\"</em>.txt\"</code>, <code>\"<em>.</em>\"</code> or <code>\"game.project\"</code></dd></dl></dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string</small></code></dt><dd>issue message, will be shown in a tooltip</dd></dl></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "layout container that places its children in a 2D grid",
+            "description": "Layout container that places its children in a 2D grid",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.grid",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>children <small>component[][]</small></code></dt><dd>array of arrays of child components</dd><dt><code>rows <small>table[]</small></code></dt><dd>array of row option tables, separate configuration for each row:<dl><dt><code>grow <small>boolean</small></code></dt><dd>determines if the row should grow to fill available space</dd></dl></dd><dt><code>columns <small>table[]</small></code></dt><dd>array of column option tables, separate configuration for each column:<dl><dt><code>grow <small>boolean</small></code></dt><dd>determines if the column should grow to fill available space</dd></dl></dd><dt><code>padding <small>string, number</small></code></dt><dd>empty space from the edges of the container to its children; either: <ul><li><code>editor.ui.PADDING.NONE</code></li><li><code>editor.ui.PADDING.SMALL</code></li><li><code>editor.ui.PADDING.MEDIUM</code></li><li><code>editor.ui.PADDING.LARGE</code></li><li>non-negative number, pixels</li></ul></dd><dt><code>spacing <small>string, number</small></code></dt><dd>empty space between child components, defaults to <code>editor.ui.SPACING.MEDIUM</code>; either: <ul><li><code>editor.ui.SPACING.NONE</code></li><li><code>editor.ui.SPACING.SMALL</code></li><li><code>editor.ui.SPACING.MEDIUM</code></li><li><code>editor.ui.SPACING.LARGE</code></li><li>non-negative number, pixels</li></ul></dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "a text heading",
+            "description": "A text heading",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.heading",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>text <small>string</small></code></dt><dd>the text</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>color <small>string</small></code></dt><dd>semantic color, defaults to <code>editor.ui.COLOR.TEXT</code>; either: <ul><li><code>editor.ui.COLOR.TEXT</code></li><li><code>editor.ui.COLOR.HINT</code></li><li><code>editor.ui.COLOR.OVERRIDE</code></li><li><code>editor.ui.COLOR.WARNING</code></li><li><code>editor.ui.COLOR.ERROR</code></li></ul></dd><dt><code>word_wrap <small>boolean</small></code></dt><dd>determines if the lines of text are word-wrapped when they don't fit in the assigned bounds, defaults to true</dd><dt><code>style <small>string</small></code></dt><dd>heading style, defaults to <code>editor.ui.HEADING_STYLE.H3</code>; either: <ul><li><code>editor.ui.HEADING_STYLE.H1</code></li><li><code>editor.ui.HEADING_STYLE.H2</code></li><li><code>editor.ui.HEADING_STYLE.H3</code></li><li><code>editor.ui.HEADING_STYLE.H4</code></li><li><code>editor.ui.HEADING_STYLE.H5</code></li><li><code>editor.ui.HEADING_STYLE.H6</code></li><li><code>editor.ui.HEADING_STYLE.DIALOG</code></li><li><code>editor.ui.HEADING_STYLE.FORM</code></li></ul></dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "<code>\"dialog\"</code>",
+            "description": "<code>\"dialog\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.HEADING_STYLE.DIALOG",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"form\"</code>",
+            "description": "<code>\"form\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.HEADING_STYLE.FORM",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"h1\"</code>",
+            "description": "<code>\"h1\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.HEADING_STYLE.H1",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"h2\"</code>",
+            "description": "<code>\"h2\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.HEADING_STYLE.H2",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"h3\"</code>",
+            "description": "<code>\"h3\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.HEADING_STYLE.H3",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"h4\"</code>",
+            "description": "<code>\"h4\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.HEADING_STYLE.H4",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"h5\"</code>",
+            "description": "<code>\"h5\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.HEADING_STYLE.H5",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"h6\"</code>",
+            "description": "<code>\"h6\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.HEADING_STYLE.H6",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "layout container that places its children in a horizontal row one after another",
+            "description": "Layout container that places its children in a horizontal row one after another",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.horizontal",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>children <small>component[]</small></code></dt><dd>array of child components</dd><dt><code>padding <small>string, number</small></code></dt><dd>empty space from the edges of the container to its children; either: <ul><li><code>editor.ui.PADDING.NONE</code></li><li><code>editor.ui.PADDING.SMALL</code></li><li><code>editor.ui.PADDING.MEDIUM</code></li><li><code>editor.ui.PADDING.LARGE</code></li><li>non-negative number, pixels</li></ul></dd><dt><code>spacing <small>string, number</small></code></dt><dd>empty space between child components, defaults to <code>editor.ui.SPACING.MEDIUM</code>; either: <ul><li><code>editor.ui.SPACING.NONE</code></li><li><code>editor.ui.SPACING.SMALL</code></li><li><code>editor.ui.SPACING.MEDIUM</code></li><li><code>editor.ui.SPACING.LARGE</code></li><li>non-negative number, pixels</li></ul></dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "an icon from a predefined set",
+            "description": "An icon from a predefined set",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.icon",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Required props: <dl><dt><code>icon <small>string</small></code></dt><dd>predefined icon name; either: <ul><li><code>editor.ui.ICON.OPEN_RESOURCE</code></li><li><code>editor.ui.ICON.PLUS</code></li><li><code>editor.ui.ICON.MINUS</code></li><li><code>editor.ui.ICON.CLEAR</code></li></ul></dd></dl>  Optional props: <dl><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "<code>\"clear\"</code>",
+            "description": "<code>\"clear\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ICON.CLEAR",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"minus\"</code>",
+            "description": "<code>\"minus\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ICON.MINUS",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"open-resource\"</code>",
+            "description": "<code>\"open-resource\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ICON.OPEN_RESOURCE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"plus\"</code>",
+            "description": "<code>\"plus\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ICON.PLUS",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "integer input component based on a text field, reports changes on commit (<code>Enter</code> or focus loss)",
+            "description": "Integer input component based on a text field, reports changes on commit (<code>Enter</code> or focus loss)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.integer_field",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>value <small>any</small></code></dt><dd>value</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive the new value</dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string</small></code></dt><dd>issue message, will be shown in a tooltip</dd></dl></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "<code>\"error\"</code>",
+            "description": "<code>\"error\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ISSUE_SEVERITY.ERROR",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"warning\"</code>",
+            "description": "<code>\"warning\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ISSUE_SEVERITY.WARNING",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "label intended for use with input components",
+            "description": "Label intended for use with input components",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.label",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>text <small>string</small></code></dt><dd>the text</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>color <small>string</small></code></dt><dd>semantic color, defaults to <code>editor.ui.COLOR.TEXT</code>; either: <ul><li><code>editor.ui.COLOR.TEXT</code></li><li><code>editor.ui.COLOR.HINT</code></li><li><code>editor.ui.COLOR.OVERRIDE</code></li><li><code>editor.ui.COLOR.WARNING</code></li><li><code>editor.ui.COLOR.ERROR</code></li></ul></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "number input component based on a text field, reports changes on commit (<code>Enter</code> or focus loss)",
+            "description": "Number input component based on a text field, reports changes on commit (<code>Enter</code> or focus loss)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.number_field",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>value <small>any</small></code></dt><dd>value</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive the new value</dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string</small></code></dt><dd>issue message, will be shown in a tooltip</dd></dl></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "open a resource, either in the editor or in a third-party app",
+            "description": "Open a resource, either in the editor or in a third-party app",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.open_resource",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Resource path (starting with <code>/</code>) of a resource to open",
+                    "name": "resource_path",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "<code>\"horizontal\"</code>",
+            "description": "<code>\"horizontal\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ORIENTATION.HORIZONTAL",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"vertical\"</code>",
+            "description": "<code>\"vertical\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.ORIENTATION.VERTICAL",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"large\"</code>",
+            "description": "<code>\"large\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.PADDING.LARGE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"medium\"</code>",
+            "description": "<code>\"medium\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.PADDING.MEDIUM",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"none\"</code>",
+            "description": "<code>\"none\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.PADDING.NONE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"small\"</code>",
+            "description": "<code>\"small\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.PADDING.SMALL",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "a paragraph of text",
+            "description": "A paragraph of text",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.paragraph",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>text <small>string</small></code></dt><dd>the text</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>color <small>string</small></code></dt><dd>semantic color, defaults to <code>editor.ui.COLOR.TEXT</code>; either: <ul><li><code>editor.ui.COLOR.TEXT</code></li><li><code>editor.ui.COLOR.HINT</code></li><li><code>editor.ui.COLOR.OVERRIDE</code></li><li><code>editor.ui.COLOR.WARNING</code></li><li><code>editor.ui.COLOR.ERROR</code></li></ul></dd><dt><code>word_wrap <small>boolean</small></code></dt><dd>determines if the lines of text are word-wrapped when they don't fit in the assigned bounds, defaults to true</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "input component for selecting project resources",
+            "description": "Input component for selecting project resources",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.resource_field",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>value <small>string</small></code></dt><dd>resource path (must start with <code>/</code>)</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive either resource path of a selected resource or nil when the field is cleared; even though the resource selector dialog allows filtering on resource extensions, it's possible to receive resources with other extensions and non-existent resources using text field input</dd><dt><code>title <small>string</small></code></dt><dd>dialog title, defaults to <code>\"Select Resource\"</code></dd><dt><code>extensions <small>string[]</small></code></dt><dd>if specified, restricts selectable resources in the dialog to specified file extensions; e.g. <code>{\"collection\", \"go\"}</code></dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string</small></code></dt><dd>issue message, will be shown in a tooltip</dd></dl></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "layout container that optionally shows scroll bars if child contents overflow the assigned bounds",
+            "description": "Layout container that optionally shows scroll bars if child contents overflow the assigned bounds",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.scroll",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Required props: <dl><dt><code>content <small>component</small></code></dt><dd>content component</dd></dl>  Optional props: <dl><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "dropdown select box with an array of options",
+            "description": "Dropdown select box with an array of options",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.select_box",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>value <small>any</small></code></dt><dd>selected value</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>change callback, will receive the selected value</dd><dt><code>options <small>any[]</small></code></dt><dd>array of selectable options</dd><dt><code>to_string <small>function</small></code></dt><dd>function that converts an item to a string, defaults to <code>tostring</code></dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string</small></code></dt><dd>issue message, will be shown in a tooltip</dd></dl></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "thin line for visual content separation, by default horizontal and aligned to center",
+            "description": "Thin line for visual content separation, by default horizontal and aligned to center",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.separator",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>orientation <small>string</small></code></dt><dd>separator line orientation, <code>editor.ui.ORIENTATION.VERTICAL</code> or <code>editor.ui.ORIENTATION.HORIZONTAL</code>; either: <ul><li><code>editor.ui.ORIENTATION.VERTICAL</code></li><li><code>editor.ui.ORIENTATION.HORIZONTAL</code></li></ul></dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "show a modal dialog and await a result",
+            "description": "Show a modal dialog and await a result",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.show_dialog",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "a component that resolves to <code>editor.ui.dialog(...)</code>",
+                    "name": "dialog",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "dialog result, the value used as a <code>result</code> prop in a <code>editor.ui.dialog_button({...})</code> selected by the user, or <code>nil</code> if the dialog was closed and there was no <code>cancel = true</code> dialog button with <code>result</code> prop set",
+                    "name": "value",
+                    "types": [
+                        "any"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "show a modal OS directory selection dialog and await a result",
+            "description": "Show a modal OS directory selection dialog and await a result",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.show_external_directory_dialog",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "<dl><dt><code>path <small>string</small></code></dt><dd>initial file or directory path used by the dialog; resolved against project root if relative</dd><dt><code>title <small>string</small></code></dt><dd>OS window title</dd></dl>",
+                    "name": "[opts]",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "either absolute directory path or nil if user canceled directory selection",
+                    "name": "value",
+                    "types": [
+                        "string",
+                        "nil"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "show a modal OS file selection dialog and await a result",
+            "description": "Show a modal OS file selection dialog and await a result",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.show_external_file_dialog",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "<dl><dt><code>path <small>string</small></code></dt><dd>initial file or directory path used by the dialog; resolved against project root if relative</dd><dt><code>title <small>string</small></code></dt><dd>OS window title</dd><dt><code>filters <small>table[]</small></code></dt><dd>File filters, an array of filter tables, where each filter has following keys:<dl><dt><code>description <small>string</small></code></dt><dd>string explaining the filter, e.g. <code>\"Text files (*.txt)\"</code></dd><dt><code>extensions <small>string[]</small></code></dt><dd>array of file extension patterns, e.g. <code>\"*.txt\"</code>, <code>\"*.*\"</code> or <code>\"game.project\"</code></dd></dl></dd></dl>",
+                    "name": "[opts]",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "either absolute file path or nil if user canceled file selection",
+                    "name": "value",
+                    "types": [
+                        "string",
+                        "nil"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "show a modal resource selection dialog and await a result",
+            "description": "Show a modal resource selection dialog and await a result",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.show_resource_dialog",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "<dl><dt><code>extensions <small>string[]</small></code></dt><dd>if specified, restricts selectable resources in the dialog to specified file extensions; e.g. <code>{\"collection\", \"go\"}</code></dd><dt><code>selection <small>string</small></code></dt><dd>either <code>\"single\"</code> or <code>\"multiple\"</code>, defaults to <code>\"single\"</code></dd><dt><code>title <small>string</small></code></dt><dd>dialog title, defaults to <code>\"Select Resource\"</code></dd></dl>",
+                    "name": "[opts]",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "|nil] if user made no selection, returns <code>nil</code>. Otherwise, if selection mode is <code>\"single\"</code>, returns selected resource path; otherwise returns a non-empty array of selected resource paths.",
+                    "name": "value",
+                    "types": [
+                        "string",
+                        "string["
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "<code>\"large\"</code>",
+            "description": "<code>\"large\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.SPACING.LARGE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"medium\"</code>",
+            "description": "<code>\"medium\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.SPACING.MEDIUM",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"none\"</code>",
+            "description": "<code>\"none\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.SPACING.NONE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"small\"</code>",
+            "description": "<code>\"small\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.SPACING.SMALL",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "string input component based on a text field, reports changes on commit (<code>Enter</code> or focus loss)",
+            "description": "String input component based on a text field, reports changes on commit (<code>Enter</code> or focus loss)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.string_field",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>value <small>any</small></code></dt><dd>value</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive the new value</dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string</small></code></dt><dd>issue message, will be shown in a tooltip</dd></dl></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "<code>\"center\"</code>",
+            "description": "<code>\"center\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.TEXT_ALIGNMENT.CENTER",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"justify\"</code>",
+            "description": "<code>\"justify\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.TEXT_ALIGNMENT.JUSTIFY",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"left\"</code>",
+            "description": "<code>\"left\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.TEXT_ALIGNMENT.LEFT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"right\"</code>",
+            "description": "<code>\"right\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.TEXT_ALIGNMENT.RIGHT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "a hook that caches the result of a computation between re-renders.",
+            "description": "A hook that caches the result of a computation between re-renders.\nSee <code>editor.ui.component</code> for hooks caveats and rules. If any of the arguments to <code>use_memo</code> change during a component refresh (checked with <code>==</code>), the value will be recomputed.",
+            "error": "",
+            "examples": "<pre><code>local function increment(n)\n    return n + 1\nend\n\nlocal function make_listener(set_count)\n    return function()\n        set_count(increment)\n    end\nend\n\nlocal counter_button = editor.ui.component(function(props)\n    local count, set_count = editor.ui.use_state(props.count)\n    local on_pressed = editor.ui.use_memo(make_listener, set_count)\n    return editor.ui.text_button {\n        text = tostring(count),\n        on_pressed = on_pressed\n    }\nend)</code></pre>",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.use_memo",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "function that will be used to compute the cached value",
+                    "name": "compute",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "args to the computation function",
+                    "name": "[...]",
+                    "types": [
+                        "...any"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "all returned values of the compute function",
+                    "name": "values",
+                    "types": [
+                        "...any"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "a hook that adds local state to the component.",
+            "description": "A hook that adds local state to the component.\nSee <code>editor.ui.component</code> for hooks caveats and rules. If any of the arguments to <code>use_state</code> change during a component refresh (checked with <code>==</code>), the current state will be reset to the initial one.",
+            "error": "",
+            "examples": "<pre><code>local function increment(n)\n  return n + 1\nend\n\nlocal counter_button = editor.ui.component(function(props)\n  local count, set_count = editor.ui.use_state(props.count)\n  return editor.ui.text_button {\n    text = tostring(count),\n    on_pressed = function()\n      set_count(increment)\n    end\n  }\nend)</code></pre>",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.use_state",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "local state initializer, either initial data structure or function that produces the data structure",
+                    "name": "init",
+                    "types": [
+                        "any",
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "used when <code>init</code> is a function, the args are passed to the initializer function",
+                    "name": "[...]",
+                    "types": [
+                        "...any"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "current local state, starts with initial state, then may be changed using the returned <code>set_state</code> function",
+                    "name": "state",
+                    "types": [
+                        "any"
+                    ]
+                },
+                {
+                    "doc": "function that changes the local state and causes the component to refresh. The function may be used in 2 ways:                         <ul>                           <li>to set the state to some other data structure: pass the data structure as a value</li>                           <li>to replace the state using updater function: pass a function to <code>set_state</code> \u2014 it will be invoked with the current state, as well as with the rest of the arguments passed to <code>set_state</code> after the updater function. The state will be set to the value returned from the updater function</lia>                         </ul>",
+                    "name": "set_state",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "layout container that places its children in a vertical column one after another",
+            "description": "Layout container that places its children in a vertical column one after another",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.ui.vertical",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional props: <dl><dt><code>children <small>component[]</small></code></dt><dd>array of child components</dd><dt><code>padding <small>string, number</small></code></dt><dd>empty space from the edges of the container to its children; either: <ul><li><code>editor.ui.PADDING.NONE</code></li><li><code>editor.ui.PADDING.SMALL</code></li><li><code>editor.ui.PADDING.MEDIUM</code></li><li><code>editor.ui.PADDING.LARGE</code></li><li>non-negative number, pixels</li></ul></dd><dt><code>spacing <small>string, number</small></code></dt><dd>empty space between child components, defaults to <code>editor.ui.SPACING.MEDIUM</code>; either: <ul><li><code>editor.ui.SPACING.NONE</code></li><li><code>editor.ui.SPACING.SMALL</code></li><li><code>editor.ui.SPACING.MEDIUM</code></li><li><code>editor.ui.SPACING.LARGE</code></li><li>non-negative number, pixels</li></ul></dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "name": "props",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UI component",
+                    "name": "value",
+                    "types": [
+                        "component"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "a string, version name of Defold",
+            "description": "A string, version name of Defold",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.version",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        }
+    ],
+    "info": {
+        "brief": "Editor scripting documentation",
+        "description": "Editor scripting documentation",
+        "file": "",
+        "language": "",
+        "name": "Editor",
+        "namespace": "editor",
+        "notes": [],
+        "path": ""
+    }
+}
