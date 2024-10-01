@@ -1821,6 +1821,44 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Create new vertex stream declaration. A stream dec...",
+            "description": "Create new vertex stream declaration. A stream declaration contains a list of vertex streams\nthat should be used to create a vertex declaration from.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "NewVertexStreamDeclaration",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the context",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "the vertex step function to use",
+                    "name": "step_function",
+                    "types": [
+                        "dmGraphics::VertexStepFunction"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the vertex declaration",
+                    "name": "declaration",
+                    "types": [
+                        "dmGraphics::HVertexStreamDeclaration"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Primitive type",
             "description": "Primitive type",
             "error": "",
@@ -2419,32 +2457,6 @@
                 }
             ],
             "name": "Type",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "ENUM"
-        },
-        {
-            "brief": "Vertex step function. Dictates how the data for a ...",
-            "description": "Vertex step function. Dictates how the data for a vertex attribute should be read in a vertex shader.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [
-                {
-                    "doc": "",
-                    "name": "VERTEX_STEP_FUNCTION_VERTEX",
-                    "type": ""
-                },
-                {
-                    "doc": "",
-                    "name": "VERTEX_STEP_FUNCTION_INSTANCE",
-                    "type": ""
-                }
-            ],
-            "name": "VertexStepFunction",
             "notes": [],
             "parameters": [],
             "replaces": "",
