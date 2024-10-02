@@ -82,7 +82,7 @@ title: Learn
 		</div>
 		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
 			{%- for video in site.data.learnindex.navigation.videos limit:3 -%}
-				{% include youtube_card.html title=video.name description=video.description link=video.path author=video.author min-height="250px" image="/images/icons/yt_icon_rgb.svg" %}
+				{% include youtube_card.html title=video.name description=video.description embed=video.embed link=video.path author=video.author min-height="250px" image="/images/icons/yt_icon_rgb.svg" %}
 			{%- endfor -%}
 		</div>
 		<div class="row">
