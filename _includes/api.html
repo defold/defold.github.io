@@ -12,7 +12,7 @@
 {%- if functions.size > 0 -%}
 <table class="compact">
 	<tr>
-		<th>FUNCTION</th>
+		<th>FUNCTIONS</th>
 		<th></th>
 	</tr>
 	{%- for function in functions -%}
@@ -27,7 +27,7 @@
 {%- if variables.size > 0 -%}
 <table class="compact">
 	<tr>
-		<th>CONSTANT</th>
+		<th>CONSTANTS</th>
 		<th></th>
 	</tr>
 	{%- for variable in variables -%}
@@ -57,7 +57,7 @@
 {%- if messages.size > 0 -%}
 <table class="compact">
 	<tr>
-		<th>MESSAGE</th>
+		<th>MESSAGES</th>
 		<th></th>
 	</tr>
 	{%- for message in messages -%}
@@ -142,14 +142,14 @@
 <h2>Constants</h2>
 	{%- for variable in variables -%}
 	{% include ref_anchor_target.html element=variable %}
-	<h4>{{ variable.name }}<a href="#{% include ref_anchorlink.html element=variable %}" class="anchor-link"/></a></h4>
-	<p>{{ variable.description }}</p>
+	<h5 class="compact">{{ variable.name }}<a href="#{% include ref_anchorlink.html element=variable %}" class="anchor-link"/></a></h5 class="compact">
+	<p class="compact">{{ variable.description }}</p>
 
 	{%- if variable.parameters.size > 0 -%}
 	{% include api_parameters.html parameters=variable.parameters %}
 	{%- endif -%}
-
-	<hr/>
+	
+	{% if forloop.last == false %}<hr class="compact"/>{% else %}<hr/>{% endif %}
 	{%- endfor -%}
 {%- endif -%}
 
