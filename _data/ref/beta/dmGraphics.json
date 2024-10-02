@@ -1259,6 +1259,21 @@
             "type": "TYPEDEF"
         },
         {
+            "brief": "Storage buffer handle",
+            "description": "Storage buffer handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HStorageBuffer",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "Create a new storage buffer",
             "description": "Create a new storage buffer",
             "error": "",
@@ -1295,21 +1310,6 @@
             ],
             "tparams": [],
             "type": "FUNCTION"
-        },
-        {
-            "brief": "Storage buffer handle",
-            "description": "Storage buffer handle",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "HStorageBuffer",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "TYPEDEF"
         },
         {
             "brief": "Texture handle",
@@ -1428,8 +1428,8 @@
             "type": "ENUM"
         },
         {
-            "brief": "Max subpasses",
-            "description": "Max subpasses",
+            "brief": "Invalid stream offset",
+            "description": "Invalid stream offset",
             "error": "",
             "examples": "",
             "language": "",
@@ -1443,8 +1443,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Invalid stream offset",
-            "description": "Invalid stream offset",
+            "brief": "Max subpasses",
+            "description": "Max subpasses",
             "error": "",
             "examples": "",
             "language": "",
@@ -1804,6 +1804,44 @@
                     "name": "context",
                     "types": [
                         "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the vertex declaration",
+                    "name": "declaration",
+                    "types": [
+                        "dmGraphics::HVertexStreamDeclaration"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Create new vertex stream declaration. A stream dec...",
+            "description": "Create new vertex stream declaration. A stream declaration contains a list of vertex streams\nthat should be used to create a vertex declaration from.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "NewVertexStreamDeclaration",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the context",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "the vertex step function to use",
+                    "name": "step_function",
+                    "types": [
+                        "dmGraphics::VertexStepFunction"
                     ]
                 }
             ],
@@ -2419,32 +2457,6 @@
                 }
             ],
             "name": "Type",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "ENUM"
-        },
-        {
-            "brief": "Vertex step function. Dictates how the data for a ...",
-            "description": "Vertex step function. Dictates how the data for a vertex attribute should be read in a vertex shader.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [
-                {
-                    "doc": "",
-                    "name": "VERTEX_STEP_FUNCTION_VERTEX",
-                    "type": ""
-                },
-                {
-                    "doc": "",
-                    "name": "VERTEX_STEP_FUNCTION_INSTANCE",
-                    "type": ""
-                }
-            ],
-            "name": "VertexStepFunction",
             "notes": [],
             "parameters": [],
             "replaces": "",
@@ -3400,10 +3412,10 @@
     ],
     "info": {
         "brief": "Graphics API documentation",
-        "description": "<span class=\"file\"><dmsdk/graphics/graphics.h></span>\nGraphics API",
+        "description": "<span class=\"file\"><dmsdk/graphics/graphics_vulkan.h></span>\nGraphics Vulkan API",
         "file": "",
         "language": "",
-        "name": "Graphics",
+        "name": "Graphics Vulkan",
         "namespace": "dmGraphics",
         "notes": [],
         "path": ""
