@@ -2883,6 +2883,37 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get the native MTLCommandQueue from the Vulkan con...",
+            "description": "Get the native MTLCommandQueue from the Vulkan context",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanGraphicsCommandQueueToMetal",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the vulkan context",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the Metal graphics queue wrapped with a (__bridge void*)",
+                    "name": "mtl_queue",
+                    "types": [
+                        "id<MTLCommandQueue>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Map the GPU data for a index buffer",
             "description": "Map the GPU data for a index buffer",
             "error": "",
@@ -3330,6 +3361,44 @@
             ],
             "replaces": "",
             "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get a native MTLTexture from a Vulkan HTexture",
+            "description": "Get a native MTLTexture from a Vulkan HTexture",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanTextureToMetal",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the vulkan context",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "the texture",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the Metal texture wrapped with a (__bridge void*)",
+                    "name": "mtl_texture",
+                    "types": [
+                        "id<MTLTexture>"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
