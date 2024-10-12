@@ -1,13 +1,16 @@
+local examples = require("examples._main.examples")
+
 function init(self)
 	self.current_proxy = nil
 	-- Need input focus so it can be trickled down the proxies
 	msg.post(".", "acquire_input_focus")
 
 	-- Start from specific example config or menu
-	local example = sys.get_config("examples.start", nil)
-	print("examples.start", example)
-	if example then
-		msg.post("#", "load_example", { example = hash(example), nomenu = true })
+	local start = sys.get_config("examples.start", nil)
+	if start then
+		local example = examples.example(start)
+		pprint(example)
+		msg.post("#", "load_example", { example = hash(start), nomenu = true, nobg = example.nobg })
 	else
 		msg.post("menu#gui", "show")
 	end
@@ -16,6 +19,9 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("load_example") then
 		print("load_example", message.example)
+		if message.nobg then
+			msg.post("/background", "disable")
+		end
 		self.current_proxy = msg.url(nil, "loader", message.example)
 		msg.post(self.current_proxy, "load")
 		self.nomenu = message.nomenu
@@ -38,6 +44,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("proxy_unloaded") then
 		msg.post("#gui", "hide")
 		msg.post("menu#gui", "show")
+		msg.post("/background", "enable")
 		
 	elseif message_id == hash("set_time_step") then
 		msg.post(self.current_proxy, "set_time_step", message)

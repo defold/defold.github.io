@@ -62,7 +62,7 @@ Seeing certain struggles repeat themselves over time, in the engine and the game
 
 At this point, Christian had worked as a tech lead for the company for some years, and we had already started to move away from the old way of doing things. A lot of the technical choices made are very similar to what Defold still uses today.
 
-Some years earlier, in 2006, an article about [God of War](https://www.gamasutra.com/view/feature/131046/gdc_god_of_war_how_the_left_and_.php) was published, and it was truly inspiring to read that such a game could fit into 1.5mb of executable code. As a big bonus, the small code also seemed to yield a much lower bug count than usual. After many years of AAA engine development, these ideas would influence a lot of the choices made by Christian and Ragnar when creating Defold.
+Some years earlier, in 2006, an article about [God of War](https://www.gamedeveloper.com/design/gdc-i-god-of-war-i-how-the-left-and-right-brain-learned-to-love-one-another) was published, and it was truly inspiring to read that such a game could fit into 1.5mb of executable code. As a big bonus, the small code also seemed to yield a much lower bug count than usual. After many years of AAA engine development, these ideas would influence a lot of the choices made by Christian and Ragnar when creating Defold.
 
 ### Small codebase, small engine
 

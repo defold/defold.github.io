@@ -1,6 +1,36 @@
 {
     "elements": [
         {
+            "brief": "run bob the builder program",
+            "description": "Run bob the builder program\nFor the full documentation of the available commands and options, see <a href=\"https://defold.com/manuals/bob/\">the bob manual</a>.",
+            "error": "",
+            "examples": "Print help in the console:\n<div class=\"codehilite\"><pre><span></span><code>editor.bob({help = true})\n</code></pre></div>\n\nBundle the game for the host platform:\n<div class=\"codehilite\"><pre><span></span><code>local opts = {\n    archive = true,\n    platform = editor.platform\n}\neditor.bob(opts, &quot;distclean&quot;, &quot;resolve&quot;, &quot;build&quot;, &quot;bundle&quot;)\n</code></pre></div>\n\nUsing snake_cased and repeated options:\n<div class=\"codehilite\"><pre><span></span><code>local opts = {\n    archive = true,\n    platform = editor.platform,\n    build_server = &quot;https://build.my-company.com&quot;,\n    settings = {&quot;test.ini&quot;, &quot;headless.ini&quot;}\n}\neditor.bob(opts, &quot;distclean&quot;, &quot;resolve&quot;, &quot;build&quot;)\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "editor.bob",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "table of command line options for bob, without the leading dashes (<code>--</code>). You can use snake_case instead of kebab-case for option keys. Only long option names are supported (i.e. <code>output</code>, not <code>o</code>). Supported value types are strings, integers and booleans. If an option takes no arguments, use a boolean (i.e. <code>true</code>). If an option may be repeated, you can use an array of values.",
+                    "name": "[options]",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "bob commands, e.g. <code>\"resolve\"</code> or <code>\"build\"</code>",
+                    "name": "[...commands]",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "check if you can get this property so <code>editor.get()</code> won't throw an error",
             "description": "Check if you can get this property so <code>editor.get()</code> won't throw an error",
             "error": "",

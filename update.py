@@ -588,11 +588,21 @@ def process_examples(download = False):
         for filename in find_files(unzipped_examples_dir, "*.md"):
             basename = os.path.basename(filename)
             collection = filename.replace(tmp_dir, "").replace("/examples-master/examples/", "").replace("/" + basename, "")
+            name = collection.split("/")[1].replace("_", " ").capitalize()
             permalink = "examples/" + collection + "/"
+
+            try:
+                for data in yaml.safe_load_all(read_as_string(filename)):
+                    if "name" in data:
+                        name = data.get("name")
+                    break
+            except yaml.YAMLError:
+                pass
+
             examplesindex.append({
                 "collection": collection,
                 "category": collection.split("/")[0].upper(),
-                "name": collection.split("/")[1].replace("_", " ").capitalize(),
+                "name": name,
                 "path": collection
             })
             replace_in_file(filename, "title:", "layout: example\npermalink: {}\ncollection: {}\ntitle:".format(permalink, collection))
