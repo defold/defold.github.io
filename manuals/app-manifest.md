@@ -15,13 +15,16 @@ Also application manifest contains some options to control compiling code for HT
 
 ![](../images/app_manifest/app-manifest.png)
 
+
 ## Physics
 
 Control which physics engine to use, or select None to exclude physics completely.
 
+
 ## Rig + Model
 
 Control rig and model functionality, or select None to exclude model and rig completely. (See [`Model`](https://defold.com/manuals/model/#model-component) documentation).
+
 
 ## Exclude Record
 
@@ -51,6 +54,12 @@ Exclude the [Live Update functionality](/manuals/live-update) from the engine.
 ## Exclude Image
 
 Exclude `image` script module [link](https://defold.com/ref/stable/image/) from the engine.
+
+
+## Exclude Types
+
+Exclude `types` script module [link](https://defold.com/ref/stable/types/) from the engine.
+
 
 ## Exclude Basis Universal
 
