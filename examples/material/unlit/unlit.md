@@ -1,4 +1,5 @@
 ---
+name: Unlit (3D)
 layout: example
 permalink: examples/material/unlit/
 collection: material/unlit
