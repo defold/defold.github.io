@@ -167,7 +167,23 @@
                 },
                 {
                     "doc": "Table with parameters (key-value pairs)",
-                    "name": "PARAMeters_table",
+                    "name": "parameters_table",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Log an event with table parameters.",
+            "examples": "",
+            "name": "firebase.analytics.set_default_event_params",
+            "parameters": [
+                {
+                    "doc": "Table with default parameters (key-value pairs)",
+                    "name": "default_params",
                     "types": [
                         "table"
                     ]
