@@ -62,7 +62,12 @@ layout: page
 					replace each tab with 4 spaces to have consistent indentations
 				{% endcomment %}
 				{% capture script_content %}{% include examples/{{ collection }}/{{ script | lstrip | replace: ".script", "_script.md" | replace: ".gui_script", "_gui_script.md" | replace: ".vp", "_vp.md" | replace: ".fp", "_fp.md" }} %}{% endcapture %}
+				{% assign script_ext = script | split:'.' | last %}
+				{% if script_ext == "vp" or script_ext == "fp" %}
+				{% highlight glsl %}{{ script_content | replace: "	", "    " }}{% endhighlight %}
+				{% else %}
 				{% highlight lua %}{{ script_content | replace: "	", "    " }}{% endhighlight %}
+				{% endif %}
 				{% endfor %}
 			</div>
 			<div class="columns two">
