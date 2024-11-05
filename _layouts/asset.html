@@ -13,15 +13,8 @@ layout: page
 	{%- assign hero = "/images/asset-nohero.jpg" -%}
 {%- endif -%}
 
-<div class="section hero center blackwhite" style='background-image: url("{{ hero_base }}{{ hero }}"); min-height: 240px; max-height: 260px'>
-	<div class="container">
-		<div class="row">
-			<div>
-				<br/>
-				<br/>
-			</div>
-		</div>
-	</div>
+<div class="section hero center blackwhite unpadded">
+	<img src="{{ hero_base }}{{ hero }}" width="100%" loading="lazy"/>
 </div>
 
 <div class="section dark">
