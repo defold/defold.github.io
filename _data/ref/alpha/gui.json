@@ -2478,6 +2478,45 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "gets the node type",
+            "description": "gets the node type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "gui.get_type",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "node from which to get the type",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "type\n<ul>\n<li><code>gui.TYPE_BOX</code></li>\n<li><code>gui.TYPE_TEXT</code></li>\n<li><code>gui.TYPE_PIE</code></li>\n<li><code>gui.TYPE_PARTICLEFX</code></li>\n<li><code>gui.TYPE_CUSTOM</code></li>\n</ul>",
+                    "name": "type",
+                    "types": [
+                        "constant"
+                    ]
+                },
+                {
+                    "doc": "id of the custom type",
+                    "name": "subtype",
+                    "types": [
+                        "integer",
+                        "nil"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "returns if a node is visible or not",
             "description": "Returns <code>true</code> if a node is visible and <code>false</code> if it's not.\nInvisible nodes are not rendered.",
             "error": "",
@@ -5157,6 +5196,81 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "box type",
+            "description": "box type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "gui.TYPE_BOX",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "custom type",
+            "description": "custom type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "gui.TYPE_CUSTOM",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "particlefx type",
+            "description": "particlefx type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "gui.TYPE_PARTICLEFX",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "pie type",
+            "description": "pie type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "gui.TYPE_PIE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "text type",
+            "description": "text type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "gui.TYPE_TEXT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
         },
         {
             "brief": "called when a gui component is initialized",
