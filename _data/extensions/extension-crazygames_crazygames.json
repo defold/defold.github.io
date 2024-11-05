@@ -1,7 +1,7 @@
 {
     "elements": [
         {
-            "description": "",
+            "description": "The gameplayStart() function has to be called whenever the player starts playing or resumes playing after a break (menu/loading/achievement screen, game paused, etc.)",
             "examples": "",
             "name": "crazygames.gameplay_start",
             "parameters": [],
@@ -9,7 +9,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "The gameplayStop() function has to be called on every game break (entering a menu, switching level, pausing the game, ...) don't forget to call gameplayStart() when the gameplay resumes",
             "examples": "",
             "name": "crazygames.gameplay_stop",
             "parameters": [],
@@ -17,7 +17,23 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "The loadingStart() function has to be called whenever you start loading your game.",
+            "examples": "",
+            "name": "crazygames.loading_start",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "The loadingStop() function has to be called when the loading is complete and eventually the gameplay starts.",
+            "examples": "",
+            "name": "crazygames.loading_stop",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Show a rewarded ad.",
             "examples": "",
             "name": "crazygames.show_rewarded_ad",
             "parameters": [
@@ -33,7 +49,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Show a midgame ad.",
             "examples": "",
             "name": "crazygames.show_midgame_ad",
             "parameters": [
@@ -49,7 +65,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Detect if the user has an adblocker.",
             "examples": "",
             "name": "crazygames.is_ad_blocked",
             "parameters": [
@@ -62,6 +78,77 @@
                 }
             ],
             "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Create a link to your game to invite others to join a multiplayer game.",
+            "examples": "",
+            "name": "crazygames.invite_link",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Display a button in the game footer, that opens a popup containing an invite link.",
+            "examples": "",
+            "name": "crazygames.show_invite_button",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "params",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Hide the invite button when it is no longer necessary.",
+            "examples": "",
+            "name": "crazygames.hide_invite_button",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get an invite link parameters.",
+            "examples": "",
+            "name": "crazygames.get_invite_param",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "string"
+                }
+            ],
             "type": "FUNCTION"
         }
     ],
