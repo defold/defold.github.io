@@ -1031,6 +1031,9 @@ def process_file_for_indexing(filename):
         #data = re.sub(r"(=|\.|\(|\))+", " ", data)
         data = re.sub(r"(=|\(|\))+", " ", data)
 
+        # strip frontmatter
+        data = re.sub("\-\-\-.*\-\-\-", " ", data)
+
         return data
 
 
@@ -1051,6 +1054,13 @@ def generate_searchindex():
             "data": data
         })
 
+    def append_example(filename, data):
+        searchindex.append({
+            "id": os.path.dirname(filename),
+            "type": "example",
+            "data": data
+        })
+
     def append_asset(filename, data):
         searchindex.append({
             "id": filename.replace("_data/", "").replace(".json", ""),
@@ -1061,6 +1071,10 @@ def generate_searchindex():
     for filename in find_files("manuals", "*.md"):
         data = process_file_for_indexing(filename)
         append_manual(filename, data)
+
+    for filename in find_files("examples", "*.md"):
+        data = process_file_for_indexing(filename)
+        append_example(filename, data)
 
     for filename in find_files(os.path.join("_data", "assets"), "*.json"):
         r = read_as_json(filename)
@@ -1100,6 +1114,7 @@ def generate_searchindex():
     # lunrindex = lunr.lunr(ref='id', fields=('type', 'data'), documents=searchindex)
 
     write_as_json("searchindex.json", lunrindex.serialize())
+    print("Wrote searchindex.json")
 
 
 def commit_changes(githubtoken):

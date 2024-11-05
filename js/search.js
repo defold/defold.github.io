@@ -97,7 +97,7 @@ function search(searchfield_id, searchresult_id) {
 		if (key.indexOf(".") !== -1)
 			return key.toLowerCase();
 
-		// For dm* methods we do not neet to prepend namespace, search result examples:
+		// For dm* methods we do not need to prepend namespace, search result examples:
 		// ref/stable/dmBuffer - dmbuffer, dmbuffer::validatebuffer
 		// ref/stable/dmProfile - dm_property_u64, dm_property_u32
 		if (ref.indexOf("/dm") !== -1)
