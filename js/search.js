@@ -3,17 +3,31 @@ function search(searchfield_id, searchresult_id) {
 
 	var fmt = "<p><a href='/{0}'>{1}</a> - {2}</p>\n";
 	var link_fmt = "<a href='/{0}?{1}'>{2}</a>";
+
+	// * wildcard
+	// https://lunrjs.com/guides/searching.html#wildcards
+	// ^ boost with the length of the word
+	// https://lunrjs.com/guides/searching.html#boosts
 	var query_fmt = "*{0}*^{1}";
 
 	var query = new URLSearchParams(window.location.search).get('q');
 	if (query) {
 		document.getElementById(searchfield_id).value = query;
 
+		// The ':' is used to limit search to a specific field
+		// https://lunrjs.com/guides/searching.html#fields
+		// We do not want this in the search query since lunr will
+		// throw an exception
+		query = query.replace("::", " ");
+
+		// split into multiple words
 		var search_keys = query.split(/[\s]/);
 		if (!search_keys) {
 			search_keys = [query];
 		}
 
+		// trim '*' from start and end of search words and format each into the
+		// correct search format (see above)
 		var patched_search_keys = []
 		for(var i=0; i<search_keys.length; i++){
 			var token = search_keys[i];
@@ -22,8 +36,11 @@ function search(searchfield_id, searchresult_id) {
 			while (token.endsWith("*"))
 				token=token.substring(0,token.length-1);
 
+			// create the correct search query per word
 			patched_search_keys[i] = String.format(query_fmt, token, search_keys.length-i);
 		}
+
+		// join back to a string again
 		query = patched_search_keys.join(" ");
 		console.log("query", query);
 

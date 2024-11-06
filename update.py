@@ -1010,31 +1010,33 @@ def process_refdoc(download = False):
     write_as_json(os.path.join("_data", "branchindex.json"), branchindex)
 
 
+def process_string_for_indexing(data):
+    # replace the math notations
+    data = re.sub("\$\$.*?\$\$", " ", data)
+
+    # remove the html tags (but leave the text behind)
+    data = re.sub(r"<[^<]+?>", "", data)
+
+    # Cleanup markdown links
+    data = re.sub("\[(.*?)\]\(.*?\)", "\1", data)
+
+    # finally, remove certain characters
+    # (do this last, so that any regexp above won't break)
+    #data = re.sub(r"(=|\.|\(|\))+", " ", data)
+    data = re.sub(r"(=|\(|\))+", " ", data)
+
+    # strip frontmatter
+    data = re.sub("\-\-\-.*\-\-\-", " ", data)
+
+    # strip newlines
+    data = re.sub("\n", " ", data)
+
+    return data
+
 def process_file_for_indexing(filename):
     with open(filename, 'r', encoding="utf-8") as file:
         data = file.read().replace('\n', ' ')
-
-        # replace the math notations
-        data = re.sub("\$\$.*?\$\$", " ", data)
-
-        # remove the html tags (but leave the text behind)
-        data = re.sub(r"<(.*?)>(.*?)</\1>", "\2", data)
-
-        # remove closed html tags "<tag />"
-        data = re.sub(r"<\w+?\s.*?/>", " ", data)
-
-        # Cleanup markdown links
-        data = re.sub("\[(.*?)\]\(.*?\)", "\1", data)
-
-        # finally, remove certain characters
-        # (do this last, so that any regexp above won't break)
-        #data = re.sub(r"(=|\.|\(|\))+", " ", data)
-        data = re.sub(r"(=|\(|\))+", " ", data)
-
-        # strip frontmatter
-        data = re.sub("\-\-\-.*\-\-\-", " ", data)
-
-        return data
+        return process_string_for_indexing(data)
 
 
 def generate_searchindex():
@@ -1083,16 +1085,51 @@ def generate_searchindex():
 
     for filename in find_files(os.path.join("_data", "ref", "stable"), "*.json"):
         r = read_as_json(filename)
+
+        data = []
         for element in r["elements"]:
             name = element["name"]
-            append_ref_doc(filename, name)
+
+            data.append(name)
 
             if "." in name:
-                for part in name.split("."):
-                    append_ref_doc(filename, part)
+                data.extend(name.split("."))
             elif "::" in name:
-                for part in name.split("::"):
-                    append_ref_doc(filename, part)
+                data.extend(name.split("::"))
+
+            data.extend(process_string_for_indexing(element["description"]).split(" "))
+            for p in element["parameters"]:
+                data.extend(process_string_for_indexing(p["doc"]).split(" "))
+                data.extend(p["types"])
+            for r in element["returnvalues"]:
+                data.extend(process_string_for_indexing(r["doc"]).split(" "))
+                data.extend(r["types"])
+            for m in element["members"]:
+                data.extend(process_string_for_indexing(m["doc"]).split(" "))
+
+        append_ref_doc(filename, process_string_for_indexing(" ".join(data)))
+
+
+            # append_ref_doc(filename, name)
+            # if "." in name:
+            #     for part in name.split("."):
+            #         append_ref_doc(filename, part)
+            # elif "::" in name:
+            #     for part in name.split("::"):
+            #         append_ref_doc(filename, part)
+
+            # append_ref_doc(filename, element["description"])
+            # for p in element["parameters"]:
+            #     append_ref_doc(filename, p["doc"])
+            #     for t in p["types"]:
+            #         append_ref_doc(filename, t)
+            # for r in element["returnvalues"]:
+            #     append_ref_doc(filename, r["doc"])
+            #     for t in r["types"]:
+            #         append_ref_doc(filename, t)
+            # for m in element["members"]:
+            #     append_ref_doc(filename, m["doc"])
+
 
     # manually create a builder without stemming, stop words etc
     # if we use the standard builder pipeline functions we will end up
