@@ -11,8 +11,7 @@
 {%- endif -%}
 <div class='asset clickable left light-text compact {{ asset.tags | join: "%%" | replace: " ", "" | split: "%%" | join: " " | downcase }}' data-name="{{ asset.name }}" data-description="{{ asset.description }}">
 	<a href="/assets/{{ include.id }}">
-		<div id="image" style="background: url('{{thumb_base}}{{ thumb }}') center/cover; padding: 0; margin: 0; height: 190px">
-		</div>
+		<img src="{{ thumb_base }}{{ thumb }}" width="100%" height="190px" loading="lazy" style="object-fit: cover"/>
 		<div style="display: grid; grid-template-columns: 70% auto; grid-gap: 0;">
 			<div style="padding: 0px">
 				<b>{{ asset.name }}</b>
