@@ -303,6 +303,81 @@
             ],
             "returnvalues": [],
             "type": "FUNCTION"
+        },
+        {
+            "description": "Gets the text run of a specified text component from within the Rive artboard assigned to the component.",
+            "examples": "",
+            "name": "rive.get_text_run",
+            "parameters": [
+                {
+                    "doc": "The Rive model for which to get the text run from",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "The name of the text run from the Rive artboard.",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "(OPTIONAL) If specified, the text run will be retrieved from the specified nested artboard",
+                    "name": "nested_artboard",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set the text run of a specified text component from within the Rive artboard assigned to the component.",
+            "examples": "",
+            "name": "rive.set_text_run",
+            "parameters": [
+                {
+                    "doc": "The Rive model for which to set the text run for",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "The name of the text run from the Rive artboard.",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The text run contents to update with.",
+                    "name": "text_run",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "(OPTIONAL) If specified, the text run will be set in the specified nested artboard",
+                    "name": "nested_artboard",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get an orthographic projection matrix that can be used to project regular Defold components into the same coordinate space as the rive model when using the 'fullscreen' coordinate space.",
+            "examples": "",
+            "name": "rive.get_projection_matrix",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
         }
     ],
     "info": {
