@@ -1109,28 +1109,6 @@ def generate_searchindex():
 
         append_ref_doc(filename, process_string_for_indexing(" ".join(data)))
 
-
-            # append_ref_doc(filename, name)
-            # if "." in name:
-            #     for part in name.split("."):
-            #         append_ref_doc(filename, part)
-            # elif "::" in name:
-            #     for part in name.split("::"):
-            #         append_ref_doc(filename, part)
-
-            # append_ref_doc(filename, element["description"])
-            # for p in element["parameters"]:
-            #     append_ref_doc(filename, p["doc"])
-            #     for t in p["types"]:
-            #         append_ref_doc(filename, t)
-            # for r in element["returnvalues"]:
-            #     append_ref_doc(filename, r["doc"])
-            #     for t in r["types"]:
-            #         append_ref_doc(filename, t)
-            # for m in element["members"]:
-            #     append_ref_doc(filename, m["doc"])
-
-
     # manually create a builder without stemming, stop words etc
     # if we use the standard builder pipeline functions we will end up
     # with partial search words like go.get_posit instead of go.get_position
