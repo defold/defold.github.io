@@ -1,4 +1,12 @@
-# Font extension
+---
+layout: manual
+language: en
+github: https://github.com/defold/extension-fontgen
+title: Runtime font generation documentation
+brief: This manual describes how to use a .ttf at runtime to generate font data
+---
+
+# Fontgen extension
 
 A Defold [native extension](https://defold.com/manuals/extensions/) for interacting with fonts at runtime.
 
