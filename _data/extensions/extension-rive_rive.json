@@ -378,6 +378,36 @@
             "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
+        },
+        {
+            "description": "Get the input values from a state machine input, either from the current top-level artboard, or from a nested artboard inside the Rive model artboard. Note that trigger inputs will not generate a value!",
+            "examples": "",
+            "name": "rive.get_state_machine_input",
+            "parameters": [
+                {
+                    "doc": "The Rive model",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "The name of the input",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "(OPTIONAL) If specified, the input will be queried for the specified nested artboard",
+                    "name": "nested_artboard",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
         }
     ],
     "info": {
