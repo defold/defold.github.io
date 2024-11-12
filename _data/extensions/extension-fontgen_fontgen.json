@@ -1,0 +1,185 @@
+{
+    "elements": [
+        {
+            "description": "Creates a mapping between a .fontc file and a .ttf file. Increases the ref count for both resources.",
+            "examples": "",
+            "name": "fontgen.load_font",
+            "parameters": [
+                {
+                    "doc": "Path to a .fontc file in the project",
+                    "name": "fontc_path",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Path to a .ttf file in the project",
+                    "name": "ttf_path",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Options for generating the glyphs",
+                    "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "The number of padding pixels [0-255]",
+                            "name": "sdf_padding",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "Where the edge is decided to be [0-255]",
+                            "name": "sdf_edge",
+                            "types": [
+                                "number"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "function to call when the animation has completed",
+                    "name": "complete_function",
+                    "parameters": [
+                        {
+                            "doc": "The context of the calling script",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "The path hash of the .fontc resource",
+                            "name": "fontc_hash",
+                            "types": [
+                                "hash"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Removes the generator mapping between the .fontc and .ttf file. Decreases the ref count for both resources. Does not remove the previously generated glyphs!",
+            "examples": "",
+            "name": "fontgen.unload_font",
+            "parameters": [
+                {
+                    "doc": "Path hash of the .fontc file in the project",
+                    "name": "fontc_path_hash",
+                    "types": [
+                        "hash"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Asynchronoously sdds glyphs to the .fontc resource.",
+            "examples": "",
+            "name": "fontgen.add_glyphs",
+            "parameters": [
+                {
+                    "doc": "Path hash of the .fontc file in the project",
+                    "name": "fontc_path_hash",
+                    "types": [
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "Utf-8 string containing glyphs to add to the .fontc *Note* No checks for duplicate glyphs is done.",
+                    "name": "text",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Function to be called after the last glyph was processed. May be nil.",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The script instance that called `add_glyphs`",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "The request id returned by `add_glyphs`",
+                            "name": "request",
+                            "types": [
+                                "int"
+                            ]
+                        },
+                        {
+                            "doc": "True if all glyphs were added successfully",
+                            "name": "result",
+                            "types": [
+                                "bool"
+                            ]
+                        },
+                        {
+                            "doc": "Error string if a glyph wasn't generated or added successfully",
+                            "name": "errmsg",
+                            "types": [
+                                "string"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Returns a request id, used in the callback",
+                    "name": "integer"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Removes glyphs from the .fontc resource",
+            "examples": "",
+            "name": "fontgen.remove_glyphs",
+            "parameters": [
+                {
+                    "doc": "Path hash of the .fontc file in the project",
+                    "name": "fontc_path_hash",
+                    "types": [
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "Utf-8 string containing glyphs to remove from the .fontc",
+                    "name": "text",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "api": "extension-fontgen/fontgen_api",
+        "brief": "fontgen",
+        "description": "Functions to generate glyphs for fonts at runtime.",
+        "group": "EXTENSIONS",
+        "name": "extension-fontgen",
+        "namespace": "fontgen"
+    }
+}
