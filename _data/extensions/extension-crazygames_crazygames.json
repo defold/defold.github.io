@@ -264,6 +264,90 @@
             ],
             "returnvalues": [],
             "type": "FUNCTION"
+        },
+        {
+            "description": "Before using any user account features, you should always ensure that the user account system is available.",
+            "examples": "",
+            "name": "crazygames.is_user_account_available",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Retrieve the user currently logged in CrazyGames. If the user is not logged in CrazyGames, the returned user will be null.",
+            "examples": "",
+            "name": "crazygames.get_user",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "The user token contains the userId of the player that is currently logged in CrazyGames, as well as other useful information. You should send it to your server when required, and verify/decode it there to extract the userId",
+            "examples": "",
+            "name": "crazygames.get_user_token",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "By calling this method, the log in or register popup will be displayed on CrazyGames. The user can log in their existing account, or create a new account.",
+            "examples": "",
+            "name": "crazygames.show_auth_prompt",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "You can register a user auth listener that is triggered when the player logs in CrazyGames. A log out doesn't trigger the auth listener, since the entire page is refreshed when the player logs out.",
+            "examples": "",
+            "name": "crazygames.set_auth_listener",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Remove any previously set auth listener.",
+            "examples": "",
+            "name": "crazygames.remove_auth_listener",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Show an account linking prompt to link a CrazyGames account to the in-game account.",
+            "examples": "",
+            "name": "crazygames.show_account_link_prompt",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
         }
     ],
     "info": {
