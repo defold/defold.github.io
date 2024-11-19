@@ -1259,6 +1259,21 @@
             "type": "TYPEDEF"
         },
         {
+            "brief": "Storage buffer handle",
+            "description": "Storage buffer handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HStorageBuffer",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "Create a new storage buffer",
             "description": "Create a new storage buffer",
             "error": "",
@@ -1295,21 +1310,6 @@
             ],
             "tparams": [],
             "type": "FUNCTION"
-        },
-        {
-            "brief": "Storage buffer handle",
-            "description": "Storage buffer handle",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "HStorageBuffer",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "TYPEDEF"
         },
         {
             "brief": "Texture handle",
@@ -1428,8 +1428,8 @@
             "type": "ENUM"
         },
         {
-            "brief": "Max subpasses",
-            "description": "Max subpasses",
+            "brief": "Invalid stream offset",
+            "description": "Invalid stream offset",
             "error": "",
             "examples": "",
             "language": "",
@@ -1443,8 +1443,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Invalid stream offset",
-            "description": "Invalid stream offset",
+            "brief": "Max subpasses",
+            "description": "Max subpasses",
             "error": "",
             "examples": "",
             "language": "",
@@ -1852,6 +1852,44 @@
                     "name": "declaration",
                     "types": [
                         "dmGraphics::HVertexStreamDeclaration"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the OpenGL render target id from a render targ...",
+            "description": "Get the OpenGL render target id from a render target",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "OpenGLGetRenderTargetId",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the OpenGL context",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "the render target to get the ID from",
+                    "name": "render_target",
+                    "types": [
+                        "dmGraphics::HRenderTarget"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the OpenGL render target id",
+                    "name": "id",
+                    "types": [
+                        "uint32_t"
                     ]
                 }
             ],
@@ -2883,6 +2921,37 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get the native MTLCommandQueue from the Vulkan con...",
+            "description": "Get the native MTLCommandQueue from the Vulkan context",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanGraphicsCommandQueueToMetal",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the vulkan context",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the Metal graphics queue wrapped with a (__bridge void*)",
+                    "name": "mtl_queue",
+                    "types": [
+                        "id<MTLCommandQueue>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Map the GPU data for a index buffer",
             "description": "Map the GPU data for a index buffer",
             "error": "",
@@ -3334,6 +3403,44 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get a native MTLTexture from a Vulkan HTexture",
+            "description": "Get a native MTLTexture from a Vulkan HTexture",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanTextureToMetal",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the vulkan context",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "the texture",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the Metal texture wrapped with a (__bridge void*)",
+                    "name": "mtl_texture",
+                    "types": [
+                        "id<MTLTexture>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Unmap a index buffer",
             "description": "Unmap a index buffer",
             "error": "",
@@ -3411,14 +3518,13 @@
         }
     ],
     "info": {
-        "brief": "SDK Graphics API documentation",
-        "description": "Platform specific native graphics functions.",
-        "file": "dmsdk/graphics/graphics_native.h",
-        "group": "DEFOLD SDK",
+        "brief": "Graphics API documentation",
+        "description": "<span class=\"file\"><dmsdk/graphics/graphics_vulkan.h></span>\nGraphics Vulkan API",
+        "file": "",
         "language": "",
-        "name": "Graphics",
+        "name": "Graphics Vulkan",
         "namespace": "dmGraphics",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/graphics/graphics_native.h"
+        "path": ""
     }
 }
