@@ -81,7 +81,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Show a banner.",
+            "description": "Request a banner. The container will be resized to the specified width.",
             "examples": "",
             "name": "crazygames.request_banner",
             "parameters": [
@@ -123,6 +123,30 @@
                     ]
                 }
             ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Clear a banner. Will also hide it.",
+            "examples": "",
+            "name": "crazygames.clear_banner",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "div",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Clear all banners.",
+            "examples": "",
+            "name": "crazygames.clear_all_banners",
+            "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
         },
@@ -279,51 +303,36 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Retrieve the user currently logged in CrazyGames. If the user is not logged in CrazyGames, the returned user will be null.",
+            "description": "Retrieve the user currently logged in CrazyGames. If the user is not logged in CrazyGames, the returned user will be null. Will call the auth listener with the logged in user account.",
             "examples": "",
             "name": "crazygames.get_user",
             "parameters": [],
-            "returnvalues": [
-                {
-                    "doc": "",
-                    "name": "string"
-                }
-            ],
+            "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "The user token contains the userId of the player that is currently logged in CrazyGames, as well as other useful information. You should send it to your server when required, and verify/decode it there to extract the userId",
+            "description": "The user token is in JWT format and contains the userId of the player that is currently logged in to CrazyGames, as well as other useful information. You should send it to your server when required, and verify/decode it there to extract the userId. Will call the auth listener with the token.",
             "examples": "",
             "name": "crazygames.get_user_token",
             "parameters": [],
-            "returnvalues": [
-                {
-                    "doc": "",
-                    "name": "string"
-                }
-            ],
+            "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "By calling this method, the log in or register popup will be displayed on CrazyGames. The user can log in their existing account, or create a new account.",
+            "description": "By calling this method, the log in or register popup will be displayed on CrazyGames. The user can log in their existing account, or create a new account. Will call the auth listener on log in.",
             "examples": "",
             "name": "crazygames.show_auth_prompt",
             "parameters": [],
-            "returnvalues": [
-                {
-                    "doc": "",
-                    "name": "string"
-                }
-            ],
+            "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "You can register a user auth listener that is triggered when the player logs in CrazyGames. A log out doesn't trigger the auth listener, since the entire page is refreshed when the player logs out.",
+            "description": "You can register a user auth listener that is triggered when the player logs in to CrazyGames. A log out doesn't trigger the auth listener, since the entire page is refreshed when the player logs out.",
             "examples": "",
             "name": "crazygames.set_auth_listener",
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "The function takes three arguments self, user and token",
                     "name": "callback",
                     "types": [
                         "function"
