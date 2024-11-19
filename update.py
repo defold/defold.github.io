@@ -494,11 +494,13 @@ def process_extension(extension_name, download = False):
         # copy the documentation
         docs_dir = os.path.join(unzipped_extension_dir, "docs")
         rmcopytree(docs_dir, extension_dir)
+
         index = os.path.join(extension_dir, "index.md")
-        replace_in_file(index, r"title\:", r"layout: manual\ntitle:")
-        replace_in_file(index, r"title\:", r"language: en\ntitle:")
-        replace_in_file(index, r"title\:", r"github: {}\ntitle:".format(github_url))
-        process_doc_file(index, "en")
+        for filename in find_files(extension_dir, "*.md"):
+            replace_in_file(filename, r"title\:", r"layout: manual\ntitle:")
+            replace_in_file(filename, r"title\:", r"language: en\ntitle:")
+            replace_in_file(filename, r"title\:", r"github: {}\ntitle:".format(github_url))
+            process_doc_file(filename, "en")
 
         for filename in find_files(unzipped_extension_dir, "*.script_api"):
 

@@ -1,4 +1,7 @@
 ---
+layout: manual
+language: en
+github: https://github.com/defold/extension-crazygames
 title: Defold CrazyGames SDK extension API documentation
 brief: This manual covers how to show banner ads using the CrazyGames SDK in Defold.
 ---
