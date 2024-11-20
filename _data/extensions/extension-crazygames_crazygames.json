@@ -303,26 +303,50 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Retrieve the user currently logged in CrazyGames. If the user is not logged in CrazyGames, the returned user will be null. Will call the auth listener with the logged in user account.",
+            "description": "Retrieve the user currently logged in CrazyGames. If the user is not logged in CrazyGames, the returned user will be null. Will call the provided callback with the logged in user account.",
             "examples": "",
             "name": "crazygames.get_user",
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "The function takes two arguments, self and the user table",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "The user token is in JWT format and contains the userId of the player that is currently logged in to CrazyGames, as well as other useful information. You should send it to your server when required, and verify/decode it there to extract the userId. Will call the auth listener with the token.",
+            "description": "The user token is in JWT format and contains the userId of the player that is currently logged in to CrazyGames, as well as other useful information. You should send it to your server when required, and verify/decode it there to extract the userId. Will call the provided callback with the token.",
             "examples": "",
             "name": "crazygames.get_user_token",
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "The function takes two arguments, self and the token",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
         {
-            "description": "By calling this method, the log in or register popup will be displayed on CrazyGames. The user can log in their existing account, or create a new account. Will call the auth listener on log in.",
+            "description": "By calling this method, the log in or register popup will be displayed on CrazyGames. The user can log in their existing account, or create a new account. Will call the provided callback on log in.",
             "examples": "",
             "name": "crazygames.show_auth_prompt",
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "The function takes two arguments, self and the user table",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
@@ -332,7 +356,7 @@
             "name": "crazygames.set_auth_listener",
             "parameters": [
                 {
-                    "doc": "The function takes three arguments self, user and token",
+                    "doc": "The function takes two arguments, self and the user table",
                     "name": "callback",
                     "types": [
                         "function"
