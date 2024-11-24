@@ -148,7 +148,7 @@
 	</tr>
 	{%- for macro in macros -%}
 	<tr>
-		<td><a href="#{% include ref_anchorlink.html element=function %}">{{ macro.name }}({%- for param in macro.parameters -%}{{ param.name }}{%- if forloop.last != true -%},&nbsp{%- endif -%}{%- endfor -%})</a></td>
+		<td><a href="#{% include ref_anchorlink.html element=macro %}">{{ macro.name }}({%- for param in macro.parameters -%}{{ param.name }}{%- if forloop.last != true -%},&nbsp{%- endif -%}{%- endfor -%})</a></td>
 		<td>{{ macro.brief }}</td>
 	</tr>
 	{%- endfor -%}
