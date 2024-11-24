@@ -408,6 +408,44 @@
             ],
             "returnvalues": [],
             "type": "FUNCTION"
+        },
+        {
+            "description": "Set the input values from a state machine input, either from the current top-level artboard, or from a nested artboard inside the Rive model artboard. Note - To set input for a trigger, use a bool value.",
+            "examples": "",
+            "name": "rive.set_state_machine_input",
+            "parameters": [
+                {
+                    "doc": "The Rive model",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "The name of the input",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The value of the input to set",
+                    "name": "value",
+                    "types": [
+                        "number",
+                        "bool"
+                    ]
+                },
+                {
+                    "doc": "(OPTIONAL) If specified, the input will be queried for the specified nested artboard",
+                    "name": "nested_artboard",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
         }
     ],
     "info": {

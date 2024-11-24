@@ -28,8 +28,8 @@ print("User account system available", available);
 You can register user auth listeners that are triggered when the player logs in CrazyGames. A log out doesn't trigger the auth listeners, since the entire page is refreshed when the player logs out
 
 ```lua
-crazygames.set_auth_listener(function(self, user, token)
-  -- handle user or token
+crazygames.set_auth_listener(function(self, user)
+  -- handle user
 end)
 
 crazygames.remove_auth_listener()
@@ -45,11 +45,9 @@ If you rely on the [data module](data) or [automatic progress save](https://docs
 You can retrieve the user currently logged in CrazyGames with the following method:
 
 ```lua
-crazygames.set_auth_listener(function(self, user, token)
+crazygames.get_user(function(self, user)
   print(user.username, user.profilePictureUrl)
 end)
-
-crazygames.get_user()
 ```
 
 If the user is not logged in CrazyGames, the returned user will be nil.
@@ -69,11 +67,9 @@ The returned user object will look like this:
 By calling this method, the log in or register popup will be displayed on CrazyGames. The user can log in their existing account, or create a new account.
 
 ```lua
-crazygames.set_auth_listener(function(self, user, token)
+crazygames.show_auth_prompt(function(self, user)
   print(user.username, user.profilePictureUrl)
 end)
-
-crazygames.show_auth_prompt()
 ```
 
 
@@ -82,11 +78,9 @@ crazygames.show_auth_prompt()
 The user token contains the userId of the player that is currently logged in CrazyGames, as well as other useful information (username, profilePictureUrl, etc). You should send it to your server when required, and verify/decode it there to extract the userId. This is useful for linking the user accounts for example, where you can have a column "crazyGamesId" in your user table that will be populated with the user id from the token.
 
 ```lua
-crazygames.set_auth_listener(function(self, user, token)
+crazygames.get_user_token(function(self, token)
   print(token)
 end)
-
-crazygames.get_user_token()
 ```
 
 The token has a lifetime of 1 hour. The method will handle the token refresh. We recommend that you don't store the token, and always call this method when the token is required.
@@ -111,3 +105,24 @@ When you need to authenticate the requests with your server, you should send the
 
 The token can be verified with the public key hosted at this URL [https://sdk.crazygames.com/publicKey.json](https://sdk.crazygames.com/publicKey.json). We recommend that you fetch the key every time you verify the token, since it may change. Alternatively, you can implement a caching mechanism, and re-fetch it when the token fails to decode due to a possible key change.
 
+
+## Testing
+
+### Local
+When the SDK is in the local environment (on 127.0.0.1 or localhost) it will return some hardcoded default values for the method calls in the user module.
+
+You can customize the returned local values by appending these query parameters:
+
+* `?user_account_available=false` will change the response from the `is_user_account_available()` function to false (it returns true by default).
+* `?show_auth_prompt_response=` will change the response from the `show_auth_prompt()` function. It accepts the following values: `user1`, `user2`, `user_cancelled`
+* `?link_account_response=` will change the response from the `show_account_link_prompt()` method. It accepts the following values: `yes`, `no`, `logged_out`
+* `?user_response=` will change the response from the `get_user()` function. It accepts the following values: `user1`, `user2`, `logged_out`
+* `?token_response=` will change the response from the `get_user_token` function. It accepts the following values: `user1`, `user2`, `expired_token` (to return an expired token), `logged_out`
+
+By default, `get_user` returns `user1`, `get_user_token` returns token for `user1`, `show_account_link_prompt` returns `yes`, `show_auth_prompt` returns `user1`, and `is_user_account_available` returns `true`.
+
+
+### QA Tool
+When previewing the game in the QA tool, you can customize the user module behavior with the following modal:
+
+![](qa-tool-fake-user.jpg)
