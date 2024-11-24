@@ -1004,6 +1004,7 @@ def process_refdoc(download = False):
         if not os.path.isdir(s):
             shutil.copy2(s, d)
 
+    refindex.sort(key=lambda x: x.get("name").lower() + x.get("branch").lower())
 
     # write refdoc index
     write_as_json(os.path.join("_data", "refindex.json"), refindex)
