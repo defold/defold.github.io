@@ -3,7 +3,7 @@ layout: manual
 language: en
 github: https://github.com/defold/extension-poki-sdk
 title: Defold Poki SDK extension API documentation
-brief: This manual covers how to use AdMob to show ads on iOS and Android in Defold.
+brief: This manual covers how to integrate and use the Poki SDK in in Defold.
 ---
 
 # Defold Poki SDK extension API documentation
