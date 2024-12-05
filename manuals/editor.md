@@ -141,6 +141,8 @@ Type a suitable name for the new file. The full file name including the file typ
 
 ![create file name](../images/editor/create_file_name.png)
 
+It is possible to specify custom templates for each project. To do so, create a new folder named `templates` in the project’s root directory, and add new files named `default.*` with the desired extensions, such as `/templates/default.gui` or `/templates/default.script`. Additionally, if the `{% raw %}{{NAME}}{% endraw %}` token is used in these files, it will be replaced with the filename specified in the file creation window.
+
 ## Importing files to your project
 
 To add asset files (images, sounds, models etc) to your project, simply drag and drop them to the correct position in the *Assets* browser. This will make _copies_ of the files at the selected location in the project file structure. Read more about [how to import assets in our manual](/manuals/importing-assets/).
