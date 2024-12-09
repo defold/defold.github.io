@@ -308,6 +308,12 @@ function init(self)
 end
 ```
 
+## Optimizations
+HTML5 games usually have strict requirements on initial download size, startup time and memory usage to ensure that games load fast and run well on low end devices and slow internet connections. To optimize an HTML5 game it is recommended to focus on the following areas:
+
+* [Memory usage](/manuals/optimization-memory)
+* [Engine size](/manuals/optimization-size)
+* [Game size](/manuals/optimization-size)
 
 ## FAQ
 {% include shared/en/html5-faq.md %}
