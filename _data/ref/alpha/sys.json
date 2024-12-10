@@ -82,6 +82,21 @@
             "type": "MESSAGE"
         },
         {
+            "brief": "resume rendering",
+            "description": "Resume rendering.\nThis message can only be sent to the designated <code>@system</code> socket.",
+            "error": "",
+            "examples": "<pre>\nmsg.post(\"@system:\", \"resume_rendering\")\n</pre>",
+            "language": "",
+            "members": [],
+            "name": "resume_rendering",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
             "brief": "set update frequency",
             "description": "Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.\nThis message can only be sent to the designated <code>@system</code> socket.",
             "error": "",
