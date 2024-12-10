@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Factory components","url","[position]","[rotation]","[properties]","[scale]","Instance limits","Pooling of game objects"]
+toc: ["Factory components","Instance limits","Pooling of game objects"]
 title: Defold manual
 ---
 

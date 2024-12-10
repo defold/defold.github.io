@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Cameras","Creating a camera","aspect_ratio","fov","near_z","far_z","auto_aspect_ratio","Camera focus","Orthographic projection"]
+toc: ["Cameras","Creating a camera","Camera focus","Orthographic projection"]
 title: Defold manual
 ---
 

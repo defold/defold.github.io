@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Live update","Preparing content for Live update","Live update settings","Amazon","Zip","Scripting with excluded collection proxies","Bundling with Live update","Setting up Amazon Web Service","1. Create a bucket for Live update resources","2. Add a bucket policy to your bucket","3. Add a CORS configuration to your bucket (Optional)","4. Create IAM policy","5. Create a user for programmatic access","6. Create a credentials profile file","The manifest","Development caveats","Debugging","Forcing re-download of resources","Known issues"]
+toc: ["Live update","Preparing content for Live update","Live update settings","Scripting with excluded collection proxies","Bundling with Live update","Setting up Amazon Web Service","1. Create a bucket for Live update resources","2. Add a bucket policy to your bucket","3. Add a CORS configuration to your bucket (Optional)","4. Create IAM policy","5. Create a user for programmatic access","6. Create a credentials profile file","The manifest","Development caveats","Debugging","Forcing re-download of resources","Known issues"]
 title: Defold manual
 ---
 

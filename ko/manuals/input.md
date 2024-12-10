@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Input","Input bindings","input","action","Acquiring and releasing input focus","on_input()","action_id","action","Action fields","action.pressed","action.repeated","action.released","Screen positions","screen_x and screen_y","screen_dx and screen_dy","Key triggers","Mouse triggers","Mouse button inputs","Mouse wheel inputs","Mouse movement","Gamepad triggers","Touch triggers","Text triggers","TEXT","MARKED_TEXT","The input stack","Stack order","Consuming input","Input and Collection Proxies"]
+toc: ["Input","Input bindings","Acquiring and releasing input focus","on_input()","Action fields","Screen positions","Key triggers","Mouse triggers","Gamepad triggers","Touch triggers","Text triggers","The input stack","Stack order","Consuming input","Input and Collection Proxies"]
 title: Defold manual
 ---
 

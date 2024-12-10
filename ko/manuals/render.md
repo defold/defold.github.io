@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Rendering","The default renderer","Render predicates","The render script","init()","update()","on_message()","System messages"]
+toc: ["Rendering","The default renderer","Render predicates","The render script","System messages"]
 title: Defold manual
 ---
 

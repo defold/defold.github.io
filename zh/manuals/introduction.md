@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["欢迎来到 Defold","从哪开始?","编辑器","简单实例","Lua 语言","游戏教程","Defold 的资源组成","社区论坛"]
+toc: ["欢迎来到 Defold","从哪开始?"]
 title: Defold 介绍
 brief: Defold 简介.
 ---

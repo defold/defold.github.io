@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["打包应用","从编辑器中打包","编译报告","Android","iOS","macOS","Linux","Windows","HTML5","Facebook Instant Games","命令行打包","Bundle 结构","Release 与 Debug"]
+toc: ["打包应用","从编辑器中打包","编译报告","Android","iOS","macOS","Linux","Windows","HTML5","命令行打包","Bundle 结构","Release 与 Debug"]
 title: 打包应用
 brief: 本教程介绍了如何打包应用.
 ---

@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["原生代码调试","使用调试器","使用 print 函数","崩溃日志分析","从设备上获取崩溃日志","Android","iOS","调用堆栈代码文件映射","把 symbols 上传到 Google Play","Android调用堆栈映射","iOS 调用堆栈映射"]
+toc: ["原生代码调试","使用调试器","使用 print 函数","崩溃日志分析","从设备上获取崩溃日志","调用堆栈代码文件映射","把 symbols 上传到 Google Play","Android调用堆栈映射","iOS 调用堆栈映射"]
 title: Defold 中的原生代码调试
 brief: 本教程介绍了在 Defold 中调试原生代码的方法.
 ---

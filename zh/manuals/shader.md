@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["Shaders","概念","在 shader 中引入代码片段","include "/main/my-snippet.glsl"","include "my-snippet.glsl"","include "sub-folder/my-snippet.glsl"","include "../some-other-folder/my-snippet.glsl"","include "../root-level-snippet.glsl"","Header guards","include "math-functions.glsl"","include "pi.glsl"","include "pi.glsl"","ifndef PI_GLSL_H","define PI_GLSL_H","endif // PI_GLSL_H","渲染过程","深入学习"]
+toc: ["Shaders","概念","在 shader 中引入代码片段","Header guards","渲染过程","深入学习"]
 title: Defold 中的着色器编程
 brief: 本教程介绍了顶点和片元着色器及其在 Defold 中的使用方法.
 ---

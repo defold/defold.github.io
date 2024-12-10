@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Label","Creating a label","Size","Text","Color","Alpha","Pivot","Line Break","Leading","Tracking","Outline","Outline Alpha","Shadow","Shadow Alpha","Font","Alignment","Center","Left","Right","Runtime manipulation","color","outline","scale","shadow","size"]
+toc: ["Label","Creating a label","Alignment","Runtime manipulation"]
 title: Defold manual
 ---
 

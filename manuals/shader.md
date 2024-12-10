@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Shaders","Concepts","Writing modern GLSL shaders","Version declaration","version 140","Attributes","Varyings","Uniforms (called constants in Defold)","Built-in Variables","Texture functions","Precision","Putting it together","version 140","version 140","Including snippets into shaders","include "/main/my-snippet.glsl"","include "my-snippet.glsl"","include "sub-folder/my-snippet.glsl"","include "../some-other-folder/my-snippet.glsl"","include "../root-level-snippet.glsl"","Header guards","include "math-functions.glsl"","include "pi.glsl"","include "pi.glsl"","ifndef PI_GLSL_H","define PI_GLSL_H","endif // PI_GLSL_H","The rendering process","Further study"]
+toc: ["Shaders","Concepts","Writing modern GLSL shaders","Version declaration","Attributes","Varyings","Uniforms (called constants in Defold)","Built-in Variables","Texture functions","Precision","Putting it together","Including snippets into shaders","Header guards","The rendering process","Further study"]
 title: Shader programs in Defold
 brief: This manual describes vertex and fragment shaders in detail and how to use them in Defold.
 ---

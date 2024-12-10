@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Lua in Defold","Lua versions","Lua books and resources","Syntax","Variables and data types","nil","boolean","number","string","function","table","userdata","thread","Operators","Arithmetic operators(산술 연산자)","Relational/comparison operators(관계/비교 연산자)","Concatenation (연결)","Length","Flow control (흐름제어)","if then else","while","repeat until","for","break and return","Locals, globals and lexical scoping","Variable shadowing","Coroutines","Defold scripts","Logic scripts","GUI scripts","Render scripts","Script execution and callbacks","init(self)","final(self)","update(self, dt)","on_message(self, message_id, message, sender)","on_input(self, action_id, action)","on_reload(self)","Reactive logic(반응형 로직)","Lua contexts in Defold","Performance considerations(성능 고려사항)","Memory and garbage collection(메모리와 가비지 컬렉션)","Best practices","Behaviors in a module (모듈에서 동작을 사용하기)","A helper game object with encapsulated behavior (캡슐화된 동작을 헬퍼 게임오브젝트로 사용하기)","Grouping game object with helper behavior object inside a collection (동작을 처리하는 헬퍼 게임오브젝트를 컬렉션에서 그룹화하여 사용하기)"]
+toc: ["Lua in Defold","Lua versions","Lua books and resources","Syntax","Variables and data types","Operators","Flow control (흐름제어)","Locals, globals and lexical scoping","Coroutines","Defold scripts","Script execution and callbacks","Reactive logic(반응형 로직)","Lua contexts in Defold","Performance considerations(성능 고려사항)","Memory and garbage collection(메모리와 가비지 컬렉션)","Best practices"]
 title: Defold manual
 ---
 

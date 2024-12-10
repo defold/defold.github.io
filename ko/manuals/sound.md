@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Sound","Sound components","Sound groups","Creating a sound component","Sound","Looping","Gain","Group","Gain","Sound groups","Gating sounds"]
+toc: ["Sound","Creating a sound component","Gain","Sound groups","Gating sounds"]
 title: Defold manual
 ---
 

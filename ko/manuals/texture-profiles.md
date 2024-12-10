@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Texture profiles","Texture profiles","Paths","\*","?","'\*\*'",""/gui/\*\*/\*.atlas"",""/\*\*/\*.atlas"","Profiles","os","formats","mipmaps","max_texture_size","format","compression_level","Texture formats","PVRTC","ETC"]
+toc: ["Texture profiles","Texture profiles","Paths","Profiles","Texture formats"]
 title: Defold manual
 ---
 

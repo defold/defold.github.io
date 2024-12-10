@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Materials","Creating a material","Attributes","Default attribute semantics","Setting custom vertex attribute data","Instancing","Backwards compatibility","Vertex and fragment constants","Samplers","Sampler settings","Constants buffers"]
+toc: ["Materials","Creating a material","Attributes","Default attribute semantics","Setting custom vertex attribute data","Instancing","Vertex and fragment constants","Samplers","Sampler settings","Constants buffers"]
 title: Defold materials manual
 brief: This manual explains how to work with materials, shader constants and samplers.
 ---

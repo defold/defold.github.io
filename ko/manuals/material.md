@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Materials","Overview","Creating a material","Material tags","Constants","Shader programs","Setting the material","Shader constants","CONSTANT_TYPE_USER","CONSTANT_TYPE_WORLD","CONSTANT_TYPE_VIEW","CONSTANT_TYPE_PROJECTION","CONSTANT_TYPE_VIEWPROJ","CONSTANT_TYPE_WORLDVIEW","Constant buffers","Uniform texture samplers","Sampler settings","Wrap modes","WRAP_MODE_REPEAT","WRAP_MODE_MIRRORED_REPEAT","WRAP_MODE_CLAMP_TO_EDGE","Filter modes","FILTER_MODE_NEAREST","FILTER_MODE_LINEAR","FILTER_MODE_NEAREST_MIPMAP_NEAREST","FILTER_MODE_NEAREST_MIPMAP_LINEAR","FILTER_MODE_LINEAR_MIPMAP_NEAREST","FILTER_MODE_LINEAR_MIPMAP_LINEAR","Vertex shader attributes","Sprite","Tilegrid","Spine model","GUI node","ParticleFX","Mesh","Font"]
+toc: ["Materials","Overview","Creating a material","Material tags","Constants","Shader programs","Setting the material","Shader constants","Constant buffers","Uniform texture samplers","Sampler settings","Wrap modes","Filter modes","Vertex shader attributes"]
 title: Defold manual
 ---
 

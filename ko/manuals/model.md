@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Model component","Creating a model","Creating a model component","Mesh","Material","Texture","Skeleton","Animations","Default Animation"]
+toc: ["Model component","Creating a model","Creating a model component"]
 title: Defold manual
 ---
 

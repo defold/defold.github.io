@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Bob the builder","Overview","Usage","Available commands:","clean","distclean","build","bundle","resolve","Available platforms:","x86-darwin","x86_64-macos","arm64-macos","x86-win32","x86-linux","armv7-darwin","armv7-android","js-web"]
+toc: ["Bob the builder","Overview","Usage","Available commands:","Available platforms:"]
 title: Defold manual
 ---
 

@@ -2,7 +2,7 @@
 layout: manual
 language: es
 github: https://github.com/defold/doc
-toc: ["Bienvenido a Defold","¿Por dónde comenzar?","El editor","Ejemplos sencillos","El lenguaje Lua","Tutoriales de Juegos","Los bloques de construcción de Defold","El foro"]
+toc: ["Bienvenido a Defold","¿Por dónde comenzar?"]
 title: Introducción a Defold
 brief: Una breve introducción a Defold.
 ---

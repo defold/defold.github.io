@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Android development","Android and Google Play signing process","Creating a keystore","Creating an Android application bundle","Installing an Android application bundle","Installing an APK","Installing an APK using editor","Installing an AAB","Permissions","android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE (Protection level: normal)","android.permission.WAKE_LOCK (Protection level: normal)","Using AndroidX","FAQ"]
+toc: ["Android development","Android and Google Play signing process","Creating a keystore","Creating an Android application bundle","Installing an Android application bundle","Permissions","android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE (Protection level: normal)","android.permission.WAKE_LOCK (Protection level: normal)","Using AndroidX","FAQ"]
 title: Defold development for the Android platform
 brief: This manual describes how to build and run Defold applications on Android devices
 ---

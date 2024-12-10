@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["Android 开发","Android 和 Google Play 签名","制作 keystore","安卓应用打包","安装 Android 应用包","安装 APK","使用编辑器安装 APK","安装 AAB","权限","android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE (Protection level: normal)","android.permission.WAKE_LOCK (Protection level: normal)","使用 AndroidX","常见问题"]
+toc: ["Android 开发","Android 和 Google Play 签名","制作 keystore","安卓应用打包","安装 Android 应用包","权限","android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE (Protection level: normal)","android.permission.WAKE_LOCK (Protection level: normal)","使用 AndroidX","常见问题"]
 title: Defold 的 Android 平台开发
 brief: 本教程介绍了如何在 Defold 中进行 Android 设备应用的开发
 ---

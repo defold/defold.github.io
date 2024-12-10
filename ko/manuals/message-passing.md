@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Message passing","Addressing and URLs","socket","path","fragment","Message 1","Message 2","Message 3","Shorthands (약칭)","A concrete example (구체적인 예제)","Message data","on_message()","message_id","message","sender","Child-parent vs. collection-object hierarchies (부모-자식 계층구조와 컬렉션-오브젝트 계층구조 비교하기)","Advanced topics","Constructing URLs","System sockets","Collection Proxies","Message chains"]
+toc: ["Message passing","Addressing and URLs","A concrete example (구체적인 예제)","Message data","on_message()","Child-parent vs. collection-object hierarchies (부모-자식 계층구조와 컬렉션-오브젝트 계층구조 비교하기)","Advanced topics"]
 title: Defold manual
 ---
 
