@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["App manifest","Physics","Exclude Record","Exclude Profiler","Exclude Sound","Exclude Input","Exclude Live Update","Exclude Basis Universal","Use Android Support Lib","Graphics"]
 title: App manifest
 brief: 本教程介绍了如何使用应用清单来去掉引擎的特性.
 ---

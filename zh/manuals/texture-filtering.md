@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["纹理过滤和采样"]
 title: 纹理过滤
 brief: 本教程介绍了渲染图像时纹理过滤的功能.
 ---

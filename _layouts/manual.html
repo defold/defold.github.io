@@ -74,6 +74,18 @@ layout: page
 				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
 			</div>
 			<div class="columns two">
+				<input class="toggle" type="checkbox" checked/>
+				<label class="togglelabel">On this page</label>
+				<ul class="nobullet">
+				{%- for t in page.toc -%}
+					<li style="padding-left: 2rem;">
+						<a href='#{{ t | downcase | replace: " ", "-" }}' style="text-decoration: none;">{{ t }}</a>
+					</li>
+				{%- endfor -%}
+				</ul>
+
+				<hr/>
+
 				{%- if site.data.languageindex.size > 1 -%}
 				<input class="toggle" type="checkbox" checked/>
 				<label class="togglelabel">Languages</label>

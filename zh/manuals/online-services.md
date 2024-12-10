@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["游戏服务","一般常见","玩家认证, 排行榜, 成就系统","统计分析"]
 title: 在线服务
 brief: 本教程介绍了接入第三方服务的方法.
 ---

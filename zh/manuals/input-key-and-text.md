@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Key Triggers","Text Triggers","Text","Marked text"]
 title: Defold 键盘按键和文本输入教程
 brief: 本教程介绍了键盘按键和文本输入的功能.
 ---

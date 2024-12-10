@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Defold 编译器","C++ 版本","工具链","SDK 版本","C++ 版本 + ABI 兼容","Win32 + Clang","静态链接","没有 C++ Exceptions"]
 title: 原生扩展 - 详述
 brief: 本教程介绍了有关编译系统用来编译原生扩展的一些细节.
 ---

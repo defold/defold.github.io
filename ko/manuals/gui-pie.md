@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["Pie nodes","Inner radius","Outer bounds","Perimeter vertices","Pie fill angle"]
 title: Defold manual
 ---
 

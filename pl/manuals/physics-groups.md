@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Grupy i maski kolizji","Wykrywanie kolizji"]
 title: Grupy kolizji w Defoldzie
 brief: Ta instrukcja jak działają grupy i maski silnika fizyki.
 ---

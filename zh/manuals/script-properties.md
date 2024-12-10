@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["脚本属性","定义脚本属性","访问脚本属性","Factory 创建的对象","资源属性"]
 title: 脚本组件属性
 brief: 本教程介绍了如何对脚本组件添加属性以及如何在运行时访问它们.
 ---

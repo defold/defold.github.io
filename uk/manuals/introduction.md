@@ -2,6 +2,7 @@
 layout: manual
 language: uk
 github: https://github.com/defold/doc
+toc: ["Ласкаво просимо в Defold","З чого почати?","Редактор","Прості приклади","Мова Lua","Уроки","Будівельні блоки Defold","Форум"]
 title: Вступ до Defold
 brief: Короткий вступ до Defold.
 ---

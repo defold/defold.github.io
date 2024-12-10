@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Native extensions","The build server","Project layout","Manifest files","Sharing an extension","A simple example extension","C++ symbol in your extension","define LIB_NAME "MyExtension"","define MODULE_NAME "myextension"","include <dmsdk/sdk.h>","Extension Lifecycle","Defined platform identifiers","Build server logs","Example extensions"]
 title: Writing native extensions for Defold
 brief: This manual explains how to write a native extension for the Defold game engine and how to compile it through the zero setup cloud builders.
 ---

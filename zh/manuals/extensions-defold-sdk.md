@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Defold SDK","用法"]
 title: 原生扩展 - Defold SDK
 brief: 本教程介绍了创建原生扩展时如何使用 Defold SDK.
 ---

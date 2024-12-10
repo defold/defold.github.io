@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["发布前检查"]
 title: 发布前检查
 brief: 本教程介绍了发布游戏前应该做的检查事项.
 ---

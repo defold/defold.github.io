@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["GUI template nodes","Creating a template","Creating instances from a template","Modifying templates in runtime"]
 title: GUI templates manual
 brief: This manual explains the Defold GUI template system that is used to create reusable visual GUI components based on shared templates or 'prefabs'.
 ---

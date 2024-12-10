@@ -2,6 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
+toc: ["Отладка на Android","Android Studio","Примечани","Директория задач нативного расширения"]
 title: Отладка на Android
 brief: В этом руководстве описывается, как отлаживать сборку, работающую на устройстве Android.
 ---

@@ -2,6 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
+toc: ["Бандлинг приложения","Бандлинг прямо из редактора","Отчеты о сборке","Android","iOS","macOS","Linux","Windows","HTML5","Facebook Instant Games","Бандлинг из командной строки"]
 title: Бандлинг (сборка пакета) приложения
 brief: В этом руководстве рассказывается, как создать бандл приложения.
 ---

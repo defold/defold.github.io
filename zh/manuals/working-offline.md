@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["断网工作","自动更新","问题反馈","下载依赖","编译原生扩展"]
 title: 断网工作
 brief: 本教程介绍了在离线状态下使用依赖库尤其是使用原生扩展的方法
 ---

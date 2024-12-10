@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Android 平台调试","Android Studio","注意","原生扩展 job 文件夹"]
 title: Android 平台调试
 brief: 本教程介绍了在使用 Android Studio 调试游戏的方法.
 ---

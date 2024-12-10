@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["纹理档案","纹理档案","路径设置","档案","纹理格式","压缩类型","图片压缩测试","压缩时间","失真","压缩文件大小","图片质量"]
 title: Defold 中的纹理档案
 brief: Defold 支持自动纹理处理和数据压缩. 本教程介绍了这类功能.
 ---

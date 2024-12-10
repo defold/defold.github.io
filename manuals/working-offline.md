@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Working offline","Automatic updates","Reporting issues","Fetching dependencies","Building native extensions"]
 title: Working offline
 brief: This manual describes how to work offline in projects containing dependencies and in-particular native extensions
 ---

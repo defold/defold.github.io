@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: []
 title: Animacje szkieletowe Spine
 brief: This manual explains how to bring Spine animations from _Spine_ into Defold.
 ---

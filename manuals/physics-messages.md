@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Collision messages","Collision response","Contact point response","Trigger response"]
 title: Collision messages in Defold
 brief: When two objects collide, the engine will broadcast messages to all components in both objects.
 ---

@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Render","Render pipeline - What, when and where?","The default render","Render predicates","Default view projection","Stretch projection","Fixed fit projection","Fixed projection","Camera projection","Frustum culling","Coordinate systems","The render script","Render Resources","Texture handles","Supported graphics APIs","System messages","Draw calls and batching","Batch rules for non-GUI components","Batch rules for GUI components"]
 title: The render pipeline in Defold
 brief: This manual explains how Defold's render pipeline works and how you can program it.
 ---

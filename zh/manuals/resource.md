@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["资源管理","静态资源树","动态加载的工厂资源","动态资源卸载","打包排除资源"]
 title: Defold 资源管理
 brief: 本教程介绍了 Defold 如何自动管理资源以及如何手动加载以便实现内存和包体最小化.
 ---

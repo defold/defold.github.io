@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["脚本","脚本类型","脚本运行, 回调和 self","链式逻辑","预处理","编辑器支持"]
 title: 使用脚本编写游戏逻辑
 brief: 本教程介绍了如何使用脚本组件加入游戏逻辑
 ---

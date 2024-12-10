@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Defold 游戏优化","应用大小优化","缩减引擎","声音优化","图片优化","优化字体","排除内容按需下载","Android 大小优化","应用运行速度优化","减少脚本运行时间","代码有效率","减少垃圾回收","预哈希消息与行为id","Prefer and cache URLs","减少渲染一帧的时间","降低场景图复杂度","优化内存使用","微调组件计数","Heap 大小 (仅 HTML5)","优化耗电"]
 title: Defold 游戏优化
 brief: 本教程介绍了如何优化 Defold 应用的包体和性能.
 ---

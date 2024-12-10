@@ -2,6 +2,7 @@
 layout: manual
 language: pt
 github: https://github.com/defold/doc
+toc: ["Building blocks","Collections","Game objects","Components","Objects added in-place or by reference","Childing game objects"]
 title: Os Blocos Construtores do Defold
 brief: Esse manual mostra detalhes relacionados ao funcionameno de objetos componentes e coleções.
 ---

@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Defold 术语","Animation set","Atlas","Builtins","Camera","Collision object","Component","Collection","Collection factory","Collection proxy","Cubemap","Debugging","Display profiles","Factory","Font","Fragment shader","Gamepads","Game object","GUI","GUI script","Hot reload","Input binding","Label","Library","Lua language","Lua module","Material","Message","Model","ParticleFX","Profiling","Render","Render script","Script","Sound","Sprite","Texture profiles","Tile map","Tile source","Vertex shader"]
 title: Defold 术语
 brief: 本教程列举了使用 Defold 工作中会遇到的各种专用词汇及其简短的解释.
 ---

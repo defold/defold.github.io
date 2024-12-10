@@ -897,30 +897,6 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "set render's event listener",
-            "description": "Set or remove listener. Currenly only only two type of events can arrived:\n<code>render.CONTEXT_EVENT_CONTEXT_LOST</code> - when rendering context lost. Rending paused and all graphics resources become invalid.\n<code>render.CONTEXT_EVENT_CONTEXT_RESTORED</code> - when rendering context was restored. Rendering still paused and graphics resources still\ninvalid but can be reloaded.",
-            "error": "",
-            "examples": "Set listener and handle render context events.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">--- custom.render_script</span>\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n   <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">event_type</span><span class=\"p\">)</span>\n       <span class=\"kr\">if</span> <span class=\"n\">event_type</span> <span class=\"o\">==</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_EVENT_CONTEXT_LOST</span> <span class=\"kr\">then</span>\n           <span class=\"c1\">--- Some stuff when rendering context is lost</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">event_type</span> <span class=\"o\">==</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_EVENT_CONTEXT_RESTORED</span> <span class=\"kr\">then</span>\n           <span class=\"c1\">--- Start reload resources, reload game, etc.</span>\n       <span class=\"kr\">end</span>\n   <span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
-            "language": "",
-            "members": [],
-            "name": "render.set_listener",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "A callback that receives all render related events.\nPass <code>nil</code> if want to remove listener.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The render script</dd>\n<dt><code>event_type</code></dt>\n<dd><span class=\"type\">string</span> Rendering event. Possible values: <code>render.CONTEXT_EVENT_CONTEXT_LOST</code>, <code>render.CONTEXT_EVENT_CONTEXT_RESTORED</code></dd>\n</dl>",
-                    "name": "callback",
-                    "types": [
-                        "function(self, event_type)",
-                        "nil"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
             "brief": "sets the polygon offset",
             "description": "Sets the scale and units used to calculate depth values.\nIf <code>graphics.STATE_POLYGON_OFFSET_FILL</code> is enabled, each fragment's depth value\nis offset from its interpolated value (depending on the depth value of the\nappropriate vertices). Polygon offset can be used when drawing decals, rendering\nhidden-line images etc.\n<code>factor</code> specifies a scale factor that is used to create a variable depth\noffset for each polygon. The initial value is <code>0</code>.\n<code>units</code> is multiplied by an implementation-specific value to create a\nconstant depth offset. The initial value is <code>0</code>.\nThe value of the offset is computed as <code>factor</code> &times; <code>DZ</code> + <code>r</code> &times; <code>units</code>\n<code>DZ</code> is a measurement of the depth slope of the polygon which is the change in z (depth)\nvalues divided by the change in either x or y coordinates, as you traverse a polygon.\nThe depth values are in window coordinates, clamped to the range [0, 1].\n<code>r</code> is the smallest value that is guaranteed to produce a resolvable difference.\nIt's value is an implementation-specific constant.\nThe offset is added before the depth test is performed and before the\nvalue is written into the depth buffer.",
             "error": "",

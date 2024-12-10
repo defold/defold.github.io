@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Tworzenie projektu","Tworzenie nowego projektu lokalnie","Dodawanie projektu na Githuba","Otwieranie istniejącego projektu","Otwarcie ostatniego projektu"]
 title: Tworzenie nowego projektu
 brief: Instrukcja opisuje sposoby na utworzenie i otwieranie projektów w Defoldzie.
 ---

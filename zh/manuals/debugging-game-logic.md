@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["调试游戏逻辑","打印输出与可视调试","Running the debugger","Lua 调试库","调试步骤","物理引擎调试"]
 title: Defold 中的调试
 brief: 本教程介绍了 Defold 中自带的调试功能.
 ---

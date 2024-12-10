@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Debugging on iOS/macOS","Xcode","Create Project","Launch the debugger","Debug symbols","Path mappings","Breakpoints","Notes","Check UUID of binary"]
 title: Debugging on iOS/macOS
 brief: This manual describes how to debug a build using Xcode.
 ---

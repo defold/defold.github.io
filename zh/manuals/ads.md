@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["广告","类型","广告条","插播广告","奖励广告","广告商","广告游戏整合","广告与内支付","更多资源"]
 title: 在 Defold 中播放广告
 brief: 广告是网页游戏和手机游戏的基本盈利方式. 本教程介绍了在 Defold 中如何通过广告盈利.
 ---

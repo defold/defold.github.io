@@ -163,52 +163,6 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "converts euler angles into a quaternion",
-            "description": "Converts euler angles (x, y, z) in degrees into a quaternion\nThe error is guaranteed to be less than 0.001.\nIf the first argument is vector3, its values are used as x, y, z angles.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "vmath.euler_to_quat",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "rotation around x-axis in degrees or vector3 with euler angles in degrees",
-                    "name": "x",
-                    "types": [
-                        "number",
-                        "vector3"
-                    ]
-                },
-                {
-                    "doc": "rotation around y-axis in degrees",
-                    "name": "y",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "rotation around z-axis in degrees",
-                    "name": "z",
-                    "types": [
-                        "number"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "quaternion describing an equivalent rotation (231 (YZX) rotation sequence)",
-                    "name": "q",
-                    "types": [
-                        "quaternion"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
             "brief": "calculates the inverse matrix.",
             "description": "The resulting matrix is the inverse of the supplied matrix.\n<span class=\"icon-attention\"></span> For ortho-normal matrices, e.g. regular object transformation,\nuse <code>vmath.ortho_inv()</code> instead.\nThe specialized inverse for ortho-normalized matrices is much faster\nthan the general inverse.",
             "error": "",
@@ -1563,51 +1517,6 @@
                     "name": "q",
                     "types": [
                         "quaternion"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "converts a quaternion into euler angles",
-            "description": "Converts a quaternion into euler angles (r0, r1, r2), based on YZX rotation order.\nTo handle gimbal lock (singularity at r1 ~ +/- 90 degrees), the cut off is at r0 = +/- 88.85 degrees, which snaps to +/- 90.\nThe provided quaternion is expected to be normalized.\nThe error is guaranteed to be less than +/- 0.02 degrees",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "vmath.quat_to_euler",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "source quaternion",
-                    "name": "q",
-                    "types": [
-                        "quaternion"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "euler angle x in degrees",
-                    "name": "x",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "euler angle y in degrees",
-                    "name": "y",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "euler angle z in degrees",
-                    "name": "z",
-                    "types": [
-                        "number"
                     ]
                 }
             ],

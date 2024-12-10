@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Mesh 组件","新建 Mesh 组件","Mesh 属性","编辑时操作","运行时操作","视锥体剔除","材质常量","顶点的局部/世界坐标空间"]
 title: Defold 中的3D网格
 brief: 本教程介绍了如何在你的 Defold 游戏中添加3D网格.
 ---

@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Właściwości skryptów","Definicja właściwości skryptu","Dostęp do właściwości skryptu","Obiekty utworzone przez fabryki","Właściwości zasobów"]
 title: Właściwości komponentu skryptu
 brief: Ta instrukcja wyjaśnia, jak dodawać niestandardowe właściwości do komponentów skryptu i jak uzyskiwać do nich dostęp z edytora oraz skryptów uruchamianych podczas działania gry.
 ---

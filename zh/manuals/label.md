@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Label","创建 label","Label 属性","混合模式","锚点和对齐","运行时控制操作","相关项目配置"]
 title: Defold 里的 Label 文本组件
 brief: 本教程介绍了文本组件 label 的使用方法.
 ---

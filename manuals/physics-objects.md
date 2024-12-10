@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Collision objects","Adding a collision object component","Adding a collision shape","Collision object properties","Runtime properties"]
 title: Collision objects in Defold
 brief: A collision object is a component you use to give a game object physical behaviour. A collision object has physical properties and a spatial shape.
 ---

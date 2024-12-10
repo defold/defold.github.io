@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Gamepads","Digital buttons","Analog sticks","Multiple gamepads","Connect and Disconnect","Raw gamepads","Gamepads settings file","Unidentified gamepads","Gamepads in HTML5","Standard gamepad","Gamepads on Windows","Gamepads on Android"]
 title: Gamepad input in Defold
 brief: This manual explains how gamepad input works.
 ---

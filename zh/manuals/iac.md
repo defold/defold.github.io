@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["应用内通信","安装扩展","使用扩展"]
 title: Defold 的应用内通信
 brief: 应用内通信可以让你获得应用启动时的启动参数信息. 本教程解释了Defold中此功能的API.
 ---

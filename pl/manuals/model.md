@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Modele 3D","Tworzenie komponentu Modelu","Właściwości Modeli","Manipulacja w Edytorze","Manipulacja w czasie rzeczywistym","Animacja w czasie rzeczywistym","Modyfikacja właściwości Modelu","Materiały","Stałe materiału","Renderowanie"]
 title: Modele 3D w Defoldzie
 brief: Ta instrukcja opisuje, jak wprowadzać modele 3D, szkielety i animacje do gry.
 ---

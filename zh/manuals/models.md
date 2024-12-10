@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["模型"]
 title: 废弃的 3D 模型教程
 brief: 本教程已过时
 ---

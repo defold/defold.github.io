@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["GUI 模板节点","创建模板","创建模板节点","运行时修改模板"]
 title: GUI 模板教程
 brief: 本教程介绍了用以创建基于模板（或称作'prefabs'）的可重用可视 GUI 组件的 Defold GUI 模板系统.
 ---

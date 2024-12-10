@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Obiekty kolizji","Dodawanie komponentu obiektu kolizji","Dodawanie kształtu kolizji","Właściwości obiektu kolizji","Właściwości w trakcie działania gry"]
 title: Obiekty kolizji w Defoldzie
 brief: Obiekt kolizji to komponent, który nadaje obiektowi gry zachowanie fizyczne. Obiekt kolizji ma właściwości fizyczne i przestrzenną formę.
 ---

@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Debugging on Android","Android Studio","Notes","Native Extension job folder"]
 title: Debugging on Android
 brief: This manual describes how to debug a build using Android Studio.
 ---

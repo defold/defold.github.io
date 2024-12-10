@@ -2,6 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
+toc: ["Доступные образы Docker","Как использовать старые образы Docker"]
 title: Доступные образы Docker
 brief: Документ описывает доступные образы Docker и версии Defold, которые их используют
 ---

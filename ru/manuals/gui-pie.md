@@ -2,6 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
+toc: ["GUI-нода Pie","Создание ноды Pie","Воздействие на ноду Pie в рантайме"]
 title: GUI-нода Pie
 brief: Это руководство объясняет, как использовать ноду Pie в GUI-сценах.
 ---

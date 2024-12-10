@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["安装 Defold"]
 title: 安装 Defold
 brief: 本教程解释了在你的操作系统下如何下载和安装 Defold 编辑器.
 ---

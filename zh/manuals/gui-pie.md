@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["GUI 饼状图节点","创建饼状图节点","运行时修改饼状图"]
 title: Defold GUI 饼状图节点
 brief: 本教程介绍了在 Defold GUI 场景中如何使用饼状图节点.
 ---

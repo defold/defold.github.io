@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["介绍","内容渲染的方法如何改变","复古/8比特图像","高分辨率图像","高分辨率视网膜屏幕","创建可适配性 GUI","节点属性","布局","测试不同的屏幕尺寸"]
 title: 适配游戏图像到不同的屏幕尺寸
 brief: 本教程解释了如何适配游戏和图像到不同的屏幕尺寸.
 ---

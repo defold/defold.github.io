@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Version control","Changed files","Synchronizing","Git"]
 title: Version control
 brief: This manual covers how to work with the built-in version control system.
 ---

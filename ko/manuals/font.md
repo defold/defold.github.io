@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["Font files","Creating a font","font","material","size","antialias","alpha","outline_alpha","outline_width","shadow_alpha","shadow_blur","shadow_x","shadow_y","extra_characters","output_format","all_chars","cache_width","cache_height","Bitmap BMFonts","Distance field fonts","Artifacts and best practices"]
 title: Defold manual
 ---
 

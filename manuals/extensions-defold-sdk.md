@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["The Defold SDK","Usage"]
 title: Native extensions - Defold SDK
 brief: This manual describes how to work with the Defold SDK when creating native extensions.
 ---

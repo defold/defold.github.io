@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Węzeł GUI typu box","Dodawanie węzłów box","Odtwarzanie animacji"]
 title: Węzły prostokątne - box w Defoldzie
 brief: Ta instrukcja wyjaśnia jak używać węzłów typu box.
 ---

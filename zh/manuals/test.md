@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Defold markdown test","Two levels of headings, lists and tables","Notes and images","Transclusion"]
 title: Defold markdown test
 brief: This document uses all Markdown features (Commonmark + a couple of extensions) that the Defold docs use.
 ---

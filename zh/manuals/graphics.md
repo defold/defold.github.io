@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: []
 title: Defold 图像教程
 brief: 本教程简述了 Defold 支持的图像组件.
 ---

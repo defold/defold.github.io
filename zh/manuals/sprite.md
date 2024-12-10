@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Sprites","Sprite 属性","混合模式","运行时操作","材质常量","材质属性","相关项目配置","多纹理 sprites","动画","UVs"]
 title: 显示 2D 图片
 brief: 本教程介绍了如何使用 sprite 组件显示 2D 图片和动画.
 ---

@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["Libraries","Setting up library sharing","Library URL","Setting up library dependencies","Troubleshooting","Broken references","Name collisions"]
 title: Defold manual
 ---
 

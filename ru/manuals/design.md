@@ -2,6 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
+toc: ["Дизайн Defold"]
 title: Дизайн Defold
 brief: Философия дизайна Defold
 ---

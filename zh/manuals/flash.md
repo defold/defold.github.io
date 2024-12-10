@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Flash 开发者 Defold 过渡","介绍","影片剪辑和游戏对象","Flash 手动创建影片剪辑","Defold 手动创建游戏对象","Flash—手动引用影片剪辑","Defold—游戏对象id","Flash—动态创建影片剪辑","Defold—使用工厂创建游戏对象","Flash—物体","Defold—集合","Flash—时间轴","Defold—属性动画","Flash—深度索引","Defold— z 轴位置","Flash—hitTestObject 和 hitTestPoint 碰撞检测","Defold—碰撞对象","Flash—事件监听","Defold—回调函数和消息","Flash—按钮剪辑","Defold—GUI场景和脚本","调试","更多参考"]
 title: Flash 开发者 Defold 过渡教程
 brief: 本教程针对 Flash 游戏开发者对比介绍了 Defold 相对应的概念和方法.
 ---

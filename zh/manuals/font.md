@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["字体文件","创建字体","属性","Distance field 字体","位图 BMFont","举例与最佳实践","文字缓存"]
 title: Defold 字体教程
 brief: 本教程介绍了 Defold 如何处理和在游戏中使用字体.
 ---

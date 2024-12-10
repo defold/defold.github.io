@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["物理","物理模拟数量单位","物理循环更新","注意事项"]
 title: Defold 中的物理系统
 brief: Defold 包含 2D 和 3D 的物理引擎. 它们可以基于牛顿物理定律模拟各种物体运动碰撞时的物理效果.
 ---

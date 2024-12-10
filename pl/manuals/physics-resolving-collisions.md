@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Rozwiązywanie kolizji kinematycznych"]
 title: Rozwiązywanie kolizji kinematycznych w Defoldzie
 brief: Ta instrukcja wyjaśnia jak rozwiązywać kolizje kinematyczne w Defoldzie
 ---

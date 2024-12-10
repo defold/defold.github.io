@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Importing 3D models","Importing to Defold","Using a model","Exporting to glTF and Collada","Requirements","Exporting a texture","Exporting using Blender"]
 title: Importing models
 brief: This manual covers how to import 3D models used by the model component.
 ---

@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["GUI","Tworzenie komponentu GUI","Zależności","Typy węzłów","Właściwości węzłów","Punkt obrotu, Kotwice i Tryb Dostosowywania","Kolejność rysowania","Hierarchie rodzic-dziecko","Warstwy i wywołania rysowania"]
 title: Sceny GUI w Defoldzie
 brief: Ta instrukcja omawia edytor GUI w Defold, różne typy węzłów GUI oraz skrypty GUI.
 ---

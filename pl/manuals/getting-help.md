@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Jak uzyskać pomoc?","Zgłoś problem na forum","Wymagane informacje","Zgłoś problem z poziomu Edytora Defold","Przedysktuj problem na Discord","Logi"]
 title: Jak uzyskać pomoc?
 brief: Instrukcja opisuje jak efektywnie i szybko uzyskać pomoc, jeśli napotkasz jakiekolwiek problemy z Defoldem.
 ---

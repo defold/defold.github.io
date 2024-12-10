@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["移动端开发用app","安装开发用app","Installing on iOS","Installing on Android","启动游戏","在 Windows 上使用 USB 连接 iOS 设备","在 Linux 上使用 USB 连接 iOS 设备","在 macOS 上使用 USB 连接 iOS 设备","在 macOS 上使用 USB 连接 Android 设备","在 Windows 或 Linux 上使用 USB 连接 Android 设备","故障排除"]
 title: 在设备上运行开发用app
 brief: 本教程介绍了如何在设备上安装开发用app以方便开发流程.
 ---

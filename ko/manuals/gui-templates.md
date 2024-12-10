@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["Templates","Creating and using a template","Overloading properties","Layers","Scripting"]
 title: Defold manual
 ---
 

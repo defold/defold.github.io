@@ -2,6 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
+toc: ["GUI-нода Text","Добавление ноды Text","Выравнивание","Воздействие на ноду Text в рантайме"]
 title: GUI-нода Text
 brief: В этом руководстве описано, как добавлять текст в GUI-сцены.
 ---

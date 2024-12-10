@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["集合工厂","创建集合","属性","工厂资源的动态加载","动态 prototype"]
 title: 集合工厂教程
 brief: 本教程介绍了如何使用集合工厂创建一组嵌套的游戏对象.
 ---

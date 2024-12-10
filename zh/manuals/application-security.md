@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["应用加密","保护您的知识产权免遭盗窃","源代码混淆","资源加密","游戏防作弊","网络通信安全","SSL 证书验证","第三方软件使用安全","云编译服务器的使用安全","可下载资源的安全"]
 title: Defold 应用加密教程
 brief: 本教程涵盖了安全开发实践的若干方面.
 ---

@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["组件","组件类型","开启关闭组件","组件属性","位置, 旋转和缩放","组件渲染顺序","渲染脚本的渲染优先级","组件z值"]
 title: 游戏对象组件
 brief: 本教程提供了游戏对象组件概览及其使用方法.
 ---

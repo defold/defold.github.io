@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Właściwości","Właściwości obiektów gry i komponentów","Właściwości węzłów GUI"]
 title: Właściwości w Defoldzie
 brief: Ta instrukcja opisuje typy właściwości, jak je używać i animować.
 ---

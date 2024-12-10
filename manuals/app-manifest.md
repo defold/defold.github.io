@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["App manifest","Physics","Rig + Model","Exclude Record","Exclude Profiler","Exclude Sound","Exclude Input","Exclude Live Update","Exclude Image","Exclude Types","Exclude Basis Universal","Use Android Support Lib","Graphics","Minimum Safari version (js-web and wasm-web only)","Minimum Firefox version (js-web and wasm-web only)","Minimum Chrome version (js-web and wasm-web only)","Initial memory (js-web and wasm-web only)","Stack size (js-web and wasm-web only)"]
 title: App manifest
 brief: This manual describes how the app manifest can be used to exclude features from the engine.
 ---

@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Introduction","How to change how your content is rendered","Retro/8-bit graphics","High resolution graphics","High DPI setting and retina screens","Creating an adaptive GUI","Node properties","Layouts","Testing different screen sizes"]
 title: Adapting graphics to different screen sizes
 brief: This manual explains how to adapt your game and graphics to different screen sizes.
 ---

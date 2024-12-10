@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Etykieta (Label)","Tworzenie etykiety","Właściwości etykiety","Tryby mieszania","Pivot i wyrównanie","Manipulacja etykietą w czasie rzeczywistym","Konfiguracja projektu"]
 title: Etykieta w Defoldzie
 brief: Ta instrukcja wyjaśnia jak korzystać z etykiety w celu wyświetlania tekstu w grach.
 ---

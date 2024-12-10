@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Font files","Runtime generated fonts","Creating a font","Properties","Distance field fonts","Bitmap BMFonts","Artifacts and best practices","Font Cache"]
 title: Fonts in Defold manual
 brief: This manual describes how Defold handles fonts and how to bring fonts onto the screen in your games.
 ---

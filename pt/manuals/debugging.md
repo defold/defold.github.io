@@ -2,6 +2,7 @@
 layout: manual
 language: pt
 github: https://github.com/defold/doc
+toc: ["Depuração"]
 title: Depuração em Defold.
 brief: Esse manual excplica as  instalações de depuraçãopresentes no Defold.
 ---

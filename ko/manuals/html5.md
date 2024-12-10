@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["HTML5 게임 개발하기","Project configuration","Customizing heap size","Monitoring memory usage","Application cache","Creating HTML5 content","Testing HTML5 Content","Known issues and limitations","Live update","CORS","Safari (IndexedDB)","Internet Explorer 11 (audio)","Internet Explorer 11 (WebGL)","Internet Explorer 11 (Full screen)","Customizing HTML5 applications","Splash screens","onSetMessage(text)","onSetProgress(current, max)","onDismissSplash()","Module.matchToCanvas(id)","Module.setMarginTop(id, sourcePixels)","Tokens","DEFOLD_DISPLAY_WIDTH","DEFOLD_DISPLAY_HEIGHT","DEFOLD_SPLASH_IMAGE","DEFOLD_APP_TITLE","DEFOLD_JS","DEFOLD_MODULE_JS","DEFOLD_CSS","DEFOLD_DEV_HEAD","DEFOLD_DEV_INLINE","DEFOLD_JS_INIT","HTML5 Memory Tracker","Tool features","Heap","Dynamic","Static","Stack","Known limitations"]
 title: Defold manual
 ---
 

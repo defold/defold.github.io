@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["GUI 方块节点","添加方块节点","播放动画"]
 title: Defold 中的 GUI 方块节点
 brief: 本教程介绍了如何使用 GUI 方块节点.
 ---

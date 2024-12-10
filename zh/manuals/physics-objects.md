@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["碰撞对象","加入碰撞對象组件","加入碰撞形状","碰撞對象屬性","運行時屬性"]
 title: Defold 中的碰撞对象
 brief: 碰撞对象是能给与游戏对象物理行为的组件. 碰撞对象包含许多物理属性和空间形状.
 ---

@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["编辑器风格","修改颜色","修改字体"]
 title: 编辑器风格
 brief: 您可以使用自定义 stylesheet 修改编辑器配色, 文本及其他可视元素.
 ---

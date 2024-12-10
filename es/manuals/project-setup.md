@@ -2,6 +2,7 @@
 layout: manual
 language: es
 github: https://github.com/defold/doc
+toc: ["Configuración de Proyecto","Creando un nuevo proyecto local","Añadir el proyecto a GitHub","Abrir un proyecto existente","Abrir proyecto reciente"]
 title: Configuración de proyecto
 brief: Este manual cubre como crear o abrir un proyecto en Defold.
 ---

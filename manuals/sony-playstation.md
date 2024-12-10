@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Game development for PlayStation®4 and PlayStation®5 consoles","Registering as developer for PS4 and PS5 game development","PS4™ and PS5™ access in Defold","FAQ"]
 title: Defold development for PlayStation®4 and PlayStation®5
 brief: This manual describes how to get PlayStation®4 and PlayStation®5 access
 ---

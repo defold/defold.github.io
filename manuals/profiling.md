@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Profiling","The runtime visual profiler","The web profiler","Frame profiler","Resource profiler","Build reports","External tools"]
 title: Profiling in Defold
 brief: This manual explains the profiling facilities present in Defold.
 ---

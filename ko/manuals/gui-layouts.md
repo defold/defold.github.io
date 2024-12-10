@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["Layouts","Display profiles","Landscape","Portrait","GUI layouts","Layout change messages","In game content"]
 title: Defold manual
 ---
 

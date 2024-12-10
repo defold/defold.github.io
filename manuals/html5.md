@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["HTML5 development","Heap size","Testing HTML5 build","Creating HTML5 bundle","Known issues and limitations","Customizing HTML5 bundle","Downscale Fit and Fit","Stretch","No Scale","Tokens","Extra parameters","File operations in HTML5","Passing arguments to an HTML5 game","Engine arguments","Query arguments in the URL","Optimizations","FAQ"]
 title: Defold development for the HTML5 platform
 brief: This manual describes the process of creating HTML5 game, along with known issues and limitations.
 ---
@@ -308,6 +309,12 @@ function init(self)
 end
 ```
 
+## Optimizations
+HTML5 games usually have strict requirements on initial download size, startup time and memory usage to ensure that games load fast and run well on low end devices and slow internet connections. To optimize an HTML5 game it is recommended to focus on the following areas:
+
+* [Memory usage](/manuals/optimization-memory)
+* [Engine size](/manuals/optimization-size)
+* [Game size](/manuals/optimization-size)
 
 ## FAQ
 {% include shared/en/html5-faq.md %}

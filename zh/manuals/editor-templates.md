@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["项目模板"]
 title: 项目模板
 brief: 在编辑器新建项目窗口中可以加入自定义模板.
 ---

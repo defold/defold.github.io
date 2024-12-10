@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["摄像机","创建摄像机","使用摄像机","摄像机平移","摄像机缩放","摄像机跟随","鼠标位置转换为世界坐标","运行时控制","第三方摄像机解决方案"]
 title: 摄像机组件教程
 brief: 本教程介绍了 Defold 摄像机组件的功能.
 ---

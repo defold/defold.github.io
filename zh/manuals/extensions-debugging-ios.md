@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: []
 title: 在 iOS/macOS 中调试
 brief: 本教程介绍了如何使用 Xcode 进行调试.
 ---

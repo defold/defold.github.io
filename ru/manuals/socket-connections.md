@@ -2,6 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
+toc: ["Сокет-соединения","Справочник по API и примеры"]
 title: Сокет-соединения
 brief: Данное руководство объясняет как подключаться с созданием сокет-соединений.
 ---

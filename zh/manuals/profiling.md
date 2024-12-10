@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["性能分析","运行时可视分析器","网页版分析器","逐帧分析器","资源分析器","编译报告","外部工具"]
 title: Defold 性能分析
 brief: 本教程介绍了 Defold 内置的性能分析工具.
 ---

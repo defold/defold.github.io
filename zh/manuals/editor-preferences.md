@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["编辑器配置","General","Code","使用 Visual Studio Code 打开脚本文件","扩展","工具"]
 title: 编辑器配置
 brief: 可以通过设置窗口修改编辑器配置.
 ---

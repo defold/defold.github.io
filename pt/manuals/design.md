@@ -2,6 +2,7 @@
 layout: manual
 language: pt
 github: https://github.com/defold/doc
+toc: ["The design of Defold"]
 title: The design of Defold
 brief: The philosophy behind Defold's design
 ---

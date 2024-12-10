@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Atlas","Creating an Atlas","Atlas properties","Image properties","Animation properties","Runtime Texture and Atlas creation","Creating a Texture resource at runtime","Creating an Atlas at runtime"]
 title: Atlas manual
 brief: This manual explains how Atlas resources work in Defold.
 ---

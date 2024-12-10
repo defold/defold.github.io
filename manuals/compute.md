@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Compute programs","What can I do with compute shaders?","How does compute shaders work?","Creating a compute program","Using the compute program in Defold","Writing data from compute programs","Putting it all together","Shader program","version 450","Script component","Render script","Compatability"]
 title: Defold compute manual
 brief: This manual explains how to work with compute programs, shader constants and samplers.
 ---

@@ -2,6 +2,7 @@
 layout: manual
 language: gr
 github: https://github.com/defold/doc
+toc: ["Καλώς ήλθατε στο Defold","Από πού να αρχίσω?","Ο  κειμενογράφος - Editor","Απλά παραδείγματα","The Lua language","Game Tutorials Σεμινάρια Παιχνιδιών","Τα δομικά στοιχεία του Defold","Το φόρουμ forum"]
 title: Εισαγωγή στο Defold
 brief: Μια σύντομη εισαγωγή στο Defold.
 ---

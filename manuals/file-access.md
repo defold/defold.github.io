@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Working with files","Functions for file and folder access","File and folder locations","How to save and load application specific files","How to access files bundled with the application","Custom Resources","Bundle Resources","Custom and Bundle resources - comparison","System file access","Extensions"]
 title: Working with files
 brief: This manual explains how to save and load files and perform other kinds of file operations.
 ---

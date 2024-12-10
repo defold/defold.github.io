@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["Collection factories","Spawning a collection","Properties"]
 title: Defold manual
 ---
 

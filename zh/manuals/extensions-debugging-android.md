@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: []
 title: Android调试
 brief: 本教程介绍了如何调试运行在 Android 设备上的应用.
 ---

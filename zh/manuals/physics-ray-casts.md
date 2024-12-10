@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["投射"]
 title: Defold 中的物理投射
 brief: 投射用于收集延一条投射射线所遇到的物理世界的物体. 本教程介绍了其用法.
 ---

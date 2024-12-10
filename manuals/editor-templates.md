@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Editor templates"]
 title: Editor templates
 brief: You can add your own custom project templates to the New Project window.
 ---

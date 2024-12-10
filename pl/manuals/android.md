@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Android development","Proces podpisywania Android i Google Play","Tworzenie certyfikatów i kluczy","Tworzenie paczki - Android application bundle","Instalowanie paczek na Androidzie","Instalowanie APK","Instalowanie AAB","Pozwolenia","android.permission.INTERNET i android.permission.ACCESS_NETWORK_STATE (Protection level: normal)","android.permission.WRITE_EXTERNAL_STORAGE (Protection level: dangerous)","android.permission.WAKE_LOCK (Protection level: normal)","Narzędzie adb - Android Debug Bridge","Debugowanie paczki z aplikacją","FAQ"]
 title: Rzwój oprogramowania w Defoldzie na platformę Android
 brief: Instrukcja odpowiada na pytania jak zbudować i uruchomić grę lub aplikację stworzoną w Defoldzie na urządzeniach z systemem Android.
 ---

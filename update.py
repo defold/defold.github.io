@@ -254,6 +254,16 @@ def process_doc_file(file, language):
     replace_in_file(file, r"\(\.\.\/shared\/", r"(/shared/")
     replace_in_file(file, r"\{\% include shared\/(.*?)\.md(.*?)\%\}", r"{}".format("{% include shared/" + language + "/\\1.md\\2%}"))
 
+def generate_toc(file):
+    data = read_as_string(file)
+    lines = data.splitlines()
+    toc = []
+    for line in lines:
+        if line.startswith("#"):
+            heading = line.replace("#", "").strip()
+            toc.append("\"" + heading + "\"")
+    return toc
+
 
 def get_language_specific_dir(language, dir):
     if language != "en":
@@ -340,9 +350,11 @@ def process_docs(download = False):
                 rmcopytree(manuals_src_dir, manuals_dst_dir)
                 for filename in find_files(manuals_dst_dir, "*.md"):
                     process_doc_file(filename, language)
+                    toc = generate_toc(filename)
                     replace_in_file(filename, r"title\:", r"layout: manual\ntitle:")
                     replace_in_file(filename, r"title\:", r"language: {}\ntitle:".format(language))
                     replace_in_file(filename, r"title\:", r"github: {}\ntitle:".format("https://github.com/defold/doc"))
+                    replace_in_file(filename, r"title\:", r"toc: [{}]\ntitle:".format(",".join(toc)))
                     if language != "en":
                         # replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
                         update_file_links_with_lang(filename, r'/manuals/[^)#]+', language)

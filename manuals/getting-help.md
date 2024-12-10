@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Getting help","Report a problem on the forum","Required information","Sharing code","Report a problem from the editor","Discuss a problem on Discord","Log files"]
 title: How to get help
 brief: This manual describes how to get help if you run into a problem while using Defold.
 ---

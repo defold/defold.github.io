@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["网页游戏盈利","如何工作?","网页支付账户","网页钱包账户","支付点","在 Defold 中配置支付点","新建项目","已有项目","Defold 网页支付用法","最佳实践"]
 title: Defold 网页游戏盈利
 brief: 网页游戏盈利是用网页游戏获利的一种手段, 开发者获利的同时玩家获得更高级的游戏内容.
 ---

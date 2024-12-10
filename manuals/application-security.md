@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Application Security","Securing your intellectual property from theft","Source code obfuscation","Resource encryption","Encoding project configuration values","Securing your game against cheaters","Securing your network communication","SSL certificate validation","Securing your use of third-party software","Securing your use of cloud build servers","Securing your downloadable content"]
 title: Application Security manual
 brief: This manual will cover a number of areas related to secure development practices.
 ---

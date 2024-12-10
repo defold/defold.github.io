@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Źródła Kafelków (tile source)","Tworzenie Źródła Kafelków","Animacje poklatkowe (flip-book) Źródła Kafelków","Kształty kolizji źródła kafelków"]
 title: Źródła kafelków (tile source)
 brief: Ta instrukcja opisuje jak korzystać ze Źródła Kafelków.
 ---

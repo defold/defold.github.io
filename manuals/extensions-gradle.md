@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Gradle for Android","Resolving dependencies"]
 title: Using Gradle dependencies in Android builds
 brief: This manual explains how to use Gradle to resolve dependencies in Android builds.
 ---

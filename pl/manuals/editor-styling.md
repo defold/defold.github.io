@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Stylizacja Edytora","Zmiana kolorystyki","Zmiana czcionek"]
 title: Stylizacja Edytora
 brief: Ta instrukcja opisuje jak modyifkować kolorystykę, typografię i inne wizualne aspekty Edytora Defold używając własnych stylesheetów.
 ---

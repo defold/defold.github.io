@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["资源缓存","项目缓存","本地缓存","远程缓存"]
 title: 资源缓存
 brief: 跟教程介绍了如何利用资源缓存提高编译速度.
 ---

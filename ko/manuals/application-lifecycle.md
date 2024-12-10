@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["Application lifecycle","Initialization","The update loop","Input","Update","Render update","Post update","Frame rate and collection time step","Finalization"]
 title: Defold manual
 ---
 

@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["键盘快捷键","默认快捷键","自定义快捷键"]
 title: 编辑器快捷键
 brief: 本教程介绍了当前编辑器快捷键以及如何自定义快捷键.
 ---

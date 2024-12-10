@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["Workflow","Assets","Refactoring","Collaboration","Synchronizing","Resolving conflicts","External editors and tools(외부 편집기 그리고 도구)","Shell scripts / batch files(쉘 스크립트 / 배치 파일)","Data generation(데이터 생성)","Opening assets in the text editor(텍스트 에디터로 에셋 열기)","Git","Line endings and Windows(줄바꿈과 윈도우)","Unix and macOS","Windows","Mac OS 9 (and earlier)","Line endings in Defold(디폴드의 개행문자)","Make Git deal with line endings properly(Git이 줄바꿈을 잘 처리도록 만들기)","false","true","input"]
 title: Defold manual
 ---
 

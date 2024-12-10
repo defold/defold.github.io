@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Szablony w Edytorze"]
 title: Szablony w Edytorze
 brief: Możesz dodać własne niestandardowe szablony projektów do okna Nowy projekt.
 ---

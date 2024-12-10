@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Components","Component types","Enabling and disabling components","Component properties","Component position, rotation and scale","Component draw order","Render script predicates","Component z-value"]
 title: Game object components
 brief: This manual gives an overview of the components and how to use them.
 ---

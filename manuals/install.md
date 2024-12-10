@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Installing Defold"]
 title: Installing Defold
 brief: This manual explains how to download and install the Defold editor for your operating system.
 ---

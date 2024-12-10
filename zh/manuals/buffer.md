@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Buffer"]
 title: 缓存教程
 brief: 本教程介绍了 Defold 的缓存资源.
 ---

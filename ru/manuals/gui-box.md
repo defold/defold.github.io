@@ -2,6 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
+toc: ["GUI-нода Box","Добавление ноды Box","Воспроизведение анимации"]
 title: GUI-нода Box
 brief: В данном руководстве объясняется, как использовать GUI-ноду Box.
 ---

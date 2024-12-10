@@ -2,6 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
+toc: ["GUI-нода Particle FX","Добавление ноды Particle FX","Управление эффектом"]
 title: GUI-нода Particle FX
 brief: Это руководство объясняет, как работают эффекты частиц в GUI.
 ---

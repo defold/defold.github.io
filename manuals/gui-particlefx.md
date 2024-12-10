@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["GUI ParticleFX nodes","Adding Particle FX nodes","Controlling the effect"]
 title: GUI particle fx in Defold
 brief: This manual explains how particle effects work in the Defold GUI.
 ---

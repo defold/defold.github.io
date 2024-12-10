@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["编辑器概述","打开编辑器","编辑器面板","同时编辑","场景编辑器","新建文件","向项目添加资源文件","编辑器更新","配置","键盘快捷键","编辑器日志","常見問題"]
 title: 编辑器概述
 brief: 本教程介绍了 Defold 编辑器的外观和用法, 以及切换导航方法.
 ---

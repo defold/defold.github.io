@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["Script properties","Booleans","Numbers","Hashes","URLs","Vector3","Vector4","Quaternion","Factory created objects"]
 title: Defold manual
 ---
 

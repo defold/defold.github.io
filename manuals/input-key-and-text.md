@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Key Triggers","Text Triggers","Text","Marked text"]
 title: Key and text input in Defold
 brief: This manual explains how key and text input works.
 ---

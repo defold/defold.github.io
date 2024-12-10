@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["GUI text nodes","Adding text nodes","Font","Text","Line Break","Alignment","Center","Left","Right","Modifying text nodes in runtime"]
 title: Defold manual
 ---
 

@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Editor styling","Changing color","Changing fonts"]
 title: Editor styling
 brief: You can modify the colors, typography and other visual aspects of the editor using a custom stylesheet.
 ---

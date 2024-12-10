@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["Spine Model","Creating SpineModel components","Spine scene","Default animation","Skin","Material","Blend Mode","Runtime animation"]
 title: Defold manual
 ---
 

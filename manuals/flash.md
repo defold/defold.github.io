@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Defold for Flash users","Introduction","Movie clips and game objects","Flash—manually creating movie clips","Defold—manually creating game objects","Flash—referencing manually created movie clips","Defold—Game object id","Flash—dynamically creating movie clips","Defold—creating game objects using factories","Flash—stage","Defold—collections","Flash—timeline","Defold—property animation","Flash—depth index","Defold—z position","Flash—hitTestObject and hitTestPoint collision detection","Defold—collision objects","Flash—event handling","Defold—call-back functions and messaging","Flash—button symbols","Defold—GUI scenes and scripts","Debugging","Where to go from here"]
 title: Defold for Flash users
 brief: This guide presents Defold as an alternative for Flash game developers. It covers some of the key concepts used in Flash game development, and explains the corresponding tools and methods in Defold.
 ---

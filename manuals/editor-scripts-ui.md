@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Editor scripts and UI","Hello world","Basic concepts","Components","Props","Alignment","Built-in components","Layout components","Data presentation components","Input components","Dialog-related components","Utility components","Reactivity","Rules of reactivity","Hooks","**`use_state`**","**`use_memo`**"]
 title: "Editor scripts: UI"
 brief: This manual explains how to create UI elements in the editor using Lua
 ---

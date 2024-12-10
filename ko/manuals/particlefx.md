@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["Particle FX","ParticleFX Overview Video","Concepts","Previewing","Value tweaking","Keying Properties","Spread","Reference","Emitter Properties (방사체 속성들)","Keyable Emitter Properties (조정 가능한 방사체 속성들)","Keyable Particle Properties (조정 가능한 파티클 속성들)","Modifier Properties (수정자 속성들)","Keyable Modifier Properties (조정 가능한 수정자 속성들)"]
 title: Defold manual
 ---
 

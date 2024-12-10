@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Bundling an application","Bundling from within the editor","Build reports","Android","iOS","macOS","Linux","Windows","HTML5","Facebook Instant Games","Bundling from the command line","The bundle layout","Release vs Debug"]
 title: Bundling an application
 brief: This manual covers how to create an application bundle.
 ---

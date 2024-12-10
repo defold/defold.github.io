@@ -2,6 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
+toc: ["Компонент Collection Factory","Порождение коллекции","Свойства","Динамическая загрузка ресурсов фабрики"]
 title: Компонент Collection Factory
 brief: Это руководство объясняет особенности использования компонентов Collection Factory, предназначенных для порождения иерархий игровых объектов.
 ---

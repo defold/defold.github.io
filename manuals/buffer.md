@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Buffer"]
 title: Buffer manual
 brief: This manual explains how Buffer resources work in Defold.
 ---

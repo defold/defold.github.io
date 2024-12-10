@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["热更新","准备工作","热更新配置","热更新应用打包",".zip 卷","拆分 .zip 卷","内容验证","Mounts","热更新脚本","开发警告"]
 title: Defold 的热更新
 brief: 热更新允许游戏运行时获取和存储编译时并不存在的资源. 本教程介绍了热更新的用法.
 ---

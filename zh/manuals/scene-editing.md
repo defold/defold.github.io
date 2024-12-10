@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Defold 场景编辑器"]
 title: Defold 场景编辑器
 brief: Defold 有许多编辑器, 但是用的最多的还是场景编辑器. 本教程介绍了如何使用它.
 ---

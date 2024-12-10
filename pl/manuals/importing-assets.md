@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Importowanie i edytowanie zasobów","Importowanie zasobów","Używanie zasobów","Edytowanie zewnętrznych zasobów","Edytowanie zasobów Defolda"]
 title: Importowanie i edytowanie zasobów
 brief: Ta instrukcja opisuje ze szczegółami jak importować i edytować zasoby.
 ---

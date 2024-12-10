@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["3D graphics","Defold resources","Model","Animation Set","Collada support","Materials and textures","Rendering"]
 title: Defold manual
 ---
 

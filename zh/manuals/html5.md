@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["HTML5 开发","Heap size","测试 HTML5 游戏","HTML5游戏打包","已知问题和局限性","自定义HTML5打包","Fit 和 Downscale Fit","Stretch","No Scale","Tokens","额外参数","HTML5 的文件操作","给 HTML5 游戏传递参数","引擎参数","在 URL 中提供参数","问答"]
 title: Defold HTML5 平台开发
 brief: 本教程介绍了 HTML5 游戏开发, 及其已知问题和局限性.
 ---

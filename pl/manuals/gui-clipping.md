@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Wycinanie GUI","Tworzenie węzła wycinającego","Maska wycinająca","Ograniczenia maski wycinania","Warstwy"]
 title: Wycinanie GUI w Defoldzie
 brief: Ta instrukcja wyjaśnia jak działa przycinanie i maskowanie GUI w Defoldzie
 ---

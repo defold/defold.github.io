@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["GUI ParticleFX 节点","添加 Particle FX 节点","控制特效"]
 title: Defold里的GUI粒子特效
 brief: 本教程解释了 Defold GUI 的粒子特效如何工作.
 ---

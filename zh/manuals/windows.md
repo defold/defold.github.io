@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Windows 开发","项目设置","应用图标","使用 ImageMagick 系列工具在本地生成 .ico 图标.","问答"]
 title: Windows 平台下的 Defold 开发
 brief: 本教程介绍了在 Windows 平台下如何编译和运行 Defold 应用 
 ---

@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["碰撞组与碰撞掩码","碰撞检测"]
 title: Defold 中的碰撞组
 brief: 物理引擎使用组来划分物理对象碰撞双方.
 ---

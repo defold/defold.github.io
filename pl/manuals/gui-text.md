@@ -2,6 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
+toc: ["Węzeł GUI typu text","Dodawanie węzłów tekstowych","Wyrównanie","Modyfikowanie węzłów tekstowych w czasie działania programu"]
 title: Węzły tekstowe - text w Defoldzie.
 brief: Ta instrukcja wyjaśnia jak używać węzłów typu text.
 ---

@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["3D skinned animation","Playing animations","The bone hierarchy","Cursor animation","Completion callbacks","Playback Modes"]
 title: 3D model animation in Defold manual
 brief: This manual describes how to use 3D model animations in Defold.
 ---

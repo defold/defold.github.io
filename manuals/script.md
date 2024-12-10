@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Scripts","Script types","Script execution, callbacks and self","Reactive logic","Preprocessing","Editor support"]
 title: Writing game logic in scripts
 brief: This manual describes how to add game logic using script components.
 ---

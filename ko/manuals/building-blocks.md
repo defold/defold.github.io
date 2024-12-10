@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["Building blocks","Game objects","Prototypes and instances","Childing game objects","Components","Custom component properties","Collections"]
 title: Defold manual
 ---
 

@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Keyboard shortcuts","Default shortcuts","Customizing shortcuts"]
 title: Editor keybindings
 brief: This manual shows the current keyboard shortcuts and how to customize them.
 ---

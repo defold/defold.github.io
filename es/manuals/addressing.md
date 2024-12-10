@@ -2,6 +2,7 @@
 layout: manual
 language: es
 github: https://github.com/defold/doc
+toc: ["Direccionamiento","Identificadores","Colecciones","Direccionamiento relativo","Atajos","Rutas de objetos del juego","Direccionamiento absoluto","Identificadores hash","URLs","Construyendo objetos URL"]
 title: Direccionamiento en Defold
 brief: Este manual explica cómo Defold ha solucionado los problemas de direccionamiento
 

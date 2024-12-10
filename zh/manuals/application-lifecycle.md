@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["应用生命周期","初始化","更新循环","输入","更新","渲染更新","后更新","帧率和集合时间步","析构"]
 title: Defold 应用生命周期教程
 brief: 本教程详述了 Defold 游戏的生命周期.
 ---

@@ -2,6 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
+toc: ["Welcome to Defold","Philosophy(철학)","Scripts","Messages","Factories","Collaboration(공동작업)","Libraries","Building blocks","Game object","Collection","Script","Sound","Collision object","Factory","Sprite","Atlas","Tile source","Tile map","ParticleFX","GUI","GUI script","Font","Input binding","Camera","Material","Render","Render script","Collection proxy"]
 title: Defold manual
 ---
 

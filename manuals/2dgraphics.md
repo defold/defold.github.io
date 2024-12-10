@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["2D Graphics"]
 title: Defold 2D graphics manual
 brief: This manual is outdated
 ---

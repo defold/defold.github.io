@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["Nintendo Switch 开发","注册成为 Nintendo Switch 开发者","Nintendo Switch 的 Defold 访问","问答"]
 title: 使用 Defold 开发 Nintendo Switch 游戏
 brief: 本教程介绍了 Nintendo Switch 开发许可
 ---

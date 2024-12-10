@@ -2,6 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
+toc: ["Editor preferences","General","Code","Open script files in Visual Studio Code","Extensions","Tools"]
 title: Editor preferences
 brief: You can modify the settings of the editor from the Preferences window.
 ---

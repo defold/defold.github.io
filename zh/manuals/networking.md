@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["联网","技术细节","IPv4 和 IPv6","安全连接"]
 title: Defold 联网
 brief: 本教程介绍了如何连接远程服务器以建立各种连接.
 ---

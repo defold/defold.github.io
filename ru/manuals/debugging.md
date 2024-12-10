@@ -2,6 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
+toc: ["Отладка"]
 title: Отладка в Defold
 brief: Это руководство показывает способы отладки, присутствующие в Defold.
 ---

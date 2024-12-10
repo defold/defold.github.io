@@ -2,6 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
+toc: ["应用内支付","安装扩展","使用静态报告测试 Google Play Billing","内支付准备流程","异步的内支付 API","实时付款","非实时付款","购买交付","消耗品与非消耗品","支付收据","除错"]
 title: Defold 中的内支付
 brief: 应用内支付 (也称内购买) 允许用户付费以获得额外的内容或功能. 本教程介绍了相关功能的 Defold API.
 ---
