@@ -27,5 +27,5 @@ Defold will allocate memory for components and resources once when a collection 
 ## Optimize GUI node count
 Optimize GUI node counts by setting the max number of nodes in the GUI file to only what is needed. The `Current Nodes` field of the [GUI component properties](https://defold.com/manuals/gui/#gui-properties) will show the number of nodes used by the GUI component.
 
-{% include shared/optimization-memory-html5 %}
+{% include shared/en/optimization-memory-html5.md %}
 
