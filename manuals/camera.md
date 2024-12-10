@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Cameras","Creating a camera","Using the camera","Panning the camera","Zooming the camera","Following a game object","Converting mouse to world coordinates","Runtime manipulation","Third-party camera solutions"]
+toc: ["Cameras","Creating a camera","Using the camera","Render script","Panning the camera","Zooming the camera","Following a game object","Converting mouse to world coordinates","Runtime manipulation","Third-party camera solutions"]
 title: Camera component manual
 brief: This manual describes the functionality of the Defold camera component.
 ---
@@ -136,13 +136,31 @@ You can tell the render script to use the projection provided by the camera by s
 msg.post("@render:", "use_camera_projection")
 ```
 
-Alternatively, you can set a specific camera that should be used for rendering in a render script:
+### Render script
+
+Starting with Defold 1.9.6, when using the default render script Defold will automatically set the last enabled camera that should be used for rendering. Before this change, a script somewhere in the project needed to explicitly send the `use_camera_projection` message to the renderer to notify it that the view and projection from camera components should be used. This is no longer necesessary, but it is still possible to do so for backwards compatability purposes.
+
+Alternatively, you can set a specific camera that should be used for rendering in a render script. This could be useful in cases where you need to control more specifically which camera should be used for rendering, for example in a multiplayer game.
 
 ```lua
 -- render.set_camera will automatically use the view and projection matrices
 -- for any rendering happening until render.set_camera() is called.
 render.set_camera("main:/my_go#camera")
 ```
+
+To check if a camera is active or not, you can use the `get_enabled` function from the [Camera API](https://defold.com/ref/alpha/camera/#camera.get_enabled:camera):
+
+```lua
+if camera.get_enabled("main:/my_go#camera") then
+    -- camera is enabled, use it for rendering!
+    render.set_camera("main:/my_go#camera")
+end
+```
+
+<div class='sidenote' markdown='1'>
+To use the `set_camera` function together with frustum culling, you need to pass this as an option to the function:
+`render.set_camera("main:/my_go#camera", {use_frustum = true})`
+</div>
 
 ### Panning the camera
 
