@@ -316,6 +316,438 @@
             "type": "VARIABLE"
         },
         {
+            "brief": "get preference value",
+            "description": "Get preference value\nThe schema for the preference value should be defined beforehand.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.get",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "dot-separated preference key path",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "current pref value or default if a schema for the key path exists, nil otherwise",
+                    "name": "value",
+                    "types": [
+                        "any"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "array schema",
+            "description": "array schema",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.schema.array",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Required opts: <dl><dt><code>item <small>schema</small></code></dt><dd>array item schema</dd></dl>  Optional opts: <dl><dt><code>default <small>item[]</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
+                    "name": "opts",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prefs schema",
+                    "name": "value",
+                    "types": [
+                        "schema"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "boolean schema",
+            "description": "boolean schema",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.schema.boolean",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional opts: <dl><dt><code>default <small>boolean</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
+                    "name": "[opts]",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prefs schema",
+                    "name": "value",
+                    "types": [
+                        "schema"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "enum value schema",
+            "description": "enum value schema",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.schema.enum",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Required opts: <dl><dt><code>values <small>any[]</small></code></dt><dd>allowed values, must be scalar (nil, boolean, number or string)</dd></dl>  Optional opts: <dl><dt><code>default <small>any</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
+                    "name": "opts",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prefs schema",
+                    "name": "value",
+                    "types": [
+                        "schema"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "integer schema",
+            "description": "integer schema",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.schema.integer",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional opts: <dl><dt><code>default <small>integer</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
+                    "name": "[opts]",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prefs schema",
+                    "name": "value",
+                    "types": [
+                        "schema"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "keyword schema",
+            "description": "keyword schema\nA keyword is a short string that is interned within the editor runtime, useful e.g. for identifiers",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.schema.keyword",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional opts: <dl><dt><code>default <small>string</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
+                    "name": "[opts]",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prefs schema",
+                    "name": "value",
+                    "types": [
+                        "schema"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "floating-point number schema",
+            "description": "floating-point number schema",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.schema.number",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional opts: <dl><dt><code>default <small>number</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
+                    "name": "[opts]",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prefs schema",
+                    "name": "value",
+                    "types": [
+                        "schema"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "heterogeneous object schema",
+            "description": "heterogeneous object schema",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.schema.object",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Required opts: <dl><dt><code>properties <small>table&lt;string, schema&gt;</small></code></dt><dd>a table from property key (string) to value schema</dd></dl>  Optional opts: <dl><dt><code>default <small>table</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
+                    "name": "opts",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prefs schema",
+                    "name": "value",
+                    "types": [
+                        "schema"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "homogeneous object schema",
+            "description": "homogeneous object schema",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.schema.object_of",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Required opts: <dl><dt><code>key <small>schema</small></code></dt><dd>table key schema</dd><dt><code>val <small>schema</small></code></dt><dd>table value schema</dd></dl>  Optional opts: <dl><dt><code>default <small>table</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
+                    "name": "opts",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prefs schema",
+                    "name": "value",
+                    "types": [
+                        "schema"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set schema",
+            "description": "set schema\nSet is represented as a lua table with <code>true</code> values",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.schema.set",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Required opts: <dl><dt><code>item <small>schema</small></code></dt><dd>set item schema</dd></dl>  Optional opts: <dl><dt><code>default <small>table&lt;item, true&gt;</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
+                    "name": "opts",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prefs schema",
+                    "name": "value",
+                    "types": [
+                        "schema"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "string schema",
+            "description": "string schema",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.schema.string",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional opts: <dl><dt><code>default <small>string</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
+                    "name": "[opts]",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prefs schema",
+                    "name": "value",
+                    "types": [
+                        "schema"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "tuple schema",
+            "description": "tuple schema\nA tuple is a fixed-length array where each item has its own defined type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.schema.tuple",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Required opts: <dl><dt><code>items <small>schema[]</small></code></dt><dd>schemas for the items</dd></dl>  Optional opts: <dl><dt><code>default <small>any[]</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
+                    "name": "opts",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prefs schema",
+                    "name": "value",
+                    "types": [
+                        "schema"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "<code>\"global\"</code>",
+            "description": "<code>\"global\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.SCOPE.GLOBAL",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"project\"</code>",
+            "description": "<code>\"project\"</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.SCOPE.PROJECT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "set preference value",
+            "description": "Set preference value\nThe schema for the preference value should be defined beforehand.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.set",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "dot-separated preference key path",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "new pref value to set",
+                    "name": "value",
+                    "types": [
+                        "any"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "query information about a project resource",
             "description": "Query information about a project resource",
             "error": "",
