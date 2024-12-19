@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Font files","Runtime generated fonts","Creating a font","Properties","Distance field fonts","Bitmap BMFonts","Artifacts and best practices","Font Cache"]
+toc: ["Font files","Creating a font","Properties","Distance field fonts","Bitmap BMFonts","Artifacts and best practices","Font Cache"]
 title: Fonts in Defold manual
 brief: This manual describes how Defold handles fonts and how to bring fonts onto the screen in your games.
 ---
@@ -20,11 +20,10 @@ Fonts added to your project are automatically converted into a texture format th
 - Bitmap
 - Distance field
 
-## Runtime generated fonts
+<div class='important' markdown='1'>
+It is possible to [generate font glyphs at runtime](/extension-fontgen) from a bundled TrueType font instead of generating and including a font texture in the application bundle. This approach can greatly reduce the download size and runtime memory consumption of a Defold game.
+</div>
 
-For the developers that are looking to minimize the download size and runtime consumption, we have recently added a way to generate font glyphs at runtime using a .ttf font.
-
-[Runtime Fonts](/extension-fontgen) - Use a .ttf font at runtime
 
 ## Creating a font
 
