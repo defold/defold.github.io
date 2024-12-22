@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Font files","Runtime generated fonts","Creating a font","Properties","Distance field fonts","Bitmap BMFonts","Artifacts and best practices","Font Cache"]
+toc: ["Font files","Creating a font","Properties","Distance field fonts","Bitmap BMFonts","Artifacts and best practices","Font Cache"]
 title: Fonts in Defold manual
 brief: This manual describes how Defold handles fonts and how to bring fonts onto the screen in your games.
 ---
@@ -20,11 +20,10 @@ Fonts added to your project are automatically converted into a texture format th
 - Bitmap
 - Distance field
 
-## Runtime generated fonts
+<div class='sidenote' markdown='1'>
+It is possible to [generate font glyphs at runtime](/extension-fontgen) from a bundled TrueType font instead of generating and including a font texture in the application bundle. This approach can greatly reduce the download size and runtime memory consumption of a Defold game.
+</div>
 
-For the developers that are looking to minimize the download size and runtime consumption, we have recently added a way to generate font glyphs at runtime using a .ttf font.
-
-[Runtime Fonts](/extension-fontgen) - Use a .ttf font at runtime
 
 ## Creating a font
 
@@ -88,8 +87,8 @@ Shadow support is enabled by the built-in font material shaders and handles both
 *Shadow X/Y*
 : The horizontal and vertical offset in pixels of the generated shadow. This setting will only affect the glyph shadow when the Render Mode is set to `MODE_MULTI_LAYER`.
 
-*Extra Characters*
-: By default the font will include the ASCII printable characters (character codes 32-126). To manually include additional characters, list them in this property field.
+*Characters*
+: Which characters to include in the font. By default this field include the ASCII printable characters (character codes 32-126). You can add or remove characters from this field to include more or less characters in the font..
 
 <div class='sidenote' markdown='1'>
 The ASCII printable characters are:
