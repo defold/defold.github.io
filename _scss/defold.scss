@@ -1361,3 +1361,22 @@ ul.checkmark li:before {
 .label-danger {
 	background-color: #d9534f;
 }
+
+
+
+/*******************************************************************************
+* Description list with. Terms and descriptions on the same line 
+******************************************************************************/
+
+dl {
+	display: grid;
+	grid-template-columns: max-content auto;
+}
+
+dt {
+	grid-column-start: 1;
+}
+
+dd {
+	grid-column-start: 2;
+}
