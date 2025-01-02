@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Tile map","Creating a tile map","Adding a tile map to your game","Runtime manipulation","Changing tiles from script","Tilemap properties","Blend modes","Changing properties","Material constants","Project configuration"]
+toc: ["Tile map","Creating a tile map","Adding a tile map to your game","Runtime manipulation","Changing tiles from script","Tilemap properties","Blend modes","Changing properties","Material constants","Project configuration","External tools","Tiled","Tilesetter"]
 title: Defold tile map manual
 brief: This manual details Defold's support for tile maps.
 ---
@@ -105,3 +105,20 @@ A tilemap has a number of different properties that can be manipulated using `go
 ## Project configuration
 
 The *game.project* file has a few [project settings](/manuals/project-settings#tilemap) related to tilemaps.
+
+## External tools
+
+There are external map/level editors that can export directly to Defold tilemaps:
+
+### Tiled
+
+[Tiled](https://www.mapeditor.org/) is a well-known and widely used map editor for orthogonal, isometric and hexagonal maps. Tiled has support for a wide array of features and can [export directly to Defold](https://doc.mapeditor.org/en/stable/manual/export-defold/). Learn more about how to export tilemap data and additional meta-data in [this blog post by Defold user "goeshard"](https://goeshard.org/2025/01/01/using-tiled-object-layers-with-defold-tilemaps/)
+
+
+### Tilesetter
+
+[Tilesetter](https://www.tilesetter.org/docs/exporting#defold) can be used to automatically create full tilesets from simple base tiles and it has a map editor which can export directly to Defold.
+
+
+
+
