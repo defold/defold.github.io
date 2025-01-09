@@ -1165,6 +1165,97 @@
                 }
             ],
             "type": "FUNCTION"
+        },
+        {
+            "description": "Opens a floating keyboard over the game content and sends OS keyboard keys directly to the game.",
+            "examples": "",
+            "name": "steam.utils_show_floating_gamepad_text_input",
+            "parameters": [
+                {
+                    "doc": "EFloatingGamepadTextInputMode",
+                    "name": "mode",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Text field x position",
+                    "name": "x",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Text field y position",
+                    "name": "y",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Text field width",
+                    "name": "width",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Text field height",
+                    "name": "height",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "True if the floating keyboard was shown, otherwise, false.",
+                    "name": "bool"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Activates the Big Picture text input dialog which only supports gamepad input.",
+            "examples": "",
+            "name": "steam.utils_show_gamepad_text_input",
+            "parameters": [
+                {
+                    "doc": "EGamepadTextInputMode",
+                    "name": "input_mode",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "EGamepadTextInputLineMode",
+                    "name": "line_input_mode",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Sets the description that should inform the user what the input dialog is for",
+                    "name": "description",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Sets the preexisting text which the user can edit.",
+                    "name": "existing_text",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "True if the big picture overlay is running; otherwise, false",
+                    "name": "bool"
+                }
+            ],
+            "type": "FUNCTION"
         }
     ],
     "info": {
