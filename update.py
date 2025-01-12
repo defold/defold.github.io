@@ -260,7 +260,7 @@ def generate_toc(file):
     toc = []
     for line in lines:
         if line.startswith("# ") or line.startswith("## ") or line.startswith("### "):
-            heading = line.replace("#", "").replace("'", "").replace("`", "").strip()
+            heading = line.replace("#", "").replace("'", "").replace("`", "").replace("\"", "").strip()
             toc.append("\"" + heading + "\"")
     return toc
 
