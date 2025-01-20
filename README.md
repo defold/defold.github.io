@@ -2,13 +2,14 @@
 
 New www.defold.com leveraging GitHub Pages and Jekyll+Liquid to generate a static site. The structure of the static site as well as many of the pages are stored in this repository. Some other parts of the site such as content of the learn section and the asset portal is hosted in other GitHub repositories:
 
-* Assets - www.defold.com/assets -> github.com/defold/awesome-defold
+* Assets - [defold.com/assets](https://defold.com/assets) -> [github.com/defold/asset-portal](https://github.com/defold/asset-portal)
+* Showcase - [defold.com/showcase](https://defold.com/showcase) -> [github.com/defold/games-showcase](https://github.com/defold/games-showcase)
 * Learn
-  * Manuals - www.defold.com/manuals -> github.com/defold/doc
-  * Tutorials - www.defold.com/tutorials -> github.com/defold/doc
-  * FAQ - www.defold.com/faq -> github.com/defold/doc
-  * Examples - www.defold.com/examples -> github.com/defold/examples
-* Codepad - www.defold.com/codepad -> github.com/defold/codepad
+  * Manuals - [defold.com/manuals](https://defold.com/manuals) -> [github.com/defold/doc](https://github.com/defold/doc)
+  * Tutorials - [defold.com/tutorials](https://defold.com/tutorials) -> [github.com/defold/doc](https://github.com/defold/doc)
+  * FAQ - [defold.com/faq/faq](https://defold.com/faq/faq) -> [github.com/defold/doc](https://github.com/defold/doc)
+  * Examples - [defold.com/examples](https://defold.com/examples) -> [github.com/defold/examples](https://github.com/defold/examples)
+* Codepad - [defold.com/codepad](https://defold.com/codepad) -> [github.com/defold/codepad](https://github.com/defold/codepad)
 
 # HOW TO UPDATE THE SITE WITH NEW CONTENT
 The site uses the `update.py` script from this repository to update the site with updated content from external sources/repositories.
