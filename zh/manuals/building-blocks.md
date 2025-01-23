@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["构成","集合","游戏对象","组件","直接放入还是作为文件引用","游戏对象层级"]
+toc: ["构成","集合","组件","直接放入还是作为文件引用","游戏对象层级"]
 title: Defold 构成
 brief: 本教程详述游戏对象, 组件和集合是如何工作的.
 ---

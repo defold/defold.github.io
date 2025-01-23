@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Materials","Overview","Creating a material","Material tags","Constants","Shader programs","Setting the material","Shader constants","Constant buffers","Uniform texture samplers","Sampler settings","Wrap modes","Filter modes","Vertex shader attributes"]
+toc: ["Materials","Overview","Creating a material","Material tags","Constants","Shader programs","Setting the material","Shader constants","Constant buffers"]
 title: Defold manual
 ---
 

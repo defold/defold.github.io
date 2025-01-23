@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Kamera","Tworzenie kamery","Używanie kamery","Poruszanie kamerą","Zoomowanie kamery","Śledzenie obiektu gry","Konwersja współrzędnych ekranu na współrzędne świata","Manipulacja w czasie rzeczywistym","Rozwiązania dla kamer od społeczności"]
+toc: ["Kamera","Tworzenie kamery","Używanie kamery","Śledzenie obiektu gry","Konwersja współrzędnych ekranu na współrzędne świata"]
 title: Kamera
 brief: Ta instrukcja opisuje komponent Kamery w Defoldzie.
 ---

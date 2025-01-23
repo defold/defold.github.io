@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["推送通知","安装扩展","iOS 配置","Android 配置","本地通知","本地通知查看"]
+toc: ["推送通知","安装扩展","iOS 配置","本地通知查看"]
 title: Defold 的 iOS 和 Android 推送通知
 brief: 本教程介绍了如何配置和实现游戏中的本地和远程 iOS 与 Android 平台的推送通知.
 ---

@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["Google Play Instant","发布流程","版本号","android:targetSandboxVersion=2","API 使用","限制","测试","Supported: macosx,linux,windows"]
+toc: ["Google Play Instant","发布流程","Supported: macosx,linux,windows"]
 title: Google Play Instant
 brief: 本教程介绍了使用 Defold 创建 Google Play Instant 游戏的方法.
 ---

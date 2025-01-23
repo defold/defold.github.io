@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Defold Physics Event Handling","Setting the Physics World Listener","Event Data Structure","Example Usage","Limitations"]
+toc: ["Defold Physics Event Handling","Setting the Physics World Listener","Limitations"]
 title: Collision events in Defold
 brief: Collision event handling can be centralized by using `physics.set_listener()` to direct all collision and interaction messages to a single specified function.
 ---

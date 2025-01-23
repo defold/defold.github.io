@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Lua in Defold","Lua versions","Standard libraries and extensions","Lua books and resources","Online resources","Books","Videos","Syntax","Variables and data types","Operators","Flow control","Locals, globals and lexical scoping","Variable shadowing","Coroutines","Lua contexts in Defold","Performance considerations","Memory and garbage collection","Best practices"]
+toc: ["Lua in Defold","Lua versions","Standard libraries and extensions","Lua books and resources","Online resources","Books","Videos","Syntax","Locals, globals and lexical scoping","Coroutines","Performance considerations","Best practices"]
 title: Lua programming in Defold
 brief: This manual will give a quick introduction to the basics of Lua programming in general and what you need to consider when working with Lua in Defold.
 ---

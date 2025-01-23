@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["游戏和系统日志","用编辑器查看游戏日志","用控制台查看游戏日志","不同平台的日志读取","HTML5","Android","iOS","从日志文件中读取日志信息"]
+toc: ["游戏和系统日志","用编辑器查看游戏日志","用控制台查看游戏日志","不同平台的日志读取","HTML5","Android","iOS"]
 title: 调试 - 游戏和系统日志
 brief: 本教程介绍了获取游戏和系统日志的方法.
 ---

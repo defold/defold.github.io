@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Porting and release guidelines","Input","Localization","Store materials","App icon","Store banners and images","Save games","Save games on desktop, mobile and web","Save games on console","Build artifacts","Application optimizations","Performance","Screen resolution and refresh rate","Mobile phones and notch and hole punch cameras","Platform specific guidelines","Android","Consoles","Nintendo Switch","PlayStation®4","HTML5"]
+toc: ["Porting and release guidelines","Input","Localization","Store materials","App icon","Store banners and images","Save games","Save games on desktop, mobile and web","Save games on console"]
 title: Porting and release guidelines
 brief: This manual highlights some things to consider when porting a game to a new platform or when releasing your game for the first time.
 ---

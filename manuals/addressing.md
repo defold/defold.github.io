@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Addressing","Identifiers","Collections","Relative addressing","Shorthands","Game object paths","Absolute addressing","Hashed identifiers","URLs","Constructing URL objects"]
+toc: ["Addressing","Identifiers","Collections","Relative addressing","Shorthands","Game object paths","Absolute addressing","Hashed identifiers","URLs"]
 title: Addressing in Defold
 brief: This manual explains how Defold has solved the problem of addressing.
 ---

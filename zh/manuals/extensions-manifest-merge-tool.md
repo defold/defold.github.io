@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["Application manifests","命名和结构","Android","示例","iOS / macOS","示例","HTML5","示例"]
+toc: ["Application manifests","命名和结构","Android","示例","HTML5","示例"]
 title: 原生扩展 - Manifest 混合工具
 brief: 本教程介绍了应用的 manifests 混合是如何工作的
 ---

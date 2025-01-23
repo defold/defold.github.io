@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Best Practices","Project structure","Lua API","Folder structure","Writing native code","C++ version","No C++ Exceptions","Standard Template Libraries - STL","Make functions hidden","3rd party libraries","Open source dependencies"]
+toc: ["Best Practices","Project structure","Lua API"]
 title: Native extensions - Best Practices
 brief: This manual describes best practices when developing native extensions.
 ---

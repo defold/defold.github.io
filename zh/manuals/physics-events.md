@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["Defold 物理事件处理","设置物理世界监听器","事件数据结构","实例","局限性"]
+toc: ["Defold 物理事件处理","设置物理世界监听器","局限性"]
 title: Defold 的碰撞事件
 brief: 集中使用 `physics.set_listener()` 进行碰撞监听, 传导碰撞和交互信息到一个指定函数里.
 ---

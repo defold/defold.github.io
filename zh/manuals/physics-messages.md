@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["碰撞消息","碰撞响应","碰撞点响应","触发器响应"]
+toc: ["碰撞消息","碰撞响应","触发器响应"]
 title: Defold 中的碰撞消息
 brief: 当两个碰撞对象接触, 引擎会向这两个对象上的所有组件广播碰撞消息.
 ---

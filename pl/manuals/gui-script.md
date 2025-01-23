@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Skrypty GUI","Dodawanie skryptu do GUI","Przestrzeń nazw gui","Przesyłanie wiadomości","Adresowanie węzłów","Dynamicznie tworzone węzły","Dynamiczne identyfikatory węzłów"]
+toc: ["Skrypty GUI","Dodawanie skryptu do GUI","Adresowanie węzłów"]
 title: Skrypty GUI w Defoldzie
 brief: Ta instrukcja wyjaśnia jak działają skrypty GUI w Defoldzie
 ---

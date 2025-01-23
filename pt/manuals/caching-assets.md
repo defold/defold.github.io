@@ -2,7 +2,7 @@
 layout: manual
 language: pt
 github: https://github.com/defold/doc
-toc: ["Caching de recursos","Projeto de cache","Cache Local","Cache Remoto"]
+toc: ["Caching de recursos","Projeto de cache","Cache Local"]
 title: Caching de recursos
 brief: Esse manual irá explicar como utilizar o cache de recursos para acelerar suas builds.
 ---

@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["HTTP 请求","HTTP GET","HTTP POST","其他 HTTP 请求类型","API 文档","扩展"]
+toc: ["HTTP 请求","HTTP GET","其他 HTTP 请求类型","API 文档","扩展"]
 title: HTTP 请求
 brief: 本教程介绍了发布 HTTP 请求的方法.
 ---

@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["WebViews","安装扩展","打开 webview","回调函数","载入展示自己的 HTML 网页","可视性和位置控制","运行 JavaScript 脚本"]
+toc: ["WebViews","安装扩展","打开 webview","回调函数","载入展示自己的 HTML 网页","可视性和位置控制"]
 title: Defold 的 WebViews
 brief: WebViews 可以在你的手机上显示一个网页层. 同时支持在后台运行用户定义的js代码. 本教程介绍了 Defold 的官方 WebView 扩展, API 和功能.
 ---

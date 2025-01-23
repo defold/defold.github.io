@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Windows development","Project settings","Application icon","Creating .ico file locally using ImageMagick software suite.","FAQ"]
+toc: ["Windows development","Project settings","Application icon","Creating .ico file locally using ImageMagick software suite."]
 title: Defold development for the Windows platform
 brief: This manual describes how to build and run Defold applications on Windows
 ---

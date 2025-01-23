@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["渲染","渲染管线是什么东东?","默认渲染器","渲染优先级","默认视口映射","Stretch","Fixed Fit 映射","Fixed 映射","摄像机透视","视锥体剔除","坐标系统","渲染脚本","渲染资源","纹理句柄","受支持的图像 API","系统消息","Draw call 与合批","非 GUI 组件合批","GUI 组件合批"]
+toc: ["渲染","渲染管线是什么东东?","默认渲染器","渲染优先级","Fixed Fit 映射","摄像机透视","纹理句柄","受支持的图像 API","系统消息"]
 title: Defold 中的渲染过程
 brief: 本教程介绍了 Defold 的渲染流程及其编程方法.
 ---

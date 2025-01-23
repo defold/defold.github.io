@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Native extensions","The build platform","Project layout","A simple example extension","The ext.manifest file","Known issues"]
+toc: ["Native extensions","The build platform","Project layout","A simple example extension","Known issues"]
 title: Defold manual
 ---
 

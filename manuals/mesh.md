@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Mesh component","Creating a mesh component","Mesh properties","Editor manipulation","Runtime manipulation","Frustum culling","Material constants","Vertex local vs world space"]
+toc: ["Mesh component","Creating a mesh component","Mesh properties","Editor manipulation","Runtime manipulation","Material constants","Vertex local vs world space"]
 title: 3D meshes in Defold
 brief: This manual describes how to create 3D meshes at run-time in your game.
 ---

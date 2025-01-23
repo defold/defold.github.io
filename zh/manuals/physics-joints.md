@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["關節約束","建立关节","删除关节","关节属性及修改","关节反作用力和扭矩"]
+toc: ["關節約束","建立关节","关节属性及修改"]
 title: Defold 中的物理关节
 brief: Defold 支持 2D 物理关节约束. 本教程介绍了其用法.
 ---

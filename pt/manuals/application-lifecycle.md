@@ -2,7 +2,7 @@
 layout: manual
 language: pt
 github: https://github.com/defold/doc
-toc: ["Ciclo de vida da aplicação","Inicialização","O loop de update","Input","Update","Atualização de Render","Atualização de Post","Frame rate e time step das coleções","Finalização"]
+toc: ["Ciclo de vida da aplicação","Inicialização"]
 title: Manual de ciclo de vida da aplicação Defold.
 brief: Esse manual detalha o ciclo de vida dos games e aplicações do Defold.
 ---

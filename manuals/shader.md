@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Shaders","Concepts","Writing modern GLSL shaders","Version declaration","Attributes","Varyings","Uniforms (called constants in Defold)","Built-in Variables","Texture functions","Precision","Putting it together","Including snippets into shaders","Header guards","The rendering process","Further study"]
+toc: ["Shaders","Concepts","Writing modern GLSL shaders","Version declaration","Varyings","Texture functions","Header guards"]
 title: Shader programs in Defold
 brief: This manual describes vertex and fragment shaders in detail and how to use them in Defold.
 ---

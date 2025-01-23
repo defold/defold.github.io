@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["Lua 模块","引入 Lua 文件","模块","模块热重载","模块和缓存"]
+toc: ["Lua 模块","引入 Lua 文件","模块","模块热重载"]
 title: Defold 中的 Lua 模块
 brief: Lua 模块使你的项目更具结构化还可以创建可重用库代码. 本教程介绍了其在 Defold 中的用法.
 ---

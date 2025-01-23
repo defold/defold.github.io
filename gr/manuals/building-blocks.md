@@ -2,7 +2,7 @@
 layout: manual
 language: gr
 github: https://github.com/defold/doc
-toc: ["Δομικά στοιχεία","Collections Συλλογές","Game objects Αντικείμενα Παιχνιδιού","Components Συστατικό","Αντικείμενα προστέθηκαν επιτόπου ή με αναφορά","Childing game objects"]
+toc: ["Δομικά στοιχεία","Collections Συλλογές","Components Συστατικό","Αντικείμενα προστέθηκαν επιτόπου ή με αναφορά","Childing game objects"]
 title: Τα δομικά στοιχεία του Defold
 brief: Αυτό το εγχειρίδιο σκάβει τις λεπτομέρειες του τρόπου λειτουργίας των αντικειμένων, των συστατικών και των συλλογών του παιχνιδιού.
 ---

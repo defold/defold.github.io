@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["原生扩展的代码提示","创建脚本 API 定义文件","例子"]
+toc: ["原生扩展的代码提示","创建脚本 API 定义文件"]
 title: 为原生扩展提供编辑器代码提示
 brief: 本教程介绍了如何创建脚本 API 定义, 以便 Defold 编辑器能为用户提供代码提示功能.
 ---

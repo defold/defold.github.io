@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Live update","Preparing content for Live update","Live update settings","Bundling with Live update","The .zip archives","Splitting .zip archives","Content verification","Mounts","Scripting with Live Update","Development caveats"]
+toc: ["Live update","Preparing content for Live update","Live update settings","Bundling with Live update","The .zip archives","Splitting .zip archives"]
 title: Live update content in Defold
 brief: The Live update functionality provides a mechanism allowing the runtime to fetch and store resources to the application bundle that were intentionally left out of the bundle at build time. This manual explains how it works.
 ---

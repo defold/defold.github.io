@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Building blocks","Collections","Game objects","Components","Objects added in-place or by reference","Childing game objects"]
+toc: ["Building blocks","Collections","Components","Objects added in-place or by reference","Childing game objects"]
 title: The building blocks of Defold
 brief: This manual digs into the details of how game objects, components and collections work.
 ---

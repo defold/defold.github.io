@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Animacja właściwości","Animowanie właściwości","Animowanie właściwości węzłów GUI","Funkcje po zakończeniu animacji","Wygładzanie","Własne funkcje wygładzania"]
+toc: ["Animacja właściwości","Animowanie właściwości","Animowanie właściwości węzłów GUI"]
 title: Animacja właściwości
 brief: Ta instrukcja opisuje wsparcie dla animacji właściwości w silniku Defold.
 ---

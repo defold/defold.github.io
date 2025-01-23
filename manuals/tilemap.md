@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Tile map","Creating a tile map","Adding a tile map to your game","Runtime manipulation","Changing tiles from script","Tilemap properties","Blend modes","Changing properties","Material constants","Project configuration","External tools","Tiled","Tilesetter"]
+toc: ["Tile map","Creating a tile map","Adding a tile map to your game","Runtime manipulation","Changing tiles from script"]
 title: Defold tile map manual
 brief: This manual details Defold's support for tile maps.
 ---

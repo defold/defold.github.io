@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Debugging Lua scripts with ZeroBrane Studio","ZeroBrane configuration","To set up ZeroBrane","Starting the debugging server","Connecting your application to the debugger","Remote debugging","Other recommended ZeroBrane setting"]
+toc: ["Debugging Lua scripts with ZeroBrane Studio","ZeroBrane configuration","To set up ZeroBrane","Starting the debugging server","Connecting your application to the debugger","Remote debugging"]
 title: Debugging with ZeroBrane Studio
 brief: This manual explains how to use ZeroBrane Studio to debug Lua code in Defold.
 ---

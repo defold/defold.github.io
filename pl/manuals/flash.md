@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Defold dla użytkowników Flasha","Wprowadzenie","Klipy filmowe i obiekty gry","Flash — ręczne tworzenie klipów","Defold — ręczne tworzenie obiektów gry","Flash — odwoływanie się do ręcznie stworzonych klipów","Defold - ID obiektu gry","Flash — dynamiczne tworzenie klipów","Defold — tworzenie obiektów gry wykorzystując fabryki","Flash - Scena","Defold — Kolekcja","Flash — oś czasu","Defold — animowanie właściwości","Flash — indeks głębii","Defold — pozycja w osi Z","Flash — detekcja kolizji za pomocą hitTestObject oraz hitTestPoint","Defold — obiekty kolizji","Flash — zarządzanie zdarzeniami","Defold — funkcje call-back i przesyłanie wiadomości","Flash — symbole przycisków","Defold — sceny i skryptu graficznego interfejsu (GUI)","Debugowanie","Gdzie dalej?"]
+toc: ["Defold dla użytkowników Flasha","Wprowadzenie","Klipy filmowe i obiekty gry","Flash — ręczne tworzenie klipów","Defold — ręczne tworzenie obiektów gry","Flash — odwoływanie się do ręcznie stworzonych klipów","Defold - ID obiektu gry","Flash — dynamiczne tworzenie klipów","Flash - Scena","Defold — Kolekcja","Flash — oś czasu","Defold — animowanie właściwości","Flash — indeks głębii","Defold — pozycja w osi Z"]
 title: Defold dla użytkowników Flasha
 brief: Ta instrukcja przedstawia Defold jako alternatywę dla deweloperów znających Flasha. Opisuje kluczowe koncepty Flasha i odpowiadające im narzędzia w Defoldzie.
 ---

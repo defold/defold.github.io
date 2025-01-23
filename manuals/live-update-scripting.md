@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Scripting Live Update","Get mounts","Scripting with excluded collection proxies"]
+toc: ["Scripting Live Update","Get mounts"]
 title: Scripting Live Update content
 brief: To use the live update content, you need to download and mount the data to your game. Learn how to script with live update in this manual.
 ---

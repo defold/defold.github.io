@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Application lifecycle","Initialization","The update loop","Finalization"]
+toc: ["Application lifecycle","Initialization"]
 title: Defold manual
 ---
 

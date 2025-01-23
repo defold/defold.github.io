@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Mouse Triggers","Mouse buttons","Mouse wheel","Mouse movement","Touch Triggers","Single-touch","Multi-touch","Detecting click or tap on objects","Detecting interaction with GUI nodes","Detecting interaction with game objects"]
+toc: ["Mouse Triggers","Mouse buttons","Mouse movement","Detecting click or tap on objects","Detecting interaction with GUI nodes","Detecting interaction with game objects"]
 title: Mouse and touch input in Defold
 brief: This manual explains how mouse and touch input works.
 ---

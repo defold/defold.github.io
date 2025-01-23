@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Push notifications","iOS setup","Android setup","Local push notifications","Inspecting scheduled notifications"]
+toc: ["Push notifications","iOS setup","Local push notifications"]
 title: Defold manual
 ---
 
