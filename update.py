@@ -258,9 +258,18 @@ def generate_toc(file):
     data = read_as_string(file)
     lines = data.splitlines()
     toc = []
+    within_comment = False
     for line in lines:
-        if line.startswith("# ") or line.startswith("## ") or line.startswith("### "):
-            heading = line.replace("#", "").replace("'", "").replace("`", "").replace("\"", "").strip()
+        if line.strip() == "```":
+            within_comment = not within_comment
+        elif not within_comment and (line.startswith("# ") or line.startswith("## ") or line.startswith("### ")):
+            heading = line
+            heading = heading.replace("#", "")
+            heading = heading.replace("'", "")
+            heading = heading.replace("`", "")
+            heading = heading.replace("\"", "")
+            heading = heading.strip()
+            # note: there is some additional stripping done in manual.html
             toc.append("\"" + heading + "\"")
     return toc
 

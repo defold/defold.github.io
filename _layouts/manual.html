@@ -79,7 +79,7 @@ layout: page
 				<ul class="nobullet">
 				{%- for t in page.toc -%}
 					<li style="padding-left: 2rem;">
-						<a href='#{{ t | downcase | replace: " ", "-" }}' style="text-decoration: none;">{{ t }}</a>
+						<a href='#{{ t | downcase | replace: " ", "-" | replace: "/", "" }}' style="text-decoration: none;">{{ t }}</a>
 					</li>
 				{%- endfor -%}
 				</ul>
