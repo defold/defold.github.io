@@ -51,6 +51,12 @@ Now that the window size is more reasonable we also need to do something about t
 msg.post("@render:", "use_fixed_projection", { zoom = 4 })
 ```
 
+<div class='sidenote' markdown='1'>
+The same result can be achieved by attaching a [Camera component](manuals/camera/) to a game object and check *Orthographic Projection* and set *Orthographic Zoom* to 4.0:
+
+![](../images/screen_size/retro-camera_zoom.png)
+</div>
+
 This will give the following result:
 
 ![](../images/screen_size/retro-zoomed_1280x800.png)
