@@ -273,6 +273,7 @@
             "name": "dmScript::CheckBufferNoError",
             "notes": [
                 "Returns 0 on error. Does not invoke lua_error.",
+                "deprecated. Prefer ToBuffer() instead.",
                 "The dmBuffer::IsBufferValid is already called on the returned buffer"
             ],
             "parameters": [
@@ -1527,6 +1528,47 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "retrieve a LuaHBuffer from the supplied lua state.",
+            "description": "Retrieve a LuaHBuffer from the supplied lua state.\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and returns it.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmScript::ToBuffer",
+            "notes": [
+                "Returns 0 on error. Does not invoke lua_error.",
+                "The dmBuffer::IsBufferValid is already called on the returned buffer"
+            ],
+            "parameters": [
+                {
+                    "doc": "lua state",
+                    "name": "L",
+                    "types": [
+                        "lua_State*"
+                    ]
+                },
+                {
+                    "doc": "Index of the value",
+                    "name": "index",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "pointer to dmScript::LuaHBuffer or 0 if not valid",
+                    "name": "buffer",
+                    "types": [
+                        "LuaHBuffer*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Check if the value at #index is a hash",
             "description": "Check if the value at #index is a hash",
             "error": "",
@@ -2073,12 +2115,12 @@
     "info": {
         "brief": "SDK Script API documentation",
         "description": "Built-in scripting functions.",
-        "file": "dmsdk/script/script.h",
+        "file": "dmsdk/gamesys/script.h",
         "group": "DEFOLD SDK",
         "language": "",
         "name": "Script",
         "namespace": "dmScript",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/script/script.h"
+        "path": "engine/gamesys/src/dmsdk/gamesys/script.h"
     }
 }
