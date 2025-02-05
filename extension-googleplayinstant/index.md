@@ -41,6 +41,8 @@ This is what it would look like with the default `AndroidManifest.xml`:
       <dist:module dist:instant="true" />
 ```
 
+* Add your custom `AndroidManifest.xml` in the Android section of your **game.project** file.
+  
 * Add a dependency to the Google Play Instant extension in your **game.project** file. Add:
 
 ```
