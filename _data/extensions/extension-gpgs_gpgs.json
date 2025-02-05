@@ -22,17 +22,9 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Silent login to GPGS.\nThis function is trying to retrieve the currently signed-in player\u2019s account.\n[icon:attention] By default login methods request `GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN`. But if you use Disk, we have to request extra scope `Drive.SCOPE_APPFOLDER`. Or if you use ID token, we have to request ID token with provided client_id. If so it causes the first time silent sign-in to fail, except for users who have already signed in successfully on a different device. Turn off GPGS features you don't want to use in `game.project`.",
+            "description": "Silent login to GPGS.\nThis function is trying to retrieve the currently signed-in player\u2019s account.",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n    <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">silent_login</span><span class=\"p\">()</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "name": "gpgs.silent_login",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Logout from GPGS",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">logout</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
-            "name": "gpgs.logout",
             "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
@@ -64,26 +56,13 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Get the current GPGS player id token. Available only if \"gpgs.client_id\" is configured in game.project and \"gpgs.request_id_token = 1\".",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">id_token</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">get_id_token</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
-            "name": "gpgs.get_id_token",
-            "parameters": [],
-            "returnvalues": [
-                {
-                    "doc": "The player ID token.",
-                    "name": "string"
-                }
-            ],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Returns a one-time server auth code to send to your web server which can be exchanged for access token",
+            "description": "Returns a one-time server auth code to send to your web server which can be exchanged for access token\nToken can be retrieved only if `gpgs.request_server_auth_code` set to 1 and `gpgs.client` is set.",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">server_auth_code</span> <span class=\"o\">=</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">get_server_auth_code</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "name": "gpgs.get_server_auth_code",
             "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "The server auth code for logged in account.",
+                    "doc": "The server auth code for logged in account. Can be nil if operation is not completed yet.\nAuth token is avaliable after receiving message with id `gpgs.MSG_GET_SERVER_TOKEN` in callback set via `gpgs.set_callback`.",
                     "name": "string"
                 }
             ],
@@ -103,24 +82,8 @@
             "type": "FUNCTION"
         },
         {
-            "description": "This method sets the position for the login popup.",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">gpgs</span> <span class=\"kr\">then</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">set_popup_position</span><span class=\"p\">(</span><span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">POPUP_POS_BOTTOM_CENTER</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
-            "name": "gpgs.set_popup_position",
-            "parameters": [
-                {
-                    "doc": "An position can be one of the predefined constants below\n- `gpgs.POPUP_POS_TOP_LEFT`\n- `gpgs.POPUP_POS_TOP_CENTER`\n- `gpgs.POPUP_POS_TOP_RIGHT`\n- `gpgs.POPUP_POS_CENTER_LEFT`\n- `gpgs.POPUP_POS_CENTER`\n- `gpgs.POPUP_POS_CENTER_RIGHT`\n- `gpgs.POPUP_POS_BOTTOM_LEFT`\n- `gpgs.POPUP_POS_BOTTOM_CENTER`\n- `gpgs.POPUP_POS_BOTTOM_RIGHT`\n\nDefault value is `gpgs.POPUP_POS_TOP_CENTER`",
-                    "name": "position",
-                    "types": [
-                        "number"
-                    ]
-                }
-            ],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
             "description": "Set callback for receiving messages from GPGS.",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">)</span>\n  <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_SIGN_IN</span> <span class=\"ow\">or</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_SILENT_SIGN_IN</span> <span class=\"kr\">then</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">STATUS_SUCCESS</span> <span class=\"kr\">then</span>\n    <span class=\"c1\">-- do something after login</span>\n    <span class=\"kr\">end</span>\n  <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_SIGN_OUT</span> <span class=\"kr\">then</span>\n  <span class=\"c1\">-- do something after logout</span>\n  <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_LOAD_SNAPSHOT</span> <span class=\"kr\">then</span>\n  <span class=\"c1\">-- do something when a save was loaded</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">set_callback</span><span class=\"p\">(</span><span class=\"n\">callback</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">set_callback</span><span class=\"p\">(</span><span class=\"kc\">nil</span><span class=\"p\">)</span> <span class=\"c1\">-- remove callback</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">)</span>\n  <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_SIGN_IN</span> <span class=\"ow\">or</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_SILENT_SIGN_IN</span> <span class=\"kr\">then</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">STATUS_SUCCESS</span> <span class=\"kr\">then</span>\n    <span class=\"c1\">-- do something after login</span>\n    <span class=\"kr\">end</span>\n  <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">MSG_LOAD_SNAPSHOT</span> <span class=\"kr\">then</span>\n  <span class=\"c1\">-- do something when a save was loaded</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">set_callback</span><span class=\"p\">(</span><span class=\"n\">callback</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gpgs</span><span class=\"p\">.</span><span class=\"n\">set_callback</span><span class=\"p\">(</span><span class=\"kc\">nil</span><span class=\"p\">)</span> <span class=\"c1\">-- remove callback</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "name": "gpgs.set_callback",
             "parameters": [
                 {
@@ -135,7 +98,7 @@
                             ]
                         },
                         {
-                            "doc": "An message_id can be one of the predefined constants below\n- `gpgs.MSG_SIGN_IN`\n- `gpgs.MSG_SILENT_SIGN_IN`\n- `gpgs.MSG_SIGN_OUT`\n- `gpgs.MSG_SHOW_SNAPSHOTS`\n- `gpgs.MSG_LOAD_SNAPSHOT`\n- `gpgs.MSG_SAVE_SNAPSHOT`",
+                            "doc": "An message_id can be one of the predefined constants below\n- `gpgs.MSG_SIGN_IN`\n- `gpgs.MSG_SILENT_SIGN_IN`\n- `gpgs.MSG_SHOW_SNAPSHOTS`\n- `gpgs.MSG_LOAD_SNAPSHOT`\n- `gpgs.MSG_SAVE_SNAPSHOT`",
                             "name": "message_id",
                             "types": [
                                 "number"
@@ -601,12 +564,12 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Reveal achievement",
+            "description": "Reveals a hidden achievement to the current player.",
             "examples": "",
             "name": "gpgs.achievement_reveal",
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "Achievement id (from GP console)",
                     "name": "achievementId",
                     "types": [
                         "string"
@@ -617,12 +580,12 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Unlock achievement",
+            "description": "Unlocks an achievement for the current player.",
             "examples": "",
             "name": "gpgs.achievement_unlock",
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "Achievement id (from GP console)",
                     "name": "achievementId",
                     "types": [
                         "string"
@@ -633,19 +596,19 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Set achievement progress",
+            "description": "Sets an achievement to have at least the given number of steps completed.",
             "examples": "",
             "name": "gpgs.achievement_set",
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "Achievement id (from GP console)",
                     "name": "achievementId",
                     "types": [
                         "string"
                     ]
                 },
                 {
-                    "doc": "",
+                    "doc": "The number of steps to set the achievement to. Must be greater than 0.",
                     "name": "steps",
                     "types": [
                         "number"
@@ -656,19 +619,19 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Increase achievement progress",
+            "description": "Increments an achievement by the given number of steps.",
             "examples": "",
             "name": "gpgs.achievement_increment",
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "Achievement id (from GP console)",
                     "name": "achievementId",
                     "types": [
                         "string"
                     ]
                 },
                 {
-                    "doc": "",
+                    "doc": "The number of steps to increment by. Must be greater than 0.",
                     "name": "steps",
                     "types": [
                         "number"
@@ -687,7 +650,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Get information about all achievement's state asynchronously. Result return to callback previously set by `gpgs.set_callback` with `message_id == gpgs.MSG_ACHIEVEMENTS`. Result is array of tables which contain following fields\n- `id` - achievement id (from GP console)\n- `name` - achievement name\n- `description` - achievement description\n- `xp` - how much experience points will be added when achievement will be unlocked\n- `steps` - current step of incremental achievement\n- `total_steps` - total amount of steps of incremental achievement\n- `unlocked` - set to `true` if achievement is unlocked. Otherwise field is missed.\n- `hidden` - set to `true if achievement is hidden. Otherwise field is missed.\n- `revealed` - set to `true` if achievement is revealed. Otherwise field is missed.",
             "examples": "",
             "name": "gpgs.achievement_get",
             "parameters": [],
@@ -695,19 +658,19 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Increments an event specified by `eventId` by the given number of steps",
             "examples": "",
             "name": "gpgs.event_increment",
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "Event id (from GP console)",
                     "name": "eventId",
                     "types": [
                         "string"
                     ]
                 },
                 {
-                    "doc": "",
+                    "doc": "The amount increment by. Must be greater than or equal to 0",
                     "name": "amount",
                     "types": [
                         "number"
@@ -718,84 +681,12 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Get information about all events asynchronously. Result returns to callback previously set by `gpgs.set_callback` with `message_id == gpgs.MSG_GET_EVENTS`. Result is array of tables which contain following fields\n- `id` - event id\n- `formatted_value` - sum of all increments have been made to this event\n- `value` - the number of increments this user has made to this event\n- `description` - event's description\n- `image` - URI that can be used to load the event's image icon\n- `name` - event's name\n- `visible` - whether the event should be displayed to the user in any event related UIs",
             "examples": "",
             "name": "gpgs.event_get",
             "parameters": [],
             "returnvalues": [],
             "type": "FUNCTION"
-        },
-        {
-            "description": "The login popup position at the top-left corner.",
-            "examples": "",
-            "name": "POPUP_POS_TOP_LEFT",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "VARIABLE"
-        },
-        {
-            "description": "The login popup position at the top-center.",
-            "examples": "",
-            "name": "POPUP_POS_TOP_CENTER",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "VARIABLE"
-        },
-        {
-            "description": "The login popup position at the top-right corner.",
-            "examples": "",
-            "name": "POPUP_POS_TOP_RIGHT",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "VARIABLE"
-        },
-        {
-            "description": "The login popup position at the center-left.",
-            "examples": "",
-            "name": "POPUP_POS_CENTER_LEFT",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "VARIABLE"
-        },
-        {
-            "description": "The login popup position at the center of the screen.",
-            "examples": "",
-            "name": "POPUP_POS_CENTER",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "VARIABLE"
-        },
-        {
-            "description": "The login popup position at the center-right.",
-            "examples": "",
-            "name": "POPUP_POS_CENTER_RIGHT",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "VARIABLE"
-        },
-        {
-            "description": "The login popup position at the bottom-left corner.",
-            "examples": "",
-            "name": "POPUP_POS_BOTTOM_LEFT",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "VARIABLE"
-        },
-        {
-            "description": "The login popup position at the bottom-centre.",
-            "examples": "",
-            "name": "POPUP_POS_BOTTOM_CENTER",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "VARIABLE"
-        },
-        {
-            "description": "The login popup position at the bottom-right corner.",
-            "examples": "",
-            "name": "POPUP_POS_BOTTOM_RIGHT",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "VARIABLE"
         },
         {
             "description": "Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_MANUAL) for this constant",
@@ -854,14 +745,6 @@
             "type": "VARIABLE"
         },
         {
-            "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.logout()`",
-            "examples": "",
-            "name": "MSG_SIGN_OUT",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "VARIABLE"
-        },
-        {
             "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.snapshot_display_saves()`",
             "examples": "",
             "name": "MSG_SHOW_SNAPSHOTS",
@@ -881,6 +764,14 @@
             "description": "The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.snapshot_commit_and_close()`",
             "examples": "",
             "name": "MSG_SAVE_SNAPSHOT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The message type that GPGS sends when finishing the asynchronous operation of server token retrieval",
+            "examples": "",
+            "name": "MSG_GET_SERVER_TOKEN",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
