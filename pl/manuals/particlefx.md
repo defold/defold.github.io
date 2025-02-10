@@ -230,6 +230,8 @@ particlefx.play("#particles")
 particlefx.stop("#particles")
 ```
 
+Aby uruchomić i zatrzymać efekt cząsteczkowy z poziomu skryptu GUI zobacz: [instrukcję dla GUI Particle FX](/pl/manuals/gui-particlefx#controlling-the-effect).
+
 <div class='sidenote' markdown='1'>
 Efekt cząsteczkowy będzie nadal emitować cząsteczki nawet wtedy, gdy obiekt gry, do którego należy komponent efektu cząsteczkowego, zostanie usunięty.
 </div>
