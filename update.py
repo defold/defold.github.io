@@ -199,11 +199,13 @@ def download_bob(sha1):
 
 def find_files(root_dir, file_pattern):
     matches = []
-    for root, dirnames, filenames in os.walk(root_dir):
-        for filename in filenames:
-            fullname = os.path.join(root, filename)
-            if fnmatch.fnmatch(filename, file_pattern):
-                matches.append(os.path.join(root, filename))
+    patterns = file_pattern.split("|")
+    for pattern in patterns:
+        for root, dirnames, filenames in os.walk(root_dir):
+            for filename in filenames:
+                fullname = os.path.join(root, filename)
+                if fnmatch.fnmatch(filename, pattern):
+                    matches.append(os.path.join(root, filename))
     return matches
 
 def read_as_string(filename):
@@ -580,78 +582,74 @@ def process_examples(download = False):
         print("File {} does not exist".format(bob_jar))
         sys.exit(1)
 
+    rebuild = True
+
+    examples_dir = "examples"
+    if rebuild:
+        rmmkdir(examples_dir)
+
+    includes_dir = os.path.join("_includes", "examples")
+    rmmkdir(includes_dir)
+
     print("Processing examples")
     with tmpdir() as tmp_dir:
         shutil.copyfile(EXAMPLES_ZIP, os.path.join(tmp_dir, EXAMPLES_ZIP))
         unzip(os.path.join(tmp_dir, EXAMPLES_ZIP), tmp_dir)
-        unzipped_examples_dir = os.path.join(tmp_dir, "examples-master", "examples")
+        unzipped_examples_dir = os.path.join(tmp_dir, "examples-split-into-multiple-projects")
 
-        print("..building app")
-        shutil.copyfile(bob_jar, os.path.join(tmp_dir, bob_jar))
-        input_dir = os.path.join(tmp_dir, "examples-master")
-        subprocess.call([ "java", "-jar", os.path.join(tmp_dir, bob_jar), "--archive", "--platform", "js-web", "--variant", "debug", "resolve", "build", "bundle" ], cwd=input_dir)
-
-        print("...copying app")
-        examples_dir = "examples"
-        rmcopytree(os.path.join(input_dir, "build", "default", "Defold-examples", "archive"), os.path.join(examples_dir, "archive"))
-        for file in ["Defoldexamples_asmjs.js", "Defoldexamples_wasm.js", "Defoldexamples.wasm", "dmloader.js", "index.html"]:
-            shutil.copyfile(os.path.join(input_dir, "build", "default", "Defold-examples", file), os.path.join(examples_dir, file))
-
-        print("...processing index.html")
-        replace_in_file(os.path.join(examples_dir, "index.html"), "\<\!DOCTYPE html\>.*\<body\>", "", flags=re.DOTALL)
-        replace_in_file(os.path.join(examples_dir, "index.html"), "\<\/body\>.*", "", flags=re.DOTALL)
-        replace_in_file(os.path.join(examples_dir, "index.html"), "\(\)\;", "")
-        replace_in_file(os.path.join(examples_dir, "index.html"), 'width=\"720\" height=\"720\"', 'width="680" height="680" style="max-width:100%"')
-        replace_in_file(os.path.join(examples_dir, "index.html"), 'dmloader.js', '/examples/dmloader.js')
-        replace_in_file(os.path.join(examples_dir, "index.html"), 'EngineLoader\.load\(\"canvas\", \"Defoldexamples\"\);', EXAMPLES_ENGINE_LOADER)
-        os.rename(os.path.join(examples_dir, "index.html"), "_includes/example.html")
-
-        print("...copying markdown")
         examplesindex = []
-        for filename in find_files(unzipped_examples_dir, "*.md"):
-            basename = os.path.basename(filename)
-            collection = filename.replace(tmp_dir, "").replace("/examples-master/examples/", "").replace("/" + basename, "")
-            name = collection.split("/")[1].replace("_", " ").capitalize()
-            permalink = "examples/" + collection + "/"
+        category_dirs = os.listdir(unzipped_examples_dir)
+        for category in category_dirs:
+            category_src_dir = os.path.join(unzipped_examples_dir, category)
+            category_dst_dir = os.path.join(examples_dir, category)
+            if os.path.isfile(category_src_dir) or category == ".github":
+                continue
 
-            try:
-                for data in yaml.safe_load_all(read_as_string(filename)):
-                    if "name" in data:
-                        name = data.get("name")
-                    break
-            except yaml.YAMLError:
-                pass
+            for example in os.listdir(category_src_dir):
+                example_src_dir = os.path.join(category_src_dir, example)
+                example_dst_dir = os.path.join(category_dst_dir, example)
 
-            examplesindex.append({
-                "collection": collection,
-                "category": collection.split("/")[0].upper(),
-                "name": name,
-                "path": collection
-            })
-            replace_in_file(filename, "title:", "layout: example\npermalink: {}\ncollection: {}\ntitle:".format(permalink, collection))
+                if os.path.isfile(example_src_dir):
+                    continue
 
-            md_file = os.path.join(examples_dir, filename.replace(unzipped_examples_dir, "")[1:])
-            makedirs(os.path.dirname(md_file))
-            shutil.copyfile(filename, md_file)
+                if rebuild:
+                    print("..building %s" % example)
+                    bob_out = os.path.join(example_src_dir, bob_jar)
+                    shutil.copyfile(bob_jar, bob_out)
+                    subprocess.call([ "java", "-jar", bob_out, "--archive", "--platform", "js-web", "--variant", "debug", "resolve", "build", "bundle" ], cwd=example_src_dir)
+                    os.remove(bob_out)
 
-        print("...copying images")
-        for filename in find_files(unzipped_examples_dir, "*.png"):
-            png_file = os.path.join(examples_dir, filename.replace(unzipped_examples_dir, "")[1:])
-            makedirs(os.path.dirname(png_file))
-            shutil.copyfile(filename, png_file)
-        for filename in find_files(unzipped_examples_dir, "*.jpg"):
-            jpg_file = os.path.join(examples_dir, filename.replace(unzipped_examples_dir, "")[1:])
-            makedirs(os.path.dirname(jpg_file))
-            shutil.copyfile(filename, jpg_file)
+                    print("..copying %s" % example)
+                    bundle_dir = os.path.join(example_src_dir, "build", "default", "Defold-examples")
+                    shutil.copytree(bundle_dir, example_dst_dir)
+                    os.remove(os.path.join(example_dst_dir, "index.html"))
 
-        print("...copying scripts")
-        includes_dir = "_includes/examples"
-        rmmkdir(includes_dir)
-        for ext in ["script", "gui_script", "vp", "fp"]:
-            for source in find_files(unzipped_examples_dir, "*." + ext):
-                target = os.path.join(includes_dir, source.replace(unzipped_examples_dir, "")[1:]).replace("." + ext, "_" + ext + ".md")
-                makedirs(os.path.dirname(target))
-                shutil.copyfile(source, target)
+                print("...parsing example.md")
+                md_file = os.path.join(example_src_dir, "example", "example.md")
+                replace_in_file(md_file, "tags:", "category: %s\ntags:" % category, flags=re.DOTALL)
+                replace_in_file(md_file, "tags:", "path: %s/%s\ntags:" % (category, example), flags=re.DOTALL)
+                replace_in_file(md_file, "tags:", "layout: example\ntags:", flags=re.DOTALL)
+                try:
+                    for data in yaml.safe_load_all(read_as_string(md_file)):
+                        examplesindex.append(data)
+                        break
+                except yaml.YAMLError:
+                    pass
+
+                print("...copying example.md file")
+                shutil.copyfile(md_file, os.path.join(example_dst_dir, "index.md"))
+
+                print("...copying example scripts")
+                os.makedirs(os.path.join(includes_dir, category, example), exist_ok=True)
+                for script in find_files(os.path.join(example_src_dir, "example"), "*.script|*.gui_script|*.vp|*.fp"):
+                    file, ext = os.path.splitext(os.path.basename(script))
+                    tgt = os.path.join(includes_dir, category, example, file + "_" + ext.replace(".", "") + ".md")
+                    shutil.copyfile(script, tgt)
+
+                print("...copying images")
+                for image in find_files(os.path.join(example_src_dir, "example"), "*.png|*.jpg"):
+                    tgt = os.path.join(example_dst_dir, os.path.basename(image))
+                    shutil.copyfile(image, tgt)
 
         print("...generating index")
         index_file = os.path.join("_data", "examplesindex.json")

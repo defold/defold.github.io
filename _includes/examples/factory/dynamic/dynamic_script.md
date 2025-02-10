@@ -3,9 +3,9 @@ function init(self)
 
 	-- a list of different bullet prototypes
 	self.bullets = {
-		"/examples/factory/dynamic/flame.goc",
-		"/examples/factory/dynamic/lightning.goc",
-		"/examples/factory/dynamic/rock.goc",
+		"/example/flame.goc",
+		"/example/lightning.goc",
+		"/example/rock.goc",
 	}
 	-- the currently used bullet prototype
 	self.bullet_index = 1

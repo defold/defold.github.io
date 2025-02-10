@@ -22,7 +22,7 @@ layout: page
 					<ul class="nobullet">
 						{% for example in examples %}
 						<li style="padding-left: 2rem;">
-							<a href="/examples/{{ example.path }}" style="text-decoration: none;">{{ example.name }}</a>
+							<a href="/examples/{{ example.path }}" style="text-decoration: none;">{{ example.title }}</a>
 						</li>
 						{% endfor %}
 					</ul>
@@ -34,7 +34,7 @@ layout: page
 						<option value="">{{ category | capitalize }}</option>
 						{% assign examples = site.data.examplesindex | where: "category", category %}
 						{% for example in examples %}
-						<option value="/examples/{{ example.path }}" {% if page.url contains example.path %}selected{% endif %}> - {{ example.name }}</option>
+						<option value="/examples/{{ example.path }}" {% if page.url contains example.path %}selected{% endif %}> - {{ example.title }}</option>
 						{%- endfor -%}
 					{%- endfor -%}
 					</select>
@@ -42,11 +42,19 @@ layout: page
 			</div>
 			<div class="columns eight example" style="">
 				<h4>{{ page.title }}</h4>
-				{%- if page.collection -%}
-				{% include example.html %}
+				<div id="app-container" class="canvas-app-container" style="display:none">
+					<div id="canvas-container" class="canvas-app-canvas-container"></div>
+					<div class="buttons-background"></div>
+				</div>
+				<!-- the canvas is intentionally moved outside of the app-container to
+				not be affected by any scaling options set in game.project -->
+				<canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="680" height="680" style="max-width:680px"></canvas>
+				<script id='engine-loader' type='text/javascript' src="dmloader.js"></script>
+				<script id='engine-start' type='text/javascript'>
+					EngineLoader.load("canvas", "Defoldexamples");
+				</script>
 				<br/>
 				<h4>Setup</h4>
-				{% endif %}
 
 				{{ content }}
 
@@ -55,13 +63,14 @@ layout: page
 				{% endif %}
 				{% assign scripts = page.scripts | split: "," %}
 				{% assign collection = page.collection %}
+				{% assign path = page.path %}
 				{% for script in scripts %}
 				<p>{{ script }}</p>
 				{% comment %}
 					Assign content of the script into a variable and then
 					replace each tab with 4 spaces to have consistent indentations
 				{% endcomment %}
-				{% capture script_content %}{% include examples/{{ collection }}/{{ script | lstrip | replace: ".script", "_script.md" | replace: ".gui_script", "_gui_script.md" | replace: ".vp", "_vp.md" | replace: ".fp", "_fp.md" }} %}{% endcapture %}
+				{% capture script_content %}{% include examples/{{ path }}/{{ script | lstrip | replace: ".script", "_script.md" | replace: ".gui_script", "_gui_script.md" | replace: ".vp", "_vp.md" | replace: ".fp", "_fp.md" }} %}{% endcapture %}
 				{% assign script_ext = script | split:'.' | last %}
 				{% if script_ext == "vp" or script_ext == "fp" %}
 				{% highlight glsl %}{{ script_content | replace: "	", "    " }}{% endhighlight %}

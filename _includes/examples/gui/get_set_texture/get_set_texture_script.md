@@ -1,5 +1,5 @@
 -- create a script resource property 'myatlas' referencing an atlas file
-go.property("myatlas", resource.atlas("/examples/gui/get_set_texture/get_set_texture.atlas"))
+go.property("myatlas", resource.atlas("/example/get_set_texture.atlas"))
 
 function init(self)
 	msg.post(".", "acquire_input_focus")

@@ -39,14 +39,14 @@ end
 
 local function replace_atlas_image()
 	-- get table with information about an atlas
-	local atlas = resource.get_atlas("/examples/resource/modify_atlas/modify_atlas.a.texturesetc")
+	local atlas = resource.get_atlas("/example/modify_atlas.a.texturesetc")
 	-- get table with information about the textured used by the atlas
 	local texture = resource.get_texture_info(atlas.texture)
 	pprint(atlas)
 	pprint(texture)
 
 	-- load an image as a Defold buffer
-	local pixel_buffer, width, height = create_buffer_from_image("/examples/resource/modify_atlas/resources/shipYellow_manned.png")
+	local pixel_buffer, width, height = create_buffer_from_image("/example/resources/shipYellow_manned.png")
 
 	-- get the UV coordinates of the first image in the atlas
 	local first_uvs = atlas.geometries[1].uvs

@@ -1,5 +1,5 @@
 -- create a script resource property 'myfont' referencing a font file
-go.property("mymaterial", resource.material("/examples/gui/get_set_material/get_set_material.material"))
+go.property("mymaterial", resource.material("/example/get_set_material.material"))
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
