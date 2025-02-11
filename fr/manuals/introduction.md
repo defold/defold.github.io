@@ -20,7 +20,7 @@ Nous vous encourageons à expérimenter, suivre des tutoriels, lire nos guides a
 ![Editor overview](/manuals/images/introduction/editor.png) [Présentation de l'éditeur](/manuals/editor/) est une bonne introduction qui vous aide à naviguer, utiliser les outils visuels et coder. Si vous êtes familier avec les programmes de modélisation 3D et les IDE de programmation, vous aurez peu de surprises, bien qu'il y aura toujours des différences avec votre logiciel préféré.
 
 #### Exemples de base
-![Examples](/manuals/images/introduction/examples.jpg) [Notre collection d'exemples de base](https://defold.com/examples) est une excellente introduction sur la façon d'assembler des éléments permettant de créer quelque chose qui fonctionne. Vous y trouverez des exemples basiques sur comment faire une grande variété de choses que l'on rencontre souvent dans Defold.
+![Examples](/manuals/images/introduction/examples.jpg) [Notre collection d'exemples de base](https://defold.com/examples/animation/basic_tween/) est une excellente introduction sur la façon d'assembler des éléments permettant de créer quelque chose qui fonctionne. Vous y trouverez des exemples basiques sur comment faire une grande variété de choses que l'on rencontre souvent dans Defold.
 
 #### Le langage Lua
 ![Lua overview](/manuals/images/introduction/lua.png) [Defold utilise Lua](/manuals/lua/) pour toute la gestion logique. Le moteur est une machine C++ très rapide, mais il est contrôlé à haut niveau par des programmes Lua. Si vous avez déjà programmé en Python, Javascript ou tout autre langage de haut niveau, vous remarquerez que Lua est assez facile à comprendre et pourrez probablement suivre un tutoriel sans problème. Sinon, lisez notre guide Lua et commencez à partir de là.
