@@ -1,5 +1,6 @@
 <div class='card left compact clickable'>
 <div class="center" style="padding-bottom: 1em;">
+{%- if include.image != "" -%}
 <a href="{{ include.link }}">
     {% assign image_extension = include.image | split:'.' | last %}
     {%- if image_extension == "svg" -%}
@@ -8,6 +9,7 @@
         <img src="{{ include.image }}" style="max-height:8em;border-radius:4px;"/>
     {%- endif -%}
 </a>
+{%- endif -%}
 </div>
 <div>
 <a href="{{ include.link }}"><h5>{{ include.title }}</h5></a>

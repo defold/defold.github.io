@@ -584,10 +584,6 @@ def process_examples(download = False):
 
     rebuild = True
 
-    examples_dir = "examples"
-    if rebuild:
-        rmmkdir(examples_dir)
-
     includes_dir = os.path.join("_includes", "examples")
     rmmkdir(includes_dir)
 
@@ -601,7 +597,8 @@ def process_examples(download = False):
         category_dirs = os.listdir(unzipped_examples_dir)
         for category in category_dirs:
             category_src_dir = os.path.join(unzipped_examples_dir, category)
-            category_dst_dir = os.path.join(examples_dir, category)
+            category_dst_dir = os.path.join("examples", category)
+            rmmkdir(category_dst_dir)
             if os.path.isfile(category_src_dir) or category == ".github":
                 continue
 

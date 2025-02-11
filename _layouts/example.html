@@ -18,7 +18,7 @@ layout: page
 						{%- endif -%}
 					{%- endfor -%}
 					<input id="collapsible_{{ category }}" class="toggle" type="checkbox" {{ checked }}/>
-					<label for="collapsible_{{ category }}" class="togglelabel">{{ category | capitalize  }}</label>
+					<label for="collapsible_{{ category }}" class="togglelabel">{{ category | capitalize }}</label>
 					<ul class="nobullet">
 						{% for example in examples %}
 						<li style="padding-left: 2rem;">

@@ -4,7 +4,7 @@
 			<div class="nine columns">
 				{%- if include.showmenu -%}
 				<ul class="sidemenu">
-					<li><a href="/examples/animation/basic_tween" class="{% if page.url contains 'examples' %}bold{% endif %}">Examples </a></li>
+					<li><a href="/examples" class="{% if page.url contains 'examples' %}bold{% endif %}">Examples </a></li>
 					<li><a href="/videos" class="{% if page.url contains 'videos' %}bold{% endif %}">Videos</a></li>
 					<li><a href="/tutorials" class="{% if page.url contains 'tutorials' %}bold{% endif %}">Tutorials</a></li>
 					<li><a href="/manuals/introduction" class="{% if page.url contains 'manuals' %}bold{% endif %}">Manuals</a></li>
@@ -14,7 +14,7 @@
 					<li><a href="/codepad/" class="{% if page.url contains 'codepad' %}bold{% endif %}">Codepad</a></li>
 				</ul>
 				<select class="dropdownmenu" onchange="location = this.value;">
-					<option value="/examples/animation/basic_tween" {% if page.url contains 'examples' %}selected{% endif %}>Examples</option>
+					<option value="/examples" {% if page.url contains 'examples' %}selected{% endif %}>Examples</option>
 					<option value="/videos" {% if page.url contains 'videos' %}selected{% endif %}>Videos</option>
 					<option value="/tutorials" {% if page.url contains 'tutorials' %}selected{% endif %}>Tutorials</option>
 					<option value="/manuals/introduction" {% if page.url contains 'manuals' %}selected{% endif %}>Manuals</option>

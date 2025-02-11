@@ -1,0 +1,36 @@
+---
+layout: page
+title: Defold examples
+nav: floating
+---
+
+<div class="section hero center blackwhite dark:darken-10" style='background-image: url("/images/hero/testimonials-background-0.5x.png");'>
+	<div class="container">
+		<div class="row">
+			<div class="column one-half left">
+				<h1>Learn from examples!</h1>
+				<p>The Defold examples show individual concepts and features of Defold.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include learnnav.html showmenu=true %}
+
+<div class="section lightest dark:dark">
+	<div class="container">
+		{% assign all_categories = site.data.examplesindex | map: "category" | uniq | sort %}
+		{% for category in all_categories %}
+		<div class="row">
+			<div class="columns full">
+				<h3>{{ category | capitalize }}</h3>
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
+				{%- assign examples = site.data.examplesindex | where: "category", category -%}
+				{%- for example in examples -%}
+					{% include learn_card.html title=example.title description=example.brief link=example.path min-height="250px" %}
+				{%- endfor -%}
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+</div>
