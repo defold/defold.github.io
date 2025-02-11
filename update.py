@@ -570,7 +570,7 @@ def process_examples(download = False):
     if download:
         if os.path.exists(EXAMPLES_ZIP):
             os.remove(EXAMPLES_ZIP)
-        download_file("https://github.com/defold/examples/archive/master.zip", ".", EXAMPLES_ZIP)
+        download_file("https://github.com/defold/examples/archive/refs/heads/split-into-multiple-projects.zip", ".", EXAMPLES_ZIP)
         download_bob(get_sha1())
 
     if not os.path.exists(EXAMPLES_ZIP):
@@ -625,7 +625,7 @@ def process_examples(download = False):
                     os.remove(os.path.join(example_dst_dir, "index.html"))
 
                 print("...parsing example.md")
-                md_file = os.path.join(example_src_dir, "example", "example.md")
+                md_file = os.path.join(example_src_dir, "example.md")
                 replace_in_file(md_file, "tags:", "category: %s\ntags:" % category, flags=re.DOTALL)
                 replace_in_file(md_file, "tags:", "path: %s/%s\ntags:" % (category, example), flags=re.DOTALL)
                 replace_in_file(md_file, "tags:", "layout: example\ntags:", flags=re.DOTALL)
@@ -636,7 +636,7 @@ def process_examples(download = False):
                 except yaml.YAMLError:
                     pass
 
-                print("...copying example.md file")
+                print("...copying example.md")
                 shutil.copyfile(md_file, os.path.join(example_dst_dir, "index.md"))
 
                 print("...copying example scripts")
