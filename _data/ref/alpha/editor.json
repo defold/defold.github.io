@@ -3310,6 +3310,44 @@
             "type": "VARIABLE"
         },
         {
+            "brief": "perform an HTTP request",
+            "description": "Perform an HTTP request",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "http.request",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "request URL",
+                    "name": "url",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Additional request options, a table with the following keys:<dl><dt><code>method <small>string</small></code></dt><dd>request method, defaults to <code>\"GET\"</code></dd><dt><code>headers <small>table</small></code></dt><dd>request headers, a table with string keys and values</dd><dt><code>body <small>string</small></code></dt><dd>request body</dd><dt><code>as <small>string</small></code></dt><dd>Response body converter, either <code>\"string\"</code> or <code>\"json\"</code></dd></dl>",
+                    "name": "[opts]",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP response, a table with the following keys:<dl><dt><code>status <small>integer</small></code></dt><dd>response code</dd><dt><code>headers <small>table</small></code></dt><dd>response headers, a table where each key is a lower-cased string, and each value is either a string or an array of strings if the header was repeated</dd><dt><code>body <small>string, any, nil</small></code></dt><dd>response body, present only when <code>as</code> option was provided, either a string or a parsed json value</dd></dl>",
+                    "name": "response",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "decode JSON string to Lua value",
             "description": "Decode JSON string to Lua value",
             "error": "",
