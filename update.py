@@ -422,6 +422,9 @@ def process_docs(download = False):
                 item["languages"] = []
                 if not item["path"].startswith("http"):
                     path = item["path"][1:]
+                    # foo/bar/#anchor -> foo/bar
+                    # foo/bar#anchor -> foo/bar
+                    path = re.sub("\/?\#.*", "", path)
                     for language in languages["languages"].keys():
                         if os.path.exists(get_language_specific_dir(language, path + ".md")):
                             item["languages"].append(language)
