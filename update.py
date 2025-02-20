@@ -570,7 +570,7 @@ def process_examples(download = False):
     if download:
         if os.path.exists(EXAMPLES_ZIP):
             os.remove(EXAMPLES_ZIP)
-        download_file("https://github.com/defold/examples/archive/refs/heads/split-into-multiple-projects.zip", ".", EXAMPLES_ZIP)
+        download_file("https://github.com/defold/examples/archive/refs/heads/master.zip", ".", EXAMPLES_ZIP)
         download_bob(get_sha1())
 
     if not os.path.exists(EXAMPLES_ZIP):
