@@ -591,7 +591,7 @@ def process_examples(download = False):
     with tmpdir() as tmp_dir:
         shutil.copyfile(EXAMPLES_ZIP, os.path.join(tmp_dir, EXAMPLES_ZIP))
         unzip(os.path.join(tmp_dir, EXAMPLES_ZIP), tmp_dir)
-        unzipped_examples_dir = os.path.join(tmp_dir, "examples-split-into-multiple-projects")
+        unzipped_examples_dir = os.path.join(tmp_dir, "examples-master")
 
         examplesindex = []
         category_dirs = os.listdir(unzipped_examples_dir)
