@@ -3422,6 +3422,74 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "<code>\"deflated\"</code> compression method",
+            "description": "<code>\"deflated\"</code> compression method",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "zip.METHOD.DEFLATED",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"stored\"</code> compression method, i.e. no compression",
+            "description": "<code>\"stored\"</code> compression method, i.e. no compression",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "zip.METHOD.STORED",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "create a ZIP archive",
+            "description": "Create a ZIP archive",
+            "error": "",
+            "examples": "Archive a file and a folder:\n<div class=\"codehilite\"><pre><span></span><code>zip.pack(&quot;build.zip&quot;, {&quot;build&quot;, &quot;game.project&quot;})\n</code></pre></div>\n\nChange the location of the files within the archive:\n<div class=\"codehilite\"><pre><span></span><code>zip.pack(&quot;build.zip&quot;, {\n  {&quot;build/wasm-web&quot;, &quot;.&quot;},\n  {&quot;configs/prod.json&quot;, &quot;config.json&quot;}\n})\n</code></pre></div>\n\nCreate archive without compression (much faster to create the archive, bigger archive file size, allows mmap access):\n<div class=\"codehilite\"><pre><span></span><code>zip.pack(&quot;build.zip&quot;, {method = zip.METHOD.STORED}, {\n  &quot;build&quot;,\n  &quot;resources&quot;\n})\n</code></pre></div>\n\nDon't compress one of the folders:\n<div class=\"codehilite\"><pre><span></span><code>zip.pack(&quot;build.zip&quot;, {\n  {&quot;assets&quot;, method = zip.METHOD.STORED},\n  &quot;build/wasm-web&quot;\n})\n</code></pre></div>\n\nInclude files from outside the project:\n<div class=\"codehilite\"><pre><span></span><code>zip.pack(&quot;build.zip&quot;, {\n  &quot;build&quot;,\n  {&quot;../secrets/auth-key.txt&quot;, &quot;auth-key.txt&quot;}\n})\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "zip.pack",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "output zip file path, resolved against project root if relative",
+                    "name": "output_path",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "compression options, a table with the following keys:<dl><dt><code>method <small>string</small></code></dt><dd>compression method, either <code>zip.METHOD.DEFLATED</code> (default) or <code>zip.METHOD.STORED</code></dd><dt><code>level <small>integer</small></code></dt><dd>compression level, an integer between 0 and 9, only useful when the compression method is <code>zip.METHOD.DEFLATED</code>; defaults to 6</dd></dl>",
+                    "name": "[opts]",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "entries to compress, either a string (relative path to file or folder to include) or a table with the following keys:<dl><dt><code>1 <small>string</small></code></dt><dd>required; source file or folder path to include, resolved against project root if relative</dd><dt><code>2 <small>string</small></code></dt><dd>optional; target file or folder path in the zip archive. May be omitted if source is a relative path that does not go above the project directory.</dd><dt><code>method <small>string</small></code></dt><dd>compression method, either <code>zip.METHOD.DEFLATED</code> (default) or <code>zip.METHOD.STORED</code></dd><dt><code>level <small>integer</small></code></dt><dd>compression level, an integer between 0 and 9, only useful when the compression method is <code>zip.METHOD.DEFLATED</code>; defaults to 6</dd></dl>",
+                    "name": "entries",
+                    "types": [
+                        "string",
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
         }
     ],
     "info": {
