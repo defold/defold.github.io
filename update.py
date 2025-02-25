@@ -647,7 +647,7 @@ def process_examples(download = False):
                     shutil.copyfile(script, tgt)
 
                 print("...copying images")
-                for image in find_files(os.path.join(example_src_dir, "example"), "*.png|*.jpg"):
+                for image in find_files(example_src_dir, "*.png|*.jpg"):
                     tgt = os.path.join(example_dst_dir, os.path.basename(image))
                     shutil.copyfile(image, tgt)
 
