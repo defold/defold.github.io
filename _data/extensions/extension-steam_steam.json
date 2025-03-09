@@ -411,6 +411,42 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Sets a Rich Presence key/value for the current user.",
+            "examples": "",
+            "name": "steam.friends_set_rich_presence",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "value",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "True if the rich presence was set successfully, otherwise False.",
+                    "name": "bool"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Clears all of the current user&#x27;s Rich Presence key/values.",
+            "examples": "",
+            "name": "steam.friends_clear_rich_presence",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Set a listener.",
             "examples": "",
             "name": "steam.set_listener",
