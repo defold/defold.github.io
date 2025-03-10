@@ -8,7 +8,7 @@ brief: In this tutorial you will convert a shader from shadertoy.com to Defold.
 
 [Shadertoy.com](https://www.shadertoy.com/) is a site that gathers user contributed GL shaders. It is a great resource for finding shader code and inspiration. In this tutorial we will take a shader from Shadertoy and make it run in Defold. Some basic understanding of shaders is assumed. If you need to read up, [the Shader manual](/manuals/shader/) is a good place to start.
 
-The shader we will use is [Star Nest](https://www.shadertoy.com/view/XlfGRj) by Pablo Andrioli (user "Kali" on Shadertoy). It is a purely procedural mathematical black magickery fragment shader that renders a really cool starfield effect.
+The shader we will use is [Star Nest](https://www.shadertoy.com/view/XlfGRj) by Pablo Andrioli (user "Kali" on Shadertoy). It is a purely procedural mathematical black magic fragment shader that renders a really cool star field effect.
 
 ![Star Nest](../images/shadertoy/starnest.png)
 
@@ -30,10 +30,10 @@ Blender is a free, open-source 3D software which can be downloaded from [blender
 
 ![quad in Blender](../images/shadertoy/quad_blender.png)
 
-1. Export the model as a *Collada* file called *quad.dae* and drag it into a new Defold project.
+1. Export the model as a *Collada* file called *`quad.dae`* and drag it into a new Defold project.
 2. Open your "main.collection" file in Defold and create a new game object "star-nest".
 3. Add a *Model* component to "star-nest".
-4. Set the *Mesh* property to the *quad.dae* file.
+4. Set the *Mesh* property to the *`quad.dae`* file.
 5. The model is small (2⨉2 units) so we need to scale the "star-nest" game object to a reasonable size. 600⨉600 is a nice large size so set the X and Y scale to 300.
 
 The model should appear in the scene editor, but it is rendered all black. That is because it has no material set yet:
@@ -42,18 +42,18 @@ The model should appear in the scene editor, but it is rendered all black. That 
 
 ## Creating the material
 
-Create a new material file *star-nest.material*, a vertex shader program *star-nest.vp* and a fragment shader program *star-nest.fp*:
+Create a new material file *`star-nest.material`*, a vertex shader program *`star-nest.vp`* and a fragment shader program *`star-nest.fp`*:
 
 1. Open *star-nest.material*.
 2. Set the *Vertex Program* to `star-nest.vp`.
 3. Set the *Fragment Program* to `star-nest.fp`.
-4. Add a *Vertex Constant* and name it "view_proj" (for "view projection").
+4. Add a *Vertex Constant* and name it "`view_proj`" (for "view projection").
 5. Set its *Type* to `CONSTANT_TYPE_VIEWPROJ`.
 6. Add a tag "tile" to the *Tags*. This is so that the quad is included in the render pass when sprites and tiles are drawn.
 
     ![material](../images/shadertoy/material.png)
 
-7. Open the vertex shader program file *star-nest.vp*. It should contain the following code. Leave the code as is.
+7. Open the vertex shader program file *`star-nest.vp`*. It should contain the following code. Leave the code as is.
 
     ```glsl
     // star-nest.vp
@@ -72,7 +72,7 @@ Create a new material file *star-nest.material*, a vertex shader program *star-n
     }
     ```
 
-8. Open the fragment shader program file *star-nest.fp* and modify the code so the fragment color is set based on the X and Y coordinates of the UV coordinates (`var_texcoord0`). We do this to make sure we have the model set up correctly:
+8. Open the fragment shader program file *`star-nest.fp`* and modify the code so the fragment color is set based on the X and Y coordinates of the UV coordinates (`var_texcoord0`). We do this to make sure we have the model set up correctly:
 
     ```glsl
     // star-nest.fp
@@ -96,7 +96,7 @@ Now everything is in place to start working on the actual shader code. Let's fir
 
 ![Star Nest shader code](../images/shadertoy/starnest_code.png)
 
-1. Lines 5--18 defines a bunch of constants. We can leve these as is.
+1. Lines 5--18 defines a bunch of constants. We can leave these as is.
 
 2. Lines 21 and 63 contains the input fragment X and Y screen space texture coordinates (`in vec2 fragCoord`), and output fragment color (`out vec4 fragColor`).
 
@@ -232,7 +232,7 @@ void main()
 
 The final step is to feed a time value to the shader:
 
-1. Create a new script file *star-nest.script*.
+1. Create a new script file *`star-nest.script`*.
 2. Enter the following code:
 
 ```lua
@@ -245,7 +245,7 @@ function update(self, dt)
     go.set("#model", "time", vmath.vector4(self.t, 0, 0, 0)) -- <3>
 end
 ```
-1. Store a value `t` in the script component (`self`) and intialize to 0.
+1. Store a value `t` in the script component (`self`) and initialize to 0.
 2. Each frame increase the value of `self.t` with the number of seconds that has passed since the last frame. This value is available through the parameter `dt` (delta time) and is 1/60 (`update()` is called 60 times a second).
 3. Set the "time" constant on the model component. The constant is a `vector4` so we use the `x`component for the time value.
 4. Finally, add *star-nest.script* as a script component to the "star-nest" game object:

@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Debugging on iOS/macOS","Xcode","Create Project","Launch the debugger","Debug symbols","Path mappings","Breakpoints","Notes","Check UUID of binary"]
+toc: ["Debugging on iOS/macOS","Xcode","Breakpoints","Notes","Check UUID of binary"]
 title: Debugging on iOS/macOS
 brief: This manual describes how to debug a build using Xcode.
 ---
@@ -15,13 +15,17 @@ Here we describe how to debug a build using [Xcode](https://developer.apple.com/
 
 * Bundle the app by using bob, with the `--with-symbols` option ([more info](/manuals/debugging-native-code/#symbolicate-a-callstack)):
 
-		$ cd myproject
-		$ wget http://d.defold.com/archive/<sha1>/bob/bob.jar
-		$ java -jar bob.jar --platform armv7-darwin build --with-symbols --variant debug --archive bundle -bo build/ios -mp <app>.mobileprovision --identity "iPhone Developer: Your Name (ID)"
+```sh
+$ cd myproject
+$ wget http://d.defold.com/archive/<sha1>/bob/bob.jar
+$ java -jar bob.jar --platform armv7-darwin build --with-symbols --variant debug --archive bundle -bo build/ios -mp <app>.mobileprovision --identity "iPhone Developer: Your Name (ID)"
+```
 
 * Install the app, either with `Xcode`, `iTunes` or [ios-deploy](https://github.com/ios-control/ios-deploy)
 
-		$ ios-deploy -b <AppName>.ipa
+```sh
+$ ios-deploy -b <AppName>.ipa
+```
 
 * Get the `.dSYM` folder (i.e the debug symbols)
 
@@ -29,11 +33,12 @@ Here we describe how to debug a build using [Xcode](https://developer.apple.com/
 
 	* If you are using a native extension, then the `.dSYM` folder is generated when you build with [bob.jar](https://www.defold.com/manuals/bob/). Only building is required (no archive or bundling):
 
-			$ cd myproject
-			$ unzip .internal/cache/arm64-ios/build.zip
-			$ mv dmengine.dSYM <AppName>.dSYM
-			$ mv <AppName>.dSYM/Contents/Resources/DWARF/dmengine <AppName>.dSYM/Contents/Resources/DWARF/<AppName>
-
+```sh
+$ cd myproject
+$ unzip .internal/cache/arm64-ios/build.zip
+$ mv dmengine.dSYM <AppName>.dSYM
+$ mv <AppName>.dSYM/Contents/Resources/DWARF/dmengine <AppName>.dSYM/Contents/Resources/DWARF/<AppName>
+```
 
 ### Create Project
 
@@ -96,34 +101,45 @@ You have a few options to debug an app
 
 * Add the `.dSYM` path to lldb
 
-		(lldb) add-dsym <PathTo.dSYM>
+```
+(lldb) add-dsym <PathTo.dSYM>
+```
 
 	![add_dsym](../images/extensions/debugging/ios/add_dsym.png)
 
 * Verify that `lldb` read the symbols successfully
 
-		(lldb) image list <AppName>
+```
+(lldb) image list <AppName>
+```
 
 ### Path mappings
 
 * Add the engine source (change accordingly for your need)
 
-		(lldb) settings set target.source-map /Users/builder/ci/builds/engine-ios-64-master/build /Users/mathiaswesterdahl/work/defold
-		(lldb) settings append target.source-map /private/var/folders/m5/bcw7ykhd6vq9lwjzq1mkp8j00000gn/T/job4836347589046353012/upload/videoplayer/src /Users/mathiaswesterdahl/work/projects/extension-videoplayer-native/videoplayer/src
+```
+(lldb) settings set target.source-map /Users/builder/ci/builds/engine-ios-64-master/build /Users/mathiaswesterdahl/work/defold
+(lldb) settings append target.source-map /private/var/folders/m5/bcw7ykhd6vq9lwjzq1mkp8j00000gn/T/job4836347589046353012/upload/videoplayer/src /Users/mathiaswesterdahl/work/projects/extension-videoplayer-native/videoplayer/src
+```
 
-	* It's possible to get the job folder from the executable.
-	The jobfolder is named like so `job1298751322870374150`, each time with a random number.
+* It's possible to get the job folder from the executable. The jobfolder is named `job1298751322870374150`, each time with a random number.
 
-			$ dsymutil -dump-debug-map <executable> 2>&1 >/dev/null | grep /job
+```sh
+$ dsymutil -dump-debug-map <executable> 2>&1 >/dev/null | grep /job
+
+```
 
 * Verify the source mappings
 
-		(lldb) settings show target.source-map
+```
+(lldb) settings show target.source-map
+```
 
 You can check what source file a symbol was originating from using
 
-	(lldb) image lookup -va <SymbolName>
-
+```
+(lldb) image lookup -va <SymbolName>
+```
 
 ### Breakpoints
 
@@ -137,4 +153,6 @@ You can check what source file a symbol was originating from using
 
 In order for the debugger to accept the `.dSYM` folder, the UUID need to match the UUID of the executable being debugged. You can check the UUID like so:
 
-	$ dwarfdump -u <PathToBinary>
+```sh
+$ dwarfdump -u <PathToBinary>
+```

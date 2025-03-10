@@ -41,7 +41,7 @@ We need to modify the built-in render script and add the new rendering functiona
 
    ![game.project](../images/grading/game_project.png)
 
-Now the game is set up to run with a new render pipeline that we can modify. To test that our render script copy is used by the engine, run your game, then do a modification to the render script that will give a visual result, and then reload the script. For example, you can disable the drawing of tiles and sprites, then press <kbd>⌘ + R</kbd> to hot-relad the "broken" render script into the running game:
+Now the game is set up to run with a new render pipeline that we can modify. To test that our render script copy is used by the engine, run your game, then do a modification to the render script that will give a visual result, and then reload the script. For example, you can disable the drawing of tiles and sprites, then press <kbd>⌘ + R</kbd> to hot-reload the "broken" render script into the running game:
 
 ```lua
 ...
@@ -85,7 +85,7 @@ function init(self)
     self.target = render.render_target("original", target_params) -- <2>
 end
 ```
-1. Set up color buffer parmeters for the render target. We use the game's target resolution.
+1. Set up color buffer parameters for the render target. We use the game's target resolution.
 2. Create the render target with the color buffer parameters.
 
 Now we just need to wrap the original rendering code with `render.set_render_target()` like this:
@@ -119,23 +119,23 @@ Create a quadratic plane mesh in Blender (or any other 3D modelling program). Se
 
 ![game.project](../images/grading/quad_blender.png)
 
-1. Export the model as a Collada file called *quad.dae* and drag it into your Defold project.
-2. Open *main.collection* and create a new game object called "grade".
-3. Add a Model component to the "grade" game object.
-3. Set the *Mesh* property of the model component to the *quad.dae* file.
+1. Export the model as a Collada file called *`quad.dae`* and drag it into your Defold project.
+2. Open *`main.collection`* and create a new game object called "`grade`".
+3. Add a Model component to the "`grade`" game object.
+3. Set the *Mesh* property of the model component to the *`quad.dae`* file.
 
 Leave the game object unscaled at origin. Later, when we render the quad we will project it so it fills the whole screen. But first we need a material and shader programs for the quad:
 
-1. Create a new material and call it *grade.material* by right clicking *main* in the *Asset* view and selecting <kbd>New ▸ Material</kbd>.
-2. Create a vertex shader program called *grade.vp* and a fragment shader program called *grade.fp* by right clicking *main* in the *Asset* view and selecting <kbd>New ▸ Vertex program</kbd> and <kbd>New ▸ Fragment program</kbd>.
+1. Create a new material and call it *`grade.material`* by right clicking *main* in the *Asset* view and selecting <kbd>New ▸ Material</kbd>.
+2. Create a vertex shader program called *`grade.vp`* and a fragment shader program called *`grade.fp`* by right clicking *main* in the *Asset* view and selecting <kbd>New ▸ Vertex program</kbd> and <kbd>New ▸ Fragment program</kbd>.
 3. Open *grade.material* and set the *Vertex program* and *Fragment program* properties to the new shader program files.
-4. Add a *Vertex constant* named "view_proj" of type `CONSTANT_TYPE_VIEWPROJ`. This is the view and projection matrix used in the vertex program for the quad vertices.
-5. Add a *Sampler* called "original". This will be used to sample pixels from the off-screen render target color buffer.
-6. Add a *Tag* called "grade". We will make a new *render predicate* in the render script matching this tag to draw the quad.
+4. Add a *Vertex constant* named "`view_proj`" of type `CONSTANT_TYPE_VIEWPROJ`. This is the view and projection matrix used in the vertex program for the quad vertices.
+5. Add a *Sampler* called "`original`". This will be used to sample pixels from the off-screen render target color buffer.
+6. Add a *Tag* called "`grade`". We will make a new *render predicate* in the render script matching this tag to draw the quad.
 
    ![grade.material](../images/grading/grade_material.png)
 
-7. Open *main.collection*, select the model component in game object "grade" and set its *Material* property to "/main/grade.material".
+7. Open *`main.collection`*, select the model component in game object "`grade`" and set its *Material* property to "`/main/grade.material`".
 
    ![model properties](../images/grading/model_properties.png)
 
@@ -180,7 +180,7 @@ Now we have the quad model in place with its material and shaders. We just have 
 
 ## Texturing with the off-screen buffer
 
-We need to add a render predicate to the render script so we can draw the quad model. Open *grade.render_script* and edit the `init()` function:
+We need to add a render predicate to the render script so we can draw the quad model. Open *`grade.render_script`* and edit the `init()` function:
 
 ```lua
 function init(self)
@@ -193,7 +193,7 @@ function init(self)
     ...
 end
 ```
-1. Add a new predicate matching the "grade" tag that we set in *grade.material*.
+1. Add a new predicate matching the "grade" tag that we set in *`grade.material`*.
 
 After the render target's color buffer has been filled in `update()` we set up a view and a projection that make the quad model fill the whole screen. We then use the render target's color buffer as the quad's texture:
 
@@ -219,8 +219,8 @@ end
 1. Clear the frame buffer. Note that the previous call to `render.clear()` affects the render target, not the screen frame buffer.
 2. Set the viewport to match the window size.
 3. Set the view to the identity matrix. This means camera is at origin looking straight along the Z axis. Also set the projection to the identity matrix causing the the quad to be projected flat across the whole screen.
-4. Set texture slot 0 to the color buffer of the render target. We have sampler "original" at slot 0 in our *grade.material* so the fragment shader will sample from the render target.
-5. Draw the predicate we created matching any material with the tag "grade". The quad model uses *grade.material* which sets that tag---thus the quad will be drawn.
+4. Set texture slot 0 to the color buffer of the render target. We have sampler "original" at slot 0 in our *`grade.material`* so the fragment shader will sample from the render target.
+5. Draw the predicate we created matching any material with the tag "grade". The quad model uses *`grade.material`* which sets that tag---thus the quad will be drawn.
 6. After drawing, disable texture slot 0 since we are done drawing with it.
 
 Now let's run the game and see the result:
@@ -261,15 +261,15 @@ The resulting texture contains 16 cells (one for each blue color intensity) and 
 
 To look up a color is a matter of checking the blue component and figure out which cell to pick the red and green values from. The formula for finding the cell with the right red-green color set is simple:
 
-$$
+```math
 cell = \left \lfloor{B \times (N - 1)} \right \rfloor
-$$
+```
 
 Here `B` is the blue component value between 0 and 1 and `N` is the total number of cells. In our case the cell number will be in the range `0`--`15` where cell `0` contains all colors with the blue component at `0` and cell `15` all colors with the blue component at `1`.
 
 For example, the RGB value `(0.63, 0.83, 0.4)` is found in the cell containing all the colors with a blue value of `0.4`, which is cell number 6. Knowing that, the lookup of the final texture coordinates based on the green and red values is straightforward:
 
-![lut lookup](../images/grading/lut_lookup.png)
+![lookup table](../images/grading/lut_lookup.png)
 
 Note that we need to treat red and green values `(0, 0)` as being in the *center* of the bottom left pixel and the values `(1.0, 1.0)` as being in the *center* of the top right pixel.
 
@@ -279,7 +279,7 @@ The reason we read starting at the center of the lower left pixel and up to the 
 
 When sampling at these specific coordinates on the texture we see that we end up right between 4 pixels. So what color value will GL tell us that point has?
 
-![lut filtering](../images/grading/lut_filtering.png)
+![lookup table filtering](../images/grading/lut_filtering.png)
 
 The answer depends on how we have specified the sampler's *filtering* in the material.
 
@@ -293,21 +293,21 @@ By using linear filtering we thus eliminate color quantization and get very good
 
 Let's implement the texture lookup in the fragment shader:
 
-1. Open *grade.material*.
-2. Add a second sampler called "lut" (for lookup table).
-3. Set the *Filter min* property to `FILTER_MODE_MIN_LINEAR` and the *Filter mag* property to `FILTER_MODE_MAG_LINEAR`.
+1. Open *`grade.material`*.
+2. Add a second sampler called "`lut`" (for lookup table).
+3. Set the *`Filter min`* property to `FILTER_MODE_MIN_LINEAR` and the *`Filter mag`* property to `FILTER_MODE_MAG_LINEAR`.
 
-    ![lut sampler](../images/grading/material_lut_sampler.png)
+    ![lookup table sampler](../images/grading/material_lut_sampler.png)
 
-4. Download the following lookup table texture (*lut16.png*) and add it to your project.
+4. Download the following lookup table texture (*`lut16.png`*) and add it to your project.
 
-    ![16 colors lut lookup table](../images/grading/lut16.png)
+    ![16 colors lookup table](../images/grading/lut16.png)
 
-5. Open *main.collection* and set the *lut* texture property to the downloaded lookup texture.
+5. Open *`main.collection`* and set the *`lut`* texture property to the downloaded lookup texture.
 
-    ![quad model lut](../images/grading/quad_lut.png)
+    ![quad model lookup table](../images/grading/quad_lut.png)
 
-6. Finally, open *grade.fp* so we can add support for color lookup:
+6. Finally, open *`grade.fp`* so we can add support for color lookup:
 
     ```glsl
     varying mediump vec4 position;
@@ -368,31 +368,31 @@ To get better blue channel resolution, we can implement the interpolation oursel
 
 So, we should read from two cells:
 
-$$
+```math
 cell_{low} = \left \lfloor{B \times (N - 1)} \right \rfloor
-$$
+```
 
 and:
 
-$$
+```math
 cell_{high} = \left \lceil{B \times (N - 1)} \right \rceil
-$$
+```
 
 Then we sample color values from each of these cells and interpolate the colors linearly, according to the formula:
 
-$$
+```math
 color = color_{low} \times (1 - C_{frac}) + color_{high} \times C_{frac}
-$$
+```
 
 Here `color`~low~ is the color sampled from the lower (leftmost) cell and `color`~high~ is the color sampled from the higher (rightmost) cell. The GLSL function `mix()` performs this linear interpolation for us.
 
-The value `C`~frac~ above is the fractional part of the blue channel value scaled to the `0`--`15` color range:
+The value `C~frac~` above is the fractional part of the blue channel value scaled to the `0`--`15` color range:
 
-$$
+```math
 C_{frac} = B \times (N - 1) - \left \lfloor{B \times (N - 1)} \right \rfloor
-$$
+```
 
-Again, there is a GLSL function that gives us the fractional part of a value. It's called `frac()`. The final implementation in the fragment shader (*grade.fp*) is quite straightforward:
+Again, there is a GLSL function that gives us the fractional part of a value. It's called `frac()`. The final implementation in the fragment shader (*`grade.fp`*) is quite straightforward:
 
 ```glsl
 varying mediump vec4 position;
@@ -432,6 +432,7 @@ void main()
     gl_FragColor = graded_color;
 }
 ```
+
 1. Calculate the two adjacent cells to read from.
 2. Calculate two separate lookup positions, one for each cell.
 3. Sample the two colors from the cell positions.
@@ -449,11 +450,11 @@ Okay, that was a lot of work to draw something that looks exactly like the origi
 2. Open the screenshot in your favorite image manipulation program.
 3. Apply any number of color adjustments (brightness, contrast, color curves, white balance, exposure etc, etc).
 
-    ![world in Affinity](../images/grading/world_graded_affinity.png)
+![world in Affinity](../images/grading/world_graded_affinity.png)
 
-4. Apply the same color adjustments to the lookup table texture file (*lut16.png*).
+4. Apply the same color adjustments to the lookup table texture file (*`lut16.png`*).
 5. Save the color adjusted lookup table texture file.
-6. Replace the texture *lut16.png* used in your Defold project with the color adjusted one.
+6. Replace the texture *`lut16.png`* used in your Defold project with the color adjusted one.
 7. Run the game!
 
 ![world graded](../images/grading/world_graded.png)

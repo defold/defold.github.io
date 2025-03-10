@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Optimizing runtime speed","Reduce script execution time","Use reactive code patterns","Reduce garbage collection","Pre-hash message and action ids","Prefer and cache URLs","Reduce time it takes to render a frame","Reduce scene graph complexity","Frustum culling"]
+toc: ["Optimizing runtime speed","Reduce script execution time","Use reactive code patterns","Reduce garbage collection","Prehash message and action ids","Prefer and cache URLs","Reduce time it takes to render a frame","Reduce scene graph complexity","Frustum culling"]
 title: Optimizing runtime performance of a Defold game
 brief: This manual describes how to optimize a Defold game to run at a stable high frame rate.
 ---
@@ -14,13 +14,13 @@ Before trying to optimize a game with the goal to make it run at a stable high f
 Reducing script execution time is needed if the profiler shows high values for the `Script` scope. As a general rule of thumb you should of course try to run as little code as possible every frame. Running a lot of code in `update()` and `on_input()` every frame is likely to have an impact on your game's performance, especially on low end devices. Some guidelines are:
 
 ### Use reactive code patterns
-Don't poll for changes if you can get a callback. Don't manually animate something or perform a task that can be handed over to the engine (eg go.animate vs manually animating something).
+Don't poll for changes if you can get a callback. Don't manually animate something or perform a task that can be handed over to the engine (e.g. `go.animate)()` vs manually animating something).
 
 ### Reduce garbage collection
 If you create loads of short lived objects such as Lua tables every frame this will eventually trigger the garbage collector of Lua. When this happens it can manifest itself as small hitches/spikes in frame time. Re-use tables where you can and really try to avoid creating Lua tables inside loops and similar constructs if possible.
 
-### Pre-hash message and action ids
-If you do a lot of message handling or have many input events to deal with it is recommended to pre-hash the strings. Consider this piece of code:
+### Prehash message and action ids
+If you do a lot of message handling or have many input events to deal with it is recommended to prehash the strings. Consider this piece of code:
 
 ```
 function on_message(self, message_id, message, sender)
@@ -77,7 +77,7 @@ Reducing the time it takes to render a frame is needed if the profiler shows hig
 
 * Reduce draw calls - Read more about reducing draw calls in [this forum post](https://forum.defold.com/t/draw-calls-and-defold/4674)
 * Reduce overdraw
-* Reduce shader complexity - Read up on GLSL optimizations in [this Kronos article](https://www.khronos.org/opengl/wiki/GLSL_Optimizations). You can also modify the default shaders used by Defold (found in `builtins/materials`) and reduce shader precision to gain some speed on low end devices. All shaders are using `highp` precision and a change to for instance `mediump` can in some cases improve performance slightly.
+* Reduce shader complexity - Read up on GLSL optimizations in [this Khronos article](https://www.khronos.org/opengl/wiki/GLSL_Optimizations). You can also modify the default shaders used by Defold (found in `builtins/materials`) and reduce shader precision to gain some speed on low end devices. All shaders are using `highp` precision and a change to for instance `mediump` can in some cases improve performance slightly.
 
 ## Reduce scene graph complexity
 Reducing the scene graph complexity is needed if the profiler shows high values in the `GameObject` scope and more specifically for the `UpdateTransform` sample. Some actions to take:

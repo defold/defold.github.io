@@ -19,7 +19,7 @@ Compatible OpenJDK 21 mirrors (from Defold 1.9.6):
 * [OpenJDK 21 by Microsoft](https://docs.microsoft.com/en-us/java/openjdk/download#openjdk-21)
 * [OpenJDK 21 by Adoptium Working Group](https://github.com/adoptium/temurin21-binaries/releases) / [Adoptium.net](https://adoptium.net/)
 
-If you are on Windows you want the .msi file installer for OpenJDK.
+If you are on Windows you want the `.msi` file installer for OpenJDK.
 
 ## Usage
 
@@ -157,7 +157,7 @@ Available commands:
 : Delete all files in the build directory.
 
 `build`
-: Builds all project data. Add the `--archive` option to build a data archive file ("game.darc" in the build directory).
+: Builds all project data. Add the `--archive` option to build a data archive file ("`game.darc`" in the build directory).
 
 `bundle`
 : Creates a platform specific application bundle. Bundling requires that a built archive is present (`build` with the `--archive` option) and that a target platform is specified (with the `--platform` option). Bob creates the bundle in the output directory unless a different directory is specified with the `--bundle-output` option. The bundle is named according to the project name setting in *game.project*. The `--variant` specifies which type of executable to build when bundling and it together with the `--strip-executable` option replaces the `--debug` option. If no `--variant` is specified you will get a release version of the engine (stripped of symbols on Android and iOS). Setting `--variant` to debug and omitting `--strip-executable` yields the same type of executable as `--debug` used to do.

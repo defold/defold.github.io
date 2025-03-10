@@ -26,7 +26,7 @@ Height
 : The pixel height of the qualifier.
 
 Device Models
-: A comma separated list of device models. The device model matches the start of the device model name, e.g. `iPhone10` will match "iPhone10,\*" models. Model names with commas should be enclosed in quotes, i.e. `"iPhone10,3", "iPhone10,6"` matches iPhone X models (see https://www.theiphonewiki.com/wiki/Models). Note that the only platforms reporting a device model when calling `sys.get_sys_info()` is Android and iOS. Other platforms return an empty string and will therefore never pick a display profile that has a device model qualifier.
+: A comma separated list of device models. The device model matches the start of the device model name, e.g. `iPhone10` will match "iPhone10,\*" models. Model names with commas should be enclosed in quotes, i.e. `"iPhone10,3", "iPhone10,6"` matches iPhone X models (see [iPhone wiki](https://www.theiphonewiki.com/wiki/Models)). Note that the only platforms reporting a device model when calling `sys.get_sys_info()` is Android and iOS. Other platforms return an empty string and will therefore never pick a display profile that has a device model qualifier.
 
 ![New display profiles](../images/gui-layouts/new_profiles.png)
 
@@ -56,7 +56,7 @@ A layout cannot delete or create new nodes, only override properties. If you nee
 
 ## Dynamic profile selection
 
-The dynamic layout matcher scores each display profile qualifier according to the following rules:
+The dynamic layout matching scores each display profile qualifier according to the following rules:
 
 1. If there is no device model set, or the device model matches, a score (S) is calculated for the qualifier.
 
@@ -97,4 +97,4 @@ function on_message(self, message_id, message)
 end
 ```
 
-When orientation is switched, the GUI layout manager will automatically rescale and reposition GUI nodes according to your layout and node properties. In-game content, however, is rendered in a separate pass (by default) with a stretch-fit projection into the current window. To change this behavior, either supply your own modified render script, or use a camera [library](/assets/).
+When orientation is switched, the GUI layout manager will automatically scale and reposition GUI nodes according to your layout and node properties. In-game content, however, is rendered in a separate pass (by default) with a stretch-fit projection into the current window. To change this behavior, either supply your own modified render script, or use a camera [library](/assets/).

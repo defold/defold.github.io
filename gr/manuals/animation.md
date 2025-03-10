@@ -29,7 +29,7 @@ brief: Αυτό το εγχειρίδιο περιγράφει την υποστ
 
   Για λεπτομέρειες σχετικά με τον τρόπο εισαγωγής δεδομένων 3D σε ένα μοντέλο για κινούμενα σχέδια, ανατρέξτε στο [Model documentation](/manuals/model).
 
-  ![Blender animation](/manuals/images/animation/blender_animation.png){.inline srcset="images/animation/blender_animation@2x.png 2x"}
+  ![Blender animation](/manuals/images/animation/blender_animation.png)
   ![Wiggle loop](/manuals/images/animation/suzanne.gif)
 
 
@@ -37,7 +37,7 @@ brief: Αυτό το εγχειρίδιο περιγράφει την υποστ
 
 Όλες οι αριθμητικές ιδιότητες (numbers, vector3, vector4 and quaterions) και οι σταθερές shader μπορούν να κινούνται με το ενσωματωμένο σύστημα κινούμενης εικόνας, χρησιμοποιώντας τη συνάρτηση  `go.animate()`. η μηχανή θα "tween" ιδιότητες αυτόματα για εσάς σύμφωνα με δεδομένες λειτουργίες αναπαραγωγής και λειτουργίες χαλάρωσης. Μπορείτε επίσης να καθορίσετε προσαρμοσμένες λειτουργίες χαλάρωσης.
 
-  ![Property animation](/manuals/images/animation/property_animation.png){.inline srcset="images/animation/property_animation@2x.png 2x"}
+  ![Property animation](/manuals/images/animation/property_animation.png)
   ![Bounce loop](/manuals/images/animation/bounce.gif)
 
 ## Αναπαραγωγή κινούμενων εικόνων

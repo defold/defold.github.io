@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Debugging native code","Use a debugger","Use print debugging","Analyze a crash log","Getting the crash log from a device","Symbolicate a callstack","Uploading symbols to Google Play","Symbolicate an Android callstack","Symbolicate an iOS callstack"]
+toc: ["Debugging native code","Use a debugger","Use print debugging","Analyze a crash log","Getting the crash log from a device","Symbolicate a callstack","Uploading symbols to Google Play","Symbolicate an Android callstack"]
 title: Debugging native code in Defold
 brief: This manual explains how to debug native code in Defold.
 ---
@@ -44,7 +44,7 @@ Each tool can debug certain platforms:
 
 ## Use print debugging
 
-The simplest way to debug your native code is to use [print debugging](http://en.wikipedia.org/wiki/Debugging#Techniques). Use the functions in the [dmLog namespace](/ref/stable/dmLog/) to watch variables or indicate the flow of execution. Using any of the log functions will print to the *Console* view in the editor and to the [game log](/manuals/debugging-game-and-system-logs).
+The simplest way to debug your native code is to use [print debugging](http://en.wikipedia.org/wiki/Debugging#Techniques). Use the functions in the [`dmLog` namespace](/ref/stable/dmLog/) to watch variables or indicate the flow of execution. Using any of the log functions will print to the *Console* view in the editor and to the [game log](/manuals/debugging-game-and-system-logs).
 
 
 ## Analyze a crash log
@@ -102,23 +102,29 @@ You can [upload the debug symbols to Google Play](https://developer.android.com/
 
 1. Get the engine from your build folder
 
+```sh
 	$ ls <project>/build/<platform>/[lib]dmengine[.exe|.so]
+```
 
 1. Unzip to a folder:
 
+```sh
 	$ unzip dmengine.apk -d dmengine_1_2_105
+```
 
 1. Find the callstack address
 
 	E.g. in the non symbolicated callstack it could look like this
 
-	#00 pc 00257224 libmy_game_name.so
+	`#00 pc 00257224 libmy_game_name.so`
 
-	Where *00257224* is the address
+	Where *`00257224`* is the address
 
 1. Resolve the address
 
+```sh
     $ arm-linux-androideabi-addr2line -C -f -e dmengine_1_2_105/lib/armeabi-v7a/libdmengine.so _address_
+```
 
 Note: If you get hold of a stack trace from the [Android logs](/manuals/debugging-game-and-system-logs), you might be able to symbolicate it using [ndk-stack](https://developer.android.com/ndk/guides/ndk-stack.html)
 
@@ -126,24 +132,34 @@ Note: If you get hold of a stack trace from the [Android logs](/manuals/debuggin
 
 1. If you are using Native Extensions, the server can provide the symbols (.dSYM) for you (pass `--with-symbols` to bob.jar)
 
+```sh
 	$ unzip <project>/build/arm64-darwin/build.zip
 	# it will produce a Contents/Resources/DWARF/dmengine
+```
 
 1. If you're not using Native Extensions, download the vanilla symbols:
 
+```sh
 	$ wget http://d.defold.com/archive/<sha1>/engine/arm64-darwin/dmengine.dSYM
+```
 
 1. Symbolicate using load address
 
 	For some reason, simply putting the address from the callstack doesn't work (i.e. load address 0x0)
 
+```sh
 		$ atos -arch arm64 -o Contents/Resources/DWARF/dmengine 0x1492c4
+```
 
 	# Neither does specifying the load address directly
 
+```sh
 		$ atos -arch arm64 -o MyApp.dSYM/Contents/Resources/DWARF/MyApp -l0x100000000 0x1492c4
+```
 
 	Adding the load address to the address works:
 
+```sh
 		$ atos -arch arm64 -o MyApp.dSYM/Contents/Resources/DWARF/MyApp 0x1001492c4
 		dmCrash::OnCrash(int) (in MyApp) (backtrace_execinfo.cpp:27)
+```

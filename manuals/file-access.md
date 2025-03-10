@@ -79,7 +79,7 @@ File and folder locations can be divided into three categories:
 ### How to save and load application specific files
 When saving and loading application specific files such as high scores, user settings and game state it is recommended to do so in a location provided by the operating system and intended specifically for this purpose. You can use [`sys.get_save_file()`](https://defold.com/ref/stable/sys/#sys.get_save_file:application_id-file_name) to get the OS specific absolute path to a file. Once you have the absolute path you can use the `sys.*`, `io.*` and `os.*` functions (see above).
 
-[Check the example showing how to use sys.save() and sys.load()](/examples/file/sys_save_load/).
+[Check the example showing how to use `sys.save()` and `sys.load()`](/examples/file/sys_save_load/).
 
 ### How to access files bundled with the application
 You can include files with your application using bundle resources and custom resources.
@@ -129,7 +129,7 @@ For security reasons browsers (and by extension any JavaScript running in a brow
 
 
 ### System file access
-Access to system files may be restricted by the operating system for security reasons. You can use the [`extension-directiories`](https://defold.com/assets/extensiondirectories/) native extension to get the absolute path to some common system directories (ie documents, resource, temp). Once you have the absolute path of these files you can use the `io.*` and `os.*` functions to access the files (see above).
+Access to system files may be restricted by the operating system for security reasons. You can use the [`extension-directories`](https://defold.com/assets/extensiondirectories/) native extension to get the absolute path to some common system directories (ie documents, resource, temp). Once you have the absolute path of these files you can use the `io.*` and `os.*` functions to access the files (see above).
 
 <div class='sidenote' markdown='1'>
 For security reasons browsers (and by extension any JavaScript running in a browser) is prevented from accessing system files. File operations in HTML5 builds in Defold still work, but only on a "virtual file system" using the IndexedDB API in the browser. What this means is that there is no way to access system files in HTML5 builds.

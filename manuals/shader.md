@@ -17,7 +17,7 @@ This manual describes how Defold's rendering pipeline interfaces with GPU shader
 * See the [Material manual](/manuals/material) for details on materials.
 * See the [Compute manual](/manuals/compute) for details on compute programs.
 
-Specifications of OpenGL ES 2.0 (OpenGL for Embedded Systems) and OpenGL ES Shading Language can be found at https://www.khronos.org/registry/gles/
+Specifications of OpenGL ES 2.0 (OpenGL for Embedded Systems) and OpenGL ES Shading Language can be found at [Khronos OpenGL Registry](https://www.khronos.org/registry/gles/).
 
 Observe that on desktop computers it is possible to write shaders using features not available on OpenGL ES 2.0. Your graphics card driver may happily compile and run shader code that will not work on mobile devices.
 
@@ -72,7 +72,7 @@ Constants
   - `CONSTANT_TYPE_WORLD` is the *world matrix* that maps from an object’s local coordinate space into world space.
   - `CONSTANT_TYPE_VIEW` is the *view matrix* that maps from world space to camera space.
   - `CONSTANT_TYPE_PROJECTION` is the *projection matrix* that maps from camera to screen space.
-  - Pre multiplied $world * view$, $view * projection$ and $world * view$ matrices are also available.
+  - Premultiplied $world * view$, $view * projection$ and $world * view$ matrices are also available.
   - `CONSTANT_TYPE_USER` is a `vec4` type constant that you can use as you wish.
 
   The [Material manual](/manuals/material) explains how to specify constants.
@@ -184,7 +184,7 @@ All members in the uniform block is exposed to materials and components as indiv
 
 ### Built-in Variables
 
-In fragment shaders, gl_FragColor is deprecated starting with version 140. Use `out` instead:
+In fragment shaders, `gl_FragColor` is deprecated starting with version 140. Use `out` instead:
 
 ```glsl
 // instead of:
@@ -259,7 +259,7 @@ uniform fs_uniforms
 
 void main()
 {
-    // Pre-multiply alpha since all runtime textures already are
+    // Premultiply alpha since all runtime textures already are
     vec4 tint_pm = vec4(tint.xyz * tint.w, tint.w);
     color_out = texture(texture_sampler, var_texcoord0.xy) * tint_pm;
 }
@@ -425,7 +425,7 @@ void main()
 1. The varying texture coordinate variable is declared. The value of this variable will be interpolated for each fragment between the values set for each vertex in the shape.
 2. A `sampler2D` uniform variable is declared. The sampler, together with the interpolated texture coordinates, is used to perform texture lookup so the sprite can be textured properly. Since this is a sprite, the engine will assign this sampler to the image set in the sprite's *Image* property.
 3. A constant of type `CONSTANT_TYPE_USER` is defined in the material and declared as a `uniform`. Its value is used to allow color tinting of the sprite. The default is pure white.
-4. The color value of the tint gets pre-multiplied with its alpha value since all runtime textures already contain pre-multiplied alpha.
+4. The color value of the tint gets premultiplied with its alpha value since all runtime textures already contain premultiplied alpha.
 5. Sample the texture at the interpolated coordinate and return the sampled value.
 6. `gl_FragColor` is set to the output color for the fragment: the diffuse color from the texture multiplied with the tint value.
 

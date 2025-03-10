@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Dźwięk","Tworzenie komponentu dźwięku","Odtwarzanie dźwięku","Zatrzymywanie dźwięku","Wzmocnienie","Grupy dźwiękowe","Filtrowanie dźwięków","Manipulacja w czasie rzeczywistym"]
+toc: ["Dźwięk","Tworzenie komponentu dźwięku","Odtwarzanie dźwięku","Zatrzymywanie dźwięku","Wzmocnienie","Grupy dźwiękowe","Konfiguracja projektu"]
 title: Dźwięk w Defoldzie
 brief: Ta instrukcja wyjaśnia jak można importować i obsługiwać dźwięki w Defoldzie.
 ---
@@ -120,9 +120,9 @@ Nie należy pisać kodu, który polega na wartości typu string grupy dźwiękow
 
 Wszystkie wartości są liniowe w zakresie od 0 do 1.0 (0 dB). Aby przeliczyć na decybele, wystarczy użyć standardowej formuły:
 
-$$
+```math
 db = 20 \times \log \left( gain \right)
-$$
+```
 
 ```lua
 for i, group_hash in ipairs(sound.get_groups()) do

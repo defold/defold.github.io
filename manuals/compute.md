@@ -65,7 +65,7 @@ The new compute will open in the *Compute Editor*.
 The compute file contains the following information:
 
 Compute Program
-: The compute shader program file (*.cp*) to use. The shader operates on "abstract work items", meaning that there is no fixed definition of the input and output data types. It is up to the programmer to define what the compute shader should produce.
+: The compute shader program file (*`.cp`*) to use. The shader operates on "abstract work items", meaning that there is no fixed definition of the input and output data types. It is up to the programmer to define what the compute shader should produce.
 
 Constants
 : Uniforms that will be passed to the compute shader program. See below for a list of available constants.
@@ -222,7 +222,7 @@ function update(self)
 end
 ```
 
-## Compatability
+## Compatibility
 
 Defold currently supports compute shaders in the following graphics adapters:
 

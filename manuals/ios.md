@@ -13,7 +13,7 @@ brief: This manual explains how to build and run games and apps on iOS devices i
 Bundling a game for iOS is available only on Mac version of the Defold Editor.
 </div>
 
-iOS requires that _any_ app that you build and want to run on your phone or tablet _must_ be signed with an Apple-issued certificate and provisioning profile. This manual explains the steps involved in bundling your game for iOS. During development, running your game through the [development app](/manuals/dev-app) is often preferred since it allows you to hot reload content and code wirelessly directly to your device.
+iOS requires that _any_ app that you build and want to run on your phone or tablet _must_ be signed with an Apple-issued certificate and provisioning profile. This manual explains the steps involved in bundling your game for iOS. During development, running your game through the [development app](/manuals/dev-app) is often preferred since it allows you to hot reload content and code directly to your device.
 
 ## Apple's code signing process
 
@@ -95,10 +95,10 @@ When you have the code signing identity and provisioning profile, you are ready 
 
 ![Signing iOS bundle](../images/ios/sign_bundle.png)
 
-Select your code signing identity and browse for your mobile provisioning file. Select which architectures (32 bit, 64 bit and the iOS simulator) to bundle for as well as the variant (Debug or Release). You can optionally untick the `Sign application` checkbox to skip the signing process and then manually sign at a later stage.
+Select your code signing identity and browse for your mobile provisioning file. Select which architectures (32 bit, 64 bit and the iOS simulator) to bundle for as well as the variant (Debug or Release). You can optionally uncheck the `Sign application` checkbox to skip the signing process and then manually sign at a later stage.
 
 <div class='important' markdown='1'>
-You **must** untick the `Sign application` checkbox when testing your game on the iOS simulator. You will be able to install the application but it will not boot.
+You **must** uncheck the `Sign application` checkbox when testing your game on the iOS simulator. You will be able to install the application but it will not boot.
 </div>
 
 Press *Create Bundle* and you will then be prompted to specify where on your computer the bundle will be created.
@@ -152,7 +152,7 @@ Select the image you previously added to `Assets.xcassets` from the Image dropdo
 
 ![](../images/ios/xcode_storyboard_select_image.png)
 
-Position the image and make any other adjustments you need, perhaps adding a Label or some other UI element. When you are done set the active scheme to "Build -> Any iOS Device (arm64, armv7)"(or "Generic iOS Device") and select Product -> Build. Wait for the build process to finish.
+Position the image and make any other adjustments you need, perhaps adding a Label or some other UI element. When you are done set the active scheme to "Build -> Any iOS Device (`arm64`, `armv7`)"(or "Generic iOS Device") and select Product -> Build. Wait for the build process to finish.
 
 <div class='sidenote' markdown='1'>
 If you have only `arm64` option in "Any iOS Device (arm64)" change `iOS Deployment target` to 10.3 in "Project -> Basic -> Deployment" settings. It will make your storyboard compatible with `armv7` devices (for example iPhone5c)  
@@ -226,8 +226,8 @@ The App Store icon does not have to be referenced from *game.project*. It is aut
 The editor writes an *.ipa* file which is an iOS application bundle. To install the file on your device, you can use one of the following tools:
 
 * Xcode via the "Devices and Simulators" window
-* [ios-deploy](https://github.com/ios-control/ios-deploy) command line tool
-* [Apple Configurator 2](https://apps.apple.com/us/app/apple-configurator-2/) from the macOS App Store
+* [`ios-deploy`](https://github.com/ios-control/ios-deploy) command line tool
+* [`Apple Configurator 2`](https://apps.apple.com/us/app/apple-configurator-2/) from the macOS App Store
 * iTunes
 
 You can also use the `xcrun simctl` command line tool to work with the iOS simulators available via Xcode:
@@ -260,9 +260,9 @@ The Defold game engine uses encryption for the following purposes:
 * Making calls over secure channels (i.e. HTTPS and SSL)
 * Copyright protection of Lua code (to prevent duplication)
 
-These uses of encyption in the Defold engine are exempt from export compliance document requirements under United States and European Union law. Most Defold projects will remain exempt, but the addition of other cryptographic methods may change this status. It is your responsiblity to ensure that your project meets the requirements of these laws and the App Store's rules. See Apple's [Export Compliance Overview](https://help.apple.com/app-store-connect/#/dev88f5c7bf9) for more information.
+These uses of encryption in the Defold engine are exempt from export compliance document requirements under United States and European Union law. Most Defold projects will remain exempt, but the addition of other cryptographic methods may change this status. It is your responsibility to ensure that your project meets the requirements of these laws and the App Store's rules. See Apple's [Export Compliance Overview](https://help.apple.com/app-store-connect/#/dev88f5c7bf9) for more information.
 
-If you believe your project is exempt, set the [ITSAppUsesNonExemptEncryption](https://developer.apple.com/documentation/bundleresources/information-property-list/itsappusesnonexemptencryption) key to `False` in the project's `Info.plist` see [Application Manifests](/manuals/extensions-manifest-merge-tool) for more details.
+If you believe your project is exempt, set the [`ITSAppUsesNonExemptEncryption`](https://developer.apple.com/documentation/bundleresources/information-property-list/itsappusesnonexemptencryption) key to `False` in the project's `Info.plist` see [Application Manifests](/manuals/extensions-manifest-merge-tool) for more details.
 
 ## FAQ
 {% include shared/en/ios-faq.md %}

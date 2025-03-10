@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["HTML5 development","Heap size","Testing HTML5 build","Creating HTML5 bundle","Known issues and limitations","Customizing HTML5 bundle","Downscale Fit and Fit","Stretch","No Scale","Tokens","Query arguments in the URL","Optimizations","FAQ"]
+toc: ["HTML5 development","Heap size","Testing HTML5 build","Extra parameters","File operations in HTML5","Passing arguments to an HTML5 game","Engine arguments"]
 title: Defold development for the HTML5 platform
 brief: This manual describes the process of creating HTML5 game, along with known issues and limitations.
 ---
@@ -30,20 +30,29 @@ For testing, HTML5 build needs an HTTP server. Defold creates one for you if you
 
 If you want to test your bundle, just upload it to your remote HTTP server or create a local server, for example, using python in the bundle folder.
 Python 2:
-> python -m SimpleHTTPServer
+
+```sh
+python -m SimpleHTTPServer
+```
 
 Python 3:
-> python -m http.server
+
+```sh
+python -m http.server
+```
 
 or
-> python3 -m http.server
+
+```sh
+python3 -m http.server
+```
 
 <div class='important' markdown='1'>
 You can't test the HTML5 bundle by opening `index.html` file in a browser. This requires HTTP server.
 </div>
 
 <div class='important' markdown='1'>
-If you see a "wasm streaming compile failed: TypeError: Failed to execute ‘compile’ on ‘WebAssembly’: Incorrect response MIME type. Expected ‘application/wasm’." error in the console you must make sure that your server uses the `application/wasm` MIME type for .wasm files.
+If you see a `"wasm streaming compile failed: TypeError: Failed to execute ‘compile’ on ‘WebAssembly’: Incorrect response MIME type. Expected ‘application/wasm’."` error in the console you must make sure that your server uses the `application/wasm` MIME type for `.wasm` files.
 </div>
 
 ## Creating HTML5 bundle
@@ -55,7 +64,7 @@ Creating HTML5 content with Defold is simple and follows the same pattern as all
 You can chose to include both an `asm.js` and a WebAssembly (wasm) version of the Defold engine in HTML5 bundle. In most cases it is enough to chose WebAssembly since [all modern browsers support WebAssembly](https://caniuse.com/wasm).
 
 <div class='important' markdown='1'>
-Even if you include both `asm.js` and `wasm` versions of the engine only one of them will be downloaded by the browser when launching the game. The WebAssembly version will be downloaded if the browser supports WebAssembly and the asm.js version will be used as a fallback in the rare case that WebAssembly is not supported.
+Even if you include both `asm.js` and `wasm` versions of the engine only one of them will be downloaded by the browser when launching the game. The WebAssembly version will be downloaded if the browser supports WebAssembly and the `asm.js` version will be used as a fallback in the rare case that WebAssembly is not supported.
 </div>
 
 When you click on the <kbd>Create bundle</kbd> button you will be prompted to select a folder in which to create your application. After the export process completes, you will find all of the files needed to run the application.
@@ -191,7 +200,7 @@ DEFOLD_ENGINE_ARGUMENTS
 
 If you create your custom template, you can redefine set of parameters for the engine loader. To achieve that you need to add `<script>` section and redefine values inside `CUSTOM_PARAMETERS`. 
 <div class='important' markdown='1'>
-Your custom `<script>` should be placed after `<script>` section with reference to dmloader.js but before call `EngineLoader.load` function.
+Your custom `<script>` should be placed after `<script>` section with reference to `dmloader.js` but before call `EngineLoader.load` function.
 </div>
 For example:
 
@@ -233,6 +242,12 @@ For example:
 
 'resize_window_callback':
     Function that is called when resize/orientationchanges/focus events happened
+
+'start_success':
+    Function that is called just before main is called upon successful load.
+
+'update_progress':
+    Function that is called as progress is updated. Parameter progress is updated 0-100.
 ```
 
 ## File operations in HTML5

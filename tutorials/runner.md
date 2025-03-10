@@ -154,7 +154,7 @@ Game objects
 : These are things that exist in the running game. Each game object has a location in 3D space, a rotation and scaling. It doesn't necessarily have to be visible. A game object holds any number of _components_ that adds abilities like graphics (sprites, tilemaps, models, spine models and particle effects), sounds, physics, factories (for spawning) and more. Lua _script components_ can also be added to give a game object behaviors. Each game object that exist in your games has an *id* that you need in order to communicate with it, through message passing.
 
 Collections
-: Collections do not exist by themselves in a running game but are used to enable static naming of game object and at the same time allowing multiple instances of the same game object. In practice, collections are used as containers for game objects and other collections. You can use collections much like prototypes (also known as "prefabs" or "blueprints" in other engines) of complex hiearchies of game objects and collections. At startup, the engine loads a main collection and breathes life to anything you have put inside it. By default this is the *main.collection* file in the *main* folder of your project, but you can change that in the project settings.
+: Collections do not exist by themselves in a running game but are used to enable static naming of game object and at the same time allowing multiple instances of the same game object. In practice, collections are used as containers for game objects and other collections. You can use collections much like prototypes (also known as "prefabs" or "blueprints" in other engines) of complex hierarchies of game objects and collections. At startup, the engine loads a main collection and breathes life to anything you have put inside it. By default this is the *main.collection* file in the *main* folder of your project, but you can change that in the project settings.
 
 For the time being these description probably suffices. However, a much more comprehensive dive through these things can be found in the [Building blocks manual](/manuals/building-blocks). It is a good idea to visit that manual at a later stage to get a deeper understanding on how things work in Defold.
 
@@ -195,7 +195,7 @@ end
 7. Update the object's position with the new speed.
 
 <div class='sidenote' markdown='1'>
-Defold is a fast engine core that manages your data and game objects. Any logic or behavior that you need for your game is created in the Lua language. Lua is a fast and light-weight programming language that is great for writing game logic. There are great resources available to learn the language, like the book http://www.lua.org/pil/[Programming in Lua] and the official http://www.lua.org/manual/5.3/[Lua reference manual].
+Defold is a fast engine core that manages your data and game objects. Any logic or behavior that you need for your game is created in the Lua language. Lua is a fast and light-weight programming language that is great for writing game logic. There are great resources available to learn the language, like the book [Programming in Lua](http://www.lua.org/pil/) and the official [Lua reference manual](http://www.lua.org/manual/5.3/).
 
 Defold adds a set of APIs on top of Lua, as well as a _message passing_ system that allows you to program communications between game objects. See the [Message passing manual](/manuals/message-passing) for details on how this works.
 </div>
@@ -267,7 +267,7 @@ Now we can start constructing the hero gameobject:
 Now it's time to add physics for collision to work:
 
 1. Add a *Collision Object* component to the hero game object. (Right-click the root in the *Outline* and select <kbd>Add Component</kbd>, then select "Collision Object")
-2. Right-click the new component and select <kbd>Add Shape</kbd>. Add two shapes to cover the characters's body. A sphere and a box will do.
+2. Right-click the new component and select <kbd>Add Shape</kbd>. Add two shapes to cover the character's body. A sphere and a box will do.
 3. Click the shapes and use the *Move Tool* (<kbd>Scene ▸ Move Tool</kbd>) to move the shapes into good positions.
 4. Mark the *Collision Object* component and set the *Type* property to "Kinematic".
 
@@ -288,7 +288,7 @@ Finally, create a new *hero.script* file and add it to the game object.
 ![Hero game object](../images/runner/2/hero_game_object.png)
 
 <div class='sidenote' markdown='1'>
-The reason we are handling the collision ourselves is that if we instead set the type on the character's collision object to dynamic, the engine will peform a Newtonian simulation of the bodies involved. For a game like this, such a simulation is far from optimal so instead of fighting the physics engine with various forces, we take full control.
+The reason we are handling the collision ourselves is that if we instead set the type on the character's collision object to dynamic, the engine will perform a Newtonian simulation of the bodies involved. For a game like this, such a simulation is far from optimal so instead of fighting the physics engine with various forces, we take full control.
 
 Now, to do that and handle collision properly requires a little bit of vector mathematics. A thorough explanation on how to solve kinematic collisions is given in the [Physics documentation](/manuals/physics#resolving-kinematic-collisions).
 </div>
@@ -489,7 +489,7 @@ At this point we should add physics collision for the ground:
 
 ![Ground collision](../images/runner/2/ground_collision.png)
 
-Now you should be able to try running the game (<kbd>Project ▸ Build</kbd>). The hero character should run on the ground and it should be possible to jump with the  kbd:[Space] button. If you run the game on a mobile device, you can jump by tapping on the screen.
+Now you should be able to try running the game (<kbd>Project ▸ Build</kbd>). The hero character should run on the ground and it should be possible to jump with the  <kbd>Space</kbd> button. If you run the game on a mobile device, you can jump by tapping on the screen.
 
 To make life in our game world a little less dull, we should add platforms to jump on.
 
@@ -939,6 +939,6 @@ And now we have a simple, but functional game! If you make it this far you might
 
 > Download the completed version of the project [here](../images/runner/sample-runner.zip)
 
-That concludes this introductory tutorial. Now go ahead and dive into Defold. We have lots of [manuals and tutorials](//www.defold.com/learn) prepared to guide you, and if you get stuck, your're welcome to the [forum](//forum.defold.com).
+That concludes this introductory tutorial. Now go ahead and dive into Defold. We have lots of [manuals and tutorials](//www.defold.com/learn) prepared to guide you, and if you get stuck, you're welcome to the [forum](//forum.defold.com).
 
 Happy Defolding!

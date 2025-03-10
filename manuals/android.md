@@ -9,7 +9,7 @@ brief: This manual describes how to build and run Defold applications on Android
 
 # Android development
 
-Android devices allows you to freely run your own apps on them. It is very easy to build a version of your game and copy it onto an Android device. This manual explains the steps involved in bundling your game for Android. During development, running your game through the [development app](/manuals/dev-app) is often preferred since it allows you to hot reload content and code wirelessly directly to your device.
+Android devices allows you to freely run your own apps on them. It is very easy to build a version of your game and copy it onto an Android device. This manual explains the steps involved in bundling your game for Android. During development, running your game through the [development app](/manuals/dev-app) is often preferred since it allows you to hot reload content and code directly to your device.
 
 ## Android and Google Play signing process
 
@@ -66,7 +66,7 @@ Press <kbd>Create Bundle</kbd> when you have configured the application bundle s
 
 #### Installing an APK
 
-An *.apk* file can be copied to your device with the `adb` tool, or to Google Play via the [Google Play developer console](https://play.google.com/apps/publish/).
+An *`.apk`* file can be copied to your device with the `adb` tool, or to Google Play via the [Google Play developer console](https://play.google.com/apps/publish/).
 
 {% include shared/en/android-adb.md %}
 
@@ -79,7 +79,7 @@ Success
 
 #### Installing an APK using editor
 
-You can install and launch an *.apk* file using the editor's "Install on connected device" and "Launch installed app" check-boxes in the Bundle dialog:
+You can install and launch an *`.apk`* file using the editor's "Install on connected device" and "Launch installed app" check-boxes in the Bundle dialog:
 
 ![Install and Launch APK](../images/android/install_and_launch.png)
 
@@ -87,7 +87,7 @@ For this feature to work, you will need ADB installed and *USB debugging* enable
 
 #### Installing an AAB
 
-An *.aab* file can be uploaded to Google Play via the [Google Play developer console](https://play.google.com/apps/publish/). It is also possible to generate an *.apk* file from an *.aab* file to install it locally using the [Android bundletool](https://developer.android.com/studio/command-line/bundletool).
+An *.aab* file can be uploaded to Google Play via the [Google Play developer console](https://play.google.com/apps/publish/). It is also possible to generate an *`.apk`* file from an *.aab* file to install it locally using the [Android bundletool](https://developer.android.com/studio/command-line/bundletool).
 
 ## Permissions
 
@@ -101,7 +101,7 @@ Allows using PowerManager WakeLocks to keep processor from sleeping or screen fr
 
 
 ## Using AndroidX
-AndroidX is a major improvement to the original Android Support Library, which is no longer maintained. AndroidX packages fully replace the Support Library by providing feature parity and new libraries. Most of the Android extensions in the [Asset Portal](/assets) support AndroidX. If you do not wish to use AndroidX you can explicitly disable it in favour of the old Android Support Library by creating a new app manifest file or editing an existing one and checking Use Android Support Libs.
+AndroidX is a major improvement to the original Android Support Library, which is no longer maintained. AndroidX packages fully replace the Support Library by providing feature parity and new libraries. Most of the Android extensions in the [Asset Portal](/assets) support AndroidX. If you do not wish to use AndroidX you can explicitly disable it in favour of the old Android Support Library by checking the `Use Android Support Lib` in the [application manifest](https://defold.com/manuals/app-manifest/).
 
 ![](../images/android/enable_supportlibrary.png)
 

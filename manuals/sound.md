@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Sound","Creating a sound component","Playing the sound","Gain","Sound groups","Gating sounds","Runtime manipulation"]
+toc: ["Sound","Creating a sound component","Playing the sound","Gain","Sound groups","Project configuration","Sound Streaming"]
 title: Sound in Defold
 brief: This manual explains how you bring sounds into your Defold project, play back and control them.
 ---
@@ -108,9 +108,9 @@ You should not write code that relies on the string value of a sound group since
 
 All values are linear between 0 and 1.0 (0 dB). To convert to decibel, simply use the standard formula:
 
-$$
+```math
 db = 20 \times \log \left( gain \right)
-$$
+```
 
 ```lua
 for i, group_hash in ipairs(sound.get_groups()) do

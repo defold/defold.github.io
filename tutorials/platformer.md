@@ -64,13 +64,13 @@ This is how we integrate the acceleration and velocity to move the character in 
 1. Determine the target speed based on input
 2. Calculate the difference between our current speed and the target speed
 3. Set the acceleration to work in the direction of the difference
-4. Calculate the velocity change this frame (dv is short for delta-velocity), as above:
+4. Calculate the velocity change this frame (`dv` is short for delta-velocity), as above:
 
     ```lua
     local dv = acceleration * dt
     ```
 
-5. Check if dv exceeds the intended speed difference, clamp it in that case
+5. Check if `dv` exceeds the intended speed difference, clamp it in that case
 6. Save the current velocity for later use (`self.velocity`, which right now is the velocity used the previous frame):
 
     ```lua
@@ -220,7 +220,7 @@ local jump_takeoff_speed = 550
 -- time within a double tap must occur to be considered a jump (only used for mouse/touch controls)
 local touch_jump_timeout = 0.2
 
--- pre-hashing ids improves performance
+-- prehashing ids improves performance
 local msg_contact_point_response = hash("contact_point_response")
 local msg_animation_done = hash("animation_done")
 local group_obstacle = hash("obstacle")

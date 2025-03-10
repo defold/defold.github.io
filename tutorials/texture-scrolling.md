@@ -19,25 +19,25 @@ The project is setup like this:
 
 * One subdivided 3D plane (.dae) that will be used to display the scrolling texture.
 * One model component with the 3D plane (.dae file) assigned.
-* Two 64x64 texture images (water_bg.png and water_wave.png) created to seamlessly tile are assigned in the .model properties.
+* Two 64x64 texture images (`water_bg.png` and `water_wave.png`) created to seamlessly tile are assigned in the .model properties.
 * One shader (Material + Vertex Program + Fragment Program) that is assigned to the plane model.
 * One constant set in materials and the shader.
 * One script component attached to the model game object to start the animation loop.
 
 ![](../images/texture-scrolling/model_setup.png)
 
-_Note: water_bg is assigned to tex0 slot and water_wave is set to tex1 slot. Two sampler slots are assigned in material sampler properties shown below._
+_Note: `water_bg` is assigned to `tex0` slot and `water_wave` is set to `tex1` slot. Two sampler slots are assigned in material sampler properties shown below._
 
 ![](../images/texture-scrolling/material_setup.png)
 
-_Currently tex1 will be the texture that will be scrolling so Wrap U & V are set to Repeat._
+_Currently `tex1` will be the texture that will be scrolling so Wrap U & V are set to Repeat._
 
 That is the basic setup and now we can move on to the `water_scroll.vp` (vertex) and `water_scroll.fp` (fragment) programs. You can see in the image above these are set to the material.
 
 
 ## Shader code
 
-It’s good practice to avoid doing to much calculations in the fragment program if you can avoid it so we calculate the UV offset in the vertex program before the coordinates are sent to the fragment program. We also create a constant "animation_time" with type user to the vertex constant properties set in the material (as seen above). The constant is a vector 4 but we only use the first value. If we denote this vector 4 as vector4(x,y,z,w) we will only use x value in the shader as shown below.
+It’s good practice to avoid doing to much calculations in the fragment program if you can avoid it so we calculate the UV offset in the vertex program before the coordinates are sent to the fragment program. We also create a constant "animation_time" with type user to the vertex constant properties set in the material (as seen above). The constant is a vector 4 but we only use the first value. If we denote this vector 4 as `vector4(x,y,z,w)` we will only use x value in the shader as shown below.
 
 
 ```glsl
@@ -63,7 +63,7 @@ void main()
 }
 ```
 
-The model supplies the attribute `texcoord0` which is our texture UV coordinates. We declare our vec4 uniform named animation_time and we also have two vec2 varying texcoords 0 and 1 which we pass these to the fragment program after we assign them the attribute UV coords `texcoord0` in `void main()`. As you can see `var_texcoord1` is different because this one we are offsetting before it is sent to the fragment program. Assign a vec2 so that we can `animation_time` to the x and y separately if we want. In this case we only take `texcoord0.x` and subtract our constant `animation_time.x` which when animated will offset in the negative U axis (horizontal left), we set `texcoord0.y` to keep its attribute position. EZ PZ!
+The model supplies the attribute `texcoord0` which is our texture UV coordinates. We declare our `vec4` uniform named animation_time and we also have two `vec2` varying `var_texcoord0` and `var_texcoord1` which we pass to the fragment program after we assign them the attribute UV coordinates `texcoord0` in `void main()`. As you can see `var_texcoord1` is different because this one we are offsetting before it is sent to the fragment program. Assign a `vec2` so that we can `animation_time` to the x and y separately if we want. In this case we only take `texcoord0.x` and subtract our constant `animation_time.x` which when animated will offset in the negative U axis (horizontal left), we set `texcoord0.y` to keep its attribute position.
 
 
 ```glsl
@@ -84,7 +84,7 @@ void main()
 }
 ```
 
-Now to the fragment program, we have a simple setup. Two "in" varying vec2’s that we sent from the vertex program `var_textcoord0` and `var_texcoord1` and then we supply uniforms for the sampler textures we set in our model and material they are named `tex0` and `tex1`. Then in `void main()` we create vector 4’s to assign to our textures using `texture2d()`, the images are in RGBA (red,green,blue,alpha) channel format. We assign sampler name and then the texture coordinates we want them to use. As you see in the image above "water_waves" has `var_texcoord1` assigned. this is the texture we are animating/scrolling and `var_texcoord0` assigned to water_bg we left as is. For the global reserved variable `gl_FragColor` this is where pixel colors are assigned with the same `vec4(r,g,b,a)` format. We want to combine the 2 textures together so we use addition to mix the rgb channels of each texture together, also we are not using the textures alpha channel so we assign a float value of 1.0 which equals full opacity.
+Now to the fragment program, we have a simple setup. Two "in" varying `vec2`’s that we sent from the vertex program `var_textcoord0` and `var_texcoord1` and then we supply uniforms for the sampler textures we set in our model and material they are named `tex0` and `tex1`. Then in `void main()` we create vector 4’s to assign to our textures using `texture2d()`, the images are in RGBA (red,green,blue,alpha) channel format. We assign sampler name and then the texture coordinates we want them to use. As you see in the image above "water_waves" has `var_texcoord1` assigned. this is the texture we are animating/scrolling and `var_texcoord0` assigned to `water_bg` we left as is. For the global reserved variable `gl_FragColor` this is where pixel colors are assigned with the same `vec4(r,g,b,a)` format. We want to combine the 2 textures together so we use addition to mix the rgb channels of each texture together, also we are not using the textures alpha channel so we assign a float value of 1.0 which equals full opacity.
 
 
 ## Shader animation script
@@ -102,12 +102,12 @@ end
 
 There are more than one ways of animating constant values, you can calculate delta time steps and update the constant with these values in the render script or a normal script if you wanted to. In this case we are only animating one shader and if you wanted a time step in several shaders calculating in an `update()` might be more ideal. However we will use `go.animate()` because we have a lot of functionality at our disposal. Using `go.animate()` we can animate just the x value of our constant using "animation_time.x". We also have duration, delay and easing to play with if we so choose. We can also set playback to loop or play once and cancel the animation if we needed to. These all come in very handy when animating our shaders.
 
-The `local animate` float 1.0 is our target value we are animating in "animation_time.x". In shaders for the most part we deal with normalized float values 0.0 to 1.0. Notice the default constant values in the material for our `animation_time` is (0,0,0,0) we are animating the first zero from 0.0 to 1.0. This means our offset UV coords will animate to the edge and then loop again over and over which is exactly what we want!
+The `local animate` float 1.0 is our target value we are animating in "animation_time.x". In shaders for the most part we deal with normalized float values 0.0 to 1.0. Notice the default constant values in the material for our `animation_time` is (0,0,0,0) we are animating the first zero from 0.0 to 1.0. This means our offset UV coordinates will animate to the edge and then loop again over and over which is exactly what we want!
 
 
 ## Next steps
 
-As an exercise you can try to animate the `water_bg` texcoords in the opposite direction like in the example demo!
+As an exercise you can try to animate the `water_bg` texture coordinates in the opposite direction like in the example demo!
 
 Hope this helps. If you do make something scroll please share!
 

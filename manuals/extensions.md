@@ -56,7 +56,7 @@ To create a new extension, create a folder in the project root. This folder will
 : This optional folder contains any include files.
 
 *lib*
-: This optional folder contains any compiled libraries that the extension depends on. Library files should be placed in subfolders named by `platform`, or `architecure-platform`, depending on what architectures are supported by your libraries.
+: This optional folder contains any compiled libraries that the extension depends on. Library files should be placed in subfolders named by `platform`, or `architecture-platform`, depending on what architectures are supported by your libraries.
 
   {% include shared/en/platforms.md %}
 
@@ -64,7 +64,7 @@ To create a new extension, create a folder in the project root. This folder will
 : This optional folder contains additional files used in the build or bundling process. See below for details.
 
 *res*
-: This optional folder contains any extra resources that the extension depends on. Resource files should be placed in subfolders named by `platform`, or `architecure-platform` just as the "lib" subfolders. A subfolder `common` is also allowed, containing resource files common for all platforms.
+: This optional folder contains any extra resources that the extension depends on. Resource files should be placed in subfolders named by `platform`, or `architecture-platform` just as the "lib" subfolders. A subfolder `common` is also allowed, containing resource files common for all platforms.
 
 ### Manifest files
 
@@ -86,7 +86,7 @@ Extensions are treated just like any other assets in your project and they can b
 
 ## A simple example extension
 
-Let's build a very simple extension. First, we create a new root folder *myextension* and add a file *ext.manifest* containing the name of the extension "MyExtension". Note that the name is a C++ symbol and must match the first argument to `DM_DECLARE_EXTENSION` (see below).
+Let's build a very simple extension. First, we create a new root folder *`myextension`* and add a file *`ext.manifest`* containing the name of the extension "`MyExtension`". Note that the name is a C++ symbol and must match the first argument to `DM_DECLARE_EXTENSION` (see below).
 
 ![Manifest](../images/extensions/manifest.png)
 
@@ -95,7 +95,7 @@ Let's build a very simple extension. First, we create a new root folder *myexten
 name: "MyExtension"
 ```
 
-The extension consists of a single C++ file, *myextension.cpp* that is created in the "src" folder.
+The extension consists of a single C++ file, *`myextension.cpp`* that is created in the "`src`" folder.
 
 ![C++ file](../images/extensions/cppfile.png)
 
@@ -229,12 +229,12 @@ The entry points will allow you to run code at various points in the lifecycle o
 
 The following identifiers are defined by the builder on each respective platform:
 
-* DM_PLATFORM_WINDOWS
-* DM_PLATFORM_OSX
-* DM_PLATFORM_IOS
-* DM_PLATFORM_ANDROID
-* DM_PLATFORM_LINUX
-* DM_PLATFORM_HTML5
+* `DM_PLATFORM_WINDOWS`
+* `DM_PLATFORM_OSX`
+* `DM_PLATFORM_IOS`
+* `DM_PLATFORM_ANDROID`
+* `DM_PLATFORM_LINUX`
+* `DM_PLATFORM_HTML5`
 
 ## Build server logs
 
