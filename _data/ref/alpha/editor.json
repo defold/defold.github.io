@@ -3382,7 +3382,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "HTTP response value",
+                    "doc": "HTTP response value, userdata",
                     "name": "response",
                     "types": [
                         "response"
@@ -3403,7 +3403,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Any lua value that may be represented as JSON",
+                    "doc": "Any Lua value that may be represented as JSON",
                     "name": "value",
                     "types": [
                         "any"
@@ -3427,7 +3427,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "HTTP response value",
+                    "doc": "HTTP response value, userdata",
                     "name": "response",
                     "types": [
                         "response"
@@ -3502,7 +3502,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "HTTP response value",
+                    "doc": "HTTP response value, userdata",
                     "name": "response",
                     "types": [
                         "response"
@@ -3547,7 +3547,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "HTTP response value",
+                    "doc": "HTTP response value, userdata",
                     "name": "response",
                     "types": [
                         "response"
@@ -3561,7 +3561,7 @@
             "brief": "create route definition for the editor's HTTP server",
             "description": "Create route definition for the editor's HTTP server",
             "error": "",
-            "examples": "Receive JSON and respond with JSON:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"nv\">http</span>.<span class=\"nv\">server</span>.<span class=\"nv\">route</span><span class=\"ss\">(</span>\n  <span class=\"s2\">&quot;</span><span class=\"s\">/json</span><span class=\"s2\">&quot;</span>, <span class=\"s2\">&quot;</span><span class=\"s\">POST</span><span class=\"s2\">&quot;</span>, <span class=\"s2\">&quot;</span><span class=\"s\">json</span><span class=\"s2\">&quot;</span>,\n  <span class=\"nv\">function</span><span class=\"ss\">(</span><span class=\"nv\">request</span><span class=\"ss\">)</span>\n    <span class=\"nv\">pprint</span><span class=\"ss\">(</span><span class=\"nv\">request</span><span class=\"ss\">)</span>\n    <span class=\"k\">return</span> <span class=\"mi\">200</span>\n  <span class=\"k\">end</span>\n<span class=\"ss\">)</span>\n</code></pre></div>\n\nExtract parts of the path:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"nv\">http</span>.<span class=\"nv\">server</span>.<span class=\"nv\">route</span><span class=\"ss\">(</span>\n  <span class=\"s2\">&quot;</span><span class=\"s\">/users/{user}/orders</span><span class=\"s2\">&quot;</span>,\n  <span class=\"nv\">function</span><span class=\"ss\">(</span><span class=\"nv\">request</span><span class=\"ss\">)</span>\n    <span class=\"nv\">print</span><span class=\"ss\">(</span><span class=\"nv\">request</span>.<span class=\"nv\">user</span><span class=\"ss\">)</span>\n  <span class=\"k\">end</span>\n<span class=\"ss\">)</span>\n</code></pre></div>\n\nSimple file server:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"nv\">http</span>.<span class=\"nv\">server</span>.<span class=\"nv\">route</span><span class=\"ss\">(</span>\n  <span class=\"s2\">&quot;</span><span class=\"s\">/files/{*file}</span><span class=\"s2\">&quot;</span>,\n  <span class=\"nv\">function</span><span class=\"ss\">(</span><span class=\"nv\">request</span><span class=\"ss\">)</span>\n    <span class=\"nv\">local</span> <span class=\"nv\">attrs</span> <span class=\"o\">=</span> <span class=\"nv\">editor</span>.<span class=\"nv\">external_file_attributes</span><span class=\"ss\">(</span><span class=\"nv\">request</span>.<span class=\"nv\">file</span><span class=\"ss\">)</span>\n    <span class=\"k\">if</span> <span class=\"nv\">attrs</span>.<span class=\"nv\">is_file</span> <span class=\"k\">then</span>\n      <span class=\"k\">return</span> <span class=\"nv\">http</span>.<span class=\"nv\">server</span>.<span class=\"nv\">external_file_response</span><span class=\"ss\">(</span><span class=\"nv\">request</span>.<span class=\"nv\">file</span><span class=\"ss\">)</span>\n    <span class=\"k\">elseif</span> <span class=\"nv\">attrs</span>.<span class=\"nv\">is_directory</span> <span class=\"k\">then</span>\n      <span class=\"k\">return</span> <span class=\"mi\">400</span>\n    <span class=\"k\">else</span>\n      <span class=\"k\">return</span> <span class=\"mi\">404</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"ss\">)</span>\n</code></pre></div>",
+            "examples": "Receive JSON and respond with JSON:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"nv\">http</span>.<span class=\"nv\">server</span>.<span class=\"nv\">route</span><span class=\"ss\">(</span>\n  <span class=\"s2\">&quot;</span><span class=\"s\">/json</span><span class=\"s2\">&quot;</span>, <span class=\"s2\">&quot;</span><span class=\"s\">POST</span><span class=\"s2\">&quot;</span>, <span class=\"s2\">&quot;</span><span class=\"s\">json</span><span class=\"s2\">&quot;</span>,\n  <span class=\"nv\">function</span><span class=\"ss\">(</span><span class=\"nv\">request</span><span class=\"ss\">)</span>\n    <span class=\"nv\">pprint</span><span class=\"ss\">(</span><span class=\"nv\">request</span>.<span class=\"nv\">body</span><span class=\"ss\">)</span>\n    <span class=\"k\">return</span> <span class=\"mi\">200</span>\n  <span class=\"k\">end</span>\n<span class=\"ss\">)</span>\n</code></pre></div>\n\nExtract parts of the path:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"nv\">http</span>.<span class=\"nv\">server</span>.<span class=\"nv\">route</span><span class=\"ss\">(</span>\n  <span class=\"s2\">&quot;</span><span class=\"s\">/users/{user}/orders</span><span class=\"s2\">&quot;</span>,\n  <span class=\"nv\">function</span><span class=\"ss\">(</span><span class=\"nv\">request</span><span class=\"ss\">)</span>\n    <span class=\"nv\">print</span><span class=\"ss\">(</span><span class=\"nv\">request</span>.<span class=\"nv\">user</span><span class=\"ss\">)</span>\n  <span class=\"k\">end</span>\n<span class=\"ss\">)</span>\n</code></pre></div>\n\nSimple file server:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"nv\">http</span>.<span class=\"nv\">server</span>.<span class=\"nv\">route</span><span class=\"ss\">(</span>\n  <span class=\"s2\">&quot;</span><span class=\"s\">/files/{*file}</span><span class=\"s2\">&quot;</span>,\n  <span class=\"nv\">function</span><span class=\"ss\">(</span><span class=\"nv\">request</span><span class=\"ss\">)</span>\n    <span class=\"nv\">local</span> <span class=\"nv\">attrs</span> <span class=\"o\">=</span> <span class=\"nv\">editor</span>.<span class=\"nv\">external_file_attributes</span><span class=\"ss\">(</span><span class=\"nv\">request</span>.<span class=\"nv\">file</span><span class=\"ss\">)</span>\n    <span class=\"k\">if</span> <span class=\"nv\">attrs</span>.<span class=\"nv\">is_file</span> <span class=\"k\">then</span>\n      <span class=\"k\">return</span> <span class=\"nv\">http</span>.<span class=\"nv\">server</span>.<span class=\"nv\">external_file_response</span><span class=\"ss\">(</span><span class=\"nv\">request</span>.<span class=\"nv\">file</span><span class=\"ss\">)</span>\n    <span class=\"k\">elseif</span> <span class=\"nv\">attrs</span>.<span class=\"nv\">is_directory</span> <span class=\"k\">then</span>\n      <span class=\"k\">return</span> <span class=\"mi\">400</span>\n    <span class=\"k\">else</span>\n      <span class=\"k\">return</span> <span class=\"mi\">404</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"ss\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "http.server.route",
@@ -3665,7 +3665,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "any lua value that may be represented as JSON",
+                    "doc": "any Lua value that may be represented as JSON",
                     "name": "value",
                     "types": [
                         "any"
@@ -3688,7 +3688,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "any lua value to pretty-print",
+                    "doc": "any Lua value to pretty-print",
                     "name": "value",
                     "types": [
                         "any"
