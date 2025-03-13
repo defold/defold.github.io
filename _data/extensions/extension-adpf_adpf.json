@@ -1,0 +1,169 @@
+{
+    "elements": [
+        {
+            "description": "Initialise performance hints",
+            "examples": "",
+            "name": "adpf.hint.initialize",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "target_fps_nanos",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Return true if the PerformanceHintManager API is available on the device",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Update the target fps",
+            "examples": "",
+            "name": "adpf.hint.update_target_fps",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "target_fps_nanos",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Functions and constants for interacting with the PerformanceHintManager",
+            "examples": "",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "TABLE"
+        },
+        {
+            "description": "Initialise thermal",
+            "examples": "",
+            "name": "adpf.thermal.initialize",
+            "parameters": [
+                {
+                    "doc": "Return true if the Thermal API is available on the device",
+                    "name": "available",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Provides an estimate of how much thermal headroom the device currently has before hitting severe throttling.",
+            "examples": "",
+            "name": "adpf.thermal.get_headroom",
+            "parameters": [
+                {
+                    "doc": "how many seconds in the future to forecast",
+                    "name": "forecast_seconds",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "a value greater than or equal to 0.0 where 1.0 indicates the SEVERE throttling threshold",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get the current thermal status of the device",
+            "examples": "",
+            "name": "adpf.thermal.get_status",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "The current thermal status of the device. One of THERMAL_STATUS_XYZ.",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Platform has done everything to reduce power.",
+            "examples": "",
+            "name": "THERMAL_STATUS_CRITICAL",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Key components in platform are shutting down due to thermal condition.",
+            "examples": "",
+            "name": "THERMAL_STATUS_EMERGENCY",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Light throttling where UX is not impacted.",
+            "examples": "",
+            "name": "THERMAL_STATUS_LIGHT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Moderate throttling where UX is not largely impacted.",
+            "examples": "",
+            "name": "THERMAL_STATUS_MODERATE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Not under throttling.",
+            "examples": "",
+            "name": "THERMAL_STATUS_NONE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Severe throttling where UX is largely impacted.",
+            "examples": "",
+            "name": "THERMAL_STATUS_SEVERE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Need shutdown immediately",
+            "examples": "",
+            "name": "THERMAL_STATUS_SHUTDOWN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Functions and constants for interacting with the PowerManager ThermalAPI",
+            "examples": "",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "TABLE"
+        }
+    ],
+    "info": {
+        "api": "extension-adpf/adpf_api",
+        "brief": "adpf",
+        "description": "Functions and constants for interacting with the Android Device Performance Framework",
+        "group": "EXTENSIONS",
+        "name": "extension-adpf",
+        "namespace": "adpf"
+    }
+}
