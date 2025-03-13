@@ -5,58 +5,6 @@
             "description": "Adds a file to the resource system\nAny request for this path will go through any existing mounts first.\nIf you wish to provide file overrides, please use the LiveUpdate feature for that.\nThe file isn't persisted between sessions.",
             "error": "",
             "examples": "",
-            "language": "",
-            "members": [],
-            "name": "AddFile",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "Factory handle",
-                    "name": "factory",
-                    "types": [
-                        "dmResource::HFactory"
-                    ]
-                },
-                {
-                    "doc": "The path of the resource",
-                    "name": "path",
-                    "types": [
-                        "const char*"
-                    ]
-                },
-                {
-                    "doc": "The size of the resource (in bytes)",
-                    "name": "size",
-                    "types": [
-                        "uint32_t"
-                    ]
-                },
-                {
-                    "doc": "The resource payload",
-                    "name": "resource",
-                    "types": [
-                        "const void*"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "on success.",
-                    "name": "RESULT_OK",
-                    "types": [
-                        "dmResource::Result"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Adds a file to the resource system\nAny request for...",
-            "description": "Adds a file to the resource system\nAny request for this path will go through any existing mounts first.\nIf you wish to provide file overrides, please use the LiveUpdate feature for that.\nThe file isn't persisted between sessions.",
-            "error": "",
-            "examples": "",
             "language": "C++",
             "members": [],
             "name": "AddFile",
@@ -98,6 +46,58 @@
                     "name": "result",
                     "types": [
                         "ResourceResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Adds a file to the resource system\nAny request for...",
+            "description": "Adds a file to the resource system\nAny request for this path will go through any existing mounts first.\nIf you wish to provide file overrides, please use the LiveUpdate feature for that.\nThe file isn't persisted between sessions.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "AddFile",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "The path of the resource",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "The size of the resource (in bytes)",
+                    "name": "size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "The resource payload",
+                    "name": "resource",
+                    "types": [
+                        "const void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "on success.",
+                    "name": "RESULT_OK",
+                    "types": [
+                        "dmResource::Result"
                     ]
                 }
             ],
@@ -248,6 +248,51 @@
             "description": "Get a resource from factory",
             "error": "",
             "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "Get",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "name": "factory",
+                    "types": [
+                        "HResourceFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource name",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Created resource",
+                    "name": "resource",
+                    "types": [
+                        "void**"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "ResourceResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get a resource from factory",
+            "description": "Get a resource from factory",
+            "error": "",
+            "examples": "",
             "language": "",
             "members": [],
             "name": "Get",
@@ -327,51 +372,6 @@
                     "name": "result",
                     "types": [
                         "dmResource::Result"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Get a resource from factory",
-            "description": "Get a resource from factory",
-            "error": "",
-            "examples": "",
-            "language": "C++",
-            "members": [],
-            "name": "Get",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "Factory handle",
-                    "name": "factory",
-                    "types": [
-                        "HResourceFactory"
-                    ]
-                },
-                {
-                    "doc": "Resource name",
-                    "name": "name",
-                    "types": [
-                        "const char*"
-                    ]
-                },
-                {
-                    "doc": "Created resource",
-                    "name": "resource",
-                    "types": [
-                        "void**"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "RESULT_OK on success",
-                    "name": "result",
-                    "types": [
-                        "ResourceResult"
                     ]
                 }
             ],
@@ -735,21 +735,21 @@
             "description": "Hint the preloader what to load before Create is called on the resource.\nThe resources are not guaranteed to be loaded before Create is called.\nThis function can be called from a worker thread.",
             "error": "",
             "examples": "",
-            "language": "",
+            "language": "C++",
             "members": [],
             "name": "PreloadHint",
             "notes": [],
             "parameters": [
                 {
                     "doc": "Preloader handle",
-                    "name": "factory",
+                    "name": "preloader",
                     "types": [
                         "dmResource::HResourcePreloadHintInfo"
                     ]
                 },
                 {
-                    "doc": "Resource name",
-                    "name": "name",
+                    "doc": "Resource path",
+                    "name": "path",
                     "types": [
                         "const char*"
                     ]
@@ -773,21 +773,21 @@
             "description": "Hint the preloader what to load before Create is called on the resource.\nThe resources are not guaranteed to be loaded before Create is called.\nThis function can be called from a worker thread.",
             "error": "",
             "examples": "",
-            "language": "C++",
+            "language": "",
             "members": [],
             "name": "PreloadHint",
             "notes": [],
             "parameters": [
                 {
                     "doc": "Preloader handle",
-                    "name": "preloader",
+                    "name": "factory",
                     "types": [
                         "dmResource::HResourcePreloadHintInfo"
                     ]
                 },
                 {
-                    "doc": "Resource path",
-                    "name": "path",
+                    "doc": "Resource name",
+                    "name": "name",
                     "types": [
                         "const char*"
                     ]
@@ -851,36 +851,6 @@
             "description": "Release resource",
             "error": "",
             "examples": "",
-            "language": "",
-            "members": [],
-            "name": "Release",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "Factory handle",
-                    "name": "factory",
-                    "types": [
-                        "dmResource::HFactory"
-                    ]
-                },
-                {
-                    "doc": "Resource pointer",
-                    "name": "resource",
-                    "types": [
-                        "void*"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Release resource",
-            "description": "Release resource",
-            "error": "",
-            "examples": "",
             "language": "C++",
             "members": [],
             "name": "Release",
@@ -909,13 +879,13 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Removes a previously registered file from the reso...",
-            "description": "Removes a previously registered file from the resource system",
+            "brief": "Release resource",
+            "description": "Release resource",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "RemoveFile",
+            "name": "Release",
             "notes": [],
             "parameters": [
                 {
@@ -926,23 +896,15 @@
                     ]
                 },
                 {
-                    "doc": "The path of the resource",
-                    "name": "path",
+                    "doc": "Resource pointer",
+                    "name": "resource",
                     "types": [
-                        "const char*"
+                        "void*"
                     ]
                 }
             ],
             "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "on success.",
-                    "name": "RESULT_OK",
-                    "types": [
-                        "dmResource::Result"
-                    ]
-                }
-            ],
+            "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -978,6 +940,44 @@
                     "name": "result",
                     "types": [
                         "ResourceResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Removes a previously registered file from the reso...",
+            "description": "Removes a previously registered file from the resource system",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "RemoveFile",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "The path of the resource",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "on success.",
+                    "name": "RESULT_OK",
+                    "types": [
+                        "dmResource::Result"
                     ]
                 }
             ],
@@ -1747,12 +1747,12 @@
     "info": {
         "brief": "Resource",
         "description": "Functions for managing resource types.",
-        "file": "dmsdk/resource/resource_gen.hpp",
+        "file": "dmsdk/resource/resource.hpp",
         "group": "DEFOLD SDK",
-        "language": "C++",
+        "language": "",
         "name": "Resource",
         "namespace": "dmResource",
         "notes": [],
-        "path": "engine/resource/src/dmsdk/resource/resource_gen.hpp"
+        "path": "engine/resource/src/dmsdk/resource/resource.hpp"
     }
 }
