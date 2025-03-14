@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Optimizing runtime speed","Reduce script execution time","Use reactive code patterns","Reduce garbage collection","Prehash message and action ids","Prefer and cache URLs","Reduce time it takes to render a frame","Reduce scene graph complexity","Frustum culling"]
+toc: ["Optimizing runtime speed","Reduce script execution time","Use reactive code patterns","Reduce garbage collection","Prehash message and action ids","Prefer and cache URLs","Reduce time it takes to render a frame","Reduce scene graph complexity","Frustum culling","Platform specific optimizations","Android Device Performance Framework"]
 title: Optimizing runtime performance of a Defold game
 brief: This manual describes how to optimize a Defold game to run at a stable high frame rate.
 ---
@@ -86,3 +86,9 @@ Reducing the scene graph complexity is needed if the profiler shows high values 
 
 ## Frustum culling
 The render script can automatically ignore rendering of game object component that are outside of a defined bounding box (frustum). Learn more about Frustum Culling in the [Render Pipeline manual](/manuals/render/#frustum-culling).
+
+
+# Platform specific optimizations
+
+## Android Device Performance Framework
+Android Dynamic Performance Framework is a set of APIs that allow games and to interact more directly with power and thermal systems of Android devices. It is possible to monitor the dynamic behavior on Android systems and optimize game performance at a sustainable level that doesn’t overheat devices. Use the [Android Dynamic Performance Framework extension](https://defold.com/extension-adpf/) to monitor and optimize performance in your Defold game for Android devices.
