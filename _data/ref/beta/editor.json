@@ -1013,7 +1013,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Resource path (starting with <code>/</code>) of a directory to create",
+                    "doc": "Resource path (starting with <code>/</code>)",
                     "name": "resource_path",
                     "types": [
                         "string"
@@ -1036,7 +1036,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Resource path (starting with <code>/</code>) of a directory to delete",
+                    "doc": "Resource path (starting with <code>/</code>)",
                     "name": "resource_path",
                     "types": [
                         "string"
@@ -1706,7 +1706,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Resource path (starting with <code>/</code>) of a resource to look up",
+                    "doc": "Resource path (starting with <code>/</code>)",
                     "name": "resource_path",
                     "types": [
                         "string"
@@ -2644,7 +2644,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Resource path (starting with <code>/</code>) of a resource to open",
+                    "doc": "Resource path (starting with <code>/</code>)",
                     "name": "resource_path",
                     "types": [
                         "string"
@@ -3327,7 +3327,7 @@
                     ]
                 },
                 {
-                    "doc": "Additional request options, a table with the following keys:<dl><dt><code>method <small>string</small></code></dt><dd>request method, defaults to <code>\"GET\"</code></dd><dt><code>headers <small>table</small></code></dt><dd>request headers, a table with string keys and values</dd><dt><code>body <small>string</small></code></dt><dd>request body</dd><dt><code>as <small>string</small></code></dt><dd>Response body converter, either <code>\"string\"</code> or <code>\"json\"</code></dd></dl>",
+                    "doc": "Additional request options, a table with the following keys:<dl><dt><code>method <small>string</small></code></dt><dd>request method, defaults to <code>\"GET\"</code></dd><dt><code>headers <small>table</small></code></dt><dd>request headers, a table with string keys and values</dd><dt><code>body <small>string</small></code></dt><dd>request body</dd><dt><code>as <small>string</small></code></dt><dd>response body converter, either <code>\"string\"</code> or <code>\"json\"</code></dd></dl>",
                     "name": "[opts]",
                     "types": [
                         "table"
@@ -3346,6 +3346,283 @@
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "create HTTP response that will stream the content of a file defined by the path",
+            "description": "Create HTTP response that will stream the content of a file defined by the path",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "http.server.external_file_response",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "External file path, resolved against project root if relative",
+                    "name": "path",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "HTTP status code, an integer, default 200",
+                    "name": "[status]",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "HTTP response headers, a table from lower-case header names to header values",
+                    "name": "[headers]",
+                    "types": [
+                        "table&lt;string,string&gt;"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP response value, userdata",
+                    "name": "response",
+                    "types": [
+                        "response"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create HTTP response with a JSON value",
+            "description": "Create HTTP response with a JSON value",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "http.server.json_response",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Any Lua value that may be represented as JSON",
+                    "name": "value",
+                    "types": [
+                        "any"
+                    ]
+                },
+                {
+                    "doc": "HTTP status code, an integer, default 200",
+                    "name": "[status]",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "HTTP response headers, a table from lower-case header names to header values",
+                    "name": "[headers]",
+                    "types": [
+                        "table&lt;string,string&gt;"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP response value, userdata",
+                    "name": "response",
+                    "types": [
+                        "response"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "editor's HTTP server local url",
+            "description": "Editor's HTTP server local url",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "http.server.local_url",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "editor's HTTP server port",
+            "description": "Editor's HTTP server port",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "http.server.port",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "create HTTP response that will stream the content of a resource defined by the resource path",
+            "description": "Create HTTP response that will stream the content of a resource defined by the resource path",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "http.server.resource_response",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Resource path (starting with <code>/</code>)",
+                    "name": "resource_path",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "HTTP status code, an integer, default 200",
+                    "name": "[status]",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "HTTP response headers, a table from lower-case header names to header values",
+                    "name": "[headers]",
+                    "types": [
+                        "table&lt;string,string&gt;"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP response value, userdata",
+                    "name": "response",
+                    "types": [
+                        "response"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create HTTP response",
+            "description": "Create HTTP response",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "http.server.response",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "HTTP status code, an integer, default 200",
+                    "name": "[status]",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "HTTP response headers, a table from lower-case header names to header values",
+                    "name": "[headers]",
+                    "types": [
+                        "table&lt;string,string&gt;"
+                    ]
+                },
+                {
+                    "doc": "HTTP response body",
+                    "name": "[body]",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP response value, userdata",
+                    "name": "response",
+                    "types": [
+                        "response"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create route definition for the editor's HTTP server",
+            "description": "Create route definition for the editor's HTTP server",
+            "error": "",
+            "examples": "Receive JSON and respond with JSON:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"nv\">http</span>.<span class=\"nv\">server</span>.<span class=\"nv\">route</span><span class=\"ss\">(</span>\n  <span class=\"s2\">&quot;</span><span class=\"s\">/json</span><span class=\"s2\">&quot;</span>, <span class=\"s2\">&quot;</span><span class=\"s\">POST</span><span class=\"s2\">&quot;</span>, <span class=\"s2\">&quot;</span><span class=\"s\">json</span><span class=\"s2\">&quot;</span>,\n  <span class=\"nv\">function</span><span class=\"ss\">(</span><span class=\"nv\">request</span><span class=\"ss\">)</span>\n    <span class=\"nv\">pprint</span><span class=\"ss\">(</span><span class=\"nv\">request</span>.<span class=\"nv\">body</span><span class=\"ss\">)</span>\n    <span class=\"k\">return</span> <span class=\"mi\">200</span>\n  <span class=\"k\">end</span>\n<span class=\"ss\">)</span>\n</code></pre></div>\n\nExtract parts of the path:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"nv\">http</span>.<span class=\"nv\">server</span>.<span class=\"nv\">route</span><span class=\"ss\">(</span>\n  <span class=\"s2\">&quot;</span><span class=\"s\">/users/{user}/orders</span><span class=\"s2\">&quot;</span>,\n  <span class=\"nv\">function</span><span class=\"ss\">(</span><span class=\"nv\">request</span><span class=\"ss\">)</span>\n    <span class=\"nv\">print</span><span class=\"ss\">(</span><span class=\"nv\">request</span>.<span class=\"nv\">user</span><span class=\"ss\">)</span>\n  <span class=\"k\">end</span>\n<span class=\"ss\">)</span>\n</code></pre></div>\n\nSimple file server:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"nv\">http</span>.<span class=\"nv\">server</span>.<span class=\"nv\">route</span><span class=\"ss\">(</span>\n  <span class=\"s2\">&quot;</span><span class=\"s\">/files/{*file}</span><span class=\"s2\">&quot;</span>,\n  <span class=\"nv\">function</span><span class=\"ss\">(</span><span class=\"nv\">request</span><span class=\"ss\">)</span>\n    <span class=\"nv\">local</span> <span class=\"nv\">attrs</span> <span class=\"o\">=</span> <span class=\"nv\">editor</span>.<span class=\"nv\">external_file_attributes</span><span class=\"ss\">(</span><span class=\"nv\">request</span>.<span class=\"nv\">file</span><span class=\"ss\">)</span>\n    <span class=\"k\">if</span> <span class=\"nv\">attrs</span>.<span class=\"nv\">is_file</span> <span class=\"k\">then</span>\n      <span class=\"k\">return</span> <span class=\"nv\">http</span>.<span class=\"nv\">server</span>.<span class=\"nv\">external_file_response</span><span class=\"ss\">(</span><span class=\"nv\">request</span>.<span class=\"nv\">file</span><span class=\"ss\">)</span>\n    <span class=\"k\">elseif</span> <span class=\"nv\">attrs</span>.<span class=\"nv\">is_directory</span> <span class=\"k\">then</span>\n      <span class=\"k\">return</span> <span class=\"mi\">400</span>\n    <span class=\"k\">else</span>\n      <span class=\"k\">return</span> <span class=\"mi\">404</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"ss\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "http.server.route",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "HTTP URI path, starts with <code>/</code>; may include path patterns (<code>{name}</code> for a single segment and <code>{*name}</code> for the rest of the request path) that will be extracted from the path and provided to the handler as a part of the request",
+                    "name": "path",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "HTTP request method, default <code>\"GET\"</code>",
+                    "name": "[method]",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Request body converter, either <code>\"string\"</code> or <code>\"json\"</code>; the body will be discarded if not specified",
+                    "name": "[as]",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Request handler function, will receive request argument, a table with the following keys:<dl><dt><code>path <small>string</small></code></dt><dd>full matched path, a string starting with <code>/</code></dd><dt><code>method <small>string</small></code></dt><dd>HTTP request method, e.g. <code>\"POST\"</code></dd><dt><code>headers <small>table&lt;string,(string|string[])&gt;</small></code></dt><dd>HTTP request headers, a table from lower-case header names to header values</dd><dt><code>query <small>string</small></code></dt><dd>optional query string</dd><dt><code>body <small>string, any</small></code></dt><dd>optional request body, depends on the <code>as</code> argument</dd></dl> Handler function should return either a single response value, or 0 or more arguments to the <code>http.server.response()</code> function",
+                    "name": "handler",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP server route",
+                    "name": "route",
+                    "types": [
+                        "route"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "editor's HTTP server url",
+            "description": "Editor's HTTP server url",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "http.server.url",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
         },
         {
             "brief": "decode JSON string to Lua value",
@@ -3388,7 +3665,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "any lua value that may be represented as JSON",
+                    "doc": "any Lua value that may be represented as JSON",
                     "name": "value",
                     "types": [
                         "any"
@@ -3411,10 +3688,78 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "any lua value to pretty-print",
+                    "doc": "any Lua value to pretty-print",
                     "name": "value",
                     "types": [
                         "any"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "<code>\"deflated\"</code> compression method",
+            "description": "<code>\"deflated\"</code> compression method",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "zip.METHOD.DEFLATED",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"stored\"</code> compression method, i.e. no compression",
+            "description": "<code>\"stored\"</code> compression method, i.e. no compression",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "zip.METHOD.STORED",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "create a ZIP archive",
+            "description": "Create a ZIP archive",
+            "error": "",
+            "examples": "Archive a file and a folder:\n<div class=\"codehilite\"><pre><span></span><code>zip.pack(&quot;build.zip&quot;, {&quot;build&quot;, &quot;game.project&quot;})\n</code></pre></div>\n\nChange the location of the files within the archive:\n<div class=\"codehilite\"><pre><span></span><code>zip.pack(&quot;build.zip&quot;, {\n  {&quot;build/wasm-web&quot;, &quot;.&quot;},\n  {&quot;configs/prod.json&quot;, &quot;config.json&quot;}\n})\n</code></pre></div>\n\nCreate archive without compression (much faster to create the archive, bigger archive file size, allows mmap access):\n<div class=\"codehilite\"><pre><span></span><code>zip.pack(&quot;build.zip&quot;, {method = zip.METHOD.STORED}, {\n  &quot;build&quot;,\n  &quot;resources&quot;\n})\n</code></pre></div>\n\nDon't compress one of the folders:\n<div class=\"codehilite\"><pre><span></span><code>zip.pack(&quot;build.zip&quot;, {\n  {&quot;assets&quot;, method = zip.METHOD.STORED},\n  &quot;build/wasm-web&quot;\n})\n</code></pre></div>\n\nInclude files from outside the project:\n<div class=\"codehilite\"><pre><span></span><code>zip.pack(&quot;build.zip&quot;, {\n  &quot;build&quot;,\n  {&quot;../secrets/auth-key.txt&quot;, &quot;auth-key.txt&quot;}\n})\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "zip.pack",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "output zip file path, resolved against project root if relative",
+                    "name": "output_path",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "compression options, a table with the following keys:<dl><dt><code>method <small>string</small></code></dt><dd>compression method, either <code>zip.METHOD.DEFLATED</code> (default) or <code>zip.METHOD.STORED</code></dd><dt><code>level <small>integer</small></code></dt><dd>compression level, an integer between 0 and 9, only useful when the compression method is <code>zip.METHOD.DEFLATED</code>; defaults to 6</dd></dl>",
+                    "name": "[opts]",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "entries to compress, either a string (relative path to file or folder to include) or a table with the following keys:<dl><dt><code>1 <small>string</small></code></dt><dd>required; source file or folder path to include, resolved against project root if relative</dd><dt><code>2 <small>string</small></code></dt><dd>optional; target file or folder path in the zip archive. May be omitted if source is a relative path that does not go above the project directory.</dd><dt><code>method <small>string</small></code></dt><dd>compression method, either <code>zip.METHOD.DEFLATED</code> (default) or <code>zip.METHOD.STORED</code></dd><dt><code>level <small>integer</small></code></dt><dd>compression level, an integer between 0 and 9, only useful when the compression method is <code>zip.METHOD.DEFLATED</code>; defaults to 6</dd></dl>",
+                    "name": "entries",
+                    "types": [
+                        "string",
+                        "table"
                     ]
                 }
             ],
