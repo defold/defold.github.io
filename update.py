@@ -196,14 +196,19 @@ def download_bob(sha1):
     if not os.path.exists(bob_filename):
         download_file("http://d.defold.com/archive/{}/bob/bob.jar".format(sha1), ".", bob_filename)
 
+def find_file(root_dir, file_pattern):
+    for root, dirnames, filenames in os.walk(root_dir):
+        for filename in filenames:
+            if fnmatch.fnmatch(filename, file_pattern):
+                return os.path.join(root, filename)
+    return None
 
-def find_files(root_dir, file_pattern):
+def find_files(root_dir, file_patterns):
     matches = []
-    patterns = file_pattern.split("|")
+    patterns = file_patterns.split("|")
     for pattern in patterns:
         for root, dirnames, filenames in os.walk(root_dir):
             for filename in filenames:
-                fullname = os.path.join(root, filename)
                 if fnmatch.fnmatch(filename, pattern):
                     matches.append(os.path.join(root, filename))
     return matches
@@ -620,7 +625,13 @@ def process_examples(download = False):
                     os.remove(bob_out)
 
                     print("..copying %s" % example)
-                    bundle_dir = os.path.join(example_src_dir, "build", "default", "Defold-examples")
+                    index_file = find_file(os.path.join(example_src_dir, "build", "default"), "index.html")
+                    print(index_file, os.path.dirname(index_file))
+                    if not index_file:
+                        print("File index.html not found")
+                        sys.exit(1)
+
+                    bundle_dir = os.path.dirname(index_file)
                     shutil.copytree(bundle_dir, example_dst_dir)
                     os.remove(os.path.join(example_dst_dir, "index.html"))
 
