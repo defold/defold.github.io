@@ -28,6 +28,11 @@
 *
 *     'resize_window_callback':
 *         Function that is called when resize/orientationchanges/focus events happened
+*
+*     'update_imports':
+*         Function that is called right before wasm instantiation. Imports
+*         are passed into the function and can be modified and will be
+*         subsequently passed on to WebAssembly.
 */
 var CUSTOM_PARAMETERS = {
     archive_location_filter: function( path ) {
@@ -42,6 +47,8 @@ var CUSTOM_PARAMETERS = {
     unsupported_webgl_callback: function() {
         var e = document.getElementById("webgl-not-supported");
         e.style.display = "block";
+    },
+    update_imports: function(imports) {
     },
     resize_window_callback: function() {
         var is_iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
@@ -211,11 +218,11 @@ var FileLoader = {
 var EngineLoader = {
     
     
-    wasm_size: 2910089,
+    wasm_size: 2950050,
     
-    wasmjs_size: 264118,
+    wasmjs_size: 264089,
     
-    asmjs_size: 5776691,
+    asmjs_size: 5843807,
     wasm_instantiate_progress: 0,
 
     stream_wasm: "false" === "true",
@@ -291,6 +298,10 @@ var EngineLoader = {
     // https://github.com/emscripten-core/emscripten/blob/main/test/manual_wasm_instantiate.html
     loadWasmAsync: function(exeName) {
         Module.instantiateWasm = function(imports, successCallback) {
+            if (typeof CUSTOM_PARAMETERS["update_imports"] === "function") {
+                var callback = CUSTOM_PARAMETERS["update_imports"];
+                callback(imports);
+            }
             if (EngineLoader.stream_wasm && (typeof WebAssembly.instantiateStreaming === "function")) {
                 EngineLoader.streamAndInstantiateWasmAsync(exeName + ".wasm", imports, successCallback);
             }
@@ -657,12 +668,13 @@ var GameArchiveLoader = {
                     data = FS.mmap(file.stream, file.size, 0, 0x01, 0x01); //PROT_READ, MAP_SHARED
                 } catch(e) { }
             }
-            return window.crypto.subtle.digest("SHA-1", data).then((digest) => {
-                const sha1 = Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, '0')).join('');
-                if (sha1 !== file.sha1)
-                    return Promise.reject(new Error(`Unexpected hash ${sha1} wanted ${file.sha1}`));
-                return;
-            });
+            if(data) {
+                return window.crypto.subtle.digest("SHA-1", data).then((digest) => {
+                    const sha1 = Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, '0')).join('');
+                    if (sha1 !== file.sha1)
+                        return Promise.reject(new Error(`Unexpected hash ${sha1} wanted ${file.sha1}`));
+                });
+            }
         }
         return Promise.resolve();
     },
