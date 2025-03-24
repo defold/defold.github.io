@@ -4,7 +4,7 @@ path: input/text
 layout: example
 tags: input
 title: Text input
-brief: Listens to text input trigger "type" and modifies the game object label with the bunny's speech according to input. A "backspace" key trigger has also been added.
+brief: Listens to text input trigger "type" and modifies the game object label with the alien's speech according to input. A "backspace" key trigger has also been added.
 scripts: text.script
 ---
 
