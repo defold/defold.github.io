@@ -1543,6 +1543,37 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "password schema",
+            "description": "password schema\nA password is a string that is encrypted when stored in a preference file",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.schema.password",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional opts: <dl><dt><code>default <small>string</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
+                    "name": "[opts]",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prefs schema",
+                    "name": "value",
+                    "types": [
+                        "schema"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "set schema",
             "description": "set schema\nSet is represented as a lua table with <code>true</code> values",
             "error": "",
