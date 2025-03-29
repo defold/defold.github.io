@@ -42,6 +42,8 @@ PLATFORMINDEX_JSON = os.path.join("_data", "platformindex.json")
 
 REF_DATA_DIR = os.path.join("_data", "ref")
 
+LLMS_DIR = "_llms"
+
 ASSET_MD_FRONTMATTER = """---
 layout: asset
 asset: {}
@@ -237,6 +239,19 @@ def replace_in_file(filename, old, new, flags=None):
         f.write(content)
 
 
+def replace_in_first_line(filename, old, new, flags=None):
+    with open(filename) as f:
+        lines = f.readlines()
+        if lines:
+            if flags is None:
+                lines[0] = re.sub(old, new, lines[0])
+            else:
+                lines[0] = re.sub(old, new, lines[0], flags=flags)
+
+    with open(filename, "w") as f:
+        f.writelines(lines)
+
+
 def append_to_file(filename, s):
     with open(filename, "a") as f:
         f.write(s)
@@ -317,6 +332,77 @@ def update_file_links_with_lang(filename, pattern, language):
         f.write(updated_content)
 
 
+def generate_llms_full(index):
+    llms_content = []
+
+    # Add headline and intro
+    llms_content.append("# Defold Documentation\n")
+    llms_content.append("> Defold is a free game engine with free source code access. It's designed for creating 2D and 3D games across multiple platforms, including mobile, desktop, web, and consoles.\n")
+
+    llms_content.append("This document contains [Defold's official documentation](https://defold.com/manuals/) in a single-file easy-to-search form.")
+    llms_content.append("If you find any issues, please report them [as a GitHub issue](https://github.com/defold/doc/issues), and contributions are very welcome in the form of [pull requests](https://github.com/defold/doc/pulls).\n")
+
+    # Add sections from index
+    manuals_content = []
+    manuals_included = {}
+    llms_content.append("## Manuals\n")
+    for section in index["navigation"]["manuals"]:
+        section_title = section["name"]
+        llms_content.append(f"### {section_title}\n")
+        for item in section["items"]:
+            path = item["path"]
+            title = item["name"]
+            path_no_anchors = re.sub(r"(/)?#.+", "", path)
+            if manuals_included.get(path_no_anchors):
+                print(f" -> already included {path}")
+                anchor = manuals_included.get(path_no_anchors)
+                llms_content.append(f"- [{title}](#{anchor})")
+            else:
+                if not os.path.exists(LLMS_DIR + path_no_anchors + ".md"):
+                    url = path if "https://" in path else "https://defold.com" + path
+                    llms_content.append(f"- [{title}]({url})")
+                    print(f" -> skipping {path}")
+                else:
+                    anchor = path_no_anchors.replace("/", ":").lstrip(":")
+                    manuals_included[path_no_anchors] = anchor
+                    llms_content.append(f"- [{title}](#{anchor})")
+                    contents = read_as_string(LLMS_DIR + path_no_anchors + ".md")
+                    manuals_content.append(f"<!-- {path} -->\n")
+                    manuals_content.append(contents)
+                    manuals_content.append("")
+        llms_content.append("")
+    llms_content.append("")
+
+    llms_content.extend(manuals_content)
+
+    # Write the content to llms-full.txt
+    with open("llms-full.txt", "w", encoding="utf-8") as f:
+        f.write("\n".join(llms_content))
+
+
+# replace the relative links to anchors
+def path_to_manuals_anchor(match):
+    path = match.group(2)
+    anchor = path.replace("/", ":").lstrip(":")
+    anchor = re.sub(":\#.*", "", anchor) # temporarily strip in-documentanchors
+    return f"(#manuals:{anchor})"
+
+
+def include_matched_file(match):
+    path = os.path.join("_includes", match.group(1))
+    if os.path.exists(path):
+        contents = read_as_string(path).replace("\\", "\\\\")
+        if match.group(2):
+            # find all variable pairs in the match, i.e. key='value'
+            variables = re.findall(r"(\w+)=['\"]([^'\"]+)['\"]", match.group(2))
+            for key, value in variables:
+                contents = contents.replace("{{ include." + key + " }}", value)
+        return contents
+    else:
+        print("include_matched_file: file {} does not exists".format(path))
+        sys.exit(1)
+
+
 def process_docs(download = False):
     if download:
         if os.path.exists(DOCS_ZIP):
@@ -371,7 +457,33 @@ def process_docs(download = False):
                     replace_in_file(filename, r"title\:", r"language: {}\ntitle:".format(language))
                     replace_in_file(filename, r"title\:", r"github: {}\ntitle:".format("https://github.com/defold/doc"))
                     replace_in_file(filename, r"title\:", r"toc: [{}]\ntitle:".format(",".join(toc)))
-                    if language != "en":
+                    if language == "en":
+                        # preprocess docs pages for llms-full.txt to a temporary folder _llms/
+                        contents = read_as_string(filename)
+                        if "This manual has been replaced by the" in contents or "This manual has moved" in contents or "This manual has been moved" in contents:
+                            pass
+                        else:
+                            target_dir = os.path.join(LLMS_DIR, manuals_dst_dir)
+                            os.makedirs(target_dir, exist_ok=True)
+                            target_file = os.path.join(LLMS_DIR, filename)
+                            with open(target_file, "w") as f:
+                                f.write(contents)
+                            # include files
+                            replace_in_file(target_file, r"\{\% include (shared\/.*?\.md)(.+?)\%\}", include_matched_file)
+                            # generate anchor in format {#manuals:introduction}
+                            anchor = "{#" + filename[:-3].replace("/", ":").lstrip(":") + "}"
+                            # replace the relative links to anchors in .md files
+                            replace_in_file(target_file, r"\((/|https://.{0,4}defold\.com/)?manuals/(.+?)(/)?\)", path_to_manuals_anchor)
+                            # convert links to assets and other resources to absolute links
+                            replace_in_file(target_file, r"\.\./images/", r"https://defold.com/manuals/images/")
+                            replace_in_file(target_file, r"\.\./assets/", r"https://defold.com/manuals/assets/")
+                            replace_in_file(target_file, r"\((/ref/|/assets|/tags/|/examples|/why|/product|/faq)", r"(https://defold.com\1")
+                            # remove the frontmatter
+                            replace_in_file(target_file, r"---\n(.*?)---\n+", r"", re.DOTALL)
+                            # put anchor in the first heading of the file
+                            replace_in_first_line(target_file, r"^(#+ .+?)$", r"\1 {}".format(anchor), re.MULTILINE)
+
+                    else:
                         # replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
                         update_file_links_with_lang(filename, r'/manuals/[^)#]+', language)
                         replace_in_file(filename, r"\.\.\/images\/", r"/manuals/images/".format(language))
@@ -439,6 +551,9 @@ def process_docs(download = False):
         shared_images_src_dir = os.path.join(DOC_DIR, "docs", "en", "shared", "images")
         shared_images_dst_dir = os.path.join("shared", "images")
         rmcopytree(shared_images_src_dir, shared_images_dst_dir)
+
+        print("...generating llms-full.txt")
+        generate_llms_full(index)
 
         print("Done")
 
