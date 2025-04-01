@@ -1056,6 +1056,57 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get viewport's parameters",
+            "description": "Get viewport's parameters",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetViewport",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the context",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "x-coordinate of the viewport's origin",
+                    "name": "x",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "y-coordinate of the viewport's origin",
+                    "name": "y",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "viewport's width",
+                    "name": "width",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "viewport's height",
+                    "name": "height",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "",
             "description": "",
             "error": "",
@@ -1746,6 +1797,71 @@
             "returnvalues": [],
             "tparams": [],
             "type": "ENUM"
+        },
+        {
+            "brief": "Read frame buffer pixels in BGRA format",
+            "description": "Read frame buffer pixels in BGRA format",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ReadPixels",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the context",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "x-coordinate of the starting position",
+                    "name": "x",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "y-coordinate of the starting position",
+                    "name": "y",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "width of the region",
+                    "name": "width",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "height of the region",
+                    "name": "height",
+                    "types": [
+                        "uin32_t"
+                    ]
+                },
+                {
+                    "doc": "buffer to read to",
+                    "name": "buffer",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "buffer size",
+                    "name": "buffer_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "",
