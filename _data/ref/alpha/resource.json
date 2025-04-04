@@ -141,8 +141,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Creates a sound data resource (.oggc/.opusc/.wavc)",
-            "description": "Creates a sound data resource\nSupported formats are .oggc, .opusc and .wavc",
+            "brief": "Creates a sound data resource (.oggc/.wavc)",
+            "description": "Creates a sound data resource\nSupported formats are .oggc and .wavc",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- create a new sound resource, given the initial chunk of the file</span>\n    <span class=\"kd\">local</span> <span class=\"n\">relative_path</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;/a/unique/resource/name.oggc&quot;</span>\n    <span class=\"kd\">local</span> <span class=\"n\">hash</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">create_sound_data</span><span class=\"p\">(</span><span class=\"n\">relative_path</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"n\">data</span><span class=\"p\">,</span> <span class=\"n\">filesize</span> <span class=\"o\">=</span> <span class=\"n\">filesize</span><span class=\"p\">,</span> <span class=\"n\">partial</span> <span class=\"o\">=</span> <span class=\"kc\">true</span> <span class=\"p\">})</span>\n    <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#music&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;sound&quot;</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">)</span> <span class=\"c1\">-- override the previous sound resource</span>\n    <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;#music&quot;</span><span class=\"p\">)</span> <span class=\"c1\">-- start the playing</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -696,7 +696,7 @@
         },
         {
             "brief": "Update internal sound resource",
-            "description": "Update internal sound resource (wavc/oggc/opusc) with new data",
+            "description": "Update internal sound resource (wavc/oggc) with new data",
             "error": "",
             "examples": "",
             "language": "",
