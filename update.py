@@ -567,7 +567,7 @@ def parse_extension_parameters(parameters):
             param["name"] = p.get("name", "")
             param["types"] = param_type.split("|") if isinstance(param_type, str) else param_type
             param["doc"] = p.get("desc", "")
-            subp = parse_extension_parameters(p.get("parameters")) + parse_extension_parameters(p.get("members"))
+            subp = parse_extension_parameters(p.get("parameters")) + parse_extension_parameters(p.get("members")) + parse_extension_parameters(p.get("fields"))
             if subp:
                 param["parameters"] = subp
             params.append(param)

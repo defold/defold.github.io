@@ -40,6 +40,22 @@
                         {
                             "doc": "A table holding the data",
                             "name": "data",
+                            "parameters": [
+                                {
+                                    "doc": "The url used in the `webview.open()` call. `nil` otherwise.",
+                                    "name": "url",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Holds the result of either: a failed url open, a successful eval request or a failed eval. `nil` otherwise.",
+                                    "name": "result",
+                                    "types": [
+                                        "string"
+                                    ]
+                                }
+                            ],
                             "types": [
                                 "table"
                             ]
@@ -91,6 +107,29 @@
                 {
                     "doc": "A table of options for the request. Currently it holds these options:",
                     "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "If true, the webview will stay hidden (default=false)",
+                            "name": "hidden",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "A table of header keys and values",
+                            "name": "headers",
+                            "types": [
+                                "table"
+                            ]
+                        },
+                        {
+                            "doc": "If true, the webview background will be transparent (default=false)",
+                            "name": "transparent",
+                            "types": [
+                                "boolean"
+                            ]
+                        }
+                    ],
                     "types": [
                         "table"
                     ]
