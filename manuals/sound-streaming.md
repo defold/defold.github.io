@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Sound Streaming","Example","How to enable streaming sounds","Easy way","Runtime resources"]
+toc: ["Sound Streaming","Example","How to enable streaming sounds","Easy way","Runtime resources","Resource providers","Sound chunk cache","Configuration"]
 title: Sound Streaming in Defold
 brief: This manual explains how to stream sounds into the Defold game engine
 ---

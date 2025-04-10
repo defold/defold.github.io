@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Skrypty Edytora","Uruchamianie skryptów Edytora","Anatomia skryptu .editor_script","Actions","Akcje możliwe do cofnięcia","Łączenie akcji i efekty uboczne","Haki cyklu życia (Lifecycle Hooks)"]
+toc: ["Skrypty Edytora","Uruchamianie skryptów Edytora","Anatomia skryptu .editor_script","Edytor API","Komendy","Actions","Akcje możliwe do cofnięcia","Akcje niemożliwe do cofnięcia","Łączenie akcji i efekty uboczne","Haki cyklu życia (Lifecycle Hooks)","Skrypty Edytora w bibliotekach","Serwery językowy (language servers)"]
 title: Skrypty Edytora
 brief: Ta instrukcja wyjaśnia, jak rozszerzać Edytor za pomocą Lua.
 ---

@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["消息传递","使用示例","发送消息","游戏世界之间的消息传递"]
+toc: ["消息传递","使用示例","发送消息","简化符","接收消息","游戏世界之间的消息传递","消息链"]
 title: Defold 的消息传递教程
 brief: Defold 的消息传递机制建立松耦合的对象交流方法. 本教程将详述这个机制.
 ---

@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Properties"]
+toc: ["Properties","Game object and component properties","GUI node properties"]
 title: Properties in Defold
 brief: This manual explains what types of properties exist in Defold, and how they are used and animated.
 ---

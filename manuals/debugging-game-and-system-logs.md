@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Game and system log","Reading the game log from the editor","Reading the game log from the terminal","Reading game and system logs using platform specific tools","HTML5","Android","iOS"]
+toc: ["Game and system log","Reading the game log from the editor","Reading the game log from the terminal","Reading game and system logs using platform specific tools","HTML5","Android","iOS","Reading the game log from the log file"]
 title: Debugging - game and system logs
 brief: This manual explains how to read game and system logs.
 ---

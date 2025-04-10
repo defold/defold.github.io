@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["Atlas","创建图集","图集属性","图片属性","动画属性","运行时纹理及图集建立","在运行时创建纹理资源"]
+toc: ["Atlas","创建图集","图集属性","图片属性","动画属性","运行时纹理及图集建立","在运行时创建纹理资源","运行时创建图集"]
 title: 图集教程
 brief: 本教程介绍了 Defold 中图集资源是如何工作的.
 ---

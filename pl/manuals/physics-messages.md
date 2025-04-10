@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Wiadomości kolizji","Odpowiedź na kolizję","Odpowiedź na wyzwalacz"]
+toc: ["Wiadomości kolizji","Odpowiedź na kolizję","Odpowiedź punktu kontaktu","Odpowiedź na wyzwalacz"]
 title: Wiadomości kolizji w Defoldzie
 brief: Kiedy obiekty się zderzają, silnik Defold wysyła wiadomości do komponentów tych obiektów.
 ---

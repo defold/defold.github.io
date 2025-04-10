@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Debugging game logic","Print and visual debugging"]
+toc: ["Debugging game logic","Print and visual debugging","Running the debugger","Lua debug library","Debugging checklist","Debugging problems with physics"]
 title: Debugging in Defold
 brief: This manual explains the debugging facilities present in Defold.
 ---

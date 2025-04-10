@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Dźwięk","Tworzenie komponentu dźwięku","Odtwarzanie dźwięku","Zatrzymywanie dźwięku","Wzmocnienie","Grupy dźwiękowe","Konfiguracja projektu"]
+toc: ["Dźwięk","Tworzenie komponentu dźwięku","Odtwarzanie dźwięku","Zatrzymywanie dźwięku","Wzmocnienie","Grupy dźwiękowe","Filtrowanie dźwięków","Manipulacja w czasie rzeczywistym","Konfiguracja projektu"]
 title: Dźwięk w Defoldzie
 brief: Ta instrukcja wyjaśnia jak można importować i obsługiwać dźwięki w Defoldzie.
 ---

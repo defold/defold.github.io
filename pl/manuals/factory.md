@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Fabryka","Limit instancji","Pula obiektów gry"]
+toc: ["Fabryka","Adresowanie obiektów utworzonych z fabryki","Śledzenie utworzonych obiektów i rodziców","Dynamiczne ładowanie zasobów fabryki","Dynamiczny prototyp","Limit instancji","Pula obiektów gry"]
 title: Fabryka
 brief: Ta instrukcja opisuje komponent fabryki służący do tworzenia obiektów gry z komponentami w czasie działania programu.
 ---

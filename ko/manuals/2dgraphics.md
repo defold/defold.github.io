@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["2D Graphics","Importing Image Files","Creating an Atlas","Creating a Tile Source","Tile Source Collision Shapes","Tile Source flip-book animations","Manipulating Game Objects and components","Sprites","Tile Maps","Changing tiles from script"]
+toc: ["2D Graphics","Importing Image Files","Creating an Atlas","Creating a Tile Source","Tile Source Collision Shapes","Tile Source flip-book animations","Manipulating Game Objects and components","Dynamically scaling Sprites","Sprites","Tile Maps","Changing tiles from script","Adding a Tile Map to your game","Texture Filtering and Sampling"]
 title: Defold manual
 ---
 

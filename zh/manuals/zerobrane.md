@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["在 ZeroBrane Studio 中调试 Lua 脚本","ZeroBrane 设置","ZeroBrane 打开项目","启动调试服务器","把应用连接到调试器","远程调试"]
+toc: ["在 ZeroBrane Studio 中调试 Lua 脚本","ZeroBrane 设置","ZeroBrane 打开项目","启动调试服务器","把应用连接到调试器","远程调试","其他推荐 ZeroBrane 设置"]
 title: Debugging with ZeroBrane Studio
 brief: This manual explains how to use ZeroBrane Studio to debug Lua code in Defold.
 ---

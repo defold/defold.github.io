@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["原生扩展","编译服务器","项目结构","Manifest files","共享原生扩展","简单示例","C++ symbol in your extension","可用参数项","原生扩展举例"]
+toc: ["原生扩展","编译服务器","项目结构","Manifest files","共享原生扩展","简单示例","扩展程序生命周期","预定义的平台标识","编译服务器日志","ext.manifest 文件","可用参数项","原生扩展举例"]
 title: 为 Defold 编写原生扩展
 brief: 本教程介绍了给 Defold 游戏引擎编写原生扩展的方法以及云端编译器的用法.
 ---

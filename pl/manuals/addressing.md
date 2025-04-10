@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Adresowanie","Identyfikatory","Kolekcje","Adresowanie relatywne","Skróty","Ścieżki do obiektów","Adresowanie absolutne","Identyfikatory haszowane (skrócone)","URL"]
+toc: ["Adresowanie","Identyfikatory","Kolekcje","Adresowanie relatywne","Skróty","Ścieżki do obiektów","Adresowanie absolutne","Identyfikatory haszowane (skrócone)","URL","Konstruowanie obiektów URL"]
 title: Adresowanie w silniku Defold
 brief: Instrukcja wyjaśnia sposób adresowania w silniku Defold.
 ---

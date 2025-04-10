@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Input","Setting up input bindings","Trigger types","Accelerometer input","Input dispatch and on_input()","Consuming input"]
+toc: ["Input","Setting up input bindings","Trigger types","Accelerometer input","Input focus","Input dispatch and on_input()","Input focus and collection proxy components","Releasing input","Consuming input"]
 title: Device input in Defold
 brief: This manual explains how input works, how to capture input actions and create interactive script reactions.
 ---

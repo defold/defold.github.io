@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Debugowanie logiki gry","Debugowanie za pomocą wydruków i wizualne"]
+toc: ["Debugowanie logiki gry","Debugowanie za pomocą wydruków i wizualne","Uruchamianie debuggera","Biblioteka debugowania Lua","Lista kontrolna debugowania","Rozwiązywanie problemów z fizyką"]
 title: Debugowanie w Defoldzie
 brief: Ta instrukcja wyjaśnia narzędzia do debugowania dostępne w Defoldzie.
 ---

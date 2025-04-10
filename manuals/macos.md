@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["macOS development","Project settings","Application icon","Publishing your application"]
+toc: ["macOS development","Project settings","Application icon","Publishing your application","Publishing outside the Mac App Store","Publishing to the Mac App Store"]
 title: Defold development for the macOS platform
 brief: This manual describes how to build and run Defold applications on macOS
 ---

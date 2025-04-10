@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["逐帧动画","播放逐帧动画","Sprite 示例","播放完成回调函数"]
+toc: ["逐帧动画","播放逐帧动画","Sprite 示例","GUI 方块节点示例","播放完成回调函数"]
 title: Defold 中的逐帧动画
 brief: 本教程介绍了如何在 Defold 中使用逐帧动画.
 ---

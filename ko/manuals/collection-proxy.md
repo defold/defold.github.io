@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Collection Proxies","Typical use cases","Worlds","Editing","Naming collections","Unloading","Time step"]
+toc: ["Collection Proxies","Typical use cases","Worlds","Editing","Naming collections","Loading","Unloading","Input","Time step"]
 title: Defold manual
 ---
 

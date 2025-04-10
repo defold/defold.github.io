@@ -282,7 +282,7 @@ def generate_toc(file):
     toc = []
     within_comment = False
     for line in lines:
-        if line.strip() == "```":
+        if line.strip().startswith("```"):
             within_comment = not within_comment
         elif not within_comment and (line.startswith("# ") or line.startswith("## ") or line.startswith("### ")):
             heading = line

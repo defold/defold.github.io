@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Skrypty","Typy skryptów","Wykonywanie skryptów, wywołania zwrotne i self","Logika reaktywna","Preprocessing"]
+toc: ["Skrypty","Typy skryptów","Wykonywanie skryptów, wywołania zwrotne i self"]
 title: Pisanie logiki gry w skryptach
 brief: Ta instrukcja opisuje szczegóły pisania logiki gry w komponentach typu skrypt.
 ---

@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Obsługa klawiatury","Zaznaczony tekst"]
+toc: ["Obsługa klawiatury","Obsługa tekstu","Tekst","Zaznaczony tekst"]
 title: Wejścia klawiszy i tekstowe w silniku Defold
 brief: Ta instrukcja wyjaśnia, jak działa wejście za pomocą klawiszy i wejścia tekstowe w silniku Defold.
 ---

@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Aktualizacja na żywo (Live Update)","Przygotowanie treści do Aktualizacji na żywo","Ustawienia Aktualizacji na żywo","Programowanie z wykluczonymi pełnomocnikami kolekcji","Programowanie z manifestem aktualizacji na żywo","Uwagi","Konfiguracja Amazon Web Service"]
+toc: ["Aktualizacja na żywo (Live Update)","Przygotowanie treści do Aktualizacji na żywo","Ustawienia Aktualizacji na żywo","Programowanie z wykluczonymi pełnomocnikami kolekcji","Pakowanie z funkcją Live update","Manifest","Aktualizacja manifestu w funkcji Live update","Weryfikacja manifestu","Obsługiwane wersje silnika Defold","Generowanie kluczy do podpisu","Programowanie z manifestem aktualizacji na żywo","Uwagi","Konfiguracja Amazon Web Service","Uwagi dotyczące rozwoju oprogramowania"]
 title: Aktualizacja na żywo (Live update) w Defoldzie
 brief: Ta instrukcja opisuje i wyjaśnia funkcjonalność Live update umożliwiającą aplikacjom pobieranie i przetrzymywanie danych, które początkowo były celowo nie dołączone do zbudowanej paczki.
 ---

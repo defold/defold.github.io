@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["Mouse Triggers","鼠标键","鼠标移动","拾取检测","界面点击检测","游戏对象点击检测"]
+toc: ["Mouse Triggers","鼠标键","鼠标滚轮","鼠标移动","触摸触发器","Single-touch","Multi-touch","拾取检测","界面点击检测","游戏对象点击检测"]
 title: Defold 鼠标和触摸输入教程
 brief: 本教程介绍了鼠标和触摸输入的功能.
 ---

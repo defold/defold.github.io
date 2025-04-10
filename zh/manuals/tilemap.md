@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["Tile map （瓷砖地图）","创建瓷砖地图","把瓷砖地图加入到游戏中","运行时操作","用脚本更改瓷砖"]
+toc: ["Tile map （瓷砖地图）","创建瓷砖地图","把瓷砖地图加入到游戏中","运行时操作","用脚本更改瓷砖","瓷砖地图属性","混合模式","修改属性","材质常量","相关项目配置"]
 title: Defold 瓷砖地图教程
 brief: 本教程介绍了 Defold 对于瓷砖地图的支持.
 ---

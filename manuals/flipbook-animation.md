@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Flip-book animation","Playing flip-book animations","Sprite example","Completion callbacks"]
+toc: ["Flip-book animation","Playing flip-book animations","Sprite example","GUI box node example","Completion callbacks"]
 title: Flipbook animations in Defold manual
 brief: This manual describes how to use flipbook animations in Defold.
 ---

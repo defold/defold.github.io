@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["Gamepads","十字键","Connect 和 Disconnect","手柄配置文件","HTML5上的游戏手柄","标准手柄","Windows 上的手柄","安卓手柄"]
+toc: ["Gamepads","十字键","摇杆","多手柄","Connect 和 Disconnect","手柄原始数据","手柄配置文件","未映射手柄","HTML5上的游戏手柄","标准手柄","Windows 上的手柄","安卓手柄"]
 title: Defold 游戏手柄输入教程
 brief: 本教程介绍了游戏手柄输入的功能.
 ---

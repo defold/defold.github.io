@@ -2,7 +2,7 @@
 layout: manual
 language: fr
 github: https://github.com/defold/doc
-toc: ["Adressage","Identifiants","Collections","Adressage relatif","Raccourcis","Les chemins des GameObjects","Ladressage absolu","Identifiants hachés"]
+toc: ["Adressage","Identifiants","Collections","Adressage relatif","Raccourcis","Les chemins des GameObjects","Ladressage absolu","Identifiants hachés","Construction dobjets URL"]
 title: L'adressage dans Defold
 brief: Ce guide explique comment Defold résoud le problème d'adressage.
 ---

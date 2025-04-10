@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["声音","创建声音组件","播放声音","增益","声音组","控制声音","运行时控制"]
+toc: ["声音","创建声音组件","播放声音","停止播放声音","增益","声音组","控制声音","运行时控制","相关项目配置"]
 title: Defold 中的声音
 brief: 本教程介绍了如果把声音带入 Defold 项目, 进行播放和控制.
 ---

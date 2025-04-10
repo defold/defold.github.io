@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["定位","标志","集合","相对地址","简化符","游戏对象路径","绝对地址","哈希标记","URLs"]
+toc: ["定位","标志","集合","相对地址","简化符","游戏对象路径","绝对地址","哈希标记","URLs","构建 URL 对象"]
 title: Defold 定位
 brief: 本教程解释了 Defold 如何实现地址定位功能.
 ---

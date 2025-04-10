@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["GUI","Nodes","Node properties","Textures and flipbook animations","Slice-9 texturing","Index: rendering order","Parent-child hierarchies","Layers","Batch rendering","Script","Handling different resolutions and aspect ratios","Adjust mode","Anchors","Node repositioning without anchors","Node repositioning with anchors","Pivot","GUI scripts","Dynamic node IDs"]
+toc: ["GUI","Nodes","Node properties","Textures and flipbook animations","Slice-9 texturing","Index: rendering order","Parent-child hierarchies","Layers","Batch rendering","Script","Handling different resolutions and aspect ratios","Adjust mode","Anchors","Node repositioning without anchors","Node repositioning with anchors","Pivot","GUI scripts","Node id:s","Dynamically created nodes","Dynamic node IDs","Property animation","Render script"]
 title: Defold manual
 ---
 

@@ -2,7 +2,7 @@
 layout: manual
 language: ru
 github: https://github.com/defold/doc
-toc: ["Разработка для Android","Android и процесс подписания Google Play","Создание хранилища ключей"]
+toc: ["Разработка для Android","Android и процесс подписания Google Play","Создание хранилища ключей","Создание пакета приложений для Android","Установка пакета приложений для Android","Установка APK","Разрешения","android.permission.INTERNET и android.permission.ACCESS_NETWORK_STATE (Уровень защиты: нормальный)","android.permission.WRITE_EXTERNAL_STORAGE (Уровень защиты: опасный)","android.permission.WAKE_LOCK (Уровень защиты: нормальный)","Android Debug Bridge","Отладка пакета приложений","Использование AndroidX","FAQ"]
 title: Разработка на Defold для платформы Android
 brief: Это руководство описывает, как создавать и запускать приложения Defold на устройствах Android
 ---

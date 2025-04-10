@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["HTTP requests","HTTP GET","Other HTTP methods","API Reference","Extensions"]
+toc: ["HTTP requests","HTTP GET","HTTP POST","Other HTTP methods","API Reference","Extensions"]
 title: HTTP Requests
 brief: This manual explains how to make HTTP requests.
 ---

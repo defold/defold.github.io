@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Atlas (Galeria obrazów)","Tworzenie Atlasu","Właściwości Atlasu","Właściwości Obrazu","Właściwości Animacji","Tworzenie tekstury i atlasu w czasie wykonania programu (Runtime)","Tworzenie zasobu tekstury w czasie wykonania"]
+toc: ["Atlas (Galeria obrazów)","Tworzenie Atlasu","Właściwości Atlasu","Właściwości Obrazu","Właściwości Animacji","Tworzenie tekstury i atlasu w czasie wykonania programu (Runtime)","Tworzenie zasobu tekstury w czasie wykonania","Tworzenie atlasu w czasie wykonania"]
 title: Atlas (Galeria obrazów)
 brief: Ta instrukcja wyjaśnia jak działa atlas w Defoldzie.
 ---

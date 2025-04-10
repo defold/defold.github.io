@@ -2,7 +2,7 @@
 layout: manual
 language: ko
 github: https://github.com/defold/doc
-toc: ["Modules","Requiring files","Modules","Best practices","Naming conventions","Beware of locals","global scope를 오염시키지 말고 내부 상태(internal state)를 노출시키거나 새어나오지 않게 하기","state table만 사용하는 Stateless modules","metatables를 사용하는 Stateless modules","Stateless modules using closures","모듈과 모듈 함수는 명확한 목적으로 가지고 예상대로 동작하는 것이 좋습니다.","모듈과 모든 public 함수들을 문서화 하세요."]
+toc: ["Modules","Requiring files","Name spaces","Modules","Best practices","Naming conventions","Allow monkey patching","Beware of locals","global scope를 오염시키지 말고 내부 상태(internal state)를 노출시키거나 새어나오지 않게 하기","Stateless or stateful modules?","state table만 사용하는 Stateless modules","metatables를 사용하는 Stateless modules","Stateless modules using closures","모듈과 모듈 함수는 명확한 목적으로 가지고 예상대로 동작하는 것이 좋습니다.","모듈과 모든 public 함수들을 문서화 하세요."]
 title: Defold manual
 ---
 

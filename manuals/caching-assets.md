@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Caching assets","Project cache","Local cache"]
+toc: ["Caching assets","Project cache","Local cache","Remote cache"]
 title: Caching assets
 brief: This manual explains how to use the asset cache to speed up builds.
 ---

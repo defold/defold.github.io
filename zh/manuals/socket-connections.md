@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["Socket 连接"]
+toc: ["Socket 连接","API 文档与示例"]
 title: Socket 连接
 brief: 本教程介绍了建立 socket 连接的方法.
 ---

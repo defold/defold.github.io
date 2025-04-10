@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["编辑器脚本","编辑器脚本运行环境",".editor_script 构成","Action","可撤销行为","行为混用及其副作用","Lifecycle hooks"]
+toc: ["编辑器脚本","编辑器脚本运行环境",".editor_script 构成","编辑器 API","Command","Action","可撤销行为","不可撤销行为","行为混用及其副作用","Lifecycle hooks","Editor scripts in libraries","Language servers"]
 title: 编辑器脚本
 brief: 本教程介绍了如何使用 Lua 扩展编辑器功能
 ---

@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Property animation","Property animation","GUI node property animation"]
+toc: ["Property animation","Property animation","GUI node property animation","Completion callbacks","Easing","Custom easing"]
 title: Property animations in Defold manual
 brief: This manual describes how to use property animations in Defold.
 ---

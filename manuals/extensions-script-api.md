@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Auto-complete for native extensions","Creating a script API definition"]
+toc: ["Auto-complete for native extensions","Creating a script API definition","Examples"]
 title: Adding editor auto-complete to a native extensions
 brief: This manual explains how to create a script API definition so that the Defold editor can provide auto-complete for users of an extension.
 ---

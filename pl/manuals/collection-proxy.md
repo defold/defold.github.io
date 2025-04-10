@@ -2,7 +2,7 @@
 layout: manual
 language: pl
 github: https://github.com/defold/doc
-toc: ["Pełnomocnik kolekcji (Collection proxy)","Towrzenie komponentów typu Pełnomocnik kolekcji","Bootstrap (kolekcja startowa)","Wczytywanie kolekcji","Zwalnianie pamięci po świecie gry","Krok czasowy"]
+toc: ["Pełnomocnik kolekcji (Collection proxy)","Towrzenie komponentów typu Pełnomocnik kolekcji","Bootstrap (kolekcja startowa)","Wczytywanie kolekcji","Adresowanie nowego świata gry","Zwalnianie pamięci po świecie gry","Krok czasowy","Uwagi i częste błędy"]
 title: Instrukcja do Pełnomocników kolekcji
 brief: Instrukcja ta wyjaśnia jak dynamicznie tworzyć nowe światy gry i przełączać się między nimi przy użyciu Pełnomocników kolekcji.
 ---

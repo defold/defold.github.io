@@ -2,7 +2,7 @@
 layout: manual
 language: zh
 github: https://github.com/defold/doc
-toc: ["属性"]
+toc: ["属性","游戏对象属性和组件属性","GUI 节点属性"]
 title: Defold 中的属性
 brief: 本教程介绍了 Defold 中各种属性的使用以及属性动画的制作方法.
 ---
