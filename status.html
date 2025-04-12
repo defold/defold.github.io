@@ -1,31 +1,13 @@
 ---
 layout: hero_and_text
 title: Build server status page
-description: Build server status page
+description: The Defold build servers are provided as a free service to all developers. Refer to this page to check their availability.
 nav: floating
 heatmap: false
 background: /images/hero/defold-top-bg-transparent-2.png
 after: [always_free.html, learn_section.html, donors_and_partners.html]
 ---
-<div id="stage" class="columns twelve">
-    <h2 class="panel-title">Stage server</h2>
-    <div id="statusPanel" class="panel">
-        <div class="panel-heading">
-            <h3 id="statusTitle" class="panel-title">
-            </h3>
-        </div>
-    </div>
-    <div class="row clearfix">
-        <div class="columns six">
-            <div id="list-1"></div>
-        </div>
-        <div class="columns six">
-            <div id="list-2"></div>
-        </div>
-    </div>
-</div>
-
-<div id="prod" class="columns twelve">
+<div id="prod" class="columns six">
     <h2 class="panel-title">Production server</h2>
     <div id="statusPanel" class="panel">
         <div class="panel-heading">
@@ -33,15 +15,22 @@ after: [always_free.html, learn_section.html, donors_and_partners.html]
             </h3>
         </div>
     </div>
-    <div class="row clearfix">
-        <div class="columns six">
-            <div id="list-1"></div>
-        </div>
-        <div class="columns six">
-            <div id="list-2"></div>
-        </div>
+    <div id="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
     </div>
 </div>
+
+<div id="stage" class="columns six">
+    <h2 class="panel-title">Stage server</h2>
+    <div id="statusPanel" class="panel">
+        <div class="panel-heading">
+            <h3 id="statusTitle" class="panel-title">
+            </h3>
+        </div>
+    </div>
+    <div id="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
+    </div>
+</div>
+
 <script type="text/javascript">
     const OperationalStatus = "Operational";
     const UnreachableStatus = "Unreachable";
@@ -74,22 +63,21 @@ after: [always_free.html, learn_section.html, donors_and_partners.html]
     function handleResponse(response, rootId) {
         var totalFullyOperatedPlatforms = 0;
         var totalUnreachablePlatforms = 0;
-        var parent_block_1 = document.getElementById(rootId).querySelector("#list-1");
-        var parent_block_2 = document.getElementById(rootId).querySelector("#list-2");
-        var idx = 0;
+        var parentGrid = document.getElementById(rootId).querySelector("#grid");
+        var platformCount = 0;
         for (var key in response) {
-            addBlock(key, response[key], idx % 2 == 0 ? parent_block_1 : parent_block_2);
+            addBlock(key, response[key], parentGrid);
             if (response[key] == OperationalStatus) {
                 totalFullyOperatedPlatforms++;
             } else if (response[key] == UnreachableStatus) {
                 totalUnreachablePlatforms++;
             }
-            idx++;
+            platformCount++;
         }
-        if (totalUnreachablePlatforms == idx) {
+        if (totalUnreachablePlatforms == platformCount) {
             document.getElementById(rootId).querySelector("#statusPanel").classList.add("panel-danger");
             document.getElementById(rootId).querySelector("#statusTitle").textContent = UnreachableStatus;
-        } else if (totalFullyOperatedPlatforms == idx) {
+        } else if (totalFullyOperatedPlatforms == platformCount) {
             document.getElementById(rootId).querySelector("#statusPanel").classList.add("panel-success");
             document.getElementById(rootId).querySelector("#statusTitle").textContent = OperationalStatus;
         } else {
