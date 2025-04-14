@@ -210,13 +210,43 @@
             "type": "VARIABLE"
         },
         {
-            "brief": "Print the body representation to the log output",
-            "description": "Print the body representation to the log output",
+            "brief": "You can disable sleeping on this body. If you disable sleeping, the body will be woken.",
+            "description": "You can disable sleeping on this body. If you disable sleeping, the body will be woken.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "b2d.body.dump",
+            "name": "b2d.body.enable_sleep",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "if false, the body will never sleep, and consume more CPU",
+                    "name": "enable",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the angle in radians.",
+            "description": "Get the angle in radians.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_angle",
             "notes": [],
             "parameters": [
                 {
@@ -228,7 +258,15 @@
                 }
             ],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "the current world rotation angle in radians.",
+                    "name": "angle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -317,37 +355,6 @@
                 {
                     "doc": "the scale",
                     "name": "scale",
-                    "types": [
-                        "number"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Get the rotational inertia of the body about the local origin.",
-            "description": "Get the rotational inertia of the body about the local origin.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.body.get_inertia",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "body",
-                    "name": "body",
-                    "types": [
-                        "b2Body"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "the rotational inertia, usually in kg-m^2.",
-                    "name": "inertia",
                     "types": [
                         "number"
                     ]
@@ -501,7 +508,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "b2d.body.get_local_center",
+            "name": "b2d.body.get_local_center_of_mass",
             "notes": [],
             "parameters": [
                 {
@@ -633,37 +640,6 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get the next body in the world's body list.",
-            "description": "Get the next body in the world's body list.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.body.get_next",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "body",
-                    "name": "body",
-                    "types": [
-                        "b2Body"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "the next body",
-                    "name": "body",
-                    "types": [
-                        "b2Body"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
             "brief": "Get the world body origin position.",
             "description": "Get the world body origin position.",
             "error": "",
@@ -688,6 +664,37 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the rotational inertia of the body about the local origin.",
+            "description": "Get the rotational inertia of the body about the local origin.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_rotational_inertia",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the rotational inertia, usually in kg-m^2.",
+                    "name": "inertia",
+                    "types": [
+                        "number"
                     ]
                 }
             ],
@@ -757,44 +764,13 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get the angle in radians.",
-            "description": "Get the angle in radians.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.body.get_world_center",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "body",
-                    "name": "body",
-                    "types": [
-                        "b2Body"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "the current world rotation angle in radians.",
-                    "name": "angle",
-                    "types": [
-                        "number"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
             "brief": "Get the world position of the center of mass.",
             "description": "Get the world position of the center of mass.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "b2d.body.get_world_center",
+            "name": "b2d.body.get_world_center_of_mass",
             "notes": [],
             "parameters": [
                 {
@@ -1025,7 +1001,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "b2d.body.is_sleeping_allowed",
+            "name": "b2d.body.is_sleeping_enabled",
             "notes": [],
             "parameters": [
                 {
@@ -1334,36 +1310,6 @@
                     "name": "velocity",
                     "types": [
                         "vector3"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "You can disable sleeping on this body. If you disable sleeping, the body will be woken.",
-            "description": "You can disable sleeping on this body. If you disable sleeping, the body will be woken.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.body.set_sleeping_allowed",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "body",
-                    "name": "body",
-                    "types": [
-                        "b2Body"
-                    ]
-                },
-                {
-                    "doc": "if false, the body will never sleep, and consume more CPU",
-                    "name": "enable",
-                    "types": [
-                        "bool"
                     ]
                 }
             ],

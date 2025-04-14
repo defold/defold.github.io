@@ -1,6 +1,21 @@
 {
     "elements": [
         {
+            "brief": "logs the current frame to the console",
+            "description": "logs the current frame to the console",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">dump_frame</span><span class=\"p\">()</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "profiler.dump_frame",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "enables or disables the on-screen profiler ui",
             "description": "Creates and shows or hides and destroys the on-sceen profiler ui\nThe profiler is a real-time tool that shows the numbers of milliseconds spent\nin each scope per frame as well as counters. The profiler is very useful for\ntracking down performance and resource problems.",
             "error": "",
@@ -70,8 +85,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "send a text to the profiler",
-            "description": "Send a text to the profiler",
+            "brief": "send a text to the connected profiler",
+            "description": "Send a text to the connected profiler",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">log_text</span><span class=\"p\">(</span><span class=\"s2\">&quot;Event: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">name</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
@@ -80,7 +95,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "the string to send to the profiler",
+                    "doc": "the string to send to the connected profiler",
                     "name": "text",
                     "types": [
                         "string"

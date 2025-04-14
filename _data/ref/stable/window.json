@@ -69,6 +69,29 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "get the display scale",
+            "description": "This returns the content scale of the current display.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "window.get_display_scale",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The display scale",
+                    "name": "scale",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "get the cursor lock state",
             "description": "This returns the current lock state of the mouse cursor",
             "error": "",
@@ -183,6 +206,89 @@
                     "name": "flag",
                     "types": [
                         "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the position of the window",
+            "description": "Sets the window position.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "window.set_position",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Horizontal position of window",
+                    "name": "x",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Vertical position of window",
+                    "name": "y",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the size of the window",
+            "description": "Sets the window size. Works on desktop platforms only.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "window.set_size",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Width of window",
+                    "name": "width",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Height of window",
+                    "name": "height",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the title of the window",
+            "description": "Sets the window title. Works on desktop platforms.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "window.set_title",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The title, encoded as UTF-8",
+                    "name": "title",
+                    "types": [
+                        "string"
                     ]
                 }
             ],

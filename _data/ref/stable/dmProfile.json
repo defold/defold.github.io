@@ -69,7 +69,7 @@
                     "doc": "The scope name hash value pointer. May be 0.",
                     "name": "a",
                     "types": [
-                        "dmhash_t*"
+                        "uint64_t*"
                     ]
                 }
             ],
@@ -294,7 +294,7 @@
             "brief": "bool property",
             "description": "Declare a property of type <code>bool</code>",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_BOOL</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyBool</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;true or false&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_BOOL</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyBool</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">PROFILE_PROPERTY_FRAME_RESET</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;true or false&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "DM_PROPERTY_BOOL",
@@ -315,7 +315,7 @@
                     ]
                 },
                 {
-                    "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.",
+                    "doc": "The flags. Either <code>PROFILE_PROPERTY_NONE</code> or <code>PROFILE_PROPERTY_FRAME_RESET</code>. <code>PROFILE_PROPERTY_FRAME_RESET</code> makes the value reset each frame.",
                     "name": "flags",
                     "types": [
                         "uint32_t"
@@ -329,10 +329,10 @@
                     ]
                 },
                 {
-                    "doc": "[optional] The parent group",
+                    "doc": "The parent group. May be 0.",
                     "name": "group",
                     "types": [
-                        "property*"
+                        "dmProfileIdx*"
                     ]
                 }
             ],
@@ -345,7 +345,7 @@
             "brief": "Declare an extern property",
             "description": "Declare an extern property",
             "error": "",
-            "examples": "Use a property declared elsewhere in the same library\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_EXTERN</span><span class=\"p\">(</span><span class=\"n\">rmtp_GameObject</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">DM_PROPERTY_U32</span><span class=\"p\">(</span><span class=\"n\">rmtp_ComponentsAnim</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;#&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_GameObject</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "examples": "Use a property declared elsewhere in the same library\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_EXTERN</span><span class=\"p\">(</span><span class=\"n\">rmtp_GameObject</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">DM_PROPERTY_U32</span><span class=\"p\">(</span><span class=\"n\">rmtp_ComponentsAnim</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">PROFILE_PROPERTY_FRAME_RESET</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;#&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_GameObject</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "DM_PROPERTY_EXTERN",
@@ -368,7 +368,7 @@
             "brief": "float property",
             "description": "Declare a property of type <code>float</code>",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_F32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_F32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">PROFILE_PROPERTY_FRAME_RESET</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "DM_PROPERTY_F32",
@@ -389,7 +389,7 @@
                     ]
                 },
                 {
-                    "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.",
+                    "doc": "The flags. Either <code>PROFILE_PROPERTY_NONE</code> or <code>PROFILE_PROPERTY_FRAME_RESET</code>. <code>PROFILE_PROPERTY_FRAME_RESET</code> makes the value reset each frame.",
                     "name": "flags",
                     "types": [
                         "uint32_t"
@@ -403,10 +403,10 @@
                     ]
                 },
                 {
-                    "doc": "[optional] The parent group",
+                    "doc": "The parent group. May be 0.",
                     "name": "group",
                     "types": [
-                        "property*"
+                        "dmProfileIdx*"
                     ]
                 }
             ],
@@ -419,7 +419,7 @@
             "brief": "double property",
             "description": "Declare a property of type <code>double</code>",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_F64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_F64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">PROFILE_PROPERTY_FRAME_RESET</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "DM_PROPERTY_F64",
@@ -440,7 +440,7 @@
                     ]
                 },
                 {
-                    "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.",
+                    "doc": "The flags. Either <code>PROFILE_PROPERTY_NONE</code> or <code>PROFILE_PROPERTY_FRAME_RESET</code>. <code>PROFILE_PROPERTY_FRAME_RESET</code> makes the value reset each frame.",
                     "name": "flags",
                     "types": [
                         "uint32_t"
@@ -454,10 +454,10 @@
                     ]
                 },
                 {
-                    "doc": "[optional] The parent group",
+                    "doc": "The parent group. May be 0.",
                     "name": "group",
                     "types": [
-                        "property*"
+                        "dmProfileIdx*"
                     ]
                 }
             ],
@@ -470,7 +470,7 @@
             "brief": "Declare a property group",
             "description": "Declare a property group",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_GROUP</span><span class=\"p\">(</span><span class=\"n\">rmtp_GameObject</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;My Group&quot;</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_GROUP</span><span class=\"p\">(</span><span class=\"n\">rmtp_GameObject</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;My Group&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "DM_PROPERTY_GROUP",
@@ -488,6 +488,13 @@
                     "name": "desc",
                     "types": [
                         "const char*"
+                    ]
+                },
+                {
+                    "doc": "pointer to parent property",
+                    "name": "parent",
+                    "types": [
+                        "dmProfileIdx*"
                     ]
                 }
             ],
@@ -523,7 +530,7 @@
             "brief": "int32_t property",
             "description": "Declare a property of type <code>int32_t</code>",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_S32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_S32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">PROFILE_PROPERTY_FRAME_RESET</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "DM_PROPERTY_S32",
@@ -544,7 +551,7 @@
                     ]
                 },
                 {
-                    "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.",
+                    "doc": "The flags. Either <code>PROFILE_PROPERTY_NONE</code> or <code>PROFILE_PROPERTY_FRAME_RESET</code>. <code>PROFILE_PROPERTY_FRAME_RESET</code> makes the value reset each frame.",
                     "name": "flags",
                     "types": [
                         "uint32_t"
@@ -558,10 +565,10 @@
                     ]
                 },
                 {
-                    "doc": "[optional] The parent group",
+                    "doc": "The parent group. May be 0.",
                     "name": "group",
                     "types": [
-                        "property*"
+                        "dmProfileIdx*"
                     ]
                 }
             ],
@@ -574,7 +581,7 @@
             "brief": "int64_t property",
             "description": "Declare a property of type <code>int64_t</code>",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_S64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_S64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">PROFILE_PROPERTY_FRAME_RESET</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "DM_PROPERTY_S64",
@@ -595,7 +602,7 @@
                     ]
                 },
                 {
-                    "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.",
+                    "doc": "The flags. Either <code>PROFILE_PROPERTY_NONE</code> or <code>PROFILE_PROPERTY_FRAME_RESET</code>. <code>PROFILE_PROPERTY_FRAME_RESET</code> makes the value reset each frame.",
                     "name": "flags",
                     "types": [
                         "uint32_t"
@@ -609,10 +616,10 @@
                     ]
                 },
                 {
-                    "doc": "[optional] The parent group",
+                    "doc": "The parent group. May be 0.",
                     "name": "group",
                     "types": [
-                        "property*"
+                        "dmProfileIdx*"
                     ]
                 }
             ],
@@ -835,7 +842,7 @@
             "brief": "uint32_t property",
             "description": "Declare a property of type <code>uint32_t</code>",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_U32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_U32</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">PROFILE_PROPERTY_FRAME_RESET</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "DM_PROPERTY_U32",
@@ -856,7 +863,7 @@
                     ]
                 },
                 {
-                    "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.",
+                    "doc": "The flags. Either <code>PROFILE_PROPERTY_NONE</code> or <code>PROFILE_PROPERTY_FRAME_RESET</code>. <code>PROFILE_PROPERTY_FRAME_RESET</code> makes the value reset each frame.",
                     "name": "flags",
                     "types": [
                         "uint32_t"
@@ -870,10 +877,10 @@
                     ]
                 },
                 {
-                    "doc": "[optional] The parent group",
+                    "doc": "The parent group. May be 0.",
                     "name": "group",
                     "types": [
-                        "property*"
+                        "dmProfileIdx*"
                     ]
                 }
             ],
@@ -886,7 +893,7 @@
             "brief": "uint64_t property",
             "description": "Declare a property of type <code>uint64_t</code>",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_U64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FrameReset</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_PROPERTY_U64</span><span class=\"p\">(</span><span class=\"n\">rmtp_MyValue</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">PROFILE_PROPERTY_FRAME_RESET</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a value&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">rmtp_MyGroup</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "DM_PROPERTY_U64",
@@ -907,7 +914,7 @@
                     ]
                 },
                 {
-                    "doc": "The flags. Either <code>NoFlags</code> or <code>FrameReset</code>. <code>FrameReset</code> makes the value reset each frame.",
+                    "doc": "The flags. Either <code>PROFILE_PROPERTY_NONE</code> or <code>PROFILE_PROPERTY_FRAME_RESET</code>. <code>PROFILE_PROPERTY_FRAME_RESET</code> makes the value reset each frame.",
                     "name": "flags",
                     "types": [
                         "uint32_t"
@@ -921,10 +928,10 @@
                     ]
                 },
                 {
-                    "doc": "[optional] The parent group",
+                    "doc": "The parent group. May be 0.",
                     "name": "group",
                     "types": [
-                        "property*"
+                        "dmProfileIdx*"
                     ]
                 }
             ],

@@ -1056,6 +1056,57 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get viewport's parameters",
+            "description": "Get viewport's parameters",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetViewport",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the context",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "x-coordinate of the viewport's origin",
+                    "name": "x",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "y-coordinate of the viewport's origin",
+                    "name": "y",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "viewport's width",
+                    "name": "width",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "viewport's height",
+                    "name": "height",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "",
             "description": "",
             "error": "",
@@ -1748,6 +1799,71 @@
             "type": "ENUM"
         },
         {
+            "brief": "Read frame buffer pixels in BGRA format",
+            "description": "Read frame buffer pixels in BGRA format",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ReadPixels",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the context",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "x-coordinate of the starting position",
+                    "name": "x",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "y-coordinate of the starting position",
+                    "name": "y",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "width of the region",
+                    "name": "width",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "height of the region",
+                    "name": "height",
+                    "types": [
+                        "uin32_t"
+                    ]
+                },
+                {
+                    "doc": "buffer to read to",
+                    "name": "buffer",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "buffer size",
+                    "name": "buffer_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "",
             "description": "",
             "error": "",
@@ -2282,6 +2398,51 @@
                     "doc": "",
                     "name": "TYPE_IMAGE_2D",
                     "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TYPE_TEXTURE_2D",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TYPE_SAMPLER",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TYPE_TEXTURE_2D_ARRAY",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TYPE_TEXTURE_CUBE",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TYPE_SAMPLER_3D",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TYPE_TEXTURE_3D",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TYPE_IMAGE_3D",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TYPE_SAMPLER_3D_ARRAY",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TYPE_TEXTURE_3D_ARRAY",
+                    "type": ""
                 }
             ],
             "name": "Type",
@@ -2394,13 +2555,14 @@
         }
     ],
     "info": {
-        "brief": "Graphics API documentation",
-        "description": "<span class=\"file\"><dmsdk/graphics/graphics_opengl.h></span>\nGraphics OpenGL API",
-        "file": "",
+        "brief": "SDK Graphics API documentation",
+        "description": "Platform specific native graphics functions.",
+        "file": "dmsdk/graphics/graphics_native.h",
+        "group": "DEFOLD SDK",
         "language": "",
-        "name": "Graphics OpenGL",
+        "name": "Graphics",
         "namespace": "dmGraphics",
         "notes": [],
-        "path": ""
+        "path": "engine/dlib/src/dmsdk/graphics/graphics_native.h"
     }
 }
