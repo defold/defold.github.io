@@ -24,7 +24,7 @@ nav: floating
 				<h3>Courses</h3>
 			</div>
 		</div>
-		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
+		<div class="grid-250">
 			{%- for course in site.data.learnindex.navigation.courses -%}
 				{%- assign image=course.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}
 				{% include learn_card.html title=course.name description=course.description link=course.path min-height="250px" image=image author=course.author %}

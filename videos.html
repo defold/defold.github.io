@@ -21,14 +21,14 @@ nav: floating
 	<div class="container">
 		<div class="row">
 			<div class="columns full">
-				<h3>Videos</h3>
+				<h2>Videos</h2>
 			</div>
 		</div>
 		{%- assign authors = site.data.learnindex.navigation.videos | map: "author" | uniq -%}
 		{%- for author in authors -%}
 			{%- assign videos = site.data.learnindex.navigation.videos | where: "author", author -%}
 			<h3>{{ author }}</h3>
-			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
+			<div class="grid-250">
 			{%- for video in videos -%}
 				{% include youtube_card.html title=video.name description=video.description embed=video.embed link=video.path author=video.author min-height="250px" image="/images/icons/yt_icon_rgb.svg" %}
 			{%- endfor -%}

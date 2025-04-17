@@ -15,7 +15,7 @@ title: Authors
 		</div>
 		<div class="row" style="margin-bottom: 30px;">
 			<div class="columns twelve">
-				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); grid-gap: 2rem;">
+				<div class="grid-200">
 					{%- for author in site.data.authorindex -%}
 						<div><a href="/authors/{{ author.id }}">{{ author.name }}</a>&nbsp;({{ author.assets.size }})</div>
 					{%- endfor -%}

@@ -21,7 +21,7 @@
 		search.addEventListener('propertychange', inputHandler); // for IE8
 	</script>
 
-	<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
+	<div class="grid-250">
 		{%- for id in assetids -%}
 			{% include asset.html id=id %}
 		{%- endfor -%}

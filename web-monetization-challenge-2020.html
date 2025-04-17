@@ -150,7 +150,7 @@ after: [donors_and_partners.html]
 	<div class="columns twelve">
 		<h4 id="judges">Meet our judges</h4>
 
-		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-gap: 2rem; padding: 0px;">
+		<div class="grid-300">
 			{%- include profile_card.html
 				image="/images/people/andrzej-mazur.png"
 				name="Andrzej Mazur"
@@ -210,7 +210,7 @@ after: [donors_and_partners.html]
 <div class="row">
 	<div class="columns twelve">
 		<h4>Frequently Asked Questions</h4>
-		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); grid-gap: 2rem; padding: 0px;">
+		<div class="grid-300">
 			{%- for question in site.data.webmonetizationchallengefaq -%}
 				{% include card.html title=question.q body=question.a class="grey" %}
 			{%- endfor -%}

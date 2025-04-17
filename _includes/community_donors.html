@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="columns twelve center">
 				<h5>Top Community Donors</h5>
-				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); grid-gap: 2rem; padding: 0px;">
+				<div class="grid-150">
 					{%- for donor in logodonors -%}
 						{%- include donor.html donor=donor -%}
 					{%- endfor -%}

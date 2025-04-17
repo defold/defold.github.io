@@ -24,13 +24,14 @@ nav: floating
 		<div class="row">
 			<div class="columns full">
 				<h3>{{ category | capitalize }}</h3>
-				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 2rem; padding: 0px;">
+				<div class="grid-250">
 				{%- assign examples = site.data.examplesindex | where: "category", category -%}
 				{%- for example in examples -%}
 					{% include learn_card.html title=example.title description=example.brief link=example.path min-height="250px" %}
 				{%- endfor -%}
 				</div>
 			</div>
+			<br/>
 		</div>
 		{% endfor %}
 </div>

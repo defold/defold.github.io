@@ -87,7 +87,7 @@ title: Submit a Defold Asset
 
 					<br/>
 					<label for="platforms">Platforms</label>
-					<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); grid-gap: 0 1rem;">
+					<div class="grid-150">
 						<span><input type="checkbox" name="platforms" value="android" id="android" style="margin-right: 1rem"/><label for="android" style="display: inline">Android</label></span>
 						<span><input type="checkbox" name="platforms" value="ios" id="ios" style="margin-right: 1rem"/><label for="ios" style="display: inline">iOS</label></span>
 						<span><input type="checkbox" name="platforms" value="macos" id="macos" style="margin-right: 1rem"/><label for="macos" style="display: inline">macOS</label></span>
@@ -98,7 +98,7 @@ title: Submit a Defold Asset
 
 					<br/>
 					<label for="tags">Tags (optional)</label>
-					<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); grid-gap: 0 1rem;">
+					<div class="grid-150">
 					{%- for tag in tags -%}
 						<span><input type="checkbox" name="tags" value="{{ tag | downcase}}" id="{{ tag | downcase}}" style="margin-right: 1rem"/><label for="{{ tag | downcase}}" style="display: inline">{{ tag }}</label></span>
 					{%- endfor -%}
