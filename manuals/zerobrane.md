@@ -64,7 +64,7 @@ Debugging session started in '/Users/my_user/Documents/Projects/Defold_project'.
 Now it is possible to use the debugging features available in ZeroBrane; you can step, inspect, add and remove breakpoints etc.
 
 <div class='sidenote' markdown='1'>
-The debugging will only be enabled for the lua context from where debugging is initiated. Enabling "shared_state" in game.project means you can debug your whole application no matter where you started.
+The debugging will only be enabled for the lua context from where debugging is initiated. Enabling "shared_state" in *game.project* means you can debug your whole application no matter where you started.
 </div>
 
 ![Stepping](../images/zerobrane/code.png)

@@ -4181,7 +4181,7 @@ There are several things to consider when adapting your game and graphics to dif
 * Is this a retro game with low resolution pixel perfect graphics or a modern game with HD quality graphics?
 * How should the game behave when played in full screen on different screen sizes?
   * Should the player see more of the game content on a high resolution screen or should the graphics adaptively zoom to always show the same content?
-* How should the game deal with aspect ratios other than the one you have set in game.project?
+* How should the game deal with aspect ratios other than the one you have set in *game.project*?
   * Should the player see more of the game content? Or maybe there should be black bars? Or maybe resized GUI elements?
 * What kind of menus and on-screen gui components do you need and how should they adapt to different screen sizes and screen orientations?
   * Should menus and other gui components change layout when the orientation changes or should they keep the same layout regardless of orientation?
@@ -7519,7 +7519,7 @@ The created component has a set of properties that should be set:
 ![Select component](https://defold.com/manuals/images/sound/sound_properties.png)
 
 *Sound*
-: Should be set to a sound file in your project. The file should be in _Wave_ or _Ogg Vorbis_ format. Defold supports sound files saved at 16bit bit depth and with a sampling rate of 44100.
+: Should be set to a sound file in your project. The file should be in _Wave_, _Ogg Vorbis_ or _Ogg Opus_ format. Defold supports sound files saved at 16bit bit depth.
 
 *Looping*
 : If checked the sound will play back in _Loopcount_ times or until explicitly stopped.
@@ -11656,7 +11656,7 @@ It is possible to add custom encryption to Lua source files by implementing a Re
 
 
 ### Encoding project configuration values
-The game.project file will be included as-is in your application bundle. Sometimes you may wish to store public API access keys or similar values, that are of a sensitive, but perhaps not private nature. To harden security for such values they can be included into the application binary, instead of stored in game.project, and still be accessible to Defold API functions such as `sys.get_config_string()` and similar functions. You can do so by adding a native extension in your game project and using the `DM_DECLARE_CONFIGFILE_EXTENSION` macro to provide your own overrides for getting config values using the Defold API functions. An example project that can be used as a starting point is [available on GitHub](https://github.com/defold/example-configfile-extension/tree/master).
+The *game.project* file will be included as-is in your application bundle. Sometimes you may wish to store public API access keys or similar values, that are of a sensitive, but perhaps not private nature. To harden security for such values they can be included into the application binary, instead of stored in *game.project*, and still be accessible to Defold API functions such as `sys.get_config_string()` and similar functions. You can do so by adding a native extension in your *game.project* and using the `DM_DECLARE_CONFIGFILE_EXTENSION` macro to provide your own overrides for getting config values using the Defold API functions. An example project that can be used as a starting point is [available on GitHub](https://github.com/defold/example-configfile-extension/tree/master).
 
 
 ## Securing your game against cheaters
@@ -14178,12 +14178,12 @@ For platforms with a fixed orientation and screen resolution: Check that the gam
 
 For mobile platforms either lock the screen orientation in *game.project* or make sure the game works in both landscape and portrait mode.
 
-* **Display sizes** - Is everything looking good on a larger or smaller screen than the default width and height set in game project?
+* **Display sizes** - Is everything looking good on a larger or smaller screen than the default width and height set in *game.project*?
   * The projection used in the render script and the layouts used in the gui will play a role here.
-* **Aspect ratios** - Is everything looking good on a screen with a different aspect ratio than the default aspect ratio from the width and height set in game project?
+* **Aspect ratios** - Is everything looking good on a screen with a different aspect ratio than the default aspect ratio from the width and height set in *game.project*?
   * The projection used in the render script and the layouts used in the gui will play a role here.
 * **Refresh rate** - Is the game running well on a screen with a higher refresh rate than 60 Hz?
-  * The vsync and swap interval in the Display section of game.project 
+  * The vsync and swap interval in the Display section of *game.project* 
 
 
 ## Mobile phones and notch and hole punch cameras
@@ -14956,7 +14956,18 @@ A quick way to reduce the engine size is to remove functionality in the engine t
 The biggest wins in terms of asset size optimizations are usually gained by reducing the size of sounds and textures.
 
 ### Optimize sounds
-Defold supports .ogg and .wav files where .ogg is typically used for music and .wav for sound effects. Sounds must be 16-bit with a sampling rate of 44100 so any optimizations must be done on the sounds before encoding them. You can edit the sounds in an external sound editor software to reduce the quality or convert from .wav to .ogg. Also consider converting sounds from stereo to mono.
+Defold supports these formats:
+* .wav
+* .ogg
+* .opus
+
+Sounds files must be using 16-bit samples.
+Our sound decoders will up/downscale sounds sample rates as needed for the current sound device.
+
+Shorter sounds like sound effects are often compressed harder, whereas music files have less compression.
+No compression is done by Defold, so the developer will have to handle that specifically for each audio format.
+
+You can edit the sounds in an external sound editor software (or command line using e.g. [ffmpeg](https://ffmpeg.org)) to reduce the quality or convert between formats. Also consider converting sounds from stereo to mono to further reduce the size of the content.
 
 ### Optimize textures
 You have several options when it comes to optimizing the textures used by your game, but the first thing to do is to check the size of the images that gets added to an atlas or used as a tilesource. You should never use a larger size on the images than is actually needed in your game. Importing large images and scaling them down to the appropriate size is a waste of texture memory and should be avoided. Start by adjusting the size of the images using external image editing software to the actual size needed in your game. For things such as background images it might also be ok to use a small image and scale it up to the desired size. Once you have the images down to the correct size and added to atlases or used in tilesources you also need to consider the size of the atlases themselves. The maximum atlas size that can be used varies between platforms and graphics hardware.
@@ -16729,7 +16740,7 @@ To create a new extension, create a folder in the project root. This folder will
 
 ```
 *ext.manifest*
-: The extension folder _must_ contain an *ext.manifest* file. This file is a YAML format file that is picked up by the extension builder. A minimal manifest file should contain the name of the extension.
+: The extension folder _must_ contain an *ext.manifest* file. This file is a configuration file with flags and defines used when building a single extension. File format definition can be found in the [Extension Manifest manual](#manuals:extensions-ext-manifests).
 
 *src*
 : This folder should contain all source code files.
@@ -16956,7 +16967,7 @@ The available SDK functions are documented in our [API reference](https://defold
 * [Array](https://defold.com/ref/dmArray/) - Templatized array with bounds checking.
 * [Buffer](https://defold.com/ref/dmBuffer/) - Buffer API for data buffers as the main way to communicate between systems. [Lua API](https://defold.com/ref/buffer/) for buffer creation also exists.
 * [Condition Variable](https://defold.com/ref/dmConditionVariable/) - API for platform independent mutex synchronization primitive.
-* [ConfigFile](https://defold.com/ref/dmConfigFile/) - Configuration file access functions. The configuration file is compiled version of the game.project file.
+* [ConfigFile](https://defold.com/ref/dmConfigFile/) - Configuration file access functions. The configuration file is compiled version of the *game.project* file.
 * [Connection Pool](https://defold.com/ref/dmConnectionPool/) - API for a pool of socket connections.
 * [Crypt](https://defold.com/ref/dmCrypt/) - API with cryptographic functions.
 * [DNS](https://defold.com/ref/dmDNS/) - API with DNS functions.
@@ -17393,7 +17404,7 @@ YAML field name: **`initialMemory`**
 Default value: **33554432**
 
 The size of memory that allocated for web application. In case if ALLOW_MEMORY_GROWTH=0 (js-web) - there is a total amount of memory that web application can use. for more information look [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory). Value in bytes. Note that value must be a multiple of WebAssembly page size (64KiB).
-That options relates to `html5.heap_size` in game.project [link](#manuals:html5). Option that configured via application manifest is set during compilation and used as default value for `INITIAL_MEMORY` option. Value from game.project overrides value from application manifest and used in runtime.
+That options relates to `html5.heap_size` in *game.project* [link](#manuals:html5). Option that configured via application manifest is set during compilation and used as default value for `INITIAL_MEMORY` option. Value from *game.project* overrides value from application manifest and used in runtime.
 
 ## Stack size (js-web and wasm-web only)
 YAML field name: **`stackSize`**
