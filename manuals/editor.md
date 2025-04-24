@@ -2,7 +2,7 @@
 layout: manual
 language: en
 github: https://github.com/defold/doc
-toc: ["Editor overview","Starting the editor","The editor panes","Editor pane","Outline pane","Properties pane","Tools pane","Changed Files pane","Side-by-side editing","The scene editor","Selecting objects","Move tool","Rotate tool","Scale tool","Visibility filters","Creating new project files","Importing files to your project","Updating the editor","Preferences","Keyboard shortcuts","Editor logs","FAQ"]
+toc: ["Editor overview","Starting the editor","The editor panes","Editor pane","Outline pane","Properties pane","Tools pane","Changed Files pane","Side-by-side editing","The scene editor","Selecting objects","Move tool","Rotate tool","Scale tool","Visibility filters","Creating new project files","Importing files to your project","Updating the editor","Preferences","Editor logs","FAQ"]
 title: Editor overview
 brief: This manual gives an overview on how the Defold editor look and works, and how to navigate in it.
 ---
@@ -165,10 +165,6 @@ The editor will automatically check for updates. When an update is detected it w
 ## Preferences
 
 You can modify the settings of the editor [from the Preferences window](/manuals/editor-preferences).
-
-## Keyboard shortcuts
-
-Keyboard shortcuts and how to customize them can be seen in the [keyboard shortcut manual](/manuals/editor-keyboard-shortcuts).
 
 ## Editor logs
 If you run into a problem with the editor and need to [report an issue](/manuals/getting-help/#getting-help) it is a good idea to provide log files from the editor itself. The editor logs files can be found here:
