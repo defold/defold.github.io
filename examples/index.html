@@ -24,7 +24,9 @@ nav: floating
 		<div class="row">
 			<div class="columns full">
 				<h2 id="categories">Categories</h2>
-				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 0 1rem; font-size: 0.9em;">
+				<div class="grid-150" style="font-size: 0.9em; grid-gap: 0 1rem; ">
+				
+			
 					{% for category in all_categories %}
 						<a href="#{{ category }}">{{ category | capitalize }}</a>
 					{% endfor %}
