@@ -17,21 +17,34 @@ nav: floating
 
 {% include learnnav.html showmenu=true %}
 
+{% assign all_categories = site.data.examplesindex | map: "category" | uniq | sort %}
+
 <div class="section lightest dark:dark">
 	<div class="container">
-		{% assign all_categories = site.data.examplesindex | map: "category" | uniq | sort %}
+		<div class="row">
+			<div class="columns full">
+				<h2 id="categories">Categories</h2>
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 0 1rem; font-size: 0.9em;">
+					{% for category in all_categories %}
+						<a href="#{{ category }}">{{ category | capitalize }}</a>
+					{% endfor %}
+				</div>
+				<br/>
+			</div>
+		</div>
 		{% for category in all_categories %}
 		<div class="row">
 			<div class="columns full">
-				<h3>{{ category | capitalize }}</h3>
+				<h3 id="{{ category }}">{{ category | capitalize }}</h3>
 				<div class="grid-250">
 				{%- assign examples = site.data.examplesindex | where: "category", category -%}
 				{%- for example in examples -%}
 					{% include learn_card.html title=example.title description=example.brief link=example.path min-height="250px" %}
 				{%- endfor -%}
 				</div>
+				<p>˄ <a href="#categories">Top</a></p>
 			</div>
-			<br/>
 		</div>
 		{% endfor %}
+	</div>
 </div>
