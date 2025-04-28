@@ -71,6 +71,39 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "get the AABB of the whole model in local coordinate space",
+            "description": "Get AABB of the whole model in local coordinate space.\nAABB information return as a table with <code>min</code> and <code>max</code> fields, where <code>min</code> and <code>max</code> has type <code>vmath.vector4</code>.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">get_aabb</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">min</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mf\">2.5</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mf\">3.0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">max</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">1.5</span><span class=\"p\">,</span> <span class=\"mf\">5.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n<span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">get_aabb</span><span class=\"p\">(</span><span class=\"s2\">&quot;#empty&quot;</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">min</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">max</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "model.get_aabb",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the model",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "A table containing AABB of the model. If model has no meshes - return vmath.vector3(0,0,0) for min and max fields.",
+                    "name": "aabb",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "retrieve the game object corresponding to a model skeleton bone",
             "description": "Gets the id of the game object that corresponds to a model skeleton bone.\nThe returned game object can be used for parenting and transform queries.\nThis function has complexity <code>O(n)</code>, where <code>n</code> is the number of bones in the model skeleton.\nGame objects corresponding to a model skeleton bone can not be individually deleted.",
             "error": "",
@@ -105,6 +138,39 @@
                     "name": "id",
                     "types": [
                         "hash"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get the AABB of all meshes",
+            "description": "Get AABB of all meshes.\nAABB information return as a table with <code>min</code> and <code>max</code> fields, where <code>min</code> and <code>max</code> has type <code>vmath.vector4</code>.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">get_mesh_aabb</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;Sword&quot;</span><span class=\"p\">)</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">min</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">max</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span> <span class=\"p\">},</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;Shield&quot;</span><span class=\"p\">)</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">min</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">),</span> <span class=\"n\">max</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span> <span class=\"p\">}</span> <span class=\"p\">}</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "model.get_mesh_aabb",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the model",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "A table containing info about all AABB in the format <hash(mesh_id), aabb_info>",
+                    "name": "aabb",
+                    "types": [
+                        "table"
                     ]
                 }
             ],

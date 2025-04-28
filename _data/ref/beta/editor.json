@@ -1003,6 +1003,37 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "create an editor command",
+            "description": "Create an editor command",
+            "error": "",
+            "examples": "Print Git history for a file:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">editor</span><span class=\"o\">.</span><span class=\"n\">command</span><span class=\"p\">({</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"n\">label</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"s2\">&quot;Git History&quot;</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"n\">query</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">selection</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">      </span><span class=\"n\">type</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"s2\">&quot;resource&quot;</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">      </span><span class=\"n\">cardinality</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"s2\">&quot;one&quot;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"p\">},</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"n\">run</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">function</span><span class=\"p\">(</span><span class=\"n\">opts</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">editor</span><span class=\"o\">.</span><span class=\"n\">execute</span><span class=\"p\">(</span><span class=\"w\"></span>\n<span class=\"w\">      </span><span class=\"s2\">&quot;git&quot;</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">      </span><span class=\"s2\">&quot;log&quot;</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">      </span><span class=\"s2\">&quot;--follow&quot;</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">      </span><span class=\"s2\">&quot;.&quot;</span><span class=\"w\"> </span><span class=\"o\">..</span><span class=\"w\"> </span><span class=\"n\">editor</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">opts</span><span class=\"o\">.</span><span class=\"n\">selection</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s2\">&quot;path&quot;</span><span class=\"p\">),</span><span class=\"w\"></span>\n<span class=\"w\">      </span><span class=\"p\">{</span><span class=\"n\">reload_resources</span><span class=\"o\">=</span><span class=\"bp\">false</span><span class=\"p\">})</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"n\">end</span><span class=\"w\"></span>\n<span class=\"p\">})</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "editor.command",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "A table with the following keys:<dl><dt><code>label <small>string</small></code></dt><dd>required, user-visible command name</dd><dt><code>locations <small>string[]</small></code></dt><dd>required, a non-empty list of locations where the command is displayed in the editor, values are either <code>\"Edit\"</code>, <code>\"View\"</code>, <code>\"Project\"</code>, <code>\"Debug\"</code> (the editor menubar), <code>\"Assets\"</code> (the assets pane), or <code>\"Outline\"</code> (the outline pane)</dd><dt><code>query <small>table</small></code></dt><dd>optional, a query that both controls the command availability and provides additional information to the command handler functions; a table with the following keys:<dl><dt><code>selection <small>table</small></code></dt><dd>current selection, a table with the following keys:<dl><dt><code>type <small>string</small></code></dt><dd>either <code>\"resource\"</code> (selected resource) or <code>\"outline\"</code> (selected outline node)</dd><dt><code>cardinality <small>string</small></code></dt><dd>either <code>\"one\"</code> (will use first selected item) or <code>\"many\"</code> (will use all selected items)</dd></dl></dd><dt><code>argument <small>table</small></code></dt><dd>the command argument</dd></dl></dd><dt><code>id <small>string</small></code></dt><dd>optional, keyword identifier that may be used for assigning a shortcut to a command; should be a dot-separated identifier string, e.g. <code>\"my-extension.do-stuff\"</code></dd><dt><code>active <small>function</small></code></dt><dd>optional function that additionally checks if a command is active in the current context; will receive opts table with values populated by the query; should be fast to execute since the editor might invoke it in response to UI interactions (on key typed, mouse clicked)</dd><dt><code>run <small>function</small></code></dt><dd>optional function that is invoked when the user decides to execute the command; will receive opts table with values populated by the query</dd></dl>",
+                    "name": "opts",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "command",
+                    "types": [
+                        "command"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "create a directory if it does not exist, and all non-existent parent directories.",
             "description": "Create a directory if it does not exist, and all non-existent parent directories.\nThrows an error if the directory can't be created.",
             "error": "",
@@ -1524,6 +1555,37 @@
                 {
                     "doc": "Required opts: <dl><dt><code>key <small>schema</small></code></dt><dd>table key schema</dd><dt><code>val <small>schema</small></code></dt><dd>table value schema</dd></dl>  Optional opts: <dl><dt><code>default <small>table</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
                     "name": "opts",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prefs schema",
+                    "name": "value",
+                    "types": [
+                        "schema"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "password schema",
+            "description": "password schema\nA password is a string that is encrypted when stored in a preference file",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.schema.password",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Optional opts: <dl><dt><code>default <small>string</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
+                    "name": "[opts]",
                     "types": [
                         "table"
                     ]
