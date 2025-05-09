@@ -86,10 +86,10 @@ layout: base
 				<option value="{{ page_url | replace: 'BRANCH', b }}">{{ b }}</option>
 				{%- endfor -%}
 			</select>
-			{%- if ref.info.group == "DEFOLD SDK" -%}
-				{%- include api_dmsdk.html ref=ref -%}
-			{%- else -%}
+			{%- if ref.info.language == "Lua" -%}
 				{%- include api.html ref=ref -%}
+			{%- else -%}
+				{%- include api_dmsdk.html ref=ref -%}
 			{%- endif -%}
 		</div>
 	</div>

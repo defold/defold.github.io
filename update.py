@@ -1096,39 +1096,58 @@ def process_refdoc(download = False):
             rmmkdir(REF_PAGE_DIR)
             rmmkdir(REF_DATA_DIR)
 
+            # multiple files can contribute to the same namespace
+            # find and merge apis per namespace
+            namespaces = {}
             for file in os.listdir(os.path.join(tmp_dir, "doc")):
                 if file.endswith(".json"):
                     api = read_as_json(os.path.join(tmp_dir, "doc", file))
                     # ignore empty APIs (such as those moved to extensions)
                     if len(api["elements"]) > 0:
-                        json_out_name = file.replace("_doc.json", "")
-                        json_out_file = json_out_name + ".json"
-
-                        api["elements"].sort(key=lambda x: x.get("name").lower())
-                        write_as_json(os.path.join(REF_DATA_DIR, json_out_file), api)
-
                         namespace = api["info"]["namespace"]
-                        api_type = "defold"
-                        if namespace in LUA_APIS:
-                            api_type = "lua"
-                        elif namespace.startswith("dm") or namespace == "sharedlibrary":
-                            api_type = "c"
+                        if not namespace in namespaces:
+                            namespaces[namespace] = api
+                        else:
+                            info = namespaces[namespace]["info"]
+                            if not info["namespace"]: info["namespace"] = api["info"]["namespace"]
+                            if not info["description"]: info["description"] = api["info"]["description"]
+                            if not info["brief"]: info["brief"] = api["info"]["brief"]
+                            if not info["path"]: info["path"] = api["info"]["path"]
+                            namespaces[namespace]["elements"].extend(api["elements"])
+                            info["notes"].extend(api["info"]["notes"])
 
-                        print("REFDOC " + json_out_name + " type: " + api_type)
+                        if namespace == "dmGameObject":
+                            print(api)
 
-                        # generate a dummy markdown page with some front matter for each ref doc
-                        with open(os.path.join(REF_PAGE_DIR, file.replace("_doc.json", ".md")), "w") as f:
-                            f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, api_type, json_out_name) + REFDOC_MD_BODY)
+            # generate index and dummy file per namespace
+            for namespace in namespaces:
+                api = namespaces[namespace]
+                api["elements"].sort(key=lambda x: x.get("name").lower())
+                api_type = "defold"
+                if namespace in LUA_APIS:
+                    api_type = "lua"
+                elif namespace.startswith("dm") or namespace == "sharedlibrary":
+                    api_type = "c"
+                json_out_name = namespace
+                json_out_file = json_out_name + ".json"
+                
+                p = os.path.join(REF_DATA_DIR, json_out_file)
+                print("REFDOC " + json_out_name + " type: " + api_type, p)
+                write_as_json(p, api)
 
-                        # build refdoc index
-                        refindex.append({
-                            "namespace": namespace,
-                            "name": api["info"]["name"],
-                            "filename": json_out_name,
-                            "url": "/ref/" + branch + "/" + json_out_name,
-                            "branch": branch,
-                            "type": api_type
-                        })
+                # generate a dummy markdown page with some front matter for each ref doc
+                with open(os.path.join(REF_PAGE_DIR, json_out_name + ".md"), "w") as f:
+                    f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, api_type, json_out_name) + REFDOC_MD_BODY)
+
+                # build refdoc index
+                refindex.append({
+                    "namespace": namespace,
+                    "name": api["info"]["name"],
+                    "filename": json_out_name,
+                    "url": "/ref/" + branch + "/" + json_out_name,
+                    "branch": branch,
+                    "type": api_type
+                })
 
         # add extensions
         extensions_data_dir = os.path.join("_data", "extensions")

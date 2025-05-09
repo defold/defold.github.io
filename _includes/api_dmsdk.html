@@ -5,14 +5,17 @@
 {%- assign typedefs = ref.elements | where: "type", "TYPEDEF" -%}
 {%- assign functions = ref.elements | where: "type", "FUNCTION" -%}
 {%- assign variables = ref.elements | where: "type", "VARIABLE" -%}
+{%- assign constants = ref.elements | where: "type", "CONSTANT" -%}
 {%- assign messages = ref.elements | where: "type", "MESSAGE" -%}
 {%- assign properties = ref.elements | where: "type", "PROPERTY" -%}
 {%- assign macros = ref.elements | where: "type", "MACRO" -%}
 {%- assign enums = ref.elements | where: "type", "ENUM" -%}
 
+{%- assign constvars = constants | concat: variables -%}
+
 {%- assign global_namespaces = "dmAlign~dmArray~dmHash~dmStringFunc~dmLog" | split:"~" -%}
 
-<h2>{{ ref.info.brief | capitalize }}</h2>
+<h2>{{ ref.info.name | capitalize }}</h2>
 <p>{{ ref.info.description }}</p>
 
 <table class="compact">
@@ -48,16 +51,16 @@
 </table>
 {%- endif -%}
 
-{%- if variables.size > 0 -%}
+{%- if constvars.size > 0-%}
 <table class="compact">
 	<tr>
 		<th>CONSTANTS</th>
 		<th></th>
 	</tr>
-	{%- for variable in variables -%}
+	{%- for constvar in constvars -%}
 	<tr>
-		<td><a href="#{% include ref_anchorlink.html element=variable %}">{{ variable.name }}</a></td>
-		<td>{{ variable.brief }}</td>
+		<td><a href="#{% include ref_anchorlink.html element=constvar %}">{{ constvar.name }}</a></td>
+		<td>{{ constvar.brief }}</td>
 	</tr>
 	{%- endfor -%}
 </table>
@@ -134,7 +137,6 @@
 		<td><a href="#{% include ref_anchorlink.html element=function %}">{% include api_c_function.html function=function full="no" %}</a></td>
 		<td>{{ function.brief }}</td>
 	</tr>
-
 	{%- endfor -%}
 </table>
 {%- endif -%}
@@ -179,16 +181,16 @@
 	{%- endfor -%}
 {%- endif -%}
 
-{%- if variables.size > 0 -%}
+{%- if constvars.size > 0 -%}
 <h2>Constants</h2>
-	{%- for variable in variables -%}
-	{% include ref_anchor_target.html element=variable %}
-	<h4>{{ variable.name }}<a href="#{% include ref_anchorlink.html element=variable %}" class="anchor-link"/></a></h4>
-	<p>{{ variable.description }}</p>
+	{%- for constvar in constvars -%}
+	{% include ref_anchor_target.html element=constvar %}
+	<h4>{{ constvar.name }}<a href="#{% include ref_anchorlink.html element=constvar %}" class="anchor-link"/></a></h4>
+	<p>{{ constvar.description }}</p>
 
-	{%- if variable.parameters.size > 0 -%}
+	{%- if constvar.parameters.size > 0 -%}
 	<table>
-	{%- for param in variable.parameters -%}
+	{%- for param in constvar.parameters -%}
 	<tr>
 		<td><code>{{ param.name }}</code></td>
 		<td>{{ param.types | join: ", " }}</td>
