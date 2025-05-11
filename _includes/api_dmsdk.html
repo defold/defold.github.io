@@ -11,7 +11,11 @@
 {%- assign macros = ref.elements | where: "type", "MACRO" -%}
 {%- assign enums = ref.elements | where: "type", "ENUM" -%}
 
+{%- if variables.size > 0 -%}
 {%- assign constvars = constants | concat: variables -%}
+{%- else -%}
+{%- assign constvars = constants -%}
+{%- endif -%}
 
 {%- assign global_namespaces = "dmAlign~dmArray~dmHash~dmStringFunc~dmLog" | split:"~" -%}
 
