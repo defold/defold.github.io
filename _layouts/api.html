@@ -3,9 +3,9 @@ layout: base
 ---
 {%- assign branch = page.branch -%}
 {%- assign unsortedindices = site.data.refindex | where: "branch", branch -%}
-{%- assign indices = unsortedindices | sort: "namespace" -%}
+{%- assign indices = unsortedindices | sort_natural: "namespace" -%}
 {%- assign branches = site.data.branchindex -%}
-{%- assign types = indices | map: "type" | uniq -%}
+{%- assign types = indices | map: "type" | uniq | sort -%}
 {% assign clean_ref = page.ref | remove: '.' %}
 {%- if page.type == "extension" -%}
 	{%- assign ref = site.data.extensions[clean_ref] -%}
@@ -86,10 +86,12 @@ layout: base
 				<option value="{{ page_url | replace: 'BRANCH', b }}">{{ b }}</option>
 				{%- endfor -%}
 			</select>
-			{%- if ref.info.language == "Lua" or ref.info.group != "DEFOLD SDK"-%}
-				{%- include api.html ref=ref -%}
+			{%- if ref.info.language == "C++" -%}
+				{%- include api_c.html ref=ref -%}
+			{%- elsif ref.info.language == "Lua" -%}
+				{%- include api_lua.html ref=ref -%}
 			{%- else -%}
-				{%- include api_dmsdk.html ref=ref -%}
+				{%- include api_c.html ref=ref -%}
 			{%- endif -%}
 		</div>
 	</div>

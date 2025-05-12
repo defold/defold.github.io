@@ -112,7 +112,7 @@
 
 		<p><b>PARAMETERS</b></p>
 		{%- if function.parameters.size > 0 -%}
-		{% include api_parameters.html parameters=function.parameters %}
+		{% include api_lua_parameters.html parameters=function.parameters %}
 		{%- else -%}
 		<p>None</p>
 		{%- endif -%}
@@ -146,7 +146,7 @@
 	<p class="compact">{{ variable.description }}</p>
 
 	{%- if variable.parameters.size > 0 -%}
-	{% include api_parameters.html parameters=variable.parameters %}
+	{% include api_lua_parameters.html parameters=variable.parameters %}
 	{%- endif -%}
 	
 	{% if forloop.last == false %}<hr class="compact"/>{% else %}<hr/>{% endif %}
@@ -161,7 +161,7 @@
 	<p>{{ message.description }}</p>
 
 	{%- if message.parameters.size > 0 -%}
-	{% include api_parameters.html parameters=message.parameters %}
+	{% include api_lua_parameters.html parameters=message.parameters %}
 	{%- endif -%}
 
 	{%- if message.examples.size > 0 -%}
