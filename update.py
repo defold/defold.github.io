@@ -1107,6 +1107,7 @@ def process_refdoc(download = False):
                         namespace = api["info"]["namespace"]
                         if not namespace:
                             namespace = api["info"]["name"]
+                        namespace = namespace.replace(" ", "")
                         if not namespace in namespaces:
                             namespaces[namespace] = api
                         else:
