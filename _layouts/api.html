@@ -47,7 +47,7 @@ layout: base
 						{%- if page.url contains r.url -%}
 							{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
 						{%- endif -%}
-					<li style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{{ r.namespace }}{%- if r.type == "extension" -%}&nbsp;-&nbsp;({{r.name}}){%- endif -%}</a></li>
+					<li id="{{ r.namespace }}" style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{{ r.namespace }}{%- if r.type == "extension" -%}&nbsp;-&nbsp;({{r.name}}){%- endif -%}</a></li>
 					{%- endfor -%}
 				</ul>
 				{%- endfor -%}
@@ -86,7 +86,7 @@ layout: base
 				<option value="{{ page_url | replace: 'BRANCH', b }}">{{ b }}</option>
 				{%- endfor -%}
 			</select>
-			{%- if ref.info.language == "Lua" -%}
+			{%- if ref.info.language == "Lua" or ref.info.group != "DEFOLD SDK"-%}
 				{%- include api.html ref=ref -%}
 			{%- else -%}
 				{%- include api_dmsdk.html ref=ref -%}

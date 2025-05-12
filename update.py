@@ -1105,6 +1105,8 @@ def process_refdoc(download = False):
                     # ignore empty APIs (such as those moved to extensions)
                     if len(api["elements"]) > 0:
                         namespace = api["info"]["namespace"]
+                        if not namespace:
+                            namespace = api["info"]["name"]
                         if not namespace in namespaces:
                             namespaces[namespace] = api
                         else:
@@ -1116,23 +1118,24 @@ def process_refdoc(download = False):
                             namespaces[namespace]["elements"].extend(api["elements"])
                             info["notes"].extend(api["info"]["notes"])
 
-                        if namespace == "dmGameObject":
-                            print(api)
-
             # generate index and dummy file per namespace
             for namespace in namespaces:
                 api = namespaces[namespace]
                 api["elements"].sort(key=lambda x: x.get("name").lower())
                 api_type = "defold"
+                api_lang = api["info"].get("language")
                 if namespace in LUA_APIS:
                     api_type = "lua"
-                elif namespace.startswith("dm") or namespace == "sharedlibrary":
+                elif namespace.startswith("dm") or namespace == "sharedlibrary" or api_lang == "C++":
                     api_type = "c"
+                else:
+                    api_type = "defold"
+
                 json_out_name = namespace
                 json_out_file = json_out_name + ".json"
                 
                 p = os.path.join(REF_DATA_DIR, json_out_file)
-                print("REFDOC " + json_out_name + " type: " + api_type, p)
+                # print("REFDOC " + json_out_name + " type: " + api_type + " path: " + p + " lang: " + api["info"].get("language"))
                 write_as_json(p, api)
 
                 # generate a dummy markdown page with some front matter for each ref doc
