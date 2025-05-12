@@ -445,6 +445,127 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Convenience function to retrieve the state of a ga...",
+            "description": "Convenience function to retrieve the state of a gamepad button from a gamepad packet.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetGamepadButton",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Gamepad packet",
+                    "name": "packet",
+                    "types": [
+                        "dmHID::GamepadPacket"
+                    ]
+                },
+                {
+                    "doc": "The requested button",
+                    "name": "button",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "True if the button is currently pressed down.",
+                    "name": "success",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Convenience function to retrieve the state of a ga...",
+            "description": "Convenience function to retrieve the state of a gamepad hat from a gamepad packet.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetGamepadHat",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Gamepad packet",
+                    "name": "packet",
+                    "types": [
+                        "dmHID::GamepadPacket"
+                    ]
+                },
+                {
+                    "doc": "The requested hat index",
+                    "name": "hat",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Hat value out argument",
+                    "name": "out_hat_value",
+                    "types": [
+                        "uint8_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "True if the hat has data.",
+                    "name": "success",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Obtain a gamepad packet reflecting the current inp...",
+            "description": "Obtain a gamepad packet reflecting the current input state of the gamepad in a  HID context.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetGamepadPacket",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "gamepad handle",
+                    "name": "gamepad",
+                    "types": [
+                        "dmHID::HGamepad"
+                    ]
+                },
+                {
+                    "doc": "Gamepad packet out argument",
+                    "name": "out_packet",
+                    "types": [
+                        "dmHID::GamepadPacket"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "True if the packet was successfully updated.",
+                    "name": "success",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "gets a keyboard handle",
             "description": "gets a keyboard handle",
             "error": "",

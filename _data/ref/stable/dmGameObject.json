@@ -2176,27 +2176,19 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Construct a hash of an instance id based on the in...",
-            "description": "Construct a hash of an instance id based on the index provided.",
+            "brief": "Creates a new unique instance ID and returns its h...",
+            "description": "Creates a new unique instance ID and returns its hash.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "ConstructInstanceId",
+            "name": "CreateInstanceId",
             "notes": [],
-            "parameters": [
-                {
-                    "doc": "The index to base the id off of.",
-                    "name": "index",
-                    "types": [
-                        "uint32_t"
-                    ]
-                }
-            ],
+            "parameters": [],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "hash of the instance id constructed.",
+                    "doc": "hash of the new unique instance id",
                     "name": "id",
                     "types": [
                         "dmhash_t"
@@ -2988,8 +2980,8 @@
             "type": "TYPEDEF"
         },
         {
-            "brief": "Opaque handle to a list of properties",
-            "description": "Opaque handle to a list of properties",
+            "brief": "Handle to a list of properties (gameobject_props.h...",
+            "description": "Handle to a list of properties (gameobject_props.h)",
             "error": "",
             "examples": "",
             "language": "",
@@ -3003,8 +2995,8 @@
             "type": "TYPEDEF"
         },
         {
-            "brief": "Handle to a list of properties (gameobject_props.h...",
-            "description": "Handle to a list of properties (gameobject_props.h)",
+            "brief": "Opaque handle to a list of properties",
+            "description": "Opaque handle to a list of properties",
             "error": "",
             "examples": "",
             "language": "",
@@ -4759,14 +4751,14 @@
         }
     ],
     "info": {
-        "brief": "Game object functions",
-        "description": "API for manipulating game objects",
-        "file": "dmsdk/gameobject/gameobject.h",
+        "brief": "Game object property container",
+        "description": "API for game object property container",
+        "file": "dmsdk/gameobject/gameobject_props.h",
         "group": "DEFOLD SDK",
         "language": "",
-        "name": "Gameobject",
+        "name": "PropertyContainer",
         "namespace": "dmGameObject",
         "notes": [],
-        "path": "engine/gameobject/src/dmsdk/gameobject/gameobject.h"
+        "path": "engine/gameobject/src/dmsdk/gameobject/gameobject_props.h"
     }
 }
