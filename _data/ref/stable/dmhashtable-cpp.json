@@ -1,0 +1,479 @@
+{
+    "elements": [
+        {
+            "brief": "Hashtable capacity. Maximum number of entries poss...",
+            "description": "Hashtable capacity. Maximum number of entries possible to store in table",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Capacity",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the capacity of the table",
+                    "name": "",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Removes all the entries from the table.",
+            "description": "Removes all the entries from the table.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Clear",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "hashtable",
+            "description": "Hashtable with chaining for collision resolution, memcpy-copy semantics (POD types) and 32-bit indicies instead of pointers. (NUMA-friendly)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmHashTable",
+            "notes": [
+                "The key type needs to support == and % operators"
+            ],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Constructor. Create an empty hashtable with zero c...",
+            "description": "Constructor. Create an empty hashtable with zero capacity and zero hashtable (buckets)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmHashTable",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Creates a hashtable array with user allocated memo...",
+            "description": "Creates a hashtable array with user allocated memory.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmHashTable",
+            "notes": [
+                "User allocated arrays can not change capacity."
+            ],
+            "parameters": [
+                {
+                    "doc": "Pointer to user allocated continous data-block ((table_size<em>sizeof(uint32_t)) + (capacity</em>sizeof(dmHashTable::Entry))",
+                    "name": "user_allocated",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Hashtable size, ie number of buckets. table_size &lt; 0xffffffff",
+                    "name": "table_size",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Capacity. capacity &lt; 0xffffffff",
+                    "name": "capacity",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Specialized hash table with <span class=\"type\">uint16_t</span> as key...",
+            "description": "Specialized hash table with <span class=\"type\">uint16_t</span> as keys",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmHashTable16",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Specialized hash table with <span class=\"type\">uint32_t</span> as key...",
+            "description": "Specialized hash table with <span class=\"type\">uint32_t</span> as keys",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmHashTable32",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Specialized hash table with <span class=\"type\">uint64_t</span> as key...",
+            "description": "Specialized hash table with <span class=\"type\">uint64_t</span> as keys",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmHashTable64",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Check if the table is empty",
+            "description": "Check if the table is empty",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Empty",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the table is empty",
+                    "name": "true",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Remove key/value pair.",
+            "description": "Remove key/value pair.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Erase",
+            "notes": [
+                "Only valid if key exists in table"
+            ],
+            "parameters": [
+                {
+                    "doc": "Key to remove",
+                    "name": "key",
+                    "types": [
+                        "Key"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Check if the table is full",
+            "description": "Check if the table is full",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Full",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the table is full",
+                    "name": "true",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get pointer to value from key",
+            "description": "Get pointer to value from key",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Get",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Key",
+                    "name": "key",
+                    "types": [
+                        "Key"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Pointer to value. NULL if the key/value pair doesn't exist.",
+                    "name": "value",
+                    "types": [
+                        "T*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get an iterator for the key/value pairs",
+            "description": "Get an iterator for the key/value pairs",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmHashTable</span><span class=\"o\">&lt;</span><span class=\"n\">dmhash_t</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"kt\">int</span><span class=\"o\">&gt;::</span><span class=\"n\">Iterator</span><span class=\"w\"> </span><span class=\"n\">iter</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">ht</span><span class=\"p\">.</span><span class=\"n\">GetIterator</span><span class=\"p\">();</span><span class=\"w\"></span>\n<span class=\"k\">while</span><span class=\"p\">(</span><span class=\"n\">iter</span><span class=\"p\">.</span><span class=\"n\">Next</span><span class=\"p\">())</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">printf</span><span class=\"p\">(</span><span class=\"s\">&quot;%s: %d</span><span class=\"se\">\\n</span><span class=\"s\">&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">dmHashReverseSafe64</span><span class=\"p\">(</span><span class=\"n\">iter</span><span class=\"p\">.</span><span class=\"n\">GetKey</span><span class=\"p\">()),</span><span class=\"w\"> </span><span class=\"n\">iter</span><span class=\"p\">.</span><span class=\"n\">GetValue</span><span class=\"p\">());</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "GetIterator",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the iterator",
+                    "name": "iterator",
+                    "types": [
+                        "dmHashTable<T>::Iterator"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Iterate over all entries in table",
+            "description": "Iterate over all entries in table",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Iterate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Call-back called for every entry",
+                    "name": "call_back",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Context",
+                    "name": "context",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Iterator to the key/value pairs of a hash table",
+            "description": "Iterator to the key/value pairs of a hash table",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "GetKey()",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "GetValue()",
+                    "type": ""
+                }
+            ],
+            "name": "Iterator",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "hashtable offset capacity",
+            "description": "Relative change of capacity\nEquivalent to SetCapacity(Capacity() + offset).\nOnly allowed for auto-allocated hash tables and will result in a new dynamic allocation",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "OffsetCapacity",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "relative amount of elements to change the capacity",
+                    "name": "offset",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Put key/value pair in hash table. NOTE: The method...",
+            "description": "Put key/value pair in hash table. NOTE: The method will \"assert\" if the hashtable is full.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Put",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Key",
+                    "name": "key",
+                    "types": [
+                        "Key"
+                    ]
+                },
+                {
+                    "doc": "Value",
+                    "name": "value",
+                    "types": [
+                        "const T&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set hashtable capacity. New capacity must be great...",
+            "description": "Set hashtable capacity. New capacity must be greater or equal to current capacity",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetCapacity",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Hashtable size, ie number of buckets. table_size &lt; 0xffffffff",
+                    "name": "table_size",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Capacity. capacity &lt; 0xffffffff",
+                    "name": "capacity",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Number of entries stored in table. (not the actual...",
+            "description": "Number of entries stored in table. (not the actual hashtable size)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Size",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "of entries.",
+                    "name": "Number",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Swaps the contents of two hash tables",
+            "description": "Swaps the contents of two hash tables",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Swap",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the other table",
+                    "name": "other",
+                    "types": [
+                        "dmHashTable<KEY, T>&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "Hash table",
+        "description": "Hash table",
+        "file": "dmsdk/dlib/hashtable.h",
+        "group": "DEFOLD SDK",
+        "language": "C++",
+        "name": "Hashtable",
+        "namespace": "dmHashTable",
+        "notes": [],
+        "path": "engine/dlib/src/dmsdk/dlib/hashtable.h"
+    }
+}

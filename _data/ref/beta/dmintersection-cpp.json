@@ -1,0 +1,441 @@
+{
+    "elements": [
+        {
+            "brief": "Constructs a dmIntersection::Frustum from a View*P...",
+            "description": "Constructs a dmIntersection::Frustum from a View*Projection matrix",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "CreateFrustumFromMatrix",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The matrix. Usually a \"ViewProj\" matrix",
+                    "name": "m",
+                    "types": [
+                        "dmVMath::Matrix4&"
+                    ]
+                },
+                {
+                    "doc": "true if the normals should be normalized",
+                    "name": "normalize",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the frustum output",
+                    "name": "frustum",
+                    "types": [
+                        "dmIntersection::Frustum&"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Returns the closest distance between a plane and a...",
+            "description": "Returns the closest distance between a plane and a position",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DistanceToPlane",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "plane equation",
+                    "name": "plane",
+                    "types": [
+                        "dmIntersection::Plane"
+                    ]
+                },
+                {
+                    "doc": "position",
+                    "name": "pos",
+                    "types": [
+                        "dmVMath::Point3"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "closest distance between plane and position",
+                    "name": "distance",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "frustum",
+            "description": "Frustum",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "] plane equations: // left, right, bottom, top, near, far",
+                    "name": "m_Planes",
+                    "type": "dmIntersection::Plane[6"
+                }
+            ],
+            "name": "Frustum",
+            "notes": [
+                "The plane normals point inwards"
+            ],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Plane struct (currently an alias for dmVMath::Vect...",
+            "description": "Plane struct (currently an alias for dmVMath::Vector4)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Plane",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Tests intersection between a frustum and an orient...",
+            "description": "Tests intersection between a frustum and an oriented bounding box (OBB)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TestFrustumOBB",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the frustum",
+                    "name": "frustum",
+                    "types": [
+                        "dmIntersection::Frustum&"
+                    ]
+                },
+                {
+                    "doc": "The world transform of the OBB",
+                    "name": "world",
+                    "types": [
+                        "dmVMath::Matrix4&"
+                    ]
+                },
+                {
+                    "doc": "the minimum corner of the object. In local space.",
+                    "name": "aabb_min",
+                    "types": [
+                        "dmVMath::Vector3&"
+                    ]
+                },
+                {
+                    "doc": "the maximum corner of the object. In local space.",
+                    "name": "aabb_max",
+                    "types": [
+                        "dmVMath::Vector3&"
+                    ]
+                },
+                {
+                    "doc": "if true, the near+far planes of the frustum are ignored",
+                    "name": "skip_near_far",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Returns true if the objects intersect",
+                    "name": "intersects",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Tests intersection between a frustum and a point",
+            "description": "Tests intersection between a frustum and a point",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TestFrustumPoint",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the frustum",
+                    "name": "frustum",
+                    "types": [
+                        "dmIntersection::Frustum&"
+                    ]
+                },
+                {
+                    "doc": "the position",
+                    "name": "pos",
+                    "types": [
+                        "dmVMath::Point3&"
+                    ]
+                },
+                {
+                    "doc": "if true, the near+far planes of the frustum are ignored",
+                    "name": "skip_near_far",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Returns true if the objects intersect",
+                    "name": "intersects",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Tests intersection between a frustum and a sphere",
+            "description": "Tests intersection between a frustum and a sphere",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TestFrustumSphere",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the frustum",
+                    "name": "frustum",
+                    "types": [
+                        "dmIntersection::Frustum&"
+                    ]
+                },
+                {
+                    "doc": "the center position of the sphere",
+                    "name": "pos",
+                    "types": [
+                        "dmVMath::Point3&"
+                    ]
+                },
+                {
+                    "doc": "the radius of the sphere",
+                    "name": "radius",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "if true, the near+far planes of the frustum are ignored",
+                    "name": "skip_near_far",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Returns true if the objects intersect",
+                    "name": "intersects",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Tests intersection between a frustum and a sphere",
+            "description": "Tests intersection between a frustum and a sphere",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TestFrustumSphere",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the frustum",
+                    "name": "frustum",
+                    "types": [
+                        "dmIntersection::Frustum&"
+                    ]
+                },
+                {
+                    "doc": "the center position of the sphere. The w component must be 1.",
+                    "name": "pos",
+                    "types": [
+                        "dmVMath::Vector4&"
+                    ]
+                },
+                {
+                    "doc": "the radius of the sphere",
+                    "name": "radius",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "if true, the near+far planes of the frustum are ignored",
+                    "name": "skip_near_far",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Returns true if the objects intersect",
+                    "name": "intersects",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Tests intersection between a frustum and a sphere",
+            "description": "Tests intersection between a frustum and a sphere",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TestFrustumSphereSq",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the frustum",
+                    "name": "frustum",
+                    "types": [
+                        "dmIntersection::Frustum&"
+                    ]
+                },
+                {
+                    "doc": "the center position of the sphere",
+                    "name": "pos",
+                    "types": [
+                        "dmVMath::Point3&"
+                    ]
+                },
+                {
+                    "doc": "the squared radius of the sphere",
+                    "name": "radius_sq",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "if true, the near+far planes of the frustum are ignored",
+                    "name": "skip_near_far",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Returns true if the objects intersect",
+                    "name": "intersects",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Tests intersection between a frustum and a sphere",
+            "description": "Tests intersection between a frustum and a sphere",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TestFrustumSphereSq",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the frustum",
+                    "name": "frustum",
+                    "types": [
+                        "dmIntersection::Frustum&"
+                    ]
+                },
+                {
+                    "doc": "the center position of the sphere. The w component must be 1.",
+                    "name": "pos",
+                    "types": [
+                        "dmVMath::Vector4&"
+                    ]
+                },
+                {
+                    "doc": "the squared radius of the sphere",
+                    "name": "radius_sq",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "if true, the near+far planes of the frustum are ignored",
+                    "name": "skip_near_far",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Returns true if the objects intersect",
+                    "name": "intersects",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "Intersection math structs and functions",
+        "description": "Intersection math structs and functions",
+        "file": "dmsdk/dlib/intersection.h",
+        "group": "DEFOLD SDK",
+        "language": "C++",
+        "name": "Intersection structs and functions",
+        "namespace": "dmIntersection",
+        "notes": [],
+        "path": "engine/dlib/src/dmsdk/dlib/intersection.h"
+    }
+}

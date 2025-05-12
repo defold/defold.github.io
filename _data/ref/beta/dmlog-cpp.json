@@ -1,0 +1,440 @@
+{
+    "elements": [
+        {
+            "brief": "macro for debug category logging",
+            "description": "If DLIB_LOG_DOMAIN is defined the value of the defined is printed after severity.\nOtherwise DEFAULT will be printed.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"cp\">#define DLIB_LOG_DOMAIN &quot;MyOwnDomain&quot;</span>\n<span class=\"cp\">#include</span><span class=\"w\"> </span><span class=\"cpf\">&lt;dmsdk/dlib/log.h&gt;</span><span class=\"cp\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "DLIB_LOG_DOMAIN",
+            "notes": [
+                "Extensions do not need to set this since they get their own logging domain automatically"
+            ],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MACRO"
+        },
+        {
+            "brief": "dmLog:LogListener callback typedef",
+            "description": "dmLog listener function type. Provides all logs from dmLog* functions and print/pprint Lua functions.\nUsed with dmLogRegisterListener() and dmLogUnregisterListener()",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmLog:LogListener",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "severity",
+                    "types": [
+                        "LogSeverity"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "domain",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "null terminated string",
+                    "name": "formatted_string",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "log with \"debug\" severity",
+            "description": "Debug messages are temporary log instances used when debugging a certain behavior\nUse dmLogOnceDebug for one-shot logging",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmLogDebug",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Format string",
+                    "name": "format",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Format string args (variable arg list)",
+                    "name": "args",
+                    "types": [
+                        "..."
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "",
+                    "types": [
+                        "void"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "log with \"error\" severity",
+            "description": "Error messages are used in cases where an recoverable error has occurred.\nUse dmLogOnceError for one-shot logging",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmLogError",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Format string",
+                    "name": "format",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Format string args (variable arg list)",
+                    "name": "args",
+                    "types": [
+                        "..."
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "",
+                    "types": [
+                        "void"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "log with \"fatal\" severity",
+            "description": "Fatal messages are used in cases where an unrecoverable error has occurred.\nUse dmLogOnceFatal for one-shot logging",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmLogFatal",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Format string",
+                    "name": "format",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Format string args (variable arg list)",
+                    "name": "args",
+                    "types": [
+                        "..."
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "",
+                    "types": [
+                        "void"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get log system severity level.",
+            "description": "Get log system severity level.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmLogGetLevel",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "severity",
+                    "name": "",
+                    "types": [
+                        "LogSeverity"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "log with \"info\" severity",
+            "description": "Info messages are used to inform the developers of relevant information\nUse dmLogOnceInfo for one-shot logging",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmLogInfo",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Format string",
+                    "name": "format",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Format string args (variable arg list)",
+                    "name": "args",
+                    "types": [
+                        "..."
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "",
+                    "types": [
+                        "void"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "register a log listener.",
+            "description": "Registers a log listener.\nThis listener receive logs even in release bundle.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmLogRegisterListener",
+            "notes": [
+                "Any calls to dmLogInfo et al from within the calllback will be ignored"
+            ],
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "listener",
+                    "types": [
+                        "FLogListener"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set log system severity level.",
+            "description": "Set log system severity level.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmLogSetLevel",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "severity",
+                    "name": "[type:LogSeverity]",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "unregister a log listener.",
+            "description": "Unregisters a log listener.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmLogUnregisterListener",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "listener",
+                    "name": "[type:FLogListener]",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "log with \"user\" severity",
+            "description": "Debug messages are temporary log instances used when debugging a certain behavior\nUse dmLogOnceUserDebug for one-shot logging",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmLogUserDebug",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Format string",
+                    "name": "format",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Format string args (variable arg list)",
+                    "name": "args",
+                    "types": [
+                        "..."
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "",
+                    "types": [
+                        "void"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "log with \"warning\" severity",
+            "description": "Warning messages are used to inform the developers about potential problems which can cause errors.\nUse dmLogOnceWarning for one-shot logging",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmLogWarning",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Format string",
+                    "name": "format",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Format string args (variable arg list)",
+                    "name": "args",
+                    "types": [
+                        "..."
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "",
+                    "types": [
+                        "void"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Log severity",
+            "description": "Log severity",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "LOG_SEVERITY_DEBUG",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "LOG_SEVERITY_USER_DEBUG",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "LOG_SEVERITY_INFO",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "LOG_SEVERITY_WARNING",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "LOG_SEVERITY_ERROR",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "LOG_SEVERITY_FATAL",
+                    "type": ""
+                }
+            ],
+            "name": "LogSeverity",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        }
+    ],
+    "info": {
+        "brief": "logging functions",
+        "description": "Logging functions.",
+        "file": "dmsdk/dlib/log.h",
+        "group": "DEFOLD SDK",
+        "language": "C++",
+        "name": "Log",
+        "namespace": "dmLog",
+        "notes": [
+            "Log functions will be omitted (NOP) for release builds",
+            "Prefer these functions over `printf` since these can print to the platform specific logs"
+        ],
+        "path": "engine/dlib/src/dmsdk/dlib/log.h"
+    }
+}

@@ -1,0 +1,313 @@
+{
+    "elements": [
+        {
+            "brief": "Set socket receive timeout",
+            "description": "Set socket receive timeout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmSocket::SetReceiveTimeout",
+            "notes": [
+                "Timeout resolution might be in milliseconds, e.g. windows. Use values\n      larger than or equal to 1000"
+            ],
+            "parameters": [
+                {
+                    "doc": "socket",
+                    "name": "socket",
+                    "types": [
+                        "dmSocket::Socket"
+                    ]
+                },
+                {
+                    "doc": "timeout in microseconds",
+                    "name": "timeout",
+                    "types": [
+                        "uint64_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "on success",
+                    "name": "RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "delete a secure socket",
+            "description": "Delete a secure socket. Does not close the underlying socket",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmSSLSocket</span><span class=\"o\">::</span><span class=\"n\">Delete</span><span class=\"p\">(</span><span class=\"n\">sslsocket</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "dmSSLSocket::Delete",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Secure socket to close",
+                    "name": "socket",
+                    "types": [
+                        "dmSSLSocket::Socket"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "on success",
+                    "name": "RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "SSLSocket socket handle",
+            "description": "SSLSocket socket handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmSSLSocket::INVALID_SOCKET_HANDLE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "create a secure socket",
+            "description": "Create a new secure socket",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmSSLSocket</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"n\">result</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">dmSSLSocket</span><span class=\"o\">::</span><span class=\"n\">Socket</span><span class=\"w\"> </span><span class=\"n\">sslsocket</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">result</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmSSLSocket</span><span class=\"o\">::</span><span class=\"n\">New</span><span class=\"p\">(</span><span class=\"n\">socket</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;httpbin.org&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">500</span><span class=\"o\">*</span><span class=\"mi\">1000</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">sslsocket</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">dmSSLSocket</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">result</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// ...</span>\n<span class=\"p\">}</span><span class=\"w\"> </span><span class=\"k\">else</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// ...</span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "dmSSLSocket::New",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The socket to wrap",
+                    "name": "socket",
+                    "types": [
+                        "dmSocket::Socket"
+                    ]
+                },
+                {
+                    "doc": "The name of the host (e.g. \"httpbin.org\")",
+                    "name": "host",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "The timeout for the handshake procedure. (microseconds)",
+                    "name": "timeout",
+                    "types": [
+                        "uint64_t"
+                    ]
+                },
+                {
+                    "doc": "Pointer to a secure socket",
+                    "name": "sslsocket",
+                    "types": [
+                        "dmSSLSocket::Socket*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "on succcess",
+                    "name": "RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "receive data on a secure socket",
+            "description": "Receive data on a secure socket",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmSSLSocket::Receive",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Socket to receive data on",
+                    "name": "socket",
+                    "types": [
+                        "dmSSLSocket::Socket"
+                    ]
+                },
+                {
+                    "doc": "Buffer to receive to",
+                    "name": "buffer",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Receive buffer length",
+                    "name": "length",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Number of received bytes (result)",
+                    "name": "received_bytes",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "on success",
+                    "name": "RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "result enumeration",
+            "description": "Result enumeration.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "(0)",
+                    "name": "dmSSLSocket::RESULT_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "(-2000)",
+                    "name": "dmSSLSocket::RESULT_SSL_INIT_FAILED",
+                    "type": ""
+                },
+                {
+                    "doc": "(-2001)",
+                    "name": "dmSSLSocket::RESULT_HANDSHAKE_FAILED",
+                    "type": ""
+                },
+                {
+                    "doc": "(-2002)",
+                    "name": "dmSSLSocket::RESULT_WOULDBLOCK",
+                    "type": ""
+                },
+                {
+                    "doc": "(-2003)",
+                    "name": "dmSSLSocket::RESULT_CONNREFUSED",
+                    "type": ""
+                }
+            ],
+            "name": "dmSSLSocket::Result",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "send a message on a secure socket",
+            "description": "Send a message on a secure socket",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmSSLSocket::Send",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "SSL socket to send a message on",
+                    "name": "socket",
+                    "types": [
+                        "dmSSLSocket::Socket"
+                    ]
+                },
+                {
+                    "doc": "Buffer to send",
+                    "name": "buffer",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Length of buffer to send",
+                    "name": "length",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Number of bytes sent (result)",
+                    "name": "sent_bytes",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "on success",
+                    "name": "RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Socket type definition",
+            "description": "Socket type definition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Socket",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        }
+    ],
+    "info": {
+        "brief": "SDK Secure socket API documentation",
+        "description": "Secure socket functions.",
+        "file": "dmsdk/dlib/sslsocket.h",
+        "group": "DEFOLD SDK",
+        "language": "C++",
+        "name": "SSLSocket",
+        "namespace": "dmSSLSocket",
+        "notes": [],
+        "path": "engine/dlib/src/dmsdk/dlib/sslsocket.h"
+    }
+}

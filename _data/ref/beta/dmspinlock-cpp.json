@@ -1,0 +1,122 @@
+{
+    "elements": [
+        {
+            "brief": "macro for using a spinlock during a scope",
+            "description": "Will lock a Spinlock and automatically unlock it at the end of the scope.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DM_SPINLOCK_SCOPED_LOCK",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Spinlock reference to lock.",
+                    "name": "mutex",
+                    "types": [
+                        "dmSpinlock::Spinlock"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MACRO"
+        },
+        {
+            "brief": "initalize spinlock.",
+            "description": "Initialize a Spinlock",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmSpinlock::Init",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "spinlock to initialize.",
+                    "name": "spinlock",
+                    "types": [
+                        "dmSpinlock::Spinlock*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "lock spinlock.",
+            "description": "Lock a Spinlock",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmSpinlock::Lock",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "spinlock to lock.",
+                    "name": "spinlock",
+                    "types": [
+                        "dmSpinlock::Spinlock*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Spinlock type definition",
+            "description": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">typedef</span><span class=\"w\"> </span><span class=\"o\">&lt;</span><span class=\"p\">..</span><span class=\"n\">native</span><span class=\"w\"> </span><span class=\"n\">type</span><span class=\"p\">..</span><span class=\"o\">&gt;</span><span class=\"w\"> </span><span class=\"n\">Spinlock</span><span class=\"p\">;</span><span class=\"w\"></span>\n</code></pre></div>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmSpinlock::Spinlock",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "unlock spinlock.",
+            "description": "Unlock a Spinlock",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmSpinlock::Unlock",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "spinlock to unlock.",
+                    "name": "spinlock",
+                    "types": [
+                        "dmSpinlock::Spinlock*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "SDK Spinlock API documentation",
+        "description": "API for platform independent spinlock synchronization primitive.",
+        "file": "dmsdk/dlib/spinlock.h",
+        "group": "DEFOLD SDK",
+        "language": "C++",
+        "name": "Spinlock",
+        "namespace": "dmSpinlock",
+        "notes": [],
+        "path": "engine/dlib/src/dmsdk/dlib/spinlock.h"
+    }
+}

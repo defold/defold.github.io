@@ -80,7 +80,7 @@ REFDOC_MD_FRONTMATTER = """---
 layout: api
 branch: {}
 ref: {}
-type: {}
+language: {}
 title: API reference ({})
 ---
 """
@@ -1106,51 +1106,78 @@ def process_refdoc(download = False):
                     if len(api["elements"]) > 0:
                         namespace = api["info"]["namespace"]
                         if not namespace:
-                            namespace = api["info"]["name"]
-                        namespace = namespace.replace(" ", "")
-                        if not namespace in namespaces:
-                            namespaces[namespace] = api
+                            api["info"]["namespace"] = api["info"]["name"].replace(" ", "")
+
+                        namespace = api["info"]["namespace"]
+                        if not namespace:
+                            print("No namespace or name found in", file)
+                            sys.exit(5)
+
+                        # detect language with fallback
+                        language = api["info"].get("language")
+                        if not language:
+                            if namespace.startswith("dm"):
+                                print("No language found in %s, inferring C++ from namespace" % file)
+                                api["info"]["language"] = "C++"
+                            elif "script_" in api["info"]["path"]:
+                                print("No language found in %s, inferring Lua from path" % file)
+                                api["info"]["language"] = "Lua"
+                            else:
+                                print("No language found in %s, assuming Lua" % file)
+                                api["info"]["language"] = "Lua"
+                                # sys.exit(5)
+
+                        # create the key by which we index and collect APIs
+                        namespace_key = namespace
+                        language = api["info"].get("language")
+                        if language == "C++":
+                            namespace_key = namespace_key + "-cpp"
+                        elif language == "C#":
+                            namespace_key = namespace_key + "-cs"
                         else:
-                            info = namespaces[namespace]["info"]
+                            namespace_key = namespace_key + "-" + language
+                        namespace_key = namespace_key.lower()
+
+                        # add api or extend existing one
+                        if not namespace_key in namespaces:
+                            namespaces[namespace_key] = api
+                        else:
+                            # extend info
+                            info = namespaces[namespace_key]["info"]
                             if not info["namespace"]: info["namespace"] = api["info"]["namespace"]
                             if not info["description"]: info["description"] = api["info"]["description"]
                             if not info["brief"]: info["brief"] = api["info"]["brief"]
                             if not info["path"]: info["path"] = api["info"]["path"]
-                            namespaces[namespace]["elements"].extend(api["elements"])
                             info["notes"].extend(api["info"]["notes"])
+                            # extend elements
+                            elements = namespaces[namespace_key]["elements"]
+                            elements.extend(api["elements"])
 
             # generate index and dummy file per namespace
-            for namespace in namespaces:
-                api = namespaces[namespace]
+            for namespace_key in namespaces:
+                api = namespaces[namespace_key]
                 api["elements"].sort(key=lambda x: x.get("name").lower())
-                api_type = "defold"
-                api_lang = api["info"].get("language")
-                if namespace in LUA_APIS:
-                    api_type = "lua"
-                elif namespace.startswith("dm") or namespace == "sharedlibrary" or api_lang == "C++":
-                    api_type = "c"
-                else:
-                    api_type = "defold"
 
-                json_out_name = namespace
+                json_out_name = namespace_key
                 json_out_file = json_out_name + ".json"
                 
                 p = os.path.join(REF_DATA_DIR, json_out_file)
-                # print("REFDOC " + json_out_name + " type: " + api_type + " path: " + p + " lang: " + api["info"].get("language"))
+                print("REFDOC " + json_out_name + " path: " + p + " lang: " + api["info"].get("language"))
                 write_as_json(p, api)
 
                 # generate a dummy markdown page with some front matter for each ref doc
                 with open(os.path.join(REF_PAGE_DIR, json_out_name + ".md"), "w") as f:
-                    f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, api_type, json_out_name) + REFDOC_MD_BODY)
+                    f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, api["info"]["language"], json_out_name) + REFDOC_MD_BODY)
 
                 # build refdoc index
                 refindex.append({
-                    "namespace": namespace,
+                    "namespace": api["info"]["namespace"],
                     "name": api["info"]["name"],
                     "filename": json_out_name,
                     "url": "/ref/" + branch + "/" + json_out_name,
                     "branch": branch,
-                    "type": api_type
+                    "language": api["info"]["language"],
+                    "type": api["info"]["language"],
                 })
 
         # add extensions
@@ -1162,7 +1189,8 @@ def process_refdoc(download = False):
                 "name": extension["info"]["name"],
                 "url": "/" + extension["info"]["api"],
                 "branch": branch,
-                "type": "extension"
+                "type": "extension",
+                "language": "lua"
             })
 
     # copy stable files to ref/ for backwards compatibility
