@@ -3,6 +3,6 @@ layout: api
 branch: stable
 ref: dmsslsocket-cpp
 language: C++
-title: API reference (dmsslsocket-cpp)
+title: API reference (SSLSocket)
 ---
 {% include anchor_headings.html html=content %}

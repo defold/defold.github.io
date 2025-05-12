@@ -3,6 +3,6 @@ layout: api
 branch: stable
 ref: dmatomic-cpp
 language: C++
-title: API reference (dmatomic-cpp)
+title: API reference (Atomic)
 ---
 {% include anchor_headings.html html=content %}

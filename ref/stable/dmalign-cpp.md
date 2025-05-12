@@ -3,6 +3,6 @@ layout: api
 branch: stable
 ref: dmalign-cpp
 language: C++
-title: API reference (dmalign-cpp)
+title: API reference (Align)
 ---
 {% include anchor_headings.html html=content %}

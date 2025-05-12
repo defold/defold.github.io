@@ -3,6 +3,6 @@ layout: api
 branch: stable
 ref: go-lua
 language: Lua
-title: API reference (go-lua)
+title: API reference (Game object)
 ---
 {% include anchor_headings.html html=content %}

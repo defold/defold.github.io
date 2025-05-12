@@ -3,6 +3,6 @@ layout: api
 branch: stable
 ref: dmmath-cpp
 language: C++
-title: API reference (dmmath-cpp)
+title: API reference (Math)
 ---
 {% include anchor_headings.html html=content %}

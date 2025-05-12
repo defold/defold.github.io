@@ -3,6 +3,6 @@ layout: api
 branch: stable
 ref: crash-lua
 language: Lua
-title: API reference (crash-lua)
+title: API reference (Crash)
 ---
 {% include anchor_headings.html html=content %}

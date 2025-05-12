@@ -3,6 +3,6 @@ layout: api
 branch: stable
 ref: dmmutex-cpp
 language: C++
-title: API reference (dmmutex-cpp)
+title: API reference (Mutex)
 ---
 {% include anchor_headings.html html=content %}

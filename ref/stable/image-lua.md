@@ -3,6 +3,6 @@ layout: api
 branch: stable
 ref: image-lua
 language: Lua
-title: API reference (image-lua)
+title: API reference (Image)
 ---
 {% include anchor_headings.html html=content %}

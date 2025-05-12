@@ -3,6 +3,6 @@ layout: api
 branch: stable
 ref: dmphysics-cpp
 language: C++
-title: API reference (dmphysics-cpp)
+title: API reference (Physics)
 ---
 {% include anchor_headings.html html=content %}

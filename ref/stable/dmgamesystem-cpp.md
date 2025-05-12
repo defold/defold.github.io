@@ -3,6 +3,6 @@ layout: api
 branch: stable
 ref: dmgamesystem-cpp
 language: C++
-title: API reference (dmgamesystem-cpp)
+title: API reference (Component Render Constants)
 ---
 {% include anchor_headings.html html=content %}

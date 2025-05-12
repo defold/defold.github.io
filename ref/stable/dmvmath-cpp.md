@@ -3,6 +3,6 @@ layout: api
 branch: stable
 ref: dmvmath-cpp
 language: C++
-title: API reference (dmvmath-cpp)
+title: API reference (Vector Math)
 ---
 {% include anchor_headings.html html=content %}

@@ -1161,13 +1161,24 @@ def process_refdoc(download = False):
                 json_out_name = namespace_key
                 json_out_file = json_out_name + ".json"
                 
+                # write the json data file for the api
+                # example: _data/ref/stable/go.json
                 p = os.path.join(REF_DATA_DIR, json_out_file)
                 print("REFDOC " + json_out_name + " path: " + p + " lang: " + api["info"].get("language"))
                 write_as_json(p, api)
 
                 # generate a dummy markdown page with some front matter for each ref doc
-                with open(os.path.join(REF_PAGE_DIR, json_out_name + ".md"), "w") as f:
-                    f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, api["info"]["language"], json_out_name) + REFDOC_MD_BODY)
+                # example: ref/stable/go-lua.md, ref/stable/dmarray-cpp.md etc
+                dummy = os.path.join(REF_PAGE_DIR, json_out_name + ".md")
+                with open(dummy, "w") as f:
+                    f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, api["info"]["language"], api["info"]["name"]) + REFDOC_MD_BODY)
+
+                # for backwards compatibility also generate one using only the namespace
+                # example: ref/stable/go.md, ref/stable/dmarray.md etc
+                json_out_name_fallback = api["info"]["namespace"]
+                dummy = os.path.join(REF_PAGE_DIR, json_out_name_fallback + ".md")
+                with open(os.path.join(REF_PAGE_DIR, json_out_name_fallback + ".md"), "w") as f:
+                    f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, api["info"]["language"], api["info"]["name"]) + REFDOC_MD_BODY)
 
                 # build refdoc index
                 refindex.append({

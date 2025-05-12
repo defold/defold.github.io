@@ -3,6 +3,6 @@ layout: api
 branch: stable
 ref: dmintersection-cpp
 language: C++
-title: API reference (dmintersection-cpp)
+title: API reference (Intersection structs and functions)
 ---
 {% include anchor_headings.html html=content %}
