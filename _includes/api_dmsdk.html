@@ -29,8 +29,10 @@
 	</tr>
 	<tr>
 		{%- unless global_namespaces contains ref.info.namespace -%}
+		{%- if ref.info.namespace != "" -%}
 		<td>Namespace:</td>
 		<td><code>{{ ref.info.namespace }}</code></td>
+		{%- endif -%}
 		{%- endunless -%}
 	</tr>
 	<tr>
