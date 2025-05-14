@@ -710,6 +710,8 @@ def process_examples(download = False):
     includes_dir = os.path.join("_includes", "examples")
     rmmkdir(includes_dir)
 
+    settings_file = "_example.settings"
+
     print("Processing examples")
     with tmpdir() as tmp_dir:
         shutil.copyfile(EXAMPLES_ZIP, os.path.join(tmp_dir, EXAMPLES_ZIP))
@@ -736,8 +738,11 @@ def process_examples(download = False):
                     print("..building %s" % example)
                     bob_out = os.path.join(example_src_dir, bob_jar)
                     shutil.copyfile(bob_jar, bob_out)
-                    subprocess.call([ "java", "-jar", bob_out, "--archive", "--platform", "js-web", "--variant", "debug", "resolve", "build", "bundle" ], cwd=example_src_dir)
+                    settings_out = os.path.join(example_src_dir, settings_file)
+                    shutil.copyfile(settings_file, settings_out)
+                    subprocess.call([ "java", "-jar", bob_out, "--settings", settings_file, "--archive", "--platform", "js-web", "--variant", "debug", "resolve", "build", "bundle" ], cwd=example_src_dir)
                     os.remove(bob_out)
+                    os.remove(settings_out)
 
                     print("..copying %s" % example)
                     index_file = find_file(os.path.join(example_src_dir, "build", "default"), "index.html")
