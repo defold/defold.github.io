@@ -925,6 +925,45 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "check if <code>editor.tx.add()</code> (as well as <code>editor.tx.clear()</code> and <code>editor.tx.remove()</code>) transaction with this property won't throw an error",
+            "description": "Check if <code>editor.tx.add()</code> (as well as <code>editor.tx.clear()</code> and <code>editor.tx.remove()</code>) transaction with this property won't throw an error",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.can_add",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Either resource path (e.g. <code>\"/main/game.script\"</code>), or internal node id passed to the script by the editor",
+                    "name": "node",
+                    "types": [
+                        "string",
+                        "userdata"
+                    ]
+                },
+                {
+                    "doc": "Either <code>\"path\"</code>, <code>\"text\"</code>, or a property from the Outline view (hover the label to see its editor script name)",
+                    "name": "property",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "value",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "check if you can get this property so <code>editor.get()</code> won't throw an error",
             "description": "Check if you can get this property so <code>editor.get()</code> won't throw an error",
             "error": "",
@@ -964,8 +1003,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "check if <code>\"set\"</code> action with this property won't throw an error",
-            "description": "Check if <code>\"set\"</code> action with this property won't throw an error",
+            "brief": "check if <code>editor.tx.set()</code> transaction with this property won't throw an error",
+            "description": "Check if <code>editor.tx.set()</code> transaction with this property won't throw an error",
             "error": "",
             "examples": "",
             "language": "",
@@ -1827,8 +1866,132 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "create a set transaction step.",
-            "description": "Create a set transaction step.\nWhen the step is transacted using <code>editor.transact()</code>, it will set the node's property to a supplied value",
+            "brief": "create a transaction step that will add a child item to a node's list property when transacted with <code>editor.transact()</code>.",
+            "description": "Create a transaction step that will add a child item to a node's list property when transacted with <code>editor.transact()</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.tx.add",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Either resource path (e.g. <code>\"/main/game.script\"</code>), or internal node id passed to the script by the editor",
+                    "name": "node",
+                    "types": [
+                        "string",
+                        "userdata"
+                    ]
+                },
+                {
+                    "doc": "Either <code>\"path\"</code>, <code>\"text\"</code>, or a property from the Outline view (hover the label to see its editor script name)",
+                    "name": "property",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Added item for the property, a table from property key to either a valid <code>editor.tx.set()</code>-able value, or an array of valid <code>editor.tx.add()</code>-able values",
+                    "name": "value",
+                    "types": [
+                        "any"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create a transaction step that will deletes all items from node's list property when transacted with <code>editor.transact()</code>.",
+            "description": "Create a transaction step that will deletes all items from node's list property when transacted with <code>editor.transact()</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.tx.clear",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Either resource path (e.g. <code>\"/main/game.script\"</code>), or internal node id passed to the script by the editor",
+                    "name": "node",
+                    "types": [
+                        "string",
+                        "userdata"
+                    ]
+                },
+                {
+                    "doc": "Either <code>\"path\"</code>, <code>\"text\"</code>, or a property from the Outline view (hover the label to see its editor script name)",
+                    "name": "property",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "A transaction step",
+                    "name": "tx",
+                    "types": [
+                        "transaction_step"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create a transaction step that will remove a child node from the node's list property when transacted with <code>editor.transact()</code>.",
+            "description": "Create a transaction step that will remove a child node from the node's list property when transacted with <code>editor.transact()</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.tx.remove",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Either resource path (e.g. <code>\"/main/game.script\"</code>), or internal node id passed to the script by the editor",
+                    "name": "node",
+                    "types": [
+                        "string",
+                        "userdata"
+                    ]
+                },
+                {
+                    "doc": "Either <code>\"path\"</code>, <code>\"text\"</code>, or a property from the Outline view (hover the label to see its editor script name)",
+                    "name": "property",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Either resource path (e.g. <code>\"/main/game.script\"</code>), or internal node id passed to the script by the editor",
+                    "name": "child_node",
+                    "types": [
+                        "string",
+                        "userdata"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "A transaction step",
+                    "name": "tx",
+                    "types": [
+                        "transaction_step"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create transaction step that will set the node's property to a supplied value when transacted with <code>editor.transact()</code>.",
+            "description": "Create transaction step that will set the node's property to a supplied value when transacted with <code>editor.transact()</code>.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1863,7 +2026,7 @@
             "returnvalues": [
                 {
                     "doc": "A transaction step",
-                    "name": "result",
+                    "name": "tx",
                     "types": [
                         "transaction_step"
                     ]
