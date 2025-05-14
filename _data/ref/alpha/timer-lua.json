@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "the timer handle returned by timer.delay()",
+                    "is_optional": "False",
                     "name": "handle",
                     "types": [
                         "integer"
@@ -43,6 +44,7 @@
             "parameters": [
                 {
                     "doc": "time interval in seconds",
+                    "is_optional": "False",
                     "name": "delay",
                     "types": [
                         "number"
@@ -50,6 +52,7 @@
                 },
                 {
                     "doc": "true = repeat timer until cancel, false = one-shot timer",
+                    "is_optional": "False",
                     "name": "repeating",
                     "types": [
                         "boolean"
@@ -57,6 +60,7 @@
                 },
                 {
                     "doc": "timer callback function\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>handle</code></dt>\n<dd><span class=\"type\">integer</span> The handle of the timer</dd>\n<dt><code>time_elapsed</code></dt>\n<dd><span class=\"type\">number</span> The elapsed time - on first trigger it is time since timer.delay call, otherwise time since last trigger</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "callback",
                     "types": [
                         "function(self, handle, time_elapsed)"
@@ -88,6 +92,7 @@
             "parameters": [
                 {
                     "doc": "the timer handle returned by timer.delay()",
+                    "is_optional": "False",
                     "name": "handle",
                     "types": [
                         "integer"
@@ -135,6 +140,7 @@
             "parameters": [
                 {
                     "doc": "the timer handle returned by timer.delay()",
+                    "is_optional": "False",
                     "name": "handle",
                     "types": [
                         "integer"
@@ -157,13 +163,12 @@
     ],
     "info": {
         "brief": "Timer API documentation",
-        "description": "Timers allow you to set a delay and a callback to be called when the timer completes.\nThe timers created with this API are updated with the collection timer where they\nare created. If you pause or speed up the collection (using <code>set_time_step</code>) it will\nalso affect the new timer.",
+        "description": "Timers allow you to set a delay and a callback to be called when the timer completes.\n\nThe timers created with this API are updated with the collection timer where they\nare created. If you pause or speed up the collection (using `set_time_step`) it will\nalso affect the new timer.",
         "file": "",
-        "group": "SCRIPT",
         "language": "Lua",
         "name": "Timer",
         "namespace": "timer",
         "notes": [],
-        "path": ""
+        "path": "script_timer.cpp"
     }
 }

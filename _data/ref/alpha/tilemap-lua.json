@@ -42,6 +42,7 @@
             "parameters": [
                 {
                     "doc": "the tile map",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -96,6 +97,7 @@
             "parameters": [
                 {
                     "doc": "the tile map",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -105,6 +107,7 @@
                 },
                 {
                     "doc": "name of the layer for the tile",
+                    "is_optional": "False",
                     "name": "layer",
                     "types": [
                         "string",
@@ -113,6 +116,7 @@
                 },
                 {
                     "doc": "x-coordinate of the tile",
+                    "is_optional": "False",
                     "name": "x",
                     "types": [
                         "number"
@@ -120,6 +124,7 @@
                 },
                 {
                     "doc": "y-coordinate of the tile",
+                    "is_optional": "False",
                     "name": "y",
                     "types": [
                         "number"
@@ -151,6 +156,7 @@
             "parameters": [
                 {
                     "doc": "the tile map",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -160,6 +166,7 @@
                 },
                 {
                     "doc": "name of the layer for the tile",
+                    "is_optional": "False",
                     "name": "layer",
                     "types": [
                         "string",
@@ -168,6 +175,7 @@
                 },
                 {
                     "doc": "x-coordinate of the tile",
+                    "is_optional": "False",
                     "name": "x",
                     "types": [
                         "number"
@@ -175,6 +183,7 @@
                 },
                 {
                     "doc": "y-coordinate of the tile",
+                    "is_optional": "False",
                     "name": "y",
                     "types": [
                         "number"
@@ -206,6 +215,7 @@
             "parameters": [
                 {
                     "doc": "the tilemap",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -215,6 +225,7 @@
                 },
                 {
                     "doc": "the name of the layer for the tiles",
+                    "is_optional": "False",
                     "name": "layer",
                     "types": [
                         "string",
@@ -307,6 +318,7 @@
             "parameters": [
                 {
                     "doc": "the tile map",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -316,6 +328,7 @@
                 },
                 {
                     "doc": "name of the layer for the tile",
+                    "is_optional": "False",
                     "name": "layer",
                     "types": [
                         "string",
@@ -324,6 +337,7 @@
                 },
                 {
                     "doc": "x-coordinate of the tile",
+                    "is_optional": "False",
                     "name": "x",
                     "types": [
                         "number"
@@ -331,6 +345,7 @@
                 },
                 {
                     "doc": "y-coordinate of the tile",
+                    "is_optional": "False",
                     "name": "y",
                     "types": [
                         "number"
@@ -338,6 +353,7 @@
                 },
                 {
                     "doc": "index of new tile to set. 0 resets the cell",
+                    "is_optional": "False",
                     "name": "tile",
                     "types": [
                         "number"
@@ -345,7 +361,8 @@
                 },
                 {
                     "doc": "optional flip and/or rotation should be applied to the tile",
-                    "name": "[transform_bitmask]",
+                    "is_optional": "True",
+                    "name": "transform_bitmask",
                     "types": [
                         "number"
                     ]
@@ -368,6 +385,7 @@
             "parameters": [
                 {
                     "doc": "the tile map",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -377,6 +395,7 @@
                 },
                 {
                     "doc": "name of the layer for the tile",
+                    "is_optional": "False",
                     "name": "layer",
                     "types": [
                         "string",
@@ -385,6 +404,7 @@
                 },
                 {
                     "doc": "should the layer be visible",
+                    "is_optional": "False",
                     "name": "visible",
                     "types": [
                         "boolean"
@@ -416,11 +436,10 @@
         "brief": "Tilemap API documentation",
         "description": "Functions and messages used to manipulate tile map components.",
         "file": "",
-        "group": "COMPONENTS",
         "language": "Lua",
         "name": "Tilemap",
         "namespace": "tilemap",
         "notes": [],
-        "path": ""
+        "path": "scripts/script_tilemap.cpp"
     }
 }

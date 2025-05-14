@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "reference to the script state to be used for storing data",
+                    "is_optional": "False",
                     "name": "self",
                     "types": [
                         "object"
@@ -170,6 +171,7 @@
             "parameters": [
                 {
                     "doc": "node to animate",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -177,6 +179,7 @@
                 },
                 {
                     "doc": "property to animate\n<ul>\n<li><code>\"position\"</code></li>\n<li><code>\"rotation\"</code></li>\n<li><code>\"euler\"</code></li>\n<li><code>\"scale\"</code></li>\n<li><code>\"color\"</code></li>\n<li><code>\"outline\"</code></li>\n<li><code>\"shadow\"</code></li>\n<li><code>\"size\"</code></li>\n<li><code>\"fill_angle\"</code> (pie)</li>\n<li><code>\"inner_radius\"</code> (pie)</li>\n<li><code>\"leading\"</code> (text)</li>\n<li><code>\"tracking\"</code> (text)</li>\n<li><code>\"slice9\"</code> (slice9)</li>\n</ul>\nThe following property constants are defined equaling the corresponding property string names.\n<ul>\n<li><code>gui.PROP_POSITION</code></li>\n<li><code>gui.PROP_ROTATION</code></li>\n<li><code>gui.PROP_EULER</code></li>\n<li><code>gui.PROP_SCALE</code></li>\n<li><code>gui.PROP_COLOR</code></li>\n<li><code>gui.PROP_OUTLINE</code></li>\n<li><code>gui.PROP_SHADOW</code></li>\n<li><code>gui.PROP_SIZE</code></li>\n<li><code>gui.PROP_FILL_ANGLE</code></li>\n<li><code>gui.PROP_INNER_RADIUS</code></li>\n<li><code>gui.PROP_LEADING</code></li>\n<li><code>gui.PROP_TRACKING</code></li>\n<li><code>gui.PROP_SLICE9</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "property",
                     "types": [
                         "string",
@@ -185,6 +188,7 @@
                 },
                 {
                     "doc": "target property value",
+                    "is_optional": "False",
                     "name": "to",
                     "types": [
                         "number",
@@ -195,6 +199,7 @@
                 },
                 {
                     "doc": "easing to use during animation.\n     Either specify one of the <code>gui.EASING_*</code> constants or provide a\n     <span class=\"type\">vector</span> with a custom curve. See the <a href=\"/manuals/animation#_easing\">animation guide</a> for more information.",
+                    "is_optional": "False",
                     "name": "easing",
                     "types": [
                         "constant",
@@ -203,6 +208,7 @@
                 },
                 {
                     "doc": "duration of the animation in seconds.",
+                    "is_optional": "False",
                     "name": "duration",
                     "types": [
                         "number"
@@ -210,21 +216,24 @@
                 },
                 {
                     "doc": "delay before the animation starts in seconds.",
-                    "name": "[delay]",
+                    "is_optional": "True",
+                    "name": "delay",
                     "types": [
                         "number"
                     ]
                 },
                 {
                     "doc": "function to call when the\n     animation has completed",
-                    "name": "[complete_function]",
+                    "is_optional": "True",
+                    "name": "complete_function",
                     "types": [
                         "function(self, node)"
                     ]
                 },
                 {
                     "doc": "playback mode\n<ul>\n<li><code>gui.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>gui.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>gui.PLAYBACK_ONCE_PINGPONG</code></li>\n<li><code>gui.PLAYBACK_LOOP_FORWARD</code></li>\n<li><code>gui.PLAYBACK_LOOP_BACKWARD</code></li>\n<li><code>gui.PLAYBACK_LOOP_PINGPONG</code></li>\n</ul>",
-                    "name": "[playback]",
+                    "is_optional": "True",
+                    "name": "playback",
                     "types": [
                         "constant"
                     ]
@@ -322,6 +331,7 @@
             "parameters": [
                 {
                     "doc": "node that should have its animation canceled",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -329,6 +339,7 @@
                 },
                 {
                     "doc": "property for which the animation should be canceled\n<ul>\n<li><code>\"position\"</code></li>\n<li><code>\"rotation\"</code></li>\n<li><code>\"euler\"</code></li>\n<li><code>\"scale\"</code></li>\n<li><code>\"color\"</code></li>\n<li><code>\"outline\"</code></li>\n<li><code>\"shadow\"</code></li>\n<li><code>\"size\"</code></li>\n<li><code>\"fill_angle\"</code> (pie)</li>\n<li><code>\"inner_radius\"</code> (pie)</li>\n<li><code>\"leading\"</code> (text)</li>\n<li><code>\"tracking\"</code> (text)</li>\n<li><code>\"slice9\"</code> (slice9)</li>\n</ul>",
+                    "is_optional": "False",
                     "name": "property",
                     "types": [
                         "string",
@@ -353,6 +364,7 @@
             "parameters": [
                 {
                     "doc": "node cancel flipbook animation for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -406,6 +418,7 @@
             "parameters": [
                 {
                     "doc": "node to clone",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -437,6 +450,7 @@
             "parameters": [
                 {
                     "doc": "root node to clone",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -468,6 +482,7 @@
             "parameters": [
                 {
                     "doc": "node to delete",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -491,6 +506,7 @@
             "parameters": [
                 {
                     "doc": "texture id",
+                    "is_optional": "False",
                     "name": "texture",
                     "types": [
                         "string",
@@ -1130,6 +1146,7 @@
             "parameters": [
                 {
                     "doc": "node to get the property for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1137,6 +1154,7 @@
                 },
                 {
                     "doc": "the property to retrieve",
+                    "is_optional": "False",
                     "name": "property",
                     "types": [
                         "string",
@@ -1146,7 +1164,8 @@
                 },
                 {
                     "doc": "optional options table (only applicable for material constants)\n- <code>index</code> <span class=\"type\">integer</span> index into array property (1 based)",
-                    "name": "[options]",
+                    "is_optional": "True",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -1169,6 +1188,7 @@
             "parameters": [
                 {
                     "doc": "node from which to get the adjust mode (node)",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1200,6 +1220,7 @@
             "parameters": [
                 {
                     "doc": "node from which to get alpha",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1231,6 +1252,7 @@
             "parameters": [
                 {
                     "doc": "node from which to get the blend mode",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1262,6 +1284,7 @@
             "parameters": [
                 {
                     "doc": "node from which to get the clipping inverted state",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1293,6 +1316,7 @@
             "parameters": [
                 {
                     "doc": "node from which to get the clipping mode",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1324,6 +1348,7 @@
             "parameters": [
                 {
                     "doc": "node from which to get the clipping visibility state",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1355,6 +1380,7 @@
             "parameters": [
                 {
                     "doc": "node to get the color from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1386,6 +1412,7 @@
             "parameters": [
                 {
                     "doc": "node to get the rotation from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1417,6 +1444,7 @@
             "parameters": [
                 {
                     "doc": "node from which to get the fill angle",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1448,6 +1476,7 @@
             "parameters": [
                 {
                     "doc": "node to get flipbook animation from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1479,6 +1508,7 @@
             "parameters": [
                 {
                     "doc": "node to get the cursor for (node)",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1510,6 +1540,7 @@
             "parameters": [
                 {
                     "doc": "node to set the cursor for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1541,6 +1572,7 @@
             "parameters": [
                 {
                     "doc": "node from which to get the font",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1572,6 +1604,7 @@
             "parameters": [
                 {
                     "doc": "font of which to get the path hash",
+                    "is_optional": "False",
                     "name": "font_name",
                     "types": [
                         "hash",
@@ -1627,6 +1660,7 @@
             "parameters": [
                 {
                     "doc": "the node to retrieve the id from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1658,6 +1692,7 @@
             "parameters": [
                 {
                     "doc": "the node to retrieve the id from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1689,6 +1724,7 @@
             "parameters": [
                 {
                     "doc": "node from which to get the inherit alpha state",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1720,6 +1756,7 @@
             "parameters": [
                 {
                     "doc": "node from where to get the inner radius",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1751,6 +1788,7 @@
             "parameters": [
                 {
                     "doc": "node from which to get the layer",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1805,6 +1843,7 @@
             "parameters": [
                 {
                     "doc": "node from where to get the leading",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1836,6 +1875,7 @@
             "parameters": [
                 {
                     "doc": "node from which to get the line-break for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1867,6 +1907,7 @@
             "parameters": [
                 {
                     "doc": "node to get the material for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1898,6 +1939,7 @@
             "parameters": [
                 {
                     "doc": "id of the node to retrieve",
+                    "is_optional": "False",
                     "name": "id",
                     "types": [
                         "string",
@@ -1930,6 +1972,7 @@
             "parameters": [
                 {
                     "doc": "node from where to get the outer bounds mode",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1961,6 +2004,7 @@
             "parameters": [
                 {
                     "doc": "node to get the outline color from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -1992,6 +2036,7 @@
             "parameters": [
                 {
                     "doc": "the node from which to retrieve its parent",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2024,6 +2069,7 @@
             "parameters": [
                 {
                     "doc": "node to get particle fx for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2055,6 +2101,7 @@
             "parameters": [
                 {
                     "doc": "pie node",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2086,6 +2133,7 @@
             "parameters": [
                 {
                     "doc": "node to get pivot from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2117,6 +2165,7 @@
             "parameters": [
                 {
                     "doc": "node to get the position from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2148,6 +2197,7 @@
             "parameters": [
                 {
                     "doc": "node to get the rotation from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2179,6 +2229,7 @@
             "parameters": [
                 {
                     "doc": "node to get the scale from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2210,6 +2261,7 @@
             "parameters": [
                 {
                     "doc": "node to get the screen position from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2241,6 +2293,7 @@
             "parameters": [
                 {
                     "doc": "node to get the shadow color from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2272,6 +2325,7 @@
             "parameters": [
                 {
                     "doc": "node to get the size from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2303,6 +2357,7 @@
             "parameters": [
                 {
                     "doc": "node from which to get the size mode (node)",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2334,6 +2389,7 @@
             "parameters": [
                 {
                     "doc": "node to manipulate",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2365,6 +2421,7 @@
             "parameters": [
                 {
                     "doc": "node from which to get the text",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2396,6 +2453,7 @@
             "parameters": [
                 {
                     "doc": "node to get texture from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2427,6 +2485,7 @@
             "parameters": [
                 {
                     "doc": "node from where to get the tracking",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2458,6 +2517,7 @@
             "parameters": [
                 {
                     "doc": "root node to get node tree from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2489,6 +2549,7 @@
             "parameters": [
                 {
                     "doc": "node from which to get the type",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2528,6 +2589,7 @@
             "parameters": [
                 {
                     "doc": "node to query",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2582,6 +2644,7 @@
             "parameters": [
                 {
                     "doc": "node to get x-anchor from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2613,6 +2676,7 @@
             "parameters": [
                 {
                     "doc": "node to get y-anchor from",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2659,6 +2723,7 @@
             "parameters": [
                 {
                     "doc": "node to query",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2666,7 +2731,8 @@
                 },
                 {
                     "doc": "check hierarchy recursively",
-                    "name": "[recursive]",
+                    "is_optional": "True",
+                    "name": "recursive",
                     "types": [
                         "boolean"
                     ]
@@ -2757,6 +2823,7 @@
             "parameters": [
                 {
                     "doc": "to move",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2764,6 +2831,7 @@
                 },
                 {
                     "doc": "reference node above which the first node should be moved",
+                    "is_optional": "False",
                     "name": "reference",
                     "types": [
                         "node",
@@ -2788,6 +2856,7 @@
             "parameters": [
                 {
                     "doc": "to move",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -2795,6 +2864,7 @@
                 },
                 {
                     "doc": "reference node below which the first node should be moved",
+                    "is_optional": "False",
                     "name": "reference",
                     "types": [
                         "node",
@@ -2819,6 +2889,7 @@
             "parameters": [
                 {
                     "doc": "node position",
+                    "is_optional": "False",
                     "name": "pos",
                     "types": [
                         "vector3",
@@ -2827,6 +2898,7 @@
                 },
                 {
                     "doc": "node size",
+                    "is_optional": "False",
                     "name": "size",
                     "types": [
                         "vector3"
@@ -2858,6 +2930,7 @@
             "parameters": [
                 {
                     "doc": "node position",
+                    "is_optional": "False",
                     "name": "pos",
                     "types": [
                         "vector3",
@@ -2866,6 +2939,7 @@
                 },
                 {
                     "doc": "particle fx resource name",
+                    "is_optional": "False",
                     "name": "particlefx",
                     "types": [
                         "hash",
@@ -2898,6 +2972,7 @@
             "parameters": [
                 {
                     "doc": "node position",
+                    "is_optional": "False",
                     "name": "pos",
                     "types": [
                         "vector3",
@@ -2906,6 +2981,7 @@
                 },
                 {
                     "doc": "node size",
+                    "is_optional": "False",
                     "name": "size",
                     "types": [
                         "vector3"
@@ -2937,6 +3013,7 @@
             "parameters": [
                 {
                     "doc": "node position",
+                    "is_optional": "False",
                     "name": "pos",
                     "types": [
                         "vector3",
@@ -2945,6 +3022,7 @@
                 },
                 {
                     "doc": "node text",
+                    "is_optional": "False",
                     "name": "text",
                     "types": [
                         "string"
@@ -2976,6 +3054,7 @@
             "parameters": [
                 {
                     "doc": "texture id",
+                    "is_optional": "False",
                     "name": "texture_id",
                     "types": [
                         "string",
@@ -2984,6 +3063,7 @@
                 },
                 {
                     "doc": "texture width",
+                    "is_optional": "False",
                     "name": "width",
                     "types": [
                         "number"
@@ -2991,6 +3071,7 @@
                 },
                 {
                     "doc": "texture height",
+                    "is_optional": "False",
                     "name": "height",
                     "types": [
                         "number"
@@ -2998,6 +3079,7 @@
                 },
                 {
                     "doc": "texture type\n<ul>\n<li><code>\"rgb\"</code> - RGB</li></li>\n<li><code>\"rgba\"</code> - RGBA</li></li>\n<li><code>\"l\"</code> - LUMINANCE</li></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "type",
                     "types": [
                         "string",
@@ -3006,6 +3088,7 @@
                 },
                 {
                     "doc": "texture data",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "string"
@@ -3013,6 +3096,7 @@
                 },
                 {
                     "doc": "flip texture vertically",
+                    "is_optional": "False",
                     "name": "flip",
                     "types": [
                         "boolean"
@@ -3051,6 +3135,7 @@
             "parameters": [
                 {
                     "doc": "node to be tested for picking",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -3058,6 +3143,7 @@
                 },
                 {
                     "doc": "x-coordinate (see <a href=\"#on_input\">on_input</a> )",
+                    "is_optional": "False",
                     "name": "x",
                     "types": [
                         "number"
@@ -3065,6 +3151,7 @@
                 },
                 {
                     "doc": "y-coordinate (see <a href=\"#on_input\">on_input</a> )",
+                    "is_optional": "False",
                     "name": "y",
                     "types": [
                         "number"
@@ -3261,6 +3348,7 @@
             "parameters": [
                 {
                     "doc": "node to set animation for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -3268,6 +3356,7 @@
                 },
                 {
                     "doc": "animation id",
+                    "is_optional": "False",
                     "name": "animation",
                     "types": [
                         "string",
@@ -3276,14 +3365,16 @@
                 },
                 {
                     "doc": "optional function to call when the animation has completed\n<dl>\n<dt><code>self</code></dt>\n<dd>\n<span class=\"type\">object</span> The current object.\n</dd>\n<dt><code>node</code></dt>\n<dd>\n<span class=\"type\">node</span> The node that is animated.\n</dd>\n</dl>",
-                    "name": "[complete_function]",
+                    "is_optional": "True",
+                    "name": "complete_function",
                     "types": [
                         "function(self, node)"
                     ]
                 },
                 {
                     "doc": "optional table with properties\n<dl>\n<dt><code>offset</code></dt>\n<dd><span class=\"type\">number</span> The normalized initial value of the animation cursor when the animation starts playing</dd>\n<dt><code>playback_rate</code></dt>\n<dd><span class=\"type\">number</span> The rate with which the animation will be played. Must be positive</dd>\n</dl>",
-                    "name": "[play_properties]",
+                    "is_optional": "True",
+                    "name": "play_properties",
                     "types": [
                         "table"
                     ]
@@ -3306,6 +3397,7 @@
             "parameters": [
                 {
                     "doc": "node to play particle fx for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -3313,7 +3405,8 @@
                 },
                 {
                     "doc": "optional callback function that will be called when an emitter attached to this particlefx changes state.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>node</code></dt>\n<dd><span class=\"type\">hash</span> The particle fx node, or <code>nil</code> if the node was deleted</dd>\n<dt><code>emitter</code></dt>\n<dd><span class=\"type\">hash</span> The id of the emitter</dd>\n<dt><code>state</code></dt>\n<dd><span class=\"type\">constant</span> the new state of the emitter:</dd>\n</dl>\n<ul>\n<li><code>particlefx.EMITTER_STATE_SLEEPING</code></li>\n<li><code>particlefx.EMITTER_STATE_PRESPAWN</code></li>\n<li><code>particlefx.EMITTER_STATE_SPAWNING</code></li>\n<li><code>particlefx.EMITTER_STATE_POSTSPAWN</code></li>\n</ul>",
-                    "name": "[emitter_state_function]",
+                    "is_optional": "True",
+                    "name": "emitter_state_function",
                     "types": [
                         "function(self, node, emitter, state)"
                     ]
@@ -3636,6 +3729,7 @@
             "parameters": [
                 {
                     "doc": "node to reset the material for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -3719,6 +3813,7 @@
             "parameters": [
                 {
                     "doc": "node used for getting local transformation matrix",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -3726,6 +3821,7 @@
                 },
                 {
                     "doc": "screen position",
+                    "is_optional": "False",
                     "name": "screen_position",
                     "types": [
                         "vector3"
@@ -3757,6 +3853,7 @@
             "parameters": [
                 {
                     "doc": "node to set the property for, or msg.url() to the gui itself",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node",
@@ -3765,6 +3862,7 @@
                 },
                 {
                     "doc": "the property to set",
+                    "is_optional": "False",
                     "name": "property",
                     "types": [
                         "string",
@@ -3774,6 +3872,7 @@
                 },
                 {
                     "doc": "the property to set",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "number",
@@ -3784,7 +3883,8 @@
                 },
                 {
                     "doc": "optional options table (only applicable for material constants)\n- <code>index</code> <span class=\"type\">integer</span> index into array property (1 based)\n- <code>key</code> <span class=\"type\">hash</span> name of internal property",
-                    "name": "[options]",
+                    "is_optional": "True",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -3807,6 +3907,7 @@
             "parameters": [
                 {
                     "doc": "node to set adjust mode for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -3814,6 +3915,7 @@
                 },
                 {
                     "doc": "adjust mode to set\n<ul>\n<li><code>gui.ADJUST_FIT</code></li>\n<li><code>gui.ADJUST_ZOOM</code></li>\n<li><code>gui.ADJUST_STRETCH</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "adjust_mode",
                     "types": [
                         "constant"
@@ -3837,6 +3939,7 @@
             "parameters": [
                 {
                     "doc": "node for which to set alpha",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -3844,6 +3947,7 @@
                 },
                 {
                     "doc": "0..1 alpha color",
+                    "is_optional": "False",
                     "name": "alpha",
                     "types": [
                         "number"
@@ -3867,6 +3971,7 @@
             "parameters": [
                 {
                     "doc": "node to set blend mode for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -3874,6 +3979,7 @@
                 },
                 {
                     "doc": "blend mode to set\n<ul>\n<li><code>gui.BLEND_ALPHA</code></li>\n<li><code>gui.BLEND_ADD</code></li>\n<li><code>gui.BLEND_ADD_ALPHA</code></li>\n<li><code>gui.BLEND_MULT</code></li>\n<li><code>gui.BLEND_SCREEN</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "blend_mode",
                     "types": [
                         "constant"
@@ -3897,6 +4003,7 @@
             "parameters": [
                 {
                     "doc": "node to set clipping inverted state for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -3904,6 +4011,7 @@
                 },
                 {
                     "doc": "<code>true</code> or <code>false</code>",
+                    "is_optional": "False",
                     "name": "inverted",
                     "types": [
                         "boolean"
@@ -3927,6 +4035,7 @@
             "parameters": [
                 {
                     "doc": "node to set clipping mode for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -3934,6 +4043,7 @@
                 },
                 {
                     "doc": "clipping mode to set\n<ul>\n  <li><code>gui.CLIPPING_MODE_NONE</code></li>\n  <li><code>gui.CLIPPING_MODE_STENCIL</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "clipping_mode",
                     "types": [
                         "constant"
@@ -3957,6 +4067,7 @@
             "parameters": [
                 {
                     "doc": "node to set clipping visibility for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -3964,6 +4075,7 @@
                 },
                 {
                     "doc": "<code>true</code> or <code>false</code>",
+                    "is_optional": "False",
                     "name": "visible",
                     "types": [
                         "boolean"
@@ -3987,6 +4099,7 @@
             "parameters": [
                 {
                     "doc": "node to set the color for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -3994,6 +4107,7 @@
                 },
                 {
                     "doc": "new color",
+                    "is_optional": "False",
                     "name": "color",
                     "types": [
                         "vector3",
@@ -4018,6 +4132,7 @@
             "parameters": [
                 {
                     "doc": "node to be enabled/disabled",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4025,6 +4140,7 @@
                 },
                 {
                     "doc": "whether the node should be enabled or not",
+                    "is_optional": "False",
                     "name": "enabled",
                     "types": [
                         "boolean"
@@ -4048,6 +4164,7 @@
             "parameters": [
                 {
                     "doc": "node to set the rotation for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4055,6 +4172,7 @@
                 },
                 {
                     "doc": "new rotation",
+                    "is_optional": "False",
                     "name": "rotation",
                     "types": [
                         "vector3",
@@ -4079,6 +4197,7 @@
             "parameters": [
                 {
                     "doc": "node to set the fill angle for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4086,6 +4205,7 @@
                 },
                 {
                     "doc": "sector angle",
+                    "is_optional": "False",
                     "name": "angle",
                     "types": [
                         "number"
@@ -4109,6 +4229,7 @@
             "parameters": [
                 {
                     "doc": "node to set the cursor for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4116,6 +4237,7 @@
                 },
                 {
                     "doc": "cursor value",
+                    "is_optional": "False",
                     "name": "cursor",
                     "types": [
                         "number"
@@ -4139,6 +4261,7 @@
             "parameters": [
                 {
                     "doc": "node to set the cursor for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4146,6 +4269,7 @@
                 },
                 {
                     "doc": "playback rate",
+                    "is_optional": "False",
                     "name": "playback_rate",
                     "types": [
                         "number"
@@ -4169,6 +4293,7 @@
             "parameters": [
                 {
                     "doc": "node for which to set the font",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4176,6 +4301,7 @@
                 },
                 {
                     "doc": "font id",
+                    "is_optional": "False",
                     "name": "font",
                     "types": [
                         "string",
@@ -4200,6 +4326,7 @@
             "parameters": [
                 {
                     "doc": "node to set the id for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4207,6 +4334,7 @@
                 },
                 {
                     "doc": "id to set",
+                    "is_optional": "False",
                     "name": "id",
                     "types": [
                         "string",
@@ -4231,6 +4359,7 @@
             "parameters": [
                 {
                     "doc": "node from which to set the inherit alpha state",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4238,6 +4367,7 @@
                 },
                 {
                     "doc": "<code>true</code> or <code>false</code>",
+                    "is_optional": "False",
                     "name": "inherit_alpha",
                     "types": [
                         "boolean"
@@ -4261,6 +4391,7 @@
             "parameters": [
                 {
                     "doc": "node to set the inner radius for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4268,6 +4399,7 @@
                 },
                 {
                     "doc": "inner radius",
+                    "is_optional": "False",
                     "name": "radius",
                     "types": [
                         "number"
@@ -4291,6 +4423,7 @@
             "parameters": [
                 {
                     "doc": "node for which to set the layer",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4298,6 +4431,7 @@
                 },
                 {
                     "doc": "layer id",
+                    "is_optional": "False",
                     "name": "layer",
                     "types": [
                         "string",
@@ -4322,6 +4456,7 @@
             "parameters": [
                 {
                     "doc": "node for which to set the leading",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4329,6 +4464,7 @@
                 },
                 {
                     "doc": "a scaling value for the line spacing (default=1)",
+                    "is_optional": "False",
                     "name": "leading",
                     "types": [
                         "number"
@@ -4352,6 +4488,7 @@
             "parameters": [
                 {
                     "doc": "node to set line-break for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4359,6 +4496,7 @@
                 },
                 {
                     "doc": "<code>true</code> or <code>false</code>",
+                    "is_optional": "False",
                     "name": "line_break",
                     "types": [
                         "boolean"
@@ -4382,6 +4520,7 @@
             "parameters": [
                 {
                     "doc": "node to set material for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4389,6 +4528,7 @@
                 },
                 {
                     "doc": "material id",
+                    "is_optional": "False",
                     "name": "material",
                     "types": [
                         "string",
@@ -4413,6 +4553,7 @@
             "parameters": [
                 {
                     "doc": "node for which to set the outer bounds mode",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4420,6 +4561,7 @@
                 },
                 {
                     "doc": "the outer bounds mode of the pie node:\n<ul>\n<li><code>gui.PIEBOUNDS_RECTANGLE</code></li>\n<li><code>gui.PIEBOUNDS_ELLIPSE</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "bounds_mode",
                     "types": [
                         "constant"
@@ -4443,6 +4585,7 @@
             "parameters": [
                 {
                     "doc": "node to set the outline color for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4450,6 +4593,7 @@
                 },
                 {
                     "doc": "new outline color",
+                    "is_optional": "False",
                     "name": "color",
                     "types": [
                         "vector3",
@@ -4474,6 +4618,7 @@
             "parameters": [
                 {
                     "doc": "node for which to set its parent",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4481,14 +4626,16 @@
                 },
                 {
                     "doc": "parent node to set, pass <code>nil</code> to remove parent",
-                    "name": "[parent]",
+                    "is_optional": "True",
+                    "name": "parent",
                     "types": [
                         "node"
                     ]
                 },
                 {
                     "doc": "optional flag to make the scene position being perserved",
-                    "name": "[keep_scene_transform]",
+                    "is_optional": "True",
+                    "name": "keep_scene_transform",
                     "types": [
                         "boolean"
                     ]
@@ -4511,6 +4658,7 @@
             "parameters": [
                 {
                     "doc": "node to set particle fx for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4518,6 +4666,7 @@
                 },
                 {
                     "doc": "particle fx id",
+                    "is_optional": "False",
                     "name": "particlefx",
                     "types": [
                         "hash",
@@ -4542,6 +4691,7 @@
             "parameters": [
                 {
                     "doc": "pie node",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4549,6 +4699,7 @@
                 },
                 {
                     "doc": "vertex count",
+                    "is_optional": "False",
                     "name": "vertices",
                     "types": [
                         "number"
@@ -4572,6 +4723,7 @@
             "parameters": [
                 {
                     "doc": "node to set pivot for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4579,6 +4731,7 @@
                 },
                 {
                     "doc": "pivot constant\n<ul>\n  <li><code>gui.PIVOT_CENTER</code></li>\n  <li><code>gui.PIVOT_N</code></li>\n  <li><code>gui.PIVOT_NE</code></li>\n  <li><code>gui.PIVOT_E</code></li>\n  <li><code>gui.PIVOT_SE</code></li>\n  <li><code>gui.PIVOT_S</code></li>\n  <li><code>gui.PIVOT_SW</code></li>\n  <li><code>gui.PIVOT_W</code></li>\n  <li><code>gui.PIVOT_NW</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "pivot",
                     "types": [
                         "constant"
@@ -4602,6 +4755,7 @@
             "parameters": [
                 {
                     "doc": "node to set the position for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4609,6 +4763,7 @@
                 },
                 {
                     "doc": "new position",
+                    "is_optional": "False",
                     "name": "position",
                     "types": [
                         "vector3",
@@ -4633,6 +4788,7 @@
             "parameters": [
                 {
                     "doc": "rendering order (0-15)",
+                    "is_optional": "False",
                     "name": "order",
                     "types": [
                         "number"
@@ -4656,6 +4812,7 @@
             "parameters": [
                 {
                     "doc": "node to set the rotation for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4663,6 +4820,7 @@
                 },
                 {
                     "doc": "new rotation",
+                    "is_optional": "False",
                     "name": "rotation",
                     "types": [
                         "quaternion",
@@ -4687,6 +4845,7 @@
             "parameters": [
                 {
                     "doc": "node to set the scale for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4694,6 +4853,7 @@
                 },
                 {
                     "doc": "new scale",
+                    "is_optional": "False",
                     "name": "scale",
                     "types": [
                         "vector3",
@@ -4718,6 +4878,7 @@
             "parameters": [
                 {
                     "doc": "node to set the screen position to",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4725,6 +4886,7 @@
                 },
                 {
                     "doc": "screen position",
+                    "is_optional": "False",
                     "name": "screen_position",
                     "types": [
                         "vector3"
@@ -4748,6 +4910,7 @@
             "parameters": [
                 {
                     "doc": "node to set the shadow color for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4755,6 +4918,7 @@
                 },
                 {
                     "doc": "new shadow color",
+                    "is_optional": "False",
                     "name": "color",
                     "types": [
                         "vector3",
@@ -4779,6 +4943,7 @@
             "parameters": [
                 {
                     "doc": "node to set the size for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4786,6 +4951,7 @@
                 },
                 {
                     "doc": "new size",
+                    "is_optional": "False",
                     "name": "size",
                     "types": [
                         "vector3",
@@ -4810,6 +4976,7 @@
             "parameters": [
                 {
                     "doc": "node to set size mode for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4817,6 +4984,7 @@
                 },
                 {
                     "doc": "size mode to set\n<ul>\n<li><code>gui.SIZE_MODE_MANUAL</code></li>\n<li><code>gui.SIZE_MODE_AUTO</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "size_mode",
                     "types": [
                         "constant"
@@ -4840,6 +5008,7 @@
             "parameters": [
                 {
                     "doc": "node to manipulate",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4847,6 +5016,7 @@
                 },
                 {
                     "doc": "new values",
+                    "is_optional": "False",
                     "name": "values",
                     "types": [
                         "vector4"
@@ -4870,6 +5040,7 @@
             "parameters": [
                 {
                     "doc": "node to set text for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4877,6 +5048,7 @@
                 },
                 {
                     "doc": "text to set",
+                    "is_optional": "False",
                     "name": "text",
                     "types": [
                         "string",
@@ -4901,6 +5073,7 @@
             "parameters": [
                 {
                     "doc": "node to set texture for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -4908,6 +5081,7 @@
                 },
                 {
                     "doc": "texture id",
+                    "is_optional": "False",
                     "name": "texture",
                     "types": [
                         "string",
@@ -4932,6 +5106,7 @@
             "parameters": [
                 {
                     "doc": "texture id",
+                    "is_optional": "False",
                     "name": "texture",
                     "types": [
                         "string",
@@ -4940,6 +5115,7 @@
                 },
                 {
                     "doc": "texture width",
+                    "is_optional": "False",
                     "name": "width",
                     "types": [
                         "number"
@@ -4947,6 +5123,7 @@
                 },
                 {
                     "doc": "texture height",
+                    "is_optional": "False",
                     "name": "height",
                     "types": [
                         "number"
@@ -4954,6 +5131,7 @@
                 },
                 {
                     "doc": "texture type\n<ul>\n  <li><code>\"rgb\"</code> - RGB</li>\n  <li><code>\"rgba\"</code> - RGBA</li>\n  <li><code>\"l\"</code> - LUMINANCE</li>\n</ul>",
+                    "is_optional": "False",
                     "name": "type",
                     "types": [
                         "string",
@@ -4962,6 +5140,7 @@
                 },
                 {
                     "doc": "texture data",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "string"
@@ -4969,6 +5148,7 @@
                 },
                 {
                     "doc": "flip texture vertically",
+                    "is_optional": "False",
                     "name": "flip",
                     "types": [
                         "boolean"
@@ -5000,6 +5180,7 @@
             "parameters": [
                 {
                     "doc": "node for which to set the tracking",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -5007,6 +5188,7 @@
                 },
                 {
                     "doc": "a scaling number for the letter spacing (default=0)",
+                    "is_optional": "False",
                     "name": "tracking",
                     "types": [
                         "number"
@@ -5030,6 +5212,7 @@
             "parameters": [
                 {
                     "doc": "node to be visible or not",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -5037,6 +5220,7 @@
                 },
                 {
                     "doc": "whether the node should be visible or not",
+                    "is_optional": "False",
                     "name": "visible",
                     "types": [
                         "boolean"
@@ -5060,6 +5244,7 @@
             "parameters": [
                 {
                     "doc": "node to set x-anchor for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -5067,6 +5252,7 @@
                 },
                 {
                     "doc": "anchor constant\n<ul>\n<li><code>gui.ANCHOR_NONE</code></li>\n<li><code>gui.ANCHOR_LEFT</code></li>\n<li><code>gui.ANCHOR_RIGHT</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "anchor",
                     "types": [
                         "constant"
@@ -5090,6 +5276,7 @@
             "parameters": [
                 {
                     "doc": "node to set y-anchor for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -5097,6 +5284,7 @@
                 },
                 {
                     "doc": "anchor constant\n<ul>\n<li><code>gui.ANCHOR_NONE</code></li>\n<li><code>gui.ANCHOR_TOP</code></li>\n<li><code>gui.ANCHOR_BOTTOM</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "anchor",
                     "types": [
                         "constant"
@@ -5120,6 +5308,7 @@
             "parameters": [
                 {
                     "doc": "keyboard type\n<ul>\n<li><code>gui.KEYBOARD_TYPE_DEFAULT</code></li>\n<li><code>gui.KEYBOARD_TYPE_EMAIL</code></li>\n<li><code>gui.KEYBOARD_TYPE_NUMBER_PAD</code></li>\n<li><code>gui.KEYBOARD_TYPE_PASSWORD</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "type",
                     "types": [
                         "constant"
@@ -5127,6 +5316,7 @@
                 },
                 {
                     "doc": "if the keyboard should automatically close when clicking outside",
+                    "is_optional": "False",
                     "name": "autoclose",
                     "types": [
                         "boolean"
@@ -5180,6 +5370,7 @@
             "parameters": [
                 {
                     "doc": "node to stop particle fx for",
+                    "is_optional": "False",
                     "name": "node",
                     "types": [
                         "node"
@@ -5187,7 +5378,8 @@
                 },
                 {
                     "doc": "options when stopping the particle fx. Supported options:\n<ul>\n<li><span class=\"type\">boolean</span> <code>clear</code>: instantly clear spawned particles</li>\n</ul>",
-                    "name": "[options]",
+                    "is_optional": "True",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -5285,6 +5477,7 @@
             "parameters": [
                 {
                     "doc": "reference to the script state to be used for storing data",
+                    "is_optional": "False",
                     "name": "self",
                     "types": [
                         "object"
@@ -5308,6 +5501,7 @@
             "parameters": [
                 {
                     "doc": "the id of the layout the engine is changing to",
+                    "is_optional": "False",
                     "name": "id",
                     "types": [
                         "hash"
@@ -5315,6 +5509,7 @@
                 },
                 {
                     "doc": "the id of the layout the engine is changing from",
+                    "is_optional": "False",
                     "name": "previous_id",
                     "types": [
                         "hash"
@@ -5368,6 +5563,7 @@
             "parameters": [
                 {
                     "doc": "reference to the script state to be used for storing data",
+                    "is_optional": "False",
                     "name": "self",
                     "types": [
                         "object"
@@ -5375,6 +5571,7 @@
                 },
                 {
                     "doc": "id of the received input action, as mapped in the input_binding-file",
+                    "is_optional": "False",
                     "name": "action_id",
                     "types": [
                         "hash"
@@ -5382,6 +5579,7 @@
                 },
                 {
                     "doc": "a table containing the input data, see above for a description",
+                    "is_optional": "False",
                     "name": "action",
                     "types": [
                         "table"
@@ -5414,6 +5612,7 @@
             "parameters": [
                 {
                     "doc": "reference to the script state to be used for storing data",
+                    "is_optional": "False",
                     "name": "self",
                     "types": [
                         "object"
@@ -5421,6 +5620,7 @@
                 },
                 {
                     "doc": "id of the received message",
+                    "is_optional": "False",
                     "name": "message_id",
                     "types": [
                         "hash"
@@ -5428,6 +5628,7 @@
                 },
                 {
                     "doc": "a table containing the message data",
+                    "is_optional": "False",
                     "name": "message",
                     "types": [
                         "table"
@@ -5451,6 +5652,7 @@
             "parameters": [
                 {
                     "doc": "reference to the script state to be used for storing data",
+                    "is_optional": "False",
                     "name": "self",
                     "types": [
                         "object"
@@ -5489,6 +5691,7 @@
             "parameters": [
                 {
                     "doc": "reference to the script state to be used for storing data",
+                    "is_optional": "False",
                     "name": "self",
                     "types": [
                         "object"
@@ -5496,6 +5699,7 @@
                 },
                 {
                     "doc": "the time-step of the frame update",
+                    "is_optional": "False",
                     "name": "dt",
                     "types": [
                         "number"
@@ -5510,13 +5714,12 @@
     ],
     "info": {
         "brief": "GUI API documentation",
-        "description": "GUI API documentation",
+        "description": "GUI core hooks, functions, messages, properties and constants for\ncreation and manipulation of GUI nodes. The \"gui\" namespace is\naccessible only from gui scripts.",
         "file": "",
-        "group": "SYSTEM",
         "language": "Lua",
         "name": "GUI",
         "namespace": "gui",
         "notes": [],
-        "path": ""
+        "path": "gui_script.cpp"
     }
 }

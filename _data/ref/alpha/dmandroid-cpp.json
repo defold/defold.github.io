@@ -104,6 +104,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "env",
                     "types": [
                         "JNIEnv*"
@@ -111,6 +112,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "class_name",
                     "types": [
                         "const char*"
@@ -142,6 +144,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "env",
                     "types": [
                         "JNIEnv*"
@@ -149,6 +152,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "activity",
                     "types": [
                         "jobject"
@@ -156,6 +160,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "class_name",
                     "types": [
                         "const char*"
@@ -187,6 +192,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "env",
                     "types": [
                         "JNIEnv*"
@@ -194,6 +200,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "activity",
                     "types": [
                         "jobject"
@@ -217,6 +224,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "env",
                     "types": [
                         "JNIEnv*"
@@ -224,6 +232,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "activity",
                     "types": [
                         "jobject"
@@ -231,6 +240,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "request_code",
                     "types": [
                         "int32_t"
@@ -238,6 +248,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "result_code",
                     "types": [
                         "int32_t"
@@ -245,6 +256,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "result",
                     "types": [
                         "void*"
@@ -270,7 +282,8 @@
             "parameters": [
                 {
                     "doc": "listener",
-                    "name": "[type:dmAndroid::OnActivityCreate]",
+                    "is_optional": "True",
+                    "name": "type:dmAndroid::OnActivityCreate",
                     "types": [
                         ""
                     ]
@@ -295,7 +308,8 @@
             "parameters": [
                 {
                     "doc": "listener",
-                    "name": "[type:dmAndroid::OnActivityResult]",
+                    "is_optional": "True",
+                    "name": "type:dmAndroid::OnActivityResult",
                     "types": [
                         ""
                     ]
@@ -350,7 +364,8 @@
             "parameters": [
                 {
                     "doc": "listener",
-                    "name": "[type:dmAndroid::OnActivityCreate]",
+                    "is_optional": "True",
+                    "name": "type:dmAndroid::OnActivityCreate",
                     "types": [
                         ""
                     ]
@@ -375,7 +390,8 @@
             "parameters": [
                 {
                     "doc": "listener",
-                    "name": "[type:dmAndroid::OnActivityResult]",
+                    "is_optional": "True",
+                    "name": "type:dmAndroid::OnActivityResult",
                     "types": [
                         ""
                     ]
@@ -391,11 +407,10 @@
         "brief": "SDK Android API documentation",
         "description": "Android utility functions",
         "file": "dmsdk/dlib/android.h",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "Android",
         "namespace": "dmAndroid",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/dlib/android.h"
+        "path": "dmsdk/dlib/android.h"
     }
 }

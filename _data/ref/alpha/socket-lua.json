@@ -73,6 +73,7 @@
             "parameters": [
                 {
                     "doc": "the name of the option to get:\n<ul>\n<li><code>\"keepalive\"</code></li>\n<li><code>\"linger\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"tcp-nodelay\"</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "option",
                     "types": [
                         "string"
@@ -182,7 +183,8 @@
             "parameters": [
                 {
                     "doc": "the read pattern that can be any of the following:\n<dl>\n<dt><code>\"*a\"</code></dt>\n<dd>reads from the socket until the connection is closed. No end-of-line translation is performed;</dd>\n<dt><code>\"*l\"</code></dt>\n<dd>reads a line of text from the socket. The line is terminated by a LF character (ASCII 10), optionally preceded by a CR character (ASCII 13). The CR and LF characters are not included in the returned line. In fact, all CR characters are ignored by the pattern. This is the default pattern;</dd>\n<dt><code>number</code></dt>\n<dd>causes the method to read a specified number of bytes from the socket.</dd>\n</dl>",
-                    "name": "[pattern]",
+                    "is_optional": "True",
+                    "name": "pattern",
                     "types": [
                         "string",
                         "number"
@@ -190,7 +192,8 @@
                 },
                 {
                     "doc": "an optional string to be concatenated to the beginning of any received data before return.",
-                    "name": "[prefix]",
+                    "is_optional": "True",
+                    "name": "prefix",
                     "types": [
                         "string"
                     ]
@@ -238,6 +241,7 @@
             "parameters": [
                 {
                     "doc": "the string to be sent.",
+                    "is_optional": "False",
                     "name": "data",
                     "types": [
                         "string"
@@ -245,14 +249,16 @@
                 },
                 {
                     "doc": "optional starting index of the string.",
-                    "name": "[i]",
+                    "is_optional": "True",
+                    "name": "i",
                     "types": [
                         "number"
                     ]
                 },
                 {
                     "doc": "optional end index of string.",
-                    "name": "[j]",
+                    "is_optional": "True",
+                    "name": "j",
                     "types": [
                         "number"
                     ]
@@ -300,6 +306,7 @@
             "parameters": [
                 {
                     "doc": "the descriptor or handle to set.",
+                    "is_optional": "False",
                     "name": "handle",
                     "types": [
                         "number"
@@ -323,6 +330,7 @@
             "parameters": [
                 {
                     "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"keepalive\"</code></dt>\n<dd>Setting this option to <code>true</code> enables the periodic transmission of messages on a connected socket. Should the connected party fail to respond to these messages, the connection is considered broken and processes using the socket are notified;</dd>\n<dt><code>\"linger\"</code></dt>\n<dd>Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with the following keys:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">boolean</span> <code>on</code></li>\n<li><span class=\"type\">number</span> <code>timeout</code> (seconds)</li>\n</ul>\nIf the 'on' field is set to true, the system will block the process on the close attempt until it is able to transmit the data or until <code>timeout</code> has passed. If 'on' is false and a close is issued, the system will process the close in a manner that allows the process to continue as quickly as possible. It is not advised to set this to anything other than zero;\n<dl>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Setting this option indicates that the rules used in validating addresses supplied in a call to <code>bind</code> should allow reuse of local addresses;</dd>\n<dt><code>\"tcp-nodelay\"</code></dt>\n<dd>Setting this option to <code>true</code> disables the Nagle's algorithm for the connection;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Setting this option to <code>true</code> restricts an inet6 socket to sending and receiving only IPv6 packets.</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "option",
                     "types": [
                         "string"
@@ -330,7 +338,8 @@
                 },
                 {
                     "doc": "the value to set for the specified option.",
-                    "name": "[value]",
+                    "is_optional": "True",
+                    "name": "value",
                     "types": [
                         "any"
                     ]
@@ -370,6 +379,7 @@
             "parameters": [
                 {
                     "doc": "the new number of bytes received.",
+                    "is_optional": "False",
                     "name": "received",
                     "types": [
                         "number"
@@ -377,6 +387,7 @@
                 },
                 {
                     "doc": "the new number of bytes sent.",
+                    "is_optional": "False",
                     "name": "sent",
                     "types": [
                         "number"
@@ -384,6 +395,7 @@
                 },
                 {
                     "doc": "the new age in seconds.",
+                    "is_optional": "False",
                     "name": "age",
                     "types": [
                         "number"
@@ -416,6 +428,7 @@
             "parameters": [
                 {
                     "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "number"
@@ -423,7 +436,8 @@
                 },
                 {
                     "doc": "optional timeout mode to set:\n<dl>\n<dt><code>\"b\"</code></dt>\n<dd>block timeout. Specifies the upper limit on the amount of time LuaSocket can be blocked by the operating system while waiting for completion of any single I/O operation. This is the default mode;</dd>\n<dt><code>\"t\"</code></dt>\n<dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>\n</dl>",
-                    "name": "[mode]",
+                    "is_optional": "True",
+                    "name": "mode",
                     "types": [
                         "string"
                     ]
@@ -446,6 +460,7 @@
             "parameters": [
                 {
                     "doc": "which way of the connection should be shut down:\n<dl>\n<dt><code>\"both\"</code></dt>\n<dd>disallow further sends and receives on the object. This is the default mode;</dd>\n<dt><code>\"send\"</code></dt>\n<dd>disallow further sends on the object;</dd>\n<dt><code>\"receive\"</code></dt>\n<dd>disallow further receives on the object.</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "mode",
                     "types": [
                         "string"
@@ -492,6 +507,7 @@
             "parameters": [
                 {
                     "doc": "the name of the option to get:\n<ul>\n<li><code>\"dontroute\"</code></li>\n<li><code>\"broadcast\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"reuseport\"</code></li>\n<li><code>\"ip-multicast-loop\"</code></li>\n<li><code>\"ipv6-v6only\"</code></li>\n<li><code>\"ip-multicast-if\"</code></li>\n<li><code>\"ip-multicast-ttl\"</code></li>\n<li><code>\"ip-add-membership\"</code></li>\n<li><code>\"ip-drop-membership\"</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "option",
                     "types": [
                         "string"
@@ -578,7 +594,8 @@
             "parameters": [
                 {
                     "doc": "optional maximum size of the datagram to be retrieved. If there are more than size bytes available in the datagram, the excess bytes are discarded. If there are less then size bytes available in the current datagram, the available bytes are returned. If size is omitted, the maximum datagram size is used (which is currently limited by the implementation to 8192 bytes).",
-                    "name": "[size]",
+                    "is_optional": "True",
+                    "name": "size",
                     "types": [
                         "number"
                     ]
@@ -618,6 +635,7 @@
             "parameters": [
                 {
                     "doc": "a string with the datagram contents. The maximum datagram size for UDP is 64K minus IP layer overhead. However datagrams larger than the link layer packet size will be fragmented, which may deteriorate performance and/or reliability.",
+                    "is_optional": "False",
                     "name": "datagram",
                     "types": [
                         "string"
@@ -658,6 +676,7 @@
             "parameters": [
                 {
                     "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"dontroute\"</code></dt>\n<dd>Indicates that outgoing messages should bypass the standard routing facilities. Receives a boolean value;</dd>\n<dt><code>\"broadcast\"</code></dt>\n<dd>Requests permission to send broadcast datagrams on the socket. Receives a boolean value;</dd>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Indicates that the rules used in validating addresses supplied in a <code>bind</code> call should allow reuse of local addresses. Receives a boolean value;</dd>\n<dt><code>\"reuseport\"</code></dt>\n<dd>Allows completely duplicate bindings by multiple processes if they all set <code>\"reuseport\"</code> before binding the port. Receives a boolean value;</dd>\n<dt><code>\"ip-multicast-loop\"</code></dt>\n<dd>Specifies whether or not a copy of an outgoing multicast datagram is delivered to the sending host as long as it is a member of the multicast group. Receives a boolean value;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Specifies whether to restrict inet6 sockets to sending and receiving only IPv6 packets. Receive a boolean value;</dd>\n<dt><code>\"ip-multicast-if\"</code></dt>\n<dd>Sets the interface over which outgoing multicast datagrams are sent. Receives an IP address;</dd>\n<dt><code>\"ip-multicast-ttl\"</code></dt>\n<dd>Sets the Time To Live in the IP header for outgoing multicast datagrams. Receives a number;</dd>\n</dl>\n<code>\"ip-add-membership\"</code>: Joins the multicast group specified. Receives a table with fields:\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>\n<dl>\n<dt>\"'ip-drop-membership\"`</dt>\n<dd>Leaves the multicast group specified. Receives a table with fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>",
+                    "is_optional": "False",
                     "name": "option",
                     "types": [
                         "string"
@@ -665,7 +684,8 @@
                 },
                 {
                     "doc": "the value to set for the specified option.",
-                    "name": "[value]",
+                    "is_optional": "True",
+                    "name": "value",
                     "types": [
                         "any"
                     ]
@@ -705,6 +725,7 @@
             "parameters": [
                 {
                     "doc": "if address is \"*\" and the object is connected, the peer association is removed and the object becomes an unconnected object again.",
+                    "is_optional": "False",
                     "name": "\"*\"",
                     "types": [
                         "string"
@@ -745,6 +766,7 @@
             "parameters": [
                 {
                     "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "number"
@@ -768,6 +790,7 @@
             "parameters": [
                 {
                     "doc": "an IP address or a host name. If address is <code>\"*\"</code>, the system binds to all local interfaces using the <code>INADDR_ANY</code> constant.",
+                    "is_optional": "False",
                     "name": "address",
                     "types": [
                         "string"
@@ -775,6 +798,7 @@
                 },
                 {
                     "doc": "the port to commect to, in the range [0..64K). If port is 0, the system automatically chooses an ephemeral port.",
+                    "is_optional": "False",
                     "name": "port",
                     "types": [
                         "number"
@@ -830,6 +854,7 @@
             "parameters": [
                 {
                     "doc": "an IP address or a host name. If address is <code>\"*\"</code>, the system binds to all local interfaces using the <code>INADDR_ANY</code> constant.",
+                    "is_optional": "False",
                     "name": "address",
                     "types": [
                         "string"
@@ -837,6 +862,7 @@
                 },
                 {
                     "doc": "the port to commect to, in the range [0..64K). If port is 0, the system automatically chooses an ephemeral port.",
+                    "is_optional": "False",
                     "name": "port",
                     "types": [
                         "number"
@@ -969,6 +995,7 @@
             "parameters": [
                 {
                     "doc": "the number of client connections that can be queued waiting for service. If the queue is full and another client attempts connection, the connection is refused.",
+                    "is_optional": "False",
                     "name": "backlog",
                     "types": [
                         "number"
@@ -1009,6 +1036,7 @@
             "parameters": [
                 {
                     "doc": "the descriptor or handle to set.",
+                    "is_optional": "False",
                     "name": "handle",
                     "types": [
                         "number"
@@ -1032,6 +1060,7 @@
             "parameters": [
                 {
                     "doc": "the new number of bytes received.",
+                    "is_optional": "False",
                     "name": "received",
                     "types": [
                         "number"
@@ -1039,6 +1068,7 @@
                 },
                 {
                     "doc": "the new number of bytes sent.",
+                    "is_optional": "False",
                     "name": "sent",
                     "types": [
                         "number"
@@ -1046,6 +1076,7 @@
                 },
                 {
                     "doc": "the new age in seconds.",
+                    "is_optional": "False",
                     "name": "age",
                     "types": [
                         "number"
@@ -1078,6 +1109,7 @@
             "parameters": [
                 {
                     "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "number"
@@ -1085,7 +1117,8 @@
                 },
                 {
                     "doc": "optional timeout mode to set:\n<dl>\n<dt><code>\"b\"</code></dt>\n<dd>block timeout. Specifies the upper limit on the amount of time LuaSocket can be blocked by the operating system while waiting for completion of any single I/O operation. This is the default mode;</dd>\n<dt><code>\"t\"</code></dt>\n<dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>\n</dl>",
-                    "name": "[mode]",
+                    "is_optional": "True",
+                    "name": "mode",
                     "types": [
                         "string"
                     ]
@@ -1201,6 +1234,7 @@
             "parameters": [
                 {
                     "doc": "the name of the option to get:\n<ul>\n<li><code>\"keepalive\"</code></li>\n<li><code>\"linger\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"tcp-nodelay\"</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "option",
                     "types": [
                         "string"
@@ -1287,6 +1321,7 @@
             "parameters": [
                 {
                     "doc": "the descriptor or handle to set.",
+                    "is_optional": "False",
                     "name": "handle",
                     "types": [
                         "number"
@@ -1310,6 +1345,7 @@
             "parameters": [
                 {
                     "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"keepalive\"</code></dt>\n<dd>Setting this option to <code>true</code> enables the periodic transmission of messages on a connected socket. Should the connected party fail to respond to these messages, the connection is considered broken and processes using the socket are notified;</dd>\n<dt><code>\"linger\"</code></dt>\n<dd>Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with the following keys:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">boolean</span> <code>on</code></li>\n<li><span class=\"type\">number</span> <code>timeout</code> (seconds)</li>\n</ul>\nIf the 'on' field is set to true, the system will block the process on the close attempt until it is able to transmit the data or until <code>timeout</code> has passed. If 'on' is false and a close is issued, the system will process the close in a manner that allows the process to continue as quickly as possible. It is not advised to set this to anything other than zero;\n<dl>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Setting this option indicates that the rules used in validating addresses supplied in a call to <code>bind</code> should allow reuse of local addresses;</dd>\n<dt><code>\"tcp-nodelay\"</code></dt>\n<dd>Setting this option to <code>true</code> disables the Nagle's algorithm for the connection;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Setting this option to <code>true</code> restricts an inet6 socket to sending and receiving only IPv6 packets.</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "option",
                     "types": [
                         "string"
@@ -1317,7 +1353,8 @@
                 },
                 {
                     "doc": "the value to set for the specified option.",
-                    "name": "[value]",
+                    "is_optional": "True",
+                    "name": "value",
                     "types": [
                         "any"
                     ]
@@ -1357,6 +1394,7 @@
             "parameters": [
                 {
                     "doc": "the new number of bytes received.",
+                    "is_optional": "False",
                     "name": "received",
                     "types": [
                         "number"
@@ -1364,6 +1402,7 @@
                 },
                 {
                     "doc": "the new number of bytes sent.",
+                    "is_optional": "False",
                     "name": "sent",
                     "types": [
                         "number"
@@ -1371,6 +1410,7 @@
                 },
                 {
                     "doc": "the new age in seconds.",
+                    "is_optional": "False",
                     "name": "age",
                     "types": [
                         "number"
@@ -1403,6 +1443,7 @@
             "parameters": [
                 {
                     "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "number"
@@ -1410,7 +1451,8 @@
                 },
                 {
                     "doc": "optional timeout mode to set:\n<dl>\n<dt><code>\"b\"</code></dt>\n<dd>block timeout. Specifies the upper limit on the amount of time LuaSocket can be blocked by the operating system while waiting for completion of any single I/O operation. This is the default mode;</dd>\n<dt><code>\"t\"</code></dt>\n<dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>\n</dl>",
-                    "name": "[mode]",
+                    "is_optional": "True",
+                    "name": "mode",
                     "types": [
                         "string"
                     ]
@@ -1463,6 +1505,7 @@
             "parameters": [
                 {
                     "doc": "the address to connect to.",
+                    "is_optional": "False",
                     "name": "address",
                     "types": [
                         "string"
@@ -1470,6 +1513,7 @@
                 },
                 {
                     "doc": "the port to connect to.",
+                    "is_optional": "False",
                     "name": "port",
                     "types": [
                         "number"
@@ -1477,21 +1521,24 @@
                 },
                 {
                     "doc": "optional local address to bind to.",
-                    "name": "[locaddr]",
+                    "is_optional": "True",
+                    "name": "locaddr",
                     "types": [
                         "string"
                     ]
                 },
                 {
                     "doc": "optional local port to bind to.",
-                    "name": "[locport]",
+                    "is_optional": "True",
+                    "name": "locport",
                     "types": [
                         "number"
                     ]
                 },
                 {
                     "doc": "optional socket family to use, <code>\"inet\"</code> or <code>\"inet6\"</code>.",
-                    "name": "[family]",
+                    "is_optional": "True",
+                    "name": "family",
                     "types": [
                         "string"
                     ]
@@ -1531,6 +1578,7 @@
             "parameters": [
                 {
                     "doc": "a hostname or an IPv4 or IPv6 address.",
+                    "is_optional": "False",
                     "name": "address",
                     "types": [
                         "string"
@@ -1594,6 +1642,7 @@
             "parameters": [
                 {
                     "doc": "a hostname or an IPv4 or IPv6 address.",
+                    "is_optional": "False",
                     "name": "address",
                     "types": [
                         "string"
@@ -1634,6 +1683,7 @@
             "parameters": [
                 {
                     "doc": "an IPv4 address or host name.",
+                    "is_optional": "False",
                     "name": "address",
                     "types": [
                         "string"
@@ -1674,6 +1724,7 @@
             "parameters": [
                 {
                     "doc": "a hostname or an IP address.",
+                    "is_optional": "False",
                     "name": "address",
                     "types": [
                         "string"
@@ -1737,6 +1788,7 @@
             "parameters": [
                 {
                     "doc": "a function that will be called before the try throws the exception.",
+                    "is_optional": "False",
                     "name": "finalizer",
                     "types": [
                         "function()"
@@ -1768,6 +1820,7 @@
             "parameters": [
                 {
                     "doc": "a function that calls a try function (or assert, or error) to throw exceptions.",
+                    "is_optional": "False",
                     "name": "func",
                     "types": [
                         "function"
@@ -1799,6 +1852,7 @@
             "parameters": [
                 {
                     "doc": "array with the sockets to test for characters available for reading.",
+                    "is_optional": "False",
                     "name": "recvt",
                     "types": [
                         "table"
@@ -1806,6 +1860,7 @@
                 },
                 {
                     "doc": "array with sockets that are watched to see if it is OK to immediately write on them.",
+                    "is_optional": "False",
                     "name": "sendt",
                     "types": [
                         "table"
@@ -1813,7 +1868,8 @@
                 },
                 {
                     "doc": "the maximum amount of time (in seconds) to wait for a change in status. Nil, negative or omitted timeout value allows the function to block indefinitely.",
-                    "name": "[timeout]",
+                    "is_optional": "True",
+                    "name": "timeout",
                     "types": [
                         "number"
                     ]
@@ -1859,6 +1915,7 @@
             "parameters": [
                 {
                     "doc": "the number of arguments to drop.",
+                    "is_optional": "False",
                     "name": "d",
                     "types": [
                         "number"
@@ -1866,21 +1923,24 @@
                 },
                 {
                     "doc": "argument 1.",
-                    "name": "[ret1]",
+                    "is_optional": "True",
+                    "name": "ret1",
                     "types": [
                         "any"
                     ]
                 },
                 {
                     "doc": "argument 2.",
-                    "name": "[ret2]",
+                    "is_optional": "True",
+                    "name": "ret2",
                     "types": [
                         "any"
                     ]
                 },
                 {
                     "doc": "argument N.",
-                    "name": "[retN]",
+                    "is_optional": "True",
+                    "name": "retN",
                     "types": [
                         "any"
                     ]
@@ -1928,6 +1988,7 @@
             "parameters": [
                 {
                     "doc": "the number of seconds to sleep for.",
+                    "is_optional": "False",
                     "name": "time",
                     "types": [
                         "number"
@@ -2094,6 +2155,7 @@
             "parameters": [
                 {
                     "doc": "the name of the option to get:\n<ul>\n<li><code>\"dontroute\"</code></li>\n<li><code>\"broadcast\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"reuseport\"</code></li>\n<li><code>\"ip-multicast-loop\"</code></li>\n<li><code>\"ipv6-v6only\"</code></li>\n<li><code>\"ip-multicast-if\"</code></li>\n<li><code>\"ip-multicast-ttl\"</code></li>\n<li><code>\"ip-add-membership\"</code></li>\n<li><code>\"ip-drop-membership\"</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "option",
                     "types": [
                         "string"
@@ -2157,7 +2219,8 @@
             "parameters": [
                 {
                     "doc": "optional maximum size of the datagram to be retrieved. If there are more than size bytes available in the datagram, the excess bytes are discarded. If there are less then size bytes available in the current datagram, the available bytes are returned. If size is omitted, the maximum datagram size is used (which is currently limited by the implementation to 8192 bytes).",
-                    "name": "[size]",
+                    "is_optional": "True",
+                    "name": "size",
                     "types": [
                         "number"
                     ]
@@ -2197,7 +2260,8 @@
             "parameters": [
                 {
                     "doc": "optional maximum size of the datagram to be retrieved.",
-                    "name": "[size]",
+                    "is_optional": "True",
+                    "name": "size",
                     "types": [
                         "number"
                     ]
@@ -2244,6 +2308,7 @@
             "parameters": [
                 {
                     "doc": "a string with the datagram contents. The maximum datagram size for UDP is 64K minus IP layer overhead. However datagrams larger than the link layer packet size will be fragmented, which may deteriorate performance and/or reliability.",
+                    "is_optional": "False",
                     "name": "datagram",
                     "types": [
                         "string"
@@ -2251,6 +2316,7 @@
                 },
                 {
                     "doc": "the IP address of the recipient. Host names are not allowed for performance reasons.",
+                    "is_optional": "False",
                     "name": "ip",
                     "types": [
                         "string"
@@ -2258,6 +2324,7 @@
                 },
                 {
                     "doc": "the port number at the recipient.",
+                    "is_optional": "False",
                     "name": "port",
                     "types": [
                         "number"
@@ -2298,6 +2365,7 @@
             "parameters": [
                 {
                     "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"dontroute\"</code></dt>\n<dd>Indicates that outgoing messages should bypass the standard routing facilities. Receives a boolean value;</dd>\n<dt><code>\"broadcast\"</code></dt>\n<dd>Requests permission to send broadcast datagrams on the socket. Receives a boolean value;</dd>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Indicates that the rules used in validating addresses supplied in a <code>bind</code> call should allow reuse of local addresses. Receives a boolean value;</dd>\n<dt><code>\"reuseport\"</code></dt>\n<dd>Allows completely duplicate bindings by multiple processes if they all set <code>\"reuseport\"</code> before binding the port. Receives a boolean value;</dd>\n<dt><code>\"ip-multicast-loop\"</code></dt>\n<dd>Specifies whether or not a copy of an outgoing multicast datagram is delivered to the sending host as long as it is a member of the multicast group. Receives a boolean value;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Specifies whether to restrict inet6 sockets to sending and receiving only IPv6 packets. Receive a boolean value;</dd>\n<dt><code>\"ip-multicast-if\"</code></dt>\n<dd>Sets the interface over which outgoing multicast datagrams are sent. Receives an IP address;</dd>\n<dt><code>\"ip-multicast-ttl\"</code></dt>\n<dd>Sets the Time To Live in the IP header for outgoing multicast datagrams. Receives a number;</dd>\n</dl>\n<code>\"ip-add-membership\"</code>: Joins the multicast group specified. Receives a table with fields:\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>\n<dl>\n<dt>\"'ip-drop-membership\"`</dt>\n<dd>Leaves the multicast group specified. Receives a table with fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>",
+                    "is_optional": "False",
                     "name": "option",
                     "types": [
                         "string"
@@ -2305,7 +2373,8 @@
                 },
                 {
                     "doc": "the value to set for the specified option.",
-                    "name": "[value]",
+                    "is_optional": "True",
+                    "name": "value",
                     "types": [
                         "any"
                     ]
@@ -2345,6 +2414,7 @@
             "parameters": [
                 {
                     "doc": "an IP address or a host name.",
+                    "is_optional": "False",
                     "name": "address",
                     "types": [
                         "string"
@@ -2352,6 +2422,7 @@
                 },
                 {
                     "doc": "the port number.",
+                    "is_optional": "False",
                     "name": "port",
                     "types": [
                         "number"
@@ -2392,6 +2463,7 @@
             "parameters": [
                 {
                     "doc": "an IP address or a host name. If address is \"*\" the system binds to all local interfaces using the constant <code>INADDR_ANY</code>.",
+                    "is_optional": "False",
                     "name": "address",
                     "types": [
                         "string"
@@ -2399,6 +2471,7 @@
                 },
                 {
                     "doc": "the port number. If port is 0, the system chooses an ephemeral port.",
+                    "is_optional": "False",
                     "name": "port",
                     "types": [
                         "number"
@@ -2439,6 +2512,7 @@
             "parameters": [
                 {
                     "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "number"
@@ -2453,13 +2527,12 @@
     ],
     "info": {
         "brief": "LuaSocket API documentation",
-        "description": "<a href=\"https://github.com/diegonehab/luasocket\">LuaSocket</a> is a Lua extension library that provides\nsupport for the TCP and UDP transport layers. Defold provides the \"socket\" namespace in\nruntime, which contain the core C functionality. Additional LuaSocket support modules for\nSMTP, HTTP, FTP etc are not part of the core included, but can be easily added to a project\nand used.\nNote the included helper module \"socket.lua\" in \"builtins/scripts/socket.lua\". Require this\nmodule to add some additional functions and shortcuts to the namespace:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"nb\">require</span> <span class=\"s2\">&quot;builtins.scripts.socket&quot;</span>\n</code></pre></div>\n\nLuaSocket is Copyright &copy; 2004-2007 Diego Nehab. All rights reserved.\nLuaSocket is free software, released under the MIT license (same license as the Lua core).",
+        "description": "[LuaSocket](https://github.com/diegonehab/luasocket) is a Lua extension library that provides\nsupport for the TCP and UDP transport layers. Defold provides the \"socket\" namespace in\nruntime, which contain the core C functionality. Additional LuaSocket support modules for\nSMTP, HTTP, FTP etc are not part of the core included, but can be easily added to a project\nand used.\n\nNote the included helper module \"socket.lua\" in \"builtins/scripts/socket.lua\". Require this\nmodule to add some additional functions and shortcuts to the namespace:\n\n```lua\nrequire \"builtins.scripts.socket\"\n```\n\nLuaSocket is Copyright &copy; 2004-2007 Diego Nehab. All rights reserved.\nLuaSocket is free software, released under the MIT license (same license as the Lua core).",
         "file": "",
-        "group": "LUA STANDARD LIBS",
         "language": "Lua",
         "name": "LuaSocket",
         "namespace": "socket",
         "notes": [],
-        "path": ""
+        "path": "luasocket/luasocket.doc_h"
     }
 }

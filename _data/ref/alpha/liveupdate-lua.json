@@ -16,6 +16,7 @@
             "parameters": [
                 {
                     "doc": "Unique name of the mount",
+                    "is_optional": "False",
                     "name": "name",
                     "types": [
                         "string"
@@ -23,6 +24,7 @@
                 },
                 {
                     "doc": "The uri of the mount, including the scheme. Currently supported schemes are 'zip' and 'archive'.",
+                    "is_optional": "False",
                     "name": "uri",
                     "types": [
                         "string"
@@ -30,6 +32,7 @@
                 },
                 {
                     "doc": "Priority of mount. Larger priority takes prescedence",
+                    "is_optional": "False",
                     "name": "priority",
                     "types": [
                         "integer"
@@ -37,6 +40,7 @@
                 },
                 {
                     "doc": "Callback after the asynchronous request completed",
+                    "is_optional": "False",
                     "name": "callback",
                     "types": [
                         "function"
@@ -336,6 +340,7 @@
             "parameters": [
                 {
                     "doc": "Unique name of the mount",
+                    "is_optional": "False",
                     "name": "name",
                     "types": [
                         "string"
@@ -369,6 +374,7 @@
             "parameters": [
                 {
                     "doc": "the path to the original file on disc",
+                    "is_optional": "False",
                     "name": "path",
                     "types": [
                         "string"
@@ -376,6 +382,7 @@
                 },
                 {
                     "doc": "the callback function\nexecuted after the storage has completed\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>status</code></dt>\n<dd><span class=\"type\">constant</span> the status of the store operation (See liveupdate.store_manifest)</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "callback",
                     "types": [
                         "function(self, status)"
@@ -383,7 +390,8 @@
                 },
                 {
                     "doc": "optional table with extra parameters. Supported entries:\n<ul>\n<li><span class=\"type\">boolean</span> <code>verify</code>: if archive should be verified as well as stored (defaults to true)</li>\n</ul>",
-                    "name": "[options]",
+                    "is_optional": "True",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -408,6 +416,7 @@
             "parameters": [
                 {
                     "doc": "the binary data that represents the manifest",
+                    "is_optional": "False",
                     "name": "manifest_buffer",
                     "types": [
                         "string"
@@ -415,6 +424,7 @@
                 },
                 {
                     "doc": "the callback function\nexecuted once the engine has attempted to store the manifest.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>status</code></dt>\n<dd><span class=\"type\">constant</span> the status of the store operation:</dd>\n</dl>\n<ul>\n<li><code>liveupdate.LIVEUPDATE_OK</code></li>\n<li><code>liveupdate.LIVEUPDATE_INVALID_RESOURCE</code></li>\n<li><code>liveupdate.LIVEUPDATE_VERSION_MISMATCH</code></li>\n<li><code>liveupdate.LIVEUPDATE_ENGINE_VERSION_MISMATCH</code></li>\n<li><code>liveupdate.LIVEUPDATE_SIGNATURE_MISMATCH</code></li>\n<li><code>liveupdate.LIVEUPDATE_BUNDLED_RESOURCE_MISMATCH</code></li>\n<li><code>liveupdate.LIVEUPDATE_FORMAT_ERROR</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "callback",
                     "types": [
                         "function(self, status)"
@@ -440,6 +450,7 @@
             "parameters": [
                 {
                     "doc": "The manifest to check against.",
+                    "is_optional": "False",
                     "name": "manifest_reference",
                     "types": [
                         "number"
@@ -447,6 +458,7 @@
                 },
                 {
                     "doc": "The resource data that should be stored.",
+                    "is_optional": "False",
                     "name": "data",
                     "types": [
                         "string"
@@ -454,6 +466,7 @@
                 },
                 {
                     "doc": "The expected hash for the resource,\nretrieved through collectionproxy.missing_resources.",
+                    "is_optional": "False",
                     "name": "hexdigest",
                     "types": [
                         "string"
@@ -461,6 +474,7 @@
                 },
                 {
                     "doc": "The callback\nfunction that is executed once the engine has been attempted to store\nthe resource.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>hexdigest</code></dt>\n<dd><span class=\"type\">string</span> The hexdigest of the resource.</dd>\n<dt><code>status</code></dt>\n<dd><span class=\"type\">boolean</span> Whether or not the resource was successfully stored.</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "callback",
                     "types": [
                         "function(self, hexdigest, status)"
@@ -481,6 +495,6 @@
         "name": "LiveUpdate",
         "namespace": "liveupdate",
         "notes": [],
-        "path": ""
+        "path": "script_liveupdate.h"
     }
 }

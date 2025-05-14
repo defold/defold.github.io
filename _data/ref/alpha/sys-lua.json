@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "exit code to report to the OS, 0 means clean exit",
+                    "is_optional": "False",
                     "name": "code",
                     "types": [
                         "number"
@@ -35,6 +36,7 @@
             "parameters": [
                 {
                     "doc": "argument 1",
+                    "is_optional": "False",
                     "name": "arg1",
                     "types": [
                         "string"
@@ -42,6 +44,7 @@
                 },
                 {
                     "doc": "argument 2",
+                    "is_optional": "False",
                     "name": "arg2",
                     "types": [
                         "string"
@@ -49,6 +52,7 @@
                 },
                 {
                     "doc": "argument 3",
+                    "is_optional": "False",
                     "name": "arg3",
                     "types": [
                         "string"
@@ -56,6 +60,7 @@
                 },
                 {
                     "doc": "argument 4",
+                    "is_optional": "False",
                     "name": "arg4",
                     "types": [
                         "string"
@@ -63,6 +68,7 @@
                 },
                 {
                     "doc": "argument 5",
+                    "is_optional": "False",
                     "name": "arg5",
                     "types": [
                         "string"
@@ -70,6 +76,7 @@
                 },
                 {
                     "doc": "argument 6",
+                    "is_optional": "False",
                     "name": "arg6",
                     "types": [
                         "string"
@@ -108,6 +115,7 @@
             "parameters": [
                 {
                     "doc": "target frequency. 60 for 60 fps",
+                    "is_optional": "False",
                     "name": "frequency",
                     "types": [
                         ""
@@ -131,6 +139,7 @@
             "parameters": [
                 {
                     "doc": "target swap interval.",
+                    "is_optional": "False",
                     "name": "swap_interval",
                     "types": [
                         ""
@@ -154,6 +163,7 @@
             "parameters": [
                 {
                     "doc": "file name to write the video to",
+                    "is_optional": "False",
                     "name": "file_name",
                     "types": [
                         "string"
@@ -161,6 +171,7 @@
                 },
                 {
                     "doc": "frame period to record, ie write every nth frame. Default value is <code>2</code>",
+                    "is_optional": "False",
                     "name": "frame_period",
                     "types": [
                         "number"
@@ -168,6 +179,7 @@
                 },
                 {
                     "doc": "frames per second. Playback speed for the video. Default value is <code>30</code>. The fps value doens't affect the recording. It's only meta-data in the written video file.",
+                    "is_optional": "False",
                     "name": "fps",
                     "types": [
                         "number"
@@ -206,6 +218,7 @@
             "parameters": [
                 {
                     "doc": "buffer to deserialize from",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "string"
@@ -237,6 +250,7 @@
             "parameters": [
                 {
                     "doc": "path to check",
+                    "is_optional": "False",
                     "name": "path",
                     "types": [
                         "string"
@@ -268,6 +282,7 @@
             "parameters": [
                 {
                     "doc": "exit code to report to the OS, 0 means clean exit",
+                    "is_optional": "False",
                     "name": "code",
                     "types": [
                         "number"
@@ -291,6 +306,7 @@
             "parameters": [
                 {
                     "doc": "platform specific string with application package or query, see above for details.",
+                    "is_optional": "False",
                     "name": "app_string",
                     "types": [
                         "string"
@@ -345,6 +361,7 @@
             "parameters": [
                 {
                     "doc": "key to get value for. The syntax is SECTION.KEY",
+                    "is_optional": "False",
                     "name": "key",
                     "types": [
                         "string"
@@ -352,7 +369,8 @@
                 },
                 {
                     "doc": "(optional) default value to return if the value does not exist",
-                    "name": "[default_value]",
+                    "is_optional": "True",
+                    "name": "default_value",
                     "types": [
                         "integer"
                     ]
@@ -383,6 +401,7 @@
             "parameters": [
                 {
                     "doc": "key to get value for. The syntax is SECTION.KEY",
+                    "is_optional": "False",
                     "name": "key",
                     "types": [
                         "string"
@@ -390,7 +409,8 @@
                 },
                 {
                     "doc": "(optional) default value to return if the value does not exist",
-                    "name": "[default_value]",
+                    "is_optional": "True",
+                    "name": "default_value",
                     "types": [
                         "number"
                     ]
@@ -421,6 +441,7 @@
             "parameters": [
                 {
                     "doc": "key to get value for. The syntax is SECTION.KEY",
+                    "is_optional": "False",
                     "name": "key",
                     "types": [
                         "string"
@@ -428,7 +449,8 @@
                 },
                 {
                     "doc": "(optional) default value to return if the value does not exist",
-                    "name": "[default_value]",
+                    "is_optional": "True",
+                    "name": "default_value",
                     "types": [
                         "string"
                     ]
@@ -507,6 +529,7 @@
             "parameters": [
                 {
                     "doc": "file to read from",
+                    "is_optional": "False",
                     "name": "filename",
                     "types": [
                         "string"
@@ -563,6 +586,7 @@
             "parameters": [
                 {
                     "doc": "user defined id of the application, which helps define the location of the save-file",
+                    "is_optional": "False",
                     "name": "application_id",
                     "types": [
                         "string"
@@ -570,6 +594,7 @@
                 },
                 {
                     "doc": "file-name to get path for",
+                    "is_optional": "False",
                     "name": "file_name",
                     "types": [
                         "string"
@@ -601,7 +626,8 @@
             "parameters": [
                 {
                     "doc": "optional options table\n- ignore_secure <span class=\"type\">boolean</span> this flag ignores values might be secured by OS e.g. <code>device_ident</code>",
-                    "name": "[options]",
+                    "is_optional": "True",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -632,6 +658,7 @@
             "parameters": [
                 {
                     "doc": "file to read from",
+                    "is_optional": "False",
                     "name": "filename",
                     "types": [
                         "string"
@@ -663,6 +690,7 @@
             "parameters": [
                 {
                     "doc": "the path to load the buffer from",
+                    "is_optional": "False",
                     "name": "path",
                     "types": [
                         "string"
@@ -694,6 +722,7 @@
             "parameters": [
                 {
                     "doc": "the path to load the buffer from",
+                    "is_optional": "False",
                     "name": "path",
                     "types": [
                         "string"
@@ -701,6 +730,7 @@
                 },
                 {
                     "doc": "A status callback that will be invoked when a request has been handled, or an error occured. The result is a table containing:\n<dl>\n<dt><code>status</code></dt>\n<dd><span class=\"type\">number</span> The status of the request, supported values are:</dd>\n</dl>\n<ul>\n<li><code>resource.REQUEST_STATUS_FINISHED</code></li>\n<li><code>resource.REQUEST_STATUS_ERROR_IO_ERROR</code></li>\n<li><code>resource.REQUEST_STATUS_ERROR_NOT_FOUND</code></li>\n</ul>\n<dl>\n<dt><code>buffer</code></dt>\n<dd><span class=\"type\">buffer</span> If the request was successfull, this will contain the request payload in a buffer object, and nil otherwise. Make sure to check the status before doing anything with the buffer value!</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "status_callback",
                     "types": [
                         "function(self, request_id, result)"
@@ -732,6 +762,7 @@
             "parameters": [
                 {
                     "doc": "resource to load, full path",
+                    "is_optional": "False",
                     "name": "filename",
                     "types": [
                         "string"
@@ -817,6 +848,7 @@
             "parameters": [
                 {
                     "doc": "url to open",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string"
@@ -824,7 +856,8 @@
                 },
                 {
                     "doc": "table with attributes\n<code>target</code>\n- <span class=\"type\">string</span> <span class=\"icon-html5\"></span>: Optional. Specifies the target attribute or the name of the window. The following values are supported:\n- <code>_self</code> - (default value) URL replaces the current page.\n- <code>_blank</code> - URL is loaded into a new window, or tab.\n- <code>_parent</code> - URL is loaded into the parent frame.\n- <code>_top</code> - URL replaces any framesets that may be loaded.\n- <code>name</code> - The name of the window (Note: the name does not specify the title of the new window).",
-                    "name": "[attributes]",
+                    "is_optional": "True",
+                    "name": "attributes",
                     "types": [
                         "table"
                     ]
@@ -855,42 +888,48 @@
             "parameters": [
                 {
                     "doc": "argument 1",
-                    "name": "[arg1]",
+                    "is_optional": "True",
+                    "name": "arg1",
                     "types": [
                         "string"
                     ]
                 },
                 {
                     "doc": "argument 2",
-                    "name": "[arg2]",
+                    "is_optional": "True",
+                    "name": "arg2",
                     "types": [
                         "string"
                     ]
                 },
                 {
                     "doc": "argument 3",
-                    "name": "[arg3]",
+                    "is_optional": "True",
+                    "name": "arg3",
                     "types": [
                         "string"
                     ]
                 },
                 {
                     "doc": "argument 4",
-                    "name": "[arg4]",
+                    "is_optional": "True",
+                    "name": "arg4",
                     "types": [
                         "string"
                     ]
                 },
                 {
                     "doc": "argument 5",
-                    "name": "[arg5]",
+                    "is_optional": "True",
+                    "name": "arg5",
                     "types": [
                         "string"
                     ]
                 },
                 {
                     "doc": "argument 6",
-                    "name": "[arg6]",
+                    "is_optional": "True",
+                    "name": "arg6",
                     "types": [
                         "string"
                     ]
@@ -958,6 +997,7 @@
             "parameters": [
                 {
                     "doc": "file to write to",
+                    "is_optional": "False",
                     "name": "filename",
                     "types": [
                         "string"
@@ -965,6 +1005,7 @@
                 },
                 {
                     "doc": "lua table to save",
+                    "is_optional": "False",
                     "name": "table",
                     "types": [
                         "table"
@@ -996,6 +1037,7 @@
             "parameters": [
                 {
                     "doc": "lua table to serialize",
+                    "is_optional": "False",
                     "name": "table",
                     "types": [
                         "table"
@@ -1027,6 +1069,7 @@
             "parameters": [
                 {
                     "doc": "hostname to check against",
+                    "is_optional": "False",
                     "name": "host",
                     "types": [
                         "string"
@@ -1050,6 +1093,7 @@
             "parameters": [
                 {
                     "doc": "the function to be called on error\n<dl>\n<dt><code>source</code></dt>\n<dd><span class=\"type\">string</span> The runtime context of the error. Currently, this is always <code>\"lua\"</code>.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">string</span> The source file, line number and error message.</dd>\n<dt><code>traceback</code></dt>\n<dd><span class=\"type\">string</span> The stack traceback.</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "error_handler",
                     "types": [
                         "function(source, message, traceback)"
@@ -1073,6 +1117,7 @@
             "parameters": [
                 {
                     "doc": "target frequency. 60 for 60 fps",
+                    "is_optional": "False",
                     "name": "frequency",
                     "types": [
                         "number"
@@ -1096,6 +1141,7 @@
             "parameters": [
                 {
                     "doc": "target swap interval.",
+                    "is_optional": "False",
                     "name": "swap_interval",
                     "types": [
                         "number"
@@ -1142,11 +1188,10 @@
         "brief": "System API documentation",
         "description": "Functions and messages for using system resources, controlling the engine,\nerror handling and debugging.",
         "file": "",
-        "group": "SYSTEM",
         "language": "Lua",
         "name": "System",
         "namespace": "sys",
         "notes": [],
-        "path": ""
+        "path": "script/sys_ddf.proto"
     }
 }

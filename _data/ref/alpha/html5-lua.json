@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "Javascript code to run",
+                    "is_optional": "False",
                     "name": "code",
                     "types": [
                         "string"
@@ -43,6 +44,7 @@
             "parameters": [
                 {
                     "doc": "The interaction callback. Pass an empty function or <code>nil</code> if you no longer wish to receive callbacks.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The calling script</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "callback",
                     "types": [
                         "function(self)",
@@ -58,13 +60,12 @@
     ],
     "info": {
         "brief": "HTML5 API documentation",
-        "description": "HTML5 platform specific functions.\n<span class=\"icon-html5\"></span> The following functions are only available on HTML5 builds, the <code>html5.*</code> Lua namespace will not be available on other platforms.",
+        "description": "HTML5 platform specific functions.\n\n[icon:html5] The following functions are only available on HTML5 builds, the `html5.*` Lua namespace will not be available on other platforms.",
         "file": "",
-        "group": "SCRIPT",
         "language": "Lua",
         "name": "HTML5",
         "namespace": "html5",
         "notes": [],
-        "path": ""
+        "path": "script_html5_js.cpp"
     }
 }

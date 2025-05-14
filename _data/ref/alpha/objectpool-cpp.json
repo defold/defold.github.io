@@ -1,0 +1,290 @@
+{
+    "elements": [
+        {
+            "brief": "Allocate a new object",
+            "description": "Allocate a new object",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Alloc",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "logical index",
+                    "name": "index",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Capacity",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "maximum number of objects",
+                    "name": "capacity",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Object pool data-structure with the following prop...",
+            "description": "Object pool data-structure with the following properties\n- Mapping from logical index to physical index\n- Logical index does not changes\n- Allocated objects are contiguously laid out in memory\n  Loop of m_Objects [0..Size()-1] times to iterate all objects\n- Internal physical order is not preserved and a direct consequence of the\n  contiguous property",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmObjectPool",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Constructor",
+            "description": "Constructor",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmObjectPool",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "capacity",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Returns object index to the object pool",
+            "description": "Returns object index to the object pool",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Free",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "index of object",
+                    "is_optional": "False",
+                    "name": "index",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "If set, memset's the object memory",
+                    "is_optional": "False",
+                    "name": "clear",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Checks if the pool is full",
+            "description": "Checks if the pool is full",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Full",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "returns true if the pool is full",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get object from logical index",
+            "description": "Get object from logical index",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Get",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "index of the object",
+                    "is_optional": "False",
+                    "name": "index",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "a reference to the object",
+                    "name": "object",
+                    "types": [
+                        "T&"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the array of currently active objects",
+            "description": "Get the array of currently active objects",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetRawObjects",
+            "notes": [
+                "The order of objects in this array may change if Alloc() or Free() has been called"
+            ],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "a reference to the array of objects",
+                    "name": "object",
+                    "types": [
+                        "dmArray<T>&"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set object from logical index",
+            "description": "Set object from logical index",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Set",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "index of object",
+                    "is_optional": "False",
+                    "name": "index",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "reference ot object. THe object stored is copied by value.",
+                    "is_optional": "False",
+                    "name": "object",
+                    "types": [
+                        "T&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set capacity. New capacity must be &gt;= old_capacity",
+            "description": "Set capacity. New capacity must be &gt;= old_capacity",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetCapacity",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "max number of objects to store",
+                    "is_optional": "False",
+                    "name": "capacity",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get size",
+            "description": "Get number of objects currently stored",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Size",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "returns the number of objects currently stored",
+                    "name": "size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "SDK Object Pool API documentation",
+        "description": "SDK Object Pool API documentation",
+        "file": "dmsdk/dlib/object_pool.h",
+        "language": "C++",
+        "name": "ObjectPool",
+        "namespace": "ObjectPool",
+        "notes": [],
+        "path": "dmsdk/dlib/object_pool.h"
+    }
+}

@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "the factory that should create a game object.",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -21,28 +22,32 @@
                 },
                 {
                     "doc": "the position of the new game object, the position of the game object calling <code>factory.create()</code> is used by default, or if the value is <code>nil</code>.",
-                    "name": "[position]",
+                    "is_optional": "True",
+                    "name": "position",
                     "types": [
                         "vector3"
                     ]
                 },
                 {
                     "doc": "the rotation of the new game object, the rotation of the game object calling <code>factory.create()</code> is used by default, or if the value is <code>nil</code>.",
-                    "name": "[rotation]",
+                    "is_optional": "True",
+                    "name": "rotation",
                     "types": [
                         "quaternion"
                     ]
                 },
                 {
                     "doc": "the properties defined in a script attached to the new game object.",
-                    "name": "[properties]",
+                    "is_optional": "True",
+                    "name": "properties",
                     "types": [
                         "table"
                     ]
                 },
                 {
                     "doc": "the scale of the new game object (must be greater than 0), the scale of the game object containing the factory is used by default, or if the value is <code>nil</code>",
-                    "name": "[scale]",
+                    "is_optional": "True",
+                    "name": "scale",
                     "types": [
                         "number",
                         "vector3"
@@ -74,7 +79,8 @@
             "parameters": [
                 {
                     "doc": "the factory component to get status from",
-                    "name": "[url]",
+                    "is_optional": "True",
+                    "name": "url",
                     "types": [
                         "string",
                         "hash",
@@ -107,7 +113,8 @@
             "parameters": [
                 {
                     "doc": "the factory component to load",
-                    "name": "[url]",
+                    "is_optional": "True",
+                    "name": "url",
                     "types": [
                         "string",
                         "hash",
@@ -116,7 +123,8 @@
                 },
                 {
                     "doc": "function to call when resources are loaded.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>url</code></dt>\n<dd><span class=\"type\">url</span> url of the factory component</dd>\n<dt><code>result</code></dt>\n<dd><span class=\"type\">boolean</span> True if resources were loaded successfully</dd>\n</dl>",
-                    "name": "[complete_function]",
+                    "is_optional": "True",
+                    "name": "complete_function",
                     "types": [
                         "function(self, url, result)"
                     ]
@@ -141,7 +149,8 @@
             "parameters": [
                 {
                     "doc": "the factory component",
-                    "name": "[url]",
+                    "is_optional": "True",
+                    "name": "url",
                     "types": [
                         "string",
                         "hash",
@@ -150,7 +159,8 @@
                 },
                 {
                     "doc": "the path to the new prototype, or <code>nil</code>",
-                    "name": "[prototype]",
+                    "is_optional": "True",
+                    "name": "prototype",
                     "types": [
                         "string",
                         "nil"
@@ -219,7 +229,8 @@
             "parameters": [
                 {
                     "doc": "the factory component to unload",
-                    "name": "[url]",
+                    "is_optional": "True",
+                    "name": "url",
                     "types": [
                         "string",
                         "hash",
@@ -237,11 +248,10 @@
         "brief": "Factory API documentation",
         "description": "Functions for controlling factory components which are used to\ndynamically spawn game objects into the runtime.",
         "file": "",
-        "group": "COMPONENTS",
         "language": "Lua",
         "name": "Factory",
         "namespace": "factory",
         "notes": [],
-        "path": ""
+        "path": "scripts/script_factory.cpp"
     }
 }
