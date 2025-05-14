@@ -1884,8 +1884,11 @@ You can interact with the editor using `editor` package that defines this API:
 - `editor.engine_sha1` — a string, SHA1 of Defold engine
 - `editor.editor_sha1` — a string, SHA1 of Defold editor
 - `editor.get(node_id, property)` — get a value of some node inside the editor. Nodes in the editor are various entities, such as script or collection files, game objects inside collections, json files loaded as resources, etc. `node_id` is a userdata that is passed to the editor script by the editor. Alternatively, you can pass resource path instead of node id, for example `"/main/game.script"`. `property` is a string. Currently these properties are supported:
-  - `"path"` — file path from the project folder for *resources* — entities that exist as files. Example of returned value: `"/main/game.script"`
+  - `"path"` — file path from the project folder for *resources* — entities that exist as files or directories. Example of returned value: `"/main/game.script"`
+  - `"children"` — list of children resource paths for directory resources
   - `"text"` — text content of a resource editable as text (such as script files or json). Example of returned value: `"function init(self)\nend"`. Please note that this is not the same as reading file with `io.open()`, because you can edit a file without saving it, and these edits are available only when accessing `"text"` property.
+  - for atlases: `images` (list of editor nodes for images in the atlas) and `animations` (list of animation nodes)
+  - for atlas animations: `images` (same as `images` in atlas)
   - some properties that are shown in the Properties view when you have selected something in the Outline view. These types of outline properties supported:
     - `strings`
     - `booleans`
@@ -2423,7 +2426,7 @@ local create_file = editor.ui.show_dialog(editor.ui.dialog({
                 grow = true,
                 text = file_name,
                 -- Typing callback:
-                on_text_changed = function(new_text)
+                on_value_changed = function(new_text)
                     file_name = new_text
                 end
             })
@@ -3285,7 +3288,7 @@ Relative addressing works by automatically prepending the current naming context
 
 ### Shorthands
 
-Defold provides two handy shorthands that you can use to send message without specifying a complete URL:
+Defold provides two handy shorthands that you can use to send messages without specifying a complete URL:
 
   `.`
   : Shorthand resolving to the current game object.
@@ -3346,7 +3349,7 @@ The absolute address of the manager script is `"/manager#controller"` and this a
 
 ## Hashed identifiers
 
-The engine stores all identifiers as hashed values. All functions that take as argument a component or a game object accepts a string, hash or an URL object. We have seen how to use strings for addressing above.
+The engine stores all identifiers as hashed values. All functions that take as argument a component or a game object accepts a string, hash or a URL object. We have seen how to use strings for addressing above.
 
 When you get the identifier of a game object, the engine will always return an absolute path identifier that is hashed:
 
@@ -3381,7 +3384,7 @@ go.set_position(pos, relative_id)
 
 To complete the picture, let's look at the full format of Defold addresses: the URL.
 
-An URL is an object, usually written as specially formatted strings. A generic URL consists of three parts:
+A URL is an object, usually written as a specially formatted string. A generic URL consists of three parts:
 
 `[socket:][path][#fragment]`
 
@@ -3456,7 +3459,7 @@ Let's first look at a few simple usage examples. Suppose that you are building a
 ![Message passing structure](https://defold.com/manuals/images/message_passing/message_passing_structure.png)
 
 <div class='sidenote' markdown='1'>
-The content of this example lives in two separate files. There is one file for the main bootstrap collection and one for the collection with the id "level". However, file names _do not matter_ in Defold. The identity you assign instances does.
+The content of this example lives in two separate files. There is one file for the main bootstrap collection and one for the collection with the id "level". However, file names _do not matter_ in Defold. The identity you assign to instances does.
 </div>
 
 The game contains a few simple mechanics that require communication between the objects:
@@ -3546,7 +3549,7 @@ The game contains a few simple mechanics that require communication between the 
 
 ## Sending messages
 
-The mechanics of sending a message is, as we have seen above, very simple. You call the function `msg.post()` which posts  your message to the message queue. Then, each frame, the engine runs through the queue and delivers each message to its target address. For some system messages (like `"enable"`, `"disable"`, `"set_parent"` etc) the engine code handles the message. The engine also produces some system messages (like `"collision_response"` on physics collisions) that are delivered to your objects. For user messages sent to script components, the engine simply calls a special Defold Lua function named `on_message()`.
+The mechanics of sending a message are, as we have seen above, very simple. You call the function `msg.post()` which posts  your message to the message queue. Then, each frame, the engine runs through the queue and delivers each message to its target address. For some system messages (like `"enable"`, `"disable"`, `"set_parent"` etc) the engine code handles the message. The engine also produces some system messages (like `"collision_response"` on physics collisions) that are delivered to your objects. For user messages sent to script components, the engine simply calls a special Defold Lua function named `on_message()`.
 
 You can send arbitrary messages to any existing object or component and it is up to the code on the recipient side to respond to the message. If you send a message to a script component and the script code ignores the message, that is fine. The responsibility of dealing with messages is fully on the receiving end.
 
@@ -3587,7 +3590,7 @@ There is a hard limit to the `message` parameter table size. This limit is set t
 
 ### Shorthands
 
-Defold provides two handy shorthands that you can use to send message without specifying a complete URL:
+Defold provides two handy shorthands that you can use to send messages without specifying a complete URL:
 
   `.`
   : Shorthand resolving to the current game object.
@@ -3656,7 +3659,7 @@ A more in depth description on how proxies work can be found in the [Collection 
 
 ## Message chains
 
-When a message that has been posted is eventually dispatched the recipients’ `on_message()` is called. It is quite common that the reaction code post new messages, which are added to the message queue.
+When a message that has been posted is eventually dispatched, the recipients’ `on_message()` is called. It is quite common that the reaction code posts new messages, which are added to the message queue.
 
 When the engine starts dispatching it will work through the message queue and call each message recipient's `on_message()` function and go on until the message queue is empty. If the dispatching pass adds new messages to the queue, it will do another pass. There is, however, a hard limit to how many times the engine tries to empty the queue, which effectively puts a limit to how long message chains you can expect to be fully dispatched within a frame. You can easily test how many dispatch passes the engine performs between each `update()` with the following script:
 
@@ -4700,7 +4703,7 @@ To create a BMFont, you need to use a tool that can generate the appropriate fil
 
 * [Bitmap Font Generator](http://www.angelcode.com/products/bmfont/), a Windows only tool provided by AngelCode.
 * [Shoebox](http://renderhjs.net/shoebox/), a free Adobe Air based app for Windows and macOS.
-* [Hiero](https://github.com/libgdx/libgdx/wiki/Hiero), an open source Java based tool.
+* [Hiero](https://libgdx.com/wiki/tools/hiero), an open source Java based tool.
 * [Glyph Designer](https://71squared.com/glyphdesigner), a commercial macOS tool from 71 Squared.
 * [bmGlyph](https://www.bmglyph.com), a commercial macOS tool from Sovapps.
 </div>
@@ -10685,7 +10688,7 @@ go.property("target", msg.url())
 
 function init(self)
   -- store initial position of target.
-  -- self.target is an url referencing another objects.
+  -- self.target is a url referencing another object.
   self.target_pos = go.get_position(self.target)
   ...
 end
@@ -10732,7 +10735,7 @@ function update(self, dt)
 end
 ```
 
-User-defined script properties can also be accessed through the getting, setting and animation functions, the same way as any other property:
+User-defined script properties can also be accessed through the get, set and animate functions, the same way as any other property:
 
 ```lua
 -- another.script
@@ -10753,7 +10756,7 @@ If you use a factory to create the game object, it is possible to set script pro
 local props = { health = 50, target = msg.url("player") }
 local id = factory.create("#can_factory", nil, nil, props)
 
--- Accessing to factory created script properties
+-- Accessing factory-created script properties
 local url = msg.url(nil, id, "can")
 local can_health = go.get(url, "health")
 ```
@@ -10771,7 +10774,7 @@ local ids = collectionfactory.create("#cangang_factory", nil, nil, props)
 
 The property values provided via `factory.create()` and `collectionfactory.create()` will override any value set in the prototype file as well as the default values in the script.
 
-If several script components attached to a game object defines the same property, each component will get initialized with the value provided to `factory.create()` or `collectionfactory.create()`.
+If several script components attached to a game object define the same property, each component will get initialized with the value provided to `factory.create()` or `collectionfactory.create()`.
 
 
 ## Resource properties
