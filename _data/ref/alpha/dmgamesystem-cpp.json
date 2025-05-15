@@ -816,6 +816,54 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get the font line height (max_ascent + max_descent...",
+            "description": "Get the font line height (max_ascent + max_descent)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResFontGetLineHeight",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font resource to modify",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "FontResource*"
+                    ]
+                },
+                {
+                    "doc": "The max distance above the base line of any glyph",
+                    "is_optional": "False",
+                    "name": "max_ascent",
+                    "types": [
+                        "float*"
+                    ]
+                },
+                {
+                    "doc": "The max distance below the base line of any glyph",
+                    "is_optional": "False",
+                    "name": "max_descent",
+                    "types": [
+                        "float*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "result",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "",
             "description": "",
             "error": "",
@@ -935,6 +983,54 @@
                     "name": "max_ascent",
                     "types": [
                         "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "result",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the font line height, by specifying the max as...",
+            "description": "Set the font line height, by specifying the max ascent and descent",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResFontSetLineHeight",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font resource to modify",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "FontResource*"
+                    ]
+                },
+                {
+                    "doc": "The max distance above the base line of any glyph",
+                    "is_optional": "False",
+                    "name": "max_ascent",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "The max distance below the base line of any glyph",
+                    "is_optional": "False",
+                    "name": "max_descent",
+                    "types": [
+                        "float"
                     ]
                 }
             ],
