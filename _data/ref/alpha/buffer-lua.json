@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "the destination buffer",
+                    "is_optional": "False",
                     "name": "dst",
                     "types": [
                         "buffer"
@@ -19,6 +20,7 @@
                 },
                 {
                     "doc": "the offset to start copying data to",
+                    "is_optional": "False",
                     "name": "dstoffset",
                     "types": [
                         "number"
@@ -26,6 +28,7 @@
                 },
                 {
                     "doc": "the source data buffer",
+                    "is_optional": "False",
                     "name": "src",
                     "types": [
                         "buffer"
@@ -33,6 +36,7 @@
                 },
                 {
                     "doc": "the offset to start copying data from",
+                    "is_optional": "False",
                     "name": "srcoffset",
                     "types": [
                         "number"
@@ -40,6 +44,7 @@
                 },
                 {
                     "doc": "the number of elements to copy",
+                    "is_optional": "False",
                     "name": "count",
                     "types": [
                         "number"
@@ -63,6 +68,7 @@
             "parameters": [
                 {
                     "doc": "the destination stream",
+                    "is_optional": "False",
                     "name": "dst",
                     "types": [
                         "bufferstream"
@@ -70,6 +76,7 @@
                 },
                 {
                     "doc": "the offset to start copying data to (measured in value type)",
+                    "is_optional": "False",
                     "name": "dstoffset",
                     "types": [
                         "number"
@@ -77,6 +84,7 @@
                 },
                 {
                     "doc": "the source data stream",
+                    "is_optional": "False",
                     "name": "src",
                     "types": [
                         "bufferstream"
@@ -84,6 +92,7 @@
                 },
                 {
                     "doc": "the offset to start copying data from (measured in value type)",
+                    "is_optional": "False",
                     "name": "srcoffset",
                     "types": [
                         "number"
@@ -91,6 +100,7 @@
                 },
                 {
                     "doc": "the number of values to copy (measured in value type)",
+                    "is_optional": "False",
                     "name": "count",
                     "types": [
                         "number"
@@ -114,6 +124,7 @@
             "parameters": [
                 {
                     "doc": "The number of elements the buffer should hold",
+                    "is_optional": "False",
                     "name": "element_count",
                     "types": [
                         "number"
@@ -121,6 +132,7 @@
                 },
                 {
                     "doc": "A table where each entry (table) describes a stream\n<ul>\n<li><span class=\"type\">hash | string</span> <code>name</code>: The name of the stream</li>\n<li><span class=\"type\">constant</span> <code>type</code>: The data type of the stream</li>\n<li><span class=\"type\">number</span> <code>count</code>: The number of values each element should hold</li>\n</ul>",
+                    "is_optional": "False",
                     "name": "declaration",
                     "types": [
                         "table"
@@ -152,6 +164,7 @@
             "parameters": [
                 {
                     "doc": "the source buffer",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "buffer"
@@ -159,6 +172,7 @@
                 },
                 {
                     "doc": "the name of the stream",
+                    "is_optional": "False",
                     "name": "stream_name",
                     "types": [
                         "hash"
@@ -190,6 +204,7 @@
             "parameters": [
                 {
                     "doc": "the buffer to get the metadata from",
+                    "is_optional": "False",
                     "name": "buf",
                     "types": [
                         "buffer"
@@ -197,6 +212,7 @@
                 },
                 {
                     "doc": "name of the metadata entry",
+                    "is_optional": "False",
                     "name": "metadata_name",
                     "types": [
                         "hash",
@@ -238,6 +254,7 @@
             "parameters": [
                 {
                     "doc": "the buffer to get the stream from",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "buffer"
@@ -245,6 +262,7 @@
                 },
                 {
                     "doc": "the stream name",
+                    "is_optional": "False",
                     "name": "stream_name",
                     "types": [
                         "hash",
@@ -277,6 +295,7 @@
             "parameters": [
                 {
                     "doc": "the buffer to set the metadata on",
+                    "is_optional": "False",
                     "name": "buf",
                     "types": [
                         "buffer"
@@ -284,6 +303,7 @@
                 },
                 {
                     "doc": "name of the metadata entry",
+                    "is_optional": "False",
                     "name": "metadata_name",
                     "types": [
                         "hash",
@@ -292,6 +312,7 @@
                 },
                 {
                     "doc": "actual metadata, an array of numeric values",
+                    "is_optional": "False",
                     "name": "values",
                     "types": [
                         "table"
@@ -299,6 +320,7 @@
                 },
                 {
                     "doc": "type of values when stored",
+                    "is_optional": "False",
                     "name": "value_type",
                     "types": [
                         "constant"
@@ -450,11 +472,10 @@
         "brief": "Buffer API documentation",
         "description": "Functions for manipulating buffers and streams",
         "file": "",
-        "group": "SCRIPT",
         "language": "Lua",
         "name": "Buffer",
         "namespace": "buffer",
         "notes": [],
-        "path": ""
+        "path": "scripts/script_buffer.cpp"
     }
 }

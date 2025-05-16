@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "Server handle",
+                    "is_optional": "False",
                     "name": "server",
                     "types": [
                         "HServer"
@@ -19,6 +20,7 @@
                 },
                 {
                     "doc": "Location prefix for which locations this handler should handle",
+                    "is_optional": "False",
                     "name": "prefix",
                     "types": [
                         "const char*"
@@ -26,6 +28,7 @@
                 },
                 {
                     "doc": "Handler parameters",
+                    "is_optional": "False",
                     "name": "handler_params",
                     "types": [
                         "HandlerParams"
@@ -57,6 +60,7 @@
             "parameters": [
                 {
                     "doc": "Request",
+                    "is_optional": "False",
                     "name": "request",
                     "types": [
                         "Request*"
@@ -64,6 +68,7 @@
                 },
                 {
                     "doc": "Header key",
+                    "is_optional": "False",
                     "name": "name",
                     "types": [
                         "const char*"
@@ -95,6 +100,7 @@
             "parameters": [
                 {
                     "doc": "User  data",
+                    "is_optional": "False",
                     "name": "user_data",
                     "types": [
                         "void*"
@@ -102,6 +108,7 @@
                 },
                 {
                     "doc": "Request",
+                    "is_optional": "False",
                     "name": "request",
                     "types": [
                         "Request*"
@@ -174,6 +181,7 @@
             "parameters": [
                 {
                     "doc": "Request",
+                    "is_optional": "False",
                     "name": "request",
                     "types": [
                         "Request*"
@@ -181,6 +189,7 @@
                 },
                 {
                     "doc": "Data buffer to receive to",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "void*"
@@ -188,6 +197,7 @@
                 },
                 {
                     "doc": "Buffer size",
+                    "is_optional": "False",
                     "name": "buffer_size",
                     "types": [
                         "uint32_t"
@@ -195,6 +205,7 @@
                 },
                 {
                     "doc": "Number of bytes received",
+                    "is_optional": "False",
                     "name": "received_bytes",
                     "types": [
                         "uint32_t*"
@@ -226,6 +237,7 @@
             "parameters": [
                 {
                     "doc": "Server handle",
+                    "is_optional": "False",
                     "name": "server",
                     "types": [
                         "HServer"
@@ -233,6 +245,7 @@
                 },
                 {
                     "doc": "Prefix for handle to remove",
+                    "is_optional": "False",
                     "name": "prefix",
                     "types": [
                         "const char*"
@@ -356,6 +369,7 @@
             "parameters": [
                 {
                     "doc": "Request handle",
+                    "is_optional": "False",
                     "name": "request",
                     "types": [
                         "Request"
@@ -363,6 +377,7 @@
                 },
                 {
                     "doc": "Data to send",
+                    "is_optional": "False",
                     "name": "data",
                     "types": [
                         "void*"
@@ -370,6 +385,7 @@
                 },
                 {
                     "doc": "Data-lenght to send",
+                    "is_optional": "False",
                     "name": "data_length",
                     "types": [
                         "uint32_t"
@@ -401,6 +417,7 @@
             "parameters": [
                 {
                     "doc": "Request",
+                    "is_optional": "False",
                     "name": "request",
                     "types": [
                         "Request*"
@@ -408,6 +425,7 @@
                 },
                 {
                     "doc": "the header name",
+                    "is_optional": "False",
                     "name": "key",
                     "types": [
                         "const char*"
@@ -415,6 +433,7 @@
                 },
                 {
                     "doc": "the header value",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "const char*"
@@ -448,6 +467,7 @@
             "parameters": [
                 {
                     "doc": "Request",
+                    "is_optional": "False",
                     "name": "request",
                     "types": [
                         "Request*"
@@ -455,6 +475,7 @@
                 },
                 {
                     "doc": "Status code to set",
+                    "is_optional": "False",
                     "name": "status_code",
                     "types": [
                         "int"
@@ -479,11 +500,10 @@
         "brief": "Web server functions",
         "description": "Simple high-level single-threaded Web server based on dmHttpServer\nThe web-server has a handler concept similar to servlets in Java",
         "file": "dmsdk/dlib/webserver.h",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "WebServer",
         "namespace": "dmWebServer",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/dlib/webserver.h"
+        "path": "dmsdk/dlib/webserver.h"
     }
 }

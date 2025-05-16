@@ -42,6 +42,7 @@
             "parameters": [
                 {
                     "doc": "the force to be applied on the collision object, measured in Newton",
+                    "is_optional": "False",
                     "name": "force",
                     "types": [
                         "vector3"
@@ -49,6 +50,7 @@
                 },
                 {
                     "doc": "the position where the force should be applied",
+                    "is_optional": "False",
                     "name": "position",
                     "types": [
                         "vector3"
@@ -72,6 +74,7 @@
             "parameters": [
                 {
                     "doc": "collision information for object A\n<dl>\n<dt><code>position</code></dt>\n<dd><span class=\"type\">vector3</span> The world position of object A</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object A</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object A</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "a",
                     "types": [
                         "table"
@@ -79,6 +82,7 @@
                 },
                 {
                     "doc": "collision information for object B\n<dl>\n<dt><code>position</code></dt>\n<dd><span class=\"type\">vector3</span> The world position of object B</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object B</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object B</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "b",
                     "types": [
                         "table"
@@ -102,6 +106,7 @@
             "parameters": [
                 {
                     "doc": "the id of the instance the collision object collided with",
+                    "is_optional": "False",
                     "name": "other_id",
                     "types": [
                         "hash"
@@ -109,6 +114,7 @@
                 },
                 {
                     "doc": "the world position of the instance the collision object collided with",
+                    "is_optional": "False",
                     "name": "other_position",
                     "types": [
                         "vector3"
@@ -116,6 +122,7 @@
                 },
                 {
                     "doc": "the collision group of the other collision object",
+                    "is_optional": "False",
                     "name": "other_group",
                     "types": [
                         "hash"
@@ -123,6 +130,7 @@
                 },
                 {
                     "doc": "the collision group of the own collision object",
+                    "is_optional": "False",
                     "name": "own_group",
                     "types": [
                         "hash"
@@ -146,6 +154,7 @@
             "parameters": [
                 {
                     "doc": "the impulse the contact resulted in",
+                    "is_optional": "False",
                     "name": "applied_impulse",
                     "types": [
                         "number"
@@ -153,6 +162,7 @@
                 },
                 {
                     "doc": "the penetration distance between the objects, which is always positive",
+                    "is_optional": "False",
                     "name": "distance",
                     "types": [
                         "number"
@@ -160,6 +170,7 @@
                 },
                 {
                     "doc": "contact point information for object A\n<dl>\n<dt><code>position</code></dt>\n<dd><span class=\"type\">vector3</span> The world position of object A</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object A</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object A</dd>\n<dt><code>relative_velocity</code></dt>\n<dd><span class=\"type\">vector3</span> The relative velocity of the collision object A as observed from B object</dd>\n<dt><code>mass</code></dt>\n<dd><span class=\"type\">number</span> The mass of the collision object A in kg</dd>\n<dt><code>normal</code></dt>\n<dd><span class=\"type\">vector3</span> normal in world space of the contact point, which points from B object towards A object</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "a",
                     "types": [
                         "table"
@@ -167,6 +178,7 @@
                 },
                 {
                     "doc": "contact point information for object B\n<dl>\n<dt><code>position</code></dt>\n<dd><span class=\"type\">vector3</span> The world position of object B</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object B</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object B</dd>\n<dt><code>relative_velocity</code></dt>\n<dd><span class=\"type\">vector3</span> The relative velocity of the collision object B as observed from A object</dd>\n<dt><code>mass</code></dt>\n<dd><span class=\"type\">number</span> The mass of the collision object B in kg</dd>\n<dt><code>normal</code></dt>\n<dd><span class=\"type\">vector3</span> normal in world space of the contact point, which points from A object towards B object</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "b",
                     "types": [
                         "table"
@@ -190,6 +202,7 @@
             "parameters": [
                 {
                     "doc": "world position of the contact point",
+                    "is_optional": "False",
                     "name": "position",
                     "types": [
                         "vector3"
@@ -197,6 +210,7 @@
                 },
                 {
                     "doc": "normal in world space of the contact point, which points from the other object towards the current object",
+                    "is_optional": "False",
                     "name": "normal",
                     "types": [
                         "vector3"
@@ -204,6 +218,7 @@
                 },
                 {
                     "doc": "the relative velocity of the collision object as observed from the other object",
+                    "is_optional": "False",
                     "name": "relative_velocity",
                     "types": [
                         "vector3"
@@ -211,6 +226,7 @@
                 },
                 {
                     "doc": "the penetration distance between the objects, which is always positive",
+                    "is_optional": "False",
                     "name": "distance",
                     "types": [
                         "number"
@@ -218,6 +234,7 @@
                 },
                 {
                     "doc": "the impulse the contact resulted in",
+                    "is_optional": "False",
                     "name": "applied_impulse",
                     "types": [
                         "number"
@@ -225,6 +242,7 @@
                 },
                 {
                     "doc": "life time of the contact, <strong>not currently used</strong>",
+                    "is_optional": "False",
                     "name": "life_time",
                     "types": [
                         "number"
@@ -232,6 +250,7 @@
                 },
                 {
                     "doc": "the mass of the current collision object in kg",
+                    "is_optional": "False",
                     "name": "mass",
                     "types": [
                         "number"
@@ -239,6 +258,7 @@
                 },
                 {
                     "doc": "the mass of the other collision object in kg",
+                    "is_optional": "False",
                     "name": "other_mass",
                     "types": [
                         "number"
@@ -246,6 +266,7 @@
                 },
                 {
                     "doc": "the id of the instance the collision object is in contact with",
+                    "is_optional": "False",
                     "name": "other_id",
                     "types": [
                         "hash"
@@ -253,6 +274,7 @@
                 },
                 {
                     "doc": "the world position of the other collision object",
+                    "is_optional": "False",
                     "name": "other_position",
                     "types": [
                         "vector3"
@@ -260,6 +282,7 @@
                 },
                 {
                     "doc": "the collision group of the other collision object",
+                    "is_optional": "False",
                     "name": "other_group",
                     "types": [
                         "hash"
@@ -267,6 +290,7 @@
                 },
                 {
                     "doc": "the collision group of the own collision object",
+                    "is_optional": "False",
                     "name": "own_group",
                     "types": [
                         "hash"
@@ -335,6 +359,7 @@
             "parameters": [
                 {
                     "doc": "the joint type",
+                    "is_optional": "False",
                     "name": "joint_type",
                     "types": [
                         "number"
@@ -342,6 +367,7 @@
                 },
                 {
                     "doc": "first collision object",
+                    "is_optional": "False",
                     "name": "collisionobject_a",
                     "types": [
                         "string",
@@ -351,6 +377,7 @@
                 },
                 {
                     "doc": "id of the joint",
+                    "is_optional": "False",
                     "name": "joint_id",
                     "types": [
                         "string",
@@ -359,6 +386,7 @@
                 },
                 {
                     "doc": "local position where to attach the joint on the first collision object",
+                    "is_optional": "False",
                     "name": "position_a",
                     "types": [
                         "vector3"
@@ -366,6 +394,7 @@
                 },
                 {
                     "doc": "second collision object",
+                    "is_optional": "False",
                     "name": "collisionobject_b",
                     "types": [
                         "string",
@@ -375,6 +404,7 @@
                 },
                 {
                     "doc": "local position where to attach the joint on the second collision object",
+                    "is_optional": "False",
                     "name": "position_b",
                     "types": [
                         "vector3"
@@ -382,7 +412,8 @@
                 },
                 {
                     "doc": "optional joint specific properties table\nSee each joint type for possible properties field. The one field that is accepted for all joint types is:\n- <span class=\"type\">boolean</span> <code>collide_connected</code>: Set this flag to true if the attached bodies should collide.",
-                    "name": "[properties]",
+                    "is_optional": "True",
+                    "name": "properties",
                     "types": [
                         "table"
                     ]
@@ -405,6 +436,7 @@
             "parameters": [
                 {
                     "doc": "collision object where the joint exist",
+                    "is_optional": "False",
                     "name": "collisionobject",
                     "types": [
                         "string",
@@ -414,6 +446,7 @@
                 },
                 {
                     "doc": "id of the joint",
+                    "is_optional": "False",
                     "name": "joint_id",
                     "types": [
                         "string",
@@ -461,6 +494,7 @@
             "parameters": [
                 {
                     "doc": "the collision object to return the group of.",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -494,6 +528,7 @@
             "parameters": [
                 {
                     "doc": "collision object where the joint exist",
+                    "is_optional": "False",
                     "name": "collisionobject",
                     "types": [
                         "string",
@@ -503,6 +538,7 @@
                 },
                 {
                     "doc": "id of the joint",
+                    "is_optional": "False",
                     "name": "joint_id",
                     "types": [
                         "string",
@@ -535,6 +571,7 @@
             "parameters": [
                 {
                     "doc": "collision object where the joint exist",
+                    "is_optional": "False",
                     "name": "collisionobject",
                     "types": [
                         "string",
@@ -544,6 +581,7 @@
                 },
                 {
                     "doc": "id of the joint",
+                    "is_optional": "False",
                     "name": "joint_id",
                     "types": [
                         "string",
@@ -576,6 +614,7 @@
             "parameters": [
                 {
                     "doc": "collision object where the joint exist",
+                    "is_optional": "False",
                     "name": "collisionobject",
                     "types": [
                         "string",
@@ -585,6 +624,7 @@
                 },
                 {
                     "doc": "id of the joint",
+                    "is_optional": "False",
                     "name": "joint_id",
                     "types": [
                         "string",
@@ -617,6 +657,7 @@
             "parameters": [
                 {
                     "doc": "the collision object to check the mask of.",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -626,6 +667,7 @@
                 },
                 {
                     "doc": "the name of the group to check for.",
+                    "is_optional": "False",
                     "name": "group",
                     "types": [
                         "string"
@@ -657,6 +699,7 @@
             "parameters": [
                 {
                     "doc": "the collision object.",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -666,6 +709,7 @@
                 },
                 {
                     "doc": "the name of the shape to get data for.",
+                    "is_optional": "False",
                     "name": "shape",
                     "types": [
                         "string",
@@ -698,6 +742,7 @@
             "parameters": [
                 {
                     "doc": "The maximum length of the rope.",
+                    "is_optional": "False",
                     "name": "max_length",
                     "types": [
                         "number"
@@ -721,6 +766,7 @@
             "parameters": [
                 {
                     "doc": "The bodyB angle minus bodyA angle in the reference state (radians).",
+                    "is_optional": "False",
                     "name": "reference_angle",
                     "types": [
                         "number"
@@ -728,6 +774,7 @@
                 },
                 {
                     "doc": "The lower angle for the joint limit (radians).",
+                    "is_optional": "False",
                     "name": "lower_angle",
                     "types": [
                         "number"
@@ -735,6 +782,7 @@
                 },
                 {
                     "doc": "The upper angle for the joint limit (radians).",
+                    "is_optional": "False",
                     "name": "upper_angle",
                     "types": [
                         "number"
@@ -742,6 +790,7 @@
                 },
                 {
                     "doc": "The maximum motor torque used to achieve the desired motor speed. Usually in N-m.",
+                    "is_optional": "False",
                     "name": "max_motor_torque",
                     "types": [
                         "number"
@@ -749,6 +798,7 @@
                 },
                 {
                     "doc": "The desired motor speed. Usually in radians per second.",
+                    "is_optional": "False",
                     "name": "motor_speed",
                     "types": [
                         "number"
@@ -756,6 +806,7 @@
                 },
                 {
                     "doc": "A flag to enable joint limits.",
+                    "is_optional": "False",
                     "name": "enable_limit",
                     "types": [
                         "boolean"
@@ -763,6 +814,7 @@
                 },
                 {
                     "doc": "A flag to enable the joint motor.",
+                    "is_optional": "False",
                     "name": "enable_motor",
                     "types": [
                         "boolean"
@@ -770,6 +822,7 @@
                 },
                 {
                     "doc": "<span class=\"mark\">READ ONLY</span>Current joint angle in radians.\n(Read only field, available from <code>physics.get_joint_properties()</code>)",
+                    "is_optional": "False",
                     "name": "joint_angle",
                     "types": [
                         "number"
@@ -777,6 +830,7 @@
                 },
                 {
                     "doc": "<span class=\"mark\">READ ONLY</span>Current joint angle speed in radians per second.\n(Read only field, available from <code>physics.get_joint_properties()</code>)",
+                    "is_optional": "False",
                     "name": "joint_speed",
                     "types": [
                         "number"
@@ -800,6 +854,7 @@
             "parameters": [
                 {
                     "doc": "The local translation unit axis in bodyA.",
+                    "is_optional": "False",
                     "name": "local_axis_a",
                     "types": [
                         "vector3"
@@ -807,6 +862,7 @@
                 },
                 {
                     "doc": "The constrained angle between the bodies: bodyB_angle - bodyA_angle.",
+                    "is_optional": "False",
                     "name": "reference_angle",
                     "types": [
                         "number"
@@ -814,6 +870,7 @@
                 },
                 {
                     "doc": "Enable/disable the joint limit.",
+                    "is_optional": "False",
                     "name": "enable_limit",
                     "types": [
                         "boolean"
@@ -821,6 +878,7 @@
                 },
                 {
                     "doc": "The lower translation limit, usually in meters.",
+                    "is_optional": "False",
                     "name": "lower_translation",
                     "types": [
                         "number"
@@ -828,6 +886,7 @@
                 },
                 {
                     "doc": "The upper translation limit, usually in meters.",
+                    "is_optional": "False",
                     "name": "upper_translation",
                     "types": [
                         "number"
@@ -835,6 +894,7 @@
                 },
                 {
                     "doc": "Enable/disable the joint motor.",
+                    "is_optional": "False",
                     "name": "enable_motor",
                     "types": [
                         "boolean"
@@ -842,6 +902,7 @@
                 },
                 {
                     "doc": "The maximum motor torque, usually in N-m.",
+                    "is_optional": "False",
                     "name": "max_motor_force",
                     "types": [
                         "number"
@@ -849,6 +910,7 @@
                 },
                 {
                     "doc": "The desired motor speed in radians per second.",
+                    "is_optional": "False",
                     "name": "motor_speed",
                     "types": [
                         "number"
@@ -856,6 +918,7 @@
                 },
                 {
                     "doc": "<span class=\"mark\">READ ONLY</span>Current joint translation, usually in meters.\n(Read only field, available from <code>physics.get_joint_properties()</code>)",
+                    "is_optional": "False",
                     "name": "joint_translation",
                     "types": [
                         "number"
@@ -863,6 +926,7 @@
                 },
                 {
                     "doc": "<span class=\"mark\">READ ONLY</span>Current joint translation speed, usually in meters per second.\n(Read only field, available from <code>physics.get_joint_properties()</code>)",
+                    "is_optional": "False",
                     "name": "joint_speed",
                     "types": [
                         "number"
@@ -886,6 +950,7 @@
             "parameters": [
                 {
                     "doc": "The natural length between the anchor points.",
+                    "is_optional": "False",
                     "name": "length",
                     "types": [
                         "number"
@@ -893,6 +958,7 @@
                 },
                 {
                     "doc": "The mass-spring-damper frequency in Hertz. A value of 0 disables softness.",
+                    "is_optional": "False",
                     "name": "frequency",
                     "types": [
                         "number"
@@ -900,6 +966,7 @@
                 },
                 {
                     "doc": "The damping ratio. 0 = no damping, 1 = critical damping.",
+                    "is_optional": "False",
                     "name": "damping",
                     "types": [
                         "number"
@@ -923,6 +990,7 @@
             "parameters": [
                 {
                     "doc": "<span class=\"mark\">READ ONLY</span>The bodyB angle minus bodyA angle in the reference state (radians).",
+                    "is_optional": "False",
                     "name": "reference_angle",
                     "types": [
                         "number"
@@ -930,6 +998,7 @@
                 },
                 {
                     "doc": "The mass-spring-damper frequency in Hertz. Rotation only. Disable softness with a value of 0.",
+                    "is_optional": "False",
                     "name": "frequency",
                     "types": [
                         "number"
@@ -937,6 +1006,7 @@
                 },
                 {
                     "doc": "The damping ratio. 0 = no damping, 1 = critical damping.",
+                    "is_optional": "False",
                     "name": "damping",
                     "types": [
                         "number"
@@ -960,6 +1030,7 @@
             "parameters": [
                 {
                     "doc": "The local translation unit axis in bodyA.",
+                    "is_optional": "False",
                     "name": "local_axis_a",
                     "types": [
                         "vector3"
@@ -967,6 +1038,7 @@
                 },
                 {
                     "doc": "The maximum motor torque used to achieve the desired motor speed. Usually in N-m.",
+                    "is_optional": "False",
                     "name": "max_motor_torque",
                     "types": [
                         "number"
@@ -974,6 +1046,7 @@
                 },
                 {
                     "doc": "The desired motor speed in radians per second.",
+                    "is_optional": "False",
                     "name": "motor_speed",
                     "types": [
                         "number"
@@ -981,6 +1054,7 @@
                 },
                 {
                     "doc": "Enable/disable the joint motor.",
+                    "is_optional": "False",
                     "name": "enable_motor",
                     "types": [
                         "boolean"
@@ -988,6 +1062,7 @@
                 },
                 {
                     "doc": "The mass-spring-damper frequency in Hertz. Rotation only. Disable softness with a value of 0.",
+                    "is_optional": "False",
                     "name": "frequency",
                     "types": [
                         "number"
@@ -995,6 +1070,7 @@
                 },
                 {
                     "doc": "The spring damping ratio. 0 = no damping, 1 = critical damping.",
+                    "is_optional": "False",
                     "name": "damping",
                     "types": [
                         "number"
@@ -1002,6 +1078,7 @@
                 },
                 {
                     "doc": "<span class=\"mark\">READ ONLY</span>Current joint translation, usually in meters.\n(Read only field, available from <code>physics.get_joint_properties()</code>)",
+                    "is_optional": "False",
                     "name": "joint_translation",
                     "types": [
                         "number"
@@ -1009,6 +1086,7 @@
                 },
                 {
                     "doc": "<span class=\"mark\">READ ONLY</span>Current joint translation speed, usually in meters per second.\n(Read only field, available from <code>physics.get_joint_properties()</code>)",
+                    "is_optional": "False",
                     "name": "joint_speed",
                     "types": [
                         "number"
@@ -1032,6 +1110,7 @@
             "parameters": [
                 {
                     "doc": "the world position of the start of the ray",
+                    "is_optional": "False",
                     "name": "from",
                     "types": [
                         "vector3"
@@ -1039,6 +1118,7 @@
                 },
                 {
                     "doc": "the world position of the end of the ray",
+                    "is_optional": "False",
                     "name": "to",
                     "types": [
                         "vector3"
@@ -1046,6 +1126,7 @@
                 },
                 {
                     "doc": "a lua table containing the hashed groups for which to test collisions against",
+                    "is_optional": "False",
                     "name": "groups",
                     "types": [
                         "table"
@@ -1053,7 +1134,8 @@
                 },
                 {
                     "doc": "a lua table containing options for the raycast.\n<dl>\n<dt><code>all</code></dt>\n<dd><span class=\"type\">boolean</span> Set to <code>true</code> to return all ray cast hits. If <code>false</code>, it will only return the closest hit.</dd>\n</dl>",
-                    "name": "[options]",
+                    "is_optional": "True",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -1085,6 +1167,7 @@
             "parameters": [
                 {
                     "doc": "the world position of the start of the ray",
+                    "is_optional": "False",
                     "name": "from",
                     "types": [
                         "vector3"
@@ -1092,6 +1175,7 @@
                 },
                 {
                     "doc": "the world position of the end of the ray",
+                    "is_optional": "False",
                     "name": "to",
                     "types": [
                         "vector3"
@@ -1099,6 +1183,7 @@
                 },
                 {
                     "doc": "a lua table containing the hashed groups for which to test collisions against",
+                    "is_optional": "False",
                     "name": "groups",
                     "types": [
                         "table"
@@ -1106,7 +1191,8 @@
                 },
                 {
                     "doc": "a number in range [0,255]. It will be sent back in the response for identification, 0 by default",
-                    "name": "[request_id]",
+                    "is_optional": "True",
+                    "name": "request_id",
                     "types": [
                         "number"
                     ]
@@ -1129,6 +1215,7 @@
             "parameters": [
                 {
                     "doc": "A callback that receives an information about all the physics interactions in this physics world.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The calling script</dd>\n<dt><code>event</code></dt>\n<dd><span class=\"type\">constant</span> The type of event. Can be one of these messages:</dd>\n</dl>\n<ul>\n<li><a href=\"#contact_point_event\">contact_point_event</a></li>\n<li><a href=\"#collision_event\">collision_event</a></li>\n<li><a href=\"#trigger_event\">trigger_event</a></li>\n<li><a href=\"#ray_cast_response\">ray_cast_response</a></li>\n<li><a href=\"#ray_cast_missed\">ray_cast_missed</a></li>\n</ul>\n<dl>\n<dt><code>data</code></dt>\n<dd><span class=\"type\">table</span> The callback value data is a table that contains event-related data. See the documentation for details on the messages.</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "callback",
                     "types": [
                         "function(self, events)",
@@ -1153,6 +1240,7 @@
             "parameters": [
                 {
                     "doc": "the new gravity vector",
+                    "is_optional": "False",
                     "name": "gravity",
                     "types": [
                         "vector3"
@@ -1176,6 +1264,7 @@
             "parameters": [
                 {
                     "doc": "the collision object affected.",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -1185,6 +1274,7 @@
                 },
                 {
                     "doc": "the new group name to be assigned.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">change_collision_group</span><span class=\"p\">()</span>\n     <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_group</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;enemy&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+                    "is_optional": "False",
                     "name": "group",
                     "types": [
                         "string"
@@ -1208,6 +1298,7 @@
             "parameters": [
                 {
                     "doc": "the collision object that should flip its shapes",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -1217,6 +1308,7 @@
                 },
                 {
                     "doc": "<code>true</code> if the collision object should flip its shapes, <code>false</code> if not",
+                    "is_optional": "False",
                     "name": "flip",
                     "types": [
                         "boolean"
@@ -1240,6 +1332,7 @@
             "parameters": [
                 {
                     "doc": "collision object where the joint exist",
+                    "is_optional": "False",
                     "name": "collisionobject",
                     "types": [
                         "string",
@@ -1249,6 +1342,7 @@
                 },
                 {
                     "doc": "id of the joint",
+                    "is_optional": "False",
                     "name": "joint_id",
                     "types": [
                         "string",
@@ -1257,6 +1351,7 @@
                 },
                 {
                     "doc": "joint specific properties table\nNote: The <code>collide_connected</code> field cannot be updated/changed after a connection has been made.",
+                    "is_optional": "False",
                     "name": "properties",
                     "types": [
                         "table"
@@ -1280,6 +1375,7 @@
             "parameters": [
                 {
                     "doc": "the collision object to change the mask of.",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -1289,6 +1385,7 @@
                 },
                 {
                     "doc": "the name of the group (maskbit) to modify in the mask.",
+                    "is_optional": "False",
                     "name": "group",
                     "types": [
                         "string"
@@ -1296,6 +1393,7 @@
                 },
                 {
                     "doc": "boolean value of the new maskbit. 'true' to enable, 'false' to disable.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">make_invincible</span><span class=\"p\">()</span>\n    <span class=\"c1\">-- no longer collide with the &quot;bullet&quot; group</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_maskbit</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;bullet&quot;</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+                    "is_optional": "False",
                     "name": "maskbit",
                     "types": [
                         "boolean"
@@ -1319,6 +1417,7 @@
             "parameters": [
                 {
                     "doc": "the collision object.",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -1328,6 +1427,7 @@
                 },
                 {
                     "doc": "the name of the shape to get data for.",
+                    "is_optional": "False",
                     "name": "shape",
                     "types": [
                         "string",
@@ -1336,6 +1436,7 @@
                 },
                 {
                     "doc": "the shape data to update the shape with.\nSee <a href=\"/ref/physics#physics.get_shape\">physics.get_shape</a> for a detailed description of each field in the data table.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">set_shape_data</span><span class=\"p\">()</span>\n    <span class=\"c1\">-- set capsule shape data</span>\n    <span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_CAPSULE</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">diameter</span> <span class=\"o\">=</span> <span class=\"mi\">10</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"mi\">20</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_capsule_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- set sphere shape data</span>\n    <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_SPHERE</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">diameter</span> <span class=\"o\">=</span> <span class=\"mi\">10</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_sphere_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- set box shape data</span>\n    <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_BOX</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">dimensions</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">5</span><span class=\"p\">)</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_box_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+                    "is_optional": "False",
                     "name": "table",
                     "types": [
                         "table"
@@ -1359,6 +1460,7 @@
             "parameters": [
                 {
                     "doc": "the collision object that should flip its shapes",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -1368,6 +1470,7 @@
                 },
                 {
                     "doc": "<code>true</code> if the collision object should flip its shapes, <code>false</code> if not",
+                    "is_optional": "False",
                     "name": "flip",
                     "types": [
                         "boolean"
@@ -1451,6 +1554,7 @@
             "parameters": [
                 {
                     "doc": "the collision object whose mass needs to be updated.",
+                    "is_optional": "False",
                     "name": "collisionobject",
                     "types": [
                         "string",
@@ -1460,6 +1564,7 @@
                 },
                 {
                     "doc": "the new mass value to set for the collision object.",
+                    "is_optional": "False",
                     "name": "mass",
                     "types": [
                         "number"
@@ -1483,6 +1588,7 @@
             "parameters": [
                 {
                     "doc": "the collision object to wake.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_input</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">action_id</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">action_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;test&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">pressed</span> <span class=\"kr\">then</span>\n        <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">wakeup</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -1508,6 +1614,7 @@
             "parameters": [
                 {
                     "doc": "id supplied when the ray cast was requested",
+                    "is_optional": "False",
                     "name": "request_id",
                     "types": [
                         "number"
@@ -1531,6 +1638,7 @@
             "parameters": [
                 {
                     "doc": "the fraction of the hit measured along the ray, where 0 is the start of the ray and 1 is the end",
+                    "is_optional": "False",
                     "name": "fraction",
                     "types": [
                         "number"
@@ -1538,6 +1646,7 @@
                 },
                 {
                     "doc": "the world position of the hit",
+                    "is_optional": "False",
                     "name": "position",
                     "types": [
                         "vector3"
@@ -1545,6 +1654,7 @@
                 },
                 {
                     "doc": "the normal of the surface of the collision object where it was hit",
+                    "is_optional": "False",
                     "name": "normal",
                     "types": [
                         "vector3"
@@ -1552,6 +1662,7 @@
                 },
                 {
                     "doc": "the instance id of the hit collision object",
+                    "is_optional": "False",
                     "name": "id",
                     "types": [
                         "hash"
@@ -1559,6 +1670,7 @@
                 },
                 {
                     "doc": "the collision group of the hit collision object as a hashed name",
+                    "is_optional": "False",
                     "name": "group",
                     "types": [
                         "hash"
@@ -1566,6 +1678,7 @@
                 },
                 {
                     "doc": "id supplied when the ray cast was requested",
+                    "is_optional": "False",
                     "name": "request_id",
                     "types": [
                         "number"
@@ -1589,6 +1702,7 @@
             "parameters": [
                 {
                     "doc": "if the interaction was an entry or not",
+                    "is_optional": "False",
                     "name": "enter",
                     "types": [
                         "boolean"
@@ -1596,6 +1710,7 @@
                 },
                 {
                     "doc": "<dl>\n<dt>interaction information for object A</dt>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object A</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object A</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "a",
                     "types": [
                         "table"
@@ -1603,6 +1718,7 @@
                 },
                 {
                     "doc": "collision information for object B\n<dl>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object B</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object B</dd>\n</dl>",
+                    "is_optional": "False",
                     "name": "b",
                     "types": [
                         "table"
@@ -1626,6 +1742,7 @@
             "parameters": [
                 {
                     "doc": "the id of the instance the collision object collided with",
+                    "is_optional": "False",
                     "name": "other_id",
                     "types": [
                         "hash"
@@ -1633,6 +1750,7 @@
                 },
                 {
                     "doc": "if the interaction was an entry or not",
+                    "is_optional": "False",
                     "name": "enter",
                     "types": [
                         "boolean"
@@ -1640,6 +1758,7 @@
                 },
                 {
                     "doc": "the collision group of the triggering collision object",
+                    "is_optional": "False",
                     "name": "other_group",
                     "types": [
                         "hash"
@@ -1647,6 +1766,7 @@
                 },
                 {
                     "doc": "the collision group of the own collision object",
+                    "is_optional": "False",
                     "name": "own_group",
                     "types": [
                         "hash"
@@ -1663,11 +1783,10 @@
         "brief": "Collision object physics API documentation",
         "description": "Collision object physics API documentation",
         "file": "",
-        "group": "SYSTEM",
         "language": "Lua",
         "name": "Collision object",
         "namespace": "physics",
         "notes": [],
-        "path": ""
+        "path": "../../proto/gamesys/physics_ddf.proto"
     }
 }

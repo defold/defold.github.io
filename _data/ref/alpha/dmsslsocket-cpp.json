@@ -14,6 +14,7 @@
             "parameters": [
                 {
                     "doc": "socket",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "dmSocket::Socket"
@@ -21,6 +22,7 @@
                 },
                 {
                     "doc": "timeout in microseconds",
+                    "is_optional": "False",
                     "name": "timeout",
                     "types": [
                         "uint64_t"
@@ -52,6 +54,7 @@
             "parameters": [
                 {
                     "doc": "Secure socket to close",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "dmSSLSocket::Socket"
@@ -98,6 +101,7 @@
             "parameters": [
                 {
                     "doc": "The socket to wrap",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "dmSocket::Socket"
@@ -105,6 +109,7 @@
                 },
                 {
                     "doc": "The name of the host (e.g. \"httpbin.org\")",
+                    "is_optional": "False",
                     "name": "host",
                     "types": [
                         "const char*"
@@ -112,6 +117,7 @@
                 },
                 {
                     "doc": "The timeout for the handshake procedure. (microseconds)",
+                    "is_optional": "False",
                     "name": "timeout",
                     "types": [
                         "uint64_t"
@@ -119,6 +125,7 @@
                 },
                 {
                     "doc": "Pointer to a secure socket",
+                    "is_optional": "False",
                     "name": "sslsocket",
                     "types": [
                         "dmSSLSocket::Socket*"
@@ -150,6 +157,7 @@
             "parameters": [
                 {
                     "doc": "Socket to receive data on",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "dmSSLSocket::Socket"
@@ -157,6 +165,7 @@
                 },
                 {
                     "doc": "Buffer to receive to",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         ""
@@ -164,6 +173,7 @@
                 },
                 {
                     "doc": "Receive buffer length",
+                    "is_optional": "False",
                     "name": "length",
                     "types": [
                         ""
@@ -171,6 +181,7 @@
                 },
                 {
                     "doc": "Number of received bytes (result)",
+                    "is_optional": "False",
                     "name": "received_bytes",
                     "types": [
                         ""
@@ -243,6 +254,7 @@
             "parameters": [
                 {
                     "doc": "SSL socket to send a message on",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "dmSSLSocket::Socket"
@@ -250,6 +262,7 @@
                 },
                 {
                     "doc": "Buffer to send",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         ""
@@ -257,6 +270,7 @@
                 },
                 {
                     "doc": "Length of buffer to send",
+                    "is_optional": "False",
                     "name": "length",
                     "types": [
                         ""
@@ -264,6 +278,7 @@
                 },
                 {
                     "doc": "Number of bytes sent (result)",
+                    "is_optional": "False",
                     "name": "sent_bytes",
                     "types": [
                         ""
@@ -303,11 +318,10 @@
         "brief": "SDK Secure socket API documentation",
         "description": "Secure socket functions.",
         "file": "dmsdk/dlib/sslsocket.h",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "SSLSocket",
         "namespace": "dmSSLSocket",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/dlib/sslsocket.h"
+        "path": "dmsdk/dlib/sslsocket.h"
     }
 }

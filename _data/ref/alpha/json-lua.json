@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "json data",
+                    "is_optional": "False",
                     "name": "json",
                     "types": [
                         "string"
@@ -19,7 +20,8 @@
                 },
                 {
                     "doc": "table with decode options\n<ul>\n<li><span class=\"type\">bool</span> <code>decode_null_as_userdata</code>: wether to decode a JSON null value as json.null or nil (default is nil)</li>\n</ul>",
-                    "name": "[options]",
+                    "is_optional": "True",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -50,6 +52,7 @@
             "parameters": [
                 {
                     "doc": "lua table to encode",
+                    "is_optional": "False",
                     "name": "tbl",
                     "types": [
                         "table"
@@ -57,7 +60,8 @@
                 },
                 {
                     "doc": "table with encode options\n<ul>\n<li><span class=\"type\">string</span> <code>encode_empty_table_as_object</code>: wether to encode an empty table as an JSON object or array (default is object)</li>\n</ul>",
-                    "name": "[options]",
+                    "is_optional": "True",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -96,11 +100,10 @@
         "brief": "JSON API documentation",
         "description": "Manipulation of JSON data strings.",
         "file": "",
-        "group": "SCRIPT",
         "language": "Lua",
         "name": "JSON",
         "namespace": "json",
         "notes": [],
-        "path": ""
+        "path": "script_json.cpp"
     }
 }

@@ -27,6 +27,7 @@
             "parameters": [
                 {
                     "doc": "the collectionproxy to check for resources.",
+                    "is_optional": "False",
                     "name": "collectionproxy",
                     "types": [
                         "url"
@@ -58,6 +59,7 @@
             "parameters": [
                 {
                     "doc": "the collectionproxy to check for missing\nresources.",
+                    "is_optional": "False",
                     "name": "collectionproxy",
                     "types": [
                         "url"
@@ -134,7 +136,8 @@
             "parameters": [
                 {
                     "doc": "the collection proxy component",
-                    "name": "[url]",
+                    "is_optional": "True",
+                    "name": "url",
                     "types": [
                         "string",
                         "hash",
@@ -143,7 +146,8 @@
                 },
                 {
                     "doc": "the path to the new collection, or <code>nil</code>",
-                    "name": "[prototype]",
+                    "is_optional": "True",
+                    "name": "prototype",
                     "types": [
                         "string",
                         "nil"
@@ -287,6 +291,7 @@
             "parameters": [
                 {
                     "doc": "time-step scaling factor",
+                    "is_optional": "False",
                     "name": "factor",
                     "types": [
                         "number"
@@ -294,6 +299,7 @@
                 },
                 {
                     "doc": "time-step mode: 0 for continuous and 1 for discrete",
+                    "is_optional": "False",
                     "name": "mode",
                     "types": [
                         "number"
@@ -325,11 +331,10 @@
         "brief": "Collection proxy API documentation",
         "description": "Messages for controlling and interacting with collection proxies\nwhich are used to dynamically load collections into the runtime.",
         "file": "",
-        "group": "COMPONENTS",
         "language": "Lua",
         "name": "Collection proxy",
         "namespace": "collectionproxy",
         "notes": [],
-        "path": ""
+        "path": "scripts/script_collectionproxy.cpp"
     }
 }

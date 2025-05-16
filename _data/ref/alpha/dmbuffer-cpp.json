@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "Pointer to HBuffer from where to copy buffer data.",
+                    "is_optional": "False",
                     "name": "dst_buffer_handle",
                     "types": [
                         "dmBuffer::HBuffer*"
@@ -19,6 +20,7 @@
                 },
                 {
                     "doc": "Pointer to HBuffer where to copy the buffer data.",
+                    "is_optional": "False",
                     "name": "src_buffer_handle",
                     "types": [
                         "dmBuffer::HBuffer*"
@@ -50,6 +52,7 @@
             "parameters": [
                 {
                     "doc": "The number of \"structs\" the buffer should hold (e.g. vertex count)",
+                    "is_optional": "False",
                     "name": "count",
                     "types": [
                         "uint32_t"
@@ -57,6 +60,7 @@
                 },
                 {
                     "doc": "Array of stream declarations",
+                    "is_optional": "False",
                     "name": "streams_decl",
                     "types": [
                         "const dmBuffer::StreamDeclaration*"
@@ -64,6 +68,7 @@
                 },
                 {
                     "doc": "Number of stream declarations inside the decl array (max 256)",
+                    "is_optional": "False",
                     "name": "streams_decl_count",
                     "types": [
                         "uint8_t"
@@ -71,6 +76,7 @@
                 },
                 {
                     "doc": "Pointer to HBuffer where to store the newly allocated buffer",
+                    "is_optional": "False",
                     "name": "out_buffer",
                     "types": [
                         "dmBuffer::HBuffer*"
@@ -102,6 +108,7 @@
             "parameters": [
                 {
                     "doc": "Buffer handle to the buffer to free",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "dmBuffer::HBuffer"
@@ -125,6 +132,7 @@
             "parameters": [
                 {
                     "doc": "buffer handle.",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "dmBuffer::HBuffer"
@@ -132,6 +140,7 @@
                 },
                 {
                     "doc": "Pointer to void* where to store the bytes",
+                    "is_optional": "False",
                     "name": "out_bytes",
                     "types": [
                         "void**"
@@ -139,6 +148,7 @@
                 },
                 {
                     "doc": "Pointer to uint32_t where to store the array size",
+                    "is_optional": "False",
                     "name": "out_size",
                     "types": [
                         "uint32_t*"
@@ -170,6 +180,7 @@
             "parameters": [
                 {
                     "doc": "The value type",
+                    "is_optional": "False",
                     "name": "type",
                     "types": [
                         "dmBuffer::HBuffer"
@@ -177,6 +188,7 @@
                 },
                 {
                     "doc": "The current version number",
+                    "is_optional": "False",
                     "name": "version",
                     "types": [
                         "uint32_t*"
@@ -208,6 +220,7 @@
             "parameters": [
                 {
                     "doc": "buffer handle.",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "dmBuffer::HBuffer"
@@ -215,6 +228,7 @@
                 },
                 {
                     "doc": "Pointer to uint32_t where to store the element count",
+                    "is_optional": "False",
                     "name": "count",
                     "types": [
                         "uint32_t*"
@@ -246,6 +260,7 @@
             "parameters": [
                 {
                     "doc": "A buffer handle",
+                    "is_optional": "False",
                     "name": "hbuffer",
                     "types": [
                         "dmBuffer::HBuffer"
@@ -253,6 +268,7 @@
                 },
                 {
                     "doc": "The entry name as a hash",
+                    "is_optional": "False",
                     "name": "name_hash",
                     "types": [
                         "dmhash_t"
@@ -260,6 +276,7 @@
                 },
                 {
                     "doc": "Gets the internal address of metadata values",
+                    "is_optional": "False",
                     "name": "data",
                     "types": [
                         "void**"
@@ -267,6 +284,7 @@
                 },
                 {
                     "doc": "Gets the number of metadata values stored",
+                    "is_optional": "False",
                     "name": "count",
                     "types": [
                         "uint32_t"
@@ -274,6 +292,7 @@
                 },
                 {
                     "doc": "Gets the type of values of the metadata",
+                    "is_optional": "False",
                     "name": "type",
                     "types": [
                         "dmBuffer::ValueType"
@@ -297,6 +316,7 @@
             "parameters": [
                 {
                     "doc": "The result",
+                    "is_optional": "False",
                     "name": "result",
                     "types": [
                         "dmBuffer::Result"
@@ -328,6 +348,7 @@
             "parameters": [
                 {
                     "doc": "The value type",
+                    "is_optional": "False",
                     "name": "type",
                     "types": [
                         "dmBuffer::ValueType"
@@ -359,6 +380,7 @@
             "parameters": [
                 {
                     "doc": "buffer handle.",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "dmBuffer::HBuffer"
@@ -366,6 +388,7 @@
                 },
                 {
                     "doc": "Hash of stream name to get",
+                    "is_optional": "False",
                     "name": "stream_name",
                     "types": [
                         "dmhash_t"
@@ -373,6 +396,7 @@
                 },
                 {
                     "doc": "Where to store the stream",
+                    "is_optional": "False",
                     "name": "stream",
                     "types": [
                         "void**"
@@ -380,6 +404,7 @@
                 },
                 {
                     "doc": "Where to store the count (e.g. vertex count). May be null.",
+                    "is_optional": "False",
                     "name": "count",
                     "types": [
                         "uint32_t*"
@@ -387,6 +412,7 @@
                 },
                 {
                     "doc": "Where to store the number of components (e.g. 3 for a Vector3). May be null.",
+                    "is_optional": "False",
                     "name": "components",
                     "types": [
                         "uint32_t*"
@@ -394,6 +420,7 @@
                 },
                 {
                     "doc": "Where to store the (struct) stride. The stride can be added to the value pointer. May be null.\nE.g. for a float array, the stride is (sizeof(Struct) / sizeof(float))",
+                    "is_optional": "False",
                     "name": "stride",
                     "types": [
                         "uint32_t*"
@@ -425,6 +452,7 @@
             "parameters": [
                 {
                     "doc": "Pointer to a buffer.",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "dmBuffer::HBuffer"
@@ -432,6 +460,7 @@
                 },
                 {
                     "doc": "Hash of stream name to get",
+                    "is_optional": "False",
                     "name": "stream_name",
                     "types": [
                         "dmhash_t"
@@ -439,6 +468,7 @@
                 },
                 {
                     "doc": "The value type",
+                    "is_optional": "False",
                     "name": "type",
                     "types": [
                         "dmBuffer::ValueType*"
@@ -446,6 +476,7 @@
                 },
                 {
                     "doc": "The number of values (E.g. 3 for a Vector3)",
+                    "is_optional": "False",
                     "name": "components",
                     "types": [
                         "uint32_t*"
@@ -477,6 +508,7 @@
             "parameters": [
                 {
                     "doc": "The value type",
+                    "is_optional": "False",
                     "name": "result",
                     "types": [
                         "dmBuffer::ValueType"
@@ -523,6 +555,7 @@
             "parameters": [
                 {
                     "doc": "The buffer",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "dmBuffer::HBuffer"
@@ -554,6 +587,7 @@
             "parameters": [
                 {
                     "doc": "A buffer handle",
+                    "is_optional": "False",
                     "name": "hbuffer",
                     "types": [
                         "dmBuffer::HBuffer"
@@ -561,6 +595,7 @@
                 },
                 {
                     "doc": "The entry name as a hash",
+                    "is_optional": "False",
                     "name": "name_hash",
                     "types": [
                         "dmhash_t"
@@ -568,6 +603,7 @@
                 },
                 {
                     "doc": "A pointer to an array of the values",
+                    "is_optional": "False",
                     "name": "data",
                     "types": [
                         "void*"
@@ -575,6 +611,7 @@
                 },
                 {
                     "doc": "Number of values in the array",
+                    "is_optional": "False",
                     "name": "count",
                     "types": [
                         "uint32_t"
@@ -582,6 +619,7 @@
                 },
                 {
                     "doc": "The type of the values",
+                    "is_optional": "False",
                     "name": "type",
                     "types": [
                         "dmBuffer::ValueType"
@@ -654,6 +692,7 @@
             "parameters": [
                 {
                     "doc": "The value type",
+                    "is_optional": "False",
                     "name": "type",
                     "types": [
                         "dmBuffer::HBuffer"
@@ -685,6 +724,7 @@
             "parameters": [
                 {
                     "doc": "Buffer handle to the buffer to validate",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "dmBuffer::HBuffer"
@@ -838,11 +878,10 @@
         "brief": "SDK Buffer API documentation",
         "description": "Buffer API for data buffers as the main way to communicate between systems.",
         "file": "dmsdk/dlib/buffer.h",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "Buffer",
         "namespace": "dmBuffer",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/dlib/buffer.h"
+        "path": "dmsdk/dlib/buffer.h"
     }
 }

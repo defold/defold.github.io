@@ -27,6 +27,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "o",
                     "types": [
                         ""
@@ -50,7 +51,8 @@
             "parameters": [
                 {
                     "doc": "",
-                    "name": "[thread]",
+                    "is_optional": "True",
+                    "name": "thread",
                     "types": [
                         ""
                     ]
@@ -73,13 +75,15 @@
             "parameters": [
                 {
                     "doc": "",
-                    "name": "[thread]",
+                    "is_optional": "True",
+                    "name": "thread",
                     "types": [
                         ""
                     ]
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "function",
                     "types": [
                         ""
@@ -87,7 +91,8 @@
                 },
                 {
                     "doc": "",
-                    "name": "[what]",
+                    "is_optional": "True",
+                    "name": "what",
                     "types": [
                         ""
                     ]
@@ -110,13 +115,15 @@
             "parameters": [
                 {
                     "doc": "",
-                    "name": "[thread]",
+                    "is_optional": "True",
+                    "name": "thread",
                     "types": [
                         ""
                     ]
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "level",
                     "types": [
                         ""
@@ -124,6 +131,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "local",
                     "types": [
                         ""
@@ -147,6 +155,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "object",
                     "types": [
                         ""
@@ -185,6 +194,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "func",
                     "types": [
                         ""
@@ -192,6 +202,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "up",
                     "types": [
                         ""
@@ -215,6 +226,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "object",
                     "types": [
                         ""
@@ -222,6 +234,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "table",
                     "types": [
                         ""
@@ -245,13 +258,15 @@
             "parameters": [
                 {
                     "doc": "",
-                    "name": "[thread]",
+                    "is_optional": "True",
+                    "name": "thread",
                     "types": [
                         ""
                     ]
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "hook",
                     "types": [
                         ""
@@ -259,6 +274,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "mask",
                     "types": [
                         ""
@@ -266,7 +282,8 @@
                 },
                 {
                     "doc": "",
-                    "name": "[count]",
+                    "is_optional": "True",
+                    "name": "count",
                     "types": [
                         ""
                     ]
@@ -289,13 +306,15 @@
             "parameters": [
                 {
                     "doc": "",
-                    "name": "[thread]",
+                    "is_optional": "True",
+                    "name": "thread",
                     "types": [
                         ""
                     ]
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "level",
                     "types": [
                         ""
@@ -303,6 +322,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "local",
                     "types": [
                         ""
@@ -310,6 +330,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         ""
@@ -333,6 +354,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "object",
                     "types": [
                         ""
@@ -340,6 +362,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "table",
                     "types": [
                         ""
@@ -363,6 +386,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "func",
                     "types": [
                         ""
@@ -370,6 +394,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "up",
                     "types": [
                         ""
@@ -377,6 +402,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         ""
@@ -400,21 +426,24 @@
             "parameters": [
                 {
                     "doc": "",
-                    "name": "[thread]",
+                    "is_optional": "True",
+                    "name": "thread",
                     "types": [
                         ""
                     ]
                 },
                 {
                     "doc": "",
-                    "name": "[message]",
+                    "is_optional": "True",
+                    "name": "message",
                     "types": [
                         ""
                     ]
                 },
                 {
                     "doc": "",
-                    "name": "[level]",
+                    "is_optional": "True",
+                    "name": "level",
                     "types": [
                         ""
                     ]
@@ -428,13 +457,12 @@
     ],
     "info": {
         "brief": "Lua debug standard library",
-        "description": "Documentation for the Lua debug standard library.\nFrom <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.\nCopyright &copy; 2006-2012 Lua.org, PUC-Rio.\nFreely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.",
+        "description": "Documentation for the Lua debug standard library.\n\nFrom [Lua 5.1 Reference Manual](https://www.lua.org/manual/5.1/)\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.\n\nCopyright &copy; 2006-2012 Lua.org, PUC-Rio.\n\nFreely available under the terms of the [Lua license](https://www.lua.org/license.html).",
         "file": "",
-        "group": "LUA STANDARD LIBS",
         "language": "Lua",
         "name": "Debug",
         "namespace": "debug",
         "notes": [],
-        "path": ""
+        "path": "lua_debug.doc_h"
     }
 }

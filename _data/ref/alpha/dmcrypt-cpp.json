@@ -35,6 +35,7 @@
             "parameters": [
                 {
                     "doc": "The source data to encode",
+                    "is_optional": "False",
                     "name": "src",
                     "types": [
                         "const uint8_t*"
@@ -42,6 +43,7 @@
                 },
                 {
                     "doc": "key The length of source data in bytes",
+                    "is_optional": "False",
                     "name": "src_len",
                     "types": [
                         "uint32_t"
@@ -49,6 +51,7 @@
                 },
                 {
                     "doc": "The destination buffer",
+                    "is_optional": "False",
                     "name": "dst",
                     "types": [
                         "uint8_t*"
@@ -56,6 +59,7 @@
                 },
                 {
                     "doc": "In: The length of the destination in bytes. Out: The length of the decoded string.",
+                    "is_optional": "False",
                     "name": "dst_len[in,out]",
                     "types": [
                         "uint32_t*"
@@ -89,6 +93,7 @@
             "parameters": [
                 {
                     "doc": "The source data to encode",
+                    "is_optional": "False",
                     "name": "src",
                     "types": [
                         "const uint8_t*"
@@ -96,6 +101,7 @@
                 },
                 {
                     "doc": "key The length of source data in bytes",
+                    "is_optional": "False",
                     "name": "src_len",
                     "types": [
                         "uint32_t"
@@ -103,6 +109,7 @@
                 },
                 {
                     "doc": "The destination buffer",
+                    "is_optional": "False",
                     "name": "dst",
                     "types": [
                         "uint8_t*"
@@ -110,6 +117,7 @@
                 },
                 {
                     "doc": "In: The length of the destination in bytes. Out: The length of the encoded string.",
+                    "is_optional": "False",
                     "name": "dst_len[in,out]",
                     "types": [
                         "uint32_t*"
@@ -141,6 +149,7 @@
             "parameters": [
                 {
                     "doc": "algorithm",
+                    "is_optional": "False",
                     "name": "algo",
                     "types": [
                         "dmCrypt::Algorithm"
@@ -148,6 +157,7 @@
                 },
                 {
                     "doc": "data",
+                    "is_optional": "False",
                     "name": "data",
                     "types": [
                         "const uint8_t*"
@@ -155,6 +165,7 @@
                 },
                 {
                     "doc": "data length in bytes",
+                    "is_optional": "False",
                     "name": "datalen",
                     "types": [
                         "uint32_t"
@@ -162,6 +173,7 @@
                 },
                 {
                     "doc": "key",
+                    "is_optional": "False",
                     "name": "key",
                     "types": [
                         "const uint8_t*"
@@ -169,6 +181,7 @@
                 },
                 {
                     "doc": "key length",
+                    "is_optional": "False",
                     "name": "keylen",
                     "types": [
                         "uint32_t"
@@ -200,6 +213,7 @@
             "parameters": [
                 {
                     "doc": "algorithm",
+                    "is_optional": "False",
                     "name": "algo",
                     "types": [
                         "dmCrypt::Algorithm"
@@ -207,6 +221,7 @@
                 },
                 {
                     "doc": "data",
+                    "is_optional": "False",
                     "name": "data",
                     "types": [
                         "const uint8_t*"
@@ -214,6 +229,7 @@
                 },
                 {
                     "doc": "data length in bytes",
+                    "is_optional": "False",
                     "name": "datalen",
                     "types": [
                         "uint32_t"
@@ -221,6 +237,7 @@
                 },
                 {
                     "doc": "key",
+                    "is_optional": "False",
                     "name": "key",
                     "types": [
                         "const uint8_t*"
@@ -228,6 +245,7 @@
                 },
                 {
                     "doc": "key length",
+                    "is_optional": "False",
                     "name": "keylen",
                     "types": [
                         "uint32_t"
@@ -259,6 +277,7 @@
             "parameters": [
                 {
                     "doc": "The source data to hash",
+                    "is_optional": "False",
                     "name": "buf",
                     "types": [
                         "const uint8_t*"
@@ -266,6 +285,7 @@
                 },
                 {
                     "doc": "key The length of source data in bytes",
+                    "is_optional": "False",
                     "name": "buflen",
                     "types": [
                         "uint32_t"
@@ -273,6 +293,7 @@
                 },
                 {
                     "doc": "The destination buffer (16 bytes)",
+                    "is_optional": "False",
                     "name": "digest",
                     "types": [
                         "const uint8_t*"
@@ -296,6 +317,7 @@
             "parameters": [
                 {
                     "doc": "The source data to hash",
+                    "is_optional": "False",
                     "name": "buf",
                     "types": [
                         "const uint8_t*"
@@ -303,6 +325,7 @@
                 },
                 {
                     "doc": "The length of source data in bytes",
+                    "is_optional": "False",
                     "name": "buflen",
                     "types": [
                         "uint32_t"
@@ -310,6 +333,7 @@
                 },
                 {
                     "doc": "The destination buffer (20 bytes)",
+                    "is_optional": "False",
                     "name": "digest",
                     "types": [
                         "uint8_t*"
@@ -333,6 +357,7 @@
             "parameters": [
                 {
                     "doc": "The source data to hash",
+                    "is_optional": "False",
                     "name": "buf",
                     "types": [
                         "const uint8_t*"
@@ -340,6 +365,7 @@
                 },
                 {
                     "doc": "key The length of source data in bytes",
+                    "is_optional": "False",
                     "name": "buflen",
                     "types": [
                         "uint32_t"
@@ -347,6 +373,7 @@
                 },
                 {
                     "doc": "The destination buffer (32 bytes)",
+                    "is_optional": "False",
                     "name": "digest",
                     "types": [
                         "uint8_t*"
@@ -370,6 +397,7 @@
             "parameters": [
                 {
                     "doc": "The source data to hash",
+                    "is_optional": "False",
                     "name": "buf",
                     "types": [
                         "const uint8_t*"
@@ -377,6 +405,7 @@
                 },
                 {
                     "doc": "key The length of source data in bytes",
+                    "is_optional": "False",
                     "name": "buflen",
                     "types": [
                         "uint32_t"
@@ -384,6 +413,7 @@
                 },
                 {
                     "doc": "The destination buffer (64 bytes)",
+                    "is_optional": "False",
                     "name": "digest",
                     "types": [
                         "uint8_t*"
@@ -424,12 +454,12 @@
     ],
     "info": {
         "brief": "SDK Crypt API documentation",
-        "description": "<span class=\"file\"><dmsdk/dlib/crypt.h></span>\nVarious hash and encode/decode functions.",
-        "file": "",
+        "description": "[file:<dmsdk/dlib/crypt.h>]\n\nVarious hash and encode/decode functions.",
+        "file": "dmsdk/dlib/crypt.h",
         "language": "C++",
         "name": "Crypt",
         "namespace": "dmCrypt",
         "notes": [],
-        "path": ""
+        "path": "dmsdk/dlib/crypt.h"
     }
 }

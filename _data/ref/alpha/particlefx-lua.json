@@ -72,6 +72,7 @@
             "parameters": [
                 {
                     "doc": "the particle fx that should start playing.",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -81,7 +82,8 @@
                 },
                 {
                     "doc": "optional callback function that will be called when an emitter attached to this particlefx changes state.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The id of the particle fx component</dd>\n<dt><code>emitter</code></dt>\n<dd><span class=\"type\">hash</span> The id of the emitter</dd>\n<dt><code>state</code></dt>\n<dd><span class=\"type\">constant</span> the new state of the emitter:</dd>\n</dl>\n<ul>\n<li><code>particlefx.EMITTER_STATE_SLEEPING</code></li>\n<li><code>particlefx.EMITTER_STATE_PRESPAWN</code></li>\n<li><code>particlefx.EMITTER_STATE_SPAWNING</code></li>\n<li><code>particlefx.EMITTER_STATE_POSTSPAWN</code></li>\n</ul>",
-                    "name": "[emitter_state_function]",
+                    "is_optional": "True",
+                    "name": "emitter_state_function",
                     "types": [
                         "function(self, id, emitter, state)"
                     ]
@@ -104,6 +106,7 @@
             "parameters": [
                 {
                     "doc": "the particle FX that should have a constant reset",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -113,6 +116,7 @@
                 },
                 {
                     "doc": "the id of the emitter",
+                    "is_optional": "False",
                     "name": "emitter",
                     "types": [
                         "string",
@@ -121,6 +125,7 @@
                 },
                 {
                     "doc": "the name of the constant",
+                    "is_optional": "False",
                     "name": "constant",
                     "types": [
                         "string",
@@ -145,6 +150,7 @@
             "parameters": [
                 {
                     "doc": "the particle FX that should have a constant set",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -154,6 +160,7 @@
                 },
                 {
                     "doc": "the id of the emitter",
+                    "is_optional": "False",
                     "name": "emitter",
                     "types": [
                         "string",
@@ -162,6 +169,7 @@
                 },
                 {
                     "doc": "the name of the constant",
+                    "is_optional": "False",
                     "name": "constant",
                     "types": [
                         "string",
@@ -170,6 +178,7 @@
                 },
                 {
                     "doc": "the value of the constant",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "vector4"
@@ -193,6 +202,7 @@
             "parameters": [
                 {
                     "doc": "the particle fx that should stop playing",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -202,7 +212,8 @@
                 },
                 {
                     "doc": "Options when stopping the particle fx. Supported options:\n<ul>\n<li><span class=\"type\">boolean</span> <code>clear</code>: instantly clear spawned particles</li>\n</ul>",
-                    "name": "[options]",
+                    "is_optional": "True",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -218,11 +229,10 @@
         "brief": "Particle effects API documentation",
         "description": "Functions for controlling particle effect component playback and\nshader constants.",
         "file": "",
-        "group": "COMPONENTS",
         "language": "Lua",
         "name": "Particle effects",
         "namespace": "particlefx",
         "notes": [],
-        "path": ""
+        "path": "scripts/script_particlefx.cpp"
     }
 }

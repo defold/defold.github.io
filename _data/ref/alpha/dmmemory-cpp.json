@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "A pointer to the memory block that was returned by dmMemory::AlignedMalloc",
+                    "is_optional": "False",
                     "name": "memptr",
                     "types": [
                         "void*"
@@ -35,6 +36,7 @@
             "parameters": [
                 {
                     "doc": "Pointer to a void* where the allocated pointer address should be stored.",
+                    "is_optional": "False",
                     "name": "memptr",
                     "types": [
                         "void**"
@@ -42,6 +44,7 @@
                 },
                 {
                     "doc": "The alignment value, which must be an integer power of 2.",
+                    "is_optional": "False",
                     "name": "alignment",
                     "types": [
                         "uint32_t"
@@ -49,6 +52,7 @@
                 },
                 {
                     "doc": "Size of the requested memory allocation.",
+                    "is_optional": "False",
                     "name": "size",
                     "types": [
                         "uint32_t"
@@ -101,14 +105,13 @@
         }
     ],
     "info": {
-        "brief": "SDK Alloca API documentation",
-        "description": "Alloca functions.",
-        "file": "dmsdk/dlib/dalloca.h",
-        "group": "DEFOLD SDK",
+        "brief": "SDK Memory API documentation",
+        "description": "Memory allocation functions",
+        "file": "dmsdk/dlib/memory.h",
         "language": "C++",
-        "name": "Alloca",
+        "name": "Memory",
         "namespace": "dmMemory",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/dlib/dalloca.h"
+        "path": "dmsdk/dlib/memory.h"
     }
 }
