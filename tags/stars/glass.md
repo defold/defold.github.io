@@ -1,6 +1,6 @@
 ---
 layout: assetportal
-tag: 3d
-title: 3D
+tag: glass
+title: Glass
 sort: stars
 ---
