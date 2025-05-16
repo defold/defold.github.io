@@ -736,6 +736,8 @@ def process_examples(download = False):
                     print("..building %s" % example)
                     bob_out = os.path.join(example_src_dir, bob_jar)
                     shutil.copyfile(bob_jar, bob_out)
+                    game_project = os.path.join(example_src_dir, "game.project")
+                    replace_in_file(game_project, r"title = .*", r"title = Defold-examples")
                     subprocess.call([ "java", "-jar", bob_out, "--archive", "--platform", "js-web", "--variant", "debug", "resolve", "build", "bundle" ], cwd=example_src_dir)
                     os.remove(bob_out)
 
