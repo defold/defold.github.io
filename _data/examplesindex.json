@@ -10,114 +10,14 @@
         "title": "Mesh"
     },
     {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to child a game object to a parent.",
-        "category": "basics",
+        "author": "Pawel Jarosz",
+        "brief": "This example shows how to create timer that repeats endlessly every second",
+        "category": "timer",
         "layout": "example",
-        "path": "basics/parent_child",
-        "scripts": "parent.script,child.script",
-        "tags": "basics",
-        "title": "Parent/child"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to put sprites in front and behind of eachother",
-        "category": "basics",
-        "layout": "example",
-        "path": "basics/z_order",
-        "scripts": "z_order.script",
-        "tags": "basics",
-        "title": "Z-order"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to communicate between two script components in two separate game objects.",
-        "category": "basics",
-        "layout": "example",
-        "path": "basics/message_passing",
-        "scripts": "spaceship1.script,spaceship2.script",
-        "tags": "basics",
-        "title": "Message passing"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to speed up or slow down animations in a collection proxy by changing the time step of the collection proxy.",
-        "category": "collection",
-        "layout": "example",
-        "path": "collection/timestep",
-        "scripts": "controller.script, game.script",
-        "tags": "collection",
-        "title": "Time-step"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to use collection proxies to show a splash screen while loading a game menu.",
-        "category": "collection",
-        "layout": "example",
-        "path": "collection/splash",
-        "scripts": "controller.script",
-        "tags": "collection",
-        "title": "Splash"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to use collection proxies to load and unload collections.",
-        "category": "collection",
-        "layout": "example",
-        "path": "collection/proxy",
-        "scripts": "controller.script, menu.gui_script, level.script",
-        "tags": "collection",
-        "title": "Proxy"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to save and load data using sys.save() and sys.load()",
-        "category": "file",
-        "layout": "example",
-        "path": "file/sys_save_load",
-        "scripts": "sys_save_load.script",
-        "tags": "file",
-        "title": "Save and Load"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "A very simple 8 ways movement setup with a single game object and a script that listens to input and updates the game object position accordingly.",
-        "category": "input",
-        "layout": "example",
-        "path": "input/move",
-        "scripts": "move.script",
-        "tags": "input",
-        "title": "8 ways movement"
-    },
-    {
-        "author": "AGulev",
-        "brief": "Listens to input trigger \"touch\" and count mouse down duration in update method.",
-        "category": "input",
-        "layout": "example",
-        "path": "input/down_duration",
-        "scripts": "down_duration.script",
-        "tags": "input",
-        "title": "Down duration"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "Shows how to read mouse/touch movement and mouse/touch button state.",
-        "category": "input",
-        "layout": "example",
-        "path": "input/mouse_and_touch",
-        "scripts": "mouse_and_touch.script",
-        "tags": "input",
-        "title": "Mouse and touch events"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "Listens to text input trigger \"type\" and modifies the game object label with the alien's speech according to input. A \"backspace\" key trigger has also been added.",
-        "category": "input",
-        "layout": "example",
-        "path": "input/text",
-        "scripts": "text.script",
-        "tags": "input",
-        "title": "Text input"
+        "path": "timer/repeating_timer",
+        "scripts": "repeating_timer.gui_script",
+        "tags": "timer",
+        "title": "Repeating timer example"
     },
     {
         "author": "Pawel Jarosz",
@@ -131,16 +31,6 @@
     },
     {
         "author": "Pawel Jarosz",
-        "brief": "This example shows how to create timer that repeats endlessly every second",
-        "category": "timer",
-        "layout": "example",
-        "path": "timer/repeating_timer",
-        "scripts": "repeating_timer.gui_script",
-        "tags": "timer",
-        "title": "Repeating timer example"
-    },
-    {
-        "author": "Pawel Jarosz",
         "brief": "This example shows how to create timer and cancel it anytime, using built-in timer API.",
         "category": "timer",
         "layout": "example",
@@ -148,175 +38,6 @@
         "scripts": "cancel_timer.gui_script",
         "tags": "timer",
         "title": "Cancel timer example"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to use a camera component and have it follow a game object. Click to toggle between following the game object and staying stationary.",
-        "category": "render",
-        "layout": "example",
-        "path": "render/camera",
-        "scripts": "bee.script, camera.script",
-        "tags": "render",
-        "title": "Camera"
-    },
-    {
-        "author": "aglitchman",
-        "brief": "This example demonstrates how to create script to control a 3D camera with the mouse. Scroll wheel is used to zoom in and out.",
-        "category": "render",
-        "layout": "example",
-        "name": "Orbit Camera (3D)",
-        "path": "render/orbit_camera",
-        "scripts": "orbit_camera.script",
-        "tags": "render",
-        "title": "Orbit Camera"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to convert from screen to world cooridnates while using a camera.",
-        "category": "render",
-        "layout": "example",
-        "path": "render/screen_to_world",
-        "scripts": "bee.script",
-        "tags": "render",
-        "title": "Screen to World"
-    },
-    {
-        "author": "mikatuo",
-        "brief": "This example demonstrates different easing functions available in Defold.",
-        "category": "animation",
-        "layout": "example",
-        "path": "animation/easing",
-        "tags": "animation",
-        "title": "Easing functions (tweens)"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows Spine bone animation that blends when animation switches.",
-        "category": "animation",
-        "layout": "example",
-        "path": "animation/spine",
-        "scripts": "spine.script",
-        "tags": "animation",
-        "title": "Spine animation"
-    },
-    {
-        "author": "Pawel Jarosz",
-        "brief": "This example shows how to set and animate the normalized cursor value.",
-        "category": "animation",
-        "layout": "example",
-        "path": "animation/cursor",
-        "scripts": "cursor.script",
-        "tags": "animation",
-        "title": "Cursor animation"
-    },
-    {
-        "brief": "This example shows how to use a flipbook animation in a sprite",
-        "category": "animation",
-        "layout": "example",
-        "path": "animation/flipbook",
-        "tags": "animation",
-        "title": "Flipbook animation"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how a game object is rotated in discrete steps, matching the graphics of the progress spinner.",
-        "category": "animation",
-        "layout": "example",
-        "path": "animation/spinner",
-        "scripts": "spinner.script",
-        "tags": "animation",
-        "title": "Spinner animation"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to tween animate the position of a game object.",
-        "category": "animation",
-        "layout": "example",
-        "path": "animation/basic_tween",
-        "scripts": "spaceship.script",
-        "tags": "animation",
-        "title": "Tween animation"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to chain two tween animations of the position of a game object. In addition, the scale and tint is animated separately.",
-        "category": "animation",
-        "layout": "example",
-        "path": "animation/chained_tween",
-        "scripts": "spaceship.script",
-        "tags": "animation",
-        "title": "Tween animations chain"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to animate the rotation of a game object using the euler game object property.",
-        "category": "animation",
-        "layout": "example",
-        "path": "animation/euler_rotation",
-        "scripts": "euler_rotation.script",
-        "tags": "animation",
-        "title": "Euler Rotation"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows particle effect modifiers. Modifiers are used to alter the path of emitted particles.",
-        "category": "particles",
-        "layout": "example",
-        "path": "particles/modifiers",
-        "scripts": "modifiers.script",
-        "tags": "particles",
-        "title": "Modifiers"
-    },
-    {
-        "author": "fysx",
-        "brief": "This example shows a fireworks effect made with particles.",
-        "category": "particles",
-        "layout": "example",
-        "path": "particles/fireworks",
-        "scripts": "fireworks.script",
-        "tags": "particles",
-        "title": "Particle effect example - fireworks"
-    },
-    {
-        "author": "aglitchman",
-        "brief": "This example shows a simple particle effect to imitate confetti.",
-        "category": "particles",
-        "layout": "example",
-        "path": "particles/confetti",
-        "scripts": "confetti.script",
-        "tags": "particles",
-        "title": "Particle effect example - confetti"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows a simple particle effect. The particlefx component has all the values at default, except the image and animation used.",
-        "category": "particles",
-        "layout": "example",
-        "path": "particles/particlefx",
-        "scripts": "particlefx.script",
-        "tags": "particles",
-        "title": "Particle effect"
-    },
-    {
-        "author": "Pawel Jarosz",
-        "brief": "This example shows a simple particle effect for imitating fire and smoke.",
-        "category": "particles",
-        "layout": "example",
-        "path": "particles/fire_and_smoke",
-        "scripts": "fire_and_smoke.script",
-        "tags": "particles",
-        "title": "Particle effect example - fire and smoke"
-    },
-    {
-        "author": "aglitchman",
-        "brief": "This example shows how to rotate a game object to look at the object in 3D space.",
-        "category": "movement",
-        "layout": "example",
-        "name": "Look rotation (3D)",
-        "path": "movement/look_rotation",
-        "scripts": "look_rotation.script",
-        "tags": "movement",
-        "title": "Look rotation"
     },
     {
         "author": "Defold Foundation",
@@ -331,16 +52,6 @@
     },
     {
         "author": "Defold Foundation",
-        "brief": "This example shows how to make a game object continuously follow the mouse.",
-        "category": "movement",
-        "layout": "example",
-        "path": "movement/follow",
-        "scripts": "follow.script",
-        "tags": "movement",
-        "title": "Follow input"
-    },
-    {
-        "author": "Defold Foundation",
         "brief": "This example shows how to move a game object with accelerating speed.",
         "category": "movement",
         "layout": "example",
@@ -348,6 +59,17 @@
         "scripts": "movement_speed.script",
         "tags": "movement",
         "title": "Movement speed"
+    },
+    {
+        "author": "aglitchman",
+        "brief": "This example shows how to rotate a game object to look at the object in 3D space.",
+        "category": "movement",
+        "layout": "example",
+        "name": "Look rotation (3D)",
+        "path": "movement/look_rotation",
+        "scripts": "look_rotation.script",
+        "tags": "movement",
+        "title": "Look rotation"
     },
     {
         "author": "Defold Foundation",
@@ -358,6 +80,16 @@
         "scripts": "move_forward.script",
         "tags": "movement",
         "title": "Move forward"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to make a game object continuously follow the mouse.",
+        "category": "movement",
+        "layout": "example",
+        "path": "movement/follow",
+        "scripts": "follow.script",
+        "tags": "movement",
+        "title": "Follow input"
     },
     {
         "author": "Defold Foundation",
@@ -381,143 +113,81 @@
     },
     {
         "author": "Defold Foundation",
-        "brief": "This example shows how to get and set a font resource on a gui component.",
-        "category": "gui",
+        "brief": "This example shows how to tween animate the position of a game object.",
+        "category": "animation",
         "layout": "example",
-        "path": "gui/get_set_font",
-        "scripts": "get_set_font.script",
-        "tags": "gui",
-        "title": "Get and set a gui font resource"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to create various types of progress indicators",
-        "category": "gui",
-        "layout": "example",
-        "path": "gui/progress",
-        "scripts": "progress.gui_script",
-        "tags": "gui",
-        "title": "GUI progress indicators"
-    },
-    {
-        "author": "FlexYourBrain",
-        "brief": "This example demonstrates slice-9 scaling gui box node.",
-        "category": "gui",
-        "layout": "example",
-        "path": "gui/slice9",
-        "scripts": "slice9.gui_script",
-        "tags": "gui",
-        "title": "Slice-9"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "A GUI box node with \"Clipping mode\" set to \"STENCIL\". This makes it mask its child node (which is called \"bunny\").",
-        "category": "gui",
-        "layout": "example",
-        "path": "gui/stencil",
-        "scripts": "stencil.gui_script",
-        "tags": "gui",
-        "title": "Stencil"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to get and set a material resource on a gui component.",
-        "category": "gui",
-        "layout": "example",
-        "path": "gui/get_set_material",
-        "scripts": "get_set_material.script",
-        "tags": "gui",
-        "title": "Get and set a gui material resource"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how change the color of GUI nodes at run-time",
-        "category": "gui",
-        "layout": "example",
-        "path": "gui/color",
-        "scripts": "color.gui_script",
-        "tags": "gui",
-        "title": "GUI color"
-    },
-    {
-        "author": "AGulev",
-        "brief": "A GUI box node with an image texture and a script that react when pointer over this node.",
-        "category": "gui",
-        "layout": "example",
-        "path": "gui/pointer_over",
-        "scripts": "pointer_over.gui_script",
-        "tags": "gui",
-        "title": "Pointer over"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to drag a GUI box node.",
-        "category": "gui",
-        "layout": "example",
-        "path": "gui/drag",
-        "scripts": "drag.gui_script",
-        "tags": "gui",
-        "title": "Drag"
-    },
-    {
-        "author": "AGulev",
-        "brief": "This example shows how to load and set a dynamic texture on a gui box node.",
-        "category": "gui",
-        "layout": "example",
-        "path": "gui/load_texture",
-        "scripts": "load_texture.gui_script",
-        "tags": "gui",
-        "title": "Load texture"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "A GUI box node with an image texture and a script to make it act as a button.",
-        "category": "gui",
-        "layout": "example",
-        "path": "gui/button",
-        "scripts": "button.gui_script",
-        "tags": "gui",
-        "title": "Button"
-    },
-    {
-        "author": "agulev",
-        "brief": "This example demonstrates the use of layouts.",
-        "category": "gui",
-        "layout": "example",
-        "path": "gui/layouts",
-        "scripts": "layouts.gui_script",
-        "tags": "gui",
-        "title": "Layouts"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to get and set a texture resource on a gui component.",
-        "category": "gui",
-        "layout": "example",
-        "path": "gui/get_set_texture",
-        "scripts": "get_set_texture.script",
-        "tags": "gui",
-        "title": "Get and set a gui texture resource"
+        "path": "animation/basic_tween",
+        "scripts": "spaceship.script",
+        "tags": "animation",
+        "thumbnail": "basic_tween.png",
+        "title": "Tween animation"
     },
     {
         "author": "Pawel Jarosz",
-        "brief": "This example demonstrates how to add different health bars.",
-        "category": "gui",
+        "brief": "This example shows how to set and animate the normalized cursor value.",
+        "category": "animation",
         "layout": "example",
-        "path": "gui/healthbar",
-        "scripts": "healthbar.script, healthbar.gui_script",
-        "tags": "gui",
-        "title": "Health Bar"
+        "path": "animation/cursor",
+        "scripts": "cursor.script",
+        "tags": "animation",
+        "title": "Cursor animation"
+    },
+    {
+        "author": "mikatuo",
+        "brief": "This example demonstrates different easing functions available in Defold.",
+        "category": "animation",
+        "layout": "example",
+        "path": "animation/easing",
+        "tags": "animation",
+        "title": "Easing functions (tweens)"
     },
     {
         "author": "Defold Foundation",
-        "brief": "This example shows how to view and play skeletal animations on a glTF model.",
-        "category": "model",
+        "brief": "This example shows how to chain two tween animations of the position of a game object. In addition, the scale and tint is animated separately.",
+        "category": "animation",
         "layout": "example",
-        "path": "model/character",
-        "scripts": "player.script",
-        "tags": "model",
-        "title": "Character"
+        "path": "animation/chained_tween",
+        "scripts": "spaceship.script",
+        "tags": "animation",
+        "title": "Tween animations chain"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows Spine bone animation that blends when animation switches.",
+        "category": "animation",
+        "layout": "example",
+        "path": "animation/spine",
+        "scripts": "spine.script",
+        "tags": "animation",
+        "title": "Spine animation"
+    },
+    {
+        "brief": "This example shows how to use a flipbook animation in a sprite",
+        "category": "animation",
+        "layout": "example",
+        "path": "animation/flipbook",
+        "tags": "animation",
+        "title": "Flipbook animation"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how a game object is rotated in discrete steps, matching the graphics of the progress spinner.",
+        "category": "animation",
+        "layout": "example",
+        "path": "animation/spinner",
+        "scripts": "spinner.script",
+        "tags": "animation",
+        "title": "Spinner animation"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to animate the rotation of a game object using the euler game object property.",
+        "category": "animation",
+        "layout": "example",
+        "path": "animation/euler_rotation",
+        "scripts": "euler_rotation.script",
+        "tags": "animation",
+        "title": "Euler Rotation"
     },
     {
         "author": "Defold Foundation",
@@ -541,71 +211,33 @@
     },
     {
         "author": "Defold Foundation",
-        "brief": "This example shows how tint a sprite at run-time",
-        "category": "sprite",
+        "brief": "This example shows how to view and play skeletal animations on a glTF model.",
+        "category": "model",
         "layout": "example",
-        "path": "sprite/tint",
-        "scripts": "tint.script",
-        "tags": "sprite",
-        "title": "Sprite tint"
+        "path": "model/character",
+        "scripts": "player.script",
+        "tags": "model",
+        "title": "Character"
     },
     {
         "author": "Defold Foundation",
-        "brief": "This example shows how to change the image of a sprite",
-        "category": "sprite",
+        "brief": "This example shows how to save and load data using sys.save() and sys.load()",
+        "category": "file",
         "layout": "example",
-        "path": "sprite/changeimage",
-        "scripts": "changeimage.script",
-        "tags": "sprite",
-        "title": "Change sprite image"
+        "path": "file/sys_save_load",
+        "scripts": "sys_save_load.script",
+        "tags": "file",
+        "title": "Save and Load"
     },
     {
-        "author": "FlexYourBrain",
-        "brief": "This example demonstrates flipping a sprite animation vertically and horizontally.",
-        "category": "sprite",
-        "layout": "example",
-        "path": "sprite/flip",
-        "scripts": "flip.script",
-        "tags": "sprite",
-        "title": "Flip"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This is a performance test for sprites",
-        "category": "sprite",
-        "layout": "example",
-        "path": "sprite/bunnymark",
-        "scripts": "bunnymark.script",
-        "tags": "sprite",
-        "title": "Bunnymark"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to sample from more than one image when drawing a sprite",
-        "category": "sprite",
-        "layout": "example",
-        "path": "sprite/samplers",
-        "scripts": "multi_sample.script, multi_sample_sprite.fp",
-        "tags": "sprite",
-        "title": "Multiple Sprite Samplers"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to get the size of a sprite at run-time",
-        "category": "sprite",
-        "layout": "example",
-        "path": "sprite/size",
-        "scripts": "size.script",
-        "tags": "sprite",
-        "title": "Sprite size"
-    },
-    {
-        "brief": "This example shows a simple setup with dynamic physics objects.",
+        "author": "Pawel Jarosz",
+        "brief": "This example shows a simple setup with a dynamic body physics object and two dynamic wheel physics object joined together with a joint of type \"hinge\". The hinge joint can simulate an axle or a pin on which other object is rotating in respect to the base. The example shows how to create, destroy and change properties of the joints.",
         "category": "physics",
         "layout": "example",
-        "path": "physics/dynamic",
+        "path": "physics/hinge_joint",
+        "scripts": "hinge_joint.script",
         "tags": "physics",
-        "title": "Dynamic physics"
+        "title": "Hinge joint physics"
     },
     {
         "author": "Defold Foundation",
@@ -639,16 +271,6 @@
     },
     {
         "author": "Defold Foundation",
-        "brief": "This example shows a simple setup with a kinematic physics objects. The difference between dynamic objects, simulated by the physics engine, and kinematic objects, that are user controlled, is clearly seen here.",
-        "category": "physics",
-        "layout": "example",
-        "path": "physics/kinematic",
-        "scripts": "kinematic.script",
-        "tags": "physics",
-        "title": "Kinematic physics"
-    },
-    {
-        "author": "Defold Foundation",
         "brief": "This example shows how to create a knockback effect when hit.",
         "category": "physics",
         "layout": "example",
@@ -658,24 +280,153 @@
         "title": "Knockback"
     },
     {
-        "author": "Pawel Jarosz",
-        "brief": "This example shows a simple setup with a dynamic body physics object and two dynamic wheel physics object joined together with a joint of type \"hinge\". The hinge joint can simulate an axle or a pin on which other object is rotating in respect to the base. The example shows how to create, destroy and change properties of the joints.",
+        "author": "Defold Foundation",
+        "brief": "This example shows a simple setup with a kinematic physics objects. The difference between dynamic objects, simulated by the physics engine, and kinematic objects, that are user controlled, is clearly seen here.",
         "category": "physics",
         "layout": "example",
-        "path": "physics/hinge_joint",
-        "scripts": "hinge_joint.script",
+        "path": "physics/kinematic",
+        "scripts": "kinematic.script",
         "tags": "physics",
-        "title": "Hinge joint physics"
+        "title": "Kinematic physics"
+    },
+    {
+        "brief": "This example shows a simple setup with dynamic physics objects.",
+        "category": "physics",
+        "layout": "example",
+        "path": "physics/dynamic",
+        "tags": "physics",
+        "title": "Dynamic physics"
     },
     {
         "author": "Defold Foundation",
-        "brief": "This example shows how to replace an image in an atlas",
-        "category": "resource",
+        "brief": "This example shows how to put sprites in front and behind of eachother",
+        "category": "basics",
         "layout": "example",
-        "path": "resource/modify_atlas",
-        "scripts": "modify_atlas.script",
-        "tags": "resource",
-        "title": "Modify atlas"
+        "path": "basics/z_order",
+        "scripts": "z_order.script",
+        "tags": "basics",
+        "title": "Z-order"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to child a game object to a parent.",
+        "category": "basics",
+        "layout": "example",
+        "path": "basics/parent_child",
+        "scripts": "parent.script,child.script",
+        "tags": "basics",
+        "title": "Parent/child"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to communicate between two script components in two separate game objects.",
+        "category": "basics",
+        "layout": "example",
+        "path": "basics/message_passing",
+        "scripts": "spaceship1.script,spaceship2.script",
+        "tags": "basics",
+        "title": "Message passing"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows the on-screen profiler. It displays useful runtime information.",
+        "category": "debug",
+        "layout": "example",
+        "path": "debug/profile",
+        "scripts": "profile.script",
+        "tags": "debug",
+        "title": "Visual profiler"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example allows you to toggle physics debug visualization as well as changing the time step so the simulation runs at one tenth of the speed.",
+        "category": "debug",
+        "layout": "example",
+        "path": "debug/physics",
+        "scripts": "physics.script",
+        "tags": "debug",
+        "title": "Physics debug"
+    },
+    {
+        "author": "aglitchman",
+        "brief": "This example shows a simple particle effect to imitate confetti.",
+        "category": "particles",
+        "layout": "example",
+        "path": "particles/confetti",
+        "scripts": "confetti.script",
+        "tags": "particles",
+        "title": "Particle effect example - confetti"
+    },
+    {
+        "author": "fysx",
+        "brief": "This example shows a fireworks effect made with particles.",
+        "category": "particles",
+        "layout": "example",
+        "path": "particles/fireworks",
+        "scripts": "fireworks.script",
+        "tags": "particles",
+        "title": "Particle effect example - fireworks"
+    },
+    {
+        "author": "Pawel Jarosz",
+        "brief": "This example shows a simple particle effect for imitating fire and smoke.",
+        "category": "particles",
+        "layout": "example",
+        "path": "particles/fire_and_smoke",
+        "scripts": "fire_and_smoke.script",
+        "tags": "particles",
+        "title": "Particle effect example - fire and smoke"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows particle effect modifiers. Modifiers are used to alter the path of emitted particles.",
+        "category": "particles",
+        "layout": "example",
+        "path": "particles/modifiers",
+        "scripts": "modifiers.script",
+        "tags": "particles",
+        "title": "Modifiers"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows a simple particle effect. The particlefx component has all the values at default, except the image and animation used.",
+        "category": "particles",
+        "layout": "example",
+        "path": "particles/particlefx",
+        "scripts": "particlefx.script",
+        "tags": "particles",
+        "title": "Particle effect"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to use a camera component and have it follow a game object. Click to toggle between following the game object and staying stationary.",
+        "category": "render",
+        "layout": "example",
+        "path": "render/camera",
+        "scripts": "bee.script, camera.script",
+        "tags": "render",
+        "title": "Camera"
+    },
+    {
+        "author": "aglitchman",
+        "brief": "This example demonstrates how to create script to control a 3D camera with the mouse. Scroll wheel is used to zoom in and out.",
+        "category": "render",
+        "layout": "example",
+        "name": "Orbit Camera (3D)",
+        "path": "render/orbit_camera",
+        "scripts": "orbit_camera.script",
+        "tags": "render",
+        "title": "Orbit Camera"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to convert from screen to world cooridnates while using a camera.",
+        "category": "render",
+        "layout": "example",
+        "path": "render/screen_to_world",
+        "scripts": "bee.script",
+        "tags": "render",
+        "title": "Screen to World"
     },
     {
         "author": "Defold Foundation",
@@ -689,13 +440,313 @@
     },
     {
         "author": "Defold Foundation",
-        "brief": "This example shows how to play a piece of music, stored as an .OGG file, with a sound component. The sound component is set to \"looping\" causing the music to never, ever stop.",
+        "brief": "This example shows how to replace an image in an atlas",
+        "category": "resource",
+        "layout": "example",
+        "path": "resource/modify_atlas",
+        "scripts": "modify_atlas.script",
+        "tags": "resource",
+        "title": "Modify atlas"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "A very simple 8 ways movement setup with a single game object and a script that listens to input and updates the game object position accordingly.",
+        "category": "input",
+        "layout": "example",
+        "path": "input/move",
+        "scripts": "move.script",
+        "tags": "input",
+        "title": "8 ways movement"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "Shows how to read mouse/touch movement and mouse/touch button state.",
+        "category": "input",
+        "layout": "example",
+        "path": "input/mouse_and_touch",
+        "scripts": "mouse_and_touch.script",
+        "tags": "input",
+        "title": "Mouse and touch events"
+    },
+    {
+        "author": "AGulev",
+        "brief": "Listens to input trigger \"touch\" and count mouse down duration in update method.",
+        "category": "input",
+        "layout": "example",
+        "path": "input/down_duration",
+        "scripts": "down_duration.script",
+        "tags": "input",
+        "title": "Down duration"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "Listens to text input trigger \"type\" and modifies the game object label with the alien's speech according to input. A \"backspace\" key trigger has also been added.",
+        "category": "input",
+        "layout": "example",
+        "path": "input/text",
+        "scripts": "text.script",
+        "tags": "input",
+        "title": "Text input"
+    },
+    {
+        "author": "FlexYourBrain",
+        "brief": "This example demonstrates flipping a sprite animation vertically and horizontally.",
+        "category": "sprite",
+        "layout": "example",
+        "path": "sprite/flip",
+        "scripts": "flip.script",
+        "tags": "sprite",
+        "title": "Flip"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to get the size of a sprite at run-time",
+        "category": "sprite",
+        "layout": "example",
+        "path": "sprite/size",
+        "scripts": "size.script",
+        "tags": "sprite",
+        "title": "Sprite size"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how tint a sprite at run-time",
+        "category": "sprite",
+        "layout": "example",
+        "path": "sprite/tint",
+        "scripts": "tint.script",
+        "tags": "sprite",
+        "title": "Sprite tint"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This is a performance test for sprites",
+        "category": "sprite",
+        "layout": "example",
+        "path": "sprite/bunnymark",
+        "scripts": "bunnymark.script",
+        "tags": "sprite",
+        "title": "Bunnymark"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to change the image of a sprite",
+        "category": "sprite",
+        "layout": "example",
+        "path": "sprite/changeimage",
+        "scripts": "changeimage.script",
+        "tags": "sprite",
+        "title": "Change sprite image"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to sample from more than one image when drawing a sprite",
+        "category": "sprite",
+        "layout": "example",
+        "path": "sprite/samplers",
+        "scripts": "multi_sample.script, multi_sample_sprite.fp",
+        "tags": "sprite",
+        "title": "Multiple Sprite Samplers"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to use collection proxies to load and unload collections.",
+        "category": "collection",
+        "layout": "example",
+        "path": "collection/proxy",
+        "scripts": "controller.script, menu.gui_script, level.script",
+        "tags": "collection",
+        "title": "Proxy"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to use collection proxies to show a splash screen while loading a game menu.",
+        "category": "collection",
+        "layout": "example",
+        "path": "collection/splash",
+        "scripts": "controller.script",
+        "tags": "collection",
+        "title": "Splash"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to speed up or slow down animations in a collection proxy by changing the time step of the collection proxy.",
+        "category": "collection",
+        "layout": "example",
+        "path": "collection/timestep",
+        "scripts": "controller.script, game.script",
+        "tags": "collection",
+        "title": "Time-step"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to dynamically spawn game objects with a factory component.",
+        "category": "factory",
+        "layout": "example",
+        "path": "factory/basic",
+        "scripts": "bunny.script,debris.script",
+        "tags": "factory",
+        "title": "Spawn game object"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to dynamically spawn bullet game objects using a factory component.",
+        "category": "factory",
+        "layout": "example",
+        "path": "factory/bullets",
+        "scripts": "player.script",
+        "tags": "factory",
+        "title": "Shoot bullets"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to change the prototype game object used by a factory component.",
+        "category": "factory",
+        "layout": "example",
+        "path": "factory/dynamic",
+        "scripts": "dynamic.script",
+        "tags": "factory",
+        "title": "Dynamic factories"
+    },
+    {
+        "author": "FlexYourBrain",
+        "brief": "This example demonstrates slice-9 scaling gui box node.",
+        "category": "gui",
+        "layout": "example",
+        "path": "gui/slice9",
+        "scripts": "slice9.gui_script",
+        "tags": "gui",
+        "title": "Slice-9"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to create various types of progress indicators",
+        "category": "gui",
+        "layout": "example",
+        "path": "gui/progress",
+        "scripts": "progress.gui_script",
+        "tags": "gui",
+        "title": "GUI progress indicators"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to get and set a font resource on a gui component.",
+        "category": "gui",
+        "layout": "example",
+        "path": "gui/get_set_font",
+        "scripts": "get_set_font.script",
+        "tags": "gui",
+        "title": "Get and set a gui font resource"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "A GUI box node with an image texture and a script to make it act as a button.",
+        "category": "gui",
+        "layout": "example",
+        "path": "gui/button",
+        "scripts": "button.gui_script",
+        "tags": "gui",
+        "title": "Button"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to get and set a texture resource on a gui component.",
+        "category": "gui",
+        "layout": "example",
+        "path": "gui/get_set_texture",
+        "scripts": "get_set_texture.script",
+        "tags": "gui",
+        "title": "Get and set a gui texture resource"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "A GUI box node with \"Clipping mode\" set to \"STENCIL\". This makes it mask its child node (which is called \"bunny\").",
+        "category": "gui",
+        "layout": "example",
+        "path": "gui/stencil",
+        "scripts": "stencil.gui_script",
+        "tags": "gui",
+        "title": "Stencil"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to drag a GUI box node.",
+        "category": "gui",
+        "layout": "example",
+        "path": "gui/drag",
+        "scripts": "drag.gui_script",
+        "tags": "gui",
+        "title": "Drag"
+    },
+    {
+        "author": "agulev",
+        "brief": "This example demonstrates the use of layouts.",
+        "category": "gui",
+        "layout": "example",
+        "path": "gui/layouts",
+        "scripts": "layouts.gui_script",
+        "tags": "gui",
+        "title": "Layouts"
+    },
+    {
+        "author": "AGulev",
+        "brief": "This example shows how to load and set a dynamic texture on a gui box node.",
+        "category": "gui",
+        "layout": "example",
+        "path": "gui/load_texture",
+        "scripts": "load_texture.gui_script",
+        "tags": "gui",
+        "title": "Load texture"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how to get and set a material resource on a gui component.",
+        "category": "gui",
+        "layout": "example",
+        "path": "gui/get_set_material",
+        "scripts": "get_set_material.script",
+        "tags": "gui",
+        "title": "Get and set a gui material resource"
+    },
+    {
+        "author": "Defold Foundation",
+        "brief": "This example shows how change the color of GUI nodes at run-time",
+        "category": "gui",
+        "layout": "example",
+        "path": "gui/color",
+        "scripts": "color.gui_script",
+        "tags": "gui",
+        "title": "GUI color"
+    },
+    {
+        "author": "Pawel Jarosz",
+        "brief": "This example demonstrates how to add different health bars.",
+        "category": "gui",
+        "layout": "example",
+        "path": "gui/healthbar",
+        "scripts": "healthbar.script, healthbar.gui_script",
+        "tags": "gui",
+        "title": "Health Bar"
+    },
+    {
+        "author": "AGulev",
+        "brief": "A GUI box node with an image texture and a script that react when pointer over this node.",
+        "category": "gui",
+        "layout": "example",
+        "path": "gui/pointer_over",
+        "scripts": "pointer_over.gui_script",
+        "tags": "gui",
+        "title": "Pointer over"
+    },
+    {
+        "author": "AGulev",
+        "brief": "This example shows how to make Fade-In and fade Fade-Out music.",
         "category": "sound",
         "layout": "example",
-        "path": "sound/music",
-        "scripts": "music.script",
+        "path": "sound/fade_in_out",
+        "scripts": "fade_in_out.script",
         "tags": "sound",
-        "title": "Music"
+        "title": "Fade In-Out"
     },
     {
         "author": "FlexYourBrain",
@@ -708,14 +759,14 @@
         "title": "Panning"
     },
     {
-        "author": "AGulev",
-        "brief": "This example shows how to make Fade-In and fade Fade-Out music.",
+        "author": "Defold Foundation",
+        "brief": "This example shows how to play a piece of music, stored as an .OGG file, with a sound component. The sound component is set to \"looping\" causing the music to never, ever stop.",
         "category": "sound",
         "layout": "example",
-        "path": "sound/fade_in_out",
-        "scripts": "fade_in_out.script",
+        "path": "sound/music",
+        "scripts": "music.script",
         "tags": "sound",
-        "title": "Fade In-Out"
+        "title": "Music"
     },
     {
         "author": "JCash",
@@ -737,6 +788,17 @@
         "scripts": "screenspace.script, screenspace.vp, screenspace.fp",
         "tags": "material",
         "title": "Screenspace"
+    },
+    {
+        "author": "aglitchman",
+        "brief": "This example demonstrates how to create and apply an custom non-lit material to a 3D model.",
+        "category": "material",
+        "layout": "example",
+        "name": "Unlit (3D)",
+        "path": "material/unlit",
+        "scripts": "unlit.vp, unlit.fp",
+        "tags": "material",
+        "title": "Unlit"
     },
     {
         "author": "Defold Foundation",
@@ -770,47 +832,6 @@
         "title": "Noise shader"
     },
     {
-        "author": "aglitchman",
-        "brief": "This example demonstrates how to create and apply an custom non-lit material to a 3D model.",
-        "category": "material",
-        "layout": "example",
-        "name": "Unlit (3D)",
-        "path": "material/unlit",
-        "scripts": "unlit.vp, unlit.fp",
-        "tags": "material",
-        "title": "Unlit"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to dynamically spawn bullet game objects using a factory component.",
-        "category": "factory",
-        "layout": "example",
-        "path": "factory/bullets",
-        "scripts": "player.script",
-        "tags": "factory",
-        "title": "Shoot bullets"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to change the prototype game object used by a factory component.",
-        "category": "factory",
-        "layout": "example",
-        "path": "factory/dynamic",
-        "scripts": "dynamic.script",
-        "tags": "factory",
-        "title": "Dynamic factories"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows how to dynamically spawn game objects with a factory component.",
-        "category": "factory",
-        "layout": "example",
-        "path": "factory/basic",
-        "scripts": "bunny.script,debris.script",
-        "tags": "factory",
-        "title": "Spawn game object"
-    },
-    {
         "author": "Defold Foundation",
         "brief": "This example shows how to detect collisions on tilemaps",
         "category": "tilemap",
@@ -829,25 +850,5 @@
         "scripts": "get_set_tile.script",
         "tags": "tilemap",
         "title": "Get and set tiles"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example shows the on-screen profiler. It displays useful runtime information.",
-        "category": "debug",
-        "layout": "example",
-        "path": "debug/profile",
-        "scripts": "profile.script",
-        "tags": "debug",
-        "title": "Visual profiler"
-    },
-    {
-        "author": "Defold Foundation",
-        "brief": "This example allows you to toggle physics debug visualization as well as changing the time step so the simulation runs at one tenth of the speed.",
-        "category": "debug",
-        "layout": "example",
-        "path": "debug/physics",
-        "scripts": "physics.script",
-        "tags": "debug",
-        "title": "Physics debug"
     }
 ]
