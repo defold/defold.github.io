@@ -753,10 +753,6 @@ def process_examples(download = False):
                     shutil.copytree(bundle_dir, example_dst_dir)
                     os.remove(os.path.join(example_dst_dir, "index.html"))
 
-                print("...creating example.zip")
-                example_zip = os.path.join(example_dst_dir, "example")
-                shutil.make_archive(example_zip, 'zip', example_src_dir)
-
                 print("...parsing example.md")
                 md_file = os.path.join(example_src_dir, "example.md")
                 replace_in_file(md_file, "tags:", "category: %s\ntags:" % category, flags=re.DOTALL)
