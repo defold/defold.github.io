@@ -732,8 +732,9 @@ def process_examples(download = False):
                 if os.path.isfile(example_src_dir):
                     continue
 
+                print("..processing %s" % example)
                 if rebuild:
-                    print("..building %s" % example)
+                    print("...building %s" % example)
                     bob_out = os.path.join(example_src_dir, bob_jar)
                     shutil.copyfile(bob_jar, bob_out)
                     game_project = os.path.join(example_src_dir, "game.project")
@@ -741,7 +742,7 @@ def process_examples(download = False):
                     subprocess.call([ "java", "-jar", bob_out, "--archive", "--platform", "js-web", "--variant", "debug", "resolve", "build", "bundle" ], cwd=example_src_dir)
                     os.remove(bob_out)
 
-                    print("..copying %s" % example)
+                    print("...copying %s" % example)
                     index_file = find_file(os.path.join(example_src_dir, "build", "default"), "index.html")
                     print(index_file, os.path.dirname(index_file))
                     if not index_file:
@@ -751,6 +752,10 @@ def process_examples(download = False):
                     bundle_dir = os.path.dirname(index_file)
                     shutil.copytree(bundle_dir, example_dst_dir)
                     os.remove(os.path.join(example_dst_dir, "index.html"))
+
+                print("...creating example.zip")
+                example_zip = os.path.join(example_dst_dir, "example")
+                shutil.make_archive(example_zip, 'zip', example_src_dir)
 
                 print("...parsing example.md")
                 md_file = os.path.join(example_src_dir, "example.md")
