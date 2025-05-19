@@ -5,6 +5,7 @@ layout: example
 tags: mesh
 title: Mesh
 brief: This example shows how to create a basic mesh component in the shape of a triangle.
+author: Defold Foundation
 scripts: mesh.fp, mesh.vp
 ---
 

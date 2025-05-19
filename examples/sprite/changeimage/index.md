@@ -5,6 +5,7 @@ layout: example
 tags: sprite
 title: Change sprite image
 brief: This example shows how to change the image of a sprite
+author: Defold Foundation
 scripts: changeimage.script
 ---
 

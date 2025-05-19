@@ -5,6 +5,7 @@ layout: example
 tags: sprite
 title: Sprite tint
 brief: This example shows how tint a sprite at run-time
+author: Defold Foundation
 scripts: tint.script
 ---
 

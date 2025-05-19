@@ -5,6 +5,7 @@ layout: example
 tags: tilemap
 title: Tilemap collisions
 brief: This example shows how to detect collisions on tilemaps
+author: Defold Foundation
 scripts: collisions.script
 ---
 

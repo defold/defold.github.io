@@ -5,6 +5,7 @@ layout: example
 tags: timer
 title: Repeating timer example
 brief: This example shows how to create timer that repeats endlessly every second
+author: Pawel Jarosz
 scripts: repeating_timer.gui_script
 ---
 

@@ -5,6 +5,7 @@ layout: example
 tags: animation
 title: Easing functions (tweens)
 brief: This example demonstrates different easing functions available in Defold.
+author: mikatuo
 ---
 
 This example demonstrates different easing functions available in Defold.

@@ -5,6 +5,7 @@ layout: example
 tags: physics
 title: Knockback
 brief: This example shows how to create a knockback effect when hit.
+author: Defold Foundation
 scripts: enemy.script
 ---
 

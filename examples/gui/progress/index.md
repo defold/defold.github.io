@@ -5,6 +5,7 @@ layout: example
 tags: gui
 title: GUI progress indicators
 brief: This example shows how to create various types of progress indicators
+author: Defold Foundation
 scripts: progress.gui_script
 ---
 

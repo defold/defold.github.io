@@ -5,6 +5,7 @@ layout: example
 tags: material
 title: Sprite Vertex Color Attribute
 brief: This example shows how to set and animate a vertex attribute
+author: JCash
 scripts: vertexcolor.script, vertexcolor.vp, vertexcolor.fp
 ---
 
