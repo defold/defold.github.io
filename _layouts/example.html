@@ -80,9 +80,12 @@ layout: page
 				{% endfor %}
 			</div>
 			<div class="columns two">
+				<p>This example was created by {{ page.author }}.</p>
 				<p>
-					If you want to play with these examples, you can get the project on Github.
+					Download this example.
 				</p>
+				{% include primary_button.html text="DOWNLOAD" link="example.zip" %}
+				<p>&nbsp;</p>
 				<p>
 					Do you want to see more examples? Why not write a few yourself and submit a pull request? We love contributions.
 				</p>
