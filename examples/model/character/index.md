@@ -5,6 +5,7 @@ layout: example
 tags: model
 title: Character
 brief: This example shows how to view and play skeletal animations on a glTF model.
+author: Defold Foundation
 scripts: player.script
 ---
 

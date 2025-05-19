@@ -5,6 +5,7 @@ layout: example
 tags: sprite
 title: Bunnymark
 brief: This is a performance test for sprites
+author: Defold Foundation
 scripts: bunnymark.script
 ---
 

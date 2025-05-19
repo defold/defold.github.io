@@ -5,6 +5,7 @@ layout: example
 tags: resource
 title: Modify atlas
 brief: This example shows how to replace an image in an atlas
+author: Defold Foundation
 scripts: modify_atlas.script
 ---
 

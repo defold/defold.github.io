@@ -5,6 +5,7 @@ layout: example
 tags: factory
 title: Dynamic factories
 brief: This example shows how to change the prototype game object used by a factory component.
+author: Defold Foundation
 scripts: dynamic.script
 ---
 
