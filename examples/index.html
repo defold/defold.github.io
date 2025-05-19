@@ -25,8 +25,6 @@ nav: floating
 			<div class="columns full">
 				<h2 id="categories">Categories</h2>
 				<div class="grid-150" style="font-size: 0.9em; grid-gap: 0 1rem; ">
-				
-			
 					{% for category in all_categories %}
 						<a href="#{{ category }}">{{ category | capitalize }}</a>
 					{% endfor %}
@@ -41,7 +39,12 @@ nav: floating
 				<div class="grid-250">
 				{%- assign examples = site.data.examplesindex | where: "category", category -%}
 				{%- for example in examples -%}
-					{% include learn_card.html title=example.title description=example.brief link=example.path min-height="250px" %}
+					{%- if example.thumbnail -%}
+					{%- assign image = example.path | append: "/" | append: example.thumbnail -%}
+					{%- else -%}
+					{%- assign image = "" -%}
+					{%- endif -%}
+					{% include learn_card.html title=example.title description=example.brief link=example.path min-height="250px" image=image %}
 				{%- endfor -%}
 				</div>
 				<p>˄ <a href="#categories">Top</a></p>
