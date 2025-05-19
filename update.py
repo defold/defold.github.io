@@ -705,7 +705,7 @@ def process_examples(download = False):
         print("File {} does not exist".format(bob_jar))
         sys.exit(1)
 
-    rebuild = False
+    rebuild = True
 
     includes_dir = os.path.join("_includes", "examples")
     rmmkdir(includes_dir)
