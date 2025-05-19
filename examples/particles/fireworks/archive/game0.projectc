@@ -63,7 +63,7 @@ max_debug_vertices = 10000
 texture_profiles = /all.texture_profiles
 verify_graphics_calls = 1
 opengl_version_hint = 33
-opengl_core_profile_hint = true
+opengl_core_profile_hint = 1
 memory_size = 512
 
 [shader]
@@ -78,6 +78,10 @@ max_sound_instances = 256
 max_component_count = 32
 sample_frame_count = 0
 use_thread = 1
+stream_enabled = 0
+stream_chunk_size = 16384
+stream_preload_size = 16384
+stream_cache_size = 2097152
 
 [resource]
 http_cache = 0
@@ -87,7 +91,7 @@ max_resources = 1024
 repeat_delay = 0.5
 repeat_interval = 0.05
 gamepads = /builtins/input/default.gamepadsc
-game_binding = /input/game.input_bindingc
+game_binding = /builtins/input/all.input_bindingc
 use_accelerometer = 1
 
 [sprite]
@@ -177,7 +181,7 @@ transparent_graphics_context = 0
 [particle_fx]
 max_count = 64
 max_emitter_count = 1024
-max_particle_count = 1024
+max_particle_count = 8192
 
 [network]
 http_timeout = 0
