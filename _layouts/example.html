@@ -81,7 +81,7 @@ layout: page
 			</div>
 			<div class="columns two">
 				<p>This example was created by {{ page.author }}.</p>
-				{% assign zip_name = page.path | replace: "/" "_" | append: ".zip" %}
+				{% assign zip_name = page.path | replace: "/", "_" | append: ".zip" %}
 				{% assign zip_url = "https://www.github.com/defold/examples/releases/latest/" | append: zip_name %}
 
 				{% include primary_button.html text="DOWNLOAD" link=zip_url %}
