@@ -1,0 +1,3316 @@
+{
+    "elements": [
+        {
+            "description": "Cancel a cancellation token",
+            "examples": "",
+            "name": "shop.cancel",
+            "parameters": [
+                {
+                    "doc": "The cancellation token",
+                    "name": "token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Create a cancellation token",
+            "examples": "",
+            "name": "shop.cancellation_token",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "A cancellation token",
+                    "name": "table"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set a bearer token",
+            "examples": "",
+            "name": "shop.set_bearer_token",
+            "parameters": [
+                {
+                    "doc": "The bearer token",
+                    "name": "token",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set a username and password for basic authentication",
+            "examples": "",
+            "name": "shop.set_username_password",
+            "parameters": [
+                {
+                    "doc": "The username",
+                    "name": "username",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The password",
+                    "name": "password",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set merchant id and api key for use with 'basicMerchantAuth' authentication",
+            "examples": "",
+            "name": "shop.set_merchant_auth",
+            "parameters": [
+                {
+                    "doc": "The merchant id",
+                    "name": "merchant_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The API key",
+                    "name": "api_key",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set authorization when using 'AuthForCart' authentication",
+            "examples": "",
+            "name": "shop.set_auth_for_cart",
+            "parameters": [
+                {
+                    "doc": "Unique authorization id",
+                    "name": "authorization_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The user email",
+                    "name": "user",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Run code within a coroutine.",
+            "examples": "",
+            "name": "shop.sync",
+            "parameters": [
+                {
+                    "doc": "The function to run",
+                    "name": "fn",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get list of bundles",
+            "examples": "",
+            "name": "shop.get_bundle_list",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Limit for the number of elements on the page.",
+                    "name": "limit",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Number of the element from which the list is generated (the count starts from 0).",
+                    "name": "offset",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The list of additional fields. These fields will be in the response if you send them in your request.",
+                    "name": "additional_fields",
+                    "types": [
+                        "array"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get specified bundle",
+            "examples": "",
+            "name": "shop.get_bundle",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Bundle SKU.",
+                    "name": "sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get list of bundles by specified group",
+            "examples": "",
+            "name": "shop.get_bundle_list_in_group",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Group external ID.",
+                    "name": "external_id (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Limit for the number of elements on the page.",
+                    "name": "limit",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Number of the element from which the list is generated (the count starts from 0).",
+                    "name": "offset",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The list of additional fields. These fields will be in the response if you send them in your request.",
+                    "name": "additional_fields",
+                    "types": [
+                        "array"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get cart by cart ID",
+            "examples": "",
+            "name": "shop.get_cart_by_id",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Cart ID.",
+                    "name": "cart_id (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The item price currency displayed in the cart. Three-letter currency code per [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217). Check the documentation for detailed information about [currencies supported by Xsolla](https://developers.xsolla.com/doc/pay-station/references/supported-currencies/).",
+                    "name": "currency",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get current user&#x27;s cart",
+            "examples": "",
+            "name": "shop.get_user_cart",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "The item price currency displayed in the cart. Three-letter currency code per [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217). Check the documentation for detailed information about [currencies supported by Xsolla](https://developers.xsolla.com/doc/pay-station/references/supported-currencies/).",
+                    "name": "currency",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Delete all cart items by cart ID",
+            "examples": "",
+            "name": "shop.cart_clear_by_id",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Cart ID.",
+                    "name": "cart_id (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Delete all cart items from current cart",
+            "examples": "",
+            "name": "shop.cart_clear",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Fill cart with items",
+            "examples": "",
+            "name": "shop.cart_fill",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Fill specific cart with items",
+            "examples": "",
+            "name": "shop.cart_fill_by_id",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Cart ID.",
+                    "name": "cart_id (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Update cart item by cart ID",
+            "examples": "",
+            "name": "shop.put_item_by_cart_id",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Cart ID.",
+                    "name": "cart_id (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Item SKU.",
+                    "name": "item_sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Delete cart item by cart ID",
+            "examples": "",
+            "name": "shop.delete_item_by_cart_id",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Cart ID.",
+                    "name": "cart_id (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Item SKU.",
+                    "name": "item_sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Update cart item from current cart",
+            "examples": "",
+            "name": "shop.put_item",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Item SKU.",
+                    "name": "item_sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Delete cart item from current cart",
+            "examples": "",
+            "name": "shop.delete_item",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Item SKU.",
+                    "name": "item_sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Create order with all items from particular cart",
+            "examples": "",
+            "name": "shop.create_order_by_cart_id",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Cart ID.",
+                    "name": "cart_id (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Create order with all items from current cart",
+            "examples": "",
+            "name": "shop.create_order",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Create order with specified item",
+            "examples": "",
+            "name": "shop.create_order_with_item",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Item SKU.",
+                    "name": "item_sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Create order with free cart",
+            "examples": "",
+            "name": "shop.create_free_order",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Create order with particular free cart",
+            "examples": "",
+            "name": "shop.create_free_order_by_cart_id",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Cart ID.",
+                    "name": "cart_id (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Create order with specified free item",
+            "examples": "",
+            "name": "shop.create_free_order_with_item",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Item SKU.",
+                    "name": "item_sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get order",
+            "examples": "",
+            "name": "shop.get_order",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Order ID.",
+                    "name": "order_id (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get list of upsell items in project",
+            "examples": "",
+            "name": "shop.get_upsell_for_project_client",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get games list",
+            "examples": "",
+            "name": "shop.get_games_list",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Limit for the number of elements on the page.",
+                    "name": "limit",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Number of the element from which the list is generated (the count starts from 0).",
+                    "name": "offset",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The list of additional fields. These fields will be in the response if you send them in your request.",
+                    "name": "additional_fields",
+                    "types": [
+                        "array"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get games list by specified group",
+            "examples": "",
+            "name": "shop.get_games_group",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Group external ID.",
+                    "name": "external_id (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Limit for the number of elements on the page.",
+                    "name": "limit",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Number of the element from which the list is generated (the count starts from 0).",
+                    "name": "offset",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The list of additional fields. These fields will be in the response if you send them in your request.",
+                    "name": "additional_fields",
+                    "types": [
+                        "array"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get game for catalog",
+            "examples": "",
+            "name": "shop.get_game_by_sku",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Item SKU.",
+                    "name": "item_sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The list of additional fields. These fields will be in the response if you send them in your request.",
+                    "name": "additional_fields",
+                    "types": [
+                        "array"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get game key for catalog",
+            "examples": "",
+            "name": "shop.get_game_key_by_sku",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Item SKU.",
+                    "name": "item_sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The list of additional fields. These fields will be in the response if you send them in your request.",
+                    "name": "additional_fields",
+                    "types": [
+                        "array"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get game keys list by specified group",
+            "examples": "",
+            "name": "shop.get_game_keys_group",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Group external ID.",
+                    "name": "external_id (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Limit for the number of elements on the page.",
+                    "name": "limit",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Number of the element from which the list is generated (the count starts from 0).",
+                    "name": "offset",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The list of additional fields. These fields will be in the response if you send them in your request.",
+                    "name": "additional_fields",
+                    "types": [
+                        "array"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get DRM list",
+            "examples": "",
+            "name": "shop.get_drm_list",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get list of games owned by user",
+            "examples": "",
+            "name": "shop.get_user_games",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Limit for the number of elements on the page.",
+                    "name": "limit",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Number of the element from which the list is generated (the count starts from 0).",
+                    "name": "offset",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "What type of entitlements should be returned. If the parameter is set to 1, the entitlements received by the user in the sandbox mode only are returned. If the parameter isn&#x27;t passed or is set to 0, the entitlements received by the user in the live mode only are returned.",
+                    "name": "sandbox",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "The list of additional fields. These fields will be in the response if you send them in your request. Available fields `attributes`.",
+                    "name": "additional_fields",
+                    "types": [
+                        "array"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Redeem game code by client",
+            "examples": "",
+            "name": "shop.redeem_game_pin_code",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Redeem coupon code",
+            "examples": "",
+            "name": "shop.redeem_coupon",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get coupon rewards",
+            "examples": "",
+            "name": "shop.get_coupon_rewards_by_code",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "coupon_code (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Redeem promo code",
+            "examples": "",
+            "name": "shop.redeem_promo_code",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Remove promo code from cart",
+            "examples": "",
+            "name": "shop.remove_cart_promo_code",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get promo code rewards",
+            "examples": "",
+            "name": "shop.get_promo_code_rewards_by_code",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promocode_code (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Verify promotion code",
+            "examples": "",
+            "name": "shop.verify_promotion_code",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Unique case-sensitive code. Contains letters and numbers.",
+                    "name": "code (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get virtual items list",
+            "examples": "",
+            "name": "shop.get_virtual_items",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Limit for the number of elements on the page.",
+                    "name": "limit",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Number of the element from which the list is generated (the count starts from 0).",
+                    "name": "offset",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The list of additional fields. These fields will be in the response if you send them in your request.",
+                    "name": "additional_fields",
+                    "types": [
+                        "array"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get virtual item by SKU",
+            "examples": "",
+            "name": "shop.get_virtual_items_sku",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Item SKU.",
+                    "name": "item_sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get all virtual items list",
+            "examples": "",
+            "name": "shop.get_all_virtual_items",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get virtual currency list",
+            "examples": "",
+            "name": "shop.get_virtual_currency",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Limit for the number of elements on the page.",
+                    "name": "limit",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Number of the element from which the list is generated (the count starts from 0).",
+                    "name": "offset",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The list of additional fields. These fields will be in the response if you send them in your request.",
+                    "name": "additional_fields",
+                    "types": [
+                        "array"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get virtual currency by SKU",
+            "examples": "",
+            "name": "shop.get_virtual_currency_sku",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Virtual currency SKU.",
+                    "name": "virtual_currency_sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get virtual currency package list",
+            "examples": "",
+            "name": "shop.get_virtual_currency_package",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Limit for the number of elements on the page.",
+                    "name": "limit",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Number of the element from which the list is generated (the count starts from 0).",
+                    "name": "offset",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The list of additional fields. These fields will be in the response if you send them in your request.",
+                    "name": "additional_fields",
+                    "types": [
+                        "array"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get virtual currency package by SKU",
+            "examples": "",
+            "name": "shop.get_virtual_currency_package_sku",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Virtual currency package SKU.",
+                    "name": "virtual_currency_package_sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get items list by specified group",
+            "examples": "",
+            "name": "shop.get_virtual_items_group",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Group external ID.",
+                    "name": "external_id (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Limit for the number of elements on the page.",
+                    "name": "limit",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Number of the element from which the list is generated (the count starts from 0).",
+                    "name": "offset",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The list of additional fields. These fields will be in the response if you send them in your request.",
+                    "name": "additional_fields",
+                    "types": [
+                        "array"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get item group list",
+            "examples": "",
+            "name": "shop.get_item_groups",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Create order with specified item purchased by virtual currency",
+            "examples": "",
+            "name": "shop.create_order_with_item_for_virtual_currency",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Item SKU.",
+                    "name": "item_sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Virtual currency SKU.",
+                    "name": "virtual_currency_sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Publishing platform the user plays on%3A `xsolla` (default), `playstation_network`, `xbox_live`, `pc_standalone`, `nintendo_shop`, `google_play`, `app_store_ios`, `android_standalone`, `ios_standalone`, `android_other`, `ios_other`, `pc_other`.",
+                    "name": "platform",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get sellable items list",
+            "examples": "",
+            "name": "shop.get_sellable_items",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Limit for the number of elements on the page.",
+                    "name": "limit",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Number of the element from which the list is generated (the count starts from 0).",
+                    "name": "offset",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The list of additional fields. These fields will be in the response if you send them in your request.",
+                    "name": "additional_fields",
+                    "types": [
+                        "array"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get sellable item by ID",
+            "examples": "",
+            "name": "shop.get_sellable_item_by_id",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Item ID.",
+                    "name": "item_id (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get sellable item by SKU",
+            "examples": "",
+            "name": "shop.get_sellable_item_by_sku",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Item SKU.",
+                    "name": "sku (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get sellable items list by specified group",
+            "examples": "",
+            "name": "shop.get_sellable_items_group",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Group external ID.",
+                    "name": "external_id (REQUIRED)",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Limit for the number of elements on the page.",
+                    "name": "limit",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Number of the element from which the list is generated (the count starts from 0).",
+                    "name": "offset",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Response language. Two-letter lowercase language code per ISO 639-1.",
+                    "name": "locale",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The list of additional fields. These fields will be in the response if you send them in your request.",
+                    "name": "additional_fields",
+                    "types": [
+                        "array"
+                    ]
+                },
+                {
+                    "doc": "Two-letter uppercase country code per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Check the documentation for detailed information about [countries supported by Xsolla](https://developers.xsolla.com/doc/shop-builder/references/supported-countries/) and [the process of determining the country](https://developers.xsolla.com/doc/shop-builder/features/pricing-policy/#pricing_policy_country_determination).",
+                    "name": "country",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Unique case sensitive code. Contains letters and numbers.",
+                    "name": "promo_code",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Shows time-limited items that are not available to the user. The validity period of such items has not started or has already expired.",
+                    "name": "show_inactive_time_limited_items",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get current user&#x27;s reward chains",
+            "examples": "",
+            "name": "shop.get_reward_chains_list",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Limit for the number of elements on the page.",
+                    "name": "limit",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Number of the element from which the list is generated (the count starts from 0).",
+                    "name": "offset",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get current user&#x27;s value point balance",
+            "examples": "",
+            "name": "shop.get_user_reward_chain_balance",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Reward chain ID.",
+                    "name": "reward_chain_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Claim step reward",
+            "examples": "",
+            "name": "shop.claim_user_reward_chain_step_reward",
+            "parameters": [
+                {
+                    "doc": "Project ID. You can find this parameter in your [Publisher Account](https://publisher.xsolla.com/) next to the name of the project.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Reward chain ID.",
+                    "name": "reward_chain_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Reward chain step ID.",
+                    "name": "step_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get top 10 contributors to reward chain under clan",
+            "examples": "",
+            "name": "shop.get_user_clan_top_contributors",
+            "parameters": [
+                {
+                    "doc": "Project ID.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Reward chain ID.",
+                    "name": "reward_chain_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Update current user&#x27;s clan",
+            "examples": "",
+            "name": "shop.user_clan_update",
+            "parameters": [
+                {
+                    "doc": "Project ID.",
+                    "name": "project_id (REQUIRED)",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Optional callback function",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                },
+                {
+                    "doc": "Optional retry policy",
+                    "name": "retry_policy",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional cancellation token",
+                    "name": "cancellation_token",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "api": "extension-xsolla/shop_api",
+        "brief": "shop",
+        "description": "Functions to use the Xsolla Shop Builder API.",
+        "group": "EXTENSIONS",
+        "name": "extension-xsolla",
+        "namespace": "shop"
+    }
+}

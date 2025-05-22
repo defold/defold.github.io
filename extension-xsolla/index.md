@@ -13,7 +13,7 @@ This extension provides an integration with the Xsolla services for Defold. [Xso
 * [Shop Builder API](https://developers.xsolla.com/api/shop-builder/overview/)
 
 
-# Installation
+## Installation
 To use Xsolla services in your Defold project, add a version of the Xsolla integration to your `game.project` dependencies from the list of available [Releases](https://github.com/defold/extension-xsolla/releases). Find the version you want, copy the URL to ZIP archive of the release and add it to the project dependencies.
 
 ![](add-dependency.png)
@@ -21,11 +21,11 @@ To use Xsolla services in your Defold project, add a version of the Xsolla integ
 Select `Project->Fetch Libraries` once you have added the version to `game.project` to download the version and make it available in your project.
 
 
-# Usage
+## Usage
 
-## Shop Builder API
+### Shop Builder API
 
-### Authentication
+#### Authentication
 
 Most of the Shop Builder API functions require authentication and a valid user token before use. Xsolla provides [many options for user authentication](https://developers.xsolla.com/api/login/overview/#section/Authentication/Getting-a-user-token), ranging from basic username and password authentication to authentication via a social network or publishing platform such as Steam. Developers releasing games via Crazy Games can generate an Xsolla token using the [`crazygames.get_xsolla_user_token()` API function of the Crazy Games for Defold SDK](https://defold.com/extension-crazygames/crazygames_api/#crazygames.get_xsolla_user_token:callback).
 
@@ -38,7 +38,7 @@ shop.set_bearer_token(token)
 ```
 
 
-### Requests
+#### Requests
 
 The Shop Builder API uses a REST API where each endpoint is represented by a Lua function. Each function takes a number of arguments and optional callback function, retry policy and cancellation token. Example:
 
@@ -84,14 +84,11 @@ local function get_sellable_items()
   end)
 ```
 
-## Example
+### Example
 
 [Refer to the example project](https://github.com/defold/extension-xsolla/tree/master/example) to see a complete example of how the intergation works.
 
 
-## Source code
+### Source code
 
-The source code is available on [GitHub](https://github.com/defold/extension-xsolla)
-
-
-## API reference
+The source code is available on [GitHub](https://github.com/defold/extension-xsolla)[API Reference - shop](/extension-xsolla/shop_api)
