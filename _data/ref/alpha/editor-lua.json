@@ -4084,6 +4084,294 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "remove all tiles",
+            "description": "Remove all tiles",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "tilemap.tiles.clear",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "unbounded 2d grid of tiles",
+                    "is_optional": "False",
+                    "name": "tiles",
+                    "types": [
+                        "tiles"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "unbounded 2d grid of tiles",
+                    "name": "tiles",
+                    "types": [
+                        "tiles"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get full information from a tile at a particular coordinate",
+            "description": "Get full information from a tile at a particular coordinate",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "tilemap.tiles.get_info",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "unbounded 2d grid of tiles",
+                    "is_optional": "False",
+                    "name": "tiles",
+                    "types": [
+                        "tiles"
+                    ]
+                },
+                {
+                    "doc": "x coordinate of a tile",
+                    "is_optional": "False",
+                    "name": "x",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "y coordinate of a tile",
+                    "is_optional": "False",
+                    "name": "y",
+                    "types": [
+                        "integer"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "full tile information table with the following keys:<dl><dt><code>index <small>integer</small></code></dt><dd>1-indexed tile index of a tilemap's tilesource</dd><dt><code>h_flip <small>boolean</small></code></dt><dd>horizontal flip</dd><dt><code>v_flip <small>boolean</small></code></dt><dd>vertical flip</dd><dt><code>rotate_90 <small>boolean</small></code></dt><dd>whether the tile is rotated 90 degrees clockwise</dd></dl>",
+                    "name": "info",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get a tile index at a particular coordinate",
+            "description": "Get a tile index at a particular coordinate",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "tilemap.tiles.get_tile",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "unbounded 2d grid of tiles",
+                    "is_optional": "False",
+                    "name": "tiles",
+                    "types": [
+                        "tiles"
+                    ]
+                },
+                {
+                    "doc": "x coordinate of a tile",
+                    "is_optional": "False",
+                    "name": "x",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "y coordinate of a tile",
+                    "is_optional": "False",
+                    "name": "y",
+                    "types": [
+                        "integer"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "1-indexed tile index of a tilemap's tilesource",
+                    "name": "tile_index",
+                    "types": [
+                        "integer"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create an iterator over all tiles in a tiles data structure",
+            "description": "Create an iterator over all tiles in a tiles data structure\nWhen iterating using for loop, each iteration returns x, y and tile index of a tile in a tile map",
+            "error": "",
+            "examples": "Iterate over all tiles in a tile map:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">local</span><span class=\"w\"> </span><span class=\"n\">layers</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">editor</span><span class=\"p\">.</span><span class=\"k\">get</span><span class=\"p\">(</span><span class=\"ss\">&quot;/level.tilemap&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"ss\">&quot;layers&quot;</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"k\">for</span><span class=\"w\"> </span><span class=\"n\">i</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">#layers</span><span class=\"w\"> </span><span class=\"n\">do</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"k\">local</span><span class=\"w\"> </span><span class=\"n\">tiles</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">editor</span><span class=\"p\">.</span><span class=\"k\">get</span><span class=\"p\">(</span><span class=\"n\">layers</span><span class=\"o\">[</span><span class=\"n\">i</span><span class=\"o\">]</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"ss\">&quot;tiles&quot;</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"k\">for</span><span class=\"w\"> </span><span class=\"n\">x</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">y</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">i</span><span class=\"w\"> </span><span class=\"ow\">in</span><span class=\"w\"> </span><span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">tiles</span><span class=\"p\">.</span><span class=\"n\">iterator</span><span class=\"p\">(</span><span class=\"n\">tiles</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"n\">do</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">print</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">y</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">i</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"k\">end</span><span class=\"w\"></span>\n<span class=\"k\">end</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "tilemap.tiles.iterator",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "unbounded 2d grid of tiles",
+                    "is_optional": "False",
+                    "name": "tiles",
+                    "types": [
+                        "tiles"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "iterator",
+                    "name": "iter",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create a new unbounded 2d grid data structure for storing tilemap layer tiles",
+            "description": "Create a new unbounded 2d grid data structure for storing tilemap layer tiles",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "tilemap.tiles.new",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "unbounded 2d grid of tiles",
+                    "name": "tiles",
+                    "types": [
+                        "tiles"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "remove a tile at a particular coordinate",
+            "description": "Remove a tile at a particular coordinate",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "tilemap.tiles.remove",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "unbounded 2d grid of tiles",
+                    "is_optional": "False",
+                    "name": "tiles",
+                    "types": [
+                        "tiles"
+                    ]
+                },
+                {
+                    "doc": "x coordinate of a tile",
+                    "is_optional": "False",
+                    "name": "x",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "y coordinate of a tile",
+                    "is_optional": "False",
+                    "name": "y",
+                    "types": [
+                        "integer"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "unbounded 2d grid of tiles",
+                    "name": "tiles",
+                    "types": [
+                        "tiles"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set a tile at a particular coordinate",
+            "description": "Set a tile at a particular coordinate",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "tilemap.tiles.set",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "unbounded 2d grid of tiles",
+                    "is_optional": "False",
+                    "name": "tiles",
+                    "types": [
+                        "tiles"
+                    ]
+                },
+                {
+                    "doc": "x coordinate of a tile",
+                    "is_optional": "False",
+                    "name": "x",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "y coordinate of a tile",
+                    "is_optional": "False",
+                    "name": "y",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "Either 1-indexed tile index of a tilemap's tilesource or full tile information table with the following keys:<dl><dt><code>index <small>integer</small></code></dt><dd>1-indexed tile index of a tilemap's tilesource</dd><dt><code>h_flip <small>boolean</small></code></dt><dd>horizontal flip</dd><dt><code>v_flip <small>boolean</small></code></dt><dd>vertical flip</dd><dt><code>rotate_90 <small>boolean</small></code></dt><dd>whether the tile is rotated 90 degrees clockwise</dd></dl>",
+                    "is_optional": "False",
+                    "name": "tile_or_info",
+                    "types": [
+                        "integer",
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "unbounded 2d grid of tiles",
+                    "name": "tiles",
+                    "types": [
+                        "tiles"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "<code>\"deflated\"</code> compression method",
             "description": "<code>\"deflated\"</code> compression method",
             "error": "",
