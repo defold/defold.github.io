@@ -82,6 +82,7 @@ branch: {}
 ref: {}
 language: {}
 title: API reference ({})
+type: {}
 ---
 """
 REFDOC_MD_BODY = "{% include anchor_headings.html html=content %}"
@@ -663,24 +664,25 @@ def process_extension(extension_name, download = False):
             # append links to api reference to the end of the file
             append_to_file(index, "[API Reference - {}](/{}/{}_api)\n".format(api_name, extension_dir, api_name))
 
+            info["group"] = "EXTENSIONS"
+            info["description"] = api.get("desc", "")
+            info["namespace"] = api_name
+            info["language"] = "Lua"
+            info["name"] = extension_name
+            info["brief"] = api_name
+            info["type"] = "Extension"
+            info["api"] = os.path.join(extension_dir, api_name + "_api")
+            elements.extend(parse_script_api_members(api_name, api))
+
             # generate a dummy markdown page with some front matter for the api doc
             api_filename = os.path.join(extension_dir, api_name + "_api.html")
             with open(api_filename, "w") as f:
                 fm_branch = "stable"
-                fm_ref = extension_name + "_" + api_name
-                fm_language = "Lua"
-                fm_type = "extension"
-                fm_title = extension_name
-                f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_type, fm_title) + REFDOC_MD_BODY)
-
-            info["group"] = "EXTENSIONS"
-            info["description"] = api.get("desc", "")
-            info["namespace"] = api_name
-            info["name"] = extension_name
-            info["brief"] = api_name
-            info["api"] = os.path.join(extension_dir, api_name + "_api")
-
-            elements.extend(parse_script_api_members(api_name, api))
+                fm_ref = info["name"] + "_" + info["namespace"]
+                fm_language = info["language"]
+                fm_title = info["name"]
+                fm_type = info["type"]
+                f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type) + REFDOC_MD_BODY)
 
             # write the json data file
             extension_data_dir = os.path.join("_data", "extensions")
@@ -1130,9 +1132,12 @@ def process_refdoc(download = False):
                                 api["info"]["language"] = "Lua"
                                 # sys.exit(5)
 
+                        # set api type
+                        api["info"]["type"] = "Defold " + api["info"]["language"]
+
                         # create the key by which we index and collect APIs
                         namespace_key = namespace
-                        language = api["info"].get("language")
+                        language = api["info"]["language"]
                         if language == "C++":
                             namespace_key = namespace_key + "-cpp"
                         elif language == "C#":
@@ -1174,14 +1179,24 @@ def process_refdoc(download = False):
                 # example: ref/stable/go-lua.md, ref/stable/dmarray-cpp.md etc
                 dummy = os.path.join(REF_PAGE_DIR, json_out_name + ".md")
                 with open(dummy, "w") as f:
-                    f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, api["info"]["language"], api["info"]["name"]) + REFDOC_MD_BODY)
+                    fm_branch = branch
+                    fm_ref = json_out_name
+                    fm_language = api["info"]["language"]
+                    fm_title = api["info"]["name"]
+                    fm_type = api["info"]["type"]
+                    f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type) + REFDOC_MD_BODY)
 
                 # for backwards compatibility also generate one using only the namespace
                 # example: ref/stable/go.md, ref/stable/dmarray.md etc
                 json_out_name_fallback = api["info"]["namespace"]
                 dummy = os.path.join(REF_PAGE_DIR, json_out_name_fallback + ".md")
                 with open(os.path.join(REF_PAGE_DIR, json_out_name_fallback + ".md"), "w") as f:
-                    f.write(REFDOC_MD_FRONTMATTER.format(branch, json_out_name, api["info"]["language"], api["info"]["name"]) + REFDOC_MD_BODY)
+                    fm_branch = branch
+                    fm_ref = json_out_name
+                    fm_language = api["info"]["language"]
+                    fm_title = api["info"]["name"]
+                    fm_type = api["info"]["type"]
+                    f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type) + REFDOC_MD_BODY)
 
                 # build refdoc index
                 refindex.append({
@@ -1191,7 +1206,7 @@ def process_refdoc(download = False):
                     "url": "/ref/" + branch + "/" + json_out_name,
                     "branch": branch,
                     "language": api["info"]["language"],
-                    "type": api["info"]["language"],
+                    "type": api["info"]["type"],
                 })
 
         # add extensions
@@ -1201,10 +1216,11 @@ def process_refdoc(download = False):
             refindex.append({
                 "namespace": extension["info"]["namespace"],
                 "name": extension["info"]["name"],
+                "filename": extension["info"]["name"] + "_" + extension["info"]["namespace"],
                 "url": "/" + extension["info"]["api"],
                 "branch": branch,
-                "type": "extension",
-                "language": "lua"
+                "language": extension["info"]["language"],
+                "type": extension["info"]["type"],
             })
 
     # copy stable files to ref/ for backwards compatibility

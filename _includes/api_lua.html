@@ -7,6 +7,7 @@
 {%- assign enums = ref.elements | where: "type", "ENUM" -%}
 
 <h1>{{ ref.info.brief }}</h1>
+<p>{{ ref.info.description }}</p>
 <p>Version: {{ page.branch }}</p>
 
 {%- if functions.size > 0 -%}

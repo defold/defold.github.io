@@ -7,7 +7,7 @@ layout: base
 {%- assign branches = site.data.branchindex -%}
 {%- assign types = indices | map: "type" | uniq | sort -%}
 {% assign clean_ref = page.ref | remove: '.' %}
-{%- if page.type == "extension" -%}
+{%- if page.type == "Extension" -%}
 	{%- assign ref = site.data.extensions[clean_ref] -%}
 {%- else -%}
 	{%- assign ref = site.data.ref[page.branch][clean_ref] -%}

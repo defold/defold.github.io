@@ -1,5 +1,5 @@
-# DOWNLOAD=""
-DOWNLOAD="--download"
+DOWNLOAD=""
+# DOWNLOAD="--download"
 
 ./update.py --extension=extension-adinfo ${DOWNLOAD} extensions
 ./update.py --extension=extension-admob ${DOWNLOAD} extensions
