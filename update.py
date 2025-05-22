@@ -1188,15 +1188,16 @@ def process_refdoc(download = False):
 
                 # for backwards compatibility also generate one using only the namespace
                 # example: ref/stable/go.md, ref/stable/dmarray.md etc
-                json_out_name_fallback = api["info"]["namespace"]
-                dummy = os.path.join(REF_PAGE_DIR, json_out_name_fallback + ".md")
-                with open(os.path.join(REF_PAGE_DIR, json_out_name_fallback + ".md"), "w") as f:
-                    fm_branch = branch
-                    fm_ref = json_out_name
-                    fm_language = api["info"]["language"]
-                    fm_title = api["info"]["name"]
-                    fm_type = api["info"]["type"]
-                    f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type) + REFDOC_MD_BODY)
+                if branch == "stable":
+                    json_out_name_fallback = api["info"]["namespace"].lower()
+                    dummy = os.path.join(REF_PAGE_DIR, json_out_name_fallback + ".md")
+                    with open(os.path.join(REF_PAGE_DIR, json_out_name_fallback + ".md"), "w") as f:
+                        fm_branch = branch
+                        fm_ref = json_out_name
+                        fm_language = api["info"]["language"]
+                        fm_title = api["info"]["name"]
+                        fm_type = api["info"]["type"]
+                        f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type) + REFDOC_MD_BODY)
 
                 # build refdoc index
                 refindex.append({
