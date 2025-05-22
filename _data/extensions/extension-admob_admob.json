@@ -34,6 +34,29 @@
                         {
                             "doc": "A table holding the data",
                             "name": "message",
+                            "parameters": [
+                                {
+                                    "doc": "One of event types: `admob.EVENT_CLOSED`, `admob.EVENT_FAILED_TO_SHOW`, `admob.EVENT_OPENING`, `admob.EVENT_FAILED_TO_LOAD`, `admob.EVENT_LOADED`, `admob.EVENT_NOT_LOADED`, `admob.EVENT_EARNED_REWARD`, `admob.EVENT_COMPLETE`, `admob.EVENT_CLICKED`, `admob.EVENT_DESTROYED` `admob.EVENT_JSON_ERROR`",
+                                    "name": "event",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "The error code (if an error occurred or `nil` otherwise)",
+                                    "name": "code",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "The error message (if an error occurred or `nil` otherwise)",
+                                    "name": "message",
+                                    "types": [
+                                        "string"
+                                    ]
+                                }
+                            ],
                             "types": [
                                 "table"
                             ]

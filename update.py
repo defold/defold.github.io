@@ -596,7 +596,6 @@ def parse_script_api_members(api_name, api):
             element["name"] = api_name + "." + member_name
         elif member_type == "TABLE":
             if m.get("members"):
-                print("HAS MEMBERS")
                 elements.extend(parse_script_api_members(api_name + "." + member_name, m))
         else:
             element["name"] = m.get("name", "")
@@ -669,9 +668,10 @@ def process_extension(extension_name, download = False):
             with open(api_filename, "w") as f:
                 fm_branch = "stable"
                 fm_ref = extension_name + "_" + api_name
+                fm_language = "Lua"
                 fm_type = "extension"
                 fm_title = extension_name
-                f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_type, fm_title) + REFDOC_MD_BODY)
+                f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_type, fm_title) + REFDOC_MD_BODY)
 
             info["group"] = "EXTENSIONS"
             info["description"] = api.get("desc", "")

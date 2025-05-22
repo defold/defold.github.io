@@ -1,4 +1,7 @@
 ---
+layout: manual
+language: en
+github: https://github.com/defold/extension-webmonetization
 title: Defold 网页游戏盈利
 brief: 网页游戏盈利是用网页游戏获利的一种手段, 开发者获利的同时玩家获得更高级的游戏内容.
 ---
@@ -23,7 +26,7 @@ brief: 网页游戏盈利是用网页游戏获利的一种手段, 开发者获�
 
 玩家必须持有网页支付提供商提供账户以便向游戏开发者付款:
 
-[![Coil logo](images/web-monetization/coil_logo.svg)](https://coil.com)
+[![Coil logo](../images/web-monetization/coil_logo.svg)](https://coil.com)
 
 目前 Coil 是唯一的网页支付服务提供商, 以后会越来越多.
 
@@ -32,9 +35,9 @@ brief: 网页游戏盈利是用网页游戏获利的一种手段, 开发者获�
 
 开发者必须持有网页支付钱包以便接收付款. 已经有许多服务提供商提供网页钱包服务:
 
-[![Uphold logo](images/web-monetization/uphold_logo.svg)](https://www.uphold.com/signup)
+[![Uphold logo](../images/web-monetization/uphold_logo.svg)](https://www.uphold.com/signup)
 
-[![GateHub logo](images/web-monetization/gatehub_logo.svg)](https://gatehub.net)
+[![GateHub logo](../images/web-monetization/gatehub_logo.svg)](https://gatehub.net)
 
 
 ### 支付点
@@ -61,11 +64,11 @@ $ilp.uphold.com/QkG86UgXzKq8
 
 如果是新建项目强烈建议你使用 Defold 欢迎屏幕里的网页支付项目模板. 这个模板包含了 [网页支付原生扩展](https://github.com/defold/extension-webmonetization), 还能为你的网页游戏自动添加支付点:
 
-![Web Monetization template](images/web-monetization/web-monetization-template.png)
+![Web Monetization template](../images/web-monetization/web-monetization-template.png)
 
 下一步注册 [网页钱包账户](/manuals/web-monetization/#网页钱包账户) 然后在 **game.project** 文件的 Web Monetization 部分将支付点与钱包挂接:
 
-![Adding payment pointer to game.project](images/web-monetization/payment-pointer.png)
+![Adding payment pointer to game.project](../images/web-monetization/payment-pointer.png)
 
 
 ### 已有项目

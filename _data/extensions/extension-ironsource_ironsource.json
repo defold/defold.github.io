@@ -42,6 +42,15 @@
                         {
                             "doc": "A table holding the data. It always contains `event`, and also some other values depends on a message",
                             "name": "message",
+                            "parameters": [
+                                {
+                                    "doc": "One of event types: `ironsource.EVENT_AD_AVAILABLE`, `ironsource.EVENT_AD_UNAVAILABLE`, `ironsource.EVENT_AD_OPENED`, `ironsource.EVENT_AD_CLOSED`, `ironsource.EVENT_AD_REWARDED`, `ironsource.EVENT_AD_CLICKED`, `ironsource.EVENT_AD_SHOW_FAILED`, `ironsource.EVENT_AD_READY`, `ironsource.EVENT_AD_SHOW_SUCCEEDED`, `ironsource.EVENT_AD_LOAD_FAILED` `ironsource.EVENT_JSON_ERROR` `ironsource.EVENT_INIT_COMPLETE` `ironsource.EVENT_CONSENT_LOADED` `ironsource.EVENT_CONSENT_SHOWN` `ironsource.EVENT_CONSENT_LOAD_FAILED` `ironsource.EVENT_CONSENT_SHOW_FAILED` `ironsource.EVENT_CONSENT_ACCEPTED` `ironsource.EVENT_CONSENT_DISMISSED` `ironsource.EVENT_STATUS_AUTHORIZED` `ironsource.EVENT_STATUS_DENIED` `ironsource.EVENT_STATUS_NOT_DETERMINED` `ironsource.EVENT_STATUS_RESTRICTED`",
+                                    "name": "event",
+                                    "types": [
+                                        "number"
+                                    ]
+                                }
+                            ],
                             "types": [
                                 "table"
                             ]

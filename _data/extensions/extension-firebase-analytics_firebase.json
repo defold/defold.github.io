@@ -34,6 +34,22 @@
                         {
                             "doc": "A table holding the data",
                             "name": "message",
+                            "parameters": [
+                                {
+                                    "doc": "The error message (if an error occurred or `nil` otherwise)",
+                                    "name": "error",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "For message_id MSG_INSTANCE_ID or `nil` otherwise.",
+                                    "name": "instance_id",
+                                    "types": [
+                                        "string"
+                                    ]
+                                }
+                            ],
                             "types": [
                                 "table"
                             ]
