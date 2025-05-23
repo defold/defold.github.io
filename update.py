@@ -779,8 +779,9 @@ def process_examples(download = False):
                 fm["path"] = "%s/%s" % (category, example)
                 fm["layout"] = "example"
                 if "thumbnail" in fm:
-                    fm["opengraph_image"] = fm["path"] + "/" + fm["thumbnail"]
-                    fm["twitter_image"] = fm["path"] + "/" + fm["thumbnail"]
+                    image_path = "https://www.defold.com/examples/%s/%s" % (fm["path"], fm["thumbnail"])
+                    fm["opengraph_image"] = image_path
+                    fm["twitter_image"] = image_path
                 examplesindex.append(fm)
                 replace_frontmatter(md_file, fm)
 
