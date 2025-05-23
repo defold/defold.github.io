@@ -1,12 +1,14 @@
 ---
+author: Defold Foundation
+brief: This example shows how to move a game object.
 category: movement
-path: movement/simple_move
 layout: example
+path: movement/simple_move
+scripts: simple_move.script
 tags: movement
 title: Moving game object
-brief: This example shows how to move a game object.
-author: Defold Foundation
-scripts: simple_move.script
+
 ---
+
 
 ![simple move](simple_move.png)

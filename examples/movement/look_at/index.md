@@ -1,14 +1,16 @@
 ---
-name: Look at
+author: Defold Foundation
+brief: This example shows how to rotate a game object to look at the mouse cursor
 category: movement
-path: movement/look_at
 layout: example
+name: Look at
+path: movement/look_at
+scripts: look_at.script
 tags: movement
 title: Look at
-brief: This example shows how to rotate a game object to look at the mouse cursor
-author: Defold Foundation
-scripts: look_at.script
+
 ---
+
 
 This example shows how to rotate a game object to look at the mouse cursor. It reads the mouse position in `on_input` and uses the mathematical function `math.atan2(x, y)` to calculate the angle between the ray to the point to look at and the positive x-axis. This angle is used to set the rotation of the game object to always look at the mouse position. 
 

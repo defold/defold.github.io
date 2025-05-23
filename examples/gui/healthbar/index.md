@@ -1,13 +1,15 @@
 ---
+author: Pawel Jarosz
+brief: This example demonstrates how to add different health bars.
 category: gui
-path: gui/healthbar
 layout: example
+path: gui/healthbar
+scripts: healthbar.script, healthbar.gui_script
 tags: gui
 title: Health Bar
-brief: This example demonstrates how to add different health bars.
-author: Pawel Jarosz
-scripts: healthbar.script, healthbar.gui_script
+
 ---
+
 
 Overview : Example shows 3 pairs of nodes each forming a "health bar" with different pivots.
 

@@ -1,13 +1,15 @@
 ---
+author: Pawel Jarosz
+brief: This example shows a simple particle effect for imitating fire and smoke.
 category: particles
-path: particles/fire_and_smoke
 layout: example
+path: particles/fire_and_smoke
+scripts: fire_and_smoke.script
 tags: particles
 title: Particle effect example - fire and smoke
-brief: This example shows a simple particle effect for imitating fire and smoke.
-author: Pawel Jarosz
-scripts: fire_and_smoke.script
+
 ---
+
 
 The particlefx consists of two emitters: for fire and smoke. Each of them has tweaked properties, images and modifiers. All combined creates a fire and smoke effect.
 

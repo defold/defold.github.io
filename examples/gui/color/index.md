@@ -1,13 +1,15 @@
 ---
+author: Defold Foundation
+brief: This example shows how change the color of GUI nodes at run-time
 category: gui
-path: gui/color
 layout: example
+path: gui/color
+scripts: color.gui_script
 tags: gui
 title: GUI color
-brief: This example shows how change the color of GUI nodes at run-time
-author: Defold Foundation
-scripts: color.gui_script
+
 ---
+
 
 The example shows how to change the color of GUI nodes using `gui.set_color()` and `gui.animate()`.
 

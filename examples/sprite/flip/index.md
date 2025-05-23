@@ -1,13 +1,15 @@
 ---
+author: FlexYourBrain
+brief: This example demonstrates flipping a sprite animation vertically and horizontally.
 category: sprite
-path: sprite/flip
 layout: example
+path: sprite/flip
+scripts: flip.script
 tags: sprite
 title: Flip
-brief: This example demonstrates flipping a sprite animation vertically and horizontally.
-author: FlexYourBrain
-scripts: flip.script
+
 ---
+
 
 Overview :  [sprite.set_hflip](https://defold.com/ref/beta/sprite/#sprite.set_hflip:url-flip) & [sprite.set_vflip](https://defold.com/ref/beta/sprite/#sprite.set_vflip:url-flip) uses a boolean to set if a sprite animation should be flipped.
 

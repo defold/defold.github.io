@@ -1,14 +1,17 @@
 ---
-name: Orbit Camera (3D)
+author: aglitchman
+brief: This example demonstrates how to create script to control a 3D camera with
+  the mouse. Scroll wheel is used to zoom in and out.
 category: render
-path: render/orbit_camera
 layout: example
+name: Orbit Camera (3D)
+path: render/orbit_camera
+scripts: orbit_camera.script
 tags: render
 title: Orbit Camera
-brief: This example demonstrates how to create script to control a 3D camera with the mouse. Scroll wheel is used to zoom in and out.
-author: aglitchman
-scripts: orbit_camera.script
+
 ---
+
 
 In this example, we create a script to control a 3D camera using the mouse and mouse scroll wheel.
 

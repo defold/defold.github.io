@@ -1,13 +1,15 @@
 ---
+author: FlexYourBrain
+brief: This example demonstrates slice-9 scaling gui box node.
 category: gui
-path: gui/slice9
 layout: example
+path: gui/slice9
+scripts: slice9.gui_script
 tags: gui
 title: Slice-9
-brief: This example demonstrates slice-9 scaling gui box node.
-author: FlexYourBrain
-scripts: slice9.gui_script
+
 ---
+
 
 Overview : Using a small stylized image (90x91 pixels) we apply it to a gui node and set the slice-9 properties, we can then 
 adjust the size and retain the styling without streching and distortion. [:More on Slice-9 with Defold:](https://defold.com/manuals/gui-box/#slice-9-texturing)

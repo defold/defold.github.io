@@ -1,12 +1,14 @@
 ---
+author: Defold Foundation
+brief: This example shows how to make a game object continuously follow the mouse.
 category: movement
-path: movement/follow
 layout: example
+path: movement/follow
+scripts: follow.script
 tags: movement
 title: Follow input
-brief: This example shows how to make a game object continuously follow the mouse.
-author: Defold Foundation
-scripts: follow.script
+
 ---
+
 
 ![follow](follow.png)

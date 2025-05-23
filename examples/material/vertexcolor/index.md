@@ -1,13 +1,15 @@
 ---
+author: JCash
+brief: This example shows how to set and animate a vertex attribute
 category: material
-path: material/vertexcolor
 layout: example
+path: material/vertexcolor
+scripts: vertexcolor.script, vertexcolor.vp, vertexcolor.fp
 tags: material
 title: Sprite Vertex Color Attribute
-brief: This example shows how to set and animate a vertex attribute
-author: JCash
-scripts: vertexcolor.script, vertexcolor.vp, vertexcolor.fp
+
 ---
+
 
 The `vertexcolor.script` sets the vertex attribute "mycolor", which has been specified in the material.
 

@@ -1,13 +1,15 @@
 ---
+author: Defold Foundation
+brief: This example shows how to apply a basic shader to a full screen quad.
 category: material
-path: material/uvgradient
 layout: example
+path: material/uvgradient
+scripts: uvgradient.fp
 tags: material
 title: UV Gradient
-brief: This example shows how to apply a basic shader to a full screen quad.
-author: Defold Foundation
-scripts: uvgradient.fp
+
 ---
+
 
 This example contains a game object with a model component. The model component uses the `/builtins/assets/meshes/quad.dae` mesh, which is a rectangle 1 by 1 unit large. The game object is scaled to the dimensions of the screen so that the mesh covers the entire screen.
 

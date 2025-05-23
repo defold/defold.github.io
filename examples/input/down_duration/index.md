@@ -1,13 +1,15 @@
 ---
+author: AGulev
+brief: Listens to input trigger "touch" and count mouse down duration in update method.
 category: input
-path: input/down_duration
 layout: example
+path: input/down_duration
+scripts: down_duration.script
 tags: input
 title: Down duration
-brief: Listens to input trigger "touch" and count mouse down duration in update method.
-author: AGulev
-scripts: down_duration.script
+
 ---
+
 
 ![input bindings](input_binding.png)
 

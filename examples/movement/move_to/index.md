@@ -1,12 +1,15 @@
 ---
+author: Defold Foundation
+brief: This example shows how to make a game object move to the position the user
+  clicks.
 category: movement
-path: movement/move_to
 layout: example
+path: movement/move_to
+scripts: move_to.script
 tags: movement
 title: Move to target
-brief: This example shows how to make a game object move to the position the user clicks.
-author: Defold Foundation
-scripts: move_to.script
+
 ---
+
 
 ![move_to](move_to.png)

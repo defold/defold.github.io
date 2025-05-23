@@ -1,13 +1,16 @@
 ---
+author: Defold Foundation
+brief: This example shows how to use a noise function to generate clouds, smoke or
+  similar effect using a shader.
 category: material
-path: material/noise
 layout: example
+path: material/noise
+scripts: noise.script, noise.fp
 tags: material
 title: Noise shader
-brief: This example shows how to use a noise function to generate clouds, smoke or similar effect using a shader.
-author: Defold Foundation
-scripts: noise.script, noise.fp
+
 ---
+
 
 This example contains a game object with a model component. The model component uses the `/builtins/assets/meshes/quad.dae` mesh, which is a rectangle 1 by 1 unit large. The game object is scaled to the dimensions of the screen so that the mesh covers the entire screen.
 

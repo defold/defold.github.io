@@ -1,13 +1,15 @@
 ---
+author: Defold Foundation
+brief: This example shows how to use collection proxies to load and unload collections.
 category: collection
-path: collection/proxy
 layout: example
+path: collection/proxy
+scripts: controller.script, menu.gui_script, level.script
 tags: collection
 title: Proxy
-brief: This example shows how to use collection proxies to load and unload collections.
-author: Defold Foundation
-scripts: controller.script, menu.gui_script, level.script
+
 ---
+
 
 The setup consists of several collections and game objects.
 

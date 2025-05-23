@@ -1,13 +1,15 @@
 ---
+author: Defold Foundation
+brief: This example shows how to detect collisions on tilemaps
 category: tilemap
-path: tilemap/collisions
 layout: example
+path: tilemap/collisions
+scripts: collisions.script
 tags: tilemap
 title: Tilemap collisions
-brief: This example shows how to detect collisions on tilemaps
-author: Defold Foundation
-scripts: collisions.script
+
 ---
+
 
 This example uses a tilesource with two collision groups: "ground" and "danger". The tilesource uses the `tilesheet_complete.png` image for the tiles and the collision shapes (traced as outlines around the transparent pixels of each tile).
 
@@ -25,6 +27,3 @@ The tilemap is added to the example together with a collision object which uses 
 
 Click/tap on the screen to spawn game objects that will fall and interact with the tilemap.
 
----
-
-Tilemap and enemy graphics made by [Kenney](https://www.kenney.nl).

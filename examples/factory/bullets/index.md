@@ -1,13 +1,16 @@
 ---
+author: Defold Foundation
+brief: This example shows how to dynamically spawn bullet game objects using a factory
+  component.
 category: factory
-path: factory/bullets
 layout: example
+path: factory/bullets
+scripts: player.script
 tags: factory
 title: Shoot bullets
-brief: This example shows how to dynamically spawn bullet game objects using a factory component.
-author: Defold Foundation
-scripts: player.script
+
 ---
+
 
 This example shows how to dynamically spawn bullet game objects using a factory component and how to also move and delete the bullets. The setup consists of two game objects; one for the player and one for the bullet that is spawned using a factory component.
 

@@ -1,13 +1,16 @@
 ---
+author: Defold Foundation
+brief: This example shows how a physics trigger is used to trigger an event. In this
+  case the bunny sprite is disabled and enabled.
 category: physics
-path: physics/trigger
 layout: example
+path: physics/trigger
+scripts: bunny.script
 tags: physics
 title: Trigger
-brief: This example shows how a physics trigger is used to trigger an event. In this case the bunny sprite is disabled and enabled.
-author: Defold Foundation
-scripts: bunny.script
+
 ---
+
 
 ![trigger](trigger.png)
 

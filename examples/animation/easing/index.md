@@ -1,12 +1,14 @@
 ---
+author: mikatuo
+brief: This example demonstrates different easing functions available in Defold.
 category: animation
-path: animation/easing
 layout: example
+path: animation/easing
 tags: animation
 title: Easing functions (tweens)
-brief: This example demonstrates different easing functions available in Defold.
-author: mikatuo
+
 ---
+
 
 This example demonstrates different easing functions available in Defold.
 

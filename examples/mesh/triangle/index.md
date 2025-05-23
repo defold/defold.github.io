@@ -1,13 +1,15 @@
 ---
+author: Defold Foundation
+brief: This example shows how to create a basic mesh component in the shape of a triangle.
 category: mesh
-path: mesh/triangle
 layout: example
+path: mesh/triangle
+scripts: mesh.fp, mesh.vp
 tags: mesh
 title: Mesh
-brief: This example shows how to create a basic mesh component in the shape of a triangle.
-author: Defold Foundation
-scripts: mesh.fp, mesh.vp
+
 ---
+
 
 This example contains a game object with a mesh component in the shape of a triangle. The triangle is defined in `triangle.buffer` as the three points of the triangle in the `position` stream. The triangle also defines the colors at each point. The colors get mixed automatically when the triangle is drawn by the shader.
 

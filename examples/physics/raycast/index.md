@@ -1,13 +1,16 @@
 ---
+author: Defold Foundation
+brief: This example shows how to use physics raycasts to detect collisions along a
+  straight line from a start point to an end point.
 category: physics
-path: physics/raycast
 layout: example
+path: physics/raycast
+scripts: raycast.script
 tags: physics
 title: Raycast
-brief: This example shows how to use physics raycasts to detect collisions along a straight line from a start point to an end point.
-author: Defold Foundation
-scripts: raycast.script
+
 ---
+
 
 ![raycast](raycast.png)
 

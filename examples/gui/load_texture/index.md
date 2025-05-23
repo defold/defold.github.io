@@ -1,13 +1,15 @@
 ---
+author: AGulev
+brief: This example shows how to load and set a dynamic texture on a gui box node.
 category: gui
-path: gui/load_texture
 layout: example
+path: gui/load_texture
+scripts: load_texture.gui_script
 tags: gui
 title: Load texture
-brief: This example shows how to load and set a dynamic texture on a gui box node.
-author: AGulev
-scripts: load_texture.gui_script
+
 ---
+
 
 ![button](load_texture.png)
 

@@ -1,13 +1,15 @@
 ---
+author: aglitchman
+brief: This example shows a simple particle effect to imitate confetti.
 category: particles
-path: particles/confetti
 layout: example
+path: particles/confetti
+scripts: confetti.script
 tags: particles
 title: Particle effect example - confetti
-brief: This example shows a simple particle effect to imitate confetti.
-author: aglitchman
-scripts: confetti.script
+
 ---
+
 
 In this example we create a confetti fireworks effect. It is usually used on final screens to congratulate the player on successful completion of a level or game.
 

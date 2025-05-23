@@ -1,10 +1,12 @@
 ---
+author: Defold Foundation
+brief: This example shows how to move a game object with accelerating speed.
 category: movement
-path: movement/movement_speed
 layout: example
+path: movement/movement_speed
+scripts: movement_speed.script
 tags: movement
 title: Movement speed
-brief: This example shows how to move a game object with accelerating speed.
-author: Defold Foundation
-scripts: movement_speed.script
+
 ---
+

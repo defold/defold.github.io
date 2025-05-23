@@ -1,11 +1,13 @@
 ---
+brief: This example shows a simple setup with dynamic physics objects.
 category: physics
-path: physics/dynamic
 layout: example
+path: physics/dynamic
 tags: physics
 title: Dynamic physics
-brief: This example shows a simple setup with dynamic physics objects.
+
 ---
+
 
 ![dynamic](dynamic.png)
 

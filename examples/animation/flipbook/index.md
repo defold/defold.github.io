@@ -1,11 +1,13 @@
 ---
+brief: This example shows how to use a flipbook animation in a sprite
 category: animation
-path: animation/flipbook
 layout: example
+path: animation/flipbook
 tags: animation
 title: Flipbook animation
-brief: This example shows how to use a flipbook animation in a sprite
+
 ---
+
 
 ![flipbook](flipbook.png)
 

@@ -1,13 +1,15 @@
 ---
+author: Defold Foundation
+brief: This example shows how to put sprites in front and behind of eachother
 category: basics
-path: basics/z_order
 layout: example
+path: basics/z_order
+scripts: z_order.script
 tags: basics
 title: Z-order
-brief: This example shows how to put sprites in front and behind of eachother
-author: Defold Foundation
-scripts: z_order.script
+
 ---
+
 
 ![z order](z_order.png)
 

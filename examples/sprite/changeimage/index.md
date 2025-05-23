@@ -1,13 +1,15 @@
 ---
+author: Defold Foundation
+brief: This example shows how to change the image of a sprite
 category: sprite
-path: sprite/changeimage
 layout: example
+path: sprite/changeimage
+scripts: changeimage.script
 tags: sprite
 title: Change sprite image
-brief: This example shows how to change the image of a sprite
-author: Defold Foundation
-scripts: changeimage.script
+
 ---
+
 
 The example shows a game object with a sprite and a script with three script properties to reference different tilesource images. The script lets the user change which image to use on the sprite.
 

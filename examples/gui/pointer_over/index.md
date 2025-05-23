@@ -1,13 +1,16 @@
 ---
+author: AGulev
+brief: A GUI box node with an image texture and a script that react when pointer over
+  this node.
 category: gui
-path: gui/pointer_over
 layout: example
+path: gui/pointer_over
+scripts: pointer_over.gui_script
 tags: gui
 title: Pointer over
-brief: A GUI box node with an image texture and a script that react when pointer over this node.
-author: AGulev
-scripts: pointer_over.gui_script
+
 ---
+
 
 ![button](button.jpg)
 

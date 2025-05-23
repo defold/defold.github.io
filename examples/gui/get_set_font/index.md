@@ -1,11 +1,13 @@
 ---
+author: Defold Foundation
+brief: This example shows how to get and set a font resource on a gui component.
 category: gui
-path: gui/get_set_font
 layout: example
+path: gui/get_set_font
+scripts: get_set_font.script
 tags: gui
 title: Get and set a gui font resource
-brief: This example shows how to get and set a font resource on a gui component.
-author: Defold Foundation
-scripts: get_set_font.script
+
 ---
+
 

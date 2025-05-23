@@ -1,13 +1,15 @@
 ---
+author: Pawel Jarosz
+brief: This example shows how to create timer that repeats endlessly every second
 category: timer
-path: timer/repeating_timer
 layout: example
+path: timer/repeating_timer
+scripts: repeating_timer.gui_script
 tags: timer
 title: Repeating timer example
-brief: This example shows how to create timer that repeats endlessly every second
-author: Pawel Jarosz
-scripts: repeating_timer.gui_script
+
 ---
+
 
 The example shows how to use Defold built-in timer and uses two indicators:
 

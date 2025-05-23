@@ -228,6 +228,13 @@ def write_as_json(filename, data):
     with open(filename, "w") as f:
         json.dump(data, f, indent=4, sort_keys=True)
 
+def write_lines(filename, lines):
+    with open(filename, "w") as f:
+        f.writelines(lines)
+
+def write_as_string(filename, s):
+    with open(filename, "w") as f:
+        f.write(s)
 
 def replace_in_file(filename, old, new, flags=None):
     with open(filename) as f:
@@ -238,7 +245,6 @@ def replace_in_file(filename, old, new, flags=None):
 
     with open(filename, "w") as f:
         f.write(content)
-
 
 def replace_in_first_line(filename, old, new, flags=None):
     with open(filename) as f:
@@ -252,12 +258,19 @@ def replace_in_first_line(filename, old, new, flags=None):
     with open(filename, "w") as f:
         f.writelines(lines)
 
-
 def append_to_file(filename, s):
     with open(filename, "a") as f:
         f.write(s)
 
+def load_frontmatter(filename):
+    frontmatter = read_as_string(filename).split("---")[1]
+    return yaml.safe_load(frontmatter)
 
+def replace_frontmatter(filename, d):
+    content = read_as_string(filename).split("---")[2]
+    frontmatter = yaml.dump(d)
+    content = "---\n%s\n---\n%s" % (frontmatter, content)
+    write_as_string(filename, content)
 
 def process_doc_file(file, language):
     replace_in_file(file, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
@@ -723,9 +736,11 @@ def process_examples(download = False):
         for category in category_dirs:
             category_src_dir = os.path.join(unzipped_examples_dir, category)
             category_dst_dir = os.path.join("examples", category)
-            rmmkdir(category_dst_dir)
             if os.path.isfile(category_src_dir) or category == ".github":
                 continue
+
+            if rebuild:
+                rmmkdir(category_dst_dir)
 
             for example in os.listdir(category_src_dir):
                 example_src_dir = os.path.join(category_src_dir, example)
@@ -754,18 +769,20 @@ def process_examples(download = False):
                     bundle_dir = os.path.dirname(index_file)
                     shutil.copytree(bundle_dir, example_dst_dir)
                     os.remove(os.path.join(example_dst_dir, "index.html"))
+                else:
+                    rmmkdir(example_dst_dir)
 
                 print("...parsing example.md")
                 md_file = os.path.join(example_src_dir, "example.md")
-                replace_in_file(md_file, "tags:", "category: %s\ntags:" % category, flags=re.DOTALL)
-                replace_in_file(md_file, "tags:", "path: %s/%s\ntags:" % (category, example), flags=re.DOTALL)
-                replace_in_file(md_file, "tags:", "layout: example\ntags:", flags=re.DOTALL)
-                try:
-                    for data in yaml.safe_load_all(read_as_string(md_file)):
-                        examplesindex.append(data)
-                        break
-                except yaml.YAMLError:
-                    pass
+                fm = load_frontmatter(md_file)
+                fm["category"] = category
+                fm["path"] = "%s/%s" % (category, example)
+                fm["layout"] = "example"
+                if "thumbnail" in fm:
+                    fm["opengraph_image"] = fm["thumbnail"]
+                    fm["twitter_image"] = fm["thumbnail"]
+                examplesindex.append(fm)
+                replace_frontmatter(md_file, fm)
 
                 print("...copying example.md")
                 shutil.copyfile(md_file, os.path.join(example_dst_dir, "index.md"))
@@ -778,7 +795,7 @@ def process_examples(download = False):
                     shutil.copyfile(script, tgt)
 
                 print("...copying images")
-                for image in find_files(example_src_dir, "*.png|*.jpg"):
+                for image in find_files(example_src_dir, "*.png|*.jpg|*.gif|*.webp|*.webm"):
                     tgt = os.path.join(example_dst_dir, os.path.basename(image))
                     shutil.copyfile(image, tgt)
 
@@ -786,6 +803,7 @@ def process_examples(download = False):
         index_file = os.path.join("_data", "examplesindex.json")
         if os.path.exists(index_file):
             os.remove(index_file)
+        examplesindex.sort(key=lambda x: x.get("path").lower())
         write_as_json(os.path.join("_data", "examplesindex.json"), examplesindex)
 
 

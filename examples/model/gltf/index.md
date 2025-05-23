@@ -1,13 +1,15 @@
 ---
+author: aglitchman
+brief: This example demonstrates how to use a glTF model.
 category: model
-path: model/gltf
 layout: example
+path: model/gltf
+scripts: gltf.script
 tags: material
 title: GLTF
-brief: This example demonstrates how to use a glTF model.
-author: aglitchman
-scripts: gltf.script
+
 ---
+
 
 This example demonstrates how to use glTF models to add a toy car on the scene with a track and animates environment around the car.
 

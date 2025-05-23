@@ -1,12 +1,14 @@
 ---
+author: Defold Foundation
+brief: This example shows Spine bone animation that blends when animation switches.
 category: animation
-path: animation/spine
 layout: example
+path: animation/spine
+scripts: spine.script
 tags: animation
 title: Spine animation
-brief: This example shows Spine bone animation that blends when animation switches.
-author: Defold Foundation
-scripts: spine.script
+
 ---
+
 
 ![spine](spine.png)
