@@ -779,8 +779,8 @@ def process_examples(download = False):
                 fm["path"] = "%s/%s" % (category, example)
                 fm["layout"] = "example"
                 if "thumbnail" in fm:
-                    fm["opengraph_image"] = fm["thumbnail"]
-                    fm["twitter_image"] = fm["thumbnail"]
+                    fm["opengraph_image"] = fm["path"] + "/" + fm["thumbnail"]
+                    fm["twitter_image"] = fm["path"] + "/" + fm["thumbnail"]
                 examplesindex.append(fm)
                 replace_frontmatter(md_file, fm)
 
