@@ -15,7 +15,7 @@
 		"@type": "Organization",
 		"name": "Defold Foundation",
 		"url": "https://www.defold.com",
-		"email": "info@defold.com",
+		"email": "info@defold.se",
 		"address": {
 			"@type": "PostalAddress",
 			"streetAddress": "Postbox 6034",
@@ -28,8 +28,11 @@
 		"sameAs": [
 			"https://www.facebook.com/Defold",
 			"https://www.twitter.com/defold",
+			"https://www.x.com/defold",
 			"https://www.github.com/defold",
-			"https://www.youtube.com/channel/UCrEYXG15n3V0Y8eK0RbCaLQ"
+			"https://www.youtube.com/channel/UCrEYXG15n3V0Y8eK0RbCaLQ",
+			"https://www.linkedin.com/company/defold-foundation",
+			"https://bsky.app/profile/defold.com"
 		]
 	}
 </script>
@@ -40,12 +43,6 @@
 {%- assign page_description=page.excerpt -%}
 {%- elsif page.brief.size > 0 -%}
 {%- assign page_description=page.brief -%}
-{%- else -%}
-{%- assign page_description="Defold is a free and open game engine used for development of console, desktop, mobile and web games." -%}
-{%- endif -%}
-
-{%- if page.opengraph_image.size > 0 -%}
-{%- assign page_opengraph_image=page.description -%}
 {%- else -%}
 {%- assign page_description="Defold is a free and open game engine used for development of console, desktop, mobile and web games." -%}
 {%- endif -%}
