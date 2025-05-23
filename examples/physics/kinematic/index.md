@@ -11,7 +11,6 @@ tags: physics
 title: Kinematic physics
 ---
 
-
 ![kinematic](kinematic.png)
 
 The setup consists of three game objects. The *game.project* physics *GravityY* property is set to -500 to match the scale of the setup.

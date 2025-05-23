@@ -10,7 +10,6 @@ tags: timer
 title: Cancel timer example
 ---
 
-
 The example shows how to use Defold built-in timer and uses two indicators:
 
 1. A particlefx gui node that is triggered every 1s.

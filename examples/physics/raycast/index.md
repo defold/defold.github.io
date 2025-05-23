@@ -10,7 +10,6 @@ tags: physics
 title: Raycast
 ---
 
-
 ![raycast](raycast.png)
 
 The setup consists of two different kinds of game objects.

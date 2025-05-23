@@ -10,7 +10,6 @@ tags: particles
 title: Modifiers
 ---
 
-
 ![particlefx](modifiers.jpg)
 
 Here two modifiers are added to the effect in addition to the emitter. It works as follows:

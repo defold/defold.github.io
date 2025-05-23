@@ -10,7 +10,6 @@ tags: model
 title: AABB
 ---
 
-
 This example shows how to work with Axis-Aligned Bounding Boxes (AABB) in a 3D scene. The setup consists of falling cubes that are dynamically tracked by a camera using their combined bounding box. The example demonstrates:
 
 * How to create and manage a dynamic bounding box that updates with moving objects

@@ -10,5 +10,4 @@ tags: basics
 title: Message passing
 ---
 
-
 ![message passing](message_passing.png)

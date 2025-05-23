@@ -9,7 +9,6 @@ tags: debug
 title: Visual profiler
 ---
 
-
 For more in-depth analysis, the web profiler is usually more suitable. See [the debug manual](/manuals/debugging) for more information.
 
 ![profile](profile.png)

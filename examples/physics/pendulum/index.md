@@ -12,7 +12,6 @@ tags: physics
 title: Pendulum physics
 ---
 
-
 ![pendulum](pendulum.png)
 
 The setup consists of four game objects. The *game.project* physics *GravityY* property is set to -500 to match the scale of the setup.

@@ -10,7 +10,6 @@ tags: render
 title: Camera
 ---
 
-
 ![camera](camera.png)
 
 The setup consists of one `bee` game object that the camera can follow and one `camera` game object containing the camera component. The camera component will when active send view and projection updates to the render script.

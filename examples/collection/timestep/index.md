@@ -10,7 +10,6 @@ tags: collection
 title: Time-step
 ---
 
-
 The setup consists of a `timestep.collection` and a `game.collection`.
 
 timestep.collection

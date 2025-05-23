@@ -10,7 +10,6 @@ tags: collection
 title: Splash
 ---
 
-
 The setup consists of several collections and game objects.
 
 ![splash](splash.png)

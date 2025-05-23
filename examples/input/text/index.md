@@ -10,7 +10,6 @@ tags: input
 title: Text input
 ---
 
-
 ![input bindings text](input_bindings.png)
 ![input bindings keys](input_bindings2.png)
 

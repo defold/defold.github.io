@@ -9,7 +9,6 @@ tags: input
 title: Down duration
 ---
 
-
 ![input bindings](input_binding.png)
 
 ![text](down_click.png)

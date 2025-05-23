@@ -10,7 +10,6 @@ tags: gui
 title: Pointer over
 ---
 
-
 ![button](button.jpg)
 
 The "gui" game object contains a GUI component stored in the file *pointer_over.gui*. The GUI contains

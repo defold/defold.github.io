@@ -10,5 +10,4 @@ tags: animation
 title: Spinner animation
 ---
 
-
 ![spinner](spinner.png)

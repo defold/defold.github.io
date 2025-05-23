@@ -9,7 +9,6 @@ tags: basics
 title: Z-order
 ---
 
-
 ![z order](z_order.png)
 
 There is one game object containing the logo sprite. It is set at Z position 0.

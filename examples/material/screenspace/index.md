@@ -11,7 +11,6 @@ tags: material
 title: Screenspace
 ---
 
-
 In this example, we create a new material for 3D models in which we convert vertex coordinates to screenspace to get a special effect. It may be called "surface fill", "screenspace fill" and is used, most often in combination with outlines, to highlight objects in 3D games or indicate their status. 
 
 We added two game objects and two models to which we assigned our new `screenspace` material. The material is based on [`unlit`](/examples/material_unlit/), but in it:

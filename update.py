@@ -267,9 +267,9 @@ def load_frontmatter(filename):
     return yaml.safe_load(frontmatter)
 
 def replace_frontmatter(filename, d):
-    content = read_as_string(filename).split("---")[2]
+    content = read_as_string(filename).split("---")[2].strip()
     frontmatter = yaml.dump(d).strip()
-    content = "---\n%s\n---\n%s" % (frontmatter, content)
+    content = "---\n%s\n---\n\n%s" % (frontmatter, content)
     write_as_string(filename, content)
 
 def process_doc_file(file, language):

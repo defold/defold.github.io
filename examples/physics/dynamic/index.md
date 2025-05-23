@@ -7,7 +7,6 @@ tags: physics
 title: Dynamic physics
 ---
 
-
 ![dynamic](dynamic.png)
 
 The setup consists of three game objects. The *game.project* physics *GravityY* property is set to -500 to match the scale of the setup.

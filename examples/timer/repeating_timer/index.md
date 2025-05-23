@@ -9,7 +9,6 @@ tags: timer
 title: Repeating timer example
 ---
 
-
 The example shows how to use Defold built-in timer and uses two indicators:
 
 1. A numerical time text with seconds counter created using a text node

@@ -10,5 +10,4 @@ tags: gui
 title: Stencil
 ---
 
-
 ![stencil](stencil.png)

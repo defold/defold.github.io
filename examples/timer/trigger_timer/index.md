@@ -10,7 +10,6 @@ tags: timer
 title: Trigger timer example
 ---
 
-
 The example shows how to use Defold built-in timer and trigger it asynchronously and uses two indicators:
 
 1. A counter text increased every 1s created using a text node.

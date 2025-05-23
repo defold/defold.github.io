@@ -9,7 +9,6 @@ tags: particles
 title: Particle effect example - confetti
 ---
 
-
 In this example we create a confetti fireworks effect. It is usually used on final screens to congratulate the player on successful completion of a level or game.
 
 The particlefx consists of 6 emitters. They are all the same, but with different images and RGB colors.

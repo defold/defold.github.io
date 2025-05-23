@@ -12,5 +12,4 @@ title: Tween animation
 twitter_image: basic_tween.png
 ---
 
-
 ![tween](basic_tween.png)

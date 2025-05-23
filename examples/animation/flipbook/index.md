@@ -7,7 +7,6 @@ tags: animation
 title: Flipbook animation
 ---
 
-
 ![flipbook](flipbook.png)
 
 The sprite component in the game object uses a flipbook animation that is set up in an atlas:

@@ -9,7 +9,6 @@ tags: gui
 title: Button
 ---
 
-
 ![button](button.png)
 
 The "gui" game object contains a GUI component stored in the file *button.gui*. The GUI contains

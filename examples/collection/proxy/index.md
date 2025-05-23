@@ -9,7 +9,6 @@ tags: collection
 title: Proxy
 ---
 
-
 The setup consists of several collections and game objects.
 
 ![proxy](proxy.png)

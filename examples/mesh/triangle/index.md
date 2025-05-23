@@ -9,7 +9,6 @@ tags: mesh
 title: Mesh
 ---
 
-
 This example contains a game object with a mesh component in the shape of a triangle. The triangle is defined in `triangle.buffer` as the three points of the triangle in the `position` stream. The triangle also defines the colors at each point. The colors get mixed automatically when the triangle is drawn by the shader.
 
 ```

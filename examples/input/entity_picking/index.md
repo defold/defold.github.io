@@ -9,7 +9,6 @@ tags: input
 title: Entity Picking
 ---
 
-
 This example describes method of selecting a game object from the 3D scene on the click of the mouse using collision-based picking:
 
 * We use [collision object components](https://defold.com/manuals/physics-objects/) to define a pickable shape for each relevant game object. This example uses 3D physics, which is enabled in the `game.project` file.

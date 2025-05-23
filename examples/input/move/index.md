@@ -10,7 +10,6 @@ tags: input
 title: 8 ways movement
 ---
 
-
 ![input bindings](input_bindings.png)
 
 ![move](move.png)

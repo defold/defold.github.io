@@ -9,7 +9,6 @@ tags: particles
 title: Particle effect example - fireworks
 ---
 
-
 This effect consists of two particle effects: trail and bang. In this example there are three different colors, which could be easily changed in particle emitters settings.
 
 

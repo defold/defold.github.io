@@ -9,5 +9,4 @@ tags: movement
 title: Follow input
 ---
 
-
 ![follow](follow.png)

@@ -10,7 +10,6 @@ tags: physics
 title: Trigger
 ---
 
-
 ![trigger](trigger.png)
 
 The setup consists of two game objects.
@@ -24,4 +23,3 @@ bunny
   - A *Sprite* component with the bunny image.
   - A *Collision object* component. It has *Type* set to `DYNAMIC`. A sphere *Shape* matching the sprite image is added to the components.
   - A *Script* component that animates the bunny's position and reacts to physics messages when interacting with the trigger.
-

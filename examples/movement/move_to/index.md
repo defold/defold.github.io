@@ -10,5 +10,4 @@ tags: movement
 title: Move to target
 ---
 
-
 ![move_to](move_to.png)

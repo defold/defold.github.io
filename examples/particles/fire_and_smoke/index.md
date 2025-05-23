@@ -9,7 +9,6 @@ tags: particles
 title: Particle effect example - fire and smoke
 ---
 
-
 The particlefx consists of two emitters: for fire and smoke. Each of them has tweaked properties, images and modifiers. All combined creates a fire and smoke effect.
 
 Fire emitter has a flame animation from sprites.atlas.

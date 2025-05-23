@@ -10,7 +10,6 @@ tags: debug
 title: Physics debug
 ---
 
-
 With the physics visualization on, all collision object shapes are visible. In addition, at intersections the normals at the collision points are shown.
 
 ![physics debug](physics.png)

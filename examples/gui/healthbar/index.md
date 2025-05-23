@@ -9,7 +9,6 @@ tags: gui
 title: Health Bar
 ---
 
-
 Overview : Example shows 3 pairs of nodes each forming a "health bar" with different pivots.
 
 Create a pair of Box nodes, so that child node is smaller than the parent:

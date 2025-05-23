@@ -10,5 +10,4 @@ tags: render
 title: Screen to World
 ---
 
-
 The `bee.script` uses a `screen_to_world()` function which takes a camera view and projection and uses these to convert from screen space coordinates to world coordinates.

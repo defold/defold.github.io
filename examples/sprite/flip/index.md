@@ -9,7 +9,6 @@ tags: sprite
 title: Flip
 ---
 
-
 Overview :  [sprite.set_hflip](https://defold.com/ref/beta/sprite/#sprite.set_hflip:url-flip) & [sprite.set_vflip](https://defold.com/ref/beta/sprite/#sprite.set_vflip:url-flip) uses a boolean to set if a sprite animation should be flipped.
 
 ![flip](flip.png)

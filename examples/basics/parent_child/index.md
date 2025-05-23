@@ -9,7 +9,6 @@ tags: basics
 title: Parent/child
 ---
 
-
 ![parent child](parent_child.png)
 
 The parent/child relation is set up right in the editor by placing the parent and child game objects in the same collection and then simply dragging the child game object onto the parent.

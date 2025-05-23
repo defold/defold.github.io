@@ -9,7 +9,6 @@ tags: gui
 title: GUI progress indicators
 ---
 
-
 The example shows three different types of progress indicators:
 
 1. A horizontal progress bar created using a box node with a texture and 9-slice scaling

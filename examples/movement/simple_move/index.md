@@ -9,5 +9,4 @@ tags: movement
 title: Moving game object
 ---
 
-
 ![simple move](simple_move.png)

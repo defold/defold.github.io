@@ -11,7 +11,6 @@ tags: render
 title: Orbit Camera
 ---
 
-
 In this example, we create a script to control a 3D camera using the mouse and mouse scroll wheel.
 
 We added two objects to the collection: a camera (`/camera`) and an object (`/crate`) that we will explore. In the `camera` object, we added the `orbit_camera.script` - the script that controls the camera. The properties defined in the script are:

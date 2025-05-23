@@ -9,7 +9,6 @@ tags: sprite
 title: Multiple Sprite Samplers
 ---
 
-
 The example uses a sprite with a material with two samplers:
 
 ![](multi_sample_sprite_material.png)
