@@ -1,9 +1,15 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-websocket
-title: Defold websocket extension API documentation
 brief: This manual covers how to use websockets with Defold
+github: https://github.com/defold/extension-websocket
+language: en
+layout: manual
+title: Defold websocket extension API documentation
+toc:
+- Defold websocket extension API documentation
+- Installation
+- Configuration
+- Source code
+- API reference
 ---
 
 # Defold websocket extension API documentation
@@ -78,5 +84,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-web
 
 ## API reference
 
-https://defold.com/extension-websocket/api/
-[API Reference - websocket](/extension-websocket/websocket_api)
+https://defold.com/extension-websocket/api/[API Reference - websocket](/extension-websocket/websocket_api)

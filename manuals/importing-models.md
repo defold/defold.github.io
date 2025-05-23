@@ -4,8 +4,14 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Importing models
-toc: '["Importing 3D models","Importing to Defold","Using a model","Exporting to glTF
-  and Collada","Requirements","Exporting a texture","Exporting using Blender"]'
+toc:
+- Importing 3D models
+- Importing to Defold
+- Using a model
+- Exporting to glTF and Collada
+- Requirements
+- Exporting a texture
+- Exporting using Blender
 ---
 
 # Importing 3D models

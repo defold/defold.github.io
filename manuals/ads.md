@@ -1,12 +1,19 @@
 ---
-brief: Showing various kinds of ads is a common way to monetize web and mobile games.
-  This manual shows a number of ways to monetize your game using ads.
+brief: Showing various kinds of ads is a common way to monetize web and mobile games. This manual shows a number of ways to monetize your game using ads.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Showing ads in Defold
-toc: '["Ads","Formats","Banner ads","Interstitial ads","Rewarded ads","Ad networks","How
-  to integrate ads in your game","Combining ads and in-app purchases","Learn more"]'
+toc:
+- Ads
+- Formats
+- Banner ads
+- Interstitial ads
+- Rewarded ads
+- Ad networks
+- How to integrate ads in your game
+- Combining ads and in-app purchases
+- Learn more
 ---
 
 # Ads

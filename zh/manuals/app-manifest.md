@@ -4,8 +4,17 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: App manifest
-toc: '["App manifest","Physics","Exclude Record","Exclude Profiler","Exclude Sound","Exclude
-  Input","Exclude Live Update","Exclude Basis Universal","Use Android Support Lib","Graphics"]'
+toc:
+- App manifest
+- Physics
+- Exclude Record
+- Exclude Profiler
+- Exclude Sound
+- Exclude Input
+- Exclude Live Update
+- Exclude Basis Universal
+- Use Android Support Lib
+- Graphics
 ---
 
 # App manifest

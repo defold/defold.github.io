@@ -4,9 +4,18 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Optimizing size of a Defold game
-toc: '["Optimizing game size","iOS and Android","HTML5","Size optimization strategies","Optimize
-  engine size","Optimize asset size","Optimize sounds","Optimize textures","Optimize
-  fonts","Exclude content for download on demand","Android specific size optimizations"]'
+toc:
+- Optimizing game size
+- iOS and Android
+- HTML5
+- Size optimization strategies
+- Optimize engine size
+- Optimize asset size
+- Optimize sounds
+- Optimize textures
+- Optimize fonts
+- Exclude content for download on demand
+- Android specific size optimizations
 ---
 
 # Optimizing game size

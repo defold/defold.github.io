@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 项目忽略文件
-toc: '["忽略文件","忽略定义 .defignore 文件"]'
+toc:
+- 忽略文件
+- 忽略定义 .defignore 文件
 ---
 
 # 忽略文件

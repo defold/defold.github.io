@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Key and text input in Defold
-toc: '["Key Triggers","Text Triggers","Text","Marked text"]'
+toc:
+- Key Triggers
+- Text Triggers
+- Text
+- Marked text
 ---
 
 <div class='sidenote' markdown='1'>

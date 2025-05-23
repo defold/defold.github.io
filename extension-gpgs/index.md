@@ -1,9 +1,22 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-gpgs
-title: Defold Google Play Game Services documentation
 brief: This manual covers how to setup and use Google Play Game Services in Defold.
+github: https://github.com/defold/extension-gpgs
+language: en
+layout: manual
+title: Defold Google Play Game Services documentation
+toc:
+- Defold Google Play Game Services documentation
+- Installation
+- Google App Setup
+- Defold Setup
+- Usage
+- 'Authentication:'
+- Achievements
+- Cloud save
+- Events
+- Leaderboards
+- Source code
+- API reference
 ---
 
 # Defold Google Play Game Services documentation
@@ -182,5 +195,4 @@ gpgs.leaderboard_show("CgkIq5-gxcsVEAIQAg", gpgs.TIME_SPAN_ALL_TIME, gpgs.COLLEC
 The source code is available on [GitHub](https://github.com/defold/extension-gpgs)
 
 
-## API reference
-[API Reference - gpgs](/extension-gpgs/gpgs_api)
+## API reference[API Reference - gpgs](/extension-gpgs/gpgs_api)

@@ -4,9 +4,16 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Dźwięk w Defoldzie
-toc: '["Dźwięk","Tworzenie komponentu dźwięku","Odtwarzanie dźwięku","Zatrzymywanie
-  dźwięku","Wzmocnienie","Grupy dźwiękowe","Filtrowanie dźwięków","Manipulacja w czasie
-  rzeczywistym","Konfiguracja projektu"]'
+toc:
+- Dźwięk
+- Tworzenie komponentu dźwięku
+- Odtwarzanie dźwięku
+- Zatrzymywanie dźwięku
+- Wzmocnienie
+- Grupy dźwiękowe
+- Filtrowanie dźwięków
+- Manipulacja w czasie rzeczywistym
+- Konfiguracja projektu
 ---
 
 # Dźwięk

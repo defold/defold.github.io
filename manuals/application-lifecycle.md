@@ -4,8 +4,16 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Defold application lifecycle manual
-toc: '["Application lifecycle","Initialization","The update loop","Input","Update","Render
-  update","Post update","Frame rate and collection time step","Finalization"]'
+toc:
+- Application lifecycle
+- Initialization
+- The update loop
+- Input
+- Update
+- Render update
+- Post update
+- Frame rate and collection time step
+- Finalization
 ---
 
 # Application lifecycle

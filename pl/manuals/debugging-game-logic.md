@@ -4,9 +4,13 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Debugowanie w Defoldzie
-toc: '["Debugowanie logiki gry","Debugowanie za pomocą wydruków i wizualne","Uruchamianie
-  debuggera","Biblioteka debugowania Lua","Lista kontrolna debugowania","Rozwiązywanie
-  problemów z fizyką"]'
+toc:
+- Debugowanie logiki gry
+- Debugowanie za pomocą wydruków i wizualne
+- Uruchamianie debuggera
+- Biblioteka debugowania Lua
+- Lista kontrolna debugowania
+- Rozwiązywanie problemów z fizyką
 ---
 
 # Debugowanie logiki gry

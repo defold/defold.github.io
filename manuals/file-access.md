@@ -1,13 +1,17 @@
 ---
-brief: This manual explains how to save and load files and perform other kinds of
-  file operations.
+brief: This manual explains how to save and load files and perform other kinds of file operations.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Working with files
-toc: '["Working with files","Functions for file and folder access","File and folder
-  locations","How to save and load application specific files","How to access files
-  bundled with the application","System file access","Extensions"]'
+toc:
+- Working with files
+- Functions for file and folder access
+- File and folder locations
+- How to save and load application specific files
+- How to access files bundled with the application
+- System file access
+- Extensions
 ---
 
 # Working with files

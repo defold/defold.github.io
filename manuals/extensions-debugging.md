@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Debugging extensions
-toc: '[]'
+toc: []
 ---
 
 Refer to the [Debugging Native Code manual](/manuals/debugging-native-code) to learn more.

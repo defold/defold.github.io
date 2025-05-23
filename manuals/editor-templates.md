@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Editor templates
-toc: '["Editor templates"]'
+toc:
+- Editor templates
 ---
 
 # Editor templates

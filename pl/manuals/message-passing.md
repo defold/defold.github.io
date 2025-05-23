@@ -1,13 +1,17 @@
 ---
-brief: Przekazywanie wiadomości (ang. message passing) w Defoldzie jest mechanizmem
-  umożliwiającym komunikację luźnie połączonym ze sobą obiektom. Ta instrukcja dokładnie
-  opisuje przekazywanie wiadomości.
+brief: Przekazywanie wiadomości (ang. message passing) w Defoldzie jest mechanizmem umożliwiającym komunikację luźnie połączonym ze sobą obiektom. Ta instrukcja dokładnie opisuje przekazywanie wiadomości.
 github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Przekazywanie wiadomości
-toc: '["Przekazywanie wiadomości","Przykłady użycia","Wysyłanie wiadomości","Skróty","Odbieranie
-  wiadomości","Wysyłanie wiadomości między światami gry (game worlds)","Łańcuchy wiadomości"]'
+toc:
+- Przekazywanie wiadomości
+- Przykłady użycia
+- Wysyłanie wiadomości
+- Skróty
+- Odbieranie wiadomości
+- Wysyłanie wiadomości między światami gry (game worlds)
+- Łańcuchy wiadomości
 ---
 
 # Przekazywanie wiadomości

@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 的 iOS 和 Android 推送通知
-toc: '[]'
+toc: []
 ---
 
 [本教程已移动到这里](/extension-push)

@@ -4,7 +4,14 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 的消息传递教程
-toc: '["消息传递","使用示例","发送消息","简化符","接收消息","游戏世界之间的消息传递","消息链"]'
+toc:
+- 消息传递
+- 使用示例
+- 发送消息
+- 简化符
+- 接收消息
+- 游戏世界之间的消息传递
+- 消息链
 ---
 
 # 消息传递

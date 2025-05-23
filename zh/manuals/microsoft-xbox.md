@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Microsoft Xbox 的 Defold 开发
-toc: '["Xbox 支持"]'
+toc:
+- Xbox 支持
 ---
 
 # Xbox 支持

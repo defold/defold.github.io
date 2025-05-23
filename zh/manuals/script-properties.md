@@ -4,7 +4,12 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 脚本组件属性
-toc: '["脚本属性","定义脚本属性","访问脚本属性","Factory 创建的对象","资源属性"]'
+toc:
+- 脚本属性
+- 定义脚本属性
+- 访问脚本属性
+- Factory 创建的对象
+- 资源属性
 ---
 
 # 脚本属性

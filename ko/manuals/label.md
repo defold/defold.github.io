@@ -3,7 +3,11 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Label","Creating a label","Alignment","Runtime manipulation"]'
+toc:
+- Label
+- Creating a label
+- Alignment
+- Runtime manipulation
 ---
 
 # Label

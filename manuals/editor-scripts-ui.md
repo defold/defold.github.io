@@ -4,9 +4,24 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: 'Editor scripts: UI'
-toc: '["Editor scripts and UI","Hello world","Basic concepts","Components","Props","Alignment","Built-in
-  components","Layout components","Data presentation components","Input components","Dialog-related
-  components","Utility components","Reactivity","Rules of reactivity","Hooks","**use_state**","**use_memo**"]'
+toc:
+- Editor scripts and UI
+- Hello world
+- Basic concepts
+- Components
+- Props
+- Alignment
+- Built-in components
+- Layout components
+- Data presentation components
+- Input components
+- Dialog-related components
+- Utility components
+- Reactivity
+- Rules of reactivity
+- Hooks
+- '**use_state**'
+- '**use_memo**'
 ---
 
 # Editor scripts and UI

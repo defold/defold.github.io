@@ -1,12 +1,16 @@
 ---
-brief: Este manual se adentra en los detalles de cómo los objetos, componentes y colecciones
-  del juego funcionan.
+brief: Este manual se adentra en los detalles de cómo los objetos, componentes y colecciones del juego funcionan.
 github: https://github.com/defold/doc
 language: es
 layout: manual
 title: Los bloques de construcción de Defold
-toc: '["Bloques de construcción","Colecciones","Objetos del juego","Componentes","Objetos
-  añadidos en el lugar o por referencia","Emparentando objetos de juego"]'
+toc:
+- Bloques de construcción
+- Colecciones
+- Objetos del juego
+- Componentes
+- Objetos añadidos en el lugar o por referencia
+- Emparentando objetos de juego
 ---
 
 #  Bloques de construcción

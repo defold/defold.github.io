@@ -1,9 +1,12 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-crazygames
-title: Defold CrazyGames SDK extension API documentation
 brief: This manual covers how to use in-game purchase in the CrazyGames SDK in Defold.
+github: https://github.com/defold/extension-crazygames
+language: en
+layout: manual
+title: Defold CrazyGames SDK extension API documentation
+toc:
+- In-game purchases
+- Get Xsolla token
 ---
 
 # In-game purchases
@@ -22,4 +25,3 @@ end)
 ```
 
 CrazyGames recommend that you retrieve the token every time before using it, since the tokens are usually short-lived, for example only 1 hour. The SDK handles the token refresh.
-

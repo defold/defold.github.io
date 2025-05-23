@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: GUI-нода Particle FX
-toc: '["GUI-нода Particle FX","Добавление ноды Particle FX","Управление эффектом"]'
+toc:
+- GUI-нода Particle FX
+- Добавление ноды Particle FX
+- Управление эффектом
 ---
 
 # GUI-нода Particle FX

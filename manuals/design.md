@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: The design of Defold
-toc: '["The design of Defold"]'
+toc:
+- The design of Defold
 ---
 
 # The design of Defold

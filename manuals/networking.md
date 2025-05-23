@@ -1,11 +1,14 @@
 ---
-brief: This manual explains how to connect to remote servers and perform other kinds
-  of network connections.
+brief: This manual explains how to connect to remote servers and perform other kinds of network connections.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Networking in Defold
-toc: '["Networking","Technical details","IPv4 and IPv6","Secure connections"]'
+toc:
+- Networking
+- Technical details
+- IPv4 and IPv6
+- Secure connections
 ---
 
 # Networking

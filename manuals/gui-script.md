@@ -4,8 +4,14 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: GUI scripts in Defold
-toc: '["GUI scripts","Adding a script to a GUI","The gui namespace","Message passing","Addressing
-  nodes","Dynamically created nodes","Dynamic node Ids"]'
+toc:
+- GUI scripts
+- Adding a script to a GUI
+- The gui namespace
+- Message passing
+- Addressing nodes
+- Dynamically created nodes
+- Dynamic node Ids
 ---
 
 # GUI scripts

@@ -4,9 +4,16 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Cykl życia aplikacji w silniku Defold
-toc: '["Cykl życia aplikacji","Faza inicjalizacyjna","Faza aktualizacyjna - pętla","Wejścia","Aktualizacja
-  komponentów","Aktualizacja renderowania","Post-aktualizacja","Klatki na sekundę
-  i krok czasowy kolekcji","Faza finalizacyjna"]'
+toc:
+- Cykl życia aplikacji
+- Faza inicjalizacyjna
+- Faza aktualizacyjna - pętla
+- Wejścia
+- Aktualizacja komponentów
+- Aktualizacja renderowania
+- Post-aktualizacja
+- Klatki na sekundę i krok czasowy kolekcji
+- Faza finalizacyjna
 ---
 
 # Cykl życia aplikacji

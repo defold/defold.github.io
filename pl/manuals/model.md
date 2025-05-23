@@ -4,9 +4,17 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Modele 3D w Defoldzie
-toc: '["Modele 3D","Tworzenie komponentu Modelu","Właściwości Modeli","Manipulacja
-  w Edytorze","Manipulacja w czasie rzeczywistym","Animacja w czasie rzeczywistym","Modyfikacja
-  właściwości Modelu","Materiały","Stałe materiału","Renderowanie"]'
+toc:
+- Modele 3D
+- Tworzenie komponentu Modelu
+- Właściwości Modeli
+- Manipulacja w Edytorze
+- Manipulacja w czasie rzeczywistym
+- Animacja w czasie rzeczywistym
+- Modyfikacja właściwości Modelu
+- Materiały
+- Stałe materiału
+- Renderowanie
 ---
 
 # Modele 3D

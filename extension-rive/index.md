@@ -1,9 +1,32 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-rive
-title: Rive documentation
 brief: This manual describes how to show Rive animations using the Rive extension.
+github: https://github.com/defold/extension-rive
+language: en
+layout: manual
+title: Rive documentation
+toc:
+- Rive animation
+- Requirements
+- Installation
+- Windows
+- Rendering
+- Coordinate systems
+- Mixing Defold and Rive content
+- View matrix
+- Blending
+- Concepts
+- Creating a Rive scene
+- Creating Rive model components
+- Rive model properties
+- Runtime manipulation
+- Playing animations
+- Cursor animation
+- Changing properties
+- Interacting with State Machine Inputs
+- Bone hierarchy
+- Getting and setting Text Runs
+- Source code
+- API reference
 ---
 
 # Rive animation
@@ -347,5 +370,4 @@ Note! You need to export all the names from within Rive to use these functions:
 The source code is available on [GitHub](https://github.com/defold/extension-rive)
 
 
-## API reference
-[API Reference - rive](/extension-rive/rive_api)
+## API reference[API Reference - rive](/extension-rive/rive_api)

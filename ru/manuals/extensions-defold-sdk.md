@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: Нативные расширения - Defold SDK
-toc: '["Defold SDK","Использование"]'
+toc:
+- Defold SDK
+- Использование
 ---
 
 # Defold SDK

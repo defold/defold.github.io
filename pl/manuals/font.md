@@ -4,9 +4,14 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Fonty w Defoldzie
-toc: '["Pliki fontów","Tworzenie fontów","Właściwości (Properties)","Fonty pola odległości
-  (Distance field)","Fonty bitmapowe BMFonts","Artefakty i najlepsze praktyki","Pamięć
-  podręczna fontu"]'
+toc:
+- Pliki fontów
+- Tworzenie fontów
+- Właściwości (Properties)
+- Fonty pola odległości (Distance field)
+- Fonty bitmapowe BMFonts
+- Artefakty i najlepsze praktyki
+- Pamięć podręczna fontu
 ---
 
 # Pliki fontów

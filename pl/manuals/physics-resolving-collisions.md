@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Rozwiązywanie kolizji kinematycznych w Defoldzie
-toc: '["Rozwiązywanie kolizji kinematycznych"]'
+toc:
+- Rozwiązywanie kolizji kinematycznych
 ---
 
 # Rozwiązywanie kolizji kinematycznych

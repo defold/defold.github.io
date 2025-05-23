@@ -1,13 +1,23 @@
 ---
-brief: Defold supports automatic texture processing and compression of image data.
-  This manual describes the available functionality.
+brief: Defold supports automatic texture processing and compression of image data. This manual describes the available functionality.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Texture profiles in Defold
-toc: '["Texture profiles","Basis Universal","ASTC","Texture profiles","Path Settings","Profiles","Texture
-  formats","Compressors","Example image","Compression times","Signal loss","Compression
-  file sizes","Image quality"]'
+toc:
+- Texture profiles
+- Basis Universal
+- ASTC
+- Texture profiles
+- Path Settings
+- Profiles
+- Texture formats
+- Compressors
+- Example image
+- Compression times
+- Signal loss
+- Compression file sizes
+- Image quality
 ---
 
 # Texture profiles

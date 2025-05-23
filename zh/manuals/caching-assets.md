@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 资源缓存
-toc: '["资源缓存","项目缓存","本地缓存","远程缓存"]'
+toc:
+- 资源缓存
+- 项目缓存
+- 本地缓存
+- 远程缓存
 ---
 
 # 资源缓存

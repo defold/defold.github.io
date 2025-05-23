@@ -4,7 +4,12 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 导入和编辑资源
-toc: '["导入和编辑资源导入和编辑资源","导入资源","使用资源","编辑外部资源","编辑 Defold 资源"]'
+toc:
+- 导入和编辑资源导入和编辑资源
+- 导入资源
+- 使用资源
+- 编辑外部资源
+- 编辑 Defold 资源
 ---
 
 # 导入和编辑资源导入和编辑资源

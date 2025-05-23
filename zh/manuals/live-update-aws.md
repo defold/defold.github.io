@@ -1,12 +1,11 @@
 ---
-brief: This section will explain how to create a new user with limited access on Amazon
-  Web Services that can be used together with the Defold editor to automatically upload
-  Live update resources when you bundle your game.
+brief: This section will explain how to create a new user with limited access on Amazon Web Services that can be used together with the Defold editor to automatically upload Live update resources when you bundle your game.
 github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Live update content uploads to AWS
-toc: '["创建 Amazon 网络服务器"]'
+toc:
+- 创建 Amazon 网络服务器
 ---
 
 # 创建 Amazon 网络服务器

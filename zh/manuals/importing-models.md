@@ -4,8 +4,14 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 导入模型
-toc: '["导入3D模型","导入模型到 Defold","使用模型","导出 glTF 和 Collada 格式文件","需求","导出纹理","从 Blender
-  中导出"]'
+toc:
+- 导入3D模型
+- 导入模型到 Defold
+- 使用模型
+- 导出 glTF 和 Collada 格式文件
+- 需求
+- 导出纹理
+- 从 Blender 中导出
 ---
 
 # 导入3D模型

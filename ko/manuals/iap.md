@@ -3,12 +3,20 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["In-app purchases","Testing Google Play Billing with static responses","Setting
-  up your app for purchases/billing","Asynchronous transactions","Synchronous payments","Asynchronous
-  payments","Purchase fulfillment","Transaction receipt","Troubleshooting","Android
-  iap.list()가 failed to fetch product를 리턴합니다.","iOS iap.list() 가 아무것도 리턴하지 않습니다.","iOS
-  iap.list() fails logging error Unexpected callback set","On iOS, the price_string
-  field contains ~ characters"]'
+toc:
+- In-app purchases
+- Testing Google Play Billing with static responses
+- Setting up your app for purchases/billing
+- Asynchronous transactions
+- Synchronous payments
+- Asynchronous payments
+- Purchase fulfillment
+- Transaction receipt
+- Troubleshooting
+- Android iap.list()가 failed to fetch product를 리턴합니다.
+- iOS iap.list() 가 아무것도 리턴하지 않습니다.
+- iOS iap.list() fails logging error Unexpected callback set
+- On iOS, the price_string field contains ~ characters
 ---
 
 # In-app purchases

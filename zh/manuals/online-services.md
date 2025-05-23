@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 在线服务
-toc: '["游戏服务","一般常见","玩家认证, 排行榜, 成就系统","统计分析"]'
+toc:
+- 游戏服务
+- 一般常见
+- 玩家认证, 排行榜, 成就系统
+- 统计分析
 ---
 
 # 游戏服务

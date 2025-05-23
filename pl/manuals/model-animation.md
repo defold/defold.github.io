@@ -4,8 +4,13 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Animacja modeli 3D
-toc: '["Animacja modeli 3D","Odtwarzanie animacji","Hierarchia kości","Animacja kursora","Funkcje
-  po zakończeniu animacji","Tryby odtwarzania"]'
+toc:
+- Animacja modeli 3D
+- Odtwarzanie animacji
+- Hierarchia kości
+- Animacja kursora
+- Funkcje po zakończeniu animacji
+- Tryby odtwarzania
 ---
 
 # Animacja modeli 3D

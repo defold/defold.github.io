@@ -1,9 +1,18 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-ironsource
-title: Defold IronSource extension API documentation
 brief: This manual covers how to get use IronSource ad mediation to show ads on iOS and Android in Defold.
+github: https://github.com/defold/extension-ironsource
+language: en
+layout: manual
+title: Defold IronSource extension API documentation
+toc:
+- Defold IronSource extension API documentation
+- Installation
+- Setup
+- Example
+- Troubleshooting
+- 'Error 508: Interstitial - Server response contains no interstitial data'
+- Source code
+- API reference
 ---
 
 # Defold IronSource extension API documentation
@@ -48,5 +57,4 @@ If you get such an error, make sure that you initialize ADS right and use test p
 The source code is available on [GitHub](https://github.com/defold/extension-ironsource)
 
 
-## API reference
-[API Reference - ironsource](/extension-ironsource/ironsource_api)
+## API reference[API Reference - ironsource](/extension-ironsource/ironsource_api)

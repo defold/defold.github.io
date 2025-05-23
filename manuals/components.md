@@ -4,9 +4,15 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Game object components
-toc: '["Components","Component types","Enabling and disabling components","Component
-  properties","Component position, rotation and scale","Component draw order","Render
-  script predicates","Component z-value"]'
+toc:
+- Components
+- Component types
+- Enabling and disabling components
+- Component properties
+- Component position, rotation and scale
+- Component draw order
+- Render script predicates
+- Component z-value
 ---
 
 #  Components

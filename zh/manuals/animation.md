@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 动画教程
-toc: '["动画"]'
+toc:
+- 动画
 ---
 
 # 动画

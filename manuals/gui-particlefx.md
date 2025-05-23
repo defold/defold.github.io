@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: GUI particle fx in Defold
-toc: '["GUI ParticleFX nodes","Adding Particle FX nodes","Controlling the effect"]'
+toc:
+- GUI ParticleFX nodes
+- Adding Particle FX nodes
+- Controlling the effect
 ---
 
 # GUI ParticleFX nodes

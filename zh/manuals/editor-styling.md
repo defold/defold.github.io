@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 编辑器风格
-toc: '["编辑器风格","修改颜色","修改字体"]'
+toc:
+- 编辑器风格
+- 修改颜色
+- 修改字体
 ---
 
 # 编辑器风格

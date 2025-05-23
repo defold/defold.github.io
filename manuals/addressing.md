@@ -4,9 +4,17 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Addressing in Defold
-toc: '["Addressing","Identifiers","Collections","Relative addressing","Shorthands","Game
-  object paths","Absolute addressing","Hashed identifiers","URLs","Constructing URL
-  objects"]'
+toc:
+- Addressing
+- Identifiers
+- Collections
+- Relative addressing
+- Shorthands
+- Game object paths
+- Absolute addressing
+- Hashed identifiers
+- URLs
+- Constructing URL objects
 ---
 
 # Addressing

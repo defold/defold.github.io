@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 编辑器快捷键
-toc: '["键盘快捷键","默认快捷键","自定义快捷键"]'
+toc:
+- 键盘快捷键
+- 默认快捷键
+- 自定义快捷键
 ---
 
 # 键盘快捷键

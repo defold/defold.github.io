@@ -4,10 +4,17 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 的 Android 平台开发
-toc: '["Android 开发","Android 和 Google Play 签名","制作 keystore","安卓应用打包","安装 Android
-  应用包","权限","android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE
-  (Protection level: normal)","android.permission.WAKE_LOCK (Protection level: normal)","使用
-  AndroidX","常见问题"]'
+toc:
+- Android 开发
+- Android 和 Google Play 签名
+- 制作 keystore
+- 安卓应用打包
+- 安装 Android 应用包
+- 权限
+- 'android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE (Protection level: normal)'
+- 'android.permission.WAKE_LOCK (Protection level: normal)'
+- 使用 AndroidX
+- 常见问题
 ---
 
 # Android 开发

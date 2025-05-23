@@ -4,8 +4,11 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Źródła kafelków (tile source)
-toc: '["Źródła Kafelków (tile source)","Tworzenie Źródła Kafelków","Animacje poklatkowe
-  (flip-book) Źródła Kafelków","Kształty kolizji źródła kafelków"]'
+toc:
+- Źródła Kafelków (tile source)
+- Tworzenie Źródła Kafelków
+- Animacje poklatkowe (flip-book) Źródła Kafelków
+- Kształty kolizji źródła kafelków
 ---
 
 # Źródła Kafelków (tile source)

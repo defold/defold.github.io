@@ -4,7 +4,14 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 如何获得帮助
-toc: '["获得帮助","在论坛里提交问题","提供信息","提交代码","从编辑器里汇报问题","在 Discord 上讨论问题","日志文件"]'
+toc:
+- 获得帮助
+- 在论坛里提交问题
+- 提供信息
+- 提交代码
+- 从编辑器里汇报问题
+- 在 Discord 上讨论问题
+- 日志文件
 ---
 
 # 获得帮助

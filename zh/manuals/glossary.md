@@ -4,12 +4,47 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 术语
-toc: '["Defold 术语","Animation set","Atlas","Builtins","Camera","Collision object","Component","Collection","Collection
-  factory","Collection proxy","Cubemap","Debugging","Display profiles","Factory","Font","Fragment
-  shader","Gamepads","Game object","GUI","GUI script","Hot reload","Input binding","Label","Library","Lua
-  language","Lua module","Material","Message","Model","ParticleFX","Profiling","Render","Render
-  script","Script","Sound","Sprite","Texture profiles","Tile map","Tile source","Vertex
-  shader"]'
+toc:
+- Defold 术语
+- Animation set
+- Atlas
+- Builtins
+- Camera
+- Collision object
+- Component
+- Collection
+- Collection factory
+- Collection proxy
+- Cubemap
+- Debugging
+- Display profiles
+- Factory
+- Font
+- Fragment shader
+- Gamepads
+- Game object
+- GUI
+- GUI script
+- Hot reload
+- Input binding
+- Label
+- Library
+- Lua language
+- Lua module
+- Material
+- Message
+- Model
+- ParticleFX
+- Profiling
+- Render
+- Render script
+- Script
+- Sound
+- Sprite
+- Texture profiles
+- Tile map
+- Tile source
+- Vertex shader
 ---
 
 # Defold 术语

@@ -4,7 +4,15 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 原生扩展 - Manifest 混合工具
-toc: '["Application manifests","命名和结构","Android","示例","iOS / macOS","示例","HTML5","示例"]'
+toc:
+- Application manifests
+- 命名和结构
+- Android
+- 示例
+- iOS / macOS
+- 示例
+- HTML5
+- 示例
 ---
 
 # Application manifests

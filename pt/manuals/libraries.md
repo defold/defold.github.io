@@ -1,13 +1,18 @@
 ---
-brief: Os recursos das bibliotecas permitem que você compartilhe elementos entre projetos.
-  Esse material explica como isso funciona.
+brief: Os recursos das bibliotecas permitem que você compartilhe elementos entre projetos. Esse material explica como isso funciona.
 github: https://github.com/defold/doc
 language: pt
 layout: manual
 title: Trabalhando com bibliotecas no Defold
-toc: '["Bibliotecas","Configurando o compartilhamento de Bibliotecas","URL da Biblioteca","Autenticação
-  de acesso básico","Autenticação de acesso avançada","Configurando as dependências
-  da Biblioteca","Referências quebradas","Colisão de Nomes"]'
+toc:
+- Bibliotecas
+- Configurando o compartilhamento de Bibliotecas
+- URL da Biblioteca
+- Autenticação de acesso básico
+- Autenticação de acesso avançada
+- Configurando as dependências da Biblioteca
+- Referências quebradas
+- Colisão de Nomes
 ---
 
 # Bibliotecas

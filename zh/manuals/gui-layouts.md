@@ -4,7 +4,12 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 里的 GUI 布局
-toc: '["布局","新建显示档案","GUI 布局","动态布局选择","布局变换消息"]'
+toc:
+- 布局
+- 新建显示档案
+- GUI 布局
+- 动态布局选择
+- 布局变换消息
 ---
 
 # 布局

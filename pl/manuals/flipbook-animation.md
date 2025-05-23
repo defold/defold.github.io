@@ -4,9 +4,13 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Animacja poklatkowa - Flip-book
-toc: '["Animacja poklatkowa - flip-book","Odtwarzanie animacji flip-book","Przykład
-  animacji ze spritem","Przykład animacji z węzłem GUI","Funkcje po zakończeniu animacji","Tryby
-  odtwarzania"]'
+toc:
+- Animacja poklatkowa - flip-book
+- Odtwarzanie animacji flip-book
+- Przykład animacji ze spritem
+- Przykład animacji z węzłem GUI
+- Funkcje po zakończeniu animacji
+- Tryby odtwarzania
 ---
 
 # Animacja poklatkowa - flip-book

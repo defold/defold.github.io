@@ -3,8 +3,13 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Native extensions","The build platform","Project layout","A simple example
-  extension","The ext.manifest file","Known issues"]'
+toc:
+- Native extensions
+- The build platform
+- Project layout
+- A simple example extension
+- The ext.manifest file
+- Known issues
 ---
 
 # Native extensions

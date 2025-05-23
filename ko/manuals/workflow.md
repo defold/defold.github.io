@@ -3,9 +3,15 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Workflow","Assets","Refactoring","Collaboration","External editors and tools(외부
-  편집기 그리고 도구)","Opening assets in the text editor(텍스트 에디터로 에셋 열기)","Git","Line endings
-  and Windows(줄바꿈과 윈도우)"]'
+toc:
+- Workflow
+- Assets
+- Refactoring
+- Collaboration
+- External editors and tools(외부 편집기 그리고 도구)
+- Opening assets in the text editor(텍스트 에디터로 에셋 열기)
+- Git
+- Line endings and Windows(줄바꿈과 윈도우)
 ---
 
 # Workflow

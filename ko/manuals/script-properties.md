@@ -3,7 +3,9 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Script properties","Factory created objects"]'
+toc:
+- Script properties
+- Factory created objects
 ---
 
 # Script properties

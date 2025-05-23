@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: Сокет-соединения
-toc: '["Сокет-соединения","Справочник по API и примеры"]'
+toc:
+- Сокет-соединения
+- Справочник по API и примеры
 ---
 
 ## Сокет-соединения

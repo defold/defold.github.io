@@ -4,8 +4,11 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Setup local build server
-toc: '["Build server local setup","How to run local Extender with preconfigured artifacts","What
-  about macOS and iOS?","How to run local Extender with locally built artifacts"]'
+toc:
+- Build server local setup
+- How to run local Extender with preconfigured artifacts
+- What about macOS and iOS?
+- How to run local Extender with locally built artifacts
 ---
 
 # Build server local setup

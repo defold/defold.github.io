@@ -3,10 +3,21 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["HTML5 게임 개발하기","Project configuration","Customizing heap size","Monitoring
-  memory usage","Application cache","Creating HTML5 content","Testing HTML5 Content","Known
-  issues and limitations","Customizing HTML5 applications","Splash screens","Tokens","HTML5
-  Memory Tracker","Tool features","Known limitations"]'
+toc:
+- HTML5 게임 개발하기
+- Project configuration
+- Customizing heap size
+- Monitoring memory usage
+- Application cache
+- Creating HTML5 content
+- Testing HTML5 Content
+- Known issues and limitations
+- Customizing HTML5 applications
+- Splash screens
+- Tokens
+- HTML5 Memory Tracker
+- Tool features
+- Known limitations
 ---
 
 # HTML5 게임 개발하기

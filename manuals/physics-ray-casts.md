@@ -1,11 +1,11 @@
 ---
-brief: Ray casts are used to read the physics world along a linear ray. This manual
-  explains how this works.
+brief: Ray casts are used to read the physics world along a linear ray. This manual explains how this works.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Ray casts in Defold
-toc: '["Ray casts"]'
+toc:
+- Ray casts
 ---
 
 ## Ray casts

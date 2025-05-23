@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 设计理念
-toc: '["Defold 的设计理念"]'
+toc:
+- Defold 的设计理念
 ---
 
 # Defold 的设计理念

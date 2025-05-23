@@ -1,9 +1,19 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-webview
-title: Defold webview extension API documentation
 brief: WebViews allows you to load and display web pages as overlays in your games. They can also run user supplied JavaScript in the background. This manual explains Defold's official WebView extension, API and functionality.
+github: https://github.com/defold/extension-webview
+language: en
+layout: manual
+title: Defold webview extension API documentation
+toc:
+- WebViews
+- Installing the extension
+- Opening a WebView
+- Callback
+- Opening and displaying a custom HTML page
+- Visibility and positioning control
+- Running JavaScript
+- Source code
+- API reference
 ---
 
 # WebViews
@@ -265,5 +275,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-web
 
 ## API reference
 
-https://defold.com/extension-webview/api/
-[API Reference - webview](/extension-webview/webview_api)
+https://defold.com/extension-webview/api/[API Reference - webview](/extension-webview/webview_api)

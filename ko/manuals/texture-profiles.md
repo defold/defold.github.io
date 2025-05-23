@@ -3,7 +3,12 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Texture profiles","Texture profiles","Paths","Profiles","Texture formats"]'
+toc:
+- Texture profiles
+- Texture profiles
+- Paths
+- Profiles
+- Texture formats
 ---
 
 # Texture profiles

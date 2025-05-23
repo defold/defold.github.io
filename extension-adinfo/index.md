@@ -1,9 +1,18 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-adinfo
-title: Defold advertising info extension API documentation
 brief: This manual covers how to get the advertising id and status on iOS and Android in Defold.
+github: https://github.com/defold/extension-adinfo
+language: en
+layout: manual
+title: Defold advertising info extension API documentation
+toc:
+- Defold advertising info extension API documentation
+- Installation
+- Configuration
+- tracking_usage_description
+- register_for_attribution
+- Example
+- Source code
+- API reference
 ---
 
 # Defold advertising info extension API documentation
@@ -58,5 +67,4 @@ end
 The source code is available on [GitHub](https://github.com/defold/extension-adinfo)
 
 
-## API reference
-[API Reference - adinfo](/extension-adinfo/adinfo_api)
+## API reference[API Reference - adinfo](/extension-adinfo/adinfo_api)

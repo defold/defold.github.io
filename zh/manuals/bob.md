@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 项目编译教程
-toc: '["编译器 Bob","用法"]'
+toc:
+- 编译器 Bob
+- 用法
 ---
 
 # 编译器 Bob

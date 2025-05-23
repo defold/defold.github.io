@@ -262,13 +262,16 @@ def append_to_file(filename, s):
     with open(filename, "a") as f:
         f.write(s)
 
+def dict_to_yaml(d):
+    return yaml.dump(d, allow_unicode=True, width=sys.maxsize, default_flow_style=False)
+
 def load_frontmatter(filename):
     frontmatter = read_as_string(filename).split("---")[1]
     return yaml.safe_load(frontmatter)
 
 def replace_frontmatter(filename, d):
     content = read_as_string(filename).split("---")[2].strip()
-    frontmatter = yaml.dump(d).strip()
+    frontmatter = dict_to_yaml(d)
     content = "---\n%s\n---\n\n%s" % (frontmatter, content)
     write_as_string(filename, content)
 
@@ -278,11 +281,11 @@ def append_frontmatter(filename, d):
         parts = s.split("---", maxsplit = 2)
         d.update(yaml.safe_load(parts[1]))
         content = parts[2].strip()
-        frontmatter = yaml.dump(d, allow_unicode=True).strip()
+        frontmatter = dict_to_yaml(d).strip()
         write_as_string(filename, "---\n%s\n---\n\n%s" % (frontmatter, content))
     else:
         content = s
-        frontmatter = yaml.dump(d, allow_unicode=True).strip()
+        frontmatter = dict_to_yaml(d).strip()
         write_as_string(filename, "---\n%s\n---\n\n%s" % (frontmatter, content))
 
 
@@ -320,7 +323,7 @@ def generate_toc(file):
             heading = heading.replace("\"", "")
             heading = heading.strip()
             # note: there is some additional stripping done in manual.html
-            toc.append("\"" + heading + "\"")
+            toc.append(heading)
     return toc
 
 
@@ -486,7 +489,7 @@ def process_docs(download = False):
                         "layout": "manual",
                         "language": language,
                         "github": "https://github.com/defold/doc",
-                        "toc": "[{}]".format(",".join(toc)),
+                        "toc": toc,
                     })
                     if language == "en":
                         # preprocess docs pages for llms-full.txt to a temporary folder _llms/
@@ -675,10 +678,12 @@ def process_extension(extension_name, download = False):
 
         index = os.path.join(extension_dir, "index.md")
         for filename in find_files(extension_dir, "*.md"):
+            toc = generate_toc(filename)
             append_frontmatter(filename, {
                 "layout": "manual",
                 "language": "en",
                 "github": "{}".format(github_url),
+                "toc": toc,
             })
             process_doc_file(filename, "en")
 

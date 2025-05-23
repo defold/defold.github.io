@@ -4,9 +4,17 @@ github: https://github.com/defold/doc
 language: pt
 layout: manual
 title: Endereçamento no Defold
-toc: '["Endereçamento","Identificadores","Collections","Relative addressing","Shorthands","Game
-  object paths","Absolute addressing","Hashed identifiers","URLs","Constructing URL
-  objects"]'
+toc:
+- Endereçamento
+- Identificadores
+- Collections
+- Relative addressing
+- Shorthands
+- Game object paths
+- Absolute addressing
+- Hashed identifiers
+- URLs
+- Constructing URL objects
 ---
 
 # Endereçamento

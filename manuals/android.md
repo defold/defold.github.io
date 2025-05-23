@@ -4,11 +4,17 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Defold development for the Android platform
-toc: '["Android development","Android and Google Play signing process","Creating a
-  keystore","Creating an Android application bundle","Installing an Android application
-  bundle","Permissions","android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE
-  (Protection level: normal)","android.permission.WAKE_LOCK (Protection level: normal)","Using
-  AndroidX","FAQ"]'
+toc:
+- Android development
+- Android and Google Play signing process
+- Creating a keystore
+- Creating an Android application bundle
+- Installing an Android application bundle
+- Permissions
+- 'android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE (Protection level: normal)'
+- 'android.permission.WAKE_LOCK (Protection level: normal)'
+- Using AndroidX
+- FAQ
 ---
 
 # Android development

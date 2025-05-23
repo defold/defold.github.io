@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: Дизайн Defold
-toc: '["Дизайн Defold"]'
+toc:
+- Дизайн Defold
 ---
 
 # Дизайн Defold

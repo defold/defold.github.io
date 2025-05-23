@@ -4,16 +4,45 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Ustawienie projektu
-toc: '["Ustawienie projektu","Project","Bootstrap (Ustawienia początkowe)","Library
-  (Biblioteki)","Script (Skrypy)","Engine (silnik)","Display (Wyświetlanie)","Render
-  (Renderowanie)","Physics (Fizyka)","Graphics (Grafika)","Input (Wejścia)","Resource
-  (Źródła)","Network (Sieć)","Collection (Kolekcje)","Sound (Dźwięk)","Sprite (Obrazy)","Tilemap
-  (Mapy kafelków)","Spine","GUI","Label (Etykieta)","Particle FX (Efekty cząsteczkowe)","Collection
-  proxy (Pełnomocnicy kolekcji)","Collection factory (Fabryki kolekcji)","Factory
-  (Fabryki)","iOS","Android","macOS","Windows","HTML5","IAP (Zakupy wewnątrz aplikacji)","Live
-  update (Aktualizacje na żywo)","Native extension (Rozszerzenia natywne)","Profiler","Format
-  pliku","Ustawianie wartości przy starcie silnika","Vsync, frame cap, i swap interval","Zastrzeżenie","Vsync
-  i frame cap w Defoldzie*"]'
+toc:
+- Ustawienie projektu
+- Project
+- Bootstrap (Ustawienia początkowe)
+- Library (Biblioteki)
+- Script (Skrypy)
+- Engine (silnik)
+- Display (Wyświetlanie)
+- Render (Renderowanie)
+- Physics (Fizyka)
+- Graphics (Grafika)
+- Input (Wejścia)
+- Resource (Źródła)
+- Network (Sieć)
+- Collection (Kolekcje)
+- Sound (Dźwięk)
+- Sprite (Obrazy)
+- Tilemap (Mapy kafelków)
+- Spine
+- GUI
+- Label (Etykieta)
+- Particle FX (Efekty cząsteczkowe)
+- Collection proxy (Pełnomocnicy kolekcji)
+- Collection factory (Fabryki kolekcji)
+- Factory (Fabryki)
+- iOS
+- Android
+- macOS
+- Windows
+- HTML5
+- IAP (Zakupy wewnątrz aplikacji)
+- Live update (Aktualizacje na żywo)
+- Native extension (Rozszerzenia natywne)
+- Profiler
+- Format pliku
+- Ustawianie wartości przy starcie silnika
+- Vsync, frame cap, i swap interval
+- Zastrzeżenie
+- Vsync i frame cap w Defoldzie*
 ---
 
 # Ustawienie projektu

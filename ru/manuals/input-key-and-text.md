@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: Ввод клавиш и текста в Defold
-toc: '["Клавишные триггеры","Текстовые триггеры","Функция Text","Маркированный текст"]'
+toc:
+- Клавишные триггеры
+- Текстовые триггеры
+- Функция Text
+- Маркированный текст
 ---
 
 <div class='sidenote' markdown='1'>

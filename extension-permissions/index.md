@@ -1,9 +1,16 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-permissions
-title: Defold Permissions documentation
 brief: Extension to query for and request application permissions from the user or operating system.
+github: https://github.com/defold/extension-permissions
+language: en
+layout: manual
+title: Defold Permissions documentation
+toc:
+- Defold Permissions documentation
+- Installation
+- Defold Setup
+- Usage
+- Source code
+- API reference
 ---
 
 # Defold Permissions documentation
@@ -38,5 +45,4 @@ The API uses a callback based system where events and data coming from the OS ar
 The source code is available on [GitHub](https://github.com/defold/extension-permissions)
 
 
-## API reference
-[API Reference - permissions](/extension-permissions/permissions_api)
+## API reference[API Reference - permissions](/extension-permissions/permissions_api)

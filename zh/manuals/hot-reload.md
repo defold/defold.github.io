@@ -4,7 +4,14 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 热重载
-toc: '["热重载资源","如何热重载","设备上的热重载","重载脚本","重载 Lua 模块","on_reload() 函数","重载shader数据"]'
+toc:
+- 热重载资源
+- 如何热重载
+- 设备上的热重载
+- 重载脚本
+- 重载 Lua 模块
+- on_reload() 函数
+- 重载shader数据
 ---
 
 # 热重载资源

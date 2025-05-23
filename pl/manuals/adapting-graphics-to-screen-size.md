@@ -4,10 +4,16 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Adaptacja do różnych wielkości ekranów
-toc: '["Wprowadzenie","Jak zmienić sposób wyświetlania grafiki","Retro/Grafika 8-bitowa/Pixel
-  art","Grafika w wysokiej rozdzielczości (HD)","Ustawienie High DPI i ekrany Retina","Tworzenie
-  interfejsu adaptacyjnego","Właściwości węzłów","Rozplanowanie elementów (Layouts)","Testowanie
-  ekranów o różnych wielkościach"]'
+toc:
+- Wprowadzenie
+- Jak zmienić sposób wyświetlania grafiki
+- Retro/Grafika 8-bitowa/Pixel art
+- Grafika w wysokiej rozdzielczości (HD)
+- Ustawienie High DPI i ekrany Retina
+- Tworzenie interfejsu adaptacyjnego
+- Właściwości węzłów
+- Rozplanowanie elementów (Layouts)
+- Testowanie ekranów o różnych wielkościach
 ---
 
 # Wprowadzenie

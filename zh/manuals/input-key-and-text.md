@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 键盘按键和文本输入教程
-toc: '["Key Triggers","Text Triggers","Text","Marked text"]'
+toc:
+- Key Triggers
+- Text Triggers
+- Text
+- Marked text
 ---
 
 <div class='sidenote' markdown='1'>

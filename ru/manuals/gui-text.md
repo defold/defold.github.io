@@ -4,8 +4,11 @@ github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: GUI-нода Text
-toc: '["GUI-нода Text","Добавление ноды Text","Выравнивание","Воздействие на ноду
-  Text в рантайме"]'
+toc:
+- GUI-нода Text
+- Добавление ноды Text
+- Выравнивание
+- Воздействие на ноду Text в рантайме
 ---
 
 # GUI-нода Text

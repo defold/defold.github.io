@@ -4,8 +4,16 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 在 iOS/macOS 中调试
-toc: '["在 iOS/macOS 中调试","Xcode","创建项目","启动调试器","调试 symbols","路径映射","断点","注意","检查二进制文件
-  UUID"]'
+toc:
+- 在 iOS/macOS 中调试
+- Xcode
+- 创建项目
+- 启动调试器
+- 调试 symbols
+- 路径映射
+- 断点
+- 注意
+- 检查二进制文件 UUID
 ---
 
 # 在 iOS/macOS 中调试

@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 调试原生扩展
-toc: '[]'
+toc: []
 ---
 
 详见 [调试原生代码教程](/zh/manuals/debugging-native-code).

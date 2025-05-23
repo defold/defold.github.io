@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Online Services
-toc: '["Game services","General purpose","Authentication, leaderboards, achievements","Analytics"]'
+toc:
+- Game services
+- General purpose
+- Authentication, leaderboards, achievements
+- Analytics
 ---
 
 # Game services

@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Importing and using 2D graphics
-toc: '["Importing 2D graphics","Creating Defold assets","Using Defold assets"]'
+toc:
+- Importing 2D graphics
+- Creating Defold assets
+- Using Defold assets
 ---
 
 # Importing 2D graphics

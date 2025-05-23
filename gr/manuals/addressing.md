@@ -4,10 +4,17 @@ github: https://github.com/defold/doc
 language: gr
 layout: manual
 title: διεύθυνση addressing στο Defold
-toc: '["διεύθυνση","Αναγνωριστικά Identifiers","Συλλογές, Collections","Σχετική διεύθυνση,
-  Relative addressing","Shorthands, στενογραφίες","Game object paths, Διαδρομές αντικειμένου
-  παιχνιδιού","Απόλυτη διεύθυνση, Absolute addressing","Hashed identifiers (κατακερματισμένα
-  αναγνωριστικά)","διευθύνσεις URL","Κατασκευή αντικειμένων URL"]'
+toc:
+- διεύθυνση
+- Αναγνωριστικά Identifiers
+- Συλλογές, Collections
+- Σχετική διεύθυνση, Relative addressing
+- Shorthands, στενογραφίες
+- Game object paths, Διαδρομές αντικειμένου παιχνιδιού
+- Απόλυτη διεύθυνση, Absolute addressing
+- Hashed identifiers (κατακερματισμένα αναγνωριστικά)
+- διευθύνσεις URL
+- Κατασκευή αντικειμένων URL
 ---
 
 # διεύθυνση

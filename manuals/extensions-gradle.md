@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Using Gradle dependencies in Android builds
-toc: '["Gradle for Android","Resolving dependencies"]'
+toc:
+- Gradle for Android
+- Resolving dependencies
 ---
 
 # Gradle for Android

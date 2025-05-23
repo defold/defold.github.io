@@ -1,14 +1,21 @@
 ---
-brief: This manual explains how to work with compute programs, shader constants and
-  samplers.
+brief: This manual explains how to work with compute programs, shader constants and samplers.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Defold compute manual
-toc: '["Compute programs","What can I do with compute shaders?","How does compute
-  shaders work?","Creating a compute program","Using the compute program in Defold","Writing
-  data from compute programs","Putting it all together","Shader program","Script component","Render
-  script","Compatibility"]'
+toc:
+- Compute programs
+- What can I do with compute shaders?
+- How does compute shaders work?
+- Creating a compute program
+- Using the compute program in Defold
+- Writing data from compute programs
+- Putting it all together
+- Shader program
+- Script component
+- Render script
+- Compatibility
 ---
 
 # Compute programs

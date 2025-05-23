@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Google Play Game Services in Defold
-toc: '[]'
+toc: []
 ---
 
 [This manual has been move](/extension-gpgs)

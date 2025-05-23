@@ -1,9 +1,17 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-texturepacker
-title: TexturePacker documentation
 brief: This manual describes how to use atlases exported from Texture Packer tool
+github: https://github.com/defold/extension-texturepacker
+language: en
+layout: manual
+title: TexturePacker documentation
+toc:
+- TexturePacker
+- Installation
+- Export from Texture Packer
+- Import into Defold editor
+- Properties
+- Animations
+- Additional resources
 ---
 
 ![Example](./example1.png)

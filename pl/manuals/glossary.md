@@ -1,24 +1,52 @@
 ---
-brief: Słowniczek ten zawiera wszystkie terminy używane w środowisku Defold z krótkimi
-  opisami.
+brief: Słowniczek ten zawiera wszystkie terminy używane w środowisku Defold z krótkimi opisami.
 github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Słowniczek Defold
-toc: '["Słowniczek Defold","Animation set (Zestaw do animowania)","Atlas (Galeria
-  obrazów)","Builtins (Wbudowane elementy)","Camera (Kamera)","Collision object (Obiekty
-  kolizji)","Component (Komponent)","Collection (Kolekcja)","Collection factory (Fabryka
-  kolekcji)","Collection proxy (Pełnomocnik kolekcji)","Cubemap (Tekstura sześcienna)","Debugging
-  (Debugowanie)","Display profiles (Profile wyświetlania)","Factory (Fabryka)","Font
-  (Czcionka)","Fragment shader (Shader fragmentu)","Gamepads (Kontroler)","Game object
-  (Obiekt gry)","GUI (Interfejs graficzny użytkownika)","GUI script (skrypt GUI)","Hot
-  reload (Szybkie przeładowanie)","Input binding (Wiązania wejść)","Label (Etykieta)","Library
-  (Biblioteka)","Lua language (język Lua)","Lua module (Moduł Lua)","Material (Materiał)","Message
-  (Wiadomość)","Model","ParticleFX (Efekt cząsteczkowy)","Profiling (Profilowanie)","Render","Render
-  script (skrypt do renderowania)","Script (Skrypt)","Sound (Dźwięk)","Spine model
-  (Model szkieletowy)","Spine scene (Scena Spine)","Sprite (Obraz)","Texture profiles
-  (Profile teksturowania)","Tile map (Mapa kafelków)","Tile source (Galeria kafelków)","Vertex
-  shader (Shader wierzchołków)"]'
+toc:
+- Słowniczek Defold
+- Animation set (Zestaw do animowania)
+- Atlas (Galeria obrazów)
+- Builtins (Wbudowane elementy)
+- Camera (Kamera)
+- Collision object (Obiekty kolizji)
+- Component (Komponent)
+- Collection (Kolekcja)
+- Collection factory (Fabryka kolekcji)
+- Collection proxy (Pełnomocnik kolekcji)
+- Cubemap (Tekstura sześcienna)
+- Debugging (Debugowanie)
+- Display profiles (Profile wyświetlania)
+- Factory (Fabryka)
+- Font (Czcionka)
+- Fragment shader (Shader fragmentu)
+- Gamepads (Kontroler)
+- Game object (Obiekt gry)
+- GUI (Interfejs graficzny użytkownika)
+- GUI script (skrypt GUI)
+- Hot reload (Szybkie przeładowanie)
+- Input binding (Wiązania wejść)
+- Label (Etykieta)
+- Library (Biblioteka)
+- Lua language (język Lua)
+- Lua module (Moduł Lua)
+- Material (Materiał)
+- Message (Wiadomość)
+- Model
+- ParticleFX (Efekt cząsteczkowy)
+- Profiling (Profilowanie)
+- Render
+- Render script (skrypt do renderowania)
+- Script (Skrypt)
+- Sound (Dźwięk)
+- Spine model (Model szkieletowy)
+- Spine scene (Scena Spine)
+- Sprite (Obraz)
+- Texture profiles (Profile teksturowania)
+- Tile map (Mapa kafelków)
+- Tile source (Galeria kafelków)
+- Vertex shader (Shader wierzchołków)
 ---
 
 # Słowniczek Defold

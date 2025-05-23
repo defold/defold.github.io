@@ -4,7 +4,14 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Google Play Instant
-toc: '["Google Play Instant","发布流程","版本号","android:targetSandboxVersion=2","API 使用","限制","测试"]'
+toc:
+- Google Play Instant
+- 发布流程
+- 版本号
+- android:targetSandboxVersion=2
+- API 使用
+- 限制
+- 测试
 ---
 
 # Google Play Instant

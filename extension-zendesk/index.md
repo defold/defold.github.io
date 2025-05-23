@@ -1,9 +1,16 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-zendesk
-title: Zendesk extension documentation
 brief: This manual covers how to setup and use Zendesk in Defold.
+github: https://github.com/defold/extension-zendesk
+language: en
+layout: manual
+title: Zendesk extension documentation
+toc:
+- Zendesk extension documentation
+- Installation
+- Configuration
+- Example
+- Source code
+- API reference
 ---
 
 # Zendesk extension documentation
@@ -58,5 +65,4 @@ end
 The source code is available on [GitHub](https://github.com/defold/extension-zendesk)
 
 
-## API reference
-[API Reference - zendesk](/extension-zendesk/zendesk_api)
+## API reference[API Reference - zendesk](/extension-zendesk/zendesk_api)

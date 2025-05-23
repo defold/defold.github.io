@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Defold GUI pie nodes
-toc: '["GUI pie nodes","Creating a pie node","Modify pie nodes at runtime"]'
+toc:
+- GUI pie nodes
+- Creating a pie node
+- Modify pie nodes at runtime
 ---
 
 # GUI pie nodes

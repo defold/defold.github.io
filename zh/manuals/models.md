@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 废弃的 3D 模型教程
-toc: '["模型"]'
+toc:
+- 模型
 ---
 
 # 模型

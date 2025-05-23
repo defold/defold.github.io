@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: it
 layout: manual
 title: Introduzione a Defold
-toc: '["Benvenuto in Defold","Da dove iniziare?"]'
+toc:
+- Benvenuto in Defold
+- Da dove iniziare?
 ---
 
 # Benvenuto in Defold

@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Deprecated 3D models doc
-toc: '["Models"]'
+toc:
+- Models
 ---
 
 # Models

@@ -4,8 +4,12 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Optimizing memory usage of a Defold game
-toc: '["Optimizing memory usage","Texture compression","Dynamic loading","Optimize
-  component counters","Optimize GUI node count"]'
+toc:
+- Optimizing memory usage
+- Texture compression
+- Dynamic loading
+- Optimize component counters
+- Optimize GUI node count
 ---
 
 # Optimizing memory usage

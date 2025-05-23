@@ -4,10 +4,19 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Kształty Kolizji
-toc: '["Kształty Kolizji","Kształty podstawowe","Kształt prostokątny","Kształt sfery","Kształt
-  kapsuły","Kształty złożone","Kształt kolizji mapy kafelków","Kształt kolizji wypukłej","Skalowanie
-  kształtów kolizji","Obracanie kształtów kolizji","Obracanie kształtów kolizji w
-  fizyce 3D","Obracanie kształtów kolizji w fizyce 2D"]'
+toc:
+- Kształty Kolizji
+- Kształty podstawowe
+- Kształt prostokątny
+- Kształt sfery
+- Kształt kapsuły
+- Kształty złożone
+- Kształt kolizji mapy kafelków
+- Kształt kolizji wypukłej
+- Skalowanie kształtów kolizji
+- Obracanie kształtów kolizji
+- Obracanie kształtów kolizji w fizyce 3D
+- Obracanie kształtów kolizji w fizyce 2D
 ---
 
 # Kształty Kolizji

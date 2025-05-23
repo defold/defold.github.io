@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的 Google Play Game 服务
-toc: '[]'
+toc: []
 ---
 
 [本教程已被移至这里](/extension-gpgs)

@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 重构
-toc: '["重构"]'
+toc:
+- 重构
 ---
 
 # 重构

@@ -4,8 +4,10 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Właściwości w Defoldzie
-toc: '["Właściwości","Właściwości obiektów gry i komponentów","Właściwości węzłów
-  GUI"]'
+toc:
+- Właściwości
+- Właściwości obiektów gry i komponentów
+- Właściwości węzłów GUI
 ---
 
 # Właściwości

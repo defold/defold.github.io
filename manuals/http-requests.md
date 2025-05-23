@@ -4,7 +4,13 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: HTTP Requests
-toc: '["HTTP requests","HTTP GET","HTTP POST","Other HTTP methods","API Reference","Extensions"]'
+toc:
+- HTTP requests
+- HTTP GET
+- HTTP POST
+- Other HTTP methods
+- API Reference
+- Extensions
 ---
 
 ## HTTP requests

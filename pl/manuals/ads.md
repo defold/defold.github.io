@@ -1,14 +1,19 @@
 ---
-brief: Wyświetlanie różnorodnych reklam hest powszechnym sposobem na zarabianie w
-  grach mobilnych i webowych. Ta instrukcja pokazuje jest używać róznych rodzajów
-  reklam do monetyzacji Twojej gry lub aplikacji.
+brief: Wyświetlanie różnorodnych reklam hest powszechnym sposobem na zarabianie w grach mobilnych i webowych. Ta instrukcja pokazuje jest używać róznych rodzajów reklam do monetyzacji Twojej gry lub aplikacji.
 github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Wyświetlanie reklam w Defoldzie
-toc: '["Reklamy","Format reklam","Reklamy banerowe","Reklamy między przejściami (interstitial)","Reklamy
-  nagradzane (reward)","Sieci reklamodawców","Jak zintegrować reklamy do Twojej gry?","Łączenie
-  reklam i zakupów wewnątrz aplikacji","Więcej"]'
+toc:
+- Reklamy
+- Format reklam
+- Reklamy banerowe
+- Reklamy między przejściami (interstitial)
+- Reklamy nagradzane (reward)
+- Sieci reklamodawców
+- Jak zintegrować reklamy do Twojej gry?
+- Łączenie reklam i zakupów wewnątrz aplikacji
+- Więcej
 ---
 
 # Reklamy

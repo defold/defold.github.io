@@ -4,8 +4,12 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Importing and editing assets
-toc: '["Importing and editing assets","Importing assets","Using assets","Editing external
-  assets","Editing Defold assets"]'
+toc:
+- Importing and editing assets
+- Importing assets
+- Using assets
+- Editing external assets
+- Editing Defold assets
 ---
 
 # Importing and editing assets

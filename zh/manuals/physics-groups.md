@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的碰撞组
-toc: '["碰撞组与碰撞掩码","碰撞检测"]'
+toc:
+- 碰撞组与碰撞掩码
+- 碰撞检测
 ---
 
 # 碰撞组与碰撞掩码

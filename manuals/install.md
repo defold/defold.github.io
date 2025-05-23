@@ -1,11 +1,11 @@
 ---
-brief: This manual explains how to download and install the Defold editor for your
-  operating system.
+brief: This manual explains how to download and install the Defold editor for your operating system.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Installing Defold
-toc: '["Installing Defold"]'
+toc:
+- Installing Defold
 ---
 
 # Installing Defold

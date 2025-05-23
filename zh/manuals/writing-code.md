@@ -4,8 +4,17 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 编写代码
-toc: '["编写代码","编写Lua脚本","使用其他语言再转换为 Lua","编写原生代码","使用内置代码编辑器","代码补全","检查配置","使用第三方代码编辑器","Visual
-  Studio Code - Defold Kit","文档工具"]'
+toc:
+- 编写代码
+- 编写Lua脚本
+- 使用其他语言再转换为 Lua
+- 编写原生代码
+- 使用内置代码编辑器
+- 代码补全
+- 检查配置
+- 使用第三方代码编辑器
+- Visual Studio Code - Defold Kit
+- 文档工具
 ---
 
 # 编写代码

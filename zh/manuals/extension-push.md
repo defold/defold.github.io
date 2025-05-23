@@ -4,7 +4,13 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 的 iOS 和 Android 推送通知
-toc: '["推送通知","安装扩展","iOS 配置","Android 配置","本地通知","本地通知查看"]'
+toc:
+- 推送通知
+- 安装扩展
+- iOS 配置
+- Android 配置
+- 本地通知
+- 本地通知查看
 ---
 
 # 推送通知

@@ -4,8 +4,14 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Sound Streaming in Defold
-toc: '["Sound Streaming","Example","How to enable streaming sounds","Easy way","Runtime
-  resources","Resource providers","Sound chunk cache"]'
+toc:
+- Sound Streaming
+- Example
+- How to enable streaming sounds
+- Easy way
+- Runtime resources
+- Resource providers
+- Sound chunk cache
 ---
 
 # Sound Streaming

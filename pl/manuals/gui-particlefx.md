@@ -4,8 +4,10 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Węzły efektów cząsteczkowych - particle FX w Defoldzie.
-toc: '["Węzeł GUI typu text ParticleFX","Dodawanie węzłów ParticleFX","Kontrolowanie
-  efektu"]'
+toc:
+- Węzeł GUI typu text ParticleFX
+- Dodawanie węzłów ParticleFX
+- Kontrolowanie efektu
 ---
 
 # Węzeł GUI typu text ParticleFX

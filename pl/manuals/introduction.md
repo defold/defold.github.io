@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Defold - Wprowadzenie
-toc: '["Witamy w Defoldzie!","Gdzie rozpocząć?"]'
+toc:
+- Witamy w Defoldzie!
+- Gdzie rozpocząć?
 ---
 
 # Witamy w Defoldzie!

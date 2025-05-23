@@ -1,12 +1,16 @@
 ---
-brief: Instrukcja opisuje jak efektywnie i szybko uzyskać pomoc, jeśli napotkasz jakiekolwiek
-  problemy z Defoldem.
+brief: Instrukcja opisuje jak efektywnie i szybko uzyskać pomoc, jeśli napotkasz jakiekolwiek problemy z Defoldem.
 github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Jak uzyskać pomoc?
-toc: '["Jak uzyskać pomoc?","Zgłoś problem na forum","Wymagane informacje","Zgłoś
-  problem z poziomu Edytora Defold","Przedysktuj problem na Discord","Logi"]'
+toc:
+- Jak uzyskać pomoc?
+- Zgłoś problem na forum
+- Wymagane informacje
+- Zgłoś problem z poziomu Edytora Defold
+- Przedysktuj problem na Discord
+- Logi
 ---
 
 # Jak uzyskać pomoc?

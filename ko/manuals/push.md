@@ -3,8 +3,12 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Push notifications","iOS setup","Android setup","Local push notifications","Inspecting
-  scheduled notifications"]'
+toc:
+- Push notifications
+- iOS setup
+- Android setup
+- Local push notifications
+- Inspecting scheduled notifications
 ---
 
 # Push notifications

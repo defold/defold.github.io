@@ -4,8 +4,19 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 打包应用
-toc: '["打包应用","从编辑器中打包","编译报告","Android","iOS","macOS","Linux","Windows","HTML5","命令行打包","Bundle
-  结构","Release 与 Debug"]'
+toc:
+- 打包应用
+- 从编辑器中打包
+- 编译报告
+- Android
+- iOS
+- macOS
+- Linux
+- Windows
+- HTML5
+- 命令行打包
+- Bundle 结构
+- Release 与 Debug
 ---
 
 # 打包应用

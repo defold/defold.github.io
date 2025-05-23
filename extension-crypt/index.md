@@ -1,9 +1,15 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-crypt
-title: Defold Crypt documentation
 brief: This manual covers how to use various hashing and encoding algorithms in Defold.
+github: https://github.com/defold/extension-crypt
+language: en
+layout: manual
+title: Defold Crypt documentation
+toc:
+- Defold Crypt documentation
+- Installation
+- Usage
+- Source code
+- API reference
 ---
 
 # Defold Crypt documentation
@@ -36,5 +42,4 @@ The API provides the following functions:
 The source code is available on [GitHub](https://github.com/defold/extension-crypt)
 
 
-## API reference
-[API Reference - crypt](/extension-crypt/crypt_api)
+## API reference[API Reference - crypt](/extension-crypt/crypt_api)

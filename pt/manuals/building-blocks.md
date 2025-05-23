@@ -1,12 +1,16 @@
 ---
-brief: Esse manual mostra detalhes relacionados ao funcionameno de objetos componentes
-  e coleções.
+brief: Esse manual mostra detalhes relacionados ao funcionameno de objetos componentes e coleções.
 github: https://github.com/defold/doc
 language: pt
 layout: manual
 title: Os Blocos Construtores do Defold
-toc: '["Building blocks","Collections","Game objects","Components","Objects added
-  in-place or by reference","Childing game objects"]'
+toc:
+- Building blocks
+- Collections
+- Game objects
+- Components
+- Objects added in-place or by reference
+- Childing game objects
 ---
 
 #  Building blocks

@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 原生扩展 - Build variants
-toc: '["App Manifest","上下文组合","语法"]'
+toc:
+- App Manifest
+- 上下文组合
+- 语法
 ---
 
 {% include shared/zh/build-variants.md %}

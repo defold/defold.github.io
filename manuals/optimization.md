@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Optimizing a Defold game
-toc: '["Optimizing a Defold game"]'
+toc:
+- Optimizing a Defold game
 ---
 
 # Optimizing a Defold game

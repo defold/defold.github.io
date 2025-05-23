@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Defold GUI Spine nodes
-toc: '[]'
+toc: []
 ---
 
 [This manual has moved](/extension-spine).

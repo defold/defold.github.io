@@ -4,9 +4,19 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Wejścia z gamepadów i innych kontrolerów w Defoldzie.
-toc: '["Gamepady","Przyciski","Analogowe gałki","Wiele gamepadów","Podłączenie i rozłączenie","Raw
-  gamepady","Plik ustawień gamepadów","Niezidentyfikowane gamepady","Gamepady w HTML5","Standardowe
-  gamepady","Gamepady na systemie Windows","Gamepady na systemie Android"]'
+toc:
+- Gamepady
+- Przyciski
+- Analogowe gałki
+- Wiele gamepadów
+- Podłączenie i rozłączenie
+- Raw gamepady
+- Plik ustawień gamepadów
+- Niezidentyfikowane gamepady
+- Gamepady w HTML5
+- Standardowe gamepady
+- Gamepady na systemie Windows
+- Gamepady na systemie Android
 ---
 
 <div class='sidenote' markdown='1'>

@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Refaktoryzacja
-toc: '["Refaktoryzacja"]'
+toc:
+- Refaktoryzacja
 ---
 
 # Refaktoryzacja

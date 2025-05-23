@@ -1,8 +1,5 @@
 ---
-brief: This tutorial is intended to give a taste of what making games in Defold is
-  about. It goes through creating a new project, based on a simple side-scroller.
-  You will then learn how to tweak the game to make it more fun. Finally you will
-  add a new game object. The tutorial should only take about 10 minutes.
+brief: This tutorial is intended to give a taste of what making games in Defold is about. It goes through creating a new project, based on a simple side-scroller. You will then learn how to tweak the game to make it more fun. Finally you will add a new game object. The tutorial should only take about 10 minutes.
 github: https://github.com/defold/tutorial-side-scroller
 layout: tutorial
 title: Side scroller tutorial

@@ -1,12 +1,15 @@
 ---
-brief: This manual explains how to add custom properties to script components and
-  access them from the editor and runtime scripts.
+brief: This manual explains how to add custom properties to script components and access them from the editor and runtime scripts.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Script component properties
-toc: '["Script properties","Defining a script property","Accessing script properties","Factory
-  created objects","Resource properties"]'
+toc:
+- Script properties
+- Defining a script property
+- Accessing script properties
+- Factory created objects
+- Resource properties
 ---
 
 # Script properties

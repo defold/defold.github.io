@@ -3,8 +3,12 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Rendering","The default renderer","Render predicates","The render script","System
-  messages"]'
+toc:
+- Rendering
+- The default renderer
+- Render predicates
+- The render script
+- System messages
 ---
 
 # Rendering

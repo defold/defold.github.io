@@ -4,7 +4,12 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的碰撞对象
-toc: '["碰撞对象","加入碰撞對象组件","加入碰撞形状","碰撞對象屬性","運行時屬性"]'
+toc:
+- 碰撞对象
+- 加入碰撞對象组件
+- 加入碰撞形状
+- 碰撞對象屬性
+- 運行時屬性
 ---
 
 # 碰撞对象

@@ -4,9 +4,47 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 项目配置
-toc: '["项目配置","各类设置","Project","Bootstrap","Library","Script","Engine","Display","Render","Physics","Graphics","Shader","Input","Resource","Network","Collection","Sound","Sprite","Tilemap","Spine","Mesh","Model","GUI","Label","Particle
-  FX","Collection proxy","Collection factory","Factory","iOS","Android","macOS","Windows","HTML5","IAP","Live
-  update","Native extension","Profiler","File format","在引擎启动时设定配置值","自定义项目配置文件"]'
+toc:
+- 项目配置
+- 各类设置
+- Project
+- Bootstrap
+- Library
+- Script
+- Engine
+- Display
+- Render
+- Physics
+- Graphics
+- Shader
+- Input
+- Resource
+- Network
+- Collection
+- Sound
+- Sprite
+- Tilemap
+- Spine
+- Mesh
+- Model
+- GUI
+- Label
+- Particle FX
+- Collection proxy
+- Collection factory
+- Factory
+- iOS
+- Android
+- macOS
+- Windows
+- HTML5
+- IAP
+- Live update
+- Native extension
+- Profiler
+- File format
+- 在引擎启动时设定配置值
+- 自定义项目配置文件
 ---
 
 # 项目配置

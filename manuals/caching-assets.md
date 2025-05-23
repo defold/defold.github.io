@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Caching assets
-toc: '["Caching assets","Project cache","Local cache","Remote cache"]'
+toc:
+- Caching assets
+- Project cache
+- Local cache
+- Remote cache
 ---
 
 # Caching assets

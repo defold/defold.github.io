@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold瓷砖图源教程
-toc: '["Tile Source","创建 Tile Source","Tile Source 逐帧动画","Tile Source 碰撞图形"]'
+toc:
+- Tile Source
+- 创建 Tile Source
+- Tile Source 逐帧动画
+- Tile Source 碰撞图形
 ---
 
 # Tile Source

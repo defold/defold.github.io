@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold Facebook 教程
-toc: '[]'
+toc: []
 ---
 
 本教程已移至 [这里](/extension-facebook)

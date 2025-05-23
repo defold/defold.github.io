@@ -4,8 +4,19 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 编辑器脚本
-toc: '["编辑器脚本","编辑器脚本运行环境",".editor_script 构成","编辑器 API","Command","Action","可撤销行为","不可撤销行为","行为混用及其副作用","Lifecycle
-  hooks","Editor scripts in libraries","Language servers"]'
+toc:
+- 编辑器脚本
+- 编辑器脚本运行环境
+- .editor_script 构成
+- 编辑器 API
+- Command
+- Action
+- 可撤销行为
+- 不可撤销行为
+- 行为混用及其副作用
+- Lifecycle hooks
+- Editor scripts in libraries
+- Language servers
 ---
 
 # 编辑器脚本

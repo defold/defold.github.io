@@ -1,9 +1,34 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-spine
-title: Spine animation in Defold
 brief: This manual explains how to bring Spine animations from _Spine_ into Defold.
+github: https://github.com/defold/extension-spine
+language: en
+layout: manual
+title: Spine animation in Defold
+toc:
+- Spine animation
+- Requirements
+- Installation
+- Migration guide
+- Spine content
+- GameObject
+- GUI
+- Concepts
+- Animation tools
+- Importing a Spine character and animations
+- Project configuration
+- Creating Spine model components
+- Spine model properties
+- Runtime manipulation
+- Material constants
+- The bone hierarchy
+- Playing animations
+- Cursor animation
+- Timeline events
+- Playback Modes
+- Creating Spine GUI nodes
+- Runtime animation control
+- GUI node bone hierarchy
+- Atlas caveats
 ---
 
 # Spine animation
@@ -443,6 +468,5 @@ If you select <kbd>Add Images</kbd> Defold will automatically create animation g
 
 So what do you do if your animation references "head_parts/eyes"? The easiest way to accomplish a match is to add an animation group (right click the root node in the Atlas *Outline* view and select *Add Animation Group*). You can then name that group "head_parts/eyes" (it's just a name, not a path and `/` characters are legal) and then add the file "eyes.png" to the group.
 
-![Atlas path names](atlas_names.png)
-[API Reference - spine](/extension-spine/spine_api)
+![Atlas path names](atlas_names.png)[API Reference - spine](/extension-spine/spine_api)
 [API Reference - gui](/extension-spine/gui_api)

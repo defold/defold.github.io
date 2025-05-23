@@ -1,12 +1,14 @@
 ---
-brief: Ta instrukcja wyjaśnia jak korzystać z buforowania zasobów w celu przyspieszenia
-  budowania.
+brief: Ta instrukcja wyjaśnia jak korzystać z buforowania zasobów w celu przyspieszenia budowania.
 github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Buforowanie zasobów
-toc: '["Buforowanie zasobów","Project cache (Bufor projektu)","Local cache (Bufor
-  lokalny)","Remote cache (Bufor zdalny)"]'
+toc:
+- Buforowanie zasobów
+- Project cache (Bufor projektu)
+- Local cache (Bufor lokalny)
+- Remote cache (Bufor zdalny)
 ---
 
 # Buforowanie zasobów

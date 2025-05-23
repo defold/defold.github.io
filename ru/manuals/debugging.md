@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: Отладка в Defold
-toc: '["Отладка"]'
+toc:
+- Отладка
 ---
 
 # Отладка

@@ -4,7 +4,12 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 集合工厂教程
-toc: '["集合工厂","创建集合","属性","工厂资源的动态加载","动态 prototype"]'
+toc:
+- 集合工厂
+- 创建集合
+- 属性
+- 工厂资源的动态加载
+- 动态 prototype
 ---
 
 # 集合工厂

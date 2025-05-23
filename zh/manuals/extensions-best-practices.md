@@ -4,8 +4,17 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 原生扩展 - 最佳实践
-toc: '["最佳实践","Defold 代码","C++ 版本","标准模板库 - STL","函数隐藏","第三方库","开源依赖","项目结构","Lua
-  api","文件夹结构"]'
+toc:
+- 最佳实践
+- Defold 代码
+- C++ 版本
+- 标准模板库 - STL
+- 函数隐藏
+- 第三方库
+- 开源依赖
+- 项目结构
+- Lua api
+- 文件夹结构
 ---
 
 # 最佳实践

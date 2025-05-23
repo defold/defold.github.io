@@ -4,7 +4,12 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 项目设立
-toc: '["项目设立","创建本地项目","上传项目至 GitHub","打开已有项目","打开常用项目"]'
+toc:
+- 项目设立
+- 创建本地项目
+- 上传项目至 GitHub
+- 打开已有项目
+- 打开常用项目
 ---
 
 # 项目设立

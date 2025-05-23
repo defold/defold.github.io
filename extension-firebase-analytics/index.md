@@ -1,9 +1,16 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-firebase-analytics
-title: Defold Firebase Analytics documentation
 brief: This manual covers how to setup and use Firebase Analytics in Defold.
+github: https://github.com/defold/extension-firebase-analytics
+language: en
+layout: manual
+title: Defold Firebase Analytics documentation
+toc:
+- Defold Firebase Analytics documentation
+- Installation
+- Setup
+- Usage
+- Source code
+- API reference
 ---
 
 # Defold Firebase Analytics documentation
@@ -76,5 +83,4 @@ Read about [events](https://firebase.google.com/docs/reference/android/com/googl
 The source code is available on [GitHub](https://github.com/defold/extension-firebase-analytics)
 
 
-## API reference
-[API Reference - firebase](/extension-firebase-analytics/firebase_api)
+## API reference[API Reference - firebase](/extension-firebase-analytics/firebase_api)

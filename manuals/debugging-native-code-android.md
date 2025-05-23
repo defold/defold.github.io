@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Debugging on Android
-toc: '["Debugging on Android","Android Studio","Notes","Native Extension job folder"]'
+toc:
+- Debugging on Android
+- Android Studio
+- Notes
+- Native Extension job folder
 ---
 
 # Debugging on Android

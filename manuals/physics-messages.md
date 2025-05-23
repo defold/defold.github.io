@@ -1,12 +1,15 @@
 ---
-brief: When two objects collide, the engine may call the event listener or broad cast
-  messages.
+brief: When two objects collide, the engine may call the event listener or broad cast messages.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Collision messages in Defold
-toc: '["Collision messages","Event filtering","Collision response","Contact point
-  response","Trigger response"]'
+toc:
+- Collision messages
+- Event filtering
+- Collision response
+- Contact point response
+- Trigger response
 ---
 
 # Collision messages

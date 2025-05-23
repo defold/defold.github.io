@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Animation in Defold manual
-toc: '["Animation"]'
+toc:
+- Animation
 ---
 
 # Animation

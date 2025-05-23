@@ -3,7 +3,11 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Cameras","Creating a camera","Camera focus","Orthographic projection"]'
+toc:
+- Cameras
+- Creating a camera
+- Camera focus
+- Orthographic projection
 ---
 
 # Cameras

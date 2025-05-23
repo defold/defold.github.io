@@ -1,9 +1,19 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-googleplayinstant
-title: Google Play Instant
 brief: This manual explains how to create Google Play Instant game with Defold.
+github: https://github.com/defold/extension-googleplayinstant
+language: en
+layout: manual
+title: Google Play Instant
+toc:
+- Google Play Instant
+- Publishing process
+- Version codes
+- android:targetSandboxVersion=2
+- Technical Requirements
+- API Usage
+- Testing
+- Source code
+- API reference
 ---
 
 # Google Play Instant
@@ -206,5 +216,4 @@ More information about debugging on mobile devices available in the [Debugging m
 The source code is available on [GitHub](https://github.com/defold/extension-googleplayinstant)
 
 
-## API reference
-[API Reference - instantapp](/extension-googleplayinstant/instantapp_api)
+## API reference[API Reference - instantapp](/extension-googleplayinstant/instantapp_api)

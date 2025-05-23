@@ -1,13 +1,15 @@
 ---
-brief: This manual explains how Defold automatically manages resources and how you
-  can manually manage loading of resources to adhere to memory footprint and bundle
-  size constraints.
+brief: This manual explains how Defold automatically manages resources and how you can manually manage loading of resources to adhere to memory footprint and bundle size constraints.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Defold resource management
-toc: '["Resource management","The static resource tree","Dynamically loading factory
-  resources","Unloading dynamically loaded resources","Excluding resources from bundle"]'
+toc:
+- Resource management
+- The static resource tree
+- Dynamically loading factory resources
+- Unloading dynamically loaded resources
+- Excluding resources from bundle
 ---
 
 # Resource management

@@ -1,9 +1,18 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-webmonetization
-title: Web Monetization in Defold
 brief: Web Monetization is an exciting new and non-intrusive way for game developers to monetize their web games while at the same time offering premium content to their paying players.
+github: https://github.com/defold/extension-webmonetization
+language: en
+layout: manual
+title: Web Monetization in Defold
+toc:
+- Web Monetization
+- How does it work?
+- Payment Pointers
+- How to set up Web Monetization in Defold
+- Creating a payment pointer
+- Defold project setup
+- How to use Web Monetization in Defold
+- Best practices
 ---
 
 # Web Monetization

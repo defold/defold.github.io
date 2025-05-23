@@ -4,8 +4,12 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Tworzenie nowego projektu
-toc: '["Tworzenie projektu","Tworzenie nowego projektu lokalnie","Dodawanie projektu
-  na Githuba","Otwieranie istniejącego projektu","Otwarcie ostatniego projektu"]'
+toc:
+- Tworzenie projektu
+- Tworzenie nowego projektu lokalnie
+- Dodawanie projektu na Githuba
+- Otwieranie istniejącego projektu
+- Otwarcie ostatniego projektu
 ---
 
 # Tworzenie projektu

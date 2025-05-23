@@ -4,8 +4,19 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Bundling an application
-toc: '["Bundling an application","Bundling from within the editor","Build reports","Android","iOS","macOS","Linux","Windows","HTML5","Bundling
-  from the command line","The bundle layout","Release vs Debug"]'
+toc:
+- Bundling an application
+- Bundling from within the editor
+- Build reports
+- Android
+- iOS
+- macOS
+- Linux
+- Windows
+- HTML5
+- Bundling from the command line
+- The bundle layout
+- Release vs Debug
 ---
 
 # Bundling an application

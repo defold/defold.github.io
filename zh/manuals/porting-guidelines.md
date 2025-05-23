@@ -4,9 +4,27 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 移植指南
-toc: '["移植指南","输入","本地化","商店资料","应用图标","商店横幅和图像","保存游戏进度","在桌面设备, 手机和 web 游戏里保存进度","在游戏主机里保存进度","Build
-  artifacts","应用优化","性能","屏幕分辨率","手机刘海和打孔屏","平台相关指导","Android","Consoles","Nintendo
-  Switch","PlayStation®4","HTML5"]'
+toc:
+- 移植指南
+- 输入
+- 本地化
+- 商店资料
+- 应用图标
+- 商店横幅和图像
+- 保存游戏进度
+- 在桌面设备, 手机和 web 游戏里保存进度
+- 在游戏主机里保存进度
+- Build artifacts
+- 应用优化
+- 性能
+- 屏幕分辨率
+- 手机刘海和打孔屏
+- 平台相关指导
+- Android
+- Consoles
+- Nintendo Switch
+- PlayStation®4
+- HTML5
 ---
 
 # 移植指南

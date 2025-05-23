@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Pisanie logiki gry w skryptach
-toc: '["Skrypty","Typy skryptów","Wykonywanie skryptów, wywołania zwrotne i self"]'
+toc:
+- Skrypty
+- Typy skryptów
+- Wykonywanie skryptów, wywołania zwrotne i self
 ---
 
 # Skrypty

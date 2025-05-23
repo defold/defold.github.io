@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Defold project ignores
-toc: '["Ignoring files","The .defignore file","The .defunload file"]'
+toc:
+- Ignoring files
+- The .defignore file
+- The .defunload file
 ---
 
 # Ignoring files

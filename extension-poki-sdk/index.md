@@ -1,9 +1,29 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-poki-sdk
-title: Defold Poki SDK extension API documentation
 brief: This manual covers how to integrate and use the Poki SDK in in Defold.
+github: https://github.com/defold/extension-poki-sdk
+language: en
+layout: manual
+title: Defold Poki SDK extension API documentation
+toc:
+- Defold Poki SDK extension API documentation
+- Installation
+- Usage
+- Implement the gameplay events
+- Implement commercial breaks
+- Important information about commercial breaks
+- Implement rewarded breaks
+- About the rewarded break timer
+- Final steps
+- Disable sound and input during ads
+- Upload and test your game in Poki for Developers
+- Error handling
+- Shareable URLs & URL manipulation
+- Creating shareable urls and changing the Poki.com url
+- Reading Poki.com url params
+- Example
+- Source code
+- API
+- API reference
 ---
 
 # Defold Poki SDK extension API documentation
@@ -162,5 +182,4 @@ local value = poki_sdk.get_url_param(key) -- in JS it's PokiSDK.getURLParam('id'
 ```
 
 
-## API reference
-[API Reference - poki_sdk](/extension-poki-sdk/poki_sdk_api)
+## API reference[API Reference - poki_sdk](/extension-poki-sdk/poki_sdk_api)

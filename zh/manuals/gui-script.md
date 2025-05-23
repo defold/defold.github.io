@@ -4,7 +4,14 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的 GUI 脚本
-toc: '["GUI 脚本","在 GUI 上添加脚本","gui 命名空间","消息传递","定位节点","动态创建节点","动态节点id"]'
+toc:
+- GUI 脚本
+- 在 GUI 上添加脚本
+- gui 命名空间
+- 消息传递
+- 定位节点
+- 动态创建节点
+- 动态节点id
 ---
 
 # GUI 脚本

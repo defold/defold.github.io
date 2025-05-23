@@ -1,9 +1,17 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-steam
-title: Defold Steam extension API documentation
 brief: This manual covers how to integrate a game with the Steamworks SDK.
+github: https://github.com/defold/extension-steam
+language: en
+layout: manual
+title: Defold Steam extension API documentation
+toc:
+- Defold Steam extension API documentation
+- Installation
+- macOS
+- Usage
+- Example
+- Source code
+- API reference
 ---
 
 # Defold Steam extension API documentation
@@ -62,5 +70,4 @@ end
 The source code is available on [GitHub](https://github.com/defold/extension-steam)
 
 
-## API reference
-[API Reference - steam](/extension-steam/steam_api)
+## API reference[API Reference - steam](/extension-steam/steam_api)

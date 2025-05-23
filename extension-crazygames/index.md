@@ -1,9 +1,17 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-crazygames
-title: Defold CrazyGames SDK extension API documentation
 brief: This manual covers how to integrate and use the CrazyGames SDK in Defold.
+github: https://github.com/defold/extension-crazygames
+language: en
+layout: manual
+title: Defold CrazyGames SDK extension API documentation
+toc:
+- Defold CrazyGames SDK extension API documentation
+- Installation
+- Modules
+- Example
+- Quality Assurance Tool
+- Source code
+- API reference
 ---
 
 # Defold CrazyGames SDK extension API documentation
@@ -52,5 +60,4 @@ You can use the CrazyGames QATool to test your SDK implementation. You can use t
 The source code is available on [GitHub](https://github.com/defold/extension-crazygames)
 
 
-## API reference
-[API Reference - crazygames](/extension-crazygames/crazygames_api)
+## API reference[API Reference - crazygames](/extension-crazygames/crazygames_api)

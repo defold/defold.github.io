@@ -4,8 +4,19 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 为 Defold 编写原生扩展
-toc: '["原生扩展","编译服务器","项目结构","Manifest files","共享原生扩展","简单示例","扩展程序生命周期","预定义的平台标识","编译服务器日志","ext.manifest
-  文件","可用参数项","原生扩展举例"]'
+toc:
+- 原生扩展
+- 编译服务器
+- 项目结构
+- Manifest files
+- 共享原生扩展
+- 简单示例
+- 扩展程序生命周期
+- 预定义的平台标识
+- 编译服务器日志
+- ext.manifest 文件
+- 可用参数项
+- 原生扩展举例
 ---
 
 # 原生扩展

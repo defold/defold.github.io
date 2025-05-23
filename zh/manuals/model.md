@@ -4,7 +4,17 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的3D模型
-toc: '["Model 组件","创建 model 组件","模型属性","编辑时操作","运行时操作","运行时动画","修改属性","材质","材质常量","渲染"]'
+toc:
+- Model 组件
+- 创建 model 组件
+- 模型属性
+- 编辑时操作
+- 运行时操作
+- 运行时动画
+- 修改属性
+- 材质
+- 材质常量
+- 渲染
 ---
 
 # Model 组件

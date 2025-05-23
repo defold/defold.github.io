@@ -4,8 +4,25 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的 Lua 编程
-toc: '["Defold 中的 Lua","Lua 版本","标准库和扩展","Lua 书籍和资源","在綫資源","書籍","视频","语法","变量和数据类型","Operators","流程控制","本地,
-  全局和词法范围","变量覆盖","Coroutines","Defold 里的 Lua 上下文","性能考虑","内存和垃圾收集","最佳实践"]'
+toc:
+- Defold 中的 Lua
+- Lua 版本
+- 标准库和扩展
+- Lua 书籍和资源
+- 在綫資源
+- 書籍
+- 视频
+- 语法
+- 变量和数据类型
+- Operators
+- 流程控制
+- 本地, 全局和词法范围
+- 变量覆盖
+- Coroutines
+- Defold 里的 Lua 上下文
+- 性能考虑
+- 内存和垃圾收集
+- 最佳实践
 ---
 
 # Defold 中的 Lua

@@ -4,8 +4,11 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Fizyka w Defoldzie
-toc: '["Fizyka","Jednostki używane w symulacji silnika fizycznego","Aktualizacja fizyki","Uwagi
-  i typowe problemy"]'
+toc:
+- Fizyka
+- Jednostki używane w symulacji silnika fizycznego
+- Aktualizacja fizyki
+- Uwagi i typowe problemy
 ---
 
 # Fizyka

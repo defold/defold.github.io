@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 项目模板
-toc: '["项目模板"]'
+toc:
+- 项目模板
 ---
 
 # 项目模板

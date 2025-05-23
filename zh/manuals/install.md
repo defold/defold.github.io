@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 安装 Defold
-toc: '["安装 Defold"]'
+toc:
+- 安装 Defold
 ---
 
 # 安装 Defold

@@ -4,9 +4,17 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Mouse and touch input in Defold
-toc: '["Mouse Triggers","Mouse buttons","Mouse wheel","Mouse movement","Touch Triggers","Single-touch","Multi-touch","Detecting
-  click or tap on objects","Detecting interaction with GUI nodes","Detecting interaction
-  with game objects"]'
+toc:
+- Mouse Triggers
+- Mouse buttons
+- Mouse wheel
+- Mouse movement
+- Touch Triggers
+- Single-touch
+- Multi-touch
+- Detecting click or tap on objects
+- Detecting interaction with GUI nodes
+- Detecting interaction with game objects
 ---
 
 <div class='sidenote' markdown='1'>

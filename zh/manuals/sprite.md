@@ -4,7 +4,17 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 显示 2D 图片
-toc: '["Sprites","Sprite 属性","混合模式","运行时操作","材质常量","材质属性","相关项目配置","多纹理 sprites","动画","UVs"]'
+toc:
+- Sprites
+- Sprite 属性
+- 混合模式
+- 运行时操作
+- 材质常量
+- 材质属性
+- 相关项目配置
+- 多纹理 sprites
+- 动画
+- UVs
 ---
 
 #  Sprites

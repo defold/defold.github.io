@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Importowanie i używanie grafiki 2D
-toc: '["Importowanie grafiki 2D","Tworzenie zasobów Defolda","Używanie zasobów Defolda"]'
+toc:
+- Importowanie grafiki 2D
+- Tworzenie zasobów Defolda
+- Używanie zasobów Defolda
 ---
 
 # Importowanie grafiki 2D

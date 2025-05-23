@@ -4,7 +4,13 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的调试
-toc: '["调试游戏逻辑","打印输出与可视调试","Running the debugger","Lua 调试库","调试步骤","物理引擎调试"]'
+toc:
+- 调试游戏逻辑
+- 打印输出与可视调试
+- Running the debugger
+- Lua 调试库
+- 调试步骤
+- 物理引擎调试
 ---
 
 # 调试游戏逻辑

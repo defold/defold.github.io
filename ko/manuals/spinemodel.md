@@ -3,7 +3,10 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Spine Model","Creating SpineModel components","Runtime animation"]'
+toc:
+- Spine Model
+- Creating SpineModel components
+- Runtime animation
 ---
 
 # Spine Model

@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: WebSocket 连接
-toc: '["WebSocket 连接"]'
+toc:
+- WebSocket 连接
 ---
 
 ## WebSocket 连接

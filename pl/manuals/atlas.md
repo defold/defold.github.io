@@ -4,10 +4,15 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Atlas (Galeria obrazów)
-toc: '["Atlas (Galeria obrazów)","Tworzenie Atlasu","Właściwości Atlasu","Właściwości
-  Obrazu","Właściwości Animacji","Tworzenie tekstury i atlasu w czasie wykonania programu
-  (Runtime)","Tworzenie zasobu tekstury w czasie wykonania","Tworzenie atlasu w czasie
-  wykonania"]'
+toc:
+- Atlas (Galeria obrazów)
+- Tworzenie Atlasu
+- Właściwości Atlasu
+- Właściwości Obrazu
+- Właściwości Animacji
+- Tworzenie tekstury i atlasu w czasie wykonania programu (Runtime)
+- Tworzenie zasobu tekstury w czasie wykonania
+- Tworzenie atlasu w czasie wykonania
 ---
 
 # Atlas (Galeria obrazów)

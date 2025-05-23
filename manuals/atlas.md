@@ -4,9 +4,15 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Atlas manual
-toc: '["Atlas","Creating an Atlas","Atlas properties","Image properties","Animation
-  properties","Runtime Texture and Atlas creation","Creating a Texture resource at
-  runtime","Creating an Atlas at runtime"]'
+toc:
+- Atlas
+- Creating an Atlas
+- Atlas properties
+- Image properties
+- Animation properties
+- Runtime Texture and Atlas creation
+- Creating a Texture resource at runtime
+- Creating an Atlas at runtime
 ---
 
 # Atlas

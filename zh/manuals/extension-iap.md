@@ -4,7 +4,18 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的内支付
-toc: '["应用内支付","安装扩展","使用静态报告测试 Google Play Billing","内支付准备流程","异步的内支付 API","实时付款","非实时付款","购买交付","消耗品与非消耗品","支付收据","除错"]'
+toc:
+- 应用内支付
+- 安装扩展
+- 使用静态报告测试 Google Play Billing
+- 内支付准备流程
+- 异步的内支付 API
+- 实时付款
+- 非实时付款
+- 购买交付
+- 消耗品与非消耗品
+- 支付收据
+- 除错
 ---
 
 # 应用内支付

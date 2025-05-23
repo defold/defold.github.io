@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: pt
 layout: manual
 title: Depuração em Defold.
-toc: '["Depuração"]'
+toc:
+- Depuração
 ---
 
 # Depuração 

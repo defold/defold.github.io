@@ -1,13 +1,21 @@
 ---
-brief: Defold wspiera automatyczne przetwarzanie tekstur i kompresję obrazów. Ta instrukcja
-  opisuje te funckjonalności.
+brief: Defold wspiera automatyczne przetwarzanie tekstur i kompresję obrazów. Ta instrukcja opisuje te funckjonalności.
 github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Profile tekstur w Defoldzie
-toc: '["Profile tekstur w Defoldzie","Profile tekstur","Ustawienia ścieżki","Profile","Formaty
-  tekstur","Typy kompresji","Przykładowy obraz","Czasy kompresji","Utrata sygnału","Rozmiary
-  plików skompresowanych","Jakość obrazu"]'
+toc:
+- Profile tekstur w Defoldzie
+- Profile tekstur
+- Ustawienia ścieżki
+- Profile
+- Formaty tekstur
+- Typy kompresji
+- Przykładowy obraz
+- Czasy kompresji
+- Utrata sygnału
+- Rozmiary plików skompresowanych
+- Jakość obrazu
 ---
 
 # Profile tekstur w Defoldzie

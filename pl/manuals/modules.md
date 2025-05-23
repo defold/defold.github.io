@@ -4,8 +4,12 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Moduły Lua w Defoldzie
-toc: '["Moduły Lua","Wymaganie/załączanie plików Lua","Modułu","Ładowanie modułów
-  w trakcie działania (hot reloading)","Moduły a stan"]'
+toc:
+- Moduły Lua
+- Wymaganie/załączanie plików Lua
+- Modułu
+- Ładowanie modułów w trakcie działania (hot reloading)
+- Moduły a stan
 ---
 
 # Moduły Lua

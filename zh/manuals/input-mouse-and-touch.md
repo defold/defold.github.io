@@ -4,7 +4,17 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 鼠标和触摸输入教程
-toc: '["Mouse Triggers","鼠标键","鼠标滚轮","鼠标移动","触摸触发器","Single-touch","Multi-touch","拾取检测","界面点击检测","游戏对象点击检测"]'
+toc:
+- Mouse Triggers
+- 鼠标键
+- 鼠标滚轮
+- 鼠标移动
+- 触摸触发器
+- Single-touch
+- Multi-touch
+- 拾取检测
+- 界面点击检测
+- 游戏对象点击检测
 ---
 
 <div class='sidenote' markdown='1'>

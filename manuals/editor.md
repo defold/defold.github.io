@@ -1,15 +1,31 @@
 ---
-brief: This manual gives an overview on how the Defold editor look and works, and
-  how to navigate in it.
+brief: This manual gives an overview on how the Defold editor look and works, and how to navigate in it.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Editor overview
-toc: '["Editor overview","Starting the editor","The editor panes","Editor pane","Outline
-  pane","Properties pane","Tools pane","Changed Files pane","Side-by-side editing","The
-  scene editor","Selecting objects","Move tool","Rotate tool","Scale tool","Visibility
-  filters","Creating new project files","Importing files to your project","Updating
-  the editor","Preferences","Editor logs","FAQ"]'
+toc:
+- Editor overview
+- Starting the editor
+- The editor panes
+- Editor pane
+- Outline pane
+- Properties pane
+- Tools pane
+- Changed Files pane
+- Side-by-side editing
+- The scene editor
+- Selecting objects
+- Move tool
+- Rotate tool
+- Scale tool
+- Visibility filters
+- Creating new project files
+- Importing files to your project
+- Updating the editor
+- Preferences
+- Editor logs
+- FAQ
 ---
 
 # Editor overview

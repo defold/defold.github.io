@@ -3,8 +3,12 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Layouts","Display profiles","GUI layouts","Layout change messages","In game
-  content"]'
+toc:
+- Layouts
+- Display profiles
+- GUI layouts
+- Layout change messages
+- In game content
 ---
 
 # Layouts

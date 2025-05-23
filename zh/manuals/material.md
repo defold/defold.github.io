@@ -4,7 +4,14 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 材质教程
-toc: '["材质","创建材质","Attributes","顶点和片元常量","采样器","采样器设置","常量缓存"]'
+toc:
+- 材质
+- 创建材质
+- Attributes
+- 顶点和片元常量
+- 采样器
+- 采样器设置
+- 常量缓存
 ---
 
 # 材质

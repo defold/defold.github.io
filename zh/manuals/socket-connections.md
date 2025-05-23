@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Socket 连接
-toc: '["Socket 连接","API 文档与示例"]'
+toc:
+- Socket 连接
+- API 文档与示例
 ---
 
 ## Socket 连接

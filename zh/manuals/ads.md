@@ -4,7 +4,16 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 在 Defold 中播放广告
-toc: '["广告","类型","广告条","插播广告","奖励广告","广告商","广告游戏整合","广告与内支付","更多资源"]'
+toc:
+- 广告
+- 类型
+- 广告条
+- 插播广告
+- 奖励广告
+- 广告商
+- 广告游戏整合
+- 广告与内支付
+- 更多资源
 ---
 
 # 广告

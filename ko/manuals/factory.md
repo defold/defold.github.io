@@ -3,7 +3,10 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Factory components","Instance limits","Pooling of game objects"]'
+toc:
+- Factory components
+- Instance limits
+- Pooling of game objects
 ---
 
 # Factory components

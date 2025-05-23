@@ -4,8 +4,11 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Optimizing battery usage of a Defold game
-toc: '["Optimize battery usage","Disable accelerometer","Platform specific optimizations","Android
-  Device Performance Framework"]'
+toc:
+- Optimize battery usage
+- Disable accelerometer
+- Platform specific optimizations
+- Android Device Performance Framework
 ---
 
 # Optimize battery usage

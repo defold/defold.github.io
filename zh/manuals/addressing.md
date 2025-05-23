@@ -4,7 +4,17 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 定位
-toc: '["定位","标志","集合","相对地址","简化符","游戏对象路径","绝对地址","哈希标记","URLs","构建 URL 对象"]'
+toc:
+- 定位
+- 标志
+- 集合
+- 相对地址
+- 简化符
+- 游戏对象路径
+- 绝对地址
+- 哈希标记
+- URLs
+- 构建 URL 对象
 ---
 
 # 定位

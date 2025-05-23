@@ -4,7 +4,12 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的物理关节
-toc: '["關節約束","建立关节","删除关节","关节属性及修改","关节反作用力和扭矩"]'
+toc:
+- 關節約束
+- 建立关节
+- 删除关节
+- 关节属性及修改
+- 关节反作用力和扭矩
 ---
 
 # 關節約束

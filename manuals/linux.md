@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Defold development for the Linux platform
-toc: '["Linux development","Project settings","FAQ"]'
+toc:
+- Linux development
+- Project settings
+- FAQ
 ---
 
 # Linux development

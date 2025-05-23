@@ -3,11 +3,23 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Lua in Defold","Lua versions","Lua books and resources","Syntax","Variables
-  and data types","Operators","Flow control (흐름제어)","Locals, globals and lexical scoping","Coroutines","Defold
-  scripts","Script execution and callbacks","Reactive logic(반응형 로직)","Lua contexts
-  in Defold","Performance considerations(성능 고려사항)","Memory and garbage collection(메모리와
-  가비지 컬렉션)","Best practices"]'
+toc:
+- Lua in Defold
+- Lua versions
+- Lua books and resources
+- Syntax
+- Variables and data types
+- Operators
+- Flow control (흐름제어)
+- Locals, globals and lexical scoping
+- Coroutines
+- Defold scripts
+- Script execution and callbacks
+- Reactive logic(반응형 로직)
+- Lua contexts in Defold
+- Performance considerations(성능 고려사항)
+- Memory and garbage collection(메모리와 가비지 컬렉션)
+- Best practices
 ---
 
 # Lua in Defold

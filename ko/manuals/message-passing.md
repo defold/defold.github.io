@@ -3,9 +3,14 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Message passing","Addressing and URLs","A concrete example (구체적인 예제)","Message
-  data","on_message()","Child-parent vs. collection-object hierarchies (부모-자식 계층구조와
-  컬렉션-오브젝트 계층구조 비교하기)","Advanced topics"]'
+toc:
+- Message passing
+- Addressing and URLs
+- A concrete example (구체적인 예제)
+- Message data
+- on_message()
+- Child-parent vs. collection-object hierarchies (부모-자식 계층구조와 컬렉션-오브젝트 계층구조 비교하기)
+- Advanced topics
 ---
 
 # Message passing

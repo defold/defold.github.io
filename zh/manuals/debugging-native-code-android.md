@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Android 平台调试
-toc: '["Android 平台调试","Android Studio","注意","原生扩展 job 文件夹"]'
+toc:
+- Android 平台调试
+- Android Studio
+- 注意
+- 原生扩展 job 文件夹
 ---
 
 # Android 平台调试

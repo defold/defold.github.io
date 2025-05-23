@@ -3,7 +3,11 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Building blocks","Game objects","Components","Collections"]'
+toc:
+- Building blocks
+- Game objects
+- Components
+- Collections
 ---
 
 # Building blocks

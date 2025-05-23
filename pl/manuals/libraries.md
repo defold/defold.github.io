@@ -1,12 +1,16 @@
 ---
-brief: Biblioteki pozwalają na dzielenie zasobów między projektami. Ta instrukcja
-  opisuje jak działają.
+brief: Biblioteki pozwalają na dzielenie zasobów między projektami. Ta instrukcja opisuje jak działają.
 github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Praca z bibliotekami w Defoldzie
-toc: '["Biblioteki","Ustawianie udostępniania biblioteki","URL biblioteki","Ustawienie
-  zależności do biblioteki","Zepsute zależności","Kolizja nazw"]'
+toc:
+- Biblioteki
+- Ustawianie udostępniania biblioteki
+- URL biblioteki
+- Ustawienie zależności do biblioteki
+- Zepsute zależności
+- Kolizja nazw
 ---
 
 # Biblioteki

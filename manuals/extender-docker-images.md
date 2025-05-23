@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Available Docker images
-toc: '["Available Docker images","How to use old Docker images"]'
+toc:
+- Available Docker images
+- How to use old Docker images
 ---
 
 # Available Docker images

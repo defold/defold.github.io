@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold GUI 文本节点
-toc: '["GUI 文本节点","添加文本节点","锚点和对齐","运行时控制操作"]'
+toc:
+- GUI 文本节点
+- 添加文本节点
+- 锚点和对齐
+- 运行时控制操作
 ---
 
 # GUI 文本节点

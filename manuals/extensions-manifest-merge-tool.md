@@ -4,7 +4,15 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Native extensions - Manifest Merge Tools
-toc: '["Application manifests","Naming and Structure","Android","Example","iOS / macOS","Example","HTML5","Example"]'
+toc:
+- Application manifests
+- Naming and Structure
+- Android
+- Example
+- iOS / macOS
+- Example
+- HTML5
+- Example
 ---
 
 # Application manifests

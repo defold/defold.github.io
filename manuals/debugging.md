@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Debugging in Defold
-toc: '["Debugging"]'
+toc:
+- Debugging
 ---
 
 # Debugging

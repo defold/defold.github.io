@@ -1,9 +1,15 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-safearea
-title: SafeArea extension
 brief: Extension to change the view of a game to fit into the safe area on iOS and Android devices with notch.
+github: https://github.com/defold/extension-safearea
+language: en
+layout: manual
+title: SafeArea extension
+toc:
+- SafeArea
+- Installation
+- 'Usage:'
+- Easy mode (no change to your project, iOS only)
+- Custom mode
 ---
 
 # SafeArea
@@ -75,5 +81,4 @@ safearea.set_background_color(vmath.vector4(0,0,0,0))
 -- safearea.STATUS_OK - value is avaliable and valid, you may fully trust it.
 -- safearea.STATUS_NOT_AVAILABLE - functionality isn't available on this platform or OS version. Values will be 0
 -- safearea.STATUS_NOT_READY_YET - values aren't ready yet. Depends on platform and OS it may take a while (usually up to 200ms) to be ready, check later. Values will be 0
-```
-[API Reference - safearea](/extension-safearea/safearea_api)
+```[API Reference - safearea](/extension-safearea/safearea_api)

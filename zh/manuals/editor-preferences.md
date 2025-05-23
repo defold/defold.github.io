@@ -4,7 +4,13 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 编辑器配置
-toc: '["编辑器配置","General","Code","使用 Visual Studio Code 打开脚本文件","扩展","工具"]'
+toc:
+- 编辑器配置
+- General
+- Code
+- 使用 Visual Studio Code 打开脚本文件
+- 扩展
+- 工具
 ---
 
 # 编辑器配置

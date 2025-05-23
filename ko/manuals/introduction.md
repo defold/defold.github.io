@@ -3,8 +3,15 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Welcome to Defold","Philosophy(철학)","Scripts","Messages","Factories","Collaboration(공동작업)","Libraries","Building
-  blocks"]'
+toc:
+- Welcome to Defold
+- Philosophy(철학)
+- Scripts
+- Messages
+- Factories
+- Collaboration(공동작업)
+- Libraries
+- Building blocks
 ---
 
 # Welcome to Defold

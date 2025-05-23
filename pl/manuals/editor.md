@@ -1,13 +1,21 @@
 ---
-brief: Ta instrukcja opisuje ogólnie Edytor Defold, jak wygląda i działa oraz jak
-  w nim się poruszać.
+brief: Ta instrukcja opisuje ogólnie Edytor Defold, jak wygląda i działa oraz jak w nim się poruszać.
 github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Edytor Defold
-toc: '["Edytor Defold","Uruchamianie Edytora","Widoki w Edytorze","Edytowanie równolegle
-  (Side-by-side)","Edytor sceny","Tworzenie nowego pliku","Importowanie plików do
-  projektu","Aktualizowanie Edytora","Skróty klawiszowe","Logi Edytora","FAQ"]'
+toc:
+- Edytor Defold
+- Uruchamianie Edytora
+- Widoki w Edytorze
+- Edytowanie równolegle (Side-by-side)
+- Edytor sceny
+- Tworzenie nowego pliku
+- Importowanie plików do projektu
+- Aktualizowanie Edytora
+- Skróty klawiszowe
+- Logi Edytora
+- FAQ
 ---
 
 # Edytor Defold

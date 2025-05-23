@@ -3,7 +3,12 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Bob the builder","Overview","Usage","Available commands:","Available platforms:"]'
+toc:
+- Bob the builder
+- Overview
+- Usage
+- 'Available commands:'
+- 'Available platforms:'
 ---
 
 # Bob the builder

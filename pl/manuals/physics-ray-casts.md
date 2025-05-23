@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Promienie Ray casts w Defoldzie
-toc: '["Promienie Ray casts"]'
+toc:
+- Promienie Ray casts
 ---
 
 ## Promienie Ray casts

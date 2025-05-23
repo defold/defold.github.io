@@ -4,9 +4,19 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Gamepad input in Defold
-toc: '["Gamepads","Digital buttons","Analog sticks","Multiple gamepads","Connect and
-  Disconnect","Raw gamepads","Gamepads settings file","Unidentified gamepads","Gamepads
-  in HTML5","Standard gamepad","Gamepads on Windows","Gamepads on Android"]'
+toc:
+- Gamepads
+- Digital buttons
+- Analog sticks
+- Multiple gamepads
+- Connect and Disconnect
+- Raw gamepads
+- Gamepads settings file
+- Unidentified gamepads
+- Gamepads in HTML5
+- Standard gamepad
+- Gamepads on Windows
+- Gamepads on Android
 ---
 
 <div class='sidenote' markdown='1'>

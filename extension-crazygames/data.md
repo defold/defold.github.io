@@ -1,9 +1,15 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-crazygames
-title: Defold CrazyGames SDK extension API documentation
 brief: This manual covers how to use the data module in the CrazyGames SDK in Defold.
+github: https://github.com/defold/extension-crazygames
+language: en
+layout: manual
+title: Defold CrazyGames SDK extension API documentation
+toc:
+- Data
+- Using the data module
+- Guest user behaviour
+- QA Tool
+- Data saving
 ---
 
 # Data

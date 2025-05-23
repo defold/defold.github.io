@@ -1,11 +1,12 @@
 ---
-brief: Bob is a command line tool for building Defold projects. This manual explains
-  how to use the tool.
+brief: Bob is a command line tool for building Defold projects. This manual explains how to use the tool.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Defold project builder manual
-toc: '["Bob the builder","Usage"]'
+toc:
+- Bob the builder
+- Usage
 ---
 
 # Bob the builder

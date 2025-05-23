@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Socket connections
-toc: '["Socket connections","API Reference and examples"]'
+toc:
+- Socket connections
+- API Reference and examples
 ---
 
 ## Socket connections

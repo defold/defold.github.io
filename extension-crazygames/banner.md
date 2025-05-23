@@ -1,9 +1,15 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-crazygames
-title: Defold CrazyGames SDK extension API documentation
 brief: This manual covers how to show banner ads using the CrazyGames SDK in Defold.
+github: https://github.com/defold/extension-crazygames
+language: en
+layout: manual
+title: Defold CrazyGames SDK extension API documentation
+toc:
+- Banners
+- Request banner
+- Request responsive banner
+- Refreshing banners and limitations
+- Clearing the banners
 ---
 
 # Banners
@@ -68,4 +74,3 @@ crazygames.clear_all_banners()
 ```
 
 CrazyGames recommend that you clear the banners after hiding them. Otherwise, when you request new banners again, the old banners may still appear for a fraction of a second, which negatively impacts the user experience.
-

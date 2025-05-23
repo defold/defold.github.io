@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 纹理过滤
-toc: '["纹理过滤和采样"]'
+toc:
+- 纹理过滤和采样
 ---
 
 # 纹理过滤和采样

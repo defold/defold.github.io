@@ -4,7 +4,14 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 里的 Label 文本组件
-toc: '["Label","创建 label","Label 属性","混合模式","锚点和对齐","运行时控制操作","相关项目配置"]'
+toc:
+- Label
+- 创建 label
+- Label 属性
+- 混合模式
+- 锚点和对齐
+- 运行时控制操作
+- 相关项目配置
 ---
 
 # Label

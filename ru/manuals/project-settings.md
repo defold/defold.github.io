@@ -4,11 +4,47 @@ github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: Настройки проекта
-toc: '["Настройки проекта","Project","Bootstrap","Library","Script","Engine","Display","Render","Physics","Graphics","Input","Resource","Network","Collection","Sound","Sprite","Tilemap","Spine","Mesh","Model","GUI","Label","Particle
-  FX","Collection proxy","Collection factory","Factory","iOS","Android","macOS","Windows","HTML5","IAP","Live
-  update","Native extension","Profiler","Формат файла","Установка конфигурационных
-  значений при запуске движка","Vsync, frame cap, and swap interval","Caveat","Vsync
-  and frame cap in Defold"]'
+toc:
+- Настройки проекта
+- Project
+- Bootstrap
+- Library
+- Script
+- Engine
+- Display
+- Render
+- Physics
+- Graphics
+- Input
+- Resource
+- Network
+- Collection
+- Sound
+- Sprite
+- Tilemap
+- Spine
+- Mesh
+- Model
+- GUI
+- Label
+- Particle FX
+- Collection proxy
+- Collection factory
+- Factory
+- iOS
+- Android
+- macOS
+- Windows
+- HTML5
+- IAP
+- Live update
+- Native extension
+- Profiler
+- Формат файла
+- Установка конфигурационных значений при запуске движка
+- Vsync, frame cap, and swap interval
+- Caveat
+- Vsync and frame cap in Defold
 ---
 
 # Настройки проекта

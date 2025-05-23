@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Android调试
-toc: '[]'
+toc: []
 ---
 
 教程移动至 [调试 Android 原生代码](/zh/manuals/debugging-native-code-android)

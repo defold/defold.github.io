@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Defold 2D graphics manual
-toc: '["2D Graphics"]'
+toc:
+- 2D Graphics
 ---
 
 # 2D Graphics

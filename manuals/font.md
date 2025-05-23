@@ -1,12 +1,17 @@
 ---
-brief: This manual describes how Defold handles fonts and how to bring fonts onto
-  the screen in your games.
+brief: This manual describes how Defold handles fonts and how to bring fonts onto the screen in your games.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Fonts in Defold manual
-toc: '["Font files","Creating a font","Properties","Distance field fonts","Bitmap
-  BMFonts","Artifacts and best practices","Font Cache"]'
+toc:
+- Font files
+- Creating a font
+- Properties
+- Distance field fonts
+- Bitmap BMFonts
+- Artifacts and best practices
+- Font Cache
 ---
 
 # Font files

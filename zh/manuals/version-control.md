@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 版本控制
-toc: '["版本控制","Changed files","Git"]'
+toc:
+- 版本控制
+- Changed files
+- Git
 ---
 
 # 版本控制

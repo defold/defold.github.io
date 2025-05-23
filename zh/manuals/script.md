@@ -4,7 +4,13 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 使用脚本编写游戏逻辑
-toc: '["脚本","脚本类型","脚本运行, 回调和 self","链式逻辑","预处理","编辑器支持"]'
+toc:
+- 脚本
+- 脚本类型
+- 脚本运行, 回调和 self
+- 链式逻辑
+- 预处理
+- 编辑器支持
 ---
 
 # 脚本

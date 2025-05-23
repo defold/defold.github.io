@@ -4,8 +4,12 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Wycinanie GUI w Defoldzie
-toc: '["Wycinanie GUI","Tworzenie węzła wycinającego","Maska wycinająca","Ograniczenia
-  maski wycinania","Warstwy"]'
+toc:
+- Wycinanie GUI
+- Tworzenie węzła wycinającego
+- Maska wycinająca
+- Ograniczenia maski wycinania
+- Warstwy
 ---
 
 # Wycinanie GUI

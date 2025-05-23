@@ -4,7 +4,12 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的 Lua 模块
-toc: '["Lua 模块","引入 Lua 文件","模块","模块热重载","模块和缓存"]'
+toc:
+- Lua 模块
+- 引入 Lua 文件
+- 模块
+- 模块热重载
+- 模块和缓存
 ---
 
 # Lua 模块

@@ -4,9 +4,13 @@ github: https://github.com/defold/doc
 language: uk
 layout: manual
 title: Будівельні блоки Defold
-toc: '["Будівельні блоки","Колекції (collections)","Ігрові обʼєкти (Game Objects)","Компоненти
-  (Components)","Додавання обʼєктів на місці (in-place) або за посиланням (by reference)","Дочірні
-  ігрові обʼєкти (childing)"]'
+toc:
+- Будівельні блоки
+- Колекції (collections)
+- Ігрові обʼєкти (Game Objects)
+- Компоненти (Components)
+- Додавання обʼєктів на місці (in-place) або за посиланням (by reference)
+- Дочірні ігрові обʼєкти (childing)
 ---
 
 # Будівельні блоки

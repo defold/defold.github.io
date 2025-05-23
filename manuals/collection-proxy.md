@@ -1,13 +1,18 @@
 ---
-brief: This manual explains how to dynamically create new game worlds and switch between
-  them.
+brief: This manual explains how to dynamically create new game worlds and switch between them.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Collection proxy manual
-toc: '["Collection proxy","Creating a collection proxy component","Bootstrap","Loading
-  a collection","Addressing into the new world","Unloading a world","Time step","Caveats
-  and common issues"]'
+toc:
+- Collection proxy
+- Creating a collection proxy component
+- Bootstrap
+- Loading a collection
+- Addressing into the new world
+- Unloading a world
+- Time step
+- Caveats and common issues
 ---
 
 # Collection proxy

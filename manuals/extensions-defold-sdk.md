@@ -1,11 +1,12 @@
 ---
-brief: This manual describes how to work with the Defold SDK when creating native
-  extensions.
+brief: This manual describes how to work with the Defold SDK when creating native extensions.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Native extensions - Defold SDK
-toc: '["The Defold SDK","Usage"]'
+toc:
+- The Defold SDK
+- Usage
 ---
 
 # The Defold SDK

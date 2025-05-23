@@ -4,8 +4,13 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Defold development for the macOS platform
-toc: '["macOS development","Project settings","Application icon","Publishing your
-  application","Publishing outside the Mac App Store","Publishing to the Mac App Store"]'
+toc:
+- macOS development
+- Project settings
+- Application icon
+- Publishing your application
+- Publishing outside the Mac App Store
+- Publishing to the Mac App Store
 ---
 
 # macOS development

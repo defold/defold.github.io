@@ -4,8 +4,16 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的原生代码调试
-toc: '["原生代码调试","使用调试器","使用 print 函数","崩溃日志分析","从设备上获取崩溃日志","调用堆栈代码文件映射","把 symbols
-  上传到 Google Play","Android调用堆栈映射","iOS 调用堆栈映射"]'
+toc:
+- 原生代码调试
+- 使用调试器
+- 使用 print 函数
+- 崩溃日志分析
+- 从设备上获取崩溃日志
+- 调用堆栈代码文件映射
+- 把 symbols 上传到 Google Play
+- Android调用堆栈映射
+- iOS 调用堆栈映射
 ---
 
 # 原生代码调试

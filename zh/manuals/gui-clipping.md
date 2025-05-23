@@ -4,7 +4,12 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: GUI 蒙版教程
-toc: '["蒙版","创建蒙版节点","裁剪蒙版","蒙版局限性","层"]'
+toc:
+- 蒙版
+- 创建蒙版节点
+- 裁剪蒙版
+- 蒙版局限性
+- 层
 ---
 
 # 蒙版

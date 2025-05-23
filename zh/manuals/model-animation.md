@@ -4,7 +4,13 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的 3D 动画
-toc: '["3D 蒙皮动画","3D Model 动画","骨骼层级","播放头","播放完成回调函数","播放模式"]'
+toc:
+- 3D 蒙皮动画
+- 3D Model 动画
+- 骨骼层级
+- 播放头
+- 播放完成回调函数
+- 播放模式
 ---
 
 # 3D 蒙皮动画

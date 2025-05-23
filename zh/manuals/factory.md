@@ -4,7 +4,14 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Factory 组件教程
-toc: '["Factory 组件","定位新对象","新对象引用和对象父级","工厂资源的动态加载","动态 Prototype","实例限制","游戏对象池"]'
+toc:
+- Factory 组件
+- 定位新对象
+- 新对象引用和对象父级
+- 工厂资源的动态加载
+- 动态 Prototype
+- 实例限制
+- 游戏对象池
 ---
 
 # Factory 组件

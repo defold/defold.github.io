@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的 Google Play Game 服务
-toc: '["Google Play Game Services","安装扩展","使用扩展"]'
+toc:
+- Google Play Game Services
+- 安装扩展
+- 使用扩展
 ---
 
 # Google Play Game Services

@@ -4,8 +4,11 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Defold tile source manual
-toc: '["Tile source","Creating a tile source","Tile source flip-book animations","Tile
-  source collision shapes"]'
+toc:
+- Tile source
+- Creating a tile source
+- Tile source flip-book animations
+- Tile source collision shapes
 ---
 
 # Tile source

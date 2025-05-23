@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold里的GUI粒子特效
-toc: '["GUI ParticleFX 节点","添加 Particle FX 节点","控制特效"]'
+toc:
+- GUI ParticleFX 节点
+- 添加 Particle FX 节点
+- 控制特效
 ---
 
 # GUI ParticleFX 节点

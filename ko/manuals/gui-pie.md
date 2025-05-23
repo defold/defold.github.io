@@ -3,7 +3,8 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Pie nodes"]'
+toc:
+- Pie nodes
 ---
 
 # Pie nodes

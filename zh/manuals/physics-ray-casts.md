@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的物理投射
-toc: '["投射"]'
+toc:
+- 投射
 ---
 
 ## 投射

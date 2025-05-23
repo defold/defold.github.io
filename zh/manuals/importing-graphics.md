@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 导入和使用2D图像
-toc: '["导入2D图像","创建 Defold 资源","使用 Defold 资源"]'
+toc:
+- 导入2D图像
+- 创建 Defold 资源
+- 使用 Defold 资源
 ---
 
 # 导入2D图像

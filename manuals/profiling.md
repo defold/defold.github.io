@@ -4,8 +4,14 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Profiling in Defold
-toc: '["Profiling","The runtime visual profiler","The web profiler","Frame profiler","Resource
-  profiler","Build reports","External tools"]'
+toc:
+- Profiling
+- The runtime visual profiler
+- The web profiler
+- Frame profiler
+- Resource profiler
+- Build reports
+- External tools
 ---
 
 # Profiling

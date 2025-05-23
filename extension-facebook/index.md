@@ -1,9 +1,28 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-facebook
-title: Defold Facebook documentation
 brief: This manual covers how to setup and use Facebook in Defold.
+github: https://github.com/defold/extension-facebook
+language: en
+layout: manual
+title: Defold Facebook documentation
+toc:
+- Defold Facebook documentation
+- Installation
+- Registering as a Facebook developer
+- Creating a Facebook app
+- Configuring your Defold app
+- iOS
+- Android
+- Facebook Canvas
+- Limited Login (iOS)
+- Testing the setup
+- Deferred Facebook SDK initialization
+- Facebook Analytics
+- Setup
+- Usage
+- Sharing events with Facebook
+- Relevant Facebook documentation links
+- Source code
+- API reference
 ---
 
 # Defold Facebook documentation
@@ -258,5 +277,4 @@ The source code is available on [GitHub](https://github.com/defold/extension-fac
 
 
 
-## API reference
-[API Reference - facebook](/extension-facebook/facebook_api)
+## API reference[API Reference - facebook](/extension-facebook/facebook_api)

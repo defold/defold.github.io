@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Animacja w Defoldzie
-toc: '["Animacja w Defoldzie"]'
+toc:
+- Animacja w Defoldzie
 ---
 
 # Animacja w Defoldzie

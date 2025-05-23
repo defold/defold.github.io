@@ -4,9 +4,17 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Adresowanie w silniku Defold
-toc: '["Adresowanie","Identyfikatory","Kolekcje","Adresowanie relatywne","Skróty","Ścieżki
-  do obiektów","Adresowanie absolutne","Identyfikatory haszowane (skrócone)","URL","Konstruowanie
-  obiektów URL"]'
+toc:
+- Adresowanie
+- Identyfikatory
+- Kolekcje
+- Adresowanie relatywne
+- Skróty
+- Ścieżki do obiektów
+- Adresowanie absolutne
+- Identyfikatory haszowane (skrócone)
+- URL
+- Konstruowanie obiektów URL
 ---
 
 # Adresowanie

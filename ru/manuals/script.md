@@ -1,12 +1,15 @@
 ---
-brief: В этом руководстве описано, как добавить игровую логику с помощью компонента
-  Script.
+brief: В этом руководстве описано, как добавить игровую логику с помощью компонента Script.
 github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: Компонент Script
-toc: '["Компонент Script","Типы скриптов","Script execution, callbacks and self","Реактивная
-  логика","Поддержка со стороны редактора"]'
+toc:
+- Компонент Script
+- Типы скриптов
+- Script execution, callbacks and self
+- Реактивная логика
+- Поддержка со стороны редактора
 ---
 
 # Компонент Script

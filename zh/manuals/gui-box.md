@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的 GUI 方块节点
-toc: '["GUI 方块节点","添加方块节点","播放动画"]'
+toc:
+- GUI 方块节点
+- 添加方块节点
+- 播放动画
 ---
 
 # GUI 方块节点

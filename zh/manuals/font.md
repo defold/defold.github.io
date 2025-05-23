@@ -4,7 +4,14 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 字体教程
-toc: '["字体文件","创建字体","属性","Distance field 字体","位图 BMFont","举例与最佳实践","文字缓存"]'
+toc:
+- 字体文件
+- 创建字体
+- 属性
+- Distance field 字体
+- 位图 BMFont
+- 举例与最佳实践
+- 文字缓存
 ---
 
 # 字体文件

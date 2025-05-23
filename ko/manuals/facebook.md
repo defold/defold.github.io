@@ -3,8 +3,15 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Facebook","Registering as a Facebook developer","Creating a Facebook app","iOS","Android","Facebook
-  Canvas","Testing the setup","Development caveats"]'
+toc:
+- Facebook
+- Registering as a Facebook developer
+- Creating a Facebook app
+- iOS
+- Android
+- Facebook Canvas
+- Testing the setup
+- Development caveats
 ---
 
 # Facebook

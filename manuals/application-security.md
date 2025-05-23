@@ -4,11 +4,18 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Application Security manual
-toc: '["Application Security","Securing your intellectual property from theft","Source
-  code obfuscation","Resource encryption","Encoding project configuration values","Securing
-  your game against cheaters","Securing your network communication","SSL certificate
-  validation","Securing your use of third-party software","Securing your use of cloud
-  build servers","Securing your downloadable content"]'
+toc:
+- Application Security
+- Securing your intellectual property from theft
+- Source code obfuscation
+- Resource encryption
+- Encoding project configuration values
+- Securing your game against cheaters
+- Securing your network communication
+- SSL certificate validation
+- Securing your use of third-party software
+- Securing your use of cloud build servers
+- Securing your downloadable content
 ---
 
 # Application Security

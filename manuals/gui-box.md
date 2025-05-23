@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: GUI box nodes in Defold
-toc: '["GUI box nodes","Adding box nodes","Playing animations"]'
+toc:
+- GUI box nodes
+- Adding box nodes
+- Playing animations
 ---
 
 # GUI box nodes

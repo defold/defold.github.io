@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 的应用内通信
-toc: '["应用内通信","安装扩展","使用扩展"]'
+toc:
+- 应用内通信
+- 安装扩展
+- 使用扩展
 ---
 
 # 应用内通信

@@ -4,10 +4,17 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Writing code
-toc: '["Writing code","Writing Lua code","Using other languages that transpile to
-  Lua","Writing native code","Using the built-in code editor","Code completion","Linting
-  configuration","Using an external code editor","Visual Studio Code - Defold Kit","Documentation
-  software"]'
+toc:
+- Writing code
+- Writing Lua code
+- Using other languages that transpile to Lua
+- Writing native code
+- Using the built-in code editor
+- Code completion
+- Linting configuration
+- Using an external code editor
+- Visual Studio Code - Defold Kit
+- Documentation software
 ---
 
 # Writing code

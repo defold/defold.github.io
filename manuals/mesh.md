@@ -4,8 +4,15 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: 3D meshes in Defold
-toc: '["Mesh component","Creating a mesh component","Mesh properties","Editor manipulation","Runtime
-  manipulation","Frustum culling","Material constants","Vertex local vs world space"]'
+toc:
+- Mesh component
+- Creating a mesh component
+- Mesh properties
+- Editor manipulation
+- Runtime manipulation
+- Frustum culling
+- Material constants
+- Vertex local vs world space
 ---
 
 # Mesh component

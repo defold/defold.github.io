@@ -4,8 +4,17 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 网页游戏盈利
-toc: '["网页游戏盈利","如何工作?","网页支付账户","网页钱包账户","支付点","在 Defold 中配置支付点","新建项目","已有项目","Defold
-  网页支付用法","最佳实践"]'
+toc:
+- 网页游戏盈利
+- 如何工作?
+- 网页支付账户
+- 网页钱包账户
+- 支付点
+- 在 Defold 中配置支付点
+- 新建项目
+- 已有项目
+- Defold 网页支付用法
+- 最佳实践
 ---
 
 # 网页游戏盈利

@@ -1,12 +1,15 @@
 ---
-brief: This manual explains how to use collection factory components to spawn hierarchies
-  of game objects.
+brief: This manual explains how to use collection factory components to spawn hierarchies of game objects.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Collection factory manual
-toc: '["Collection factories","Spawning a collection","Properties","Dynamic loading
-  of factory resources","Dynamic prototype"]'
+toc:
+- Collection factories
+- Spawning a collection
+- Properties
+- Dynamic loading of factory resources
+- Dynamic prototype
 ---
 
 # Collection factories

@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold GUI 饼状图节点
-toc: '["GUI 饼状图节点","创建饼状图节点","运行时修改饼状图"]'
+toc:
+- GUI 饼状图节点
+- 创建饼状图节点
+- 运行时修改饼状图
 ---
 
 # GUI 饼状图节点

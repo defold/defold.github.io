@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的属性
-toc: '["属性","游戏对象属性和组件属性","GUI 节点属性"]'
+toc:
+- 属性
+- 游戏对象属性和组件属性
+- GUI 节点属性
 ---
 
 # 属性

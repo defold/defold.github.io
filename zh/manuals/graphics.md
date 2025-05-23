@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 图像教程
-toc: '[]'
+toc: []
 ---
 
 该教程已废弃!

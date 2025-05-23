@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: GUI-нода Pie
-toc: '["GUI-нода Pie","Создание ноды Pie","Воздействие на ноду Pie в рантайме"]'
+toc:
+- GUI-нода Pie
+- Создание ноды Pie
+- Воздействие на ноду Pie в рантайме
 ---
 
 # GUI-нода Pie

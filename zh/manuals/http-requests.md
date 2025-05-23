@@ -4,7 +4,13 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: HTTP 请求
-toc: '["HTTP 请求","HTTP GET","HTTP POST","其他 HTTP 请求类型","API 文档","扩展"]'
+toc:
+- HTTP 请求
+- HTTP GET
+- HTTP POST
+- 其他 HTTP 请求类型
+- API 文档
+- 扩展
 ---
 
 ## HTTP 请求

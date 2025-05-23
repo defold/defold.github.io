@@ -1,9 +1,17 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-camera
-title: Defold camera extension API documentation
 brief: This manual covers how to use the camera on macOS, iOS and Android in Defold.
+github: https://github.com/defold/extension-camera
+language: en
+layout: manual
+title: Defold camera extension API documentation
+toc:
+- Defold camera extension API documentation
+- Installation
+- Example
+- FAQ
+- How do I reset macOS camera permission?
+- Source code
+- API reference
 ---
 
 # Defold camera extension API documentation
@@ -40,5 +48,4 @@ tccutil reset Camera
 The source code is available on [GitHub](https://github.com/defold/extension-camera)
 
 
-## API reference
-[API Reference - camera](/extension-camera/camera_api)
+## API reference[API Reference - camera](/extension-camera/camera_api)

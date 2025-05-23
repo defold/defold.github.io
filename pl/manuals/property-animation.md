@@ -4,8 +4,13 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Animacja właściwości
-toc: '["Animacja właściwości","Animowanie właściwości","Animowanie właściwości węzłów
-  GUI","Funkcje po zakończeniu animacji","Wygładzanie","Własne funkcje wygładzania"]'
+toc:
+- Animacja właściwości
+- Animowanie właściwości
+- Animowanie właściwości węzłów GUI
+- Funkcje po zakończeniu animacji
+- Wygładzanie
+- Własne funkcje wygładzania
 ---
 
 # Animacja właściwości

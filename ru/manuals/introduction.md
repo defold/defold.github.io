@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: Добро пожаловать в Defold
-toc: '["Добро пожаловать в Defold","С чего начать?"]'
+toc:
+- Добро пожаловать в Defold
+- С чего начать?
 ---
 
 # Добро пожаловать в Defold

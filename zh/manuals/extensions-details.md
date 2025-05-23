@@ -4,8 +4,15 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 原生扩展 - 详述
-toc: '["Defold 编译器","C++ 版本","工具链","SDK 版本","C++ 版本 + ABI 兼容","Win32 + Clang","静态链接","没有
-  C++ Exceptions"]'
+toc:
+- Defold 编译器
+- C++ 版本
+- 工具链
+- SDK 版本
+- C++ 版本 + ABI 兼容
+- Win32 + Clang
+- 静态链接
+- 没有 C++ Exceptions
 ---
 
 # Defold 编译器

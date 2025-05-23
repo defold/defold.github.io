@@ -4,8 +4,13 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Debugging in Defold
-toc: '["Debugging game logic","Print and visual debugging","Running the debugger","Lua
-  debug library","Debugging checklist","Debugging problems with physics"]'
+toc:
+- Debugging game logic
+- Print and visual debugging
+- Running the debugger
+- Lua debug library
+- Debugging checklist
+- Debugging problems with physics
 ---
 
 # Debugging game logic

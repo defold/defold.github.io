@@ -4,9 +4,16 @@ github: https://github.com/defold/doc
 language: fr
 layout: manual
 title: L'adressage dans Defold
-toc: '["Adressage","Identifiants","Collections","Adressage relatif","Raccourcis","Les
-  chemins des GameObjects","Ladressage absolu","Identifiants hachés","Construction
-  dobjets URL"]'
+toc:
+- Adressage
+- Identifiants
+- Collections
+- Adressage relatif
+- Raccourcis
+- Les chemins des GameObjects
+- Ladressage absolu
+- Identifiants hachés
+- Construction dobjets URL
 ---
 
 # Adressage

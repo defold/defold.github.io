@@ -4,7 +4,13 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的着色器编程
-toc: '["Shaders","概念","在 shader 中引入代码片段","Header guards","渲染过程","深入学习"]'
+toc:
+- Shaders
+- 概念
+- 在 shader 中引入代码片段
+- Header guards
+- 渲染过程
+- 深入学习
 ---
 
 # Shaders

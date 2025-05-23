@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Version control
-toc: '["Version control","Changed files","Git"]'
+toc:
+- Version control
+- Changed files
+- Git
 ---
 
 # Version control

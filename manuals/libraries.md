@@ -1,13 +1,19 @@
 ---
-brief: The Libraries feature allows you to share assets between projects. This manual
-  explains how it works.
+brief: The Libraries feature allows you to share assets between projects. This manual explains how it works.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Working with library projects in Defold
-toc: '["Libraries","Setting up library sharing","Library URL","Basic access authentication","Advanced
-  access authentication","Setting up library dependencies","Editing Files in Library
-  Dependencies","Broken references","Name collisions"]'
+toc:
+- Libraries
+- Setting up library sharing
+- Library URL
+- Basic access authentication
+- Advanced access authentication
+- Setting up library dependencies
+- Editing Files in Library Dependencies
+- Broken references
+- Name collisions
 ---
 
 # Libraries

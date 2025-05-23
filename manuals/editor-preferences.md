@@ -4,7 +4,14 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Editor preferences
-toc: '["Editor preferences","General","Code","Open script files in Visual Studio Code","Extensions","Tools","Keymap"]'
+toc:
+- Editor preferences
+- General
+- Code
+- Open script files in Visual Studio Code
+- Extensions
+- Tools
+- Keymap
 ---
 
 # Editor preferences

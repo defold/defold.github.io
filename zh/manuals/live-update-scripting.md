@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 热更新脚本
-toc: '["热更新脚本","得到 mounts","排除的集合代理脚本"]'
+toc:
+- 热更新脚本
+- 得到 mounts
+- 排除的集合代理脚本
 ---
 
 # 热更新脚本

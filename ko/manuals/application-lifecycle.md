@@ -3,7 +3,11 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Application lifecycle","Initialization","The update loop","Finalization"]'
+toc:
+- Application lifecycle
+- Initialization
+- The update loop
+- Finalization
 ---
 
 # Application lifecycle

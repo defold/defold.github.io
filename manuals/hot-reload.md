@@ -4,8 +4,14 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Hot reloading
-toc: '["Hot reloading resources","How to hot reload","Hot reloading on device","Reloading
-  scripts","Reloading Lua modules","The on_reload() function","Reloading shader code"]'
+toc:
+- Hot reloading resources
+- How to hot reload
+- Hot reloading on device
+- Reloading scripts
+- Reloading Lua modules
+- The on_reload() function
+- Reloading shader code
 ---
 
 # Hot reloading resources

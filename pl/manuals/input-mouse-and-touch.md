@@ -1,14 +1,20 @@
 ---
-brief: Ta instrukcja wyjaśnia, jak działa wejście za pomocą myszki i dotyku na urządzeniach
-  dotykowych w silniku Defold.
+brief: Ta instrukcja wyjaśnia, jak działa wejście za pomocą myszki i dotyku na urządzeniach dotykowych w silniku Defold.
 github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Wejścia myszki i dotykowe w silniku Defold
-toc: '["Obsługa myszki","Przyciski myszki","Kółko myszki","Ruch myszki","Obsługa urządzeń
-  dotykowych","Pojedyncze dotknięcie","Multi-touch","Detekcja kliknięć i dotknięć
-  na obiekcie","Wykrywanie interakcji z węzłami GUI","Wykrywanie interakcji z obiektami
-  gry"]'
+toc:
+- Obsługa myszki
+- Przyciski myszki
+- Kółko myszki
+- Ruch myszki
+- Obsługa urządzeń dotykowych
+- Pojedyncze dotknięcie
+- Multi-touch
+- Detekcja kliknięć i dotknięć na obiekcie
+- Wykrywanie interakcji z węzłami GUI
+- Wykrywanie interakcji z obiektami gry
 ---
 
 <div class='sidenote' markdown='1'>

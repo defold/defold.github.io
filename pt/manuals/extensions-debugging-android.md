@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: pt
 layout: manual
 title: Depuração no Andoid.
-toc: '[]'
+toc: []
 ---
 
 Mover para [Debugging Native Code on Android](/manuals/debugging-native-code-android)

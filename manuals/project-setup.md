@@ -4,8 +4,12 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Project setup
-toc: '["Project setup","Creating a new local project","Adding the project to GitHub","Open
-  an existing project","Open a recent project"]'
+toc:
+- Project setup
+- Creating a new local project
+- Adding the project to GitHub
+- Open an existing project
+- Open a recent project
 ---
 
 # Project setup

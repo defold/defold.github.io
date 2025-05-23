@@ -3,7 +3,10 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Collection factories","Spawning a collection","Properties"]'
+toc:
+- Collection factories
+- Spawning a collection
+- Properties
 ---
 
 # Collection factories

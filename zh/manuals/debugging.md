@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 调试
-toc: '["调试"]'
+toc:
+- 调试
 ---
 
 # 调试

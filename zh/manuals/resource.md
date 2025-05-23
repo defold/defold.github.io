@@ -4,7 +4,12 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 资源管理
-toc: '["资源管理","静态资源树","动态加载的工厂资源","动态资源卸载","打包排除资源"]'
+toc:
+- 资源管理
+- 静态资源树
+- 动态加载的工厂资源
+- 动态资源卸载
+- 打包排除资源
 ---
 
 # 资源管理

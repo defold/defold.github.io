@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Grupy kolizji w Defoldzie
-toc: '["Grupy i maski kolizji","Wykrywanie kolizji"]'
+toc:
+- Grupy i maski kolizji
+- Wykrywanie kolizji
 ---
 
 # Grupy i maski kolizji

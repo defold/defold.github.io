@@ -1,13 +1,21 @@
 ---
-brief: This manual explains how the particle fx component works and how to edit it
-  to create visual particle effects.
+brief: This manual explains how the particle fx component works and how to edit it to create visual particle effects.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Particle effects in Defold
-toc: '["Particle FX","Creating an effect","Previewing an effect","Emitter properties","Blend
-  modes","Keyable emitter properties","Modifiers","Modifier properties","Controlling
-  a particle effect","Material constants","Project configuration"]'
+toc:
+- Particle FX
+- Creating an effect
+- Previewing an effect
+- Emitter properties
+- Blend modes
+- Keyable emitter properties
+- Modifiers
+- Modifier properties
+- Controlling a particle effect
+- Material constants
+- Project configuration
 ---
 
 # Particle FX

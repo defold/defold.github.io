@@ -4,9 +4,17 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Defold materials manual
-toc: '["Materials","Creating a material","Attributes","Default attribute semantics","Setting
-  custom vertex attribute data","Instancing","Vertex and fragment constants","Samplers","Sampler
-  settings","Constants buffers"]'
+toc:
+- Materials
+- Creating a material
+- Attributes
+- Default attribute semantics
+- Setting custom vertex attribute data
+- Instancing
+- Vertex and fragment constants
+- Samplers
+- Sampler settings
+- Constants buffers
 ---
 
 # Materials

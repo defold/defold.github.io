@@ -4,7 +4,13 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Facebook Instant Games
-toc: '["Facebook Instant Games","发布 Instant Games","API 使用","示例游戏","减小包体","已知问题"]'
+toc:
+- Facebook Instant Games
+- 发布 Instant Games
+- API 使用
+- 示例游戏
+- 减小包体
+- 已知问题
 ---
 
 # Facebook Instant Games

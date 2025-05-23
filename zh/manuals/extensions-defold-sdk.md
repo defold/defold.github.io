@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 原生扩展 - Defold SDK
-toc: '["Defold SDK","用法"]'
+toc:
+- Defold SDK
+- 用法
 ---
 
 # Defold SDK

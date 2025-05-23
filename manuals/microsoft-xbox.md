@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Defold development for Microsoft Xbox
-toc: '["Xbox support"]'
+toc:
+- Xbox support
 ---
 
 # Xbox support

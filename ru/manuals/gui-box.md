@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: GUI-нода Box
-toc: '["GUI-нода Box","Добавление ноды Box","Воспроизведение анимации"]'
+toc:
+- GUI-нода Box
+- Добавление ноды Box
+- Воспроизведение анимации
 ---
 
 # GUI-нода Box

@@ -1,9 +1,22 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-fontgen
-title: Runtime font generation documentation
 brief: This manual describes how to use a .ttf at runtime to generate font data
+github: https://github.com/defold/extension-fontgen
+language: en
+layout: manual
+title: Runtime font generation documentation
+toc:
+- Fontgen extension
+- Usage
+- Project Setup
+- Scripting setup
+- Load the .ttf font
+- Add glyphs to the font
+- Remove glyphs to the font
+- Unload the font
+- 'Known limitations:'
+- Game.project Properties
+- Api
+- Font Credits
 ---
 
 # Fontgen extension
@@ -102,5 +115,4 @@ _See [ext.properties](http://github.com/defold/extension-fontgen/fontgen/ext.pro
 
 # Font Credits
 
-* [Roboto](https://fonts.google.com/specimen/Roboto) by [Christian Robertson](https://fonts.google.com/?query=Christian+Robertson)
-[API Reference - fontgen](/extension-fontgen/fontgen_api)
+* [Roboto](https://fonts.google.com/specimen/Roboto) by [Christian Robertson](https://fonts.google.com/?query=Christian+Robertson)[API Reference - fontgen](/extension-fontgen/fontgen_api)

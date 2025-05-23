@@ -1,12 +1,15 @@
 ---
-brief: Defold supports GUIs that automatically adapt to screen orientation changes
-  on mobile devices. This document explains how the feature works.
+brief: Defold supports GUIs that automatically adapt to screen orientation changes on mobile devices. This document explains how the feature works.
 github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Układy interfejsu w Defoldzie
-toc: '["Układy interfejsu","Tworzenie profili wyświetlania","Układy interfejsu","Dynamiczny
-  wybór profilu","Komunikaty o zmianie układu"]'
+toc:
+- Układy interfejsu
+- Tworzenie profili wyświetlania
+- Układy interfejsu
+- Dynamiczny wybór profilu
+- Komunikaty o zmianie układu
 ---
 
 # Układy interfejsu

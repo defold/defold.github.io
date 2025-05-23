@@ -1,9 +1,95 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-fbinstant
-title: Facebook Instant Games extension
 brief: This manual covers how to setup and create games for Facebook Instant Games using Defold.
+github: https://github.com/defold/extension-fbinstant
+language: en
+layout: manual
+title: Facebook Instant Games extension
+toc:
+- Facebook Instant Games extension
+- Installation
+- 1. Add project dependencies - REQUIRED
+- 2. Preparing index.html - REQUIRED
+- 3. Create a Facebook App - REQUIRED
+- 4. Create a Bundle Configuration file - OPTIONAL
+- Usage
+- FBInstant API
+- Facebook Instant Games and LiveUpdate
+- Reducing bundle size
+- Source code
+- Examples
+- Balls game
+- Tic Tac Toe game
+- API reference
+- Lifecycle functions
+- fbinstant.initialize(callback)
+- fbinstant.start_game(callback)
+- fbinstant.switch_game(app_id, data, callback)
+- fbinstant.update(data, callback)
+- fbinstant.on_pause(callback)
+- fbinstant.quit()
+- fbinstant.set_loading_progress()
+- Player functions
+- fbinstant.get_player()
+- fbinstant.get_signed_player_info(payload, callback)
+- fbinstant.get_connected_players(callback)
+- fbinstant.get_player_data(keys, callback)
+- fbinstant.set_player_data(data, callback)
+- fbinstant.flush_player_data(callback)
+- fbinstant.get_player_stats([stats,] callback)
+- fbinstant.set_player_stats(stats, callback)
+- fbinstant.increment_player_stats(increments, callback)
+- fbinstant.can_subscribe_bot(callback)
+- fbinstant.subscribe_bot(callback)
+- Context functions
+- fbinstant.get_context()
+- fbinstant.choose_context([options,] callback)
+- fbinstant.create_context(player_id, callback)
+- fbinstant.switch_context(context_id, callback)
+- fbinstant.get_entry_point_data()
+- fbinstant.get_entry_point(callback)
+- fbinstant.set_session_data(data)
+- fbinstant.get_players(callback)
+- fbinstant.post_session_score(score)
+- fbinstant.get_players()
+- Platform functions
+- fbinstant.get_platform()
+- fbinstant.get_locale()
+- fbinstant.get_supported_apis()
+- fbinstant.get_sdk_version()
+- fbinstant.can_create_shortcut(callback)
+- fbinstant.create_shortcut(callback)
+- Share functions
+- fbinstant.share()
+- Analytics functions
+- fbinstant.log_event(event_name, value_to_sum, parameters)
+- Ads functions
+- fbinstant.get_interstitial_ad(placement, callback)
+- fbinstant.load_interstitial_ad(ad_id, callback)
+- fbinstant.show_interstitial_ad(ad_id, callback)
+- fbinstant.get_rewarded_video(placement, callback)
+- fbinstant.load_rewarded_video(ad_id, callback)
+- fbinstant.show_rewarded_video(ad_id, callback)
+- Leaderboard functions
+- fbinstant.get_leaderboard(name, callback)
+- fbinstant.set_leaderboard_score(name, score, extra_data, callback)
+- fbinstant.get_leaderboard_score(name, callback)
+- fbinstant.get_leaderboard_entries(name, count, offset, callback)
+- fbinstant.get_leaderboard_connected_player_entries(name, count, offset, callback)
+- Payment functions
+- fbinstant.on_payments_ready(callback)
+- fbinstant.get_product_catalog(callback)
+- fbinstant.get_purchases(callback)
+- fbinstant.purchase(product_id, developer_payload, callback)
+- fbinstant.consume_purchase(purchase_token, callback)
+- Matchmaking
+- fbinstant.check_can_player_match_async(callback)
+- fbinstant.match_player(match_tag, switch_context_when_matched, offline_match, callback)
+- Constants
+- Context
+- Share
+- Filter
+- Activity Store
+- Error Codes
 ---
 
 ![Instant Games](/instantgames.png)

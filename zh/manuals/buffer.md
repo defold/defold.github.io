@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 缓存教程
-toc: '["Buffer"]'
+toc:
+- Buffer
 ---
 
 # Buffer

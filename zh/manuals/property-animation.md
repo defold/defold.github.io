@@ -4,7 +4,13 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的属性动画
-toc: '["属性动画","属性动画","GUI 节点属性动画","播放完成回调函数","缓动","自定义缓动"]'
+toc:
+- 属性动画
+- 属性动画
+- GUI 节点属性动画
+- 播放完成回调函数
+- 缓动
+- 自定义缓动
 ---
 
 # 属性动画

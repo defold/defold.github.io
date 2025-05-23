@@ -1,9 +1,16 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-xsolla
-title: Xsolla documentation
 brief: This manual covers how to integrate and use Xsolla services in Defold.
+github: https://github.com/defold/extension-xsolla
+language: en
+layout: manual
+title: Xsolla documentation
+toc:
+- Xsolla documentation
+- Installation
+- Usage
+- Shop Builder API
+- Example
+- Source code
 ---
 
 # Xsolla documentation

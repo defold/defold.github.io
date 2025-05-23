@@ -1,9 +1,19 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-crazygames
-title: Defold CrazyGames SDK extension API documentation
 brief: This manual covers how to use the user module in the CrazyGames SDK in Defold.
+github: https://github.com/defold/extension-crazygames
+language: en
+layout: manual
+title: Defold CrazyGames SDK extension API documentation
+toc:
+- User
+- Check availability
+- Auth listener
+- Get current user
+- Auth prompt
+- Get user token
+- Testing
+- Local
+- QA Tool
 ---
 
 # User

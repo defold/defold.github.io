@@ -1,9 +1,18 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-adpf
-title: Android Device Performance Framework extension for Defold
 brief: This manual covers how to use the Android Device Performance Framework in Defold
+github: https://github.com/defold/extension-adpf
+language: en
+layout: manual
+title: Android Device Performance Framework extension for Defold
+toc:
+- Android Device Performance Framework extension for Defold
+- Installation
+- Usage
+- Performance Hint API
+- Thermal API
+- Example
+- Source code
+- API reference
 ---
 
 # Android Device Performance Framework extension for Defold
@@ -78,5 +87,4 @@ local headroom = adpf.thermal.get_headroom(3)
 The source code is available on [GitHub](https://github.com/defold/extension-adpf)
 
 
-## API reference
-[API Reference - adpf](/extension-adpf/adpf_api)
+## API reference[API Reference - adpf](/extension-adpf/adpf_api)

@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 联网
-toc: '["联网","技术细节","IPv4 和 IPv6","安全连接"]'
+toc:
+- 联网
+- 技术细节
+- IPv4 和 IPv6
+- 安全连接
 ---
 
 # 联网

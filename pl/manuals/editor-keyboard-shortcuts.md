@@ -4,8 +4,10 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Skróty klawiszowe Edytora
-toc: '["Skróty klawiszowe Edytora","Domyślne skróty klawiszowe Edytora","Modyfikowanie
-  skrótów klawiszowych"]'
+toc:
+- Skróty klawiszowe Edytora
+- Domyślne skróty klawiszowe Edytora
+- Modyfikowanie skrótów klawiszowych
 ---
 
 # Skróty klawiszowe Edytora

@@ -2,7 +2,10 @@
 github: https://github.com/defold/doc
 language: zh
 layout: manual
-toc: '["Linux 开发","项目配置","问答"]'
+toc:
+- Linux 开发
+- 项目配置
+- 问答
 ---
 
 

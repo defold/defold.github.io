@@ -3,8 +3,10 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Scene editing","Manipulating objects(오브젝트 다루기)","Selecting what is showing
-  in the Scene Editor (씬 에디터에서 표시할 항목 선택하기)"]'
+toc:
+- Scene editing
+- Manipulating objects(오브젝트 다루기)
+- Selecting what is showing in the Scene Editor (씬 에디터에서 표시할 항목 선택하기)
 ---
 
 # Scene editing

@@ -4,7 +4,15 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 图集教程
-toc: '["Atlas","创建图集","图集属性","图片属性","动画属性","运行时纹理及图集建立","在运行时创建纹理资源","运行时创建图集"]'
+toc:
+- Atlas
+- 创建图集
+- 图集属性
+- 图片属性
+- 动画属性
+- 运行时纹理及图集建立
+- 在运行时创建纹理资源
+- 运行时创建图集
 ---
 
 # Atlas

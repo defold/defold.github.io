@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Facebook in Defold
-toc: '[]'
+toc: []
 ---
 
 [This manual has been moved](/extension-facebook)

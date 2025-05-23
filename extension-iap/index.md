@@ -1,9 +1,24 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-iap
-title: Defold In-app purchase extension API documentation
 brief: This manual covers how to setup and use In-App Purchases in Defold.
+github: https://github.com/defold/extension-iap
+language: en
+layout: manual
+title: Defold In-app purchase extension API documentation
+toc:
+- Defold In-app purchase extension API documentation
+- Installation
+- Testing Google Play Billing with static responses
+- Setting up your app for purchases/billing
+- Asynchronous transactions
+- Synchronous payments
+- Asynchronous payments
+- Purchase fulfilment
+- Consumable vs non-consumable products
+- Transaction receipt
+- Differences between supported platforms
+- Troubleshooting
+- Source code
+- API reference
 ---
 
 # Defold In-app purchase extension API documentation
@@ -239,5 +254,4 @@ On iOS, the "price_string" field contains '~' characters
 The source code is available on [GitHub](https://github.com/defold/extension-iap)
 
 
-## API reference
-[API Reference - iap](/extension-iap/iap_api)
+## API reference[API Reference - iap](/extension-iap/iap_api)

@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的物理系统
-toc: '["物理","物理模拟数量单位","物理循环更新","注意事项"]'
+toc:
+- 物理
+- 物理模拟数量单位
+- 物理循环更新
+- 注意事项
 ---
 
 # 物理

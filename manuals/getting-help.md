@@ -1,12 +1,17 @@
 ---
-brief: This manual describes how to get help if you run into a problem while using
-  Defold.
+brief: This manual describes how to get help if you run into a problem while using Defold.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: How to get help
-toc: '["Getting help","Report a problem on the forum","Required information","Sharing
-  code","Report a problem from the editor","Discuss a problem on Discord","Log files"]'
+toc:
+- Getting help
+- Report a problem on the forum
+- Required information
+- Sharing code
+- Report a problem from the editor
+- Discuss a problem on Discord
+- Log files
 ---
 
 # Getting help

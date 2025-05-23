@@ -4,8 +4,20 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold Facebook 教程
-toc: '["注册成为 Facebook 开发者","Facebook","安装扩展","注册为 Facebook 开发者","创建 Facebook 应用","iOS","Android","Facebook
-  Canvas","小测试","Facebook Analytics","配置","使用","Facebook 的事件分享"]'
+toc:
+- 注册成为 Facebook 开发者
+- Facebook
+- 安装扩展
+- 注册为 Facebook 开发者
+- 创建 Facebook 应用
+- iOS
+- Android
+- Facebook Canvas
+- 小测试
+- Facebook Analytics
+- 配置
+- 使用
+- Facebook 的事件分享
 ---
 
 API 文档位于 [这里](https://defold.github.io/extension-facebook/).

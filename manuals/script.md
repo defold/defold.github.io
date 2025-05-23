@@ -4,8 +4,13 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Writing game logic in scripts
-toc: '["Scripts","Script types","Script execution, callbacks and self","Reactive logic","Preprocessing","Editor
-  support"]'
+toc:
+- Scripts
+- Script types
+- Script execution, callbacks and self
+- Reactive logic
+- Preprocessing
+- Editor support
 ---
 
 # Scripts

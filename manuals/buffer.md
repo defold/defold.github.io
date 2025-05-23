@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Buffer manual
-toc: '["Buffer"]'
+toc:
+- Buffer
 ---
 
 # Buffer

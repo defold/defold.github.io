@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: GUI 模板教程
-toc: '["GUI 模板节点","创建模板","创建模板节点","运行时修改模板"]'
+toc:
+- GUI 模板节点
+- 创建模板
+- 创建模板节点
+- 运行时修改模板
 ---
 
 # GUI 模板节点

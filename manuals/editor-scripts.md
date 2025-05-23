@@ -4,11 +4,24 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Editor scripts
-toc: '["Editor scripts","Editor script runtime","Anatomy of .editor_script","Editor
-  API","Commands","Use commands to change the in-memory editor state","Use shell commands","Lifecycle
-  hooks","Language servers","HTTP server","Editor scripts in libraries","Preferences","Execution
-  modes","Actions","Undoable actions","Non-undoable actions","Mixing actions and side
-  effects"]'
+toc:
+- Editor scripts
+- Editor script runtime
+- Anatomy of .editor_script
+- Editor API
+- Commands
+- Use commands to change the in-memory editor state
+- Use shell commands
+- Lifecycle hooks
+- Language servers
+- HTTP server
+- Editor scripts in libraries
+- Preferences
+- Execution modes
+- Actions
+- Undoable actions
+- Non-undoable actions
+- Mixing actions and side effects
 ---
 
 # Editor scripts

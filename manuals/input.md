@@ -1,13 +1,19 @@
 ---
-brief: This manual explains how input works, how to capture input actions and create
-  interactive script reactions.
+brief: This manual explains how input works, how to capture input actions and create interactive script reactions.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Device input in Defold
-toc: '["Input","Setting up input bindings","Trigger types","Accelerometer input","Input
-  focus","Input dispatch and on_input()","Input focus and collection proxy components","Releasing
-  input","Consuming input"]'
+toc:
+- Input
+- Setting up input bindings
+- Trigger types
+- Accelerometer input
+- Input focus
+- Input dispatch and on_input()
+- Input focus and collection proxy components
+- Releasing input
+- Consuming input
 ---
 
 # Input

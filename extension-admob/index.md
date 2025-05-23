@@ -1,9 +1,31 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-admob
-title: Defold AdMob extension API documentation
 brief: This manual covers how to use AdMob to show ads on iOS and Android in Defold.
+github: https://github.com/defold/extension-admob
+language: en
+layout: manual
+title: Defold AdMob extension API documentation
+toc:
+- Defold AdMob extension API documentation
+- Installation
+- Setup
+- Configuration
+- app_id_ios
+- app_id_android
+- app_open_android
+- app_open_ios
+- ios_tracking_usage_description
+- Usage
+- Setup
+- Request IDFA
+- Initialization
+- Ad formats
+- Loading ads
+- Showing ads
+- App Open Ads
+- Banner ads
+- Example
+- Source code
+- API reference
 ---
 
 # Defold AdMob extension API documentation
@@ -256,5 +278,4 @@ Make sure you test the example and you integration using test Ad units (see [ini
 The source code is available on [GitHub](https://github.com/defold/extension-admob)
 
 
-## API reference
-[API Reference - admob](/extension-admob/admob_api)
+## API reference[API Reference - admob](/extension-admob/admob_api)

@@ -3,7 +3,12 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["3D graphics","Defold resources","Collada support","Materials and textures","Rendering"]'
+toc:
+- 3D graphics
+- Defold resources
+- Collada support
+- Materials and textures
+- Rendering
 ---
 
 # 3D graphics

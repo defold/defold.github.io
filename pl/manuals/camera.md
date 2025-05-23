@@ -4,9 +4,16 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Kamera
-toc: '["Kamera","Tworzenie kamery","Używanie kamery","Poruszanie kamerą","Zoomowanie
-  kamery","Śledzenie obiektu gry","Konwersja współrzędnych ekranu na współrzędne świata","Manipulacja
-  w czasie rzeczywistym","Rozwiązania dla kamer od społeczności"]'
+toc:
+- Kamera
+- Tworzenie kamery
+- Używanie kamery
+- Poruszanie kamerą
+- Zoomowanie kamery
+- Śledzenie obiektu gry
+- Konwersja współrzędnych ekranu na współrzędne świata
+- Manipulacja w czasie rzeczywistym
+- Rozwiązania dla kamer od społeczności
 ---
 
 # Kamera

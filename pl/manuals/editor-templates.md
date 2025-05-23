@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Szablony w Edytorze
-toc: '["Szablony w Edytorze"]'
+toc:
+- Szablony w Edytorze
 ---
 
 # Szablony w Edytorze

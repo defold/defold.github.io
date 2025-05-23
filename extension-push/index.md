@@ -1,9 +1,21 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-push
-title: Defold Push notification documentation
 brief: This manual covers how to setup and use push notifications in Defold.
+github: https://github.com/defold/extension-push
+language: en
+layout: manual
+title: Defold Push notification documentation
+toc:
+- Defold Push notification documentation
+- Installation
+- iOS setup
+- Android setup
+- Create a Firebase project
+- Register your app with Firebase
+- Add a Firebase configuration file
+- Local push notifications
+- Inspecting scheduled notifications
+- Source code
+- API reference
 ---
 
 # Defold Push notification documentation
@@ -294,5 +306,4 @@ DEBUG:SCRIPT:
 The source code is available on [GitHub](https://github.com/defold/extension-push)
 
 
-## API reference
-[API Reference - push](/extension-push/push_api)
+## API reference[API Reference - push](/extension-push/push_api)

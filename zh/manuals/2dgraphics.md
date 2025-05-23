@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 2D 图像教程
-toc: '["2D Graphics"]'
+toc:
+- 2D Graphics
 ---
 
 # 2D Graphics

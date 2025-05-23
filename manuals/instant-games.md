@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Facebook Instant Games
-toc: '[]'
+toc: []
 ---
 
 [This manual has been moved](/extension-fbinstant)

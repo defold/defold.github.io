@@ -3,8 +3,12 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Font files","Creating a font","Bitmap BMFonts","Distance field fonts","Artifacts
-  and best practices"]'
+toc:
+- Font files
+- Creating a font
+- Bitmap BMFonts
+- Distance field fonts
+- Artifacts and best practices
 ---
 
 # Font files

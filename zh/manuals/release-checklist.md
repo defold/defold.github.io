@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 发布前检查
-toc: '["发布前检查"]'
+toc:
+- 发布前检查
 ---
 
 # 发布前检查

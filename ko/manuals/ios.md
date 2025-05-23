@@ -3,10 +3,17 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Developing games for iOS","Apple’s code signing process","Device UDID","Signing
-  the Defold development app","Launching the game","Creating an iOS application bundle","Troubleshooting","어플리케이션을
-  다운로드 할 수 없을 경우","내 장치가 Targets 메뉴에 나타나지 않을 경우","버전이 맞지 않는다(mis-matching versions)는
-  메세지로 게임이 시작되지 않는 경우"]'
+toc:
+- Developing games for iOS
+- Apple’s code signing process
+- Device UDID
+- Signing the Defold development app
+- Launching the game
+- Creating an iOS application bundle
+- Troubleshooting
+- 어플리케이션을 다운로드 할 수 없을 경우
+- 내 장치가 Targets 메뉴에 나타나지 않을 경우
+- 버전이 맞지 않는다(mis-matching versions)는 메세지로 게임이 시작되지 않는 경우
 ---
 
 # Developing games for iOS

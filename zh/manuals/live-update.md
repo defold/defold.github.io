@@ -4,7 +4,17 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 的热更新
-toc: '["热更新","准备工作","热更新配置","热更新应用打包",".zip 卷","拆分 .zip 卷","内容验证","Mounts","热更新脚本","开发警告"]'
+toc:
+- 热更新
+- 准备工作
+- 热更新配置
+- 热更新应用打包
+- .zip 卷
+- 拆分 .zip 卷
+- 内容验证
+- Mounts
+- 热更新脚本
+- 开发警告
 ---
 
 # 热更新

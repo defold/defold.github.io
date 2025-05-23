@@ -1,15 +1,27 @@
 ---
-brief: Ta instrukcja przedstawi krótkie wprowadzenie do podstaw programowania w języku
-  Lua ogólnie oraz to, na co należy zwrócić uwagę podczas pracy z Lua w Defoldzie.
+brief: Ta instrukcja przedstawi krótkie wprowadzenie do podstaw programowania w języku Lua ogólnie oraz to, na co należy zwrócić uwagę podczas pracy z Lua w Defoldzie.
 github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Programowanie Lua w Defoldzie
-toc: '["Lua w Defoldzie","Wersje Lua","Biblioteki standardowe i rozszerzenia","Książki
-  i zasoby Lua","Zasoby online","Książki","Składnia języka Lua","Zmienne i typy danych","Operatory","Kontrola
-  przepływu danych","Lokalne zmienne, zmienne globalne i zasięg leksykalny","Zasłanianie
-  zmiennych","Korutyny","Konteksty Lua w Defoldzie","Rozważania dotyczące wydajności","Pamięć
-  i gromadzenie śmieci","Najlepsze praktyki"]'
+toc:
+- Lua w Defoldzie
+- Wersje Lua
+- Biblioteki standardowe i rozszerzenia
+- Książki i zasoby Lua
+- Zasoby online
+- Książki
+- Składnia języka Lua
+- Zmienne i typy danych
+- Operatory
+- Kontrola przepływu danych
+- Lokalne zmienne, zmienne globalne i zasięg leksykalny
+- Zasłanianie zmiennych
+- Korutyny
+- Konteksty Lua w Defoldzie
+- Rozważania dotyczące wydajności
+- Pamięć i gromadzenie śmieci
+- Najlepsze praktyki
 ---
 
 # Lua w Defoldzie

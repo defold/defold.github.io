@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: pt
 layout: manual
 title: Extensões Depuração.
-toc: '[]'
+toc: []
 ---
 
 Consulte em [Debugging Native Code manual](/manuals/debugging-native-code) para aprender mais.

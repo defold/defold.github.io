@@ -4,7 +4,12 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 断网工作
-toc: '["断网工作","自动更新","问题反馈","下载依赖","编译原生扩展"]'
+toc:
+- 断网工作
+- 自动更新
+- 问题反馈
+- 下载依赖
+- 编译原生扩展
 ---
 
 # 断网工作

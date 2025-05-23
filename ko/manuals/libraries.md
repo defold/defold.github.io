@@ -3,8 +3,14 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Libraries","Setting up library sharing","Library URL","Setting up library
-  dependencies","Troubleshooting","Broken references","Name collisions"]'
+toc:
+- Libraries
+- Setting up library sharing
+- Library URL
+- Setting up library dependencies
+- Troubleshooting
+- Broken references
+- Name collisions
 ---
 
 # Libraries

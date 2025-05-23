@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 介绍
-toc: '["欢迎来到 Defold","从哪开始?"]'
+toc:
+- 欢迎来到 Defold
+- 从哪开始?
 ---
 
 # 欢迎来到 Defold

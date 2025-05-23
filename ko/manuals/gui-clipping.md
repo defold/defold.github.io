@@ -3,7 +3,10 @@ github: https://github.com/defold/doc
 language: ko
 layout: manual
 title: Defold manual
-toc: '["Clipping","Stencil mask","Layers"]'
+toc:
+- Clipping
+- Stencil mask
+- Layers
 ---
 
 # Clipping

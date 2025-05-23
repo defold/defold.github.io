@@ -4,8 +4,13 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: 3D model animation in Defold manual
-toc: '["3D skinned animation","Playing animations","The bone hierarchy","Cursor animation","Completion
-  callbacks","Playback Modes"]'
+toc:
+- 3D skinned animation
+- Playing animations
+- The bone hierarchy
+- Cursor animation
+- Completion callbacks
+- Playback Modes
 ---
 
 # 3D skinned animation

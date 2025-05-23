@@ -4,9 +4,15 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Pisanie kodu
-toc: '["Pisanie kodu","Pisanie kodu Lua","Pisanie kodu natywnego","Używanie wbudowanego
-  Edytora kodu","Dodawanie sprawdzania poprawności kodu Lua za pomocą LSP","Użycie
-  zewnętrznego Edytora kodu","Visual Studio Code - Defold Kit","Oprogramowanie dokumentacyjne"]'
+toc:
+- Pisanie kodu
+- Pisanie kodu Lua
+- Pisanie kodu natywnego
+- Używanie wbudowanego Edytora kodu
+- Dodawanie sprawdzania poprawności kodu Lua za pomocą LSP
+- Użycie zewnętrznego Edytora kodu
+- Visual Studio Code - Defold Kit
+- Oprogramowanie dokumentacyjne
 ---
 
 # Pisanie kodu

@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的 Spine 模型组件
-toc: '[]'
+toc: []
 ---
 
 [该教程已被移至这里](/extension-spine)

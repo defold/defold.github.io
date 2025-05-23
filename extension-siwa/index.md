@@ -1,9 +1,19 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/extension-siwa
-title: Sign in with Apple extension for Defold
 brief: This manual covers how to setup and use Sign in with Apple in Defold.
+github: https://github.com/defold/extension-siwa
+language: en
+layout: manual
+title: Sign in with Apple extension for Defold
+toc:
+- Sign in with Apple extension for Defold
+- Installation
+- Setting up your app for Sign in with Apple
+- Usage
+- Check Sign in with Apple support
+- Trigger Sign in with Apple
+- Check credential state
+- Source code
+- API reference
 ---
 
 # Sign in with Apple extension for Defold
@@ -66,5 +76,4 @@ end)
 The source code is available on [GitHub](https://github.com/defold/extension-siwa)
 
 
-## API reference
-[API Reference - siwa](/extension-siwa/siwa_api)
+## API reference[API Reference - siwa](/extension-siwa/siwa_api)

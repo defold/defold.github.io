@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的内支付
-toc: '[]'
+toc: []
 ---
 
 [本教程已被移至](/extension-iap)

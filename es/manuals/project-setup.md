@@ -4,8 +4,12 @@ github: https://github.com/defold/doc
 language: es
 layout: manual
 title: Configuración de proyecto
-toc: '["Configuración de Proyecto","Creando un nuevo proyecto local","Añadir el proyecto
-  a GitHub","Abrir un proyecto existente","Abrir proyecto reciente"]'
+toc:
+- Configuración de Proyecto
+- Creando un nuevo proyecto local
+- Añadir el proyecto a GitHub
+- Abrir un proyecto existente
+- Abrir proyecto reciente
 ---
 
 # Configuración de Proyecto

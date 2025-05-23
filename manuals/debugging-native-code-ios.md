@@ -4,8 +4,16 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Debugging on iOS/macOS
-toc: '["Debugging on iOS/macOS","Xcode","Create Project","Launch the debugger","Debug
-  symbols","Path mappings","Breakpoints","Notes","Check UUID of binary"]'
+toc:
+- Debugging on iOS/macOS
+- Xcode
+- Create Project
+- Launch the debugger
+- Debug symbols
+- Path mappings
+- Breakpoints
+- Notes
+- Check UUID of binary
 ---
 
 # Debugging on iOS/macOS

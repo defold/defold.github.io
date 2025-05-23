@@ -4,7 +4,9 @@ github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: Доступные образы Docker
-toc: '["Доступные образы Docker","Как использовать старые образы Docker"]'
+toc:
+- Доступные образы Docker
+- Как использовать старые образы Docker
 ---
 
 # Доступные образы Docker

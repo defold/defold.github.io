@@ -4,7 +4,14 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 性能分析
-toc: '["性能分析","运行时可视分析器","网页版分析器","逐帧分析器","资源分析器","编译报告","外部工具"]'
+toc:
+- 性能分析
+- 运行时可视分析器
+- 网页版分析器
+- 逐帧分析器
+- 资源分析器
+- 编译报告
+- 外部工具
 ---
 
 # 性能分析

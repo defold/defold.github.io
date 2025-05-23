@@ -1,14 +1,21 @@
 ---
-brief: This manual describes how to optimize a Defold game to run at a stable high
-  frame rate.
+brief: This manual describes how to optimize a Defold game to run at a stable high frame rate.
 github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Optimizing runtime performance of a Defold game
-toc: '["Optimizing runtime speed","Reduce script execution time","Use reactive code
-  patterns","Reduce garbage collection","Prehash message and action ids","Prefer and
-  cache URLs","Reduce time it takes to render a frame","Reduce scene graph complexity","Frustum
-  culling","Platform specific optimizations","Android Device Performance Framework"]'
+toc:
+- Optimizing runtime speed
+- Reduce script execution time
+- Use reactive code patterns
+- Reduce garbage collection
+- Prehash message and action ids
+- Prefer and cache URLs
+- Reduce time it takes to render a frame
+- Reduce scene graph complexity
+- Frustum culling
+- Platform specific optimizations
+- Android Device Performance Framework
 ---
 
 # Optimizing runtime speed

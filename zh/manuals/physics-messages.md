@@ -4,7 +4,11 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 中的碰撞消息
-toc: '["碰撞消息","碰撞响应","碰撞点响应","触发器响应"]'
+toc:
+- 碰撞消息
+- 碰撞响应
+- 碰撞点响应
+- 触发器响应
 ---
 
 # 碰撞消息

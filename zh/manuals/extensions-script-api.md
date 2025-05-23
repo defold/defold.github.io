@@ -4,7 +4,10 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: 为原生扩展提供编辑器代码提示
-toc: '["原生扩展的代码提示","创建脚本 API 定义文件","例子"]'
+toc:
+- 原生扩展的代码提示
+- 创建脚本 API 定义文件
+- 例子
 ---
 
 # 原生扩展的代码提示

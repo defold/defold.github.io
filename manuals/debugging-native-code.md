@@ -4,9 +4,16 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Debugging native code in Defold
-toc: '["Debugging native code","Use a debugger","Use print debugging","Analyze a crash
-  log","Getting the crash log from a device","Symbolicate a callstack","Uploading
-  symbols to Google Play","Symbolicate an Android callstack","Symbolicate an iOS callstack"]'
+toc:
+- Debugging native code
+- Use a debugger
+- Use print debugging
+- Analyze a crash log
+- Getting the crash log from a device
+- Symbolicate a callstack
+- Uploading symbols to Google Play
+- Symbolicate an Android callstack
+- Symbolicate an iOS callstack
 ---
 
 # Debugging native code

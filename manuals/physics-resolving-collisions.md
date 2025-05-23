@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: en
 layout: manual
 title: Resolving kinematic collisions in Defold
-toc: '["Resolving kinematic collisions"]'
+toc:
+- Resolving kinematic collisions
 ---
 
 # Resolving kinematic collisions

@@ -4,7 +4,7 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Animacje szkieletowe Spine
-toc: '[]'
+toc: []
 ---
 
 [Ta instrukcja została przeniesiona tutaj.](/extension-spine)

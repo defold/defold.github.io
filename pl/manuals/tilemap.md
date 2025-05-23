@@ -4,10 +4,17 @@ github: https://github.com/defold/doc
 language: pl
 layout: manual
 title: Mapy kafelków w Defoldzie
-toc: '["Tile map","Tworzenie mapy kafelków","Dodawanie mapy kafelków do Twojej gry","Manipulacja
-  w trakcie działania programu","Zmienianie pojedynczych kafelków z poziomu skryptu","Właściwości
-  map kafelków","Blend modes - tryby blendowania","Zmiana właściwości w trakcie działania
-  programu","Stałe materiału","Konfiguracja projektu"]'
+toc:
+- Tile map
+- Tworzenie mapy kafelków
+- Dodawanie mapy kafelków do Twojej gry
+- Manipulacja w trakcie działania programu
+- Zmienianie pojedynczych kafelków z poziomu skryptu
+- Właściwości map kafelków
+- Blend modes - tryby blendowania
+- Zmiana właściwości w trakcie działania programu
+- Stałe materiału
+- Konfiguracja projektu
 ---
 
 # Tile map

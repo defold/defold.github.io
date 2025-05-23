@@ -1,12 +1,14 @@
 ---
-brief: This manual explains the Defold GUI template system that is used to create
-  reusable visual GUI components based on shared templates or 'prefabs'.
+brief: This manual explains the Defold GUI template system that is used to create reusable visual GUI components based on shared templates or 'prefabs'.
 github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: GUI-нода Templates
-toc: '["GUI-нода Templates","Создание шаблона","Создание экземпляров из шаблона","Изменение
-  шаблонов в рантайме"]'
+toc:
+- GUI-нода Templates
+- Создание шаблона
+- Создание экземпляров из шаблона
+- Изменение шаблонов в рантайме
 ---
 
 # GUI-нода Templates

@@ -4,7 +4,8 @@ github: https://github.com/defold/doc
 language: zh
 layout: manual
 title: Defold 场景编辑器
-toc: '["Defold 场景编辑器"]'
+toc:
+- Defold 场景编辑器
 ---
 
 # Defold 场景编辑器
