@@ -272,6 +272,20 @@ def replace_frontmatter(filename, d):
     content = "---\n%s\n---\n\n%s" % (frontmatter, content)
     write_as_string(filename, content)
 
+def append_frontmatter(filename, d):
+    s = read_as_string(filename)
+    if s.startswith("---"):
+        parts = s.split("---", maxsplit = 2)
+        d.update(yaml.safe_load(parts[1]))
+        content = parts[2].strip()
+        frontmatter = yaml.dump(d, allow_unicode=True).strip()
+        write_as_string(filename, "---\n%s\n---\n\n%s" % (frontmatter, content))
+    else:
+        content = s
+        frontmatter = yaml.dump(d, allow_unicode=True).strip()
+        write_as_string(filename, "---\n%s\n---\n\n%s" % (frontmatter, content))
+
+
 def process_doc_file(file, language):
     replace_in_file(file, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
     replace_in_file(file, r"{% raw %}({{{?)(.*?include\..*?)(}}}?){% endraw %}", r"\1\2\3")
@@ -466,11 +480,14 @@ def process_docs(download = False):
                 rmcopytree(manuals_src_dir, manuals_dst_dir)
                 for filename in find_files(manuals_dst_dir, "*.md"):
                     process_doc_file(filename, language)
+                    # update front matter
                     toc = generate_toc(filename)
-                    replace_in_file(filename, r"title\:", r"layout: manual\ntitle:")
-                    replace_in_file(filename, r"title\:", r"language: {}\ntitle:".format(language))
-                    replace_in_file(filename, r"title\:", r"github: {}\ntitle:".format("https://github.com/defold/doc"))
-                    replace_in_file(filename, r"title\:", r"toc: [{}]\ntitle:".format(",".join(toc)))
+                    append_frontmatter(filename, {
+                        "layout": "manual",
+                        "language": language,
+                        "github": "https://github.com/defold/doc",
+                        "toc": "[{}]".format(",".join(toc)),
+                    })
                     if language == "en":
                         # preprocess docs pages for llms-full.txt to a temporary folder _llms/
                         contents = read_as_string(filename)
@@ -510,8 +527,10 @@ def process_docs(download = False):
                 rmcopytree(faq_src_dir, faq_dst_dir)
                 for filename in find_files(faq_dst_dir, "*.md"):
                     process_doc_file(filename, language)
-                    replace_in_file(filename, r"title\:", r"language: {}\ntitle:".format(language))
-                    replace_in_file(filename, r"title\:", r"layout: faq\ntitle:")
+                    append_frontmatter(filename, {
+                        "language": language,
+                        "layout": "faq",
+                    })
                     if language != "en":
                         # replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
                         update_file_links_with_lang(filename, r'\/manuals\/[^)#]+', language)
@@ -536,7 +555,7 @@ def process_docs(download = False):
         rmcopytree(tutorials_src_dir, tutorials_dst_dir)
         for filename in find_files(tutorials_dst_dir, "*.md"):
             process_doc_file(filename, "en")
-            replace_in_file(filename, r"title\:", r"layout: tutorial\ntitle:")
+            append_frontmatter(filename, { "layout": "tutorial" })
 
         print("...courses")
         courses_src_dir = os.path.join(DOC_DIR, "docs", "en", "courses")
@@ -544,7 +563,7 @@ def process_docs(download = False):
         rmcopytree(courses_src_dir, courses_dst_dir)
         for filename in find_files(courses_dst_dir, "*.md"):
             process_doc_file(filename, "en")
-            replace_in_file(filename, r"title\:", r"layout: course\ntitle:")
+            append_frontmatter(filename, { "layout": "course" })
 
         # figure out in which languages each manual exists
         print("...index (incl. languages)")
@@ -656,9 +675,11 @@ def process_extension(extension_name, download = False):
 
         index = os.path.join(extension_dir, "index.md")
         for filename in find_files(extension_dir, "*.md"):
-            replace_in_file(filename, r"title\:", r"layout: manual\ntitle:")
-            replace_in_file(filename, r"title\:", r"language: en\ntitle:")
-            replace_in_file(filename, r"title\:", r"github: {}\ntitle:".format(github_url))
+            append_frontmatter(filename, {
+                "layout": "manual",
+                "language": "en",
+                "github": "{}".format(github_url),
+            })
             process_doc_file(filename, "en")
 
         for filename in find_files(unzipped_extension_dir, "*.script_api"):
@@ -1099,6 +1120,7 @@ def process_refdoc(download = False):
     rmmkdir(ref_root_dir)
 
     for branch in branchindex:
+        print("Processing branch", branch)
         REFDOC_ZIP = "refdoc_{}.zip".format(branch)
         REF_DATA_DIR = os.path.join("_data", "ref", branch)
         REF_PAGE_DIR = os.path.join(ref_root_dir, branch)
@@ -1141,13 +1163,13 @@ def process_refdoc(download = False):
                         language = api["info"].get("language")
                         if not language:
                             if namespace.startswith("dm"):
-                                print("No language found in %s, inferring C++ from namespace" % file)
+                                print("  No language found in %s, inferring C++ from namespace" % file)
                                 api["info"]["language"] = "C++"
                             elif "script_" in api["info"]["path"]:
-                                print("No language found in %s, inferring Lua from path" % file)
+                                print("  No language found in %s, inferring Lua from path" % file)
                                 api["info"]["language"] = "Lua"
                             else:
-                                print("No language found in %s, assuming Lua" % file)
+                                print("  No language found in %s, assuming Lua" % file)
                                 api["info"]["language"] = "Lua"
                                 # sys.exit(5)
 
@@ -1191,7 +1213,7 @@ def process_refdoc(download = False):
                 # write the json data file for the api
                 # example: _data/ref/stable/go.json
                 p = os.path.join(REF_DATA_DIR, json_out_file)
-                print("REFDOC " + json_out_name + " path: " + p + " lang: " + api["info"].get("language"))
+                print("  ", json_out_name + " path: " + p + " lang: " + api["info"].get("language"))
                 write_as_json(p, api)
 
                 # generate a dummy markdown page with some front matter for each ref doc
