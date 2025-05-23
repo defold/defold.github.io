@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: ru
-github: https://github.com/defold/doc
-toc: ["Ресурс Tile Source","Создание источника тайлов","Анимация в тайловом источнике","Формы столкновений источника тайлов"]
-title: Ресурс Tile Source
 brief: Описывается способ создания и использования источника тайлов.
+github: https://github.com/defold/doc
+language: ru
+layout: manual
+title: Ресурс Tile Source
+toc: '["Ресурс Tile Source","Создание источника тайлов","Анимация в тайловом источнике","Формы
+  столкновений источника тайлов"]'
 ---
 
 # Ресурс Tile Source

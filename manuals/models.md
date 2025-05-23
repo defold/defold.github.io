@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Models"]
-title: Deprecated 3D models doc
 brief: This document has been replaced
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Deprecated 3D models doc
+toc: '["Models"]'
 ---
 
 # Models

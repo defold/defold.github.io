@@ -1,10 +1,13 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Project settings","File format","Runtime access","Sections and settings","Project","Bootstrap","Library","Script","Engine","Display","Render","Physics","Graphics","Input","Resource","Network","Collection","Sound","Sprite","Tilemap","Spine","Mesh","Model","GUI","Label","Particle FX","Collection proxy","Collection factory","Factory","iOS","Android","macOS","Windows","HTML5","IAP","Live update","Native extension","Profiler","Setting config values on engine startup","Custom project settings"]
-title: Defold project settings
 brief: This manual describes how project specific settings work in Defold.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Defold project settings
+toc: '["Project settings","File format","Runtime access","Sections and settings","Project","Bootstrap","Library","Script","Engine","Display","Render","Physics","Graphics","Input","Resource","Network","Collection","Sound","Sprite","Tilemap","Spine","Mesh","Model","GUI","Label","Particle
+  FX","Collection proxy","Collection factory","Factory","iOS","Android","macOS","Windows","HTML5","IAP","Live
+  update","Native extension","Profiler","Setting config values on engine startup","Custom
+  project settings"]'
 ---
 
 # Project settings

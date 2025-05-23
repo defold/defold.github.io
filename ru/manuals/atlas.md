@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: ru
-github: https://github.com/defold/doc
-toc: ["Ресурс Atlas","Создание атласа","Свойства атласа","Свойства изображения","Свойства анимации"]
-title: Ресурс Atlas
 brief: Это руководство объясняет особенности использования ресурса Atlas в Defold.
+github: https://github.com/defold/doc
+language: ru
+layout: manual
+title: Ресурс Atlas
+toc: '["Ресурс Atlas","Создание атласа","Свойства атласа","Свойства изображения","Свойства
+  анимации"]'
 ---
 
 # Ресурс Atlas

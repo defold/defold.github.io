@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["Shaders","概念","在 shader 中引入代码片段","Header guards","渲染过程","深入学习"]
-title: Defold 中的着色器编程
 brief: 本教程介绍了顶点和片元着色器及其在 Defold 中的使用方法.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 中的着色器编程
+toc: '["Shaders","概念","在 shader 中引入代码片段","Header guards","渲染过程","深入学习"]'
 ---
 
 # Shaders

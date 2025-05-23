@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: pl
+brief: Instrukcja ta wyjaśnia jak używać Fabryk kolekcji, żeby tworzyć hierarchię
+  obiektów gry.
 github: https://github.com/defold/doc
-toc: ["Fabryka kolekcji (Collection factory)","Tworzenie kolekcji","Właściwości","Wczytywanie dynamiczne zasobów"]
+language: pl
+layout: manual
 title: Instrukcja do Fabryk kolekcji
-brief: Instrukcja ta wyjaśnia jak używać Fabryk kolekcji, żeby tworzyć hierarchię obiektów gry.
+toc: '["Fabryka kolekcji (Collection factory)","Tworzenie kolekcji","Właściwości","Wczytywanie
+  dynamiczne zasobów"]'
 ---
 
 # Fabryka kolekcji (Collection factory)

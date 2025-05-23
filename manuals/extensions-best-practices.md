@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Best Practices","Project structure","Lua API","Folder structure","Writing native code","C++ version","No C++ Exceptions","Standard Template Libraries - STL","Make functions hidden","3rd party libraries","Open source dependencies"]
-title: Native extensions - Best Practices
 brief: This manual describes best practices when developing native extensions.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Native extensions - Best Practices
+toc: '["Best Practices","Project structure","Lua API","Folder structure","Writing
+  native code","C++ version","No C++ Exceptions","Standard Template Libraries - STL","Make
+  functions hidden","3rd party libraries","Open source dependencies"]'
 ---
 
 # Best Practices
@@ -129,4 +131,3 @@ When choosing a 3rd party library to use (regardless of language), consider the 
 Always make sure that you have access to your dependencies. E.g. if you depend on something on GitHub, there's nothing preventing that repository from either being removed, or suddenly change direction or ownership. You can mitigate this risk by forking the repository and using your fork instead of the upstream project.
 
 Remember that the code in the library will be injected into your game, so make sure the library does what it's supposed to do, and nothing more!
-

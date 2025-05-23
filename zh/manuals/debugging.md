@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["调试"]
-title: Defold 调试
 brief: 本教程介绍了 Defold 的内置调试工具.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 调试
+toc: '["调试"]'
 ---
 
 # 调试

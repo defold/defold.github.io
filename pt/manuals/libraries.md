@@ -1,10 +1,13 @@
 ---
-layout: manual
-language: pt
+brief: Os recursos das bibliotecas permitem que você compartilhe elementos entre projetos.
+  Esse material explica como isso funciona.
 github: https://github.com/defold/doc
-toc: ["Bibliotecas","Configurando o compartilhamento de Bibliotecas","URL da Biblioteca","Autenticação de acesso básico","Autenticação de acesso avançada","Configurando as dependências da Biblioteca","Referências quebradas","Colisão de Nomes"]
+language: pt
+layout: manual
 title: Trabalhando com bibliotecas no Defold
-brief: Os recursos das bibliotecas permitem que você compartilhe elementos entre projetos. Esse material explica como isso funciona.
+toc: '["Bibliotecas","Configurando o compartilhamento de Bibliotecas","URL da Biblioteca","Autenticação
+  de acesso básico","Autenticação de acesso avançada","Configurando as dependências
+  da Biblioteca","Referências quebradas","Colisão de Nomes"]'
 ---
 
 # Bibliotecas
@@ -96,4 +99,4 @@ Compartilhamento de Bibliotecas incluem somente arquivos que estão localizados 
 
 Como você pode listar diversas URL de projetos nas *dependencies* das configurações do projeto, você pode acabar encontrando colisões de nome. Isso acontece se dois ou mais projetos dependentes compartilham uma pasta com os mesmos nomes na *include_dirs* project setting. 
 
-O Defold resolve colisões de nome simplesmente ignorando todas, exceto a ultima referência para pastas com o mesmo nome na ordem das URL's especificas na *dependencies* do projeto.Por hora. Se voce listar 3 URL de projetos de Bibliotecas nas dependências e todas elas compartilham uma pasta chamada *items*, somente uma pasta *items* vai ser mostrada---A que pertence ao projeto, que é a ultima na lista de URL's. 
+O Defold resolve colisões de nome simplesmente ignorando todas, exceto a ultima referência para pastas com o mesmo nome na ordem das URL's especificas na *dependencies* do projeto.Por hora. Se voce listar 3 URL de projetos de Bibliotecas nas dependências e todas elas compartilham uma pasta chamada *items*, somente uma pasta *items* vai ser mostrada---A que pertence ao projeto, que é a ultima na lista de URL's.

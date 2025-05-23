@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["GUI text nodes","Adding text nodes","Alignment","Modifying text nodes in runtime"]
-title: Defold GUI text nodes
 brief: This manual describes how to add text to GUI scenes.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Defold GUI text nodes
+toc: '["GUI text nodes","Adding text nodes","Alignment","Modifying text nodes in runtime"]'
 ---
 
 # GUI text nodes
@@ -59,4 +59,3 @@ function on_message(self, message_id, message, sender)
     end
 end
 ```
-

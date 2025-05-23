@@ -299,7 +299,6 @@ Remember that no matter what path you take to learning Defold, you can always co
 
 We hope that you will enjoy creating your next awesome game in Defold!
 
-
 <!-- /manuals/install -->
 
 # Installing Defold {#manuals:install}
@@ -528,7 +527,6 @@ Good performance is key in games and it is vital that you are able to do perform
 ## Vertex shader
 
 ![Vertex shader](https://defold.com/manuals/images/icons/vertex-shader.png) The vertex shader computes the screen geometry of a component's primitive polygon shapes. For any type of visual component, be it a sprite, tilemap or model, the shape is represented by a set of polygon vertex positions. The vertex shader program processes each vertex (in world space) and computes the resulting coordinate that each vertex of a primitive should have. See the [Shader manual](#manuals:shader) for more information.
-
 
 <!-- /manuals/flash -->
 
@@ -883,7 +881,6 @@ Finally, see the [profiler documentation](https://defold.com/ref/profiler/) for 
 
 If you have questions or get stuck, the [Defold forums](//forum.defold.com) are a great place to reach out for help.
 
-
 <!-- /manuals/getting-help -->
 
 # Getting help {#manuals:getting-help}
@@ -981,7 +978,6 @@ The engine, editor and build server generates logging information that can be ve
 * [Editor logs](#manuals:editor#editor-logs)
 * [Build server logs](#manuals:extensions#build-server-logs)
 
-
 <!-- /manuals/project-setup -->
 
 # Project setup {#manuals:project-setup}
@@ -1021,7 +1017,6 @@ Click the <kbd>Open From Disk</kbd> option to open a project already located on 
 ## Open a recent project
 
 Once a project has been opened once it will show up in the list of recent projects. The list will show the projects you have worked on most recently and it will allow you to quickly open any of the projects by double-clicking the project in the list.
-
 
 <!-- /manuals/project-settings -->
 
@@ -1384,7 +1379,6 @@ my_property.private = 1 // boolean value 1 or 0
 
 At the moment meta properties are used only in `bob.jar` when bundling application, but later will be parsed by the editor and represented in the *game.project* viewer.
 
-
 <!-- /manuals/libraries -->
 
 # Libraries {#manuals:libraries}
@@ -1510,7 +1504,6 @@ Library sharing only includes files that are located under the shared folder(s).
 Since you can list several project URLs in the *dependencies* project setting you might encounter a name collision. This happens if two or more of the dependent projects share a folder with the same name in the *`include_dirs`* project setting.
 
 Defold resolves name collisions by simply ignoring all but the last reference to folders of the same name in the order the project URLs are specified in the *dependencies* list. For instance. If you list 3 library project URLs in the dependencies and all of them share a folder named *items*, only one *items* folder will show up---the one belonging to the project that is last in the URL list.
-
 
 <!-- /manuals/editor -->
 
@@ -1716,7 +1709,6 @@ vmargs = -Xmx6gb,-Dfile.encoding=UTF-8,-Djna.nosys=true,-Ddefold.launcherpath=${
 ```
 
 
-
 <!-- /manuals/writing-code -->
 
 # Writing code {#manuals:writing-code}
@@ -1791,7 +1783,6 @@ Learn more and install Defold Kit from the [Visual Studio Marketplace](https://m
 
 Community created API reference packages are available for [Dash and Zeal](https://forum.defold.com/t/defold-docset-for-dash/2417).
 
-
 <!-- /manuals/editor-templates -->
 
 # Editor templates {#manuals:editor-templates}
@@ -1835,7 +1826,6 @@ This will create the list of templates seen in the screenshot above.
 <div class='sidenote' markdown='1'>
 You can only use the template images [bundled with the editor](https://github.com/defold/defold/tree/dev/editor/resources/welcome/images).
 </div>
-
 
 <!-- /manuals/editor-scripts -->
 
@@ -2273,7 +2263,6 @@ Existing non-undoable actions:
 You can mix undoable and non-undoable actions. Actions are executed sequentially, hence depending on an order of actions you will end up losing ability to undo parts of that command.
 
 Instead of returning actions from functions that expect them, you can just read and write to files directly using `io.open()`. This will trigger a resource reload that will clear undo history.
-
 
 <!-- /manuals/editor-scripts-ui -->
 
@@ -2780,7 +2769,6 @@ When this checkbox is enabled Defold will draw all collision shapes and contact 
 
 ![physics debug visualization](https://defold.com/manuals/images/debugging/physics_debug_visualisation.png)
 
-
 <!-- /manuals/editor-preferences -->
 
 # Editor preferences {#manuals:editor-preferences}
@@ -2911,7 +2899,6 @@ However, if you break a reference by, for instance, deleting an asset, the edito
 
 Build errors appear in the *Build Errors* pane at the bottom of the editor. <kbd>Double clicking</kbd> an error takes you to the location of the problem.
 
-
 <!-- /manuals/editor-styling -->
 
 # Editor styling {#manuals:editor-styling}
@@ -3038,7 +3025,6 @@ It is also possible to use a local font instead of a web font:
 <div class='sidenote' markdown='1'>
 The code editor font is defined separately in the editor Preferences!
 </div>
-
 
 <!-- /manuals/building-blocks -->
 
@@ -3177,7 +3163,6 @@ msg.post("child_bean", "set_parent", { parent_id = parent })
 <div class='important' markdown='1'>
 A common misunderstanding is that a game object's place in the collection hierarchy changes when it becomes part of a parent-child hierarchy. However, these are two very different things. Parent-child hierarchies dynamically alter the scene graph, which allows objects to be visually attached to each other. The only thing that dictates a game object's address is its place in the collection hierarchy. The address is static throughout the lifetime of the object.
 </div>
-
 
 <!-- /manuals/addressing -->
 
@@ -3439,7 +3424,6 @@ my_url.fragment = "controller" -- specify as string or hash
 -- Post to target specified by URL
 msg.post(my_url, "hello_manager!")
 ```
-
 
 <!-- /manuals/message-passing -->
 
@@ -3710,7 +3694,6 @@ DEBUG:SCRIPT: 75 dispatch passes before this update.
 
 We see that this particular Defold engine version performs 10 dispatch passes on the message queue between `init()` and the first call to `update()`. It then performs 75 passes during each subsequent update loop.
 
-
 <!-- /manuals/application-lifecycle -->
 
 # Application lifecycle {#manuals:application-lifecycle}
@@ -3832,7 +3815,6 @@ The engine follows up with behind the scenes shutting down of subsystems: projec
 
 The application is now completely shut down.
 
-
 <!-- /manuals/importing-assets -->
 
 # Importing and editing assets {#manuals:importing-assets}
@@ -3873,7 +3855,6 @@ The editor saves all Defold assets in text based files that are merge friendly. 
 Extra care should be taken when working with Defold asset files through a text editor or external tool. If you introduce errors those can prevent the file from opening in the Defold editor.
 
 Some external tools such as [Tiled](https://defold.com/assets/tiled/) and [Tilesetter](https://www.tilesetter.org/beta) can be used to generate Defold Assets automatically.
-
 
 <!-- /manuals/caching-assets -->
 
@@ -3923,7 +3904,6 @@ java -jar bob.jar --resource-cache-remote http://192.168.0.100/
 ```
 
 As with the local cache all assets are accessed from the remote cache based on a computed checksum. Cached assets are accessed through the HTTP request methods GET, PUT and HEAD. Defold does not provide the remote cache server. It is up to each developer to set this up. An example of [a basic Python server can be seen here](https://github.com/britzl/httpserver-python).
-
 
 <!-- /manuals/importing-graphics -->
 
@@ -4064,8 +4044,6 @@ You export your model using the Export menu option. Select the model before you 
 
 ![Exporting using Blender](https://defold.com/manuals/images/model/blender_export.png)
 
-
-
 <!-- /manuals/adapting-graphics-to-screen-size -->
 
 # Introduction {#manuals:adapting-graphics-to-screen-size}
@@ -4189,7 +4167,6 @@ Defold supports GUIs that automatically adapt to screen orientation changes on m
 The Debug menu contains an option to simulate the resolution of either a certain device model resolution or a custom resolution. While the application is running you can select <kbd>Debug->Simulate Resolution</kbd> and pick one of the device models from the list. The running application window will resize and you'll be able to see how your game looks in a different resolution or with a different aspect ratio.
 
 ![](https://defold.com/manuals/images/screen_size/simulate-resolution.png)
-
 
 <!-- /manuals/live-update -->
 
@@ -4331,7 +4308,6 @@ Forcing re-download of resources
   The file liveupdate.mounts is located under the "local storage", and it's path is output to the console at start "INFO:LIVEUPDATE: Live update folder located at: ..."
 
   ![Local storage](https://defold.com/manuals/images/live-update/local-storage.png)
-
 
 <!-- /manuals/atlas -->
 
@@ -4553,7 +4529,6 @@ If the texture should be used on a [sprite component](#manuals:sprite) it first 
 
 ```
 
-
 <!-- /manuals/buffer -->
 
 # Buffer {#manuals:buffer}
@@ -4583,7 +4558,7 @@ The above example describes a stream of positions in three dimensions, represent
 
 Buffer resources are typically created using external tools or scripts, for instance when exporting from modeling tools such as Blender. 
 
-A Buffer resource can be used as input to a [Mesh component](#manuals:mesh). Buffer resources can also be created at runtime using the `buffer.create()` and [related API functions](https://defold.com/ref/stable/buffer/#buffer.create:element_count-declaration). 
+A Buffer resource can be used as input to a [Mesh component](#manuals:mesh). Buffer resources can also be created at runtime using the `buffer.create()` and [related API functions](https://defold.com/ref/stable/buffer/#buffer.create:element_count-declaration).
 
 <!-- /manuals/font -->
 
@@ -4752,7 +4727,6 @@ For example - to generate a gradient in a shader fragment, simply write:
 
 For more information about shader uniforms, see the [Shader manual](#manuals:shader).
 
-
 <!-- /manuals/resource -->
 
 # Resource management {#manuals:resource}
@@ -4817,7 +4791,6 @@ With collection proxies, it is possible to leave out all the resources the compo
 ![Exclude](https://defold.com/manuals/images/resource/exclude.png)
 
 By marking a collection proxy as *Exclude* the referenced resource will be left out of the game bundle. Instead, you can store excluded collections on selected cloud storage. The [Live update manual](#manuals:live-update) explains how this feature works.
-
 
 <!-- /manuals/tilesource -->
 
@@ -4917,7 +4890,6 @@ To select the tile shapes that should belong to a certain group, select the grou
 
 To remove a tile from its collision group, select the tile source root element in the *Outline*, then click the tile.
 
-
 <!-- /manuals/texture-filtering -->
 
 # Texture filtering and sampling {#manuals:texture-filtering}
@@ -4949,7 +4921,6 @@ default_texture_mag_filter = nearest
 If you don’t specify anything, both are set to `linear` by default.
 
 Note that the setting in *game.project* is used by in the default samplers. If you specify samplers in a custom material, you can set the filter method on each sampler specifically. See the [Materials manual](#manuals:material) for details.
-
 
 <!-- /manuals/texture-profiles -->
 
@@ -5218,9 +5189,6 @@ Here are the resulting images (retrieved from the ASTC encoding using the `basis
 `HIGHEST`
 ![best compression preset](https://defold.com/manuals/images/texture_profiles/kodim03_pow2.best.png)
 
-
-
-
 <!-- /manuals/animation -->
 
 # Animation {#manuals:animation}
@@ -5235,7 +5203,6 @@ Additional animation formats can be added through extensions:
 
 * [Rive animation](/extension-rive) - Playing vector based 2D skeletal animations
 * [Spine animation](/extension-spine) - Playing textured 2D skeletal animations
-
 
 <!-- /manuals/flipbook-animation -->
 
@@ -5342,7 +5309,6 @@ function init(self)
 end
 ```
 
-
 <!-- /manuals/model-animation -->
 
 # 3D skinned animation {#manuals:model-animation}
@@ -5425,7 +5391,6 @@ Animations can be played either once or in a loop. How the animation plays is de
 * `go.PLAYBACK_LOOP_FORWARD`
 * `go.PLAYBACK_LOOP_BACKWARD`
 * `go.PLAYBACK_LOOP_PINGPONG`
-
 
 <!-- /manuals/property-animation -->
 
@@ -5604,7 +5569,6 @@ go.animate("go", "position.y", go.PLAYBACK_LOOP_PINGPONG, 200, square_easing, 2.
 ```
 
 ![Square curve](https://defold.com/manuals/images/animation/square_curve.png)
-
 
 <!-- /manuals/components -->
 
@@ -5912,8 +5876,6 @@ local ids = collectionfactory.create("#factory")
 When the *Dynamic Prototype* option is set the collection component count cannot be optimized, and the owning collection will use the default component counts from the *game.project* file.
 </div>
 
-
-
 <!-- /manuals/collection-proxy -->
 
 # Collection proxy {#manuals:collection-proxy}
@@ -6120,7 +6082,6 @@ Memory
 Input
 : If you have objects in your loaded collection that require input actions, you need to make sure that the game object that contains the collection proxy acquires input. When the game object receives input messages these are propagated to the components of that object, i.e. the collection proxies. The input actions are sent via the proxy into the loaded collection.
 
-
 <!-- /manuals/physics-objects -->
 
 # Collision objects {#manuals:physics-objects}
@@ -6240,7 +6201,6 @@ A physics object has a number of different properties that can be read and chang
 
 `mass`
 : The defined physical mass of the collision object component. READ ONLY. (`number`). [API reference](https://defold.com/ref/physics/#mass).
-
 
 <!-- /manuals/camera -->
 
@@ -6488,7 +6448,6 @@ There are community-made camera solutions that implement common features such as
 
 - [Orthographic camera](https://defold.com/assets/orthographic/) (2D only) by Björn Ritzl.
 - [Defold Rendy](https://defold.com/assets/defold-rendy/) (2D and 3D) by Klayton Kowalski.
-
 
 <!-- /manuals/factory -->
 
@@ -6757,7 +6716,6 @@ If you set *max_instances* to 1024 and have 24 manually placed game objects in y
 
 It may seem like a good idea to save spawned game objects in a pool and reuse them. However, the engine is already doing object pooling under the hood so additional overhead will only slow things down. It is both faster and cleaner to delete game objects and spawn new ones.
 
-
 <!-- /manuals/label -->
 
 # Label {#manuals:label}
@@ -6900,7 +6858,6 @@ end
 
 The *game.project* file has a few [project settings](#manuals:project-settings#label) related to labels.
 
-
 <!-- /manuals/mesh -->
 
 # Mesh component {#manuals:mesh}
@@ -7013,7 +6970,6 @@ go.animate("#mesh", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1), g
 If the Vertex Space setting of the mesh material is set to Local Space the data will be provided as-is to you in your shader, and you will have to transform vertices/normals as usual on the GPU.
 
 If the Vertex Space setting of the mesh material is set to World Space you have to either provide a default “position” and “normal”, stream, or you can select it from the dropdown, when editing the mesh. This is so that the engine can transform the data to world space for batching with other objects.
-
 
 <!-- /manuals/model -->
 
@@ -7146,7 +7102,6 @@ The default render script is tailor made for 2D games and does not work with 3D 
   ```
 
 See the [Render documentation](#manuals:render) for details on how render scripts work.
-
 
 <!-- /manuals/particlefx -->
 
@@ -7405,7 +7360,6 @@ The default particle effect material has the following constants that can be cha
 
 The *game.project* file has a few [project settings](#manuals:project-settings#particle-fx) related to particles.
 
-
 <!-- /manuals/sound -->
 
 # Sound {#manuals:sound}
@@ -7622,7 +7576,6 @@ The *game.project* file has a few [project settings](#manuals:project-settings#s
 
 It is also possible to support [streaming sounds](#manuals:sound-streaming)
 
-
 <!-- /manuals/sprite -->
 
 # Sprites {#manuals:sprite}
@@ -7818,7 +7771,6 @@ This is important to note, so make sure the images have similar enough shapes, o
 
 The dimensions of the images in each texture may be different.
 
-
 <!-- /manuals/tilemap -->
 
 # Tile map {#manuals:tilemap}
@@ -7951,11 +7903,6 @@ There are external map/level editors that can export directly to Defold tilemaps
 ### Tilesetter
 
 [Tilesetter](https://www.tilesetter.org/docs/exporting#defold) can be used to automatically create full tilesets from simple base tiles and it has a map editor which can export directly to Defold.
-
-
-
-
-
 
 <!-- /manuals/gui -->
 
@@ -8376,7 +8323,6 @@ The nodes can now be batched into two draw calls, instead of six. A major perfor
 
 Note that a child node with unset layer will implicitly inherit the layer setting of its parent node. Not setting a layer on a node implicitly adds it to the "null" layer, which is drawn before any other layer.
 
-
 <!-- /manuals/gui-box -->
 
 # GUI box nodes {#manuals:gui-box}
@@ -8499,8 +8445,6 @@ function on_message(self, message_id, message, sender)
 end
 ```
 
-
-
 <!-- /manuals/gui-pie -->
 
 # GUI pie nodes {#manuals:gui-pie}
@@ -8554,7 +8498,6 @@ gui.set_outer_bounds(pienode, gui.PIEBOUNDS_RECTANGLE)
 -- animate the inner radius
 gui.animate(pienode, "inner_radius", 100, gui.EASING_INOUTSINE, 2, 0, nil, gui.PLAYBACK_LOOP_PINGPONG)
 ```
-
 
 <!-- /manuals/gui-particlefx -->
 
@@ -8641,7 +8584,6 @@ end
 There is no node corresponding to the template instance itself. If you need a root node for an instance, add it to the template.
 
 If a script is associated with a template GUI scene, the script is not part of the instance node tree. You may attach one single script to each GUI scene so your script logic needs to sit on the GUI scene where you have instantiated your templates.
-
 
 <!-- /manuals/gui-script -->
 
@@ -8790,7 +8732,6 @@ local new_textnode = gui.new_text_node(vmath.vector3(100, 100, 0), "Hello!")
 -- to do gui.get_node() when we already have the reference.
 ```
 
-
 <!-- /manuals/gui-clipping -->
 
 # Clipping {#manuals:gui-clipping}
@@ -8863,7 +8804,6 @@ In this example, both the clipper nodes "`Donut BG`" and "`BG`" are using the sa
 - `Donut Shadow`
 
 Here you can see that the "`Donut Shadow`" object will be clipped by both clipping nodes due to the layering, even though it is only a child to one of them.
-
 
 <!-- /manuals/gui-layouts -->
 
@@ -8959,7 +8899,6 @@ end
 
 When orientation is switched, the GUI layout manager will automatically scale and reposition GUI nodes according to your layout and node properties. In-game content, however, is rendered in a separate pass (by default) with a stretch-fit projection into the current window. To change this behavior, either supply your own modified render script, or use a camera [library](https://defold.com/assets/).
 
-
 <!-- /manuals/physics -->
 
 # Physics {#manuals:physics}
@@ -8997,7 +8936,6 @@ Collection proxies
 
 Collisions not detected
 : If you have problems with collisions not being handled or detected properly then make sure to read up on [physics debugging in the Debugging manual](#manuals:debugging).
-
 
 <!-- /manuals/physics-shapes -->
 
@@ -9145,7 +9083,6 @@ Collision shapes in 3D physics can be rotated around all axis.
 ## Rotating collision shapes in 2D physics
 Collision shapes in 2D physics can only be rotated around the z-axis. Rotation around the x or y axis will yield incorrect results and should be avoided, even when rotating 180 degrees to essentially flip the shape along the x or y axis. To flip a physics shape it is recommended to use [`physics.set_hlip(url, flip)`](https://defold.com/ref/stable/physics/?#physics.set_hflip:url-flip) and [`physics.set_vlip(url, flip)`](https://defold.com/ref/stable/physics/?#physics.set_vflip:url-flip).
 
-
 <!-- /manuals/physics-groups -->
 
 # Group and mask {#manuals:physics-groups}
@@ -9160,7 +9097,6 @@ The *Mask* field can contain multiple group names, allowing for complex interact
 
 ## Detecting collisions
 When two collision objects with matching groups and masks collide the physics engine will generate [collision messages](#manuals:physics-messages) that can be used in games to react to collisions.
-
 
 <!-- /manuals/physics-messages -->
 
@@ -9312,7 +9248,6 @@ function on_message(self, message_id, message, sender)
 end
 ```
 
-
 <!-- /manuals/physics-events -->
 
 # Defold Physics Event Handling {#manuals:physics-events}
@@ -9448,7 +9383,6 @@ function init(self)
 end
 ```
 
-
 <!-- /manuals/physics-resolving-collisions -->
 
 # Resolving kinematic collisions {#manuals:physics-resolving-collisions}
@@ -9536,7 +9470,6 @@ function on_message(self, message_id, message, sender)
 end
 ```
 
-
 <!-- /manuals/physics-ray-casts -->
 
 ## Ray casts {#manuals:physics-ray-casts}
@@ -9563,7 +9496,6 @@ end
 <div class='sidenote' markdown='1'>
 Ray casts will ignore collision objects that contain the starting point of the ray. This is a limitation in Box2D.
 </div>
-
 
 <!-- /manuals/physics-joints -->
 
@@ -9619,7 +9551,6 @@ end
 ## Get joint reaction force and torque
 
 The reaction force and torque applied to a joint can be read using [`physics.get_joint_reaction_force()`](https://defold.com/ref/physics/#physics.get_joint_reaction_force:collisionobject-joint_id) and [`physics.get_joint_reaction_torque()`](https://defold.com/ref/physics/#physics.get_joint_reaction_torque:collisionobject-joint_id).
-
 
 <!-- /manuals/sound-streaming -->
 
@@ -9925,7 +9856,6 @@ function on_input(self, action_id, action)
 end
 ```
 
-
 <!-- /manuals/input-key-and-text -->
 
 <div class='sidenote' markdown='1'>
@@ -9976,7 +9906,6 @@ The `marked-text` is used primarily for Asian keyboards where multiple keypresse
 
 - Each keypress generates a separate action and sets the action field `text` to the currently entered sequence of symbols (the "marked text").
 - When the user selects a symbol or symbol combination, a separate `text` type trigger action is sent (provided that one is set up in the input binding list). The separate action sets the action field `text` to the final sequence of symbols.
-
 
 <!-- /manuals/input-mouse-and-touch -->
 
@@ -10096,7 +10025,6 @@ In both cases there is a need to convert from the screen space coordinates of th
 
   * Manually keep track of which view and projection that is used by the render script and use this to convert to and from world space. See the [camera manual for an example of this](#manuals:camera).
   * Use a [third-party camera solution](#manuals:camera) and make use of the provided screen-to-world conversion functions.
-
 
 <!-- /manuals/input-gamepads -->
 
@@ -10331,7 +10259,6 @@ When adding additional gamepad bindings on Android you can use the following loo
 
 Use this lookup table in combination with a gamepad test app from the Google Play Store to figure out which key event each button on your gamepad is mapped to.
 
-
 <!-- /manuals/script -->
 
 # Scripts {#manuals:script}
@@ -10525,7 +10452,6 @@ The Defold editor supports Lua script editing with syntax coloring and auto-comp
 
 ![Auto completion](https://defold.com/manuals/images/script/completion.png)
 
-
 <!-- /manuals/properties -->
 
 # Properties {#manuals:properties}
@@ -10674,7 +10600,6 @@ Note that all color values are encoded in a vector4 where the components corresp
 | *inner_radius* | The inner radius of a pie node. | `number` | `gui.get_inner_radius()` `gui.set_inner_radius()` |
 | *slice9* | The edge distances of a slice9 node. | `vector4` | `gui.get_slice9()` `gui.set_slice9()` |
 
-
 <!-- /manuals/script-properties -->
 
 # Script properties {#manuals:script-properties}
@@ -10821,7 +10746,6 @@ function init(self)
   go.set("#tilemap", "tile_source", self.my_tile_source)
 end
 ```
-
 
 <!-- /manuals/lua -->
 
@@ -11491,7 +11415,6 @@ Grouping game object with helper behavior object inside a collection
 
   In situations where you need to manage large quantities of game objects, this design is not preferable since the behavior object is duplicated for each instance and each object will cost memory.
 
-
 <!-- /manuals/application-security/#source-code-obfuscation -->
 
 # Application Security {#manuals:application-security}
@@ -11598,8 +11521,6 @@ When excluded content is downloaded and prepared for use in a game, the content 
 * Is the downloaded content complete and not missing any files?
 
 You can read more about this process in the [Live Update manual](#manuals:live-update).
-
-
 
 <!-- /manuals/modules -->
 
@@ -11838,7 +11759,6 @@ Using closures
   print(my_state.get_state()) 
   ```
 
-
 <!-- /manuals/file-access -->
 
 # Working with files {#manuals:file-access}
@@ -11997,7 +11917,6 @@ The [Asset Portal](https://defold.com/assets/) contains several assets to simpli
 * [Lua File System (LFS)](https://defold.com/assets/luafilesystemlfs/) - Functions to work with directories, file permissions etc
 * [DefSave](https://defold.com/assets/defsave/) - A module to help you save / load config and player data between session.
 
-
 <!-- /manuals/networking -->
 
 # Networking {#manuals:networking}
@@ -12021,8 +11940,6 @@ Defold supports IPv4 and IPv6 connections for sockets and HTTP requests.
 Defold supports secure SSL connections for sockets and HTTP requests.
 
 Defold can optionally also verify the SSL certificate of any secure connection. SSL verification will be enabled when a PEM file containing public CA-root certificate keys or a self-signed certificate public key is provided in the [SSL Certificates setting](#manuals:project-settings)) field of the Network section in *game.project*. A list of CA-root certificates is included in `builtins/ca-certificates`, but it is recommended to create a new PEM file and copy-paste the needed CA-root certificates depending on the server(s) the game connects to.
-
-
 
 <!-- /manuals/http-requests -->
 
@@ -12076,7 +11993,6 @@ Refer to the [API reference](https://defold.com/ref/http/) to learn more.
 
 An alternative HTTP request implementation can be found in the [TinyHTTP extension](https://defold.com/assets/tinyhttp/).
 
-
 <!-- /manuals/socket-connections -->
 
 ## Socket connections {#manuals:socket-connections}
@@ -12096,7 +12012,6 @@ This will create a TCP socket, connect it to IP 127.0.0.1 (localhost) and port 8
 ### API Reference and examples
 
 Refer to the [API reference](https://defold.com/ref/socket/) to learn more about the functionality available via LuaSocket. The [official LuaSocket documentation](https://lunarmodules.github.io/luasocket/) also contains many examples of how to work with the library. There is also some examples and helper modules in the [DefNet library](https://github.com/britzl/defnet/).
-
 
 <!-- /manuals/online-services -->
 
@@ -12121,7 +12036,6 @@ Using HTTP requests and socket connections allows you to connect to and interact
 * [Google Analytics](https://defold.com/assets/gameanalytics/) - Add Google Analytics to your game
 
 Check the [Asset Portal](https://www.defold.com/assets/) for even more extensions!
-
 
 <!-- /manuals/render -->
 
@@ -12560,7 +12474,6 @@ Rendering of nodes are done per component. This means that nodes from different 
 
 The ability to arrange nodes in hierarchies makes it easy to group nodes into manageable units. But hierarchies can effectively break batch rendering if you mix different node types. It is possible to more effectively batch GUI nodes while maintaining node hierarchies using GUI layers. You can read more about GUI layers and how they affect draw calls in the [GUI manual](#manuals:gui#layers-and-draw-calls).
 
-
 <!-- /manuals/material -->
 
 # Materials {#manuals:material}
@@ -12882,7 +12795,6 @@ render.draw(self.my_pred, {constants = self.constants}) -- <3>
 
 Note that the buffer's constant elements are referenced like an ordinary Lua table, but you can't iterate over the buffer with `pairs()` or `ipairs()`.
 
-
 <!-- /manuals/compute -->
 
 # Compute programs {#manuals:compute}
@@ -13114,8 +13026,6 @@ There is currently no way to check if the running client supports compute shader
 This means that there is no guarantee that the client supports running compute shaders if the graphics adapter is OpenGL, or OpenGL ES based.
 Vulkan and Metal support compute shaders from version 1.0. To use Vulkan, you need to create a custom manifest and select Vulkan as the backend.
 </div>
-
-
 
 <!-- /manuals/shader -->
 
@@ -13553,7 +13463,6 @@ If the test concluded that the fragment is to be written to the frame buffer, it
 
 - [The Book of Shaders](https://thebookofshaders.com/00/) will teach you how to use and integrate shaders into your projects, improving their performance and graphical quality.
 
-
 <!-- /manuals/bundling -->
 
 # Bundling an application {#manuals:bundling}
@@ -13640,10 +13549,6 @@ When creating an application bundle you have an option of creating a debug or re
 * Release builds have the `is_debug` value in `sys.get_engine_info()` set to`false`
 * Release builds will not do reverse lookups of `hash` values when calling `tostring()`. What this means in practice is that a `tostring()` for a value of type `url` or `hash` will return its numeric representation and not the original string (`'hash: [/camera_001]'` vs `'hash: [11844936738040519888 (unknown)]'`)
 * Release builds do not support targeting from the editor for [hot-reload](#manuals:hot-reload) and similar functionality
-
-
-
-
 
 <!-- /manuals/bob -->
 
@@ -13868,7 +13773,6 @@ drwxr-xr-x   27 sicher  staff       918  1 Dec 10:15 sound
 $
 ```
 
-
 <!-- /manuals/hot-reload -->
 
 # Hot reloading resources {#manuals:hot-reload}
@@ -13989,7 +13893,6 @@ end
 
 When reloading vertex and fragment shaders, the GLSL code is recompiled by the graphics driver and uploaded to the GPU. If the shader code causes a crash, which is easily done since GLSL is written at a very low level, it will take the engine down.
 
-
 <!-- /manuals/porting-guidelines -->
 
 # Porting and release guidelines {#manuals:porting-guidelines}
@@ -14109,7 +14012,6 @@ In 2018 browsers introduced an autoplay policy for sounds which prevent games an
 
 Also make sure to pause any playing sounds if the game is showing ads.
 
-
 <!-- /manuals/dev-app -->
 
 # The mobile development app {#manuals:dev-app}
@@ -14175,7 +14077,6 @@ Your device does not appear in the Targets menu
 The game does not start with a message about mismatching versions
 : This happens when you have upgraded the editor to the latest version. You need to build and install a new version.
 
-
 <!-- /manuals/version-control -->
 
 # Version control {#manuals:version-control}
@@ -14203,7 +14104,6 @@ There are many ways you can use Git in a team workflow. The one Defold uses is a
 5. If there are local commits, the user may choose to push these to the server. Again, it is possible that this leads to conflicts that need to be resolved.
 
 If you prefer a different workflow you can run Git from command line or through a third party application to perform pulls, pushes, commits and merges, working on several branches and so on.
-
 
 <!-- /manuals/working-offline -->
 
@@ -14257,7 +14157,6 @@ Defold supports a system where developers can add native code to extend the func
 The first time you build a project and the project contains a native extension the native code will get compiled into a custom Defold game engine on the Defold build servers and sent back to your PC. The custom engine will be cached in your project and reused for subsequent builds as long as you do not add, remove or change any native extensions and as long as you do not update the editor.
 
 If you need to work offline and your project contains native extensions you must make sure to build successfully at least once to ensure that your project contains a cached copy of the custom engine.
-
 
 <!-- /manuals/debugging-native-code -->
 
@@ -14500,8 +14399,6 @@ $ arm-linux-androideabi-readelf --string-dump=.debug_str build/armv7-android/lib
 ```
 
 The jobfolder is named like so `job1298751322870374150`, each time with a random number.
-
-
 
 <!-- /manuals/debugging-native-code-ios -->
 
@@ -14792,7 +14689,6 @@ iOS
 Android(
 : The ability to extract the "`log.txt`" depends on OS version and manufacturer. Here is a short and simple [step by step guide](https://stackoverflow.com/a/48077004/]129360).
 
-
 <!-- /manuals/optimization -->
 
 # Optimizing a Defold game {#manuals:optimization}
@@ -14802,7 +14698,6 @@ It is important to understand the technical constraints of your target platforms
 * [Runtime speed](#manuals:optimization-speed) - What is the performance of the target platform and how can you make the game run with a stable frame rate at minimal CPU and/or GPU usage?
 * [Memory usage](#manuals:optimization-memory) - What are the memory constraints of the target platform and how can you reduce memory usage?
 * [Battery usage](#manuals:optimization-battery) - This is mainly a focus area if you are targeting mobile/handheld devices.
-
 
 <!-- /manuals/optimization-size -->
 
@@ -14907,7 +14802,6 @@ Android builds must support both 32-bit and 64-bit CPU architectures. When you [
 Google Play has support for [multiple APKs](https://developer.android.com/google/play/publishing/multiple-apks) per release of a game, which means that you can reduce the application size by generating two APKs, one per CPU architecture, and uploading both to Google Play.
 
 You can also make use of a combination of [APK Expansion Files](https://developer.android.com/google/play/expansion-files) and [Live Update content](#manuals:live-update) thanks to the [APKX extension in the Asset Portal](https://defold.com/assets/apkx/).
-
 
 <!-- /manuals/optimization-speed -->
 
@@ -15059,8 +14953,6 @@ HEAP8.length / 1024 / 1024
 
 If the memory usage remains at 32 MB, that's great! If not, follow the steps to [optimize the size of the engine itself and large assets such as sounds and textures](#manuals:optimization-size).
 
-
-
 <!-- /manuals/profiling -->
 
 # Profiling {#manuals:profiling}
@@ -15201,7 +15093,6 @@ Graphics API Debugger (Android)
 
   ![graphics api debugger](https://defold.com/manuals/images/profiling/gapid.png)
 
-
 <!-- /manuals/ads -->
 
 # Ads {#manuals:ads}
@@ -15261,7 +15152,6 @@ There are many online resources to learn from when it comes to optimizing ad rev
 * Google AdMob [Monetize mobile games with ads](https://admob.google.com/home/resources/monetize-mobile-game-with-ads/)
 * Game Analytics [Popular ad formats and how to use them](https://gameanalytics.com/blog/popular-mobile-game-ad-formats.html)
 * deltaDNA [Ad serving in games: 10 expert tips](https://deltadna.com/blog/ad-serving-in-games-10-tips/)
-
 
 <!-- /manuals/android -->
 
@@ -15464,7 +15354,6 @@ AndroidManifest.xml to override.
 
 You can read more about the issue and the workaround in reported Defold issue [#9453](https://github.com/defold/defold/issues/9453#issuecomment-2367367269) and Google issue [#327696048](https://issuetracker.google.com/issues/327696048?pli=1).
 
-
 <!-- /manuals/iac -->
 
 # Inter-app communication {#manuals:iac}
@@ -15506,7 +15395,6 @@ end
 ```
 
 Full documentation of the API is available on the [extension GitHub page](https://defold.github.io/extension-iac/).
-
 
 <!-- /manuals/ios -->
 
@@ -15828,7 +15716,6 @@ A: From [Inspecting a profile's entitlements](https://developer.apple.com/librar
 security cms -D -i /path/to/iOSTeamProfile.mobileprovision
 ```
 
-
 <!-- /manuals/nintendo-switch -->
 
 # Nintendo Switch development {#manuals:nintendo-switch}
@@ -15864,7 +15751,6 @@ A: You will be able to create application bundles from the editor and command li
 #### Q: Is it still easy to use a single code base if I decide to also target consoles?
 
 A: Yes, all of the standard Defold API functions are available also for the console platforms. In addition to the standard functionality you will also have access to a couple of PlayStation®4, PlayStation®5 and Nintendo Switch specific functions, but in general the code should be able to remain exactly the same across multiple platforms.
-
 
 
 <!-- /manuals/sony-playstation -->
@@ -16243,7 +16129,6 @@ $ python -m SimpleHTTPServer [port]
 A: This usually happens when you are using Windows and make a build and commit it to Git. If you have the wrong line-ending configuration in Git it will change your line endings and thus also the data size. Follow these instructions to solve the problem: [https://docs.github.com/en/free-pro-team@latest/github/using-git/configuring-git-to-handle-line-endings](https://docs.github.com/en/free-pro-team@latest/github/using-git/configuring-git-to-handle-line-endings)
 
 
-
 <!-- /manuals/linux -->
 
 # Linux development {#manuals:linux}
@@ -16400,7 +16285,6 @@ A: It is likely that an internal call to `Desktop.getDesktop().browse(new URI(ur
 $ apt-get install libgnome
 ```
 
-
 <!-- /manuals/macos -->
 
 # macOS development {#manuals:macos}
@@ -16530,7 +16414,6 @@ Defold provides a default privacy manifest through the Privacy Manifest field in
 
 Read more about privacy manifests in the [official documentation from Apple](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files?language=objc).
 
-
 <!-- /manuals/windows -->
 
 # Windows development {#manuals:windows}
@@ -16587,7 +16470,6 @@ screen_magnifier_present=true
 
 * Add a hash mark (`#``) in front of theses lines
 * Save your changes to the file and restart Defold
-
 
 
 <!-- /manuals/extensions -->
@@ -16840,7 +16722,6 @@ Build server logs are available when the project is using native extensions. The
 
 The [Defold asset portal](https://www.defold.com/assets/) also contain several native extensions.
 
-
 <!-- /manuals/extensions-defold-sdk -->
 
 # The Defold SDK {#manuals:extensions-defold-sdk}
@@ -16993,7 +16874,6 @@ Refer to the following projects for actual usage examples:
 * [Facebook extension](https://github.com/defold/extension-facebook/tree/master/facebook/api)
 * [WebView extension](https://github.com/defold/extension-webview/blob/master/webview/api/webview.script_api)
 
-
 <!-- /manuals/extensions-best-practices -->
 
 # Best Practices {#manuals:extensions-best-practices}
@@ -17119,8 +16999,6 @@ Always make sure that you have access to your dependencies. E.g. if you depend o
 
 Remember that the code in the library will be injected into your game, so make sure the library does what it's supposed to do, and nothing more!
 
-
-
 <!-- /manuals/extensions-ext-manifests -->
 
 # Extension, Application and Engine manifest files {#manuals:extensions-ext-manifests}
@@ -17192,7 +17070,6 @@ Allowed keys are for platform specific compile flags are:
 * `excludeLibs`, `excludeJars`, `excludeSymbols` - These flags are used to remove things previously defined in the platform context.
 
 For all the keywords, we apply white listing filter. This is to avoid illegal path handling and accessing files outside of the build upload folder.
-
 
 <!-- /manuals/app-manifest -->
 
@@ -17303,7 +17180,6 @@ YAML field name: **`stackSize`**
 Default value: **5242880**
 
 The stack size of application. For more information look [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#stack-size). Value in bytes.
-
 
 <!-- /manuals/extensions-manifest-merge-tool -->
 
@@ -17661,7 +17537,6 @@ Result
     </body>
     </html>
 ```
-
 
 <!-- /manuals/extender-local-setup -->
 

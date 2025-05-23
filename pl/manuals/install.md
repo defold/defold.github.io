@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: pl
+brief: Instrukcja opisuje w jaki sposób pobrać i zainstalować środowisko Defold w
+  Twoim systemie operacyjnym.
 github: https://github.com/defold/doc
-toc: ["Instalacja Defolda"]
+language: pl
+layout: manual
 title: Instalacja Defolda
-brief: Instrukcja opisuje w jaki sposób pobrać i zainstalować środowisko Defold w Twoim systemie operacyjnym.
+toc: '["Instalacja Defolda"]'
 ---
 
 # Instalacja Defolda

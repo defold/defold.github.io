@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Key Triggers","Text Triggers","Text","Marked text"]
-title: Key and text input in Defold
 brief: This manual explains how key and text input works.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Key and text input in Defold
+toc: '["Key Triggers","Text Triggers","Text","Marked text"]'
 ---
 
 <div class='sidenote' markdown='1'>

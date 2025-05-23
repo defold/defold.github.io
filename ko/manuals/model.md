@@ -1,9 +1,9 @@
 ---
-layout: manual
-language: ko
 github: https://github.com/defold/doc
-toc: ["Model component","Creating a model","Creating a model component"]
+language: ko
+layout: manual
 title: Defold manual
+toc: '["Model component","Creating a model","Creating a model component"]'
 ---
 
 # Model component

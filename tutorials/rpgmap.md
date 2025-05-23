@@ -1,8 +1,9 @@
 ---
+brief: In this sample project, you learn one method of creating very large RPG maps.
 layout: tutorial
 title: RPG map sample
-brief: In this sample project, you learn one method of creating very large RPG maps.
 ---
+
 # RPG map - sample project
 
 In this sample project which you can [open from the editor](/manuals/project-setup/) or [download from GitHub](https://github.com/defold/sample-rpgmap), we show one method of creating very large RPG maps in Defold. The design is based on the following assumptions:

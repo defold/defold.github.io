@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Project setup","Creating a new local project","Adding the project to GitHub","Open an existing project","Open a recent project"]
-title: Project setup
 brief: This manual covers how to create or open a project in Defold.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Project setup
+toc: '["Project setup","Creating a new local project","Adding the project to GitHub","Open
+  an existing project","Open a recent project"]'
 ---
 
 # Project setup

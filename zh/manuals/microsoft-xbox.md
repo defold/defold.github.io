@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["Xbox 支持"]
-title: Microsoft Xbox 的 Defold 开发
 brief: 本教程介绍了如何访问 Microsoft Xbox
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Microsoft Xbox 的 Defold 开发
+toc: '["Xbox 支持"]'
 ---
 
 # Xbox 支持

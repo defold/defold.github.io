@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Debugging"]
-title: Debugging in Defold
 brief: This manual explains the debugging facilities present in Defold.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Debugging in Defold
+toc: '["Debugging"]'
 ---
 
 # Debugging

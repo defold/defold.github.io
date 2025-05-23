@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Importing 2D graphics","Creating Defold assets","Using Defold assets"]
-title: Importing and using 2D graphics
 brief: This manual covers how to import and use 2D graphics.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Importing and using 2D graphics
+toc: '["Importing 2D graphics","Creating Defold assets","Using Defold assets"]'
 ---
 
 # Importing 2D graphics

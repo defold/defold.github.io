@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: ru
-github: https://github.com/defold/doc
-toc: ["Зарегиструйтесь в Nintendo Switch как разработчик","Станьте спонсором сообщества Defold и получите доступ к Nintendo Switch","Зарегистрируйтесь в качестве разработчика игр для платформ Nintendo","Запрос доступа в Defold","Часто задаваемые вопросы"]
-title: Разработка для Nintendo Switch
 brief: В данном руководстве описано, как получить доступ к Nintendo Switch
+github: https://github.com/defold/doc
+language: ru
+layout: manual
+title: Разработка для Nintendo Switch
+toc: '["Зарегиструйтесь в Nintendo Switch как разработчик","Станьте спонсором сообщества
+  Defold и получите доступ к Nintendo Switch","Зарегистрируйтесь в качестве разработчика
+  игр для платформ Nintendo","Запрос доступа в Defold","Часто задаваемые вопросы"]'
 ---
 
 # Зарегиструйтесь в Nintendo Switch как разработчик

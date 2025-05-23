@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["PlayStation®4 和 PlayStation®5 开发","注册成为 PS4 和 PS5 开发者","PS4™ 和 PS5™ 的 Defold 访问","常见问题"]
-title: PlayStation®4 的 Defold 开发
 brief: 本教程介绍了如何访问 PlayStation®4
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: PlayStation®4 的 Defold 开发
+toc: '["PlayStation®4 和 PlayStation®5 开发","注册成为 PS4 和 PS5 开发者","PS4™ 和 PS5™ 的 Defold
+  访问","常见问题"]'
 ---
 
 # PlayStation®4 和 PlayStation®5 开发

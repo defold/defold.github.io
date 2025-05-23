@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: ru
-github: https://github.com/defold/doc
-toc: ["Анимация"]
-title: Анимация
 brief: Данное руководство описывает работу с анимацией в движке Defold
+github: https://github.com/defold/doc
+language: ru
+layout: manual
+title: Анимация
+toc: '["Анимация"]'
 ---
 
 # Анимация

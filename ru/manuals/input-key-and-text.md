@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: ru
-github: https://github.com/defold/doc
-toc: ["Клавишные триггеры","Текстовые триггеры","Функция Text","Маркированный текст"]
-title: Ввод клавиш и текста в Defold
 brief: В этом руководстве объясняется, как работает ввод клавиш и текста.
+github: https://github.com/defold/doc
+language: ru
+layout: manual
+title: Ввод клавиш и текста в Defold
+toc: '["Клавишные триггеры","Текстовые триггеры","Функция Text","Маркированный текст"]'
 ---
 
 <div class='sidenote' markdown='1'>

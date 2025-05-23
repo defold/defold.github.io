@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: en
+brief: Defold includes physics engines for 2D and 3D. They allow you to simulate Newtonian
+  physics interactions between different types of collision objects.
 github: https://github.com/defold/doc
-toc: ["Physics","Units used by the physics engine simulation","Physics updates","Caveats and common issues"]
+language: en
+layout: manual
 title: Physics in Defold
-brief: Defold includes physics engines for 2D and 3D. They allow you to simulate Newtonian physics interactions between different types of collision objects.
+toc: '["Physics","Units used by the physics engine simulation","Physics updates","Caveats
+  and common issues"]'
 ---
 
 # Physics

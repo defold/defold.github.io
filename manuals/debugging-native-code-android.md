@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Debugging on Android","Android Studio","Notes","Native Extension job folder"]
-title: Debugging on Android
 brief: This manual describes how to debug a build using Android Studio.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Debugging on Android
+toc: '["Debugging on Android","Android Studio","Notes","Native Extension job folder"]'
 ---
 
 # Debugging on Android
@@ -87,4 +87,3 @@ $ arm-linux-androideabi-readelf --string-dump=.debug_str build/armv7-android/lib
 ```
 
 The jobfolder is named like so `job1298751322870374150`, each time with a random number.
-

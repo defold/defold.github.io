@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: en
+brief: The physics engine allows you to group your physics objects and filter how
+  they should collide.
 github: https://github.com/defold/doc
-toc: ["Group and mask","Detecting collisions"]
+language: en
+layout: manual
 title: Collision groups in Defold
-brief: The physics engine allows you to group your physics objects and filter how they should collide.
+toc: '["Group and mask","Detecting collisions"]'
 ---
 
 # Group and mask

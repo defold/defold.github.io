@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: pt
+brief: Este manual descreve maneiras de depurar o aplicativo que contém  nativas extensões.
 github: https://github.com/defold/doc
-toc: []
+language: pt
+layout: manual
 title: Extensões Depuração.
-brief: Este manual descreve maneiras de depurar o aplicativo que contém  nativas extensões. 
+toc: '[]'
 ---
 
 Consulte em [Debugging Native Code manual](/manuals/debugging-native-code) para aprender mais.

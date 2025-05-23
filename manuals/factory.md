@@ -1,10 +1,13 @@
 ---
-layout: manual
-language: en
+brief: This manual explains how to use factory components to dynamically spawn game
+  objects at runtime.
 github: https://github.com/defold/doc
-toc: ["Factory components","Addressing of factory created objects","Tracking spawned and parent objects","Dynamic loading of factory resources","Dynamic prototype","Instance limits","Pooling of game objects"]
+language: en
+layout: manual
 title: Factory component manual
-brief: This manual explains how to use factory components to dynamically spawn game objects at runtime.
+toc: '["Factory components","Addressing of factory created objects","Tracking spawned
+  and parent objects","Dynamic loading of factory resources","Dynamic prototype","Instance
+  limits","Pooling of game objects"]'
 ---
 
 # Factory components

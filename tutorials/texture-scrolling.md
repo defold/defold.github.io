@@ -1,7 +1,7 @@
 ---
+brief: In this tutorial you will learn how to use a shader to scroll a repeating texture.
 layout: tutorial
 title: Texture scrolling shader
-brief: In this tutorial you will learn how to use a shader to scroll a repeating texture.
 ---
 
 Credits: This tutorial is contributed by forum user MasterMind ([original forum post](https://forum.defold.com/t/texture-scrolling-shader-tutorial-example/71553)).
@@ -112,5 +112,3 @@ As an exercise you can try to animate the `water_bg` texture coordinates in the 
 Hope this helps. If you do make something scroll please share!
 
 / MasterMind
-
-

@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["Tile Source","创建 Tile Source","Tile Source 逐帧动画","Tile Source 碰撞图形"]
-title: Defold瓷砖图源教程
 brief: 本教程介绍了如何使用瓷砖图源资源.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold瓷砖图源教程
+toc: '["Tile Source","创建 Tile Source","Tile Source 逐帧动画","Tile Source 碰撞图形"]'
 ---
 
 # Tile Source

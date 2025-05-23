@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: []
-title: Defold 图像教程
 brief: 本教程简述了 Defold 支持的图像组件.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 图像教程
+toc: '[]'
 ---
 
 该教程已废弃!

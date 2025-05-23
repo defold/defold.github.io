@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: ru
-github: https://github.com/defold/doc
-toc: ["Дизайн Defold"]
-title: Дизайн Defold
 brief: Философия дизайна Defold
+github: https://github.com/defold/doc
+language: ru
+layout: manual
+title: Дизайн Defold
+toc: '["Дизайн Defold"]'
 ---
 
 # Дизайн Defold

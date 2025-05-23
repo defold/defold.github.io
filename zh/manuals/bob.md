@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["编译器 Bob","用法"]
-title: Defold 项目编译教程
 brief: Bob 是用于 Defold 项目的命令行编译工具. 本教程详述如何使用这个工具.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 项目编译教程
+toc: '["编译器 Bob","用法"]'
 ---
 
 # 编译器 Bob

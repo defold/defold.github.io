@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["处理文件","文件/文件夹存取函数","文件/文件夹位置","游戏指定位置的文件处理","游戏应用打包进去的文件处理","操作系统文件处理","相关原生扩展"]
-title: 处理文件
 brief: 本教程介绍了保存和加载文件等处理文件的方法.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: 处理文件
+toc: '["处理文件","文件/文件夹存取函数","文件/文件夹位置","游戏指定位置的文件处理","游戏应用打包进去的文件处理","操作系统文件处理","相关原生扩展"]'
 ---
 
 # 处理文件

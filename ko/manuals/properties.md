@@ -1,9 +1,12 @@
 ---
-layout: manual
-language: ko
 github: https://github.com/defold/doc
-toc: ["Properties","Property types","System defined game object and component properties","GAME OBJECT PROPERTIES","SPRITE COMPONENT PROPERTIES","COLLISION OBJECT COMPONENT PROPERTIES","SPINE MODEL COMPONENT PROPERTIES","MODEL (3D) COMPONENT PROPERTIES","GUI node properties","GUI NODE PROPERTIES"]
+language: ko
+layout: manual
 title: Defold manual
+toc: '["Properties","Property types","System defined game object and component properties","GAME
+  OBJECT PROPERTIES","SPRITE COMPONENT PROPERTIES","COLLISION OBJECT COMPONENT PROPERTIES","SPINE
+  MODEL COMPONENT PROPERTIES","MODEL (3D) COMPONENT PROPERTIES","GUI node properties","GUI
+  NODE PROPERTIES"]'
 ---
 
 # Properties

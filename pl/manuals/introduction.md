@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: pl
-github: https://github.com/defold/doc
-toc: ["Witamy w Defoldzie!","Gdzie rozpocząć?"]
-title: Defold - Wprowadzenie
 brief: Krótki wstęp do Defolda
+github: https://github.com/defold/doc
+language: pl
+layout: manual
+title: Defold - Wprowadzenie
+toc: '["Witamy w Defoldzie!","Gdzie rozpocząć?"]'
 ---
 
 # Witamy w Defoldzie!

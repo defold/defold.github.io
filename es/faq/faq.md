@@ -1,8 +1,8 @@
 ---
+brief: Preguntas frecuentes sobre el motor de videojuegos, editor y plataforma Defold.
 language: es
 layout: faq
 title: FAQ de Editor y motor Defold
-brief: Preguntas frecuentes sobre el motor de videojuegos, editor y plataforma Defold.
 ---
 
 # Preguntas Frecuentes

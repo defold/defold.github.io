@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Socket connections","API Reference and examples"]
-title: Socket connections
 brief: This manual explains how to connect to create socket connections.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Socket connections
+toc: '["Socket connections","API Reference and examples"]'
 ---
 
 ## Socket connections

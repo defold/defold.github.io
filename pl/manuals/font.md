@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: pl
-github: https://github.com/defold/doc
-toc: ["Pliki fontów","Tworzenie fontów","Właściwości (Properties)","Fonty pola odległości (Distance field)","Fonty bitmapowe BMFonts","Artefakty i najlepsze praktyki","Pamięć podręczna fontu"]
-title: Fonty w Defoldzie
 brief: Ta instrukcja opisuje jak używać fontów w Twoich grach.
+github: https://github.com/defold/doc
+language: pl
+layout: manual
+title: Fonty w Defoldzie
+toc: '["Pliki fontów","Tworzenie fontów","Właściwości (Properties)","Fonty pola odległości
+  (Distance field)","Fonty bitmapowe BMFonts","Artefakty i najlepsze praktyki","Pamięć
+  podręczna fontu"]'
 ---
 
 # Pliki fontów

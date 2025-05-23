@@ -1,10 +1,14 @@
 ---
-layout: manual
-language: en
+brief: This manual describes the process of creating HTML5 game, along with known
+  issues and limitations.
 github: https://github.com/defold/doc
-toc: ["HTML5 development","Heap size","Testing HTML5 build","Creating HTML5 bundle","Known issues and limitations","Customizing HTML5 bundle","Downscale Fit and Fit","Stretch","No Scale","Tokens","Extra parameters","File operations in HTML5","Passing arguments to an HTML5 game","Engine arguments","Query arguments in the URL","Optimizations","FAQ"]
+language: en
+layout: manual
 title: Defold development for the HTML5 platform
-brief: This manual describes the process of creating HTML5 game, along with known issues and limitations.
+toc: '["HTML5 development","Heap size","Testing HTML5 build","Creating HTML5 bundle","Known
+  issues and limitations","Customizing HTML5 bundle","Downscale Fit and Fit","Stretch","No
+  Scale","Tokens","Extra parameters","File operations in HTML5","Passing arguments
+  to an HTML5 game","Engine arguments","Query arguments in the URL","Optimizations","FAQ"]'
 ---
 
 # HTML5 development

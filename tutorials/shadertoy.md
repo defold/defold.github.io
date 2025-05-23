@@ -1,7 +1,7 @@
 ---
+brief: In this tutorial you will convert a shader from shadertoy.com to Defold.
 layout: tutorial
 title: Shadertoy to Defold tutorial
-brief: In this tutorial you will convert a shader from shadertoy.com to Defold.
 ---
 
 # Shadertoy tutorial

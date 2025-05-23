@@ -1,9 +1,9 @@
 ---
-layout: manual
-language: ko
 github: https://github.com/defold/doc
-toc: ["Factory components","Instance limits","Pooling of game objects"]
+language: ko
+layout: manual
 title: Defold manual
+toc: '["Factory components","Instance limits","Pooling of game objects"]'
 ---
 
 # Factory components

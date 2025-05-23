@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["GUI box nodes","Adding box nodes","Playing animations"]
-title: GUI box nodes in Defold
 brief: This manual explains how to use GUI box nodes.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: GUI box nodes in Defold
+toc: '["GUI box nodes","Adding box nodes","Playing animations"]'
 ---
 
 # GUI box nodes

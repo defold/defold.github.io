@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["打包应用","从编辑器中打包","编译报告","Android","iOS","macOS","Linux","Windows","HTML5","命令行打包","Bundle 结构","Release 与 Debug"]
-title: 打包应用
 brief: 本教程介绍了如何打包应用.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: 打包应用
+toc: '["打包应用","从编辑器中打包","编译报告","Android","iOS","macOS","Linux","Windows","HTML5","命令行打包","Bundle
+  结构","Release 与 Debug"]'
 ---
 
 # 打包应用
@@ -92,6 +93,3 @@ Bundle 文件夹的内容每个平台也不一样.
 * Release 包的 `sys.get_engine_info()` 中的 `is_debug` 被设置为 `false`
 * Release 包调用 `tostring()` 时不会反查 `hash` 值. 也就是说对于一个类型为 `url` 或 `hash` 值的 `tostring()` 不会返回原值字符串而是返回一个数字表示的字符串 (`'hash: [/camera_001]'` 对比 `'hash: [11844936738040519888 (unknown)]'`)
 * Release 包不支持编辑器中设置的用于 [热重载](/zh/manuals/hot-reload) 和类似功能的 target
-
-
-

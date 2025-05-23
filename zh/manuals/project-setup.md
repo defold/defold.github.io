@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["项目设立","创建本地项目","上传项目至 GitHub","打开已有项目","打开常用项目"]
-title: 项目设立
 brief: 本教程介绍了如何在 Defold 中创建和打开项目.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: 项目设立
+toc: '["项目设立","创建本地项目","上传项目至 GitHub","打开已有项目","打开常用项目"]'
 ---
 
 # 项目设立

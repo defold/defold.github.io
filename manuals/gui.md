@@ -1,10 +1,13 @@
 ---
-layout: manual
-language: en
+brief: This manual goes through the Defold GUI editor, the various types of GUI nodes
+  and GUI scripting.
 github: https://github.com/defold/doc
-toc: ["GUI","Creating a GUI component","Gui properties","Runtime manipulation","Dependencies","Node types","Node properties","Pivot, Anchors and Adjust Mode","Draw order","Parent-child hierarchies","Layers and draw calls"]
+language: en
+layout: manual
 title: GUI scenes in Defold
-brief: This manual goes through the Defold GUI editor, the various types of GUI nodes and GUI scripting.
+toc: '["GUI","Creating a GUI component","Gui properties","Runtime manipulation","Dependencies","Node
+  types","Node properties","Pivot, Anchors and Adjust Mode","Draw order","Parent-child
+  hierarchies","Layers and draw calls"]'
 ---
 
 # GUI

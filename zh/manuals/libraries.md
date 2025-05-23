@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["库","库共享设置","库地址","基本訪問驗證","严格访问权限","设置库依赖","引用破坏","命名冲突"]
-title: Defold 中库的使用
 brief: 项目间可以使用库共享资源. 本教程解释了其工作方式.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 中库的使用
+toc: '["库","库共享设置","库地址","基本訪問驗證","严格访问权限","设置库依赖","引用破坏","命名冲突"]'
 ---
 
 # 库

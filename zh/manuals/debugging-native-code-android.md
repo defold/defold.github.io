@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["Android 平台调试","Android Studio","注意","原生扩展 job 文件夹"]
-title: Android 平台调试
 brief: 本教程介绍了在使用 Android Studio 调试游戏的方法.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Android 平台调试
+toc: '["Android 平台调试","Android Studio","注意","原生扩展 job 文件夹"]'
 ---
 
 # Android 平台调试
@@ -84,4 +84,3 @@ brief: 本教程介绍了在使用 Android Studio 调试游戏的方法.
 	$ arm-linux-androideabi-readelf --string-dump=.debug_str build/armv7-android/libdmengine.so | grep /job
 
 类似 `job1298751322870374150` 这样的名字, 后面的数字每次编译都不相同.
-

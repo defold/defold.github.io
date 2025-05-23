@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["版本控制","Changed files","Git"]
-title: 版本控制
 brief: 本教程介绍了内置版本控制系统是如何工作的.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: 版本控制
+toc: '["版本控制","Changed files","Git"]'
 ---
 
 # 版本控制

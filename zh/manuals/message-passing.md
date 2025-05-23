@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["消息传递","使用示例","发送消息","简化符","接收消息","游戏世界之间的消息传递","消息链"]
-title: Defold 的消息传递教程
 brief: Defold 的消息传递机制建立松耦合的对象交流方法. 本教程将详述这个机制.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 的消息传递教程
+toc: '["消息传递","使用示例","发送消息","简化符","接收消息","游戏世界之间的消息传递","消息链"]'
 ---
 
 # 消息传递
@@ -256,4 +256,3 @@ DEBUG:SCRIPT: 75 dispatch passes before this update.
 ```
 
 可以看到这版 Defold 引擎在 `init()` 到 `update()` 中间发送10轮消息. 然后每帧发送75轮消息.
-

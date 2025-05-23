@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["应用生命周期","初始化","更新循环","输入","更新","渲染更新","后更新","帧率和集合时间步","析构"]
-title: Defold 应用生命周期教程
 brief: 本教程详述了 Defold 游戏的生命周期.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 应用生命周期教程
+toc: '["应用生命周期","初始化","更新循环","输入","更新","渲染更新","后更新","帧率和集合时间步","析构"]'
 ---
 
 # 应用生命周期
@@ -125,4 +125,3 @@ end
 引擎还会继续做后续子系统处理: 删除项目配置, 关闭内存分析, 等等.
 
 至此应用正式退出.
-

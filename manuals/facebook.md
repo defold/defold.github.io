@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: []
-title: Facebook in Defold
 brief: Facebook in Defold.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Facebook in Defold
+toc: '[]'
 ---
 
 [This manual has been moved](/extension-facebook)

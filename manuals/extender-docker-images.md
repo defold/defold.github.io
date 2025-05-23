@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Available Docker images","How to use old Docker images"]
-title: Available Docker images
 brief: Document described available Docker images and Defold versions that used it
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Available Docker images
+toc: '["Available Docker images","How to use old Docker images"]'
 ---
 
 # Available Docker images

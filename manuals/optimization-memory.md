@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Optimizing memory usage","Texture compression","Dynamic loading","Optimize component counters","Optimize GUI node count"]
-title: Optimizing memory usage of a Defold game
 brief: This manual describes how to optimize memory usage of a Defold game.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Optimizing memory usage of a Defold game
+toc: '["Optimizing memory usage","Texture compression","Dynamic loading","Optimize
+  component counters","Optimize GUI node count"]'
 ---
 
 # Optimizing memory usage
@@ -29,4 +30,3 @@ Defold will allocate memory for components and resources once when a collection 
 Optimize GUI node counts by setting the max number of nodes in the GUI file to only what is needed. The `Current Nodes` field of the [GUI component properties](https://defold.com/manuals/gui/#gui-properties) will show the number of nodes used by the GUI component.
 
 {% include shared/en/optimization-memory-html5.md %}
-

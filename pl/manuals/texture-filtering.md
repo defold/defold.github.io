@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: pl
+brief: Ta instrukcja opisuje możliwe opcje filtrowania i próbkowania tekstur podczas
+  renderowania grafiki.
 github: https://github.com/defold/doc
-toc: ["Filtrowanie i próbkowanie tekstur"]
+language: pl
+layout: manual
 title: Filtrowanie i próbkowanie tekstur
-brief: Ta instrukcja opisuje możliwe opcje filtrowania i próbkowania tekstur podczas renderowania grafiki.
+toc: '["Filtrowanie i próbkowanie tekstur"]'
 ---
 
 # Filtrowanie i próbkowanie tekstur

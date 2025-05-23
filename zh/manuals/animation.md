@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["动画"]
-title: Defold 动画教程
 brief: 本教程介绍了 Defold 的动画支持.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 动画教程
+toc: '["动画"]'
 ---
 
 # 动画

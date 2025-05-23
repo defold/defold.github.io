@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: pl
-github: https://github.com/defold/doc
-toc: ["Fizyka","Jednostki używane w symulacji silnika fizycznego","Aktualizacja fizyki","Uwagi i typowe problemy"]
-title: Fizyka w Defoldzie
 brief: Ta instrukcja prezentuje fizykę w Defoldzie.
+github: https://github.com/defold/doc
+language: pl
+layout: manual
+title: Fizyka w Defoldzie
+toc: '["Fizyka","Jednostki używane w symulacji silnika fizycznego","Aktualizacja fizyki","Uwagi
+  i typowe problemy"]'
 ---
 
 # Fizyka

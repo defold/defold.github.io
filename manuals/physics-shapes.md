@@ -1,10 +1,14 @@
 ---
-layout: manual
-language: en
+brief: A collision component can either use several primitive shapes or a single complex
+  shape.
 github: https://github.com/defold/doc
-toc: ["Collision shapes","Primitive shapes","Box shape","Sphere shape","Capsule shape","Complex shapes","Tilemap collision shape","Convex hull shape","File Format","External tools","Scaling collision shapes","Resizing collision shapes","Rotating collision shapes","Rotating collision shapes in 3D physics","Rotating collision shapes in 2D physics"]
+language: en
+layout: manual
 title: Collision shapes
-brief: A collision component can either use several primitive shapes or a single complex shape.
+toc: '["Collision shapes","Primitive shapes","Box shape","Sphere shape","Capsule shape","Complex
+  shapes","Tilemap collision shape","Convex hull shape","File Format","External tools","Scaling
+  collision shapes","Resizing collision shapes","Rotating collision shapes","Rotating
+  collision shapes in 3D physics","Rotating collision shapes in 2D physics"]'
 ---
 
 # Collision shapes

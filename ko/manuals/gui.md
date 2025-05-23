@@ -1,9 +1,13 @@
 ---
-layout: manual
-language: ko
 github: https://github.com/defold/doc
-toc: ["GUI","Nodes","Node properties","Textures and flipbook animations","Slice-9 texturing","Index: rendering order","Parent-child hierarchies","Layers","Batch rendering","Script","Handling different resolutions and aspect ratios","Adjust mode","Anchors","Node repositioning without anchors","Node repositioning with anchors","Pivot","GUI scripts","Node id:s","Dynamically created nodes","Dynamic node IDs","Property animation","Render script"]
+language: ko
+layout: manual
 title: Defold manual
+toc: '["GUI","Nodes","Node properties","Textures and flipbook animations","Slice-9
+  texturing","Index: rendering order","Parent-child hierarchies","Layers","Batch rendering","Script","Handling
+  different resolutions and aspect ratios","Adjust mode","Anchors","Node repositioning
+  without anchors","Node repositioning with anchors","Pivot","GUI scripts","Node id:s","Dynamically
+  created nodes","Dynamic node IDs","Property animation","Render script"]'
 ---
 
 # GUI

@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: en
+brief: Defold supports GUIs that automatically adapt to screen orientation changes
+  on mobile devices. This document explains how the feature works.
 github: https://github.com/defold/doc
-toc: ["Layouts","Creating display profiles","GUI layouts","Dynamic profile selection","Layout change messages"]
+language: en
+layout: manual
 title: GUI layouts in Defold
-brief: Defold supports GUIs that automatically adapt to screen orientation changes on mobile devices. This document explains how the feature works.
+toc: '["Layouts","Creating display profiles","GUI layouts","Dynamic profile selection","Layout
+  change messages"]'
 ---
 
 # Layouts

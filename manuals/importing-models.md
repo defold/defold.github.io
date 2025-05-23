@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Importing 3D models","Importing to Defold","Using a model","Exporting to glTF and Collada","Requirements","Exporting a texture","Exporting using Blender"]
-title: Importing models
 brief: This manual covers how to import 3D models used by the model component.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Importing models
+toc: '["Importing 3D models","Importing to Defold","Using a model","Exporting to glTF
+  and Collada","Requirements","Exporting a texture","Exporting using Blender"]'
 ---
 
 # Importing 3D models
@@ -72,4 +73,3 @@ You can then proceed to export the UV layout to an image that can be used as a t
 You export your model using the Export menu option. Select the model before you select the Export menu option and check "Selection Only" to only export the model.
 
 ![Exporting using Blender](../images/model/blender_export.png)
-

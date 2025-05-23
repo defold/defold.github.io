@@ -1,7 +1,7 @@
 ---
+brief: This tutorial explains how to get started doing tutorials in Defold.
 layout: tutorial
 title: Getting started with Defold
-brief: This tutorial explains how to get started doing tutorials in Defold.
 ---
 
 # Getting started

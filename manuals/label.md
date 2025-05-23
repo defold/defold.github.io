@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: en
+brief: This manual explains how to use label components to use text with game objects
+  in the game world.
 github: https://github.com/defold/doc
-toc: ["Label","Creating a label","Label properties","Blend modes","Pivot and alignment","Runtime manipulation","Project configuration"]
+language: en
+layout: manual
 title: Label text components in Defold
-brief: This manual explains how to use label components to use text with game objects in the game world.
+toc: '["Label","Creating a label","Label properties","Blend modes","Pivot and alignment","Runtime
+  manipulation","Project configuration"]'
 ---
 
 # Label

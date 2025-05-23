@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: en
+brief: This manual describes the extension manifest and how it correlates to the application
+  manifest and engine manifest.
 github: https://github.com/defold/doc
-toc: ["Extension, Application and Engine manifest files","App Manifest","Engine manifest","Extension Manifest","The ext.manifest file"]
+language: en
+layout: manual
 title: Native extensions - extension manifests
-brief: This manual describes the extension manifest and how it correlates to the application manifest and engine manifest.
+toc: '["Extension, Application and Engine manifest files","App Manifest","Engine manifest","Extension
+  Manifest","The ext.manifest file"]'
 ---
 
 # Extension, Application and Engine manifest files

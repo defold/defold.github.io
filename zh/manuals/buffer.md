@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["Buffer"]
-title: 缓存教程
 brief: 本教程介绍了 Defold 的缓存资源.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: 缓存教程
+toc: '["Buffer"]'
 ---
 
 # Buffer
@@ -34,4 +34,4 @@ brief: 本教程介绍了 Defold 的缓存资源.
 
 缓存资源一般由扩展工具或脚本创建, 比如用 Blender 导出模型时创建. 
 
-缓存资源可以用作 [模型资源](/zh/manuals/mesh) 的数据. 缓存资源还可以使用 `buffer.create()` 和 [相关 API 函数](/ref/stable/buffer/#buffer.create:element_count-declaration) 在运行时创建. 
+缓存资源可以用作 [模型资源](/zh/manuals/mesh) 的数据. 缓存资源还可以使用 `buffer.create()` 和 [相关 API 函数](/ref/stable/buffer/#buffer.create:element_count-declaration) 在运行时创建.

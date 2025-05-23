@@ -1,9 +1,13 @@
 ---
-layout: manual
-language: ko
 github: https://github.com/defold/doc
-toc: ["Debugging","Debugging Lua scripts with ZeroBrane","ZeroBrane configuration","To set up ZeroBrane","Starting the debugging server","Connecting your application to the debugger","Remote debugging","Other recommended ZeroBrane setting","Hot reloading","Visual profiler","Web profiler","Frames overview","Frame data","Frames plot","Frame time chart"]
+language: ko
+layout: manual
 title: Defold manual
+toc: '["Debugging","Debugging Lua scripts with ZeroBrane","ZeroBrane configuration","To
+  set up ZeroBrane","Starting the debugging server","Connecting your application to
+  the debugger","Remote debugging","Other recommended ZeroBrane setting","Hot reloading","Visual
+  profiler","Web profiler","Frames overview","Frame data","Frames plot","Frame time
+  chart"]'
 ---
 
 # Debugging

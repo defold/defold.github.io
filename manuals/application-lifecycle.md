@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Application lifecycle","Initialization","The update loop","Input","Update","Render update","Post update","Frame rate and collection time step","Finalization"]
-title: Defold application lifecycle manual
 brief: This manual details the lifecycle of Defold games and applications.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Defold application lifecycle manual
+toc: '["Application lifecycle","Initialization","The update loop","Input","Update","Render
+  update","Post update","Frame rate and collection time step","Finalization"]'
 ---
 
 # Application lifecycle

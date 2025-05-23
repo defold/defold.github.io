@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["GUI","创建界面文件","资源","节点类型","节点属性","原点, 锚点和调整模式","绘制顺序","父子结构","层与 draw call"]
-title: Defold 里的 GUI 场景
 brief: 本教程介绍了 Defold GUI 编辑器, 各种各样的 GUI 节点以及 GUI 脚本.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 里的 GUI 场景
+toc: '["GUI","创建界面文件","资源","节点类型","节点属性","原点, 锚点和调整模式","绘制顺序","父子结构","层与 draw call"]'
 ---
 
 # GUI

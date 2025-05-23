@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["材质","创建材质","Attributes","顶点和片元常量","采样器","采样器设置","常量缓存"]
-title: Defold 材质教程
 brief: 本教程介绍了如何使用材质, 着色器常量和采样.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 材质教程
+toc: '["材质","创建材质","Attributes","顶点和片元常量","采样器","采样器设置","常量缓存"]'
 ---
 
 # 材质

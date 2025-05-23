@@ -1,9 +1,9 @@
 ---
-layout: manual
-language: ko
 github: https://github.com/defold/doc
-toc: ["Application lifecycle","Initialization","The update loop","Finalization"]
+language: ko
+layout: manual
 title: Defold manual
+toc: '["Application lifecycle","Initialization","The update loop","Finalization"]'
 ---
 
 # Application lifecycle

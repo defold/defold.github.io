@@ -1,8 +1,8 @@
 ---
+brief: Perguntas frequentes sobre a game engine Defold, editor e plataforma.
 language: pt
 layout: faq
 title: FAQ da engine e editor Defold
-brief: Perguntas frequentes sobre a game engine Defold, editor e plataforma.
 ---
 
 # Perguntas frequentes

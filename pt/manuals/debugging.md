@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: pt
-github: https://github.com/defold/doc
-toc: ["Depuração"]
-title: Depuração em Defold.
 brief: Esse manual excplica as  instalações de depuraçãopresentes no Defold.
+github: https://github.com/defold/doc
+language: pt
+layout: manual
+title: Depuração em Defold.
+toc: '["Depuração"]'
 ---
 
 # Depuração 

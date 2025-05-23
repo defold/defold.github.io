@@ -1,9 +1,12 @@
 ---
-layout: manual
-language: ko
 github: https://github.com/defold/doc
-toc: ["Physics","Collision objects","Editing collision objects","Friction","Restitution","Linear and angular damping","Locked rotation","Group and Mask","Tilesource collision shapes","Collision messages","collision_response","contact_point_response","Triggers","Resolving Kinematic collisions","Best practices","Triggers","Choosing between Dynamic or Kinematic objects"]
+language: ko
+layout: manual
 title: Defold manual
+toc: '["Physics","Collision objects","Editing collision objects","Friction","Restitution","Linear
+  and angular damping","Locked rotation","Group and Mask","Tilesource collision shapes","Collision
+  messages","collision_response","contact_point_response","Triggers","Resolving Kinematic
+  collisions","Best practices","Triggers","Choosing between Dynamic or Kinematic objects"]'
 ---
 
 # Physics

@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: en
+brief: This manual describes the available options for texture filtering when rendering
+  graphics.
 github: https://github.com/defold/doc
-toc: ["Texture filtering and sampling"]
+language: en
+layout: manual
 title: Texture filtering
-brief: This manual describes the available options for texture filtering when rendering graphics.
+toc: '["Texture filtering and sampling"]'
 ---
 
 # Texture filtering and sampling

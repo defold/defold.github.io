@@ -1,10 +1,13 @@
 ---
-layout: manual
-language: pl
+brief: Defold wspiera automatyczne przetwarzanie tekstur i kompresję obrazów. Ta instrukcja
+  opisuje te funckjonalności.
 github: https://github.com/defold/doc
-toc: ["Profile tekstur w Defoldzie","Profile tekstur","Ustawienia ścieżki","Profile","Formaty tekstur","Typy kompresji","Przykładowy obraz","Czasy kompresji","Utrata sygnału","Rozmiary plików skompresowanych","Jakość obrazu"]
+language: pl
+layout: manual
 title: Profile tekstur w Defoldzie
-brief:  Defold wspiera automatyczne przetwarzanie tekstur i kompresję obrazów. Ta instrukcja opisuje te funckjonalności.
+toc: '["Profile tekstur w Defoldzie","Profile tekstur","Ustawienia ścieżki","Profile","Formaty
+  tekstur","Typy kompresji","Przykładowy obraz","Czasy kompresji","Utrata sygnału","Rozmiary
+  plików skompresowanych","Jakość obrazu"]'
 ---
 
 # Profile tekstur w Defoldzie
@@ -211,5 +214,3 @@ Oto wynikowe obrazy (pobrane z kodowania ASTC przy użyciu narzędzia `basisu`)
 
 `BEST`
 ![best compression level](/manuals/images/texture_profiles/kodim03_pow2.best.png)
-
-

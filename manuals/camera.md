@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Cameras","Creating a camera","Using the camera","Render script","Panning the camera","Zooming the camera","Following a game object","Converting mouse to world coordinates","Runtime manipulation","Third-party camera solutions"]
-title: Camera component manual
 brief: This manual describes the functionality of the Defold camera component.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Camera component manual
+toc: '["Cameras","Creating a camera","Using the camera","Render script","Panning the
+  camera","Zooming the camera","Following a game object","Converting mouse to world
+  coordinates","Runtime manipulation","Third-party camera solutions"]'
 ---
 
 # Cameras

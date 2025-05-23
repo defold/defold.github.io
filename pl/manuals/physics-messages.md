@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: pl
+brief: Kiedy obiekty się zderzają, silnik Defold wysyła wiadomości do komponentów
+  tych obiektów.
 github: https://github.com/defold/doc
-toc: ["Wiadomości kolizji","Odpowiedź na kolizję","Odpowiedź punktu kontaktu","Odpowiedź na wyzwalacz"]
+language: pl
+layout: manual
 title: Wiadomości kolizji w Defoldzie
-brief: Kiedy obiekty się zderzają, silnik Defold wysyła wiadomości do komponentów tych obiektów.
+toc: '["Wiadomości kolizji","Odpowiedź na kolizję","Odpowiedź punktu kontaktu","Odpowiedź
+  na wyzwalacz"]'
 ---
 
 # Wiadomości kolizji

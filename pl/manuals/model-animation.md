@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: pl
-github: https://github.com/defold/doc
-toc: ["Animacja modeli 3D","Odtwarzanie animacji","Hierarchia kości","Animacja kursora","Funkcje po zakończeniu animacji","Tryby odtwarzania"]
-title: Animacja modeli 3D
 brief: Ta instrukcja opisuje wsparcie dla animacji modeli 3D w silniku Defold.
+github: https://github.com/defold/doc
+language: pl
+layout: manual
+title: Animacja modeli 3D
+toc: '["Animacja modeli 3D","Odtwarzanie animacji","Hierarchia kości","Animacja kursora","Funkcje
+  po zakończeniu animacji","Tryby odtwarzania"]'
 ---
 
 # Animacja modeli 3D

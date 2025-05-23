@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["蒙版","创建蒙版节点","裁剪蒙版","蒙版局限性","层"]
-title: GUI 蒙版教程
 brief: 本教程介绍了创建使用蒙版剪裁遮蔽其他 GUI 节点的方法.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: GUI 蒙版教程
+toc: '["蒙版","创建蒙版节点","裁剪蒙版","蒙版局限性","层"]'
 ---
 
 # 蒙版

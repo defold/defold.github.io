@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: pl
+brief: Defold supports joints for 2D physics. This manual explains how to create and
+  work with joints.
 github: https://github.com/defold/doc
-toc: ["Łączenia fizyczne (Joints)","Tworzenie połączeń","Niszczenie połączeń","Odczytywanie i aktualizowanie połączeń","Odczytywanie siły i momentu reakcji połączenia"]
+language: pl
+layout: manual
 title: Łączenia fizyczne w Defoldzie
-brief: Defold supports joints for 2D physics. This manual explains how to create and work with joints.
+toc: '["Łączenia fizyczne (Joints)","Tworzenie połączeń","Niszczenie połączeń","Odczytywanie
+  i aktualizowanie połączeń","Odczytywanie siły i momentu reakcji połączenia"]'
 ---
 
 # Łączenia fizyczne (Joints)

@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["欢迎来到 Defold","从哪开始?"]
-title: Defold 介绍
 brief: Defold 简介.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 介绍
+toc: '["欢迎来到 Defold","从哪开始?"]'
 ---
 
 # 欢迎来到 Defold

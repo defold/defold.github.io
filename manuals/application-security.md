@@ -1,10 +1,14 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Application Security","Securing your intellectual property from theft","Source code obfuscation","Resource encryption","Encoding project configuration values","Securing your game against cheaters","Securing your network communication","SSL certificate validation","Securing your use of third-party software","Securing your use of cloud build servers","Securing your downloadable content"]
-title: Application Security manual
 brief: This manual will cover a number of areas related to secure development practices.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Application Security manual
+toc: '["Application Security","Securing your intellectual property from theft","Source
+  code obfuscation","Resource encryption","Encoding project configuration values","Securing
+  your game against cheaters","Securing your network communication","SSL certificate
+  validation","Securing your use of third-party software","Securing your use of cloud
+  build servers","Securing your downloadable content"]'
 ---
 
 # Application Security
@@ -111,4 +115,3 @@ When excluded content is downloaded and prepared for use in a game, the content 
 * Is the downloaded content complete and not missing any files?
 
 You can read more about this process in the [Live Update manual](https://defold.com/manuals/live-update/#manifest-verification).
-

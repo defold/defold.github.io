@@ -1,11 +1,12 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["游戏服务","一般常见","玩家认证, 排行榜, 成就系统","统计分析"]
-title: 在线服务
 brief: 本教程介绍了接入第三方服务的方法.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: 在线服务
+toc: '["游戏服务","一般常见","玩家认证, 排行榜, 成就系统","统计分析"]'
 ---
+
 # 游戏服务
 
 使用 HTTP 请求和 socket 连接可以使你的游戏与网上各种各样的服务进行交互, 但是通常光是 HTTP 请求远远不够. 比如用户认证, 请求数据可能需要加密, 服务端需要解密. 这些可以手动去做但是网上也有许多服务和库来帮你做这些事. 下表列出了一些带扩展支持的第三方网络后台服务:

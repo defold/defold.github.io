@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: pl
+brief: Ta instrukcja wyjaśnia jak Defold automatycznie zarządza zasobami i jak można
+  rędzie to robić.
 github: https://github.com/defold/doc
-toc: ["Zarządzanie zasobami","Statyczne drzewo zasobów","Dynamiczne ładowanie zasobów fabryki","Dynamiczne zwalnianie ładowanych zasobów","Wykluczanie zasobów z paczki"]
+language: pl
+layout: manual
 title: Zarządzanie zasobami w Defoldzie
-brief: Ta instrukcja wyjaśnia jak Defold automatycznie zarządza zasobami i jak można rędzie to robić.
+toc: '["Zarządzanie zasobami","Statyczne drzewo zasobów","Dynamiczne ładowanie zasobów
+  fabryki","Dynamiczne zwalnianie ładowanych zasobów","Wykluczanie zasobów z paczki"]'
 ---
 
 # Zarządzanie zasobami

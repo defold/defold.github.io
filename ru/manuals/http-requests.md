@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: ru
-github: https://github.com/defold/doc
-toc: ["HTTP запросы","HTTP GET","HTTP POST","Другие HTTP методы","Справочник по API","Расширения"]
-title: HTTP запросы
 brief: Данное руководство объясняет как делать HTTP запросы.
+github: https://github.com/defold/doc
+language: ru
+layout: manual
+title: HTTP запросы
+toc: '["HTTP запросы","HTTP GET","HTTP POST","Другие HTTP методы","Справочник по API","Расширения"]'
 ---
 
 ## HTTP запросы

@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["GUI pie nodes","Creating a pie node","Modify pie nodes at runtime"]
-title: Defold GUI pie nodes
 brief: This manual explains how to use pie nodes in Defold GUI scenes.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Defold GUI pie nodes
+toc: '["GUI pie nodes","Creating a pie node","Modify pie nodes at runtime"]'
 ---
 
 # GUI pie nodes

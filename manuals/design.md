@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["The design of Defold"]
-title: The design of Defold
 brief: The philosophy behind Defold's design
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: The design of Defold
+toc: '["The design of Defold"]'
 ---
 
 # The design of Defold

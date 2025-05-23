@@ -1,8 +1,9 @@
 ---
+brief: In this sample project, you learn effects to present a main menu.
 layout: tutorial
 title: Main menu animation sample
-brief: In this sample project, you learn effects to present a main menu.
 ---
+
 # Main menu animation - sample project
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/dPQpSlt3ahw" frameborder="0" allowfullscreen></iframe>

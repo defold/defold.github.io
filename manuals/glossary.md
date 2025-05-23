@@ -1,10 +1,16 @@
 ---
-layout: manual
-language: en
+brief: This manual lists everything that you encounter working in Defold with a brief
+  description.
 github: https://github.com/defold/doc
-toc: ["Defold glossary","Animation set","Atlas","Builtins","Camera","Collision object","Component","Collection","Collection factory","Collection proxy","Cubemap","Debugging","Display profiles","Factory","Font","Fragment shader","Gamepads","Game object","GUI","GUI script","Hot reload","Input binding","Label","Library","Lua language","Lua module","Material","Message","Model","ParticleFX","Profiling","Render","Render script","Script","Sound","Sprite","Texture profiles","Tile map","Tile source","Vertex shader"]
+language: en
+layout: manual
 title: Defold glossary
-brief: This manual lists everything that you encounter working in Defold with a brief description.
+toc: '["Defold glossary","Animation set","Atlas","Builtins","Camera","Collision object","Component","Collection","Collection
+  factory","Collection proxy","Cubemap","Debugging","Display profiles","Factory","Font","Fragment
+  shader","Gamepads","Game object","GUI","GUI script","Hot reload","Input binding","Label","Library","Lua
+  language","Lua module","Material","Message","Model","ParticleFX","Profiling","Render","Render
+  script","Script","Sound","Sprite","Texture profiles","Tile map","Tile source","Vertex
+  shader"]'
 ---
 
 # Defold glossary

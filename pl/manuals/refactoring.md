@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: pl
-github: https://github.com/defold/doc
-toc: ["Refaktoryzacja"]
-title: Refaktoryzacja
 brief: Ta instrukcja opisuje jak organizować swój projekt z pomocą narzędzi do refaktoryzacji.
+github: https://github.com/defold/doc
+language: pl
+layout: manual
+title: Refaktoryzacja
+toc: '["Refaktoryzacja"]'
 ---
 
 # Refaktoryzacja

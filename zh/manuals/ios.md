@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["iOS 开发","Apple 签名过程","使用免费账户开发应用","iOS应用打包","在已连接的 iPhone 上安装和运行应用","创建 storyboard","建立圖標資源列表","安装 iOS 打包应用","出口合规信息","常見問題"]
-title: Defold iOS 平台开发
 brief: 本教程介绍了如何在 Defold 里编译运行 iOS 设备应用.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold iOS 平台开发
+toc: '["iOS 开发","Apple 签名过程","使用免费账户开发应用","iOS应用打包","在已连接的 iPhone 上安装和运行应用","创建 storyboard","建立圖標資源列表","安装
+  iOS 打包应用","出口合规信息","常見問題"]'
 ---
 
 # iOS 开发

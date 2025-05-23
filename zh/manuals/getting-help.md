@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["获得帮助","在论坛里提交问题","提供信息","提交代码","从编辑器里汇报问题","在 Discord 上讨论问题","日志文件"]
-title: 如何获得帮助
 brief: 本教程介绍了使用 Defold 遇到麻烦时该如何寻求帮助.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: 如何获得帮助
+toc: '["获得帮助","在论坛里提交问题","提供信息","提交代码","从编辑器里汇报问题","在 Discord 上讨论问题","日志文件"]'
 ---
 
 # 获得帮助

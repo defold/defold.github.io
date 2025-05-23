@@ -1,10 +1,13 @@
 ---
-layout: manual
-language: en
+brief: Defold supports automatic texture processing and compression of image data.
+  This manual describes the available functionality.
 github: https://github.com/defold/doc
-toc: ["Texture profiles","Basis Universal","ASTC","Texture profiles","Path Settings","Profiles","Texture formats","Compressors","Example image","Compression times","Signal loss","Compression file sizes","Image quality"]
+language: en
+layout: manual
 title: Texture profiles in Defold
-brief:  Defold supports automatic texture processing and compression of image data. This manual describes the available functionality.
+toc: '["Texture profiles","Basis Universal","ASTC","Texture profiles","Path Settings","Profiles","Texture
+  formats","Compressors","Example image","Compression times","Signal loss","Compression
+  file sizes","Image quality"]'
 ---
 
 # Texture profiles
@@ -271,5 +274,3 @@ Here are the resulting images (retrieved from the ASTC encoding using the `basis
 
 `HIGHEST`
 ![best compression preset](../images/texture_profiles/kodim03_pow2.best.png)
-
-

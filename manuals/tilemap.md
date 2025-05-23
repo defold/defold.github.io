@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Tile map","Creating a tile map","Adding a tile map to your game","Runtime manipulation","Changing tiles from script","Tilemap properties","Blend modes","Changing properties","Material constants","Project configuration","External tools","Tiled","Tilesetter"]
-title: Defold tile map manual
 brief: This manual details Defold's support for tile maps.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Defold tile map manual
+toc: '["Tile map","Creating a tile map","Adding a tile map to your game","Runtime
+  manipulation","Changing tiles from script","Tilemap properties","Blend modes","Changing
+  properties","Material constants","Project configuration","External tools","Tiled","Tilesetter"]'
 ---
 
 # Tile map
@@ -118,7 +120,3 @@ There are external map/level editors that can export directly to Defold tilemaps
 ### Tilesetter
 
 [Tilesetter](https://www.tilesetter.org/docs/exporting#defold) can be used to automatically create full tilesets from simple base tiles and it has a map editor which can export directly to Defold.
-
-
-
-

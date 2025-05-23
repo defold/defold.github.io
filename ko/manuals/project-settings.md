@@ -1,9 +1,11 @@
 ---
-layout: manual
-language: ko
 github: https://github.com/defold/doc
-toc: ["Project settings","엔진 시작시에 config 값들 설정하기","Project","Display","Physics","Bootstrap","Graphics","Sound","Resource","Input","Sprite","Collection proxy","Collection factory","Factory","iOS","Android","macOS","Windows","HTML5","Particle FX","Facebook","IAP","Network","Library","Script"]
+language: ko
+layout: manual
 title: Defold manual
+toc: '["Project settings","엔진 시작시에 config 값들 설정하기","Project","Display","Physics","Bootstrap","Graphics","Sound","Resource","Input","Sprite","Collection
+  proxy","Collection factory","Factory","iOS","Android","macOS","Windows","HTML5","Particle
+  FX","Facebook","IAP","Network","Library","Script"]'
 ---
 
 # Project settings

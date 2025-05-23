@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: pl
-github: https://github.com/defold/doc
-toc: ["Moduły Lua","Wymaganie/załączanie plików Lua","Modułu","Ładowanie modułów w trakcie działania (hot reloading)","Moduły a stan"]
-title: Moduły Lua w Defoldzie
 brief: Ta instrukcja wyjaśnia czym są i jak działają moduły Lua w Defoldzie.
+github: https://github.com/defold/doc
+language: pl
+layout: manual
+title: Moduły Lua w Defoldzie
+toc: '["Moduły Lua","Wymaganie/załączanie plików Lua","Modułu","Ładowanie modułów
+  w trakcie działania (hot reloading)","Moduły a stan"]'
 ---
 
 # Moduły Lua

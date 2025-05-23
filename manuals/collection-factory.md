@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: en
+brief: This manual explains how to use collection factory components to spawn hierarchies
+  of game objects.
 github: https://github.com/defold/doc
-toc: ["Collection factories","Spawning a collection","Properties","Dynamic loading of factory resources","Dynamic prototype"]
+language: en
+layout: manual
 title: Collection factory manual
-brief: This manual explains how to use collection factory components to spawn hierarchies of game objects.
+toc: '["Collection factories","Spawning a collection","Properties","Dynamic loading
+  of factory resources","Dynamic prototype"]'
 ---
 
 # Collection factories
@@ -171,4 +173,3 @@ local ids = collectionfactory.create("#factory")
 <div class='important' markdown='1'>
 When the *Dynamic Prototype* option is set the collection component count cannot be optimized, and the owning collection will use the default component counts from the *game.project* file.
 </div>
-

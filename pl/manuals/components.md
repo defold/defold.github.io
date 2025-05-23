@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: pl
-github: https://github.com/defold/doc
-toc: ["Komponenty","Typy komponentów","Aktywowanie i dezaktywowanie komponentów","Właściwości komponentów","Pozycja, orientacja i skala komponentów","Kolejność rysowania komponentów","Predykaty skryptu renderowania","Wartość współrzędnej Z"]
-title: Komponenty obiektów gry
 brief: Ta instrukcja prezentuje przegląd komponentów i jak ich używać.
+github: https://github.com/defold/doc
+language: pl
+layout: manual
+title: Komponenty obiektów gry
+toc: '["Komponenty","Typy komponentów","Aktywowanie i dezaktywowanie komponentów","Właściwości
+  komponentów","Pozycja, orientacja i skala komponentów","Kolejność rysowania komponentów","Predykaty
+  skryptu renderowania","Wartość współrzędnej Z"]'
 ---
 
 #  Komponenty

@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["Key Triggers","Text Triggers","Text","Marked text"]
-title: Defold 键盘按键和文本输入教程
 brief: 本教程介绍了键盘按键和文本输入的功能.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 键盘按键和文本输入教程
+toc: '["Key Triggers","Text Triggers","Text","Marked text"]'
 ---
 
 <div class='sidenote' markdown='1'>

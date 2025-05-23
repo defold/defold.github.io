@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Ignoring files","The .defignore file","The .defunload file"]
-title: Defold project ignores
 brief: This manual describes how to ignore files and folders in Defold.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Defold project ignores
+toc: '["Ignoring files","The .defignore file","The .defunload file"]'
 ---
 
 # Ignoring files

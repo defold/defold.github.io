@@ -1,7 +1,8 @@
 ---
+brief: In this beginner's tutorial you learn how to make realistic movement using
+  vectors and some simple vector algebra.
 layout: tutorial
 title: Movement tutorial
-brief: In this beginner's tutorial you learn how to make realistic movement using vectors and some simple vector algebra.
 ---
 
 # Movement tutorial
@@ -25,4 +26,3 @@ The editor automatically opens the "README" file from the project root, containi
 If you get stuck, head over to the [Defold Forum](//forum.defold.com) where you will get help from the Defold team and many friendly users.
 
 Happy Defolding!
-

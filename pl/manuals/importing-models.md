@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: pl
-github: https://github.com/defold/doc
-toc: ["Importowanie modeli 3D","Importowanie do Defolda","Używanie Modeli","Exportowanie do formatu glTF i Collada","Wymagania","Exportowanie używając Blendera"]
-title: Importowanie modeli 3D
 brief: Ta instrukcja opisuje ze szczegółami jak importować i edytować modele 3D.
+github: https://github.com/defold/doc
+language: pl
+layout: manual
+title: Importowanie modeli 3D
+toc: '["Importowanie modeli 3D","Importowanie do Defolda","Używanie Modeli","Exportowanie
+  do formatu glTF i Collada","Wymagania","Exportowanie używając Blendera"]'
 ---
 
 # Importowanie modeli 3D

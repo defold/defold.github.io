@@ -1,9 +1,11 @@
 ---
-layout: manual
-language: ko
 github: https://github.com/defold/doc
-toc: ["Animation","Playing flip-book animations","Sprite example","GUI box node example","3D Model animation","The bone hierarchy","Cursor animation","Property animation","GUI node property animation","Playback Modes","Easing","Custom easing","Completion callbacks"]
+language: ko
+layout: manual
 title: Defold manual
+toc: '["Animation","Playing flip-book animations","Sprite example","GUI box node example","3D
+  Model animation","The bone hierarchy","Cursor animation","Property animation","GUI
+  node property animation","Playback Modes","Easing","Custom easing","Completion callbacks"]'
 ---
 
 # Animation

@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["處理动画碰撞"]
-title: Defold 中的碰撞处理
 brief: 本教程介绍了动画物理对象的碰撞处理方法.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 中的碰撞处理
+toc: '["處理动画碰撞"]'
 ---
 
 # 處理动画碰撞

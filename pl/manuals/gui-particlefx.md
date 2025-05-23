@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: pl
-github: https://github.com/defold/doc
-toc: ["Węzeł GUI typu text ParticleFX","Dodawanie węzłów ParticleFX","Kontrolowanie efektu"]
-title: Węzły efektów cząsteczkowych - particle FX w Defoldzie.
 brief: Ta instrukcja wyjaśnia jak używać węzłów typu particleFX.
+github: https://github.com/defold/doc
+language: pl
+layout: manual
+title: Węzły efektów cząsteczkowych - particle FX w Defoldzie.
+toc: '["Węzeł GUI typu text ParticleFX","Dodawanie węzłów ParticleFX","Kontrolowanie
+  efektu"]'
 ---
 
 # Węzeł GUI typu text ParticleFX

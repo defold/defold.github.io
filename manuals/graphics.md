@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: []
-title: Defold graphics manual
 brief: This manual outlines Defold's support for graphical elements.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Defold graphics manual
+toc: '[]'
 ---
 
 Deprecated manual!

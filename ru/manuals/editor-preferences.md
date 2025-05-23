@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: ru
-github: https://github.com/defold/doc
-toc: ["Настройки редактора","Общие сведения","Програмный код","Расширения"]
-title: Настройки редактора
 brief: Вы можете изменить настройки редактора из окна Preferences.
+github: https://github.com/defold/doc
+language: ru
+layout: manual
+title: Настройки редактора
+toc: '["Настройки редактора","Общие сведения","Програмный код","Расширения"]'
 ---
 
 # Настройки редактора

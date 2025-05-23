@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["应用加密","保护您的知识产权免遭盗窃","源代码混淆","资源加密","游戏防作弊","网络通信安全","SSL 证书验证","第三方软件使用安全","云编译服务器的使用安全","可下载资源的安全"]
-title: Defold 应用加密教程
 brief: 本教程涵盖了安全开发实践的若干方面.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 应用加密教程
+toc: '["应用加密","保护您的知识产权免遭盗窃","源代码混淆","资源加密","游戏防作弊","网络通信安全","SSL 证书验证","第三方软件使用安全","云编译服务器的使用安全","可下载资源的安全"]'
 ---
 
 # 应用加密
@@ -107,4 +107,3 @@ Defold 的热更新系统允许开发者把主游戏包的部分内容划分出�
 * 下载的内容是否完整且没有遗漏任何文件?
 
 该过程的详细步骤请参考 [热更新教程](https://defold.com/zh/manuals/live-update/#manifest-verification).
-

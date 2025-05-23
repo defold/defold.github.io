@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["App Manifest","上下文组合","语法"]
-title: 原生扩展 - Build variants
 brief: 本教程介绍了 Defold 能创建的各种 Build variants 以及它们如何与原生扩展和引擎交互.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: 原生扩展 - Build variants
+toc: '["App Manifest","上下文组合","语法"]'
 ---
 
 {% include shared/zh/build-variants.md %}

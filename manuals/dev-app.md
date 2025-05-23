@@ -1,10 +1,15 @@
 ---
-layout: manual
-language: en
+brief: This manual explains how to put the development app on your device for iterative
+  development on device.
 github: https://github.com/defold/doc
-toc: ["The mobile development app","Installing a development app","Installing on iOS","Installing on Android","Launching your game","Connecting to an iOS device using USB on Windows","Connecting to an iOS device using USB on Linux","Connecting to an iOS device using USB on macOS","Connecting to an Android device using USB on macOS","Connecting to an Android device using USB on Windows or Linux","Troubleshooting"]
+language: en
+layout: manual
 title: Running the development app on device
-brief: This manual explains how to put the development app on your device for iterative development on device.
+toc: '["The mobile development app","Installing a development app","Installing on
+  iOS","Installing on Android","Launching your game","Connecting to an iOS device
+  using USB on Windows","Connecting to an iOS device using USB on Linux","Connecting
+  to an iOS device using USB on macOS","Connecting to an Android device using USB
+  on macOS","Connecting to an Android device using USB on Windows or Linux","Troubleshooting"]'
 ---
 
 # The mobile development app

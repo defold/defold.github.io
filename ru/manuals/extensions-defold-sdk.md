@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: ru
-github: https://github.com/defold/doc
-toc: ["Defold SDK","Использование"]
-title: Нативные расширения - Defold SDK
 brief: В этом руководстве описывается работа с Defold SDK при создании нативных расширений.
+github: https://github.com/defold/doc
+language: ru
+layout: manual
+title: Нативные расширения - Defold SDK
+toc: '["Defold SDK","Использование"]'
 ---
 
 # Defold SDK

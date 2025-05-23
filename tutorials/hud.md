@@ -1,8 +1,9 @@
 ---
+brief: In this sample project, you learn effects for score counting.
 layout: tutorial
 title: HUD code sample
-brief: In this sample project, you learn effects for score counting.
 ---
+
 # HUD - sample project
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NoPHHG2kbOk" frameborder="0" allowfullscreen></iframe>

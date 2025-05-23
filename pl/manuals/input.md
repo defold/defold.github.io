@@ -1,10 +1,13 @@
 ---
-layout: manual
-language: pl
+brief: Ta instrukcja wyjaśnia jak obsługiwać wejścia i przechwytywać i reagować na
+  akcje użytkownika.
 github: https://github.com/defold/doc
-toc: ["Urządzenia wejścia","Konfigurowanie wiązań wejścia","Rodzaje wyzwalaczy","Wejście akcelerometru","Input focus","Przekazywanie akcji wejścia i on_input()","Skupienie wejścia i składniki kolekcji proxy","Zwalnianie wejścia","Konsumowanie danych wejściowych"]
+language: pl
+layout: manual
 title: Urządzenia wejścia w Defoldzie
-brief: Ta instrukcja wyjaśnia jak obsługiwać wejścia i przechwytywać i reagować na akcje użytkownika.
+toc: '["Urządzenia wejścia","Konfigurowanie wiązań wejścia","Rodzaje wyzwalaczy","Wejście
+  akcelerometru","Input focus","Przekazywanie akcji wejścia i on_input()","Skupienie
+  wejścia i składniki kolekcji proxy","Zwalnianie wejścia","Konsumowanie danych wejściowych"]'
 ---
 
 # Urządzenia wejścia

@@ -1,9 +1,10 @@
 ---
-layout: manual
-language: ko
 github: https://github.com/defold/doc
-toc: ["Layouts","Display profiles","GUI layouts","Layout change messages","In game content"]
+language: ko
+layout: manual
 title: Defold manual
+toc: '["Layouts","Display profiles","GUI layouts","Layout change messages","In game
+  content"]'
 ---
 
 # Layouts

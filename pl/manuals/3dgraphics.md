@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: pl
-github: https://github.com/defold/doc
-toc: ["Grafika 3D"]
-title: Grafika 3D
 brief: Materiał jest przestarzały
+github: https://github.com/defold/doc
+language: pl
+layout: manual
+title: Grafika 3D
+toc: '["Grafika 3D"]'
 ---
 
 # Grafika 3D

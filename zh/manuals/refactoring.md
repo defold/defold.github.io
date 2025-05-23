@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["重构"]
-title: 重构
 brief: 本教程涉及了强大的自动重构功能.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: 重构
+toc: '["重构"]'
 ---
 
 # 重构

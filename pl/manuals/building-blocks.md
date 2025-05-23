@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: pl
+brief: Instrukcja ta przedstawia podstawowe elementy służące do budowania aplikacji
+  w Defoldzie oraz opisuje jak działają obiekty, komponenty i kolekcje.
 github: https://github.com/defold/doc
-toc: ["Podstawowe elementy do budowania aplikacji","Kolekcje","Obiekty gry","Komponenty","Obiekty dodawane bezpośrednio i z pliku","Hierarchia obiektów gry - relacja rodzic-dziecko"]
+language: pl
+layout: manual
 title: Podstawowe elementy silnika Defold
-brief: Instrukcja ta przedstawia podstawowe elementy służące do budowania aplikacji w Defoldzie oraz opisuje jak działają obiekty, komponenty i kolekcje.
+toc: '["Podstawowe elementy do budowania aplikacji","Kolekcje","Obiekty gry","Komponenty","Obiekty
+  dodawane bezpośrednio i z pliku","Hierarchia obiektów gry - relacja rodzic-dziecko"]'
 ---
 
 #  Podstawowe elementy do budowania aplikacji

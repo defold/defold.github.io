@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: pl
-github: https://github.com/defold/doc
-toc: ["Preferencje Edytora","General (Ogólne)","Code (Kod)","Otwieranie plików skryptów w programie Visual Studio Code","Rozszerzenia","Narzędzia"]
-title: Preferencje Edytora
 brief: Ta instrukcja przedstawia co oznaczają i jak zmodyfikować Preferencje Edytora.
+github: https://github.com/defold/doc
+language: pl
+layout: manual
+title: Preferencje Edytora
+toc: '["Preferencje Edytora","General (Ogólne)","Code (Kod)","Otwieranie plików skryptów
+  w programie Visual Studio Code","Rozszerzenia","Narzędzia"]'
 ---
 
 # Preferencje Edytora

@@ -1,9 +1,12 @@
 ---
-layout: manual
-language: ko
 github: https://github.com/defold/doc
-toc: ["Android development","Android and Google Play signing process","Android Debug Bridge","development dmengine 설치하고 실행하기","Launching the game","Android 어플리케이션 번들 만들기","어플리케이션 번들 디버깅하기","인증서와 키 생성하기","Troubleshooting","장치가 Targets 메뉴에 나타나지 않을 경우","설치시 Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES] 오류가 발생할 경우"]
+language: ko
+layout: manual
 title: Defold manual
+toc: '["Android development","Android and Google Play signing process","Android Debug
+  Bridge","development dmengine 설치하고 실행하기","Launching the game","Android 어플리케이션 번들
+  만들기","어플리케이션 번들 디버깅하기","인증서와 키 생성하기","Troubleshooting","장치가 Targets 메뉴에 나타나지 않을
+  경우","설치시 Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES] 오류가 발생할 경우"]'
 ---
 
 # Android development

@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["GUI 文本节点","添加文本节点","锚点和对齐","运行时控制操作"]
-title: Defold GUI 文本节点
 brief: 本教程介绍了如何在 GUI 场景中添加文本.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold GUI 文本节点
+toc: '["GUI 文本节点","添加文本节点","锚点和对齐","运行时控制操作"]'
 ---
 
 # GUI 文本节点
@@ -59,4 +59,3 @@ function on_message(self, message_id, message, sender)
     end
 end
 ```
-

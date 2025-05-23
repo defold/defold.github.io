@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["布局","新建显示档案","GUI 布局","动态布局选择","布局变换消息"]
-title: Defold 里的 GUI 布局
 brief: Defold 支持让 GUIs 自动适配手机屏幕方向的改变. 本教程介绍这部分功能.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 里的 GUI 布局
+toc: '["布局","新建显示档案","GUI 布局","动态布局选择","布局变换消息"]'
 ---
 
 # 布局

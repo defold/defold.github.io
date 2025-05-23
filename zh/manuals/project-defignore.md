@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["忽略文件","忽略定义 .defignore 文件"]
-title: Defold 项目忽略文件
 brief: 本教程介绍了 Defold 中如何忽略文件和目录.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 项目忽略文件
+toc: '["忽略文件","忽略定义 .defignore 文件"]'
 ---
 
 # 忽略文件

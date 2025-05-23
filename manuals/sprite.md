@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: en
+brief: This manual describes how to show 2D images and animations using the sprite
+  component.
 github: https://github.com/defold/doc
-toc: ["Sprites","Sprite properties","Blend modes","Runtime manipulation","Material constants","Material attributes","Project configuration","Multi textured sprites","Animations","UVs"]
+language: en
+layout: manual
 title: Showing 2D images
-brief: This manual describes how to show 2D images and animations using the sprite component.
+toc: '["Sprites","Sprite properties","Blend modes","Runtime manipulation","Material
+  constants","Material attributes","Project configuration","Multi textured sprites","Animations","UVs"]'
 ---
 
 # Sprites

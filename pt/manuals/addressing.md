@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: pt
-github: https://github.com/defold/doc
-toc: ["Endereçamento","Identificadores","Collections","Relative addressing","Shorthands","Game object paths","Absolute addressing","Hashed identifiers","URLs","Constructing URL objects"]
-title: Endereçamento no Defold
 brief: Esse manual explica como o Defold resolve problemas de endereçamento.
+github: https://github.com/defold/doc
+language: pt
+layout: manual
+title: Endereçamento no Defold
+toc: '["Endereçamento","Identificadores","Collections","Relative addressing","Shorthands","Game
+  object paths","Absolute addressing","Hashed identifiers","URLs","Constructing URL
+  objects"]'
 ---
 
 # Endereçamento

@@ -1,10 +1,13 @@
 ---
-layout: manual
-language: pl
-github: https://github.com/defold/doc
-toc: ["Kształty Kolizji","Kształty podstawowe","Kształt prostokątny","Kształt sfery","Kształt kapsuły","Kształty złożone","Kształt kolizji mapy kafelków","Kształt kolizji wypukłej","Skalowanie kształtów kolizji","Obracanie kształtów kolizji","Obracanie kształtów kolizji w fizyce 3D","Obracanie kształtów kolizji w fizyce 2D"]
-title: Kształty Kolizji
 brief: Ta instrukcja opisuje szczegóły działania kształtów kolizji silnika fizyki.
+github: https://github.com/defold/doc
+language: pl
+layout: manual
+title: Kształty Kolizji
+toc: '["Kształty Kolizji","Kształty podstawowe","Kształt prostokątny","Kształt sfery","Kształt
+  kapsuły","Kształty złożone","Kształt kolizji mapy kafelków","Kształt kolizji wypukłej","Skalowanie
+  kształtów kolizji","Obracanie kształtów kolizji","Obracanie kształtów kolizji w
+  fizyce 3D","Obracanie kształtów kolizji w fizyce 2D"]'
 ---
 
 # Kształty Kolizji

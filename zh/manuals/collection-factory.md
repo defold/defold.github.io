@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["集合工厂","创建集合","属性","工厂资源的动态加载","动态 prototype"]
-title: 集合工厂教程
 brief: 本教程介绍了如何使用集合工厂创建一组嵌套的游戏对象.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: 集合工厂教程
+toc: '["集合工厂","创建集合","属性","工厂资源的动态加载","动态 prototype"]'
 ---
 
 # 集合工厂
@@ -171,4 +171,3 @@ local ids = collectionfactory.create("#factory")
 <div class='important' markdown='1'>
 当 *Dynamic Prototype* 被选中, 集合组件数优化则不可使用, 宿主集合将使用 *game.project* 文件中定义的默认最大组件数目.
 </div>
-

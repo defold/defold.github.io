@@ -1,10 +1,13 @@
 ---
-layout: manual
-language: pl
+brief: Ta instrukcja opisuje jak działają komponenty typu Mesh służące do wyśweitlania
+  obiektów 3D.
 github: https://github.com/defold/doc
-toc: ["Komponent Mesh (Siatka)","Tworzenie komponentu Siatki","Właściwości Siatki","Manipulacja w Edytorze","Manipulacja w czasie rzeczywistym","Frustum culling","Stałe materiałowe","Przestrzeń wierzchołkowa lokalna a przestrzeń świata"]
+language: pl
+layout: manual
 title: Komponent Mesh w Defoldzie
-brief: Ta instrukcja opisuje jak działają komponenty typu Mesh służące do wyśweitlania obiektów 3D.
+toc: '["Komponent Mesh (Siatka)","Tworzenie komponentu Siatki","Właściwości Siatki","Manipulacja
+  w Edytorze","Manipulacja w czasie rzeczywistym","Frustum culling","Stałe materiałowe","Przestrzeń
+  wierzchołkowa lokalna a przestrzeń świata"]'
 ---
 
 # Komponent Mesh (Siatka)

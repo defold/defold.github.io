@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["macOS 开发","项目配置","应用图标","发布游戏应用","发布到 Mac App Store 以外的地方","发布到 Mac App Store"]
-title: macOS 平台游戏开发
 brief: 本教程介绍了在 macOS 平台上编译和运行 Defold 游戏的方法
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: macOS 平台游戏开发
+toc: '["macOS 开发","项目配置","应用图标","发布游戏应用","发布到 Mac App Store 以外的地方","发布到 Mac App Store"]'
 ---
 
 # macOS 开发

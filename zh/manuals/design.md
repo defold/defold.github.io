@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["Defold 的设计理念"]
-title: Defold 设计理念
 brief: Defold 设计幕后理念
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 设计理念
+toc: '["Defold 的设计理念"]'
 ---
 
 # Defold 的设计理念

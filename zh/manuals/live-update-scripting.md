@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["热更新脚本","得到 mounts","排除的集合代理脚本"]
-title: 热更新脚本
 brief: 使用热更新, 需要下载并挂载游戏数据. 本手册介绍了热更新脚本.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: 热更新脚本
+toc: '["热更新脚本","得到 mounts","排除的集合代理脚本"]'
 ---
 
 # 热更新脚本

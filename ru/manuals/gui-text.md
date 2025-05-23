@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: ru
-github: https://github.com/defold/doc
-toc: ["GUI-нода Text","Добавление ноды Text","Выравнивание","Воздействие на ноду Text в рантайме"]
-title: GUI-нода Text
 brief: В этом руководстве описано, как добавлять текст в GUI-сцены.
+github: https://github.com/defold/doc
+language: ru
+layout: manual
+title: GUI-нода Text
+toc: '["GUI-нода Text","Добавление ноды Text","Выравнивание","Воздействие на ноду
+  Text в рантайме"]'
 ---
 
 # GUI-нода Text
@@ -59,4 +60,3 @@ function on_message(self, message_id, message, sender)
     end
 end
 ```
-

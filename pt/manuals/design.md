@@ -1,11 +1,12 @@
 ---
-layout: manual
-language: pt
-github: https://github.com/defold/doc
-toc: ["The design of Defold"]
-title: The design of Defold
 brief: The philosophy behind Defold's design
+github: https://github.com/defold/doc
+language: pt
+layout: manual
+title: The design of Defold
+toc: '["The design of Defold"]'
 ---
+
 # The design of Defold
 
  Deflod foi criado para os seguintes objetivos:
@@ -36,4 +37,4 @@ brief: The philosophy behind Defold's design
  
  - Todos os recursos de nossos arquivos estão em formatos de texto simples sendo estruturados de forma otimizada para  Git , como importação e processamento com ferramentas externas. 
  
- - Recursos podem ser alterados e recarregados na execução de um jogo , permitindo extremamente rápidas a iteração e experimentação . 
+ - Recursos podem ser alterados e recarregados na execução de um jogo , permitindo extremamente rápidas a iteração e experimentação .

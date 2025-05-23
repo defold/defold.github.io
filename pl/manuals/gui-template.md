@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: pl
-github: https://github.com/defold/doc
-toc: ["Węzły szablonów GUI","Tworzenie szablonu","Tworzenie instancji na podstawie szablonu","Modyfikowanie szablonów w czasie działania programu"]
-title: Szablony GUI w Defoldzie
 brief: Ta instrukcja wyjaśnia, jak działają szablony GUI.
+github: https://github.com/defold/doc
+language: pl
+layout: manual
+title: Szablony GUI w Defoldzie
+toc: '["Węzły szablonów GUI","Tworzenie szablonu","Tworzenie instancji na podstawie
+  szablonu","Modyfikowanie szablonów w czasie działania programu"]'
 ---
 
 # Węzły szablonów GUI

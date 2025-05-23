@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: zh
+brief: This document uses all Markdown features (Commonmark + a couple of extensions)
+  that the Defold docs use.
 github: https://github.com/defold/doc
-toc: ["Defold markdown test","Two levels of headings, lists and tables","Notes and images","Transclusion"]
+language: zh
+layout: manual
 title: Defold markdown test
-brief: This document uses all Markdown features (Commonmark + a couple of extensions) that the Defold docs use.
+toc: '["Defold markdown test","Two levels of headings, lists and tables","Notes and
+  images","Transclusion"]'
 ---
 
 # Defold markdown test

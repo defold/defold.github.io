@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: ru
-github: https://github.com/defold/doc
-toc: ["Сокет-соединения","Справочник по API и примеры"]
-title: Сокет-соединения
 brief: Данное руководство объясняет как подключаться с созданием сокет-соединений.
+github: https://github.com/defold/doc
+language: ru
+layout: manual
+title: Сокет-соединения
+toc: '["Сокет-соединения","Справочник по API и примеры"]'
 ---
 
 ## Сокет-соединения
@@ -23,4 +23,4 @@ local response = client:receive("*l")
 
 ### Справочник по API и примеры
 
-Обратитесь к [Справочнику по API](/ref/socket/), чтобы узнать больше о доступной через LuaSocket функциональности. [Официальная документация LuaSocket](https://lunarmodules.github.io/luasocket/) также содержит много примеров по работе с библиотекой. Также есть ряд примеров и вспомогательных модулей в [библиотеке DefNet](https://github.com/britzl/defnet/). 
+Обратитесь к [Справочнику по API](/ref/socket/), чтобы узнать больше о доступной через LuaSocket функциональности. [Официальная документация LuaSocket](https://lunarmodules.github.io/luasocket/) также содержит много примеров по работе с библиотекой. Также есть ряд примеров и вспомогательных модулей в [библиотеке DefNet](https://github.com/britzl/defnet/).

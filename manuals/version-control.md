@@ -1,10 +1,10 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Version control","Changed files","Git"]
-title: Version control
 brief: This manual covers how to work with the built-in version control system.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Version control
+toc: '["Version control","Changed files","Git"]'
 ---
 
 # Version control

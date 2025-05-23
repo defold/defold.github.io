@@ -1,10 +1,12 @@
 ---
-layout: manual
-language: zh
-github: https://github.com/defold/doc
-toc: ["项目配置","各类设置","Project","Bootstrap","Library","Script","Engine","Display","Render","Physics","Graphics","Shader","Input","Resource","Network","Collection","Sound","Sprite","Tilemap","Spine","Mesh","Model","GUI","Label","Particle FX","Collection proxy","Collection factory","Factory","iOS","Android","macOS","Windows","HTML5","IAP","Live update","Native extension","Profiler","File format","在引擎启动时设定配置值","自定义项目配置文件"]
-title: Defold 项目配置
 brief: 本教程介绍了如何在 Defold 中进行项目配置工作.
+github: https://github.com/defold/doc
+language: zh
+layout: manual
+title: Defold 项目配置
+toc: '["项目配置","各类设置","Project","Bootstrap","Library","Script","Engine","Display","Render","Physics","Graphics","Shader","Input","Resource","Network","Collection","Sound","Sprite","Tilemap","Spine","Mesh","Model","GUI","Label","Particle
+  FX","Collection proxy","Collection factory","Factory","iOS","Android","macOS","Windows","HTML5","IAP","Live
+  update","Native extension","Profiler","File format","在引擎启动时设定配置值","自定义项目配置文件"]'
 ---
 
 # 项目配置
@@ -666,4 +668,4 @@ my_property.private = 1 // 布尔值 1 或 0
 ``` 
 
 
-元属性目前仅由 `bob.jar` 做应用打包时使用, 但是以后会应用于编辑器与 *game.project* 概览视图中. 
+元属性目前仅由 `bob.jar` 做应用打包时使用, 但是以后会应用于编辑器与 *game.project* 概览视图中.

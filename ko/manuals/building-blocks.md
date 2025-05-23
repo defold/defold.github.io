@@ -1,9 +1,9 @@
 ---
-layout: manual
-language: ko
 github: https://github.com/defold/doc
-toc: ["Building blocks","Game objects","Components","Collections"]
+language: ko
+layout: manual
 title: Defold manual
+toc: '["Building blocks","Game objects","Components","Collections"]'
 ---
 
 # Building blocks

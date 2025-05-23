@@ -1,10 +1,11 @@
 ---
-layout: manual
-language: en
-github: https://github.com/defold/doc
-toc: ["Bundling an application","Bundling from within the editor","Build reports","Android","iOS","macOS","Linux","Windows","HTML5","Bundling from the command line","The bundle layout","Release vs Debug"]
-title: Bundling an application
 brief: This manual covers how to create an application bundle.
+github: https://github.com/defold/doc
+language: en
+layout: manual
+title: Bundling an application
+toc: '["Bundling an application","Bundling from within the editor","Build reports","Android","iOS","macOS","Linux","Windows","HTML5","Bundling
+  from the command line","The bundle layout","Release vs Debug"]'
 ---
 
 # Bundling an application
@@ -91,6 +92,3 @@ When creating an application bundle you have an option of creating a debug or re
 * Release builds have the `is_debug` value in `sys.get_engine_info()` set to`false`
 * Release builds will not do reverse lookups of `hash` values when calling `tostring()`. What this means in practice is that a `tostring()` for a value of type `url` or `hash` will return its numeric representation and not the original string (`'hash: [/camera_001]'` vs `'hash: [11844936738040519888 (unknown)]'`)
 * Release builds do not support targeting from the editor for [hot-reload](/manuals/hot-reload) and similar functionality
-
-
-
