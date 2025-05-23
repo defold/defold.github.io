@@ -7,7 +7,6 @@ path: gui/progress
 scripts: progress.gui_script
 tags: gui
 title: GUI progress indicators
-
 ---
 
 

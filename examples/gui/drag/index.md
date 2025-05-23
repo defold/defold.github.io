@@ -7,7 +7,6 @@ path: gui/drag
 scripts: drag.gui_script
 tags: gui
 title: Drag
-
 ---
 
 

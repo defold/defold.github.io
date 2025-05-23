@@ -7,7 +7,6 @@ path: particles/fire_and_smoke
 scripts: fire_and_smoke.script
 tags: particles
 title: Particle effect example - fire and smoke
-
 ---
 
 

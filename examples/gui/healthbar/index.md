@@ -7,7 +7,6 @@ path: gui/healthbar
 scripts: healthbar.script, healthbar.gui_script
 tags: gui
 title: Health Bar
-
 ---
 
 

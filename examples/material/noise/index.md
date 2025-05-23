@@ -8,7 +8,6 @@ path: material/noise
 scripts: noise.script, noise.fp
 tags: material
 title: Noise shader
-
 ---
 
 

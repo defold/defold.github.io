@@ -8,7 +8,6 @@ path: physics/trigger
 scripts: bunny.script
 tags: physics
 title: Trigger
-
 ---
 
 

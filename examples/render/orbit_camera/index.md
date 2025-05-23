@@ -9,7 +9,6 @@ path: render/orbit_camera
 scripts: orbit_camera.script
 tags: render
 title: Orbit Camera
-
 ---
 
 

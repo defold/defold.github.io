@@ -9,7 +9,6 @@ path: physics/kinematic
 scripts: kinematic.script
 tags: physics
 title: Kinematic physics
-
 ---
 
 

@@ -7,7 +7,6 @@ path: movement/follow
 scripts: follow.script
 tags: movement
 title: Follow input
-
 ---
 
 

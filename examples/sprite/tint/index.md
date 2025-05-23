@@ -7,7 +7,6 @@ path: sprite/tint
 scripts: tint.script
 tags: sprite
 title: Sprite tint
-
 ---
 
 

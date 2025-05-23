@@ -7,7 +7,6 @@ path: gui/color
 scripts: color.gui_script
 tags: gui
 title: GUI color
-
 ---
 
 

@@ -7,7 +7,6 @@ path: mesh/triangle
 scripts: mesh.fp, mesh.vp
 tags: mesh
 title: Mesh
-
 ---
 
 

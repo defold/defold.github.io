@@ -10,7 +10,6 @@ path: physics/pendulum
 scripts: pendulum.script
 tags: physics
 title: Pendulum physics
-
 ---
 
 

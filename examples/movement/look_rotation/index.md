@@ -9,7 +9,6 @@ path: movement/look_rotation
 scripts: look_rotation.script
 tags: movement
 title: Look rotation
-
 ---
 
 

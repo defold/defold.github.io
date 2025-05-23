@@ -8,7 +8,6 @@ path: timer/trigger_timer
 scripts: trigger_timer.gui_script
 tags: timer
 title: Trigger timer example
-
 ---
 
 

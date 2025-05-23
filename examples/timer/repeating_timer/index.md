@@ -7,7 +7,6 @@ path: timer/repeating_timer
 scripts: repeating_timer.gui_script
 tags: timer
 title: Repeating timer example
-
 ---
 
 

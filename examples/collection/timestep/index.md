@@ -8,7 +8,6 @@ path: collection/timestep
 scripts: controller.script, game.script
 tags: collection
 title: Time-step
-
 ---
 
 

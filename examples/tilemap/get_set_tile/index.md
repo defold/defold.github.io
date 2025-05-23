@@ -7,7 +7,6 @@ path: tilemap/get_set_tile
 scripts: get_set_tile.script
 tags: tilemap
 title: Get and set tiles
-
 ---
 
 

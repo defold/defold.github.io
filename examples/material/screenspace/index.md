@@ -9,7 +9,6 @@ path: material/screenspace
 scripts: screenspace.script, screenspace.vp, screenspace.fp
 tags: material
 title: Screenspace
-
 ---
 
 

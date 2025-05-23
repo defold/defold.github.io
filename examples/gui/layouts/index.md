@@ -7,7 +7,6 @@ path: gui/layouts
 scripts: layouts.gui_script
 tags: gui
 title: Layouts
-
 ---
 
 

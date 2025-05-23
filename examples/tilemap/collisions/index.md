@@ -7,7 +7,6 @@ path: tilemap/collisions
 scripts: collisions.script
 tags: tilemap
 title: Tilemap collisions
-
 ---
 
 

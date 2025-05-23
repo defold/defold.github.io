@@ -8,7 +8,6 @@ path: debug/physics
 scripts: physics.script
 tags: debug
 title: Physics debug
-
 ---
 
 

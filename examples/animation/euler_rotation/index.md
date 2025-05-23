@@ -8,6 +8,5 @@ path: animation/euler_rotation
 scripts: euler_rotation.script
 tags: animation
 title: Euler Rotation
-
 ---
 

@@ -8,7 +8,6 @@ path: resource/create_atlas
 scripts: create_atlas.script, create_atlas.gui_script
 tags: resource
 title: Create atlas
-
 ---
 
 

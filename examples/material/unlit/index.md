@@ -9,7 +9,6 @@ path: material/unlit
 scripts: unlit.vp, unlit.fp
 tags: material
 title: Unlit
-
 ---
 
 

@@ -8,7 +8,6 @@ path: animation/spinner
 scripts: spinner.script
 tags: animation
 title: Spinner animation
-
 ---
 
 

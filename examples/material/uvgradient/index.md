@@ -7,7 +7,6 @@ path: material/uvgradient
 scripts: uvgradient.fp
 tags: material
 title: UV Gradient
-
 ---
 
 

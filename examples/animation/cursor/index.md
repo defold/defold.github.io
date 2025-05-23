@@ -7,7 +7,6 @@ path: animation/cursor
 scripts: cursor.script
 tags: animation
 title: Cursor animation
-
 ---
 
 

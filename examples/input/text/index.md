@@ -8,7 +8,6 @@ path: input/text
 scripts: text.script
 tags: input
 title: Text input
-
 ---
 
 

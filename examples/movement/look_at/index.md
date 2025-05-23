@@ -8,7 +8,6 @@ path: movement/look_at
 scripts: look_at.script
 tags: movement
 title: Look at
-
 ---
 
 

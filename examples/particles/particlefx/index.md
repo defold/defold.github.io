@@ -8,7 +8,6 @@ path: particles/particlefx
 scripts: particlefx.script
 tags: particles
 title: Particle effect
-
 ---
 
 

@@ -5,7 +5,6 @@ layout: example
 path: animation/flipbook
 tags: animation
 title: Flipbook animation
-
 ---
 
 

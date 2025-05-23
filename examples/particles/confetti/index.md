@@ -7,7 +7,6 @@ path: particles/confetti
 scripts: confetti.script
 tags: particles
 title: Particle effect example - confetti
-
 ---
 
 

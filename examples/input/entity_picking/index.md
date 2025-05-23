@@ -7,7 +7,6 @@ path: input/entity_picking
 scripts: entity_picking.script
 tags: input
 title: Entity Picking
-
 ---
 
 

@@ -7,7 +7,6 @@ path: sprite/flip
 scripts: flip.script
 tags: sprite
 title: Flip
-
 ---
 
 

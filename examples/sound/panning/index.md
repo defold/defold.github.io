@@ -8,7 +8,6 @@ path: sound/panning
 scripts: pan.script
 tags: sound
 title: Panning
-
 ---
 
 

@@ -11,7 +11,6 @@ path: physics/hinge_joint
 scripts: hinge_joint.script
 tags: physics
 title: Hinge joint physics
-
 ---
 
 

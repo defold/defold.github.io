@@ -8,7 +8,6 @@ path: timer/cancel_timer
 scripts: cancel_timer.gui_script
 tags: timer
 title: Cancel timer example
-
 ---
 
 

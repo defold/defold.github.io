@@ -8,7 +8,6 @@ path: render/camera
 scripts: bee.script, camera.script
 tags: render
 title: Camera
-
 ---
 
 

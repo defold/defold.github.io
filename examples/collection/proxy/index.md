@@ -7,7 +7,6 @@ path: collection/proxy
 scripts: controller.script, menu.gui_script, level.script
 tags: collection
 title: Proxy
-
 ---
 
 

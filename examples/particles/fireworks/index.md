@@ -7,7 +7,6 @@ path: particles/fireworks
 scripts: fireworks.script
 tags: particles
 title: Particle effect example - fireworks
-
 ---
 
 

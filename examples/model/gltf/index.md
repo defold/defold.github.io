@@ -7,7 +7,6 @@ path: model/gltf
 scripts: gltf.script
 tags: material
 title: GLTF
-
 ---
 
 

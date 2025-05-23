@@ -8,7 +8,6 @@ path: factory/dynamic
 scripts: dynamic.script
 tags: factory
 title: Dynamic factories
-
 ---
 
 

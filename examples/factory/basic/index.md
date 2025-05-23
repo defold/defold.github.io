@@ -7,7 +7,6 @@ path: factory/basic
 scripts: bunny.script,debris.script
 tags: factory
 title: Spawn game object
-
 ---
 
 

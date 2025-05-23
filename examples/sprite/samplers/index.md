@@ -7,7 +7,6 @@ path: sprite/samplers
 scripts: multi_sample.script, multi_sample_sprite.fp
 tags: sprite
 title: Multiple Sprite Samplers
-
 ---
 
 

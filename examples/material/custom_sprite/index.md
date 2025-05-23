@@ -9,7 +9,6 @@ path: material/custom_sprite
 scripts: set_color.script, recolor.fp, recolor.vp
 tags: material
 title: Custom Sprite
-
 ---
 
 

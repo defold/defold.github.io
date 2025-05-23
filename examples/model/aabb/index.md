@@ -8,7 +8,6 @@ path: model/aabb
 scripts: aabb.script
 tags: model
 title: AABB
-
 ---
 
 

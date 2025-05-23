@@ -7,7 +7,6 @@ path: file/sys_save_load
 scripts: sys_save_load.script
 tags: file
 title: Save and Load
-
 ---
 
 

@@ -10,7 +10,6 @@ tags: animation
 thumbnail: basic_tween.png
 title: Tween animation
 twitter_image: basic_tween.png
-
 ---
 
 

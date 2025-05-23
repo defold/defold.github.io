@@ -8,7 +8,6 @@ path: basics/message_passing
 scripts: spaceship1.script,spaceship2.script
 tags: basics
 title: Message passing
-
 ---
 
 

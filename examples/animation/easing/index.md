@@ -6,7 +6,6 @@ layout: example
 path: animation/easing
 tags: animation
 title: Easing functions (tweens)
-
 ---
 
 

@@ -8,7 +8,6 @@ path: animation/chained_tween
 scripts: spaceship.script
 tags: animation
 title: Tween animations chain
-
 ---
 
 

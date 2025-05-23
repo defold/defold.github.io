@@ -268,7 +268,7 @@ def load_frontmatter(filename):
 
 def replace_frontmatter(filename, d):
     content = read_as_string(filename).split("---")[2]
-    frontmatter = yaml.dump(d)
+    frontmatter = yaml.dump(d).strip()
     content = "---\n%s\n---\n%s" % (frontmatter, content)
     write_as_string(filename, content)
 
@@ -770,7 +770,7 @@ def process_examples(download = False):
                     shutil.copytree(bundle_dir, example_dst_dir)
                     os.remove(os.path.join(example_dst_dir, "index.html"))
                 else:
-                    rmmkdir(example_dst_dir)
+                    os.makedirs(example_dst_dir, exist_ok=True)
 
                 print("...parsing example.md")
                 md_file = os.path.join(example_src_dir, "example.md")

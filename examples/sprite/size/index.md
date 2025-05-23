@@ -7,7 +7,6 @@ path: sprite/size
 scripts: size.script
 tags: sprite
 title: Sprite size
-
 ---
 
 

@@ -7,7 +7,6 @@ path: resource/modify_atlas
 scripts: modify_atlas.script
 tags: resource
 title: Modify atlas
-
 ---
 
 

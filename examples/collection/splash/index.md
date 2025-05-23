@@ -8,7 +8,6 @@ path: collection/splash
 scripts: controller.script
 tags: collection
 title: Splash
-
 ---
 
 

@@ -7,7 +7,6 @@ path: sprite/bunnymark
 scripts: bunnymark.script
 tags: sprite
 title: Bunnymark
-
 ---
 
 

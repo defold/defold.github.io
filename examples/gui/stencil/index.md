@@ -8,7 +8,6 @@ path: gui/stencil
 scripts: stencil.gui_script
 tags: gui
 title: Stencil
-
 ---
 
 

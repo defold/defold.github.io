@@ -8,7 +8,6 @@ path: factory/bullets
 scripts: player.script
 tags: factory
 title: Shoot bullets
-
 ---
 
 

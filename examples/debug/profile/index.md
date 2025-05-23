@@ -7,7 +7,6 @@ path: debug/profile
 scripts: profile.script
 tags: debug
 title: Visual profiler
-
 ---
 
 

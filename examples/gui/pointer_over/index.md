@@ -8,7 +8,6 @@ path: gui/pointer_over
 scripts: pointer_over.gui_script
 tags: gui
 title: Pointer over
-
 ---
 
 

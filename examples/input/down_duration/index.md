@@ -7,7 +7,6 @@ path: input/down_duration
 scripts: down_duration.script
 tags: input
 title: Down duration
-
 ---
 
 

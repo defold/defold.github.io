@@ -8,7 +8,6 @@ path: input/move
 scripts: move.script
 tags: input
 title: 8 ways movement
-
 ---
 
 

@@ -7,7 +7,6 @@ path: sprite/changeimage
 scripts: changeimage.script
 tags: sprite
 title: Change sprite image
-
 ---
 
 

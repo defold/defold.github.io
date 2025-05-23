@@ -8,7 +8,6 @@ path: model/cubemap
 scripts: cubemap.script, cubemap_model.fp, cubemap_model.vp
 tags: model
 title: Cubemap Reflection
-
 ---
 
 
