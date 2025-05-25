@@ -1150,62 +1150,66 @@ def process_refdoc(download = False):
             # multiple files can contribute to the same namespace
             # find and merge apis per namespace
             namespaces = {}
+            files = []
             for file in os.listdir(os.path.join(tmp_dir, "doc")):
                 if file.endswith(".json"):
-                    api = read_as_json(os.path.join(tmp_dir, "doc", file))
-                    # ignore empty APIs (such as those moved to extensions)
-                    if len(api["elements"]) > 0:
-                        namespace = api["info"]["namespace"]
-                        if not namespace:
-                            api["info"]["namespace"] = api["info"]["name"].replace(" ", "")
+                    files.append(file)
+            files.sort()
+            for file in files:
+                api = read_as_json(os.path.join(tmp_dir, "doc", file))
+                # ignore empty APIs (such as those moved to extensions)
+                if len(api["elements"]) > 0:
+                    namespace = api["info"]["namespace"]
+                    if not namespace:
+                        api["info"]["namespace"] = api["info"]["name"].replace(" ", "")
 
-                        namespace = api["info"]["namespace"]
-                        if not namespace:
-                            print("No namespace or name found in", file)
-                            sys.exit(5)
+                    namespace = api["info"]["namespace"]
+                    if not namespace:
+                        print("No namespace or name found in", file)
+                        sys.exit(5)
 
-                        # detect language with fallback
-                        language = api["info"].get("language")
-                        if not language:
-                            if namespace.startswith("dm"):
-                                print("  No language found in %s, inferring C++ from namespace" % file)
-                                api["info"]["language"] = "C++"
-                            elif "script_" in api["info"]["path"]:
-                                print("  No language found in %s, inferring Lua from path" % file)
-                                api["info"]["language"] = "Lua"
-                            else:
-                                print("  No language found in %s, assuming Lua" % file)
-                                api["info"]["language"] = "Lua"
-                                # sys.exit(5)
-
-                        # set api type
-                        api["info"]["type"] = "Defold " + api["info"]["language"]
-
-                        # create the key by which we index and collect APIs
-                        namespace_key = namespace
-                        language = api["info"]["language"]
-                        if language == "C++":
-                            namespace_key = namespace_key + "-cpp"
-                        elif language == "C#":
-                            namespace_key = namespace_key + "-cs"
+                    # detect language with fallback
+                    language = api["info"].get("language")
+                    if not language:
+                        if namespace.startswith("dm"):
+                            print("  No language found in %s, inferring C++ from namespace" % file)
+                            api["info"]["language"] = "C++"
+                        elif "script_" in api["info"]["path"]:
+                            print("  No language found in %s, inferring Lua from path" % file)
+                            api["info"]["language"] = "Lua"
                         else:
-                            namespace_key = namespace_key + "-" + language
-                        namespace_key = namespace_key.lower()
+                            print("  No language found in %s, assuming Lua" % file)
+                            api["info"]["language"] = "Lua"
+                            # sys.exit(5)
 
-                        # add api or extend existing one
-                        if not namespace_key in namespaces:
-                            namespaces[namespace_key] = api
-                        else:
-                            # extend info
-                            info = namespaces[namespace_key]["info"]
-                            if not info["namespace"]: info["namespace"] = api["info"]["namespace"]
-                            if not info["description"]: info["description"] = api["info"]["description"]
-                            if not info["brief"]: info["brief"] = api["info"]["brief"]
-                            if not info["path"]: info["path"] = api["info"]["path"]
-                            info["notes"].extend(api["info"]["notes"])
-                            # extend elements
-                            elements = namespaces[namespace_key]["elements"]
-                            elements.extend(api["elements"])
+                    # set api type
+                    api["info"]["type"] = "Defold " + api["info"]["language"]
+
+                    # create the key by which we index and collect APIs
+                    namespace_key = namespace
+                    language = api["info"]["language"]
+                    if language == "C++":
+                        namespace_key = namespace_key + "-cpp"
+                    elif language == "C#":
+                        namespace_key = namespace_key + "-cs"
+                    else:
+                        namespace_key = namespace_key + "-" + language
+                    namespace_key = namespace_key.lower()
+
+                    # add api or extend existing one
+                    if not namespace_key in namespaces:
+                        namespaces[namespace_key] = api
+                    else:
+                        # extend info
+                        info = namespaces[namespace_key]["info"]
+                        if not info["namespace"]: info["namespace"] = api["info"]["namespace"]
+                        if not info["description"]: info["description"] = api["info"]["description"]
+                        if not info["brief"]: info["brief"] = api["info"]["brief"]
+                        if not info["path"]: info["path"] = api["info"]["path"]
+                        info["notes"].extend(api["info"]["notes"])
+                        # extend elements
+                        elements = namespaces[namespace_key]["elements"]
+                        elements.extend(api["elements"])
 
             # generate index and dummy file per namespace
             for namespace_key in namespaces:
@@ -1218,7 +1222,7 @@ def process_refdoc(download = False):
                 # write the json data file for the api
                 # example: _data/ref/stable/go.json
                 p = os.path.join(REF_DATA_DIR, json_out_file)
-                print("  ", json_out_name + " path: " + p + " lang: " + api["info"].get("language"))
+                print("  " + json_out_name + " path: " + p + " lang: " + api["info"].get("language"))
                 write_as_json(p, api)
 
                 # generate a dummy markdown page with some front matter for each ref doc
