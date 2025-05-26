@@ -1449,11 +1449,11 @@ def commit_changes(githubtoken):
     call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
 
 
-ALL_COMMANDS = [ "docs", "refdoc", "asset-portal", "games-showcase", "examples", "codepad", "commit", "searchindex", "extensions" ]
+ALL_COMMANDS = [ "all", "help", "docs", "refdoc", "asset-portal", "games-showcase", "examples", "codepad", "commit", "searchindex", "extensions" ]
 ALL_COMMANDS.sort()
 
 parser = ArgumentParser()
-parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ', all, help)')
+parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ')')
 parser.add_argument("--githubtoken", dest="githubtoken", help="Authentication token for GitHub API and ")
 parser.add_argument("--extension", dest="extensions", action='append', help="Which extension to process")
 parser.add_argument("--download", dest="download", action='store_true', help="Download updated content for the command(s) in question")
@@ -1475,12 +1475,14 @@ help = Show this help
 """
 
 if "all" in args.commands:
-    args.commands.remove("all")
     commands = []
     commands.extend(ALL_COMMANDS)
-    commands.extend(args.commands)
+    commands.remove("all")
+    commands.remove("help")
+    # make sure commit is the last command
+    commands.remove("commit")
+    commands.append("commit")
     args.commands = commands
-
 
 for command in args.commands:
     if command == "help":

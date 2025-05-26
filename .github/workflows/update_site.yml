@@ -2,6 +2,12 @@ name: CI
 
 on:
     repository_dispatch: {}
+    workflow_dispatch:
+        inputs:
+            action:
+                description: 'Which action/command to run'
+                required: true
+                default: 'all'
 
 jobs:
     update_site:
@@ -23,5 +29,6 @@ jobs:
             { if: "github.event.action == 'refdoc'", name: 'Update refdoc', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} refdoc searchindex commit' },
             { if: "github.event.action == 'examples'", name: 'Update examples', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} examples commit' },
             { if: "github.event.action == 'codepad'", name: 'Update codepad', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} codepad commit' },
+            { if: "github.event.action == 'all'", name: 'Update everything', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} all commit' },
             { if: "startsWith(github.event.action, 'extension-')", name: 'Update extension', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} --extension ${{ github.event.action }} extensions refdoc searchindex commit' }
         ]
