@@ -7,6 +7,7 @@ path: movement/simple_move
 scripts: simple_move.script
 tags: movement
 title: Moving game object
+
 ---
 
 ![simple move](simple_move.png)

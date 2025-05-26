@@ -7,6 +7,7 @@ path: animation/spine
 scripts: spine.script
 tags: animation
 title: Spine animation
+
 ---
 
 ![spine](spine.png)

@@ -10,6 +10,7 @@ tags: animation
 thumbnail: basic_tween.png
 title: Tween animation
 twitter_image: https://www.defold.com/examples/animation/basic_tween/basic_tween.png
+
 ---
 
 ![tween](basic_tween.png)

@@ -1,16 +1,13 @@
 ---
 author: Pawel Jarosz
-brief: This example shows a simple setup with a dynamic body physics object and two
-  dynamic wheel physics object joined together with a joint of type "hinge". The hinge
-  joint can simulate an axle or a pin on which other object is rotating in respect
-  to the base. The example shows how to create, destroy and change properties of the
-  joints.
+brief: This example shows a simple setup with a dynamic body physics object and two dynamic wheel physics object joined together with a joint of type "hinge". The hinge joint can simulate an axle or a pin on which other object is rotating in respect to the base. The example shows how to create, destroy and change properties of the joints.
 category: physics
 layout: example
 path: physics/hinge_joint
 scripts: hinge_joint.script
 tags: physics
 title: Hinge joint physics
+
 ---
 
 ![hinge_joint](hinge_joint.png)

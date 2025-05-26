@@ -7,6 +7,7 @@ path: model/gltf
 scripts: gltf.script
 tags: material
 title: GLTF
+
 ---
 
 This example demonstrates how to use glTF models to add a toy car on the scene with a track and animates environment around the car.

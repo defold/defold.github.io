@@ -7,6 +7,7 @@ path: input/entity_picking
 scripts: entity_picking.script
 tags: input
 title: Entity Picking
+
 ---
 
 This example describes method of selecting a game object from the 3D scene on the click of the mouse using collision-based picking:

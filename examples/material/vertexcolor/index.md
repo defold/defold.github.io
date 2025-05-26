@@ -7,6 +7,7 @@ path: material/vertexcolor
 scripts: vertexcolor.script, vertexcolor.vp, vertexcolor.fp
 tags: material
 title: Sprite Vertex Color Attribute
+
 ---
 
 The `vertexcolor.script` sets the vertex attribute "mycolor", which has been specified in the material.

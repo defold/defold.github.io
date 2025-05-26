@@ -1,13 +1,13 @@
 ---
 author: Defold Foundation
-brief: This example shows particle effect modifiers. Modifiers are used to alter the
-  path of emitted particles.
+brief: This example shows particle effect modifiers. Modifiers are used to alter the path of emitted particles.
 category: particles
 layout: example
 path: particles/modifiers
 scripts: modifiers.script
 tags: particles
 title: Modifiers
+
 ---
 
 ![particlefx](modifiers.jpg)

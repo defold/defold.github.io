@@ -7,5 +7,6 @@ path: input/mouse_and_touch
 scripts: mouse_and_touch.script
 tags: input
 title: Mouse and touch events
+
 ---
 

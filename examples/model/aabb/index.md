@@ -1,13 +1,13 @@
 ---
 author: Artsiom Trubchyk
-brief: This example demonstrates how to use the `model.get_aabb()` function in a 3D
-  scene.
+brief: This example demonstrates how to use the `model.get_aabb()` function in a 3D scene.
 category: model
 layout: example
 path: model/aabb
 scripts: aabb.script
 tags: model
 title: AABB
+
 ---
 
 This example shows how to work with Axis-Aligned Bounding Boxes (AABB) in a 3D scene. The setup consists of falling cubes that are dynamically tracked by a camera using their combined bounding box. The example demonstrates:

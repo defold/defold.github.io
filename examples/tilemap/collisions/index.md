@@ -7,6 +7,7 @@ path: tilemap/collisions
 scripts: collisions.script
 tags: tilemap
 title: Tilemap collisions
+
 ---
 
 This example uses a tilesource with two collision groups: "ground" and "danger". The tilesource uses the `tilesheet_complete.png` image for the tiles and the collision shapes (traced as outlines around the transparent pixels of each tile).

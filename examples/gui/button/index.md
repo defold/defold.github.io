@@ -7,6 +7,7 @@ path: gui/button
 scripts: button.gui_script
 tags: gui
 title: Button
+
 ---
 
 ![button](button.png)

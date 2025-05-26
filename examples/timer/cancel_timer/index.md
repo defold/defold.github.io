@@ -1,13 +1,13 @@
 ---
 author: Pawel Jarosz
-brief: This example shows how to create timer and cancel it anytime, using built-in
-  timer API.
+brief: This example shows how to create timer and cancel it anytime, using built-in timer API.
 category: timer
 layout: example
 path: timer/cancel_timer
 scripts: cancel_timer.gui_script
 tags: timer
 title: Cancel timer example
+
 ---
 
 The example shows how to use Defold built-in timer and uses two indicators:

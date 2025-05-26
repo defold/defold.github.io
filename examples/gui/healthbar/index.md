@@ -7,6 +7,7 @@ path: gui/healthbar
 scripts: healthbar.script, healthbar.gui_script
 tags: gui
 title: Health Bar
+
 ---
 
 Overview : Example shows 3 pairs of nodes each forming a "health bar" with different pivots.

@@ -1,13 +1,13 @@
 ---
 author: Defold Foundation
-brief: This example shows how to use collection proxies to show a splash screen while
-  loading a game menu.
+brief: This example shows how to use collection proxies to show a splash screen while loading a game menu.
 category: collection
 layout: example
 path: collection/splash
 scripts: controller.script
 tags: collection
 title: Splash
+
 ---
 
 The setup consists of several collections and game objects.

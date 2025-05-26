@@ -5,6 +5,7 @@ layout: example
 path: physics/dynamic
 tags: physics
 title: Dynamic physics
+
 ---
 
 ![dynamic](dynamic.png)

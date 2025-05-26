@@ -7,5 +7,6 @@ path: gui/get_set_material
 scripts: get_set_material.script
 tags: gui
 title: Get and set a gui material resource
+
 ---
 

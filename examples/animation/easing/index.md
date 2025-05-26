@@ -6,6 +6,7 @@ layout: example
 path: animation/easing
 tags: animation
 title: Easing functions (tweens)
+
 ---
 
 This example demonstrates different easing functions available in Defold.

@@ -7,6 +7,7 @@ path: gui/load_texture
 scripts: load_texture.gui_script
 tags: gui
 title: Load texture
+
 ---
 
 ![button](load_texture.png)

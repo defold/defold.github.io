@@ -7,6 +7,7 @@ path: gui/slice9
 scripts: slice9.gui_script
 tags: gui
 title: Slice-9
+
 ---
 
 Overview : Using a small stylized image (90x91 pixels) we apply it to a gui node and set the slice-9 properties, we can then 

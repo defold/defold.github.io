@@ -7,6 +7,7 @@ path: collection/proxy
 scripts: controller.script, menu.gui_script, level.script
 tags: collection
 title: Proxy
+
 ---
 
 The setup consists of several collections and game objects.

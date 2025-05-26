@@ -7,6 +7,7 @@ path: gui/color
 scripts: color.gui_script
 tags: gui
 title: GUI color
+
 ---
 
 The example shows how to change the color of GUI nodes using `gui.set_color()` and `gui.animate()`.

@@ -1,7 +1,6 @@
 ---
 author: aglitchman
-brief: This example demonstrates how to create and apply an custom non-lit material
-  to a 3D model.
+brief: This example demonstrates how to create and apply an custom non-lit material to a 3D model.
 category: material
 layout: example
 name: Unlit (3D)
@@ -9,6 +8,7 @@ path: material/unlit
 scripts: unlit.vp, unlit.fp
 tags: material
 title: Unlit
+
 ---
 
 In industry-established terms, a material that is not affected by lighting is called "unlit" or "non-lit". It is used to create retro-style graphics or for effects that should not depend on lighting (headlights, lamps).

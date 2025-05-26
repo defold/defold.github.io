@@ -7,6 +7,7 @@ path: sprite/changeimage
 scripts: changeimage.script
 tags: sprite
 title: Change sprite image
+
 ---
 
 The example shows a game object with a sprite and a script with three script properties to reference different tilesource images. The script lets the user change which image to use on the sprite.

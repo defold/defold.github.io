@@ -7,6 +7,7 @@ path: basics/parent_child
 scripts: parent.script,child.script
 tags: basics
 title: Parent/child
+
 ---
 
 ![parent child](parent_child.png)

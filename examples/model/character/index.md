@@ -7,6 +7,7 @@ path: model/character
 scripts: player.script
 tags: model
 title: Character
+
 ---
 
 ![character](character.png)

@@ -7,6 +7,7 @@ path: sprite/samplers
 scripts: multi_sample.script, multi_sample_sprite.fp
 tags: sprite
 title: Multiple Sprite Samplers
+
 ---
 
 The example uses a sprite with a material with two samplers:
