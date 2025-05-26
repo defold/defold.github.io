@@ -2,11 +2,11 @@
 layout: base
 ---
 {%- assign branch = page.branch -%}
-{%- assign unsortedindices = site.data.refindex | where: "branch", branch -%}
-{%- assign indices = unsortedindices | sort_natural: "namespace" -%}
+{%- assign refs = site.data.refindex | where: "branch", branch -%}
 {%- assign branches = site.data.branchindex -%}
-{%- assign types = indices | map: "type" | uniq | sort -%}
-{% assign clean_ref = page.ref | remove: '.' %}
+{%- assign types = refs | map: "type" | uniq | sort -%}
+{%- assign clean_ref = page.ref | remove: '.' -%}
+
 {%- if page.type == "Extension" -%}
 	{%- assign ref = site.data.extensions[clean_ref] -%}
 {%- else -%}
@@ -29,20 +29,22 @@ layout: base
 			<hr>
 			<ul class="nobullet">
 				{%- for type in types -%}
-				{%- assign refs = indices | where: "type", type -%}
+					{%- assign typerefs = refs | where: "type", type -%}
+					{%- assign clean_type = type | remove: ' ' | replace: "C++", "cpp" | downcase -%}
 
-				{%- assign checked = "" -%}
-				{%- for r in refs -%}
-					{%- assign url = r.url -%}
-					{%- if page.url contains url -%}
-						{%- assign checked = "checked" -%}
-					{%- endif -%}
-				{%- endfor -%}
+					{%- assign checked = "" -%}
+					{%- for r in typerefs -%}
+						{%- assign url = r.url -%}
+						{%- if page.url contains url -%}
+							{%- assign checked = "checked" -%}
+						{%- endif -%}
+					{%- endfor -%}
 
 				<input id="collapsible_{{ type }}" class="toggle" type="checkbox" {{ checked }}/>
 				<label for="collapsible_{{ type }}" class="togglelabel">{{ type | capitalize  }}</label>
 				<ul class="nobullet">
-					{%- for r in refs -%}
+					<li style="padding-bottom: 0px;"><a href="/ref/{{page.branch}}/overview_{{clean_type}}" style="text-decoration: none;">Overview</a></li>
+					{%- for r in typerefs -%}
 						{%- assign textstyle = "text-decoration: none;" -%}
 						{%- if page.url contains r.url -%}
 							{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
@@ -77,8 +79,8 @@ layout: base
 				</form>
 			</div>
 			<select class="dropdownmenu" onchange="location = this.value;">
-				{%- for r in indices -%}
-				<option value="{{ r.url }}">{{ r.namespace }}{%- if r.type == "extension" -%}&nbsp;-&nbsp;({{r.name}}){%- endif -%}</option>
+				{%- for r in refs -%}
+				<option value="{{ r.url }}">{{ r.namespace }}{%- if r.type == "Extension" -%}&nbsp;-&nbsp;({{r.name}}){%- endif -%}</option>
 				{%- endfor -%}
 			</select>
 			<select class="dropdownmenu" onchange="location = this.value;">
@@ -86,7 +88,25 @@ layout: base
 				<option value="{{ page_url | replace: 'BRANCH', b }}">{{ b }}</option>
 				{%- endfor -%}
 			</select>
-			{%- if ref.info.language == "C++" -%}
+
+
+			{%- if page.ref == "overview" -%}
+				<h1>API Overview</h1>
+				{%- assign typerefs = refs | where: "type", page.type -%}
+				<ul class="nobullet">
+				{%- for r in typerefs -%}
+					<li>
+					{%- assign index = r.filename | remove: '.' -%}
+					{%- if page.type == "Extension" -%}
+						{%- assign ref = site.data.extensions[index] -%}
+					{%- else -%}
+						{%- assign ref = site.data.ref[page.branch][index] -%}
+					{%- endif -%}
+					<p><a href="{{r.url}}">{{ ref.info.name }}</a> - {{ ref.info.brief }}</p>
+					</li>
+				{%- endfor -%}
+				</ul>
+			{%- elsif ref.info.language == "C++" -%}
 				{%- include api_c.html ref=ref -%}
 			{%- elsif ref.info.language == "Lua" -%}
 				{%- include api_lua.html ref=ref -%}

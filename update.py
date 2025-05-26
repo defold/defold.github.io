@@ -127,6 +127,15 @@ def makedirs(path):
     if not os.path.exists(path):
         os.makedirs(path)
 
+def list_files(dir, ext, sort=False):
+    files = []
+    for file in os.listdir(dir):
+        if file.endswith(ext):
+            files.append(file)
+    if sort:
+        files.sort()
+    return files
+
 def call(args):
     print(args)
     ret = os.system(args)
@@ -1116,7 +1125,6 @@ def process_games_showcase(download = False):
         process_games(tmp_dir)
 
 
-LUA_APIS = [ "base", "bit", "coroutine", "debug", "io", "math", "os", "package", "socket", "string", "table" ]
 
 def process_refdoc(download = False):
     refindex = []
@@ -1150,11 +1158,7 @@ def process_refdoc(download = False):
             # multiple files can contribute to the same namespace
             # find and merge apis per namespace
             namespaces = {}
-            files = []
-            for file in os.listdir(os.path.join(tmp_dir, "doc")):
-                if file.endswith(".json"):
-                    files.append(file)
-            files.sort()
+            files = list_files(os.path.join(tmp_dir, "doc"), ".json", sort = True)
             for file in files:
                 api = read_as_json(os.path.join(tmp_dir, "doc", file))
                 # ignore empty APIs (such as those moved to extensions)
@@ -1273,6 +1277,25 @@ def process_refdoc(download = False):
                 "language": extension["info"]["language"],
                 "type": extension["info"]["type"],
             })
+
+        # generate a list of API types
+        types = []
+        for ref in refindex:
+            if ref["type"] not in types:
+                types.append(ref["type"])
+
+        # write overview pages
+        for type in types:
+            filename = "overview_" + type.replace(" ", "").replace("C++", "cpp").lower() + ".md"
+            print("  " + filename, branch)
+            with open(os.path.join(REF_PAGE_DIR, filename), "w") as f:
+                fm_branch = branch
+                fm_ref = "overview"
+                fm_language = ""
+                fm_title = "Overview"
+                fm_type = type
+                f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type) + REFDOC_MD_BODY)
+
 
     # copy stable files to ref/ for backwards compatibility
     for item in os.listdir(os.path.join("ref", "stable")):
