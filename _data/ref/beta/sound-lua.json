@@ -42,21 +42,24 @@
             "parameters": [
                 {
                     "doc": "delay in seconds before the sound starts playing, default is 0.",
-                    "name": "[delay]",
+                    "is_optional": "True",
+                    "name": "delay",
                     "types": [
                         "number"
                     ]
                 },
                 {
                     "doc": "sound gain between 0 and 1, default is 1.",
-                    "name": "[gain]",
+                    "is_optional": "True",
+                    "name": "gain",
                     "types": [
                         "number"
                     ]
                 },
                 {
                     "doc": "the identifier of the sound, can be used to distinguish between consecutive plays from the same component.",
-                    "name": "[play_id]",
+                    "is_optional": "True",
+                    "name": "play_id",
                     "types": [
                         "number"
                     ]
@@ -79,7 +82,8 @@
             "parameters": [
                 {
                     "doc": "sound gain between 0 and 1, default is 1.",
-                    "name": "[gain]",
+                    "is_optional": "True",
+                    "name": "gain",
                     "types": [
                         "number"
                     ]
@@ -107,9 +111,9 @@
         },
         {
             "brief": "get mixer group gain",
-            "description": "Get mixer group gain\n<span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.",
+            "description": "Get mixer group gain",
             "error": "",
-            "examples": "Get the mixer group gain for the \"soundfx\" and convert to dB:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">get_group_gain</span><span class=\"p\">(</span><span class=\"s2\">&quot;soundfx&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">gain_db</span> <span class=\"o\">=</span> <span class=\"mi\">20</span> <span class=\"o\">*</span> <span class=\"n\">log</span><span class=\"p\">(</span><span class=\"n\">gain</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "examples": "Get the mixer group gain for the \"soundfx\" and convert to dB:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">get_group_gain</span><span class=\"p\">(</span><span class=\"s2\">&quot;soundfx&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">gain_db</span> <span class=\"o\">=</span> <span class=\"mi\">60</span> <span class=\"o\">*</span> <span class=\"n\">gain</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "sound.get_group_gain",
@@ -117,6 +121,7 @@
             "parameters": [
                 {
                     "doc": "group name",
+                    "is_optional": "False",
                     "name": "group",
                     "types": [
                         "string",
@@ -127,7 +132,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "gain in linear scale",
+                    "doc": "gain in [0 1] range ([-60dB.. 0dB])",
                     "name": "gain",
                     "types": [
                         "number"
@@ -149,6 +154,7 @@
             "parameters": [
                 {
                     "doc": "group name",
+                    "is_optional": "False",
                     "name": "group",
                     "types": [
                         "string",
@@ -204,6 +210,7 @@
             "parameters": [
                 {
                     "doc": "group name",
+                    "is_optional": "False",
                     "name": "group",
                     "types": [
                         "string",
@@ -212,6 +219,7 @@
                 },
                 {
                     "doc": "window length in seconds",
+                    "is_optional": "False",
                     "name": "window",
                     "types": [
                         "number"
@@ -250,6 +258,7 @@
             "parameters": [
                 {
                     "doc": "group name",
+                    "is_optional": "False",
                     "name": "group",
                     "types": [
                         "string",
@@ -258,6 +267,7 @@
                 },
                 {
                     "doc": "window length in seconds",
+                    "is_optional": "False",
                     "name": "window",
                     "types": [
                         "number"
@@ -342,6 +352,7 @@
             "parameters": [
                 {
                     "doc": "the sound that should pause",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -351,6 +362,7 @@
                 },
                 {
                     "doc": "true if the sound should pause",
+                    "is_optional": "False",
                     "name": "pause",
                     "types": [
                         "bool"
@@ -364,9 +376,9 @@
         },
         {
             "brief": "plays a sound",
-            "description": "Make the sound component play its sound. Multiple voices are supported. The limit is set to 32 voices per sound component.\n<span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.\n<span class=\"icon-attention\"></span> A sound will continue to play even if the game object the sound component belonged to is deleted. You can call <code>sound.stop()</code> to stop the sound.",
+            "description": "Make the sound component play its sound. Multiple voices are supported. The limit is set to 32 voices per sound component.\n<span class=\"icon-attention\"></span> A sound will continue to play even if the game object the sound component belonged to is deleted. You can call <code>sound.stop()</code> to stop the sound.",
             "error": "",
-            "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component play its sound after 1 second:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">delay</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"n\">pan</span> <span class=\"o\">=</span> <span class=\"o\">-</span><span class=\"mf\">1.0</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</code></pre></div>\n\nUsing the callback argument, you can chain several sounds together:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">sound_done</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- play &#39;boom&#39; sound fx when the countdown has completed</span>\n  <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;sound_done&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">play_id</span> <span class=\"o\">==</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">countdown_id</span> <span class=\"kr\">then</span>\n    <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;#boom&quot;</span><span class=\"p\">,</span> <span class=\"kc\">nil</span><span class=\"p\">,</span> <span class=\"n\">sound_done</span><span class=\"p\">)</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">countdown_id</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;#countdown&quot;</span><span class=\"p\">,</span> <span class=\"kc\">nil</span><span class=\"p\">,</span> <span class=\"n\">sound_done</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component play its sound after 1 second:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">delay</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.9</span><span class=\"p\">,</span> <span class=\"n\">pan</span> <span class=\"o\">=</span> <span class=\"o\">-</span><span class=\"mf\">1.0</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</code></pre></div>\n\nUsing the callback argument, you can chain several sounds together:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">sound_done</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- play &#39;boom&#39; sound fx when the countdown has completed</span>\n  <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;sound_done&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">play_id</span> <span class=\"o\">==</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">countdown_id</span> <span class=\"kr\">then</span>\n    <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;#boom&quot;</span><span class=\"p\">,</span> <span class=\"kc\">nil</span><span class=\"p\">,</span> <span class=\"n\">sound_done</span><span class=\"p\">)</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">countdown_id</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;#countdown&quot;</span><span class=\"p\">,</span> <span class=\"kc\">nil</span><span class=\"p\">,</span> <span class=\"n\">sound_done</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "sound.play",
@@ -376,6 +388,7 @@
             "parameters": [
                 {
                     "doc": "the sound that should play",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -385,14 +398,16 @@
                 },
                 {
                     "doc": "<dl>\n<dt>optional table with properties:</dt>\n<dt><code>delay</code></dt>\n<dd><span class=\"type\">number</span> delay in seconds before the sound starts playing, default is 0.</dd>\n<dt><code>gain</code></dt>\n<dd><span class=\"type\">number</span> sound gain between 0 and 1, default is 1. The final gain of the sound will be a combination of this gain, the group gain and the master gain.</dd>\n<dt><code>pan</code></dt>\n<dd><span class=\"type\">number</span> sound pan between -1 and 1, default is 0. The final pan of the sound will be an addition of this pan and the sound pan.</dd>\n<dt><code>speed</code></dt>\n<dd><span class=\"type\">number</span> sound speed where 1.0 is normal speed, 0.5 is half speed and 2.0 is double speed. The final speed of the sound will be a multiplication of this speed and the sound speed.</dd>\n</dl>",
-                    "name": "[play_properties]",
+                    "is_optional": "True",
+                    "name": "play_properties",
                     "types": [
                         "table"
                     ]
                 },
                 {
                     "doc": "function to call when the sound has finished playing or stopped manually via <a href=\"/ref/sound#sound.stop\">sound.stop</a>.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>message_id</code></dt>\n<dd><span class=\"type\">hash</span> The name of the completion message, which can be either <code>\"sound_done\"</code> if the sound has finished playing, or <code>\"sound_stopped\"</code> if it was stopped manually.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">table</span> Information about the completion:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>play_id</code> - the sequential play identifier that was given by the sound.play function.</li>\n</ul>\n<dl>\n<dt><code>sender</code></dt>\n<dd><span class=\"type\">url</span> The invoker of the callback: the sound component.</dd>\n</dl>",
-                    "name": "[complete_function]",
+                    "is_optional": "True",
+                    "name": "complete_function",
                     "types": [
                         "function(self, message_id, message, sender)"
                     ]
@@ -413,9 +428,9 @@
         },
         {
             "brief": "set sound gain",
-            "description": "Set gain on all active playing voices of a sound.\n<span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.",
+            "description": "Set gain on all active playing voices of a sound.",
             "error": "",
-            "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will set the gain to 0.5\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_gain</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will set the gain to 0.9\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_gain</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.9</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "sound.set_gain",
@@ -423,6 +438,7 @@
             "parameters": [
                 {
                     "doc": "the sound to set the gain of",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -431,8 +447,9 @@
                     ]
                 },
                 {
-                    "doc": "sound gain between 0 and 1. The final gain of the sound will be a combination of this gain, the group gain and the master gain.",
-                    "name": "[gain]",
+                    "doc": "sound gain between 0 and 1 [-60dB .. 0dB]. The final gain of the sound will be a combination of this gain, the group gain and the master gain.",
+                    "is_optional": "True",
+                    "name": "gain",
                     "types": [
                         "number"
                     ]
@@ -445,9 +462,9 @@
         },
         {
             "brief": "set mixer group gain",
-            "description": "Set mixer group gain\n<span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.",
+            "description": "Set mixer group gain",
             "error": "",
-            "examples": "Set mixer group gain on the \"soundfx\" group to -4 dB:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">gain_db</span> <span class=\"o\">=</span> <span class=\"o\">-</span><span class=\"mi\">4</span>\n<span class=\"kd\">local</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mi\">10</span><span class=\"o\">^</span><span class=\"n\">gain_db</span><span class=\"o\">/</span><span class=\"mi\">20</span> <span class=\"c1\">-- 0.63095734448019</span>\n<span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_group_gain</span><span class=\"p\">(</span><span class=\"s2\">&quot;soundfx&quot;</span><span class=\"p\">,</span> <span class=\"n\">gain</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "examples": "Set mixer group gain on the \"soundfx\" group to 50% (-30dB):\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_group_gain</span><span class=\"p\">(</span><span class=\"s2\">&quot;soundfx&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "sound.set_group_gain",
@@ -455,6 +472,7 @@
             "parameters": [
                 {
                     "doc": "group name",
+                    "is_optional": "False",
                     "name": "group",
                     "types": [
                         "string",
@@ -462,7 +480,8 @@
                     ]
                 },
                 {
-                    "doc": "gain in linear scale",
+                    "doc": "gain in range [0..1] mapped to [0 .. -60dB]",
+                    "is_optional": "False",
                     "name": "gain",
                     "types": [
                         "number"
@@ -488,6 +507,7 @@
             "parameters": [
                 {
                     "doc": "the sound to set the panning value to",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -497,7 +517,8 @@
                 },
                 {
                     "doc": "sound panning between -1.0 and 1.0",
-                    "name": "[pan]",
+                    "is_optional": "True",
+                    "name": "pan",
                     "types": [
                         "number"
                     ]
@@ -520,6 +541,7 @@
             "parameters": [
                 {
                     "doc": "the sound component that should stop",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -529,7 +551,8 @@
                 },
                 {
                     "doc": "<dl>\n<dt>optional table with properties:</dt>\n<dt><code>play_id</code></dt>\n<dd><span class=\"type\">number</span> the sequential play identifier that should be stopped (was given by the sound.play() function)</dd>\n</dl>",
-                    "name": "[stop_properties]",
+                    "is_optional": "True",
+                    "name": "stop_properties",
                     "types": [
                         "table"
                     ]
@@ -552,7 +575,8 @@
             "parameters": [
                 {
                     "doc": "id number supplied when the message was posted.",
-                    "name": "[play_id]",
+                    "is_optional": "True",
+                    "name": "play_id",
                     "types": [
                         "number"
                     ]
@@ -575,7 +599,8 @@
             "parameters": [
                 {
                     "doc": "id number supplied when the message was posted.",
-                    "name": "[play_id]",
+                    "is_optional": "True",
+                    "name": "play_id",
                     "types": [
                         "number"
                     ]
@@ -619,14 +644,13 @@
     ],
     "info": {
         "brief": "Sound API documentation",
-        "description": "Sound API documentation",
+        "description": "Functions and messages for controlling sound components and\nmixer groups.",
         "file": "",
-        "group": "COMPONENTS",
         "language": "Lua",
         "name": "Sound",
         "namespace": "sound",
         "notes": [],
-        "path": "",
+        "path": "scripts/script_sound.cpp",
         "type": "Defold Lua"
     }
 }

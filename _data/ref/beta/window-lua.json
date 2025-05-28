@@ -156,6 +156,7 @@
             "parameters": [
                 {
                     "doc": "The mode for screen dimming\n<ul>\n<li><code>window.DIMMING_ON</code></li>\n<li><code>window.DIMMING_OFF</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "mode",
                     "types": [
                         "constant"
@@ -179,6 +180,7 @@
             "parameters": [
                 {
                     "doc": "A callback which receives info about window events. Pass an empty function or <code>nil</code> if you no longer wish to receive callbacks.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The calling script</dd>\n<dt><code>event</code></dt>\n<dd><span class=\"type\">constant</span> The type of event. Can be one of these:</dd>\n</dl>\n<ul>\n<li><code>window.WINDOW_EVENT_FOCUS_LOST</code></li>\n<li><code>window.WINDOW_EVENT_FOCUS_GAINED</code></li>\n<li><code>window.WINDOW_EVENT_RESIZED</code></li>\n<li><code>window.WINDOW_EVENT_ICONIFIED</code></li>\n<li><code>window.WINDOW_EVENT_DEICONIFIED</code></li>\n</ul>\n<dl>\n<dt><code>data</code></dt>\n<dd><span class=\"type\">table</span> The callback value <code>data</code> is a table which currently holds these values</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>width</code>: The width of a resize event. nil otherwise.</li>\n<li><span class=\"type\">number</span> <code>height</code>: The height of a resize event. nil otherwise.</li>\n</ul>",
+                    "is_optional": "False",
                     "name": "callback",
                     "types": [
                         "function(self, event, data)",
@@ -203,6 +205,7 @@
             "parameters": [
                 {
                     "doc": "The lock state for the mouse cursor",
+                    "is_optional": "False",
                     "name": "flag",
                     "types": [
                         "boolean"
@@ -226,6 +229,7 @@
             "parameters": [
                 {
                     "doc": "Horizontal position of window",
+                    "is_optional": "False",
                     "name": "x",
                     "types": [
                         "number"
@@ -233,6 +237,7 @@
                 },
                 {
                     "doc": "Vertical position of window",
+                    "is_optional": "False",
                     "name": "y",
                     "types": [
                         "number"
@@ -256,6 +261,7 @@
             "parameters": [
                 {
                     "doc": "Width of window",
+                    "is_optional": "False",
                     "name": "width",
                     "types": [
                         "number"
@@ -263,6 +269,7 @@
                 },
                 {
                     "doc": "Height of window",
+                    "is_optional": "False",
                     "name": "height",
                     "types": [
                         "number"
@@ -286,6 +293,7 @@
             "parameters": [
                 {
                     "doc": "The title, encoded as UTF-8",
+                    "is_optional": "False",
                     "name": "title",
                     "types": [
                         "string"
@@ -377,12 +385,11 @@
         "brief": "Window API documentation",
         "description": "Functions and constants to access the window, window event listeners\nand screen dimming.",
         "file": "",
-        "group": "SYSTEM",
         "language": "Lua",
         "name": "Window",
         "namespace": "window",
         "notes": [],
-        "path": "",
+        "path": "scripts/script_window.cpp",
         "type": "Defold Lua"
     }
 }

@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: beta
-ref: dmatomic-cpp
+ref: log-cpp
 language: C++
-title: API reference (Atomic)
+title: API reference (Log)
 type: Defold C++
 ---
 {% include anchor_headings.html html=content %}

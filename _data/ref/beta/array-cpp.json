@@ -127,6 +127,7 @@
             "parameters": [
                 {
                     "doc": "[type:]",
+                    "is_optional": "False",
                     "name": "Array",
                     "types": [
                         ""
@@ -194,6 +195,7 @@
             "parameters": [
                 {
                     "doc": "User-allocated array to be used as storage.",
+                    "is_optional": "False",
                     "name": "user_array",
                     "types": [
                         "T*"
@@ -201,6 +203,7 @@
                 },
                 {
                     "doc": "Initial size",
+                    "is_optional": "False",
                     "name": "size",
                     "types": [
                         "uint32_t"
@@ -208,6 +211,7 @@
                 },
                 {
                     "doc": "Initial capacity",
+                    "is_optional": "False",
                     "name": "capacity",
                     "types": [
                         "uint32_t"
@@ -231,6 +235,7 @@
             "parameters": [
                 {
                     "doc": "User-allocated array to be used as storage.",
+                    "is_optional": "False",
                     "name": "user_array",
                     "types": [
                         "T*"
@@ -238,6 +243,7 @@
                 },
                 {
                     "doc": "Initial size",
+                    "is_optional": "False",
                     "name": "size",
                     "types": [
                         "uint32_t"
@@ -245,6 +251,7 @@
                 },
                 {
                     "doc": "Initial capacity",
+                    "is_optional": "False",
                     "name": "capacity",
                     "types": [
                         "uint32_t"
@@ -252,6 +259,7 @@
                 },
                 {
                     "doc": "If false, the ownership is transferred to the dmArray",
+                    "is_optional": "False",
                     "name": "user_allocated",
                     "types": [
                         "bool"
@@ -344,6 +352,7 @@
             "parameters": [
                 {
                     "doc": "index of the element to remove",
+                    "is_optional": "False",
                     "name": "index",
                     "types": [
                         "uint32_t"
@@ -375,6 +384,7 @@
             "parameters": [
                 {
                     "doc": "reference to the element to remove.",
+                    "is_optional": "False",
                     "name": "element",
                     "types": [
                         "T&"
@@ -475,6 +485,7 @@
             "parameters": [
                 {
                     "doc": "function that will be called for each element",
+                    "is_optional": "False",
                     "name": "fn",
                     "types": [
                         ""
@@ -482,6 +493,7 @@
                 },
                 {
                     "doc": "user defined context that will be passed in with each callback",
+                    "is_optional": "False",
                     "name": "ctx",
                     "types": [
                         ""
@@ -505,6 +517,7 @@
             "parameters": [
                 {
                     "doc": "relative amount of elements to change the capacity",
+                    "is_optional": "False",
                     "name": "offset",
                     "types": [
                         "uint32_t"
@@ -528,6 +541,7 @@
             "parameters": [
                 {
                     "doc": "array index",
+                    "is_optional": "False",
                     "name": "index",
                     "types": [
                         "uint32_t"
@@ -559,6 +573,7 @@
             "parameters": [
                 {
                     "doc": "array index",
+                    "is_optional": "False",
                     "name": "index",
                     "types": [
                         "uint32_t"
@@ -605,6 +620,7 @@
             "parameters": [
                 {
                     "doc": "element element to add",
+                    "is_optional": "False",
                     "name": "element",
                     "types": [
                         "const T&"
@@ -628,6 +644,7 @@
             "parameters": [
                 {
                     "doc": "array of elements to add",
+                    "is_optional": "False",
                     "name": "array",
                     "types": [
                         "const T&"
@@ -635,6 +652,7 @@
                 },
                 {
                     "doc": "amount of elements in the array",
+                    "is_optional": "False",
                     "name": "count",
                     "types": [
                         "uint32_t"
@@ -681,6 +699,7 @@
             "parameters": [
                 {
                     "doc": "capacity of the array",
+                    "is_optional": "False",
                     "name": "capacity",
                     "types": [
                         "uint32_t"
@@ -704,6 +723,7 @@
             "parameters": [
                 {
                     "doc": "size of the array, must be less or equal to the capacity",
+                    "is_optional": "False",
                     "name": "size",
                     "types": [
                         "uint32_t"
@@ -750,6 +770,7 @@
             "parameters": [
                 {
                     "doc": "reference to array to swap content with",
+                    "is_optional": "False",
                     "name": "rhs",
                     "types": [
                         "dmArray`<T>`&"
@@ -779,14 +800,13 @@
     ],
     "info": {
         "brief": "Templatized array",
-        "description": "Templatized array with bounds checking.\nThe backing storage is either auto-allocated (dynamically allocated) or user-allocated (supplied by user).\nWith exception of changing the size and capacity, all operations are guaranteed to be O(1).\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmArray</span><span class=\"o\">&lt;</span><span class=\"kt\">int</span><span class=\"o\">&gt;</span><span class=\"w\"> </span><span class=\"n\">a</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">a</span><span class=\"p\">.</span><span class=\"n\">SetCapacity</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">a</span><span class=\"p\">.</span><span class=\"n\">Push</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"n\">b</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">a</span><span class=\"p\">[</span><span class=\"mi\">0</span><span class=\"p\">];</span><span class=\"w\"></span>\n</code></pre></div>",
+        "description": "Templatized array with bounds checking.\n\nThe backing storage is either auto-allocated (dynamically allocated) or user-allocated (supplied by user).\nWith exception of changing the size and capacity, all operations are guaranteed to be O(1).\n\n```cpp\ndmArray<int> a;\na.SetCapacity(1);\na.Push(1);\nint b = a[0];\n```",
         "file": "dmsdk/dlib/array.h",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "Array",
-        "namespace": "dmArray",
+        "namespace": "Array",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/dlib/array.h",
+        "path": "dmsdk/dlib/array.h",
         "type": "Defold C++"
     }
 }

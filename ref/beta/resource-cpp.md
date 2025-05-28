@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: beta
-ref: dmalign-cpp
+ref: resource-cpp
 language: C++
-title: API reference (Align)
+title: API reference (Resource)
 type: Defold C++
 ---
 {% include anchor_headings.html html=content %}

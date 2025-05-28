@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: beta
-ref: dmhash-cpp
+ref: hash-cpp
 language: C++
 title: API reference (Hash)
 type: Defold C++

@@ -16,6 +16,30 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "enables or disables the in-game profiler data collection",
+            "description": "The profiler is a real-time tool that shows the numbers of milliseconds spent\nin each scope per frame as well as counters. The profiler is very useful for\ntracking down performance and resource problems.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- Show the profiler UI</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">enable</span><span class=\"p\">(</span><span class=\"kc\">true</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "profiler.enable",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "true to enable, false to disable",
+                    "is_optional": "False",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "enables or disables the on-screen profiler ui",
             "description": "Creates and shows or hides and destroys the on-sceen profiler ui\nThe profiler is a real-time tool that shows the numbers of milliseconds spent\nin each scope per frame as well as counters. The profiler is very useful for\ntracking down performance and resource problems.",
             "error": "",
@@ -27,6 +51,7 @@
             "parameters": [
                 {
                     "doc": "true to enable, false to disable",
+                    "is_optional": "False",
                     "name": "enabled",
                     "types": [
                         "boolean"
@@ -96,6 +121,7 @@
             "parameters": [
                 {
                     "doc": "the string to send to the connected profiler",
+                    "is_optional": "False",
                     "name": "text",
                     "types": [
                         "string"
@@ -204,6 +230,7 @@
             "parameters": [
                 {
                     "doc": "The name of the scope",
+                    "is_optional": "False",
                     "name": "name",
                     "types": [
                         "string"
@@ -242,6 +269,7 @@
             "parameters": [
                 {
                     "doc": "the mode to set the ui profiler in\n<ul>\n<li><code>profiler.MODE_RUN</code> This is default mode that continously shows the last frame</li>\n<li><code>profiler.MODE_PAUSE</code> Pauses on the currently displayed frame</li>\n<li><code>profiler.MODE_SHOW_PEAK_FRAME</code> Pauses on the currently displayed frame but shows a new frame if that frame is slower</li>\n<li><code>profiler.MODE_RECORD</code> Records all incoming frames to the recording buffer</li>\n</ul>\nTo stop recording, switch to a different mode such as <code>MODE_PAUSE</code> or <code>MODE_RUN</code>.\nYou can also use the <code>view_recorded_frame</code> function to display a recorded frame. Doing so stops the recording as well.\nEvery time you switch to recording mode the recording buffer is cleared.",
+                    "is_optional": "False",
                     "name": "mode",
                     "types": [
                         "constant"
@@ -265,6 +293,7 @@
             "parameters": [
                 {
                     "doc": "the view mode to set the ui profiler in\n<ul>\n<li><code>profiler.VIEW_MODE_FULL</code> The default mode which displays all the ui profiler details</li>\n<li><code>profiler.VIEW_MODE_MINIMIZED</code> Minimized mode which only shows the top header (fps counters and ui profiler mode)</li>\n</ul>",
+                    "is_optional": "False",
                     "name": "mode",
                     "types": [
                         "constant"
@@ -288,6 +317,7 @@
             "parameters": [
                 {
                     "doc": "true to include it in the display, false to hide it.",
+                    "is_optional": "False",
                     "name": "visible",
                     "types": [
                         "boolean"
@@ -341,6 +371,7 @@
             "parameters": [
                 {
                     "doc": "a table where you specify one of the following parameters:\n<ul>\n<li><code>distance</code> The offset from the currently displayed frame (this is truncated between zero and the number of recorded frames)</li>\n<li><code>frame</code> The frame index in the recording buffer (1 is first recorded frame)</li>\n</ul>",
+                    "is_optional": "False",
                     "name": "frame_index",
                     "types": [
                         "table"
@@ -355,14 +386,13 @@
     ],
     "info": {
         "brief": "Profiler API documentation",
-        "description": "Functions for getting profiling data in runtime.\nMore detailed <a href=\"https://www.defold.com/manuals/profiling/\">profiling</a> and <a href=\"http://www.defold.com/manuals/debugging/\">debugging</a> information available in the manuals.",
+        "description": "Functions for getting profiling data in runtime.\nMore detailed [profiling](https://www.defold.com/manuals/profiling/) and [debugging](http://www.defold.com/manuals/debugging/) information available in the manuals.",
         "file": "",
-        "group": "SYSTEM",
         "language": "Lua",
         "name": "Profiler",
         "namespace": "profiler",
         "notes": [],
-        "path": "",
+        "path": "profiler.cpp",
         "type": "Defold Lua"
     }
 }

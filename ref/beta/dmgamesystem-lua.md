@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: beta
-ref: sharedlibrary-lua
+ref: dmgamesystem-lua
 language: Lua
-title: API reference (Shared Library)
+title: API reference (GameSystem Gui)
 type: Defold Lua
 ---
 {% include anchor_headings.html html=content %}

@@ -29,6 +29,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "severity",
                     "types": [
                         "LogSeverity"
@@ -36,6 +37,7 @@
                 },
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "domain",
                     "types": [
                         "const char*"
@@ -43,6 +45,7 @@
                 },
                 {
                     "doc": "null terminated string",
+                    "is_optional": "False",
                     "name": "formatted_string",
                     "types": [
                         "const char*"
@@ -66,6 +69,7 @@
             "parameters": [
                 {
                     "doc": "Format string",
+                    "is_optional": "False",
                     "name": "format",
                     "types": [
                         "const char*"
@@ -73,6 +77,7 @@
                 },
                 {
                     "doc": "Format string args (variable arg list)",
+                    "is_optional": "False",
                     "name": "args",
                     "types": [
                         "..."
@@ -104,6 +109,7 @@
             "parameters": [
                 {
                     "doc": "Format string",
+                    "is_optional": "False",
                     "name": "format",
                     "types": [
                         "const char*"
@@ -111,6 +117,7 @@
                 },
                 {
                     "doc": "Format string args (variable arg list)",
+                    "is_optional": "False",
                     "name": "args",
                     "types": [
                         "..."
@@ -142,6 +149,7 @@
             "parameters": [
                 {
                     "doc": "Format string",
+                    "is_optional": "False",
                     "name": "format",
                     "types": [
                         "const char*"
@@ -149,6 +157,7 @@
                 },
                 {
                     "doc": "Format string args (variable arg list)",
+                    "is_optional": "False",
                     "name": "args",
                     "types": [
                         "..."
@@ -203,6 +212,7 @@
             "parameters": [
                 {
                     "doc": "Format string",
+                    "is_optional": "False",
                     "name": "format",
                     "types": [
                         "const char*"
@@ -210,6 +220,7 @@
                 },
                 {
                     "doc": "Format string args (variable arg list)",
+                    "is_optional": "False",
                     "name": "args",
                     "types": [
                         "..."
@@ -243,6 +254,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "listener",
                     "types": [
                         "FLogListener"
@@ -266,7 +278,8 @@
             "parameters": [
                 {
                     "doc": "severity",
-                    "name": "[type:LogSeverity]",
+                    "is_optional": "True",
+                    "name": "type:LogSeverity",
                     "types": [
                         ""
                     ]
@@ -289,7 +302,8 @@
             "parameters": [
                 {
                     "doc": "listener",
-                    "name": "[type:FLogListener]",
+                    "is_optional": "True",
+                    "name": "type:FLogListener",
                     "types": [
                         ""
                     ]
@@ -312,6 +326,7 @@
             "parameters": [
                 {
                     "doc": "Format string",
+                    "is_optional": "False",
                     "name": "format",
                     "types": [
                         "const char*"
@@ -319,6 +334,7 @@
                 },
                 {
                     "doc": "Format string args (variable arg list)",
+                    "is_optional": "False",
                     "name": "args",
                     "types": [
                         "..."
@@ -350,6 +366,7 @@
             "parameters": [
                 {
                     "doc": "Format string",
+                    "is_optional": "False",
                     "name": "format",
                     "types": [
                         "const char*"
@@ -357,6 +374,7 @@
                 },
                 {
                     "doc": "Format string args (variable arg list)",
+                    "is_optional": "False",
                     "name": "args",
                     "types": [
                         "..."
@@ -427,15 +445,14 @@
         "brief": "logging functions",
         "description": "Logging functions.",
         "file": "dmsdk/dlib/log.h",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "Log",
-        "namespace": "dmLog",
+        "namespace": "Log",
         "notes": [
             "Log functions will be omitted (NOP) for release builds",
             "Prefer these functions over `printf` since these can print to the platform specific logs"
         ],
-        "path": "engine/dlib/src/dmsdk/dlib/log.h",
+        "path": "dmsdk/dlib/log.h",
         "type": "Defold C++"
     }
 }

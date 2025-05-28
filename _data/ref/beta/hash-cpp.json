@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "The name of the dmAllocator struct",
+                    "is_optional": "False",
                     "name": "name",
                     "types": [
                         "symbol"
@@ -19,6 +20,7 @@
                 },
                 {
                     "doc": "The max size of the stack allocated context",
+                    "is_optional": "False",
                     "name": "size",
                     "types": [
                         "size_t"
@@ -57,6 +59,7 @@
             "parameters": [
                 {
                     "doc": "Buffer",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "const void*"
@@ -64,6 +67,7 @@
                 },
                 {
                     "doc": "Length of buffer",
+                    "is_optional": "False",
                     "name": "buffer_len",
                     "types": [
                         "uint32_t"
@@ -95,6 +99,7 @@
             "parameters": [
                 {
                     "doc": "Buffer",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "const void*"
@@ -102,6 +107,7 @@
                 },
                 {
                     "doc": "Length of buffer",
+                    "is_optional": "False",
                     "name": "buffer_len",
                     "types": [
                         "uint32_t"
@@ -133,6 +139,7 @@
             "parameters": [
                 {
                     "doc": "Hash state",
+                    "is_optional": "False",
                     "name": "hash_state",
                     "types": [
                         "HashState32*"
@@ -140,6 +147,7 @@
                 },
                 {
                     "doc": "Source hash state",
+                    "is_optional": "False",
                     "name": "source_hash_state",
                     "types": [
                         "HashState32*"
@@ -147,6 +155,7 @@
                 },
                 {
                     "doc": "true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH. Ignored if source state reverse hashing is disabled.",
+                    "is_optional": "False",
                     "name": "reverse_hash",
                     "types": [
                         "bool"
@@ -170,6 +179,7 @@
             "parameters": [
                 {
                     "doc": "Hash state",
+                    "is_optional": "False",
                     "name": "hash_state",
                     "types": [
                         "HashState64*"
@@ -177,6 +187,7 @@
                 },
                 {
                     "doc": "Source hash state",
+                    "is_optional": "False",
                     "name": "source_hash_state",
                     "types": [
                         "HashState64*"
@@ -184,6 +195,7 @@
                 },
                 {
                     "doc": "true <span class=\"type\"> bool</span> to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH. Ignored if source state reverse hashing is disabled.",
+                    "is_optional": "False",
                     "name": "reverse_hash",
                     "types": [
                         ""
@@ -207,6 +219,7 @@
             "parameters": [
                 {
                     "doc": "Hash state",
+                    "is_optional": "False",
                     "name": "hash_state",
                     "types": [
                         "HashState32*"
@@ -238,6 +251,7 @@
             "parameters": [
                 {
                     "doc": "Hash state",
+                    "is_optional": "False",
                     "name": "hash_state",
                     "types": [
                         "HashState64*"
@@ -269,6 +283,7 @@
             "parameters": [
                 {
                     "doc": "Hash state",
+                    "is_optional": "False",
                     "name": "hash_state",
                     "types": [
                         "HashState32*"
@@ -276,6 +291,7 @@
                 },
                 {
                     "doc": "true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH",
+                    "is_optional": "False",
                     "name": "reverse_hash",
                     "types": [
                         "bool"
@@ -299,6 +315,7 @@
             "parameters": [
                 {
                     "doc": "Hash state",
+                    "is_optional": "False",
                     "name": "hash_state",
                     "types": [
                         "HashState64*"
@@ -306,6 +323,7 @@
                 },
                 {
                     "doc": "true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH",
+                    "is_optional": "False",
                     "name": "reverse_hash",
                     "types": [
                         ""
@@ -329,6 +347,7 @@
             "parameters": [
                 {
                     "doc": "Hash state",
+                    "is_optional": "False",
                     "name": "hash_state",
                     "types": [
                         "HashState32*"
@@ -352,6 +371,7 @@
             "parameters": [
                 {
                     "doc": "Hash state",
+                    "is_optional": "False",
                     "name": "hash_state",
                     "types": [
                         "HashState64*"
@@ -377,6 +397,7 @@
             "parameters": [
                 {
                     "doc": "hash value",
+                    "is_optional": "False",
                     "name": "hash",
                     "types": [
                         "uint32_t"
@@ -410,6 +431,7 @@
             "parameters": [
                 {
                     "doc": "hash to lookup",
+                    "is_optional": "False",
                     "name": "hash",
                     "types": [
                         "uint32_t"
@@ -417,6 +439,7 @@
                 },
                 {
                     "doc": "original data length. Optional argument and NULL-pointer is accepted.",
+                    "is_optional": "False",
                     "name": "length",
                     "types": [
                         "uint32_t*"
@@ -451,6 +474,7 @@
             "parameters": [
                 {
                     "doc": "The reverse hash allocator",
+                    "is_optional": "False",
                     "name": "allocator",
                     "types": [
                         "dmAllocator*"
@@ -458,6 +482,7 @@
                 },
                 {
                     "doc": "hash value",
+                    "is_optional": "False",
                     "name": "hash",
                     "types": [
                         "uint32_t"
@@ -491,6 +516,7 @@
             "parameters": [
                 {
                     "doc": "hash value",
+                    "is_optional": "False",
                     "name": "hash",
                     "types": [
                         "uint64_t"
@@ -524,6 +550,7 @@
             "parameters": [
                 {
                     "doc": "hash to lookup",
+                    "is_optional": "False",
                     "name": "hash",
                     "types": [
                         "uint64_t"
@@ -531,6 +558,7 @@
                 },
                 {
                     "doc": "original data length. Optional argument and NULL-pointer is accepted.",
+                    "is_optional": "False",
                     "name": "length",
                     "types": [
                         "uint32_t*"
@@ -565,6 +593,7 @@
             "parameters": [
                 {
                     "doc": "The reverse hash allocator",
+                    "is_optional": "False",
                     "name": "allocator",
                     "types": [
                         "dmAllocator*"
@@ -572,6 +601,7 @@
                 },
                 {
                     "doc": "hash value",
+                    "is_optional": "False",
                     "name": "hash",
                     "types": [
                         "uint64_t"
@@ -603,6 +633,7 @@
             "parameters": [
                 {
                     "doc": "Null terminated string",
+                    "is_optional": "False",
                     "name": "string",
                     "types": [
                         "const char*"
@@ -634,6 +665,7 @@
             "parameters": [
                 {
                     "doc": "Null terminated string",
+                    "is_optional": "False",
                     "name": "string",
                     "types": [
                         "const char*"
@@ -665,6 +697,7 @@
             "parameters": [
                 {
                     "doc": "Hash state",
+                    "is_optional": "False",
                     "name": "hash_state",
                     "types": [
                         "HashState32*"
@@ -672,6 +705,7 @@
                 },
                 {
                     "doc": "Buffer",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "const void*"
@@ -679,6 +713,7 @@
                 },
                 {
                     "doc": "Length of buffer",
+                    "is_optional": "False",
                     "name": "buffer_len",
                     "types": [
                         "uint32_t"
@@ -702,6 +737,7 @@
             "parameters": [
                 {
                     "doc": "Hash state",
+                    "is_optional": "False",
                     "name": "hash_state",
                     "types": [
                         "HashState64*"
@@ -709,6 +745,7 @@
                 },
                 {
                     "doc": "Buffer",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "const void*"
@@ -716,6 +753,7 @@
                 },
                 {
                     "doc": "Length of buffer",
+                    "is_optional": "False",
                     "name": "buffer_len",
                     "types": [
                         "uint32_t"
@@ -762,12 +800,11 @@
         "brief": "SDK Hash API documentation",
         "description": "Hash functions.",
         "file": "dmsdk/dlib/hash.h",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "Hash",
-        "namespace": "dmHash",
+        "namespace": "Hash",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/dlib/hash.h",
+        "path": "dmsdk/dlib/hash.h",
         "type": "Defold C++"
     }
 }

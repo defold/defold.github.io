@@ -53,7 +53,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CLASS"
         },
         {
             "brief": "Constructor. Create an empty hashtable with zero c...",
@@ -84,6 +84,7 @@
             "parameters": [
                 {
                     "doc": "Pointer to user allocated continous data-block ((table_size<em>sizeof(uint32_t)) + (capacity</em>sizeof(dmHashTable::Entry))",
+                    "is_optional": "False",
                     "name": "user_allocated",
                     "types": [
                         ""
@@ -91,6 +92,7 @@
                 },
                 {
                     "doc": "Hashtable size, ie number of buckets. table_size &lt; 0xffffffff",
+                    "is_optional": "False",
                     "name": "table_size",
                     "types": [
                         ""
@@ -98,6 +100,7 @@
                 },
                 {
                     "doc": "Capacity. capacity &lt; 0xffffffff",
+                    "is_optional": "False",
                     "name": "capacity",
                     "types": [
                         ""
@@ -122,7 +125,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CLASS"
         },
         {
             "brief": "Specialized hash table with <span class=\"type\">uint32_t</span> as key...",
@@ -137,7 +140,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CLASS"
         },
         {
             "brief": "Specialized hash table with <span class=\"type\">uint64_t</span> as key...",
@@ -152,7 +155,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CLASS"
         },
         {
             "brief": "Check if the table is empty",
@@ -191,6 +194,7 @@
             "parameters": [
                 {
                     "doc": "Key to remove",
+                    "is_optional": "False",
                     "name": "key",
                     "types": [
                         "Key"
@@ -237,6 +241,7 @@
             "parameters": [
                 {
                     "doc": "Key",
+                    "is_optional": "False",
                     "name": "key",
                     "types": [
                         "Key"
@@ -291,6 +296,7 @@
             "parameters": [
                 {
                     "doc": "Call-back called for every entry",
+                    "is_optional": "False",
                     "name": "call_back",
                     "types": [
                         ""
@@ -298,6 +304,7 @@
                 },
                 {
                     "doc": "Context",
+                    "is_optional": "False",
                     "name": "context",
                     "types": [
                         ""
@@ -347,6 +354,7 @@
             "parameters": [
                 {
                     "doc": "relative amount of elements to change the capacity",
+                    "is_optional": "False",
                     "name": "offset",
                     "types": [
                         "uint32_t"
@@ -370,6 +378,7 @@
             "parameters": [
                 {
                     "doc": "Key",
+                    "is_optional": "False",
                     "name": "key",
                     "types": [
                         "Key"
@@ -377,6 +386,7 @@
                 },
                 {
                     "doc": "Value",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "const T&"
@@ -400,6 +410,7 @@
             "parameters": [
                 {
                     "doc": "Hashtable size, ie number of buckets. table_size &lt; 0xffffffff",
+                    "is_optional": "False",
                     "name": "table_size",
                     "types": [
                         ""
@@ -407,6 +418,7 @@
                 },
                 {
                     "doc": "Capacity. capacity &lt; 0xffffffff",
+                    "is_optional": "False",
                     "name": "capacity",
                     "types": [
                         ""
@@ -453,6 +465,7 @@
             "parameters": [
                 {
                     "doc": "the other table",
+                    "is_optional": "False",
                     "name": "other",
                     "types": [
                         "dmHashTable<KEY, T>&"
@@ -469,12 +482,11 @@
         "brief": "Hash table",
         "description": "Hash table",
         "file": "dmsdk/dlib/hashtable.h",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "Hashtable",
-        "namespace": "dmHashTable",
+        "namespace": "Hashtable",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/dlib/hashtable.h",
+        "path": "dmsdk/dlib/hashtable.h",
         "type": "Defold C++"
     }
 }

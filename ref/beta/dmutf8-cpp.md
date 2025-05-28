@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: beta
-ref: dmstringfunc-cpp
+ref: dmutf8-cpp
 language: C++
-title: API reference (DStrings)
+title: API reference (Utf8)
 type: Defold C++
 ---
 {% include anchor_headings.html html=content %}

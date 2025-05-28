@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: beta
-ref: dmgamesystem-cpp
+ref: objectpool-cpp
 language: C++
-title: API reference (Property)
+title: API reference (ObjectPool)
 type: Defold C++
 ---
 {% include anchor_headings.html html=content %}

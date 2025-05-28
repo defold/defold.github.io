@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: beta
-ref: engine-lua
-language: Lua
+ref: engine-cpp
+language: C++
 title: API reference (Engine runtime)
-type: Defold Lua
+type: Defold C++
 ---
 {% include anchor_headings.html html=content %}

@@ -27,6 +27,7 @@
             "parameters": [
                 {
                     "doc": "Socket to initiate connection on",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -34,6 +35,7 @@
                 },
                 {
                     "doc": "Address to connect to",
+                    "is_optional": "False",
                     "name": "address",
                     "types": [
                         "Address"
@@ -41,6 +43,7 @@
                 },
                 {
                     "doc": "Port to connect to",
+                    "is_optional": "False",
                     "name": "port",
                     "types": [
                         "int"
@@ -72,6 +75,7 @@
             "parameters": [
                 {
                     "doc": "Socket to close",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -139,6 +143,7 @@
             "parameters": [
                 {
                     "doc": "socket to get fd for",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -170,6 +175,7 @@
             "parameters": [
                 {
                     "doc": "Hostname to resolve",
+                    "is_optional": "False",
                     "name": "name",
                     "types": [
                         "const char*"
@@ -177,6 +183,7 @@
                 },
                 {
                     "doc": "Host address result",
+                    "is_optional": "False",
                     "name": "address",
                     "types": [
                         "Address*"
@@ -184,6 +191,7 @@
                 },
                 {
                     "doc": "Whether or not to search for IPv4 addresses",
+                    "is_optional": "False",
                     "name": "ipv4",
                     "types": [
                         "bool"
@@ -191,6 +199,7 @@
                 },
                 {
                     "doc": "Whether or not to search for IPv6 addresses",
+                    "is_optional": "False",
                     "name": "ipv6",
                     "types": [
                         "bool"
@@ -224,6 +233,7 @@
             "parameters": [
                 {
                     "doc": "Hostname to resolve",
+                    "is_optional": "False",
                     "name": "name",
                     "types": [
                         "const char*"
@@ -231,6 +241,7 @@
                 },
                 {
                     "doc": "Host address result",
+                    "is_optional": "False",
                     "name": "address",
                     "types": [
                         "Address*"
@@ -238,6 +249,7 @@
                 },
                 {
                     "doc": "Timeout in microseconds",
+                    "is_optional": "False",
                     "name": "timeout",
                     "types": [
                         "uint64_t"
@@ -245,6 +257,7 @@
                 },
                 {
                     "doc": "if non null and set, will abort the call",
+                    "is_optional": "False",
                     "name": "cancelflag",
                     "types": [
                         "int*"
@@ -252,6 +265,7 @@
                 },
                 {
                     "doc": "Whether or not to search for IPv4 addresses",
+                    "is_optional": "False",
                     "name": "ipv4",
                     "types": [
                         "bool"
@@ -259,6 +273,7 @@
                 },
                 {
                     "doc": "Whether or not to search for IPv6 addresses",
+                    "is_optional": "False",
                     "name": "ipv6",
                     "types": [
                         "bool"
@@ -307,6 +322,7 @@
             "parameters": [
                 {
                     "doc": "Socket type",
+                    "is_optional": "False",
                     "name": "type",
                     "types": [
                         "Type"
@@ -314,6 +330,7 @@
                 },
                 {
                     "doc": "Protocol",
+                    "is_optional": "False",
                     "name": "protocol",
                     "types": [
                         "Protocol"
@@ -321,6 +338,7 @@
                 },
                 {
                     "doc": "Pointer to socket",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket*"
@@ -380,6 +398,7 @@
             "parameters": [
                 {
                     "doc": "Socket to receive data on",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -387,6 +406,7 @@
                 },
                 {
                     "doc": "Buffer to receive to",
+                    "is_optional": "False",
                     "name": "buffer[out]",
                     "types": [
                         "void*"
@@ -394,6 +414,7 @@
                 },
                 {
                     "doc": "Receive buffer length",
+                    "is_optional": "False",
                     "name": "length",
                     "types": [
                         "int"
@@ -401,6 +422,7 @@
                 },
                 {
                     "doc": "Number of received bytes (result)",
+                    "is_optional": "False",
                     "name": "received_bytes[out]",
                     "types": [
                         "int*"
@@ -618,6 +640,7 @@
             "parameters": [
                 {
                     "doc": "Result to convert",
+                    "is_optional": "False",
                     "name": "result",
                     "types": [
                         "Result"
@@ -649,6 +672,7 @@
             "parameters": [
                 {
                     "doc": "Selector",
+                    "is_optional": "False",
                     "name": "selector",
                     "types": [
                         "Selector*"
@@ -656,6 +680,7 @@
                 },
                 {
                     "doc": "Timeout. For blocking pass -1. (microseconds)",
+                    "is_optional": "False",
                     "name": "timeout",
                     "types": [
                         "int"
@@ -702,6 +727,7 @@
             "parameters": [
                 {
                     "doc": "Selector",
+                    "is_optional": "False",
                     "name": "selector",
                     "types": [
                         "Selector*"
@@ -709,6 +735,7 @@
                 },
                 {
                     "doc": "Kind to clear",
+                    "is_optional": "False",
                     "name": "selector_kind",
                     "types": [
                         "SelectorKind"
@@ -716,6 +743,7 @@
                 },
                 {
                     "doc": "Socket to clear",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -747,6 +775,7 @@
             "parameters": [
                 {
                     "doc": "Selector",
+                    "is_optional": "False",
                     "name": "selector",
                     "types": [
                         "Selector*"
@@ -754,6 +783,7 @@
                 },
                 {
                     "doc": "Selector kind",
+                    "is_optional": "False",
                     "name": "selector_kind",
                     "types": [
                         "SelectorKind"
@@ -761,6 +791,7 @@
                 },
                 {
                     "doc": "Socket to check for",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -823,6 +854,7 @@
             "parameters": [
                 {
                     "doc": "Selector",
+                    "is_optional": "False",
                     "name": "selector",
                     "types": [
                         "Selector*"
@@ -830,6 +862,7 @@
                 },
                 {
                     "doc": "Kind to clear",
+                    "is_optional": "False",
                     "name": "selector_kind",
                     "types": [
                         "SelectorKind"
@@ -837,6 +870,7 @@
                 },
                 {
                     "doc": "Socket to set",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -868,6 +902,7 @@
             "parameters": [
                 {
                     "doc": "Selector",
+                    "is_optional": "False",
                     "name": "selector",
                     "types": [
                         "Selector*"
@@ -901,6 +936,7 @@
             "parameters": [
                 {
                     "doc": "Socket to send a message on",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -908,6 +944,7 @@
                 },
                 {
                     "doc": "Buffer to send",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "void*"
@@ -915,6 +952,7 @@
                 },
                 {
                     "doc": "Length of buffer to send",
+                    "is_optional": "False",
                     "name": "length",
                     "types": [
                         "int"
@@ -922,6 +960,7 @@
                 },
                 {
                     "doc": "Number of bytes sent (result)",
+                    "is_optional": "False",
                     "name": "sent_bytes[out]",
                     "types": [
                         "int*"
@@ -953,6 +992,7 @@
             "parameters": [
                 {
                     "doc": "Socket to set blocking on",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -960,6 +1000,7 @@
                 },
                 {
                     "doc": "True to block",
+                    "is_optional": "False",
                     "name": "blocking",
                     "types": [
                         "bool"
@@ -991,6 +1032,7 @@
             "parameters": [
                 {
                     "doc": "Socket to set reuse address to",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -998,6 +1040,7 @@
                 },
                 {
                     "doc": "True if broadcast",
+                    "is_optional": "False",
                     "name": "broadcast",
                     "types": [
                         "bool"
@@ -1029,6 +1072,7 @@
             "parameters": [
                 {
                     "doc": "Socket to set TCP_NODELAY on",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -1036,6 +1080,7 @@
                 },
                 {
                     "doc": "True for no delay",
+                    "is_optional": "False",
                     "name": "no_delay",
                     "types": [
                         "bool"
@@ -1069,6 +1114,7 @@
             "parameters": [
                 {
                     "doc": "Socket to set TCP_QUICKACK on",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -1076,6 +1122,7 @@
                 },
                 {
                     "doc": "False to disable quick ack",
+                    "is_optional": "False",
                     "name": "use_quick_ack",
                     "types": [
                         "bool"
@@ -1109,6 +1156,7 @@
             "parameters": [
                 {
                     "doc": "socket",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -1116,6 +1164,7 @@
                 },
                 {
                     "doc": "timeout in microseconds",
+                    "is_optional": "False",
                     "name": "timeout",
                     "types": [
                         "uint64_t"
@@ -1147,6 +1196,7 @@
             "parameters": [
                 {
                     "doc": "Socket to set reuse address to",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -1154,6 +1204,7 @@
                 },
                 {
                     "doc": "True if reuse",
+                    "is_optional": "False",
                     "name": "reuse",
                     "types": [
                         "bool"
@@ -1187,6 +1238,7 @@
             "parameters": [
                 {
                     "doc": "socket",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -1194,6 +1246,7 @@
                 },
                 {
                     "doc": "timeout in microseconds",
+                    "is_optional": "False",
                     "name": "timeout",
                     "types": [
                         "uint64_t"
@@ -1225,6 +1278,7 @@
             "parameters": [
                 {
                     "doc": "Socket to shutdown connection ow",
+                    "is_optional": "False",
                     "name": "socket",
                     "types": [
                         "Socket"
@@ -1232,6 +1286,7 @@
                 },
                 {
                     "doc": "Shutdown type",
+                    "is_optional": "False",
                     "name": "how",
                     "types": [
                         "ShutdownType"
@@ -1345,12 +1400,11 @@
         "brief": "SDK Socket API documentation",
         "description": "Socket functions.",
         "file": "dmsdk/dlib/socket.h",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "Socket",
         "namespace": "dmSocket",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/dlib/socket.h",
+        "path": "dmsdk/dlib/socket.h",
         "type": "Defold C++"
     }
 }

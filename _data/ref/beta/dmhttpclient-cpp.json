@@ -14,6 +14,7 @@
             "parameters": [
                 {
                     "doc": "http response headers. Must be a null terminated string.",
+                    "is_optional": "False",
                     "name": "header_str",
                     "types": [
                         "char*"
@@ -21,6 +22,7 @@
                 },
                 {
                     "doc": "user data to the callbacks.",
+                    "is_optional": "False",
                     "name": "user_data",
                     "types": [
                         "const void*"
@@ -28,6 +30,7 @@
                 },
                 {
                     "doc": "true if there is no more data",
+                    "is_optional": "False",
                     "name": "end_of_receive",
                     "types": [
                         "bool"
@@ -35,6 +38,7 @@
                 },
                 {
                     "doc": "callback for the http version\n    void (<em>version_cbk)(void</em> user_data, int major, int minor, int status, const char* status_str);",
+                    "is_optional": "False",
                     "name": "version_cbk",
                     "types": [
                         "function"
@@ -42,6 +46,7 @@
                 },
                 {
                     "doc": "callback for each header/value pair\n    void (<em>header_cbk)(void</em> user_data, const char<em> key, const char</em> value);",
+                    "is_optional": "False",
                     "name": "header_cbk",
                     "types": [
                         "function"
@@ -49,6 +54,7 @@
                 },
                 {
                     "doc": "callback to note the start offset of the body data.\n    void (<em>body_cbk)(void</em> user_data, int offset)",
+                    "is_optional": "False",
                     "name": "body_cbk",
                     "types": [
                         "function"
@@ -103,13 +109,12 @@
     "info": {
         "brief": "SDK Http Client API documentation",
         "description": "Http client functions.",
-        "file": "dmsdk/dlib/hash.h",
-        "group": "DEFOLD SDK",
+        "file": "dmsdk/dlib/http_client.h",
         "language": "C++",
         "name": "Http Client",
         "namespace": "dmHttpClient",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/dlib/hash.h",
+        "path": "dmsdk/dlib/http_client.h",
         "type": "Defold C++"
     }
 }

@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: beta
-ref: dmgamesystem-cpp
+ref: sharedlibrary-cpp
 language: C++
-title: API reference (Property)
+title: API reference (Shared Library)
 type: Defold C++
 ---
 {% include anchor_headings.html html=content %}

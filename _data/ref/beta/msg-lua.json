@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "The receiver must be a string in URL-format, a URL object or a hashed string.",
+                    "is_optional": "False",
                     "name": "receiver",
                     "types": [
                         "string",
@@ -21,6 +22,7 @@
                 },
                 {
                     "doc": "The id must be a string or a hashed string.",
+                    "is_optional": "False",
                     "name": "message_id",
                     "types": [
                         "string",
@@ -29,7 +31,8 @@
                 },
                 {
                     "doc": "a lua table with message parameters to send.",
-                    "name": "[message]",
+                    "is_optional": "True",
+                    "name": "message",
                     "types": [
                         "table",
                         "nil"
@@ -76,6 +79,7 @@
             "parameters": [
                 {
                     "doc": "string to create the url from",
+                    "is_optional": "False",
                     "name": "urlstring",
                     "types": [
                         "string"
@@ -107,7 +111,8 @@
             "parameters": [
                 {
                     "doc": "socket of the URL",
-                    "name": "[socket]",
+                    "is_optional": "True",
+                    "name": "socket",
                     "types": [
                         "string",
                         "hash"
@@ -115,7 +120,8 @@
                 },
                 {
                     "doc": "path of the URL",
-                    "name": "[path]",
+                    "is_optional": "True",
+                    "name": "path",
                     "types": [
                         "string",
                         "hash"
@@ -123,7 +129,8 @@
                 },
                 {
                     "doc": "fragment of the URL",
-                    "name": "[fragment]",
+                    "is_optional": "True",
+                    "name": "fragment",
                     "types": [
                         "string",
                         "hash"
@@ -148,12 +155,11 @@
         "brief": "Messaging API documentation",
         "description": "Functions for passing messages and constructing URL objects.",
         "file": "",
-        "group": "SCRIPT",
         "language": "Lua",
         "name": "Message",
         "namespace": "msg",
         "notes": [],
-        "path": "",
+        "path": "script_msg.cpp",
         "type": "Defold Lua"
     }
 }
