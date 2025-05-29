@@ -16845,39 +16845,7 @@ You use the Defold SDK by including the `dmsdk/sdk.h` header file:
 
     #include <dmsdk/sdk.h>
 
-The available SDK functions are documented in our [API reference](https://defold.com/ref/dmExtension/). The SDK contains the following namespaces with functions:
-
-* [Align](https://defold.com/ref/dmAlign/) - Alignment macros. Use for compiler compatibility
-* [Array](https://defold.com/ref/dmArray/) - Templatized array with bounds checking.
-* [Buffer](https://defold.com/ref/dmBuffer/) - Buffer API for data buffers as the main way to communicate between systems. [Lua API](https://defold.com/ref/buffer/) for buffer creation also exists.
-* [Condition Variable](https://defold.com/ref/dmConditionVariable/) - API for platform independent mutex synchronization primitive.
-* [ConfigFile](https://defold.com/ref/dmConfigFile/) - Configuration file access functions. The configuration file is compiled version of the *game.project* file.
-* [Connection Pool](https://defold.com/ref/dmConnectionPool/) - API for a pool of socket connections.
-* [Crypt](https://defold.com/ref/dmCrypt/) - API with cryptographic functions.
-* [DNS](https://defold.com/ref/dmDNS/) - API with DNS functions.
-* [Engine](https://defold.com/ref/dmEngine/) - API with core engine functionality to get handles to config files, the internal web server, game object register etc.
-* [Extension](https://defold.com/ref/dmExtension/) - Functions for creating and controlling engine native extension libraries.
-* [Game Object](https://defold.com/ref/dmGameObject/) - API for manipulating game objects.
-* [Graphics](https://defold.com/ref/dmGraphics/) - Platform specific native graphics functions.
-* [Hash](https://defold.com/ref/dmHash/) - Hash functions.
-* [HID](https://defold.com/ref/dmHid/) - API for generating programmatic input events.
-* [HTTP Client](https://defold.com/ref/dmHttpClient/) - API for interacting with a HTTP clients.
-* [Json](https://defold.com/ref/dmJson/) - API for platform independent parsing of json files.
-* [Log](https://defold.com/ref/dmLog/) - Logging functions.
-* [Math](https://defold.com/ref/dmMath/) - API with mathematical functions.
-* [Mutex](https://defold.com/ref/dmMutex/) - API for platform independent mutex synchronization primitive.
-* [SSL Socket](https://defold.com/ref/dmSSLSocket/) - API for secure socket functions.
-* [Script](https://defold.com/ref/dmScript/) - Built-in scripting functions.
-* [Socket](https://defold.com/ref/dmSocket/) - API for socket functions.
-* [String Functions](https://defold.com/ref/dmStringFunc/) - API for manipulating strings.
-* [Thread](https://defold.com/ref/dmThread/) - API for thread creation.
-* [Time](https://defold.com/ref/dmTime/) - API for universal time and timing functions.
-* [URI](https://defold.com/ref/dmURI/) - API for manipulation of URIs.
-* [Web Server](https://defold.com/ref/dmWebServer/) - API for a simple high-level single-threaded Web server based on `dmHttpServer`.
-* [Shared Library](https://defold.com/ref/sharedlibrary/) - Utility functions for shared library export/import.
-* [Sony vector Math Library](https://defold.com/manuals/assets/Vector_Math_Library-Overview.pdf) - The Sony Vector Math library mainly provides functions used in 3-D graphics for 3-D and 4-D vector operations, matrix operations, and quaternion operations.
-
-The Defold SDK headers are included as a separate `defoldsdk_headers.zip` archive for each Defold [release on GitHub](https://github.com/defold/defold/releases). You can use these headers for code completion in your editor of choice.
+The available SDK functions and namespaces are documented in our [API reference](https://defold.com/ref/overview_cpp). The Defold SDK headers are included as a separate `defoldsdk_headers.zip` archive for each Defold [release on GitHub](https://github.com/defold/defold/releases). You can use these headers for code completion in your editor of choice.
 
 <!-- /manuals/extensions-gradle -->
 
@@ -17201,6 +17169,9 @@ In `game.project`, assign the manifest to `Native Extensions` -> `App Manifest`.
 
 Control which physics engine to use, or select None to exclude physics completely.
 
+## Physics 2d
+
+Select which version of Box2D to use.
 
 ## Rig + Model
 

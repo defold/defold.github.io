@@ -8,6 +8,7 @@ toc:
 - App manifest
 - Applying the manifest
 - Physics
+- Physics 2d
 - Rig + Model
 - Exclude Record
 - Exclude Profiler
@@ -43,6 +44,9 @@ In `game.project`, assign the manifest to `Native Extensions` -> `App Manifest`.
 
 Control which physics engine to use, or select None to exclude physics completely.
 
+## Physics 2d
+
+Select which version of Box2D to use.
 
 ## Rig + Model
 
