@@ -1,5 +1,5 @@
 ---
-brief: When two objects collide, the engine may call the event listener or broad cast messages.
+brief: When two objects collide, the engine will call the event callback or broadcast messages.
 github: https://github.com/defold/doc
 language: en
 layout: manual
@@ -14,7 +14,7 @@ toc:
 
 # Collision messages
 
-When two objects collide, the engine will may send an event to the event callback, or broadcast messages to both objects.
+When two objects collide, the engine will send an event to the event callback or broadcast messages to both objects.
 
 ## Event filtering
 
