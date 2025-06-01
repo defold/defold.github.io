@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: This example shows how to get the size of a sprite at run-time
 category: sprite
 layout: example
+opengraph_image: https://www.defold.com/examples/sprite/size/size_thumb.png
 path: sprite/size
 scripts: size.script
 tags: sprite
+thumbnail: size_thumb.png
 title: Sprite size
+twitter_image: https://www.defold.com/examples/sprite/size/size_thumb.png
 
 ---
 

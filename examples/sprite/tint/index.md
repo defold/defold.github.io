@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: This example shows how tint a sprite at run-time
 category: sprite
 layout: example
+opengraph_image: https://www.defold.com/examples/sprite/tint/bunntint_thumb.png
 path: sprite/tint
 scripts: tint.script
 tags: sprite
+thumbnail: bunntint_thumb.png
 title: Sprite tint
+twitter_image: https://www.defold.com/examples/sprite/tint/bunntint_thumb.png
 
 ---
 

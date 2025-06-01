@@ -3,10 +3,13 @@ author: FlexYourBrain
 brief: This example demonstrates flipping a sprite animation vertically and horizontally.
 category: sprite
 layout: example
+opengraph_image: https://www.defold.com/examples/sprite/flip/flip_thumb.png
 path: sprite/flip
 scripts: flip.script
 tags: sprite
+thumbnail: flip_thumb.png
 title: Flip
+twitter_image: https://www.defold.com/examples/sprite/flip/flip_thumb.png
 
 ---
 

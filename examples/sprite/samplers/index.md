@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: This example shows how to sample from more than one image when drawing a sprite
 category: sprite
 layout: example
+opengraph_image: https://www.defold.com/examples/sprite/samplers/samplers_thumb.png
 path: sprite/samplers
 scripts: multi_sample.script, multi_sample_sprite.fp
 tags: sprite
+thumbnail: samplers_thumb.png
 title: Multiple Sprite Samplers
+twitter_image: https://www.defold.com/examples/sprite/samplers/samplers_thumb.png
 
 ---
 
