@@ -171,6 +171,37 @@
             "type": "MACRO"
         },
         {
+            "brief": "engine exit code",
+            "description": "Engine exit code.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "EXTENSION_APP_EXIT_CODE_NONE",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_APP_EXIT_CODE_REBOOT",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_APP_EXIT_CODE_EXIT",
+                    "type": ""
+                }
+            ],
+            "name": "ExtensionAppExitCode",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
             "brief": "Finalizes an extension app params struct (dealloca...",
             "description": "Finalizes an extension app params struct (deallocates internal memory)",
             "error": "",
@@ -191,6 +222,38 @@
             ],
             "replaces": "",
             "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get the app exit code",
+            "description": "get the app exit code",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ExtensionAppParamsGetAppExitCode",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize",
+                    "is_optional": "False",
+                    "name": "app_params",
+                    "types": [
+                        "dmExtension::AppParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "engine exit code",
+                    "name": "code",
+                    "types": [
+                        "ExtensionAppExitCode"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
