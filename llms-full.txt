@@ -1547,7 +1547,7 @@ The center view shows the currently open file in an editor for that file type. A
 - Zoom: <kbd>Alt + Right button</kbd> (three button mouse) or <kbd>Ctrl + Mouse button</kbd> (one button). If your mouse has a scroll wheel, it can be used to zoom.
 - Rotate in 3D: <kbd>Ctrl + left mouse button</kbd>.
 
-There is a toolbar in the top right corner of the scene view where you find object manipulation tools: *Move*, *Rotate* and *Scale* as well as *Camera Perspective* and *Visibility Filters*.
+There is a toolbar in the top right corner of the scene view where you find object manipulation tools: *Move*, *Rotate* and *Scale* as well as *2D Mode*, *Camera Perspective* and *Visibility Filters*.
 
 ![toolbar](https://defold.com/manuals/images/editor/toolbar.png)
 
@@ -4438,7 +4438,10 @@ You need to populate an atlas with images or animations before you can use it as
 Make sure that you have added your images to the project (drag and drop image files to the right location in the *Assets* browser)
 
 Adding single images
-: <kbd>Right click</kbd> the root Atlas entry in the *Outline* pane.
+
+: Drag and drop images from the *Asset* pane to the editor view.
+  
+  Alternatively, <kbd>Right click</kbd> the root Atlas entry in the *Outline* pane.
 
   Select <kbd>Add Images</kbd> from the pop up context menu to add single images.
 
@@ -4457,7 +4460,9 @@ Adding flipbook animations
 
   A new, empty, animation group with a default name ("New Animation") is added to the atlas.
 
-  <kbd>Right click</kbd> then new group and select <kbd>Add Images</kbd> from the context menu.
+  Drag and drop images from the *Asset* pane to the editor view to add them to the currently selected group.
+  
+  Alternatively, <kbd>Right click</kbd> the new group and select <kbd>Add Images</kbd> from the context menu.
 
   A dialog opens from which you can find and select the images you want to add to the animation group.
 
@@ -4509,7 +4514,7 @@ Size
 : The width and height of the image (read-only).
 
 Pivot
-: The pivot point of the image (in units). Top left is (0,0) and bottom right is (1,1). Default is (0.5, 0.5). The pivot may be outside of the 0-1 range. The pivot point is where the image will be centered when used in e.g. a sprite.
+: The pivot point of the image (in units). Top left is (0,0) and bottom right is (1,1). Default is (0.5, 0.5). The pivot may be outside of the 0-1 range. The pivot point is where the image will be centered when used in e.g. a sprite. You can modify the pivot point by dragging the pivot handle on the editor view. The handle will be visible, only when a single image is selected. Snapping can be enabled on <kbd>Shift</kbd> down while dragging.
 
 Sprite Trim Mode
 : How the sprite is rendered. The default is to render the sprite as a rectangle (Sprite Trim Mode set to Off). If the sprite contains a lot of transparent pixels it may be more efficient to render the sprite as a non rectangular shape using between 4 and 8 vertices. Note that sprite trimming does not work together with slice-9 sprites.
@@ -8145,7 +8150,9 @@ The resource tree in a Defold game is static so any dependencies that you need f
 
 ![dependencies](https://defold.com/manuals/images/gui/dependencies.png)
 
-To add a new dependency, <kbd>right click</kbd> the "Gui" root in the *Outline*, then select <kbd>Add ▸ [type]</kbd> from the popup context menu.
+To add a new dependency, drag and drop it from the *Asset* pane to the editor view.
+
+Alternatively, <kbd>right click</kbd> the "Gui" root in the *Outline*, then select <kbd>Add ▸ [type]</kbd> from the popup context menu.
 
 You can also <kbd>right click</kbd> on the folder icon for the type you want to add and select <kbd>Add ▸ [type]</kbd>.
 
@@ -9104,12 +9111,8 @@ Defold includes a feature allowing you to create a convex hull shape from three 
 2. Edit the file manually using a text editor or external tool (see below)
 3. Instead of adding shapes to the collision object component, set the *Collision Shape* property to the *convex shape* file.
 
-<div class='sidenote' markdown='1'>
-The shape will not be drawn in the editor. You can [enable Physics debugging](#manuals:debugging) at runtime to see the shape.
-</div>
-
 ### File Format
-The convex hull file format uses the same data format as all other Defold files, ie the protobuf text format. A convex hull shape defines the points of the hull in a counter clockwise order. Example:
+The convex hull file format uses the same data format as all other Defold files, ie the protobuf text format. A convex hull shape defines the points of the hull. In 2D physics, the points should be provided in a counter clockwise order. An abstract point cloud is used in 3D physics mode. 2D example:
 
 ```
 shape_type: TYPE_HULL
@@ -9193,6 +9196,10 @@ Collision shapes in 3D physics can be rotated around all axis.
 
 ## Rotating collision shapes in 2D physics
 Collision shapes in 2D physics can only be rotated around the z-axis. Rotation around the x or y axis will yield incorrect results and should be avoided, even when rotating 180 degrees to essentially flip the shape along the x or y axis. To flip a physics shape it is recommended to use [`physics.set_hlip(url, flip)`](https://defold.com/ref/stable/physics/?#physics.set_hflip:url-flip) and [`physics.set_vlip(url, flip)`](https://defold.com/ref/stable/physics/?#physics.set_vflip:url-flip).
+
+
+# Debugging
+You can [enable Physics debugging](#manuals:debugging) to see the collision shapes at runtime.
 
 <!-- /manuals/physics-groups -->
 
@@ -10573,6 +10580,8 @@ Defold exposes properties for game objects, components and GUI nodes that can be
 * User defined script component properties defined in Lua scripts (see [Script properties documentation](#manuals:script-properties) for details)
 * GUI node properties
 * Shader constants defined in shaders and material files (see [Material documentation](#manuals:material) for details)
+
+Numeric properties display a drag handle when you hover over their input field. You can increase/decrease their value, by dragging the handle right/left or up/down respectively.
 
 Depending on where a property is found, you access it via a generic function, or a property-specific function. Many of the properties can be automatically animated. Animating properties through the built-in system is highly recommended over manipulating the properties yourself (inside an `update()` function), both for performance reasons as well as convenience.
 
