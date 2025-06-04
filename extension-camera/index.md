@@ -11,7 +11,6 @@ toc:
 - FAQ
 - How do I reset macOS camera permission?
 - Source code
-- API reference
 ---
 
 # Defold camera extension API documentation
@@ -46,6 +45,5 @@ tccutil reset Camera
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-camera)
-
-
-## API reference[API Reference - camera](/extension-camera/camera_api)
+## API reference
+[API Reference - camera](/extension-camera/camera_api)
