@@ -84,4 +84,6 @@ The source code is available on [GitHub](https://github.com/defold/extension-web
 
 ## API reference
 
-https://defold.com/extension-websocket/api/[API Reference - websocket](/extension-websocket/websocket_api)
+https://defold.com/extension-websocket/api/
+## API reference
+[API Reference - websocket](/extension-websocket/websocket_api)
