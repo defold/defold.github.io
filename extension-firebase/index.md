@@ -11,7 +11,6 @@ toc:
 - 2. Defold setup
 - Usage
 - Source code
-- API reference
 ---
 
 # Defold Firebase documentation
@@ -126,7 +125,5 @@ It is possible to override the values within GoogleService-Info.plist/google-ser
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-firebase)
-
-
-
-## API reference[API Reference - firebase](/extension-firebase/firebase_api)
+## API reference
+[API Reference - firebase](/extension-firebase/firebase_api)
