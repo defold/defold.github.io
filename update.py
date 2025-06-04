@@ -710,7 +710,7 @@ def process_extension(extension_name, download = False):
             api_name = api.get("name", "")
 
             # append links to api reference to the end of the file
-            append_to_file(index, "[API Reference - {}](/{}/{}_api)\n".format(api_name, extension_dir, api_name))
+            append_to_file(index, "\n## API reference\n[API Reference - {}](/{}/{}_api)\n".format(api_name, extension_dir, api_name))
 
             info["group"] = "EXTENSIONS"
             info["description"] = api.get("desc", "")
