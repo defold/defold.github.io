@@ -13,7 +13,6 @@ toc:
 - Visibility and positioning control
 - Running JavaScript
 - Source code
-- API reference
 ---
 
 # WebViews
@@ -272,7 +271,5 @@ Now we know if a form button was pressed from inside the webview and the player 
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-webview)
-
 ## API reference
-
-https://defold.com/extension-webview/api/[API Reference - webview](/extension-webview/webview_api)
+[API Reference - webview](/extension-webview/webview_api)
