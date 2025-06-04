@@ -11,7 +11,6 @@ toc:
 - Usage
 - Example
 - Source code
-- API reference
 ---
 
 # Defold Steam extension API documentation
@@ -68,6 +67,5 @@ end
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-steam)
-
-
-## API reference[API Reference - steam](/extension-steam/steam_api)
+## API reference
+[API Reference - steam](/extension-steam/steam_api)
