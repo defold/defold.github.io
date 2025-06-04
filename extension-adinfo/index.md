@@ -12,7 +12,6 @@ toc:
 - register_for_attribution
 - Example
 - Source code
-- API reference
 ---
 
 # Defold advertising info extension API documentation
@@ -65,6 +64,5 @@ end
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-adinfo)
-
-
-## API reference[API Reference - adinfo](/extension-adinfo/adinfo_api)
+## API reference
+[API Reference - adinfo](/extension-adinfo/adinfo_api)
