@@ -23,7 +23,6 @@ toc:
 - Example
 - Source code
 - API
-- API reference
 ---
 
 # Defold Poki SDK extension API documentation
@@ -180,6 +179,5 @@ poki_sdk.capture_error(error_string) -- in JS it's PokiSDK.captureError(error_st
 poki_sdk.shareable_url(params, callback) -- in JS it's PokiSDK.shareableURL({}).then(url => {})
 local value = poki_sdk.get_url_param(key) -- in JS it's PokiSDK.getURLParam('id')
 ```
-
-
-## API reference[API Reference - poki_sdk](/extension-poki-sdk/poki_sdk_api)
+## API reference
+[API Reference - poki_sdk](/extension-poki-sdk/poki_sdk_api)
