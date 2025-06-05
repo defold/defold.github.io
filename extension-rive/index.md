@@ -26,7 +26,6 @@ toc:
 - Bone hierarchy
 - Getting and setting Text Runs
 - Source code
-- API reference
 ---
 
 # Rive animation
@@ -368,6 +367,5 @@ Note! You need to export all the names from within Rive to use these functions:
 
 ## Source code
 The source code is available on [GitHub](https://github.com/defold/extension-rive)
-
-
-## API reference[API Reference - rive](/extension-rive/rive_api)
+## API reference
+[API Reference - rive](/extension-rive/rive_api)
