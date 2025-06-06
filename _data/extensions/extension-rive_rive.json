@@ -448,6 +448,36 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Replace an asset in runtime.",
+            "examples": "",
+            "name": "rive.riv_swap_asset",
+            "parameters": [
+                {
+                    "doc": "The Rive (.rivc) path. E.g. \"/path/to/file.rivc\"",
+                    "name": "riv_path",
+                    "types": [
+                        "string,hash"
+                    ]
+                },
+                {
+                    "doc": "The name of the FileAsset inside the .riv file",
+                    "name": "asset_name",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The name of the asset file to replace with. E.g. \"/path/to/file.png\"",
+                    "name": "asset_path",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Creates a ViewModelInstanceRuntime",
             "examples": "",
             "name": "rive.databind.create_view_model_instance_runtime",
