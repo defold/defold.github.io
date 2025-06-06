@@ -6,7 +6,7 @@
             "name": "rive.play_anim",
             "parameters": [
                 {
-                    "doc": "The Rive model for which to play an animation",
+                    "doc": "The Rive model component for which to play an animation",
                     "name": "url",
                     "types": [
                         "url"
@@ -112,7 +112,7 @@
             "name": "rive.play_state_machine",
             "parameters": [
                 {
-                    "doc": "The Rive model for which to play an animation",
+                    "doc": "The Rive model component for which to play an animation",
                     "name": "url",
                     "types": [
                         "url"
@@ -181,7 +181,7 @@
             "name": "rive.cancel",
             "parameters": [
                 {
-                    "doc": "The Rive model for which to cancel the animation",
+                    "doc": "The Rive model component for which to cancel the animation",
                     "name": "url",
                     "types": [
                         "url"
@@ -197,7 +197,7 @@
             "name": "rive.get_go",
             "parameters": [
                 {
-                    "doc": "The Rive model to query",
+                    "doc": "The Rive model component to query",
                     "name": "url",
                     "types": [
                         "url"
@@ -220,7 +220,7 @@
             "name": "rive.pointer_move",
             "parameters": [
                 {
-                    "doc": "The Rive model",
+                    "doc": "The Rive model component",
                     "name": "url",
                     "types": [
                         "url"
@@ -250,7 +250,7 @@
             "name": "rive.pointer_up",
             "parameters": [
                 {
-                    "doc": "The Rive model",
+                    "doc": "The Rive model component",
                     "name": "url",
                     "types": [
                         "url"
@@ -280,7 +280,7 @@
             "name": "rive.pointer_down",
             "parameters": [
                 {
-                    "doc": "The Rive model",
+                    "doc": "The Rive model component",
                     "name": "url",
                     "types": [
                         "url"
@@ -310,7 +310,7 @@
             "name": "rive.get_text_run",
             "parameters": [
                 {
-                    "doc": "The Rive model for which to get the text run from",
+                    "doc": "The Rive model component for which to get the text run from",
                     "name": "url",
                     "types": [
                         "url"
@@ -340,7 +340,7 @@
             "name": "rive.set_text_run",
             "parameters": [
                 {
-                    "doc": "The Rive model for which to set the text run for",
+                    "doc": "The Rive model component for which to set the text run for",
                     "name": "url",
                     "types": [
                         "url"
@@ -385,7 +385,7 @@
             "name": "rive.get_state_machine_input",
             "parameters": [
                 {
-                    "doc": "The Rive model",
+                    "doc": "The Rive model component",
                     "name": "url",
                     "types": [
                         "url"
@@ -415,7 +415,7 @@
             "name": "rive.set_state_machine_input",
             "parameters": [
                 {
-                    "doc": "The Rive model",
+                    "doc": "The Rive model component",
                     "name": "url",
                     "types": [
                         "url"
@@ -446,6 +446,128 @@
             ],
             "returnvalues": [],
             "type": "FUNCTION"
+        },
+        {
+            "description": "Creates a ViewModelInstanceRuntime",
+            "examples": "",
+            "name": "rive.databind.create_view_model_instance_runtime",
+            "parameters": [
+                {
+                    "doc": "The Rive model component",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "The name of the view model to instantiate",
+                    "name": "name",
+                    "types": [
+                        "string, hash"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Releases the previously created ViewModelInstanceRuntime",
+            "examples": "",
+            "name": "rive.databind.destroy_view_model_instance_runtime",
+            "parameters": [
+                {
+                    "doc": "The Rive model component",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "The handle to the ViewModelInstanceRuntime instance",
+                    "name": "handle",
+                    "types": [
+                        "integer"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets the current ViewModelInstanceRuntime",
+            "examples": "",
+            "name": "rive.databind.set_view_model_instance_runtime",
+            "parameters": [
+                {
+                    "doc": "The Rive model component",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "The handle to the ViewModelInstanceRuntime instance",
+                    "name": "handle",
+                    "types": [
+                        "integer"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Gets the current ViewModelInstanceRuntime",
+            "examples": "",
+            "name": "rive.databind.get_view_model_instance_runtime",
+            "parameters": [
+                {
+                    "doc": "The Rive model component",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets properties to the ViewModelInstanceRuntime instance",
+            "examples": "",
+            "name": "rive.databind.set_properties",
+            "parameters": [
+                {
+                    "doc": "The Rive model component",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "The handle to the currently set ViewModelInstanceRuntime instance",
+                    "name": "handle",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "A table of properties, where each key is a Rive \"path\", and the values are mapped to the corresponding property value type.",
+                    "name": "properties",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Functions and constants for interacting with Rive data bindings",
+            "examples": "",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "TABLE"
         }
     ],
     "info": {
