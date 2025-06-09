@@ -276,6 +276,3 @@ Make sure you test the example and you integration using test Ad units (see [ini
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-admob)
-
-
-## API reference[API Reference - admob](/extension-admob/admob_api)

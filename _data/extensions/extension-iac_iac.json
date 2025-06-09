@@ -1,0 +1,52 @@
+{
+    "elements": [
+        {
+            "description": "Sets the listener function for inter-app communication events.",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code>  <span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">iac_listener</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">payload</span><span class=\"p\">,</span> <span class=\"nb\">type</span><span class=\"p\">)</span>\n       <span class=\"kr\">if</span> <span class=\"nb\">type</span> <span class=\"o\">==</span> <span class=\"n\">iac</span><span class=\"p\">.</span><span class=\"n\">TYPE_INVOCATION</span> <span class=\"kr\">then</span>\n           <span class=\"c1\">-- This was an invocation</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">payload</span><span class=\"p\">.</span><span class=\"n\">origin</span><span class=\"p\">)</span> <span class=\"c1\">-- origin may be empty string if it could not be resolved</span>\n           <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">payload</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">)</span>\n       <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span>\n\n  <span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n       <span class=\"n\">iac</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"n\">iac_listener</span><span class=\"p\">)</span>\n  <span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "iac.set_listener",
+            "parameters": [
+                {
+                    "doc": "The current object.",
+                    "name": "self",
+                    "types": [
+                        "object"
+                    ]
+                },
+                {
+                    "doc": "The iac payload.",
+                    "name": "payload",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "The type of iac, an iac.TYPE_ enumeration. It can be one of the predefined constants below\n- `iac.TYPE_INVOCATION`",
+                    "name": "type",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "iac type",
+            "examples": "",
+            "name": "TYPE_INVOCATION",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        }
+    ],
+    "info": {
+        "api": "extension-iac/iac_api",
+        "brief": "iac",
+        "description": "Functions and constants for doing inter-app communication. Supported on iOS and Android. [icon:ios] [icon:android]",
+        "group": "EXTENSIONS",
+        "language": "Lua",
+        "name": "extension-iac",
+        "namespace": "iac",
+        "type": "Extension"
+    }
+}
