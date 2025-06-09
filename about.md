@@ -27,7 +27,7 @@ Managing a large product such as Defold requires a great deal of organisation. T
 * Owner - [The Defold Foundation](/foundation) owns the Defold brand and product and is the legal entity representing Defold at all times.
 * Strategic decisions - The board of the Defold Foundation is responsible for making all strategic decisions.
 * Operations - The Defold Foundation has no employees of its own to execute the decisions made by the board. Instead the foundation relies on a number of subcontractors for day to day operations:
-  * Finance - [Krona Stockholm](https://www.kronastockholm.se/)
+  * Finance - [View Ledger](https://viewgroup.se/)
   * Public audit - [Grant Thornton](https://www.grantthornton.se/)
   * Legal advisor - [Lawyer.se](https://lawyer.se/)
   * Product development, marketing, support and sales - [Refold AB](https://www.refold.io/) is owned by members of the Defold team and is contracted to perform most of the day to day work on the Defold product.
