@@ -32,6 +32,15 @@ Select `Project->Fetch Libraries` once you have added the version to `game.proje
 
 ### Shop Builder API
 
+The Shop Builder API provides a third-party solution for implementing the server side for your store interface. Use the API to list sellable items, create and pay for orders and track the order status. A typical payment flow looks like this:
+
+1. Authenticate the user (see below)
+2. List sellable items using `shop.get_sellable_items()`
+3. Create an order using `shop.create_order_with_item()`
+4. Open a payment url for the order to initiate the payment process
+5. Poll for status updates for the order `shop.get_order()`
+
+
 #### Authentication
 
 Most of the Shop Builder API functions require authentication and a valid user token before use. Xsolla provides [many options for user authentication](https://developers.xsolla.com/api/login/overview/#section/Authentication/Getting-a-user-token), ranging from basic username and password authentication to authentication via a social network or publishing platform such as Steam. Developers releasing games via Crazy Games can generate an Xsolla token using the [`crazygames.get_xsolla_user_token()` API function of the Crazy Games for Defold SDK](https://defold.com/extension-crazygames/crazygames_api/#crazygames.get_xsolla_user_token:callback).
