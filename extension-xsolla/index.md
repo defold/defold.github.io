@@ -37,7 +37,7 @@ The Shop Builder API provides a third-party solution for implementing the server
 1. Authenticate the user (see below)
 2. List sellable items using `shop.get_sellable_items()`
 3. Create an order using `shop.create_order_with_item()`
-4. Open a payment url for the order to initiate the payment process
+4. Open a payment url for the order to initiate the payment process `shop.get_payment_url()`
 5. Poll for status updates for the order `shop.get_order()`
 
 
