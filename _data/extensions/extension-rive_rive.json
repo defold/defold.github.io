@@ -467,10 +467,26 @@
                     ]
                 },
                 {
-                    "doc": "The name of the asset file to replace with. E.g. \"/path/to/file.png\"",
-                    "name": "asset_path",
+                    "doc": "A table of options containing",
+                    "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "The path of the asset file to replace with. E.g. \"/path/to/file.png\"",
+                            "name": "path",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "The payload of the asset file to replace with. E.g. a .png binary file. Takes precedence over the `path` option.",
+                            "name": "payload",
+                            "types": [
+                                "string"
+                            ]
+                        }
+                    ],
                     "types": [
-                        "string"
+                        "table"
                     ]
                 }
             ],
