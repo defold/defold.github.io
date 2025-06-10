@@ -27,6 +27,7 @@
             "parameters": [
                 {
                     "doc": "The message",
+                    "is_optional": "False",
                     "name": "message",
                     "types": [
                         "void*"
@@ -50,6 +51,7 @@
             "parameters": [
                 {
                     "doc": "hash of type name",
+                    "is_optional": "False",
                     "name": "hash",
                     "types": [
                         "dmhash_t"
@@ -81,6 +83,7 @@
             "parameters": [
                 {
                     "doc": "Input buffer",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "const void*"
@@ -88,6 +91,7 @@
                 },
                 {
                     "doc": "Input buffer size in bytes",
+                    "is_optional": "False",
                     "name": "buffer_size",
                     "types": [
                         "uint32_t"
@@ -95,6 +99,7 @@
                 },
                 {
                     "doc": "DDF descriptor",
+                    "is_optional": "False",
                     "name": "desc",
                     "types": [
                         "dmDDF::Descriptor*"
@@ -102,6 +107,7 @@
                 },
                 {
                     "doc": "(out) Destination pointer to message",
+                    "is_optional": "False",
                     "name": "message",
                     "types": [
                         "void**"
@@ -133,6 +139,7 @@
             "parameters": [
                 {
                     "doc": "Input buffer",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "const void*"
@@ -140,6 +147,7 @@
                 },
                 {
                     "doc": "Input buffer size in bytes",
+                    "is_optional": "False",
                     "name": "buffer_size",
                     "types": [
                         "uint32_t"
@@ -147,6 +155,7 @@
                 },
                 {
                     "doc": "DDF descriptor",
+                    "is_optional": "False",
                     "name": "desc",
                     "types": [
                         "dmDDF::Descriptor*"
@@ -154,6 +163,7 @@
                 },
                 {
                     "doc": "(out) Destination pointer to message",
+                    "is_optional": "False",
                     "name": "message",
                     "types": [
                         "void**"
@@ -161,6 +171,7 @@
                 },
                 {
                     "doc": "options, eg dmDDF::OPTION_OFFSET_POINTERS",
+                    "is_optional": "False",
                     "name": "options",
                     "types": [
                         "uint32_t"
@@ -168,6 +179,7 @@
                 },
                 {
                     "doc": "(out) loaded message size",
+                    "is_optional": "False",
                     "name": "size",
                     "types": [
                         "uint32_t*"
@@ -199,6 +211,7 @@
             "parameters": [
                 {
                     "doc": "Input buffer",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "const void*"
@@ -206,6 +219,7 @@
                 },
                 {
                     "doc": "Input buffer size in bytes",
+                    "is_optional": "False",
                     "name": "buffer_size",
                     "types": [
                         "uint32_t"
@@ -213,6 +227,7 @@
                 },
                 {
                     "doc": "(out) Destination pointer to message",
+                    "is_optional": "False",
                     "name": "message",
                     "types": [
                         "T**"
@@ -244,6 +259,7 @@
             "parameters": [
                 {
                     "doc": "File name",
+                    "is_optional": "False",
                     "name": "file_name",
                     "types": [
                         "const char*"
@@ -251,6 +267,7 @@
                 },
                 {
                     "doc": "DDF descriptor",
+                    "is_optional": "False",
                     "name": "desc",
                     "types": [
                         "dmDDF::Descriptor*"
@@ -258,6 +275,7 @@
                 },
                 {
                     "doc": "(out) Destination pointer to message",
+                    "is_optional": "False",
                     "name": "message",
                     "types": [
                         "void**"
@@ -290,7 +308,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "If the message was loaded with the flag dmDDF::OPT...",
@@ -304,6 +322,7 @@
             "parameters": [
                 {
                     "doc": "DDF descriptor",
+                    "is_optional": "False",
                     "name": "desc",
                     "types": [
                         "dmDDF::Descriptor*"
@@ -311,6 +330,7 @@
                 },
                 {
                     "doc": "(int/out) The message to patch pointers in",
+                    "is_optional": "False",
                     "name": "message",
                     "types": [
                         "void*"
@@ -393,6 +413,7 @@
             "parameters": [
                 {
                     "doc": "Message",
+                    "is_optional": "False",
                     "name": "message",
                     "types": [
                         "const void*"
@@ -400,6 +421,7 @@
                 },
                 {
                     "doc": "DDF descriptor",
+                    "is_optional": "False",
                     "name": "desc",
                     "types": [
                         "dmDDF::Descriptor*"
@@ -407,6 +429,7 @@
                 },
                 {
                     "doc": "Buffer to save to",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "dmArray<uint8_t>&"
@@ -429,13 +452,13 @@
     ],
     "info": {
         "brief": "SDK DDF (Defold Data Format) API documentation",
-        "description": "<span class=\"file\"><dmsdk/ddf/ddf.h></span>",
-        "file": "",
+        "description": "[file:<dmsdk/ddf/ddf.h>]",
+        "file": "dmsdk/ddf/ddf.h",
         "language": "C++",
         "name": "Ddf",
         "namespace": "dmDDF",
         "notes": [],
-        "path": "",
+        "path": "dmsdk/ddf/ddf.h",
         "type": "Defold C++"
     }
 }

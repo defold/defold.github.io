@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: stable
-ref: sharedlibrary-lua
-language: Lua
+ref: sharedlibrary-cpp
+language: C++
 title: API reference (Shared Library)
-type: Defold Lua
+type: Defold C++
 ---
 {% include anchor_headings.html html=content %}

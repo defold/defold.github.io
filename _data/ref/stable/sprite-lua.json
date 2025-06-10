@@ -27,6 +27,7 @@
             "parameters": [
                 {
                     "doc": "the current tile of the sprite",
+                    "is_optional": "False",
                     "name": "current_tile",
                     "types": [
                         "number"
@@ -34,6 +35,7 @@
                 },
                 {
                     "doc": "id of the animation that was completed",
+                    "is_optional": "False",
                     "name": "id",
                     "types": [
                         "hash"
@@ -117,6 +119,7 @@
             "parameters": [
                 {
                     "doc": "the id of the animation to play",
+                    "is_optional": "False",
                     "name": "id",
                     "types": [
                         "hash"
@@ -200,6 +203,7 @@
             "parameters": [
                 {
                     "doc": "the sprite that should play the animation",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -209,6 +213,7 @@
                 },
                 {
                     "doc": "hashed id of the animation to play",
+                    "is_optional": "False",
                     "name": "id",
                     "types": [
                         "string",
@@ -217,14 +222,16 @@
                 },
                 {
                     "doc": "function to call when the animation has completed.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>message_id</code></dt>\n<dd><span class=\"type\">hash</span> The name of the completion message, <code>\"animation_done\"</code>.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">table</span> Information about the completion:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>current_tile</code> - the current tile of the sprite.</li>\n<li><span class=\"type\">hash</span> <code>id</code> - id of the animation that was completed.</li>\n</ul>\n<dl>\n<dt><code>sender</code></dt>\n<dd><span class=\"type\">url</span> The invoker of the callback: the sprite component.</dd>\n</dl>",
-                    "name": "[complete_function]",
+                    "is_optional": "True",
+                    "name": "complete_function",
                     "types": [
                         "function(self, message_id, message, sender)"
                     ]
                 },
                 {
                     "doc": "optional table with properties:\n<dl>\n<dt><code>offset</code></dt>\n<dd><span class=\"type\">number</span> the normalized initial value of the animation cursor when the animation starts playing.</dd>\n<dt><code>playback_rate</code></dt>\n<dd><span class=\"type\">number</span> the rate with which the animation will be played. Must be positive.</dd>\n</dl>",
-                    "name": "[play_properties]",
+                    "is_optional": "True",
+                    "name": "play_properties",
                     "types": [
                         "table"
                     ]
@@ -247,6 +254,7 @@
             "parameters": [
                 {
                     "doc": "the sprite that should flip its animations",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -256,6 +264,7 @@
                 },
                 {
                     "doc": "<code>true</code> if the sprite should flip its animations, <code>false</code> if not",
+                    "is_optional": "False",
                     "name": "flip",
                     "types": [
                         "boolean"
@@ -279,6 +288,7 @@
             "parameters": [
                 {
                     "doc": "the sprite that should flip its animations",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -288,6 +298,7 @@
                 },
                 {
                     "doc": "<code>true</code> if the sprite should flip its animations, <code>false</code> if not",
+                    "is_optional": "False",
                     "name": "flip",
                     "types": [
                         "boolean"
@@ -304,12 +315,11 @@
         "brief": "Sprite API documentation",
         "description": "Sprite API documentation",
         "file": "",
-        "group": "COMPONENTS",
         "language": "Lua",
         "name": "Sprite",
         "namespace": "sprite",
         "notes": [],
-        "path": "",
+        "path": "../../proto/gamesys/sprite_ddf.proto",
         "type": "Defold Lua"
     }
 }

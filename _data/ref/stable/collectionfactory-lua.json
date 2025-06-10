@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "the collection factory component to be used",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -21,28 +22,32 @@
                 },
                 {
                     "doc": "position to assign to the newly spawned collection",
-                    "name": "[position]",
+                    "is_optional": "True",
+                    "name": "position",
                     "types": [
                         "vector3"
                     ]
                 },
                 {
                     "doc": "rotation to assign to the newly spawned collection",
-                    "name": "[rotation]",
+                    "is_optional": "True",
+                    "name": "rotation",
                     "types": [
                         "quaternion"
                     ]
                 },
                 {
                     "doc": "table of script properties to propagate to any new game object instances",
-                    "name": "[properties]",
+                    "is_optional": "True",
+                    "name": "properties",
                     "types": [
                         "table"
                     ]
                 },
                 {
                     "doc": "uniform scaling to apply to the newly spawned collection (must be greater than 0).",
-                    "name": "[scale]",
+                    "is_optional": "True",
+                    "name": "scale",
                     "types": [
                         "number",
                         "vector3"
@@ -74,7 +79,8 @@
             "parameters": [
                 {
                     "doc": "the collection factory component to get status from",
-                    "name": "[url]",
+                    "is_optional": "True",
+                    "name": "url",
                     "types": [
                         "string",
                         "hash",
@@ -107,7 +113,8 @@
             "parameters": [
                 {
                     "doc": "the collection factory component to load",
-                    "name": "[url]",
+                    "is_optional": "True",
+                    "name": "url",
                     "types": [
                         "string",
                         "hash",
@@ -116,7 +123,8 @@
                 },
                 {
                     "doc": "function to call when resources are loaded.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>url</code></dt>\n<dd><span class=\"type\">url</span> url of the collection factory component</dd>\n<dt><code>result</code></dt>\n<dd><span class=\"type\">boolean</span> True if resource were loaded successfully</dd>\n</dl>",
-                    "name": "[complete_function]",
+                    "is_optional": "True",
+                    "name": "complete_function",
                     "types": [
                         "function(self, url, result)"
                     ]
@@ -141,7 +149,8 @@
             "parameters": [
                 {
                     "doc": "the collection factory component",
-                    "name": "[url]",
+                    "is_optional": "True",
+                    "name": "url",
                     "types": [
                         "string",
                         "hash",
@@ -150,7 +159,8 @@
                 },
                 {
                     "doc": "the path to the new prototype, or <code>nil</code>",
-                    "name": "[prototype]",
+                    "is_optional": "True",
+                    "name": "prototype",
                     "types": [
                         "string",
                         "nil"
@@ -219,7 +229,8 @@
             "parameters": [
                 {
                     "doc": "the collection factory component to unload",
-                    "name": "[url]",
+                    "is_optional": "True",
+                    "name": "url",
                     "types": [
                         "string",
                         "hash",
@@ -237,12 +248,11 @@
         "brief": "Collection factory API documentation",
         "description": "Functions for controlling collection factory components which are\nused to dynamically spawn collections into the runtime.",
         "file": "",
-        "group": "COMPONENTS",
         "language": "Lua",
         "name": "Collection factory",
         "namespace": "collectionfactory",
         "notes": [],
-        "path": "",
+        "path": "scripts/script_collection_factory.cpp",
         "type": "Defold Lua"
     }
 }

@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "context handle",
+                    "is_optional": "False",
                     "name": "keyboard",
                     "types": [
                         "dmHID::HContext"
@@ -19,6 +20,7 @@
                 },
                 {
                     "doc": "The character (unicode)",
+                    "is_optional": "False",
                     "name": "chr",
                     "types": [
                         "int"
@@ -42,6 +44,7 @@
             "parameters": [
                 {
                     "doc": "device handle",
+                    "is_optional": "False",
                     "name": "device",
                     "types": [
                         "dmHID::HTouchDevice"
@@ -49,6 +52,7 @@
                 },
                 {
                     "doc": "x-coordinate of the position",
+                    "is_optional": "False",
                     "name": "x",
                     "types": [
                         "int32_t"
@@ -56,6 +60,7 @@
                 },
                 {
                     "doc": "y-coordinate of the position",
+                    "is_optional": "False",
                     "name": "y",
                     "types": [
                         "int32_t"
@@ -63,6 +68,7 @@
                 },
                 {
                     "doc": "identifier of touch",
+                    "is_optional": "False",
                     "name": "id",
                     "types": [
                         "uint32_t"
@@ -70,6 +76,7 @@
                 },
                 {
                     "doc": "phase of touch",
+                    "is_optional": "False",
                     "name": "phase",
                     "types": [
                         "dmHID::Phase"
@@ -169,7 +176,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "invalid keyboard handle",
@@ -184,7 +191,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "invalid mouse handle",
@@ -199,7 +206,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "invalid touch devicehandle",
@@ -214,7 +221,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "max number of characters",
@@ -229,7 +236,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "Maximum number of gamepad axis supported",
@@ -244,7 +251,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "Maximum number of gamepad buttons supported",
@@ -259,7 +266,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "Maximum number of gamepads supported",
@@ -274,7 +281,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "Maximum number of gamepad hats supported",
@@ -289,7 +296,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "Maximum number of keyboards supported",
@@ -304,7 +311,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "Maximum number of mice supported",
@@ -319,7 +326,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "Maximum number of simultaneous touches supported",
@@ -334,7 +341,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "Maximum number of touch devices supported",
@@ -349,7 +356,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "Contains the current state of a gamepad",
@@ -380,6 +387,7 @@
             "parameters": [
                 {
                     "doc": "context in which to find the gamepad",
+                    "is_optional": "False",
                     "name": "context",
                     "types": [
                         "dmHID::HContext"
@@ -387,6 +395,7 @@
                 },
                 {
                     "doc": "device index",
+                    "is_optional": "False",
                     "name": "index",
                     "types": [
                         "uint8_t"
@@ -418,6 +427,7 @@
             "parameters": [
                 {
                     "doc": "Handle to gamepad",
+                    "is_optional": "False",
                     "name": "gamepad",
                     "types": [
                         "dmHID::HGamepad"
@@ -425,6 +435,7 @@
                 },
                 {
                     "doc": "Platform specific user id data",
+                    "is_optional": "False",
                     "name": "out",
                     "types": [
                         "void**"
@@ -456,6 +467,7 @@
             "parameters": [
                 {
                     "doc": "Gamepad packet",
+                    "is_optional": "False",
                     "name": "packet",
                     "types": [
                         "dmHID::GamepadPacket"
@@ -463,6 +475,7 @@
                 },
                 {
                     "doc": "The requested button",
+                    "is_optional": "False",
                     "name": "button",
                     "types": [
                         "uint32_t"
@@ -494,6 +507,7 @@
             "parameters": [
                 {
                     "doc": "Gamepad packet",
+                    "is_optional": "False",
                     "name": "packet",
                     "types": [
                         "dmHID::GamepadPacket"
@@ -501,6 +515,7 @@
                 },
                 {
                     "doc": "The requested hat index",
+                    "is_optional": "False",
                     "name": "hat",
                     "types": [
                         "uint32_t"
@@ -508,6 +523,7 @@
                 },
                 {
                     "doc": "Hat value out argument",
+                    "is_optional": "False",
                     "name": "out_hat_value",
                     "types": [
                         "uint8_t"
@@ -539,6 +555,7 @@
             "parameters": [
                 {
                     "doc": "gamepad handle",
+                    "is_optional": "False",
                     "name": "gamepad",
                     "types": [
                         "dmHID::HGamepad"
@@ -546,6 +563,7 @@
                 },
                 {
                     "doc": "Gamepad packet out argument",
+                    "is_optional": "False",
                     "name": "out_packet",
                     "types": [
                         "dmHID::GamepadPacket"
@@ -577,6 +595,7 @@
             "parameters": [
                 {
                     "doc": "context in which to find the gamepad",
+                    "is_optional": "False",
                     "name": "context",
                     "types": [
                         "dmHID::HContext"
@@ -584,6 +603,7 @@
                 },
                 {
                     "doc": "device index",
+                    "is_optional": "False",
                     "name": "index",
                     "types": [
                         "uint8_t"
@@ -615,6 +635,7 @@
             "parameters": [
                 {
                     "doc": "context in which to find the gamepad",
+                    "is_optional": "False",
                     "name": "context",
                     "types": [
                         "dmHID::HContext"
@@ -622,6 +643,7 @@
                 },
                 {
                     "doc": "device index",
+                    "is_optional": "False",
                     "name": "index",
                     "types": [
                         "uint8_t"
@@ -653,6 +675,7 @@
             "parameters": [
                 {
                     "doc": "Mouse packet",
+                    "is_optional": "False",
                     "name": "packet",
                     "types": [
                         "dmHID::MousePacket*"
@@ -660,6 +683,7 @@
                 },
                 {
                     "doc": "The requested button",
+                    "is_optional": "False",
                     "name": "button",
                     "types": [
                         "dmHID::MouseButton"
@@ -691,6 +715,7 @@
             "parameters": [
                 {
                     "doc": "context from which to retrieve the packet",
+                    "is_optional": "False",
                     "name": "mouse",
                     "types": [
                         "dmHID::HMouse"
@@ -698,6 +723,7 @@
                 },
                 {
                     "doc": "Mouse packet out argument",
+                    "is_optional": "False",
                     "name": "out_packet",
                     "types": [
                         "dmHID::MousePacket*"
@@ -729,6 +755,7 @@
             "parameters": [
                 {
                     "doc": "context in which to find the gamepad",
+                    "is_optional": "False",
                     "name": "context",
                     "types": [
                         "dmHID::HContext"
@@ -736,6 +763,7 @@
                 },
                 {
                     "doc": "device index",
+                    "is_optional": "False",
                     "name": "index",
                     "types": [
                         "uint8_t"
@@ -1566,6 +1594,7 @@
             "parameters": [
                 {
                     "doc": "device handle",
+                    "is_optional": "False",
                     "name": "gamepad",
                     "types": [
                         "dmHID::HGamepad"
@@ -1573,6 +1602,7 @@
                 },
                 {
                     "doc": "The requested axis [0, dmHID::MAX_GAMEPAD_AXIS_COUNT)",
+                    "is_optional": "False",
                     "name": "axis",
                     "types": [
                         "uint32_t"
@@ -1580,6 +1610,7 @@
                 },
                 {
                     "doc": "axis value [-1, 1]",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "float"
@@ -1603,6 +1634,7 @@
             "parameters": [
                 {
                     "doc": "device handle",
+                    "is_optional": "False",
                     "name": "gamepad",
                     "types": [
                         "dmHID::HGamepad"
@@ -1610,6 +1642,7 @@
                 },
                 {
                     "doc": "The requested button [0, dmHID::MAX_GAMEPAD_BUTTON_COUNT)",
+                    "is_optional": "False",
                     "name": "button",
                     "types": [
                         "uint32_t"
@@ -1617,6 +1650,7 @@
                 },
                 {
                     "doc": "Button state",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "bool"
@@ -1640,6 +1674,7 @@
             "parameters": [
                 {
                     "doc": "context handle",
+                    "is_optional": "False",
                     "name": "keyboard",
                     "types": [
                         "dmHID::HKeyboard"
@@ -1647,6 +1682,7 @@
                 },
                 {
                     "doc": "The requested key",
+                    "is_optional": "False",
                     "name": "key",
                     "types": [
                         "dmHID::Key"
@@ -1654,6 +1690,7 @@
                 },
                 {
                     "doc": "Key state",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "bool"
@@ -1677,6 +1714,7 @@
             "parameters": [
                 {
                     "doc": "device handle",
+                    "is_optional": "False",
                     "name": "mouse",
                     "types": [
                         "dmHID::HMouse"
@@ -1684,6 +1722,7 @@
                 },
                 {
                     "doc": "The requested button",
+                    "is_optional": "False",
                     "name": "button",
                     "types": [
                         "dmHID::MouseButton"
@@ -1691,6 +1730,7 @@
                 },
                 {
                     "doc": "Button state",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "bool"
@@ -1714,6 +1754,7 @@
             "parameters": [
                 {
                     "doc": "device handle",
+                    "is_optional": "False",
                     "name": "mouse",
                     "types": [
                         "dmHID::HMouse"
@@ -1721,6 +1762,7 @@
                 },
                 {
                     "doc": "x-coordinate of the position",
+                    "is_optional": "False",
                     "name": "x",
                     "types": [
                         "int32_t"
@@ -1728,6 +1770,7 @@
                 },
                 {
                     "doc": "y-coordinate of the position",
+                    "is_optional": "False",
                     "name": "y",
                     "types": [
                         "int32_t"
@@ -1751,6 +1794,7 @@
             "parameters": [
                 {
                     "doc": "device handle",
+                    "is_optional": "False",
                     "name": "mouse",
                     "types": [
                         "dmHID::HMouse"
@@ -1758,6 +1802,7 @@
                 },
                 {
                     "doc": "wheel value",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "int32_t"
@@ -1845,12 +1890,11 @@
         "brief": "SDK Hid API documentation",
         "description": "Used to add input to the engine",
         "file": "dmsdk/hid/hid.h",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "Hid",
         "namespace": "dmHid",
         "notes": [],
-        "path": "engine/hid/src/dmsdk/hid/hid.h",
+        "path": "dmsdk/hid/hid.h",
         "type": "Defold C++"
     }
 }

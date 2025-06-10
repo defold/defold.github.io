@@ -1,6 +1,30 @@
 {
     "elements": [
         {
+            "brief": "macro for scope lifetime optional mutex locking",
+            "description": "If mutex is not null, Will lock the mutex and automatically unlock it at the end of the scope.\nSince using threads is optional, we want to make it easy to switch on/off the mutex behavior",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DM_MUTEX_OPTIONAL_SCOPED_LOCK",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Mutex handle to lock, or null.",
+                    "is_optional": "False",
+                    "name": "mutex",
+                    "types": [
+                        "dmMutex::HMutex"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MACRO"
+        },
+        {
             "brief": "macro for scope lifetime Mutex locking",
             "description": "Will lock a Mutex and automatically unlock it at the end of the scope.",
             "error": "",
@@ -12,6 +36,7 @@
             "parameters": [
                 {
                     "doc": "Mutex handle to lock.",
+                    "is_optional": "False",
                     "name": "mutex",
                     "types": [
                         "dmMutex::HMutex"
@@ -35,6 +60,7 @@
             "parameters": [
                 {
                     "doc": "Mutex handle to delete.",
+                    "is_optional": "False",
                     "name": "mutex",
                     "types": [
                         "dmMutex::HMutex"
@@ -73,6 +99,7 @@
             "parameters": [
                 {
                     "doc": "Mutex handle to lock.",
+                    "is_optional": "False",
                     "name": "mutex",
                     "types": [
                         "dmMutex::HMutex"
@@ -119,6 +146,7 @@
             "parameters": [
                 {
                     "doc": "Mutex handle to lock.",
+                    "is_optional": "False",
                     "name": "mutex",
                     "types": [
                         "dmMutex::HMutex"
@@ -150,6 +178,7 @@
             "parameters": [
                 {
                     "doc": "Mutex handle to unlock.",
+                    "is_optional": "False",
                     "name": "mutex",
                     "types": [
                         "dmMutex::HMutex"
@@ -166,12 +195,11 @@
         "brief": "SDK Mutex API documentation",
         "description": "API for platform independent mutex synchronization primitive.",
         "file": "dmsdk/dlib/mutex.h",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "Mutex",
         "namespace": "dmMutex",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/dlib/mutex.h",
+        "path": "dmsdk/dlib/mutex.h",
         "type": "Defold C++"
     }
 }

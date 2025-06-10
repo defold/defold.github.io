@@ -307,6 +307,7 @@
             "parameters": [
                 {
                     "doc": "A persistent buffer of at least 128 bytes.",
+                    "is_optional": "False",
                     "name": "desc",
                     "types": [
                         "void*"
@@ -314,6 +315,7 @@
                 },
                 {
                     "doc": "size of buffer holding desc. in bytes",
+                    "is_optional": "False",
                     "name": "desc_size",
                     "types": [
                         "const char*"
@@ -321,6 +323,7 @@
                 },
                 {
                     "doc": "extension name. human readble. max 16 characters long.",
+                    "is_optional": "False",
                     "name": "name",
                     "types": [
                         "const char*"
@@ -328,6 +331,7 @@
                 },
                 {
                     "doc": "app-init function. May be null",
+                    "is_optional": "False",
                     "name": "app_initialize",
                     "types": [
                         "FExtensionAppInitialize"
@@ -335,6 +339,7 @@
                 },
                 {
                     "doc": "app-final function. May be null",
+                    "is_optional": "False",
                     "name": "app_finalize",
                     "types": [
                         "FExtensionAppFinalize"
@@ -342,6 +347,7 @@
                 },
                 {
                     "doc": "init function. May not be 0",
+                    "is_optional": "False",
                     "name": "initialize",
                     "types": [
                         "FExtensionInitialize"
@@ -349,6 +355,7 @@
                 },
                 {
                     "doc": "finalize function. May not be 0",
+                    "is_optional": "False",
                     "name": "finalize",
                     "types": [
                         "FExtensionFinalize"
@@ -356,6 +363,7 @@
                 },
                 {
                     "doc": "update function. May be null",
+                    "is_optional": "False",
                     "name": "update",
                     "types": [
                         "FExtensionUpdate"
@@ -363,6 +371,7 @@
                 },
                 {
                     "doc": "event callback function. May be null",
+                    "is_optional": "False",
                     "name": "on_event",
                     "types": [
                         "FExtensionOnEvent"
@@ -388,6 +397,7 @@
             "parameters": [
                 {
                     "doc": "An UIApplicationDelegate, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc",
+                    "is_optional": "False",
                     "name": "delegate",
                     "types": [
                         "id<UIApplicationDelegate>"
@@ -437,6 +447,7 @@
             "parameters": [
                 {
                     "doc": "an id<UIApplicationDelegate>",
+                    "is_optional": "False",
                     "name": "delegate",
                     "types": [
                         "void*"
@@ -460,6 +471,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "params",
                     "types": [
                         "ExtensionParams"
@@ -493,6 +505,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "params",
                     "types": [
                         "ExtensionAppParams"
@@ -524,6 +537,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "params",
                     "types": [
                         "ExtensionParams"
@@ -557,6 +571,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "params",
                     "types": [
                         "ExtensionParams"
@@ -588,6 +603,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "params",
                     "types": [
                         "ExtensionAppParams"
@@ -619,6 +635,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "params",
                     "types": [
                         "ExtensionAppParams"
@@ -650,6 +667,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "params",
                     "types": [
                         "ExtensionParams"
@@ -657,6 +675,7 @@
                 },
                 {
                     "doc": "The current event",
+                    "is_optional": "False",
                     "name": "event",
                     "types": [
                         "ExtensionEvent"
@@ -680,6 +699,7 @@
             "parameters": [
                 {
                     "doc": "",
+                    "is_optional": "False",
                     "name": "params",
                     "types": [
                         "ExtensionParams"
@@ -744,6 +764,7 @@
             "parameters": [
                 {
                     "doc": "An UIApplicationDelegate, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc",
+                    "is_optional": "False",
                     "name": "delegate",
                     "types": [
                         "id<UIApplicationDelegate>"
@@ -793,6 +814,7 @@
             "parameters": [
                 {
                     "doc": "an id<UIApplicationDelegate>",
+                    "is_optional": "False",
                     "name": "delegate",
                     "types": [
                         "void*"
@@ -809,12 +831,11 @@
         "brief": "SDK Extension API documentation",
         "description": "Functions for creating and controlling engine native extension libraries.",
         "file": "dmsdk/extension/extension_gen.hpp",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "Extension",
         "namespace": "dmExtension",
         "notes": [],
-        "path": "engine/extension/src/dmsdk/extension/extension_gen.hpp",
+        "path": "dmsdk/extension/extension_gen.hpp",
         "type": "Defold C++"
     }
 }

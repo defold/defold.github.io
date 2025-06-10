@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "the constants",
+                    "is_optional": "False",
                     "name": "constants",
                     "types": [
                         "dmGameSystem::HComponentRenderConstants"
@@ -43,6 +44,7 @@
             "parameters": [
                 {
                     "doc": "the constants",
+                    "is_optional": "False",
                     "name": "constants",
                     "types": [
                         "dmGameSystem::HComponentRenderConstants"
@@ -50,6 +52,7 @@
                 },
                 {
                     "doc": "the hashed name of the constant",
+                    "is_optional": "False",
                     "name": "name_hash",
                     "types": [
                         "dmhash_t"
@@ -83,6 +86,21 @@
             "returnvalues": [],
             "tparams": [],
             "type": "TYPEDEF"
+        },
+        {
+            "brief": "Gui component node type create/destroy context",
+            "description": "Gui component node type create/destroy context",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "CompGuiNodeTypeCtx",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "Used in SetMaterialConstant to set a render consta...",
@@ -134,6 +152,7 @@
             "parameters": [
                 {
                     "doc": "(must not be 0)",
+                    "is_optional": "False",
                     "name": "constants",
                     "types": [
                         "dmGameSystem::HComponentRenderConstants"
@@ -157,6 +176,7 @@
             "parameters": [
                 {
                     "doc": "The unique C++ symbol name",
+                    "is_optional": "False",
                     "name": "symbol",
                     "types": [
                         "C++ symbol name"
@@ -164,6 +184,7 @@
                 },
                 {
                     "doc": "The name of the node type",
+                    "is_optional": "False",
                     "name": "name",
                     "types": [
                         "const char*"
@@ -171,6 +192,7 @@
                 },
                 {
                     "doc": "the create function",
+                    "is_optional": "False",
                     "name": "type_create_fn",
                     "types": [
                         "GuiNodeTypeCreateFunction"
@@ -178,6 +200,7 @@
                 },
                 {
                     "doc": "the destroy function. May be 0",
+                    "is_optional": "False",
                     "name": "type_destroy_fn",
                     "types": [
                         "GuiNodeTypeDestroyFunction"
@@ -187,7 +210,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "MACRO"
         },
         {
             "brief": "set the constants of a render object",
@@ -201,6 +224,7 @@
             "parameters": [
                 {
                     "doc": "the render object",
+                    "is_optional": "False",
                     "name": "ro",
                     "types": [
                         "dmRender::RenderObject*"
@@ -208,6 +232,7 @@
                 },
                 {
                     "doc": "the constants",
+                    "is_optional": "False",
                     "name": "constants",
                     "types": [
                         "dmGameSystem::HComponentRenderConstants"
@@ -218,6 +243,169 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Represents a glyph",
+            "description": "Represents a glyph.\nIf there's an associated image, it is of size width * height * channels.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "The glyph bounding width",
+                    "name": "m_Width",
+                    "type": "float"
+                },
+                {
+                    "doc": "The glyph bounding height",
+                    "name": "m_Height",
+                    "type": "float"
+                },
+                {
+                    "doc": "The glyph image width",
+                    "name": "m_ImageWidth",
+                    "type": "int16_t"
+                },
+                {
+                    "doc": "The glyph image height",
+                    "name": "m_ImageHeight",
+                    "type": "int16_t"
+                },
+                {
+                    "doc": "The glyph image height",
+                    "name": "m_Channels",
+                    "type": "int16_t"
+                },
+                {
+                    "doc": "The advance step of the glyph (in pixels)",
+                    "name": "m_Advance",
+                    "type": "float"
+                },
+                {
+                    "doc": "The left bearing of the glyph (in pixels)",
+                    "name": "m_LeftBearing",
+                    "type": "float"
+                },
+                {
+                    "doc": "The ascent of the glyph. (in pixels)",
+                    "name": "m_Ascent",
+                    "type": "float"
+                },
+                {
+                    "doc": "The descent of the glyph. Positive! (in pixels)",
+                    "name": "m_Descent",
+                    "type": "float"
+                }
+            ],
+            "name": "FontGlyph",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Describes what compression is used for the glyph i...",
+            "description": "Describes what compression is used for the glyph image",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "     No compression",
+                    "name": "FONT_GLYPH_COMPRESSION_NONE",
+                    "type": ""
+                },
+                {
+                    "doc": "  Data is compressed using the deflate() algorithm",
+                    "name": "FONT_GLYPH_COMPRESSION_DEFLATE",
+                    "type": ""
+                }
+            ],
+            "name": "FontGlyphCompression",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Used to retrieve the information of a font.",
+            "description": "Used to retrieve the information of a font.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "m_Size",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "",
+                    "name": "m_Antialias",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "",
+                    "name": "m_ShadowX",
+                    "type": "float"
+                },
+                {
+                    "doc": "",
+                    "name": "m_ShadowY",
+                    "type": "float"
+                },
+                {
+                    "doc": "",
+                    "name": "m_ShadowBlur",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "",
+                    "name": "m_ShadowAlpha",
+                    "type": "float"
+                },
+                {
+                    "doc": "",
+                    "name": "m_Alpha",
+                    "type": "float"
+                },
+                {
+                    "doc": "",
+                    "name": "m_OutlineAlpha",
+                    "type": "float"
+                },
+                {
+                    "doc": "",
+                    "name": "m_OutlineWidth",
+                    "type": "float"
+                }
+            ],
+            "name": "FontInfo",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Handle to font resource",
+            "description": "Handle to font resource",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FontResource",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "Destroys a render constants container",
@@ -231,6 +419,7 @@
             "parameters": [
                 {
                     "doc": "the constants",
+                    "is_optional": "False",
                     "name": "constants",
                     "types": [
                         "dmGameSystem::HComponentRenderConstants"
@@ -238,6 +427,7 @@
                 },
                 {
                     "doc": "the hashed name of the property",
+                    "is_optional": "False",
                     "name": "name_hash",
                     "types": [
                         "dmhash_t"
@@ -245,6 +435,7 @@
                 },
                 {
                     "doc": "the pointer where to store the constant",
+                    "is_optional": "False",
                     "name": "out_constant",
                     "types": [
                         "dmRender::Constant**"
@@ -276,6 +467,7 @@
             "parameters": [
                 {
                     "doc": "the constants",
+                    "is_optional": "False",
                     "name": "constants",
                     "types": [
                         "dmGameSystem::HComponentRenderConstants"
@@ -283,6 +475,7 @@
                 },
                 {
                     "doc": "the index",
+                    "is_optional": "False",
                     "name": "index",
                     "types": [
                         "uint32_t"
@@ -314,6 +507,7 @@
             "parameters": [
                 {
                     "doc": "the constants",
+                    "is_optional": "False",
                     "name": "constants",
                     "types": [
                         "dmGameSystem::HComponentRenderConstants"
@@ -334,19 +528,67 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Gets the resource path hash",
+            "description": "Gets the resource path hash",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "GuiNodeTypeDestroyFunction",
+            "name": "GetResourceProperty",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the property",
+                    "is_optional": "False",
+                    "name": "property",
+                    "types": [
+                        "const PropVector4&"
+                    ]
+                },
+                {
+                    "doc": "the resource to get the",
+                    "is_optional": "False",
+                    "name": "resource",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "the out property",
+                    "is_optional": "False",
+                    "name": "out_value",
+                    "types": [
+                        "dmGameObject::PropertyDesc&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "result",
+                    "types": [
+                        "dmGameObject::PropertyResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gui component node type",
+            "description": "Gui component node type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GuiNodeType",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "STRUCT"
         },
         {
             "brief": "",
@@ -361,7 +603,22 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GuiNodeTypeDestroyFunction",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
         },
         {
             "brief": "Hashes the constants",
@@ -377,6 +634,7 @@
             "parameters": [
                 {
                     "doc": "the constants",
+                    "is_optional": "False",
                     "name": "constants",
                     "types": [
                         "dmGameSystem::HComponentRenderConstants"
@@ -384,6 +642,7 @@
                 },
                 {
                     "doc": "the hash state to update",
+                    "is_optional": "False",
                     "name": "state",
                     "types": [
                         "HashState32*"
@@ -411,6 +670,502 @@
             "type": "TYPEDEF"
         },
         {
+            "brief": "Checks if the name matches any field in the proper...",
+            "description": "Checks if the name matches any field in the property",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "IsReferencingProperty",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the property",
+                    "is_optional": "False",
+                    "name": "property",
+                    "types": [
+                        "const PropVector3&"
+                    ]
+                },
+                {
+                    "doc": "the name to look for (e.g. hash(\"pos.x\"))",
+                    "is_optional": "False",
+                    "name": "query",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the property contains the name",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Checks if the name matches any field in the proper...",
+            "description": "Checks if the name matches any field in the property",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "IsReferencingProperty",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the property",
+                    "is_optional": "False",
+                    "name": "property",
+                    "types": [
+                        "const PropVector4&"
+                    ]
+                },
+                {
+                    "doc": "the name to look for (e.g. hash(\"pos.x\"))",
+                    "is_optional": "False",
+                    "name": "query",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the property contains the name",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResFontAddGlyph",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font resource to modify",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "FontResource*"
+                    ]
+                },
+                {
+                    "doc": "The glyph codepoint",
+                    "is_optional": "False",
+                    "name": "codepoint",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "The glyph meta data",
+                    "is_optional": "False",
+                    "name": "glyph",
+                    "types": [
+                        "FontGlyph*"
+                    ]
+                },
+                {
+                    "doc": "The bitmap or sdf data. May be null for e.g. white space characters. The font will now own this data.",
+                    "is_optional": "False",
+                    "name": "imagedata",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "result",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResFontGetCacheCellSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font resource to modify",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "FontResource*"
+                    ]
+                },
+                {
+                    "doc": "The cache cell width",
+                    "is_optional": "False",
+                    "name": "width",
+                    "types": [
+                        "uint32_t*"
+                    ]
+                },
+                {
+                    "doc": "The cache cell height",
+                    "is_optional": "False",
+                    "name": "height",
+                    "types": [
+                        "uint32_t*"
+                    ]
+                },
+                {
+                    "doc": "The distance from the top of the cell to the baseline.",
+                    "is_optional": "False",
+                    "name": "max_ascent",
+                    "types": [
+                        "uint32_t*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "result",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResFontGetHandle",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font resource to modify",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "FontResource*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Handle to a font if successful. 0 otherwise.",
+                    "name": "result",
+                    "types": [
+                        "dmRender::HFont"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResFontGetInfo",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font resource to modify",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "FontResource*"
+                    ]
+                },
+                {
+                    "doc": "The output info",
+                    "is_optional": "False",
+                    "name": "info",
+                    "types": [
+                        "FontInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "result",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the font line height (max_ascent + max_descent...",
+            "description": "Get the font line height (max_ascent + max_descent)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResFontGetLineHeight",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font resource to modify",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "FontResource*"
+                    ]
+                },
+                {
+                    "doc": "The max distance above the base line of any glyph",
+                    "is_optional": "False",
+                    "name": "max_ascent",
+                    "types": [
+                        "float*"
+                    ]
+                },
+                {
+                    "doc": "The max distance below the base line of any glyph",
+                    "is_optional": "False",
+                    "name": "max_descent",
+                    "types": [
+                        "float*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "result",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResFontHasGlyph",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font resource",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "FontResource*"
+                    ]
+                },
+                {
+                    "doc": "The glyph codepoint",
+                    "is_optional": "False",
+                    "name": "codepoint",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the glyph already exists",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResFontRemoveGlyph",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font resource",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "FontResource*"
+                    ]
+                },
+                {
+                    "doc": "The glyph codepoint",
+                    "is_optional": "False",
+                    "name": "codepoint",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "result",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Resets the glyph cache and sets the cell size.",
+            "description": "Resets the glyph cache and sets the cell size.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResFontSetCacheCellSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font resource to modify",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "FontResource*"
+                    ]
+                },
+                {
+                    "doc": "The width of a glyph cache cell",
+                    "is_optional": "False",
+                    "name": "cell_width",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "The height of a glyph cache cell",
+                    "is_optional": "False",
+                    "name": "cell_height",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "The height of a glyph cache cell",
+                    "is_optional": "False",
+                    "name": "max_ascent",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "result",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the font line height, by specifying the max as...",
+            "description": "Set the font line height, by specifying the max ascent and descent",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResFontSetLineHeight",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font resource to modify",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "FontResource*"
+                    ]
+                },
+                {
+                    "doc": "The max distance above the base line of any glyph",
+                    "is_optional": "False",
+                    "name": "max_ascent",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "The max distance below the base line of any glyph",
+                    "is_optional": "False",
+                    "name": "max_descent",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "result",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Set a render constant by name. The constant must e...",
             "description": "Set a render constant by name. The constant must exist in the material",
             "error": "",
@@ -422,6 +1177,7 @@
             "parameters": [
                 {
                     "doc": "the render constants buffer",
+                    "is_optional": "False",
                     "name": "constants",
                     "types": [
                         "dmGameSystem::HComponentRenderConstants"
@@ -429,6 +1185,7 @@
                 },
                 {
                     "doc": "the material to get default values from if constant didn't already exist in the render constants buffer",
+                    "is_optional": "False",
                     "name": "material",
                     "types": [
                         "dmRender::HMaterial"
@@ -436,6 +1193,7 @@
                 },
                 {
                     "doc": "the hashed name of the constant",
+                    "is_optional": "False",
                     "name": "name_hash",
                     "types": [
                         "dmhash_t"
@@ -443,6 +1201,7 @@
                 },
                 {
                     "doc": "index of the constant value to set, if the constant is an array",
+                    "is_optional": "False",
                     "name": "value_index",
                     "types": [
                         "uint32_t"
@@ -450,6 +1209,7 @@
                 },
                 {
                     "doc": "pointer to the index of the element (in range [0,3]). May be 0",
+                    "is_optional": "False",
                     "name": "element_index",
                     "types": [
                         "uint32_t*"
@@ -457,6 +1217,7 @@
                 },
                 {
                     "doc": "the constant value",
+                    "is_optional": "False",
                     "name": "var",
                     "types": [
                         "const dmGameObject::PropertyVar&"
@@ -480,6 +1241,7 @@
             "parameters": [
                 {
                     "doc": "the constants",
+                    "is_optional": "False",
                     "name": "constants",
                     "types": [
                         "dmGameSystem::HComponentRenderConstants"
@@ -487,6 +1249,7 @@
                 },
                 {
                     "doc": "the hashed name of the constant",
+                    "is_optional": "False",
                     "name": "name_hash",
                     "types": [
                         "dmhash_t"
@@ -494,6 +1257,7 @@
                 },
                 {
                     "doc": "the values",
+                    "is_optional": "False",
                     "name": "values",
                     "types": [
                         "dmVMath::Vector4*"
@@ -501,6 +1265,7 @@
                 },
                 {
                     "doc": "number of values in the array",
+                    "is_optional": "False",
                     "name": "num_values",
                     "types": [
                         "uint32_t"
@@ -511,18 +1276,73 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Updates the reference count of the resources, and ...",
+            "description": "Updates the reference count of the resources, and returns the new resource.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetResourceProperty",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the factory",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmGameObject::HFactory"
+                    ]
+                },
+                {
+                    "doc": "the property containing the hash of the resources to get",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "const dmGameObject::PropertyVar&"
+                    ]
+                },
+                {
+                    "doc": "the hash of the resource file suffix (without the \".\"). E.g. hash(\"spritec\")",
+                    "is_optional": "False",
+                    "name": "ext",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "pointer to the current resource. Will also get the pointer to the new resource.",
+                    "is_optional": "False",
+                    "name": "out_resource",
+                    "types": [
+                        "void**"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "result",
+                    "types": [
+                        "dmGameObject::PropertyResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         }
     ],
     "info": {
         "brief": "SDK Gui Component API documentation",
         "description": "Built-in scripting functions.",
         "file": "dmsdk/gamesys/gui.h",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "GameSystem Gui",
         "namespace": "dmGameSystem",
         "notes": [],
-        "path": "engine/gamesys/src/dmsdk/gamesys/gui.h",
+        "path": "dmsdk/gamesys/gui.h",
         "type": "Defold C++"
     }
 }

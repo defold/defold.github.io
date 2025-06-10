@@ -72,6 +72,7 @@
             "parameters": [
                 {
                     "doc": "reference to the script state to be used for storing data",
+                    "is_optional": "False",
                     "name": "self",
                     "types": [
                         "object"
@@ -95,6 +96,7 @@
             "parameters": [
                 {
                     "doc": "reference to the script state to be used for storing data",
+                    "is_optional": "False",
                     "name": "self",
                     "types": [
                         "object"
@@ -102,6 +104,7 @@
                 },
                 {
                     "doc": "the time-step of the frame update",
+                    "is_optional": "False",
                     "name": "dt",
                     "types": [
                         "number"
@@ -125,6 +128,7 @@
             "parameters": [
                 {
                     "doc": "url of the game object or component having the property",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -134,6 +138,7 @@
                 },
                 {
                     "doc": "id of the property to animate",
+                    "is_optional": "False",
                     "name": "property",
                     "types": [
                         "string",
@@ -142,6 +147,7 @@
                 },
                 {
                     "doc": "playback mode of the animation\n<ul>\n<li><code>go.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>\n<li><code>go.PLAYBACK_LOOP_FORWARD</code></li>\n<li><code>go.PLAYBACK_LOOP_BACKWARD</code></li>\n<li><code>go.PLAYBACK_LOOP_PINGPONG</code></li>\n</ul>",
+                    "is_optional": "False",
                     "name": "playback",
                     "types": [
                         "constant"
@@ -149,6 +155,7 @@
                 },
                 {
                     "doc": "target property value",
+                    "is_optional": "False",
                     "name": "to",
                     "types": [
                         "number",
@@ -159,6 +166,7 @@
                 },
                 {
                     "doc": "easing to use during animation. Either specify a constant, see the <a href=\"/manuals/animation#_easing\">animation guide</a> for a complete list, or a vmath.vector with a curve",
+                    "is_optional": "False",
                     "name": "easing",
                     "types": [
                         "constant",
@@ -167,6 +175,7 @@
                 },
                 {
                     "doc": "duration of the animation in seconds",
+                    "is_optional": "False",
                     "name": "duration",
                     "types": [
                         "number"
@@ -174,14 +183,16 @@
                 },
                 {
                     "doc": "delay before the animation starts in seconds",
-                    "name": "[delay]",
+                    "is_optional": "True",
+                    "name": "delay",
                     "types": [
                         "number"
                     ]
                 },
                 {
                     "doc": "optional function to call when the animation has completed\n<dl>\n<dt><code>self</code></dt>\n<dd>\n<span class=\"type\">object</span> The current object.\n</dd>\n<dt><code>url</code></dt>\n<dd>\n<span class=\"type\">url</span> The game object or component instance for which the property is animated.\n</dd>\n<dt><code>property</code></dt>\n<dd>\n<span class=\"type\">hash</span> The id of the animated property.\n</dd>\n</dl>",
-                    "name": "[complete_function]",
+                    "is_optional": "True",
+                    "name": "complete_function",
                     "types": [
                         "function(self, url, property)"
                     ]
@@ -204,6 +215,7 @@
             "parameters": [
                 {
                     "doc": "url of the game object or component",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -213,7 +225,8 @@
                 },
                 {
                     "doc": "optional id of the property to cancel",
-                    "name": "[property]",
+                    "is_optional": "True",
+                    "name": "property",
                     "types": [
                         "string",
                         "hash"
@@ -237,7 +250,8 @@
             "parameters": [
                 {
                     "doc": "optional id or table of id's of the instance(s) to delete, the instance of the calling script is deleted by default",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -247,7 +261,8 @@
                 },
                 {
                     "doc": "optional boolean, set to true to recursively delete child hiearchy in child to parent order",
-                    "name": "[recursive]",
+                    "is_optional": "True",
+                    "name": "recursive",
                     "types": [
                         "boolean"
                     ]
@@ -875,7 +890,7 @@
         },
         {
             "brief": "check if the specified game object exists",
-            "description": "check if the specified game object exists",
+            "description": "A lua-error will be raised if the game object belongs to another\ncollection than the collection from which the function was called.",
             "error": "",
             "examples": "Check if game object \"my_game_object\" exists\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">exists</span><span class=\"p\">(</span><span class=\"s2\">&quot;/my_game_object&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
@@ -885,6 +900,7 @@
             "parameters": [
                 {
                     "doc": "url of the game object to check",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -910,7 +926,7 @@
             "brief": "gets a named property of the specified game object or component",
             "description": "gets a named property of the specified game object or component",
             "error": "",
-            "examples": "Get a named property\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- get the resource of a certain gui font</span>\n    <span class=\"kd\">local</span> <span class=\"n\">font_hash</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;fonts&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;system_font_BIG&quot;</span><span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "examples": "Get a property \"speed\" from a script \"player\", the property must be declared in the player-script:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;speed&quot;</span><span class=\"p\">,</span> <span class=\"mi\">50</span><span class=\"p\">)</span>\n</code></pre></div>\n\nThen in the calling script (assumed to belong to the same game object, but does not have to):\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">speed</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#player&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;speed&quot;</span><span class=\"p\">)</span>\n<span class=\"err\">```</span><span class=\"n\">Get</span> <span class=\"n\">a</span> <span class=\"n\">value</span> <span class=\"kr\">in</span> <span class=\"n\">a</span> <span class=\"n\">material</span> <span class=\"n\">property</span> <span class=\"n\">array</span>\n\n<span class=\"err\">```</span><span class=\"n\">lua</span>\n<span class=\"c1\">-- get the first vector4 in the array: example[0] (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n\n<span class=\"c1\">-- get the last vector4 in the array: example[15] (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">16</span><span class=\"p\">})</span>\n\n<span class=\"c1\">-- get an element of a vector4 in the array: example[0].x (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example.x&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n</code></pre></div>\n\nGetting all values in a material property array as a table\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- get all vector4&#39;s in the constant array</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">)</span>\n<span class=\"c1\">-- result: { vector4, vector4, ... }</span>\n\n<span class=\"c1\">-- get all elements of the vector4&#39;s from an array</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example.x&quot;</span><span class=\"p\">)</span>\n<span class=\"c1\">-- result: { number1, number2, ... }</span>\n<span class=\"err\">```</span><span class=\"n\">Get</span> <span class=\"n\">a</span> <span class=\"n\">named</span> <span class=\"n\">property</span>\n\n<span class=\"err\">```</span><span class=\"n\">lua</span>\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- get the resource of a certain gui font</span>\n    <span class=\"kd\">local</span> <span class=\"n\">font_hash</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;fonts&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;system_font_BIG&quot;</span><span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "go.get",
@@ -918,6 +934,7 @@
             "parameters": [
                 {
                     "doc": "url of the game object or component having the property",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -927,6 +944,7 @@
                 },
                 {
                     "doc": "id of the property to retrieve",
+                    "is_optional": "False",
                     "name": "property",
                     "types": [
                         "string",
@@ -935,7 +953,8 @@
                 },
                 {
                     "doc": "optional options table\n- index <span class=\"type\">integer</span> index into array property (1 based)\n- key <span class=\"type\">hash</span> name of internal property",
-                    "name": "[options]",
+                    "is_optional": "True",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -966,7 +985,8 @@
             "parameters": [
                 {
                     "doc": "path of the instance for which to return the id",
-                    "name": "[path]",
+                    "is_optional": "True",
+                    "name": "path",
                     "types": [
                         "string"
                     ]
@@ -997,7 +1017,8 @@
             "parameters": [
                 {
                     "doc": "optional id of the game object instance to get parent for, defaults to the instance containing the calling script",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -1031,7 +1052,8 @@
             "parameters": [
                 {
                     "doc": "optional id of the game object instance to get the position for, by default the instance of the calling script",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -1064,7 +1086,8 @@
             "parameters": [
                 {
                     "doc": "optional id of the game object instance to get the rotation for, by default the instance of the calling script",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -1097,7 +1120,8 @@
             "parameters": [
                 {
                     "doc": "optional id of the game object instance to get the scale for, by default the instance of the calling script",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -1130,7 +1154,8 @@
             "parameters": [
                 {
                     "doc": "optional id of the game object instance to get the uniform scale for, by default the instance of the calling script",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -1163,7 +1188,8 @@
             "parameters": [
                 {
                     "doc": "optional id of the game object instance to get the world position for, by default the instance of the calling script",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -1196,7 +1222,8 @@
             "parameters": [
                 {
                     "doc": "optional id of the game object instance to get the world rotation for, by default the instance of the calling script",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -1229,7 +1256,8 @@
             "parameters": [
                 {
                     "doc": "optional id of the game object instance to get the world scale for, by default the instance of the calling script",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -1262,7 +1290,8 @@
             "parameters": [
                 {
                     "doc": "optional id of the game object instance to get the world scale for, by default the instance of the calling script",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -1295,7 +1324,8 @@
             "parameters": [
                 {
                     "doc": "optional id of the game object instance to get the world transform for, by default the instance of the calling script",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -1433,6 +1463,7 @@
             "parameters": [
                 {
                     "doc": "the id of the property",
+                    "is_optional": "False",
                     "name": "name",
                     "types": [
                         "string"
@@ -1440,6 +1471,7 @@
                 },
                 {
                     "doc": "default value of the property. In the case of a url, only the empty constructor msg.url() is allowed. In the case of a resource one of the resource constructors (eg resource.atlas(), resource.font() etc) is expected.",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "number",
@@ -1462,7 +1494,7 @@
             "brief": "sets a named property of the specified game object or component, or a material constant",
             "description": "sets a named property of the specified game object or component, or a material constant",
             "error": "",
-            "examples": "Set a named property\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;big_font&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">font</span><span class=\"p\">())</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;fonts&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">big_font</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;system_font_BIG&quot;</span><span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "examples": "Set a property \"speed\" of a script \"player\", the property must be declared in the player-script:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;speed&quot;</span><span class=\"p\">,</span> <span class=\"mi\">50</span><span class=\"p\">)</span>\n</code></pre></div>\n\nThen in the calling script (assumed to belong to the same game object, but does not have to):\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#player&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;speed&quot;</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">)</span>\n<span class=\"err\">```</span><span class=\"n\">Set</span> <span class=\"n\">a</span> <span class=\"n\">vector4</span> <span class=\"kr\">in</span> <span class=\"n\">a</span> <span class=\"n\">material</span> <span class=\"n\">property</span> <span class=\"n\">array</span>\n\n<span class=\"err\">```</span><span class=\"n\">lua</span>\n<span class=\"c1\">-- set the first vector4 in the array: example[0] = v (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n\n<span class=\"c1\">-- set the last vector4 in the array: example[15] = v (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">),</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">16</span><span class=\"p\">})</span>\n\n<span class=\"c1\">-- set an element of a vector4 in the array: example[0].x = 7 (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example.x&quot;</span><span class=\"p\">,</span> <span class=\"mi\">7</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n</code></pre></div>\n\nSet a material property array by a table of vector4\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- set the first two vector4&#39;s in the array</span>\n<span class=\"c1\">-- if the array has more than two elements in the array they will not be set</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">)</span> <span class=\"p\">})</span>\n<span class=\"err\">```</span><span class=\"n\">Set</span> <span class=\"n\">a</span> <span class=\"n\">named</span> <span class=\"n\">property</span>\n\n<span class=\"err\">```</span><span class=\"n\">lua</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;big_font&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">font</span><span class=\"p\">())</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;fonts&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">big_font</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;system_font_BIG&quot;</span><span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "go.set",
@@ -1470,6 +1502,7 @@
             "parameters": [
                 {
                     "doc": "url of the game object or component having the property",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -1479,6 +1512,7 @@
                 },
                 {
                     "doc": "id of the property to set",
+                    "is_optional": "False",
                     "name": "property",
                     "types": [
                         "string",
@@ -1487,6 +1521,7 @@
                 },
                 {
                     "doc": "the value to set",
+                    "is_optional": "False",
                     "name": "value",
                     "types": [
                         "any",
@@ -1495,7 +1530,8 @@
                 },
                 {
                     "doc": "optional options table\n- index <span class=\"type\">integer</span> index into array property (1 based)\n- key <span class=\"type\">hash</span> name of internal property",
-                    "name": "[options]",
+                    "is_optional": "True",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -1518,7 +1554,8 @@
             "parameters": [
                 {
                     "doc": "optional id of the game object instance to set parent for, defaults to the instance containing the calling script",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -1527,7 +1564,8 @@
                 },
                 {
                     "doc": "optional id of the new parent game object, defaults to detaching game object from its parent",
-                    "name": "[parent_id]",
+                    "is_optional": "True",
+                    "name": "parent_id",
                     "types": [
                         "string",
                         "hash",
@@ -1536,7 +1574,8 @@
                 },
                 {
                     "doc": "optional boolean, set to true to maintain the world transform when changing spaces. Defaults to false.",
-                    "name": "[keep_world_transform]",
+                    "is_optional": "True",
+                    "name": "keep_world_transform",
                     "types": [
                         "boolean"
                     ]
@@ -1559,6 +1598,7 @@
             "parameters": [
                 {
                     "doc": "position to set",
+                    "is_optional": "False",
                     "name": "position",
                     "types": [
                         "vector3"
@@ -1566,7 +1606,8 @@
                 },
                 {
                     "doc": "optional id of the game object instance to set the position for, by default the instance of the calling script",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -1591,6 +1632,7 @@
             "parameters": [
                 {
                     "doc": "rotation to set",
+                    "is_optional": "False",
                     "name": "rotation",
                     "types": [
                         "quaternion"
@@ -1598,7 +1640,8 @@
                 },
                 {
                     "doc": "optional id of the game object instance to get the rotation for, by default the instance of the calling script",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -1623,6 +1666,7 @@
             "parameters": [
                 {
                     "doc": "vector or uniform scale factor, must be greater than 0",
+                    "is_optional": "False",
                     "name": "scale",
                     "types": [
                         "number",
@@ -1631,7 +1675,8 @@
                 },
                 {
                     "doc": "optional id of the game object instance to get the scale for, by default the instance of the calling script",
-                    "name": "[id]",
+                    "is_optional": "True",
+                    "name": "id",
                     "types": [
                         "string",
                         "hash",
@@ -1656,6 +1701,7 @@
             "parameters": [
                 {
                     "doc": "position which need to be converted",
+                    "is_optional": "False",
                     "name": "position",
                     "types": [
                         "vector3"
@@ -1663,6 +1709,7 @@
                 },
                 {
                     "doc": "url of the game object which coordinate system convert to",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -1696,6 +1743,7 @@
             "parameters": [
                 {
                     "doc": "transformation which need to be converted",
+                    "is_optional": "False",
                     "name": "transformation",
                     "types": [
                         "matrix4"
@@ -1703,6 +1751,7 @@
                 },
                 {
                     "doc": "url of the game object which coordinate system convert to",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
@@ -1736,6 +1785,7 @@
             "parameters": [
                 {
                     "doc": "reference to the script state to be used for storing data",
+                    "is_optional": "False",
                     "name": "self",
                     "types": [
                         "object"
@@ -1759,6 +1809,7 @@
             "parameters": [
                 {
                     "doc": "reference to the script state to be used for storing data",
+                    "is_optional": "False",
                     "name": "self",
                     "types": [
                         "object"
@@ -1766,6 +1817,7 @@
                 },
                 {
                     "doc": "id of the received input action, as mapped in the input_binding-file",
+                    "is_optional": "False",
                     "name": "action_id",
                     "types": [
                         "hash"
@@ -1773,6 +1825,7 @@
                 },
                 {
                     "doc": "a table containing the input data, see above for a description",
+                    "is_optional": "False",
                     "name": "action",
                     "types": [
                         "table"
@@ -1805,6 +1858,7 @@
             "parameters": [
                 {
                     "doc": "reference to the script state to be used for storing data",
+                    "is_optional": "False",
                     "name": "self",
                     "types": [
                         "object"
@@ -1812,6 +1866,7 @@
                 },
                 {
                     "doc": "id of the received message",
+                    "is_optional": "False",
                     "name": "message_id",
                     "types": [
                         "hash"
@@ -1819,6 +1874,7 @@
                 },
                 {
                     "doc": "a table containing the message data",
+                    "is_optional": "False",
                     "name": "message",
                     "types": [
                         "table"
@@ -1826,6 +1882,7 @@
                 },
                 {
                     "doc": "address of the sender",
+                    "is_optional": "False",
                     "name": "sender",
                     "types": [
                         "url"
@@ -1849,6 +1906,7 @@
             "parameters": [
                 {
                     "doc": "reference to the script state to be used for storing data",
+                    "is_optional": "False",
                     "name": "self",
                     "types": [
                         "object"
@@ -1932,6 +1990,7 @@
             "parameters": [
                 {
                     "doc": "the id of the new parent",
+                    "is_optional": "False",
                     "name": "parent_id",
                     "types": [
                         "hash"
@@ -1939,6 +1998,7 @@
                 },
                 {
                     "doc": "if the world transform of the instance should be preserved when changing spaces, 0 for false and 1 for true. The default value is 1.",
+                    "is_optional": "False",
                     "name": "keep_world_transform",
                     "types": [
                         "number"
@@ -1962,6 +2022,7 @@
             "parameters": [
                 {
                     "doc": "reference to the script state to be used for storing data",
+                    "is_optional": "False",
                     "name": "self",
                     "types": [
                         "object"
@@ -1969,6 +2030,7 @@
                 },
                 {
                     "doc": "the time-step of the frame update",
+                    "is_optional": "False",
                     "name": "dt",
                     "types": [
                         "number"
@@ -1985,12 +2047,11 @@
         "brief": "Game object API documentation",
         "description": "Functions, core hooks, messages and constants for manipulation of\ngame objects. The \"go\" namespace is accessible from game object script\nfiles.",
         "file": "",
-        "group": "SYSTEM",
         "language": "Lua",
         "name": "Game object",
         "namespace": "go",
         "notes": [],
-        "path": "",
+        "path": "gameobject_script.cpp",
         "type": "Defold Lua"
     }
 }

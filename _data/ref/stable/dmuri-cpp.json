@@ -14,6 +14,7 @@
             "parameters": [
                 {
                     "doc": "Input",
+                    "is_optional": "False",
                     "name": "src",
                     "types": [
                         "const char*"
@@ -21,6 +22,7 @@
                 },
                 {
                     "doc": "Decoded output",
+                    "is_optional": "False",
                     "name": "dst",
                     "types": [
                         "char*"
@@ -46,6 +48,7 @@
             "parameters": [
                 {
                     "doc": "string to encode",
+                    "is_optional": "False",
                     "name": "src",
                     "types": [
                         "const char*"
@@ -53,6 +56,7 @@
                 },
                 {
                     "doc": "the destination buffer",
+                    "is_optional": "False",
                     "name": "dst",
                     "types": [
                         "char*"
@@ -60,6 +64,7 @@
                 },
                 {
                     "doc": "size of the provided out buffer",
+                    "is_optional": "False",
                     "name": "dst_size",
                     "types": [
                         "uint32_t"
@@ -67,6 +72,7 @@
                 },
                 {
                     "doc": "number of bytes written",
+                    "is_optional": "False",
                     "name": "bytes_written[out]",
                     "types": [
                         "uint32_t"
@@ -93,6 +99,7 @@
             "parameters": [
                 {
                     "doc": "URI to parse",
+                    "is_optional": "False",
                     "name": "uri",
                     "types": [
                         "const char*"
@@ -100,6 +107,7 @@
                 },
                 {
                     "doc": "Result",
+                    "is_optional": "False",
                     "name": "parts",
                     "types": [
                         "dmURI::Parts"
@@ -154,12 +162,11 @@
         "brief": "SDK URI API documentation",
         "description": "URI functions.",
         "file": "dmsdk/dlib/uri.h",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "URI",
         "namespace": "dmURI",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/dlib/uri.h",
+        "path": "dmsdk/dlib/uri.h",
         "type": "Defold C++"
     }
 }

@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "image data buffer",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "string"
@@ -19,7 +20,8 @@
                 },
                 {
                     "doc": "An optional table containing parameters for loading the image. Supported entries:\n<dl>\n<dt><code>premultiply_alpha</code></dt>\n<dd><span class=\"type\">boolean</span> True if alpha should be premultiplied into the color components. Defaults to <code>false</code>.</dd>\n<dt><code>flip_vertically</code></dt>\n<dd><span class=\"type\">boolean</span> True if the image contents should be flipped vertically. Defaults to <code>false</code>.</dd>\n</dl>",
-                    "name": "[options]",
+                    "is_optional": "True",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -51,6 +53,7 @@
             "parameters": [
                 {
                     "doc": "image data buffer",
+                    "is_optional": "False",
                     "name": "buffer",
                     "types": [
                         "string"
@@ -58,7 +61,8 @@
                 },
                 {
                     "doc": "An optional table containing parameters for loading the image. Supported entries:\n<dl>\n<dt><code>premultiply_alpha</code></dt>\n<dd><span class=\"type\">boolean</span> True if alpha should be premultiplied into the color components. Defaults to <code>false</code>.</dd>\n<dt><code>flip_vertically</code></dt>\n<dd><span class=\"type\">boolean</span> True if the image contents should be flipped vertically. Defaults to <code>false</code>.</dd>\n</dl>",
-                    "name": "[options]",
+                    "is_optional": "True",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -143,12 +147,11 @@
         "brief": "Image API documentation",
         "description": "Functions for creating image objects.",
         "file": "",
-        "group": "SCRIPT",
         "language": "Lua",
         "name": "Image",
         "namespace": "image",
         "notes": [],
-        "path": "",
+        "path": "scripts/script_image.cpp",
         "type": "Defold Lua"
     }
 }

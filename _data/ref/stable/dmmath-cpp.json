@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "T] x",
+                    "is_optional": "False",
                     "name": "[type:class",
                     "types": [
                         ""
@@ -22,6 +23,94 @@
             "returnvalues": [
                 {
                     "doc": "Absolute value of x",
+                    "name": "v",
+                    "types": [
+                        "class T"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Clamp function",
+            "description": "Clamp function",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Clamp",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "T] v Value to clamp",
+                    "is_optional": "False",
+                    "name": "[type:class",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "T] min Lower bound",
+                    "is_optional": "False",
+                    "name": "[type:class",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "T] max Upper bound",
+                    "is_optional": "False",
+                    "name": "[type:class",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Value closest to v inside the range [min, max]",
+                    "name": "v",
+                    "types": [
+                        "class T"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Max function",
+            "description": "Max function",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Max",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "T] a Value a",
+                    "is_optional": "False",
+                    "name": "[type:class",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "T] b Value b",
+                    "is_optional": "False",
+                    "name": "[type:class",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Max of a and b",
                     "name": "v",
                     "types": [
                         "class T"
@@ -43,6 +132,7 @@
             "parameters": [
                 {
                     "doc": "T] a Value a",
+                    "is_optional": "False",
                     "name": "[type:class",
                     "types": [
                         ""
@@ -50,6 +140,7 @@
                 },
                 {
                     "doc": "T] b Value b",
+                    "is_optional": "False",
                     "name": "[type:class",
                     "types": [
                         ""
@@ -81,6 +172,7 @@
             "parameters": [
                 {
                     "doc": "T] x Value to test for positiveness",
+                    "is_optional": "False",
                     "name": "[type:class",
                     "types": [
                         ""
@@ -88,6 +180,7 @@
                 },
                 {
                     "doc": "T] a Result if test succeeded",
+                    "is_optional": "False",
                     "name": "[type:class",
                     "types": [
                         ""
@@ -95,6 +188,7 @@
                 },
                 {
                     "doc": "T] b Result if test failed",
+                    "is_optional": "False",
                     "name": "[type:class",
                     "types": [
                         ""
@@ -119,12 +213,11 @@
         "brief": "SDK Math API documentation",
         "description": "Math functions.",
         "file": "dmsdk/dlib/math.h",
-        "group": "DEFOLD SDK",
         "language": "C++",
         "name": "Math",
         "namespace": "dmMath",
         "notes": [],
-        "path": "engine/dlib/src/dmsdk/dlib/math.h",
+        "path": "dmsdk/dlib/math.h",
         "type": "Defold C++"
     }
 }

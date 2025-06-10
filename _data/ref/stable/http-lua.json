@@ -12,6 +12,7 @@
             "parameters": [
                 {
                     "doc": "target url",
+                    "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string"
@@ -19,6 +20,7 @@
                 },
                 {
                     "doc": "HTTP/HTTPS method, e.g. \"GET\", \"PUT\", \"POST\" etc.",
+                    "is_optional": "False",
                     "name": "method",
                     "types": [
                         "string"
@@ -26,6 +28,7 @@
                 },
                 {
                     "doc": "response callback function\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The script instance</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> Internal message identifier. Do not use!</dd>\n<dt><code>response</code></dt>\n<dd><span class=\"type\">table</span> The response data. Contains the fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>status</code>: the status of the response</li>\n<li><span class=\"type\">string</span> <code>response</code>: the response data (if not saved on disc)</li>\n<li><span class=\"type\">table</span> <code>headers</code>: all the returned headers (if status is 200 or 206)</li>\n<li><span class=\"type\">string</span> <code>path</code>: the stored path (if saved to disc)</li>\n<li><span class=\"type\">string</span> <code>error</code>: if any unforeseen errors occurred (e.g. file I/O)</li>\n<li><span class=\"type\">number</span> <code>bytes_received</code>: the amount of bytes received/sent for a request, only if option <code>report_progress</code> is true</li>\n<li><span class=\"type\">number</span> <code>bytes_total</code>: the total amount of bytes for a request, only if option <code>report_progress</code> is true</li>\n<li><span class=\"type\">number</span> <code>range_start</code>: the start offset into the requested file</li>\n<li><span class=\"type\">number</span> <code>range_end</code>: the end offset into the requested file (inclusive)</li>\n<li><span class=\"type\">number</span> <code>document_size</code>: the full size of the requested file</li>\n</ul>",
+                    "is_optional": "False",
                     "name": "callback",
                     "types": [
                         "function(self, id, response)"
@@ -33,21 +36,24 @@
                 },
                 {
                     "doc": "optional table with custom headers",
-                    "name": "[headers]",
+                    "is_optional": "True",
+                    "name": "headers",
                     "types": [
                         "table"
                     ]
                 },
                 {
                     "doc": "optional data to send",
-                    "name": "[post_data]",
+                    "is_optional": "True",
+                    "name": "post_data",
                     "types": [
                         "string"
                     ]
                 },
                 {
                     "doc": "optional table with request parameters. Supported entries:\n<ul>\n<li><span class=\"type\">number</span> <code>timeout</code>: timeout in seconds</li>\n<li><span class=\"type\">string</span> <code>path</code>: path on disc where to download the file. Only overwrites the path if status is 200. <span class=\"icon-attention\"></span> Path should be absolute</li>\n<li><span class=\"type\">boolean</span> <code>ignore_cache</code>: don't return cached data if we get a 304. <span class=\"icon-attention\"></span> Not available in HTML5 build</li>\n<li><span class=\"type\">boolean</span> <code>chunked_transfer</code>: use chunked transfer encoding for https requests larger than 16kb. Defaults to true. <span class=\"icon-attention\"></span> Not available in HTML5 build</li>\n<li><span class=\"type\">boolean</span> <code>report_progress</code>: when it is true, the amount of bytes sent and/or received for a request will be passed into the callback function</li>\n</ul>",
-                    "name": "[options]",
+                    "is_optional": "True",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -63,12 +69,11 @@
         "brief": "HTTP API documentation",
         "description": "Functions for performing HTTP and HTTPS requests.",
         "file": "",
-        "group": "SCRIPT",
         "language": "Lua",
         "name": "HTTP",
         "namespace": "http",
         "notes": [],
-        "path": "",
+        "path": "scripts/script_http.cpp",
         "type": "Defold Lua"
     }
 }
