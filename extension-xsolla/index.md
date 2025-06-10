@@ -98,4 +98,6 @@ local function get_sellable_items()
 
 ### Source code
 
-The source code is available on [GitHub](https://github.com/defold/extension-xsolla)[API Reference - shop](/extension-xsolla/shop_api)
+The source code is available on [GitHub](https://github.com/defold/extension-xsolla)
+## API reference
+[API Reference - shop](/extension-xsolla/shop_api)
