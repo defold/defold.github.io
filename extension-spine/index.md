@@ -470,7 +470,7 @@ So what do you do if your animation references "head_parts/eyes"? The easiest wa
 
 ![Atlas path names](atlas_names.png)
 ## API reference
-[API Reference - gui](/extension-spine/gui_api)
+[API Reference - spine](/extension-spine/spine_api)
 
 ## API reference
-[API Reference - spine](/extension-spine/spine_api)
+[API Reference - gui](/extension-spine/gui_api)
