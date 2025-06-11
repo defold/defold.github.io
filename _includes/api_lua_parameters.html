@@ -3,7 +3,7 @@
 <table>
 	{%- for param in parameters -%}
 	<tr>
-		<td><code>{{ param.name }}</code></td>
+		<td><code>{%- if param.is_optional == "True" -%}[{{ param.name }}]{%- else -%}{{ param.name }}{%- endif -%}</code></td>
 		<td><code>{{ param.types | join: ", " }}</code></td>
 		<td>{{ param.doc }}
 			{%- if param.parameters -%}
