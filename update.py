@@ -885,6 +885,9 @@ def fix_tags_case(list):
 
 def fix_platforms_case(platforms):
     if platforms:
+        if platforms[0].lower() == "*":
+            platforms = [ "ios", "android", "html5", "windows", "linux", "macos" ]
+
         for i,platform in enumerate(platforms):
             if platform.lower() == "ios":
                 platforms[i] = "iOS"
