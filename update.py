@@ -223,6 +223,7 @@ def find_files(root_dir, file_patterns):
             for filename in filenames:
                 if fnmatch.fnmatch(filename, pattern):
                     matches.append(os.path.join(root, filename))
+    matches.sort()
     return matches
 
 def read_as_string(filename):
@@ -886,7 +887,8 @@ def fix_tags_case(list):
 def fix_platforms_case(platforms):
     if platforms:
         if platforms[0].lower() == "*":
-            platforms = [ "ios", "android", "html5", "windows", "linux", "macos" ]
+            platforms.clear()
+            platforms.extend(["ios", "android", "html5", "windows", "linux", "macos"])
 
         for i,platform in enumerate(platforms):
             if platform.lower() == "ios":
