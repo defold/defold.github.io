@@ -496,6 +496,34 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Invites a friend or clan member to the current game using a special invite string. If the target accepts the invite, a GameRichPresenceJoinRequested_t callback is posted containing the connect string.",
+            "examples": "",
+            "name": "steam.friends_invite_user_to_game",
+            "parameters": [
+                {
+                    "doc": "Id of friend",
+                    "name": "steamIDFriend",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "String",
+                    "name": "connect",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Set a listener.",
             "examples": "",
             "name": "steam.set_listener",
