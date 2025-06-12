@@ -84,7 +84,7 @@
         {
             "description": "Top-score is highest number",
             "examples": "",
-            "name": "ELeaderboardSortMethodNone",
+            "name": "ELeaderboardSortMethodDescending",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
@@ -992,6 +992,27 @@
             "returnvalues": [
                 {
                     "doc": "",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the sort method of the leaderboard",
+            "examples": "",
+            "name": "steam.user_stats_get_leaderboard_sort_method",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "leaderboard",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Order",
                     "name": "number"
                 }
             ],
