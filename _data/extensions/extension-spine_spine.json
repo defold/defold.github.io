@@ -250,6 +250,100 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Adds one spine skin on a spine model to another on the same model.",
+            "examples": "",
+            "name": "spine.add_skin",
+            "parameters": [
+                {
+                    "doc": "The Spine model to query",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "Id of the corresponding skin that will recieve the added skin",
+                    "name": "skin_a",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "Id of the corresponding skin to add",
+                    "name": "skin_b",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Copies one spine skin on a spine model to another on the same model.",
+            "examples": "",
+            "name": "spine.copy_skin",
+            "parameters": [
+                {
+                    "doc": "The Spine model to query",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "Id of the corresponding skin that will recieve the copied skin",
+                    "name": "skin_a",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "Id of the corresponding skin to copy.",
+                    "name": "skin_b",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Clear all attachments and constraints from a skin on a spine model",
+            "examples": "",
+            "name": "spine.clear_skin",
+            "parameters": [
+                {
+                    "doc": "The Spine model to query",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "Id of the corresponding skin",
+                    "name": "skin",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Set the attachment of a lot on a spine model.",
             "examples": "",
             "name": "spine.set_attachment",

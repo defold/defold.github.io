@@ -175,6 +175,94 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Add a spine skin on a spine node to another skin on the same node.",
+            "examples": "<p>Add skin of a Spine node to another skin</p>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">add_spine_skin</span><span class=\"p\">(</span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;spine_node&quot;</span><span class=\"p\">),</span> <span class=\"s2\">&quot;monster_head&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;monster_body&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "gui.add_spine_skin",
+            "parameters": [
+                {
+                    "doc": "node having both skins",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "spine skin id that recieves other skin",
+                    "name": "spine_skin_a",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "spine skin id that will be added",
+                    "name": "spine_skin_b",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Copy a spine skin on a spine node to another skin on the same node.",
+            "examples": "<p>Copy skin of a Spine node to another skin</p>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">copy_spine_skin</span><span class=\"p\">(</span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;spine_node&quot;</span><span class=\"p\">),</span> <span class=\"s2\">&quot;monster_head&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;monster_body&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "gui.copy_spine_skin",
+            "parameters": [
+                {
+                    "doc": "node having both skins",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "spine skin id that copies other skin",
+                    "name": "spine_skin_a",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "spine skin id that will be copied",
+                    "name": "spine_skin_b",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Clear a spine skin on a spine node of all attachments and constraints",
+            "examples": "<p>Clear skin of a Spine node</p>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">clear_spine_skin</span><span class=\"p\">(</span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;spine_node&quot;</span><span class=\"p\">),</span> <span class=\"s2\">&quot;monster&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "gui.clear_spine_skin",
+            "parameters": [
+                {
+                    "doc": "node having both skins",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "spine skin id",
+                    "name": "spine_skin",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Gets the spine skin of a spine node",
             "examples": "",
             "name": "gui.get_spine_skin",
