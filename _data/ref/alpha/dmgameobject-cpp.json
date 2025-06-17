@@ -2557,6 +2557,46 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Retrieve a collection by socket name hash\nNote: in...",
+            "description": "Retrieve a collection by socket name hash\nNote: in native extensions, the register can be retrieved during init using dmEngine::GetGameObjectRegister(dmExtension::AppParams *params)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetCollectionByHash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Register",
+                    "is_optional": "False",
+                    "name": "regist",
+                    "types": [
+                        "dmGameObject::HRegister"
+                    ]
+                },
+                {
+                    "doc": "The socket name",
+                    "is_optional": "False",
+                    "name": "socket_name",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The collection if successful. 0 otherwise.",
+                    "name": "collection",
+                    "types": [
+                        "dmGameObject::HCollection"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the component, component type and its world",
             "description": "Get the component, component type and its world",
             "error": "",
