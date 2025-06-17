@@ -84,7 +84,7 @@
         {
             "description": "Top-score is highest number",
             "examples": "",
-            "name": "ELeaderboardSortMethodNone",
+            "name": "ELeaderboardSortMethodDescending",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
@@ -302,6 +302,55 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Friend iteration. Takes a set of EFriendFlags, and returns the number of users the client knows about who meet that criteria. Then GetFriendByIndex() can then be used to return the id&#x27;s of each of those users.",
+            "examples": "",
+            "name": "steam.friends_get_friend_count",
+            "parameters": [
+                {
+                    "doc": "Set of friend flags to match friends against.",
+                    "name": "iFriendFlags",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Number of users matching search.",
+                    "name": "count"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the steamID of a user. The returned CSteamID can then be used by all the functions below to access details about the user.",
+            "examples": "",
+            "name": "steam.friends_get_friend_by_index",
+            "parameters": [
+                {
+                    "doc": "Is a index of range [0, GetFriendCount())",
+                    "name": "iFriend",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Must be the same value as used in GetFriendCount()",
+                    "name": "iFriendsFlags",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Steam id of the user",
+                    "name": "steamID"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Returns the current status of the specified user. This will only be known by the local user if steamIDFriend is in their friends list; on the same game server; in a chat room or lobby; or in a small group with the local user.",
             "examples": "",
             "name": "steam.friends_get_friend_persona_state",
@@ -444,6 +493,34 @@
             "name": "steam.friends_clear_rich_presence",
             "parameters": [],
             "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Invites a friend or clan member to the current game using a special invite string. If the target accepts the invite, a GameRichPresenceJoinRequested_t callback is posted containing the connect string.",
+            "examples": "",
+            "name": "steam.friends_invite_user_to_game",
+            "parameters": [
+                {
+                    "doc": "Id of friend",
+                    "name": "steamIDFriend",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "String",
+                    "name": "connect",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
             "type": "FUNCTION"
         },
         {
@@ -947,12 +1024,7 @@
                     ]
                 }
             ],
-            "returnvalues": [
-                {
-                    "doc": "",
-                    "name": "string"
-                }
-            ],
+            "returnvalues": [],
             "type": "FUNCTION"
         },
         {
@@ -998,6 +1070,48 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Returns the sort method of the leaderboard",
+            "examples": "",
+            "name": "steam.user_stats_get_leaderboard_sort_method",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "leaderboard",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Order",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the display type of a leaderboard handle.",
+            "examples": "",
+            "name": "steam.user_stats_get_leaderboard_display_type",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "leaderboard",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Type",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Asks the Steam back-end for a set of rows in the leaderboard. This call is asynchronous, with the result returned in a listener callback with event set to LeaderboardScoresDownloaded_t. LeaderboardScoresDownloaded_t will contain a handle to pull the results from GetDownloadedLeaderboardEntries(). You can ask for more entries than exist, and it will return as many as do exist. * k_ELeaderboardDataRequestGlobal requests rows in the leaderboard from the full table, with nRangeStart &amp; nRangeEnd in the range [1, TotalEntries] * k_ELeaderboardDataRequestGlobalAroundUser requests rows around the current user, nRangeStart being negate e.g. DownloadLeaderboardEntries( hLeaderboard, k_ELeaderboardDataRequestGlobalAroundUser, -3, 3 ) will return 7 rows, 3 before the user, 3 after * k_ELeaderboardDataRequestFriends requests all the rows for friends of the current user",
             "examples": "",
             "name": "steam.user_stats_download_leaderboard_entries",
@@ -1031,12 +1145,7 @@
                     ]
                 }
             ],
-            "returnvalues": [
-                {
-                    "doc": "",
-                    "name": "string"
-                }
-            ],
+            "returnvalues": [],
             "type": "FUNCTION"
         },
         {
@@ -1098,12 +1207,7 @@
                     ]
                 }
             ],
-            "returnvalues": [
-                {
-                    "doc": "",
-                    "name": "string"
-                }
-            ],
+            "returnvalues": [],
             "type": "FUNCTION"
         },
         {

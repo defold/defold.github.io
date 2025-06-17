@@ -13,9 +13,9 @@ toc:
 - Register your app with Firebase
 - Add a Firebase configuration file
 - Local push notifications
+- Local notifications on Android
 - Inspecting scheduled notifications
 - Source code
-- API reference
 ---
 
 # Defold Push notification documentation
@@ -243,6 +243,11 @@ priority
   Unless specified, the max priority level is used.
 
 
+### Local notifications on Android
+
+Android 13 (API level 33) and higher supports a [runtime permission for sending notifications](https://developer.android.com/develop/ui/views/notifications/notification-permission) from an app: POST_NOTIFICATIONS. The extension will automatically add the permission to the AndroidManifest. Starting in Android 13 app notifications are off by default and your app must wait to send notifications until after you request the new permission and the user grants that permission to your app. You can use the [Permission extension](https://github.com/defold/extension-permissions) to check if the `POST_NOTIFICATIONS` permission has been granted or if you should prompt the user for permission before scheduling a local notification.
+
+
 ## Inspecting scheduled notifications
 The API provides two functions to inspect what is currently scheduled.
 
@@ -304,6 +309,5 @@ DEBUG:SCRIPT:
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-push)
-
-
-## API reference[API Reference - push](/extension-push/push_api)
+## API reference
+[API Reference - push](/extension-push/push_api)
