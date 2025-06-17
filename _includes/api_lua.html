@@ -1,10 +1,13 @@
 {%- assign ref = include.ref -%}
 {%- assign functions = ref.elements | where: "type", "FUNCTION" -%}
-{%- assign variables = ref.elements | where: "type", "VARIABLE" -%}
 {%- assign messages = ref.elements | where: "type", "MESSAGE" -%}
 {%- assign properties = ref.elements | where: "type", "PROPERTY" -%}
 {%- assign macros = ref.elements | where: "type", "MACRO" -%}
 {%- assign enums = ref.elements | where: "type", "ENUM" -%}
+
+{%- assign v = ref.elements | where: "type", "VARIABLE" -%}
+{%- assign c = ref.elements | where: "type", "CONSTANT" -%}
+{%- assign constants = v | concat: c -%}
 
 <h1>{{ ref.info.brief }}</h1>
 <p>{{ ref.info.description }}</p>
@@ -25,16 +28,16 @@
 </table>
 {%- endif -%}
 
-{%- if variables.size > 0 -%}
+{%- if constants.size > 0 -%}
 <table class="compact">
 	<tr>
 		<th>CONSTANTS</th>
 		<th></th>
 	</tr>
-	{%- for variable in variables -%}
+	{%- for constant in constants -%}
 	<tr>
-		<td><a href="#{% include ref_anchorlink.html element=variable %}">{{ variable.name }}</a></td>
-		<td>{{ variable.brief }}</td>
+		<td><a href="#{% include ref_anchorlink.html element=constant %}">{{ constant.name }}</a></td>
+		<td>{{ constant.brief }}</td>
 	</tr>
 	{%- endfor -%}
 </table>
@@ -139,15 +142,15 @@
 	{%- endfor -%}
 {%- endif -%}
 
-{%- if variables.size > 0 -%}
+{%- if constants.size > 0 -%}
 <h2>Constants</h2>
-	{%- for variable in variables -%}
-	{% include ref_anchor_target.html element=variable %}
-	<h5 class="compact">{{ variable.name }}<a href="#{% include ref_anchorlink.html element=variable %}" class="anchor-link"/></a></h5 class="compact">
-	<p class="compact">{{ variable.description }}</p>
+	{%- for constant in constants -%}
+	{% include ref_anchor_target.html element=constant %}
+	<h5 class="compact">{{ constant.name }}<a href="#{% include ref_anchorlink.html element=constant %}" class="anchor-link"/></a></h5 class="compact">
+	<p class="compact">{{ constant.description }}</p>
 
-	{%- if variable.parameters.size > 0 -%}
-	{% include api_lua_parameters.html parameters=variable.parameters %}
+	{%- if constant.parameters.size > 0 -%}
+	{% include api_lua_parameters.html parameters=constant.parameters %}
 	{%- endif -%}
 	
 	{% if forloop.last == false %}<hr class="compact"/>{% else %}<hr/>{% endif %}
