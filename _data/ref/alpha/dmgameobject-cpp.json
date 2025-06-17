@@ -3724,6 +3724,46 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Creates a property container from a lua table",
+            "description": "Creates a property container from a lua table",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "PropertyContainerCreateFromLua",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The lua state",
+                    "is_optional": "False",
+                    "name": "L",
+                    "types": [
+                        "lua_State*"
+                    ]
+                },
+                {
+                    "doc": "The lua stack index of the lua table",
+                    "is_optional": "False",
+                    "name": "index",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The property container",
+                    "name": "container",
+                    "types": [
+                        "HPropertyContainer"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Deallocates a property container",
             "description": "Deallocates a property container",
             "error": "",
