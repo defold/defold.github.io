@@ -6,12 +6,12 @@ author: Björn Ritzl
 tags: ["creator spotlight", "interview", "Playgama", "HG Point"]
 ---
 
-# Rustam Bayrkhanov, HG Point: ‘Innovation is expensive and painful. Start with copying a decent bike’
+## Rustam Bayrkhanov, HG Point: ‘Innovation is expensive and painful. Start with copying a decent bike’
 
 [Piece of Cake: Merge & Bake](https://playgama.com/game/piece-of-cake-merge--bake) is one of the most successful games in the ‘Merge 2’ genre. Joined by our friends from [Playgama](https://playgama.com/), we talked with Rustam Batyrkhanov, founder of HG Point — the great minds behind the game. Read on to learn about failed projects, get free insights on the web dev market and find out who really brings the big bucks to Activision Blizzard.
 
 
-## How it all began
+### How it all began
 For me, making games was a long-standing desire, one that appeared right after graduating. HG Point is the third studio we've started — the first two didn’t survive the market test. That, I think, is a typical story for those who start making games. The notion ‘I’m about to materialize my dream project — my very own game with blows and whistles’ is flawed. I only realized this on the third try, before I began analyzing market realities, target audiences, monetization depth across genres, and the purchasing power of different audience segments.
 
 The first project we made is still alive. It’s the multiplayer HaxBall-inspired game, MegaBall, [launched 10 years ago](https://www.youtube.com/watch?v=8kAyVhkfKEA) at the pinnacle of the social media craze, and, thus, very casual. But not all projects were so lucky: at some point, we’d always run out of money/patience/motivation, and the studio would have to be shut down.
@@ -26,7 +26,7 @@ That was around the time Fishdom appeared and the metagame became an important p
 Gameplay screenshots from Ranch Adventure
 
 
-## The right technologies are half the success
+### The right technologies are half the success
 We chose the right technology this time. In brief: in previous projects, we went through Unity, Unity Web Player, and the death of Adobe Flash Player. In HG Point's history, we also tried PixiJS and COCOS, but ultimately settled with Defold. Although we wrote the first project in PixiJS, we adapted it for mobile platforms using Unity, which at the time was probably the most popular engine.
 
 As a result, we had to maintain two codebases and allocate an additional tech team. Trying to sit on two chairs of cross-platform gaming turned out to be a massive headache. Even though both projects were developed in-house, we learnt that it's impossible to rewrite a game and keep it exactly the same. It’s like we lost some of the magic along the way. At the very least, each engine generates pseudo-random numbers differently — even that alone can cause the gameplay to misfire.
@@ -46,7 +46,7 @@ It's disheartening that too few devs see these advantages. I wish that more awes
 It's great to see Playgama Bridge embracing the potential of Defold along with various other engines. We’ve complemented their open-source SDK (namely the JavaScript part) with our layer, and it’s been up and running ever since.
 
 
-## HTML5 market’s perspectives, monetization and quality freakiness
+### HTML5 market’s perspectives, monetization and quality freakiness
 As I’ve mentioned before, we are a mature studio, and it helps to connect faster with renowned platforms such as MSN and Crazy Games. Most of these resources are managed by our biz dev team. Yet when it comes to approaching hidden gem platforms — Y8, Lagged, etc. — our friends from Playgama are of great help. I want all our games to be presented on as many platforms as possible. By the way, I’m a great believer in their platform, we hope to grow not only through them but rather with them.
 
 Overall, there is some moderate optimism regarding HTML5 games in our studio. We’re in this niche already, connected and networked, hoping for this segment to grow year by year. So far, it’s puny in comparison to mobile, so we’re looking forward to it reaching 10% of its size.
@@ -68,7 +68,7 @@ Overall context of the gaming industry backs up casual games dominance. Activisi
 Circling back: I see great potential in puzzles on the web; the demand will not only stay the same but grow. The market is ample enough for both ‘Match 3’ and ‘Call of Duty’ players.
 
 
-## The hardest parts of game development and hints for those who dare
+### The hardest parts of game development and hints for those who dare
 Every studio is going to face issues at every stage of development. In my experience, the most common are:
 
 - For startups — to find a talented art director, a gifted developer and a manager/producer/game designer. The latter is usually a founder. The cost of a mistake at this stage is astronomical — I saw many studios that were built on a shaky foundation, and it would inevitably come up later. One may pick the wrong direction and burn through thousands of dollars for quite a while, all for naught. Thankfully, it took me only three times to find the right comp. Of course, there are one-man studios, such as Potion Craft, but it’s a very rare case. There’s only one Minecraft and only one Terrarium.
@@ -86,7 +86,7 @@ Rustam Batyrkhanov — COO at HG Point
 Luck is a large part of this business, even if no one talks about it. Nothing is guaranteed, and there are no silver bullets. Among 20 well-to-do studios, some might say that they knew what they were doing all along. They would lie, or rather, they would rely on 20/20 hindsight. Two principles that will likely prop up the success rate: reflection and analysis after every attempt, and the constant testing of ideas. The more of them you disprove, the sooner you find the one that works. Once again, it’s better to fail in a month rather than in a year and a half. These worked for me.
 
 
-## What’s next
+### What’s next
 It would be foolish to abandon the genre that brought us success, so we’ll focus on creating the best ‘Merge 2’ web game out there. And I feel that we’re pretty close — the market of high-quality projects is undersaturated. The next steps are improving what we have already built while introducing new features to please the users and market — stay tuned!
 
 I have some extra free time, and R&D has always been one of my core interests. I play many jaw-dropping mobile games and wonder: ‘Why aren’t they on the web?’. My idea is that the demand can flow between the two platforms, so we conduct experiments. I’m shocked that there is only one web version of Hero Wars — just one game (namely, BattleArena) for the whole genre! To me, it looks like an uncharted territory of users, money and glory.
