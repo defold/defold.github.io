@@ -337,6 +337,86 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Check if the value in the supplied index on the lu...",
+            "description": "Check if the value in the supplied index on the lua stack is a dmMessage::URL and returns it if so.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "CheckURL",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Lua state",
+                    "is_optional": "False",
+                    "name": "L",
+                    "types": [
+                        "lua_State*"
+                    ]
+                },
+                {
+                    "doc": "Index of the value",
+                    "is_optional": "False",
+                    "name": "index",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The pointer to the value",
+                    "name": "url",
+                    "types": [
+                        "dmMessage::URL*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the current game object URL",
+            "description": "Get the current game object URL",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "CheckURL",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Lua state",
+                    "is_optional": "False",
+                    "name": "L",
+                    "types": [
+                        "lua_State*"
+                    ]
+                },
+                {
+                    "doc": "where to store the result",
+                    "is_optional": "False",
+                    "name": "out_url",
+                    "types": [
+                        "dmMessage::URL*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if successful",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "check if the value is a dmVMath::Vector3",
             "description": "Check if the value in the supplied index on the lua stack is a dmVMath::Vector3.",
             "error": "",
@@ -1298,6 +1378,46 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Check if the value at #index is a URL",
+            "description": "Check if the value at #index is a URL",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "IsURL",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Lua state",
+                    "is_optional": "False",
+                    "name": "L",
+                    "types": [
+                        "lua_State*"
+                    ]
+                },
+                {
+                    "doc": "Index of the value",
+                    "is_optional": "False",
+                    "name": "index",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the value at #index is a URL",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Check if the value at #index is a dmVMath::Vector3...",
             "description": "Check if the value at #index is a dmVMath::Vector3*",
             "error": "",
@@ -1705,6 +1825,38 @@
                     "name": "quat",
                     "types": [
                         "dmVMath::Quat"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Push a URL value onto the supplied lua state, will...",
+            "description": "Push a URL value onto the supplied lua state, will increase the stack by 1.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "PushURL",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Lua state",
+                    "is_optional": "False",
+                    "name": "L",
+                    "types": [
+                        "lua_State*"
+                    ]
+                },
+                {
+                    "doc": "URL reference to push",
+                    "is_optional": "False",
+                    "name": "url",
+                    "types": [
+                        "dmMessage::URL&"
                     ]
                 }
             ],
@@ -2147,6 +2299,46 @@
                     "name": "quat",
                     "types": [
                         "dmVMath::Quat*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get the value at index as a dmMessage::URL*",
+            "description": "get the value at index as a dmMessage::URL*",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ToURL",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Lua state",
+                    "is_optional": "False",
+                    "name": "L",
+                    "types": [
+                        "lua_State*"
+                    ]
+                },
+                {
+                    "doc": "Index of the value",
+                    "is_optional": "False",
+                    "name": "index",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "pointer to URL or 0 if it's not a URL",
+                    "name": "hash",
+                    "types": [
+                        "dmhash_t*"
                     ]
                 }
             ],
