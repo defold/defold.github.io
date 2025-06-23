@@ -121,7 +121,6 @@ There are a number of different external tools that can be used to create collis
 # Scaling collision shapes
 The collision object and its shapes inherit the scale of the game object. To disable this behaviour uncheck the [Allow Dynamic Transforms](/manuals/project-settings/#allow-dynamic-transforms) checkbox in the Physics section of *game.project*. Note that only uniform scaling is supported and that the smallest scale value will be used if the scale isn't uniform.
 
-
 # Resizing collision shapes
 The shapes of a collision object can be resized at runtime using `physics.set_shape()`. Example:
 
@@ -152,7 +151,6 @@ physics.set_shape("#collisionobject", "my_box_shape", box_data)
 <div class='sidenote' markdown='1'>
 A shape of the correct type with the specified id must already exist on the collision object.
 </div>
-
 
 # Rotating collision shapes
 

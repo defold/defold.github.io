@@ -31,9 +31,9 @@ toc:
 
 ![Editor 2](/manuals/images/editor/editor2_overview.png)
 
-## Чтение лога игры с терминала 
+## Чтение лога игры с терминала
 
-Когда вы запускаете игру Defold из терминала, лог будет отображаться в самом окне терминала. В Windows и Linux вы вводите имя исполняемого файла в терминале, чтобы запустить игру. В macOS вам нужно запустить движок из файла .app: 
+Когда вы запускаете игру Defold из терминала, лог будет отображаться в самом окне терминала. В Windows и Linux вы вводите имя исполняемого файла в терминале, чтобы запустить игру. В macOS вам нужно запустить движок из файла .app:
 
 ```
 $ > ./mygame.app/Contents/MacOS/mygame
@@ -52,7 +52,9 @@ $ > ./mygame.app/Contents/MacOS/mygame
 
 ### Android
 
-Вы можете использовать [Android Debug Bridge (ADB) tool](https://developer.android.com/studio/command-line/adb.html) для просмотра логов игры и системного лога. 
+Вы можете использовать Android Debug Bridge (ADB) для просмотра логов игры и системного лога. 
+
+{% include shared/ru/android-adb.md %}
 
   После установки и настройки подключите ваше устройство к USB, откройте терминал и выполните команды: 
 
@@ -66,21 +68,33 @@ $ > ./mygame.app/Contents/MacOS/mygame
   Если вы хотите видеть только выходные данные приложения Defold, используйте эту команду: 
 
   ```txt
-  cd <path_to_android_sdk>/platform-tools/
-  adb logcat -s defold
+$ cd <path_to_android_sdk>/platform-tools/
+$ adb logcat -s defold
+--------- beginning of /dev/log/system
+--------- beginning of /dev/log/main
+I/defold  ( 6210): INFO:DLIB: SSDP started (ssdp://192.168.0.97:58089, http://0.0.0.0:38637)
+I/defold  ( 6210): INFO:ENGINE: Defold Engine 1.2.50 (8d1b912)
+I/defold  ( 6210): INFO:ENGINE: Loading data from:
+I/defold  ( 6210): INFO:ENGINE: Initialized sound device 'default'
+I/defold  ( 6210):
+D/defold  ( 6210): DEBUG:SCRIPT: Hello there, log!
+...
   ```
 
 ### iOS
 
-Вы можете использовать [Console tool](https://support.apple.com/guide/console/welcome/mac) для чтения лога игры и системного лога. Вы можете использовать отладчик LLDB для подключения к игре, запущенной на устройстве. Для отладки игры она должна быть подписана с помощью «Apple Developer Provisioning Profile», в который добавлено устройство, на котором вы хотите отлаживать. Создайте бандл игры из редактора и укажите provisioning profile в диалоговом окне бандлинга (бандлинг для iOS доступен только в macOS). 
+У вас есть несколько способов прочитать игровые и системные логи на iOS:
 
-  Чтобы запустить игру и подключить отладчик, вам понадобится инструмент под названием [ios-deploy](https://github.com/phonegap/ios-deploy). Установите и отлаживайте свою игру, запустив в терминале следующее: 
+1. Вы можете использовать [Console tool](https://support.apple.com/guide/console/welcome/mac) для чтения игрового и системного логов.
+2. Вы можете использовать отладчик LLDB для подключения к игре, запущенной на устройстве. Чтобы отлаживать игру, она должна быть подписана с помощью «Apple Developer Provisioning Profile», в который добавлено устройство, на котором вы хотите отлаживать. Соберите игру в редакторе и укажите provisioning profile в диалоговом окне сборки (сборка для iOS доступна только в macOS).
 
-  ```txt
-  ios-deploy --debug --bundle <path_to_game.app> # NOTE: not the .ipa file
-  ```
+Чтобы запустить игру и подключить отладчик, вам понадобится инструмент под названием [ios-deploy](https://github.com/phonegap/ios-deploy). Установите и отлаживайте игру, запустив в терминале следующую команду:
 
-  Данная команда установит приложение на ваше устройство, запустит его и автоматически подключит к нему отладчик LLDB. Если вы новичок в LLDB, прочтите [Начало работы с LLDB](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/gdb_to_lldb_transition_guide/document/lldb-basics.html). 
+```txt
+$ ios-deploy --debug --bundle <path_to_game.app> # ВНИМАНИЕ: не .ipa файл
+```
+
+Эта команда установит приложение на ваше устройство, запустит его и автоматически подключит к нему отладчик LLDB. Если вы не знакомы с LLDB, прочтите руководство [Начало работы с LLDB](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/gdb_to_lldb_transition_guide/document/lldb-basics.html).
 
 
 ## Чтение лога игры из файла лога 

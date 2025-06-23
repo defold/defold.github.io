@@ -59,6 +59,12 @@ toc:
 msg.post("@render:", "use_fixed_projection", { zoom = 4 })
 ```
 
+<div class='sidenote' markdown='1'>
+Тот же результат можно получить, прикрепив [компонент Камера](/ru/manuals/camera/) к игровому объекту, установив *Ортографическая проекция* и задав *Ортографическое увеличение* со значением 4.0:
+
+![](/manuals/images/screen_size/retro-camera_zoom.png)
+</div>
+
 Это даст нам следующий результат:
 
 ![](/manuals/images/screen_size/retro-zoomed_1280x800.png)

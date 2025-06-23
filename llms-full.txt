@@ -1717,7 +1717,7 @@ Defold uses Lua 5.1 and LuaJIT (depending on target platform) and you need to fo
 
 ## Using other languages that transpile to Lua
 
-Starting from version 1.8.1, Defold supports the use of transpilers that emit Lua code. With transpiler extension installed, you can use alternative languages — such as [Teal](https://github.com/defold/extension-teal) — to write statically-checked Lua. It is a preview feature that has limitations: current transpiler support does not expose the information about modules and functions defined in the Defold Lua runtime. It means that using Defold APIs like `go.animate` will require you to write external definitions yourself.
+Defold supports the use of transpilers that emit Lua code. With transpiler extension installed, you can use alternative languages — such as [Teal](https://github.com/defold/extension-teal) — to write statically-checked Lua. It is a preview feature that has limitations: current transpiler support does not expose the information about modules and functions defined in the Defold Lua runtime. It means that using Defold APIs like `go.animate` will require you to write external definitions yourself.
 
 ## Writing native code
 
@@ -4090,12 +4090,10 @@ Defold currently support models, skeletons and animations in GL Transmission For
 
 ![Model in Blender](https://defold.com/manuals/images/model/blender.png)
 
-
 ## Importing to Defold
 To import the model, simply drag and drop the *.gltf* file or *.dae* file and the corresponding texture image into the *Assets Pane* somewhere.
 
 ![Imported model assets](https://defold.com/manuals/images/model/assets.png)
-
 
 ## Using a model
 Once you have the model imported into Defold you can use it in a [Model component](#manuals:model).
@@ -4115,7 +4113,6 @@ Defold imposes some limitations on exported animation data:
 * Animations are also linearly interpolated. If you do more advanced curve interpolation the animations needs to be prebaked from the exporter.
 
 * Animation clips in Collada are not supported. To use multiple animations per model, export them into separate *.dae* files and gather the files into an *.animationset* file in Defold.
-
 
 ### Requirements
 When you export a model it's good to know that we don't yet support all features.
@@ -4144,7 +4141,6 @@ You can then proceed to export the UV layout to an image that can be used as a t
 ![Export UV layout settings](https://defold.com/manuals/images/model/blender_export_uv_layout_settings.png)
 
 ![Export UV layout result](https://defold.com/manuals/images/model/blender_export_uv_layout_result.png)
-
 
 ### Exporting using Blender
 You export your model using the Export menu option. Select the model before you select the Export menu option and check "Selection Only" to only export the model.
@@ -6861,7 +6857,6 @@ The project setting *max_instances* in *Collection related settings* limits the 
 
 If you set *max_instances* to 1024 and have 24 manually placed game objects in your main collection, you can spawn an additional 1000 game objects. As soon as you delete a game object, you are free to spawn another instance.
 
-
 ## Pooling of game objects
 
 It may seem like a good idea to save spawned game objects in a pool and reuse them. However, the engine is already doing object pooling under the hood so additional overhead will only slow things down. It is both faster and cleaner to delete game objects and spawn new ones.
@@ -7093,7 +7088,6 @@ resource.set_buffer(res, buf)
 
 Refer to the [forum announcement post for more information](https://forum.defold.com/t/mesh-component-in-defold-1-2-169-beta/65137) on how to use the Mesh component, including sample projects and code snippets.
 
-
 ## Frustum culling
 
 Mesh components are not automatically culled due to their dynamic nature and the fact that it is not possible to know for sure how the positional data is encoded. In order to cull a mesh the axis-aligned bounding box of the mesh needs to be set as meta data on the buffer using 6 floats (AABB min/max):
@@ -7101,7 +7095,6 @@ Mesh components are not automatically culled due to their dynamic nature and the
 ```lua
 buffer.set_metadata(buf, hash("AABB"), { 0, 0, 0, 1, 1, 1 }, buffer.VALUE_TYPE_FLOAT32)
 ```
-
 
 ## Material constants
 
@@ -7866,10 +7859,6 @@ The attributes specified in the material will show up as regular properties in t
 
 ![sprite-attributes](https://defold.com/manuals/images/graphics/sprite-attributes.png)
 
-<div class='sidenote' markdown='1'>
-Custom attributes are available starting from Defold 1.4.8!
-</div>
-
 ## Project configuration
 
 The *game.project* file has a few [project settings](#manuals:project-settings#sprite) related to sprites.
@@ -8173,10 +8162,8 @@ function init(self)
 
   -- get the new texture file assigned to the texture with id 'theme'
   print(go.get("#gui", "textures", { key = "theme" })) -- /assets/mytheme.atlas
-
 end
 ```
-
 
 ## Dependencies
 
@@ -9189,7 +9176,6 @@ There are a number of different external tools that can be used to create collis
 # Scaling collision shapes
 The collision object and its shapes inherit the scale of the game object. To disable this behaviour uncheck the [Allow Dynamic Transforms](#manuals:project-settings) checkbox in the Physics section of *game.project*. Note that only uniform scaling is supported and that the smallest scale value will be used if the scale isn't uniform.
 
-
 # Resizing collision shapes
 The shapes of a collision object can be resized at runtime using `physics.set_shape()`. Example:
 
@@ -9220,7 +9206,6 @@ physics.set_shape("#collisionobject", "my_box_shape", box_data)
 <div class='sidenote' markdown='1'>
 A shape of the correct type with the specified id must already exist on the collision object.
 </div>
-
 
 # Rotating collision shapes
 
@@ -13461,10 +13446,6 @@ Shaders in Defold support including source code from files within the project th
 #include "../root-level-snippet.glsl"
 ```
 
-<div class='sidenote' markdown='1'>
-Shader includes are available starting from version 1.4.2
-</div>
-
 There are some caveats to how includes are picked up:
 
   - Files must be project relative, meaning that you can only include files that are located within the project. Any absolute path must be specified with a leading `/`
@@ -14434,13 +14415,13 @@ You can [upload the debug symbols to Google Play](https://developer.android.com/
 	$ ls <project>/build/<platform>/[lib]dmengine[.exe|.so]
 ```
 
-1. Unzip to a folder:
+2. Unzip to a folder:
 
 ```sh
 	$ unzip dmengine.apk -d dmengine_1_2_105
 ```
 
-1. Find the callstack address
+3. Find the callstack address
 
 	E.g. in the non symbolicated callstack it could look like this
 
@@ -14448,7 +14429,7 @@ You can [upload the debug symbols to Google Play](https://developer.android.com/
 
 	Where *`00257224`* is the address
 
-1. Resolve the address
+4. Resolve the address
 
 ```sh
     $ arm-linux-androideabi-addr2line -C -f -e dmengine_1_2_105/lib/armeabi-v7a/libdmengine.so _address_
@@ -14465,13 +14446,13 @@ Note: If you get hold of a stack trace from the [Android logs](#manuals:debuggin
 	# it will produce a Contents/Resources/DWARF/dmengine
 ```
 
-1. If you're not using Native Extensions, download the vanilla symbols:
+2. If you're not using Native Extensions, download the vanilla symbols:
 
 ```sh
 	$ wget http://d.defold.com/archive/<sha1>/engine/arm64-darwin/dmengine.dSYM
 ```
 
-1. Symbolicate using load address
+3. Symbolicate using load address
 
 	For some reason, simply putting the address from the callstack doesn't work (i.e. load address 0x0)
 
@@ -14657,13 +14638,13 @@ You have a few options to debug an app
 
 1. Either choose `Debug` -> `Attach to process...` and select the app from there
 
-1. Or choose the `Attach to process by PID or Process name`
+2. Or choose the `Attach to process by PID or Process name`
 
 	![select_device](https://defold.com/manuals/images/extensions/debugging/ios/attach_to_process_name.png)
 
-1. Start the app on the device
+3. Start the app on the device
 
-1. In `Edit Scheme` add the <AppName>.app folder as the executable
+4. In `Edit Scheme` add the <AppName>.app folder as the executable
 
 ### Debug symbols
 
@@ -14894,7 +14875,6 @@ Facebook has a recommendation that a Facebook Instant Game should start in less 
 
 Playable ads are usually limited to between 2 and 5 MB depending on the ad network.
 
-
 ## Size optimization strategies
 You can optimize the application size in two ways; by reducing the size of the engine and/or by reducing the size of the game assets.
 
@@ -14904,7 +14884,6 @@ To get a better understanding of what makes up the size of your application you 
 Defold will create a dependency tree when building and bundling your application. The build system will start from the bootstrap collection specified in the *game.project* file and inspect every referenced collection, game object and component to build a list of the assets that are in use. It is only these assets that will get included in the final application bundle. Anything not directly referenced will get excluded. While it is good to know that unused assets will not be included you as a developer still needs to consider what goes into the final application and the size of the individual assets and the total size of the application bundle. 
 </div>
 
-
 ## Optimize engine size
 A quick way to reduce the engine size is to remove functionality in the engine that you do not use. This is done [application manifest file](#manuals:app-manifest) where it is possible to remove engine components that you do not need. Examples:
 
@@ -14912,7 +14891,6 @@ A quick way to reduce the engine size is to remove functionality in the engine t
 * LiveUpdate - If your game does not use LiveUpdate it can be removed
 * Image loaded - If your game does not manually load and decode images using `image.load()`
 * BasisU - If your game has few textures, compare the build size without BasisU (removed via app manifest) and without texture compression versus a build with BasisU and compressed textures. For games with limited textures, it might be more beneficial to reduce the binary size and skip texture compression. Additionally, not using the transcoder can lower the amount of memory required to run your game.
-
 
 ## Optimize asset size
 The biggest wins in terms of asset size optimizations are usually gained by reducing the size of sounds and textures.
@@ -14961,13 +14939,10 @@ You can read more about how to optimize and manage textures in [this forum post]
 ### Optimize fonts
 The size of your fonts will be smaller if you specify what symbols you are going to use and set this in [Characters](#manuals:font) instead of using the All Chars checkbox.
 
-
 ### Exclude content for download on demand
 Another way of reducing initial application size is to exclude parts of the game content from the application bundle and download it on demand. Defold provides a system called Live Update for excluding content for download on demand.
 
 Excluded content can be anything from entire levels to unlockable characters, skins, weapons or vehicles. If your game has a lot of content, organize the loading process so that the bootstrap collection and the first level collection include the bare minimum resources required for that level. You achieve this by using collection proxies or factories with the "Exclude" checkbox enabled. Split resources according to the player's progress. This approach ensures efficient resource loading and keeps initial memory usage low. Learn more in the [Live Update manual](#manuals:live-update).
-
-
 
 ## Android specific size optimizations
 Android builds must support both 32-bit and 64-bit CPU architectures. When you [bundle for Android](#manuals:android) you can specify which CPU architectures to include:
@@ -14995,7 +14970,7 @@ If you create loads of short lived objects such as Lua tables every frame this w
 ### Prehash message and action ids
 If you do a lot of message handling or have many input events to deal with it is recommended to prehash the strings. Consider this piece of code:
 
-```
+```lua
 function on_message(self, message_id, message, sender)
     if message_id == hash("message1") then
         msg.post(sender, hash("message3"))
@@ -15007,7 +14982,7 @@ end
 
 In the above scenario the hashed string would be recreated every time a message is received. This can be improved by creating the hashed strings once and use the hashed versions when handling messages:
 
-```
+```lua
 local MESSAGE1 = hash("message1")
 local MESSAGE2 = hash("message2")
 local MESSAGE3 = hash("message3")
@@ -15025,7 +15000,7 @@ end
 ### Prefer and cache URLs
 Message passing or in other ways addressing a game object or component can be done both by providing an id as a string or hash or as a URL. If a string or hash is used it will internally be translated into a URL. It is therefore recommended to cache URLs that are used often, to get the best possible performance out of the system. Consider the following:
 
-```
+```lua
     local pos = go.get_position("enemy")
     local pos = go.get_position(hash("enemy"))
     local pos = go.get_position(msg.url("enemy"))
@@ -15034,7 +15009,7 @@ Message passing or in other ways addressing a game object or component can be do
 
 In all three cases the position of a game object with id `enemy` would be retrieved. In the first and second case the id (string or hash) would be converted into a URL before being used. This tells us that it's better to cache URLs and use the cached version for the best possible performance:
 
-```
+```lua
     function init(self)
         self.enemy_url = msg.url("enemy")
     end
@@ -15060,7 +15035,6 @@ Reducing the scene graph complexity is needed if the profiler shows high values 
 ## Frustum culling
 The render script can automatically ignore rendering of game object component that are outside of a defined bounding box (frustum). Learn more about Frustum Culling in the [Render Pipeline manual](#manuals:render).
 
-
 # Platform specific optimizations
 
 ## Android Device Performance Framework
@@ -15075,7 +15049,6 @@ Refer to the manuals on how to [optimize runtime performance](#manuals:optimizat
 
 ## Disable accelerometer
 If you are creating a mobile game which doesn't make use of the device accelerometer it is recommended to [disable it in *game.project*](#manuals:project-settings) to reduce the number of generated input events.
-
 
 # Platform specific optimizations
 
@@ -17755,7 +17728,7 @@ Once you have the above mentioned software installed follow these steps to insta
     cp ${TMP_DIR}/$(ls ${TMP_DIR} | grep server-${EXTENDER_VERSION}.jar) ${APPLICATION_DIR}/extender.jar
     cp ${TMP_DIR}/$(ls ${TMP_DIR} | grep manifestmergetool-${MANIFESTMERGETOOL_VERSION}.jar) ${APPLICATION_DIR}/manifestmergetool.jar
    ```
-7. __Start the server__ - We can now start the server by running the docker compose main command:
+6. __Start the server__ - We can now start the server by running the docker compose main command:
 ```sh
 docker compose -p extender -f server/docker/docker-compose.yml --profile <profile> up
 ```
