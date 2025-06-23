@@ -1110,6 +1110,47 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "check if <code>editor.tx.reset()</code> transaction with this property won't throw an error",
+            "description": "Check if <code>editor.tx.reset()</code> transaction with this property won't throw an error",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.can_reset",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Either resource path (e.g. <code>\"/main/game.script\"</code>), or internal node id passed to the script by the editor",
+                    "is_optional": "False",
+                    "name": "node",
+                    "types": [
+                        "string",
+                        "userdata"
+                    ]
+                },
+                {
+                    "doc": "Either <code>\"path\"</code>, <code>\"text\"</code>, or a property from the Outline view (hover the label to see its editor script name)",
+                    "is_optional": "False",
+                    "name": "property",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "value",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "check if <code>editor.tx.set()</code> transaction with this property won't throw an error",
             "description": "Check if <code>editor.tx.set()</code> transaction with this property won't throw an error",
             "error": "",
@@ -2044,8 +2085,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "create a transaction step that will deletes all items from node's list property when transacted with <code>editor.transact()</code>.",
-            "description": "Create a transaction step that will deletes all items from node's list property when transacted with <code>editor.transact()</code>.",
+            "brief": "create a transaction step that will remove all items from node's list property when transacted with <code>editor.transact()</code>.",
+            "description": "Create a transaction step that will remove all items from node's list property when transacted with <code>editor.transact()</code>.",
             "error": "",
             "examples": "",
             "language": "",
@@ -2167,6 +2208,47 @@
                     "name": "child_nodes",
                     "types": [
                         "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "A transaction step",
+                    "name": "tx",
+                    "types": [
+                        "transaction_step"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create a transaction step that will reset an overridden property to its default value when transacted with <code>editor.transact()</code>.",
+            "description": "Create a transaction step that will reset an overridden property to its default value when transacted with <code>editor.transact()</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.tx.reset",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Either resource path (e.g. <code>\"/main/game.script\"</code>), or internal node id passed to the script by the editor",
+                    "is_optional": "False",
+                    "name": "node",
+                    "types": [
+                        "string",
+                        "userdata"
+                    ]
+                },
+                {
+                    "doc": "Either <code>\"path\"</code>, <code>\"text\"</code>, or a property from the Outline view (hover the label to see its editor script name)",
+                    "is_optional": "False",
+                    "name": "property",
+                    "types": [
+                        "string"
                     ]
                 }
             ],
