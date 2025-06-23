@@ -18,46 +18,6 @@
             "type": "MACRO"
         },
         {
-            "brief": "dmLog:LogListener callback typedef",
-            "description": "dmLog listener function type. Provides all logs from dmLog* functions and print/pprint Lua functions.\nUsed with dmLogRegisterListener() and dmLogUnregisterListener()",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "dmLog:LogListener",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "",
-                    "is_optional": "False",
-                    "name": "severity",
-                    "types": [
-                        "LogSeverity"
-                    ]
-                },
-                {
-                    "doc": "",
-                    "is_optional": "False",
-                    "name": "domain",
-                    "types": [
-                        "const char*"
-                    ]
-                },
-                {
-                    "doc": "null terminated string",
-                    "is_optional": "False",
-                    "name": "formatted_string",
-                    "types": [
-                        "const char*"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "TYPEDEF"
-        },
-        {
             "brief": "log with \"debug\" severity",
             "description": "Debug messages are temporary log instances used when debugging a certain behavior\nUse dmLogOnceDebug for one-shot logging",
             "error": "",
@@ -190,8 +150,8 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "severity",
-                    "name": "",
+                    "doc": "Current log system severity level",
+                    "name": "severity",
                     "types": [
                         "LogSeverity"
                     ]
@@ -277,11 +237,11 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "severity",
-                    "is_optional": "True",
-                    "name": "type:LogSeverity",
+                    "doc": "Log system severity level to set",
+                    "is_optional": "False",
+                    "name": "severity",
                     "types": [
-                        ""
+                        "LogSeverity"
                     ]
                 }
             ],
@@ -301,11 +261,11 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "listener",
-                    "is_optional": "True",
-                    "name": "type:FLogListener",
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "listener",
                     "types": [
-                        ""
+                        "FLogListener"
                     ]
                 }
             ],
@@ -393,6 +353,46 @@
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Log listener callback typedef",
+            "description": "dmLog listener function type. Provides all logs from dmLog* functions and print/pprint Lua functions.\nUsed with dmLogRegisterListener() and dmLogUnregisterListener()",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FLogListener",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "severity",
+                    "types": [
+                        "LogSeverity"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "domain",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "null terminated string",
+                    "is_optional": "False",
+                    "name": "formatted_string",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
         },
         {
             "brief": "Log severity",

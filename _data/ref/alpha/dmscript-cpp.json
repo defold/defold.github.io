@@ -146,10 +146,10 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "hash value",
-                    "name": "The",
+                    "doc": "The hash value",
+                    "name": "value",
                     "types": [
-                        ""
+                        "hash"
                     ]
                 }
             ],
@@ -186,10 +186,10 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "hash value",
-                    "name": "The",
+                    "doc": "The hash value",
+                    "name": "value",
                     "types": [
-                        ""
+                        "hash"
                     ]
                 }
             ],
@@ -515,7 +515,7 @@
                     "is_optional": "False",
                     "name": "L",
                     "types": [
-                        ""
+                        "lua_State*"
                     ]
                 },
                 {
@@ -523,17 +523,17 @@
                     "is_optional": "False",
                     "name": "index",
                     "types": [
-                        ""
+                        "int"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "callback struct if successful, 0 otherwise",
-                    "name": "Lua",
+                    "doc": "Lua callback struct if successful, 0 otherwise",
+                    "name": "callback",
                     "types": [
-                        ""
+                        "LuaCallbackInfo*"
                     ]
                 }
             ],
@@ -555,7 +555,7 @@
                     "is_optional": "False",
                     "name": "cbk",
                     "types": [
-                        ""
+                        "LuaCallbackInfo*"
                     ]
                 }
             ],
@@ -959,7 +959,7 @@
                     "is_optional": "False",
                     "name": "cbk",
                     "types": [
-                        ""
+                        "LuaCallbackInfo*"
                     ]
                 }
             ],
@@ -969,7 +969,7 @@
                     "doc": "Lua state",
                     "name": "L",
                     "types": [
-                        ""
+                        "lua_State*"
                     ]
                 }
             ],
@@ -1216,7 +1216,7 @@
                     "is_optional": "False",
                     "name": "cbk",
                     "types": [
-                        ""
+                        "LuaCallbackInfo*"
                     ]
                 }
             ],
@@ -1312,7 +1312,7 @@
                     "is_optional": "False",
                     "name": "L",
                     "types": [
-                        ""
+                        "lua_State*"
                     ]
                 },
                 {
@@ -1320,7 +1320,7 @@
                     "is_optional": "False",
                     "name": "index",
                     "types": [
-                        ""
+                        "int"
                     ]
                 }
             ],
@@ -1330,7 +1330,7 @@
                     "doc": "if value at #index is a dmVMath::Matrix4*",
                     "name": "true",
                     "types": [
-                        ""
+                        "bool"
                     ]
                 }
             ],
@@ -1352,7 +1352,7 @@
                     "is_optional": "False",
                     "name": "L",
                     "types": [
-                        ""
+                        "lua_State*"
                     ]
                 },
                 {
@@ -1360,7 +1360,7 @@
                     "is_optional": "False",
                     "name": "index",
                     "types": [
-                        ""
+                        "int"
                     ]
                 }
             ],
@@ -1370,7 +1370,7 @@
                     "doc": "if value at #index is a dmVMath::Quat*",
                     "name": "true",
                     "types": [
-                        ""
+                        "bool"
                     ]
                 }
             ],
@@ -1432,7 +1432,7 @@
                     "is_optional": "False",
                     "name": "L",
                     "types": [
-                        ""
+                        "lua_State*"
                     ]
                 },
                 {
@@ -1440,7 +1440,7 @@
                     "is_optional": "False",
                     "name": "index",
                     "types": [
-                        ""
+                        "int"
                     ]
                 }
             ],
@@ -1450,7 +1450,7 @@
                     "doc": "if value at #index is a dmVMath::Vector3*",
                     "name": "true",
                     "types": [
-                        ""
+                        "bool"
                     ]
                 }
             ],
@@ -1472,7 +1472,7 @@
                     "is_optional": "False",
                     "name": "L",
                     "types": [
-                        ""
+                        "lua_State*"
                     ]
                 },
                 {
@@ -1480,7 +1480,7 @@
                     "is_optional": "False",
                     "name": "index",
                     "types": [
-                        ""
+                        "int"
                     ]
                 }
             ],
@@ -1490,7 +1490,7 @@
                     "doc": "if value at #index is a dmVMath::Vector4*",
                     "name": "true",
                     "types": [
-                        ""
+                        "bool"
                     ]
                 }
             ],
@@ -1656,7 +1656,7 @@
                     "is_optional": "False",
                     "name": "L",
                     "types": [
-                        ""
+                        "lua_State*"
                     ]
                 },
                 {
@@ -1664,7 +1664,7 @@
                     "is_optional": "False",
                     "name": "nargs",
                     "types": [
-                        ""
+                        "int"
                     ]
                 },
                 {
@@ -1672,17 +1672,17 @@
                     "is_optional": "False",
                     "name": "nresult",
                     "types": [
-                        ""
+                        "int"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "code from pcall",
+                    "doc": "error code from pcall",
                     "name": "error",
                     "types": [
-                        ""
+                        "int"
                     ]
                 }
             ],
@@ -2144,7 +2144,7 @@
                     "is_optional": "False",
                     "name": "cbk",
                     "types": [
-                        ""
+                        "LuaCallbackInfo*"
                     ]
                 }
             ],
@@ -2154,7 +2154,7 @@
                     "doc": "if the setup was successful",
                     "name": "true",
                     "types": [
-                        ""
+                        "bool"
                     ]
                 }
             ],
@@ -2176,7 +2176,7 @@
                     "is_optional": "False",
                     "name": "cbk",
                     "types": [
-                        ""
+                        "LuaCallbackInfo*"
                     ]
                 }
             ],

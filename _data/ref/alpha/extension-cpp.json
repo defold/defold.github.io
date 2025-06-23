@@ -202,6 +202,32 @@
             "type": "ENUM"
         },
         {
+            "brief": "The extension app parameters",
+            "description": "The extension app parameters",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Deprecated",
+                    "name": "m_ConfigFile",
+                    "type": "HConfigFile"
+                },
+                {
+                    "doc": "App exit code",
+                    "name": "m_ExitStatus",
+                    "type": "ExtensionAppExitCode"
+                }
+            ],
+            "name": "ExtensionAppParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
             "brief": "Finalizes an extension app params struct (dealloca...",
             "description": "Finalizes an extension app params struct (deallocates internal memory)",
             "error": "",
@@ -448,7 +474,22 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "VARIABLE"
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Extension event",
+            "description": "Extension event",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ExtensionEvent",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "event id enumeration",
@@ -498,7 +539,7 @@
         },
         {
             "brief": "The global parameters avalable when registering an...",
-            "description": "The global parameters avalable when registering and unregistering an extensioin",
+            "description": "The global parameters avalable when registering and unregistering an extension",
             "error": "",
             "examples": "",
             "language": "",
@@ -804,11 +845,11 @@
             ],
             "parameters": [
                 {
-                    "doc": "An UIApplicationDelegate, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc",
+                    "doc": "An id<UIApplicationDelegate>, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc",
                     "is_optional": "False",
                     "name": "delegate",
                     "types": [
-                        "id<UIApplicationDelegate>"
+                        "void*"
                     ]
                 }
             ],
@@ -866,6 +907,38 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Callback when the app is being finalized",
+            "description": "Callback when the app is being finalized",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FExtensionAppFinalize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "EXTENSION_RESULT_OK if all went ok",
+                    "name": "result",
+                    "types": [
+                        "ExtensionResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
         },
         {
             "brief": "Callback when the app is being initialized. Called...",
@@ -951,38 +1024,6 @@
                     "name": "params",
                     "types": [
                         "ExtensionParams"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "EXTENSION_RESULT_OK if all went ok",
-                    "name": "result",
-                    "types": [
-                        "ExtensionResult"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "TYPEDEF"
-        },
-        {
-            "brief": "Callback when the app is being finalized",
-            "description": "Callback when the app is being finalized",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "FExtensionInitialize",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "",
-                    "is_optional": "False",
-                    "name": "params",
-                    "types": [
-                        "ExtensionAppParams"
                     ]
                 }
             ],

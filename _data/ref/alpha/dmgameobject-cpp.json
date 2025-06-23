@@ -1538,7 +1538,7 @@
                     "is_optional": "False",
                     "name": "fn",
                     "types": [
-                        "FIteratorChildren"
+                        "dmGameObject::FIteratorChildren"
                     ]
                 }
             ],
@@ -2082,7 +2082,7 @@
                     "is_optional": "False",
                     "name": "fn",
                     "types": [
-                        "FIteratorProperties"
+                        "dmGameObject::FIteratorProperties"
                     ]
                 }
             ],
@@ -2379,7 +2379,7 @@
                     "is_optional": "False",
                     "name": "symbol",
                     "types": [
-                        "cpp_symbol_name"
+                        "symbol"
                     ]
                 },
                 {
@@ -2411,118 +2411,6 @@
             "returnvalues": [],
             "tparams": [],
             "type": "MACRO"
-        },
-        {
-            "brief": "Sends a script message",
-            "description": "Sends a script message. Wraps the message in a dmGameSystemDDF::ScriptMessage struct.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "dmScript::PostDDF",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "The ddf message to send",
-                    "is_optional": "False",
-                    "name": "message",
-                    "types": [
-                        "TDDFType*"
-                    ]
-                },
-                {
-                    "doc": "The sender",
-                    "is_optional": "False",
-                    "name": "sender",
-                    "types": [
-                        "dmMessage::Message*"
-                    ]
-                },
-                {
-                    "doc": "The receiver",
-                    "is_optional": "False",
-                    "name": "receiver",
-                    "types": [
-                        "dmMessage::Message*"
-                    ]
-                },
-                {
-                    "doc": "The function ref. 0 wil cause the \"on_message\" to be called",
-                    "is_optional": "False",
-                    "name": "function_ref",
-                    "types": [
-                        "int"
-                    ]
-                },
-                {
-                    "doc": "call dmScript::UnrefInInstance on the function_ref after the dmScript::PCall is made",
-                    "is_optional": "False",
-                    "name": "unref_function_after_call",
-                    "types": [
-                        "bool"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "true if successful",
-                    "name": "success",
-                    "types": [
-                        "bool"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Sends an unref script message",
-            "description": "Sends a script message to unreference a script object",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "dmScript::PostScriptUnrefMessage",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "The sender",
-                    "is_optional": "False",
-                    "name": "sender",
-                    "types": [
-                        "dmMessage::Message*"
-                    ]
-                },
-                {
-                    "doc": "The receiver",
-                    "is_optional": "False",
-                    "name": "receiver",
-                    "types": [
-                        "dmMessage::Message*"
-                    ]
-                },
-                {
-                    "doc": "The reference to remove",
-                    "is_optional": "False",
-                    "name": "reference",
-                    "types": [
-                        "int"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "RESULT_OK if successful",
-                    "name": "success",
-                    "types": [
-                        "Result"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
         },
         {
             "brief": "Retrieve a collection from the specified instance",
@@ -2723,7 +2611,7 @@
                     "is_optional": "False",
                     "name": "collection",
                     "types": [
-                        ""
+                        "HCollection"
                     ]
                 },
                 {
@@ -2731,7 +2619,7 @@
                     "is_optional": "False",
                     "name": "type_hash",
                     "types": [
-                        "dhmash_t"
+                        "dmhash_t"
                     ]
                 }
             ],
@@ -2763,7 +2651,7 @@
                     "is_optional": "False",
                     "name": "collection",
                     "types": [
-                        ""
+                        "HCollection"
                     ]
                 },
                 {
@@ -2771,7 +2659,7 @@
                     "is_optional": "False",
                     "name": "component_type_index",
                     "types": [
-                        ""
+                        "uint32_t"
                     ]
                 }
             ],
@@ -3035,7 +2923,7 @@
                     "is_optional": "False",
                     "name": "collection",
                     "types": [
-                        ""
+                        "HCollection"
                     ]
                 },
                 {
@@ -3043,7 +2931,7 @@
                     "is_optional": "False",
                     "name": "component_type_index",
                     "types": [
-                        ""
+                        "uint32_t"
                     ]
                 }
             ],
@@ -3538,7 +3426,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HImstance"
+                        "HInstance"
                     ]
                 }
             ],
@@ -3554,21 +3442,6 @@
             ],
             "tparams": [],
             "type": "FUNCTION"
-        },
-        {
-            "brief": "PropertyContainerBuilderParams",
-            "description": "Helper struct to create a property container builder.\nIt is required to fill out how many items of each type that is wanted.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "m_BoolCount [type:int32_t] Number of items of type bool",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "STRUCT"
         },
         {
             "brief": "Create a new gameobject instance",
@@ -3591,11 +3464,11 @@
                     ]
                 },
                 {
-                    "doc": "|type: const char*] Prototype file name. May be 0.",
+                    "doc": "Prototype file name. May be 0.",
                     "is_optional": "False",
                     "name": "prototype_name",
                     "types": [
-                        ""
+                        "const char*"
                     ]
                 }
             ],
@@ -3626,6 +3499,212 @@
             "returnvalues": [],
             "tparams": [],
             "type": "ENUM"
+        },
+        {
+            "brief": "Sends a script message",
+            "description": "Sends a script message. Wraps the message in a dmGameSystemDDF::ScriptMessage struct.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "PostDDF",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The ddf message to send",
+                    "is_optional": "False",
+                    "name": "message",
+                    "types": [
+                        "T*"
+                    ]
+                },
+                {
+                    "doc": "The sender",
+                    "is_optional": "False",
+                    "name": "sender",
+                    "types": [
+                        "dmMessage::Message*"
+                    ]
+                },
+                {
+                    "doc": "The receiver",
+                    "is_optional": "False",
+                    "name": "receiver",
+                    "types": [
+                        "dmMessage::Message*"
+                    ]
+                },
+                {
+                    "doc": "The function ref. 0 wil cause the \"on_message\" to be called",
+                    "is_optional": "False",
+                    "name": "function_ref",
+                    "types": [
+                        "int"
+                    ]
+                },
+                {
+                    "doc": "call dmScript::UnrefInInstance on the function_ref after the dmScript::PCall is made",
+                    "is_optional": "False",
+                    "name": "unref_function_after_call",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if successful",
+                    "name": "success",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [
+                {
+                    "doc": "",
+                    "name": "T",
+                    "type": ""
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sends an unref script message",
+            "description": "Sends a script message to unreference a script object",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "PostScriptUnrefMessage",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The sender",
+                    "is_optional": "False",
+                    "name": "sender",
+                    "types": [
+                        "dmMessage::Message*"
+                    ]
+                },
+                {
+                    "doc": "The receiver",
+                    "is_optional": "False",
+                    "name": "receiver",
+                    "types": [
+                        "dmMessage::Message*"
+                    ]
+                },
+                {
+                    "doc": "The reference to remove",
+                    "is_optional": "False",
+                    "name": "reference",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "success",
+                    "types": [
+                        "Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "PropertyContainerBuilderParams\nHelper struct to c...",
+            "description": "PropertyContainerBuilderParams\nHelper struct to create a property container builder.\nIt is required to fill out how many items of each type that is wanted.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "PropertyContainerBuilderParams",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Number of items of type float",
+                    "is_optional": "False",
+                    "name": "m_NumberCount",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Number of items of type dmhash_t",
+                    "is_optional": "False",
+                    "name": "m_HashCount",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Number of items of type const char*",
+                    "is_optional": "False",
+                    "name": "m_URLStringCount",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Size of all url strings combined, including null terminators",
+                    "is_optional": "False",
+                    "name": "m_URLStringSize",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Number of items of type dmMessage::URL",
+                    "is_optional": "False",
+                    "name": "m_URLCount",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Number of items of type vector3 (float[3])",
+                    "is_optional": "False",
+                    "name": "m_Vector3Count",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Number of items of type vector4 (float[4])",
+                    "is_optional": "False",
+                    "name": "m_Vector4Count",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Number of items of type quaternion (float[4])",
+                    "is_optional": "False",
+                    "name": "m_QuatCount",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Number of items of type bool",
+                    "is_optional": "False",
+                    "name": "m_BoolCount",
+                    "types": [
+                        "int32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "Allocates and copies a property container",
@@ -4671,7 +4750,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HImstance"
+                        "HInstance"
                     ]
                 },
                 {
@@ -4703,7 +4782,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HImstance"
+                        "HInstance"
                     ]
                 },
                 {
@@ -4719,7 +4798,7 @@
                     "is_optional": "False",
                     "name": "transforms",
                     "types": [
-                        ""
+                        "dmTransform::Transform*"
                     ]
                 },
                 {
@@ -4727,7 +4806,7 @@
                     "is_optional": "False",
                     "name": "transform_count",
                     "types": [
-                        ""
+                        "uint32_t"
                     ]
                 }
             ],
@@ -4815,7 +4894,7 @@
                     "is_optional": "False",
                     "name": "position",
                     "types": [
-                        "dmGameObject::Point3"
+                        "dmVMath::Point3"
                     ]
                 }
             ],
@@ -4843,11 +4922,11 @@
                     ]
                 },
                 {
-                    "doc": "New Position",
+                    "doc": "New rotation",
                     "is_optional": "False",
-                    "name": "position",
+                    "name": "rotation",
                     "types": [
-                        ""
+                        "dmVmath::Quat"
                     ]
                 }
             ],
@@ -4879,7 +4958,7 @@
                     "is_optional": "False",
                     "name": "scale",
                     "types": [
-                        ""
+                        "float"
                     ]
                 }
             ],
@@ -4907,11 +4986,11 @@
                     ]
                 },
                 {
-                    "doc": "New uniform scale",
+                    "doc": "New non-uniform scale",
                     "is_optional": "False",
                     "name": "scale",
                     "types": [
-                        ""
+                        "dmVmath::Vector3"
                     ]
                 }
             ],
