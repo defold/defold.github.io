@@ -127,7 +127,7 @@
 			{%- for return in function.returnvalues -%}
 			<tr>
 				<td><code>{{ return.name }}</code></td>
-				<td>{{ return.types | join: ", " }}</td>
+				<td>{%- for type in return.types -%}<code>{{ type }}</code>{%- endfor -%}</td>
 				<td>{{ return.doc }}</td>
 			</tr>
 			{%- endfor -%}

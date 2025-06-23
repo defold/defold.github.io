@@ -4,7 +4,7 @@
 	{%- for param in parameters -%}
 	<tr>
 		<td><code>{%- if param.is_optional == "True" -%}[{{ param.name }}]{%- else -%}{{ param.name }}{%- endif -%}</code></td>
-		<td><code>{{ param.types | join: ", " }}</code></td>
+		<td>{%- for type in param.types -%}<code>{{ type }}</code>{%- endfor -%}</td>
 		<td>{{ param.doc }}
 			{%- if param.parameters -%}
 				{% include api_lua_parameters.html parameters=param.parameters %}
