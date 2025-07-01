@@ -830,6 +830,119 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Share a file",
+            "examples": "",
+            "name": "steam.remote_storage_file_share",
+            "parameters": [
+                {
+                    "doc": "Name of file to share",
+                    "name": "filename",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Id",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get number of uploaded files",
+            "examples": "",
+            "name": "steam.remote_storage_get_file_count",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "Count",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get file information",
+            "examples": "",
+            "name": "steam.remote_storage_get_file_name_and_size",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "Count",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get storage quota",
+            "examples": "",
+            "name": "steam.remote_storage_get_quota",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "Bytes",
+                    "name": "number"
+                },
+                {
+                    "doc": "Bytes",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Creates a new file, writes the bytes to the file, and then closes the file. If the target file already exists, it is overwritten.",
+            "examples": "",
+            "name": "steam.remote_storage_file_write",
+            "parameters": [
+                {
+                    "doc": "The name of the file to write to.",
+                    "name": "filename",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "data",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Opens a binary file, reads the contents of the file into a byte array, And then closes the file.",
+            "examples": "",
+            "name": "steam.remote_storage_file_read",
+            "parameters": [
+                {
+                    "doc": "Name of the file to read from",
+                    "name": "filename",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Returns the CSteamID of the account currently logged into the Steam client. A CSteamID is a unique identifier for an account, and used to differentiate users in all parts of the Steamworks API.",
             "examples": "",
             "name": "steam.user_get_steam_id",
