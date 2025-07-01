@@ -544,7 +544,12 @@
             "examples": "",
             "name": "steam.matchmaking_request_lobby_list",
             "parameters": [],
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "Id",
+                    "name": "string"
+                }
+            ],
             "type": "FUNCTION"
         },
         {
@@ -581,7 +586,12 @@
                     ]
                 }
             ],
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "Id",
+                    "name": "string"
+                }
+            ],
             "type": "FUNCTION"
         },
         {
@@ -666,6 +676,155 @@
                 {
                     "doc": "Of member",
                     "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Send message",
+            "examples": "",
+            "name": "steam.networking_send_message_to_user",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "identity_remote",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "data",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "A bitmask of k_nSteamNetworkingSend_xxx options",
+                    "name": "send_flags",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "A routing number you can use to help route message to different systems",
+                    "name": "remote_channel",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Receive message",
+            "examples": "",
+            "name": "steam.networking_receive_messages_on_channel",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "localChannel",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "table"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Accept session Call this in response to a SteamNetworkingMessagesSessionRequest_t callback. pending or otherwise. If there is an existing active session, this function will return true, even if it is not pending.",
+            "examples": "",
+            "name": "steam.networking_accept_session_with_user",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "identity_remote",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Returns false if there is no session with the user",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Close sesssion Call this when you&#x27;re done talking to a user to immediately free up resources under-the-hood",
+            "examples": "",
+            "name": "steam.networking_close_session_with_user",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "identity_remote",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Close channel Call this when you&#x27;re done talking to a user on a specific channel.",
+            "examples": "",
+            "name": "steam.networking_close_channel_with_user",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "identity_remote",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "local_channel",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get connection info Returns information about the latest state of a connection, if any, with the given peer.",
+            "examples": "",
+            "name": "steam.networking_get_session_connection_info",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "identity_remote",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Connection info (state, info, status)",
+                    "name": "table"
                 }
             ],
             "type": "FUNCTION"
@@ -909,19 +1068,6 @@
             "returnvalues": [
                 {
                     "doc": "",
-                    "name": "Boolean"
-                }
-            ],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Ask the server to send down this user&#x27;s data and achievements for this game.",
-            "examples": "",
-            "name": "steam.user_stats_request_current_stats",
-            "parameters": [],
-            "returnvalues": [
-                {
-                    "doc": "True if successful",
                     "name": "Boolean"
                 }
             ],
