@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: This example shows how to create a knockback effect when hit.
 category: physics
 layout: example
+opengraph_image: https://www.defold.com/examples/physics/knockback/knockback_thumb.png
 path: physics/knockback
 scripts: enemy.script
 tags: physics
+thumbnail: knockback_thumb.png
 title: Knockback
+twitter_image: https://www.defold.com/examples/physics/knockback/knockback_thumb.png
 
 ---
 
