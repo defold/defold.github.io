@@ -18,7 +18,6 @@ toc:
 - Differences between supported platforms
 - Troubleshooting
 - Source code
-- API reference
 ---
 
 # Defold In-app purchase extension API documentation
@@ -204,7 +203,11 @@ IAP supports auto-completion, where fulfilment is automatically signalled to the
 
 ### Consumable vs non-consumable products
 
-The Google Play store does only support consumable products. If you need non-consumable products it is recommended to use manual fulfilment of purchases and never finish purchases for products that should be non-consumable. As long as a purchase isn't finished it will be returned as an active purchase when `iap.set_listener()` is called. If you do not call `iap.finish()` on a purchase you still need to indicate to Google Play that the purchase has been handled. You can do this by calling `iap.acknowledge()`. If you do not call `iap.acknowledge()` the purchase will be automatically refunded by Google after a few days.
+#### Google Play
+
+It is recommended to use manual fulfilment of purchases and never finish purchases for products that should be non-consumable. As long as a purchase isn't finished it will be returned as an active purchase when `iap.set_listener()` is called. If you do not call `iap.finish()` on a purchase you still need to indicate to Google Play that the purchase has been handled. You can do this by calling `iap.acknowledge()`. If you do not call `iap.acknowledge()` the purchase will be automatically refunded by Google after a few days.
+
+#### App Store
 
 The Apple App Store supports non-consumable products which means that you need to finish all purchases when you provide products to your users. You can do it automatically by keeping the default behavior in the game project settings or manually (if you want to do that after server validation, for example) using `iap.finish()`.
 
@@ -252,6 +255,5 @@ On iOS, the "price_string" field contains '~' characters
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-iap)
-
-
-## API reference[API Reference - iap](/extension-iap/iap_api)
+## API reference
+[API Reference - iap](/extension-iap/iap_api)
