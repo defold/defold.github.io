@@ -178,16 +178,7 @@
             "members": [],
             "name": "FReloadedCallback",
             "notes": [],
-            "parameters": [
-                {
-                    "doc": "Parameters",
-                    "is_optional": "False",
-                    "name": "params",
-                    "types": [
-                        ""
-                    ]
-                }
-            ],
+            "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
@@ -242,16 +233,7 @@
             "members": [],
             "name": "FResourceReloadedCallback",
             "notes": [],
-            "parameters": [
-                {
-                    "doc": "Parameters",
-                    "is_optional": "False",
-                    "name": "params",
-                    "types": [
-                        ""
-                    ]
-                }
-            ],
+            "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
@@ -568,7 +550,7 @@
                     "is_optional": "False",
                     "name": "resource",
                     "types": [
-                        ""
+                        "const void*"
                     ]
                 },
                 {
@@ -576,7 +558,7 @@
                     "is_optional": "False",
                     "name": "hash",
                     "types": [
-                        ""
+                        "uint64_t*"
                     ]
                 }
             ],
@@ -932,11 +914,27 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Parameters",
+                    "doc": "Handle of the factory to which the callback will be registered",
                     "is_optional": "False",
-                    "name": "params",
+                    "name": "factory",
                     "types": [
-                        ""
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "Callback function to register",
+                    "is_optional": "False",
+                    "name": "callback",
+                    "types": [
+                        "dmResource::FResourceReloadedCallback"
+                    ]
+                },
+                {
+                    "doc": "User data that to",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
                     ]
                 }
             ],

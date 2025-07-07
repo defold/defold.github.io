@@ -1,6 +1,30 @@
 {
     "elements": [
         {
+            "brief": "TCP client object",
+            "description": "TCP client object",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "client",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "closes a client TCP object",
             "description": "Closes the TCP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.\n<span class=\"icon-attention\"></span> It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.",
             "error": "",
@@ -779,6 +803,30 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "TCP master object",
+            "description": "TCP master object",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "master",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "binds a master object to address and port on the local host",
             "description": "Binds a master object to address and port on the local host.",
             "error": "",
@@ -1476,7 +1524,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "VARIABLE"
+            "type": "CONSTANT"
         },
         {
             "brief": "the current LuaSocket version",
@@ -1491,7 +1539,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "VARIABLE"
+            "type": "CONSTANT"
         },
         {
             "brief": "creates a new connected TCP client object",
@@ -2127,6 +2175,30 @@
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "unconnected UDP object",
+            "description": "unconnected UDP object",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "unconnected",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
         },
         {
             "brief": "closes the UDP socket",
