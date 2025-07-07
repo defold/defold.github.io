@@ -1,6 +1,271 @@
 {
     "elements": [
         {
+            "brief": "engine exit code",
+            "description": "Engine exit code.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "EXTENSION_APP_EXIT_CODE_NONE",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_APP_EXIT_CODE_REBOOT",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_APP_EXIT_CODE_EXIT",
+                    "type": ""
+                }
+            ],
+            "name": "AppExitCode",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "The extension app parameters",
+            "description": "The extension app parameters",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [
+                {
+                    "doc": "Deprecated",
+                    "name": "m_ConfigFile",
+                    "type": "HConfigFile"
+                },
+                {
+                    "doc": "App exit code",
+                    "name": "m_ExitStatus",
+                    "type": "ExtensionAppExitCode"
+                }
+            ],
+            "name": "AppParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Finalizes an extension app params struct (dealloca...",
+            "description": "Finalizes an extension app params struct (deallocates internal memory)",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "AppParamsFinalize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "app_params",
+                    "types": [
+                        "ExtensionAppParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get the app exit code",
+            "description": "get the app exit code",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "AppParamsGetAppExitCode",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize",
+                    "is_optional": "False",
+                    "name": "app_params",
+                    "types": [
+                        "dmExtension::AppParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "engine exit code",
+                    "name": "code",
+                    "types": [
+                        "ExtensionAppExitCode"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets a context using a specified name hash",
+            "description": "Gets a context using a specified name hash",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "AppParamsGetContext",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams"
+                    ]
+                },
+                {
+                    "doc": "the context name hash",
+                    "is_optional": "False",
+                    "name": "name_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The context, if it exists",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets a context using a specified name",
+            "description": "Gets a context using a specified name",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "AppParamsGetContextByName",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams"
+                    ]
+                },
+                {
+                    "doc": "the context name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The context, if it exists",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Initializes an extension app params struct\nNOTE: t...",
+            "description": "Initializes an extension app params struct\nNOTE: this is an opaque struct, do not use it's members directly!",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "AppParamsInitialize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "app_params",
+                    "types": [
+                        "ExtensionAppParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets a context using a specified name",
+            "description": "Sets a context using a specified name",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "AppParamsSetContext",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams"
+                    ]
+                },
+                {
+                    "doc": "the context name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "the context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "0 if successful",
+                    "name": "result",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "extra callback type",
             "description": "Extra callback type for RegisterCallback function.",
             "error": "",
@@ -132,6 +397,21 @@
             "type": "MACRO"
         },
         {
+            "brief": "Extension event",
+            "description": "Extension event",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "Event",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
             "brief": "event id enumeration",
             "description": "Event id enumeration.\nEVENT_ID_ICONIFYAPP and EVENT_ID_DEICONIFYAPP only available on <span class=\"icon-osx\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span>",
             "error": "",
@@ -178,6 +458,271 @@
             "type": "ENUM"
         },
         {
+            "brief": "engine exit code",
+            "description": "Engine exit code.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "EXTENSION_APP_EXIT_CODE_NONE",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_APP_EXIT_CODE_REBOOT",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "EXTENSION_APP_EXIT_CODE_EXIT",
+                    "type": ""
+                }
+            ],
+            "name": "ExtensionAppExitCode",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "The extension app parameters",
+            "description": "The extension app parameters",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [
+                {
+                    "doc": "Deprecated",
+                    "name": "m_ConfigFile",
+                    "type": "HConfigFile"
+                },
+                {
+                    "doc": "App exit code",
+                    "name": "m_ExitStatus",
+                    "type": "ExtensionAppExitCode"
+                }
+            ],
+            "name": "ExtensionAppParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Finalizes an extension app params struct (dealloca...",
+            "description": "Finalizes an extension app params struct (deallocates internal memory)",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionAppParamsFinalize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "app_params",
+                    "types": [
+                        "ExtensionAppParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get the app exit code",
+            "description": "get the app exit code",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionAppParamsGetAppExitCode",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize",
+                    "is_optional": "False",
+                    "name": "app_params",
+                    "types": [
+                        "dmExtension::AppParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "engine exit code",
+                    "name": "code",
+                    "types": [
+                        "ExtensionAppExitCode"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets a context using a specified name hash",
+            "description": "Gets a context using a specified name hash",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionAppParamsGetContext",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams"
+                    ]
+                },
+                {
+                    "doc": "the context name hash",
+                    "is_optional": "False",
+                    "name": "name_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The context, if it exists",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets a context using a specified name",
+            "description": "Gets a context using a specified name",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionAppParamsGetContextByName",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams"
+                    ]
+                },
+                {
+                    "doc": "the context name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The context, if it exists",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Initializes an extension app params struct\nNOTE: t...",
+            "description": "Initializes an extension app params struct\nNOTE: this is an opaque struct, do not use it's members directly!",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionAppParamsInitialize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "app_params",
+                    "types": [
+                        "ExtensionAppParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets a context using a specified name",
+            "description": "Sets a context using a specified name",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionAppParamsSetContext",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams"
+                    ]
+                },
+                {
+                    "doc": "the context name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "the context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "0 if successful",
+                    "name": "result",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "extra callback type",
             "description": "Extra callback type for RegisterCallback function.",
             "error": "",
@@ -217,6 +762,21 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Extension event",
+            "description": "Extension event",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionEvent",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "event id enumeration",
@@ -266,7 +826,7 @@
         },
         {
             "brief": "The global parameters avalable when registering an...",
-            "description": "The global parameters avalable when registering and unregistering an extensioin",
+            "description": "The global parameters avalable when registering and unregistering an extension",
             "error": "",
             "examples": "",
             "language": "C",
@@ -294,6 +854,182 @@
             "returnvalues": [],
             "tparams": [],
             "type": "STRUCT"
+        },
+        {
+            "brief": "Finalizes an extension  params struct (deallocates...",
+            "description": "Finalizes an extension  params struct (deallocates internal memory)",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionParamsFinalize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "app_params",
+                    "types": [
+                        "ExtensionParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets a context using a specified name hash",
+            "description": "Gets a context using a specified name hash",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionParamsGetContext",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionParams"
+                    ]
+                },
+                {
+                    "doc": "the context name hash",
+                    "is_optional": "False",
+                    "name": "name_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The context, if it exists",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets a context using a specified name",
+            "description": "Gets a context using a specified name",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionParamsGetContextByName",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionParams"
+                    ]
+                },
+                {
+                    "doc": "the context name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The context, if it exists",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Initializes an extension params struct\nNOTE: this ...",
+            "description": "Initializes an extension params struct\nNOTE: this is an opaque struct, do not use it's members directly!",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionParamsInitialize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "app_params",
+                    "types": [
+                        "ExtensionParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets a context using a specified name",
+            "description": "Sets a context using a specified name",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionParamsSetContext",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams"
+                    ]
+                },
+                {
+                    "doc": "the context name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "the context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "0 if successful",
+                    "name": "result",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "Extension declaration helper. Internal function. U...",
@@ -396,11 +1132,11 @@
             ],
             "parameters": [
                 {
-                    "doc": "An UIApplicationDelegate, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc",
+                    "doc": "An id<UIApplicationDelegate>, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc",
                     "is_optional": "False",
                     "name": "delegate",
                     "types": [
-                        "id<UIApplicationDelegate>"
+                        "void*"
                     ]
                 }
             ],
@@ -483,6 +1219,38 @@
                 {
                     "doc": "",
                     "name": "",
+                    "types": [
+                        "ExtensionResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Callback when the app is being finalized",
+            "description": "Callback when the app is being finalized",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "FExtensionAppFinalize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "EXTENSION_RESULT_OK if all went ok",
+                    "name": "result",
                     "types": [
                         "ExtensionResult"
                     ]
@@ -624,38 +1392,6 @@
             "type": "TYPEDEF"
         },
         {
-            "brief": "Callback when the app is being finalized",
-            "description": "Callback when the app is being finalized",
-            "error": "",
-            "examples": "",
-            "language": "C",
-            "members": [],
-            "name": "FExtensionInitialize",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "",
-                    "is_optional": "False",
-                    "name": "params",
-                    "types": [
-                        "ExtensionAppParams"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "EXTENSION_RESULT_OK if all went ok",
-                    "name": "result",
-                    "types": [
-                        "ExtensionResult"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "TYPEDEF"
-        },
-        {
             "brief": "Receives an event from the engine",
             "description": "Receives an event from the engine",
             "error": "",
@@ -721,7 +1457,7 @@
         },
         {
             "brief": "The global parameters avalable when registering an...",
-            "description": "The global parameters avalable when registering and unregistering an extensioin",
+            "description": "The global parameters avalable when registering and unregistering an extension",
             "error": "",
             "examples": "",
             "language": "C++",
@@ -751,6 +1487,182 @@
             "type": "STRUCT"
         },
         {
+            "brief": "Finalizes an extension  params struct (deallocates...",
+            "description": "Finalizes an extension  params struct (deallocates internal memory)",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "ParamsFinalize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "app_params",
+                    "types": [
+                        "ExtensionParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets a context using a specified name hash",
+            "description": "Gets a context using a specified name hash",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "ParamsGetContext",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionParams"
+                    ]
+                },
+                {
+                    "doc": "the context name hash",
+                    "is_optional": "False",
+                    "name": "name_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The context, if it exists",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets a context using a specified name",
+            "description": "Gets a context using a specified name",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "ParamsGetContextByName",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionParams"
+                    ]
+                },
+                {
+                    "doc": "the context name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The context, if it exists",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Initializes an extension params struct\nNOTE: this ...",
+            "description": "Initializes an extension params struct\nNOTE: this is an opaque struct, do not use it's members directly!",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "ParamsInitialize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "app_params",
+                    "types": [
+                        "ExtensionParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets a context using a specified name",
+            "description": "Sets a context using a specified name",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "ParamsSetContext",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams"
+                    ]
+                },
+                {
+                    "doc": "the context name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "the context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "0 if successful",
+                    "name": "result",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Register application delegate",
             "description": "Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)",
             "error": "",
@@ -763,11 +1675,11 @@
             ],
             "parameters": [
                 {
-                    "doc": "An UIApplicationDelegate, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc",
+                    "doc": "An id<UIApplicationDelegate>, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc",
                     "is_optional": "False",
                     "name": "delegate",
                     "types": [
-                        "id<UIApplicationDelegate>"
+                        "void*"
                     ]
                 }
             ],

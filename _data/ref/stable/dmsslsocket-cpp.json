@@ -1,6 +1,38 @@
 {
     "elements": [
         {
+            "brief": "delete a secure socket",
+            "description": "Delete a secure socket. Does not close the underlying socket",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmSSLSocket</span><span class=\"o\">::</span><span class=\"n\">Delete</span><span class=\"p\">(</span><span class=\"n\">sslsocket</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "Delete",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Secure socket to close",
+                    "is_optional": "False",
+                    "name": "socket",
+                    "types": [
+                        "Socket"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "on success",
+                    "name": "RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Set socket receive timeout",
             "description": "Set socket receive timeout",
             "error": "",
@@ -17,7 +49,7 @@
                     "is_optional": "False",
                     "name": "socket",
                     "types": [
-                        "dmSocket::Socket"
+                        "Socket"
                     ]
                 },
                 {
@@ -43,51 +75,19 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "delete a secure socket",
-            "description": "Delete a secure socket. Does not close the underlying socket",
-            "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmSSLSocket</span><span class=\"o\">::</span><span class=\"n\">Delete</span><span class=\"p\">(</span><span class=\"n\">sslsocket</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
-            "language": "",
-            "members": [],
-            "name": "dmSSLSocket::Delete",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "Secure socket to close",
-                    "is_optional": "False",
-                    "name": "socket",
-                    "types": [
-                        "dmSSLSocket::Socket"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "on success",
-                    "name": "RESULT_OK",
-                    "types": [
-                        ""
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
             "brief": "SSLSocket socket handle",
             "description": "SSLSocket socket handle",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmSSLSocket::INVALID_SOCKET_HANDLE",
+            "name": "INVALID_SOCKET_HANDLE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "VARIABLE"
+            "type": "CONSTANT"
         },
         {
             "brief": "create a secure socket",
@@ -96,7 +96,7 @@
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmSSLSocket</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"n\">result</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">dmSSLSocket</span><span class=\"o\">::</span><span class=\"n\">Socket</span><span class=\"w\"> </span><span class=\"n\">sslsocket</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">result</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmSSLSocket</span><span class=\"o\">::</span><span class=\"n\">New</span><span class=\"p\">(</span><span class=\"n\">socket</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;httpbin.org&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">500</span><span class=\"o\">*</span><span class=\"mi\">1000</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">sslsocket</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">dmSSLSocket</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">result</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// ...</span>\n<span class=\"p\">}</span><span class=\"w\"> </span><span class=\"k\">else</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// ...</span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
             "language": "",
             "members": [],
-            "name": "dmSSLSocket::New",
+            "name": "New",
             "notes": [],
             "parameters": [
                 {
@@ -152,7 +152,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmSSLSocket::Receive",
+            "name": "Receive",
             "notes": [],
             "parameters": [
                 {
@@ -160,7 +160,7 @@
                     "is_optional": "False",
                     "name": "socket",
                     "types": [
-                        "dmSSLSocket::Socket"
+                        "Socket"
                     ]
                 },
                 {
@@ -168,7 +168,7 @@
                     "is_optional": "False",
                     "name": "buffer",
                     "types": [
-                        ""
+                        "void*"
                     ]
                 },
                 {
@@ -176,7 +176,7 @@
                     "is_optional": "False",
                     "name": "length",
                     "types": [
-                        ""
+                        "int"
                     ]
                 },
                 {
@@ -184,7 +184,7 @@
                     "is_optional": "False",
                     "name": "received_bytes",
                     "types": [
-                        ""
+                        "int*"
                     ]
                 }
             ],
@@ -234,7 +234,7 @@
                     "type": ""
                 }
             ],
-            "name": "dmSSLSocket::Result",
+            "name": "Result",
             "notes": [],
             "parameters": [],
             "replaces": "",
@@ -249,7 +249,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmSSLSocket::Send",
+            "name": "Send",
             "notes": [],
             "parameters": [
                 {
@@ -257,7 +257,7 @@
                     "is_optional": "False",
                     "name": "socket",
                     "types": [
-                        "dmSSLSocket::Socket"
+                        "Socket"
                     ]
                 },
                 {
@@ -265,7 +265,7 @@
                     "is_optional": "False",
                     "name": "buffer",
                     "types": [
-                        ""
+                        "void*"
                     ]
                 },
                 {
@@ -273,7 +273,7 @@
                     "is_optional": "False",
                     "name": "length",
                     "types": [
-                        ""
+                        "int"
                     ]
                 },
                 {
@@ -281,7 +281,7 @@
                     "is_optional": "False",
                     "name": "sent_bytes",
                     "types": [
-                        ""
+                        "int*"
                     ]
                 }
             ],

@@ -7,16 +7,16 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmThread::AllocTls",
+            "name": "AllocTls",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "",
-                    "name": "Key",
+                    "doc": "Key",
+                    "name": "key",
                     "types": [
-                        ""
+                        "dmThread::TlsKey"
                     ]
                 }
             ],
@@ -30,7 +30,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmThread::Detach",
+            "name": "Detach",
             "notes": [],
             "parameters": [
                 {
@@ -38,7 +38,7 @@
                     "is_optional": "False",
                     "name": "thread",
                     "types": [
-                        ""
+                        "dmThread::Thread"
                     ]
                 }
             ],
@@ -54,7 +54,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmThread::FreeTls",
+            "name": "FreeTls",
             "notes": [],
             "parameters": [
                 {
@@ -62,7 +62,7 @@
                     "is_optional": "False",
                     "name": "key",
                     "types": [
-                        ""
+                        "dmThread::TlsKey"
                     ]
                 }
             ],
@@ -78,16 +78,16 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmThread::GetCurrentThread",
+            "name": "GetCurrentThread",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "current thread",
-                    "name": "the",
+                    "doc": "the current thread",
+                    "name": "thread",
                     "types": [
-                        ""
+                        "dmThread::Thread"
                     ]
                 }
             ],
@@ -101,7 +101,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmThread::GetTlsValue",
+            "name": "GetTlsValue",
             "notes": [],
             "parameters": [
                 {
@@ -109,7 +109,7 @@
                     "is_optional": "False",
                     "name": "key",
                     "types": [
-                        ""
+                        "dmThread::TlsKey"
                     ]
                 }
             ],
@@ -125,7 +125,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmThread::Join",
+            "name": "Join",
             "notes": [],
             "parameters": [
                 {
@@ -133,7 +133,7 @@
                     "is_optional": "False",
                     "name": "thread",
                     "types": [
-                        ""
+                        "dmThread::Thread"
                     ]
                 }
             ],
@@ -149,7 +149,7 @@
             "examples": "Create a thread\n<div class=\"codehilite\"><pre><span></span><code><span class=\"cp\">#include</span><span class=\"w\"> </span><span class=\"cpf\">&lt;stdio.h&gt;</span><span class=\"cp\"></span>\n<span class=\"cp\">#include</span><span class=\"w\"> </span><span class=\"cpf\">&lt;dmsdk/dlib/thread.h&gt;</span><span class=\"cp\"></span>\n\n<span class=\"k\">struct</span><span class=\"w\"> </span><span class=\"nc\">Context</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"kt\">bool</span><span class=\"w\"> </span><span class=\"n\">m_DoWork</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"kt\">int</span><span class=\"w\">  </span><span class=\"n\">m_Work</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"p\">};</span><span class=\"w\"></span>\n\n<span class=\"k\">static</span><span class=\"w\"> </span><span class=\"kt\">void</span><span class=\"w\"> </span><span class=\"nf\">Worker</span><span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">_ctx</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">Context</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">ctx</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">Context</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"n\">_ctx</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">while</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">ctx</span><span class=\"o\">-&gt;</span><span class=\"n\">m_DoWork</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">ctx</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Work</span><span class=\"o\">++</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"c1\">// do work</span>\n<span class=\"w\">        </span><span class=\"n\">dmTime</span><span class=\"o\">::</span><span class=\"n\">Sleep</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"o\">*</span><span class=\"mi\">1000</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// yield</span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n\n<span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"nf\">StartThread</span><span class=\"p\">()</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">Context</span><span class=\"w\"> </span><span class=\"n\">ctx</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_DoWork</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"nb\">true</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_Work</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmThread</span><span class=\"o\">::</span><span class=\"n\">Thread</span><span class=\"w\"> </span><span class=\"kr\">thread</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmThread</span><span class=\"o\">::</span><span class=\"n\">New</span><span class=\"p\">(</span><span class=\"n\">Worker</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mh\">0x80000</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"n\">ctx</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;my_thread&quot;</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"w\">    </span><span class=\"c1\">// do other work...</span>\n<span class=\"w\">    </span><span class=\"c1\">// ..eventually stop the thread:</span>\n<span class=\"w\">    </span><span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_DoWork</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"nb\">false</span><span class=\"p\">;</span><span class=\"w\"></span>\n\n<span class=\"w\">    </span><span class=\"c1\">// wait for thread</span>\n<span class=\"w\">    </span><span class=\"n\">dmThread</span><span class=\"o\">::</span><span class=\"n\">Join</span><span class=\"p\">(</span><span class=\"kr\">thread</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"w\">    </span><span class=\"n\">printf</span><span class=\"p\">(</span><span class=\"s\">&quot;work done: %d</span><span class=\"se\">\\n</span><span class=\"s\">&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_Work</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
             "language": "",
             "members": [],
-            "name": "dmThread::New",
+            "name": "New",
             "notes": [
                 "thread name currently not supported on win32"
             ],
@@ -159,7 +159,7 @@
                     "is_optional": "False",
                     "name": "thread_start",
                     "types": [
-                        ""
+                        "ThreadStart"
                     ]
                 },
                 {
@@ -167,7 +167,7 @@
                     "is_optional": "False",
                     "name": "stack_size",
                     "types": [
-                        ""
+                        "uint32_t"
                     ]
                 },
                 {
@@ -175,7 +175,7 @@
                     "is_optional": "False",
                     "name": "arg",
                     "types": [
-                        ""
+                        "void*"
                     ]
                 },
                 {
@@ -183,17 +183,17 @@
                     "is_optional": "False",
                     "name": "name",
                     "types": [
-                        ""
+                        "const char*"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "handle",
-                    "name": "Thread",
+                    "doc": "Thread handle",
+                    "name": "thread",
                     "types": [
-                        ""
+                        "dmThread::Thread"
                     ]
                 }
             ],
@@ -207,7 +207,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmThread::SetThreadName",
+            "name": "SetThreadName",
             "notes": [
                 "The thread argument is unused on Darwin (uses current thread)"
             ],
@@ -217,7 +217,7 @@
                     "is_optional": "False",
                     "name": "thread",
                     "types": [
-                        ""
+                        "dmThread::Thread"
                     ]
                 },
                 {
@@ -225,7 +225,7 @@
                     "is_optional": "False",
                     "name": "name",
                     "types": [
-                        ""
+                        "const char*"
                     ]
                 }
             ],
@@ -241,7 +241,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmThread::SetTlsValue",
+            "name": "SetTlsValue",
             "notes": [],
             "parameters": [
                 {
@@ -249,7 +249,7 @@
                     "is_optional": "False",
                     "name": "key",
                     "types": [
-                        ""
+                        "dmThread::TlsKey"
                     ]
                 },
                 {
@@ -257,7 +257,7 @@
                     "is_optional": "False",
                     "name": "value",
                     "types": [
-                        ""
+                        "void*"
                     ]
                 }
             ],
@@ -265,6 +265,21 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ThreadStart",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
         }
     ],
     "info": {

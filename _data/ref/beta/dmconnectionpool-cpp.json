@@ -7,7 +7,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmConnectionPool::Close",
+            "name": "Close",
             "notes": [],
             "parameters": [
                 {
@@ -39,7 +39,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmConnectionPool::Delete",
+            "name": "Delete",
             "notes": [],
             "parameters": [
                 {
@@ -71,7 +71,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmConnectionPool::Dial",
+            "name": "Dial",
             "notes": [],
             "parameters": [
                 {
@@ -151,7 +151,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmConnectionPool::Dial",
+            "name": "Dial",
             "notes": [],
             "parameters": [
                 {
@@ -233,13 +233,54 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "result enumeration",
+            "description": "Result enumeration.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "0",
+                    "name": "dmConnectionPool::RESULT_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "-1",
+                    "name": "dmConnectionPool::RESULT_OUT_OF_RESOURCES",
+                    "type": ""
+                },
+                {
+                    "doc": "-2",
+                    "name": "dmConnectionPool::RESULT_SOCKET_ERROR",
+                    "type": ""
+                },
+                {
+                    "doc": "-3",
+                    "name": "dmConnectionPool::RESULT_HANDSHAKE_FAILED",
+                    "type": ""
+                },
+                {
+                    "doc": "-4",
+                    "name": "dmConnectionPool::RESULT_SHUT_DOWN",
+                    "type": ""
+                }
+            ],
+            "name": "dmConnectionPool::Result",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
             "brief": "Get socket for connection",
             "description": "Get socket for connection",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmConnectionPool::GetSocket",
+            "name": "GetSocket",
             "notes": [],
             "parameters": [
                 {
@@ -279,7 +320,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmConnectionPool::GetSSLSocket",
+            "name": "GetSSLSocket",
             "notes": [],
             "parameters": [
                 {
@@ -313,13 +354,43 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Connection handle",
+            "description": "Connection handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HConnection",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Connection pool handle",
+            "description": "Connection pool handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HPool",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "Create a new connection pool",
             "description": "Create a new connection pool",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmConnectionPool::New",
+            "name": "New",
             "notes": [],
             "parameters": [
                 {
@@ -327,7 +398,7 @@
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        ""
+                        "dmConnectionPool::Params*"
                     ]
                 },
                 {
@@ -370,7 +441,7 @@
                     "type": "int"
                 }
             ],
-            "name": "dmConnectionPool::Params",
+            "name": "Params",
             "notes": [],
             "parameters": [],
             "replaces": "",
@@ -379,54 +450,13 @@
             "type": "STRUCT"
         },
         {
-            "brief": "result enumeration",
-            "description": "Result enumeration.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [
-                {
-                    "doc": "0",
-                    "name": "dmConnectionPool::RESULT_OK",
-                    "type": ""
-                },
-                {
-                    "doc": "-1",
-                    "name": "dmConnectionPool::RESULT_OUT_OF_RESOURCES",
-                    "type": ""
-                },
-                {
-                    "doc": "-2",
-                    "name": "dmConnectionPool::RESULT_SOCKET_ERROR",
-                    "type": ""
-                },
-                {
-                    "doc": "-3",
-                    "name": "dmConnectionPool::RESULT_HANDSHAKE_FAILED",
-                    "type": ""
-                },
-                {
-                    "doc": "-4",
-                    "name": "dmConnectionPool::RESULT_SHUT_DOWN",
-                    "type": ""
-                }
-            ],
-            "name": "dmConnectionPool::Result",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "ENUM"
-        },
-        {
             "brief": "Return connection to pool",
             "description": "Return connection to pool",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmConnectionPool::Return",
+            "name": "Return",
             "notes": [],
             "parameters": [
                 {
@@ -458,7 +488,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "dmConnectionPool::Shutdown",
+            "name": "Shutdown",
             "notes": [],
             "parameters": [
                 {
@@ -490,36 +520,6 @@
             ],
             "tparams": [],
             "type": "FUNCTION"
-        },
-        {
-            "brief": "Connection handle",
-            "description": "Connection handle",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "HConnection",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "TYPEDEF"
-        },
-        {
-            "brief": "Connection pool handle",
-            "description": "Connection pool handle",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "HPool",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "TYPEDEF"
         }
     ],
     "info": {

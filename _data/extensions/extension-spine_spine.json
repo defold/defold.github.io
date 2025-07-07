@@ -378,6 +378,39 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Set the color a slot will tint its attachments on a spine model.",
+            "examples": "",
+            "name": "spine.set_slot_color",
+            "parameters": [
+                {
+                    "doc": "The Spine model to query",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "Id of the slot",
+                    "name": "slot",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "Tint applied to attachments in a slot",
+                    "name": "color",
+                    "types": [
+                        "vector4"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Resets a shader constant for a spine model component. (Previously set with `go.set()`)",
             "examples": "",
             "name": "spine.reset_constant",
@@ -513,9 +546,41 @@
                 },
                 {
                     "doc": "The translation vector to apply to the Spine model.",
-                    "name": "position",
+                    "name": "translation",
                     "types": [
                         "vector3"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Apply a physics-based rotation to the Spine model.",
+            "examples": "",
+            "name": "spine.physics_rotate",
+            "parameters": [
+                {
+                    "doc": "The Spine model component to rotate.",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "The center point around which to rotate.",
+                    "name": "center",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "The rotation angle in degrees.",
+                    "name": "degrees",
+                    "types": [
+                        "number"
                     ]
                 }
             ],

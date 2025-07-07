@@ -676,11 +676,11 @@
                     ]
                 },
                 {
-                    "doc": "the callback function void (<em>callback)(dmhash_t name_hash, void</em> ctx)",
+                    "doc": "the callback function",
                     "is_optional": "False",
                     "name": "callback",
                     "types": [
-                        "void (*callback)(dmhash_t name_hash, void* ctx)"
+                        "IterateNamedConstantsFn"
                     ]
                 },
                 {
@@ -696,6 +696,38 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "IterateNamedConstantsFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "name_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "ctx",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
         },
         {
             "brief": "Creates a shader program constant",
@@ -825,30 +857,6 @@
             ],
             "tparams": [],
             "type": "FUNCTION"
-        },
-        {
-            "brief": "Render dispatch function callback.",
-            "description": "Render dispatch function callback.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "RenderListDispatchFn",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "the params",
-                    "is_optional": "False",
-                    "name": "params",
-                    "types": [
-                        "dmRender::RenderListDispatchParams"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "TYPEDEF"
         },
         {
             "brief": "Render dispatch function callback.",
@@ -1126,6 +1134,30 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Render visibility function callback.",
+            "description": "Render visibility function callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "RenderListVisibilityFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "dmRender::RenderListVisibilityParams"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
         },
         {
             "brief": "Visibility dispatch function callback.",

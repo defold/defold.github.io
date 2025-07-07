@@ -126,11 +126,11 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "[type:]",
+                    "doc": "C array to count",
                     "is_optional": "False",
-                    "name": "Array",
+                    "name": "A",
                     "types": [
-                        ""
+                        "T"
                     ]
                 }
             ],
@@ -163,7 +163,7 @@
                 {
                     "doc": "Contained type, must obey memcpy semantics",
                     "name": "T",
-                    "type": "typename T"
+                    "type": ""
                 }
             ],
             "type": "CLASS"
@@ -287,7 +287,7 @@
                     "doc": "true if the array is empty",
                     "name": "boolean",
                     "types": [
-                        "boolean"
+                        "bool"
                     ]
                 }
             ],
@@ -466,7 +466,7 @@
                     "doc": "true if the array is full",
                     "name": "boolean",
                     "types": [
-                        "boolean"
+                        "bool"
                     ]
                 }
             ],
@@ -488,7 +488,7 @@
                     "is_optional": "False",
                     "name": "fn",
                     "types": [
-                        ""
+                        "void*"
                     ]
                 },
                 {
@@ -496,7 +496,7 @@
                     "is_optional": "False",
                     "name": "ctx",
                     "types": [
-                        ""
+                        "void*"
                     ]
                 }
             ],
@@ -647,7 +647,7 @@
                     "is_optional": "False",
                     "name": "array",
                     "types": [
-                        "const T&"
+                        "const T*"
                     ]
                 },
                 {
@@ -773,7 +773,7 @@
                     "is_optional": "False",
                     "name": "rhs",
                     "types": [
-                        "dmArray`<T>`&"
+                        "dmArray<T>&"
                     ]
                 }
             ],

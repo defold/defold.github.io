@@ -11,6 +11,11 @@ local function quat_look_rotation(forward, upwards)
 		return vmath.quat()
 	end
 
+	-- Handle alignment with up direction
+	if math.abs(vmath.dot(forward, upwards)) > 0.9999999 then
+		return vmath.quat_from_to(vmath.vector3(0, 0, 1), forward)
+	end
+
 	-- Create a rotation matrix from the forward and upwards vectors
 	local matrix = vmath.matrix4_look_at(vmath.vector3(0), forward, upwards)
 
@@ -57,8 +62,8 @@ function update(self, dt)
 end
 
 function on_input(self, action_id, action)
-	-- If the action is pressed (any key or mouse button), set the next target
-	if action.pressed then
+	-- If the left mouse button (or touch) is pressed, set the next target
+	if action_id == hash("mouse_button_left") and action.pressed then
 		next_target(self)
 	end
 end

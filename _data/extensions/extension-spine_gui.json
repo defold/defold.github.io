@@ -403,6 +403,90 @@
             ],
             "returnvalues": [],
             "type": "FUNCTION"
+        },
+        {
+            "description": "This is only useful for spine nodes. Sets a tint for all attachments on a slot",
+            "examples": "",
+            "name": "gui.set_spine_slot_color",
+            "parameters": [
+                {
+                    "doc": "spine node to set the slot for",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "slot name",
+                    "name": "slot",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "target color.",
+                    "name": "color",
+                    "types": [
+                        "vector4"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Apply a physics-based translation to the Spine GUI node.",
+            "examples": "",
+            "name": "gui.spine_physics_translate",
+            "parameters": [
+                {
+                    "doc": "The Spine GUI node to translate.",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "The translation vector to apply to the Spine GUI node.",
+                    "name": "translation",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Apply a physics-based rotation to the Spine GUI node.",
+            "examples": "",
+            "name": "gui.spine_physics_rotate",
+            "parameters": [
+                {
+                    "doc": "The Spine GUI node to rotate.",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "The center point around which to rotate.",
+                    "name": "center",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "The rotation angle in degrees.",
+                    "name": "degrees",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
         }
     ],
     "info": {

@@ -52,7 +52,18 @@
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
-            "tparams": [],
+            "tparams": [
+                {
+                    "doc": "",
+                    "name": "KEY",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "T",
+                    "type": ""
+                }
+            ],
             "type": "CLASS"
         },
         {
@@ -87,7 +98,7 @@
                     "is_optional": "False",
                     "name": "user_allocated",
                     "types": [
-                        ""
+                        "void*"
                     ]
                 },
                 {
@@ -95,7 +106,7 @@
                     "is_optional": "False",
                     "name": "table_size",
                     "types": [
-                        ""
+                        "uint32_t"
                     ]
                 },
                 {
@@ -103,7 +114,7 @@
                     "is_optional": "False",
                     "name": "capacity",
                     "types": [
-                        ""
+                        "uint32_t"
                     ]
                 }
             ],
@@ -197,7 +208,7 @@
                     "is_optional": "False",
                     "name": "key",
                     "types": [
-                        "Key"
+                        "KEY"
                     ]
                 }
             ],
@@ -244,7 +255,7 @@
                     "is_optional": "False",
                     "name": "key",
                     "types": [
-                        "Key"
+                        "KEY"
                     ]
                 }
             ],
@@ -299,7 +310,7 @@
                     "is_optional": "False",
                     "name": "call_back",
                     "types": [
-                        ""
+                        "void*"
                     ]
                 },
                 {
@@ -307,13 +318,19 @@
                     "is_optional": "False",
                     "name": "context",
                     "types": [
-                        ""
+                        "CONTEXT*"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
-            "tparams": [],
+            "tparams": [
+                {
+                    "doc": "",
+                    "name": "CONTEXT",
+                    "type": ""
+                }
+            ],
             "type": "FUNCTION"
         },
         {
@@ -381,7 +398,7 @@
                     "is_optional": "False",
                     "name": "key",
                     "types": [
-                        "Key"
+                        "KEY"
                     ]
                 },
                 {
@@ -413,7 +430,7 @@
                     "is_optional": "False",
                     "name": "table_size",
                     "types": [
-                        ""
+                        "uint32_t"
                     ]
                 },
                 {
@@ -421,7 +438,7 @@
                     "is_optional": "False",
                     "name": "capacity",
                     "types": [
-                        ""
+                        "uint32_t"
                     ]
                 }
             ],

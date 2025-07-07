@@ -25,6 +25,30 @@
             "type": "MESSAGE"
         },
         {
+            "brief": "Constant buffer",
+            "description": "Constant buffer",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "constant_buffer",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "draw a text on the screen",
             "description": "Draw a text on the screen. This should be used for debugging purposes only.",
             "error": "",
@@ -229,7 +253,7 @@
                     "is_optional": "False",
                     "name": "binding",
                     "types": [
-                        "number",
+                        "texture",
                         "string",
                         "hash"
                     ]
@@ -303,7 +327,7 @@
                     "is_optional": "False",
                     "name": "predicate",
                     "types": [
-                        "predicate"
+                        "number"
                     ]
                 },
                 {
@@ -428,7 +452,12 @@
                     "is_optional": "True",
                     "name": "buffer_type",
                     "types": [
-                        "constant"
+                        "type:graphics.BUFFER_TYPE_COLOR0_BIT",
+                        "graphics.BUFFER_TYPE_COLOR1_BIT",
+                        "graphics.BUFFER_TYPE_COLOR2_BIT",
+                        "graphics.BUFFER_TYPE_COLOR3_BIT",
+                        "graphics.BUFFER_TYPE_DEPTH_BIT",
+                        "graphics.BUFFER_TYPE_STENCIL_BIT"
                     ]
                 }
             ],
@@ -450,7 +479,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "VARIABLE"
+            "type": "CONSTANT"
         },
         {
             "brief": "",
@@ -465,7 +494,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "VARIABLE"
+            "type": "CONSTANT"
         },
         {
             "brief": "gets the window height, as specified for the project",
@@ -513,7 +542,12 @@
                     "is_optional": "False",
                     "name": "buffer_type",
                     "types": [
-                        "constant"
+                        "graphics.BUFFER_TYPE_COLOR0_BIT",
+                        "graphics.BUFFER_TYPE_COLOR1_BIT",
+                        "graphics.BUFFER_TYPE_COLOR2_BIT",
+                        "graphics.BUFFER_TYPE_COLOR3_BIT",
+                        "graphics.BUFFER_TYPE_DEPTH_BIT",
+                        "graphics.BUFFER_TYPE_STENCIL_BIT"
                     ]
                 }
             ],
@@ -553,7 +587,12 @@
                     "is_optional": "False",
                     "name": "buffer_type",
                     "types": [
-                        "constant"
+                        "graphics.BUFFER_TYPE_COLOR0_BIT",
+                        "graphics.BUFFER_TYPE_COLOR1_BIT",
+                        "graphics.BUFFER_TYPE_COLOR2_BIT",
+                        "graphics.BUFFER_TYPE_COLOR3_BIT",
+                        "graphics.BUFFER_TYPE_DEPTH_BIT",
+                        "graphics.BUFFER_TYPE_STENCIL_BIT"
                     ]
                 }
             ],
@@ -664,7 +703,7 @@
                     "doc": "new predicate",
                     "name": "predicate",
                     "types": [
-                        "predicate"
+                        "number"
                     ]
                 }
             ],
@@ -724,7 +763,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "VARIABLE"
+            "type": "CONSTANT"
         },
         {
             "brief": "sets the blending function",
@@ -741,7 +780,7 @@
                     "is_optional": "False",
                     "name": "source_factor",
                     "types": [
-                        "constant"
+                        "number"
                     ]
                 },
                 {
@@ -749,7 +788,7 @@
                     "is_optional": "False",
                     "name": "destination_factor",
                     "types": [
-                        "constant"
+                        "number"
                     ]
                 }
             ],
@@ -774,7 +813,7 @@
                     "name": "camera",
                     "types": [
                         "url",
-                        "handle",
+                        "number",
                         "nil"
                     ]
                 },
@@ -881,7 +920,7 @@
                     "is_optional": "False",
                     "name": "face_type",
                     "types": [
-                        "constant"
+                        "number"
                     ]
                 }
             ],
@@ -905,7 +944,7 @@
                     "is_optional": "False",
                     "name": "func",
                     "types": [
-                        "constant"
+                        "number"
                     ]
                 }
             ],
@@ -1106,7 +1145,7 @@
                     "is_optional": "False",
                     "name": "func",
                     "types": [
-                        "constant"
+                        "number"
                     ]
                 },
                 {
@@ -1170,7 +1209,7 @@
                     "is_optional": "False",
                     "name": "sfail",
                     "types": [
-                        "constant"
+                        "number"
                     ]
                 },
                 {
@@ -1178,7 +1217,7 @@
                     "is_optional": "False",
                     "name": "dpfail",
                     "types": [
-                        "constant"
+                        "number"
                     ]
                 },
                 {
@@ -1186,7 +1225,7 @@
                     "is_optional": "False",
                     "name": "dppass",
                     "types": [
-                        "constant"
+                        "number"
                     ]
                 }
             ],
@@ -1268,6 +1307,30 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Render target",
+            "description": "Render target",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "render_target",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "resizes the window",
             "description": "Set the size of the game window. Only works on desktop platforms.",
             "error": "",
@@ -1298,6 +1361,30 @@
             "returnvalues": [],
             "tparams": [],
             "type": "MESSAGE"
+        },
+        {
+            "brief": "Texture handle",
+            "description": "Texture handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "texture",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
         },
         {
             "brief": "reports a window size change",
