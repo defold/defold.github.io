@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: This example shows how to create a skybox using a cubemap texture.
 category: model
 layout: example
+opengraph_image: https://www.defold.com/examples/model/skybox/skybox.png
 path: model/skybox
 scripts: skybox.fp, skybox.vp
 tags: model
+thumbnail: skybox.png
 title: Skybox
+twitter_image: https://www.defold.com/examples/model/skybox/skybox.png
 
 ---
 
