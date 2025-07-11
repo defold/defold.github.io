@@ -344,7 +344,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Set the attachment of a lot on a spine model.",
+            "description": "Set the attachment of a slot on a spine model.",
             "examples": "",
             "name": "spine.set_attachment",
             "parameters": [
@@ -366,11 +366,12 @@
                     ]
                 },
                 {
-                    "doc": "Id of the attachment",
+                    "doc": "Id of the attachment. May be nil to reset to default attachment.",
                     "name": "attachment",
                     "types": [
                         "string",
-                        "hash"
+                        "hash",
+                        "nil"
                     ]
                 }
             ],
