@@ -45,7 +45,7 @@
 */
 var CUSTOM_PARAMETERS = {
     archive_location_filter: function( path ) {
-        return ("/postsdata/2025-07-10-editor-scripting-update/archive" + path + "");
+        return ("/postsdata/2025-07-11-editor-scripting-update/archive" + path + "");
     },
     engine_arguments: ["--verify-graphics-calls=false",],
     custom_heap_size: 67108864,
