@@ -2413,6 +2413,46 @@
             "type": "MACRO"
         },
         {
+            "brief": "Get absolute identifier relative to instance. The ...",
+            "description": "Get absolute identifier relative to instance. The returned identifier is the\nrepresentation of the qualified name, i.e. the path from root-collection to\nthe sub-collection which the instance belongs to.\nExample: if the instance is part of a sub-collection in the root-collection\nnamed \"sub\" and id == \"a\" the returned identifier represents the path \"sub.a\"",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetAbsoluteIdentifier",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Gameobject instance to get absolute identifier to",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        "dmGameObject::HInstance"
+                    ]
+                },
+                {
+                    "doc": "Identifier relative to instance",
+                    "is_optional": "False",
+                    "name": "identifier",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Absolute identifier.",
+                    "name": "",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Retrieve a collection from the specified instance",
             "description": "Retrieve a collection from the specified instance",
             "error": "",
