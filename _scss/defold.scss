@@ -1447,21 +1447,25 @@ dd {
 	grid-column-start: 2;
 }
 
-/* Mobile-friendly definition lists */
+/* Mobile-friendly definition lists - only for manual content, not API reference */
 @media (max-width: 768px) {
-	dl {
+	/* Apply to manual and tutorial pages only */
+	.manual dl,
+	.tutorial dl {
 		display: block !important;
 		grid-template-columns: unset !important;
 	}
 	
-	dt {
+	.manual dt,
+	.tutorial dt {
 		display: block !important;
 		grid-column-start: unset !important;
 		font-weight: bold;
 		margin: 1em 0 0.5em 0;
 	}
 	
-	dd {
+	.manual dd,
+	.tutorial dd {
 		display: block !important;
 		grid-column-start: unset !important;
 		margin: 0 0 1.5em 1em;
