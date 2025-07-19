@@ -1447,6 +1447,34 @@ dd {
 	grid-column-start: 2;
 }
 
+/* Mobile-friendly definition lists */
+@media (max-width: 768px) {
+	dl {
+		display: block !important;
+		grid-template-columns: unset !important;
+	}
+	
+	dt {
+		display: block !important;
+		grid-column-start: unset !important;
+		font-weight: bold;
+		margin: 1em 0 0.5em 0;
+	}
+	
+	dd {
+		display: block !important;
+		grid-column-start: unset !important;
+		margin: 0 0 1.5em 1em;
+	}
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+	dd {
+		margin-left: 0.5em;
+	}
+}
+
 /*******************************************************************************
 * Example page
 ******************************************************************************/
