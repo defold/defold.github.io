@@ -1,11 +1,11 @@
 ---
 author: Agustin R.
 brief: This example demonstrates how to apply a vertex color shader using exported attributes from a 3D model.
-category: mesh
+category: model
 layout: example
 name: Vertex Color (3D model)
-path: mesh/modelvertexcolor
-scripts: vertexcolor.fp, vertexcolor.fp
+path: model/modelvertexcolor
+scripts: vertexcolor.vp, vertexcolor.fp
 tags: model
 title: Model Vertex Color
 
