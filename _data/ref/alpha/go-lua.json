@@ -935,9 +935,9 @@
         },
         {
             "brief": "check if the specified game object exists",
-            "description": "A lua-error will be raised if the game object belongs to another\ncollection than the collection from which the function was called.",
+            "description": "This function can check for game objects in any collection by specifying\nthe collection name in the URL.",
             "error": "",
-            "examples": "Check if game object \"my_game_object\" exists\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">exists</span><span class=\"p\">(</span><span class=\"s2\">&quot;/my_game_object&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "examples": "Check if game object \"my_game_object\" exists in the current collection\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">exists</span><span class=\"p\">(</span><span class=\"s2\">&quot;/my_game_object&quot;</span><span class=\"p\">)</span>\n</code></pre></div>\n\nCheck if game object exists in another collection\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">exists</span><span class=\"p\">(</span><span class=\"s2\">&quot;other_collection:/my_game_object&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "go.exists",
@@ -1714,12 +1714,47 @@
         },
         {
             "brief": "sets the scale factor of the game object instance",
-            "description": "The scale factor is relative to the parent (if any). The global world scale factor cannot be manually set.\n<span class=\"icon-attention\"></span> Physics are currently not affected when setting scale from this function.",
+            "description": "The scale factor is relative to the parent (if any). The global world scale factor cannot be manually set.\n<span class=\"icon-attention\"></span> See <a href=\"/manuals/project-settings/#allow-dynamic-transforms\">manual</a> to know how physics affected when setting scale from this function.",
             "error": "",
-            "examples": "Set the scale of the game object instance the script is attached to:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">2.0</span><span class=\"p\">,</span> <span class=\"mf\">1.0</span><span class=\"p\">,</span> <span class=\"mf\">1.0</span><span class=\"p\">)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_scale</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span>\n</code></pre></div>\n\nSet the scale of another game object instance with id \"x\":\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"mf\">1.2</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_scale</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">,</span> <span class=\"s2\">&quot;x&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "examples": "Set the scale of the game object instance the script is attached to:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">2.0</span><span class=\"p\">,</span> <span class=\"mf\">1.0</span><span class=\"p\">,</span> <span class=\"mf\">1.0</span><span class=\"p\">)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_scale</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span>\n</code></pre></div>\n\nSet the scale of another game object instance with id \"obj_id\":\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"mf\">1.2</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_scale</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">,</span> <span class=\"s2\">&quot;obj_id&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "go.set_scale",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "vector or uniform scale factor, must be greater than 0",
+                    "is_optional": "False",
+                    "name": "scale",
+                    "types": [
+                        "number",
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "optional id of the game object instance to get the scale for, by default the instance of the calling script",
+                    "is_optional": "True",
+                    "name": "id",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "sets the scale factor only for width and height (x and y) of the game object instance",
+            "description": "The scale factor is relative to the parent (if any). The global world scale factor cannot be manually set.\n<span class=\"icon-attention\"></span> See <a href=\"/manuals/project-settings/#allow-dynamic-transforms\">manual</a> to know how physics affected when setting scale from this function.",
+            "error": "",
+            "examples": "Set the scale of the game object instance the script is attached to:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">2.0</span><span class=\"p\">,</span> <span class=\"mf\">1.0</span><span class=\"p\">,</span> <span class=\"mf\">5.0</span><span class=\"p\">)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_scale_xy</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span> <span class=\"c1\">-- z will not be set here, only x and y</span>\n</code></pre></div>\n\nSet the scale of another game object instance with id \"obj_id\":\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"mf\">1.2</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_scale_xy</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">,</span> <span class=\"s2\">&quot;obj_id&quot;</span><span class=\"p\">)</span> <span class=\"c1\">-- z will not be set here, only x and y</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "go.set_scale_xy",
             "notes": [],
             "parameters": [
                 {

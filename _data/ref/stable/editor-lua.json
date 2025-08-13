@@ -1248,6 +1248,30 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "create resources (including non-existent parent directories).",
+            "description": "Create resources (including non-existent parent directories).\nThrows an error if any of the provided resource paths already exist",
+            "error": "",
+            "examples": "Create a single resource from template:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">editor</span><span class=\"p\">.</span><span class=\"n\">create_resources</span><span class=\"p\">(</span><span class=\"err\">{</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"ss\">&quot;/npc.go&quot;</span><span class=\"w\"></span>\n<span class=\"err\">}</span><span class=\"p\">)</span><span class=\"w\"></span>\n</code></pre></div>\n\nCreate multiple resources:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">editor</span><span class=\"p\">.</span><span class=\"n\">create_resources</span><span class=\"p\">(</span><span class=\"err\">{</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"ss\">&quot;/npc.go&quot;</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"ss\">&quot;/levels/1.collection&quot;</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"ss\">&quot;/levels/2.collection&quot;</span><span class=\"p\">,</span><span class=\"w\"></span>\n<span class=\"err\">}</span><span class=\"p\">)</span><span class=\"w\"></span>\n</code></pre></div>\n\nCreate a resource with custom content:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">editor</span><span class=\"p\">.</span><span class=\"n\">create_resources</span><span class=\"p\">(</span><span class=\"err\">{</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"err\">{</span><span class=\"ss\">&quot;/npc.script&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"ss\">&quot;go.property(&#39;hp&#39;, 100)&quot;</span><span class=\"err\">}</span><span class=\"w\"></span>\n<span class=\"err\">}</span><span class=\"p\">)</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "editor.create_resources",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "] Array of resource paths (strings starting with <code>/</code>) or resource definitions, lua tables with the following keys:<dl><dt><code>1 <small>string</small></code></dt><dd>required, resource path (starting with <code>/</code>)</dd><dt><code>2 <small>string</small></code></dt><dd>optional, created resource content</dd></dl>",
+                    "is_optional": "False",
+                    "name": "resources",
+                    "types": [
+                        "string["
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "delete a directory if it exists, and all existent child directories and files.",
             "description": "Delete a directory if it exists, and all existent child directories and files.\nThrows an error if the directory can't be deleted.",
             "error": "",

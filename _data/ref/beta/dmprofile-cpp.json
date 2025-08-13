@@ -1,31 +1,6 @@
 {
     "elements": [
         {
-            "brief": "Begin profiling, eg start of frame",
-            "description": "Begin profiling, eg start of frame",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "BeginFrame",
-            "notes": [
-                "NULL is returned if profiling is disabled"
-            ],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "The current profiling context. Must be released by #EndFrame",
-                    "name": "context",
-                    "types": [
-                        "dmProfile::HProfile"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
             "brief": "add profile scope",
             "description": "Adds a profiling scope. Excluded by default in release builds.",
             "error": "",
@@ -354,7 +329,7 @@
                     "is_optional": "False",
                     "name": "group",
                     "types": [
-                        "dmProfileIdx*"
+                        "ProfileIdx*"
                     ]
                 }
             ],
@@ -434,7 +409,7 @@
                     "is_optional": "False",
                     "name": "group",
                     "types": [
-                        "dmProfileIdx*"
+                        "ProfileIdx*"
                     ]
                 }
             ],
@@ -490,7 +465,7 @@
                     "is_optional": "False",
                     "name": "group",
                     "types": [
-                        "dmProfileIdx*"
+                        "ProfileIdx*"
                     ]
                 }
             ],
@@ -530,7 +505,7 @@
                     "is_optional": "False",
                     "name": "parent",
                     "types": [
-                        "dmProfileIdx*"
+                        "ProfileIdx*"
                     ]
                 }
             ],
@@ -610,7 +585,7 @@
                     "is_optional": "False",
                     "name": "group",
                     "types": [
-                        "dmProfileIdx*"
+                        "ProfileIdx*"
                     ]
                 }
             ],
@@ -666,7 +641,7 @@
                     "is_optional": "False",
                     "name": "group",
                     "types": [
-                        "dmProfileIdx*"
+                        "ProfileIdx*"
                     ]
                 }
             ],
@@ -946,7 +921,7 @@
                     "is_optional": "False",
                     "name": "group",
                     "types": [
-                        "dmProfileIdx*"
+                        "ProfileIdx*"
                     ]
                 }
             ],
@@ -1002,7 +977,7 @@
                     "is_optional": "False",
                     "name": "group",
                     "types": [
-                        "dmProfileIdx*"
+                        "ProfileIdx*"
                     ]
                 }
             ],
@@ -1012,47 +987,8 @@
             "type": "MACRO"
         },
         {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "dmProfileIdx",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "TYPEDEF"
-        },
-        {
-            "brief": "Release profile returned by #Begin",
-            "description": "Release profile returned by #Begin",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "EndFrame",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "Profile to release",
-                    "is_optional": "False",
-                    "name": "profile",
-                    "types": [
-                        "dmProfile::HProfile"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Profile snapshot handle",
-            "description": "Profile snapshot handle",
+            "brief": "Handle to a an active profile frame",
+            "description": "Handle to a an active profile frame",
             "error": "",
             "examples": "",
             "language": "",
@@ -1064,6 +1000,418 @@
             "returnvalues": [],
             "tparams": [],
             "type": "TYPEDEF"
+        },
+        {
+            "brief": "Index constant to mark a a property as invalid",
+            "description": "Index constant to mark a a property as invalid",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "PROFILE_PROPERTY_INVALID_IDX",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Finalize the profiling system",
+            "description": "Finalize the profiling system",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileFinalize",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Begin profiling, eg start of frame",
+            "description": "Begin profiling, eg start of frame",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileFrameBegin",
+            "notes": [
+                "NULL is returned if profiling is disabled"
+            ],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The current profiling context. Must be released by #EndFrame",
+                    "name": "context",
+                    "types": [
+                        "HProfile"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Release profile returned by #ProfileFrameBegin",
+            "description": "Release profile returned by #ProfileFrameBegin",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileFrameEnd",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Profile to release",
+                    "is_optional": "False",
+                    "name": "profile",
+                    "types": [
+                        "HProfile"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Index type to hold internal references of samplers and properties",
+            "description": "Index type to hold internal references of samplers and properties",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileIdx",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Initialize the profiling system",
+            "description": "Initialize the profiling system",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileInitialize",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Finalize the profiling system",
+            "description": "Finalize the profiling system",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileIsInitialized",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Returns non zero if the profiler is initialized",
+                    "name": "initialized",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Structure for registering a profile listener",
+            "description": "Structure for registering a profile listener",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileListener",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Log text via the registered profilers",
+            "description": "Log text via the registered profilers",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileLogText",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Name of the scope",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Arguments for internal logging function",
+                    "is_optional": "False",
+                    "name": "...",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set of bit flags to be used when declaring propertis",
+            "description": "Set of bit flags to be used when declaring propertis",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "PROFILE_PROPERTY_NONE",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "PROFILE_PROPERTY_FRAME_RESET",
+                    "type": ""
+                }
+            ],
+            "name": "ProfilePropertyFlags",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Enum to describe type of a property",
+            "description": "Enum to describe type of a property",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "PROFILE_PROPERTY_TYPE_GROUP",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "PROFILE_PROPERTY_TYPE_BOOL",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "PROFILE_PROPERTY_TYPE_S32",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "PROFILE_PROPERTY_TYPE_U32",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "PROFILE_PROPERTY_TYPE_F32",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "PROFILE_PROPERTY_TYPE_S64",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "PROFILE_PROPERTY_TYPE_U64",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "PROFILE_PROPERTY_TYPE_F64",
+                    "type": ""
+                }
+            ],
+            "name": "ProfilePropertyType",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Union to hold a property value",
+            "description": "Union to hold a property value",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfilePropertyValue",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Register a new profiler.",
+            "description": "Register a new profiler. Can be done after the profiling has started.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileRegisterProfiler",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Name of the profiler",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Start a new profile scope",
+            "description": "Start a new profile scope",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileScopeBegin",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Name of the scope",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Hashed name of the scope",
+                    "is_optional": "False",
+                    "name": "name_hash",
+                    "types": [
+                        "uint64_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "End the last added scope",
+            "description": "End the last added scope",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileScopeEnd",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Name of the scope",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Hashed name of the scope",
+                    "is_optional": "False",
+                    "name": "name_hash",
+                    "types": [
+                        "uint64_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the current thread name to each registered pro...",
+            "description": "Set the current thread name to each registered profiler",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileSetThreadName",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Name of the thread",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Unregister a profiler",
+            "description": "Unregister a profiler",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileUnregisterProfiler",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Name of the profiler",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
         }
     ],
     "info": {
