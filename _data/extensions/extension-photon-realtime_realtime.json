@@ -1,0 +1,798 @@
+{
+    "elements": [
+        {
+            "description": "Initialize Realtime by creating a load balanced client",
+            "examples": "",
+            "name": "realtime.init",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "app_id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Connect to the server. - username - use_datagram_encryption - server_type See SERVER_TYPE_* enums - server_address The IP address or domain name and optionally the port number to connect to. IP addresses can be in IPv4 or IPv6 format - auth_data Sets the HTTP POST data, that will be forwarded to the authentication service, to the provided data. - auth_parameters The HTTP GET parameters that will be forwarded to the authentication service to the provided parameters. - auth_type The type of the &quot;Custom Authentication&quot; service that will be used. See AUTH_* enums",
+            "examples": "",
+            "name": "realtime.connect",
+            "parameters": [
+                {
+                    "doc": "Table with connection options",
+                    "name": "options",
+                    "types": [
+                        "None"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "callback",
+                    "types": [
+                        "None"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Update Realtime. Call this from a script component.",
+            "examples": "",
+            "name": "realtime.update",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Disconnect from server.",
+            "examples": "",
+            "name": "realtime.disconnect",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Join lobby.",
+            "examples": "",
+            "name": "realtime.join_lobby",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "lobby_name",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "lobby_type",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Leave lobby.",
+            "examples": "",
+            "name": "realtime.leave_lobby",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Create room. Local game_id = &quot;1234&quot; local room_options = { is_visible = false, is_open = false, supress_room_events = false, max_players = 4, player_ttl = 0, empty_room_ttl = 0, lobby_type = realtime.LOBBYTYPE_DEFAULT, lobby_name = &quot;&quot;, publish_user_id = &quot;&quot;, direct_mode = realtime.DIRECTMODE_NONE, props_listed_in_lobby = {}, custom_room_properties = {}, } local expected_users = {} realtime.create_room(game_id, room_options, expected_users)",
+            "examples": "",
+            "name": "realtime.create_room",
+            "parameters": [
+                {
+                    "doc": "The name to create a room with. Must be unique and not in use or the room can&#x27;t be created. If this is an empty string, then the server will assign a GUID as name.",
+                    "name": "game_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "room_options",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "expected_users",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Join room. Local game_id = &quot;1234&quot; local join_options = { rejoin = false, cache_slice_index = 0, expected_users = {}, } realtime.join_room(game_id, join_options)",
+            "examples": "",
+            "name": "realtime.join_room",
+            "parameters": [
+                {
+                    "doc": "The name to create a room with. Must be unique and not in use or the room can&#x27;t be created. If this is an empty string, then the server will assign a GUID as name.",
+                    "name": "game_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "join_options",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Join or create room. Local game_id = &quot;1234&quot; local room_options = { is_visible = false, is_open = false, supress_room_events = false, max_players = 4, player_ttl = 0, empty_room_ttl = 0, lobby_type = realtime.LOBBYTYPE_DEFAULT, lobby_name = &quot;&quot;, publish_user_id = &quot;&quot;, direct_mode = realtime.DIRECTMODE_NONE, props_listed_in_lobby = {}, custom_room_properties = {}, } local join_options = { custom_room_properties = {}, max_players = 0, matchmaking_mode = realtime.MATCHMAKINGMODE_FILL_ROOM, lobby_name = &quot;&quot;, lobby_type = realtime.LOBBYTYPE_DEFAULT, sql_lobby_filter = &quot;&quot;, expected_users = {}, }",
+            "examples": "",
+            "name": "realtime.join_or_create_room",
+            "parameters": [
+                {
+                    "doc": "The name to create a room with. Must be unique and not in use or the room can&#x27;t be created. If this is an empty string, then the server will assign a GUID as name.",
+                    "name": "game_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "room_options",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "join_options",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Join or create random room. Local game_id = &quot;1234&quot; local room_options = { is_visible = false, is_open = false, supress_room_events = false, max_players = 4, player_ttl = 0, empty_room_ttl = 0, lobby_type = realtime.LOBBYTYPE_DEFAULT, lobby_name = &quot;&quot;, publish_user_id = &quot;&quot;, direct_mode = realtime.DIRECTMODE_NONE, props_listed_in_lobby = {}, custom_room_properties = {}, } local join_options = { custom_room_properties = {}, max_players = 0, matchmaking_mode = realtime.MATCHMAKINGMODE_FILL_ROOM, lobby_name = &quot;&quot;, lobby_type = realtime.LOBBYTYPE_DEFAULT, sql_lobby_filter = &quot;&quot;, expected_users = {}, } realtime.join_or_create_random_room(game_id, room_options, join_options)",
+            "examples": "",
+            "name": "realtime.join_or_create_random_room",
+            "parameters": [
+                {
+                    "doc": "The name to create a room with. Must be unique and not in use or the room can&#x27;t be created. If this is an empty string, then the server will assign a GUID as name.",
+                    "name": "game_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "room_options",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "join_options",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Join random room. Local join_options = { custom_room_properties = {}, max_players = 0, matchmaking_mode = realtime.MATCHMAKINGMODE_FILL_ROOM, lobby_name = &quot;&quot;, lobby_type = realtime.LOBBYTYPE_DEFAULT, sql_lobby_filter = &quot;&quot;, expected_users = {}, } realtime.join_random_room(join_options)",
+            "examples": "",
+            "name": "realtime.int JoinRandomRoom",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "join_options",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Leave room.",
+            "examples": "",
+            "name": "realtime.leave_room",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "will_come_back",
+                    "types": [
+                        "boolean"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "send_auth_cookie",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get room list.",
+            "examples": "",
+            "name": "realtime.get_room_list",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sends in-game data to other players in the game.",
+            "examples": "",
+            "name": "realtime.raise_event",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "reliable",
+                    "types": [
+                        "boolean"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "parameter",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "event_code",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "(channel_id, event_caching, receiver_group, interest_group, cache_slice_index, target_players, web_flags, encrypt)",
+                    "name": "options",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolea"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set the auto join lobby flag. The value of the autoJoinLobby flag determines if the client will automatically join the default lobby whenever it has successfully connected and whenever it leaves a game room.",
+            "examples": "",
+            "name": "realtime.set_auto_join_lobby",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "auto_join",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "EVENT_CONNECTIONERRORRETURN",
+            "examples": "",
+            "name": "EVENT_CONNECTIONERRORRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_CLIENTERRORRETURN",
+            "examples": "",
+            "name": "EVENT_CLIENTERRORRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_WARNINGRETURN",
+            "examples": "",
+            "name": "EVENT_WARNINGRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_SERVERERRORRETURN",
+            "examples": "",
+            "name": "EVENT_SERVERERRORRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_JOINROOMEVENTACTION",
+            "examples": "",
+            "name": "EVENT_JOINROOMEVENTACTION",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_LEAVEROOMEVENTACTION",
+            "examples": "",
+            "name": "EVENT_LEAVEROOMEVENTACTION",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_CUSTOMEVENTACTION",
+            "examples": "",
+            "name": "EVENT_CUSTOMEVENTACTION",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_CONNECTRETURN",
+            "examples": "",
+            "name": "EVENT_CONNECTRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_DISCONNECTRETURN",
+            "examples": "",
+            "name": "EVENT_DISCONNECTRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_CREATEROOMRETURN",
+            "examples": "",
+            "name": "EVENT_CREATEROOMRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_JOINORCREATEROOMRETURN",
+            "examples": "",
+            "name": "EVENT_JOINORCREATEROOMRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_JOINRANDOMORCREATEROOMRETURN",
+            "examples": "",
+            "name": "EVENT_JOINRANDOMORCREATEROOMRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_JOINROOMRETURN",
+            "examples": "",
+            "name": "EVENT_JOINROOMRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_JOINRANDOMROOMRETURN",
+            "examples": "",
+            "name": "EVENT_JOINRANDOMROOMRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_LEAVEROOMRETURN",
+            "examples": "",
+            "name": "EVENT_LEAVEROOMRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_JOINLOBBYRETURN",
+            "examples": "",
+            "name": "EVENT_JOINLOBBYRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_LEAVELOBBYRETURN",
+            "examples": "",
+            "name": "EVENT_LEAVELOBBYRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONFINDFRIENDSRESPONSE",
+            "examples": "",
+            "name": "EVENT_ONFINDFRIENDSRESPONSE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONLOBBYSTATSRESPONSE",
+            "examples": "",
+            "name": "EVENT_ONLOBBYSTATSRESPONSE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_WEBRPCRETURN",
+            "examples": "",
+            "name": "EVENT_WEBRPCRETURN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONROOMLISTUPDATE",
+            "examples": "",
+            "name": "EVENT_ONROOMLISTUPDATE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONROOMPROPERTIESCHANGE",
+            "examples": "",
+            "name": "EVENT_ONROOMPROPERTIESCHANGE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONPLAYERPROPERTIESCHANGE",
+            "examples": "",
+            "name": "EVENT_ONPLAYERPROPERTIESCHANGE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONAPPSTATSUPDATE",
+            "examples": "",
+            "name": "EVENT_ONAPPSTATSUPDATE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONLOBBYSTATSUPDATE",
+            "examples": "",
+            "name": "EVENT_ONLOBBYSTATSUPDATE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONCACHESLICECHANGED",
+            "examples": "",
+            "name": "EVENT_ONCACHESLICECHANGED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONMASTERCLIENTCHANGED",
+            "examples": "",
+            "name": "EVENT_ONMASTERCLIENTCHANGED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONCUSTOMAUTHENTICATIONINTERMEDIATESTEP",
+            "examples": "",
+            "name": "EVENT_ONCUSTOMAUTHENTICATIONINTERMEDIATESTEP",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONAVAILABLEREGIONS",
+            "examples": "",
+            "name": "EVENT_ONAVAILABLEREGIONS",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONSECRETRECEIVAL",
+            "examples": "",
+            "name": "EVENT_ONSECRETRECEIVAL",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONDIRECTCONNECTIONESTABLISHED",
+            "examples": "",
+            "name": "EVENT_ONDIRECTCONNECTIONESTABLISHED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONDIRECTCONNECTIONFAILEDTOESTABLISH",
+            "examples": "",
+            "name": "EVENT_ONDIRECTCONNECTIONFAILEDTOESTABLISH",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONDIRECTMESSAGE",
+            "examples": "",
+            "name": "EVENT_ONDIRECTMESSAGE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONCUSTOMOPERATIONRESPONSE",
+            "examples": "",
+            "name": "EVENT_ONCUSTOMOPERATIONRESPONSE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ONGETROOMLISTRESPONSE",
+            "examples": "",
+            "name": "EVENT_ONGETROOMLISTRESPONSE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Use a custom authentication service.",
+            "examples": "",
+            "name": "AUTH_CUSTOM",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Authenticates users by their Steam Account. Pass L&quot;ticket=[ticket]&quot; to setParameters().",
+            "examples": "",
+            "name": "AUTH_STEAM",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Authenticates users by their Facebook Account. Pass L&quot;token=[token]&quot; to setParameters().",
+            "examples": "",
+            "name": "AUTH_FACEBOOK",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Authenticates users by their Oculus Account. Pass L&quot;userid=[userid]&amp;nonce=[nonce]&quot; to setParameters().",
+            "examples": "",
+            "name": "AUTH_OCULUS",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Authenticates users by their PSN Account. Pass L&quot;token=[token]&amp;env=[env]&amp;userName=[userName]&quot; to setParameters().",
+            "examples": "",
+            "name": "AUTH_PLAYSTATION_4",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Authenticates users by their XBox Network Account. Pass the XSTS token to setData().",
+            "examples": "",
+            "name": "AUTH_XBOX",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Authenticates users by their HTC Viveport Account and user token. Pass L&quot;userToken=[userToken]&quot; to setParameters().",
+            "examples": "",
+            "name": "AUTH_VIVEPORT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Authenticates users by their Nintendo Account. Pass L&quot;token=[token]&amp;appversion=[appversion]&quot; to setParameters(). The appversion is optional.",
+            "examples": "",
+            "name": "AUTH_NINTENDO_SWITCH",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Authenticates users by their PSN Account. Pass L&quot;token=[token]&amp;env=[env]&amp;userName=[userName]&quot; to setParameters().",
+            "examples": "",
+            "name": "AUTH_PLAYSTATION_5",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Authenticates users by their Epic Online Services (EOS) Account. Pass L&quot;token=[token]&amp;ownershipToken=[ownershipToken]&quot; to setParameters(). The ownershipToken is optional.",
+            "examples": "",
+            "name": "AUTH_EPIC",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Authenticates users by their Facebook Account. Pass L&quot;token=[token]&quot; to setParameters().",
+            "examples": "",
+            "name": "AUTH_FACEBOOK_GAMING",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Disables custom authentication.",
+            "examples": "",
+            "name": "AUTH_NONE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Photon Cloud and for self-hosted Photon 5 or higher Server instances",
+            "examples": "",
+            "name": "SERVER_TYPE_NAME_SERVER",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Self-hosted Photon 4 Server instances",
+            "examples": "",
+            "name": "SERVER_TYPE_MASTER_SERVER",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Fills up rooms (oldest first) to get players together as fast as possible. Default. Makes most sense with MaxPlayers &gt; 0 and games that can only start with more players.",
+            "examples": "",
+            "name": "MATCHMAKINGMODE_FILL_ROOM",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Distributes players across available rooms sequentially but takes filters into account. Without filters, rooms get players evenly distributed.",
+            "examples": "",
+            "name": "MATCHMAKINGMODE_SERIAL_MATCHING",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Joins a (fully) random room. Expected properties must match, but aside from this, any available room might be selected.",
+            "examples": "",
+            "name": "MATCHMAKINGMODE_RANDOM_MATCHING",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "This lobby type is used unless another lobby type is specified. Room lists will be sent and Client::opJoinRandomRoom() can filter by matching properties.",
+            "examples": "",
+            "name": "LOBBYTYPE_DEFAULT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "This lobby type lists rooms like type DEFAULT but  SQL-like &quot;where&quot; clauses for filtering can be used with Client::opJoinRandomRoom(). This allows &#x27;bigger&#x27;, &#x27;less&#x27;, &#x27;or&#x27; and &#x27;and&#x27; combinations.",
+            "examples": "",
+            "name": "LOBBYTYPE_SQL_LOBBY",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "This lobby does not send room lists. It is only used for Client::opJoinRandomRoom(). It keeps rooms available for matchmaking for a while even when there are only inactive users left.",
+            "examples": "",
+            "name": "LOBBYTYPE_ASYNC_RANDOM_LOBBY",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Do not create any 2p2 connections between the clients. This is the default.",
+            "examples": "",
+            "name": "DIRECTMODE_NONE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Each client establishes a direct connection with every other client inside the room.",
+            "examples": "",
+            "name": "DIRECTMODE_ALL_TO_OTHERS",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The master client establishes a direct connection with every other client inside the room. All other clients only establish a direct connection with the master client but not with each other.",
+            "examples": "",
+            "name": "DIRECTMODE_MASTER_TO_OTHERS",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Each client establishes a direct connection with every client inside the room, including itself.",
+            "examples": "",
+            "name": "DIRECTMODE_ALL_TO_ALL",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The master client establishes a direct connection with every client inside the room, including itself. All other clients only establish a direct connection with the master client but not with each other.",
+            "examples": "",
+            "name": "DIRECTMODE_MASTER_TO_ALL",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        }
+    ],
+    "info": {
+        "api": "extension-photon-realtime/realtime_api",
+        "brief": "realtime",
+        "description": "Functions and constants for interacting with Photon Realtime",
+        "group": "EXTENSIONS",
+        "language": "Lua",
+        "name": "extension-photon-realtime",
+        "namespace": "realtime",
+        "type": "Extension"
+    }
+}
