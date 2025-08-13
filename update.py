@@ -1170,12 +1170,12 @@ def process_refdoc(download = False):
                 if len(api["elements"]) > 0:
                     namespace = api["info"]["namespace"]
                     if not namespace:
-                        api["info"]["namespace"] = api["info"]["name"].replace(" ", "")
-
-                    namespace = api["info"]["namespace"]
+                        print("WARNING! No namespace found in %s. Using name instead" % file)
+                        namespace = api["info"]["name"].replace(" ", "")
                     if not namespace:
-                        print("No namespace or name found in", file)
-                        sys.exit(5)
+                        print("WARNING! No namespace or name found in %s. Using filename" % file)
+                        namespace = file
+                    api["info"]["namespace"] = namespace
 
                     # detect language with fallback
                     language = api["info"].get("language")
