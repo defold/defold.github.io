@@ -4598,6 +4598,51 @@
             "type": "VARIABLE"
         },
         {
+            "brief": "<code>\"error\"</code>, any conflict aborts extraction",
+            "description": "<code>\"error\"</code>, any conflict aborts extraction",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "zip.ON_CONFLICT.ERROR",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"skip\"</code>, existing file is overwritten",
+            "description": "<code>\"skip\"</code>, existing file is overwritten",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "zip.ON_CONFLICT.OVERWRITE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
+            "brief": "<code>\"skip\"</code>, existing file is preserved",
+            "description": "<code>\"skip\"</code>, existing file is preserved",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "zip.ON_CONFLICT.SKIP",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "VARIABLE"
+        },
+        {
             "brief": "create a ZIP archive",
             "description": "Create a ZIP archive",
             "error": "",
@@ -4629,6 +4674,54 @@
                     "name": "entries",
                     "types": [
                         "string",
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "extract a ZIP archive",
+            "description": "Extract a ZIP archive",
+            "error": "",
+            "examples": "Extract everything to a build dir:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">zip</span><span class=\"p\">.</span><span class=\"n\">unpack</span><span class=\"p\">(</span><span class=\"s2\">&quot;build/dev/resources.zip&quot;</span><span class=\"p\">)</span>\n</code></pre></div>\n\nExtract to a different directory:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">zip</span><span class=\"p\">.</span><span class=\"n\">unpack</span><span class=\"p\">(</span>\n  <span class=\"s2\">&quot;build/dev/resources.zip&quot;</span><span class=\"p\">,</span>\n  <span class=\"s2\">&quot;build/dev/tmp&quot;</span><span class=\"p\">,</span>\n<span class=\"p\">)</span>\n</code></pre></div>\n\nExtract while overwriting existing files on conflict:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">zip</span><span class=\"p\">.</span><span class=\"n\">unpack</span><span class=\"p\">(</span>\n  <span class=\"s2\">&quot;build/dev/resources.zip&quot;</span><span class=\"p\">,</span>\n  <span class=\"p\">{</span><span class=\"n\">on_conflict</span> <span class=\"o\">=</span> <span class=\"n\">zip</span><span class=\"p\">.</span><span class=\"n\">ON_CONFLICT</span><span class=\"p\">.</span><span class=\"n\">OVERWRITE</span><span class=\"p\">}</span>\n<span class=\"p\">)</span>\n</code></pre></div>\n\nExtract a single file:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">zip</span><span class=\"p\">.</span><span class=\"n\">unpack</span><span class=\"p\">(</span>\n  <span class=\"s2\">&quot;build/dev/resources.zip&quot;</span><span class=\"p\">,</span>\n  <span class=\"p\">{</span><span class=\"s2\">&quot;config.json&quot;</span><span class=\"p\">}</span>\n<span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "zip.unpack",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "zip file path, resolved against project root if relative",
+                    "is_optional": "False",
+                    "name": "archive_path",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "target path for extraction, defaults to parent of <code>archive_path</code> if omitted",
+                    "is_optional": "True",
+                    "name": "target_path",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "extraction options, a table with the following keys:<dl><dt><code>on_conflict <small>string</small></code></dt><dd>conflict resolution strategy, defaults to <code>zip.ON_CONFLICT.ERROR</code></dd></dl>",
+                    "is_optional": "True",
+                    "name": "opts",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "entries to extract, relative string paths",
+                    "is_optional": "True",
+                    "name": "paths",
+                    "types": [
                         "table"
                     ]
                 }
