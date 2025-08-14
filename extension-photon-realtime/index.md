@@ -90,7 +90,7 @@ You must read and agree to the [Exit Games End User License Terms](https://githu
 
 ## Example
 
-[Refer to the example project](https://github.com/defold/extension-photon-realtime/blob/master/examples) to see a complete example of how the integration works. Video showing four connected clients:
+[Refer to the example project](https://github.com/defold/extension-photon-realtime/blob/master/example) to see a complete example of how the integration works. Video showing four connected clients:
 
 [![Watch the video](https://img.youtube.com/vi/G5w62I-I2hA/0.jpg)](https://youtu.be/G5w62I-I2hA)
 
