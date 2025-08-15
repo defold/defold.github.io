@@ -33,6 +33,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Adds a reference to a dynamically created resource...",
+            "description": "Adds a reference to a dynamically created resource into the collection.\nIf the resource is not released before the collection is being destroyed,\nthe collection will automatically free the resource.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "AddDynamicResourceHash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Collection handle",
+                    "is_optional": "False",
+                    "name": "collection",
+                    "types": [
+                        "HCollection"
+                    ]
+                },
+                {
+                    "doc": "resource path hash",
+                    "is_optional": "False",
+                    "name": "path_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Assign an index to the instance, only if the insta...",
             "description": "Assign an index to the instance, only if the instance is not null.",
             "error": "",
