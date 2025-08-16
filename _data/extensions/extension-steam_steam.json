@@ -574,6 +574,34 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Create a new matchmaking lobby. Will generate a LobbyCreated_t, LobbyEnter_t and LobbyDataUpdate_t event",
+            "examples": "",
+            "name": "steam.matchmaking_create_lobby",
+            "parameters": [
+                {
+                    "doc": "The type and visibility of this lobby.",
+                    "name": "lobby_type",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "The maximum number of players that can join this lobby.",
+                    "name": "max_members",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Id",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Joins an existing lobby. Will generate a LobbyEnter_t event",
             "examples": "",
             "name": "steam.matchmaking_join_lobby",
