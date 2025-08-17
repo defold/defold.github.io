@@ -1220,9 +1220,14 @@ def process_refdoc(download = False):
                         elements = namespaces[namespace_key]["elements"]
                         elements.extend(api["elements"])
 
-            # generate index and dummy file per namespace
+            # do per namespace processing and generate index and dummy file per namespace
+            md = Markdown(extensions=['markdown.extensions.fenced_code','markdown.extensions.def_list', 'markdown.extensions.codehilite','markdown.extensions.tables'])
             for namespace_key in namespaces:
                 api = namespaces[namespace_key]
+
+                # create html version of description
+                api["info"]["description_html"] = md.convert(api["info"]["description"])
+
                 api["elements"].sort(key=lambda x: x.get("name").lower())
 
                 json_out_name = namespace_key

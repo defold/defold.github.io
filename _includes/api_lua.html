@@ -10,7 +10,7 @@
 {%- assign constants = v | concat: c -%}
 
 <h1>{{ ref.info.brief }}</h1>
-<p>{{ ref.info.description }}</p>
+<p>{{ ref.info.description_html }}</p>
 <p>Version: {{ page.branch }}</p>
 
 {%- if functions.size > 0 -%}
