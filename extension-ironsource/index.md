@@ -12,7 +12,6 @@ toc:
 - Troubleshooting
 - 'Error 508: Interstitial - Server response contains no interstitial data'
 - Source code
-- API reference
 ---
 
 # Defold IronSource extension API documentation
@@ -55,6 +54,5 @@ If you get such an error, make sure that you initialize ADS right and use test p
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-ironsource)
-
-
-## API reference[API Reference - ironsource](/extension-ironsource/ironsource_api)
+## API reference
+[API Reference - ironsource](/extension-ironsource/ironsource_api)
