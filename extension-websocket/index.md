@@ -9,7 +9,6 @@ toc:
 - Installation
 - Configuration
 - Source code
-- API reference
 ---
 
 # Defold websocket extension API documentation
@@ -81,9 +80,5 @@ socket_timeout = 10000000
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-websocket)
-
-## API reference
-
-https://defold.com/extension-websocket/api/
 ## API reference
 [API Reference - websocket](/extension-websocket/websocket_api)
