@@ -22,7 +22,6 @@ toc:
 - Sharing events with Facebook
 - Relevant Facebook documentation links
 - Source code
-- API reference
 ---
 
 # Defold Facebook documentation
@@ -274,7 +273,5 @@ You can opt to share generated events with Facebook for improved ad-tracking. Th
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-facebook)
-
-
-
-## API reference[API Reference - facebook](/extension-facebook/facebook_api)
+## API reference
+[API Reference - facebook](/extension-facebook/facebook_api)
