@@ -17,22 +17,73 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Connect to the server. - username - use_datagram_encryption - server_type See SERVER_TYPE_* enums - server_address The IP address or domain name and optionally the port number to connect to. IP addresses can be in IPv4 or IPv6 format - auth_data Sets the HTTP POST data, that will be forwarded to the authentication service, to the provided data. - auth_parameters The HTTP GET parameters that will be forwarded to the authentication service to the provided parameters. - auth_type The type of the &quot;Custom Authentication&quot; service that will be used. See AUTH_* enums",
+            "description": "Connect to the server.",
             "examples": "",
             "name": "realtime.connect",
             "parameters": [
                 {
                     "doc": "Table with connection options",
                     "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "",
+                            "name": "username",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "use_datagram_encryption",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "See SERVER_TYPE_* enums",
+                            "name": "server_type",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "The IP address or domain name and optionally the port number to connect to. IP addresses can be in IPv4 or IPv6 format",
+                            "name": "server_address",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "Sets the HTTP POST data, that will be forwarded to the authentication service, to the provided data.",
+                            "name": "auth_data",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "The HTTP GET parameters that will be forwarded to the authentication service to the provided parameters.",
+                            "name": "auth_parameters",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "The type of the &quot;Custom Authentication&quot; service that will be used. See AUTH_* enums",
+                            "name": "auth_type",
+                            "types": [
+                                "number"
+                            ]
+                        }
+                    ],
                     "types": [
-                        "None"
+                        "table"
                     ]
                 },
                 {
                     "doc": "",
                     "name": "callback",
                     "types": [
-                        "None"
+                        "function"
                     ]
                 }
             ],
@@ -87,12 +138,12 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Create room. Local game_id = &quot;1234&quot; local room_options = { is_visible = false, is_open = false, supress_room_events = false, max_players = 4, player_ttl = 0, empty_room_ttl = 0, lobby_type = realtime.LOBBYTYPE_DEFAULT, lobby_name = &quot;&quot;, publish_user_id = &quot;&quot;, direct_mode = realtime.DIRECTMODE_NONE, props_listed_in_lobby = {}, custom_room_properties = {}, } local expected_users = {} realtime.create_room(game_id, room_options, expected_users)",
+            "description": "Create room.",
             "examples": "",
             "name": "realtime.create_room",
             "parameters": [
                 {
-                    "doc": "The name to create a room with. Must be unique and not in use or the room can&#x27;t be created. If this is an empty string, then the server will assign a GUID as name.",
+                    "doc": "The name to create a room with. Must be unique and not in use or the room can't be created. If this is an empty string, then the server will assign a GUID as name.",
                     "name": "game_id",
                     "types": [
                         "string"
@@ -101,6 +152,92 @@
                 {
                     "doc": "",
                     "name": "room_options",
+                    "parameters": [
+                        {
+                            "doc": "",
+                            "name": "is_visible",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "is_open",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "supress_room_events",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "max_players",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "player_ttl",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "empty_room_ttl",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "Realtime.LOBBYTYPE_* enum",
+                            "name": "lobby_type",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "lobby_name",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "publish_user_id",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "Realtime.DIRECTMODE_* enum",
+                            "name": "direct_mode",
+                            "types": [
+                                "numbmer"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "props_listed_in_lobby",
+                            "types": [
+                                "table"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "custom_room_properties",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
                     "types": [
                         "table"
                     ]
@@ -117,12 +254,12 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Join room. Local game_id = &quot;1234&quot; local join_options = { rejoin = false, cache_slice_index = 0, expected_users = {}, } realtime.join_room(game_id, join_options)",
+            "description": "Join room.",
             "examples": "",
             "name": "realtime.join_room",
             "parameters": [
                 {
-                    "doc": "The name to create a room with. Must be unique and not in use or the room can&#x27;t be created. If this is an empty string, then the server will assign a GUID as name.",
+                    "doc": "The name to create a room with. Must be unique and not in use or the room can't be created. If this is an empty string, then the server will assign a GUID as name.",
                     "name": "game_id",
                     "types": [
                         "string"
@@ -131,6 +268,29 @@
                 {
                     "doc": "",
                     "name": "join_options",
+                    "parameters": [
+                        {
+                            "doc": "",
+                            "name": "rejoin",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "cache_slice_index",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "expected_users",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
                     "types": [
                         "table"
                     ]
@@ -140,12 +300,12 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Join or create room. Local game_id = &quot;1234&quot; local room_options = { is_visible = false, is_open = false, supress_room_events = false, max_players = 4, player_ttl = 0, empty_room_ttl = 0, lobby_type = realtime.LOBBYTYPE_DEFAULT, lobby_name = &quot;&quot;, publish_user_id = &quot;&quot;, direct_mode = realtime.DIRECTMODE_NONE, props_listed_in_lobby = {}, custom_room_properties = {}, } local join_options = { custom_room_properties = {}, max_players = 0, matchmaking_mode = realtime.MATCHMAKINGMODE_FILL_ROOM, lobby_name = &quot;&quot;, lobby_type = realtime.LOBBYTYPE_DEFAULT, sql_lobby_filter = &quot;&quot;, expected_users = {}, }",
+            "description": "Join or create room.",
             "examples": "",
             "name": "realtime.join_or_create_room",
             "parameters": [
                 {
-                    "doc": "The name to create a room with. Must be unique and not in use or the room can&#x27;t be created. If this is an empty string, then the server will assign a GUID as name.",
+                    "doc": "The name to create a room with. Must be unique and not in use or the room can't be created. If this is an empty string, then the server will assign a GUID as name.",
                     "name": "game_id",
                     "types": [
                         "string"
@@ -154,6 +314,92 @@
                 {
                     "doc": "",
                     "name": "room_options",
+                    "parameters": [
+                        {
+                            "doc": "",
+                            "name": "is_visible",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "is_open",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "supress_room_events",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "max_players",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "player_ttl",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "empty_room_ttl",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "Realtime.LOBBYTYPE_* enum",
+                            "name": "lobby_type",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "lobby_name",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "publish_user_id",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "Realtime.DIRECTMODE_* enum",
+                            "name": "direct_mode",
+                            "types": [
+                                "numbmer"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "props_listed_in_lobby",
+                            "types": [
+                                "table"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "custom_room_properties",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
                     "types": [
                         "table"
                     ]
@@ -161,6 +407,57 @@
                 {
                     "doc": "",
                     "name": "join_options",
+                    "parameters": [
+                        {
+                            "doc": "",
+                            "name": "custom_room_properties",
+                            "types": [
+                                "table"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "max_players",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "Realtime.MATCHMAKINGMODE_* enum",
+                            "name": "matchmaking_mode",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "lobby_name",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "Realtime.LOBBYTYPE_* enum",
+                            "name": "lobby_type",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "sql_lobby_filter",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "expected_users",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
                     "types": [
                         "table"
                     ]
@@ -170,12 +467,12 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Join or create random room. Local game_id = &quot;1234&quot; local room_options = { is_visible = false, is_open = false, supress_room_events = false, max_players = 4, player_ttl = 0, empty_room_ttl = 0, lobby_type = realtime.LOBBYTYPE_DEFAULT, lobby_name = &quot;&quot;, publish_user_id = &quot;&quot;, direct_mode = realtime.DIRECTMODE_NONE, props_listed_in_lobby = {}, custom_room_properties = {}, } local join_options = { custom_room_properties = {}, max_players = 0, matchmaking_mode = realtime.MATCHMAKINGMODE_FILL_ROOM, lobby_name = &quot;&quot;, lobby_type = realtime.LOBBYTYPE_DEFAULT, sql_lobby_filter = &quot;&quot;, expected_users = {}, } realtime.join_or_create_random_room(game_id, room_options, join_options)",
+            "description": "Join or create random room.",
             "examples": "",
             "name": "realtime.join_or_create_random_room",
             "parameters": [
                 {
-                    "doc": "The name to create a room with. Must be unique and not in use or the room can&#x27;t be created. If this is an empty string, then the server will assign a GUID as name.",
+                    "doc": "The name to create a room with. Must be unique and not in use or the room can't be created. If this is an empty string, then the server will assign a GUID as name.",
                     "name": "game_id",
                     "types": [
                         "string"
@@ -184,6 +481,92 @@
                 {
                     "doc": "",
                     "name": "room_options",
+                    "parameters": [
+                        {
+                            "doc": "",
+                            "name": "is_visible",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "is_open",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "supress_room_events",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "max_players",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "player_ttl",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "empty_room_ttl",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "Realtime.LOBBYTYPE_* enum",
+                            "name": "lobby_type",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "lobby_name",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "publish_user_id",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "Realtime.DIRECTMODE_* enum",
+                            "name": "direct_mode",
+                            "types": [
+                                "numbmer"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "props_listed_in_lobby",
+                            "types": [
+                                "table"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "custom_room_properties",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
                     "types": [
                         "table"
                     ]
@@ -191,6 +574,57 @@
                 {
                     "doc": "",
                     "name": "join_options",
+                    "parameters": [
+                        {
+                            "doc": "",
+                            "name": "custom_room_properties",
+                            "types": [
+                                "table"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "max_players",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "Realtime.MATCHMAKINGMODE_* enum",
+                            "name": "matchmaking_mode",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "lobby_name",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "Realtime.LOBBYTYPE_* enum",
+                            "name": "lobby_type",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "sql_lobby_filter",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "expected_users",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
                     "types": [
                         "table"
                     ]
@@ -200,13 +634,64 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Join random room. Local join_options = { custom_room_properties = {}, max_players = 0, matchmaking_mode = realtime.MATCHMAKINGMODE_FILL_ROOM, lobby_name = &quot;&quot;, lobby_type = realtime.LOBBYTYPE_DEFAULT, sql_lobby_filter = &quot;&quot;, expected_users = {}, } realtime.join_random_room(join_options)",
+            "description": "Join random room.",
             "examples": "",
-            "name": "realtime.int JoinRandomRoom",
+            "name": "realtime.join_random_room",
             "parameters": [
                 {
                     "doc": "",
                     "name": "join_options",
+                    "parameters": [
+                        {
+                            "doc": "",
+                            "name": "custom_room_properties",
+                            "types": [
+                                "table"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "max_players",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "Realtime.MATCHMAKINGMODE_* enum",
+                            "name": "matchmaking_mode",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "lobby_name",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "Realtime.LOBBYTYPE_* enum",
+                            "name": "lobby_type",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "sql_lobby_filter",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "expected_users",
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
                     "types": [
                         "table"
                     ]
@@ -275,6 +760,64 @@
                 {
                     "doc": "(channel_id, event_caching, receiver_group, interest_group, cache_slice_index, target_players, web_flags, encrypt)",
                     "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "",
+                            "name": "channel_id",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "event_caching",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "receiver_group",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "interest_group",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "cache_slice_index",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "target_players",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "web_flags",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "",
+                            "name": "encrypt",
+                            "types": [
+                                "boolean"
+                            ]
+                        }
+                    ],
                     "types": [
                         "table"
                     ]
@@ -593,7 +1136,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "Authenticates users by their Steam Account. Pass L&quot;ticket=[ticket]&quot; to setParameters().",
+            "description": "Authenticates users by their Steam Account. Pass L\"ticket=[ticket]\" to setParameters().",
             "examples": "",
             "name": "AUTH_STEAM",
             "parameters": [],
@@ -601,7 +1144,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "Authenticates users by their Facebook Account. Pass L&quot;token=[token]&quot; to setParameters().",
+            "description": "Authenticates users by their Facebook Account. Pass L\"token=[token]\" to setParameters().",
             "examples": "",
             "name": "AUTH_FACEBOOK",
             "parameters": [],
@@ -609,7 +1152,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "Authenticates users by their Oculus Account. Pass L&quot;userid=[userid]&amp;nonce=[nonce]&quot; to setParameters().",
+            "description": "Authenticates users by their Oculus Account. Pass L\"userid=[userid]&nonce=[nonce]\" to setParameters().",
             "examples": "",
             "name": "AUTH_OCULUS",
             "parameters": [],
@@ -617,7 +1160,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "Authenticates users by their PSN Account. Pass L&quot;token=[token]&amp;env=[env]&amp;userName=[userName]&quot; to setParameters().",
+            "description": "Authenticates users by their PSN Account. Pass L\"token=[token]&env=[env]&userName=[userName]\" to setParameters().",
             "examples": "",
             "name": "AUTH_PLAYSTATION_4",
             "parameters": [],
@@ -633,7 +1176,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "Authenticates users by their HTC Viveport Account and user token. Pass L&quot;userToken=[userToken]&quot; to setParameters().",
+            "description": "Authenticates users by their HTC Viveport Account and user token. Pass L\"userToken=[userToken]\" to setParameters().",
             "examples": "",
             "name": "AUTH_VIVEPORT",
             "parameters": [],
@@ -641,7 +1184,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "Authenticates users by their Nintendo Account. Pass L&quot;token=[token]&amp;appversion=[appversion]&quot; to setParameters(). The appversion is optional.",
+            "description": "Authenticates users by their Nintendo Account. Pass L\"token=[token]&appversion=[appversion]\" to setParameters(). The appversion is optional.",
             "examples": "",
             "name": "AUTH_NINTENDO_SWITCH",
             "parameters": [],
@@ -649,7 +1192,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "Authenticates users by their PSN Account. Pass L&quot;token=[token]&amp;env=[env]&amp;userName=[userName]&quot; to setParameters().",
+            "description": "Authenticates users by their PSN Account. Pass L\"token=[token]&env=[env]&userName=[userName]\" to setParameters().",
             "examples": "",
             "name": "AUTH_PLAYSTATION_5",
             "parameters": [],
@@ -657,7 +1200,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "Authenticates users by their Epic Online Services (EOS) Account. Pass L&quot;token=[token]&amp;ownershipToken=[ownershipToken]&quot; to setParameters(). The ownershipToken is optional.",
+            "description": "Authenticates users by their Epic Online Services (EOS) Account. Pass L\"token=[token]&ownershipToken=[ownershipToken]\" to setParameters(). The ownershipToken is optional.",
             "examples": "",
             "name": "AUTH_EPIC",
             "parameters": [],
@@ -665,7 +1208,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "Authenticates users by their Facebook Account. Pass L&quot;token=[token]&quot; to setParameters().",
+            "description": "Authenticates users by their Facebook Account. Pass L\"token=[token]\" to setParameters().",
             "examples": "",
             "name": "AUTH_FACEBOOK_GAMING",
             "parameters": [],
@@ -697,7 +1240,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "Fills up rooms (oldest first) to get players together as fast as possible. Default. Makes most sense with MaxPlayers &gt; 0 and games that can only start with more players.",
+            "description": "Fills up rooms (oldest first) to get players together as fast as possible. Default. Makes most sense with MaxPlayers > 0 and games that can only start with more players.",
             "examples": "",
             "name": "MATCHMAKINGMODE_FILL_ROOM",
             "parameters": [],
@@ -729,7 +1272,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "This lobby type lists rooms like type DEFAULT but  SQL-like &quot;where&quot; clauses for filtering can be used with Client::opJoinRandomRoom(). This allows &#x27;bigger&#x27;, &#x27;less&#x27;, &#x27;or&#x27; and &#x27;and&#x27; combinations.",
+            "description": "This lobby type lists rooms like type DEFAULT but  SQL-like \"where\" clauses for filtering can be used with Client::opJoinRandomRoom(). This allows 'bigger', 'less', 'or' and 'and' combinations.",
             "examples": "",
             "name": "LOBBYTYPE_SQL_LOBBY",
             "parameters": [],
