@@ -81,86 +81,6 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Apply the transform on a point, but without scalin...",
-            "description": "Apply the transform on a point, but without scaling the Z-component of the point (includes the transform translation).",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "ApplyNoScaleZ",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "Transform",
-                    "is_optional": "False",
-                    "name": "t",
-                    "types": [
-                        "dmTransform::Transform&"
-                    ]
-                },
-                {
-                    "doc": "Point",
-                    "is_optional": "False",
-                    "name": "p",
-                    "types": [
-                        "dmVMath::Point3&"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "Transformed point",
-                    "name": "point",
-                    "types": [
-                        "dmVMath::Point3"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Apply the transform on a vector, but without scali...",
-            "description": "Apply the transform on a vector, but without scaling the Z-component of the vector (excludes the transform translation).",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "ApplyNoScaleZ",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "Transform",
-                    "is_optional": "False",
-                    "name": "t",
-                    "types": [
-                        "dmTransform::Transform&"
-                    ]
-                },
-                {
-                    "doc": "Vector",
-                    "is_optional": "False",
-                    "name": "v",
-                    "types": [
-                        "dmVMath::Vector3&"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "Transformed vector",
-                    "name": "point",
-                    "types": [
-                        "dmVMath::Vector3"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
             "brief": "Extract the absolute values of the scale component...",
             "description": "Extract the absolute values of the scale component from a matrix.",
             "error": "",
@@ -357,86 +277,6 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Transforms the right-hand transform by the left-ha...",
-            "description": "Transforms the right-hand transform by the left-hand transform, without scaling the Z-component of the transition of the transformed transform",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "MulNoScaleZ",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "",
-                    "is_optional": "False",
-                    "name": "lhs",
-                    "types": [
-                        "const dmTransform::Transform&"
-                    ]
-                },
-                {
-                    "doc": "",
-                    "is_optional": "False",
-                    "name": "rhs",
-                    "types": [
-                        "const dmTransform::Transform&"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "Transformed transform",
-                    "name": "result",
-                    "types": [
-                        "dmTransform::Transform"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Multiply two matrices without z-scaling the transl...",
-            "description": "Multiply two matrices without z-scaling the translation in m2",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "MulNoScaleZ",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "First matrix",
-                    "is_optional": "False",
-                    "name": "m1",
-                    "types": [
-                        "const dmVMath::Matrix&"
-                    ]
-                },
-                {
-                    "doc": "Second matrix",
-                    "is_optional": "False",
-                    "name": "m2",
-                    "types": [
-                        "const dmVMath::Matrix&"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "The resulting transform",
-                    "name": "result",
-                    "types": [
-                        "dmVMath::Matrix"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
             "brief": "Eliminate the z scaling components in a matrix",
             "description": "Eliminate the z scaling components in a matrix",
             "error": "",
@@ -583,6 +423,38 @@
                     ]
                 }
             ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set scale for x and y",
+            "description": "set scale for x and y",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetScaleXY",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "scale_x",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "scale_y",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -812,6 +684,7 @@
     "info": {
         "brief": "Transform API documentation",
         "description": "[file:<dmsdk/dlib/transform.h>]\n\nApi for transforms with rotation, scale and translation",
+        "description_html": "<p>[file:<dmsdk/dlib/transform.h>]</p>\n<p>Api for transforms with rotation, scale and translation</p>",
         "file": "dmsdk/dlib/transform.h",
         "language": "C++",
         "name": "Transform",

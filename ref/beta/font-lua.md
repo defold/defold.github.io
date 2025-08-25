@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: beta
-ref: scripts-script_font.cpp_doc.json-lua
+ref: font-lua
 language: Lua
-title: API reference ()
+title: API reference (Font)
 type: Defold Lua
 ---
 {% include anchor_headings.html html=content %}
