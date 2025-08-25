@@ -1072,6 +1072,9 @@ def process_games(tmp_dir):
     # add new games last
     games = read_as_json(GAMES_JSON)
 
+    # Track the IDs that exist upstream to allow removal of deleted games
+    new_game_ids = set()
+
     # read new games
     for filename in find_files(os.path.join(tmp_dir, "games-showcase-master", "games"), "*.json"):
         basename = os.path.basename(filename)
@@ -1079,6 +1082,7 @@ def process_games(tmp_dir):
 
         # read new game and add additional data
         game_id = basename.replace(".json", "")
+        new_game_ids.add(game_id)
         new_game = read_as_json(filename)
         new_game["id"] = game_id
 
@@ -1095,6 +1099,10 @@ def process_games(tmp_dir):
         if not found:
             new_game["games"] = "half"
             games.append(new_game)
+
+    # Remove games that no longer exist in the games-showcase repository
+    if new_game_ids:
+        games = [g for g in games if g.get("id") in new_game_ids]
 
     write_as_json(GAMES_JSON, games)
 
