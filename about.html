@@ -1,0 +1,75 @@
+---
+layout: hero_and_text
+title: About
+description: Curious about Defold? Learn what how to create great games using Defold. You will also find a brief history of the creation of Defold and how the source code was made available.
+nav: floating
+background: /images/hero/defold-top-bg-transparent-2.png
+after: [yellow_download_section.html,donors_and_partners.html]
+---
+
+<div class="row">
+  <div class="columns twelve">
+    <h3>What is Defold?</h3>
+    <p><b>Defold is a free, cross-platform game engine designed for creating console, desktop, mobile, and web games.</b> It comes with no up-front costs, licensing fees, or royalties. The source code is available on GitHub under a developer-friendly license, giving creators the flexibility to customize and extend its capabilities.</p>
+    <p>The Defold editor runs seamlessly on Windows, Linux, and macOS, offering an integrated code editor, debugger, profiler, and advanced scene and UI editors. Game logic is written in Lua, with the option to extend functionality through native code when needed.</p>
+    <p>Defold has been embraced by an ever-growing community of developers—from indie creators and students to studios shipping commercial titles. It's widely recognized for its ease of use, excellent technical documentation, and welcoming developer community, making it a top choice for both learning and professional game development.</p>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="columns twelve">
+{%- include games_third.html placement="about" limit=3 offset=0 url="/showcase" -%}
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="columns twelve">
+    <h3>History</h3>
+    <p>Defold was created by Christian Murray and Ragnar Svensson as a side-project while they were working at Avalanche Studios, and later as a full time business before being acquired by <a href="https://www.king.com">King</a> in 2014. Defold was developed and used internally at King for a few years before the decision was made to make Defold available to developers outside of King. The announcement and release of Defold as a free to use game engine was made at the Game Developers Conference in San Francisco in March 2016. Development has continued with bi-weekly incremental releases of the engine and editor, with a major milestone being the release of the new editor in 2017.</p>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="columns twelve">
+    <h3>Free to use and developer-friendly</h3>
+    <p>King made the decision to make the <a href="/open">Defold source code available</a> in May 2020, and as part of this process, transfer Defold to a software foundation; the <a href="/foundation">Defold Foundation</a>. The foundation works together with industry partners to provide free and open software and services to game developers across the globe. Defold is actively developed by the Defold Foundation with monthly releases of new features.</p>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="columns twelve">
+    <h3>News</h3>
+{% assign posts = site.posts | where: "tags", "news" %}
+{%- for post in posts limit: 3 -%}
+{%- include post_preview_small.html post=post -%}
+{%- endfor -%}
+  </div>
+</div>
+<div class="row center">
+  <div>
+    {% include primary_button.html link="/news" text="More news" %}
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="columns twelve">
+    <h3>Operations</h3>
+    <p>Managing a large product such as Defold requires a great deal of organisation. The operational structure looks like this:</p>
+    <ul>
+      <li>Owner - <a href="/foundation">The Defold Foundation</a> owns the Defold brand and product and is the legal entity representing Defold at all times.</li>
+      <li>Strategic decisions - The board of the Defold Foundation is responsible for making all strategic decisions.</li>
+      <li>Operations - The Defold Foundation has no employees of its own to execute the decisions made by the board. Instead the foundation relies on a number of subcontractors for day to day operations:</li>
+      <ul>
+        <li>Finance - <a href="https://viewgroup.se">View Ledger</a></li>
+        <li>Public audit - <a href="https://www.grantthornton.se/">Grant Thornton</a></li>
+        <li>Legal advisor - <a href="https://lawyer.se/">Lawyer.se</a></li>
+        <li>Product development, marketing, support and sales - <a href="https://www.refold.io/">Refold AB</a> is owned by members of the Defold team and is contracted to perform most of the day to day work on the Defold product.</li>
+      </ul>
+    </ul>
+  </div>
+</div>
