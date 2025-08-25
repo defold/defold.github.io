@@ -50,6 +50,70 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Enter dismisses the keyboard",
+            "examples": "",
+            "name": "EFloatingGamepadTextInputModeModeSingleLine",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "User needs to explicitly dismiss the keyboard",
+            "examples": "",
+            "name": "EFloatingGamepadTextInputModeModeMultipleLines",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Keyboard is displayed in a special mode that makes it easier to enter emails",
+            "examples": "",
+            "name": "EFloatingGamepadTextInputModeModeEmail",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Numeric keypad is shown",
+            "examples": "",
+            "name": "EFloatingGamepadTextInputModeModeNumeric",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Normal text input",
+            "examples": "",
+            "name": "EGamepadTextInputModeNormal",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Password text input",
+            "examples": "",
+            "name": "EGamepadTextInputModePassword",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Single line text",
+            "examples": "",
+            "name": "EGamepadTextInputLineModeSingleLine",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Multi line text",
+            "examples": "",
+            "name": "EGamepadTextInputLineModeMultipleLines",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
             "description": "Requests rows in the leaderboard from the full table",
             "examples": "",
             "name": "ELeaderboardDataRequestGlobal",
@@ -74,6 +138,14 @@
             "type": "VARIABLE"
         },
         {
+            "description": null,
+            "examples": "",
+            "name": "ELeaderboardSortMethodNone",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
             "description": "Top-score is lowest number",
             "examples": "",
             "name": "ELeaderboardSortMethodAscending",
@@ -90,6 +162,14 @@
             "type": "VARIABLE"
         },
         {
+            "description": null,
+            "examples": "",
+            "name": "ELeaderboardUploadScoreMethodNone",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
             "description": "Leaderboard will keep user&#x27;s best score",
             "examples": "",
             "name": "ELeaderboardUploadScoreMethodKeepBest",
@@ -101,6 +181,14 @@
             "description": "Leaderboard will always replace score with specified",
             "examples": "",
             "name": "ELeaderboardUploadScoreMethodForceUpdate",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "ELeaderboardDisplayTypeNone",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
@@ -229,6 +317,438 @@
             "description": "Online, but appears offline to friends.  This status is never published to clients.",
             "examples": "",
             "name": "EPersonaStateInvisible",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EFriendFlagNone",
+            "examples": "",
+            "name": "EFriendFlagNone",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EFriendFlagBlocked",
+            "examples": "",
+            "name": "EFriendFlagBlocked",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EFriendFlagFriendshipRequested",
+            "examples": "",
+            "name": "EFriendFlagFriendshipRequested",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EFriendFlagImmediate",
+            "examples": "",
+            "name": "EFriendFlagImmediate",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EFriendFlagClanMember",
+            "examples": "",
+            "name": "EFriendFlagClanMember",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EFriendFlagOnGameServer",
+            "examples": "",
+            "name": "EFriendFlagOnGameServer",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EFriendFlagRequestingFriendship",
+            "examples": "",
+            "name": "EFriendFlagRequestingFriendship",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EFriendFlagRequestingInfo",
+            "examples": "",
+            "name": "EFriendFlagRequestingInfo",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EFriendFlagIgnored",
+            "examples": "",
+            "name": "EFriendFlagIgnored",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EFriendFlagIgnoredFriend",
+            "examples": "",
+            "name": "EFriendFlagIgnoredFriend",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EFriendFlagChatMember",
+            "examples": "",
+            "name": "EFriendFlagChatMember",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EFriendFlagAll",
+            "examples": "",
+            "name": "EFriendFlagAll",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "SteamNetworkingSend_Unreliable",
+            "examples": "",
+            "name": "SteamNetworkingSend_Unreliable",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "SteamNetworkingSend_NoNagle",
+            "examples": "",
+            "name": "SteamNetworkingSend_NoNagle",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "SteamNetworkingSend_UnreliableNoNagle",
+            "examples": "",
+            "name": "SteamNetworkingSend_UnreliableNoNagle",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "SteamNetworkingSend_NoDelay",
+            "examples": "",
+            "name": "SteamNetworkingSend_NoDelay",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "SteamNetworkingSend_UnreliableNoDelay",
+            "examples": "",
+            "name": "SteamNetworkingSend_UnreliableNoDelay",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "SteamNetworkingSend_Reliable",
+            "examples": "",
+            "name": "SteamNetworkingSend_Reliable",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "SteamNetworkingSend_ReliableNoNagle",
+            "examples": "",
+            "name": "SteamNetworkingSend_ReliableNoNagle",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "SteamNetworkingSend_UseCurrentThread",
+            "examples": "",
+            "name": "SteamNetworkingSend_UseCurrentThread",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "SteamNetworkingSend_AutoRestartBrokenSession",
+            "examples": "",
+            "name": "SteamNetworkingSend_AutoRestartBrokenSession",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Invalid",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Invalid",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_App_Generic",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_App_Generic",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_AppException_Generic",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_AppException_Generic",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Local_OfflineMode",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Local_OfflineMode",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Local_ManyRelayConnectivity",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Local_ManyRelayConnectivity",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Local_HostedServerPrimaryRelay",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Local_HostedServerPrimaryRelay",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Local_NetworkConfig",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Local_NetworkConfig",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Local_Rights",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Local_Rights",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Local_P2P_ICE_NoPublicAddresses",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Local_P2P_ICE_NoPublicAddresses",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Remote_Timeout",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Remote_Timeout",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Remote_BadCrypt",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Remote_BadCrypt",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Remote_BadCert",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Remote_BadCert",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Remote_BadProtocolVersion",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Remote_BadProtocolVersion",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Remote_P2P_ICE_NoPublicAddresses",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Remote_P2P_ICE_NoPublicAddresses",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Misc_Generic",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Misc_Generic",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Misc_InternalError",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Misc_InternalError",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Misc_Timeout",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Misc_Timeout",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Misc_SteamConnectivity",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Misc_SteamConnectivity",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Misc_NoRelaySessionsToClient",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Misc_NoRelaySessionsToClient",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Misc_P2P_Rendezvous",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Misc_P2P_Rendezvous",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Misc_P2P_NAT_Firewall",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Misc_P2P_NAT_Firewall",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetConnectionEnd_Misc_PeerSentNoConnection",
+            "examples": "",
+            "name": "ESteamNetConnectionEnd_Misc_PeerSentNoConnection",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetworkingConnectionState_None",
+            "examples": "",
+            "name": "ESteamNetworkingConnectionState_None",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetworkingConnectionState_Connecting",
+            "examples": "",
+            "name": "ESteamNetworkingConnectionState_Connecting",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetworkingConnectionState_FindingRoute",
+            "examples": "",
+            "name": "ESteamNetworkingConnectionState_FindingRoute",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetworkingConnectionState_Connected",
+            "examples": "",
+            "name": "ESteamNetworkingConnectionState_Connected",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetworkingConnectionState_ClosedByPeer",
+            "examples": "",
+            "name": "ESteamNetworkingConnectionState_ClosedByPeer",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ESteamNetworkingConnectionState_ProblemDetectedLocally",
+            "examples": "",
+            "name": "ESteamNetworkingConnectionState_ProblemDetectedLocally",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ELobbyTypePrivate only way to join the lobby is to invite to someone else",
+            "examples": "",
+            "name": "ELobbyTypePrivate",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ELobbyTypeFriendsOnly shows for friends or invitees, but not in lobby list",
+            "examples": "",
+            "name": "ELobbyTypeFriendsOnly",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ELobbyTypePublic visible for friends and in lobby list",
+            "examples": "",
+            "name": "ELobbyTypePublic",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ELobbyTypeInvisible returned by search, but not visible to other friends",
+            "examples": "",
+            "name": "ELobbyTypeInvisible",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "ELobbyTypePrivateUnique private, unique and does not delete when empty",
+            "examples": "",
+            "name": "ELobbyTypePrivateUnique",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
@@ -568,6 +1088,34 @@
             "returnvalues": [
                 {
                     "doc": "Of lobby",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Create a new matchmaking lobby. Will generate a LobbyCreated_t, LobbyEnter_t and LobbyDataUpdate_t event",
+            "examples": "",
+            "name": "steam.matchmaking_create_lobby",
+            "parameters": [
+                {
+                    "doc": "The type and visibility of this lobby.",
+                    "name": "lobby_type",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "The maximum number of players that can join this lobby.",
+                    "name": "max_members",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Id",
                     "name": "string"
                 }
             ],
@@ -1388,6 +1936,22 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Find a leaderboard. Will return leaderboard asynchronously. https://partner.steamgames.com/doc/api/ISteamUserStats#FindLeaderboard",
+            "examples": "",
+            "name": "steam.user_stats_find_leaderboard",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Gets a leaderboard by name, it will create it if it&#x27;s not yet created. This call is asynchronous, with the result returned in a listener callback with event set to LeaderboardFindResult_t. https://partner.steamgames.com/doc/api/ISteamUserStats#FindOrCreateLeaderboard",
             "examples": "",
             "name": "steam.user_stats_find_or_create_leaderboard",
@@ -1836,7 +2400,7 @@
     "info": {
         "api": "extension-steam/steam_api",
         "brief": "steam",
-        "description": "Functions and constants for interacting with Steamworks",
+        "description": "Functions and constants for interacting with Steamworks.",
         "group": "EXTENSIONS",
         "language": "Lua",
         "name": "extension-steam",

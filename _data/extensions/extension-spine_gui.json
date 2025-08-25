@@ -53,8 +53,31 @@
                     ]
                 },
                 {
-                    "doc": "optional table with properties - `blend_duration` [number] The duration of a linear blend between the current and new animation - `offset` [number] The normalized initial value of the animation cursor when the animation starts playing - `playback_rate` [number] The rate with which the animation will be played. Must be positive",
+                    "doc": "optional table with properties",
                     "name": "play_properties",
+                    "parameters": [
+                        {
+                            "doc": "The duration of a linear blend between the current and new animation",
+                            "name": "blend_duration",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "The normalized initial value of the animation cursor when the animation starts playing",
+                            "name": "offset",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "The rate with which the animation will be played. Must be positive",
+                            "name": "playback_rate",
+                            "types": [
+                                "number"
+                            ]
+                        }
+                    ],
                     "types": [
                         "table"
                     ]
@@ -482,6 +505,92 @@
                     "name": "degrees",
                     "types": [
                         "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets a static (vector3) target position of an inverse kinematic (IK) object.",
+            "examples": "<p>The following example assumes that the Spine GUI node has id \"spine_node\".</p>\n<p>How to set the target IK position of the right_hand_constraint constraint object of the player object</p>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">pos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n  <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_spine_ik_target_position</span><span class=\"p\">(</span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;spine_node&quot;</span><span class=\"p\">),</span> <span class=\"s2\">&quot;right_hand_constraint&quot;</span><span class=\"p\">,</span> <span class=\"n\">pos</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "gui.set_spine_ik_target_position",
+            "parameters": [
+                {
+                    "doc": "the Spine GUI node containing the object",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "id of the corresponding IK constraint object",
+                    "name": "ik_constraint_id",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "target position",
+                    "name": "position",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets a GUI node as target position of an inverse kinematic (IK) object. As the target GUI node's position is updated, the constraint object is updated with the new position.",
+            "examples": "<p>The following example assumes that the Spine GUI node has id \"spine_node\".</p>\n<p>How to set the target IK position of the right_hand_constraint constraint object to follow the position of GUI node with id \"target_node\"</p>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">spine_node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;spine_node&quot;</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">target_node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;target_node&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_spine_ik_target</span><span class=\"p\">(</span><span class=\"n\">spine_node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;right_hand_constraint&quot;</span><span class=\"p\">,</span> <span class=\"n\">target_node</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "gui.set_spine_ik_target",
+            "parameters": [
+                {
+                    "doc": "the Spine GUI node containing the object",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "id of the corresponding IK constraint object",
+                    "name": "ik_constraint_id",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "target GUI node",
+                    "name": "target_node",
+                    "types": [
+                        "node"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Resets any previously set IK target of a Spine GUI node, the position will be reset to the original position from the spine scene.",
+            "examples": "<p>The following example assumes that the Spine GUI node has id \"spine_node\".</p>\n<p>A player no longer has an item in hand, that previously was controlled through IK, let's reset the IK of the right hand.</p>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">player_lost_item</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">reset_spine_ik_target</span><span class=\"p\">(</span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;spine_node&quot;</span><span class=\"p\">),</span> <span class=\"s2\">&quot;right_hand_constraint&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "name": "gui.reset_spine_ik_target",
+            "parameters": [
+                {
+                    "doc": "the Spine GUI node containing the object",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ]
+                },
+                {
+                    "doc": "id of the corresponding IK constraint object",
+                    "name": "ik_constraint_id",
+                    "types": [
+                        "string",
+                        "hash"
                     ]
                 }
             ],

@@ -24,6 +24,7 @@ toc:
 - Playing animations
 - Cursor animation
 - Timeline events
+- MixBlend Modes
 - Playback Modes
 - Creating Spine GUI nodes
 - Runtime animation control
@@ -50,7 +51,7 @@ To use this library in your Defold project, add the needed version URL to your g
 
 ## Migration guide
 
-Spine animations used to be part of the main Defold engine. Starting with Defold version 1.2.193 Spine animations have been moved from the engine into a Defold extension. To upgrade to the new version you need to make a few changes to your project. 
+Spine animations used to be part of the main Defold engine. Starting with Defold version 1.2.193 Spine animations have been moved from the engine into a Defold extension. To upgrade to the new version you need to make a few changes to your project.
 
 ### Spine content
 
@@ -363,6 +364,15 @@ function init(self)
 end
 ```
 
+### MixBlend Modes
+
+Animations can be played using different `spine.MIX_BLEND_*` modes, specified by the `mix_blend` field in the `play_properties` table, which is passed as the optional fourth argument to the `spine.play_anim` function. This value is ignored for animations on the first track and defaults to `spine.MIX_BLEND_REPLACE` for all other tracks.
+
+For a detailed description of the different MixBlend modes, see the [Spine Documentation](https://esotericsoftware.com/spine-api-reference#MixBlend).
+
+<div class='important' markdown='1'>
+There is a caveat when preparing the spine model for use with `spine.MIX_BLEND_ADD`. See [this forum post](https://esotericsoftware.com/forum/d/28796-mixblend-add-bugging-on-owl-example-project/2) for more information.
+</div>
 
 ## Playback Modes
 
