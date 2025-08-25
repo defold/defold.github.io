@@ -10,7 +10,6 @@ toc:
 - Setup
 - Usage
 - Source code
-- API reference
 ---
 
 # Defold Firebase Remote Config documentation
@@ -88,6 +87,5 @@ end
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-firebase-remoteconfig)
-
-
-## API reference[API Reference - firebase](/extension-firebase-remoteconfig/firebase_api)
+## API reference
+[API Reference - firebase](/extension-firebase-remoteconfig/firebase_api)
