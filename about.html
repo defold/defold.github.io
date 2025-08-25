@@ -35,7 +35,7 @@ after: [yellow_download_section.html,donors_and_partners.html]
 <div class="row">
   <div class="columns twelve">
     <h3>Free to use and developer-friendly</h3>
-    <p>King made the decision to make the <a href="/open">Defold source code available</a> in May 2020, and as part of this process, transfer Defold to a software foundation; the <a href="/foundation">Defold Foundation</a>. The foundation works together with industry partners to provide free and open software and services to game developers across the globe. Defold is actively developed by the Defold Foundation with monthly releases of new features.</p>
+    <p>King made the decision to make the <a href="/open">Defold source code available</a> in May 2020, and as part of this process, transfer Defold to a software foundation; the <a href="/foundation">Defold Foundation</a>. The foundation works together with industry partners to provide free and open software and services to game developers across the globe. <b>Defold is actively developed by the Defold Foundation with monthly releases of new features.</b></p>
   </div>
 </div>
 
@@ -43,15 +43,14 @@ after: [yellow_download_section.html,donors_and_partners.html]
 <div class="row">
   <div class="columns twelve">
     <h3>News</h3>
+    
+    <ul>
 {% assign posts = site.posts | where: "tags", "news" %}
 {%- for post in posts limit: 3 -%}
-{%- include post_preview_small.html post=post -%}
+<li>{%- include post_preview_small.html post=post -%}</li>
 {%- endfor -%}
-  </div>
-</div>
-<div class="row center">
-  <div>
-    {% include primary_button.html link="/news" text="More news" %}
+  </ul>
+    <p><a href="/news">More news</a></p>
   </div>
 </div>
 
