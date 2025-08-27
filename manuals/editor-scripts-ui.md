@@ -26,7 +26,7 @@ toc:
 
 # Editor scripts and UI
 
-This manual explains how to create interactive UI elements in the editor using editor scripts written in Lua. To get started with editor scripts, see [Editor Scripts manual](/manuals/editor-scripts). You can find the full editor API reference [here](https://defold.com/ref/alpha/editor/). Currently, it's only possible to create interactive dialogs, though we want to expand the UI scripting support to the rest of the editor in the future.
+This manual explains how to create interactive UI elements in the editor using editor scripts written in Lua. To get started with editor scripts, see [Editor Scripts manual](/manuals/editor-scripts). You can find the full editor API reference [here](/ref/stable/editor-lua/). Currently, it's only possible to create interactive dialogs, though we want to expand the UI scripting support to the rest of the editor in the future.
 
 ## Hello world
 
