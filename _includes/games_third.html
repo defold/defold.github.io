@@ -1,13 +1,14 @@
 {%- assign placement = include.placement -%}
 {%- assign limit = include.limit -%}
 {% assign third = site.data.games | where: placement, "third" %}
+{% assign third_shuffled = third | sample: third.size %}
 
 {%- if third.size > 0 -%}
 <div class="section">
 	<div class="container">
 		<div class="row">
 			<div class="grid-250">
-				{%- for game in third limit: limit -%}
+				{%- for game in third_shuffled limit: limit -%}
 					{%- include game_third.html game=game -%}
 				{%- endfor -%}
 			</div>
