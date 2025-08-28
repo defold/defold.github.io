@@ -1202,13 +1202,28 @@ def process_refdoc(download = False):
                     # set api type
                     api["info"]["type"] = "Defold " + api["info"]["language"]
 
+
+                    # make sure file is only the filename and no path
+                    if api["info"]["file"] == "":
+                        api["info"]["file"] = os.path.basename(api["info"]["path"])
+                    elif str.find(api["info"]["file"], "/") != -1:
+                        api["info"]["file"] = os.path.basename(api["info"]["file"])
+
+                    dmsdk_index = str.find(api["info"]["path"], "dmsdk/")
+                    print("PATH", api["info"]["path"], dmsdk_index)
+                    api["info"]["include"] = api["info"]["path"]
+                    if dmsdk_index != -1:
+                        api["info"]["include"] = api["info"]["path"][dmsdk_index:]
+
                     # create the key by which we index and collect APIs
                     namespace_key = namespace
                     language = api["info"]["language"]
                     if language == "C++":
-                        namespace_key = namespace_key + "-cpp"
+                        # namespace_key = namespace_key + "-cpp"
+                        namespace_key = api["info"]["path"].replace("..", "").replace("/", "-").replace(".", "-")
                     elif language == "C#":
-                        namespace_key = namespace_key + "-cs"
+                        # namespace_key = namespace_key + "-cs"
+                        namespace_key = api["info"]["path"].replace("..", "").replace("/", "-").replace(".", "-")
                     else:
                         namespace_key = namespace_key + "-" + language
                     namespace_key = namespace_key.lower()
@@ -1223,6 +1238,7 @@ def process_refdoc(download = False):
                         if not info["description"]: info["description"] = api["info"]["description"]
                         if not info["brief"]: info["brief"] = api["info"]["brief"]
                         if not info["path"]: info["path"] = api["info"]["path"]
+                        if not info["file"]: info["file"] = api["info"]["file"]
                         info["notes"].extend(api["info"]["notes"])
                         # extend elements
                         elements = namespaces[namespace_key]["elements"]
@@ -1274,6 +1290,8 @@ def process_refdoc(download = False):
                 # build refdoc index
                 refindex.append({
                     "namespace": api["info"]["namespace"],
+                    "file": api["info"]["file"],
+                    "path": api["info"]["path"],
                     "name": api["info"]["name"],
                     "filename": json_out_name,
                     "url": "/ref/" + branch + "/" + json_out_name,
