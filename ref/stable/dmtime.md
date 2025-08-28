@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmtime-cpp
+ref: dmsdk-dlib-time-h
 language: C++
 title: API reference (Time)
 type: Defold C++

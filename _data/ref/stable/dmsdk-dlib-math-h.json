@@ -1,0 +1,255 @@
+{
+    "elements": [
+        {
+            "brief": "Abs function",
+            "description": "Abs function",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Abs",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "x",
+                    "types": [
+                        "T"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Absolute value of x",
+                    "name": "v",
+                    "types": [
+                        "T"
+                    ]
+                }
+            ],
+            "tparams": [
+                {
+                    "doc": "",
+                    "name": "T",
+                    "type": ""
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Clamp function",
+            "description": "Clamp function",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Clamp",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Value to clamp",
+                    "is_optional": "False",
+                    "name": "v",
+                    "types": [
+                        "T"
+                    ]
+                },
+                {
+                    "doc": "Lower bound",
+                    "is_optional": "False",
+                    "name": "min",
+                    "types": [
+                        "T"
+                    ]
+                },
+                {
+                    "doc": "Upper bound",
+                    "is_optional": "False",
+                    "name": "max",
+                    "types": [
+                        "T"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Value closest to v inside the range [min, max]",
+                    "name": "v",
+                    "types": [
+                        "T"
+                    ]
+                }
+            ],
+            "tparams": [
+                {
+                    "doc": "",
+                    "name": "T",
+                    "type": ""
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Max function",
+            "description": "Max function",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Max",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Value a",
+                    "is_optional": "False",
+                    "name": "a",
+                    "types": [
+                        "T"
+                    ]
+                },
+                {
+                    "doc": "Value b",
+                    "is_optional": "False",
+                    "name": "b",
+                    "types": [
+                        "T"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Max of a and b",
+                    "name": "v",
+                    "types": [
+                        "T"
+                    ]
+                }
+            ],
+            "tparams": [
+                {
+                    "doc": "",
+                    "name": "T",
+                    "type": ""
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Min function",
+            "description": "Min function",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Min",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Value a",
+                    "is_optional": "False",
+                    "name": "a",
+                    "types": [
+                        "T"
+                    ]
+                },
+                {
+                    "doc": "Value b",
+                    "is_optional": "False",
+                    "name": "b",
+                    "types": [
+                        "T"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Min of a and b",
+                    "name": "v",
+                    "types": [
+                        "T"
+                    ]
+                }
+            ],
+            "tparams": [
+                {
+                    "doc": "",
+                    "name": "T",
+                    "type": ""
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Select one of two values",
+            "description": "Select one of two values depending on the sign of another.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Select",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Value to test for positiveness",
+                    "is_optional": "False",
+                    "name": "x",
+                    "types": [
+                        "T"
+                    ]
+                },
+                {
+                    "doc": "Result if test succeeded",
+                    "is_optional": "False",
+                    "name": "a",
+                    "types": [
+                        "T"
+                    ]
+                },
+                {
+                    "doc": "Result if test failed",
+                    "is_optional": "False",
+                    "name": "b",
+                    "types": [
+                        "T"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "a when x &gt;= 0, b otherwise",
+                    "name": "v",
+                    "types": [
+                        "T"
+                    ]
+                }
+            ],
+            "tparams": [
+                {
+                    "doc": "",
+                    "name": "T",
+                    "type": ""
+                }
+            ],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "SDK Math API documentation",
+        "description": "Math functions.",
+        "description_html": "<p>Math functions.</p>",
+        "file": "math.h",
+        "include": "dmsdk/dlib/math.h",
+        "language": "C++",
+        "name": "Math",
+        "namespace": "dmMath",
+        "notes": [],
+        "path": "dmsdk/dlib/math.h",
+        "type": "Defold C++"
+    }
+}

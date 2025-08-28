@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: objectpool-cpp
+ref: dmsdk-dlib-object_pool-h
 language: C++
 title: API reference (ObjectPool)
 type: Defold C++

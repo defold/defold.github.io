@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmprofile-cpp
+ref: dmsdk-dlib-profile-h
 language: C++
 title: API reference (Profile)
 type: Defold C++

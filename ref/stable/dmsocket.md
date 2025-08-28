@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmsocket-cpp
+ref: dmsdk-dlib-socket-h
 language: C++
 title: API reference (Socket)
 type: Defold C++

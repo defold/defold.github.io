@@ -1,0 +1,113 @@
+{
+    "elements": [
+        {
+            "brief": "Spawns a new gameobject instance in a collection u...",
+            "description": "Spawns a new gameobject instance in a collection using a factory component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "CompFactorySpawn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "HFactoryWorld"
+                    ]
+                },
+                {
+                    "doc": "Factory component",
+                    "is_optional": "False",
+                    "name": "component",
+                    "types": [
+                        "HFactoryComponent"
+                    ]
+                },
+                {
+                    "doc": "Gameobject collection to spawn into",
+                    "is_optional": "False",
+                    "name": "collection",
+                    "types": [
+                        "HCollection"
+                    ]
+                },
+                {
+                    "doc": "Identifier for the new instance. Must be unique within the collection. Pass 0 to automatically generate a unique identifier (e.g. /instance1, /instance2 etc.).",
+                    "is_optional": "False",
+                    "name": "id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Position of the spawned object",
+                    "is_optional": "False",
+                    "name": "position",
+                    "types": [
+                        "dmVMath::Point3"
+                    ]
+                },
+                {
+                    "doc": "Rotation of the spawned object",
+                    "is_optional": "False",
+                    "name": "rotation",
+                    "types": [
+                        "dmVMath::Quat"
+                    ]
+                },
+                {
+                    "doc": "Scale of the spawned object",
+                    "is_optional": "False",
+                    "name": "scale",
+                    "types": [
+                        "dmVMath::Vector3"
+                    ]
+                },
+                {
+                    "doc": "Property container with override properties",
+                    "is_optional": "False",
+                    "name": "properties",
+                    "types": [
+                        "dmGameObject::HPropertyContainer"
+                    ]
+                },
+                {
+                    "doc": "Output parameter for the new instance",
+                    "is_optional": "False",
+                    "name": "out_instance",
+                    "types": [
+                        "dmGameObject::HInstance"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Result of the operation",
+                    "name": "result",
+                    "types": [
+                        "dmGameObject::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "Factory component functions",
+        "description": "Factory component functions.",
+        "description_html": "<p>Factory component functions.</p>",
+        "file": "comp_factory.h",
+        "include": "dmsdk/gamesys/components/comp_factory.h",
+        "language": "C++",
+        "name": "Factory",
+        "namespace": "dmGameSystem",
+        "notes": [],
+        "path": "dmsdk/gamesys/components/comp_factory.h",
+        "type": "Defold C++"
+    }
+}

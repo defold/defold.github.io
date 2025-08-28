@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmphysics-cpp
+ref: dmsdk-physics-physics-h
 language: C++
 title: API reference (Physics)
 type: Defold C++

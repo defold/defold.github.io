@@ -1,0 +1,724 @@
+{
+    "elements": [
+        {
+            "brief": "Destroys a loaded font",
+            "description": "Destroys a loaded font",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DestroyFont",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font to deallocate",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "dmFont::HFont"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "FontResult",
+            "description": "FontResult",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "RESULT_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_NOT_SUPPORTED",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_ERROR",
+                    "type": ""
+                }
+            ],
+            "name": "FontResult",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "FontType",
+            "description": "FontType",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "-1",
+                    "name": "FONT_TYPE_UNKNOWN",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "FONT_TYPE_STBTTF",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "FONT_TYPE_STBOTF",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "FONT_TYPE_MAX",
+                    "type": ""
+                }
+            ],
+            "name": "FontType",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Free the bitmap of the glyph",
+            "description": "Free the bitmap of the glyph",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FreeGlyph",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "dmFont::HFont"
+                    ]
+                },
+                {
+                    "doc": "The glyph",
+                    "is_optional": "False",
+                    "name": "glyph",
+                    "types": [
+                        "dmFont::Glyph*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The result",
+                    "name": "result",
+                    "types": [
+                        "dmFont::FontResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the max ascent of the font",
+            "description": "Get the max ascent of the font",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetAscent",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "dmFont::HFont"
+                    ]
+                },
+                {
+                    "doc": "The scale factor",
+                    "is_optional": "False",
+                    "name": "scale",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The max ascent",
+                    "name": "ascent",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the max descent of the font",
+            "description": "Get the max descent of the font",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetDescent",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "dmFont::HFont"
+                    ]
+                },
+                {
+                    "doc": "The scale factor",
+                    "is_optional": "False",
+                    "name": "scale",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The max descent",
+                    "name": "descent",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the metrics and possibly the rasterized image ...",
+            "description": "Get the metrics and possibly the rasterized image data of a glyph",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetGlyph",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "dmFont::HFont"
+                    ]
+                },
+                {
+                    "doc": "The unicode code point",
+                    "is_optional": "False",
+                    "name": "codepoint",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "(in) <span class=\"type\"> dmFont::GlyphOptions*</span> The glyph options",
+                    "is_optional": "False",
+                    "name": "options",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "(out) <span class=\"type\"> dmFont::Glyph*</span> The glyph",
+                    "is_optional": "False",
+                    "name": "glyph",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The result",
+                    "name": "result",
+                    "types": [
+                        "dmFont::FontResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the line gap of the font",
+            "description": "Get the line gap of the font",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetLineGap",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "dmFont::HFont"
+                    ]
+                },
+                {
+                    "doc": "The scale factor",
+                    "is_optional": "False",
+                    "name": "scale",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The line gap",
+                    "name": "line_gap",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets the path of the loaded font",
+            "description": "Gets the path of the loaded font",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPath",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "dmFont::HFont"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The path",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the scale factor from a given pixel size.",
+            "description": "Get the scale factor from a given pixel size.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPixelScaleFromSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "dmFont::HFont"
+                    ]
+                },
+                {
+                    "doc": "The font size (in pixel height)",
+                    "is_optional": "False",
+                    "name": "size",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The scale factor",
+                    "name": "scale",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the bytes used by this resource",
+            "description": "Get the bytes used by this resource",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetResourceSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "dmFont::HFont"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The resource size",
+                    "name": "size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets the specific implementation of the loaded fon...",
+            "description": "Gets the specific implementation of the loaded font",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetType",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The font",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "dmFont::HFont"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The type",
+                    "name": "type",
+                    "types": [
+                        "dmFont::FontType"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Represents a glyph",
+            "description": "Represents a glyph.\nIf there's an associated image, it is of size width * height * channels.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "The bitmap data of the glyph.",
+                    "name": "m_Bitmap",
+                    "type": "GlyphBitmap"
+                },
+                {
+                    "doc": "The unicode code point",
+                    "name": "m_Codepoint",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "The glyph bounding width",
+                    "name": "m_Width",
+                    "type": "float"
+                },
+                {
+                    "doc": "The glyph bounding height",
+                    "name": "m_Height",
+                    "type": "float"
+                },
+                {
+                    "doc": "The advance step of the glyph (in pixels)",
+                    "name": "m_Advance",
+                    "type": "float"
+                },
+                {
+                    "doc": "The left bearing of the glyph (in pixels)",
+                    "name": "m_LeftBearing",
+                    "type": "float"
+                },
+                {
+                    "doc": "The ascent of the glyph. (in pixels)",
+                    "name": "m_Ascent",
+                    "type": "float"
+                },
+                {
+                    "doc": "The descent of the glyph. Positive! (in pixels)",
+                    "name": "m_Descent",
+                    "type": "float"
+                }
+            ],
+            "name": "Glyph",
+            "notes": [
+                "The baseline of a glyph bitmap is calculated: `base = glyph.bitmap.height - glyph.ascent`"
+            ],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Holds the bitmap data of a glyph",
+            "description": "Holds the bitmap data of a glyph.\nIf there's an associated image, it is of size width * height * channels.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "The glyph image width",
+                    "name": "m_Width",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "The glyph image height",
+                    "name": "m_Height",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "The number of channels in the glyph image",
+                    "name": "m_Channels",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Flags describing the data. See `dmFont::GlyphBitmapFlags`.",
+                    "name": "m_Flags",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "The bitmap data, or null if no data available.",
+                    "name": "m_Data",
+                    "type": "uint8_t*"
+                }
+            ],
+            "name": "GlyphBitmap",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "GlyphBitmapFlags",
+            "description": "GlyphBitmapFlags",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "0",
+                    "name": "GLYPH_BM_FLAG_COMPRESSION_NONE",
+                    "type": ""
+                },
+                {
+                    "doc": "1",
+                    "name": "GLYPH_BM_FLAG_COMPRESSION_DEFLATE",
+                    "type": ""
+                }
+            ],
+            "name": "GlyphBitmapFlags",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Holds the bitmap data of a glyph",
+            "description": "Holds the bitmap data of a glyph.\nIf there's an associated image, it is of size width * height * channels.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "The font scale",
+                    "name": "m_Scale",
+                    "type": "float"
+                },
+                {
+                    "doc": "If true, generates an SDF image, and fills out the glyph.m_Bitmap structure.",
+                    "name": "m_GenerateImage",
+                    "type": "bool"
+                },
+                {
+                    "doc": "The sdk padding value (valid for FONT_TYPE_STBTTF fonts)",
+                    "name": "m_StbttSDFPadding",
+                    "type": "float"
+                },
+                {
+                    "doc": "Where the edge value is located (valid for FONT_TYPE_STBTTF fonts)",
+                    "name": "m_StbttSDFOnEdgeValue",
+                    "type": "int"
+                }
+            ],
+            "name": "GlyphOptions",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Font handle. Holds the info about a loaded font",
+            "description": "Font handle. Holds the info about a loaded font",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HFont",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Loads a font from memory",
+            "description": "Loads a font from memory",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "LoadFontFromMemory",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The name of the resource. For easier debugging",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "The raw data",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "The length of the data (in bytes)",
+                    "is_optional": "False",
+                    "name": "data_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "If true, the font may allocate a copy of the data (if needed)",
+                    "is_optional": "False",
+                    "name": "allocate",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The loaded font, or null if it failed to load.",
+                    "name": "font",
+                    "types": [
+                        "dmFont::HFont"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Loads a font using a path",
+            "description": "Loads a font using a path",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "LoadFontFromPath",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The path to the resource",
+                    "is_optional": "False",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The loaded font, or null if it failed to load.",
+                    "name": "font",
+                    "types": [
+                        "dmFont::HFont"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "SDK Font API documentation",
+        "description": "Font API for loading a font (truetype), getting glyph metrics and bitmap/sdf data",
+        "description_html": "<p>Font API for loading a font (truetype), getting glyph metrics and bitmap/sdf data</p>",
+        "file": "font.h",
+        "include": "dmsdk/font/font.h",
+        "language": "C++",
+        "name": "Font",
+        "namespace": "dmFont",
+        "notes": [],
+        "path": "dmsdk/font/font.h",
+        "type": "Defold C++"
+    }
+}

@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: stable
-ref: dmgamesystem-cpp
+ref: dmsdk-gamesys-resources-res_font-h
 language: C++
-title: API reference (Collection factory)
+title: API reference (Font Resource)
 type: Defold C++
 ---
 {% include anchor_headings.html html=content %}

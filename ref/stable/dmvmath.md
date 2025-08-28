@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmvmath-cpp
+ref: dmsdk-dlib-vmath-h
 language: C++
 title: API reference (Vector Math)
 type: Defold C++

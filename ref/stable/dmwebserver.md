@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmwebserver-cpp
+ref: dmsdk-dlib-webserver-h
 language: C++
 title: API reference (WebServer)
 type: Defold C++

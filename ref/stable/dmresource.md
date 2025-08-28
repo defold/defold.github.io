@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmresource-cpp
+ref: dmsdk-resource-resource_gen-hpp
 language: C++
 title: API reference (Resource)
 type: Defold C++

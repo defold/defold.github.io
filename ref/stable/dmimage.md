@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmimage-cpp
+ref: dmsdk-dlib-image-h
 language: C++
 title: API reference (Image)
 type: Defold C++

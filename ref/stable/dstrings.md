@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dstrings-cpp
+ref: dmsdk-dlib-dstrings-h
 language: C++
 title: API reference (DStrings)
 type: Defold C++

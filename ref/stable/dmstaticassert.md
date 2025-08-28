@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmstaticassert-cpp
+ref: dmsdk-dlib-static_assert-h
 language: C++
 title: API reference (Static Assert)
 type: Defold C++

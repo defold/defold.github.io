@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmconditionvariable-cpp
+ref: dmsdk-dlib-condition_variable-h
 language: C++
 title: API reference (Condition Variable)
 type: Defold C++

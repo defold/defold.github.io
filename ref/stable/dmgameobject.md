@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: stable
-ref: dmgameobject-cpp
+ref: dmsdk-gameobject-script-h
 language: C++
-title: API reference (Component)
+title: API reference (Script)
 type: Defold C++
 ---
 {% include anchor_headings.html html=content %}

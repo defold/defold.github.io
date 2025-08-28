@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmmessage-cpp
+ref: dmsdk-dlib-message-h
 language: C++
 title: API reference (Message)
 type: Defold C++

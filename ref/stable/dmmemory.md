@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmmemory-cpp
+ref: dmsdk-dlib-memory-h
 language: C++
 title: API reference (Memory)
 type: Defold C++

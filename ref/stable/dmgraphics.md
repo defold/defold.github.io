@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: stable
-ref: dmgraphics-cpp
+ref: dmsdk-graphics-graphics_vulkan-h
 language: C++
-title: API reference (Graphics)
+title: API reference (Graphics Vulkan)
 type: Defold C++
 ---
 {% include anchor_headings.html html=content %}

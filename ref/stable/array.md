@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: array-cpp
+ref: dmsdk-dlib-array-h
 language: C++
 title: API reference (Array)
 type: Defold C++

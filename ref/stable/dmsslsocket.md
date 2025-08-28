@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmsslsocket-cpp
+ref: dmsdk-dlib-sslsocket-h
 language: C++
 title: API reference (SSLSocket)
 type: Defold C++

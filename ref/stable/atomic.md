@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: atomic-cpp
+ref: dmsdk-dlib-atomic-h
 language: C++
 title: API reference (Atomic)
 type: Defold C++

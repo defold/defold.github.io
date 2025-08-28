@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmfont-cpp
+ref: dmsdk-font-font-h
 language: C++
 title: API reference (Font)
 type: Defold C++

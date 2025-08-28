@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmbuffer-cpp
+ref: dmsdk-dlib-buffer-h
 language: C++
 title: API reference (Buffer)
 type: Defold C++

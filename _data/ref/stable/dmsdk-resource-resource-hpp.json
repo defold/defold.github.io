@@ -1,0 +1,469 @@
+{
+    "elements": [
+        {
+            "brief": "Adds a file to the resource system\nAny request for...",
+            "description": "Adds a file to the resource system\nAny request for this path will go through any existing mounts first.\nIf you wish to provide file overrides, please use the LiveUpdate feature for that.\nThe file isn't persisted between sessions.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "AddFile",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "The path of the resource",
+                    "is_optional": "False",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "The size of the resource (in bytes)",
+                    "is_optional": "False",
+                    "name": "size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "The resource payload",
+                    "is_optional": "False",
+                    "name": "resource",
+                    "types": [
+                        "const void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "on success.",
+                    "name": "RESULT_OK",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Decrypts a file",
+            "description": "Decrypts a file",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FDecryptResource",
+            "notes": [
+                "Currently, the function requires the final resource to be the same length (or less)"
+            ],
+            "parameters": [
+                {
+                    "doc": "The input/output buffer",
+                    "is_optional": "False",
+                    "name": "buffer",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "The size of the buffer (in bytes)",
+                    "is_optional": "False",
+                    "name": "buffer_len",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "on success",
+                    "name": "RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Get a resource from factory",
+            "description": "Get a resource from factory",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Get",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Created resource",
+                    "is_optional": "False",
+                    "name": "resource",
+                    "types": [
+                        "void**"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get a resource from factory",
+            "description": "Get a resource from factory",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Get",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Created resource",
+                    "is_optional": "False",
+                    "name": "resource",
+                    "types": [
+                        "void**"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Returns the canonical path hash of a resource",
+            "description": "Returns the canonical path hash of a resource",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPath",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource",
+                    "is_optional": "False",
+                    "name": "resource",
+                    "types": [
+                        "const void*"
+                    ]
+                },
+                {
+                    "doc": "Returned hash",
+                    "is_optional": "False",
+                    "name": "hash",
+                    "types": [
+                        "uint64_t*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "on success",
+                    "name": "RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Hint the preloader what to load before Create is c...",
+            "description": "Hint the preloader what to load before Create is called on the resource.\nThe resources are not guaranteed to be loaded before Create is called.\nThis function can be called from a worker thread.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "PreloadHint",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Preloader handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HResourcePreloadHintInfo"
+                    ]
+                },
+                {
+                    "doc": "Resource name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if successfully invoking preloader.",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Registers a custom resource decryption function",
+            "description": "Registers a custom resource decryption function",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "RegisterResourceDecryptionFunction",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The decryption function",
+                    "is_optional": "False",
+                    "name": "decrypt_resource",
+                    "types": [
+                        "dmResource::FDecryptResource"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Function called when a resource has been reloaded.",
+            "description": "Function called when a resource has been reloaded.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "RegisterResourceReloadedCallback",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Handle of the factory to which the callback will be registered",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "Callback function to register",
+                    "is_optional": "False",
+                    "name": "callback",
+                    "types": [
+                        "dmResource::FResourceReloadedCallback"
+                    ]
+                },
+                {
+                    "doc": "User data that to",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "RegisterType",
+            "notes": [
+                "Deprecated in favor of ResourceRegisterTypeCreatorDesc"
+            ],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Release resource",
+            "description": "Release resource",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Release",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource pointer",
+                    "is_optional": "False",
+                    "name": "resource",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Removes a previously registered file from the reso...",
+            "description": "Removes a previously registered file from the resource system",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "RemoveFile",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "The path of the resource",
+                    "is_optional": "False",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "on success.",
+                    "name": "RESULT_OK",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Setup function pointers and context for a resource...",
+            "description": "Setup function pointers and context for a resource type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetupType",
+            "notes": [
+                "C++ Helper function. Deprecated in favor of ResourceRegisterTypeCreatorDesc et al"
+            ],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "Resource",
+        "description": "Functions for managing resource types.",
+        "description_html": "<p>Functions for managing resource types.</p>",
+        "file": "resource.hpp",
+        "include": "dmsdk/resource/resource.hpp",
+        "language": "C++",
+        "name": "Resource",
+        "namespace": "dmResource",
+        "notes": [],
+        "path": "dmsdk/resource/resource.hpp",
+        "type": "Defold C++"
+    }
+}

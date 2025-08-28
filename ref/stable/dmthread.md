@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmthread-cpp
+ref: dmsdk-dlib-thread-h
 language: C++
 title: API reference (Thread)
 type: Defold C++

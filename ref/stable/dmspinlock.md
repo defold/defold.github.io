@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmspinlock-cpp
+ref: dmsdk-dlib-spinlock-h
 language: C++
 title: API reference (Spinlock)
 type: Defold C++

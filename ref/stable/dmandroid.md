@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmandroid-cpp
+ref: dmsdk-dlib-android-h
 language: C++
 title: API reference (Android)
 type: Defold C++

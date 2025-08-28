@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmtransform-cpp
+ref: dmsdk-dlib-transform-h
 language: C++
 title: API reference (Transform)
 type: Defold C++

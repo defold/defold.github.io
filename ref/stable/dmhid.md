@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmhid-cpp
+ref: dmsdk-hid-hid-h
 language: C++
 title: API reference (Hid)
 type: Defold C++

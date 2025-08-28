@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmuri-cpp
+ref: dmsdk-dlib-uri-h
 language: C++
 title: API reference (URI)
 type: Defold C++

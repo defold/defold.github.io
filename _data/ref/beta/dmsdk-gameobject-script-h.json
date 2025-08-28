@@ -1,0 +1,175 @@
+{
+    "elements": [
+        {
+            "brief": "Sends a script message",
+            "description": "Sends a script message. Wraps the message in a dmGameSystemDDF::ScriptMessage struct.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "PostDDF",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The ddf message to send",
+                    "is_optional": "False",
+                    "name": "message",
+                    "types": [
+                        "T*"
+                    ]
+                },
+                {
+                    "doc": "The sender",
+                    "is_optional": "False",
+                    "name": "sender",
+                    "types": [
+                        "dmMessage::Message*"
+                    ]
+                },
+                {
+                    "doc": "The receiver",
+                    "is_optional": "False",
+                    "name": "receiver",
+                    "types": [
+                        "dmMessage::Message*"
+                    ]
+                },
+                {
+                    "doc": "The function ref. 0 wil cause the \"on_message\" to be called",
+                    "is_optional": "False",
+                    "name": "function_ref",
+                    "types": [
+                        "int"
+                    ]
+                },
+                {
+                    "doc": "call dmScript::UnrefInInstance on the function_ref after the dmScript::PCall is made",
+                    "is_optional": "False",
+                    "name": "unref_function_after_call",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if successful",
+                    "name": "success",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [
+                {
+                    "doc": "",
+                    "name": "T",
+                    "type": ""
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sends an unref script message",
+            "description": "Sends a script message to unreference a script object",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "PostScriptUnrefMessage",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The sender",
+                    "is_optional": "False",
+                    "name": "sender",
+                    "types": [
+                        "dmMessage::Message*"
+                    ]
+                },
+                {
+                    "doc": "The receiver",
+                    "is_optional": "False",
+                    "name": "receiver",
+                    "types": [
+                        "dmMessage::Message*"
+                    ]
+                },
+                {
+                    "doc": "The reference to remove",
+                    "is_optional": "False",
+                    "name": "reference",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK if successful",
+                    "name": "success",
+                    "types": [
+                        "Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Creates a property container from a lua table",
+            "description": "Creates a property container from a lua table",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "PropertyContainerCreateFromLua",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The lua state",
+                    "is_optional": "False",
+                    "name": "L",
+                    "types": [
+                        "lua_State*"
+                    ]
+                },
+                {
+                    "doc": "The lua stack index of the lua table",
+                    "is_optional": "False",
+                    "name": "index",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The property container",
+                    "name": "container",
+                    "types": [
+                        "HPropertyContainer"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "SDK GameObject script API documentation",
+        "description": "[file:<dmsdk/gameobject/script.h>]",
+        "description_html": "<p>[file:<dmsdk/gameobject/script.h>]</p>",
+        "file": "script.h",
+        "include": "dmsdk/gameobject/script.h",
+        "language": "C++",
+        "name": "Script",
+        "namespace": "dmGameObject",
+        "notes": [],
+        "path": "dmsdk/gameobject/script.h",
+        "type": "Defold C++"
+    }
+}

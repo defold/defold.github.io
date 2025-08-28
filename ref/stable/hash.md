@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: hash-cpp
+ref: dmsdk-dlib-hash-h
 language: C++
 title: API reference (Hash)
 type: Defold C++

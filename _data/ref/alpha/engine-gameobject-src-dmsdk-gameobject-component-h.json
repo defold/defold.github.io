@@ -1,0 +1,2267 @@
+{
+    "elements": [
+        {
+            "brief": "Component add to update function. Only components ...",
+            "description": "Component add to update function. Only components called with this function should be included in the update passes.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentAddToUpdate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentAddToUpdateParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "CREATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "CreateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentAddToUpdate callback.",
+            "description": "Parameters to ComponentAddToUpdate callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Collection handle",
+                    "name": "m_Collection",
+                    "type": "HCollection"
+                },
+                {
+                    "doc": "Game object instance",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                }
+            ],
+            "name": "ComponentAddToUpdateParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component create function. Should allocate all nec...",
+            "description": "Component create function. Should allocate all necessary resources for the component.\nThe game object instance is guaranteed to have its id, scene hierarchy and transform data updated when this is called.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentCreate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentCreateParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "CREATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "CreateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentCreate callback.",
+            "description": "Parameters to ComponentCreate callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Game object instance",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Local component position",
+                    "name": "m_Position",
+                    "type": "dmVMath::Point3"
+                },
+                {
+                    "doc": "Local component rotation",
+                    "name": "m_Rotation",
+                    "type": "dmVMath::Quat"
+                },
+                {
+                    "doc": "Local component scale",
+                    "name": "m_Scale",
+                    "type": "dmVMath::Vector3"
+                },
+                {
+                    "doc": "Set of properties",
+                    "name": "m_PropertySet",
+                    "type": "PropertySet"
+                },
+                {
+                    "doc": "Component resource",
+                    "name": "m_Resource",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Component world, as created in the ComponentNewWorld callback",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                },
+                {
+                    "doc": "Index of the component type being created (among all component types)",
+                    "name": "m_ComponentIndex",
+                    "type": "uint16_t"
+                }
+            ],
+            "name": "ComponentCreateParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component world destroy function",
+            "description": "Component world destroy function",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentDeleteWorld",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentDeleteWorldParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "CREATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "CreateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentDeleteWorld callback.",
+            "description": "Parameters to ComponentDeleteWorld callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "[type void*] Context for the component type",
+                    "name": "m_Context",
+                    "type": ""
+                },
+                {
+                    "doc": "[type void*] The pointer to the world to destroy",
+                    "name": "m_World",
+                    "type": ""
+                }
+            ],
+            "name": "ComponentDeleteWorldParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component destroy function. Should deallocate all ...",
+            "description": "Component destroy function. Should deallocate all necessary resources.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentDestroy",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentDestroyParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "CREATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "CreateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentDestroy callback.",
+            "description": "Parameters to ComponentDestroy callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Collection handle",
+                    "name": "m_Collection",
+                    "type": "HCollection"
+                },
+                {
+                    "doc": "Game object instance",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                }
+            ],
+            "name": "ComponentDestroyParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component finalize function. Should clean up as it...",
+            "description": "Component finalize function. Should clean up as it is called when the component is disabled.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentFinal",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentFinalParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "CREATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "CreateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentFinal callback.",
+            "description": "Parameters to ComponentFinal callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Collection handle",
+                    "name": "m_Collection",
+                    "type": "HCollection"
+                },
+                {
+                    "doc": "Game object instance",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                }
+            ],
+            "name": "ComponentFinalParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "A simple way to get the component instance from th...",
+            "description": "A simple way to get the component instance from the user_data (which was set during creation)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentGet",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Update parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentGetParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The internal component pointer",
+                    "name": "component",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentGet callback.",
+            "description": "Parameters to ComponentGet callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "HComponentWorld"
+                },
+                {
+                    "doc": "Component internal representation",
+                    "name": "m_UserData",
+                    "type": "HComponentInternal"
+                }
+            ],
+            "name": "ComponentGetParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Callback for retrieving a property value of the co...",
+            "description": "Callback for retrieving a property value of the component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentGetProperty",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentGetPropertyParams&"
+                    ]
+                },
+                {
+                    "doc": "(out) the property",
+                    "is_optional": "False",
+                    "name": "out_value",
+                    "types": [
+                        "dmGameObject::PropertyDesc&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "PROPERTY_RESULT_OK if retrieving the property was ok",
+                    "name": "result",
+                    "types": [
+                        "dmGameObject::PropertyResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentGetProperty callback.",
+            "description": "Parameters to ComponentGetProperty callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Context for the component type",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Game object instance",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Id of the property",
+                    "name": "m_PropertyId",
+                    "type": "dmhash_t"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                },
+                {
+                    "doc": "Options for getting the property",
+                    "name": "m_Options",
+                    "type": "PropertyOptions"
+                }
+            ],
+            "name": "ComponentGetPropertyParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component init function. Should set the components...",
+            "description": "Component init function. Should set the components initial state as it is called when the component is enabled.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentInit",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentInitParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "CREATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "CreateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentInit callback.",
+            "description": "Parameters to ComponentInit callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Collection handle",
+                    "name": "m_Collection",
+                    "type": "HCollection"
+                },
+                {
+                    "doc": "Game object instance",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                }
+            ],
+            "name": "ComponentInitParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Callback when iterating over the properties for a ...",
+            "description": "Callback when iterating over the properties for a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentIterProperties",
+            "notes": [
+                "This function is only available/used in debug builds, when traversing the scene graph in order to export\nthis data for external tools (e.g. external testing libraries like Poco)"
+            ],
+            "parameters": [
+                {
+                    "doc": "the property iterator",
+                    "is_optional": "False",
+                    "name": "pit",
+                    "types": [
+                        "dmGameObject::SceneNodePropertyIterator"
+                    ]
+                },
+                {
+                    "doc": "the scene node",
+                    "is_optional": "False",
+                    "name": "node",
+                    "types": [
+                        "dmGameObject::SceneNode*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Component world create function",
+            "description": "Component world create function",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentNewWorld",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentNewWorldParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "CREATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "CreateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentNewWorld callback.",
+            "description": "Parameters to ComponentNewWorld callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Context for the component type",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Component type index that can be used later with GetWorld()",
+                    "name": "m_ComponentIndex",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "Max component game object instance count (if applicable)",
+                    "name": "m_MaxInstances",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Out-parameter of the pointer in which to store the created world",
+                    "name": "m_World",
+                    "type": "void**"
+                },
+                {
+                    "doc": "Max components count of this type in current collection counted at the build stage.\n                                        If component in factory then value is 0xFFFFFFFF",
+                    "name": "m_MaxComponentInstances",
+                    "type": "uint32_t"
+                }
+            ],
+            "name": "ComponentNewWorldParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component on-input function. Called when input is ...",
+            "description": "Component on-input function. Called when input is sent to this component",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentOnInput",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Input parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentOnInputParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "How the component handled the input",
+                    "name": "result",
+                    "types": [
+                        "InputResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentOnInput callback.",
+            "description": "Parameters to ComponentOnInput callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Instance handle",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Information about the input that occurred (note that input being released is also treated as input)",
+                    "name": "m_InputAction",
+                    "type": "const InputAction*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                }
+            ],
+            "name": "ComponentOnInputParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component on-message function. Called when message...",
+            "description": "Component on-message function. Called when message is sent to this component",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentOnMessage",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Update parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentOnMessageParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UPDATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "UpdateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentOnMessage callback.",
+            "description": "Parameters to ComponentOnMessage callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Instance handle",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "World",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                },
+                {
+                    "doc": "Message",
+                    "name": "m_Message",
+                    "type": "dmMessage::Message*"
+                }
+            ],
+            "name": "ComponentOnMessageParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Called when the resource the component is based on...",
+            "description": "Called when the resource the component is based on has been reloaded.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentOnReload",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentOnReloadParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Parameters to ComponentOnReload callback.",
+            "description": "Parameters to ComponentOnReload callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Instance handle",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Resource that was reloaded",
+                    "name": "m_Resource",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                }
+            ],
+            "name": "ComponentOnReloadParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Set a property set for the component.",
+            "description": "Set a property set for the component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentSetProperties",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentSetPropertiesParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "PROPERTY_RESULT_OK if property was set",
+                    "name": "result",
+                    "types": [
+                        "dmGameObject::PropertyResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentSetProperties callback.",
+            "description": "Parameters to ComponentSetProperties callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Instance handle",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Property set to use",
+                    "name": "m_PropertySet",
+                    "type": "PropertySet"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                }
+            ],
+            "name": "ComponentSetPropertiesParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Callback for setting a property value of the compo...",
+            "description": "Callback for setting a property value of the component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentSetProperty",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentSetPropertyParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "PROPERTY_RESULT_OK if property was set",
+                    "name": "result",
+                    "types": [
+                        "dmGameObject::PropertyResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentSetProperty callback.",
+            "description": "Parameters to ComponentSetProperty callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Context for the component type",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Game object instance",
+                    "name": "m_Instance",
+                    "type": "HInstance"
+                },
+                {
+                    "doc": "Id of the property",
+                    "name": "m_PropertyId",
+                    "type": "dmhash_t"
+                },
+                {
+                    "doc": "User data storage pointer",
+                    "name": "m_UserData",
+                    "type": "uintptr_t*"
+                },
+                {
+                    "doc": "New value of the property",
+                    "name": "m_Value",
+                    "type": "PropertyVar"
+                },
+                {
+                    "doc": "Options for setting the property",
+                    "name": "m_Options",
+                    "type": "PropertyOptions"
+                }
+            ],
+            "name": "ComponentSetPropertyParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component fixed update function. Updates all compo...",
+            "description": "Component fixed update function. Updates all component of this type for all game objects",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentsFixedUpdate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Update parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentsUpdateParams&"
+                    ]
+                },
+                {
+                    "doc": "(out) Update result",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "dmGameObject::ComponentsUpdateResult&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UPDATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "UpdateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Component post update function. The component stat...",
+            "description": "Component post update function. The component state should never be modified in this function.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentsPostUpdate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Update parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentsPostUpdateParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UPDATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "UpdateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters for ComponentsPostUpdate callback.",
+            "description": "Parameters for ComponentsPostUpdate callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Collection handle",
+                    "name": "m_Collection",
+                    "type": "HCollection"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                }
+            ],
+            "name": "ComponentsPostUpdateParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component render function.",
+            "description": "Component render function.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentsRender",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Update parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentsRenderParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UPDATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "UpdateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentsRender callback.",
+            "description": "Parameters to ComponentsRender callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Collection handle",
+                    "name": "m_Collection",
+                    "type": "HCollection"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                }
+            ],
+            "name": "ComponentsRenderParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Component update function. Updates all component o...",
+            "description": "Component update function. Updates all component of this type for all game objects",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentsUpdate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Update parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentsUpdateParams&"
+                    ]
+                },
+                {
+                    "doc": "(out) Update result",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "dmGameObject::ComponentsUpdateResult&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UPDATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "UpdateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Parameters to ComponentsUpdate callback.",
+            "description": "Parameters to ComponentsUpdate callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Collection handle",
+                    "name": "m_Collection",
+                    "type": "HCollection"
+                },
+                {
+                    "doc": "Update context",
+                    "name": "m_UpdateContext",
+                    "type": "const UpdateContext*"
+                },
+                {
+                    "doc": "Component world",
+                    "name": "m_World",
+                    "type": "void*"
+                },
+                {
+                    "doc": "User context",
+                    "name": "m_Context",
+                    "type": "void*"
+                }
+            ],
+            "name": "ComponentsUpdateParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Parameters to ComponentsUpdate callback.",
+            "description": "Parameters to ComponentsUpdate callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "True if a component type updated any game object transforms",
+                    "name": "m_TransformsUpdated",
+                    "type": "bool"
+                }
+            ],
+            "name": "ComponentsUpdateResult",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Context used when registering a new component type",
+            "description": "Context used when registering a new component type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "The config file",
+                    "name": "m_Config",
+                    "type": "dmConfigFile::HConfig"
+                },
+                {
+                    "doc": "The resource factory",
+                    "name": "m_Factory",
+                    "type": "dmResource::HFactory"
+                },
+                {
+                    "doc": "The game object registry",
+                    "name": "m_Register",
+                    "type": "dmGameObject::HRegister"
+                },
+                {
+                    "doc": "The shared script context",
+                    "name": "m_Script",
+                    "type": "dmScript::HContext"
+                },
+                {
+                    "doc": "Mappings between names and contextx",
+                    "name": "m_Contexts",
+                    "type": "dmHashTable64<void*>"
+                }
+            ],
+            "name": "ComponentTypeCreateCtx",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "get the component type global context",
+            "description": "get the component type global context",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeGetContext",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "component type global context",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the component type index. Used for with e.g. d...",
+            "description": "Get the component type index. Used for with e.g. dmGameObject::GetWorld()/GetContext()",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeGetTypeIndex",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The type index.",
+                    "name": "type_index",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component add-to-update callback",
+            "description": "Set the component add-to-update callback. Called for each component instal, when the game object is spawned.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetAddToUpdateFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentAddToUpdate"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component child iterator function",
+            "description": "set the component child iterator function. Called during inspection",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetChildIteratorFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "child iterator function",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "dmGameObject::FIteratorChildren"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component type global context",
+            "description": "Set the component type global context. Usually set when registering the component type.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetContext",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "component type global context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component create callback",
+            "description": "Set the component create callback. Called when a component instance is created.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetCreateFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentCreate"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the world destroy callback",
+            "description": "Set the world destroy callback. Called when a collection (i.e. a \"world\") is destroyed.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetDeleteWorldFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentDeleteWorld"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component destroy callback",
+            "description": "Set the component destroy callback. Called when a component instance is destroyed.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetDestroyFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentDestroy"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component finalize callback",
+            "description": "Set the component finalize callback. Called on each gameobject's components, during a gameobject's finalization.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetFinalFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentFinal"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component update callback",
+            "description": "Set the component update callback. Called when it's time to update all component instances.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetFixedUpdateFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentsFixedUpdate"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component get callback",
+            "description": "Set the component get callback. Called when the scripts want to retrieve the individual component user data given an url.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetGetFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentGet"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component get property callback",
+            "description": "Set the component get property callback. Called when accessing a property via <code>go.get()</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetGetPropertyFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentGetProperty"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component type need for a per component instance user data",
+            "description": "Set the component type need for a per component instance user data. Defaults to true.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetHasUserData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "does each component instance need user data",
+                    "is_optional": "False",
+                    "name": "has_user_data",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component init callback",
+            "description": "Set the component init callback. Called on each gameobject's components, during a gameobject's initialization.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetInitFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentInit"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the new world callback",
+            "description": "Set the new world callback. Called when a collection (i.e. a \"world\") is created.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetNewWorldFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentNewWorld"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component on-input callback",
+            "description": "Set the component on-input callback. Called once per frame, before the Update function.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetOnInputFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentOnInput"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component on-message callback",
+            "description": "Set the component on-message callback. Called multiple times per frame, to flush messages.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetOnMessageFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentOnMessage"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component on-reload callback",
+            "description": "Set the component on-reload callback. Called when the resource of a component instance is reloaded.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetOnReloadFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentOnReload"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component post update callback",
+            "description": "Set the component post update callback. Called for each collection after the update, before the render.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetPostUpdateFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentsPostUpdate"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component type prio order",
+            "description": "Set the component type prio order. Defines the update order of the component types.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetPrio",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "prio order",
+                    "is_optional": "False",
+                    "name": "prio",
+                    "types": [
+                        "uint16_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component property iterator function",
+            "description": "set the component property iterator function. Called during inspection",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetPropertyIteratorFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "property iterator function",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "dmGameObject::FIteratorProperties"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component type transform dependency flag",
+            "description": "Set the component type transform dependency flag.\nIf this flag is set, it might trigger an dmGameObject::UpdateTransforms() (if there are dirty transforms)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetReadsTransforms",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "transform dependency flag",
+                    "is_optional": "False",
+                    "name": "reads_transforms",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component render callback",
+            "description": "Set the component render callback. Called when it's time to render all component instances.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetRenderFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentsRender"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component set properties callback",
+            "description": "Set the component set properties callback. Called when the component instance is being spwned.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetSetPropertiesFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentSetProperties"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component set property callback",
+            "description": "Set the component set property callback. Called when accessing a property via <code>go.set()</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetSetPropertyFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentSetProperty"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component update callback",
+            "description": "Set the component update callback. Called when it's time to update all component instances.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetUpdateFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentsUpdate"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Register a new component type",
+            "description": "Register a new component type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DM_DECLARE_COMPONENT_TYPE",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The unique C++ symbol name",
+                    "is_optional": "False",
+                    "name": "symbol",
+                    "types": [
+                        "symbol"
+                    ]
+                },
+                {
+                    "doc": "name of the component type (i.e. the resource suffix)",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "The type configuration function. May not be 0.",
+                    "is_optional": "False",
+                    "name": "create_fn",
+                    "types": [
+                        "dmGameObject::Result (*fn)(const ComponentTypeCreateCtx* ctx, HComponentType type)"
+                    ]
+                },
+                {
+                    "doc": "The type destruction function. May be 0.",
+                    "is_optional": "False",
+                    "name": "destroy_fn",
+                    "types": [
+                        "dmGameObject::Result (*fn)(const ComponentTypeCreateCtx* ctx, HComponentType type)"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MACRO"
+        },
+        {
+            "brief": "Component type handle. It holds the life time func...",
+            "description": "Component type handle. It holds the life time functions for a type.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HComponentType",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        }
+    ],
+    "info": {
+        "brief": "SDK Component API documentation",
+        "description": "Api for manipulating game object components (WIP)",
+        "description_html": "<p>Api for manipulating game object components (WIP)</p>",
+        "file": "component.h",
+        "include": "dmsdk/gameobject/component.h",
+        "language": "C++",
+        "name": "Component",
+        "namespace": "dmGameObject",
+        "notes": [],
+        "path": "engine/gameobject/src/dmsdk/gameobject/component.h",
+        "type": "Defold C++"
+    }
+}

@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmscript-cpp
+ref: dmsdk-script-script-h
 language: C++
 title: API reference (Script)
 type: Defold C++

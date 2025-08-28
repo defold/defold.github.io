@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmmutex-cpp
+ref: dmsdk-dlib-mutex-h
 language: C++
 title: API reference (Mutex)
 type: Defold C++
