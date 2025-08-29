@@ -72,69 +72,76 @@ You need to make sure you have the following dependencies installed before attem
 
 ### 1 Install Ruby
 Most macOS versions ship with Ruby preinstalled. It is however recommended that you install a separate Ruby version as you will very likely run into permission issues if trying to install any Ruby gems with the system version of Ruby.
-The quickest way to install a new Ruby version on macOS/Linux us to use `rbenv` or `ruby`. To install it on macOS you first need to install `brew`:
+
+The recommended approach is to use Homebrew to install Ruby:
 
 #### 1.1 Install brew (macOS)
-Open a terminal window and install `brew` by running the following command:
+If you don't have Homebrew installed, open a terminal window and install it:
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-#### 1.2 Install ruby
+#### 1.2 Install Ruby
 
 ```sh
 brew install ruby
 ```
 
-Also add the it to the PATH vaiable in you shell profile (e.g. `~/.zshrc`):
+Add Ruby to your PATH by adding this line to your shell profile (e.g. `~/.zshrc`):
 
 ```sh
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 ```
 
-#### 1.3 Install rbenv (deprecated)
-Open a terminal window and install `rbenv` by running the following commands:
-
+Then restart your terminal or run:
 ```sh
-# use brew to install rbenv
-brew install rbenv
-# install rbenv shell support every time a shell is started
-echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+source ~/.zshrc
 ```
 
-Now close the terminal window. Open a new terminal window and install a new Ruby version (this version corresponds to the one defined in the `.ruby-version` file of this repository):
+#### 1.3 Alternative: Using rbenv
+If you prefer to use rbenv for Ruby version management:
 
 ```sh
-# use rbenv to install user local version of ruby 2.7.5
-rbenv install --local 2.7.5
+# Install rbenv
+brew install rbenv
+
+# Add rbenv to shell profile
+echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+
+# Restart terminal or reload profile
+source ~/.zshrc
+
+# Install Ruby version specified in .ruby-version file
+rbenv install $(cat .ruby-version)
+rbenv local $(cat .ruby-version)
 ```
 
 ### 2 Install gems
-Open a terminal window and install the required Ruby gems by running the following command:
+The site uses bundler to manage gem dependencies. Install bundler first, then install all dependencies:
 
 ```sh
-gem install bundler jekyll github-pages
-```
-
-This will install the gems defined in the Gemfile (`bundler`, `jekyll`, `github-pages`). You are now ready to launch the site locally.
-
-
-## Usage
-Launch/serve the site locally using:
-
-As a first step, you need to install dependencies:
-
-```sh
+gem install bundler
 bundle install
 ```
 
+**Note:** If you encounter errors related to missing `csv` or `logger` gems (common with Ruby 3.4+), these have been added to the Gemfile and will be installed automatically with `bundle install`.
+
+
+## Usage
+Launch/serve the site locally:
 
 ```sh
 ./serve.sh
 ```
 
-Once the site has been built you can test it by pointing your browser to localhost:4000.
+Once the site has been built you can test it by pointing your browser to [localhost:4000](http://localhost:4000).
+
+**Note:** If you're using Homebrew Ruby, you may need to set the PATH in your terminal session:
+```sh
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+./serve.sh
+```
 
 You can use the `update.py` script to pull in and process content from external sources (docs, asset portal etc)
 

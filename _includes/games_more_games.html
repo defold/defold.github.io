@@ -1,0 +1,16 @@
+{% assign more_games = site.data.games | where: "showcase", "more-games" %}
+{% assign more_games_shuffled = more_games | sample: more_games.size %}
+
+{%- if more_games.size > 0 -%}
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="grid-250">
+				{%- for game in more_games_shuffled -%}
+					{%- include game_third.html game=game -%}
+				{%- endfor -%}
+			</div>
+		</div>
+	</div>
+</div>
+{%- endif -%}
