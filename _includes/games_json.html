@@ -1,0 +1,19 @@
+{%- assign placement = include.placement -%}
+{%- assign full = site.data.games | where: placement, "full" -%}
+[
+{%- for game in full -%}
+{
+  "id": "{{ game.id }}",
+  "name": {{ game.name | jsonify }},
+  "description": {{ game.description | jsonify }},
+  "developer": {{ game.developer | jsonify }},
+  "publisher": {{ game.publisher | jsonify }},
+  "releasedate": {{ game.releasedate | jsonify }},
+  "platforms": {{ game.platforms | jsonify }},
+  "downloads": {{ game.downloads | jsonify }},
+  "extrainfo": {{ game.extrainfo | jsonify }},
+  "url": "{{ game.url }}",
+  "image": "{{ game.images.full }}"
+}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+]
