@@ -1209,11 +1209,12 @@ def process_refdoc(download = False):
                     elif str.find(api["info"]["file"], "/") != -1:
                         api["info"]["file"] = os.path.basename(api["info"]["file"])
 
-                    dmsdk_index = str.find(api["info"]["path"], "dmsdk/")
-                    print("PATH", api["info"]["path"], dmsdk_index)
-                    api["info"]["include"] = api["info"]["path"]
-                    if dmsdk_index != -1:
-                        api["info"]["include"] = api["info"]["path"][dmsdk_index:]
+                    # generate include path for C++ files
+                    if language == "C++":
+                        dmsdk_index = str.find(api["info"]["path"], "dmsdk/")
+                        api["info"]["include"] = api["info"]["path"]
+                        if dmsdk_index != -1:
+                            api["info"]["include"] = api["info"]["path"][dmsdk_index:]
 
                     # create the key by which we index and collect APIs
                     namespace_key = namespace
@@ -1276,16 +1277,15 @@ def process_refdoc(download = False):
 
                 # for backwards compatibility also generate one using only the namespace
                 # example: ref/stable/go.md, ref/stable/dmarray.md etc
-                if branch == "stable":
-                    json_out_name_fallback = api["info"]["namespace"].lower()
-                    dummy = os.path.join(REF_PAGE_DIR, json_out_name_fallback + ".md")
-                    with open(os.path.join(REF_PAGE_DIR, json_out_name_fallback + ".md"), "w") as f:
-                        fm_branch = branch
-                        fm_ref = json_out_name
-                        fm_language = api["info"]["language"]
-                        fm_title = api["info"]["name"]
-                        fm_type = api["info"]["type"]
-                        f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type) + REFDOC_MD_BODY)
+                json_out_name_fallback = api["info"]["namespace"].lower()
+                dummy = os.path.join(REF_PAGE_DIR, json_out_name_fallback + ".md")
+                with open(os.path.join(REF_PAGE_DIR, json_out_name_fallback + ".md"), "w") as f:
+                    fm_branch = branch
+                    fm_ref = json_out_name
+                    fm_language = api["info"]["language"]
+                    fm_title = api["info"]["name"]
+                    fm_type = api["info"]["type"]
+                    f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type) + REFDOC_MD_BODY)
 
                 # build refdoc index
                 refindex.append({
