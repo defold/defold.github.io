@@ -93,7 +93,84 @@ heatmap: false
 
 {% include features_section.html %}
 
-{%- include games_full.html placement="frontpage" limit=1 offset=0 url="/showcase" -%}
+<!-- Dynamic game container with Jekyll template -->
+<div id="dynamic-game-container">
+	{% include game_dynamic_template.html %}
+</div>
+
+<!-- Fallback for no-JS users -->
+<noscript>
+	{%- include games_full.html placement="frontpage" limit=1 offset=0 url="/showcase" -%}
+</noscript>
+
+<!-- Games data and dynamic selection script -->
+<script>
+	// Games data for dynamic selection
+	var frontpageGames = {% include games_json.html placement="frontpage" %};
+	
+	// Simple dynamic game loader
+	document.addEventListener('DOMContentLoaded', function() {
+		if (frontpageGames && frontpageGames.length > 0) {
+			// Select random game
+			const randomGame = frontpageGames[Math.floor(Math.random() * frontpageGames.length)];
+			
+			// Replace placeholders in template
+			const container = document.getElementById('dynamic-game-container');
+			let html = container.innerHTML;
+			
+			// Replace all placeholders
+			html = html.replace(/#GAME_ID#/g, randomGame.id);
+			html = html.replace(/#GAME_NAME#/g, randomGame.name);
+			html = html.replace(/#GAME_DESCRIPTION#/g, randomGame.description);
+			html = html.replace(/#GAME_DEVELOPER#/g, randomGame.developer);
+			html = html.replace(/#GAME_PUBLISHER#/g, randomGame.publisher || '');
+			html = html.replace(/#GAME_RELEASEDATE#/g, randomGame.releasedate || '');
+			html = html.replace(/#GAME_PLATFORMS#/g, randomGame.platforms);
+			html = html.replace(/#GAME_DOWNLOADS#/g, randomGame.downloads || '');
+			html = html.replace(/#GAME_EXTRAINFO#/g, randomGame.extrainfo || '');
+			html = html.replace(/#GAME_IMAGE#/g, randomGame.image);
+			
+			container.innerHTML = html;
+			
+			// Show/hide optional rows
+			if (randomGame.publisher) container.querySelector('.publisher-row').style.display = '';
+			if (randomGame.releasedate) container.querySelector('.releasedate-row').style.display = '';
+			if (randomGame.downloads) container.querySelector('.downloads-row').style.display = '';
+			if (randomGame.extrainfo) container.querySelector('.extrainfo-row').style.display = '';
+			
+			// Add analytics tracking
+			if (typeof gtag !== 'undefined') {
+				// Track impression
+				gtag('event', 'game_impression', {
+					'game_id': randomGame.id,
+					'source_location': 'frontpage_hero'
+				});
+				
+				// Add click tracking to banner
+				const bannerLink = container.querySelector('.game-banner-link');
+				if (bannerLink) {
+					bannerLink.addEventListener('click', function() {
+						gtag('event', 'game_click', {
+							'game_id': randomGame.id,
+							'source_location': 'frontpage_banner'
+						});
+					});
+				}
+				
+				// Add click tracking to "More Games" button
+				const moreGamesButton = document.querySelector('a[href="/showcase"]');
+				if (moreGamesButton) {
+					moreGamesButton.addEventListener('click', function() {
+						gtag('event', 'game_click', {
+							'game_id': randomGame.id,
+							'source_location': 'frontpage_more_button'
+						});
+					});
+				}
+			}
+		}
+	});
+</script>
 
 <div class="section narrow center">
 	<div class="container">
