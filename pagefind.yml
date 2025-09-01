@@ -1,0 +1,28 @@
+# Pagefind configuration for Defold website
+site: "_site"
+output_path: "_site/_pagefind"
+
+# Include all HTML files
+glob: "**/*.{html,htm}"
+
+# Exclude certain paths from indexing
+exclude_selectors:
+  - "[data-pagefind-ignore]"
+  - "[data-pagefind-ignore] *"
+  - "nav"
+  - ".sidemenu"
+  - ".dropdownmenu"
+  - "footer"
+  - ".sidenote"
+  - ".github-button"
+  - "script"
+  - "style"
+
+# Read metadata from the pages
+keep_index_url: true
+
+# Keep index size manageable
+excerpt_length: 25
+
+# Enable debugging during development
+verbose: true

@@ -13,13 +13,34 @@ layout: base
 	{%- assign ref = site.data.ref[page.branch][clean_ref] -%}
 {%- endif -%}
 
+{%- assign api_index_exclude = false -%}
+{%- if page.url contains "/ref/alpha/" or page.url contains "/ref/beta/" or page.url contains "/ref/stable/" -%}
+  {%- assign api_index_exclude = true -%}
+{%- endif -%}
+{%- if ref.info.language == "" or ref.info.language == nil -%}
+  {%- assign api_index_exclude = true -%}
+{%- endif -%}
+{%- if page.pagefind_exclude -%}
+  {%- assign api_index_exclude = true -%}
+{%- endif -%}
+
+{%- unless api_index_exclude -%}
+<!-- Pagefind metadata and filters for API reference -->
+<div style="display: none;" data-pagefind-filter="section">API {{ref.info.language}}</div>
+<div style="display: none;" data-pagefind-meta="section">API {{ref.info.language}}</div>
+{%- endunless -%}
+
 {%- if page.url contains branch -%}
 	{%- assign page_url = page.url | replace: branch, "BRANCH" -%}
 {%- else -%}
 	{%- assign page_url = page.url | replace: "ref/", "ref/BRANCH/" -%}
 {%- endif -%}
 
+{%- if api_index_exclude -%}
+<div id="page" class="lightest dark:dark" style="position: relative;" data-pagefind-ignore>
+{%- else -%}
 <div id="page" class="lightest dark:dark" style="position: relative;">
+{%- endif -%}
 	<div id="pagecontent">
 		<div class="apimenu sidemenu dark:dark">
 			<p><a href="/learn"><img class="logo-hor-classic-160" src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png"/></a></p>
@@ -69,7 +90,7 @@ layout: base
 
 		</div>
 
-		<div class="apicontent lightest dark:dark">
+		<div class="apicontent lightest dark:dark" data-pagefind-body>
 			<div class="dropdownmenu">
 				<p>
 					<a href="/learn"><img src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png"/></a>

@@ -18,13 +18,12 @@ The site uses the `update.py` script from this repository to update the site wit
 You need to make sure to have the following dependencies installed before using `update.py`:
 
 * Python 3.x
-* Lunr.py (search)
 * Requests (http requests)
+* PyYAML, Markdown, Pygments
 
-Install `lunr.py` and `requests` using:
+Install dependencies using:
 
 ```sh
-pip3 install --user lunr==0.5.5
 pip3 install --user requests
 pip3 install --user pyyaml
 pip3 install --user markdown==3.4.1
@@ -55,7 +54,6 @@ The script accepts the following commands:
 * `examples` - Import examples from github.com/defold/examples
 * `asset-portal` - Import Asset Portal content from github.com/defold/asset-portal
 * `games-showcase` - Import Showcase content from github.com/defold/games-showcase
-* `searchindex` - Generates the search index
 * `commit` - Commit changes to GitHub (for CI use)
 
 
@@ -69,6 +67,7 @@ You need to make sure you have the following dependencies installed before attem
 * bundler gem
 * jekyll
 * github-pages gem
+* Pagefind (for search indexing)
 
 ### 1 Install Ruby
 Most macOS versions ship with Ruby preinstalled. It is however recommended that you install a separate Ruby version as you will very likely run into permission issues if trying to install any Ruby gems with the system version of Ruby.
@@ -127,6 +126,15 @@ bundle install
 
 **Note:** If you encounter errors related to missing `csv` or `logger` gems (common with Ruby 3.4+), these have been added to the Gemfile and will be installed automatically with `bundle install`.
 
+### 3 Install Pagefind
+The site uses Pagefind for search functionality. Install it using:
+
+```sh
+pip3 install "pagefind[extended]"
+```
+
+The `serve.sh` script will automatically check for Pagefind installation and provide installation instructions if missing.
+
 
 ## Usage
 Launch/serve the site locally:
@@ -162,11 +170,13 @@ cp $DYNAMO_HOME/share/ref-doc.zip refdoc_stable.zip
 By setting the `DM_DOC_DIR` environment variable, you can load the documentation directory from your local folder:
 
 ```sh
-DM_DOC_DIR=/Users/username/work/doc python update.py docs
+DM_DOC_DIR=/Users/username/work/doc python3 update.py docs
 ```
 
 # Automatic site update using GitHub Actions
-The site uses [GitHub actions](https://github.com/defold/defold.github.io/actions) to automatically trigger `update.py` when an external source/repository has been updated. The script is also triggered once every hour to update the asset portal star count for GitHub hosted assets. The following workflows/jobs have been set up using GitHub Actions:
+The site uses [GitHub Actions](https://github.com/defold/defold.github.io/actions) to automatically trigger `update.py` when an external source/repository has been updated. CI then builds the Jekyll site, generates the Pagefind index, and deploys the built `_site` to GitHub Pages via `actions/deploy-pages`. Ensure the repository Pages settings use “GitHub Actions” for build & deployment.
+
+The script is also triggered once every hour to update the asset portal star count for GitHub hosted assets. The following workflows/jobs have been set up using GitHub Actions:
 
 * [Update site](https://github.com/defold/defold.github.io/blob/master/.github/workflows/update_site.yml) - on change in external repository (triggered using the repository_dispatch event)
   * Asset-portal - Triggered from [asset-portal workflow](https://github.com/defold/asset-portal/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
@@ -179,7 +189,7 @@ The site uses [GitHub actions](https://github.com/defold/defold.github.io/action
 # Search
 
 ## Site search
-The site search is based on [Lunr.js](https://github.com/olivernn/lunr.js). The search index is generated using the [Python equivalent of Lunr](https://github.com/yeraydiazdiaz/lunr.py). Version 0.5.5 of lunr.py uses Lunr.js version 2.3.6.
+The site search is powered by [Pagefind](https://pagefind.app), a static site search library. Pagefind automatically generates a search index during the site build process and provides a fast, client-side search interface with filtering and metadata support.
 
 ## Page search
 Functionality for searching and marking within a single page using [Mark.js](https://markjs.io/).

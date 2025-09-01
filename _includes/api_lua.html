@@ -107,85 +107,92 @@
 
 
 {%- if functions.size > 0 -%}
-<h2>Functions</h2>
+<h2 id="functions" data-pagefind-weight="7">Functions</h2>
 	{%- for function in functions -%}
 		{% include ref_anchor_target.html element=function %}
-		<h4>{{ function.name }}()<a href="#{% include ref_anchorlink.html element=function %}" class="anchor-link"></a></h4>
-		<p><code>{{ function.name }}({%- for param in function.parameters -%}{{ param.name }}{%- if forloop.last != true -%}, {%- endif -%}{%- endfor -%})</code></p>
-		<p>{{ function.description }}</p>
+		<div data-pagefind-weight="10">
+			<h4 id="{% include ref_anchorlink.html element=function %}">{{ function.name }}()<a href="#{% include ref_anchorlink.html element=function %}" class="anchor-link"></a></h4>
+			<p><code>{{ function.name }}({%- for param in function.parameters -%}{{ param.name }}{%- if forloop.last != true -%}, {%- endif -%}{%- endfor -%})</code></p>
+			<p>{{ function.description }}</p>
 
-		<p><b>PARAMETERS</b></p>
-		{%- if function.parameters.size > 0 -%}
-		{% include api_lua_parameters.html parameters=function.parameters %}
-		{%- else -%}
-		<p>None</p>
-		{%- endif -%}
+			<p><b>PARAMETERS</b></p>
+			{%- if function.parameters.size > 0 -%}
+			{% include api_lua_parameters.html parameters=function.parameters %}
+			{%- else -%}
+			<p>None</p>
+			{%- endif -%}
 
-		{%- if function.returnvalues.size > 0 -%}
-		<p><b>RETURNS</b></p>
-		<table>
-			{%- for return in function.returnvalues -%}
-			<tr>
-				<td><code>{{ return.name }}</code></td>
-				<td>{%- for type in return.types -%}<code>{{ type }}</code><br/>{%- endfor -%}</td>
-				<td>{{ return.doc }}</td>
-			</tr>
-			{%- endfor -%}
-		</table>
-		{%- endif -%}
+			{%- if function.returnvalues.size > 0 -%}
+			<p><b>RETURNS</b></p>
+			<table>
+				{%- for return in function.returnvalues -%}
+				<tr>
+					<td><code>{{ return.name }}</code></td>
+					<td>{%- for type in return.types -%}<code>{{ type }}</code><br/>{%- endfor -%}</td>
+					<td>{{ return.doc }}</td>
+				</tr>
+				{%- endfor -%}
+			</table>
+			{%- endif -%}
 
-		{%- if function.examples.size > 0 -%}
-		<p><b>EXAMPLES</b></p>
-		{{ function.examples }}
-		{%- endif -%}
+			{%- if function.examples.size > 0 -%}
+			<p><b>EXAMPLES</b></p>
+			{{ function.examples }}
+			{%- endif -%}
+		</div>
 		<hr/>
 	{%- endfor -%}
 {%- endif -%}
 
 {%- if constants.size > 0 -%}
-<h2>Constants</h2>
+<h2 id="constants" data-pagefind-weight="7">Constants</h2>
 	{%- for constant in constants -%}
 	{% include ref_anchor_target.html element=constant %}
-	<h5 class="compact">{{ constant.name }}<a href="#{% include ref_anchorlink.html element=constant %}" class="anchor-link"/></a></h5 class="compact">
-	<p class="compact">{{ constant.description }}</p>
+	<div data-pagefind-weight="8">
+		<h5 id="{% include ref_anchorlink.html element=constant %}" class="compact">{{ constant.name }}<a href="#{% include ref_anchorlink.html element=constant %}" class="anchor-link"/></a></h5>
+		<p class="compact">{{ constant.description }}</p>
 
-	{%- if constant.parameters.size > 0 -%}
-	{% include api_lua_parameters.html parameters=constant.parameters %}
-	{%- endif -%}
-	
+		{%- if constant.parameters.size > 0 -%}
+		{% include api_lua_parameters.html parameters=constant.parameters %}
+		{%- endif -%}
+	</div>
 	{% if forloop.last == false %}<hr class="compact"/>{% else %}<hr/>{% endif %}
 	{%- endfor -%}
 {%- endif -%}
 
 {%- if messages.size > 0 -%}
-<h2>Messages</h2>
+<h2 id="messages" data-pagefind-weight="7">Messages</h2>
 	{%- for message in messages -%}
 	{% include ref_anchor_target.html element=message %}
-	<h4>{{ message.name }}<a href="#{% include ref_anchorlink.html element=message %}" class="anchor-link"/></a></h4>
-	<p>{{ message.description }}</p>
+	<div data-pagefind-weight="8">
+		<h4 id="{% include ref_anchorlink.html element=message %}">{{ message.name }}<a href="#{% include ref_anchorlink.html element=message %}" class="anchor-link"/></a></h4>
+		<p>{{ message.description }}</p>
 
-	{%- if message.parameters.size > 0 -%}
-	{% include api_lua_parameters.html parameters=message.parameters %}
-	{%- endif -%}
+		{%- if message.parameters.size > 0 -%}
+		{% include api_lua_parameters.html parameters=message.parameters %}
+		{%- endif -%}
 
-	{%- if message.examples.size > 0 -%}
-	<p><b>EXAMPLES</b></p>
-	{{ message.examples }}
-	{%- endif -%}
+		{%- if message.examples.size > 0 -%}
+		<p><b>EXAMPLES</b></p>
+		{{ message.examples }}
+		{%- endif -%}
+	</div>
 	<hr/>
 	{%- endfor -%}
 {%- endif -%}
 
 {%- if properties.size > 0 -%}
-<h2>Properties</h2>
+<h2 id="properties" data-pagefind-weight="7">Properties</h2>
 	{%- for property in properties -%}
 	{% include ref_anchor_target.html element=property %}
-	<h4>{{ property.name }}<a href="#{% include ref_anchorlink.html element=property %}" class="anchor-link"/></a></h4>
-	<p>{{ property.description }}</p>
-	{%- if property.examples.size > 0 -%}
-	<p><b>EXAMPLES</b></p>
-	{{ property.examples }}
-	{%- endif -%}
+	<div data-pagefind-weight="8">
+		<h4 id="{% include ref_anchorlink.html element=property %}">{{ property.name }}<a href="#{% include ref_anchorlink.html element=property %}" class="anchor-link"/></a></h4>
+		<p>{{ property.description }}</p>
+		{%- if property.examples.size > 0 -%}
+		<p><b>EXAMPLES</b></p>
+		{{ property.examples }}
+		{%- endif -%}
+	</div>
 
 	<hr/>
 	{%- endfor -%}
@@ -193,15 +200,17 @@
 
 
 {%- if macros.size > 0 -%}
-<h2>Macros</h2>
+<h2 id="macros" data-pagefind-weight="7">Macros</h2>
 	{%- for macro in macros -%}
 	{% include ref_anchor_target.html element=macro %}
-	<h4>{{ macro.name }}<a href="#{% include ref_anchorlink.html element=macro %}" class="anchor-link"/></a></h4>
-	<p>{{ macro.description }}</p>
-	{%- if macro.examples.size > 0 -%}
-	<p><b>EXAMPLES</b></p>
-	{{ macro.examples }}
-	{%- endif -%}
+	<div data-pagefind-weight="8">
+		<h4 id="{% include ref_anchorlink.html element=macro %}">{{ macro.name }}<a href="#{% include ref_anchorlink.html element=macro %}" class="anchor-link"/></a></h4>
+		<p>{{ macro.description }}</p>
+		{%- if macro.examples.size > 0 -%}
+		<p><b>EXAMPLES</b></p>
+		{{ macro.examples }}
+		{%- endif -%}
+	</div>
 
 	<hr/>
 	{%- endfor -%}

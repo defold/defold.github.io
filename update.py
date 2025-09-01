@@ -16,8 +16,6 @@ import hashlib
 import yaml
 from argparse import ArgumentParser
 from contextlib import contextmanager
-import lunr
-from lunr import trimmer
 
 from markdown import Markdown
 from markdown import Extension
@@ -83,7 +81,7 @@ ref: {}
 language: {}
 title: API reference ({})
 type: {}
----
+{}---
 """
 REFDOC_MD_BODY = "{% include anchor_headings.html html=content %}"
 
@@ -731,7 +729,7 @@ def process_extension(extension_name, download = False):
                 fm_language = info["language"]
                 fm_title = info["name"]
                 fm_type = info["type"]
-                f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type) + REFDOC_MD_BODY)
+                f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type, "") + REFDOC_MD_BODY)
 
             # write the json data file
             extension_data_dir = os.path.join("_data", "extensions")
@@ -1273,7 +1271,7 @@ def process_refdoc(download = False):
                     fm_language = api["info"]["language"]
                     fm_title = api["info"]["name"]
                     fm_type = api["info"]["type"]
-                    f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type) + REFDOC_MD_BODY)
+                    f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type, "") + REFDOC_MD_BODY)
 
                 # for backwards compatibility also generate one using only the namespace
                 # example: ref/stable/go.md, ref/stable/dmarray.md etc
@@ -1285,7 +1283,7 @@ def process_refdoc(download = False):
                     fm_language = api["info"]["language"]
                     fm_title = api["info"]["name"]
                     fm_type = api["info"]["type"]
-                    f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type) + REFDOC_MD_BODY)
+                    f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type, "pagefind_exclude: true\n") + REFDOC_MD_BODY)
 
                 # build refdoc index
                 refindex.append({
@@ -1330,7 +1328,7 @@ def process_refdoc(download = False):
                 fm_language = ""
                 fm_title = "Overview"
                 fm_type = type
-                f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type) + REFDOC_MD_BODY)
+                f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type, "") + REFDOC_MD_BODY)
 
 
     # copy stable files to ref/ for backwards compatibility
@@ -1349,126 +1347,8 @@ def process_refdoc(download = False):
     write_as_json(os.path.join("_data", "branchindex.json"), branchindex)
 
 
-def process_string_for_indexing(data):
-    # replace the math notations
-    data = re.sub("\$\$.*?\$\$", " ", data)
-
-    # remove the html tags (but leave the text behind)
-    data = re.sub(r"<[^<]+?>", "", data)
-
-    # Cleanup markdown links
-    data = re.sub("\[(.*?)\]\(.*?\)", "\1", data)
-
-    # finally, remove certain characters
-    # (do this last, so that any regexp above won't break)
-    #data = re.sub(r"(=|\.|\(|\))+", " ", data)
-    data = re.sub(r"(=|\(|\))+", " ", data)
-
-    # strip frontmatter
-    data = re.sub("\-\-\-.*\-\-\-", " ", data)
-
-    # strip newlines
-    data = re.sub("\n", " ", data)
-
-    return data
-
-def process_file_for_indexing(filename):
-    with open(filename, 'r', encoding="utf-8") as file:
-        data = file.read().replace('\n', ' ')
-        return process_string_for_indexing(data)
 
 
-def generate_searchindex():
-    searchindex = []
-
-    def append_ref_doc(filename, data):
-        searchindex.append({
-            "id": filename.replace("_data/", "").replace(".json", ""),
-            "type": "refdoc",
-            "data": data
-        })
-
-    def append_manual(filename, data):
-        searchindex.append({
-            "id": filename.replace("_", "").replace(".md", ""),
-            "type": "manual",
-            "data": data
-        })
-
-    def append_example(filename, data):
-        searchindex.append({
-            "id": os.path.dirname(filename),
-            "type": "example",
-            "data": data
-        })
-
-    def append_asset(filename, data):
-        searchindex.append({
-            "id": filename.replace("_data/", "").replace(".json", ""),
-            "type": "asset",
-            "data": data
-        })
-
-    for filename in find_files("manuals", "*.md"):
-        data = process_file_for_indexing(filename)
-        append_manual(filename, data)
-
-    for filename in find_files("examples", "*.md"):
-        data = process_file_for_indexing(filename)
-        append_example(filename, data)
-
-    for filename in find_files(os.path.join("_data", "assets"), "*.json"):
-        r = read_as_json(filename)
-        id = os.path.basename(filename).replace(".json", "")
-        append_asset(filename, id + " " + r["name"] + " " + r["description"])
-
-    for filename in find_files(os.path.join("_data", "ref", "stable"), "*.json"):
-        r = read_as_json(filename)
-
-        data = []
-        for element in r["elements"]:
-            name = element["name"]
-
-            data.append(name)
-
-            if "." in name:
-                data.extend(name.split("."))
-            elif "::" in name:
-                data.extend(name.split("::"))
-
-            data.extend(process_string_for_indexing(element["description"]).split(" "))
-            for p in element["parameters"]:
-                data.extend(process_string_for_indexing(p["doc"]).split(" "))
-                data.extend(p["types"])
-            for r in element["returnvalues"]:
-                data.extend(process_string_for_indexing(r["doc"]).split(" "))
-                data.extend(r["types"])
-            for m in element["members"]:
-                data.extend(process_string_for_indexing(m["doc"]).split(" "))
-
-        append_ref_doc(filename, process_string_for_indexing(" ".join(data)))
-
-    # manually create a builder without stemming, stop words etc
-    # if we use the standard builder pipeline functions we will end up
-    # with partial search words like go.get_posit instead of go.get_position
-    builder = lunr.builder.Builder()
-    builder.pipeline.add(trimmer.trimmer)
-    builder.ref("id")
-    for field in ('type', 'data'):
-        if isinstance(field, dict):
-            builder.field(**field)
-        else:
-            builder.field(field)
-    for document in searchindex:
-        if isinstance(document, (tuple, list)):
-            builder.add(document[0], attributes=document[1])
-        else:
-            builder.add(document)
-    lunrindex = builder.build()
-    # lunrindex = lunr.lunr(ref='id', fields=('type', 'data'), documents=searchindex)
-
-    write_as_json("searchindex.json", lunrindex.serialize())
-    print("Wrote searchindex.json")
 
 
 def commit_changes(githubtoken):
@@ -1485,7 +1365,7 @@ def commit_changes(githubtoken):
     call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
 
 
-ALL_COMMANDS = [ "all", "help", "docs", "refdoc", "asset-portal", "games-showcase", "examples", "codepad", "commit", "searchindex", "extensions" ]
+ALL_COMMANDS = [ "all", "help", "docs", "refdoc", "asset-portal", "games-showcase", "examples", "codepad", "commit", "extensions" ]
 ALL_COMMANDS.sort()
 
 parser = ArgumentParser()
@@ -1504,7 +1384,6 @@ games-showcase = Process the games list (from games-showcase)
 examples = Build the examples
 codepad = Build the Defold CodePad
 commit = Commit changed files (requires --githubtoken)
-searchindex = Update the static Lunr search index
 extensions = Process the docs for official extensions (use --extension to specify which extensions to process)
 all = Run all of the above commands
 help = Show this help
@@ -1540,8 +1419,6 @@ for command in args.commands:
         process_games_showcase(download = args.download)
     elif command == "codepad":
         process_codepad(download = args.download)
-    elif command == "searchindex":
-        generate_searchindex()
     elif command == "commit":
         commit_changes(args.githubtoken)
     else:

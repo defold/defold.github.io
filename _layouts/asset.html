@@ -1,6 +1,9 @@
 ---
 layout: page
 ---
+<!-- Pagefind metadata and filters for assets -->
+<div style="display: none;" data-pagefind-filter="section">Assets</div>
+<div style="display: none;" data-pagefind-meta="section">Assets</div>
 {%- assign asset = site.data.assets[page.asset] -%}
 {%- if asset.images.hero contains "https" or asset.images.hero contains "http" -%}
 	{%- assign hero_base = "" -%}
@@ -20,7 +23,7 @@ layout: page
 <div class="section dark">
 	<div class="container">
 		<div class="row">
-			<div class="columns nine">
+			<div class="columns nine" data-pagefind-body>
 				<h4>{{ asset.name }}</h4>
 				<p>{%- if asset.description_long.size > 0 -%}{{ asset.description_long }}{%- else -%}{{ asset.description }}{%- endif -%}</p>
 

@@ -1,6 +1,9 @@
 ---
 layout: page
 ---
+<!-- Pagefind metadata and filters for tutorials -->
+<div style="display: none;" data-pagefind-filter="section">Tutorials</div>
+<div style="display: none;" data-pagefind-meta="section">Tutorials</div>
 {% include learnnav.html showmenu=true %}
 
 <div class="section lightest dark:dark">
@@ -28,7 +31,7 @@ layout: page
 					</select>
 				</div>
 			</div>
-			<div class="columns eight tutorial">
+			<div class="columns eight tutorial" data-pagefind-body>
 				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
 			</div>
 			<div class="columns two">
