@@ -1,6 +1,10 @@
 ---
 layout: page
 ---
+<!-- Pagefind metadata and filters for blog posts -->
+<div style="display: none;" data-pagefind-filter="section">Blog Posts</div>
+<div style="display: none;" data-pagefind-meta="section">Blog Posts</div>
+<div style="display: none;" data-pagefind-meta="date">{{ page.date | date: "%Y-%m-%d" }}</div>
 <div class="section lightest dark:dark">
 	<div class="container">
 		<div class="row">
@@ -10,14 +14,14 @@ layout: page
 				{%- else -%}
 				<p><a href="/blog">⇠ More posts</a></p>
 				{%- endif -%}
-				<h1>{{ page.title }}</h1>
+				<h1 data-pagefind-weight="6">{{ page.title }}</h1>
 				<p><i>By {{ page.author }} on {{ page.date | date: "%b %d, %Y" }}</i></p>
 				<p>Tagged as:&nbsp;{%- for tag in page.tags -%}<a href="/blog#{{ tag }}">{{ tag | capitalize}}</a>{%-unless forloop.last -%},&nbsp;{%- endunless -%}{%- endfor -%}</p>
 			</div>
 			<div class="columns two"><br/></div>
 		</div>
 		<div class="row">
-			<div class="columns ten post">
+			<div class="columns ten post" data-pagefind-body>
 				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
 			</div>
 			<div class="columns two"><br/></div>

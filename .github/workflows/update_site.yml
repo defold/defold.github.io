@@ -1,5 +1,10 @@
 name: CI
 
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
 on:
     repository_dispatch: {}
     workflow_dispatch:
@@ -15,9 +20,9 @@ jobs:
         if: "!contains(github.event.head_commit.message, 'skip-ci')"
         steps: [
             { name: 'Checkout', uses: actions/checkout@v1, with: { fetch-depth: 1 } },
+            { name: 'Setup Ruby', uses: 'ruby/setup-ruby@v1', with: { 'ruby-version': '3.3.5', 'bundler-cache': true } },
             { name: 'Install Python', uses: actions/setup-python@v4, with: { python-version: 3.10.5, architecture: x64 } },
             { name: 'Install Java', uses: actions/setup-java@v3, with: { java-version: '21.0.5+11.0.LTS', distribution: 'temurin'} },
-            { name: 'Install Lunr', run: 'pip install --user lunr==0.5.5' },
             { name: 'Install Requests', run: 'pip install --user requests' },
             { name: 'Install PyYAML', run: 'pip install --user pyyaml' },
             { name: 'Install Markdown', run: 'pip install --user markdown==3.4.1' },
@@ -25,10 +30,15 @@ jobs:
             { name: 'Show action & event', run: 'echo "Event: ${{ github.event }} Action: ${{ github.event.action }}"' },
             { if: "github.event.action == 'asset-portal'", name: 'Update assets', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} asset-portal commit' },
             { if: "github.event.action == 'games-showcase'", name: 'Update games', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} games-showcase commit' },
-            { if: "github.event.action == 'docs'", name: 'Update docs', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} docs searchindex commit' },
-            { if: "github.event.action == 'refdoc'", name: 'Update refdoc', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} refdoc searchindex commit' },
+            { if: "github.event.action == 'docs'", name: 'Update docs', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} docs commit' },
+            { if: "github.event.action == 'refdoc'", name: 'Update refdoc', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} refdoc commit' },
             { if: "github.event.action == 'examples'", name: 'Update examples', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} examples commit' },
             { if: "github.event.action == 'codepad'", name: 'Update codepad', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} codepad commit' },
             { if: "github.event.action == 'all'", name: 'Update everything', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} all commit' },
-            { if: "startsWith(github.event.action, 'extension-')", name: 'Update extension', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} --extension ${{ github.event.action }} extensions refdoc searchindex commit' }
+            { if: "startsWith(github.event.action, 'extension-')", name: 'Update extension', run: 'python update.py --download --githubtoken=${{ secrets.SERVICES_GITHUB_TOKEN }} --extension ${{ github.event.action }} extensions refdoc commit' },
+            { name: 'Build Jekyll site', run: 'bundle exec jekyll build' },
+            { name: 'Install Pagefind Python', run: 'pip install "pagefind[extended]"' },
+            { name: 'Index site with Pagefind', run: 'python3 -m pagefind' },
+            { if: "github.ref == 'refs/heads/master'", name: 'Upload Pages artifact', uses: 'actions/upload-pages-artifact@v3', with: { path: '_site' } },
+            { if: "github.ref == 'refs/heads/master'", name: 'Deploy to GitHub Pages', id: 'deployment', uses: 'actions/deploy-pages@v4' }
         ]

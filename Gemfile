@@ -8,4 +8,6 @@ gem "bundler"
 gem "webrick"
 gem "jekyll"
 gem "liquid-c"
+gem "csv"
+gem "logger"
 gem 'github-pages', group: :jekyll_plugins

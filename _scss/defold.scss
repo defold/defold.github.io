@@ -1439,6 +1439,49 @@ dl {
 	grid-template-columns: max-content auto;
 }
 
+/*******************************************************************************
+* Pagefind UI overrides (scoped to search page container)
+******************************************************************************/
+
+#pagefind-search {
+	/* Make the Clear control look like text, not a button */
+	.pagefind-ui__reset,
+	.pagefind-ui__search-clear {
+		border: 0 !important;
+		background: transparent !important;
+		padding: 0 !important;
+		padding-right: 1.5rem !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		cursor: pointer;
+		color: inherit;
+	}
+
+	/* Tighten vertical spacing between results */
+	.pagefind-ui__results {
+		margin: 0;
+		padding: 0;
+	}
+	.pagefind-ui__result {
+		margin: 0 0 0.75rem 0 !important;
+		padding: 0 !important;
+	}
+	.pagefind-ui__result-inner {
+		padding: 0.25rem 0 !important;
+	}
+	.pagefind-ui__result-nested {
+		margin-top: 0.25rem !important;
+	}
+	.pagefind-ui__result-tags {
+		margin-top: 0.25rem !important;
+	}
+
+	/* Highlight color for matched terms */
+	mark {
+		background-color: #09CEE2 !important;
+	}
+}
+
 dt {
 	grid-column-start: 1;
 }

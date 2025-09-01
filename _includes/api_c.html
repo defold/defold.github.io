@@ -19,7 +19,7 @@
 
 {%- assign global_namespaces = "dmAlign~dmArray~dmHash~dmStringFunc~dmLog" | split:"~" -%}
 
-<h2>{{ ref.info.name | capitalize }}</h2>
+<h2 id="{{ ref.info.name | slugify }}" data-pagefind-weight="7">{{ ref.info.name | capitalize }}</h2>
 <p>{{ ref.info.description }}</p>
 
 <table class="compact">
@@ -167,44 +167,50 @@
 
 
 {%- if functions.size > 0 -%}
-<h2>Functions</h2>
+<h2 id="functions" data-pagefind-weight="7">Functions</h2>
 	{%- for function in functions -%}
 		{% include ref_anchor_target.html element=function %}
-		<h4>{{ function.name }}<a href="#{% include ref_anchorlink.html element=function %}" class="anchor-link"></a></h4>
+		<div data-pagefind-weight="10">
+			<h4 id="{% include ref_anchorlink.html element=function %}">{{ function.name }}<a href="#{% include ref_anchorlink.html element=function %}" class="anchor-link"></a></h4>
 			{% include api_c_function.html function=function full="yes" %}
+		</div>
 	{%- endfor -%}
 {%- endif -%}
 
 {%- if structs.size > 0 -%}
-<h2>Structs</h2>
+<h2 id="structs" data-pagefind-weight="7">Structs</h2>
 	{%- for struct in structs -%}
 	{% include ref_anchor_target.html element=struct %}
-	<h4>{{ struct.name }}<a href="#{% include ref_anchorlink.html element=struct %}" class="anchor-link"/></a></h4>
+	<div data-pagefind-weight="8">
+		<h4 id="{% include ref_anchorlink.html element=struct %}">{{ struct.name }}<a href="#{% include ref_anchorlink.html element=struct %}" class="anchor-link"/></a></h4>
 
 		{% include api_c_struct.html struct=struct full="yes" %}
+	</div>
 
 	<hr/>
 	{%- endfor -%}
 {%- endif -%}
 
 {%- if constvars.size > 0 -%}
-<h2>Constants</h2>
+<h2 id="constants" data-pagefind-weight="7">Constants</h2>
 	{%- for constvar in constvars -%}
 	{% include ref_anchor_target.html element=constvar %}
-	<h4>{{ constvar.name }}<a href="#{% include ref_anchorlink.html element=constvar %}" class="anchor-link"/></a></h4>
-	<p>{{ constvar.description }}</p>
+	<div data-pagefind-weight="8">
+		<h4 id="{% include ref_anchorlink.html element=constvar %}">{{ constvar.name }}<a href="#{% include ref_anchorlink.html element=constvar %}" class="anchor-link"/></a></h4>
+		<p>{{ constvar.description }}</p>
 
-	{%- if constvar.parameters.size > 0 -%}
-	<table>
-	{%- for param in constvar.parameters -%}
-	<tr>
-		<td><code>{{ param.name }}</code></td>
-		<td>{{ param.types | join: ", " }}</td>
-		<td>{{ param.doc }}</td>
-	</tr>
-	{%- endfor -%}
-	</table>
-	{%- endif -%}
+		{%- if constvar.parameters.size > 0 -%}
+		<table>
+		{%- for param in constvar.parameters -%}
+		<tr>
+			<td><code>{{ param.name }}</code></td>
+			<td>{{ param.types | join: ", " }}</td>
+			<td>{{ param.doc }}</td>
+		</tr>
+		{%- endfor -%}
+		</table>
+		{%- endif -%}
+	</div>
 
 	<hr/>
 	{%- endfor -%}

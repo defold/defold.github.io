@@ -1,5 +1,10 @@
+{%- if page.layout == "manual" and page.language -%}
+<!DOCTYPE html>
+<html lang="{{ page.language }}">
+{%- else -%}
 <!DOCTYPE html>
 <html lang="en">
+{%- endif -%}
 <head>
 	{% include head.html %}
 
