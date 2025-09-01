@@ -14,6 +14,7 @@ layout: null
 	{%- endunless -%}
 	{%- endfor -%}
 	{%- for page in site.pages -%}
+	{%- unless page.pagefind_exclude -%}
 	<url>
 		<loc>{{ site.url }}{{ page.url | remove: "index.html" }}</loc>
 		{%- if page.date -%}
@@ -24,5 +25,6 @@ layout: null
 		<changefreq>monthly</changefreq>
 		<priority>0.5</priority>
 	</url>
+	{%- endunless -%}
 	{%- endfor -%}
 </urlset>

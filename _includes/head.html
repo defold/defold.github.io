@@ -53,6 +53,13 @@
 <meta name="keywords" content="defold, gameengine, game-engine, game-development, game-dev, gamedev, open-source, opensource, crossplatform, cross-platform, free, nintendo-switch, console, html5, web, android, ios, desktop" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+{%- if page.pagefind_exclude -%}
+<!-- Prevent indexing of fallback/duplicate pages and point to canonical -->
+<meta name="robots" content="noindex, follow">
+{%- assign canonical_path = "/ref/" | append: page.branch | append: "/" | append: page.ref | append: "/" -%}
+<link rel="canonical" href="{{ canonical_path | absolute_url }}">
+{%- endif -%}
+
 <!-- RSS FEED -->
 <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="/feed.xml" />
 
