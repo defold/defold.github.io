@@ -19,6 +19,113 @@
 }
 
 /*******************************************************************************
+* YouTube Lazy Loading Styles
+******************************************************************************/
+
+.youtube-lazy-card {
+	.youtube-thumbnail-container {
+		border-radius: 4px;
+		overflow: hidden;
+		transition: transform 0.2s ease;
+		
+		&:hover {
+			transform: scale(1.02);
+		}
+	}
+	
+	.youtube-thumbnail {
+		transition: filter 0.2s ease, opacity 0.3s ease;
+		
+		&:hover {
+			filter: brightness(0.9);
+		}
+		
+		// Fallback styling for YouTube icon
+		&[src*="yt_icon_rgb.svg"] {
+			background-color: #f9f9f9;
+			object-fit: contain !important;
+			padding: 20px !important;
+		}
+	}
+	
+	.youtube-play-button {
+		transition: opacity 0.2s ease, transform 0.2s ease;
+		
+		&:hover {
+			opacity: 1 !important;
+			transform: translate(-50%, -50%) scale(1.1);
+		}
+		
+		svg {
+			filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+		}
+	}
+	
+	// Loading state with skeleton animation
+	&.thumbnail-loading {
+		.youtube-thumbnail-container {
+			background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+			background-size: 200% 100%;
+			animation: skeleton-loading 1.5s infinite;
+		}
+		
+		.youtube-play-button {
+			opacity: 0.3;
+		}
+	}
+	
+	// Loaded state
+	&.thumbnail-loaded {
+		.youtube-thumbnail {
+			opacity: 1;
+		}
+	}
+	
+	// Legacy loading class (kept for compatibility)
+	&.loading {
+		.youtube-thumbnail-container {
+			opacity: 0.7;
+			pointer-events: none;
+		}
+		
+		.youtube-thumbnail-container::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 24px;
+			height: 24px;
+			border: 2px solid #ffffff;
+			border-top: 2px solid transparent;
+			border-radius: 50%;
+			animation: spin 1s linear infinite;
+		}
+	}
+}
+
+@keyframes spin {
+	0% { transform: translate(-50%, -50%) rotate(0deg); }
+	100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes skeleton-loading {
+	0% { background-position: -200% 0; }
+	100% { background-position: 200% 0; }
+}
+
+/* Dark mode support for YouTube cards */
+.dark-mode {
+	.youtube-lazy-card {
+		.youtube-thumbnail {
+			&:hover {
+				filter: brightness(1.1);
+			}
+		}
+	}
+}
+
+/*******************************************************************************
 * dark mode
 ******************************************************************************/
 
