@@ -816,6 +816,20 @@ def process_examples(download = False):
                     image_path = "https://www.defold.com/examples/%s/%s" % (fm["path"], fm["thumbnail"])
                     fm["opengraph_image"] = image_path
                     fm["twitter_image"] = image_path
+                else:
+                    # Try to find the first image in the markdown content
+                    content = read_as_string(md_file)
+                    # Look for markdown image syntax: ![alt](image.ext)
+                    import re
+                    image_match = re.search(r'!\[.*?\]\(([^)]+\.(png|jpg|jpeg|gif|webp))\)', content)
+                    if image_match:
+                        first_image = image_match.group(1)
+                        # Check if image exists in the example directory
+                        if os.path.exists(os.path.join(example_src_dir, first_image)):
+                            fm["thumbnail"] = first_image
+                            image_path = "https://www.defold.com/examples/%s/%s" % (fm["path"], first_image)
+                            fm["opengraph_image"] = image_path
+                            fm["twitter_image"] = image_path
                 examplesindex.append(fm)
                 replace_frontmatter(md_file, fm)
 
