@@ -820,7 +820,6 @@ def process_examples(download = False):
                     # Try to find the first image in the markdown content
                     content = read_as_string(md_file)
                     # Look for markdown image syntax: ![alt](image.ext)
-                    import re
                     image_match = re.search(r'!\[.*?\]\(([^)]+\.(png|jpg|jpeg|gif|webp))\)', content)
                     if image_match:
                         first_image = image_match.group(1)
