@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmsdk-render-render-h
+ref: engine-render-src-dmsdk-render-render-h
 language: C++
 title: API reference (Render)
 type: Defold C++

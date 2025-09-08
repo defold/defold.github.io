@@ -30,7 +30,7 @@ nav: floating
 			<h3>{{ author }}</h3>
 			<div class="grid-250">
 			{%- for video in videos -%}
-				{% include youtube_card.html title=video.name description=video.description embed=video.embed link=video.path author=video.author min-height="250px" image="/images/icons/yt_icon_rgb.svg" %}
+				{% include youtube_card_lazy.html title=video.name description=video.description embed=video.embed link=video.path author=video.author min-height="250px" image="/images/icons/yt_icon_rgb.svg" %}
 			{%- endfor -%}
 			</div>
 		{%- endfor -%}
@@ -38,3 +38,5 @@ nav: floating
 </div>
 
 {% include learn_section.html %}
+
+<script src="/js/youtube-lazy.js"></script>

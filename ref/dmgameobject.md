@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmsdk-gameobject-script-h
+ref: engine-gameobject-src-dmsdk-gameobject-script-h
 language: C++
 title: API reference (Script)
 type: Defold C++

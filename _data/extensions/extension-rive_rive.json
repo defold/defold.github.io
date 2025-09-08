@@ -591,7 +591,7 @@
                     ]
                 },
                 {
-                    "doc": "The handle to the currently set ViewModelInstanceRuntime instance",
+                    "doc": "The handle to the ViewModelInstanceRuntime instance",
                     "name": "handle",
                     "types": [
                         "integer"
@@ -602,6 +602,110 @@
                     "name": "properties",
                     "types": [
                         "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Gets a property from the ViewModelInstanceRuntime instance",
+            "examples": "",
+            "name": "rive.databind.get_property",
+            "parameters": [
+                {
+                    "doc": "The Rive model component",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "The handle to the ViewModelInstanceRuntime instance",
+                    "name": "handle",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "The path to the property",
+                    "name": "path",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Add a ViewModelInstanceRuntime instance to a list property",
+            "examples": "",
+            "name": "rive.databind.list_add_instance",
+            "parameters": [
+                {
+                    "doc": "The Rive model component",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "The handle to the ViewModelInstanceRuntime instance",
+                    "name": "handle",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "The path to the list property",
+                    "name": "path",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The handle to the ViewModelInstanceRuntime instance to add to the list",
+                    "name": "instance_handle",
+                    "types": [
+                        "integer"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Remove a ViewModelInstanceRuntime instance from a list property",
+            "examples": "",
+            "name": "rive.databind.list_remove_instance",
+            "parameters": [
+                {
+                    "doc": "The Rive model component",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "The handle to the ViewModelInstanceRuntime instance",
+                    "name": "handle",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "The path to the list property",
+                    "name": "path",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The handle to the ViewModelInstanceRuntime instance to add to the list",
+                    "name": "instance_handle",
+                    "types": [
+                        "integer"
                     ]
                 }
             ],

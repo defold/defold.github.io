@@ -268,10 +268,25 @@
                     "types": [
                         "buffer"
                     ]
+                },
+                {
+                    "doc": "callback function when texture is created (self, request_id, resource)",
+                    "is_optional": "False",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
+                {
+                    "doc": "The path to the texture resource.",
+                    "name": "path",
+                    "types": [
+                        "hash"
+                    ]
+                },
                 {
                     "doc": "The request id for the async request.\n<span class=\"icon-attention\"></span> 3D Textures are currently only supported on OpenGL and Vulkan adapters. To check if your device supports 3D textures, use:\n```lua\nif graphics.TEXTURE_TYPE_3D ~= nil then\n    -- Device and graphics adapter support 3D textures\nend",
                     "name": "request_id",

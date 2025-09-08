@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmsdk-dlib-math-h
+ref: engine-dlib-src-dmsdk-dlib-math-h
 language: C++
 title: API reference (Math)
 type: Defold C++

@@ -790,7 +790,7 @@ def process_examples(download = False):
                     shutil.copyfile(bob_jar, bob_out)
                     game_project = os.path.join(example_src_dir, "game.project")
                     replace_in_file(game_project, r"title = .*", r"title = Defold-examples")
-                    subprocess.call([ "java", "-jar", bob_out, "--archive", "--platform", "js-web", "--variant", "debug", "resolve", "build", "bundle" ], cwd=example_src_dir)
+                    subprocess.call([ "java", "-jar", bob_out, "--archive", "--platform", "js-web", "--architectures", "wasm-web", "--variant", "debug", "resolve", "build", "bundle" ], cwd=example_src_dir)
                     os.remove(bob_out)
 
                     print("...copying %s" % example)
@@ -816,6 +816,19 @@ def process_examples(download = False):
                     image_path = "https://www.defold.com/examples/%s/%s" % (fm["path"], fm["thumbnail"])
                     fm["opengraph_image"] = image_path
                     fm["twitter_image"] = image_path
+                else:
+                    # Try to find the first image in the markdown content
+                    content = read_as_string(md_file)
+                    # Look for markdown image syntax: ![alt](image.ext)
+                    image_match = re.search(r'!\[.*?\]\(([^)]+\.(png|jpg|jpeg|gif|webp))\)', content)
+                    if image_match:
+                        first_image = image_match.group(1)
+                        # Check if image exists in the example directory
+                        if os.path.exists(os.path.join(example_src_dir, first_image)):
+                            fm["thumbnail"] = first_image
+                            image_path = "https://www.defold.com/examples/%s/%s" % (fm["path"], first_image)
+                            fm["opengraph_image"] = image_path
+                            fm["twitter_image"] = image_path
                 examplesindex.append(fm)
                 replace_frontmatter(md_file, fm)
 

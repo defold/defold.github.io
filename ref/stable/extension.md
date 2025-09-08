@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmsdk-extension-extension-h
+ref: engine-extension-src-dmsdk-extension-extension-h
 language: C++
 title: API reference (Extension)
 type: Defold C++
