@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmsdk-dlib-shared_library-h
+ref: engine-dlib-src-dmsdk-dlib-shared_library-h
 language: C++
 title: API reference (Shared Library)
 type: Defold C++

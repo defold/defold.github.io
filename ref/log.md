@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmsdk-dlib-log-h
+ref: engine-dlib-src-dmsdk-dlib-log-h
 language: C++
 title: API reference (Log)
 type: Defold C++

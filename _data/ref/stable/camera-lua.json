@@ -17,7 +17,7 @@
         },
         {
             "brief": "get aspect ratio",
-            "description": "get aspect ratio",
+            "description": "Gets the effective aspect ratio of the camera. If auto aspect ratio is enabled,\nreturns the aspect ratio calculated from the current render target dimensions.\nOtherwise returns the manually set aspect ratio.",
             "error": "",
             "examples": "",
             "language": "",
@@ -39,10 +39,44 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "the aspect ratio.",
+                    "doc": "the effective aspect ratio.",
                     "name": "aspect_ratio",
                     "types": [
                         "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get auto aspect ratio",
+            "description": "Returns whether auto aspect ratio is enabled. When enabled, the camera automatically\ncalculates aspect ratio from render target dimensions. When disabled, uses the\nmanually set aspect ratio value.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "camera.get_auto_aspect_ratio",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "camera id",
+                    "is_optional": "False",
+                    "name": "camera",
+                    "types": [
+                        "url",
+                        "number",
+                        "nil"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if auto aspect ratio is enabled",
+                    "name": "auto_aspect_ratio",
+                    "types": [
+                        "boolean"
                     ]
                 }
             ],
@@ -312,7 +346,7 @@
         },
         {
             "brief": "set aspect ratio",
-            "description": "set aspect ratio",
+            "description": "Sets the manual aspect ratio for the camera. This value is only used when\nauto aspect ratio is disabled. To disable auto aspect ratio and use this\nmanual value, call camera.set_auto_aspect_ratio(camera, false).",
             "error": "",
             "examples": "",
             "language": "",
@@ -331,11 +365,45 @@
                     ]
                 },
                 {
-                    "doc": "the aspect ratio.",
+                    "doc": "the manual aspect ratio value.",
                     "is_optional": "False",
                     "name": "aspect_ratio",
                     "types": [
                         "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set auto aspect ratio",
+            "description": "Enables or disables automatic aspect ratio calculation. When enabled (true),\nthe camera automatically calculates aspect ratio from render target dimensions.\nWhen disabled (false), uses the manually set aspect ratio value.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "camera.set_auto_aspect_ratio",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "camera id",
+                    "is_optional": "False",
+                    "name": "camera",
+                    "types": [
+                        "url",
+                        "number",
+                        "nil"
+                    ]
+                },
+                {
+                    "doc": "true to enable auto aspect ratio",
+                    "is_optional": "False",
+                    "name": "auto_aspect_ratio",
+                    "types": [
+                        "boolean"
                     ]
                 }
             ],
@@ -644,7 +712,7 @@
         "name": "Camera",
         "namespace": "camera",
         "notes": [],
-        "path": "../../proto/gamesys/camera_ddf.proto",
+        "path": "engine/gamesys/proto/gamesys/camera_ddf.proto",
         "type": "Defold Lua"
     }
 }

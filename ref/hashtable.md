@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmsdk-dlib-hashtable-h
+ref: engine-dlib-src-dmsdk-dlib-hashtable-h
 language: C++
 title: API reference (Hashtable)
 type: Defold C++

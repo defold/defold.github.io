@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmsdk-gui-gui-h
+ref: engine-gui-src-dmsdk-gui-gui-h
 language: C++
 title: API reference (Gui)
 type: Defold C++

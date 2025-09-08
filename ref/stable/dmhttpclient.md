@@ -1,7 +1,7 @@
 ---
 layout: api
 branch: stable
-ref: dmsdk-dlib-http_client-h
+ref: engine-dlib-src-dmsdk-dlib-http_client-h
 language: C++
 title: API reference (Http Client)
 type: Defold C++

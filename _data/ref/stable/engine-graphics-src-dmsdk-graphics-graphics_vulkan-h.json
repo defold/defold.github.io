@@ -1,0 +1,121 @@
+{
+    "elements": [
+        {
+            "brief": "Get the current swap chain texture",
+            "description": "Get the current swap chain texture",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanGetActiveSwapChainTexture",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the vulkan context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the swap chain texture for the current frame",
+                    "name": "swapchain",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the native MTLCommandQueue from the Vulkan con...",
+            "description": "Get the native MTLCommandQueue from the Vulkan context. Only available when using Mac/iOS.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanGraphicsCommandQueueToMetal",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the vulkan context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the Metal graphics queue wrapped with a (__bridge void*)",
+                    "name": "mtl_queue",
+                    "types": [
+                        "id<MTLCommandQueue>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get a native MTLTexture from a Vulkan HTexture. On...",
+            "description": "Get a native MTLTexture from a Vulkan HTexture. Only available when using Mac/iOS.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanTextureToMetal",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the vulkan context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "the texture",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the Metal texture wrapped with a (__bridge void*)",
+                    "name": "mtl_texture",
+                    "types": [
+                        "id<MTLTexture>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "Graphics API documentation",
+        "description": "Graphics Vulkan API",
+        "description_html": "<p>Graphics Vulkan API</p>",
+        "file": "graphics_vulkan.h",
+        "include": "dmsdk/graphics/graphics_vulkan.h",
+        "language": "C++",
+        "name": "Graphics Vulkan",
+        "namespace": "dmGraphics",
+        "notes": [],
+        "path": "engine/graphics/src/dmsdk/graphics/graphics_vulkan.h",
+        "type": "Defold C++"
+    }
+}
