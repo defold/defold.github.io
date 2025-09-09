@@ -10,7 +10,6 @@ toc:
 - Setup
 - Usage
 - Source code
-- API reference
 ---
 
 # Defold Firebase Analytics documentation
@@ -81,6 +80,5 @@ Read about [events](https://firebase.google.com/docs/reference/android/com/googl
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-firebase-analytics)
-
-
-## API reference[API Reference - firebase](/extension-firebase-analytics/firebase_api)
+## API reference
+[API Reference - firebase](/extension-firebase-analytics/firebase_api)
