@@ -1,0 +1,127 @@
+/* Pagefind UI overrides (scoped to search page container) */
+
+#pagefind-search {
+	/* Pagefind theming via CSS variables (light) */
+	--pagefind-ui-primary: var(--defold-blue-darkest);
+	--pagefind-ui-text: inherit;
+	--pagefind-ui-text-secondary: var(--light);
+	--pagefind-ui-background: transparent;
+	--pagefind-ui-border: var(--lighter);
+	--pagefind-ui-input: #fff;
+	--pagefind-ui-tag: rgba(0,0,0,0.06);
+
+	/* Make the Clear control look like text, not a button */
+	.pagefind-ui__reset,
+	.pagefind-ui__search-clear {
+		border: 0 !important;
+		background: transparent !important;
+		padding: 0 !important;
+		padding-right: 1.5rem !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		cursor: pointer;
+		color: inherit;
+	}
+
+	/* Tighten vertical spacing between results */
+	.pagefind-ui__results {
+		margin: 0;
+		padding: 0;
+	}
+	.pagefind-ui__result {
+		margin: 0 0 0.75rem 0 !important;
+		padding: 0 !important;
+	}
+	.pagefind-ui__result-inner {
+		padding: 0.25rem 0 !important;
+	}
+	.pagefind-ui__result-nested {
+		margin-top: 0.25rem !important;
+	}
+	.pagefind-ui__result-tags {
+		margin-top: 0.25rem !important;
+	}
+
+	/* Highlight color for matched terms */
+	mark {
+		background-color: #09CEE2 !important;
+	}
+
+	/* Ensure search input feels native to the site */
+	input[type="text"] {
+		border-color: var(--grey) !important;
+	}
+
+	/* Base buttons within the search UI */
+	button {
+		font: inherit;
+	}
+}
+
+/* Dark mode: align Pagefind UI with site colors */
+.dark-mode {
+	#pagefind-search {
+		/* Pagefind CSS variables (dark) */
+		--pagefind-ui-primary: var(--defold-blue-darkest);
+		--pagefind-ui-text: var(--almostlightest);
+		--pagefind-ui-text-secondary: var(--light);
+		--pagefind-ui-background: transparent;
+		--pagefind-ui-border: var(--grey);
+		--pagefind-ui-input: var(--darker);
+		--pagefind-ui-tag: var(--grey);
+
+		/* Input + placeholder */
+		input[type="text"] {
+			background-color: var(--darker) !important;
+			border-color: var(--grey) !important;
+			color: var(--almostlightest) !important;
+		}
+		input[type="text"]::placeholder {
+			color: var(--light) !important;
+		}
+
+		/* Pagefind containers should inherit background and text */
+		.pagefind-ui__form,
+		.pagefind-ui__results,
+		.pagefind-ui__result,
+		.pagefind-ui__result-inner,
+		.pagefind-ui__drawer,
+		.pagefind-ui__messages,
+		.pagefind-ui__info,
+		.pagefind-ui__filters {
+			background: transparent !important;
+			color: inherit !important;
+			border-color: var(--grey) !important;
+		}
+
+		/* Clear/reset controls should look like links, not buttons */
+		.pagefind-ui__reset,
+		.pagefind-ui__search-clear {
+			color: var(--lighter) !important;
+		}
+
+		/* Result excerpts and meta */
+		.pagefind-ui__result-excerpt,
+		.pagefind-ui__message {
+			color: var(--lighter) !important;
+		}
+
+		/* Highlighted matches (keeps same accent, readable on dark) */
+		mark {
+			background-color: #09CEE2 !important;
+			color: var(--darkest) !important;
+		}
+
+		/* Checkbox accents for filters */
+		input[type="checkbox"] {
+			accent-color: var(--defold-blue-darkest);
+		}
+
+		/* Generic buttons inside the UI (e.g., filter toggle) */
+		button {
+			background-color: var(--grey) !important;
+			border: 1px solid var(--grey) !important;
+			color: var(--almostlightest) !important;
+		}
+	}
+}
