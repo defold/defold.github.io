@@ -10,7 +10,6 @@ toc:
 - Configuration
 - Example
 - Source code
-- API reference
 ---
 
 # Zendesk extension documentation
@@ -63,6 +62,5 @@ end
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-zendesk)
-
-
-## API reference[API Reference - zendesk](/extension-zendesk/zendesk_api)
+## API reference
+[API Reference - zendesk](/extension-zendesk/zendesk_api)
