@@ -11,7 +11,6 @@ toc:
 - Example
 - Quality Assurance Tool
 - Source code
-- API reference
 ---
 
 # Defold CrazyGames SDK extension API documentation
@@ -58,6 +57,5 @@ You can use the CrazyGames QATool to test your SDK implementation. You can use t
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-crazygames)
-
-
-## API reference[API Reference - crazygames](/extension-crazygames/crazygames_api)
+## API reference
+[API Reference - crazygames](/extension-crazygames/crazygames_api)
