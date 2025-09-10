@@ -13,7 +13,6 @@ toc:
 - API Usage
 - Testing
 - Source code
-- API reference
 ---
 
 # Google Play Instant
@@ -214,6 +213,5 @@ More information about debugging on mobile devices available in the [Debugging m
 
 ## Source code
 The source code is available on [GitHub](https://github.com/defold/extension-googleplayinstant)
-
-
-## API reference[API Reference - instantapp](/extension-googleplayinstant/instantapp_api)
+## API reference
+[API Reference - instantapp](/extension-googleplayinstant/instantapp_api)
