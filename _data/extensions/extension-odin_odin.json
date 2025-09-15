@@ -1,0 +1,118 @@
+{
+    "elements": [
+        {
+            "description": "Initialize ODIN Voice",
+            "examples": "",
+            "name": "odin.init",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "listener",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Create or join a room.",
+            "examples": "",
+            "name": "odin.create_room",
+            "parameters": [
+                {
+                    "doc": "Id of the room to join",
+                    "name": "room_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Id of the user",
+                    "name": "user_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The access key used when generating a token for room access. Will use odin.access_key if none is provided.",
+                    "name": "access_key",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Close/leave a previously created/joined room.",
+            "examples": "",
+            "name": "odin.close_room",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Send a message to the current room.",
+            "examples": "",
+            "name": "odin.send",
+            "parameters": [
+                {
+                    "doc": "Data to send.",
+                    "name": "data",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional table with peers to send message to. Nil to send to all.",
+                    "name": "target_peer_ids",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "Optional message id to identify message by. The id will be used in the response.",
+                    "name": "msgid",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "api": "extension-odin/odin_api",
+        "brief": "odin",
+        "description": "Functions and constants for interacting with ODIN Voice",
+        "group": "EXTENSIONS",
+        "language": "Lua",
+        "name": "extension-odin",
+        "namespace": "odin",
+        "type": "Extension"
+    }
+}
