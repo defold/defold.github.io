@@ -647,7 +647,7 @@ def parse_script_api_members(api_name, api):
         for e in m.get("examples", []):
             desc = e.get("desc", "")
             examples.append(md.convert(desc))
-        element["examples"] = "".join(examples)
+        element["examples"] = "\n".join(examples)
         elements.append(element)
     return elements
 
