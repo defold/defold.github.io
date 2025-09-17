@@ -41,6 +41,126 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ApplyMaterialConstants",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Render context",
+                    "is_optional": "False",
+                    "name": "render_context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "material",
+                    "types": [
+                        "dmRender::Material"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "render_object",
+                    "types": [
+                        "const dmRender::RenderObject*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ApplyMaterialSampler",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "render_context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "material",
+                    "types": [
+                        "dmRender::HMaterial"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "sampler",
+                    "types": [
+                        "dmRender::HSampler"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value_index",
+                    "types": [
+                        "uint8_t"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ClearMaterialTags",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "material",
+                    "types": [
+                        "dmRender::HMaterial"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Clears a named constant buffer from any constants.",
             "description": "Clears a named constant buffer from any constants.",
             "error": "",
@@ -80,6 +200,38 @@
                     "name": "constant",
                     "types": [
                         "dmRender::HConstant"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DeleteMaterial",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Render context",
+                    "is_optional": "False",
+                    "name": "render_context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "material",
+                    "types": [
+                        "dmRender::Material"
                     ]
                 }
             ],
@@ -380,6 +532,101 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetMaterialSampler",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetMaterialSamplerNameHash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "material",
+                    "types": [
+                        "dmRender::HMaterial"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "unit",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "name_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetMaterialSamplerUnit",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "material",
+                    "types": [
+                        "dmRender::HMaterial"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "name_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "sampler_unit",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Gets the key to the material tag list",
             "description": "Gets the key to the material tag list",
             "error": "",
@@ -561,6 +808,38 @@
                     "name": "ok",
                     "types": [
                         "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetViewMatrix",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Render context",
+                    "is_optional": "False",
+                    "name": "render_context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "view_matrix",
+                    "types": [
+                        "const dmVMath::Matrix4&"
                     ]
                 }
             ],
@@ -755,6 +1034,46 @@
                     "name": "constant",
                     "types": [
                         "dmRender::HConstant"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "NewMaterial",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Render context",
+                    "is_optional": "False",
+                    "name": "render_context",
+                    "types": [
+                        "dmRender::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "program",
+                    "types": [
+                        "dmGraphics::HProgram"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "new_material",
+                    "types": [
+                        "dmRender::HMaterial"
                     ]
                 }
             ],
@@ -1467,6 +1786,134 @@
                     ]
                 }
             ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetMaterialSampler",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "material",
+                    "types": [
+                        "dmRender::HMaterial"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "name_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "unit",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "u_wrap",
+                    "types": [
+                        "dmGraphics::TextureWrap"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "v_wrap",
+                    "types": [
+                        "dmGraphics::TextureWrap"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "min_filter",
+                    "types": [
+                        "dmGraphics::TextureFilter"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "mag_filter",
+                    "types": [
+                        "dmGraphics::TextureFilter"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "max_anisotropy",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "is_succeed",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetMaterialTags",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "material",
+                    "types": [
+                        "dmRender::Material"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "tag_count",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "tags",
+                    "types": [
+                        "const dmhash_t*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
         },
