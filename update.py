@@ -14,6 +14,8 @@ import subprocess
 import requests
 import hashlib
 import yaml
+
+from scripts import dedupe_examples_wasm
 from argparse import ArgumentParser
 from contextlib import contextmanager
 
@@ -853,6 +855,9 @@ def process_examples(download = False):
             os.remove(index_file)
         examplesindex.sort(key=lambda x: x.get("path").lower())
         write_as_json(os.path.join("_data", "examplesindex.json"), examplesindex)
+
+        print("...deduplicating wasm artifacts")
+        dedupe_examples_wasm.run()
 
 
 def process_codepad(download = False):
