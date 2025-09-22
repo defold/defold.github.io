@@ -1832,6 +1832,29 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "returns available layouts with sizes",
+            "description": "Returns a table mapping each layout id hash to a vector3(width, height, 0). For the default layout,\nthe current scene resolution is returned. If a layout name is not present in the Display Profiles (or when\nno display profiles are assigned), the width/height pair is 0.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "gui.get_layouts",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "layout_id_hash -&gt; vmath.vector3(width, height, 0)",
+                    "name": "",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "gets the leading of the text node",
             "description": "Returns the leading value for a text node.",
             "error": "",
@@ -4441,6 +4464,39 @@
             ],
             "replaces": "",
             "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "sets the scene layout",
+            "description": "Applies a named layout on the GUI scene. This re-applies per-layout node descriptors\nand, if a matching Display Profile exists, updates the scene resolution. Emits\nthe \"layout_changed\" message to the scene script when the layout actually changes.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "gui.set_layout",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the layout id to apply",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the layout exists in the scene and was applied, false otherwise",
+                    "name": "",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },

@@ -1,6 +1,84 @@
 {
     "elements": [
         {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VkDescriptorPool",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VkDevice",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Create Vulkan descriptor pool. No need to dealloca...",
+            "description": "Create Vulkan descriptor pool. No need to deallocate descripto pool manualy\nbecause it will be deallocated automatically when context will be destroyed.\nOnly available when using Mac/iOS.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanCreateDescriptorPool",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the Vulkan device handle",
+                    "is_optional": "False",
+                    "name": "vk_device",
+                    "types": [
+                        "VkDevice"
+                    ]
+                },
+                {
+                    "doc": "maximum size of allocated pool",
+                    "is_optional": "False",
+                    "name": "max_descriptors",
+                    "types": [
+                        "uint16_t"
+                    ]
+                },
+                {
+                    "doc": "result Vulkan descriptor pool",
+                    "is_optional": "False",
+                    "name": "vk_descriptor_pool_out",
+                    "types": [
+                        "VkDescriptorPool*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if creation was successful. Otherwise returns false",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the current swap chain texture",
             "description": "Get the current swap chain texture",
             "error": "",
@@ -11,7 +89,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "the vulkan context",
+                    "doc": "the Vulkan context",
                     "is_optional": "False",
                     "name": "context",
                     "types": [
@@ -33,6 +111,222 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get Vulkan command buffer which used at the curren...",
+            "description": "Get Vulkan command buffer which used at the current frame. Only available when using Mac/iOS.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanGetCurrentFrameCommandBuffer",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the Vulkan context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the Vulkan command buffer",
+                    "name": "command_buffer",
+                    "types": [
+                        "VkCommandBuffer"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get Vulkan device handle. Only available when usin...",
+            "description": "Get Vulkan device handle. Only available when using Mac/iOS.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanGetDevice",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the Vulkan context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the Vulkan device handle",
+                    "name": "device",
+                    "types": [
+                        "VkDevice"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get Vulkan graphics queue handle. Only available w...",
+            "description": "Get Vulkan graphics queue handle. Only available when using Mac/iOS.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanGetGraphicsQueue",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the Vulkan context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the Vulkan graphics queue",
+                    "name": "queue",
+                    "types": [
+                        "VkQueue"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get Vulkan queue family. Only available when using...",
+            "description": "Get Vulkan queue family. Only available when using Mac/iOS.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanGetGraphicsQueueFamily",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the Vulkan context\nreturn family <span class=\"type\"> uint16_t</span> graphics queue family",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get Vulkan instance handle. Only available when us...",
+            "description": "Get Vulkan instance handle. Only available when using Mac/iOS.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanGetInstance",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the Vulkan context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the Vulkan instance handle",
+                    "name": "instance",
+                    "types": [
+                        "VkInstance"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get Vulkan physical device handle. Only available ...",
+            "description": "Get Vulkan physical device handle. Only available when using Mac/iOS.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanGetPhysicalDevice",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the Vulkan context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the Vulkan physical device handle",
+                    "name": "physical_device",
+                    "types": [
+                        "VkPhysicalDevice"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get Vulkan render pass handle. Only available when...",
+            "description": "Get Vulkan render pass handle. Only available when using Mac/iOS.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanGetRenderPass",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the Vulkan context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the Vulkan render pass handle",
+                    "name": "render_pass",
+                    "types": [
+                        "VkRenderPass"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the native MTLCommandQueue from the Vulkan con...",
             "description": "Get the native MTLCommandQueue from the Vulkan context. Only available when using Mac/iOS.",
             "error": "",
@@ -43,7 +337,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "the vulkan context",
+                    "doc": "the Vulkan context",
                     "is_optional": "False",
                     "name": "context",
                     "types": [
@@ -75,7 +369,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "the vulkan context",
+                    "doc": "the Vulkan context",
                     "is_optional": "False",
                     "name": "context",
                     "types": [
