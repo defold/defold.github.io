@@ -3,10 +3,13 @@ author: Pawel Jarosz
 brief: This example shows how to create timer that triggers counting every 1s and can be triggered manually and asynchronously as a reaction to user input.
 category: timer
 layout: example
+opengraph_image: https://www.defold.com/examples/timer/trigger_timer/trigger_timer.png
 path: timer/trigger_timer
 scripts: trigger_timer.gui_script
 tags: timer
+thumbnail: trigger_timer.png
 title: Trigger timer example
+twitter_image: https://www.defold.com/examples/timer/trigger_timer/trigger_timer.png
 
 ---
 

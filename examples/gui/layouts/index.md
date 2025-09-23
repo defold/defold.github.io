@@ -3,10 +3,13 @@ author: agulev
 brief: This example demonstrates the use of layouts.
 category: gui
 layout: example
+opengraph_image: https://www.defold.com/examples/gui/layouts/outline.png
 path: gui/layouts
 scripts: layouts.gui_script
 tags: gui
+thumbnail: outline.png
 title: Layouts
+twitter_image: https://www.defold.com/examples/gui/layouts/outline.png
 
 ---
 

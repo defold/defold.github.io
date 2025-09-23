@@ -3,10 +3,13 @@ author: Pawel Jarosz
 brief: This example shows how to set and animate the normalized cursor value.
 category: animation
 layout: example
+opengraph_image: https://www.defold.com/examples/animation/cursor/cursor.png
 path: animation/cursor
 scripts: cursor.script
 tags: animation
+thumbnail: cursor.png
 title: Cursor animation
+twitter_image: https://www.defold.com/examples/animation/cursor/cursor.png
 
 ---
 

@@ -3,10 +3,13 @@ author: Pawel Jarosz
 brief: This example demonstrates how to add different health bars.
 category: gui
 layout: example
+opengraph_image: https://www.defold.com/examples/gui/healthbar/healthbar.png
 path: gui/healthbar
 scripts: healthbar.script, healthbar.gui_script
 tags: gui
+thumbnail: healthbar.png
 title: Health Bar
+twitter_image: https://www.defold.com/examples/gui/healthbar/healthbar.png
 
 ---
 

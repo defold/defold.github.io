@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: This example shows particle effect modifiers. Modifiers are used to alter the path of emitted particles.
 category: particles
 layout: example
+opengraph_image: https://www.defold.com/examples/particles/modifiers/modifiers.jpg
 path: particles/modifiers
 scripts: modifiers.script
 tags: particles
+thumbnail: modifiers.jpg
 title: Modifiers
+twitter_image: https://www.defold.com/examples/particles/modifiers/modifiers.jpg
 
 ---
 

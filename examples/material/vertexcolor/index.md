@@ -3,10 +3,13 @@ author: JCash
 brief: This example shows how to set and animate a vertex attribute
 category: material
 layout: example
+opengraph_image: https://www.defold.com/examples/material/vertexcolor/vertexcolor-material.png
 path: material/vertexcolor
 scripts: vertexcolor.script, vertexcolor.vp, vertexcolor.fp
 tags: material
+thumbnail: vertexcolor-material.png
 title: Sprite Vertex Color Attribute
+twitter_image: https://www.defold.com/examples/material/vertexcolor/vertexcolor-material.png
 
 ---
 

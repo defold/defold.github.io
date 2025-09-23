@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: A GUI box node with an image texture and a script to make it act as a button.
 category: gui
 layout: example
+opengraph_image: https://www.defold.com/examples/gui/button/button.png
 path: gui/button
 scripts: button.gui_script
 tags: gui
+thumbnail: button.png
 title: Button
+twitter_image: https://www.defold.com/examples/gui/button/button.png
 
 ---
 

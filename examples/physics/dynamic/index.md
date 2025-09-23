@@ -2,9 +2,12 @@
 brief: This example shows a simple setup with dynamic physics objects.
 category: physics
 layout: example
+opengraph_image: https://www.defold.com/examples/physics/dynamic/dynamic.png
 path: physics/dynamic
 tags: physics
+thumbnail: dynamic.png
 title: Dynamic physics
+twitter_image: https://www.defold.com/examples/physics/dynamic/dynamic.png
 
 ---
 

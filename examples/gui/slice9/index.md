@@ -3,10 +3,13 @@ author: FlexYourBrain
 brief: This example demonstrates slice-9 scaling gui box node.
 category: gui
 layout: example
+opengraph_image: https://www.defold.com/examples/gui/slice9/slice9.png
 path: gui/slice9
 scripts: slice9.gui_script
 tags: gui
+thumbnail: slice9.png
 title: Slice-9
+twitter_image: https://www.defold.com/examples/gui/slice9/slice9.png
 
 ---
 

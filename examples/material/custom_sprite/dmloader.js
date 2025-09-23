@@ -219,15 +219,19 @@ var FileLoader = {
 var EngineLoader = {
     arc_sha1: "",
     wasm_sha1: "",
-    wasm_size: 3079880,
+    wasm_size: 3086670,
     wasmjs_sha1: "",
-    wasmjs_size: 283376,
+    wasmjs_size: 283536,
     wasm_pthread_sha1: "",
-    wasm_pthread_size: 3098899,
+    wasm_pthread_size: 2000000,
     wasmjs_pthread_sha1: "",
-    wasmjs_pthread_size: 272067,
+    wasmjs_pthread_size: 250000,
     asmjs_sha1: "",
-    asmjs_size: 6050528,
+    asmjs_size: 4000000,
+    wasm_file: "/examples/wasm/689fe2f463aa1c2eb91da78bb46fccb5.wasm",
+    wasm_pthread_file: "/examples/wasm/689fe2f463aa1c2eb91da78bb46fccb5.wasm",
+    wasmjs_file: "/examples/wasm/18d157ac34c06951b4d0717c03b08768.wasm.js",
+    wasmjs_pthread_file: "/examples/wasm/18d157ac34c06951b4d0717c03b08768.wasm.js",
     wasm_instantiate_progress: 0,
 
     stream_wasm: "false" === "true",
@@ -262,14 +266,14 @@ var EngineLoader = {
 
     getWasmName: function(exeName) {
         if (Module['isWASMPthreadSupported'])
-            return exeName + '_pthread.wasm';
-        return exeName + '.wasm';
+            return EngineLoader.wasm_pthread_file;
+        return EngineLoader.wasm_file;
     },
 
     getWasmJSName: function(exeName) {
         if (Module['isWASMPthreadSupported'])
-            return exeName + '_pthread_wasm.js';
-        return exeName + '_wasm.js';
+            return EngineLoader.wasmjs_pthread_file;
+        return EngineLoader.wasmjs_file;
     },
 
     // load and instantiate .wasm file using XMLHttpRequest
@@ -885,8 +889,8 @@ var Progress = {
 /* ********************************************************************* */
 
 var Module = {
-    engineVersion: "1.10.4",
-    engineSdkSha1: "1aafd0a262ff40214ed7f51302d92fa587c607ef",
+    engineVersion: "1.11.0",
+    engineSdkSha1: "7c81792859a6da7f7401c0ac37a4cc83bb500ff6",
     noInitialRun: true,
 
     _filesToPreload: [],
@@ -1263,20 +1267,21 @@ Module['onRuntimeInitialized'] = function() {
     Module.runApp("canvas");
 };
 
-Module["isWASMPthreadSupported"] = true 
+Module["isWASMPthreadSupported"] = false 
     && ((typeof window === 'undefined') || window.isSecureContext && window.crossOriginIsolated)
     && typeof SharedArrayBuffer !== 'undefined';
 
 Module["locateFile"] = function(path, scriptDirectory)
 {
-    // dmengine*.wasm is hardcoded in the built JS loader for WASM,
-    // we need to replace it here with the correct project name.
     if (path == "dmengine.wasm" || path == "dmengine_release.wasm" || path == "dmengine_headless.wasm") {
         if (Module['isWASMPthreadSupported']) {
-            path = "Defoldexamples_pthread.wasm";
+            path = EngineLoader.wasm_pthread_file;
         } else {
-            path = "Defoldexamples.wasm";
+            path = EngineLoader.wasm_file;
         }
+    }
+    if (path[0] === '/' || path.startsWith('http')) {
+        return path;
     }
     return scriptDirectory + path;
 };

@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: This example shows how to change the prototype game object used by a factory component.
 category: factory
 layout: example
+opengraph_image: https://www.defold.com/examples/factory/dynamic/bullets_collection.png
 path: factory/dynamic
 scripts: dynamic.script
 tags: factory
+thumbnail: bullets_collection.png
 title: Dynamic factories
+twitter_image: https://www.defold.com/examples/factory/dynamic/bullets_collection.png
 
 ---
 

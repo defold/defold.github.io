@@ -3,10 +3,13 @@ author: Pawel Jarosz
 brief: This example shows a simple particle effect for imitating fire and smoke.
 category: particles
 layout: example
+opengraph_image: https://www.defold.com/examples/particles/fire_and_smoke/fire.png
 path: particles/fire_and_smoke
 scripts: fire_and_smoke.script
 tags: particles
+thumbnail: fire.png
 title: Particle effect example - fire and smoke
+twitter_image: https://www.defold.com/examples/particles/fire_and_smoke/fire.png
 
 ---
 

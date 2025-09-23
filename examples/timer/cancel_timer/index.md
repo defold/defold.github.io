@@ -3,10 +3,13 @@ author: Pawel Jarosz
 brief: This example shows how to create timer and cancel it anytime, using built-in timer API.
 category: timer
 layout: example
+opengraph_image: https://www.defold.com/examples/timer/cancel_timer/cancel_timer.png
 path: timer/cancel_timer
 scripts: cancel_timer.gui_script
 tags: timer
+thumbnail: cancel_timer.png
 title: Cancel timer example
+twitter_image: https://www.defold.com/examples/timer/cancel_timer/cancel_timer.png
 
 ---
 

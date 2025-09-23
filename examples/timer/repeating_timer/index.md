@@ -3,10 +3,13 @@ author: Pawel Jarosz
 brief: This example shows how to create timer that repeats endlessly every second
 category: timer
 layout: example
+opengraph_image: https://www.defold.com/examples/timer/repeating_timer/repeating_timer.png
 path: timer/repeating_timer
 scripts: repeating_timer.gui_script
 tags: timer
+thumbnail: repeating_timer.png
 title: Repeating timer example
+twitter_image: https://www.defold.com/examples/timer/repeating_timer/repeating_timer.png
 
 ---
 

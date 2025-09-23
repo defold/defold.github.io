@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: This example shows how to dynamically spawn game objects with a factory component.
 category: factory
 layout: example
+opengraph_image: https://www.defold.com/examples/factory/basic/basic.png
 path: factory/basic
 scripts: bunny.script,debris.script
 tags: factory
+thumbnail: basic.png
 title: Spawn game object
+twitter_image: https://www.defold.com/examples/factory/basic/basic.png
 
 ---
 

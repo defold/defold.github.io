@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: This example shows how to detect collisions on tilemaps
 category: tilemap
 layout: example
+opengraph_image: https://www.defold.com/examples/tilemap/collisions/tilesource.png
 path: tilemap/collisions
 scripts: collisions.script
 tags: tilemap
+thumbnail: tilesource.png
 title: Tilemap collisions
+twitter_image: https://www.defold.com/examples/tilemap/collisions/tilesource.png
 
 ---
 

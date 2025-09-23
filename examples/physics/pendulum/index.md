@@ -3,10 +3,13 @@ author: Pawel Jarosz
 brief: This example shows a simple setup with a static pivot and two dynamic weights - physics objects joined together with a joint of type "fixed" and "spring". The fixed joint can simulate a rope and spring joint a spring. The example shows how to create the joints and change the gravity to affect the pendulums.
 category: physics
 layout: example
+opengraph_image: https://www.defold.com/examples/physics/pendulum/pendulum.png
 path: physics/pendulum
 scripts: pendulum.script
 tags: physics
+thumbnail: pendulum.png
 title: Pendulum physics
+twitter_image: https://www.defold.com/examples/physics/pendulum/pendulum.png
 
 ---
 
