@@ -1,17 +1,17 @@
 ---
-brief: 本教程已过时
+brief: 本文档已被替换
 github: https://github.com/defold/doc
 language: zh
 layout: manual
-title: 废弃的 3D 模型教程
+title: 废弃3D模型文档
 toc:
 - 模型
 ---
 
 # 模型
 
-详情请见:
+本文档已被以下手册替代：
 
-* [3D 图像概览](/zh/manuals/3dgraphics)
-* [3D 模型组件教程](/zh/manuals/model)
-* [动画教程](/zh/manuals/animation)
+* [3D 图形概览](/zh/manuals/3dgraphics)
+* [3D 模型组件手册](/zh/manuals/model)
+* [3D 模型动画手册](/zh/manuals/model-animation)

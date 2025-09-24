@@ -1,10 +1,10 @@
 ---
-brief: 本教程介绍了如何在 Defold 游戏中设置和整合 Facebook 功能.
+brief: Defold 中的 Facebook.
 github: https://github.com/defold/doc
 language: zh
 layout: manual
-title: Defold Facebook 教程
+title: Defold 中的 Facebook
 toc: []
 ---
 
-本教程已移至 [这里](/extension-facebook)
+[本手册已移至](/extension-facebook)
