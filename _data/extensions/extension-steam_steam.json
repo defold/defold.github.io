@@ -1060,6 +1060,153 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Adds a string comparison filter to the next RequestLobbyList call.",
+            "examples": "",
+            "name": "steam.matchmaking_add_request_lobby_list_string_filter",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "cmp",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Adds a numerical comparison filter to the next RequestLobbyList call.",
+            "examples": "",
+            "name": "steam.matchmaking_add_request_lobby_list_numerical_filter",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "cmp",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sorts the results closest to the specified value.",
+            "examples": "",
+            "name": "steam.matchmaking_add_request_lobby_list_near_value_filter",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Filters to only return lobbies with the specified number of open slots Available.",
+            "examples": "",
+            "name": "steam.matchmaking_add_request_lobby_list_filter_slots_available",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "slots",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets the physical distance for which we should search for lobbies, this is Based on the users IP address and a IP location map on the Steam backed.",
+            "examples": "",
+            "name": "steam.matchmaking_add_request_lobby_list_distance_filter",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "dist",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets the maximum number of lobbies to return. The lower the count the faster It is to download the lobby results & details to the client.",
+            "examples": "",
+            "name": "steam.matchmaking_add_request_lobby_list_result_count_filter",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "max_count",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Unused - Checks the player compatibility based on the frenemy system.",
+            "examples": "",
+            "name": "steam.matchmaking_add_request_lobby_list_compatible_members_filter",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "steam_id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Get a filtered list of relevant lobbies. Will return results as a LobbyMatchList_t event",
             "examples": "",
             "name": "steam.matchmaking_request_lobby_list",
@@ -1175,6 +1322,129 @@
                 {
                     "doc": "Of owner",
                     "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Changes who the lobby owner is. This can only be set by the owner of the lobby. This will trigger a LobbyDataUpdate_t for all of the users in the lobby, each user should update their local state to reflect the new owner. This is typically accomplished by displaying a crown icon next to the owners name.",
+            "examples": "",
+            "name": "steam.matchmaking_set_lobby_owner",
+            "parameters": [
+                {
+                    "doc": "The Steam ID of the lobby to get the owner of.",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The new owner",
+                    "name": "new_owner",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Updates what type of lobby this is. This is also set when you create the lobby with CreateLobby. This can only be set by the owner of the lobby.",
+            "examples": "",
+            "name": "steam.matchmaking_set_lobby_type",
+            "parameters": [
+                {
+                    "doc": "The Steam ID of the lobby",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The lobby type",
+                    "name": "type",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets whether or not a lobby is joinable by other players. This always defaults to enabled for a new lobby. If joining is disabled, then no players can join, even if they are a friend or have been invited. Lobbies with joining disabled will not be returned from a lobby search.",
+            "examples": "",
+            "name": "steam.matchmaking_set_lobby_joinable",
+            "parameters": [
+                {
+                    "doc": "The Steam ID of the lobby",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Enable or disable allowing users to join this lobby?",
+                    "name": "joinable",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set the maximum number of players that can join the lobby. This is also set when you create the lobby with CreateLobby. This can only be set by the owner of the lobby. can not be above 250.",
+            "examples": "",
+            "name": "steam.matchmaking_set_lobby_member_limit",
+            "parameters": [
+                {
+                    "doc": "The Steam ID of the lobby to set the member limit for.",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The maximum number of players allowed in this lobby. This",
+                    "name": "max_members",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "The current limit on the",
+            "examples": "",
+            "name": "steam.matchmaking_get_lobby_member_limit",
+            "parameters": [
+                {
+                    "doc": "The Steam ID of the lobby to get the member limit of.",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "number"
                 }
             ],
             "type": "FUNCTION"
