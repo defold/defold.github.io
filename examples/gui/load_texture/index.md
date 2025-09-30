@@ -3,10 +3,13 @@ author: AGulev
 brief: This example shows how to load and set a dynamic texture on a gui box node.
 category: gui
 layout: example
+opengraph_image: https://www.defold.com/examples/gui/load_texture/load_texture.png
 path: gui/load_texture
 scripts: load_texture.gui_script
 tags: gui
+thumbnail: load_texture.png
 title: Load texture
+twitter_image: https://www.defold.com/examples/gui/load_texture/load_texture.png
 
 ---
 

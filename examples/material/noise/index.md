@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: This example shows how to use a noise function to generate clouds, smoke or similar effect using a shader.
 category: material
 layout: example
+opengraph_image: https://www.defold.com/examples/material/noise/stretched-mesh.png
 path: material/noise
 scripts: noise.script, noise.fp
 tags: material
+thumbnail: stretched-mesh.png
 title: Noise shader
+twitter_image: https://www.defold.com/examples/material/noise/stretched-mesh.png
 
 ---
 

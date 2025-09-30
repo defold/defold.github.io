@@ -57,6 +57,73 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Creates and inserts a resource into the factory",
+            "description": "Creates and inserts a resource into the factory",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "CreateResource",
+            "notes": [
+                "The input data pointer is not stored",
+                "The reference count is 1, so make sure it's destruction is handled"
+            ],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Resource data",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Resource data size",
+                    "is_optional": "False",
+                    "name": "data_size",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "(out) Created resource",
+                    "is_optional": "False",
+                    "name": "resource",
+                    "types": [
+                        "void**"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Decrypts a file",
             "description": "Decrypts a file",
             "error": "",
@@ -125,7 +192,7 @@
                     ]
                 },
                 {
-                    "doc": "Created resource",
+                    "doc": "(out) Created resource",
                     "is_optional": "False",
                     "name": "resource",
                     "types": [
@@ -173,7 +240,7 @@
                     ]
                 },
                 {
-                    "doc": "Created resource",
+                    "doc": "(out) Created resource",
                     "is_optional": "False",
                     "name": "resource",
                     "types": [
@@ -188,6 +255,54 @@
                     "name": "result",
                     "types": [
                         "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets the normalized resource path: \"/my//icon.text...",
+            "description": "Gets the normalized resource path: \"/my//icon.texturec\" -&gt; \"/my/icon.texturec\". \"my/icon.texturec\" -&gt; \"/my/icon.texturec\".",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetCanonicalPath",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the relative dir of the resource",
+                    "is_optional": "False",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "(out) the output of the normalization",
+                    "is_optional": "False",
+                    "name": "buf",
+                    "types": [
+                        "char*"
+                    ]
+                },
+                {
+                    "doc": "the size of the output buffer",
+                    "is_optional": "False",
+                    "name": "buf_len",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the length of the output string",
+                    "name": "length",
+                    "types": [
+                        "uint32_t"
                     ]
                 }
             ],
@@ -236,6 +351,102 @@
                     "name": "RESULT_OK",
                     "types": [
                         ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get type from extension",
+            "description": "Get type from extension",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetTypeFromExtension",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "File extension, without leading \".\" character. E.g. \"ttf\"",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "returned type is successful",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HResourceType*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "dmResult::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get type from extension hash",
+            "description": "Get type from extension hash",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetTypeFromExtensionHash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "Hash of file extension, without leading \".\" character. E.g. hash(\"ttf\")",
+                    "is_optional": "False",
+                    "name": "extension_hash",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "returned type is successful",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HResourceType*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "dmResult::Result"
                     ]
                 }
             ],

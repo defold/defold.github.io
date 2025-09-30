@@ -3,10 +3,13 @@ author: Defold
 brief: This example shows how to change which sound a sound component plays
 category: sound
 layout: example
+opengraph_image: https://www.defold.com/examples/sound/get_set_sound/game_project.png
 path: sound/get_set_sound
 scripts: get_set_sound.script
 tags: sound,resource
+thumbnail: game_project.png
 title: Get and set sound
+twitter_image: https://www.defold.com/examples/sound/get_set_sound/game_project.png
 
 ---
 

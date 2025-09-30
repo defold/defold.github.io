@@ -3,10 +3,13 @@ author: FlexYourBrain
 brief: This example demonstrates how to pan a sound effect according to a GO's(game object) position on the screen.
 category: sound
 layout: example
+opengraph_image: https://www.defold.com/examples/sound/panning/panning.png
 path: sound/panning
 scripts: pan.script
 tags: sound
+thumbnail: panning.png
 title: Panning
+twitter_image: https://www.defold.com/examples/sound/panning/panning.png
 
 ---
 

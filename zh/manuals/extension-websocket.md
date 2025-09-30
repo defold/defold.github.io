@@ -1,5 +1,5 @@
 ---
-brief: 本教程介绍了 websocket 连接的使用方法.
+brief: 本手册介绍了 WebSocket 连接的使用方法。
 github: https://github.com/defold/doc
 language: zh
 layout: manual
@@ -10,4 +10,4 @@ toc:
 
 ## WebSocket 连接
 
-Defold 没有内置 WebSocket 连接功能. 建议使用 [Defold-WebSocket 扩展程序](https://github.com/britzl/defold-websocket) 实现该功能.
+Defold 没有内置 WebSocket 连接功能。建议使用 [Defold-WebSocket 扩展程序](https://github.com/britzl/defold-websocket) 实现该功能。

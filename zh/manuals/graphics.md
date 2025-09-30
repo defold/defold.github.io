@@ -1,14 +1,14 @@
 ---
-brief: 本教程简述了 Defold 支持的图像组件.
+brief: 本手册概述了Defold对图形元素的支持.
 github: https://github.com/defold/doc
 language: zh
 layout: manual
-title: Defold 图像教程
+title: Defold 图形手册
 toc: []
 ---
 
-该教程已废弃!
+已弃用的手册！
 
-* 参见 [如何导入和使用 2D 图片](/zh/manuals/importing-graphics)
-* 参见 [贴图滤镜](/zh/manuals/texture-filtering)
-* 参见 [材质](/zh/manuals/material)
+* 阅读更多关于[如何导入和使用2D图形](/zh/manuals/importing-graphics)的信息
+* 阅读更多关于[纹理过滤](/zh/manuals/texture-filtering)的信息
+* 阅读更多关于[材质](/zh/manuals/material)的信息

@@ -3,10 +3,13 @@ author: AGulev
 brief: A GUI box node with an image texture and a script that react when pointer over this node.
 category: gui
 layout: example
+opengraph_image: https://www.defold.com/examples/gui/pointer_over/button.jpg
 path: gui/pointer_over
 scripts: pointer_over.gui_script
 tags: gui
+thumbnail: button.jpg
 title: Pointer over
+twitter_image: https://www.defold.com/examples/gui/pointer_over/button.jpg
 
 ---
 

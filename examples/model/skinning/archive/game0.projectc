@@ -1,11 +1,13 @@
+[]
+
 [project]
 title = Defold-examples
 version = 1.0
+publisher = 
+developer = 
 write_log = 0
 minimum_log_level = 1
 compress_archive = 1
-publisher = unnamed
-developer = unnamed
 title_as_file_name = Defoldexamples
 
 [display]
@@ -14,11 +16,12 @@ height = 720
 high_dpi = 0
 samples = 0
 fullscreen = 0
+display_profiles = /builtins/render/default.display_profilesc
+dynamic_orientation = 0
 update_frequency = 0
 swap_interval = 1
 vsync = 1
-display_profiles = /builtins/render/default.display_profilesc
-dynamic_orientation = 0
+variable_dt = 0
 display_device_info = 0
 
 [render]
@@ -28,18 +31,18 @@ clear_color_blue = 0.517
 clear_color_alpha = 1
 
 [physics]
-type = 2D
 max_collision_object_count = 128
+type = 2D
 use_fixed_timestep = 0
-gravity_y = -10
 debug = 0
 debug_alpha = 0.9
+debug_scale = 30
 world_count = 4
 gravity_x = 0
+gravity_y = -10
 gravity_z = 0
 scale = 1
 allow_dynamic_transforms = 1
-debug_scale = 30
 max_collisions = 64
 max_contacts = 128
 contact_impulse_limit = 0
@@ -49,9 +52,15 @@ trigger_overlap_capacity = 16
 velocity_threshold = 1
 max_fixed_timesteps = 2
 
+[box2d]
+velocity_iterations = 10
+position_iterations = 10
+sub_step_count = 4
+
 [bootstrap]
 main_collection = /main/instancing.collectionc
 render = /builtins/render/default.renderc
+debug_init_script = 
 
 [graphics]
 default_texture_min_filter = linear
@@ -110,9 +119,9 @@ max_count = 128
 
 [gui]
 max_count = 64
-max_particlefx_count = 64
-max_particle_count = 1024
 max_animation_count = 1024
+max_particle_count = 1024
+max_particlefx_count = 64
 
 [collection]
 max_instances = 32765
@@ -134,6 +143,7 @@ bundle_identifier = example.unnamed
 bundle_name = 
 infoplist = /builtins/manifests/ios/Info.plist
 privacymanifest = /builtins/manifests/ios/PrivacyInfo.xcprivacy
+entitlements = 
 default_language = en
 localizations = en
 
@@ -143,6 +153,7 @@ minimum_sdk_version = 19
 target_sdk_version = 35
 package = com.example.todo
 gcm_sender_id = 
+fcm_application_id = 
 manifest = /builtins/manifests/android/AndroidManifest.xml
 iap_provider = GooglePlay
 input_method = HiddenInputField
@@ -153,17 +164,15 @@ proguard =
 extract_native_libs = 0
 
 [osx]
-app_icon = 
-infoplist = /builtins/manifests/osx/Info.plist
-privacymanifest = /builtins/manifests/osx/PrivacyInfo.xcprivacy
 bundle_identifier = example.unnamed
 bundle_name = 
 bundle_version = 1
+infoplist = /builtins/manifests/osx/Info.plist
+privacymanifest = /builtins/manifests/osx/PrivacyInfo.xcprivacy
 default_language = en
 localizations = en
 
 [windows]
-app_icon = 
 
 [html5]
 custom_heap_size = 0
@@ -181,9 +190,10 @@ scale_mode = fit
 transparent_graphics_context = 0
 
 [particle_fx]
+max_particle_count = 1024
+max_particle_buffer_count = 1024
 max_count = 64
 max_emitter_count = 64
-max_particle_count = 1024
 
 [network]
 http_timeout = 0
@@ -203,13 +213,13 @@ subpixels = 1
 
 [profiler]
 track_cpu = 0
-enabled = true
+enabled = 1
 sleep_between_server_updates = 0
 performance_timeline_enabled = 0
 
 [liveupdate]
-settings = /liveupdate.settings
 enabled = 1
+settings = /liveupdate.settings
 mount_on_start = 1
 
 [tilemap]
@@ -222,4 +232,6 @@ fixed_update_frequency = 60
 max_time_step = 0.033333
 
 [font]
+
+[native_extension]
 

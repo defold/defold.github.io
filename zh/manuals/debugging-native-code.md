@@ -1,5 +1,5 @@
 ---
-brief: 本教程介绍了在 Defold 中调试原生代码的方法.
+brief: 本手册解释了如何在 Defold 中调试原生代码。
 github: https://github.com/defold/doc
 language: zh
 layout: manual
@@ -7,30 +7,30 @@ title: Defold 中的原生代码调试
 toc:
 - 原生代码调试
 - 使用调试器
-- 使用 print 函数
-- 崩溃日志分析
-- 从设备上获取崩溃日志
-- 调用堆栈代码文件映射
-- 把 symbols 上传到 Google Play
-- Android调用堆栈映射
-- iOS 调用堆栈映射
+- 使用打印调试
+- 分析崩溃日志
+- 从设备获取崩溃日志
+- 符号化调用堆栈
+- 将符号上传到 Google Play
+- 符号化 Android 调用堆栈
+- 符号化 iOS 调用堆栈
 ---
 
 # 原生代码调试
 
-Defold 几经测试鲜有崩溃情况出现. 但是崩溃这种事谁能保证永远避免, 尤其是游戏中还使用了原生扩展代码的情况下. 要是游戏崩溃或者原生代码出错请从下面几方面入手检查:
+Defold 经过充分测试，在正常情况下应该很少崩溃。然而，无法保证它永远不会崩溃，特别是当您的游戏使用原生扩展时。如果您遇到崩溃或原生代码行为不符合预期的问题，有几种不同的解决方法：
 
-* 使用调试器调试代码
-* 使用 print 函数检查代码
+* 使用调试器逐步执行代码
+* 使用打印调试
 * 分析崩溃日志
-* 调用堆栈代码文件映射
+* 符号化调用堆栈
 
 
 ## 使用调试器
 
-首先推荐使用 `调试器`. 使用它步进代码, 设置 `断点` 最重要的是游戏崩溃时会自动暂停.
+最常见的方法是通过 `调试器` 运行代码。它允许您逐步执行代码，设置 `断点`，如果发生崩溃，它将停止执行。
 
-不同平台调试器有很多.
+每个平台都有几种调试器。
 
 * Visual studio - Windows
 * VSCode - Windows, macOS, Linux
@@ -40,39 +40,39 @@ Defold 几经测试鲜有崩溃情况出现. 但是崩溃这种事谁能保证�
 * lldb / gdb - macOS, Linux, (Windows)
 * ios-deploy - macOS
 
-每个工具可以调试的应用如下:
+每个工具可以调试特定平台：
 
-* Visual studio - Windows + platforms supporting gdbserver (比如 Linux/Android)
-* VSCode - Windows, macOS (lldb), Linux (lldb/gdb) + platforms supporting gdbserver
-* Xcode -  macOS, iOS ([详见](/zh/manuals/debugging-native-code-ios))
-* Android Studio - Android ([详见](/zh/manuals/debugging-native-code-android))
+* Visual studio - Windows + 支持 gdbserver 的平台（例如 Linux/Android）
+* VSCode - Windows, macOS (lldb), Linux (lldb/gdb) + 支持 gdbserver 的平台
+* Xcode -  macOS, iOS ([了解更多](/zh/manuals/debugging-native-code-ios))
+* Android Studio - Android ([了解更多](/zh/manuals/debugging-native-code-android))
 * WinDBG - Windows
 * lldb/gdb - macOS, Linux, (iOS)
-* ios-deploy - iOS (via lldb)
+* ios-deploy - iOS (通过 lldb)
 
 
-## 使用 print 函数
+## 使用打印调试
 
-调试最简单的方法就是使用 [print 函数](http://en.wikipedia.org/wiki/Debugging#Techniques). 位于 [dmLog 命名空间](/ref/stable/dmLog/) 下的 print 函数可以用来检查变量值或者用来检查程序执行流程. 它可以在 *控制台* 视图和 [游戏日志](/zh/manuals/debugging-game-and-system-logs) 中输出数据.
+调试原生代码的最简单方法是使用 [打印调试](http://en.wikipedia.org/wiki/Debugging#Techniques)。使用 [`dmLog` 命名空间](/ref/stable/dmLog/) 中的函数来观察变量或指示执行流程。使用任何日志函数都会在编辑器的 *控制台* 视图和 [游戏日志](/zh/manuals/debugging-game-and-system-logs) 中打印输出。
 
 
-## 崩溃日志分析
+## 分析崩溃日志
 
-崩溃时, Defold 引擎保存了一个 `_crash` 日志文件. 其中包含了系统信息与崩溃信息. 其存放位置参考 [游戏日志输出](/zh/manuals/debugging-game-and-system-logs) (不同设备, 系统, 位置不同).
+如果 Defold 引擎发生硬崩溃，它会保存一个 `_crash` 文件。崩溃文件将包含有关系统以及崩溃的信息。[游戏日志输出](/zh/manuals/debugging-game-and-system-logs) 将写入崩溃文件所在的位置（它根据操作系统、设备和应用程序而变化）。
 
-可以使用 [崩溃模块](https://www.defold.com/ref/crash/) 帮助分析这个文件. 推荐你阅读, 收集信息, 打印信息到控制台, 然后把信息发送到 [第三方分析服务](/tags/stars/analytics/) 上去.
+您可以使用 [崩溃模块](https://www.defold.com/ref/crash/) 在后续会话中读取此文件。建议您读取文件，收集信息，将其打印到控制台，然后将其发送到支持收集崩溃日志的 [分析服务](/tags/stars/analytics/)。
 
 <div class='important' markdown='1'>
-在 Windows 上还有个 `_crash.dmp` 文件被创建. 这个文件在调试崩溃时很有用.
+在 Windows 上，还会生成一个 `_crash.dmp` 文件。此文件在调试崩溃时很有用。
 </div>
 
-### 从设备上获取崩溃日志
+### 从设备获取崩溃日志
 
-手机上的崩溃日志可以下载到本地以便查看.
+如果崩溃发生在移动设备上，您可以选择将崩溃文件下载到您自己的计算机并在本地解析它。
 
 #### Android
 
-如果应用是 [可调式的](/zh/manuals/project-settings/#Android), 就可以使用 [Android Debug Bridge (ADB) 工具](https://developer.android.com/studio/command-line/adb.html) 和 `adb shell` 命令得到崩溃日志:
+如果应用是 [可调试的](/zh/manuals/project-settings/#android)，您可以使用 [Android Debug Bridge (ADB) 工具](https://developer.android.com/studio/command-line/adb.html) 和 `adb shell` 命令获取崩溃日志：
 
 ```
 $ adb shell "run-as com.defold.example sh -c 'cat /data/data/com.defold.example/files/_crash'" > ./_crash
@@ -80,80 +80,96 @@ $ adb shell "run-as com.defold.example sh -c 'cat /data/data/com.defold.example/
 
 #### iOS
 
-在 iTunes 里, 可以下载 app 容器.
+在 iTunes 中，您可以查看/下载应用程序容器。
 
-在 `Xcode -> Devices` 窗口中也能获取到崩溃日志.
+在 `Xcode -> Devices` 窗口中，您也可以选择崩溃日志。
 
 
-## 调用堆栈代码文件映射
+## 符号化调用堆栈
 
-从 `_crash` 文件或者 [日志文件](/zh/manuals/debugging-game-and-system-logs), 都可以进行代码文件映射. 即把调用堆栈里的每个地址映射到文件名和代码行, 利于寻找代码的问题.
+如果您从 `_crash` 文件或 [日志文件](/zh/manuals/debugging-game-and-system-logs) 获取调用堆栈，您可以对其进行符号化。这意味着将调用堆栈中的每个地址转换为文件名和行号，这反过来有助于找出根本原因。
 
-注意引擎版本要选择正确. 不然映射会错乱. 使用 [bob](https://www.defold.com/zh/manuals/bob/) 编译时命令行加入 [--with-symbols](https://www.defold.com/zh/manuals/bob/) 或者在编辑器打包对话框里点选 "Generate debug symbols":
+重要的是，您必须将正确的引擎与调用堆栈匹配，否则很可能会让您调试错误的内容！使用 [`--with-symbols`](https://www.defold.com/zh/manuals/bob/) 标志与 [bob](https://www.defold.com/zh/manuals/bob/) 捆绑，或者从编辑器的捆绑对话框中选中 "Generate debug symbols" 复选框：
 
-* iOS - 在 `build/arm64-ios` 下的 `dmengine.dSYM.zip` 中包含有 iOS 编译用 debug symbols.
-* macOS - 在 `build/x86_64-macos` 下的 `dmengine.dSYM.zip` 中包含有 macOS 编译用 debug symbols.
-* Android - 在打包输出目录 `projecttitle.apk.symbols/lib/` 下包含有各架构编译用 debug symbols.
-* Linux - 可执行文件本身包含 debug symbols.
-* Windows - 在 `build/x86_64-win32` 下的 `dmengine.pdb` 中包含有 Windows 编译用 debug symbols.
-* HTML5 - 在 `build/js-web` 或 `build/wasm-web` 下的 `dmengine.js.symbols` 中包含有 HTML5 编译用 debug symbols.
+* iOS - `build/arm64-ios` 中的 `dmengine.dSYM.zip` 文件夹包含 iOS 构建的调试符号。
+* macOS - `build/x86_64-macos` 中的 `dmengine.dSYM.zip` 文件夹包含 macOS 构建的调试符号。
+* Android - `projecttitle.apk.symbols/lib/` 捆绑输出文件夹包含目标架构的调试符号。
+* Linux - 可执行文件包含调试符号。
+* Windows - `build/x86_64-win32` 中的 `dmengine.pdb` 文件包含 Windows 构建的调试符号。
+* HTML5 - `build/js-web` 或 `build/wasm-web` 中的 `dmengine.js.symbols` 文件包含 HTML5 构建的调试符号。
 
 
 <div class='important' markdown='1'>
-对于游戏的每个发布版本一定要保留一套对应的调试数据. 不然的话原生扩展上线以后出错误就没法调试! 为了方便查看调用堆栈, 也要保存好对应的游戏引擎.
+非常重要的一点是，您必须为您发布的每个公共版本保存调试符号，并且您知道调试符号属于哪个版本。如果您没有调试符号，您将无法调试任何原生崩溃！此外，您应该保留引擎的未剥离版本。这样可以最好地对调用堆栈进行符号化。
 </div>
 
 
-### 把 symbols 上传到 Google Play
-可以 [上传 debug symbols 到 Google Play](https://developer.android.com/studio/build/shrink-code#android_gradle_plugin_version_40_or_earlier_and_other_build_systems) 以便让 Google Play 上的崩溃日志显示可读的调用堆栈. 详情请见 [原生代码调试教程](/zh/manuals/debugging-native-code).
+### 将符号上传到 Google Play
+您可以 [将调试符号上传到 Google Play](https://developer.android.com/studio/build/shrink-code#android_gradle_plugin_version_40_or_earlier_and_other_build_systems)，以便在 Google Play 中记录的任何崩溃都将显示符号化的调用堆栈。将 `projecttitle.apk.symbols/lib/` 捆绑输出文件夹的内容压缩。该文件夹包含一个或多个具有架构名称的子文件夹，如 `arm64-v8a` 和 `armeabi-v7a`。
 
 
-### Android调用堆栈映射
+### 符号化 Android 调用堆栈
 
-1. 从编译文件夹下找到引擎文件
+1. 从您的构建文件夹中获取引擎
 
+```sh
 	$ ls <project>/build/<platform>/[lib]dmengine[.exe|.so]
+```
 
-1. 解压引擎:
+2. 解压到一个文件夹：
 
+```sh
 	$ unzip dmengine.apk -d dmengine_1_2_105
+```
 
-1. 找到地址
+3. 查找调用堆栈地址
 
-	例如下面这个文件
+	例如，在未符号化的调用堆栈中，它可能看起来像这样
 
 	`#00 pc 00257224 libmy_game_name.so`
 
-	其中 *00257224* 就是地址
+	其中 *`00257224`* 是地址
 
-1. 映射地址
+4. 解析地址
 
+```sh
     $ arm-linux-androideabi-addr2line -C -f -e dmengine_1_2_105/lib/armeabi-v7a/libdmengine.so _address_
+```
 
-注意: 要是从 [Android 日志](/zh/manuals/debugging-game-and-system-logs) 获取的调用堆栈数据, 可能需要使用 [ndk-stack](https://developer.android.com/ndk/guides/ndk-stack.html) 进行地址解析
+注意：如果您从 [Android 日志](/zh/manuals/debugging-game-and-system-logs) 获取堆栈跟踪，您可能可以使用 [ndk-stack](https://developer.android.com/ndk/guides/ndk-stack.html) 对其进行符号化
 
-### iOS 调用堆栈映射
+### 符号化 iOS 调用堆栈
 
-1. 如果使用了原生扩展, 服务器会为你提供映射数据 (.dSYM) 文件 (使用 bob.jar 连同 `--with-symbols` 参数)
+1. 如果您正在使用原生扩展，服务器可以为您提供符号（.dSYM）（将 `--with-symbols` 传递给 bob.jar）
 
+```sh
 	$ unzip <project>/build/arm64-darwin/build.zip
-	# 文件会被解压到 Contents/Resources/DWARF/dmengine
+	# 它将产生一个 Contents/Resources/DWARF/dmengine
+```
 
-1. 如果没用原生扩展, 直接下载映射文件:
+2. 如果您没有使用原生扩展，下载原始符号：
 
+```sh
 	$ wget http://d.defold.com/archive/<sha1>/engine/arm64-darwin/dmengine.dSYM
+```
 
-1. 地址映射
+3. 使用加载地址进行符号化
 
-	不能直接使用堆栈里的地址 (比如载入地址 0x0)
+	出于某种原因，简单地放入调用堆栈中的地址不起作用（即加载地址 0x0）
 
+```sh
 		$ atos -arch arm64 -o Contents/Resources/DWARF/dmengine 0x1492c4
+```
 
-	# 也不能作为参数加入载入地址
+	# 直接指定加载地址也不起作用
 
+```sh
 		$ atos -arch arm64 -o MyApp.dSYM/Contents/Resources/DWARF/MyApp -l0x100000000 0x1492c4
+```
 
-	二者相加才可以:
+	将加载地址添加到地址中起作用：
 
+```sh
 		$ atos -arch arm64 -o MyApp.dSYM/Contents/Resources/DWARF/MyApp 0x1001492c4
 		dmCrash::OnCrash(int) (in MyApp) (backtrace_execinfo.cpp:27)
+```

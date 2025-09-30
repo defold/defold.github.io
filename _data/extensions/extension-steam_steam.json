@@ -822,7 +822,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Friend iteration. Takes a set of EFriendFlags, and returns the number of users the client knows about who meet that criteria. Then GetFriendByIndex() can then be used to return the id&#x27;s of each of those users.",
+            "description": "Friend iteration. Takes a set of EFriendFlags, and returns the number of users the client knows about who meet that criteria. Then GetFriendByIndex() can then be used to return the id's of each of those users.",
             "examples": "",
             "name": "steam.friends_get_friend_count",
             "parameters": [
@@ -1060,6 +1060,153 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Adds a string comparison filter to the next RequestLobbyList call.",
+            "examples": "",
+            "name": "steam.matchmaking_add_request_lobby_list_string_filter",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "cmp",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Adds a numerical comparison filter to the next RequestLobbyList call.",
+            "examples": "",
+            "name": "steam.matchmaking_add_request_lobby_list_numerical_filter",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "cmp",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sorts the results closest to the specified value.",
+            "examples": "",
+            "name": "steam.matchmaking_add_request_lobby_list_near_value_filter",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Filters to only return lobbies with the specified number of open slots Available.",
+            "examples": "",
+            "name": "steam.matchmaking_add_request_lobby_list_filter_slots_available",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "slots",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets the physical distance for which we should search for lobbies, this is Based on the users IP address and a IP location map on the Steam backed.",
+            "examples": "",
+            "name": "steam.matchmaking_add_request_lobby_list_distance_filter",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "dist",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets the maximum number of lobbies to return. The lower the count the faster It is to download the lobby results & details to the client.",
+            "examples": "",
+            "name": "steam.matchmaking_add_request_lobby_list_result_count_filter",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "max_count",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Unused - Checks the player compatibility based on the frenemy system.",
+            "examples": "",
+            "name": "steam.matchmaking_add_request_lobby_list_compatible_members_filter",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "steam_id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Get a filtered list of relevant lobbies. Will return results as a LobbyMatchList_t event",
             "examples": "",
             "name": "steam.matchmaking_request_lobby_list",
@@ -1180,6 +1327,129 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Changes who the lobby owner is. This can only be set by the owner of the lobby. This will trigger a LobbyDataUpdate_t for all of the users in the lobby, each user should update their local state to reflect the new owner. This is typically accomplished by displaying a crown icon next to the owners name.",
+            "examples": "",
+            "name": "steam.matchmaking_set_lobby_owner",
+            "parameters": [
+                {
+                    "doc": "The Steam ID of the lobby to get the owner of.",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The new owner",
+                    "name": "new_owner",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Updates what type of lobby this is. This is also set when you create the lobby with CreateLobby. This can only be set by the owner of the lobby.",
+            "examples": "",
+            "name": "steam.matchmaking_set_lobby_type",
+            "parameters": [
+                {
+                    "doc": "The Steam ID of the lobby",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The lobby type",
+                    "name": "type",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets whether or not a lobby is joinable by other players. This always defaults to enabled for a new lobby. If joining is disabled, then no players can join, even if they are a friend or have been invited. Lobbies with joining disabled will not be returned from a lobby search.",
+            "examples": "",
+            "name": "steam.matchmaking_set_lobby_joinable",
+            "parameters": [
+                {
+                    "doc": "The Steam ID of the lobby",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Enable or disable allowing users to join this lobby?",
+                    "name": "joinable",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set the maximum number of players that can join the lobby. This is also set when you create the lobby with CreateLobby. This can only be set by the owner of the lobby. can not be above 250.",
+            "examples": "",
+            "name": "steam.matchmaking_set_lobby_member_limit",
+            "parameters": [
+                {
+                    "doc": "The Steam ID of the lobby to set the member limit for.",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The maximum number of players allowed in this lobby. This",
+                    "name": "max_members",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "The current limit on the",
+            "examples": "",
+            "name": "steam.matchmaking_get_lobby_member_limit",
+            "parameters": [
+                {
+                    "doc": "The Steam ID of the lobby to get the member limit of.",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Gets the number of users in a lobby. This is used for iteration, after calling this then GetLobbyMemberByIndex can be used to get the Steam ID of each person in the lobby. Persona information for other lobby members (name, avatar, etc.) is automatically received and accessible via the ISteamFriends interface. The current user must be in the lobby to retrieve the Steam IDs of other users in that lobby.",
             "examples": "",
             "name": "steam.matchmaking_get_num_lobby_members",
@@ -1224,6 +1494,251 @@
                 {
                     "doc": "Of member",
                     "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets a key/value pair in the lobby metadata",
+            "examples": "",
+            "name": "steam.matchmaking_set_lobby_data",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "data",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets per-user metadata for the local user.",
+            "examples": "",
+            "name": "steam.matchmaking_set_lobby_member_data",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "data",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get data associated with this lobby.",
+            "examples": "",
+            "name": "steam.matchmaking_get_lobby_data",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Gets per-user metadata from another player in the specified lobby.",
+            "examples": "",
+            "name": "steam.matchmaking_get_lobby_member_data",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "user_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the number of metadata keys set on the specified lobby",
+            "examples": "",
+            "name": "steam.matchmaking_get_lobby_data_count",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Of keys",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns a lobby metadata key/values pair by index",
+            "examples": "",
+            "name": "steam.matchmaking_get_lobby_data_by_index",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "index",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                },
+                {
+                    "doc": "",
+                    "name": "string"
+                },
+                {
+                    "doc": "",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Broadcasts a chat message to the all the users in the lobby",
+            "examples": "",
+            "name": "steam.matchmaking_send_lobby_chat_message",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "body",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get a chat message as specified in a LobbyChatMsg_t callback",
+            "examples": "",
+            "name": "steam.matchmaking_get_lobby_chat_entry",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "lobby_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "index",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "dat"
+                },
+                {
+                    "doc": "",
+                    "name": "typ"
                 }
             ],
             "type": "FUNCTION"
@@ -1308,7 +1823,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Close sesssion Call this when you&#x27;re done talking to a user to immediately free up resources under-the-hood",
+            "description": "Close sesssion Call this when you're done talking to a user to immediately free up resources under-the-hood",
             "examples": "",
             "name": "steam.networking_close_session_with_user",
             "parameters": [
@@ -1329,7 +1844,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Close channel Call this when you&#x27;re done talking to a user on a specific channel.",
+            "description": "Close channel Call this when you're done talking to a user on a specific channel.",
             "examples": "",
             "name": "steam.networking_close_channel_with_user",
             "parameters": [
@@ -1891,7 +2406,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Get general attributes for an achievement. Accepts the following keys * &quot;name&quot; and &quot;desc&quot; for retrieving the localized achievement name and description (returned in UTF8) * &quot;hidden&quot; for retrieving if an achievement is hidden (returns &quot;0&quot; when not hidden, &quot;1&quot; when hidden) https://partner.steamgames.com/doc/api/ISteamUserStats#GetAchievementDisplayAttribute",
+            "description": "Get general attributes for an achievement. Accepts the following keys * \"name\" and \"desc\" for retrieving the localized achievement name and description (returned in UTF8) * \"hidden\" for retrieving if an achievement is hidden (returns \"0\" when not hidden, \"1\" when hidden) https://partner.steamgames.com/doc/api/ISteamUserStats#GetAchievementDisplayAttribute",
             "examples": "",
             "name": "steam.user_stats_get_achievement_display_attribute",
             "parameters": [
@@ -1903,7 +2418,7 @@
                     ]
                 },
                 {
-                    "doc": "Either &quot;name&quot;, &quot;desc&quot; or &quot;hidden&quot;",
+                    "doc": "Either \"name\", \"desc\" or \"hidden\"",
                     "name": "key",
                     "types": [
                         "string"
@@ -1964,14 +2479,14 @@
                     ]
                 },
                 {
-                    "doc": "The sort order of the new leaderboard if it&#x27;s created.",
+                    "doc": "The sort order of the new leaderboard if it's created.",
                     "name": "eLeaderboardSortMethod",
                     "types": [
                         "ELeaderboardSortMethod"
                     ]
                 },
                 {
-                    "doc": "The display type (used by the Steam Community web site) of the new leaderboard if it&#x27;s created.",
+                    "doc": "The display type (used by the Steam Community web site) of the new leaderboard if it's created.",
                     "name": "eLeaderboardDisplayType",
                     "types": [
                         "ELeaderboardDisplayType"
@@ -2066,7 +2581,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Asks the Steam back-end for a set of rows in the leaderboard. This call is asynchronous, with the result returned in a listener callback with event set to LeaderboardScoresDownloaded_t. LeaderboardScoresDownloaded_t will contain a handle to pull the results from GetDownloadedLeaderboardEntries(). You can ask for more entries than exist, and it will return as many as do exist. * k_ELeaderboardDataRequestGlobal requests rows in the leaderboard from the full table, with nRangeStart &amp; nRangeEnd in the range [1, TotalEntries] * k_ELeaderboardDataRequestGlobalAroundUser requests rows around the current user, nRangeStart being negate e.g. DownloadLeaderboardEntries( hLeaderboard, k_ELeaderboardDataRequestGlobalAroundUser, -3, 3 ) will return 7 rows, 3 before the user, 3 after * k_ELeaderboardDataRequestFriends requests all the rows for friends of the current user https://partner.steamgames.com/doc/api/ISteamUserStats#DownloadLeaderboardEntries",
+            "description": "Asks the Steam back-end for a set of rows in the leaderboard. This call is asynchronous, with the result returned in a listener callback with event set to LeaderboardScoresDownloaded_t. LeaderboardScoresDownloaded_t will contain a handle to pull the results from GetDownloadedLeaderboardEntries(). You can ask for more entries than exist, and it will return as many as do exist. * k_ELeaderboardDataRequestGlobal requests rows in the leaderboard from the full table, with nRangeStart & nRangeEnd in the range [1, TotalEntries] * k_ELeaderboardDataRequestGlobalAroundUser requests rows around the current user, nRangeStart being negate e.g. DownloadLeaderboardEntries( hLeaderboard, k_ELeaderboardDataRequestGlobalAroundUser, -3, 3 ) will return 7 rows, 3 before the user, 3 after * k_ELeaderboardDataRequestFriends requests all the rows for friends of the current user https://partner.steamgames.com/doc/api/ISteamUserStats#DownloadLeaderboardEntries",
             "examples": "",
             "name": "steam.user_stats_download_leaderboard_entries",
             "parameters": [

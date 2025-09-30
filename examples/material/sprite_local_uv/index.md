@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: This example shows how to get local UV coordinates of a sprite regardless of sprite size
 category: material
 layout: example
+opengraph_image: https://www.defold.com/examples/material/sprite_local_uv/example.png
 path: material/sprite_local_uv
 scripts: sprite_local_uv.script, sprite_local_uv.vp, sprite_local_uv.fp
 tags: sprite
+thumbnail: example.png
 title: Sprite local UV
+twitter_image: https://www.defold.com/examples/material/sprite_local_uv/example.png
 
 ---
 

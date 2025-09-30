@@ -331,7 +331,7 @@
                     ]
                 },
                 {
-                    "doc": "optional table with properties:\n<dl>\n<dt><code>frustum</code></dt>\n<dd><span class=\"type\">matrix4</span> A frustum matrix used to cull renderable items. (E.g. <code>local frustum = proj * view</code>). default=nil</dd>\n<dt><code>frustum_planes</code></dt>\n<dd><span class=\"type\">int</span> Determines which sides of the frustum will be used. Default is render.FRUSTUM_PLANES_SIDES.</dd>\n</dl>\n<ul>\n<li>render.FRUSTUM_PLANES_SIDES : The left, right, top and bottom sides of the frustum.</li>\n<li>render.FRUSTUM_PLANES_ALL : All 6 sides of the frustum.</li>\n</ul>\n<dl>\n<dt><code>constants</code></dt>\n<dd><span class=\"type\">constant_buffer</span> optional constants to use while rendering</dd>\n</dl>",
+                    "doc": "optional table with properties:\n<dl>\n<dt><code>frustum</code></dt>\n<dd><span class=\"type\">matrix4</span> A frustum matrix used to cull renderable items. (E.g. <code>local frustum = proj * view</code>). default=nil</dd>\n<dt><code>frustum_planes</code></dt>\n<dd><span class=\"type\">int</span> Determines which sides of the frustum will be used. Default is render.FRUSTUM_PLANES_SIDES.</dd>\n</dl>\n<ul>\n<li>render.FRUSTUM_PLANES_SIDES : The left, right, top and bottom sides of the frustum.</li>\n<li>render.FRUSTUM_PLANES_ALL : All 6 sides of the frustum.</li>\n</ul>\n<dl>\n<dt><code>constants</code></dt>\n<dd><span class=\"type\">constant_buffer</span> optional constants to use while rendering</dd>\n<dt><code>sort_order</code></dt>\n<dd><span class=\"type\">int</span> How to sort draw order for world-ordered entries. Default uses the renderer's preferred world sorting (back-to-front).</dd>\n</dl>",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
@@ -1305,6 +1305,51 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Depth sort far-to-near (default; good for transpar...",
+            "description": "Depth sort far-to-near (default; good for transparent passes).",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "render.SORT_BACK_TO_FRONT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Depth sort near-to-far (good for opaque passes to ...",
+            "description": "Depth sort near-to-far (good for opaque passes to reduce overdraw).",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "render.SORT_FRONT_TO_BACK",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "No per-call sorting; draw entries in insertion ord...",
+            "description": "No per-call sorting; draw entries in insertion order.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "render.SORT_NONE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
         },
         {
             "brief": "Render target",

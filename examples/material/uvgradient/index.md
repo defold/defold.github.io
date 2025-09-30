@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: This example shows how to apply a basic shader to a full screen quad.
 category: material
 layout: example
+opengraph_image: https://www.defold.com/examples/material/uvgradient/stretched-mesh.png
 path: material/uvgradient
 scripts: uvgradient.fp
 tags: material
+thumbnail: stretched-mesh.png
 title: UV Gradient
+twitter_image: https://www.defold.com/examples/material/uvgradient/stretched-mesh.png
 
 ---
 

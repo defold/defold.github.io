@@ -1,13 +1,13 @@
 ---
-brief: 本教程已过时
+brief: 本手册已过时
 github: https://github.com/defold/doc
 language: zh
 layout: manual
-title: Defold 2D 图像教程
+title: Defold 2D 图形手册
 toc:
-- 2D Graphics
+- 2D 图形
 ---
 
-# 2D Graphics
+# 2D 图形
 
-详见 [图像教程](/zh/manuals/graphics).
+本手册已被 [图形概览手册](/zh/manuals/graphics) 取代。

@@ -243,6 +243,40 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "get orthographic zoom mode",
+            "description": "get orthographic zoom mode",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "camera.get_orthographic_mode",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "camera id",
+                    "is_optional": "False",
+                    "name": "camera",
+                    "types": [
+                        "url",
+                        "number",
+                        "nil"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "one of camera.ORTHO_MODE_FIXED, camera.ORTHO_MODE_AUTO_FIT or\ncamera.ORTHO_MODE_AUTO_COVER",
+                    "name": "mode",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "get orthographic zoom",
             "description": "get orthographic zoom",
             "error": "",
@@ -343,6 +377,51 @@
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "auto-cover orthographic zoom mode",
+            "description": "Computes zoom so the original display area covers the entire window while preserving aspect ratio.\nEquivalent to using max(window_width/width, window_height/height).",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "camera.ORTHO_MODE_AUTO_COVER",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "auto-fit orthographic zoom mode",
+            "description": "Computes zoom so the original display area (game.project width/height) fits inside the window\nwhile preserving aspect ratio. Equivalent to using min(window_width/width, window_height/height).",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "camera.ORTHO_MODE_AUTO_FIT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "fixed orthographic zoom mode",
+            "description": "Uses the manually set orthographic zoom value (camera.set_orthographic_zoom).",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "camera.ORTHO_MODE_FIXED",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
         },
         {
             "brief": "set aspect ratio",
@@ -504,6 +583,40 @@
                     "doc": "the near z.",
                     "is_optional": "False",
                     "name": "near_z",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set orthographic zoom mode",
+            "description": "set orthographic zoom mode",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "camera.set_orthographic_mode",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "camera id",
+                    "is_optional": "False",
+                    "name": "camera",
+                    "types": [
+                        "url",
+                        "number",
+                        "nil"
+                    ]
+                },
+                {
+                    "doc": "camera.ORTHO_MODE_FIXED, camera.ORTHO_MODE_AUTO_FIT or camera.ORTHO_MODE_AUTO_COVER",
+                    "is_optional": "False",
+                    "name": "mode",
                     "types": [
                         "number"
                     ]
@@ -677,6 +790,14 @@
                     "doc": "zoom level when the camera is using an orthographic projection",
                     "is_optional": "False",
                     "name": "orthographic_zoom",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "orthographic zoom behavior when orthographic_projection is enabled",
+                    "is_optional": "False",
+                    "name": "orthographic_mode",
                     "types": [
                         "number"
                     ]

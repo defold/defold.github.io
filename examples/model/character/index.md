@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: This example shows how to view and play skeletal animations on a glTF model.
 category: model
 layout: example
+opengraph_image: https://www.defold.com/examples/model/character/character.png
 path: model/character
 scripts: player.script
 tags: model
+thumbnail: character.png
 title: Character
+twitter_image: https://www.defold.com/examples/model/character/character.png
 
 ---
 

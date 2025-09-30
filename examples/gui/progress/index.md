@@ -3,10 +3,13 @@ author: Defold Foundation
 brief: This example shows how to create various types of progress indicators
 category: gui
 layout: example
+opengraph_image: https://www.defold.com/examples/gui/progress/progress.png
 path: gui/progress
 scripts: progress.gui_script
 tags: gui
+thumbnail: progress.png
 title: GUI progress indicators
+twitter_image: https://www.defold.com/examples/gui/progress/progress.png
 
 ---
 
