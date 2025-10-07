@@ -1,8 +1,64 @@
 {
     "elements": [
         {
-            "brief": "Adds a stream to a stream declaration",
-            "description": "Adds a stream to a stream declaration",
+            "brief": "Graphics adapter family",
+            "description": "Graphics adapter family.\nIdentifies the type of graphics backend used by the rendering system",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "     No adapter detected. Used as an error state or uninitialized value",
+                    "name": "ADAPTER_FAMILY_NONE",
+                    "type": ""
+                },
+                {
+                    "doc": "     Null (dummy) backend. Used for headless operation, testing, or environments where rendering output is not required",
+                    "name": "ADAPTER_FAMILY_NULL",
+                    "type": ""
+                },
+                {
+                    "doc": "   OpenGL desktop backend. Common on Windows, macOS and Linux systems",
+                    "name": "ADAPTER_FAMILY_OPENGL",
+                    "type": ""
+                },
+                {
+                    "doc": " OpenGL ES backend. Primarily used on mobile devices (Android, iOS), as well as WebGL (browser)",
+                    "name": "ADAPTER_FAMILY_OPENGLES",
+                    "type": ""
+                },
+                {
+                    "doc": "   Vulkan backend. Cross-platform modern graphics API with explicit control over GPU resources and multithreading",
+                    "name": "ADAPTER_FAMILY_VULKAN",
+                    "type": ""
+                },
+                {
+                    "doc": "   Vendor-specific backend. A placeholder for proprietary or experimental APIs tied to a particular GPU vendor.",
+                    "name": "ADAPTER_FAMILY_VENDOR",
+                    "type": ""
+                },
+                {
+                    "doc": "   WebGPU backend. Modern web graphics API designed as the successor to WebGL",
+                    "name": "ADAPTER_FAMILY_WEBGPU",
+                    "type": ""
+                },
+                {
+                    "doc": "  DirectX backend. Microsoft\u2019s graphics API used on Windows and Xbox",
+                    "name": "ADAPTER_FAMILY_DIRECTX",
+                    "type": ""
+                }
+            ],
+            "name": "AdapterFamily",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Adds a stream to a vertex stream declaration",
+            "description": "Adds a stream to a vertex stream declaration",
             "error": "",
             "examples": "",
             "language": "",
@@ -10,14 +66,6 @@
             "name": "AddVertexStream",
             "notes": [],
             "parameters": [
-                {
-                    "doc": "the context",
-                    "is_optional": "False",
-                    "name": "context",
-                    "types": [
-                        "dmGraphics::HContext"
-                    ]
-                },
                 {
                     "doc": "the name of the stream",
                     "is_optional": "False",
@@ -57,8 +105,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Adds a stream to a stream declaration",
-            "description": "Adds a stream to a stream declaration",
+            "brief": "Adds a stream to a vertex stream declaration",
+            "description": "Adds a stream to a vertex stream declaration",
             "error": "",
             "examples": "",
             "language": "",
@@ -67,19 +115,11 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "the context",
-                    "is_optional": "False",
-                    "name": "context",
-                    "types": [
-                        "dmGraphics::HContext"
-                    ]
-                },
-                {
                     "doc": "the name hash of the stream",
                     "is_optional": "False",
                     "name": "name_hash",
                     "types": [
-                        "uint64_t"
+                        "dmhash_t"
                     ]
                 },
                 {
@@ -113,29 +153,29 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Defines how an attachment should be treated at the...",
+            "description": "Defines how an attachment should be treated at the start and end of a render pass",
             "error": "",
             "examples": "",
             "language": "",
             "members": [
                 {
-                    "doc": "",
+                    "doc": "Ignore existing content, no guarantees about the result",
                     "name": "ATTACHMENT_OP_DONT_CARE",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "     Preserve the existing contents of the attachment",
                     "name": "ATTACHMENT_OP_LOAD",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "    Store the attachment\u2019s results after the pass finishes",
                     "name": "ATTACHMENT_OP_STORE",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "    Clear the attachment to a predefined value at the beginning of the pass",
                     "name": "ATTACHMENT_OP_CLEAR",
                     "type": ""
                 }
@@ -149,64 +189,64 @@
             "type": "ENUM"
         },
         {
-            "brief": "Blend factor",
-            "description": "Blend factor",
+            "brief": "Blend factors for color blending",
+            "description": "Blend factors for color blending.\nDefines how source and destination colors are combined",
             "error": "",
             "examples": "",
             "language": "",
             "members": [
                 {
-                    "doc": "",
+                    "doc": "                       Always use 0.0",
                     "name": "BLEND_FACTOR_ZERO",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "                        Always use 1.0",
                     "name": "BLEND_FACTOR_ONE",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "                  Use source color",
                     "name": "BLEND_FACTOR_SRC_COLOR",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "        Use (1 - source color)",
                     "name": "BLEND_FACTOR_ONE_MINUS_SRC_COLOR",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "                  Use destination color",
                     "name": "BLEND_FACTOR_DST_COLOR",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "        Use (1 - destination color)",
                     "name": "BLEND_FACTOR_ONE_MINUS_DST_COLOR",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "                  Use source alpha",
                     "name": "BLEND_FACTOR_SRC_ALPHA",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "        Use (1 - source alpha)",
                     "name": "BLEND_FACTOR_ONE_MINUS_SRC_ALPHA",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "                  Use destination alpha",
                     "name": "BLEND_FACTOR_DST_ALPHA",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "        Use (1 - destination alpha)",
                     "name": "BLEND_FACTOR_ONE_MINUS_DST_ALPHA",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "         Use min(srcAlpha, 1 - dstAlpha)",
                     "name": "BLEND_FACTOR_SRC_ALPHA_SATURATE",
                     "type": ""
                 },
@@ -271,24 +311,24 @@
             "type": "ENUM"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Buffer usage hints",
+            "description": "Buffer usage hints.\nIndicates how often the data in a buffer will be updated.\nHelps the driver optimize memory placement",
             "error": "",
             "examples": "",
             "language": "",
             "members": [
                 {
-                    "doc": "",
+                    "doc": "    Updated every frame, used once (e.g. dynamic geometry)",
                     "name": "BUFFER_USAGE_STREAM_DRAW",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "   Updated occasionally, used many times",
                     "name": "BUFFER_USAGE_DYNAMIC_DRAW",
                     "type": ""
                 },
                 {
-                    "doc": "    Preferred for buffers that never change",
+                    "doc": "    Set once, used many times (e.g. meshes, textures). Preferred for buffers that never change",
                     "name": "BUFFER_USAGE_STATIC_DRAW",
                     "type": ""
                 }
@@ -302,49 +342,49 @@
             "type": "ENUM"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Depth and alpha test comparison functions",
+            "description": "Depth and alpha test comparison functions.\nDefines how incoming values are compared against stored ones",
             "error": "",
             "examples": "",
             "language": "",
             "members": [
                 {
-                    "doc": "",
+                    "doc": "       Never passes.",
                     "name": "COMPARE_FUNC_NEVER",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "        Passes if incoming < stored",
                     "name": "COMPARE_FUNC_LESS",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "      Passes if incoming <= stored",
                     "name": "COMPARE_FUNC_LEQUAL",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "     Passes if incoming > stored",
                     "name": "COMPARE_FUNC_GREATER",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "      Passes if incoming >= stored",
                     "name": "COMPARE_FUNC_GEQUAL",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "       Passes if incoming == stored",
                     "name": "COMPARE_FUNC_EQUAL",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "    Passes if incoming != stored",
                     "name": "COMPARE_FUNC_NOTEQUAL",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "      Always passes (ignores stored values)",
                     "name": "COMPARE_FUNC_ALWAYS",
                     "type": ""
                 }
@@ -373,6 +413,70 @@
                     "name": "buffer",
                     "types": [
                         "dmGraphics::HIndexBuffer"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DeleteRenderTarget",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "render_target",
+                    "types": [
+                        "dmGraphics::HRenderTarget"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Delete texture",
+            "description": "Delete texture",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DeleteTexture",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
                     ]
                 }
             ],
@@ -459,6 +563,158 @@
             "error": "",
             "examples": "",
             "language": "",
+            "members": [],
+            "name": "DisableState",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Render state",
+                    "is_optional": "False",
+                    "name": "state",
+                    "types": [
+                        "dmGraphics::State"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Disable a texture bound to a texture unit",
+            "description": "Disable a texture bound to a texture unit.\nUnbinds the given texture handle from the specified unit,\nreleasing the association in the graphics pipeline.\nThis is useful to prevent unintended reuse of textures,\nor to free up texture units for other bindings.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DisableTexture",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture unit index to disable. Must match the one previously used in <code>dmGraphics::EnableTexture</code>",
+                    "is_optional": "False",
+                    "name": "unit",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Handle to the texture object to disable",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "EnableState",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Render state",
+                    "is_optional": "False",
+                    "name": "state",
+                    "types": [
+                        "dmGraphics::State"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable and bind a texture to a texture unit",
+            "description": "Enable and bind a texture to a texture unit.\nAssociates a texture object with a specific texture unit in the\ngraphics context, making it available for sampling in shaders.\nMultiple textures can be active simultaneously by binding them\nto different units. The shader must reference the correct unit\n(via sampler uniform) to access the bound texture",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "EnableTexture",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture unit index to bind the texture to. Valid range depends on GPU capabilities (commonly 0\u201315 for at least 16 texture units)",
+                    "is_optional": "False",
+                    "name": "unit",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Index for internal tracking or binding variation. Typically used when multiple texture IDs are managed within the same unit (e.g. array textures or multi-bind)",
+                    "is_optional": "False",
+                    "name": "id_index",
+                    "types": [
+                        "uint8_t"
+                    ]
+                },
+                {
+                    "doc": "Handle to the texture object to enable and bind",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
             "members": [
                 {
                     "doc": "",
@@ -478,6 +734,116 @@
             "returnvalues": [],
             "tparams": [],
             "type": "ENUM"
+        },
+        {
+            "brief": "Get the scale factor of the display",
+            "description": "Get the scale factor of the display.\nThe display scale factor is usally 1.0 but will for instance be 2.0 on a macOS Retina display.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetDisplayScaleFactor",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Display scale factor",
+                    "name": "scale_factor",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Returns the specified height of the opened window,...",
+            "description": "Returns the specified height of the opened window, which might differ from the actual window width.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetHeight",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Specified height of the window. If no window is opened, 0 is always returned.",
+                    "name": "height",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get installed graphics adapter family",
+            "description": "Get installed graphics adapter family",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetInstalledAdapterFamily",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Installed adapter family",
+                    "name": "family",
+                    "types": [
+                        "dmGraphics::AdapterFamily"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetInstalledContext",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Installed graphics context",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "Get the max number of indices allowed by the syste...",
@@ -544,6 +910,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get maximum supported size in pixels of non-array ...",
+            "description": "Get maximum supported size in pixels of non-array texture",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetMaxTextureSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Maximum texture size supported by GPU",
+                    "name": "max_texture_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "",
             "description": "",
             "error": "",
@@ -576,6 +974,158 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get how many platform-dependent texture handle use...",
+            "description": "Get how many platform-dependent texture handle used for engine texture handle.\nApplicable only for OpenGL/ES backend. All other backends return 1.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetNumTextureHandles",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::Context"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Platform-dependent handles amount",
+                    "name": "handles_amount",
+                    "types": [
+                        "uint8_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get texture original (before uploading to GPU) hei...",
+            "description": "Get texture original (before uploading to GPU) height",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetOriginalTextureHeight",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "original_height",
+                    "types": [
+                        "uint16_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get texture original (before uploading to GPU) wid...",
+            "description": "Get texture original (before uploading to GPU) width",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetOriginalTextureWidth",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Texture's original width",
+                    "name": "original_width",
+                    "types": [
+                        "uin16_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPipelineState",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "pipeline_state",
+                    "types": [
+                        "dmGraphics::PipelineState"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the attachment texture from a render target. R...",
             "description": "Get the attachment texture from a render target. Returns zero if no such attachment texture exists.",
             "error": "",
@@ -585,6 +1135,14 @@
             "name": "GetRenderTargetAttachment",
             "notes": [],
             "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
                 {
                     "doc": "the render target",
                     "is_optional": "False",
@@ -607,6 +1165,110 @@
                 {
                     "doc": "the attachment texture",
                     "name": "attachment",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetRenderTargetSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "render_target",
+                    "types": [
+                        "dmGraphics::HRenderTarget"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "buffer_type",
+                    "types": [
+                        "dmGraphics::BufferType"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "width",
+                    "types": [
+                        "uint32_t&"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "height",
+                    "types": [
+                        "uint32_t&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetRenderTargetTexture",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "render_target",
+                    "types": [
+                        "dmGraphics::HRenderTarget"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "buffer_type",
+                    "types": [
+                        "dmGraphics::BufferType"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "render_target_texture",
                     "types": [
                         "dmGraphics::HTexture"
                     ]
@@ -656,6 +1318,78 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get texture depth. applicable for 3D and cube map ...",
+            "description": "Get texture depth. applicable for 3D and cube map textures",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetTextureDepth",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Texture's depth",
+                    "name": "depth",
+                    "types": [
+                        "uint16_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get string representation of texture format",
+            "description": "Get string representation of texture format",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetTextureFormatLiteral",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Texture format",
+                    "is_optional": "False",
+                    "name": "format",
+                    "types": [
+                        "dmGraphics::TextureFormat"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "String representation of format",
+                    "name": "literal_format",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the native graphics API texture object from an...",
             "description": "Get the native graphics API texture object from an engine texture handle. This depends on the graphics backend and is not\nguaranteed to be implemented on the currently running adapter.",
             "error": "",
@@ -696,6 +1430,318 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get texture height",
+            "description": "Get texture height",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetTextureHeight",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Texture's height",
+                    "name": "height",
+                    "types": [
+                        "uint16_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get texture mipmap count",
+            "description": "Get texture mipmap count",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetTextureMipmapCount",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphice::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Texture mipmap count",
+                    "name": "count",
+                    "types": [
+                        "uint8_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get approximate size of how much memory texture co...",
+            "description": "Get approximate size of how much memory texture consumes",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetTextureResourceSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Resource data size in bytes",
+                    "name": "data_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get status of texture",
+            "description": "Get status of texture",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetTextureStatusFlags",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Enumerated status bit flags",
+                    "name": "flags",
+                    "types": [
+                        "dmGraphics::TextureStatusFlags"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get texture type",
+            "description": "Get texture type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetTextureType",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Texture type",
+                    "name": "type",
+                    "types": [
+                        "dmGraphics::TextureType"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get string representation of texture type",
+            "description": "Get string representation of texture type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetTextureTypeLiteral",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Texture type",
+                    "is_optional": "False",
+                    "name": "texture_type",
+                    "types": [
+                        "dmGraphics::TextureType"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "String representation of type",
+                    "name": "literal_type",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Query usage hint flags for a texture",
+            "description": "Query usage hint flags for a texture.\nRetrieves the bitwise usage flags that were assigned to a texture\nwhen it was created. These flags indicate the intended role(s) of\nthe texture in the rendering pipeline and allow the graphics\nbackend to apply optimizations or enforce restrictions",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetTextureUsageHintFlags",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "A bitwise OR of usage flags describing how the texture may be used. Applications can test specific flags using bitmask operations",
+                    "name": "flags",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get texture width",
+            "description": "Get texture width",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetTextureWidth",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Texture's width",
+                    "name": "width",
+                    "types": [
+                        "uint16_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the physical offset into the vertex data for a...",
             "description": "Get the physical offset into the vertex data for a particular stream",
             "error": "",
@@ -718,7 +1764,7 @@
                     "is_optional": "False",
                     "name": "name_hash",
                     "types": [
-                        "uint64_t"
+                        "dmhash_t"
                     ]
                 }
             ],
@@ -792,24 +1838,120 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Returns the specified width of the opened window, ...",
+            "description": "Returns the specified width of the opened window, which might differ from the actual window width.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetWidth",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Specified width of the window. If no window is opened, 0 is always returned.",
+                    "name": "width",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Return the height of the opened window, if any.",
+            "description": "Return the height of the opened window, if any.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetWindowHeight",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Height of the window. If no window is opened, 0 is always returned",
+                    "name": "window_height",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Return the width of the opened window, if any.",
+            "description": "Return the width of the opened window, if any.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetWindowWidth",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Width of the window. If no window is opened, 0 is always returned",
+                    "name": "window_width",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Function's call result code",
+            "description": "Function's call result code",
             "error": "",
             "examples": "",
             "language": "",
             "members": [
                 {
-                    "doc": "",
+                    "doc": "            The function's call succeeded and returned a valid result",
                     "name": "HANDLE_RESULT_OK",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": " The function is not supported by the current graphics backend",
                     "name": "HANDLE_RESULT_NOT_AVAILABLE",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "         An error occurred while function call",
                     "name": "HANDLE_RESULT_ERROR",
                     "type": ""
                 }
@@ -988,19 +2130,19 @@
             "type": "TYPEDEF"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Index buffer element types",
+            "description": "Index buffer element types.\nDefines the integer size used for vertex indices",
             "error": "",
             "examples": "",
             "language": "",
             "members": [
                 {
-                    "doc": "",
+                    "doc": "   16-bit unsigned integers (max 65535 vertices)",
                     "name": "INDEXBUFFER_FORMAT_16",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "   32-bit unsigned integers (supports larger meshes)",
                     "name": "INDEXBUFFER_FORMAT_32",
                     "type": ""
                 }
@@ -1131,7 +2273,7 @@
                     "is_optional": "False",
                     "name": "format",
                     "types": [
-                        "TextureFormat"
+                        "dmGraphics::TextureFormat"
                     ]
                 }
             ],
@@ -1215,6 +2357,94 @@
                     "name": "buffer",
                     "types": [
                         "dmGraphics::HIndexBuffer"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "NewRenderTarget",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "buffer_type_flags",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "dmGraphics::const RenderTargetCreationParams"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Newly created render target",
+                    "name": "render_target",
+                    "types": [
+                        "dmGraphics::HRenderTarget"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Create new texture",
+            "description": "Create new texture",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "NewTexture",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "HContext"
+                    ]
+                },
+                {
+                    "doc": "Creation parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGraphics::TextureCreationParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Opaque texture handle",
+                    "name": "texture_handle",
+                    "types": [
+                        "dmGraphics::HTexture"
                     ]
                 }
             ],
@@ -1438,24 +2668,24 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Primitive type",
-            "description": "Primitive type",
+            "brief": "Primitive drawing modes",
+            "description": "Primitive drawing modes.\nDefines how vertex data is assembled into primitives",
             "error": "",
             "examples": "",
             "language": "",
             "members": [
                 {
-                    "doc": "",
+                    "doc": "         Each pair of vertices forms a line",
                     "name": "PRIMITIVE_LINES",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "     Each group of 3 vertices forms a triangle",
                     "name": "PRIMITIVE_TRIANGLES",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "Connected strip of triangles (shares vertices)",
                     "name": "PRIMITIVE_TRIANGLE_STRIP",
                     "type": ""
                 }
@@ -1541,30 +2771,25 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Attachment points for render targets",
+            "description": "Attachment points for render targets",
             "error": "",
             "examples": "",
             "language": "",
             "members": [
                 {
-                    "doc": "",
+                    "doc": "    A color buffer attachment (used for rendering visible output)",
                     "name": "ATTACHMENT_COLOR",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "    A depth buffer attachment (used for depth testing)",
                     "name": "ATTACHMENT_DEPTH",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "  A stencil buffer attachment (used for stencil operations)",
                     "name": "ATTACHMENT_STENCIL",
-                    "type": ""
-                },
-                {
-                    "doc": "",
-                    "name": "MAX_ATTACHMENT_COUNT",
                     "type": ""
                 }
             ],
@@ -1575,6 +2800,238 @@
             "returnvalues": [],
             "tparams": [],
             "type": "ENUM"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "RepackRGBToRGBA",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "num_pixels",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "rgb",
+                    "types": [
+                        "uint8_t*"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "rgba",
+                    "types": [
+                        "uint8_t*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetBlendFunc",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "source_factor",
+                    "types": [
+                        "gmGraphics::BlendFactor"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "destination_factor",
+                    "types": [
+                        "dmGraphics::BlendFactor"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetColorMask",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "red",
+                    "types": [
+                        "bool"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "green",
+                    "types": [
+                        "bool"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "blue",
+                    "types": [
+                        "bool"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "alpha",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetCullFace",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "face_type",
+                    "types": [
+                        "dmGraphics::FaceType"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetDepthFunc",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "func",
+                    "types": [
+                        "dmGraphics::CompareFunc"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetDepthMask",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "enable_mask",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "Set index buffer data",
@@ -1664,6 +3121,534 @@
                     "name": "data",
                     "types": [
                         "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetRenderTarget",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "render_target",
+                    "types": [
+                        "dmGraphics::HRenderTarget"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "transient_buffer_types",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetRenderTargetSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "render_target",
+                    "types": [
+                        "dmGraphics::HRenderTarget"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "width",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "height",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetStencilFunc",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "func",
+                    "types": [
+                        "dmGraphics::CompareFunc"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "ref",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "mask",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetStencilFuncSeparate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "face_type",
+                    "types": [
+                        "dmGraphics::FaceType"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "func",
+                    "types": [
+                        "dmGraphics::CompareFunc"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "ref",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "mask",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetStencilMask",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "mask",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetStencilOp",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "sfail",
+                    "types": [
+                        "dmGraphics::StencilOp"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "dpfail",
+                    "types": [
+                        "dmGraphics::StencilOp"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "dppass",
+                    "types": [
+                        "dmGraphics::StencilOp"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetStencilOpSeparate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "face_type",
+                    "types": [
+                        "dmGraphics::FaceType"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "sfail",
+                    "types": [
+                        "dmGraphics::StencilOp"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "dpfail",
+                    "types": [
+                        "dmGraphics::StencilOp"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "dppass",
+                    "types": [
+                        "dmGraphics::StencilOp"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set texture data. For textures of type TEXTURE_TYP...",
+            "description": "Set texture data. For textures of type TEXTURE_TYPE_CUBE_MAP it's assumed that\n6 mip-maps are present contiguously in memory with stride m_DataSize",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetTexture",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGraphics::TextureParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set texture data asynchronously. For textures of t...",
+            "description": "Set texture data asynchronously. For textures of type TEXTURE_TYPE_CUBE_MAP it's assumed that\n6 mip-maps are present contiguously in memory with stride m_DataSize",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetTextureAsync",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                },
+                {
+                    "doc": "Texture parameters. Texture will be recreated if parameters differ from creation parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGraphics::TextureParams&"
+                    ]
+                },
+                {
+                    "doc": "Completion callback",
+                    "is_optional": "False",
+                    "name": "callback",
+                    "types": [
+                        "dmGraphics::SetTextureAsyncCallback"
+                    ]
+                },
+                {
+                    "doc": "User data that will be passed to completion callback",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Function called when a texture has been set asynch...",
+            "description": "Function called when a texture has been set asynchronously",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetTextureAsyncCallback",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                },
+                {
+                    "doc": "User data that will be passed to the SetTextureAsyncCallback",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Set texture parameters",
+            "description": "Set texture parameters",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetTextureParams",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                },
+                {
+                    "doc": "Minification filter type",
+                    "is_optional": "False",
+                    "name": "min_filter",
+                    "types": [
+                        "dmGraphics::TextureFilter"
+                    ]
+                },
+                {
+                    "doc": "Magnification filter type",
+                    "is_optional": "False",
+                    "name": "mag_filter",
+                    "types": [
+                        "dmGraphics::TextureFilter"
+                    ]
+                },
+                {
+                    "doc": "Wrapping mode for the U (X) texture coordinate.",
+                    "is_optional": "False",
+                    "name": "uwrap",
+                    "types": [
+                        "dmGraphics::TextureWrap"
+                    ]
+                },
+                {
+                    "doc": "Wrapping mode for the V (Y) texture coordinate",
+                    "is_optional": "False",
+                    "name": "vwrap",
+                    "types": [
+                        "dmGraphics::TextureWrap"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "max_anisotropy",
+                    "types": [
+                        "float"
                     ]
                 }
             ],
@@ -1769,49 +3754,49 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Stencil test actions",
+            "description": "Stencil test actions.\nDefines what happens to a stencil buffer value depending on the outcome of the stencil/depth test.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [
                 {
-                    "doc": "",
+                    "doc": "           Keep the current stencil value",
                     "name": "STENCIL_OP_KEEP",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "           Set stencil value to 0",
                     "name": "STENCIL_OP_ZERO",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "        Replace stencil value with reference value",
                     "name": "STENCIL_OP_REPLACE",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "           Increment stencil value (clamps at max)",
                     "name": "STENCIL_OP_INCR",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "      Increment stencil value, wrapping around",
                     "name": "STENCIL_OP_INCR_WRAP",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "           Decrement stencil value (clamps at 0)",
                     "name": "STENCIL_OP_DECR",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "      Decrement stencil value, wrapping around",
                     "name": "STENCIL_OP_DECR_WRAP",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "         Bitwise invert stencil value",
                     "name": "STENCIL_OP_INVERT",
                     "type": ""
                 }
@@ -1825,170 +3810,357 @@
             "type": "ENUM"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Texture creation parameters",
+            "description": "Texture creation parameters.\nDefines how a texture is created, initialized, and used.\nThis structure is typically passed when allocating GPU memory\nfor a new texture. It controls dimensions, format, layering,\nmipmapping, and intended usage.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [
                 {
-                    "doc": "",
+                    "doc": "Texture type. Defines the dimensionality and interpretation of the texture (2D, 3D, cube map, array)",
+                    "name": "m_Type",
+                    "type": "dmGraphics::TextureType"
+                },
+                {
+                    "doc": "Width of the texture in pixels at the base mip level",
+                    "name": "m_Width",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Height of the texture in pixels at the base mip level",
+                    "name": "m_Height",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Depth of the texture. Used for 3D textures or texture arrays. For standard 2D textures, this is typically `1`",
+                    "name": "m_Depth",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Width of the original source data before scaling or compression",
+                    "name": "m_OriginalWidth",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Height of the original source data before scaling or compression",
+                    "name": "m_OriginalHeight",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Depth of the original source data",
+                    "name": "m_OriginalDepth",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Number of layers in the texture. Used for array textures (`TEXTURE_TYPE_2D_ARRAY`). For standard 2D textures, this is `1`",
+                    "name": "m_LayerCount",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "Number of mipmap levels. A value of `1` means no mipmaps (only the base level is stored). Larger values allow for mipmapped sampling.",
+                    "name": "m_MipMapCount",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "Bitfield of usage hints. Indicates how the texture will be used (e.g. sampling, render target, storage image). See dmGraphics::TextureUsageFlag",
+                    "name": "m_UsageHintBits",
+                    "type": "uint8_t"
+                }
+            ],
+            "name": "TextureCreationParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Texture filtering modes",
+            "description": "Texture filtering modes.\nControls how texels are sampled when scaling or rotating textures",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "                  Default texture filtering mode. Depeneds on graphics backend (for example, for OpenGL - TEXTURE_FILTER_LINEAR)",
+                    "name": "TEXTURE_FILTER_DEFAULT",
+                    "type": ""
+                },
+                {
+                    "doc": "                  Nearest-neighbor sampling (blocky look, fastest)",
+                    "name": "TEXTURE_FILTER_NEAREST",
+                    "type": ""
+                },
+                {
+                    "doc": "                   Linear interpolation between texels (smooth look)",
+                    "name": "TEXTURE_FILTER_LINEAR",
+                    "type": ""
+                },
+                {
+                    "doc": "   Nearest mipmap level, nearest texel",
+                    "name": "TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST",
+                    "type": ""
+                },
+                {
+                    "doc": "    Linear blend between two mipmap levels, nearest texel",
+                    "name": "TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR",
+                    "type": ""
+                },
+                {
+                    "doc": "    Nearest mipmap level, linear texel",
+                    "name": "TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST",
+                    "type": ""
+                },
+                {
+                    "doc": "     Linear blend between mipmap levels and texels (trilinear)",
+                    "name": "TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR",
+                    "type": ""
+                }
+            ],
+            "name": "TextureFilter",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Pixel formats supported by textures",
+            "description": "Pixel formats supported by textures.\nIncludes uncompressed, compressed, and floating-point variants",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "           Single-channel grayscale",
                     "name": "TEXTURE_FORMAT_LUMINANCE",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "     Two-channel grayscale + alpha",
                     "name": "TEXTURE_FORMAT_LUMINANCE_ALPHA",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "                 Standard 24-bit RGB color",
                     "name": "TEXTURE_FORMAT_RGB",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "                Standard 32-bit RGBA color",
                     "name": "TEXTURE_FORMAT_RGBA",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "           Packed 16-bit RGB (lower precision, saves memory)",
                     "name": "TEXTURE_FORMAT_RGB_16BPP",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "          Packed 16-bit RGBA",
                     "name": "TEXTURE_FORMAT_RGBA_16BPP",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "               Depth buffer texture (used for depth testing)",
                     "name": "TEXTURE_FORMAT_DEPTH",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "             Stencil buffer texture",
                     "name": "TEXTURE_FORMAT_STENCIL",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "    PVRTC compressed RGB at 2 bits per pixel",
                     "name": "TEXTURE_FORMAT_RGB_PVRTC_2BPPV1",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "    PVRTC compressed RGB at 4 bits per pixel",
                     "name": "TEXTURE_FORMAT_RGB_PVRTC_4BPPV1",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "   PVRTC compressed RGBA at 2 bits per pixel",
                     "name": "TEXTURE_FORMAT_RGBA_PVRTC_2BPPV1",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "   PVRTC compressed RGBA at 4 bits per pixel",
                     "name": "TEXTURE_FORMAT_RGBA_PVRTC_4BPPV1",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "            ETC1 compressed RGB (no alpha support)",
                     "name": "TEXTURE_FORMAT_RGB_ETC1",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "              ETC2 single-channel",
                     "name": "TEXTURE_FORMAT_R_ETC2",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "             ETC2 two-channel",
                     "name": "TEXTURE_FORMAT_RG_ETC2",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "           ETC2 four-channel (with alpha)",
                     "name": "TEXTURE_FORMAT_RGBA_ETC2",
                     "type": ""
                 },
                 {
-                    "doc": "",
-                    "name": "TEXTURE_FORMAT_RGBA_ASTC_4x4",
+                    "doc": "       ASTC block-compressed 4\u00d74",
+                    "name": "TEXTURE_FORMAT_RGBA_ASTC_4X4",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "             BC1/DXT1 compressed RGB",
                     "name": "TEXTURE_FORMAT_RGB_BC1",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "            BC3/DXT5 compressed RGBA",
                     "name": "TEXTURE_FORMAT_RGBA_BC3",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "               BC4 single-channel",
                     "name": "TEXTURE_FORMAT_R_BC4",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "              BC5 two-channel",
                     "name": "TEXTURE_FORMAT_RG_BC5",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "            BC7 high-quality compressed RGBA",
                     "name": "TEXTURE_FORMAT_RGBA_BC7",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "              Half-precision float RGB",
                     "name": "TEXTURE_FORMAT_RGB16F",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "              Full 32-bit float RGB",
                     "name": "TEXTURE_FORMAT_RGB32F",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "             Half-precision float RGBA",
                     "name": "TEXTURE_FORMAT_RGBA16F",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "             Full 32-bit float RGBA",
                     "name": "TEXTURE_FORMAT_RGBA32F",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "                Half-precision float single channel",
                     "name": "TEXTURE_FORMAT_R16F",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "               Half-precision float two channels",
                     "name": "TEXTURE_FORMAT_RG16F",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "                Full 32-bit float single channel",
                     "name": "TEXTURE_FORMAT_R32F",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "               Full 32-bit float two channels",
                     "name": "TEXTURE_FORMAT_RG32F",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "            Internal: 32-bit unsigned integer RGBA (not script-exposed)",
                     "name": "TEXTURE_FORMAT_RGBA32UI",
                     "type": ""
                 },
                 {
-                    "doc": "",
-                    "name": "TEXTURE_FORMAT_COUNT",
+                    "doc": "              Internal: 32-bit BGRA layout",
+                    "name": "TEXTURE_FORMAT_BGRA8U",
+                    "type": ""
+                },
+                {
+                    "doc": "               Internal: 32-bit unsigned integer single channel",
+                    "name": "TEXTURE_FORMAT_R32UI",
+                    "type": ""
+                },
+                {
+                    "doc": "       ASTC 5x4 block compression",
+                    "name": "TEXTURE_FORMAT_RGBA_ASTC_5X4",
+                    "type": ""
+                },
+                {
+                    "doc": "       ASTC 5x5 block compression",
+                    "name": "TEXTURE_FORMAT_RGBA_ASTC_5X5",
+                    "type": ""
+                },
+                {
+                    "doc": "       ASTC 6x5 block compression",
+                    "name": "TEXTURE_FORMAT_RGBA_ASTC_6X5",
+                    "type": ""
+                },
+                {
+                    "doc": "       ASTC 6x6 block compression",
+                    "name": "TEXTURE_FORMAT_RGBA_ASTC_6X6",
+                    "type": ""
+                },
+                {
+                    "doc": "       ASTC 8x5 block compression",
+                    "name": "TEXTURE_FORMAT_RGBA_ASTC_8X5",
+                    "type": ""
+                },
+                {
+                    "doc": "       ASTC 8x6 block compression",
+                    "name": "TEXTURE_FORMAT_RGBA_ASTC_8X6",
+                    "type": ""
+                },
+                {
+                    "doc": "       ASTC 8x8 block compression",
+                    "name": "TEXTURE_FORMAT_RGBA_ASTC_8X8",
+                    "type": ""
+                },
+                {
+                    "doc": "      ASTC 10x5 block compression",
+                    "name": "TEXTURE_FORMAT_RGBA_ASTC_10X5",
+                    "type": ""
+                },
+                {
+                    "doc": "      ASTC 10x6 block compression",
+                    "name": "TEXTURE_FORMAT_RGBA_ASTC_10X6",
+                    "type": ""
+                },
+                {
+                    "doc": "      ASTC 10x8 block compression",
+                    "name": "TEXTURE_FORMAT_RGBA_ASTC_10X8",
+                    "type": ""
+                },
+                {
+                    "doc": "     ASTC 10x10 block compression",
+                    "name": "TEXTURE_FORMAT_RGBA_ASTC_10X10",
+                    "type": ""
+                },
+                {
+                    "doc": "     ASTC 12x10 block compression",
+                    "name": "TEXTURE_FORMAT_RGBA_ASTC_12X10",
+                    "type": ""
+                },
+                {
+                    "doc": "     ASTC 12x12 block compression",
+                    "name": "TEXTURE_FORMAT_RGBA_ASTC_12X12",
                     "type": ""
                 }
             ],
@@ -2001,139 +4173,373 @@
             "type": "ENUM"
         },
         {
-            "brief": "Data type",
-            "description": "Data type",
+            "brief": "Texture update parameters",
+            "description": "Texture update parameters.\nDefines a block of pixel data to be uploaded to a texture,\nalong with filtering, wrapping, and sub-region update options.\nTypically used when calling texture upload/update functions\nafter a texture object has been created with <code>TextureCreationParams</code>",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Pointer to raw pixel data in CPU memory. The format is defined by `m_Format`",
+                    "name": "m_Data",
+                    "type": "const void*"
+                },
+                {
+                    "doc": "Size of the pixel data in bytes. Must match the expected size from width, height, depth, and format",
+                    "name": "m_DataSize",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Format of the pixel data (e.g. RGBA, RGB, compressed formats). Dictates how the GPU interprets the memory pointed by `m_Data`",
+                    "name": "m_Format",
+                    "type": "dmGraphics::TextureFormat"
+                },
+                {
+                    "doc": "Minification filter (applied when shrinking). Determines how pixels are sampled when the texture is displayed smaller than its native resolution",
+                    "name": "m_MinFilter",
+                    "type": "dmGraphics::TextureFilter"
+                },
+                {
+                    "doc": "Magnification filter (applied when enlarging). Determines how pixels are sampled when the texture is displayed larger than its native resolution",
+                    "name": "m_MagFilter",
+                    "type": "dmGraphics::TextureFilter"
+                },
+                {
+                    "doc": "Wrapping mode for U (X) texture coordinate. Controls behavior when texture coordinates exceed [0,1]",
+                    "name": "m_UWrap",
+                    "type": "dmGraphics::TextureWrap"
+                },
+                {
+                    "doc": "Wrapping mode for V (Y) texture coordinate. Controls behavior when texture coordinates exceed [0,1]",
+                    "name": "m_VWrap",
+                    "type": "dmGraphics::TextureWrap"
+                },
+                {
+                    "doc": "X offset in pixels for sub-texture updates. Defines the left edge of the destination region",
+                    "name": "m_X",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Y offset in pixels for sub-texture updates. Defines the top edge of the destination region",
+                    "name": "m_Y",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Z offset (depth layer) for 3D textures. Ignored for standard 2D textures",
+                    "name": "m_Z",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Slice index in an array texture where the data should be uploaded",
+                    "name": "m_Slice",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Width of the pixel data block in pixels. Used for both full uploads and sub-updates",
+                    "name": "m_Width",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Height of the pixel data block in pixels. Used for both full uploads and sub-updates",
+                    "name": "m_Height",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Depth of the pixel data block in pixels. Only relevant for 3D textures",
+                    "name": "m_Depth",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Number of layers to update. For array textures, this specifies how many pages are updated",
+                    "name": "m_LayerCount",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "Only 7 bit available Mipmap level to update. Level 0 is the base level, higher levels are progressively downscaled versions",
+                    "name": "m_MipMap",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "If true, this represents a partial texture update (sub-region), using `m_X`, `m_Y`, `m_Z`, and `m_Slice` offsets. If false, the entire texture/mipmap level is replaced",
+                    "name": "m_SubUpdate",
+                    "type": "uint8_t"
+                }
+            ],
+            "name": "TextureParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Texture data upload status flags",
+            "description": "Texture data upload status flags",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "           Texture updated and ready-to-use",
+                    "name": "TEXTURE_STATUS_OK",
+                    "type": ""
+                },
+                {
+                    "doc": " Data upload to the texture is in progress",
+                    "name": "TEXTURE_STATUS_DATA_PENDING",
+                    "type": ""
+                }
+            ],
+            "name": "TextureStatusFlags",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Texture types",
+            "description": "Texture types",
             "error": "",
             "examples": "",
             "language": "",
             "members": [
                 {
                     "doc": "",
+                    "name": "TEXTURE_TYPE_2D",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TEXTURE_TYPE_2D_ARRAY",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TEXTURE_TYPE_3D",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TEXTURE_TYPE_CUBE_MAP",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TEXTURE_TYPE_IMAGE_2D",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TEXTURE_TYPE_IMAGE_3D",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TEXTURE_TYPE_SAMPLER",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TEXTURE_TYPE_TEXTURE_2D",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TEXTURE_TYPE_TEXTURE_2D_ARRAY",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TEXTURE_TYPE_TEXTURE_3D",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TEXTURE_TYPE_TEXTURE_CUBE",
+                    "type": ""
+                }
+            ],
+            "name": "TextureType",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Texture addressing/wrapping modes",
+            "description": "Texture addressing/wrapping modes.\nControls behavior when texture coordinates fall outside the [0,1] range",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "    Clamp to the color defined as 'border'",
+                    "name": "TEXTURE_WRAP_CLAMP_TO_BORDER",
+                    "type": ""
+                },
+                {
+                    "doc": "      Clamp to the edge pixel of the texture",
+                    "name": "TEXTURE_WRAP_CLAMP_TO_EDGE",
+                    "type": ""
+                },
+                {
+                    "doc": "    Repeat texture, mirroring every other repetition",
+                    "name": "TEXTURE_WRAP_MIRRORED_REPEAT",
+                    "type": ""
+                },
+                {
+                    "doc": "             Repeat texture in a tiled fashion",
+                    "name": "TEXTURE_WRAP_REPEAT",
+                    "type": ""
+                }
+            ],
+            "name": "TextureWrap",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Data type",
+            "description": "Data type.\nRepresents scalar, vector, matrix, image, or sampler types used\nfor vertex attributes, uniforms, and shader interface definitions",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "               Signed 8-bit integer. Compact storage, often used for colors, normals, or compressed vertex attributes",
                     "name": "TYPE_BYTE",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "      Unsigned 8-bit integer. Common for color channels (0\u2013255) or normalized texture data",
                     "name": "TYPE_UNSIGNED_BYTE",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "              Signed 16-bit integer. Used for medium-range numeric attributes such as bone weights or coordinates with normalization",
                     "name": "TYPE_SHORT",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "     Unsigned 16-bit integer. Often used for indices or normalized attributes when extra precision over bytes is required",
                     "name": "TYPE_UNSIGNED_SHORT",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "                Signed 32-bit integer. Typically used for uniform values, shader constants, or counters",
                     "name": "TYPE_INT",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "       Unsigned 32-bit integer. Used for indices, IDs, or GPU counters",
                     "name": "TYPE_UNSIGNED_INT",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "              32-bit floating point. Standard for most vertex attributes and uniform values (positions, UVs, weights)",
                     "name": "TYPE_FLOAT",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "         4-component floating-point vector (`vec4` in GLSL). Typically used for homogeneous coordinates, colors (RGBA), or combined attributes",
                     "name": "TYPE_FLOAT_VEC4",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "         4x4 floating-point matrix (`mat4` in GLSL). Standard for 3D transformations (model, view, projection)",
                     "name": "TYPE_FLOAT_MAT4",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "         2D texture sampler. Standard type for most texture lookups",
                     "name": "TYPE_SAMPLER_2D",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "       Cube map sampler. Used for environment mapping, reflections, and skyboxes",
                     "name": "TYPE_SAMPLER_CUBE",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "   Array of 2D texture samplers. Enables efficient texture indexing when using multiple layers (e.g. terrain textures, sprite atlases)",
                     "name": "TYPE_SAMPLER_2D_ARRAY",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "         2-component floating-point vector (`vec2` in GLSL). Commonly used for texture coordinates or 2D positions",
                     "name": "TYPE_FLOAT_VEC2",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "         3-component floating-point vector (`vec3` in GLSL). Used for positions, normals, and directions in 3D space",
                     "name": "TYPE_FLOAT_VEC3",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "         2x2 floating-point matrix (`mat2` in GLSL). Used in transformations (e.g. 2D rotations, scaling)",
                     "name": "TYPE_FLOAT_MAT2",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "         3x3 floating-point matrix (`mat3` in GLSL). Commonly used for normal matrix calculations in lighting",
                     "name": "TYPE_FLOAT_MAT3",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "           2D image object. Unlike samplers, images allow read/write access in shaders (e.g. compute shaders or image load/store operations)",
                     "name": "TYPE_IMAGE_2D",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "         2D texture object handle. Represents an actual GPU texture resource",
                     "name": "TYPE_TEXTURE_2D",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "            Generic sampler handle, used as a placeholder for texture units without specifying the dimension",
                     "name": "TYPE_SAMPLER",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "   2D texture array object handle",
                     "name": "TYPE_TEXTURE_2D_ARRAY",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "       Cube map texture object handle",
                     "name": "TYPE_TEXTURE_CUBE",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "         3D texture sampler. Used for volumetric effects, noise fields, or voxel data",
                     "name": "TYPE_SAMPLER_3D",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "         3D texture object handle",
                     "name": "TYPE_TEXTURE_3D",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "           3D image object. Used for compute-based volume processing",
                     "name": "TYPE_IMAGE_3D",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "   Array of 3D texture samplers",
                     "name": "TYPE_SAMPLER_3D_ARRAY",
                     "type": ""
                 },
                 {
-                    "doc": "",
+                    "doc": "   3D texture array object handle",
                     "name": "TYPE_TEXTURE_3D_ARRAY",
                     "type": ""
                 }

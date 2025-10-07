@@ -1230,7 +1230,7 @@
         },
         {
             "brief": "gets the game object instance world position",
-            "description": "The function will return the world position calculated at the end of the previous frame.\nUse <a href=\"/ref/go#go.get_position\">go.get_position</a> to retrieve the position relative to the parent.",
+            "description": "The function will return the world position calculated at the end of the previous frame.\nTo recalculate it within the current frame, use <a href=\"/ref/go#go.update_world_transform\">go.update_world_transform</a> on the instance before calling this.\nUse <a href=\"/ref/go#go.get_position\">go.get_position</a> to retrieve the position relative to the parent.",
             "error": "",
             "examples": "Get the world position of the game object instance the script is attached to:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">p</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_position</span><span class=\"p\">()</span>\n</code></pre></div>\n\nGet the world position of another game object instance with id \"x\":\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">p</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_position</span><span class=\"p\">(</span><span class=\"s2\">&quot;x&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
@@ -1264,7 +1264,7 @@
         },
         {
             "brief": "gets the game object instance world rotation",
-            "description": "The function will return the world rotation calculated at the end of the previous frame.\nUse <a href=\"/ref/go#go.get_rotation\">go.get_rotation</a> to retrieve the rotation relative to the parent.",
+            "description": "The function will return the world rotation calculated at the end of the previous frame.\nTo recalculate it within the current frame, use <a href=\"/ref/go#go.update_world_transform\">go.update_world_transform</a> on the instance before calling this.\nUse <a href=\"/ref/go#go.get_rotation\">go.get_rotation</a> to retrieve the rotation relative to the parent.",
             "error": "",
             "examples": "Get the world rotation of the game object instance the script is attached to:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">r</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_rotation</span><span class=\"p\">()</span>\n</code></pre></div>\n\nGet the world rotation of another game object instance with id \"x\":\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">r</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_rotation</span><span class=\"p\">(</span><span class=\"s2\">&quot;x&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
@@ -1298,7 +1298,7 @@
         },
         {
             "brief": "gets the game object instance world 3D scale factor",
-            "description": "The function will return the world 3D scale factor calculated at the end of the previous frame.\nUse <a href=\"/ref/go#go.get_scale\">go.get_scale</a> to retrieve the 3D scale factor relative to the parent.\nThis vector is derived by decomposing the transformation matrix and should be used with care.\nFor most cases it should be fine to use <a href=\"/ref/go#go.get_world_scale_uniform\">go.get_world_scale_uniform</a> instead.",
+            "description": "The function will return the world 3D scale factor calculated at the end of the previous frame.\nTo recalculate it within the current frame, use <a href=\"/ref/go#go.update_world_transform\">go.update_world_transform</a> on the instance before calling this.\nUse <a href=\"/ref/go#go.get_scale\">go.get_scale</a> to retrieve the 3D scale factor relative to the parent.\nThis vector is derived by decomposing the transformation matrix and should be used with care.\nFor most cases it should be fine to use <a href=\"/ref/go#go.get_world_scale_uniform\">go.get_world_scale_uniform</a> instead.",
             "error": "",
             "examples": "Get the world 3D scale of the game object instance the script is attached to:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_scale</span><span class=\"p\">()</span>\n</code></pre></div>\n\nGet the world scale of another game object instance \"x\":\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_scale</span><span class=\"p\">(</span><span class=\"s2\">&quot;x&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
@@ -1332,7 +1332,7 @@
         },
         {
             "brief": "gets the uniform game object instance world scale factor",
-            "description": "The function will return the world scale factor calculated at the end of the previous frame.\nUse <a href=\"/ref/go#go.get_scale_uniform\">go.get_scale_uniform</a> to retrieve the scale factor relative to the parent.",
+            "description": "The function will return the world scale factor calculated at the end of the previous frame.\nTo recalculate it within the current frame, use <a href=\"/ref/go#go.update_world_transform\">go.update_world_transform</a> on the instance before calling this.\nUse <a href=\"/ref/go#go.get_scale_uniform\">go.get_scale_uniform</a> to retrieve the scale factor relative to the parent.",
             "error": "",
             "examples": "Get the world scale of the game object instance the script is attached to:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_scale_uniform</span><span class=\"p\">()</span>\n</code></pre></div>\n\nGet the world scale of another game object instance with id \"x\":\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_scale_uniform</span><span class=\"p\">(</span><span class=\"s2\">&quot;x&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
@@ -1366,7 +1366,7 @@
         },
         {
             "brief": "gets the game object instance world transform matrix",
-            "description": "The function will return the world transform matrix calculated at the end of the previous frame.",
+            "description": "The function will return the world transform matrix calculated at the end of the previous frame.\nTo recalculate it within the current frame, use <a href=\"/ref/go#go.update_world_transform\">go.update_world_transform</a> on the instance before calling this.",
             "error": "",
             "examples": "Get the world transform of the game object instance the script is attached to:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">m</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_transform</span><span class=\"p\">()</span>\n</code></pre></div>\n\nGet the world transform of another game object instance with id \"x\":\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">m</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_transform</span><span class=\"p\">(</span><span class=\"s2\">&quot;x&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
@@ -1768,6 +1768,32 @@
                 },
                 {
                     "doc": "optional id of the game object instance to get the scale for, by default the instance of the calling script",
+                    "is_optional": "True",
+                    "name": "id",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "updates the world transform for a game object instance",
+            "description": "Recalculates and updates the cached world transform immediately for the target instance\nand its ancestors (parent chain up to the collection root). Descendants (children) are\nnot updated by this function.\nIf no id is provided, the instance of the calling script is used.\n<span class=\"icon-attention\"></span> Use this after changing local transform mid-frame when you need the\nnew world transform right away (e.g. before end-of-frame updates). Note that child\ninstances will still have last-frame world transforms until the regular update.",
+            "error": "",
+            "examples": "Update this game object's world transform:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">update_world_transform</span><span class=\"p\">()</span>\n</code></pre></div>\n\nUpdate another game object's world transform:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">update_world_transform</span><span class=\"p\">(</span><span class=\"s2\">&quot;/other&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "go.update_world_transform",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "optional id of the game object instance to update",
                     "is_optional": "True",
                     "name": "id",
                     "types": [
