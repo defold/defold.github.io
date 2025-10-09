@@ -1085,8 +1085,14 @@ Publisher name.
 #### Developer
 Developer name.
 
-#### Write Log
-When checked, the engine will write a log file. If running more than one instance from the editor the file will be named *instance_2_log.txt* with `2` being the instance index. If running a single instance or from a bundle the file will be named *log.txt* The location of the log file will be one of the following paths (tried in order):
+#### Write Log File
+Controls when the engine writes a log file. Options:
+
+- "Never": Do not write a log file.
+- "Debug": Write a log file only for Debug builds.
+- "Always": Write a log file for both Debug and Release builds.
+
+If running more than one instance from the editor the file will be named *instance_2_log.txt* with `2` being the instance index. If running a single instance or from a bundle the file will be named *log.txt*. The location of the log file will be one of the following paths (tried in order):
 
 1. The path specified in *project.log_dir* (hidden setting)
 2. The system log path:
@@ -6855,6 +6861,13 @@ Orthographic Projection
 Orthographic Zoom
 : (**Orthographic camera only**) - The zoom used for the orthographic projection (> 1 = zoom in, < 1 = zoom out).
 
+Orthographic Mode
+: (**Orthographic camera only**) - Controls how the orthographic camera determines zoom relative to the window size and your design resolution (the values in `game.project` → `display.width/height`).
+  - `Fixed` (uses constant zoom): Uses the current `Orthographic Zoom` value as-is.
+  - `Auto Fit` (contain): Automatically adjusts zoom so the full design area fits inside the window. May show extra content on sides or top/bottom.
+  - `Auto Cover` (cover): Automatically adjusts zoom so the design area covers the entire window. May crop on sides or top/bottom.
+  Available only when `Orthographic Projection` is enabled.
+
 
 ## Using the camera
 
@@ -6890,9 +6903,11 @@ The scripting `camera` module has multiple functions that can be used to manipul
 camera.get_aspect_ratio(camera) -- get aspect ratio
 camera.get_far_z(camera) -- get far z
 camera.get_fov(camera) -- get field of view
+camera.get_orthographic_mode(camera) -- get orthographic mode (one of camera.ORTHO_MODE_*)
 camera.set_aspect_ratio(camera, ratio) -- set aspect ratio
 camera.set_far_z(camera, far_z) -- set far z
 camera.set_near_z(camera, near_z) -- set near z
+camera.set_orthographic_mode(camera, camera.ORTHO_MODE_AUTO_FIT) -- set orthographic mode
 ... And so forth
 ```
 
@@ -6932,7 +6947,7 @@ The view matrix provided by the camera defines the position and orientation of t
 
 ### Render script
 
-Starting with Defold 1.9.6, when using the default render script Defold will automatically set the last enabled camera that should be used for rendering. Before this change, a script somewhere in the project needed to explicitly send the `use_camera_projection` message to the renderer to notify it that the view and projection from camera components should be used. This is no longer necessary, but it is still possible to do so for backwards compatibility purposes.
+When using the default render script Defold will automatically set the last enabled camera that should be used for rendering. Before this change, a script somewhere in the project needed to explicitly send the `use_camera_projection` message to the renderer to notify it that the view and projection from camera components should be used. This is no longer necessary, but it is still possible to do so for backwards compatibility purposes.
 
 Alternatively, you can set a specific camera that should be used for rendering in a render script. This could be useful in cases where you need to control more specifically which camera should be used for rendering, for example in a multiplayer game.
 
@@ -6968,6 +6983,22 @@ You can zoom in and out when using an orthographic camera by changing the *Ortho
 
 ```lua
 go.set("#camera", "orthographic_zoom", 2)
+```
+
+When using an orthographic camera you can also switch how zoom is determined using the `Orthographic Mode` setting or via script:
+
+```lua
+-- get current mode (one of camera.ORTHO_MODE_FIXED, _AUTO_FIT, _AUTO_COVER)
+local mode = camera.get_orthographic_mode("#camera")
+
+-- switch to auto-fit (contain) to always keep the full design area visible
+camera.set_orthographic_mode("#camera", camera.ORTHO_MODE_AUTO_FIT)
+
+-- switch to auto-cover to ensure the design area covers the window
+camera.set_orthographic_mode("#camera", camera.ORTHO_MODE_AUTO_COVER)
+
+-- switch back to fixed mode to control zoom manually via orthographic_zoom
+camera.set_orthographic_mode("#camera", camera.ORTHO_MODE_FIXED)
 ```
 
 ### Adaptive zoom
@@ -7008,6 +7039,8 @@ end
 ```
 
 A complete example of adaptive zoom can be seen in [this sample project](https://github.com/defold/sample-adaptive-zoom).
+
+Note: With an orthographic camera you can now achieve contain/cover behavior without custom code by setting `Orthographic Mode` to `Auto Fit` (contain) or `Auto Cover` (cover). In these modes the effective zoom is computed automatically based on window size and your design resolution.
 
 
 ### Following a game object
@@ -7071,13 +7104,13 @@ A camera has a number of different properties that can be manipulated using `go.
 : The orthographic camera zoom (`number`).
 
 `aspect_ratio`
-: Added in Defold 1.4.8. The ratio between the frustum width and height. Used when calculating the projection of a perspective camera. (`number`).
+: The ratio between the frustum width and height. Used when calculating the projection of a perspective camera. (`number`).
 
 `view`
-: Added in Defold 1.4.8. The calculated view matrix of the camera. READ ONLY. (`matrix4`).
+: The calculated view matrix of the camera. READ ONLY. (`matrix4`).
 
 `projection`
-: Added in Defold 1.4.8. The calculated projection matrix of the camera. READ ONLY. (`matrix4`).
+: The calculated projection matrix of the camera. READ ONLY. (`matrix4`).
 
 
 ## Third-party camera solutions
@@ -12883,6 +12916,20 @@ msg.post("@render:", "use_fixed_projection", { near = -1, far = 1, zoom = 2 })
 
 When using the default render script and there are enabled [Camera components](#manuals:camera) available in the project, they will take precedence over any other view / projections set in the render script. To read more about how to work with camera components in render scripts, please consult the [Camera documentation](#manuals:camera).
 
+Orthographic cameras support an `Orthographic Mode` that controls how the camera adapts to the window:
+- `Fixed` uses the camera’s `Orthographic Zoom` value.
+- `Auto Fit` (contain) keeps the full design area visible.
+- `Auto Cover` (cover) fills the window and may crop.
+
+You can switch modes in the Editor or at runtime via the Camera API:
+
+```lua
+-- Use auto-fit behavior with an orthographic camera
+camera.set_orthographic_mode("main:/go#camera", camera.ORTHO_MODE_AUTO_FIT)
+-- Query current mode
+local mode = camera.get_orthographic_mode("main:/go#camera")
+```
+
 ## Frustum culling
 
 The render API in Defold lets developers perform something called frustum culling. When frustum culling is enabled any graphics that lies outside of a defined bounding box or frustum will be ignored. In a large game world where only a portion is visible at a time, frustum culling can dramatically reduce the amount of data that needs to be sent to the GPU for rendering, thus increasing performance and saving battery (on mobile devices). It is common to use the view and projection of the camera to create the bounding box. The default render script uses the view and projection (from the camera) to calculate a frustum.
@@ -15678,7 +15725,7 @@ The game log shows all of the output from the engine, native extensions and your
 System logs are generated by the operating system and it can provide additional information that can help you pinpoint a problem. The system logs can contain stack traces for crashes and low memory warnings.
 
 <div class='important' markdown='1'>
-The game log will only show information in debug builds. The log will be completely empty in release builds.
+Console/on-screen logging only shows information in Debug builds. In Release builds the console log is empty, but you can enable file logging in Release by setting the project setting "Write Log File" to "Always". See details below.
 </div>
 
 ## Reading the game log from the editor
@@ -15788,7 +15835,13 @@ This will install the app on your device, start it and automatically attach a LL
 
 ## Reading the game log from the log file
 
-If you enable the *Write Log* setting in *game.project*, any game output will be written to disk, to a file called "`log.txt`". Here is how you extract the file if you run the game on device:
+Use the project setting "Write Log File" in *game.project* to control file logging:
+
+- "Never": Do not write a log file.
+- "Debug": Write a log file only for Debug builds.
+- "Always": Write a log file for both Debug and Release builds.
+
+When enabled, any game output will be written to disk to a file named "`log.txt`". Here is how you extract the file if you run the game on device:
 
 iOS
 : Connect your device to a computer with macOS and Xcode installed.
