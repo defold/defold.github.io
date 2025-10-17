@@ -33,8 +33,12 @@ Select `Project->Fetch Libraries` once you have added the version to `game.proje
 
 ## Creating asset packs
 
-Creating an asset packs involves using the Android tools `aapt2` and `bundletool` and the JDK tool `jarsigner`. All are included in the Defold command line tool `bob.jar` and can be used directly from Bob.
+Creating an asset packs involves using the Android tools `aapt2` and `bundletool` and the JDK tool `jarsigner`. All are included in the Defold command line tool `bob.jar` and can be used directly from Bob. There are four steps to create one or more asset packs and include them in the application bundle:
 
+1. Compile assets
+2. Create asset bundles
+3. Add asset bundles to application bundle
+4. Sign the application bundle
 
 
 ### Compile assets
