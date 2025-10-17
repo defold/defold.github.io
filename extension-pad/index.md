@@ -10,7 +10,7 @@ toc:
 - Creating asset packs
 - Compile assets
 - Create asset bundle
-- Adding asset bundles to main application bundle
+- Add asset bundles to the application bundle
 - Resign the main application bundle
 - Usage
 - Example
@@ -65,6 +65,8 @@ The `AndroidManifest.xml` configures the asset pack's identifier and delivery mo
 </manifest>
 ```
 
+Pay attention to the `<dist:delivery>` tag which specifies the [delivery mode](https://developer.android.com/guide/playcore/asset-delivery).
+
 
 ### Create asset bundle
 
@@ -93,28 +95,33 @@ The `bundleconfig.json` is only needed to tell `bundletool` that it is producing
 ```
 
 
-### Adding asset bundles to main application bundle
+### Add asset bundles to the application bundle
 
-When all asset bundles have been produced they need to be merged into the main application bundle. For each asset bundle unzip it, remove the `bundleconfig.pb` and then write the files to the main application bundle.
+When all asset bundles have been produced they need to be merged into the the main application bundle. For each asset bundle unzip it, remove the `bundleconfig.pb` and then write the files to the main application bundle.
 
 ```sh
 unzip asset_pack_1.aab -d out
-rm out/bundleconfig.pb
 cd out
+# bundleconfig.pb is not needed
+rm bundleconfig.pb
 # -D do not write directory entries to the archive
 zip -r -0 -D main.aab .
 ```
 
+To better illustrate the final folder structure inside the main application bundle, please refer to Android Application Bundle reference image ([source](https://developer.android.com/guide/app-bundle/app-bundle-format)):
+
+![](aab_format.png)
+
 
 ### Resign the main application bundle
 
-The final step involved resigning the main application bundle:
+The final step involves resigning the main application bundle:
 
 ```sh
 java -jar bob.jar jarsigner -- -verbose -keystore debug.keystore -storepass android -keypass android main.aab androiddebugkey
 ```
 
-Note that `jarsigner` can also load the password from a file:
+Note that `jarsigner` can also load the keystore and key password from a file:
 
 ```sh
 java -jar bob.jar jarsigner -- -verbose -keystore debug.keystore -storepass file:storepass.txt -keypass file:keypass.txt main.aab androiddebugkey
