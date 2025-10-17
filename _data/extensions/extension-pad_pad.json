@@ -1,0 +1,508 @@
+{
+    "elements": [
+        {
+            "description": "Requests to cancel the download of the specified asset packs.",
+            "examples": "",
+            "name": "pad.cancel",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "pack_name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Requests to download the specified asset pack.",
+            "examples": "",
+            "name": "pad.fetch",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "pack_name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Deletes the specified asset pack from the internal storage of the app.",
+            "examples": "",
+            "name": "pad.remove_pack",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "pack_name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Requests download state and details for the specified asset pack. This is an asynchronous function and will send a `PACK_STATE_UPDATED` event once the new state is available.",
+            "examples": "",
+            "name": "pad.get_pack_state",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "pack_name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the location of the specified asset pack on the device or an empty string if this pack is not downloaded.",
+            "examples": "",
+            "name": "pad.get_pack_location",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "pack_name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "strin"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the total number of bytes already downloaded for the pack. Note that you must have called the `get_pack_state()` function first and wait for a `PACK_STATE_UPDATED` event before calling this function.",
+            "examples": "",
+            "name": "pad.get_pack_bytes_downloaded",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "pack_name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "bytes_downloade"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the error code for the pack, if Play has failed to download the pack. Note that you must have called the `get_pack_state()` function first and wait for a `PACK_STATE_UPDATED` event before calling this function.",
+            "examples": "",
+            "name": "pad.get_pack_error_code",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "pack_name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "error_cod"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the download status of the pack. Note that you must have called the `get_pack_state()` function first and wait for a `PACK_STATE_UPDATED` event before calling this function.",
+            "examples": "",
+            "name": "pad.get_pack_status",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "pack_name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "statu"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the total size of the pack in bytes. Note that you must have called the `get_pack_state()` function first and wait for a `PACK_STATE_UPDATED` event before calling this function.",
+            "examples": "",
+            "name": "pad.get_pack_total_bytes_to_download",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "pack_name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "bytes_to_downloa"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the percentage of the asset pack already transferred to the app. Note that you must have called the `get_pack_state()` function first and wait for a `PACK_STATE_UPDATED` event before calling this function.",
+            "examples": "",
+            "name": "pad.get_pack_transfer_progress_percentage",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "pack_name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "numbe"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Shows a dialog that asks the user for consent to download packs Shows a dialog that asks the user for consent to download packs that are currently in either the AssetPackStatus.REQUIRES_USER_CONFIRMATION state or the AssetPackStatus.WAITING_FOR_WIFI state. Will return result in event listener.",
+            "examples": "",
+            "name": "pad.show_confirmation_dialog",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "pack_name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set listener to receive events",
+            "examples": "",
+            "name": "pad.set_listener",
+            "parameters": [
+                {
+                    "doc": "The function to call (self, event)",
+                    "name": "listener",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "EVENT_PACK_STATE_UPDATED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "EVENT_PACK_STATE_ERROR",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "EVENT_REMOVE_PACK_COMPLETED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "EVENT_REMOVE_PACK_CANCELED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "EVENT_REMOVE_PACK_ERROR",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "EVENT_DIALOG_CONFIRMED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "EVENT_DIALOG_DECLINED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "EVENT_DIALOG_CANCELED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "EVENT_DIALOG_ERROR",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "STATUS_UNKNOWN",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "STATUS_PENDING",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "STATUS_DOWNLOADING",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "STATUS_TRANSFERRING",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "STATUS_COMPLETED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "STATUS_FAILED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "STATUS_CANCELED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "STATUS_WAITING_FOR_WIFI",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "STATUS_NOT_INSTALLED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "STATUS_REQUIRES_USER_CONFIRMATION",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Download not permitted under the current device circumstances",
+            "examples": "",
+            "name": "ERRORCODE_ACCESS_DENIED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The Asset Delivery API isn&#x27;t available.",
+            "examples": "",
+            "name": "ERRORCODE_API_NOT_AVAILABLE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The app isn&#x27;t owned by any user on this device.",
+            "examples": "",
+            "name": "ERRORCODE_APP_NOT_OWNED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The requesting app is unavailable.",
+            "examples": "",
+            "name": "ERRORCODE_APP_UNAVAILABLE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Returned if AssetPackManager.showConfirmationDialog(Activity) is called but no asset packs require user confirmation.",
+            "examples": "",
+            "name": "ERRORCODE_CONFIRMATION_NOT_REQUIRED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The requested download isn&#x27;t found.",
+            "examples": "",
+            "name": "ERRORCODE_DOWNLOAD_NOT_FOUND",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Asset pack download failed due to insufficient storage.",
+            "examples": "",
+            "name": "ERRORCODE_INSUFFICIENT_STORAGE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Unknown error downloading an asset pack.",
+            "examples": "",
+            "name": "ERRORCODE_INTERNAL_ERROR",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The request is invalid.",
+            "examples": "",
+            "name": "ERRORCODE_INVALID_REQUEST",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Network error.",
+            "examples": "",
+            "name": "ERRORCODE_NETWORK_ERROR",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Returned if AssetPackManager.showCellularDataConfirmation(Activity) is called but no asset packs are waiting for Wi-Fi.",
+            "examples": "",
+            "name": "ERRORCODE_NETWORK_UNRESTRICTED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": null,
+            "examples": "",
+            "name": "ERRORCODE_NO_ERROR",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The requested asset pack isn&#x27;t available.",
+            "examples": "",
+            "name": "ERRORCODE_PACK_UNAVAILABLE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The Play Store app is either not installed or not the official version.",
+            "examples": "",
+            "name": "ERRORCODE_PLAY_STORE_NOT_FOUND",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "The installed app version is not recognized by Play.",
+            "examples": "",
+            "name": "ERRORCODE_UNRECOGNIZED_INSTALLATION",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        }
+    ],
+    "info": {
+        "api": "extension-pad/pad_api",
+        "brief": "pad",
+        "description": "Functionality to work with Play Asset Delivery and the AssetPackManager",
+        "group": "EXTENSIONS",
+        "language": "Lua",
+        "name": "extension-pad",
+        "namespace": "pad",
+        "type": "Extension"
+    }
+}
