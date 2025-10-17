@@ -108,7 +108,7 @@ rm bundleconfig.pb
 zip -r -0 -D main.aab .
 ```
 
-To better illustrate the final folder structure inside the main application bundle, please refer to Android Application Bundle reference image ([source](https://developer.android.com/guide/app-bundle/app-bundle-format)):
+To better illustrate the final folder structure inside the main application bundle, please refer to the Android Application Bundle Format reference image ([source](https://developer.android.com/guide/app-bundle/app-bundle-format)):
 
 ![](aab_format.png)
 
