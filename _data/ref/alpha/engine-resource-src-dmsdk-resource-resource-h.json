@@ -971,14 +971,16 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get a resource from factory",
-            "description": "Get a resource from factory",
+            "brief": "Get (load) a resource from factory",
+            "description": "Get (load) a resource from factory",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
             "name": "ResourceGet",
-            "notes": [],
+            "notes": [
+                "if successful, it increments the ref count by one"
+            ],
             "parameters": [
                 {
                     "doc": "Factory handle",
@@ -989,9 +991,9 @@
                     ]
                 },
                 {
-                    "doc": "Resource name",
+                    "doc": "Resource path",
                     "is_optional": "False",
-                    "name": "name",
+                    "name": "path",
                     "types": [
                         "const char*"
                     ]
@@ -1019,14 +1021,17 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get a resource from factory",
-            "description": "Get a resource from factory",
+            "brief": "Get a loaded resource from factory",
+            "description": "Get a loaded resource from factory",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
             "name": "ResourceGetByHash",
-            "notes": [],
+            "notes": [
+                "this currently doesn't load a resource",
+                "if successful, it increments the ref count by one"
+            ],
             "parameters": [
                 {
                     "doc": "Factory handle",
@@ -1037,9 +1042,9 @@
                     ]
                 },
                 {
-                    "doc": "Resource name",
+                    "doc": "Resource path hash",
                     "is_optional": "False",
-                    "name": "name",
+                    "name": "path_hash",
                     "types": [
                         "dmhash_t"
                     ]
@@ -1057,6 +1062,62 @@
             "returnvalues": [
                 {
                     "doc": "RESOURCE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "ResourceResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get a loaded resource from factory and also verify...",
+            "description": "Get a loaded resource from factory and also verifying that it's the expected file type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResourceGetByHashAndExt",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "HResourceFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource path hash",
+                    "is_optional": "False",
+                    "name": "path_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Resource extension hash (e.g. \"texturec\", \"ttf\"). Must match the extension of the path.",
+                    "is_optional": "False",
+                    "name": "ext_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Created resource",
+                    "is_optional": "False",
+                    "name": "resource",
+                    "types": [
+                        "void**"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESOURCE_RESULT_OK on success.\n                                      RESOURCE_RESULT_INVALID_FILE_EXTENSION if the path extension doesn't match the required extension.",
                     "name": "result",
                     "types": [
                         "ResourceResult"
@@ -1337,6 +1398,64 @@
             "returnvalues": [
                 {
                     "doc": "RESOURCE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "ResourceResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get (load) a resource from factory",
+            "description": "Get (load) a resource from factory",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResourceGetWithExt",
+            "notes": [
+                "if successful, it increments the ref count by one"
+            ],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "HResourceFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource path",
+                    "is_optional": "False",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Resource extension (e.g. \"texturec\", \"ttf\"). Must match the extension of the path.",
+                    "is_optional": "False",
+                    "name": "ext",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Created resource",
+                    "is_optional": "False",
+                    "name": "resource",
+                    "types": [
+                        "void**"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESOURCE_RESULT_OK on success.\n                                      RESOURCE_RESULT_INVALID_FILE_EXTENSION if the path extension doesn't match the required extension.",
                     "name": "result",
                     "types": [
                         "ResourceResult"
@@ -1915,7 +2034,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "The name hash",
+                    "doc": "The name hash of the type (e.g. \"collectionc\")",
                     "name": "hash",
                     "types": [
                         "dmhash_t"

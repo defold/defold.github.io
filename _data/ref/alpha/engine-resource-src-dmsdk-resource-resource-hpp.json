@@ -184,9 +184,9 @@
                     ]
                 },
                 {
-                    "doc": "Resource name",
+                    "doc": "Resource path",
                     "is_optional": "False",
-                    "name": "name",
+                    "name": "path",
                     "types": [
                         "const char*"
                     ]
@@ -214,8 +214,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get a resource from factory",
-            "description": "Get a resource from factory",
+            "brief": "Get a loaded resource from factory",
+            "description": "Get a loaded resource from factory",
             "error": "",
             "examples": "",
             "language": "",
@@ -232,11 +232,11 @@
                     ]
                 },
                 {
-                    "doc": "Resource name",
+                    "doc": "Resource path hash",
                     "is_optional": "False",
-                    "name": "name",
+                    "name": "path_hash",
                     "types": [
-                        "dmhash_t"
+                        "const char*"
                     ]
                 },
                 {
@@ -447,6 +447,118 @@
                     "name": "result",
                     "types": [
                         "dmResult::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get (load) a resource from factory",
+            "description": "Get (load) a resource from factory",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetWithExt",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource path",
+                    "is_optional": "False",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Resource extension. Must match the extension of the path",
+                    "is_optional": "False",
+                    "name": "ext",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "(out) Created resource",
+                    "is_optional": "False",
+                    "name": "resource",
+                    "types": [
+                        "void**"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success.\n                                           RESULT_INVALID_FILE_EXTENSION if the path extension doesn't match the required extension.",
+                    "name": "result",
+                    "types": [
+                        "dmResource::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get a loaded resource from factory",
+            "description": "Get a loaded resource from factory",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetWithExt",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource path hash",
+                    "is_optional": "False",
+                    "name": "path_hash",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Resource extension hash. Must match the extension of the path.",
+                    "is_optional": "False",
+                    "name": "ext_hash",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "(out) Created resource",
+                    "is_optional": "False",
+                    "name": "resource",
+                    "types": [
+                        "void**"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success.\n                                           RESULT_INVALID_FILE_EXTENSION if the path extension doesn't match the required extension.",
+                    "name": "result",
+                    "types": [
+                        "dmResource::Result"
                     ]
                 }
             ],
