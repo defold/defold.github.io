@@ -46,7 +46,7 @@ Creating an asset packs involves using the Android tools `aapt2` and `bundletool
 The first step is to run `aapt2` to prepare files for use by the bundle tool. The `aapt2` command takes an `AndroidManifest.xml` and a folder of assets as input and outputs processed files to an output folder. When used as shown below `aapt2` will copy the assets and write a binary version of the `AndroidManifest.xml` to the output folder. The command will also produce a `resources.pb` but this is not needed for assets packs.
 
 ```sh
-java -jar bob.jar aapt2 link --proto-format --output-to-dir -o out --manifest AndroidManifest.xml -A assets
+java -cp bob.jar com.dynamo.bob.tools.AndroidTools aapt2 link --proto-format --output-to-dir -o out --manifest AndroidManifest.xml -A assets
 # resources.pb is not needed for asset packs
 rm out/resources.pb
 ```
@@ -73,7 +73,7 @@ Pay attention to the `<dist:delivery>` tag which specifies the [delivery mode](h
 The next step is to create an asset bundle using the `bundletool` command. The `bundletool` command will produce an .aab file from a bundle configuration and a zip file containing the assets and the binary version of the manifest file produced by `aapt2` above.
 
 ```sh
-java -jar bob.jar bundletool build-bundle --modules asset_pack_1.zip --config bundleconfig.json --output asset_pack_1.aab
+java -cp bob.jar com.dynamo.bob.tools.AndroidTools bundletool build-bundle --modules asset_pack_1.zip --config bundleconfig.json --output asset_pack_1.aab
 ```
 
 The `asset_pack_1.zip` must have the following structure:
@@ -118,13 +118,13 @@ To better illustrate the final folder structure inside the main application bund
 The final step involves resigning the main application bundle:
 
 ```sh
-java -jar bob.jar jarsigner -verbose -keystore debug.keystore -storepass android -keypass android main.aab androiddebugkey
+java -cp bob.jar com.dynamo.bob.tools.AndroidTools jarsigner -verbose -keystore debug.keystore -storepass android -keypass android main.aab androiddebugkey
 ```
 
 Note that `jarsigner` can also load the keystore and key password from a file:
 
 ```sh
-java -jar bob.jar jarsigner -verbose -keystore debug.keystore -storepass file:storepass.txt -keypass file:keypass.txt main.aab androiddebugkey
+java -cp bob.jar com.dynamo.bob.tools.AndroidTools jarsigner -verbose -keystore debug.keystore -storepass file:storepass.txt -keypass file:keypass.txt main.aab androiddebugkey
 ```
 
 
