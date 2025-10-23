@@ -350,6 +350,46 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "get boolean config value with optional default value",
+            "description": "Get boolean config value from the game.project configuration file with optional default value",
+            "error": "",
+            "examples": "Get user config value\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">vsync</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config_boolean</span><span class=\"p\">(</span><span class=\"s2\">&quot;display.vsync&quot;</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "sys.get_config_boolean",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "key to get value for. The syntax is SECTION.KEY",
+                    "is_optional": "False",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "(optional) default value to return if the value does not exist",
+                    "is_optional": "True",
+                    "name": "default_value",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "config value as a boolean. default_value if the config key does not exist. false if no default value was supplied.",
+                    "name": "value",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "get integer config value with optional default value",
             "description": "Get integer config value from the game.project configuration file with optional default value",
             "error": "",
