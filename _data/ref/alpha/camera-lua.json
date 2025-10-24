@@ -424,6 +424,98 @@
             "type": "CONSTANT"
         },
         {
+            "brief": "Convert screen vector3 position to world",
+            "description": "Converts a screen-space 2D point with view depth to a 3D world point.\nz is the view depth in world units measured from the camera plane along the camera forward axis.\nIf a camera isn't specified, the last enabled camera is used.",
+            "error": "",
+            "examples": "Place objects at the touch point with a random Z position, keeping them within the visible view zone.\n<div class=\"codehilite\"><pre><span></span><code> <span class=\"kr\">function</span> <span class=\"nf\">on_input</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">action_id</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">)</span>\n     <span class=\"kr\">if</span> <span class=\"n\">action_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;touch&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n         <span class=\"kr\">if</span> <span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">pressed</span> <span class=\"kr\">then</span>\n             <span class=\"kd\">local</span> <span class=\"n\">percpective_camera</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">(</span><span class=\"s2\">&quot;#perspective_camera&quot;</span><span class=\"p\">)</span>\n             <span class=\"kd\">local</span> <span class=\"n\">random_z</span> <span class=\"o\">=</span> <span class=\"nb\">math.random</span><span class=\"p\">(</span><span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">get_near_z</span><span class=\"p\">(</span><span class=\"n\">percpective_camera</span><span class=\"p\">)</span> <span class=\"o\">+</span> <span class=\"mf\">0.01</span><span class=\"p\">,</span> <span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">get_far_z</span><span class=\"p\">(</span><span class=\"n\">percpective_camera</span><span class=\"p\">)</span> <span class=\"o\">-</span> <span class=\"mf\">0.01</span><span class=\"p\">)</span>\n             <span class=\"kd\">local</span> <span class=\"n\">world_position</span> <span class=\"o\">=</span> <span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">screen_to_world</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">screen_x</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">screen_y</span><span class=\"p\">,</span> <span class=\"n\">random_z</span><span class=\"p\">),</span> <span class=\"n\">percpective_camera</span><span class=\"p\">)</span>\n             <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_position</span><span class=\"p\">(</span><span class=\"n\">world_position</span><span class=\"p\">,</span> <span class=\"s2\">&quot;/go1&quot;</span><span class=\"p\">)</span>\n         <span class=\"kr\">end</span>\n     <span class=\"kr\">end</span>\n <span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "camera.screen_to_world",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Screen-space position (x, y) with z as view depth in world units",
+                    "is_optional": "False",
+                    "name": "pos",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "optional camera id",
+                    "is_optional": "True",
+                    "name": "camera",
+                    "types": [
+                        "url",
+                        "number",
+                        "nil"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the world coordinate",
+                    "name": "world_pos",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Convert screen XY to world point at near plane",
+            "description": "Converts 2D screen coordinates (x,y) to the 3D world-space point on the camera's near plane for that pixel.\nIf a camera isn't specified, the last enabled camera is used.",
+            "error": "",
+            "examples": "Place objects at the touch point.\n<div class=\"codehilite\"><pre><span></span><code> <span class=\"kr\">function</span> <span class=\"nf\">on_input</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">action_id</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">)</span>\n     <span class=\"kr\">if</span> <span class=\"n\">action_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;touch&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n         <span class=\"kr\">if</span> <span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">pressed</span> <span class=\"kr\">then</span>\n             <span class=\"kd\">local</span> <span class=\"n\">world_position</span> <span class=\"o\">=</span> <span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">screen_xy_to_world</span><span class=\"p\">(</span><span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">screen_x</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">screen_y</span><span class=\"p\">)</span>\n             <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_position</span><span class=\"p\">(</span><span class=\"n\">world_position</span><span class=\"p\">,</span> <span class=\"s2\">&quot;/go1&quot;</span><span class=\"p\">)</span>\n         <span class=\"kr\">end</span>\n     <span class=\"kr\">end</span>\n <span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "camera.screen_xy_to_world",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "X coordinate on screen.",
+                    "is_optional": "False",
+                    "name": "x",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Y coordinate on screen.",
+                    "is_optional": "False",
+                    "name": "y",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "optional camera id",
+                    "is_optional": "True",
+                    "name": "camera",
+                    "types": [
+                        "url",
+                        "number",
+                        "nil"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the world coordinate on the camera near plane",
+                    "name": "world_pos",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "set aspect ratio",
             "description": "Sets the manual aspect ratio for the camera. This value is only used when\nauto aspect ratio is disabled. To disable auto aspect ratio and use this\nmanual value, call camera.set_auto_aspect_ratio(camera, false).",
             "error": "",
@@ -658,6 +750,48 @@
             ],
             "replaces": "",
             "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Convert world vector3 position to screen",
+            "description": "Converts a 3D world position to screen-space coordinates with view depth.\nReturns a vector3 where x and y are in screen pixels and z is the view depth in world units\nmeasured from the camera plane along the camera forward axis. The returned z can be used with\ncamera.screen_to_world to reconstruct the world position on the same pixel ray.\nIf a camera isn't specified, the last enabled camera is used.",
+            "error": "",
+            "examples": "Convert go position into screen pisition\n<div class=\"codehilite\"><pre><span></span><code> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">update_world_transform</span><span class=\"p\">(</span><span class=\"s2\">&quot;/go1&quot;</span><span class=\"p\">)</span>\n <span class=\"kd\">local</span> <span class=\"n\">world_pos</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_position</span><span class=\"p\">(</span><span class=\"s2\">&quot;/go1&quot;</span><span class=\"p\">)</span>\n <span class=\"kd\">local</span> <span class=\"n\">screen_pos</span> <span class=\"o\">=</span> <span class=\"n\">camera</span><span class=\"p\">.</span><span class=\"n\">world_to_screen</span><span class=\"p\">(</span><span class=\"n\">world_pos</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "camera.world_to_screen",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "World-space position",
+                    "is_optional": "False",
+                    "name": "world_pos",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "optional camera id",
+                    "is_optional": "True",
+                    "name": "camera",
+                    "types": [
+                        "url",
+                        "number",
+                        "nil"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Screen position (x,y in pixels, z is view depth)",
+                    "name": "screen_pos",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
