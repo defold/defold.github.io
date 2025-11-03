@@ -11,6 +11,7 @@ toc:
 - Bundling with Live update
 - The .zip archives
 - Splitting .zip archives
+- Live Update on Android
 - Content verification
 - Mounts
 - Scripting with Live Update
@@ -105,6 +106,10 @@ The resource graph is stored in `build/default/game.graph.json` and it is automa
 Each entry has a `path` which represents the unique path of the resource within the project. The `hexDigest` represents the cryptographic fingerprint of the resource and it will be the filename used in the liveupdate .zip archive. Finally the `children` field is a list of other dependencies which this resource depends on. In the example above the `/game/player.goc` has a dependency to a sprite and a script component.
 
 You can parse the `game.graph.json` file and use this information to identify groups of entries in the resource graph and store their corresponding resources in separate archives along with the original manifest file (the manifest file will be pruned at runtime so that it contains only the files in the archive).
+
+## Live Update on Android
+
+It is possible to use Play Asset Delivery to download and mount Live Update content. Learn more [in the official manual](https://defold.com/extension-pad/).
 
 ## Content verification
 
