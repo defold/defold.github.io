@@ -234,9 +234,9 @@ def read_as_json(filename):
     with open(filename) as f:
         return json.load(f)
 
-def write_as_json(filename, data):
+def write_as_json(filename, data, ensure_ascii=True):
     with open(filename, "w") as f:
-        json.dump(data, f, indent=4, sort_keys=True)
+        json.dump(data, f, indent=4, sort_keys=True, ensure_ascii=ensure_ascii)
 
 def write_lines(filename, lines):
     with open(filename, "w") as f:
@@ -967,7 +967,7 @@ def process_assets(tmp_dir):
         asset["asset_url"] = "https://github.com/defold/asset-portal/blob/master/assets/%s.json" % asset_id
         if "github.com" in library_url:
             asset["github_url"] = re.sub(r"(.*github.com/.*?/.*?)/.*", r"\1", library_url)
-        write_as_json(asset_file, asset)
+        write_as_json(asset_file, asset, False)
 
         # build asset index
         assetindex.append({
@@ -1033,25 +1033,25 @@ def process_assets(tmp_dir):
 
     # write asset index
     assetindex.sort(key=lambda x: x.get("id").lower())
-    write_as_json(ASSETINDEX_JSON, assetindex)
+    write_as_json(ASSETINDEX_JSON, assetindex, False)
 
     # write author index
     authorlist = authorindex.values()
     authorlist = sorted(authorlist, key=lambda x: x.get("name").lower())
-    write_as_json(AUTHORINDEX_JSON, authorlist)
+    write_as_json(AUTHORINDEX_JSON, authorlist, False)
 
     # write author data and a dummy markdown page with front matter
     for author in authorlist:
         author["assets"].sort(key=lambda x: x.get("id"))
         filename = os.path.join(author_data_dir, author["id"] + ".json")
-        write_as_json(filename, author)
+        write_as_json(filename, author, False)
         with open(os.path.join(author_collection_dir, author["id"] + ".md"), "w") as f:
             f.write(AUTHOR_MD_FRONTMATTER.format(author["id"], author["name"]))
 
     # write tag index
     taglist = tagindex.values()
     taglist = sorted(taglist, key=lambda x: x.get("id").lower())
-    write_as_json(TAGINDEX_JSON, taglist)
+    write_as_json(TAGINDEX_JSON, taglist, False)
 
     # write platform index
     # platformlist = platformindex.values()
@@ -1071,7 +1071,7 @@ def process_assets(tmp_dir):
         # _data/tags
         filename = os.path.join(tag_data_dir, tag["id"] + ".json")
         with open(filename, "w") as f:
-            f.write(json.dumps(tag, indent=2, sort_keys=False))
+            f.write(json.dumps(tag, indent=2, sort_keys=True, ensure_ascii=False))
 
         # tags/stars, tags/timestamp
         for sort_order in sort_orders:
