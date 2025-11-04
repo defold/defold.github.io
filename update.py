@@ -1071,7 +1071,7 @@ def process_assets(tmp_dir):
         # _data/tags
         filename = os.path.join(tag_data_dir, tag["id"] + ".json")
         with open(filename, "w") as f:
-            f.write(json.dumps(tag, indent=2, sort_keys=True))
+            f.write(json.dumps(tag, indent=2, sort_keys=False))
 
         # tags/stars, tags/timestamp
         for sort_order in sort_orders:
