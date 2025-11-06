@@ -1,0 +1,225 @@
+{
+    "elements": [
+        {
+            "brief": "add a font to the font collection",
+            "description": "add a font to the font collection",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FontCollectionAddFont",
+            "notes": [
+                "No ownership transfer occurrs. HFont must be alive during the lifetime of the font collection"
+            ],
+            "parameters": [
+                {
+                    "doc": "the font collection",
+                    "is_optional": "False",
+                    "name": "coll",
+                    "types": [
+                        "HFontCollection"
+                    ]
+                },
+                {
+                    "doc": "the font",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "HFont"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the result. FONT_RESULT_OK if successful",
+                    "name": "result",
+                    "types": [
+                        "FontResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Create a font collection",
+            "description": "Create a font collection",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FontCollectionCreate",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the font collection",
+                    "name": "coll",
+                    "types": [
+                        "HFontCollection"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "destroy a font collection",
+            "description": "destroy a font collection",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FontCollectionDestroy",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the font collection",
+                    "is_optional": "False",
+                    "name": "coll",
+                    "types": [
+                        "HFontCollection"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "return the font associated with the given index",
+            "description": "return the font associated with the given index",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FontCollectionGetFont",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the font collection",
+                    "is_optional": "False",
+                    "name": "coll",
+                    "types": [
+                        "HFontCollection"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the font at the given index",
+                    "name": "font",
+                    "types": [
+                        "HFont"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "return number of fonts in the collection",
+            "description": "return number of fonts in the collection",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FontCollectionGetFontCount",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the font collection",
+                    "is_optional": "False",
+                    "name": "coll",
+                    "types": [
+                        "HFontCollection"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the number of fonts",
+                    "name": "count",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "remove a font from the font collection",
+            "description": "remove a font from the font collection",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FontCollectionRemoveFont",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the font collection",
+                    "is_optional": "False",
+                    "name": "coll",
+                    "types": [
+                        "HFontCollection"
+                    ]
+                },
+                {
+                    "doc": "the font",
+                    "is_optional": "False",
+                    "name": "font",
+                    "types": [
+                        "HFont"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the result. FONT_RESULT_OK if successful",
+                    "name": "result",
+                    "types": [
+                        "FontResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Handle that holds a collection of fonts to use dur...",
+            "description": "Handle that holds a collection of fonts to use during text shaping",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HFontCollection",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        }
+    ],
+    "info": {
+        "brief": "SDK Font Collection API documentation",
+        "description": "Font API for grouping multiple fonts into a collection",
+        "description_html": "<p>Font API for grouping multiple fonts into a collection</p>",
+        "file": "fontcollection.h",
+        "include": "dmsdk/font/fontcollection.h",
+        "language": "C++",
+        "name": "FontCollection",
+        "namespace": "FontCollection",
+        "notes": [],
+        "path": "engine/font/src/dmsdk/font/fontcollection.h",
+        "type": "Defold C++"
+    }
+}

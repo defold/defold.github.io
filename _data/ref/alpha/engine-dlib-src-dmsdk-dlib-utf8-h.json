@@ -1,6 +1,70 @@
 {
     "elements": [
         {
+            "brief": "Checks if a codepoint is a breaking whitespace",
+            "description": "Checks if a codepoint is a breaking whitespace",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "IsBreaking",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the codepoint",
+                    "is_optional": "False",
+                    "name": "c",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if it's a breaking whitespace",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Checks if a codepoint is a whitespace",
+            "description": "Checks if a codepoint is a whitespace",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "IsWhiteSpace",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the codepoint",
+                    "is_optional": "False",
+                    "name": "c",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if it's a whitespace",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "get next unicode character in utf-8 string.",
             "description": "Get next unicode character in utf-8 string. Iteration terminates at '\\0' and repeated invocations will return '\\0'",
             "error": "",

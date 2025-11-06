@@ -1,0 +1,503 @@
+{
+    "elements": [
+        {
+            "brief": "A handle representing a text layout",
+            "description": "A handle representing a text layout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HTextLayout",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "An enum representing text layout directions",
+            "description": "An enum representing text layout directions",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "  Left-to-right text direction",
+                    "name": "TEXT_DIRECTION_LTR",
+                    "type": ""
+                },
+                {
+                    "doc": "  Right-to-left text direction",
+                    "name": "TEXT_DIRECTION_RTL",
+                    "type": ""
+                }
+            ],
+            "name": "TextDirection",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Glyph representing the final position within a lay...",
+            "description": "Glyph representing the final position within a layout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "The font used for this glyph",
+                    "name": "m_Font",
+                    "type": "HFont"
+                },
+                {
+                    "doc": "the final x position, relative the top-left corner of the layout",
+                    "name": "m_X",
+                    "type": "float"
+                },
+                {
+                    "doc": "the final y position, relative the top-left corner of the layout",
+                    "name": "m_Y",
+                    "type": "float"
+                },
+                {
+                    "doc": "the width of the glyph",
+                    "name": "m_Width",
+                    "type": "float"
+                },
+                {
+                    "doc": "the height of the glyph",
+                    "name": "m_Height",
+                    "type": "float"
+                },
+                {
+                    "doc": "original copdepoint (if available)",
+                    "name": "m_Codepoint",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "the glyph index in the font",
+                    "name": "m_GlyphIndex",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "the index in the original text, that this glyph corresponds to",
+                    "name": "m_Cluster",
+                    "type": "uint16_t"
+                }
+            ],
+            "name": "TextGlyph",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Create a text layout using a font collection\nif su...",
+            "description": "Create a text layout using a font collection\nif successful, the caller must call TextLayoutFree() on the layout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutCreate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the font collection",
+                    "is_optional": "False",
+                    "name": "collection",
+                    "types": [
+                        "HFontCollection"
+                    ]
+                },
+                {
+                    "doc": "an array of codepoints",
+                    "is_optional": "False",
+                    "name": "codepoints",
+                    "types": [
+                        "uint32_t*"
+                    ]
+                },
+                {
+                    "doc": "number of codepoints in the array",
+                    "is_optional": "False",
+                    "name": "num_codepoints",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "the settings used for rendering",
+                    "is_optional": "False",
+                    "name": "settings",
+                    "types": [
+                        "TextLayoutSettings*"
+                    ]
+                },
+                {
+                    "doc": "(out) the output text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the result. TEXT_RESULT_OK if successful",
+                    "name": "result",
+                    "types": [
+                        "TextResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Frees a previously created layout",
+            "description": "Frees a previously created layout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutFree",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the lines in the layout",
+            "description": "Get the lines in the layout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutGetBounds",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the total width of the layout (out)",
+                    "name": "width",
+                    "types": [
+                        "float*"
+                    ]
+                },
+                {
+                    "doc": "the total height of the layout (out)",
+                    "name": "height",
+                    "types": [
+                        "float*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the glyph count in the layout",
+            "description": "Get the glyph count in the layout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutGetGlyphCount",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the number of glyphs in the layout",
+                    "name": "count",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the glyphs in the layout",
+            "description": "Get the glyphs in the layout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutGetGlyphs",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the array of glyphs in the layout",
+                    "name": "glyphs",
+                    "types": [
+                        "TextGlyph*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the line count in the layout",
+            "description": "Get the line count in the layout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutGetLineCount",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the number of lines in the layout",
+                    "name": "count",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the lines in the layout",
+            "description": "Get the lines in the layout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutGetLines",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the array of lines in the layout",
+                    "name": "lines",
+                    "types": [
+                        "TextLine*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Describes how to do a text layout",
+            "description": "Describes how to do a text layout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "The desired size of the font (in pixels)",
+                    "name": "m_Size",
+                    "type": "float"
+                },
+                {
+                    "doc": "Max layout width. Used only when m_LineBreak is non-zero",
+                    "name": "m_Width",
+                    "type": "float"
+                },
+                {
+                    "doc": "The extra space between each line. Set 1.0f as default.",
+                    "name": "m_Leading",
+                    "type": "float"
+                },
+                {
+                    "doc": "The extra tracking between glyphs. Set 0 as default.",
+                    "name": "m_Tracking",
+                    "type": "float"
+                },
+                {
+                    "doc": "Legacy: Padding for monospace, glyphbank fonts",
+                    "name": "m_Padding",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Allow line breaks",
+                    "name": "m_LineBreak",
+                    "type": "uint8_t:1"
+                },
+                {
+                    "doc": "Legacy: Is the font a monospace font. Current: should be set on the font in the font collection!",
+                    "name": "m_Monospace",
+                    "type": "uint8_t:1"
+                }
+            ],
+            "name": "TextLayoutSettings",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "An enum representing text layout features\nEach fon...",
+            "description": "An enum representing text layout features\nEach font supports a layout type\nThe selected layout type it the minimum value of layout types",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Legacy text shaping api",
+                    "name": "TEXT_LAYOUT_TYPE_LEGACY",
+                    "type": ""
+                },
+                {
+                    "doc": "  Full text shaping api",
+                    "name": "TEXT_LAYOUT_TYPE_FULL",
+                    "type": ""
+                }
+            ],
+            "name": "TextLayoutType",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Represents a line of glyphs",
+            "description": "Represents a line of glyphs",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Width of the line",
+                    "name": "m_Width",
+                    "type": "float"
+                },
+                {
+                    "doc": "Index into the list of glyphs",
+                    "name": "m_Index",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Number of glyphs to render",
+                    "name": "m_Length",
+                    "type": "uint16_t"
+                }
+            ],
+            "name": "TextLine",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "An enum representing text layout results",
+            "description": "An enum representing text layout results",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "TEXT_RESULT_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "TEXT_RESULT_ERROR",
+                    "type": ""
+                }
+            ],
+            "name": "TextResult",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        }
+    ],
+    "info": {
+        "brief": "SDK Text Layout API documentation",
+        "description": "API for laying out complex text into format ready for display",
+        "description_html": "<p>API for laying out complex text into format ready for display</p>",
+        "file": "text_layout.h",
+        "include": "dmsdk/font/text_layout.h",
+        "language": "C++",
+        "name": "TextLayout",
+        "namespace": "TextLayout",
+        "notes": [],
+        "path": "engine/font/src/dmsdk/font/text_layout.h",
+        "type": "Defold C++"
+    }
+}
