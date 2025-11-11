@@ -2,7 +2,7 @@
     "elements": [
         {
             "brief": "Size-bounded string formating.",
-            "description": "Size-bounded string formating. Resulting string is guaranteed to be 0-terminated.",
+            "description": "Size-bounded string formating. Resulting string is guaranteed to be 0-terminated. Unlike snprintf, which\nalways returns the untruncated string length, this function returns -1 if the string was truncated.",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kt\">char</span><span class=\"w\"> </span><span class=\"n\">path</span><span class=\"p\">[</span><span class=\"mi\">64</span><span class=\"p\">];</span><span class=\"w\"></span>\n<span class=\"n\">dmSnPrintf</span><span class=\"p\">(</span><span class=\"n\">path</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">64</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">PATH_FORMAT</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">filename</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
             "language": "",
