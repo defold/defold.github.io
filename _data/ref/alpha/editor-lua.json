@@ -57,936 +57,6 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "error message the signifies bundle abort that is not an error",
-            "description": "Error message the signifies bundle abort that is not an error",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.abort_message",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "VARIABLE"
-        },
-        {
-            "brief": "immutably set a key to value in a table",
-            "description": "Immutably set a key to value in a table",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.assoc",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "the table",
-                    "is_optional": "False",
-                    "name": "table",
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "the key",
-                    "is_optional": "False",
-                    "name": "key",
-                    "types": [
-                        "any"
-                    ]
-                },
-                {
-                    "doc": "the value",
-                    "is_optional": "False",
-                    "name": "value",
-                    "types": [
-                        "any"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "New table if it should be changed by assoc, or the input table otherwise",
-                    "name": "table",
-                    "types": [
-                        "table"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "immutably set a value to a nested path in a table",
-            "description": "Immutably set a value to a nested path in a table",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.assoc_in",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "the table",
-                    "is_optional": "False",
-                    "name": "table",
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "] the keys",
-                    "is_optional": "False",
-                    "name": "keys",
-                    "types": [
-                        "any["
-                    ]
-                },
-                {
-                    "doc": "the value",
-                    "is_optional": "False",
-                    "name": "value",
-                    "types": [
-                        "any"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "New table if it should be changed by assoc_in, or the input table otherwise",
-                    "name": "table",
-                    "types": [
-                        "table"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "helper function for creating a check box component",
-            "description": "Helper function for creating a check box component",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.check_box",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "config table",
-                    "is_optional": "False",
-                    "name": "config",
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "config setter",
-                    "is_optional": "False",
-                    "name": "set_config",
-                    "types": [
-                        "function"
-                    ]
-                },
-                {
-                    "doc": "config key for the selected value",
-                    "is_optional": "False",
-                    "name": "key",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "check box label text",
-                    "is_optional": "False",
-                    "name": "text",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "extra props for <code>editor.ui.check_box</code>",
-                    "is_optional": "True",
-                    "name": "rest_props",
-                    "types": [
-                        "table"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "UI component",
-                    "name": "check_box",
-                    "types": [
-                        "component"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "create a grid row for the common boolean settings",
-            "description": "Create a grid row for the common boolean settings",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.check_boxes_grid_row",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "config map with common boolean keys",
-                    "is_optional": "False",
-                    "name": "config",
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "config setter",
-                    "is_optional": "False",
-                    "name": "set_config",
-                    "types": [
-                        "function"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "] grid row",
-                    "name": "row",
-                    "types": [
-                        "component["
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "create bundle command definition",
-            "description": "Create bundle command definition",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.command",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "Command label, as presented in the UI",
-                    "is_optional": "False",
-                    "name": "label",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "Command id, e.g. <code>\"bundle-my-platform\"</code>, used for re-bundling",
-                    "is_optional": "False",
-                    "name": "id",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "bundle function, will receive a <code>requested_dialog</code> boolean argument",
-                    "is_optional": "False",
-                    "name": "fn",
-                    "types": [
-                        "function"
-                    ]
-                },
-                {
-                    "doc": "extra keys for the command definition, e.g. <code>active</code>",
-                    "is_optional": "True",
-                    "name": "rest",
-                    "types": [
-                        "table"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "create a grid row for the common variant setting",
-            "description": "Create a grid row for the common variant setting",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.common_variant_grid_row",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "config map with <code>variant</code> key",
-                    "is_optional": "False",
-                    "name": "config",
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "config setter",
-                    "is_optional": "False",
-                    "name": "set_config",
-                    "types": [
-                        "function"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "] grid row",
-                    "name": "row",
-                    "types": [
-                        "component["
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "prefs schema for common bundle variants",
-            "description": "prefs schema for common bundle variants",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.common_variant_schema",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "VARIABLE"
-        },
-        {
-            "brief": "get bundle config, optionally showing a dialog to edit the config",
-            "description": "Get bundle config, optionally showing a dialog to edit the config",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.config",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "whether the user explicitly requested a dialog",
-                    "is_optional": "False",
-                    "name": "requested_dialog",
-                    "types": [
-                        "boolean"
-                    ]
-                },
-                {
-                    "doc": "preference key used for loading the bundle config",
-                    "is_optional": "False",
-                    "name": "prefs_key",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "UI component for the dialog, will receive <code>config</code> and (optional) <code>errors</code> props",
-                    "is_optional": "False",
-                    "name": "dialog_component",
-                    "types": [
-                        "component"
-                    ]
-                },
-                {
-                    "doc": "error checking predicate, takes config as an argument; if returns truthy value, it will be passed as a prop to <code>dialog_component</code>",
-                    "is_optional": "True",
-                    "name": "errors_fn",
-                    "types": [
-                        "function"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "",
-                    "name": "config",
-                    "types": [
-                        "any"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "helper function for constructing prefs schema for new bundle dialogs",
-            "description": "Helper function for constructing prefs schema for new bundle dialogs",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.config_schema",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "bundle variant schema",
-                    "is_optional": "False",
-                    "name": "variant_schema",
-                    "types": [
-                        "schema"
-                    ]
-                },
-                {
-                    "doc": "extra config properties",
-                    "is_optional": "True",
-                    "name": "properties",
-                    "types": [
-                        "table",
-                        "nil"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "full bundle schema, defines a project-scoped object schema with the following keys:<dl><dt><code>variant</code></dt><dd>the provided variant schema</dd><dt><code>texture_compression <small>string</small></code></dt><dd>either <code>enabled</code>, <code>disabled</code> or <code>editor</code></dd><dt><code>with_symbols <small>boolean</small></code></dt><dt><code>build_report <small>boolean</small></code></dt><dt><code>liveupdate <small>boolean</small></code></dt><dt><code>contentless <small>boolean</small></code></dt></dl>",
-                    "name": "schema",
-                    "types": [
-                        "schema"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "create bob bundle",
-            "description": "Create bob bundle",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.create",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "bundle config",
-                    "is_optional": "False",
-                    "name": "config",
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "bundle output directory",
-                    "is_optional": "False",
-                    "name": "output_directory",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "extra bob opts, presumably produced from config",
-                    "is_optional": "False",
-                    "name": "extra_bob_opts",
-                    "types": [
-                        "table"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "create a grid row for the desktop variant setting",
-            "description": "Create a grid row for the desktop variant setting",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.desktop_variant_grid_row",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "config table with <code>variant</code> key",
-                    "is_optional": "False",
-                    "name": "config",
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "config setter",
-                    "is_optional": "False",
-                    "name": "set_config",
-                    "types": [
-                        "function"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "] grid row",
-                    "name": "row",
-                    "types": [
-                        "component["
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "prefs schema for desktop bundle variants",
-            "description": "prefs schema for desktop bundle variants",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.desktop_variant_schema",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "VARIABLE"
-        },
-        {
-            "brief": "helper function for creating a bundle dialog component",
-            "description": "Helper function for creating a bundle dialog component",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.dialog",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "dialog heading text",
-                    "is_optional": "False",
-                    "name": "heading",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "config map with common boolean keys",
-                    "is_optional": "False",
-                    "name": "config",
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "dialog hint text",
-                    "is_optional": "False",
-                    "name": "hint",
-                    "types": [
-                        "string",
-                        "nil"
-                    ]
-                },
-                {
-                    "doc": "dialog error text",
-                    "is_optional": "False",
-                    "name": "error",
-                    "types": [
-                        "string",
-                        "nil"
-                    ]
-                },
-                {
-                    "doc": "[]] grid rows of UI elements, dialog content",
-                    "is_optional": "False",
-                    "name": "rows",
-                    "types": [
-                        "component["
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "UI component",
-                    "name": "dialog",
-                    "types": [
-                        "component"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "helper function for creating an external file field component",
-            "description": "Helper function for creating an external file field component",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.external_file_field",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "config map with common boolean keys",
-                    "is_optional": "False",
-                    "name": "config",
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "config setter",
-                    "is_optional": "False",
-                    "name": "set_config",
-                    "types": [
-                        "function"
-                    ]
-                },
-                {
-                    "doc": "config key for the set",
-                    "is_optional": "False",
-                    "name": "key",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "error message",
-                    "is_optional": "True",
-                    "name": "error",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "extra props for <code>editor.ui.external_file_field</code>",
-                    "is_optional": "True",
-                    "name": "rest_props",
-                    "types": [
-                        "table"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "UI component",
-                    "name": "external_file_field",
-                    "types": [
-                        "component"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "return a 2-element array that represents a single grid row in a bundle dialog",
-            "description": "Return a 2-element array that represents a single grid row in a bundle dialog",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.grid_row",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "optional string label",
-                    "is_optional": "False",
-                    "name": "text",
-                    "types": [
-                        "string",
-                        "nil"
-                    ]
-                },
-                {
-                    "doc": "] either a single UI component, or an array of components (will be laid out vertically)",
-                    "is_optional": "False",
-                    "name": "content",
-                    "types": [
-                        "component",
-                        "component["
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "] a single grid row",
-                    "name": "row",
-                    "types": [
-                        "component["
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "make stringifier function that first performs the label lookup in a provided table",
-            "description": "Make stringifier function that first performs the label lookup in a provided table",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.make_to_string_lookup",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "table from values to their corresponding string representation",
-                    "is_optional": "False",
-                    "name": "table",
-                    "types": [
-                        "table"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "stringifier function",
-                    "name": "to_string",
-                    "types": [
-                        "function"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "get bundle output directory, optionally showing a directory selection dialog",
-            "description": "Get bundle output directory, optionally showing a directory selection dialog",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.output_directory",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "whether the user explicitly requested a dialog",
-                    "is_optional": "False",
-                    "name": "requested_dialog",
-                    "types": [
-                        "boolean"
-                    ]
-                },
-                {
-                    "doc": "output subdir, usually a platform name",
-                    "is_optional": "False",
-                    "name": "output_subdir",
-                    "types": [
-                        "string"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "helper function for creating a select box component",
-            "description": "Helper function for creating a select box component",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.select_box",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "config table",
-                    "is_optional": "False",
-                    "name": "config",
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "config setter",
-                    "is_optional": "False",
-                    "name": "set_config",
-                    "types": [
-                        "function"
-                    ]
-                },
-                {
-                    "doc": "config key for the selected value",
-                    "is_optional": "False",
-                    "name": "key",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "] select box options",
-                    "is_optional": "False",
-                    "name": "options",
-                    "types": [
-                        "any["
-                    ]
-                },
-                {
-                    "doc": "option stringifier",
-                    "is_optional": "False",
-                    "name": "to_string",
-                    "types": [
-                        "function"
-                    ]
-                },
-                {
-                    "doc": "extra props for <code>editor.ui.select_box</code>",
-                    "is_optional": "True",
-                    "name": "rest_props",
-                    "types": [
-                        "table"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "UI component",
-                    "name": "select_box",
-                    "types": [
-                        "component"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "helper function for creating a check box for an enum value of set config key",
-            "description": "Helper function for creating a check box for an enum value of set config key",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.set_element_check_box",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "config map with common boolean keys",
-                    "is_optional": "False",
-                    "name": "config",
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "config setter",
-                    "is_optional": "False",
-                    "name": "set_config",
-                    "types": [
-                        "function"
-                    ]
-                },
-                {
-                    "doc": "config key for the set",
-                    "is_optional": "False",
-                    "name": "key",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "enum value in the set",
-                    "is_optional": "False",
-                    "name": "element",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "check box label text",
-                    "is_optional": "False",
-                    "name": "text",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "error message",
-                    "is_optional": "True",
-                    "name": "error",
-                    "types": [
-                        "string"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "UI component",
-                    "name": "check_box",
-                    "types": [
-                        "component"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "create a grid row for the texture compression setting",
-            "description": "Create a grid row for the texture compression setting",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "editor.bundle.texture_compression_grid_row",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "config map with <code>texture_compression</code> key",
-                    "is_optional": "False",
-                    "name": "config",
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "config setter",
-                    "is_optional": "False",
-                    "name": "set_config",
-                    "types": [
-                        "function"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "] grid row",
-                    "name": "row",
-                    "types": [
-                        "component["
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
             "brief": "check if <code>editor.tx.add()</code> (as well as <code>editor.tx.clear()</code> and <code>editor.tx.remove()</code>) transaction with this property won't throw an error",
             "description": "Check if <code>editor.tx.add()</code> (as well as <code>editor.tx.clear()</code> and <code>editor.tx.remove()</code>) transaction with this property won't throw an error",
             "error": "",
@@ -1202,7 +272,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "A table with the following keys:<dl><dt><code>label <small>string</small></code></dt><dd>required, user-visible command name</dd><dt><code>locations <small>string[]</small></code></dt><dd>required, a non-empty list of locations where the command is displayed in the editor, values are either <code>\"Edit\"</code>, <code>\"View\"</code>, <code>\"Project\"</code>, <code>\"Debug\"</code> (the editor menubar), <code>\"Assets\"</code> (the assets pane), or <code>\"Outline\"</code> (the outline pane)</dd><dt><code>query <small>table</small></code></dt><dd>optional, a query that both controls the command availability and provides additional information to the command handler functions; a table with the following keys:<dl><dt><code>selection <small>table</small></code></dt><dd>current selection, a table with the following keys:<dl><dt><code>type <small>string</small></code></dt><dd>either <code>\"resource\"</code> (selected resource) or <code>\"outline\"</code> (selected outline node)</dd><dt><code>cardinality <small>string</small></code></dt><dd>either <code>\"one\"</code> (will use first selected item) or <code>\"many\"</code> (will use all selected items)</dd></dl></dd><dt><code>argument <small>table</small></code></dt><dd>the command argument</dd></dl></dd><dt><code>id <small>string</small></code></dt><dd>optional, keyword identifier that may be used for assigning a shortcut to a command; should be a dot-separated identifier string, e.g. <code>\"my-extension.do-stuff\"</code></dd><dt><code>active <small>function</small></code></dt><dd>optional function that additionally checks if a command is active in the current context; will receive opts table with values populated by the query; should be fast to execute since the editor might invoke it in response to UI interactions (on key typed, mouse clicked)</dd><dt><code>run <small>function</small></code></dt><dd>optional function that is invoked when the user decides to execute the command; will receive opts table with values populated by the query</dd></dl>",
+                    "doc": "A table with the following keys:<dl><dt><code>label <small>string, message</small></code></dt><dd>required, user-visible command name, either a string or a localization message</dd><dt><code>locations <small>string[]</small></code></dt><dd>required, a non-empty list of locations where the command is displayed in the editor, values are either <code>\"Edit\"</code>, <code>\"View\"</code>, <code>\"Project\"</code>, <code>\"Debug\"</code> (the editor menubar), <code>\"Assets\"</code> (the assets pane), or <code>\"Outline\"</code> (the outline pane)</dd><dt><code>query <small>table</small></code></dt><dd>optional, a query that both controls the command availability and provides additional information to the command handler functions; a table with the following keys:<dl><dt><code>selection <small>table</small></code></dt><dd>current selection, a table with the following keys:<dl><dt><code>type <small>string</small></code></dt><dd>either <code>\"resource\"</code> (selected resource) or <code>\"outline\"</code> (selected outline node)</dd><dt><code>cardinality <small>string</small></code></dt><dd>either <code>\"one\"</code> (will use first selected item) or <code>\"many\"</code> (will use all selected items)</dd></dl></dd><dt><code>argument <small>table</small></code></dt><dd>the command argument</dd></dl></dd><dt><code>id <small>string</small></code></dt><dd>optional, keyword identifier that may be used for assigning a shortcut to a command; should be a dot-separated identifier string, e.g. <code>\"my-extension.do-stuff\"</code></dd><dt><code>active <small>function</small></code></dt><dd>optional function that additionally checks if a command is active in the current context; will receive opts table with values populated by the query; should be fast to execute since the editor might invoke it in response to UI interactions (on key typed, mouse clicked)</dd><dt><code>run <small>function</small></code></dt><dd>optional function that is invoked when the user decides to execute the command; will receive opts table with values populated by the query</dd></dl>",
                     "is_optional": "False",
                     "name": "opts",
                     "types": [
@@ -2484,7 +1554,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Optional props: <dl><dt><code>on_pressed <small>function</small></code></dt><dd>button press callback, will be invoked without arguments when the user presses the button</dd><dt><code>text <small>string</small></code></dt><dd>the text</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>icon <small>string</small></code></dt><dd>predefined icon name; either: <ul><li><code>editor.ui.ICON.OPEN_RESOURCE</code></li><li><code>editor.ui.ICON.PLUS</code></li><li><code>editor.ui.ICON.MINUS</code></li><li><code>editor.ui.ICON.CLEAR</code></li></ul></dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "doc": "Optional props: <dl><dt><code>on_pressed <small>function</small></code></dt><dd>button press callback, will be invoked without arguments when the user presses the button</dd><dt><code>text <small>string, message</small></code></dt><dd>the text, either a string or a localization message</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>icon <small>string</small></code></dt><dd>predefined icon name; either: <ul><li><code>editor.ui.ICON.OPEN_RESOURCE</code></li><li><code>editor.ui.ICON.PLUS</code></li><li><code>editor.ui.ICON.MINUS</code></li><li><code>editor.ui.ICON.CLEAR</code></li></ul></dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
                     "is_optional": "False",
                     "name": "props",
                     "types": [
@@ -2516,7 +1586,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Optional props: <dl><dt><code>value <small>boolean</small></code></dt><dd>determines if the checkbox should appear checked</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>change callback, will receive the new value</dd><dt><code>text <small>string</small></code></dt><dd>the text</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string</small></code></dt><dd>issue message, will be shown in a tooltip</dd></dl></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "doc": "Optional props: <dl><dt><code>value <small>boolean</small></code></dt><dd>determines if the checkbox should appear checked</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>change callback, will receive the new value</dd><dt><code>text <small>string, message</small></code></dt><dd>the text, either a string or a localization message</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string, message</small></code></dt><dd>issue message that will be shown in a tooltip; either a string or a localization message</dd></dl></dd><dt><code>tooltip <small>string, message</small></code></dt><dd>tooltip message shown on hover; either a string or a localization message</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
                     "is_optional": "False",
                     "name": "props",
                     "types": [
@@ -2655,7 +1725,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Required props: <dl><dt><code>title <small>string</small></code></dt><dd>OS dialog window title</dd></dl>  Optional props: <dl><dt><code>header <small>component</small></code></dt><dd>top part of the dialog, defaults to <code>editor.ui.heading({text = props.title})</code></dd><dt><code>content <small>component</small></code></dt><dd>content of the dialog</dd><dt><code>buttons <small>component[]</small></code></dt><dd>array of <code>editor.ui.dialog_button(...)</code> components, footer of the dialog. Defaults to a single Close button</dd></dl>",
+                    "doc": "Required props: <dl><dt><code>title <small>string, message</small></code></dt><dd>OS dialog window title, either a string or a localization message</dd></dl>  Optional props: <dl><dt><code>header <small>component</small></code></dt><dd>top part of the dialog, defaults to <code>editor.ui.heading({text = props.title})</code></dd><dt><code>content <small>component</small></code></dt><dd>content of the dialog</dd><dt><code>buttons <small>component[]</small></code></dt><dd>array of <code>editor.ui.dialog_button(...)</code> components, footer of the dialog. Defaults to a single Close button</dd></dl>",
                     "is_optional": "False",
                     "name": "props",
                     "types": [
@@ -2687,7 +1757,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Required props: <dl><dt><code>text <small>string</small></code></dt><dd>button text</dd></dl>  Optional props: <dl><dt><code>result <small>any</small></code></dt><dd>value returned by <code>editor.ui.show_dialog(...)</code> if this button is pressed</dd><dt><code>default <small>boolean</small></code></dt><dd>if set, pressing <code>Enter</code> in the dialog will trigger this button</dd><dt><code>cancel <small>boolean</small></code></dt><dd>if set, pressing <code>Escape</code> in the dialog will trigger this button</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the button can be interacted with</dd></dl>",
+                    "doc": "Required props: <dl><dt><code>text <small>string, message</small></code></dt><dd>button text, either a string or a localization message</dd></dl>  Optional props: <dl><dt><code>result <small>any</small></code></dt><dd>value returned by <code>editor.ui.show_dialog(...)</code> if this button is pressed</dd><dt><code>default <small>boolean</small></code></dt><dd>if set, pressing <code>Enter</code> in the dialog will trigger this button</dd><dt><code>cancel <small>boolean</small></code></dt><dd>if set, pressing <code>Escape</code> in the dialog will trigger this button</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the button can be interacted with</dd></dl>",
                     "is_optional": "False",
                     "name": "props",
                     "types": [
@@ -2719,7 +1789,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Optional props: <dl><dt><code>value <small>string</small></code></dt><dd>file or directory path; resolved against project root if relative</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive the absolute path of a selected file/folder or nil if the field was cleared; even though the selector dialog allows selecting only files, it's possible to receive directories and non-existent file system entries using text field input</dd><dt><code>title <small>string</small></code></dt><dd>OS window title</dd><dt><code>filters <small>table[]</small></code></dt><dd>File filters, an array of filter tables, where each filter has following keys:<dl><dt><code>description <small>string</small></code></dt><dd>string explaining the filter, e.g. <code>\"Text files (<em>.txt)\"</code></dd><dt><code>extensions <small>string[]</small></code></dt><dd>array of file extension patterns, e.g. <code>\"</em>.txt\"</code>, <code>\"<em>.</em>\"</code> or <code>\"game.project\"</code></dd></dl></dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string</small></code></dt><dd>issue message, will be shown in a tooltip</dd></dl></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "doc": "Optional props: <dl><dt><code>value <small>string</small></code></dt><dd>file or directory path; resolved against project root if relative</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive the absolute path of a selected file/folder or nil if the field was cleared; even though the selector dialog allows selecting only files, it's possible to receive directories and non-existent file system entries using text field input</dd><dt><code>title <small>string, message</small></code></dt><dd>OS window title, either a string or a localization message</dd><dt><code>filters <small>table[]</small></code></dt><dd>File filters, an array of filter tables, where each filter has following keys:<dl><dt><code>description <small>string, message</small></code></dt><dd>text explaining the filter, either a literal string like <code>\"Text files (<em>.txt)\"</code> or a localization message</dd><dt><code>extensions <small>string[]</small></code></dt><dd>array of file extension patterns, e.g. <code>\"</em>.txt\"</code>, <code>\"<em>.</em>\"</code> or <code>\"game.project\"</code></dd></dl></dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string, message</small></code></dt><dd>issue message that will be shown in a tooltip; either a string or a localization message</dd></dl></dd><dt><code>tooltip <small>string, message</small></code></dt><dd>tooltip message shown on hover; either a string or a localization message</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
                     "is_optional": "False",
                     "name": "props",
                     "types": [
@@ -2783,7 +1853,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Optional props: <dl><dt><code>text <small>string</small></code></dt><dd>the text</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>color <small>string</small></code></dt><dd>semantic color, defaults to <code>editor.ui.COLOR.TEXT</code>; either: <ul><li><code>editor.ui.COLOR.TEXT</code></li><li><code>editor.ui.COLOR.HINT</code></li><li><code>editor.ui.COLOR.OVERRIDE</code></li><li><code>editor.ui.COLOR.WARNING</code></li><li><code>editor.ui.COLOR.ERROR</code></li></ul></dd><dt><code>word_wrap <small>boolean</small></code></dt><dd>determines if the lines of text are word-wrapped when they don't fit in the assigned bounds, defaults to true</dd><dt><code>style <small>string</small></code></dt><dd>heading style, defaults to <code>editor.ui.HEADING_STYLE.H3</code>; either: <ul><li><code>editor.ui.HEADING_STYLE.H1</code></li><li><code>editor.ui.HEADING_STYLE.H2</code></li><li><code>editor.ui.HEADING_STYLE.H3</code></li><li><code>editor.ui.HEADING_STYLE.H4</code></li><li><code>editor.ui.HEADING_STYLE.H5</code></li><li><code>editor.ui.HEADING_STYLE.H6</code></li><li><code>editor.ui.HEADING_STYLE.DIALOG</code></li><li><code>editor.ui.HEADING_STYLE.FORM</code></li></ul></dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "doc": "Optional props: <dl><dt><code>text <small>string, message</small></code></dt><dd>the text, either a string or a localization message</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>color <small>string</small></code></dt><dd>semantic color, defaults to <code>editor.ui.COLOR.TEXT</code>; either: <ul><li><code>editor.ui.COLOR.TEXT</code></li><li><code>editor.ui.COLOR.HINT</code></li><li><code>editor.ui.COLOR.OVERRIDE</code></li><li><code>editor.ui.COLOR.WARNING</code></li><li><code>editor.ui.COLOR.ERROR</code></li></ul></dd><dt><code>word_wrap <small>boolean</small></code></dt><dd>determines if the lines of text are word-wrapped when they don't fit in the assigned bounds, defaults to true</dd><dt><code>style <small>string</small></code></dt><dd>heading style, defaults to <code>editor.ui.HEADING_STYLE.H3</code>; either: <ul><li><code>editor.ui.HEADING_STYLE.H1</code></li><li><code>editor.ui.HEADING_STYLE.H2</code></li><li><code>editor.ui.HEADING_STYLE.H3</code></li><li><code>editor.ui.HEADING_STYLE.H4</code></li><li><code>editor.ui.HEADING_STYLE.H5</code></li><li><code>editor.ui.HEADING_STYLE.H6</code></li><li><code>editor.ui.HEADING_STYLE.DIALOG</code></li><li><code>editor.ui.HEADING_STYLE.FORM</code></li></ul></dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
                     "is_optional": "False",
                     "name": "props",
                     "types": [
@@ -3059,7 +2129,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Optional props: <dl><dt><code>value <small>any</small></code></dt><dd>value</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive the new value</dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string</small></code></dt><dd>issue message, will be shown in a tooltip</dd></dl></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "doc": "Optional props: <dl><dt><code>value <small>any</small></code></dt><dd>value</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive the new value</dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string, message</small></code></dt><dd>issue message that will be shown in a tooltip; either a string or a localization message</dd></dl></dd><dt><code>tooltip <small>string, message</small></code></dt><dd>tooltip message shown on hover; either a string or a localization message</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
                     "is_optional": "False",
                     "name": "props",
                     "types": [
@@ -3121,7 +2191,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Optional props: <dl><dt><code>text <small>string</small></code></dt><dd>the text</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>color <small>string</small></code></dt><dd>semantic color, defaults to <code>editor.ui.COLOR.TEXT</code>; either: <ul><li><code>editor.ui.COLOR.TEXT</code></li><li><code>editor.ui.COLOR.HINT</code></li><li><code>editor.ui.COLOR.OVERRIDE</code></li><li><code>editor.ui.COLOR.WARNING</code></li><li><code>editor.ui.COLOR.ERROR</code></li></ul></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "doc": "Optional props: <dl><dt><code>text <small>string, message</small></code></dt><dd>the text, either a string or a localization message</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>color <small>string</small></code></dt><dd>semantic color, defaults to <code>editor.ui.COLOR.TEXT</code>; either: <ul><li><code>editor.ui.COLOR.TEXT</code></li><li><code>editor.ui.COLOR.HINT</code></li><li><code>editor.ui.COLOR.OVERRIDE</code></li><li><code>editor.ui.COLOR.WARNING</code></li><li><code>editor.ui.COLOR.ERROR</code></li></ul></dd><dt><code>tooltip <small>string, message</small></code></dt><dd>tooltip message shown on hover; either a string or a localization message</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
                     "is_optional": "False",
                     "name": "props",
                     "types": [
@@ -3153,7 +2223,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Optional props: <dl><dt><code>value <small>any</small></code></dt><dd>value</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive the new value</dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string</small></code></dt><dd>issue message, will be shown in a tooltip</dd></dl></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "doc": "Optional props: <dl><dt><code>value <small>any</small></code></dt><dd>value</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive the new value</dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string, message</small></code></dt><dd>issue message that will be shown in a tooltip; either a string or a localization message</dd></dl></dd><dt><code>tooltip <small>string, message</small></code></dt><dd>tooltip message shown on hover; either a string or a localization message</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
                     "is_optional": "False",
                     "name": "props",
                     "types": [
@@ -3299,7 +2369,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Optional props: <dl><dt><code>text <small>string</small></code></dt><dd>the text</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>color <small>string</small></code></dt><dd>semantic color, defaults to <code>editor.ui.COLOR.TEXT</code>; either: <ul><li><code>editor.ui.COLOR.TEXT</code></li><li><code>editor.ui.COLOR.HINT</code></li><li><code>editor.ui.COLOR.OVERRIDE</code></li><li><code>editor.ui.COLOR.WARNING</code></li><li><code>editor.ui.COLOR.ERROR</code></li></ul></dd><dt><code>word_wrap <small>boolean</small></code></dt><dd>determines if the lines of text are word-wrapped when they don't fit in the assigned bounds, defaults to true</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "doc": "Optional props: <dl><dt><code>text <small>string, message</small></code></dt><dd>the text, either a string or a localization message</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>color <small>string</small></code></dt><dd>semantic color, defaults to <code>editor.ui.COLOR.TEXT</code>; either: <ul><li><code>editor.ui.COLOR.TEXT</code></li><li><code>editor.ui.COLOR.HINT</code></li><li><code>editor.ui.COLOR.OVERRIDE</code></li><li><code>editor.ui.COLOR.WARNING</code></li><li><code>editor.ui.COLOR.ERROR</code></li></ul></dd><dt><code>word_wrap <small>boolean</small></code></dt><dd>determines if the lines of text are word-wrapped when they don't fit in the assigned bounds, defaults to true</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
                     "is_optional": "False",
                     "name": "props",
                     "types": [
@@ -3331,7 +2401,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Optional props: <dl><dt><code>value <small>string</small></code></dt><dd>resource path (must start with <code>/</code>)</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive either resource path of a selected resource or nil when the field is cleared; even though the resource selector dialog allows filtering on resource extensions, it's possible to receive resources with other extensions and non-existent resources using text field input</dd><dt><code>title <small>string</small></code></dt><dd>dialog title, defaults to <code>\"Select Resource\"</code></dd><dt><code>extensions <small>string[]</small></code></dt><dd>if specified, restricts selectable resources in the dialog to specified file extensions; e.g. <code>{\"collection\", \"go\"}</code></dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string</small></code></dt><dd>issue message, will be shown in a tooltip</dd></dl></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "doc": "Optional props: <dl><dt><code>value <small>string</small></code></dt><dd>resource path (must start with <code>/</code>)</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive either resource path of a selected resource or nil when the field is cleared; even though the resource selector dialog allows filtering on resource extensions, it's possible to receive resources with other extensions and non-existent resources using text field input</dd><dt><code>title <small>string, message</small></code></dt><dd>dialog title, either a string or a localization message, defaults to <code>localization.message(\"dialog.select-resource.title\")</code></dd><dt><code>extensions <small>string[]</small></code></dt><dd>if specified, restricts selectable resources in the dialog to specified file extensions; e.g. <code>{\"collection\", \"go\"}</code></dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string, message</small></code></dt><dd>issue message that will be shown in a tooltip; either a string or a localization message</dd></dl></dd><dt><code>tooltip <small>string, message</small></code></dt><dd>tooltip message shown on hover; either a string or a localization message</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
                     "is_optional": "False",
                     "name": "props",
                     "types": [
@@ -3395,7 +2465,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Optional props: <dl><dt><code>value <small>any</small></code></dt><dd>selected value</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>change callback, will receive the selected value</dd><dt><code>options <small>any[]</small></code></dt><dd>array of selectable options</dd><dt><code>to_string <small>function</small></code></dt><dd>function that converts an item to a string, defaults to <code>tostring</code></dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string</small></code></dt><dd>issue message, will be shown in a tooltip</dd></dl></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "doc": "Optional props: <dl><dt><code>value <small>any</small></code></dt><dd>selected value</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>change callback, will receive the selected value</dd><dt><code>options <small>any[]</small></code></dt><dd>array of selectable options</dd><dt><code>to_string <small>function</small></code></dt><dd>function that converts an item to a string (or a localization message); defaults to <code>tostring</code></dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string, message</small></code></dt><dd>issue message that will be shown in a tooltip; either a string or a localization message</dd></dl></dd><dt><code>tooltip <small>string, message</small></code></dt><dd>tooltip message shown on hover; either a string or a localization message</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
                     "is_optional": "False",
                     "name": "props",
                     "types": [
@@ -3491,7 +2561,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "<dl><dt><code>path <small>string</small></code></dt><dd>initial file or directory path used by the dialog; resolved against project root if relative</dd><dt><code>title <small>string</small></code></dt><dd>OS window title</dd></dl>",
+                    "doc": "<dl><dt><code>path <small>string</small></code></dt><dd>initial file or directory path used by the dialog; resolved against project root if relative</dd><dt><code>title <small>string, message</small></code></dt><dd>OS window title, either a string or a localization message</dd></dl>",
                     "is_optional": "True",
                     "name": "opts",
                     "types": [
@@ -3524,7 +2594,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "<dl><dt><code>path <small>string</small></code></dt><dd>initial file or directory path used by the dialog; resolved against project root if relative</dd><dt><code>title <small>string</small></code></dt><dd>OS window title</dd><dt><code>filters <small>table[]</small></code></dt><dd>File filters, an array of filter tables, where each filter has following keys:<dl><dt><code>description <small>string</small></code></dt><dd>string explaining the filter, e.g. <code>\"Text files (*.txt)\"</code></dd><dt><code>extensions <small>string[]</small></code></dt><dd>array of file extension patterns, e.g. <code>\"*.txt\"</code>, <code>\"*.*\"</code> or <code>\"game.project\"</code></dd></dl></dd></dl>",
+                    "doc": "<dl><dt><code>path <small>string</small></code></dt><dd>initial file or directory path used by the dialog; resolved against project root if relative</dd><dt><code>title <small>string, message</small></code></dt><dd>OS window title, either a string or a localization message</dd><dt><code>filters <small>table[]</small></code></dt><dd>File filters, an array of filter tables, where each filter has following keys:<dl><dt><code>description <small>string, message</small></code></dt><dd>text explaining the filter, either a literal string like <code>\"Text files (*.txt)\"</code> or a localization message</dd><dt><code>extensions <small>string[]</small></code></dt><dd>array of file extension patterns, e.g. <code>\"*.txt\"</code>, <code>\"*.*\"</code> or <code>\"game.project\"</code></dd></dl></dd></dl>",
                     "is_optional": "True",
                     "name": "opts",
                     "types": [
@@ -3557,7 +2627,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "<dl><dt><code>extensions <small>string[]</small></code></dt><dd>if specified, restricts selectable resources in the dialog to specified file extensions; e.g. <code>{\"collection\", \"go\"}</code></dd><dt><code>selection <small>string</small></code></dt><dd>either <code>\"single\"</code> or <code>\"multiple\"</code>, defaults to <code>\"single\"</code></dd><dt><code>title <small>string</small></code></dt><dd>dialog title, defaults to <code>\"Select Resource\"</code></dd></dl>",
+                    "doc": "<dl><dt><code>extensions <small>string[]</small></code></dt><dd>if specified, restricts selectable resources in the dialog to specified file extensions; e.g. <code>{\"collection\", \"go\"}</code></dd><dt><code>selection <small>string</small></code></dt><dd>either <code>\"single\"</code> or <code>\"multiple\"</code>, defaults to <code>\"single\"</code></dd><dt><code>title <small>string, message</small></code></dt><dd>dialog title, either a string or a localization message, defaults to <code>localization.message(\"dialog.select-resource.title\")</code></dd></dl>",
                     "is_optional": "True",
                     "name": "opts",
                     "types": [
@@ -3650,7 +2720,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Optional props: <dl><dt><code>value <small>any</small></code></dt><dd>value</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive the new value</dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string</small></code></dt><dd>issue message, will be shown in a tooltip</dd></dl></dd><dt><code>tooltip <small>string</small></code></dt><dd>tooltip message, shown on hover</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
+                    "doc": "Optional props: <dl><dt><code>value <small>any</small></code></dt><dd>value</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive the new value</dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string, message</small></code></dt><dd>issue message that will be shown in a tooltip; either a string or a localization message</dd></dl></dd><dt><code>tooltip <small>string, message</small></code></dt><dd>tooltip message shown on hover; either a string or a localization message</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>",
                     "is_optional": "False",
                     "name": "props",
                     "types": [
@@ -4252,6 +3322,154 @@
             ],
             "replaces": "",
             "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create a message pattern that renders a list with the \"and\" conjunction (for example: a, b, and c) once it is stringified",
+            "description": "Create a message pattern that renders a list with the \"and\" conjunction (for example: a, b, and c) once it is stringified",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "localization.and_list",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "] array of values; each value may be <code>nil</code>, <code>boolean</code>, <code>number</code>, <code>string</code>, or another <code>message</code> instance",
+                    "is_optional": "False",
+                    "name": "items",
+                    "types": [
+                        "any["
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "a userdata value that, when stringified with <code>tostring()</code>, will produce a localized text according to the currently selected language in the editor",
+                    "name": "message",
+                    "types": [
+                        "message"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create a message pattern that concatenates values (similar to <code>table.concat</code>) and performs the actual concatenation when stringified",
+            "description": "Create a message pattern that concatenates values (similar to <code>table.concat</code>) and performs the actual concatenation when stringified",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "localization.concat",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "] array of values; each value may be <code>nil</code>, <code>boolean</code>, <code>number</code>, <code>string</code>, or another <code>message</code> instance",
+                    "is_optional": "False",
+                    "name": "items",
+                    "types": [
+                        "any["
+                    ]
+                },
+                {
+                    "doc": "optional separator inserted between values; defaults to an empty string",
+                    "is_optional": "True",
+                    "name": "separator",
+                    "types": [
+                        "nil",
+                        "boolean",
+                        "number",
+                        "string",
+                        "message"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "a userdata value that, when stringified with <code>tostring()</code>, will produce a localized text according to the currently selected language in the editor",
+                    "name": "message",
+                    "types": [
+                        "message"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create a message pattern for a localization key defined in an <code>.editor_localization</code> file; the actual localization happens when the returned value is stringified",
+            "description": "Create a message pattern for a localization key defined in an <code>.editor_localization</code> file; the actual localization happens when the returned value is stringified",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "localization.message",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "localization key defined in an <code>.editor_localization</code> file",
+                    "is_optional": "False",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "optional table with variables to be substituted in the localized string that uses <a href=\"https://unicode-org.github.io/icu/userguide/format_parse/messages/\">ICU Message Format</a> syntax; keys must be strings; values must be either <code>nil</code>, <code>boolean</code>, <code>number</code>, <code>string</code>, or another <code>message</code> instance",
+                    "is_optional": "True",
+                    "name": "vars",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "a userdata value that, when stringified with <code>tostring()</code>, will produce a localized text according to the currently selected language in the editor",
+                    "name": "message",
+                    "types": [
+                        "message"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create a message pattern that renders a list with the \"or\" conjunction (for example: a, b, or c) once it is stringified",
+            "description": "Create a message pattern that renders a list with the \"or\" conjunction (for example: a, b, or c) once it is stringified",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "localization.or_list",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "] array of values; each value may be <code>nil</code>, <code>boolean</code>, <code>number</code>, <code>string</code>, or another <code>message</code> instance",
+                    "is_optional": "False",
+                    "name": "items",
+                    "types": [
+                        "any["
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "a userdata value that, when stringified with <code>tostring()</code>, will produce a localized text according to the currently selected language in the editor",
+                    "name": "message",
+                    "types": [
+                        "message"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
