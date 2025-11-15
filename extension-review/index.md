@@ -41,4 +41,6 @@ end
 The source code is available on [GitHub](https://github.com/defold/extension-review)
 
 
-## API reference[API Reference - review](/extension-review/review_api)
+## API reference
+## API reference
+[API Reference - review](/extension-review/review_api)
