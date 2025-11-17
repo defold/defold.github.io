@@ -1,0 +1,35 @@
+{
+    "elements": [
+        {
+            "description": "Get information about proxies for a specific url.",
+            "examples": "",
+            "name": "networkinfo.get_proxy_info",
+            "parameters": [
+                {
+                    "doc": "The url to get proxy configurations for\n",
+                    "name": "url",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "A list of proxies to try in order. Each proxy has three values\n  type: direct (no proxy), http, socks\n  host: proxy url\n  port: proxy port number\n",
+                    "name": "table"
+                }
+            ],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "api": "extension-network-info/networkinfo_api",
+        "brief": "networkinfo",
+        "description": "Functions to get information about the network configuration of the device.",
+        "group": "EXTENSIONS",
+        "language": "Lua",
+        "name": "extension-network-info",
+        "namespace": "networkinfo",
+        "type": "Extension"
+    }
+}
