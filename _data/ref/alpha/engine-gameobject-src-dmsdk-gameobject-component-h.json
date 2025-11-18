@@ -1844,6 +1844,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "set the component late update callback",
+            "description": "Set the component late update callback. Called after regular update of all component instances but before render.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetLateUpdateFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentsUpdate"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "set the new world callback",
             "description": "Set the new world callback. Called when a collection (i.e. a \"world\") is created.",
             "error": "",
