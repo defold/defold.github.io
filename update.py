@@ -425,7 +425,7 @@ def generate_llms_full(index):
 def path_to_manuals_anchor(match):
     path = match.group(2)
     anchor = path.replace("/", ":").lstrip(":")
-    anchor = re.sub(":\#.*", "", anchor) # temporarily strip in-documentanchors
+    anchor = re.sub(r":#.*", "", anchor) # temporarily strip in-documentanchors
     return f"(#manuals:{anchor})"
 
 
@@ -445,19 +445,20 @@ def include_matched_file(match):
 
 
 def process_docs(download = False):
-    if download:
-        if os.path.exists(DOCS_ZIP):
-            os.remove(DOCS_ZIP)
-        download_file("https://github.com/defold/doc/archive/master.zip", ".", DOCS_ZIP)
-
-    if not os.path.exists(DOCS_ZIP):
-        print("File {} does not exists".format(DOCS_ZIP))
-        sys.exit(1)
-
-    DOC_DIR=os.environ.get('DM_DOC_DIR', None)
-
     with tmpdir() as tmp_dir:
+        DOC_DIR=os.environ.get('DM_DOC_DIR', None)
         if not DOC_DIR:
+            if download:
+                print("Downloading docs...")
+                if os.path.exists(DOCS_ZIP):
+                    os.remove(DOCS_ZIP)
+                download_file("https://github.com/defold/doc/archive/master.zip", ".", DOCS_ZIP)
+
+            if not os.path.exists(DOCS_ZIP):
+                print("File {} does not exists".format(DOCS_ZIP))
+                sys.exit(1)
+
+            print(f"Unzipping {DOCS_ZIP} to {tmp_dir}...")
             shutil.copyfile(DOCS_ZIP, os.path.join(tmp_dir, DOCS_ZIP))
             unzip(os.path.join(tmp_dir, DOCS_ZIP), tmp_dir)
             DOC_DIR = os.path.join(tmp_dir, "doc-master")
@@ -587,7 +588,7 @@ def process_docs(download = False):
                     path = item["path"][1:]
                     # foo/bar/#anchor -> foo/bar
                     # foo/bar#anchor -> foo/bar
-                    path = re.sub("\/?\#.*", "", path)
+                    path = re.sub(r"/?\#.*", "", path)
                     for language in languages["languages"].keys():
                         if os.path.exists(get_language_specific_dir(language, path + ".md")):
                             item["languages"].append(language)

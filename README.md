@@ -117,10 +117,11 @@ rbenv local $(cat .ruby-version)
 ```
 
 ### 2 Install gems
-The site uses bundler to manage gem dependencies. Install bundler first, then install all dependencies:
+The site uses bundler to manage gem dependencies. Install bundler first, set config directory, then install all dependencies:
 
 ```sh
 gem install bundler
+bundle config set --local path 'vendor/bundle'
 bundle install
 ```
 
