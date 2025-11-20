@@ -1155,6 +1155,46 @@
             "type": "STRUCT"
         },
         {
+            "brief": "Component pre-update function. Run component logic...",
+            "description": "Component pre-update function. Run component logic before main Update and FixedUpdate (optional)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentsPreUpdate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Update parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGameObject::ComponentsUpdateParams&"
+                    ]
+                },
+                {
+                    "doc": "(out) Update result",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "dmGameObject::ComponentsUpdateResult&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "UPDATE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "UpdateResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "Component render function.",
             "description": "Component render function.",
             "error": "",
@@ -1804,6 +1844,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "set the component late update callback",
+            "description": "Set the component late update callback. Called after regular update of all component instances but before render.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetLateUpdateFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentsUpdate"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "set the new world callback",
             "description": "Set the new world callback. Called when a collection (i.e. a \"world\") is created.",
             "error": "",
@@ -1955,6 +2027,38 @@
                     "name": "fn",
                     "types": [
                         "ComponentsPostUpdate"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component pre-update callback",
+            "description": "Set the component pre-update callback. Called before regular update callback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetPreUpdateFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentsPreUpdate"
                     ]
                 }
             ],

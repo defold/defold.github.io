@@ -1,0 +1,242 @@
+{
+    "elements": [
+        {
+            "brief": "Query group mute state",
+            "description": "Query group mute state",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "IsGroupMuted",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "hash of the mixer group (e.g. <code>hash(\"master\")</code>)",
+                    "is_optional": "False",
+                    "name": "group",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "<code>true</code> if the mixer group is muted",
+                    "name": "muted",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "RESULT_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_PARTIAL_DATA",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_OUT_OF_SOURCES",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_EFFECT_NOT_FOUND",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_OUT_OF_INSTANCES",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_RESOURCE_LEAK",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_OUT_OF_BUFFERS",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_INVALID_PROPERTY",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_UNKNOWN_SOUND_TYPE",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_INVALID_STREAM_DATA",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_OUT_OF_MEMORY",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_UNSUPPORTED",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_DEVICE_NOT_FOUND",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_OUT_OF_GROUPS",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_NO_SUCH_GROUP",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_NOTHING_TO_PLAY",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_INIT_ERROR",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_FINI_ERROR",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_NO_DATA",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_END_OF_STREAM",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "RESULT_UNKNOWN_ERROR",
+                    "type": ""
+                }
+            ],
+            "name": "Result",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "Set mute state for a mixer group",
+            "description": "Temporarily mute or restore an individual mixer group.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetGroupMute",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "hash of the mixer group (e.g. <code>hash(\"master\")</code>)",
+                    "is_optional": "False",
+                    "name": "group",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "<code>true</code> to mute, <code>false</code> to restore audio",
+                    "is_optional": "False",
+                    "name": "mute",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Toggle mute state for a mixer group",
+            "description": "Convenience toggle for <code>SetGroupMute</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ToggleGroupMute",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "hash of the mixer group (e.g. <code>hash(\"master\")</code>)",
+                    "is_optional": "False",
+                    "name": "group",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "Sound API documentation",
+        "description": "Functions for controlling the engine sound mixer from native extensions.",
+        "description_html": "<p>Functions for controlling the engine sound mixer from native extensions.</p>",
+        "file": "sound.h",
+        "include": "dmsdk/sound/sound.h",
+        "language": "C++",
+        "name": "Sound",
+        "namespace": "dmSound",
+        "notes": [],
+        "path": "engine/sound/src/dmsdk/sound/sound.h",
+        "type": "Defold C++"
+    }
+}
