@@ -227,11 +227,23 @@ pre {
  */
 
 code,
-kbd,
 pre,
 samp {
   font-family: monospace, monospace;
   font-size: 1em;
+}
+
+/*
+ * Keyboard and input markers in markdown (<kbd></kbd>)
+ */
+kbd {
+  font-family: monospace, monospace;
+  font-size: 1em;
+  background-color: var(--darker);
+  border: 1px solid var(--grey);
+  border-bottom-width: 3px;
+  border-radius: 4px;
+  padding: 0.15em 0.5em;
 }
 
 /* Forms
