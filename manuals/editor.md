@@ -7,6 +7,7 @@ title: Editor overview
 toc:
 - Editor overview
 - Starting the Editor
+- Editor Language
 - The Editor panes
 - 1. Assets pane
 - 2. Editor pane
@@ -20,17 +21,14 @@ toc:
 - Tabs
 - Side-by-side editing
 - The Scene Editor
-- Selecting objects
-- Move tool <kbd>W</kbd>
-- Rotate tool <kbd>E</kbd>
-- Scale tool <kbd>R</kbd>
+- Manipulating objects
 - Visibility filters
 - Creating new project files
 - Templates
 - Importing files to your project
 - Updating the Editor
 - Preferences
-- Editor logs
+- Editor Logs
 - Editor Server
 - Editor Styling
 - FAQ
@@ -44,27 +42,38 @@ The editor allows you to browse and manipulate all files and folders in your gam
 
 When you run the Defold Editor, you are presented with a project selection and creation screen. Click to select what you want to do:
 
-#### MY PROJECTS
-Click to show your recently opened projects so you can quickly access them. This is the default view.
+MY PROJECTS
+: Here are your recently opened projects so you can quickly access them. This is the default view of the starting screen.
 
-If you didn't open any projects earlier, it will show a view like on the left  - you can click `Open From Disk…` to open one using system file browser or click `Create New Project` button and it will switch to a tab `TEMPLATES`, otherwise it will show a list of your projects, like on the right on the below picture:
+  If you didn't open any projects earlier (or removed all), it will show two buttons - you can click `Open From Disk…` to find and open one using system file browser or click `Create New Project` button and it will switch to a tab `TEMPLATES`.
 
-  ![my projects](../images/editor/my_projects.png)
+  ![my projects](../images/editor/start_no_projects.png)
 
-#### TEMPLATES
-Contains empty or almost empty basic projects made for quick start of a new Defold project for certain platforms or using certain extensions.
 
-#### TUTORIALS
-Contains projects with guided tutorials to learn, play and modify, if you would like to follow a tutorial.
+  If you have earlier opened projects, it will show a list of your projects, like on the picture below:
 
-#### SAMPLES
-Contains projects prepared to showcase certain use cases.
+  ![my projects](../images/editor/start_my_projects.png)
 
-  ![new project](../images/editor/new_project.png)
+TEMPLATES
+: Contains empty or almost empty basic projects made for quick start of a new Defold project for certain platforms or using certain extensions.
+
+TUTORIALS
+: Contains projects with guided tutorials to learn, play and modify, if you would like to follow a tutorial.
+
+SAMPLES
+: Contains projects prepared to showcase certain use cases.
+
+  ![new project](../images/editor/start_templates.png)
 
 When you create a new project it is stored on your local drive and any edits you do are saved locally.
 
 You can learn more about the different options in the [Project Setup manual](https://www.defold.com/manuals/project-setup/).
+
+## Editor Language
+
+In the bottom left corner of the starting screen you can see a Language selection - select from the available currently localizations (since Defold 1.11.2). This is also available in the Editor in `File ▸ Preferences ▸ General ▸ Editor Language`.
+
+![new project](../images/editor/languages.png)
 
 ## The Editor panes
 
@@ -168,9 +177,9 @@ If you have multiple files open, a separate tab for each file is shown at the to
 - Click `Close` (<<kbd>Ctrl</kbd>/<kbd>⌘ Cmd</kbd> + <kbd>W</kbd>) a single tab,
 - Click `Close Others` to close all tabs except the selected one,
 - Click `Close All` (<kbd>Ctrl</kbd>/<kbd>⌘ Cmd</kbd> + <kbd>Shift</kbd>+<kbd>W</kbd>) to close all tabs in the active pane,
-- Select `➝| Open As` - to use other than default editor or associated external tool set in `Preferences ▸ Code ▸ Custom Editor`. Check more in [Preferences manual](/manuals/editor-preferences).
+- Select `➝| Open As` - to use other than default editor or associated external tool set in `File ▸ Preferences ▸ Code ▸ Custom Editor`. Check more in [Preferences manual](/manuals/editor-preferences).
 
-![Tabs](../images/editor/tabs.png) ![Tabs](../images/editor/tabs_custom.png)
+![Tabs](../images/editor/tabs_custom.png)
 
 ## Side-by-side editing
 
@@ -192,7 +201,7 @@ If you are working with a 3D project it is worth to check the Toolbar and adjust
 
 ![Scene Editor 3D](../images/editor/3d_scene.png)
 
-### Selecting objects
+### Manipulating objects
 
 <kbd>Left Mouse Click</kbd> on objects in the main window to select them. The rectangle (or cuboid) surrounding the object in the editor view will highlight with cyan to indicate what item is selected. The selected object is also highlighted in the `Outline` view as in the picture above.
 
@@ -201,9 +210,10 @@ If you are working with a 3D project it is worth to check the Toolbar and adjust
   - <kbd>Left Mouse Click</kbd> and <kbd>Drag</kbd> to select all objects inside the selection region.
   - <kbd>Left Mouse Click</kbd> objects in the `Outline`, and while holding <kbd>⇧ Shift</kbd> you can expand selection or while holding <kbd>Ctrl</kbd>/<kbd>⌘ Cmd</kbd> you can (un)select clicked.
 
-### Move tool <kbd>W</kbd>
+#### Move tool
 
 ![Move tool](../images/editor/icon_move.png)
+
 To move objects, use the *Move Tool*. You can find it in the Toolbar in the top right corner of the scene editor, or by pressing the <kbd>W</kbd> key.
 
 ![Move object](../images/editor/move.png)![Move object 3D](../images/editor/move_3d.png)
@@ -214,9 +224,10 @@ The gizmo changes and shows a set of manipulators - squares and arrows (selected
 - 3 red, green and blue arrows along each axis to move the object only along the given X, Y or Z axis.
 - 3 red, green and blue square handles to move the object only on the given plane, e.g. X-Y (blue) and (visible if rotating the camera in 3D) X-Z (green) and Y-Z (red) planes.
 
-### Rotate tool <kbd>E</kbd>
+#### Rotate tool
 
-![Rotate tool](../images/editor/icon_rotate.png) : 
+![Rotate tool](../images/editor/icon_rotate.png)
+
 To rotate objects, use the *Rotate Tool* by selecting it in the Toolbar, or by pressing the <kbd>E</kbd> key.
 
 ![Rotate object](../images/editor/rotate.png)![Rotate object 3D](../images/editor/rotate_3d.png)
@@ -227,9 +238,10 @@ This tool consists of four circular manipulators (selected manipulator will turn
 - 3 smaller red, green and blue circle manipulators allowing rotation around each of the X, Y and Z axes separately. For 2D orthographic view, the 2 of them are perpendicular to the X- and Y-axis, so the circles only appear as two lines crossing the object.
 
 
-### Scale tool <kbd>R</kbd>
+#### Scale tool
 
 ![Scale tool](../images/editor/icon_scale.png)
+
 To scale objects, use the *Scale Tool* by selecting it in the toolbar, or by pressing the <kbd>R</kbd> key.
 
 ![Scale object](../images/editor/scale.png)![Scale object 3D](../images/editor/scale_3d.png)
@@ -250,9 +262,9 @@ Click on the Visibility Eye Icon (`👁`) in the Toolbar to toggle visibility of
 
 ## Creating new project files
 
-To create new resource files, either select `File ▸ New...` and then choose the file type from the menu, or use the context menu:
+To create new resource files, either select `File ▸ New…` and then choose the file type from the menu, or use the context menu:
 
-<kbd>Right Mouse Click</kbd> the target location in the `Assets` browser, then select `New... ▸ [file type]`:
+<kbd>Right Mouse Click</kbd> the target location in the `Assets` browser, then select `New… ▸ [file type]`:
 
 ![create file](../images/editor/create_file.png)
 
@@ -280,7 +292,8 @@ To add asset files (images, sounds, models etc) to your project, simply drag and
 
 The Editor will automatically check for updates when connected to internet. When an update is detected a blue clickable link `Update Available` will be shown in the lower left corner of the project selection screen or in the lower right corner of the Editor window.
 
-![Update from project selection](../images/editor/update_available.png)
+![Update from project selection](../images/editor/update_start.png)
+![Update from Editor](../images/editor/update_available.png)
 
 Press the `Update Available` clickable link to download and update. A confirmation window with information will pop up - click `Download Update` to proceed.
 
@@ -296,13 +309,13 @@ After update is downloaded the blue link will change to `Restart to Update`. Cli
 
 ## Preferences
 
-You can modify the settings of the Editor in the `Preferences` window. To open it click `File ▸ Preferences...` or shortcut <kbd>Ctrl</kbd>/<kbd>⌘ Cmd</kbd> + <kbd>,</kbd>
+You can modify the settings of the Editor in the `Preferences` window. To open it click `File ▸ Preferences…` or shortcut <kbd>Ctrl</kbd>/<kbd>⌘ Cmd</kbd> + <kbd>,</kbd>
 
 Read more details in the [Preferences manual](/manuals/editor-preferences)
 
 ![Preferences](../images/editor/preferences.png)
 
-## Editor logs
+## Editor Logs
 If you run into a problem with the Editor and need to report issue (`Help  ▸ Report Issue`)  it is a good idea to provide log files from the editor itself. To open location of the logs in your system browser click on `Help ▸ Show Logs`.
 
 Read more in [Getting Help manual](/manuals/getting-help/#getting-help).
