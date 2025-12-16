@@ -170,6 +170,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get object pointer from logical index",
+            "description": "Get object pointer from logical index",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPtr",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "index of the object",
+                    "is_optional": "False",
+                    "name": "index",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "a pointer to the object. Null if the logical index wasn't valid",
+                    "name": "object",
+                    "types": [
+                        "T*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the array of currently active objects",
             "description": "Get the array of currently active objects",
             "error": "",
