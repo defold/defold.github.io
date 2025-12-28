@@ -221,7 +221,7 @@
 	{%- for typedef in typedefs -%}
 	{% include ref_anchor_target.html element=typedef %}
 	<h4>{{ typedef.name }}<a href="#{% include ref_anchorlink.html element=typedef %}" class="anchor-link"/></a></h4>
-	<p>{{ typedef.description }}</p>
+	{% include api_c_function.html function=typedef full="yes" %}
 	<hr/>
 	{%- endfor -%}
 {%- endif -%}
