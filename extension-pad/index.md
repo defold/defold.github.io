@@ -8,9 +8,9 @@ toc:
 - Play Asset Delivery
 - Installation
 - Creating asset packs
-- Compile assets
-- Create asset bundle
-- Add asset bundles to the application bundle
+- Prepare asset packs
+- Create asset packs
+- Add asset packs to the application bundle
 - Resign the main application bundle
 - Usage
 - Example
@@ -33,77 +33,135 @@ Select `Project->Fetch Libraries` once you have added the version to `game.proje
 
 ## Creating asset packs
 
-Creating an asset packs involves using the Android tools `aapt2` and `bundletool` and the JDK tool `jarsigner`. All are included in the Defold command line tool `bob.jar` and can be used directly from Bob. There are four steps to create one or more asset packs and include them in the application bundle:
+Creating an asset packs involves using the Android Gradle plugin. The steps to create one or more asset packs and include them in the application bundle:
 
-1. Compile assets
-2. Create asset bundles
-3. Add asset bundles to application bundle
+1. Prepare asset packs
+2. Create asset packs
+3. Add asset packs to application bundle
 4. Sign the application bundle
 
 
-### Compile assets
+### Prepare asset packs
 
-The first step is to run `aapt2` to prepare files for use by the bundle tool. The `aapt2` command takes an `AndroidManifest.xml` and a folder of assets as input and outputs processed files to an output folder. When used as shown below `aapt2` will copy the assets and write a binary version of the `AndroidManifest.xml` to the output folder. The command will also produce a `resources.pb` but this is not needed for assets packs.
-
-```sh
-java -cp bob.jar com.dynamo.bob.tools.AndroidTools aapt2 link --proto-format --output-to-dir -o out --manifest AndroidManifest.xml -A assets
-# resources.pb is not needed for asset packs
-rm out/resources.pb
-```
-
-The `AndroidManifest.xml` configures the asset pack's identifier and delivery mode:
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:dist="http://schemas.android.com/apk/distribution" package="com.defold.pad" split="asset_pack_1">
-    <dist:module dist:type="asset-pack">
-        <dist:delivery>
-            <dist:on-demand/>
-        </dist:delivery>
-        <dist:fusing dist:include="true"/>
-    </dist:module>
-</manifest>
-```
-
-Pay attention to the `<dist:delivery>` tag which specifies the [delivery mode](https://developer.android.com/guide/playcore/asset-delivery).
-
-
-### Create asset bundle
-
-The next step is to create an asset bundle using the `bundletool` command. The `bundletool` command will produce an .aab file from a bundle configuration and a zip file containing the assets and the binary version of the manifest file produced by `aapt2` above.
-
-```sh
-java -cp bob.jar com.dynamo.bob.tools.AndroidTools bundletool build-bundle --modules asset_pack_1.zip --config bundleconfig.json --output asset_pack_1.aab
-```
-
-The `asset_pack_1.zip` must have the following structure:
+Each asset pack should be placed in a separate folder and consist of one or more files and a `build.gradle` file describing the asset pack. There should also be one main `build.gradle` file and one `settings.gradle`. Example folder structure for two asset packs, `asset_pack_1` and `asset_pack_2`:
 
 ```
 <root>
-├── assets
-│   └── <file(s)>
-└── manifest
-    └── AndroidManifest.xml   <-- binary version from aapt2
+├── asset_pack_1
+│   ├── src
+│   │   └── main
+│   │       └── assets
+│   │           └── <file(s)>
+│   └── build.gradle
+├── asset_pack_2
+│   ├── src
+│   │   └── main
+│   │       └── assets
+│   │           └── <file(s)>
+│   └── build.gradle
+├── build.gradle
+└── settings.gradle
 ```
 
-The `bundleconfig.json` is only needed to tell `bundletool` that it is producing a bundle containing only assets:
+The `build.gradle` file in the asset pack folder defines the asset pack name and the [delivery mode](https://developer.android.com/guide/playcore/asset-delivery):
 
-```json
-{
-  "type": "ASSET_ONLY"
+```
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "asset_pack_1"
+    dynamicDelivery {
+        deliveryType = "install-time"
+    }
 }
 ```
 
+The main `build.gradle` file sets up the Android Gradle plugin and lists the asset packs:
 
-### Add asset bundles to the application bundle
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
 
-When all asset bundles have been produced they need to be merged into the the main application bundle. For each asset bundle unzip it, remove the `bundleconfig.pb` and then write the files to the main application bundle.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.13.0'
+    }
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 34
+
+    namespace = "com.defold.pad"
+
+    assetPacks = [":asset_pack_1", ":asset_pack_2"]
+}
+```
+
+The `settings.gradle` is responsible for including the `build.gradle` files in the asset pack sub-folders:
+
+```
+include ':asset_pack_1'
+include ':asset_pack_2'
+```
+
+You can see the complete set up in the example project included with the Play Asset Delivery extension https://github.com/defold/extension-pad/tree/master/assetpacks
+
+
+
+### Create asset packs
+
+The next step is to create the asset packs using the Android Gradle plugin and the `assetPackDebugPreBundleTask` command:
+
 
 ```sh
-unzip asset_pack_1.aab -d out
+gradle assetPackDebugPreBundleTask
+```
+
+The command will produce a .zip file for each asset pack. The zip files will be created in `/build/intermediates/asset_pack_bundle/debug/assetPackDebugPreBundleTask/`. Example:
+
+```
+<root>
+└── build
+    └── intermediates
+        └── asset_pack_bundle
+            └── debug
+                ├── asset_pack_1
+                │   └── asset_pack_1.zip
+                └── asset_pack_2
+                    └── asset_pack_2.zip
+```
+
+
+### Add asset packs to the application bundle
+
+When all asset packs have been produced they need to be merged into the the main application bundle. For each `fast-follow` and `on-demand` asset pack unzip and write the files to the main application bundle:
+
+```sh
+unzip asset_pack_1.zip -d out
 cd out
-# bundleconfig.pb is not needed
-rm bundleconfig.pb
+# -D do not write directory entries to the archive
+zip -r -0 -D main.aab .
+```
+
+For each `install-time` asset pack unzip and write the asset files to the `base/assets/` folder:
+
+```sh
+unzip asset_pack_1.zip -d out
+cd out
+# the manifest/AndroidManifest.xml of the install-time asset pack must be deleted
+rm -rf manifest
+# the files need to be written to the base folder
+mv asset_pack_1 base
 # -D do not write directory entries to the archive
 zip -r -0 -D main.aab .
 ```
