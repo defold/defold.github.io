@@ -754,6 +754,94 @@
             "type": "VARIABLE"
         },
         {
+            "description": "EAuthSessionResponseOK Steam has verified the user is online, the ticket is valid and ticket has not been reused.",
+            "examples": "",
+            "name": "EAuthSessionResponseOK",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EAuthSessionResponseUserNotConnectedToSteam The user in question is not connected to steam.",
+            "examples": "",
+            "name": "EAuthSessionResponseUserNotConnectedToSteam",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EAuthSessionResponseNoLicenseOrExpired The user doesn't have a license for this App ID or the ticket has expired.",
+            "examples": "",
+            "name": "EAuthSessionResponseNoLicenseOrExpired",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EAuthSessionResponseVACBanned The user is VAC banned for this game.",
+            "examples": "",
+            "name": "EAuthSessionResponseVACBanned",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EAuthSessionResponseLoggedInElseWhere The user account has logged in elsewhere and the session containing the game instance has been disconnected.",
+            "examples": "",
+            "name": "EAuthSessionResponseLoggedInElseWhere",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EAuthSessionResponseVACCheckTimedOut VAC has been unable to perform anti-cheat checks on this user.",
+            "examples": "",
+            "name": "EAuthSessionResponseVACCheckTimedOut",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EAuthSessionResponseAuthTicketCanceled The ticket has been canceled by the issuer.",
+            "examples": "",
+            "name": "EAuthSessionResponseAuthTicketCanceled",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EAuthSessionResponseAuthTicketInvalidAlreadyUsed This ticket has already been used, it is not valid.",
+            "examples": "",
+            "name": "EAuthSessionResponseAuthTicketInvalidAlreadyUsed",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EAuthSessionResponseAuthTicketInvalid This ticket is not from a user instance currently connected to steam.",
+            "examples": "",
+            "name": "EAuthSessionResponseAuthTicketInvalid",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EAuthSessionResponsePublisherIssuedBan The user is banned for this game. The ban came via the web api and not VAC.",
+            "examples": "",
+            "name": "EAuthSessionResponsePublisherIssuedBan",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EAuthSessionResponseAuthTicketNetworkIdentityFailure The network identity in the ticket does not match the server authenticating the ticket.",
+            "examples": "",
+            "name": "EAuthSessionResponseAuthTicketNetworkIdentityFailure",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
             "description": "Takes AppID of DLC and checks if the user owns the DLC &amp; if the DLC is installed.",
             "examples": "",
             "name": "steam.apps_is_dlc_installed",
@@ -2204,10 +2292,74 @@
                     "name": "string"
                 },
                 {
+                    "doc": "Ticket handle or null\n",
+                    "name": "number"
+                },
+                {
                     "doc": "Error message or null\n",
                     "name": "string"
                 }
             ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Validate an authentication ticket. Authenticate the ticket from the entity Steam ID to be sure it is valid and isn't reused. Note that identity is not confirmed until the callback ValidateAuthTicketResponse_t is received and the return value in that callback is checked for success.",
+            "examples": "",
+            "name": "steam.user_begin_auth_session",
+            "parameters": [
+                {
+                    "doc": "The auth ticket to validate\n",
+                    "name": "ticket",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The entity's Steam ID that sent this ticket.\n",
+                    "name": "steamId",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Cancels an auth ticket. Cancels an auth ticket received from GetAuthSessionTicket or GetAuthTicketForWebApi. This should be called when no longer playing with the specified entity.",
+            "examples": "",
+            "name": "steam.user_cancel_auth_ticket",
+            "parameters": [
+                {
+                    "doc": "The active auth ticket to cancel.\n",
+                    "name": "ticket",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Ends an auth session. Ends an auth session that was started with BeginAuthSession. This should be called when no longer playing with the specified entity.",
+            "examples": "",
+            "name": "steam.user_end_auth_session",
+            "parameters": [
+                {
+                    "doc": "The entity to end the active auth session with.\n",
+                    "name": "steamId",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
             "type": "FUNCTION"
         },
         {
@@ -2225,11 +2377,11 @@
             ],
             "returnvalues": [
                 {
-                    "doc": "Or null The handle of the requested ticket\n",
+                    "doc": "The handle of the requested ticket\n",
                     "name": "number"
                 },
                 {
-                    "doc": "Or null\n",
+                    "doc": "Error message or null\n",
                     "name": "string"
                 }
             ],
