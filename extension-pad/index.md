@@ -33,7 +33,7 @@ Select `Project->Fetch Libraries` once you have added the version to `game.proje
 
 ## Creating asset packs
 
-Creating an asset pack involves using the Android tools `aapt2` and `bundletool` and the JDK tool `jarsigner`. All are included in the Defold command line tool `bob.jar` and can be used directly from Bob. There are four steps to create one or more asset packs and include them in the application bundle:
+Creating an asset pack involves using the Android tools `aapt2` and the JDK tool `jarsigner`. Both are included in the Defold command line tool `bob.jar` and can be used directly from Bob. There are four steps to create one or more asset packs and include them in the application bundle:
 
 1. Compile assets
 2. Create asset pack
@@ -61,7 +61,7 @@ The `AndroidManifest.xml` configures the asset pack's identifier and delivery mo
 
 Pay attention to the `<dist:delivery>` tag which specifies the [delivery mode](https://developer.android.com/guide/playcore/asset-delivery).
 
-The `aapt2` command will copy the assets and write a binary version of the `AndroidManifest.xml` to the output folder. The command will also produce a `resources.pb` but this is not needed for assets packs.
+The `aapt2` command will copy the assets and write a binary version of the `AndroidManifest.xml` to the output folder. The command will also produce a `resources.pb`, but this file is not needed for assets packs.
 
 ```sh
 java -cp bob.jar com.dynamo.bob.tools.AndroidTools aapt2 link --proto-format --output-to-dir -o out --manifest AndroidManifest.xml -A assets
@@ -83,14 +83,14 @@ out
 The next step is to create an asset pack zip archive from the compiled assets:
 
 ```sh
-# resources.pb is not needed for the asset pack
-rm out/resources.pb
-# move compiled AndroidManifest.xml to correct location
-mkdir out/manifest
-mv out/AndroidManifest.xml out/manifest/AndroidManifest.xml
-# create an uncompressed zip archive of asset pack
 cd out
-zip -r -0 assetpack.zip .
+# resources.pb is not needed for the asset pack
+rm resources.pb
+# move compiled AndroidManifest.xml to correct location
+mkdir manifest
+mv AndroidManifest.xml manifest/AndroidManifest.xml
+# create an uncompressed zip archive of asset pack
+zip -r -0 ../assetpack.zip .
 ```
 
 This will produce a zip archive with the following structure:
@@ -108,11 +108,11 @@ assetpack.zip
 When the asset pack has been produced it needs to be merged into the the main application bundle. Unzip the asset pack archive it and write the files to the main application bundle.
 
 ```sh
-# unzip asset pack to folder
+# unzip asset pack to folder 'assetpack'
 unzip assetpack.zip -d out/assetpack
-cd out
 # -D do not write directory entries to the archive
-zip -r -0 -D main.aab .
+cd out
+zip -r -0 -D path/to/main.aab .
 ```
 
 To better illustrate the final folder structure inside the main application bundle, please refer to the Android Application Bundle Format reference image ([source](https://developer.android.com/guide/app-bundle/app-bundle-format)):
