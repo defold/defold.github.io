@@ -13,6 +13,7 @@ toc:
 - Add asset pack to the application bundle
 - Resign the main application bundle
 - Usage
+- How to use with LiveUpdate
 - Example
 - Source code
 ---
@@ -172,6 +173,36 @@ pad.cancel("asset_pack_1")
 -- remove an on-demand packed that has been fetched
 pad.remove_pack("asset_pack_1")
 ```
+
+## How to use with LiveUpdate
+
+Play Asset Delivery can be used together with [LiveUpdate](//defold.com/manuals/live-update/) to deliver a LiveUpdate archive as part of an asset pack.
+
+For `on-demand` and `fast-follow` asset packs the pack first needs to be be fetched before it can be mounted:
+
+```lua
+
+pad.set_listener(function(_, event)
+	if event.event_type == pad.EVENT_PACK_STATE_UPDATED then
+		local status = pad.get_pack_status(event.pack_name)
+		if status == pad.STATUS_COMPLETED then
+			local location = pad.get_pack_location(event.pack_name)
+			local path = "zip:" .. location .. "/liveupdatearchive.zip"
+			liveupdate.add_mount("levels", path, 10, function (result) end)
+		end
+	end
+end)
+
+pad.fetch("asset_pack_1")
+```
+
+For `install-time` asset packs there is no need to fetch them since they are immediately available when the game is installed. Instead `install-time` asset packs can be accessed using a special zip archive path `zip:/android_asset/myasset.zip` indicating that the archive should be mounted using the Android AssetManager:
+
+```lua
+local path = "zip:/android_asset/liveupdatearchive.zip"
+liveupdate.add_mount("levels", path, 10, function (result) end)
+```
+
 
 ## Example
 
