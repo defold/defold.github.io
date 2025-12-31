@@ -36,16 +36,16 @@ The 10 Defold releases in 2025 included dozens of new features and hundreds of f
 
 | Month | Version |
 |---|---|
-| February | (1.9.7)[https://forum.defold.com/t/defold-1-9-7-has-been-released/79650] |
-| March | (1.9.8)[https://forum.defold.com/t/defold-1-9-8-has-been-released/80012] |
-| April | (1.10.0)[https://forum.defold.com/t/defold-1-10-0-has-been-released/80264] |
-| May | (1.10.1)[https://forum.defold.com/t/defold-1-10-1-has-been-released/80481] |
-| June | (1.10.2)[https://forum.defold.com/t/defold-1-10-2-has-been-released/80687] |
-| July | (1.10.3)[https://forum.defold.com/t/defold-1-10-3-has-been-released/80882] |
-| August | (1.10.4)[https://forum.defold.com/t/defold-1-10-4-has-been-released/81160] |
-| September | (1.11.0)[https://forum.defold.com/t/defold-1-11-0-has-been-released/81515] |
-| October | (1.11.1)[https://forum.defold.com/t/defold-1-11-1-has-been-released/81704] |
-| November | (1.11.2)[https://forum.defold.com/t/defold-1-11-2-has-been-released/81884] |
+| February | [1.9.7](https://forum.defold.com/t/defold-1-9-7-has-been-released/79650) |
+| March | [1.9.8](https://forum.defold.com/t/defold-1-9-8-has-been-released/80012) |
+| April | [1.10.0](https://forum.defold.com/t/defold-1-10-0-has-been-released/80264) |
+| May | [1.10.1](https://forum.defold.com/t/defold-1-10-1-has-been-released/80481) |
+| June | [1.10.2](https://forum.defold.com/t/defold-1-10-2-has-been-released/80687) |
+| July | [1.10.3](https://forum.defold.com/t/defold-1-10-3-has-been-released/80882) |
+| August | [1.10.4](https://forum.defold.com/t/defold-1-10-4-has-been-released/81160) |
+| September | [1.11.0](https://forum.defold.com/t/defold-1-11-0-has-been-released/81515) |
+| October | [1.11.1](https://forum.defold.com/t/defold-1-11-1-has-been-released/81704) |
+| November | [1.11.2](https://forum.defold.com/t/defold-1-11-2-has-been-released/81884) |
 
 ## Rendering and 3D support
 
@@ -122,8 +122,6 @@ We also improved atlas and GUI workflows and performance – particularly for pr
 ### Customizability - Editor Scripts and UI
 
 We continued pushing the Editor in the direction of customization and tooling. Editor Scripts and UI capabilities were expanded and enabled in more contexts ([Project, Debug](https://github.com/defold/defold/pull/10494) and [Scene](https://github.com/defold/defold/pull/10263)), have [HTTP server routes](https://github.com/defold/defold/pull/10314). With Editor Scripts we can edit ParticleFX emitters and modifiers, GUI ParticleFX, GUI nodes, layers, layouts and fonts, tilesource animations, tilemaps, collision groups, collision shapes, collections and game objects and even game.project and many more properties. We can also unpack ZIPs in editor scripts. And the community has already created impressive productivity tools on top of these APIs.
-
-![](/images/posts/defold-2025-retrospective/editor_ui.png)
 
 ### Templates
 
