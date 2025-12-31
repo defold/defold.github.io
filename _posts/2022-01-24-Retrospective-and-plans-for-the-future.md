@@ -3,7 +3,7 @@ layout: post
 title:  Defold in 2021 - Retrospective and plans for the future
 excerpt: In this blog post we take a look at the year that has passed and the plans for next year
 author: Björn Ritzl
-tags: ["news", "roadmap"]
+tags: ["news", "roadmap", "retrospective"]
 ---
 
 # A changing landscape
