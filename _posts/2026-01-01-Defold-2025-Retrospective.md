@@ -22,7 +22,7 @@ In keeping with our philosophy, we strive to avoid breaking changes unless absol
 
 ### Box2D version 3
 
-We upgraded the built-in physics engine to [Box2D version 3](https://defold.com/2025/04/14/Defold-1-10-0/). To make adoption safe and gradual, we shipped Box2D 3 as an optional feature, so developers can opt in via an app manifest and test their projects with the new physics. It behaves similarly in most cases, but due to internal changes, you may notice subtle differences in collision reporting or require minor tuning of physics settings. We plan to make Box2D 3 the default in the near future once we iron out all remaining edge cases, as it was almost a rewrite from scratch.
+We upgraded the built-in physics engine to [Box2D version 3](https://defold.com/2025/04/14/Defold-1-10-0/). To make adoption safe and gradual, we shipped Box2D 3 as an optional feature, so developers can opt in via an app manifest and test their projects with the new physics. It behaves similarly in most cases, but due to internal changes, you may notice subtle differences in collision reporting or require minor tuning of physics settings. We plan to make Box2D 3 the default once we iron out all remaining edge cases, as it was almost a rewrite from scratch.
 
 ### Removal of Scale Along Z
 
@@ -49,7 +49,7 @@ The 10 Defold releases in 2025 included dozens of new features and hundreds of f
 
 ## Rendering and 3D support
 
-We continued moving Defold’s rendering architecture forward with the goal of improving GPU utilization and enabling stronger 3D support. We aim to provide better 3D support and significantly improve GPU usage. We are obviously not moving away from 2D support, but it doesn’t change the fact that we are very happy that more and more devs started making 3D projects in Defold in 2025.
+We continued moving Defold’s rendering architecture forward with the goal of improving GPU utilization and enabling stronger 3D support. We aim to provide better 3D support and significantly improve GPU usage. We are obviously not moving away from 2D support, but it doesn’t change the fact that we are very happy that more and more users started making 3D projects in Defold in 2025.
 
 A key step was the shader pipeline refactor. Defold now uses a [single combined shader resource](https://github.com/defold/defold/pull/10097) per program, allowing multiple materials to share the same underlying program and reducing memory usage.
 
@@ -65,7 +65,7 @@ We expanded GPU-driven rendering capabilities, including [GPU skinning](https://
 
 ![GPU skinning](/images/posts/defold-2025-retrospective/gpu_skinning.png)
 
-To complement this, we added an [option to disable the creation of game objects for each skeleton bone](https://github.com/defold/defold/pull/10885), that allows reducing overhead when instancing animated models and enabling much larger crowds of animated entities. Combined with the model instancing capability introduced earlier (allowing many copies of a mesh to be drawn efficiently), Defold’s 3D rendering stack can now handle significantly more content per frame.
+To complement this, we added an [option to disable the creation of game objects for each skeleton bone](https://github.com/defold/defold/pull/10885), that reduces overhead when instancing animated models and enables much larger crowds of animated entities. Combined with the model instancing capability introduced earlier (allowing many copies of a mesh to be drawn efficiently), Defold’s 3D rendering stack can now handle significantly more content per frame.
 
 ## Xbox support
 
@@ -131,7 +131,7 @@ The editor continues to grow stronger for smoother, more customizable developmen
 
 ## Languages
 
-In 2025 we experimented with both C# and Teal support for Defold, both in two different approaches.
+In 2025 we experimented with both C# (for Native Extensions) and Teal (for scripting) support for Defold.
 
 ### Teal support
 
@@ -181,7 +181,7 @@ Rive continues to evolve quickly, and we’re proud of the improvements and new 
 
 We also improved the Firebase extension to keep pace with SDK changes. The AdMob extension was updated, our Facebook Instant Games extension received a patch, and on the analytics side we integrated newer SDK versions for GameAnalytics.
 
-We also made a fork of community [FMOD extension](https://github.com/dapetcu21/defold-fmod) and created the[official Defold FMOD extension](https://github.com/defold/extension-fmod) out of it - updated to work with FMOD 2.03.09 and it works on more platforms, there’s still some work to be done, but it’s getting closer.
+We also made a fork of community [FMOD extension](https://github.com/dapetcu21/defold-fmod) and created the [official Defold FMOD extension](https://github.com/defold/extension-fmod) out of it - updated to work with FMOD 2.03.09 and it works on more platforms, there’s still some work to be done, but it’s getting closer.
 
 ## Community
 
