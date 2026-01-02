@@ -28,7 +28,7 @@ Where to start? Well, I started tinkering with computers at the age of 11, break
 
 The core of our game is movement and momentum, “got to go fast!”. When you race against others, you try to drain their clocks by finishing a lap first and clock them out! Or you time trial alone and set the world record on every track.
 
-![Sprint City Climbing](/images/posts/developer-spotlight-koen-bollen/sprint_climbing.gif)
+![Sprint City Climbing](/images/posts/developer-spotlight-koen-bollen/sprint_city_climbing.gif)
 
 ##### What are you working on in the project?
 
