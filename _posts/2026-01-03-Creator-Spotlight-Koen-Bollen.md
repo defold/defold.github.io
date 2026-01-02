@@ -28,9 +28,7 @@ Where to start? Well, I started tinkering with computers at the age of 11, break
 
 The core of our game is movement and momentum, “got to go fast!”. When you race against others, you try to drain their clocks by finishing a lap first and clock them out! Or you time trial alone and set the world record on every track.
 
-<video width="640" height="480" controls>
-  <source src="https://www.youtube.com/watch?v=2M4SkQLFRGM" type="video/mp4">
-</video>
+![Sprint City Climbing](/images/posts/developer-spotlight-koen-bollen/sprint_climbing.gif)
 
 ##### What are you working on in the project?
 
@@ -117,3 +115,7 @@ Join us on Discord:
 https://discord.com/invite/sprintcity)
 
 ##### Thank you very much for the interview, and we wish you a tremendous success with Sprint City!
+
+###### Official Sprint City announcement trailer:
+
+[https://www.youtube.com/watch?v=2M4SkQLFRGM](https://www.youtube.com/watch?v=2M4SkQLFRGM)
