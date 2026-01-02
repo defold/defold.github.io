@@ -75,7 +75,7 @@ Three categories:
 
 ##### Sprint City’s art style and animation are striking – the game is set in a seemingly vibrant solarpunk city with cool and funky character animations. Can you tell us about your art pipeline and tools?
 
-Our artists and animator just work in our Git repository, they use Defold to add images to atlases and use our in-game level editor to place decals and other visuals like shadows. Then they make a pull-request(PR) and one of the coders checks their work before we merge it. We also have a bunch of automated checks (like naming conventions on animation names and no capital letters in filename).
+Our artists and animator just work in our Git repository, they use Defold to add images to atlases and use our in-game level editor to place decals and other visuals like shadows. Then they make a pull-request (PR) and one of the coders checks their work before we merge it. We also have a bunch of automated checks (like naming conventions on animation names and no capital letters in filename).
 
 Super useful feature: We use a github Action to automatically build a PR and host that somewhere, so we can play that version without having to pull it and build it locally.
 
@@ -100,7 +100,7 @@ We don’t use the Defold editor a lot - we code in VSCode and only use the Defo
 
 ##### What would be your recommendations for Defold developers?
 
-- Add [Lua type annotations](https://luals.github.io/wiki/annotations/) to everything, from the start! Lua is a great language for hacking, not so great for larger engineering projects.. Adding annotation later on in the project is just not going to happen. Having types (and a system that checks them) will prevent a lot of bugs from being introduced, and helps auto-complete while developing.
+- Add [Lua type annotations](https://luals.github.io/wiki/annotations/) to everything, from the start! Lua is a great language for hacking, not so great for larger engineering projects. Adding annotations later on in the project is just not going to happen. Having types (and a system that checks them) will prevent a lot of bugs from being introduced, and helps auto-complete while developing.
 - I also recommend setting up a repository wide formatter like [StyLua](https://github.com/JohnnyMorganz/StyLua) to never have to think about it again (and enforce it with a Github Action).
 - Have dynamic loading from the start, or very early on. We added dynamic loading (having the game in a Collection Proxy) later on in the process and it was very hard to get it to work and have the communication working in our game. Later we also added large open world loading (where regions load/unload as you run around) and that would have been 100x easier, if created from the start.
 - Your game will be played in different aspect-ratios, make sure you support that from the beginning.
