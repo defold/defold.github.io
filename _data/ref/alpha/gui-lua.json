@@ -3826,6 +3826,66 @@
             "type": "CONSTANT"
         },
         {
+            "brief": "both sides safe area",
+            "description": "Safe area mode that applies insets on all edges.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "gui.SAFE_AREA_BOTH",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "long side safe area",
+            "description": "Safe area mode that applies insets only on the long edges.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "gui.SAFE_AREA_LONG",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "no safe area",
+            "description": "Safe area mode that ignores safe area insets.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "gui.SAFE_AREA_NONE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "short side safe area",
+            "description": "Safe area mode that applies insets only on the short edges.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "gui.SAFE_AREA_SHORT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
             "brief": "convert screen position to the local node position",
             "description": "Convert the screen position to the local position of supplied node",
             "error": "",
@@ -4882,6 +4942,30 @@
                     "types": [
                         "quaternion",
                         "vector4"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "sets the safe area mode for the gui scene",
+            "description": "Sets how the safe area is applied to this gui scene.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "gui.set_safe_area_mode",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "safe area mode\n<ul>\n<li><code>gui.SAFE_AREA_NONE</code></li>\n<li><code>gui.SAFE_AREA_LONG</code></li>\n<li><code>gui.SAFE_AREA_SHORT</code></li>\n<li><code>gui.SAFE_AREA_BOTH</code></li>\n</ul>",
+                    "is_optional": "False",
+                    "name": "mode",
+                    "types": [
+                        "constant"
                     ]
                 }
             ],

@@ -115,6 +115,29 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "get the safe area",
+            "description": "This returns the safe area rectangle (x, y, width, height) and the inset\nvalues relative to the window edges. On platforms without a safe area,\nthis returns the full window size and zero insets.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "window.get_safe_area",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "safe area data\n<dl>\n<dt><code>safe_area</code></dt>\n<dd><span class=\"type\">table</span> table containing these keys:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>x</code></li>\n<li><span class=\"type\">number</span> <code>y</code></li>\n<li><span class=\"type\">number</span> <code>width</code></li>\n<li><span class=\"type\">number</span> <code>height</code></li>\n<li><span class=\"type\">number</span> <code>inset_left</code></li>\n<li><span class=\"type\">number</span> <code>inset_top</code></li>\n<li><span class=\"type\">number</span> <code>inset_right</code></li>\n<li><span class=\"type\">number</span> <code>inset_bottom</code></li>\n</ul>",
+                    "name": "safe_area",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "get the window size",
             "description": "This returns the current window size (width and height).",
             "error": "",
