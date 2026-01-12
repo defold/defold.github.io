@@ -1052,46 +1052,6 @@
             "type": "STRUCT"
         },
         {
-            "brief": "Component fixed update function. Updates all compo...",
-            "description": "Component fixed update function. Updates all component of this type for all game objects",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "ComponentsFixedUpdate",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "Update parameters",
-                    "is_optional": "False",
-                    "name": "params",
-                    "types": [
-                        "const dmGameObject::ComponentsUpdateParams&"
-                    ]
-                },
-                {
-                    "doc": "(out) Update result",
-                    "is_optional": "False",
-                    "name": "params",
-                    "types": [
-                        "dmGameObject::ComponentsUpdateResult&"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "UPDATE_RESULT_OK on success",
-                    "name": "result",
-                    "types": [
-                        "UpdateResult"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "TYPEDEF"
-        },
-        {
             "brief": "Component post update function. The component stat...",
             "description": "Component post update function. The component state should never be modified in this function.",
             "error": "",
@@ -1666,7 +1626,7 @@
                     "is_optional": "False",
                     "name": "fn",
                     "types": [
-                        "ComponentsFixedUpdate"
+                        "ComponentsUpdate"
                     ]
                 }
             ],
@@ -1795,6 +1755,38 @@
                     "name": "fn",
                     "types": [
                         "ComponentInit"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the component late update callback",
+            "description": "Set the component late update callback. Called after regular update of all component instances but before render and before post update.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentTypeSetLateUpdateFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HComponentType"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "ComponentsUpdate"
                     ]
                 }
             ],

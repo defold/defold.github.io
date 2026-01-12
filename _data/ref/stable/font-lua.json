@@ -1,29 +1,96 @@
 {
     "elements": [
         {
-            "brief": "adds more glyphs to a .fontc resource",
-            "description": "Asynchronoously adds more glyphs to a .fontc resource",
+            "brief": "associates a ttf resource to a .fontc file.",
+            "description": "associates a ttf resource to a .fontc file.",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- Add glyphs</span>\n<span class=\"kd\">local</span> <span class=\"n\">requestid</span> <span class=\"o\">=</span> <span class=\"n\">font</span><span class=\"p\">.</span><span class=\"n\">add_glyphs</span><span class=\"p\">(</span><span class=\"s2\">&quot;/path/to/my.fontc&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;abcABC123&quot;</span><span class=\"p\">,</span> <span class=\"kr\">function</span> <span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">,</span> <span class=\"n\">errstring</span><span class=\"p\">)</span>\n        <span class=\"c1\">-- make a note that all the glyphs are loaded</span>\n        <span class=\"c1\">-- and we&#39;re ready to present the text</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">dialog_text_ready</span> <span class=\"o\">=</span> <span class=\"kc\">true</span>\n    <span class=\"kr\">end</span><span class=\"p\">)</span>\n</code></pre></div>\n\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- Remove glyphs</span>\n<span class=\"kd\">local</span> <span class=\"n\">requestid</span> <span class=\"o\">=</span> <span class=\"n\">font</span><span class=\"p\">.</span><span class=\"n\">remove_glyphs</span><span class=\"p\">(</span><span class=\"s2\">&quot;/path/to/my.fontc&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;abcABC123&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">font_hash</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/fonts/roboto.fontc&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">ttf_hash</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/fonts/Roboto/Roboto-Bold.ttf&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">font</span><span class=\"p\">.</span><span class=\"n\">add_font</span><span class=\"p\">(</span><span class=\"n\">font_hash</span><span class=\"p\">,</span> <span class=\"n\">ttf_hash</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
-            "name": "font.add_glyphs",
+            "name": "font.add_font",
             "notes": [
-                "The generated glyph bitmaps are stored in memory, for easy transition into the glyph cache texture.\nYou can call `font.remove_glyphs()` to remove them from memory.",
-                "A glyph residing in the glyph cache will stay there until it's evicted.\nIt will not be removed from the glyph cache by removing the loaded glyphs from the .fontc resource."
+                "The ttf font is loaded via the resource system. There are a few ways it can be accessed:\n    - It was already loaded in the resource system\n    - It is bundled via our game data\n    - It is accessible via a live update mount",
+                "The reference count will increase for the .ttf font"
             ],
             "parameters": [
                 {
                     "doc": "The path to the .fontc resource",
                     "is_optional": "False",
-                    "name": "path",
+                    "name": "fontc",
                     "types": [
                         "string",
                         "hash"
                     ]
                 },
                 {
-                    "doc": "A string with unique unicode characters to be loaded",
+                    "doc": "The path to the .ttf resource",
+                    "is_optional": "False",
+                    "name": "ttf",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets information about a font, such as the associa...",
+            "description": "Gets information about a font, such as the associated font files",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "font.get_info",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The path to the .fontc resource",
+                    "is_optional": "False",
+                    "name": "fontc",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the information table contains these fields:\n<dl>\n<dt><code>path</code></dt>\n<dd><span class=\"type\">hash</span> The path hash of the current file.</dd>\n<dt><code>fonts</code></dt>\n<dd>\n<span class=\"type\">table</span> An array of associated font (e.g. .ttf) files. Each item is a table that contains:\n<dl>\n<dt><code>path</code></dt>\n<dd><span class=\"type\">string</span> The path of the font file</dd>\n<dt><code>path_hash</code></dt>\n<dd><span class=\"type\">hash</span> The path of the font file</dd>\n</dl>\n</dd>\n</dl>",
+                    "name": "info",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "prepopulates the font glyph cache with rasterised ...",
+            "description": "prepopulates the font glyph cache with rasterised glyphs",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">font_hash</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/fonts/roboto.fontc&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">font</span><span class=\"p\">.</span><span class=\"n\">prewarm_text</span><span class=\"p\">(</span><span class=\"n\">font_hash</span><span class=\"p\">,</span> <span class=\"s2\">&quot;Some text&quot;</span><span class=\"p\">,</span> <span class=\"kr\">function</span> <span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">request_id</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">,</span> <span class=\"n\">errstring</span><span class=\"p\">)</span>\n        <span class=\"c1\">-- cache is warm, show the text!</span>\n    <span class=\"kr\">end</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "font.prewarm_text",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The path to the .fontc resource",
+                    "is_optional": "False",
+                    "name": "fontc",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "The text to layout",
                     "is_optional": "False",
                     "name": "text",
                     "types": [
@@ -53,30 +120,33 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "removes glyphs from the font",
-            "description": "Removes glyphs from the font",
+            "brief": "associates a ttf resource to a .fontc file",
+            "description": "associates a ttf resource to a .fontc file",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">font_hash</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/fonts/roboto.fontc&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">ttf_hash</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/fonts/Roboto/Roboto-Bold.ttf&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">font</span><span class=\"p\">.</span><span class=\"n\">remove_font</span><span class=\"p\">(</span><span class=\"n\">font_hash</span><span class=\"p\">,</span> <span class=\"n\">ttf_hash</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
-            "name": "font.remove_glyphs",
-            "notes": [],
+            "name": "font.remove_font",
+            "notes": [
+                "The reference count will decrease for the .ttf font"
+            ],
             "parameters": [
                 {
                     "doc": "The path to the .fontc resource",
                     "is_optional": "False",
-                    "name": "path",
+                    "name": "fontc",
                     "types": [
                         "string",
                         "hash"
                     ]
                 },
                 {
-                    "doc": "A string with unique unicode characters to be removed",
+                    "doc": "The path to the .ttf resource",
                     "is_optional": "False",
-                    "name": "text",
+                    "name": "ttf",
                     "types": [
-                        "string"
+                        "string",
+                        "hash"
                     ]
                 }
             ],

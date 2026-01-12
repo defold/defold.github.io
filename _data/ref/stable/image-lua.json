@@ -1,6 +1,39 @@
 {
     "elements": [
         {
+            "brief": "get the header of an .astc buffer",
+            "description": "get the header of an .astc buffer",
+            "error": "",
+            "examples": "How to get the block size and dimensions from a .astc file\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load_resource</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/cat.astc&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">header</span> <span class=\"o\">=</span> <span class=\"n\">image</span><span class=\"p\">.</span><span class=\"n\">get_astc_header</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span>\n<span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "image.get_astc_header",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": ".astc file data buffer",
+                    "is_optional": "False",
+                    "name": "buffer",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "header or <code>nil</code> if buffer is not a valid .astc. The header has these fields:\n<ul>\n<li><span class=\"type\">number</span> <code>width</code>: image width</li>\n<li><span class=\"type\">number</span> <code>height</code>: image height</li>\n<li><span class=\"type\">number</span> <code>depth</code>: image depth</li>\n<li><span class=\"type\">number</span> <code>block_size_x</code>: block size x</li>\n<li><span class=\"type\">number</span> <code>block_size_y</code>: block size y</li>\n<li><span class=\"type\">number</span> <code>block_size_z</code>: block size z</li>\n</ul>",
+                    "name": "table",
+                    "types": [
+                        "table",
+                        "nil"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "load image from buffer",
             "description": "Load image (PNG or JPEG) from buffer.",
             "error": "",

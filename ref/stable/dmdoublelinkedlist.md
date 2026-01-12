@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: stable
-ref: engine-hid-src-dmsdk-hid-hid-h
+ref: engine-dlib-src-dmsdk-dlib-double_linked_list-h
 language: C++
-title: API reference (Hid)
+title: API reference (Double linked list structs and functions)
 type: Defold C++
 pagefind_exclude: true
 ---
