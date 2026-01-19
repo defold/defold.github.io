@@ -15,6 +15,7 @@ import requests
 import hashlib
 import yaml
 
+from llms import LLMS_DIR, generate_llms_manuals, generate_llms_apis, generate_llms_examples, path_to_manuals_anchor
 from scripts import dedupe_examples_wasm
 from argparse import ArgumentParser
 from contextlib import contextmanager
@@ -42,7 +43,6 @@ PLATFORMINDEX_JSON = os.path.join("_data", "platformindex.json")
 
 REF_DATA_DIR = os.path.join("_data", "ref")
 
-LLMS_DIR = "_llms"
 
 ASSET_MD_FRONTMATTER = """---
 layout: asset
@@ -373,61 +373,6 @@ def update_file_links_with_lang(filename, pattern, language):
         f.write(updated_content)
 
 
-def generate_llms_full(index):
-    llms_content = []
-
-    # Add headline and intro
-    llms_content.append("# Defold Documentation\n")
-    llms_content.append("> Defold is a free game engine with free source code access. It's designed for creating 2D and 3D games across multiple platforms, including mobile, desktop, web, and consoles.\n")
-
-    llms_content.append("This document contains [Defold's official documentation](https://defold.com/manuals/) in a single-file easy-to-search form.")
-    llms_content.append("If you find any issues, please report them [as a GitHub issue](https://github.com/defold/doc/issues), and contributions are very welcome in the form of [pull requests](https://github.com/defold/doc/pulls).\n")
-
-    # Add sections from index
-    manuals_content = []
-    manuals_included = {}
-    llms_content.append("## Manuals\n")
-    for section in index["navigation"]["manuals"]:
-        section_title = section["name"]
-        llms_content.append(f"### {section_title}\n")
-        for item in section["items"]:
-            path = item["path"]
-            title = item["name"]
-            path_no_anchors = re.sub(r"(/)?#.+", "", path)
-            if manuals_included.get(path_no_anchors):
-                print(f" -> already included {path}")
-                anchor = manuals_included.get(path_no_anchors)
-                llms_content.append(f"- [{title}](#{anchor})")
-            else:
-                if not os.path.exists(LLMS_DIR + path_no_anchors + ".md"):
-                    url = path if "https://" in path else "https://defold.com" + path
-                    llms_content.append(f"- [{title}]({url})")
-                    print(f" -> skipping {path}")
-                else:
-                    anchor = path_no_anchors.replace("/", ":").lstrip(":")
-                    manuals_included[path_no_anchors] = anchor
-                    llms_content.append(f"- [{title}](#{anchor})")
-                    contents = read_as_string(LLMS_DIR + path_no_anchors + ".md")
-                    manuals_content.append(f"<!-- {path} -->\n")
-                    manuals_content.append(contents)
-                    manuals_content.append("")
-        llms_content.append("")
-    llms_content.append("")
-
-    llms_content.extend(manuals_content)
-
-    # Write the content to llms-full.txt
-    with open("llms-full.txt", "w", encoding="utf-8") as f:
-        f.write("\n".join(llms_content))
-
-
-# replace the relative links to anchors
-def path_to_manuals_anchor(match):
-    path = match.group(2)
-    anchor = path.replace("/", ":").lstrip(":")
-    anchor = re.sub(r":#.*", "", anchor) # temporarily strip in-documentanchors
-    return f"(#manuals:{anchor})"
-
 
 def include_matched_file(match):
     path = os.path.join("_includes", match.group(1))
@@ -599,8 +544,8 @@ def process_docs(download = False):
         shared_images_dst_dir = os.path.join("shared", "images")
         rmcopytree(shared_images_src_dir, shared_images_dst_dir)
 
-        print("...generating llms-full.txt")
-        generate_llms_full(index)
+        print("...generating llms/manuals")
+        generate_llms_manuals(index)
 
         print("Done")
 
@@ -856,6 +801,9 @@ def process_examples(download = False):
             os.remove(index_file)
         examplesindex.sort(key=lambda x: x.get("path").lower())
         write_as_json(os.path.join("_data", "examplesindex.json"), examplesindex)
+
+        print("...generating llms/examples")
+        generate_llms_examples()
 
         print("...deduplicating wasm artifacts")
         dedupe_examples_wasm.run()
@@ -1364,6 +1312,9 @@ def process_refdoc(download = False):
 
     # write branch index
     write_as_json(os.path.join("_data", "branchindex.json"), branchindex)
+
+    print("...generating llms/apis")
+    generate_llms_apis()
 
 
 

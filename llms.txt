@@ -1,0 +1,22 @@
+# Defold
+
+> Defold is a free, source-available game engine for 2D and 3D games across mobile, desktop, web, and consoles. It uses Lua for scripting, and supports native extensions in C++ and other languages via the SDK.
+
+Key notes:
+
+- Lua is the primary scripting language for game logic and tooling.
+- Native extensions can be written in C++ and bound to Lua; they can also wrap other languages or SDKs.
+
+## Docs
+
+- [Manuals index](https://defold.com/llms/manuals.md): Links to per-manual Markdown files.
+- [API index](https://defold.com/llms/apis.md): Links to per-namespace API Markdown files.
+- [Examples index](https://defold.com/llms/examples.md): Links to per-example Markdown files.
+
+
+## Optional
+
+- [Manuals (single file)](https://defold.com/llms-manuals.txt): All manuals in one Markdown file.
+- [API reference (single file)](https://defold.com/llms-apis.txt): C++/Lua/Extension APIs in one Markdown file.
+- [Examples (single file)](https://defold.com/llms-examples.txt): All examples in one Markdown file.
+- [Manuals + APIs + Examples (single file)](https://defold.com/llms-full.txt): Combined manuals, API reference, and examples.
