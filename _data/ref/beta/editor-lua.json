@@ -877,6 +877,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "one of schema",
+            "description": "one of schema",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.prefs.schema.one_of",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Required opts: <dl><dt><code>schemas <small>schema[]</small></code></dt><dd>alternative schemas</dd></dl>  Optional opts: <dl><dt><code>default <small>any</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>",
+                    "is_optional": "False",
+                    "name": "opts",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prefs schema",
+                    "name": "value",
+                    "types": [
+                        "schema"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "password schema",
             "description": "password schema\nA password is a string that is encrypted when stored in a preference file",
             "error": "",
@@ -3946,6 +3978,70 @@
             ],
             "replaces": "",
             "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "deflate (compress) a buffer",
+            "description": "Deflate (compress) a buffer",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "zlib.deflate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "buffer to deflate",
+                    "is_optional": "False",
+                    "name": "buf",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "deflated buffer",
+                    "name": "buf",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "inflate (decompress) a buffer",
+            "description": "Inflate (decompress) a buffer",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "zlib.inflate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "buffer to inflate",
+                    "is_optional": "False",
+                    "name": "buf",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "inflated buffer",
+                    "name": "buf",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         }
