@@ -2,7 +2,7 @@
 
 This example shows how to animate the rotation of a game object using the euler game object property.
 
-Source: [https://github.com/defold/examples/tree/master/animation/euler_rotation](https://github.com/defold/examples/tree/master/animation/euler_rotation)
+[Project files](https://github.com/defold/examples/tree/master/animation/euler_rotation)
 
 ## Scripts
 

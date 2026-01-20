@@ -2,7 +2,7 @@
 
 This example shows particle effect modifiers. Modifiers are used to alter the path of emitted particles.
 
-Source: [https://github.com/defold/examples/tree/master/particles/modifiers](https://github.com/defold/examples/tree/master/particles/modifiers)
+[Project files](https://github.com/defold/examples/tree/master/particles/modifiers)
 
 Here two modifiers are added to the effect in addition to the emitter. It works as follows:
 

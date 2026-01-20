@@ -2,7 +2,7 @@
 
 Shows how to read mouse/touch movement and mouse/touch button state.
 
-Source: [https://github.com/defold/examples/tree/master/input/mouse_and_touch](https://github.com/defold/examples/tree/master/input/mouse_and_touch)
+[Project files](https://github.com/defold/examples/tree/master/input/mouse_and_touch)
 
 ## Scripts
 

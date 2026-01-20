@@ -2,7 +2,7 @@
 
 This example shows a simple particle effect. The particlefx component has all the values at default, except the image and animation used.
 
-Source: [https://github.com/defold/examples/tree/master/particles/particlefx](https://github.com/defold/examples/tree/master/particles/particlefx)
+[Project files](https://github.com/defold/examples/tree/master/particles/particlefx)
 
 ## Scripts
 

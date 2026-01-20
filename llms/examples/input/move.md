@@ -2,9 +2,7 @@
 
 A very simple 8 ways movement setup with a single game object and a script that listens to input and updates the game object position accordingly.
 
-Source: [https://github.com/defold/examples/tree/master/input/move](https://github.com/defold/examples/tree/master/input/move)
-
-
+[Project files](https://github.com/defold/examples/tree/master/input/move)
 
 ## Scripts
 

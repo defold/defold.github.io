@@ -2,7 +2,7 @@
 
 This example shows how to get and set a font resource on a gui component.
 
-Source: [https://github.com/defold/examples/tree/master/gui/get_set_font](https://github.com/defold/examples/tree/master/gui/get_set_font)
+[Project files](https://github.com/defold/examples/tree/master/gui/get_set_font)
 
 ## Scripts
 

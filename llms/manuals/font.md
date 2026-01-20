@@ -22,7 +22,7 @@ By using "runtime fonts", the .ttf fonts will be bundled as-is, and the rasteriz
 The runtime fonts also have the benefit of supporting full text layout, e.g. right-to-left.
 We currently use the libraries [HarfBuzz](https://github.com/harfbuzz/harfbuzz), [SheenBidi](https://github.com/Tehreer/SheenBidi), [libunibreak](https://github.com/adah1972/libunibreak) and [SkriBidi](https://github.com/memononen/Skribidi).
 
-See [Enabling Runtime Fonts](font#enabling-runtime-fonts.md)
+See [Enabling Runtime Fonts](https://defold.com/llms/manuals/font#enabling-runtime-fonts.md)
 
 ## Font collection
 
@@ -159,7 +159,7 @@ For example - to generate a gradient in a shader fragment, simply write:
 
 `float horizontal_gradient = fract(var_texcoord0.y / texture_size_recip.w);`
 
-For more information about shader uniforms, see the [Shader manual](shader.md).
+For more information about shader uniforms, see the [Shader manual](https://defold.com/llms/manuals/shader.md).
 
 ## Enabling Runtime Fonts
 
@@ -169,7 +169,7 @@ The small downside is the asynchronous nature of generating each glyph.
 
 * Enable the feature by setting `font.runtime_generation` in game.project.
 
-* Add an [App Manifest](app-manifest.md) and enable the `Use full text layout system` option.
+* Add an [App Manifest](https://defold.com/llms/manuals/app-manifest.md) and enable the `Use full text layout system` option.
 This builds a custom engine that has this feature enabled.
 
 This feature is currently experimental, but with the intention to be used as the default workflow in the future.

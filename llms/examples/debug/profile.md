@@ -2,7 +2,7 @@
 
 This example shows the on-screen profiler. It displays useful runtime information.
 
-Source: [https://github.com/defold/examples/tree/master/debug/profile](https://github.com/defold/examples/tree/master/debug/profile)
+[Project files](https://github.com/defold/examples/tree/master/debug/profile)
 
 For more in-depth analysis, the web profiler is usually more suitable. See [the debug manual](/manuals/debugging) for more information.
 

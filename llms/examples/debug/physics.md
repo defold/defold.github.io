@@ -2,7 +2,7 @@
 
 This example allows you to toggle physics debug visualization as well as changing the time step so the simulation runs at one tenth of the speed.
 
-Source: [https://github.com/defold/examples/tree/master/debug/physics](https://github.com/defold/examples/tree/master/debug/physics)
+[Project files](https://github.com/defold/examples/tree/master/debug/physics)
 
 With the physics visualization on, all collision object shapes are visible. In addition, at intersections the normals at the collision points are shown.
 
@@ -12,8 +12,6 @@ The example collection consists of:
 - game object `go` with:
   - label with example description,
   - a script `physics.script` included below.
-
-
 
 This collection is additionally loaded via a `Collection Proxy` component in `main.collection`. Therefore, sending message `set_time_step` to its url `"main:/loader#physicsproxy"` is causing the proxy to have a different update time, causing e.g. the slow-motion effect, which might be helpful when debugging physics.
 

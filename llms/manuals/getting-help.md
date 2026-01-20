@@ -80,6 +80,6 @@ If you run into a problem while using Defold you can try to ask the question on 
 
 The engine, editor and build server generates logging information that can be very valuable when asking for help and debugging an issue. Always provide log files when reporting a problem:
 
-* [Engine logs](debugging-game-and-system-logs.md)
-* [Editor logs](editor#editor-logs.md)
-* [Build server logs](extensions#build-server-logs.md)
+* [Engine logs](https://defold.com/llms/manuals/debugging-game-and-system-logs.md)
+* [Editor logs](https://defold.com/llms/manuals/editor#editor-logs.md)
+* [Build server logs](https://defold.com/llms/manuals/extensions#build-server-logs.md)

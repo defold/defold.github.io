@@ -20,7 +20,7 @@ Capsule shapes are only supported when using 3D physics (configured in the Physi
 A complex shape can either be created from a tilemap component or from a convex hull shape.
 
 ## Tilemap collision shape
-Defold includes a feature allowing you to easily generate physics shapes for the tile source used by a tile map. The [Tilesource manual](tilesource.md) explains how to add collision groups to a tile source and assign tiles to collision groups ([example](https://defold.com/examples/tilemap/collisions/)).
+Defold includes a feature allowing you to easily generate physics shapes for the tile source used by a tile map. The [Tilesource manual](https://defold.com/llms/manuals/tilesource.md) explains how to add collision groups to a tile source and assign tiles to collision groups ([example](https://defold.com/examples/tilemap/collisions/)).
 
 To add collision to a tile map:
 
@@ -77,7 +77,7 @@ There are a number of different external tools that can be used to create collis
 * [Physics Body Editor](https://selimanac.github.io/physics-body-editor/) can be used to create convex hull shapes.
 
 # Scaling collision shapes
-The collision object and its shapes inherit the scale of the game object. To disable this behaviour uncheck the [Allow Dynamic Transforms](project-settings.md) checkbox in the Physics section of *game.project*. Note that only uniform scaling is supported and that the smallest scale value will be used if the scale isn't uniform.
+The collision object and its shapes inherit the scale of the game object. To disable this behaviour uncheck the [Allow Dynamic Transforms](https://defold.com/llms/manuals/project-settings.md) checkbox in the Physics section of *game.project*. Note that only uniform scaling is supported and that the smallest scale value will be used if the scale isn't uniform.
 
 # Resizing collision shapes
 The shapes of a collision object can be resized at runtime using `physics.set_shape()`. Example:
@@ -116,4 +116,4 @@ Collision shapes in 3D physics can be rotated around all axis.
 Collision shapes in 2D physics can only be rotated around the z-axis. Rotation around the x or y axis will yield incorrect results and should be avoided, even when rotating 180 degrees to essentially flip the shape along the x or y axis. To flip a physics shape it is recommended to use [`physics.set_hlip(url, flip)`](https://defold.com/ref/stable/physics/?#physics.set_hflip:url-flip) and [`physics.set_vlip(url, flip)`](https://defold.com/ref/stable/physics/?#physics.set_vflip:url-flip).
 
 # Debugging
-You can [enable Physics debugging](debugging.md) to see the collision shapes at runtime.
+You can [enable Physics debugging](https://defold.com/llms/manuals/debugging.md) to see the collision shapes at runtime.

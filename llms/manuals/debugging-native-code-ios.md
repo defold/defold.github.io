@@ -4,7 +4,7 @@ Here we describe how to debug a build using [Xcode](https://developer.apple.com/
 
 ## Xcode
 
-* Bundle the app by using bob, with the `--with-symbols` option ([more info](debugging-native-code.md)):
+* Bundle the app by using bob, with the `--with-symbols` option ([more info](https://defold.com/llms/manuals/debugging-native-code.md)):
 ```sh
 $ cd myproject
 $ wget http://d.defold.com/archive/<sha1>/bob/bob.jar
@@ -20,7 +20,7 @@ $ ios-deploy -b <AppName>.ipa
 
 	* If it's not using Native Extensions, you can download the `.dSYM` file from [d.defold.com](http://d.defold.com)
 
-	* If you are using a native extension, then the `.dSYM` folder is generated when you build with [bob.jar](bob.md). Only building is required (no archive or bundling):
+	* If you are using a native extension, then the `.dSYM` folder is generated when you build with [bob.jar](https://defold.com/llms/manuals/bob.md). Only building is required (no archive or bundling):
 ```sh
 $ cd myproject
 $ unzip .internal/cache/arm64-ios/build.zip

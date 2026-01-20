@@ -2,7 +2,7 @@
 
 This example demonstrates how to pick a game object from the 3D scene.
 
-Source: [https://github.com/defold/examples/tree/master/input/entity_picking](https://github.com/defold/examples/tree/master/input/entity_picking)
+[Project files](https://github.com/defold/examples/tree/master/input/entity_picking)
 
 This example describes method of selecting a game object from the 3D scene on the click of the mouse using collision-based picking:
 

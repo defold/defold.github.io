@@ -2,7 +2,7 @@
 
 This example shows how to make a game object continuously follow the mouse.
 
-Source: [https://github.com/defold/examples/tree/master/movement/follow](https://github.com/defold/examples/tree/master/movement/follow)
+[Project files](https://github.com/defold/examples/tree/master/movement/follow)
 
 ## Scripts
 

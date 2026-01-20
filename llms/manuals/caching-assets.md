@@ -12,7 +12,7 @@ Defold uses a three-tiered cache:
 
 Defold will by default cache compiled assets in the `build/default` folder of a Defold project. The project cache will speed up subsequent builds as it is only modified assets that have to be recompiled, while assets with no changes will be used from the project cache. This cache is always enabled and it used by both the editor and the command line tools.
 
-The project cache can be deleted manually by deleting the files in `build/default` or by issuing the `clean` command from the [command line build tool Bob](bob.md).
+The project cache can be deleted manually by deleting the files in `build/default` or by issuing the `clean` command from the [command line build tool Bob](https://defold.com/llms/manuals/bob.md).
 
 ## Local cache
 

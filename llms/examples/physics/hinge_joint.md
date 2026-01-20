@@ -2,7 +2,7 @@
 
 This example shows a simple setup with a dynamic body physics object and two dynamic wheel physics object joined together with a joint of type "hinge". The hinge joint can simulate an axle or a pin on which other object is rotating in respect to the base. The example shows how to create, destroy and change properties of the joints.
 
-Source: [https://github.com/defold/examples/tree/master/physics/hinge_joint](https://github.com/defold/examples/tree/master/physics/hinge_joint)
+[Project files](https://github.com/defold/examples/tree/master/physics/hinge_joint)
 
 The setup consists of four game objects. The *game.project* physics *GravityY* property is set to -500 to match the scale of the setup.
 

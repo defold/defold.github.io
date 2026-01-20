@@ -48,7 +48,7 @@ You can manipulate models in runtime through a number of different functions and
 
 ### Runtime animation
 
-Defold provides powerful support for controlling animation in runtime. More in the [model animation manual](model-animation.md):
+Defold provides powerful support for controlling animation in runtime. More in the [model animation manual](https://defold.com/llms/manuals/model-animation.md):
 ```lua
 local play_properties = { blend_duration = 0.1 }
 model.play_anim("#model", "jump", go.PLAYBACK_ONCE_FORWARD, play_properties)
@@ -92,11 +92,11 @@ There are a number of built-in materials that you can use as a starting point:
   * Use *model_skinned.material* for skinned (animated) non-instanced models
   * Use *model_skinned_instances.material* for skinned (animated) instanced models
 
-If you need to create custom materials for your models, see the [Material documentation](material.md) for information. The [Shader manual](shader.md) contains information on how shader programs work.
+If you need to create custom materials for your models, see the [Material documentation](https://defold.com/llms/manuals/material.md) for information. The [Shader manual](https://defold.com/llms/manuals/shader.md) contains information on how shader programs work.
 
 ### Material constants
 
-The default model material has the following constants that can be changed using [go.set()](https://defold.com/ref/stable/go/#go.set) or [go.animate()](https://defold.com/ref/stable/go/#go.animate) (refer to the [Material manual for more details](material.md)). Examples:
+The default model material has the following constants that can be changed using [go.set()](https://defold.com/ref/stable/go/#go.set) or [go.animate()](https://defold.com/ref/stable/go/#go.animate) (refer to the [Material manual for more details](https://defold.com/llms/manuals/material.md)). Examples:
 ```lua
 go.set("#model", "tint", vmath.vector4(1,0,0,1))
 go.animate("#model", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1), go.EASING_LINEAR, 2)
@@ -126,4 +126,4 @@ The default render script is tailor made for 2D games and does not work with 3D 
   end
   ```
 
-See the [Render documentation](render.md) for details on how render scripts work.
+See the [Render documentation](https://defold.com/llms/manuals/render.md) for details on how render scripts work.

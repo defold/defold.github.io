@@ -1,10 +1,10 @@
 # Debugging game logic {#manuals:debugging-game-logic}
 
-Defold contains an integrated Lua debugger with an inspection facility. Together with the built-in [profiling tools](profiling.md) it is a powerful tool that can help finding the cause of bugs in your game logic or help analyze performance issues.
+Defold contains an integrated Lua debugger with an inspection facility. Together with the built-in [profiling tools](https://defold.com/llms/manuals/profiling.md) it is a powerful tool that can help finding the cause of bugs in your game logic or help analyze performance issues.
 
 ## Print and visual debugging
 
-The simplest way to debug your game in Defold is to use [print debugging](http://en.wikipedia.org/wiki/Debugging#Techniques). Use `print()` or [`pprint()`](https://defold.com/ref/builtins#pprint) statements to watch variables or indicate the flow of execution. If a game object without a script acts weird, you can just attach a script to it with the sole purpose of debugging. Using any of the printing functions will print to the *Console* view in the editor and to the [game log](debugging-game-and-system-logs.md).
+The simplest way to debug your game in Defold is to use [print debugging](http://en.wikipedia.org/wiki/Debugging#Techniques). Use `print()` or [`pprint()`](https://defold.com/ref/builtins#pprint) statements to watch variables or indicate the flow of execution. If a game object without a script acts weird, you can just attach a script to it with the sole purpose of debugging. Using any of the printing functions will print to the *Console* view in the editor and to the [game log](https://defold.com/llms/manuals/debugging-game-and-system-logs.md).
 
 In addition to printing, the engine can also draw debug text and straight lines on the screen. This is done by posting messages to the `@render` socket:
 ```lua

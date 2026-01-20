@@ -2,7 +2,7 @@
 
 This example demonstrates how to create a character animation system using a Finite State Machine (FSM) with smooth transitions between different character states.
 
-Source: [https://github.com/defold/examples/tree/master/animation/animation_states](https://github.com/defold/examples/tree/master/animation/animation_states)
+[Project files](https://github.com/defold/examples/tree/master/animation/animation_states)
 
 # A simple Finite State Machine for animations.
 
@@ -43,18 +43,14 @@ gui
   - A *GUI* component (`control.gui`) that has 6 nodes displaying states and text description for the example.
   - A *GUI Script* component (`control.gui_script`) that receives messages from the knight and updates the visual state indicators.
 
-> **Note:**  
+> **Note:**
 > The GUI in this example is not required for understanding the state machine logic, it only visually shows the active animation state. You can view the GUI source in the project files on Github still though.
-
-
 
 ## Animation Atlas
 
 The sprite component uses a flipbook animation that is set up in an atlas:
 
 > For this example we used the Free Knight Character by Nauris 'aamatniekss' available here: https://aamatniekss.itch.io/fantasy-knight-free-pixelart-animated-character
-
-
 
 The atlas contains multiple animations for different character states:
 - **idle**: Standing still animation

@@ -2,7 +2,7 @@
 
 This example shows how to load and set a dynamic texture on a gui box node.
 
-Source: [https://github.com/defold/examples/tree/master/gui/load_texture](https://github.com/defold/examples/tree/master/gui/load_texture)
+[Project files](https://github.com/defold/examples/tree/master/gui/load_texture)
 
 The "gui" game object contains a GUI component stored in the file *load_texture.gui*. The GUI contains the setup with the "button" box node for the button image, the "text" text node for the button label text and the "img" box node for loaded images.
 

@@ -2,7 +2,7 @@
 
 The collection factory component is used to spawn groups and hierarchies of game objects stored in collection files into a running game.
 
-Collections provide a powerful mechanism to create reusable templates, or "prefabs" in Defold. For an overview on Collections, see the [Building blocks documentation](building-blocks#collections.md). Collections can be placed in the editor, or they can be dynamically inserted into your game.
+Collections provide a powerful mechanism to create reusable templates, or "prefabs" in Defold. For an overview on Collections, see the [Building blocks documentation](https://defold.com/llms/manuals/building-blocks#collections.md). Collections can be placed in the editor, or they can be dynamically inserted into your game.
 
 With a collection factory component you can spawn the contents of a collection file into a game world. This is analogous to performing factory spawning of all game objects inside the collection and then building the parent-child hierarchy between the objects. A typical use case is to spawn enemies consisting of multiple game objects (enemy + weapon, for instance).
 
@@ -10,7 +10,7 @@ With a collection factory component you can spawn the contents of a collection f
 
 Suppose we want a character game object and a separate shield game object childed to the character. We build the game object hierarchy in a collection file and save it as "bean.collection".
 
-The *collection proxy* component is used to create a new game world, including a separate physics world, based on a collection. The new world is accessed through a new socket. All assets contained in the collection are loaded through the proxy when you message the proxy to start loading. This makes them very useful to, for instance, change levels in a game. New game worlds come with quite a lot of overhead though so do not use them for dynamic loading of small stuff. For more information, see the [Collection proxy documentation](collection-proxy.md).
+The *collection proxy* component is used to create a new game world, including a separate physics world, based on a collection. The new world is accessed through a new socket. All assets contained in the collection are loaded through the proxy when you message the proxy to start loading. This makes them very useful to, for instance, change levels in a game. New game worlds come with quite a lot of overhead though so do not use them for dynamic loading of small stuff. For more information, see the [Collection proxy documentation](https://defold.com/llms/manuals/collection-proxy.md).
 
 We then add a *Collection factory* to a gameobject that will take care of the spawning and set "bean.collection" as the component's *Prototype*:
 
@@ -61,7 +61,7 @@ props[hash("/bean")] = { shield = false }
 local ids = collectionfactory.create("#bean_factory", nil, nil, props)
 ```
 
-Supposing the "bean" game object in "bean.collection" defines the "shield" property. [The Script property manual](script-properties.md) contains information on script properties.
+Supposing the "bean" game object in "bean.collection" defines the "shield" property. [The Script property manual](https://defold.com/llms/manuals/script-properties.md) contains information on script properties.
 ```lua
 -- bean/controller.script
 go.property("shield", true)

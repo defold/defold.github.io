@@ -10,7 +10,7 @@ Libraries are useful for the following purposes:
 
 ## Setting up library sharing
 
-Suppose you want to build a library containing shared sprites and tile sources. You start by [setting up a new project](project-setup.md). Decide what folders you want to share from the project and add the names of those folders to the *`include_dirs`* property in the Project settings. If you want to list more than one folder, separate the names with spaces:
+Suppose you want to build a library containing shared sprites and tile sources. You start by [setting up a new project](https://defold.com/llms/manuals/project-setup.md). Decide what folders you want to share from the project and add the names of those folders to the *`include_dirs`* property in the Project settings. If you want to list more than one folder, separate the names with spaces:
 
 Before we can add this library to another project we need a way to locate the library.
 
@@ -20,7 +20,7 @@ Libraries are referred to via a standard URL. For a project hosted on GitHub it 
 
 It is recommend to always depend on a specific release of a library project instead of on the master branch. This way it is up to you as a developer to decide when to incorporate changes from a library project as opposed to always getting the latest (and potentially breaking) changes from the master branch of a library project.
 
-It is recommended to always review third-party libraries before use. Learn more [securing your use of third-party software](application-security.md).
+It is recommended to always review third-party libraries before use. Learn more [securing your use of third-party software](https://defold.com/llms/manuals/application-security.md).
 
 ### Basic access authentication
 
@@ -88,7 +88,7 @@ If you want to make changes to library files, make sure to create your own fork 
 
 `builtins` is also a library provided by the engine. If you want to edit files there, make sure to copy them into your project and use those instead of the original `builtins` files. For example, to modify `default.render_script`, copy both `/builtins/render/default.render` and `/builtins/render/default.render_script` into your project folder as `my_custom.render` and `my_custom.render_script`. Then, update your local `my_custom.render` to reference the `my_custom.render_script` instead of the built-in one, and set your custom `my_custom.render` in `game.project` under the Render setting.
 
-If you copy-paste a material and want to use it across all components of a certain type, it might be useful to use [per-project templates](editor.md).
+If you copy-paste a material and want to use it across all components of a certain type, it might be useful to use [per-project templates](https://defold.com/llms/manuals/editor.md).
 
 ## Broken references
 

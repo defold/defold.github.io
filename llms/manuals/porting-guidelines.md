@@ -5,12 +5,12 @@ This page contains a helpful guide and checklist of things to consider when rele
 Porting a Defold game to a new platform or releasing for the first time is usually a straight forward process. In theory it is enough to make sure that the relevant sections are configured in the *game.project* file, but to make the most out of each platform it is recommended to adapt the game to the specifics of each platform.
 
 ## Input
-Make sure to adapt the game to the input methods of the platform. Consider adding support for [gamepads](input-gamepads.md) if the platform supports it! And make sure the game supports a pause menu - if a controller suddenly disconnects, the game should be paused!
+Make sure to adapt the game to the input methods of the platform. Consider adding support for [gamepads](https://defold.com/llms/manuals/input-gamepads.md) if the platform supports it! And make sure the game supports a pause menu - if a controller suddenly disconnects, the game should be paused!
 
 ## Localization
 Translate any text in the game. For release in Europe and Americas consider translating to at least EFIGS (English, French, Italian, German and Spanish). Make sure it is possible to easily swap between different languages in-game (via the pause menu).
 
-iOS only - Make sure you specify [Localizations](project-settings.md) in `game.project`, since `sys.get_info()` will never return language which isn’t in this list.
+iOS only - Make sure you specify [Localizations](https://defold.com/llms/manuals/project-settings.md) in `game.project`, since `sys.get_info()` will never return language which isn’t in this list.
 
 Translate the text on the store page as this will have a positive impact on sales! Some platforms require the text on the store page to be translated to the language of each country where the game is available.
 
@@ -50,19 +50,19 @@ end
 
 ## Build artifacts
 
-Make sure to [generate debug symbols](debugging-native-code.md) for each released version so that you can debug crashes. Store these together with the application bundle.
+Make sure to [generate debug symbols](https://defold.com/llms/manuals/debugging-native-code.md) for each released version so that you can debug crashes. Store these together with the application bundle.
 
 Make sure to store the `manifest.private.der` and `manifest.public.der` files which are generated in the project root during the first bundle. These are the public and private signing keys for the game archive and archive manifest. You need these files in order to recreate a previous build of your game.
 
 ## Application optimizations
 
-Read the [Optimization manual](optimizations.md) on how to optimize your application for performance, size, memory and battery usage.
+Read the [Optimization manual](https://defold.com/llms/manuals/optimizations.md) on how to optimize your application for performance, size, memory and battery usage.
 
 ## Performance
-Always test on target hardware! Check game performance and optimize if needed. Use the [profiler](profiling.md) to find bottlenecks in the code.
+Always test on target hardware! Check game performance and optimize if needed. Use the [profiler](https://defold.com/llms/manuals/profiling.md) to find bottlenecks in the code.
 
 ## Screen resolution and refresh rate
-For platforms with a fixed orientation and screen resolution: Check that the game works on the target platform screen resolution and aspect ratio. For platforms with variable screen resolution and aspect ratio: Check that the game works on a variety of screen resolutions and aspect ratios. Take into consideration what kind of [view projection](render.md) that is used in the render script and camera.
+For platforms with a fixed orientation and screen resolution: Check that the game works on the target platform screen resolution and aspect ratio. For platforms with variable screen resolution and aspect ratio: Check that the game works on a variety of screen resolutions and aspect ratios. Take into consideration what kind of [view projection](https://defold.com/llms/manuals/render.md) that is used in the render script and camera.
 
 For mobile platforms either lock the screen orientation in *game.project* or make sure the game works in both landscape and portrait mode.
 
@@ -79,7 +79,7 @@ It has become increasingly popular to use a small lens cut-out on the display sc
 ## Platform specific guidelines
 
 ### Android
-Make sure to store your [keystore](android.md) somewhere safe so that you can update your game.
+Make sure to store your [keystore](https://defold.com/llms/manuals/android.md) somewhere safe so that you can update your game.
 
 ### Consoles
 Store the complete bundle for each version. You will need these files if you want to patch the game.

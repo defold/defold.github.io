@@ -1,6 +1,6 @@
 # Tile source {#manuals:tilesource}
 
-A *Tile Source* can be used by a [Tilemap component](tilemap.md) to paint tiles onto a grid area or it can be used as the graphics source for a [Sprite](sprite.md) or [Particle Effect component](particlefx.md). You can also use the *Collision Shapes* from the tile source in a Tilemap for [collision detection and physics simulation](physics.md) ([example](https://defold.com/examples/tilemap/collisions/)).
+A *Tile Source* can be used by a [Tilemap component](https://defold.com/llms/manuals/tilemap.md) to paint tiles onto a grid area or it can be used as the graphics source for a [Sprite](https://defold.com/llms/manuals/sprite.md) or [Particle Effect component](https://defold.com/llms/manuals/particlefx.md). You can also use the *Collision Shapes* from the tile source in a Tilemap for [collision detection and physics simulation](https://defold.com/llms/manuals/physics.md) ([example](https://defold.com/examples/tilemap/collisions/)).
 
 ## Creating a tile source
 

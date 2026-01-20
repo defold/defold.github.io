@@ -6,7 +6,7 @@ This guide presents Defold as an alternative for Flash game developers. It cover
 
 Some of the key advantages of Flash were the accessibility and low barriers to entry. New users could learn the program quickly, and could be creating basic games with limited time investment. Defold offers a similar advantage by providing a suite of tools dedicated to game design, while empowering advanced developers to create advanced solutions for more sophisticated requirements (for instance by allowing developers to edit the default render script).
 
-Flash games are programmed in ActionScript (with 3.0 being the most recent version), while Defold scripting is done in Lua. This guide will not go into a detailed comparison of Lua and Actionscript 3.0. The [Defold manual](lua.md) provides a good introduction to Lua programming in Defold, and references the tremendously useful [Programming in Lua](https://www.lua.org/pil/) (first edition) which is freely available online.
+Flash games are programmed in ActionScript (with 3.0 being the most recent version), while Defold scripting is done in Lua. This guide will not go into a detailed comparison of Lua and Actionscript 3.0. The [Defold manual](https://defold.com/llms/manuals/lua.md) provides a good introduction to Lua programming in Defold, and references the tremendously useful [Programming in Lua](https://www.lua.org/pil/) (first edition) which is freely available online.
 
 An article by Jesse Warden provides a [basic comparison of Actionscript and Lua](http://jessewarden.com/2011/01/lua-for-actionscript-developers.html), which may serve as a good starting point. Note thought that there are deeper differences in how Defold and Flash are constructed than what is visible at the language level. Actionscript and Flash is object oriented in the classical sense with classes and inheritance. Defold does not have classes, nor inheritance. It includes the concept of a *game object* which can contain audiovisual representation, behavior and data. Operations on game objects are done with *functions* available in the Defold APIs. Furthermore, Defold encourages the use of *messages* to communicate between objects. Messages are a higher level construct than method calls and are not intended to be used as such. These differences are important and takes a while to get used to, but will not be covered in detail in this guide.
 
@@ -16,7 +16,7 @@ Instead, this guide explores some of the key concepts of game development in Fla
 
 Movie clips are a key component of Flash game development. They are symbols, each containing a unique timeline. The closest equivalent concept in Defold is a game object.
 
-Unlike Flash movie clips, Defold game objects do not have timelines. Instead, a game object consists of multiple components. Components include sprites, sounds, and scripts---among many others (for further details about the components available see the [building blocks documentation](building-blocks.md) and related articles). The game object in the screenshot below consists of a sprite and a script. The script component is used to control the behavior and look of game objects throughout the object’s lifecycle:
+Unlike Flash movie clips, Defold game objects do not have timelines. Instead, a game object consists of multiple components. Components include sprites, sounds, and scripts---among many others (for further details about the components available see the [building blocks documentation](https://defold.com/llms/manuals/building-blocks.md) and related articles). The game object in the screenshot below consists of a sprite and a script. The script component is used to control the behavior and look of game objects throughout the object’s lifecycle:
 
 While movie clips can contain other movie clips, game objects can not *contain* game objects. However, game objects can be *childed* to other game objects, creating hierarchies that can be moved, scaled or rotated in unison.
 
@@ -26,7 +26,7 @@ In Flash, instances of movie clips can be added to your scene manually by draggi
 
 ## Defold—manually creating game objects
 
-As mentioned previously, Defold does not have a timeline concept. Instead, game objects are organized in collections. Collections are containers (or prefabs) that hold game objects and other collections. At the most basic level, a game can consist of only one collection. More frequently, Defold games make use of multiple collections, either added manually to the bootstrap “main” collection or dynamically loaded via [collection proxies](collection-proxy.md). This concept of loading "levels" or "screens" does not have a direct Flash equivalent.
+As mentioned previously, Defold does not have a timeline concept. Instead, game objects are organized in collections. Collections are containers (or prefabs) that hold game objects and other collections. At the most basic level, a game can consist of only one collection. More frequently, Defold games make use of multiple collections, either added manually to the bootstrap “main” collection or dynamically loaded via [collection proxies](https://defold.com/llms/manuals/collection-proxy.md). This concept of loading "levels" or "screens" does not have a direct Flash equivalent.
 
 In the example below, the "main" collection contains three instances (listed on the right, in the *Outline* window) of the "logo" game object (seen on the left, in the *Assets* browser window):
 
@@ -48,7 +48,7 @@ The address of manually placed game objects is determined by the *Id* property a
 
 You can find the id of a game object by running the following code in its script component: `print(go.get_id())`. This will print the id of the current game object in the console.
 
-The addressing model and message passing are key concepts in Defold game development. The [addressing manual](addressing.md) and the [message passing manual](message-passing.md) explains these in great detail.
+The addressing model and message passing are key concepts in Defold game development. The [addressing manual](https://defold.com/llms/manuals/addressing.md) and the [message passing manual](https://defold.com/llms/manuals/message-passing.md) explains these in great detail.
 
 ## Flash—dynamically creating movie clips
 
@@ -71,7 +71,7 @@ The function to call to generate an instance of the logo game object is:
 local logo_id = factory.create("factories#logo_factory")
 ```
 
-The URL is a required parameter of `factory.create()`. In addition, you can add optional parameters to set position, rotation, properties, and scale. For more information on the factory component, please see the [factory manual](factory.md). It is worth noting that calling `factory.create()` returns the id of the created game object. This id can be stored for later reference in a table (which is the Lua equivalent of an array).
+The URL is a required parameter of `factory.create()`. In addition, you can add optional parameters to set position, rotation, properties, and scale. For more information on the factory component, please see the [factory manual](https://defold.com/llms/manuals/factory.md). It is worth noting that calling `factory.create()` returns the id of the created game object. This id can be stored for later reference in a table (which is the Lua equivalent of an array).
 
 ## Flash—stage
 
@@ -83,9 +83,9 @@ As discussed in the movie clips section above, the Stage is essentially the top 
 
 The Defold equivalent of the Flash Stage is a collection. When the engine starts up it creates a new game world based on the content of a collection file. By default, this file is called "main.collection" but you can change which collection is loaded at startup by accessing the *game.project* settings file that is in the root of every Defold project:
 
-Collections are containers that are used in the editor to organize game objects and other collections. The contents of a collection can also be spawned via script into the runtime using a [collection factory](collection-factory.md), which works the same way as a regular game object factory. This is useful for spawning groups of enemies, or a pattern of coin collectables, for instance. In the screenshot below, we have manually placed two instances of the "logos" collection into the "main" collection.
+Collections are containers that are used in the editor to organize game objects and other collections. The contents of a collection can also be spawned via script into the runtime using a [collection factory](https://defold.com/llms/manuals/collection-factory.md), which works the same way as a regular game object factory. This is useful for spawning groups of enemies, or a pattern of coin collectables, for instance. In the screenshot below, we have manually placed two instances of the "logos" collection into the "main" collection.
 
-In some cases, you want to load a completely new game world. The [collection proxy](collection-proxy.md) component allows you to create a new game world based on the contents of a collection file. This would be useful for scenarios such as loading new game levels, mini games, or cutscenes.
+In some cases, you want to load a completely new game world. The [collection proxy](https://defold.com/llms/manuals/collection-proxy.md) component allows you to create a new game world based on the contents of a collection file. This would be useful for scenarios such as loading new game levels, mini games, or cutscenes.
 
 ## Flash—timeline
 
@@ -97,7 +97,7 @@ Motion tweens allow the animation of various properties of an object, including 
 
 ## Defold—property animation
 
-Defold works with pixel images as opposed to vector graphics, thus it does not have an equivalent for shape tweening. However, motion tweening has a powerful equivalent in [property animation](https://defold.com/ref/go/#go.animate). This is accomplished via script, using the `go.animate()` function. The go.animate() function tweens a property (such as color, scale, rotation or position) from the starting value to the desired end value, using one of many available easing functions (including custom ones). Where Flash required user implementation of more advanced easing functions, Defold includes [many easing functions](animation.md) built-into the engine.
+Defold works with pixel images as opposed to vector graphics, thus it does not have an equivalent for shape tweening. However, motion tweening has a powerful equivalent in [property animation](https://defold.com/ref/go/#go.animate). This is accomplished via script, using the `go.animate()` function. The go.animate() function tweens a property (such as color, scale, rotation or position) from the starting value to the desired end value, using one of many available easing functions (including custom ones). Where Flash required user implementation of more advanced easing functions, Defold includes [many easing functions](https://defold.com/llms/manuals/animation.md) built-into the engine.
 
 Where Flash makes use of keyframes of graphics on a timeline for animation, one of the main methods of graphic animation in Defold is by flipbook animation of imported image sequences. Animations are organized in a game object component known as an atlas. In this instance we have an atlas for a game character with an animation sequence called "run". This consists of a series of png files:
 
@@ -125,7 +125,7 @@ The result would look like the below (with the index position updated):
 
 ## Defold—z position
 
-The positions of game objects in Defold are represented by vectors consisting of three variables: x, y, and z. The z position determines the depth of a game object. In the default [render script](render.md), the available z positions range from -1 to 1.
+The positions of game objects in Defold are represented by vectors consisting of three variables: x, y, and z. The z position determines the depth of a game object. In the default [render script](https://defold.com/llms/manuals/render.md), the available z positions range from -1 to 1.
 
 Game objects with a z position outside the -1 to 1 range will not be rendered and therefore not visible. This is a common pitfall for developers new to Defold, and is worth keeping in mind if a game object is not visible when you expect it to be.
 
@@ -162,17 +162,17 @@ This line would check the x and y position of the bullet (top left in this scena
 
 Defold includes a physics engine that can detect collisions and let a script react to it. Collision detection in Defold starts with assigning collision object components to game objects. In the screenshot below, we have added a collision object to the "bullet" game object. The collision object is indicated as the red transparent box (which is visible in the editor only):
 
-Defold includes a modified version of the Box2D physics engine, which can simulate realistic collisions automatically. This guide assumes use of the kinematic collision objects, as these most closely resemble collision detection in Flash. Read more about the dynamic collision objects in the Defold [physics manual](physics.md).
+Defold includes a modified version of the Box2D physics engine, which can simulate realistic collisions automatically. This guide assumes use of the kinematic collision objects, as these most closely resemble collision detection in Flash. Read more about the dynamic collision objects in the Defold [physics manual](https://defold.com/llms/manuals/physics.md).
 
 The collision object includes the following properties:
 
-A box shape has been used as this was most appropriate for the bullet graphic. The other shape used for 2D collisions, sphere, will be used for the target. Setting the type to Kinematic means resolving collisions is done by your script as opposed to the built-in physics engine (for more information on the other types, please refer to the [physics manual](physics.md)). The group and mask properties determine what collision group the object belongs to and what collision group it should be checked against, respectively. The current setup means a "bullet" can only collide with a "target". Imagine the setup was changed to the below:
+A box shape has been used as this was most appropriate for the bullet graphic. The other shape used for 2D collisions, sphere, will be used for the target. Setting the type to Kinematic means resolving collisions is done by your script as opposed to the built-in physics engine (for more information on the other types, please refer to the [physics manual](https://defold.com/llms/manuals/physics.md)). The group and mask properties determine what collision group the object belongs to and what collision group it should be checked against, respectively. The current setup means a "bullet" can only collide with a "target". Imagine the setup was changed to the below:
 
 Now, bullets can collide with targets and other bullets. For reference, we have set up a collision object for the target that looks as follows:
 
 Note how the *Group* property is set to "target" and *Mask* is set to "bullet".
 
-In Flash, collision detection occurs only when explicitly called by the script. In Defold, collision detection occurs continuously in the background as long as a collision object remains enabled. When a collision occurs, messages are sent to all components of a game object (most relevantly, the script components). These are the [collision_response and contact_point_response](physics-messages.md) messages, which contain all the information required to resolve the collision as desired.
+In Flash, collision detection occurs only when explicitly called by the script. In Defold, collision detection occurs continuously in the background as long as a collision object remains enabled. When a collision occurs, messages are sent to all components of a game object (most relevantly, the script components). These are the [collision_response and contact_point_response](https://defold.com/llms/manuals/physics-messages.md) messages, which contain all the information required to resolve the collision as desired.
 
 The advantage of Defold collision detection is that it is more advanced than that of Flash, with the ability to detect collisions between relatively complex shapes with very little setup effort. Collision detection is automatic, meaning looping through the various objects in the different collision groups and explicitly performing hit tests is not required. The main drawback is that there is no equivalent to the Flash `shapeFlag`. However, for most uses combinations of the basic box and sphere shapes suffice. For more complex scenarios, custom shapes [are possible](//forum.defold.com/t/does-defold-support-only-three-shapes-for-collision-solved/1985).
 
@@ -202,7 +202,7 @@ on_input
 on_reload
 :   Called when the script component is reloaded.
 
-The callback functions listed above are all optional and can be removed if not used. For details on how to set up input, please refer to the [input manual](input.md). A common pitfall occurs when working with collection proxies - please refer to [this section](input.md) of the input manual for more information.
+The callback functions listed above are all optional and can be removed if not used. For details on how to set up input, please refer to the [input manual](https://defold.com/llms/manuals/input.md). A common pitfall occurs when working with collection proxies - please refer to [this section](https://defold.com/llms/manuals/input.md) of the input manual for more information.
 
 As discussed in the collision detection section, collision events are dealt with through the sending of messages to the game objects involved. Their respective script components receive the message in their on_message callback functions.
 
@@ -212,7 +212,7 @@ Flash uses a dedicated symbol type for buttons. Buttons use specific event handl
 
 ## Defold—GUI scenes and scripts
 
-Defold does not include a native button component, nor can clicks be easily detected against the shape of a given game object in the way buttons are handled in Flash. The use of a [GUI](gui.md) component is the most common solution, partially because the positions of the Defold GUI components are not affected by the in-game camera (if used). The GUI API also contains functions for detecting if user input like clicks and touch events are within the bounds of a GUI element.
+Defold does not include a native button component, nor can clicks be easily detected against the shape of a given game object in the way buttons are handled in Flash. The use of a [GUI](https://defold.com/llms/manuals/gui.md) component is the most common solution, partially because the positions of the Defold GUI components are not affected by the in-game camera (if used). The GUI API also contains functions for detecting if user input like clicks and touch events are within the bounds of a GUI element.
 
 ## Debugging
 
@@ -262,7 +262,7 @@ Toggling physics debug displays the collision objects added to our game objects:
 
 When collisions occur, the relevant collision objects light up. In addition, the collision vector is displayed:
 
-Finally, see the [profiler documentation](https://defold.com/ref/profiler/) for information on how to monitor CPU and memory usage. For more information on advanced debugging techniques, see the [debugging section](debugging.md) in the Defold manual.
+Finally, see the [profiler documentation](https://defold.com/ref/profiler/) for information on how to monitor CPU and memory usage. For more information on advanced debugging techniques, see the [debugging section](https://defold.com/llms/manuals/debugging.md) in the Defold manual.
 
 ## Where to go from here
 

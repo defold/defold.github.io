@@ -46,19 +46,19 @@ To create a new binding, click the `+` button at the bottom of the relevant trig
 There are five device specific types of triggers that you can create:
 
 Key Triggers
-: Single key keyboard input. Each key is mapped separately into a corresponding action. Learn more in the [key and text input manual](input-key-and-text.md).
+: Single key keyboard input. Each key is mapped separately into a corresponding action. Learn more in the [key and text input manual](https://defold.com/llms/manuals/input-key-and-text.md).
 
 Text Triggers
-: Text triggers are used to read arbitrary text input. Learn more in the [key and text input manual](input-key-and-text.md)
+: Text triggers are used to read arbitrary text input. Learn more in the [key and text input manual](https://defold.com/llms/manuals/input-key-and-text.md)
 
 Mouse Triggers
-: Input from mouse buttons and scroll wheels. Learn more in the [mouse and touch input manual](input-mouse-and-touch.md).
+: Input from mouse buttons and scroll wheels. Learn more in the [mouse and touch input manual](https://defold.com/llms/manuals/input-mouse-and-touch.md).
 
 Touch Triggers
-: Single-touch and Multi-touch type triggers are available on iOS and Android devices in native applications and in HTML5 bundles. Learn more in the [mouse and touch manual](input-mouse-and-touch.md).
+: Single-touch and Multi-touch type triggers are available on iOS and Android devices in native applications and in HTML5 bundles. Learn more in the [mouse and touch manual](https://defold.com/llms/manuals/input-mouse-and-touch.md).
 
 Gamepad Triggers
-: Gamepad triggers allow you to bind standard gamepad input to game functions. Learn more in the [gamepads manual](input-gamepads.md).
+: Gamepad triggers allow you to bind standard gamepad input to game functions. Learn more in the [gamepads manual](https://defold.com/llms/manuals/input-gamepads.md).
 
 ### Accelerometer input
 

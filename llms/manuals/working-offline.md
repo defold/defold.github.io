@@ -17,13 +17,13 @@ If you only have an internet connection for limited periods of time and don't wi
 
 If a problem is detected in the editor you get a choice to report the issue to the Defold issue tracker. The issue tracker is [hosted on GitHub](https://www.github.com/defold/editor2-issues) which means you need an internet connection to report the issue.
 
-If you encounter an issue while offline you can manually report it later using the [Report Issue option in the Help menu](getting-help.md) of the editor.
+If you encounter an issue while offline you can manually report it later using the [Report Issue option in the Help menu](https://defold.com/llms/manuals/getting-help.md) of the editor.
 
 ## Fetching dependencies
 
-Defold supports a system where developers can share code and assets through something called [Library Projects](libraries.md). Libraries are zip files that can be hosted anywhere online. You typically find Defold library projects on GitHub and other online source code repositories.
+Defold supports a system where developers can share code and assets through something called [Library Projects](https://defold.com/llms/manuals/libraries.md). Libraries are zip files that can be hosted anywhere online. You typically find Defold library projects on GitHub and other online source code repositories.
 
-A project can add a library as a [project dependency in the project settings](project-settings.md). Dependencies are downloaded/updated when the project is opened or any time when the *Fetch Libraries* option is selected from the *Project* menu.
+A project can add a library as a [project dependency in the project settings](https://defold.com/llms/manuals/project-settings.md). Dependencies are downloaded/updated when the project is opened or any time when the *Fetch Libraries* option is selected from the *Project* menu.
 
 If you need to work offline and in multiple projects you can download dependencies in advance and then share them using a local server. Dependencies on GitHub are usually available from the Releases tab of the project repository:
 
@@ -37,7 +37,7 @@ This will create a server in the current directory serving files on `localhost:8
 
 ## Building native extensions
 
-Defold supports a system where developers can add native code to extend the functionality of the engine through a system called [Native Extensions](extensions.md). Defold provides a zero setup entry point to native extensions with a cloud based build solution.
+Defold supports a system where developers can add native code to extend the functionality of the engine through a system called [Native Extensions](https://defold.com/llms/manuals/extensions.md). Defold provides a zero setup entry point to native extensions with a cloud based build solution.
 
 The first time you build a project and the project contains a native extension the native code will get compiled into a custom Defold game engine on the Defold build servers and sent back to your PC. The custom engine will be cached in your project and reused for subsequent builds as long as you do not add, remove or change any native extensions and as long as you do not update the editor.
 

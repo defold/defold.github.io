@@ -1,6 +1,6 @@
 # Message passing {#manuals:message-passing}
 
-Message passing is a mechanism for Defold game objects to communicate with each other. This manual assumes that you have a basic understanding of Defold's [addressing mechanism](addressing.md) and [basic building blocks](building-blocks.md).
+Message passing is a mechanism for Defold game objects to communicate with each other. This manual assumes that you have a basic understanding of Defold's [addressing mechanism](https://defold.com/llms/manuals/addressing.md) and [basic building blocks](https://defold.com/llms/manuals/building-blocks.md).
 
 Defold does not do object orientation in the sense that you define your application by setting up class hierarchies with inheritance and member functions in your objects (like Java, C++ or C#). Instead, Defold extends Lua with a simple and powerful object oriented design where object state is kept internally in script components, accessible through the `self` reference. Objects can furthermore be fully decoupled with asynchronous message passing as means of communication between objects.
 
@@ -185,7 +185,7 @@ As soon as the collection has been loaded, initiated and enabled, you can post m
 -- Send a message to the player in the new game world
 msg.post("level:/player#controller", "wake_up")
 ```
-A more in depth description on how proxies work can be found in the [Collection Proxies](collection-proxy.md) documentation.
+A more in depth description on how proxies work can be found in the [Collection Proxies](https://defold.com/llms/manuals/collection-proxy.md) documentation.
 
 ## Message chains
 

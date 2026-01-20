@@ -25,7 +25,7 @@ factory.create(component, p)
 : (optional) The world rotation of the new game object. This should be a `quat`.
 
 `[properties]`
-: (optional) A Lua table with any script property values to initiate the game object with. See the [Script property manual](script-properties.md) for information on script properties.
+: (optional) A Lua table with any script property values to initiate the game object with. See the [Script property manual](https://defold.com/llms/manuals/script-properties.md) for information on script properties.
 
 `[scale]`
 : (optional) The scale of the spawned game object. The scale can be expressed as a `number` (greater than 0) which specifies uniform scaling along all axes. You can also provide a `vector3` where each component specifies scaling along the corresponding axis.
@@ -70,7 +70,7 @@ Defold does not currently support non uniform scaling of collision shapes. If yo
 
 ## Addressing of factory created objects
 
-Defold's addressing mechanism makes it possible to access every object and component in a running game. The [Addressing manual](addressing.md) goes into quite a bit of detail how the system works. It is possible to use the same addressing mechanism for spawned game objects and their components. It is quite often enough to use the id of the spawned object, for instance when sending a message:
+Defold's addressing mechanism makes it possible to access every object and component in a running game. The [Addressing manual](https://defold.com/llms/manuals/addressing.md) goes into quite a bit of detail how the system works. It is possible to use the same addressing mechanism for spawned game objects and their components. It is quite often enough to use the id of the spawned object, for instance when sending a message:
 ```lua
 local function create_hunter(target_id)
     local id = factory.create("#hunterfactory")

@@ -5,8 +5,8 @@ This means that there are some features lacking, and that the API could potentia
 
 Compute shaders are a powerful tool for performing general-purpose computations on the GPU. They allow you to leverage the parallel processing power of the GPU for tasks such as physics simulations, image processing, and more. A compute shader operates on data stored in buffers or textures, performing operations in parallel across many GPU threads. This parallelism is what makes compute shaders so powerful for intensive computations.
 
-* For more information on the render pipeline, see the [Render documentation](render.md).
-* For an in depth explanation of shader programs, see the [Shader documentation](shader.md).
+* For more information on the render pipeline, see the [Render documentation](https://defold.com/llms/manuals/render.md).
+* For an in depth explanation of shader programs, see the [Shader documentation](https://defold.com/llms/manuals/shader.md).
 
 ## What can I do with compute shaders?
 

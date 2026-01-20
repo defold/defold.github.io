@@ -2,7 +2,7 @@
 
 This example shows how to create timer and cancel it anytime, using built-in timer API.
 
-Source: [https://github.com/defold/examples/tree/master/timer/cancel_timer](https://github.com/defold/examples/tree/master/timer/cancel_timer)
+[Project files](https://github.com/defold/examples/tree/master/timer/cancel_timer)
 
 The example shows how to use Defold built-in timer and uses two indicators:
 

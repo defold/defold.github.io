@@ -22,4 +22,4 @@ local particles_node = gui.get_node("particlefx")
 gui.stop_particlefx(particles_node)
 ```
 
-See the [Particle FX manual](particlefx.md) for details on how particle effects work.
+See the [Particle FX manual](https://defold.com/llms/manuals/particlefx.md) for details on how particle effects work.

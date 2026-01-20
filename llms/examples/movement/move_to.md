@@ -2,7 +2,7 @@
 
 This example shows how to make a game object move to the position the user clicks.
 
-Source: [https://github.com/defold/examples/tree/master/movement/move_to](https://github.com/defold/examples/tree/master/movement/move_to)
+[Project files](https://github.com/defold/examples/tree/master/movement/move_to)
 
 ## Scripts
 

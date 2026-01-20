@@ -9,9 +9,9 @@ When you build a game in Defold, you statically declare the resource tree. Every
 - Game object and component data (atlases, sounds etc).
 - Factory component prototypes (game objects and collections).
 - Collection proxy component references (collections).
-- [Custom resources](project-settings.md) declared in *game.project*.
+- [Custom resources](https://defold.com/llms/manuals/project-settings.md) declared in *game.project*.
 
-Defold also has a concept of [bundle resources](project-settings.md). Bundle resources are included with the application bundle, but are not part of the resource tree. The bundle resources can be anything from platform specific support files to external files [loaded from the file system](file-access.md) and used by your game (for instance FMOD sound banks).
+Defold also has a concept of [bundle resources](https://defold.com/llms/manuals/project-settings.md). Bundle resources are included with the application bundle, but are not part of the resource tree. The bundle resources can be anything from platform specific support files to external files [loaded from the file system](https://defold.com/llms/manuals/file-access.md) and used by your game (for instance FMOD sound banks).
 
 When the game is *bundled*, only what is in the resource tree will be included. Anything that is not referenced in the tree is left out. There is no need to manually select what to include or exclude from the bundle.
 
@@ -23,7 +23,7 @@ When the game is *run*, the engine starts at the bootstrap root of the tree and 
 
 However, the engine will not automatically load the following types of referenced resources at runtime:
 
-- Game world collections referenced through collection proxies. Game worlds are relatively large so you will need to manually trigger loading and unloading of these in code. See [the Collection proxy manual](collection-proxy.md) for details.
+- Game world collections referenced through collection proxies. Game worlds are relatively large so you will need to manually trigger loading and unloading of these in code. See [the Collection proxy manual](https://defold.com/llms/manuals/collection-proxy.md) for details.
 - Files added via the *Custom Resources* setting in *game.project*. These files are manually loaded with the [`sys.load_resource()`](https://defold.com/ref/sys/#sys.load_resource) function.
 
 The default way Defold bundles and loads resources can be altered to give fine grained control over how and when resources enter memory.
@@ -37,7 +37,7 @@ With this box checked, the engine will still include the referenced resources in
 1. Call [`factory.create()`](https://defold.com/ref/factory/#factory.create) or [`collectionfactory.create()`](https://defold.com/ref/collectionfactory/#collectionfactory.create) when you want to spawn objects. This  will load the resources synchronously, then spawn new instances.
 2. Call [`factory.load()`](https://defold.com/ref/factory/#factory.load) or [`collectionfactory.load()`](https://defold.com/ref/collectionfactory/#collectionfactory.load) to load the resources asynchronously. When the resources are ready for spawning, a callback is received.
 
-Read the [Factory manual](factory.md) and the [Collection factory manual](collection-factory.md) for details on how this works.
+Read the [Factory manual](https://defold.com/llms/manuals/factory.md) and the [Collection factory manual](https://defold.com/llms/manuals/collection-factory.md) for details on how this works.
 
 ## Unloading dynamically loaded resources
 
@@ -49,4 +49,4 @@ For factories that are marked *Load Dynamically* you can call the [`factory.unlo
 
 With collection proxies, it is possible to leave out all the resources the component refers to from the bundling process. This is useful if you need to keep the bundle size to a minimum. For instance, when running games on the web as HTML5 the browser will download the whole bundle before executing the game.
 
-By marking a collection proxy as *Exclude* the referenced resource will be left out of the game bundle. Instead, you can store excluded collections on selected cloud storage. The [Live update manual](live-update.md) explains how this feature works.
+By marking a collection proxy as *Exclude* the referenced resource will be left out of the game bundle. Instead, you can store excluded collections on selected cloud storage. The [Live update manual](https://defold.com/llms/manuals/live-update.md) explains how this feature works.

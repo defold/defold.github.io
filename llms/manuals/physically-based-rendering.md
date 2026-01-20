@@ -368,6 +368,6 @@ Each material property corresponds to an internal render constant in Defold. You
 To use the material data for physically based lighting, implement a BRDF in your fragment shader using the parameters provided in the `PbrMaterial` block.
 See also:
 
-* [Shaders manual](shader.md)
-* [Render manual](render.md)
+* [Shaders manual](https://defold.com/llms/manuals/shader.md)
+* [Render manual](https://defold.com/llms/manuals/render.md)
 * [glTF 2.0 specification](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html)

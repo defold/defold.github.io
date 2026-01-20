@@ -2,7 +2,7 @@
 
 This example shows how to rotate a game object to look at the object in 3D space.
 
-Source: [https://github.com/defold/examples/tree/master/movement/look_rotation](https://github.com/defold/examples/tree/master/movement/look_rotation)
+[Project files](https://github.com/defold/examples/tree/master/movement/look_rotation)
 
 This example shows how to orient a game object to look at the target game object in 3D space. For this purpose, we created the function `quat_look_rotation` (also called `LookRotation` or `looking_at` in the industry). This function creates a rotation matrix from the forward and upwards vectors and then converts it to a quaternion. The function also handles the case where no upwards direction is specified, using the default (0, 1, 0) in that case.
 

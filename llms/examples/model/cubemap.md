@@ -2,7 +2,7 @@
 
 This example shows how to use a cubemap to draw environment reflections on a model.
 
-Source: [https://github.com/defold/examples/tree/master/model/cubemap](https://github.com/defold/examples/tree/master/model/cubemap)
+[Project files](https://github.com/defold/examples/tree/master/model/cubemap)
 
 This example contains a game object with a model component in the shape of the Defold logo. The model has a special `cubemap_model.material` which uses a cubemap sampler to calculate reflections on the model from the cubemap.
 

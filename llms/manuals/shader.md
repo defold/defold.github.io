@@ -4,9 +4,9 @@ Shader programs are at the core of graphics rendering. They are programs written
 
 This manual describes how Defold's rendering pipeline interfaces with GPU shaders. In order to create shaders for your content, you also need to understand the concept of materials, as well as how the render pipeline works.
 
-* See the [Render manual](render.md) for details on the render pipeline.
-* See the [Material manual](material.md) for details on materials.
-* See the [Compute manual](compute.md) for details on compute programs.
+* See the [Render manual](https://defold.com/llms/manuals/render.md) for details on the render pipeline.
+* See the [Material manual](https://defold.com/llms/manuals/material.md) for details on materials.
+* See the [Compute manual](https://defold.com/llms/manuals/compute.md) for details on compute programs.
 
 Specifications of OpenGL ES 2.0 (OpenGL for Embedded Systems) and OpenGL ES Shading Language can be found at [Khronos OpenGL Registry](https://www.khronos.org/registry/gles/).
 
@@ -61,7 +61,7 @@ Constants
   - Premultiplied $world * view$, $view * projection$ and $world * view$ matrices are also available.
   - `CONSTANT_TYPE_USER` is a `vec4` type constant that you can use as you wish.
 
-  The [Material manual](material.md) explains how to specify constants.
+  The [Material manual](https://defold.com/llms/manuals/material.md) explains how to specify constants.
 
 Samplers
 : Shaders can declare *sampler* type uniform variables. Samplers are used to read values from an image source:
@@ -71,7 +71,7 @@ Samplers
   - `samplerCube` samples from a 6 image cubemap texture.
   - `image2D` loads (and potentially stores) texture data to an image object. This is mostly used for compute shaders for storage.
 
-  You can use a sampler only in the GLSL standard library's texture lookup functions. The [Material manual](material.md) explains how to specify sampler settings.
+  You can use a sampler only in the GLSL standard library's texture lookup functions. The [Material manual](https://defold.com/llms/manuals/material.md) explains how to specify sampler settings.
 
 UV coordinates
 : A 2D coordinate is associated with a vertex and it maps to a point on a 2D texture. A portion, or the whole, of the texture can therefore be painted onto the shape described by a set of vertices.

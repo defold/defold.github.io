@@ -2,7 +2,7 @@
 
 This example shows how to use a camera component and have it follow a game object. Click to toggle between following the game object and staying stationary.
 
-Source: [https://github.com/defold/examples/tree/master/render/camera](https://github.com/defold/examples/tree/master/render/camera)
+[Project files](https://github.com/defold/examples/tree/master/render/camera)
 
 The setup consists of one `bee` game object that the camera can follow and one `camera` game object containing the camera component. The camera component will when active send view and projection updates to the render script.
 

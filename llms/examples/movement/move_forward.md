@@ -2,7 +2,7 @@
 
 This example shows how to move a game object in the direction it is rotated/facing.
 
-Source: [https://github.com/defold/examples/tree/master/movement/move_forward](https://github.com/defold/examples/tree/master/movement/move_forward)
+[Project files](https://github.com/defold/examples/tree/master/movement/move_forward)
 
 ## Scripts
 

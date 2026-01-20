@@ -8,7 +8,7 @@ Nearest
 Linear
 : The texel will be averaged with its neighbors before coloring the screen pixel. This produces smooth appearances for slow, continuous motions as a Sprite will bleed into the pixels before fully coloring them--thus it is possible to move a Sprite less than a whole pixel.
 
-The setting for which filtering to use is stored in the [Project Settings](project-settings.md) file. There are two settings:
+The setting for which filtering to use is stored in the [Project Settings](https://defold.com/llms/manuals/project-settings.md) file. There are two settings:
 
 default_texture_min_filter
 : Minifying filtering applies whenever the texel is smaller than the screen pixel.
@@ -25,4 +25,4 @@ default_texture_mag_filter = nearest
 
 If you don’t specify anything, both are set to `linear` by default.
 
-Note that the setting in *game.project* is used by in the default samplers. If you specify samplers in a custom material, you can set the filter method on each sampler specifically. See the [Materials manual](material.md) for details.
+Note that the setting in *game.project* is used by in the default samplers. If you specify samplers in a custom material, you can set the filter method on each sampler specifically. See the [Materials manual](https://defold.com/llms/manuals/material.md) for details.

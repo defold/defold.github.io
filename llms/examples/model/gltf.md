@@ -2,7 +2,7 @@
 
 This example demonstrates how to use a glTF model.
 
-Source: [https://github.com/defold/examples/tree/master/model/gltf](https://github.com/defold/examples/tree/master/model/gltf)
+[Project files](https://github.com/defold/examples/tree/master/model/gltf)
 
 This example demonstrates how to use glTF models to add a toy car on the scene with a track and animates environment around the car.
 

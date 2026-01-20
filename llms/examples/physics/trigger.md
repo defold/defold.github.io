@@ -2,7 +2,7 @@
 
 This example shows how a physics trigger is used to trigger an event. In this case the bunny sprite is disabled and enabled.
 
-Source: [https://github.com/defold/examples/tree/master/physics/trigger](https://github.com/defold/examples/tree/master/physics/trigger)
+[Project files](https://github.com/defold/examples/tree/master/physics/trigger)
 
 The setup consists of two game objects.
 

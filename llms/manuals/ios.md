@@ -2,7 +2,7 @@
 
 Bundling a game for iOS is available only on Mac version of the Defold Editor.
 
-iOS requires that _any_ app that you build and want to run on your phone or tablet _must_ be signed with an Apple-issued certificate and provisioning profile. This manual explains the steps involved in bundling your game for iOS. During development, running your game through the [development app](dev-app.md) is often preferred since it allows you to hot reload content and code directly to your device.
+iOS requires that _any_ app that you build and want to run on your phone or tablet _must_ be signed with an Apple-issued certificate and provisioning profile. This manual explains the steps involved in bundling your game for iOS. During development, running your game through the [development app](https://defold.com/llms/manuals/dev-app.md) is often preferred since it allows you to hot reload content and code directly to your device.
 
 ## Apple's code signing process
 
@@ -70,7 +70,7 @@ You **must** uncheck the `Sign application` checkbox when testing your game on t
 
 Press *Create Bundle* and you will then be prompted to specify where on your computer the bundle will be created.
 
-You specify what icon to use for the app, the launch screen storyboard and so forth in the *game.project* project settings file in the [iOS section](project-settings.md).
+You specify what icon to use for the app, the launch screen storyboard and so forth in the *game.project* project settings file in the [iOS section](https://defold.com/llms/manuals/project-settings.md).
 
 ## Build variants
 
@@ -88,16 +88,16 @@ When you choose `Project ▸ Build` you'll always get the debug version.
 
 This type of executable is typically used during development of a game as it has several useful debugging features included:
 
-* Profiler - Used for gathering performance and usage counters. Learn how to use the profiler in the [Profiling manual](profiling.md).
-* Logging - The engine will log system information, warnings and errors when logging is enabled. The engine will also output logs from the Lua `print()` function and from native extensions logging using `dmLogInfo()`, `dmLogError()` and so on. Learn how to read these logs in the [Game and System Logs manual](debugging-game-and-system-logs.md).
-* Hot reload - Hot-reload is a powerful feature which lets a developer reload resource while the game is running. Learn how to use this in the [Hot-Reload manual](hot-reload.md).
+* Profiler - Used for gathering performance and usage counters. Learn how to use the profiler in the [Profiling manual](https://defold.com/llms/manuals/profiling.md).
+* Logging - The engine will log system information, warnings and errors when logging is enabled. The engine will also output logs from the Lua `print()` function and from native extensions logging using `dmLogInfo()`, `dmLogError()` and so on. Learn how to read these logs in the [Game and System Logs manual](https://defold.com/llms/manuals/debugging-game-and-system-logs.md).
+* Hot reload - Hot-reload is a powerful feature which lets a developer reload resource while the game is running. Learn how to use this in the [Hot-Reload manual](https://defold.com/llms/manuals/hot-reload.md).
 * Engine services - It is possible to connect to and interact with a debug version of a game through a number of different open TCP ports and services. The services include the hot-reload feature, remote log access and the profiler mentioned above, but also other services to remotely interact with the engine. Learn more about the engine services [in the developer documentation](https://github.com/defold/defold/blob/dev/engine/docs/DEBUG_PORTS_AND_SERVICES.md).
 
 ### Release
 
 This variant has the debugging features disabled. This options should be chosen when the game is ready to be released to the app store or in other ways shared with players. It is not recommended to release a game with the debugging features enabled for a number of reasons:
 
-* The debugging features take up a little bit of size in the binary, and [it is a best practice to try to keep the binary size of a released game as small as possible](optimization.md).
+* The debugging features take up a little bit of size in the binary, and [it is a best practice to try to keep the binary size of a released game as small as possible](https://defold.com/llms/manuals/optimization.md).
 * The debugging features takes a little bit of CPU time as well. This can impact the performance of the game if a user has a low-end hardware. On mobile phones the increased CPU usage will also contribute to heating and battery drain.
 * The debugging features may expose information about the game that is not intended for the eyes of the players, either from a security, cheating or fraud perspective.
 
@@ -114,7 +114,7 @@ You need [ios-deploy](https://github.com/ios-control/ios-deploy) command lint to
 $ brew install ios-deploy
 ```
 
-If the editor can't detect the install location of the ios-deploy tool, you will need to specify it in [Preferences](editor-preferences.md).
+If the editor can't detect the install location of the ios-deploy tool, you will need to specify it in [Preferences](https://defold.com/llms/manuals/editor-preferences.md).
 
 ### Creating a storyboard
 
@@ -218,7 +218,7 @@ The Defold game engine uses encryption for the following purposes:
 
 These uses of encryption in the Defold engine are exempt from export compliance document requirements under United States and European Union law. Most Defold projects will remain exempt, but the addition of other cryptographic methods may change this status. It is your responsibility to ensure that your project meets the requirements of these laws and the App Store's rules. See Apple's [Export Compliance Overview](https://help.apple.com/app-store-connect/#/dev88f5c7bf9) for more information.
 
-If you believe your project is exempt, set the [`ITSAppUsesNonExemptEncryption`](https://developer.apple.com/documentation/bundleresources/information-property-list/itsappusesnonexemptencryption) key to `False` in the project's `Info.plist` see [Application Manifests](extensions-manifest-merge-tool.md) for more details.
+If you believe your project is exempt, set the [`ITSAppUsesNonExemptEncryption`](https://developer.apple.com/documentation/bundleresources/information-property-list/itsappusesnonexemptencryption) key to `False` in the project's `Info.plist` see [Application Manifests](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md) for more details.
 
 ## FAQ
 #### Q: I am unable to install my Defold game using a free Apple Developer account.

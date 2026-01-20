@@ -2,7 +2,7 @@
 
 Control a first-person camera using WASD and mouse to look with cursor lock.
 
-Source: [https://github.com/defold/examples/tree/master/movement/3d_fps](https://github.com/defold/examples/tree/master/movement/3d_fps)
+[Project files](https://github.com/defold/examples/tree/master/movement/3d_fps)
 
 This example shows how to build a simple first-person controller for a 3D scene. You can look around with the mouse and move on the XZ plane using the keyboard (WSAD).
 

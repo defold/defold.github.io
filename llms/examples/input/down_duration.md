@@ -2,9 +2,7 @@
 
 Listens to input trigger "touch" and count mouse down duration in update method.
 
-Source: [https://github.com/defold/examples/tree/master/input/down_duration](https://github.com/defold/examples/tree/master/input/down_duration)
-
-
+[Project files](https://github.com/defold/examples/tree/master/input/down_duration)
 
 ## Scripts
 

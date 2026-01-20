@@ -2,15 +2,13 @@
 
 This example shows how to generate pseudo-random numbers in Defold using built-in math API.
 
-Source: [https://github.com/defold/examples/tree/master/basics/random_numbers](https://github.com/defold/examples/tree/master/basics/random_numbers)
+[Project files](https://github.com/defold/examples/tree/master/basics/random_numbers)
 
 In this example you'll learn how to generate pseudo-random numbers in Defold using built-in math API.
 
 In the example there is only a game object containing:
 - *Label* component where we show the text information
 - *Script* component where we generate random numbers
-
-
 
 Script sets the built-in random generator with a value of os.time() - which should be different every time you run it.
 Then produces 3 random numbers using math.random().

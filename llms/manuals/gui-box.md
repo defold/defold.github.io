@@ -14,7 +14,7 @@ Box nodes are always rendered, even if they do not have a texture assigned to th
 
 ## Playing animations
 
-Box nodes can play animations from atlases or tile sources. Refer to the [flipbook animation manual](flipbook-animation.md) to learn more.
+Box nodes can play animations from atlases or tile sources. Refer to the [flipbook animation manual](https://defold.com/llms/manuals/flipbook-animation.md) to learn more.
 
 ## Slice-9 texturing
 
@@ -34,7 +34,7 @@ The *Slice9* texture scaling described above is only applied when you change box
 
 If you change scale parameter of the box node or sprite (or on the game object) - the node or sprite and texture is scaled without applying *Slice9* parameters.
 
-When using slice-9 texturing on Sprites the [Sprite Trim Mode of the image](atlas.md) must be set to Off.
+When using slice-9 texturing on Sprites the [Sprite Trim Mode of the image](https://defold.com/llms/manuals/atlas.md) must be set to Off.
 
 ### Mipmaps and slice-9
 Due to the way mipmapping works in the renderer, scaling of texture segments can sometimes exhibit artifacts. This happens when you _scale down_ segments below the original texture size. The renderer then selects a lower resolution mipmap for the segment, resulting in visual artifacts.

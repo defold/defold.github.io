@@ -9,19 +9,19 @@ We have spent a lot of time and effort making sure that certain key elements of 
 We encourage you to experiment, follow tutorials, read our manuals and API documentation, and to be active on the forum to learn from other users and follow the development of Defold. There is quite a lot of documentation available, in the form of manuals, API reference documentation, examples and tutorials. If you don't know where to start, here are some pointers:
 
 #### The editor
- [The editor overview](editor.md) gives a good introduction to the editor and will help you get around, use the visual tools and write code. If you are familiar with 3D modelling programs and programming IDEs, there should be few surprises, but there are always things that will be different from your favorite piece of software.
+ [The editor overview](https://defold.com/llms/manuals/editor.md) gives a good introduction to the editor and will help you get around, use the visual tools and write code. If you are familiar with 3D modelling programs and programming IDEs, there should be few surprises, but there are always things that will be different from your favorite piece of software.
 
 #### Simple examples
  [Our collection of simple examples](https://defold.com/examples/) is a good introduction to how to put pieces together into something that works. You will find minimal examples of how to do a wide variety of common things in Defold.
 
 #### The Lua language
- [Defold uses Lua](lua.md) for all its logic control. The engine is a fast C++ piece of machinery, but it is controlled on a high level by Lua programs. If you have programmed in Python, Javascript or any other high level language, you will find Lua pretty easy to grasp and can probably follow along a tutorial just fine. Otherwise, read through our Lua manual and take it from there.
+ [Defold uses Lua](https://defold.com/llms/manuals/lua.md) for all its logic control. The engine is a fast C++ piece of machinery, but it is controlled on a high level by Lua programs. If you have programmed in Python, Javascript or any other high level language, you will find Lua pretty easy to grasp and can probably follow along a tutorial just fine. Otherwise, read through our Lua manual and take it from there.
 
 #### Game tutorials
- We believe that you learn best by doing. That is why we have a selection of tutorials at various skill and complexity level available directly from [the editor](editor.md). Fire it up and follow one or two of the tutorials to learn how to build things and how Defold works.
+ We believe that you learn best by doing. That is why we have a selection of tutorials at various skill and complexity level available directly from [the editor](https://defold.com/llms/manuals/editor.md). Fire it up and follow one or two of the tutorials to learn how to build things and how Defold works.
 
 #### The building blocks of Defold
- [Defold games are built by composing simple blocks](building-blocks.md), some of which seem familiar if you have used other engines. There are some architectural design decisions that make the blocks of Defold special and it takes a little while to be comfortable working with them. Our building blocks manual is a good start if you feel you need to understand thoroughly how it's working.
+ [Defold games are built by composing simple blocks](https://defold.com/llms/manuals/building-blocks.md), some of which seem familiar if you have used other engines. There are some architectural design decisions that make the blocks of Defold special and it takes a little while to be comfortable working with them. Our building blocks manual is a good start if you feel you need to understand thoroughly how it's working.
 
 #### The forum
  [Learning from others](//forum.defold.com/) is often the best way to learn. Our community is very friendly and knows a lot about building games in general and Defold in particular. If you ever get stuck, don't hesitate but head over to the forum for help!

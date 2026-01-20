@@ -2,7 +2,7 @@
 
 A GUI box node with an image texture and a script to make it act as a button.
 
-Source: [https://github.com/defold/examples/tree/master/gui/button](https://github.com/defold/examples/tree/master/gui/button)
+[Project files](https://github.com/defold/examples/tree/master/gui/button)
 
 The "gui" game object contains a GUI component stored in the file *button.gui*. The GUI contains
 the setup with the "button" box node for the button image and the "text" text node for the button label text.

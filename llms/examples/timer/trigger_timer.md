@@ -2,7 +2,7 @@
 
 This example shows how to create timer that triggers counting every 1s and can be triggered manually and asynchronously as a reaction to user input.
 
-Source: [https://github.com/defold/examples/tree/master/timer/trigger_timer](https://github.com/defold/examples/tree/master/timer/trigger_timer)
+[Project files](https://github.com/defold/examples/tree/master/timer/trigger_timer)
 
 The example shows how to use Defold built-in timer and trigger it asynchronously and uses two indicators:
 

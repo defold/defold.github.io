@@ -2,7 +2,7 @@
 
 This example shows a simple setup with dynamic physics objects.
 
-Source: [https://github.com/defold/examples/tree/master/physics/dynamic](https://github.com/defold/examples/tree/master/physics/dynamic)
+[Project files](https://github.com/defold/examples/tree/master/physics/dynamic)
 
 The setup consists of three game objects. The *game.project* physics *GravityY* property is set to -500 to match the scale of the setup.
 

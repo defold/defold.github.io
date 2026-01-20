@@ -2,7 +2,7 @@
 
 This example shows how to create various types of progress indicators
 
-Source: [https://github.com/defold/examples/tree/master/gui/progress](https://github.com/defold/examples/tree/master/gui/progress)
+[Project files](https://github.com/defold/examples/tree/master/gui/progress)
 
 The example shows three different types of progress indicators:
 

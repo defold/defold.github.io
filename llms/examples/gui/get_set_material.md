@@ -2,7 +2,7 @@
 
 This example shows how to get and set a material resource on a gui component.
 
-Source: [https://github.com/defold/examples/tree/master/gui/get_set_material](https://github.com/defold/examples/tree/master/gui/get_set_material)
+[Project files](https://github.com/defold/examples/tree/master/gui/get_set_material)
 
 ## Scripts
 

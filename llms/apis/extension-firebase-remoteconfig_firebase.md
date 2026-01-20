@@ -120,6 +120,6 @@ Event generated when the remote config has been activated
 *Type:* VARIABLE
 Event generated when remote config settings have been updated
 
-### 
+###
 *Type:* TABLE
 Functions and constants for interacting with Firebase Remote Config

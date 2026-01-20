@@ -66,7 +66,7 @@ Defold does not provide any anti-cheat solutions in the engine or tools and inst
 Defold socket and HTTP communication support secure socket connections. It is recommended to use secure connections for any server communication to authenticate the server and to protect the privacy and integrity of any exchanged data while in transit from client to server and vice versa. Defold uses the popular and widely adopted open source [Mbed TLS](https://github.com/Mbed-TLS/mbedtls) implementation of the TLS and SSL protocols. Mbed TLS is developed by ARM and their technology partners.
 
 ### SSL certificate validation
-To prevent man in the middle attacks on your network communication it is possible to validate the certificate chain during the SSL handshake when negotiating a connection with a server. This can be done by providing a list of public keys to the network client in Defold. For more information on securing your network communication please read the section about SSL verification in the [network manual](networking.md).
+To prevent man in the middle attacks on your network communication it is possible to validate the certificate chain during the SSL handshake when negotiating a connection with a server. This can be done by providing a list of public keys to the network client in Defold. For more information on securing your network communication please read the section about SSL verification in the [network manual](https://defold.com/llms/manuals/networking.md).
 
 ## Securing your use of third-party software
 While it is not necessary to use any third-party libraries or native extensions to create a game it has become a very common practice among developers to use assets from the official [Asset Portal](https://defold.com/assets/) to speed up development. The Asset Portal contains a large selection of assets, ranging from integrations with third-party SDKs, to screen managers, UI libraries, cameras and much more.
@@ -92,4 +92,4 @@ When excluded content is downloaded and prepared for use in a game, the content 
 * Is the downloaded content signed with the correct public-private key pair?
 * Is the downloaded content complete and not missing any files?
 
-You can read more about this process in the [Live Update manual](live-update.md).
+You can read more about this process in the [Live Update manual](https://defold.com/llms/manuals/live-update.md).

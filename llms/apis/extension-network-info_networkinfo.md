@@ -16,7 +16,6 @@ Get information about proxies for a specific url.
 
 - `url` (string) - The url to get proxy configurations for
 
-
 **Returns**
 
 - `table` - A list of proxies to try in order. Each proxy has three values

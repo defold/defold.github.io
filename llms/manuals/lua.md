@@ -609,7 +609,7 @@ print(collectgarbage("count") * 1024)
 A common implementation design consideration is how to structure code for shared behaviors. Several approaches are possible.
 
 Behaviors in a module
-: Encapsulating a behavior in a module allows you to easily share code between different game objects’ script components (and GUI scripts). When writing module functions it is generally best to write strictly functional code. There are cases where stored state or side effects are a necessity (or lead to cleaner design). If you have to store the internal state in the module, be aware that components share Lua contexts. See the [Modules documentation](modules.md) for details.
+: Encapsulating a behavior in a module allows you to easily share code between different game objects’ script components (and GUI scripts). When writing module functions it is generally best to write strictly functional code. There are cases where stored state or side effects are a necessity (or lead to cleaner design). If you have to store the internal state in the module, be aware that components share Lua contexts. See the [Modules documentation](https://defold.com/llms/manuals/modules.md) for details.
 
   Also, even if it is possible to have module code directly modify the internals of a game object (by passing `self` to a module function) we strongly discourage you from doing so since you will create very tight coupling.
 

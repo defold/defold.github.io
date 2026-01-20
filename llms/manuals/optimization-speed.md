@@ -1,5 +1,5 @@
 # Optimizing runtime speed {#manuals:optimization-speed}
-Before trying to optimize a game with the goal to make it run at a stable high frame rate you need to know where your bottlenecks are. What is actually taking up most of the time in a frame of your game? Is it the rendering? Is it your game logic? Is it the scene graph? To figure this out it is recommended to use the built-in profiling tools. Use the [on-screen or web profiler](profiling.md) to sample the performance of your game and then make a decision if and what to optimize. Once you have a better understanding of what takes time you can start addressing the problems.
+Before trying to optimize a game with the goal to make it run at a stable high frame rate you need to know where your bottlenecks are. What is actually taking up most of the time in a frame of your game? Is it the rendering? Is it your game logic? Is it the scene graph? To figure this out it is recommended to use the built-in profiling tools. Use the [on-screen or web profiler](https://defold.com/llms/manuals/profiling.md) to sample the performance of your game and then make a decision if and what to optimize. Once you have a better understanding of what takes time you can start addressing the problems.
 
 ## Reduce script execution time
 Reducing script execution time is needed if the profiler shows high values for the `Script` scope. As a general rule of thumb you should of course try to run as little code as possible every frame. Running a lot of code in `update()` and `on_input()` every frame is likely to have an impact on your game's performance, especially on low end devices. Some guidelines are:
@@ -72,7 +72,7 @@ Reducing the scene graph complexity is needed if the profiler shows high values 
 * Culling - Disable game objects (and their components) if they aren't currently visible. How this is determined depends very much on the type of game. For a 2D game it can be as easy as always disabling game objects that are outside of a rectangular area. You can use a physics trigger to detect this or by partitioning your objects into buckets. Once you know which objects to disable or enable you do this by sending a `disable` or `enable` message to each game object.
 
 ## Frustum culling
-The render script can automatically ignore rendering of game object component that are outside of a defined bounding box (frustum). Learn more about Frustum Culling in the [Render Pipeline manual](render.md).
+The render script can automatically ignore rendering of game object component that are outside of a defined bounding box (frustum). Learn more about Frustum Culling in the [Render Pipeline manual](https://defold.com/llms/manuals/render.md).
 
 # Platform specific optimizations
 

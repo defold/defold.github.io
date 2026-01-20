@@ -165,7 +165,7 @@ A URL is an object, usually written as a specially formatted string. A generic U
 `[socket:][path][#fragment]`
 
 socket
-: Identifies the game world of the target. This is important when working with [Collection Proxies](collection-proxy.md) and is then used to identify the _dynamically loaded collection_.
+: Identifies the game world of the target. This is important when working with [Collection Proxies](https://defold.com/llms/manuals/collection-proxy.md) and is then used to identify the _dynamically loaded collection_.
 
 path
 : This part of the URL contains the full id of the target game object.

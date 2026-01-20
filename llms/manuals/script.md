@@ -1,19 +1,19 @@
 # Scripts {#manuals:script}
 
-Script components allows you to create game logic using the [Lua programming language](lua.md).
+Script components allows you to create game logic using the [Lua programming language](https://defold.com/llms/manuals/lua.md).
 
 ## Script types
 
 There are three types of Lua script in Defold, each has different Defold libraries available.
 
 Game Object scripts
-: Extension _.script_. These scripts are added to game objects exactly like any other [component](components.md) and Defold will execute the Lua code as part of the engine lifecycle functions. Game Object scripts are usually used to control game objects and the logic that binds the game together with level loading, game rules and so forth. Game Object scripts have access to the [GO](https://defold.com/ref/go) functions and all Defold library functions except the [GUI](https://defold.com/ref/gui) and [Render](https://defold.com/ref/render) functions.
+: Extension _.script_. These scripts are added to game objects exactly like any other [component](https://defold.com/llms/manuals/components.md) and Defold will execute the Lua code as part of the engine lifecycle functions. Game Object scripts are usually used to control game objects and the logic that binds the game together with level loading, game rules and so forth. Game Object scripts have access to the [GO](https://defold.com/ref/go) functions and all Defold library functions except the [GUI](https://defold.com/ref/gui) and [Render](https://defold.com/ref/render) functions.
 
 GUI scripts
 : Extension _.gui_script_. Run by GUI components and usually containing the logic required to display GUI elements like heads up displays, menus etc. Defold will execute the Lua code as part of the engine lifecycle functions. GUI scripts have access to the [GUI](https://defold.com/ref/gui) functions and all Defold library functions except the [GO](https://defold.com/ref/go) and [Render](https://defold.com/ref/render) functions.
 
 Render scripts
-: Extension _.render_script_. Run by the rendering pipeline and containing the logic required to render all app/game graphics each frame. The render script has a special place in the lifecycle of your game. Details can be found in the [Application lifecycle documentation](application-lifecycle.md). Render scripts have access to the [Render](https://defold.com/ref/render) functions and all Defold library functions except the [GO](https://defold.com/ref/go) and [GUI](https://defold.com/ref/gui) functions.
+: Extension _.render_script_. Run by the rendering pipeline and containing the logic required to render all app/game graphics each frame. The render script has a special place in the lifecycle of your game. Details can be found in the [Application lifecycle documentation](https://defold.com/llms/manuals/application-lifecycle.md). Render scripts have access to the [Render](https://defold.com/ref/render) functions and all Defold library functions except the [GO](https://defold.com/ref/go) and [GUI](https://defold.com/ref/gui) functions.
 
 ## Script execution, callbacks and self
 
@@ -58,7 +58,7 @@ end
 ```
 
 #### on_message(self, message_id, message, sender)
-When messages are sent to the script component through [`msg.post()`](https://defold.com/ref/msg#msg.post) the engine calls this function of the receiver component. Learn [more about message passing](message-passing.md).
+When messages are sent to the script component through [`msg.post()`](https://defold.com/ref/msg#msg.post) the engine calls this function of the receiver component. Learn [more about message passing](https://defold.com/llms/manuals/message-passing.md).
 ```lua
 function on_message(self, message_id, message, sender)
     if message_id == hash("increase_score") then
@@ -68,7 +68,7 @@ end
 ```
 
 #### `on_input(self, action_id, action)`
-If this component has acquired input focus (see [`acquire_input_focus`](https://defold.com/ref/go/#acquire_input_focus)) the engine calls this function when input is registered. Learn [more about input handling](input.md).
+If this component has acquired input focus (see [`acquire_input_focus`](https://defold.com/ref/go/#acquire_input_focus)) the engine calls this function when input is registered. Learn [more about input handling](https://defold.com/llms/manuals/input.md).
 ```lua
 function on_input(self, action_id, action)
     if action_id == hash("touch") and action.pressed then
@@ -78,7 +78,7 @@ end
 ```
 
 #### `on_reload(self)`
-This function is called when the script is reloaded through the hot reload editor function (`Edit ▸ Reload Resource`). It is very useful for debugging, testing and tweaking purposes. Learn [more about hot-reload](hot-reload.md).
+This function is called when the script is reloaded through the hot reload editor function (`Edit ▸ Reload Resource`). It is very useful for debugging, testing and tweaking purposes. Learn [more about hot-reload](https://defold.com/llms/manuals/hot-reload.md).
 ```lua
 function on_reload(self)
   print(self.age) -- print the age of this game object

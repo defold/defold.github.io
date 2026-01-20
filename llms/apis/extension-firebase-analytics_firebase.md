@@ -541,6 +541,6 @@ Predefined property
 *Type:* STRING
 Predefined property
 
-### 
+###
 *Type:* TABLE
 Functions and constants for interacting with Firebase Analytics

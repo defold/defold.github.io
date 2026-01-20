@@ -2,7 +2,7 @@
 
 This example shows how to use physics raycasts to detect collisions along a straight line from a start point to an end point.
 
-Source: [https://github.com/defold/examples/tree/master/physics/raycast](https://github.com/defold/examples/tree/master/physics/raycast)
+[Project files](https://github.com/defold/examples/tree/master/physics/raycast)
 
 The setup consists of two different kinds of game objects.
 

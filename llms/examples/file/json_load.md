@@ -2,7 +2,7 @@
 
 This example shows how to load json data using sys.load_resource().
 
-Source: [https://github.com/defold/examples/tree/master/file/json_load](https://github.com/defold/examples/tree/master/file/json_load)
+[Project files](https://github.com/defold/examples/tree/master/file/json_load)
 
 The example will load a json file. This can be useful for something like level data.
 

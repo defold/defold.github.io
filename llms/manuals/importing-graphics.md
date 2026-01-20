@@ -11,17 +11,17 @@ When the images are imported into Defold they can be used to create Defold speci
  Atlas
 : An atlas contains a list of separate images files, which are automatically combined into a larger texture image. Atlases can contain still images and *Animation Groups*, sets of images that together form a flipbook animation.
 
-Learn more about the atlas resource in the [Atlas manual](atlas.md).
+Learn more about the atlas resource in the [Atlas manual](https://defold.com/llms/manuals/atlas.md).
 
  Tile Source
 : A tile source references an image file that is already made out to consist of smaller sub-images ordered on a uniform grid. Another term commonly used for this type of compound image is _sprite sheet_. Tile sources can contain flipbook animations, defined by the first and last tile for the animation. It is also possible to use an image to automatically attach collision shapes to tiles.
 
-Learn more about the tile source resource in the [Tile source manual](tilesource.md).
+Learn more about the tile source resource in the [Tile source manual](https://defold.com/llms/manuals/tilesource.md).
 
  Bitmap Font
 : A bitmap font has its glyphs in a PNG font sheet. These types of fonts provide no performance improvement from fonts generated from TrueType or OpenType font files, but can include arbitrary graphics, coloring and shadows right in the image.
 
-Learn more about bitmap fonts in the [Fonts manual](font.md).
+Learn more about bitmap fonts in the [Fonts manual](https://defold.com/llms/manuals/font.md).
 
 ## Using Defold assets
 
@@ -29,19 +29,19 @@ When you have converted the images into Atlas and Tile Source files you can use 
 
 : A sprite is either a static image or flipbook animation that is displayed on screen.
 
-Learn more about sprites in the [Sprite manual](sprite.md).
+Learn more about sprites in the [Sprite manual](https://defold.com/llms/manuals/sprite.md).
 
  Tile map
 : A tilemap component pieces together a map from tiles (image and collision shapes) that come from a tile source. Tile maps cannot use atlas sources.
 
-Learn more about tilemaps in the [Tilemap manual](tilemap.md).
+Learn more about tilemaps in the [Tilemap manual](https://defold.com/llms/manuals/tilemap.md).
 
  Particle fx
 : Particles that are spawned from a particle emitter consist of a still image or a flipbook animation from an atlas or tile source.
 
-Learn more about particle effects in the [Particle fx manual](particlefx.md).
+Learn more about particle effects in the [Particle fx manual](https://defold.com/llms/manuals/particlefx.md).
 
  GUI
 : GUI box nodes and pie nodes can use still images and flipbook animations from atlases and tile sources.
 
-Learn more about GUIs in the [GUI manual](gui.md).
+Learn more about GUIs in the [GUI manual](https://defold.com/llms/manuals/gui.md).

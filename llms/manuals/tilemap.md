@@ -2,7 +2,7 @@
 
 A *Tile Map* is a component that allows you to assemble, or paint, tiles from a *Tile Source* onto a large grid area. Tile maps are commonly used to build game level environments. You can also use the *Collision Shapes* from the tile source in your maps for collision detection and physics simulation ([example](https://defold.com/examples/tilemap/collisions/)).
 
-Before you can create a tile map you need to create a Tile Source. Refer to the [Tile Source manual](tilesource.md) to learn how to create a Tile Source.
+Before you can create a tile map you need to create a Tile Source. Refer to the [Tile Source manual](https://defold.com/llms/manuals/tilesource.md) to learn how to create a Tile Source.
 
 ## Creating a tile map
 
@@ -89,7 +89,7 @@ A tilemap has a number of different properties that can be manipulated using `go
 
 ### Material constants
 
-The default tilemap material has the following constants that can be changed using [go.set()](https://defold.com/ref/stable/go/#go.set) or [go.animate()](https://defold.com/ref/stable/go/#go.animate) (refer to the [Material manual for more details](material.md)). Examples:
+The default tilemap material has the following constants that can be changed using [go.set()](https://defold.com/ref/stable/go/#go.set) or [go.animate()](https://defold.com/ref/stable/go/#go.animate) (refer to the [Material manual for more details](https://defold.com/llms/manuals/material.md)). Examples:
 ```lua
 go.set("#tilemap", "tint", vmath.vector4(1,0,0,1))
 go.animate("#tilemap", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1), go.EASING_LINEAR, 2)
@@ -100,7 +100,7 @@ go.animate("#tilemap", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1)
 
 ## Project configuration
 
-The *game.project* file has a few [project settings](project-settings#tilemap.md) related to tilemaps.
+The *game.project* file has a few [project settings](https://defold.com/llms/manuals/project-settings#tilemap.md) related to tilemaps.
 
 ## External tools
 

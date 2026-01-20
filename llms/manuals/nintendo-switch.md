@@ -14,7 +14,7 @@ Once we have confirmed your status as an approved Nintendo Switch developer we w
 
 * Source code access to the Nintendo Switch extension with console specific API integrations.
 * Source code access to the Nintendo Switch enabled version of the Defold game engine. Note that the source code access is not required to build games for Nintendo Switch, but we provide access in case you wish to make source contributions to the engine core.
-* [Command line tool](bob.md) with support for bundling to the Nintendo Switch platform. Bundling from the Defold editor is not supported.
+* [Command line tool](https://defold.com/llms/manuals/bob.md) with support for bundling to the Nintendo Switch platform. Bundling from the Defold editor is not supported.
 * Forum where you are able to get Nintendo Switch specific support.
 
 ## FAQ

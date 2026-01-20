@@ -1,10 +1,10 @@
 # Optimize battery usage {#manuals:optimization-battery}
 Battery usage is mainly a concern if you are targeting mobile/handheld devices. High CPU or GPU usage will quickly drain battery and overheat the device.
 
-Refer to the manuals on how to [optimize runtime performance](optimization-speed.md) of a game to learn how to reduce CPU and GPU usage.
+Refer to the manuals on how to [optimize runtime performance](https://defold.com/llms/manuals/optimization-speed.md) of a game to learn how to reduce CPU and GPU usage.
 
 ## Disable accelerometer
-If you are creating a mobile game which doesn't make use of the device accelerometer it is recommended to [disable it in *game.project*](project-settings.md) to reduce the number of generated input events.
+If you are creating a mobile game which doesn't make use of the device accelerometer it is recommended to [disable it in *game.project*](https://defold.com/llms/manuals/project-settings.md) to reduce the number of generated input events.
 
 # Platform specific optimizations
 

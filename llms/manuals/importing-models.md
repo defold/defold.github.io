@@ -5,7 +5,7 @@ Defold currently support models, skeletons and animations in GL Transmission For
 To import the model, simply drag and drop the *.gltf* file or *.dae* file and the corresponding texture image into the *Assets Pane* somewhere.
 
 ## Using a model
-Once you have the model imported into Defold you can use it in a [Model component](model.md).
+Once you have the model imported into Defold you can use it in a [Model component](https://defold.com/llms/manuals/model.md).
 
 ## Exporting to glTF and Collada
 The exported *.gltf* or *.dae* file contain all the vertices, edges and faces that make up the model, as well as _UV coordinates_ (what part of the texture image maps to a certain part of the mesh) if you have defined them, the bones in the skeleton and animation data.

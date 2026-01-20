@@ -2,7 +2,7 @@
 
 This example shows how to child a game object to a parent.
 
-Source: [https://github.com/defold/examples/tree/master/basics/parent_child](https://github.com/defold/examples/tree/master/basics/parent_child)
+[Project files](https://github.com/defold/examples/tree/master/basics/parent_child)
 
 The parent/child relation is set up right in the editor by placing the parent and child game objects in the same collection and then simply dragging the child game object onto the parent.
 

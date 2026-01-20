@@ -1,10 +1,11 @@
 import html
-import json
 import os
 import re
-import shutil
+
+from utils import list_files, read_as_json, read_as_string, rmtree, write_as_string
 
 
+SITE_BASE_URL = "https://defold.com"
 LLMS_DIR = "_llms"
 LLMS_OUTPUT_DIR = "llms"
 LLMS_MANUALS_DIR = os.path.join(LLMS_OUTPUT_DIR, "manuals")
@@ -16,36 +17,6 @@ LLMS_EXAMPLES_FILE = "llms-examples.txt"
 LLMS_FULL_FILE = "llms-full.txt"
 
 
-def rmtree(dir):
-    if os.path.exists(dir):
-        shutil.rmtree(dir)
-
-
-def list_files(dir, ext, sort = False):
-    files = []
-    for file in os.listdir(dir):
-        if file.endswith(ext):
-            files.append(file)
-    if sort:
-        files.sort()
-    return files
-
-
-def read_as_string(filename):
-    with open(filename, encoding="utf-8") as f:
-        return f.read()
-
-
-def read_as_json(filename):
-    with open(filename, encoding="utf-8") as f:
-        return json.load(f)
-
-
-def write_as_string(filename, s):
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(s)
-
-
 def add_anchor_to_first_heading(contents, anchor, prefix):
     lines = contents.splitlines()
     for i, line in enumerate(lines):
@@ -53,6 +24,21 @@ def add_anchor_to_first_heading(contents, anchor, prefix):
             lines[i] = "{} {{#{}:{}}}".format(line, prefix, anchor)
             break
     return "\n".join(lines)
+
+
+def llms_manual_url(manual_path):
+    manual_path = manual_path.lstrip("/")
+    if manual_path.startswith("manuals/"):
+        manual_path = manual_path[len("manuals/"):]
+    return "{}/llms/manuals/{}.md".format(SITE_BASE_URL, manual_path)
+
+
+def llms_api_url(api_name):
+    return "{}/llms/apis/{}.md".format(SITE_BASE_URL, api_name)
+
+
+def llms_example_url(example_path):
+    return "{}/llms/examples/{}.md".format(SITE_BASE_URL, example_path)
 
 
 def build_llms_manuals_content(index):
@@ -131,9 +117,12 @@ def generate_llms_manuals(index):
                     os.makedirs(os.path.dirname(manual_output), exist_ok=True)
                     contents = read_as_string(llms_source)
                     contents = clean_markdown(contents)
-                    contents = re.sub(r"\(#manuals:([^)]+)\)", lambda m: f"({m.group(1).replace(':', '/')}.md)", contents)
+                    def replace_manual_link(match):
+                        manual_path = match.group(1).replace(":", "/")
+                        return "({})".format(llms_manual_url(manual_path))
+                    contents = re.sub(r"\(#manuals:([^)]+)\)", replace_manual_link, contents)
                     write_as_string(manual_output, contents)
-                manuals_index.append(f"- [{title}](manuals/{manual_rel_path}.md)")
+                manuals_index.append("- [{}]({})".format(title, llms_manual_url(manual_rel_path)))
             else:
                 url = path if "https://" in path else "https://defold.com" + path
                 manuals_index.append(f"- [{title}]({url})")
@@ -603,9 +592,9 @@ def generate_llms_apis():
         output_name = entry["output_name"]
         summary = entry["summary"]
         if summary:
-            apis_index.append("- [{}](apis/{}.md) - {}".format(label, output_name, summary))
+            apis_index.append("- [{}]({}) - {}".format(label, llms_api_url(output_name), summary))
         else:
-            apis_index.append("- [{}](apis/{}.md)".format(label, output_name))
+            apis_index.append("- [{}]({})".format(label, llms_api_url(output_name)))
     apis_index.append("")
 
     apis_index.append("## Lua APIs\n")
@@ -614,9 +603,9 @@ def generate_llms_apis():
         output_name = entry["output_name"]
         summary = entry["summary"]
         if summary:
-            apis_index.append("- [{}](apis/{}.md) - {}".format(label, output_name, summary))
+            apis_index.append("- [{}]({}) - {}".format(label, llms_api_url(output_name), summary))
         else:
-            apis_index.append("- [{}](apis/{}.md)".format(label, output_name))
+            apis_index.append("- [{}]({})".format(label, llms_api_url(output_name)))
     apis_index.append("")
 
     apis_index.append("## Extension APIs\n")
@@ -625,9 +614,9 @@ def generate_llms_apis():
         output_name = entry["output_name"]
         summary = entry["summary"]
         if summary:
-            apis_index.append("- [{}](apis/{}.md) - {}".format(label, output_name, summary))
+            apis_index.append("- [{}]({}) - {}".format(label, llms_api_url(output_name), summary))
         else:
-            apis_index.append("- [{}](apis/{}.md)".format(label, output_name))
+            apis_index.append("- [{}]({})".format(label, llms_api_url(output_name)))
     apis_index.append("")
 
     write_as_string(os.path.join(LLMS_OUTPUT_DIR, "apis.md"), "\n".join(apis_index))
@@ -680,7 +669,7 @@ def render_example_markdown(entry, content):
     path = entry.get("path")
     if path:
         source_url = "https://github.com/defold/examples/tree/master/{}".format(path)
-        lines.append("Source: [{}]({})".format(source_url, source_url))
+        lines.append("[Project files]({})".format(source_url))
         lines.append("")
     if content:
         lines.append(content.strip())
@@ -778,10 +767,10 @@ def generate_llms_examples():
             write_as_string(output_path, render_example_markdown(entry, content))
 
             if summary:
-                examples_index.append("- [{}](examples/{}) - {}".format(title, output_rel, summary))
+                examples_index.append("- [{}]({}) - {}".format(title, llms_example_url(path), summary))
                 examples_content.append("- [{}](#examples:{}) - {}".format(title, path.replace("/", ":"), summary))
             else:
-                examples_index.append("- [{}](examples/{})".format(title, output_rel))
+                examples_index.append("- [{}]({})".format(title, llms_example_url(path)))
                 examples_content.append("- [{}](#examples:{})".format(title, path.replace("/", ":")))
         examples_index.append("")
         examples_content.append("")

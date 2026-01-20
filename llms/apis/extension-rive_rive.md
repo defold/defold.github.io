@@ -225,6 +225,6 @@ Remove a ViewModelInstanceRuntime instance from a list property
 - `path` (string) - The path to the list property
 - `instance_handle` (integer) - The handle to the ViewModelInstanceRuntime instance to add to the list
 
-### 
+###
 *Type:* TABLE
 Functions and constants for interacting with Rive data bindings

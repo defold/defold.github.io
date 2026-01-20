@@ -100,7 +100,7 @@ The `"contact_point_response"` message is sent when one of the colliding objects
 `own_group`
 : the collision group of the collision object (`hash`).
 
-For a game or application where you need to separate objects perfectly, the `"contact_point_response"` message gives you all information you need. However, note that for any given collision pair, several `"contact_point_response"` messages can be received each frame, depending on the nature of the collision. See [Resolving collisions for more information](physics-resolving-collisions.md).
+For a game or application where you need to separate objects perfectly, the `"contact_point_response"` message gives you all information you need. However, note that for any given collision pair, several `"contact_point_response"` messages can be received each frame, depending on the nature of the collision. See [Resolving collisions for more information](https://defold.com/llms/manuals/physics-resolving-collisions.md).
 ```Lua
 function on_message(self, message_id, message, sender)
     -- check for the message

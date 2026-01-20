@@ -2,7 +2,7 @@
 
 This example shows a simple setup with a static pivot and two dynamic weights - physics objects joined together with a joint of type "fixed" and "spring". The fixed joint can simulate a rope and spring joint a spring. The example shows how to create the joints and change the gravity to affect the pendulums.
 
-Source: [https://github.com/defold/examples/tree/master/physics/pendulum](https://github.com/defold/examples/tree/master/physics/pendulum)
+[Project files](https://github.com/defold/examples/tree/master/physics/pendulum)
 
 The setup consists of four game objects. The *game.project* physics *GravityY* property is set to -500 to match the scale of the setup.
 

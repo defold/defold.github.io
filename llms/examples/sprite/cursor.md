@@ -2,11 +2,9 @@
 
 This example shows how to use the sprite animation cursor and frame count to manually select a specific frame
 
-Source: [https://github.com/defold/examples/tree/master/sprite/cursor](https://github.com/defold/examples/tree/master/sprite/cursor)
+[Project files](https://github.com/defold/examples/tree/master/sprite/cursor)
 
 The example contains a sprite with a tilesource animation of a walking robot. The animation consists of 8 frames:
-
-
 
 The example also contains a script and some visual controls that can be used to step through or automatically play the tilesource animation using the animation cursor:
 

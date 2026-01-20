@@ -3248,7 +3248,7 @@ FMOD_System_Create
 *Type:* FMOD.SYSTEM
 The FMOD low-level system instance
 
-### 
+###
 *Type:* TABLE
 Table mapping error messages to error codes
 

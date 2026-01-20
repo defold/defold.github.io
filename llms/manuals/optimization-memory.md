@@ -8,19 +8,19 @@ Most game have at least some content that is used infrequently. From a memory us
 
 Defold has several different ways of loading content dynamically:
 
-* [Collection proxies](collection-proxy.md)
-* [Dynamic collection factories](collection-factory.md)
-* [Dynamic factories](factory.md)
-* [Live Update](live-update.md)
+* [Collection proxies](https://defold.com/llms/manuals/collection-proxy.md)
+* [Dynamic collection factories](https://defold.com/llms/manuals/collection-factory.md)
+* [Dynamic factories](https://defold.com/llms/manuals/factory.md)
+* [Live Update](https://defold.com/llms/manuals/live-update.md)
 
 ## Optimize component counters
-Defold will allocate memory for components and resources once when a collection is created, to reduce memory fragmentation. The amount of memory that is allocated depends on the configuration of various components counters in *game.project*. Use the [profiler](profiling.md) to get accurate component and resource usage and configure your game to use max values that are closer to the real count of components and resources. This will reduce the amount of memory your game is using (refer to information about component [max count optimizations](project-settings.md)).
+Defold will allocate memory for components and resources once when a collection is created, to reduce memory fragmentation. The amount of memory that is allocated depends on the configuration of various components counters in *game.project*. Use the [profiler](https://defold.com/llms/manuals/profiling.md) to get accurate component and resource usage and configure your game to use max values that are closer to the real count of components and resources. This will reduce the amount of memory your game is using (refer to information about component [max count optimizations](https://defold.com/llms/manuals/project-settings.md)).
 
 ## Optimize GUI node count
-Optimize GUI node counts by setting the max number of nodes in the GUI file to only what is needed. The `Current Nodes` field of the [GUI component properties](gui.md) will show the number of nodes used by the GUI component.
+Optimize GUI node counts by setting the max number of nodes in the GUI file to only what is needed. The `Current Nodes` field of the [GUI component properties](https://defold.com/llms/manuals/gui.md) will show the number of nodes used by the GUI component.
 
 ## Heap size (HTML5)
-The heap size of a Defold HTML5 game can be configured from the [`heap_size` field](project-settings.md) in *game.project*. Make sure to optimize memory usage of your game and set a minimal heap size.
+The heap size of a Defold HTML5 game can be configured from the [`heap_size` field](https://defold.com/llms/manuals/project-settings.md) in *game.project*. Make sure to optimize memory usage of your game and set a minimal heap size.
 
 For small games, 32 MB is an achievable heap size. For larger games, aim for 64–128 MB. If, for example, you're at 58 MB and further optimization isn't feasible, you can settle on 64 MB without overthinking it. There’s no strict target size — it depends on the game. Just aim for smaller sizes, ideally in steps of powers of two.
 
@@ -37,4 +37,4 @@ You can also open the developer tools of your browser and write the following in
 HEAP8.length / 1024 / 1024
 ```
 
-If the memory usage remains at 32 MB, that's great! If not, follow the steps to [optimize the size of the engine itself and large assets such as sounds and textures](optimization-size.md).
+If the memory usage remains at 32 MB, that's great! If not, follow the steps to [optimize the size of the engine itself and large assets such as sounds and textures](https://defold.com/llms/manuals/optimization-size.md).

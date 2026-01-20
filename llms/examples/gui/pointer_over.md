@@ -2,7 +2,7 @@
 
 A GUI box node with an image texture and a script that react when pointer over this node.
 
-Source: [https://github.com/defold/examples/tree/master/gui/pointer_over](https://github.com/defold/examples/tree/master/gui/pointer_over)
+[Project files](https://github.com/defold/examples/tree/master/gui/pointer_over)
 
 The "gui" game object contains a GUI component stored in the file *pointer_over.gui*. The GUI contains
 the setup with the "button" box node for the button image and the "text" text node for the button label text.

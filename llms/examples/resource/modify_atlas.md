@@ -2,7 +2,7 @@
 
 This example shows how to replace an image in an atlas
 
-Source: [https://github.com/defold/examples/tree/master/resource/modify_atlas](https://github.com/defold/examples/tree/master/resource/modify_atlas)
+[Project files](https://github.com/defold/examples/tree/master/resource/modify_atlas)
 
 The example loads an image bundled as a custom resource (bundled in the game archive) and uses it to replace the first image of an atlas. See code comments for implementation details.
 

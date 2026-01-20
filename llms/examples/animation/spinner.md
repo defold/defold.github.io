@@ -2,7 +2,7 @@
 
 This example shows how a game object is rotated in discrete steps, matching the graphics of the progress spinner.
 
-Source: [https://github.com/defold/examples/tree/master/animation/spinner](https://github.com/defold/examples/tree/master/animation/spinner)
+[Project files](https://github.com/defold/examples/tree/master/animation/spinner)
 
 ## Scripts
 

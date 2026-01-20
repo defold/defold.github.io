@@ -2,7 +2,7 @@
 
 This example shows how to make Fade-In and fade Fade-Out music.
 
-Source: [https://github.com/defold/examples/tree/master/sound/fade_in_out](https://github.com/defold/examples/tree/master/sound/fade_in_out)
+[Project files](https://github.com/defold/examples/tree/master/sound/fade_in_out)
 
 ## Scripts
 

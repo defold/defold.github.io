@@ -2,7 +2,7 @@
 
 This example shows how to get and set a texture resource on a gui component.
 
-Source: [https://github.com/defold/examples/tree/master/gui/get_set_texture](https://github.com/defold/examples/tree/master/gui/get_set_texture)
+[Project files](https://github.com/defold/examples/tree/master/gui/get_set_texture)
 
 ## Scripts
 

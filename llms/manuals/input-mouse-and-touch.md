@@ -1,5 +1,5 @@
 
-It is recommended that you familiarize yourself with the general way in which input works in Defold, how to receive input and in which order input is received in your script files. Learn more about the input system in the [Input Overview manual](input.md).
+It is recommended that you familiarize yourself with the general way in which input works in Defold, how to receive input and in which order input is received in your script files. Learn more about the input system in the [Input Overview manual](https://defold.com/llms/manuals/input.md).
 
 # Mouse Triggers
 Mouse triggers allow you to bind input from mouse buttons and scroll wheels to game actions.
@@ -90,5 +90,5 @@ A ready to use solution for using collision objects to detect user input with dr
 
 In both cases there is a need to convert from the screen space coordinates of the mouse or touch event and the world space coordinates of the game objects. This can be done in a couple of different ways:
 
-  * Manually keep track of which view and projection that is used by the render script and use this to convert to and from world space. See the [camera manual for an example of this](camera.md).
-  * Use a [third-party camera solution](camera.md) and make use of the provided screen-to-world conversion functions.
+  * Manually keep track of which view and projection that is used by the render script and use this to convert to and from world space. See the [camera manual for an example of this](https://defold.com/llms/manuals/camera.md).
+  * Use a [third-party camera solution](https://defold.com/llms/manuals/camera.md) and make use of the provided screen-to-world conversion functions.

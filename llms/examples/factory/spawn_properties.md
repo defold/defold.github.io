@@ -2,15 +2,13 @@
 
 This example shows how to spawn enemy game objects using a factory component with different properties.
 
-Source: [https://github.com/defold/examples/tree/master/factory/spawn_properties](https://github.com/defold/examples/tree/master/factory/spawn_properties)
+[Project files](https://github.com/defold/examples/tree/master/factory/spawn_properties)
 
 This example shows how to dynamically spawn enemy game objects using a factory component with different properties. The setup consists of three main components: a player ship, enemy spawner, and different enemy types with customizable properties.
 
 Press keys `1`, `2`, or `3` to spawn different enemy types.
 
 Example collection consists of 2 game objects:
-
-
 
 ### Ship
 The red ship at the bottom that automatically moves and shoots. Consists of:
@@ -26,10 +24,8 @@ Controls enemy spawning with keyboard input. Consists of:
 - A *Label* `example_description` with instructions text displayed on top
 - A *Script* `spawner` that spawns enemies.
 
-
 The spawner script defines three different enemy types: `random`, `diagonal`, and `straight`.
 Uses factory to create enemies with specific properties:
-
 ```lua
 local properties = ENEMY_TYPES[enemy_type]
 factory.create("#enemyfactory", position, nil, properties)

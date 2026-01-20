@@ -2,7 +2,7 @@
 
 This example demonstrates how to create script to control a 3D camera with the mouse. Scroll wheel is used to zoom in and out.
 
-Source: [https://github.com/defold/examples/tree/master/render/orbit_camera](https://github.com/defold/examples/tree/master/render/orbit_camera)
+[Project files](https://github.com/defold/examples/tree/master/render/orbit_camera)
 
 In this example, we create a script to control a 3D camera using the mouse and mouse scroll wheel.
 
@@ -12,7 +12,7 @@ We added two objects to the collection: a camera (`/camera`) and an object (`/cr
 - `rotation_speed`: the speed of the rotation.
 - `offset`: the offset of the camera from the origin. Use it to move the camera away from the origin.
 
-During `init`, the script sets up the camera projection, acquires input focus, and establishes starting values for yaw, pitch, and zoom. 
+During `init`, the script sets up the camera projection, acquires input focus, and establishes starting values for yaw, pitch, and zoom.
 
 In the `update` loop, the script smoothly interpolates camera rotation and zoom (note: `vmath.lerp` is used and it doesn't depend on the delta time, so the camera will move at different speed on different devices), calculates the camera's rotation and position based on current yaw, pitch, and zoom values, and then updates the camera's position and rotation accordingly. This creates a fluid, responsive camera movement!
 

@@ -2,7 +2,7 @@
 
 A Sprite component is a simple image or flipbook animation that is displayed on screen.
 
-The Sprite component can use either an [Atlas](atlas.md) or a [Tile Source](tilesource.md) for it's graphics.
+The Sprite component can use either an [Atlas](https://defold.com/llms/manuals/atlas.md) or a [Tile Source](https://defold.com/llms/manuals/tilesource.md) for it's graphics.
 
 ## Sprite properties
 
@@ -45,7 +45,7 @@ The *Slice9* texture scaling described above is only applied when you change box
 
 If you change scale parameter of the box node or sprite (or on the game object) - the node or sprite and texture is scaled without applying *Slice9* parameters.
 
-When using slice-9 texturing on Sprites the [Sprite Trim Mode of the image](atlas.md) must be set to Off.
+When using slice-9 texturing on Sprites the [Sprite Trim Mode of the image](https://defold.com/llms/manuals/atlas.md) must be set to Off.
 
 ### Mipmaps and slice-9
 Due to the way mipmapping works in the renderer, scaling of texture segments can sometimes exhibit artifacts. This happens when you _scale down_ segments below the original texture size. The renderer then selects a lower resolution mipmap for the segment, resulting in visual artifacts.
@@ -96,7 +96,7 @@ A sprite also has a number of different properties that can be manipulated using
 
 ## Material constants
 
-The default sprite material has the following constants that can be changed using [go.set()](https://defold.com/ref/stable/go/#go.set) or [go.animate()](https://defold.com/ref/stable/go/#go.animate) (refer to the [Material manual for more details](material.md)). Examples:
+The default sprite material has the following constants that can be changed using [go.set()](https://defold.com/ref/stable/go/#go.set) or [go.animate()](https://defold.com/ref/stable/go/#go.animate) (refer to the [Material manual for more details](https://defold.com/llms/manuals/material.md)). Examples:
 ```lua
 go.set("#sprite", "tint", vmath.vector4(1,0,0,1))
 go.animate("#sprite", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1), go.EASING_LINEAR, 2)
@@ -107,13 +107,13 @@ go.animate("#sprite", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1),
 
 ## Material attributes
 
-A sprite can override vertex attributes from the currently assigned material and will be passed into the vertex shader from the component (refer to the [Material manual for more details](material.md)).
+A sprite can override vertex attributes from the currently assigned material and will be passed into the vertex shader from the component (refer to the [Material manual for more details](https://defold.com/llms/manuals/material.md)).
 
 The attributes specified in the material will show up as regular properties in the inspector and can be set on individual sprite components. If any of the attributes are overridden, it will show up as an overridden property and stored in the sprite file on disk:
 
 ## Project configuration
 
-The *game.project* file has a few [project settings](project-settings#sprite.md) related to sprites.
+The *game.project* file has a few [project settings](https://defold.com/llms/manuals/project-settings#sprite.md) related to sprites.
 
 ## Multi textured sprites
 
@@ -142,7 +142,7 @@ run:
     ...
 ```
 
-So we use the `Rename patterns` in the [atlas](material.md) to rename them.
+So we use the `Rename patterns` in the [atlas](https://defold.com/llms/manuals/material.md) to rename them.
 Set `_color=` and `_normal=` in the corresponding atlases, and you'll get frame names like this in both atlases:
 ```
 run/hero_run_1

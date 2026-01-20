@@ -16,6 +16,7 @@ import hashlib
 import yaml
 
 from llms import LLMS_DIR, generate_llms_manuals, generate_llms_apis, generate_llms_examples, path_to_manuals_anchor
+from utils import list_files, read_as_json, read_as_string, rmtree, write_as_string
 from scripts import dedupe_examples_wasm
 from argparse import ArgumentParser
 from contextlib import contextmanager
@@ -102,10 +103,6 @@ def tmpdir():
     finally:
         shutil.rmtree(name)
 
-def rmtree(dir):
-    if os.path.exists(dir):
-        shutil.rmtree(dir)
-
 def rmmkdir(dir):
     rmtree(dir)
     os.mkdir(dir)
@@ -126,15 +123,6 @@ def copytree(src, dst, overwrite = False):
 def makedirs(path):
     if not os.path.exists(path):
         os.makedirs(path)
-
-def list_files(dir, ext, sort=False):
-    files = []
-    for file in os.listdir(dir):
-        if file.endswith(ext):
-            files.append(file)
-    if sort:
-        files.sort()
-    return files
 
 def call(args):
     print(args)
@@ -226,14 +214,6 @@ def find_files(root_dir, file_patterns):
     matches.sort()
     return matches
 
-def read_as_string(filename):
-    with open(filename) as f:
-        return f.read()
-
-def read_as_json(filename):
-    with open(filename) as f:
-        return json.load(f)
-
 def write_as_json(filename, data, ensure_ascii=True):
     with open(filename, "w") as f:
         json.dump(data, f, indent=4, sort_keys=True, ensure_ascii=ensure_ascii)
@@ -241,10 +221,6 @@ def write_as_json(filename, data, ensure_ascii=True):
 def write_lines(filename, lines):
     with open(filename, "w") as f:
         f.writelines(lines)
-
-def write_as_string(filename, s):
-    with open(filename, "w") as f:
-        f.write(s)
 
 def replace_in_file(filename, old, new, flags=None):
     with open(filename) as f:

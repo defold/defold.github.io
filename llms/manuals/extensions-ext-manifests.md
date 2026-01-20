@@ -4,7 +4,7 @@ The extension manifest is a configuration file with flags and defines used when 
 
 ## App Manifest
 
-The application manifest (file extension `.appmanifest`) is an application level configuration of how to build your game on the build servers. The application manifest lets you remove parts of the engine that you don't use. If you don't need a physics engine, you can remove that from the executable to reduce it's size. Learn how to exclude unused feature [in the application manifest manual](app-manifest.md).
+The application manifest (file extension `.appmanifest`) is an application level configuration of how to build your game on the build servers. The application manifest lets you remove parts of the engine that you don't use. If you don't need a physics engine, you can remove that from the executable to reduce it's size. Learn how to exclude unused feature [in the application manifest manual](https://defold.com/llms/manuals/app-manifest.md).
 
 ## Engine manifest
 

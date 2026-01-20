@@ -123,4 +123,4 @@ end
 
 ## Project configuration
 
-The *game.project* file has a few [project settings](project-settings#label.md) related to labels.
+The *game.project* file has a few [project settings](https://defold.com/llms/manuals/project-settings#label.md) related to labels.

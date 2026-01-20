@@ -18,7 +18,6 @@ Initialize Steamworks.
 
 - `string` - Error message if unsuccessful.
 
-
 ### steam.update
 *Type:* FUNCTION
 Update Steamworks. Call this from a script component.
@@ -452,7 +451,6 @@ Returns the name of another user. Same rules as GetFriendPersonaState() apply as
 
 - `string` - Name of user
 
-
 ### steam.friends_get_persona_name
 *Type:* FUNCTION
 Returns the local players name - guaranteed to not be NULL. This is the same name as on the users community profile page. This is stored in UTF-8 format.
@@ -460,7 +458,6 @@ Returns the local players name - guaranteed to not be NULL. This is the same nam
 **Returns**
 
 - `string` - Name of user
-
 
 ### steam.friends_get_persona_state
 *Type:* FUNCTION
@@ -470,7 +467,6 @@ Gets the status of the current user. Returned as EPersonaState.
 
 - `number` - Status of user.
 
-
 ### steam.friends_get_friend_count
 *Type:* FUNCTION
 Friend iteration. Takes a set of EFriendFlags, and returns the number of users the client knows about who meet that criteria. Then GetFriendByIndex() can then be used to return the id's of each of those users.
@@ -479,11 +475,9 @@ Friend iteration. Takes a set of EFriendFlags, and returns the number of users t
 
 - `iFriendFlags` (number) - Set of friend flags to match friends against.
 
-
 **Returns**
 
 - `number` - Number of users matching search.
-
 
 ### steam.friends_get_friend_by_index
 *Type:* FUNCTION
@@ -495,11 +489,9 @@ Returns the steamID of a user. The returned CSteamID can then be used by all the
 
 - `iFriendsFlags` (number) - Must be the same value as used in GetFriendCount()
 
-
 **Returns**
 
 - `number` - Steam id of the user
-
 
 ### steam.friends_get_friend_persona_state
 *Type:* FUNCTION
@@ -509,11 +501,9 @@ Returns the current status of the specified user. This will only be known by the
 
 - `steamIDFriend` (number) - Id of friend
 
-
 **Returns**
 
 - `number` - State of friend
-
 
 ### steam.friends_get_friend_steam_level
 *Type:* FUNCTION
@@ -523,11 +513,9 @@ Get friends steam level.
 
 - `steamIDFriend` (number) - Id of friend
 
-
 **Returns**
 
 - `number` - Steam level of friend
-
 
 ### steam.friends_get_friend_relationship
 *Type:* FUNCTION
@@ -537,11 +525,9 @@ Returns a relationship to a user.
 
 - `steamIDFriend` (number) - Id of friend
 
-
 **Returns**
 
 - `number` - Relationship to the user.
-
 
 ### steam.friends_get_small_friend_avatar
 *Type:* FUNCTION
@@ -551,11 +537,9 @@ Gets a handle to the small (32*32px) avatar for the specified user. This is a ha
 
 - `steamIDFriend` (number) - Id of friend
 
-
 **Returns**
 
 - `number` - Image handle.
-
 
 ### steam.friends_get_medium_friend_avatar
 *Type:* FUNCTION
@@ -565,11 +549,9 @@ Gets a handle to the medium (64*64px) avatar for the specified user. This is a h
 
 - `steamIDFriend` (number) - Id of friend
 
-
 **Returns**
 
 - `number` - Image handle.
-
 
 ### steam.friends_get_large_friend_avatar
 *Type:* FUNCTION
@@ -579,11 +561,9 @@ Gets a handle to the large (128*128px) avatar for the specified user. This is a 
 
 - `steamIDFriend` (number) - Id of friend
 
-
 **Returns**
 
 - `number` - Image handle.
-
 
 ### steam.friends_activate_game_overlay_to_store
 *Type:* FUNCTION
@@ -594,7 +574,6 @@ Activates game overlay to store page for app.
 - `app_id` (number)
 - `flag` (number) - EOverlayToStoreFlag
 
-
 ### steam.friends_activate_game_overlay_to_web_page
 *Type:* FUNCTION
 Activates game overlay web browser directly to the specified URL. Full address with protocol type is required, e.g. http://www.steamgames.com/
@@ -603,7 +582,6 @@ Activates game overlay web browser directly to the specified URL. Full address w
 
 - `url` (string)
 - `mode` (number) - EActivateGameOverlayToWebPageMode
-
 
 ### steam.friends_set_rich_presence
 *Type:* FUNCTION
@@ -617,7 +595,6 @@ Sets a Rich Presence key/value for the current user.
 **Returns**
 
 - `boolean` - True if the rich presence was set successfully, otherwise False.
-
 
 ### steam.friends_clear_rich_presence
 *Type:* FUNCTION
@@ -633,7 +610,6 @@ Invites a friend or clan member to the current game using a special invite strin
 
 - `connect` (string) - String
 
-
 **Returns**
 
 - `boolean`
@@ -645,7 +621,6 @@ Set a listener.
 **Parameters**
 
 - `listener` (function) - Listener function to call
-
 
 ### steam.matchmaking_add_request_lobby_list_string_filter
 *Type:* FUNCTION
@@ -716,7 +691,6 @@ Get a filtered list of relevant lobbies. Will return results as a LobbyMatchList
 
 - `string` - Callback id
 
-
 ### steam.matchmaking_get_lobby_by_index
 *Type:* FUNCTION
 Gets the Steam ID of the lobby at the specified index. This should only be called after a LobbyMatchList_t call result is received
@@ -726,11 +700,9 @@ Gets the Steam ID of the lobby at the specified index. This should only be calle
 - `index` (number) - The index of the lobby to get the Steam ID of, from 0 to
 LobbyMatchList_t.m_nLobbiesMatching
 
-
 **Returns**
 
 - `string` - Id of lobby
-
 
 ### steam.matchmaking_create_lobby
 *Type:* FUNCTION
@@ -742,11 +714,9 @@ Create a new matchmaking lobby. Will generate a LobbyCreated_t, LobbyEnter_t and
 
 - `max_members` (number) - The maximum number of players that can join this lobby.
 
-
 **Returns**
 
 - `string` - Callback id
-
 
 ### steam.matchmaking_join_lobby
 *Type:* FUNCTION
@@ -756,11 +726,9 @@ Joins an existing lobby. Will generate a LobbyEnter_t event
 
 - `lobby_id` (string) - The Steam ID of the lobby to join.
 
-
 **Returns**
 
 - `string` - Callback id
-
 
 ### steam.matchmaking_leave_lobby
 *Type:* FUNCTION
@@ -770,7 +738,6 @@ Leave a lobby that the user is currently in. Leave a lobby that the user is curr
 
 - `lobby_id` (string) - The lobby to leave
 
-
 ### steam.matchmaking_get_lobby_owner
 *Type:* FUNCTION
 Returns the current lobby owner. There always one lobby owner - if the current owner leaves, another user in the lobby will become the owner automatically. It is possible (but rare) to join a lobby just as the owner is leaving, thus entering a lobby with self as the owner. You must be a member of the lobby to access this.
@@ -779,11 +746,9 @@ Returns the current lobby owner. There always one lobby owner - if the current o
 
 - `lobby_id` (string) - The Steam ID of the lobby to get the owner of.
 
-
 **Returns**
 
 - `string` - Id of owner
-
 
 ### steam.matchmaking_set_lobby_owner
 *Type:* FUNCTION
@@ -795,7 +760,6 @@ Changes who the lobby owner is. This can only be set by the owner of the lobby. 
 
 - `new_owner` (string) - The new owner
 
-
 ### steam.matchmaking_set_lobby_type
 *Type:* FUNCTION
 Updates what type of lobby this is. This is also set when you create the lobby with CreateLobby. This can only be set by the owner of the lobby.
@@ -805,7 +769,6 @@ Updates what type of lobby this is. This is also set when you create the lobby w
 - `lobby_id` (string) - The Steam ID of the lobby
 
 - `type` (number) - The lobby type
-
 
 ### steam.matchmaking_set_lobby_joinable
 *Type:* FUNCTION
@@ -817,11 +780,9 @@ Sets whether or not a lobby is joinable by other players. This always defaults t
 
 - `joinable` (boolean) - Enable or disable allowing users to join this lobby?
 
-
 **Returns**
 
 - `boolean` - Success
-
 
 ### steam.matchmaking_set_lobby_member_limit
 *Type:* FUNCTION
@@ -834,11 +795,9 @@ Set the maximum number of players that can join the lobby. This is also set when
 - `max_members` (number) - The maximum number of players allowed in this lobby. This
 can not be above 250.
 
-
 **Returns**
 
 - `boolean` - Success
-
 
 ### steam.matchmaking_get_lobby_member_limit
 *Type:* FUNCTION
@@ -848,11 +807,9 @@ The current limit on the
 
 - `lobby_id` (string) - The Steam ID of the lobby to get the member limit of.
 
-
 **Returns**
 
 - `number` - The current limit
-
 
 ### steam.matchmaking_get_num_lobby_members
 *Type:* FUNCTION
@@ -862,11 +819,9 @@ Gets the number of users in a lobby. This is used for iteration, after calling t
 
 - `lobby_id` (string) - The Steam ID of the lobby to get the owner of.
 
-
 **Returns**
 
 - `number` - Number of users in the lobby
-
 
 ### steam.matchmaking_get_lobby_member_by_index
 *Type:* FUNCTION
@@ -880,7 +835,6 @@ Gets the Steam ID of the lobby member at the given index. You must call matchmak
 **Returns**
 
 - `string` - Id of member
-
 
 ### steam.matchmaking_set_lobby_data
 *Type:* FUNCTION
@@ -919,7 +873,6 @@ Get data associated with this lobby.
 
 - `string` - Data
 
-
 ### steam.matchmaking_get_lobby_member_data
 *Type:* FUNCTION
 Gets per-user metadata from another player in the specified lobby.
@@ -934,7 +887,6 @@ Gets per-user metadata from another player in the specified lobby.
 
 - `string` - Data
 
-
 ### steam.matchmaking_get_lobby_data_count
 *Type:* FUNCTION
 Returns the number of metadata keys set on the specified lobby.
@@ -946,7 +898,6 @@ Returns the number of metadata keys set on the specified lobby.
 **Returns**
 
 - `number` - Number of keys
-
 
 ### steam.matchmaking_get_lobby_data_by_index
 *Type:* FUNCTION
@@ -1003,7 +954,6 @@ Send message.
 
 - `remote_channel` (number) - A routing number you can use to help route message to different systems
 
-
 ### steam.networking_receive_messages_on_channel
 *Type:* FUNCTION
 Receive message.
@@ -1029,7 +979,6 @@ Accept session. Call this in response to a SteamNetworkingMessagesSessionRequest
 - `boolean` - Returns false if there is no session with the user
 pending or otherwise. If there is an existing active session, this function
 will return true, even if it is not pending.
-
 
 ### steam.networking_close_session_with_user
 *Type:* FUNCTION
@@ -1068,7 +1017,6 @@ Get connection info. Returns information about the latest state of a connection,
 
 - `table` - Connection info (state, info, status)
 
-
 ### steam.remote_storage_file_share
 *Type:* FUNCTION
 Share a file.
@@ -1076,7 +1024,6 @@ Share a file.
 **Parameters**
 
 - `filename` (string) - Name of file to share
-
 
 **Returns**
 
@@ -1090,7 +1037,6 @@ Get number of uploaded files.
 
 - `number` - File count
 
-
 ### steam.remote_storage_get_file_name_and_size
 *Type:* FUNCTION
 Get file information.
@@ -1098,7 +1044,6 @@ Get file information.
 **Returns**
 
 - `number` - File count
-
 
 ### steam.remote_storage_get_quota
 *Type:* FUNCTION
@@ -1109,7 +1054,6 @@ Get storage quota.
 - `number` - Available bytes
 
 - `number` - Total bytes
-
 
 ### steam.remote_storage_file_write
 *Type:* FUNCTION
@@ -1125,7 +1069,6 @@ Creates a new file, writes the bytes to the file, and then closes the file. If t
 
 - `boolean` - Success
 
-
 ### steam.remote_storage_file_read
 *Type:* FUNCTION
 Opens a binary file, reads the contents of the file into a byte array,. And then closes the file.
@@ -1133,7 +1076,6 @@ Opens a binary file, reads the contents of the file into a byte array,. And then
 **Parameters**
 
 - `filename` (string) - Name of the file to read from
-
 
 **Returns**
 
@@ -1224,7 +1166,6 @@ Get an authentication ticket. Retrieve an authentication ticket to be sent to th
 
 - `string` - Error message or null
 
-
 ### steam.user_begin_auth_session
 *Type:* FUNCTION
 Validate an authentication ticket. Authenticate the ticket from the entity Steam ID to be sure it is valid and isn't reused. Note that identity is not confirmed until the callback ValidateAuthTicketResponse_t is received and the return value in that callback is checked for success.
@@ -1234,7 +1175,6 @@ Validate an authentication ticket. Authenticate the ticket from the entity Steam
 - `ticket` (string) - The auth ticket to validate
 
 - `steamId` (string) - The entity's Steam ID that sent this ticket.
-
 
 **Returns**
 
@@ -1248,7 +1188,6 @@ Cancels an auth ticket. Cancels an auth ticket received from GetAuthSessionTicke
 
 - `ticket` (number) - The active auth ticket to cancel.
 
-
 ### steam.user_end_auth_session
 *Type:* FUNCTION
 Ends an auth session. Ends an auth session that was started with BeginAuthSession. This should be called when no longer playing with the specified entity.
@@ -1256,7 +1195,6 @@ Ends an auth session. Ends an auth session that was started with BeginAuthSessio
 **Parameters**
 
 - `steamId` (string) - The entity to end the active auth session with.
-
 
 ### steam.user_get_auth_ticket_for_web_api
 *Type:* FUNCTION
@@ -1266,13 +1204,11 @@ Get an authentication ticket for web API. Request an authentication ticket suita
 
 - `identity` (string) - Optional identity string to associate with the ticket
 
-
 **Returns**
 
 - `number` - The handle of the requested ticket
 
 - `string` - Error message or null
-
 
 ### steam.user_stats_get_stat_int
 *Type:* FUNCTION
@@ -1282,12 +1218,10 @@ Get user stat as an integer. Https://partner.steamgames.com/doc/api/ISteamUserSt
 
 - `id` (string) - Id of the stat to get
 
-
 **Returns**
 
 - `boolean`
 - `number` - The stat or nil
-
 
 ### steam.user_stats_set_stat_int
 *Type:* FUNCTION
@@ -1298,7 +1232,6 @@ Set user stat. Https://partner.steamgames.com/doc/api/ISteamUserStats#SetStat
 - `id` (string) - Id of the stat to set
 
 - `stat` (number) - Number to set
-
 
 **Returns**
 
@@ -1312,12 +1245,10 @@ Get user stat as a floating point number. Https://partner.steamgames.com/doc/api
 
 - `id` (string) - Id of the stat to get
 
-
 **Returns**
 
 - `boolean`
 - `number` - The stat
-
 
 ### steam.user_stats_set_stat_float
 *Type:* FUNCTION
@@ -1328,7 +1259,6 @@ Set user stat. Https://partner.steamgames.com/doc/api/ISteamUserStats#SetStat
 - `id` (string) - Id of the stat to set
 
 - `stat` (number) - Number to set
-
 
 **Returns**
 
@@ -1361,7 +1291,6 @@ Reset stats. Https://partner.steamgames.com/doc/api/ISteamUserStats#ResetAllStat
 **Parameters**
 
 - `achievements` (boolean) - True if achievements should be reset as well.
-
 
 **Returns**
 
@@ -1412,7 +1341,6 @@ Used for iterating achievements. In general games should not need these function
 
 - `number` - Number of achievements.
 
-
 ### steam.user_stats_get_achievement_name
 *Type:* FUNCTION
 Get achievement name iAchievement in [0,GetNumAchievements). Https://partner.steamgames.com/doc/api/ISteamUserStats#GetAchievementName
@@ -1433,7 +1361,6 @@ Get general attributes for an achievement. Accepts the following keys * "name" a
 
 - `name` (string)
 - `key` (string) - Either "name", "desc" or "hidden"
-
 
 **Returns**
 
@@ -1467,7 +1394,6 @@ Gets a leaderboard by name, it will create it if it's not yet created. This call
 - `eLeaderboardSortMethod` (ELeaderboardSortMethod) - The sort order of the new leaderboard if it's created.
 
 - `eLeaderboardDisplayType` (ELeaderboardDisplayType) - The display type (used by the Steam Community web site) of the new leaderboard if it's created.
-
 
 ### steam.user_stats_get_leaderboard_name
 *Type:* FUNCTION
@@ -1538,12 +1464,10 @@ Returns data about a single leaderboard entry. Https://partner.steamgames.com/do
 
 - `index` (number) - Which entry to get
 
-
 **Returns**
 
 - `boolean`
 - `table` - The requested leaderboard entry.
-
 
 ### steam.user_stats_upload_leaderboard_score
 *Type:* FUNCTION
@@ -1567,7 +1491,6 @@ Attaches a piece of user generated content the current user's entry on a. Leader
 **Returns**
 
 - `string` - API call id
-
 
 ### steam.utils_get_app_id
 *Type:* FUNCTION
@@ -1609,7 +1532,6 @@ Get size of image.
 
 - `image` (number) - Image handle
 
-
 **Returns**
 
 - `boolean` - True if size of image was read successfully
@@ -1617,7 +1539,6 @@ Get size of image.
 - `number` - Image width or nil
 
 - `number` - Image height or nil
-
 
 ### steam.utils_get_image_rgba
 *Type:* FUNCTION
@@ -1628,7 +1549,6 @@ Get image in RGBA format.
 - `image` (number) - Image handle
 
 - `size` (number) - Size of image
-
 
 **Returns**
 
@@ -1643,7 +1563,6 @@ Returns the Steam server time in Unix epoch format. (Number of seconds since Jan
 **Returns**
 
 - `number` - Time
-
 
 ### steam.utils_show_floating_gamepad_text_input
 *Type:* FUNCTION
@@ -1661,11 +1580,9 @@ Opens a floating keyboard over the game content and sends OS keyboard keys direc
 
 - `height` (number) - Text field height
 
-
 **Returns**
 
 - `boolean` - True if the floating keyboard was shown, otherwise, false.
-
 
 ### steam.utils_show_gamepad_text_input
 *Type:* FUNCTION
@@ -1680,7 +1597,6 @@ Activates the Big Picture text input dialog which only supports gamepad input.
 - `description` (string) - Sets the description that should inform the user what the input dialog is for
 
 - `existing_text` (string) - Sets the preexisting text which the user can edit.
-
 
 **Returns**
 

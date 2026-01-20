@@ -2,7 +2,7 @@
 
 This example shows how to convert from screen to world cooridnates while using a camera.
 
-Source: [https://github.com/defold/examples/tree/master/render/screen_to_world](https://github.com/defold/examples/tree/master/render/screen_to_world)
+[Project files](https://github.com/defold/examples/tree/master/render/screen_to_world)
 
 The `bee.script` uses a `screen_to_world()` function which takes a camera view and projection and uses these to convert from screen space coordinates to world coordinates.
 

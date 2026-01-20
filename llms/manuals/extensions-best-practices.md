@@ -41,7 +41,7 @@ The following folder structure is used frequently for extensions:
             /res                         -- Any resources needed for a platform
             /external
                 README.md                -- Notes/scripts on how to build or package any external libraries
-        /bundleres                       -- Resources that should be bundles for (see game.project and the [bundle_resources setting]([physics scale setting](project-settings.md))
+        /bundleres                       -- Resources that should be bundles for (see game.project and the [bundle_resources setting]([physics scale setting](https://defold.com/llms/manuals/project-settings.md))
             /<platform>
         game.project
         game.appmanifest                 -- Any extra app configuration info

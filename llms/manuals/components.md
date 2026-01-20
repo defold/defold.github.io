@@ -26,20 +26,20 @@ In most cases it makes most sense to create components in-place, but the followi
 
 Defold supports the following component types:
 
-* [Collection factory](collection-factory.md) - Spawn collections
-* [Collection proxy](collection-proxy.md) - Load and unload collections
-* [Collision object](physics.md) - 2D and 3D physics
-* [Camera](camera.md) - Change the viewport and projection of the game world
-* [Factory](factory.md) - Spawn game objects
-* [GUI](gui.md) - Render a graphical user interface
-* [Label](label.md) - Render a piece of text
-* [Mesh](mesh.md) Show a 3D mesh (with run-time creation and manipulation)
-* [Model](model.md) Show a 3D model (with optional animations)
-* [Particle FX](particlefx.md) -  Spawn particles
-* [Script](script.md) - Add game logic
-* [Sound](sound.md) - Play sound or music
-* [Sprite](sprite.md) - Show a 2D image (with optional flipbook animation)
-* [Tilemap](tilemap.md) - Show a grid of tiles
+* [Collection factory](https://defold.com/llms/manuals/collection-factory.md) - Spawn collections
+* [Collection proxy](https://defold.com/llms/manuals/collection-proxy.md) - Load and unload collections
+* [Collision object](https://defold.com/llms/manuals/physics.md) - 2D and 3D physics
+* [Camera](https://defold.com/llms/manuals/camera.md) - Change the viewport and projection of the game world
+* [Factory](https://defold.com/llms/manuals/factory.md) - Spawn game objects
+* [GUI](https://defold.com/llms/manuals/gui.md) - Render a graphical user interface
+* [Label](https://defold.com/llms/manuals/label.md) - Render a piece of text
+* [Mesh](https://defold.com/llms/manuals/mesh.md) Show a 3D mesh (with run-time creation and manipulation)
+* [Model](https://defold.com/llms/manuals/model.md) Show a 3D model (with optional animations)
+* [Particle FX](https://defold.com/llms/manuals/particlefx.md) -  Spawn particles
+* [Script](https://defold.com/llms/manuals/script.md) - Add game logic
+* [Sound](https://defold.com/llms/manuals/sound.md) - Play sound or music
+* [Sprite](https://defold.com/llms/manuals/sprite.md) - Show a 2D image (with optional flipbook animation)
+* [Tilemap](https://defold.com/llms/manuals/tilemap.md) - Show a grid of tiles
 
 Additional components can be added through extensions:
 
@@ -71,7 +71,7 @@ msg.post("#weapon", "enable")
 
 ## Component properties
 
-The Defold components types all have different properties. The [Properties pane](editor.md) in the editor will show the properties of the currently selected component in the [Outline pane](editor.md). Refer to the manuals of the different component types to learn more about the available component properties.
+The Defold components types all have different properties. The [Properties pane](https://defold.com/llms/manuals/editor.md) in the editor will show the properties of the currently selected component in the [Outline pane](https://defold.com/llms/manuals/editor.md). Refer to the manuals of the different component types to learn more about the available component properties.
 
 ## Component position, rotation and scale
 
@@ -84,12 +84,12 @@ If you need to change the position, rotation or scale of a component at run-time
 The draw order of visual components depend on two things:
 
 ### Render script predicates
-Each component is assigned a [material](material.md) and each material has one or more tags. The render script will in turn define a number of predicates, each matching one or more material tags. The render script [predicates are drawn one by one](render.md) in the *update()* function of the render script and the components matching the tags defined in each predicate will be drawn. The default render script will first draw sprites and tilemaps in one pass, then particle effects in another pass, both in world space. The render script will then proceed to draw GUI components in a separate pass in screen space.
+Each component is assigned a [material](https://defold.com/llms/manuals/material.md) and each material has one or more tags. The render script will in turn define a number of predicates, each matching one or more material tags. The render script [predicates are drawn one by one](https://defold.com/llms/manuals/render.md) in the *update()* function of the render script and the components matching the tags defined in each predicate will be drawn. The default render script will first draw sprites and tilemaps in one pass, then particle effects in another pass, both in world space. The render script will then proceed to draw GUI components in a separate pass in screen space.
 
 ### Component z-value
 All game objects and components are positioned in 3D space with positions expressed as vector3 objects. When you view your game's graphics content in 2D, the X and Y value determine the position of an object along the "width" and "height" axis, and the Z position determines the position along the "depth" axis. The Z position allows you to control the visibility of overlapping objects: a sprite with a Z value of 1 will appear in front of a sprite at Z position 0. By default, Defold uses a coordinate system allowing Z values between -1 and 1:
 
-The components matching a [render predicate](render.md) are drawn together, and the order in which they are drawn depends on the final z-value of the component. The final z-value of a component is the sum of the z-values of the component itself, the game object it belongs to and the z-value of any parent game objects.
+The components matching a [render predicate](https://defold.com/llms/manuals/render.md) are drawn together, and the order in which they are drawn depends on the final z-value of the component. The final z-value of a component is the sum of the z-values of the component itself, the game object it belongs to and the z-value of any parent game objects.
 
 The order in which multiple GUI components are drawn is **not** determined by the z-value of the GUI components. GUI component draw order is controlled by the [gui.set_render_order()](https://defold.com/ref/gui/#gui.set_render_order:order) function.
 
@@ -105,7 +105,7 @@ With the above hierarchy the final z-value of the sprite component on B is 2 + 1
 
 If two components have the exact same z-value the order is undefined and you may end up with components flickering back and forth or components being rendered in one order on one platform and in another order on another platform.
 
-The render script defines a near and far plane for z-values. Any component with a z-value that falls outside of this range will not be rendered. The default range is -1 to 1 but [it can easily be changed](render.md). The numerical precision on the Z values with a near and far limit of -1 and 1 is very high. When working with 3D assets, you may need to change the near and far limits of the default projection in a custom render script. See the [Render manual](render.md) for more information.
+The render script defines a near and far plane for z-values. Any component with a z-value that falls outside of this range will not be rendered. The default range is -1 to 1 but [it can easily be changed](https://defold.com/llms/manuals/render.md). The numerical precision on the Z values with a near and far limit of -1 and 1 is very high. When working with 3D assets, you may need to change the near and far limits of the default projection in a custom render script. See the [Render manual](https://defold.com/llms/manuals/render.md) for more information.
 
 ## Component max count optimizations
 The *game.project* settings file contains many values specifying the maximum number of a certain resource that can exist at the same time, often counted per loaded collection (also called world). The Defold engine will use these max values to preallocate memory for this amount of memory to avoid dynamic allocations and memory fragmentation while the game is running.

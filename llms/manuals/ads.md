@@ -36,11 +36,11 @@ The [Defold Asset Portal](https://defold.com/tags/stars/ads/) contains several a
 
 # How to integrate ads in your game
 
-When you have decided on an ad network to integrate in your game you need to follow the installation and usage instructions for that particular asset. What you typically do is to first add the extension as a [project dependency](libraries.md). Once you have the asset added to your project you can proceed with the integration and call the functions specific to the asset to load and show ads.
+When you have decided on an ad network to integrate in your game you need to follow the installation and usage instructions for that particular asset. What you typically do is to first add the extension as a [project dependency](https://defold.com/llms/manuals/libraries.md). Once you have the asset added to your project you can proceed with the integration and call the functions specific to the asset to load and show ads.
 
 # Combining ads and in-app purchases
 
-It is quite common in mobile games to offer an [In-app purchase](iap.md) to get rid of ads permanently.
+It is quite common in mobile games to offer an [In-app purchase](https://defold.com/llms/manuals/iap.md) to get rid of ads permanently.
 
 ## Learn more
 

@@ -2,25 +2,19 @@
 
 This example shows how to use collection proxies to load and unload collections.
 
-Source: [https://github.com/defold/examples/tree/master/collection/proxy](https://github.com/defold/examples/tree/master/collection/proxy)
+[Project files](https://github.com/defold/examples/tree/master/collection/proxy)
 
 The setup consists of several collections and game objects.
-
-
 
 proxy.collection
 : This is the bootstrap collection specified in `game.project`. Contains:
   - A *Script* that handles loading and unloading of collection proxies
   - Four *Collection proxies* referencing a menu collection and three level collections.
 
-
-
 menu.collection
 : This collection contains a menu. Contains:
   - A *GUI* with some box and text nodes that acts as buttons.
   - A *GUI script* that handles the logic of clicking on the buttons and sending messages back to the proxy.collection.
-
-
 
 level1-3.collection
 : Collections representing the levels of a game. Contains:

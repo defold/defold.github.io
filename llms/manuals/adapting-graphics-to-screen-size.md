@@ -14,11 +14,11 @@ This manual will address some of these things and suggest best practices.
 
 ## How to change how your content is rendered
 
-The Defold render script give you total control over the entire rendering pipeline. The render script decides the order as well as what and how to draw things. The default behavior of the render script is to always draw the same area of pixels, defined by the width and height in the *game.project* file, regardless if the window is resized or the actual screen resolution doesn't match. This will result in the content being stretched if the aspect ratio changes and zoomed in or out if the window size changes. In some games this might be acceptable, but it is more likely that you want to show more or less game content if the screen resolution or aspect ratio is different, or at least make sure to zoom the content without changing the aspect ratio. The default stretch behavior can easily be changed and you can read more about how to do this in the [Render manual](render.md).
+The Defold render script give you total control over the entire rendering pipeline. The render script decides the order as well as what and how to draw things. The default behavior of the render script is to always draw the same area of pixels, defined by the width and height in the *game.project* file, regardless if the window is resized or the actual screen resolution doesn't match. This will result in the content being stretched if the aspect ratio changes and zoomed in or out if the window size changes. In some games this might be acceptable, but it is more likely that you want to show more or less game content if the screen resolution or aspect ratio is different, or at least make sure to zoom the content without changing the aspect ratio. The default stretch behavior can easily be changed and you can read more about how to do this in the [Render manual](https://defold.com/llms/manuals/render.md).
 
 ## Retro/8-bit graphics
 
-Retro/8-bit graphics often refer to games emulating the graphical style of old game consoles or computers with their low resolution and limited color palette. As an example the Nintendo Entertainment System (NES) had a screen resolution of 256x240, the Commodore 64 had 320x200 and the Gameboy had 160x144, all of which are only a fraction of the size of modern screens. In order to make games emulating this graphical style and screen resolution playable on a modern high resolution screen the graphics has to be upscaled or zoomed several times. One simple way of doing this is to draw all of your graphics in the low resolution and style that you wish to emulate and zoom the graphics when it is rendered. This can easily be achieved in Defold using the render script and the [Fixed Projection](render.md) set to a suitable zoom value.
+Retro/8-bit graphics often refer to games emulating the graphical style of old game consoles or computers with their low resolution and limited color palette. As an example the Nintendo Entertainment System (NES) had a screen resolution of 256x240, the Commodore 64 had 320x200 and the Gameboy had 160x144, all of which are only a fraction of the size of modern screens. In order to make games emulating this graphical style and screen resolution playable on a modern high resolution screen the graphics has to be upscaled or zoomed several times. One simple way of doing this is to draw all of your graphics in the low resolution and style that you wish to emulate and zoom the graphics when it is rendered. This can easily be achieved in Defold using the render script and the [Fixed Projection](https://defold.com/llms/manuals/render.md) set to a suitable zoom value.
 
 Let's take this tileset and player character ([source](https://ansimuz.itch.io/grotto-escape-game-art-pack)) and use them for an 8-bit retro game with a resolution of 320x200:
 
@@ -31,7 +31,7 @@ Now that the window size is more reasonable we also need to do something about t
 msg.post("@render:", "use_fixed_projection", { zoom = 4 })
 ```
 
-The same result can be achieved by attaching a [Camera component](camera.md) to a game object and check *Orthographic Projection* and set *Orthographic Zoom* to 4.0:
+The same result can be achieved by attaching a [Camera component](https://defold.com/llms/manuals/camera.md) to a game object and check *Orthographic Projection* and set *Orthographic Zoom* to 4.0:
 
 This will give the following result:
 
@@ -66,7 +66,7 @@ This will create a high dpi back buffer on displays that support it. The game wi
 
 ## Creating an adaptive GUI
 
-The system for creating GUI components is built around a number of basic building blocks, or [nodes](gui.md), and while it may seem overly simple it can be used to create anything from buttons to complex menus and popups. The GUIs that you create can be configured to automatically adapt to screen size and orientation changes. You can for instance keep nodes anchored to the top, bottom or sides of the screen and nodes can either keep their size or stretch. The relationship between nodes as well as their size and appearance can also be configured to change when the screen size or orientation changes.
+The system for creating GUI components is built around a number of basic building blocks, or [nodes](https://defold.com/llms/manuals/gui.md), and while it may seem overly simple it can be used to create anything from buttons to complex menus and popups. The GUIs that you create can be configured to automatically adapt to screen size and orientation changes. You can for instance keep nodes anchored to the top, bottom or sides of the screen and nodes can either keep their size or stretch. The relationship between nodes as well as their size and appearance can also be configured to change when the screen size or orientation changes.
 
 ### Node properties
 
@@ -76,11 +76,11 @@ Each node in a gui has a pivot point, a horizontal and vertical anchor as well a
 * The anchor mode controls how the node’s vertical and horizontal position is altered when the scene boundaries, or the parent node’s boundaries are stretched to fit the physical screen size.
 * The adjust mode setting controls what happens to a node when the scene boundaries, or the parent node’s boundaries, are adjusted to fit the physical screen size.
 
-You can learn more about these properties [in the GUI manual](gui.md).
+You can learn more about these properties [in the GUI manual](https://defold.com/llms/manuals/gui.md).
 
 ### Layouts
 
-Defold supports GUIs that automatically adapt to screen orientation changes on mobile devices. By using this feature you can design a GUI that can adapt to the orientation and aspect ratio of a range of screen sizes. It is also possible to create layouts that match particular device models. You can learn more about this system in the [GUI Layouts manual](gui-layouts.md)
+Defold supports GUIs that automatically adapt to screen orientation changes on mobile devices. By using this feature you can design a GUI that can adapt to the orientation and aspect ratio of a range of screen sizes. It is also possible to create layouts that match particular device models. You can learn more about this system in the [GUI Layouts manual](https://defold.com/llms/manuals/gui-layouts.md)
 
 ## Testing different screen sizes
 

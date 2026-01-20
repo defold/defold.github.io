@@ -4,8 +4,8 @@ Materials are used to express how a graphical component (a sprite, tilemap, font
 
 A material holds _tags_, information that is used in the rendering pipeline to select objects to be rendered. It also holds references to _shader programs_ that are compiled through the available graphics driver and uploaded to the graphics hardware and run when the component is rendered each frame.
 
-* For more information on the render pipeline, see the [Render documentation](render.md).
-* For an in depth explanation of shader programs, see the [Shader documentation](shader.md).
+* For more information on the render pipeline, see the [Render documentation](https://defold.com/llms/manuals/render.md).
+* For an in depth explanation of shader programs, see the [Shader documentation](https://defold.com/llms/manuals/shader.md).
 
 ## Creating a material
 
@@ -34,7 +34,7 @@ Samplers
 : You can optionally configure specific samplers in the materials file. Add a sampler, name it according to the name used in the shader program and set the wrap and filter settings to your liking.
 
 Tags
-: The tags associated with the material. Tags are represented in the engine as a _bitmask_ that is used by [`render.predicate()`](https://defold.com/ref/render#render.predicate) to collect components that should be drawn together. See the [Render documentation](render.md) on how to do that. The maximum number of tags you can use in a project is 32.
+: The tags associated with the material. Tags are represented in the engine as a _bitmask_ that is used by [`render.predicate()`](https://defold.com/ref/render#render.predicate) to collect components that should be drawn together. See the [Render documentation](https://defold.com/llms/manuals/render.md) on how to do that. The maximum number of tags you can use in a project is 32.
 
 ## Attributes
 
@@ -192,7 +192,7 @@ Shader constants, or "uniforms" are values that are passed from the engine to ve
 : A matrix to compute normal orientation. The world transform might include non-uniform scaling, which breaks the orthogonality of the combined world-view transform. The normal matrix is used to avoid issues with the direction when transforming normals. (The normal matrix is the transpose inverse of the world-view matrix).
 
 `CONSTANT_TYPE_USER`
-: A vector4 constant that you can use for any custom data you want to pass into your shader programs. You can set the initial value of the constant in the constant definition, but it is mutable through the functions [go.set()](https://defold.com/ref/stable/go/#go.set) / [go.animate()](https://defold.com/ref/stable/go/#go.animate). You can also retrieve the value with [go.get()](https://defold.com/ref/stable/go/#go.get). Changing a material constant of a single component instance [breaks render batching and will result in additional draw calls](render.md).
+: A vector4 constant that you can use for any custom data you want to pass into your shader programs. You can set the initial value of the constant in the constant definition, but it is mutable through the functions [go.set()](https://defold.com/ref/stable/go/#go.set) / [go.animate()](https://defold.com/ref/stable/go/#go.animate). You can also retrieve the value with [go.get()](https://defold.com/ref/stable/go/#go.get). Changing a material constant of a single component instance [breaks render batching and will result in additional draw calls](https://defold.com/llms/manuals/render.md).
 
 Example:
 ```lua
@@ -202,7 +202,7 @@ go.animate("#sprite", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1),
 ```
 
 `CONSTANT_TYPE_USER_MATRIX4`
-: A matrix4 constant that you can use for any custom data you want to pass into your shader programs. You can set the initial value of the constant in the constant definition, but it is mutable through the functions [go.set()](https://defold.com/ref/stable/go/#go.set) / [go.animate()](https://defold.com/ref/stable/go/#go.animate). You can also retrieve the value with [go.get()](https://defold.com/ref/stable/go/#go.get). Changing a material constant of a single component instance [breaks render batching and will result in additional draw calls](render.md).
+: A matrix4 constant that you can use for any custom data you want to pass into your shader programs. You can set the initial value of the constant in the constant definition, but it is mutable through the functions [go.set()](https://defold.com/ref/stable/go/#go.set) / [go.animate()](https://defold.com/ref/stable/go/#go.animate). You can also retrieve the value with [go.get()](https://defold.com/ref/stable/go/#go.get). Changing a material constant of a single component instance [breaks render batching and will result in additional draw calls](https://defold.com/llms/manuals/render.md).
 
 Example:
 ```lua

@@ -54,7 +54,7 @@ When you click on the `Create bundle` button you will be prompted to select a fo
   * Full screen - Full screen mode is unreliable in the browser.
 * Chrome
   * Slow debug builds - In debug builds on HTML5 we verify all WebGL graphics calls to detect errors. This is unfortunately very slow when testing on Chrome. It is possible to disable this by setting the *Engine Arguments* field of *game.project* to `--verify-graphics-calls=false`.
-* Gamepad support - [Refer to the Gamepad documentation](input-gamepads.md) for special considerations and steps you may need to take on HTML5.
+* Gamepad support - [Refer to the Gamepad documentation](https://defold.com/llms/manuals/input-gamepads.md) for special considerations and steps you may need to take on HTML5.
 
 ## Customizing HTML5 bundle
 
@@ -62,7 +62,7 @@ When generating an HTML5 version of your game, Defold provides a default web pag
 
 Each time the application is exported, this content is created afresh. If you wish to customize any of these elements you must make modifications to your project settings. To do so, open the *game.project* in the Defold editor and scroll to the *html5* section:
 
-More information about every option is available in [project settings manual](project-settings.md).
+More information about every option is available in [project settings manual](https://defold.com/llms/manuals/project-settings.md).
 
 You can't modify files of the default html/css template in `builtins` folder. For applying your modifications copy/paste needed file from `builtins` and set this file in *game.project*.
 
@@ -270,9 +270,9 @@ end
 ## Optimizations
 HTML5 games usually have strict requirements on initial download size, startup time and memory usage to ensure that games load fast and run well on low end devices and slow internet connections. To optimize an HTML5 game it is recommended to focus on the following areas:
 
-* [Memory usage](optimization-memory.md)
-* [Engine size](optimization-size.md)
-* [Game size](optimization-size.md)
+* [Memory usage](https://defold.com/llms/manuals/optimization-memory.md)
+* [Engine size](https://defold.com/llms/manuals/optimization-size.md)
+* [Game size](https://defold.com/llms/manuals/optimization-size.md)
 
 ## FAQ
 #### Q: Why does my HTML5-app freeze at the splash screen in Chrome?

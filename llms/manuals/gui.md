@@ -18,7 +18,7 @@ Defold now automatically opens the file in the GUI scene editor.
 
 The *Outline* lists all the GUI's content: it's list of nodes and any dependencies (see below).
 
-The central editing area shows the GUI. The toolbar in the top right corner of the editing area contains *Move*, *Rotate* and *Scale* tools, as well as a [layout](gui-layouts.md) selector.
+The central editing area shows the GUI. The toolbar in the top right corner of the editing area contains *Move*, *Rotate* and *Scale* tools, as well as a [layout](https://defold.com/llms/manuals/gui-layouts.md) selector.
 
 A white rectangle shows the bounds of the currently selected layout, of the default display width and height as set in the project settings.
 
@@ -121,23 +121,23 @@ A GUI component is built from a set of nodes. Nodes are simple elements. They ca
 
 Box node
 :
-  Rectangular node with either a single color, texture or flip-book animation. See the [Box node documentation](gui-box.md) for details.
+  Rectangular node with either a single color, texture or flip-book animation. See the [Box node documentation](https://defold.com/llms/manuals/gui-box.md) for details.
 
 Text node
 :
-  Displays text. See the [Text node documentation](gui-text.md) for details.
+  Displays text. See the [Text node documentation](https://defold.com/llms/manuals/gui-text.md) for details.
 
 Pie node
 :
-  A circular or ellipsoid node that can be partially filled or inverted. A See the [Pie node documentation](gui-pie.md) for details.
+  A circular or ellipsoid node that can be partially filled or inverted. A See the [Pie node documentation](https://defold.com/llms/manuals/gui-pie.md) for details.
 
 Template node
 :
-  Templates are used to create instances based on other GUI scene files. See the [Template node documentation](gui-template.md) for details.
+  Templates are used to create instances based on other GUI scene files. See the [Template node documentation](https://defold.com/llms/manuals/gui-template.md) for details.
 
 ParticleFX node
 :
-  Plays a particle effect. See the [ParticleFX node documentation](gui-particlefx.md) for details.
+  Plays a particle effect. See the [ParticleFX node documentation](https://defold.com/llms/manuals/gui-particlefx.md) for details.
 
 Add nodes by right-clicking on the *Nodes* folder and selecting `Add ▸` and then `Box`, `Text`, `Pie`, `Template` or `ParticleFx`.
 
@@ -151,10 +151,10 @@ Id
 : The identity of the node. This name has to be unique within the GUI scene.
 
 Position, Rotation and Scale
-: Governs the location, orientation and stretching of the node. You can use the *Move*, *Rotate* and *Scale* tools to change these values. The values can be animated from script ([learn more](property-animation.md)).
+: Governs the location, orientation and stretching of the node. You can use the *Move*, *Rotate* and *Scale* tools to change these values. The values can be animated from script ([learn more](https://defold.com/llms/manuals/property-animation.md)).
 
 Size (box, text and pie nodes)
-: The size of the node is automatic by default but by setting the *Size Mode* to `Manual` you can alter the value. The size defines the bounds of the node and is used when doing input picking. This value can be animated from script ([learn more](property-animation.md)).
+: The size of the node is automatic by default but by setting the *Size Mode* to `Manual` you can alter the value. The size defines the bounds of the node and is used when doing input picking. This value can be animated from script ([learn more](https://defold.com/llms/manuals/property-animation.md)).
 
 Size Mode (box and pie nodes)
 : If set to `Automatic` the editor will set a size for the node. If set to `Manual` you can set the size yourself.
@@ -181,31 +181,31 @@ Material (box, pie nodes, text and particlefx nodes)
 : The material to use when drawing the node. This can either be a material added to the Materials section of the outline or left blank to use the default material assigned to the GUI component.
 
 Slice 9 (box nodes)
-: Set to preserve the pixel size of the node's texture around the edges when the node is resized. See the [Box node documentation](gui-box.md) for details.
+: Set to preserve the pixel size of the node's texture around the edges when the node is resized. See the [Box node documentation](https://defold.com/llms/manuals/gui-box.md) for details.
 
 Inner Radius (pie nodes)
-: The inner radius of the node, expressed along the X axis. See the [Pie node documentation](gui-pie.md) for details.
+: The inner radius of the node, expressed along the X axis. See the [Pie node documentation](https://defold.com/llms/manuals/gui-pie.md) for details.
 
 Outer Bounds (pie nodes)
-: Controls the behavior of the outer bounds. See the [Pie node documentation](gui-pie.md) for details.
+: Controls the behavior of the outer bounds. See the [Pie node documentation](https://defold.com/llms/manuals/gui-pie.md) for details.
 
 Perimeter Vertices (pie nodes)
-: The number of segments that will be used to build the shape. See the [Pie node documentation](gui-pie.md) for details.
+: The number of segments that will be used to build the shape. See the [Pie node documentation](https://defold.com/llms/manuals/gui-pie.md) for details.
 
 Pie Fill Angle (pie nodes)
-: How much of the pie should be filled. See the [Pie node documentation](gui-pie.md) for details.
+: How much of the pie should be filled. See the [Pie node documentation](https://defold.com/llms/manuals/gui-pie.md) for details.
 
 Template (template nodes)
-: The GUI scene file to use as template for the node. See the [Template node documentation](gui-template.md) for details.
+: The GUI scene file to use as template for the node. See the [Template node documentation](https://defold.com/llms/manuals/gui-template.md) for details.
 
 ParticleFX (particlefx nodes)
-: The particle effect to use on this node. See the [ParticleFX node documentation](gui-particlefx.md) for details.
+: The particle effect to use on this node. See the [ParticleFX node documentation](https://defold.com/llms/manuals/gui-particlefx.md) for details.
 
 Color
-: The color of the node. If the node is textured, the color tints the texture. The color can be animated from script ([learn more](property-animation.md)).
+: The color of the node. If the node is textured, the color tints the texture. The color can be animated from script ([learn more](https://defold.com/llms/manuals/property-animation.md)).
 
 Alpha
-: The translucency of the node. The alpha value can be animated from script ([learn more](property-animation.md)).
+: The translucency of the node. The alpha value can be animated from script ([learn more](https://defold.com/llms/manuals/property-animation.md)).
 
 Inherit Alpha
 : Setting this checkbox makes a node inherit the alpha value of the parent node. The node's alpha value is then multiplied with the parent's alpha value.
@@ -261,13 +261,13 @@ Clipping Mode (box and pie nodes)
   - `None` renders the node as usual.
   - `Stencil` makes the node boundaries define a stencil mask that is used to clip the node's child nodes.
 
-  See the [GUI clipping manual](gui-clipping.md) for details.
+  See the [GUI clipping manual](https://defold.com/llms/manuals/gui-clipping.md) for details.
 
 Clipping Visible (box and pie nodes)
-: Set to render the node's content in the stencil area. See the [GUI clipping manual](gui-clipping.md) for details.
+: Set to render the node's content in the stencil area. See the [GUI clipping manual](https://defold.com/llms/manuals/gui-clipping.md) for details.
 
 Clipping Inverted (box and pie nodes)
-: Invert the stencil mask. See the [GUI clipping manual](gui-clipping.md) for details.
+: Invert the stencil mask. See the [GUI clipping manual](https://defold.com/llms/manuals/gui-clipping.md) for details.
 
 ## Pivot, Anchors and Adjust Mode
 

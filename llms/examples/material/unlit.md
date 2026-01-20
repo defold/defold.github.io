@@ -2,7 +2,7 @@
 
 This example demonstrates how to create and apply an custom non-lit material to a 3D model.
 
-Source: [https://github.com/defold/examples/tree/master/material/unlit](https://github.com/defold/examples/tree/master/material/unlit)
+[Project files](https://github.com/defold/examples/tree/master/material/unlit)
 
 In industry-established terms, a material that is not affected by lighting is called "unlit" or "non-lit". It is used to create retro-style graphics or for effects that should not depend on lighting (headlights, lamps).
 

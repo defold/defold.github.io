@@ -180,8 +180,8 @@ resource.set_sound(path, boom)
 
 ## Project configuration
 
-The *game.project* file has a few [project settings](project-settings#sound.md) related to sound components.
+The *game.project* file has a few [project settings](https://defold.com/llms/manuals/project-settings#sound.md) related to sound components.
 
 ## Sound Streaming
 
-It is also possible to support [streaming sounds](sound-streaming.md)
+It is also possible to support [streaming sounds](https://defold.com/llms/manuals/sound-streaming.md)

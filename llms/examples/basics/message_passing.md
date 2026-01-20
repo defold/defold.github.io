@@ -2,7 +2,7 @@
 
 This example shows how to communicate between two script components in two separate game objects.
 
-Source: [https://github.com/defold/examples/tree/master/basics/message_passing](https://github.com/defold/examples/tree/master/basics/message_passing)
+[Project files](https://github.com/defold/examples/tree/master/basics/message_passing)
 
 ## Scripts
 

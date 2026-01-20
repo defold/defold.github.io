@@ -2,7 +2,7 @@
 
 This example shows how to tween animate the position of a game object.
 
-Source: [https://github.com/defold/examples/tree/master/animation/basic_tween](https://github.com/defold/examples/tree/master/animation/basic_tween)
+[Project files](https://github.com/defold/examples/tree/master/animation/basic_tween)
 
 ## Scripts
 

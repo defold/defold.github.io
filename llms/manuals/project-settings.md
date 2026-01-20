@@ -78,19 +78,19 @@ Specify the minimum log level for the logging system. Only logs at or above this
 Enables compression of archives when bundling. Note that this currently applies to all platforms except Android where the apk already contains all data compressed.
 
 #### Dependencies
-A list of URLs to the project *Library URL*s. Refer to the [Libraries manual](libraries.md) for more information.
+A list of URLs to the project *Library URL*s. Refer to the [Libraries manual](https://defold.com/llms/manuals/libraries.md) for more information.
 
 #### Custom Resources
 `custom_resources`
-Custom resources are bundled in the main game archive using the [*Custom Resources* field](project-settings.md) in *game.project*.
+Custom resources are bundled in the main game archive using the [*Custom Resources* field](https://defold.com/llms/manuals/project-settings.md) in *game.project*.
 
 The *Custom Resources* field should contain a comma separated list of resources that will be included in the main game archive. If directories are specified, all files and directories in that directory are recursively included. You can read the files using [`sys.load_resource()`](https://defold.com/ref/sys/#sys.load_resource).
 
-Loading custom resources is covered in more detail in the [File Access manual](file-access.md).
+Loading custom resources is covered in more detail in the [File Access manual](https://defold.com/llms/manuals/file-access.md).
 
 #### Bundle Resources
 `bundle_resources`
-Bundle resources are additional files and folders located as a part of your application bundle using the [*Bundle Resources* field](project-settings.md) in *game.project*.
+Bundle resources are additional files and folders located as a part of your application bundle using the [*Bundle Resources* field](https://defold.com/llms/manuals/project-settings.md) in *game.project*.
 
 The *Bundle Resources* field should contain a comma separated list of directories containing resource files and folders that should be copied as-is into the resulting package when bundling. The directories must be specified with an absolute path from the project root, for example `/res`. The resource directory must contain subfolders named by `platform`, or `architecture-platform`.
 
@@ -110,7 +110,7 @@ res
 
 You can use [`sys.get_application_path()`](https://defold.com/ref/stable/sys/#sys.get_application_path:) to get the path to where the application is stored. Use this application base path to create the final absolute path to the files you need access to. Once you have the absolute path of these files you can use the `io.*` and `os.*` functions to access the files.
 
-Loading bundle resources is covered in more detail in the [File Access manual](file-access.md).
+Loading bundle resources is covered in more detail in the [File Access manual](https://defold.com/llms/manuals/file-access.md).
 
 #### Bundle Exclude Resources
 `bundle_exclude_resources`
@@ -119,7 +119,7 @@ A comma separated list of resources that should not be included in the bundle. T
 ### Library
 
 #### Include Dirs
-A space separated list of directories that should be shared from your project via library sharing. Refer to the [Libraries manual](libraries.md) for more information.
+A space separated list of directories that should be shared from your project via library sharing. Refer to the [Libraries manual](https://defold.com/llms/manuals/libraries.md) for more information.
 
 ### Engine
 
@@ -289,7 +289,7 @@ Max number of collection factories. [(See information about component max count 
 Image file (.png) to use as application icon at given width and height dimensions `W` &times; `H`.
 
 #### Launch Screen
-Storyboard file (.storyboard). Learn more about how to create one in the [iOS manual](ios.md).
+Storyboard file (.storyboard). Learn more about how to create one in the [iOS manual](https://defold.com/llms/manuals/ios.md).
 
 #### Icons Asset
 The icons asset file (.car) containing app icons.
@@ -343,7 +343,7 @@ This field contains comma-separated strings identifying the language name or ISO
 
 ### HTML5
 
-Refer to the [HTML5 platform manual](html5.md) for more information about many of these options.
+Refer to the [HTML5 platform manual](https://defold.com/llms/manuals/html5.md) for more information about many of these options.
 
 #### Heap Size
 Heap size in megabytes for Emscripten to use.
@@ -444,7 +444,7 @@ To further optimize memory usage the Defold build process will analyse the conte
 
 ## Custom project settings
 
-It is possible to define custom settings for the main project or for a [native extension](extensions.md). Custom settings for the main project must be defined in a `game.properties` file in the root of the project. For a native extension they should be defined in an `ext.properties` file next to the `ext.manifest` file.
+It is possible to define custom settings for the main project or for a [native extension](https://defold.com/llms/manuals/extensions.md). Custom settings for the main project must be defined in a `game.properties` file in the root of the project. For a native extension they should be defined in an `ext.properties` file next to the `ext.manifest` file.
 
 The settings file uses the same INI format as *game.project* and property attributes are defined using a dot notation with a suffix:
 ```

@@ -12,7 +12,7 @@ Modifier
 
 ## Creating an effect
 
-Select `New... ▸ Particle FX` from the context menu in the *Assets* browser. Name the new particle effect file. The editor will now open the file using the [Scene Editor](editor.md).
+Select `New... ▸ Particle FX` from the context menu in the *Assets* browser. Name the new particle effect file. The editor will now open the file using the [Scene Editor](https://defold.com/llms/manuals/editor.md).
 
 The *Outline* pane shows the default emitter. Select the emitter to bring up its properties in the *Properties* pane below.
 
@@ -212,7 +212,7 @@ particlefx.play("#particles")
 particlefx.stop("#particles")
 ```
 
-To start and stop a particle effect from a GUI script see the [GUI Particle FX manual](gui-particlefx#controlling-the-effect.md) for more information.
+To start and stop a particle effect from a GUI script see the [GUI Particle FX manual](https://defold.com/llms/manuals/gui-particlefx#controlling-the-effect.md) for more information.
 
 A particle effect will continue to emit particles even if the game object the particle effect component belonged to is deleted.
 
@@ -220,11 +220,11 @@ See the [Particle FX reference documentation](https://defold.com/ref/particlefx)
 
 ## Material constants
 
-The default particle effect material has the following constants that can be changed using `particlefx.set_constant()` and reset using `particlefx.reset_constant()` (refer to the [Material manual for more details](material.md)):
+The default particle effect material has the following constants that can be changed using `particlefx.set_constant()` and reset using `particlefx.reset_constant()` (refer to the [Material manual for more details](https://defold.com/llms/manuals/material.md)):
 
 `tint`
 : The color tint of the particle effect (`vector4`). The vector4 is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint. Refer to the [API reference for an example](https://defold.com/ref/particlefx/#particlefx.set_constant:url-constant-value).
 
 ## Project configuration
 
-The *game.project* file has a few [project settings](project-settings#particle-fx.md) related to particles.
+The *game.project* file has a few [project settings](https://defold.com/llms/manuals/project-settings#particle-fx.md) related to particles.

@@ -20,7 +20,7 @@ go.cancel_animations(".", "euler.z")
 
 If you cancel the animation of a composite property, like `position`, any animations of the sub-components (`position.x`, `position.y` and `position.z`) will be cancelled as well.
 
-The [Properties Manual](properties.md) contains all the available properties on game objects, components and GUI nodes.
+The [Properties Manual](https://defold.com/llms/manuals/properties.md) contains all the available properties on game objects, components and GUI nodes.
 
 ## GUI node property animation
 

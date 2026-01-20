@@ -2,11 +2,9 @@
 
 This example shows how change the color of GUI nodes at run-time
 
-Source: [https://github.com/defold/examples/tree/master/gui/color](https://github.com/defold/examples/tree/master/gui/color)
+[Project files](https://github.com/defold/examples/tree/master/gui/color)
 
 The example shows how to change the color of GUI nodes using `gui.set_color()` and `gui.animate()`.
-
-
 
 Nodes will normally inherit the alpha of parent nodes, unless the Inherit Alpha checkbox is unchecked.
 

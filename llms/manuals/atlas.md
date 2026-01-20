@@ -47,7 +47,7 @@ You can reorder the images in the Outline by selecting them and pressing `Alt + 
 Each atlas resource has a set of properties. These are shown in the *Properties* pane when you select the root item in the *Outline* view.
 
 Size
-: Shows the computed total size of the resulting texture resource. The width and height are set to the closest power of two. Note that if you enable texture compression, some formats require square textures. Non square textures will then be resized and filled with empty space to make the texture square. See the [Texture profiles manual](texture-profiles.md) for details.
+: Shows the computed total size of the resulting texture resource. The width and height are set to the closest power of two. Note that if you enable texture compression, some formats require square textures. Non square textures will then be resized and filled with empty space to make the texture square. See the [Texture profiles manual](https://defold.com/llms/manuals/texture-profiles.md) for details.
 
 Margin
 : The number of pixels that should be added between each image.
@@ -153,14 +153,14 @@ Once the texture has been created you can use [`resource.set_texture(path, param
 
 It is possible to use `resource.set_texture()` to also update a sub-region of the texture by using a buffer width and height less than the full size of the texture and by changing the x and y parameters to `resource.set_texture()`.
 
-The texture can be used directly on a [model component](model.md) using `go.set()`:
+The texture can be used directly on a [model component](https://defold.com/llms/manuals/model.md) using `go.set()`:
 ```lua
   go.set("#model", "texture0", my_texture_id)
 ```
 
 ### Creating an Atlas at runtime
 
-If the texture should be used on a [sprite component](sprite.md) it first needs to be used by an atlas. Use [`resource.create_atlas(path, params)`](https://defold.com/ref/stable/resource/#resource.create_atlas:path-table) to create an Atlas:
+If the texture should be used on a [sprite component](https://defold.com/llms/manuals/sprite.md) it first needs to be used by an atlas. Use [`resource.create_atlas(path, params)`](https://defold.com/ref/stable/resource/#resource.create_atlas:path-table) to create an Atlas:
 ```lua
   local params = {
     texture = texture_id,

@@ -71,7 +71,7 @@ You can interact with the editor using `editor` package that defines this API:
 - `editor.execute(cmd, [...args], [options])` — run a shell command, optionally capturing its output.
 - `editor.save()` — persist all unsaved changed to disk.
 - `editor.transact(txs)` — modify the editor in-memory state using 1 or more transaction steps created with `editor.tx.*` functions.
-- `editor.ui.*` — various UI-related functions, see [UI manual](editor-scripts-ui.md).
+- `editor.ui.*` — various UI-related functions, see [UI manual](https://defold.com/llms/manuals/editor-scripts-ui.md).
 - `editor.prefs.*` — functions for interacting with editor preferences, see [preferences](#preferences).
 
 You can find the full editor API reference [here](https://defold.com/ref/alpha/editor/).
@@ -528,7 +528,7 @@ Existing lifecycle hooks that `/hooks.editor_script` may specify:
   - `success` — whether build is successful, either `true` or `false`
 - `on_bundle_started(opts)` — executed when you create a bundle or Build HTML5 version of a game. As with `on_build_started`, changes triggered by this hook will appear in a bundle, and errors will abort a bundle. `opts` will have these keys:
   - `output_directory` — a file path pointing to a directory with bundle output, for example `"/path/to/project/build/default/__htmlLaunchDir"`
-  - `platform` — platform the game is bundled for. See a list of possible platform values in [Bob manual](bob.md).
+  - `platform` — platform the game is bundled for. See a list of possible platform values in [Bob manual](https://defold.com/llms/manuals/bob.md).
   - `variant` — bundle variant, either `"debug"`, `"release"` or `"headless"`
 - `on_bundle_finished(opts)` — executed when bundle is finished, be it successful or not. `opts` is a table with the same data as `opts` in `on_bundle_started`, plus `success` key indicating whether build is successful.
 - `on_target_launched(opts)` — executed when user launched a game and it successfully started. `opts` contains an `url` key pointing to a launched engine service, for example, `"http://127.0.0.1:35405"`

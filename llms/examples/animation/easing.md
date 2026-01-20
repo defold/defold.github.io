@@ -2,7 +2,7 @@
 
 This example demonstrates different easing functions available in Defold.
 
-Source: [https://github.com/defold/examples/tree/master/animation/easing](https://github.com/defold/examples/tree/master/animation/easing)
+[Project files](https://github.com/defold/examples/tree/master/animation/easing)
 
 This example demonstrates different easing functions available in Defold.
 

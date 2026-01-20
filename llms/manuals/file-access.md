@@ -73,7 +73,7 @@ When saving and loading application specific files such as high scores, user set
 You can include files with your application using bundle resources and custom resources.
 
 #### Custom Resources
-Custom resources are bundled in the main game archive using the [*Custom Resources* field](project-settings.md) in *game.project*.
+Custom resources are bundled in the main game archive using the [*Custom Resources* field](https://defold.com/llms/manuals/project-settings.md) in *game.project*.
 
 The *Custom Resources* field should contain a comma separated list of resources that will be included in the main game archive. If directories are specified, all files and directories in that directory are recursively included. You can read the files using [`sys.load_resource()`](https://defold.com/ref/sys/#sys.load_resource).
 
@@ -90,7 +90,7 @@ end
 ```
 
 #### Bundle Resources
-Bundle resources are additional files and folders located as a part of your application bundle using the [*Bundle Resources* field](project-settings.md) in *game.project*.
+Bundle resources are additional files and folders located as a part of your application bundle using the [*Bundle Resources* field](https://defold.com/llms/manuals/project-settings.md) in *game.project*.
 
 The *Bundle Resources* field should contain a comma separated list of directories containing resource files and folders that should be copied as-is into the resulting package when bundling. The directories must be specified with an absolute path from the project root, for example `/res`. The resource directory must contain subfolders named by `platform`, or `architecture-platform`.
 

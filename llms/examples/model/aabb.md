@@ -2,7 +2,7 @@
 
 This example demonstrates how to use the `model.get_aabb()` function in a 3D scene.
 
-Source: [https://github.com/defold/examples/tree/master/model/aabb](https://github.com/defold/examples/tree/master/model/aabb)
+[Project files](https://github.com/defold/examples/tree/master/model/aabb)
 
 This example shows how to work with Axis-Aligned Bounding Boxes (AABB) in a 3D scene. The setup consists of falling cubes that are dynamically tracked by a camera using their combined bounding box. The example demonstrates:
 

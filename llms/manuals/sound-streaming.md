@@ -12,7 +12,7 @@ There is an example project showcasing this setup: [https://github.com/defold/ex
 
 ### Easy way
 
-The simplest way to use sound streaming, is by enabling the [`sound.stream_enabled` setting](project-settings.md) in *game.project*. When this option is enabled the engine will start streaming the sounds.
+The simplest way to use sound streaming, is by enabling the [`sound.stream_enabled` setting](https://defold.com/llms/manuals/project-settings.md) in *game.project*. When this option is enabled the engine will start streaming the sounds.
 
 Note: If you have lots of sound files loaded at the same time, you may need to increase the `sound.stream_cache_size` value (see below).
 
@@ -100,10 +100,10 @@ end
 
 ## Sound chunk cache
 
-The amount of memory consumed by the sounds at runtime is controlled by the [`sound.stream_cache_size` setting](project-settings.md) in *game.project*. Given this limit, the loaded sound data will never exceed this limit.
+The amount of memory consumed by the sounds at runtime is controlled by the [`sound.stream_cache_size` setting](https://defold.com/llms/manuals/project-settings.md) in *game.project*. Given this limit, the loaded sound data will never exceed this limit.
 
-The initial chunk of each sound file cannot be evicted and they will occupy the cache for as long as the resources are loaded. The size of the initial chunk is controlled by the [`sound.stream_preload_size` setting](project-settings.md) in *game.project*.
+The initial chunk of each sound file cannot be evicted and they will occupy the cache for as long as the resources are loaded. The size of the initial chunk is controlled by the [`sound.stream_preload_size` setting](https://defold.com/llms/manuals/project-settings.md) in *game.project*.
 
-You can also control the size of each sound chunk by changing the [`sound.stream_chunk_size` setting](project-settings.md) in *game.project*. This may help you get the sound cache size down even further if you have many sound files loaded at the same time. Sound files smaller than the sound chunk size, aren't streamed and if a new chunk doesn't fit into the cache, the oldest chunk is evicted
+You can also control the size of each sound chunk by changing the [`sound.stream_chunk_size` setting](https://defold.com/llms/manuals/project-settings.md) in *game.project*. This may help you get the sound cache size down even further if you have many sound files loaded at the same time. Sound files smaller than the sound chunk size, aren't streamed and if a new chunk doesn't fit into the cache, the oldest chunk is evicted
 
 The total size of the sound chunk cache should be larger than the number of loaded sound files times the stream chunk size. Otherwise, you risk evicting new chunks each frame and sounds won't play properly

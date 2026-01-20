@@ -2,7 +2,7 @@
 
 This example shows how to chain two tween animations of the position of a game object. In addition, the scale and tint is animated separately.
 
-Source: [https://github.com/defold/examples/tree/master/animation/chained_tween](https://github.com/defold/examples/tree/master/animation/chained_tween)
+[Project files](https://github.com/defold/examples/tree/master/animation/chained_tween)
 
 ## Scripts
 

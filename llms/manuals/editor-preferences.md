@@ -11,7 +11,7 @@ Open Bundle Target Folder
 : Enables opening of the target bundle folder after bundling process is done.
 
 Enable Texture Compression
-: Enables [texture compression](texture-profiles.md) for all builds made from the editor.
+: Enables [texture compression](https://defold.com/llms/manuals/texture-profiles.md) for all builds made from the editor.
 
 Escape Quits Game
 : Shutdown a running build of your game using the `Esc` key.
@@ -20,7 +20,7 @@ Track Active Tab in Asset Browser
 : The file edited in selected tab in the *Editor* pane will be selected in the Asset Browser (also known as the *Asset* pane).
 
 Lint Code on Build
-: Enables [code linting](writing-code.md) when the project is built. This option is enabled by default, but can be disabled if the linting in a large project takes too much time.
+: Enables [code linting](https://defold.com/llms/manuals/writing-code.md) when the project is built. This option is enabled by default, but can be disabled if the linting in a large project takes too much time.
 
 Engine Arguments
 : Arguments that will be passed to the dmengine executable when the editor builds and runs.
@@ -66,7 +66,7 @@ The `.` character here is required to open the entire workspace, not an individu
 ## Extensions
 
 Build Server
-: URL to the build server used when building a project containing [native extensions](extensions.md). It is possible to add a username and access token to the URL for authenticated access to the build server. Use the following notation to specify the username and access token: `username:token@build.defold.com`. Authenticated access is required for Nintendo Switch builds and when running your own build server instance with authentication enabled ([refer to the build server documentation](https://github.com/defold/extender/blob/dev/README_SECURITY.md) for more information). The username and password can also be set as the system environment variables `DM_EXTENDER_USERNAME` and `DM_EXTENDER_PASSWORD`.
+: URL to the build server used when building a project containing [native extensions](https://defold.com/llms/manuals/extensions.md). It is possible to add a username and access token to the URL for authenticated access to the build server. Use the following notation to specify the username and access token: `username:token@build.defold.com`. Authenticated access is required for Nintendo Switch builds and when running your own build server instance with authentication enabled ([refer to the build server documentation](https://github.com/defold/extender/blob/dev/README_SECURITY.md) for more information). The username and password can also be set as the system environment variables `DM_EXTENDER_USERNAME` and `DM_EXTENDER_PASSWORD`.
 
 Build Server Username
 : username for authentication.

@@ -4,7 +4,7 @@ The collection proxy component is used to load and unload new game "worlds" dyna
 
 Defold organizes all game objects in collections. A collection can contain game objects and other collections (i.e. sub-collections). Collection proxies allow you to split your content into separate collections and then dynamically manage the loading and unloading of these collections through scripting.
 
-Collection proxies differ from [collection factory components](collection-factory.md). A collection factory instantiates the contents of a collection into the current game world. Collection proxies create a new game world at runtime and thus have different use-cases.
+Collection proxies differ from [collection factory components](https://defold.com/llms/manuals/collection-factory.md). A collection factory instantiates the contents of a collection into the current game world. Collection proxies create a new game world at runtime and thus have different use-cases.
 
 ## Creating a collection proxy component
 
@@ -12,11 +12,11 @@ Collection proxies differ from [collection factory components](collection-factor
 
 2. Set the *Collection* property to reference a collection that you wish to dynamically load into the runtime at a later point. The reference is static and makes sure that all the content of the referenced collection end up in the final game.
 
-(You can exclude the content in the build and download it with code instead by checking the *Exclude* box and using the [Live update feature](live-update.md).)
+(You can exclude the content in the build and download it with code instead by checking the *Exclude* box and using the [Live update feature](https://defold.com/llms/manuals/live-update.md).)
 
 ## Bootstrap
 
-When the Defold engine starts it loads and instantiates all game objects from a *bootstrap collection* into the runtime. It then initializes and enables the game objects and their components. Which bootstrap collection the engine should use is set in the [project settings](project-settings.md). By convention this collection file is usually named "main.collection".
+When the Defold engine starts it loads and instantiates all game objects from a *bootstrap collection* into the runtime. It then initializes and enables the game objects and their components. Which bootstrap collection the engine should use is set in the [project settings](https://defold.com/llms/manuals/project-settings.md). By convention this collection file is usually named "main.collection".
 
 To fit the game objects and their components the engine allocates the memory needed for the whole "game world" into which the contents of the bootstrap collection are instantiated. A separate physics world is also created for any collision objects and physics simulation.
 
@@ -73,7 +73,7 @@ The *Name* set in the collection file properties is used to address game objects
 msg.post("main:/loader#script", "load_level", { level_id = 2 })
 ```
 
-And if you need to communicate with a game object in the loaded collection from the loader you can send a message using the [full URL to the object](addressing.md):
+And if you need to communicate with a game object in the loaded collection from the loader you can send a message using the [full URL to the object](https://defold.com/llms/manuals/addressing.md):
 ```lua
 msg.post("mylevel:/myobject", "hello")
 ```
@@ -121,9 +121,9 @@ Collection proxy updates can be scaled by altering the _time step_. This means t
 
 * Physics simulation speed
 * The `dt` passed to `update()`
-* [Game object and gui property animations](animation.md)
-* [Flipbook animations](animation.md)
-* [Particle FX simulations](particlefx.md)
+* [Game object and gui property animations](https://defold.com/llms/manuals/animation.md)
+* [Flipbook animations](https://defold.com/llms/manuals/animation.md)
+* [Particle FX simulations](https://defold.com/llms/manuals/particlefx.md)
 * Timer speed
 
 You can also set the update mode, which allows you to control if the scaling should be performed discretely (which only makes sense with a scale factor below 1.0) or continuously.
@@ -170,7 +170,7 @@ Physics
 : Through collection proxies it is possible to load more than one top level collection, or *game world* into the engine. When doing so, it is important to know that each top level collection is a separate physical world. Physics interactions (collisions, triggers, ray-casts) only happen between objects belonging to the same world. So even if the collision objects from two worlds visually sits right on top of each other, there cannot be any physics interaction between them.
 
 Memory
-: Each loaded collection creates a new game world which comes with a relatively large memory footprint. If you load dozens of collections simultaneously through proxies, you might want to reconsider your design. To spawn many instances of game object hierarchies, [collection factories](collection-factory.md) are more suitable.
+: Each loaded collection creates a new game world which comes with a relatively large memory footprint. If you load dozens of collections simultaneously through proxies, you might want to reconsider your design. To spawn many instances of game object hierarchies, [collection factories](https://defold.com/llms/manuals/collection-factory.md) are more suitable.
 
 Input
 : If you have objects in your loaded collection that require input actions, you need to make sure that the game object that contains the collection proxy acquires input. When the game object receives input messages these are propagated to the components of that object, i.e. the collection proxies. The input actions are sent via the proxy into the loaded collection.

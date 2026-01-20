@@ -11,7 +11,7 @@ Once we have received confirmation of your status as a licensed developer for PS
 
 * Source code access to the PS4™ and PS5™ extension with console specific API integrations.
 * Source code access to the PS4™ and PS5™ enabled version of the Defold game engine will only be provided to PS5™ licensed game developers. Note that the source code access is not required to build games, but we provide access in case you wish to make source contributions to the engine core.
-* [Command line tool](bob.md) with support for bundling to the PS4™ and PS5™ platforms. Bundling from the Defold editor is not supported.
+* [Command line tool](https://defold.com/llms/manuals/bob.md) with support for bundling to the PS4™ and PS5™ platforms. Bundling from the Defold editor is not supported.
 * Forum where you are able to get PS4™ and PS5™ specific support.
 
 ## FAQ

@@ -28,7 +28,7 @@ Update the target fps
 
 - `target_fps_nanos` (number)
 
-### 
+###
 *Type:* TABLE
 Functions and constants for interacting with the PerformanceHintManager
 
@@ -88,6 +88,6 @@ Severe throttling where UX is largely impacted.
 *Type:* VARIABLE
 Need shutdown immediately
 
-### 
+###
 *Type:* TABLE
 Functions and constants for interacting with the PowerManager ThermalAPI

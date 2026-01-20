@@ -2,7 +2,7 @@
 
 This example shows how to move a game object.
 
-Source: [https://github.com/defold/examples/tree/master/movement/simple_move](https://github.com/defold/examples/tree/master/movement/simple_move)
+[Project files](https://github.com/defold/examples/tree/master/movement/simple_move)
 
 ## Scripts
 

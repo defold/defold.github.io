@@ -2,7 +2,7 @@
 
 This example shows a simple setup with a kinematic physics objects. The difference between dynamic objects, simulated by the physics engine, and kinematic objects, that are user controlled, is clearly seen here.
 
-Source: [https://github.com/defold/examples/tree/master/physics/kinematic](https://github.com/defold/examples/tree/master/physics/kinematic)
+[Project files](https://github.com/defold/examples/tree/master/physics/kinematic)
 
 The setup consists of three game objects. The *game.project* physics *GravityY* property is set to -500 to match the scale of the setup.
 

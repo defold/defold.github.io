@@ -17,7 +17,7 @@ Select which version of Box2D to use.
 
 ## Rig + Model
 
-Control rig and model functionality, or select None to exclude model and rig completely. (See [`Model`](model.md) documentation).
+Control rig and model functionality, or select None to exclude model and rig completely. (See [`Model`](https://defold.com/llms/manuals/model.md) documentation).
 
 ## Exclude Record
 
@@ -25,7 +25,7 @@ Excluded the video recording capability from the engine (see the [`start_record`
 
 ## Exclude Profiler
 
-Exclude the profiler from the engine. The profiler is used for gathering performance and usage counters. Learn how to use the profiler in the [Profiling manual](profiling.md).
+Exclude the profiler from the engine. The profiler is used for gathering performance and usage counters. Learn how to use the profiler in the [Profiling manual](https://defold.com/llms/manuals/profiling.md).
 
 ## Exclude Sound
 
@@ -37,7 +37,7 @@ Exclude all input handling from the engine.
 
 ## Exclude Live Update
 
-Exclude the [Live Update functionality](live-update.md) from the engine.
+Exclude the [Live Update functionality](https://defold.com/llms/manuals/live-update.md) from the engine.
 
 ## Exclude Image
 
@@ -49,11 +49,11 @@ Exclude `types` script module [link](https://defold.com/ref/stable/types/) from 
 
 ## Exclude Basis Universal
 
-Exclude the Basis Universal [texture compression library](texture-profiles.md) from the engine.
+Exclude the Basis Universal [texture compression library](https://defold.com/llms/manuals/texture-profiles.md) from the engine.
 
 ## Use Android Support Lib
 
-Use the deprecated Android Support Library instead of Android X. [More info](android.md).
+Use the deprecated Android Support Library instead of Android X. [More info](https://defold.com/llms/manuals/android.md).
 
 ## Graphics
 
@@ -86,7 +86,7 @@ YAML field name: **`initialMemory`**
 Default value: **33554432**
 
 The size of memory that allocated for web application. In case if ALLOW_MEMORY_GROWTH=0 (js-web) - there is a total amount of memory that web application can use. for more information look [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory). Value in bytes. Note that value must be a multiple of WebAssembly page size (64KiB).
-That options relates to `html5.heap_size` in *game.project* [link](html5.md). Option that configured via application manifest is set during compilation and used as default value for `INITIAL_MEMORY` option. Value from *game.project* overrides value from application manifest and used in runtime.
+That options relates to `html5.heap_size` in *game.project* [link](https://defold.com/llms/manuals/html5.md). Option that configured via application manifest is set during compilation and used as default value for `INITIAL_MEMORY` option. Value from *game.project* overrides value from application manifest and used in runtime.
 
 ## Stack size (js-web and wasm-web only)
 YAML field name: **`stackSize`**

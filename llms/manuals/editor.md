@@ -24,7 +24,7 @@ SAMPLES
 
 When you create a new project it is stored on your local drive and any edits you do are saved locally.
 
-You can learn more about the different options in the [Project Setup manual](project-setup.md).
+You can learn more about the different options in the [Project Setup manual](https://defold.com/llms/manuals/project-setup.md).
 
 ## Editor Language
 
@@ -80,13 +80,13 @@ This view has several tabs.
 
 *Search Results* : shows results of searching (`Ctrl`/`⌘ Cmd` + `Shift` + `F`) the whole project, if you click `Keep Results`
 
-*Curve Editor* : used when editing curves in the [Particle Editor](particlefx.md).
+*Curve Editor* : used when editing curves in the [Particle Editor](https://defold.com/llms/manuals/particlefx.md).
 
-The Tools pane is also used for interacting with the integrated debugger. Read more about it in the [Debugging Manual](debugging.md).
+The Tools pane is also used for interacting with the integrated debugger. Read more about it in the [Debugging Manual](https://defold.com/llms/manuals/debugging.md).
 
 ### 6. Changed Files pane
 
-If your project uses the distributed version-control system Git this view lists any files that has been changed, added or deleted in your project. By synchronizing the project regularly you can bring your local copy in sync with what is stored in the project Git repository, that way you can collaborate within a team, and you won’t lose your work if disaster strikes. You can learn more about Git in our [Version Control manual](version-control.md). Some file oriented operations can be performed in this view:
+If your project uses the distributed version-control system Git this view lists any files that has been changed, added or deleted in your project. By synchronizing the project regularly you can bring your local copy in sync with what is stored in the project Git repository, that way you can collaborate within a team, and you won’t lose your work if disaster strikes. You can learn more about Git in our [Version Control manual](https://defold.com/llms/manuals/version-control.md). Some file oriented operations can be performed in this view:
 
    - `Left Mouse Click` - to select a given file, and while holding `⇧ Shift` you can expand selection or while holding `Ctrl`/`⌘ Cmd` you can (un)select clicked. If a single changed file is selected you can click `Diff` to show the differences. You can click `Revert` to undo changes in all selected files.
    - `Double Left Mouse Click` a file to open a view of the file. The editor opens the file in a suitable editor, just like in the assets view.
@@ -122,7 +122,7 @@ If you have multiple files open, a separate tab for each file is shown at the to
 - Click `Close` (`Ctrl`/`⌘ Cmd` + `W`) a single tab,
 - Click `Close Others` to close all tabs except the selected one,
 - Click `Close All` (`Ctrl`/`⌘ Cmd` + `Shift`+`W`) to close all tabs in the active pane,
-- Select `➝| Open As` - to use other than default editor or associated external tool set in `File ▸ Preferences ▸ Code ▸ Custom Editor`. Check more in [Preferences manual](editor-preferences.md).
+- Select `➝| Open As` - to use other than default editor or associated external tool set in `File ▸ Preferences ▸ Code ▸ Custom Editor`. Check more in [Preferences manual](https://defold.com/llms/manuals/editor-preferences.md).
 
 ## Side-by-side editing
 
@@ -196,7 +196,7 @@ If a template is available for a given file type, whenever a new file of this ty
 
 ## Importing files to your project
 
-To add asset files (images, sounds, models etc) to your project, simply drag and drop them to the correct position in the *Assets* browser. This will make _copies_ of the files at the selected location in the project file structure. Read more about [how to import assets in our manual](importing-assets.md).
+To add asset files (images, sounds, models etc) to your project, simply drag and drop them to the correct position in the *Assets* browser. This will make _copies_ of the files at the selected location in the project file structure. Read more about [how to import assets in our manual](https://defold.com/llms/manuals/importing-assets.md).
 
 ## Updating the Editor
 
@@ -212,12 +212,12 @@ After update is downloaded the blue link will change to `Restart to Update`. Cli
 
 You can modify the settings of the Editor in the `Preferences` window. To open it click `File ▸ Preferences…` or shortcut `Ctrl`/`⌘ Cmd` + `,`
 
-Read more details in the [Preferences manual](editor-preferences.md)
+Read more details in the [Preferences manual](https://defold.com/llms/manuals/editor-preferences.md)
 
 ## Editor Logs
 If you run into a problem with the Editor and need to report issue (`Help  ▸ Report Issue`)  it is a good idea to provide log files from the editor itself. To open location of the logs in your system browser click on `Help ▸ Show Logs`.
 
-Read more in [Getting Help manual](getting-help.md).
+Read more in [Getting Help manual](https://defold.com/llms/manuals/getting-help.md).
 
 The editor logs files can be found here:
 
@@ -252,7 +252,7 @@ Additionally, since 1.11.0 the editor executable has a command line option `--po
 
 ## Editor Styling
 
-Editor appearance can be changed with custom styling. Read more in the [Editor Styling manual](editor-styling.md.md).
+Editor appearance can be changed with custom styling. Read more in the [Editor Styling manual](https://defold.com/llms/manuals/editor-styling.md.md).
 
 ## FAQ
 #### Q: What are the system requirements for the editor?

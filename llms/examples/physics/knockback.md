@@ -2,7 +2,7 @@
 
 This example shows how to create a knockback effect when hit.
 
-Source: [https://github.com/defold/examples/tree/master/physics/knockback](https://github.com/defold/examples/tree/master/physics/knockback)
+[Project files](https://github.com/defold/examples/tree/master/physics/knockback)
 
 This example shows how to create a knockback effect when hit. The setup consists of three game objects; one for the player, one for the enemy and one for the bullet that is spawned using a factory (see example on how to spawn bullets).
 

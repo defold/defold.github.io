@@ -2,9 +2,7 @@
 
 Listens to text input trigger "type" and modifies the game object label with the alien's speech according to input. A "backspace" key trigger has also been added.
 
-Source: [https://github.com/defold/examples/tree/master/input/text](https://github.com/defold/examples/tree/master/input/text)
-
-
+[Project files](https://github.com/defold/examples/tree/master/input/text)
 
 ## Scripts
 

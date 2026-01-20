@@ -38,7 +38,7 @@ The engine then performs a full `Post Update` pass - the same pass that is perfo
 
 This pass carries out message delivery, actual factory game object spawning, and object deletion. Note that the `Post Update` pass includes a "dispatch messages" sequence that not only delivers queued messages, but also processes messages sent to collection proxies. Any subsequent proxy updates (enable, disable, init, final, loading, and mark for unloading) are performed during those steps.
 
-It is entirely possible to load a [collection proxy](collection-proxy.md) during `init()`, ensure all its contained objects are initialized, and then unload the collection through the proxy - all this before the first component `update()` is called, i.e. before the engine has left the initialization stage and entered the update loop:
+It is entirely possible to load a [collection proxy](https://defold.com/llms/manuals/collection-proxy.md) during `init()`, ensure all its contained objects are initialized, and then unload the collection through the proxy - all this before the first component `update()` is called, i.e. before the engine has left the initialization stage and entered the update loop:
 ```lua
 function init(self)
     print("init()")
@@ -74,7 +74,7 @@ The Update Loop runs through a specific sequence once per frame. This sequence c
 
 ### Input Phase
 
-Input is read from available devices, mapped against [input bindings](input.md) and then dispatched. Any game object that has acquired input focus gets input sent to all its components’ `on_input()` functions. A game object with a script component and a GUI component with a GUI script will get input to both components’ `on_input()` functions - given that they are defined and that they have acquired input focus.
+Input is read from available devices, mapped against [input bindings](https://defold.com/llms/manuals/input.md) and then dispatched. Any game object that has acquired input focus gets input sent to all its components’ `on_input()` functions. A game object with a script component and a GUI component with a GUI script will get input to both components’ `on_input()` functions - given that they are defined and that they have acquired input focus.
 
 Any game object that has acquired input focus and contains collection proxy components dispatches input to components inside the proxy collection. This process continues recursively down enabled collection proxies within enabled collection proxies.
 
@@ -98,7 +98,7 @@ The order in which game object component `update()` functions are called is unsp
 
 For collision object components, physics messages (collisions, triggers, ray cast responses etc.) are dispatched throughout the encompassing game object to all components that contain a script with the `on_message()` function.
 
-If a [fixed timestep](physics.md) is used for physics simulation, there may also be a call to the `fixed_update()` function in all script components. This function is useful in physics based games when you wish to manipulate physics objects at regular intervals to achieve a stable physics simulation.
+If a [fixed timestep](https://defold.com/llms/manuals/physics.md) is used for physics simulation, there may also be a call to the `fixed_update()` function in all script components. This function is useful in physics based games when you wish to manipulate physics objects at regular intervals to achieve a stable physics simulation.
 
 #### Transforms
 
@@ -159,13 +159,13 @@ Any factory component that has been told to spawn a game object will do that nex
 
 The last step in the update loop involves dispatching `@system` messages (`exit`, `reboot` messages, toggling the profiler, starting and stopping video capture, etc.).
 
-Then graphics are rendered, as is any rendering of the visual profiler (see the [Debugging documentation](debugging.md)). After the graphics rendering, a video capture is done.
+Then graphics are rendered, as is any rendering of the visual profiler (see the [Debugging documentation](https://defold.com/llms/manuals/debugging.md)). After the graphics rendering, a video capture is done.
 
 #### Frame rate and collection time step
 
 The number of frame updates per second (which equals the number of update-loop runs per second) can be set in the project settings, or programmatically by sending a `set_update_frequency` message to the `@system` socket. In addition, it is possible to set the _time step_ for collection proxies individually by sending a `set_time_step` message to the proxy. Changing a collection’s time step does not affect the frame rate. It does affect the physics update time step as well as the `dt` variable passed to `update().` Also note that altering the time step does not alter the number of times `update()` will be called each frame --- it is always exactly once.
 
-(See the [Collection proxy manual](collection-proxy.md) and [`set_time_step`](https://defold.com/ref/collectionproxy#set-time-step) for details)
+(See the [Collection proxy manual](https://defold.com/llms/manuals/collection-proxy.md) and [`set_time_step`](https://defold.com/ref/collectionproxy#set-time-step) for details)
 
 #### Engine throttling
 
@@ -198,4 +198,4 @@ After all **user messages** are dispatched by calling `on_message()` for each co
 5. `enable` messages - enables the collection proxy, so the `Update Loop` will be performed for it in the next frame; this implicitly triggers `init()` for each component of the collection.
 6. `disable` messages - disables the collection proxy, so the `Update Loop` will **not** be performed for it in the next frame; it stops running `Update Loop` for it completely.
 
-Since any receiver components’ `on_message()` code can post additional messages, the message dispatcher will continue to dispatch posted messaged recursively until the message queue is empty. There is, however, a limit to how many runs through the message queue the message dispatcher performs. See [Message Chains](message-passing.md) for details.
+Since any receiver components’ `on_message()` code can post additional messages, the message dispatcher will continue to dispatch posted messaged recursively until the message queue is empty. There is, however, a limit to how many runs through the message queue the message dispatcher performs. See [Message Chains](https://defold.com/llms/manuals/message-passing.md) for details.

@@ -15,7 +15,7 @@ To then reload an updated resource  simply select the menu item `File ▸ Hot Re
 
 ## Hot reloading on device
 
-Hot reloading works on device as well as on desktop. To use it on device, run a debug build of your game, or the [development app](dev-app.md) on your mobile device, then chose it as target in the editor:
+Hot reloading works on device as well as on desktop. To use it on device, run a debug build of your game, or the [development app](https://defold.com/llms/manuals/dev-app.md) on your mobile device, then chose it as target in the editor:
 
 Now when you build and run, the editor uploads all assets to the running app on the device and starts the game. From thereon, any file you hot reload will update on the device.
 
@@ -84,7 +84,7 @@ function update(self, dt)
 end
 ```
 
-Changing and reloading "my_module.lua" will _not_ change the behavior of "user.script". See [the Modules manual](modules.md) for more information on why, and how to avoid this pitfall.
+Changing and reloading "my_module.lua" will _not_ change the behavior of "user.script". See [the Modules manual](https://defold.com/llms/manuals/modules.md) for more information on why, and how to avoid this pitfall.
 
 ## The on_reload() function
 

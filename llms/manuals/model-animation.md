@@ -2,7 +2,7 @@
 
 Skeletal animation of 3D models use the bones of the model to apply deformation to vertices in the model.
 
-For details on how to import 3D data into a Model for animation, see the [Model documentation](model.md).
+For details on how to import 3D data into a Model for animation, see the [Model documentation](https://defold.com/llms/manuals/model.md).
 
 ## Playing animations
 
@@ -34,7 +34,7 @@ local bone_go = model.get_go("#wiggler", "Bone_002")
 
 ### Cursor animation
 
-In addition to using the `model.play_anim()` to advance a model animation, *Model* components expose a "cursor" property that can be manipulated with `go.animate()` (more about [property animations](property-animation.md)):
+In addition to using the `model.play_anim()` to advance a model animation, *Model* components expose a "cursor" property that can be manipulated with `go.animate()` (more about [property animations](https://defold.com/llms/manuals/property-animation.md)):
 ```lua
 -- Set the animation on #model but don't start it
 model.play_anim("#model", "wiggle", go.PLAYBACK_NONE)

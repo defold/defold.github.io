@@ -2,7 +2,7 @@
 
 This example shows how to move a game object with accelerating speed.
 
-Source: [https://github.com/defold/examples/tree/master/movement/movement_speed](https://github.com/defold/examples/tree/master/movement/movement_speed)
+[Project files](https://github.com/defold/examples/tree/master/movement/movement_speed)
 
 ## Scripts
 

@@ -1,6 +1,6 @@
 #  Building blocks {#manuals:building-blocks}
 
-At the core of Defold's design are a few concepts that are very important to get a good grip on. This manual explains what the building blocks of Defold consist of. After having read this manual, move on to the [addressing manual](addressing.md) and the [message passing manual](message-passing.md). There are also a set of [tutorials](/tutorials/getting-started) available from within the editor to get you up and running quickly.
+At the core of Defold's design are a few concepts that are very important to get a good grip on. This manual explains what the building blocks of Defold consist of. After having read this manual, move on to the [addressing manual](https://defold.com/llms/manuals/addressing.md) and the [message passing manual](https://defold.com/llms/manuals/message-passing.md). There are also a set of [tutorials](/tutorials/getting-started) available from within the editor to get you up and running quickly.
 
 There are three basic types of building blocks that you use to construct a Defold game:
 
@@ -23,7 +23,7 @@ A collection can contain game objects and other collections (by reference to the
 
 Notice that the sub-collection with id "bean" is stored in its own file, called "/main/bean.collection" and is only referenced in "main.collection":
 
-You cannot address collections themselves since there are no runtime objects corresponding to the "main" and "bean" collections. However, you sometimes need to use the identity of a collection as part of the _path_ to a game object (See the [addressing manual](addressing.md) for details):
+You cannot address collections themselves since there are no runtime objects corresponding to the "main" and "bean" collections. However, you sometimes need to use the identity of a collection as part of the _path_ to a game object (See the [addressing manual](https://defold.com/llms/manuals/addressing.md) for details):
 ```lua
 -- file: can.script
 -- get position of the "bean" game object in the "bean" collection
@@ -72,7 +72,7 @@ In most cases it makes most sense to create components in-place, but the followi
 * Particle FX
 * Tile Map
 
-Refer to the [component overview](components.md) for a list of all available component types.
+Refer to the [component overview](https://defold.com/llms/manuals/components.md) for a list of all available component types.
 
 ## Objects added in-place or by reference
 

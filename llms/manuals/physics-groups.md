@@ -7,4 +7,4 @@ For a collision between two objects to register both objects must mutually speci
 The *Mask* field can contain multiple group names, allowing for complex interaction scenarios.
 
 ## Detecting collisions
-When two collision objects with matching groups and masks collide the physics engine will generate [collision messages](physics-messages.md) that can be used in games to react to collisions.
+When two collision objects with matching groups and masks collide the physics engine will generate [collision messages](https://defold.com/llms/manuals/physics-messages.md) that can be used in games to react to collisions.

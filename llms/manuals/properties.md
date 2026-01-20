@@ -3,9 +3,9 @@
 Defold exposes properties for game objects, components and GUI nodes that can be read, set and animated. The following types of properties exist:
 
 * System defined game object transforms (position, rotation and scale) and component specific properties (for example a sprite's pixel size or a collision object's mass)
-* User defined script component properties defined in Lua scripts (see [Script properties documentation](script-properties.md) for details)
+* User defined script component properties defined in Lua scripts (see [Script properties documentation](https://defold.com/llms/manuals/script-properties.md) for details)
 * GUI node properties
-* Shader constants defined in shaders and material files (see [Material documentation](material.md) for details)
+* Shader constants defined in shaders and material files (see [Material documentation](https://defold.com/llms/manuals/material.md) for details)
 
 Numeric properties display a drag handle when you hover over their input field. You can increase/decrease their value, by dragging the handle right/left or up/down respectively.
 
@@ -17,7 +17,7 @@ Composite properties of type `vector3`, `vector4` or `quaternion` also expose th
 go.set("game_object", "position.x", 10)
 ```
 
-The functions `go.get()`, `go.set()` and `go.animate()` take a reference as their first parameter and a property identifier as their second. The reference identifies the game object or component and can be a string, a hash or a URL. URLs are explained in detail in the [addressing manual](addressing.md). The property identifier is a string or hash that names the property:
+The functions `go.get()`, `go.set()` and `go.animate()` take a reference as their first parameter and a property identifier as their second. The reference identifies the game object or component and can be a string, a hash or a URL. URLs are explained in detail in the [addressing manual](https://defold.com/llms/manuals/addressing.md). The property identifier is a string or hash that names the property:
 ```lua
 -- Set the x-scale of the sprite component
 local url = msg.url("#sprite")

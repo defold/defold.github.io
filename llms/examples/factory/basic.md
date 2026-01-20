@@ -2,7 +2,7 @@
 
 This example shows how to dynamically spawn game objects with a factory component.
 
-Source: [https://github.com/defold/examples/tree/master/factory/basic](https://github.com/defold/examples/tree/master/factory/basic)
+[Project files](https://github.com/defold/examples/tree/master/factory/basic)
 
 The "debrisfactory" factory component uses the file *debris.go* as prototype, meaning that it produces game objects that are all copies of that file.
 

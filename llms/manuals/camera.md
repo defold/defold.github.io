@@ -238,7 +238,7 @@ end
 
 Keep in mind that the values `action.screen_x` and `action.screen_y` from `on_input()` should be used as arguments for this function. Visit the [Examples page](https://defold.com/examples/render/screen_to_world/) to see screen to world coordinate conversion in action. There is also a [sample project](https://github.com/defold/sample-screen-to-world-coordinates/) showing how to do screen to world coordinate conversion.
 
-The [third-party camera solutions mentioned in this manual](camera.md) provides functions for converting to and from screen coordinates.
+The [third-party camera solutions mentioned in this manual](https://defold.com/llms/manuals/camera.md) provides functions for converting to and from screen coordinates.
 
 ## Runtime manipulation
 You can manipulate cameras in runtime through a number of different messages and properties (refer to the [API docs for usage](https://defold.com/ref/camera/)).

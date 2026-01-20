@@ -2,12 +2,11 @@
 
 This example shows a fireworks effect made with particles.
 
-Source: [https://github.com/defold/examples/tree/master/particles/fireworks](https://github.com/defold/examples/tree/master/particles/fireworks)
+[Project files](https://github.com/defold/examples/tree/master/particles/fireworks)
 
 This effect consists of two particle effects: trail and bang. In this example there are three different colors, which could be easily changed in particle emitters settings.
 
-
-The main script `fireworks.script` spawns the fireworks trail particlefx on startup or when any key is pressed or the mouse button is clicked. It also has a timer that spawns the particlefx in a loop with a 3 second delay. 
+The main script `fireworks.script` spawns the fireworks trail particlefx on startup or when any key is pressed or the mouse button is clicked. It also has a timer that spawns the particlefx in a loop with a 3 second delay.
 
 To start effect:
 - add factories for splat and trail particles;

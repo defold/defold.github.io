@@ -2,7 +2,7 @@
 
 This example shows how to speed up or slow down animations in a collection proxy by changing the time step of the collection proxy.
 
-Source: [https://github.com/defold/examples/tree/master/collection/timestep](https://github.com/defold/examples/tree/master/collection/timestep)
+[Project files](https://github.com/defold/examples/tree/master/collection/timestep)
 
 The setup consists of a `timestep.collection` and a `game.collection`.
 

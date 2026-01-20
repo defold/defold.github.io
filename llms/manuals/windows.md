@@ -4,7 +4,7 @@ Developing Defold applications for the Windows platform is a straight forward pr
 
 ## Project settings
 
-Windows specific application configuration is done from the [Windows section](project-settings.md) of the *game.project* settings file.
+Windows specific application configuration is done from the [Windows section](https://defold.com/llms/manuals/project-settings.md) of the *game.project* settings file.
 
 ## Application icon
 

@@ -2,7 +2,7 @@
 
 This example demonstrates how to convert 3D world coordinates to 2D screen coordinates using camera transformations.
 
-Source: [https://github.com/defold/examples/tree/master/render/world_to_screen](https://github.com/defold/examples/tree/master/render/world_to_screen)
+[Project files](https://github.com/defold/examples/tree/master/render/world_to_screen)
 
 This example shows how to convert world positions to screen coordinates for UI positioning. It features:
 

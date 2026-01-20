@@ -2,7 +2,7 @@
 
 This example shows how to create timer that repeats endlessly every second
 
-Source: [https://github.com/defold/examples/tree/master/timer/repeating_timer](https://github.com/defold/examples/tree/master/timer/repeating_timer)
+[Project files](https://github.com/defold/examples/tree/master/timer/repeating_timer)
 
 The example shows how to use Defold built-in timer and uses two indicators:
 

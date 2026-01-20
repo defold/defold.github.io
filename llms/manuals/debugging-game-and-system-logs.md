@@ -8,7 +8,7 @@ Console/on-screen logging only shows information in Debug builds. In Release bui
 
 ## Reading the game log from the editor
 
-When you run your game locally from the editor or connected to the [mobile development app](dev-app.md) all of the output will be shown in the console pane of the editor:
+When you run your game locally from the editor or connected to the [mobile development app](https://defold.com/llms/manuals/dev-app.md) all of the output will be shown in the console pane of the editor:
 
 ## Reading the game log from the terminal
 

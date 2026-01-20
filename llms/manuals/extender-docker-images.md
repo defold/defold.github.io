@@ -38,4 +38,4 @@ To use old environment you should go through following steps:
             instanceId: emsdk-2011
     ```
     Url should be in following format: `http://:9000`, where `service_network_alias` - network alias from step 1. 9000 - standard port for Extender (can be different if you are using custom Extender configuration).
-3. Run local Extender as it described in [How to run local Extender with preconfigured artifacts](extender-local-setup#how-to-run-local-extender-with-preconfigured-artifacts.md).
+3. Run local Extender as it described in [How to run local Extender with preconfigured artifacts](https://defold.com/llms/manuals/extender-local-setup#how-to-run-local-extender-with-preconfigured-artifacts.md).

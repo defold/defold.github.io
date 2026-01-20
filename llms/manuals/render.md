@@ -10,7 +10,7 @@ The render pipeline controls what to render, when to render it and also where to
 
 The render file contains a reference to the current render script as well as custom materials that should be made available in the render script (use with [`render.enable_material()`](https://defold.com/ref/render/#render.enable_material))
 
-At the heart of the rendering pipeline is the _render script_. This is a Lua script with the functions `init()`, `update()` and `on_message()` and it is primarily used to interact with the underlying graphics API. The render script has a special place in the lifecycle of your game. Details can be found in the [Application lifecycle documentation](application-lifecycle.md).
+At the heart of the rendering pipeline is the _render script_. This is a Lua script with the functions `init()`, `update()` and `on_message()` and it is primarily used to interact with the underlying graphics API. The render script has a special place in the lifecycle of your game. Details can be found in the [Application lifecycle documentation](https://defold.com/llms/manuals/application-lifecycle.md).
 
 In the "Builtins" folder of your projects you can find the default render resource ("default.render") and the default render script ("default.render_script").
 
@@ -52,7 +52,7 @@ local outlined_trees = render.predicate({"outlined", "tree"})
 render.draw(outlined_trees)
 ```
 
-A detailed description on how materials work can be found in the [Material documentation](material.md).
+A detailed description on how materials work can be found in the [Material documentation](https://defold.com/llms/manuals/material.md).
 
 ## Default view projection
 
@@ -103,7 +103,7 @@ msg.post("@render:", "use_fixed_projection", { near = -1, far = 1, zoom = 2 })
 
 ### Camera projection
 
-When using the default render script and there are enabled [Camera components](camera.md) available in the project, they will take precedence over any other view / projections set in the render script. To read more about how to work with camera components in render scripts, please consult the [Camera documentation](camera.md).
+When using the default render script and there are enabled [Camera components](https://defold.com/llms/manuals/camera.md) available in the project, they will take precedence over any other view / projections set in the render script. To read more about how to work with camera components in render scripts, please consult the [Camera documentation](https://defold.com/llms/manuals/camera.md).
 
 Orthographic cameras support an `Orthographic Mode` that controls how the camera adapts to the window:
 - `Fixed` uses the camera’s `Orthographic Zoom` value.
@@ -135,7 +135,7 @@ Frustum culling is implemented in the engine per component type. Current status 
 | Tilemap     | YES       |
 | Rive        | NO        |
 
-1 = Mesh bounding box needs to be set by the developer. [Learn more](mesh.md).
+1 = Mesh bounding box needs to be set by the developer. [Learn more](https://defold.com/llms/manuals/mesh.md).
 
 ## Coordinate systems
 
@@ -364,7 +364,7 @@ The visual profiler accessible through the `"toggle_profile"` message sent to th
 
 ## Draw calls and batching
 
-A draw call is the term used to describe the process of setting up the GPU to draw an object to the screen using a texture and a material with optional additional settings. This process is usually resource intensive and it is recommended that the number of draw calls are as few as possible. You can measure the number of the draw calls and the time it takes to render them using the [built-in profiler](profiling.md).
+A draw call is the term used to describe the process of setting up the GPU to draw an object to the screen using a texture and a material with optional additional settings. This process is usually resource intensive and it is recommended that the number of draw calls are as few as possible. You can measure the number of the draw calls and the time it takes to render them using the [built-in profiler](https://defold.com/llms/manuals/profiling.md).
 
 Defold will try to batch render operation to reduce the number of draw calls according to a set of rules defined below. The rules differ between GUI components and all other component types.
 
@@ -392,4 +392,4 @@ Rendering of the nodes in a GUI component are done from top to bottom of the nod
 
 Rendering of nodes are done per component. This means that nodes from different GUI components will not be batched.
 
-The ability to arrange nodes in hierarchies makes it easy to group nodes into manageable units. But hierarchies can effectively break batch rendering if you mix different node types. It is possible to more effectively batch GUI nodes while maintaining node hierarchies using GUI layers. You can read more about GUI layers and how they affect draw calls in the [GUI manual](gui#layers-and-draw-calls.md).
+The ability to arrange nodes in hierarchies makes it easy to group nodes into manageable units. But hierarchies can effectively break batch rendering if you mix different node types. It is possible to more effectively batch GUI nodes while maintaining node hierarchies using GUI layers. You can read more about GUI layers and how they affect draw calls in the [GUI manual](https://defold.com/llms/manuals/gui#layers-and-draw-calls.md).

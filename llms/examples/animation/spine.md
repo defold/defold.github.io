@@ -2,7 +2,7 @@
 
 This example shows Spine bone animation that blends when animation switches.
 
-Source: [https://github.com/defold/examples/tree/master/animation/spine](https://github.com/defold/examples/tree/master/animation/spine)
+[Project files](https://github.com/defold/examples/tree/master/animation/spine)
 
 ## Scripts
 

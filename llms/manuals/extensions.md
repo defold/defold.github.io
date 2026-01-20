@@ -8,9 +8,9 @@ If you need custom interaction with external software or hardware on a low level
 
 ## The build server
 
-Defold provides a zero setup entry point to native extensions with a cloud based build solution. Any native extension that is developed and added to a game project, either directly or through a [Library Project](libraries.md), becomes part of the ordinary project content. There is no need to build special versions of the engine and distribute them to team members, that is handled automatically---any team member that builds and runs the project will get a project specific engine executable with all native extensions baked in.
+Defold provides a zero setup entry point to native extensions with a cloud based build solution. Any native extension that is developed and added to a game project, either directly or through a [Library Project](https://defold.com/llms/manuals/libraries.md), becomes part of the ordinary project content. There is no need to build special versions of the engine and distribute them to team members, that is handled automatically---any team member that builds and runs the project will get a project specific engine executable with all native extensions baked in.
 
-Defold provides the cloud build server free of charge, without any usage restrictions. The server is hosted in Europe, and the URL to which native code is sent is configured in the [Editor Preferences window](editor-preferences.md) or through the `--build-server` command line option to [bob](bob.md). If you wish to set up your own server please [follow these instructions](extender-local-setup.md).
+Defold provides the cloud build server free of charge, without any usage restrictions. The server is hosted in Europe, and the URL to which native code is sent is configured in the [Editor Preferences window](https://defold.com/llms/manuals/editor-preferences.md) or through the `--build-server` command line option to [bob](https://defold.com/llms/manuals/bob.md). If you wish to set up your own server please [follow these instructions](https://defold.com/llms/manuals/extender-local-setup.md).
 
 ## Project layout
 
@@ -35,7 +35,7 @@ To create a new extension, create a folder in the project root. This folder will
 
 ```
 *ext.manifest*
-: The extension folder _must_ contain an *ext.manifest* file. This file is a configuration file with flags and defines used when building a single extension. File format definition can be found in the [Extension Manifest manual](extensions-ext-manifests.md).
+: The extension folder _must_ contain an *ext.manifest* file. This file is a configuration file with flags and defines used when building a single extension. File format definition can be found in the [Extension Manifest manual](https://defold.com/llms/manuals/extensions-ext-manifests.md).
 
 *src*
 : This folder should contain all source code files.
@@ -60,17 +60,17 @@ Supported `arc-platform` pairs are `arm64-ios`, `x86_64-ios`, `armv7-android`, `
 
 The optional *manifests* folder of an extension contains additional files used in the build and bundling process. Files should be placed in subfolders named by `platform`:
 
-* `android` - This folder accepts a manifest stub file to be merged into the main application ([as described here](extensions-manifest-merge-tool.md)).
-  * The folder can also contain a `build.gradle` file with dependencies to be [resolved by Gradle](extensions-gradle.md).
+* `android` - This folder accepts a manifest stub file to be merged into the main application ([as described here](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md)).
+  * The folder can also contain a `build.gradle` file with dependencies to be [resolved by Gradle](https://defold.com/llms/manuals/extensions-gradle.md).
   * Finally the folder can also contain zero or more ProGuard files (experimental).
-* `ios` - This folder accepts a manifest stub file to be merged into the main application ([as described here](extensions-manifest-merge-tool.md)).
-  * The folder can also contain a `Podfile` file with dependencies to be [resolved by Cocoapods](extensions-cocoapods.md).
-* `osx` - This folder accepts a manifest stub file to be merged into the main application ([as described here](extensions-manifest-merge-tool.md)).
-* `web` - This folder accepts a manifest stub file to be merged into the main application ([as described here](extensions-manifest-merge-tool.md)).
+* `ios` - This folder accepts a manifest stub file to be merged into the main application ([as described here](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md)).
+  * The folder can also contain a `Podfile` file with dependencies to be [resolved by Cocoapods](https://defold.com/llms/manuals/extensions-cocoapods.md).
+* `osx` - This folder accepts a manifest stub file to be merged into the main application ([as described here](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md)).
+* `web` - This folder accepts a manifest stub file to be merged into the main application ([as described here](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md)).
 
 ## Sharing an extension
 
-Extensions are treated just like any other assets in your project and they can be shared in the same way. If a native extension folder is added as a Library folder it can be shared and used by others as a project dependency. Refer to the [Library project manual](libraries.md) for more information.
+Extensions are treated just like any other assets in your project and they can be shared in the same way. If a native extension folder is added as a Library folder it can be shared and used by others as a project dependency. Refer to the [Library project manual](https://defold.com/llms/manuals/libraries.md) for more information.
 
 ## A simple example extension
 

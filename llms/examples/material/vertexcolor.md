@@ -2,11 +2,9 @@
 
 This example shows how to set and animate a vertex attribute
 
-Source: [https://github.com/defold/examples/tree/master/material/vertexcolor](https://github.com/defold/examples/tree/master/material/vertexcolor)
+[Project files](https://github.com/defold/examples/tree/master/material/vertexcolor)
 
 The `vertexcolor.script` sets the vertex attribute "mycolor", which has been specified in the material.
-
-
 
 The shaders specified by the material also makes use of the `mycolor` attribute to colorize the sprites.
 

@@ -1,6 +1,6 @@
 ## Ray casts {#manuals:physics-ray-casts}
 
-Ray casts are used to read the physics world along a linear ray. To cast a ray into the physics world, you provide a start and end position as well as [a set of collision groups](physics-groups.md) to test against.
+Ray casts are used to read the physics world along a linear ray. To cast a ray into the physics world, you provide a start and end position as well as [a set of collision groups](https://defold.com/llms/manuals/physics-groups.md) to test against.
 
 If the ray hits a physics object you will get information about the object it hit. Rays intersect with dynamic, kinematic and static objects. They do not interact with triggers.
 ```lua
