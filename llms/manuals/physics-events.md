@@ -1,6 +1,6 @@
 # Defold Physics Event Handling {#manuals:physics-events}
 
-Previously, physics interactions in Defold were handled by broadcasting messages to all components of colliding objects. However, starting with version 1.6.4, Defold offers a more centralized approach through the `physics.set_listener()` function. This function allows you to set a custom listener to handle all physics interaction events in one place, thereby streamlining your code and improving efficiency.
+Previously, physics interactions in Defold were handled by broadcasting messages to all components of colliding objects. However, starting with version 1.6.4, Defold offers a more centralized approach through the `physics.set_event_listener()` function. This function allows you to set a custom listener to handle all physics interaction events in one place, thereby streamlining your code and improving efficiency.
 
 ## Setting the Physics World Listener
 
@@ -13,7 +13,7 @@ Here is an example of how to set a physics world listener within a collection pr
 function init(self)
     -- Assuming this script is attached to a game object within the collection loaded by the proxy
     -- Set the physics world listener for the physics world of this collection proxy
-    physics.set_listener(physics_world_listener)
+    physics.set_event_listener(physics_world_listener)
 end
 ```
 
@@ -92,7 +92,7 @@ local function physics_world_listener(self, event, data)
 end
 
 function init(self)
-    physics.set_listener(physics_world_listener)
+    physics.set_event_listener(physics_world_listener)
 end
 ```
 
@@ -123,6 +123,6 @@ function on_message(self, message_id, message)
 end
 
 function init(self)
-    physics.set_listener(physics_world_listener)
+    physics.set_event_listener(physics_world_listener)
 end
 ```
