@@ -219,19 +219,19 @@ var FileLoader = {
 var EngineLoader = {
     arc_sha1: "",
     wasm_sha1: "",
-    wasm_size: 3260631,
+    wasm_size: 3308192,
     wasmjs_sha1: "",
-    wasmjs_size: 284668,
+    wasmjs_size: 285012,
     wasm_pthread_sha1: "",
     wasm_pthread_size: 2000000,
     wasmjs_pthread_sha1: "",
     wasmjs_pthread_size: 250000,
     asmjs_sha1: "",
     asmjs_size: 4000000,
-    wasm_file: "/examples/wasm/0e85ba4ce91b3f769c6b8efc772ba913.wasm",
-    wasm_pthread_file: "/examples/wasm/0e85ba4ce91b3f769c6b8efc772ba913.wasm",
-    wasmjs_file: "/examples/wasm/e581d4f61a1858880e42a3be8da3816e.wasm.js",
-    wasmjs_pthread_file: "/examples/wasm/e581d4f61a1858880e42a3be8da3816e.wasm.js",
+    wasm_file: "/examples/wasm/715a7b146212ab89353fd5125853bede.wasm",
+    wasm_pthread_file: "/examples/wasm/715a7b146212ab89353fd5125853bede.wasm",
+    wasmjs_file: "/examples/wasm/9b3deaea29d80ca120ba1cc6ed59023f.wasm.js",
+    wasmjs_pthread_file: "/examples/wasm/9b3deaea29d80ca120ba1cc6ed59023f.wasm.js",
     wasm_instantiate_progress: 0,
 
     stream_wasm: "false" === "true",
@@ -294,8 +294,9 @@ var EngineLoader = {
                         const error = new Error("Unexpected wasm sha1: " + sha1 + ", expected: " + EngineLoader.getWasmSha1());
                         if (typeof CUSTOM_PARAMETERS["start_error"] === "function") {
                            CUSTOM_PARAMETERS["start_error"](error);
+                        } else {
+                            throw error;
                         }
-                        throw error;
                     }
                 }
                 var wasmInstantiate = WebAssembly.instantiate(new Uint8Array(wasm), imports).then(function(output) {
@@ -305,8 +306,9 @@ var EngineLoader = {
                     console.log('wasm instantiation failed! ' + e);
                     if (typeof CUSTOM_PARAMETERS["start_error"] === "function") {
                         CUSTOM_PARAMETERS["start_error"](e);
+                    } else {
+                        throw e;
                     }
-                    throw e;
                 });
             },
             function(loadedDelta, currentAttempt){
@@ -695,7 +697,11 @@ var GameArchiveLoader = {
                 this.onFileLoaded(file);
             }).catch((e) => {
                 console.log('file verification failed! ' + e);
-                throw e;
+                if (typeof CUSTOM_PARAMETERS["start_error"] === "function") {
+                   CUSTOM_PARAMETERS["start_error"](e);
+                } else {
+                   throw e;
+                }
             });
         }
         // continue loading more pieces of the file
@@ -889,8 +895,8 @@ var Progress = {
 /* ********************************************************************* */
 
 var Module = {
-    engineVersion: "1.11.2",
-    engineSdkSha1: "cddb6eb43c32e4930257fcbbb30f19cf28deb081",
+    engineVersion: "1.12.0",
+    engineSdkSha1: "3206f699aaff89f357c9d549050b8453e080c5d2",
     noInitialRun: true,
 
     _filesToPreload: [],
