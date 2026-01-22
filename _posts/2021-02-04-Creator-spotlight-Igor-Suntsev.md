@@ -31,7 +31,7 @@ The next ones I’ve written in assembler and drawing pixels with a joystick in 
 Yes, it looks like a "Dizzy" but with "Chip and Dale" 🙈. These weren’t serious games, just small non-commercial projects for the local ZX-community. Then I got my first PC and studying at the University shifted my priorities somewhat.
 
 ##### When and how did you learn of Defold?
-After making a pack of games for Flash portals like Armorgames and Kongregate, I understood that the time of the Flash technology was at an end and began looking for an engine that provided cross platform support. I felt that I can't make complicated games for PC/Steam and instead focused on tiny games targeting mobile and web. In spring 2017 I tried Defold and... and stayed with it. Lua was so easy to learn. Then I made a "Look, your Loot" ([online demo](https://dragosha.com/hamster/)).
+After making a pack of games for Flash portals like Armorgames and Kongregate, I understood that the time of the Flash technology was at an end and began looking for an engine that provided cross-platform support. I felt that I can't make complicated games for PC/Steam and instead focused on tiny games targeting mobile and web. In spring 2017 I tried Defold and... and stayed with it. Lua was so easy to learn. Then I made a "Look, your Loot" ([online demo](https://dragosha.com/hamster/)).
 
 ![](/images/posts/developer-spotlight-igor-suntsev/lookyourloot-half.jpg)
 

@@ -10,13 +10,13 @@ One would think that the long and agonizing death of Flash spelled the end for g
 
 Browser games have seen a tremendous growth thanks to the technological advances made by browser vendors. JavaScript is blazingly fast nowadays and Flash has been replaced by modern web technologies adopted by all major browsers. This new set of standardised browser APIs are often referred to as HTML5. The HTML5 APIs have support for hardware accelerated graphics, low-latency sound playback, gamepads and the ability to play games in fullscreen.
 
-In parallel with the advancements done in the browser we have also seen more and more game engines, especially those focusing on cross platform game development, adopting new technology to create highly optimized games for the web.
+In parallel with the advancements done in the browser we have also seen more and more game engines, especially those focusing on cross-platform game development, adopting new technology to create highly optimized games for the web.
 
-We are also seeing a strong movement to democratize game development and make it available to developers across the globe. With the ubiquity of browsers it is no surprise that open source HTML5 game engines such as Phaser and Pico-8 are in the forefront together with a few cross platform game engines also operating in the open source space.
+We are also seeing a strong movement to democratize game development and make it available to developers across the globe. With the ubiquity of browsers it is no surprise that open source HTML5 game engines such as Phaser and Pico-8 are in the forefront together with a few cross-platform game engines also operating in the open source space.
 
 Finally, let's not forget about the players! Numbers show that players are playing browser games like never before on a growing selection of popular game portals offering high quality games as well as quirky and fun games made during game jams.
 
-In this developer case study we'll take a look at how Belarusian game developer OpenMyGame are using the cross platform and source available Defold game engine to create web games on [Yandex.Games](https://yandex.com/games/), one of the leading platforms for high quality web games. We reached out to [Vladimir Timoshkov](https://www.linkedin.com/in/tsimox/), CEO at [OpenMyGame](https://www.openmygame.com/), to learn more.
+In this developer case study we'll take a look at how Belarusian game developer OpenMyGame are using the cross-platform and source available Defold game engine to create web games on [Yandex.Games](https://yandex.com/games/), one of the leading platforms for high quality web games. We reached out to [Vladimir Timoshkov](https://www.linkedin.com/in/tsimox/), CEO at [OpenMyGame](https://www.openmygame.com/), to learn more.
 
 
 ![](/images/posts/developer-case-study-open-my-game/openmygamebig-logo.png)

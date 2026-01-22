@@ -22,7 +22,7 @@ Keep in mind that the list contains our **current** plans for Defold and while w
 
 
 ## Platforms
-Developing a cross platform game engine usually means working with several constantly evolving platforms, each with its own requirements and restrictions. This is especially true on mobile, but also to some extent on the web and desktop. Consoles on the other hand are thankfully almost entirely static and unchanging. Each year we must pay attention to the new iOS and Android platform releases and make sure Defold works well and is kept up to date with latest requirements. This year is no different.
+Developing a cross-platform game engine usually means working with several constantly evolving platforms, each with its own requirements and restrictions. This is especially true on mobile, but also to some extent on the web and desktop. Consoles on the other hand are thankfully almost entirely static and unchanging. Each year we must pay attention to the new iOS and Android platform releases and make sure Defold works well and is kept up to date with latest requirements. This year is no different.
 
 ### Android
 On Android we will make sure to be compliant with the latest Android version (12, planned for release sometime in Q2) and also make sure we target at least Android API level 30 which will be a requirement in August of 2021. On Android we'll also upgrade our build tools and migrate from dx to d8. Finally we also aim to deliver support for Play Asset Delivery as a new way to distribute Defold Live Update content to an installed Defold game.
@@ -34,7 +34,7 @@ On iOS we will upgrade to iOS 15 when it is released (usually announced at WWDC 
 For both iOS and Android we'd also like to look into controller/gamepad support, but that is more of a stretch goal for the year than a hard promise.
 
 ### PlayStation 4
-Our first foray into the world of consoles was with [the release of Nintendo Switch support in June of 2020](https://defold.com/2020/06/24/Defold-adds-support-for-Nintendo-Switch/). The investment we did on Nintendo Switch was rather significant but the return was great as Defold has become even more attractive as a cross platform engine. We also saw the release of a first batch of games made with Defold on Nintendo Switch. This year we plan to expand our console support to also include support for PlayStation 4.
+Our first foray into the world of consoles was with [the release of Nintendo Switch support in June of 2020](https://defold.com/2020/06/24/Defold-adds-support-for-Nintendo-Switch/). The investment we did on Nintendo Switch was rather significant but the return was great as Defold has become even more attractive as a cross-platform engine. We also saw the release of a first batch of games made with Defold on Nintendo Switch. This year we plan to expand our console support to also include support for PlayStation 4.
 
 Yes, we know what you think "PS4! Why not PS5?". We will start with PS4 for two reasons: 1) The PS4 will be around for a few more years. 2) Access to PS5 is currently restricted to select middleware and tools providers. Once we have PS4 support in Defold it is easier to become an approved tools provider for PS5.
 
@@ -112,6 +112,6 @@ With that said we still plan to add a number of new features to Defold this year
 ---
 
 ## Summary and final thoughts
-As we mentioned at the beginning of this post working on a cross platform game engine means working towards a constantly evolving goal where you are never quite finished and you often have to revise your plans. What this means from a financial and resource allocation standpoint is that we must spend a majority of our effort on the Defold engine and on platform and third-party integrations. Focus a lot of resources on the engine obviously comes at a cost, and in this case it means that we aren't able to invest as much on the Defold editor as we would like. As you can see from the roadmap we still have a few improvements planned for the editor to address some of the most highly requested issues.
+As we mentioned at the beginning of this post working on a cross-platform game engine means working towards a constantly evolving goal where you are never quite finished and you often have to revise your plans. What this means from a financial and resource allocation standpoint is that we must spend a majority of our effort on the Defold engine and on platform and third-party integrations. Focus a lot of resources on the engine obviously comes at a cost, and in this case it means that we aren't able to invest as much on the Defold editor as we would like. As you can see from the roadmap we still have a few improvements planned for the editor to address some of the most highly requested issues.
 
 That's it for now. We hope you agree with the direction we are taking with Defold. If not then please [let us know us know on the Defold forum](https://forum.defold.com/)!

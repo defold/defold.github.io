@@ -15,7 +15,7 @@ Last week the Defold Foundation announced the immediate availability of Nintendo
 
 
 ## HTML5 Game Developer Day, July 7
-Defold is a great platform for cross platform game development as well as game development directly targeting platforms such as [Facebook Instant Games](https://defold.com/instant-games) and web game portals such as Poki, [itch.io](https://itch.io) and Kongregate.
+Defold is a great platform for cross-platform game development as well as game development directly targeting platforms such as [Facebook Instant Games](https://defold.com/instant-games) and web game portals such as Poki, [itch.io](https://itch.io) and Kongregate.
 
 A lot of Defold developers have earned quite a bit of success on the web already and the Defold Foundation actively encourages opportunities for more Defold developers to reach a wide audience with their HTML5 games. One such opportunity is the [HTML5 Game Developer Day](https://html5-day.wnhub.io/) on July 7. The WN hub platform presents the event like this:
 

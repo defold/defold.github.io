@@ -35,7 +35,7 @@ Nowadays, I can give much more attention to simply making the best game I can - 
 
 
 #### When and how did you learn of Defold?
-After making a few games for Android using Java and Android Studio, I began looking for an engine that provided cross platform support. In 2016 I tried Defold and it was so easy to pick up I stuck with it. It turned out to be ideal for the type of game I wanted to make.
+After making a few games for Android using Java and Android Studio, I began looking for an engine that provided cross-platform support. In 2016 I tried Defold and it was so easy to pick up I stuck with it. It turned out to be ideal for the type of game I wanted to make.
 
 
 #### What do you like the most about Defold?

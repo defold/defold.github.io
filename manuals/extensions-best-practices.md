@@ -20,7 +20,7 @@ toc:
 
 # Best Practices
 
-Writing cross platform code can be difficult, but there are some ways to make it easier to both develop and maintain such code.
+Writing cross-platform code can be difficult, but there are some ways to make it easier to both develop and maintain such code.
 
 
 ## Project structure
