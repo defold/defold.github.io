@@ -3447,6 +3447,9 @@ Setting and clearing breakpoints
 
   To set or clear a breakpoint, click in the column just right of the line numbers in the code editor. You can also select `Edit ▸ Toggle Breakpoint` from the menu.
 
+Disabling and enabling breakpoints
+: Breakpoints can be temporarily disabled without removing them. When disabled, they are ignored during execution but can be re-enabled at any time. Right-click it in the code editor gutter, then toggle the Enabled checkbox. Disabled breakpoints appear hollowed out to indicate they are inactive.
+
 Setting conditional breakpoints
 : You can configure your breakpoint to contain a condition that needs to evaluate to true for the breakpoint to trigger. The condition can access local variables available at the line during code execution.
 
@@ -3459,6 +3462,24 @@ Evaluating Lua expressions
 
 Detaching the debugger
 : Select `Debug ▸ Detach Debugger` to detach the debugger from the game. It will continue running immediately.
+
+## Breakpoints Tab
+
+  When working with multiple breakpoints across different scripts, the Breakpoints tab provides a centralized view for managing all your breakpoints in one place.
+
+##### Individual Breakpoint Controls
+
+  For working with individual breakpoints:
+  - Click the red trash icon to remove a breakpoint
+  - Double-click the row (outside the condition area) to navigate to that line in the Code View
+  - Double-click the condition cell or click the pen icon to edit conditional breakpoints
+  - Click the X clear button when hovering over a condition cell to clear the condition
+
+##### Batch Operations
+
+  Select multiple breakpoints using Ctrl/Cmd+click or Shift+click, then right-click to perform bulk actions. You can edit conditions across several breakpoints simultaneously, toggle their active state, or remove them entirely.
+
+  The toolbar buttons allow you to enable, disable, or toggle all breakpoints at once, useful when you want to run your game without stopping but don't want to lose their positions. You can also remove all when you're done with your debugging session.
 
 ## Lua debug library
 
@@ -9277,7 +9298,7 @@ When two collision objects interact, we check if we should send a message to the
 
 E.g. given the "Generate Contact Events" checkboxes:
 
-When using `physics.set_listener()`:
+When using `physics.set_event_listener()`:
 
 | Component A | Component B | Send Message |
 |-------------|-------------|--------------|
@@ -9409,7 +9430,7 @@ end
 
 # Defold Physics Event Handling {#manuals:physics-events}
 
-Previously, physics interactions in Defold were handled by broadcasting messages to all components of colliding objects. However, starting with version 1.6.4, Defold offers a more centralized approach through the `physics.set_listener()` function. This function allows you to set a custom listener to handle all physics interaction events in one place, thereby streamlining your code and improving efficiency.
+Previously, physics interactions in Defold were handled by broadcasting messages to all components of colliding objects. However, starting with version 1.6.4, Defold offers a more centralized approach through the `physics.set_event_listener()` function. This function allows you to set a custom listener to handle all physics interaction events in one place, thereby streamlining your code and improving efficiency.
 
 ## Setting the Physics World Listener
 
@@ -9422,7 +9443,7 @@ Here is an example of how to set a physics world listener within a collection pr
 function init(self)
     -- Assuming this script is attached to a game object within the collection loaded by the proxy
     -- Set the physics world listener for the physics world of this collection proxy
-    physics.set_listener(physics_world_listener)
+    physics.set_event_listener(physics_world_listener)
 end
 ```
 
@@ -9481,27 +9502,29 @@ This event is sent when a raycast does not hit any object.
 
 ## Example Usage
 ```lua
-local function physics_world_listener(self, event, data)
-    if event == hash("contact_point_event") then
-        -- Handle detailed contact point data
-        pprint(data)
-    elseif event == hash("collision_event") then
-        -- Handle general collision data
-        pprint(data)
-    elseif event == hash("trigger_event") then
-        -- Handle trigger interaction data
-        pprint(data)
-    elseif event == hash("ray_cast_response") then
-        -- Handle raycast hit data
-        pprint(data)
-    elseif event == hash("ray_cast_missed") then
-        -- Handle raycast miss data
-        pprint(data)
+local function physics_world_listener(self, events)
+    for _,event in ipairs(events) do
+        if event.type == hash("contact_point_event") then
+            -- Handle detailed contact point data
+            pprint(event)
+        elseif event.type == hash("collision_event") then
+            -- Handle general collision data
+            pprint(event)
+        elseif event.type == hash("trigger_event") then
+            -- Handle trigger interaction data
+            pprint(event)
+        elseif event.type == hash("ray_cast_response") then
+            -- Handle raycast hit data
+            pprint(event)
+        elseif event.type == hash("ray_cast_missed") then
+            -- Handle raycast miss data
+            pprint(event)
+        end
     end
 end
 
 function init(self)
-    physics.set_listener(physics_world_listener)
+    physics.set_event_listener(physics_world_listener)
 end
 ```
 
@@ -9511,16 +9534,18 @@ The listener calls synchronously at the moment it occurs. It happens in the midd
 
 Here is a small example of how to avoid these limitations:
 ```lua
-local function physics_world_listener(self, event, data)
-    if event == hash("contact_point_event") then
-        local position_a = data.a.normal * SIZE
-        local position_b =  data.b.normal * SIZE
-        local url_a = msg.url(nil, data.a.id, "collisionobject")
-        local url_b = msg.url(nil, data.b.id, "collisionobject")
-        -- fill the message in the same way arguments should be passed to `physics.create_joint()`
-        local message = {physics.JOINT_TYPE_FIXED, url_a, "joind_id", position_a, url_b, position_b, {max_length = SIZE}}
-        -- send message to the object itself
-        msg.post(".", "create_joint", message)
+local function physics_world_listener(self, events)
+    for _,event in ipairs(events) do
+        if event.type == hash("contact_point_event") then
+            local position_a = event.a.normal * SIZE
+            local position_b =  event.b.normal * SIZE
+            local url_a = msg.url(nil, event.a.id, "collisionobject")
+            local url_b = msg.url(nil, event.b.id, "collisionobject")
+            -- fill the message in the same way arguments should be passed to `physics.create_joint()`
+            local message = {physics.JOINT_TYPE_FIXED, url_a, "joind_id", position_a, url_b, position_b, {max_length = SIZE}}
+            -- send message to the object itself
+            msg.post(".", "create_joint", message)
+        end
     end
 end
 
@@ -9532,7 +9557,7 @@ function on_message(self, message_id, message)
 end
 
 function init(self)
-    physics.set_listener(physics_world_listener)
+    physics.set_event_listener(physics_world_listener)
 end
 ```
 
@@ -74621,42 +74646,23 @@ This example demonstrates how to convert 3D world coordinates to 2D screen coord
 
 This example shows how to convert world positions to screen coordinates for UI positioning. It features:
 
-* A `world_to_screen()` function that transforms 3D world positions to 2D screen coordinates using the camera's view and projection matrices.
+* Use of the built-in `camera.world_to_screen()` API to transform 3D world positions to 2D screen coordinates.
+* A reference Lua `world_to_screen()` implementation (below) kept as an example to help understand how the conversion works internally.
 * A ghost character that rotates around a crypt in 3D space while floating up and down.
 * A player name label in the GUI that follows the character's world position by converting it to screen coordinates.
 * Demonstrates practical use of world-to-screen conversion for positioning UI elements relative to 3D objects.
+
+Note: The reference Lua version does not preserve depth information and always returns `z = 0` to keep the code simpler.
+```lua
 
 ## Scripts
 
 ### player.script
 
 ```lua
-go.property("camera_url", msg.url("/camera#camera"))
+go.property("camera_url", msg.url("/camera#camera")) -- URL of the camera component
 go.property("hud_url", msg.url("/ui#hud"))
 go.property("angle", -45) -- we use this property to animate the rotation of the player around the center of the scene
-
---- Converts a world position to screen coordinates.
--- This function transforms a 3D world position to 2D screen coordinates using the camera's
--- view and projection matrices. The resulting coordinates are in screen space where (0,0)
--- is the bottom-left corner of the screen.
---
--- @param world_position vector3 The world position to convert.
--- @param camera_url url|string The camera component URL to use for the transformation.
--- @return number screen_x The X coordinate in screen space.
--- @return number screen_y The Y coordinate in screen space.
--- @return number screen_z Always returns 0 (depth information is not preserved).
-local function world_to_screen(world_position, camera_url)
-	local proj = camera.get_projection(camera_url)
-	local view = camera.get_view(camera_url)
-
-	local view_proj = proj * view
-	local scr_coord = view_proj * vmath.vector4(world_position.x, world_position.y, world_position.z, 1)
-	local w, h = window.get_size()
-	scr_coord.x = (scr_coord.x / scr_coord.w + 1) * 0.5 * w
-	scr_coord.y = (scr_coord.y / scr_coord.w + 1) * 0.5 * h
-
-	return vmath.vector3(scr_coord.x, scr_coord.y, 0)
-end
 
 function init(self)
 	-- Get the IDs of the player view and UI objects
@@ -74687,7 +74693,7 @@ function update(self, dt)
 	-- Update the world transform of the player UI object and convert the world position to screen coordinates
 	go.update_world_transform(self.player_ui_id)
 	local world_pos = go.get_world_position(self.player_ui_id)
-	local screen_pos = world_to_screen(world_pos, self.camera_url)
+	local screen_pos = camera.world_to_screen(world_pos, self.camera_url)
 	-- Send the screen position to the HUD script
 	msg.post(self.hud_url, "update_data", { screen_position = screen_pos })
 end

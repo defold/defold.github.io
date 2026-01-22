@@ -29,7 +29,7 @@ toc:
 
 例如，给定"生成接触事件"复选框：
 
-当使用 `physics.set_listener()` 时：
+当使用 `physics.set_event_listener()` 时：
 
 | 组件 A | 组件 B | 发送消息 |
 |---------|---------|----------|
