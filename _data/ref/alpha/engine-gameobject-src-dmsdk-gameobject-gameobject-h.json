@@ -650,6 +650,454 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Retrieve a boolean property from a component.",
+            "description": "Retrieve a boolean property from a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPropertyAsBool",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        "HInstance"
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The retrieved property value",
+                    "is_optional": "False",
+                    "name": "out_value",
+                    "types": [
+                        "bool*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the out-parameter was written",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Retrieve a float property from a component.",
+            "description": "Retrieve a float property from a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPropertyAsFloat",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        "HInstance"
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The retrieved property value",
+                    "is_optional": "False",
+                    "name": "out_value",
+                    "types": [
+                        "float*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the out-parameter was written",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Retrieve a hash property from a component.",
+            "description": "Retrieve a hash property from a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPropertyAsHash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        "HInstance"
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The retrieved property value",
+                    "is_optional": "False",
+                    "name": "out_value",
+                    "types": [
+                        "dmhash_t*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the out-parameter was written",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Retrieve a matrix4 property from a component.",
+            "description": "Retrieve a matrix4 property from a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPropertyAsMatrix",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        "HInstance"
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The retrieved property value",
+                    "is_optional": "False",
+                    "name": "out_value",
+                    "types": [
+                        "dmGameObject::Matrix4*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the out-parameter was written",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Retrieve a quaternion property from a component.",
+            "description": "Retrieve a quaternion property from a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPropertyAsQuat",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        "HInstance"
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The retrieved property value",
+                    "is_optional": "False",
+                    "name": "out_value",
+                    "types": [
+                        "dmVMath::Quat*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the out-parameter was written",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Retrieve a url property from a component.",
+            "description": "Retrieve a url property from a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPropertyAsURL",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        "HInstance"
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The retrieved property value",
+                    "is_optional": "False",
+                    "name": "out_value",
+                    "types": [
+                        "dmMessage::URL*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the out-parameter was written",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Retrieve a vector3 property from a component.",
+            "description": "Retrieve a vector3 property from a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPropertyAsVector3",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        "HInstance"
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The retrieved property value",
+                    "is_optional": "False",
+                    "name": "out_value",
+                    "types": [
+                        "dmVMath::Vector3*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the out-parameter was written",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Retrieve a vector4 property from a component.",
+            "description": "Retrieve a vector4 property from a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPropertyAsVector4",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        "HInstance"
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The retrieved property value",
+                    "is_optional": "False",
+                    "name": "out_value",
+                    "types": [
+                        "dmVMath::Vector4*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the out-parameter was written",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "get rotation",
             "description": "Get gameobject instance rotation",
             "error": "",
@@ -2026,6 +2474,454 @@
             ],
             "replaces": "",
             "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets the value of a boolean property on a componen...",
+            "description": "Sets the value of a boolean property on a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetPropertyFromBool",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Value of the property",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the value could be set",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets the value of a hash property on a component.",
+            "description": "Sets the value of a hash property on a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetPropertyFromHash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Value of the property",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the value could be set",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets the value of a float property on a component.",
+            "description": "Sets the value of a float property on a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetPropertyFromHash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Value of the property",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the value could be set",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets the value of a matrix4 property on a componen...",
+            "description": "Sets the value of a matrix4 property on a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetPropertyFromMatrix4",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Value of the property",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "dmVMath::Matrix4"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the value could be set",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets the value of a quaternion property on a compo...",
+            "description": "Sets the value of a quaternion property on a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetPropertyFromQuat",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Value of the property",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "dmVMath::Quat"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the value could be set",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets the value of a URL property on a component.",
+            "description": "Sets the value of a URL property on a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetPropertyFromURL",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Value of the property",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "dmMessage::URL"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the value could be set",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets the value of a vector3 property on a componen...",
+            "description": "Sets the value of a vector3 property on a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetPropertyFromVector3",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Value of the property",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "dmVMath::vector3"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the value could be set",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets the value of a vector4 property on a componen...",
+            "description": "Sets the value of a vector4 property on a component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetPropertyFromVector4",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Value of the property",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "dmVMath::Vector4"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the value could be set",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
