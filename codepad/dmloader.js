@@ -233,15 +233,15 @@ var FileLoader = {
 var EngineLoader = {
     arc_sha1: "",
     wasm_sha1: "",
-    wasm_size: 2569742,
+    wasm_size: 3139640,
     wasmjs_sha1: "",
-    wasmjs_size: 273780,
+    wasmjs_size: 283880,
     wasm_pthread_sha1: "",
-    wasm_pthread_size: 2587052,
+    wasm_pthread_size: 2000000,
     wasmjs_pthread_sha1: "",
-    wasmjs_pthread_size: 262693,
+    wasmjs_pthread_size: 250000,
     asmjs_sha1: "",
-    asmjs_size: 5304393,
+    asmjs_size: 4000000,
     wasm_instantiate_progress: 0,
 
     stream_wasm: "false" === "true",
@@ -1283,7 +1283,7 @@ Module['onRuntimeInitialized'] = function() {
     Module.runApp("canvas");
 };
 
-Module["isWASMPthreadSupported"] = true 
+Module["isWASMPthreadSupported"] = false 
     && ((typeof window === 'undefined') || window.isSecureContext && window.crossOriginIsolated)
     && typeof SharedArrayBuffer !== 'undefined';
 
