@@ -808,7 +808,13 @@ def process_codepad(download = False):
         shutil.copyfile(bob_jar, os.path.join(tmp_dir, bob_jar))
 
         input_dir = os.path.join(tmp_dir, "codepad-master")
-        subprocess.call([ "java", "-jar", os.path.join(tmp_dir, bob_jar), "--archive", "--platform", "js-web", "resolve", "distclean", "build", "bundle" ], cwd=input_dir)
+        subprocess.call([ "java", "-jar", os.path.join(tmp_dir, bob_jar),
+            "--archive",
+            "--platform", "js-web",
+            "--architectures", "wasm-web",
+            "--variant", "debug",
+            "resolve", "distclean", "build", "bundle"
+        ], cwd=input_dir)
 
         codepad_dir = "codepad"
         rmcopytree(os.path.join(input_dir, "build", "default", "DefoldCodePad"), codepad_dir)
