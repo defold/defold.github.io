@@ -96,26 +96,10 @@ var CUSTOM_PARAMETERS = {
         var targetRatio = width / height;
         var actualRatio = innerWidth / innerHeight;
     
-        //Downscale fit
-        if (innerWidth < width || innerHeight < height) {
-            if (actualRatio > targetRatio) {
-                width = innerHeight * targetRatio;
-                height = innerHeight;
-                app_container.style.marginLeft = ((innerWidth - width) / 2) + "px";
-                app_container.style.marginTop = "0px";
-            }
-            else {
-                width = innerWidth;
-                height = innerWidth / targetRatio;
-                app_container.style.marginLeft = "0px";
-                app_container.style.marginTop = ((innerHeight - height) / 2) + "px";
-            }
-        }
-        else {
-            app_container.style.marginLeft = ((innerWidth - width) / 2) + "px";
-            app_container.style.marginTop = ((innerHeight - height) / 2) + "px";
-        }
     
+        //Stretch
+        width = innerWidth;
+        height = innerHeight;
     
     
     
@@ -233,9 +217,9 @@ var FileLoader = {
 var EngineLoader = {
     arc_sha1: "",
     wasm_sha1: "",
-    wasm_size: 3139640,
+    wasm_size: 3143878,
     wasmjs_sha1: "",
-    wasmjs_size: 283880,
+    wasmjs_size: 285364,
     wasm_pthread_sha1: "",
     wasm_pthread_size: 2000000,
     wasmjs_pthread_sha1: "",
