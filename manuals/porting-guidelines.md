@@ -67,7 +67,7 @@ The gamepad input events will contain a user id which can be used to associate t
 
 The console platforms and their native extensions will expose platform specific API functions to save and load data associated with a specific user. Use these APIs when saving and loading on console.
 
-Console platform APIs for file operations are typically asynchronous. When developing a cross-platform game targeted for console it is recommended to design your game such that all file operations are asynchronous, regardless of platform. Example:
+Console platform APIs for file operations are typically asynchronous. When developing a cross platform game targeted for console it is recommended to design your game such that all file operations are asynchronous, regardless of platform. Example:
 
 ```lua
 local function save_game(data, user_id, cb)
