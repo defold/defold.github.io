@@ -14,6 +14,10 @@ The tilemap is added to the example together with a collision object which uses 
 
 Click/tap on the screen to spawn game objects that will fall and interact with the tilemap.
 
+---
+
+Tilemap and enemy graphics made by [Kenney](https://www.kenney.nl).
+
 ## Scripts
 
 ### collisions.script

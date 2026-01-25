@@ -67,7 +67,29 @@ The atlas contains multiple animations for different character states:
 ## Input Bindings
 
 | Key             | Action                         |
-|
+|-----------------|--------------------------------|
+| **Left Arrow / Right Arrow** | Move left/right   |
+| **Space**       | Jump                           |
+| **X**           | Attack                         |
+| **C**           | Crouch (hold to stay crouched) |
+
+## How It Works?
+
+The character uses a **finite state machine** - a programming pattern where the character can only be in one "state" at a time. Each state can define certain things like:
+- Which animation to play
+- Whether the animation loops or plays once
+- What happens when different keys are pressed
+- What state to go to when the animation finishes
+
+The system processes input with **priorities**: Attack > Jump > Movement > Crouch/Stand > Turning. This ensures that important actions (like attacking) can interrupt less important ones (like walking).
+
+## Key Concepts
+
+**State Machine**: A design pattern where an object can be in only one state at a time, with clear rules for transitioning between states.
+
+**Input Priority**: A system that determines which actions take precedence when multiple keys are pressed simultaneously.
+
+**Animation Transitions**: Smooth changes between different animations, often with intermediate "transition" animations.
 
 ## Scripts
 

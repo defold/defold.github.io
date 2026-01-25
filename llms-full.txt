@@ -68937,7 +68937,29 @@ The atlas contains multiple animations for different character states:
 ## Input Bindings
 
 | Key             | Action                         |
-|
+|-----------------|--------------------------------|
+| **Left Arrow / Right Arrow** | Move left/right   |
+| **Space**       | Jump                           |
+| **X**           | Attack                         |
+| **C**           | Crouch (hold to stay crouched) |
+
+## How It Works?
+
+The character uses a **finite state machine** - a programming pattern where the character can only be in one "state" at a time. Each state can define certain things like:
+- Which animation to play
+- Whether the animation loops or plays once
+- What happens when different keys are pressed
+- What state to go to when the animation finishes
+
+The system processes input with **priorities**: Attack > Jump > Movement > Crouch/Stand > Turning. This ensures that important actions (like attacking) can interrupt less important ones (like walking).
+
+## Key Concepts
+
+**State Machine**: A design pattern where an object can be in only one state at a time, with clear rules for transitioning between states.
+
+**Input Priority**: A system that determines which actions take precedence when multiple keys are pressed simultaneously.
+
+**Animation Transitions**: Smooth changes between different animations, often with intermediate "transition" animations.
 
 ## Scripts
 
@@ -72963,7 +72985,38 @@ This example shows how to build a simple first-person controller for a 3D scene.
 
 ## Controls
 | Input                  | Action                                               |
-|
+|------------------------|------------------------------------------------------|
+| Left mouse click       | Lock the cursor and enable mouse look                |
+| Mouse movement         | Rotate camera                                        |
+| `Esc`                  | Unlock the cursor                                    |
+| `W`/`S`/`A`/`D`        | Move forward/backward/left/right on the ground plane |
+
+## How it works?
+When the cursor is locked, the script reads mouse movement deltas and rotates the camera accordingly. Movement is normalized to keep a consistent speed in all directions and is clamped within a square area so you cannot wander off the demo scene.
+
+Example collection consists of 3 main parts:
+
+- `character` - The player character game object includes:
+  - A *script* `character_controller.script` component that implements mouse look, cursor lock/unlock, and WASD movement.
+  - A *camera* component configured with perspective projection.
+
+- `scene` - the models used to create a basic 3D environment:
+  - Ground plane scaled to form a walkable area with prototype texture
+  - Walls built from simple cube models with prototype textures
+  - Some decorative trees
+
+- `gui` - An on-screen GUI with short instructions.
+
+### Assets
+Tree models with textures by Kay Louseberg: https://kaylousberg.itch.io/kaykit-forest
+Prototype textures for Defold by Visionaire: https://github.com/Thevisionaire1/3Deforms
+
+## Script
+
+Tuning parameters are defined at the top of `character_controller.script`:
+- `look_sensitivity` (degrees per pixel) controls how fast the camera rotates
+- `move_speed` (world units per second) controls walking speed
+- `move_limit` (half-size in world units) clamps movement within bounds
 
 ## Scripts
 
@@ -74662,6 +74715,29 @@ This example shows how to convert world positions to screen coordinates for UI p
 
 Note: The reference Lua version does not preserve depth information and always returns `z = 0` to keep the code simpler.
 ```lua
+--- Converts a world position to screen coordinates.
+-- This function transforms a 3D world position to 2D screen coordinates using the camera's
+-- view and projection matrices. The resulting coordinates are in screen space where (0,0)
+-- is the bottom-left corner of the screen.
+--
+-- @param world_position vector3 The world position to convert.
+-- @param camera_url url|string The camera component URL to use for the transformation.
+-- @return number screen_x The X coordinate in screen space.
+-- @return number screen_y The Y coordinate in screen space.
+-- @return number screen_z Always returns 0 (depth information is not preserved).
+local function world_to_screen(world_position, camera_url)
+    local proj = camera.get_projection(camera_url)
+    local view = camera.get_view(camera_url)
+
+    local view_proj = proj * view
+    local scr_coord = view_proj * vmath.vector4(world_position.x, world_position.y, world_position.z, 1)
+    local w, h = window.get_size()
+    scr_coord.x = (scr_coord.x / scr_coord.w + 1) * 0.5 * w
+    scr_coord.y = (scr_coord.y / scr_coord.w + 1) * 0.5 * h
+
+    return vmath.vector3(scr_coord.x, scr_coord.y, 0)
+end
+```
 
 ## Scripts
 
@@ -75572,6 +75648,10 @@ This example shows how to get and set tiles of a tilemap
 
 This example uses a tilemap and a script file to read mouse input to place tiles or read information about the tile the mouse is hovering.
 
+---
+
+Tilemap graphics made by [Kenney](https://www.kenney.nl).
+
 ## Scripts
 
 ### get_set_tile.script
@@ -75627,6 +75707,10 @@ The tilemap component uses the tilesource:
 The tilemap is added to the example together with a collision object which uses the tilemap itself as collision shape. Note that there is no need to specify any collsion groups on the collision object itself. The groups defined in the tilesource (ie "ground" and "danger") will be used:
 
 Click/tap on the screen to spawn game objects that will fall and interact with the tilemap.
+
+---
+
+Tilemap and enemy graphics made by [Kenney](https://www.kenney.nl).
 
 ## Scripts
 
