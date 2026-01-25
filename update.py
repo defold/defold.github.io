@@ -252,11 +252,12 @@ def dict_to_yaml(d):
     return yaml.dump(d, allow_unicode=True, width=sys.maxsize, default_flow_style=False)
 
 def load_frontmatter(filename):
-    frontmatter = read_as_string(filename).split("---")[1]
-    return yaml.safe_load(frontmatter)
+    parts = read_as_string(filename).split("---", maxsplit = 2)
+    return yaml.safe_load(parts[1])
 
 def replace_frontmatter(filename, d):
-    content = read_as_string(filename).split("---")[2].strip()
+    parts = read_as_string(filename).split("---", maxsplit = 2)
+    content = parts[2].strip()
     frontmatter = dict_to_yaml(d)
     content = "---\n%s\n---\n\n%s" % (frontmatter, content)
     write_as_string(filename, content)
