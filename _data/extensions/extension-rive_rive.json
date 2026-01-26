@@ -494,6 +494,46 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Register a fallback font from a file path. This font will be used if glyphs are missing in the current font. Note that only one font fallback can be active at any time.",
+            "examples": "",
+            "name": "rive.set_font_fallback_path",
+            "parameters": [
+                {
+                    "doc": "The resource path to the font file.",
+                    "name": "path",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Register a fallback font from a memory payload. This font will be used if glyphs are missing in the current font. Note that only one font fallback can be active at any time.",
+            "examples": "",
+            "name": "rive.set_font_fallback_memory",
+            "parameters": [
+                {
+                    "doc": "The font file contents.",
+                    "name": "payload",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Clear any registered fallback font.",
+            "examples": "",
+            "name": "rive.clear_font_fallback",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Creates a ViewModelInstanceRuntime",
             "examples": "",
             "name": "rive.databind.create_view_model_instance_runtime",

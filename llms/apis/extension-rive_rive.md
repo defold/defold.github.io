@@ -148,6 +148,26 @@ Replace an asset in runtime.
   - `path` (string) - The path of the asset file to replace with. E.g. "/path/to/file.png"
   - `payload` (string) - The payload of the asset file to replace with. E.g. a .png binary file. Takes precedence over the `path` option.
 
+### rive.set_font_fallback_path
+*Type:* FUNCTION
+Register a fallback font from a file path. This font will be used if glyphs are missing in the current font. Note that only one font fallback can be active at any time.
+
+**Parameters**
+
+- `path` (string) - The resource path to the font file.
+
+### rive.set_font_fallback_memory
+*Type:* FUNCTION
+Register a fallback font from a memory payload. This font will be used if glyphs are missing in the current font. Note that only one font fallback can be active at any time.
+
+**Parameters**
+
+- `payload` (string) - The font file contents.
+
+### rive.clear_font_fallback
+*Type:* FUNCTION
+Clear any registered fallback font.
+
 ### rive.databind.create_view_model_instance_runtime
 *Type:* FUNCTION
 Creates a ViewModelInstanceRuntime
