@@ -1,6 +1,6 @@
 ---
 author: Defold Foundation
-brief: This example shows how to convert from screen to world cooridnates while using a camera.
+brief: This example shows how to convert from screen to world coordinates while using a camera.
 category: render
 layout: example
 path: render/screen_to_world
@@ -10,4 +10,4 @@ title: Screen to World
 
 ---
 
-The `bee.script` uses a `screen_to_world()` function which takes a camera view and projection and uses these to convert from screen space coordinates to world coordinates.
+The `bee.script` uses the `camera.screen_to_world()` function to convert from screen space coordinates to world coordinates using the view and projection of a camera component.

@@ -127,7 +127,7 @@ These are per-example files generated for LLM usage.
 - [Camera](https://defold.com/llms/examples/render/camera.md) - This example shows how to use a camera component and have it follow a game object
 - [Orbit Camera](https://defold.com/llms/examples/render/orbit_camera.md) - This example demonstrates how to create script to control a 3D camera with the mouse
 - [Post-processing](https://defold.com/llms/examples/render/post_processing.md) - This example shows how to apply a post-processing effect by drawing to a render target and then to a fullscreen quad using a post processing shader
-- [Screen to World](https://defold.com/llms/examples/render/screen_to_world.md) - This example shows how to convert from screen to world cooridnates while using a camera
+- [Screen to World](https://defold.com/llms/examples/render/screen_to_world.md) - This example shows how to convert from screen to world coordinates while using a camera
 - [World to Screen](https://defold.com/llms/examples/render/world_to_screen.md) - This example demonstrates how to convert 3D world coordinates to 2D screen coordinates using camera transformations
 
 ## Resource
