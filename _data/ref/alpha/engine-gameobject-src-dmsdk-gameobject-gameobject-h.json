@@ -1098,6 +1098,134 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get the property count from a PropertyOptions cont...",
+            "description": "Get the property count from a PropertyOptions container",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPropertyOptionsCount",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Options handle",
+                    "is_optional": "False",
+                    "name": "options",
+                    "types": [
+                        "HPropertyOptions"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The number of property options",
+                    "name": "count",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the index value from a property option at a sp...",
+            "description": "Get the index value from a property option at a specific index",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPropertyOptionsIndex",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Options handle",
+                    "is_optional": "False",
+                    "name": "options",
+                    "types": [
+                        "HPropertyOptions"
+                    ]
+                },
+                {
+                    "doc": "The options index into the property options container",
+                    "is_optional": "False",
+                    "name": "options_index",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "If the option at the index is valid, store the result. Pointer is untouched otherwise",
+                    "is_optional": "False",
+                    "name": "result",
+                    "types": [
+                        "int32_t*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the property option at the index is valid",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the key value from a property option at a spec...",
+            "description": "Get the key value from a property option at a specific index",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPropertyOptionsKey",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Options handle",
+                    "is_optional": "False",
+                    "name": "options",
+                    "types": [
+                        "HPropertyOptions"
+                    ]
+                },
+                {
+                    "doc": "The options index into the property options container",
+                    "is_optional": "False",
+                    "name": "options_index",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "If the option at the index is valid, store the result. Pointer is untouched otherwise",
+                    "is_optional": "False",
+                    "name": "result",
+                    "types": [
+                        "dmhash_t*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the property option at the index is valid",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "get rotation",
             "description": "Get gameobject instance rotation",
             "error": "",
@@ -1531,6 +1659,21 @@
             "type": "TYPEDEF"
         },
         {
+            "brief": "Handle to a list of property options",
+            "description": "Handle to a list of property options",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HPropertyOptions",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "Gameobject prototype handle",
             "description": "Gameobject prototype handle",
             "error": "",
@@ -1809,37 +1952,6 @@
                 }
             ],
             "name": "PropertyDesc",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "STRUCT"
-        },
-        {
-            "brief": "Property Options",
-            "description": "Parameters variant that holds key or index for a propertys data structure.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [
-                {
-                    "doc": "The index of the property to set, only applicable if property is array.",
-                    "name": "m_Index",
-                    "type": "int32_t"
-                },
-                {
-                    "doc": "The key of the property to set, only applicable if property is hashtable.",
-                    "name": "m_Key",
-                    "type": "dmhash_t"
-                },
-                {
-                    "doc": "A flag if structure contain m_Key value (it can't contain both)",
-                    "name": "m_HasKey",
-                    "type": "uint8_t"
-                }
-            ],
-            "name": "PropertyOptions",
             "notes": [],
             "parameters": [],
             "replaces": "",
