@@ -72,6 +72,7 @@ These are per-example files generated for LLM usage.
 
 - [Custom Sprite](https://defold.com/llms/examples/material/custom_sprite.md) - This example demonstrates a simple way to create and apply a custom sprite shader for changing colors and customizing an outline
 - [Noise shader](https://defold.com/llms/examples/material/noise.md) - This example shows how to use a noise function to generate clouds, smoke or similar effect using a shader
+- [Repeating Background](https://defold.com/llms/examples/material/repeating_background.md) - Create a scrolling background using a repeating texture on a model quad
 - [Screenspace](https://defold.com/llms/examples/material/screenspace.md) - This example shows how to create a custom material with two textures that blend together to create a pattern effect using screen space coordinates
 - [Sprite local UV](https://defold.com/llms/examples/material/sprite_local_uv.md) - This example shows how to get local UV coordinates of a sprite regardless of sprite size
 - [Sprite Vertex Color Attribute](https://defold.com/llms/examples/material/vertexcolor.md) - This example shows how to set and animate a vertex attribute
