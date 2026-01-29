@@ -8,25 +8,32 @@ after: [donors_and_partners.html]
 heatmap: false
 ---
 
-<h2>Why we seek donations and partnerships</h2>
-<p>As a software foundation we rely on community donations and corporate partnerships to ensure the long term sustainability of the project. The funds received from donations and partnerships are used for:</p>
-<ul class="checkmark">
-	<li>Pay developers working on Defold</li>
-	<li>Pay for hosting of services</li>
-	<li>Purchase of hardware for testing and development</li>
-	<li>Pay for travel expenses when visiting conferences</li>
-</ul>
+<!-- <h2>Why we seek donations and partnerships</h2> -->
 
 <div class="row">
 	<div class="columns six">
-		<h4>Community donations</h4>
-		<p>The Defold community of individuals and teams of developers are invited to support Defold development through one-time or recurring donations. As a community donor you get access to a number of different rewards and benefits such as badges, recognition, support, merchandise and new functionality.</p>
-		{% include primary_button.html link="/community-donations" text="Learn more" %}
+		<h4>Why donate?</h4>
+		<p>As a software foundation we rely on community donations and corporate partnerships to ensure the long term sustainability of the project. The funds received from donations and partnerships are used for:</p>
+		<ul class="checkmark">
+			<li>Pay developers working on Defold</li>
+			<li>Pay for hosting of services</li>
+			<li>Purchase of hardware for testing and development</li>
+			<li>Pay for travel expenses when visiting conferences</li>
+		</ul>
 	</div>
-	<div class="columns six">
-		<h4>Corporate partnership</h4>
-		<p>The corporate partnership is available to corporations and organizations who want the option to fund development of specific functionality. Corporate partners will receive prominent mentions on the Defold site, in newsletters and in the Defold editor, as well as invitations to participate at special events.</p>
-		{% include primary_button.html link="/corporate-partnerships" text="Learn more" %}
+	<div class="columns six card light">
+		<p>Support development of Defold directly through the GitHub Sponsors program:</p>
+
+		<div class="grid-150">
+			{% include secondary_button.html link="https://github.com/sponsors/defold?frequency=recurring&amount=5" text="$5 a month" target="_blank"%}
+			{% include secondary_button.html link="https://github.com/sponsors/defold?frequency=recurring&amount=10" text="$10 a month" target="_blank"%}
+			{% include secondary_button.html link="https://github.com/sponsors/defold?frequency=recurring&amount=15" text="$15 a month" target="_blank"%}
+			{% include secondary_button.html link="https://github.com/sponsors/defold?frequency=recurring&amount=25" text="$25 a month" target="_blank"%}
+			{% include secondary_button.html link="https://github.com/sponsors/defold?frequency=recurring" text="Other amount" target="_blank"%}
+			{% include secondary_button.html link="https://github.com/sponsors/defold?frequency=one-time" text="One time" target="_blank"%}
+		</div>
+
+		<p>You can also donate through <a href="https://www.patreon.com/bePatron?u=25380529" target="_blank">Patreon</a> and <a href="https://www.paypal.com/donate/?hosted_button_id=G8L5TY724HQGE" target="_blank">PayPal</a>. Interested in a corporate partnership? <a href="/corporate-partnerships">Find out more</a>.</p>
 	</div>
 </div>
 
