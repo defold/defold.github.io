@@ -1,5 +1,5 @@
 # Importing 3D models {#manuals:importing-models}
-Defold currently support models, skeletons and animations in GL Transmission Format *.glTF* and Collada *.dae* format. You can use tools such as Maya, 3D Max, Sketchup and Blender to create and/or convert 3D models into glTF and Collada format. Blender is a powerful and popular 3D modeling, animation and rendering program. It runs on Windows, macOS and Linux and is freely available for download at http://www.blender.org
+Defold currently support models, skeletons and animations in GL Transmission Format *.glTF* format. You can use tools such as Maya, 3D Max, Sketchup and Blender to create and/or convert 3D models into glTF format. Blender is a powerful and popular 3D modeling, animation and rendering program. It runs on Windows, macOS and Linux and is freely available for download at http://www.blender.org
 
 ## Importing to Defold
 To import the model, simply drag and drop the *.gltf* file or *.dae* file and the corresponding texture image into the *Assets Pane* somewhere.
@@ -7,8 +7,8 @@ To import the model, simply drag and drop the *.gltf* file or *.dae* file and th
 ## Using a model
 Once you have the model imported into Defold you can use it in a [Model component](https://defold.com/llms/manuals/model.md).
 
-## Exporting to glTF and Collada
-The exported *.gltf* or *.dae* file contain all the vertices, edges and faces that make up the model, as well as _UV coordinates_ (what part of the texture image maps to a certain part of the mesh) if you have defined them, the bones in the skeleton and animation data.
+## Exporting to glTF
+The exported *.gltf* file contain all the vertices, edges and faces that make up the model, as well as _UV coordinates_ (what part of the texture image maps to a certain part of the mesh) if you have defined them, the bones in the skeleton and animation data.
 
 * A detailed description on polygon meshes can be found on http://en.wikipedia.org/wiki/Polygon_mesh.
 
@@ -19,8 +19,6 @@ Defold imposes some limitations on exported animation data:
 * Defold currently only supports baked animations. Animations need to have matrices for each animated bone each keyframe, and not position, rotation and scale as separate keys.
 
 * Animations are also linearly interpolated. If you do more advanced curve interpolation the animations needs to be prebaked from the exporter.
-
-* Animation clips in Collada are not supported. To use multiple animations per model, export them into separate *.dae* files and gather the files into an *.animationset* file in Defold.
 
 ### Requirements
 When you export a model it's good to know that we don't yet support all features.

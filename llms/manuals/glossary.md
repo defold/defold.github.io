@@ -119,7 +119,7 @@ Here, `"#weapon"` is the address of the current object's sprite component. `"dis
 
 ## Model
 
- The 3D model component can import glTF and Collada mesh, skeleton and animation assets into your game. See the [Model manual](https://defold.com/llms/manuals/model.md) for more information.
+ The 3D model component can import glTF mesh, skeleton and animation assets into your game. See the [Model manual](https://defold.com/llms/manuals/model.md) for more information.
 
 ## ParticleFX
 

@@ -15,7 +15,7 @@ When the assets are imported into Defold they can be used by the various compone
 * Images can be used to create many kinds of visual components frequently used in 2D games. Read more about [how to import and use 2D graphics here](https://defold.com/llms/manuals/importing-graphics.md).
 * Sounds can be used by the [Sound component](https://defold.com/llms/manuals/sound.md) to play sounds.
 * Fonts are used by the [Label component](https://defold.com/llms/manuals/label.md) and by [text nodes](https://defold.com/llms/manuals/gui-text.md) in a GUI.
-* glTF and Collada models can be used by the [Model component](https://defold.com/llms/manuals/model.md) to show 3D models with animations. Read more about [how to import and use 3D models here](https://defold.com/llms/manuals/importing-models.md).
+* glTF models can be used by the [Model component](https://defold.com/llms/manuals/model.md) to show 3D models with animations. Read more about [how to import and use 3D models here](https://defold.com/llms/manuals/importing-models.md).
 
 ## Editing external assets
 

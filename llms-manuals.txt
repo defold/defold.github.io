@@ -474,7 +474,7 @@ Here, `"#weapon"` is the address of the current object's sprite component. `"dis
 
 ## Model
 
- The 3D model component can import glTF and Collada mesh, skeleton and animation assets into your game. See the [Model manual](#manuals:model) for more information.
+ The 3D model component can import glTF mesh, skeleton and animation assets into your game. See the [Model manual](#manuals:model) for more information.
 
 ## ParticleFX
 
@@ -4199,7 +4199,7 @@ When the assets are imported into Defold they can be used by the various compone
 * Images can be used to create many kinds of visual components frequently used in 2D games. Read more about [how to import and use 2D graphics here](#manuals:importing-graphics).
 * Sounds can be used by the [Sound component](#manuals:sound) to play sounds.
 * Fonts are used by the [Label component](#manuals:label) and by [text nodes](#manuals:gui-text) in a GUI.
-* glTF and Collada models can be used by the [Model component](#manuals:model) to show 3D models with animations. Read more about [how to import and use 3D models here](#manuals:importing-models).
+* glTF models can be used by the [Model component](#manuals:model) to show 3D models with animations. Read more about [how to import and use 3D models here](#manuals:importing-models).
 
 ## Editing external assets
 
@@ -4308,7 +4308,7 @@ Learn more about GUIs in the [GUI manual](#manuals:gui).
 <!-- /manuals/importing-models -->
 
 # Importing 3D models {#manuals:importing-models}
-Defold currently support models, skeletons and animations in GL Transmission Format *.glTF* and Collada *.dae* format. You can use tools such as Maya, 3D Max, Sketchup and Blender to create and/or convert 3D models into glTF and Collada format. Blender is a powerful and popular 3D modeling, animation and rendering program. It runs on Windows, macOS and Linux and is freely available for download at http://www.blender.org
+Defold currently support models, skeletons and animations in GL Transmission Format *.glTF* format. You can use tools such as Maya, 3D Max, Sketchup and Blender to create and/or convert 3D models into glTF format. Blender is a powerful and popular 3D modeling, animation and rendering program. It runs on Windows, macOS and Linux and is freely available for download at http://www.blender.org
 
 ## Importing to Defold
 To import the model, simply drag and drop the *.gltf* file or *.dae* file and the corresponding texture image into the *Assets Pane* somewhere.
@@ -4316,8 +4316,8 @@ To import the model, simply drag and drop the *.gltf* file or *.dae* file and th
 ## Using a model
 Once you have the model imported into Defold you can use it in a [Model component](#manuals:model).
 
-## Exporting to glTF and Collada
-The exported *.gltf* or *.dae* file contain all the vertices, edges and faces that make up the model, as well as _UV coordinates_ (what part of the texture image maps to a certain part of the mesh) if you have defined them, the bones in the skeleton and animation data.
+## Exporting to glTF
+The exported *.gltf* file contain all the vertices, edges and faces that make up the model, as well as _UV coordinates_ (what part of the texture image maps to a certain part of the mesh) if you have defined them, the bones in the skeleton and animation data.
 
 * A detailed description on polygon meshes can be found on http://en.wikipedia.org/wiki/Polygon_mesh.
 
@@ -4328,8 +4328,6 @@ Defold imposes some limitations on exported animation data:
 * Defold currently only supports baked animations. Animations need to have matrices for each animated bone each keyframe, and not position, rotation and scale as separate keys.
 
 * Animations are also linearly interpolated. If you do more advanced curve interpolation the animations needs to be prebaked from the exporter.
-
-* Animation clips in Collada are not supported. To use multiple animations per model, export them into separate *.dae* files and gather the files into an *.animationset* file in Defold.
 
 ### Requirements
 When you export a model it's good to know that we don't yet support all features.
@@ -5588,8 +5586,6 @@ end
 Defold currently supports only baked animations. Animations need to have matrices for each animated bone each keyframe, and not position, rotation and scale as separate keys.
 
 Animations are also linearly interpolated. If you do more advanced curve interpolation the animations needs to be prebaked from the exporter.
-
-Animation clips in Collada are not supported. To use multiple animations per model, export them into separate *.dae* files and gather the files into an *.animationset* file in Defold.
 
 ### The bone hierarchy
 
@@ -7085,7 +7081,21 @@ With the model created you need to specify a number of properties:
 Apart from the properties *Id*, *Position* and *Rotation* the following component specific properties exist:
 
 *Mesh*
-: This property should refer to the glTF *.gltf* or Collada *.dae* file that contains the mesh to use. If the file contains multiple meshes, only the first one is read.
+: This property should refer to the glTF *.gltf* file that contains the mesh to use. If the file contains multiple meshes, only the first one is read.
+
+*Create GO Bones*
+: Check this to create a game object for every bone of the model. You can use the game objects to attach other game objects such as weapons to hand bones and so on.
+
+*Skeleton*
+: This property should refer to the glTF *.gltf* file that contains the skeleton to use for animation. Note that Defold requires a single root bone in your hierarchy.
+
+*Animations*
+: Set this to the *Animation Set File* that contains the animations you want to use on the model.
+
+*Default Animation*
+: This is the animation (from the animation set) that will be automatically played on the model.
+
+In addition to the properties above there will also be a field to assign a material for every mesh of the model:
 
 *Material*
 : Set this property to a material you have created that is suitable for a textured 3D object. There are a number of built-in materials that you can use as a starting point:
@@ -7095,17 +7105,10 @@ Apart from the properties *Id*, *Position* and *Rotation* the following componen
   * Use *model_skinned.material* for skinned (animated) non-instanced models
   * Use *model_skinned_instances.material* for skinned (animated) instanced models
 
+Depending on the material there will be one or more texture properties:
+
 *Texture*
 : This property should point to the texture image file that you want applied to the object.
-
-*Skeleton*
-: This property should refer to the glTF *.gltf* or Collada *.dae* file that contains the skeleton to use for animation. Note that Defold requires a single root bone in your hierarchy.
-
-*Animations*
-: Set this to the *Animation Set File* that contains the animations you want to use on the model.
-
-*Default Animation*
-: This is the animation (from the animation set) that will be automatically played on the model.
 
 ## Editor manipulation
 
@@ -7152,7 +7155,7 @@ A model also has a number of different properties that can be manipulated using 
 
 ## Material
 
-3D software commonly allows you to set properties on your object vertices, like coloring and texturing. This information goes into the glTF *.gltf* or Collada *.dae* file that you export from your 3D software. Depending on the requirements of your game you will have to select and/or create appropriate and _performant_ materials for your objects. A material combines _shader programs_ with a set of parameters for rendering of the object.
+3D software commonly allows you to set properties on your object vertices, like coloring and texturing. This information goes into the glTF *.gltf* file that you export from your 3D software. Depending on the requirements of your game you will have to select and/or create appropriate and _performant_ materials for your objects. A material combines _shader programs_ with a set of parameters for rendering of the object.
 
 There are a number of built-in materials that you can use as a starting point:
 
