@@ -20,6 +20,7 @@ toc:
 - Exclude Basis Universal
 - Use Android Support Lib
 - Graphics
+- Use full text layout system
 - Minimum Safari version (js-web and wasm-web only)
 - Minimum Firefox version (js-web and wasm-web only)
 - Minimum Chrome version (js-web and wasm-web only)
@@ -105,6 +106,10 @@ Select which graphics backend to use.
 * OpenGL - Include only OpenGL.
 * Vulkan - Include only Vulkan.
 * OpenGL and Vulkan - Include both OpenGL and Vulkan. Vulkan will be the default and fall back to OpenGL if Vulkan is not available.
+
+## Use full text layout system
+
+If enabled (`true`), it will allow to use runtime generation for SDF type fonts, when using True Type Fonts (`.ttf`) in the project. Read more details in the [Font Manual](https://defold.com/manuals/font/#enabling-runtime-fonts).
 
 
 ## Minimum Safari version (js-web and wasm-web only)
