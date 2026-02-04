@@ -644,6 +644,7 @@ It also gets the current (caller) url if the a pointer is passed to out_default_
 **Parameters**
 
 - `L` (lua_State*) - Lua state
+- `index` (int) - Index of the value
 - `out_url` (dmMessage::URL*) - where to store the result
 - `out_default_url` (dmMessage::URL*) - default URL used in the resolve, can be 0x0 (not used)
 

@@ -55,6 +55,30 @@ This returns the current lock state of the mouse cursor
 
 - `state` (boolean) - The lock state
 
+### window.get_safe_area
+*Type:* FUNCTION
+This returns the safe area rectangle (x, y, width, height) and the inset
+values relative to the window edges. On platforms without a safe area,
+this returns the full window size and zero insets.
+
+**Returns**
+
+- `safe_area` (table) - safe area data
+<dl>
+<dt><code>safe_area</code></dt>
+<dd><span class="type">table</span> table containing these keys:</dd>
+</dl>
+<ul>
+<li><span class="type">number</span> <code>x</code></li>
+<li><span class="type">number</span> <code>y</code></li>
+<li><span class="type">number</span> <code>width</code></li>
+<li><span class="type">number</span> <code>height</code></li>
+<li><span class="type">number</span> <code>inset_left</code></li>
+<li><span class="type">number</span> <code>inset_top</code></li>
+<li><span class="type">number</span> <code>inset_right</code></li>
+<li><span class="type">number</span> <code>inset_bottom</code></li>
+</ul>
+
 ### window.get_size
 *Type:* FUNCTION
 This returns the current window size (width and height).
@@ -80,7 +104,7 @@ This function has no effect on platforms that does not support dimming.
 
 ### window.set_listener
 *Type:* FUNCTION
-Sets a window event listener.
+Sets a window event listener. Only one window event listener can be set at a time.
 
 **Parameters**
 

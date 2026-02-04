@@ -111,7 +111,6 @@ These are per-namespace API reference files generated for LLM usage.
 - [profiler (Profiler)](https://defold.com/llms/apis/profiler-lua.md) - Functions for getting profiling data in runtime
 - [render (Render)](https://defold.com/llms/apis/render-lua.md) - Rendering API documentation
 - [resource (Resource)](https://defold.com/llms/apis/resource-lua.md) - Functions and constants to access resources
-- [script-script_engine.cpp_doc.json](https://defold.com/llms/apis/script-script_engine.cpp_doc.json-lua.md)
 - [socket (LuaSocket)](https://defold.com/llms/apis/socket-lua.md) - [LuaSocket](https://github
 - [sound (Sound)](https://defold.com/llms/apis/sound-lua.md) - Functions and messages for controlling sound components and mixer groups
 - [sprite (Sprite)](https://defold.com/llms/apis/sprite-lua.md) - Sprite API documentation

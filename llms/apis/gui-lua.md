@@ -1745,6 +1745,22 @@ texture using gui.new_texture().
 *Type:* CONSTANT
 The texture id already exists when trying to use gui.new_texture().
 
+### gui.SAFE_AREA_BOTH
+*Type:* CONSTANT
+Safe area mode that applies insets on all edges.
+
+### gui.SAFE_AREA_LONG
+*Type:* CONSTANT
+Safe area mode that applies insets only on the long edges.
+
+### gui.SAFE_AREA_NONE
+*Type:* CONSTANT
+Safe area mode that ignores safe area insets.
+
+### gui.SAFE_AREA_SHORT
+*Type:* CONSTANT
+Safe area mode that applies insets only on the short edges.
+
 ### gui.screen_to_local
 *Type:* FUNCTION
 Convert the screen position to the local position of supplied node
@@ -2219,6 +2235,20 @@ The rotation is expressed as a quaternion
 
 - `node` (node) - node to set the rotation for
 - `rotation` (quaternion | vector4) - new rotation
+
+### gui.set_safe_area_mode
+*Type:* FUNCTION
+Sets how the safe area is applied to this gui scene.
+
+**Parameters**
+
+- `mode` (constant) - safe area mode
+<ul>
+<li><code>gui.SAFE_AREA_NONE</code></li>
+<li><code>gui.SAFE_AREA_LONG</code></li>
+<li><code>gui.SAFE_AREA_SHORT</code></li>
+<li><code>gui.SAFE_AREA_BOTH</code></li>
+</ul>
 
 ### gui.set_scale
 *Type:* FUNCTION

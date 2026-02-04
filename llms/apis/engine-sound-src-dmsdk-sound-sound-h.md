@@ -48,6 +48,7 @@ Query group mute state
 - `RESULT_FINI_ERROR`
 - `RESULT_NO_DATA`
 - `RESULT_END_OF_STREAM`
+- `RESULT_DEVICE_LOST`
 - `RESULT_UNKNOWN_ERROR`
 
 ### SetGroupMute

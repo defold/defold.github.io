@@ -244,7 +244,7 @@ Loads a font from memory
 - `name` (const char*) - The name of the resource. For easier debugging
 - `data` (void*) - The raw data
 - `data_size` (uint32_t) - The length of the data (in bytes)
-- `allocate` (bool) - If true, the font may allocate a copy of the data (if needed)
+- `allocate` (bool) - If true, the font may allocate a copy of the data (if needed). If false, the caller will own the memory.
 
 **Returns**
 

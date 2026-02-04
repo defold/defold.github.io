@@ -190,6 +190,10 @@ Used when registering new extensions
 *Type:* STRUCT
 Extension event
 
+**Members**
+
+- `m_Event` (ExtensionEventID)
+
 ### ExtensionEventID
 *Type:* ENUM
 Event id enumeration.

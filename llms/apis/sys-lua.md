@@ -3,8 +3,8 @@
 **Namespace:** `sys`
 **Language:** Lua
 **Type:** Defold Lua
-**File:** `sys_ddf.proto`
-**Source:** `engine/script/src/script/sys_ddf.proto`
+**File:** `script_engine.cpp`
+**Source:** `engine/engine/src/script/script_engine.cpp`
 
 Functions and messages for using system resources, controlling the engine,
 error handling and debugging.
@@ -936,6 +936,36 @@ sys.set_connectivity_host("www.google.com")
 
 ```
 
+### sys.set_engine_throttle
+*Type:* FUNCTION
+Enables engine throttling.
+
+**Notes**
+
+- It will automatically wake up on input events
+- It will automatically throttle again after the cooldown period
+- It skips entire update+render loop on the main thread. E.g loading of assets, callbacks from threads (http)
+- On threaded systems, Sound will continue to play any started non-streaming sounds. (e.g. looping background music)
+
+**Parameters**
+
+- `enable` (boolean) - true if throttling should be enabled
+- `cooldown` (number) - the time period to do update + render for (seconds)
+
+**Examples**
+
+Disable throttling
+```
+sys.set_engine_throttle(false)
+
+```
+
+Enable throttling
+```
+sys.set_engine_throttle(true, 1.5)
+
+```
+
 ### sys.set_error_handler
 *Type:* FUNCTION
 Set the Lua error handler function.
@@ -973,6 +1003,26 @@ function init(self)
   sys.set_error_handler(my_error_handler)
   boom()
 end
+
+```
+
+### sys.set_render_enable
+*Type:* FUNCTION
+Disables rendering
+
+**Notes**
+
+- It will will leave the back buffer as-is
+
+**Parameters**
+
+- `enable` (boolean) - true if throttling should be enabled
+
+**Examples**
+
+Disable rendering
+```
+sys.set_render_enable(false)
 
 ```
 

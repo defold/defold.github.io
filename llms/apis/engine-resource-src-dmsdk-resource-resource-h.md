@@ -190,7 +190,7 @@ Get resource descriptor from resource (name)
 
 - `factory` (HResourceFactory) - Factory handle
 - `path` (dmhash_t) - Resource path
-- `descriptor` (HResourceDescriptor*) - Returned resource descriptor
+- `descriptor` (HResourceDescriptor*) - Returned resource descriptor. Temporary, don't copy.
 
 **Returns**
 
@@ -204,7 +204,7 @@ Get resource descriptor from resource (name)
 
 - `factory` (HResourceFactory) - Factory handle
 - `path_hash` (dmhash_t) - Resource path hash
-- `descriptor` (HResourceDescriptor*) - Returned resource descriptor
+- `descriptor` (HResourceDescriptor*) - Returned resource descriptor. Temporary, don't copy.
 
 **Returns**
 
@@ -260,7 +260,7 @@ Parameters to ResourceCreate function of the resource type
 - `m_Buffer` (const void*) - Buffer containing the loaded file
 - `m_BufferSize` (uint32_t) - Size of data buffer (in bytes)
 - `m_PreloadData` (void*) - Preloaded data from Preload phase.
-- `m_Resource` (HResourceDescriptor) - The resource descriptor to update.
+- `m_Resource` (HResourceDescriptor) - The resource descriptor to update. Temporary, don't copy.
 - `m_Type` (HResourceType) - The resource type
 
 ### ResourceCreateResource
@@ -557,7 +557,7 @@ Parameters to ResourcePostCreate function of the resource type
 - `m_Context` (void*) - The context registered with the resource type
 - `m_Filename` (const char*) - Path of the loaded file
 - `m_PreloadData` (void*) - Preloaded data from Preload phase.
-- `m_Resource` (HResourceDescriptor) - The resource descriptor to update.
+- `m_Resource` (HResourceDescriptor) - The resource descriptor to update. Temporary, don't copy.
 - `m_Type` (HResourceType) - The resource type
 
 ### ResourcePreloadHint
@@ -603,7 +603,7 @@ Parameters to ResourceRecreate function of the resource type
 - `m_Buffer` (const void*) - Buffer containing the loaded file
 - `m_BufferSize` (uint32_t) - Size of data buffer (in bytes)
 - `m_Message` (const void*) - Pointer holding a precreated message
-- `m_Resource` (HResourceDescriptor) - The resource descriptor to update
+- `m_Resource` (HResourceDescriptor) - The resource descriptor to update. Temporary, don't copy.
 - `m_Type` (HResourceType) - The resource type
 
 ### ResourceRegisterDecryptionFunction
@@ -636,7 +636,7 @@ Parameters to ResourceReloaded function of the resource type
 - `m_UserData` (void*) - User data supplied when the callback was registered
 - `m_FilenameHash` (dmhash_t) - File name hash of the data
 - `m_Filename` (const char*) - Path of the resource, same as provided to Get() when the resource was obtained
-- `m_Resource` (HResourceDescriptor) - The resource descriptor to update
+- `m_Resource` (HResourceDescriptor) - The resource descriptor to update. Temporary, don't copy.
 - `m_Type` (HResourceType) - The resource type
 
 ### ResourceRemoveFile

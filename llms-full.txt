@@ -379,7 +379,6 @@ This document contains the Defold API reference, grouped by language.
 - [profiler (Profiler)](#apis:profiler-lua) - Functions for getting profiling data in runtime
 - [render (Render)](#apis:render-lua) - Rendering API documentation
 - [resource (Resource)](#apis:resource-lua) - Functions and constants to access resources
-- [script-script_engine.cpp_doc.json](#apis:script-script_engine.cpp_doc.json-lua)
 - [socket (LuaSocket)](#apis:socket-lua) - [LuaSocket](https://github
 - [sound (Sound)](#apis:sound-lua) - Functions and messages for controlling sound components and mixer groups
 - [sprite (Sprite)](#apis:sprite-lua) - Sprite API documentation
@@ -22601,7 +22600,7 @@ Delete a secure socket. Does not close the underlying socket
 
 **Returns**
 
-- `RESULT_OK` - on success
+- `result` (Result) - RESULT_OK on success
 
 **Examples**
 
@@ -22626,7 +22625,7 @@ Set socket receive timeout
 
 **Returns**
 
-- `RESULT_OK` - on success
+- `result` (dmSocket::Result) - RESULT_OK on success
 
 ### INVALID_SOCKET_HANDLE
 *Type:* CONSTANT
@@ -22641,11 +22640,11 @@ Create a new secure socket
 - `socket` (dmSocket::Socket) - The socket to wrap
 - `host` (const char*) - The name of the host (e.g. "httpbin.org")
 - `timeout` (uint64_t) - The timeout for the handshake procedure. (microseconds)
-- `sslsocket` (dmSSLSocket::Socket*) - Pointer to a secure socket
+- `sslsocket` (Socket*) - Pointer to a secure socket
 
 **Returns**
 
-- `RESULT_OK` - on succcess
+- `result` (Result) - RESULT_OK on success
 
 **Examples**
 
@@ -22675,7 +22674,7 @@ Receive data on a secure socket
 
 **Returns**
 
-- `RESULT_OK` - on success
+- `result` (dmSocket::Result) - RESULT_OK on success
 
 ### Result
 *Type:* ENUM
@@ -22702,7 +22701,7 @@ Send a message on a secure socket
 
 **Returns**
 
-- `RESULT_OK` - on success
+- `result` (dmSocket::Result) - RESULT_OK on success
 
 ### Socket
 *Type:* TYPEDEF
@@ -24536,6 +24535,10 @@ Used when registering new extensions
 *Type:* STRUCT
 Extension event
 
+**Members**
+
+- `m_Event` (ExtensionEventID)
+
 ### ExtensionEventID
 *Type:* ENUM
 Event id enumeration.
@@ -25658,7 +25661,7 @@ Loads a font from memory
 - `name` (const char*) - The name of the resource. For easier debugging
 - `data` (void*) - The raw data
 - `data_size` (uint32_t) - The length of the data (in bytes)
-- `allocate` (bool) - If true, the font may allocate a copy of the data (if needed)
+- `allocate` (bool) - If true, the font may allocate a copy of the data (if needed). If false, the caller will own the memory.
 
 **Returns**
 
@@ -26903,7 +26906,7 @@ Get gameobject instance position
 
 **Returns**
 
-- `return` (dmGameObject::Point3) - Position
+- `return` (dmVMath::Point3) - Position
 
 ### GetRotation
 *Type:* FUNCTION
@@ -26964,7 +26967,7 @@ Get game object instance world transform as Matrix4.
 
 **Returns**
 
-- `return` (dmGameObject::MAtrix4) - World transform matrix.
+- `return` (dmGameObject::Matrix4) - World transform matrix.
 
 ### GetWorldPosition
 *Type:* FUNCTION
@@ -31450,7 +31453,7 @@ Get resource descriptor from resource (name)
 
 - `factory` (HResourceFactory) - Factory handle
 - `path` (dmhash_t) - Resource path
-- `descriptor` (HResourceDescriptor*) - Returned resource descriptor
+- `descriptor` (HResourceDescriptor*) - Returned resource descriptor. Temporary, don't copy.
 
 **Returns**
 
@@ -31464,7 +31467,7 @@ Get resource descriptor from resource (name)
 
 - `factory` (HResourceFactory) - Factory handle
 - `path_hash` (dmhash_t) - Resource path hash
-- `descriptor` (HResourceDescriptor*) - Returned resource descriptor
+- `descriptor` (HResourceDescriptor*) - Returned resource descriptor. Temporary, don't copy.
 
 **Returns**
 
@@ -31520,7 +31523,7 @@ Parameters to ResourceCreate function of the resource type
 - `m_Buffer` (const void*) - Buffer containing the loaded file
 - `m_BufferSize` (uint32_t) - Size of data buffer (in bytes)
 - `m_PreloadData` (void*) - Preloaded data from Preload phase.
-- `m_Resource` (HResourceDescriptor) - The resource descriptor to update.
+- `m_Resource` (HResourceDescriptor) - The resource descriptor to update. Temporary, don't copy.
 - `m_Type` (HResourceType) - The resource type
 
 ### ResourceCreateResource
@@ -31817,7 +31820,7 @@ Parameters to ResourcePostCreate function of the resource type
 - `m_Context` (void*) - The context registered with the resource type
 - `m_Filename` (const char*) - Path of the loaded file
 - `m_PreloadData` (void*) - Preloaded data from Preload phase.
-- `m_Resource` (HResourceDescriptor) - The resource descriptor to update.
+- `m_Resource` (HResourceDescriptor) - The resource descriptor to update. Temporary, don't copy.
 - `m_Type` (HResourceType) - The resource type
 
 ### ResourcePreloadHint
@@ -31863,7 +31866,7 @@ Parameters to ResourceRecreate function of the resource type
 - `m_Buffer` (const void*) - Buffer containing the loaded file
 - `m_BufferSize` (uint32_t) - Size of data buffer (in bytes)
 - `m_Message` (const void*) - Pointer holding a precreated message
-- `m_Resource` (HResourceDescriptor) - The resource descriptor to update
+- `m_Resource` (HResourceDescriptor) - The resource descriptor to update. Temporary, don't copy.
 - `m_Type` (HResourceType) - The resource type
 
 ### ResourceRegisterDecryptionFunction
@@ -31896,7 +31899,7 @@ Parameters to ResourceReloaded function of the resource type
 - `m_UserData` (void*) - User data supplied when the callback was registered
 - `m_FilenameHash` (dmhash_t) - File name hash of the data
 - `m_Filename` (const char*) - Path of the resource, same as provided to Get() when the resource was obtained
-- `m_Resource` (HResourceDescriptor) - The resource descriptor to update
+- `m_Resource` (HResourceDescriptor) - The resource descriptor to update. Temporary, don't copy.
 - `m_Type` (HResourceType) - The resource type
 
 ### ResourceRemoveFile
@@ -33413,6 +33416,7 @@ It also gets the current (caller) url if the a pointer is passed to out_default_
 **Parameters**
 
 - `L` (lua_State*) - Lua state
+- `index` (int) - Index of the value
 - `out_url` (dmMessage::URL*) - where to store the result
 - `out_default_url` (dmMessage::URL*) - default URL used in the resolve, can be 0x0 (not used)
 
@@ -33636,6 +33640,7 @@ Query group mute state
 - `RESULT_FINI_ERROR`
 - `RESULT_NO_DATA`
 - `RESULT_END_OF_STREAM`
+- `RESULT_DEVICE_LOST`
 - `RESULT_UNKNOWN_ERROR`
 
 ### SetGroupMute
@@ -37354,6 +37359,18 @@ homogeneous object schema
 
 - `value` (schema) - Prefs schema
 
+### editor.prefs.schema.one_of
+*Type:* FUNCTION
+one of schema
+
+**Parameters**
+
+- `opts` (table) - Required opts: <dl><dt><code>schemas <small>schema[]</small></code></dt><dd>alternative schemas</dd></dl>  Optional opts: <dl><dt><code>default <small>any</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>
+
+**Returns**
+
+- `value` (schema) - Prefs schema
+
 ### editor.prefs.schema.password
 *Type:* FUNCTION
 password schema
@@ -38502,6 +38519,30 @@ zip.unpack(
 )
 
 ```
+
+### zlib.deflate
+*Type:* FUNCTION
+Deflate (compress) a buffer
+
+**Parameters**
+
+- `buf` (string) - buffer to deflate
+
+**Returns**
+
+- `buf` (string) - deflated buffer
+
+### zlib.inflate
+*Type:* FUNCTION
+Inflate (decompress) a buffer
+
+**Parameters**
+
+- `buf` (string) - buffer to inflate
+
+**Returns**
+
+- `buf` (string) - inflated buffer
 
 <!-- factory-lua -->
 
@@ -39979,6 +40020,16 @@ function init(self)
 end
 
 ```
+
+### late_update
+*Type:* FUNCTION
+This is a callback-function, which is called by the engine at the end of the frame to update the state of a script
+component. Use it to make final adjustments to the game object instance.
+
+**Parameters**
+
+- `self` (userdata) - reference to the script state to be used for storing data
+- `dt` (number) - the time-step of the frame update
 
 ### on_input
 *Type:* FUNCTION
@@ -42493,6 +42544,22 @@ texture using gui.new_texture().
 *Type:* CONSTANT
 The texture id already exists when trying to use gui.new_texture().
 
+### gui.SAFE_AREA_BOTH
+*Type:* CONSTANT
+Safe area mode that applies insets on all edges.
+
+### gui.SAFE_AREA_LONG
+*Type:* CONSTANT
+Safe area mode that applies insets only on the long edges.
+
+### gui.SAFE_AREA_NONE
+*Type:* CONSTANT
+Safe area mode that ignores safe area insets.
+
+### gui.SAFE_AREA_SHORT
+*Type:* CONSTANT
+Safe area mode that applies insets only on the short edges.
+
 ### gui.screen_to_local
 *Type:* FUNCTION
 Convert the screen position to the local position of supplied node
@@ -42967,6 +43034,20 @@ The rotation is expressed as a quaternion
 
 - `node` (node) - node to set the rotation for
 - `rotation` (quaternion | vector4) - new rotation
+
+### gui.set_safe_area_mode
+*Type:* FUNCTION
+Sets how the safe area is applied to this gui scene.
+
+**Parameters**
+
+- `mode` (constant) - safe area mode
+<ul>
+<li><code>gui.SAFE_AREA_NONE</code></li>
+<li><code>gui.SAFE_AREA_LONG</code></li>
+<li><code>gui.SAFE_AREA_SHORT</code></li>
+<li><code>gui.SAFE_AREA_BOTH</code></li>
+</ul>
 
 ### gui.set_scale
 *Type:* FUNCTION
@@ -46865,7 +46946,7 @@ end
 
 ### physics.set_event_listener
 *Type:* FUNCTION
-sets a physics world event listener. If a function is set, physics messages will no longer be sent to on_message.
+Only one physics world event listener can be set at a time.
 
 **Parameters**
 
@@ -47977,7 +48058,7 @@ everywhere for the textures that should be shared across different materials.
 
 - `binding` (number | string | hash) - texture binding, either by texture unit, string or hash for the sampler name that the texture should be bound to
 - `handle_or_name` (texture | string | hash) - render target or texture handle that should be bound, or a named resource in the "Render Resource" table in the currently assigned .render file
-- `buffer_type` (type:graphics.BUFFER_TYPE_COLOR0_BIT | graphics.BUFFER_TYPE_COLOR1_BIT | graphics.BUFFER_TYPE_COLOR2_BIT | graphics.BUFFER_TYPE_COLOR3_BIT | graphics.BUFFER_TYPE_DEPTH_BIT | graphics.BUFFER_TYPE_STENCIL_BIT) (optional) - optional buffer type from which to enable the texture. Note that this argument only applies to render targets. Defaults to <code>graphics.BUFFER_TYPE_COLOR0_BIT</code>. These values are supported:
+- `buffer_type` (graphics.BUFFER_TYPE_COLOR0_BIT | graphics.BUFFER_TYPE_COLOR1_BIT | graphics.BUFFER_TYPE_COLOR2_BIT | graphics.BUFFER_TYPE_COLOR3_BIT | graphics.BUFFER_TYPE_DEPTH_BIT | graphics.BUFFER_TYPE_STENCIL_BIT) (optional) - optional buffer type from which to enable the texture. Note that this argument only applies to render targets. Defaults to <code>graphics.BUFFER_TYPE_COLOR0_BIT</code>. These values are supported:
 <ul>
 <li><code>graphics.BUFFER_TYPE_COLOR0_BIT</code></li>
 </ul>
@@ -50631,66 +50712,6 @@ end
 
 ```
 
-<!-- script-script_engine.cpp_doc.json-lua -->
-
-# script-script_engine.cpp_doc.json {#apis:script-script_engine.cpp_doc.json-lua}
-
-**Namespace:** `script-script_engine.cpp_doc.json`
-**Language:** Lua
-**Type:** Defold Lua
-
-## API
-
-### sys.set_engine_throttle
-*Type:* FUNCTION
-Enables engine throttling.
-
-**Notes**
-
-- It will automatically wake up on input events
-- It will automatically throttle again after the cooldown period
-- It skips entire update+render loop on the main thread. E.g loading of assets, callbacks from threads (http)
-- On threaded systems, Sound will continue to play any started non-streaming sounds. (e.g. looping background music)
-
-**Parameters**
-
-- `enable` (boolean) - true if throttling should be enabled
-- `cooldown` (number) - the time period to do update + render for (seconds)
-
-**Examples**
-
-Disable throttling
-```
-sys.set_engine_throttle(false)
-
-```
-
-Enable throttling
-```
-sys.set_engine_throttle(true, 1.5)
-
-```
-
-### sys.set_render_enable
-*Type:* FUNCTION
-Disables rendering
-
-**Notes**
-
-- It will will leave the back buffer as-is
-
-**Parameters**
-
-- `enable` (boolean) - true if throttling should be enabled
-
-**Examples**
-
-Disable rendering
-```
-sys.set_render_enable(false)
-
-```
-
 <!-- socket-lua -->
 
 # LuaSocket {#apis:socket-lua}
@@ -53147,8 +53168,8 @@ The definition of what a lowercase letter is depends on the current locale.
 **Namespace:** `sys`
 **Language:** Lua
 **Type:** Defold Lua
-**File:** `sys_ddf.proto`
-**Source:** `engine/script/src/script/sys_ddf.proto`
+**File:** `script_engine.cpp`
+**Source:** `engine/engine/src/script/script_engine.cpp`
 
 Functions and messages for using system resources, controlling the engine,
 error handling and debugging.
@@ -54080,6 +54101,36 @@ sys.set_connectivity_host("www.google.com")
 
 ```
 
+### sys.set_engine_throttle
+*Type:* FUNCTION
+Enables engine throttling.
+
+**Notes**
+
+- It will automatically wake up on input events
+- It will automatically throttle again after the cooldown period
+- It skips entire update+render loop on the main thread. E.g loading of assets, callbacks from threads (http)
+- On threaded systems, Sound will continue to play any started non-streaming sounds. (e.g. looping background music)
+
+**Parameters**
+
+- `enable` (boolean) - true if throttling should be enabled
+- `cooldown` (number) - the time period to do update + render for (seconds)
+
+**Examples**
+
+Disable throttling
+```
+sys.set_engine_throttle(false)
+
+```
+
+Enable throttling
+```
+sys.set_engine_throttle(true, 1.5)
+
+```
+
 ### sys.set_error_handler
 *Type:* FUNCTION
 Set the Lua error handler function.
@@ -54117,6 +54168,26 @@ function init(self)
   sys.set_error_handler(my_error_handler)
   boom()
 end
+
+```
+
+### sys.set_render_enable
+*Type:* FUNCTION
+Disables rendering
+
+**Notes**
+
+- It will will leave the back buffer as-is
+
+**Parameters**
+
+- `enable` (boolean) - true if throttling should be enabled
+
+**Examples**
+
+Disable rendering
+```
+sys.set_render_enable(false)
 
 ```
 
@@ -56292,6 +56363,30 @@ This returns the current lock state of the mouse cursor
 
 - `state` (boolean) - The lock state
 
+### window.get_safe_area
+*Type:* FUNCTION
+This returns the safe area rectangle (x, y, width, height) and the inset
+values relative to the window edges. On platforms without a safe area,
+this returns the full window size and zero insets.
+
+**Returns**
+
+- `safe_area` (table) - safe area data
+<dl>
+<dt><code>safe_area</code></dt>
+<dd><span class="type">table</span> table containing these keys:</dd>
+</dl>
+<ul>
+<li><span class="type">number</span> <code>x</code></li>
+<li><span class="type">number</span> <code>y</code></li>
+<li><span class="type">number</span> <code>width</code></li>
+<li><span class="type">number</span> <code>height</code></li>
+<li><span class="type">number</span> <code>inset_left</code></li>
+<li><span class="type">number</span> <code>inset_top</code></li>
+<li><span class="type">number</span> <code>inset_right</code></li>
+<li><span class="type">number</span> <code>inset_bottom</code></li>
+</ul>
+
 ### window.get_size
 *Type:* FUNCTION
 This returns the current window size (width and height).
@@ -56317,7 +56412,7 @@ This function has no effect on platforms that does not support dimming.
 
 ### window.set_listener
 *Type:* FUNCTION
-Sets a window event listener.
+Sets a window event listener. Only one window event listener can be set at a time.
 
 **Parameters**
 

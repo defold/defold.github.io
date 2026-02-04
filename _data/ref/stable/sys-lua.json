@@ -1114,6 +1114,43 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Enables engine throttling.",
+            "description": "Enables engine throttling.",
+            "error": "",
+            "examples": "Disable throttling\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_engine_throttle</span><span class=\"p\">(</span><span class=\"kc\">false</span><span class=\"p\">)</span>\n</code></pre></div>\n\nEnable throttling\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_engine_throttle</span><span class=\"p\">(</span><span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"mf\">1.5</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "sys.set_engine_throttle",
+            "notes": [
+                "It will automatically wake up on input events",
+                "It will automatically throttle again after the cooldown period",
+                "It skips entire update+render loop on the main thread. E.g loading of assets, callbacks from threads (http)",
+                "On threaded systems, Sound will continue to play any started non-streaming sounds. (e.g. looping background music)"
+            ],
+            "parameters": [
+                {
+                    "doc": "true if throttling should be enabled",
+                    "is_optional": "False",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
+                    ]
+                },
+                {
+                    "doc": "the time period to do update + render for (seconds)",
+                    "is_optional": "False",
+                    "name": "cooldown",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "set the error handler",
             "description": "Set the Lua error handler function.\nThe error handler is a function which is called whenever a lua runtime error occurs.",
             "error": "",
@@ -1129,6 +1166,32 @@
                     "name": "error_handler",
                     "types": [
                         "function(source, message, traceback)"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Disables rendering",
+            "description": "Disables rendering",
+            "error": "",
+            "examples": "Disable rendering\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_render_enable</span><span class=\"p\">(</span><span class=\"kc\">false</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "sys.set_render_enable",
+            "notes": [
+                "It will will leave the back buffer as-is"
+            ],
+            "parameters": [
+                {
+                    "doc": "true if throttling should be enabled",
+                    "is_optional": "False",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
                     ]
                 }
             ],
@@ -1220,12 +1283,12 @@
         "brief": "System API documentation",
         "description": "Functions and messages for using system resources, controlling the engine,\nerror handling and debugging.",
         "description_html": "<p>Functions and messages for using system resources, controlling the engine,\nerror handling and debugging.</p>",
-        "file": "sys_ddf.proto",
+        "file": "script_engine.cpp",
         "language": "Lua",
         "name": "System",
         "namespace": "sys",
         "notes": [],
-        "path": "engine/script/src/script/sys_ddf.proto",
+        "path": "engine/engine/src/script/script_engine.cpp",
         "type": "Defold Lua"
     }
 }

@@ -1917,6 +1917,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "called at the end of the frame for a final update of the script component",
+            "description": "This is a callback-function, which is called by the engine at the end of the frame to update the state of a script\ncomponent. Use it to make final adjustments to the game object instance.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "late_update",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "reference to the script state to be used for storing data",
+                    "is_optional": "False",
+                    "name": "self",
+                    "types": [
+                        "userdata"
+                    ]
+                },
+                {
+                    "doc": "the time-step of the frame update",
+                    "is_optional": "False",
+                    "name": "dt",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "called when user input is received",
             "description": "This is a callback-function, which is called by the engine when user input is sent to the game object instance of the script.\nIt can be used to take action on the input, e.g. move the instance according to the input.\nFor an instance to obtain user input, it must first acquire input focus\nthrough the message <code>acquire_input_focus</code>.\nAny instance that has obtained input will be put on top of an\ninput stack. Input is sent to all listeners on the stack until the\nend of stack is reached, or a listener returns <code>true</code>\nto signal that it wants input to be consumed.\nSee the documentation of <a href=\"#acquire_input_focus\">acquire_input_focus</a> for more\ninformation.\nThe <code>action</code> parameter is a table containing data about the input mapped to the\n<code>action_id</code>.\nFor mapped actions it specifies the value of the input and if it was just pressed or released.\nActions are mapped to input in an input_binding-file.\nMouse movement is specifically handled and uses <code>nil</code> as its <code>action_id</code>.\nThe <code>action</code> only contains positional parameters in this case, such as x and y of the pointer.\nHere is a brief description of the available table fields:\n<table>\n<thead>\n<tr>\n<th>Field</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>value</code></td>\n<td>The amount of input given by the user. This is usually 1 for buttons and 0-1 for analogue inputs. This is not present for mouse movement and text input.</td>\n</tr>\n<tr>\n<td><code>pressed</code></td>\n<td>If the input was pressed this frame. This is not present for mouse movement and text input.</td>\n</tr>\n<tr>\n<td><code>released</code></td>\n<td>If the input was released this frame. This is not present for mouse movement and text input.</td>\n</tr>\n<tr>\n<td><code>repeated</code></td>\n<td>If the input was repeated this frame. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement and text input.</td>\n</tr>\n<tr>\n<td><code>x</code></td>\n<td>The x value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>y</code></td>\n<td>The y value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>screen_x</code></td>\n<td>The screen space x value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>screen_y</code></td>\n<td>The screen space y value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>dx</code></td>\n<td>The change in x value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>dy</code></td>\n<td>The change in y value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>screen_dx</code></td>\n<td>The change in screen space x value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>screen_dy</code></td>\n<td>The change in screen space y value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>gamepad</code></td>\n<td>The index of the gamepad device that provided the input. See table below about gamepad input.</td>\n</tr>\n<tr>\n<td><code>touch</code></td>\n<td>List of touch input, one element per finger, if present. See table below about touch input</td>\n</tr>\n<tr>\n<td><code>text</code></td>\n<td>Text input from a (virtual) keyboard or similar.</td>\n</tr>\n<tr>\n<td><code>marked_text</code></td>\n<td>Sequence of entered symbols while entering a symbol combination, for example Japanese Kana.</td>\n</tr>\n</tbody>\n</table>\nGamepad specific fields:\n<table>\n<thead>\n<tr>\n<th>Field</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>gamepad</code></td>\n<td>The index of the gamepad device that provided the input.</td>\n</tr>\n<tr>\n<td><code>userid</code></td>\n<td>Id of the user associated with the controller. Usually only relevant on consoles.</td>\n</tr>\n<tr>\n<td><code>gamepad_unknown</code></td>\n<td>True if the inout originated from an unknown/unmapped gamepad.</td>\n</tr>\n<tr>\n<td><code>gamepad_name</code></td>\n<td>Name of the gamepad</td>\n</tr>\n<tr>\n<td><code>gamepad_axis</code></td>\n<td>List of gamepad axis values. For raw gamepad input only.</td>\n</tr>\n<tr>\n<td><code>gamepadhats</code></td>\n<td>List of gamepad hat values. For raw gamepad input only.</td>\n</tr>\n<tr>\n<td><code>gamepad_buttons</code></td>\n<td>List of gamepad button values. For raw gamepad input only.</td>\n</tr>\n</tbody>\n</table>\nTouch input table:\n<table>\n<thead>\n<tr>\n<th>Field</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>id</code></td>\n<td>A number identifying the touch input during its duration.</td>\n</tr>\n<tr>\n<td><code>pressed</code></td>\n<td>True if the finger was pressed this frame.</td>\n</tr>\n<tr>\n<td><code>released</code></td>\n<td>True if the finger was released this frame.</td>\n</tr>\n<tr>\n<td><code>tap_count</code></td>\n<td>Number of taps, one for single, two for double-tap, etc</td>\n</tr>\n<tr>\n<td><code>x</code></td>\n<td>The x touch location.</td>\n</tr>\n<tr>\n<td><code>y</code></td>\n<td>The y touch location.</td>\n</tr>\n<tr>\n<td><code>dx</code></td>\n<td>The change in x value.</td>\n</tr>\n<tr>\n<td><code>dy</code></td>\n<td>The change in y value.</td>\n</tr>\n<tr>\n<td><code>acc_x</code></td>\n<td>Accelerometer x value (if present).</td>\n</tr>\n<tr>\n<td><code>acc_y</code></td>\n<td>Accelerometer y value (if present).</td>\n</tr>\n<tr>\n<td><code>acc_z</code></td>\n<td>Accelerometer z value (if present).</td>\n</tr>\n</tbody>\n</table>",
             "error": "",

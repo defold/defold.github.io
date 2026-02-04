@@ -425,7 +425,7 @@ everywhere for the textures that should be shared across different materials.
 
 - `binding` (number | string | hash) - texture binding, either by texture unit, string or hash for the sampler name that the texture should be bound to
 - `handle_or_name` (texture | string | hash) - render target or texture handle that should be bound, or a named resource in the "Render Resource" table in the currently assigned .render file
-- `buffer_type` (type:graphics.BUFFER_TYPE_COLOR0_BIT | graphics.BUFFER_TYPE_COLOR1_BIT | graphics.BUFFER_TYPE_COLOR2_BIT | graphics.BUFFER_TYPE_COLOR3_BIT | graphics.BUFFER_TYPE_DEPTH_BIT | graphics.BUFFER_TYPE_STENCIL_BIT) (optional) - optional buffer type from which to enable the texture. Note that this argument only applies to render targets. Defaults to <code>graphics.BUFFER_TYPE_COLOR0_BIT</code>. These values are supported:
+- `buffer_type` (graphics.BUFFER_TYPE_COLOR0_BIT | graphics.BUFFER_TYPE_COLOR1_BIT | graphics.BUFFER_TYPE_COLOR2_BIT | graphics.BUFFER_TYPE_COLOR3_BIT | graphics.BUFFER_TYPE_DEPTH_BIT | graphics.BUFFER_TYPE_STENCIL_BIT) (optional) - optional buffer type from which to enable the texture. Note that this argument only applies to render targets. Defaults to <code>graphics.BUFFER_TYPE_COLOR0_BIT</code>. These values are supported:
 <ul>
 <li><code>graphics.BUFFER_TYPE_COLOR0_BIT</code></li>
 </ul>

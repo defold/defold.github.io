@@ -21,7 +21,7 @@ Delete a secure socket. Does not close the underlying socket
 
 **Returns**
 
-- `RESULT_OK` - on success
+- `result` (Result) - RESULT_OK on success
 
 **Examples**
 
@@ -46,7 +46,7 @@ Set socket receive timeout
 
 **Returns**
 
-- `RESULT_OK` - on success
+- `result` (dmSocket::Result) - RESULT_OK on success
 
 ### INVALID_SOCKET_HANDLE
 *Type:* CONSTANT
@@ -61,11 +61,11 @@ Create a new secure socket
 - `socket` (dmSocket::Socket) - The socket to wrap
 - `host` (const char*) - The name of the host (e.g. "httpbin.org")
 - `timeout` (uint64_t) - The timeout for the handshake procedure. (microseconds)
-- `sslsocket` (dmSSLSocket::Socket*) - Pointer to a secure socket
+- `sslsocket` (Socket*) - Pointer to a secure socket
 
 **Returns**
 
-- `RESULT_OK` - on succcess
+- `result` (Result) - RESULT_OK on success
 
 **Examples**
 
@@ -95,7 +95,7 @@ Receive data on a secure socket
 
 **Returns**
 
-- `RESULT_OK` - on success
+- `result` (dmSocket::Result) - RESULT_OK on success
 
 ### Result
 *Type:* ENUM
@@ -122,7 +122,7 @@ Send a message on a secure socket
 
 **Returns**
 
-- `RESULT_OK` - on success
+- `result` (dmSocket::Result) - RESULT_OK on success
 
 ### Socket
 *Type:* TYPEDEF

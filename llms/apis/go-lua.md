@@ -1193,6 +1193,16 @@ end
 
 ```
 
+### late_update
+*Type:* FUNCTION
+This is a callback-function, which is called by the engine at the end of the frame to update the state of a script
+component. Use it to make final adjustments to the game object instance.
+
+**Parameters**
+
+- `self` (userdata) - reference to the script state to be used for storing data
+- `dt` (number) - the time-step of the frame update
+
 ### on_input
 *Type:* FUNCTION
 This is a callback-function, which is called by the engine when user input is sent to the game object instance of the script.

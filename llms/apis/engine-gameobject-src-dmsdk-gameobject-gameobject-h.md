@@ -225,7 +225,7 @@ Get gameobject instance position
 
 **Returns**
 
-- `return` (dmGameObject::Point3) - Position
+- `return` (dmVMath::Point3) - Position
 
 ### GetRotation
 *Type:* FUNCTION
@@ -286,7 +286,7 @@ Get game object instance world transform as Matrix4.
 
 **Returns**
 
-- `return` (dmGameObject::MAtrix4) - World transform matrix.
+- `return` (dmGameObject::Matrix4) - World transform matrix.
 
 ### GetWorldPosition
 *Type:* FUNCTION

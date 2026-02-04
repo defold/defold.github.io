@@ -432,6 +432,18 @@ homogeneous object schema
 
 - `value` (schema) - Prefs schema
 
+### editor.prefs.schema.one_of
+*Type:* FUNCTION
+one of schema
+
+**Parameters**
+
+- `opts` (table) - Required opts: <dl><dt><code>schemas <small>schema[]</small></code></dt><dd>alternative schemas</dd></dl>  Optional opts: <dl><dt><code>default <small>any</small></code></dt><dd>default value</dd><dt><code>scope <small>string</small></code></dt><dd>preference scope; either: <ul><li><code>editor.prefs.SCOPE.GLOBAL</code>: same preference value is used in every project on this computer</li><li><code>editor.prefs.SCOPE.PROJECT</code>: a separate preference value per project</li></ul></dd></dl>
+
+**Returns**
+
+- `value` (schema) - Prefs schema
+
 ### editor.prefs.schema.password
 *Type:* FUNCTION
 password schema
@@ -1580,3 +1592,27 @@ zip.unpack(
 )
 
 ```
+
+### zlib.deflate
+*Type:* FUNCTION
+Deflate (compress) a buffer
+
+**Parameters**
+
+- `buf` (string) - buffer to deflate
+
+**Returns**
+
+- `buf` (string) - deflated buffer
+
+### zlib.inflate
+*Type:* FUNCTION
+Inflate (decompress) a buffer
+
+**Parameters**
+
+- `buf` (string) - buffer to inflate
+
+**Returns**
+
+- `buf` (string) - inflated buffer
