@@ -36,6 +36,7 @@ These are per-example files generated for LLM usage.
 
 - [Dynamic factories](https://defold.com/llms/examples/factory/dynamic.md) - This example shows how to change the prototype game object used by a factory component
 - [Shoot bullets](https://defold.com/llms/examples/factory/bullets.md) - This example shows how to dynamically spawn bullet game objects using a factory component
+- [Spawn enemies with central management](https://defold.com/llms/examples/factory/spawn_manager.md) - This example shows how to spawn enemy game objects using a factory component and use a central manager to control movement and behavior of all enemies
 - [Spawn enemies with script properties](https://defold.com/llms/examples/factory/spawn_properties.md) - This example shows how to spawn enemy game objects using a factory component with different properties
 - [Spawn game object](https://defold.com/llms/examples/factory/basic.md) - This example shows how to dynamically spawn game objects with a factory component
 
