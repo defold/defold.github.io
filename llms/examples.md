@@ -82,6 +82,7 @@ These are per-example files generated for LLM usage.
 ## Mesh
 
 - [Mesh](https://defold.com/llms/examples/mesh/triangle.md) - This example shows how to create a basic mesh component in the shape of a triangle
+- [Textured Mesh](https://defold.com/llms/examples/mesh/textured.md) - This example shows how to create a textured mesh component in the shape of a rectangle
 
 ## Model
 
