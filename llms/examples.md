@@ -57,6 +57,7 @@ These are per-example files generated for LLM usage.
 - [Health Bar](https://defold.com/llms/examples/gui/healthbar.md) - This example demonstrates how to add different health bars
 - [Layouts](https://defold.com/llms/examples/gui/layouts.md) - This example demonstrates the use of layouts
 - [Load texture](https://defold.com/llms/examples/gui/load_texture.md) - This example shows how to load and set a dynamic texture on a gui box node
+- [Localization (RTL/LTR)](https://defold.com/llms/examples/gui/localization.md) - This example demonstrates how to handle localization in games, Unicode text layout, RTL rendering, and runtime font switching for localization
 - [Pointer over](https://defold.com/llms/examples/gui/pointer_over.md) - A GUI box node with an image texture and a script that react when pointer over this node
 - [Slice-9](https://defold.com/llms/examples/gui/slice9.md) - This example demonstrates slice-9 scaling gui box node
 - [Stencil](https://defold.com/llms/examples/gui/stencil.md) - A GUI box node with "Clipping mode" set to "STENCIL"
