@@ -762,7 +762,7 @@ def process_examples(download = False):
 
                 print("...copying example scripts")
                 os.makedirs(os.path.join(includes_dir, category, example), exist_ok=True)
-                for script in find_files(os.path.join(example_src_dir, "example"), "*.script|*.gui_script|*.vp|*.fp"):
+                for script in find_files(os.path.join(example_src_dir, "example"), "*.script|*.gui_script|*.lua|*.vp|*.fp"):
                     file, ext = os.path.splitext(os.path.basename(script))
                     tgt = os.path.join(includes_dir, category, example, file + "_" + ext.replace(".", "") + ".md")
                     shutil.copyfile(script, tgt)
