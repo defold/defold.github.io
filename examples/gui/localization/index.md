@@ -5,7 +5,7 @@ category: gui
 layout: example
 opengraph_image: https://www.defold.com/examples/gui/localization/thumbnail.png
 path: gui/localization
-scripts: main.gui_script, example/localization_helper.lua, example/ui_helper.lua
+scripts: main.gui_script, localization_helper.lua, ui_helper.lua
 tags: gui, font
 thumbnail: thumbnail.png
 title: Localization (RTL/LTR)
