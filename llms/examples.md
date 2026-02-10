@@ -118,6 +118,7 @@ These are per-example files generated for LLM usage.
 
 ## Physics
 
+- [Apply force](https://defold.com/llms/examples/physics/apply_force.md) - This example demonstrates how to apply directional force to all dynamic blocks on touch/click and draws debug direction lines
 - [Dynamic physics](https://defold.com/llms/examples/physics/dynamic.md) - This example shows a simple setup with dynamic physics objects
 - [Hinge joint physics](https://defold.com/llms/examples/physics/hinge_joint.md) - This example shows a simple setup with a dynamic body physics object and two dynamic wheel physics object joined together with a joint of type "hinge"
 - [Kinematic physics](https://defold.com/llms/examples/physics/kinematic.md) - This example shows a simple setup with a kinematic physics objects
