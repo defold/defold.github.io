@@ -2,6 +2,7 @@
 brief: In this sample project, you learn one method of creating very large RPG maps.
 layout: tutorial
 title: RPG map sample
+difficulty: Intermediate
 ---
 
 # RPG map - sample project

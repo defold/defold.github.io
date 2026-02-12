@@ -32,6 +32,9 @@ layout: page
 				</div>
 			</div>
 			<div class="columns eight tutorial" data-pagefind-body>
+				{%- if page.difficulty -%}
+				<p style="margin-top: 0;"><span class="difficulty-tag">{{ page.difficulty }}</span></p>
+				{%- endif -%}
 				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
 			</div>
 			<div class="columns two">

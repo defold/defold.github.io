@@ -2,6 +2,7 @@
 brief: In this sample project, you learn effects for score counting.
 layout: tutorial
 title: HUD code sample
+difficulty: Beginner
 ---
 
 # HUD - sample project

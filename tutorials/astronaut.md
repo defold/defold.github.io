@@ -3,6 +3,7 @@ brief: In this beginner's tutorial you learn how to capture player input and mak
 github: https://github.com/defold/tutorial-astronaut
 layout: tutorial
 title: Walking astronaut tutorial
+difficulty: Beginner
 ---
 
 # Walking astronaut tutorial

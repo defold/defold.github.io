@@ -12,8 +12,11 @@
 {%- endif -%}
 </div>
 <div>
-<a href="{{ include.link }}"><h5>{{ include.title }}</h5></a>
+<a href="{{ include.link }}"><h4>{{ include.title }}</h4></a>
 {%- if include.author -%}<p style="font-size: small">by {{ include.author }}</p>{%- endif -%}
+{%- if include.difficulty -%}
+<p><span class="difficulty-tag">{{ include.difficulty }}</span></p>
+{%- endif -%}
 <a href="{{ include.link }}"><p style="font-size: small">{{ include.description }}</p></a>
 </div>
 </div>

@@ -2,6 +2,7 @@
 brief: In this beginner's tutorial you learn how to make realistic movement using vectors and some simple vector algebra.
 layout: tutorial
 title: Movement tutorial
+difficulty: Beginner
 ---
 
 # Movement tutorial

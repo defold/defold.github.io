@@ -2,6 +2,7 @@
 brief: In this tutorial you will create a full screen post effect in Defold.
 layout: tutorial
 title: Grading shader tutorial
+difficulty: Advanced
 ---
 
 # Grading tutorial
