@@ -7,8 +7,13 @@ title: Learn
 	<div class="container">
 		<div class="row">
 			<div class="column one-half left">
-				<h1>Get smart!</h1>
-				<p>Whether you are new to Defold or a seasoned code ninja, this is your go-to place for all things Defold.</p>
+				<h1>Getting started with Defold</h1>
+				<p>New to Defold? Switching from another engine? Want to build your first game? Learn something new, sharpen your skills, or just find an example?</p>
+				<p>This is the right place to start!</p>
+				<p>We’ve gathered manuals, step-by-step tutorials, videos, examples, courses, and more to help you get started and keep moving.</p>
+			</div>
+			<div class="column one-half right">
+				<img src="/images/beans/bean-intro-welcome_bean-blue-sign-welcome-left.png" alt="Defold Logo"/>
 			</div>
 		</div>
 	</div>
@@ -21,19 +26,21 @@ title: Learn
 	<div class="container">
 		<div class="row">
 			<div class="columns full">
-				<h3>Tutorials</h3>
-				<p>Our tutorials section is the perfect place to start from if you are new to Defold game development.</p>
+				<h3>Firsts steps</h3>
+				<p>If you’re new to Defold - whether you’re coming from another engine or starting from scratch - choose a curated track that matches your skill level.</p>
 			</div>
 		</div>
-		<div class="grid-250">
-			{%- for tutorial in site.data.learnindex.navigation.tutorials limit:3 -%}
-				{%- assign image=tutorial.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}
-				{% include learn_card.html title=tutorial.name description=tutorial.description link=tutorial.path min-height="250px" image=image %}
-			{%- endfor -%}
-		</div>
 		<div class="row">
-			<div class="columns full">
-				<a href="/tutorials"><p>More tutorials</p></a>
+			<div class="grid-250">
+				{% include card.html title="Introduction" body="Welcome to the game development! Start here to learn the Defold basics - it is the best place for complete beginners or anyone who wants a guided first project.
+				<br/><br/>Click to learn more!" link="/manuals/introduction/" min-height="250px" icon="/images/icons/ic-64-rocket.svg" %}
+
+				{% include card.html title="Defold for Unity users" body="A dedicated guide for users with prior Unity experience, who want to ramp up quickly without fighting the engine. It maps the most common concepts and tools between Defold and Unity.
+				<br/><br/>Click to learn more!" link="/manuals/unity/" min-height="250px" icon="/images/icons/ic-32-shuffle.svg" %}
+
+				{% include card.html title="Defold for Flash users" body="A migration guide for users with previous experiences with Flash and ActionScript looking for a familiar path into the Defold game engine, that maps common concepts and tooling.
+				<br/><br/>Click to learn more!" link="/manuals/flash/" min-height="250px" icon="/images/icons/ic-32-shuffle.svg" %}
+
 			</div>
 		</div>
 		<div class="row">
@@ -52,16 +59,54 @@ title: Learn
 		</div>
 		<div class="row">
 			<div class="grid-250">
-				{% include card.html title="Installing Defold" body="Installation of the Defold editor is quite straightforward. Download the version built for your operating system, extract it and copy the software to a suitable location.<br/><br/>Click to learn more!" link="/manuals/introduction/" min-height="250px" icon="/images/icons/ic-64-rocket.svg" %}
-				
-				{% include card.html title="Creating a project" body="You can easily create a new project from within the Defold editor. You also have the option to open an existing project already located on your computer.<br/><br/>Click to learn more!" link="/manuals/project-setup/"  min-height="250px" icon="/images/icons/icons-learn-export_ic-learn-documents.svg" %}
-				
-				{% include card.html title="Building Blocks" body="At the core of Defold's design are a few concepts that are very important to get a good grip on. This manual explains what the building blocks of Defold consist of.<br/><br/>Click to learn more!" link="/manuals/building-blocks/" min-height="250px" icon="/images/icons/icons-learn-export_ic-learn-lego.svg" %}
+				{% include card.html title="Installing Defold" body="Installation of the Defold editor is quite straightforward. Download the version built for your operating system, extract it and copy the software to a suitable location.
+				<br/><br/>Click to learn more!" link="/manuals/install/" min-height="250px" icon="/images/icons/ic-64-box.svg" %}
+
+				{% include card.html title="Creating a project" body="Learn how to create a new project starting from an empty project, templates, samples or tutorials, and how to open an existing project already located on your computer.
+				<br/><br/>Click to learn more!" link="/manuals/project-setup/"  min-height="250px" icon="/images/icons/icons-learn-export_ic-learn-tutorials.svg" %}
+
+				{% include card.html title="Building Blocks" body="At the core of the Defold game engine's design are a few concepts that are very important to get a good grip on. This manual explains what the building blocks of Defold consist of.
+				<br/><br/>Click to learn more!" link="/manuals/building-blocks/" min-height="250px" icon="/images/icons/icons-learn-export_ic-learn-lego.svg" %}
+			</div>
+		</div>
+		<div class="row">
+			<div class="center">
+			{%- include primary_button.html text="More manuals" link="/manuals/introduction" -%}
 			</div>
 		</div>
 		<div class="row">
 			<div class="columns full">
-				<a href="/manuals/introduction"><p>More manuals</p></a>
+				&nbsp;
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="columns full">
+				<h3>Tutorials</h3>
+				<p>Our tutorials section is the perfect place to start from if you are new to Defold game development.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="grid-250">
+				{%- assign featured_tutorial_paths = "/tutorials/side-scroller|/tutorials/snake|/tutorials/colorslide" | split: "|" -%}
+				{%- for tutorial_path in featured_tutorial_paths -%}
+					{%- assign tutorial = site.data.learnindex.navigation.tutorials | where: "path", tutorial_path | first -%}
+					{%- if tutorial -%}
+						{%- assign image = tutorial.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}
+						{%- assign tutorial_slug = tutorial.path | split: "/" | last -%}
+						{%- assign tutorial_page_path = "tutorials/" | append: tutorial_slug | append: ".md" -%}
+						{%- assign tutorial_page = site.pages | where: "path", tutorial_page_path | first -%}
+						{%- assign difficulty = tutorial_page.difficulty | default: tutorial.difficulty -%}
+						{% include learn_card.html title=tutorial.name description=tutorial.description link=tutorial.path min-height="250px" image=image difficulty=difficulty %}
+					{%- endif -%}
+				{%- endfor -%}
+			</div>
+		</div>
+		<div class="row">
+			<div class="center">
+			{%- include primary_button.html text="More tutorials" link="/tutorials" -%}
 			</div>
 		</div>
 		<div class="row">
@@ -79,13 +124,46 @@ title: Learn
 			</div>
 		</div>
 		<div class="grid-250">
-			{%- for video in site.data.learnindex.navigation.videos limit:3 -%}
-				{% include youtube_card.html title=video.name description=video.description embed=video.embed link=video.path author=video.author min-height="250px" image="/images/icons/yt_icon_rgb.svg" %}
+			{%- assign featured_video_authors = "Unfolding Gamedev|Asatte Games|Zenva" | split: "|" -%}
+			{%- for author in featured_video_authors -%}
+				{%- assign video = site.data.learnindex.navigation.videos | where: "author", author | first -%}
+				{%- if video -%}
+					{% include youtube_card.html title=video.name description=video.description embed=video.embed link=video.path author=video.author min-height="250px" image="/images/icons/yt_icon_rgb.svg" %}
+				{%- endif -%}
 			{%- endfor -%}
 		</div>
 		<div class="row">
+			<div class="center">
+			{%- include primary_button.html text="More videos" link="/videos" -%}
+			</div>
+		</div>
+		<div class="row">
 			<div class="columns full">
-				<a href="/videos"><p>More videos</p></a>
+				&nbsp;
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="columns full">
+				<h3>Courses</h3>
+				<p>Our courses section is the perfect place to start, if you are new to Defold game development and build something with a guided approach.</p>
+			</div>
+		</div>
+		<div class="grid-250">
+			{%- assign featured_course_paths = "https://academy.zenva.com/product/defold-101/?utm_source=defold&utm_medium=referral&utm_campaign=defold&utm_content=defold-website|https://www.wisdevgames.com/course/02-deep-into-the-space/p1-lets-setup-our-game|https://www.wisdevgames.com/course/04-tilemap-farm-adventure/p1-preparing-our-tilemap" | split: "|" -%}
+			{%- for course_path in featured_course_paths -%}
+				{%- assign course = site.data.learnindex.navigation.courses | where: "path", course_path | first -%}
+				{%- if course -%}
+					{%- assign image = course.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}
+					{% include learn_card.html title=course.name description=course.description link=course.path min-height="250px" image=image %}
+				{%- endif -%}
+			{%- endfor -%}
+		</div>
+		<div class="row">
+			<div class="center">
+			{%- include primary_button.html text="More courses" link="/courses" -%}
 			</div>
 		</div>
 		<div class="row">
@@ -103,20 +181,20 @@ title: Learn
 			</div>
 		</div>
 		<div class="grid-250">
-			{% include card.html title="Examples" body="A selection of code samples and examples to learn from." link="/examples" min-height="250px" icon="/images/icons/icons-learn-export_ic-learn-toolbox.svg" %}
+			{% include card.html title="Examples" body="A selection of code samples and examples to learn from." link="/examples" min-height="150px" icon="/images/icons/icons-learn-export_ic-learn-toolbox.svg" %}
 
-			{% include card.html title="API Reference" body="Reference documentation to all Defold Lua and C++ extension APIs." link="/ref/stable/go" min-height="250px" icon="/images/icons/icons-learn-export_ic-learn-apiref.svg" %}
+			{% include card.html title="API Reference" body="Reference documentation to all Defold Lua and C++ extension APIs." link="/ref/stable/go" min-height="150px" icon="/images/icons/icons-learn-export_ic-learn-apiref.svg" %}
 
-			{% include card.html title="FAQ" body="The FAQ contains the answers and solutions to common questions and problems." link="/faq/faq" min-height="250px" icon="/images/icons/icons-learn-export_ic-learn-faq.svg" %}
+			{% include card.html title="FAQ" body="The FAQ contains the answers and solutions to common questions and problems." link="/faq/faq" min-height="150px" icon="/images/icons/icons-learn-export_ic-learn-faq.svg" %}
 		</div>
 		<div class="grid-250">
-			{% include card.html title="Examples by Britzl" body="A large selection of Defold examples and games." link="http://britzl.github.io/publicexamples/" min-height="250px" icon="/images/icons/icons-learn-export_ic-learn-toolbox.svg" %}
+			{% include card.html title="Examples by Britzl" body="A large selection of Defold examples and games." link="http://britzl.github.io/publicexamples/" min-height="150px" icon="/images/icons/icons-learn-export_ic-learn-toolbox.svg" %}
 
-			{% include card.html title="Games by Ben James" body="More than 20 complete Defold games with source code." link="https://github.com/benjames-171/defold-games"  min-height="250px" icon="/images/icons/icons-learn-export_ic-learn-toolbox.svg" %}
+			{% include card.html title="Games by Ben James" body="More than 20 complete Defold games with source code." link="https://github.com/benjames-171/defold-games"  min-height="150px" icon="/images/icons/icons-learn-export_ic-learn-toolbox.svg" %}
 
-			{% include card.html title="Examples by Jcash" body="A couple of Defold example projects." link="https://github.com/JCash/defoldexamples" min-height="250px" icon="/images/icons/icons-learn-export_ic-learn-toolbox.svg" %}
+			{% include card.html title="Examples by Jcash" body="A couple of Defold example projects." link="https://github.com/JCash/defoldexamples" min-height="150px" icon="/images/icons/icons-learn-export_ic-learn-toolbox.svg" %}
 
-			{% include card.html title="Examples by JhonnyG" body="Misc rendering related Defold example projects." link="https://github.com/Jhonnyg/my-public-defold-examples" min-height="250px" icon="/images/icons/icons-learn-export_ic-learn-toolbox.svg" %}
+			{% include card.html title="Examples by JhonnyG" body="Misc rendering related Defold example projects." link="https://github.com/Jhonnyg/my-public-defold-examples" min-height="150px" icon="/images/icons/icons-learn-export_ic-learn-toolbox.svg" %}
 		</div>
 	</div>
 
@@ -128,12 +206,14 @@ title: Learn
 			</div>
 		</div>
 		<div class="grid-250">
-			{% include card.html title="Forum" body="Stuck? Talk to the Defold team and our great Defold developer community." link="//forum.defold.com" min-height="250px" icon="/images/icons/icons-learn-export_ic-learn-forum.svg" %}
+			{% include card.html title="Forum" body="Stuck? Talk to the Defold team and our great Defold developer community." link="//forum.defold.com" min-height="150px" icon="/images/icons/icons-learn-export_ic-learn-forum.svg" %}
 
-			{% include card.html title="Discord" body="Want to chat with other Defold users? Join our Discord server to start chatting!." link="/discord" min-height="250px" icon="/images/icons/icons-learn-export_ic-learn-discord.svg" %}
-			<div>
-				&nbsp;
-			</div>
+			{% include card.html title="Discord" body="Want to chat with other Defold users? Join our Discord server to start chatting!." link="/discord" min-height="150px" icon="/images/icons/icons-discord.svg" %}
+
+			{% include card.html title="Reddit" body="Share your creations, learn from others, and get help on Defold subreddit!." link="https://www.reddit.com/r/defold/" min-height="150px" icon="/images/icons/icons-reddit.svg" %}
+		</div>
+		<div>
+			&nbsp;
 		</div>
 	</div>
 </div>

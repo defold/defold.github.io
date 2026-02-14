@@ -2,6 +2,7 @@
 brief: This tutorial explains how to get started doing tutorials in Defold.
 layout: tutorial
 title: Getting started with Defold
+difficulty: Beginner
 ---
 
 # Getting started

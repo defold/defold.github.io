@@ -2,6 +2,7 @@
 brief: In this tutorial you will build a complete little puzzle game with a start screen, the mechanics of the game and simple level progression in the form of increasing difficulty.
 layout: tutorial
 title: Magic Link tutorial
+difficulty: Intermediate
 ---
 
 # Magic Link tutorial

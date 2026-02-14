@@ -2,6 +2,7 @@
 brief: If you are new to Defold, this guide will help you getting your bearings right in the editor. It also explains the basic ideas and the most common building blocks in Defold - game objects, collections, scripts and sprites.
 layout: tutorial
 title: Building a simple car in Defold.
+difficulty: Beginner
 ---
 
 # Building a car
