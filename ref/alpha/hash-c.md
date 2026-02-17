@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: alpha
-ref: engine-dlib-src-dmsdk-dlib-hash-h
-language: C++
+ref: hash-c
+language: C
 title: API reference (Hash)
-type: Defold C++
+type: Defold C
 ---
 {% include anchor_headings.html html=content %}

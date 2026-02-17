@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: alpha
-ref: engine-font-src-dmsdk-font-font-h
-language: C++
+ref: font-c
+language: C
 title: API reference (Font)
-type: Defold C++
+type: Defold C
 ---
 {% include anchor_headings.html html=content %}

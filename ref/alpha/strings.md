@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: alpha
-ref: fontcollection-c
+ref: strings-c
 language: C
-title: API reference (FontCollection)
+title: API reference (Strings)
 type: Defold C
 pagefind_exclude: true
 ---

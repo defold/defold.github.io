@@ -683,16 +683,16 @@
         }
     ],
     "info": {
-        "brief": "SDK Job System API documentation",
+        "brief": "Job System for asynchronous tasks",
         "description": "Job system for asynchronous work with optional worker threads.\n\nEach job provides a process function and an optional callback.\n- The process function performs the work and may run on a worker thread.\n- The callback runs on the main thread and can interact with non-threaded systems (for example Lua).\n\nJobs can have dependencies. A parent job will only run after all child jobs have finished.",
         "description_html": "<p>Job system for asynchronous work with optional worker threads.</p>\n<p>Each job provides a process function and an optional callback.\n- The process function performs the work and may run on a worker thread.\n- The callback runs on the main thread and can interact with non-threaded systems (for example Lua).</p>\n<p>Jobs can have dependencies. A parent job will only run after all child jobs have finished.</p>",
         "file": "jobsystem.h",
+        "include": "dmsdk/dlib/jobsystem.h",
         "language": "C",
         "name": "Job System",
         "namespace": "JobSystem",
         "notes": [],
         "path": "engine/dlib/src/dmsdk/dlib/jobsystem.h",
-        "type": "Defold C",
-        "include": "dmsdk/dlib/jobsystem.h"
+        "type": "Defold C"
     }
 }
