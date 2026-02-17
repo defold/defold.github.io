@@ -6,7 +6,7 @@ author: Paweł Jarosz
 tags: ["creator spotlight", "interview", "madewithdefold", "poki"]
 ---
 
-In this Defold Creator Spotlight we invited Erick to tell us a little bit about himself and his latest Defold projects! Erick has a vast experience in game development and now runs Kuyi Mobile, and releases a lot of games, recently: Bo’s Bedroom on Poki.
+In this Defold Creator Spotlight we invited Erick to tell us a little bit about himself and his latest Defold projects! Erick has a vast experience in game development and now runs Kuyi Mobile, and releases a lot of games, recently: [Bo’s Bedroom on Poki](https://poki.com/en/g/bos-bedroom).
 
 If you’re interested in a more in-depth description of Bo’s Bedroom’s development process, Erick wrote about it on his [substack too](https://kuyimobile.substack.com/p/my-game-production-process-and-how)!
 
@@ -18,7 +18,7 @@ I’m Erick, a full-time solo indie game developer from Manila, Philippines.
 
 ##### What are your favorite games and hobbies?
 
-I recently finished Octopath Traveler 0 (120+ hours!), which made the franchise one of my favorites to date—especially since I’ve also completed Octopath Traveler I and Octopath Traveler II.
+I recently finished Octopath Traveler 0 (120+ hours!), which made the franchise one of my favorites to date — especially since I’ve also completed Octopath Traveler I and Octopath Traveler II.
 
 When I’m not making games, I love traveling with my family, reading books, and illustrating comics.
 
@@ -28,7 +28,7 @@ I’m an engineer by profession and previously worked in the IT industry before 
 
 As a solo developer, I’ve focused primarily on mobile game development because of the quicker turnaround times and smaller project scopes. Over the years, I’ve developed games for various platforms, including ones that younger developers today may not even recognize anymore, such as J2ME and Symbian. Before moving into web games, I was mainly focused on mobile — both iOS and Android — and have released several dozen games over the past decade.
 
-##### I was playing some of those games (and I guess a lot of devs might alos recognize some of them) - can you share some of the titles you were working on?
+##### I was playing some of those games (and I guess a lot of devs might also recognize some of them) - can you share some of the titles you were working on?
 
 Some of the games that I made back then were Cubeex, a match-three game and Word Challenge, which was a collection of popular word games like Hangman, Word Factory, Word Finder, etc.
 
@@ -42,11 +42,11 @@ My philosophy is simple: make games that are fun, accessible, and polished withi
 
 ##### Your Poki catalogue includes titles like Coin Machine, Sushi Merge, and Tower Merge, all featuring some form of merge gameplay. What draws you to the merge mechanic as a core design? What is it about merge that keeps players engaged?
 
-You guessed it—I’m a huge fan of merge games! Even before developing web games, I was already playing a lot of merge titles on mobile. There’s something deeply satisfying about combining two items and magically producing a new one.
+You guessed it — I’m a huge fan of merge games! Even before developing web games, I was already playing a lot of merge titles on mobile. There’s something deeply satisfying about combining two items and magically producing a new one.
 
-What most people don’t know is that before Sushi Merge was accepted on Poki, I had already submitted nine different games (all rejected!)—and none of them were merge games! I experimented with different genres and mechanics to find what resonated with Poki’s audience. Over time, I gathered valuable game design insights and player data, which helped me better understand what works for Poki’s platform.
+What most people don’t know is that before Sushi Merge was accepted on Poki, I had already submitted nine different games (all rejected!) — and none of them were merge games! I experimented with different genres and mechanics to find what resonated with Poki’s audience. Over time, I gathered valuable game design insights and player data, which helped me better understand what works for Poki’s platform.
 
-##### Being rejected 9 times on Poki, while having such a strong experience is wild! Can you say a little bit more about it? What you learned from those rejections?
+##### Being rejected 9 times on Poki, while having such a strong experience is wild! Can you say a little bit more about it? What did you learn from those rejections?
 
 I learned that Tetris-like, Find Me, and Idle games don't really resonate well with Poki's audience! I guess it's also important to mention that Poki requires an average session time of at least 3 minutes for the game to pass the initial test.
 
@@ -86,11 +86,11 @@ Our development process is highly data-driven. Every major decision is informed 
 
 Having been in the game industry for more than two decades, I’ve tried many different tools. Defold stood out to me because of its simplicity and efficiency.
 
-It’s fast, lightweight, and gives me complete control over my projects—no hidden systems or unnecessary bloat. It also allows me to create extremely small builds, which is essential for web games. Most importantly, the Defold community and team are incredibly helpful and responsive.
+It’s fast, lightweight, and gives me complete control over my projects — no hidden systems or unnecessary bloat. It also allows me to create extremely small builds, which is essential for web games. Most importantly, the Defold community and team are incredibly helpful and responsive.
 
 ##### What technical challenges have you encountered when targeting the web?
 
-When releasing my first web game, keeping the build size small was critical—especially for players in regions where internet access can be slow or expensive.
+When releasing my first web game, keeping the build size small was critical — especially for players in regions where internet access can be slow or expensive.
 
 Another major challenge was supporting multiple screen resolutions. My games need to run smoothly on desktops, mobile phones, tablets, and even foldable devices.
 
@@ -106,19 +106,19 @@ I’m genuinely happy with how Defold allows me to focus on making fun games whi
 
 I always advise new Defold users to just jump in and make their first game. The engine is very straightforward and easy to understand, and there’s no better way to learn than by building something.
 
-I can almost guarantee you’ll enjoy using it—whether you’re a beginner or an experienced developer looking for a streamlined tool.
+I can almost guarantee you’ll enjoy using it — whether you’re a beginner or an experienced developer looking for a streamlined tool.
 
 ![Clinko](/images/posts/developer-spotlight-erick-kuyi-mobile/clinko.png)
 
 ##### Can you share with us what’s next at Kuyi Mobile? Are there new directions, like new genres, deeper systems, or platform expansions you’d like to take on?
 
-As I’m answering this, I’ve already started working on a new game project—and it’s progressing really well. At my current pace, I expect to release it within the next month or so. I can see myself making more web games in the next 2 to 3 years!
+As I’m answering this, I’ve already started working on a new game project — and it’s progressing really well. At my current pace, I expect to release it within the next month or so. I can see myself making more web games in the next 2 to 3 years!
 
 ##### Finally, how can the community follow you?
 
-You can always find me on X (Twitter) as @kuyimobile or on Bluesky at @kuyimobile.bsky.social. I also lurk on Defold’s Discord server, so feel free to tag if you have any Q’s!
+You can always find me on [X (Twitter) as @kuyimobile]() or on [Bluesky at @kuyimobile.bsky.social](https://bsky.app/profile/kuyimobile.bsky.social). I also lurk on Defold’s Discord server, so feel free to tag if you have any questions!
 
-Please visit my website as well if you’d like to try out my games! 🙏
+Please visit [my website](https://www.kuyimobile.com/about.php) as well if you’d like to try out my games! 🙏
 
 ##### Thank you very much for the interview, and we wish you more and more successes!
 
