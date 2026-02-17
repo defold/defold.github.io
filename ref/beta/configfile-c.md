@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: beta
-ref: engine-dlib-src-dmsdk-dlib-configfile-h
-language: C++
+ref: configfile-c
+language: C
 title: API reference (ConfigFile)
-type: Defold C++
+type: Defold C
 ---
 {% include anchor_headings.html html=content %}

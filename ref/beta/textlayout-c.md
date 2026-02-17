@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: beta
-ref: engine-font-src-dmsdk-font-text_layout-h
-language: C++
+ref: textlayout-c
+language: C
 title: API reference (TextLayout)
-type: Defold C++
+type: Defold C
 ---
 {% include anchor_headings.html html=content %}
