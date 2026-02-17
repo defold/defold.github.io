@@ -1147,9 +1147,10 @@ def process_refdoc(download = False):
                             api["info"]["language"] = "Lua"
                             # sys.exit(5)
 
-                    # set api type
-                    api["info"]["type"] = "Defold " + api["info"]["language"]
+                        language = api["info"]["language"]
 
+                    # set api type
+                    api["info"]["type"] = "Defold " + language
 
                     # make sure file is only the filename and no path
                     if api["info"]["file"] == "":
@@ -1157,8 +1158,8 @@ def process_refdoc(download = False):
                     elif str.find(api["info"]["file"], "/") != -1:
                         api["info"]["file"] = os.path.basename(api["info"]["file"])
 
-                    # generate include path for C++ files
-                    if language == "C++":
+                    # generate include path for C/C++ files
+                    if language in ("C++", "C"):
                         dmsdk_index = str.find(api["info"]["path"], "dmsdk/")
                         api["info"]["include"] = api["info"]["path"]
                         if dmsdk_index != -1:
@@ -1166,7 +1167,6 @@ def process_refdoc(download = False):
 
                     # create the key by which we index and collect APIs
                     namespace_key = namespace
-                    language = api["info"]["language"]
                     if language == "C++":
                         # namespace_key = namespace_key + "-cpp"
                         namespace_key = api["info"]["path"].replace("..", "").replace("/", "-").replace(".", "-")
