@@ -1,0 +1,153 @@
+{
+    "elements": [
+        {
+            "brief": "Play a model animation.",
+            "description": "Play a model animation.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "CompModelPlayAnimation",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Model world.",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "HModelWorld"
+                    ]
+                },
+                {
+                    "doc": "Model component.",
+                    "is_optional": "False",
+                    "name": "component",
+                    "types": [
+                        "HModelComponent"
+                    ]
+                },
+                {
+                    "doc": "Animation to play.",
+                    "is_optional": "False",
+                    "name": "anim_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Playback mode.",
+                    "is_optional": "False",
+                    "name": "playback",
+                    "types": [
+                        "dmRig::RigPlayback"
+                    ]
+                },
+                {
+                    "doc": "Duration of a linear blend between the current and new animation.",
+                    "is_optional": "False",
+                    "name": "blend_duration",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "The normalized initial value of the animation cursor when the animation starts playing.",
+                    "is_optional": "False",
+                    "name": "offset",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "The rate with which the animation will be played. Must be positive.",
+                    "is_optional": "False",
+                    "name": "playback_rate",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "Optional function callback to send play events to.",
+                    "is_optional": "False",
+                    "name": "callback",
+                    "types": [
+                        "FModelAnimationCallback"
+                    ]
+                },
+                {
+                    "doc": "Optional function callback context (only when callback is set)",
+                    "is_optional": "False",
+                    "name": "callback_ctx",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Result of the operation.",
+                    "name": "result",
+                    "types": [
+                        "dmRig::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Model animation callback function.",
+            "description": "Model animation callback function.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FModelAnimationCallback",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "User context",
+                    "is_optional": "False",
+                    "name": "user_ctx",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "Animation event type",
+                    "is_optional": "False",
+                    "name": "event_type",
+                    "types": [
+                        "dmRig::RigEventType"
+                    ]
+                },
+                {
+                    "doc": "Animation event data",
+                    "is_optional": "False",
+                    "name": "event_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "Model component functions",
+        "description": "API for interacting with model components.",
+        "description_html": "<p>API for interacting with model components.</p>",
+        "file": "comp_model.h",
+        "include": "dmsdk/gamesys/components/comp_model.h",
+        "language": "C++",
+        "name": "Model",
+        "namespace": "dmGameSystem",
+        "notes": [],
+        "path": "engine/gamesys/src/dmsdk/gamesys/components/comp_model.h",
+        "type": "Defold C++"
+    }
+}

@@ -1,6 +1,51 @@
 {
     "elements": [
         {
+            "brief": "<span class=\"type\">hash</span> particlefx animation",
+            "description": "The animation used during rendering by an emitter in a particle FX component.\nThe property type is a hash and refers to a valid animation in an atlas or a tile source resource.\nIf the animation isn't found, and error will be thrown.",
+            "error": "",
+            "examples": "How to set and get the animation of an emitter in a particle FX.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">current_animation</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;animation&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">keys</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"s2\">&quot;explosion&quot;</span> <span class=\"p\">}</span> <span class=\"p\">})</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;animation&quot;</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;explode_large&quot;</span><span class=\"p\">),</span> <span class=\"p\">{</span> <span class=\"n\">keys</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"s2\">&quot;explosion&quot;</span> <span class=\"p\">}</span> <span class=\"p\">})</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "animation",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "PROPERTY"
+        },
+        {
+            "brief": "<span class=\"type\">hash</span> particlefx image",
+            "description": "The image used during rendering by an emitter in a particle FX component.\nThe property type is a hash and refers to an image resource (atlas or tile source).\nNote: When setting the image, if the currently playing animation of the emitter\nisn't found in the new image, the animation will be set to the first animation found.",
+            "error": "",
+            "examples": "How to set and get the image of an emitter in a particle FX.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_atlas&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">atlas</span><span class=\"p\">())</span>\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;image&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_atlas</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">keys</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"s2\">&quot;explosion&quot;</span> <span class=\"p\">}</span> <span class=\"p\">})</span>\n    <span class=\"kd\">local</span> <span class=\"n\">emitter_img</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;image&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">keys</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"s2\">&quot;explosion&quot;</span> <span class=\"p\">}</span> <span class=\"p\">})</span>\n    <span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">emitter_img</span> <span class=\"o\">==</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_atlas</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "image",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "PROPERTY"
+        },
+        {
+            "brief": "<span class=\"type\">hash</span> particlefx material",
+            "description": "The material used during rendering by an emitter in a particle FX component.\nThe property type is a hash and refers to a material resource.",
+            "error": "",
+            "examples": "How to set and get the material of an emitter in a particle FX.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_material&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">material</span><span class=\"p\">())</span>\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;material&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_material</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">keys</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"s2\">&quot;explosion&quot;</span> <span class=\"p\">}</span> <span class=\"p\">})</span>\n    <span class=\"kd\">local</span> <span class=\"n\">emitter_mat</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;material&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">keys</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"s2\">&quot;explosion&quot;</span> <span class=\"p\">}</span> <span class=\"p\">})</span>\n    <span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">emitter_mat</span> <span class=\"o\">==</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_material</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "material",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "PROPERTY"
+        },
+        {
             "brief": "postspawn state",
             "description": "The emitter is not spawning any particles, but has particles that are still alive.",
             "error": "",
@@ -227,8 +272,8 @@
     ],
     "info": {
         "brief": "Particle effects API documentation",
-        "description": "Functions for controlling particle effect component playback and\nshader constants.",
-        "description_html": "<p>Functions for controlling particle effect component playback and\nshader constants.</p>",
+        "description": "Functions and properties for controlling particle effect component playback and\nshader constants.",
+        "description_html": "<p>Functions and properties for controlling particle effect component playback and\nshader constants.</p>",
         "file": "script_particlefx.cpp",
         "language": "Lua",
         "name": "Particle effects",

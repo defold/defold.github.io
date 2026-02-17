@@ -1,0 +1,697 @@
+{
+    "elements": [
+        {
+            "brief": "The callback to process the user data.",
+            "description": "The callback to process the user data.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FJobCallback",
+            "notes": [
+                "This call occurs on the game main thread"
+            ],
+            "parameters": [
+                {
+                    "doc": "the job system context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "HJobContext"
+                    ]
+                },
+                {
+                    "doc": "the job",
+                    "is_optional": "False",
+                    "name": "job",
+                    "types": [
+                        "HJob"
+                    ]
+                },
+                {
+                    "doc": "the job status. JOBSYSTEM_STATUS_FINISHED if ok, or JOBSYSTEM_STATUS_CANCELED if it was canceled",
+                    "is_optional": "False",
+                    "name": "status",
+                    "types": [
+                        "JobSystemStatus"
+                    ]
+                },
+                {
+                    "doc": "the user context",
+                    "is_optional": "False",
+                    "name": "user_context",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "the user data",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "if status == JOBSYSTEM_STATUS_FINISHED, the user result returned from the process function. otherwise 0",
+                    "is_optional": "False",
+                    "name": "user_result",
+                    "types": [
+                        "int32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "The callback to process the user data.",
+            "description": "The callback to process the user data.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FJobProcess",
+            "notes": [
+                "This call may occur on a separate thread"
+            ],
+            "parameters": [
+                {
+                    "doc": "the job system context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "HJobContext"
+                    ]
+                },
+                {
+                    "doc": "the job",
+                    "is_optional": "False",
+                    "name": "job",
+                    "types": [
+                        "HJob"
+                    ]
+                },
+                {
+                    "doc": "the user context",
+                    "is_optional": "False",
+                    "name": "user_context",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "the user data",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "user defined result. This is passed to the FJobCallback function.",
+                    "name": "user_result",
+                    "types": [
+                        "int32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Job handle",
+            "description": "Job handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HJob",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Job system context",
+            "description": "Job system context",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HJobContext",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Job parameters",
+            "description": "Job parameters",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "function to process the job. Called from a worker thread.",
+                    "name": "m_Process",
+                    "type": "FJobProcess"
+                },
+                {
+                    "doc": "function to process the job. Called from main thread.",
+                    "name": "m_Callback",
+                    "type": "FJobCallback"
+                },
+                {
+                    "doc": "the user context for the callbacks",
+                    "name": "m_Context",
+                    "type": "void*"
+                },
+                {
+                    "doc": "the user data for the callbacks",
+                    "name": "m_Data",
+                    "type": "void*"
+                }
+            ],
+            "name": "Job",
+            "notes": [
+                "This call may occur on a separate thread"
+            ],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "cancel a job (and its children)",
+            "description": "cancel a job (and its children)",
+            "error": "",
+            "examples": "How to wait until a job has been cancelled or finished\n<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">enum</span><span class=\"w\"> </span><span class=\"n\">JobSystemResult</span><span class=\"w\"> </span><span class=\"n\">jr</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">JobSystemCancelJob</span><span class=\"p\">(</span><span class=\"n\">job_context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">hjob</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"k\">while</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">JOBSYSTEM_RESULT_PENDING</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">jr</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmTime</span><span class=\"o\">::</span><span class=\"n\">Sleep</span><span class=\"p\">(</span><span class=\"mi\">1000</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">jr</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">JobSystemCancelJob</span><span class=\"p\">(</span><span class=\"n\">job_context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">hjob</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "JobSystemCancelJob",
+            "notes": [
+                "Cancelled jobs will be flushed at the next JobSystemUpdate()"
+            ],
+            "parameters": [
+                {
+                    "doc": "the job system context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "HJobContext"
+                    ]
+                },
+                {
+                    "doc": "the job to cancel",
+                    "is_optional": "False",
+                    "name": "job",
+                    "types": [
+                        "HJob"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Returns JOBSYSTEM_RESULT_OK if finished, JOBSYSTEM_RESULT_CANCELED if canceled, or JOBSYSTEM_RESULT_PENDING if the job (or any child) is still in flight",
+                    "name": "result",
+                    "types": [
+                        "JobSystemResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create job system context",
+            "description": "Create a new job system context.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "JobSystemCreate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "creation parameters",
+                    "is_optional": "False",
+                    "name": "create_params",
+                    "types": [
+                        "JobSystemCreateParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "job system context, or null on failure",
+                    "name": "context",
+                    "types": [
+                        "HJobContext"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create a job",
+            "description": "create a job",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "JobSystemCreateJob",
+            "notes": [
+                "Parent job will only run after all children has finished"
+            ],
+            "parameters": [
+                {
+                    "doc": "the job system context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "HJobContext"
+                    ]
+                },
+                {
+                    "doc": "the job creation parameters. This pointer is not stored, the data is copied as-is.",
+                    "is_optional": "False",
+                    "name": "job",
+                    "types": [
+                        "Job*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "returns the job if successful. 0 otherwise.",
+                    "name": "hjob",
+                    "types": [
+                        "HJob"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "creation parameters",
+            "description": "creation parameters",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "thread name prefix for worker threads",
+                    "name": "m_ThreadNamePrefix",
+                    "type": "const char*"
+                },
+                {
+                    "doc": "number of worker threads (set to 0 to spawn no threads)",
+                    "name": "m_ThreadCount",
+                    "type": "uint8_t"
+                }
+            ],
+            "name": "JobSystemCreateParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "destroy job system context",
+            "description": "Destroy a job system context and free its resources.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "JobSystemDestroy",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "job system context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "HJobContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get the context from a job",
+            "description": "get the context from a job",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "JobSystemGetContext",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the job system context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "HJobContext"
+                    ]
+                },
+                {
+                    "doc": "the job",
+                    "is_optional": "False",
+                    "name": "job",
+                    "types": [
+                        "HJob"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The registered context pointer. 0 if the job handle is invalid.",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get the data from a job",
+            "description": "get the data from a job",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "JobSystemGetData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the job system context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "HJobContext"
+                    ]
+                },
+                {
+                    "doc": "the job",
+                    "is_optional": "False",
+                    "name": "job",
+                    "types": [
+                        "HJob"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The registered data pointer. 0 if the job handle is invalid.",
+                    "name": "data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get worker count",
+            "description": "get worker count",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "JobSystemGetWorkerCount",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "job system context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "HJobContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "number of worker threads",
+                    "name": "count",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "push a job onto the work queue",
+            "description": "push a job onto the work queue",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "JobSystemPushJob",
+            "notes": [
+                "A parent job needs to be pushed after its children"
+            ],
+            "parameters": [
+                {
+                    "doc": "the job system context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "HJobContext"
+                    ]
+                },
+                {
+                    "doc": "the job to add to the work queue",
+                    "is_optional": "False",
+                    "name": "job",
+                    "types": [
+                        "HJob"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "return JOBSYSTEM_RESULT_OK if job was pushed",
+                    "name": "result",
+                    "types": [
+                        "JobSystemResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "job result enumeration",
+            "description": "job result enumeration",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "0",
+                    "name": "JOBSYSTEM_RESULT_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "1",
+                    "name": "JOBSYSTEM_RESULT_ERROR",
+                    "type": ""
+                },
+                {
+                    "doc": "2",
+                    "name": "JOBSYSTEM_RESULT_INVALID_HANDLE",
+                    "type": ""
+                },
+                {
+                    "doc": "3",
+                    "name": "JOBSYSTEM_RESULT_CANCELED",
+                    "type": ""
+                },
+                {
+                    "doc": "4",
+                    "name": "JOBSYSTEM_RESULT_PENDING",
+                    "type": ""
+                }
+            ],
+            "name": "JobSystemResult",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "set a job as a dependency",
+            "description": "set a job as a dependency",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "JobSystemSetParent",
+            "notes": [
+                "Parent job will only run after all children has finished"
+            ],
+            "parameters": [
+                {
+                    "doc": "the job system context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "HJobContext"
+                    ]
+                },
+                {
+                    "doc": "the child job",
+                    "is_optional": "False",
+                    "name": "child",
+                    "types": [
+                        "HJob"
+                    ]
+                },
+                {
+                    "doc": "the parent job",
+                    "is_optional": "False",
+                    "name": "parent",
+                    "types": [
+                        "HJob"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "return JOBSYSTEM_RESULT_OK if job was pushed",
+                    "name": "result",
+                    "types": [
+                        "JobSystemResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "job status enumeration",
+            "description": "job status enumeration",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "0",
+                    "name": "JOBSYSTEM_STATUS_FREE",
+                    "type": ""
+                },
+                {
+                    "doc": "1",
+                    "name": "JOBSYSTEM_STATUS_CREATED",
+                    "type": ""
+                },
+                {
+                    "doc": "2",
+                    "name": "JOBSYSTEM_STATUS_QUEUED",
+                    "type": ""
+                },
+                {
+                    "doc": "3",
+                    "name": "JOBSYSTEM_STATUS_PROCESSING",
+                    "type": ""
+                },
+                {
+                    "doc": "4",
+                    "name": "JOBSYSTEM_STATUS_FINISHED",
+                    "type": ""
+                },
+                {
+                    "doc": "5",
+                    "name": "JOBSYSTEM_STATUS_CANCELED",
+                    "type": ""
+                }
+            ],
+            "name": "JobSystemStatus",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "update job system",
+            "description": "Flush finished jobs and invoke callbacks on the main thread.\nIn single-threaded mode, this also processes jobs on the calling thread up to the time limit.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "JobSystemUpdate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "job system context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "HJobContext"
+                    ]
+                },
+                {
+                    "doc": "max time (microseconds) to process jobs in single-threaded mode; 0 processes at most one job",
+                    "is_optional": "False",
+                    "name": "time_limit",
+                    "types": [
+                        "uint64_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "SDK Job System API documentation",
+        "description": "Job system for asynchronous work with optional worker threads.\n\nEach job provides a process function and an optional callback.\n- The process function performs the work and may run on a worker thread.\n- The callback runs on the main thread and can interact with non-threaded systems (for example Lua).\n\nJobs can have dependencies. A parent job will only run after all child jobs have finished.",
+        "description_html": "<p>Job system for asynchronous work with optional worker threads.</p>\n<p>Each job provides a process function and an optional callback.\n- The process function performs the work and may run on a worker thread.\n- The callback runs on the main thread and can interact with non-threaded systems (for example Lua).</p>\n<p>Jobs can have dependencies. A parent job will only run after all child jobs have finished.</p>",
+        "file": "jobsystem.h",
+        "language": "C",
+        "name": "Job System",
+        "namespace": "JobSystem",
+        "notes": [],
+        "path": "engine/dlib/src/dmsdk/dlib/jobsystem.h",
+        "type": "Defold C"
+    }
+}
