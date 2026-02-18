@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: overview
-language: 
+language: Lua
 title: API reference (Overview)
 type: Extension
 ---

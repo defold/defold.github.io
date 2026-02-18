@@ -132,10 +132,15 @@ layout: base
 
 			{%- if page.ref == "overview" -%}
 				<h1>API Overview</h1>
-				{%- assign typerefs = refs | where: "type", page.type | natural_sort: "namespace" -%}
-				<ul class="nobullet">
+				{%- assign typerefs = refs | where: "type", page.type | sort_natural: "namespace" -%}
+				<table>
+					<tr>
+						<th>Namespace</th>
+						<th>{%- if page.language == "C++" or page.language == "C" -%}Include{%- elsif r.type == "Extension" -%}Library Folder{%- else -%}Name{%- endif -%}</th>
+						<th>Description</th>
+					</tr>
 				{%- for r in typerefs -%}
-					<li>
+					<tr>
 					{%- assign index = r.filename | remove: '.' -%}
 					{%- if page.type == "Extension" -%}
 						{%- assign ref = site.data.extensions[index] -%}
@@ -143,10 +148,12 @@ layout: base
 						{%- assign ref = site.data.ref[page.branch][index] -%}
 					{%- endif -%}
 
-					<p><a href="{{r.url}}">{{ r.namespace }}</a>{%- if r.language == "C++" -%}&nbsp;({{r.file}}){%- endif -%}{%- if r.type == "Extension" -%}&nbsp;({{r.name}}){%- endif -%}&nbsp;{{ ref.info.brief }}</p>
-					</li>
+					<td><a href="{{r.url}}">{%- if r.language == "C++" or r.language == "C" -%}{{ r.namespace }}{%- else -%}{{r.name}}{%- endif -%}</a></td>
+					<td>{%- if r.language == "C++" or r.language == "C" -%}{{r.path}}{%- else -%}{{r.namespace}}{%- endif -%}</td>
+					<td>{{ ref.info.brief }}</td>
+					</tr>
 				{%- endfor -%}
-				</ul>
+				</table>
 			{%- elsif ref.info.language == "C++" -%}
 				{%- include api_c.html ref=ref -%}
 			{%- elsif ref.info.language == "Lua" -%}
