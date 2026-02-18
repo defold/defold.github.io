@@ -1264,18 +1264,21 @@ def process_refdoc(download = False):
 
         # generate a list of API types
         types = []
+        typerefs = []
         for ref in refindex:
             if ref["type"] not in types:
                 types.append(ref["type"])
+                typerefs.append(ref)
 
         # write overview pages
-        for type in types:
+        for typeref in typerefs:
+            type = typeref["type"]
             filename = "overview_" + type.replace(" ", "").replace("C++", "cpp").lower() + ".md"
             print("  " + filename, branch)
             with open(os.path.join(REF_PAGE_DIR, filename), "w") as f:
                 fm_branch = branch
                 fm_ref = "overview"
-                fm_language = ""
+                fm_language = typeref["language"]
                 fm_title = "Overview"
                 fm_type = type
                 f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type, "") + REFDOC_MD_BODY)
