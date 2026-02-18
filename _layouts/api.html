@@ -4,7 +4,7 @@ layout: base
 {%- assign branch = page.branch -%}
 {%- assign refs = site.data.refindex | where: "branch", branch -%}
 {%- assign branches = site.data.branchindex -%}
-{%- assign types = refs | map: "type" | uniq | sort -%}
+{%- assign categories = refs | map: "type" | uniq | sort -%}
 {%- assign clean_ref = page.ref | remove: '.' -%}
 
 {%- if page.type == "Extension" -%}
@@ -49,28 +49,47 @@ layout: base
 			</form>
 			<hr>
 			<ul class="nobullet">
-				{%- for type in types -%}
-					{%- assign typerefs = refs | where: "type", type | sort_natural: "namespace" -%}
-					{%- assign clean_type = type | remove: ' ' | replace: "C++", "cpp" | downcase -%}
+				{% comment %}Iterate over "Defold C", "Defold Lua", Defold C++" etc{% endcomment %}
+				{%- for category in categories -%}
+					{%- assign categoryrefs = refs | where: "type", category | sort_natural: "namespace" -%}
+					{%- assign clean_category = category | remove: ' ' | replace: "C++", "cpp" | downcase -%}
 
 					{%- assign checked = "" -%}
-					{%- for r in typerefs -%}
+					{%- for r in categoryrefs -%}
 						{%- assign url = r.url -%}
 						{%- if page.url contains url -%}
 							{%- assign checked = "checked" -%}
 						{%- endif -%}
 					{%- endfor -%}
 
-				<input id="collapsible_{{ type }}" class="toggle" type="checkbox" {{ checked }}/>
-				<label for="collapsible_{{ type }}" class="togglelabel">{{ type | capitalize  }}</label>
+				<input id="collapsible_{{ category }}" class="toggle" type="checkbox" {{ checked }}/>
+				<label for="collapsible_{{ category }}" class="togglelabel">{{ category }}</label>
 				<ul class="nobullet">
-					<li style="padding-bottom: 0px;"><a href="/ref/{{page.branch}}/overview_{{clean_type}}" style="text-decoration: none;">Overview</a></li>
-					{%- for r in typerefs -%}
-						{%- assign textstyle = "text-decoration: none;" -%}
-						{%- if page.url contains r.url -%}
-							{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
+					<li style="padding-bottom: 0px;"><a href="/ref/{{page.branch}}/overview_{{clean_category}}" style="text-decoration: none;">Overview</a></li>
+
+					{%- assign namespaces = categoryrefs | map: "namespace" | uniq | sort_natural -%}
+					{%- for ns in namespaces -%}
+						{%- assign namespacerefs = categoryrefs | where: "namespace", ns | sort_natural: "file" -%}
+						{%- if namespacerefs.size > 1 -%}
+							<label class="togglelabel">{{ ns }}</label>
+							<ul class="nobullet">
+							{%- for r in namespacerefs -%}
+								{%- assign textstyle = "text-decoration: none;" -%}
+								{%- if page.url contains r.url -%}
+									{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
+								{%- endif -%}
+								<li id="{{ r.namespace }}" style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{%- if r.language == "C++" or r.language == "C" -%}{{r.file}}{%- endif -%}{%- if r.type == "Extension" -%}{{r.name}}{%- endif -%}</a></li>
+							{%- endfor -%}
+							</ul>
+						{%- else -%}
+							{%- for r in namespacerefs -%}
+								{%- assign textstyle = "text-decoration: none;" -%}
+								{%- if page.url contains r.url -%}
+									{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
+								{%- endif -%}
+								<li id="{{ r.namespace }}" style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{{ r.namespace }}{%- if r.language == "C++" or r.language == "C" -%}&nbsp;-&nbsp;({{r.file}}){%- endif -%}{%- if r.type == "Extension" -%}&nbsp;-&nbsp;({{r.name}}){%- endif -%}</a></li>
+							{%- endfor -%}
 						{%- endif -%}
-					<li id="{{ r.namespace }}" style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{{ r.namespace }}{%- if r.language == "C++" -%}&nbsp;-&nbsp;({{r.file}}){%- endif -%}{%- if r.type == "Extension" -%}&nbsp;-&nbsp;({{r.name}}){%- endif -%}</a></li>
 					{%- endfor -%}
 				</ul>
 				{%- endfor -%}
