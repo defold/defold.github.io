@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: alpha
-ref: editor-lua
-language: Lua
-title: API reference (Editor)
-type: Defold Lua
+ref: window-c
+language: C
+title: API reference (Window)
+type: Defold C
 ---
 {% include anchor_headings.html html=content %}

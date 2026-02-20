@@ -1,10 +1,10 @@
 ---
 layout: api
 branch: alpha
-ref: liveupdate-lua
-language: Lua
-title: API reference (LiveUpdate)
-type: Defold Lua
+ref: engine-hid-src-dmsdk-hid-hid-h
+language: C++
+title: API reference (Hid)
+type: Defold C++
 pagefind_exclude: true
 ---
 {% include anchor_headings.html html=content %}

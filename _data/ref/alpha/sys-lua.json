@@ -25,6 +25,94 @@
             "type": "MESSAGE"
         },
         {
+            "brief": "exits application",
+            "description": "Terminates the game application and reports the specified <code>code</code> to the OS.\nThis message can only be sent to the designated <code>@system</code> socket.",
+            "error": "",
+            "examples": "This examples demonstrates how to exit the application when some kind of quit messages is received (maybe from gui or similar):\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;quit&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;exit&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">code</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">})</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "exit",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "exit code to report to the OS, 0 means clean exit",
+                    "is_optional": "False",
+                    "name": "code",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
+            "brief": "reboot engine with arguments",
+            "description": "Reboots the game engine with a specified set of arguments.\nArguments will be translated into command line arguments. Sending the reboot\ncommand is equivalent to starting the engine with the same arguments.\nOn startup the engine reads configuration from \"game.project\" in the\nproject root.\nThis message can only be sent to the designated <code>@system</code> socket.",
+            "error": "",
+            "examples": "How to reboot engine with a specific bootstrap collection.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;--config=bootstrap.main_collection=/my.collectionc&#39;</span>\n<span class=\"kd\">local</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;build/game.projectc&#39;</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;reboot&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"n\">arg1</span><span class=\"p\">,</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"n\">arg2</span><span class=\"p\">})</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "reboot",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "argument 1",
+                    "is_optional": "False",
+                    "name": "arg1",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "argument 2",
+                    "is_optional": "False",
+                    "name": "arg2",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "argument 3",
+                    "is_optional": "False",
+                    "name": "arg3",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "argument 4",
+                    "is_optional": "False",
+                    "name": "arg4",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "argument 5",
+                    "is_optional": "False",
+                    "name": "arg5",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "argument 6",
+                    "is_optional": "False",
+                    "name": "arg6",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
             "brief": "reboot engine with arguments",
             "description": "Reboots the game engine with a specified set of arguments.\nArguments will be translated into command line arguments. Sending the reboot\ncommand is equivalent to starting the engine with the same arguments.\nOn startup the engine reads configuration from \"game.project\" in the\nproject root.\nThis message can only be sent to the designated <code>@system</code> socket.",
             "error": "",
@@ -104,6 +192,21 @@
             "type": "MESSAGE"
         },
         {
+            "brief": "resume rendering",
+            "description": "Resume rendering.\nThis message can only be sent to the designated <code>@system</code> socket.",
+            "error": "",
+            "examples": "<pre>\nmsg.post(\"@system:\", \"resume_rendering\")\n</pre>",
+            "language": "",
+            "members": [],
+            "name": "resume_rendering",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
             "brief": "set update frequency",
             "description": "Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.\nThis message can only be sent to the designated <code>@system</code> socket.",
             "error": "",
@@ -117,6 +220,54 @@
                     "doc": "target frequency. 60 for 60 fps",
                     "is_optional": "False",
                     "name": "frequency",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
+            "brief": "set update frequency",
+            "description": "Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.\nThis message can only be sent to the designated <code>@system</code> socket.",
+            "error": "",
+            "examples": "<pre>\nmsg.post(\"@system:\", \"set_update_frequency\", { frequency = 60 } )\n</pre>",
+            "language": "",
+            "members": [],
+            "name": "set_update_frequency",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "target frequency. 60 for 60 fps",
+                    "is_optional": "False",
+                    "name": "frequency",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
+            "brief": "set vsync swap interval",
+            "description": "Set the vsync swap interval. The interval with which to swap the front and back buffers\nin sync with vertical blanks (v-blank), the hardware event where the screen image is updated\nwith data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of\n2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank\nbefore swapping the buffers. Default value is 1.\nWhen setting the swap interval to 0 and having <code>vsync</code> disabled in\n\"game.project\", the engine will try to respect the set frame cap value from\n\"game.project\" in software instead.\nThis setting may be overridden by driver settings.\nThis message can only be sent to the designated <code>@system</code> socket.",
+            "error": "",
+            "examples": "<pre>\nmsg.post(\"@system:\", \"set_vsync\", { swap_interval = 1 } )\n</pre>",
+            "language": "",
+            "members": [],
+            "name": "set_vsync",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "target swap interval.",
+                    "is_optional": "False",
+                    "name": "swap_interval",
                     "types": [
                         "number"
                     ]
@@ -186,6 +337,61 @@
                     ]
                 }
             ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
+            "brief": "starts video recording",
+            "description": "Starts video recording of the game frame-buffer to file. Current video format is the\nopen vp8 codec in the ivf container. It's possible to upload this format directly\nto YouTube. The VLC video player has native support but with the known issue that\nnot the entire file is played back. It's probably an issue with VLC.\nThe Miro Video Converter has support for vp8/ivf.\n<span class=\"icon-macos\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span> Video recording is only supported on desktop platforms.\n<span class=\"icon-attention\"></span> Audio is currently not supported\n<span class=\"icon-attention\"></span> Window width and height must be a multiple of 8 to be able to record video.\nThis message can only be sent to the designated <code>@system</code> socket.",
+            "error": "",
+            "examples": "Record a video in 30 fps given that the native game fps is 60:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;start_record&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">file_name</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;test_rec.ivf&quot;</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</code></pre></div>\n\nTo write a video in 60 fps given that the native game fps is 60:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;start_record&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">file_name</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;test_rec.ivf&quot;</span><span class=\"p\">,</span> <span class=\"n\">frame_period</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">fps</span> <span class=\"o\">=</span> <span class=\"mi\">60</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "start_record",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "file name to write the video to",
+                    "is_optional": "False",
+                    "name": "file_name",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "frame period to record, ie write every nth frame. Default value is <code>2</code>",
+                    "is_optional": "False",
+                    "name": "frame_period",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "frames per second. Playback speed for the video. Default value is <code>30</code>. The fps value doens't affect the recording. It's only meta-data in the written video file.",
+                    "is_optional": "False",
+                    "name": "fps",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
+            "brief": "stop current video recording",
+            "description": "Stops the currently active video recording.\n<span class=\"icon-macos\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span> Video recording is only supported on desktop platforms.\nThis message can only be sent to the designated <code>@system</code> socket.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;stop_record&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "stop_record",
+            "notes": [],
+            "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
@@ -1256,6 +1462,36 @@
             "language": "",
             "members": [],
             "name": "toggle_physics_debug",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
+            "brief": "shows/hides the on-screen physics visual debugging",
+            "description": "Toggles the on-screen physics visual debugging mode which is very useful for\ntracking down issues related to physics. This mode visualizes\nall collision object shapes and normals at detected contact points. Toggling\nthis mode on is equal to setting <code>physics.debug</code> in the \"game.project\" settings,\nbut set in run-time.\nThis message can only be sent to the designated <code>@system</code> socket.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;toggle_physics_debug&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "toggle_physics_debug",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
+            "brief": "shows/hides the on-screen profiler",
+            "description": "Toggles the on-screen profiler.\nThe profiler is a real-time tool that shows the numbers of milliseconds spent\nin each scope per frame as well as counters. The profiler is very useful for\ntracking down performance and resource problems.\nIn addition to the on-screen profiler, Defold includes a web-based profiler that\nallows you to sample a series of data points and then analyze them in detail.\nThe web profiler is available at <code>http://&lt;device IP&gt;:8002</code> where <device IP> is\nthe IP address of the device you are running your game on.\nThis message can only be sent to the designated <code>@system</code> socket.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;toggle_profile&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "toggle_profile",
             "notes": [],
             "parameters": [],
             "replaces": "",
