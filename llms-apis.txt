@@ -39530,7 +39530,7 @@ Starts loading a Banner Ad, can only be called after `admob.MSG_INITIALIZATION` 
 **Parameters**
 
 - `ad_unit_id` (string) - Ad unit ID, for test ads use on Android `"ca-app-pub-3940256099942544/6300978111"`, or on iOS `"ca-app-pub-3940256099942544/2934735716"` Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)
-- `size` (number) - Requested Banner Ad size, possible values: `admob.SIZE_ADAPTIVE_BANNER` (default), `admob.SIZE_BANNER`, `admob.SIZE_FLUID`, `admob.SIZE_FULL_BANNER`, `admob.SIZE_LARGE_BANNER`, `admob.SIZE_LEADEARBOARD`, `admob.SIZE_MEDIUM_RECTANGLE`, `admob.SIZE_SMART_BANNER`. Original docs [Android](https://developers.google.com/admob/android/banner#banner_sizes), [iOS](https://developers.google.com/admob/ios/banner#banner_sizes)
+- `size` (number) - Requested Banner Ad size, possible values: `admob.SIZE_ADAPTIVE_BANNER` (default), `admob.SIZE_BANNER`, `admob.SIZE_FLUID`, `admob.SIZE_FULL_BANNER`, `admob.SIZE_LARGE_BANNER`, `admob.SIZE_LEADEARBOARD`, `admob.SIZE_MEDIUM_RECTANGLE`, `admob.SIZE_SMART_BANNER`, `admob.SIZE_LARGE_ADAPTIVE_BANNER` Original docs [Android](https://developers.google.com/admob/android/banner#banner_sizes), [iOS](https://developers.google.com/admob/ios/banner#banner_sizes)
 
 ### admob.show_banner
 *Type:* FUNCTION
@@ -39653,6 +39653,9 @@ Hides and unloads Banner Ad (needs to call `admob.load_banner()` later to show B
 *Type:* VARIABLE
 
 ### SIZE_ADAPTIVE_BANNER
+*Type:* VARIABLE
+
+### SIZE_LARGE_ADAPTIVE_BANNER
 *Type:* VARIABLE
 
 ### SIZE_BANNER
