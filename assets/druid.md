@@ -2,7 +2,7 @@
 layout: asset
 asset: druid
 title: Druid
-description: Druid - powerful Defold component UI framework that empowers developers to create stunning and customizable GUIs by leveraging a wide range of embedded components or effortlessly designing their own game-specific components.
+description: Druid - Powerful Defold UI component framework. Allows to create and manage UI components for your game. Contains a wide range of components and tools for building your own UI.
 opengraph_image: https://www.defold.com/images/asset-nohero.jpg
 twitter_image: https://www.defold.com/images/asset-nohero.jpg
 ---
