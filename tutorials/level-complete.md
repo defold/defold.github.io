@@ -2,7 +2,6 @@
 brief: In this sample project, you learn effects to show the score counting that could occur when a level has been completed.
 layout: tutorial
 title: Level complete code sample
-difficulty: Beginner
 ---
 
 # Level complete - sample project

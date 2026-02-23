@@ -2,7 +2,6 @@
 brief: In this sample project, you learn effects to present a main menu.
 layout: tutorial
 title: Main menu animation sample
-difficulty: Beginner
 ---
 
 # Main menu animation - sample project

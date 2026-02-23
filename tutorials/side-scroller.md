@@ -3,7 +3,6 @@ brief: This tutorial is intended to give a taste of what making games in Defold 
 github: https://github.com/defold/tutorial-side-scroller
 layout: tutorial
 title: Side scroller tutorial
-difficulty: Beginner
 ---
 
 # Side scroller tutorial
