@@ -7,14 +7,14 @@ title: Side scroller tutorial
 
 # Side scroller tutorial
 
+
 The tutorial is integrated with the Defold editor and easily accessible:
 
-Start Defold and:
-1. Select `Create From` ▸ `TUTORIALS` on the left.
-2. Select the "Side Scroller Tutorial".
-3. Rename it, if you want.
-4. Select a location for the project on your local drive.
-5. Click `Create New Project`.
+1. Start Defold.
+2. Select *New Project* on the left.
+3. Select the *From Tutorial* tab.
+4. Select the "Side scroller tutorial"
+5. Select a location for the project on your local drive and click *Create New Project*.
 
 ![new project](../images/new-side-scroller.png)
 
