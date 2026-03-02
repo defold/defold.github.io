@@ -138,6 +138,21 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "finalize the logging system.",
+            "description": "finalize the logging system.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmLogFinalize",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "get log system severity level.",
             "description": "Get log system severity level.",
             "error": "",
@@ -197,6 +212,30 @@
                     ]
                 }
             ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "initialize the logging system.",
+            "description": "Running this function is only required in order to start the log server.\nThe function never fails even if the log server cannot be started.\nAny startup errors are reported to stderr.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmLogInitialize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "log parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "LogParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -393,6 +432,21 @@
             "returnvalues": [],
             "tparams": [],
             "type": "TYPEDEF"
+        },
+        {
+            "brief": "Log parameters.",
+            "description": "Parameters for dmLogInitialize().",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "LogParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "Log severity",
