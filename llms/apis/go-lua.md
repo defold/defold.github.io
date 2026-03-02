@@ -496,6 +496,7 @@ gets a named property of the specified game object or component
 - `options` (table) (optional) - optional options table
 - index <span class="type">number</span> index into array property (1 based)
 - key <span class="type">hash</span> name of internal property
+- keys <span class="type">table</span> array of internal component resources identified by key (e.g. a particle fx emitter, see examples below)
 
 **Returns**
 
@@ -527,23 +528,23 @@ go.get(url, "example.x", {index=1})
 ```
 
 Getting all values in a material property array as a table
-```
+```lua
 -- get all vector4's in the constant array
 go.get(url, "example")
 -- result: { vector4, vector4, ... }
-
 -- get all elements of the vector4's from an array
 go.get(url, "example.x")
 -- result: { number1, number2, ... }
 ```Get a named property
-
+lua
+-- get the resource of a certain gui font
+local font_hash = go.get("#gui", "fonts", {key = "system_font_BIG"})Get a property from a sub-component, using the "keys" options table
+lua
+-- Addressing the first level of a component:
+go.get("#particlefx", "material", { keys = { "cone_emitter" } })Get a property into a deeper sub-hierarchy (if the component supports it).
 ```lua
-function init(self)
-    -- get the resource of a certain gui font
-    local font_hash = go.get("#gui", "fonts", {key = "system_font_BIG"})
-end
-
-```
+-- Note: There is currently no component that supports this, but a custom component could.
+go.get("#my_component", "some_property", { keys = { "root", "child_node" } })
 
 ### go.get_id
 *Type:* FUNCTION
@@ -921,6 +922,7 @@ sets a named property of the specified game object or component, or a material c
 - `options` (table) (optional) - optional options table
 - index <span class="type">integer</span> index into array property (1 based)
 - key <span class="type">hash</span> name of internal property
+- keys <span class="type">table</span> array of internal component resources identified by key (e.g. a particle fx emitter, see examples below)
 
 **Examples**
 
@@ -948,20 +950,24 @@ go.set(url, "example.x", 7, {index=1})
 ```
 
 Set a material property array by a table of vector4
-```
+lua
 -- set the first two vector4's in the array
 -- if the array has more than two elements in the array they will not be set
-go.set(url, "example", { vmath.vector4(1,1,1,1), vmath.vector4(2,2,2,2) })
-```Set a named property
-
+go.set(url, "example", { vmath.vector4(1,1,1,1), vmath.vector4(2,2,2,2) })Set a named property
 ```lua
 go.property("big_font", resource.font())
-
 function init(self)
     go.set("#gui", "fonts", self.big_font, {key = "system_font_BIG"})
 end
-
-```
+```Set a property on a sub-component, using the "keys" options table
+lua
+go.property("my_material", resource.material)
+function init(self)
+    go.set("#particlefx", "material", self.my_material, { keys = { "cone_emitter" } })
+endSet a property in a deeper sub-hierarchy (if the component supports it).
+```lua
+-- Note: There is currently no component that supports this, but a custom component could.
+go.set("#my_component", "some_property", some_value, { keys = { "root", "child_node" } })
 
 ### go.set_parent
 *Type:* FUNCTION

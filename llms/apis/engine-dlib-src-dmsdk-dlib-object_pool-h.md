@@ -7,7 +7,7 @@
 **Source:** `engine/dlib/src/dmsdk/dlib/object_pool.h`
 **Include:** `dmsdk/dlib/object_pool.h`
 
-SDK Object Pool API documentation
+Object Pool API documentation
 
 ## API
 

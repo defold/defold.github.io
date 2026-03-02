@@ -7,7 +7,7 @@
 **Source:** `engine/gameobject/src/dmsdk/gameobject/script.h`
 **Include:** `dmsdk/gameobject/script.h`
 
-SDK GameObject script API documentation
+GameObject script API documentation
 
 ## API
 

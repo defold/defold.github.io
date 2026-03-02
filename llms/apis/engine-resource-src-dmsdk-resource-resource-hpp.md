@@ -7,7 +7,7 @@
 **Source:** `engine/resource/src/dmsdk/resource/resource.hpp`
 **Include:** `dmsdk/resource/resource.hpp`
 
-Functions for managing resource types.
+Functions for managing resource and resource types
 
 ## API
 

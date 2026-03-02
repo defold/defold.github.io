@@ -841,6 +841,18 @@ An icon from a predefined set
 *Type:* VARIABLE
 "plus"
 
+### editor.ui.image
+*Type:* FUNCTION
+An image
+
+**Parameters**
+
+- `props` (table) - Required props: <dl><dt><code>image <small>string</small></code></dt><dd>either a resource path (starts with <code>/</code>), or an URL</dd></dl>  Optional props: <dl><dt><code>width <small>number</small></code></dt><dd>width of the image view, the image will be fit inside it while preserving its aspect ratio</dd><dt><code>height <small>number</small></code></dt><dd>height of the image view, the image will be fit inside it while preserving its aspect ratio</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>
+
+**Returns**
+
+- `value` (component) - UI component
+
 ### editor.ui.integer_field
 *Type:* FUNCTION
 Integer input component based on a text field, reports changes on commit (Enter or focus loss)

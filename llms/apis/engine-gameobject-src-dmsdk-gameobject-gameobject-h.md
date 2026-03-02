@@ -227,6 +227,166 @@ Get gameobject instance position
 
 - `return` (dmVMath::Point3) - Position
 
+### GetPropertyAsBool
+*Type:* FUNCTION
+Retrieve a boolean property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (bool*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsFloat
+*Type:* FUNCTION
+Retrieve a float property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (float*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsHash
+*Type:* FUNCTION
+Retrieve a hash property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (dmhash_t*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsMatrix
+*Type:* FUNCTION
+Retrieve a matrix4 property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (dmGameObject::Matrix4*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsQuat
+*Type:* FUNCTION
+Retrieve a quaternion property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (dmVMath::Quat*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsURL
+*Type:* FUNCTION
+Retrieve a url property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (dmMessage::URL*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsVector3
+*Type:* FUNCTION
+Retrieve a vector3 property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (dmVMath::Vector3*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsVector4
+*Type:* FUNCTION
+Retrieve a vector4 property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (dmVMath::Vector4*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyOptionsCount
+*Type:* FUNCTION
+Get the property count from a PropertyOptions container
+
+**Parameters**
+
+- `options` (HPropertyOptions) - Options handle
+
+**Returns**
+
+- `count` (uint32_t) - The number of property options
+
+### GetPropertyOptionsIndex
+*Type:* FUNCTION
+Get the index value from a property option at a specific index
+
+**Parameters**
+
+- `options` (HPropertyOptions) - Options handle
+- `options_index` (int32_t) - The options index into the property options container
+- `result` (int32_t*) - If the option at the index is valid, store the result. Pointer is untouched otherwise
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the property option at the index is valid
+
+### GetPropertyOptionsKey
+*Type:* FUNCTION
+Get the key value from a property option at a specific index
+
+**Parameters**
+
+- `options` (HPropertyOptions) - Options handle
+- `options_index` (int32_t) - The options index into the property options container
+- `result` (dmhash_t*) - If the option at the index is valid, store the result. Pointer is untouched otherwise
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the property option at the index is valid
+
 ### GetRotation
 *Type:* FUNCTION
 Get gameobject instance rotation
@@ -376,6 +536,10 @@ Gameobject properties handle
 *Type:* TYPEDEF
 Handle to a list of properties (gameobject_props.h)
 
+### HPropertyOptions
+*Type:* TYPEDEF
+Handle to a list of property options
+
 ### HPrototype
 *Type:* TYPEDEF
 Gameobject prototype handle
@@ -465,16 +629,6 @@ m_Variant always reflects the value.
 - `m_ReadOnly` (uint16_t) - Determines whether we are permitted to write to this property.
 - `m_ValueType` (uint16_t) - Indicates type of the property (of type PropertyValueType).
 - `m_ArrayLength` (uint16_t) - Number of array entries, if the property is an array and zero otherwise. Max supported length is 2^14 (16384 elements)
-
-### PropertyOptions
-*Type:* STRUCT
-Parameters variant that holds key or index for a propertys data structure.
-
-**Members**
-
-- `m_Index` (int32_t) - The index of the property to set, only applicable if property is array.
-- `m_Key` (dmhash_t) - The key of the property to set, only applicable if property is hashtable.
-- `m_HasKey` (uint8_t) - A flag if structure contain m_Key value (it can't contain both)
 
 ### PropertyResult
 *Type:* ENUM
@@ -675,6 +829,126 @@ Set gameobject instance position
 
 - `instance` (dmGameObject::HInstance) - Gameobject instance
 - `position` (dmVMath::Point3) - New Position
+
+### SetPropertyFromBool
+*Type:* FUNCTION
+Sets the value of a boolean property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (bool) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromHash
+*Type:* FUNCTION
+Sets the value of a hash property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (dmhash_t) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromHash
+*Type:* FUNCTION
+Sets the value of a float property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (float) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromMatrix4
+*Type:* FUNCTION
+Sets the value of a matrix4 property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (dmVMath::Matrix4) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromQuat
+*Type:* FUNCTION
+Sets the value of a quaternion property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (dmVMath::Quat) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromURL
+*Type:* FUNCTION
+Sets the value of a URL property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (dmMessage::URL) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromVector3
+*Type:* FUNCTION
+Sets the value of a vector3 property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (dmVMath::vector3) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromVector4
+*Type:* FUNCTION
+Sets the value of a vector4 property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (dmVMath::Vector4) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
 
 ### SetRotation
 *Type:* FUNCTION

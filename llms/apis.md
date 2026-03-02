@@ -4,21 +4,16 @@ These are per-namespace API reference files generated for LLM usage.
 
 ## C++ APIs
 
-- [dmDDF (Ddf)](https://defold.com/llms/apis/engine-ddf-src-dmsdk-ddf-ddf-h.md) - SDK DDF (Defold Data Format) API documentation
-- [Align](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-align-h.md) - Alignment macros
+- [dmDDF (Ddf)](https://defold.com/llms/apis/engine-ddf-src-dmsdk-ddf-ddf-h.md) - DDF (Defold Data Format) API documentation
 - [dmAndroid (Android)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-android-h.md) - Android utility functions
 - [Array](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-array-h.md) - Templatized array with bounds checking
-- [Atomic](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-atomic-h.md) - Atomic functions
 - [dmBuffer (Buffer)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-buffer-h.md) - Buffer API for data buffers as the main way to communicate between systems
 - [dmConditionVariable (Condition Variable)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-condition_variable-h.md) - API for platform independent mutex synchronization primitive
-- [dmConfigFile (ConfigFile)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-configfile-h.md) - Configuration file access functions
 - [dmConfigFile (ConfigFile)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-configfile_gen-hpp.md) - Configuration file access functions
 - [dmConnectionPool (Connection Pool)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-connection_pool-h.md) - Connection pool
 - [dmCrypt (Crypt)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-crypt-h.md) - Various hash and encode/decode functions
 - [dmDoubleLinkedList (Double linked list structs and functions)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-double_linked_list-h.md) - Double linked list structs and functions
-- [DStrings](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-dstrings-h.md) - SDK Defold String Utils API documentation
 - [dmFileDescriptor (FileDescriptor)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-file_descriptor-h.md) - File Descriptor functions
-- [Hash](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-hash-h.md) - Hash functions
 - [Hashtable](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-hashtable-h.md) - Hash table
 - [dmHttpClient (Http Client)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-http_client-h.md) - Http client functions
 - [dmImage (Image)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-image-h.md) - Image API functions
@@ -28,7 +23,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [dmMemory (Memory)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-memory-h.md) - Memory allocation functions
 - [dmMessage (Message)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-message-h.md) - Api for sending messages
 - [dmMutex (Mutex)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-mutex-h.md) - API for platform independent mutex synchronization primitive
-- [ObjectPool](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-object_pool-h.md) - SDK Object Pool API documentation
+- [ObjectPool](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-object_pool-h.md) - Object Pool API documentation
 - [dmProfile (Profile)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-profile-h.md) - Profiling macros
 - [SharedLibrary (Shared Library)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-shared_library-h.md) - Utility functions for shared library export/import
 - [dmSocket (Socket)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-socket-h.md) - Socket functions
@@ -40,22 +35,19 @@ These are per-namespace API reference files generated for LLM usage.
 - [dmTime (Time)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-time-h.md) - Time functions
 - [dmTransform (Transform)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-transform-h.md) - Api for transforms with rotation, scale and translation
 - [dmURI (URI)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-uri-h.md) - URI functions
-- [dmUtf8 (Utf8)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-utf8-h.md) - SDK Utf8 API documentation
+- [dmUtf8 (Utf8)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-utf8-h.md) - Utf8 API documentation
 - [dmVMath (Vector Math)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-vmath-h.md) - Vector Math functions
 - [dmWebServer (WebServer)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-webserver-h.md) - Simple high-level single-threaded Web server based on dmHttpServer The web-server has a handler concept similar to servlets in Java
 - [dmEngine (Engine)](https://defold.com/llms/apis/engine-engine-src-dmsdk-engine-extension-hpp.md) - SDK Engine extension API documentation
 - [engine (Engine runtime)](https://defold.com/llms/apis/engine-engine-src-engine_doc-h.md) - Engine runtime documentation
-- [Extension](https://defold.com/llms/apis/engine-extension-src-dmsdk-extension-extension-h.md) - Functions for creating and controlling engine native extension libraries
 - [dmExtension (Extension)](https://defold.com/llms/apis/engine-extension-src-dmsdk-extension-extension_gen-hpp.md) - Functions for creating and controlling engine native extension libraries
-- [Font](https://defold.com/llms/apis/engine-font-src-dmsdk-font-font-h.md) - Font API for loading a font (truetype), getting glyph metrics and bitmap/sdf data
-- [FontCollection](https://defold.com/llms/apis/engine-font-src-dmsdk-font-fontcollection-h.md) - Font API for grouping multiple fonts into a collection
-- [TextLayout](https://defold.com/llms/apis/engine-font-src-dmsdk-font-text_layout-h.md) - API for laying out complex text into format ready for display
 - [dmGameObject (Component)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-component-h.md) - Api for manipulating game object components (WIP)
 - [dmGameObject (Gameobject)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-gameobject-h.md) - API for manipulating game objects
 - [dmGameObject (PropertyContainer)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-gameobject_props-h.md) - API for game object property container
-- [dmGameObject (Script)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-script-h.md) - SDK GameObject script API documentation
+- [dmGameObject (Script)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-script-h.md) - GameObject script API documentation
 - [dmGameSystem (Collection factory)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-components-comp_collection_factory-h.md) - API for spawning collections from a collection factory component
 - [dmGameSystem (Factory)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-components-comp_factory-h.md) - API for spawning gameobject instances from a factory component
+- [dmGameSystem (Model)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-components-comp_model-h.md) - API for interacting with model components
 - [dmGameSystem (GameSystem Gui)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-gui-h.md) - Built-in scripting functions
 - [dmGameSystem (Property)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-property-h.md) - Property functions
 - [dmGameSystem (Component Render Constants)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-render_constants-h.md) - Api for setting and updating component render constants
@@ -68,8 +60,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [dmGui (Gui)](https://defold.com/llms/apis/engine-gui-src-dmsdk-gui-gui-h.md) - Defold GUI system
 - [dmPhysics (Physics)](https://defold.com/llms/apis/engine-physics-src-dmsdk-physics-physics-h.md) - Physics related structs and functions
 - [dmRender (Render)](https://defold.com/llms/apis/engine-render-src-dmsdk-render-render-h.md) - Api for render specific data
-- [Resource](https://defold.com/llms/apis/engine-resource-src-dmsdk-resource-resource-h.md) - Functions for managing resource types
-- [dmResource (Resource)](https://defold.com/llms/apis/engine-resource-src-dmsdk-resource-resource-hpp.md) - Functions for managing resource types
+- [dmResource (Resource)](https://defold.com/llms/apis/engine-resource-src-dmsdk-resource-resource-hpp.md) - Functions for managing resource and resource types
 - [dmResource (Resource)](https://defold.com/llms/apis/engine-resource-src-dmsdk-resource-resource_gen-hpp.md) - Functions for managing resource types
 - [dmScript (Script)](https://defold.com/llms/apis/engine-script-src-dmsdk-script-script-h.md) - Built-in scripting functions
 - [dmSound (Sound)](https://defold.com/llms/apis/engine-sound-src-dmsdk-sound-sound-h.md) - Functions for controlling the engine sound mixer from native extensions
@@ -106,7 +97,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [msg (Message)](https://defold.com/llms/apis/msg-lua.md) - Functions for passing messages and constructing URL objects
 - [os (Os)](https://defold.com/llms/apis/os-lua.md) - Documentation for the Lua os standard library
 - [package (Package)](https://defold.com/llms/apis/package-lua.md) - Documentation for the Lua package standard library
-- [particlefx (Particle effects)](https://defold.com/llms/apis/particlefx-lua.md) - Functions for controlling particle effect component playback and shader constants
+- [particlefx (Particle effects)](https://defold.com/llms/apis/particlefx-lua.md) - Functions and properties for controlling particle effect component playback and shader constants
 - [physics (Collision object)](https://defold.com/llms/apis/physics-lua.md) - Collision object physics API documentation
 - [profiler (Profiler)](https://defold.com/llms/apis/profiler-lua.md) - Functions for getting profiling data in runtime
 - [render (Render)](https://defold.com/llms/apis/render-lua.md) - Rendering API documentation
