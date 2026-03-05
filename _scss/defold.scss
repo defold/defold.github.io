@@ -16,6 +16,9 @@
 
 	--defold-orange: #fd6623;
 	--defold-green: #57ab5a;
+
+	/* Controls the large showcase image frame ratio (width / height). */
+	--showcase-full-image-ratio: 2000 / 750;
 }
 
 
@@ -350,6 +353,18 @@
 	color: white;
 }
 
+/* Frontpage feature icons are external SVG images, so force them to white via filter. */
+.frontpage-feature-icons img {
+	filter: brightness(0) invert(1);
+}
+
+.frontpage-feature-icons a,
+.frontpage-feature-icons a:hover,
+.frontpage-feature-icons a:focus,
+.frontpage-feature-icons a:active {
+	text-decoration: none !important;
+}
+
 /*******************************************************************************
 * Skeleton.css overrides
 ******************************************************************************/
@@ -418,6 +433,10 @@ h5.compact {
 
 p.compact {
 	margin-bottom: 1.5rem;
+}
+
+.showcase-game-copy > .showcase-game-title {
+	margin-bottom: 2rem;
 }
 
 /*******************************************************************************
@@ -920,9 +939,95 @@ img[alt="icon"] {
 ******************************************************************************/
 
 .textshadow {
-	text-shadow: 3px 3px 3px black;
+	text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
+/*******************************************************************************
+* Main header
+******************************************************************************/
+.main-header {
+	font-size: 6.5rem;
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+
+.frontpage-top-banner {
+	height: 750px;
+	background-size: auto 750px;
+	background-repeat: repeat-x;
+	background-position: top center;
+
+	.container {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+
+		.frontpage-feature-icons {
+			margin-top: 20px;
+			margin-left: 30px;
+			margin-right: 30px;
+		}
+
+		.frontpage-top-banner-cta {
+			margin-top: 7rem;
+			margin-bottom: 3rem;
+		}
+	}
+
+@media (max-width: 949px) {
+	.main-header {
+		font-size: 4rem;
+	}
+
+	.frontpage-top-banner .frontpage-feature-icons img {
+		display: none !important;
+	}
+
+	.frontpage-top-banner .frontpage-feature-icons .columns.three {
+		float: none;
+		width: 100%;
+		margin-left: 0;
+		margin-bottom: 0.75rem;
+	}
+
+	.frontpage-top-banner .frontpage-feature-icons h4 {
+		margin-bottom: 0.75rem;
+	}
+
+	.frontpage-top-banner .frontpage-top-banner-cta {
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+	}
+}
+
+.no-decoration {
+	text-decoration: none;
+}
+
+.feature-heading {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.feature-heading-icon {
+	width: 48px;
+	height: 48px;
+	flex: 0 0 48px;
+	margin-right: 16px;
+}
+
+.features-section .feature-row-spaced {
+	margin-top: 8rem;
+	margin-bottom: 8rem;
+}
+
+.features-section .feature-cta-row {
+	margin-top: 4rem;
+	margin-bottom: 6rem;
+}
 
 /*******************************************************************************
 * Typography
@@ -1044,6 +1149,165 @@ ul.checkmark li:before {
 ******************************************************************************/
 .game a {
 	text-decoration: none;
+}
+
+.showcase-full-media {
+	display: block;
+	width: 100%;
+	aspect-ratio: var(--showcase-full-image-ratio);
+	overflow: hidden;
+}
+
+.showcase-full-media img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
+	border-radius: 0px;
+	background-color: transparent;
+}
+
+.showcase-game-meta {
+	width: 100%;
+}
+
+.showcase-game-meta td:last-child {
+	text-align: right;
+}
+
+.showcase-game-details-section {
+	padding-top: 1.5rem;
+	padding-bottom: 0;
+}
+
+.showcase-half-meta {
+	width: 100%;
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.showcase-half-meta td:last-child {
+	text-align: right;
+}
+
+.showcase-feature-video {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	border-radius: 8px;
+	background-color: #000;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.showcase-feature-video iframe {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+.showcase-content-intro {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
+
+.showcase-content-intro p {
+	margin-bottom: 0;
+}
+
+.frontpage-showcase-carousel {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 200 / 75;
+	overflow: hidden;
+	border-radius: 0px;
+	background-color: transparent;
+}
+
+.frontpage-showcase-section {
+	background-image: url("/images/hero/testimonials-background-0.5x-grey.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.frontpage-section-heading {
+	margin-top: 5rem;
+	margin-bottom: 4rem;
+}
+
+.frontpage-showcase-slide {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 700ms ease-in-out;
+}
+
+.frontpage-showcase-slide.active {
+	opacity: 1;
+	pointer-events: auto;
+	z-index: 2;
+}
+
+.frontpage-showcase-slide img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
+	display: block;
+}
+
+.game-carousel-dots {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.65rem;
+}
+
+.frontpage-showcase-dots {
+	position: absolute;
+	left: 50%;
+	bottom: 1rem;
+	transform: translateX(-50%);
+	z-index: 3;
+	padding: 0.3rem 0.6rem;
+	border-radius: 999px;
+	background: rgba(0, 0, 0, 0.35);
+}
+
+.game-carousel-dot {
+	width: 12px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border-radius: 50%;
+	border: 1px solid var(--lighter);
+	background-color: transparent;
+	cursor: pointer;
+	transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.game-carousel-dot.active,
+.game-carousel-dot:hover {
+	background-color: var(--lightest);
+	border-color: var(--lightest);
+}
+
+.game-carousel-dot:focus-visible {
+	outline: 2px solid var(--defold-blue);
+	outline-offset: 2px;
+}
+
+.frontpage-more-games-section {
+	margin-top: 7rem;
+	margin-top: 5rem;
+}
+
+#frontpage-more-games-button {
+	margin-top: 3.5rem;
+	margin-bottom: 5rem;
 }
 
 

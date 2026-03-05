@@ -1,21 +1,27 @@
 {%- assign game=include.game -%}
 {%- assign url=include.url -%}{%- unless url -%}{%- assign url = game.url -%}{%- endunless -%}
 
-<div class="section hero center dark-text hoverflash game">
-	<a href="{{ url }}" target="_blank">
-		<img src="/images/games/{{ game.images.full }}" class="hoverflash" width="100%" loading="lazy"/>
-	</a>
-</div>
-
-<div class="section dark left" style="padding-top: 3rem; padding-bottom: 0;">
+<div class="section dark-text game">
 	<div class="container">
 		<div class="row">
-			<div class="columns eight compact">
-				<h5>{{ game.name }}</h5>
-				<p>{{ game.description }}</p>
+			<div class="columns twelve">
+				<a href="{{ url }}" target="_blank" class="showcase-full-media hoverflash">
+					<img src="/images/games/{{ game.images.full }}" loading="lazy" alt="{{ game.name }}"/>
+				</a>
 			</div>
-			<div class="columns four">
-				<table>
+		</div>
+	</div>
+</div>
+
+<div class="section dark left showcase-game-details-section">
+	<div class="container">
+		<div class="row">
+				<div class="columns eight compact showcase-game-copy">
+					<h4 class="showcase-game-title">{{ game.name }}</h4>
+					<p>{{ game.description }}</p>
+				</div>
+				<div class="columns four">
+					<table class="showcase-game-meta">
 					<tr>
 						<td>Developer</td>
 						<td class="lightest-text">{{ game.developer }}</td>
@@ -26,19 +32,27 @@
 						<td class="lightest-text">{{ game.publisher }}</td>
 					</tr>
 					{%- endif -%}
-					{%- if game.releasedate and game.releasedate != "" -%}
-					<tr>
-						<td>Release date</td>
-						<td class="lightest-text">{{ game.releasedate }}</td>
-					</tr>
-					{%- endif -%}
-					<tr>
-						<td>Platforms</td>
-						<td class="lightest-text">{{ game.platforms }}</td>
-					</tr>
-					{%- if game.downloads and game.downloads != "" -%}
-					<tr>
-						<td>Downloads</td>
+						{%- if game.releasedate and game.releasedate != "" -%}
+						<tr>
+							<td>Release date</td>
+							<td class="lightest-text">{{ game.releasedate }}</td>
+						</tr>
+						{%- endif -%}
+						{%- if game.license and game.license != "" -%}
+						<tr>
+							<td>License</td>
+							<td class="lightest-text">{{ game.license }}</td>
+						</tr>
+						{%- endif -%}
+						{%- if game.platforms and game.platforms != "" -%}
+						<tr>
+							<td>Platforms</td>
+							<td class="lightest-text">{{ game.platforms }}</td>
+						</tr>
+						{%- endif -%}
+						{%- if game.downloads and game.downloads != "" -%}
+						<tr>
+							<td>Downloads</td>
 						<td class="lightest-text">{{ game.downloads }}</td>
 					</tr>
 					{%- endif -%}

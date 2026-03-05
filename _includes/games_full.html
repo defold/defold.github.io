@@ -1,12 +1,23 @@
 {%- assign placement = include.placement -%}
 {%- assign full = site.data.games | where: placement, "full" -%}
-{%- assign full_shuffled = full | sample: full.size -%}
-{%- assign limit = include.limit -%}
-{%- assign offset = include.offset -%}
-{%- for game in full_shuffled limit: limit offset: offset -%}
-	{%- include game_full.html game=game url=include.url -%}
-	{%- if forloop.last != true -%}
-	<br/>
-	<br/>
-	{%- endif -%}
-{%- endfor -%}
+{%- assign featured_ids = site.data.showcase_featured_full -%}
+{%- assign rendered_count = 0 -%}
+{%- assign rendered_ids = "|" -%}
+
+{%- if featured_ids and featured_ids.size > 0 -%}
+	{%- for game_id in featured_ids -%}
+		{%- assign game_marker = "|" | append: game_id | append: "|" -%}
+		{%- unless rendered_ids contains game_marker -%}
+			{%- assign game = full | where: "id", game_id | first -%}
+			{%- if game -%}
+				{%- if rendered_count > 0 -%}
+				<br/>
+				<br/>
+				{%- endif -%}
+				{%- include game_full.html game=game url=include.url -%}
+				{%- assign rendered_count = rendered_count | plus: 1 -%}
+				{%- assign rendered_ids = rendered_ids | append: game.id | append: "|" -%}
+			{%- endif -%}
+		{%- endunless -%}
+	{%- endfor -%}
+{%- endif -%}

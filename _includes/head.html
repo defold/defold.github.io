@@ -91,6 +91,14 @@
 <!-- favicon -->
 <link rel='shortcut icon' type='image/x-icon' href='/images/favicon.ico' />
 
+{%- if page.url == "/" or page.url == "/index.html" -%}
+<link rel="preload" as="image" href="/images/frontpage/banner.png" fetchpriority="high">
+<link rel="preload" as="image" href="/images/icons/ic-32-fire.svg" type="image/svg+xml" media="(min-width: 801px)">
+<link rel="preload" as="image" href="/images/icons/ic-32-star.svg" type="image/svg+xml" media="(min-width: 801px)">
+<link rel="preload" as="image" href="/images/icons/ic-32-newest.svg" type="image/svg+xml" media="(min-width: 801px)">
+<link rel="preload" as="image" href="/images/icons/ic-32-magglass.svg" type="image/svg+xml" media="(min-width: 801px)">
+{%- endif -%}
+
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/css/main.css">
 <!-- end CSS -->
