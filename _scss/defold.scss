@@ -16,6 +16,9 @@
 
 	--defold-orange: #fd6623;
 	--defold-green: #57ab5a;
+
+	/* Controls the large showcase image frame ratio (width / height). */
+	--showcase-full-image-ratio: 2000 / 750;
 }
 
 
@@ -350,6 +353,18 @@
 	color: white;
 }
 
+/* Frontpage feature icons are external SVG images, so force them to white via filter. */
+.frontpage-feature-icons img {
+	filter: brightness(0) invert(1);
+}
+
+.frontpage-feature-icons a,
+.frontpage-feature-icons a:hover,
+.frontpage-feature-icons a:focus,
+.frontpage-feature-icons a:active {
+	text-decoration: none !important;
+}
+
 /*******************************************************************************
 * Skeleton.css overrides
 ******************************************************************************/
@@ -418,6 +433,10 @@ h5.compact {
 
 p.compact {
 	margin-bottom: 1.5rem;
+}
+
+.showcase-game-copy > .showcase-game-title {
+	margin-bottom: 2rem;
 }
 
 /*******************************************************************************
@@ -920,9 +939,239 @@ img[alt="icon"] {
 ******************************************************************************/
 
 .textshadow {
-	text-shadow: 3px 3px 3px black;
+	text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
+/*******************************************************************************
+* Main header
+******************************************************************************/
+.main-header {
+	font-size: clamp(3.2rem, 5.2vw, 6.5rem);
+	margin-top: clamp(1rem, 2vw, 3rem);
+	margin-bottom: clamp(1.5rem, 3vw, 5rem);
+}
+
+.frontpage-top-banner {
+	--frontpage-content-scale: 1;
+	--frontpage-side-image-scale: calc(var(--frontpage-content-scale) * 0.6);
+	--frontpage-side-image-bleed: clamp(0px, calc((100vw - 1200px) * 0.5), 360px);
+	box-sizing: border-box;
+	position: relative;
+	overflow: hidden;
+	height: 750px;
+	padding-top: 0;
+	padding-bottom: 0;
+	background-color: #0f1216;
+	background-image: url("/images/frontpage/banner_bg.png");
+	background-size: auto 100%;
+	background-repeat: repeat-x;
+	background-position: top center;
+
+	.container {
+		position: relative;
+		z-index: 1;
+		height: 100%;
+	}
+
+	.frontpage-side-art {
+		position: absolute;
+		bottom: 0;
+		pointer-events: none;
+		z-index: 0;
+		width: auto;
+		max-width: none;
+		display: block;
+	}
+
+	.frontpage-side-art-left {
+		left: calc((-210px * var(--frontpage-side-image-scale)) - var(--frontpage-side-image-bleed));
+		height: calc((538px * var(--frontpage-side-image-scale)) + (var(--frontpage-side-image-bleed) * 0.18));
+	}
+
+	.frontpage-side-art-right {
+		right: calc((-80px * var(--frontpage-side-image-scale)) - var(--frontpage-side-image-bleed));
+		height: calc((567px * var(--frontpage-side-image-scale)) + (var(--frontpage-side-image-bleed) * 0.14));
+	}
+
+	.frontpage-top-banner-content {
+		position: relative;
+		z-index: 1;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		padding-left: clamp(1.2rem, 3.2vw, 3.5rem);
+		padding-right: clamp(1.2rem, 3.2vw, 3.5rem);
+		transform: scale(var(--frontpage-content-scale));
+		transform-origin: top center;
+	}
+
+	.frontpage-feature-icons {
+		display: flex;
+		justify-content: space-between;
+		gap: clamp(0.5rem, 1vw, 1.25rem);
+		margin-top: clamp(0.5rem, 1vw, 1.25rem);
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 980px;
+	}
+
+	.frontpage-feature-icons .columns.three {
+		float: none;
+		width: 25%;
+		margin-left: 0;
+	}
+
+		.frontpage-feature-icons h4 {
+			font-size: clamp(1.5rem, 1.85vw, 2.35rem);
+			line-height: 1.2;
+			margin-bottom: clamp(0.7rem, 1.1vw, 1.3rem);
+		}
+
+		.frontpage-feature-icons img {
+			width: clamp(38px, 4.1vw, 66px) !important;
+			height: auto;
+		}
+
+		.frontpage-top-banner-cta {
+			margin-top: clamp(2.8rem, 5.2vw, 7.0rem);
+			margin-bottom: clamp(0.75rem, 1.6vw, 2rem);
+		}
+
+		.frontpage-top-banner-cta .button {
+			height: clamp(34px, 3.1vw, 38px) !important;
+			line-height: clamp(34px, 3.1vw, 38px) !important;
+			padding: 0 clamp(16px, 2.2vw, 30px) !important;
+			font-size: clamp(9px, 0.85vw, 11px);
+			letter-spacing: clamp(0.04rem, 0.08vw, 0.1rem);
+		}
+
+		.frontpage-top-download-cta .button.primary {
+			animation: frontpage-download-cta-glow 2.8s ease-in-out infinite;
+			will-change: box-shadow;
+		}
+
+		.frontpage-top-download-cta .button.primary:hover,
+		.frontpage-top-download-cta .button.primary:focus-visible {
+			animation-name: frontpage-download-cta-glow-hover;
+			animation-duration: 1.9s;
+		}
+
+		.frontpage-top-download-cta .button.primary:active {
+			animation: none;
+			box-shadow: none;
+		}
+
+		.columns.twelve > img[alt="Defold Logo"] {
+			width: clamp(110px, 9vw, 160px);
+			height: auto;
+		}
+	}
+
+.section.narrow.frontpage-top-banner {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+@media (max-aspect-ratio: 16/10) and (min-width: 950px) {
+	.frontpage-top-banner {
+		--frontpage-content-scale: 0.93;
+	}
+}
+
+@media (max-aspect-ratio: 3/2) and (min-width: 950px) {
+	.frontpage-top-banner {
+		--frontpage-content-scale: 0.87;
+	}
+}
+
+@keyframes frontpage-download-cta-glow {
+	0%,
+	100% {
+		box-shadow: 0 0 8px rgba(255, 255, 255, 0.22), 0 0 18px rgba(255, 255, 255, 0.14);
+	}
+	50% {
+		box-shadow: 0 0 16px rgba(255, 255, 255, 0.48), 0 0 32px rgba(255, 255, 255, 0.3);
+	}
+}
+
+@keyframes frontpage-download-cta-glow-hover {
+	0%,
+	100% {
+		box-shadow: 0 0 14px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.34);
+	}
+	50% {
+		box-shadow: 0 0 24px rgba(255, 255, 255, 0.85), 0 0 50px rgba(255, 255, 255, 0.62);
+	}
+}
+
+@media (max-width: 949px) {
+	.main-header {
+		font-size: clamp(2.5rem, 8vw, 4rem);
+		margin-top: 0.75rem;
+		margin-bottom: 1rem;
+	}
+
+	.frontpage-top-banner {
+		height: max(520px, 68vw);
+	}
+
+	.frontpage-top-banner .frontpage-side-art {
+		display: none;
+	}
+
+	.frontpage-top-banner .frontpage-feature-icons img {
+		display: none !important;
+	}
+
+	.frontpage-top-banner .frontpage-feature-icons {
+		display: block;
+	}
+
+	.frontpage-top-banner .frontpage-feature-icons .columns.three {
+		float: none;
+		width: 100%;
+		margin-left: 0;
+		margin-bottom: 0.75rem;
+	}
+
+	.frontpage-top-banner .frontpage-feature-icons h4 {
+		font-size: clamp(1.65rem, 6.2vw, 2.3rem);
+		margin-bottom: 0.75rem;
+	}
+
+		.frontpage-top-banner .frontpage-top-banner-cta {
+			margin-top: clamp(2rem, 7vw, 3.2rem);
+			margin-bottom: 1.25rem;
+		}
+	}
+
+.no-decoration {
+	text-decoration: none;
+}
+
+.feature-heading {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.feature-heading-icon {
+	width: 48px;
+	height: 48px;
+	flex: 0 0 48px;
+	margin-right: 16px;
+}
+
+.features-section .feature-row-spaced {
+	margin-top: 8rem;
+	margin-bottom: 8rem;
+}
+
+.features-section .feature-cta-row {
+	margin-top: 4rem;
+	margin-bottom: 6rem;
+}
 
 /*******************************************************************************
 * Typography
@@ -1044,6 +1293,165 @@ ul.checkmark li:before {
 ******************************************************************************/
 .game a {
 	text-decoration: none;
+}
+
+.showcase-full-media {
+	display: block;
+	width: 100%;
+	aspect-ratio: var(--showcase-full-image-ratio);
+	overflow: hidden;
+}
+
+.showcase-full-media img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
+	border-radius: 0px;
+	background-color: transparent;
+}
+
+.showcase-game-meta {
+	width: 100%;
+}
+
+.showcase-game-meta td:last-child {
+	text-align: right;
+}
+
+.showcase-game-details-section {
+	padding-top: 1.5rem;
+	padding-bottom: 0;
+}
+
+.showcase-half-meta {
+	width: 100%;
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.showcase-half-meta td:last-child {
+	text-align: right;
+}
+
+.showcase-feature-video {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	border-radius: 8px;
+	background-color: #000;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.showcase-feature-video iframe {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+.showcase-content-intro {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
+
+.showcase-content-intro p {
+	margin-bottom: 0;
+}
+
+.frontpage-showcase-carousel {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 200 / 75;
+	overflow: hidden;
+	border-radius: 0px;
+	background-color: transparent;
+}
+
+.frontpage-showcase-section {
+	background-image: url("/images/hero/testimonials-background-0.5x-grey.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.frontpage-section-heading {
+	margin-top: 5rem;
+	margin-bottom: 4rem;
+}
+
+.frontpage-showcase-slide {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 700ms ease-in-out;
+}
+
+.frontpage-showcase-slide.active {
+	opacity: 1;
+	pointer-events: auto;
+	z-index: 2;
+}
+
+.frontpage-showcase-slide img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
+	display: block;
+}
+
+.game-carousel-dots {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.65rem;
+}
+
+.frontpage-showcase-dots {
+	position: absolute;
+	left: 50%;
+	bottom: 1rem;
+	transform: translateX(-50%);
+	z-index: 3;
+	padding: 0.3rem 0.6rem;
+	border-radius: 999px;
+	background: rgba(0, 0, 0, 0.35);
+}
+
+.game-carousel-dot {
+	width: 12px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border-radius: 50%;
+	border: 1px solid var(--lighter);
+	background-color: transparent;
+	cursor: pointer;
+	transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.game-carousel-dot.active,
+.game-carousel-dot:hover {
+	background-color: var(--lightest);
+	border-color: var(--lightest);
+}
+
+.game-carousel-dot:focus-visible {
+	outline: 2px solid var(--defold-blue);
+	outline-offset: 2px;
+}
+
+.frontpage-more-games-section {
+	margin-top: 7rem;
+	margin-top: 5rem;
+}
+
+#frontpage-more-games-button {
+	margin-top: 3.5rem;
+	margin-bottom: 5rem;
 }
 
 

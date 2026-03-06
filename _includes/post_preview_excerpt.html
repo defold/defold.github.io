@@ -1,4 +1,13 @@
-
-<p><b>{{ include.post.title }}</b><br/>
+<p>
+{%- if include.title_link -%}
+<b><a href="{{ include.post.url }}">{{ include.post.title }}</a></b><br/>
+{%- else -%}
+<b>{{ include.post.title }}</b><br/>
+{%- endif -%}
 <small>Published on {{ include.post.date | date: "%b %d, %Y" }}</small><br/>
-{{ include.post.excerpt }} - <a href="{{ include.post.url }}">READ</a></p>
+{%- if include.title_link -%}
+{{ include.post.excerpt }}
+{%- else -%}
+{{ include.post.excerpt }} - <a href="{{ include.post.url }}">READ</a>
+{%- endif -%}
+</p>

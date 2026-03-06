@@ -3,12 +3,12 @@
 	<a href="{{ game.url }}" target="_blank">
 		<img src="/images/games/{{ game.images.half }}" class="hoverflash" width="100%" loading="lazy"/>
 	</a>
-	<br/><br/>
-	<span class="compact">
-		<h5>{{ game.name }}</h5>
-		<p>{{ game.description }}</p>
-	</span>
-	<table>
+		<br/><br/>
+			<div class="compact showcase-game-copy">
+				<h4 class="showcase-game-title">{{ game.name }}</h4>
+				<p>{{ game.description }}</p>
+			</div>
+		<table class="showcase-half-meta">
 		<tr>
 			<td>Developer</td>
 			<td class="lightest-text">{{ game.developer }}</td>
@@ -19,19 +19,27 @@
 			<td class="lightest-text">{{ game.publisher }}</td>
 		</tr>
 		{%- endif -%}
-		{%- if game.releasedate and game.releasedate != "" -%}
-		<tr>
-			<td>Release date</td>
-			<td class="lightest-text">{{ game.releasedate }}</td>
-		</tr>
-		{%- endif -%}
-		<tr>
-			<td>Platforms</td>
-			<td class="lightest-text">{{ game.platforms }}</td>
-		</tr>
-		{%- if game.extrainfo and game.extrainfo != "" -%}
-		<tr>
-			<td colspan="2">{{ game.extrainfo }}</td>
+			{%- if game.releasedate and game.releasedate != "" -%}
+			<tr>
+				<td>Release date</td>
+				<td class="lightest-text">{{ game.releasedate }}</td>
+			</tr>
+			{%- endif -%}
+			{%- if game.license and game.license != "" -%}
+			<tr>
+				<td>License</td>
+				<td class="lightest-text">{{ game.license }}</td>
+			</tr>
+			{%- endif -%}
+			{%- if game.platforms and game.platforms != "" -%}
+			<tr>
+				<td>Platforms</td>
+				<td class="lightest-text">{{ game.platforms }}</td>
+			</tr>
+			{%- endif -%}
+			{%- if game.extrainfo and game.extrainfo != "" -%}
+			<tr>
+				<td colspan="2">{{ game.extrainfo }}</td>
 		</tr>
 		{%- endif -%}
 	</table>
