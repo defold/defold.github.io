@@ -946,43 +946,186 @@ img[alt="icon"] {
 * Main header
 ******************************************************************************/
 .main-header {
-	font-size: 6.5rem;
-	margin-top: 30px;
-	margin-bottom: 50px;
+	font-size: clamp(3.2rem, 5.2vw, 6.5rem);
+	margin-top: clamp(1rem, 2vw, 3rem);
+	margin-bottom: clamp(1.5rem, 3vw, 5rem);
 }
 
 .frontpage-top-banner {
+	--frontpage-content-scale: 1;
+	--frontpage-side-image-scale: calc(var(--frontpage-content-scale) * 0.6);
+	--frontpage-side-image-bleed: clamp(0px, calc((100vw - 1200px) * 0.5), 360px);
+	box-sizing: border-box;
+	position: relative;
+	overflow: hidden;
 	height: 750px;
-	background-size: auto 750px;
+	padding-top: 0;
+	padding-bottom: 0;
+	background-color: #0f1216;
+	background-image: url("/images/frontpage/banner_bg.png");
+	background-size: auto 100%;
 	background-repeat: repeat-x;
 	background-position: top center;
 
 	.container {
+		position: relative;
+		z-index: 1;
+		height: 100%;
+	}
+
+	.frontpage-side-art {
+		position: absolute;
+		bottom: 0;
+		pointer-events: none;
+		z-index: 0;
+		width: auto;
+		max-width: none;
+		display: block;
+	}
+
+	.frontpage-side-art-left {
+		left: calc((-210px * var(--frontpage-side-image-scale)) - var(--frontpage-side-image-bleed));
+		height: calc((538px * var(--frontpage-side-image-scale)) + (var(--frontpage-side-image-bleed) * 0.18));
+	}
+
+	.frontpage-side-art-right {
+		right: calc((-80px * var(--frontpage-side-image-scale)) - var(--frontpage-side-image-bleed));
+		height: calc((567px * var(--frontpage-side-image-scale)) + (var(--frontpage-side-image-bleed) * 0.14));
+	}
+
+	.frontpage-top-banner-content {
+		position: relative;
+		z-index: 1;
 		height: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
+		padding-left: clamp(1.2rem, 3.2vw, 3.5rem);
+		padding-right: clamp(1.2rem, 3.2vw, 3.5rem);
+		transform: scale(var(--frontpage-content-scale));
+		transform-origin: top center;
 	}
 
-		.frontpage-feature-icons {
-			margin-top: 20px;
-			margin-left: 30px;
-			margin-right: 30px;
+	.frontpage-feature-icons {
+		display: flex;
+		justify-content: space-between;
+		gap: clamp(0.5rem, 1vw, 1.25rem);
+		margin-top: clamp(0.5rem, 1vw, 1.25rem);
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 980px;
+	}
+
+	.frontpage-feature-icons .columns.three {
+		float: none;
+		width: 25%;
+		margin-left: 0;
+	}
+
+		.frontpage-feature-icons h4 {
+			font-size: clamp(1.5rem, 1.85vw, 2.35rem);
+			line-height: 1.2;
+			margin-bottom: clamp(0.7rem, 1.1vw, 1.3rem);
+		}
+
+		.frontpage-feature-icons img {
+			width: clamp(38px, 4.1vw, 66px) !important;
+			height: auto;
 		}
 
 		.frontpage-top-banner-cta {
-			margin-top: 7rem;
-			margin-bottom: 3rem;
+			margin-top: clamp(2.8rem, 5.2vw, 7.0rem);
+			margin-bottom: clamp(0.75rem, 1.6vw, 2rem);
+		}
+
+		.frontpage-top-banner-cta .button {
+			height: clamp(34px, 3.1vw, 38px) !important;
+			line-height: clamp(34px, 3.1vw, 38px) !important;
+			padding: 0 clamp(16px, 2.2vw, 30px) !important;
+			font-size: clamp(9px, 0.85vw, 11px);
+			letter-spacing: clamp(0.04rem, 0.08vw, 0.1rem);
+		}
+
+		.frontpage-top-download-cta .button.primary {
+			animation: frontpage-download-cta-glow 2.8s ease-in-out infinite;
+			will-change: box-shadow;
+		}
+
+		.frontpage-top-download-cta .button.primary:hover,
+		.frontpage-top-download-cta .button.primary:focus-visible {
+			animation-name: frontpage-download-cta-glow-hover;
+			animation-duration: 1.9s;
+		}
+
+		.frontpage-top-download-cta .button.primary:active {
+			animation: none;
+			box-shadow: none;
+		}
+
+		.columns.twelve > img[alt="Defold Logo"] {
+			width: clamp(110px, 9vw, 160px);
+			height: auto;
 		}
 	}
 
+.section.narrow.frontpage-top-banner {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+@media (max-aspect-ratio: 16/10) and (min-width: 950px) {
+	.frontpage-top-banner {
+		--frontpage-content-scale: 0.93;
+	}
+}
+
+@media (max-aspect-ratio: 3/2) and (min-width: 950px) {
+	.frontpage-top-banner {
+		--frontpage-content-scale: 0.87;
+	}
+}
+
+@keyframes frontpage-download-cta-glow {
+	0%,
+	100% {
+		box-shadow: 0 0 8px rgba(255, 255, 255, 0.22), 0 0 18px rgba(255, 255, 255, 0.14);
+	}
+	50% {
+		box-shadow: 0 0 16px rgba(255, 255, 255, 0.48), 0 0 32px rgba(255, 255, 255, 0.3);
+	}
+}
+
+@keyframes frontpage-download-cta-glow-hover {
+	0%,
+	100% {
+		box-shadow: 0 0 14px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.34);
+	}
+	50% {
+		box-shadow: 0 0 24px rgba(255, 255, 255, 0.85), 0 0 50px rgba(255, 255, 255, 0.62);
+	}
+}
+
 @media (max-width: 949px) {
 	.main-header {
-		font-size: 4rem;
+		font-size: clamp(2.5rem, 8vw, 4rem);
+		margin-top: 0.75rem;
+		margin-bottom: 1rem;
+	}
+
+	.frontpage-top-banner {
+		height: max(520px, 68vw);
+	}
+
+	.frontpage-top-banner .frontpage-side-art {
+		display: none;
 	}
 
 	.frontpage-top-banner .frontpage-feature-icons img {
 		display: none !important;
+	}
+
+	.frontpage-top-banner .frontpage-feature-icons {
+		display: block;
 	}
 
 	.frontpage-top-banner .frontpage-feature-icons .columns.three {
@@ -993,14 +1136,15 @@ img[alt="icon"] {
 	}
 
 	.frontpage-top-banner .frontpage-feature-icons h4 {
+		font-size: clamp(1.65rem, 6.2vw, 2.3rem);
 		margin-bottom: 0.75rem;
 	}
 
-	.frontpage-top-banner .frontpage-top-banner-cta {
-		margin-top: 2rem;
-		margin-bottom: 2rem;
+		.frontpage-top-banner .frontpage-top-banner-cta {
+			margin-top: clamp(2rem, 7vw, 3.2rem);
+			margin-bottom: 1.25rem;
+		}
 	}
-}
 
 .no-decoration {
 	text-decoration: none;

@@ -5,37 +5,41 @@ nav: floating
 heatmap: true
 ---
 
-<div class="section narrow lightest-text frontpage-top-banner" style="background-image:  url('/images/frontpage/banner.png'); background-blend-mode: darken; background-color: rgb(1,1,1,0); background-position: top;">
+<div class="section narrow lightest-text frontpage-top-banner">
 	<div class="container">
-		<div class="row center">
-			<div class="columns twelve">
-				<br/>
-				<img src="/images/logo/defold/logo/logo-ver-classic-white-160.png" alt="Defold Logo" fetchpriority="high" decoding="async"/>
-				<br/>
-				<h1 class="textshadow main-header"><b>UNLEASH YOUR IMAGINATION</b></h1>
+		<img class="frontpage-side-art frontpage-side-art-left" src="/images/frontpage/banner_left.png" alt="" aria-hidden="true" decoding="async"/>
+		<img class="frontpage-side-art frontpage-side-art-right" src="/images/frontpage/banner_right.png" alt="" aria-hidden="true" decoding="async"/>
+		<div class="frontpage-top-banner-content">
+			<div class="row center">
+				<div class="columns twelve">
+					<br/>
+					<img src="/images/logo/defold/logo/logo-ver-classic-white-160.png" alt="Defold Logo" fetchpriority="high" decoding="async"/>
+					<br/>
+					<h1 class="textshadow main-header"><b>UNLEASH YOUR IMAGINATION</b></h1>
+				</div>
 			</div>
-		</div>
-		<div class="row center frontpage-feature-icons">
-			<div class="columns three">
-				<a href="#free-forever"><h4 class="textshadow no-decoration"><b>Free&nbsp;Forever</b></h4></a>
-				<a href="#free-forever"><img src="/images/icons/ic-32-fire.svg" width="40%"/></a>
+			<div class="row center frontpage-feature-icons">
+				<div class="columns three">
+					<a href="#free-forever"><h4 class="textshadow no-decoration"><b>Free&nbsp;Forever</b></h4></a>
+					<a href="#free-forever"><img src="/images/icons/ic-32-fire.svg" width="40%"/></a>
+				</div>
+				<div class="columns three">
+					<a href="#production-ready"><h4 class="textshadow no-decoration"><b>Battle&nbsp;Tested</b></h4></a>
+					<a href="#production-ready"><img src="/images/icons/ic-32-star.svg" width="40%"/></a>
+				</div>
+				<div class="columns three">
+					<a href="#cross-platform"><h4 class="textshadow no-decoration"><b>Cross&nbsp;Platform</b></h4></a>
+					<a href="#cross-platform"><img src="/images/icons/ic-32-newest.svg" width="40%"/></a>
+				</div>
+				<div class="columns three">
+					<a href="/open"><h4 class="textshadow no-decoration"><b>Source&nbsp;Available</b></h4></a>
+					<a href="/open"><img src="/images/icons/ic-32-magglass.svg" width="40%"/></a>
+				</div>
 			</div>
-			<div class="columns three">
-				<a href="#production-ready"><h4 class="textshadow no-decoration"><b>Battle&nbsp;Tested</b></h4></a>
-				<a href="#production-ready"><img src="/images/icons/ic-32-star.svg" width="40%"/></a>
-			</div>
-			<div class="columns three">
-				<a href="#cross-platform"><h4 class="textshadow no-decoration"><b>Cross&nbsp;Platform</b></h4></a>
-				<a href="#cross-platform"><img src="/images/icons/ic-32-newest.svg" width="40%"/></a>
-			</div>
-			<div class="columns three">
-				<a href="/open"><h4 class="textshadow no-decoration"><b>Source&nbsp;Available</b></h4></a>
-				<a href="/open"><img src="/images/icons/ic-32-magglass.svg" width="40%"/></a>
-			</div>
-		</div>
-		<div class="row center frontpage-top-banner-cta">
-			<div class="columns twelve">
-				{% include primary_button.html link="/download" text="Download now for free" %}
+			<div class="row center frontpage-top-banner-cta frontpage-top-download-cta">
+				<div class="columns twelve">
+					{% include primary_button.html link="/download" text="DOWNLOAD NOW" %}
+				</div>
 			</div>
 		</div>
 	</div>
