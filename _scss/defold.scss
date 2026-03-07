@@ -1335,6 +1335,27 @@ ul.checkmark li:before {
 	text-align: right;
 }
 
+@media (max-width: 600px) {
+	.grid-400 {
+		grid-template-columns: 1fr;
+		grid-gap: 2rem;
+	}
+
+	.grid-400 > .game {
+		min-width: 0;
+	}
+
+	.showcase-half-meta {
+		table-layout: fixed;
+	}
+
+	.showcase-half-meta td {
+		min-width: 0;
+		overflow-wrap: anywhere;
+		word-break: break-word;
+	}
+}
+
 .showcase-feature-video {
 	width: 100%;
 	aspect-ratio: 16 / 9;
@@ -1866,7 +1887,7 @@ ul.checkmark li:before {
 .grid-400 {
 	@extend .grid;
 	grid-gap: 3rem;
-	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
 }
 
 /*******************************************************************************
