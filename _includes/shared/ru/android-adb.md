@@ -1,26 +1,26 @@
-The `adb` command line tool is an easy to use and versatile program that is used to interact with Android devices. You can download and install `adb` as part of the Android SDK Platform-Tools, for Mac, Linux or Windows.
+Инструмент командной строки `adb` — это удобная и универсальная программа для взаимодействия с устройствами Android. Вы можете скачать и установить `adb` как часть Android SDK Platform-Tools для Mac, Linux или Windows.
 
-Download the Android SDK Platform-Tools from: https://developer.android.com/studio/releases/platform-tools. You find the *adb* tool in */platform-tools/*. Alternatively, platform specific packages can be installed through respective package managers.
+Скачать Android SDK Platform-Tools можно здесь: https://developer.android.com/studio/releases/platform-tools. Инструмент *adb* находится в каталоге */platform-tools/*. Также можно установить платформенные пакеты через соответствующие менеджеры пакетов.
 
-On Ubuntu Linux:
+В Ubuntu Linux:
 
 ```
 $ sudo apt-get install android-tools-adb
 ```
 
-On Fedora 18/19:
+В Fedora 18/19:
 
 ```
 $ sudo yum install android-tools
 ```
 
-On macOS (Homebrew)
+В macOS (Homebrew)
 
 ```
 $ brew cask install android-platform-tools
 ```
 
-You can verify that `adb` works by connecting your Android device to your computer via USB and issue the following command:
+Проверить, что `adb` работает, можно так: подключите Android-устройство к компьютеру по USB и выполните следующую команду:
 
 ```
 $ adb devices
@@ -28,6 +28,6 @@ List of devices attached
 31002535c90ef000    device
 ```
 
-If your device does not show up, verify that you have enabled *USB debugging* on the Android device. Open the device *Settings* and look for *Developer options* (or *Development*).
+Если устройство не появляется в списке, убедитесь, что на Android-устройстве включена *USB debugging*. Откройте *Settings* устройства и найдите *Developer options* (или *Development*).
 
 ![Enable USB debugging](../images/android/usb_debugging.png)

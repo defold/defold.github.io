@@ -1,9 +1,9 @@
-## Heap size (HTML5)
-The heap size of a Defold HTML5 game can be configured from the [`heap_size` field](/manuals/project-settings/#heap-size) in *game.project*. Make sure to optimize memory usage of your game and set a minimal heap size.
+## Размер heap (HTML5)
+Размер heap у HTML5-игры Defold можно настроить через поле [`heap_size`](/manuals/project-settings/#heap-size) в *game.project*. Постарайтесь оптимизировать использование памяти в игре и выставить минимально достаточный размер heap.
 
-For small games, 32 MB is an achievable heap size. For larger games, aim for 64–128 MB. If, for example, you're at 58 MB and further optimization isn't feasible, you can settle on 64 MB without overthinking it. There’s no strict target size — it depends on the game. Just aim for smaller sizes, ideally in steps of powers of two. 
+Для небольших игр достижим размер heap в 32 МБ. Для более крупных игр ориентируйтесь на 64–128 МБ. Если, например, у вас получается 58 МБ и дальнейшая оптимизация уже нецелесообразна, можно остановиться на 64 МБ и не усложнять. Жёсткой целевой величины нет — всё зависит от игры. Просто старайтесь делать размер меньше, желательно шагами по степеням двойки.
 
-To check current heap usage you can launch your game and play the game in the most "resource heavy" level or section and monitor memory usage:
+Чтобы проверить текущее использование heap, запустите игру, перейдите к самому "тяжёлому" по ресурсам уровню или разделу и отслеживайте использование памяти:
 
 ```lua
 if html5 then
@@ -12,10 +12,10 @@ if html5 then
 end
 ```
 
-You can also open the developer tools of your browser and write the following in the console:
+Также можно открыть инструменты разработчика в браузере и выполнить в консоли следующее:
 
 ```js
 HEAP8.length / 1024 / 1024
 ```
 
-If the memory usage remains at 32 MB, that's great! If not, follow the steps to [optimize the size of the engine itself and large assets such as sounds and textures](/manuals/optimization-size).
+Если использование памяти остаётся на уровне 32 МБ — отлично. Если нет, выполните шаги по [оптимизации размера самого движка и крупных ресурсов, таких как звуки и текстуры](/manuals/optimization-size).

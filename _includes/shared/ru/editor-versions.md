@@ -1,11 +1,11 @@
-## Editor 1 and 2
+## Редакторы 1 и 2
 
-We are currently transitioning to Defold editor 2, which right now is in beta. Most new documentation we produce is for the new editor and we will eventually update all documentation, but that process will take time. You can recognize the editor version in screenshots from the color theme.
+Сейчас мы переходим на Defold editor 2, который на данный момент находится в стадии beta. Большая часть новой документации уже делается для нового редактора, и со временем мы обновим всю документацию, но это займёт время. Версию редактора на скриншотах можно определить по цветовой теме.
 
-Editor 2 features a nice, dark theme:
+У editor 2 приятная тёмная тема:
 ![editor 2](/shared/images/editor2.png)
 
-Editor 1 has a standard light theme:
+У editor 1 стандартная светлая тема:
 ![editor 1](/shared/images/editor1.png)
 
-You are very welcome to [try the new editor](https://www.defold.com/editor-two/).
+Будем рады, если вы [попробуете новый редактор](https://www.defold.com/editor-two/).

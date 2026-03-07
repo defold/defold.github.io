@@ -1,13 +1,13 @@
-#### Q: Why is the Defold editor super small when run on a 4k or HiDPI monitor?
+#### Q: Почему редактор Defold выглядит очень маленьким на 4k- или HiDPI-мониторе?
 
-A: If you are using GNOME it's possible to change the scaling factor before running Defold. [source](https://unix.stackexchange.com/a/552411)
+A: Если вы используете GNOME, можно изменить коэффициент масштабирования перед запуском Defold. [источник](https://unix.stackexchange.com/a/552411)
 
 ```bash
 $ gsettings set org.gnome.desktop.interface scaling-factor 2
 $ ./Defold
 ```
 
-A: An alternative solution, especially when you wish to scale up by a fraction, is to modify the `Defold/config` file and on the `vmargs` line add `glass.gtk.uiScale`: [source](https://forum.defold.com/t/4k-hidpi-monitor-support-solved/64108/12?u=britzl)
+A: Альтернативный вариант, особенно если вам нужно масштабирование с дробным коэффициентом, — изменить файл `Defold/config` и добавить `glass.gtk.uiScale` в строку `vmargs`: [источник](https://forum.defold.com/t/4k-hidpi-monitor-support-solved/64108/12?u=britzl)
 
 ```
 vmargs = -Dglass.gtk.uiScale=1.5,-Dfile.encoding=UTF-8,...
@@ -15,32 +15,32 @@ vmargs = -Dglass.gtk.uiScale=175%,-Dfile.encoding=UTF-8,...
 vmargs = -Dglass.gtk.uiScale=192dpi,-Dfile.encoding=UTF-8,...
 ```
 
-More on this value in the [Arch Linux HiDPI wiki article](https://wiki.archlinux.org/title/HiDPI#JavaFX).
+Подробнее об этом значении смотрите в [статье Arch Linux HiDPI wiki](https://wiki.archlinux.org/title/HiDPI#JavaFX).
 
-A: If you are using KDE it's possible to set the `GDK_SCALE`:
+A: Если вы используете KDE, можно задать `GDK_SCALE`:
 
 ```bash
 $ GDK_SCALE=2 ./Defold
 ```
 
-#### Q: Why does mouse clicks on Elementary OS go through the editor onto whatever is below?
+#### Q: Почему клики мышью в Elementary OS проходят через редактор на окно под ним?
 
-A: Start the editor like this:
+A: Запустите редактор так:
 
 ```bash
 $ GTK_CSD=0 ./Defold
 ```
 
 
-#### Q: The Defold editor crashes when opening a collection or game object and the crash refers to `com.jogamp.opengl`
+#### Q: Редактор Defold падает при открытии collection или game object, и в сообщении об ошибке упоминается `com.jogamp.opengl`
 
-A: On certain distributions (like Ubuntu 18) there is an issue with the version of `jogamp`/`jogl` Defold uses vs. the version of [Mesa](https://docs.mesa3d.org/) on the system. You can override which GL version that gets reported when calling `glGetString(GL_VERSION)` by setting the `MESA_GL_VERSION_OVERRIDE` to 2.1 or a larger value but less than or equal to the version of your driver. You can check which is the maximum OpenGL version your driver supports using `glxinfo`:
+A: На некоторых дистрибутивах (например, Ubuntu 18) есть проблема с версией `jogamp`/`jogl`, используемой в Defold, и версией [Mesa](https://docs.mesa3d.org/) в системе. Вы можете переопределить GL-версию, которая возвращается при вызове `glGetString(GL_VERSION)`, установив `MESA_GL_VERSION_OVERRIDE` в 2.1 или в большее значение, но не выше версии вашего драйвера. Проверить максимальную поддерживаемую версию OpenGL драйвера можно через `glxinfo`:
 
 ```bash
 glxinfo | grep version
 ```
 
-Example output (look for "OpenGL version string: x.y"):
+Пример вывода (ищите "OpenGL version string: x.y"):
 
 ```
 server glx version string: 1.4
@@ -59,7 +59,7 @@ OpenGL ES profile shading language version string: OpenGL ES GLSL ES 3.20
 GL_EXT_shader_implicit_conversions, GL_EXT_shader_integer_mix,
 ```
 
-Use version 2.1 or version matching your graphics driver:
+Используйте версию 2.1 или версию, совпадающую с версией вашего графического драйвера:
 
 ```bash
 $ MESA_GL_VERSION_OVERRIDE=2.1 ./Defold
@@ -70,57 +70,57 @@ $ MESA_GL_VERSION_OVERRIDE=4.6 ./Defold
 ```
 
 
-#### Q: Why am I getting "`com.jogamp.opengl.GLException: Graphics configuration failed`" when launching Defold?
+#### Q: Почему при запуске Defold я получаю "`com.jogamp.opengl.GLException: Graphics configuration failed`"?
 
-A: On certain distributions (for instance Ubuntu 20.04) there is an issue with the new [Mesa](https://docs.mesa3d.org/) drivers (Iris) when running Defold. You can try using an older driver version when running Defold:
+A: На некоторых дистрибутивах (например, Ubuntu 20.04) есть проблема с новыми драйверами [Mesa](https://docs.mesa3d.org/) (Iris) при запуске Defold. Можно попробовать использовать более старую версию драйвера при запуске Defold:
 
 ```bash
 $ MESA_LOADER_DRIVER_OVERRIDE=i965 ./Defold
 ```
 
 
-#### Q: The Defold editor crashes when opening a collection or game object and the crash refers to `libffi.so`
+#### Q: Редактор Defold падает при открытии collection или game object, и в сообщении об ошибке упоминается `libffi.so`
 
-A: The [libffi](https://sourceware.org/libffi/) version of your distribution and the one required by Defold (version 6 or 7) does not match. Make sure `libffi.so.6` or `libffi.so.7` is installed under `/usr/lib/x86_64-linux-gnu`. You can download `libffi.so.7` like this:  
+A: Версия [libffi](https://sourceware.org/libffi/) в вашем дистрибутиве не совпадает с той, которая нужна Defold (версия 6 или 7). Убедитесь, что `libffi.so.6` или `libffi.so.7` установлены в `/usr/lib/x86_64-linux-gnu`. Скачать `libffi.so.7` можно так:  
 
 ```bash
 $ wget http://ftp.br.debian.org/debian/pool/main/libf/libffi/libffi7_3.3-6_amd64.deb
 $ sudo dpkg -i libffi7_3.3-6_amd64.deb
 ```
 
-Next you specify the path to this version in the `LD_PRELOAD` environment variable when running Defold:
+Затем укажите путь к этой версии в переменной окружения `LD_PRELOAD` при запуске Defold:
 
 ```bash
 $ LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libffi.so.7 ./Defold
 ```
 
 
-#### Q: My OpenGL drivers are outdated. Can I still use Defold?
+#### Q: Мои OpenGL-драйверы устарели. Могу ли я всё ещё использовать Defold?
 
-A: Yes, it might be possible to use Defold if you enable software rendering. You can enable software rendering by setting the `LIBGL_ALWAYS_SOFTWARE` environment variable to 1:
+A: Да, возможно, вы сможете использовать Defold, если включите software rendering. Это делается через установку переменной окружения `LIBGL_ALWAYS_SOFTWARE` в значение 1:
 
 ```bash
 $ LIBGL_ALWAYS_SOFTWARE=1 ./Defold
 ```
 
 
-#### Q: Why doesn't my Defold game start when I try to run it on Linux?
+#### Q: Почему моя игра Defold не запускается, когда я пытаюсь запустить её на Linux?
 
-A: Check the console output in the editor. If you get the following message:
+A: Проверьте вывод консоли в редакторе. Если вы видите следующее сообщение:
 
 ```
 dmengine: error while loading shared libraries: libopenal.so.1: cannot open shared object file: No such file or directory
 ```
 
-Then you need to install *`libopenal1`*. The package name varies between distributions, and in some cases you might have to install the *`openal`* and *`openal-dev`* or *`openal-devel`* packages.
+Тогда вам нужно установить *`libopenal1`*. Название пакета зависит от дистрибутива, и в некоторых случаях может потребоваться установить пакеты *`openal`* и *`openal-dev`* или *`openal-devel`*.
 
 ```bash
 $ apt-get install libopenal-dev
 ```
 
-#### Q: Why does the top menu close before I can select something?
+#### Q: Почему верхнее меню закрывается раньше, чем я успеваю что-то выбрать?
 
-A: This is likely caused by the window manager used (for instance `Qtile` or i3). This is a [known issue in JavaFX](https://bugs.openjdk.org/browse/JDK-8251240?focusedCommentId=14362084&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-14362084) and it can either be solved by setting the `GDK_DISPLAY` environment variable to 1:¨
+A: Скорее всего, это вызвано используемым оконным менеджером (например, `Qtile` или i3). Это [известная проблема в JavaFX](https://bugs.openjdk.org/browse/JDK-8251240?focusedCommentId=14362084&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-14362084), и её можно решить либо установкой переменной окружения `GDK_DISPLAY` в 1:¨
 
 ```bash
 $ GDK_DISPLAY=1 ./Defold
@@ -129,21 +129,21 @@ D=2
 
 ```
 
-Or by modifying the `Defold/config` file and on the `vmargs` line add `-Djdk.gtk.version=2`:
+Либо изменив файл `Defold/config` и добавив `-Djdk.gtk.version=2` в строку `vmargs`:
 
 ```
 vmargs = -Djdk.gtk.version=2,-Dfile.encoding=UTF-8,...
 ```
 
 
-#### Q: Why am I not able to browse all available file locations when I select Open From Disk?
+#### Q: Почему я не могу просматривать все доступные пути при выборе Open From Disk?
 
-A: If you are running Defold from [Steam using Flatpak](https://flathub.org/apps/com.valvesoftware.Steam) you need to give Steam permission to access your other drives. You can modify the permissions of your Flatpak applications using [Flatseal](https://flathub.org/apps/com.github.tchx84.Flatseal) or similar tool.
+A: Если вы запускаете Defold из [Steam через Flatpak](https://flathub.org/apps/com.valvesoftware.Steam), нужно выдать Steam разрешение на доступ к другим дискам. Изменить разрешения приложений Flatpak можно через [Flatseal](https://flathub.org/apps/com.github.tchx84.Flatseal) или аналогичный инструмент.
 
 
-#### Q: Why am I not able to open the web profiler or any other menu option which requires a browser?
+#### Q: Почему я не могу открыть web profiler или любой другой пункт меню, для которого нужен браузер?
 
-A: It is likely that an internal call to `Desktop.getDesktop().browse(new URI(url));` fails since no browser is detected on non-Gnome systems. Try installing `libgnome`.
+A: Скорее всего, внутренний вызов `Desktop.getDesktop().browse(new URI(url));` завершается ошибкой, потому что в не-Gnome-системах браузер не обнаруживается. Попробуйте установить `libgnome`.
 
 ```bash
 $ apt-get install libgnome

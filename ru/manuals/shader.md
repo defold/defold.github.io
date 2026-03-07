@@ -31,7 +31,7 @@ toc:
 
 * Смотрите [Руководство по рендеру](/ru/manuals/render) с деталями по рендер конвейеру.
 * Смотрите [Руководство по материалам](/ru/manuals/material) с деталями по материалам.
-* Смотрите [Compute manual](/manuals/compute) с деталями по вычислительным шейдерам.
+* Смотрите [Compute manual](/ru/manuals/compute) с деталями по вычислительным шейдерам.
 
 Спецификации OpenGL ES 2.0 (OpenGL для встраиваемых систем) и OpenGL ES Shading Language можно найти по адресу  https://www.khronos.org/registry/gles/
 

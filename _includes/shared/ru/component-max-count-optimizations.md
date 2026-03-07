@@ -1,10 +1,10 @@
-## Component max count optimizations
-The *game.project* settings file contains many values specifying the maximum number of a certain resource that can exist at the same time, often counted per loaded collection (also called world). The Defold engine will use these max values to preallocate memory for this amount of memory to avoid dynamic allocations and memory fragmentation while the game is running.
+## Оптимизация max count для компонентов
+Файл настроек *game.project* содержит множество значений, задающих максимальное количество определённого ресурса, которое может существовать одновременно, часто в расчёте на одну загруженную collection (также называемую world). Движок Defold использует эти максимальные значения для предварительного выделения памяти, чтобы избежать динамических аллокаций и фрагментации памяти во время работы игры.
 
-The Defold data structures used to represent components and other resources are optimized to use as little memory as possible but care should still be taken when setting the values to avoid allocating more memory than is actually necessary.
+Структуры данных Defold, используемые для представления компонентов и других ресурсов, оптимизированы так, чтобы занимать как можно меньше памяти, но при выборе значений всё равно нужно быть аккуратным, чтобы не выделять больше памяти, чем реально необходимо.
 
-To further optimize memory usage the Defold build process will analyse the content of the game and override the max counts if it is possible to know for certain the exact amount:
+Чтобы дополнительно оптимизировать использование памяти, процесс сборки Defold анализирует содержимое игры и переопределяет max counts, если можно точно определить нужное количество:
 
-* If a collection doesn't contain any factory components the exact amount of each component and Game Object will be allocated and the max count values will be ignored.
-* If a collection contains a factory component the spawned objects will be analysed and the max count will be used for components that can be spawned from the factories and for Game Objects.
-* If a collection contains a factory or a collection factory with activated "Dynamic Prototype" option, this collection will use the max counters.
+* Если collection не содержит компонентов factory, будет выделено точное количество каждого компонента и Game Object, а значения max count будут проигнорированы.
+* Если collection содержит компонент factory, будут проанализированы спаунимые объекты, и max count будет использоваться для компонентов, которые могут быть созданы из factory, а также для Game Objects.
+* Если collection содержит factory или collection factory с включённой опцией "Dynamic Prototype", для этой collection будут использоваться max counters.

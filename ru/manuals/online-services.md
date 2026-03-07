@@ -18,6 +18,7 @@ toc:
 ## Общего назначения
 * [Colyseus](https://defold.com/assets/colyseus/) --- Игровой клиент для мультиплеера
 * [Nakama](https://defold.com/assets/nakama/) --- Добавьте аутентификацию, матч-мейкинг, аналитику, облачные сохранения, мультиплеер, чат и многое другое своей игре
+* [Photon Realtime](https://defold.com/assets/photon-realtime/) --- Photon Realtime предлагает масштабируемые решения для таких важных возможностей, как аутентификация, матч-мейкинг и быстрая, надежная связь
 * [PlayFab](https://defold.com/assets/playfabsdk/) --- Добавьте аутентификацию, матч-мейкинг, аналитику, облачные сохранения, мультиплеер, чат и многое другое своей игре
 * [AWS SDK](https://github.com/britzl/aws-sdk-lua) --- Используйте Amazon Web Services прямо в своей игре
 
