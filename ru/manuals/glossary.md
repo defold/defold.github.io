@@ -40,8 +40,6 @@ toc:
 - Рендер-скрипт (Render Script)
 - Скрипт (Script)
 - Звук (Sound)
-- Spine-модель (Spine Model)
-- Spine-сцена (Spine Scene)
 - Спрайт (Sprite)
 - Текстурные профили (Texture Profiles)
 - Тайловая карта (Tile Map)
@@ -196,14 +194,6 @@ msg.post("#weapon", "disable")
 ## Звук (Sound)
 
 ![Sound](/manuals/images/icons/sound.png) Звук --- это компонент, отвечающий за воспроизведение определенного звука. В настоящее время Defold поддерживает звуковые файлы в форматах WAV и Ogg Vorbis. За подробностями обращайтесь к [руководству по звукам](/ru/manuals/sound).
-
-## Spine-модель (Spine Model)
-
-![Spine model](/manuals/images/icons/spine-model.png) Spine-модель --- это компонент, используемый для оживления скелетной Spine-анимации в Defold. За информацией о том, как его использовать, обращайтесь к [руководству по Spine-моделям](/ru/manuals/spinemodel).
-
-## Spine-сцена (Spine Scene)
-
-![Spine scene](/manuals/images/icons/spine-scene.png) Spine-сцена --- это ресурс, связывающий файл данных Spine JSON и файл атласа изображения Defold, используемого для заполнения графикой слотов костей. [Руководство по Spine-анимации](/ru/manuals/spine) содержит более подробную информацию.
 
 ## Спрайт (Sprite)
 
