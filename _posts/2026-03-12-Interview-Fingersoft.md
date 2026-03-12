@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Why Fingersoft used Defold to bring Hill Climb Racing to Poki?
+title:  Why did Fingersoft use Defold to bring Hill Climb Racing to Poki?
 excerpt: We invited Shiho Kaneko from Fingersoft, to tell us about their adventure with Defold to create Hill Climb Racing Lite for Poki.
 author: Paweł Jarosz
 tags: ["creator spotlight", "interview", "madewithdefold", "steam"]
