@@ -6,7 +6,7 @@ author: Paweł Jarosz
 tags: ["creator spotlight", "interview", "madewithdefold", "steam"]
 ---
 
-We invited Shiho Kaneko from Fingersoft, to tell us about their adventure with Defold to create [Hill Climb Racing Lite](https://poki.com/pl/g/hill-climb-racing-lite) for [Poki](https://poki.com/).
+We invited Shiho Kaneko from Fingersoft, to tell us about their adventure with Defold to create [Hill Climb Racing Lite](https://poki.com/en/g/hill-climb-racing-lite) for [Poki](https://poki.com/).
 
 ![Hill Climb Racing Lite made with Defold](/images/posts/interview-fingersoft/hill_climb_racing_lite_banner.png)
 <div align="center">
@@ -108,7 +108,7 @@ Our company’s main focus is still on supporting the growth of Hill Climb Racin
 
 Check out the game on Poki:
 
-[Hill Climb Racing Lite](https://poki.com/pl/g/hill-climb-racing-lite)
+[Hill Climb Racing Lite](https://poki.com/en/g/hill-climb-racing-lite)
 
 Follow Fingersoft on social media:
 
