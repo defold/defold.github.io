@@ -46,7 +46,7 @@ We **evaluated several different engines before selecting Defold** — in fact, 
 
 There were a few key constraints. The game had to run in HTML5, the **engine size needed to be very small, and solid Box2D integration was essential** for our physics-based gameplay. Another important requirement was support for portrait orientation, as the game needed to be fully playable in that format.
 
-We shortlisted around five HTML5-capable engines and built prototypes with each of them. Many had significant limitations when it came to Box2D support. While Defold does not offer built-in Box2D integration at the same level as some native engines, we discovered that someone had implemented a full Box2D conversion using Defold’s native extensions. This made it viable for our needs.
+We shortlisted around five HTML5-capable engines and built prototypes with each of them. Many had significant limitations when it came to Box2D support. While Defold does not offer built-in Box2D integration at the same level as some native engines, we discovered that someone had implemented a full Box2D conversion using Defold’s native extensions (_Editor's note: [defold-box2d](https://defold.com/assets/defold-box2d/) by user d954mas_). This made it viable for our needs.
 Additionally, **Defold’s visual editor was a major advantage.**
 
 The original Hill Climb Racing still doesn’t use visual tools, so having a proper visual UI editor, especially for portrait layout, significantly improved our workflow.
@@ -70,7 +70,7 @@ One of the biggest mindset shifts was adapting to Defold’s strong emphasis on 
 
 One of the day-to-day challenges was actually the built-in Defold code editor — particularly the undo functionality, which didn’t feel up to modern standards. This sparked multiple heated internal debates :)
 
-In the end, we handled it in two different ways: one of us accepted the situation and adapted, while the others “escaped” to Visual Studio Code. Moving to VS Code significantly improved the development experience and solved most of the frustration.
+In the end, we handled it in two different ways: one of us accepted the situation and adapted, while the others “escaped” to Visual Studio Code. Moving to VS Code significantly improved the development experience and solved most of the frustration  (_Editor's note: [VS Code integration]((https://defold.com/assets/vs-code-ide/) by user Roman Silin_).
 
 #### Good that we have options then! By the way this undo functionality change is our priority in the Defold roadmap now - we hope it will be satisfying then. And how was the release workflow?
 
