@@ -70,7 +70,7 @@ One of the biggest mindset shifts was adapting to Defold’s strong emphasis on 
 
 One of the day-to-day challenges was actually the built-in Defold code editor — particularly the undo functionality, which didn’t feel up to modern standards. This sparked multiple heated internal debates :)
 
-In the end, we handled it in two different ways: one of us accepted the situation and adapted, while the others “escaped” to Visual Studio Code. Moving to VS Code significantly improved the development experience and solved most of the frustration  (_Editor's note: [VS Code integration]((https://defold.com/assets/vs-code-ide/) by user Roman Silin_).
+In the end, we handled it in two different ways: one of us accepted the situation and adapted, while the others “escaped” to Visual Studio Code. Moving to VS Code significantly improved the development experience and solved most of the frustration (_Editor's note: [VS Code integration](https://defold.com/assets/vs-code-ide/) by user Roman Silin_).
 
 #### Good that we have options then! By the way this undo functionality change is our priority in the Defold roadmap now - we hope it will be satisfying then. And how was the release workflow?
 
