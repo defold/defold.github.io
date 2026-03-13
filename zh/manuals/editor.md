@@ -48,33 +48,33 @@ toc:
 我的项目 (MY PROJECTS)
 : 点击显示您最近打开的项目，以便您可以快速访问它们。这是默认视图。
 
-  如果你之前没有打开过任何项目（或者把列表清空了），界面中会显示两个按钮：你可以点击 `从磁盘打开…` (`Open From Disk…`）按钮，通过系统文件管理器查找并打开一个已有项目；也可以点击 `新建项目` (`Create New Project`）按钮，此时界面会切换到 `模板` (`TEMPLATES`) 标签页。
+  如果您之前没有打开过任何项目（或者把列表清空了），界面中会显示两个按钮：您可以点击 `从磁盘打开…` (`Open From Disk…`）按钮，通过系统文件管理器查找并打开一个已有项目；也可以点击 `新建项目` (`Create New Project`）按钮，此时界面会切换到 `模板` (`TEMPLATES`) 标签页。
 
   ![my projects empty](/manuals/images/editor/start_no_projects.png)
 
 
-  如果你之前打开过项目，这里会列出你的项目列表，如下图所示：
+  如果您之前打开过项目，这里会列出您的项目列表，如下图所示：
 
   ![my projects](/manuals/images/editor/start_my_projects.png)
 
 模板 (TEMPLATES)
-: 包含空的或几乎空的基础工程，用于帮助你快速创建新的 Defold 项目，例如面向特定平台或内置特定扩展的模板。
+: 包含空的或几乎空的基础工程，用于帮助您快速创建新的 Defold 项目，例如面向特定平台或内置特定扩展的模板。
 
 教程 (TUTORIALS)
-: 包含带有引导式教程的项目（tutorials），你可以运行、学习并修改这些项目，如果你希望按照教程一步一步学习的话。
+: 如果您想跟着教程一步步学习，这里包含了一些带有手把手教学的项目，供您学习、实践和修改。
 
 示例 (SAMPLES)
 : 包含为展示特定用例而准备的示例项目。
 
   ![new project](/manuals/images/editor/new_project.png)
 
-  当您创建一个新项目时，它会存储在您的本地驱动器上，您所做的任何编辑都会在本地保存。
+  当您创建一个新项目时，它会存储在您的本地磁盘上，您所做的任何编辑都会在本地保存。
 
 您可以在[项目设置手册](https://www.defold.com/zh/manuals/project-setup/)中了解有关不同选项的更多信息。
 
 ## 编辑器语言
 
-在启动界面的左下角可以看到语言选择下拉菜单。你可以在这里从当前可用的本地化语言中进行选择（自 Defold 1.11.2 起提供）。在编辑器内部也可以通过菜单 `文件 ▸ 首选项 ▸ 常规 ▸ 编辑器语言` (`File ▸ Preferences ▸ General ▸ Editor Language`) 打开相同的语言设置。
+在启动界面的左下角可以看到语言选择下拉菜单。您可以在这里从当前可用的本地化语言中进行选择（自 Defold 1.11.2 起提供）。在编辑器内部也可以通过菜单 `文件 ▸ 首选项 ▸ 常规 ▸ 编辑器语言` (`File ▸ Preferences ▸ General ▸ Editor Language`) 打开相同的语言设置。
 
 ![Languages](/manuals/images/editor/languages.png)
 
@@ -94,7 +94,7 @@ Defold 编辑器被分为一组面板或视图，用于显示特定信息。
    - <kbd>右键单击</kbd>打开_上下文菜单_，您可以从中创建新文件或文件夹、重命名、删除、跟踪文件依赖关系等。
 
 ### 2. 编辑器面板
-中心区域会根据文件类型，在对应的编辑器中显示当前打开的文件。例如，脚本文件会在内置的代码编辑器中打开，而可视化组件则会在 3D 可视化编辑器中打开。所有的可视化编辑器都允许你调整摄像机视角：
+中心区域会根据文件类型，在对应的编辑器中显示当前打开的文件。例如，脚本文件会在内置的代码编辑器中打开，而可视化组件则会在 3D 可视化编辑器中打开。所有的可视化编辑器都允许您调整摄像机视角：
 
 - 平移：<kbd>Alt</kbd>/<kbd>⌥ Option</kbd> + <kbd>鼠标左键</kbd> 或 <kbd>鼠标右键</kbd>。
 - 缩放：<kbd>滚动鼠标滚轮</kbd> <kbd>Alt</kbd>/<kbd>⌥ Option</kbd> + <kbd>鼠标右键</kbd>。
@@ -121,20 +121,20 @@ Defold 编辑器被分为一组面板或视图，用于显示特定信息。
 
 此视图显示与当前所选项目相关联的属性，如位置、旋转、动画等。
 
-你也可以通过 <kbd>拖动</kbd> 数值字段旁边的 `↕` 上下箭头并移动鼠标来改变数值型属性的值（Defold 1.10.2 及更高版本）。
+您也可以通过 <kbd>拖动</kbd> 数值字段旁边的 `↕` 上下箭头并移动鼠标来改变数值型属性的值（Defold 1.10.2 及更高版本）。
 
 ### 5. 工具面板 (Tools)
 
 此视图有几个标签页。
 
 *控制台* (Console)
-: 显示游戏运行时的各种引擎输出（错误、警告、信息），以及你在脚本中通过打印语句（如 print）输出的内容。
+: 显示游戏运行时的各种引擎输出（错误、警告、信息），以及您在脚本中通过打印语句（如 print）输出的内容。
 
 *构建错误* (Build Errors)
 : 显示项目构建过程中的错误。
 
 *查找结果* (Search Results)
-: 当你使用 <kbd>Ctrl</kbd>/<kbd>⌘ Cmd</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd> 在整个项目中搜索，并且勾选了 `保留结果` (`Keep Results`) 时，该标签页会显示搜索结果。
+: 当您使用 <kbd>Ctrl</kbd>/<kbd>⌘ Cmd</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd> 在整个项目中搜索，并且勾选了 `保留结果` (`Keep Results`) 时，该标签页会显示搜索结果。
 
 *曲线编辑* (Curve Editor)
 : 用于在 [粒子编辑器](/zh/manuals/particlefx/) 中编辑曲线。
@@ -172,11 +172,11 @@ Defold 编辑器被分为一组面板或视图，用于显示特定信息。
 
 ![Panes Visibility](/manuals/images/editor/editor_panes.png)
 
-在 `视图` (`View`) 菜单中，你还可以切换或更改其他与显示相关的设置，例如 Grid（网格）、Guides（参考线）、Camera（摄像机），或者使用 `聚焦选中对象` (`Frame Selection`)（<kbd>F</kbd>）来让视图适配到选中对象；还可以使用 `重新对齐相机` (`Realign Camera`)（<kbd>.</kbd>）在默认的 2D 与 3D 视图之间切换。许多功能也可以通过工具栏或快捷键访问。
+在 `视图` (`View`) 菜单中，您还可以切换或更改其他与显示相关的设置，例如 Grid（网格）、Guides（参考线）、Camera（摄像机），或者使用 `聚焦选中对象` (`Frame Selection`)（<kbd>F</kbd>）来让视图适配到选中对象；还可以使用 `重新对齐相机` (`Realign Camera`)（<kbd>.</kbd>）在默认的 2D 与 3D 视图之间切换。许多功能也可以通过工具栏或快捷键访问。
 
 ## 标签页
 
-如果同时打开了多个文件，编辑器视图顶部会为每个文件显示一个单独的选项卡 (tab)。同一面板中的选项卡可以互相调换位置——使用 <kbd>拖放</kbd> 即可在选项卡栏中调整它们的顺序。你还可以：
+如果同时打开了多个文件，编辑器视图顶部会为每个文件显示一个单独的标签页 (Tab)。同一面板中的标签页可以互相调换位置——使用 <kbd>拖放</kbd> 即可在标签页栏中调整它们的顺序。您还可以：
 
 - 在标签页上 <kbd>右键单击</kbd> 打开_上下文菜单_；
 - 点击 `关闭` (`Close`) <kbd>Ctrl</kbd>/<kbd>⌘ Cmd</kbd> + <kbd>W</kbd> 关闭当前标签页；
@@ -192,7 +192,7 @@ Defold 编辑器被分为一组面板或视图，用于显示特定信息。
 
 ![2 panes](/manuals/images/editor/2-panes.png)
 
-你也可以在标签页菜单中选择 `与另一个标签页交换` (`Swap with Other Tab Pane`）在两个面板之间交换内容，或选择 `合并标签页` (`Join Tab Panes`) 将两个面板重新合并为一个。
+您也可以在标签页菜单中选择 `与另一个标签页交换` (`Swap with Other Tab Pane`）在两个面板之间交换内容，或选择 `合并标签页` (`Join Tab Panes`) 将两个面板重新合并为一个。
 
 ## 场景编辑器
 
@@ -200,7 +200,7 @@ Defold 编辑器被分为一组面板或视图，用于显示特定信息。
 
 ![Select object](/manuals/images/editor/2d_scene.png)
 
-如果你在开发 3D 项目，建议检查工具栏并调整 *网格设置* `▦`（网格设置），例如重新对齐摄像机以切换 2D/3D `2D`（或使用 <kbd>.</kbd> 键），将网格设置为显示在 `Y` 平面或其他你认为直观的平面上，并通过工具栏上的切换按钮或 `视图 ▸ 透视相机` (`View ▸ Perspective Camera`) 将摄像机改为透视模式：
+如果您在开发 3D 项目，建议检查工具栏并调整 *网格设置* `▦`（网格设置），例如重新对齐摄像机以切换 2D/3D `2D`（或使用 <kbd>.</kbd> 键），将网格设置为显示在 `Y` 平面或其他您认为直观的平面上，并通过工具栏上的切换按钮或 `视图 ▸ 透视相机` (`View ▸ Perspective Camera`) 将摄像机改为透视模式：
 
 ![Scene Editor 3D](/manuals/images/editor/3d_scene.png)
 
@@ -291,15 +291,15 @@ Defold 编辑器被分为一组面板或视图，用于显示特定信息。
 
 ## 首选项 (Preferences)
 
-你可以在 `首选项` (`Preferences`）窗口中修改编辑器设置。要打开该窗口，请点击 `文件 ▸ 首选项` (`File ▸ Preferences…`)，或使用快捷键 <kbd>Ctrl</kbd>/<kbd>⌘ Cmd</kbd> + <kbd>,</kbd>。
+您可以在 `首选项` (`Preferences`）窗口中修改编辑器设置。要打开该窗口，请点击 `文件 ▸ 首选项` (`File ▸ Preferences…`)，或使用快捷键 <kbd>Ctrl</kbd>/<kbd>⌘ Cmd</kbd> + <kbd>,</kbd>。
 
-更多内容请参阅[首选项手册](/zh/manuals/editor-preferences)。
+更多内容请参阅[编辑器首选项手册](/zh/manuals/editor-preferences)。
 
 ![Preferences](/manuals/images/editor/preferences.png)
 
 ## 编辑器日志
 
-如果你在使用编辑器时遇到问题，并需要通过 `帮助 ▸ 反馈问题` (`Help ▸ Report Issue`) 报告问题，最好同时提供编辑器本身的日志文件。要在系统文件浏览器中打开日志所在位置，请点击 `帮助 ▸ 显示日志` (`Help ▸ Show Logs`)。
+如果您在使用编辑器时遇到问题，并需要通过 `帮助 ▸ 反馈问题` (`Help ▸ Report Issue`) 报告问题，最好同时提供编辑器本身的日志文件。要在系统文件浏览器中打开日志所在位置，请点击 `帮助 ▸ 显示日志` (`Help ▸ Show Logs`)。
 
 更多内容请参阅[获取帮助手册](/zh/manuals/getting-help/#getting-help)。
 
