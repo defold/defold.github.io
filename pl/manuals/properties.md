@@ -3,7 +3,7 @@ brief: Ta instrukcja opisuje typy właściwości, jak je używać i animować.
 github: https://github.com/defold/doc
 language: pl
 layout: manual
-title: Właściwości w Defoldzie
+title: Właściwości w Defold
 toc:
 - Właściwości
 - Właściwości obiektów gry i komponentów
@@ -63,6 +63,7 @@ Wszystkie obiekty gry i niektóre typy komponentów mają właściwości, które
 | *rotation* | Lokalna rotacja obiektu gry wyrażona jako kwaternion.    | `quaternion` | `get+set` |
 | *euler*    | Lokalna rotacja obiektu gry wyrażona jako kąty Eulera.   | `vector3`    | `get+set` |
 | *scale*    | Lokalna nieliniowa skala obiektu gry, wyrażona jako wektor, w którym każdy składnik zawiera mnożnik wzdłuż każdej osi. Przykładowo, aby podwoić rozmiar w osiach x i y, użyj vmath.vector3(2.0, 2.0, 0). | `vector3` | `get+set` |
+| *scale.xy* | Lokalna nieliniowa skala obiektu gry w osiach X i Y. | `vector3` | `get+set` |
 
 <div class='sidenote' markdown='1'>
 Istnieją także konkretne funkcje do pracy z transformacją obiektu gry, takie jak `go.get_position()`, `go.set_position()`, `go.get_rotation()`, `go.set_rotation()`, `go.get_scale()` i `go.set_scale()`.
@@ -75,6 +76,7 @@ Istnieją także konkretne funkcje do pracy z transformacją obiektu gry, takie 
 | *size*     | Rozmiar sprite'a nieprzeskalowany - jego rozmiar pobierany z atlasu źródłowego. | `vector3` | `get` |
 | *image*    | Skrót hasza ścieżki tekstury sprite'a. | `hash`    | `get`|
 | *scale*    | Nieliniowa skala sprite'a.             | `vector3` | `get+set`|
+| *scale.xy* | Nieliniowa skala sprite'a w osiach X i Y. | `vector3` | `get+set`|
 | *material* | Materiał używany przez sprite'a.       | `hash`    | `get+set`|
 | *cursor*   | Pozycja (między 0 a 1) wskaźnika odtwarzania.   | `number`  | `get+set`|
 | *playback_rate* | Ilość klatek na sekundę animacji flipbook. | `number`  | `get+set`|
@@ -104,6 +106,7 @@ Istnieją także konkretne funkcje do pracy z transformacją obiektu gry, takie 
 | Właściwość | Opis                                   | Typ             |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
 | *scale*    | Skala etykiety.                        | `vector3`       | `get+set` |
+| *scale.xy* | Skala etykiety w osiach X i Y.         | `vector3`       | `get+set` |
 | *color*    | Kolor etykiety.                        | `vector4`       | `get+set` |
 | *outline*  | Kolor konturu etykiety.                | `vector4`       | `get+set` |
 | *shadow*   | Kolor cienia etykiety.                 | `vector4`       | `get+set` |
@@ -114,8 +117,6 @@ Istnieją także konkretne funkcje do pracy z transformacją obiektu gry, takie 
 ## Właściwości węzłów GUI
 
 Węzły GUI również posiadają właściwości, ale są odczytywane i zapisywane za pomocą specjalnych funkcji getterów i setterów z API `gui`. Dla każdej właściwości istnieje funkcja gettera i settera. Istnieje także zestaw stałych zdefiniowanych do użycia jako odniesienie do właściwości podczas animacji. Jeśli potrzebujesz odnosić się do oddzielnych składowych właściwości, musisz używać nazwy ciągu znaków właściwości lub hasza nazwy ciągu znaków.
-
-GUI nodes also contain properties, but they are read and written through special getter and setter functions. For each property there exists one get- and one set- function. There is also a set of constants defined to use as reference to the properties when animating them. If you need to refer to separate property components you have to use the string name of the property, or a hash of the string name.
 
 * `position` (lub `gui.PROP_POSITION`)
 * `rotation` (lub `gui.PROP_ROTATION`)
