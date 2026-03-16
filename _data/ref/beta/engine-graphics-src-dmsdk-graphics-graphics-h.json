@@ -189,6 +189,30 @@
             "type": "ENUM"
         },
         {
+            "brief": "Begins frame rendering",
+            "description": "Begins frame rendering.\nPrepares the graphics context for rendering a new frame.\nThis should be called at the start of each frame.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "BeginFrame",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Blend factors for color blending",
             "description": "Blend factors for color blending.\nDefines how source and destination colors are combined",
             "error": "",
@@ -342,6 +366,110 @@
             "type": "ENUM"
         },
         {
+            "brief": "Clears the render target buffers",
+            "description": "Clears the render target buffers.\nFills the specified buffers with predefined values. Commonly used at the\nbeginning of a frame to clear the screen to a specific color and depth.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Clear",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Bitmask specifying which buffers to clear (BUFFER_TYPE_*)",
+                    "is_optional": "False",
+                    "name": "flags",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Red component value (0-255)",
+                    "is_optional": "False",
+                    "name": "red",
+                    "types": [
+                        "uint8_t"
+                    ]
+                },
+                {
+                    "doc": "Green component value (0-255)",
+                    "is_optional": "False",
+                    "name": "green",
+                    "types": [
+                        "uint8_t"
+                    ]
+                },
+                {
+                    "doc": "Blue component value (0-255)",
+                    "is_optional": "False",
+                    "name": "blue",
+                    "types": [
+                        "uint8_t"
+                    ]
+                },
+                {
+                    "doc": "Alpha component value (0-255)",
+                    "is_optional": "False",
+                    "name": "alpha",
+                    "types": [
+                        "uint8_t"
+                    ]
+                },
+                {
+                    "doc": "Depth value to clear depth buffer to",
+                    "is_optional": "False",
+                    "name": "depth",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "Stencil value to clear stencil buffer to",
+                    "is_optional": "False",
+                    "name": "stencil",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Closes the window associated with the graphics con...",
+            "description": "Closes the window associated with the graphics context.\nIf a window is open, this will close it and clean up associated resources.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "CloseWindow",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Depth and alpha test comparison functions",
             "description": "Depth and alpha test comparison functions.\nDefines how incoming values are compared against stored ones",
             "error": "",
@@ -398,6 +526,101 @@
             "type": "ENUM"
         },
         {
+            "brief": "Graphics context creation parameters",
+            "description": "Graphics context creation parameters.\nDefines the configuration for creating a new graphics context.\nThis structure is used when initializing the graphics system and\nspecifies window association, job system context, texture filtering defaults,\nresolution, memory limits, and various debugging/validation options.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Platform window handle to associate with the graphics context",
+                    "name": "m_Window",
+                    "type": "dmPlatform::HWindow"
+                },
+                {
+                    "doc": "Job system context for asynchronous operations",
+                    "name": "m_JobContext",
+                    "type": "dmJobSystem::HJobContext"
+                },
+                {
+                    "doc": "Default minification filter for textures",
+                    "name": "m_DefaultTextureMinFilter",
+                    "type": "dmGraphics::TextureFilter"
+                },
+                {
+                    "doc": "Default magnification filter for textures",
+                    "name": "m_DefaultTextureMagFilter",
+                    "type": "dmGraphics::TextureFilter"
+                },
+                {
+                    "doc": "Initial width of the rendering surface",
+                    "name": "m_Width",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Initial height of the rendering surface",
+                    "name": "m_Height",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Maximum allowed graphics memory in bytes (0 for default/unlimited) (Switch)",
+                    "name": "m_GraphicsMemorySize",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Vertical synchronization interval (1 for 60Hz, 2 for 30Hz, etc.) (Default = 1)",
+                    "name": "m_SwapInterval",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Enable API call verification for debugging",
+                    "name": "m_VerifyGraphicsCalls",
+                    "type": "bool"
+                },
+                {
+                    "doc": "Print graphics device information at startup",
+                    "name": "m_PrintDeviceInfo",
+                    "type": "bool"
+                },
+                {
+                    "doc": "Enable validation layers for debugging (Vulkan/DirectX 12 only)",
+                    "name": "m_UseValidationLayers",
+                    "type": "bool"
+                }
+            ],
+            "name": "ContextParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Destroys a graphics context",
+            "description": "Destroys a graphics context.\nCleans up all resources associated with the graphics context.\nThe context becomes invalid after this call.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DeleteContext",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context to destroy",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Delete the index buffer",
             "description": "Delete the index buffer",
             "error": "",
@@ -413,6 +636,38 @@
                     "name": "buffer",
                     "types": [
                         "dmGraphics::HIndexBuffer"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Destroys a shader program and frees associated res...",
+            "description": "Destroys a shader program and frees associated resources.\nCleans up GPU memory and resources associated with the program handle.\nThe handle becomes invalid after this call.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DeleteProgram",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Program handle to destroy",
+                    "is_optional": "False",
+                    "name": "program",
+                    "types": [
+                        "dmGraphics::HProgram"
                     ]
                 }
             ],
@@ -558,6 +813,30 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Deactivates the currently bound shader program",
+            "description": "Deactivates the currently bound shader program.\nUnbinds any active program from the graphics pipeline, returning to the default state\nwhere no custom shader program is active.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DisableProgram",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "",
             "description": "",
             "error": "",
@@ -621,6 +900,158 @@
                     "name": "texture",
                     "types": [
                         "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Unbinds a vertex buffer from the graphics pipeline",
+            "description": "Unbinds a vertex buffer from the graphics pipeline.\nRemoves the association between a vertex buffer and its binding index,\nfreeing up the binding slot for other buffers.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DisableVertexBuffer",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Vertex buffer handle to unbind",
+                    "is_optional": "False",
+                    "name": "vertex_buffer",
+                    "types": [
+                        "dmGraphics::HVertexBuffer"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Unbinds a vertex declaration from the graphics pip...",
+            "description": "Unbinds a vertex declaration from the graphics pipeline.\nRemoves the association between a vertex declaration and its binding index,\nfreeing up the binding slot for other declarations.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DisableVertexDeclaration",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Vertex declaration handle to unbind",
+                    "is_optional": "False",
+                    "name": "vertex_declaration",
+                    "types": [
+                        "dmGraphics::HVertexDeclaration"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Draws non-indexed primitives",
+            "description": "Draws non-indexed primitives.\nRenders geometry using vertex data directly from the bound vertex buffers\nwithout index buffer indirection. The vertices are processed sequentially\nfrom the specified starting point.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Draw",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Type of primitives to draw",
+                    "is_optional": "False",
+                    "name": "prim_type",
+                    "types": [
+                        "dmGraphics::PrimitiveType"
+                    ]
+                },
+                {
+                    "doc": "Index of the first vertex to draw",
+                    "is_optional": "False",
+                    "name": "first",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Number of vertices to draw",
+                    "is_optional": "False",
+                    "name": "count",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Number of instances to draw (for instanced rendering)",
+                    "is_optional": "False",
+                    "name": "instance_count",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Activates a shader program for rendering",
+            "description": "Activates a shader program for rendering.\nBinds the specified program to the graphics pipeline, making it the active program\nfor all subsequent rendering operations until another program is activated or disabled.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "EnableProgram",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Program handle to activate",
+                    "is_optional": "False",
+                    "name": "program",
+                    "types": [
+                        "dmGraphics::HProgram"
                     ]
                 }
             ],
@@ -710,6 +1141,102 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Binds a vertex buffer for rendering",
+            "description": "Binds a vertex buffer for rendering.\nAssociates a vertex buffer with a specific binding index in the graphics pipeline.\nThe buffer provides the actual vertex data that will be processed according to\nthe active vertex declaration for that binding index.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "EnableVertexBuffer",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Vertex buffer handle",
+                    "is_optional": "False",
+                    "name": "vertex_buffer",
+                    "types": [
+                        "dmGraphics::HVertexBuffer"
+                    ]
+                },
+                {
+                    "doc": "Binding index to associate with this buffer",
+                    "is_optional": "False",
+                    "name": "binding_index",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Binds a vertex declaration for rendering",
+            "description": "Binds a vertex declaration for rendering.\nAssociates a vertex declaration with a specific binding index in the graphics pipeline.\nThe declaration defines how vertex data is interpreted and laid out in memory.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "EnableVertexDeclaration",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Vertex declaration handle",
+                    "is_optional": "False",
+                    "name": "vertex_declaration",
+                    "types": [
+                        "dmGraphics::HVertexDeclaration"
+                    ]
+                },
+                {
+                    "doc": "Binding index to associate with this declaration",
+                    "is_optional": "False",
+                    "name": "binding_index",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Byte offset to add to all vertex attribute pointers",
+                    "is_optional": "False",
+                    "name": "base_offset",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Shader program to use with this declaration",
+                    "is_optional": "False",
+                    "name": "program",
+                    "types": [
+                        "dmGraphics::HProgram"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "",
             "description": "",
             "error": "",
@@ -734,6 +1261,157 @@
             "returnvalues": [],
             "tparams": [],
             "type": "ENUM"
+        },
+        {
+            "brief": "Finalizes the graphics system",
+            "description": "Finalizes the graphics system.\nCleans up global graphics resources and shuts down the graphics system.\nThis should be called when the application is exiting.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Finalize",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Finds the location of a uniform variable in a shad...",
+            "description": "Finds the location of a uniform variable in a shader program by name hash.\nReturns the uniform location that can be used with other uniform-setting functions.\nThis is the preferred method when the uniform name is known at compile time\nas it avoids runtime string hashing.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FindUniformLocation",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Shader program handle",
+                    "is_optional": "False",
+                    "name": "program",
+                    "types": [
+                        "dmGraphics::HProgram"
+                    ]
+                },
+                {
+                    "doc": "Hash of the uniform variable name",
+                    "is_optional": "False",
+                    "name": "name_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Uniform location handle, or INVALID_UNIFORM_LOCATION if not found",
+                    "name": "location",
+                    "types": [
+                        "dmGraphics::HUniformLocation"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Finds the location of a uniform variable in a shad...",
+            "description": "Finds the location of a uniform variable in a shader program by name string.\nReturns the uniform location that can be used with other uniform-setting functions.\nThis method is useful when the uniform name is only known at runtime.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FindUniformLocation",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Shader program handle",
+                    "is_optional": "False",
+                    "name": "program",
+                    "types": [
+                        "dmGraphics::HProgram"
+                    ]
+                },
+                {
+                    "doc": "Name of the uniform variable",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Uniform location handle, or INVALID_UNIFORM_LOCATION if not found",
+                    "name": "location",
+                    "types": [
+                        "dmGraphics::HUniformLocation"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Flips screen buffers",
+            "description": "Flips screen buffers.\nPresents the rendered frame to the display.\nThis should be called at the end of each frame after all rendering is complete.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Flip",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets the adapter family from a string name",
+            "description": "Gets the adapter family from a string name.\nConverts a string identifier to the corresponding AdapterFamily enum value.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetAdapterFamily",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "String name of the adapter (e.g., \"opengl\", \"vulkan\")",
+                    "is_optional": "False",
+                    "name": "adapter_name",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Corresponding adapter family enum value",
+                    "name": "family",
+                    "types": [
+                        "dmGraphics::AdapterFamily"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "Get the scale factor of the display",
@@ -1995,21 +2673,6 @@
             "type": "TYPEDEF"
         },
         {
-            "brief": "PipelineState handle",
-            "description": "PipelineState handle",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "HPipelineState",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "TYPEDEF"
-        },
-        {
             "brief": "Program handle",
             "description": "Program handle",
             "error": "",
@@ -2156,6 +2819,53 @@
             "type": "ENUM"
         },
         {
+            "brief": "Installs a graphics adapter",
+            "description": "Installs a graphics adapter.\nInitializes the specified graphics backend (OpenGL, Vulkan, etc.).\nThis must be called before creating any graphics context.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InstallAdapter",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics adapter family to install",
+                    "is_optional": "False",
+                    "name": "family",
+                    "types": [
+                        "dmGraphics::AdapterFamily"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "True if the adapter was successfully installed, false otherwise",
+                    "name": "success",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Invalid program handle constant",
+            "description": "Invalid program handle constant.\nUsed to represent an uninitialized or invalid program handle.\nCan be used to check if program creation or loading failed.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "INVALID_PROGRAM_HANDLE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
             "brief": "Invalid stream offset",
             "description": "Invalid stream offset",
             "error": "",
@@ -2163,6 +2873,21 @@
             "language": "",
             "members": [],
             "name": "INVALID_STREAM_OFFSET",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Invalid uniform location constant",
+            "description": "Invalid uniform location constant.\nUsed to represent an uninitialized or invalid uniform location.\nCan be used to check if uniform location lookup failed.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "INVALID_UNIFORM_LOCATION",
             "notes": [],
             "parameters": [],
             "replaces": "",
@@ -2306,6 +3031,38 @@
             "type": "CONSTANT"
         },
         {
+            "brief": "Creates a new graphics context",
+            "description": "Creates a new graphics context.\nInitializes the graphics system with the specified parameters.\nOnly one graphics context can be active at a time.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "NewContext",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Context creation parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const dmGraphics::ContextParams&"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "New graphics context handle, or null on failure",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Create new index buffer with initial data",
             "description": "Create new index buffer with initial data",
             "error": "",
@@ -2357,6 +3114,62 @@
                     "name": "buffer",
                     "types": [
                         "dmGraphics::HIndexBuffer"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Creates a new shader program from a shader descrip...",
+            "description": "Creates a new shader program from a shader description.\nCompiles and links shader sources defined in the ShaderDesc into a GPU program.\nReturns a program handle that can be used for rendering.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "NewProgram",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Shader description containing source code and parameters",
+                    "is_optional": "False",
+                    "name": "ddf",
+                    "types": [
+                        "dmGraphics::ShaderDesc*"
+                    ]
+                },
+                {
+                    "doc": "Buffer to receive error messages (can be null)",
+                    "is_optional": "False",
+                    "name": "error_buffer",
+                    "types": [
+                        "char*"
+                    ]
+                },
+                {
+                    "doc": "Size of the error buffer",
+                    "is_optional": "False",
+                    "name": "error_buffer_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "New program handle, or INVALID_PROGRAM_HANDLE on failure",
+                    "name": "program",
+                    "types": [
+                        "dmGraphics::HProgram"
                     ]
                 }
             ],
@@ -3218,6 +4031,46 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Binds a texture sampler to a texture unit",
+            "description": "Binds a texture sampler to a texture unit.\nAssociates a texture with a specific sampler uniform in the shader,\nallowing the shader to access the texture data during rendering.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetSampler",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Uniform location of the sampler",
+                    "is_optional": "False",
+                    "name": "location",
+                    "types": [
+                        "dmGraphics::HUniformLocation"
+                    ]
+                },
+                {
+                    "doc": "Texture unit index to bind to",
+                    "is_optional": "False",
+                    "name": "unit",
+                    "types": [
+                        "int32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "",
             "description": "",
             "error": "",
@@ -3752,6 +4605,77 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets the viewport for rendering",
+            "description": "Sets the viewport for rendering.\nDefines the affine transformation from normalized device coordinates to window coordinates.\nThis affects all subsequent rendering operations.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetViewport",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "X coordinate of the viewport's origin (in pixels)",
+                    "is_optional": "False",
+                    "name": "x",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Y coordinate of the viewport's origin (in pixels)",
+                    "is_optional": "False",
+                    "name": "y",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Width of the viewport (in pixels)",
+                    "is_optional": "False",
+                    "name": "width",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Height of the viewport (in pixels)",
+                    "is_optional": "False",
+                    "name": "height",
+                    "types": [
+                        "int32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Shader program description (from graphics_ddf.h)",
+            "description": "Shader program description (from graphics_ddf.h)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ShaderDesc",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "Stencil test actions",

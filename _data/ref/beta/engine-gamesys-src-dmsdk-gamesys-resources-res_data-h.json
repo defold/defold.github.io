@@ -1,0 +1,64 @@
+{
+    "elements": [
+        {
+            "brief": "Opaque handle to a loaded data resource",
+            "description": "This struct is an opaque handle managed by the engine. Use\n<code>GetDDFData()</code> to access the underlying protobuf message for read-only\ninspection.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DataResource",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Get the underlying DDF data",
+            "description": "Returns a pointer to the decoded <code>dmGameSystemDDF::Data</code> protobuf\nmessage contained in the given data resource.\nThe lifetime of the returned pointer is tied to the lifetime of the\nresource. It must not be freed by the caller.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetDDFData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Data resource handle",
+                    "is_optional": "False",
+                    "name": "res",
+                    "types": [
+                        "DataResource*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Pointer to the DDF\n        data message, or <code>0</code> if the resource is invalid.",
+                    "name": "data",
+                    "types": [
+                        "const dmGameSystemDDF::Data*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "brief": "Data resource access",
+        "description": "Helper types and accessors for the data resource type (`.datac`).",
+        "description_html": "<p>Helper types and accessors for the data resource type (<code>.datac</code>).</p>",
+        "file": "res_data.h",
+        "include": "dmsdk/gamesys/resources/res_data.h",
+        "language": "C++",
+        "name": "Data Resource",
+        "namespace": "dmGameSystem",
+        "notes": [],
+        "path": "engine/gamesys/src/dmsdk/gamesys/resources/res_data.h",
+        "type": "Defold C++"
+    }
+}
