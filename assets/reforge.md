@@ -8,6 +8,6 @@ description: Blender add-on for exporting scenes into a Defold project as:
 .model files (supports multiple materials)
 .go prefabs (created once, never overwritten)
 .collection scene file (instances grouped under embedded root)
-opengraph_image: https://www.defold.com/images/asset-nohero.jpg
-twitter_image: https://www.defold.com/images/asset-nohero.jpg
+opengraph_image: https://www.defold.com/images/assets/reforge_thumb.png
+twitter_image: https://www.defold.com/images/assets/reforge_thumb.png
 ---
