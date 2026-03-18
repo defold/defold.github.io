@@ -44785,6 +44785,8 @@ Functions and constants for interacting with Poki SDK APIs
 **Parameters**
 
 - `callback` (function)
+  - `self` (object) - The calling script instance
+  - `status` (number) - One of the statuses: `poki_sdk.COMMERCIAL_BREAK_START`, `poki_sdk.COMMERCIAL_BREAK_SUCCESS`
 
 ### poki_sdk.rewarded_break
 *Type:* FUNCTION
@@ -44841,6 +44843,12 @@ Functions and constants for interacting with Poki SDK APIs
 
 - `topPercent` (number)
 - `topPx` (number)
+
+### COMMERCIAL_BREAK_SUCCESS
+*Type:* VARIABLE
+
+### COMMERCIAL_BREAK_START
+*Type:* VARIABLE
 
 ### REWARDED_BREAK_ERROR
 *Type:* VARIABLE
