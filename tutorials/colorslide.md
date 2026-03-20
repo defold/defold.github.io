@@ -9,15 +9,15 @@ title: Colorslide tutorial
 
 In this medium difficulty tutorial you build an in-game GUI, a GUI screen for level selection and a start screen for a simple multi level mobile game.
 
-The tutorial is integrated with the Defold editor and easily accessible:
+The tutorial is integrated with the Defold editor and easily accessible, just start Defold, and:
 
-1. Start Defold.
-2. Select *New Project* on the left.
-3. Select the *From Tutorial* tab.
-4. Select the "Colorslide tutorial"
-5. Select a location for the project on your local drive and click *Create New Project*.
+1. Under "Create From" select the *Tutorials* tab.
+2. Select the "Colorslide tutorial".
+3. Set the project's name.
+4. Set the project's directory.
+5. Click *Create New Project*.
 
-![new project](../images/new-colorslide.png)
+![new project](../images/colorslide_tutorial.png)
 
 The editor automatically opens the "README" file from the project root, containing the full tutorial text.
 
