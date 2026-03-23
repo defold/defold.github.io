@@ -5,7 +5,7 @@ language: en
 layout: manual
 title: Defold extension FMOD API documentation
 toc:
-- FMOD for Defold
+- FMOD
 - Requirements
 - Licensing
 - Installation
@@ -34,7 +34,7 @@ toc:
 - Links
 ---
 
-# FMOD for Defold
+# FMOD
 
 _FMOD_ is a cross-platform audio engine by Firelight Technologies with real-time mixing, adaptive music, 3D spatial audio, and runtime parameter control. Sound events are authored in the [Studio](https://www.fmod.com/studio) application and exported as bank files that the engine loads at runtime.
 
