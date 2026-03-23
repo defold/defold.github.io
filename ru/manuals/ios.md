@@ -130,7 +130,7 @@ Device identifier (UDID)
 $ brew install ios-deploy
 ```
 
-Если редактор не может определить путь до `ios-deploy`, его нужно указать вручную в [Preferences](/ru/manuals/editor-preferences/#tools).
+Если редактор не может определить путь установки инструмента ios-deploy, его нужно указать вручную в [Preferences](/ru/manuals/editor-preferences/#tools).
 
 ### Создание storyboard
 
@@ -165,7 +165,7 @@ $ brew install ios-deploy
 Разместите изображение и внесите любые другие нужные изменения, например добавьте Label или другой UI-элемент. Когда все будет готово, установите активную схему "Build -> Any iOS Device (`arm64`, `armv7`)" (или "Generic iOS Device") и выберите Product -> Build. Дождитесь окончания сборки.
 
 <div class='sidenote' markdown='1'>
-Если у вас доступен только вариант "Any iOS Device (arm64)", измените `iOS Deployment target` на 10.3 в настройках "Project -> Basic -> Deployment". Это сделает ваш storyboard совместимым с устройствами `armv7` (например, iPhone5c).
+Если у вас доступен только вариант "Any iOS Device (`arm64`)", измените `iOS Deployment target` на 10.3 в настройках "Project -> Basic -> Deployment". Это сделает ваш storyboard совместимым с устройствами `armv7` (например, iPhone5c).
 </div>
 
 Если вы используете изображения в storyboard, они не будут автоматически включены в `LaunchScreen.storyboardc`. Используйте поле `Bundle Resources` в *game.project*, чтобы включить эти ресурсы.

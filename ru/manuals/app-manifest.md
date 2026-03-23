@@ -43,7 +43,7 @@ toc:
 
 ## Physics
 
-Позволяет выбрать, какой физический движок использовать, либо выбрать `None`, чтобы полностью исключить физику.
+Позволяет выбрать, какой физический движок использовать, либо выбрать None, чтобы полностью исключить физику.
 
 ## Physics 2d
 
@@ -51,7 +51,7 @@ toc:
 
 ## Rig + Model
 
-Позволяет управлять функциональностью rig и model, либо выбрать `None`, чтобы полностью исключить модели и риги. См. [документацию по `Model`](https://defold.com/ru/manuals/model/#model-component).
+Позволяет управлять функциональностью rig и model, либо выбрать None, чтобы полностью исключить модели и риги. См. [документацию по `Model`](https://defold.com/ru/manuals/model/#model-component).
 
 ## Exclude Record
 
@@ -106,28 +106,28 @@ toc:
 Имя поля в YAML: **`minSafariVersion`**
 Значение по умолчанию: **90000**
 
-Минимально поддерживаемая версия Safari. Не может быть меньше `90000`. Подробнее см. в параметрах компилятора Emscripten: [ссылка](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-safari-version).
+Минимально поддерживаемая версия Safari. Не может быть меньше 90000. Подробнее см. в параметрах компилятора Emscripten: [ссылка](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-safari-version).
 
 ## Minimum Firefox version (только для js-web и wasm-web)
 
 Имя поля в YAML: **`minFirefoxVersion`**
 Значение по умолчанию: **34**
 
-Минимально поддерживаемая версия Firefox. Не может быть меньше `34`. Подробнее см. в параметрах компилятора Emscripten: [ссылка](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-firefox-version).
+Минимально поддерживаемая версия Firefox. Не может быть меньше 34. Подробнее см. в параметрах компилятора Emscripten: [ссылка](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-firefox-version).
 
 ## Minimum Chrome version (только для js-web и wasm-web)
 
 Имя поля в YAML: **`minChromeVersion`**
 Значение по умолчанию: **32**
 
-Минимально поддерживаемая версия Chrome. Не может быть меньше `32`. Подробнее см. в параметрах компилятора Emscripten: [ссылка](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-chrome-version).
+Минимально поддерживаемая версия Chrome. Не может быть меньше 32. Подробнее см. в параметрах компилятора Emscripten: [ссылка](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-chrome-version).
 
 ## Initial memory (только для js-web и wasm-web)
 
 Имя поля в YAML: **`initialMemory`**
 Значение по умолчанию: **33554432**
 
-Размер памяти, выделяемой для веб-приложения. Если `ALLOW_MEMORY_GROWTH=0` (js-web), это общий объём памяти, который может использовать веб-приложение. Подробнее см. [здесь](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory). Значение задаётся в байтах. Обратите внимание, что оно должно быть кратно размеру страницы WebAssembly (`64KiB`).
+Размер памяти, выделяемой для веб-приложения. Если ALLOW_MEMORY_GROWTH=0 (js-web), это общий объём памяти, который может использовать веб-приложение. Подробнее см. [здесь](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory). Значение задаётся в байтах. Обратите внимание, что оно должно быть кратно размеру страницы WebAssembly (64KiB).
 
 Этот параметр связан с `html5.heap_size` в *game.project*: [ссылка](https://defold.com/ru/manuals/html5/#heap-size). Значение, настроенное через манифест приложения, задаётся во время компиляции и используется как значение по умолчанию для параметра `INITIAL_MEMORY`. Значение из *game.project* переопределяет значение из манифеста приложения и используется во время выполнения.
 

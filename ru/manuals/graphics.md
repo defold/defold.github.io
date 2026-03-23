@@ -4,11 +4,8 @@ github: https://github.com/defold/doc
 language: ru
 layout: manual
 title: Руководство по графике в Defold
-toc:
-- Руководство по графике в Defold
+toc: []
 ---
-
-# Руководство по графике в Defold
 
 Устаревшее руководство!
 

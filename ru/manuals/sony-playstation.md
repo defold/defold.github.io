@@ -19,7 +19,7 @@ toc:
 
 Зарегистрироваться как разработчик игр для PS4™ и PS5™ можно на странице [PlayStation™ Partners](https://register.playstation.net/partnership)
 
-После одобрения со стороны Sony вы получите доступ к Playstation 5 DevNet и/или Playstation 4 DevNet. Перейдите в Development > Tools & Middleware > Tools & Middleware directory > Defold. Нажмите кнопку `Confirm Status`.
+После одобрения со стороны Sony вы получите доступ к Playstation 5 DevNet и/или Playstation 4 DevNet. Перейдите в Development > Tools & Middleware > Tools & Middleware directory > Defold. Нажмите кнопку ‘Confirm Status’.
 
 ## Доступ к PS4™ и PS5™ в Defold
 

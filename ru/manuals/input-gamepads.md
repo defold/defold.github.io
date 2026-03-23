@@ -27,7 +27,7 @@ toc:
 Триггеры геймпада позволяют связать стандартный ввод геймпада с функциями игры. Для ввода данных с геймпада предусмотрены привязки для:
 
 - Левый и правый стики (направление и щелчки)
-Левый и правый цифровые пэды. Правый пэд обычно переводится как кнопки "A", "B", "X" и "Y" на контроллере Xbox и кнопки "квадрат", "круг", "треугольник" и "крест" на контроллере Playstation соответственно.
+- Левый и правый цифровые пэды. Правый пэд обычно переводится как кнопки "A", "B", "X" и "Y" на контроллере Xbox и кнопки "квадрат", "круг", "треугольник" и "крест" на контроллере Playstation соответственно.
 - Левый и правый триггеры
 - Левая и правая плечевые кнопки
 - Кнопки "Start", "Back" и другие Кнопки управления
@@ -161,7 +161,7 @@ end
 ```
 
 ## Геймпады в HTML5
-Геймпады поддерживаются в сборках HTML5 и генерируют те же события ввода, что и на других платформах. Поддержка геймпадов основана на [Gamepad API](https://www.w3.org/TR/gamepad/), который поддерживается в большинстве браузеров (см. таблицу поддержки](https://caniuse.com/?search=gamepad)). Если браузер не поддерживает Gamepad API, Defold будет молча игнорировать любые триггеры геймпада в вашем проекте. Вы можете проверить, поддерживает ли браузер Gamepad API, проверив, существует ли функция `getGamepads` для объекта `navigator`:
+Геймпады поддерживаются в сборках HTML5 и генерируют те же события ввода, что и на других платформах. Поддержка геймпадов основана на [Gamepad API](https://www.w3.org/TR/gamepad/), который поддерживается в большинстве браузеров ([см. таблицу поддержки](https://caniuse.com/?search=gamepad)). Если браузер не поддерживает Gamepad API, Defold будет молча игнорировать любые триггеры геймпада в вашем проекте. Вы можете проверить, поддерживает ли браузер Gamepad API, проверив, существует ли функция `getGamepads` для объекта `navigator`:
 
 ```lua
 local function supports_gamepads()
@@ -196,56 +196,56 @@ end
 
 | Событие клавиши с кнопки    | Индекс | Версия  |
 |-----------------------------|--------|---------|
-| AKEYCODE_BUTTON_A           | 0      | 1.2.183 |
-| AKEYCODE_BUTTON_B           | 1      | 1.2.183 |
-| AKEYCODE_BUTTON_C           | 2      | 1.2.183 |
-| AKEYCODE_BUTTON_X           | 3      | 1.2.183 |
-| AKEYCODE_BUTTON_L1          | 4      | 1.2.183 |
-| AKEYCODE_BUTTON_R1          | 5      | 1.2.183 |
-| AKEYCODE_BUTTON_Y           | 6      | 1.2.183 |
-| AKEYCODE_BUTTON_Z           | 7      | 1.2.183 |
-| AKEYCODE_BUTTON_L2          | 8      | 1.2.183 |
-| AKEYCODE_BUTTON_R2          | 9      | 1.2.183 |
-| AKEYCODE_DPAD_CENTER        | 10     | 1.2.183 |
-| AKEYCODE_DPAD_DOWN          | 11     | 1.2.183 |
-| AKEYCODE_DPAD_LEFT          | 12     | 1.2.183 |
-| AKEYCODE_DPAD_RIGHT         | 13     | 1.2.183 |
-| AKEYCODE_DPAD_UP            | 14     | 1.2.183 |
-| AKEYCODE_BUTTON_START       | 15     | 1.2.183 |
-| AKEYCODE_BUTTON_SELECT      | 16     | 1.2.183 |
-| AKEYCODE_BUTTON_THUMBL      | 17     | 1.2.183 |
-| AKEYCODE_BUTTON_THUMBR      | 18     | 1.2.183 |
-| AKEYCODE_BUTTON_MODE        | 19     | 1.2.183 |
-| AKEYCODE_BUTTON_1           | 20     | 1.2.186 |
-| AKEYCODE_BUTTON_2           | 21     | 1.2.186 |
-| AKEYCODE_BUTTON_3           | 22     | 1.2.186 |
-| AKEYCODE_BUTTON_4           | 23     | 1.2.186 |
-| AKEYCODE_BUTTON_5           | 24     | 1.2.186 |
-| AKEYCODE_BUTTON_6           | 25     | 1.2.186 |
-| AKEYCODE_BUTTON_7           | 26     | 1.2.186 |
-| AKEYCODE_BUTTON_8           | 27     | 1.2.186 |
-| AKEYCODE_BUTTON_9           | 28     | 1.2.186 |
-| AKEYCODE_BUTTON_10          | 29     | 1.2.186 |
-| AKEYCODE_BUTTON_11          | 30     | 1.2.186 |
-| AKEYCODE_BUTTON_12          | 31     | 1.2.186 |
-| AKEYCODE_BUTTON_13          | 32     | 1.2.186 |
-| AKEYCODE_BUTTON_14          | 33     | 1.2.186 |
-| AKEYCODE_BUTTON_15          | 34     | 1.2.186 |
-| AKEYCODE_BUTTON_16          | 35     | 1.2.186 |
+| `AKEYCODE_BUTTON_A`           | 0      | 1.2.183 |
+| `AKEYCODE_BUTTON_B`           | 1      | 1.2.183 |
+| `AKEYCODE_BUTTON_C`           | 2      | 1.2.183 |
+| `AKEYCODE_BUTTON_X`           | 3      | 1.2.183 |
+| `AKEYCODE_BUTTON_L1`          | 4      | 1.2.183 |
+| `AKEYCODE_BUTTON_R1`          | 5      | 1.2.183 |
+| `AKEYCODE_BUTTON_Y`           | 6      | 1.2.183 |
+| `AKEYCODE_BUTTON_Z`           | 7      | 1.2.183 |
+| `AKEYCODE_BUTTON_L2`          | 8      | 1.2.183 |
+| `AKEYCODE_BUTTON_R2`          | 9      | 1.2.183 |
+| `AKEYCODE_DPAD_CENTER`        | 10     | 1.2.183 |
+| `AKEYCODE_DPAD_DOWN`          | 11     | 1.2.183 |
+| `AKEYCODE_DPAD_LEFT`          | 12     | 1.2.183 |
+| `AKEYCODE_DPAD_RIGHT`         | 13     | 1.2.183 |
+| `AKEYCODE_DPAD_UP`            | 14     | 1.2.183 |
+| `AKEYCODE_BUTTON_START`       | 15     | 1.2.183 |
+| `AKEYCODE_BUTTON_SELECT`      | 16     | 1.2.183 |
+| `AKEYCODE_BUTTON_THUMBL`      | 17     | 1.2.183 |
+| `AKEYCODE_BUTTON_THUMBR`      | 18     | 1.2.183 |
+| `AKEYCODE_BUTTON_MODE`        | 19     | 1.2.183 |
+| `AKEYCODE_BUTTON_1`           | 20     | 1.2.186 |
+| `AKEYCODE_BUTTON_2`           | 21     | 1.2.186 |
+| `AKEYCODE_BUTTON_3`           | 22     | 1.2.186 |
+| `AKEYCODE_BUTTON_4`           | 23     | 1.2.186 |
+| `AKEYCODE_BUTTON_5`           | 24     | 1.2.186 |
+| `AKEYCODE_BUTTON_6`           | 25     | 1.2.186 |
+| `AKEYCODE_BUTTON_7`           | 26     | 1.2.186 |
+| `AKEYCODE_BUTTON_8`           | 27     | 1.2.186 |
+| `AKEYCODE_BUTTON_9`           | 28     | 1.2.186 |
+| `AKEYCODE_BUTTON_10`          | 29     | 1.2.186 |
+| `AKEYCODE_BUTTON_11`          | 30     | 1.2.186 |
+| `AKEYCODE_BUTTON_12`          | 31     | 1.2.186 |
+| `AKEYCODE_BUTTON_13`          | 32     | 1.2.186 |
+| `AKEYCODE_BUTTON_14`          | 33     | 1.2.186 |
+| `AKEYCODE_BUTTON_15`          | 34     | 1.2.186 |
+| `AKEYCODE_BUTTON_16`          | 35     | 1.2.186 |
 
-([Определения клавишных событий Android](https://developer.android.com/ndk/reference/group/input#group___input_1gafccd240f973cf154952fb917c9209719))
+([Определения клавишных событий Android `KeyEvent`](https://developer.android.com/ndk/reference/group/input#group___input_1gafccd240f973cf154952fb917c9209719))
 
 | Событие движения с оси      | Индекс |
 |-----------------------------|--------|
-| AMOTION_EVENT_AXIS_X        | 0      |
-| AMOTION_EVENT_AXIS_Y        | 1      |
-| AMOTION_EVENT_AXIS_Z        | 2      |
-| AMOTION_EVENT_AXIS_RZ       | 3      |
-| AMOTION_EVENT_AXIS_LTRIGGER | 4      |
-| AMOTION_EVENT_AXIS_RTRIGGER | 5      |
-| AMOTION_EVENT_AXIS_HAT_X    | 6      |
-| AMOTION_EVENT_AXIS_HAT_Y    | 7      |
+| `AMOTION_EVENT_AXIS_X`        | 0      |
+| `AMOTION_EVENT_AXIS_Y`        | 1      |
+| `AMOTION_EVENT_AXIS_Z`        | 2      |
+| `AMOTION_EVENT_AXIS_RZ`       | 3      |
+| `AMOTION_EVENT_AXIS_LTRIGGER` | 4      |
+| `AMOTION_EVENT_AXIS_RTRIGGER` | 5      |
+| `AMOTION_EVENT_AXIS_HAT_X`    | 6      |
+| `AMOTION_EVENT_AXIS_HAT_Y`    | 7      |
 
-([Определения событий движения Android](https://developer.android.com/ndk/reference/group/input#group___input_1ga157d5577a5b2f5986037d0d09c7dc77d))
+([Определения событий движения Android `MotionEvent`](https://developer.android.com/ndk/reference/group/input#group___input_1ga157d5577a5b2f5986037d0d09c7dc77d))
 
 Используйте эту таблицу поиска в сочетании с приложением для тестирования геймпада из Google Play Store, чтобы выяснить, к какому событию привязана каждая кнопка на вашем геймпаде.

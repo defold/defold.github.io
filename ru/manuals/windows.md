@@ -8,7 +8,7 @@ toc:
 - Разработка под Windows
 - Настройки проекта
 - Иконка приложения
-- Создание файла .ico локально с помощью набора программ ImageMagick
+- Создание .ico-файла локально с помощью набора программ ImageMagick.
 - FAQ
 ---
 
@@ -22,11 +22,11 @@ toc:
 
 ## Иконка приложения
 
-Иконка приложения для игры под Windows должна быть в формате `.ico`. Вы можете легко создать файл `.ico` из файла `.png` с помощью онлайн-инструментов, таких как [ICOConvert](https://www.icoconverter.com/) или [AConvert](https://www.aconvert.com/icon/png-to-ico/). Загрузите изображение и используйте как минимум следующие размеры иконок: `16x16`, `24x24`, `32x32`, `48x48`, `256x256`.
+Иконка приложения для игры под Windows должна быть в формате .ico. Вы можете легко создать файл .ico из файла .png с помощью онлайн-инструментов, таких как [ICOConvert](https://www.icoconverter.com/) или [AConvert](https://www.aconvert.com/icon/png-to-ico/). Загрузите изображение и используйте как минимум следующие размеры иконок: 16x16, 24x24, 32x32, 48x48, 256x256.
 
 Источник: [Microsoft - Windows app icon construction](https://learn.microsoft.com/en-us/windows/apps/design/style/iconography/app-icon-construction#icon-sizes-win32)
 
-### Создание файла `.ico` локально с помощью набора программ ImageMagick
+### Создание .ico-файла локально с помощью набора программ ImageMagick.
 
 [ImageMagick](https://www.imagemagick.org/) — это бесплатный пакет программ с открытым исходным кодом, используемый для редактирования и обработки цифровых изображений.
 
