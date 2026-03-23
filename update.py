@@ -319,6 +319,19 @@ def get_language_specific_dir(language, dir):
         dir = os.path.join(language, dir)
     return dir
 
+
+def get_index_item_languages(item, languages):
+    item_languages = []
+    if not item["path"].startswith("http"):
+        path = item["path"][1:]
+        # foo/bar/#anchor -> foo/bar
+        # foo/bar#anchor -> foo/bar
+        path = re.sub(r"/?\#.*", "", path)
+        for language in languages["languages"].keys():
+            if os.path.exists(get_language_specific_dir(language, path + ".md")):
+                item_languages.append(language)
+    return item_languages
+
 def update_file_links_with_lang(filename, pattern, language):
     # Open the file and read its content
     with open(filename, 'r') as f:
@@ -485,13 +498,22 @@ def process_docs(download = False):
             for filename in find_files(shared_includes_dst_dir, "*.md"):
                 process_doc_file(filename, language)
 
-        print("...tutorials")
-        tutorials_src_dir = os.path.join(DOC_DIR, "docs", "en", "tutorials")
-        tutorials_dst_dir = "tutorials"
-        rmcopytree(tutorials_src_dir, tutorials_dst_dir)
-        for filename in find_files(tutorials_dst_dir, "*.md"):
-            process_doc_file(filename, "en")
-            append_frontmatter(filename, { "layout": "tutorial" })
+        for language in languages["languages"].keys():
+            print("...tutorials ({})".format(language))
+            tutorials_src_dir = os.path.join(DOC_DIR, "docs", language, "tutorials")
+            if os.path.exists(tutorials_src_dir):
+                tutorials_dst_dir = get_language_specific_dir(language, "tutorials")
+                rmcopytree(tutorials_src_dir, tutorials_dst_dir)
+                for filename in find_files(tutorials_dst_dir, "*.md"):
+                    process_doc_file(filename, language)
+                    append_frontmatter(filename, {
+                        "language": language,
+                        "layout": "tutorial",
+                    })
+                    if language != "en":
+                        update_file_links_with_lang(filename, r'/manuals/[^)#]+', language)
+                        update_file_links_with_lang(filename, r'/tutorials/[^)#]+', language)
+                        replace_in_file(filename, r"\.\.\/images\/", r"/tutorials/images/")
 
         print("...courses")
         courses_src_dir = os.path.join(DOC_DIR, "docs", "en", "courses")
@@ -505,15 +527,10 @@ def process_docs(download = False):
         print("...index (incl. languages)")
         for section in index["navigation"]["manuals"]:
             for item in section["items"]:
-                item["languages"] = []
-                if not item["path"].startswith("http"):
-                    path = item["path"][1:]
-                    # foo/bar/#anchor -> foo/bar
-                    # foo/bar#anchor -> foo/bar
-                    path = re.sub(r"/?\#.*", "", path)
-                    for language in languages["languages"].keys():
-                        if os.path.exists(get_language_specific_dir(language, path + ".md")):
-                            item["languages"].append(language)
+                item["languages"] = get_index_item_languages(item, languages)
+        for item in index["navigation"]["tutorials"]:
+            if not item["path"].startswith("http"):
+                item["languages"] = get_index_item_languages(item, languages)
         write_as_json(index_file, index)
 
         print("...shared images")
