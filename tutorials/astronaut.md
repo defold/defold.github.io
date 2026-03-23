@@ -1,6 +1,7 @@
 ---
 brief: In this beginner's tutorial you learn how to capture player input and make a character move and animate. You will also learn about game objects, components and collections
 github: https://github.com/defold/tutorial-astronaut
+language: en
 layout: tutorial
 title: Walking astronaut tutorial
 ---
