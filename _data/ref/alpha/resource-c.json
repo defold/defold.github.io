@@ -87,7 +87,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "FResourceDecrypt",
+            "name": "FResourceDecryption",
             "notes": [],
             "parameters": [
                 {
@@ -323,102 +323,6 @@
             ],
             "tparams": [],
             "type": "TYPEDEF"
-        },
-        {
-            "brief": "Get resource descriptor from resource (name)",
-            "description": "Get resource descriptor from resource (name)",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "GetDescriptor",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "Factory handle",
-                    "is_optional": "False",
-                    "name": "factory",
-                    "types": [
-                        "HResourceFactory"
-                    ]
-                },
-                {
-                    "doc": "Resource path",
-                    "is_optional": "False",
-                    "name": "path",
-                    "types": [
-                        "dmhash_t"
-                    ]
-                },
-                {
-                    "doc": "Returned resource descriptor. Temporary, don't copy.",
-                    "is_optional": "False",
-                    "name": "descriptor",
-                    "types": [
-                        "HResourceDescriptor*"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "RESOURCE_RESULT_OK on success",
-                    "name": "result",
-                    "types": [
-                        "ResourceResult"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Get resource descriptor from resource (name)",
-            "description": "Get resource descriptor from resource (name)",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "GetDescriptorByHash",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "Factory handle",
-                    "is_optional": "False",
-                    "name": "factory",
-                    "types": [
-                        "HResourceFactory"
-                    ]
-                },
-                {
-                    "doc": "Resource path hash",
-                    "is_optional": "False",
-                    "name": "path_hash",
-                    "types": [
-                        "dmhash_t"
-                    ]
-                },
-                {
-                    "doc": "Returned resource descriptor. Temporary, don't copy.",
-                    "is_optional": "False",
-                    "name": "descriptor",
-                    "types": [
-                        "HResourceDescriptor*"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "RESOURCE_RESULT_OK on success",
-                    "name": "result",
-                    "types": [
-                        "ResourceResult"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
         },
         {
             "brief": "Holds information about a currently loaded resourc...",
@@ -1169,6 +1073,102 @@
                     "name": "length",
                     "types": [
                         "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get resource descriptor from resource (name)",
+            "description": "Get resource descriptor from resource (name)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResourceGetDescriptor",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "HResourceFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource path",
+                    "is_optional": "False",
+                    "name": "path",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Returned resource descriptor. Temporary, don't copy.",
+                    "is_optional": "False",
+                    "name": "descriptor",
+                    "types": [
+                        "HResourceDescriptor*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESOURCE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "ResourceResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get resource descriptor from resource (name)",
+            "description": "Get resource descriptor from resource (name)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResourceGetDescriptorByHash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "HResourceFactory"
+                    ]
+                },
+                {
+                    "doc": "Resource path hash",
+                    "is_optional": "False",
+                    "name": "path_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Returned resource descriptor. Temporary, don't copy.",
+                    "is_optional": "False",
+                    "name": "descriptor",
+                    "types": [
+                        "HResourceDescriptor*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESOURCE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "ResourceResult"
                     ]
                 }
             ],
