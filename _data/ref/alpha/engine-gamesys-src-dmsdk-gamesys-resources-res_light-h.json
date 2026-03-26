@@ -1,0 +1,64 @@
+{
+    "elements": [
+        {
+            "brief": "Get the render light prototype for a loaded light resource",
+            "description": "Returns the <code>dmRender::HLightPrototype</code> handle created from the <code>.lightc</code> data.\nThe pointer remains valid until the resource is released.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetLightPrototype",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Light resource",
+                    "is_optional": "False",
+                    "name": "res",
+                    "types": [
+                        "LightResource*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Prototype pointer",
+                    "name": "prototype",
+                    "types": [
+                        "dmRender::HLightPrototype*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Opaque handle to a loaded light resource",
+            "description": "This struct is an opaque handle managed by the engine.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "LightResource",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        }
+    ],
+    "info": {
+        "brief": "Light resource access",
+        "description": "Helper types and accessors for the light resource type (`.lightc`).",
+        "description_html": "<p>Helper types and accessors for the light resource type (<code>.lightc</code>).</p>",
+        "file": "res_light.h",
+        "include": "dmsdk/gamesys/resources/res_light.h",
+        "language": "C++",
+        "name": "Light Resource",
+        "namespace": "dmGameSystem",
+        "notes": [],
+        "path": "engine/gamesys/src/dmsdk/gamesys/resources/res_light.h",
+        "type": "Defold C++"
+    }
+}
