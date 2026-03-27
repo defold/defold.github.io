@@ -5,7 +5,7 @@ category: sprite
 layout: example
 opengraph_image: https://www.defold.com/examples/sprite/texture_scrolling/thumbnail.png
 path: sprite/texture_scrolling
-scripts: materials/scrolling.vp, materials/scrolling.fp
+scripts: scrolling.vp, scrolling.fp
 tags: sprite
 thumbnail: thumbnail.png
 title: Texture scrolling
@@ -23,7 +23,7 @@ Since Defold 1.12.3 also time is provided automatically to the shaders via Fragm
 
 ## Material Setup
 
-1. Create a new material: `assets/materials/scrolling.material`, with these important things set:
+1. Create a new material: `example/scrolling.material`, with these important things set:
 
 - **Vertex attribute** `translation` (vec2)
   - Vector Type: `Vec2` (for 2D)
@@ -55,11 +55,11 @@ To control per-sprite scroll speed/direction, **just change the `translation`** 
 
 ## Shaders overview
 
-- **Vertex shader** `assets/materials/scrolling.vp`
+- **Vertex shader** `example/scrolling.vp`
   - Transforms sprite vertices to clip space using `view_proj`.
   - Forwards `texcoord0`, `texture_transform_2d`, and `translation` to the fragment shader.
 
-- **Fragment shader** `assets/materials/scrolling.fp`
+- **Fragment shader** `example/scrolling.fp`
   - Derives the atlas tile origin (`atlas_pos`) and size (`atlas_size`) from `texture_transform_2d`.
   - Converts atlas UV into local tile UV (0..1).
   - Applies scrolling using `localUV += translation * time.x`.
