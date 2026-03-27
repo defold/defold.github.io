@@ -36,6 +36,9 @@ CODEPAD_ZIP = "codepad-master.zip"
 ASSETPORTAL_ZIP = "asset-portal-master.zip"
 GAMESSHOWCASE_ZIP = "games-showcase-master.zip"
 
+EXAMPLES_DEFOLD_CHANNEL = "beta"
+EXAMPLES_BUILD_SERVER = "https://build-stage.defold.com/"
+
 ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
 GAMES_JSON = os.path.join("_data", "games.json")
 AUTHORINDEX_JSON = os.path.join("_data", "authorindex.json")
@@ -697,17 +700,19 @@ def process_extension(extension_name, download = False):
 
 
 def process_examples(download = False):
+    examples_sha1 = get_sha1(EXAMPLES_DEFOLD_CHANNEL)
+
     if download:
         if os.path.exists(EXAMPLES_ZIP):
             os.remove(EXAMPLES_ZIP)
         download_file("https://github.com/defold/examples/archive/refs/heads/master.zip", ".", EXAMPLES_ZIP)
-        download_bob(get_sha1())
+        download_bob(examples_sha1)
 
     if not os.path.exists(EXAMPLES_ZIP):
         print("File {} does not exist".format(EXAMPLES_ZIP))
         sys.exit(1)
 
-    bob_jar = get_bob_filename(get_sha1())
+    bob_jar = get_bob_filename(examples_sha1)
     if not os.path.exists(bob_jar):
         print("File {} does not exist".format(bob_jar))
         sys.exit(1)
@@ -748,7 +753,7 @@ def process_examples(download = False):
                     shutil.copyfile(bob_jar, bob_out)
                     game_project = os.path.join(example_src_dir, "game.project")
                     replace_in_file(game_project, r"title = .*", r"title = Defold-examples")
-                    subprocess.call([ "java", "-jar", bob_out, "--archive", "--platform", "js-web", "--architectures", "wasm-web", "--variant", "debug", "resolve", "build", "bundle" ], cwd=example_src_dir)
+                    subprocess.call([ "java", "-jar", bob_out, "--archive", "--platform", "js-web", "--architectures", "wasm-web", "--variant", "debug", "--build-server", EXAMPLES_BUILD_SERVER, "resolve", "build", "bundle" ], cwd=example_src_dir)
                     os.remove(bob_out)
 
                     print("...copying %s" % example)
