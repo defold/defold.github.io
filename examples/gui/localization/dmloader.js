@@ -65,11 +65,11 @@ var CUSTOM_PARAMETERS = {
     },
     update_imports: function(imports) {
     },
+    resize_window_prev_inner_width: -1,
+    resize_window_prev_inner_height: -1,
     resize_window_callback: function() {
         var is_iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         var buttonHeight = 0;
-        var prevInnerWidth = -1;
-        var prevInnerHeight = -1;
         
         buttonHeight = 42;
         
@@ -80,17 +80,18 @@ var CUSTOM_PARAMETERS = {
         if (is_iOS) {
             window.scrollTo(0, 0);
         }
-    
+
         var app_container = document.getElementById('app-container');
         var game_canvas = document.getElementById('canvas');
         var innerWidth = window.innerWidth;
         var innerHeight = window.innerHeight - buttonHeight;
-        if (prevInnerWidth == innerWidth && prevInnerHeight == innerHeight)
+        if (CUSTOM_PARAMETERS.resize_window_prev_inner_width == innerWidth &&
+            CUSTOM_PARAMETERS.resize_window_prev_inner_height == innerHeight)
         {
             return;
         }
-        prevInnerWidth = innerWidth;
-        prevInnerHeight = innerHeight;
+        CUSTOM_PARAMETERS.resize_window_prev_inner_width = innerWidth;
+        CUSTOM_PARAMETERS.resize_window_prev_inner_height = innerHeight;
         var width = 960;
         var height = 640;
         var targetRatio = width / height;
@@ -219,19 +220,19 @@ var FileLoader = {
 var EngineLoader = {
     arc_sha1: "",
     wasm_sha1: "",
-    wasm_size: 3887542,
+    wasm_size: 3920651,
     wasmjs_sha1: "",
-    wasmjs_size: 285231,
+    wasmjs_size: 285130,
     wasm_pthread_sha1: "",
     wasm_pthread_size: 2000000,
     wasmjs_pthread_sha1: "",
     wasmjs_pthread_size: 250000,
     asmjs_sha1: "",
     asmjs_size: 4000000,
-    wasm_file: "/examples/wasm/bb8b629262c5449a0c5f9479f331af05.wasm",
-    wasm_pthread_file: "/examples/wasm/bb8b629262c5449a0c5f9479f331af05.wasm",
-    wasmjs_file: "/examples/wasm/16de90689ba3f1d6d39fc6ebd68eaf3a.wasm.js",
-    wasmjs_pthread_file: "/examples/wasm/16de90689ba3f1d6d39fc6ebd68eaf3a.wasm.js",
+    wasm_file: "/examples/wasm/06cf3fe07d6c120386a62fb7ce5b87c2.wasm",
+    wasm_pthread_file: "/examples/wasm/06cf3fe07d6c120386a62fb7ce5b87c2.wasm",
+    wasmjs_file: "/examples/wasm/c410635c09e5a56324f33c99f962c973.wasm.js",
+    wasmjs_pthread_file: "/examples/wasm/c410635c09e5a56324f33c99f962c973.wasm.js",
     wasm_instantiate_progress: 0,
 
     stream_wasm: "false" === "true",
@@ -895,8 +896,8 @@ var Progress = {
 /* ********************************************************************* */
 
 var Module = {
-    engineVersion: "1.12.1",
-    engineSdkSha1: "16c6fd602f32de4814660672c38ce3ccbbc1fb59",
+    engineVersion: "1.12.3",
+    engineSdkSha1: "9701e105852376319304773c3b34040f5d71d581",
     noInitialRun: true,
 
     _filesToPreload: [],

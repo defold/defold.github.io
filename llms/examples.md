@@ -72,6 +72,7 @@ These are per-example files generated for LLM usage.
 
 ## Material
 
+- [Billboarding](https://defold.com/llms/examples/material/billboarding.md) - This example shows how to make sprites and particle sprites face the camera using a custom vertex shader
 - [Custom Sprite](https://defold.com/llms/examples/material/custom_sprite.md) - This example demonstrates a simple way to create and apply a custom sprite shader for changing colors and customizing an outline
 - [Noise shader](https://defold.com/llms/examples/material/noise.md) - This example shows how to use a noise function to generate clouds, smoke or similar effect using a shader
 - [Repeating Background](https://defold.com/llms/examples/material/repeating_background.md) - Create a scrolling background using a repeating texture on a model quad
@@ -115,6 +116,7 @@ These are per-example files generated for LLM usage.
 - [Particle effect example - confetti](https://defold.com/llms/examples/particles/confetti.md) - This example shows a simple particle effect to imitate confetti
 - [Particle effect example - fire and smoke](https://defold.com/llms/examples/particles/fire_and_smoke.md) - This example shows a simple particle effect for imitating fire and smoke
 - [Particle effect example - fireworks](https://defold.com/llms/examples/particles/fireworks.md) - This example shows a fireworks effect made with particles
+- [ParticleFX emitter properties](https://defold.com/llms/examples/particles/particlefx_set_get.md) - This example shows how to get and set ParticleFX emitter image, animation, and material at runtime
 
 ## Physics
 
@@ -157,6 +159,7 @@ These are per-example files generated for LLM usage.
 - [Sprite cursor](https://defold.com/llms/examples/sprite/cursor.md) - This example shows how to use the sprite animation cursor and frame count to manually select a specific frame
 - [Sprite size](https://defold.com/llms/examples/sprite/size.md) - This example shows how to get the size of a sprite at run-time
 - [Sprite tint](https://defold.com/llms/examples/sprite/tint.md) - This example shows how tint a sprite at run-time
+- [Texture scrolling](https://defold.com/llms/examples/sprite/texture_scrolling.md) - This example shows how tint a sprite at run-time
 
 ## Tilemap
 

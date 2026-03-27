@@ -65,28 +65,29 @@ var CUSTOM_PARAMETERS = {
     },
     update_imports: function(imports) {
     },
+    resize_window_prev_inner_width: -1,
+    resize_window_prev_inner_height: -1,
     resize_window_callback: function() {
         var is_iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         var buttonHeight = 0;
-        var prevInnerWidth = -1;
-        var prevInnerHeight = -1;
         
         
         // Hack for iOS when exit from Fullscreen mode
         if (is_iOS) {
             window.scrollTo(0, 0);
         }
-    
+
         var app_container = document.getElementById('app-container');
         var game_canvas = document.getElementById('canvas');
         var innerWidth = window.innerWidth;
         var innerHeight = window.innerHeight - buttonHeight;
-        if (prevInnerWidth == innerWidth && prevInnerHeight == innerHeight)
+        if (CUSTOM_PARAMETERS.resize_window_prev_inner_width == innerWidth &&
+            CUSTOM_PARAMETERS.resize_window_prev_inner_height == innerHeight)
         {
             return;
         }
-        prevInnerWidth = innerWidth;
-        prevInnerHeight = innerHeight;
+        CUSTOM_PARAMETERS.resize_window_prev_inner_width = innerWidth;
+        CUSTOM_PARAMETERS.resize_window_prev_inner_height = innerHeight;
         var width = 720;
         var height = 720;
         var targetRatio = width / height;
@@ -219,19 +220,19 @@ var FileLoader = {
 var EngineLoader = {
     arc_sha1: "",
     wasm_sha1: "",
-    wasm_size: 3312650,
+    wasm_size: 3360468,
     wasmjs_sha1: "",
-    wasmjs_size: 285225,
+    wasmjs_size: 285124,
     wasm_pthread_sha1: "",
     wasm_pthread_size: 2000000,
     wasmjs_pthread_sha1: "",
     wasmjs_pthread_size: 250000,
     asmjs_sha1: "",
     asmjs_size: 4000000,
-    wasm_file: "/examples/wasm/0457278e31da1d8f9054d187e5438b0d.wasm",
-    wasm_pthread_file: "/examples/wasm/0457278e31da1d8f9054d187e5438b0d.wasm",
-    wasmjs_file: "/examples/wasm/5ad05ae98b80da951940e8a8ad5dfb40.wasm.js",
-    wasmjs_pthread_file: "/examples/wasm/5ad05ae98b80da951940e8a8ad5dfb40.wasm.js",
+    wasm_file: "/examples/wasm/97a08c664c8637bab0af320cb37987f3.wasm",
+    wasm_pthread_file: "/examples/wasm/97a08c664c8637bab0af320cb37987f3.wasm",
+    wasmjs_file: "/examples/wasm/ba2fd741c6c9bb6a1f20edaccf4ccabc.wasm.js",
+    wasmjs_pthread_file: "/examples/wasm/ba2fd741c6c9bb6a1f20edaccf4ccabc.wasm.js",
     wasm_instantiate_progress: 0,
 
     stream_wasm: "false" === "true",
@@ -895,8 +896,8 @@ var Progress = {
 /* ********************************************************************* */
 
 var Module = {
-    engineVersion: "1.12.1",
-    engineSdkSha1: "16c6fd602f32de4814660672c38ce3ccbbc1fb59",
+    engineVersion: "1.12.3",
+    engineSdkSha1: "9701e105852376319304773c3b34040f5d71d581",
     noInitialRun: true,
 
     _filesToPreload: [],
