@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: factory-lua
-language: Lua
+api_language: Lua
 title: API reference (Factory)
 type: Defold Lua
 ---

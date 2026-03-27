@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: engine-gamesys-src-dmsdk-gamesys-components-comp_model-h
-language: C++
+api_language: C++
 title: API reference (Model)
 type: Defold C++
 ---

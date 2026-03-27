@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: engine-dlib-src-dmsdk-dlib-socket-h
-language: C++
+api_language: C++
 title: API reference (Socket)
 type: Defold C++
 pagefind_exclude: true

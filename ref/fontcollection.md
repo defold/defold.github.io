@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: fontcollection-c
-language: C
+api_language: C
 title: API reference (FontCollection)
 type: Defold C
 pagefind_exclude: true

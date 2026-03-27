@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: msg-lua
-language: Lua
+api_language: Lua
 title: API reference (Message)
 type: Defold Lua
 pagefind_exclude: true

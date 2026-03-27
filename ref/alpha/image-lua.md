@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: image-lua
-language: Lua
+api_language: Lua
 title: API reference (Image)
 type: Defold Lua
 ---

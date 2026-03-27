@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: sound-lua
-language: Lua
+api_language: Lua
 title: API reference (Sound)
 type: Defold Lua
 pagefind_exclude: true

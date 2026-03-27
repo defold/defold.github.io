@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: collectionfactory-lua
-language: Lua
+api_language: Lua
 title: API reference (Collection factory)
 type: Defold Lua
 pagefind_exclude: true

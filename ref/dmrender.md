@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: engine-render-src-dmsdk-render-render-h
-language: C++
+api_language: C++
 title: API reference (Render)
 type: Defold C++
 pagefind_exclude: true

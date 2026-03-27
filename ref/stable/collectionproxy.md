@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: collectionproxy-lua
-language: Lua
+api_language: Lua
 title: API reference (Collection proxy)
 type: Defold Lua
 pagefind_exclude: true

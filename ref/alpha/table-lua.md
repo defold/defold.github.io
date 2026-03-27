@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: table-lua
-language: Lua
+api_language: Lua
 title: API reference (Table)
 type: Defold Lua
 ---

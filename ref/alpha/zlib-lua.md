@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: zlib-lua
-language: Lua
+api_language: Lua
 title: API reference (Zlib)
 type: Defold Lua
 ---

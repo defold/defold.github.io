@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: sprite-lua
-language: Lua
+api_language: Lua
 title: API reference (Sprite)
 type: Defold Lua
 pagefind_exclude: true

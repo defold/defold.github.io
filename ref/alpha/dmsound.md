@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: engine-sound-src-dmsdk-sound-sound-h
-language: C++
+api_language: C++
 title: API reference (Sound)
 type: Defold C++
 pagefind_exclude: true

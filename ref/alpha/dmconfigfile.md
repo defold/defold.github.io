@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: engine-dlib-src-dmsdk-dlib-configfile_gen-hpp
-language: C++
+api_language: C++
 title: API reference (ConfigFile)
 type: Defold C++
 pagefind_exclude: true

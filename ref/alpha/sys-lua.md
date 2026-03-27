@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: sys-lua
-language: Lua
+api_language: Lua
 title: API reference (System)
 type: Defold Lua
 ---

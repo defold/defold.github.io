@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: render-lua
-language: Lua
+api_language: Lua
 title: API reference (Render)
 type: Defold Lua
 ---

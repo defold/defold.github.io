@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: engine-gamesys-src-dmsdk-gamesys-resources-res_light-h
-language: C++
+api_language: C++
 title: API reference (Light Resource)
 type: Defold C++
 pagefind_exclude: true

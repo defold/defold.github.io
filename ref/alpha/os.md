@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: os-lua
-language: Lua
+api_language: Lua
 title: API reference (Os)
 type: Defold Lua
 pagefind_exclude: true

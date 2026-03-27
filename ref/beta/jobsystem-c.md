@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: jobsystem-c
-language: C
+api_language: C
 title: API reference (Job System)
 type: Defold C
 ---

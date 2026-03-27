@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: strings-c
-language: C
+api_language: C
 title: API reference (Strings)
 type: Defold C
 pagefind_exclude: true

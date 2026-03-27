@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: engine-dlib-src-dmsdk-dlib-time-h
-language: C++
+api_language: C++
 title: API reference (Time)
 type: Defold C++
 ---

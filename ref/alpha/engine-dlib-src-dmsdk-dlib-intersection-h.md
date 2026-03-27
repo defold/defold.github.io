@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: engine-dlib-src-dmsdk-dlib-intersection-h
-language: C++
+api_language: C++
 title: API reference (Intersection structs and functions)
 type: Defold C++
 ---

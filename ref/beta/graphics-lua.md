@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: graphics-lua
-language: Lua
+api_language: Lua
 title: API reference (Graphics)
 type: Defold Lua
 ---

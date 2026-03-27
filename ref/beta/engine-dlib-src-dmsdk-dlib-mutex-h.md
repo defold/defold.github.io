@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: engine-dlib-src-dmsdk-dlib-mutex-h
-language: C++
+api_language: C++
 title: API reference (Mutex)
 type: Defold C++
 ---

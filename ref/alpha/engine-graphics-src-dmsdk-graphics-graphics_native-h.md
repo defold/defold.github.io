@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: engine-graphics-src-dmsdk-graphics-graphics_native-h
-language: C++
+api_language: C++
 title: API reference (Graphics)
 type: Defold C++
 ---

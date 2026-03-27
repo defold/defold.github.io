@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: json-lua
-language: Lua
+api_language: Lua
 title: API reference (JSON)
 type: Defold Lua
 ---

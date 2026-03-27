@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: profiler-lua
-language: Lua
+api_language: Lua
 title: API reference (Profiler)
 type: Defold Lua
 ---

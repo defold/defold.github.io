@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: font-lua
-language: Lua
+api_language: Lua
 title: API reference (Font)
 type: Defold Lua
 pagefind_exclude: true

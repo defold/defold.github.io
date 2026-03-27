@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: engine-gamesys-src-dmsdk-gamesys-components-comp_collection_factory-h
-language: C++
+api_language: C++
 title: API reference (Collection factory)
 type: Defold C++
 ---

@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: resource-c
-language: C
+api_language: C
 title: API reference (Resource)
 type: Defold C
 ---

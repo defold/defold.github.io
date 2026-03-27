@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: engine-dlib-src-dmsdk-dlib-hashtable-h
-language: C++
+api_language: C++
 title: API reference (Hashtable)
 type: Defold C++
 ---

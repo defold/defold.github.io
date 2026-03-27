@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: engine-gamesys-src-dmsdk-gamesys-render_constants-h
-language: C++
+api_language: C++
 title: API reference (Component Render Constants)
 type: Defold C++
 ---

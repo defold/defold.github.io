@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: vmath-lua
-language: Lua
+api_language: Lua
 title: API reference (Vector math)
 type: Defold Lua
 pagefind_exclude: true

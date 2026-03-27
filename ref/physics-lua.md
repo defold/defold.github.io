@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: physics-lua
-language: Lua
+api_language: Lua
 title: API reference (Collision object)
 type: Defold Lua
 ---

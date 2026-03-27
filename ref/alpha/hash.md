@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: hash-c
-language: C
+api_language: C
 title: API reference (Hash)
 type: Defold C
 pagefind_exclude: true

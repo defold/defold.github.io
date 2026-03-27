@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: engine-graphics-src-dmsdk-graphics-graphics-h
-language: C++
+api_language: C++
 title: API reference (Graphics)
 type: Defold C++
 ---

@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: window-c
-language: C
+api_language: C
 title: API reference (Window)
 type: Defold C
 ---

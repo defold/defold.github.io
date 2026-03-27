@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: math-lua
-language: Lua
+api_language: Lua
 title: API reference (Math)
 type: Defold Lua
 pagefind_exclude: true

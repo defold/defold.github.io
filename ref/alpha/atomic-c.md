@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: atomic-c
-language: C
+api_language: C
 title: API reference (Atomic)
 type: Defold C
 ---

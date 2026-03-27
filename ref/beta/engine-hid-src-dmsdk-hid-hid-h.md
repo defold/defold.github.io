@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: engine-hid-src-dmsdk-hid-hid-h
-language: C++
+api_language: C++
 title: API reference (Hid)
 type: Defold C++
 ---

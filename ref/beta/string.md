@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: string-lua
-language: Lua
+api_language: Lua
 title: API reference (String)
 type: Defold Lua
 pagefind_exclude: true

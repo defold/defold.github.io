@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: window-lua
-language: Lua
+api_language: Lua
 title: API reference (Window)
 type: Defold Lua
 ---

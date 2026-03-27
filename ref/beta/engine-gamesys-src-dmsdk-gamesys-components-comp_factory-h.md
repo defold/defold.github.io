@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: engine-gamesys-src-dmsdk-gamesys-components-comp_factory-h
-language: C++
+api_language: C++
 title: API reference (Factory)
 type: Defold C++
 ---

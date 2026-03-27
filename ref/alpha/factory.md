@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: factory-lua
-language: Lua
+api_language: Lua
 title: API reference (Factory)
 type: Defold Lua
 pagefind_exclude: true

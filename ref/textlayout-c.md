@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: textlayout-c
-language: C
+api_language: C
 title: API reference (TextLayout)
 type: Defold C
 ---

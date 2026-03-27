@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: engine-physics-src-dmsdk-physics-physics-h
-language: C++
+api_language: C++
 title: API reference (Physics)
 type: Defold C++
 pagefind_exclude: true

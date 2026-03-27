@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: editor-lua
-language: Lua
+api_language: Lua
 title: API reference (Editor)
 type: Defold Lua
 ---

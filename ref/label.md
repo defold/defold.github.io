@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: label-lua
-language: Lua
+api_language: Lua
 title: API reference (Label)
 type: Defold Lua
 pagefind_exclude: true

@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: b2d.body-lua
-language: Lua
+api_language: Lua
 title: API reference (b2d.body)
 type: Defold Lua
 pagefind_exclude: true

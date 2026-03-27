@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: tilemap-lua
-language: Lua
+api_language: Lua
 title: API reference (Tilemap)
 type: Defold Lua
 pagefind_exclude: true

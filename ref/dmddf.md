@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: engine-ddf-src-dmsdk-ddf-ddf-h
-language: C++
+api_language: C++
 title: API reference (Ddf)
 type: Defold C++
 pagefind_exclude: true

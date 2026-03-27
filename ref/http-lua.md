@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: http-lua
-language: Lua
+api_language: Lua
 title: API reference (HTTP)
 type: Defold Lua
 ---

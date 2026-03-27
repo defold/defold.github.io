@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: engine-gamesys-src-dmsdk-gamesys-gui-h
-language: C++
+api_language: C++
 title: API reference (GameSystem Gui)
 type: Defold C++
 ---

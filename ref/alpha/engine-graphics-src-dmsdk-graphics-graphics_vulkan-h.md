@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: engine-graphics-src-dmsdk-graphics-graphics_vulkan-h
-language: C++
+api_language: C++
 title: API reference (Graphics Vulkan)
 type: Defold C++
 ---

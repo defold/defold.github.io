@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: coroutine-lua
-language: Lua
+api_language: Lua
 title: API reference (Coroutine)
 type: Defold Lua
 ---

@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: engine-gameobject-src-dmsdk-gameobject-gameobject-h
-language: C++
+api_language: C++
 title: API reference (Gameobject)
 type: Defold C++
 ---

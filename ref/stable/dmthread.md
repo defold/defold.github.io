@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: engine-dlib-src-dmsdk-dlib-thread-h
-language: C++
+api_language: C++
 title: API reference (Thread)
 type: Defold C++
 pagefind_exclude: true

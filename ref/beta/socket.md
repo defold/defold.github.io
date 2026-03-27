@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: socket-lua
-language: Lua
+api_language: Lua
 title: API reference (LuaSocket)
 type: Defold Lua
 pagefind_exclude: true

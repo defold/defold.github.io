@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: timer-lua
-language: Lua
+api_language: Lua
 title: API reference (Timer)
 type: Defold Lua
 pagefind_exclude: true

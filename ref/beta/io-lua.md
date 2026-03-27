@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: io-lua
-language: Lua
+api_language: Lua
 title: API reference (Io)
 type: Defold Lua
 ---

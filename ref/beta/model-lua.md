@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: model-lua
-language: Lua
+api_language: Lua
 title: API reference (Model)
 type: Defold Lua
 ---

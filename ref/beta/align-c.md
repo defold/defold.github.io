@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: align-c
-language: C
+api_language: C
 title: API reference (Align)
 type: Defold C
 ---

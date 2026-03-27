@@ -2,7 +2,7 @@
 layout: api
 branch: stable
 ref: resource-lua
-language: Lua
+api_language: Lua
 title: API reference (Resource)
 type: Defold Lua
 ---

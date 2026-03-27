@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: engine-gameobject-src-dmsdk-gameobject-script-h
-language: C++
+api_language: C++
 title: API reference (Script)
 type: Defold C++
 pagefind_exclude: true

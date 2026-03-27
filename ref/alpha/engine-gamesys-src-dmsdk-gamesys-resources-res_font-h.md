@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: engine-gamesys-src-dmsdk-gamesys-resources-res_font-h
-language: C++
+api_language: C++
 title: API reference (Font Resource)
 type: Defold C++
 ---

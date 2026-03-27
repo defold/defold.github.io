@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: html5-lua
-language: Lua
+api_language: Lua
 title: API reference (HTML5)
 type: Defold Lua
 ---

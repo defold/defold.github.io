@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: font-c
-language: C
+api_language: C
 title: API reference (Font)
 type: Defold C
 ---

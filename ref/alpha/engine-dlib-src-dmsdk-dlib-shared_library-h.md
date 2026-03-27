@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: engine-dlib-src-dmsdk-dlib-shared_library-h
-language: C++
+api_language: C++
 title: API reference (Shared Library)
 type: Defold C++
 ---

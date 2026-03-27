@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: configfile-c
-language: C
+api_language: C
 title: API reference (ConfigFile)
 type: Defold C
 pagefind_exclude: true

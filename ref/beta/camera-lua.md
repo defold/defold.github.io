@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: camera-lua
-language: Lua
+api_language: Lua
 title: API reference (Camera)
 type: Defold Lua
 ---

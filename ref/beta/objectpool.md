@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: engine-dlib-src-dmsdk-dlib-object_pool-h
-language: C++
+api_language: C++
 title: API reference (ObjectPool)
 type: Defold C++
 pagefind_exclude: true

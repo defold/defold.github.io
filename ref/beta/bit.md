@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: bit-lua
-language: Lua
+api_language: Lua
 title: API reference (BitOp)
 type: Defold Lua
 pagefind_exclude: true

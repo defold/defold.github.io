@@ -2,7 +2,7 @@
 layout: api
 branch: alpha
 ref: model-lua
-language: Lua
+api_language: Lua
 title: API reference (Model)
 type: Defold Lua
 pagefind_exclude: true

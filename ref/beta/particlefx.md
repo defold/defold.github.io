@@ -2,7 +2,7 @@
 layout: api
 branch: beta
 ref: particlefx-lua
-language: Lua
+api_language: Lua
 title: API reference (Particle effects)
 type: Defold Lua
 pagefind_exclude: true
