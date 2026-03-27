@@ -328,6 +328,15 @@ def get_doc_locale(path, default="en"):
     return default
 
 
+def get_api_language(info, default="Lua"):
+    api_language = info.get("api_language") or info.get("language")
+    if not api_language:
+        api_language = default
+    info["api_language"] = api_language
+    info.pop("language", None)
+    return api_language
+
+
 def get_index_item_locales(item, locales):
     item_locales = []
     if not item["path"].startswith("http"):
@@ -1158,7 +1167,7 @@ def process_refdoc(download = False):
                     api["info"]["namespace"] = namespace
 
                     # detect API language with fallback
-                    api_language = api["info"].get("api_language") or api["info"].get("language")
+                    api_language = get_api_language(api["info"], default=None)
                     if not api_language:
                         if namespace.startswith("dm"):
                             print("  No API language found in %s, inferring C++ from namespace" % file)
@@ -1169,9 +1178,7 @@ def process_refdoc(download = False):
                         else:
                             print("  No API language found in %s, assuming Lua" % file)
                             api_language = "Lua"
-
                     api["info"]["api_language"] = api_language
-                    api["info"].pop("language", None)
 
                     # set api type
                     api["info"]["type"] = "Defold " + api_language
@@ -1276,13 +1283,14 @@ def process_refdoc(download = False):
         extensions_data_dir = os.path.join("_data", "extensions")
         for filename in os.listdir(extensions_data_dir):
             extension = read_as_json(os.path.join(extensions_data_dir, filename))
+            extension_api_language = get_api_language(extension["info"], default="Lua")
             refindex.append({
                 "namespace": extension["info"]["namespace"],
                 "name": extension["info"]["name"],
                 "filename": extension["info"]["name"] + "_" + extension["info"]["namespace"],
                 "url": "/" + extension["info"]["api"],
                 "branch": branch,
-                "api_language": extension["info"]["api_language"],
+                "api_language": extension_api_language,
                 "type": extension["info"]["type"],
             })
 

@@ -1,7 +1,8 @@
-{%- if page.locale -%}
+{%- assign page_locale = page.locale | default: page.language -%}
+{%- if page_locale -%}
 {%- if page.layout == "manual" or page.layout == "tutorial" or page.layout == "faq" -%}
 <!DOCTYPE html>
-<html lang="{{ page.locale }}">
+<html lang="{{ page_locale }}">
 {%- else -%}
 <!DOCTYPE html>
 <html lang="en">

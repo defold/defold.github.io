@@ -1,4 +1,5 @@
 {%- assign ref = include.ref -%}
+{%- assign ref_api_language = ref.info.api_language | default: ref.info.language -%}
 
 {%- assign struct_type_list = "STRUCT~CLASS" | split:"~" -%}
 {%- assign structs = ref.elements | where_exp: "item", "struct_type_list contains item.type" -%}
@@ -27,7 +28,7 @@
 		<th></th>
 		<th></th>
 	</tr>
-	{%- if ref.info.api_language == "C++" and ref.info.namespace != "" -%}
+	{%- if ref_api_language == "C++" and ref.info.namespace != "" -%}
 	{%- unless global_namespaces contains ref.info.namespace -%}
 	<tr>
 		<td>Namespace:</td>

@@ -12,8 +12,8 @@ layout: base
 {%- else -%}
 	{%- assign ref = site.data.ref[page.branch][clean_ref] -%}
 {%- endif -%}
-{%- assign page_api_language = page.api_language -%}
-{%- assign ref_api_language = ref.info.api_language -%}
+{%- assign page_api_language = page.api_language | default: page.language -%}
+{%- assign ref_api_language = ref.info.api_language | default: ref.info.language -%}
 
 {%- assign api_index_exclude = false -%}
 {%- if page.url contains "/ref/alpha/" or page.url contains "/ref/beta/" -%}
