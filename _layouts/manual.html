@@ -6,7 +6,8 @@ layout: page
 <div style="display: none;" data-pagefind-meta="section">Manuals</div>
 {% include learnnav.html showmenu=true %}
 
-{%- assign language = site.data.languageindex | where: "language", page.language | first -%}
+{%- assign page_locale = page.locale | default: "en" -%}
+{%- assign locale_info = site.data.localeindex | where: "locale", page_locale | first -%}
 {%- for section in site.data.learnindex.navigation.manuals -%}
 	{%- for manual in section.items -%}
 		{% comment %}https://stackoverflow.com/a/37026674{% endcomment %}
@@ -37,10 +38,10 @@ layout: page
 					<ul class="nobullet">
 						{%- for manual in section.items -%}
 						<li style="padding-left: 2rem;">
-							{%- if language.language == "en" -%}
+							{%- if page_locale == "en" -%}
 								<a href="{{ manual.path }}" style="text-decoration: none;">{{ manual.name }}</a>
-							{%- elsif manual.languages contains language.language -%}
-								<a href="/{{ language.urlprefix }}{{ manual.path }}" style="text-decoration: none;">{{ manual.name }}</a>
+							{%- elsif manual.locales contains page_locale -%}
+								<a href="/{{ locale_info.urlprefix }}{{ manual.path }}" style="text-decoration: none;">{{ manual.name }}</a>
 							{%- else -%}
 								<a href="{{ manual.path }}" style="text-decoration: none;">{{ manual.name }} (English)</a>
 							{%- endif -%}
@@ -57,10 +58,10 @@ layout: page
 						{%- for section in site.data.learnindex.navigation.manuals -%}
 						<option value="">{{ section.name }}</option>
 						{%- for manual in section.items -%}
-						{%- if language.language == "en" -%}
+						{%- if page_locale == "en" -%}
 							<option value="{{ manual.path }}" {% if page.url contains manual.path %}selected{% endif %}> - {{ manual.name }}</option>
-						{%- elsif manual.languages contains language.language -%}
-							<option value="/{{ language.urlprefix }}{{ manual.path }}" {% if page.url contains manual.path %}selected{% endif %}> - {{ manual.name }}</option>
+						{%- elsif manual.locales contains page_locale -%}
+							<option value="/{{ locale_info.urlprefix }}{{ manual.path }}" {% if page.url contains manual.path %}selected{% endif %}> - {{ manual.name }}</option>
 						{%- else -%}
 							<option value="{{ manual.path }}" {% if page.url contains manual.path %}selected{% endif %}> - {{ manual.name }}</option>
 						{%- endif -%}
@@ -70,8 +71,8 @@ layout: page
 				</div>
 			</div>
 			<div class="columns eight manual">
-				{%- if page.language != "en" -%}
-				{%- capture urlprefix -%}/{{ language.urlprefix }}/{%- endcapture -%}
+				{%- if page_locale != "en" -%}
+				{%- capture urlprefix -%}/{{ locale_info.urlprefix }}/{%- endcapture -%}
 				<div class="sidenote">
 					<p>This translation is community contributed and may not be up to date. We only maintain the English version of the documentation. <a href="{{ page.url | replace: urlprefix, "/" }}">Read this manual in English</a></p>
 				</div>
@@ -93,19 +94,19 @@ layout: page
 
 				<hr/>
 
-				{%- if site.data.languageindex.size > 1 -%}
+				{%- if site.data.localeindex.size > 1 -%}
 				<input class="toggle" type="checkbox" checked/>
 				<label class="togglelabel">Languages</label>
 				<ul class="nobullet">
-				{%- for l in site.data.languageindex -%}
+				{%- for l in site.data.localeindex -%}
 					{%- if l.active -%}
 					<li style="padding-left: 2rem;">
-						{%- if l.language == "en" -%}
+						{%- if l.locale == "en" -%}
 							<a href='{{ current_manual.path }}' style="text-decoration: none;">{{ l.name }}</a>
-						{%- elsif current_manual.languages contains l.language -%}
+						{%- elsif current_manual.locales contains l.locale -%}
 							<a href='/{{ l.urlprefix }}{{ current_manual.path }}' style="text-decoration: none;">{{ l.name }}</a>
 						{%- else -%}
-							<a href='/{{ l.language }}/manuals/introduction' style="text-decoration: none;">{{ l.name }}</a>
+							<a href='/{{ l.locale }}/manuals/introduction' style="text-decoration: none;">{{ l.name }}</a>
 						{%- endif -%}
 					</li>
 					{%- endif -%}

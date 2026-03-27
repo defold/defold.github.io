@@ -21,12 +21,45 @@ title: Defold Search Results
 
 <script>
 	window.addEventListener('DOMContentLoaded', (event) => {
+		const normalizeSearchTerm = (term) => {
+			return (term || "")
+				.toLowerCase()
+				.trim()
+				.replace(/[\.`~!@#\$%\^&\*\(\)\{\}\[\]\\\|:;'",<>\/\?\-]/g, "")
+				.replace(/\s{2,}/g, " ")
+				.trim();
+		};
+
+		let currentQuery = "";
+
+		const boostExactSubResultMatch = (result) => {
+			const normalizedQuery = normalizeSearchTerm(currentQuery);
+			if (!normalizedQuery || !Array.isArray(result.sub_results)) {
+				return result;
+			}
+
+			for (const subResult of result.sub_results) {
+				const normalizedTitle = normalizeSearchTerm(subResult.title || "");
+				if (normalizedTitle !== normalizedQuery) {
+					continue;
+				}
+
+				const locations = Array.isArray(subResult.locations) ? subResult.locations : [];
+				const lastLocation = locations.length ? locations[locations.length - 1] : 0;
+				subResult.locations = locations.concat(Array(8).fill(lastLocation));
+				break;
+			}
+
+			return result;
+		};
+
         new PagefindUI({ 
             element: "#pagefind-search",
             pageSize: 10,
             showSubResults: true,
             showImages: false,
             excerptLength: 25,
+            processResult: boostExactSubResultMatch,
             resetStyles: false,
             showEmptyFilters: true,
             openFilters: ['section']
@@ -36,6 +69,7 @@ title: Defold Search Results
 		const urlParams = new URLSearchParams(window.location.search);
 		const query = urlParams.get('q');
 		if (query) {
+			currentQuery = query;
 			// Wait for Pagefind UI to initialize then set query
 			setTimeout(() => {
 				const searchInput = document.querySelector('#pagefind-search input[type="text"]');
@@ -47,5 +81,11 @@ title: Defold Search Results
 				}
 			}, 100);
 		}
+
+		document.addEventListener('input', (event) => {
+			if (event.target && event.target.matches('#pagefind-search input[type="text"]')) {
+				currentQuery = event.target.value;
+			}
+		});
 	});
 </script>

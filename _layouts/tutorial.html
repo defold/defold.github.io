@@ -6,8 +6,8 @@ layout: page
 <div style="display: none;" data-pagefind-meta="section">Tutorials</div>
 {% include learnnav.html showmenu=true %}
 
-{%- assign page_language = page.language | default: "en" -%}
-{%- assign language = site.data.languageindex | where: "language", page_language | first -%}
+{%- assign page_locale = page.locale | default: "en" -%}
+{%- assign locale_info = site.data.localeindex | where: "locale", page_locale | first -%}
 {%- assign github_link = page.github | default: "https://github.com/defold/doc" -%}
 {%- for tutorial in site.data.learnindex.navigation.tutorials -%}
 	{%- if tutorial.path contains "/tutorials/" -%}
@@ -35,10 +35,10 @@ layout: page
 						{%- endif -%}
 						<li style="padding-left: 2rem;">
 							{%- if tutorial.path contains "/tutorials/" -%}
-								{%- if page_language == "en" -%}
+								{%- if page_locale == "en" -%}
 									<a href="{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }}</a>
-								{%- elsif tutorial.languages contains page_language -%}
-									<a href="/{{ language.urlprefix }}{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }}</a>
+								{%- elsif tutorial.locales contains page_locale -%}
+									<a href="/{{ locale_info.urlprefix }}{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }}</a>
 								{%- else -%}
 									<a href="{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }} (English)</a>
 								{%- endif -%}
@@ -53,10 +53,10 @@ layout: page
 					<select class="dropdownmenu" onchange="location = this.value;">
 						{% for tutorial in site.data.learnindex.navigation.tutorials %}
 						{%- if tutorial.path contains "/tutorials/" -%}
-							{%- if page_language == "en" -%}
+							{%- if page_locale == "en" -%}
 								<option value="{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }}</option>
-							{%- elsif tutorial.languages contains page_language -%}
-								<option value="/{{ language.urlprefix }}{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }}</option>
+							{%- elsif tutorial.locales contains page_locale -%}
+								<option value="/{{ locale_info.urlprefix }}{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }}</option>
 							{%- else -%}
 								<option value="{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }} (English)</option>
 							{%- endif -%}
@@ -68,8 +68,8 @@ layout: page
 				</div>
 			</div>
 			<div class="columns eight tutorial">
-				{%- if page_language != "en" and current_tutorial -%}
-				{%- capture urlprefix -%}/{{ language.urlprefix }}/{%- endcapture -%}
+				{%- if page_locale != "en" and current_tutorial -%}
+				{%- capture urlprefix -%}/{{ locale_info.urlprefix }}/{%- endcapture -%}
 				<div class="sidenote">
 					<p>This translation is community contributed and may not be up to date. We only maintain the English version of the documentation. <a href="{{ page.url | replace: urlprefix, "/" }}">Read this tutorial in English</a></p>
 				</div>
@@ -82,16 +82,16 @@ layout: page
 				</div>
 			</div>
 			<div class="columns two">
-				{%- if site.data.languageindex.size > 1 and current_tutorial -%}
+				{%- if site.data.localeindex.size > 1 and current_tutorial -%}
 				<input class="toggle" type="checkbox" checked/>
 				<label class="togglelabel">Languages</label>
 				<ul class="nobullet">
-				{%- for l in site.data.languageindex -%}
-					{%- if l.active and current_tutorial.languages contains l.language -%}
+				{%- for l in site.data.localeindex -%}
+					{%- if l.active and current_tutorial.locales contains l.locale -%}
 					<li style="padding-left: 2rem;">
-						{%- if l.language == "en" -%}
+						{%- if l.locale == "en" -%}
 							<a href='{{ current_tutorial.path }}' style="text-decoration: none;">{{ l.name }}</a>
-						{%- elsif current_tutorial.languages contains l.language -%}
+						{%- elsif current_tutorial.locales contains l.locale -%}
 							<a href='/{{ l.urlprefix }}{{ current_tutorial.path }}' style="text-decoration: none;">{{ l.name }}</a>
 						{%- endif -%}
 					</li>

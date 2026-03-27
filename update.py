@@ -81,7 +81,7 @@ REFDOC_MD_FRONTMATTER = """---
 layout: api
 branch: {}
 ref: {}
-language: {}
+api_language: {}
 title: API reference ({})
 type: {}
 {}---
@@ -276,7 +276,7 @@ def append_frontmatter(filename, d):
         write_as_string(filename, "---\n%s\n---\n\n%s" % (frontmatter, content))
 
 
-def process_doc_file(file, language):
+def process_doc_file(file, locale):
     replace_in_file(file, r"({{{?)(.*?)(}}}?)", r"{% raw %}\1\2\3{% endraw %}")
     replace_in_file(file, r"{% raw %}({{{?)(.*?include\..*?)(}}}?){% endraw %}", r"\1\2\3")
     replace_in_file(file, r"{\s*srcset=.*?}", r"")
@@ -292,7 +292,7 @@ def process_doc_file(file, language):
     # replace_in_file(file, r"\!\[(.*?)\]\((.*?)\)\{\.inline\}", r"<span style='display: inline'>![\1](\2)</span>")
     replace_in_file(file, r"\(images\/", r"(../images/")
     replace_in_file(file, r"\(\.\.\/shared\/", r"(/shared/")
-    replace_in_file(file, r"\{\% include shared\/(.*?)\.md(.*?)\%\}", r"{}".format("{% include shared/" + language + "/\\1.md\\2%}"))
+    replace_in_file(file, r"\{\% include shared\/(.*?)\.md(.*?)\%\}", r"{}".format("{% include shared/" + locale + "/\\1.md\\2%}"))
 
 def generate_toc(file):
     data = read_as_string(file)
@@ -314,33 +314,50 @@ def generate_toc(file):
     return toc
 
 
-def get_language_specific_dir(language, dir):
-    if language != "en":
-        dir = os.path.join(language, dir)
+def get_locale_specific_dir(locale, dir):
+    if locale != "en":
+        dir = os.path.join(locale, dir)
     return dir
 
 
-def get_index_item_languages(item, languages):
-    item_languages = []
+def get_doc_locale(path, default="en"):
+    parts = os.path.normpath(path).split(os.sep)
+    for part in reversed(parts[:-1]):
+        if re.fullmatch(r"[a-z]{2}(?:-[A-Za-z0-9]+)?", part):
+            return part
+    return default
+
+
+def get_api_language(info, default="Lua"):
+    api_language = info.get("api_language") or info.get("language")
+    if not api_language:
+        api_language = default
+    info["api_language"] = api_language
+    info.pop("language", None)
+    return api_language
+
+
+def get_index_item_locales(item, locales):
+    item_locales = []
     if not item["path"].startswith("http"):
         path = item["path"][1:]
         # foo/bar/#anchor -> foo/bar
         # foo/bar#anchor -> foo/bar
         path = re.sub(r"/?\#.*", "", path)
-        for language in languages["languages"].keys():
-            if os.path.exists(get_language_specific_dir(language, path + ".md")):
-                item_languages.append(language)
-    return item_languages
+        for locale in locales["languages"].keys():
+            if os.path.exists(get_locale_specific_dir(locale, path + ".md")):
+                item_locales.append(locale)
+    return item_locales
 
-def update_file_links_with_lang(filename, pattern, language):
+def update_file_links_with_locale(filename, pattern, locale):
     # Open the file and read its content
     with open(filename, 'r') as f:
         content = f.read()
     
-    def is_valid_path_and_lang(path, language):
+    def is_valid_path_and_locale(path, locale):
         # Normalize the path to ensure it doesn't end with a slash
         normalized_path = path.rstrip('/').lstrip('/')
-        if os.path.exists(os.path.join(language, normalized_path + ".md")) or os.path.exists(os.path.join(language, normalized_path)):
+        if os.path.exists(os.path.join(locale, normalized_path + ".md")) or os.path.exists(os.path.join(locale, normalized_path)):
             return True
         return False
 
@@ -348,9 +365,9 @@ def update_file_links_with_lang(filename, pattern, language):
     # Use regex to find all patterns and update them if valid
     def replacement(match):
         path = match.group(0)
-        # Check if the path exists and has the specified language
-        if is_valid_path_and_lang(path, language):
-            return '/{}/{}'.format(language, path.lstrip('/'))
+        # Check if the path exists and has the specified locale
+        if is_valid_path_and_locale(path, locale):
+            return '/{}/{}'.format(locale, path.lstrip('/'))
         else:
             return path
     
@@ -400,19 +417,19 @@ def process_docs(download = False):
 
         print("Processing docs")
 
-        print("...languages")
-        languages = read_as_json(os.path.join(DOC_DIR, "docs", "languages.json"))
-        language_list = []
-        for language in languages["languages"].keys():
-            language_data = languages["languages"][language]
-            if language_data["active"]:
-                language_data["language"] = language
-                if language == "en":
-                    language_data["urlprefix"] = ""
+        print("...locales")
+        locales = read_as_json(os.path.join(DOC_DIR, "docs", "languages.json"))
+        locale_list = []
+        for locale in locales["languages"].keys():
+            locale_data = locales["languages"][locale]
+            if locale_data["active"]:
+                locale_data["locale"] = locale
+                if locale == "en":
+                    locale_data["urlprefix"] = ""
                 else:
-                    language_data["urlprefix"] = language
-                language_list.append(language_data)
-        write_as_json(os.path.join("_data", "languageindex.json"), language_list)
+                    locale_data["urlprefix"] = locale
+                locale_list.append(locale_data)
+        write_as_json(os.path.join("_data", "localeindex.json"), locale_list)
 
         print("...index")
         index_file = os.path.join("_data", "learnindex.json")
@@ -421,23 +438,23 @@ def process_docs(download = False):
         shutil.copyfile(os.path.join(DOC_DIR, "docs", "en", "en.json"), index_file)
         index = read_as_json(index_file)
 
-        for language in languages["languages"].keys():
-            print("...manuals ({})".format(language))
-            manuals_src_dir = os.path.join(DOC_DIR, "docs", language, "manuals")
+        for locale in locales["languages"].keys():
+            print("...manuals ({})".format(locale))
+            manuals_src_dir = os.path.join(DOC_DIR, "docs", locale, "manuals")
             if os.path.exists(manuals_src_dir):
-                manuals_dst_dir = get_language_specific_dir(language, "manuals")
+                manuals_dst_dir = get_locale_specific_dir(locale, "manuals")
                 rmcopytree(manuals_src_dir, manuals_dst_dir)
                 for filename in find_files(manuals_dst_dir, "*.md"):
-                    process_doc_file(filename, language)
+                    process_doc_file(filename, locale)
                     # update front matter
                     toc = generate_toc(filename)
                     append_frontmatter(filename, {
                         "layout": "manual",
-                        "language": language,
+                        "locale": locale,
                         "github": "https://github.com/defold/doc",
                         "toc": toc,
                     })
-                    if language == "en":
+                    if locale == "en":
                         # preprocess docs pages for llms-full.txt to a temporary folder _llms/
                         contents = read_as_string(filename)
                         if "This manual has been replaced by the" in contents or "This manual has moved" in contents or "This manual has been moved" in contents:
@@ -464,55 +481,53 @@ def process_docs(download = False):
                             replace_in_first_line(target_file, r"^(#+ .+?)$", r"\1 {}".format(anchor), re.MULTILINE)
 
                     else:
-                        # replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
-                        update_file_links_with_lang(filename, r'/manuals/[^)#]+', language)
-                        replace_in_file(filename, r"\.\.\/images\/", r"/manuals/images/".format(language))
-                        replace_in_file(filename, r"\.\.\/assets\/", r"/manuals/assets/".format(language))
+                        update_file_links_with_locale(filename, r'/manuals/[^)#]+', locale)
+                        replace_in_file(filename, r"\.\.\/images\/", r"/manuals/images/")
+                        replace_in_file(filename, r"\.\.\/assets\/", r"/manuals/assets/")
 
-            print("...faq ({})".format(language))
-            faq_src_dir = os.path.join(DOC_DIR, "docs", language, "faq")
+            print("...faq ({})".format(locale))
+            faq_src_dir = os.path.join(DOC_DIR, "docs", locale, "faq")
             if os.path.exists(faq_src_dir):
-                faq_dst_dir = get_language_specific_dir(language, "faq")
+                faq_dst_dir = get_locale_specific_dir(locale, "faq")
                 rmcopytree(faq_src_dir, faq_dst_dir)
                 for filename in find_files(faq_dst_dir, "*.md"):
-                    process_doc_file(filename, language)
+                    process_doc_file(filename, locale)
                     append_frontmatter(filename, {
-                        "language": language,
+                        "locale": locale,
                         "layout": "faq",
                     })
-                    if language != "en":
-                        # replace_in_file(filename, r"\/manuals\/", r"/{}/manuals/".format(language))
-                        update_file_links_with_lang(filename, r'\/manuals\/[^)#]+', language)
-                        replace_in_file(filename, r"\.\.\/images\/", r"/manuals/images/".format(language))
-                        replace_in_file(filename, r"\.\.\/assets\/", r"/manuals/assets/".format(language))
+                    if locale != "en":
+                        update_file_links_with_locale(filename, r'\/manuals\/[^)#]+', locale)
+                        replace_in_file(filename, r"\.\.\/images\/", r"/manuals/images/")
+                        replace_in_file(filename, r"\.\.\/assets\/", r"/manuals/assets/")
 
-        for language in languages["languages"].keys():
-            print("...shared includes ({})".format(language))
+        for locale in locales["languages"].keys():
+            print("...shared includes ({})".format(locale))
             shared_includes_src_dir_en = os.path.join(DOC_DIR, "docs", "en", "shared")
-            shared_includes_src_dir = os.path.join(DOC_DIR, "docs", language, "shared")
-            shared_includes_dst_dir = os.path.join("_includes", "shared", language)
+            shared_includes_src_dir = os.path.join(DOC_DIR, "docs", locale, "shared")
+            shared_includes_dst_dir = os.path.join("_includes", "shared", locale)
             rmcopytree(shared_includes_src_dir_en, shared_includes_dst_dir)
             if os.path.exists(shared_includes_src_dir):
                 copytree(shared_includes_src_dir, shared_includes_dst_dir, overwrite = True)
             shutil.rmtree(os.path.join(shared_includes_dst_dir, "images"))
             for filename in find_files(shared_includes_dst_dir, "*.md"):
-                process_doc_file(filename, language)
+                process_doc_file(filename, locale)
 
-        for language in languages["languages"].keys():
-            print("...tutorials ({})".format(language))
-            tutorials_src_dir = os.path.join(DOC_DIR, "docs", language, "tutorials")
+        for locale in locales["languages"].keys():
+            print("...tutorials ({})".format(locale))
+            tutorials_src_dir = os.path.join(DOC_DIR, "docs", locale, "tutorials")
             if os.path.exists(tutorials_src_dir):
-                tutorials_dst_dir = get_language_specific_dir(language, "tutorials")
+                tutorials_dst_dir = get_locale_specific_dir(locale, "tutorials")
                 rmcopytree(tutorials_src_dir, tutorials_dst_dir)
                 for filename in find_files(tutorials_dst_dir, "*.md"):
-                    process_doc_file(filename, language)
+                    process_doc_file(filename, locale)
                     append_frontmatter(filename, {
-                        "language": language,
+                        "locale": locale,
                         "layout": "tutorial",
                     })
-                    if language != "en":
-                        update_file_links_with_lang(filename, r'/manuals/[^)#]+', language)
-                        update_file_links_with_lang(filename, r'/tutorials/[^)#]+', language)
+                    if locale != "en":
+                        update_file_links_with_locale(filename, r'/manuals/[^)#]+', locale)
+                        update_file_links_with_locale(filename, r'/tutorials/[^)#]+', locale)
                         replace_in_file(filename, r"\.\.\/images\/", r"/tutorials/images/")
 
         print("...courses")
@@ -523,14 +538,14 @@ def process_docs(download = False):
             process_doc_file(filename, "en")
             append_frontmatter(filename, { "layout": "course" })
 
-        # figure out in which languages each manual exists
-        print("...index (incl. languages)")
+        # figure out in which locales each manual exists
+        print("...index (incl. locales)")
         for section in index["navigation"]["manuals"]:
             for item in section["items"]:
-                item["languages"] = get_index_item_languages(item, languages)
+                item["locales"] = get_index_item_locales(item, locales)
         for item in index["navigation"]["tutorials"]:
             if not item["path"].startswith("http"):
-                item["languages"] = get_index_item_languages(item, languages)
+                item["locales"] = get_index_item_locales(item, locales)
         write_as_json(index_file, index)
 
         print("...shared images")
@@ -628,14 +643,15 @@ def process_extension(extension_name, download = False):
 
         index = os.path.join(extension_dir, "index.md")
         for filename in find_files(extension_dir, "*.md"):
+            locale = get_doc_locale(os.path.relpath(filename, extension_dir))
             toc = generate_toc(filename)
             append_frontmatter(filename, {
                 "layout": "manual",
-                "language": "en",
+                "locale": locale,
                 "github": "{}".format(github_url),
                 "toc": toc,
             })
-            process_doc_file(filename, "en")
+            process_doc_file(filename, locale)
 
         for filename in find_files(unzipped_extension_dir, "*.script_api"):
 
@@ -656,7 +672,7 @@ def process_extension(extension_name, download = False):
             info["group"] = "EXTENSIONS"
             info["description"] = api.get("desc", "")
             info["namespace"] = api_name
-            info["language"] = "Lua"
+            info["api_language"] = "Lua"
             info["name"] = extension_name
             info["brief"] = api_name
             info["type"] = "Extension"
@@ -668,7 +684,7 @@ def process_extension(extension_name, download = False):
             with open(api_filename, "w") as f:
                 fm_branch = "stable"
                 fm_ref = info["name"] + "_" + info["namespace"]
-                fm_language = info["language"]
+                fm_language = info["api_language"]
                 fm_title = info["name"]
                 fm_type = info["type"]
                 f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type, "") + REFDOC_MD_BODY)
@@ -1150,24 +1166,22 @@ def process_refdoc(download = False):
                         namespace = file
                     api["info"]["namespace"] = namespace
 
-                    # detect language with fallback
-                    language = api["info"].get("language")
-                    if not language:
+                    # detect API language with fallback
+                    api_language = get_api_language(api["info"], default=None)
+                    if not api_language:
                         if namespace.startswith("dm"):
-                            print("  No language found in %s, inferring C++ from namespace" % file)
-                            api["info"]["language"] = "C++"
+                            print("  No API language found in %s, inferring C++ from namespace" % file)
+                            api_language = "C++"
                         elif "script_" in api["info"]["path"]:
-                            print("  No language found in %s, inferring Lua from path" % file)
-                            api["info"]["language"] = "Lua"
+                            print("  No API language found in %s, inferring Lua from path" % file)
+                            api_language = "Lua"
                         else:
-                            print("  No language found in %s, assuming Lua" % file)
-                            api["info"]["language"] = "Lua"
-                            # sys.exit(5)
-
-                        language = api["info"]["language"]
+                            print("  No API language found in %s, assuming Lua" % file)
+                            api_language = "Lua"
+                    api["info"]["api_language"] = api_language
 
                     # set api type
-                    api["info"]["type"] = "Defold " + language
+                    api["info"]["type"] = "Defold " + api_language
 
                     # make sure file is only the filename and no path
                     if api["info"]["file"] == "":
@@ -1176,7 +1190,7 @@ def process_refdoc(download = False):
                         api["info"]["file"] = os.path.basename(api["info"]["file"])
 
                     # generate include path for C/C++ files
-                    if language in ("C++", "C"):
+                    if api_language in ("C++", "C"):
                         dmsdk_index = str.find(api["info"]["path"], "dmsdk/")
                         api["info"]["include"] = api["info"]["path"]
                         if dmsdk_index != -1:
@@ -1184,14 +1198,14 @@ def process_refdoc(download = False):
 
                     # create the key by which we index and collect APIs
                     namespace_key = namespace
-                    if language == "C++":
+                    if api_language == "C++":
                         # namespace_key = namespace_key + "-cpp"
                         namespace_key = api["info"]["path"].replace("..", "").replace("/", "-").replace(".", "-")
-                    elif language == "C#":
+                    elif api_language == "C#":
                         # namespace_key = namespace_key + "-cs"
                         namespace_key = api["info"]["path"].replace("..", "").replace("/", "-").replace(".", "-")
                     else:
-                        namespace_key = namespace_key + "-" + language
+                        namespace_key = namespace_key + "-" + api_language
                     namespace_key = namespace_key.lower()
 
                     # add api or extend existing one
@@ -1226,7 +1240,7 @@ def process_refdoc(download = False):
                 # write the json data file for the api
                 # example: _data/ref/stable/go.json
                 p = os.path.join(REF_DATA_DIR, json_out_file)
-                print("  " + json_out_name + " path: " + p + " lang: " + api["info"].get("language"))
+                print("  " + json_out_name + " path: " + p + " api_language: " + api["info"].get("api_language"))
                 write_as_json(p, api)
 
                 # generate a dummy markdown page with some front matter for each ref doc
@@ -1235,7 +1249,7 @@ def process_refdoc(download = False):
                 with open(dummy, "w") as f:
                     fm_branch = branch
                     fm_ref = json_out_name
-                    fm_language = api["info"]["language"]
+                    fm_language = api["info"]["api_language"]
                     fm_title = api["info"]["name"]
                     fm_type = api["info"]["type"]
                     f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type, "") + REFDOC_MD_BODY)
@@ -1247,7 +1261,7 @@ def process_refdoc(download = False):
                 with open(os.path.join(REF_PAGE_DIR, json_out_name_fallback + ".md"), "w") as f:
                     fm_branch = branch
                     fm_ref = json_out_name
-                    fm_language = api["info"]["language"]
+                    fm_language = api["info"]["api_language"]
                     fm_title = api["info"]["name"]
                     fm_type = api["info"]["type"]
                     f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type, "pagefind_exclude: true\n") + REFDOC_MD_BODY)
@@ -1261,7 +1275,7 @@ def process_refdoc(download = False):
                     "filename": json_out_name,
                     "url": "/ref/" + branch + "/" + json_out_name,
                     "branch": branch,
-                    "language": api["info"]["language"],
+                    "api_language": api["info"]["api_language"],
                     "type": api["info"]["type"],
                 })
 
@@ -1269,13 +1283,14 @@ def process_refdoc(download = False):
         extensions_data_dir = os.path.join("_data", "extensions")
         for filename in os.listdir(extensions_data_dir):
             extension = read_as_json(os.path.join(extensions_data_dir, filename))
+            extension_api_language = get_api_language(extension["info"], default="Lua")
             refindex.append({
                 "namespace": extension["info"]["namespace"],
                 "name": extension["info"]["name"],
                 "filename": extension["info"]["name"] + "_" + extension["info"]["namespace"],
                 "url": "/" + extension["info"]["api"],
                 "branch": branch,
-                "language": extension["info"]["language"],
+                "api_language": extension_api_language,
                 "type": extension["info"]["type"],
             })
 
@@ -1295,7 +1310,7 @@ def process_refdoc(download = False):
             with open(os.path.join(REF_PAGE_DIR, filename), "w") as f:
                 fm_branch = branch
                 fm_ref = "overview"
-                fm_language = typeref["language"]
+                fm_language = typeref["api_language"]
                 fm_title = "Overview"
                 fm_type = type
                 f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type, "") + REFDOC_MD_BODY)
