@@ -1,6 +1,11 @@
-{%- if page.language -%}
+{%- if page.locale -%}
+{%- if page.layout == "manual" or page.layout == "tutorial" or page.layout == "faq" -%}
 <!DOCTYPE html>
-<html lang="{{ page.language }}">
+<html lang="{{ page.locale }}">
+{%- else -%}
+<!DOCTYPE html>
+<html lang="en">
+{%- endif -%}
 {%- else -%}
 <!DOCTYPE html>
 <html lang="en">

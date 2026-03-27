@@ -12,12 +12,14 @@ layout: base
 {%- else -%}
 	{%- assign ref = site.data.ref[page.branch][clean_ref] -%}
 {%- endif -%}
+{%- assign page_api_language = page.api_language -%}
+{%- assign ref_api_language = ref.info.api_language -%}
 
 {%- assign api_index_exclude = false -%}
-{%- if page.url contains "/ref/alpha/" or page.url contains "/ref/beta/" or page.url contains "/ref/stable/" -%}
+{%- if page.url contains "/ref/alpha/" or page.url contains "/ref/beta/" -%}
   {%- assign api_index_exclude = true -%}
 {%- endif -%}
-{%- if ref.info.language == "" or ref.info.language == nil -%}
+{%- if ref_api_language == "" or ref_api_language == nil -%}
   {%- assign api_index_exclude = true -%}
 {%- endif -%}
 {%- if page.pagefind_exclude -%}
@@ -26,8 +28,9 @@ layout: base
 
 {%- unless api_index_exclude -%}
 <!-- Pagefind metadata and filters for API reference -->
-<div style="display: none;" data-pagefind-filter="section">API {{ref.info.language}}</div>
-<div style="display: none;" data-pagefind-meta="section">API {{ref.info.language}}</div>
+<div style="display: none;" data-pagefind-filter="section">API</div>
+<div style="display: none;" data-pagefind-meta="section">API</div>
+<div style="display: none;" data-pagefind-meta="api_language">{{ ref_api_language }}</div>
 {%- endunless -%}
 
 {%- if page.url contains branch -%}
@@ -78,7 +81,7 @@ layout: base
 								{%- if page.url contains r.url -%}
 									{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
 								{%- endif -%}
-								<li id="{{ r.namespace }}" style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{%- if r.language == "C++" or r.language == "C" -%}{{r.file}}{%- endif -%}{%- if r.type == "Extension" -%}{{r.name}}{%- endif -%}</a></li>
+								<li id="{{ r.namespace }}" style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{%- if r.api_language == "C++" or r.api_language == "C" -%}{{r.file}}{%- endif -%}{%- if r.type == "Extension" -%}{{r.name}}{%- endif -%}</a></li>
 							{%- endfor -%}
 							</ul>
 						{%- else -%}
@@ -87,7 +90,7 @@ layout: base
 								{%- if page.url contains r.url -%}
 									{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
 								{%- endif -%}
-								<li id="{{ r.namespace }}" style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{{ r.namespace }}{%- if r.language == "C++" or r.language == "C" -%}&nbsp;-&nbsp;({{r.file}}){%- endif -%}{%- if r.type == "Extension" -%}&nbsp;-&nbsp;({{r.name}}){%- endif -%}</a></li>
+								<li id="{{ r.namespace }}" style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{{ r.namespace }}{%- if r.api_language == "C++" or r.api_language == "C" -%}&nbsp;-&nbsp;({{r.file}}){%- endif -%}{%- if r.type == "Extension" -%}&nbsp;-&nbsp;({{r.name}}){%- endif -%}</a></li>
 							{%- endfor -%}
 						{%- endif -%}
 					{%- endfor -%}
@@ -136,7 +139,7 @@ layout: base
 				<table>
 					<tr>
 						<th>Namespace</th>
-						<th>{%- if page.language == "C++" or page.language == "C" -%}Include{%- elsif r.type == "Extension" -%}Library Folder{%- else -%}Name{%- endif -%}</th>
+						<th>{%- if page_api_language == "C++" or page_api_language == "C" -%}Include{%- elsif r.type == "Extension" -%}Library Folder{%- else -%}Name{%- endif -%}</th>
 						<th>Description</th>
 					</tr>
 				{%- for r in typerefs -%}
@@ -148,15 +151,15 @@ layout: base
 						{%- assign ref = site.data.ref[page.branch][index] -%}
 					{%- endif -%}
 
-					<td><a href="{{r.url}}">{%- if r.language == "C++" or r.language == "C" -%}{{ r.namespace }}{%- else -%}{{r.name}}{%- endif -%}</a></td>
-					<td>{%- if r.language == "C++" or r.language == "C" -%}{{r.path}}{%- else -%}{{r.namespace}}{%- endif -%}</td>
+					<td><a href="{{r.url}}">{%- if r.api_language == "C++" or r.api_language == "C" -%}{{ r.namespace }}{%- else -%}{{r.name}}{%- endif -%}</a></td>
+					<td>{%- if r.api_language == "C++" or r.api_language == "C" -%}{{r.path}}{%- else -%}{{r.namespace}}{%- endif -%}</td>
 					<td>{{ ref.info.brief }}</td>
 					</tr>
 				{%- endfor -%}
 				</table>
-			{%- elsif ref.info.language == "C++" -%}
+			{%- elsif ref_api_language == "C++" -%}
 				{%- include api_c.html ref=ref -%}
-			{%- elsif ref.info.language == "Lua" -%}
+			{%- elsif ref_api_language == "Lua" -%}
 				{%- include api_lua.html ref=ref -%}
 			{%- else -%}
 				{%- include api_c.html ref=ref -%}

@@ -27,7 +27,7 @@
 		<th></th>
 		<th></th>
 	</tr>
-	{%- if ref.info.language == "C++" and ref.info.namespace != "" -%}
+	{%- if ref.info.api_language == "C++" and ref.info.namespace != "" -%}
 	{%- unless global_namespaces contains ref.info.namespace -%}
 	<tr>
 		<td>Namespace:</td>
