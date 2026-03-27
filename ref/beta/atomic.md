@@ -1,10 +1,10 @@
 ---
 layout: api
 branch: beta
-ref: engine-dlib-src-dmsdk-dlib-atomic-h
-language: C++
+ref: atomic-c
+language: C
 title: API reference (Atomic)
-type: Defold C++
+type: Defold C
 pagefind_exclude: true
 ---
 {% include anchor_headings.html html=content %}

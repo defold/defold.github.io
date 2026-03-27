@@ -1,0 +1,849 @@
+{
+    "elements": [
+        {
+            "brief": "keyboard char callback",
+            "description": "Called when a character is entered from keyboard input.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FWindowAddKeyboardCharCallback",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "window close callback",
+            "description": "Called when the window is requested to close.\nReturn non-zero to allow close, or zero to cancel close.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FWindowCloseCallback",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "device changed callback",
+            "description": "Called when keyboard input device status changes.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FWindowDeviceChangedCallback",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "window focus callback",
+            "description": "Called when the window focus changes.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FWindowFocusCallback",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "window iconify callback",
+            "description": "Called when the window is iconified/minimized or restored.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FWindowIconifyCallback",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "window resize callback",
+            "description": "Called when the window size changes.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FWindowResizeCallback",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "marked text callback",
+            "description": "Called when IME marked text is updated.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FWindowSetMarkedTextCallback",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Window handle",
+            "description": "Window handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HWindow",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "close the window",
+            "description": "close the window",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "WindowClose",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "window handle",
+                    "is_optional": "False",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "window parameters",
+            "description": "window parameters",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Graphics backend to request when opening the window",
+                    "name": "m_GraphicsApi",
+                    "type": "WindowsGraphicsApi"
+                },
+                {
+                    "doc": "Callback invoked when the window size changes",
+                    "name": "m_ResizeCallback",
+                    "type": "FWindowResizeCallback"
+                },
+                {
+                    "doc": "User data pointer passed to m_ResizeCallback",
+                    "name": "m_ResizeCallbackUserData",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Callback invoked when the window is requested to close",
+                    "name": "m_CloseCallback",
+                    "type": "FWindowCloseCallback"
+                },
+                {
+                    "doc": "User data pointer passed to m_CloseCallback",
+                    "name": "m_CloseCallbackUserData",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Callback invoked when focus changes",
+                    "name": "m_FocusCallback",
+                    "type": "FWindowFocusCallback"
+                },
+                {
+                    "doc": "User data pointer passed to m_FocusCallback",
+                    "name": "m_FocusCallbackUserData",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Callback invoked when iconify/minimize state changes",
+                    "name": "m_IconifyCallback",
+                    "type": "FWindowIconifyCallback"
+                },
+                {
+                    "doc": "User data pointer passed to m_IconifyCallback",
+                    "name": "m_IconifyCallbackUserData",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Window title (default: \"Defold Application\")",
+                    "name": "m_Title",
+                    "type": "const char*"
+                },
+                {
+                    "doc": "Initial window width in pixels (default: 640)",
+                    "name": "m_Width",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Initial window height in pixels (default: 480)",
+                    "name": "m_Height",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Requested multisample anti-aliasing sample count (default: 1)",
+                    "name": "m_Samples",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Initial window background color value",
+                    "name": "m_BackgroundColor",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Requested alpha bits for the graphics context",
+                    "name": "m_ContextAlphabits",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "OpenGL version hint encoded as major*10 + minor (for example 33 means OpenGL 3.3)",
+                    "name": "m_OpenGLVersionHint",
+                    "type": "uint8_t:7"
+                },
+                {
+                    "doc": "Request OpenGL core profile when opening the window",
+                    "name": "m_OpenGLUseCoreProfileHint",
+                    "type": "uint8_t:1"
+                },
+                {
+                    "doc": "Start window hidden",
+                    "name": "m_Hidden",
+                    "type": "uint8_t:1"
+                },
+                {
+                    "doc": "Start window in fullscreen mode",
+                    "name": "m_Fullscreen",
+                    "type": "uint8_t:1"
+                },
+                {
+                    "doc": "Print graphics device information when opening the window",
+                    "name": "m_PrintDeviceInfo",
+                    "type": "uint8_t:1"
+                },
+                {
+                    "doc": "Request high-DPI framebuffer support where available",
+                    "name": "m_HighDPI",
+                    "type": "uint8_t:1"
+                }
+            ],
+            "name": "WindowCreateParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "initialize window parameters",
+            "description": "Initializes a WindowCreateParams struct with default values.\nThe struct is first cleared to zero, then <code>m_Width</code> is set to 640,\n<code>m_Height</code> is set to 480, <code>m_Samples</code> is set to 1, and\n<code>m_Title</code> is set to \"Defold Application\".",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "WindowCreateParamsInitialize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params struct",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "WindowCreateParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "delete a window handle",
+            "description": "delete a window handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "WindowDelete",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "window handle",
+                    "is_optional": "False",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get display scale factor",
+            "description": "get display scale factor",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "WindowGetDisplayScaleFactor",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "window handle",
+                    "is_optional": "False",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "display scale factor",
+                    "name": "scale_factor",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get window height",
+            "description": "get window height",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "WindowGetHeight",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "window handle",
+                    "is_optional": "False",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "window height",
+                    "name": "height",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get window state parameter",
+            "description": "get window state parameter",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "WindowGetStateParam",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "window handle",
+                    "is_optional": "False",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                },
+                {
+                    "doc": "state parameter",
+                    "is_optional": "False",
+                    "name": "state",
+                    "types": [
+                        "WindowState"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "parameter value",
+                    "name": "value",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get window width",
+            "description": "get window width",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "WindowGetWidth",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "window handle",
+                    "is_optional": "False",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "window width",
+                    "name": "width",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "iconify the window",
+            "description": "iconify the window",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "WindowIconify",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "window handle",
+                    "is_optional": "False",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create a new window handle",
+            "description": "create a new window handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "WindowNew",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "window handle",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "open a window",
+            "description": "open a window",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "WindowOpen",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "window handle",
+                    "is_optional": "False",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                },
+                {
+                    "doc": "window parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "WindowCreateParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "result code",
+                    "name": "result",
+                    "types": [
+                        "WindowResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "poll window events",
+            "description": "poll window events",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "WindowPollEvents",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "window handle",
+                    "is_optional": "False",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "result enumeration",
+            "description": "result enumeration",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Operation completed successfully",
+                    "name": "WINDOW_RESULT_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "Failed to open the window",
+                    "name": "WINDOW_RESULT_WINDOW_OPEN_ERROR",
+                    "type": ""
+                },
+                {
+                    "doc": "Window is already open",
+                    "name": "WINDOW_RESULT_WINDOW_ALREADY_OPENED",
+                    "type": ""
+                }
+            ],
+            "name": "WindowResult",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "set window size",
+            "description": "set window size",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "WindowSetSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "window handle",
+                    "is_optional": "False",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                },
+                {
+                    "doc": "window width",
+                    "is_optional": "False",
+                    "name": "width",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "window height",
+                    "is_optional": "False",
+                    "name": "height",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "graphics api enumeration",
+            "description": "graphics api enumeration",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "No graphics backend",
+                    "name": "WINDOW_GRAPHICS_API_NULL",
+                    "type": ""
+                },
+                {
+                    "doc": "OpenGL backend",
+                    "name": "WINDOW_GRAPHICS_API_OPENGL",
+                    "type": ""
+                },
+                {
+                    "doc": "OpenGL ES backend",
+                    "name": "WINDOW_GRAPHICS_API_OPENGLES",
+                    "type": ""
+                },
+                {
+                    "doc": "Vulkan backend",
+                    "name": "WINDOW_GRAPHICS_API_VULKAN",
+                    "type": ""
+                },
+                {
+                    "doc": "Vendor-specific backend",
+                    "name": "WINDOW_GRAPHICS_API_VENDOR",
+                    "type": ""
+                },
+                {
+                    "doc": "WebGPU backend",
+                    "name": "WINDOW_GRAPHICS_API_WEBGPU",
+                    "type": ""
+                },
+                {
+                    "doc": "DirectX backend",
+                    "name": "WINDOW_GRAPHICS_API_DIRECTX",
+                    "type": ""
+                }
+            ],
+            "name": "WindowsGraphicsApi",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "show the window",
+            "description": "show the window",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "WindowShow",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "window handle",
+                    "is_optional": "False",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "window state enumeration",
+            "description": "window state enumeration",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Window is opened",
+                    "name": "WINDOW_STATE_OPENED",
+                    "type": ""
+                },
+                {
+                    "doc": "Window is active/focused",
+                    "name": "WINDOW_STATE_ACTIVE",
+                    "type": ""
+                },
+                {
+                    "doc": "Window is iconified/minimized",
+                    "name": "WINDOW_STATE_ICONIFIED",
+                    "type": ""
+                },
+                {
+                    "doc": "Window has an accelerated graphics context",
+                    "name": "WINDOW_STATE_ACCELERATED",
+                    "type": ""
+                },
+                {
+                    "doc": "Red channel bit depth",
+                    "name": "WINDOW_STATE_RED_BITS",
+                    "type": ""
+                },
+                {
+                    "doc": "Green channel bit depth",
+                    "name": "WINDOW_STATE_GREEN_BITS",
+                    "type": ""
+                },
+                {
+                    "doc": "Blue channel bit depth",
+                    "name": "WINDOW_STATE_BLUE_BITS",
+                    "type": ""
+                },
+                {
+                    "doc": "Alpha channel bit depth",
+                    "name": "WINDOW_STATE_ALPHA_BITS",
+                    "type": ""
+                },
+                {
+                    "doc": "Depth buffer bit depth",
+                    "name": "WINDOW_STATE_DEPTH_BITS",
+                    "type": ""
+                },
+                {
+                    "doc": "Stencil buffer bit depth",
+                    "name": "WINDOW_STATE_STENCIL_BITS",
+                    "type": ""
+                },
+                {
+                    "doc": "Display refresh rate",
+                    "name": "WINDOW_STATE_REFRESH_RATE",
+                    "type": ""
+                },
+                {
+                    "doc": "Accumulation red channel bit depth",
+                    "name": "WINDOW_STATE_ACCUM_RED_BITS",
+                    "type": ""
+                },
+                {
+                    "doc": "Accumulation green channel bit depth",
+                    "name": "WINDOW_STATE_ACCUM_GREEN_BITS",
+                    "type": ""
+                },
+                {
+                    "doc": "Accumulation blue channel bit depth",
+                    "name": "WINDOW_STATE_ACCUM_BLUE_BITS",
+                    "type": ""
+                },
+                {
+                    "doc": "Accumulation alpha channel bit depth",
+                    "name": "WINDOW_STATE_ACCUM_ALPHA_BITS",
+                    "type": ""
+                },
+                {
+                    "doc": "Number of auxiliary buffers",
+                    "name": "WINDOW_STATE_AUX_BUFFERS",
+                    "type": ""
+                },
+                {
+                    "doc": "Stereo rendering enabled",
+                    "name": "WINDOW_STATE_STEREO",
+                    "type": ""
+                },
+                {
+                    "doc": "Window resize disabled",
+                    "name": "WINDOW_STATE_WINDOW_NO_RESIZE",
+                    "type": ""
+                },
+                {
+                    "doc": "Requested FSAA sample count",
+                    "name": "WINDOW_STATE_FSAA_SAMPLES",
+                    "type": ""
+                },
+                {
+                    "doc": "Actual sample count used by the window/context",
+                    "name": "WINDOW_STATE_SAMPLE_COUNT",
+                    "type": ""
+                },
+                {
+                    "doc": "High-DPI framebuffer enabled",
+                    "name": "WINDOW_STATE_HIGH_DPI",
+                    "type": ""
+                },
+                {
+                    "doc": "Auxiliary graphics context supported",
+                    "name": "WINDOW_STATE_AUX_CONTEXT",
+                    "type": ""
+                }
+            ],
+            "name": "WindowState",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        }
+    ],
+    "info": {
+        "brief": "Window API documentation",
+        "description": "Window creation and event polling.",
+        "description_html": "<p>Window creation and event polling.</p>",
+        "file": "window.h",
+        "include": "dmsdk/platform/window.h",
+        "language": "C",
+        "name": "Window",
+        "namespace": "Window",
+        "notes": [],
+        "path": "engine/platform/src/dmsdk/platform/window.h",
+        "type": "Defold C"
+    }
+}

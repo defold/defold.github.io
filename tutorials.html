@@ -27,7 +27,11 @@ nav: floating
 		<div class="grid-250">
 			{%- for tutorial in site.data.learnindex.navigation.tutorials -%}
 				{%- assign image=tutorial.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}
-				{% include learn_card.html title=tutorial.name description=tutorial.description link=tutorial.path min-height="250px" image=image author=tutorial.author %}
+				{%- assign tutorial_slug = tutorial.path | split: "/" | last -%}
+				{%- assign tutorial_page_path = "tutorials/" | append: tutorial_slug | append: ".md" -%}
+				{%- assign tutorial_page = site.pages | where: "path", tutorial_page_path | first -%}
+				{%- assign difficulty = tutorial_page.difficulty | default: tutorial.difficulty -%}
+				{% include learn_card.html title=tutorial.name description=tutorial.description link=tutorial.path min-height="250px" image=image author=tutorial.author difficulty=difficulty %}
 			{%- endfor -%}
 		</div>
 	</div>

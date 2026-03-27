@@ -6,6 +6,22 @@ layout: page
 <div style="display: none;" data-pagefind-meta="section">Tutorials</div>
 {% include learnnav.html showmenu=true %}
 
+{%- assign page_locale = page.locale | default: "en" -%}
+{%- assign locale_info = site.data.localeindex | where: "locale", page_locale | first -%}
+{%- assign github_link = page.github | default: "https://github.com/defold/doc" -%}
+{%- for tutorial in site.data.learnindex.navigation.tutorials -%}
+	{%- if tutorial.path contains "/tutorials/" -%}
+		{%- assign tutorial_path = tutorial.path | append: "/" -%}
+		{%- assign tutorial_path_size = tutorial_path | size -%}
+		{%- assign page_url_size = page.url | size -%}
+		{%- assign start_index = page_url_size | minus: tutorial_path_size -%}
+		{%- assign result = page.url | slice: start_index, tutorial_path_size -%}
+		{%- if result == tutorial_path -%}
+			{%- assign current_tutorial = tutorial -%}
+		{%- endif -%}
+	{%- endif -%}
+{%- endfor -%}
+
 <div class="section lightest dark:dark">
 	<div class="container">
 		<div class="row">
@@ -18,7 +34,17 @@ layout: page
 							{%- assign checked = "checked" -%}
 						{%- endif -%}
 						<li style="padding-left: 2rem;">
-							<a href="{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }}</a>
+							{%- if tutorial.path contains "/tutorials/" -%}
+								{%- if page_locale == "en" -%}
+									<a href="{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }}</a>
+								{%- elsif tutorial.locales contains page_locale -%}
+									<a href="/{{ locale_info.urlprefix }}{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }}</a>
+								{%- else -%}
+									<a href="{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }} (English)</a>
+								{%- endif -%}
+							{%- else -%}
+								<a href="{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }}</a>
+							{%- endif -%}
 						</li>
 					{% endfor %}
 					</ul>
@@ -26,19 +52,58 @@ layout: page
 				<div class="dropdownmenu">
 					<select class="dropdownmenu" onchange="location = this.value;">
 						{% for tutorial in site.data.learnindex.navigation.tutorials %}
-						<option value="{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }}</option>
+						{%- if tutorial.path contains "/tutorials/" -%}
+							{%- if page_locale == "en" -%}
+								<option value="{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }}</option>
+							{%- elsif tutorial.locales contains page_locale -%}
+								<option value="/{{ locale_info.urlprefix }}{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }}</option>
+							{%- else -%}
+								<option value="{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }} (English)</option>
+							{%- endif -%}
+						{%- else -%}
+							<option value="{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }}</option>
+						{%- endif -%}
 						{% endfor %}
 					</select>
 				</div>
 			</div>
-			<div class="columns eight tutorial" data-pagefind-body>
+			<div class="columns eight tutorial">
+				{%- if page_locale != "en" and current_tutorial -%}
+				{%- capture urlprefix -%}/{{ locale_info.urlprefix }}/{%- endcapture -%}
+				<div class="sidenote">
+					<p>This translation is community contributed and may not be up to date. We only maintain the English version of the documentation. <a href="{{ page.url | replace: urlprefix, "/" }}">Read this tutorial in English</a></p>
+				</div>
+				{%- endif -%}
+				<div data-pagefind-body>
+				{%- if page.difficulty -%}
+				<p style="margin-top: 0;"><span class="difficulty-tag">{{ page.difficulty }}</span></p>
+				{%- endif -%}
 				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
+				</div>
 			</div>
 			<div class="columns two">
+				{%- if site.data.localeindex.size > 1 and current_tutorial -%}
+				<input class="toggle" type="checkbox" checked/>
+				<label class="togglelabel">Languages</label>
+				<ul class="nobullet">
+				{%- for l in site.data.localeindex -%}
+					{%- if l.active and current_tutorial.locales contains l.locale -%}
+					<li style="padding-left: 2rem;">
+						{%- if l.locale == "en" -%}
+							<a href='{{ current_tutorial.path }}' style="text-decoration: none;">{{ l.name }}</a>
+						{%- elsif current_tutorial.locales contains l.locale -%}
+							<a href='/{{ l.urlprefix }}{{ current_tutorial.path }}' style="text-decoration: none;">{{ l.name }}</a>
+						{%- endif -%}
+					</li>
+					{%- endif -%}
+				{%- endfor -%}
+				</ul>
+				<hr/>
+				{%- endif -%}
 				<p>
 					Did you spot an error or do you have a suggestion? Please let us know on GitHub!
 				</p>
-				{% include secondary_button.html text="GITHUB" link="https://github.com/defold/doc" %}
+				{% include secondary_button.html text="GITHUB" link=github_link %}
 			</div>
 		</div>
 	</div>

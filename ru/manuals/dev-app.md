@@ -32,7 +32,7 @@ toc:
 
 ### Установка на iOS 
 
-Следуйте [инструкциям в руководстве по iOS](/manuals/ios/#creating-an-ios-application-bundle), чтобы собрать бандл для iOS. Обязательно выберите вариант Debug!
+Следуйте [инструкциям в руководстве по iOS](/ru/manuals/ios/#creating-an-ios-application-bundle), чтобы собрать бандл для iOS. Обязательно выберите вариант Debug!
 
 ### Установка на Android
 

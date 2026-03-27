@@ -1,4 +1,5 @@
 {%- assign ref = include.ref -%}
+{%- assign ref_api_language = ref.info.api_language | default: ref.info.language -%}
 
 {%- assign struct_type_list = "STRUCT~CLASS" | split:"~" -%}
 {%- assign structs = ref.elements | where_exp: "item", "struct_type_list contains item.type" -%}
@@ -27,18 +28,20 @@
 		<th></th>
 		<th></th>
 	</tr>
+	{%- if ref_api_language == "C++" and ref.info.namespace != "" -%}
+	{%- unless global_namespaces contains ref.info.namespace -%}
 	<tr>
-		{%- unless global_namespaces contains ref.info.namespace -%}
-		{%- if ref.info.namespace != "" -%}
 		<td>Namespace:</td>
 		<td><code>{{ ref.info.namespace }}</code></td>
-		{%- endif -%}
-		{%- endunless -%}
 	</tr>
+	{%- endunless -%}
+	{%- endif -%}
+	{%- if ref.info.include and ref.info.include != "" -%}
 	<tr>
 		<td>Include:</td>
 		<td><code>#include &lt;<a href="https://github.com/defold/defold/blob/dev/{{ ref.info.path }}">{{ ref.info.include }}</a>&gt;</code></td>
 	</tr>
+	{%- endif -%}
 
 </table>
 

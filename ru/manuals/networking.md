@@ -17,7 +17,7 @@ toc:
 
 * [HTTP Запросы](/ru/manuals/http-requests)
 * [Сокеты](/ru/manuals/socket-connections)
-* [Соединения по веб-сокету](/manuals/websocket-connections)
+* [Соединения по веб-сокету](/ru/manuals/websocket-connections)
 * [Онлайн сервисы](/ru/manuals/online-services)
 
 ## Технические подробности

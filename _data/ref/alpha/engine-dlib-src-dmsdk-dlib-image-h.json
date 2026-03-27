@@ -1,6 +1,134 @@
 {
     "elements": [
         {
+            "brief": "Get the block size",
+            "description": "Get the block size",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetAstcBlockSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the .astc memory (including the header)",
+                    "is_optional": "False",
+                    "name": "mem",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "the length of the memory blob",
+                    "is_optional": "False",
+                    "name": "memsize",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "(out) the block width",
+                    "is_optional": "False",
+                    "name": "width",
+                    "types": [
+                        "uint32_t*"
+                    ]
+                },
+                {
+                    "doc": "(out) the block height",
+                    "is_optional": "False",
+                    "name": "height",
+                    "types": [
+                        "uint32_t*"
+                    ]
+                },
+                {
+                    "doc": "(out) the block depth",
+                    "is_optional": "False",
+                    "name": "depth",
+                    "types": [
+                        "uint32_t*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if it's an astc file",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the astc image size",
+            "description": "Get the astc image size",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetAstcDimensions",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the .astc memory (including the header)",
+                    "is_optional": "False",
+                    "name": "mem",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "the length of the memory blob",
+                    "is_optional": "False",
+                    "name": "memsize",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "(out) the block width",
+                    "is_optional": "False",
+                    "name": "width",
+                    "types": [
+                        "uint32_t*"
+                    ]
+                },
+                {
+                    "doc": "(out) the block height",
+                    "is_optional": "False",
+                    "name": "height",
+                    "types": [
+                        "uint32_t*"
+                    ]
+                },
+                {
+                    "doc": "(out) the block depth",
+                    "is_optional": "False",
+                    "name": "depth",
+                    "types": [
+                        "uint32_t*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if it's an astc file",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "result enumeration",
             "description": "result enumeration",
             "error": "",
@@ -69,7 +197,7 @@
         }
     ],
     "info": {
-        "brief": "SDK Image API documentation",
+        "brief": "Image API documentation",
         "description": "Image API functions.",
         "description_html": "<p>Image API functions.</p>",
         "file": "image.h",

@@ -1,5 +1,6 @@
 ---
 brief: If you are new to Defold, this guide will help you to lab with a few of the building blocks in Defold and run script logic.
+language: en
 layout: tutorial
 title: Building a 15 puzzle game in Defold
 ---

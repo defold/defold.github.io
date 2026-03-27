@@ -1,8 +1,8 @@
-Bundle resources are additional files and folders located as a part of your application bundle using the [*Bundle Resources* field](/manuals/project-settings/#bundle-resources) in *game.project*.
+Bundle resources — это дополнительные файлы и каталоги, расположенные как часть application bundle с использованием поля [*Bundle Resources*](/manuals/project-settings/#bundle-resources) в *game.project*.
 
-The *Bundle Resources* field should contain a comma separated list of directories containing resource files and folders that should be copied as-is into the resulting package when bundling. The directories must be specified with an absolute path from the project root, for example `/res`. The resource directory must contain subfolders named by `platform`, or `architecture-platform`.
+Поле *Bundle Resources* должно содержать список каталогов, разделённых запятыми, с файлами и папками ресурсов, которые нужно скопировать как есть в итоговый пакет при сборке. Каталоги должны указываться абсолютным путём от корня проекта, например `/res`. Каталог ресурсов должен содержать подкаталоги с именами `platform` или `architecture-platform`.
 
-Supported platforms are `ios`, `android`, `osx`, `win32`, `linux`, `web`, `switch` A subfolder named `common` is also allowed, containing resource files common for all platforms. Example:
+Поддерживаемые платформы: `ios`, `android`, `osx`, `win32`, `linux`, `web`, `switch`. Также допускается подкаталог `common`, содержащий ресурсы, общие для всех платформ. Пример:
 
 ```
 res
@@ -17,4 +17,4 @@ res
             └── filepaths.xml
 ```
 
-You can use [`sys.get_application_path()`](/ref/stable/sys/#sys.get_application_path:) to get the path to where the application is stored. Use this application base path to create the final absolute path to the files you need access to. Once you have the absolute path of these files you can use the `io.*` and `os.*` functions to access the files.
+Вы можете использовать [`sys.get_application_path()`](/ref/stable/sys/#sys.get_application_path:) чтобы получить путь к каталогу, где хранится приложение. Используйте этот базовый путь приложения, чтобы построить окончательный абсолютный путь к нужным вам файлам. Получив абсолютный путь, можно использовать функции `io.*` и `os.*` для доступа к этим файлам.

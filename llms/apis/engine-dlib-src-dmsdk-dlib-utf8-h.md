@@ -7,7 +7,7 @@
 **Source:** `engine/dlib/src/dmsdk/dlib/utf8.h`
 **Include:** `dmsdk/dlib/utf8.h`
 
-SDK Utf8 API documentation
+Utf8 API documentation
 
 ## API
 

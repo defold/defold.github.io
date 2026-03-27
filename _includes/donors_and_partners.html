@@ -19,7 +19,7 @@
 				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Platinum Partners</h5>
 				<div class="grid-150">
 					{%- for partner in platinum -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" style="max-height: 55px" alt="{{ partner.name }} logo"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" loading="lazy" style="max-height: 55px" alt="{{ partner.name }} logo"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
@@ -35,7 +35,7 @@
 				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Gold Partners</h5>
 				<div class="grid-100">
 					{%- for partner in gold -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" style="max-height: 44px" alt="{{ partner.name }} logo"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" loading="lazy" style="max-height: 44px" alt="{{ partner.name }} logo"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
@@ -51,7 +51,7 @@
 				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Silver Partners</h5>
 				<div class="grid-100">
 					{%- for partner in silver -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" style="max-height: 44px" alt="{{ partner.name }} logo"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" loading="lazy" style="max-height: 44px" alt="{{ partner.name }} logo"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
@@ -67,7 +67,7 @@
 				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Bronze Partners</h5>
 				<div class="grid-100">
 					{%- for partner in bronze -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" style="max-height: 33px" alt="{{ partner.name }} logo"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" loading="lazy" style="max-height: 33px" alt="{{ partner.name }} logo"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
@@ -83,7 +83,7 @@
 				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Special Partners</h5>
 				<div class="grid-100">
 					{%- for partner in special -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" style="max-height: 44px" alt="{{ partner.name }} logo"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" loading="lazy" style="max-height: 44px" alt="{{ partner.name }} logo"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
@@ -99,7 +99,7 @@
 				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Friends of Defold</h5>
 				<div class="grid-100">
 					{%- for partner in friends -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" style="max-height: 33px" alt="{{ partner.name }} logo"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" loading="lazy" style="max-height: 33px" alt="{{ partner.name }} logo"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
@@ -136,7 +136,7 @@
 				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Memberships</h5>
 				<div class="lightest-text grid-100">
 					{%- for membership in memberships -%}
-						<a href="{{ membership.link }}" target="_blank"><img src="{{ membership.logo }}" style="max-height: 55px" alt="{{ membership.name }} logo"></a>
+						<a href="{{ membership.link }}" target="_blank"><img src="{{ membership.logo }}" loading="lazy" style="max-height: 55px" alt="{{ membership.name }} logo"></a>
 					{%- endfor -%}
 				</div>
 			</div>

@@ -241,6 +241,30 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Converts euler angles (x, y, z) in degrees into a ...",
+            "description": "Converts euler angles (x, y, z) in degrees into a quaternion\nThe error is guaranteed to be less than 0.001.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "EulerToQuat",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "rotation (deg)",
+                    "is_optional": "False",
+                    "name": "xyz",
+                    "types": [
+                        "Vector3"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "inverse matrix",
             "description": "inverse matrix",
             "error": "",
@@ -947,6 +971,102 @@
             "type": "TYPEDEF"
         },
         {
+            "brief": "construct a quaternion from an axis index and angle",
+            "description": "construct a quaternion from an axis index and angle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "QuatFromAngle",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "index of the rotation axis",
+                    "is_optional": "False",
+                    "name": "axis_index",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "angle of rotation in radians",
+                    "is_optional": "False",
+                    "name": "radians",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "quaternion describing the rotation",
+                    "name": "q",
+                    "types": [
+                        "Quat"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Converts a quaternion into euler angles (r0, r1, r...",
+            "description": "Converts a quaternion into euler angles (r0, r1, r2), based on YZX rotation order.\nTo handle gimbal lock (singularity at r1 ~ +/- 90 degrees), the cut off is at r0 = +/- 88.85 degrees, which snaps to +/- 90.\nThe provided quaternion is expected to be normalized.\nThe error is guaranteed to be less than +/- 0.02 degrees",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "QuatToEuler",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "first imaginary axis",
+                    "is_optional": "False",
+                    "name": "q0",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "second imaginary axis",
+                    "is_optional": "False",
+                    "name": "q1",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "third imaginary axis",
+                    "is_optional": "False",
+                    "name": "q2",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "real part",
+                    "is_optional": "False",
+                    "name": "q3",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "euler angles in degrees",
+                    "name": "euler",
+                    "types": [
+                        "Vector3"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "rotate vector using quaternion",
             "description": "rotate vector using quaternion",
             "error": "",
@@ -1242,7 +1362,7 @@
         }
     ],
     "info": {
-        "brief": "SDK Vector Math API documentation",
+        "brief": "Vector Math API documentation",
         "description": "Vector Math functions.",
         "description_html": "<p>Vector Math functions.</p>",
         "file": "vmath.h",

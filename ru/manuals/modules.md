@@ -22,7 +22,7 @@ Lua-код, хранящийся в файлах с окончанием ".lua" 
 
 ![new file](/manuals/images/modules/new_name.png)
 
-Предположим, в файл "main/anim.lua" добавлен следующий код:
+Предположим, в файл "`main/anim.lua`" добавлен следующий код:
 
 ```lua
 function direction_animation(direction, char)

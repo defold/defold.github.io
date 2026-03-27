@@ -1,5 +1,6 @@
 ---
 brief: In this article, you go through the implementation of a basic tile-based 2D platformer in Defold. The mechanics you learn are moving left/right, jumping and falling.
+language: en
 layout: tutorial
 title: Platformer Defold tutorial
 ---

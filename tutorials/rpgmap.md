@@ -1,5 +1,6 @@
 ---
 brief: In this sample project, you learn one method of creating very large RPG maps.
+language: en
 layout: tutorial
 title: RPG map sample
 ---

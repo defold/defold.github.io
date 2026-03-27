@@ -1,5 +1,6 @@
 ---
 brief: If you are new to Defold, this guide will help you to get started with script logic together with a few of the building blocks in Defold.
+language: en
 layout: tutorial
 title: Building a snake game in Defold
 ---

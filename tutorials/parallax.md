@@ -1,5 +1,6 @@
 ---
 brief: In this sample, you learn how to use a parallax effect to simulate depth in the game world.
+language: en
 layout: tutorial
 title: Parallax code sample
 ---

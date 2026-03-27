@@ -439,13 +439,21 @@ Takes AppID of DLC and checks if the user owns the DLC & if the DLC is installed
 
 - `boolean`
 
+### steam.apps_get_current_game_language
+*Type:* FUNCTION
+Gets the current game language.
+
+**Returns**
+
+- `string`
+
 ### steam.friends_get_friend_persona_name
 *Type:* FUNCTION
 Returns the name of another user. Same rules as GetFriendPersonaState() apply as to whether or not the user knowns the name of the other user note that on first joining a lobby, chat room or game server the local user will not known the name of the other users automatically; that information will arrive asyncronously.
 
 **Parameters**
 
-- `CSteamID` (friendId)
+- `steamIDFriend` (string)
 
 **Returns**
 
@@ -491,7 +499,7 @@ Returns the steamID of a user. The returned CSteamID can then be used by all the
 
 **Returns**
 
-- `number` - Steam id of the user
+- `string` - Steam id of the user
 
 ### steam.friends_get_friend_persona_state
 *Type:* FUNCTION
@@ -499,7 +507,7 @@ Returns the current status of the specified user. This will only be known by the
 
 **Parameters**
 
-- `steamIDFriend` (number) - Id of friend
+- `steamIDFriend` (string) - Id of friend
 
 **Returns**
 
@@ -511,7 +519,7 @@ Get friends steam level.
 
 **Parameters**
 
-- `steamIDFriend` (number) - Id of friend
+- `steamIDFriend` (string) - Id of friend
 
 **Returns**
 
@@ -523,7 +531,7 @@ Returns a relationship to a user.
 
 **Parameters**
 
-- `steamIDFriend` (number) - Id of friend
+- `steamIDFriend` (string) - Id of friend
 
 **Returns**
 
@@ -535,7 +543,7 @@ Gets a handle to the small (32*32px) avatar for the specified user. This is a ha
 
 **Parameters**
 
-- `steamIDFriend` (number) - Id of friend
+- `steamIDFriend` (string) - Id of friend
 
 **Returns**
 
@@ -547,7 +555,7 @@ Gets a handle to the medium (64*64px) avatar for the specified user. This is a h
 
 **Parameters**
 
-- `steamIDFriend` (number) - Id of friend
+- `steamIDFriend` (string) - Id of friend
 
 **Returns**
 
@@ -559,7 +567,7 @@ Gets a handle to the large (128*128px) avatar for the specified user. This is a 
 
 **Parameters**
 
-- `steamIDFriend` (number) - Id of friend
+- `steamIDFriend` (string) - Id of friend
 
 **Returns**
 
@@ -606,7 +614,7 @@ Invites a friend or clan member to the current game using a special invite strin
 
 **Parameters**
 
-- `steamIDFriend` (number) - Id of friend
+- `steamIDFriend` (string) - Id of friend
 
 - `connect` (string) - String
 
@@ -1087,7 +1095,7 @@ Returns the CSteamID of the account currently logged into the Steam client. A CS
 
 **Returns**
 
-- `CSteamID`
+- `string`
 
 ### steam.user_get_player_steam_level
 *Type:* FUNCTION

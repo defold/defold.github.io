@@ -179,7 +179,7 @@ Parameters to ComponentGetProperty callback.
 - `m_Instance` (HInstance) - Game object instance
 - `m_PropertyId` (dmhash_t) - Id of the property
 - `m_UserData` (uintptr_t*) - User data storage pointer
-- `m_Options` (PropertyOptions) - Options for getting the property
+- `m_Options` (HPropertyOptions) - Options for getting the property
 
 ### ComponentInit
 *Type:* TYPEDEF
@@ -357,7 +357,7 @@ Parameters to ComponentSetProperty callback.
 - `m_PropertyId` (dmhash_t) - Id of the property
 - `m_UserData` (uintptr_t*) - User data storage pointer
 - `m_Value` (PropertyVar) - New value of the property
-- `m_Options` (PropertyOptions) - Options for setting the property
+- `m_Options` (HPropertyOptions) - Options for setting the property
 
 ### ComponentsPostUpdate
 *Type:* TYPEDEF

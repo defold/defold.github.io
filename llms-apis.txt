@@ -4,21 +4,16 @@ This document contains the Defold API reference, grouped by language.
 
 ## C++ APIs
 
-- [dmDDF (Ddf)](#apis:engine-ddf-src-dmsdk-ddf-ddf-h) - SDK DDF (Defold Data Format) API documentation
-- [Align](#apis:engine-dlib-src-dmsdk-dlib-align-h) - Alignment macros
+- [dmDDF (Ddf)](#apis:engine-ddf-src-dmsdk-ddf-ddf-h) - DDF (Defold Data Format) API documentation
 - [dmAndroid (Android)](#apis:engine-dlib-src-dmsdk-dlib-android-h) - Android utility functions
 - [Array](#apis:engine-dlib-src-dmsdk-dlib-array-h) - Templatized array with bounds checking
-- [Atomic](#apis:engine-dlib-src-dmsdk-dlib-atomic-h) - Atomic functions
 - [dmBuffer (Buffer)](#apis:engine-dlib-src-dmsdk-dlib-buffer-h) - Buffer API for data buffers as the main way to communicate between systems
 - [dmConditionVariable (Condition Variable)](#apis:engine-dlib-src-dmsdk-dlib-condition_variable-h) - API for platform independent mutex synchronization primitive
-- [dmConfigFile (ConfigFile)](#apis:engine-dlib-src-dmsdk-dlib-configfile-h) - Configuration file access functions
 - [dmConfigFile (ConfigFile)](#apis:engine-dlib-src-dmsdk-dlib-configfile_gen-hpp) - Configuration file access functions
 - [dmConnectionPool (Connection Pool)](#apis:engine-dlib-src-dmsdk-dlib-connection_pool-h) - Connection pool
 - [dmCrypt (Crypt)](#apis:engine-dlib-src-dmsdk-dlib-crypt-h) - Various hash and encode/decode functions
 - [dmDoubleLinkedList (Double linked list structs and functions)](#apis:engine-dlib-src-dmsdk-dlib-double_linked_list-h) - Double linked list structs and functions
-- [DStrings](#apis:engine-dlib-src-dmsdk-dlib-dstrings-h) - SDK Defold String Utils API documentation
 - [dmFileDescriptor (FileDescriptor)](#apis:engine-dlib-src-dmsdk-dlib-file_descriptor-h) - File Descriptor functions
-- [Hash](#apis:engine-dlib-src-dmsdk-dlib-hash-h) - Hash functions
 - [Hashtable](#apis:engine-dlib-src-dmsdk-dlib-hashtable-h) - Hash table
 - [dmHttpClient (Http Client)](#apis:engine-dlib-src-dmsdk-dlib-http_client-h) - Http client functions
 - [dmImage (Image)](#apis:engine-dlib-src-dmsdk-dlib-image-h) - Image API functions
@@ -28,7 +23,7 @@ This document contains the Defold API reference, grouped by language.
 - [dmMemory (Memory)](#apis:engine-dlib-src-dmsdk-dlib-memory-h) - Memory allocation functions
 - [dmMessage (Message)](#apis:engine-dlib-src-dmsdk-dlib-message-h) - Api for sending messages
 - [dmMutex (Mutex)](#apis:engine-dlib-src-dmsdk-dlib-mutex-h) - API for platform independent mutex synchronization primitive
-- [ObjectPool](#apis:engine-dlib-src-dmsdk-dlib-object_pool-h) - SDK Object Pool API documentation
+- [ObjectPool](#apis:engine-dlib-src-dmsdk-dlib-object_pool-h) - Object Pool API documentation
 - [dmProfile (Profile)](#apis:engine-dlib-src-dmsdk-dlib-profile-h) - Profiling macros
 - [SharedLibrary (Shared Library)](#apis:engine-dlib-src-dmsdk-dlib-shared_library-h) - Utility functions for shared library export/import
 - [dmSocket (Socket)](#apis:engine-dlib-src-dmsdk-dlib-socket-h) - Socket functions
@@ -40,22 +35,19 @@ This document contains the Defold API reference, grouped by language.
 - [dmTime (Time)](#apis:engine-dlib-src-dmsdk-dlib-time-h) - Time functions
 - [dmTransform (Transform)](#apis:engine-dlib-src-dmsdk-dlib-transform-h) - Api for transforms with rotation, scale and translation
 - [dmURI (URI)](#apis:engine-dlib-src-dmsdk-dlib-uri-h) - URI functions
-- [dmUtf8 (Utf8)](#apis:engine-dlib-src-dmsdk-dlib-utf8-h) - SDK Utf8 API documentation
+- [dmUtf8 (Utf8)](#apis:engine-dlib-src-dmsdk-dlib-utf8-h) - Utf8 API documentation
 - [dmVMath (Vector Math)](#apis:engine-dlib-src-dmsdk-dlib-vmath-h) - Vector Math functions
 - [dmWebServer (WebServer)](#apis:engine-dlib-src-dmsdk-dlib-webserver-h) - Simple high-level single-threaded Web server based on dmHttpServer The web-server has a handler concept similar to servlets in Java
 - [dmEngine (Engine)](#apis:engine-engine-src-dmsdk-engine-extension-hpp) - SDK Engine extension API documentation
 - [engine (Engine runtime)](#apis:engine-engine-src-engine_doc-h) - Engine runtime documentation
-- [Extension](#apis:engine-extension-src-dmsdk-extension-extension-h) - Functions for creating and controlling engine native extension libraries
 - [dmExtension (Extension)](#apis:engine-extension-src-dmsdk-extension-extension_gen-hpp) - Functions for creating and controlling engine native extension libraries
-- [Font](#apis:engine-font-src-dmsdk-font-font-h) - Font API for loading a font (truetype), getting glyph metrics and bitmap/sdf data
-- [FontCollection](#apis:engine-font-src-dmsdk-font-fontcollection-h) - Font API for grouping multiple fonts into a collection
-- [TextLayout](#apis:engine-font-src-dmsdk-font-text_layout-h) - API for laying out complex text into format ready for display
 - [dmGameObject (Component)](#apis:engine-gameobject-src-dmsdk-gameobject-component-h) - Api for manipulating game object components (WIP)
 - [dmGameObject (Gameobject)](#apis:engine-gameobject-src-dmsdk-gameobject-gameobject-h) - API for manipulating game objects
 - [dmGameObject (PropertyContainer)](#apis:engine-gameobject-src-dmsdk-gameobject-gameobject_props-h) - API for game object property container
-- [dmGameObject (Script)](#apis:engine-gameobject-src-dmsdk-gameobject-script-h) - SDK GameObject script API documentation
+- [dmGameObject (Script)](#apis:engine-gameobject-src-dmsdk-gameobject-script-h) - GameObject script API documentation
 - [dmGameSystem (Collection factory)](#apis:engine-gamesys-src-dmsdk-gamesys-components-comp_collection_factory-h) - API for spawning collections from a collection factory component
 - [dmGameSystem (Factory)](#apis:engine-gamesys-src-dmsdk-gamesys-components-comp_factory-h) - API for spawning gameobject instances from a factory component
+- [dmGameSystem (Model)](#apis:engine-gamesys-src-dmsdk-gamesys-components-comp_model-h) - API for interacting with model components
 - [dmGameSystem (GameSystem Gui)](#apis:engine-gamesys-src-dmsdk-gamesys-gui-h) - Built-in scripting functions
 - [dmGameSystem (Property)](#apis:engine-gamesys-src-dmsdk-gamesys-property-h) - Property functions
 - [dmGameSystem (Component Render Constants)](#apis:engine-gamesys-src-dmsdk-gamesys-render_constants-h) - Api for setting and updating component render constants
@@ -68,8 +60,7 @@ This document contains the Defold API reference, grouped by language.
 - [dmGui (Gui)](#apis:engine-gui-src-dmsdk-gui-gui-h) - Defold GUI system
 - [dmPhysics (Physics)](#apis:engine-physics-src-dmsdk-physics-physics-h) - Physics related structs and functions
 - [dmRender (Render)](#apis:engine-render-src-dmsdk-render-render-h) - Api for render specific data
-- [Resource](#apis:engine-resource-src-dmsdk-resource-resource-h) - Functions for managing resource types
-- [dmResource (Resource)](#apis:engine-resource-src-dmsdk-resource-resource-hpp) - Functions for managing resource types
+- [dmResource (Resource)](#apis:engine-resource-src-dmsdk-resource-resource-hpp) - Functions for managing resource and resource types
 - [dmResource (Resource)](#apis:engine-resource-src-dmsdk-resource-resource_gen-hpp) - Functions for managing resource types
 - [dmScript (Script)](#apis:engine-script-src-dmsdk-script-script-h) - Built-in scripting functions
 - [dmSound (Sound)](#apis:engine-sound-src-dmsdk-sound-sound-h) - Functions for controlling the engine sound mixer from native extensions
@@ -106,7 +97,7 @@ This document contains the Defold API reference, grouped by language.
 - [msg (Message)](#apis:msg-lua) - Functions for passing messages and constructing URL objects
 - [os (Os)](#apis:os-lua) - Documentation for the Lua os standard library
 - [package (Package)](#apis:package-lua) - Documentation for the Lua package standard library
-- [particlefx (Particle effects)](#apis:particlefx-lua) - Functions for controlling particle effect component playback and shader constants
+- [particlefx (Particle effects)](#apis:particlefx-lua) - Functions and properties for controlling particle effect component playback and shader constants
 - [physics (Collision object)](#apis:physics-lua) - Collision object physics API documentation
 - [profiler (Profiler)](#apis:profiler-lua) - Functions for getting profiling data in runtime
 - [render (Render)](#apis:render-lua) - Rendering API documentation
@@ -173,7 +164,7 @@ This document contains the Defold API reference, grouped by language.
 **Source:** `engine/ddf/src/dmsdk/ddf/ddf.h`
 **Include:** `dmsdk/ddf/ddf.h`
 
-SDK DDF (Defold Data Format) API documentation
+DDF (Defold Data Format) API documentation
 
 ## API
 
@@ -310,54 +301,6 @@ Save message to array
 **Returns**
 
 - `RESULT_OK` - on success
-
-<!-- engine-dlib-src-dmsdk-dlib-align-h -->
-
-# Align {#apis:engine-dlib-src-dmsdk-dlib-align-h}
-
-**Namespace:** `Align`
-**Language:** C++
-**Type:** Defold C++
-**File:** `align.h`
-**Source:** `engine/dlib/src/dmsdk/dlib/align.h`
-**Include:** `dmsdk/dlib/align.h`
-
-Alignment macros. Use for compiler compatibility
-
-## API
-
-### DM_ALIGN
-*Type:* MACRO
-Align a value to a boundary
-
-**Parameters**
-
-- `x` (int) - value to align
-- `a` (int) - alignment boundary
-
-**Examples**
-
-Align 24 to 16 alignment boundary. results is 32:
-```
-int result = DM_ALIGN(24, 16);
-
-```
-
-### DM_ALIGNED
-*Type:* MACRO
-Data structure alignment
-
-**Parameters**
-
-- `a` (int) - number of bytes to align to
-
-**Examples**
-
-Align m_Data to 16 bytes alignment boundary:
-```
-int DM_ALIGNED(16) m_Data;
-
-```
 
 <!-- engine-dlib-src-dmsdk-dlib-android-h -->
 
@@ -861,118 +804,6 @@ Swap the content of two arrays
 *Type:* FUNCTION
 Only frees memory when auto-allocated.
 
-<!-- engine-dlib-src-dmsdk-dlib-atomic-h -->
-
-# Atomic {#apis:engine-dlib-src-dmsdk-dlib-atomic-h}
-
-**Namespace:** `Atomic`
-**Language:** C++
-**Type:** Defold C++
-**File:** `atomic.h`
-**Source:** `engine/dlib/src/dmsdk/dlib/atomic.h`
-**Include:** `dmsdk/dlib/atomic.h`
-
-Atomic functions
-
-## API
-
-### dmAtomicAdd32
-*Type:* FUNCTION
-Atomic addition of an int32_atomic_t.
-
-**Parameters**
-
-- `ptr` (int32_atomic_t*) - Pointer to an int32_atomic_t to add to.
-- `value` (int32_t) - Value to add.
-
-**Returns**
-
-- `prev` (int32_t) - Previous value
-
-### dmAtomicCompareStore32
-*Type:* FUNCTION
-Atomic set (or exchange) of an int32_atomic_t if comparand is equal to the value of ptr.
-
-**Parameters**
-
-- `ptr` (int32_atomic_t*) - Pointer to an int32_atomic_t to store into.
-- `value` (int32_t) - Value to set.
-- `comparand` (int32_t) - Value to compare to.
-
-**Returns**
-
-- `prev` (int32_t) - Previous value
-
-### dmAtomicDecrement32
-*Type:* FUNCTION
-Atomic decrement of an int32_atomic_t.
-
-**Parameters**
-
-- `ptr` (int32_atomic_t*) - Pointer to an int32_atomic_t to decrement.
-
-**Returns**
-
-- `prev` (int32_t) - Previous value
-
-### dmAtomicGet32
-*Type:* FUNCTION
-Atomic get of an int32_atomic_t
-
-**Notes**
-
-- Retrieves the current value by adding 0
-
-**Parameters**
-
-- `ptr` (int32_atomic_t*) - Pointer to an int32_atomic_t to get from.
-
-**Returns**
-
-- `value` (int32_t) - Current value
-
-### dmAtomicIncrement32
-*Type:* FUNCTION
-Atomic increment of an int32_atomic_t.
-
-**Parameters**
-
-- `ptr` (int32_atomic_t*) - Pointer to an int32_atomic_t to increment.
-
-**Returns**
-
-- `prev` (int32_t) - Previous value
-
-### dmAtomicStore32
-*Type:* FUNCTION
-Atomic set (or exchange) of an int32_atomic_t.
-
-**Parameters**
-
-- `ptr` (int32_atomic_t*) - Pointer to an int32_atomic_t to store into.
-- `value` (int32_t) - Value to set.
-
-**Returns**
-
-- `prev` (int32_t) - Previous value
-
-### dmAtomicSub32
-*Type:* FUNCTION
-Atomic subtraction of an int32_atomic_t.
-
-**Parameters**
-
-- `ptr` (int32_atomic_t*) - Pointer to an int32_atomic_t to subtract from.
-- `value` (int32_t) - Value to subtract.
-
-**Returns**
-
-- `prev` (int32_t) - Previous value
-
-### int32_atomic_t
-*Type:* TYPEDEF
-32 bit signed integer atomic
-
 <!-- engine-dlib-src-dmsdk-dlib-buffer-h -->
 
 # Buffer {#apis:engine-dlib-src-dmsdk-dlib-buffer-h}
@@ -1444,220 +1275,6 @@ the mutex being locked.
 
 - `condition` (dmConditionVariable::HConditionVariable) - ConditionVariable handle.
 - `mutex` (dmMutex::HMutex) - Mutex handle.
-
-<!-- engine-dlib-src-dmsdk-dlib-configfile-h -->
-
-# ConfigFile {#apis:engine-dlib-src-dmsdk-dlib-configfile-h}
-
-**Namespace:** `dmConfigFile`
-**Language:** C++
-**Type:** Defold C++
-**File:** `configfile.h`
-**Source:** `engine/dlib/src/dmsdk/dlib/configfile.h`
-**Include:** `dmsdk/dlib/configfile.h`
-
-Configuration file access functions.
-The configuration file is compiled version of the [file:game.project] file.
-
-## API
-
-### ConfigFileExtensionDescBufferSize
-*Type:* CONSTANT
-It defines the minimum size of the description blob being registered.
-
-### ConfigFileGetFloat
-*Type:* FUNCTION
-Get config value as float, returns default if the key isn't found
-
-**Parameters**
-
-- `config` (HConfigFile) - Config file handle
-- `key` (const char*) - Key in format section.key (.key for no section)
-- `default_value` (int32_t) - Default value to return if key isn't found
-
-**Returns**
-
-- `value` (int32_t) - found value or default value
-
-**Examples**
-
-```
-static ExtensionResult AppInitialize(ExtensionAppParams* params)
-{
-    float gravity = ConfigFileGetFloat(params->m_ConfigFile, "physics.gravity_y", -9.8f);
-}
-``````cpp
-static dmExtension::Result AppInitialize(dmExtension::AppParams* params)
-{
-    float gravity = dmConfigFile::GetFloat(params->m_ConfigFile, "physics.gravity_y", -9.8f);
-}
-
-```
-
-### ConfigFileGetInt
-*Type:* FUNCTION
-Get config value as integer, returns default if the key isn't found
-
-**Parameters**
-
-- `config` (HConfigFile) - Config file handle
-- `key` (const char*) - Key in format section.key (.key for no section)
-- `default_value` (int32_t) - Default value to return if key isn't found
-
-**Returns**
-
-- `value` (int32_t) - found value or default value
-
-**Examples**
-
-```
-static ExtensionResult AppInitialize(ExtensionAppParams* params)
-{
-    int32_t displayWidth = ConfigFileGetInt(params->m_ConfigFile, "display.width", 640);
-}
-``````cpp
-static dmExtension::Result AppInitialize(dmExtension::AppParams* params)
-{
-    int32_t displayWidth = dmConfigFile::GetInt(params->m_ConfigFile, "display.width", 640);
-}
-
-```
-
-### ConfigFileGetString
-*Type:* FUNCTION
-Get config value as string, returns default if the key isn't found
-
-**Parameters**
-
-- `config` (HConfigFile) - Config file handle
-- `key` (const char*) - Key in format section.key (.key for no section)
-- `default_value` (const char*) - Default value to return if key isn't found
-
-**Returns**
-
-- `value` (const char*) - found value or default value
-
-**Examples**
-
-```
-static ExtensionResult AppInitialize(ExtensionAppParams* params)
-{
-    const char* projectTitle = ConfigFileGetString(params->m_ConfigFile, "project.title", "Untitled");
-}
-``````cpp
-static dmExtension::Result AppInitialize(dmExtension::AppParams* params)
-{
-    const char* projectTitle = dmConfigFile::GetString(params->m_ConfigFile, "project.title", "Untitled");
-}
-
-```
-
-### DM_DECLARE_CONFIGFILE_EXTENSION
-*Type:* MACRO
-Declare and register new config file extension to the engine.
-Each get function should return true if it sets a proper value. Otherwise return false.
-
-**Parameters**
-
-- `symbol` (symbol) - external extension symbol description (no quotes).
-- `name` (const char*) - extension name. Human readable.
-- `init` (function(dmConfigFile::dmcfConfig*)) - init function. May be null.
-- `get_string` (function(const char* section_plus_name, const char* default, const char** out)) - Gets a string property. May be null.
-- `get_int` (function(const char* section_plus_name, int default, int* out)) - Gets an int property. May be null.
-- `get_float` (function(const char* section_plus_name, float default, float* out)) - Gets a float property. May be null.
-
-**Examples**
-
-Register a new config file extension:
-```
-DM_DECLARE_CONFIGFILE_EXTENSION(MyConfigfileExtension, "MyConfigfileExtension", create, destroy, get_string, get_int, get_float);
-
-```
-
-### FConfigFileCreate
-*Type:* TYPEDEF
-Called when config file extension is created
-
-**Parameters**
-
-- `config` (HConfigFile) - Config file handle
-
-### FConfigFileDestroy
-*Type:* TYPEDEF
-Called when config file extension is destroyed
-
-**Parameters**
-
-- `config` (HConfigFile) - Config file handle
-
-### FConfigFileGetFloat
-*Type:* TYPEDEF
-Called when a float is requested from the config file extension
-
-**Parameters**
-
-- `config` (HConfigFile) - Config file handle
-- `key` (const char*) - Key in format section.key (.key for no section)
-- `default_value` (float) - Default value to return if key isn't found
-- `out` (float*) - Out argument where result is stored if found.
-
-**Returns**
-
-- `result` (bool) - True if property was found
-
-### FConfigFileGetFloat
-*Type:* TYPEDEF
-Called when a float is requested from the config file extension
-
-**Parameters**
-
-- `desc` (void*) - An opaque buffer of at least ConfigFileExtensionDescBufferSize bytes.
-                         This will hold the meta data for the plugin.
-- `desc_size` (uint32_t) - The size of the desc buffer. Must be &gt;ConfigFileExtensionDescBufferSize
-- `name` (const char*) - Name of the extension.
-- `create` (FConfigFileCreate) - Extension create function. May be null.
-- `destroy` (FConfigFileDestroy) - Extension destroy function. May be null.
-- `get_string` (FConfigFileGetString) - Getter for string properties. May be null.
-- `get_int` (FConfigFileGetInt) - Getter for int properties. May be null.
-- `get_float` (FConfigFileGetFloat) - Getter for float properties. May be null.
-
-### FConfigFileGetInt
-*Type:* TYPEDEF
-Called when an integer is requested from the config file extension
-
-**Parameters**
-
-- `config` (HConfigFile) - Config file handle
-- `key` (const char*) - Key in format section.key (.key for no section)
-- `default_value` (int32_t) - Default value to return if key isn't found
-- `out` (int32_t*) - Out argument where result is stored if found.
-
-**Returns**
-
-- `result` (bool) - True if property was found
-
-### FConfigFileGetString
-*Type:* TYPEDEF
-Called when a string is requested from the config file extension
-
-**Parameters**
-
-- `config` (HConfigFile) - Config file handle
-- `key` (const char*) - Key in format section.key (.key for no section)
-- `default_value` (const char*) - Default value to return if key isn't found
-- `out` (const char**) - Out argument where result is stored if found. Caller must free() this memory.
-
-**Returns**
-
-- `result` (bool) - True if property was found
-
-### HConfigFile
-*Type:* TYPEDEF
-Each game session has a single config file that holds all parameters from game.project and any overridden values.
-
-**Notes**
-
-- Properties can be overridden on command line or via the config file extension system. (See [ref:DM_DECLARE_CONFIGFILE_EXTENSION])
 
 <!-- engine-dlib-src-dmsdk-dlib-configfile_gen-hpp -->
 
@@ -2330,164 +1947,6 @@ If element is not in the list function doesn't affect linked list.
 - `list` (dmDoubleLinkedList::List*) - the list
 - `item` (dmDoubleLinkedList::ListNode*) - removed item
 
-<!-- engine-dlib-src-dmsdk-dlib-dstrings-h -->
-
-# DStrings {#apis:engine-dlib-src-dmsdk-dlib-dstrings-h}
-
-**Namespace:** `DStrings`
-**Language:** C++
-**Type:** Defold C++
-**File:** `dstrings.h`
-**Source:** `engine/dlib/src/dmsdk/dlib/dstrings.h`
-**Include:** `dmsdk/dlib/dstrings.h`
-
-SDK Defold String Utils API documentation
-
-## API
-
-### dmSnPrintf
-*Type:* FUNCTION
-Size-bounded string formating. Resulting string is guaranteed to be 0-terminated. Unlike snprintf, which
-always returns the untruncated string length, this function returns -1 if the string was truncated.
-
-**Parameters**
-
-- `buffer` (char*) - Buffer to write to
-- `count` (size_t) - Size of the buffer
-- `format` (const char*) - String format
-
-**Returns**
-
-- `Size` - of the resulting string (excl terminating 0) if it fits, -1 otherwise
-
-**Examples**
-
-```
-char path[64];
-dmSnPrintf(path, 64, PATH_FORMAT, filename);
-
-```
-
-### dmStrCaseCmp
-*Type:* FUNCTION
-Case-insensitive string comparison
-
-**Parameters**
-
-- `s1` (const char*) - First string to compare
-- `s2` (const char*) - Second string to compare
-
-**Returns**
-
-- `an` - integer greater than, equal to, or less than 0 after lexicographically comparison of s1 and s2
-
-**Examples**
-
-```
-dmStrCaseCmp("a", "b"); // 0
-dmStrCaseCmp("a", "a"); // 0
-
-```
-
-### dmStrError
-*Type:* FUNCTION
-Error code to string representation. Wrapper for thread-safe strerror_s/r variants.
-If the size of the buffer is too small, the message will be truncated to fit the buffer.
-If the buffer is null, or if size is zero, nothing will happen.
-
-**Parameters**
-
-- `dst` (char*) - Destination string that carries the error message
-- `size` (size_t) - Max size of destination string in bytes
-
-**Returns**
-
-- `a` - null-terminated error message
-
-**Examples**
-
-```
-char buf[128];
-dmStrError(buf, sizeof(buf), ENOENT); // buf => "No such file or directory"
-
-```
-
-### dmStrlCat
-*Type:* FUNCTION
-Size-bounded string concatenation. Same as OpenBSD 2.4 strlcat.
-Appends src to string dst of size siz (unlike strncat, siz is the full size of dst, not space left).
-At most siz-1 characters will be copied.  Always NUL terminates (unless siz == 0).
-Returns strlen(dst) + strlen(src); if retval >= siz, truncation occurred.
-
-**Parameters**
-
-- `dst` (char*) - Destination string
-- `src` (char*) - Source string
-- `size` (size_t) - Max size
-
-**Returns**
-
-- `Total` - length of the created string
-
-**Examples**
-
-```
-const char* src = "foo";
-char dst[3] = { 0 };
-dmStrlCat(dst, src, sizeof(dst)); // dst = "fo"
-
-```
-
-### dmStrlCpy
-*Type:* FUNCTION
-Size-bounded string copying. Same as OpenBSD 2.4 strlcpy.
-Copy src to string dst of size siz.  At most siz-1 characters will be copied.
-Always NUL terminates (unless siz == 0).Returns strlen(src); if retval >= siz, truncation occurred.
-
-**Parameters**
-
-- `dst` (char*) - Destination string
-- `src` (const char*) - Source string
-- `size` (size_t) - Max size
-
-**Returns**
-
-- `Total` - length of the created string
-
-**Examples**
-
-```
-const char* src = "foo";
-char dst[3];
-dmStrlCpy(dst, src, sizeof(dst)); // dst = "fo"
-
-```
-
-### dmStrTok
-*Type:* FUNCTION
-Tokenize strings. Equivalent to BSD strsep_r. Thread-save version of strtok.
-
-**Parameters**
-
-- `string` (char*) - Pointer to string. For the first call string is the string to tokenize. Subsequent should pass NULL.
-- `delim` (const char*) - Delimiter string
-- `lasts` (char**) - Internal state pointer
-
-**Returns**
-
-- `Each` - call to dmStrTok() returns a pointer to a null-terminated string containing the next token. This string does not include the delimiting byte. If no more tokens are found, dmStrTok() returns NULL
-
-**Examples**
-
-```
-char* string = strdup("a b c");
-char* s, *last;
-s = dmStrTok(string, " ", &last); // a
-s = dmStrTok(0, " ", &last); // b
-s = dmStrTok(0, " ", &last); // c
-
-```
-
 <!-- engine-dlib-src-dmsdk-dlib-file_descriptor-h -->
 
 # FileDescriptor {#apis:engine-dlib-src-dmsdk-dlib-file_descriptor-h}
@@ -2584,325 +2043,6 @@ Wait for event
 
 - `return` (int) - Non-negative value on success, 0 on timeout and
 -1 on error with errno set to indicate the error
-
-<!-- engine-dlib-src-dmsdk-dlib-hash-h -->
-
-# Hash {#apis:engine-dlib-src-dmsdk-dlib-hash-h}
-
-**Namespace:** `Hash`
-**Language:** C++
-**Type:** Defold C++
-**File:** `hash.h`
-**Source:** `engine/dlib/src/dmsdk/dlib/hash.h`
-**Include:** `dmsdk/dlib/hash.h`
-
-Hash functions.
-
-## API
-
-### DM_HASH_REVERSE_MEM
-*Type:* FUNCTION
-Allocate stack memory context for safely reversing hash values into strings
-
-**Parameters**
-
-- `name` (symbol) - The name of the dmAllocator struct
-- `size` (size_t) - The max size of the stack allocated context
-
-### dmhash_t
-*Type:* TYPEDEF
-```
-typedef uint64_t dmhash_t
-
-```
-
-### dmHashBuffer32
-*Type:* FUNCTION
-Calculate 32-bit hash value from buffer
-
-**Parameters**
-
-- `buffer` (const void*) - Buffer
-- `buffer_len` (uint32_t) - Length of buffer
-
-**Returns**
-
-- `hash` (uint32_t) - hash value
-
-### dmHashBuffer64
-*Type:* FUNCTION
-calculate 64-bit hash value from buffer
-
-**Parameters**
-
-- `buffer` (const void*) - Buffer
-- `buffer_len` (uint32_t) - Length of buffer
-
-**Returns**
-
-- `hash` (uint64_t) - hash value
-
-### dmHashClone32
-*Type:* FUNCTION
-Clone 32-bit incremental hash state
-
-**Parameters**
-
-- `hash_state` (HashState32*) - Hash state
-- `source_hash_state` (HashState32*) - Source hash state
-- `reverse_hash` (bool) - true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH. Ignored if source state reverse hashing is disabled.
-
-### dmHashClone64
-*Type:* FUNCTION
-Clone 64-bit incremental hash state
-
-**Parameters**
-
-- `hash_state` (HashState64*) - Hash state
-- `source_hash_state` (HashState64*) - Source hash state
-- `reverse_hash` (bool) - true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH. Ignored if source state reverse hashing is disabled.
-
-### dmHashFinal32
-*Type:* FUNCTION
-Finalize incremental hashing and release associated resources
-
-**Parameters**
-
-- `hash_state` (HashState32*) - Hash state
-
-**Returns**
-
-- `hash` (uint32_t) - the hash value
-
-### dmHashFinal64
-*Type:* FUNCTION
-Finalize incremental hashing and release associated resources
-
-**Parameters**
-
-- `hash_state` (HashState64*) - Hash state
-
-**Returns**
-
-- `hash` (uint64_t) - The hash value
-
-### dmHashInit32
-*Type:* FUNCTION
-Initialize hash-state for 32-bit incremental hashing
-
-**Parameters**
-
-- `hash_state` (HashState32*) - Hash state
-- `reverse_hash` (bool) - true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH
-
-### dmHashInit64
-*Type:* FUNCTION
-Initialize hash-state for 64-bit incremental hashing
-
-**Parameters**
-
-- `hash_state` (HashState64*) - Hash state
-- `reverse_hash` (bool) - true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH
-
-### dmHashRelease32
-*Type:* FUNCTION
-Release incremental hashing resources
-Used to release assocciated resources for intermediate incremental hash states.
-
-**Parameters**
-
-- `hash_state` (HashState32*) - Hash state
-
-### dmHashRelease64
-*Type:* FUNCTION
-Release incremental hashing resources
-Used to release assocciated resources for intermediate incremental hash states.
-
-**Parameters**
-
-- `hash_state` (HashState64*) - Hash state
-
-### dmHashReverseSafe32
-*Type:* FUNCTION
-Returns the original string used to produce a hash.
-Always returns a null terminated string. Returns "" if the original string wasn't found.
-
-**Notes**
-
-- Do not store this pointer
-
-**Parameters**
-
-- `hash` (uint32_t) - hash value
-
-**Returns**
-
-- `return` (const char*) - Original string value or "<unknown>" if it wasn't found.
-
-### dmHashReverseSafe32
-*Type:* FUNCTION
-Reverse hash lookup. Maps hash to original data. It is guaranteed that the returned
-buffer is null-terminated. If the buffer contains a valid c-string
-it can safely be used in printf and friends.
-
-**Notes**
-
-- Do not store this pointer
-
-**Parameters**
-
-- `hash` (uint32_t) - hash to lookup
-- `length` (uint32_t*) - original data length. Optional argument and NULL-pointer is accepted.
-
-**Returns**
-
-- `return` (const char*) - pointer to buffer. 0 if no reverse exists or if reverse lookup is disabled
-
-### dmHashReverseSafe32Alloc
-*Type:* FUNCTION
-Returns the original string used to produce a hash.
-
-**Notes**
-
-- This function is thread safe
-- The pointer is valid during the scope of the allocator
-
-**Parameters**
-
-- `allocator` (dmAllocator*) - The reverse hash allocator
-- `hash` (uint32_t) - hash value
-
-**Returns**
-
-- `return` (const char*) - Original string value or "<unknown:value>" if it wasn't found,
-                           or "<unknown>" if the allocator failed to allocate more memory.
-                           Always returns a null terminated string.
-
-**Examples**
-
-Get the string representaiton of a hash value
-```
-DM_HASH_REVERSE_MEM(hash_ctx, 128);
-const char* reverse = (const char*) dmHashReverseSafe32Alloc(&hash_ctx, hash);
-
-```
-
-### dmHashReverseSafe64
-*Type:* FUNCTION
-Returns the original string used to produce a hash.
-Always returns a null terminated string. Returns "" if the original string wasn't found.
-
-**Notes**
-
-- Do not store this pointer
-
-**Parameters**
-
-- `hash` (uint64_t) - hash value
-
-**Returns**
-
-- `return` (const char*) - Original string value or "<unknown>" if it wasn't found.
-
-### dmHashReverseSafe64
-*Type:* FUNCTION
-Reverse hash lookup. Maps hash to original data. It is guaranteed that the returned
-buffer is null-terminated. If the buffer contains a valid c-string
-it can safely be used in printf and friends.
-
-**Notes**
-
-- Do not store this pointer
-
-**Parameters**
-
-- `hash` (uint64_t) - hash to lookup
-- `length` (uint32_t*) - original data length. Optional argument and NULL-pointer is accepted.
-
-**Returns**
-
-- `return` (const char*) - pointer to buffer. 0 if no reverse exists or if reverse lookup is disabled
-
-### dmHashReverseSafe64Alloc
-*Type:* FUNCTION
-Returns the original string used to produce a hash.
-
-**Notes**
-
-- This function is thread safe
-- The pointer is valid during the scope of the allocator
-
-**Parameters**
-
-- `allocator` (dmAllocator*) - The reverse hash allocator
-- `hash` (uint64_t) - hash value
-
-**Returns**
-
-- `return` (const char*) - Original string value or "<unknown:value>" if it wasn't found,
-                           or "<unknown>" if the allocator failed to allocate more memory.
-                           Always returns a null terminated string.
-
-**Examples**
-
-Get the string representaiton of a hash value
-```
-DM_HASH_REVERSE_MEM(hash_ctx, 128);
-const char* reverse = dmHashReverseSafe64Alloc(&hash_ctx, hash);
-
-```
-
-### dmHashString32
-*Type:* FUNCTION
-Calculate 32-bit hash value from string
-
-**Parameters**
-
-- `string` (const char*) - Null terminated string
-
-**Returns**
-
-- `hash` (uint32_t) - hash value
-
-### dmHashString64
-*Type:* FUNCTION
-calculate 64-bit hash value from string
-
-**Parameters**
-
-- `string` (const char*) - Null terminated string
-
-**Returns**
-
-- `hash` (uint64_t) - hash value
-
-### dmHashUpdateBuffer32
-*Type:* FUNCTION
-Incremental hashing
-
-**Parameters**
-
-- `hash_state` (HashState32*) - Hash state
-- `buffer` (const void*) - Buffer
-- `buffer_len` (uint32_t) - Length of buffer
-
-### dmHashUpdateBuffer64
-*Type:* FUNCTION
-Incremental hashing
-
-**Parameters**
-
-- `hash_state` (HashState64*) - Hash state
-- `buffer` (const void*) - Buffer
-- `buffer_len` (uint32_t) - Length of buffer
-
-### HashState32
-*Type:* STRUCT
-Hash state used for 32-bit incremental hashing
-
-### HashState64
-*Type:* STRUCT
-Hash state used for 64-bit incremental hashing
 
 <!-- engine-dlib-src-dmsdk-dlib-hashtable-h -->
 
@@ -3969,7 +3109,7 @@ Unlock a HMutex.
 **Source:** `engine/dlib/src/dmsdk/dlib/object_pool.h`
 **Include:** `dmsdk/dlib/object_pool.h`
 
-SDK Object Pool API documentation
+Object Pool API documentation
 
 ## API
 
@@ -6027,7 +5167,7 @@ URI parsing result
 **Source:** `engine/dlib/src/dmsdk/dlib/utf8.h`
 **Include:** `dmsdk/dlib/utf8.h`
 
-SDK Utf8 API documentation
+Utf8 API documentation
 
 ## API
 
@@ -6997,462 +6137,6 @@ $ ./dmengine some/folder/game.projectc
 
 ```
 
-<!-- engine-extension-src-dmsdk-extension-extension-h -->
-
-# Extension {#apis:engine-extension-src-dmsdk-extension-extension-h}
-
-**Namespace:** `Extension`
-**Language:** C++
-**Type:** Defold C++
-**File:** `extension.h`
-**Source:** `engine/extension/src/dmsdk/extension/extension.h`
-**Include:** `dmsdk/extension/extension.h`
-
-Functions for creating and controlling engine native extension libraries.
-
-## API
-
-### DM_DECLARE_EXTENSION
-*Type:* MACRO
-Declare and register new extension to the engine.
-This macro is used to declare the extension callback functions used by the engine to communicate with the extension.
-
-**Parameters**
-
-- `symbol` (symbol) - external extension symbol description (no quotes).
-- `name` (const char*) - extension name. Human readable.
-- `app_init` (function(ExtensionAppParams* app_params)) - app-init function. May be null.
-<dl>
-<dt><code>app_params</code></dt>
-<dd><span class="type">ExtensionAppParams*</span> Pointer to an <code>AppParams</code> structure.</dd>
-</dl>
-- `app_final` (function(ExtensionAppParams* app_params)) - app-final function. May be null.
-<dl>
-<dt><code>app_params</code></dt>
-<dd><span class="type">ExtensionAppParams*</span> Pointer to an <code>AppParams</code> structure.</dd>
-</dl>
-- `init` (function(ExtensionParams* params)) - init function. May not be null.
-<dl>
-<dt><code>params</code></dt>
-<dd><span class="type">ExtensionParams*</span> Pointer to a <code>Params</code> structure</dd>
-</dl>
-- `update` (function(ExtensionParams* params)) - update function. May be null.
-<dl>
-<dt><code>params</code></dt>
-<dd><span class="type">ExtensionParams*</span> Pointer to a <code>Params</code> structure</dd>
-</dl>
-- `on_event` (function(ExtensionParams* params, const ExtensionEvent* event)) - event callback function. May be null.
-<dl>
-<dt><code>params</code></dt>
-<dd><span class="type">ExtensionParams*</span> Pointer to a <code>Params</code> structure</dd>
-<dt><code>event</code></dt>
-<dd><span class="type">ExtensionEvent*</span> const Pointer to an <code>Event</code> structure</dd>
-</dl>
-- `final` (function(ExtensionParams* params)) - function. May not be null.
-<dl>
-<dt><code>params</code></dt>
-<dd><span class="type">ExtensionParams*</span> Pointer to an <code>Params</code> structure.</dd>
-</dl>
-
-**Examples**
-
-Register a new extension:
-```
-DM_DECLARE_EXTENSION(MyExt, "MyExt", AppInitializeMyExt, AppFinalizeMyExt, InitializeMyExt, UpdateMyExt, OnEventMyExt, FinalizeMyExt);
-
-```
-
-### DM_PLATFORM_ANDROID
-*Type:* MACRO
-Set if the platform is Android
-
-### DM_PLATFORM_HTML5
-*Type:* MACRO
-Set if the platform is Html5
-
-### DM_PLATFORM_IOS
-*Type:* MACRO
-Set if the platform is iPhoneOS
-
-### DM_PLATFORM_LINUX
-*Type:* MACRO
-Set if the platform is Linux
-
-### DM_PLATFORM_OSX
-*Type:* MACRO
-Set if the platform is OSX
-
-### DM_PLATFORM_WINDOWS
-*Type:* MACRO
-Set if the platform is Windows  (on both x86 and x86_64)
-
-### ExtensionAppExitCode
-*Type:* ENUM
-Engine exit code.
-
-**Members**
-
-- `EXTENSION_APP_EXIT_CODE_NONE`
-- `EXTENSION_APP_EXIT_CODE_REBOOT`
-- `EXTENSION_APP_EXIT_CODE_EXIT`
-
-### ExtensionAppParams
-*Type:* STRUCT
-The extension app parameters
-
-**Members**
-
-- `m_ConfigFile` (HConfigFile) - Deprecated
-- `m_ExitStatus` (ExtensionAppExitCode) - App exit code
-
-### ExtensionAppParamsFinalize
-*Type:* FUNCTION
-Finalizes an extension app params struct (deallocates internal memory)
-
-**Parameters**
-
-- `app_params` (ExtensionAppParams*) - the params
-
-### ExtensionAppParamsGetAppExitCode
-*Type:* FUNCTION
-get the app exit code
-
-**Parameters**
-
-- `app_params` (dmExtension::AppParams*) - The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize
-
-**Returns**
-
-- `code` (ExtensionAppExitCode) - engine exit code
-
-### ExtensionAppParamsGetContext
-*Type:* FUNCTION
-Gets a context using a specified name hash
-
-**Parameters**
-
-- `params` (ExtensionAppParams) - the params
-- `name_hash` (dmhash_t) - the context name hash
-
-**Returns**
-
-- `context` (void*) - The context, if it exists
-
-### ExtensionAppParamsGetContextByName
-*Type:* FUNCTION
-Gets a context using a specified name
-
-**Parameters**
-
-- `params` (ExtensionAppParams) - the params
-- `name` (const char*) - the context name
-
-**Returns**
-
-- `context` (void*) - The context, if it exists
-
-### ExtensionAppParamsInitialize
-*Type:* FUNCTION
-Initializes an extension app params struct
-NOTE: this is an opaque struct, do not use it's members directly!
-
-**Parameters**
-
-- `app_params` (ExtensionAppParams*) - the params
-
-### ExtensionAppParamsSetContext
-*Type:* FUNCTION
-Sets a context using a specified name
-
-**Parameters**
-
-- `params` (ExtensionAppParams) - the params
-- `name` (const char*) - the context name
-- `context` (void*) - the context
-
-**Returns**
-
-- `result` (int) - 0 if successful
-
-### ExtensionCallbackType
-*Type:* ENUM
-Extra callback type for RegisterCallback function.
-
-**Members**
-
-- `EXTENSION_CALLBACK_PRE_RENDER`
-- `EXTENSION_CALLBACK_POST_RENDER`
-
-### ExtensionDescBufferSize
-*Type:* CONSTANT
-Used when registering new extensions
-
-### ExtensionEvent
-*Type:* STRUCT
-Extension event
-
-**Members**
-
-- `m_Event` (ExtensionEventID)
-
-### ExtensionEventID
-*Type:* ENUM
-Event id enumeration.
-EVENT_ID_ICONIFYAPP and EVENT_ID_DEICONIFYAPP only available on
-
-**Members**
-
-- `EXTENSION_EVENT_ID_ACTIVATEAPP`
-- `EXTENSION_EVENT_ID_DEACTIVATEAPP`
-- `EXTENSION_EVENT_ID_ICONIFYAPP`
-- `EXTENSION_EVENT_ID_DEICONIFYAPP`
-- `EXTENSION_EVENT_ID_ENGINE_INITIALIZED`
-- `EXTENSION_EVENT_ID_ENGINE_DELETE`
-
-### ExtensionParams
-*Type:* STRUCT
-The global parameters avalable when registering and unregistering an extension
-
-**Members**
-
-- `m_ConfigFile` (HConfigFile) - The game project settings (including overrides and plugins)
-- `m_ResourceFactory` (HResourceFactory) - The game resource factory / repository
-- `m_L` (lua_State*) - The Lua state.
-
-### ExtensionParamsFinalize
-*Type:* FUNCTION
-Finalizes an extension  params struct (deallocates internal memory)
-
-**Parameters**
-
-- `app_params` (ExtensionParams*) - the params
-
-### ExtensionParamsGetContext
-*Type:* FUNCTION
-Gets a context using a specified name hash
-
-**Parameters**
-
-- `params` (ExtensionParams) - the params
-- `name_hash` (dmhash_t) - the context name hash
-
-**Returns**
-
-- `context` (void*) - The context, if it exists
-
-### ExtensionParamsGetContextByName
-*Type:* FUNCTION
-Gets a context using a specified name
-
-**Parameters**
-
-- `params` (ExtensionParams) - the params
-- `name` (const char*) - the context name
-
-**Returns**
-
-- `context` (void*) - The context, if it exists
-
-### ExtensionParamsInitialize
-*Type:* FUNCTION
-Initializes an extension params struct
-NOTE: this is an opaque struct, do not use it's members directly!
-
-**Parameters**
-
-- `app_params` (ExtensionParams*) - the params
-
-### ExtensionParamsSetContext
-*Type:* FUNCTION
-Sets a context using a specified name
-
-**Parameters**
-
-- `params` (ExtensionAppParams) - the params
-- `name` (const char*) - the context name
-- `context` (void*) - the context
-
-**Returns**
-
-- `result` (int) - 0 if successful
-
-### ExtensionRegister
-*Type:* FUNCTION
-Extension declaration helper. Internal function. Use DM_DECLARE_EXTENSION
-
-**Parameters**
-
-- `desc` (void*) - A persistent buffer of at least 128 bytes.
-- `desc_size` (const char*) - size of buffer holding desc. in bytes
-- `name` (const char*) - extension name. human readble. max 16 characters long.
-- `app_initialize` (FExtensionAppInitialize) - app-init function. May be null
-- `app_finalize` (FExtensionAppFinalize) - app-final function. May be null
-- `initialize` (FExtensionInitialize) - init function. May not be 0
-- `finalize` (FExtensionFinalize) - finalize function. May not be 0
-- `update` (FExtensionUpdate) - update function. May be null
-- `on_event` (FExtensionOnEvent) - event callback function. May be null
-
-### ExtensionRegisteriOSUIApplicationDelegate
-*Type:* FUNCTION
-Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)
-
-**Notes**
-
-- Note that the delegate needs to be registered before the UIApplicationMain in order to
-handle any earlier callbacks.
-
-This function is only available on iOS. [icon:ios]
-
-**Parameters**
-
-- `delegate` (void*) - An id<UIApplicationDelegate>, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc
-
-**Examples**
-
-```
-// myextension_ios.mm
-
-id g_MyApplicationDelegate;
-
-\@interface MyApplicationDelegate : NSObject
-
-- (void) applicationDidBecomeActive:(UIApplication *) application;
-
-\@end
-
-\@implementation MyApplicationDelegate
-
-- (void) applicationDidBecomeActive:(UIApplication *) application {
-    dmLogWarning("applicationDidBecomeActive - MyAppDelegate");
-}
-
-\@end
-
-struct MyAppDelegateRegister
-{
-    MyApplicationDelegate* m_Delegate;
-    MyAppDelegateRegister() {
-        m_Delegate = [[FacebookAppDelegate alloc] init];
-        Extension::RegisteriOSUIApplicationDelegate(m_Delegate);
-    }
-    ~MyAppDelegateRegister() {
-        Extension::UnregisteriOSUIApplicationDelegate(m_Delegate);
-        [m_Delegate release];
-    }
-};
-
-MyAppDelegateRegister g_FacebookDelegateRegister;
-
-```
-
-### ExtensionResult
-*Type:* ENUM
-Result enumeration.
-
-**Members**
-
-- `EXTENSION_RESULT_OK`
-- `EXTENSION_RESULT_INIT_ERROR`
-
-### ExtensionUnregisteriOSUIApplicationDelegate
-*Type:* FUNCTION
-Deregister a previously registered iOS application delegate
-This function is only available on iOS.
-
-**Parameters**
-
-- `delegate` (void*) - an id<UIApplicationDelegate>
-
-### FExtensionAppFinalize
-*Type:* TYPEDEF
-Callback when the app is being finalized
-
-**Parameters**
-
-- `params` (ExtensionAppParams)
-
-**Returns**
-
-- `result` (ExtensionResult) - EXTENSION_RESULT_OK if all went ok
-
-### FExtensionAppInitialize
-*Type:* TYPEDEF
-Callback when the app is being initialized. Called before FExtensionInitialize
-
-**Notes**
-
-- There is no guarantuee of initialization order. If an extension requires another extension to be initialized,
-      that should be handled in [ref:FExtensionInitialize].
-
-**Parameters**
-
-- `params` (ExtensionAppParams)
-
-**Returns**
-
-- `result` (ExtensionResult) - EXTENSION_RESULT_OK if all went ok
-
-### FExtensionCallback
-*Type:* TYPEDEF
-Callback typedef for functions passed to RegisterCallback().
-
-**Parameters**
-
-- `params` (ExtensionParams)
-
-**Returns**
-
-- `return` (ExtensionResult)
-
-### FExtensionFinalize
-*Type:* TYPEDEF
-Calls for the finalization of an extension
-
-**Notes**
-
-- All extensions will be called with `FExtensionFinalize` before moving on to the next step, the [ref:FExtensionAppFinalize]
-
-**Parameters**
-
-- `params` (ExtensionParams)
-
-**Returns**
-
-- `result` (ExtensionResult) - EXTENSION_RESULT_OK if all went ok
-
-### FExtensionInitialize
-*Type:* TYPEDEF
-Callback after all extensions have been called with FExtensionAppInitialize
-
-**Parameters**
-
-- `params` (ExtensionParams)
-
-**Returns**
-
-- `result` (ExtensionResult) - EXTENSION_RESULT_OK if all went ok
-
-### FExtensionOnEvent
-*Type:* TYPEDEF
-Receives an event from the engine
-
-**Parameters**
-
-- `params` (ExtensionParams)
-- `event` (ExtensionEvent) - The current event
-
-### FExtensionUpdate
-*Type:* TYPEDEF
-Updates an extension. Called for each game frame.
-
-**Parameters**
-
-- `params` (ExtensionParams)
-
-**Returns**
-
-- `result` (ExtensionResult) - EXTENSION_RESULT_OK if all went ok
-
 <!-- engine-extension-src-dmsdk-extension-extension_gen-hpp -->
 
 # Extension {#apis:engine-extension-src-dmsdk-extension-extension_gen-hpp}
@@ -8069,554 +6753,6 @@ This function is only available on iOS.
 
 - `delegate` (void*) - an id<UIApplicationDelegate>
 
-<!-- engine-font-src-dmsdk-font-font-h -->
-
-# Font {#apis:engine-font-src-dmsdk-font-font-h}
-
-**Namespace:** `Font`
-**Language:** C++
-**Type:** Defold C++
-**File:** `font.h`
-**Source:** `engine/font/src/dmsdk/font/font.h`
-**Include:** `dmsdk/font/font.h`
-
-Font API for loading a font (truetype), getting glyph metrics and bitmap/sdf data
-
-## API
-
-### FontDestroy
-*Type:* FUNCTION
-Destroys a loaded font
-
-**Parameters**
-
-- `font` (HFont) - The font to deallocate
-
-### FontFreeGlyph
-*Type:* FUNCTION
-Free the bitmap of the glyph
-
-**Parameters**
-
-- `font` (HFont) - The font
-- `glyph` (dmFont::Glyph*) - The glyph
-
-**Returns**
-
-- `result` (dmFont::FontResult) - The result
-
-### FontGetAscent
-*Type:* FUNCTION
-Get the max ascent of the font
-
-**Parameters**
-
-- `font` (HFont) - The font
-- `scale` (float) - The scale factor
-
-**Returns**
-
-- `ascent` (float) - The max ascent
-
-### FontGetDescent
-*Type:* FUNCTION
-Get the max descent of the font
-
-**Parameters**
-
-- `font` (HFont) - The font
-- `scale` (float) - The scale factor
-
-**Returns**
-
-- `descent` (float) - The max descent
-
-### FontGetGlyph
-*Type:* FUNCTION
-Get the metrics of a glyph
-
-**Parameters**
-
-- `font` (HFont) - The font
-- `codepoint` (uint32_t) - The unicode code point
-- `options` - (in) <span class="type"> FontGlyphOptions*</span> The glyph options
-- `glyph` - (out) <span class="type"> FontGlyph*</span> The glyph
-
-**Returns**
-
-- `result` (FontFontResult) - If successful, user must call FreeGlyph() on the result to clear any image data.
-
-### FontGetGlyphByIndex
-*Type:* FUNCTION
-Get the metrics of a glyph
-
-**Parameters**
-
-- `font` (HFont) - The font
-- `glyph_index` (uint32_t) - The unicode code point
-- `options` - (in) <span class="type"> FontGlyphOptions*</span> The glyph options
-- `glyph` - (out) <span class="type"> FontGlyph*</span> The glyph
-
-**Returns**
-
-- `result` (FontFontResult) - If successful, user must call FreeGlyph() on the result to clear any image data.
-
-### FontGetGlyphIndex
-*Type:* FUNCTION
-Get glyph index of a codepoint
-
-**Parameters**
-
-- `font` (HFont) - The font
-- `codepoint` (uint32_t) - The unicode code point
-
-**Returns**
-
-- `glyph_index` (uint32_t) - 0 if no index was found
-
-### FontGetLineGap
-*Type:* FUNCTION
-Get the line gap of the font
-
-**Parameters**
-
-- `font` (HFont) - The font
-- `scale` (float) - The scale factor
-
-**Returns**
-
-- `line_gap` (float) - The line gap
-
-### FontGetPath
-*Type:* FUNCTION
-Gets the path of the loaded font
-
-**Parameters**
-
-- `font` (HFont) - The font
-
-**Returns**
-
-- `path` (const char*) - The path
-
-### FontGetPathHash
-*Type:* FUNCTION
-Gets the path hash of the loaded font
-
-**Notes**
-
-- We use a 32bit hash to make it easier to pair with a glyph index into a 64-bit key
-
-**Parameters**
-
-- `font` (HFont) - The font
-
-**Returns**
-
-- `path` (uint32_t) - The path
-
-### FontGetResourceSize
-*Type:* FUNCTION
-Get the bytes used by this resource
-
-**Parameters**
-
-- `font` (HFont) - The font
-
-**Returns**
-
-- `size` (uint32_t) - The resource size
-
-### FontGetScaleFromSize
-*Type:* FUNCTION
-Get the scale factor from a given pixel size.
-Used to convert from points to pixel size
-
-**Parameters**
-
-- `font` (HFont) - The font
-- `size` (float) - The font size (in pixel height)
-
-**Returns**
-
-- `scale` (float) - The scale factor
-
-### FontGetType
-*Type:* FUNCTION
-Gets the specific implementation of the loaded font
-
-**Parameters**
-
-- `font` (HFont) - The font
-
-**Returns**
-
-- `type` (dmFont::FontType) - The type
-
-### FontGlyph
-*Type:* STRUCT
-Represents a glyph.
-If there's an associated image, it is of size width * height * channels.
-
-**Notes**
-
-- The baseline of a glyph bitmap is calculated: `base = glyph.bitmap.height - glyph.ascent`
-
-**Members**
-
-- `m_Bitmap` (FontGlyphBitmap) - The bitmap data of the glyph.
-- `m_Codepoint` (uint32_t) - The unicode code point
-- `m_Width` (float) - The glyph bounding width
-- `m_Height` (float) - The glyph bounding height
-- `m_Advance` (float) - The advance step of the glyph (in pixels)
-- `m_LeftBearing` (float) - The left bearing of the glyph (in pixels)
-- `m_Ascent` (float) - The ascent of the glyph. (in pixels)
-- `m_Descent` (float) - The descent of the glyph. Positive! (in pixels)
-
-### FontGlyphBitmap
-*Type:* STRUCT
-Holds the bitmap data of a glyph.
-If there's an associated image, it is of size width * height * channels.
-
-**Members**
-
-- `m_Width` (uint16_t) - The glyph image width
-- `m_Height` (uint16_t) - The glyph image height
-- `m_Channels` (uint8_t) - The number of color channels
-- `m_Flags` (uint8_t) - Flags describing the data. See #FontGlyphBitmapFlags.
-- `m_Data` (uint8_t*) - The bitmap data, or null if no data available.
-- `m_DataSize` (uint32_t) - The bitmap data size (e.g. if the data is compressed)
-
-### FontGlyphBitmapFlags
-*Type:* ENUM
-FontGlyphBitmapFlags
-
-**Members**
-
-- `GLYPH_BM_FLAG_COMPRESSION_NONE` - = 0
-- `GLYPH_BM_FLAG_COMPRESSION_DEFLATE` - = 1
-
-### FontGlyphOptions
-*Type:* STRUCT
-Holds the bitmap data of a glyph.
-If there's an associated image, it is of size width * height * channels.
-
-**Members**
-
-- `m_Scale` (float) - The font scale
-- `m_GenerateImage` (bool) - If true, generates an SDF image, and fills out the glyph.m_Bitmap structure.
-- `m_StbttSDFPadding` (int) - The sdk padding value (valid for FONT_TYPE_STBTTF fonts)
-- `m_StbttSDFOnEdgeValue` (int) - Where the edge value is located (valid for FONT_TYPE_STBTTF fonts)
-
-### FontLoadFromMemory
-*Type:* FUNCTION
-Loads a font from memory
-
-**Parameters**
-
-- `name` (const char*) - The name of the resource. For easier debugging
-- `data` (void*) - The raw data
-- `data_size` (uint32_t) - The length of the data (in bytes)
-- `allocate` (bool) - If true, the font may allocate a copy of the data (if needed). If false, the caller will own the memory.
-
-**Returns**
-
-- `font` (HFont) - The loaded font, or null if it failed to load.
-
-### FontLoadFromPath
-*Type:* FUNCTION
-Loads a font using a path
-
-**Parameters**
-
-- `path` (const char*) - The path to the resource
-
-**Returns**
-
-- `font` (HFont) - The loaded font, or null if it failed to load.
-
-### FontResult
-*Type:* ENUM
-FontResult
-
-**Members**
-
-- `FONT_RESULT_OK`
-- `FONT_RESULT_NOT_SUPPORTED`
-- `FONT_RESULT_ERROR`
-
-### FontType
-*Type:* ENUM
-FontType
-
-**Members**
-
-- `FONT_TYPE_STBTTF`
-- `FONT_TYPE_STBOTF`
-- `FONT_TYPE_UNKNOWN` - = 0xFFFFFFFF
-
-<!-- engine-font-src-dmsdk-font-fontcollection-h -->
-
-# FontCollection {#apis:engine-font-src-dmsdk-font-fontcollection-h}
-
-**Namespace:** `FontCollection`
-**Language:** C++
-**Type:** Defold C++
-**File:** `fontcollection.h`
-**Source:** `engine/font/src/dmsdk/font/fontcollection.h`
-**Include:** `dmsdk/font/fontcollection.h`
-
-Font API for grouping multiple fonts into a collection
-
-## API
-
-### FontCollectionAddFont
-*Type:* FUNCTION
-add a font to the font collection
-
-**Notes**
-
-- No ownership transfer occurrs. HFont must be alive during the lifetime of the font collection
-
-**Parameters**
-
-- `coll` (HFontCollection) - the font collection
-- `font` (HFont) - the font
-
-**Returns**
-
-- `result` (FontResult) - the result. FONT_RESULT_OK if successful
-
-### FontCollectionCreate
-*Type:* FUNCTION
-Create a font collection
-
-**Returns**
-
-- `coll` (HFontCollection) - the font collection
-
-### FontCollectionDestroy
-*Type:* FUNCTION
-destroy a font collection
-
-**Parameters**
-
-- `coll` (HFontCollection) - the font collection
-
-### FontCollectionGetFont
-*Type:* FUNCTION
-return the font associated with the given index
-
-**Parameters**
-
-- `coll` (HFontCollection) - the font collection
-
-**Returns**
-
-- `font` (HFont) - the font at the given index
-
-### FontCollectionGetFontCount
-*Type:* FUNCTION
-return number of fonts in the collection
-
-**Parameters**
-
-- `coll` (HFontCollection) - the font collection
-
-**Returns**
-
-- `count` (uint32_t) - the number of fonts
-
-### FontCollectionRemoveFont
-*Type:* FUNCTION
-remove a font from the font collection
-
-**Parameters**
-
-- `coll` (HFontCollection) - the font collection
-- `font` (HFont) - the font
-
-**Returns**
-
-- `result` (FontResult) - the result. FONT_RESULT_OK if successful
-
-### HFontCollection
-*Type:* TYPEDEF
-Handle that holds a collection of fonts to use during text shaping
-
-<!-- engine-font-src-dmsdk-font-text_layout-h -->
-
-# TextLayout {#apis:engine-font-src-dmsdk-font-text_layout-h}
-
-**Namespace:** `TextLayout`
-**Language:** C++
-**Type:** Defold C++
-**File:** `text_layout.h`
-**Source:** `engine/font/src/dmsdk/font/text_layout.h`
-**Include:** `dmsdk/font/text_layout.h`
-
-API for laying out complex text into format ready for display
-
-## API
-
-### HTextLayout
-*Type:* TYPEDEF
-A handle representing a text layout
-
-### TextDirection
-*Type:* ENUM
-An enum representing text layout directions
-
-**Members**
-
-- `TEXT_DIRECTION_LTR` -   Left-to-right text direction
-- `TEXT_DIRECTION_RTL` -   Right-to-left text direction
-
-### TextGlyph
-*Type:* STRUCT
-Glyph representing the final position within a layout
-
-**Members**
-
-- `m_Font` (HFont) - The font used for this glyph
-- `m_X` (float) - the final x position, relative the top-left corner of the layout
-- `m_Y` (float) - the final y position, relative the top-left corner of the layout
-- `m_Width` (float) - the width of the glyph
-- `m_Height` (float) - the height of the glyph
-- `m_Codepoint` (uint32_t) - original copdepoint (if available)
-- `m_GlyphIndex` (uint16_t) - the glyph index in the font
-- `m_Cluster` (uint16_t) - the index in the original text, that this glyph corresponds to
-
-### TextLayoutCreate
-*Type:* FUNCTION
-Create a text layout using a font collection
-if successful, the caller must call TextLayoutFree() on the layout
-
-**Parameters**
-
-- `collection` (HFontCollection) - the font collection
-- `codepoints` (uint32_t*) - an array of codepoints
-- `num_codepoints` (uint32_t) - number of codepoints in the array
-- `settings` (TextLayoutSettings*) - the settings used for rendering
-- `layout` (HTextLayout*) - (out) the output text layout
-
-**Returns**
-
-- `result` (TextResult) - the result. TEXT_RESULT_OK if successful
-
-### TextLayoutFree
-*Type:* FUNCTION
-Frees a previously created layout
-
-**Parameters**
-
-- `layout` (HTextLayout) - the text layout
-
-### TextLayoutGetBounds
-*Type:* FUNCTION
-Get the lines in the layout
-
-**Parameters**
-
-- `layout` (HTextLayout) - the text layout
-
-**Returns**
-
-- `width` (float*) - the total width of the layout (out)
-- `height` (float*) - the total height of the layout (out)
-
-### TextLayoutGetGlyphCount
-*Type:* FUNCTION
-Get the glyph count in the layout
-
-**Parameters**
-
-- `layout` (HTextLayout) - the text layout
-
-**Returns**
-
-- `count` (uint32_t) - the number of glyphs in the layout
-
-### TextLayoutGetGlyphs
-*Type:* FUNCTION
-Get the glyphs in the layout
-
-**Parameters**
-
-- `layout` (HTextLayout) - the text layout
-
-**Returns**
-
-- `glyphs` (TextGlyph*) - the array of glyphs in the layout
-
-### TextLayoutGetLineCount
-*Type:* FUNCTION
-Get the line count in the layout
-
-**Parameters**
-
-- `layout` (HTextLayout) - the text layout
-
-**Returns**
-
-- `count` (uint32_t) - the number of lines in the layout
-
-### TextLayoutGetLines
-*Type:* FUNCTION
-Get the lines in the layout
-
-**Parameters**
-
-- `layout` (HTextLayout) - the text layout
-
-**Returns**
-
-- `lines` (TextLine*) - the array of lines in the layout
-
-### TextLayoutSettings
-*Type:* STRUCT
-Describes how to do a text layout
-
-**Members**
-
-- `m_Size` (float) - The desired size of the font (in pixels)
-- `m_Width` (float) - Max layout width. Used only when m_LineBreak is non-zero
-- `m_Leading` (float) - The extra space between each line. Set 1.0f as default.
-- `m_Tracking` (float) - The extra tracking between glyphs. Set 0 as default.
-- `m_Padding` (uint32_t) - Legacy: Padding for monospace, glyphbank fonts
-- `m_LineBreak` (uint8_t:1) - Allow line breaks
-- `m_Monospace` (uint8_t:1) - Legacy: Is the font a monospace font. Current: should be set on the font in the font collection!
-
-### TextLayoutType
-*Type:* ENUM
-An enum representing text layout features
-Each font supports a layout type
-The selected layout type it the minimum value of layout types
-
-**Members**
-
-- `TEXT_LAYOUT_TYPE_LEGACY` - Legacy text shaping api
-- `TEXT_LAYOUT_TYPE_FULL` -   Full text shaping api
-
-### TextLine
-*Type:* STRUCT
-Represents a line of glyphs
-
-**Members**
-
-- `m_Width` (float) - Width of the line
-- `m_Index` (uint16_t) - Index into the list of glyphs
-- `m_Length` (uint16_t) - Number of glyphs to render
-
-### TextResult
-*Type:* ENUM
-An enum representing text layout results
-
-**Members**
-
-- `TEXT_RESULT_OK`
-- `TEXT_RESULT_ERROR`
-
 <!-- engine-gameobject-src-dmsdk-gameobject-component-h -->
 
 # Component {#apis:engine-gameobject-src-dmsdk-gameobject-component-h}
@@ -8800,7 +6936,7 @@ Parameters to ComponentGetProperty callback.
 - `m_Instance` (HInstance) - Game object instance
 - `m_PropertyId` (dmhash_t) - Id of the property
 - `m_UserData` (uintptr_t*) - User data storage pointer
-- `m_Options` (PropertyOptions) - Options for getting the property
+- `m_Options` (HPropertyOptions) - Options for getting the property
 
 ### ComponentInit
 *Type:* TYPEDEF
@@ -8978,7 +7114,7 @@ Parameters to ComponentSetProperty callback.
 - `m_PropertyId` (dmhash_t) - Id of the property
 - `m_UserData` (uintptr_t*) - User data storage pointer
 - `m_Value` (PropertyVar) - New value of the property
-- `m_Options` (PropertyOptions) - Options for setting the property
+- `m_Options` (HPropertyOptions) - Options for setting the property
 
 ### ComponentsPostUpdate
 *Type:* TYPEDEF
@@ -9564,6 +7700,166 @@ Get gameobject instance position
 
 - `return` (dmVMath::Point3) - Position
 
+### GetPropertyAsBool
+*Type:* FUNCTION
+Retrieve a boolean property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (bool*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsFloat
+*Type:* FUNCTION
+Retrieve a float property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (float*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsHash
+*Type:* FUNCTION
+Retrieve a hash property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (dmhash_t*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsMatrix
+*Type:* FUNCTION
+Retrieve a matrix4 property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (dmGameObject::Matrix4*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsQuat
+*Type:* FUNCTION
+Retrieve a quaternion property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (dmVMath::Quat*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsURL
+*Type:* FUNCTION
+Retrieve a url property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (dmMessage::URL*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsVector3
+*Type:* FUNCTION
+Retrieve a vector3 property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (dmVMath::Vector3*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsVector4
+*Type:* FUNCTION
+Retrieve a vector4 property from a component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (dmVMath::Vector4*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyOptionsCount
+*Type:* FUNCTION
+Get the property count from a PropertyOptions container
+
+**Parameters**
+
+- `options` (HPropertyOptions) - Options handle
+
+**Returns**
+
+- `count` (uint32_t) - The number of property options
+
+### GetPropertyOptionsIndex
+*Type:* FUNCTION
+Get the index value from a property option at a specific index
+
+**Parameters**
+
+- `options` (HPropertyOptions) - Options handle
+- `options_index` (int32_t) - The options index into the property options container
+- `result` (int32_t*) - If the option at the index is valid, store the result. Pointer is untouched otherwise
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the property option at the index is valid
+
+### GetPropertyOptionsKey
+*Type:* FUNCTION
+Get the key value from a property option at a specific index
+
+**Parameters**
+
+- `options` (HPropertyOptions) - Options handle
+- `options_index` (int32_t) - The options index into the property options container
+- `result` (dmhash_t*) - If the option at the index is valid, store the result. Pointer is untouched otherwise
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the property option at the index is valid
+
 ### GetRotation
 *Type:* FUNCTION
 Get gameobject instance rotation
@@ -9713,6 +8009,10 @@ Gameobject properties handle
 *Type:* TYPEDEF
 Handle to a list of properties (gameobject_props.h)
 
+### HPropertyOptions
+*Type:* TYPEDEF
+Handle to a list of property options
+
 ### HPrototype
 *Type:* TYPEDEF
 Gameobject prototype handle
@@ -9802,16 +8102,6 @@ m_Variant always reflects the value.
 - `m_ReadOnly` (uint16_t) - Determines whether we are permitted to write to this property.
 - `m_ValueType` (uint16_t) - Indicates type of the property (of type PropertyValueType).
 - `m_ArrayLength` (uint16_t) - Number of array entries, if the property is an array and zero otherwise. Max supported length is 2^14 (16384 elements)
-
-### PropertyOptions
-*Type:* STRUCT
-Parameters variant that holds key or index for a propertys data structure.
-
-**Members**
-
-- `m_Index` (int32_t) - The index of the property to set, only applicable if property is array.
-- `m_Key` (dmhash_t) - The key of the property to set, only applicable if property is hashtable.
-- `m_HasKey` (uint8_t) - A flag if structure contain m_Key value (it can't contain both)
 
 ### PropertyResult
 *Type:* ENUM
@@ -10012,6 +8302,126 @@ Set gameobject instance position
 
 - `instance` (dmGameObject::HInstance) - Gameobject instance
 - `position` (dmVMath::Point3) - New Position
+
+### SetPropertyFromBool
+*Type:* FUNCTION
+Sets the value of a boolean property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (bool) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromHash
+*Type:* FUNCTION
+Sets the value of a hash property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (dmhash_t) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromHash
+*Type:* FUNCTION
+Sets the value of a float property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (float) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromMatrix4
+*Type:* FUNCTION
+Sets the value of a matrix4 property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (dmVMath::Matrix4) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromQuat
+*Type:* FUNCTION
+Sets the value of a quaternion property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (dmVMath::Quat) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromURL
+*Type:* FUNCTION
+Sets the value of a URL property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (dmMessage::URL) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromVector3
+*Type:* FUNCTION
+Sets the value of a vector3 property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (dmVMath::vector3) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromVector4
+*Type:* FUNCTION
+Sets the value of a vector4 property on a component.
+
+**Parameters**
+
+- `instance` - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (dmVMath::Vector4) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
 
 ### SetRotation
 *Type:* FUNCTION
@@ -10385,7 +8795,7 @@ Add a property of type float4 to the container
 **Source:** `engine/gameobject/src/dmsdk/gameobject/script.h`
 **Include:** `dmsdk/gameobject/script.h`
 
-SDK GameObject script API documentation
+GameObject script API documentation
 
 ## API
 
@@ -10505,6 +8915,51 @@ Spawns a new gameobject instance in a collection using a factory component.
 **Returns**
 
 - `result` (dmGameObject::Result) - Result of the operation
+
+<!-- engine-gamesys-src-dmsdk-gamesys-components-comp_model-h -->
+
+# Model {#apis:engine-gamesys-src-dmsdk-gamesys-components-comp_model-h}
+
+**Namespace:** `dmGameSystem`
+**Language:** C++
+**Type:** Defold C++
+**File:** `comp_model.h`
+**Source:** `engine/gamesys/src/dmsdk/gamesys/components/comp_model.h`
+**Include:** `dmsdk/gamesys/components/comp_model.h`
+
+API for interacting with model components.
+
+## API
+
+### CompModelPlayAnimation
+*Type:* FUNCTION
+Play a model animation.
+
+**Parameters**
+
+- `world` (HModelWorld) - Model world.
+- `component` (HModelComponent) - Model component.
+- `anim_id` (dmhash_t) - Animation to play.
+- `playback` (dmRig::RigPlayback) - Playback mode.
+- `blend_duration` (float) - Duration of a linear blend between the current and new animation.
+- `offset` (float) - The normalized initial value of the animation cursor when the animation starts playing.
+- `playback_rate` (float) - The rate with which the animation will be played. Must be positive.
+- `callback` (FModelAnimationCallback) - Optional function callback to send play events to.
+- `callback_ctx` (void*) - Optional function callback context (only when callback is set)
+
+**Returns**
+
+- `result` (dmRig::Result) - Result of the operation.
+
+### FModelAnimationCallback
+*Type:* FUNCTION
+Model animation callback function.
+
+**Parameters**
+
+- `user_ctx` (void*) - User context
+- `event_type` (dmRig::RigEventType) - Animation event type
+- `event_data` (void*) - Animation event data
 
 <!-- engine-gamesys-src-dmsdk-gamesys-gui-h -->
 
@@ -13915,786 +12370,6 @@ Visibility status
 - `VISIBILITY_NONE`
 - `VISIBILITY_FULL`
 
-<!-- engine-resource-src-dmsdk-resource-resource-h -->
-
-# Resource {#apis:engine-resource-src-dmsdk-resource-resource-h}
-
-**Namespace:** `Resource`
-**Language:** C++
-**Type:** Defold C++
-**File:** `resource.h`
-**Source:** `engine/resource/src/dmsdk/resource/resource.h`
-**Include:** `dmsdk/resource/resource.h`
-
-Functions for managing resource types.
-
-## API
-
-### DM_DECLARE_RESOURCE_TYPE
-*Type:* MACRO
-Declare and register new resource type to the engine.
-This macro is used to declare the resource type callback functions used by the engine to communicate with the extension.
-
-**Parameters**
-
-- `symbol` (symbol) - external extension symbol description (no quotes).
-- `suffix` (const char*) - The file resource suffix, without a ".".
-- `register_fn` (function(dmResource::ResourceTypeRegisterContext& ctx)) - type register function
-<dl>
-<dt><code>ctx</code></dt>
-<dd><span class="type">dmResource::ResourceTypeRegisterContext&amp;</span> Reference to an <code>ResourceTypeRegisterContext</code> structure.</dd>
-</dl>
-- `deregister_fn` (function(dmResource::ResourceTypeRegisterContext& ctx)) - type deregister function. May be null.
-<dl>
-<dt><code>ctx</code></dt>
-<dd><span class="type">dmResource::ResourceTypeRegisterContext&amp;</span> Reference to an <code>ResourceTypeRegisterContext</code> structure.</dd>
-</dl>
-
-**Examples**
-
-Register a new type:
-```
-#include
-#include
-
-static ResourceResult MyResourceTypeScriptCreate(const ResourceCreateParams* params) {}
-static ResourceResult MyResourceTypeScriptDestroy(const ResourceDestroyParams* params) {}
-static ResourceResult MyResourceTypeScriptRecreate(const ResourceRereateParams* params) {}
-
-struct MyContext
-{
-    // ...
-};
-
-static ResourceResult RegisterResourceTypeBlob(HResourceTypeContext ctx, HResourceType type)
-{
-    // The engine.cpp creates the contexts for our built in types.
-    // Here we register a custom type
-    MyContext* context = new MyContext;
-
-    ResourceTypeSetContext(type, (void*)context);
-    ResourceTypeSetCreateFn(type, MyResourceTypeScriptCreate);
-    ResourceTypeSetDestroyFn(type, MyResourceTypeScriptDestroy);
-    ResourceTypeSetRecreateFn(type, MyResourceTypeScriptRecreate);
-}
-
-static ResourceResult DeregisterResourceTypeBlob(HResourceTypeContext ctx, HResourceType type)
-{
-    MyContext* context = (MyContext*)ResourceTypeGetContext(type);
-    delete context;
-}
-
-DM_DECLARE_RESOURCE_TYPE(ResourceTypeBlob, "blobc", RegisterResourceTypeBlob, DeregisterResourceTypeBlob);
-
-```
-
-### FResourceCreate
-*Type:* TYPEDEF
-Resource create function
-
-**Parameters**
-
-- `param` (const dmResource::ResourceCreateParams*) - Resource parameters
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### FResourceDecrypt
-*Type:* TYPEDEF
-Encrypts a resource in-place
-
-**Parameters**
-
-- `buffer` (void*) - The input/output buffer
-- `buffer_len` (uint32_t) - The size of the buffer (in bytes)
-
-**Returns**
-
-- `RESULT_OK` - on success
-
-### FResourceDestroy
-*Type:* TYPEDEF
-Resource destroy function
-
-**Parameters**
-
-- `param` (const dmResource::ResourceDestroyParams*) - Resource parameters
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### FResourcePostCreate
-*Type:* TYPEDEF
-Resource postcreate function
-
-**Notes**
-
-- returning RESOURCE_CREATE_RESULT_PENDING will result in a repeated callback the following update.
-
-**Parameters**
-
-- `param` (const dmResource::ResourcePostCreateParams*) - Resource parameters
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_CREATE_RESULT_OK on success or RESOURCE_CREATE_RESULT_PENDING when pending
-
-### FResourcePreload
-*Type:* TYPEDEF
-Resource preloading function. This may be called from a separate loading thread
-but will not keep any mutexes held while executing the call. During this call
-PreloadHint can be called with the supplied hint_info handle.
-If RESULT_OK is returned, the resource Create function is guaranteed to be called
-with the preload_data value supplied.
-
-**Parameters**
-
-- `param` (const dmResource::ResourcePreloadParams*) - Resource parameters
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### FResourceRecreate
-*Type:* TYPEDEF
-Resource recreate function. Recreate resource in-place.
-
-**Notes**
-
-- Beware that any "in flight" resource pointers to the actual resource must remain valid after this call.
-
-**Parameters**
-
-- `param` (const dmResource::ResourceRecreateParams*) - Resource parameters
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### FResourceReloadedCallback
-*Type:* TYPEDEF
-Function called when a resource has been reloaded.
-
-**Parameters**
-
-- `params` (ResourceReloadedParams*) - Parameters
-
-### FResourceTypeDeregister
-*Type:* TYPEDEF
-Resource type destroy function. Generally used to destroy the registered resource type context.
-
-**Returns**
-
-- `RESOURCE_RESULT_OK` - on success
-
-### FResourceTypeRegister
-*Type:* TYPEDEF
-Resource type setup function.
-
-**Notes**
-
-- The type is already cerate, and name and name hash properties are valid to get using the RsourceTypeGetName()/RsourceTypeGetNameHash() functions
-
-**Returns**
-
-- `RESOURCE_RESULT_OK` - on success
-
-### GetDescriptor
-*Type:* FUNCTION
-Get resource descriptor from resource (name)
-
-**Parameters**
-
-- `factory` (HResourceFactory) - Factory handle
-- `path` (dmhash_t) - Resource path
-- `descriptor` (HResourceDescriptor*) - Returned resource descriptor. Temporary, don't copy.
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### GetDescriptorByHash
-*Type:* FUNCTION
-Get resource descriptor from resource (name)
-
-**Parameters**
-
-- `factory` (HResourceFactory) - Factory handle
-- `path_hash` (dmhash_t) - Resource path hash
-- `descriptor` (HResourceDescriptor*) - Returned resource descriptor. Temporary, don't copy.
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### HResourceDescriptor
-*Type:* TYPEDEF
-Holds information about a currently loaded resource.
-
-### HResourceFactory
-*Type:* TYPEDEF
-Resource factory handle. Holds references to all currently loaded resources.
-
-### HResourcePreloadHintInfo
-*Type:* TYPEDEF
-Holds information about preloading resources
-
-### HResourceType
-*Type:* TYPEDEF
-Represents a resource type, with a context and type functions for creation and destroying a resource.
-
-### HResourceTypeContext
-*Type:* TYPEDEF
-Holds the resource types, as well as extra in engine contexts that can be shared across type functions.
-
-### ResourceAddFile
-*Type:* FUNCTION
-Adds a file to the resource system
-Any request for this path will go through any existing mounts first.
-If you wish to provide file overrides, please use the LiveUpdate feature for that.
-The file isn't persisted between sessions.
-
-**Parameters**
-
-- `factory` (HResourceFactory) - Factory handle
-- `path` (const char*) - The path of the resource
-- `size` (uint32_t) - The size of the resource (in bytes)
-- `resource` (const void*) - The resource payload
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### ResourceCreateParams
-*Type:* FUNCTION
-Parameters to ResourceCreate function of the resource type
-
-**Members**
-
-- `m_Factory` (HResourceFactory)
-- `m_Context` (void*) - The context registered with the resource type
-- `m_Filename` (const char*) - Path of the loaded file
-- `m_Buffer` (const void*) - Buffer containing the loaded file
-- `m_BufferSize` (uint32_t) - Size of data buffer (in bytes)
-- `m_PreloadData` (void*) - Preloaded data from Preload phase.
-- `m_Resource` (HResourceDescriptor) - The resource descriptor to update. Temporary, don't copy.
-- `m_Type` (HResourceType) - The resource type
-
-### ResourceCreateResource
-*Type:* FUNCTION
-Creates and inserts a resource into the factory
-
-**Notes**
-
-- The input data pointer is not stored
-- The reference count is 1, so make sure it's destruction is handled
-
-**Parameters**
-
-- `factory` (HResourceFactory) - Factory handle
-- `name` (const char*) - Resource name
-- `data` (void*) - Resource data
-- `data_size` (uint32_t) - Resource data size
-- `resource` (void**) - (out) Stores the created resource
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### ResourceDescriptorGetNameHash
-*Type:* FUNCTION
-get path hash of resource
-
-**Parameters**
-
-- `rd` (HResourceDescriptor) - The resource
-
-**Returns**
-
-- `hash` (dmhash_t) - The path hash
-
-### ResourceDescriptorGetPrevResource
-*Type:* FUNCTION
-get the previous resource data
-
-**Notes**
-
-- only used when recreating a resource
-
-**Parameters**
-
-- `rd` (HResourceDescriptor) - The resource handle
-
-**Returns**
-
-- `resource` (void*) - The resource data
-
-### ResourceDescriptorGetResource
-*Type:* FUNCTION
-get the resource data
-
-**Parameters**
-
-- `rd` (HResourceDescriptor) - The resource handle
-
-**Returns**
-
-- `resource` (void*) - The resource data
-
-### ResourceDescriptorGetResourceSize
-*Type:* FUNCTION
-get the resource data size
-
-**Parameters**
-
-- `rd` (HResourceDescriptor) - The resource handle
-
-**Returns**
-
-- `size` (uint32_t) - The resource data size (in bytes)
-
-### ResourceDescriptorGetType
-*Type:* FUNCTION
-get the resource type
-
-**Parameters**
-
-- `rd` (HResourceDescriptor) - The resource handle
-
-**Returns**
-
-- `resource` (HResourceType) - The resource type
-
-### ResourceDescriptorSetPrevResource
-*Type:* FUNCTION
-set the previous resource data
-
-**Notes**
-
-- only used when recreating a resource
-
-**Parameters**
-
-- `rd` (HResourceDescriptor) - The resource handle
-- `resource` (void*) - The resource data
-
-### ResourceDescriptorSetResource
-*Type:* FUNCTION
-set the resource data
-
-**Parameters**
-
-- `rd` (HResourceDescriptor) - The resource handle
-- `resource` (void*) - The resource data
-
-### ResourceDescriptorSetResourceSize
-*Type:* FUNCTION
-set the resource data size
-
-**Parameters**
-
-- `rd` (HResourceDescriptor) - The resource handle
-- `size` (uint32_t) - The resource data size (in bytes)
-
-### ResourceDestroyParams
-*Type:* FUNCTION
-Parameters to ResourceDestroy function of the resource type
-
-**Members**
-
-- `m_Factory` (HResourceFactory)
-- `m_Context` (void*) - The context registered with the resource type
-- `m_Resource` (HResourceDescriptor) - The resource descriptor to destroy
-- `m_Type` (HResourceType) - The resource type
-
-### ResourceGet
-*Type:* FUNCTION
-Get (load) a resource from factory
-
-**Notes**
-
-- if successful, it increments the ref count by one
-
-**Parameters**
-
-- `factory` (HResourceFactory) - Factory handle
-- `path` (const char*) - Resource path
-- `resource` (void**) - Created resource
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### ResourceGetByHash
-*Type:* FUNCTION
-Get a loaded resource from factory
-
-**Notes**
-
-- this currently doesn't load a resource
-- if successful, it increments the ref count by one
-
-**Parameters**
-
-- `factory` (HResourceFactory) - Factory handle
-- `path_hash` (dmhash_t) - Resource path hash
-- `resource` (void**) - Created resource
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### ResourceGetByHashAndExt
-*Type:* FUNCTION
-Get a loaded resource from factory and also verifying that it's the expected file type
-
-**Parameters**
-
-- `factory` (HResourceFactory) - Factory handle
-- `path_hash` (dmhash_t) - Resource path hash
-- `ext_hash` (dmhash_t) - Resource extension hash (e.g. "texturec", "ttf"). Must match the extension of the path.
-- `resource` (void**) - Created resource
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success.
-                                      RESOURCE_RESULT_INVALID_FILE_EXTENSION if the path extension doesn't match the required extension.
-
-### ResourceGetCanonicalPath
-*Type:* FUNCTION
-Gets the normalized resource path: "/my//icon.texturec" -> "/my/icon.texturec". "my/icon.texturec" -> "/my/icon.texturec".
-
-**Parameters**
-
-- `path` (const char*) - the relative dir of the resource
-- `buf` (const char*) - the output of the normalization
-- `buf_len` (uint32_t) - the size of the output buffer
-
-**Returns**
-
-- `length` (uint32_t) - the length of the output string
-
-### ResourceGetExtFromPath
-*Type:* FUNCTION
-Get a resource extension from a path, i.e "resource.ext" will return "ext".
-
-**Parameters**
-
-- `path` (const char*) - The path to the resource
-
-**Returns**
-
-- `extension` (const char*) - Pointer to extension string if an extension was found, 0 otherwise
-
-### ResourceGetPath
-*Type:* FUNCTION
-Returns the canonical path hash of a resource
-
-**Parameters**
-
-- `factory` (HResourceFactory) - Factory handle
-- `resource` (void*) - The resource pointer
-- `hash` (dmhash_t*) - (out) The path hash of the resource
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### ResourceGetRaw
-*Type:* FUNCTION
-Get raw resource data. Unregistered resources can be loaded with this function.
-If successful, the returned resource data must be deallocated with free()
-
-**Parameters**
-
-- `factory` (HResourceFactory) - Factory handle
-- `name` (dmhash_t) - Resource name
-- `resource` (void**) - Created resource
-- `resource_size` (uint32_t*) - Resource size
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### ResourceGetTypeFromExtension
-*Type:* FUNCTION
-Get type from extension
-
-**Parameters**
-
-- `factory` (HResourceFactory) - Factory handle
-- `extension` (const char*) - File extension, without leading "." character. E.g. "ttf"
-- `type` (HResourceType*) - (out) returned type if successful
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### ResourceGetTypeFromExtensionHash
-*Type:* FUNCTION
-Get type from extension hash
-
-**Parameters**
-
-- `factory` (HResourceFactory) - Factory handle
-- `extension_hash` (dmhash_t) - Hash of file extension, without leading "." character. E.g. hash("ttf")
-- `type` (HResourceType*) - (out) returned type if successful
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### ResourceGetWithExt
-*Type:* FUNCTION
-Get (load) a resource from factory
-
-**Notes**
-
-- if successful, it increments the ref count by one
-
-**Parameters**
-
-- `factory` (HResourceFactory) - Factory handle
-- `path` (const char*) - Resource path
-- `ext` (const char*) - Resource extension (e.g. "texturec", "ttf"). Must match the extension of the path.
-- `resource` (void**) - Created resource
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success.
-                                      RESOURCE_RESULT_INVALID_FILE_EXTENSION if the path extension doesn't match the required extension.
-
-### ResourcePostCreateParams
-*Type:* FUNCTION
-Parameters to ResourcePostCreate function of the resource type
-
-**Members**
-
-- `m_Factory` (HResourceFactory)
-- `m_Context` (void*) - The context registered with the resource type
-- `m_Filename` (const char*) - Path of the loaded file
-- `m_PreloadData` (void*) - Preloaded data from Preload phase.
-- `m_Resource` (HResourceDescriptor) - The resource descriptor to update. Temporary, don't copy.
-- `m_Type` (HResourceType) - The resource type
-
-### ResourcePreloadHint
-*Type:* FUNCTION
-Hint the preloader what to load before Create is called on the resource.
-The resources are not guaranteed to be loaded before Create is called.
-This function can be called from a worker thread.
-
-**Parameters**
-
-- `preloader` (dmResource::HResourcePreloadHintInfo) - Preloader handle
-- `path` (const char*) - Resource path
-
-**Returns**
-
-- `result` (bool) - if successfully invoking preloader.
-
-### ResourcePreloadParams
-*Type:* FUNCTION
-Parameters to ResourcePreload function of the resource type
-
-**Members**
-
-- `m_Factory` (HResourceFactory)
-- `m_Context` (void*) - The context registered with the resource type
-- `m_Filename` (const char*) - Path of the loaded file
-- `m_Buffer` (const void*) - Buffer containing the loaded file
-- `m_BufferSize` (uint32_t) - Size of data buffer (in bytes)
-- `m_HintInfo` (HResourcePreloadHintInfo) - Hinter info. Use this when calling [ref:ResourcePreloadHint]
-- `m_PreloadData` (void**) - User data that is set during the Preload phase, and passed to the Create function.
-- `m_Type` (HResourceType) - The resource type
-
-### ResourceRecreateParams
-*Type:* FUNCTION
-Parameters to ResourceRecreate function of the resource type
-
-**Members**
-
-- `m_Factory` (HResourceFactory)
-- `m_Context` (void*) - The context registered with the resource type
-- `m_FilenameHash` (dmhash_t) - File name hash of the data
-- `m_Filename` (const char*) - Path of the loaded file
-- `m_Buffer` (const void*) - Buffer containing the loaded file
-- `m_BufferSize` (uint32_t) - Size of data buffer (in bytes)
-- `m_Message` (const void*) - Pointer holding a precreated message
-- `m_Resource` (HResourceDescriptor) - The resource descriptor to update. Temporary, don't copy.
-- `m_Type` (HResourceType) - The resource type
-
-### ResourceRegisterDecryptionFunction
-*Type:* FUNCTION
-Registers a custom resource decryption function
-
-**Parameters**
-
-- `decrypt_resource` (dmResource::FDecryptResource) - The decryption function
-
-### ResourceRelease
-*Type:* FUNCTION
-Release resource
-
-**Notes**
-
-- Decreases ref count by 1. If it reaches 0, the resource destroy function is called.
-
-**Parameters**
-
-- `factory` (HResourceFactory) - Factory handle
-- `resource` (void*) - Resource pointer
-
-### ResourceReloadedParams
-*Type:* FUNCTION
-Parameters to ResourceReloaded function of the resource type
-
-**Members**
-
-- `m_UserData` (void*) - User data supplied when the callback was registered
-- `m_FilenameHash` (dmhash_t) - File name hash of the data
-- `m_Filename` (const char*) - Path of the resource, same as provided to Get() when the resource was obtained
-- `m_Resource` (HResourceDescriptor) - The resource descriptor to update. Temporary, don't copy.
-- `m_Type` (HResourceType) - The resource type
-
-### ResourceRemoveFile
-*Type:* FUNCTION
-Removes a previously registered file from the resource system
-
-**Parameters**
-
-- `factory` (HResourceFactory) - Factory handle
-- `path` (const char*) - The path of the resource
-
-**Returns**
-
-- `result` (ResourceResult) - RESOURCE_RESULT_OK on success
-
-### ResourceResult
-*Type:* ENUM
-ResourceResult
-
-**Members**
-
-- `RESOURCE_RESULT_OK`
-- `RESOURCE_RESULT_INVALID_DATA`
-- `RESOURCE_RESULT_DDF_ERROR`
-- `RESOURCE_RESULT_RESOURCE_NOT_FOUND`
-- `RESOURCE_RESULT_MISSING_FILE_EXTENSION`
-- `RESOURCE_RESULT_ALREADY_REGISTERED`
-- `RESOURCE_RESULT_INVAL`
-- `RESOURCE_RESULT_UNKNOWN_RESOURCE_TYPE`
-- `RESOURCE_RESULT_OUT_OF_MEMORY`
-- `RESOURCE_RESULT_IO_ERROR`
-- `RESOURCE_RESULT_NOT_LOADED`
-- `RESOURCE_RESULT_OUT_OF_RESOURCES`
-- `RESOURCE_RESULT_STREAMBUFFER_TOO_SMALL`
-- `RESOURCE_RESULT_FORMAT_ERROR`
-- `RESOURCE_RESULT_CONSTANT_ERROR`
-- `RESOURCE_RESULT_NOT_SUPPORTED`
-- `RESOURCE_RESULT_RESOURCE_LOOP_ERROR`
-- `RESOURCE_RESULT_PENDING`
-- `RESOURCE_RESULT_INVALID_FILE_EXTENSION`
-- `RESOURCE_RESULT_VERSION_MISMATCH`
-- `RESOURCE_RESULT_SIGNATURE_MISMATCH`
-- `RESOURCE_RESULT_UNKNOWN_ERROR`
-
-### ResourceTypeCreatorDescBufferSize
-*Type:* VARIABLE
-Resource type creator desc byte size declaration.
-The registered description data passeed to ResourceRegisterTypeCreatorDesc must be of at least this size.
-
-### ResourceTypeGetContext
-*Type:* FUNCTION
-get context from type
-
-**Parameters**
-
-- `type` (HResourceType) - The type
-
-**Returns**
-
-- `context` (void*) - 0 if no context was registered
-
-### ResourceTypeGetName
-*Type:* FUNCTION
-get registered extension name of the type
-
-**Parameters**
-
-- `type` (HResourceType) - The type
-
-**Returns**
-
-- `name` (const char*) - The name of the type (e.g. "collectionc")
-
-### ResourceTypeGetNameHash
-*Type:* FUNCTION
-get registered extension name hash of the type
-
-**Parameters**
-
-- `type` (HResourceType) - The type
-
-**Returns**
-
-- `hash` (dmhash_t) - The name hash of the type (e.g. "collectionc")
-
-### ResourceTypeSetContext
-*Type:* FUNCTION
-set context from type
-
-**Parameters**
-
-- `type` (HResourceType) - The type
-- `context` (void*) - The context to associate with the type
-
-### ResourceTypeSetCreateFn
-*Type:* FUNCTION
-set create function for type
-
-**Parameters**
-
-- `type` (HResourceType) - The type
-- `fn` (FResourceCreate) - Function to be called to creating the resource
-
-### ResourceTypeSetDestroyFn
-*Type:* FUNCTION
-set destroy function for type
-
-**Parameters**
-
-- `type` (HResourceType) - The type
-- `fn` (FResourceDestroy) - Function to be called to destroy the resource
-
-### ResourceTypeSetPostCreateFn
-*Type:* FUNCTION
-set post create function for type
-
-**Parameters**
-
-- `type` (HResourceType) - The type
-- `fn` (FResourcePostCreate) - Function to be called after creating the resource
-
-### ResourceTypeSetPreloadFn
-*Type:* FUNCTION
-set preload function for type
-
-**Parameters**
-
-- `type` (HResourceType) - The type
-- `fn` (FResourcePreload) - Function to be called when loading of the resource starts
-
-### ResourceTypeSetRecreateFn
-*Type:* FUNCTION
-set recreate function for type
-
-**Parameters**
-
-- `type` (HResourceType) - The type
-- `fn` (FResourceRecreate) - Function to be called when recreating the resource
-
 <!-- engine-resource-src-dmsdk-resource-resource-hpp -->
 
 # Resource {#apis:engine-resource-src-dmsdk-resource-resource-hpp}
@@ -14706,7 +12381,7 @@ set recreate function for type
 **Source:** `engine/resource/src/dmsdk/resource/resource.hpp`
 **Include:** `dmsdk/resource/resource.hpp`
 
-Functions for managing resource types.
+Functions for managing resource and resource types
 
 ## API
 
@@ -20424,6 +18099,18 @@ An icon from a predefined set
 *Type:* VARIABLE
 "plus"
 
+### editor.ui.image
+*Type:* FUNCTION
+An image
+
+**Parameters**
+
+- `props` (table) - Required props: <dl><dt><code>image <small>string</small></code></dt><dd>either a resource path (starts with <code>/</code>), or an URL</dd></dl>  Optional props: <dl><dt><code>width <small>number</small></code></dt><dd>width of the image view, the image will be fit inside it while preserving its aspect ratio</dd><dt><code>height <small>number</small></code></dt><dd>height of the image view, the image will be fit inside it while preserving its aspect ratio</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>
+
+**Returns**
+
+- `value` (component) - UI component
+
 ### editor.ui.integer_field
 *Type:* FUNCTION
 Integer input component based on a text field, reports changes on commit (Enter or focus loss)
@@ -21980,6 +19667,7 @@ gets a named property of the specified game object or component
 - `options` (table) (optional) - optional options table
 - index <span class="type">number</span> index into array property (1 based)
 - key <span class="type">hash</span> name of internal property
+- keys <span class="type">table</span> array of internal component resources identified by key (e.g. a particle fx emitter, see examples below)
 
 **Returns**
 
@@ -22011,23 +19699,23 @@ go.get(url, "example.x", {index=1})
 ```
 
 Getting all values in a material property array as a table
-```
+```lua
 -- get all vector4's in the constant array
 go.get(url, "example")
 -- result: { vector4, vector4, ... }
-
 -- get all elements of the vector4's from an array
 go.get(url, "example.x")
 -- result: { number1, number2, ... }
 ```Get a named property
-
+lua
+-- get the resource of a certain gui font
+local font_hash = go.get("#gui", "fonts", {key = "system_font_BIG"})Get a property from a sub-component, using the "keys" options table
+lua
+-- Addressing the first level of a component:
+go.get("#particlefx", "material", { keys = { "cone_emitter" } })Get a property into a deeper sub-hierarchy (if the component supports it).
 ```lua
-function init(self)
-    -- get the resource of a certain gui font
-    local font_hash = go.get("#gui", "fonts", {key = "system_font_BIG"})
-end
-
-```
+-- Note: There is currently no component that supports this, but a custom component could.
+go.get("#my_component", "some_property", { keys = { "root", "child_node" } })
 
 ### go.get_id
 *Type:* FUNCTION
@@ -22405,6 +20093,7 @@ sets a named property of the specified game object or component, or a material c
 - `options` (table) (optional) - optional options table
 - index <span class="type">integer</span> index into array property (1 based)
 - key <span class="type">hash</span> name of internal property
+- keys <span class="type">table</span> array of internal component resources identified by key (e.g. a particle fx emitter, see examples below)
 
 **Examples**
 
@@ -22432,20 +20121,24 @@ go.set(url, "example.x", 7, {index=1})
 ```
 
 Set a material property array by a table of vector4
-```
+lua
 -- set the first two vector4's in the array
 -- if the array has more than two elements in the array they will not be set
-go.set(url, "example", { vmath.vector4(1,1,1,1), vmath.vector4(2,2,2,2) })
-```Set a named property
-
+go.set(url, "example", { vmath.vector4(1,1,1,1), vmath.vector4(2,2,2,2) })Set a named property
 ```lua
 go.property("big_font", resource.font())
-
 function init(self)
     go.set("#gui", "fonts", self.big_font, {key = "system_font_BIG"})
 end
-
-```
+```Set a property on a sub-component, using the "keys" options table
+lua
+go.property("my_material", resource.material)
+function init(self)
+    go.set("#particlefx", "material", self.my_material, { keys = { "cone_emitter" } })
+endSet a property in a deeper sub-hierarchy (if the component supports it).
+```lua
+-- Note: There is currently no component that supports this, but a custom component could.
+go.set("#my_component", "some_property", some_value, { keys = { "root", "child_node" } })
 
 ### go.set_parent
 *Type:* FUNCTION
@@ -23546,7 +21239,7 @@ top y-anchor
 This starts an animation of a node property according to the specified parameters.
 If the node property is already being animated, that animation will be canceled and
 replaced by the new one. Note however that several different node properties
-can be animated simultaneously. Use gui.cancel_animation to stop the animation
+can be animated simultaneously. Use gui.cancel_animations to stop the animation
 before it has completed.
 Composite properties of type vector3, vector4 or quaternion
 also expose their sub-components (x, y, z and w).
@@ -28765,10 +26458,63 @@ To be used as an option to function module.
 **File:** `script_particlefx.cpp`
 **Source:** `engine/gamesys/src/gamesys/scripts/script_particlefx.cpp`
 
-Functions for controlling particle effect component playback and
+Functions and properties for controlling particle effect component playback and
 shader constants.
 
 ## API
+
+### animation
+*Type:* PROPERTY
+The animation used during rendering by an emitter in a particle FX component.
+The property type is a hash and refers to a valid animation in an atlas or a tile source resource.
+If the animation isn't found, and error will be thrown.
+
+**Examples**
+
+How to set and get the animation of an emitter in a particle FX.
+```
+local current_animation = go.get("#particlefx", "animation", { keys = { "explosion" } })
+go.set("#particlefx", "animation", hash("explode_large"), { keys = { "explosion" } })
+
+```
+
+### image
+*Type:* PROPERTY
+The image used during rendering by an emitter in a particle FX component.
+The property type is a hash and refers to an image resource (atlas or tile source).
+Note: When setting the image, if the currently playing animation of the emitter
+isn't found in the new image, the animation will be set to the first animation found.
+
+**Examples**
+
+How to set and get the image of an emitter in a particle FX.
+```
+go.property("my_atlas", resource.atlas())
+function init(self)
+    go.set("#particlefx", "image", self.my_atlas, { keys = { "explosion" } })
+    local emitter_img = go.get("#particlefx", "image", { keys = { "explosion" } })
+    assert(emitter_img == self.my_atlas)
+end
+
+```
+
+### material
+*Type:* PROPERTY
+The material used during rendering by an emitter in a particle FX component.
+The property type is a hash and refers to a material resource.
+
+**Examples**
+
+How to set and get the material of an emitter in a particle FX.
+```
+go.property("my_material", resource.material())
+function init(self)
+    go.set("#particlefx", "material", self.my_material, { keys = { "explosion" } })
+    local emitter_mat = go.get("#particlefx", "material", { keys = { "explosion" } })
+    assert(emitter_mat == self.my_material)
+end
+
+```
 
 ### particlefx.EMITTER_STATE_POSTSPAWN
 *Type:* CONSTANT
@@ -39530,7 +37276,7 @@ Starts loading a Banner Ad, can only be called after `admob.MSG_INITIALIZATION` 
 **Parameters**
 
 - `ad_unit_id` (string) - Ad unit ID, for test ads use on Android `"ca-app-pub-3940256099942544/6300978111"`, or on iOS `"ca-app-pub-3940256099942544/2934735716"` Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)
-- `size` (number) - Requested Banner Ad size, possible values: `admob.SIZE_ADAPTIVE_BANNER` (default), `admob.SIZE_BANNER`, `admob.SIZE_FLUID`, `admob.SIZE_FULL_BANNER`, `admob.SIZE_LARGE_BANNER`, `admob.SIZE_LEADEARBOARD`, `admob.SIZE_MEDIUM_RECTANGLE`, `admob.SIZE_SMART_BANNER`. Original docs [Android](https://developers.google.com/admob/android/banner#banner_sizes), [iOS](https://developers.google.com/admob/ios/banner#banner_sizes)
+- `size` (number) - Requested Banner Ad size, possible values: `admob.SIZE_ADAPTIVE_BANNER` (default), `admob.SIZE_BANNER`, `admob.SIZE_FLUID`, `admob.SIZE_FULL_BANNER`, `admob.SIZE_LARGE_BANNER`, `admob.SIZE_LEADEARBOARD`, `admob.SIZE_MEDIUM_RECTANGLE`, `admob.SIZE_SMART_BANNER`, `admob.SIZE_LARGE_ADAPTIVE_BANNER` Original docs [Android](https://developers.google.com/admob/android/banner#banner_sizes), [iOS](https://developers.google.com/admob/ios/banner#banner_sizes)
 
 ### admob.show_banner
 *Type:* FUNCTION
@@ -39653,6 +37399,9 @@ Hides and unloads Banner Ad (needs to call `admob.load_banner()` later to show B
 *Type:* VARIABLE
 
 ### SIZE_ADAPTIVE_BANNER
+*Type:* VARIABLE
+
+### SIZE_LARGE_ADAPTIVE_BANNER
 *Type:* VARIABLE
 
 ### SIZE_BANNER
@@ -41506,2835 +39255,3691 @@ For more information, see the [FMOD documentation](https://www.fmod.com/docs).
 
 ### THREAD_TYPE_MIXER
 *Type:* VARIABLE
+Thread type - mixer.
 
 ### THREAD_TYPE_FEEDER
 *Type:* VARIABLE
+Thread type - feeder.
 
 ### THREAD_TYPE_STREAM
 *Type:* VARIABLE
+Thread type - stream.
 
 ### THREAD_TYPE_FILE
 *Type:* VARIABLE
+Thread type - file.
 
 ### THREAD_TYPE_NONBLOCKING
 *Type:* VARIABLE
+Thread type - nonblocking.
 
 ### THREAD_TYPE_RECORD
 *Type:* VARIABLE
+Thread type - record.
 
 ### THREAD_TYPE_GEOMETRY
 *Type:* VARIABLE
+Thread type - geometry.
 
 ### THREAD_TYPE_PROFILER
 *Type:* VARIABLE
+Thread type - profiler.
 
 ### THREAD_TYPE_STUDIO_UPDATE
 *Type:* VARIABLE
+Thread type - studio update.
 
 ### THREAD_TYPE_STUDIO_LOAD_BANK
 *Type:* VARIABLE
+Thread type - studio load bank.
 
 ### THREAD_TYPE_STUDIO_LOAD_SAMPLE
 *Type:* VARIABLE
+Thread type - studio load sample.
 
 ### THREAD_TYPE_CONVOLUTION1
 *Type:* VARIABLE
+Thread type - convolution1.
 
 ### THREAD_TYPE_CONVOLUTION2
 *Type:* VARIABLE
-
-### THREAD_TYPE_MAX
-*Type:* VARIABLE
+Thread type - convolution2.
 
 ### OK
 *Type:* VARIABLE
+Operation completed successfully.
 
 ### ERR_BADCOMMAND
 *Type:* VARIABLE
+Error - badcommand.
 
 ### ERR_CHANNEL_ALLOC
 *Type:* VARIABLE
+Error - channel alloc.
 
 ### ERR_CHANNEL_STOLEN
 *Type:* VARIABLE
+Error - channel stolen.
 
 ### ERR_DMA
 *Type:* VARIABLE
+Error - dma.
 
 ### ERR_DSP_CONNECTION
 *Type:* VARIABLE
+Error - dsp connection.
 
 ### ERR_DSP_DONTPROCESS
 *Type:* VARIABLE
+Error - dsp dontprocess.
 
 ### ERR_DSP_FORMAT
 *Type:* VARIABLE
+Error - dsp format.
 
 ### ERR_DSP_INUSE
 *Type:* VARIABLE
+Error - dsp inuse.
 
 ### ERR_DSP_NOTFOUND
 *Type:* VARIABLE
+Error - dsp notfound.
 
 ### ERR_DSP_RESERVED
 *Type:* VARIABLE
+Error - dsp reserved.
 
 ### ERR_DSP_SILENCE
 *Type:* VARIABLE
+Error - dsp silence.
 
 ### ERR_DSP_TYPE
 *Type:* VARIABLE
+Error - dsp type.
 
 ### ERR_FILE_BAD
 *Type:* VARIABLE
+Error - file bad.
 
 ### ERR_FILE_COULDNOTSEEK
 *Type:* VARIABLE
+Error - file couldnotseek.
 
 ### ERR_FILE_DISKEJECTED
 *Type:* VARIABLE
+Error - file diskejected.
 
 ### ERR_FILE_EOF
 *Type:* VARIABLE
+Error - file eof.
 
 ### ERR_FILE_ENDOFDATA
 *Type:* VARIABLE
+Error - file endofdata.
 
 ### ERR_FILE_NOTFOUND
 *Type:* VARIABLE
+Error - file notfound.
 
 ### ERR_FORMAT
 *Type:* VARIABLE
+Error - format.
 
 ### ERR_HEADER_MISMATCH
 *Type:* VARIABLE
+Error - header mismatch.
 
 ### ERR_HTTP
 *Type:* VARIABLE
+Error - http.
 
 ### ERR_HTTP_ACCESS
 *Type:* VARIABLE
+Error - http access.
 
 ### ERR_HTTP_PROXY_AUTH
 *Type:* VARIABLE
+Error - http proxy auth.
 
 ### ERR_HTTP_SERVER_ERROR
 *Type:* VARIABLE
+Error - http server error.
 
 ### ERR_HTTP_TIMEOUT
 *Type:* VARIABLE
+Error - http timeout.
 
 ### ERR_INITIALIZATION
 *Type:* VARIABLE
+Error - initialization.
 
 ### ERR_INITIALIZED
 *Type:* VARIABLE
+Error - initialized.
 
 ### ERR_INTERNAL
 *Type:* VARIABLE
+Error - internal.
 
 ### ERR_INVALID_FLOAT
 *Type:* VARIABLE
+Error - invalid float.
 
 ### ERR_INVALID_HANDLE
 *Type:* VARIABLE
+Error - invalid handle.
 
 ### ERR_INVALID_PARAM
 *Type:* VARIABLE
+Error - invalid param.
 
 ### ERR_INVALID_POSITION
 *Type:* VARIABLE
+Error - invalid position.
 
 ### ERR_INVALID_SPEAKER
 *Type:* VARIABLE
+Error - invalid speaker.
 
 ### ERR_INVALID_SYNCPOINT
 *Type:* VARIABLE
+Error - invalid syncpoint.
 
 ### ERR_INVALID_THREAD
 *Type:* VARIABLE
+Error - invalid thread.
 
 ### ERR_INVALID_VECTOR
 *Type:* VARIABLE
+Error - invalid vector.
 
 ### ERR_MAXAUDIBLE
 *Type:* VARIABLE
+Error - maxaudible.
 
 ### ERR_MEMORY
 *Type:* VARIABLE
+Error - memory.
 
 ### ERR_MEMORY_CANTPOINT
 *Type:* VARIABLE
+Error - memory cantpoint.
 
 ### ERR_NEEDS3D
 *Type:* VARIABLE
+Error - needs3d.
 
 ### ERR_NEEDSHARDWARE
 *Type:* VARIABLE
+Error - needshardware.
 
 ### ERR_NET_CONNECT
 *Type:* VARIABLE
+Error - net connect.
 
 ### ERR_NET_SOCKET_ERROR
 *Type:* VARIABLE
+Error - net socket error.
 
 ### ERR_NET_URL
 *Type:* VARIABLE
+Error - net url.
 
 ### ERR_NET_WOULD_BLOCK
 *Type:* VARIABLE
+Error - net would block.
 
 ### ERR_NOTREADY
 *Type:* VARIABLE
+Error - notready.
 
 ### ERR_OUTPUT_ALLOCATED
 *Type:* VARIABLE
+Error - output allocated.
 
 ### ERR_OUTPUT_CREATEBUFFER
 *Type:* VARIABLE
+Error - output createbuffer.
 
 ### ERR_OUTPUT_DRIVERCALL
 *Type:* VARIABLE
+Error - output drivercall.
 
 ### ERR_OUTPUT_FORMAT
 *Type:* VARIABLE
+Error - output format.
 
 ### ERR_OUTPUT_INIT
 *Type:* VARIABLE
+Error - output init.
 
 ### ERR_OUTPUT_NODRIVERS
 *Type:* VARIABLE
+Error - output nodrivers.
 
 ### ERR_PLUGIN
 *Type:* VARIABLE
+Error - plugin.
 
 ### ERR_PLUGIN_MISSING
 *Type:* VARIABLE
+Error - plugin missing.
 
 ### ERR_PLUGIN_RESOURCE
 *Type:* VARIABLE
+Error - plugin resource.
 
 ### ERR_PLUGIN_VERSION
 *Type:* VARIABLE
+Error - plugin version.
 
 ### ERR_RECORD
 *Type:* VARIABLE
+Error - record.
 
 ### ERR_REVERB_CHANNELGROUP
 *Type:* VARIABLE
+Error - reverb channelgroup.
 
 ### ERR_REVERB_INSTANCE
 *Type:* VARIABLE
+Error - reverb instance.
 
 ### ERR_SUBSOUNDS
 *Type:* VARIABLE
+Error - subsounds.
 
 ### ERR_SUBSOUND_ALLOCATED
 *Type:* VARIABLE
+Error - subsound allocated.
 
 ### ERR_SUBSOUND_CANTMOVE
 *Type:* VARIABLE
+Error - subsound cantmove.
 
 ### ERR_TAGNOTFOUND
 *Type:* VARIABLE
+Error - tagnotfound.
 
 ### ERR_TOOMANYCHANNELS
 *Type:* VARIABLE
+Error - toomanychannels.
 
 ### ERR_TRUNCATED
 *Type:* VARIABLE
+Error - truncated.
 
 ### ERR_UNIMPLEMENTED
 *Type:* VARIABLE
+Error - unimplemented.
 
 ### ERR_UNINITIALIZED
 *Type:* VARIABLE
+Error - uninitialized.
 
 ### ERR_UNSUPPORTED
 *Type:* VARIABLE
+Error - unsupported.
 
 ### ERR_VERSION
 *Type:* VARIABLE
+Error - version.
 
 ### ERR_EVENT_ALREADY_LOADED
 *Type:* VARIABLE
+Error - event already loaded.
 
 ### ERR_EVENT_LIVEUPDATE_BUSY
 *Type:* VARIABLE
+Error - event liveupdate busy.
 
 ### ERR_EVENT_LIVEUPDATE_MISMATCH
 *Type:* VARIABLE
+Error - event liveupdate mismatch.
 
 ### ERR_EVENT_LIVEUPDATE_TIMEOUT
 *Type:* VARIABLE
+Error - event liveupdate timeout.
 
 ### ERR_EVENT_NOTFOUND
 *Type:* VARIABLE
+Error - event notfound.
 
 ### ERR_STUDIO_UNINITIALIZED
 *Type:* VARIABLE
+Error - studio uninitialized.
 
 ### ERR_STUDIO_NOT_LOADED
 *Type:* VARIABLE
+Error - studio not loaded.
 
 ### ERR_INVALID_STRING
 *Type:* VARIABLE
+Error - invalid string.
 
 ### ERR_ALREADY_LOCKED
 *Type:* VARIABLE
+Error - already locked.
 
 ### ERR_NOT_LOCKED
 *Type:* VARIABLE
+Error - not locked.
 
 ### ERR_RECORD_DISCONNECTED
 *Type:* VARIABLE
+Error - record disconnected.
 
 ### ERR_TOOMANYSAMPLES
 *Type:* VARIABLE
+Error - toomanysamples.
 
 ### CHANNELCONTROL_CHANNEL
 *Type:* VARIABLE
+Channel control type - channel.
 
 ### CHANNELCONTROL_CHANNELGROUP
 *Type:* VARIABLE
-
-### CHANNELCONTROL_MAX
-*Type:* VARIABLE
+Channel control type - channelgroup.
 
 ### OUTPUTTYPE_AUTODETECT
 *Type:* VARIABLE
+Output type - autodetect.
 
 ### OUTPUTTYPE_UNKNOWN
 *Type:* VARIABLE
+Output type - unknown.
 
 ### OUTPUTTYPE_NOSOUND
 *Type:* VARIABLE
+Output type - nosound.
 
 ### OUTPUTTYPE_WAVWRITER
 *Type:* VARIABLE
+Output type - wavwriter.
 
 ### OUTPUTTYPE_NOSOUND_NRT
 *Type:* VARIABLE
+Output type - nosound nrt.
 
 ### OUTPUTTYPE_WAVWRITER_NRT
 *Type:* VARIABLE
+Output type - wavwriter nrt.
 
 ### OUTPUTTYPE_WASAPI
 *Type:* VARIABLE
+Output type - wasapi.
 
 ### OUTPUTTYPE_ASIO
 *Type:* VARIABLE
+Output type - asio.
 
 ### OUTPUTTYPE_PULSEAUDIO
 *Type:* VARIABLE
+Output type - pulseaudio.
 
 ### OUTPUTTYPE_ALSA
 *Type:* VARIABLE
+Output type - alsa.
 
 ### OUTPUTTYPE_COREAUDIO
 *Type:* VARIABLE
+Output type - coreaudio.
 
 ### OUTPUTTYPE_AUDIOTRACK
 *Type:* VARIABLE
+Output type - audiotrack.
 
 ### OUTPUTTYPE_OPENSL
 *Type:* VARIABLE
+Output type - opensl.
 
 ### OUTPUTTYPE_AUDIOOUT
 *Type:* VARIABLE
+Output type - audioout.
 
 ### OUTPUTTYPE_AUDIO3D
 *Type:* VARIABLE
+Output type - audio3d.
 
 ### OUTPUTTYPE_WEBAUDIO
 *Type:* VARIABLE
+Output type - webaudio.
 
 ### OUTPUTTYPE_NNAUDIO
 *Type:* VARIABLE
+Output type - nnaudio.
 
 ### OUTPUTTYPE_WINSONIC
 *Type:* VARIABLE
+Output type - winsonic.
 
 ### OUTPUTTYPE_AAUDIO
 *Type:* VARIABLE
+Output type - aaudio.
 
 ### OUTPUTTYPE_AUDIOWORKLET
 *Type:* VARIABLE
+Output type - audioworklet.
 
 ### OUTPUTTYPE_PHASE
 *Type:* VARIABLE
+Output type - phase.
 
 ### OUTPUTTYPE_OHAUDIO
 *Type:* VARIABLE
-
-### OUTPUTTYPE_MAX
-*Type:* VARIABLE
+Output type - ohaudio.
 
 ### DEBUG_MODE_TTY
 *Type:* VARIABLE
+Debug mode - tty.
 
 ### DEBUG_MODE_FILE
 *Type:* VARIABLE
+Debug mode - file.
 
 ### DEBUG_MODE_CALLBACK
 *Type:* VARIABLE
+Debug mode - callback.
 
 ### SPEAKERMODE_DEFAULT
 *Type:* VARIABLE
+Speaker mode - default.
 
 ### SPEAKERMODE_RAW
 *Type:* VARIABLE
+Speaker mode - raw.
 
 ### SPEAKERMODE_MONO
 *Type:* VARIABLE
+Speaker mode - mono.
 
 ### SPEAKERMODE_STEREO
 *Type:* VARIABLE
+Speaker mode - stereo.
 
 ### SPEAKERMODE_QUAD
 *Type:* VARIABLE
+Speaker mode - quad.
 
 ### SPEAKERMODE_SURROUND
 *Type:* VARIABLE
+Speaker mode - surround.
 
 ### SPEAKERMODE_5POINT1
 *Type:* VARIABLE
+Speaker mode - 5point1.
 
 ### SPEAKERMODE_7POINT1
 *Type:* VARIABLE
+Speaker mode - 7point1.
 
 ### SPEAKERMODE_7POINT1POINT4
 *Type:* VARIABLE
-
-### SPEAKERMODE_MAX
-*Type:* VARIABLE
+Speaker mode - 7point1point4.
 
 ### SPEAKER_NONE
 *Type:* VARIABLE
+Speaker position - none.
 
 ### SPEAKER_FRONT_LEFT
 *Type:* VARIABLE
+Speaker position - front left.
 
 ### SPEAKER_FRONT_RIGHT
 *Type:* VARIABLE
+Speaker position - front right.
 
 ### SPEAKER_FRONT_CENTER
 *Type:* VARIABLE
+Speaker position - front center.
 
 ### SPEAKER_LOW_FREQUENCY
 *Type:* VARIABLE
+Speaker position - low frequency.
 
 ### SPEAKER_SURROUND_LEFT
 *Type:* VARIABLE
+Speaker position - surround left.
 
 ### SPEAKER_SURROUND_RIGHT
 *Type:* VARIABLE
+Speaker position - surround right.
 
 ### SPEAKER_BACK_LEFT
 *Type:* VARIABLE
+Speaker position - back left.
 
 ### SPEAKER_BACK_RIGHT
 *Type:* VARIABLE
+Speaker position - back right.
 
 ### SPEAKER_TOP_FRONT_LEFT
 *Type:* VARIABLE
+Speaker position - top front left.
 
 ### SPEAKER_TOP_FRONT_RIGHT
 *Type:* VARIABLE
+Speaker position - top front right.
 
 ### SPEAKER_TOP_BACK_LEFT
 *Type:* VARIABLE
+Speaker position - top back left.
 
 ### SPEAKER_TOP_BACK_RIGHT
 *Type:* VARIABLE
-
-### SPEAKER_MAX
-*Type:* VARIABLE
+Speaker position - top back right.
 
 ### CHANNELORDER_DEFAULT
 *Type:* VARIABLE
+Channel order - default.
 
 ### CHANNELORDER_WAVEFORMAT
 *Type:* VARIABLE
+Channel order - waveformat.
 
 ### CHANNELORDER_PROTOOLS
 *Type:* VARIABLE
+Channel order - protools.
 
 ### CHANNELORDER_ALLMONO
 *Type:* VARIABLE
+Channel order - allmono.
 
 ### CHANNELORDER_ALLSTEREO
 *Type:* VARIABLE
+Channel order - allstereo.
 
 ### CHANNELORDER_ALSA
 *Type:* VARIABLE
-
-### CHANNELORDER_MAX
-*Type:* VARIABLE
+Channel order - alsa.
 
 ### PLUGINTYPE_OUTPUT
 *Type:* VARIABLE
+Plugin type - output.
 
 ### PLUGINTYPE_CODEC
 *Type:* VARIABLE
+Plugin type - codec.
 
 ### PLUGINTYPE_DSP
 *Type:* VARIABLE
-
-### PLUGINTYPE_MAX
-*Type:* VARIABLE
+Plugin type - dsp.
 
 ### SOUND_TYPE_UNKNOWN
 *Type:* VARIABLE
+Sound file type - unknown.
 
 ### SOUND_TYPE_AIFF
 *Type:* VARIABLE
+Sound file type - aiff.
 
 ### SOUND_TYPE_ASF
 *Type:* VARIABLE
+Sound file type - asf.
 
 ### SOUND_TYPE_DLS
 *Type:* VARIABLE
+Sound file type - dls.
 
 ### SOUND_TYPE_FLAC
 *Type:* VARIABLE
+Sound file type - flac.
 
 ### SOUND_TYPE_FSB
 *Type:* VARIABLE
+Sound file type - fsb.
 
 ### SOUND_TYPE_IT
 *Type:* VARIABLE
+Sound file type - it.
 
 ### SOUND_TYPE_MIDI
 *Type:* VARIABLE
+Sound file type - midi.
 
 ### SOUND_TYPE_MOD
 *Type:* VARIABLE
+Sound file type - mod.
 
 ### SOUND_TYPE_MPEG
 *Type:* VARIABLE
+Sound file type - mpeg.
 
 ### SOUND_TYPE_OGGVORBIS
 *Type:* VARIABLE
+Sound file type - oggvorbis.
 
 ### SOUND_TYPE_PLAYLIST
 *Type:* VARIABLE
+Sound file type - playlist.
 
 ### SOUND_TYPE_RAW
 *Type:* VARIABLE
+Sound file type - raw.
 
 ### SOUND_TYPE_S3M
 *Type:* VARIABLE
+Sound file type - s3m.
 
 ### SOUND_TYPE_USER
 *Type:* VARIABLE
+Sound file type - user.
 
 ### SOUND_TYPE_WAV
 *Type:* VARIABLE
+Sound file type - wav.
 
 ### SOUND_TYPE_XM
 *Type:* VARIABLE
+Sound file type - xm.
 
 ### SOUND_TYPE_XMA
 *Type:* VARIABLE
+Sound file type - xma.
 
 ### SOUND_TYPE_AUDIOQUEUE
 *Type:* VARIABLE
+Sound file type - audioqueue.
 
 ### SOUND_TYPE_AT9
 *Type:* VARIABLE
+Sound file type - at9.
 
 ### SOUND_TYPE_VORBIS
 *Type:* VARIABLE
+Sound file type - vorbis.
 
 ### SOUND_TYPE_MEDIA_FOUNDATION
 *Type:* VARIABLE
+Sound file type - media foundation.
 
 ### SOUND_TYPE_MEDIACODEC
 *Type:* VARIABLE
+Sound file type - mediacodec.
 
 ### SOUND_TYPE_FADPCM
 *Type:* VARIABLE
+Sound file type - fadpcm.
 
 ### SOUND_TYPE_OPUS
 *Type:* VARIABLE
-
-### SOUND_TYPE_MAX
-*Type:* VARIABLE
+Sound file type - opus.
 
 ### SOUND_FORMAT_NONE
 *Type:* VARIABLE
+Sound data format - none.
 
 ### SOUND_FORMAT_PCM8
 *Type:* VARIABLE
+Sound data format - pcm8.
 
 ### SOUND_FORMAT_PCM16
 *Type:* VARIABLE
+Sound data format - pcm16.
 
 ### SOUND_FORMAT_PCM24
 *Type:* VARIABLE
+Sound data format - pcm24.
 
 ### SOUND_FORMAT_PCM32
 *Type:* VARIABLE
+Sound data format - pcm32.
 
 ### SOUND_FORMAT_PCMFLOAT
 *Type:* VARIABLE
+Sound data format - pcmfloat.
 
 ### SOUND_FORMAT_BITSTREAM
 *Type:* VARIABLE
-
-### SOUND_FORMAT_MAX
-*Type:* VARIABLE
+Sound data format - bitstream.
 
 ### OPENSTATE_READY
 *Type:* VARIABLE
+Open state - ready.
 
 ### OPENSTATE_LOADING
 *Type:* VARIABLE
+Open state - loading.
 
 ### OPENSTATE_ERROR
 *Type:* VARIABLE
+Open state - error.
 
 ### OPENSTATE_CONNECTING
 *Type:* VARIABLE
+Open state - connecting.
 
 ### OPENSTATE_BUFFERING
 *Type:* VARIABLE
+Open state - buffering.
 
 ### OPENSTATE_SEEKING
 *Type:* VARIABLE
+Open state - seeking.
 
 ### OPENSTATE_PLAYING
 *Type:* VARIABLE
+Open state - playing.
 
 ### OPENSTATE_SETPOSITION
 *Type:* VARIABLE
-
-### OPENSTATE_MAX
-*Type:* VARIABLE
+Open state - setposition.
 
 ### SOUNDGROUP_BEHAVIOR_FAIL
 *Type:* VARIABLE
+Sound group behavior - fail.
 
 ### SOUNDGROUP_BEHAVIOR_MUTE
 *Type:* VARIABLE
+Sound group behavior - mute.
 
 ### SOUNDGROUP_BEHAVIOR_STEALLOWEST
 *Type:* VARIABLE
-
-### SOUNDGROUP_BEHAVIOR_MAX
-*Type:* VARIABLE
+Sound group behavior - steallowest.
 
 ### CHANNELCONTROL_CALLBACK_END
 *Type:* VARIABLE
+Channel control callback - end.
 
 ### CHANNELCONTROL_CALLBACK_VIRTUALVOICE
 *Type:* VARIABLE
+Channel control callback - virtualvoice.
 
 ### CHANNELCONTROL_CALLBACK_SYNCPOINT
 *Type:* VARIABLE
+Channel control callback - syncpoint.
 
 ### CHANNELCONTROL_CALLBACK_OCCLUSION
 *Type:* VARIABLE
-
-### CHANNELCONTROL_CALLBACK_MAX
-*Type:* VARIABLE
+Channel control callback - occlusion.
 
 ### CHANNELCONTROL_DSP_HEAD
 *Type:* VARIABLE
+Channel control type - dsp head.
 
 ### CHANNELCONTROL_DSP_FADER
 *Type:* VARIABLE
+Channel control type - dsp fader.
 
 ### CHANNELCONTROL_DSP_TAIL
 *Type:* VARIABLE
+Channel control type - dsp tail.
 
 ### ERRORCALLBACK_INSTANCETYPE_NONE
 *Type:* VARIABLE
+Errorcallback instancetype none.
 
 ### ERRORCALLBACK_INSTANCETYPE_SYSTEM
 *Type:* VARIABLE
+Errorcallback instancetype system.
 
 ### ERRORCALLBACK_INSTANCETYPE_CHANNEL
 *Type:* VARIABLE
+Errorcallback instancetype channel.
 
 ### ERRORCALLBACK_INSTANCETYPE_CHANNELGROUP
 *Type:* VARIABLE
+Errorcallback instancetype channelgroup.
 
 ### ERRORCALLBACK_INSTANCETYPE_CHANNELCONTROL
 *Type:* VARIABLE
+Errorcallback instancetype channelcontrol.
 
 ### ERRORCALLBACK_INSTANCETYPE_SOUND
 *Type:* VARIABLE
+Errorcallback instancetype sound.
 
 ### ERRORCALLBACK_INSTANCETYPE_SOUNDGROUP
 *Type:* VARIABLE
+Errorcallback instancetype soundgroup.
 
 ### ERRORCALLBACK_INSTANCETYPE_DSP
 *Type:* VARIABLE
+Errorcallback instancetype dsp.
 
 ### ERRORCALLBACK_INSTANCETYPE_DSPCONNECTION
 *Type:* VARIABLE
+Errorcallback instancetype dspconnection.
 
 ### ERRORCALLBACK_INSTANCETYPE_GEOMETRY
 *Type:* VARIABLE
+Errorcallback instancetype geometry.
 
 ### ERRORCALLBACK_INSTANCETYPE_REVERB3D
 *Type:* VARIABLE
+Errorcallback instancetype reverb3d.
 
 ### ERRORCALLBACK_INSTANCETYPE_STUDIO_SYSTEM
 *Type:* VARIABLE
+Errorcallback instancetype studio system.
 
 ### ERRORCALLBACK_INSTANCETYPE_STUDIO_EVENTDESCRIPTION
 *Type:* VARIABLE
+Errorcallback instancetype studio eventdescription.
 
 ### ERRORCALLBACK_INSTANCETYPE_STUDIO_EVENTINSTANCE
 *Type:* VARIABLE
+Errorcallback instancetype studio eventinstance.
 
 ### ERRORCALLBACK_INSTANCETYPE_STUDIO_PARAMETERINSTANCE
 *Type:* VARIABLE
+Errorcallback instancetype studio parameterinstance.
 
 ### ERRORCALLBACK_INSTANCETYPE_STUDIO_BUS
 *Type:* VARIABLE
+Errorcallback instancetype studio bus.
 
 ### ERRORCALLBACK_INSTANCETYPE_STUDIO_VCA
 *Type:* VARIABLE
+Errorcallback instancetype studio vca.
 
 ### ERRORCALLBACK_INSTANCETYPE_STUDIO_BANK
 *Type:* VARIABLE
+Errorcallback instancetype studio bank.
 
 ### ERRORCALLBACK_INSTANCETYPE_STUDIO_COMMANDREPLAY
 *Type:* VARIABLE
+Errorcallback instancetype studio commandreplay.
 
 ### DSP_RESAMPLER_DEFAULT
 *Type:* VARIABLE
+DSP resampler - default.
 
 ### DSP_RESAMPLER_NOINTERP
 *Type:* VARIABLE
+DSP resampler - nointerp.
 
 ### DSP_RESAMPLER_LINEAR
 *Type:* VARIABLE
+DSP resampler - linear.
 
 ### DSP_RESAMPLER_CUBIC
 *Type:* VARIABLE
+DSP resampler - cubic.
 
 ### DSP_RESAMPLER_SPLINE
 *Type:* VARIABLE
-
-### DSP_RESAMPLER_MAX
-*Type:* VARIABLE
+DSP resampler - spline.
 
 ### DSP_CALLBACK_DATAPARAMETERRELEASE
 *Type:* VARIABLE
-
-### DSP_CALLBACK_MAX
-*Type:* VARIABLE
+DSP callback type - dataparameterrelease.
 
 ### DSPCONNECTION_TYPE_STANDARD
 *Type:* VARIABLE
+DSP connection type - standard.
 
 ### DSPCONNECTION_TYPE_SIDECHAIN
 *Type:* VARIABLE
+DSP connection type - sidechain.
 
 ### DSPCONNECTION_TYPE_SEND
 *Type:* VARIABLE
+DSP connection type - send.
 
 ### DSPCONNECTION_TYPE_SEND_SIDECHAIN
 *Type:* VARIABLE
+DSP connection type - send sidechain.
 
 ### DSPCONNECTION_TYPE_PREALLOCATED
 *Type:* VARIABLE
-
-### DSPCONNECTION_TYPE_MAX
-*Type:* VARIABLE
+DSP connection type - preallocated.
 
 ### TAGTYPE_UNKNOWN
 *Type:* VARIABLE
+Tag type - unknown.
 
 ### TAGTYPE_ID3V1
 *Type:* VARIABLE
+Tag type - id3v1.
 
 ### TAGTYPE_ID3V2
 *Type:* VARIABLE
+Tag type - id3v2.
 
 ### TAGTYPE_VORBISCOMMENT
 *Type:* VARIABLE
+Tag type - vorbiscomment.
 
 ### TAGTYPE_SHOUTCAST
 *Type:* VARIABLE
+Tag type - shoutcast.
 
 ### TAGTYPE_ICECAST
 *Type:* VARIABLE
+Tag type - icecast.
 
 ### TAGTYPE_ASF
 *Type:* VARIABLE
+Tag type - asf.
 
 ### TAGTYPE_MIDI
 *Type:* VARIABLE
+Tag type - midi.
 
 ### TAGTYPE_PLAYLIST
 *Type:* VARIABLE
+Tag type - playlist.
 
 ### TAGTYPE_FMOD
 *Type:* VARIABLE
+Tag type - fmod.
 
 ### TAGTYPE_USER
 *Type:* VARIABLE
-
-### TAGTYPE_MAX
-*Type:* VARIABLE
+Tag type - user.
 
 ### TAGDATATYPE_BINARY
 *Type:* VARIABLE
+Tag data type - binary.
 
 ### TAGDATATYPE_INT
 *Type:* VARIABLE
+Tag data type - int.
 
 ### TAGDATATYPE_FLOAT
 *Type:* VARIABLE
+Tag data type - float.
 
 ### TAGDATATYPE_STRING
 *Type:* VARIABLE
+Tag data type - string.
 
 ### TAGDATATYPE_STRING_UTF16
 *Type:* VARIABLE
+Tag data type - string utf16.
 
 ### TAGDATATYPE_STRING_UTF16BE
 *Type:* VARIABLE
+Tag data type - string utf16be.
 
 ### TAGDATATYPE_STRING_UTF8
 *Type:* VARIABLE
-
-### TAGDATATYPE_MAX
-*Type:* VARIABLE
+Tag data type - string utf8.
 
 ### PORT_TYPE_MUSIC
 *Type:* VARIABLE
+Port type - music.
 
 ### PORT_TYPE_COPYRIGHT_MUSIC
 *Type:* VARIABLE
+Port type - copyright music.
 
 ### PORT_TYPE_VOICE
 *Type:* VARIABLE
+Port type - voice.
 
 ### PORT_TYPE_CONTROLLER
 *Type:* VARIABLE
+Port type - controller.
 
 ### PORT_TYPE_PERSONAL
 *Type:* VARIABLE
+Port type - personal.
 
 ### PORT_TYPE_VIBRATION
 *Type:* VARIABLE
+Port type - vibration.
 
 ### PORT_TYPE_AUX
 *Type:* VARIABLE
+Port type - aux.
 
 ### PORT_TYPE_PASSTHROUGH
 *Type:* VARIABLE
+Port type - passthrough.
 
 ### PORT_TYPE_VR_VIBRATION
 *Type:* VARIABLE
-
-### PORT_TYPE_MAX
-*Type:* VARIABLE
+Port type - vr vibration.
 
 ### DSP_TYPE_UNKNOWN
 *Type:* VARIABLE
+DSP effect type - unknown.
 
 ### DSP_TYPE_MIXER
 *Type:* VARIABLE
+DSP effect type - mixer.
 
 ### DSP_TYPE_OSCILLATOR
 *Type:* VARIABLE
+DSP effect type - oscillator.
 
 ### DSP_TYPE_LOWPASS
 *Type:* VARIABLE
+DSP effect type - lowpass.
 
 ### DSP_TYPE_ITLOWPASS
 *Type:* VARIABLE
+DSP effect type - itlowpass.
 
 ### DSP_TYPE_HIGHPASS
 *Type:* VARIABLE
+DSP effect type - highpass.
 
 ### DSP_TYPE_ECHO
 *Type:* VARIABLE
+DSP effect type - echo.
 
 ### DSP_TYPE_FADER
 *Type:* VARIABLE
+DSP effect type - fader.
 
 ### DSP_TYPE_FLANGE
 *Type:* VARIABLE
+DSP effect type - flange.
 
 ### DSP_TYPE_DISTORTION
 *Type:* VARIABLE
+DSP effect type - distortion.
 
 ### DSP_TYPE_NORMALIZE
 *Type:* VARIABLE
+DSP effect type - normalize.
 
 ### DSP_TYPE_LIMITER
 *Type:* VARIABLE
+DSP effect type - limiter.
 
 ### DSP_TYPE_PARAMEQ
 *Type:* VARIABLE
+DSP effect type - parameq.
 
 ### DSP_TYPE_PITCHSHIFT
 *Type:* VARIABLE
+DSP effect type - pitchshift.
 
 ### DSP_TYPE_CHORUS
 *Type:* VARIABLE
+DSP effect type - chorus.
 
 ### DSP_TYPE_ITECHO
 *Type:* VARIABLE
+DSP effect type - itecho.
 
 ### DSP_TYPE_COMPRESSOR
 *Type:* VARIABLE
+DSP effect type - compressor.
 
 ### DSP_TYPE_SFXREVERB
 *Type:* VARIABLE
+DSP effect type - sfxreverb.
 
 ### DSP_TYPE_LOWPASS_SIMPLE
 *Type:* VARIABLE
+DSP effect type - lowpass simple.
 
 ### DSP_TYPE_DELAY
 *Type:* VARIABLE
+DSP effect type - delay.
 
 ### DSP_TYPE_TREMOLO
 *Type:* VARIABLE
+DSP effect type - tremolo.
 
 ### DSP_TYPE_SEND
 *Type:* VARIABLE
+DSP effect type - send.
 
 ### DSP_TYPE_RETURN
 *Type:* VARIABLE
+DSP effect type - return.
 
 ### DSP_TYPE_HIGHPASS_SIMPLE
 *Type:* VARIABLE
+DSP effect type - highpass simple.
 
 ### DSP_TYPE_PAN
 *Type:* VARIABLE
+DSP effect type - pan.
 
 ### DSP_TYPE_THREE_EQ
 *Type:* VARIABLE
+DSP effect type - three eq.
 
 ### DSP_TYPE_FFT
 *Type:* VARIABLE
+DSP effect type - fft.
 
 ### DSP_TYPE_LOUDNESS_METER
 *Type:* VARIABLE
+DSP effect type - loudness meter.
 
 ### DSP_TYPE_CONVOLUTIONREVERB
 *Type:* VARIABLE
+DSP effect type - convolutionreverb.
 
 ### DSP_TYPE_CHANNELMIX
 *Type:* VARIABLE
+DSP effect type - channelmix.
 
 ### DSP_TYPE_TRANSCEIVER
 *Type:* VARIABLE
+DSP effect type - transceiver.
 
 ### DSP_TYPE_OBJECTPAN
 *Type:* VARIABLE
+DSP effect type - objectpan.
 
 ### DSP_TYPE_MULTIBAND_EQ
 *Type:* VARIABLE
+DSP effect type - multiband eq.
 
 ### DSP_TYPE_MULTIBAND_DYNAMICS
 *Type:* VARIABLE
-
-### DSP_TYPE_MAX
-*Type:* VARIABLE
+DSP effect type - multiband dynamics.
 
 ### DSP_OSCILLATOR_TYPE
 *Type:* VARIABLE
+Dsp oscillator type.
 
 ### DSP_OSCILLATOR_RATE
 *Type:* VARIABLE
+Dsp oscillator rate.
 
 ### DSP_LOWPASS_CUTOFF
 *Type:* VARIABLE
+Dsp lowpass cutoff.
 
 ### DSP_LOWPASS_RESONANCE
 *Type:* VARIABLE
+Dsp lowpass resonance.
 
 ### DSP_ITLOWPASS_CUTOFF
 *Type:* VARIABLE
+Dsp itlowpass cutoff.
 
 ### DSP_ITLOWPASS_RESONANCE
 *Type:* VARIABLE
+Dsp itlowpass resonance.
 
 ### DSP_HIGHPASS_CUTOFF
 *Type:* VARIABLE
+Dsp highpass cutoff.
 
 ### DSP_HIGHPASS_RESONANCE
 *Type:* VARIABLE
+Dsp highpass resonance.
 
 ### DSP_ECHO_DELAY
 *Type:* VARIABLE
+Dsp echo delay.
 
 ### DSP_ECHO_FEEDBACK
 *Type:* VARIABLE
+Dsp echo feedback.
 
 ### DSP_ECHO_DRYLEVEL
 *Type:* VARIABLE
+Dsp echo drylevel.
 
 ### DSP_ECHO_WETLEVEL
 *Type:* VARIABLE
+Dsp echo wetlevel.
 
 ### DSP_ECHO_DELAYCHANGEMODE
 *Type:* VARIABLE
+Dsp echo delaychangemode.
 
 ### DSP_ECHO_DELAYCHANGEMODE_FADE
 *Type:* VARIABLE
+Dsp echo delaychangemode fade.
 
 ### DSP_ECHO_DELAYCHANGEMODE_LERP
 *Type:* VARIABLE
+Dsp echo delaychangemode lerp.
 
 ### DSP_ECHO_DELAYCHANGEMODE_NONE
 *Type:* VARIABLE
+Dsp echo delaychangemode none.
 
 ### DSP_FADER_GAIN
 *Type:* VARIABLE
+Dsp fader gain.
 
 ### DSP_FADER_OVERALL_GAIN
 *Type:* VARIABLE
+Dsp fader overall gain.
 
 ### DSP_FLANGE_MIX
 *Type:* VARIABLE
+Dsp flange mix.
 
 ### DSP_FLANGE_DEPTH
 *Type:* VARIABLE
+Dsp flange depth.
 
 ### DSP_FLANGE_RATE
 *Type:* VARIABLE
+Dsp flange rate.
 
 ### DSP_DISTORTION_LEVEL
 *Type:* VARIABLE
+Dsp distortion level.
 
 ### DSP_NORMALIZE_FADETIME
 *Type:* VARIABLE
+Dsp normalize fadetime.
 
 ### DSP_NORMALIZE_THRESHOLD
 *Type:* VARIABLE
+Dsp normalize threshold.
 
 ### DSP_NORMALIZE_MAXAMP
 *Type:* VARIABLE
+Dsp normalize maxamp.
 
 ### DSP_LIMITER_RELEASETIME
 *Type:* VARIABLE
+Dsp limiter releasetime.
 
 ### DSP_LIMITER_CEILING
 *Type:* VARIABLE
+Dsp limiter ceiling.
 
 ### DSP_LIMITER_MAXIMIZERGAIN
 *Type:* VARIABLE
+Dsp limiter maximizergain.
 
 ### DSP_LIMITER_MODE
 *Type:* VARIABLE
+Dsp limiter mode.
 
 ### DSP_PARAMEQ_CENTER
 *Type:* VARIABLE
+Dsp parameq center.
 
 ### DSP_PARAMEQ_BANDWIDTH
 *Type:* VARIABLE
+Dsp parameq bandwidth.
 
 ### DSP_PARAMEQ_GAIN
 *Type:* VARIABLE
+Dsp parameq gain.
 
 ### DSP_MULTIBAND_EQ_A_FILTER
 *Type:* VARIABLE
+Dsp multiband eq a filter.
 
 ### DSP_MULTIBAND_EQ_A_FREQUENCY
 *Type:* VARIABLE
+Dsp multiband eq a frequency.
 
 ### DSP_MULTIBAND_EQ_A_Q
 *Type:* VARIABLE
+Dsp multiband eq a q.
 
 ### DSP_MULTIBAND_EQ_A_GAIN
 *Type:* VARIABLE
+Dsp multiband eq a gain.
 
 ### DSP_MULTIBAND_EQ_B_FILTER
 *Type:* VARIABLE
+Dsp multiband eq b filter.
 
 ### DSP_MULTIBAND_EQ_B_FREQUENCY
 *Type:* VARIABLE
+Dsp multiband eq b frequency.
 
 ### DSP_MULTIBAND_EQ_B_Q
 *Type:* VARIABLE
+Dsp multiband eq b q.
 
 ### DSP_MULTIBAND_EQ_B_GAIN
 *Type:* VARIABLE
+Dsp multiband eq b gain.
 
 ### DSP_MULTIBAND_EQ_C_FILTER
 *Type:* VARIABLE
+Dsp multiband eq c filter.
 
 ### DSP_MULTIBAND_EQ_C_FREQUENCY
 *Type:* VARIABLE
+Dsp multiband eq c frequency.
 
 ### DSP_MULTIBAND_EQ_C_Q
 *Type:* VARIABLE
+Dsp multiband eq c q.
 
 ### DSP_MULTIBAND_EQ_C_GAIN
 *Type:* VARIABLE
+Dsp multiband eq c gain.
 
 ### DSP_MULTIBAND_EQ_D_FILTER
 *Type:* VARIABLE
+Dsp multiband eq d filter.
 
 ### DSP_MULTIBAND_EQ_D_FREQUENCY
 *Type:* VARIABLE
+Dsp multiband eq d frequency.
 
 ### DSP_MULTIBAND_EQ_D_Q
 *Type:* VARIABLE
+Dsp multiband eq d q.
 
 ### DSP_MULTIBAND_EQ_D_GAIN
 *Type:* VARIABLE
+Dsp multiband eq d gain.
 
 ### DSP_MULTIBAND_EQ_E_FILTER
 *Type:* VARIABLE
+Dsp multiband eq e filter.
 
 ### DSP_MULTIBAND_EQ_E_FREQUENCY
 *Type:* VARIABLE
+Dsp multiband eq e frequency.
 
 ### DSP_MULTIBAND_EQ_E_Q
 *Type:* VARIABLE
+Dsp multiband eq e q.
 
 ### DSP_MULTIBAND_EQ_E_GAIN
 *Type:* VARIABLE
+Dsp multiband eq e gain.
 
 ### DSP_MULTIBAND_EQ_FILTER_DISABLED
 *Type:* VARIABLE
+Dsp multiband eq filter disabled.
 
 ### DSP_MULTIBAND_EQ_FILTER_LOWPASS_12DB
 *Type:* VARIABLE
+Dsp multiband eq filter lowpass 12db.
 
 ### DSP_MULTIBAND_EQ_FILTER_LOWPASS_24DB
 *Type:* VARIABLE
+Dsp multiband eq filter lowpass 24db.
 
 ### DSP_MULTIBAND_EQ_FILTER_LOWPASS_48DB
 *Type:* VARIABLE
+Dsp multiband eq filter lowpass 48db.
 
 ### DSP_MULTIBAND_EQ_FILTER_HIGHPASS_12DB
 *Type:* VARIABLE
+Dsp multiband eq filter highpass 12db.
 
 ### DSP_MULTIBAND_EQ_FILTER_HIGHPASS_24DB
 *Type:* VARIABLE
+Dsp multiband eq filter highpass 24db.
 
 ### DSP_MULTIBAND_EQ_FILTER_HIGHPASS_48DB
 *Type:* VARIABLE
+Dsp multiband eq filter highpass 48db.
 
 ### DSP_MULTIBAND_EQ_FILTER_LOWSHELF
 *Type:* VARIABLE
+Dsp multiband eq filter lowshelf.
 
 ### DSP_MULTIBAND_EQ_FILTER_HIGHSHELF
 *Type:* VARIABLE
+Dsp multiband eq filter highshelf.
 
 ### DSP_MULTIBAND_EQ_FILTER_PEAKING
 *Type:* VARIABLE
+Dsp multiband eq filter peaking.
 
 ### DSP_MULTIBAND_EQ_FILTER_BANDPASS
 *Type:* VARIABLE
+Dsp multiband eq filter bandpass.
 
 ### DSP_MULTIBAND_EQ_FILTER_NOTCH
 *Type:* VARIABLE
+Dsp multiband eq filter notch.
 
 ### DSP_MULTIBAND_EQ_FILTER_ALLPASS
 *Type:* VARIABLE
+Dsp multiband eq filter allpass.
 
 ### DSP_MULTIBAND_EQ_FILTER_LOWPASS_6DB
 *Type:* VARIABLE
+Dsp multiband eq filter lowpass 6db.
 
 ### DSP_MULTIBAND_EQ_FILTER_HIGHPASS_6DB
 *Type:* VARIABLE
+Dsp multiband eq filter highpass 6db.
 
 ### DSP_MULTIBAND_DYNAMICS_LOWER_FREQUENCY
 *Type:* VARIABLE
+Dsp multiband dynamics lower frequency.
 
 ### DSP_MULTIBAND_DYNAMICS_UPPER_FREQUENCY
 *Type:* VARIABLE
+Dsp multiband dynamics upper frequency.
 
 ### DSP_MULTIBAND_DYNAMICS_LINKED
 *Type:* VARIABLE
+Dsp multiband dynamics linked.
 
 ### DSP_MULTIBAND_DYNAMICS_USE_SIDECHAIN
 *Type:* VARIABLE
+Dsp multiband dynamics use sidechain.
 
 ### DSP_MULTIBAND_DYNAMICS_A_MODE
 *Type:* VARIABLE
+Dsp multiband dynamics a mode.
 
 ### DSP_MULTIBAND_DYNAMICS_A_GAIN
 *Type:* VARIABLE
+Dsp multiband dynamics a gain.
 
 ### DSP_MULTIBAND_DYNAMICS_A_THRESHOLD
 *Type:* VARIABLE
+Dsp multiband dynamics a threshold.
 
 ### DSP_MULTIBAND_DYNAMICS_A_RATIO
 *Type:* VARIABLE
+Dsp multiband dynamics a ratio.
 
 ### DSP_MULTIBAND_DYNAMICS_A_ATTACK
 *Type:* VARIABLE
+Dsp multiband dynamics a attack.
 
 ### DSP_MULTIBAND_DYNAMICS_A_RELEASE
 *Type:* VARIABLE
+Dsp multiband dynamics a release.
 
 ### DSP_MULTIBAND_DYNAMICS_A_GAIN_MAKEUP
 *Type:* VARIABLE
+Dsp multiband dynamics a gain makeup.
 
 ### DSP_MULTIBAND_DYNAMICS_A_RESPONSE_DATA
 *Type:* VARIABLE
+Dsp multiband dynamics a response data.
 
 ### DSP_MULTIBAND_DYNAMICS_B_MODE
 *Type:* VARIABLE
+Dsp multiband dynamics b mode.
 
 ### DSP_MULTIBAND_DYNAMICS_B_GAIN
 *Type:* VARIABLE
+Dsp multiband dynamics b gain.
 
 ### DSP_MULTIBAND_DYNAMICS_B_THRESHOLD
 *Type:* VARIABLE
+Dsp multiband dynamics b threshold.
 
 ### DSP_MULTIBAND_DYNAMICS_B_RATIO
 *Type:* VARIABLE
+Dsp multiband dynamics b ratio.
 
 ### DSP_MULTIBAND_DYNAMICS_B_ATTACK
 *Type:* VARIABLE
+Dsp multiband dynamics b attack.
 
 ### DSP_MULTIBAND_DYNAMICS_B_RELEASE
 *Type:* VARIABLE
+Dsp multiband dynamics b release.
 
 ### DSP_MULTIBAND_DYNAMICS_B_GAIN_MAKEUP
 *Type:* VARIABLE
+Dsp multiband dynamics b gain makeup.
 
 ### DSP_MULTIBAND_DYNAMICS_B_RESPONSE_DATA
 *Type:* VARIABLE
+Dsp multiband dynamics b response data.
 
 ### DSP_MULTIBAND_DYNAMICS_C_MODE
 *Type:* VARIABLE
+Dsp multiband dynamics c mode.
 
 ### DSP_MULTIBAND_DYNAMICS_C_GAIN
 *Type:* VARIABLE
+Dsp multiband dynamics c gain.
 
 ### DSP_MULTIBAND_DYNAMICS_C_THRESHOLD
 *Type:* VARIABLE
+Dsp multiband dynamics c threshold.
 
 ### DSP_MULTIBAND_DYNAMICS_C_RATIO
 *Type:* VARIABLE
+Dsp multiband dynamics c ratio.
 
 ### DSP_MULTIBAND_DYNAMICS_C_ATTACK
 *Type:* VARIABLE
+Dsp multiband dynamics c attack.
 
 ### DSP_MULTIBAND_DYNAMICS_C_RELEASE
 *Type:* VARIABLE
+Dsp multiband dynamics c release.
 
 ### DSP_MULTIBAND_DYNAMICS_C_GAIN_MAKEUP
 *Type:* VARIABLE
+Dsp multiband dynamics c gain makeup.
 
 ### DSP_MULTIBAND_DYNAMICS_C_RESPONSE_DATA
 *Type:* VARIABLE
+Dsp multiband dynamics c response data.
 
 ### DSP_MULTIBAND_DYNAMICS_MODE_DISABLED
 *Type:* VARIABLE
+Dsp multiband dynamics mode disabled.
 
 ### DSP_MULTIBAND_DYNAMICS_MODE_COMPRESS_UP
 *Type:* VARIABLE
+Dsp multiband dynamics mode compress up.
 
 ### DSP_MULTIBAND_DYNAMICS_MODE_COMPRESS_DOWN
 *Type:* VARIABLE
+Dsp multiband dynamics mode compress down.
 
 ### DSP_MULTIBAND_DYNAMICS_MODE_EXPAND_UP
 *Type:* VARIABLE
+Dsp multiband dynamics mode expand up.
 
 ### DSP_MULTIBAND_DYNAMICS_MODE_EXPAND_DOWN
 *Type:* VARIABLE
+Dsp multiband dynamics mode expand down.
 
 ### DSP_PITCHSHIFT_PITCH
 *Type:* VARIABLE
+Dsp pitchshift pitch.
 
 ### DSP_PITCHSHIFT_FFTSIZE
 *Type:* VARIABLE
+Dsp pitchshift fftsize.
 
 ### DSP_PITCHSHIFT_OVERLAP
 *Type:* VARIABLE
+Dsp pitchshift overlap.
 
 ### DSP_PITCHSHIFT_MAXCHANNELS
 *Type:* VARIABLE
+Dsp pitchshift maxchannels.
 
 ### DSP_CHORUS_MIX
 *Type:* VARIABLE
+Dsp chorus mix.
 
 ### DSP_CHORUS_RATE
 *Type:* VARIABLE
+Dsp chorus rate.
 
 ### DSP_CHORUS_DEPTH
 *Type:* VARIABLE
+Dsp chorus depth.
 
 ### DSP_ITECHO_WETDRYMIX
 *Type:* VARIABLE
+Dsp itecho wetdrymix.
 
 ### DSP_ITECHO_FEEDBACK
 *Type:* VARIABLE
+Dsp itecho feedback.
 
 ### DSP_ITECHO_LEFTDELAY
 *Type:* VARIABLE
+Dsp itecho leftdelay.
 
 ### DSP_ITECHO_RIGHTDELAY
 *Type:* VARIABLE
+Dsp itecho rightdelay.
 
 ### DSP_ITECHO_PANDELAY
 *Type:* VARIABLE
+Dsp itecho pandelay.
 
 ### DSP_COMPRESSOR_THRESHOLD
 *Type:* VARIABLE
+Dsp compressor threshold.
 
 ### DSP_COMPRESSOR_RATIO
 *Type:* VARIABLE
+Dsp compressor ratio.
 
 ### DSP_COMPRESSOR_ATTACK
 *Type:* VARIABLE
+Dsp compressor attack.
 
 ### DSP_COMPRESSOR_RELEASE
 *Type:* VARIABLE
+Dsp compressor release.
 
 ### DSP_COMPRESSOR_GAINMAKEUP
 *Type:* VARIABLE
+Dsp compressor gainmakeup.
 
 ### DSP_COMPRESSOR_USESIDECHAIN
 *Type:* VARIABLE
+Dsp compressor usesidechain.
 
 ### DSP_COMPRESSOR_LINKED
 *Type:* VARIABLE
+Dsp compressor linked.
 
 ### DSP_SFXREVERB_DECAYTIME
 *Type:* VARIABLE
+Dsp sfxreverb decaytime.
 
 ### DSP_SFXREVERB_EARLYDELAY
 *Type:* VARIABLE
+Dsp sfxreverb earlydelay.
 
 ### DSP_SFXREVERB_LATEDELAY
 *Type:* VARIABLE
+Dsp sfxreverb latedelay.
 
 ### DSP_SFXREVERB_HFREFERENCE
 *Type:* VARIABLE
+Dsp sfxreverb hfreference.
 
 ### DSP_SFXREVERB_HFDECAYRATIO
 *Type:* VARIABLE
+Dsp sfxreverb hfdecayratio.
 
 ### DSP_SFXREVERB_DIFFUSION
 *Type:* VARIABLE
+Dsp sfxreverb diffusion.
 
 ### DSP_SFXREVERB_DENSITY
 *Type:* VARIABLE
+Dsp sfxreverb density.
 
 ### DSP_SFXREVERB_LOWSHELFFREQUENCY
 *Type:* VARIABLE
+Dsp sfxreverb lowshelffrequency.
 
 ### DSP_SFXREVERB_LOWSHELFGAIN
 *Type:* VARIABLE
+Dsp sfxreverb lowshelfgain.
 
 ### DSP_SFXREVERB_HIGHCUT
 *Type:* VARIABLE
+Dsp sfxreverb highcut.
 
 ### DSP_SFXREVERB_EARLYLATEMIX
 *Type:* VARIABLE
+Dsp sfxreverb earlylatemix.
 
 ### DSP_SFXREVERB_WETLEVEL
 *Type:* VARIABLE
+Dsp sfxreverb wetlevel.
 
 ### DSP_SFXREVERB_DRYLEVEL
 *Type:* VARIABLE
+Dsp sfxreverb drylevel.
 
 ### DSP_LOWPASS_SIMPLE_CUTOFF
 *Type:* VARIABLE
+Dsp lowpass simple cutoff.
 
 ### DSP_DELAY_CH0
 *Type:* VARIABLE
+Dsp delay ch0.
 
 ### DSP_DELAY_CH1
 *Type:* VARIABLE
+Dsp delay ch1.
 
 ### DSP_DELAY_CH2
 *Type:* VARIABLE
+Dsp delay ch2.
 
 ### DSP_DELAY_CH3
 *Type:* VARIABLE
+Dsp delay ch3.
 
 ### DSP_DELAY_CH4
 *Type:* VARIABLE
+Dsp delay ch4.
 
 ### DSP_DELAY_CH5
 *Type:* VARIABLE
+Dsp delay ch5.
 
 ### DSP_DELAY_CH6
 *Type:* VARIABLE
+Dsp delay ch6.
 
 ### DSP_DELAY_CH7
 *Type:* VARIABLE
+Dsp delay ch7.
 
 ### DSP_DELAY_CH8
 *Type:* VARIABLE
+Dsp delay ch8.
 
 ### DSP_DELAY_CH9
 *Type:* VARIABLE
+Dsp delay ch9.
 
 ### DSP_DELAY_CH10
 *Type:* VARIABLE
+Dsp delay ch10.
 
 ### DSP_DELAY_CH11
 *Type:* VARIABLE
+Dsp delay ch11.
 
 ### DSP_DELAY_CH12
 *Type:* VARIABLE
+Dsp delay ch12.
 
 ### DSP_DELAY_CH13
 *Type:* VARIABLE
+Dsp delay ch13.
 
 ### DSP_DELAY_CH14
 *Type:* VARIABLE
+Dsp delay ch14.
 
 ### DSP_DELAY_CH15
 *Type:* VARIABLE
+Dsp delay ch15.
 
 ### DSP_DELAY_MAXDELAY
 *Type:* VARIABLE
+Dsp delay maxdelay.
 
 ### DSP_TREMOLO_FREQUENCY
 *Type:* VARIABLE
+Dsp tremolo frequency.
 
 ### DSP_TREMOLO_DEPTH
 *Type:* VARIABLE
+Dsp tremolo depth.
 
 ### DSP_TREMOLO_SHAPE
 *Type:* VARIABLE
+Dsp tremolo shape.
 
 ### DSP_TREMOLO_SKEW
 *Type:* VARIABLE
+Dsp tremolo skew.
 
 ### DSP_TREMOLO_DUTY
 *Type:* VARIABLE
+Dsp tremolo duty.
 
 ### DSP_TREMOLO_SQUARE
 *Type:* VARIABLE
+Dsp tremolo square.
 
 ### DSP_TREMOLO_PHASE
 *Type:* VARIABLE
+Dsp tremolo phase.
 
 ### DSP_TREMOLO_SPREAD
 *Type:* VARIABLE
+Dsp tremolo spread.
 
 ### DSP_SEND_RETURNID
 *Type:* VARIABLE
+Dsp send returnid.
 
 ### DSP_SEND_LEVEL
 *Type:* VARIABLE
+Dsp send level.
 
 ### DSP_RETURN_ID
 *Type:* VARIABLE
+Dsp return id.
 
 ### DSP_RETURN_INPUT_SPEAKER_MODE
 *Type:* VARIABLE
+Dsp return input speaker mode.
 
 ### DSP_HIGHPASS_SIMPLE_CUTOFF
 *Type:* VARIABLE
+Dsp highpass simple cutoff.
 
 ### DSP_PAN_2D_STEREO_MODE_DISTRIBUTED
 *Type:* VARIABLE
+Dsp pan 2d stereo mode distributed.
 
 ### DSP_PAN_2D_STEREO_MODE_DISCRETE
 *Type:* VARIABLE
+Dsp pan 2d stereo mode discrete.
 
 ### DSP_PAN_MODE_MONO
 *Type:* VARIABLE
+Dsp pan mode mono.
 
 ### DSP_PAN_MODE_STEREO
 *Type:* VARIABLE
+Dsp pan mode stereo.
 
 ### DSP_PAN_MODE_SURROUND
 *Type:* VARIABLE
+Dsp pan mode surround.
 
 ### DSP_PAN_3D_ROLLOFF_LINEARSQUARED
 *Type:* VARIABLE
+Pan 3D rolloff type - linearsquared.
 
 ### DSP_PAN_3D_ROLLOFF_LINEAR
 *Type:* VARIABLE
+Pan 3D rolloff type - linear.
 
 ### DSP_PAN_3D_ROLLOFF_INVERSE
 *Type:* VARIABLE
+Pan 3D rolloff type - inverse.
 
 ### DSP_PAN_3D_ROLLOFF_INVERSETAPERED
 *Type:* VARIABLE
+Pan 3D rolloff type - inversetapered.
 
 ### DSP_PAN_3D_ROLLOFF_CUSTOM
 *Type:* VARIABLE
+Pan 3D rolloff type - custom.
 
 ### DSP_PAN_3D_EXTENT_MODE_AUTO
 *Type:* VARIABLE
+Dsp pan 3d extent mode auto.
 
 ### DSP_PAN_3D_EXTENT_MODE_USER
 *Type:* VARIABLE
+Dsp pan 3d extent mode user.
 
 ### DSP_PAN_3D_EXTENT_MODE_OFF
 *Type:* VARIABLE
+Dsp pan 3d extent mode off.
 
 ### DSP_PAN_MODE
 *Type:* VARIABLE
+Dsp pan mode.
 
 ### DSP_PAN_2D_STEREO_POSITION
 *Type:* VARIABLE
+Dsp pan 2d stereo position.
 
 ### DSP_PAN_2D_DIRECTION
 *Type:* VARIABLE
+Dsp pan 2d direction.
 
 ### DSP_PAN_2D_EXTENT
 *Type:* VARIABLE
+Dsp pan 2d extent.
 
 ### DSP_PAN_2D_ROTATION
 *Type:* VARIABLE
+Dsp pan 2d rotation.
 
 ### DSP_PAN_2D_LFE_LEVEL
 *Type:* VARIABLE
+Dsp pan 2d lfe level.
 
 ### DSP_PAN_2D_STEREO_MODE
 *Type:* VARIABLE
+Dsp pan 2d stereo mode.
 
 ### DSP_PAN_2D_STEREO_SEPARATION
 *Type:* VARIABLE
+Dsp pan 2d stereo separation.
 
 ### DSP_PAN_2D_STEREO_AXIS
 *Type:* VARIABLE
+Dsp pan 2d stereo axis.
 
 ### DSP_PAN_ENABLED_SPEAKERS
 *Type:* VARIABLE
+Dsp pan enabled speakers.
 
 ### DSP_PAN_3D_POSITION
 *Type:* VARIABLE
+Dsp pan 3d position.
 
 ### DSP_PAN_3D_ROLLOFF
 *Type:* VARIABLE
+Dsp pan 3d rolloff.
 
 ### DSP_PAN_3D_MIN_DISTANCE
 *Type:* VARIABLE
+Dsp pan 3d min distance.
 
 ### DSP_PAN_3D_MAX_DISTANCE
 *Type:* VARIABLE
+Dsp pan 3d max distance.
 
 ### DSP_PAN_3D_EXTENT_MODE
 *Type:* VARIABLE
+Dsp pan 3d extent mode.
 
 ### DSP_PAN_3D_SOUND_SIZE
 *Type:* VARIABLE
+Dsp pan 3d sound size.
 
 ### DSP_PAN_3D_MIN_EXTENT
 *Type:* VARIABLE
+Dsp pan 3d min extent.
 
 ### DSP_PAN_3D_PAN_BLEND
 *Type:* VARIABLE
+Dsp pan 3d pan blend.
 
 ### DSP_PAN_LFE_UPMIX_ENABLED
 *Type:* VARIABLE
+Dsp pan lfe upmix enabled.
 
 ### DSP_PAN_OVERALL_GAIN
 *Type:* VARIABLE
+Dsp pan overall gain.
 
 ### DSP_PAN_SURROUND_SPEAKER_MODE
 *Type:* VARIABLE
+Pan surround mode - speaker mode.
 
 ### DSP_PAN_2D_HEIGHT_BLEND
 *Type:* VARIABLE
+Dsp pan 2d height blend.
 
 ### DSP_PAN_ATTENUATION_RANGE
 *Type:* VARIABLE
+Dsp pan attenuation range.
 
 ### DSP_PAN_OVERRIDE_RANGE
 *Type:* VARIABLE
+Dsp pan override range.
 
 ### DSP_THREE_EQ_CROSSOVERSLOPE_12DB
 *Type:* VARIABLE
+Dsp three eq crossoverslope 12db.
 
 ### DSP_THREE_EQ_CROSSOVERSLOPE_24DB
 *Type:* VARIABLE
+Dsp three eq crossoverslope 24db.
 
 ### DSP_THREE_EQ_CROSSOVERSLOPE_48DB
 *Type:* VARIABLE
+Dsp three eq crossoverslope 48db.
 
 ### DSP_THREE_EQ_LOWGAIN
 *Type:* VARIABLE
+Dsp three eq lowgain.
 
 ### DSP_THREE_EQ_MIDGAIN
 *Type:* VARIABLE
+Dsp three eq midgain.
 
 ### DSP_THREE_EQ_HIGHGAIN
 *Type:* VARIABLE
+Dsp three eq highgain.
 
 ### DSP_THREE_EQ_LOWCROSSOVER
 *Type:* VARIABLE
+Dsp three eq lowcrossover.
 
 ### DSP_THREE_EQ_HIGHCROSSOVER
 *Type:* VARIABLE
+Dsp three eq highcrossover.
 
 ### DSP_THREE_EQ_CROSSOVERSLOPE
 *Type:* VARIABLE
+Dsp three eq crossoverslope.
 
 ### DSP_FFT_WINDOW_RECT
 *Type:* VARIABLE
+Dsp fft window rect.
 
 ### DSP_FFT_WINDOW_TRIANGLE
 *Type:* VARIABLE
+Dsp fft window triangle.
 
 ### DSP_FFT_WINDOW_HAMMING
 *Type:* VARIABLE
+Dsp fft window hamming.
 
 ### DSP_FFT_WINDOW_HANNING
 *Type:* VARIABLE
+Dsp fft window hanning.
 
 ### DSP_FFT_WINDOW_BLACKMAN
 *Type:* VARIABLE
+Dsp fft window blackman.
 
 ### DSP_FFT_WINDOW_BLACKMANHARRIS
 *Type:* VARIABLE
+Dsp fft window blackmanharris.
 
 ### DSP_FFT_DOWNMIX_NONE
 *Type:* VARIABLE
+Dsp fft downmix none.
 
 ### DSP_FFT_DOWNMIX_MONO
 *Type:* VARIABLE
+Dsp fft downmix mono.
 
 ### DSP_FFT_WINDOWSIZE
 *Type:* VARIABLE
+Dsp fft windowsize.
 
 ### DSP_FFT_WINDOW
 *Type:* VARIABLE
+Dsp fft window.
 
 ### DSP_FFT_BAND_START_FREQ
 *Type:* VARIABLE
+Dsp fft band start freq.
 
 ### DSP_FFT_BAND_STOP_FREQ
 *Type:* VARIABLE
+Dsp fft band stop freq.
 
 ### DSP_FFT_SPECTRUMDATA
 *Type:* VARIABLE
+Dsp fft spectrumdata.
 
 ### DSP_FFT_RMS
 *Type:* VARIABLE
+Dsp fft rms.
 
 ### DSP_FFT_SPECTRAL_CENTROID
 *Type:* VARIABLE
+Dsp fft spectral centroid.
 
 ### DSP_FFT_IMMEDIATE_MODE
 *Type:* VARIABLE
+Dsp fft immediate mode.
 
 ### DSP_FFT_DOWNMIX
 *Type:* VARIABLE
+Dsp fft downmix.
 
 ### DSP_FFT_CHANNEL
 *Type:* VARIABLE
+Dsp fft channel.
 
 ### DSP_LOUDNESS_METER_STATE
 *Type:* VARIABLE
+Dsp loudness meter state.
 
 ### DSP_LOUDNESS_METER_WEIGHTING
 *Type:* VARIABLE
+Dsp loudness meter weighting.
 
 ### DSP_LOUDNESS_METER_INFO
 *Type:* VARIABLE
+Dsp loudness meter info.
 
 ### DSP_LOUDNESS_METER_STATE_RESET_INTEGRATED
 *Type:* VARIABLE
+Dsp loudness meter state reset integrated.
 
 ### DSP_LOUDNESS_METER_STATE_RESET_MAXPEAK
 *Type:* VARIABLE
+Dsp loudness meter state reset maxpeak.
 
 ### DSP_LOUDNESS_METER_STATE_RESET_ALL
 *Type:* VARIABLE
+Dsp loudness meter state reset all.
 
 ### DSP_LOUDNESS_METER_STATE_PAUSED
 *Type:* VARIABLE
+Dsp loudness meter state paused.
 
 ### DSP_LOUDNESS_METER_STATE_ANALYZING
 *Type:* VARIABLE
+Dsp loudness meter state analyzing.
 
 ### DSP_CONVOLUTION_REVERB_PARAM_IR
 *Type:* VARIABLE
+Dsp convolution reverb param ir.
 
 ### DSP_CONVOLUTION_REVERB_PARAM_WET
 *Type:* VARIABLE
+Dsp convolution reverb param wet.
 
 ### DSP_CONVOLUTION_REVERB_PARAM_DRY
 *Type:* VARIABLE
+Dsp convolution reverb param dry.
 
 ### DSP_CONVOLUTION_REVERB_PARAM_LINKED
 *Type:* VARIABLE
+Dsp convolution reverb param linked.
 
 ### DSP_CHANNELMIX_OUTPUT_DEFAULT
 *Type:* VARIABLE
+Dsp channelmix output default.
 
 ### DSP_CHANNELMIX_OUTPUT_ALLMONO
 *Type:* VARIABLE
+Dsp channelmix output allmono.
 
 ### DSP_CHANNELMIX_OUTPUT_ALLSTEREO
 *Type:* VARIABLE
+Dsp channelmix output allstereo.
 
 ### DSP_CHANNELMIX_OUTPUT_ALLQUAD
 *Type:* VARIABLE
+Dsp channelmix output allquad.
 
 ### DSP_CHANNELMIX_OUTPUT_ALL5POINT1
 *Type:* VARIABLE
+Dsp channelmix output all5point1.
 
 ### DSP_CHANNELMIX_OUTPUT_ALL7POINT1
 *Type:* VARIABLE
+Dsp channelmix output all7point1.
 
 ### DSP_CHANNELMIX_OUTPUT_ALLLFE
 *Type:* VARIABLE
+Dsp channelmix output alllfe.
 
 ### DSP_CHANNELMIX_OUTPUT_ALL7POINT1POINT4
 *Type:* VARIABLE
+Dsp channelmix output all7point1point4.
 
 ### DSP_CHANNELMIX_OUTPUTGROUPING
 *Type:* VARIABLE
+Dsp channelmix outputgrouping.
 
 ### DSP_CHANNELMIX_GAIN_CH0
 *Type:* VARIABLE
+Dsp channelmix gain ch0.
 
 ### DSP_CHANNELMIX_GAIN_CH1
 *Type:* VARIABLE
+Dsp channelmix gain ch1.
 
 ### DSP_CHANNELMIX_GAIN_CH2
 *Type:* VARIABLE
+Dsp channelmix gain ch2.
 
 ### DSP_CHANNELMIX_GAIN_CH3
 *Type:* VARIABLE
+Dsp channelmix gain ch3.
 
 ### DSP_CHANNELMIX_GAIN_CH4
 *Type:* VARIABLE
+Dsp channelmix gain ch4.
 
 ### DSP_CHANNELMIX_GAIN_CH5
 *Type:* VARIABLE
+Dsp channelmix gain ch5.
 
 ### DSP_CHANNELMIX_GAIN_CH6
 *Type:* VARIABLE
+Dsp channelmix gain ch6.
 
 ### DSP_CHANNELMIX_GAIN_CH7
 *Type:* VARIABLE
+Dsp channelmix gain ch7.
 
 ### DSP_CHANNELMIX_GAIN_CH8
 *Type:* VARIABLE
+Dsp channelmix gain ch8.
 
 ### DSP_CHANNELMIX_GAIN_CH9
 *Type:* VARIABLE
+Dsp channelmix gain ch9.
 
 ### DSP_CHANNELMIX_GAIN_CH10
 *Type:* VARIABLE
+Dsp channelmix gain ch10.
 
 ### DSP_CHANNELMIX_GAIN_CH11
 *Type:* VARIABLE
+Dsp channelmix gain ch11.
 
 ### DSP_CHANNELMIX_GAIN_CH12
 *Type:* VARIABLE
+Dsp channelmix gain ch12.
 
 ### DSP_CHANNELMIX_GAIN_CH13
 *Type:* VARIABLE
+Dsp channelmix gain ch13.
 
 ### DSP_CHANNELMIX_GAIN_CH14
 *Type:* VARIABLE
+Dsp channelmix gain ch14.
 
 ### DSP_CHANNELMIX_GAIN_CH15
 *Type:* VARIABLE
+Dsp channelmix gain ch15.
 
 ### DSP_CHANNELMIX_GAIN_CH16
 *Type:* VARIABLE
+Dsp channelmix gain ch16.
 
 ### DSP_CHANNELMIX_GAIN_CH17
 *Type:* VARIABLE
+Dsp channelmix gain ch17.
 
 ### DSP_CHANNELMIX_GAIN_CH18
 *Type:* VARIABLE
+Dsp channelmix gain ch18.
 
 ### DSP_CHANNELMIX_GAIN_CH19
 *Type:* VARIABLE
+Dsp channelmix gain ch19.
 
 ### DSP_CHANNELMIX_GAIN_CH20
 *Type:* VARIABLE
+Dsp channelmix gain ch20.
 
 ### DSP_CHANNELMIX_GAIN_CH21
 *Type:* VARIABLE
+Dsp channelmix gain ch21.
 
 ### DSP_CHANNELMIX_GAIN_CH22
 *Type:* VARIABLE
+Dsp channelmix gain ch22.
 
 ### DSP_CHANNELMIX_GAIN_CH23
 *Type:* VARIABLE
+Dsp channelmix gain ch23.
 
 ### DSP_CHANNELMIX_GAIN_CH24
 *Type:* VARIABLE
+Dsp channelmix gain ch24.
 
 ### DSP_CHANNELMIX_GAIN_CH25
 *Type:* VARIABLE
+Dsp channelmix gain ch25.
 
 ### DSP_CHANNELMIX_GAIN_CH26
 *Type:* VARIABLE
+Dsp channelmix gain ch26.
 
 ### DSP_CHANNELMIX_GAIN_CH27
 *Type:* VARIABLE
+Dsp channelmix gain ch27.
 
 ### DSP_CHANNELMIX_GAIN_CH28
 *Type:* VARIABLE
+Dsp channelmix gain ch28.
 
 ### DSP_CHANNELMIX_GAIN_CH29
 *Type:* VARIABLE
+Dsp channelmix gain ch29.
 
 ### DSP_CHANNELMIX_GAIN_CH30
 *Type:* VARIABLE
+Dsp channelmix gain ch30.
 
 ### DSP_CHANNELMIX_GAIN_CH31
 *Type:* VARIABLE
+Dsp channelmix gain ch31.
 
 ### DSP_CHANNELMIX_OUTPUT_CH0
 *Type:* VARIABLE
+Dsp channelmix output ch0.
 
 ### DSP_CHANNELMIX_OUTPUT_CH1
 *Type:* VARIABLE
+Dsp channelmix output ch1.
 
 ### DSP_CHANNELMIX_OUTPUT_CH2
 *Type:* VARIABLE
+Dsp channelmix output ch2.
 
 ### DSP_CHANNELMIX_OUTPUT_CH3
 *Type:* VARIABLE
+Dsp channelmix output ch3.
 
 ### DSP_CHANNELMIX_OUTPUT_CH4
 *Type:* VARIABLE
+Dsp channelmix output ch4.
 
 ### DSP_CHANNELMIX_OUTPUT_CH5
 *Type:* VARIABLE
+Dsp channelmix output ch5.
 
 ### DSP_CHANNELMIX_OUTPUT_CH6
 *Type:* VARIABLE
+Dsp channelmix output ch6.
 
 ### DSP_CHANNELMIX_OUTPUT_CH7
 *Type:* VARIABLE
+Dsp channelmix output ch7.
 
 ### DSP_CHANNELMIX_OUTPUT_CH8
 *Type:* VARIABLE
+Dsp channelmix output ch8.
 
 ### DSP_CHANNELMIX_OUTPUT_CH9
 *Type:* VARIABLE
+Dsp channelmix output ch9.
 
 ### DSP_CHANNELMIX_OUTPUT_CH10
 *Type:* VARIABLE
+Dsp channelmix output ch10.
 
 ### DSP_CHANNELMIX_OUTPUT_CH11
 *Type:* VARIABLE
+Dsp channelmix output ch11.
 
 ### DSP_CHANNELMIX_OUTPUT_CH12
 *Type:* VARIABLE
+Dsp channelmix output ch12.
 
 ### DSP_CHANNELMIX_OUTPUT_CH13
 *Type:* VARIABLE
+Dsp channelmix output ch13.
 
 ### DSP_CHANNELMIX_OUTPUT_CH14
 *Type:* VARIABLE
+Dsp channelmix output ch14.
 
 ### DSP_CHANNELMIX_OUTPUT_CH15
 *Type:* VARIABLE
+Dsp channelmix output ch15.
 
 ### DSP_CHANNELMIX_OUTPUT_CH16
 *Type:* VARIABLE
+Dsp channelmix output ch16.
 
 ### DSP_CHANNELMIX_OUTPUT_CH17
 *Type:* VARIABLE
+Dsp channelmix output ch17.
 
 ### DSP_CHANNELMIX_OUTPUT_CH18
 *Type:* VARIABLE
+Dsp channelmix output ch18.
 
 ### DSP_CHANNELMIX_OUTPUT_CH19
 *Type:* VARIABLE
+Dsp channelmix output ch19.
 
 ### DSP_CHANNELMIX_OUTPUT_CH20
 *Type:* VARIABLE
+Dsp channelmix output ch20.
 
 ### DSP_CHANNELMIX_OUTPUT_CH21
 *Type:* VARIABLE
+Dsp channelmix output ch21.
 
 ### DSP_CHANNELMIX_OUTPUT_CH22
 *Type:* VARIABLE
+Dsp channelmix output ch22.
 
 ### DSP_CHANNELMIX_OUTPUT_CH23
 *Type:* VARIABLE
+Dsp channelmix output ch23.
 
 ### DSP_CHANNELMIX_OUTPUT_CH24
 *Type:* VARIABLE
+Dsp channelmix output ch24.
 
 ### DSP_CHANNELMIX_OUTPUT_CH25
 *Type:* VARIABLE
+Dsp channelmix output ch25.
 
 ### DSP_CHANNELMIX_OUTPUT_CH26
 *Type:* VARIABLE
+Dsp channelmix output ch26.
 
 ### DSP_CHANNELMIX_OUTPUT_CH27
 *Type:* VARIABLE
+Dsp channelmix output ch27.
 
 ### DSP_CHANNELMIX_OUTPUT_CH28
 *Type:* VARIABLE
+Dsp channelmix output ch28.
 
 ### DSP_CHANNELMIX_OUTPUT_CH29
 *Type:* VARIABLE
+Dsp channelmix output ch29.
 
 ### DSP_CHANNELMIX_OUTPUT_CH30
 *Type:* VARIABLE
+Dsp channelmix output ch30.
 
 ### DSP_CHANNELMIX_OUTPUT_CH31
 *Type:* VARIABLE
+Dsp channelmix output ch31.
 
 ### DSP_TRANSCEIVER_SPEAKERMODE_AUTO
 *Type:* VARIABLE
+Dsp transceiver speakermode auto.
 
 ### DSP_TRANSCEIVER_SPEAKERMODE_MONO
 *Type:* VARIABLE
+Dsp transceiver speakermode mono.
 
 ### DSP_TRANSCEIVER_SPEAKERMODE_STEREO
 *Type:* VARIABLE
+Dsp transceiver speakermode stereo.
 
 ### DSP_TRANSCEIVER_SPEAKERMODE_SURROUND
 *Type:* VARIABLE
+Dsp transceiver speakermode surround.
 
 ### DSP_TRANSCEIVER_TRANSMIT
 *Type:* VARIABLE
+Dsp transceiver transmit.
 
 ### DSP_TRANSCEIVER_GAIN
 *Type:* VARIABLE
+Dsp transceiver gain.
 
 ### DSP_TRANSCEIVER_CHANNEL
 *Type:* VARIABLE
+Dsp transceiver channel.
 
 ### DSP_TRANSCEIVER_TRANSMITSPEAKERMODE
 *Type:* VARIABLE
+Dsp transceiver transmitspeakermode.
 
 ### DSP_OBJECTPAN_3D_POSITION
 *Type:* VARIABLE
+Dsp objectpan 3d position.
 
 ### DSP_OBJECTPAN_3D_ROLLOFF
 *Type:* VARIABLE
+Dsp objectpan 3d rolloff.
 
 ### DSP_OBJECTPAN_3D_MIN_DISTANCE
 *Type:* VARIABLE
+Dsp objectpan 3d min distance.
 
 ### DSP_OBJECTPAN_3D_MAX_DISTANCE
 *Type:* VARIABLE
+Dsp objectpan 3d max distance.
 
 ### DSP_OBJECTPAN_3D_EXTENT_MODE
 *Type:* VARIABLE
+Dsp objectpan 3d extent mode.
 
 ### DSP_OBJECTPAN_3D_SOUND_SIZE
 *Type:* VARIABLE
+Dsp objectpan 3d sound size.
 
 ### DSP_OBJECTPAN_3D_MIN_EXTENT
 *Type:* VARIABLE
+Dsp objectpan 3d min extent.
 
 ### DSP_OBJECTPAN_OVERALL_GAIN
 *Type:* VARIABLE
+Dsp objectpan overall gain.
 
 ### DSP_OBJECTPAN_OUTPUTGAIN
 *Type:* VARIABLE
+Dsp objectpan outputgain.
 
 ### DSP_OBJECTPAN_ATTENUATION_RANGE
 *Type:* VARIABLE
+Dsp objectpan attenuation range.
 
 ### DSP_OBJECTPAN_OVERRIDE_RANGE
 *Type:* VARIABLE
+Dsp objectpan override range.
 
 ### DSP_PROCESS_PERFORM
 *Type:* VARIABLE
+Dsp process perform.
 
 ### DSP_PROCESS_QUERY
 *Type:* VARIABLE
+Dsp process query.
 
 ### DSP_PAN_SURROUND_DEFAULT
 *Type:* VARIABLE
+Pan surround mode - default.
 
 ### DSP_PAN_SURROUND_ROTATION_NOT_BIASED
 *Type:* VARIABLE
+Pan surround mode - rotation not biased.
 
 ### DSP_PARAMETER_TYPE_FLOAT
 *Type:* VARIABLE
+DSP parameter type - float.
 
 ### DSP_PARAMETER_TYPE_INT
 *Type:* VARIABLE
+DSP parameter type - int.
 
 ### DSP_PARAMETER_TYPE_BOOL
 *Type:* VARIABLE
+DSP parameter type - bool.
 
 ### DSP_PARAMETER_TYPE_DATA
 *Type:* VARIABLE
-
-### DSP_PARAMETER_TYPE_MAX
-*Type:* VARIABLE
+DSP parameter type - data.
 
 ### DSP_PARAMETER_FLOAT_MAPPING_TYPE_LINEAR
 *Type:* VARIABLE
+Dsp parameter float mapping type linear.
 
 ### DSP_PARAMETER_FLOAT_MAPPING_TYPE_AUTO
 *Type:* VARIABLE
+Dsp parameter float mapping type auto.
 
 ### DSP_PARAMETER_FLOAT_MAPPING_TYPE_PIECEWISE_LINEAR
 *Type:* VARIABLE
+Dsp parameter float mapping type piecewise linear.
 
 ### DSP_PARAMETER_DATA_TYPE_USER
 *Type:* VARIABLE
+Dsp parameter data type user.
 
 ### DSP_PARAMETER_DATA_TYPE_OVERALLGAIN
 *Type:* VARIABLE
+Dsp parameter data type overallgain.
 
 ### DSP_PARAMETER_DATA_TYPE_3DATTRIBUTES
 *Type:* VARIABLE
+Dsp parameter data type 3dattributes.
 
 ### DSP_PARAMETER_DATA_TYPE_SIDECHAIN
 *Type:* VARIABLE
+Dsp parameter data type sidechain.
 
 ### DSP_PARAMETER_DATA_TYPE_FFT
 *Type:* VARIABLE
+Dsp parameter data type fft.
 
 ### DSP_PARAMETER_DATA_TYPE_3DATTRIBUTES_MULTI
 *Type:* VARIABLE
+Dsp parameter data type 3dattributes multi.
 
 ### DSP_PARAMETER_DATA_TYPE_ATTENUATION_RANGE
 *Type:* VARIABLE
+Dsp parameter data type attenuation range.
 
 ### DSP_PARAMETER_DATA_TYPE_DYNAMIC_RESPONSE
 *Type:* VARIABLE
+Dsp parameter data type dynamic response.
 
 ### STUDIO_LOADING_STATE_UNLOADING
 *Type:* VARIABLE
+Loading state - unloading.
 
 ### STUDIO_LOADING_STATE_UNLOADED
 *Type:* VARIABLE
+Loading state - unloaded.
 
 ### STUDIO_LOADING_STATE_LOADING
 *Type:* VARIABLE
+Loading state - loading.
 
 ### STUDIO_LOADING_STATE_LOADED
 *Type:* VARIABLE
+Loading state - loaded.
 
 ### STUDIO_LOADING_STATE_ERROR
 *Type:* VARIABLE
+Loading state - error.
 
 ### STUDIO_LOAD_MEMORY
 *Type:* VARIABLE
+Studio load memory.
 
 ### STUDIO_LOAD_MEMORY_POINT
 *Type:* VARIABLE
+Studio load memory point.
 
 ### STUDIO_PARAMETER_GAME_CONTROLLED
 *Type:* VARIABLE
+Studio parameter type - game controlled.
 
 ### STUDIO_PARAMETER_AUTOMATIC_DISTANCE
 *Type:* VARIABLE
+Studio parameter type - automatic distance.
 
 ### STUDIO_PARAMETER_AUTOMATIC_EVENT_CONE_ANGLE
 *Type:* VARIABLE
+Studio parameter type - automatic event cone angle.
 
 ### STUDIO_PARAMETER_AUTOMATIC_EVENT_ORIENTATION
 *Type:* VARIABLE
+Studio parameter type - automatic event orientation.
 
 ### STUDIO_PARAMETER_AUTOMATIC_DIRECTION
 *Type:* VARIABLE
+Studio parameter type - automatic direction.
 
 ### STUDIO_PARAMETER_AUTOMATIC_ELEVATION
 *Type:* VARIABLE
+Studio parameter type - automatic elevation.
 
 ### STUDIO_PARAMETER_AUTOMATIC_LISTENER_ORIENTATION
 *Type:* VARIABLE
+Studio parameter type - automatic listener orientation.
 
 ### STUDIO_PARAMETER_AUTOMATIC_SPEED
 *Type:* VARIABLE
+Studio parameter type - automatic speed.
 
 ### STUDIO_PARAMETER_AUTOMATIC_SPEED_ABSOLUTE
 *Type:* VARIABLE
+Studio parameter type - automatic speed absolute.
 
 ### STUDIO_PARAMETER_AUTOMATIC_DISTANCE_NORMALIZED
 *Type:* VARIABLE
-
-### STUDIO_PARAMETER_MAX
-*Type:* VARIABLE
+Studio parameter type - automatic distance normalized.
 
 ### STUDIO_USER_PROPERTY_TYPE_INTEGER
 *Type:* VARIABLE
+User property type - integer.
 
 ### STUDIO_USER_PROPERTY_TYPE_BOOLEAN
 *Type:* VARIABLE
+User property type - boolean.
 
 ### STUDIO_USER_PROPERTY_TYPE_FLOAT
 *Type:* VARIABLE
+User property type - float.
 
 ### STUDIO_USER_PROPERTY_TYPE_STRING
 *Type:* VARIABLE
+User property type - string.
 
 ### STUDIO_EVENT_PROPERTY_CHANNELPRIORITY
 *Type:* VARIABLE
+Event property - channelpriority.
 
 ### STUDIO_EVENT_PROPERTY_SCHEDULE_DELAY
 *Type:* VARIABLE
+Event property - schedule delay.
 
 ### STUDIO_EVENT_PROPERTY_SCHEDULE_LOOKAHEAD
 *Type:* VARIABLE
+Event property - schedule lookahead.
 
 ### STUDIO_EVENT_PROPERTY_MINIMUM_DISTANCE
 *Type:* VARIABLE
+Event property - minimum distance.
 
 ### STUDIO_EVENT_PROPERTY_MAXIMUM_DISTANCE
 *Type:* VARIABLE
+Event property - maximum distance.
 
 ### STUDIO_EVENT_PROPERTY_COOLDOWN
 *Type:* VARIABLE
-
-### STUDIO_EVENT_PROPERTY_MAX
-*Type:* VARIABLE
+Event property - cooldown.
 
 ### STUDIO_PLAYBACK_PLAYING
 *Type:* VARIABLE
+Playback state - playing.
 
 ### STUDIO_PLAYBACK_SUSTAINING
 *Type:* VARIABLE
+Playback state - sustaining.
 
 ### STUDIO_PLAYBACK_STOPPED
 *Type:* VARIABLE
+Playback state - stopped.
 
 ### STUDIO_PLAYBACK_STARTING
 *Type:* VARIABLE
+Playback state - starting.
 
 ### STUDIO_PLAYBACK_STOPPING
 *Type:* VARIABLE
+Playback state - stopping.
 
 ### STUDIO_STOP_ALLOWFADEOUT
 *Type:* VARIABLE
+Stop mode - allowfadeout.
 
 ### STUDIO_STOP_IMMEDIATE
 *Type:* VARIABLE
+Stop mode - immediate.
 
 ### STUDIO_INSTANCETYPE_NONE
 *Type:* VARIABLE
+Instance type - none.
 
 ### STUDIO_INSTANCETYPE_SYSTEM
 *Type:* VARIABLE
+Instance type - system.
 
 ### STUDIO_INSTANCETYPE_EVENTDESCRIPTION
 *Type:* VARIABLE
+Instance type - eventdescription.
 
 ### STUDIO_INSTANCETYPE_EVENTINSTANCE
 *Type:* VARIABLE
+Instance type - eventinstance.
 
 ### STUDIO_INSTANCETYPE_PARAMETERINSTANCE
 *Type:* VARIABLE
+Instance type - parameterinstance.
 
 ### STUDIO_INSTANCETYPE_BUS
 *Type:* VARIABLE
+Instance type - bus.
 
 ### STUDIO_INSTANCETYPE_VCA
 *Type:* VARIABLE
+Instance type - vca.
 
 ### STUDIO_INSTANCETYPE_BANK
 *Type:* VARIABLE
+Instance type - bank.
 
 ### STUDIO_INSTANCETYPE_COMMANDREPLAY
 *Type:* VARIABLE
+Instance type - commandreplay.
 
 ### VERSION
 *Type:* VARIABLE
+Version.
 
 ### BUILDNUMBER
 *Type:* VARIABLE
+Buildnumber.
 
 ### DEBUG_LEVEL_NONE
 *Type:* VARIABLE
+Debug level none.
 
 ### DEBUG_LEVEL_ERROR
 *Type:* VARIABLE
+Debug level error.
 
 ### DEBUG_LEVEL_WARNING
 *Type:* VARIABLE
+Debug level warning.
 
 ### DEBUG_LEVEL_LOG
 *Type:* VARIABLE
+Debug level log.
 
 ### DEBUG_TYPE_MEMORY
 *Type:* VARIABLE
+Debug type memory.
 
 ### DEBUG_TYPE_FILE
 *Type:* VARIABLE
+Debug type file.
 
 ### DEBUG_TYPE_CODEC
 *Type:* VARIABLE
+Debug type codec.
 
 ### DEBUG_TYPE_TRACE
 *Type:* VARIABLE
+Debug type trace.
 
 ### DEBUG_TYPE_VIRTUAL
 *Type:* VARIABLE
+Debug type virtual.
 
 ### DEBUG_DISPLAY_TIMESTAMPS
 *Type:* VARIABLE
+Debug display timestamps.
 
 ### DEBUG_DISPLAY_LINENUMBERS
 *Type:* VARIABLE
+Debug display linenumbers.
 
 ### DEBUG_DISPLAY_THREAD
 *Type:* VARIABLE
+Debug display thread.
 
 ### MEMORY_NORMAL
 *Type:* VARIABLE
+Memory normal.
 
 ### MEMORY_STREAM_FILE
 *Type:* VARIABLE
+Memory stream file.
 
 ### MEMORY_STREAM_DECODE
 *Type:* VARIABLE
+Memory stream decode.
 
 ### MEMORY_SAMPLEDATA
 *Type:* VARIABLE
+Memory sampledata.
 
 ### MEMORY_DSP_BUFFER
 *Type:* VARIABLE
+Memory dsp buffer.
 
 ### MEMORY_PLUGIN
 *Type:* VARIABLE
+Memory plugin.
 
 ### MEMORY_PERSISTENT
 *Type:* VARIABLE
+Memory persistent.
 
 ### MEMORY_ALL
 *Type:* VARIABLE
+Memory all.
 
 ### INIT_NORMAL
 *Type:* VARIABLE
+Init normal.
 
 ### INIT_STREAM_FROM_UPDATE
 *Type:* VARIABLE
+Init stream from update.
 
 ### INIT_MIX_FROM_UPDATE
 *Type:* VARIABLE
+Init mix from update.
 
 ### INIT_3D_RIGHTHANDED
 *Type:* VARIABLE
+Init 3d righthanded.
 
 ### INIT_CLIP_OUTPUT
 *Type:* VARIABLE
+Init clip output.
 
 ### INIT_CHANNEL_LOWPASS
 *Type:* VARIABLE
+Init channel lowpass.
 
 ### INIT_CHANNEL_DISTANCEFILTER
 *Type:* VARIABLE
+Init channel distancefilter.
 
 ### INIT_PROFILE_ENABLE
 *Type:* VARIABLE
+Init profile enable.
 
 ### INIT_VOL0_BECOMES_VIRTUAL
 *Type:* VARIABLE
+Init vol0 becomes virtual.
 
 ### INIT_GEOMETRY_USECLOSEST
 *Type:* VARIABLE
+Init geometry useclosest.
 
 ### INIT_PREFER_DOLBY_DOWNMIX
 *Type:* VARIABLE
+Init prefer dolby downmix.
 
 ### INIT_THREAD_UNSAFE
 *Type:* VARIABLE
+Init thread unsafe.
 
 ### INIT_PROFILE_METER_ALL
 *Type:* VARIABLE
+Init profile meter all.
 
 ### INIT_MEMORY_TRACKING
 *Type:* VARIABLE
+Init memory tracking.
 
 ### DRIVER_STATE_CONNECTED
 *Type:* VARIABLE
+Driver state - connected.
 
 ### DRIVER_STATE_DEFAULT
 *Type:* VARIABLE
+Driver state - default.
 
 ### TIMEUNIT_MS
 *Type:* VARIABLE
+Time unit - ms.
 
 ### TIMEUNIT_PCM
 *Type:* VARIABLE
+Time unit - pcm.
 
 ### TIMEUNIT_PCMBYTES
 *Type:* VARIABLE
+Time unit - pcmbytes.
 
 ### TIMEUNIT_RAWBYTES
 *Type:* VARIABLE
+Time unit - rawbytes.
 
 ### TIMEUNIT_PCMFRACTION
 *Type:* VARIABLE
+Time unit - pcmfraction.
 
 ### TIMEUNIT_MODORDER
 *Type:* VARIABLE
+Time unit - modorder.
 
 ### TIMEUNIT_MODROW
 *Type:* VARIABLE
+Time unit - modrow.
 
 ### TIMEUNIT_MODPATTERN
 *Type:* VARIABLE
+Time unit - modpattern.
 
 ### SYSTEM_CALLBACK_DEVICELISTCHANGED
 *Type:* VARIABLE
+System callback devicelistchanged.
 
 ### SYSTEM_CALLBACK_DEVICELOST
 *Type:* VARIABLE
+System callback devicelost.
 
 ### SYSTEM_CALLBACK_MEMORYALLOCATIONFAILED
 *Type:* VARIABLE
+System callback memoryallocationfailed.
 
 ### SYSTEM_CALLBACK_THREADCREATED
 *Type:* VARIABLE
+System callback threadcreated.
 
 ### SYSTEM_CALLBACK_BADDSPCONNECTION
 *Type:* VARIABLE
+System callback baddspconnection.
 
 ### SYSTEM_CALLBACK_PREMIX
 *Type:* VARIABLE
+System callback premix.
 
 ### SYSTEM_CALLBACK_POSTMIX
 *Type:* VARIABLE
+System callback postmix.
 
 ### SYSTEM_CALLBACK_ERROR
 *Type:* VARIABLE
+System callback error.
 
 ### SYSTEM_CALLBACK_THREADDESTROYED
 *Type:* VARIABLE
+System callback threaddestroyed.
 
 ### SYSTEM_CALLBACK_PREUPDATE
 *Type:* VARIABLE
+System callback preupdate.
 
 ### SYSTEM_CALLBACK_POSTUPDATE
 *Type:* VARIABLE
+System callback postupdate.
 
 ### SYSTEM_CALLBACK_RECORDLISTCHANGED
 *Type:* VARIABLE
+System callback recordlistchanged.
 
 ### SYSTEM_CALLBACK_BUFFEREDNOMIX
 *Type:* VARIABLE
+System callback bufferednomix.
 
 ### SYSTEM_CALLBACK_DEVICEREINITIALIZE
 *Type:* VARIABLE
+System callback devicereinitialize.
 
 ### SYSTEM_CALLBACK_OUTPUTUNDERRUN
 *Type:* VARIABLE
+System callback outputunderrun.
 
 ### SYSTEM_CALLBACK_RECORDPOSITIONCHANGED
 *Type:* VARIABLE
+System callback recordpositionchanged.
 
 ### SYSTEM_CALLBACK_ALL
 *Type:* VARIABLE
+System callback all.
 
 ### DEFAULT
 *Type:* VARIABLE
+Default.
 
 ### LOOP_OFF
 *Type:* VARIABLE
+Loop off.
 
 ### LOOP_NORMAL
 *Type:* VARIABLE
+Loop normal.
 
 ### LOOP_BIDI
 *Type:* VARIABLE
+Loop bidi.
 
 ### 2D
 *Type:* VARIABLE
+2d.
 
 ### 3D
 *Type:* VARIABLE
+3d.
 
 ### CREATESTREAM
 *Type:* VARIABLE
+Createstream.
 
 ### CREATESAMPLE
 *Type:* VARIABLE
+Createsample.
 
 ### CREATECOMPRESSEDSAMPLE
 *Type:* VARIABLE
+Createcompressedsample.
 
 ### OPENUSER
 *Type:* VARIABLE
+Openuser.
 
 ### OPENMEMORY
 *Type:* VARIABLE
+Openmemory.
 
 ### OPENMEMORY_POINT
 *Type:* VARIABLE
+Openmemory point.
 
 ### OPENRAW
 *Type:* VARIABLE
+Openraw.
 
 ### OPENONLY
 *Type:* VARIABLE
+Openonly.
 
 ### ACCURATETIME
 *Type:* VARIABLE
+Accuratetime.
 
 ### MPEGSEARCH
 *Type:* VARIABLE
+Mpegsearch.
 
 ### NONBLOCKING
 *Type:* VARIABLE
+Nonblocking.
 
 ### UNIQUE
 *Type:* VARIABLE
+Unique.
 
 ### 3D_HEADRELATIVE
 *Type:* VARIABLE
+3d headrelative.
 
 ### 3D_WORLDRELATIVE
 *Type:* VARIABLE
+3d worldrelative.
 
 ### 3D_INVERSEROLLOFF
 *Type:* VARIABLE
+3d inverserolloff.
 
 ### 3D_LINEARROLLOFF
 *Type:* VARIABLE
+3d linearrolloff.
 
 ### 3D_LINEARSQUAREROLLOFF
 *Type:* VARIABLE
+3d linearsquarerolloff.
 
 ### 3D_INVERSETAPEREDROLLOFF
 *Type:* VARIABLE
+3d inversetaperedrolloff.
 
 ### 3D_CUSTOMROLLOFF
 *Type:* VARIABLE
+3d customrolloff.
 
 ### 3D_IGNOREGEOMETRY
 *Type:* VARIABLE
+3d ignoregeometry.
 
 ### IGNORETAGS
 *Type:* VARIABLE
+Ignoretags.
 
 ### LOWMEM
 *Type:* VARIABLE
+Lowmem.
 
 ### VIRTUAL_PLAYFROMSTART
 *Type:* VARIABLE
+Virtual playfromstart.
 
 ### CHANNELMASK_FRONT_LEFT
 *Type:* VARIABLE
+Channelmask front left.
 
 ### CHANNELMASK_FRONT_RIGHT
 *Type:* VARIABLE
+Channelmask front right.
 
 ### CHANNELMASK_FRONT_CENTER
 *Type:* VARIABLE
+Channelmask front center.
 
 ### CHANNELMASK_LOW_FREQUENCY
 *Type:* VARIABLE
+Channelmask low frequency.
 
 ### CHANNELMASK_SURROUND_LEFT
 *Type:* VARIABLE
+Channelmask surround left.
 
 ### CHANNELMASK_SURROUND_RIGHT
 *Type:* VARIABLE
+Channelmask surround right.
 
 ### CHANNELMASK_BACK_LEFT
 *Type:* VARIABLE
+Channelmask back left.
 
 ### CHANNELMASK_BACK_RIGHT
 *Type:* VARIABLE
+Channelmask back right.
 
 ### CHANNELMASK_BACK_CENTER
 *Type:* VARIABLE
+Channelmask back center.
 
 ### CHANNELMASK_MONO
 *Type:* VARIABLE
+Channelmask mono.
 
 ### CHANNELMASK_STEREO
 *Type:* VARIABLE
+Channelmask stereo.
 
 ### CHANNELMASK_LRC
 *Type:* VARIABLE
+Channelmask lrc.
 
 ### CHANNELMASK_QUAD
 *Type:* VARIABLE
+Channelmask quad.
 
 ### CHANNELMASK_SURROUND
 *Type:* VARIABLE
+Channelmask surround.
 
 ### CHANNELMASK_5POINT1
 *Type:* VARIABLE
+Channelmask 5point1.
 
 ### CHANNELMASK_5POINT1_REARS
 *Type:* VARIABLE
+Channelmask 5point1 rears.
 
 ### CHANNELMASK_7POINT0
 *Type:* VARIABLE
+Channelmask 7point0.
 
 ### CHANNELMASK_7POINT1
 *Type:* VARIABLE
+Channelmask 7point1.
 
 ### PORT_INDEX_NONE
 *Type:* VARIABLE
+Port index none.
 
 ### THREAD_PRIORITY_PLATFORM_MIN
 *Type:* VARIABLE
+Thread priority - platform min.
 
 ### THREAD_PRIORITY_PLATFORM_MAX
 *Type:* VARIABLE
+Thread priority - platform max.
 
 ### THREAD_PRIORITY_DEFAULT
 *Type:* VARIABLE
+Thread priority - default.
 
 ### THREAD_PRIORITY_LOW
 *Type:* VARIABLE
+Thread priority - low.
 
 ### THREAD_PRIORITY_MEDIUM
 *Type:* VARIABLE
+Thread priority - medium.
 
 ### THREAD_PRIORITY_HIGH
 *Type:* VARIABLE
+Thread priority - high.
 
 ### THREAD_PRIORITY_VERY_HIGH
 *Type:* VARIABLE
+Thread priority - very high.
 
 ### THREAD_PRIORITY_EXTREME
 *Type:* VARIABLE
+Thread priority - extreme.
 
 ### THREAD_PRIORITY_CRITICAL
 *Type:* VARIABLE
+Thread priority - critical.
 
 ### THREAD_PRIORITY_MIXER
 *Type:* VARIABLE
+Thread priority - mixer.
 
 ### THREAD_PRIORITY_FEEDER
 *Type:* VARIABLE
+Thread priority - feeder.
 
 ### THREAD_PRIORITY_STREAM
 *Type:* VARIABLE
+Thread priority - stream.
 
 ### THREAD_PRIORITY_FILE
 *Type:* VARIABLE
+Thread priority - file.
 
 ### THREAD_PRIORITY_NONBLOCKING
 *Type:* VARIABLE
+Thread priority - nonblocking.
 
 ### THREAD_PRIORITY_RECORD
 *Type:* VARIABLE
+Thread priority - record.
 
 ### THREAD_PRIORITY_GEOMETRY
 *Type:* VARIABLE
+Thread priority - geometry.
 
 ### THREAD_PRIORITY_PROFILER
 *Type:* VARIABLE
+Thread priority - profiler.
 
 ### THREAD_PRIORITY_STUDIO_UPDATE
 *Type:* VARIABLE
+Thread priority - studio update.
 
 ### THREAD_PRIORITY_STUDIO_LOAD_BANK
 *Type:* VARIABLE
+Thread priority - studio load bank.
 
 ### THREAD_PRIORITY_STUDIO_LOAD_SAMPLE
 *Type:* VARIABLE
+Thread priority - studio load sample.
 
 ### THREAD_PRIORITY_CONVOLUTION1
 *Type:* VARIABLE
+Thread priority - convolution1.
 
 ### THREAD_PRIORITY_CONVOLUTION2
 *Type:* VARIABLE
+Thread priority - convolution2.
 
 ### THREAD_STACK_SIZE_DEFAULT
 *Type:* VARIABLE
+Thread stack size - default.
 
 ### THREAD_STACK_SIZE_MIXER
 *Type:* VARIABLE
+Thread stack size - mixer.
 
 ### THREAD_STACK_SIZE_FEEDER
 *Type:* VARIABLE
+Thread stack size - feeder.
 
 ### THREAD_STACK_SIZE_STREAM
 *Type:* VARIABLE
+Thread stack size - stream.
 
 ### THREAD_STACK_SIZE_FILE
 *Type:* VARIABLE
+Thread stack size - file.
 
 ### THREAD_STACK_SIZE_NONBLOCKING
 *Type:* VARIABLE
+Thread stack size - nonblocking.
 
 ### THREAD_STACK_SIZE_RECORD
 *Type:* VARIABLE
+Thread stack size - record.
 
 ### THREAD_STACK_SIZE_GEOMETRY
 *Type:* VARIABLE
+Thread stack size - geometry.
 
 ### THREAD_STACK_SIZE_PROFILER
 *Type:* VARIABLE
+Thread stack size - profiler.
 
 ### THREAD_STACK_SIZE_STUDIO_UPDATE
 *Type:* VARIABLE
+Thread stack size - studio update.
 
 ### THREAD_STACK_SIZE_STUDIO_LOAD_BANK
 *Type:* VARIABLE
+Thread stack size - studio load bank.
 
 ### THREAD_STACK_SIZE_STUDIO_LOAD_SAMPLE
 *Type:* VARIABLE
+Thread stack size - studio load sample.
 
 ### THREAD_STACK_SIZE_CONVOLUTION1
 *Type:* VARIABLE
+Thread stack size - convolution1.
 
 ### THREAD_STACK_SIZE_CONVOLUTION2
 *Type:* VARIABLE
+Thread stack size - convolution2.
 
 ### THREAD_AFFINITY_GROUP_DEFAULT
 *Type:* VARIABLE
+Thread affinity - group default.
 
 ### THREAD_AFFINITY_GROUP_A
 *Type:* VARIABLE
+Thread affinity - group a.
 
 ### THREAD_AFFINITY_GROUP_B
 *Type:* VARIABLE
+Thread affinity - group b.
 
 ### THREAD_AFFINITY_GROUP_C
 *Type:* VARIABLE
+Thread affinity - group c.
 
 ### THREAD_AFFINITY_MIXER
 *Type:* VARIABLE
+Thread affinity - mixer.
 
 ### THREAD_AFFINITY_FEEDER
 *Type:* VARIABLE
+Thread affinity - feeder.
 
 ### THREAD_AFFINITY_STREAM
 *Type:* VARIABLE
+Thread affinity - stream.
 
 ### THREAD_AFFINITY_FILE
 *Type:* VARIABLE
+Thread affinity - file.
 
 ### THREAD_AFFINITY_NONBLOCKING
 *Type:* VARIABLE
+Thread affinity - nonblocking.
 
 ### THREAD_AFFINITY_RECORD
 *Type:* VARIABLE
+Thread affinity - record.
 
 ### THREAD_AFFINITY_GEOMETRY
 *Type:* VARIABLE
+Thread affinity - geometry.
 
 ### THREAD_AFFINITY_PROFILER
 *Type:* VARIABLE
+Thread affinity - profiler.
 
 ### THREAD_AFFINITY_STUDIO_UPDATE
 *Type:* VARIABLE
+Thread affinity - studio update.
 
 ### THREAD_AFFINITY_STUDIO_LOAD_BANK
 *Type:* VARIABLE
+Thread affinity - studio load bank.
 
 ### THREAD_AFFINITY_STUDIO_LOAD_SAMPLE
 *Type:* VARIABLE
+Thread affinity - studio load sample.
 
 ### THREAD_AFFINITY_CONVOLUTION1
 *Type:* VARIABLE
+Thread affinity - convolution1.
 
 ### THREAD_AFFINITY_CONVOLUTION2
 *Type:* VARIABLE
+Thread affinity - convolution2.
 
 ### THREAD_AFFINITY_CORE_ALL
 *Type:* VARIABLE
+Thread affinity - core all.
 
 ### THREAD_AFFINITY_CORE_0
 *Type:* VARIABLE
+Thread affinity - core 0.
 
 ### THREAD_AFFINITY_CORE_1
 *Type:* VARIABLE
+Thread affinity - core 1.
 
 ### THREAD_AFFINITY_CORE_2
 *Type:* VARIABLE
+Thread affinity - core 2.
 
 ### THREAD_AFFINITY_CORE_3
 *Type:* VARIABLE
+Thread affinity - core 3.
 
 ### THREAD_AFFINITY_CORE_4
 *Type:* VARIABLE
+Thread affinity - core 4.
 
 ### THREAD_AFFINITY_CORE_5
 *Type:* VARIABLE
+Thread affinity - core 5.
 
 ### THREAD_AFFINITY_CORE_6
 *Type:* VARIABLE
+Thread affinity - core 6.
 
 ### THREAD_AFFINITY_CORE_7
 *Type:* VARIABLE
+Thread affinity - core 7.
 
 ### THREAD_AFFINITY_CORE_8
 *Type:* VARIABLE
+Thread affinity - core 8.
 
 ### THREAD_AFFINITY_CORE_9
 *Type:* VARIABLE
+Thread affinity - core 9.
 
 ### THREAD_AFFINITY_CORE_10
 *Type:* VARIABLE
+Thread affinity - core 10.
 
 ### THREAD_AFFINITY_CORE_11
 *Type:* VARIABLE
+Thread affinity - core 11.
 
 ### THREAD_AFFINITY_CORE_12
 *Type:* VARIABLE
+Thread affinity - core 12.
 
 ### THREAD_AFFINITY_CORE_13
 *Type:* VARIABLE
+Thread affinity - core 13.
 
 ### THREAD_AFFINITY_CORE_14
 *Type:* VARIABLE
+Thread affinity - core 14.
 
 ### THREAD_AFFINITY_CORE_15
 *Type:* VARIABLE
+Thread affinity - core 15.
 
 ### MAX_CHANNEL_WIDTH
 *Type:* VARIABLE
+Max channel width.
 
 ### MAX_SYSTEMS
 *Type:* VARIABLE
+Max systems.
 
 ### MAX_LISTENERS
 *Type:* VARIABLE
+Max listeners.
 
 ### REVERB_MAXINSTANCES
 *Type:* VARIABLE
+Reverb maxinstances.
 
 ### STUDIO_LOAD_MEMORY_ALIGNMENT
 *Type:* VARIABLE
+Studio load memory alignment.
 
 ### STUDIO_INIT_NORMAL
 *Type:* VARIABLE
+Studio init normal.
 
 ### STUDIO_INIT_LIVEUPDATE
 *Type:* VARIABLE
+Studio init liveupdate.
 
 ### STUDIO_INIT_ALLOW_MISSING_PLUGINS
 *Type:* VARIABLE
+Studio init allow missing plugins.
 
 ### STUDIO_INIT_SYNCHRONOUS_UPDATE
 *Type:* VARIABLE
+Studio init synchronous update.
 
 ### STUDIO_INIT_DEFERRED_CALLBACKS
 *Type:* VARIABLE
+Studio init deferred callbacks.
 
 ### STUDIO_INIT_LOAD_FROM_UPDATE
 *Type:* VARIABLE
+Studio init load from update.
 
 ### STUDIO_INIT_MEMORY_TRACKING
 *Type:* VARIABLE
+Studio init memory tracking.
 
 ### STUDIO_PARAMETER_READONLY
 *Type:* VARIABLE
+Studio parameter type - readonly.
 
 ### STUDIO_PARAMETER_AUTOMATIC
 *Type:* VARIABLE
+Studio parameter type - automatic.
 
 ### STUDIO_PARAMETER_GLOBAL
 *Type:* VARIABLE
+Studio parameter type - global.
 
 ### STUDIO_PARAMETER_DISCRETE
 *Type:* VARIABLE
+Studio parameter type - discrete.
 
 ### STUDIO_PARAMETER_LABELED
 *Type:* VARIABLE
+Studio parameter type - labeled.
 
 ### STUDIO_SYSTEM_CALLBACK_PREUPDATE
 *Type:* VARIABLE
+System callback type - preupdate.
 
 ### STUDIO_SYSTEM_CALLBACK_POSTUPDATE
 *Type:* VARIABLE
+System callback type - postupdate.
 
 ### STUDIO_SYSTEM_CALLBACK_BANK_UNLOAD
 *Type:* VARIABLE
+System callback type - bank unload.
 
 ### STUDIO_SYSTEM_CALLBACK_LIVEUPDATE_CONNECTED
 *Type:* VARIABLE
+System callback type - liveupdate connected.
 
 ### STUDIO_SYSTEM_CALLBACK_LIVEUPDATE_DISCONNECTED
 *Type:* VARIABLE
+System callback type - liveupdate disconnected.
 
 ### STUDIO_SYSTEM_CALLBACK_ALL
 *Type:* VARIABLE
+System callback type - all.
 
 ### STUDIO_EVENT_CALLBACK_CREATED
 *Type:* VARIABLE
+Event callback type - created.
 
 ### STUDIO_EVENT_CALLBACK_DESTROYED
 *Type:* VARIABLE
+Event callback type - destroyed.
 
 ### STUDIO_EVENT_CALLBACK_STARTING
 *Type:* VARIABLE
+Event callback type - starting.
 
 ### STUDIO_EVENT_CALLBACK_STARTED
 *Type:* VARIABLE
+Event callback type - started.
 
 ### STUDIO_EVENT_CALLBACK_RESTARTED
 *Type:* VARIABLE
+Event callback type - restarted.
 
 ### STUDIO_EVENT_CALLBACK_STOPPED
 *Type:* VARIABLE
+Event callback type - stopped.
 
 ### STUDIO_EVENT_CALLBACK_START_FAILED
 *Type:* VARIABLE
+Event callback type - start failed.
 
 ### STUDIO_EVENT_CALLBACK_CREATE_PROGRAMMER_SOUND
 *Type:* VARIABLE
+Event callback type - create programmer sound.
 
 ### STUDIO_EVENT_CALLBACK_DESTROY_PROGRAMMER_SOUND
 *Type:* VARIABLE
+Event callback type - destroy programmer sound.
 
 ### STUDIO_EVENT_CALLBACK_PLUGIN_CREATED
 *Type:* VARIABLE
+Event callback type - plugin created.
 
 ### STUDIO_EVENT_CALLBACK_PLUGIN_DESTROYED
 *Type:* VARIABLE
+Event callback type - plugin destroyed.
 
 ### STUDIO_EVENT_CALLBACK_TIMELINE_MARKER
 *Type:* VARIABLE
+Event callback type - timeline marker.
 
 ### STUDIO_EVENT_CALLBACK_TIMELINE_BEAT
 *Type:* VARIABLE
+Event callback type - timeline beat.
 
 ### STUDIO_EVENT_CALLBACK_SOUND_PLAYED
 *Type:* VARIABLE
+Event callback type - sound played.
 
 ### STUDIO_EVENT_CALLBACK_SOUND_STOPPED
 *Type:* VARIABLE
+Event callback type - sound stopped.
 
 ### STUDIO_EVENT_CALLBACK_REAL_TO_VIRTUAL
 *Type:* VARIABLE
+Event callback type - real to virtual.
 
 ### STUDIO_EVENT_CALLBACK_VIRTUAL_TO_REAL
 *Type:* VARIABLE
+Event callback type - virtual to real.
 
 ### STUDIO_EVENT_CALLBACK_START_EVENT_COMMAND
 *Type:* VARIABLE
+Event callback type - start event command.
 
 ### STUDIO_EVENT_CALLBACK_NESTED_TIMELINE_BEAT
 *Type:* VARIABLE
+Event callback type - nested timeline beat.
 
 ### STUDIO_EVENT_CALLBACK_ALL
 *Type:* VARIABLE
+Event callback type - all.
 
 ### STUDIO_LOAD_BANK_NORMAL
 *Type:* VARIABLE
+Bank loading mode - normal.
 
 ### STUDIO_LOAD_BANK_NONBLOCKING
 *Type:* VARIABLE
+Bank loading mode - nonblocking.
 
 ### STUDIO_LOAD_BANK_DECOMPRESS_SAMPLES
 *Type:* VARIABLE
+Bank loading mode - decompress samples.
 
 ### STUDIO_LOAD_BANK_UNENCRYPTED
 *Type:* VARIABLE
+Bank loading mode - unencrypted.
 
 ### STUDIO_COMMANDCAPTURE_NORMAL
 *Type:* VARIABLE
+Studio commandcapture normal.
 
 ### STUDIO_COMMANDCAPTURE_FILEFLUSH
 *Type:* VARIABLE
+Studio commandcapture fileflush.
 
 ### STUDIO_COMMANDCAPTURE_SKIP_INITIAL_STATE
 *Type:* VARIABLE
+Studio commandcapture skip initial state.
 
 ### STUDIO_COMMANDREPLAY_NORMAL
 *Type:* VARIABLE
+Studio commandreplay normal.
 
 ### STUDIO_COMMANDREPLAY_SKIP_CLEANUP
 *Type:* VARIABLE
+Studio commandreplay skip cleanup.
 
 ### STUDIO_COMMANDREPLAY_FAST_FORWARD
 *Type:* VARIABLE
+Studio commandreplay fast forward.
 
 ### STUDIO_COMMANDREPLAY_SKIP_BANK_LOAD
 *Type:* VARIABLE
+Studio commandreplay skip bank load.
 
 ### fmod.ASYNCREADINFO
 *Type:* FUNCTION
@@ -44674,55 +43279,55 @@ Creates a new FMOD_OUTPUT_DESCRIPTION struct
 
 ### fmod.memory_initialize
 *Type:* FUNCTION
-FMOD_Memory_Initialize
+Initialize for memory.
 
 ### fmod.memory_get_stats
 *Type:* FUNCTION
-FMOD_Memory_GetStats
+Get stats for memory.
 
 **Parameters**
 
-- `blocking` (boolean) - blocking
+- `blocking` (boolean) - Bool value
 
 **Returns**
 
-- `userdata`
-- `userdata`
+- `userdata` - The currentalloced value
+- `userdata` - The maxalloced value
 
 ### fmod.debug_initialize
 *Type:* FUNCTION
-FMOD_Debug_Initialize
+Initialize for debug.
 
 ### fmod.file_set_disk_busy
 *Type:* FUNCTION
-FMOD_File_SetDiskBusy
+Set disk busy for file.
 
 **Parameters**
 
-- `busy` (number) - busy
+- `busy` (number) - Bus handle
 
 ### fmod.file_get_disk_busy
 *Type:* FUNCTION
-FMOD_File_GetDiskBusy
+Get disk busy for file.
 
 **Returns**
 
-- `userdata`
+- `userdata` - The busy value
 
 ### fmod.thread_set_attributes
 *Type:* FUNCTION
-FMOD_Thread_SetAttributes
+Set attributes for thread.
 
 **Parameters**
 
-- `type` (number) - type
-- `affinity` (number) - affinity
-- `priority` (number) - priority
-- `stacksize` (number) - Length or size value
+- `type` (number) - Type value
+- `affinity` (number) - Affinity value
+- `priority` (number) - Priority (0 = highest, 256 = lowest)
+- `stacksize` (number) - Size value
 
 ### fmod.system_create
 *Type:* FUNCTION
-FMOD_System_Create
+Create for system.
 
 **Parameters**
 
@@ -44730,7 +43335,7 @@ FMOD_System_Create
 
 **Returns**
 
-- `userdata`
+- `userdata` - The system value
 
 ### system
 *Type:* FMOD.SYSTEM
@@ -47036,6 +45641,8 @@ Functions and constants for interacting with Poki SDK APIs
 **Parameters**
 
 - `callback` (function)
+  - `self` (object) - The calling script instance
+  - `status` (number) - One of the statuses: `poki_sdk.COMMERCIAL_BREAK_START`, `poki_sdk.COMMERCIAL_BREAK_SUCCESS`
 
 ### poki_sdk.rewarded_break
 *Type:* FUNCTION
@@ -47092,6 +45699,12 @@ Functions and constants for interacting with Poki SDK APIs
 
 - `topPercent` (number)
 - `topPx` (number)
+
+### COMMERCIAL_BREAK_SUCCESS
+*Type:* VARIABLE
+
+### COMMERCIAL_BREAK_START
+*Type:* VARIABLE
 
 ### REWARDED_BREAK_ERROR
 *Type:* VARIABLE
@@ -48662,13 +47275,21 @@ Takes AppID of DLC and checks if the user owns the DLC & if the DLC is installed
 
 - `boolean`
 
+### steam.apps_get_current_game_language
+*Type:* FUNCTION
+Gets the current game language.
+
+**Returns**
+
+- `string`
+
 ### steam.friends_get_friend_persona_name
 *Type:* FUNCTION
 Returns the name of another user. Same rules as GetFriendPersonaState() apply as to whether or not the user knowns the name of the other user note that on first joining a lobby, chat room or game server the local user will not known the name of the other users automatically; that information will arrive asyncronously.
 
 **Parameters**
 
-- `CSteamID` (friendId)
+- `steamIDFriend` (string)
 
 **Returns**
 
@@ -48714,7 +47335,7 @@ Returns the steamID of a user. The returned CSteamID can then be used by all the
 
 **Returns**
 
-- `number` - Steam id of the user
+- `string` - Steam id of the user
 
 ### steam.friends_get_friend_persona_state
 *Type:* FUNCTION
@@ -48722,7 +47343,7 @@ Returns the current status of the specified user. This will only be known by the
 
 **Parameters**
 
-- `steamIDFriend` (number) - Id of friend
+- `steamIDFriend` (string) - Id of friend
 
 **Returns**
 
@@ -48734,7 +47355,7 @@ Get friends steam level.
 
 **Parameters**
 
-- `steamIDFriend` (number) - Id of friend
+- `steamIDFriend` (string) - Id of friend
 
 **Returns**
 
@@ -48746,7 +47367,7 @@ Returns a relationship to a user.
 
 **Parameters**
 
-- `steamIDFriend` (number) - Id of friend
+- `steamIDFriend` (string) - Id of friend
 
 **Returns**
 
@@ -48758,7 +47379,7 @@ Gets a handle to the small (32*32px) avatar for the specified user. This is a ha
 
 **Parameters**
 
-- `steamIDFriend` (number) - Id of friend
+- `steamIDFriend` (string) - Id of friend
 
 **Returns**
 
@@ -48770,7 +47391,7 @@ Gets a handle to the medium (64*64px) avatar for the specified user. This is a h
 
 **Parameters**
 
-- `steamIDFriend` (number) - Id of friend
+- `steamIDFriend` (string) - Id of friend
 
 **Returns**
 
@@ -48782,7 +47403,7 @@ Gets a handle to the large (128*128px) avatar for the specified user. This is a 
 
 **Parameters**
 
-- `steamIDFriend` (number) - Id of friend
+- `steamIDFriend` (string) - Id of friend
 
 **Returns**
 
@@ -48829,7 +47450,7 @@ Invites a friend or clan member to the current game using a special invite strin
 
 **Parameters**
 
-- `steamIDFriend` (number) - Id of friend
+- `steamIDFriend` (string) - Id of friend
 
 - `connect` (string) - String
 
@@ -49310,7 +47931,7 @@ Returns the CSteamID of the account currently logged into the Steam client. A CS
 
 **Returns**
 
-- `CSteamID`
+- `string`
 
 ### steam.user_get_player_steam_level
 *Type:* FUNCTION

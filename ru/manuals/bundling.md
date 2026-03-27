@@ -47,11 +47,11 @@ toc:
 
 ### iOS
 
-Создание бандла для iOS (файл .ipa) описано в [Руководстве по iOS](/manuals/ios/#creating-an-ios-application-bundle).
+Создание бандла для iOS (файл .ipa) описано в [Руководстве по iOS](/ru/manuals/ios/#creating-an-ios-application-bundle).
 
 ### macOS
 
-Создание бандла для macOS (файл .app) описано в [Руководстве по macOS](/manuals/macos).
+Создание бандла для macOS (файл .app) описано в [Руководстве по macOS](/ru/manuals/macos).
 
 ### Linux
 
@@ -59,15 +59,15 @@ toc:
 
 ### Windows
 
-Создание Windows-приложения (файл .exe) описано в [Руководстве по Windows](/manuals/windows).
+Создание Windows-приложения (файл .exe) описано в [Руководстве по Windows](/ru/manuals/windows).
 
 ### HTML5
 
-Создание HTML5 билда, а также дополнительная настройка описаны в [руководстве по HTML5](/manuals/html5/#creating-html5-bundle).
+Создание HTML5 билда, а также дополнительная настройка описаны в [руководстве по HTML5](/ru/manuals/html5/#creating-html5-bundle).
 
 #### Facebook Instant Games
 
-Можно создать специальную версию HTML5 билда специально для Facebook Instant Games. Этот процесс задокументирован в [руководстве по Facebook Instant Games](/manuals/instant-games/).
+Можно создать специальную версию HTML5 билда специально для Facebook Instant Games. Этот процесс задокументирован в [руководстве по Facebook Instant Games](/ru/manuals/instant-games/).
 
 ## Бандлинг из командной строки
 

@@ -7,7 +7,7 @@
 **Source:** `engine/ddf/src/dmsdk/ddf/ddf.h`
 **Include:** `dmsdk/ddf/ddf.h`
 
-SDK DDF (Defold Data Format) API documentation
+DDF (Defold Data Format) API documentation
 
 ## API
 

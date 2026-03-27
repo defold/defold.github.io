@@ -31,22 +31,22 @@ toc:
 
 ### SDK 版本
 
-* Android: NDK r25b, Build Tools 33.0.1, Api Level 19 for armv7 and Api level 21 for arm64
-* iOS: iPhoneOS17.2.sdk
-* macOS: MacOSX14.2.sdk
+* Android: NDK r25b, Build Tools 36.1.0, Api Level 21
+* iOS: iPhoneOS26.2.sdk
+* macOS: MacOSX26.2.sdk
 * Windows: WindowsKits 10.0, Microsoft Visual Studio 2022
-* Linux: Ubuntu 20.04, clang 17, locales, libssl-dev, openssl, libtool, autoconf, automake, build-essential, uuid-dev, libxi-dev, libopenal-dev, libgl1-mesa-dev, libglw1-mesa-dev, freeglut3-dev
-* Html5: Emscripten 3.1.55
+* Linux: Ubuntu 22.04, clang 17, locales, libssl-dev, openssl, libtool, autoconf, automake, build-essential, uuid-dev, libxi-dev, libopenal-dev, libgl1-mesa-dev, libglw1-mesa-dev, freeglut3-dev
+* Html5: Emscripten 4.0.6
 
 ### C++ 版本 + ABI 兼容
 
 * Linux: `clang 17`
 * Android:`clang` using `NDK r25b`
-* Html5: `Emscripten 3.1.55`
+* Html5: `Emscripten 4.0.6`
 * Win32: `Microsoft Visual Studio 2022` (`clang 17` on build server)
 * iOS/macOS: `apple-clang` (`clang 17` on build server)
 
-对于 iOS/macOS，我们分别使用了 `-miphoneos-version-min=11.0` 和 `-mmacosx-version-min=10.13` 参数。
+对于 iOS/macOS，我们分别使用了 `-miphoneos-version-min=15.0` 和 `-mmacosx-version-min=11.5` 参数。
 
 由于我们不指定 C++ 版本，所以各个编译器都使用了默认设置。
 

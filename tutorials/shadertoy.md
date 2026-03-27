@@ -1,5 +1,6 @@
 ---
 brief: In this tutorial you will convert a shader from shadertoy.com to Defold.
+language: en
 layout: tutorial
 title: Shadertoy to Defold tutorial
 ---

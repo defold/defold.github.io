@@ -15,7 +15,7 @@ toc:
 
 # Анимация свойств
 
-Все свойства выражаемые числовыми типами (числа, vector3, vector4 и кватернионы), а также шейдерные константы могут быть анимированны встроенной системой анимации, с помощью функции `go.animate()`. Движок автоматически делает "твининг" свойств согласно переданному режиму воспроизведения и функции смягчения. К тому же имеется возможность задать пользовательские функции смягчения.
+Все свойства, выражаемые числовыми типами (числа, vector3, vector4 и кватернионы), а также шейдерные константы можно анимировать встроенной системой анимации с помощью функции `go.animate()`. Движок автоматически выполняет "твининг" свойств в соответствии с переданным режимом воспроизведения и функцией смягчения. Кроме того, можно задавать пользовательские функции смягчения.
 
   ![Property animation](/manuals/images/animation/property_animation.png)
   ![Bounce loop](/manuals/images/animation/bounce.gif)
@@ -68,52 +68,52 @@ gui.animate(node, hash("position.x"), 100, gui.EASING_INOUTQUAD, 0.5)
 Ниже приведены следующие валидные значения смягчения для функции `go.animate()`:
 
 |---|---|
-| go.EASING_LINEAR | |
-| go.EASING_INBACK | go.EASING_OUTBACK |
-| go.EASING_INOUTBACK | go.EASING_OUTINBACK |
-| go.EASING_INBOUNCE | go.EASING_OUTBOUNCE |
-| go.EASING_INOUTBOUNCE | go.EASING_OUTINBOUNCE |
-| go.EASING_INELASTIC | go.EASING_OUTELASTIC |
-| go.EASING_INOUTELASTIC | go.EASING_OUTINELASTIC |
-| go.EASING_INSINE | go.EASING_OUTSINE |
-| go.EASING_INOUTSINE | go.EASING_OUTINSINE |
-| go.EASING_INEXPO | go.EASING_OUTEXPO |
-| go.EASING_INOUTEXPO | go.EASING_OUTINEXPO |
-| go.EASING_INCIRC | go.EASING_OUTCIRC |
-| go.EASING_INOUTCIRC | go.EASING_OUTINCIRC |
-| go.EASING_INQUAD | go.EASING_OUTQUAD |
-| go.EASING_INOUTQUAD | go.EASING_OUTINQUAD |
-| go.EASING_INCUBIC | go.EASING_OUTCUBIC |
-| go.EASING_INOUTCUBIC | go.EASING_OUTINCUBIC |
-| go.EASING_INQUART | go.EASING_OUTQUART |
-| go.EASING_INOUTQUART | go.EASING_OUTINQUART |
-| go.EASING_INQUINT | go.EASING_OUTQUINT |
-| go.EASING_INOUTQUINT | go.EASING_OUTINQUINT |
+| `go.EASING_LINEAR` | |
+| `go.EASING_INBACK` | `go.EASING_OUTBACK` |
+| `go.EASING_INOUTBACK` | `go.EASING_OUTINBACK` |
+| `go.EASING_INBOUNCE` | `go.EASING_OUTBOUNCE` |
+| `go.EASING_INOUTBOUNCE` | `go.EASING_OUTINBOUNCE` |
+| `go.EASING_INELASTIC` | `go.EASING_OUTELASTIC` |
+| `go.EASING_INOUTELASTIC` | `go.EASING_OUTINELASTIC` |
+| `go.EASING_INSINE` | `go.EASING_OUTSINE` |
+| `go.EASING_INOUTSINE` | `go.EASING_OUTINSINE` |
+| `go.EASING_INEXPO` | `go.EASING_OUTEXPO` |
+| `go.EASING_INOUTEXPO` | `go.EASING_OUTINEXPO` |
+| `go.EASING_INCIRC` | `go.EASING_OUTCIRC` |
+| `go.EASING_INOUTCIRC` | `go.EASING_OUTINCIRC` |
+| `go.EASING_INQUAD` | `go.EASING_OUTQUAD` |
+| `go.EASING_INOUTQUAD` | `go.EASING_OUTINQUAD` |
+| `go.EASING_INCUBIC` | `go.EASING_OUTCUBIC` |
+| `go.EASING_INOUTCUBIC` | `go.EASING_OUTINCUBIC` |
+| `go.EASING_INQUART` | `go.EASING_OUTQUART` |
+| `go.EASING_INOUTQUART` | `go.EASING_OUTINQUART` |
+| `go.EASING_INQUINT` | `go.EASING_OUTQUINT` |
+| `go.EASING_INOUTQUINT` | `go.EASING_OUTINQUINT` |
 
 Ниже приведены следующие валидные значения смягчения для функции `gui.animate()`:
 
 |---|---|
-| gui.EASING_LINEAR | |
-| gui.EASING_INBACK | gui.EASING_OUTBACK |
-| gui.EASING_INOUTBACK | gui.EASING_OUTINBACK |
-| gui.EASING_INBOUNCE | gui.EASING_OUTBOUNCE |
-| gui.EASING_INOUTBOUNCE | gui.EASING_OUTINBOUNCE |
-| gui.EASING_INELASTIC | gui.EASING_OUTELASTIC |
-| gui.EASING_INOUTELASTIC | gui.EASING_OUTINELASTIC |
-| gui.EASING_INSINE | gui.EASING_OUTSINE |
-| gui.EASING_INOUTSINE | gui.EASING_OUTINSINE |
-| gui.EASING_INEXPO | gui.EASING_OUTEXPO |
-| gui.EASING_INOUTEXPO | gui.EASING_OUTINEXPO |
-| gui.EASING_INCIRC | gui.EASING_OUTCIRC |
-| gui.EASING_INOUTCIRC | gui.EASING_OUTINCIRC |
-| gui.EASING_INQUAD | gui.EASING_OUTQUAD |
-| gui.EASING_INOUTQUAD | gui.EASING_OUTINQUAD |
-| gui.EASING_INCUBIC | gui.EASING_OUTCUBIC |
-| gui.EASING_INOUTCUBIC | gui.EASING_OUTINCUBIC |
-| gui.EASING_INQUART | gui.EASING_OUTQUART |
-| gui.EASING_INOUTQUART | gui.EASING_OUTINQUART |
-| gui.EASING_INQUINT | gui.EASING_OUTQUINT |
-| gui.EASING_INOUTQUINT | gui.EASING_OUTINQUINT |
+| `gui.EASING_LINEAR` | |
+| `gui.EASING_INBACK` | `gui.EASING_OUTBACK` |
+| `gui.EASING_INOUTBACK` | `gui.EASING_OUTINBACK` |
+| `gui.EASING_INBOUNCE` | `gui.EASING_OUTBOUNCE` |
+| `gui.EASING_INOUTBOUNCE` | `gui.EASING_OUTINBOUNCE` |
+| `gui.EASING_INELASTIC` | `gui.EASING_OUTELASTIC` |
+| `gui.EASING_INOUTELASTIC` | `gui.EASING_OUTINELASTIC` |
+| `gui.EASING_INSINE` | `gui.EASING_OUTSINE` |
+| `gui.EASING_INOUTSINE` | `gui.EASING_OUTINSINE` |
+| `gui.EASING_INEXPO` | `gui.EASING_OUTEXPO` |
+| `gui.EASING_INOUTEXPO` | `gui.EASING_OUTINEXPO` |
+| `gui.EASING_INCIRC` | `gui.EASING_OUTCIRC` |
+| `gui.EASING_INOUTCIRC` | `gui.EASING_OUTINCIRC` |
+| `gui.EASING_INQUAD` | `gui.EASING_OUTQUAD` |
+| `gui.EASING_INOUTQUAD` | `gui.EASING_OUTINQUAD` |
+| `gui.EASING_INCUBIC` | `gui.EASING_OUTCUBIC` |
+| `gui.EASING_INOUTCUBIC` | `gui.EASING_OUTINCUBIC` |
+| `gui.EASING_INQUART` | `gui.EASING_OUTQUART` |
+| `gui.EASING_INOUTQUART` | `gui.EASING_OUTINQUART` |
+| `gui.EASING_INQUINT` | `gui.EASING_OUTQUINT` |
+| `gui.EASING_INOUTQUINT` | `gui.EASING_OUTINQUINT` |
 
 ![Linear interpolation](/manuals/images/properties/easing_linear.png)
 ![In back](/manuals/images/properties/easing_inback.png)

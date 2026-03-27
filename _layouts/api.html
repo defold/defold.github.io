@@ -4,7 +4,7 @@ layout: base
 {%- assign branch = page.branch -%}
 {%- assign refs = site.data.refindex | where: "branch", branch -%}
 {%- assign branches = site.data.branchindex -%}
-{%- assign types = refs | map: "type" | uniq | sort -%}
+{%- assign categories = refs | map: "type" | uniq | sort -%}
 {%- assign clean_ref = page.ref | remove: '.' -%}
 
 {%- if page.type == "Extension" -%}
@@ -12,12 +12,14 @@ layout: base
 {%- else -%}
 	{%- assign ref = site.data.ref[page.branch][clean_ref] -%}
 {%- endif -%}
+{%- assign page_api_language = page.api_language | default: page.language -%}
+{%- assign ref_api_language = ref.info.api_language | default: ref.info.language -%}
 
 {%- assign api_index_exclude = false -%}
-{%- if page.url contains "/ref/alpha/" or page.url contains "/ref/beta/" or page.url contains "/ref/stable/" -%}
+{%- if page.url contains "/ref/stable/" or page.url contains "/ref/alpha/" or page.url contains "/ref/beta/" -%}
   {%- assign api_index_exclude = true -%}
 {%- endif -%}
-{%- if ref.info.language == "" or ref.info.language == nil -%}
+{%- if ref_api_language == "" or ref_api_language == nil -%}
   {%- assign api_index_exclude = true -%}
 {%- endif -%}
 {%- if page.pagefind_exclude -%}
@@ -26,8 +28,9 @@ layout: base
 
 {%- unless api_index_exclude -%}
 <!-- Pagefind metadata and filters for API reference -->
-<div style="display: none;" data-pagefind-filter="section">API {{ref.info.language}}</div>
-<div style="display: none;" data-pagefind-meta="section">API {{ref.info.language}}</div>
+<div style="display: none;" data-pagefind-filter="section">API</div>
+<div style="display: none;" data-pagefind-meta="section">API</div>
+<div style="display: none;" data-pagefind-meta="api_language">{{ ref_api_language }}</div>
 {%- endunless -%}
 
 {%- if page.url contains branch -%}
@@ -49,28 +52,47 @@ layout: base
 			</form>
 			<hr>
 			<ul class="nobullet">
-				{%- for type in types -%}
-					{%- assign typerefs = refs | where: "type", type | sort_natural: "namespace" -%}
-					{%- assign clean_type = type | remove: ' ' | replace: "C++", "cpp" | downcase -%}
+				{% comment %}Iterate over "Defold C", "Defold Lua", Defold C++" etc{% endcomment %}
+				{%- for category in categories -%}
+					{%- assign categoryrefs = refs | where: "type", category | sort_natural: "namespace" -%}
+					{%- assign clean_category = category | remove: ' ' | replace: "C++", "cpp" | downcase -%}
 
 					{%- assign checked = "" -%}
-					{%- for r in typerefs -%}
+					{%- for r in categoryrefs -%}
 						{%- assign url = r.url -%}
 						{%- if page.url contains url -%}
 							{%- assign checked = "checked" -%}
 						{%- endif -%}
 					{%- endfor -%}
 
-				<input id="collapsible_{{ type }}" class="toggle" type="checkbox" {{ checked }}/>
-				<label for="collapsible_{{ type }}" class="togglelabel">{{ type | capitalize  }}</label>
+				<input id="collapsible_{{ category }}" class="toggle" type="checkbox" {{ checked }}/>
+				<label for="collapsible_{{ category }}" class="togglelabel">{{ category }}</label>
 				<ul class="nobullet">
-					<li style="padding-bottom: 0px;"><a href="/ref/{{page.branch}}/overview_{{clean_type}}" style="text-decoration: none;">Overview</a></li>
-					{%- for r in typerefs -%}
-						{%- assign textstyle = "text-decoration: none;" -%}
-						{%- if page.url contains r.url -%}
-							{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
+					<li style="padding-bottom: 0px;"><a href="/ref/{{page.branch}}/overview_{{clean_category}}" style="text-decoration: none;">Overview</a></li>
+
+					{%- assign namespaces = categoryrefs | map: "namespace" | uniq | sort_natural -%}
+					{%- for ns in namespaces -%}
+						{%- assign namespacerefs = categoryrefs | where: "namespace", ns | sort_natural: "file" -%}
+						{%- if namespacerefs.size > 1 -%}
+							<label class="togglelabel">{{ ns }}</label>
+							<ul class="nobullet">
+							{%- for r in namespacerefs -%}
+								{%- assign textstyle = "text-decoration: none;" -%}
+								{%- if page.url contains r.url -%}
+									{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
+								{%- endif -%}
+								<li id="{{ r.namespace }}" style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{%- if r.api_language == "C++" or r.api_language == "C" -%}{{r.file}}{%- endif -%}{%- if r.type == "Extension" -%}{{r.name}}{%- endif -%}</a></li>
+							{%- endfor -%}
+							</ul>
+						{%- else -%}
+							{%- for r in namespacerefs -%}
+								{%- assign textstyle = "text-decoration: none;" -%}
+								{%- if page.url contains r.url -%}
+									{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
+								{%- endif -%}
+								<li id="{{ r.namespace }}" style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{{ r.namespace }}{%- if r.api_language == "C++" or r.api_language == "C" -%}&nbsp;-&nbsp;({{r.file}}){%- endif -%}{%- if r.type == "Extension" -%}&nbsp;-&nbsp;({{r.name}}){%- endif -%}</a></li>
+							{%- endfor -%}
 						{%- endif -%}
-					<li id="{{ r.namespace }}" style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{{ r.namespace }}{%- if r.language == "C++" -%}&nbsp;-&nbsp;({{r.file}}){%- endif -%}{%- if r.type == "Extension" -%}&nbsp;-&nbsp;({{r.name}}){%- endif -%}</a></li>
 					{%- endfor -%}
 				</ul>
 				{%- endfor -%}
@@ -113,10 +135,15 @@ layout: base
 
 			{%- if page.ref == "overview" -%}
 				<h1>API Overview</h1>
-				{%- assign typerefs = refs | where: "type", page.type | natural_sort: "namespace" -%}
-				<ul class="nobullet">
+				{%- assign typerefs = refs | where: "type", page.type | sort_natural: "namespace" -%}
+				<table>
+					<tr>
+						<th>Namespace</th>
+						<th>{%- if page_api_language == "C++" or page_api_language == "C" -%}Include{%- elsif r.type == "Extension" -%}Library Folder{%- else -%}Name{%- endif -%}</th>
+						<th>Description</th>
+					</tr>
 				{%- for r in typerefs -%}
-					<li>
+					<tr>
 					{%- assign index = r.filename | remove: '.' -%}
 					{%- if page.type == "Extension" -%}
 						{%- assign ref = site.data.extensions[index] -%}
@@ -124,13 +151,15 @@ layout: base
 						{%- assign ref = site.data.ref[page.branch][index] -%}
 					{%- endif -%}
 
-					<p><a href="{{r.url}}">{{ r.namespace }}</a>{%- if r.language == "C++" -%}&nbsp;({{r.file}}){%- endif -%}{%- if r.type == "Extension" -%}&nbsp;({{r.name}}){%- endif -%}&nbsp;{{ ref.info.brief }}</p>
-					</li>
+					<td><a href="{{r.url}}">{%- if r.api_language == "C++" or r.api_language == "C" -%}{{ r.namespace }}{%- else -%}{{r.name}}{%- endif -%}</a></td>
+					<td>{%- if r.api_language == "C++" or r.api_language == "C" -%}{{r.path}}{%- else -%}{{r.namespace}}{%- endif -%}</td>
+					<td>{{ ref.info.brief }}</td>
+					</tr>
 				{%- endfor -%}
-				</ul>
-			{%- elsif ref.info.language == "C++" -%}
+				</table>
+			{%- elsif ref_api_language == "C++" -%}
 				{%- include api_c.html ref=ref -%}
-			{%- elsif ref.info.language == "Lua" -%}
+			{%- elsif ref_api_language == "Lua" -%}
 				{%- include api_lua.html ref=ref -%}
 			{%- else -%}
 				{%- include api_c.html ref=ref -%}

@@ -1,5 +1,5 @@
-This file can be used to test transclusion. This whole file will be transcluded as is, with whitespace preservation.
+Этот файл можно использовать для тестирования transclusion. Весь файл будет вставлен как есть, с сохранением пробельных символов.
 
-Note that any file references need are relative to the document where the file is inserted.
+Обратите внимание, что любые ссылки на файлы должны быть относительными к документу, в который вставляется этот файл.
 
 ![shared image](/shared/images/logo.png)

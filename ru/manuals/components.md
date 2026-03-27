@@ -35,7 +35,6 @@ Defold поддерживает следующие типы компоненто
 * [Particle FX](/ru/manuals/particlefx) ---  Порождает частицы
 * [Script](/ru/manuals/script) --- Оснащает игру логикой
 * [Sound](/ru/manuals/sound) --- Воспроизводит звуки или музыку
-* [Spine Model](/manuals/spinemodel) --- Визуализирует Spine-анимацию
 * [Sprite](/ru/manuals/sprite) --- Отображает 2D-изображение (с возможностью мултикадровой анимации)
 * [Tile Map](/ru/manuals/tilemap) --- Отображает сетку тайлов
 
