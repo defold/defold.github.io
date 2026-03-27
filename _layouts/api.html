@@ -16,7 +16,7 @@ layout: base
 {%- assign ref_api_language = ref.info.api_language | default: ref.info.language -%}
 
 {%- assign api_index_exclude = false -%}
-{%- if page.url contains "/ref/alpha/" or page.url contains "/ref/beta/" -%}
+{%- if page.url contains "/ref/stable/" or page.url contains "/ref/alpha/" or page.url contains "/ref/beta/" -%}
   {%- assign api_index_exclude = true -%}
 {%- endif -%}
 {%- if ref_api_language == "" or ref_api_language == nil -%}
