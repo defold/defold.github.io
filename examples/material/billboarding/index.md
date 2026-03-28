@@ -5,7 +5,7 @@ category: material
 layout: example
 opengraph_image: https://www.defold.com/examples/material/billboarding/thumbnail.png
 path: material/billboarding
-scripts: example/billboard.vp
+scripts: billboard.vp
 tags: particlefx, sprite, material, 3d
 thumbnail: thumbnail.png
 title: Billboarding
@@ -24,7 +24,7 @@ The effect is used in two places:
 
 Create a custom material for billboarding (for example `example/billboard.material`) and set it up like this:
 
-- **Vertex program:** `example/billboard.vp`
+- **Vertex program:** `billboard.vp`
 - **Fragment program:** `/builtins/materials/particlefx.fp`
   - This keeps standard particle/sprite sampling, tinting and alpha handling.
 
