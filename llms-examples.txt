@@ -6112,7 +6112,7 @@ This example focuses on this feature. It toggles a ParticleFX between two setups
    - `default_material`
    - `glow_material`
 
-   This makes it easy to switch the emitter `image` and `material` directly from code.
+   The current script switches the emitter `image` directly from code and keeps `default_material` active for the shown setup.
 
 4. The example uses 2 atlases with given animations:
 
@@ -6125,20 +6125,22 @@ The atlases are set up to contain the animation ids used by the script, so the e
 
 The script keeps two hardcoded setups and toggles between them whenever you click or tap:
 
-1. `particles.atlas` + glow material
+1. `particles.atlas` + default particle material
    `emitter_top` uses `coin`
    `emitter_bottom` uses `smoke`
 2. `sprites.atlas` + default particle material
    `emitter_top` uses `ship_red`
    `emitter_bottom` uses `ship_dark`
 
-When the setup changes, the script:
+On startup the script stores the current atlas name, reads back the authored emitter properties, writes them into the labels, and starts the ParticleFX. When the setup changes after that, the script:
 
-1. stops the ParticleFX
-2. calls `set_emitter_properties()` for each emitter to set `image`, `animation`, and `material`
-3. calls `get_emitter_properties()` to read the current values back with `go.get()`
-4. writes the values into the two labels
-5. plays the ParticleFX again
+1. stops the ParticleFX with `{ clear = true }`
+2. flips `self.atlas_name` between `sprites_atlas` and `particles_atlas`
+3. looks up the atlas resource and the correct animation pair from the `ANIMATIONS` table
+4. calls `set_emitter_properties()` for each emitter to set `image`, `animation`, and `material`
+5. calls `get_and_print_emitter_properties()` to read the current values back with `go.get()`
+6. writes them into the two labels
+7. plays the ParticleFX again
 
 The helper function `set_emitter_properties()` applies properties per emitter by passing the emitter id in `keys`:
 ```lua
@@ -6147,9 +6149,9 @@ go.set("#particles", "animation", animation, { keys = { "emitter_top" } })
 go.set("#particles", "material", material, { keys = { "emitter_top" } })
 ```
 
-The helper function `get_emitter_properties()` uses the same `keys` pattern with `go.get()` and writes the result into the labels, so the example shows which values are currently active for each emitter.
+The helper function `get_and_print_emitter_properties()` uses the same `keys` pattern with `go.get()` and writes the result into the labels, so the example shows which values are currently active for each emitter.
 
-One important limitation: **emitter property changes only affect the next play**. The script therefore stops the ParticleFX, clears any already spawned particles, applies the new emitter overrides, and then plays it again. Clearing matters here because the example swaps between atlases with different animation layouts, and keeping old particles alive while changing the emitter image/material can crash HTML5 rendering.
+One important limitation: **emitter property changes only affect the next play**. The script therefore stops the ParticleFX, clears any already spawned particles, applies the new emitter overrides, and then plays it again.
 
 ## Scripts
 
@@ -6164,19 +6166,20 @@ go.property("sprites_atlas", resource.atlas("/assets/sprites.atlas"))
 go.property("default_material", resource.material("/builtins/materials/particlefx.material"))
 go.property("glow_material", resource.material("/example/particlefx_glow.material"))
 
--- Address of the particlefx component:
-local PARTICLEFX = "#particles"
-
--- The example only switches between two simple atlas setups,
--- so each atlas gets one animation per emitter.
+-- Predefined table with animations for given atlases:
+-- (One can get the animations from resource.get_atlas() too)
 local ANIMATIONS = {
 	["particles_atlas"] = { hash("coin"), hash("smoke") },
 	["sprites_atlas"] = { hash("ship_red"), hash("ship_dark") }
 }
 
+-- Relative address of the particlefx component:
+local PARTICLEFX = "#particles"
+
 -- Read the current emitter properties back from the particlefx component
 -- and show them in the on-screen labels.
-local function get_emitter_properties(emitter, url)
+local function get_and_print_emitter_properties(emitter, url)
+	-- Get the properties of the emitter:
 	local image = go.get(PARTICLEFX, "image", { keys = { emitter } })
 	local animation = go.get(PARTICLEFX, "animation", { keys = { emitter } })
 	local material = go.get(PARTICLEFX, "material", { keys = { emitter } })
@@ -6196,53 +6199,52 @@ end
 -- Toggle between the two hardcoded setups:
 -- particles atlas + glow material, or sprites atlas + default material.
 local function change_particlefx_properties(self)
-	-- Clear active particles before swapping atlas/material overrides.
-	-- Otherwise the currently alive particles can keep rendering while the
-	-- emitter points at a different texture layout on the next frame.
-	if self.started then
-		particlefx.stop(PARTICLEFX, { clear = true })
-	end
+	-- Stop the particlefx before swapping atlas/material overrides.
+	particlefx.stop(PARTICLEFX, { clear = true })
 
-	local core_animation = ANIMATIONS["particles_atlas"][1]
-	local spark_animation = ANIMATIONS["particles_atlas"][2]
-
-	if self.atlas == self.particles_atlas then
-		self.atlas = self.sprites_atlas
-		self.material = self.default_material
-		core_animation = ANIMATIONS["sprites_atlas"][1]
-		spark_animation = ANIMATIONS["sprites_atlas"][2]
-	else
-		self.atlas = self.particles_atlas
+	-- Swap the atlas name and material:
+	if self.atlas_name == "sprites_atlas" then
+		self.atlas_name = "particles_atlas"
 		self.material = self.glow_material
+	else
+		self.atlas_name = "sprites_atlas"
+		self.material = self.default_material
 	end
 
-	pprint(core_animation, spark_animation, self.atlas, self.material)
+	-- Get current atlas resource and animations set for it:
+	local atlas = self[self.atlas_name]
+	local animations = ANIMATIONS[self.atlas_name]
 
-	-- Both emitters use the same atlas/material for a given setup,
-	-- but each emitter gets its own animation.
-	set_emitter_properties("emitter_top", self.atlas, core_animation, self.material)
-	set_emitter_properties("emitter_bottom", self.atlas, spark_animation, self.material)
+	-- Set the atlas, animation and material for each emitter:
+	set_emitter_properties("emitter_top", atlas, animations[1], self.material)
+	set_emitter_properties("emitter_bottom", atlas, animations[2], self.material)
 
-	get_emitter_properties("emitter_top", "#label_core")
-	get_emitter_properties("emitter_bottom", "#label_spark")
+	-- Get the current properties and print them in the label for each emitter:
+	get_and_print_emitter_properties("emitter_top", "#label_core")
+	get_and_print_emitter_properties("emitter_bottom", "#label_spark")
 
+	-- Play the particlefx again:
 	particlefx.play(PARTICLEFX)
-	self.started = true
 end
 
 function init(self)
+	-- Acquire input focus to react to the mouse click/touch:
 	msg.post(".", "acquire_input_focus")
 
-	-- Start with sprites/default so the first click flips to particles/glow.
-	self.atlas = self.sprites_atlas
+	-- Initialize the atlas name:
+	self.atlas_name = "sprites_atlas"
 	self.material = self.default_material
-	self.started = false
 
-	change_particlefx_properties(self)
+	-- Get the current properties and print them in the label for each emitter:
+	get_and_print_emitter_properties("emitter_top", "#label_core")
+	get_and_print_emitter_properties("emitter_bottom", "#label_spark")
+
+	-- Start the ParticleFX:
+	particlefx.play(PARTICLEFX)
 end
 
 function on_input(self, action_id, action)
-	-- Toggle the setup on touch release.
+	-- Toggle the setup on touch release:
 	if action_id == hash("touch") and action.released then
 		change_particlefx_properties(self)
 	end
