@@ -24,12 +24,12 @@ This example focuses on this feature. It toggles a ParticleFX between two setups
    - script `particlefx_set_get.script`
    - ParticleFX component named `#particles`
    - 2 label components: `#label_core` and `#label_spark`
-   ![Outline](doc/outline.png)
+   ![Outline](outline.png)
 
 2. The ParticleFX:
 
    - has two emitters: `emitter_top` and `emitter_bottom`
-   ![ParticleFX](doc/particlefx.png)
+   ![ParticleFX](particlefx.png)
 
 3. The script has the resources exposed as properties:
 
@@ -76,4 +76,4 @@ go.set("#particles", "material", material, { keys = { "emitter_top" } })
 
 The helper function `get_emitter_properties()` uses the same `keys` pattern with `go.get()` and writes the result into the labels, so the example shows which values are currently active for each emitter.
 
-One important limitation: **emitter property changes only affect the next play**. That is why the script stops and plays the ParticleFX around each property update.
+One important limitation: **emitter property changes only affect the next play**. The script therefore stops the ParticleFX, clears any already spawned particles, applies the new emitter overrides, and then plays it again. Clearing matters here because the example swaps between atlases with different animation layouts, and keeping old particles alive while changing the emitter image/material can crash HTML5 rendering.

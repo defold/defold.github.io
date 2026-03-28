@@ -36813,7 +36813,7 @@ go.set("#particles", "material", material, { keys = { "emitter_top" } })
 
 The helper function `get_emitter_properties()` uses the same `keys` pattern with `go.get()` and writes the result into the labels, so the example shows which values are currently active for each emitter.
 
-One important limitation: **emitter property changes only affect the next play**. That is why the script stops and plays the ParticleFX around each property update.
+One important limitation: **emitter property changes only affect the next play**. The script therefore stops the ParticleFX, clears any already spawned particles, applies the new emitter overrides, and then plays it again. Clearing matters here because the example swaps between atlases with different animation layouts, and keeping old particles alive while changing the emitter image/material can crash HTML5 rendering.
 
 ## Scripts
 
@@ -36860,7 +36860,12 @@ end
 -- Toggle between the two hardcoded setups:
 -- particles atlas + glow material, or sprites atlas + default material.
 local function change_particlefx_properties(self)
-	particlefx.stop(PARTICLEFX)
+	-- Clear active particles before swapping atlas/material overrides.
+	-- Otherwise the currently alive particles can keep rendering while the
+	-- emitter points at a different texture layout on the next frame.
+	if self.started then
+		particlefx.stop(PARTICLEFX, { clear = true })
+	end
 
 	local core_animation = ANIMATIONS["particles_atlas"][1]
 	local spark_animation = ANIMATIONS["particles_atlas"][2]
@@ -36886,6 +36891,7 @@ local function change_particlefx_properties(self)
 	get_emitter_properties("emitter_bottom", "#label_spark")
 
 	particlefx.play(PARTICLEFX)
+	self.started = true
 end
 
 function init(self)
@@ -36894,6 +36900,7 @@ function init(self)
 	-- Start with sprites/default so the first click flips to particles/glow.
 	self.atlas = self.sprites_atlas
 	self.material = self.default_material
+	self.started = false
 
 	change_particlefx_properties(self)
 end
