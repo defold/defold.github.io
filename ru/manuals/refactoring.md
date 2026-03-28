@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве рассказывается, как легко изменить структуру проекта с помощью мощного рефакторинга.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Рефакторинг
 toc:
 - Рефакторинг

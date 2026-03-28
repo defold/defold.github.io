@@ -1,8 +1,8 @@
 ---
 brief: Lua 模块允许您构建项目结构并创建可重用的库代码. 本手册介绍了如何在 Defold 中实现这一点.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的 Lua 模块
 toc:
 - Lua 模块

@@ -1,8 +1,8 @@
 ---
 brief: This manual describes some ways to debug an application containing native extensions.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Debugging extensions
 toc: []
 ---

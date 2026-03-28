@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to use 3D model animations in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: 3D model animation in Defold manual
 toc:
 - 3D skinned animation

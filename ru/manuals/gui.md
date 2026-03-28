@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве рассматривается создание GUI для приложения в движке Defold, различные типы GUI-нод и GUI-скриптинг.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Разработка GUI
 toc:
 - Разработка GUI

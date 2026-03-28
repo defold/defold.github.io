@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to optimize memory usage of a Defold game.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Optimizing memory usage of a Defold game
 toc:
 - Optimizing memory usage

@@ -1,8 +1,8 @@
 ---
 brief: Функциональность Live Update предоставляет механизм, позволяющий во время выполнения загружать и сохранять ресурсы в бандл приложения, которые были намеренно исключены из него на этапе сборки. В этом руководстве объясняется, как это работает.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Контент Live Update в Defold
 toc:
 - Live Update

@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to use collection factory components to spawn hierarchies of game objects.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Collection factory manual
 toc:
 - Collection factories

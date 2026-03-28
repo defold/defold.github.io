@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了 Defold 中项目特定设置的工作方式。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 项目设置
 toc:
 - 项目设置

@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了 Defold 如何解决寻址问题。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的寻址
 toc:
 - 寻址

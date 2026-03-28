@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to build and run Defold applications on Android devices
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Defold development for the Android platform
 toc:
 - Android development

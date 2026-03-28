@@ -1,8 +1,8 @@
 ---
 brief: Αυτό το εγχειρίδιο περιγράφει την υποστήριξη animation του Defold.
 github: https://github.com/defold/doc
-language: gr
 layout: manual
+locale: gr
 title: Εγχειρίδιο Animation στη Defold
 toc:
 - Κινούμενων γραφικών

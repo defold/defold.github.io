@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia jak działają skrypty GUI w Defoldzie
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Skrypty GUI w Defoldzie
 toc:
 - Skrypty GUI

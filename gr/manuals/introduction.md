@@ -1,8 +1,8 @@
 ---
 brief: Μια σύντομη εισαγωγή στο Defold.
 github: https://github.com/defold/doc
-language: gr
 layout: manual
+locale: gr
 title: Εισαγωγή στο Defold
 toc:
 - Καλώς ήλθατε στο Defold

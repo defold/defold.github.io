@@ -1,8 +1,8 @@
 ---
 brief: Defold 包含 2D 和 3D 的物理引擎。它们允许您模拟不同类型碰撞对象之间的牛顿物理交互。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的物理系统
 toc:
 - 物理

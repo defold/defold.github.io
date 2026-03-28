@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описывается manifest расширения и то, как он соотносится с manifest приложения и manifest движка.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Native extensions - manifests расширений
 toc:
 - Файлы manifest расширения, приложения и движка

@@ -1,8 +1,8 @@
 ---
 brief: Przekazywanie wiadomości to mechanizm używany przez Defold, aby umożliwić komunikację luźno powiązanych obiektów. Ta instrukcja opisuje ten mechanizm dogłębnie.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Przekazywanie wiadomości w silniku Defold
 toc:
 - Przekazywanie wiadomości

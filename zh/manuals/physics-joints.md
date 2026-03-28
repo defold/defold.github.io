@@ -1,8 +1,8 @@
 ---
 brief: Defold 支持 2D 物理关节。本手册解释了如何创建和使用关节。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的物理关节
 toc:
 - 关节

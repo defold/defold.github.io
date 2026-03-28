@@ -1,8 +1,8 @@
 ---
 brief: Przewodnik wyjaśnia cykl życia aplikacji zbudowanej w silniku Defold od uruchomienia do zamknięcia.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Cykl życia aplikacji w silniku Defold
 toc:
 - Cykl życia aplikacji

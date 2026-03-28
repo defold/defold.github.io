@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了Defold GUI编辑器、各种类型的GUI节点和GUI脚本。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold中的GUI场景
 toc:
 - GUI

@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to create UI elements in the editor using Lua
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: 'Editor scripts: UI'
 toc:
 - Editor scripts and UI

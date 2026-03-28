@@ -1,8 +1,8 @@
 ---
 brief: A collision component can either use several primitive shapes or a single complex shape.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Collision shapes
 toc:
 - Collision shapes

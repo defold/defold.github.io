@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia jak działa przycinanie i maskowanie GUI w Defoldzie
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Wycinanie GUI w Defoldzie
 toc:
 - Wycinanie GUI

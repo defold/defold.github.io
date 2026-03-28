@@ -1,8 +1,8 @@
 ---
 brief: 本手册概述了Defold对图形元素的支持.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 图形手册
 toc: []
 ---

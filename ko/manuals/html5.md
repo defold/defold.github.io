@@ -1,7 +1,7 @@
 ---
 github: https://github.com/defold/doc
-language: ko
 layout: manual
+locale: ko
 title: Defold manual
 toc:
 - HTML5 게임 개발하기

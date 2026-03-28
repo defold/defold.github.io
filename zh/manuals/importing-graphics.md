@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何导入和使用2D图形。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 2D图形导入和使用
 toc:
 - 导入2D图形

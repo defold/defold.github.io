@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to write a native extension for the Defold game engine and how to compile it through the zero setup cloud builders.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Writing native extensions for Defold
 toc:
 - Native extensions

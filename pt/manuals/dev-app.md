@@ -1,8 +1,8 @@
 ---
 brief: Este manual explica como colocar o aplicativo de desenvolvimento no seu dispositivo para desenvolvimento iterativo no dispositivo.
 github: https://github.com/defold/doc
-language: pt
 layout: manual
+locale: pt
 title: Executando o aplicativo de desenvolvimento no dispositivo
 toc:
 - O aplicativo de desenvolvimento móvel

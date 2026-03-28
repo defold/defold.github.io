@@ -1,8 +1,8 @@
 ---
 brief: Lua-модули позволяют структурировать проект и создавать многократно используемый библиотечный код. Данное руководство объясняет, как это делается в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Lua-модули
 toc:
 - Lua-модули

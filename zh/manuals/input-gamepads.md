@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了游戏手柄输入的工作原理。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold游戏手柄输入
 toc:
 - Gamepads

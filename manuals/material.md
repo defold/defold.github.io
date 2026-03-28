@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to work with materials, shader constants and samplers.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Defold materials manual
 toc:
 - Materials

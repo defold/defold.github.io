@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia, jak działa wejście za pomocą myszki i dotyku na urządzeniach dotykowych w silniku Defold.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Wejścia myszki i dotykowe w silniku Defold
 toc:
 - Obsługa myszki

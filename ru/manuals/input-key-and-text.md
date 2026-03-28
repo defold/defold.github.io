@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как работает ввод клавиш и текста.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Ввод клавиш и текста в Defold
 toc:
 - Клавишные триггеры

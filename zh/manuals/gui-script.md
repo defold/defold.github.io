@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了GUI脚本。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold中的GUI脚本
 toc:
 - GUI脚本

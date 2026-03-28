@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何为Defold游戏引擎编写原生扩展，以及如何通过零配置云构建器进行编译。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 为Defold编写原生扩展
 toc:
 - 原生扩展

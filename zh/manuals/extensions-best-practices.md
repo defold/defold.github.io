@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了开发原生扩展的最佳实践。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 原生扩展 - 最佳实践
 toc:
 - 最佳实践

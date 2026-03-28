@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to get help if you run into a problem while using Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: How to get help
 toc:
 - Getting help

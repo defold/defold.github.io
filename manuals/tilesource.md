@@ -1,8 +1,8 @@
 ---
 brief: This describes how to use and create a tile source.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Defold tile source manual
 toc:
 - Tile source

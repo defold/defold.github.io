@@ -1,7 +1,7 @@
 ---
 brief: 在本示例中，您将学习如何使用视差效果来模拟游戏世界中的深度。
-language: zh
 layout: tutorial
+locale: zh
 title: 视差代码示例
 ---
 

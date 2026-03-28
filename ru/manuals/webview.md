@@ -1,8 +1,8 @@
 ---
 brief: WebView позволяет загружать и отображать веб-страницы как оверлеи в ваших играх. Они также могут выполнять предоставленный пользователем JavaScript в фоне. В этом руководстве описываются официальное расширение WebView для Defold, API и его возможности.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: WebView в Defold
 toc: []
 ---

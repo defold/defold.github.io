@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia jak obsługiwać wejścia i przechwytywać i reagować na akcje użytkownika.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Urządzenia wejścia w Defoldzie
 toc:
 - Urządzenia wejścia

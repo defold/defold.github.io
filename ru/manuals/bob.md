@@ -1,8 +1,8 @@
 ---
 brief: Bob - это инструмент командной строки для создания проектов Defold. В этом руководстве объясняется, как использовать инструмент.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Руководство по сборщику проектов Defold
 toc:
 - Сборщик Bob

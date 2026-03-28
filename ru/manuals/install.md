@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как загрузить и установить редактор Defold для вашей операционной системы.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Установка Defold
 toc:
 - Установка Defold

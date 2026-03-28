@@ -1,8 +1,8 @@
 ---
 brief: Это руководство объясняет, как использовать компоненты Factory для динамического порождения игровых объектов во время выполнения.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Компонент Factory
 toc:
 - Компонент Factory

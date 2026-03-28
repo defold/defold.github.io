@@ -1,8 +1,8 @@
 ---
 brief: Instrukcja opisuje sposoby na utworzenie i otwieranie projektów w Defoldzie.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Tworzenie nowego projektu
 toc:
 - Tworzenie projektu

@@ -1,7 +1,7 @@
 ---
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 toc:
 - Linux 开发
 - 项目设置

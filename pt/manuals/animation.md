@@ -1,8 +1,8 @@
 ---
 brief: Esse manual descreve o suporte a animações do Defold
 github: https://github.com/defold/doc
-language: pt
 layout: manual
+locale: pt
 title: Animações no manual Defold
 toc:
 - Animações

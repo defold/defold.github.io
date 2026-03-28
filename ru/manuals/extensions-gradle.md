@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как использовать Gradle для разрешения зависимостей в Android-сборках.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Использование Gradle-зависимостей в Android-сборках
 toc:
 - Gradle для Android

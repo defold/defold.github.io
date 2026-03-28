@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了使用 Defold 创建 Google Play Instant 游戏的方法。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Google Play Instant
 toc:
 - Google Play Instant

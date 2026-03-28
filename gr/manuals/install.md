@@ -1,8 +1,8 @@
 ---
 brief: Αυτό το εγχειρίδιο εξηγεί τον τρόπο λήψης και εγκατάστασης του προγράμματος επεξεργασίας Defold για το λειτουργικό σας σύστημα.
 github: https://github.com/defold/doc
-language: gr
 layout: manual
+locale: gr
 title: Εγκατάσταση Defold
 toc:
 - Εγκατάσταση Defold

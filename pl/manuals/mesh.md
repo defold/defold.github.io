@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje jak działają komponenty typu Mesh służące do wyśweitlania obiektów 3D.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Komponent Mesh w Defoldzie
 toc:
 - Komponent Mesh (Siatka)

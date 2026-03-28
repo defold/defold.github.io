@@ -1,8 +1,8 @@
 ---
 brief: В состав Defold входят 2D и 3D физические движки. Они позволяют симулировать ньютоновские физические взаимодействия между разными типами объектов столкновения.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Физика
 toc:
 - Физика

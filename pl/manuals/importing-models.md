@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje ze szczegółami jak importować i edytować modele 3D.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Importowanie modeli 3D
 toc:
 - Importowanie modeli 3D

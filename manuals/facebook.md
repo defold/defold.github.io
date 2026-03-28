@@ -1,8 +1,8 @@
 ---
 brief: Facebook in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Facebook in Defold
 toc: []
 ---

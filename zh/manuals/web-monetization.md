@@ -1,8 +1,8 @@
 ---
 brief: 网页游戏盈利是用网页游戏获利的一种手段, 开发者获利的同时玩家获得更高级的游戏内容.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 网页游戏盈利
 toc:
 - 网页游戏盈利

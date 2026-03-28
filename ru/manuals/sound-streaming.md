@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как организовать потоковую загрузку звука в игровой движок Defold
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Потоковая загрузка звука в Defold
 toc:
 - Потоковая загрузка звука

@@ -1,8 +1,8 @@
 ---
 brief: Bob 是用于构建 Defold 项目的命令行工具。本手册详述如何使用这个工具。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 项目构建器手册
 toc:
 - 构建器 Bob

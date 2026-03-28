@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how the app manifest can be used to exclude features from the engine.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: App manifest
 toc:
 - App manifest

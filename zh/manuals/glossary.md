@@ -1,8 +1,8 @@
 ---
 brief: 本手册列出了在Defold工作中遇到的所有内容及其简要描述。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold glossary
 toc:
 - Defold glossary

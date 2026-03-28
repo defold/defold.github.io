@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了Defold摄像机组件的功能.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 摄像机组件手册
 toc:
 - 摄像机

@@ -1,7 +1,7 @@
 ---
 brief: 在这个初学者教程中，您将学习如何使用向量和一些简单的向量代数来实现逼真的移动。
-language: zh
 layout: tutorial
+locale: zh
 title: 移动教程
 ---
 

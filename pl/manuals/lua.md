@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja przedstawi krótkie wprowadzenie do podstaw programowania w języku Lua ogólnie oraz to, na co należy zwrócić uwagę podczas pracy z Lua w Defoldzie.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Programowanie Lua w Defoldzie
 toc:
 - Lua w Defoldzie

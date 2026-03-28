@@ -1,7 +1,7 @@
 ---
 brief: 在本示例项目中，你将学习一种创建大型RPG地图的方法。
-language: zh
 layout: tutorial
+locale: zh
 title: RPG地图示例
 ---
 

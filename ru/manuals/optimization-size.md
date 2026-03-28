@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описывается, как оптимизировать размер игры на Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Оптимизация размера игры в Defold
 toc:
 - Оптимизация размера игры

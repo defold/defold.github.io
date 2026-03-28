@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia czym są i jak działają moduły Lua w Defoldzie.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Moduły Lua w Defoldzie
 toc:
 - Moduły Lua

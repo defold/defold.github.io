@@ -1,8 +1,8 @@
 ---
 brief: 库功能允许您在项目之间共享资源。本手册解释了其工作原理。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold库项目
 toc:
 - 库

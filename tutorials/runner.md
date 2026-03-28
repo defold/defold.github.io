@@ -1,7 +1,7 @@
 ---
 brief: In this tutorial you start with an empty project and build a complete runner game with an animated character, physics collision, pickups and scoring.
-language: en
 layout: tutorial
+locale: en
 title: Endless runner tutorial
 ---
 

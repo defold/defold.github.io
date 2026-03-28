@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何在 Defold 中构建和运行 iOS 设备上的游戏和应用。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold iOS 平台开发
 toc:
 - iOS 开发

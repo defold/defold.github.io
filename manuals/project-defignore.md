@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to ignore files and folders in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Defold project ignores
 toc:
 - Ignoring files

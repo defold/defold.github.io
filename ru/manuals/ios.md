@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как собирать и запускать игры и приложения на устройствах iOS в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Разработка в Defold для платформы iOS
 toc:
 - Разработка для iOS

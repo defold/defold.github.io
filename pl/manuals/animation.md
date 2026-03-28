@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja przedstawia różne możliwości animacji w Defoldzie
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Animacja w Defoldzie
 toc:
 - Animacja w Defoldzie

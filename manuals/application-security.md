@@ -1,8 +1,8 @@
 ---
 brief: This manual will cover a number of areas related to secure development practices.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Application Security manual
 toc:
 - Application Security

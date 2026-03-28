@@ -1,8 +1,8 @@
 ---
 brief: В данном руководстве описано, как импортировать 3D-модели, используемые компонентом Model.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Импортирование 3D-моделей
 toc:
 - Импортирование 3D-моделей

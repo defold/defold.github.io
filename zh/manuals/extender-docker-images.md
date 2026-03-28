@@ -1,8 +1,8 @@
 ---
 brief: 文档描述了可用的Docker镜像和使用它们的Defold版本
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 可用的Docker镜像
 toc:
 - 可用的Docker镜像

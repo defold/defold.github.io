@@ -1,8 +1,8 @@
 ---
 brief: Настоящее руководство описывает процесс создания и открытия проекта в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Подготовка проекта
 toc:
 - Подготовка проекта

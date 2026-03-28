@@ -1,8 +1,8 @@
 ---
 brief: Это руководство объясняет особенности использования ресурса Atlas в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Ресурс Atlas
 toc:
 - Ресурс Atlas

@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了 Defold 中存在的属性类型，以及它们的使用和动画制作方法。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的属性
 toc:
 - 属性

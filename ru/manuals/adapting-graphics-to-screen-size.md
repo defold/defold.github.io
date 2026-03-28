@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как адаптировать игру и графику к разным размерам экрана.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Адаптация графики к разным размерам экрана
 toc:
 - Введение

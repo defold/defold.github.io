@@ -1,8 +1,8 @@
 ---
 brief: Esse manual detalha o ciclo de vida dos games e aplicações do Defold.
 github: https://github.com/defold/doc
-language: pt
 layout: manual
+locale: pt
 title: Manual de ciclo de vida da aplicação Defold.
 toc:
 - Ciclo de vida da aplicação

@@ -1,8 +1,8 @@
 ---
 brief: 本手册提供了组件概览及其使用方法.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 游戏对象组件
 toc:
 - 组件

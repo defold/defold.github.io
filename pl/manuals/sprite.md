@@ -1,8 +1,8 @@
 ---
 brief: Instrukcja ta opisuje jak pokazywać dwuwymiarowe grafiki używając komponentu typu Sprite.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Sprite - reprezentacja graficzna 2D
 toc:
 - Sprite

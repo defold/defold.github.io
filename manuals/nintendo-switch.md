@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to get Nintendo Switch access
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Defold development for Nintendo Switch
 toc:
 - Nintendo Switch development

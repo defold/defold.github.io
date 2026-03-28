@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja pokazuje obecne skróty klawiszowe Edytora Defold i jak je zmodyfikować.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Skróty klawiszowe Edytora
 toc:
 - Skróty klawiszowe Edytora

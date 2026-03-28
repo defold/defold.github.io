@@ -1,8 +1,8 @@
 ---
 brief: Функция Libraries позволяет делиться ресурсами между проектами. В этом руководстве объясняется, как она работает.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Работа с библиотечными проектами в Defold
 toc:
 - Libraries

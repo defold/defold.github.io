@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia jak korzystać z buforowania zasobów w celu przyspieszenia budowania.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Buforowanie zasobów
 toc:
 - Buforowanie zasobów

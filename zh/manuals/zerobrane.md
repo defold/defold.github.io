@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何使用 ZeroBrane Studio 在 Defold 中调试 Lua 代码。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 使用 ZeroBrane Studio 进行调试
 toc:
 - 使用 ZeroBrane Studio 调试 Lua 脚本

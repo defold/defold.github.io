@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了 Defold 的渲染管线工作原理以及如何对其进行编程。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的渲染管线
 toc:
 - 渲染

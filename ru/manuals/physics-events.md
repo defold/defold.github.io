@@ -1,8 +1,8 @@
 ---
 brief: Обработку событий столкновений можно централизовать с помощью `physics.set_event_listener()`, направляя все сообщения о столкновениях и взаимодействиях в одну указанную функцию.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: События столкновений в Defold
 toc:
 - Обработка физических событий в Defold

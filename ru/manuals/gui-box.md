@@ -1,8 +1,8 @@
 ---
 brief: В данном руководстве объясняется, как использовать GUI-ноду Box.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: GUI-нода Box
 toc:
 - GUI-нода Box

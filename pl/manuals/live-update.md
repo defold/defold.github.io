@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje i wyjaśnia funkcjonalność Live update umożliwiającą aplikacjom pobieranie i przetrzymywanie danych, które początkowo były celowo nie dołączone do zbudowanej paczki.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Aktualizacja na żywo (Live update) w Defoldzie
 toc:
 - Aktualizacja na żywo (Live Update)

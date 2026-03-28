@@ -1,8 +1,8 @@
 ---
 brief: Document described available Docker images and Defold versions that used it
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Available Docker images
 toc:
 - Available Docker images

@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何在Defold GUI场景中使用饼状图节点。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold GUI饼状图节点
 toc:
 - GUI饼状图节点

@@ -1,8 +1,8 @@
 ---
 brief: 本手册详细介绍了顶点和片段着色器以及如何在 Defold 中使用它们。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的着色器编程
 toc:
 - 着色器

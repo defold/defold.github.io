@@ -1,8 +1,8 @@
 ---
 brief: This guide presents Defold as an alternative for Flash game developers. It covers some of the key concepts used in Flash game development, and explains the corresponding tools and methods in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Defold for Flash users
 toc:
 - Defold for Flash users

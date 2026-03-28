@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описано, как собирать и запускать приложения Defold на платформе Windows
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Разработка под платформу Windows в Defold
 toc:
 - Разработка под Windows

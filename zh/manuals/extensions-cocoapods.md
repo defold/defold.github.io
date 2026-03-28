@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何在 iOS 和 macOS 构建中使用 CocoaPods 解析依赖。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 在 iOS 和 macOS 构建中使用 CocoaPods 依赖
 toc:
 - CocoaPods

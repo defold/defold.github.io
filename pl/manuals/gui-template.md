@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia, jak działają szablony GUI.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Szablony GUI w Defoldzie
 toc:
 - Węzły szablonów GUI

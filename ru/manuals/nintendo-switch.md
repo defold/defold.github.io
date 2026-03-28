@@ -1,8 +1,8 @@
 ---
 brief: В данном руководстве описано, как получить доступ к Nintendo Switch
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Разработка для Nintendo Switch
 toc:
 - Разработка для Nintendo Switch

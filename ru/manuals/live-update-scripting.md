@@ -1,8 +1,8 @@
 ---
 brief: Чтобы использовать контент Live Update, нужно скачать и смонтировать данные в игру. В этом руководстве показано, как работать с Live Update из скриптов.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Скриптование контента Live Update
 toc:
 - Скриптование Live Update

@@ -1,8 +1,8 @@
 ---
 brief: Это руководство объясняет как отлаживать нативный код в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Отладка нативного кода в Defold
 toc:
 - Отладка нативного кода

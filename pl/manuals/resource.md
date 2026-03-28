@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia jak Defold automatycznie zarządza zasobami i jak można rędzie to robić.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Zarządzanie zasobami w Defoldzie
 toc:
 - Zarządzanie zasobami

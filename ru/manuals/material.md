@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство объясняет как работать с материалами, шейдерными константами и сэмплерами.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Материалы
 toc:
 - Материалы

@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何进行HTTP请求。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold HTTP请求
 toc:
 - HTTP请求

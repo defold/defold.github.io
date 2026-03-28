@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве кратко описано, как работать с кодом в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Написание кода
 toc:
 - Написание кода

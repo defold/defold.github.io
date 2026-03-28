@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описано, как использовать app manifest для исключения возможностей из движка.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: App Manifest
 toc:
 - App Manifest

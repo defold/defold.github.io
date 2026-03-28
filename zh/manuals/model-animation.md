@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何在 Defold 中使用 3D 模型动画。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 3D模型动画
 toc:
 - 3D 蒙皮动画

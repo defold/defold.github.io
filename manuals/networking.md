@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to connect to remote servers and perform other kinds of network connections.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Networking in Defold
 toc:
 - Networking

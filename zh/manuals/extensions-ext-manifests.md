@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了扩展清单及其与应用清单和引擎清单的关联方式。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 原生扩展 - 扩展清单
 toc:
 - 扩展、应用和引擎清单文件

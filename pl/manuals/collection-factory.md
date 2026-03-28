@@ -1,8 +1,8 @@
 ---
 brief: Instrukcja ta wyjaśnia jak używać Fabryk kolekcji, żeby tworzyć hierarchię obiektów gry.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Instrukcja do Fabryk kolekcji
 toc:
 - Fabryka kolekcji (Collection factory)

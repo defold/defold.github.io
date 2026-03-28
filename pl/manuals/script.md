@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje szczegóły pisania logiki gry w komponentach typu skrypt.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Pisanie logiki gry w skryptach
 toc:
 - Skrypty

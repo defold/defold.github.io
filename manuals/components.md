@@ -1,8 +1,8 @@
 ---
 brief: This manual gives an overview of the components and how to use them.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Game object components
 toc:
 - Components

@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了如何在 Defold 中忽略文件和文件夹。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 项目忽略文件
 toc:
 - 忽略文件

@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia jak korzystać z etykiety w celu wyświetlania tekstu w grach.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Etykieta w Defoldzie
 toc:
 - Etykieta (Label)

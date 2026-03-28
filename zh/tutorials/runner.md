@@ -1,7 +1,7 @@
 ---
 brief: 本教程将从一个空项目开始，构建一个完整的跑酷游戏，包含动画角色、物理碰撞、收集品和计分系统。
-language: zh
 layout: tutorial
+locale: zh
 title: 无尽跑酷游戏教程
 ---
 

@@ -1,8 +1,8 @@
 ---
 brief: 碰撞对象是用于给游戏对象赋予物理行为的组件。碰撞对象具有物理属性和空间形状。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的碰撞对象
 toc:
 - 碰撞对象

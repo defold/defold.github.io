@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja przedstawia Defold jako alternatywę dla deweloperów znających Flasha. Opisuje kluczowe koncepty Flasha i odpowiadające im narzędzia w Defoldzie.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Defold dla użytkowników Flasha
 toc:
 - Defold dla użytkowników Flasha

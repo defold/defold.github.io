@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how mouse and touch input works.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Mouse and touch input in Defold
 toc:
 - Mouse Triggers

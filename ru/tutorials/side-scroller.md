@@ -1,8 +1,8 @@
 ---
 brief: Этот учебник даёт представление о том, как создавать игры в Defold. В нём показано создание нового проекта на основе простого side-scroller, затем вы научитесь изменять игру, чтобы сделать её интереснее, и в конце добавите новый игровой объект. Учебник должен занять около 10 минут.
 github: https://github.com/defold/tutorial-side-scroller
-language: ru
 layout: tutorial
+locale: ru
 title: Учебник Side scroller
 ---
 

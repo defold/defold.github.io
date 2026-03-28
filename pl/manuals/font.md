@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje jak używać fontów w Twoich grach.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Fonty w Defoldzie
 toc:
 - Pliki fontów

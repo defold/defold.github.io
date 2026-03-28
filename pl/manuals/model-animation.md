@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje, jak używać animacji modeli 3D w silniku Defold.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Animacja modeli 3D w silniku Defold
 toc:
 - Animacja szkieletowa 3D

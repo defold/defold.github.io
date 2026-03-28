@@ -1,8 +1,8 @@
 ---
 brief: This manual describes the extension manifest and how it correlates to the application manifest and engine manifest.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Native extensions - extension manifests
 toc:
 - Extension, Application and Engine manifest files

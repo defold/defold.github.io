@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia narzędzia do debugowania dostępne w Defoldzie.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Debugowanie w Defoldzie
 toc:
 - Debugowanie logiki gry

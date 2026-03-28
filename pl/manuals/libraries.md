@@ -1,8 +1,8 @@
 ---
 brief: Funkcja bibliotek pozwala dzielić zasoby między projektami. Ten podręcznik wyjaśnia, jak to działa.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Praca z bibliotekami w Defold
 toc:
 - Biblioteki (Libraries)

@@ -1,7 +1,7 @@
 ---
 brief: 关于 Defold 游戏引擎、编辑器和平台的常见问题。
-language: zh
 layout: faq
+locale: zh
 title: Defold 引擎和编辑器常见问题
 ---
 

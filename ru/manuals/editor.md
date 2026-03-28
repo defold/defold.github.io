@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство представляет собой обзор внешнего вида и принципов работы редактора Defold, а также навигации в нем.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Обзор редактора Defold
 toc:
 - Обзор редактора

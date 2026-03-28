@@ -1,8 +1,8 @@
 ---
 brief: 本手册已过时
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 3D 图形手册
 toc:
 - 3D 图形

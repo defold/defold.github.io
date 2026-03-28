@@ -1,8 +1,8 @@
 ---
 brief: 本指南为 Flash 游戏开发者介绍了 Defold 作为替代方案。它涵盖了 Flash 游戏开发中使用的一些关键概念，并解释了 Defold 中相应的工具和方法。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold for Flash users
 toc:
 - Defold for Flash users

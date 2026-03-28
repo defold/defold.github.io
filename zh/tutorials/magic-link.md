@@ -1,7 +1,7 @@
 ---
 brief: 在本教程中，您将构建一个完整的小型益智游戏，包含开始屏幕、游戏机制和以增加难度形式的简单关卡进度。
-language: zh
 layout: tutorial
+locale: zh
 title: Magic Link 教程
 ---
 

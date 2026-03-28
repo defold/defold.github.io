@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство объясняет как использовать анимацию 3D-моделей в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Анимация 3D-моделей
 toc:
 - Скелетная анимация 3D-моделей

@@ -1,8 +1,8 @@
 ---
 brief: Krótki wstęp do silnika Defold.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Wprowadzenie do silnika Defold
 toc:
 - Witamy w Defold

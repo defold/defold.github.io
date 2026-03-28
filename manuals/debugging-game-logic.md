@@ -1,8 +1,8 @@
 ---
 brief: This manual explains the debugging facilities present in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Debugging in Defold
 toc:
 - Debugging game logic

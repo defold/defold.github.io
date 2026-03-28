@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何连接到远程服务器以及执行其他类型的网络连接。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold网络连接
 toc:
 - 网络连接

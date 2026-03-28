@@ -1,7 +1,7 @@
 ---
 brief: 在本示例项目中，您学习显示关卡完成时可能出现的分数计数效果。
-language: zh
 layout: tutorial
+locale: zh
 title: 关卡完成代码示例
 ---
 

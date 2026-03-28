@@ -1,8 +1,8 @@
 ---
 brief: Esse manual explica como o Defold resolve problemas de endereçamento.
 github: https://github.com/defold/doc
-language: pt
 layout: manual
+locale: pt
 title: Endereçamento no Defold
 toc:
 - Endereçamento

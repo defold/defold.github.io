@@ -1,8 +1,8 @@
 ---
 brief: Defold 简要介绍。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 介绍
 toc:
 - 欢迎来到 Defold

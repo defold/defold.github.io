@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to extend editor using Lua
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Editor scripts
 toc:
 - Editor scripts

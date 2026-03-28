@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как работает ввод с геймпада.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Использование геймпада в Defold
 toc:
 - Геймпады

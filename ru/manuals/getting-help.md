@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описано, как получить помощь, если вы столкнулись с проблемой при использовании Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Как получить помощь
 toc:
 - Получение помощи

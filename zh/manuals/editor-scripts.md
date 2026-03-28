@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何使用 Lua 扩展编辑器功能
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 编辑器脚本
 toc:
 - 编辑器脚本

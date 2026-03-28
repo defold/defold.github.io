@@ -1,8 +1,8 @@
 ---
 brief: 本手册重点介绍了将游戏移植到新平台或首次发布游戏时需要考虑的一些事项。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 移植和发布指南
 toc:
 - 移植和发布指南

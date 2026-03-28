@@ -1,8 +1,8 @@
 ---
 brief: Defold 支持自动纹理处理和图像数据压缩。本手册介绍了可用的功能。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的纹理配置文件
 toc:
 - 纹理配置文件

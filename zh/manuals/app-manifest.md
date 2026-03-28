@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了如何使用应用程序清单来排除引擎中的功能。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 应用程序清单
 toc:
 - 应用程序清单

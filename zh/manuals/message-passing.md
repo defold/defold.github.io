@@ -1,8 +1,8 @@
 ---
 brief: 消息传递是 Defold 用于允许松耦合对象进行通信的机制。本手册深入描述了这一机制。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold消息传递
 toc:
 - 消息传递

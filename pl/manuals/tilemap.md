@@ -1,8 +1,8 @@
 ---
 brief: Instrukcja ta wyjaśnia szczegóły dotyczące map kafelków (tile maps) w Defoldzie.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Mapy kafelków w Defoldzie
 toc:
 - Tile map

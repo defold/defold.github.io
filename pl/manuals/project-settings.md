@@ -1,8 +1,8 @@
 ---
 brief: Instrukcja opisuje poszczególne ustawienia projektu w Defoldzie.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Ustawienie projektu
 toc:
 - Ustawienie projektu

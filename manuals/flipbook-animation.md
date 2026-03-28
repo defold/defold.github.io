@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to use flipbook animations in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Flipbook animations in Defold manual
 toc:
 - Flip-book animation

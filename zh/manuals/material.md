@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何使用材质、着色器常量和采样器。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold材质
 toc:
 - 材质

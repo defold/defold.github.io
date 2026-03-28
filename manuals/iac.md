@@ -1,8 +1,8 @@
 ---
 brief: Inter-app communication allows you to pick up on the launch arguments used when starting your application. This manual explains Defold's API available for this functionality.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Inter-app communication in Defold
 toc:
 - Inter-app communication

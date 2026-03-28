@@ -1,7 +1,7 @@
 ---
 brief: В этом примере проекта вы познакомитесь с эффектами для подсчёта очков.
-language: ru
 layout: tutorial
+locale: ru
 title: Пример кода HUD
 ---
 

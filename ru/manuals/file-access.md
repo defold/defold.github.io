@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство объясняет как сохранять и загружать файлы и производить другие виды файловых операций.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Работа с файлами
 toc:
 - Работа с файлами

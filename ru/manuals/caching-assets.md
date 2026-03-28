@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как использовать кэш ассетов для ускорения сборки.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Кэширование ассетов
 toc:
 - Кэширование ассетов

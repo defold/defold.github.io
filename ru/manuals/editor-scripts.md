@@ -1,8 +1,8 @@
 ---
 brief: Это руководство объясняет, как расширить редактор с помощью Lua
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Скрипты редактора
 toc:
 - Скрипты редактора

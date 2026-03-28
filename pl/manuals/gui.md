@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja omawia edytor GUI w Defold, różne typy węzłów GUI oraz skrypty GUI.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Sceny GUI w Defoldzie
 toc:
 - GUI

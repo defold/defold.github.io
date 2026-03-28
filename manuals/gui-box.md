@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to use GUI box nodes.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: GUI box nodes in Defold
 toc:
 - GUI box nodes

@@ -1,8 +1,8 @@
 ---
 brief: В этом учебнике для начинающих вы узнаете, как обрабатывать ввод игрока, перемещать персонажа и анимировать его. Вы также познакомитесь с игровыми объектами, компонентами и коллекциями.
 github: https://github.com/defold/tutorial-astronaut
-language: ru
 layout: tutorial
+locale: ru
 title: Учебник Walking astronaut
 ---
 

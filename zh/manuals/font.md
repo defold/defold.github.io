@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了 Defold 如何处理字体以及如何在游戏中将字体显示在屏幕上。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 处理字体手册
 toc:
 - 字体文件

@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство описывает GUI-скриптинг.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: GUI-скриптинг
 toc:
 - GUI-скриптинг

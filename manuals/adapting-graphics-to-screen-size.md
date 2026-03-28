@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to adapt your game and graphics to different screen sizes.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Adapting graphics to different screen sizes
 toc:
 - Introduction

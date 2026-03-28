@@ -1,7 +1,7 @@
 ---
 brief: В этом примере проекта вы познакомитесь с одним из способов создания очень больших RPG-карт.
-language: ru
 layout: tutorial
+locale: ru
 title: Пример RPG map
 ---
 

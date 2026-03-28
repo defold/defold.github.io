@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了Defold GUI中粒子特效的工作原理。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold中的GUI粒子特效
 toc:
 - GUI ParticleFX节点

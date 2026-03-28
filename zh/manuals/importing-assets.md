@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何导入和编辑资源。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold资源导入和编辑
 toc:
 - 资源导入和编辑

@@ -1,7 +1,7 @@
 ---
 brief: 在本示例项目中，您将学习分数计数的效果。
-language: zh
 layout: tutorial
+locale: zh
 title: HUD代码示例
 ---
 

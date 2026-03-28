@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве кратко описана поддержка графических элементов в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Руководство по графике в Defold
 toc: []
 ---

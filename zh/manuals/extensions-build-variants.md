@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了 Defold 能创建的各种 Build variants 以及它们如何与原生扩展和引擎交互。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 原生扩展 - Build variants
 toc:
 - App Manifest

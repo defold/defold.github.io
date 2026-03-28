@@ -1,8 +1,8 @@
 ---
 brief: В этом учебнике вы создадите заготовку небольшой игры-шутера. Это хорошая отправная точка, если вы новичок в Defold.
 github: https://github.com/defold/tutorial-war-battles
-language: ru
 layout: tutorial
+locale: ru
 title: Учебник War battles
 ---
 

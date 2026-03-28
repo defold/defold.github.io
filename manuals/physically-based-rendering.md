@@ -1,8 +1,8 @@
 ---
 brief: This manual explains the basics of how to access material data for physically based rendering in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Physically based rendering in Defold
 toc:
 - Physically Based Rendering (PBR)

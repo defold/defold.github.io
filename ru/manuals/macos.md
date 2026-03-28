@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описывается, как собирать и запускать приложения Defold на macOS
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Разработка на Defold для платформы macOS
 toc:
 - Разработка для macOS

@@ -1,8 +1,8 @@
 ---
 brief: Вы можете изменить настройки редактора из окна Preferences.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Настройки редактора
 toc:
 - Настройки редактора

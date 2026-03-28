@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了创建HTML5游戏的过程，以及已知问题和局限性。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold HTML5平台开发
 toc:
 - HTML5开发

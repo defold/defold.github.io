@@ -1,8 +1,8 @@
 ---
 brief: Live Update 功能提供了一种机制，允许运行时获取和存储在构建时有意排除在应用程序包之外的资源。本手册解释了其工作原理。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold Live Update
 toc:
 - Live Update

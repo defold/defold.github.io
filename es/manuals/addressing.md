@@ -1,8 +1,8 @@
 ---
 brief: Este manual explica cómo Defold ha solucionado los problemas de direccionamiento
 github: https://github.com/defold/doc
-language: es
 layout: manual
+locale: es
 title: Direccionamiento en Defold
 toc:
 - Direccionamiento

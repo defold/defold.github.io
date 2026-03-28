@@ -1,8 +1,8 @@
 ---
 brief: Esse manual mostra detalhes relacionados ao funcionameno de objetos componentes e coleções.
 github: https://github.com/defold/doc
-language: pt
 layout: manual
+locale: pt
 title: Os Blocos Construtores do Defold
 toc:
 - Building blocks

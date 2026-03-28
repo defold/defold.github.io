@@ -1,8 +1,8 @@
 ---
 brief: 应用间通信允许您获取启动应用程序时使用的启动参数。本手册解释了Defold中用于此功能的API。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold应用间通信
 toc:
 - 应用间通信

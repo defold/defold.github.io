@@ -1,8 +1,8 @@
 ---
 brief: Defold поддерживает сочленения (joints) для 2D-физики. Данное руководство объясняет как создавать и работать с сочленениями.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Физика сочленений
 toc:
 - Физика сочленений

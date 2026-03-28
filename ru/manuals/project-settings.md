@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство описывает настройки, специфичные для проекта Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Настройки проекта
 toc:
 - Настройки проекта

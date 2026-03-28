@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何在您的游戏中运行时创建3D网格。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 3D网格
 toc:
 - 网格组件

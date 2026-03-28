@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何使用 WebSocket 连接。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: WebSocket 连接
 toc: []
 ---

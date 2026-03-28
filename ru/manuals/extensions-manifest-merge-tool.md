@@ -1,8 +1,8 @@
 ---
 brief: В данном руководстве описывается работа по слиянию манифестов приложений
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Нативные расширения - Инструменты Слияния Манифестов
 toc:
 - Манифесты приложений

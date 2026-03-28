@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how the merging of application manifests work
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Native extensions - Manifest Merge Tools
 toc:
 - Application manifests

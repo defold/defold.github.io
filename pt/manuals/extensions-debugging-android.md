@@ -1,8 +1,8 @@
 ---
 brief: Esse manual descreve como depurar e executar nos dispositivos Andoid.
 github: https://github.com/defold/doc
-language: pt
 layout: manual
+locale: pt
 title: Depuração no Andoid.
 toc: []
 ---

@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何在 Defold 游戏中设置和整合 Facebook 功能.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold Facebook 扩展
 toc:
 - Facebook

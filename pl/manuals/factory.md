@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje komponent fabryki służący do tworzenia obiektów gry z komponentami w czasie działania programu.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Fabryka
 toc:
 - Fabryka

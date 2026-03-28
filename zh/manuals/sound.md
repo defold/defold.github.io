@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何将声音带入 Defold 项目，进行播放和控制。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的声音
 toc:
 - 声音

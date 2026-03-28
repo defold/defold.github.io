@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняются основы доступа к данным материалов для physically based rendering в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Physically Based Rendering в Defold
 toc:
 - Physically Based Rendering (PBR)

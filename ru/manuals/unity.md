@@ -1,8 +1,8 @@
 ---
 brief: Это руководство поможет вам быстро перейти на Defold, если у вас уже есть опыт работы с Unity. В нем рассматриваются некоторые ключевые концепции, используемые в Unity, и объясняются соответствующие инструменты и методы в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Defold для пользователей Unity
 toc:
 - Defold для пользователей Unity

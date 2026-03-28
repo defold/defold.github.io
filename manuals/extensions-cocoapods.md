@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to use CocoaPods to resolve dependencies in iOS and macOS builds.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Using CocoaPods dependencies in iOS and macOS builds
 toc:
 - CocoaPods

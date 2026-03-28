@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to save and load files and perform other kinds of file operations.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Working with files
 toc:
 - Working with files

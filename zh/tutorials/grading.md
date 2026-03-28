@@ -1,7 +1,7 @@
 ---
 brief: 在本教程中，您将在Defold中创建一个全屏后处理效果。
-language: zh
 layout: tutorial
+locale: zh
 title: 色彩分级着色器教程
 ---
 

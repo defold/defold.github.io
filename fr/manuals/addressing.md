@@ -1,8 +1,8 @@
 ---
 brief: Ce guide explique comment Defold résoud le problème d'adressage.
 github: https://github.com/defold/doc
-language: fr
 layout: manual
+locale: fr
 title: L'adressage dans Defold
 toc:
 - Adressage

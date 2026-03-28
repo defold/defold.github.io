@@ -1,8 +1,8 @@
 ---
 brief: Цей посібник пояснює як Defold вирішує проблему адресації.
 github: https://github.com/defold/doc
-language: uk
 layout: manual
+locale: uk
 title: Адресація Defold
 toc:
 - Адресація

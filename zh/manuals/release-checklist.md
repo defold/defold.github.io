@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了发布游戏前应该检查的事项。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 发布前检查
 toc:
 - 发布前检查

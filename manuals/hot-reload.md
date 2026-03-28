@@ -1,8 +1,8 @@
 ---
 brief: This manual explains the hot reloading feature in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Hot reloading
 toc:
 - Hot reloading resources

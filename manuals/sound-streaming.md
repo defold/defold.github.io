@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to stream sounds into the Defold game engine
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Sound Streaming in Defold
 toc:
 - Sound Streaming

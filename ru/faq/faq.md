@@ -1,7 +1,7 @@
 ---
 brief: Часто задаваемые вопросы о движке Defold, редакторе и платформах.
-language: ru
 layout: faq
+locale: ru
 title: FAQ по движку и редактору Defold
 ---
 

@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia jak używać węzłów typu box.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Węzły prostokątne - box w Defoldzie
 toc:
 - Węzeł GUI typu box

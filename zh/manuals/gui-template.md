@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了Defold GUI模板系统，该系统用于创建基于共享模板或'prefabs'的可重用可视化GUI组件。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: GUI模板手册
 toc:
 - GUI模板节点

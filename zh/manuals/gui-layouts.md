@@ -1,8 +1,8 @@
 ---
 brief: Defold支持GUI自动适应移动设备上的屏幕方向变化。本文档解释了此功能的工作原理。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold中的GUI布局
 toc:
 - 布局

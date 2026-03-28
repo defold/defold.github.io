@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство описывает, как отображать 2D изображения и анимацию с помощью компонента Sprite.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Компонент Sprite
 toc:
 - Компонент Sprite

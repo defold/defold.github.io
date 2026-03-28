@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to bring 3D models, skeletons and animations into your game.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: 3D models in Defold
 toc:
 - Model component

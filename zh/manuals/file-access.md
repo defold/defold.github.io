@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何保存和加载文件以及执行其他类型的文件操作。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 处理文件
 toc:
 - 处理文件

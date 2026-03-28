@@ -1,8 +1,8 @@
 ---
 brief: Это руководство вкратце знакомит с основами программирования на Lua в целом и с тем, что необходимо учитывать при работе с Lua в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Lua в Defold
 toc:
 - Lua в Defold

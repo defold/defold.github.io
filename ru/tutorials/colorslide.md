@@ -1,8 +1,8 @@
 ---
 brief: В этом учебнике средней сложности вы создадите игровой GUI, экран выбора уровня и стартовый экран для простой мобильной игры с несколькими уровнями.
 github: https://github.com/defold/tutorial-colorslide
-language: ru
 layout: tutorial
+locale: ru
 title: Учебник Colorslide
 ---
 

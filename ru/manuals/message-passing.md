@@ -1,8 +1,8 @@
 ---
 brief: Передача сообщений
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Передача сообщений
 toc:
 - Передача сообщений

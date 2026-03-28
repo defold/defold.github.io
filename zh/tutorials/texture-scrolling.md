@@ -1,7 +1,7 @@
 ---
 brief: 在本教程中，你将学习如何使用着色器来滚动重复纹理。
-language: zh
 layout: tutorial
+locale: zh
 title: 纹理滚动着色器
 ---
 

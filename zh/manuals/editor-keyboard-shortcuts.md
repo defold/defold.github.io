@@ -1,8 +1,8 @@
 ---
 brief: 本教程介绍了当前编辑器快捷键以及如何自定义快捷键.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 编辑器快捷键
 toc:
 - 键盘快捷键

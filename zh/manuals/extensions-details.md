@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了有关编译系统用来编译原生扩展的一些细节.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 原生扩展 - 详述
 toc:
 - Defold 编译系统

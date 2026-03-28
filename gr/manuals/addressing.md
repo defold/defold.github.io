@@ -1,8 +1,8 @@
 ---
 brief: Αυτό το εγχειρίδιο εξηγεί πώς η Defold έχει λύσει το πρόβλημα της διεύθυνσης.
 github: https://github.com/defold/doc
-language: gr
 layout: manual
+locale: gr
 title: διεύθυνση addressing στο Defold
 toc:
 - διεύθυνση

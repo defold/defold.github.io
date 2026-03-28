@@ -1,8 +1,8 @@
 ---
 brief: 本手册深入探讨游戏对象、组件和集合的工作原理细节。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold的构建块
 toc:
 - 构建块

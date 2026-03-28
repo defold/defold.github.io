@@ -1,8 +1,8 @@
 ---
 brief: Defold 设计背后的理念
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 的设计
 toc:
 - Defold 的设计

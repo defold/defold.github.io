@@ -1,8 +1,8 @@
 ---
 brief: 在这个初学者教程中，您将学习如何捕获玩家输入并使角色移动和动画。您还将了解游戏对象、组件和集合
 github: https://github.com/defold/tutorial-astronaut
-language: zh
 layout: tutorial
+locale: zh
 title: 行走的宇航员教程
 ---
 

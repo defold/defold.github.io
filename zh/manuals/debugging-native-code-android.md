@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了如何使用 Android Studio 调试构建版本。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Android 平台调试
 toc:
 - Android 平台调试

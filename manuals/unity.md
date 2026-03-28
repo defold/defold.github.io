@@ -1,8 +1,8 @@
 ---
 brief: This guide helps quickly switch to Defold if you have prior experience with Unity. It covers some of the key concepts used in Unity, and explains the corresponding tools and methods in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Defold for Unity users
 toc:
 - Defold for Unity users

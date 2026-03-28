@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to debug a build running on an Android device.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Debugging on Android
 toc: []
 ---

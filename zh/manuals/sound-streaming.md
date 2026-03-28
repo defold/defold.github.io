@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何将声音流式传输到 Defold 游戏引擎中
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的声音流传输
 toc:
 - 声音流传输

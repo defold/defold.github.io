@@ -1,8 +1,8 @@
 ---
 brief: Это руководство объясняет, как создавать элементы UI в редакторе с помощью Lua
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: 'Скрипты редактора: UI'
 toc:
 - Скрипты редактора и UI

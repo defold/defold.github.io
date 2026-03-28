@@ -1,8 +1,8 @@
 ---
 brief: In this medium difficulty tutorial you build an in-game GUI, a GUI screen for level selection and a start screen for a simple multi level mobile game.
 github: https://github.com/defold/tutorial-colorslide
-language: en
 layout: tutorial
+locale: en
 title: Colorslide tutorial
 ---
 

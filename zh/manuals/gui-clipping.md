@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了如何创建通过模板裁剪来遮蔽其他节点的GUI节点。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: GUI裁剪手册
 toc:
 - 裁剪

@@ -1,8 +1,8 @@
 ---
 brief: Defold supports joints for 2D physics. This manual explains how to create and work with joints.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Physics joints in Defold
 toc:
 - Joints

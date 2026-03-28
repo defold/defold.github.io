@@ -1,8 +1,8 @@
 ---
 brief: В данном руководстве дается обзор компонентов и краткие сведения об их использовании.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Компоненты игрового объекта
 toc:
 - Компоненты игрового объекта

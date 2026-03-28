@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to use ZeroBrane Studio to debug Lua code in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Debugging with ZeroBrane Studio
 toc:
 - Debugging Lua scripts with ZeroBrane Studio

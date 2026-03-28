@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to optimize battery usage a Defold game.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Optimizing battery usage of a Defold game
 toc:
 - Optimize battery usage

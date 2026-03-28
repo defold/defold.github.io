@@ -1,8 +1,8 @@
 ---
 brief: Объект столкновения
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Объекты столкновения
 toc:
 - Объекты столкновения

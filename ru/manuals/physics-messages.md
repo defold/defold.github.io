@@ -1,8 +1,8 @@
 ---
 brief: Когда два объекта сталкиваются, движок передает сообщения всем компонентам обоих объектов.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Сообщения о столкновениях
 toc:
 - Сообщения о столкновениях

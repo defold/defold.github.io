@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje komponent Kamery w Defoldzie.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Kamera
 toc:
 - Kamera

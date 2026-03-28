@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia jak obsługiwać gamepady.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Wejścia z gamepadów i innych kontrolerów w Defoldzie.
 toc:
 - Gamepady

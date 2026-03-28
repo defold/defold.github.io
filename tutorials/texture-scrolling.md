@@ -1,7 +1,7 @@
 ---
 brief: In this tutorial you will learn how to use a shader to scroll a repeating texture.
-language: en
 layout: tutorial
+locale: en
 title: Texture scrolling shader
 ---
 

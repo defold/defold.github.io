@@ -1,8 +1,8 @@
 ---
 brief: Instrukcja ta wyjaśnia jak dynamicznie tworzyć nowe światy gry i przełączać się między nimi przy użyciu Pełnomocników kolekcji.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Instrukcja do Pełnomocników kolekcji
 toc:
 - Pełnomocnik kolekcji (Collection proxy)

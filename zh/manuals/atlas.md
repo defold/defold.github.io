@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了 Defold 中图集资源的工作原理。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 图集手册
 toc:
 - 图集

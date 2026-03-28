@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia, jak dodawać niestandardowe właściwości do komponentów skryptu i jak uzyskiwać do nich dostęp z edytora oraz skryptów uruchamianych podczas działania gry.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Właściwości komponentu skryptu
 toc:
 - Właściwości skryptów

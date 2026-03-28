@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство объясняет как можно подключаться к удаленным серверам и выполнять другие виды сетевых соединений.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Работа с сетью
 toc:
 - Работа с сетью

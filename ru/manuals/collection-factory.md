@@ -1,8 +1,8 @@
 ---
 brief: Это руководство объясняет особенности использования компонентов Collection Factory, предназначенных для порождения иерархий игровых объектов.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Компонент Collection Factory
 toc:
 - Компонент Collection Factory

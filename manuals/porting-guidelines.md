@@ -1,8 +1,8 @@
 ---
 brief: This manual highlights some things to consider when porting a game to a new platform or when releasing your game for the first time.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Porting and release guidelines
 toc:
 - Porting and release guidelines

@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описано, как получить доступ к поддержке PlayStation®4 и PlayStation®5
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Разработка для PlayStation®4 и PlayStation®5 в Defold
 toc:
 - Разработка игр для консолей PlayStation®4 и PlayStation®5

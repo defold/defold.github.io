@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как работают мышь и сенсорный ввод.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Сенсорный и ввод с мыши в Defold
 toc:
 - Триггеры мыши

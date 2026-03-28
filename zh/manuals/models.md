@@ -1,8 +1,8 @@
 ---
 brief: 本文档已被替换
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 废弃3D模型文档
 toc:
 - 模型

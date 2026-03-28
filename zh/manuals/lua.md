@@ -1,8 +1,8 @@
 ---
 brief: 本手册简要介绍了 Lua 编程基础以及在 Defold 中使用 Lua 的注意事项.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold Lua编程
 toc:
 - Defold 中的 Lua

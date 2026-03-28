@@ -1,8 +1,8 @@
 ---
 brief: You can modify the settings of the editor from the Preferences window.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Editor preferences
 toc:
 - Editor preferences

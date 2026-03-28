@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje ze szczegółami jak importować i używać grafiki 2D.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Importowanie i używanie grafiki 2D
 toc:
 - Importowanie grafiki 2D

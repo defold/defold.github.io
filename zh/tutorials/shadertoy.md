@@ -1,7 +1,7 @@
 ---
 brief: 在本教程中，您将把一个着色器从shadertoy.com转换为Defold。
-language: zh
 layout: tutorial
+locale: zh
 title: Shadertoy转Defold教程
 ---
 

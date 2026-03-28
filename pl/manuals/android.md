@@ -1,8 +1,8 @@
 ---
 brief: Instrukcja odpowiada na pytania jak zbudować i uruchomić grę lub aplikację stworzoną w Defoldzie na urządzeniach z systemem Android.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Rzwój oprogramowania w Defoldzie na platformę Android
 toc:
 - Android development

@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как работают ресурсы Buffer в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Руководство по Buffer
 toc:
 - Buffer

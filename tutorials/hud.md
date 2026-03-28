@@ -1,7 +1,7 @@
 ---
 brief: In this sample project, you learn effects for score counting.
-language: en
 layout: tutorial
+locale: en
 title: HUD code sample
 ---
 

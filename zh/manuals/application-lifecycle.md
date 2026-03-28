@@ -1,8 +1,8 @@
 ---
 brief: 本手册详述了 Defold 游戏和应用程序的生命周期。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 应用程序生命周期手册
 toc:
 - 应用生命周期

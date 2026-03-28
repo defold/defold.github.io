@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описано, как игнорировать файлы и папки в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Игнорирование файлов в проекте Defold
 toc:
 - Игнорирование файлов

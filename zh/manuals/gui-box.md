@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何使用GUI方块节点。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold中的GUI方块节点
 toc:
 - GUI 方块节点

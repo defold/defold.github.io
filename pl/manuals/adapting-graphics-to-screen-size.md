@@ -1,8 +1,8 @@
 ---
 brief: Instrukcja opisuje jak dopasować grę i grafikę do różnych wielkości ekranów.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Adaptacja do różnych wielkości ekranów
 toc:
 - Wprowadzenie

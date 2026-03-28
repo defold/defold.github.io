@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了如何使用 Xcode 调试构建版本。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 在 iOS/macOS 中调试
 toc:
 - 在 iOS/macOS 中调试

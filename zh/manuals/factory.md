@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何使用工厂组件在运行时动态生成游戏对象.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Factory 组件手册
 toc:
 - Factory 组件

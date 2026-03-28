@@ -1,8 +1,8 @@
 ---
 brief: Это руководство описывает средства отладки, представленные в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Отладка игровой логики
 toc:
 - Отладка игровой логики

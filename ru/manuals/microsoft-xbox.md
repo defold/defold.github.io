@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описано, как получить доступ к Microsoft Xbox
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Разработка в Defold для Microsoft Xbox
 toc:
 - Поддержка Xbox

@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何在包含依赖项（特别是原生扩展）的项目中离线工作
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 离线工作
 toc:
 - 离线工作

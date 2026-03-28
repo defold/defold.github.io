@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как использовать ZeroBrane Studio для отладки Lua-кода в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Отладка с помощью ZeroBrane Studio
 toc:
 - Отладка Lua-скриптов с помощью ZeroBrane Studio

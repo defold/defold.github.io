@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja prezentuje przegląd komponentów i jak ich używać.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Komponenty obiektów gry
 toc:
 - Komponenty

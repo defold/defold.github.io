@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了键和文本输入的工作原理。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold键和文本输入
 toc:
 - 键触发器

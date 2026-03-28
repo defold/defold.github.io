@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство объясняет как использовать анимацию свойств в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Анимации свойств
 toc:
 - Анимация свойств

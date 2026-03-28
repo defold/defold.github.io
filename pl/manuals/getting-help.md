@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje, jak uzyskać pomoc, gdy napotkasz problem podczas korzystania z silnika Defold.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Jak uzyskać pomoc
 toc:
 - Jak uzyskać pomoc

@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство описывает работу с анимацией в движке Defold
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Анимация
 toc:
 - Анимация

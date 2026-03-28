@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了一些调试包含原生扩展的应用的方法.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 调试原生扩展
 toc: []
 ---

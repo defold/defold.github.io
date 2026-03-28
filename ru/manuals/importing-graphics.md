@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве рассказывается о том, как импортировать и использовать двумерную графику.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Импортирование 2D-графики
 toc:
 - Импортирование 2D-графики

@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство объясняет как подключаться с созданием сокет-соединений.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Сокет-соединения
 toc:
 - Сокет-соединения

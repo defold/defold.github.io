@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia, jak rozszerzać Edytor za pomocą Lua.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Skrypty Edytora
 toc:
 - Skrypty Edytora

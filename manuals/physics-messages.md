@@ -1,8 +1,8 @@
 ---
 brief: When two objects collide, the engine will call the event callback or broadcast messages.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Collision messages in Defold
 toc:
 - Collision messages

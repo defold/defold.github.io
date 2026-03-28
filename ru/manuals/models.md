@@ -1,8 +1,8 @@
 ---
 brief: Этот документ был заменен
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Устаревшая документация по 3D-моделям
 toc:
 - Models

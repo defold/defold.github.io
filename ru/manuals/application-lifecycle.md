@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве подробно описывается жизненный цикл игр и приложений, созданных в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Жизненный цикл приложения
 toc:
 - Жизненный цикл приложения

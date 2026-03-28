@@ -1,8 +1,8 @@
 ---
 brief: This manual briefly covers how to work with code in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Writing code
 toc:
 - Writing code

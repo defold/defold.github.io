@@ -1,8 +1,8 @@
 ---
 brief: Este manual descreve como o manifesto do aplicativo pode ser usado para excluir recursos da engine.
 github: https://github.com/defold/doc
-language: pt
 layout: manual
+locale: pt
 title: Manifesto do Aplicativo
 toc:
 - Manifesto do Aplicativo

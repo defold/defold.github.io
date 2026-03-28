@@ -1,8 +1,8 @@
 ---
 brief: 物理引擎允许您将物理对象分组，并过滤它们应该如何碰撞。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的碰撞组
 toc:
 - 组和掩码

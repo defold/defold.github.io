@@ -1,7 +1,7 @@
 ---
 brief: 如果你是Defold的新手，本指南将帮助你开始使用脚本逻辑以及Defold中的一些构建模块。
-language: zh
 layout: tutorial
+locale: zh
 title: 在Defold中构建贪吃蛇游戏
 ---
 

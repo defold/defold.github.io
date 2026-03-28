@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описаны лучшие методы разработки нативных расширений.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Нативные расширения - Лучшие Практики
 toc:
 - Лучшие Практики

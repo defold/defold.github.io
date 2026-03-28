@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to get Microsoft Xbox access
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Defold development for Microsoft Xbox
 toc:
 - Xbox support

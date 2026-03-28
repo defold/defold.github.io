@@ -1,8 +1,8 @@
 ---
 brief: Вы можете добавить собственные пользовательские шаблоны проектов в окне New Project.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Шаблоны редактора
 toc:
 - Шаблоны редактора

@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了鼠标和触摸输入的工作原理。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold鼠标和触摸输入
 toc:
 - 鼠标触发器

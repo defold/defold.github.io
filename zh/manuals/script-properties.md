@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何向脚本组件添加自定义属性以及如何从编辑器和运行时脚本中访问它们。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 脚本组件属性
 toc:
 - 脚本属性

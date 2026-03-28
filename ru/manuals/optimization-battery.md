@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описывается, как оптимизировать энергопотребление игры на Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Оптимизация энергопотребления в Defold
 toc:
 - Оптимизация энергопотребления

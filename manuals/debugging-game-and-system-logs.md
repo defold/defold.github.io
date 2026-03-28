@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to read game and system logs.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Debugging - game and system logs
 toc:
 - Game and system log

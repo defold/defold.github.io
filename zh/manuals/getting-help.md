@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了使用Defold遇到问题时如何获取帮助.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 如何获取帮助
 toc:
 - 获取帮助

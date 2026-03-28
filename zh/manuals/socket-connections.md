@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何创建 socket 连接。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Socket 连接
 toc:
 - Socket 连接

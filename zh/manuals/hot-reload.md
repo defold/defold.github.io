@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了Defold中的热重载功能。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold热重载
 toc:
 - 热重载资源

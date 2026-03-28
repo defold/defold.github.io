@@ -1,8 +1,8 @@
 ---
 brief: 射线投射用于沿线性射线读取物理世界。本手册解释了其工作原理。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的射线投射
 toc:
 - 射线投射

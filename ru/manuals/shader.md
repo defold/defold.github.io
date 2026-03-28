@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство объясняет вершинные и фрагментные шейдеры в деталях и то, как с ними работать в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Шейдеры
 toc:
 - Шейдеры

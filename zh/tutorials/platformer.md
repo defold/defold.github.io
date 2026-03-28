@@ -1,7 +1,7 @@
 ---
 brief: 在本文中，我们将学习如何在 Defold 中实现一个基本的基于瓦片的 2D 平台跳跃游戏。你将学到的机制包括左右移动、跳跃和下落。
-language: zh
 layout: tutorial
+locale: zh
 title: 平台跳跃游戏 Defold 教程
 ---
 

@@ -1,8 +1,8 @@
 ---
 brief: Это руководство объясняет, как работают эффекты частиц в GUI.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: GUI-нода Particle FX
 toc:
 - GUI-нода Particle FX

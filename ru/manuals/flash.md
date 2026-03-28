@@ -1,8 +1,8 @@
 ---
 brief: Это руководство представляет Defold как альтернативу для разработчиков игр на Flash. В нем рассматриваются некоторые ключевые концепции разработки игр во Flash и объясняются соответствующие инструменты и методы в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Defold для пользователей Flash
 toc:
 - Defold для пользователей Flash

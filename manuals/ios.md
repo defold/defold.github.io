@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to build and run games and apps on iOS devices in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Defold development for the iOS platform
 toc:
 - iOS development

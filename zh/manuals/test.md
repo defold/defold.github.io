@@ -1,8 +1,8 @@
 ---
 brief: 本文档使用了 Defold 文档所使用的所有 Markdown 功能（Commonmark 以及一些扩展）。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold Markdown 测试
 toc:
 - Defold Markdown 测试

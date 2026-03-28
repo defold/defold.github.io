@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何使用 Defold 创建 Facebook Instant Games。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Facebook Instant Games
 toc:
 - Facebook Instant Games

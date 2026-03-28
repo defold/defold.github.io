@@ -1,8 +1,8 @@
 ---
 brief: Instrukcja ta przedstawia podstawowe elementy służące do budowania aplikacji w Defoldzie oraz opisuje jak działają obiekty, komponenty i kolekcje.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Podstawowe elementy silnika Defold
 toc:
 - Podstawowe elementy do budowania aplikacji

@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何使用label组件在游戏世界中为游戏对象添加文本。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold中的Label文本组件
 toc:
 - Label

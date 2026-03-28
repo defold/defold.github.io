@@ -1,8 +1,8 @@
 ---
 brief: 当两个对象碰撞时，引擎将调用事件回调或广播消息。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的碰撞消息
 toc:
 - 碰撞消息

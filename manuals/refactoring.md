@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how you can change the structure of your project easily with the help of powerful refactoring.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Refactoring
 toc:
 - Refactoring

@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何访问 Microsoft Xbox
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Microsoft Xbox平台Defold开发
 toc:
 - Xbox 支持

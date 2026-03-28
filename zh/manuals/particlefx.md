@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了粒子特效组件的工作原理以及如何编辑它来创建视觉粒子特效。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的粒子特效
 toc:
 - 粒子特效

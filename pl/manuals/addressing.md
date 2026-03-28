@@ -1,8 +1,8 @@
 ---
 brief: Instrukcja wyjaśnia sposób adresowania w silniku Defold.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Adresowanie w silniku Defold
 toc:
 - Adresowanie

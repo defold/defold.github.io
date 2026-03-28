@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何在 Windows 平台上构建和运行 Defold 应用程序
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Windows 平台下的 Defold 开发
 toc:
 - Windows 开发

@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется функция горячей перезагрузки (перезагрузки на лету) в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Горячая перезагрузка
 toc:
 - Перезагрузка ресурсов на лету

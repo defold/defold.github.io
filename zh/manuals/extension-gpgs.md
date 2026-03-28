@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了配置使用 Google Play Game 服务的方法
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的 Google Play Game 服务
 toc:
 - Google Play Game Services

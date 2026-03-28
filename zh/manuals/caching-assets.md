@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何使用资源缓存来加速构建.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 缓存资源
 toc:
 - 缓存资源

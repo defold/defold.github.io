@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to debug a build using Android Studio.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Debugging on Android
 toc:
 - Debugging on Android

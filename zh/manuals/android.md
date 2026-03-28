@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了如何在 Android 设备上构建和运行 Defold 应用程序
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Android 平台开发
 toc:
 - Android 开发

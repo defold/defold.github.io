@@ -1,8 +1,8 @@
 ---
 brief: Esse manual irá explicar como utilizar o cache de recursos para acelerar suas builds.
 github: https://github.com/defold/doc
-language: pt
 layout: manual
+locale: pt
 title: Caching de recursos
 toc:
 - Caching de recursos

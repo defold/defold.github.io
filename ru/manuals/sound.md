@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется порядок внесения звукового контента в проект Defold, его воспроизведения и управления им.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Компонент Sound
 toc:
 - Компонент Sound

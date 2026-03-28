@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to optimize a Defold game for size and performance.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Optimizing a Defold game
 toc:
 - Optimizing a Defold game

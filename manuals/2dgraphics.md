@@ -1,8 +1,8 @@
 ---
 brief: This manual is outdated
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Defold 2D graphics manual
 toc:
 - 2D Graphics

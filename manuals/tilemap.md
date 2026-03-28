@@ -1,8 +1,8 @@
 ---
 brief: This manual details Defold's support for tile maps.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Defold tile map manual
 toc:
 - Tile map

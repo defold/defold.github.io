@@ -1,7 +1,7 @@
 ---
 brief: В этом руководстве вы создадите полноэкранный post effect в Defold.
-language: ru
 layout: tutorial
+locale: ru
 title: Руководство по шейдеру color grading
 ---
 

@@ -1,8 +1,8 @@
 ---
 brief: Руководство описывает как установить и запустить локальный сервер сборки
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Установка локального сервера сборки
 toc:
 - Установка локального сервера сборки

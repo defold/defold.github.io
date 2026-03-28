@@ -1,8 +1,8 @@
 ---
 brief: This manual explains what types of properties exist in Defold, and how they are used and animated.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Properties in Defold
 toc:
 - Properties

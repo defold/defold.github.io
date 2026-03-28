@@ -1,8 +1,8 @@
 ---
 brief: Este manual se adentra en los detalles de cómo los objetos, componentes y colecciones del juego funcionan.
 github: https://github.com/defold/doc
-language: es
 layout: manual
+locale: es
 title: Los bloques de construcción de Defold
 toc:
 - Bloques de construcción

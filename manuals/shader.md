@@ -1,8 +1,8 @@
 ---
 brief: This manual describes vertex and fragment shaders in detail and how to use them in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Shader programs in Defold
 toc:
 - Shaders

@@ -1,8 +1,8 @@
 ---
 brief: Materiał jest przestarzały
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Grafika 2D
 toc:
 - Grafika 2D

@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了 Defold 的动画支持。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的动画
 toc:
 - 动画

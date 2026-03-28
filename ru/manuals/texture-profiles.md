@@ -1,8 +1,8 @@
 ---
 brief: Defold поддерживает автоматическую обработку текстур и сжатие данных изображений. В этом руководстве описана доступная функциональность.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Профили текстур в Defold
 toc:
 - Профили текстур

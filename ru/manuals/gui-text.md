@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описано, как добавлять текст в GUI-сцены.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: GUI-нода Text
 toc:
 - GUI-нода Text

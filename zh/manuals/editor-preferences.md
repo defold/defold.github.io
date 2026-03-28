@@ -1,8 +1,8 @@
 ---
 brief: 您可以从首选项窗口修改编辑器的设置。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 编辑器首选项
 toc:
 - 编辑器首选项

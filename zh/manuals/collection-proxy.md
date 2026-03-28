@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何动态创建新游戏世界以及在游戏世界间进行切换.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 集合代理手册
 toc:
 - 集合代理

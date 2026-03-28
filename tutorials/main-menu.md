@@ -1,7 +1,7 @@
 ---
 brief: In this sample project, you learn effects to present a main menu.
-language: en
 layout: tutorial
+locale: en
 title: Main menu animation sample
 ---
 

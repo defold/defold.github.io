@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何使用和创建瓦片图源。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 瓦片图源手册
 toc:
 - 瓦片图源

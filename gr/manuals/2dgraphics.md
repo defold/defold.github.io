@@ -1,8 +1,8 @@
 ---
 brief: Αυτό το εγχειρίδιο είναι ξεπερασμένο
 github: https://github.com/defold/doc
-language: gr
 layout: manual
+locale: gr
 title: Εγχειρίδιο γραφικών Defold 2D
 toc:
 - 2D Γραφικά

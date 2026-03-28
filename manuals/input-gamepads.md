@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how gamepad input works.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Gamepad input in Defold
 toc:
 - Gamepads

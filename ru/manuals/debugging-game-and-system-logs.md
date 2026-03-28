@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как читать игровые и системные логи.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Отладка - игровые и системные логи
 toc:
 - Логи игры и системный лог

@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how Atlas resources work in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Atlas manual
 toc:
 - Atlas

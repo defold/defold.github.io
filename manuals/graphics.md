@@ -1,8 +1,8 @@
 ---
 brief: This manual outlines Defold's support for graphical elements.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Defold graphics manual
 toc: []
 ---

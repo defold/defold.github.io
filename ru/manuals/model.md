@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описывается порядок внесения 3D-моделей, скелетов и анимации в игру.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Компонент Model
 toc:
 - Компонент Model

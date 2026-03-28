@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja przedstawia co oznaczają i jak zmodyfikować Preferencje Edytora.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Preferencje Edytora
 toc:
 - Preferencje Edytora

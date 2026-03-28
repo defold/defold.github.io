@@ -1,8 +1,8 @@
 ---
 brief: 本手册涵盖了如何在 Defold 中创建或打开项目。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 项目设置
 toc:
 - 项目设置

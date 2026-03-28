@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何将3D模型、骨骼和动画带入您的游戏之中。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 3D模型
 toc:
 - 模型组件

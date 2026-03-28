@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何读取游戏和系统日志。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 调试 - 游戏和系统日志
 toc:
 - 游戏和系统日志

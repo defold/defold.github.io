@@ -1,8 +1,8 @@
 ---
 brief: 可以通过使用 `physics.set_event_listener()` 将碰撞事件处理集中化，将所有碰撞和交互消息定向到单个指定函数。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的碰撞事件
 toc:
 - Defold 物理事件处理

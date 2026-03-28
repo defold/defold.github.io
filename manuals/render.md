@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how Defold's render pipeline works and how you can program it.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: The render pipeline in Defold
 toc:
 - Render

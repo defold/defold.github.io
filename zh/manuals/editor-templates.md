@@ -1,8 +1,8 @@
 ---
 brief: 您可以在新建项目窗口中添加自己的自定义项目模板。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 编辑器模板
 toc:
 - 编辑器模板

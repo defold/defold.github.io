@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何获取 Nintendo Switch 访问权限
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Nintendo Switch平台Defold开发
 toc:
 - Nintendo Switch 开发

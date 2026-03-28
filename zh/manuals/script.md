@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了如何使用脚本组件添加游戏逻辑。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 使用脚本编写游戏逻辑
 toc:
 - 脚本

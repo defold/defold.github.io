@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia, jak działa wejście za pomocą klawiszy i wejścia tekstowe w silniku Defold.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Wejścia klawiszy i tekstowe w silniku Defold
 toc:
 - Obsługa klawiatury

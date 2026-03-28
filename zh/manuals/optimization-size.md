@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了如何优化 Defold 游戏的大小。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 优化 Defold 游戏的大小
 toc:
 - 优化游戏大小

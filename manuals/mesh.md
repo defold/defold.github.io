@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to create 3D meshes at run-time in your game.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: 3D meshes in Defold
 toc:
 - Mesh component

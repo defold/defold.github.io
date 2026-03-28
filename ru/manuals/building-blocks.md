@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве подробно описан принцип работы игровых объектов, компонентов и коллекций.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Структурные элементы
 toc:
 - Структурные элементы

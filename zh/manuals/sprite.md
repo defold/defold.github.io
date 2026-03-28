@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何使用 sprite 组件显示 2D 图片和动画。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 显示 2D 图片
 toc:
 - 精灵（Sprites）

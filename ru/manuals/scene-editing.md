@@ -1,8 +1,8 @@
 ---
 brief: Defold содержит несколько редакторов, но чаще всего используется именно редактор сцены. В этом руководстве объясняется, как им пользоваться.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Редактор сцены Defold
 toc:
 - Редактор сцены Defold

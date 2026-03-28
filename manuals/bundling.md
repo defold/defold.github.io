@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to create an application bundle.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Bundling an application
 toc:
 - Bundling an application

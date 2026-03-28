@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje ogólnie Edytor Defold, jak wygląda i działa oraz jak w nim się poruszać.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Edytor Defold
 toc:
 - Edytor Defold

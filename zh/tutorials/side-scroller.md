@@ -1,8 +1,8 @@
 ---
 brief: 本教程旨在让您了解在Defold中制作游戏的基本流程。它将指导您基于一个简单的横版卷轴游戏创建新项目。然后您将学习如何调整游戏使其更有趣。最后，您将添加一个新的游戏对象。本教程大约只需要10分钟。
 github: https://github.com/defold/tutorial-side-scroller
-language: zh
 layout: tutorial
+locale: zh
 title: 横版卷轴游戏教程
 ---
 

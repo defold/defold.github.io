@@ -1,8 +1,8 @@
 ---
 brief: This manual describes best practices when developing native extensions.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Native extensions - Best Practices
 toc:
 - Best Practices

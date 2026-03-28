@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описано, как создавать GUI-ноды, которые маскируют другие ноды с помощью трафаретного клипирования.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: GUI-клипирование
 toc:
 - GUI-клипирование

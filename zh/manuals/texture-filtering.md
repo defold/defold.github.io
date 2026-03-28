@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了渲染图形时纹理过滤的可用选项。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 纹理过滤
 toc:
 - 纹理过滤和采样

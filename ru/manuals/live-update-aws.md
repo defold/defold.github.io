@@ -1,8 +1,8 @@
 ---
 brief: В этом разделе объясняется, как создать нового пользователя с ограниченным доступом в Amazon Web Services, которого можно использовать вместе с редактором Defold для автоматической загрузки ресурсов Live update при бандлинге игры.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Загрузка контента Live update в AWS
 toc:
 - Настройка Amazon Web Services

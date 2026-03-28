@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве рассказывается, как создать бандл приложения.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Бандлинг (сборка пакета) приложения
 toc:
 - Бандлинг приложения

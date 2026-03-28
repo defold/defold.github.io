@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何借助强大的重构功能轻松更改项目结构。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 重构
 toc:
 - 重构

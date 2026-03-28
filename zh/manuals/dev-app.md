@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何在设备上放置开发应用，以便在设备上进行迭代开发。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 在设备上运行开发应用
 toc:
 - 移动开发应用

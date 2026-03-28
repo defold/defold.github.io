@@ -1,8 +1,8 @@
 ---
 brief: Это руководство объясняет, как использовать текстовые компоненты Label в игровых объектах в пространстве игры.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Компонент Label
 toc:
 - Компонент Label

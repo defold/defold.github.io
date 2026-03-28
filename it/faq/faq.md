@@ -1,7 +1,7 @@
 ---
 brief: Domande frequenti sul motore di gioco, l'editor e la piattaforma Defold.
-language: it
 layout: faq
+locale: it
 title: Domande frequenti su Defold engine ed editor
 ---
 

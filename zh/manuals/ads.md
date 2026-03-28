@@ -1,8 +1,8 @@
 ---
 brief: 展示各种类型的广告是网页和手机游戏盈利的常见方式。本手册介绍了使用广告为游戏盈利的多种方法。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 在 Defold 中展示广告
 toc:
 - 广告

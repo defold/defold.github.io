@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описано, как собирать и запускать приложения Defold на Linux
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Разработка в Defold для платформы Linux
 toc:
 - Разработка для Linux

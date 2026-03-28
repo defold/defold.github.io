@@ -1,8 +1,8 @@
 ---
 brief: This manual explains the profiling facilities present in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Profiling in Defold
 toc:
 - Profiling

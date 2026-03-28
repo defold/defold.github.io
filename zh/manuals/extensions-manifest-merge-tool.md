@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了应用清单的合并工作原理
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 原生扩展 - 清单合并工具
 toc:
 - 应用清单

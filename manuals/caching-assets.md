@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to use the asset cache to speed up builds.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Caching assets
 toc:
 - Caching assets

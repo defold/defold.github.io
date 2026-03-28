@@ -1,8 +1,8 @@
 ---
 brief: Una breve introducción a Defold.
 github: https://github.com/defold/doc
-language: es
 layout: manual
+locale: es
 title: Introducción a Defold
 toc:
 - Bienvenido a Defold

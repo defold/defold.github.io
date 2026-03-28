@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何使用内置的版本控制系统。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 版本控制
 toc:
 - 版本控制

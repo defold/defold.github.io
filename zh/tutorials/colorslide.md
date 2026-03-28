@@ -1,8 +1,8 @@
 ---
 brief: 在这个中等难度的教程中，你将构建一个游戏内GUI，一个用于关卡选择的GUI屏幕和一个简单的多关卡移动游戏的开始屏幕。
 github: https://github.com/defold/tutorial-colorslide
-language: zh
 layout: tutorial
+locale: zh
 title: Colorslide 教程
 ---
 

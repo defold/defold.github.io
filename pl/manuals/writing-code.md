@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja krótko omawia, jak pracować z kodem w Defold.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Pisanie kodu
 toc:
 - Pisanie kodu

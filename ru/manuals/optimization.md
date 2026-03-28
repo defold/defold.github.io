@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описывается, как оптимизировать Defold приложение по размеру и производительности.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Оптимизация игры на Defold
 toc:
 - Оптимизация игры на Defold

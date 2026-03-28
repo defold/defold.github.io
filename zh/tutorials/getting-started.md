@@ -1,7 +1,7 @@
 ---
 brief: 本教程解释了如何在 Defold 中开始学习教程。
-language: zh
 layout: tutorial
+locale: zh
 title: Defold 入门指南
 ---
 

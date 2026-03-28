@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何连接不同的游戏和后端服务。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold在线服务
 toc:
 - 游戏服务

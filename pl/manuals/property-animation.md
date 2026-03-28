@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje wsparcie dla animacji właściwości w silniku Defold.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Animacja właściwości
 toc:
 - Animacja właściwości

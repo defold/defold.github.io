@@ -1,8 +1,8 @@
 ---
 brief: Философия дизайна Defold
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Дизайн Defold
 toc:
 - Дизайн Defold

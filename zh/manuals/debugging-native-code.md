@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何在 Defold 中调试原生代码。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的原生代码调试
 toc:
 - 原生代码调试

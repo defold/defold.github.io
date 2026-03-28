@@ -1,8 +1,8 @@
 ---
 brief: In this tutorial you will create the embryo of a small shooter game. This is a good starting point if you are new to Defold.
 github: https://github.com/defold/tutorial-war-battles
-language: en
 layout: tutorial
+locale: en
 title: War battles tutorial
 ---
 

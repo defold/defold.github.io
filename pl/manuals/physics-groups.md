@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja jak działają grupy i maski silnika fizyki.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Grupy kolizji w Defoldzie
 toc:
 - Grupy i maski kolizji

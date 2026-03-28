@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описаны особенности работы со шрифтами и способ их вывода на экран в играх.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Ресурс Font
 toc:
 - Ресурс Font

@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何创建应用程序包.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 打包应用程序
 toc:
 - 打包应用程序

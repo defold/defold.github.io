@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja prezentuje fizykę w Defoldzie.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Fizyka w Defoldzie
 toc:
 - Fizyka

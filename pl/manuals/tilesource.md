@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje jak korzystać ze Źródła Kafelków.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Źródła kafelków (tile source)
 toc:
 - Źródła Kafelków (tile source)

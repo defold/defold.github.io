@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to connect to different game and backend services.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Online Services
 toc:
 - Game services

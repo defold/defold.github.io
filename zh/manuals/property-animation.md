@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了如何在 Defold 中使用属性动画。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的属性动画
 toc:
 - 属性动画

@@ -1,8 +1,8 @@
 ---
 brief: Описывается способ создания и использования источника тайлов.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Ресурс Tile Source
 toc:
 - Ресурс Tile Source

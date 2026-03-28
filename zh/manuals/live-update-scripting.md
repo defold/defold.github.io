@@ -1,8 +1,8 @@
 ---
 brief: 要使用 live update 内容，您需要将数据下载并挂载到游戏中。在本手册中学习如何使用 live update 进行脚本编写。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Live Update脚本编写
 toc:
 - Live Update 脚本编写

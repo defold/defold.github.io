@@ -1,8 +1,8 @@
 ---
 brief: В данном руководстве объясняется, какие типы свойств существуют в Defold, как они используются и анимируются.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Свойства
 toc:
 - Свойства

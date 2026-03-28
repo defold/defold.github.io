@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве с кратким описанием перечислено все, с чем приходится сталкиваться при работе в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Глоссарий Defold
 toc:
 - Глоссарий Defold

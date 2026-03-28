@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了输入如何工作，如何捕获输入操作并创建交互式脚本反应。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 设备输入在Defold中
 toc:
 - 输入

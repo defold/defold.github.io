@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje typy właściwości, jak je używać i animować.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Właściwości w Defold
 toc:
 - Właściwości

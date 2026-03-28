@@ -1,8 +1,8 @@
 ---
 brief: Это руководство объясняет, как работает компонент Particle FX и как его редактировать для создания визуальных эффектов частиц.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Компонент Particle FX
 toc:
 - Компонент Particle FX

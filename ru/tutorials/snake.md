@@ -1,7 +1,7 @@
 ---
 brief: Если вы новичок в Defold, это руководство поможет вам начать работу со скриптовой логикой и несколькими базовыми строительными блоками Defold.
-language: ru
 layout: tutorial
+locale: ru
 title: Создание игры Snake в Defold
 ---
 

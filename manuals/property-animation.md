@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to use property animations in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Property animations in Defold manual
 toc:
 - Property animation

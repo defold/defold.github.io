@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to work with the built-in version control system.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Version control
 toc:
 - Version control

@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве рассказывается, как работать со встроенной системой контроля версий.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Контроль версий
 toc:
 - Контроль версий

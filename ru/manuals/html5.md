@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описан процесс создания HTML5-игры, а также известные проблемы и ограничения.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Разработка в Defold для платформы HTML5
 toc:
 - Разработка для HTML5

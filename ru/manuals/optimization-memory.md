@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описывается, как оптимизировать использование памяти в игре на Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Оптимизация использования памяти в Defold
 toc:
 - Оптимизация использования памяти

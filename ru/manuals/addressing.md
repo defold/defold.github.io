@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как в Defold реализована адресации.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Адресация
 toc:
 - Адресация

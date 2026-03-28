@@ -1,8 +1,8 @@
 ---
 brief: Это руководство объясняет, как использовать ноду Pie в GUI-сценах.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: GUI-нода Pie
 toc:
 - GUI-нода Pie

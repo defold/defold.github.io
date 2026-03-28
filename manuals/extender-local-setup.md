@@ -1,8 +1,8 @@
 ---
 brief: Manual described how to setup and run local build server
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Setup local build server
 toc:
 - Build server local setup

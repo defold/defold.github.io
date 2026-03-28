@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia jak działa atlas w Defoldzie.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Atlas (Galeria obrazów)
 toc:
 - Atlas (Galeria obrazów)

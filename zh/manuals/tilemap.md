@@ -1,8 +1,8 @@
 ---
 brief: 本手册详细介绍了 Defold 对瓦片地图的支持。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 瓦片地图手册
 toc:
 - 瓦片地图

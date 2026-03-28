@@ -1,8 +1,8 @@
 ---
 brief: 本手册简要介绍了如何在 Defold 中编写代码。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 编写代码
 toc:
 - 编写代码

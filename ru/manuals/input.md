@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как работает ввод, как фиксировать действия ввода и создавать последующие реакции в скрипте.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Устройтво ввода в Defold
 toc:
 - Устройтво ввода

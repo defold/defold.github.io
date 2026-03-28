@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何使用Lua在编辑器中创建UI元素
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 编辑器脚本：UI
 toc:
 - 编辑器脚本和UI

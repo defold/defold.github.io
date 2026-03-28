@@ -1,8 +1,8 @@
 ---
 brief: 在本教程中，你将创建一个小型射击游戏的雏形。如果你是Defold的新手，这是一个很好的起点。
 github: https://github.com/defold/tutorial-war-battles
-language: zh
 layout: tutorial
+locale: zh
 title: 战争战斗教程
 ---
 

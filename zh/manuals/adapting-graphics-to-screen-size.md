@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何将游戏和图形适配到不同的屏幕尺寸。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 适配图形以适应不同屏幕尺寸
 toc:
 - 引言

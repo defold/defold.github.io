@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述如何设置和运行本地构建服务器
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 设置本地构建服务器
 toc:
 - 构建服务器本地设置

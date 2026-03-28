@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了 Defold 中存在的性能分析工具。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中的性能分析
 toc:
 - 性能分析

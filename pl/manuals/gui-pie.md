@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia jak używać węzłów typu pie.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Węzły pierścieniowe - pie w Defoldzie.
 toc:
 - Węzeł GUI typu pie

@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje ze szczegółami jak importować i edytować zasoby.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Importowanie i edytowanie zasobów
 toc:
 - Importowanie i edytowanie zasobów

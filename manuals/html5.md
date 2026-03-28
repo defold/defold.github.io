@@ -1,8 +1,8 @@
 ---
 brief: This manual describes the process of creating HTML5 game, along with known issues and limitations.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Defold development for the HTML5 platform
 toc:
 - HTML5 development

@@ -1,7 +1,7 @@
 ---
 brief: В этом учебнике вы перенесёте шейдер с shadertoy.com в Defold.
-language: ru
 layout: tutorial
+locale: ru
 title: Учебник Shadertoy to Defold
 ---
 

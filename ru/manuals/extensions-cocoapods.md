@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как использовать CocoaPods для разрешения зависимостей в сборках для iOS и macOS.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Использование зависимостей CocoaPods в сборках для iOS и macOS
 toc:
 - CocoaPods

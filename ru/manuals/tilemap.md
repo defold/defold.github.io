@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство содержит детали поддержки тайловых карт в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Компонент Tile Map
 toc:
 - Компонент Tile Map

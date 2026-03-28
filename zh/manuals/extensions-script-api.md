@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何创建脚本API定义，以便Defold编辑器能为扩展用户提供自动补全功能。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 为原生扩展添加编辑器自动补全
 toc:
 - 原生扩展的自动补全

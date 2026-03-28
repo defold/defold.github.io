@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何使用计算程序、着色器常量和采样器。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 计算着色器手册
 toc:
 - 计算程序

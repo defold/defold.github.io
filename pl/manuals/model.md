@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje, jak wprowadzać modele 3D, szkielety i animacje do gry.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Modele 3D w Defoldzie
 toc:
 - Modele 3D

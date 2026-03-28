@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia jak używać węzłów typu text.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Węzły tekstowe - text w Defoldzie.
 toc:
 - Węzeł GUI typu text

@@ -1,8 +1,8 @@
 ---
 brief: 本手册提供了 Defold 编辑器的外观和工作方式的概述，以及如何在其中导航。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 编辑器概述
 toc:
 - 编辑器概述

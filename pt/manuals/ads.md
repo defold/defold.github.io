@@ -1,8 +1,8 @@
 ---
 brief: Mostrar vários tipos de anúncios é uma maneira comum de monetizar jogos para web e mobile. Este manual mostra várias maneiras de monetizar seu jogo usando anúncios.
 github: https://github.com/defold/doc
-language: pt
 layout: manual
+locale: pt
 title: Mostrando anúncios no Defold
 toc:
 - Anúncios

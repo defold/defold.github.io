@@ -1,8 +1,8 @@
 ---
 brief: Αυτό το εγχειρίδιο σκάβει τις λεπτομέρειες του τρόπου λειτουργίας των αντικειμένων, των συστατικών και των συλλογών του παιχνιδιού.
 github: https://github.com/defold/doc
-language: gr
 layout: manual
+locale: gr
 title: Τα δομικά στοιχεία του Defold
 toc:
 - Δομικά στοιχεία

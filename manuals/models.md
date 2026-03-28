@@ -1,8 +1,8 @@
 ---
 brief: This document has been replaced
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Deprecated 3D models doc
 toc:
 - Models

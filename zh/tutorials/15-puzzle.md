@@ -1,7 +1,7 @@
 ---
 brief: 如果您是 Defold 的新手，本指南将帮助您使用 Defold 的一些构建块并运行脚本逻辑。
-language: zh
 layout: tutorial
+locale: zh
 title: 在 Defold 中构建 15 拼图游戏
 ---
 

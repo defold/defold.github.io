@@ -1,8 +1,8 @@
 ---
 brief: Ten słowniczek zawiera terminy Defold z krótkimi objaśnieniami.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Słowniczek Defold
 toc:
 - Słowniczek Defold

@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве описаны некоторые способы отладки приложения, содержащего native extension.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Отладка расширений
 toc: []
 ---

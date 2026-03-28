@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how project specific settings work in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Defold project settings
 toc:
 - Project settings

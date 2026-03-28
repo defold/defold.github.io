@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство объясняет как подключаться к различным игровым и бэкенд-сервисам.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Игровые онлайн сервисы
 toc:
 - Игровые онлайн сервисы

@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia, jak działa komponent efektów cząsteczkowych i jak go edytować, aby tworzyć efekty wizualne z użyciem cząsteczek.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Efekty cząsteczkowe w Defoldzie
 toc:
 - Efekty cząsteczkowe (Particle FX)

@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia jak można importować i obsługiwać dźwięki w Defoldzie.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Dźwięk w Defoldzie
 toc:
 - Dźwięk

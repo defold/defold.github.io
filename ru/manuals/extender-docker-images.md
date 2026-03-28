@@ -1,8 +1,8 @@
 ---
 brief: Документ описывает доступные образы Docker и версии Defold, которые их используют
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Доступные образы Docker
 toc:
 - Доступные образы Docker

@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了Defold中的Buffer资源的工作原理.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Buffer手册
 toc:
 - Buffer

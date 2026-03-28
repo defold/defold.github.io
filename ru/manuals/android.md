@@ -1,8 +1,8 @@
 ---
 brief: Это руководство описывает, как создавать и запускать приложения Defold на устройствах Android
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Разработка на Defold для платформы Android
 toc:
 - Разработка для Android

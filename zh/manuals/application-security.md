@@ -1,8 +1,8 @@
 ---
 brief: 本手册涵盖了安全开发实践的若干方面。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 应用程序安全手册
 toc:
 - 应用安全

@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja wyjaśnia działanie promieni Ray casts w Defoldzie.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Promienie Ray casts w Defoldzie
 toc:
 - Promienie Ray casts

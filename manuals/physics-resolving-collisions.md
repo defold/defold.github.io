@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to resolve kinematic physics collisions.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Resolving kinematic collisions in Defold
 toc:
 - Resolving kinematic collisions

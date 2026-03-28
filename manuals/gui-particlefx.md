@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how particle effects work in the Defold GUI.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: GUI particle fx in Defold
 toc:
 - GUI ParticleFX nodes

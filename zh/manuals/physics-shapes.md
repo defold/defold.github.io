@@ -1,8 +1,8 @@
 ---
 brief: 碰撞组件可以使用多个基本形状或单个复杂形状。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 碰撞形状
 toc:
 - 碰撞形状

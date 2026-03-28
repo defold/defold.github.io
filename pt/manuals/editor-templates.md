@@ -1,8 +1,8 @@
 ---
 brief: Você pode adicionar seus próprios modelos de projeto personalizados à janela Novo Projeto.
 github: https://github.com/defold/doc
-language: pt
 layout: manual
+locale: pt
 title: Modelos do Editor
 toc:
 - Modelos do Editor

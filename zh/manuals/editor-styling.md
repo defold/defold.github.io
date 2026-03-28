@@ -1,8 +1,8 @@
 ---
 brief: 您可以使用自定义样式表修改编辑器的颜色、字体排版及其他视觉元素。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 编辑器风格
 toc:
 - 编辑器风格

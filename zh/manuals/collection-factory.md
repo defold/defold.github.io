@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何使用集合工厂组件来生成游戏对象的层级结构.
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 集合工厂手册
 toc:
 - 集合工厂

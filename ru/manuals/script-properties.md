@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как добавлять пользовательские свойства в скрипты и получать к ним доступ из редактора и исполняемых скриптов.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Свойства компонента Script
 toc:
 - Свойства компонента Script

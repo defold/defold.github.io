@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了 Defold 如何自动管理资源以及如何手动管理资源加载以遵守内存占用和包体大小限制。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 资源管理
 toc:
 - 资源管理

@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了如何优化 Defold 游戏以稳定的帧率运行。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 优化 Defold 游戏的运行时性能
 toc:
 - 优化运行时速度

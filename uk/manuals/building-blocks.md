@@ -1,8 +1,8 @@
 ---
 brief: Цей посібник вникає в деталі ігрових обʼєктів, компонентів та колецкцій.
 github: https://github.com/defold/doc
-language: uk
 layout: manual
+locale: uk
 title: Будівельні блоки Defold
 toc:
 - Будівельні блоки

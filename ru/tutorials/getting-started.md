@@ -1,7 +1,7 @@
 ---
 brief: Этот учебник объясняет, как начать работать с учебниками в Defold.
-language: ru
 layout: tutorial
+locale: ru
 title: Начало работы с Defold
 ---
 

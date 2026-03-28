@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство объясняет как делать HTTP запросы.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: HTTP запросы
 toc:
 - HTTP запросы

@@ -1,8 +1,8 @@
 ---
 brief: Ta instrukcja opisuje szczegóły działania kształtów kolizji silnika fizyki.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Kształty Kolizji
 toc:
 - Kształty Kolizji

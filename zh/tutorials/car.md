@@ -1,7 +1,7 @@
 ---
 brief: 如果您是 Defold 的新手，本指南将帮助您在编辑器中找到正确的方向。它还解释了 Defold 中的基本思想和最常见的构建块 - 游戏对象、集合、脚本和精灵。
-language: zh
 layout: tutorial
+locale: zh
 title: 在 Defold 中构建一个简单的汽车
 ---
 

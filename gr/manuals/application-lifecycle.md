@@ -1,8 +1,8 @@
 ---
 brief: Αυτό το εγχειρίδιο περιγράφει τον κύκλο ζωής των παιχνιδιών και εφαρμογών Defold.
 github: https://github.com/defold/doc
-language: gr
 layout: manual
+locale: gr
 title: Εγχειρίδιο κύκλου ζωής εφαρμογής Defold
 toc:
 - Κύκλος ζωής εφαρμογής

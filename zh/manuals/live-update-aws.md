@@ -1,8 +1,8 @@
 ---
 brief: 本节将解释如何在 Amazon Web Services 上创建一个具有有限访问权限的新用户，该用户可以与 Defold 编辑器一起使用，在您打包游戏时自动上传 Live update 资源。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: AWS Live Update内容上传
 toc:
 - 设置 Amazon Web Service

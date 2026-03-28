@@ -1,8 +1,8 @@
 ---
 brief: Данное руководство объясняет, как работает конвейер рендеринга в Defold и как можно его программировать.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Рендер пайплайн
 toc:
 - Рендер пайплайн

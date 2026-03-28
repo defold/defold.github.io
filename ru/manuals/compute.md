@@ -1,8 +1,8 @@
 ---
 brief: В этом руководстве объясняется, как работать с compute-программами, константами шейдеров и сэмплерами.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Руководство по compute в Defold
 toc:
 - Compute-программы

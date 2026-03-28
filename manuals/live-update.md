@@ -1,8 +1,8 @@
 ---
 brief: The Live update functionality provides a mechanism allowing the runtime to fetch and store resources to the application bundle that were intentionally left out of the bundle at build time. This manual explains how it works.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Live update content in Defold
 toc:
 - Live update

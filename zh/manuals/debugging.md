@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了 Defold 中提供的调试功能。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 调试
 toc:
 - 调试

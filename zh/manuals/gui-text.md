@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了如何在GUI场景中添加文本。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold GUI文本节点
 toc:
 - GUI文本节点

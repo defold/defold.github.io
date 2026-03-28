@@ -1,8 +1,8 @@
 ---
 brief: This manual gives an overview on how the Defold editor look and works, and how to navigate in it.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Editor overview
 toc:
 - Editor overview

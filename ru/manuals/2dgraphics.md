@@ -1,8 +1,8 @@
 ---
 brief: Это руководство устарело
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Руководство по 2D-графике в Defold
 toc:
 - 2D-графика

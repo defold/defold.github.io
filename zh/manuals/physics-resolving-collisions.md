@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何解决运动学物理碰撞。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold 中解决运动学碰撞
 toc:
 - 解决运动学碰撞

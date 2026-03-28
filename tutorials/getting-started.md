@@ -1,7 +1,7 @@
 ---
 brief: This tutorial explains how to get started doing tutorials in Defold.
-language: en
 layout: tutorial
+locale: en
 title: Getting started with Defold
 ---
 

@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to add game logic using script components.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Writing game logic in scripts
 toc:
 - Scripts

@@ -1,8 +1,8 @@
 ---
 brief: 本手册描述了如何获取 PlayStation®4 和 PlayStation®5 的访问权限
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: PlayStation®4 和 PlayStation®5 的 Defold 开发
 toc:
 - PlayStation®4 和 PlayStation®5 游戏机开发

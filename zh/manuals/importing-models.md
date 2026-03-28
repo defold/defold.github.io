@@ -1,8 +1,8 @@
 ---
 brief: 本手册介绍了如何导入模型组件使用的3D模型。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: Defold模型导入
 toc:
 - 导入3D模型

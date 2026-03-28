@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to import and use 2D graphics.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Importing and using 2D graphics
 toc:
 - Importing 2D graphics

@@ -1,8 +1,8 @@
 ---
 brief: 本手册解释了如何在Android构建中使用Gradle解析依赖项。
 github: https://github.com/defold/doc
-language: zh
 layout: manual
+locale: zh
 title: 在Android构建中使用Gradle依赖
 toc:
 - Android的Gradle

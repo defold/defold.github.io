@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how Defold has solved the problem of addressing.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Addressing in Defold
 toc:
 - Addressing

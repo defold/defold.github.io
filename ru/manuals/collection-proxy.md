@@ -1,8 +1,8 @@
 ---
 brief: Это руководство объясняет, как динамически создавать новые игровые пространства и переключаться между ними.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Компонент Collection Proxy
 toc:
 - Компонент Collection Proxy

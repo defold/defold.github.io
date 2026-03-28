@@ -1,8 +1,8 @@
 ---
 brief: Это руководство объясняет возможности профилирования, имеющиеся в Defold.
 github: https://github.com/defold/doc
-language: ru
 layout: manual
+locale: ru
 title: Профилирование в Defold
 toc:
 - Профилирование

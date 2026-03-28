@@ -1,7 +1,7 @@
 ---
 brief: 在本示例项目中，您将学习如何呈现主菜单的效果。
-language: zh
 layout: tutorial
+locale: zh
 title: 主菜单动画示例
 ---
 

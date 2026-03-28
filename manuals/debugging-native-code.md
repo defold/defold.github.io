@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to debug native code in Defold.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Debugging native code in Defold
 toc:
 - Debugging native code

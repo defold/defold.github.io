@@ -1,8 +1,8 @@
 ---
 brief: Kiedy obiekty się zderzają, silnik Defold wysyła wiadomości do komponentów tych obiektów.
 github: https://github.com/defold/doc
-language: pl
 layout: manual
+locale: pl
 title: Wiadomości kolizji w silniku Defold
 toc:
 - Wiadomości kolizji

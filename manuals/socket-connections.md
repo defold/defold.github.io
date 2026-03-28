@@ -1,8 +1,8 @@
 ---
 brief: This manual explains how to connect to create socket connections.
 github: https://github.com/defold/doc
-language: en
 layout: manual
+locale: en
 title: Socket connections
 toc:
 - Socket connections
