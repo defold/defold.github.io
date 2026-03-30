@@ -1,8 +1,8 @@
 ---
 brief: This manual describes how to show Rive animations using the Rive extension.
 github: https://github.com/defold/extension-rive
-language: en
 layout: manual
+locale: en
 title: Rive documentation
 toc:
 - Rive animation
