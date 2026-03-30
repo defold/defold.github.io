@@ -258,7 +258,7 @@ def collect_llms_api_entries():
         for filename in list_files(ref_root, ".json", sort = True):
             api = read_as_json(os.path.join(ref_root, filename))
             info = api.get("info", {})
-            language = info.get("language")
+            language = info.get("language") or info.get("api_language")
             if language not in ("C++", "Lua"):
                 continue
             output_name = os.path.splitext(filename)[0]
@@ -388,7 +388,7 @@ def render_api_markdown(info, elements):
     namespace = info.get("namespace")
     if namespace:
         lines.append("**Namespace:** `{}`".format(namespace))
-    language = info.get("language")
+    language = info.get("language") or info.get("api_language")
     if language:
         lines.append("**Language:** {}".format(language))
     api_type = info.get("type")
