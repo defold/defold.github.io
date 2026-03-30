@@ -4,9 +4,116 @@ These are per-namespace API reference files generated for LLM usage.
 
 ## C++ APIs
 
+- [dmDDF (Ddf)](https://defold.com/llms/apis/engine-ddf-src-dmsdk-ddf-ddf-h.md) - DDF (Defold Data Format) API documentation
+- [dmAndroid (Android)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-android-h.md) - Android utility functions
+- [Array](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-array-h.md) - Templatized array with bounds checking
+- [dmBuffer (Buffer)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-buffer-h.md) - Buffer API for data buffers as the main way to communicate between systems
+- [dmConditionVariable (Condition Variable)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-condition_variable-h.md) - API for platform independent mutex synchronization primitive
+- [dmConfigFile (ConfigFile)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-configfile_gen-hpp.md) - Configuration file access functions
+- [dmConnectionPool (Connection Pool)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-connection_pool-h.md) - Connection pool
+- [dmCrypt (Crypt)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-crypt-h.md) - Various hash and encode/decode functions
+- [dmDoubleLinkedList (Double linked list structs and functions)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-double_linked_list-h.md) - Double linked list structs and functions
+- [dmFileDescriptor (FileDescriptor)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-file_descriptor-h.md) - File Descriptor functions
+- [Hashtable](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-hashtable-h.md) - Hash table
+- [dmHttpClient (Http Client)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-http_client-h.md) - Http client functions
+- [dmImage (Image)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-image-h.md) - Image API functions
+- [dmIntersection (Intersection structs and functions)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-intersection-h.md) - Intersection math structs and functions
+- [Log](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-log-h.md) - Logging functions
+- [dmMath (Math)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-math-h.md) - Math functions
+- [dmMemory (Memory)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-memory-h.md) - Memory allocation functions
+- [dmMessage (Message)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-message-h.md) - Api for sending messages
+- [dmMutex (Mutex)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-mutex-h.md) - API for platform independent mutex synchronization primitive
+- [ObjectPool](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-object_pool-h.md) - Object Pool API documentation
+- [dmProfile (Profile)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-profile-h.md) - Profiling macros
+- [SharedLibrary (Shared Library)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-shared_library-h.md) - Utility functions for shared library export/import
+- [dmSocket (Socket)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-socket-h.md) - Socket functions
+- [dmSpinlock (Spinlock)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-spinlock-h.md) - API for platform independent spinlock synchronization primitive
+- [dmSSLSocket (SSLSocket)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-sslsocket-h.md) - Secure socket functions
+- [dmStaticAssert (Static Assert)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-static_assert-h.md) - ```cpp void test() { DM_STATIC_ASSERT(sizeof(int) == 4, Invalid_int_size); } ```
+- [dmSys (Sys)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-sys-h.md) - Sys allocation functions
+- [dmThread (Thread)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-thread-h.md) - Thread functions
+- [dmTime (Time)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-time-h.md) - Time functions
+- [dmTransform (Transform)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-transform-h.md) - Api for transforms with rotation, scale and translation
+- [dmURI (URI)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-uri-h.md) - URI functions
+- [dmUtf8 (Utf8)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-utf8-h.md) - Utf8 API documentation
+- [dmVMath (Vector Math)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-vmath-h.md) - Vector Math functions
+- [dmWebServer (WebServer)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-webserver-h.md) - Simple high-level single-threaded Web server based on dmHttpServer The web-server has a handler concept similar to servlets in Java
+- [dmEngine (Engine)](https://defold.com/llms/apis/engine-engine-src-dmsdk-engine-extension-hpp.md) - SDK Engine extension API documentation
+- [engine (Engine runtime)](https://defold.com/llms/apis/engine-engine-src-engine_doc-h.md) - Engine runtime documentation
+- [dmExtension (Extension)](https://defold.com/llms/apis/engine-extension-src-dmsdk-extension-extension_gen-hpp.md) - Functions for creating and controlling engine native extension libraries
+- [dmGameObject (Component)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-component-h.md) - Api for manipulating game object components (WIP)
+- [dmGameObject (Gameobject)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-gameobject-h.md) - API for manipulating game objects
+- [dmGameObject (PropertyContainer)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-gameobject_props-h.md) - API for game object property container
+- [dmGameObject (Script)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-script-h.md) - GameObject script API documentation
+- [dmGameSystem (Collection factory)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-components-comp_collection_factory-h.md) - API for spawning collections from a collection factory component
+- [dmGameSystem (Factory)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-components-comp_factory-h.md) - API for spawning gameobject instances from a factory component
+- [dmGameSystem (Model)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-components-comp_model-h.md) - API for interacting with model components
+- [dmGameSystem (GameSystem Gui)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-gui-h.md) - Built-in scripting functions
+- [dmGameSystem (Property)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-property-h.md) - Property functions
+- [dmGameSystem (Component Render Constants)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-render_constants-h.md) - Api for setting and updating component render constants
+- [dmGameSystem (Font Resource)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-resources-res_font-h.md) - Font resource functions
+- [dmScript (Script)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-script-h.md) - Built-in scripting functions
+- [dmGraphics (Graphics)](https://defold.com/llms/apis/engine-graphics-src-dmsdk-graphics-graphics-h.md) - Graphics API
+- [dmGraphics (Graphics)](https://defold.com/llms/apis/engine-graphics-src-dmsdk-graphics-graphics_native-h.md) - Platform specific native graphics functions
+- [dmGraphics (Graphics OpenGL)](https://defold.com/llms/apis/engine-graphics-src-dmsdk-graphics-graphics_opengl-h.md) - Graphics OpenGL API
+- [dmGraphics (Graphics Vulkan)](https://defold.com/llms/apis/engine-graphics-src-dmsdk-graphics-graphics_vulkan-h.md) - Graphics Vulkan API
+- [dmGui (Gui)](https://defold.com/llms/apis/engine-gui-src-dmsdk-gui-gui-h.md) - Defold GUI system
+- [dmPhysics (Physics)](https://defold.com/llms/apis/engine-physics-src-dmsdk-physics-physics-h.md) - Physics related structs and functions
+- [dmRender (Render)](https://defold.com/llms/apis/engine-render-src-dmsdk-render-render-h.md) - Api for render specific data
+- [dmResource (Resource)](https://defold.com/llms/apis/engine-resource-src-dmsdk-resource-resource-hpp.md) - Functions for managing resource and resource types
+- [dmResource (Resource)](https://defold.com/llms/apis/engine-resource-src-dmsdk-resource-resource_gen-hpp.md) - Functions for managing resource types
+- [dmScript (Script)](https://defold.com/llms/apis/engine-script-src-dmsdk-script-script-h.md) - Built-in scripting functions
+- [dmSound (Sound)](https://defold.com/llms/apis/engine-sound-src-dmsdk-sound-sound-h.md) - Functions for controlling the engine sound mixer from native extensions
 
 ## Lua APIs
 
+- [b2d](https://defold.com/llms/apis/b2d-lua.md) - Functions for interacting with Box2D
+- [b2d.body](https://defold.com/llms/apis/b2d.body-lua.md) - Functions for interacting with Box2D bodies
+- [base (Base)](https://defold.com/llms/apis/base-lua.md) - Documentation for the Lua base standard library
+- [bit (BitOp)](https://defold.com/llms/apis/bit-lua.md) - [Lua BitOp](http://bitop
+- [buffer (Buffer)](https://defold.com/llms/apis/buffer-lua.md) - Functions for manipulating buffers and streams
+- [builtins (Built-ins)](https://defold.com/llms/apis/builtins-lua.md) - Built-in scripting functions
+- [camera (Camera)](https://defold.com/llms/apis/camera-lua.md) - Messages to control camera components and camera focus
+- [collectionfactory (Collection factory)](https://defold.com/llms/apis/collectionfactory-lua.md) - Functions for controlling collection factory components which are used to dynamically spawn collections into the runtime
+- [collectionproxy (Collection proxy)](https://defold.com/llms/apis/collectionproxy-lua.md) - Messages for controlling and interacting with collection proxies which are used to dynamically load collections into the runtime
+- [coroutine (Coroutine)](https://defold.com/llms/apis/coroutine-lua.md) - Documentation for the Lua coroutine standard library
+- [crash (Crash)](https://defold.com/llms/apis/crash-lua.md) - Native crash logging functions and constants
+- [debug (Debug)](https://defold.com/llms/apis/debug-lua.md) - Documentation for the Lua debug standard library
+- [editor (Editor)](https://defold.com/llms/apis/editor-lua.md) - Editor scripting documentation
+- [factory (Factory)](https://defold.com/llms/apis/factory-lua.md) - Functions for controlling factory components which are used to dynamically spawn game objects into the runtime
+- [font (Font)](https://defold.com/llms/apis/font-lua.md) - Functions, messages and properties used to manipulate font resources
+- [go (Game object)](https://defold.com/llms/apis/go-lua.md) - Functions, core hooks, messages and constants for manipulation of game objects
+- [graphics (Graphics)](https://defold.com/llms/apis/graphics-lua.md) - Graphics functions and constants
+- [gui (GUI)](https://defold.com/llms/apis/gui-lua.md) - GUI core hooks, functions, messages, properties and constants for creation and manipulation of GUI nodes
+- [html5 (HTML5)](https://defold.com/llms/apis/html5-lua.md) - HTML5 platform specific functions
+- [http (HTTP)](https://defold.com/llms/apis/http-lua.md) - Functions for performing HTTP and HTTPS requests
+- [image (Image)](https://defold.com/llms/apis/image-lua.md) - Functions for creating image objects
+- [io (Io)](https://defold.com/llms/apis/io-lua.md) - Documentation for the Lua io standard library
+- [json (JSON)](https://defold.com/llms/apis/json-lua.md) - Manipulation of JSON data strings
+- [label (Label)](https://defold.com/llms/apis/label-lua.md) - Functions to manipulate a label component
+- [liveupdate (LiveUpdate)](https://defold.com/llms/apis/liveupdate-lua.md) - Functions and constants to access resources
+- [math (Math)](https://defold.com/llms/apis/math-lua.md) - Documentation for the Lua math standard library
+- [model (Model)](https://defold.com/llms/apis/model-lua.md) - Model API documentation
+- [msg (Message)](https://defold.com/llms/apis/msg-lua.md) - Functions for passing messages and constructing URL objects
+- [os (Os)](https://defold.com/llms/apis/os-lua.md) - Documentation for the Lua os standard library
+- [package (Package)](https://defold.com/llms/apis/package-lua.md) - Documentation for the Lua package standard library
+- [particlefx (Particle effects)](https://defold.com/llms/apis/particlefx-lua.md) - Functions and properties for controlling particle effect component playback and shader constants
+- [physics (Collision object)](https://defold.com/llms/apis/physics-lua.md) - Collision object physics API documentation
+- [profiler (Profiler)](https://defold.com/llms/apis/profiler-lua.md) - Functions for getting profiling data in runtime
+- [render (Render)](https://defold.com/llms/apis/render-lua.md) - Rendering API documentation
+- [resource (Resource)](https://defold.com/llms/apis/resource-lua.md) - Functions and constants to access resources
+- [socket (LuaSocket)](https://defold.com/llms/apis/socket-lua.md) - [LuaSocket](https://github
+- [sound (Sound)](https://defold.com/llms/apis/sound-lua.md) - Functions and messages for controlling sound components and mixer groups
+- [sprite (Sprite)](https://defold.com/llms/apis/sprite-lua.md) - Sprite API documentation
+- [string (String)](https://defold.com/llms/apis/string-lua.md) - Documentation for the Lua string standard library
+- [sys (System)](https://defold.com/llms/apis/sys-lua.md) - Functions and messages for using system resources, controlling the engine, error handling and debugging
+- [table (Table)](https://defold.com/llms/apis/table-lua.md) - Documentation for the Lua table standard library
+- [tilemap (Tilemap)](https://defold.com/llms/apis/tilemap-lua.md) - Functions and messages used to manipulate tile map components
+- [timer (Timer)](https://defold.com/llms/apis/timer-lua.md) - Timers allow you to set a delay and a callback to be called when the timer completes
+- [types (Types)](https://defold.com/llms/apis/types-lua.md) - Functions for checking Defold userdata types
+- [vmath (Vector math)](https://defold.com/llms/apis/vmath-lua.md) - Functions for mathematical operations on vectors, matrices and quaternions
+- [window (Window)](https://defold.com/llms/apis/window-lua.md) - Functions and constants to access the window, window event listeners and screen dimming
+- [zlib (Zlib)](https://defold.com/llms/apis/zlib-lua.md) - Functions for compression and decompression of string buffers
 
 ## Extension APIs
 

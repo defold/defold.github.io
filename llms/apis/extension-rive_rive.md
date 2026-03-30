@@ -1,6 +1,7 @@
 # extension-rive
 
 **Namespace:** `rive`
+**Language:** Lua
 **Type:** Extension
 
 Functions and constants for interacting with Rive models

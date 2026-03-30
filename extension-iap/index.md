@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to setup and use In-App Purchases in Defold.
 github: https://github.com/defold/extension-iap
-language: en
 layout: manual
+locale: en
 title: Defold In-app purchase extension API documentation
 toc:
 - Defold In-app purchase extension API documentation
