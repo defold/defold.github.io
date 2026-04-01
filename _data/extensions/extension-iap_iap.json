@@ -154,6 +154,43 @@
                                     ]
                                 },
                                 {
+                                    "doc": "Only available for Google Play [icon:googleplay]. List of one-time purchase offers.",
+                                    "name": "onetime",
+                                    "parameters": [
+                                        {
+                                            "doc": "The token associated with the offer.",
+                                            "name": "token",
+                                            "types": [
+                                                "string"
+                                            ]
+                                        },
+                                        {
+                                            "doc": "The price of the product.",
+                                            "name": "price",
+                                            "types": [
+                                                "number"
+                                            ]
+                                        },
+                                        {
+                                            "doc": "The price of the product, as a formatted string (amount and currency symbol).",
+                                            "name": "price_string",
+                                            "types": [
+                                                "string"
+                                            ]
+                                        },
+                                        {
+                                            "doc": "The currency code.",
+                                            "name": "currency_code",
+                                            "types": [
+                                                "string"
+                                            ]
+                                        }
+                                    ],
+                                    "types": [
+                                        "table"
+                                    ]
+                                },
+                                {
                                     "doc": "Only available for Google Play [icon:googleplay]. List of subscription offers. Each offer contains a token and a list of price and billing options. See https://developer.android.com/reference/com/android/billingclient/api/ProductDetails.PricingPhase",
                                     "name": "subscriptions",
                                     "parameters": [

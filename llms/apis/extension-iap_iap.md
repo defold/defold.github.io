@@ -87,6 +87,11 @@ Get a list of all avaliable iap products.
     - `price` (number) - The price of the product. For Google Play [icon:googleplay] this is used only for in-app products
     - `price_string` (string) - The price of the product, as a formatted string (amount and currency symbol). For Google Play [icon:googleplay] this is used only for in-app products
     - `currency_code` (string) - The currency code. For Google Play [icon:googleplay] this is the merchant's locale, instead of the user's. For Google Play [icon:googleplay] this is used only for in-app products
+    - `onetime` (table) - Only available for Google Play [icon:googleplay]. List of one-time purchase offers.
+      - `token` (string) - The token associated with the offer.
+      - `price` (number) - The price of the product.
+      - `price_string` (string) - The price of the product, as a formatted string (amount and currency symbol).
+      - `currency_code` (string) - The currency code.
     - `subscriptions` (table) - Only available for Google Play [icon:googleplay]. List of subscription offers. Each offer contains a token and a list of price and billing options. See https://developer.android.com/reference/com/android/billingclient/api/ProductDetails.PricingPhase
       - `token` (string) - The token associated with the pricing phases for the subscription.
       - `pricing` (table) - The pricing phases for the subscription.
