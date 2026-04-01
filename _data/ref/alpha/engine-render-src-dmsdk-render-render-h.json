@@ -1296,6 +1296,14 @@
                     ]
                 },
                 {
+                    "doc": "user data (available in the render dispatch callback)",
+                    "is_optional": "False",
+                    "name": "m_UserData",
+                    "types": [
+                        "uint64_t"
+                    ]
+                },
+                {
                     "doc": "the order to sort on (used if m_MajorOrder != RENDER_ORDER_WORLD)",
                     "is_optional": "False",
                     "name": "m_Order",
@@ -1320,11 +1328,11 @@
                     ]
                 },
                 {
-                    "doc": "user data (available in the render dispatch callback)",
+                    "doc": "Last combined frustum cull key (note: engine internal use only!)",
                     "is_optional": "False",
-                    "name": "m_UserData",
+                    "name": "m_FrustumHash",
                     "types": [
-                        "uint64_t"
+                        "uint32_t"
                     ]
                 },
                 {
