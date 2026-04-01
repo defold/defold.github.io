@@ -4,247 +4,127 @@
 **Language:** Lua
 **Type:** Extension
 
-Functions and constants for interacting with Rive models
+Rive animation helpers exposed to Lua scripts
 
 ## API
 
-### rive.play_anim
-*Type:* FUNCTION
-Plays the specified animation on a Rive model
-
-**Parameters**
-
-- `url` (url) - The Rive model component for which to play an animation
-- `anim_id` (hash) - Id of the animation to play
-- `playback` (number) - Playback mode of the animation (from go.PLAYBACK_*)
-- `options` (table) - Playback options
-  - `offset` (number) - The normalized initial value of the animation cursor when the animation starts playing
-  - `playback_rate` (constant) - The rate with which the animation will be played. Must be positive.
-- `complete_function` (function) - function to call when the animation has completed
-  - `self` (object) - The context of the calling script
-  - `message_id` (hash) - The name of the completion message ("rive_animation_done")
-  - `message` (table) - A table that contains the response
-    - `animation_id` (hash) - the animation that was completed
-    - `playback` (constant) - the playback mode for the animation
-  - `sender` (url) - The invoker of the callback - the Rive model component
-
-### rive.play_state_machine
-*Type:* FUNCTION
-Plays the specified animation on a Rive model
-
-**Parameters**
-
-- `url` (url) - The Rive model component for which to play an animation
-- `state_machine_id` (hash) - Id of the state machine to play
-- `options` (table) - Playback options
-  - `playback_rate` (constant) - The rate with which the animation will be played. Must be positive.
-- `callback_function` (function) - function to call when a playback event occurs
-  - `self` (object) - The context of the calling script
-  - `message_id` (hash) - The name of the event
-  - `message` (table) - A table that contains the event properties
-
-### rive.cancel
-*Type:* FUNCTION
-Cancels all running animations on a specified spine model component
-
-**Parameters**
-
-- `url` (url) - The Rive model component for which to cancel the animation
-
-### rive.get_go
-*Type:* FUNCTION
-Returns the id of the game object that corresponds to a specified skeleton bone.
-
-**Parameters**
-
-- `url` (url) - The Rive model component to query
-- `bone_id` (hash) - Id of the corresponding bone
-
 ### rive.pointer_move
 *Type:* FUNCTION
-Forward mouse/touch movement to a component
+Lua wrapper for pointer movement.
 
 **Parameters**
 
-- `url` (url) - The Rive model component
-- `x` (number) - Horizontal position
-- `y` (number) - Vertical position
+- `url` (url) - Component receiving the pointer move.
+- `x` (number) - Pointer x coordinate in component space.
+- `y` (number) - Pointer y coordinate in component space.
 
 ### rive.pointer_up
 *Type:* FUNCTION
-Forward mouse/touch release event to a component
+Lua wrapper for pointer up events.
 
 **Parameters**
 
-- `url` (url) - The Rive model component
-- `x` (number) - Horizontal position
-- `y` (number) - Vertical position
+- `url` (url) - Component receiving the pointer release.
+- `x` (number) - Pointer x coordinate.
+- `y` (number) - Pointer y coordinate.
 
 ### rive.pointer_down
 *Type:* FUNCTION
-Forward mouse/touch press event to a component
+Lua wrapper for pointer down events.
 
 **Parameters**
 
-- `url` (url) - The Rive model component
-- `x` (number) - Horizontal position
-- `y` (number) - Vertical position
+- `url` (url) - Component receiving the pointer press.
+- `x` (number) - Pointer x coordinate.
+- `y` (number) - Pointer y coordinate.
 
-### rive.get_text_run
+### rive.pointer_exit
 *Type:* FUNCTION
-Gets the text run of a specified text component from within the Rive artboard assigned to the component.
+Lua wrapper for pointer exit events.
 
 **Parameters**
 
-- `url` (url) - The Rive model component for which to get the text run from
-- `name` (string) - The name of the text run from the Rive artboard.
-- `nested_artboard` (string) - (OPTIONAL) If specified, the text run will be retrieved from the specified nested artboard
-
-### rive.set_text_run
-*Type:* FUNCTION
-Set the text run of a specified text component from within the Rive artboard assigned to the component.
-
-**Parameters**
-
-- `url` (url) - The Rive model component for which to set the text run for
-- `name` (string) - The name of the text run from the Rive artboard.
-- `text_run` (string) - The text run contents to update with.
-- `nested_artboard` (string) - (OPTIONAL) If specified, the text run will be set in the specified nested artboard
+- `url` (url) - Component receiving the pointer leave.
+- `x` (number) - Pointer x coordinate.
+- `y` (number) - Pointer y coordinate.
 
 ### rive.get_projection_matrix
 *Type:* FUNCTION
-Get an orthographic projection matrix that can be used to project regular Defold components into the same coordinate space as the rive model when using the 'fullscreen' coordinate space.
+Returns the projection matrix in render coordinates.
 
-### rive.get_state_machine_input
+### rive.set_file_listener
 *Type:* FUNCTION
-Get the input values from a state machine input, either from the current top-level artboard, or from a nested artboard inside the Rive model artboard. Note that trigger inputs will not generate a value!
+Sets or clears the global file listener callback.
 
 **Parameters**
 
-- `url` (url) - The Rive model component
-- `name` (string) - The name of the input
-- `nested_artboard` (string) - (OPTIONAL) If specified, the input will be queried for the specified nested artboard
+- `callback` (function(self, event, data) | nil) - Callback invoked for file system events; pass nil to disable.
+  - `self` (object) - The calling script instance.
+  - `event` (string) - One of onFileLoaded, onFileDeleted, onFileError, onArtboardsListed, onViewModelsListed, onViewModelInstanceNamesListed, onViewModelPropertiesListed, onViewModelEnumsListed
+  - `data` (table) - Additional fields vary by event. Common keys include
+    - `file` (FileHandle) - File handle involved in the event.
+    - `viewModelName` (string) - View model name for the request, when applicable.
+    - `instanceNames` (table) - Array of instance name strings.
+    - `artboardNames` (table) - Array of artboard name strings.
+    - `properties` (table) - Array of property metadata tables.
+    - `enums` (table) - Array of enum definitions.
+    - `error` (string) - Error message when a failure occurs.
 
-### rive.set_state_machine_input
+### rive.get_file
 *Type:* FUNCTION
-Set the input values from a state machine input, either from the current top-level artboard, or from a nested artboard inside the Rive model artboard. Note - To set input for a trigger, use a bool value.
+Returns the Rive file handle tied to the component.
 
 **Parameters**
 
-- `url` (url) - The Rive model component
-- `name` (string) - The name of the input
-- `value` (number | bool) - The value of the input to set
-- `nested_artboard` (string) - (OPTIONAL) If specified, the input will be queried for the specified nested artboard
+- `url` (url) - Component whose file handle to query.
 
-### rive.riv_swap_asset
+### rive.set_artboard
 *Type:* FUNCTION
-Replace an asset in runtime.
+Switches the active artboard for the component.
 
 **Parameters**
 
-- `riv_path` (string,hash) - The Rive (.rivc) path. E.g. "/path/to/file.rivc"
-- `asset_name` (string) - The name of the FileAsset inside the .riv file
-- `options` (table) - A table of options containing
-  - `path` (string) - The path of the asset file to replace with. E.g. "/path/to/file.png"
-  - `payload` (string) - The payload of the asset file to replace with. E.g. a .png binary file. Takes precedence over the `path` option.
+- `url` (url) - Component using the artboard.
+- `name` (string | nil) - Name of the artboard to create and set. Pass nil to create a default artboard.
 
-### rive.set_font_fallback_path
+### rive.get_artboard
 *Type:* FUNCTION
-Register a fallback font from a file path. This font will be used if glyphs are missing in the current font. Note that only one font fallback can be active at any time.
+Queries the current artboard handle for the component.
 
 **Parameters**
 
-- `path` (string) - The resource path to the font file.
+- `url` (url) - Component whose artboard handle to return.
 
-### rive.set_font_fallback_memory
+### rive.set_state_machine
 *Type:* FUNCTION
-Register a fallback font from a memory payload. This font will be used if glyphs are missing in the current font. Note that only one font fallback can be active at any time.
+Selects a state machine by name on the component.
 
 **Parameters**
 
-- `payload` (string) - The font file contents.
+- `url` (url) - Component owning the state machine.
+- `name` (string | nil) - Name of the state machine to create and set. Pass nil to create a default state machine.
 
-### rive.clear_font_fallback
+### rive.get_state_machine
 *Type:* FUNCTION
-Clear any registered fallback font.
-
-### rive.databind.create_view_model_instance_runtime
-*Type:* FUNCTION
-Creates a ViewModelInstanceRuntime
+Returns the active state machine handle for the component.
 
 **Parameters**
 
-- `url` (url) - The Rive model component
-- `name` (string, hash) - The name of the view model to instantiate
+- `url` (url) - Component whose active state machine to query.
 
-### rive.databind.destroy_view_model_instance_runtime
+### rive.set_view_model_instance
 *Type:* FUNCTION
-Releases the previously created ViewModelInstanceRuntime
+Selects a default view model instance by name.
 
 **Parameters**
 
-- `url` (url) - The Rive model component
-- `handle` (integer) - The handle to the ViewModelInstanceRuntime instance
+- `url` (url) - Component owning the view model instance.
+- `name` (string) - View model name whose default instance should be activated.
 
-### rive.databind.set_view_model_instance_runtime
+### rive.get_view_model_instance
 *Type:* FUNCTION
-Sets the current ViewModelInstanceRuntime
+Returns the handle of the currently bound view model instance.
 
 **Parameters**
 
-- `url` (url) - The Rive model component
-- `handle` (integer) - The handle to the ViewModelInstanceRuntime instance
-
-### rive.databind.get_view_model_instance_runtime
-*Type:* FUNCTION
-Gets the current ViewModelInstanceRuntime
-
-**Parameters**
-
-- `url` (url) - The Rive model component
-
-### rive.databind.set_properties
-*Type:* FUNCTION
-Sets properties to the ViewModelInstanceRuntime instance
-
-**Parameters**
-
-- `url` (url) - The Rive model component
-- `handle` (integer) - The handle to the ViewModelInstanceRuntime instance
-- `properties` (table) - A table of properties, where each key is a Rive "path", and the values are mapped to the corresponding property value type.
-
-### rive.databind.get_property
-*Type:* FUNCTION
-Gets a property from the ViewModelInstanceRuntime instance
-
-**Parameters**
-
-- `url` (url) - The Rive model component
-- `handle` (integer) - The handle to the ViewModelInstanceRuntime instance
-- `path` (string) - The path to the property
-
-### rive.databind.list_add_instance
-*Type:* FUNCTION
-Add a ViewModelInstanceRuntime instance to a list property
-
-**Parameters**
-
-- `url` (url) - The Rive model component
-- `handle` (integer) - The handle to the ViewModelInstanceRuntime instance
-- `path` (string) - The path to the list property
-- `instance_handle` (integer) - The handle to the ViewModelInstanceRuntime instance to add to the list
-
-### rive.databind.list_remove_instance
-*Type:* FUNCTION
-Remove a ViewModelInstanceRuntime instance from a list property
-
-**Parameters**
-
-- `url` (url) - The Rive model component
-- `handle` (integer) - The handle to the ViewModelInstanceRuntime instance
-- `path` (string) - The path to the list property
-- `instance_handle` (integer) - The handle to the ViewModelInstanceRuntime instance to add to the list
-
-###
-*Type:* TABLE
-Functions and constants for interacting with Rive data bindings
+- `url` (url) - Component whose view model instance handle to query.

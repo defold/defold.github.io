@@ -142,7 +142,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [poki_sdk (extension-poki-sdk)](https://defold.com/llms/apis/extension-poki-sdk_poki_sdk.md) - Functions and constants for interacting with Poki SDK APIs
 - [push (extension-push)](https://defold.com/llms/apis/extension-push_push.md) - Functions and constants for interacting with local, as well as Apple''s and Google''s push notification services
 - [review (extension-review)](https://defold.com/llms/apis/extension-review_review.md) - Functions and constants for interacting with review APIs
-- [rive (extension-rive)](https://defold.com/llms/apis/extension-rive_rive.md) - Functions and constants for interacting with Rive models
+- [rive (extension-rive)](https://defold.com/llms/apis/extension-rive_rive.md) - Rive animation helpers exposed to Lua scripts
 - [safearea (extension-safearea)](https://defold.com/llms/apis/extension-safearea_safearea.md) - Defold native extension that will change the view/render of a game to fit into the safe area on iPhones and Android(API 28+) with notch
 - [siwa (extension-siwa)](https://defold.com/llms/apis/extension-siwa_siwa.md) - Functions and constants for interacting Sign in with Apple
 - [gui (extension-spine)](https://defold.com/llms/apis/extension-spine_gui.md) - Functions and constants for interacting with Spine models in GUI

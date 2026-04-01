@@ -1,240 +1,26 @@
 {
     "elements": [
         {
-            "description": "Plays the specified animation on a Rive model",
-            "examples": "",
-            "name": "rive.play_anim",
-            "parameters": [
-                {
-                    "doc": "The Rive model component for which to play an animation",
-                    "name": "url",
-                    "types": [
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "Id of the animation to play",
-                    "name": "anim_id",
-                    "types": [
-                        "hash"
-                    ]
-                },
-                {
-                    "doc": "Playback mode of the animation (from go.PLAYBACK_*)",
-                    "name": "playback",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "Playback options",
-                    "name": "options",
-                    "parameters": [
-                        {
-                            "doc": "The normalized initial value of the animation cursor when the animation starts playing",
-                            "name": "offset",
-                            "types": [
-                                "number"
-                            ]
-                        },
-                        {
-                            "doc": "The rate with which the animation will be played. Must be positive.",
-                            "name": "playback_rate",
-                            "types": [
-                                "constant"
-                            ]
-                        }
-                    ],
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "function to call when the animation has completed",
-                    "name": "complete_function",
-                    "parameters": [
-                        {
-                            "doc": "The context of the calling script",
-                            "name": "self",
-                            "types": [
-                                "object"
-                            ]
-                        },
-                        {
-                            "doc": "The name of the completion message (\"rive_animation_done\")",
-                            "name": "message_id",
-                            "types": [
-                                "hash"
-                            ]
-                        },
-                        {
-                            "doc": "A table that contains the response",
-                            "name": "message",
-                            "parameters": [
-                                {
-                                    "doc": "the animation that was completed",
-                                    "name": "animation_id",
-                                    "types": [
-                                        "hash"
-                                    ]
-                                },
-                                {
-                                    "doc": "the playback mode for the animation",
-                                    "name": "playback",
-                                    "types": [
-                                        "constant"
-                                    ]
-                                }
-                            ],
-                            "types": [
-                                "table"
-                            ]
-                        },
-                        {
-                            "doc": "The invoker of the callback - the Rive model component",
-                            "name": "sender",
-                            "types": [
-                                "url"
-                            ]
-                        }
-                    ],
-                    "types": [
-                        "function"
-                    ]
-                }
-            ],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Plays the specified animation on a Rive model",
-            "examples": "",
-            "name": "rive.play_state_machine",
-            "parameters": [
-                {
-                    "doc": "The Rive model component for which to play an animation",
-                    "name": "url",
-                    "types": [
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "Id of the state machine to play",
-                    "name": "state_machine_id",
-                    "types": [
-                        "hash"
-                    ]
-                },
-                {
-                    "doc": "Playback options",
-                    "name": "options",
-                    "parameters": [
-                        {
-                            "doc": "The rate with which the animation will be played. Must be positive.",
-                            "name": "playback_rate",
-                            "types": [
-                                "constant"
-                            ]
-                        }
-                    ],
-                    "types": [
-                        "table"
-                    ]
-                },
-                {
-                    "doc": "function to call when a playback event occurs",
-                    "name": "callback_function",
-                    "parameters": [
-                        {
-                            "doc": "The context of the calling script",
-                            "name": "self",
-                            "types": [
-                                "object"
-                            ]
-                        },
-                        {
-                            "doc": "The name of the event",
-                            "name": "message_id",
-                            "types": [
-                                "hash"
-                            ]
-                        },
-                        {
-                            "doc": "A table that contains the event properties",
-                            "name": "message",
-                            "types": [
-                                "table"
-                            ]
-                        }
-                    ],
-                    "types": [
-                        "function"
-                    ]
-                }
-            ],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Cancels all running animations on a specified spine model component",
-            "examples": "",
-            "name": "rive.cancel",
-            "parameters": [
-                {
-                    "doc": "The Rive model component for which to cancel the animation",
-                    "name": "url",
-                    "types": [
-                        "url"
-                    ]
-                }
-            ],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Returns the id of the game object that corresponds to a specified skeleton bone.",
-            "examples": "",
-            "name": "rive.get_go",
-            "parameters": [
-                {
-                    "doc": "The Rive model component to query",
-                    "name": "url",
-                    "types": [
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "Id of the corresponding bone",
-                    "name": "bone_id",
-                    "types": [
-                        "hash"
-                    ]
-                }
-            ],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Forward mouse/touch movement to a component",
+            "description": "Lua wrapper for pointer movement.",
             "examples": "",
             "name": "rive.pointer_move",
             "parameters": [
                 {
-                    "doc": "The Rive model component",
+                    "doc": "Component receiving the pointer move.",
                     "name": "url",
                     "types": [
                         "url"
                     ]
                 },
                 {
-                    "doc": "Horizontal position",
+                    "doc": "Pointer x coordinate in component space.",
                     "name": "x",
                     "types": [
                         "number"
                     ]
                 },
                 {
-                    "doc": "Vertical position",
+                    "doc": "Pointer y coordinate in component space.",
                     "name": "y",
                     "types": [
                         "number"
@@ -245,26 +31,26 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Forward mouse/touch release event to a component",
+            "description": "Lua wrapper for pointer up events.",
             "examples": "",
             "name": "rive.pointer_up",
             "parameters": [
                 {
-                    "doc": "The Rive model component",
+                    "doc": "Component receiving the pointer release.",
                     "name": "url",
                     "types": [
                         "url"
                     ]
                 },
                 {
-                    "doc": "Horizontal position",
+                    "doc": "Pointer x coordinate.",
                     "name": "x",
                     "types": [
                         "number"
                     ]
                 },
                 {
-                    "doc": "Vertical position",
+                    "doc": "Pointer y coordinate.",
                     "name": "y",
                     "types": [
                         "number"
@@ -275,26 +61,26 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Forward mouse/touch press event to a component",
+            "description": "Lua wrapper for pointer down events.",
             "examples": "",
             "name": "rive.pointer_down",
             "parameters": [
                 {
-                    "doc": "The Rive model component",
+                    "doc": "Component receiving the pointer press.",
                     "name": "url",
                     "types": [
                         "url"
                     ]
                 },
                 {
-                    "doc": "Horizontal position",
+                    "doc": "Pointer x coordinate.",
                     "name": "x",
                     "types": [
                         "number"
                     ]
                 },
                 {
-                    "doc": "Vertical position",
+                    "doc": "Pointer y coordinate.",
                     "name": "y",
                     "types": [
                         "number"
@@ -305,29 +91,29 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Gets the text run of a specified text component from within the Rive artboard assigned to the component.",
+            "description": "Lua wrapper for pointer exit events.",
             "examples": "",
-            "name": "rive.get_text_run",
+            "name": "rive.pointer_exit",
             "parameters": [
                 {
-                    "doc": "The Rive model component for which to get the text run from",
+                    "doc": "Component receiving the pointer leave.",
                     "name": "url",
                     "types": [
                         "url"
                     ]
                 },
                 {
-                    "doc": "The name of the text run from the Rive artboard.",
-                    "name": "name",
+                    "doc": "Pointer x coordinate.",
+                    "name": "x",
                     "types": [
-                        "string"
+                        "number"
                     ]
                 },
                 {
-                    "doc": "(OPTIONAL) If specified, the text run will be retrieved from the specified nested artboard",
-                    "name": "nested_artboard",
+                    "doc": "Pointer y coordinate.",
+                    "name": "y",
                     "types": [
-                        "string"
+                        "number"
                     ]
                 }
             ],
@@ -335,44 +121,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Set the text run of a specified text component from within the Rive artboard assigned to the component.",
-            "examples": "",
-            "name": "rive.set_text_run",
-            "parameters": [
-                {
-                    "doc": "The Rive model component for which to set the text run for",
-                    "name": "url",
-                    "types": [
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "The name of the text run from the Rive artboard.",
-                    "name": "name",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "The text run contents to update with.",
-                    "name": "text_run",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "(OPTIONAL) If specified, the text run will be set in the specified nested artboard",
-                    "name": "nested_artboard",
-                    "types": [
-                        "string"
-                    ]
-                }
-            ],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Get an orthographic projection matrix that can be used to project regular Defold components into the same coordinate space as the rive model when using the 'fullscreen' coordinate space.",
+            "description": "Returns the projection matrix in render coordinates.",
             "examples": "",
             "name": "rive.get_projection_matrix",
             "parameters": [],
@@ -380,113 +129,90 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Get the input values from a state machine input, either from the current top-level artboard, or from a nested artboard inside the Rive model artboard. Note that trigger inputs will not generate a value!",
+            "description": "Sets or clears the global file listener callback.",
             "examples": "",
-            "name": "rive.get_state_machine_input",
+            "name": "rive.set_file_listener",
             "parameters": [
                 {
-                    "doc": "The Rive model component",
-                    "name": "url",
-                    "types": [
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "The name of the input",
-                    "name": "name",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "(OPTIONAL) If specified, the input will be queried for the specified nested artboard",
-                    "name": "nested_artboard",
-                    "types": [
-                        "string"
-                    ]
-                }
-            ],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Set the input values from a state machine input, either from the current top-level artboard, or from a nested artboard inside the Rive model artboard. Note - To set input for a trigger, use a bool value.",
-            "examples": "",
-            "name": "rive.set_state_machine_input",
-            "parameters": [
-                {
-                    "doc": "The Rive model component",
-                    "name": "url",
-                    "types": [
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "The name of the input",
-                    "name": "name",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "The value of the input to set",
-                    "name": "value",
-                    "types": [
-                        "number",
-                        "bool"
-                    ]
-                },
-                {
-                    "doc": "(OPTIONAL) If specified, the input will be queried for the specified nested artboard",
-                    "name": "nested_artboard",
-                    "types": [
-                        "string"
-                    ]
-                }
-            ],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Replace an asset in runtime.",
-            "examples": "",
-            "name": "rive.riv_swap_asset",
-            "parameters": [
-                {
-                    "doc": "The Rive (.rivc) path. E.g. \"/path/to/file.rivc\"",
-                    "name": "riv_path",
-                    "types": [
-                        "string,hash"
-                    ]
-                },
-                {
-                    "doc": "The name of the FileAsset inside the .riv file",
-                    "name": "asset_name",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "A table of options containing",
-                    "name": "options",
+                    "doc": "Callback invoked for file system events; pass nil to disable.",
+                    "name": "callback",
                     "parameters": [
                         {
-                            "doc": "The path of the asset file to replace with. E.g. \"/path/to/file.png\"",
-                            "name": "path",
+                            "doc": "The calling script instance.",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "One of onFileLoaded, onFileDeleted, onFileError, onArtboardsListed, onViewModelsListed, onViewModelInstanceNamesListed, onViewModelPropertiesListed, onViewModelEnumsListed",
+                            "name": "event",
                             "types": [
                                 "string"
                             ]
                         },
                         {
-                            "doc": "The payload of the asset file to replace with. E.g. a .png binary file. Takes precedence over the `path` option.",
-                            "name": "payload",
+                            "doc": "Additional fields vary by event. Common keys include",
+                            "name": "data",
+                            "parameters": [
+                                {
+                                    "doc": "File handle involved in the event.",
+                                    "name": "file",
+                                    "types": [
+                                        "FileHandle"
+                                    ]
+                                },
+                                {
+                                    "doc": "View model name for the request, when applicable.",
+                                    "name": "viewModelName",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Array of instance name strings.",
+                                    "name": "instanceNames",
+                                    "types": [
+                                        "table"
+                                    ]
+                                },
+                                {
+                                    "doc": "Array of artboard name strings.",
+                                    "name": "artboardNames",
+                                    "types": [
+                                        "table"
+                                    ]
+                                },
+                                {
+                                    "doc": "Array of property metadata tables.",
+                                    "name": "properties",
+                                    "types": [
+                                        "table"
+                                    ]
+                                },
+                                {
+                                    "doc": "Array of enum definitions.",
+                                    "name": "enums",
+                                    "types": [
+                                        "table"
+                                    ]
+                                },
+                                {
+                                    "doc": "Error message when a failure occurs.",
+                                    "name": "error",
+                                    "types": [
+                                        "string"
+                                    ]
+                                }
+                            ],
                             "types": [
-                                "string"
+                                "table"
                             ]
                         }
                     ],
                     "types": [
-                        "table"
+                        "function(self, event, data)",
+                        "nil"
                     ]
                 }
             ],
@@ -494,15 +220,15 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Register a fallback font from a file path. This font will be used if glyphs are missing in the current font. Note that only one font fallback can be active at any time.",
+            "description": "Returns the Rive file handle tied to the component.",
             "examples": "",
-            "name": "rive.set_font_fallback_path",
+            "name": "rive.get_file",
             "parameters": [
                 {
-                    "doc": "The resource path to the font file.",
-                    "name": "path",
+                    "doc": "Component whose file handle to query.",
+                    "name": "url",
                     "types": [
-                        "string"
+                        "url"
                     ]
                 }
             ],
@@ -510,46 +236,23 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Register a fallback font from a memory payload. This font will be used if glyphs are missing in the current font. Note that only one font fallback can be active at any time.",
+            "description": "Switches the active artboard for the component.",
             "examples": "",
-            "name": "rive.set_font_fallback_memory",
+            "name": "rive.set_artboard",
             "parameters": [
                 {
-                    "doc": "The font file contents.",
-                    "name": "payload",
-                    "types": [
-                        "string"
-                    ]
-                }
-            ],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Clear any registered fallback font.",
-            "examples": "",
-            "name": "rive.clear_font_fallback",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Creates a ViewModelInstanceRuntime",
-            "examples": "",
-            "name": "rive.databind.create_view_model_instance_runtime",
-            "parameters": [
-                {
-                    "doc": "The Rive model component",
+                    "doc": "Component using the artboard.",
                     "name": "url",
                     "types": [
                         "url"
                     ]
                 },
                 {
-                    "doc": "The name of the view model to instantiate",
+                    "doc": "Name of the artboard to create and set. Pass nil to create a default artboard.",
                     "name": "name",
                     "types": [
-                        "string, hash"
+                        "string",
+                        "nil"
                     ]
                 }
             ],
@@ -557,58 +260,12 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Releases the previously created ViewModelInstanceRuntime",
+            "description": "Queries the current artboard handle for the component.",
             "examples": "",
-            "name": "rive.databind.destroy_view_model_instance_runtime",
+            "name": "rive.get_artboard",
             "parameters": [
                 {
-                    "doc": "The Rive model component",
-                    "name": "url",
-                    "types": [
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "The handle to the ViewModelInstanceRuntime instance",
-                    "name": "handle",
-                    "types": [
-                        "integer"
-                    ]
-                }
-            ],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Sets the current ViewModelInstanceRuntime",
-            "examples": "",
-            "name": "rive.databind.set_view_model_instance_runtime",
-            "parameters": [
-                {
-                    "doc": "The Rive model component",
-                    "name": "url",
-                    "types": [
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "The handle to the ViewModelInstanceRuntime instance",
-                    "name": "handle",
-                    "types": [
-                        "integer"
-                    ]
-                }
-            ],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Gets the current ViewModelInstanceRuntime",
-            "examples": "",
-            "name": "rive.databind.get_view_model_instance_runtime",
-            "parameters": [
-                {
-                    "doc": "The Rive model component",
+                    "doc": "Component whose artboard handle to return.",
                     "name": "url",
                     "types": [
                         "url"
@@ -619,29 +276,23 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Sets properties to the ViewModelInstanceRuntime instance",
+            "description": "Selects a state machine by name on the component.",
             "examples": "",
-            "name": "rive.databind.set_properties",
+            "name": "rive.set_state_machine",
             "parameters": [
                 {
-                    "doc": "The Rive model component",
+                    "doc": "Component owning the state machine.",
                     "name": "url",
                     "types": [
                         "url"
                     ]
                 },
                 {
-                    "doc": "The handle to the ViewModelInstanceRuntime instance",
-                    "name": "handle",
+                    "doc": "Name of the state machine to create and set. Pass nil to create a default state machine.",
+                    "name": "name",
                     "types": [
-                        "integer"
-                    ]
-                },
-                {
-                    "doc": "A table of properties, where each key is a Rive \"path\", and the values are mapped to the corresponding property value type.",
-                    "name": "properties",
-                    "types": [
-                        "table"
+                        "string",
+                        "nil"
                     ]
                 }
             ],
@@ -649,27 +300,36 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Gets a property from the ViewModelInstanceRuntime instance",
+            "description": "Returns the active state machine handle for the component.",
             "examples": "",
-            "name": "rive.databind.get_property",
+            "name": "rive.get_state_machine",
             "parameters": [
                 {
-                    "doc": "The Rive model component",
+                    "doc": "Component whose active state machine to query.",
+                    "name": "url",
+                    "types": [
+                        "url"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Selects a default view model instance by name.",
+            "examples": "",
+            "name": "rive.set_view_model_instance",
+            "parameters": [
+                {
+                    "doc": "Component owning the view model instance.",
                     "name": "url",
                     "types": [
                         "url"
                     ]
                 },
                 {
-                    "doc": "The handle to the ViewModelInstanceRuntime instance",
-                    "name": "handle",
-                    "types": [
-                        "integer"
-                    ]
-                },
-                {
-                    "doc": "The path to the property",
-                    "name": "path",
+                    "doc": "View model name whose default instance should be activated.",
+                    "name": "name",
                     "types": [
                         "string"
                     ]
@@ -679,92 +339,27 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Add a ViewModelInstanceRuntime instance to a list property",
+            "description": "Returns the handle of the currently bound view model instance.",
             "examples": "",
-            "name": "rive.databind.list_add_instance",
+            "name": "rive.get_view_model_instance",
             "parameters": [
                 {
-                    "doc": "The Rive model component",
+                    "doc": "Component whose view model instance handle to query.",
                     "name": "url",
                     "types": [
                         "url"
-                    ]
-                },
-                {
-                    "doc": "The handle to the ViewModelInstanceRuntime instance",
-                    "name": "handle",
-                    "types": [
-                        "integer"
-                    ]
-                },
-                {
-                    "doc": "The path to the list property",
-                    "name": "path",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "The handle to the ViewModelInstanceRuntime instance to add to the list",
-                    "name": "instance_handle",
-                    "types": [
-                        "integer"
                     ]
                 }
             ],
             "returnvalues": [],
             "type": "FUNCTION"
-        },
-        {
-            "description": "Remove a ViewModelInstanceRuntime instance from a list property",
-            "examples": "",
-            "name": "rive.databind.list_remove_instance",
-            "parameters": [
-                {
-                    "doc": "The Rive model component",
-                    "name": "url",
-                    "types": [
-                        "url"
-                    ]
-                },
-                {
-                    "doc": "The handle to the ViewModelInstanceRuntime instance",
-                    "name": "handle",
-                    "types": [
-                        "integer"
-                    ]
-                },
-                {
-                    "doc": "The path to the list property",
-                    "name": "path",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "The handle to the ViewModelInstanceRuntime instance to add to the list",
-                    "name": "instance_handle",
-                    "types": [
-                        "integer"
-                    ]
-                }
-            ],
-            "returnvalues": [],
-            "type": "FUNCTION"
-        },
-        {
-            "description": "Functions and constants for interacting with Rive data bindings",
-            "examples": "",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "TABLE"
         }
     ],
     "info": {
         "api": "extension-rive/rive_api",
         "api_language": "Lua",
         "brief": "rive",
-        "description": "Functions and constants for interacting with Rive models",
+        "description": "Rive animation helpers exposed to Lua scripts",
         "group": "EXTENSIONS",
         "name": "extension-rive",
         "namespace": "rive",
