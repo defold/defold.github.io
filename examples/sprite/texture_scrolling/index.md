@@ -1,6 +1,6 @@
 ---
 author: Defold Foundation
-brief: This example shows how tint a sprite at run-time
+brief: This example shows how scroll the texture in the runtime using Texture Transform 2D Vertex Attribute, without using the sprite in the world space.
 category: sprite
 layout: example
 opengraph_image: https://www.defold.com/examples/sprite/texture_scrolling/thumbnail.png

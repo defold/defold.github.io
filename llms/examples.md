@@ -134,6 +134,7 @@ These are per-example files generated for LLM usage.
 
 - [Camera](https://defold.com/llms/examples/render/camera.md) - This example shows how to use a camera component and have it follow a game object
 - [Orbit Camera](https://defold.com/llms/examples/render/orbit_camera.md) - This example demonstrates how to create script to control a 3D camera with the mouse
+- [Orthographic Zoom](https://defold.com/llms/examples/render/orthographic_zoom.md) - This example shows how to zoom an orthographic camera in and out by changing Orthographic Zoom while the camera is in Fixed mode
 - [Post-processing](https://defold.com/llms/examples/render/post_processing.md) - This example shows how to apply a post-processing effect by drawing to a render target and then to a fullscreen quad using a post processing shader
 - [Screen to World](https://defold.com/llms/examples/render/screen_to_world.md) - This example shows how to convert from screen to world coordinates while using a camera
 - [World to Screen](https://defold.com/llms/examples/render/world_to_screen.md) - This example demonstrates how to convert 3D world coordinates to 2D screen coordinates using camera transformations
@@ -159,7 +160,7 @@ These are per-example files generated for LLM usage.
 - [Sprite cursor](https://defold.com/llms/examples/sprite/cursor.md) - This example shows how to use the sprite animation cursor and frame count to manually select a specific frame
 - [Sprite size](https://defold.com/llms/examples/sprite/size.md) - This example shows how to get the size of a sprite at run-time
 - [Sprite tint](https://defold.com/llms/examples/sprite/tint.md) - This example shows how tint a sprite at run-time
-- [Texture scrolling](https://defold.com/llms/examples/sprite/texture_scrolling.md) - This example shows how tint a sprite at run-time
+- [Texture scrolling](https://defold.com/llms/examples/sprite/texture_scrolling.md) - This example shows how scroll the texture in the runtime using Texture Transform 2D Vertex Attribute, without using the sprite in the world space
 
 ## Tilemap
 
