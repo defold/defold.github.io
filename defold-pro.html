@@ -1,0 +1,642 @@
+---
+layout: page
+title: Defold Pro
+description: Defold Pro is the completely imaginary premium edition of Defold, featuring Clean Build, a gold-plated editor UI, and a carefully engineered +1 FPS upgrade in game.project.
+nav: floating
+heatmap: false
+background: /images/hero/defold-top-bg-transparent-2.png
+---
+
+<style>
+	#pagecontent:has(.defold-pro-page) {
+		background-image:
+			radial-gradient(circle at top left, rgba(255, 241, 187, 0.34), transparent 34%),
+			radial-gradient(circle at top right, rgba(255, 221, 132, 0.26), transparent 30%),
+			linear-gradient(180deg, rgba(84, 53, 12, 0.42), rgba(20, 12, 4, 0.74)),
+			url("/images/hero/defold-top-bg-transparent-2.png");
+		background-blend-mode: screen, screen, normal, normal;
+	}
+
+	#pagecontent:has(.defold-pro-page) .nav {
+		background: linear-gradient(180deg, rgba(103, 68, 16, 0.72), rgba(43, 27, 6, 0.28));
+		box-shadow: inset 0 -1px 0 rgba(255, 234, 167, 0.28), 0 10px 28px rgba(0, 0, 0, 0.14);
+	}
+
+	#pagecontent:has(.defold-pro-page) .nav a,
+	#pagecontent:has(.defold-pro-page) .nav select {
+		color: #fff6d4;
+		text-shadow: 0 0 20px rgba(255, 223, 124, 0.42);
+	}
+
+	.defold-pro-page {
+		--pro-bg: #1b0f02;
+		--pro-bg-soft: #311a02;
+		--pro-panel: rgba(78, 48, 10, 0.72);
+		--pro-panel-strong: rgba(100, 61, 9, 0.82);
+		--pro-gold-1: #fffbe4;
+		--pro-gold-2: #ffefb4;
+		--pro-gold-3: #ffd56d;
+		--pro-gold-4: #d79625;
+		--pro-line: rgba(255, 233, 158, 0.38);
+		--pro-shadow: 0 24px 60px rgba(0, 0, 0, 0.42);
+		color: #fff9e7;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.defold-pro-page::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(circle at 20% 0%, rgba(255, 247, 199, 0.28), transparent 24%),
+			radial-gradient(circle at 85% 12%, rgba(255, 220, 113, 0.2), transparent 18%),
+			linear-gradient(135deg, rgba(255, 242, 196, 0.1), transparent 45%, rgba(255, 221, 126, 0.1));
+		pointer-events: none;
+	}
+
+	.defold-pro-page .section {
+		position: relative;
+		z-index: 1;
+	}
+
+	.defold-pro-page .defold-pro-hero {
+		padding-top: 2rem;
+		padding-bottom: 2.5rem;
+	}
+
+	.defold-pro-page .card.light,
+	.defold-pro-page .features-section .feature-row-spaced,
+	.defold-pro-page .defold-pro-license-panel {
+		position: relative;
+		background:
+			linear-gradient(180deg, rgba(255, 245, 168, 0.44), rgba(255, 221, 111, 0.28) 14%, rgba(133, 80, 14, 0.9) 100%);
+		border: 1px solid var(--pro-line);
+		box-shadow: var(--pro-shadow), inset 0 1px 0 rgba(255, 248, 193, 0.5), 0 0 34px rgba(255, 214, 96, 0.18);
+		backdrop-filter: blur(6px);
+		background-clip: padding-box;
+		overflow: hidden;
+		isolation: isolate;
+	}
+
+	.defold-pro-page .card.light::before,
+	.defold-pro-page .features-section .feature-row-spaced::before,
+	.defold-pro-page .defold-pro-license-panel::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		background: linear-gradient(180deg, rgba(255, 250, 197, 0.42), rgba(255, 228, 122, 0.2) 18%, rgba(255, 241, 187, 0.08) 30%, transparent 42%);
+		pointer-events: none;
+	}
+
+	.defold-pro-page .defold-pro-hero-panel {
+		max-width: 60rem;
+		margin: 0 auto;
+		padding: 1rem 0 1.5rem;
+		text-align: center;
+		background: transparent;
+		border: 0;
+		box-shadow: none;
+		backdrop-filter: none;
+		overflow: visible;
+		isolation: auto;
+	}
+
+	.defold-pro-page .defold-pro-hero-panel::before {
+		content: none;
+	}
+
+	.defold-pro-page .defold-pro-hero-logo {
+		display: block;
+		margin: 0 auto 1rem;
+		filter: drop-shadow(0 0 28px rgba(255, 220, 120, 0.22));
+	}
+
+	.defold-pro-page .defold-pro-kicker {
+		display: inline-block;
+		padding: 0.35rem 0.9rem;
+		border-radius: 999px;
+		background: linear-gradient(180deg, rgba(255, 251, 223, 0.34), rgba(255, 211, 102, 0.18));
+		border: 1px solid rgba(255, 237, 175, 0.42);
+		color: var(--pro-gold-1);
+		font-size: 0.82rem;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		box-shadow: 0 0 24px rgba(255, 221, 125, 0.24);
+	}
+
+	.defold-pro-page h1,
+	.defold-pro-page h2,
+	.defold-pro-page h3,
+	.defold-pro-page .feature-heading {
+		color: #fff8db;
+		text-shadow: 0 0 24px rgba(255, 223, 124, 0.22);
+	}
+
+	.defold-pro-page h1 {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		font-size: clamp(3rem, 7vw, 5.5rem);
+		line-height: 0.95;
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+	}
+
+	.defold-pro-page .defold-pro-lead {
+		max-width: 50rem;
+		margin-left: auto;
+		margin-right: auto;
+		font-size: 1.2rem;
+		line-height: 1.7;
+		color: #fff3ca;
+	}
+
+	.defold-pro-page .defold-pro-hero-cta {
+		margin-top: 2rem;
+	}
+
+	.defold-pro-page .button.primary,
+	.defold-pro-page .button.secondary {
+		border-radius: 999px;
+		border: 1px solid rgba(255, 238, 177, 0.4);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		font-weight: 700;
+		padding-left: 1.3rem;
+		padding-right: 1.3rem;
+		box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24), 0 0 20px rgba(255, 215, 104, 0.24);
+	}
+
+	.defold-pro-page .button.primary {
+		background: linear-gradient(180deg, #f7d74a, #ac820f 55%, #e99a08);
+		color: #402000;
+	}
+
+	.defold-pro-page .button.secondary {
+		background: linear-gradient(180deg, rgba(255, 247, 211, 0.22), rgba(235, 176, 59, 0.16));
+		color: #fff6d2;
+	}
+
+	.defold-pro-page .button.primary:hover,
+	.defold-pro-page .button.secondary:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28), 0 0 26px rgba(255, 224, 122, 0.34);
+	}
+
+	.defold-pro-page .features-section {
+		background:
+			linear-gradient(180deg, rgba(49, 29, 4, 0.1), rgba(30, 18, 4, 0.28)),
+			radial-gradient(circle at top, rgba(255, 233, 156, 0.14), transparent 48%);
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+
+	.defold-pro-page .features-section .feature-row-spaced {
+		margin-bottom: 2rem;
+		padding: 2rem;
+		border-radius: 22px;
+		display: flex;
+		align-items: center;
+		gap: 2.5rem;
+		overflow: visible;
+	}
+
+	.defold-pro-page .features-section .feature-row-spaced > .column.one-half {
+		float: none;
+		flex: 0 0 calc(50% - 1.25rem);
+		width: calc(50% - 1.25rem);
+		margin-left: 0;
+	}
+
+	.defold-pro-page .features-section .defold-pro-feature-media {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.defold-pro-page .features-section img {
+		filter: drop-shadow(0 22px 35px rgba(0, 0, 0, 0.42));
+	}
+
+	.defold-pro-page .features-section .defold-pro-feature-image {
+		display: block;
+		width: min(118%, 62rem);
+		max-width: none;
+		height: auto;
+		margin: 0 auto;
+		opacity: 1;
+		position: static;
+		left: auto;
+		transform-origin: center center;
+		transform-style: preserve-3d;
+		transition: transform 220ms ease, box-shadow 220ms ease;
+		border-radius: 16px;
+		border: 1px solid rgba(255, 236, 176, 0.34);
+		box-shadow:
+			0 26px 42px rgba(0, 0, 0, 0.44),
+			0 0 32px rgba(255, 220, 117, 0.22),
+			inset 0 1px 0 rgba(255, 248, 220, 0.22);
+		background: linear-gradient(180deg, rgba(255, 250, 225, 0.12), rgba(255, 216, 111, 0.06));
+	}
+
+	.defold-pro-page .features-section .defold-pro-feature-image.slideinleft,
+	.defold-pro-page .features-section .defold-pro-feature-image.slideinright,
+	.defold-pro-page .features-section .defold-pro-feature-image.slideinleft.is-visible,
+	.defold-pro-page .features-section .defold-pro-feature-image.slideinright.is-visible {
+		opacity: 1;
+		position: static;
+		left: auto;
+	}
+
+	.defold-pro-page .features-section .defold-pro-feature-image-right {
+		transform: perspective(1400px) rotateY(-18deg) rotateX(4deg) rotateZ(-1deg);
+	}
+
+	.defold-pro-page .features-section .defold-pro-feature-image-left {
+		transform: perspective(1400px) rotateY(18deg) rotateX(4deg) rotateZ(1deg);
+	}
+
+	.defold-pro-page .features-section .defold-pro-feature-image-right:hover,
+	.defold-pro-page .features-section .defold-pro-feature-image-left:hover {
+		box-shadow:
+			0 30px 46px rgba(0, 0, 0, 0.46),
+			0 0 36px rgba(255, 225, 130, 0.28),
+			inset 0 1px 0 rgba(255, 251, 231, 0.26);
+	}
+
+	.defold-pro-page .features-section .defold-pro-feature-image-right:hover {
+		transform: perspective(1400px) rotateY(-14deg) rotateX(3deg) rotateZ(-0.5deg) translateY(-4px);
+	}
+
+	.defold-pro-page .features-section .defold-pro-feature-image-left:hover {
+		transform: perspective(1400px) rotateY(14deg) rotateX(3deg) rotateZ(0.5deg) translateY(-4px);
+	}
+
+	.defold-pro-page .features-section p,
+	.defold-pro-page .features-section li,
+	.defold-pro-page .defold-pro-main p,
+	.defold-pro-page .defold-pro-main li,
+	.defold-pro-page .defold-pro-main .dark-text,
+	.defold-pro-page .defold-pro-main .light-text {
+		color: #fff2cb;
+	}
+
+	.defold-pro-page .features-section .feature-heading-icon {
+		filter:
+			brightness(0) saturate(100%)
+			invert(88%) sepia(41%) saturate(803%) hue-rotate(348deg) brightness(101%) contrast(102%)
+			drop-shadow(0 0 12px rgba(255, 208, 69, 0.24));
+		opacity: 0.98;
+	}
+
+	.defold-pro-page .defold-pro-main {
+		padding-top: 1rem;
+		padding-bottom: 2rem;
+	}
+
+	.defold-pro-page .defold-pro-main .card.light {
+		padding: 2rem 1.5rem;
+		border-radius: 24px;
+	}
+
+	.defold-pro-page .defold-pro-license-panel {
+		padding: 2rem;
+		border-radius: 28px;
+	}
+
+	.defold-pro-page #golden-editor-guide {
+		display: flex;
+		align-items: stretch;
+		gap: 1.5rem;
+		margin-top: 2.5rem;
+		margin-bottom: 2.5rem;
+	}
+
+	.defold-pro-page #golden-editor-guide > .columns.seven,
+	.defold-pro-page #golden-editor-guide > .columns.five {
+		float: none;
+		flex: 1 1 0;
+		width: auto;
+		min-width: 0;
+		margin-left: 0;
+	}
+
+	.defold-pro-page #golden-editor-guide > .columns.seven .defold-pro-license-panel,
+	.defold-pro-page #golden-editor-guide > .columns.five .defold-pro-license-panel {
+		height: 100%;
+	}
+
+	.defold-pro-page #golden-editor-guide .defold-pro-license-panel h2,
+	.defold-pro-page #golden-editor-guide .defold-pro-license-panel h3 {
+		margin-top: 0.75rem;
+	}
+
+	.defold-pro-page .defold-pro-steps {
+		margin: 1.25rem 0 0;
+		padding-left: 1.4rem;
+	}
+
+	.defold-pro-page .defold-pro-steps li {
+		padding-left: 0.35rem;
+		margin-bottom: 1rem;
+		color: #ffeebd;
+	}
+
+	.defold-pro-page .defold-pro-steps strong {
+		color: #fff7d6;
+	}
+
+	.defold-pro-page .defold-pro-paths {
+		margin: 0.25rem 0 0;
+		padding: 0.6rem 0.8rem;
+		border-radius: 18px;
+		background: linear-gradient(180deg, rgba(255, 248, 218, 0.16), rgba(255, 209, 93, 0.08));
+		border: 1px solid rgba(255, 235, 168, 0.22);
+	}
+
+	.defold-pro-page .defold-pro-paths p {
+		margin-bottom: 0.45rem;
+	}
+
+	.defold-pro-page .defold-pro-paths ul {
+		margin: 0;
+		padding-left: 1.2rem;
+	}
+
+	.defold-pro-page .defold-pro-paths li {
+		overflow-wrap: anywhere;
+	}
+
+	.defold-pro-page .defold-pro-paths code {
+		white-space: normal;
+	}
+
+	.defold-pro-page .defold-pro-download-actions .button {
+		display: inline-block;
+		margin-right: 0.5rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.defold-pro-page .defold-pro-download-file {
+		font-size: 0.95rem;
+		color: #ffefc0;
+	}
+
+	.defold-pro-page .defold-pro-download-file code {
+		font-size: 0.95rem;
+	}
+
+	.defold-pro-page a {
+		color: #fff0b3;
+	}
+
+	.defold-pro-page a:hover {
+		color: #fff8e1;
+	}
+
+	.defold-pro-page code {
+		padding: 0.12rem 0.45rem;
+		border-radius: 999px;
+		background: rgba(255, 234, 156, 0.14);
+		border: 1px solid rgba(255, 239, 181, 0.22);
+		color: #fffaf0;
+	}
+
+	.defold-pro-page .checkmark li {
+		text-shadow: 0 0 14px rgba(255, 212, 79, 0.08);
+	}
+
+	.defold-pro-page ul.checkmark li:before {
+		color: #ffd76a;
+		text-shadow:
+			0 0 10px rgba(255, 213, 85, 0.35),
+			0 0 18px rgba(255, 184, 52, 0.2);
+	}
+
+	.defold-pro-page .defold-pro-note {
+		margin-top: 1%;
+		margin-bottom: 1.5rem;
+		text-align: center;
+		padding: 1.5rem 0 0.5rem;
+	}
+
+	.defold-pro-page .defold-pro-note p {
+		color: #fff3cb;
+	}
+
+	@media (max-width: 860px) {
+		.defold-pro-page .features-section .feature-row-spaced,
+		.defold-pro-page .defold-pro-license-panel {
+			padding: 1.6rem;
+		}
+
+		.defold-pro-page #golden-editor-guide {
+			display: block;
+		}
+
+		.defold-pro-page #golden-editor-guide > .columns.seven,
+		.defold-pro-page #golden-editor-guide > .columns.five {
+			width: 100%;
+		}
+
+		.defold-pro-page #golden-editor-guide > .columns.five {
+			margin-top: 1.5rem;
+		}
+
+		.defold-pro-page .features-section .feature-row-spaced {
+			display: block;
+		}
+
+		.defold-pro-page .features-section .feature-row-spaced > .column.one-half {
+			width: 100%;
+		}
+
+		.defold-pro-page .features-section .defold-pro-feature-media {
+			margin-top: 1.5rem;
+		}
+
+		.defold-pro-page .features-section .defold-pro-feature-image-right,
+		.defold-pro-page .features-section .defold-pro-feature-image-left {
+			transform: none;
+		}
+	}
+</style>
+
+<div class="defold-pro-page">
+	<div class="section narrow defold-pro-hero">
+		<div class="container">
+			<div class="row center">
+				<div class="columns twelve">
+					<div class="defold-pro-hero-panel">
+						<img src="/images/logo/defold/logo/logo-ver-classic-white-160.png" alt="Defold Logo" class="defold-pro-hero-logo" decoding="async"/>
+						<span class="defold-pro-kicker">Special Edition</span>
+						<h1 class="textshadow main-header"><b>Defold Pro</b></h1>
+						<h3>The ultimate game engine reimagination</h3>
+						<p>Meet Defold Pro — the next evolution of the Defold workflow for creators who demand more control, more power, and significantly more premium-looking interface.</p>
+						<p>Unlock the brightest, glossiest, most gloriously premium version of Defold ever imagined.</p>
+						<p class="defold-pro-hero-cta">
+							{% include primary_button.html link="#defold-pro-upgrades" text="UPGRADE NOW" %}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section dark features-section">
+		<div class="container">
+			<div id="defold-pro-upgrades" class="row center">
+				<div class="columns twelve">
+					<h2>Why Defold Pro?</h2>
+					<p>Defold Pro enhances every stage of development with next-generation systems designed to streamline production, optimize team collaboration, and elevate the overall quality of your output. Turn performance insights into a visual experience.</p>
+					<p>Whether you're building your first indie hit or orchestrating a multi-platform production pipeline, Defold Pro delivers a bold new layer of productivity, optimization, and enterprise-grade confidence to your game development process.</p>
+					<p>Prioritize objectives, align milestones, and give every checkbox the gravitas it deserves.</p>
+					<p>Defold Pro is designed for:</p>
+					<ul class="checkmark">
+						<li>ambitious independently thinking studios</li>
+						<li>technical artists with premium visual taste</li>
+						<li>developers who like glossy dashboards</li>
+						<li>teams that appreciate synergy and luxury</li>
+						<li>anyone who has ever said “we need it more premium”</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row feature-row-spaced">
+				<div class="column one-half">
+					<h2 class="feature-heading">
+						<img class="feature-heading-icon" src="/images/icons/ic-32-fire.svg" alt="" aria-hidden="true"/>
+						Build cleaner.
+					</h2>
+					<p>Take control of complex production pipelines with an intelligent orchestration layer that brings clarity, structure, and momentum to every build. Coordinate workflows with confidence and keep your release process moving like a well-tuned machine.</p>
+					<p>Defold Pro introduces <strong>Clean Build</strong>, the first build mode engineered to remove bugs, warnings, stale caches, and unprofessional vibes in one decisive spiritually satisfying pass.</p>
+					<div class="twocolumnlist">
+						<ul class="checkmark">
+							<li>Deletes temporary files and files that are not needed for the build.</li>
+							<li>Converts compiler warnings into reassuring silence.</li>
+							<li>Removes bugs before QA has the chance to name them.</li>
+							<li>Optional Deep Clean mode also clears your entire code base.</li>
+						</ul>
+					</div>
+				</div>
+				<div class="column one-half defold-pro-feature-media">
+					<img src="/images/frontpage/defold-pure-gold.png" alt="Defold Pro Clean Build concept art" class="slideinright defold-pro-feature-image defold-pro-feature-image-right" loading="lazy"/>
+				</div>
+			</div>
+			<div class="row feature-row-spaced">
+				<div class="column one-half defold-pro-feature-media">
+					<img src="/images/frontpage/defold-golden.png" alt="Defold Pro plus one FPS concept art" class="slideinleft defold-pro-feature-image defold-pro-feature-image-left" loading="lazy"/>
+				</div>
+				<div class="column one-half">
+					<h2 class="feature-heading">
+						<img class="feature-heading-icon" src="/images/icons/ic-64-performance-blue.svg" alt="" aria-hidden="true"/>
+						Play faster.
+					</h2>
+					<p>Because performance matters — and bigger numbers look better. Defold Pro unlocks a superior FPS mindset to help your game feel smoother, sharper, and dramatically more advanced.</p>
+					<p>Every Pro unlocks the secret `game.project` setting that adds one extra frame per second. It is a small number, but a deeply premium one.</p>
+					<div class="twocolumnlist">
+						<ul class="checkmark">
+							<li>Add 1 frame per second directly to your game.</li>
+							<li>Make performance graphs look noticeably more optimistic.</li>
+							<li>Help every producer say: "we squeezed out more performance".</li>
+							<li>Benchmarked under ideal conditions.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row feature-row-spaced">
+				<div class="column one-half">
+					<h2 class="feature-heading">
+						<img class="feature-heading-icon" src="/images/icons/ic-32-newest.svg" alt="" aria-hidden="true"/>
+						Develop with style.
+					</h2>
+					<p>Professionals deserve a professional editor theme, and no color communicates paid excellence better than premium brushed gold.</p>
+					<p>Work in style with an elevated interface experience designed to feel exclusive, focused, and undeniably premium. Every panel, button, and workflow surface has been refined to support your most professional moments.</p>
+					<div class="twocolumnlist">
+						<ul class="checkmark">
+							<li>Replaces blue accents with executive gold highlights.</li>
+							<li>Panels gain a subtle luxury shine and glow.</li>
+							<li>Dialogs now feel 12% more essentially decisive.</li>
+							<li>Enables the exclusive density preset for tighter spreadsheets.</li>
+						</ul>
+					</div>
+				</div>
+				<div class="column one-half defold-pro-feature-media">
+					<img src="/images/frontpage/defold-goldui.png" alt="Defold Pro golden UI concept art" class="slideinright defold-pro-feature-image defold-pro-feature-image-right" loading="lazy"/>
+				</div>
+			</div>
+			<div class="row center feature-cta-row">
+				<div class="columns twelve">
+					{% include primary_button.html link="#defold-pro-upgrades" text="SEE ALL PRO UPGRADES" %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section defold-pro-main">
+		<div class="container">
+			<div id="defold-pro-upgrades" class="row center">
+				<div class="columns twelve">
+					<h2>The Pro difference</h2>
+					<p>Select the Defold Pro enhancement that best matches your studio maturity, visual taste, and willingness to believe benchmark numbers.</p>
+				</div>
+			</div>
+
+			<div id="golden-editor-guide" class="row">
+				<div class="columns seven">
+					<div class="defold-pro-license-panel">
+						<h2>How to go Pro?</h2>
+						<p>Serious game development deserves serious-sounding features. Defold was engineered to support a Pro version from ground up - install the custom Editor Creator Studio Suite (Editor CSS), and the editor will load it on startup from your local <code>.defold</code> folder. The royal editor treatment can leave this page and enter your workstation now.</p>
+						<ol class="defold-pro-steps">
+							<li><strong>Download the Editor Creator Studio Suite (Editor CSS).</strong></li>
+							<li><strong>Create your local Defold configuration folder.</strong> Make a folder named <code>.defold</code> in your home directory.
+								<div class="defold-pro-paths">
+									<ul class="checkmark">
+										<li><strong>Windows:</strong> <code>C:\Users\Your Username\.defold</code></li>
+										<li><strong>macOS:</strong> <code>/Users/Your Username/.defold</code></li>
+										<li><strong>Linux:</strong> <code>~/.defold</code></li>
+									</ul>
+								</div>
+							</li>
+							<li><strong>Place the downloaded Editor Creator Studio Suite (Editor CSS) file in that folder.</strong> Make sure it is named <code>editor.css</code> and is inside <code>.defold</code>. If you already have one, back it up first unless you enjoy premium merge conflicts.</li>
+							<li><strong>Start or restart the editor.</strong> Defold will load the Editor Creator Studio Suite and upgrade Defold to Pro on startup.</li>
+							<li><strong>Enjoy the consequences.</strong> The future is now.</li>
+						</ol>
+					</div>
+				</div>
+				<div class="columns five">
+					<div class="defold-pro-license-panel">
+						<h3>Ready to go Pro?</h3>
+						<p>Take your project beyond ordinary development and into a new era of scalable integrity, strategic tooling, and premium interface excellence.</p>
+						<p>The entire professional transformation ships as one astonishingly expensive-looking file.</p>
+						<p>A premium upgrade for developers who demand more.</p>
+						<p class="defold-pro-download-actions">
+							<a class="button primary" href="/images/frontpage/editor.css" download="editor.css">Download Pro</a>
+							<a class="button secondary" href="/manuals/editor-styling">Read Styling Manual</a>
+						</p>
+						<ul class="checkmark">
+							<li>All Pro Defold style</li>
+							<li>All Regular Defold features</li>
+							<li>Premium-grade workflow synergy</li>
+							<li>Export intelligence</li>
+							<li>Premium by design</li>
+							<li>Feel more</li>
+							<li>Become a Pro</li>
+							<li>Maximum Pro</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section defold-pro-main">
+		<div class="container">
+			<div class="row defold-pro-note">
+				<div class="columns twelve">
+					<p>Looking for the regular version of Defold instead? <a href="/download">Download Regular Defold for free</a>.</p>
+					{% include secondary_button.html link="/download" text="Download Regular Defold" %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
