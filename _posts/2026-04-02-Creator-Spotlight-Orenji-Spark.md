@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  From Unity to Defold: How Orenji Spark rebuilt Jane's Fashion Studio for Poki
+title: From Unity to Defold - how Orenji Spark rebuilt Jane's Fashion Studio for Poki
 excerpt: In this Defold Creator Spotlight we invited Iwan from Orenji Spark to talk about rebuilding Jane's Fashion Studio in Defold and what changed when moving from Unity to a web-first workflow.
 author: Paweł Jarosz
 tags: ["creator spotlight", "interview", "madewithdefold", "web", "poki"]
