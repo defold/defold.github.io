@@ -225,7 +225,7 @@
             "members": [],
             "name": "profiler.scope_begin",
             "notes": [
-                "Must be correctly matched with a corresponding call to `profiler.scope_end()`"
+                "Must be correctly matched with a corresponding call to `profiler.scope_end()` in the same frame.\nAny scopes left open at the end of the frame are reported as errors and auto-closed."
             ],
             "parameters": [
                 {
@@ -250,7 +250,9 @@
             "language": "",
             "members": [],
             "name": "profiler.scope_end",
-            "notes": [],
+            "notes": [
+                "Calling this without a matching `profiler.scope_begin()` raises a Lua error."
+            ],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
