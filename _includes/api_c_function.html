@@ -84,6 +84,6 @@
         {%- if forloop.last == true -%}{%- assign template_names = template_names | append: "&gt;&nbsp;" -%}{%- endif -%}
     {%- endfor -%}
 
-    {{ template_names }}{{ returntype }}&nbsp;{{ function.name }}({{ paramlist | join: ", " }})
+    {{ template_names }}{{ returntype }}&nbsp;<span style="color:var(--defold-orange)">{{ function.name }}</span> ({{ paramlist | join: ", " }})
 
 {%- endif -%}

@@ -45,6 +45,6 @@
         {%- if forloop.last == true -%}{%- assign template_names = template_names | append: "&gt;" -%}{%- endif -%}
     {%- endfor -%}
 
-    {{ struct.type | downcase }}&nbsp;{{ struct.name }}{{ template_names }}
+    {{ struct.type | downcase }}&nbsp;<span style="color:var(--defold-orange)">{{ struct.name }}</span>{{ template_names }}
 
 {%- endif -%}

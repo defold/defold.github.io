@@ -53,7 +53,7 @@
 	</tr>
 	{%- for typedef in typedefs -%}
 	<tr>
-		<td><a href="#{% include ref_anchorlink.html element=typedef %}">{{ typedef.name }}</a></td>
+		<td><a href="#{% include ref_anchorlink.html element=typedef %}"><span style="color:var(--defold-orange)">{{ typedef.name }}</span></a></td>
 		<td>{{ typedef.brief }}</td>
 	</tr>
 	{%- endfor -%}
@@ -68,7 +68,7 @@
 	</tr>
 	{%- for constvar in constvars -%}
 	<tr>
-		<td><a href="#{% include ref_anchorlink.html element=constvar %}">{{ constvar.name }}</a></td>
+		<td><a href="#{% include ref_anchorlink.html element=constvar %}"><span style="color:var(--defold-orange)">{{ constvar.name }}</span></a></td>
 		<td>{{ constvar.brief }}</td>
 	</tr>
 	{%- endfor -%}
@@ -83,7 +83,7 @@
 	</tr>
 	{%- for enum in enums -%}
 	<tr>
-		<td><a href="#{% include ref_anchorlink.html element=enum %}">{{ enum.name }}</a></td>
+		<td><a href="#{% include ref_anchorlink.html element=enum %}"><span style="color:var(--defold-orange)">{{ enum.name }}</span></a></td>
 		<td>{{ enum.brief }}</td>
 	</tr>
 	{%- endfor -%}
@@ -98,7 +98,7 @@
 	</tr>
 	{%- for message in messages -%}
 	<tr>
-		<td><a href="#{% include ref_anchorlink.html element=message %}">{{ message.name }}</a></td>
+		<td><a href="#{% include ref_anchorlink.html element=message %}"><span style="color:var(--defold-orange)">{{ message.name }}</span></a></td>
 		<td>{{ message.brief }}</td>
 	</tr>
 	{%- endfor -%}
@@ -113,7 +113,7 @@
 	</tr>
 	{%- for property in properties -%}
 	<tr>
-		<td><a href="#{% include ref_anchorlink.html element=property %}">{{ property.name }}</a></td>
+		<td><a href="#{% include ref_anchorlink.html element=property %}"><span style="color:var(--defold-orange)">{{ property.name }}</span></a></td>
 		<td>{{ property.brief }}</td>
 	</tr>
 	{%- endfor -%}
@@ -159,7 +159,7 @@
 	</tr>
 	{%- for macro in macros -%}
 	<tr>
-		<td><a href="#{% include ref_anchorlink.html element=macro %}">{{ macro.name }}({%- for param in macro.parameters -%}{{ param.name }}{%- if forloop.last != true -%},&nbsp{%- endif -%}{%- endfor -%})</a></td>
+		<td><a href="#{% include ref_anchorlink.html element=macro %}"><span style="color:var(--defold-orange)">{{ macro.name }}</span> ({%- for param in macro.parameters -%}{{ param.name }}{%- if forloop.last != true -%},&nbsp{%- endif -%}{%- endfor -%})</a></td>
 		<td>{{ macro.brief }}</td>
 	</tr>
 	{%- endfor -%}
