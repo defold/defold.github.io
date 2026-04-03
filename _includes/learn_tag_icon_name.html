@@ -1,0 +1,4 @@
+{%- assign tag_slug = include.slug | default: "" | downcase | strip -%}
+{%- assign learn_icon = site.data.learn_tag_icons[tag_slug] -%}
+{%- assign fallback_icon = site.data.asset_tag_icons[tag_slug] | default: site.data.asset_tag_icons.default -%}
+{{- learn_icon | default: fallback_icon -}}

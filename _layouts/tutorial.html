@@ -77,6 +77,21 @@ layout: page_with_learnnav
 				{%- if page.difficulty -%}
 				<p style="margin-top: 0;"><span class="difficulty-tag">{{ page.difficulty }}</span></p>
 				{%- endif -%}
+				{%- if current_tutorial and current_tutorial.tags and current_tutorial.tags.size > 0 -%}
+				<div class="tutorial-tag-panel page-surface-panel">
+					<div class="tutorial-tag-row asset-hub-filter-grid">
+						{%- for tag in current_tutorial.tags -%}
+							{%- assign tag_slug = tag | downcase | strip -%}
+							{%- capture tag_label -%}{% include learn_tag_label.html slug=tag_slug %}{%- endcapture -%}
+							{%- capture tag_icon -%}{% include learn_tag_icon_name.html slug=tag_slug %}{%- endcapture -%}
+							<a class="filter tutorial-tag-chip" href="/tutorials?tag={{ tag_slug }}">
+								{% include site_icon.html name=tag_icon class="asset-hub-filter-icon" %}
+								<span class="asset-hub-filter-text">{{ tag_label | strip }}</span>
+							</a>
+						{%- endfor -%}
+					</div>
+				</div>
+				{%- endif -%}
 				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
 				</div>
 			</div>

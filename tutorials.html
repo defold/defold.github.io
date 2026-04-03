@@ -19,7 +19,7 @@ nav: floating
 <div class="section lightest dark:dark">
 	<div class="container">
 		<div class="page-filter-grid-two-up-tablet" data-learn-tag-catalog>
-			{% include learn_tag_filter.html label="Filter tutorials by topic" result_items="tutorials" exclude_tags="tutorial|android|assets|desktop|html5|ios|linux|macos|team|windows" %}
+			{% include learn_tag_filter.html label="Filter tutorials by topic" result_items="tutorials" exclude_tags="tutorial|android|assets|desktop|html5|ios|linux|macos|team|windows" items=site.data.learnindex.navigation.tutorials %}
 			<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
 				{%- for tutorial in site.data.learnindex.navigation.tutorials -%}
 					{%- assign image=tutorial.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}

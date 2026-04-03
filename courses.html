@@ -19,7 +19,7 @@ nav: floating
 <div class="section lightest dark:dark">
 	<div class="container">
 		<div class="page-filter-grid-two-up-tablet" data-learn-tag-catalog>
-			{% include learn_tag_filter.html label="Filter courses by topic" result_items="courses" %}
+			{% include learn_tag_filter.html label="Filter courses by topic" result_items="courses" items=site.data.learnindex.navigation.courses %}
 			{%- assign authors = site.data.learnindex.navigation.courses | map: "author" | uniq -%}
 			{%- for author in authors -%}
 				{%- assign courses = site.data.learnindex.navigation.courses | where: "author", author -%}

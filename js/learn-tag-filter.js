@@ -115,6 +115,7 @@
 			let selectedTag = "all";
 			let sortOrder = normalize(catalog.dataset.initialSort) || (sortButtons[0]?.dataset.learnSort || "");
 			let requestedTag = "";
+			const hasPreRenderedChips = Boolean(chipRow.querySelector(".learn-tag-chip"));
 
 			try {
 				const params = new URLSearchParams(window.location.search);
@@ -152,6 +153,10 @@
 			};
 
 			const renderChips = () => {
+				if (hasPreRenderedChips) {
+					return;
+				}
+
 				chipRow.innerHTML = "";
 				const allChip = document.createElement("button");
 				allChip.type = "button";

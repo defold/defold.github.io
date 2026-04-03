@@ -9,7 +9,8 @@
 		const normalized = normalize(value);
 		const aliases = {
 			meshcomponent: "mesh",
-			templateprojects: "templates"
+			templateprojects: "template",
+			templates: "template"
 		};
 
 		return aliases[normalized.replace(/\s+/g, "")] || normalized.replace(/\s+/g, "");
