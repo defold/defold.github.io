@@ -1,46 +1,58 @@
 ---
 layout: page
 title: Defold - Official Homepage - Free, small and truly cross platform game engine
+description: Defold is a free, cross-platform game engine for building 2D and 3D games on desktop, web, mobile, and consoles with one streamlined workflow.
 nav: floating
 heatmap: true
 ---
 
-<div class="section narrow lightest-text frontpage-top-banner">
+<div class="section narrow lightest-text frontpage-top-banner page-hero">
 	<div class="container">
-		<img class="frontpage-side-art frontpage-side-art-left" src="/images/frontpage/banner_left.png" alt="" aria-hidden="true" decoding="async"/>
-		<img class="frontpage-side-art frontpage-side-art-right" src="/images/frontpage/banner_right.png" alt="" aria-hidden="true" decoding="async"/>
 		<div class="frontpage-top-banner-content">
-			<div class="row center">
-				<div class="columns twelve">
-					<br/>
-					<img src="/images/logo/defold/logo/logo-ver-classic-white-160.png" alt="Defold Logo" fetchpriority="high" decoding="async"/>
-					<br/>
-					<h1 class="textshadow main-header"><b>UNLEASH YOUR IMAGINATION</b></h1>
-				</div>
+			<div class="frontpage-hero-intro center">
+				<img src="/images/logo/defold/logo/logo-ver-classic-white-160.png" alt="Defold Logo" fetchpriority="high" decoding="async"/>
+				<h1 class="textshadow main-header"><b>UNLEASH YOUR IMAGINATION</b></h1>
 			</div>
-			<div class="row center frontpage-feature-icons">
-				<div class="columns three">
-					<a href="#free-forever"><h4 class="textshadow no-decoration"><b>Free&nbsp;Forever</b></h4></a>
-					<a href="#free-forever"><img src="/images/icons/ic-32-fire.svg" width="40%"/></a>
+				<div class="frontpage-feature-icons">
+					<a href="#free-forever" class="frontpage-feature-pill no-decoration">
+						<span class="frontpage-feature-pill-icon">
+							<img src="/images/icons/ic-32-fire.svg" alt="" aria-hidden="true" decoding="async"/>
+						</span>
+						<span class="frontpage-feature-pill-copy">
+							<span class="frontpage-feature-pill-title textshadow"><b>Free Forever</b></span>
+						</span>
+					</a>
+					<a href="#production-ready" class="frontpage-feature-pill no-decoration">
+						<span class="frontpage-feature-pill-icon">
+							<img src="/images/icons/ic-32-star.svg" alt="" aria-hidden="true" decoding="async"/>
+						</span>
+						<span class="frontpage-feature-pill-copy">
+							<span class="frontpage-feature-pill-title textshadow"><b>Battle Tested</b></span>
+						</span>
+					</a>
+					<a href="#cross-platform" class="frontpage-feature-pill no-decoration">
+						<span class="frontpage-feature-pill-icon">
+							<img src="/images/icons/ic-32-newest.svg" alt="" aria-hidden="true" decoding="async"/>
+						</span>
+						<span class="frontpage-feature-pill-copy">
+							<span class="frontpage-feature-pill-title textshadow"><b>Cross Platform</b></span>
+						</span>
+					</a>
+					<a href="#custom-configuration" class="frontpage-feature-pill no-decoration">
+						<span class="frontpage-feature-pill-icon">
+							<img src="/images/icons/ic-32-magglass.svg" alt="" aria-hidden="true" decoding="async"/>
+						</span>
+						<span class="frontpage-feature-pill-copy">
+							<span class="frontpage-feature-pill-title textshadow"><b>Source Available</b></span>
+						</span>
+					</a>
 				</div>
-				<div class="columns three">
-					<a href="#production-ready"><h4 class="textshadow no-decoration"><b>Battle&nbsp;Tested</b></h4></a>
-					<a href="#production-ready"><img src="/images/icons/ic-32-star.svg" width="40%"/></a>
-				</div>
-				<div class="columns three">
-					<a href="#cross-platform"><h4 class="textshadow no-decoration"><b>Cross&nbsp;Platform</b></h4></a>
-					<a href="#cross-platform"><img src="/images/icons/ic-32-newest.svg" width="40%"/></a>
-				</div>
-				<div class="columns three">
-					<a href="/open"><h4 class="textshadow no-decoration"><b>Source&nbsp;Available</b></h4></a>
-					<a href="/open"><img src="/images/icons/ic-32-magglass.svg" width="40%"/></a>
-				</div>
-			</div>
-			<div class="row center frontpage-top-banner-cta frontpage-top-download-cta">
-				<div class="columns twelve">
+			<div class="frontpage-top-banner-cta frontpage-top-download-cta">
+				<div class="frontpage-top-banner-actions">
 					{% include primary_button.html link="/download" text="DOWNLOAD NOW" %}
 				</div>
 			</div>
+			{% include showcase_carousel.html label="Games made with Defold" source_location="frontpage_hero" card_click_source="frontpage_banner" more_button_source="frontpage_more_button" %}
 		</div>
 	</div>
 </div>
@@ -68,68 +80,12 @@ heatmap: true
 
 {% include features_section.html %}
 
-{%- assign showcase_games = site.data.games | where: "showcase", "full" -%}
-{%- assign featured_first_id = site.data.showcase_featured_full | first -%}
-{%- assign fallback_game = showcase_games | where: "id", featured_first_id | first -%}
-{%- unless fallback_game -%}
-{%- assign fallback_game = showcase_games.first -%}
-{%- endunless -%}
-<div class="section dark unpadded frontpage-showcase-section">
-	<div class="container">
-		<div class="row center">
-			<div class="columns twelve">
-				<h2 class="frontpage-section-heading textshadow">Made with Defold</h2>
-			</div>
-		</div>
-		<div id="frontpage-showcase-carousel" class="frontpage-showcase-carousel game" aria-label="Showcase games carousel">
-			{%- if fallback_game -%}
-			<a href="/showcase" class="frontpage-showcase-slide game-banner-link active" data-game-id="{{ fallback_game.id }}" aria-label="{{ fallback_game.name }}">
-				<img src="/images/games/{{ fallback_game.images.full }}" alt="{{ fallback_game.name }}" loading="lazy" decoding="async"/>
-			</a>
-			{%- endif -%}
-			<div id="game-carousel-dots" class="game-carousel-dots frontpage-showcase-dots" aria-label="Game carousel pagination"></div>
-		</div>
-		<div class="row center frontpage-more-games-section">
-			<div class="columns twelve">
-				<div id="frontpage-more-games-button">
-					{% include primary_button.html link="/showcase" text="More games made with Defold" %}
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<script>
-	window.frontpageGames = {% include games_json.html placement="showcase" %};
-	window.frontpageFeaturedGameIds = {{ site.data.showcase_featured_full | jsonify }};
-	window.frontpageCarouselConfig = {
-		maxGames: 10,
-		intervalMs: 10000
-	};
-</script>
-<script src="/js/frontpage-carousel.js" defer></script>
+{% include learn_section.html %}
 
 {% include news_and_blog_section.html %}
 
-{% include learn_section.html %}
+{% include newsletter_section.html %}
 
-<div class="section hero center blackwhite" style='background-image: url("/images/hero/grey-patchwork.svg");'>
-	<div class="container">
-		<div class="row">
-			<div>
-				<img src="/images/game-art-center.png" alt="Art from various Defold games" loading="lazy"/>
-				<br/>
-				<br/>
-				<h2>Ready to create something awesome?</h2>
-				<br/>
-				{% include primary_button.html link="/download" text="Download for free" %}
-				<br/>
-				<br/>
-			</div>
-		</div>
-	</div>
-</div>
+{% include download_cta_section.html %}
 
 {% include donors_and_partners.html %}
-
-<script src="/js/transition.js"></script>

@@ -1,10 +1,9 @@
 ---
-layout: page
+layout: page_with_learnnav
 ---
 <!-- Pagefind metadata and filters for manuals -->
 <div style="display: none;" data-pagefind-filter="section">Manuals</div>
 <div style="display: none;" data-pagefind-meta="section">Manuals</div>
-{% include learnnav.html showmenu=true %}
 
 {%- assign page_locale = page.locale | default: "en" -%}
 {%- assign locale_info = site.data.localeindex | where: "locale", page_locale | first -%}
@@ -77,7 +76,7 @@ layout: page
 					<p>This translation is community contributed and may not be up to date. We only maintain the English version of the documentation. <a href="{{ page.url | replace: urlprefix, "/" }}">Read this manual in English</a></p>
 				</div>
 				{%- endif -%}
-				<div data-pagefind-body>
+				<div class="content-flow" data-pagefind-body>
 					{% include anchor_headings.html html=content anchorClass="anchor-link" %}
 				</div>
 			</div>

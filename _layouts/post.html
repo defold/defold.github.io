@@ -16,12 +16,12 @@ layout: page
 				{%- endif -%}
 				<h1 data-pagefind-weight="6">{{ page.title }}</h1>
 				<p><i>By {{ page.author }} on {{ page.date | date: "%b %d, %Y" }}</i></p>
-				<p>Tagged as:&nbsp;{%- for tag in page.tags -%}<a href="/blog#{{ tag }}">{{ tag | capitalize}}</a>{%-unless forloop.last -%},&nbsp;{%- endunless -%}{%- endfor -%}</p>
+				<p>Tagged as:&nbsp;{%- for tag in page.tags -%}<a href="/blog?tag={{ tag | slugify }}">{{ tag | capitalize}}</a>{%-unless forloop.last -%},&nbsp;{%- endunless -%}{%- endfor -%}</p>
 			</div>
 			<div class="columns two"><br/></div>
 		</div>
 		<div class="row">
-			<div class="columns ten post" data-pagefind-body>
+			<div class="columns ten post content-flow" data-pagefind-body>
 				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
 			</div>
 			<div class="columns two"><br/></div>

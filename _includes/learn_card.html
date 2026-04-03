@@ -1,22 +1,28 @@
-<div class='card left compact clickable'>
-<div class="center" style="padding-bottom: 1em;">
-{%- if include.image != "" -%}
-<a href="{{ include.link }}">
-    {% assign image_extension = include.image | split:'.' | last %}
-    {%- if image_extension == "svg" -%}
-        <span class="icon">{% include_relative {{include.image}} %}</span>
-    {%- else -%}
-        <img src="{{ include.image }}" style="max-height:8em;border-radius:4px;"/>
-    {%- endif -%}
-</a>
-{%- endif -%}
-</div>
-<div>
-<a href="{{ include.link }}"><h4>{{ include.title }}</h4></a>
-{%- if include.author -%}<p style="font-size: small">by {{ include.author }}</p>{%- endif -%}
-{%- if include.difficulty -%}
-<p><span class="difficulty-tag">{{ include.difficulty }}</span></p>
-{%- endif -%}
-<a href="{{ include.link }}"><p style="font-size: small">{{ include.description }}</p></a>
-</div>
-</div>
+{%- assign learn_tags = include.tags | join: "|" -%}
+{%- assign learn_description_preview = include.description | strip_newlines | strip -%}
+{%- assign learn_description_limit = include.description_limit | default: 0 | plus: 0 -%}
+<article class="asset{% if include.class %} {{ include.class }}{% endif %}" data-learn-tag-item="true" data-learn-title="{{ include.title | escape }}" data-learn-author="{{ include.author | default: '' | escape }}" data-learn-tags="{{ learn_tags | escape }}">
+	<a class="page-feature-card page-feature-card-no-badge asset-card-link" href="{{ include.link }}">
+		{%- if include.image != "" -%}
+		<span class="page-feature-card-media asset-card-media" aria-hidden="true">
+			<img src="{{ include.image }}" alt="" loading="lazy"/>
+		</span>
+		{%- endif -%}
+		<span class="page-feature-card-copy asset-card-copy">
+			<span class="asset-card-header">
+				<span class="asset-card-title-group">
+					<h3 class="asset-card-title">{{ include.title }}</h3>
+					{%- if include.author -%}
+					<span class="asset-card-tags">By {{ include.author }}</span>
+					{%- endif -%}
+				</span>
+				{%- if include.difficulty -%}
+				<span class="asset-card-stars">
+					<span>{{ include.difficulty }}</span>
+				</span>
+				{%- endif -%}
+			</span>
+			<p class="asset-card-description">{%- if learn_description_limit > 0 and learn_description_preview.size > learn_description_limit -%}{{ learn_description_preview | slice: 0, learn_description_limit }}...{%- else -%}{{ learn_description_preview }}{%- endif -%}</p>
+		</span>
+	</a>
+</article>

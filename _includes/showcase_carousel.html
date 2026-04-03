@@ -1,0 +1,97 @@
+{%- assign showcase_placement = include.placement | default: "showcase" -%}
+{%- assign showcase_games = site.data.games | where: showcase_placement, "full" -%}
+{%- assign initial_showcase_limit = include.initial_limit | default: 4 -%}
+{%- assign rendered_initial_count = 0 -%}
+{%- assign rendered_initial_ids = "|" -%}
+{%- assign carousel_label = include.label | default: "Made with Defold" -%}
+{%- assign carousel_action_link = include.action_link -%}
+{%- assign carousel_action_text = include.action_text -%}
+{%- assign carousel_source_location = include.source_location | default: "frontpage_hero" -%}
+{%- assign carousel_card_click_source = include.card_click_source | default: "frontpage_banner" -%}
+{%- assign carousel_more_button_source = include.more_button_source | default: "frontpage_more_button" -%}
+
+<div class="frontpage-hero-showcase{% if include.wrapper_class %} {{ include.wrapper_class }}{% endif %}">
+	<div class="frontpage-hero-showcase-header">
+		<div class="frontpage-hero-showcase-copy">
+			<p class="asset-hub-filter-label">{{ carousel_label }}</p>
+		</div>
+		{%- if carousel_action_link and carousel_action_text -%}
+		<div class="frontpage-hero-showcase-action">
+			{% include secondary_button.html link=carousel_action_link text=carousel_action_text target=include.action_target %}
+		</div>
+		{%- endif -%}
+	</div>
+	<div id="frontpage-showcase-carousel" class="frontpage-showcase-carousel {% if include.carousel_class %}{{ include.carousel_class }}{% else %}frontpage-hero-carousel{% endif %} game" aria-label="{{ include.aria_label | default: 'Showcase games carousel' }}">
+		<div class="frontpage-showcase-viewport">
+			<div class="frontpage-showcase-track">
+				<div class="frontpage-showcase-page">
+					{%- for game_id in site.data.showcase_featured_full -%}
+						{%- if rendered_initial_count < initial_showcase_limit -%}
+							{%- assign game_marker = "|" | append: game_id | append: "|" -%}
+							{%- unless rendered_initial_ids contains game_marker -%}
+								{%- assign game = showcase_games | where: "id", game_id | first -%}
+								{%- if game -%}
+									<a href="/showcase" class="frontpage-showcase-card game-banner-link" data-game-id="{{ game.id }}" aria-label="{{ game.name }}">
+										<span class="frontpage-showcase-card-media">
+											<img
+												src="/images/games/{{ game.images.third }}"
+												srcset="/images/games/{{ game.images.third }} 800w, /images/games/{{ game.images.half }} 1200w, /images/games/{{ game.images.full }} 2000w"
+												sizes="(min-width: 1200px) 22vw, (min-width: 800px) 30vw, (min-width: 560px) 45vw, 92vw"
+												alt="{{ game.name }}"
+												loading="{% if rendered_initial_count < 2 %}eager{% else %}lazy{% endif %}"
+												{% if rendered_initial_count == 0 %}fetchpriority="high"{% endif %}
+												decoding="async"
+											/>
+										</span>
+										<span class="frontpage-showcase-card-copy">
+											<span class="frontpage-showcase-card-title">{{ game.name }}</span>
+											<span class="frontpage-showcase-card-meta">By {{ game.developer }}</span>
+										</span>
+									</a>
+									{%- assign rendered_initial_count = rendered_initial_count | plus: 1 -%}
+									{%- assign rendered_initial_ids = rendered_initial_ids | append: game.id | append: "|" -%}
+								{%- endif -%}
+							{%- endunless -%}
+						{%- endif -%}
+					{%- endfor -%}
+					{%- if rendered_initial_count == 0 -%}
+						{%- for game in showcase_games limit: initial_showcase_limit -%}
+							<a href="/showcase" class="frontpage-showcase-card game-banner-link" data-game-id="{{ game.id }}" aria-label="{{ game.name }}">
+								<span class="frontpage-showcase-card-media">
+									<img
+										src="/images/games/{{ game.images.third }}"
+										srcset="/images/games/{{ game.images.third }} 800w, /images/games/{{ game.images.half }} 1200w, /images/games/{{ game.images.full }} 2000w"
+										sizes="(min-width: 1200px) 22vw, (min-width: 800px) 30vw, (min-width: 560px) 45vw, 92vw"
+										alt="{{ game.name }}"
+										loading="{% if forloop.index0 < 2 %}eager{% else %}lazy{% endif %}"
+										{% if forloop.first %}fetchpriority="high"{% endif %}
+										decoding="async"
+									/>
+								</span>
+								<span class="frontpage-showcase-card-copy">
+									<span class="frontpage-showcase-card-title">{{ game.name }}</span>
+									<span class="frontpage-showcase-card-meta">By {{ game.developer }}</span>
+								</span>
+							</a>
+						{%- endfor -%}
+					{%- endif -%}
+				</div>
+			</div>
+		</div>
+		<div id="game-carousel-dots" class="game-carousel-dots frontpage-showcase-dots" aria-label="Game carousel pagination"></div>
+	</div>
+</div>
+
+<script>
+	window.frontpageGames = {% include games_json.html placement=showcase_placement %};
+	window.frontpageFeaturedGameIds = {{ site.data.showcase_featured_full | jsonify }};
+	window.frontpageCarouselConfig = {
+		maxGames: {{ include.max_games | default: 12 }},
+		scrollSpeedPxPerSec: {{ include.scroll_speed | default: 18.8 }},
+		snapStrength: {{ include.snap_strength | default: 9 }},
+		sourceLocation: {{ carousel_source_location | jsonify }},
+		cardClickSourceLocation: {{ carousel_card_click_source | jsonify }},
+		moreButtonSourceLocation: {{ carousel_more_button_source | jsonify }}
+	};
+</script>
+<script src="/js/frontpage-carousel.js" defer></script>

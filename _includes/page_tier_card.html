@@ -1,0 +1,28 @@
+{%- if include.link and include.link != "" -%}
+<a class="page-tier-card page-surface-panel{% if include.tier_class %} {{ include.tier_class }}{% endif %}" href="{{ include.link }}"{% if include.scroll_target %} data-scroll-target="{{ include.scroll_target }}"{% endif %}>
+{%- else -%}
+<article class="page-tier-card page-surface-panel{% if include.tier_class %} {{ include.tier_class }}{% endif %}">
+{%- endif -%}
+	{%- if include.eyebrow and include.eyebrow != "" -%}
+	<p class="page-tier-card-eyebrow">{{ include.eyebrow }}</p>
+	{%- endif -%}
+	<h3>{{ include.title }}</h3>
+	{%- if include.price and include.price != "" -%}
+	<p class="page-tier-card-price">{{ include.price }}</p>
+	{%- endif -%}
+	{%- if include.subprice and include.subprice != "" -%}
+	<p class="page-tier-card-subprice">{{ include.subprice }}</p>
+	{%- endif -%}
+	{%- if include.summary and include.summary != "" -%}
+	<p class="page-tier-card-summary">{{ include.summary }}</p>
+	{%- endif -%}
+	{%- if include.items and include.items != "" -%}
+	<ul class="page-tier-card-list">
+		{{ include.items }}
+	</ul>
+	{%- endif -%}
+{%- if include.link and include.link != "" -%}
+</a>
+{%- else -%}
+</article>
+{%- endif -%}

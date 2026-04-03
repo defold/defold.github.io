@@ -1,17 +1,16 @@
 ---
-layout: page
+layout: page_with_learnnav_dark
 ---
 <!-- Pagefind metadata and filters for examples -->
 <div style="display: none;" data-pagefind-filter="section">Examples</div>
 <div style="display: none;" data-pagefind-meta="section">Examples</div>
-{% include learnnav.html showmenu=true %}
 
-<div class="section lightest dark:dark">
+<div class="section lightest dark:dark example-layout-shell">
 	<div class="container">
 		<div class="row">
 			<div class="columns two">
 				{% assign all_categories = site.data.examplesindex | map: "category" | uniq | sort %}
-				<div class="sidemenu">
+				<div class="sidemenu example-sidebar-panel page-surface-panel page-text-panel">
 				{% for category in all_categories %}
 					{%- assign examples = site.data.examplesindex | where: "category", category -%}
 					{%- assign checked = "" -%}
@@ -31,8 +30,8 @@ layout: page
 					</ul>
 				{% endfor %}
 				</div>
-				<div class="dropdownmenu">
-					<select class="dropdownmenu" onchange="location = this.value;">
+				<div class="dropdownmenu example-sidebar-mobile page-surface-panel page-text-panel">
+					<select class="dropdownmenu example-sidebar-select" onchange="location = this.value;">
 					{% for category in all_categories %}
 						<option value="">{{ category | capitalize }}</option>
 						{% assign examples = site.data.examplesindex | where: "category", category %}
@@ -43,7 +42,7 @@ layout: page
 					</select>
 				</div>
 			</div>
-			<div class="columns eight example" data-pagefind-body style="">
+			<div class="columns eight example content-flow" data-pagefind-body style="">
 				<h4>{{ page.title }}</h4>
 				<div id="app-container" class="canvas-app-container" style="display:none">
 					<div id="canvas-container" class="canvas-app-canvas-container"></div>
@@ -83,16 +82,18 @@ layout: page
 				{% endfor %}
 			</div>
 			<div class="columns two">
-				<p>This example was created by {{ page.author }}.</p>
-				{% assign zip_name = page.path | replace: "/", "_" | append: ".zip" %}
-				{% assign zip_url = "https://www.github.com/defold/examples/releases/latest/download/" | append: zip_name %}
+				<div class="example-sidebar-panel example-sidebar-actions page-surface-panel page-text-panel">
+					<p>This example was created by {{ page.author }}.</p>
+					{% assign zip_name = page.path | replace: "/", "_" | append: ".zip" %}
+					{% assign zip_url = "https://www.github.com/defold/examples/releases/latest/download/" | append: zip_name %}
 
-				{% include primary_button.html text="DOWNLOAD" link=zip_url %}
-				<p>&nbsp;</p>
-				<p>
-					Do you want to see more examples? Why not write a few yourself and submit a pull request? We love contributions.
-				</p>
-				{% include primary_button.html text="GITHUB" link="https://github.com/defold/examples" %}
+					{% include primary_button.html text="DOWNLOAD" link=zip_url %}
+					<p>&nbsp;</p>
+					<p>
+						Do you want to see more examples? Why not write a few yourself and submit a pull request? We love contributions.
+					</p>
+					{% include primary_button.html text="GITHUB" link="https://github.com/defold/examples" %}
+				</div>
 			</div>
 		</div>
 	</div>

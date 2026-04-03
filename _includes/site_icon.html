@@ -1,0 +1,8 @@
+{%- assign icon_name = include.name | default: "tag" -%}
+{%- assign icon_color = include.color | default: "currentColor" -%}
+{%- assign icon_zoom = include.zoom | default: "1" -%}
+{%- assign icon_label = include.label | default: "" -%}
+{%- capture icon_path -%}octicons/{{ icon_name }}.svg{%- endcapture -%}
+<span class="site-icon{% if include.class %} {{ include.class }}{% endif %}"{% if icon_label.size > 0 %} role="img" aria-label="{{ icon_label }}"{% else %} aria-hidden="true"{% endif %}>
+	{% include octicon.html icon=icon_path color=icon_color zoom=icon_zoom %}
+</span>

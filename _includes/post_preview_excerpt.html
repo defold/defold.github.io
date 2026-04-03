@@ -1,13 +1,16 @@
-<p>
-{%- if include.title_link -%}
-<b><a href="{{ include.post.url }}">{{ include.post.title }}</a></b><br/>
-{%- else -%}
-<b>{{ include.post.title }}</b><br/>
-{%- endif -%}
-<small>Published on {{ include.post.date | date: "%b %d, %Y" }}</small><br/>
-{%- if include.title_link -%}
-{{ include.post.excerpt }}
-{%- else -%}
-{{ include.post.excerpt }} - <a href="{{ include.post.url }}">READ</a>
-{%- endif -%}
-</p>
+<article class="page-post-preview{% if include.linked_card %} page-post-preview-linked-card{% endif %}">
+	{%- if include.linked_card -%}
+	<h4 class="page-post-preview-title">{{ include.post.title }}</h4>
+	{%- elsif include.title_link -%}
+	<h4 class="page-post-preview-title"><a href="{{ include.post.url }}">{{ include.post.title }}</a></h4>
+	{%- else -%}
+	<h4 class="page-post-preview-title">{{ include.post.title }}</h4>
+	{%- endif -%}
+	<p class="page-post-preview-meta">{% if include.date_only %}{{ include.post.date | date: "%b %d, %Y" }}{% else %}Published on {{ include.post.date | date: "%b %d, %Y" }}{% endif %}</p>
+	<div class="page-post-preview-excerpt">
+		{{ include.post.excerpt }}
+	</div>
+	{%- unless include.title_link or include.linked_card -%}
+	<p class="page-post-preview-action"><a href="{{ include.post.url }}">Read more</a></p>
+	{%- endunless -%}
+</article>

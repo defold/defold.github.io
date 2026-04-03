@@ -1,31 +1,18 @@
-<div class="blue">
-<div class="section hero dark:darken-10" style="background-image: url('/images/BG-stripes-left.svg')">
-<div class="container">
-<div class="row center">
-<h1>Learn Defold</h1>
-<br/>
-</div>
-<div class="row">
-<div class="columns twelve">
-<div class="grid-250">
-{% include card.html title="Getting Started" body="Start here for a guided path through the Defold editor, core concepts, and first practical steps." link="/learn" icon="/images/icons/icons-learn-export_ic-learn-documents.svg" %}
-
-{% include card.html title="Tutorials" body="Our tutorials section is the perfect starting point if you are new to Defold game development." link="/tutorials/getting-started" icon="/images/icons/icons-learn-export_ic-learn-tutorials.svg" %}
-
-{% include card.html title="Videos" body="Learn Defold by watching practical walkthroughs, feature deep-dives, and creator tutorials." link="/videos" icon="/images/icons/icons-yt.svg" %}
-
-{% include card.html title="Manuals" body="In-depth manuals provide understanding on how the Defold engine and its APIs work." link="/manuals/introduction" icon="/images/icons/icons-learn-export_ic-learn-manuals.svg" %}
-
-{% include card.html title="Examples" body="A selection of small and discrete code samples, examples and snippets to learn from." link="/examples" icon="/images/icons/icons-learn-export_ic-learn-lego.svg" %}
-
-{% include card.html title="Courses" body="Follow structured, guided learning paths from beginner concepts to complete game projects." link="/courses" icon="/images/icons/icons-learn-export_ic-learn-toolbox.svg" %}
-
-{% include card.html title="Forum" body="Stuck? Not for long! Talk to the Defold team and our fantastic developer community." link="https://forum.defold.com" icon="/images/icons/icons-learn-export_ic-learn-forum.svg" %}
-
-{% include card.html title="API Reference" body="Reference documentation to all Defold Lua and C++ extension APIs.<br/><br/>" link="/ref/go" icon="/images/icons/icons-learn-export_ic-learn-apiref.svg" %}
-</div>
-</div>
-</div>
-</div>
-</div>
+<div class="section dark page-dark-section gradient-background-top-dark frontpage-learn-section">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Learn Defold</h2>
+			<p>New here? Start with a guided route suited to you, get a project running quickly, then continue through tutorials, manuals, courses, videos, examples, and community help without dead ends.</p>
+		</div>
+		<div class="page-feature-grid page-grid-four page-grid-flush">
+			{% include page_feature_card.html title="Start Here" body="This is a dedicated introduction to Defold." link="/learn" icon="/images/icons/icons-learn-export_ic-learn-documents.svg" card_class="page-feature-card-manuals" %}
+			{% include page_feature_card.html title="Tutorials" body="Start with practical tutorials that take you from first project to working game features." link="/tutorials/getting-started/" icon="/images/icons/icons-learn-export_ic-learn-tutorials.svg" card_class="page-feature-card-tutorials" %}
+			{% include page_feature_card.html title="Videos" body="Learn by watching walkthroughs, feature deep-dives, and creator tutorials." link="/videos" icon="/images/icons/icons-yt.svg" card_class="page-feature-card-youtube" %}
+			{% include page_feature_card.html title="Manuals" body="Build a solid mental model of the editor, engine systems, and APIs." link="/manuals/introduction" icon="/images/icons/icons-learn-export_ic-learn-manuals.svg" card_class="page-feature-card-manuals" %}
+			{% include page_feature_card.html title="Examples" body="Browse focused code samples, small projects, and reusable snippets." link="/examples" icon="/images/icons/icons-learn-export_ic-learn-lego.svg" card_class="page-feature-card-examples" %}
+			{% include page_feature_card.html title="Courses" body="Follow structured learning paths from beginner concepts to complete projects." link="/courses" icon="/images/icons/icons-learn-export_ic-learn-toolbox.svg" card_class="page-feature-card-courses" %}
+			{% include page_feature_card.html title="Forum" body="Ask questions, get unstuck, and learn with help from the Defold team and community. ↗" link="https://forum.defold.com" icon="/images/icons/icons-learn-export_ic-learn-forum.svg" card_class="page-feature-card-forum" target="_blank" %}
+			{% include page_feature_card.html title="API" body="Look up Defold Lua and native extension APIs when you need exact details." link="/ref/go" icon="/images/icons/icons-learn-export_ic-learn-apiref.svg" card_class="page-feature-card-reference" %}
+		</div>
+	</div>
 </div>

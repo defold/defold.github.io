@@ -1,7 +1,6 @@
 ---
-layout: page
+layout: page_with_learnnav
 ---
-{% include learnnav.html showmenu=true %}
 
 {%- assign page_locale = page.locale | default: "en" -%}
 {%- assign locale_info = site.data.localeindex | where: "locale", page_locale | first -%}
@@ -10,7 +9,7 @@ layout: page
 <div class="section lightest dark:dark">
 	<div class="container">
 		<div class="row">
-			<div class="columns ten faq">
+			<div class="columns ten faq content-flow">
 				{%- if page_locale != "en" -%}
 				{%- capture urlprefix -%}/{{ locale_info.urlprefix }}/{%- endcapture -%}
 				<p><a href="{{ page.url | replace: urlprefix, "/" }}">Read this FAQ in English</a></p>

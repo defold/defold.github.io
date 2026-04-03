@@ -1,39 +1,47 @@
-<div class="nav {% if include.style == "floating" %}lightest-text {% else %}dark dark:darkest{% endif %}">
-	<div class="container" style="padding-top: 1.2rem;">
-		<div class="row">
-			<div class="twelve columns">
-				<div style="float: left">
-					<a href="/" class="sidemenu"><img src="/images/logo/defold/logo/logo-ver-outline-white-64.png" height="32px" alt="Defold logo"/></a>
-				</div>
-				<div style="float: left; padding-left: 20px; padding-top: 0.5rem; padding-bottom: 1.7rem;">
-					<ul class="sidemenu">
-						<li><a href="/product">Features</a></li>
-						<li><a href="/showcase">Showcase</a></li>
-						<li><a href="/learn">Learn</a></li>
-						<li><a href="/assets">Assets</a></li>
-						<li><a href="//forum.defold.com">Community</a></li>
-						<li><a href="/support">Support</a></li>
-					</ul>
-					<select class="dropdownmenu dark-text" onchange="location = this.value;">
-						<option value="/">Home</option>
-						<option value="/product" {% if page.url contains 'product' %}selected{% endif %}>Features</option>
-						<option value="/showcase" {% if page.url contains 'showcase' %}selected{% endif %}>Showcase</option>
-						<option value="/learn" {% if page.url contains 'learn' %}selected{% endif %}>Learn</option>
-						<option value="/assets" {% if page.url contains 'assets' %}selected{% endif %}>Asset Portal</option>
-						<option value="//forum.defold.com">Community</option>
-						<option value="/support" {% if page.url contains 'support' %}selected{% endif %}>Support</option>
-						<option value="/open" {% if page.url contains 'open' %}selected{% endif %}>Open&nbsp;Source</option>
-						<option value="/download" {% if page.url contains 'download' %}selected{% endif %}>Download</option>
-						<option value="/donate" {% if page.url contains 'donate' %}selected{% endif %}>Donate ♡</option>
-					</select>
-				</div>
-				<div class="right" style="float: right; padding-top: 0.5rem;">
-					<ul class="sidemenu">
-						<li><a href="/open">Open&nbsp;Source</a></li>
-						<li><a href="/download">Download</a></li>
-						<li><a href="/donate">Donate ♡</a></li>
-					</ul>
-				</div>
+<div class="nav {% if include.style == "floating" %}nav-floating lightest-text {% else %}nav-solid dark dark:darkest{% endif %}">
+	<div class="container">
+		<div class="topnav-shell">
+			<a href="/" class="topnav-brand" aria-label="Defold home">
+				<img class="topnav-brand-image" src="/images/logo/defold/logo/logo-ver-outline-white-64.png" alt="Defold logo"/>
+			</a>
+
+			<nav class="topnav-main-links" aria-label="Primary">
+				<ul>
+					<li><a href="/product">Features</a></li>
+					<li><a href="/showcase">Showcase</a></li>
+					<li><a href="/learn">Learn</a></li>
+					<li><a href="/assets">Assets</a></li>
+					<li><a href="/community">Community</a></li>
+					<li><a href="/support">Support</a></li>
+				</ul>
+			</nav>
+
+			<div class="topnav-actions" aria-label="Quick links">
+				<ul>
+					<li><a href="/open">Open&nbsp;Source</a></li>
+					<li><a href="/download">Download</a></li>
+					<li><a href="/donate" class="nav-donate-link">Donate&nbsp;&nbsp;<span class="nav-donate-heart" aria-hidden="true">❤️</span></a></li>
+				</ul>
+			</div>
+
+			<div class="topnav-mobile">
+				<details class="topnav-mobile-menu">
+					<summary class="topnav-mobile-trigger">
+						<span class="topnav-mobile-trigger-label">DEFOLD</span>
+					</summary>
+					<div class="topnav-mobile-panel">
+						<a href="/" class="topnav-mobile-link{% if page.url == '/' %} active{% endif %}">Home</a>
+						<a href="/product" class="topnav-mobile-link{% if page.url contains 'product' %} active{% endif %}">Features</a>
+						<a href="/showcase" class="topnav-mobile-link{% if page.url contains 'showcase' %} active{% endif %}">Showcase</a>
+						<a href="/learn" class="topnav-mobile-link{% if page.url contains 'learn' %} active{% endif %}">Learn</a>
+						<a href="/assets" class="topnav-mobile-link{% if page.url contains 'assets' %} active{% endif %}">Asset Portal</a>
+						<a href="/community" class="topnav-mobile-link{% if page.url contains 'community' %} active{% endif %}">Community</a>
+						<a href="/support" class="topnav-mobile-link{% if page.url contains 'support' %} active{% endif %}">Support</a>
+						<a href="/open" class="topnav-mobile-link{% if page.url contains 'open' %} active{% endif %}">Open Source</a>
+						<a href="/download" class="topnav-mobile-link{% if page.url contains 'download' %} active{% endif %}">Download</a>
+						<a href="/donate" class="topnav-mobile-link topnav-mobile-link-donate{% if page.url contains 'donate' %} active{% endif %}">Donate&nbsp;&nbsp;<span class="nav-donate-heart" aria-hidden="true">❤️</span></a>
+					</div>
+				</details>
 			</div>
 		</div>
 	</div>

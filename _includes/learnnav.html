@@ -1,44 +1,53 @@
-<div class="nav learn light dark:darkest">
+<div class="nav learn {% if include.theme == 'dark' %}learn-nav-dark{% else %}light dark:darkest{% endif %}">
 	<div class="container">
-		<div class="row">
-			<div class="nine columns">
-				{%- if include.showmenu -%}
-				<ul class="sidemenu">
-					<li><a href="/examples" class="{% if page.url contains 'examples' %}bold{% endif %}">Examples </a></li>
-					<li><a href="/videos" class="{% if page.url contains 'videos' %}bold{% endif %}">Videos</a></li>
-					<li><a href="/tutorials" class="{% if page.url contains 'tutorials' %}bold{% endif %}">Tutorials</a></li>
-					<li><a href="/manuals/introduction" class="{% if page.url contains 'manuals' %}bold{% endif %}">Manuals</a></li>
-					<li><a href="/courses" class="{% if page.url contains 'courses' %}bold{% endif %}">Courses</a></li>
-					<li><a href="/ref/stable/go" class="{% if page.url contains 'ref' %}bold{% endif %}">API Reference</a></li>
-					<li><a href="/faq/faq" class="{% if page.url contains 'faq' %}bold{% endif %}">FAQ</a></li>
-					<li><a href="/codepad/" class="{% if page.url contains 'codepad' %}bold{% endif %}">Codepad</a></li>
-				</ul>
-				<select class="dropdownmenu" onchange="location = this.value;">
-					<option value="/examples" {% if page.url contains 'examples' %}selected{% endif %}>Examples</option>
-					<option value="/videos" {% if page.url contains 'videos' %}selected{% endif %}>Videos</option>
-					<option value="/tutorials" {% if page.url contains 'tutorials' %}selected{% endif %}>Tutorials</option>
-					<option value="/manuals/introduction" {% if page.url contains 'manuals' %}selected{% endif %}>Manuals</option>
-					<option value="/courses" {% if page.url contains 'courses' %}selected{% endif %}>Courses</option>
-					<option value="/ref/stable/go" {% if page.url contains 'ref' %}selected{% endif %}>API Reference</option>
-					<option value="/faq/faq" {% if page.url contains 'faq' %}selected{% endif %}>FAQ</option>
-					<option value="/codepad" {% if page.url contains 'codepad' %}selected{% endif %}>Codepad</option>
-				</select>
-				<div class="right dropdownmenu compact">
-					<form action="/search">
-						<input id="search" name="q" type="text" placeholder="Search..."/>
-					</form>
+		<div class="learnnav-desktop">
+			<div class="row">
+				<div class="nine columns">
+					{%- if include.showmenu -%}
+					<ul class="sidemenu">
+						<li><a href="/examples" class="{% if page.url contains 'examples' %}bold{% endif %}">Examples </a></li>
+						<li><a href="/videos" class="{% if page.url contains 'videos' %}bold{% endif %}">Videos</a></li>
+						<li><a href="/tutorials" class="{% if page.url contains 'tutorials' %}bold{% endif %}">Tutorials</a></li>
+						<li><a href="/courses" class="{% if page.url contains 'courses' %}bold{% endif %}">Courses</a></li>
+						<li><a href="/manuals/introduction" class="{% if page.url contains 'manuals' %}bold{% endif %}">Manuals</a></li>
+						<li><a href="/faq/faq" class="{% if page.url contains 'faq' %}bold{% endif %}">FAQ</a></li>
+						<li><a href="/ref/stable/go" class="{% if page.url contains 'ref' %}bold{% endif %}">API ↗</a></li>
+						<li><a href="/codepad/" class="{% if page.url contains 'codepad' %}bold{% endif %}">Codepad ↗</a></li>
+					</ul>
+					{%- else -%}
+					<br/>
+					{%- endif -%}
 				</div>
-				{%- else -%}
-				<br/>
-				{%- endif -%}
-			</div>
-			<div class="three columns">
-				<div class="right sidemenu compact">
-					<form action="/search">
-						<input id="search" name="q" type="text" placeholder="Search..."/>
-					</form>
+				<div class="three columns">
+					<div class="right sidemenu compact">
+						<form action="/search">
+							<input name="q" type="text" placeholder="Search..."/>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
+		{%- if include.showmenu -%}
+		<div class="learnnav-mobile">
+			<details class="topnav-mobile-menu">
+				<summary class="topnav-mobile-trigger">
+					<span class="topnav-mobile-trigger-label">LEARN</span>
+				</summary>
+				<div class="topnav-mobile-panel">
+					<a href="/examples" class="topnav-mobile-link{% if page.url contains 'examples' %} active{% endif %}">Examples</a>
+					<a href="/videos" class="topnav-mobile-link{% if page.url contains 'videos' %} active{% endif %}">Videos</a>
+					<a href="/tutorials" class="topnav-mobile-link{% if page.url contains 'tutorials' %} active{% endif %}">Tutorials</a>
+					<a href="/courses" class="topnav-mobile-link{% if page.url contains 'courses' %} active{% endif %}">Courses</a>
+					<a href="/manuals/introduction" class="topnav-mobile-link{% if page.url contains 'manuals' %} active{% endif %}">Manuals</a>
+					<a href="/faq/faq" class="topnav-mobile-link{% if page.url contains 'faq' %} active{% endif %}">FAQ</a>
+					<a href="/ref/stable/go" class="topnav-mobile-link{% if page.url contains 'ref' %} active{% endif %}">API ↗</a>
+					<a href="/codepad/" class="topnav-mobile-link{% if page.url contains 'codepad' %} active{% endif %}">Codepad ↗</a>
+					<form action="/search" class="learnnav-mobile-search">
+						<input name="q" type="text" placeholder="Search..."/>
+					</form>
+				</div>
+			</details>
+		</div>
+		{%- endif -%}
 	</div>
 </div>

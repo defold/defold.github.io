@@ -15,6 +15,7 @@
 	{% include head.html %}
 
 	<script>
+		document.documentElement.classList.add('js');
 		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 			document.documentElement.classList.add('dark-mode');
 		} else {
@@ -25,5 +26,6 @@
 <body>
 {%- include googletagmanager_body.html -%}
 {{ content }}
+<script src="/js/transition.js" defer></script>
 </body>
 </html>

@@ -8,12 +8,13 @@
 {%- else -%}
 	{%- assign zoom = 1 -%}
 {%- endif -%}
+{%- assign octicon_text = include.text | default: "" -%}
 {% if include.link.size > 0 -%}
 <a href="{{ include.link }}" target="{{ include.target }}">
 {%- endif -%}
 <span class="octicon" style="fill: {{ color }}; zoom: {{ zoom }}; vertical-align: middle;">
 	{% include {{include.icon}} %}
-</span>&nbsp;{{ include.text }}
+</span>{% if octicon_text.size > 0 %}&nbsp;{{ octicon_text }}{% endif %}
 {% if include.link.size > 0 -%}
 </a>
 {%- endif -%}

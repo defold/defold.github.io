@@ -1,0 +1,17 @@
+<article class="page-route-card download-platform-card page-surface-panel{% if include.card_class %} {{ include.card_class }}{% endif %}">
+	<span class="page-route-card-icon download-platform-card-icon" aria-hidden="true">
+		<img src="{{ include.icon }}" alt="">
+	</span>
+	<div class="page-route-card-copy">
+		{%- if include.label and include.label != "" -%}
+		<p class="download-platform-card-label">{{ include.label }}</p>
+		{%- endif -%}
+		<h3>{{ include.title }}</h3>
+		<p>{{ include.body }}</p>
+		{%- if include.actions and include.actions != "" -%}
+		<div class="download-option-stack download-platform-card-actions">
+			{{ include.actions }}
+		</div>
+		{%- endif -%}
+	</div>
+</article>
