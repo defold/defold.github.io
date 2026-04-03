@@ -2290,13 +2290,17 @@ a.page-tier-card:focus-visible {
 
 .page-action-card-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 1rem;
 	margin-top: clamp(1.8rem, 2.8vw, 2.4rem);
 }
 
 .asset-detail-main {
 	padding-top: clamp(0.2rem, 0.4vw, 0.5rem);
+}
+
+.asset-copy-button {
+	min-height: 3.5rem;
 }
 
 .asset-detail-summary {
@@ -4312,6 +4316,10 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 }
 
 @media (max-width: 700px) {
+	.page-action-card-grid {
+		grid-template-columns: 1fr;
+	}
+
 	.page-feature-grid,
 	.community-hub-grid {
 		grid-template-columns: 1fr;

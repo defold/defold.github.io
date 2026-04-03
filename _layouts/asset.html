@@ -17,16 +17,25 @@ layout: page
 {%- endif -%}
 {%- assign primary_link = "" -%}
 {%- assign primary_link_text = "" -%}
+{%- assign primary_link_icon = "browser" -%}
+{%- assign primary_link_description = "Open the main destination for this asset." -%}
 {%- assign learn_more_link = "" -%}
+{%- assign latest_release_link = "" -%}
 {%- if asset.github_url.size > 0 -%}
 	{%- assign primary_link = asset.github_url -%}
 	{%- assign primary_link_text = "View repository" -%}
+	{%- assign primary_link_icon = "logo-github" -%}
+	{%- assign primary_link_description = "Browse the source repository, read the README, and inspect the release history." -%}
 {%- elsif asset.project_url.size > 0 -%}
 	{%- assign primary_link = asset.project_url -%}
 	{%- assign primary_link_text = "Open project page" -%}
+	{%- assign primary_link_icon = "browser" -%}
+	{%- assign primary_link_description = "Open the main project page for documentation, examples, or installation notes." -%}
 {%- elsif asset.website_url.size > 0 -%}
 	{%- assign primary_link = asset.website_url -%}
 	{%- assign primary_link_text = "Open website" -%}
+	{%- assign primary_link_icon = "browser" -%}
+	{%- assign primary_link_description = "Open the asset website for documentation, examples, or additional details." -%}
 {%- endif -%}
 {%- if asset.website_url.size > 0 -%}
 	{%- assign learn_more_link = asset.website_url -%}
@@ -34,6 +43,26 @@ layout: page
 	{%- assign learn_more_link = asset.project_url -%}
 {%- elsif asset.github_url.size > 0 -%}
 	{%- assign learn_more_link = asset.github_url -%}
+{%- endif -%}
+{%- if asset.latest_release_url.size > 0 -%}
+	{%- assign latest_release_link = asset.latest_release_url -%}
+{%- elsif asset.release_tags.size > 0 -%}
+	{%- assign latest_release_tag = asset.release_tags | first -%}
+	{%- assign latest_release_link = latest_release_tag.zip | default: "" -%}
+{%- elsif asset.releases.size > 0 -%}
+	{%- assign latest_release = asset.releases | first -%}
+	{%- assign latest_release_link = latest_release.zip | default: "" -%}
+{%- elsif asset.library_url.size > 0 -%}
+	{%- assign latest_release_link = asset.library_url -%}
+{%- endif -%}
+{%- assign show_primary_link_card = false -%}
+{%- assign same_primary_and_learn_more = false -%}
+{%- if primary_link.size > 0 -%}
+	{%- assign show_primary_link_card = true -%}
+	{%- if primary_link == learn_more_link -%}
+		{%- assign same_primary_and_learn_more = true -%}
+		{%- assign show_primary_link_card = false -%}
+	{%- endif -%}
 {%- endif -%}
 
 <div class="section dark page-dark-section gradient-background-top-dark">
@@ -43,9 +72,16 @@ layout: page
 				<img src="{{ thumb_base }}{{ thumb }}" alt="{{ asset.name }} thumbnail" loading="eager"/>
 			</div>
 
-			{%- if primary_link.size > 0 -%}
+			{%- if latest_release_link.size > 0 -%}
 			<div class="page-detail-actions page-button-grid">
-				<a class="button primary" href="{{ primary_link }}" target="_blank" rel="noopener">{{ primary_link_text }}</a>
+				<button
+					type="button"
+					class="button primary asset-copy-button"
+					data-copy-text="{{ latest_release_link | escape_once }}"
+					data-default-label="Copy latest version URL"
+					data-copied-label="Copied latest version URL">
+					Copy latest version URL
+				</button>
 			</div>
 			{%- endif -%}
 
@@ -54,14 +90,35 @@ layout: page
 				<p class="asset-detail-summary">{%- if asset.description_long.size > 0 -%}{{ asset.description_long }}{%- else -%}{{ asset.description }}{%- endif -%}</p>
 
 				<div class="page-action-card-grid">
+					{%- if show_primary_link_card -%}
+					<a class="page-route-card asset-detail-action-card" href="{{ primary_link }}" target="_blank" rel="noopener">
+						<span class="page-route-card-icon" aria-hidden="true">
+							{% include site_icon.html name=primary_link_icon %}
+						</span>
+						<span class="page-route-card-copy">
+							<h3>{{ primary_link_text }}</h3>
+							<p>{{ primary_link_description }}</p>
+						</span>
+					</a>
+					{%- endif -%}
+
 					{%- if learn_more_link.size > 0 -%}
 					<a class="page-route-card asset-detail-action-card" href="{{ learn_more_link }}" target="_blank" rel="noopener">
 						<span class="page-route-card-icon" aria-hidden="true">
+							{% if same_primary_and_learn_more %}
+							{% include site_icon.html name=primary_link_icon %}
+							{% else %}
 							{% include site_icon.html name="book" %}
+							{% endif %}
 						</span>
 						<span class="page-route-card-copy">
+							{% if same_primary_and_learn_more %}
+							<h3>{{ primary_link_text }}</h3>
+							<p>{{ primary_link_description }}</p>
+							{% else %}
 							<h3>Learn more</h3>
 							<p>Open the project page, website, or additional documentation for this asset.</p>
+							{% endif %}
 						</span>
 					</a>
 					{%- endif -%}
@@ -106,10 +163,10 @@ layout: page
 						<td valign="top">Platforms</td>
 						<td valign="top">{{ asset.platforms | join: "<br/>" }}</td>
 					</tr>
-					{%- if asset.library_url.size > 0 -%}
+					{%- if latest_release_link.size > 0 or asset.library_url.size > 0 -%}
 					<tr>
 						<td valign="top">Library</td>
-						<td valign="top"><a href="{{ asset.library_url }}" target="_blank" rel="noopener">Latest zip</a></td>
+						<td valign="top"><a href="{{ latest_release_link | default: asset.library_url }}" target="_blank" rel="noopener">Latest zip</a></td>
 					</tr>
 					{%- endif -%}
 					<tr>
@@ -139,3 +196,4 @@ layout: page
 		</div>
 	</div>
 </div>
+<script src="/js/asset-detail.js"></script>
