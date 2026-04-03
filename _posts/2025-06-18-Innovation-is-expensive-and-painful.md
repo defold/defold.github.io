@@ -3,7 +3,7 @@ layout: post
 title:  Innovation is expensive and painful. Start with copying a decent bike.
 excerpt: Piece of Cake Merge & Bake is one of the most successful games in the Merge 2 genre. Joined by our friends from Playgama, we talked with Rustam Batyrkhanov, founder of HG Point - the great minds behind the game. Read on to learn about failed projects, get free insights on the web dev market and find out who really brings the big bucks to Activision Blizzard.
 author: Björn Ritzl
-tags: ["creator spotlight", "interview", "Playgama", "HG Point"]
+tags: ["creator spotlight", "interview", "Playgama", "HG Point", "html5", "pc", "mobile"]
 ---
 
 ## Rustam Bayrkhanov, HG Point: ‘Innovation is expensive and painful. Start with copying a decent bike’

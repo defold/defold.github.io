@@ -3,7 +3,7 @@ layout: post
 title:  Defold Newsletter 45
 excerpt: Here's another packed newsletter with games, exciting news and the latest stable release notes.
 author: Björn Ritzl
-tags: ["newsletter"]
+tags: ["newsletter", "html5", "mobile"]
 ---
 
 Hello, Defolder! 👋

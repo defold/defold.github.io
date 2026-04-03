@@ -3,7 +3,7 @@ layout: post
 title:  Working with public and private repos
 excerpt: We'll explain a bit about how we maintain both a public and private repositories while complying with non disclosure agreements from several different vendors.
 author: Mathias Westerdahl
-tags: ["code", "engine", "repos", "github", "consoles"]
+tags: ["code", "engine", "repos", "github", "consoles", "pc", "mobile"]
 ---
 
 ## Defold and the many platforms

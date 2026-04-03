@@ -3,7 +3,7 @@ layout: post
 title:  Defold user feedback survey follow-up
 excerpt: In this blog post we follow-up on the results of the 2023 user survey.
 author: Björn Ritzl
-tags: ["survey"]
+tags: ["survey", "steam", "pc", "shaders"]
 ---
 
 Almost exactly one year ago we sent out a Defold user feedback survey where we asked our users three questions:

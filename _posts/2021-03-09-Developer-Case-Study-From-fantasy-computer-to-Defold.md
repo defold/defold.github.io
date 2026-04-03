@@ -3,7 +3,7 @@ layout: post
 title:  Developer case study - From fantasy computer to Defold
 excerpt: In this developer case study we'll take a look at how Brasilian game developer Jeferson R. Silva ported a game from TIC-80 to Defold.
 author: Björn Ritzl
-tags: ["developer case study", "interview"]
+tags: ["developer case study", "interview", "consoles", "steam", "pc", "shaders"]
 ---
 
 The world of 8-bit computers and consoles is almost as alive today as it was back when sales of the ZX Spectrum, C64, NES and Atari 800 peaked 30 years ago. Proof of this can be seen in the sale of "mini" versions of the original computers and consoles ([C64 Mini](https://retrogames.biz/thec64-mini), [NES Classic](https://www.nintendo.com/nes-classic/) etc), in the creation of new "8-bit" systems such as the [MEGA-65](https://mega65.org/) and in the many fantasy computer systems and console such as the [TIC-80](https://tic80.com/) and [PICO-8](https://www.lexaloffle.com/pico-8.php).

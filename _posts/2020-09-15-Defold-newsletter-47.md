@@ -3,7 +3,7 @@ layout: post
 title:  Defold Newsletter 47
 excerpt: Here's another packed newsletter with games, exciting news and the latest release notes.
 author: Björn Ritzl
-tags: ["newsletter"]
+tags: ["newsletter", "consoles", "nintendoswitch", "steam", "pc", "mobile"]
 ---
 
 ## Games

@@ -3,7 +3,7 @@ layout: post
 title:  Lightning VFX
 excerpt: Learn how to create a lightning vfx in Defold
 author: MasterMind
-tags: ["shaders", "code", "tutorial"]
+tags: ["shaders", "code", "tutorial", "html5"]
 ---
 
 In this guest post Defold user MasterMind shares how to create a lightning vfx in Defold. The content was originally [posted on the Defold forum](https://forum.defold.com/t/lightning-vfx-how-its-was-made/76270).

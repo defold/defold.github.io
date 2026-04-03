@@ -3,7 +3,7 @@ layout: post
 title:  Releasing HTML5 games on Yandex.Games
 excerpt: In this blog post we'll look at how to release Defold games on Yandex.Games using the Yandex.Games SDK.
 author: Björn Ritzl
-tags: ["tutorial", "yandex", "html5"]
+tags: ["tutorial", "yandex", "html5", "pc"]
 ---
 
 [Yandex.Games](https://yandex.com/games/) is a catalog of browser-based online games that can be played on smartphones or desktop devices and require no installation. Most games are also available offline (code for these games is added to the device cache during the first gaming session).
