@@ -1,6 +1,6 @@
 ---
 layout: assetportal
 tag: templateprojects
-title: Template projects
+title: Templates
 sort: timestamp
 ---
