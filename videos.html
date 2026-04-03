@@ -1,42 +1,42 @@
 ---
-layout: page
+layout: page_with_learnnav
 title: Defold videos
+description: Watch Defold video tutorials, feature walkthroughs, and learning resources that complement the written manuals and tutorials.
 nav: floating
 ---
 
-<div class="section hero center blackwhite dark:darken-10" style='background-image: url("/images/hero/testimonials-background-0.5x.png");'>
-	<div class="container">
-		<div class="row">
-			<div class="column one-half left">
-				<h1>Learn by watching!</h1>
-				<p>The Defold video tutorials are a great starting point if you are a visual learner.</p>
-			</div>
-		</div>
-	</div>
-</div>
+{%- capture page_hero_copy -%}
+<p>The Defold video tutorials are a strong starting point if you prefer to learn by watching workflows unfold step by step.</p>
+<p>Use them for walkthroughs, feature deep-dives, and creator explanations that complement the written tutorials and manuals.</p>
+{%- endcapture -%}
 
-{% include learnnav.html showmenu=true %}
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/icons-yt.svg" alt="Defold videos icon" loading="eager">
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="learn-hub-hero learn-catalog-hero" title="Videos" copy=page_hero_copy panel=page_hero_panel aria_label="Defold videos overview" %}
 
 <div class="section lightest dark:dark">
 	<div class="container">
-		<div class="row">
-			<div class="columns full">
-				<h2>Videos</h2>
-			</div>
-		</div>
-		{%- assign authors = site.data.learnindex.navigation.videos | map: "author" | uniq -%}
-		{%- for author in authors -%}
-			{%- assign videos = site.data.learnindex.navigation.videos | where: "author", author -%}
-			<h3>{{ author }}</h3>
-			<div class="grid-250">
-			{%- for video in videos -%}
-				{% include youtube_card_lazy.html title=video.name description=video.description embed=video.embed link=video.path author=video.author min-height="250px" image="/images/icons/yt_icon_rgb.svg" %}
+		<div class="page-filter-grid-two-up-tablet" data-learn-tag-catalog>
+			{% include learn_tag_filter.html label="Filter videos by topic" %}
+			{%- assign authors = site.data.learnindex.navigation.videos | map: "author" | uniq -%}
+			{%- for author in authors -%}
+				{%- assign videos = site.data.learnindex.navigation.videos | where: "author", author -%}
+				<section class="page-card-group learn-tag-group" data-learn-tag-group>
+					<div class="page-card-group-heading">
+						<h3>{{ author }}</h3>
+					</div>
+					<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
+					{%- for video in videos -%}
+						{% include learn_video_card.html title=video.name description=video.description embed=video.embed link=video.path author=video.author tags=video.tags %}
+					{%- endfor -%}
+					</div>
+				</section>
 			{%- endfor -%}
-			</div>
-		{%- endfor -%}
+		</div>
 	</div>
 </div>
 
 {% include learn_section.html %}
-
-<script src="/js/youtube-lazy.js"></script>
+<script src="/js/learn-tag-filter.js"></script>

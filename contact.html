@@ -1,0 +1,81 @@
+---
+layout: page
+title: Contact Defold
+description: We look forward to hearing from you. Reach out for support, source code questions, press and business inquiries, or foundation matters, and follow Defold in social media for updates.
+nav: floating
+---
+
+{%- capture page_hero_copy -%}
+<p>We look forward to hearing from you. Reach out if you need help getting started with Defold, have a source code question, or want to discuss press, business, or foundation matters.</p>
+<p>You can also follow Defold in social media for updates and ongoing community activity.</p>
+{%- endcapture -%}
+
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/icon-envelope.svg" alt="Defold contact illustration" loading="eager">
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="contact-hub-hero" title="Contact Defold" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Contact routes overview" %}
+
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-section-heading" id="press-business">
+			<h2>Choose the right contact path</h2>
+			<p>Use the route that matches your question so you reach the right team or community channel quickly.</p>
+		</div>
+		<div class="page-feature-grid page-grid-four page-grid-flush">
+			<article class="page-text-feature-item">
+				<h3>Press and business inquiries</h3>
+				<p>Contact the Defold team directly for press questions, interviews, partnership discussions, or broader business conversations.</p>
+				<div class="page-text-panel-actions">
+					{% include primary_button.html link="mailto:business@defold.se" text="business@defold.se ↗" %}
+					{% include secondary_button.html link="mailto:press@defold.se" text="press@defold.se ↗" %}
+				</div>
+			</article>
+
+			<article class="page-text-feature-item" id="open-source">
+				<h3>Source code</h3>
+				<p>For open development, engine internals, and repository-related questions, use the dedicated source code channels.</p>
+				<div class="page-text-panel-actions">
+					{% include primary_button.html link="mailto:sourcecode@defold.se" text="sourcecode@defold.se ↗" %}
+					{% include secondary_button.html link="https://forum.defold.com/c/source-code" text="Open forum category ↗" target="_blank" %}
+				</div>
+			</article>
+
+			<article class="page-text-feature-item">
+				<h3>Defold Foundation</h3>
+				<p>For foundation background, board details, partnership context, and official ownership information, use the Foundation page.</p>
+				<div class="page-text-panel-actions">
+					{% include primary_button.html link="/foundation" text="Learn about Foundation" %}
+				</div>
+			</article>
+
+			<article class="page-text-feature-item" id="support">
+				<h3>Support</h3>
+				<p>If you are stuck, need guidance, or want help from the Defold team and community, start with the support channels below.</p>
+				<div class="page-text-panel-actions">
+					{% include primary_button.html link="/support" text="Get support" %}
+				</div>
+			</article>
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-bottom-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Follow Defold</h2>
+			<p>Use these channels for release news, event updates, and day-to-day signals from the Defold ecosystem.</p>
+		</div>
+		<div class="page-feature-grid">
+			{% include page_feature_card.html title="X" body="Follow Defold on X. ↗" link="https://x.com/defold" icon="/images/icons/icon-x.svg" card_class="page-feature-card-x" target="_blank" rel="noopener" %}
+			{% include page_feature_card.html title="Bluesky" body="Follow Defold on BlueSky. ↗" link="https://bsky.app/profile/defold.com" icon="/images/icons/icon-bsky.svg" card_class="page-feature-card-bsky" target="_blank" rel="noopener" %}
+			{% include page_feature_card.html title="Mastodon" body="Follow Defold on Mastodon. ↗" link="https://mastodon.gamedev.place/@defold" icon="/images/icons/icon-mastodon.svg" card_class="page-feature-card-mastodon" target="_blank" rel="me noopener" %}
+			{% include page_feature_card.html title="LinkedIn" body="Follow Defold on LinkedIn. ↗" link="https://www.linkedin.com/company/defold-foundation" icon="/images/icons/icon-linkedin.svg" card_class="page-feature-card-linkedin" target="_blank" rel="noopener" %}
+			{% include page_feature_card.html title="YouTube" body="Subscribe to our channel. ↗" link="https://www.youtube.com/channel/UCrEYXG15n3V0Y8eK0RbCaLQ" icon="/images/icons/icons-yt.svg" card_class="page-feature-card-youtube" target="_blank" rel="noopener" %}
+			{% include page_feature_card.html title="Steam" body="Add Defold to friends list. ↗" link="https://steamcommunity.com/id/defoldengine" icon="/images/icons/icon-steam.svg" card_class="page-feature-card-steam" target="_blank" rel="noopener" %}
+		</div>
+	</div>
+</div>
+
+{% include newsletter_section.html title="Sign up for News!" body="We occasionally send product updates, game releases, and tips and tricks for building with Defold. The emails are optional, sent sparingly, and you can opt out at any time." %}
+{% include donors_and_partners.html %}

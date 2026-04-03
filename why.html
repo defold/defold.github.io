@@ -1,76 +1,190 @@
 ---
-layout: hero_and_text
+layout: page
 title: Why Defold?
-description: We have spent a lot of time and effort making sure that certain key elements of the game development process are as smooth and effortless as possible and we believe it makes Defold stand out from the crowd.
+description: We have spent a lot of time and effort making sure that certain key elements of the game development process are as smooth and effortless as possible, and we believe it makes Defold stand out from the crowd.
 nav: floating
-logo: true
-text: false
 heatmap: false
-background: /images/hero/defold-top-bg-transparent-2.png
-after: [yellow_download_section.html, donors_and_partners.html]
 ---
 
-<div class="row">
-	<h2>Why use Defold and not some other engine?</h2>
 
-	<p>We get this question from time to time and while it may seem like a simple question it is not really a question that can be answered without elaborating a bit on the design philosophy of Defold. Great games are created using many different engines by teams, large and small, all over the world, so why use Defold and not some other more well known engine?</p>
+{%- capture page_hero_copy -%}
+<p>Defold is not trying to win by having the longest feature list. The goal is to make key parts of game development smooth, predictable, and efficient for the teams actually building games.</p>
+<p>This is the philosophy behind the engine, and it is the reason many developers choose Defold over larger or more famous alternatives.</p>
+{%- endcapture -%}
 
-	<div class="center">
-		<img src="/images/game-art-center.png"/>
-	</div>
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/ic-32-magglass-blue.svg" alt="Why Defold game engine?"/>
+{%- endcapture -%}
 
-	<p>Most game engines have impressive and very long lists of supported features (<a href="/product">we do too!</a>) and on a feature by feature comparison you will probably find other game engines with more features than Defold. What you won't be able to tell from a list of game engine features is the effort it takes to create games using an engine and the actual day to day struggles of game developers using the engine.</p>
+{% include page_hub_hero.html hero_class="asset-hub-hero" title="Why Defold?" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Determine whether Defold is the right engine for your game" %}
 
-	<h5 class="center"><i>"What are the day to day struggles of game developers?"</i></h5>
-
-	<p>We know that making games is more than picking the engine with the longest list of features and we have spent a lot of time and effort into making sure that certain key elements of the game development process are as smooth and effortless as possible. We believe it makes Defold stand out from the crowd:</p>
-
-	<h4>Truly cross-platform</h4>
-	<p>Supporting multiple platforms can be a real pain, especially if you need to have a lot of branching code and exceptions to deal with the different platforms. With Defold this is a non issue. You create your game once, and can without making any changes export to all supported platforms: Windows, Linux, macOS, Android, iOS, HTML5, Nintendo Switch, PlayStation®4 and PlayStation®5. You should never have to care about which platform your game is running on. The Defold APIs work across all platforms and you do not have to worry about typical platform specific things such as file paths, texture formats, input methods, render pipelines, networking protocols or in-app purchasing systems. We got you covered!</p>
-
-	{%- include platforms.html minmax=50 transition="" -%}
-	</br>
-
-	<h4>Zero-setup policy</h4>
-	<p>There is nothing more tedious than keeping tools and SDKs updated with the latest changes and requirements, especially when all you want to do is to create a game right? We promise you this: You should never have to do more than download and install Defold once. Nothing else. You do not need to install and keep Xcode updated to make an iOS or macOS build. You do not need Android Studio or any of the Android command line tools to make an Android build. No Visual Studio install for Windows, and so on for the rest of the platforms. You should not have to worry about how your application is built, we promise to take care of this for you. PS You can still control the build process through our command line tools if you want to!</p>
-
-	<h5 class="center"><i>"You should never have to do more than download and install Defold once."</i></h5>
-
-	<h4>No breaking changes</h4>
-	<p>We know how frustrating it is to play catch-up with breaking changes and we promise to very rarely introduce breaking changes (hardly ever!). You should not have to worry about your game breaking just because there is a new version of Defold. And your old projects should always build using the latest version of Defold. We also make sure to always upgrade our tools to support the latest OS versions and the latest platform requirements.</p>
-
-	<h5 class="center"><i>"You should not have to worry about your game breaking."</i></h5>
-
-	<h4>Small and performant</h4>
-	<p>Defold has a very small engine runtime and it performs really well even on old hardware. We spend a significant amount of effort to make sure it stays that way. The engine is designed from the ground up to conserve memory, take up little disk space and not waste CPU cycles. Keeping the engine small allows you to release games on platforms which many other engines are unable to support.</p>
-	{%- include engine_size.html -%}
-
-	<h4>Low level building blocks</h4>
-	<p>Defold provides low level building blocks to create high level things. The design philosophy of Defold is to provide developers with low level building blocks that can be used to create just about anything. But they are just that, low level, which means you have to do a bit more work yourself. On the other hand you are in full control of what you create. Two examples to show what we mean:</p>
-	<ul>
-		<li style="padding-left: 2 rem;">If you need a button you can create one using our GUI system, but there is no ready made button component. You create a button from a box node with a nested text node.</li>
-		<li style="padding-left: 2 rem;">If you need a spaceship that can shoot bullets you create one from a game object (the basic building block of Defold games) to which you attach components. A sprite component for visuals, a factory component to spawn bullets and a script component for the logic.</li>
-	</ul>
-
-	<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); grid-gap: 1rem; margin-bottom: 4rem;">
-		<img src="/images/logo/lego-03-64.png" style="display:block; margin: auto;"/>
-		<img src="/images/logo/lego-03-64.png" style="display:block; margin: auto;"/>
-		<img src="/images/logo/lego-02-128.png" style="display:block; margin: auto;"/>
-		<img src="/images/logo/lego-03-64.png" style="display:block; margin: auto;"/>
-		<img src="/images/logo/lego-03-64.png" style="display:block; margin: auto;"/>
-	</div>
-
-	<h4>Iterative workflow</h4>
-	<p>We have all heard the horror stories of developers waiting ages for a build to complete, only to find that their latest change caused a crash. Long turnaround times kills productivity and hampers creativity. We want developers to be able to rapidly test a new idea, iterate on a game mechanic or tweak a level. That is why a Defold build usually takes only a couple of seconds. You're even able to push new or updated content <b>and</b> game logic to an already running game on your desktop, phone or console.</p>
-
-	<div class="center" style="margin-bottom: 2rem;">
-		<img src="/images/animations/hot-reload.gif"/>
-	</div>
-
-	<h4>A great community &#10084;</h4>
-	<p>The myth of the lone developer really isn't true. Being able to share accomplishments, discuss design problems or implementation details is part of the process of developing games, and being able to do so in a friendly and inclusive environement is as important for the beginner as it is for the expert. We get a lot of praise for our friendly and active community, especially in the <a href="https://forum.defold.com" target="_blank">official Defold forum</a>.</p>
-
-	<div class="center">
-		<img src="/images/beans/placeholder-beans-image.png" width="100%"/>
+<div class="section dark page-dark-section gradient-background-top-dark" id="why-defold">
+	<div class="container">
+		<div class="page-text-panel page-surface-panel why-hub-intro">
+			<div class="page-section-heading">
+				<h2>Why use Defold and not some other engine?</h2>
+			</div>
+			<div class="content-flow">
+				<p>We get this question from time to time, and while it may seem simple, it is not really something that can be answered without elaborating on the design philosophy of Defold. Great games are created using many different engines by teams large and small all over the world, so why use Defold and not some other, more well-known engine?</p>
+				<p>Most game engines have impressive and very long lists of supported features (<a href="/product">we do too!</a>), and on a feature-by-feature comparison you will probably find other game engines with more features than Defold. What you will not be able to tell from a list of features is the effort it takes to create games using an engine and the actual day-to-day struggles of game developers using it.</p>
+				<h5 class="center"><i>"What are the day-to-day struggles of game developers?"</i></h5>
+				<p>We know that making games is about more than picking the engine with the longest feature list, and we have spent a lot of time and effort making sure that certain key elements of the game development process are as smooth and effortless as possible. We believe it makes Defold stand out from the crowd.</p>
+			</div>
+		</div>
 	</div>
 </div>
+
+<div class="section dark page-dark-section gradient-background-bottom-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Smooth daily development</h2>
+			<p>These are some of the everyday friction points Defold is designed to reduce for teams building and shipping games.</p>
+		</div>
+		<div class="page-card-groups">
+			<div class="page-card-group">
+				<div class="page-text-panel page-surface-panel">
+					<h3>Truly cross-platform</h3>
+					<div class="content-flow">
+						<p>Supporting multiple platforms can be a real pain, especially if you need a lot of branching code and exceptions to deal with platform differences. With Defold this is a non-issue. You create your game once and can, without making any changes, export to all supported platforms: Windows, Linux, macOS, Android, iOS, HTML5, Nintendo Switch, PlayStation®4, and PlayStation®5. You should never have to care about which platform your game is running on.</p>
+						<p>The Defold APIs work across all platforms and you do not have to worry about typical platform-specific things such as file paths, texture formats, input methods, render pipelines, networking protocols, or in-app purchasing systems. We have you covered.</p>
+					</div>
+					<div class="why-hub-platforms" aria-hidden="true">
+						{%- include platforms.html minmax=50 transition="" class="product-platform-grid" -%}
+					</div>
+				</div>
+			</div>
+
+			<div class="page-card-group">
+				<div class="page-feature-grid page-grid-two">
+					<div class="page-text-panel page-surface-panel">
+						<h3>Zero-setup policy</h3>
+						<div class="content-flow">
+							<p>There is nothing more tedious than keeping tools and SDKs updated with the latest changes and requirements, especially when all you want to do is create a game. You should never have to do more than download and install Defold once. Nothing else.</p>
+							<p>You do not need to install and keep Xcode updated to make an iOS or macOS build. You do not need Android Studio or any of the Android command-line tools to make an Android build. No Visual Studio install for Windows, and so on for the rest of the platforms. You should not have to worry about how your application is built. We promise to take care of this for you. You can still control the build process through our command-line tools if you want to.</p>
+						</div>
+						<h5 class="center"><i>"You should never have to do more than download and install Defold once."</i></h5>
+					</div>
+
+					<div class="page-text-panel page-surface-panel">
+						<h3>No breaking changes</h3>
+						<div class="content-flow">
+							<p>We know how frustrating it is to play catch-up with breaking changes, and we promise to introduce them very rarely. You should not have to worry about your game breaking just because there is a new version of Defold. Your old projects should always build using the latest version of Defold. </p>
+							<p>Defold was engineered with a real care and attention to stability in mind. We keep the API long-lasting and useable. We put uttermost effort in making sure all the features we introduce are well designed, not breaking and will work well. We also make sure to upgrade our tools to support the latest OS versions and the latest platform requirements.</p>
+						</div>
+						<h5 class="center"><i>"You should not have to worry about your game breaking."</i></h5>
+					</div>
+				</div>
+			</div>
+
+			<div class="page-card-group">
+				<div class="page-text-panel page-surface-panel">
+					<h3>Optimized and lightweight</h3>
+					<div class="content-flow">
+						<p>Defold has a very small engine runtime and performs really well even on older hardware. We spend a significant amount of effort making sure it stays that way. The engine is designed from the ground up to conserve memory, take up little disk space, and not waste CPU cycles.</p>
+						<p>Keeping the engine small allows you to release games on platforms that many other engines are unable to support.</p>
+					</div>
+					<div class="why-hub-engine-size">
+						{%- include engine_size.html -%}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>High performance games, rapid development</h2>
+			<p>Defold is engineered to make game development easier, yet allowing fine control over your workflow. It favors clear building blocks, fast iteration, and a collaborative ecosystem instead of hiding everything behind heavyweight abstraction. It's focused on performance, stability and customizability.</p>
+		</div>
+		<div class="page-card-groups">
+			<div class="page-card-group">
+				<div class="page-text-panel page-surface-panel">
+					<h3>Low-level building blocks</h3>
+					<div class="content-flow">
+						<p>Defold provides low-level building blocks to create high-level things. The design philosophy is to give developers low-level building blocks that can be used to create just about anything. But they are just that, low level, which means you have to do a bit more work yourself. On the other hand, you are in full control of what you create.</p>
+						<p>Two examples to show what we mean:</p>
+						<ul class="checkmark page-checklist">
+							<li>Need a button? Instead of restricting you to pre-made, limited button components, Defold's GUI system gives you basic, flexible elements like Box Nodes. You can design any button you imagine by combining 9-sliced textures, icons, text, and adjust things like pivots, padding, and layering—you're in charge of the look and feel. Adding custom button interactions is just a few lines of Lua, giving you the freedom to implement unique behavior. For those who want a head start, the community maintains advanced open-source UI libraries such as <a href="https://github.com/Insality/druid" target="_blank" rel="noopener">Druid</a> to help you rapidly build complex, polished interfaces.</li>
+							<li>Want a spaceship that shoots bullets? With Defold, you construct it from game objects—the essential, flexible building blocks of your game world. A game object is a container you can assemble by adding any combination of components: add a Sprite for graphics, a Collision Object for physics, a Factory to spawn bullets, and scripts to control the logic. This approach makes every entity—from spaceships to particles—modular and reusable. Because you define what goes in your game objects, you’re never boxed in and can build exactly the gameplay and systems your vision requires.</li>
+						</ul>
+					</div>
+					<div class="why-hub-lego-strip" aria-hidden="true">
+						<img src="/images/logo/lego-03-64.png" alt="">
+						<img src="/images/logo/lego-03-64.png" alt="">
+						<img src="/images/logo/lego-02-128.png" alt="">
+						<img src="/images/logo/lego-03-64.png" alt="">
+						<img src="/images/logo/lego-03-64.png" alt="">
+					</div>
+				</div>
+			</div>
+
+			<div class="product-hub-feature-stack">
+				<div class="row feature-row-spaced product-hub-feature-row">
+					<div class="column one-half">
+						<div class="product-hub-feature-copy">
+							<h3 class="feature-heading">
+								<img class="feature-heading-icon" src="/images/icons/ic-64-rocket-blue.svg" alt="" aria-hidden="true"/>
+								Iterative workflow
+							</h3>
+							<p>We have all heard the horror stories of developers waiting ages for a build to complete, only to find that their latest change caused a crash. Long turnaround times kill productivity and hamper creativity. Defold is built to keep experimentation fast and practical.</p>
+							<div class="twocolumnlist">
+								<ul class="checkmark">
+									<li>Typical builds finish in seconds instead of minutes</li>
+									<li>Test new ideas and gameplay tweaks with minimal interruption</li>
+									<li>Push updated content and Lua logic to a running game</li>
+									<li>Iterate quickly on desktop, phone, or console targets</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="column one-half">
+						<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
+							<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-hot-reload slideinright">
+								<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-right">
+									<img class="product-hub-visual-image product-hub-gif-image" src="/images/animations/hot-reload.gif" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row feature-row-spaced product-hub-feature-row">
+					<div class="column one-half">
+						<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
+							<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-wide slideinleft">
+								<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-left">
+									<img class="product-hub-visual-image product-hub-gif-image" src="/images/moving-to-discord@2x.png" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="column one-half">
+						<div class="product-hub-feature-copy">
+							<h3 class="feature-heading">
+								<img class="feature-heading-icon" src="/images/icons/ic-64-community-blue.svg" alt="" aria-hidden="true"/>
+								A great community &#10084;
+							</h3>
+							<p>The myth of the lone developer really is not true. Being able to share accomplishments, discuss design problems, or implementation details is part of the process of developing games, and being able to do so in a friendly and inclusive environment matters just as much for beginners as it does for experts.</p>
+							<div class="twocolumnlist">
+								<ul class="checkmark">
+									<li>Friendly and active discussions in the <a href="https://forum.defold.com" target="_blank" rel="noopener">official Defold forum</a></li>
+									<li>Direct contact with experienced developers and the Defold team</li>
+									<li>Help with implementation details, workflow issues, and design questions</li>
+									<li>Multiple community channels if you want feedback, support, or conversation</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include download_cta_section.html %}
+
+{% include newsletter_section.html %}
+
+{% include donors_and_partners.html %}

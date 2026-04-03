@@ -1,42 +1,110 @@
 ---
-layout: hero_and_text
+layout: page
 title: Support Defold
-description: The Defold Foundation is funding Defold development through community donations, corporate partners, partnership deals and support contracts.
+description: Support the Defold Foundation through community donations, GitHub Sponsors, Patreon, PayPal, or corporate partnerships that help keep the engine sustainable and free.
 nav: floating
-background: /images/hero/defold-top-bg-transparent-2.png
-after: [donors_and_partners.html]
 heatmap: false
 ---
 
-<!-- <h2>Why we seek donations and partnerships</h2> -->
+{%- capture page_hero_copy -%}
+<p>Defold is and always will be free. We offer free cloud builds as well, and we cover its infrastructure costs from the donations. The Defold Foundation is dedicated to the engine development, maintenance, and support, and funds it through community donations, corporate partnerships, partnership deals, and support contracts.</p>
+<p>Your support helps keep Defold sustainable, actively developed, and free to use for everyone.</p>
+{%- endcapture -%}
 
-<div class="row">
-	<div class="columns six">
-		<h4>Why donate?</h4>
-		<p>As a software foundation we rely on community donations and corporate partnerships to ensure the long term sustainability of the project. The funds received from donations and partnerships are used for:</p>
-		<ul class="checkmark">
-			<li>Pay developers working on Defold</li>
-			<li>Pay for hosting of services</li>
-			<li>Purchase of hardware for testing and development</li>
-			<li>Pay for travel expenses when visiting conferences</li>
-		</ul>
-	</div>
-	<div class="columns six card light">
-		<p>Support development of Defold directly through the GitHub Sponsors program:</p>
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="#donate-now" text="I want to support Defold!" %}
+{% include secondary_button.html link="/corporate-partnerships" text="Corporate Partnerships" %}
+{%- endcapture -%}
 
-		<div class="grid-150">
-			{% include secondary_button.html link="https://github.com/sponsors/defold?frequency=recurring&amount=5" text="$5 a month" target="_blank"%}
-			{% include secondary_button.html link="https://github.com/sponsors/defold?frequency=recurring&amount=10" text="$10 a month" target="_blank"%}
-			{% include secondary_button.html link="https://github.com/sponsors/defold?frequency=recurring&amount=15" text="$15 a month" target="_blank"%}
-			{% include secondary_button.html link="https://github.com/sponsors/defold?frequency=recurring&amount=25" text="$25 a month" target="_blank"%}
-			{% include secondary_button.html link="https://github.com/sponsors/defold?frequency=recurring" text="Other amount" target="_blank"%}
-			{% include secondary_button.html link="https://github.com/sponsors/defold?frequency=one-time" text="One time" target="_blank"%}
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/icon-heart.svg" alt="Defold support illustration" loading="eager">
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="donate-hub-hero" title="Support Defold" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold support illustration" %}
+
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Why support Defold?</h2>
+			<p>As a software foundation, we rely on community donations and corporate partnerships to make long-term Defold development sustainable.</p>
 		</div>
 
-		<p>You can also donate through <a href="https://www.patreon.com/bePatron?u=25380529" target="_blank">Patreon</a> and <a href="https://www.paypal.com/donate/?hosted_button_id=G8L5TY724HQGE" target="_blank">PayPal</a>. Interested in a corporate partnership? <a href="/corporate-partnerships">Find out more</a>.</p>
+		<div class="page-feature-grid page-grid-four page-grid-flush">
+			<article class="page-text-feature-item">
+				<h3>To pay developers</h3>
+				<p>Funding helps pay developers working directly on the engine, editor, documentation, and surrounding tooling.</p>
+			</article>
+
+			<article class="page-text-feature-item">
+				<h3>To run core services</h3>
+				<p>Support covers hosting and infrastructure used by build services, websites, forums, and other shared community systems.</p>
+			</article>
+
+			<article class="page-text-feature-item">
+				<h3>To buy test hardware</h3>
+				<p>Funding helps purchase hardware and devices needed for platform testing, debugging, and engine development.</p>
+			</article>
+
+			<article class="page-text-feature-item">
+				<h3>To attend events and promote Defold</h3>
+				<p>Support helps cover travel and event costs when the Defold team visits conferences and meets developers in person.</p>
+			</article>
+		</div>
 	</div>
 </div>
 
-<br/>
-<br/>
-<img src="/images/beans/placeholder-beans-image.png" alt="Cartoon character holding a You Rock message!" width="100%"/>
+<div class="section dark page-dark-section gradient-background-bottom-dark" id="donate-now">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Choose a support option</h2>
+			<p>Support Defold with recurring or one-time community funding, or start a corporate partnership if your team wants a deeper collaboration path.</p>
+		</div>
+
+		<div class="page-text-panel page-surface-panel donate-hub-panel">
+			<div class="donate-hub-panel-header">
+				<span class="donate-hub-panel-icon" aria-hidden="true">
+					<img src="/images/icons/icon-github.svg" alt="">
+				</span>
+				<div>
+					<h3>Support Defold directly via GitHub Sponsors:</h3>
+					<p>Start supporting Defold development with a monthly amount or make a one-time contribution, as a thank-you letter ❤️:</p>
+				</div>
+			</div>
+			<div class="page-button-grid">
+				<a class="button secondary" href="https://github.com/sponsors/defold?frequency=recurring&amount=5" target="_blank" rel="noopener">$5 / month</a>
+				<a class="button secondary" href="https://github.com/sponsors/defold?frequency=recurring&amount=10" target="_blank" rel="noopener">$10 / month</a>
+				<a class="button secondary" href="https://github.com/sponsors/defold?frequency=recurring&amount=15" target="_blank" rel="noopener">$15 / month</a>
+				<a class="button secondary" href="https://github.com/sponsors/defold?frequency=recurring&amount=25" target="_blank" rel="noopener">$25 / month</a>
+				<a class="button tertiary" href="https://github.com/sponsors/defold?frequency=recurring" target="_blank" rel="noopener">Other recurring amount</a>
+				<a class="button secondary" href="https://github.com/sponsors/defold?frequency=one-time" target="_blank" rel="noopener">One-time donation</a>
+			</div>
+		</div>
+
+		<div class="page-feature-grid page-grid-flush">
+			{% include page_feature_card.html title="Patreon" body="Support Defold through Patreon. ↗" link="https://www.patreon.com/bePatron?u=25380529" icon="/images/icons/icon-patreon.svg" card_class="page-feature-card-patreon" target="_blank" rel="noopener" %}
+			{% include page_feature_card.html title="PayPal" body="Make a direct donation through PayPal. ↗" link="https://www.paypal.com/donate/?hosted_button_id=G8L5TY724HQGE" icon="/images/icons/icon-paypal.svg" card_class="page-feature-card-paypal" target="_blank" rel="noopener" %}
+			{% include page_feature_card.html title="Partnership" body="Support Defold via a dedicated sponsorship." link="/corporate-partnerships" icon="/images/icons/icon-handshake.svg" card_class="page-feature-card-partnership" %}
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-bottom-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Other ways to help</h2>
+			<p>If you cannot support Defold financially right now, you can still help by contributing code, examples, assets, improving and translating documentation, helping other developers, and sharing what you build!</p>
+		</div>
+
+		<div class="page-feature-grid">
+			{% include page_feature_card.html title="Contribute" body="Improve the engine, editor, extensions, and docs through issues, pull requests, and other open contributions." link="/contribute" icon="/images/icons/ic-64-feather.svg" card_class="page-feature-card-contribute" %}
+			{% include page_feature_card.html title="Help Community" body="Answer questions, share workarounds, and support developers who are getting unstuck with Defold." link="/community" icon="/images/icons/ic-64-community.svg" card_class="page-feature-card-forum" %}
+			{% include page_feature_card.html title="Learn and share" body="Build with Defold, publish your work, share it online, and help more people discover what the engine can do." link="/learn/" icon="/images/icons/icons-learn-export_ic-learn-documents.svg" card_class="page-feature-card-manuals" %}
+		</div>
+
+		<div class="page-illustration-panel page-illustration-banner" aria-hidden="true">
+			<img src="/images/beans/placeholder-beans-image.png" alt="">
+		</div>
+	</div>
+</div>
+
+{% include donors_and_partners.html %}

@@ -1,5 +1,54 @@
 ---
-layout: learn
+layout: page_with_learnnav
 title: Defold Manuals
+description: Read the Defold manuals to learn engine concepts, editor workflows, scripting patterns, and platform-specific systems in depth.
 nav: floating
 ---
+
+<div class="section hero center blackwhite dark:darken-10" style='background-image: url("/images/hero/testimonials-background-0.5x.png");'>
+	<div class="container">
+		<div class="row">
+			<div class="column one-half left">
+				<h1>Learn Defold manuals with a clear start path</h1>
+				<p>Manuals explain Defold concepts, editor workflows, and system behavior in depth.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section lightest dark:dark">
+	<div class="container">
+		<div class="row">
+			<div class="columns full">
+				<h2>Start here before deep reading</h2>
+				<p>Do one quick runnable loop first: install Defold, create from <strong>TUTORIALS</strong>, build once, then change one value and build again.</p>
+				<div class="center">
+					{% include primary_button.html text="Open Start Here Map" link="/learn/" %}
+					{% include secondary_button.html text="Open First Hour Tutorial" link="/tutorials/first-hour/" %}
+				</div>
+				<br/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="columns full">
+				<h3>Quick picks</h3>
+				<div class="grid-250">
+					{% include card.html title="New to Defold" body="Use the beginner route first, then return to manuals with context from one working project." link="/tutorials/getting-started/" min-height="220px" topicon="/images/icons/icons-learn-export_ic-learn-tutorials.svg" %}
+					{% include card.html title="Migrating from another engine" body="Start with migration-first mapping before porting bigger systems." link="/manuals/migration-first-steps/" min-height="220px" topicon="/images/icons/ic-32-shuffle.svg" %}
+					{% include card.html title="Evaluating for team" body="Use the studio checklist for adoption, workflow risk, and rollout planning." link="/manuals/studio-evaluation-checklist/" min-height="220px" topicon="/images/icons/ic-32-star.svg" %}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="columns full">
+				<h3>Manual index</h3>
+				<p>When you are ready for deeper reference-style learning, use the full introduction index.</p>
+				<div class="center">
+					{% include primary_button.html text="Open Manuals Introduction" link="/manuals/introduction/" %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include learn_section.html %}

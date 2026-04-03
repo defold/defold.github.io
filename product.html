@@ -1,351 +1,644 @@
 ---
-layout: hero_and_text
+layout: page
 title: Defold Product Overview
-description: Defold is a turn-key solution, providing everything you need to build a game. Learn about the major features of the engine on this product page. Make sure to also check the Learn pages for additional and more detailed information.
+description: Defold is a turn-key solution with the editor, runtime, scripting, build pipeline, profiling tools, and deployment flow working together in one engine.
 nav: floating
 heatmap: false
-background: /images/hero/defold-top-bg-transparent-2.png
-after: [opensource_section.html, learn_section.html, yellow_download_section.html, donors_and_partners.html]
 ---
 
-<div class="row">
-	<div class="columns twelve center">
-		<img src="/images/editor/editor2-screenshots.png" class="fadein" loading="lazy"/>
-	</div>
-</div>
+{%- capture page_hero_copy -%}
+<p>Defold is a turn-key game engine with the editor, runtime, scripting, build pipeline, tools, and deployment flow working together out of the box.</p>
+{%- endcapture -%}
 
-<div class="row">
-	<div class="columns twelve">
-		<h3>2D focused, 3D capable</h3>
-		<p>Defold is built from the ground up as a 3D engine with special focus on top-notch tools for 2D game creation. Build your games using a component based system for maximum performance and modularity.</p>
-	</div>
-	<div class="row">
-		<div class="column one-third">
-			<h5>2D components</h5>
-			<ul class="checkmark">
-				<li>2D sprites</li>
-				<li>Spine models</li>
-				<li>Tile map editor for 2D levels</li>
-			</ul>
-		</div>
-		<div class="column one-third">
-			<h5>3D components</h5>
-			<ul class="checkmark">
-				<li>3D models - load models and animations</li>
-				<li>3D mesh - create and modify 3D geometry at runtime</li>
-				<li>Custom materials and shaders - Shaders written in GLSL</li>
-			</ul>
-		</div>
-		<div class="column one-third">
-			<h5>Particle effects</h5>
-			<ul class="checkmark">
-				<li>Particle effects editor with live preview of emitter and modifier behavior</li>
-				<li>Curve editor for controlling particle parameter changes over particle lifespan</li>
-				<li>2D and 3D particle emitters</li>
-			</ul>
-		</div>
-	</div>
-</div>
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/editor/editor2-screenshot@3x.png" alt="Defold editor screenshots" loading="eager">
+{%- endcapture -%}
 
-<div class="row"><div class="columns twelve"><br/><br/></div></div>
+{%- capture page_hero_backdrop -%}
+<img src="/images/hero/defold-top-bg-transparent-2-high.png" alt="" loading="eager" decoding="async">
+{%- endcapture -%}
 
-<div class="row">
-	<div class="columns six">
-		<span class="center"><img src="/images/editor/editor-screenshot-hero2-left.png" class="slideinleft" loading="lazy"></img><br/><br/></span>
-	</div>
-	<div class="columns six">
-		<span class="center"><img src="/images/editor/editor-screenshot-3d-right.png" class="slideinright" loading="lazy"></img><br/><br/></span>
-	</div>
-</div>
-<div class="row">
-	<div class="columns twelve">
-		<h3>Animation</h3>
-		<p>Defold has a powerful animation system for visual components and scripts. Use flipbook animations for sprites and other 2D components, bone animations for models and property animations for movement, rotation, tweens and other values.</p>
-	</div>
-</div>
-<div class="row">
-	<div class="column one-third">
-		<h5>Flipbook animations</h5>
-		<ul class="checkmark">
-			<li>Flipbook animations for sprites</li>
-			<li>Flipbook animations for GUI nodes</li>
-			<li>Flipbook animations for particles</li>
-		</ul>
-	</div>
-	<div class="column one-third">
-		<h5>Spine and model animations</h5>
-		<ul class="checkmark">
-			<li>Spine bone and model animations with full support for blending</li>
-			<li>Keyframe events</li>
-			<li>Inverse kinematics in keyframes and dynamically scriptable</li>
-		</ul>
-	</div>
-	<div class="column one-third">
-		<h5>Property animations</h5>
-		<ul class="checkmark">
-			<li>All sprite and GUI properties can be animated</li>
-			<li>Custom script property animations</li>
-			<li>Predefined or custom easing functions for all property animations</li>
-		</ul>
-	</div>
-</div>
+{% include page_hub_hero.html hero_class="product-hub-hero" backdrop=page_hero_backdrop backdrop_class="page-hero-backdrop-wide" layout_class="page-hero-layout-stack" copy_class="page-hero-copy-centered" panel_class="page-hero-panel-stack" title="Defold Overview" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold editor screenshots" %}
 
-<div class="row"><div class="columns twelve"><br/><br/></div></div>
-
-<div class="row">
-	<div class="columns twelve">
-	</div>
-	<div class="row">
-		<div class="columns six">
-			<img src="/images/editor/editor-screenshot-gui-left.png" class="slideinleft" style="max-width: 60vw" loading="lazy"></img>
+<div class="section dark page-dark-section gradient-background-top-dark product-hub-section">
+	<div class="container">
+		<div class="product-hub-section-heading-split">
+			<div class="product-hub-section-heading-icon" aria-hidden="true">
+				<img src="/images/icons/ic-64-2d3d-blue.svg" alt="">
+			</div>
+			<div class="page-section-heading">
+				<h2>Build 2D and 3D games</h2>
+				<p>Defold shines especially bright for 2D game development, yet not limiting you to two dimensions. Built from the ground up as a 3D game engine, it provides a capable foundation for teams building fast, lightweight, cross-platform games. Its component-based architecture helps you create modular, high-performance games with a streamlined workflow. Mix 2D and 3D as you like.</p>
+			</div>
 		</div>
-		<div class="columns six">
-			<h3>Artist friendly</h3>
-			<p>Assemble and layout your game in the artist friendly scene editor. Build levels, player characters, bosses, screens and user interface components all from within the editor.</p>
-			<h5>GUI editor</h5>
-			<ul class="checkmark">
-				<li>Layered GUI with text, images and pie nodes</li>
-				<li>GUI clipping/stencil masks</li>
-				<li>GUI image nodes support 9-slice texturing</li>
-				<li>Automatic GUI layout with support for orientation changes</li>
-				<li>Bitmap and distance field fonts</li>
-				<li>Use GUI templates to reuse UI elements and quickly build complex views</li>
-			</ul>
-			<h5>Scene editor</h5>
-			<ul class="checkmark">
-				<li>Scene editor for assembling and laying out assets</li>
-				<li>Prefab construction of game objects</li>
-				<li>Create hierarchies to organise and group objects</li>
-			</ul>
-		</div>
-	</div>
-</div>
+		<div class="product-hub-feature-stack">
 
-<div class="row"><div class="columns twelve"><br/><br/></div></div>
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
+						<img class="product-hub-visual-image product-hub-visual-image-wide slideinleft" src="/images/editor/editor-screenshot-hero-left-dragosha-3d.png" alt="">
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/cube_3d.svg" alt="" aria-hidden="true"/>
+							3D components
+						</h3>
+						<p>All the visual components are actually in 3D, but with models and meshes, you can build truly immersive experiences. Keep the same Defold workflow when you move into 3D and mix runtime geometry, lighting, shaders, and particles in the project structure.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>Models and animations</li>
+								<li>Meshes for runtime geometry</li>
+								<li>GLTF support</li>
+								<li>Custom rendering pipeline</li>
+								<li>Custom materials</li>
+								<li>GLSL shaders</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
 
-<div class="row">
-	<div class="columns twelve">
-		<h3>Advanced physics simulations</h3>
-		<p>Attach collision shapes and physics properties to your objects and have them interact in real time. React to collisions using code to create complex interactions.</p>
-	</div>
-	<div class="row">
-		<div class="column one-third">
-			<ul class="checkmark">
-				<li>2D and 3D physics (Box 2D and Bullet) fully integrated</li>
-				<li>Static, dynamic and kinematic (scriptable) physics objects</li>
-			</ul>
-		</div>
-		<div class="column one-third">
-			<ul class="checkmark">
-				<li>Shape based and ray-cast collision detection</li>
-				<li>Precise collision detection for tilemaps</li>
-			</ul>
-		</div>
-		<div class="column one-third">
-			<ul class="checkmark">
-				<li>Robust triggers</li>
-				<li>Joint and motor support</li>
-			</ul>
-		</div>
-	</div>
-</div>
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/cube_2d.svg" alt="" aria-hidden="true"/>
+							2D components
+						</h3>
+						<p>Use the editor as a fast 2D production toolchain with built-in support for the most common content types and animation workflows.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>Sprites with flip-book animations</li>
+								<li>Atlases</li>
+								<li>Tile Maps</li>
+								<li>Tile Sources</li>
+								<li>Particle Effects</li>
+								<li>Text Labels</li>
+								<li>GUI</li>
+								<li>Spine and Rive extensions</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
+						<img class="product-hub-visual-image product-hub-visual-image-wide slideinright" src="/images/editor/editor-screenshot-hero-right-dragosha@2x.png" alt="">
+					</div>
+				</div>
+			</div>
 
-<div class="row"><div class="columns twelve"><br/><br/></div></div>
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
+						<img class="product-hub-visual-image product-hub-visual-image-wide slideinleft" src="/images/editor/editor-screenshot-gui-left@2x.png" alt="">
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/gui.svg" alt="" aria-hidden="true"/>
+							Graphical User Interfaces
+						</h3>
+						<p>Create astonishing user interfaces, popups, menus, and more using Defold's built-in artists friendly visual editor with all the core components and powerful features.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>Box Nodes</li>
+								<li>Text Nodes</li>
+								<li>Pie Nodes</li>
+								<li>Layers</li>
+								<li>GUI scripting</li>
+								<li>9-slice texturing</li>
+								<li>Clipping and stencils masks</li>
+								<li>Reusable Templates</li>
+								<li>Bitmap and Distance Field Fonts</li>
+								<li>Particles and Spine animations</li>
+								<li>Automatic layouts with support for dynamic orientation changes</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
 
-<div class="row">
-	<div class="row">
-		<div class="column one-half">
-			<h3>Fully scriptable</h3>
-			<p>Write all of your game logic using the Lua scripting language. Lua is a commonly used scripting language for games with an easy to learn syntax and great performance.</p>
-			<h5>Lua</h5>
-			<ul class="checkmark">
-				<li>Integrated code editor with syntax highlighting, code completion and LSP</li>
-				<li>Integrated debugger - step through code and inspect variable</li>
-				<li>Fully scriptable rendering pipeline with low level access</li>
-				<li>Optional typed Lua <a href="/assets/teal">using Teal</a>.</li>
-			</ul>
-			<h5>Reactive code style</h5>
-			<ul class="checkmark">
-				<li>Engine supports reactive-style Lua scripting for low overhead and great performance</li>
-				<li>Asynchronous communication between game objects</li>
-			</ul>
-		</div>
-		<div class="column one-half">
-			<img src="/images/editor/editor-screenshot-code-right.png" class="slideinright" loading="lazy"></img>
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/icon-particles.svg" alt="" aria-hidden="true"/>
+							Particle Effects
+						</h3>
+						<p>Juice up your visuals with Defold's particle effects, created in the built-in editor with live preview of emitter and modifier behavior.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>2D and 3D particle effects</li>
+								<li>Over 40 customizable properties</li>
+								<li>Curve editor for controling properties over particles lifespan</li>
+								<li>Support for <a href="/examples/material/billboarding/"></a>billboarding</a></li>
+								<li>Multiple emitters and modifiers</li>
+								<li>Runtime manipulation of particle properties</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
+						<img class="product-hub-visual-image product-hub-visual-image-wide slideinright" src="/images/editor/editor-screenshot-hero-right@2x.png" alt="">
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </div>
 
-<div class="row"><div class="columns twelve"><br/><br/></div></div>
-
-<div class="row">
-	<div class="columns twelve center">
-		{%- include platforms.html minmax=80 transition="slideinbottom" -%}
-
-		<br/><br/>
-	</div>
-</div>
-<div class="row">
-	<div class="columns twelve">
-		<h3>Cross-platform</h3>
-		<p>With Defold you create your game once and export to all supported platforms without making any changes. The Defold APIs work across all platforms and you do not have to worry about typical platform specific things such as file paths, texture formats, input methods, render pipelines, networking protocols or in-app purchasing systems. We got you covered!</p>
-	</div>
-</div>
-<div class="row">
-	<div class="column one-half">
-		<h5>Truly cross-platform</h5>
-		<ul class="checkmark">
-			<li>One-click deployment to all target platforms from the same code and content</li>
-			<li>Additional platforms such as Steam and Facebook Instant Games supported via extensions</li>
-			<li>Editor and tools running on Mac OS X, Windows and Linux</li>
-			<li>Turn-key software with no dependencies on other programs - No need for Xcode or Android Studio for mobile deployment!</li>
-			<li>WebGL, WebGPU, OpenGL, Vulkan and Metal</li>
-		</ul>
-	</div>
-	<div class="column one-half">
-		<h5>Surprisingly lightweight</h5>
-		<ul class="checkmark">
-			<li>Static content dependencies and automatic resource management. Only used assets are included in game builds</li>
-			<li>Sprite packing to atlases</li>
-			<li>Texture compression configurable per platform</li>
-			<li>Dynamic batching in the render pipeline</li>
-		</ul>
-	</div>
-</div>
-<div class="row">
-	<div class="columns twelve">
-		<h3>Performance and stability</h3>
-		<p>Defold has a very small engine runtime and it performs really well even on old hardware. We spend a significant amount of effort to make sure it stays that way. The engine is designed from the ground up to conserve memory, take up little disk space and not waste CPU cycles. Keeping the engine small allows you to release games on platforms which many other engines are unable to support.</p>
-	</div>
-</div>
-<div class="row">
-	<div class="column two-thirds">
-		<h5>Small engine</h5>
-		{%- include engine_size.html -%}
-	</div>
-	<div class="column one-third">
-		<h5>Performant</h5>
-		<ul class="checkmark">
-			<li>Renders tens of thousands of game objects without flinching (see <a href="/examples/sprite/bunnymark/">this example</a>)</li>
-			<li>Runs well on old hardware and in mobile phone browsers</li>
-		</ul>
-		<h5>Stable</h5>
-		<ul class="checkmark">
-			<li>Four week release cycle with two week beta period</li>
-			<li>Breaking changes are extremely rare</li>
-			<li>Engine crashes are few and far between</li>
-		</ul>
-	</div>
-</div>
-<div class="row"><div class="columns twelve"><br/><br/></div></div>
-
-<div class="row">
-	<div class="columns twelve">
-		<h3>Rapid workflow</h3>
-		<p>Long turnaround time kills productivity and hampers creativity. Developers should be able to rapidly test new ideas, iterate on game mechanics or tweak levels. That is why a Defold build usually takes only a couple of seconds. You're even able to push new or updated content and game logic to an already running game on your desktop, phone or console.</p>
-	</div>
-	<div class="row">
-		<div class="columns three">
-			<h5>Hot reload</h5>
-			<ul class="checkmark">
-				<li>Hot reloading of updated assets and logic - change anything and instantly see the change in your game</li>
-			</ul>
-			<img src="/images/animations/hot-reload.gif" style="width: 100%;" loading="lazy"/>
-			<ul class="checkmark">
-				<li>Wireless hot reloading, debugging and visual profiling on device</li>
-				<li>Hot reload with custom Lua hooks for setup and inspection</li>
-			</ul>
+<div class="section dark page-dark-section gradient-background-bottom-dark product-hub-section">
+	<div class="container">
+		<div class="product-hub-section-heading-split">
+			<div class="product-hub-section-heading-icon" aria-hidden="true">
+				<img src="/images/icons/palette.svg" alt="">
+			</div>
+			<div class="page-section-heading">
+				<h2>Make it vivid</h2>
+				<p>Assemble and layout your game in the artist friendly scene editor. Build levels, player characters, bosses, screens and user interface components all from within the editor. Animate sprites, models, UI, and script values easily,</p>
+			</div>
 		</div>
-		<div class="columns three">
-			<h5>Custom workflows</h5>
-			<ul class="checkmark">
-				<li>Stand alone build pipeline for custom workflows - integrate with your own scripts or CI framework</li>
-				<li>Headless builds for automated testing</li>
-				<li>Library sharing between projects - reuse code and assets</li>
-				<li>Asset Portal with reusable components - official and community developed</li>
-				<li>All data in easily merged text files</li>
-			</ul>
+		<div class="product-hub-feature-stack">
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
+						<img class="product-hub-visual-image product-hub-visual-image-wide slideinleft" src="/images/editor/editor-screenshot-hero2-left@2x.png" alt="">
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/visual.svg" alt="" aria-hidden="true"/>
+							Edit conveniently
+						</h3>
+						<p>Tweak your game levels, characters, items, bosses, screens, and game objects in convenient visual editors suited for each type.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>3D visual scene editor</li>
+								<li>Tilemap editor</li>
+								<li>Particle FX editor</li>
+								<li>GUI editor</li>
+								<li>Code editor for scripts, modules, or shaders</li>
+								<li>Previews for models or sprites</li>
+								<li>Atlas and Tile Source editors</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/flipbook.svg" alt="" aria-hidden="true"/>
+							Animate everything
+						</h3>
+						<p>Defold has a powerful animation system for visual components and scripts. Animate sprites, models, UI, and script values without leaving the engine or building parallel tooling around it.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>Flipbook animations for sprites, particle effects and GUI</li>
+								<li>3D animations for models</li>
+								<li>Runtime control over the animation cursor</li>
+								<li>Switch textures in runtime</li>
+								<li>All sprite and GUI properties can be animated</li>
+								<li>Custom script property animations</li>
+								<li>Predefined or custom easing functions for all property animations</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
+						<img class="product-hub-visual-image product-hub-visual-image-wide slideinright" src="/images/editor/editor-combustion-skewed.png" alt="">
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
+						<img class="product-hub-visual-image product-hub-visual-image-wide slideinleft" src="/images/editor/editor-2-screenshot-left@2x.png" alt="">
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/animations.svg" alt="" aria-hidden="true"/>
+							Skeletal animations and more
+						</h3>
+						<p>Use bone animations for models and property animations for movement, rotation, tweens and other values.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li><a href="/extension-spine">Spine extension</a> with bone and model animations with full support for blending, keyframes, and inverse kinematics</li>
+								<li><a href="/extension-rive">Rive extension</a> with support for state machines, interactive input, events, text, and runtime manipulation</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/physics.svg" alt="" aria-hidden="true"/>
+							Advanced physics simulations
+						</h3>
+						<p>Attach collision shapes and physics properties to your objects and have them interact in real time. React to collisions using code to create complex interactions.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>2D and 3D physics (Box 2D and Bullet) integrated</li>
+								<li>Static, dynamic and kinematic (scriptable) physics objects</li>
+								<li>Joints and motors support</li>
+								<li>Robust triggers</li>
+								<li>Precise, automatic collision detection for tilemaps</li>
+								<li>Shape based and ray-cast collision detection</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
+						<img class="product-hub-visual-image product-hub-visual-image-wide slideinright" src="/images/editor/editor-screenshot-3d-right@2x.png" alt="">
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="columns three">
-			<h5>Build and refactor</h5>
-			<ul class="checkmark">
-				<li>Fast build times. All build targets, even HTML5, are completed in seconds</li>
-				<li>Asynchronous (or synchronous) loading of asset data</li>
-				<li>Automatic refactoring of assets</li>
-			</ul>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-top-dark product-hub-section">
+	<div class="container">
+		<div class="product-hub-section-heading-split">
+			<div class="product-hub-section-heading-icon" aria-hidden="true">
+				<img src="/images/icons/ic-64-ship-blue.svg" alt="">
+			</div>
+			<div class="page-section-heading">
+				<h2>Write once, ship to all platforms</h2>
+				<p>Defold is designed for small turnaround times: write scripts, test quickly, keep workflow tight, and move from development to shipping without splitting into separate pipelines.</p>
+			</div>
 		</div>
-		<div class="columns three">
-			<h5>Optimize and debug</h5>
-			<ul class="checkmark">
-				<li>Live on-screen visual profiler</li>
-				<li>Remote web-based profiler with visual frame sampling</li>
-				<li>Built-in video capture of game footage</li>
-				<li>Native crash log APIs</li>
-			</ul>
+
+		<div class="product-hub-feature-stack">
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
+						<img class="product-hub-visual-image product-hub-visual-image-wide slideinleft" src="/images/editor/editor-screenshot-hero-left@2x.png" alt="">
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/lua.svg" alt="" aria-hidden="true"/>
+							Write in Lua
+						</h3>
+						<p>Write all of your game logic using the Lua scripting language. Lua is a commonly used scripting language for games with an easy to learn syntax and great performance.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>Scripts written in Lua language</li>
+								<li>Integrated code editor</li>
+								<li>Integrated debugger</li>
+								<li>Syntax highlighting</li>
+								<li>Code completion and linting</li>
+								<li>Script structure - functions and data list in the sidebar</li>
+								<li>Reactive code style</li>
+								<li>Built-in messagging system between game objects</li>
+								<li>Fully scriptable rendering pipeline with low level access</li>
+								<li>Customisable editor workflow via scripts written in Lua</li>
+								<li><a href="/manuals/asset-portal"></a>Asset Portal</a> with reusable components</li>
+								<li>Optional typed Lua using <a href="/assets/teal">Teal</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/icon-cross-platform.svg" alt="" aria-hidden="true"/>
+							Cross-platform deployment
+						</h3>
+						<p>The Defold APIs work across supported platforms, so you do not need to manage platform-specific paths, render pipelines, input methods, or purchasing systems for common cases.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>One-click deployment to all target platforms from the same code and content</li>
+								<li>Deploy to desktop, mobile, web, or consoles</li>
+								<li>Additional platforms such as Steam and Facebook Instant Games supported via extensions</li>
+								<li>Editor and tools running on Mac OS X, Windows and Linux</li>
+								<li>Turn-key software with no dependencies on other programs - No need for Xcode or Android Studio for mobile deployment!</li>
+								<li>WebGL, WebGPU, OpenGL, Vulkan and Metal</li>
+								<li>Only used assets are included in builds</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
+						<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-wide slideinright">
+							<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-right">
+								<img class="product-hub-visual-image product-hub-gif-image" src="/images/animations/platforms.gif" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
-<div class="row"><div class="columns twelve"><br/><br/></div></div>
+<div class="section dark page-dark-section gradient-background-bottom-dark product-hub-section">
+	<div class="container">
+		<div class="product-hub-section-heading-split">
+			<div class="product-hub-section-heading-icon" aria-hidden="true">
+				<img src="/images/icons/ic-64-lightning.svg" alt="">
+			</div>
+			<div class="page-section-heading">
+				<h2>Fast in development, fast in action</h2>
+				<p>Defold is a modern game engine optimized for rapid development workflow and focused on performance, even on low-end devices. Long turnaround time kills productivity and hampers creativity. Developers should be able to rapidly test new ideas, iterate on game mechanics or tweak levels. We take care of the details, so you can quickly create something running fast on any device.</p>
+			</div>
+		</div>
 
-<div class="row">
-	<div class="columns six">
-		<h3>Add Engine Features with Native Extensions</h3>
-		<p>The Defold SDK allows you to write extensions to the engine in C, C++, ObjectiveC, Java and JavaScript.</p>
-		<p>Develop extensions directly in Defold without the need for setup or extra compilers. We build a custom engine for you in the cloud.</p>
-		<p>Typical use cases are:</p>
-		<ul class="checkmark">
-			<li>High performance calculations and data processing.</li>
-			<li>Access to specific hardware, for instance the camera on mobile phones.</li>
-			<li>Interact with external SDKs, for instance advertising or analytics.</li>
-		</ul>
-		<a href="/manuals/extensions"><p>Learn more about Native Extensions</p></a>
-	</div>
-	<div class="columns six">
-		<img src="/images/editor/image-extensions.png" class="slideinright" loading="lazy"/>
+		<div class="product-hub-feature-stack">
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
+						<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-wide slideinleft">
+							<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-left">
+								<img class="product-hub-visual-image product-hub-gif-image" src="/images/animations/hot-reload.gif" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/icon-rapid.svg" alt="" aria-hidden="true"/>
+							Rapid workflow
+						</h3>
+						<p>We belive speed is key to productivity. And to obtain it, nothing can stand on your way. Defold build usually takes only a couple of seconds. You're even able to push new or updated content and game logic to an already running game on your desktop, phone or console.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li><a href="/manuals/hot-reload"></a>Hot reloading</a> of updated assets and logic - change anything and instantly see the change in game</li>
+								<li>Wireless hot reloading, profiling, and debugging on device</li>
+								<li>Hot reload with custom Lua hooks for setup and inspection</li>
+								<li>Fast build times. All build targets, even HTML5, are completed in seconds</li>
+								<li>Asynchronous or synchronous loading of asset data</li>
+								<li>Automatic refactoring of assets</li>
+								<li>All data is in text files - easy for version control systems, perfect for AI-assisted and agentic workflows</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/icon-profiling.svg" alt="" aria-hidden="true"/>
+							Profiling and debugging
+						</h3>
+						<p>We give you all the needed tools to help you find and fix bottlenecks and problems with your games easily.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>Live on-screen visual profiler</li>
+								<li>Remote web-based profiler with visual frame sampling</li>
+								<li>Built-in video capture of game footage</li>
+								<li>Native crash log APIs</li>
+								<li>Integrated debugger - step through code and inspect variable</li>
+								<li>Conditional Breakpoints in the integreated code editor</li>
+								<li>Breakpoint Tab for managing them</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
+						<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-wide slideinright">
+							<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-right">
+								<img class="product-hub-visual-image product-hub-gif-image" src="/images/animations/analytics.gif" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
+						<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-wide slideinleft">
+							<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-left">
+								<img class="product-hub-visual-image product-hub-gif-image" src="/images/editor/screenshot/nikolay_armonik.jpg" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/icon-performance.svg" alt="" aria-hidden="true"/>
+							Performant and stable
+						</h3>
+						<p>Defold is a modern game engine optimized for high performance, even on low-end devices, and extremely low footprint, with a well defined architecture and a stable release cycle. </p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>Low memory footprint, CPU usage and fast startup time</li>
+								<li>Renders tens of thousands of game objects without flinching - <a href="/examples/sprite/bunnymark/"> see this Bunnymark benchmark</a></li>
+								<li>Runs well on old hardware and in mobile phone browsers</li>
+								<li>Supports <a href="/manuals/compute">Compute Shaders</a> for demanding calculations</li>
+								<li>Stable monthly release cycle with two week open beta period</li>
+								<li>Breaking changes are extremely rare - we keep it long-lasting and stable</li>
+								<li>Engineered with care - engine crashes are rare and far between</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/icon-stars.svg" alt="" aria-hidden="true"/>
+							Production ready
+						</h3>
+						<p>Defold is a battle tested and production ready game engine. Integrations with popular third party analytics, app economy and game services are officially supported and maintained by the Defold Foundation.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>Google and Apple push notification APIs</li>
+								<li>Google, Apple, Amazon and Facebook in-app purchases APIs</li>
+								<li>Facebook SDK APIs</li>
+								<li>Google Play Game Services</li>
+								<li>Google Play Asset Delivery</li>
+								<li>Firebase Analytics</li>
+								<li>AdMob, IronSource and other ad integrations and mediation services</li>
+								<li>Web Sockets</li>
+								<li>Nakama, PlayFab, Colyseus, Photon and other game backends</li>
+								<li>More extensions in the <a href="/assets/">Asset Portal</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
+						<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-wide slideinright">
+							<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-right">
+								<img class="product-hub-visual-image product-hub-gif-image" src="/images/editor/screenshot/selim_anac.jpg" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="columns twelve">
-		<h5>Production ready</h5>
-		<p>Defold is a battle tested and production ready game engine. Integrations with popular third party analytics, app economy and game services are officially supported and maintained by the Defold Foundation.</p>
+
+<div class="section dark page-dark-section gradient-background-top-dark product-hub-section">
+	<div class="container">
+		<div class="product-hub-section-heading-split">
+			<div class="product-hub-section-heading-icon" aria-hidden="true">
+				<img src="/images/icons/puzzles.svg" alt="">
+			</div>
+			<div class="page-section-heading">
+				<h2>Scale up or down</h2>
+				<p>You keep the control. Reduce the size by removing unused features using a single <a href="/manuals/app-manifest">App Manifest file</a>, or add new ones via <a href="/manuals/extensions/">Native Extensions</a>, and customize the engine to your needs. Integrate third-party SDKs without building a separate engine workflow around your project. We give you Cloud Builds for frictionless, no setup builds, but you can still <a href="/manuals/extender-local-setup//">set up your own building pipeline easily</a>.</p>
+			</div>
+		</div>
+
+		<div class="product-hub-feature-stack">
+			<div class="product-hub-table-shell">
+				<h3>Engine size comparison</h3>
+				<div class="product-engine-size-table">
+					{%- include engine_size.html -%}
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
+						<img class="product-hub-visual-image product-hub-visual-image-wide slideinleft" src="/images/editor/image-extensions.png" alt="">
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/icon-toolbox.svg" alt="" aria-hidden="true"/>
+							Native extensions
+						</h3>
+						<p>The Defold SDK lets you write engine extensions in C, C++, Objective-C, Java, and JavaScript without building a separate engine workflow around your project. Typical use cases include high-performance calculations, hardware access such as mobile cameras, and integrating external SDKs for ads, analytics, and services.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>Develop extensions directly in Defold</li>
+								<li>No extra compiler setup needed for the common cloud-build path</li>
+								<li>Custom engine builds are produced for you in the cloud</li>
+								<li>Reach mobile hardware, native APIs, and platform features beyond the core runtime</li>
+								<li>Integrate analytics, ads, app economy SDKs, backend services, and game service providers</li>
+								<li>Use production-ready integrations for push notifications, in-app purchases, Facebook APIs, Firebase Analytics, game backends, and more from the Asset Portal</li>
+							</ul>
+						</div>
+						<div class="page-text-panel-actions">
+							<a class="button tertiary" href="/manuals/extensions/">Learn more about Native Extensions</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/blocks.svg" alt="" aria-hidden="true"/>
+							Extendable and customizable
+						</h3>
+						<p>Easily add libraries and extend the engine with Native Extensions, Editor Scripts and custom UI. Customize the engine and editor to your needs with powerful Native Extensions, Editor Scripts and custom UI.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>Library sharing between projects</li>
+								<li>Asset Portal with reusable components</li>
+								<li>Write Native Extensions in C, C++, ObjectiveC, Java or JavaScript</li>
+								<li>Suit the Editor to your workflow with Editor Scripts and UI</li>
+								<li>Stand alone build pipeline for custom workflows</li>
+								<li>Integrate with your own scripts or CI framework</li>
+								<li>Whole engine and editor code source available online</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
+						<img class="product-hub-visual-image product-hub-visual-image-wide slideinright" src="/images/editor/nosetup-editor@2x.png" alt="">
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/ic-64-liveupdate.svg" alt="" aria-hidden="true"/>
+							Live Updates
+						</h3>
+						<p>Defold lets you ship a smaller base package first, then fetch and mount additional content later at runtime. Use it when you want faster HTML5 startup, episodic delivery, optional level packs, or delayed downloads for very large resources such as images, videos, and other heavy content.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>Exclude selected collections from the initial bundle and load them later through collection proxies</li>
+								<li>Split content into multiple archives such as a base archive, shared files, and separate level packs</li>
+								<li>Bring the game up quickly with a minimal starter download, then stream the rest on demand</li>
+								<li>Useful for HTML5 delivery, try-before-you-buy episode structures, and keeping install size down</li>
+								<li>Google Play Asset Delivery</li>
+								<li>Mount multiple archives with priorities and keep them available across engine restarts</li>
+								<li>Built-in content verification, with support for stricter custom validation when your pipeline needs it</li>
+								<li>Separate Live Update settings for live, QA, development, or other deployment environments</li>
+							</ul>
+						</div>
+						<div class="page-text-panel-actions">
+							<a class="button tertiary" href="/manuals/live-update/">Learn more about Live Updates</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="column one-third">
-		<ul class="checkmark">
-			<li>Google and Apple push notification APIs</li>
-			<li>Google, Apple, Amazon and Facebook in-app purchases APIs</li>
-			<li>Facebook SDK APIs</li>
-		</ul>
-	</div>
-	<div class="column one-third">
-		<ul class="checkmark">
-			<li>Google Play Game Services</li>
-			<li>Firebase Analytics</li>
-			<li>AdMob, IronSource and other ad integrations and mediation services</li>
-		</ul>
-	</div>
-	<div class="column one-third">
-		<ul class="checkmark">
-			<li>Web Sockets</li>
-			<li>Nakama, PlayFab, Colyseus and other game backends</li>
-			<li>More extensions in the <a href="/assets">Asset Portal</a></li>
-		</ul>
+
+<div class="section dark page-dark-section gradient-background-bottom-dark product-hub-section">
+	<div class="container">
+		<div class="page-text-panel page-surface-panel product-why-panel">
+			<div class="product-hub-split product-why-split">
+				<div class="product-why-copy">
+					<div class="page-section-heading page-section-heading-center">
+						<h2>Why choose Defold?</h2>
+						<p>We get this question from time to time, but it is not really a question that can be answered without elaborating a bit on the design philosophy of Defold. We make no claim that Defold is the best game engine out there for any game, but we dare to say that Defold is the best game engine for some games. We have spent a lot of time and effort making sure that certain key elements of the game development process are as smooth and effortless as possible and we believe it makes Defold stand out from the crowd. Read on to learn more.</p>
+					</div>
+					<div class="page-text-panel-actions">
+						<a class="button primary" href="/why">Why Defold?</a>
+					</div>
+				</div>
+				<div class="product-hub-inline-visual product-hub-inline-visual-right" aria-hidden="true">
+					<img class="product-why-bean" src="/images/beans/bean-magGlass-01.png" alt="">
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
-<div class="row"><div class="columns twelve"><br/><br/></div></div>
+{% include always_free.html variant="page-section" %}
 
-<div class="row">
-	<h2>Why use Defold and not some other engine?</h2>
+{% include learn_section.html %}
 
-	<p>We get this question from time to time, but it is not really a question that can be answered without elaborating a bit on the design philosophy of Defold. We make no claim that Defold is the best game engine out there for any game, but we dare to say that Defold is the best game engine for <b>some games</b>. We have spent a lot of time and effort making sure that certain key elements of the game development process are as smooth and effortless as possible and we believe it makes Defold stand out from the crowd. Read on to learn more.</p>
+{% include download_cta_section.html %}
 
-	<div class="center">
-	{%- include primary_button.html text="Why Defold?" link="/why" -%}
-	</div>
-</div>
+{% include newsletter_section.html %}
 
-
-<script src="/js/transition.js"></script>
+{% include donors_and_partners.html %}

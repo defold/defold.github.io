@@ -1,0 +1,41 @@
+---
+layout: page
+title: Defold Newsletter
+description: Sign up for the Defold newsletter to get important news, releases, and useful updates without the noise.
+nav: floating
+---
+
+{%- capture newsletter_hero_copy -%}
+<p>Subscribe if you want occasional Defold updates in your inbox: release news, ecosystem highlights, useful learning material, and important things worth seeing.</p>
+<p>The emails are optional, sent sparingly, and easy to unsubscribe from at any time.</p>
+{%- endcapture -%}
+
+{%- capture newsletter_hero_actions -%}
+{% include primary_button.html link="#newsletter-signup" text="Sign up now" %}
+{% include secondary_button.html link="/blog" text="Browse the blog" %}
+{%- endcapture -%}
+
+
+{%- capture newsletter_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/ic-64-envelope.svg" alt="Blue Defold bean delivering a letter" loading="eager" decoding="async">
+{%- endcapture -%}
+
+{% include page_hub_hero.html title="Defold Newsletter" copy=newsletter_hero_copy actions=newsletter_hero_actions panel=newsletter_hero_panel aria_label="Defold newsletter illustration" %}
+
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Stay up to date with Defold!</h2>
+			<p>Hear about new Defold versions, major platform changes, and engine improvements worth your attention. See selected games, ecosystem highlights, and notable stories from the broader Defold community. Get pointers to useful guides, tutorials, and technical posts when there is something genuinely worth following up on.</p>
+		</div>
+		<div class="page-feature-grid">
+			{% include page_feature_card.html title="Release updates" body="Hear about new Defold versions, major platform changes, and engine improvements worth your attention." icon="/images/icons/icon-loudspeaker.svg" card_class="page-feature-card-forum" %}
+			{% include page_feature_card.html title="Community highlights" body="See selected games, ecosystem highlights, and notable stories from the broader Defold community." icon="/images/icons/icon-community.svg" card_class="page-feature-card-discord" %}
+			{% include page_feature_card.html title="Practical links" body="Get pointers to useful guides, tutorials, and technical posts when there is something genuinely worth following up on." icon="/images/icons/icons-bookmark.svg" card_class="page-feature-card-reddit" %}
+		</div>
+	</div>
+</div>
+
+{% include newsletter_section.html section_id="newsletter-signup" section_classes="section dark community-newsletter-section gradient-background-top-dark" title="Subscribe to the Defold newsletter" body="Get occasional Defold updates, release notes, ecosystem highlights, and practical links worth reading or watching. Emails are sent sparingly, and you can opt out any time." %}
+
+{% include donors_and_partners.html %}

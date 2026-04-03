@@ -1,113 +1,140 @@
 ---
 layout: page
 title: Submit a Defold Asset
+description: Share your Defold asset with the community by opening a prefilled GitHub issue with the asset details, tags, platforms, and links.
+nav: floating
 ---
 
-<div class="section dark" style="height: 100%; background: url(/images/beans/bean-magGlass-01.png) 100% 0%/30% no-repeat ;">
+{%- assign tags = site.data.tagindex | sort: "name" -%}
+
+{%- capture page_hero_copy -%}
+<p>Share your extension, template, tool, or sample with the Defold community. Fill in the key details here and the site will open a prefilled GitHub issue for the final submission.</p>
+<p>You can attach screenshots and additional context directly on GitHub after the issue opens.</p>
+{%- endcapture -%}
+
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/beans/beans-header-assets_header-art-assets.png" alt="Defodl beans submitting assets" loading="eager">
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="submit-hub-hero" title="Submit Asset" copy=page_hero_copy panel=page_hero_panel aria_label="Defold asset submission" %}
+
+<script type="text/javascript">
+	function submit_asset() {
+		var platforms = [];
+		if (document.getElementById("android").checked) { platforms.push("android"); }
+		if (document.getElementById("ios").checked) { platforms.push("ios"); }
+		if (document.getElementById("macos").checked) { platforms.push("macos"); }
+		if (document.getElementById("windows").checked) { platforms.push("windows"); }
+		if (document.getElementById("linux").checked) { platforms.push("linux"); }
+		if (document.getElementById("html5").checked) { platforms.push("html5"); }
+
+		var tags = [];
+		{%- for tag in tags -%}
+		if (document.getElementById("tag-{{ tag.id }}").checked) { tags.push({{ tag.name | jsonify }}); }
+		{% endfor %}
+
+		var name = document.getElementById("asset_name").value;
+		var asset = {
+			name: name,
+			description: document.getElementById("asset_description").value,
+			license: document.getElementById("asset_license").value,
+			author: document.getElementById("asset_author").value,
+			library_url: document.getElementById("asset_library_url").value,
+			project_url: document.getElementById("asset_project_url").value,
+			forum_url: document.getElementById("asset_forum_url").value,
+			website_url: document.getElementById("asset_website_url").value,
+			platforms: platforms,
+			tags: tags,
+			images: {
+				hero: "",
+				thumb: ""
+			}
+		};
+
+		var instructions = "Please attach two images on GitHub if possible: " + name + "-hero.[png|jpg] (max 2400x666) and " + name + "-thumb.[png|jpg] (max 580x380).";
+		var url = "https://github.com/defold/asset-portal/issues/new"
+			+ "?title=" + encodeURI(asset.name)
+			+ "&body=" + encodeURI(instructions + "\n\n" + JSON.stringify(asset, null, 4));
+		window.open(url, "_blank");
+	}
+</script>
+
+<div class="section dark page-dark-section gradient-background-top-dark">
 	<div class="container">
-		<div class="row">
-			<div class="columns two"><img src="/images/icons/community-assets-on-dark.svg"/></div>
-			<div class="columns eight">
-				<h1>Submit asset</h1>
-				<p>So you've created an asset? Cool! Fill out this form to share it with the community:</p>
-			</div>
-			<div class="columns two"><br/></div>
+		<div class="page-section-heading">
+			<h2>Asset details</h2>
+			<p>Keep the description concise, pick the platforms your asset supports, and select the tags that best help other developers find it.</p>
 		</div>
-		<div class="row">
-			{%- assign alltags = site.data.assetindex | map: "tags" -%}
-			{%- assign tags = alltags | uniq | sort -%}
 
-			<script type="text/javascript">
-				function submit_asset() {
-					var platforms = [];
-					if (document.getElementById("android").checked) { platforms.push("android"); }
-					if (document.getElementById("ios").checked) { platforms.push("ios"); }
-					if (document.getElementById("macos").checked) { platforms.push("macos"); }
-					if (document.getElementById("windows").checked) { platforms.push("windows"); }
-					if (document.getElementById("linux").checked) { platforms.push("linux"); }
-					if (document.getElementById("html5").checked) { platforms.push("html5"); }
-
-					var tags = [];
-					{%- for tag in tags -%}
-					if (document.getElementById("{{ tag | downcase}}").checked) { tags.push("{{ tag | downcase}}"); }
-					{% endfor %}
-
-					var name = document.getElementById("asset_name").value
-					var asset = {
-						name: name,
-						description: document.getElementById("asset_description").value,
-						license: document.getElementById("asset_license").value,
-						author: document.getElementById("asset_author").value,
-						library_url: document.getElementById("asset_library_url").value,
-						project_url: document.getElementById("asset_project_url").value,
-						forum_url: document.getElementById("asset_forum_url").value,
-						website_url: document.getElementById("asset_website_url").value,
-						platforms: platforms,
-						tags: tags,
-						images: {
-							hero: "",
-							thumb: "",
-						}
-					}
-
-					var instructions = "Optionally also attach two images " + name + "-hero.[png|jpg] (max 2400x666) and " + name + "-thumb.[png|jpg] (max 580x380)."
-					var url = "https://github.com/defold/asset-portal/issues/new"
-						+ "?title=" + encodeURI(asset["name"])
-						+ "&body=" + encodeURI(instructions + "\n" + JSON.stringify(asset, null, 4));
-					window.open(url, "_blank");
-				}
-			</script>
-
-			<div class="columns ten light-text">
-				<br/>
-				<form id="submit_asset" action="javascript: submit_asset()">
-					<label for="name">Name</label>
-					<input id="asset_name" type="text" name="name" size="80" required/><br/>
-
-					<label for="description">Description (max 250 characters)</label>
-					<textarea id="asset_description" name="description" rows="5" cols="79" maxlength="250" required></textarea><br/>
-
-					<label for="project_url">Project URL</label>
-					<input id="asset_project_url" type="text" name="project_url" size="80" required/><br/>
-
-					<label for="library_url">Library URL (optional)</label>
-					<input id="asset_library_url" type="text" name="library_url" size="80"/><br/>
-
-					<label for="forum_url">Forum URL (optional)</label>
-					<input id="asset_forum_url" type="text" name="forum_url" size="80"/><br/>
-
-					<label for="website_url">Website URL (optional)</label>
-					<input id="asset_website_url" type="text" name="website_url" size="80"/><br/>
-
-					<label for="author">Author</label>
-					<input id="asset_author" type="text" name="author" size="80" required/><br/>
-
-					<label for="license">License</label>
-					<input id="asset_license" type="text" name="license" size="80" required/><br/>
-
-					<br/>
-					<label for="platforms">Platforms</label>
-					<div class="grid-150">
-						<span><input type="checkbox" name="platforms" value="android" id="android" style="margin-right: 1rem"/><label for="android" style="display: inline">Android</label></span>
-						<span><input type="checkbox" name="platforms" value="ios" id="ios" style="margin-right: 1rem"/><label for="ios" style="display: inline">iOS</label></span>
-						<span><input type="checkbox" name="platforms" value="macos" id="macos" style="margin-right: 1rem"/><label for="macos" style="display: inline">macOS</label></span>
-						<span><input type="checkbox" name="platforms" value="windows" id="windows" style="margin-right: 1rem"/><label for="windows" style="display: inline">Windows</label></span>
-						<span><input type="checkbox" name="platforms" value="linux" id="linux" style="margin-right: 1rem"/><label for="linux" style="display: inline">Linux</label></span>
-						<span><input type="checkbox" name="platforms" value="html5" id="html5" style="margin-right: 1rem"/><label for="html5" style="display: inline">HTML5</label></span>
+		<div class="page-text-panel page-surface-panel submit-form-panel">
+			<form id="submit_asset" class="submit-form-layout" action="javascript: submit_asset()">
+				<div class="submit-form-grid">
+					<div class="submit-form-field">
+						<label for="asset_name">Name</label>
+						<input id="asset_name" type="text" name="name" required>
 					</div>
 
-					<br/>
-					<label for="tags">Tags (optional)</label>
-					<div class="grid-150">
-					{%- for tag in tags -%}
-						<span><input type="checkbox" name="tags" value="{{ tag | downcase}}" id="{{ tag | downcase}}" style="margin-right: 1rem"/><label for="{{ tag | downcase}}" style="display: inline">{{ tag }}</label></span>
-					{%- endfor -%}
+					<div class="submit-form-field">
+						<label for="asset_author">Author</label>
+						<input id="asset_author" type="text" name="author" required>
 					</div>
 
-					<input class="primary-button" type="submit" style="color: white"/>
-				</form>
-			</div>
-			<div class="columns two"><br/></div>
+					<div class="submit-form-field submit-form-field-full">
+						<label for="asset_description">Description (max 1000 characters)</label>
+						<textarea id="asset_description" name="description" rows="5" maxlength="1000" required></textarea>
+					</div>
+
+					<div class="submit-form-field">
+						<label for="asset_project_url">Project URL</label>
+						<input id="asset_project_url" type="text" name="project_url" required>
+					</div>
+
+					<div class="submit-form-field">
+						<label for="asset_library_url">Library URL (optional)</label>
+						<input id="asset_library_url" type="text" name="library_url">
+					</div>
+
+					<div class="submit-form-field">
+						<label for="asset_forum_url">Forum URL (optional)</label>
+						<input id="asset_forum_url" type="text" name="forum_url">
+					</div>
+
+					<div class="submit-form-field">
+						<label for="asset_website_url">Website URL (optional)</label>
+						<input id="asset_website_url" type="text" name="website_url">
+					</div>
+
+					<div class="submit-form-field">
+						<label for="asset_license">License</label>
+						<input id="asset_license" type="text" name="license" required>
+					</div>
+
+					<fieldset class="submit-form-field submit-form-field-full submit-form-fieldset">
+						<legend>Platforms</legend>
+						<div class="submit-form-check-grid">
+							<label class="submit-form-check" for="android"><input type="checkbox" name="platforms" value="android" id="android"><span>Android</span></label>
+							<label class="submit-form-check" for="ios"><input type="checkbox" name="platforms" value="ios" id="ios"><span>iOS</span></label>
+							<label class="submit-form-check" for="macos"><input type="checkbox" name="platforms" value="macos" id="macos"><span>macOS</span></label>
+							<label class="submit-form-check" for="windows"><input type="checkbox" name="platforms" value="windows" id="windows"><span>Windows</span></label>
+							<label class="submit-form-check" for="linux"><input type="checkbox" name="platforms" value="linux" id="linux"><span>Linux</span></label>
+							<label class="submit-form-check" for="html5"><input type="checkbox" name="platforms" value="html5" id="html5"><span>HTML5</span></label>
+						</div>
+					</fieldset>
+
+					<fieldset class="submit-form-field submit-form-field-full submit-form-fieldset">
+						<legend>Tags (select 1-3 most fitting)</legend>
+						<div class="submit-form-check-grid">
+						{%- for tag in tags -%}
+							<label class="submit-form-check" for="tag-{{ tag.id }}"><input type="checkbox" name="tags" value="{{ tag.name }}" id="tag-{{ tag.id }}"><span>{{ tag.name }}</span></label>
+						{%- endfor -%}
+						</div>
+					</fieldset>
+				</div>
+
+				<div class="submit-form-actions">
+					<button class="button primary" type="submit">Create GitHub issue</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
