@@ -1,5 +1,5 @@
 ---
-layout: page_with_learnnav_dark
+layout: page_with_learnnav
 ---
 <!-- Pagefind metadata and filters for examples -->
 <div style="display: none;" data-pagefind-filter="section">Examples</div>
@@ -8,38 +8,72 @@ layout: page_with_learnnav_dark
 <div class="section lightest dark:dark example-layout-shell">
 	<div class="container">
 		<div class="row">
-			<div class="columns two">
+			<div class="columns four example-sidebar-column">
 				{% assign all_categories = site.data.examplesindex | map: "category" | uniq | sort %}
-				<div class="sidemenu example-sidebar-panel page-surface-panel page-text-panel">
-				{% for category in all_categories %}
-					{%- assign examples = site.data.examplesindex | where: "category", category -%}
-					{%- assign checked = "" -%}
-					{%- for example in examples -%}
-						{%- if page.url contains example.path -%}
-							{%- assign checked = "checked" -%}
-						{%- endif -%}
-					{%- endfor -%}
-					<input id="collapsible_{{ category }}" class="toggle" type="checkbox" {{ checked }}/>
-					<label for="collapsible_{{ category }}" class="togglelabel">{{ category | capitalize }}</label>
-					<ul class="nobullet">
-						{% for example in examples %}
-						<li style="padding-left: 2rem;">
-							<a href="/examples/{{ example.path }}" style="text-decoration: none;">{{ example.title }}</a>
-						</li>
-						{% endfor %}
-					</ul>
-				{% endfor %}
-				</div>
-				<div class="dropdownmenu example-sidebar-mobile page-surface-panel page-text-panel">
-					<select class="dropdownmenu example-sidebar-select" onchange="location = this.value;">
+				<div class="example-sidebar-stack">
+					<div class="sidemenu example-sidebar-panel page-surface-panel page-text-panel">
 					{% for category in all_categories %}
-						<option value="">{{ category | capitalize }}</option>
-						{% assign examples = site.data.examplesindex | where: "category", category %}
-						{% for example in examples %}
-						<option value="/examples/{{ example.path }}" {% if page.url contains example.path %}selected{% endif %}> - {{ example.title }}</option>
+						{%- assign examples = site.data.examplesindex | where: "category", category -%}
+						{%- assign checked = "" -%}
+						{%- for example in examples -%}
+							{%- if page.url contains example.path -%}
+								{%- assign checked = "checked" -%}
+							{%- endif -%}
 						{%- endfor -%}
-					{%- endfor -%}
-					</select>
+						<input id="collapsible_{{ category }}" class="toggle" type="checkbox" {{ checked }}/>
+						<label for="collapsible_{{ category }}" class="togglelabel">{{ category | capitalize }}</label>
+						<ul class="nobullet">
+							{% for example in examples %}
+							<li style="padding-left: 2rem;">
+								<a href="/examples/{{ example.path }}" style="text-decoration: none;">{{ example.title }}</a>
+							</li>
+							{% endfor %}
+						</ul>
+					{% endfor %}
+					</div>
+					<div class="dropdownmenu example-sidebar-mobile page-surface-panel">
+						<details class="example-mobile-nav">
+							<summary class="example-mobile-nav-summary">
+								<span class="example-mobile-nav-summary-copy">
+									<span class="example-mobile-nav-summary-label">Browse examples</span>
+									<span class="example-mobile-nav-summary-current">{{ page.title }}</span>
+								</span>
+							</summary>
+							<div class="example-mobile-nav-list">
+							{% for category in all_categories %}
+								{%- assign examples = site.data.examplesindex | where: "category", category -%}
+								{%- assign category_open = false -%}
+								{%- for example in examples -%}
+									{%- if page.url contains example.path -%}
+										{%- assign category_open = true -%}
+									{%- endif -%}
+								{%- endfor -%}
+								<details class="example-mobile-category"{% if category_open %} open{% endif %}>
+									<summary class="example-mobile-category-summary">{{ category | capitalize }}</summary>
+									<ul class="example-mobile-links nobullet">
+									{% for example in examples %}
+										<li>
+											<a href="/examples/{{ example.path }}" class="example-mobile-link{% if page.url contains example.path %} is-current{% endif %}"{% if page.url contains example.path %} aria-current="page"{% endif %}>{{ example.title }}</a>
+										</li>
+									{% endfor %}
+									</ul>
+								</details>
+							{% endfor %}
+							</div>
+						</details>
+					</div>
+					<div class="example-sidebar-panel example-sidebar-actions page-surface-panel page-text-panel">
+						<p>This example was created by {{ page.author }}.</p>
+						{% assign zip_name = page.path | replace: "/", "_" | append: ".zip" %}
+						{% assign zip_url = "https://www.github.com/defold/examples/releases/latest/download/" | append: zip_name %}
+
+						{% include primary_button.html text="Download ⤓" link=zip_url %}
+						<p>&nbsp;</p>
+						<p>
+							Do you want to see more examples? Why not write a few yourself and submit a pull request? We love contributions.
+						</p>
+						{% include primary_button.html text="Add example ↗" link="https://github.com/defold/examples" %}
+					</div>
 				</div>
 			</div>
 			<div class="columns eight example content-flow" data-pagefind-body style="">
@@ -80,20 +114,6 @@ layout: page_with_learnnav_dark
 				{% highlight lua %}{{ script_content | replace: "	", "    " }}{% endhighlight %}
 				{% endif %}
 				{% endfor %}
-			</div>
-			<div class="columns two">
-				<div class="example-sidebar-panel example-sidebar-actions page-surface-panel page-text-panel">
-					<p>This example was created by {{ page.author }}.</p>
-					{% assign zip_name = page.path | replace: "/", "_" | append: ".zip" %}
-					{% assign zip_url = "https://www.github.com/defold/examples/releases/latest/download/" | append: zip_name %}
-
-					{% include primary_button.html text="DOWNLOAD" link=zip_url %}
-					<p>&nbsp;</p>
-					<p>
-						Do you want to see more examples? Why not write a few yourself and submit a pull request? We love contributions.
-					</p>
-					{% include primary_button.html text="GITHUB" link="https://github.com/defold/examples" %}
-				</div>
 			</div>
 		</div>
 	</div>
