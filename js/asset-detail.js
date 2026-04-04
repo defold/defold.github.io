@@ -30,25 +30,42 @@ function assetDetailCopyToClipboard(text) {
     });
 }
 
+function assetDetailGetCopyLabelNode(button) {
+    return button.querySelector("[data-copy-label]");
+}
+
+function assetDetailSetCopyButtonLabel(button, label) {
+    var labelNode = assetDetailGetCopyLabelNode(button);
+
+    if (labelNode) {
+        labelNode.textContent = label;
+        return;
+    }
+
+    button.textContent = label;
+}
+
 function assetDetailBindCopyButtons() {
     var buttons = document.querySelectorAll(".asset-copy-button[data-copy-text]");
 
     buttons.forEach(function (button) {
         button.addEventListener("click", function () {
             var textToCopy = button.dataset.copyText || "";
+            var labelNode = assetDetailGetCopyLabelNode(button);
+
             if (!textToCopy) {
                 return;
             }
 
             assetDetailCopyToClipboard(textToCopy).then(function () {
                 var copiedLabel = button.dataset.copiedLabel || "Copied!";
-                var defaultLabel = button.dataset.defaultLabel || button.textContent.trim();
+                var defaultLabel = button.dataset.defaultLabel || (labelNode ? labelNode.textContent.trim() : button.textContent.trim());
 
-                button.textContent = copiedLabel;
+                assetDetailSetCopyButtonLabel(button, copiedLabel);
                 button.disabled = true;
 
                 window.setTimeout(function () {
-                    button.textContent = defaultLabel;
+                    assetDetailSetCopyButtonLabel(button, defaultLabel);
                     button.disabled = false;
                 }, 1800);
             }).catch(function () {

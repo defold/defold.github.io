@@ -1,6 +1,6 @@
 ---
 layout: assetportal
-tag: devicecontrol
+tag: device
 title: Device
 sort: stars
 ---

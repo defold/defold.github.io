@@ -15,44 +15,52 @@ layout: page
 	{%- assign thumb_base = "" -%}
 	{%- assign thumb = "/images/asset-nothumb.jpg" -%}
 {%- endif -%}
+{%- assign project_link = asset.project_url | default: "" -%}
+{%- assign website_link = asset.website_url | default: "" -%}
 {%- assign primary_link = "" -%}
 {%- assign primary_link_text = "" -%}
 {%- assign primary_link_icon = "browser" -%}
+{%- assign primary_link_icon_image = "" -%}
 {%- assign primary_link_description = "Open the main destination for this asset." -%}
 {%- assign learn_more_link = "" -%}
 {%- assign latest_release_link = "" -%}
-{%- if asset.github_url.size > 0 -%}
-	{%- assign primary_link = asset.github_url -%}
-	{%- assign primary_link_text = "View repository" -%}
-	{%- assign primary_link_icon = "logo-github" -%}
-	{%- assign primary_link_description = "Browse the source repository, read the README, and inspect the release history." -%}
-{%- elsif asset.project_url.size > 0 -%}
-	{%- assign primary_link = asset.project_url -%}
-	{%- assign primary_link_text = "Open project page" -%}
-	{%- assign primary_link_icon = "browser" -%}
-	{%- assign primary_link_description = "Open the main project page for documentation, examples, or installation notes." -%}
-{%- elsif asset.website_url.size > 0 -%}
-	{%- assign primary_link = asset.website_url -%}
+{%- if project_link.size > 0 -%}
+	{%- assign primary_link = project_link -%}
+	{%- if project_link contains "github.com/" or project_link contains "gitlab.com/" or project_link contains "gitflic.ru/project/" -%}
+		{%- assign primary_link_text = "View Repository" -%}
+		{%- assign primary_link_description = "Open the project repository with all releases and instructions. ↗" -%}
+		{%- if project_link contains "github.com/" -%}
+			{%- assign primary_link_icon_image = "/images/icons/icon-github.svg" -%}
+		{%- endif -%}
+	{%- else -%}
+		{%- assign primary_link_text = "Open project page" -%}
+		{%- assign primary_link_icon = "browser" -%}
+		{%- assign primary_link_description = "Open the main project page for more details. ↗" -%}
+	{%- endif -%}
+{%- elsif website_link.size > 0 -%}
+	{%- assign primary_link = website_link -%}
 	{%- assign primary_link_text = "Open website" -%}
 	{%- assign primary_link_icon = "browser" -%}
-	{%- assign primary_link_description = "Open the asset website for documentation, examples, or additional details." -%}
+	{%- assign primary_link_description = "Open the asset website for more details. ↗" -%}
 {%- endif -%}
-{%- if asset.website_url.size > 0 -%}
-	{%- assign learn_more_link = asset.website_url -%}
-{%- elsif asset.project_url.size > 0 -%}
-	{%- assign learn_more_link = asset.project_url -%}
-{%- elsif asset.github_url.size > 0 -%}
-	{%- assign learn_more_link = asset.github_url -%}
+{%- if website_link.size > 0 -%}
+	{%- assign learn_more_link = website_link -%}
+{%- elsif project_link.size > 0 -%}
+	{%- assign learn_more_link = project_link -%}
 {%- endif -%}
-{%- if asset.latest_release_url.size > 0 -%}
-	{%- assign latest_release_link = asset.latest_release_url -%}
-{%- elsif asset.release_tags.size > 0 -%}
-	{%- assign latest_release_tag = asset.release_tags | first -%}
-	{%- assign latest_release_link = latest_release_tag.zip | default: "" -%}
-{%- elsif asset.releases.size > 0 -%}
-	{%- assign latest_release = asset.releases | first -%}
-	{%- assign latest_release_link = latest_release.zip | default: "" -%}
-{%- elsif asset.library_url.size > 0 -%}
+{%- assign release_entries = asset.release_tags -%}
+{%- if release_entries.size == 0 -%}
+	{%- assign release_entries = asset.releases -%}
+{%- endif -%}
+{%- assign latest_release_link = "" -%}
+{%- for release in release_entries -%}
+	{%- assign release_url = release.zip | default: "" -%}
+	{%- if release_url.size > 0 -%}
+		{%- assign latest_release_link = release_url -%}
+		{%- break -%}
+	{%- endif -%}
+{%- endfor -%}
+{%- if latest_release_link.size == 0 and asset.library_url.size > 0 -%}
 	{%- assign latest_release_link = asset.library_url -%}
 {%- endif -%}
 {%- assign show_primary_link_card = false -%}
@@ -64,6 +72,14 @@ layout: page
 		{%- assign show_primary_link_card = false -%}
 	{%- endif -%}
 {%- endif -%}
+{%- assign has_action_cards = false -%}
+{%- if show_primary_link_card or learn_more_link.size > 0 or asset.forum_url.size > 0 or asset.asset_url.size > 0 -%}
+	{%- assign has_action_cards = true -%}
+{%- endif -%}
+{%- assign has_release_panel = false -%}
+{%- if release_entries.size > 0 or asset.library_url.size > 0 -%}
+	{%- assign has_release_panel = true -%}
+{%- endif -%}
 
 <div class="section dark page-dark-section gradient-background-top-dark">
 	<div class="container">
@@ -72,81 +88,135 @@ layout: page
 				<img src="{{ thumb_base }}{{ thumb }}" alt="{{ asset.name }} thumbnail" loading="eager"/>
 			</div>
 
-			{%- if latest_release_link.size > 0 -%}
-			<div class="page-detail-actions page-button-grid">
-				<button
-					type="button"
-					class="button primary asset-copy-button"
-					data-copy-text="{{ latest_release_link | escape_once }}"
-					data-default-label="Copy latest version URL"
-					data-copied-label="Copied latest version URL">
-					Copy latest version URL
-				</button>
-			</div>
-			{%- endif -%}
-
 			<article class="page-detail-main asset-detail-main" data-pagefind-body>
 				<h1>{{ asset.name }}</h1>
 				<p class="asset-detail-summary">{%- if asset.description_long.size > 0 -%}{{ asset.description_long }}{%- else -%}{{ asset.description }}{%- endif -%}</p>
 
-				<div class="page-action-card-grid">
-					{%- if show_primary_link_card -%}
-					<a class="page-route-card asset-detail-action-card" href="{{ primary_link }}" target="_blank" rel="noopener">
-						<span class="page-route-card-icon" aria-hidden="true">
-							{% include site_icon.html name=primary_link_icon %}
-						</span>
-						<span class="page-route-card-copy">
-							<h3>{{ primary_link_text }}</h3>
-							<p>{{ primary_link_description }}</p>
-						</span>
-					</a>
+				{%- if has_action_cards or has_release_panel -%}
+				<div class="asset-detail-secondary-grid{% unless has_action_cards and has_release_panel %} asset-detail-secondary-grid-single{% endunless %}">
+					{%- if has_action_cards -%}
+					<div class="page-action-card-grid">
+						{%- if show_primary_link_card -%}
+						<a class="page-route-card asset-detail-action-card" href="{{ primary_link }}" target="_blank" rel="noopener">
+							<span class="page-route-card-icon" aria-hidden="true">
+								{% if primary_link_icon_image.size > 0 %}
+								<img src="{{ primary_link_icon_image }}" alt="">
+								{% else %}
+								{% include site_icon.html name=primary_link_icon %}
+								{% endif %}
+							</span>
+							<span class="page-route-card-copy">
+								<h3>{{ primary_link_text }}</h3>
+								<p>{{ primary_link_description }}</p>
+							</span>
+						</a>
+						{%- endif -%}
+
+						{%- if learn_more_link.size > 0 -%}
+						<a class="page-route-card asset-detail-action-card" href="{{ learn_more_link }}" target="_blank" rel="noopener">
+							<span class="page-route-card-icon" aria-hidden="true">
+								{% if same_primary_and_learn_more %}
+								{% if primary_link_icon_image.size > 0 %}
+								<img src="{{ primary_link_icon_image }}" alt="">
+								{% else %}
+								{% include site_icon.html name=primary_link_icon %}
+								{% endif %}
+								{% else %}
+								{% include site_icon.html name="book" %}
+								{% endif %}
+							</span>
+							<span class="page-route-card-copy">
+								{% if same_primary_and_learn_more %}
+								<h3>{{ primary_link_text }}</h3>
+								<p>{{ primary_link_description }}</p>
+								{% else %}
+								<h3>Learn more</h3>
+								<p>Open the project website with more details. ↗</p>
+								{% endif %}
+							</span>
+						</a>
+						{%- endif -%}
+
+						{%- if asset.forum_url.size > 0 -%}
+						<a class="page-route-card asset-detail-action-card" href="{{ asset.forum_url }}" target="_blank" rel="noopener">
+							<span class="page-route-card-icon" aria-hidden="true">
+								{% include site_icon.html name="comment-discussion" %}
+							</span>
+							<span class="page-route-card-copy">
+								<h3>Discuss on Forum</h3>
+								<p>Read existing threads or ask follow-up questions on the Defold Forum. ↗</p>
+							</span>
+						</a>
+						{%- endif -%}
+
+						{%- if asset.asset_url.size > 0 -%}
+						<a class="page-route-card asset-detail-action-card" href="{{ asset.asset_url }}" target="_blank" rel="noopener">
+							<span class="page-route-card-icon" aria-hidden="true">
+								{% include site_icon.html name="git-pull-request" %}
+							</span>
+							<span class="page-route-card-copy">
+								<h3>Update this entry</h3>
+								<p>Refresh metadata, links, or other portal details directly in the source entry. ↗</p>
+							</span>
+						</a>
+						{%- endif -%}
+					</div>
 					{%- endif -%}
 
-					{%- if learn_more_link.size > 0 -%}
-					<a class="page-route-card asset-detail-action-card" href="{{ learn_more_link }}" target="_blank" rel="noopener">
-						<span class="page-route-card-icon" aria-hidden="true">
-							{% if same_primary_and_learn_more %}
-							{% include site_icon.html name=primary_link_icon %}
-							{% else %}
-							{% include site_icon.html name="book" %}
-							{% endif %}
-						</span>
-						<span class="page-route-card-copy">
-							{% if same_primary_and_learn_more %}
-							<h3>{{ primary_link_text }}</h3>
-							<p>{{ primary_link_description }}</p>
-							{% else %}
-							<h3>Learn more</h3>
-							<p>Open the project page, website, or additional documentation for this asset.</p>
-							{% endif %}
-						</span>
-					</a>
-					{%- endif -%}
-
-					{%- if asset.forum_url.size > 0 -%}
-					<a class="page-route-card asset-detail-action-card" href="{{ asset.forum_url }}" target="_blank" rel="noopener">
-						<span class="page-route-card-icon" aria-hidden="true">
-							{% include site_icon.html name="comment-discussion" %}
-						</span>
-						<span class="page-route-card-copy">
-							<h3>Discuss on Forum</h3>
-							<p>Read existing threads or ask follow-up questions in the Defold community.</p>
-						</span>
-					</a>
-					{%- endif -%}
-
-					{%- if asset.asset_url.size > 0 -%}
-					<a class="page-route-card asset-detail-action-card" href="{{ asset.asset_url }}" target="_blank" rel="noopener">
-						<span class="page-route-card-icon" aria-hidden="true">
-							{% include site_icon.html name="git-pull-request" %}
-						</span>
-						<span class="page-route-card-copy">
-							<h3>Update this asset</h3>
-							<p>Refresh metadata, links, or other portal details directly in the source entry.</p>
-						</span>
-					</a>
+					{%- if has_release_panel -%}
+					<section class="asset-release-panel page-surface-panel" aria-labelledby="asset-releases-heading">
+						<div class="asset-release-panel-header">
+							<h2 id="asset-releases-heading">Releases</h2>
+							<p>Copy a package URL for a specific version.</p>
+						</div>
+						<div class="asset-release-list">
+							{%- if release_entries.size > 0 -%}
+								{%- for release in release_entries -%}
+									{%- assign release_url = release.zip | default: "" -%}
+									{%- assign release_label = release.version | default: release.tag | default: "Release package" -%}
+									{%- assign release_date = release.published_at | default: "" -%}
+									{%- if release_url.size > 0 -%}
+									<button
+										type="button"
+										class="button asset-release-copy-button asset-copy-button"
+										data-copy-text="{{ release_url | escape_once }}"
+										data-default-label="Copy URL"
+										data-copied-label="Copied">
+										<span class="asset-release-copy-button-info">
+											<span class="asset-release-copy-button-version">{{ release_label }}</span>
+											{%- if release_date.size > 0 -%}
+											<span class="asset-release-copy-button-date">{{ release_date | date: "%Y-%m-%d" }}</span>
+											{%- endif -%}
+										</span>
+										<span class="asset-release-copy-button-action">
+											{% include site_icon.html name="clippy" class="asset-release-copy-button-icon" %}
+											<span data-copy-label>Copy URL</span>
+										</span>
+									</button>
+									{%- endif -%}
+								{%- endfor -%}
+							{%- elsif asset.library_url.size > 0 -%}
+							<button
+								type="button"
+								class="button asset-release-copy-button asset-copy-button"
+								data-copy-text="{{ asset.library_url | escape_once }}"
+								data-default-label="Copy URL"
+								data-copied-label="Copied">
+								<span class="asset-release-copy-button-info">
+									<span class="asset-release-copy-button-version">Current package</span>
+									<span class="asset-release-copy-button-date">Library URL</span>
+								</span>
+								<span class="asset-release-copy-button-action">
+									{% include site_icon.html name="clippy" class="asset-release-copy-button-icon" %}
+									<span data-copy-label>Copy URL</span>
+								</span>
+							</button>
+							{%- endif -%}
+						</div>
+					</section>
 					{%- endif -%}
 				</div>
+				{%- endif -%}
 			</article>
 
 			<div class="page-detail-meta asset-detail-meta">
@@ -183,8 +253,8 @@ layout: page
 					<tr>
 						<td valign="top">Stars</td>
 						<td valign="top">
-							{%- if asset.project_url.size > 0 -%}
-							<a href="{{ asset.project_url }}" target="_blank" rel="noopener">{{ asset.stars }}</a>
+							{%- if project_link.size > 0 -%}
+							<a href="{{ project_link }}" target="_blank" rel="noopener">{{ asset.stars }}</a>
 							{%- else -%}
 							{{ asset.stars }}
 							{%- endif -%}

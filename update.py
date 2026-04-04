@@ -258,25 +258,6 @@ def load_frontmatter(filename):
     parts = read_as_string(filename).split("---", maxsplit = 2)
     return yaml.safe_load(parts[1])
 
-def get_asset_latest_release_url(asset):
-    candidates = []
-
-    for release in asset.get("release_tags") or []:
-        zip_url = release.get("zip")
-        if zip_url:
-            candidates.append((release.get("published_at") or "", zip_url))
-
-    for release in asset.get("releases") or []:
-        zip_url = release.get("zip")
-        if zip_url:
-            candidates.append((release.get("published_at") or "", zip_url))
-
-    if candidates:
-        candidates.sort(key=lambda item: item[0], reverse=True)
-        return candidates[0][1]
-
-    return asset.get("library_url") or ""
-
 def replace_frontmatter(filename, d):
     parts = read_as_string(filename).split("---", maxsplit = 2)
     content = parts[2].strip()
@@ -1200,14 +1181,14 @@ def process_assets(tmp_dir):
         fix_tags_case(asset["tags"])
         fix_platforms_case(asset["platforms"])
         author_name = asset["author"]
-        library_url = asset["library_url"]
+        project_url = asset.get("project_url") or asset.get("github_url") or ""
 
         author_id = hashlib.md5(author_name.encode('utf-8')).hexdigest()
         asset["author_id"] = author_id
         asset["asset_url"] = "https://github.com/defold/asset-portal/blob/master/assets/%s.json" % asset_id
-        asset["latest_release_url"] = get_asset_latest_release_url(asset)
-        if "github.com" in library_url:
-            asset["github_url"] = re.sub(r"(.*github.com/.*?/.*?)/.*", r"\1", library_url)
+        asset["project_url"] = project_url
+        asset.pop("github_url", None)
+        asset.pop("latest_release_url", None)
         write_as_json(asset_file, asset, False)
 
         # build asset index

@@ -1,6 +1,6 @@
 ---
 layout: assetportal
-tag: text
-title: Text
+tag: device
+title: Device
 sort: timestamp
 ---

@@ -8,6 +8,7 @@
 	const normalizeTag = (value) => {
 		const normalized = normalize(value);
 		const aliases = {
+			fonts: "text",
 			meshcomponent: "mesh",
 			templateprojects: "template",
 			templates: "template"

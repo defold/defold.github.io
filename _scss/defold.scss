@@ -2245,7 +2245,6 @@ a.page-tier-card:focus-visible {
 	grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
 	grid-template-areas:
 		"media main"
-		"actions main"
 		"meta main";
 	gap: 1.2rem clamp(1.8rem, 3vw, 2.8rem);
 	align-items: start;
@@ -2299,8 +2298,131 @@ a.page-tier-card:focus-visible {
 	padding-top: clamp(0.2rem, 0.4vw, 0.5rem);
 }
 
+.asset-detail-main .page-action-card-grid {
+	margin-top: clamp(2.7rem, 4vw, 3.5rem);
+}
+
+.asset-detail-secondary-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.25fr) minmax(260px, 340px);
+	gap: clamp(1.3rem, 2.4vw, 1.8rem);
+	align-items: start;
+	margin-top: clamp(2.7rem, 4vw, 3.5rem);
+}
+
+.asset-detail-secondary-grid-single {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+.asset-detail-secondary-grid .page-action-card-grid {
+	margin-top: 0;
+}
+
+.asset-detail-action-card {
+	grid-template-columns: 72px minmax(0, 1fr);
+	gap: clamp(1.35rem, 2vw, 1.7rem);
+	padding-inline: clamp(1.55rem, 2.4vw, 2rem);
+}
+
+.asset-detail-action-card .page-route-card-icon {
+	--page-route-card-icon-box-size: 72px;
+	--page-route-card-icon-image-size: 42px;
+}
+
+.asset-detail-action-card .page-route-card-icon .site-icon,
+.asset-detail-action-card .page-route-card-icon .octicon {
+	width: 36px;
+	height: 36px;
+	font-size: 39px;
+}
+
 .asset-copy-button {
 	min-height: 3.5rem;
+}
+
+.asset-release-panel {
+	margin-top: 0;
+	padding: clamp(1.45rem, 2.4vw, 1.8rem);
+}
+
+.asset-release-panel-header {
+	display: grid;
+	gap: 0.35rem;
+	margin-bottom: 1rem;
+}
+
+.asset-release-panel-header h2 {
+	margin: 0;
+	color: var(--lightest);
+	font-size: clamp(1.3rem, calc(1.15rem + 0.3vw), 1.45rem);
+}
+
+.asset-release-panel-header p {
+	margin: 0;
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+.asset-release-list {
+	display: grid;
+	gap: 0.8rem;
+}
+
+.asset-release-copy-button {
+	width: 100%;
+	justify-content: space-between;
+	gap: 1rem;
+	margin: 0 !important;
+	padding: 0.95rem 1.05rem !important;
+	min-height: 0 !important;
+	text-align: left !important;
+	white-space: normal !important;
+	font-size: 1rem;
+	font-weight: 600;
+	letter-spacing: 0;
+}
+
+.asset-release-copy-button-info {
+	display: grid;
+	gap: 0.16rem;
+	min-width: 0;
+}
+
+.asset-release-copy-button-version {
+	color: var(--darkest);
+	font-size: 1.02rem;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.asset-release-copy-button-date {
+	color: rgba(18, 45, 75, 0.66);
+	font-size: 0.84rem;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.asset-release-copy-button-action {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	flex-shrink: 0;
+	color: var(--dark);
+	font-size: 0.92rem;
+	font-weight: 700;
+}
+
+.asset-release-copy-button-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.asset-release-copy-button-icon .octicon {
+	width: 18px;
+	height: 18px;
+	font-size: 18px;
 }
 
 .asset-detail-summary {
@@ -4234,10 +4356,13 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 		grid-template-columns: 1fr;
 		grid-template-areas:
 			"media"
-			"actions"
 			"main"
 			"meta";
 		gap: clamp(1.6rem, 4.8vw, 2.2rem);
+	}
+
+	.asset-detail-secondary-grid {
+		grid-template-columns: 1fr;
 	}
 
 	.page-hero-copy h1 {
