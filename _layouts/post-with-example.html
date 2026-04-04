@@ -4,7 +4,7 @@ layout: page
 <div class="section lightest dark:dark">
 	<div class="container">
 		<div class="row">
-			<div class="columns ten">
+			<div class="columns eleven post-with-example-main">
 				{%- if page.type == "press" -%}
 				<p><a href="/press">⇠ More news</a></p>
 				{%- else -%}
@@ -14,23 +14,23 @@ layout: page
 				<p><i>By {{ page.author }} on {{ page.date | date: "%b %d, %Y" }}</i></p>
 				<p>Tagged as:&nbsp;{%- for tag in page.tags -%}<a href="/blog?tag={{ tag | slugify }}">{{ tag | capitalize}}</a>{%-unless forloop.last -%},&nbsp;{%- endunless -%}{%- endfor -%}</p>
 			</div>
-			<div class="columns two"><br/></div>
+			<div class="columns one post-with-example-sidebar-spacer" aria-hidden="true"></div>
 		</div>
 		<div class="row">
-			<div class="columns ten post example content-flow">
+			<div class="columns eleven post-with-example-main post example content-flow">
 				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
 			</div>
-			<div class="columns two"><br/></div>
+			<div class="columns one post-with-example-sidebar-spacer" aria-hidden="true"></div>
 		</div>
 		<div class="row">
-			<div class="columns ten">
+			<div class="columns eleven post-with-example-main">
 				{%- if page.type == "press" -%}
 				<p><a href="/press">⇠ More news</a></p>
 				{%- else -%}
 				<p><a href="/blog">⇠ More posts</a></p>
 				{%- endif -%}
 			</div>
-			<div class="columns two"><br/></div>
+			<div class="columns one post-with-example-sidebar-spacer" aria-hidden="true"></div>
 		</div>
 	</div>
 </div>

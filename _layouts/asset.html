@@ -2,8 +2,8 @@
 layout: page
 ---
 <!-- Pagefind metadata and filters for assets -->
-<div style="display: none;" data-pagefind-filter="section">Assets</div>
-<div style="display: none;" data-pagefind-meta="section">Assets</div>
+<div class="pagefind-hidden-meta" data-pagefind-filter="section">Assets</div>
+<div class="pagefind-hidden-meta" data-pagefind-meta="section">Assets</div>
 {%- assign asset = site.data.assets[page.asset] -%}
 {%- if asset.images.thumb contains "https" or asset.images.thumb contains "http" -%}
 	{%- assign thumb_base = "" -%}

@@ -3,7 +3,7 @@
 {%- assign learn_description_limit = include.description_limit | default: 0 | plus: 0 -%}
 <article class="asset{% if include.class %} {{ include.class }}{% endif %}" data-learn-tag-item="true" data-learn-title="{{ include.title | escape }}" data-learn-author="{{ include.author | default: '' | escape }}" data-learn-tags="{{ learn_tags | escape }}">
 	<a class="page-feature-card page-feature-card-no-badge asset-card-link" href="{{ include.link }}">
-		{%- if include.image != "" -%}
+		{%- if include.image and include.image != "" -%}
 		<span class="page-feature-card-media asset-card-media" aria-hidden="true">
 			<img src="{{ include.image }}" alt="" loading="lazy"/>
 		</span>

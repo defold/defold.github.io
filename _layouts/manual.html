@@ -2,11 +2,14 @@
 layout: page_with_learnnav
 ---
 <!-- Pagefind metadata and filters for manuals -->
-<div style="display: none;" data-pagefind-filter="section">Manuals</div>
-<div style="display: none;" data-pagefind-meta="section">Manuals</div>
+<div class="pagefind-hidden-meta" data-pagefind-filter="section">Manuals</div>
+<div class="pagefind-hidden-meta" data-pagefind-meta="section">Manuals</div>
 
 {%- assign page_locale = page.locale | default: "en" -%}
 {%- assign locale_info = site.data.localeindex | where: "locale", page_locale | first -%}
+{%- assign previous_manual = nil -%}
+{%- assign next_manual = nil -%}
+{%- assign found_current_manual = false -%}
 {%- for section in site.data.learnindex.navigation.manuals -%}
 	{%- for manual in section.items -%}
 		{% comment %}https://stackoverflow.com/a/37026674{% endcomment %}
@@ -15,24 +18,64 @@ layout: page_with_learnnav
 		{%- assign page_url_size = page.url | size -%}
 		{%- assign start_index = page_url_size | minus: manual_path_size -%}
 		{%- assign result = page.url | slice: start_index, manual_path_size -%}
-		
+
+		{%- if found_current_manual and next_manual == nil -%}
+			{%- assign next_manual = manual -%}
+		{%- endif -%}
+
 		{%- if result == manual_path -%}
 			{%- assign current_manual = manual -%}
 			{%- assign current_section = section -%}
+			{%- assign found_current_manual = true -%}
+		{%- elsif found_current_manual == false -%}
+			{%- assign previous_manual = manual -%}
 		{%- endif -%}
 	{%- endfor -%}
 {%- endfor -%}
-<div class="section lightest dark:dark manual-layout-shell">
+{%- assign previous_manual_link = "" -%}
+{%- assign next_manual_link = "" -%}
+{%- if previous_manual -%}
+	{%- assign previous_manual_link = previous_manual.path -%}
+	{%- if page_locale != "en" and previous_manual.languages contains page_locale -%}
+		{%- assign previous_manual_link = "/" | append: locale_info.urlprefix | append: previous_manual.path -%}
+	{%- endif -%}
+{%- endif -%}
+{%- if next_manual -%}
+	{%- assign next_manual_link = next_manual.path -%}
+	{%- if page_locale != "en" and next_manual.languages contains page_locale -%}
+		{%- assign next_manual_link = "/" | append: locale_info.urlprefix | append: next_manual.path -%}
+	{%- endif -%}
+{%- endif -%}
+{%- assign previous_manual_title = previous_manual.name -%}
+{%- if previous_manual -%}
+	{%- assign previous_manual_url = previous_manual.path | split: "#" | first -%}
+	{%- assign previous_manual_page = site.pages | where: "url", previous_manual_url | first -%}
+	{%- if previous_manual_page == nil -%}
+		{%- assign previous_manual_url_last_char = previous_manual_url | slice: -1, 1 -%}
+		{%- if previous_manual_url_last_char != "/" -%}
+			{%- assign previous_manual_lookup_url = previous_manual_url | append: "/" -%}
+			{%- assign previous_manual_page = site.pages | where: "url", previous_manual_lookup_url | first -%}
+		{%- endif -%}
+	{%- endif -%}
+	{%- assign previous_manual_title = previous_manual_page.title | default: previous_manual.name -%}
+{%- endif -%}
+{%- assign next_manual_title = next_manual.name -%}
+{%- if next_manual -%}
+	{%- assign next_manual_url = next_manual.path | split: "#" | first -%}
+	{%- assign next_manual_page = site.pages | where: "url", next_manual_url | first -%}
+	{%- if next_manual_page == nil -%}
+		{%- assign next_manual_url_last_char = next_manual_url | slice: -1, 1 -%}
+		{%- if next_manual_url_last_char != "/" -%}
+			{%- assign next_manual_lookup_url = next_manual_url | append: "/" -%}
+			{%- assign next_manual_page = site.pages | where: "url", next_manual_lookup_url | first -%}
+		{%- endif -%}
+	{%- endif -%}
+	{%- assign next_manual_title = next_manual_page.title | default: next_manual.name -%}
+{%- endif -%}
+<div class="section lightest dark:dark learn-detail-shell manual-layout-shell">
 	<div class="container">
 		<div class="row">
-			<div class="columns two learn-sidebar-column">
-				<div class="learn-sidebar-stack">
-					{%- assign current_section_name = current_section.name | default: "" -%}
-					{%- assign current_manual_title = current_manual.name | default: page.title -%}
-					{% include learn_sidebar_nav.html kind="manuals" browse_label="Browse manuals" current_title=current_manual_title current_section_name=current_section_name page_locale=page_locale locale_info=locale_info %}
-				</div>
-			</div>
-			<div class="columns eight manual">
+			<div class="columns eight learn-detail-main manual">
 				{%- if page_locale != "en" -%}
 				{%- capture urlprefix -%}/{{ locale_info.urlprefix }}/{%- endcapture -%}
 				<div class="sidenote">
@@ -40,44 +83,38 @@ layout: page_with_learnnav
 				</div>
 				{%- endif -%}
 				<div class="content-flow" data-pagefind-body>
+					{% include learn_detail_pager.html class="learn-detail-pager-top" previous_link=previous_manual_link previous_title=previous_manual_title hub_link="/manuals" hub_title="All manuals" next_link=next_manual_link next_title=next_manual_title %}
 					{% include anchor_headings.html html=content anchorClass="anchor-link" %}
+					{% include learn_detail_pager.html previous_link=previous_manual_link previous_title=previous_manual_title hub_link="/manuals" hub_title="All manuals" next_link=next_manual_link next_title=next_manual_title %}
 				</div>
 			</div>
-			<div class="columns two manual-sidebar-column-right">
-				<div class="manual-sidebar-stack">
-					<div class="manual-sidebar-feedback page-surface-panel page-text-panel">
-						<p>
-							Did you spot an error or do you have a suggestion? Please let us know on GitHub!
-						</p>
-						{% include secondary_button.html text="GITHUB" link=page.github %}
-					</div>
-
-					<div class="manual-sidebar-sections learn-sidebar-panel page-surface-panel page-text-panel">
+			<div class="columns four learn-detail-sidebar">
+				<div class="learn-detail-sidebar-stack">
+					{% include learn_detail_feedback.html link=page.github %}
+					<div class="learn-detail-panel learn-detail-sections learn-sidebar-panel page-surface-panel page-text-panel">
 						<input class="toggle" type="checkbox" checked/>
 						<label class="togglelabel">On this page</label>
 						<ul class="nobullet">
 						{%- for t in page.toc -%}
-							<li style="padding-left: 2rem;">
-								<a href='#{{ t | downcase | replace: " ", "-" | replace: "/", "" }}' style="text-decoration: none;">{{ t }}</a>
+							<li class="learn-detail-list-item">
+								<a class="learn-detail-list-link" href='#{{ t | downcase | replace: " ", "-" | replace: "/", "" }}'>{{ t }}</a>
 							</li>
 						{%- endfor -%}
 						</ul>
 
 						<hr/>
 
-						{%- if site.data.localeindex.size > 1 -%}
+						{%- if site.data.localeindex.size > 1 and current_manual -%}
 						<input class="toggle" type="checkbox" checked/>
 						<label class="togglelabel">Languages</label>
 						<ul class="nobullet">
 						{%- for l in site.data.localeindex -%}
-							{%- if l.active -%}
-							<li style="padding-left: 2rem;">
+							{%- if l.active and current_manual.languages contains l.locale -%}
+							<li class="learn-detail-list-item">
 								{%- if l.locale == "en" -%}
-									<a href='{{ current_manual.path }}' style="text-decoration: none;">{{ l.name }}</a>
+									<a class="learn-detail-list-link" href='{{ current_manual.path }}'>{{ l.name }}</a>
 								{%- elsif current_manual.languages contains l.locale -%}
-									<a href='/{{ l.urlprefix }}{{ current_manual.path }}' style="text-decoration: none;">{{ l.name }}</a>
-								{%- else -%}
-									<a href='/{{ l.locale }}/manuals/introduction' style="text-decoration: none;">{{ l.name }}</a>
+									<a class="learn-detail-list-link" href='/{{ l.urlprefix }}{{ current_manual.path }}'>{{ l.name }}</a>
 								{%- endif -%}
 							</li>
 							{%- endif -%}

@@ -2,16 +2,82 @@
 layout: page_with_learnnav
 ---
 <!-- Pagefind metadata and filters for examples -->
-<div style="display: none;" data-pagefind-filter="section">Examples</div>
-<div style="display: none;" data-pagefind-meta="section">Examples</div>
+<div class="pagefind-hidden-meta" data-pagefind-filter="section">Examples</div>
+<div class="pagefind-hidden-meta" data-pagefind-meta="section">Examples</div>
 
-<div class="section lightest dark:dark example-layout-shell">
+{%- assign previous_example = nil -%}
+{%- assign next_example = nil -%}
+{%- assign found_current_example = false -%}
+{%- for listed_example in site.data.examplesindex -%}
+	{%- capture listed_example_url -%}/examples/{{ listed_example.path }}/{%- endcapture -%}
+	{%- if found_current_example and next_example == nil -%}
+		{%- assign next_example = listed_example -%}
+	{%- endif -%}
+	{%- if page.url == listed_example_url -%}
+		{%- assign found_current_example = true -%}
+	{%- elsif found_current_example == false -%}
+		{%- assign previous_example = listed_example -%}
+	{%- endif -%}
+{%- endfor -%}
+{%- assign previous_example_link = "" -%}
+{%- assign next_example_link = "" -%}
+{%- if previous_example -%}
+	{%- assign previous_example_link = "/examples/" | append: previous_example.path -%}
+{%- endif -%}
+{%- if next_example -%}
+	{%- assign next_example_link = "/examples/" | append: next_example.path -%}
+{%- endif -%}
+
+<div class="section lightest dark:dark learn-detail-shell example-layout-shell">
 	<div class="container">
 		<div class="row">
-			<div class="columns four learn-sidebar-column">
-				<div class="learn-sidebar-stack">
-					{% include learn_sidebar_nav.html kind="examples" browse_label="Browse examples" current_title=page.title %}
-					<div class="learn-sidebar-panel learn-sidebar-actions page-surface-panel page-text-panel">
+			<div class="columns eight learn-detail-main example">
+				<div class="content-flow" data-pagefind-body>
+					{% include learn_detail_pager.html class="learn-detail-pager-top" previous_link=previous_example_link previous_title=previous_example.title hub_link="/examples" hub_title="All examples" next_link=next_example_link next_title=next_example.title %}
+					<h4>{{ page.title }}</h4>
+					<div id="app-container" class="canvas-app-container canvas-app-container-hidden">
+						<div id="canvas-container" class="canvas-app-canvas-container"></div>
+						<div class="buttons-background"></div>
+					</div>
+					<!-- the canvas is intentionally moved outside of the app-container to
+					not be affected by any scaling options set in game.project -->
+					<canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="680" height="680"></canvas>
+					<script id='engine-loader' type='text/javascript' src="dmloader.js"></script>
+					<script id='engine-start' type='text/javascript'>
+						EngineLoader.load("canvas", "Defoldexamples");
+					</script>
+					<br/>
+					<h4>Setup</h4>
+
+					{{ content }}
+
+					{%- if page.scripts.size > 0 -%}
+					<h4>Scripts</h4>
+					{% endif %}
+					{% assign scripts = page.scripts | split: "," %}
+					{% assign collection = page.collection %}
+					{% assign path = page.path %}
+					{% for script in scripts %}
+					<p>{{ script }}</p>
+					{% comment %}
+						Assign content of the script into a variable and then
+						replace each tab with 4 spaces to have consistent indentations
+					{% endcomment %}
+					{% capture script_content %}{% include examples/{{ path }}/{{ script | lstrip | replace: ".script", "_script.md" | replace: ".gui_script", "_gui_script.md" | replace: ".lua", "_lua.md" | replace: ".vp", "_vp.md" | replace: ".fp", "_fp.md" }} %}{% endcapture %}
+					{% assign script_ext = script | split:'.' | last %}
+					{% if script_ext == "vp" or script_ext == "fp" %}
+					{% highlight glsl %}{{ script_content | replace: "	", "    " }}{% endhighlight %}
+					{% else %}
+					{% highlight lua %}{{ script_content | replace: "	", "    " }}{% endhighlight %}
+					{% endif %}
+					{% endfor %}
+
+					{% include learn_detail_pager.html previous_link=previous_example_link previous_title=previous_example.title hub_link="/examples" hub_title="All examples" next_link=next_example_link next_title=next_example.title %}
+				</div>
+			</div>
+			<div class="columns four learn-detail-sidebar">
+				<div class="learn-detail-sidebar-stack">
+					<div class="learn-detail-panel learn-detail-actions page-surface-panel page-text-panel">
 						<p>This example was created by {{ page.author }}.</p>
 						{% assign zip_name = page.path | replace: "/", "_" | append: ".zip" %}
 						{% assign zip_url = "https://www.github.com/defold/examples/releases/latest/download/" | append: zip_name %}
@@ -24,45 +90,6 @@ layout: page_with_learnnav
 						{% include primary_button.html text="Add example ↗" link="https://github.com/defold/examples" %}
 					</div>
 				</div>
-			</div>
-			<div class="columns eight example content-flow" data-pagefind-body style="">
-				<h4>{{ page.title }}</h4>
-				<div id="app-container" class="canvas-app-container" style="display:none">
-					<div id="canvas-container" class="canvas-app-canvas-container"></div>
-					<div class="buttons-background"></div>
-				</div>
-				<!-- the canvas is intentionally moved outside of the app-container to
-				not be affected by any scaling options set in game.project -->
-				<canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="680" height="680"></canvas>
-				<script id='engine-loader' type='text/javascript' src="dmloader.js"></script>
-				<script id='engine-start' type='text/javascript'>
-					EngineLoader.load("canvas", "Defoldexamples");
-				</script>
-				<br/>
-				<h4>Setup</h4>
-
-				{{ content }}
-
-				{%- if page.scripts.size > 0 -%}
-				<h4>Scripts</h4>
-				{% endif %}
-				{% assign scripts = page.scripts | split: "," %}
-				{% assign collection = page.collection %}
-				{% assign path = page.path %}
-				{% for script in scripts %}
-				<p>{{ script }}</p>
-				{% comment %}
-					Assign content of the script into a variable and then
-					replace each tab with 4 spaces to have consistent indentations
-				{% endcomment %}
-				{% capture script_content %}{% include examples/{{ path }}/{{ script | lstrip | replace: ".script", "_script.md" | replace: ".gui_script", "_gui_script.md" | replace: ".lua", "_lua.md" | replace: ".vp", "_vp.md" | replace: ".fp", "_fp.md" }} %}{% endcapture %}
-				{% assign script_ext = script | split:'.' | last %}
-				{% if script_ext == "vp" or script_ext == "fp" %}
-				{% highlight glsl %}{{ script_content | replace: "	", "    " }}{% endhighlight %}
-				{% else %}
-				{% highlight lua %}{{ script_content | replace: "	", "    " }}{% endhighlight %}
-				{% endif %}
-				{% endfor %}
 			</div>
 		</div>
 	</div>

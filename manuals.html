@@ -5,50 +5,62 @@ description: Read the Defold manuals to learn engine concepts, editor workflows,
 nav: floating
 ---
 
-<div class="section hero center blackwhite dark:darken-10" style='background-image: url("/images/hero/testimonials-background-0.5x.png");'>
-	<div class="container">
-		<div class="row">
-			<div class="column one-half left">
-				<h1>Learn Defold manuals with a clear start path</h1>
-				<p>Manuals explain Defold concepts, editor workflows, and system behavior in depth.</p>
-			</div>
-		</div>
-	</div>
-</div>
+{%- capture page_hero_copy -%}
+<p>The Defold manuals are the core reference for how the editor, runtime systems, and workflows fit together.</p>
+<p>Use them when you want durable explanations, conceptual grounding, and focused documentation you can return to as projects grow.</p>
+{%- endcapture -%}
+
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/icons-learn-export_ic-learn-manuals.svg" alt="Defold manuals icon" loading="eager">
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="learn-hub-hero learn-catalog-hero" title="Manuals" copy=page_hero_copy panel=page_hero_panel aria_label="Defold manuals overview" %}
 
 <div class="section lightest dark:dark">
 	<div class="container">
-		<div class="row">
-			<div class="columns full">
-				<h2>Start here before deep reading</h2>
-				<p>Do one quick runnable loop first: install Defold, create from <strong>TUTORIALS</strong>, build once, then change one value and build again.</p>
-				<div class="center">
-					{% include primary_button.html text="Open Start Here Map" link="/learn/" %}
-					{% include secondary_button.html text="Open First Hour Tutorial" link="/tutorials/first-hour/" %}
-				</div>
-				<br/>
-			</div>
-		</div>
-		<div class="row">
-			<div class="columns full">
-				<h3>Quick picks</h3>
-				<div class="grid-250">
-					{% include card.html title="New to Defold" body="Use the beginner route first, then return to manuals with context from one working project." link="/tutorials/getting-started/" min-height="220px" topicon="/images/icons/icons-learn-export_ic-learn-tutorials.svg" %}
-					{% include card.html title="Migrating from another engine" body="Start with migration-first mapping before porting bigger systems." link="/manuals/migration-first-steps/" min-height="220px" topicon="/images/icons/ic-32-shuffle.svg" %}
-					{% include card.html title="Evaluating for team" body="Use the studio checklist for adoption, workflow risk, and rollout planning." link="/manuals/studio-evaluation-checklist/" min-height="220px" topicon="/images/icons/ic-32-star.svg" %}
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="columns full">
-				<h3>Manual index</h3>
-				<p>When you are ready for deeper reference-style learning, use the full introduction index.</p>
-				<div class="center">
-					{% include primary_button.html text="Open Manuals Introduction" link="/manuals/introduction/" %}
-				</div>
+		<div class="page-filter-grid-two-up-tablet" data-learn-tag-catalog>
+			{% include learn_tag_filter.html label="Filter manuals by topic" result_items="manuals" exclude_tags="manual" items=site.data.learnindex.navigation.manuals child_property="items" %}
+			<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
+				{%- for section in site.data.learnindex.navigation.manuals -%}
+					{%- for manual in section.items -%}
+						{%- assign manual_url = manual.path | split: "#" | first -%}
+						{%- assign manual_page = site.pages | where: "url", manual_url | first -%}
+						{%- if manual_page == nil -%}
+							{%- assign manual_url_last_char = manual_url | slice: -1, 1 -%}
+							{%- if manual_url_last_char != "/" -%}
+								{%- assign manual_page_lookup_url = manual_url | append: "/" -%}
+								{%- assign manual_page = site.pages | where: "url", manual_page_lookup_url | first -%}
+							{%- endif -%}
+						{%- endif -%}
+						{%- assign manual_card_title = manual_page.title | default: manual.name -%}
+						{%- capture manual_description -%}{{ manual_page.brief | default: manual.description }}{%- endcapture -%}
+						{%- assign manual_description = manual_description | strip_html | strip_newlines | strip -%}
+						{%- if manual_page -%}
+							{%- capture manual_excerpt_fallback -%}{{ manual_page.excerpt | strip_html | strip_newlines | strip }}{%- endcapture -%}
+							{%- assign manual_excerpt_fallback = manual_excerpt_fallback | strip -%}
+						{%- else -%}
+							{%- assign manual_excerpt_fallback = "" -%}
+						{%- endif -%}
+						{%- if manual_description == blank and manual_excerpt_fallback != blank -%}
+							{%- assign manual_description = manual_excerpt_fallback -%}
+						{%- endif -%}
+						{%- if manual_description == blank -%}
+							{%- if manual.path contains "http" -%}
+								{%- capture manual_description -%}External reference linked from the Defold manuals for {{ manual_card_title }}.{%- endcapture -%}
+							{%- else -%}
+								{%- capture manual_description -%}Reference guide covering {{ manual_card_title }} in Defold.{%- endcapture -%}
+							{%- endif -%}
+							{%- assign manual_description = manual_description | strip -%}
+						{%- endif -%}
+						{% comment %}{% include learn_card.html title=manual_card_title description=manual_description description_limit=220 link=manual.path image="/images/icons/icons-learn-export_ic-learn-manuals.svg" tags=manual.tags %}{% endcomment %}
+						{% include learn_card.html title=manual_card_title description=manual_description description_limit=220 link=manual.path tags=manual.tags %}
+					{%- endfor -%}
+				{%- endfor -%}
 			</div>
 		</div>
 	</div>
 </div>
 
 {% include learn_section.html %}
+
+<script src="/js/learn-tag-filter.js"></script>

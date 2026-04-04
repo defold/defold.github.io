@@ -2,12 +2,15 @@
 layout: page_with_learnnav
 ---
 <!-- Pagefind metadata and filters for tutorials -->
-<div style="display: none;" data-pagefind-filter="section">Tutorials</div>
-<div style="display: none;" data-pagefind-meta="section">Tutorials</div>
+<div class="pagefind-hidden-meta" data-pagefind-filter="section">Tutorials</div>
+<div class="pagefind-hidden-meta" data-pagefind-meta="section">Tutorials</div>
 
 {%- assign page_locale = page.locale | default: "en" -%}
 {%- assign locale_info = site.data.localeindex | where: "locale", page_locale | first -%}
 {%- assign github_link = page.github | default: "https://github.com/defold/doc" -%}
+{%- assign previous_tutorial = nil -%}
+{%- assign next_tutorial = nil -%}
+{%- assign found_current_tutorial = false -%}
 {%- for tutorial in site.data.learnindex.navigation.tutorials -%}
 	{%- if tutorial.path contains "/tutorials/" -%}
 		{%- assign tutorial_path = tutorial.path | append: "/" -%}
@@ -15,109 +18,85 @@ layout: page_with_learnnav
 		{%- assign page_url_size = page.url | size -%}
 		{%- assign start_index = page_url_size | minus: tutorial_path_size -%}
 		{%- assign result = page.url | slice: start_index, tutorial_path_size -%}
+		{%- if found_current_tutorial and next_tutorial == nil -%}
+			{%- assign next_tutorial = tutorial -%}
+		{%- endif -%}
 		{%- if result == tutorial_path -%}
 			{%- assign current_tutorial = tutorial -%}
+			{%- assign found_current_tutorial = true -%}
+		{%- elsif found_current_tutorial == false -%}
+			{%- assign previous_tutorial = tutorial -%}
 		{%- endif -%}
 	{%- endif -%}
 {%- endfor -%}
+{%- assign previous_tutorial_link = "" -%}
+{%- assign next_tutorial_link = "" -%}
+{%- if previous_tutorial -%}
+	{%- assign previous_tutorial_link = previous_tutorial.path -%}
+	{%- if page_locale != "en" and previous_tutorial.locales contains page_locale -%}
+		{%- assign previous_tutorial_link = "/" | append: locale_info.urlprefix | append: previous_tutorial.path -%}
+	{%- endif -%}
+{%- endif -%}
+{%- if next_tutorial -%}
+	{%- assign next_tutorial_link = next_tutorial.path -%}
+	{%- if page_locale != "en" and next_tutorial.locales contains page_locale -%}
+		{%- assign next_tutorial_link = "/" | append: locale_info.urlprefix | append: next_tutorial.path -%}
+	{%- endif -%}
+{%- endif -%}
 
-<div class="section lightest dark:dark">
+<div class="section lightest dark:dark learn-detail-shell tutorial-layout-shell">
 	<div class="container">
 		<div class="row">
-			<div class="columns two">
-				<div class="sidemenu">
-					<ul class="nobullet">
-					{% for tutorial in site.data.learnindex.navigation.tutorials %}
-						{%- assign checked = "" -%}
-						{%- if page.url contains tutorial.path -%}
-							{%- assign checked = "checked" -%}
-						{%- endif -%}
-						<li style="padding-left: 2rem;">
-							{%- if tutorial.path contains "/tutorials/" -%}
-								{%- if page_locale == "en" -%}
-									<a href="{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }}</a>
-								{%- elsif tutorial.locales contains page_locale -%}
-									<a href="/{{ locale_info.urlprefix }}{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }}</a>
-								{%- else -%}
-									<a href="{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }} (English)</a>
-								{%- endif -%}
-							{%- else -%}
-								<a href="{{ tutorial.path }}" style="text-decoration: none;">{{ tutorial.name }}</a>
-							{%- endif -%}
-						</li>
-					{% endfor %}
-					</ul>
-				</div>
-				<div class="dropdownmenu">
-					<select class="dropdownmenu" onchange="location = this.value;">
-						{% for tutorial in site.data.learnindex.navigation.tutorials %}
-						{%- if tutorial.path contains "/tutorials/" -%}
-							{%- if page_locale == "en" -%}
-								<option value="{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }}</option>
-							{%- elsif tutorial.locales contains page_locale -%}
-								<option value="/{{ locale_info.urlprefix }}{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }}</option>
-							{%- else -%}
-								<option value="{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }} (English)</option>
-							{%- endif -%}
-						{%- else -%}
-							<option value="{{ tutorial.path }}" {% if page.url contains tutorial.path %}selected{% endif %}> - {{ tutorial.name }}</option>
-						{%- endif -%}
-						{% endfor %}
-					</select>
-				</div>
-			</div>
-			<div class="columns eight tutorial">
+			<div class="columns eight learn-detail-main tutorial">
 				{%- if page_locale != "en" and current_tutorial -%}
 				{%- capture urlprefix -%}/{{ locale_info.urlprefix }}/{%- endcapture -%}
 				<div class="sidenote">
 					<p>This translation is community contributed and may not be up to date. We only maintain the English version of the documentation. <a href="{{ page.url | replace: urlprefix, "/" }}">Read this tutorial in English</a></p>
 				</div>
 				{%- endif -%}
-				<div class="columns eight tutorial content-flow" data-pagefind-body>
+				<div class="content-flow" data-pagefind-body>
+				{% include learn_detail_pager.html class="learn-detail-pager-top" previous_link=previous_tutorial_link previous_title=previous_tutorial.name hub_link="/tutorials" hub_title="All tutorials" next_link=next_tutorial_link next_title=next_tutorial.name %}
 				{%- if page.difficulty -%}
-				<p style="margin-top: 0;"><span class="difficulty-tag">{{ page.difficulty }}</span></p>
-				{%- endif -%}
-				{%- if current_tutorial and current_tutorial.tags and current_tutorial.tags.size > 0 -%}
-				<div class="tutorial-tag-panel page-surface-panel">
-					<div class="tutorial-tag-row asset-hub-filter-grid">
-						{%- for tag in current_tutorial.tags -%}
-							{%- assign tag_slug = tag | downcase | strip -%}
-							{%- capture tag_label -%}{% include learn_tag_label.html slug=tag_slug %}{%- endcapture -%}
-							{%- capture tag_icon -%}{% include learn_tag_icon_name.html slug=tag_slug %}{%- endcapture -%}
-							<a class="filter tutorial-tag-chip" href="/tutorials?tag={{ tag_slug }}">
-								{% include site_icon.html name=tag_icon class="asset-hub-filter-icon" %}
-								<span class="asset-hub-filter-text">{{ tag_label | strip }}</span>
-							</a>
-						{%- endfor -%}
-					</div>
-				</div>
+				<p class="learn-detail-difficulty-row"><span class="difficulty-tag">{{ page.difficulty }}</span></p>
 				{%- endif -%}
 				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
+				{% include learn_detail_pager.html previous_link=previous_tutorial_link previous_title=previous_tutorial.name hub_link="/tutorials" hub_title="All tutorials" next_link=next_tutorial_link next_title=next_tutorial.name %}
 				</div>
 			</div>
-			<div class="columns two">
+			<div class="columns four learn-detail-sidebar">
+				<div class="learn-detail-sidebar-stack">
+				{% include learn_detail_feedback.html link=github_link %}
+				{%- if page.difficulty or current_tutorial -%}
+				<div class="learn-detail-panel learn-detail-sections learn-sidebar-panel page-surface-panel page-text-panel">
+				{%- if page.difficulty -%}
+				<label class="togglelabel">Tutorial</label>
+				<ul class="nobullet">
+					<li class="learn-detail-list-item">
+						<span class="difficulty-tag">{{ page.difficulty }}</span>
+					</li>
+				</ul>
+				<hr/>
+				{%- endif -%}
 				{%- if site.data.localeindex.size > 1 and current_tutorial -%}
 				<input class="toggle" type="checkbox" checked/>
 				<label class="togglelabel">Languages</label>
 				<ul class="nobullet">
 				{%- for l in site.data.localeindex -%}
 					{%- if l.active and current_tutorial.locales contains l.locale -%}
-					<li style="padding-left: 2rem;">
+					<li class="learn-detail-list-item">
 						{%- if l.locale == "en" -%}
-							<a href='{{ current_tutorial.path }}' style="text-decoration: none;">{{ l.name }}</a>
+							<a class="learn-detail-list-link" href='{{ current_tutorial.path }}'>{{ l.name }}</a>
 						{%- elsif current_tutorial.locales contains l.locale -%}
-							<a href='/{{ l.urlprefix }}{{ current_tutorial.path }}' style="text-decoration: none;">{{ l.name }}</a>
+							<a class="learn-detail-list-link" href='/{{ l.urlprefix }}{{ current_tutorial.path }}'>{{ l.name }}</a>
 						{%- endif -%}
 					</li>
 					{%- endif -%}
 				{%- endfor -%}
 				</ul>
-				<hr/>
 				{%- endif -%}
-				<p>
-					Did you spot an error or do you have a suggestion? Please let us know on GitHub!
-				</p>
-				{% include secondary_button.html text="GITHUB" link=github_link %}
+				</div>
+				{%- endif -%}
+				</div>
 			</div>
 		</div>
 	</div>
