@@ -1,0 +1,21 @@
+{%- assign tutorial = include.tutorial -%}
+{%- assign tutorial_group = "more-tutorials" -%}
+
+{%- if tutorial.path == "/tutorials/main-menu" or tutorial.path == "/tutorials/level-complete" -%}
+	{%- assign tutorial_group = "ui-art" -%}
+{%- elsif tutorial.name == "How to Make a Game in Defold" or tutorial.name == "Tactx Studios tutorials" -%}
+	{%- assign tutorial_group = "more-tutorials" -%}
+{%- elsif tutorial.tags contains "onboarding" -%}
+	{%- assign tutorial_group = "getting-started" -%}
+{%- elsif tutorial.tags contains "rendering" -%}
+	{%- assign tutorial_group = "rendering" -%}
+{%- elsif tutorial.tags contains "web" -%}
+	{%- assign tutorial_group = "web" -%}
+{%- elsif tutorial.tags contains "ui-art" -%}
+	{%- assign tutorial_group = "ui-art" -%}
+{%- elsif tutorial.tags contains "gameplay" -%}
+	{%- assign tutorial_group = "gameplay" -%}
+{%- elsif tutorial.tags contains "scripting" or tutorial.tags contains "input" -%}
+	{%- assign tutorial_group = "scripting-input" -%}
+{%- endif -%}
+{{- tutorial_group -}}

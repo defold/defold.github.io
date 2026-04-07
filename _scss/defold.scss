@@ -259,6 +259,15 @@
 .light-text {
 	color: var(--light);
 }
+
+.features-section-image {
+	display: block;
+	margin-inline: auto;
+}
+
+.features-section-image-compact {
+	width: 80%;
+}
 .light-text a {
 	color: var(--light);
 }
@@ -7248,44 +7257,33 @@ ul.checkmark.page-checklist li:before {
 	margin-bottom: clamp(3.2rem, 4.8vw, 4.4rem);
 }
 
-.learn-first-step-card {
-	grid-template-columns: minmax(0, 1fr);
-	gap: 0.95rem;
+.learn-first-step-route-card {
+	--page-route-card-tint: rgba(57, 163, 228, 0.14);
 }
 
-.learn-first-step-card .page-feature-card-badge,
-.learn-first-step-card .page-feature-card-copy {
-	grid-column: 1 / -1;
+.learn-first-step-route-card .page-route-card-copy {
+	display: grid;
+	gap: 0.55rem;
 }
 
-.learn-first-step-card .page-feature-card-badge {
+.learn-first-step-route-card h3 {
+	margin: 0;
+	color: var(--lightest);
+	font-size: 1.9rem;
+	line-height: 1.28;
+}
+
+.learn-first-step-pill {
 	justify-self: start;
 	width: auto;
-	height: auto;
 	padding: 0.16rem 0.5rem;
 	border-radius: 999px;
 	border: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.learn-first-step-card .page-feature-card-badge-text {
 	font-size: 0.95rem;
 	font-weight: 700;
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
 	color: rgba(255, 255, 255, 0.86);
-}
-
-.learn-first-step-card .page-feature-card-copy {
-	display: grid;
-	gap: 0.55rem;
-	height: auto;
-}
-
-.learn-first-step-card h3 {
-	margin: 0;
-	color: var(--lightest);
-	font-size: 1.9rem;
-	line-height: 1.28;
 }
 
 #start-your-journey {

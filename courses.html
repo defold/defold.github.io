@@ -1,43 +1,15 @@
 ---
-layout: page_with_learnnav
+layout: learn_hub
 title: Defold courses
 description: Find Defold courses and structured learning tracks that connect tutorials, workflows, and engine concepts into longer study paths.
 nav: floating
+hub_kind: courses
+hub_title: Courses
+hub_copy: Find online courses and other structured learning material, when you want a longer guided track that connects multiple topics into one continuous learning path.
+hub_icon: /images/icons/icons-learn-export_ic-learn-toolbox.svg
+hub_icon_alt: Defold courses icon
+hub_aria_label: Defold courses overview
+filter_label: Filter courses by topic
+result_items: courses
+show_learn_section: true
 ---
-
-{%- capture page_hero_copy -%}
-<p>Find online courses and other structured learning material, when you want a longer guided track that connects multiple topics into one continuous learning path.</p>
-{%- endcapture -%}
-
-{%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/icons-learn-export_ic-learn-toolbox.svg" alt="Defold courses icon" loading="eager">
-{%- endcapture -%}
-
-{% include page_hub_hero.html hero_class="learn-hub-hero learn-catalog-hero" title="Courses" copy=page_hero_copy panel=page_hero_panel aria_label="Defold courses overview" %}
-
-<div class="section lightest dark:dark">
-	<div class="container">
-		<div class="page-filter-grid-two-up-tablet" data-learn-tag-catalog>
-			{% include learn_tag_filter.html label="Filter courses by topic" result_items="courses" items=site.data.learnindex.navigation.courses %}
-			{%- assign authors = site.data.learnindex.navigation.courses | map: "author" | uniq -%}
-			{%- for author in authors -%}
-				{%- assign courses = site.data.learnindex.navigation.courses | where: "author", author -%}
-				<section class="page-card-group learn-tag-group" data-learn-tag-group>
-					<div class="page-card-group-heading">
-						<h3>{{ author }}</h3>
-					</div>
-					<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
-					{%- for course in courses -%}
-						{%- assign image=course.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}
-						{% include learn_card.html title=course.name description=course.description link=course.path image=image author=course.author tags=course.tags %}
-					{%- endfor -%}
-					</div>
-				</section>
-			{%- endfor -%}
-		</div>
-	</div>
-</div>
-
-{% include learn_section.html %}
-
-<script src="/js/learn-tag-filter.js"></script>

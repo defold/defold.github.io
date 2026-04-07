@@ -1,70 +1,16 @@
 ---
-layout: page_with_learnnav
+layout: learn_hub
 title: Defold Manuals
 description: Read the Defold manuals to learn engine concepts, editor workflows, scripting patterns, and platform-specific systems in depth.
 nav: floating
+hub_kind: manuals
+hub_title: Manuals
+hub_copy: The Defold manuals provide essential, in-depth explanations of editor workflows, runtime systems, and core concepts, serving as a reliable learning reference.
+hub_icon: /images/icons/icons-learn-export_ic-learn-manuals.svg
+hub_icon_alt: Defold manuals icon
+hub_aria_label: Defold manuals overview
+filter_label: Filter manuals by topic
+result_items: manuals
+exclude_tags: manual
+show_learn_section: true
 ---
-
-{%- capture page_hero_copy -%}
-<p>The Defold manuals provide essential, in-depth explanations of editor workflows, runtime systems, and core concepts—serving as a reliable learning reference.</p>
-{%- endcapture -%}
-
-{%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/icons-learn-export_ic-learn-manuals.svg" alt="Defold manuals icon" loading="eager">
-{%- endcapture -%}
-
-{% include page_hub_hero.html hero_class="learn-hub-hero learn-catalog-hero" title="Manuals" copy=page_hero_copy panel=page_hero_panel aria_label="Defold manuals overview" %}
-
-<div class="section lightest dark:dark">
-	<div class="container">
-		<div class="page-filter-grid-two-up-tablet" data-learn-tag-catalog>
-			{% include learn_tag_filter.html label="Filter manuals by topic" result_items="manuals" exclude_tags="manual" items=site.data.learnindex.navigation.manuals child_property="items" %}
-			{%- for section in site.data.learnindex.navigation.manuals -%}
-				<section class="page-card-group learn-tag-group{% if section.divider %} learn-manual-group-divider{% endif %}" data-learn-tag-group>
-					<div class="page-card-group-heading">
-						<h3>{{ section.name }}</h3>
-					</div>
-					<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
-					{%- for manual in section.items -%}
-						{%- assign manual_url = manual.path | split: "#" | first -%}
-						{%- assign manual_page = site.pages | where: "url", manual_url | first -%}
-						{%- if manual_page == nil -%}
-							{%- assign manual_url_last_char = manual_url | slice: -1, 1 -%}
-							{%- if manual_url_last_char != "/" -%}
-								{%- assign manual_page_lookup_url = manual_url | append: "/" -%}
-								{%- assign manual_page = site.pages | where: "url", manual_page_lookup_url | first -%}
-							{%- endif -%}
-						{%- endif -%}
-						{%- assign manual_card_title = manual_page.title | default: manual.name -%}
-						{%- capture manual_description -%}{{ manual_page.brief | default: manual.description }}{%- endcapture -%}
-						{%- assign manual_description = manual_description | strip_html | strip_newlines | strip -%}
-						{%- if manual_page -%}
-							{%- capture manual_excerpt_fallback -%}{{ manual_page.excerpt | strip_html | strip_newlines | strip }}{%- endcapture -%}
-							{%- assign manual_excerpt_fallback = manual_excerpt_fallback | strip -%}
-						{%- else -%}
-							{%- assign manual_excerpt_fallback = "" -%}
-						{%- endif -%}
-						{%- if manual_description == blank and manual_excerpt_fallback != blank -%}
-							{%- assign manual_description = manual_excerpt_fallback -%}
-						{%- endif -%}
-						{%- if manual_description == blank -%}
-							{%- if manual.path contains "http" -%}
-								{%- capture manual_description -%}External reference linked from the Defold manuals for {{ manual_card_title }}.{%- endcapture -%}
-							{%- else -%}
-								{%- capture manual_description -%}Reference guide covering {{ manual_card_title }} in Defold.{%- endcapture -%}
-							{%- endif -%}
-							{%- assign manual_description = manual_description | strip -%}
-						{%- endif -%}
-						{% comment %}{% include learn_card.html title=manual_card_title description=manual_description description_limit=220 link=manual.path image="/images/icons/icons-learn-export_ic-learn-manuals.svg" tags=manual.tags %}{% endcomment %}
-						{% include learn_card.html title=manual_card_title description=manual_description description_limit=220 link=manual.path tags=manual.tags %}
-					{%- endfor -%}
-					</div>
-				</section>
-			{%- endfor -%}
-		</div>
-	</div>
-</div>
-
-{% include learn_section.html %}
-
-<script src="/js/learn-tag-filter.js"></script>

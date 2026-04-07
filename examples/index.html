@@ -1,45 +1,15 @@
 ---
-layout: page_with_learnnav
+layout: learn_hub
 title: Defold examples
 nav: floating
+hub_kind: examples
+hub_title: Examples
+hub_copy: The Defold examples show individual concepts and features of Defold with focused, small practical reference projects and snippets to study or reuse.
+hub_icon: /images/icons/icons-learn-export_ic-learn-lego.svg
+hub_icon_alt: Defold examples icon
+hub_aria_label: Defold examples overview
+filter_label: Filter examples by category
+filter_singular: category
+result_items: examples
+tag_property: category
 ---
-
-{%- capture page_hero_copy -%}
-<p>The Defold examples show individual concepts and features of Defold with focused, small practical reference projects and snippets to study or reuse.</p>
-{%- endcapture -%}
-
-{%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/icons-learn-export_ic-learn-lego.svg" alt="Defold examples icon" loading="eager">
-{%- endcapture -%}
-
-{% include page_hub_hero.html hero_class="learn-hub-hero learn-catalog-hero" title="Examples" copy=page_hero_copy panel=page_hero_panel aria_label="Defold examples overview" %}
-
-<div class="section lightest dark:dark">
-	<div class="container">
-		<div class="page-filter-grid-two-up-tablet" data-learn-tag-catalog>
-			{% include learn_tag_filter.html label="Filter examples by category" filter_singular="category" result_items="examples" items=site.data.examplesindex tag_property="category" %}
-			{%- assign example_categories = site.data.examplesindex | map: "category" | uniq -%}
-			{%- for category in example_categories -%}
-				{%- assign category_examples = site.data.examplesindex | where: "category", category -%}
-				<section class="page-card-group learn-tag-group" data-learn-tag-group>
-					<div class="page-card-group-heading">
-						<h3>{{ category | replace: "-", " " | replace: "_", " " | capitalize }}</h3>
-					</div>
-					<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
-				{%- for example in category_examples -%}
-					{%- if example.thumbnail -%}
-						{%- assign image = example.path | append: "/" | append: example.thumbnail -%}
-					{%- else -%}
-						{%- assign image = "" -%}
-					{%- endif -%}
-					{%- assign example_category = example.category | split: "|" -%}
-					{% include learn_card.html title=example.title description=example.brief link=example.path image=image tags=example_category %}
-				{%- endfor -%}
-					</div>
-				</section>
-			{%- endfor -%}
-		</div>
-	</div>
-</div>
-
-<script src="/js/learn-tag-filter.js"></script>

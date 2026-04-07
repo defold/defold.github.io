@@ -1,0 +1,128 @@
+---
+layout: page_with_learnnav
+---
+{%- assign hub_kind = page.hub_kind | default: "" -%}
+{%- assign hub_title = page.hub_title | default: page.title -%}
+{%- assign filter_label = page.filter_label | default: "Filter by tags" -%}
+{%- assign result_items = page.result_items | default: "resources" -%}
+{%- assign exclude_tags = page.exclude_tags | default: "" -%}
+{%- assign filter_singular = page.filter_singular | default: "tag" -%}
+{%- assign tag_property = page.tag_property | default: "" -%}
+
+{%- capture page_hero_copy -%}
+<p>{{ page.hub_copy }}</p>
+{%- endcapture -%}
+
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="{{ page.hub_icon }}" alt="{{ page.hub_icon_alt | default: hub_title | append: ' icon' }}" loading="eager">
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="learn-hub-hero learn-catalog-hero" title=hub_title copy=page_hero_copy panel=page_hero_panel aria_label=page.hub_aria_label %}
+
+<div class="section lightest dark:dark">
+	<div class="container">
+		<div class="page-filter-grid-two-up-tablet" data-learn-tag-catalog>
+			{%- case hub_kind -%}
+			{%- when "manuals" -%}
+				{% include learn_tag_filter.html label=filter_label result_items=result_items exclude_tags=exclude_tags items=site.data.learnindex.navigation.manuals child_property="items" %}
+				{%- for section in site.data.learnindex.navigation.manuals -%}
+					<section class="page-card-group learn-tag-group{% if section.divider %} learn-manual-group-divider{% endif %}" data-learn-tag-group>
+						<div class="page-card-group-heading">
+							<h3>{{ section.name }}</h3>
+						</div>
+						<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
+							{%- for item in section.items -%}
+								{% include learn_hub_card.html kind=hub_kind item=item %}
+							{%- endfor -%}
+						</div>
+					</section>
+				{%- endfor -%}
+
+			{%- when "tutorials" -%}
+				{% include learn_tag_filter.html label=filter_label result_items=result_items exclude_tags=exclude_tags items=site.data.learnindex.navigation.tutorials %}
+				{%- assign tutorial_group_keys = "getting-started|gameplay|ui-art|rendering|web|scripting-input|more-tutorials" | split: "|" -%}
+				{%- for tutorial_group_key in tutorial_group_keys -%}
+					{%- assign tutorial_group_count = 0 -%}
+					{%- for item in site.data.learnindex.navigation.tutorials -%}
+						{%- capture tutorial_group -%}{% include learn_tutorial_group_key.html tutorial=item %}{%- endcapture -%}
+						{%- if tutorial_group == tutorial_group_key -%}
+							{%- assign tutorial_group_count = tutorial_group_count | plus: 1 -%}
+						{%- endif -%}
+					{%- endfor -%}
+					{%- if tutorial_group_count > 0 -%}
+					<section class="page-card-group learn-tag-group" data-learn-tag-group>
+						<div class="page-card-group-heading">
+							<h3>{% include learn_tutorial_group_label.html key=tutorial_group_key %}</h3>
+						</div>
+						<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
+							{%- for item in site.data.learnindex.navigation.tutorials -%}
+								{%- capture tutorial_group -%}{% include learn_tutorial_group_key.html tutorial=item %}{%- endcapture -%}
+								{%- if tutorial_group == tutorial_group_key -%}
+									{% include learn_hub_card.html kind=hub_kind item=item %}
+								{%- endif -%}
+							{%- endfor -%}
+						</div>
+					</section>
+					{%- endif -%}
+				{%- endfor -%}
+
+			{%- when "examples" -%}
+				{% include learn_tag_filter.html label=filter_label filter_singular=filter_singular result_items=result_items items=site.data.examplesindex tag_property=tag_property %}
+				{%- assign example_categories = site.data.examplesindex | map: "category" | uniq -%}
+				{%- for category in example_categories -%}
+					{%- assign category_examples = site.data.examplesindex | where: "category", category -%}
+					<section class="page-card-group learn-tag-group" data-learn-tag-group>
+						<div class="page-card-group-heading">
+							<h3>{{ category | replace: "-", " " | replace: "_", " " | capitalize }}</h3>
+						</div>
+						<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
+							{%- for item in category_examples -%}
+								{% include learn_hub_card.html kind=hub_kind item=item %}
+							{%- endfor -%}
+						</div>
+					</section>
+				{%- endfor -%}
+
+			{%- when "videos" -%}
+				{% include learn_tag_filter.html label=filter_label result_items=result_items exclude_tags=exclude_tags items=site.data.learnindex.navigation.videos %}
+				{%- assign authors = site.data.learnindex.navigation.videos | map: "author" | uniq -%}
+				{%- for author in authors -%}
+					{%- assign author_items = site.data.learnindex.navigation.videos | where: "author", author -%}
+					<section class="page-card-group learn-tag-group" data-learn-tag-group>
+						<div class="page-card-group-heading">
+							<h3>{{ author }}</h3>
+						</div>
+						<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
+							{%- for item in author_items -%}
+								{% include learn_hub_card.html kind=hub_kind item=item %}
+							{%- endfor -%}
+						</div>
+					</section>
+				{%- endfor -%}
+
+			{%- when "courses" -%}
+				{% include learn_tag_filter.html label=filter_label result_items=result_items exclude_tags=exclude_tags items=site.data.learnindex.navigation.courses %}
+				{%- assign authors = site.data.learnindex.navigation.courses | map: "author" | uniq -%}
+				{%- for author in authors -%}
+					{%- assign author_items = site.data.learnindex.navigation.courses | where: "author", author -%}
+					<section class="page-card-group learn-tag-group" data-learn-tag-group>
+						<div class="page-card-group-heading">
+							<h3>{{ author }}</h3>
+						</div>
+						<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
+							{%- for item in author_items -%}
+								{% include learn_hub_card.html kind=hub_kind item=item %}
+							{%- endfor -%}
+						</div>
+					</section>
+				{%- endfor -%}
+			{%- endcase -%}
+		</div>
+	</div>
+</div>
+
+{%- if page.show_learn_section -%}
+{% include learn_section.html %}
+{%- endif -%}
+
+<script src="/js/learn-tag-filter.js"></script>
