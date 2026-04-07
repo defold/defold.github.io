@@ -5,9 +5,12 @@
 	{%- assign search_id = "learn-search-" | append: search_suffix -%}
 	{%- capture search_placeholder -%}Search {{ include.result_items | default: "resources" }} by title, description, or creator{%- endcapture -%}
 	<div class="asset-hub-filter-shell">
+		<div class="asset-hub-filter-group asset-hub-filter-search">
+			<h3 class="asset-hub-filter-label">Search</h3>
+			{% include catalog_search_field.html id=search_id input_class="learnsearch" data_attribute_name="data-learn-search" placeholder=search_placeholder aria_label=search_placeholder %}
+		</div>
 		<div class="asset-hub-filter-group">
 			<h3 class="asset-hub-filter-label">{{ include.label | default: "Filter by tags" }}</h3>
-			<p class="compact">Choose one {{ include.filter_singular | default: "tag" }} to narrow the current list.</p>
 			<div class="learn-tag-chip-row asset-hub-filter-grid" data-tag-chip-row>
 				{%- if include.items -%}
 				{%- assign total_items = 0 -%}
@@ -113,10 +116,6 @@
 				{%- endfor -%}
 				{%- endif -%}
 			</div>
-		</div>
-		<div class="asset-hub-filter-group asset-hub-filter-search">
-			<h3 class="asset-hub-filter-label">Search</h3>
-			{% include catalog_search_field.html id=search_id input_class="learnsearch" data_attribute_name="data-learn-search" placeholder=search_placeholder aria_label=search_placeholder %}
 		</div>
 		<p class="compact learn-tag-results" data-tag-results>Showing all {{ include.result_items | default: "resources" }}.</p>
 	</div>

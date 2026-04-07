@@ -6,7 +6,6 @@ nav: floating
 
 {%- capture page_hero_copy -%}
 <p>Browse extensions, templates, tools, art packs, and reusable systems built by the Defold community.</p>
-<p>Use the filters and search below to narrow the catalog, then open an asset page for install details, links, and support threads.</p>
 {%- endcapture -%}
 
 {%- capture page_hero_actions -%}
@@ -21,19 +20,18 @@ nav: floating
 
 <div class="section dark page-dark-section gradient-background-top-dark">
 	<div class="container">
-		<div class="page-section-heading">
-			<h2>Browse the catalog</h2>
-			<p>Filter the portal by tag, sort by stars or latest updates, and search across asset names and descriptions.</p>
-		</div>
-
 		{%- assign sort_order = page.sort | default: "stars" -%}
 		{%- assign initial_tag = page.tag | default: "" -%}
 		{%- assign assetids = site.data.assetindex | sort: sort_order | reverse | map: "id" -%}
-		<div class="page-filter-grid-two-up-tablet" data-asset-catalog data-initial-tag="{{ initial_tag }}" data-initial-sort="{{ sort_order }}" data-default-title="All assets">
-			<div class="asset-hub-toolbar page-surface-panel">
-				{%- include tagfilter.html tag=initial_tag sort=sort_order -%}
+		<div class="asset-hub-catalog-layout" data-asset-catalog data-initial-tag="{{ initial_tag }}" data-initial-sort="{{ sort_order }}" data-default-title="All assets">
+			<div class="asset-hub-sidebar">
+				<div class="asset-hub-toolbar page-surface-panel">
+					{%- include tagfilter.html tag=initial_tag sort=sort_order -%}
+				</div>
 			</div>
-			{%- include assetgrid.html assetids=assetids title="All assets" -%}
+			<div class="asset-hub-main">
+				{%- include assetgrid.html assetids=assetids title="All assets" -%}
+			</div>
 		</div>
 
 		<div class="asset-hub-footer page-surface-panel">
