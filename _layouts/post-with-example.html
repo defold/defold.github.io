@@ -1,10 +1,13 @@
 ---
 layout: page
 ---
-<div class="section lightest dark:dark">
+<div class="section lightest dark:dark post-with-example-layout-shell">
 	<div class="container">
 		<div class="row">
-			<div class="columns eleven post-with-example-main">
+			<div class="columns three learn-detail-nav">
+				{% include learn_sidebar_nav.html kind="examples" browse_label="Browse examples" current_title=page.title %}
+			</div>
+			<div class="columns nine post-with-example-main">
 				{%- if page.type == "press" -%}
 				<p><a href="/press">⇠ More news</a></p>
 				{%- else -%}
@@ -13,24 +16,15 @@ layout: page
 				<h1>{{ page.title }}</h1>
 				<p><i>By {{ page.author }} on {{ page.date | date: "%b %d, %Y" }}</i></p>
 				<p>Tagged as:&nbsp;{%- for tag in page.tags -%}<a href="/blog?tag={{ tag | slugify }}">{{ tag | capitalize}}</a>{%-unless forloop.last -%},&nbsp;{%- endunless -%}{%- endfor -%}</p>
-			</div>
-			<div class="columns one post-with-example-sidebar-spacer" aria-hidden="true"></div>
-		</div>
-		<div class="row">
-			<div class="columns eleven post-with-example-main post example content-flow">
-				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
-			</div>
-			<div class="columns one post-with-example-sidebar-spacer" aria-hidden="true"></div>
-		</div>
-		<div class="row">
-			<div class="columns eleven post-with-example-main">
+				<div class="post example content-flow">
+					{% include anchor_headings.html html=content anchorClass="anchor-link" %}
 				{%- if page.type == "press" -%}
 				<p><a href="/press">⇠ More news</a></p>
 				{%- else -%}
 				<p><a href="/blog">⇠ More posts</a></p>
 				{%- endif -%}
+				</div>
 			</div>
-			<div class="columns one post-with-example-sidebar-spacer" aria-hidden="true"></div>
 		</div>
 	</div>
 </div>

@@ -14,6 +14,7 @@ layout: page_with_learnnav
 		{%- assign next_example = listed_example -%}
 	{%- endif -%}
 	{%- if page.url == listed_example_url -%}
+		{%- assign current_example = listed_example -%}
 		{%- assign found_current_example = true -%}
 	{%- elsif found_current_example == false -%}
 		{%- assign previous_example = listed_example -%}
@@ -27,13 +28,20 @@ layout: page_with_learnnav
 {%- if next_example -%}
 	{%- assign next_example_link = "/examples/" | append: next_example.path -%}
 {%- endif -%}
+{%- assign current_example_link = page.url -%}
+{%- if current_example -%}
+	{%- assign current_example_link = "/examples/" | append: current_example.path -%}
+{%- endif -%}
 
-<div class="section lightest dark:dark learn-detail-shell example-layout-shell">
+<div class="section lightest dark:dark learn-detail-shell example-layout-shell has-left-nav">
 	<div class="container">
 		<div class="row">
-			<div class="columns eight learn-detail-main example">
+			<div class="columns three learn-detail-nav">
+				{% include learn_sidebar_nav.html kind="examples" browse_label="Browse examples" current_title=current_example.title %}
+			</div>
+			<div class="columns six learn-detail-main example">
+				{% include learn_detail_backlink.html link="/examples" label="Examples" %}
 				<div class="content-flow" data-pagefind-body>
-					{% include learn_detail_pager.html class="learn-detail-pager-top" previous_link=previous_example_link previous_title=previous_example.title hub_link="/examples" hub_title="All examples" next_link=next_example_link next_title=next_example.title %}
 					<h4>{{ page.title }}</h4>
 					<div id="app-container" class="canvas-app-container canvas-app-container-hidden">
 						<div id="canvas-container" class="canvas-app-canvas-container"></div>
@@ -75,8 +83,9 @@ layout: page_with_learnnav
 					{% include learn_detail_pager.html previous_link=previous_example_link previous_title=previous_example.title hub_link="/examples" hub_title="All examples" next_link=next_example_link next_title=next_example.title %}
 				</div>
 			</div>
-			<div class="columns four learn-detail-sidebar">
+			<div class="columns three learn-detail-sidebar">
 				<div class="learn-detail-sidebar-stack">
+					{% include learn_detail_languages.html locales=current_example.locales path=current_example_link %}
 					<div class="learn-detail-panel learn-detail-actions page-surface-panel page-text-panel">
 						<p>This example was created by {{ page.author }}.</p>
 						{% assign zip_name = page.path | replace: "/", "_" | append: ".zip" %}
@@ -87,7 +96,7 @@ layout: page_with_learnnav
 						<p>
 							Do you want to see more examples? Why not write a few yourself and submit a pull request? We love contributions.
 						</p>
-						{% include primary_button.html text="Add example ↗" link="https://github.com/defold/examples" %}
+						{% include secondary_button.html text="Add example ↗" link="https://github.com/defold/examples" %}
 					</div>
 				</div>
 			</div>

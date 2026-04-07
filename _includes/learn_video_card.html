@@ -2,6 +2,6 @@
 {%- assign video_id = include.embed | split: "/" | last -%}
 {%- assign video_thumbnail = "https://img.youtube.com/vi/" | append: video_id | append: "/hqdefault.jpg" -%}
 {%- assign card_target = include.target | default: "_blank" -%}
-<article class="asset{% if include.class %} {{ include.class }}{% endif %}"{% if include.tags %} data-learn-tag-item="true" data-learn-title="{{ include.title | escape }}" data-learn-author="{{ include.author | default: '' | escape }}" data-learn-tags="{{ learn_tags | escape }}"{% endif %}>
+<article class="asset{% if include.class %} {{ include.class }}{% endif %}" data-learn-tag-item="true" data-learn-title="{{ include.title | escape }}" data-learn-description="{{ include.description | default: '' | escape }}" data-learn-author="{{ include.author | default: '' | escape }}" data-learn-tags="{{ learn_tags | escape }}">
 	{% include page_feature_card.html title=include.title body=include.description link=include.link icon="/images/icons/icon-youtube.svg" card_class="page-feature-card-youtube" target=card_target rel=include.rel thumbnail=video_thumbnail media_badge_overlay=true heading_tag="h4" %}
 </article>

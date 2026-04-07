@@ -1,6 +1,9 @@
 <div class="learn-tag-filter asset-hub-toolbar page-surface-panel" data-learn-tag-filter data-filter-singular="{{ include.filter_singular | default: 'tag' }}" data-result-items="{{ include.result_items | default: 'resources' }}" data-filter-excluded-tags="{{ include.exclude_tags | default: '' }}">
 	{%- assign excluded_tag_slugs = include.exclude_tags | default: "" | downcase | split: "|" -%}
 	{%- assign child_property = include.child_property | default: "" -%}
+	{%- assign search_suffix = include.result_items | default: "resources" | slugify -%}
+	{%- assign search_id = "learn-search-" | append: search_suffix -%}
+	{%- capture search_placeholder -%}Search {{ include.result_items | default: "resources" }} by title, description, or creator{%- endcapture -%}
 	<div class="asset-hub-filter-shell">
 		<div class="asset-hub-filter-group">
 			<h3 class="asset-hub-filter-label">{{ include.label | default: "Filter by tags" }}</h3>
@@ -110,6 +113,10 @@
 				{%- endfor -%}
 				{%- endif -%}
 			</div>
+		</div>
+		<div class="asset-hub-filter-group asset-hub-filter-search">
+			<h3 class="asset-hub-filter-label">Search</h3>
+			{% include catalog_search_field.html id=search_id input_class="learnsearch" data_attribute_name="data-learn-search" placeholder=search_placeholder aria_label=search_placeholder %}
 		</div>
 		<p class="compact learn-tag-results" data-tag-results>Showing all {{ include.result_items | default: "resources" }}.</p>
 	</div>

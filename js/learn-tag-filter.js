@@ -70,17 +70,41 @@
 		return counts;
 	};
 
-	const updateResultLabel = (resultEl, visibleCount, totalCount, selectedTag, filterSingular, resultItems) => {
+	const updateResultLabel = (resultEl, visibleCount, totalCount, selectedTag, filterSingular, resultItems, rawQuery) => {
 		if (!resultEl) {
 			return;
 		}
 
-		if (selectedTag === "all") {
+		if (!visibleCount) {
+			if (selectedTag !== "all" && rawQuery) {
+				resultEl.textContent = `No ${resultItems} match the current ${filterSingular} and search.`;
+				return;
+			}
+
+			if (selectedTag !== "all") {
+				resultEl.textContent = `No ${resultItems} match the current ${filterSingular}.`;
+				return;
+			}
+
+			if (rawQuery) {
+				resultEl.textContent = `No ${resultItems} match the current search.`;
+				return;
+			}
+		}
+
+		if (selectedTag === "all" && !rawQuery) {
 			resultEl.textContent = `Showing ${visibleCount} of ${totalCount} ${resultItems}.`;
 			return;
 		}
 
-		resultEl.textContent = `Showing ${visibleCount} of ${totalCount} ${resultItems} for ${filterSingular}: ${toLabel(selectedTag)}.`;
+		const parts = [`Showing ${visibleCount} of ${totalCount} ${resultItems}`];
+		if (selectedTag !== "all") {
+			parts.push(`for ${filterSingular}: ${toLabel(selectedTag)}`);
+		}
+		if (rawQuery) {
+			parts.push(`matching "${rawQuery}"`);
+		}
+		resultEl.textContent = `${parts.join(" ")}.`;
 	};
 
 	document.addEventListener("DOMContentLoaded", () => {
@@ -94,6 +118,7 @@
 			const chipRow = catalog.querySelector("[data-tag-chip-row]");
 			const resultEl = catalog.querySelector("[data-tag-results]");
 			const resultTitleEl = catalog.querySelector("[data-learn-results-title]");
+			const searchInput = catalog.querySelector("[data-learn-search]");
 			const groups = Array.from(catalog.querySelectorAll("[data-learn-tag-group]"));
 			const items = Array.from(catalog.querySelectorAll("[data-learn-tag-item='true']"));
 			const sortButtons = Array.from(catalog.querySelectorAll("[data-learn-sort]"));
@@ -177,11 +202,18 @@
 
 			const applyFilter = () => {
 				sortItems();
+				const rawQuery = (searchInput?.value || "").trim();
+				const query = normalize(rawQuery);
 				let visibleCount = 0;
 
 				items.forEach((item) => {
 					const tags = parseTags(item.dataset.learnTags);
-					const visible = selectedTag === "all" || tags.includes(selectedTag);
+					const title = normalize(item.dataset.learnTitle);
+					const description = normalize(item.dataset.learnDescription);
+					const author = normalize(item.dataset.learnAuthor);
+					const matchesTag = selectedTag === "all" || tags.includes(selectedTag);
+					const matchesQuery = !query || title.includes(query) || description.includes(query) || author.includes(query);
+					const visible = matchesTag && matchesQuery;
 					item.classList.toggle("learn-tag-hidden", !visible);
 					if (visible) {
 						visibleCount += 1;
@@ -213,7 +245,7 @@
 					}
 				}
 
-				updateResultLabel(resultEl, visibleCount, totalCount, selectedTag, filterSingular, resultItems);
+				updateResultLabel(resultEl, visibleCount, totalCount, selectedTag, filterSingular, resultItems, rawQuery);
 			};
 
 			renderChips();
@@ -246,6 +278,12 @@
 					});
 				});
 			});
+
+			if (searchInput) {
+				const onInput = () => applyFilter();
+				searchInput.addEventListener("input", onInput);
+				searchInput.addEventListener("propertychange", onInput);
+			}
 
 			applyFilter();
 		});

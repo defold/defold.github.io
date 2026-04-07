@@ -44,10 +44,14 @@ layout: page_with_learnnav
 	{%- endif -%}
 {%- endif -%}
 
-<div class="section lightest dark:dark learn-detail-shell tutorial-layout-shell">
+<div class="section lightest dark:dark learn-detail-shell tutorial-layout-shell has-left-nav">
 	<div class="container">
 		<div class="row">
-			<div class="columns eight learn-detail-main tutorial">
+			<div class="columns three learn-detail-nav">
+				{% include learn_sidebar_nav.html kind="tutorials" browse_label="Browse tutorials" current_title=current_tutorial.name page_locale=page_locale locale_info=locale_info %}
+			</div>
+			<div class="columns six learn-detail-main tutorial">
+				{% include learn_detail_backlink.html link="/tutorials" label="Tutorials" %}
 				{%- if page_locale != "en" and current_tutorial -%}
 				{%- capture urlprefix -%}/{{ locale_info.urlprefix }}/{%- endcapture -%}
 				<div class="sidenote">
@@ -55,7 +59,6 @@ layout: page_with_learnnav
 				</div>
 				{%- endif -%}
 				<div class="content-flow" data-pagefind-body>
-				{% include learn_detail_pager.html class="learn-detail-pager-top" previous_link=previous_tutorial_link previous_title=previous_tutorial.name hub_link="/tutorials" hub_title="All tutorials" next_link=next_tutorial_link next_title=next_tutorial.name %}
 				{%- if page.difficulty -%}
 				<p class="learn-detail-difficulty-row"><span class="difficulty-tag">{{ page.difficulty }}</span></p>
 				{%- endif -%}
@@ -63,37 +66,20 @@ layout: page_with_learnnav
 				{% include learn_detail_pager.html previous_link=previous_tutorial_link previous_title=previous_tutorial.name hub_link="/tutorials" hub_title="All tutorials" next_link=next_tutorial_link next_title=next_tutorial.name %}
 				</div>
 			</div>
-			<div class="columns four learn-detail-sidebar">
+			<div class="columns three learn-detail-sidebar">
 				<div class="learn-detail-sidebar-stack">
 				{% include learn_detail_feedback.html link=github_link %}
-				{%- if page.difficulty or current_tutorial -%}
-				<div class="learn-detail-panel learn-detail-sections learn-sidebar-panel page-surface-panel page-text-panel">
+				{% include learn_detail_languages.html locales=current_tutorial.locales path=current_tutorial.path %}
 				{%- if page.difficulty -%}
-				<label class="togglelabel">Tutorial</label>
-				<ul class="nobullet">
-					<li class="learn-detail-list-item">
-						<span class="difficulty-tag">{{ page.difficulty }}</span>
-					</li>
-				</ul>
-				<hr/>
-				{%- endif -%}
-				{%- if site.data.localeindex.size > 1 and current_tutorial -%}
-				<input class="toggle" type="checkbox" checked/>
-				<label class="togglelabel">Languages</label>
-				<ul class="nobullet">
-				{%- for l in site.data.localeindex -%}
-					{%- if l.active and current_tutorial.locales contains l.locale -%}
-					<li class="learn-detail-list-item">
-						{%- if l.locale == "en" -%}
-							<a class="learn-detail-list-link" href='{{ current_tutorial.path }}'>{{ l.name }}</a>
-						{%- elsif current_tutorial.locales contains l.locale -%}
-							<a class="learn-detail-list-link" href='/{{ l.urlprefix }}{{ current_tutorial.path }}'>{{ l.name }}</a>
-						{%- endif -%}
-					</li>
+				<div class="learn-detail-panel learn-detail-sections learn-sidebar-panel page-surface-panel page-text-panel">
+					{%- if page.difficulty -%}
+					<label class="togglelabel">Tutorial</label>
+					<ul class="nobullet">
+						<li class="learn-detail-list-item">
+							<span class="difficulty-tag">{{ page.difficulty }}</span>
+						</li>
+					</ul>
 					{%- endif -%}
-				{%- endfor -%}
-				</ul>
-				{%- endif -%}
 				</div>
 				{%- endif -%}
 				</div>

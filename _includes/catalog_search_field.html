@@ -1,0 +1,11 @@
+<div class="page-search-field{% if include.wrapper_class %} {{ include.wrapper_class }}{% endif %}">
+	{% include site_icon.html name="search" class="page-search-field-icon" %}
+	<input
+		id="{{ include.id }}"
+		{% if include.name %}name="{{ include.name }}"{% endif %}
+		{% if include.input_class %}class="{{ include.input_class }}"{% endif %}
+		{% if include.data_attribute_name %}{{ include.data_attribute_name }}="true"{% endif %}
+		type="text"
+		placeholder="{{ include.placeholder }}"
+		aria-label="{{ include.aria_label | default: include.placeholder }}"/>
+</div>

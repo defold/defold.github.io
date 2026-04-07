@@ -6,8 +6,7 @@ nav: floating
 ---
 
 {%- capture page_hero_copy -%}
-<p>The Defold manuals are the core reference for how the editor, runtime systems, and workflows fit together.</p>
-<p>Use them when you want durable explanations, conceptual grounding, and focused documentation you can return to as projects grow.</p>
+<p>The Defold manuals provide essential, in-depth explanations of editor workflows, runtime systems, and core concepts—serving as a reliable learning reference.</p>
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
@@ -20,8 +19,12 @@ nav: floating
 	<div class="container">
 		<div class="page-filter-grid-two-up-tablet" data-learn-tag-catalog>
 			{% include learn_tag_filter.html label="Filter manuals by topic" result_items="manuals" exclude_tags="manual" items=site.data.learnindex.navigation.manuals child_property="items" %}
-			<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
-				{%- for section in site.data.learnindex.navigation.manuals -%}
+			{%- for section in site.data.learnindex.navigation.manuals -%}
+				<section class="page-card-group learn-tag-group{% if section.divider %} learn-manual-group-divider{% endif %}" data-learn-tag-group>
+					<div class="page-card-group-heading">
+						<h3>{{ section.name }}</h3>
+					</div>
+					<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
 					{%- for manual in section.items -%}
 						{%- assign manual_url = manual.path | split: "#" | first -%}
 						{%- assign manual_page = site.pages | where: "url", manual_url | first -%}
@@ -55,8 +58,9 @@ nav: floating
 						{% comment %}{% include learn_card.html title=manual_card_title description=manual_description description_limit=220 link=manual.path image="/images/icons/icons-learn-export_ic-learn-manuals.svg" tags=manual.tags %}{% endcomment %}
 						{% include learn_card.html title=manual_card_title description=manual_description description_limit=220 link=manual.path tags=manual.tags %}
 					{%- endfor -%}
-				{%- endfor -%}
-			</div>
+					</div>
+				</section>
+			{%- endfor -%}
 		</div>
 	</div>
 </div>

@@ -5,8 +5,7 @@ nav: floating
 ---
 
 {%- capture page_hero_copy -%}
-<p>The Defold examples show individual concepts and features of Defold.</p>
-<p>Use them when you want focused reference projects, small practical patterns, and concrete code you can study or reuse.</p>
+<p>The Defold examples show individual concepts and features of Defold with focused, small practical reference projects and snippets to study or reuse.</p>
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
@@ -19,8 +18,15 @@ nav: floating
 	<div class="container">
 		<div class="page-filter-grid-two-up-tablet" data-learn-tag-catalog>
 			{% include learn_tag_filter.html label="Filter examples by category" filter_singular="category" result_items="examples" items=site.data.examplesindex tag_property="category" %}
-			<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
-				{%- for example in site.data.examplesindex -%}
+			{%- assign example_categories = site.data.examplesindex | map: "category" | uniq -%}
+			{%- for category in example_categories -%}
+				{%- assign category_examples = site.data.examplesindex | where: "category", category -%}
+				<section class="page-card-group learn-tag-group" data-learn-tag-group>
+					<div class="page-card-group-heading">
+						<h3>{{ category | replace: "-", " " | replace: "_", " " | capitalize }}</h3>
+					</div>
+					<div class="page-feature-grid page-grid-auto-fill page-grid-flush">
+				{%- for example in category_examples -%}
 					{%- if example.thumbnail -%}
 						{%- assign image = example.path | append: "/" | append: example.thumbnail -%}
 					{%- else -%}
@@ -29,7 +35,9 @@ nav: floating
 					{%- assign example_category = example.category | split: "|" -%}
 					{% include learn_card.html title=example.title description=example.brief link=example.path image=image tags=example_category %}
 				{%- endfor -%}
-			</div>
+					</div>
+				</section>
+			{%- endfor -%}
 		</div>
 	</div>
 </div>

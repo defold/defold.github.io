@@ -1,5 +1,4 @@
 {%- assign assetids = include.assetids -%}
-{%- assign search_id = "asset-search-" | append: include.title | slugify -%}
 
 <div class="asset-hub-results">
 	<div class="asset-hub-results-header">
@@ -7,12 +6,6 @@
 			<p class="asset-hub-filter-label">Results</p>
 			<h3 data-asset-results-title>{{ include.title }}</h3>
 			<p class="compact asset-hub-results-summary" data-asset-results-summary>Showing {{ assetids.size }} of {{ assetids.size }} assets.</p>
-		</div>
-		<div class="asset-hub-search">
-			<div class="page-search-field">
-				{% include site_icon.html name="search" class="page-search-field-icon" %}
-				<input id="{{ search_id }}" class="assetsearch" data-asset-search type="text" placeholder="Search assets by name or description" aria-label="Search assets by name or description"/>
-			</div>
 		</div>
 	</div>
 

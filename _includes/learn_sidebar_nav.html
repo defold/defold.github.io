@@ -19,8 +19,9 @@
 		<label for="learn_sidebar_{{ sidebar_kind }}_{{ category | slugify }}" class="togglelabel">{{ category | capitalize }}</label>
 		<ul class="nobullet">
 			{% for example in examples %}
-			<li style="padding-left: 2rem;">
-				<a href="/examples/{{ example.path }}" style="text-decoration: none;">{{ example.title }}</a>
+			{%- assign example_link = "/examples/" | append: example.path -%}
+			<li class="learn-sidebar-list-item">
+				<a href="{{ example_link }}" class="learn-sidebar-link{% if page.url contains example.path %} is-current{% endif %}"{% if page.url contains example.path %} aria-current="page"{% endif %}>{{ example.title }}</a>
 			</li>
 			{% endfor %}
 		</ul>
@@ -35,7 +36,7 @@
 		<label for="learn_sidebar_{{ sidebar_kind }}_{{ section.name | slugify }}" class="togglelabel">{{ section.name }}</label>
 		<ul class="nobullet">
 			{%- for manual in section.items -%}
-			<li style="padding-left: 2rem;">
+			<li class="learn-sidebar-list-item">
 				{%- assign manual_url = manual.path -%}
 				{%- assign manual_label = manual.name -%}
 				{%- unless nav_page_locale == "en" -%}
@@ -45,12 +46,90 @@
 						{%- assign manual_label = manual.name | append: " (English)" -%}
 					{%- endif -%}
 				{%- endunless -%}
-				<a href="{{ manual_url }}" style="text-decoration: none;">{{ manual_label }}</a>
+				<a href="{{ manual_url }}" class="learn-sidebar-link{% if page.url contains manual.path %} is-current{% endif %}"{% if page.url contains manual.path %} aria-current="page"{% endif %}>{{ manual_label }}</a>
 			</li>
 			{%- endfor -%}
 		</ul>
 		{%- if section.divider -%}
 		<hr>
+		{%- endif -%}
+	{%- endfor -%}
+{%- elsif sidebar_kind == "tutorials" -%}
+	{%- assign tutorial_group_keys = "getting-started|gameplay-physics|ui-art|rendering-shaders|platform-online|scripting-input|more-tutorials" | split: "|" -%}
+	{%- for tutorial_group_key in tutorial_group_keys -%}
+		{%- assign tutorial_group_label = "More tutorials" -%}
+		{%- if tutorial_group_key == "getting-started" -%}
+			{%- assign tutorial_group_label = "Getting Started" -%}
+		{%- elsif tutorial_group_key == "gameplay-physics" -%}
+			{%- assign tutorial_group_label = "Gameplay & Physics" -%}
+		{%- elsif tutorial_group_key == "ui-art" -%}
+			{%- assign tutorial_group_label = "UI & Art" -%}
+		{%- elsif tutorial_group_key == "rendering-shaders" -%}
+			{%- assign tutorial_group_label = "Rendering & Shaders" -%}
+		{%- elsif tutorial_group_key == "platform-online" -%}
+			{%- assign tutorial_group_label = "Platform & Online" -%}
+		{%- elsif tutorial_group_key == "scripting-input" -%}
+			{%- assign tutorial_group_label = "Scripting & Input" -%}
+		{%- endif -%}
+		{%- assign tutorial_group_count = 0 -%}
+		{%- assign tutorial_group_open = false -%}
+		{%- for tutorial in site.data.learnindex.navigation.tutorials -%}
+			{%- assign tutorial_group = "more-tutorials" -%}
+			{%- if tutorial.tags contains "onboarding" -%}
+				{%- assign tutorial_group = "getting-started" -%}
+			{%- elsif tutorial.tags contains "rendering" or tutorial.tags contains "shaders" or tutorial.tags contains "three-d" -%}
+				{%- assign tutorial_group = "rendering-shaders" -%}
+			{%- elsif tutorial.tags contains "platform" or tutorial.tags contains "network" or tutorial.tags contains "web" or tutorial.tags contains "ios" -%}
+				{%- assign tutorial_group = "platform-online" -%}
+			{%- elsif tutorial.tags contains "ui-art" -%}
+				{%- assign tutorial_group = "ui-art" -%}
+			{%- elsif tutorial.tags contains "gameplay" or tutorial.tags contains "physics" or tutorial.tags contains "two-d" -%}
+				{%- assign tutorial_group = "gameplay-physics" -%}
+			{%- elsif tutorial.tags contains "scripting" or tutorial.tags contains "input" -%}
+				{%- assign tutorial_group = "scripting-input" -%}
+			{%- endif -%}
+			{%- if tutorial_group == tutorial_group_key -%}
+				{%- assign tutorial_group_count = tutorial_group_count | plus: 1 -%}
+				{%- if page.url contains tutorial.path -%}
+					{%- assign tutorial_group_open = true -%}
+				{%- endif -%}
+			{%- endif -%}
+		{%- endfor -%}
+		{%- if tutorial_group_count > 0 -%}
+		<input id="learn_sidebar_{{ sidebar_kind }}_{{ tutorial_group_key }}" class="toggle" type="checkbox"{% if tutorial_group_open %} checked{% endif %}/>
+		<label for="learn_sidebar_{{ sidebar_kind }}_{{ tutorial_group_key }}" class="togglelabel">{{ tutorial_group_label }}</label>
+		<ul class="nobullet">
+			{%- for tutorial in site.data.learnindex.navigation.tutorials -%}
+				{%- assign tutorial_group = "more-tutorials" -%}
+				{%- if tutorial.tags contains "onboarding" -%}
+					{%- assign tutorial_group = "getting-started" -%}
+				{%- elsif tutorial.tags contains "rendering" or tutorial.tags contains "shaders" or tutorial.tags contains "three-d" -%}
+					{%- assign tutorial_group = "rendering-shaders" -%}
+				{%- elsif tutorial.tags contains "platform" or tutorial.tags contains "network" or tutorial.tags contains "web" or tutorial.tags contains "ios" -%}
+					{%- assign tutorial_group = "platform-online" -%}
+				{%- elsif tutorial.tags contains "ui-art" -%}
+					{%- assign tutorial_group = "ui-art" -%}
+				{%- elsif tutorial.tags contains "gameplay" or tutorial.tags contains "physics" or tutorial.tags contains "two-d" -%}
+					{%- assign tutorial_group = "gameplay-physics" -%}
+				{%- elsif tutorial.tags contains "scripting" or tutorial.tags contains "input" -%}
+					{%- assign tutorial_group = "scripting-input" -%}
+				{%- endif -%}
+				{%- if tutorial_group == tutorial_group_key -%}
+					{%- assign tutorial_url = tutorial.path -%}
+					{%- assign tutorial_label = tutorial.name -%}
+					{%- unless nav_page_locale == "en" -%}
+						{%- if tutorial.locales contains nav_page_locale -%}
+							{%- assign tutorial_url = "/" | append: nav_locale_info.urlprefix | append: tutorial.path -%}
+						{%- else -%}
+							{%- assign tutorial_label = tutorial.name | append: " (English)" -%}
+						{%- endif -%}
+					{%- endunless -%}
+			<li class="learn-sidebar-list-item">
+				<a href="{{ tutorial_url }}" class="learn-sidebar-link{% if page.url contains tutorial.path %} is-current{% endif %}"{% if page.url contains tutorial.path %} aria-current="page"{% endif %}>{{ tutorial_label }}</a>
+			</li>
+				{%- endif -%}
+			{%- endfor -%}
+		</ul>
 		{%- endif -%}
 	{%- endfor -%}
 {%- endif -%}
@@ -111,6 +190,85 @@
 					{%- endfor -%}
 					</ul>
 				</details>
+			{%- endfor -%}
+		{%- elsif sidebar_kind == "tutorials" -%}
+			{%- assign tutorial_group_keys = "getting-started|gameplay-physics|ui-art|rendering-shaders|platform-online|scripting-input|more-tutorials" | split: "|" -%}
+			{%- for tutorial_group_key in tutorial_group_keys -%}
+				{%- assign tutorial_group_label = "More tutorials" -%}
+				{%- if tutorial_group_key == "getting-started" -%}
+					{%- assign tutorial_group_label = "Getting Started" -%}
+				{%- elsif tutorial_group_key == "gameplay-physics" -%}
+					{%- assign tutorial_group_label = "Gameplay & Physics" -%}
+				{%- elsif tutorial_group_key == "ui-art" -%}
+					{%- assign tutorial_group_label = "UI & Art" -%}
+				{%- elsif tutorial_group_key == "rendering-shaders" -%}
+					{%- assign tutorial_group_label = "Rendering & Shaders" -%}
+				{%- elsif tutorial_group_key == "platform-online" -%}
+					{%- assign tutorial_group_label = "Platform & Online" -%}
+				{%- elsif tutorial_group_key == "scripting-input" -%}
+					{%- assign tutorial_group_label = "Scripting & Input" -%}
+				{%- endif -%}
+				{%- assign tutorial_group_count = 0 -%}
+				{%- assign tutorial_group_open = false -%}
+				{%- for tutorial in site.data.learnindex.navigation.tutorials -%}
+					{%- assign tutorial_group = "more-tutorials" -%}
+					{%- if tutorial.tags contains "onboarding" -%}
+						{%- assign tutorial_group = "getting-started" -%}
+					{%- elsif tutorial.tags contains "rendering" or tutorial.tags contains "shaders" or tutorial.tags contains "three-d" -%}
+						{%- assign tutorial_group = "rendering-shaders" -%}
+					{%- elsif tutorial.tags contains "platform" or tutorial.tags contains "network" or tutorial.tags contains "web" or tutorial.tags contains "ios" -%}
+						{%- assign tutorial_group = "platform-online" -%}
+					{%- elsif tutorial.tags contains "ui-art" -%}
+						{%- assign tutorial_group = "ui-art" -%}
+					{%- elsif tutorial.tags contains "gameplay" or tutorial.tags contains "physics" or tutorial.tags contains "two-d" -%}
+						{%- assign tutorial_group = "gameplay-physics" -%}
+					{%- elsif tutorial.tags contains "scripting" or tutorial.tags contains "input" -%}
+						{%- assign tutorial_group = "scripting-input" -%}
+					{%- endif -%}
+					{%- if tutorial_group == tutorial_group_key -%}
+						{%- assign tutorial_group_count = tutorial_group_count | plus: 1 -%}
+						{%- if page.url contains tutorial.path -%}
+							{%- assign tutorial_group_open = true -%}
+						{%- endif -%}
+					{%- endif -%}
+				{%- endfor -%}
+				{%- if tutorial_group_count > 0 -%}
+				<details class="learn-mobile-category"{% if tutorial_group_open %} open{% endif %}>
+					<summary class="learn-mobile-category-summary">{{ tutorial_group_label }}</summary>
+					<ul class="learn-mobile-links nobullet">
+					{%- for tutorial in site.data.learnindex.navigation.tutorials -%}
+						{%- assign tutorial_group = "more-tutorials" -%}
+						{%- if tutorial.tags contains "onboarding" -%}
+							{%- assign tutorial_group = "getting-started" -%}
+						{%- elsif tutorial.tags contains "rendering" or tutorial.tags contains "shaders" or tutorial.tags contains "three-d" -%}
+							{%- assign tutorial_group = "rendering-shaders" -%}
+						{%- elsif tutorial.tags contains "platform" or tutorial.tags contains "network" or tutorial.tags contains "web" or tutorial.tags contains "ios" -%}
+							{%- assign tutorial_group = "platform-online" -%}
+						{%- elsif tutorial.tags contains "ui-art" -%}
+							{%- assign tutorial_group = "ui-art" -%}
+						{%- elsif tutorial.tags contains "gameplay" or tutorial.tags contains "physics" or tutorial.tags contains "two-d" -%}
+							{%- assign tutorial_group = "gameplay-physics" -%}
+						{%- elsif tutorial.tags contains "scripting" or tutorial.tags contains "input" -%}
+							{%- assign tutorial_group = "scripting-input" -%}
+						{%- endif -%}
+						{%- if tutorial_group == tutorial_group_key -%}
+							{%- assign tutorial_url = tutorial.path -%}
+							{%- assign tutorial_label = tutorial.name -%}
+							{%- unless nav_page_locale == "en" -%}
+								{%- if tutorial.locales contains nav_page_locale -%}
+									{%- assign tutorial_url = "/" | append: nav_locale_info.urlprefix | append: tutorial.path -%}
+								{%- else -%}
+									{%- assign tutorial_label = tutorial.name | append: " (English)" -%}
+								{%- endif -%}
+							{%- endunless -%}
+						<li>
+							<a href="{{ tutorial_url }}" class="learn-mobile-link{% if page.url contains tutorial.path %} is-current{% endif %}"{% if page.url contains tutorial.path %} aria-current="page"{% endif %}>{{ tutorial_label }}</a>
+						</li>
+						{%- endif -%}
+					{%- endfor -%}
+					</ul>
+				</details>
+				{%- endif -%}
 			{%- endfor -%}
 		{%- endif -%}
 		</div>

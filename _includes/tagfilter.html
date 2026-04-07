@@ -3,6 +3,7 @@
 	{%- assign tag_icons = site.data.asset_tag_icons -%}
 	{%- assign active_tag = include.tag | default: "" | downcase | remove: " " -%}
 	{%- assign active_sort = include.sort | default: "stars" -%}
+	{%- assign search_id = "asset-search-catalog" -%}
 	<div class="asset-hub-filter-group">
 		<p class="asset-hub-filter-label">Tags</p>
 		<div class="asset-hub-filter-grid">
@@ -33,5 +34,10 @@
 				<span class="asset-hub-filter-text">Latest</span>
 			</button>
 		</div>
+	</div>
+
+	<div class="asset-hub-filter-group asset-hub-filter-search">
+		<p class="asset-hub-filter-label">Search</p>
+		{% include catalog_search_field.html id=search_id input_class="assetsearch" data_attribute_name="data-asset-search" placeholder="Search assets by name or description" aria_label="Search assets by name or description" %}
 	</div>
 </div>
