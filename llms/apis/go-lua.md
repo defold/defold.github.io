@@ -3,12 +3,10 @@
 **Namespace:** `go`
 **Language:** Lua
 **Type:** Defold Lua
-**File:** `gameobject_script.cpp`
-**Source:** `engine/gameobject/src/gameobject/gameobject_script.cpp`
+**File:** `gameobject_ddf.proto`
+**Source:** `engine/gameobject/proto/gameobject/gameobject_ddf.proto`
 
-Functions, core hooks, messages and constants for manipulation of
-game objects. The "go" namespace is accessible from game object script
-files.
+Game object API documentation
 
 ## API
 

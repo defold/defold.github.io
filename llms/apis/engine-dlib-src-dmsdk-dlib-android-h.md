@@ -133,7 +133,7 @@ Registers an activity result callback. Multiple listeners are allowed.
 
 ### ThreadAttacher
 *Type:* CLASS
-Struct attaching the JNI environment. Detaches the
+Struct attaching the JNI environment.
 
 ### ThreadAttacher
 *Type:* FUNCTION

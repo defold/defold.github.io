@@ -90,6 +90,34 @@ Get Vulkan queue family. Only available when using Mac/iOS.
 - `context` (dmGraphics::HContext) - the Vulkan context
 return family <span class="type"> uint16_t</span> graphics queue family
 
+### VulkanGetImage
+*Type:* FUNCTION
+Get the native Vulkan image handle from an engine texture handle.
+Returns 0 if the texture handle does not resolve to a Vulkan image.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - the Vulkan context
+- `texture` (dmGraphics::HTexture) - the texture handle
+
+**Returns**
+
+- `image` (VkImage) - the Vulkan image handle
+
+### VulkanGetImageView
+*Type:* FUNCTION
+Get the native Vulkan image view handle from an engine texture handle.
+Returns 0 if the texture handle does not resolve to a Vulkan image view.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - the Vulkan context
+- `texture` (dmGraphics::HTexture) - the texture handle
+
+**Returns**
+
+- `image_view` (VkImageView) - the Vulkan image view handle
+
 ### VulkanGetInstance
 *Type:* FUNCTION
 Get Vulkan instance handle. Only available when using Mac/iOS.

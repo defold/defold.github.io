@@ -255,8 +255,7 @@ function init(self)
                 id          = "my_animation",
                 width       = 128,
                 height      = 128,
-                frame_start = 1,
-                frame_end   = 2,
+                frames      = { 1 }
             }
         },
         geometries = {
@@ -816,6 +815,8 @@ Returns the atlas data for an atlas
 <li>geometries</li>
 <li>animations</li>
 </ul>
+Each animation entry also contains a <code>frames</code> table with indices into
+<code>geometries</code>, preserving the frame-to-geometry mapping used by the atlas.
 See <a href="/ref/resource#resource.set_atlas">resource.set_atlas</a> for a detailed description of each field
 
 ### resource.get_buffer
@@ -1312,8 +1313,7 @@ function init(self)
                 id          = "my_animation",
                 width       = 256,
                 height      = 256,
-                frame_start = 1,
-                frame_end   = 2,
+                frames      = { 1 }
             }
         },
         geometries = {

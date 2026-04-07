@@ -32,6 +32,55 @@ end
 
 ```
 
+### exit
+*Type:* MESSAGE
+Terminates the game application and reports the specified code to the OS.
+This message can only be sent to the designated @system socket.
+
+**Parameters**
+
+- `code` (number) - exit code to report to the OS, 0 means clean exit
+
+**Examples**
+
+This examples demonstrates how to exit the application when some kind of quit messages is received (maybe from gui or similar):
+```
+function on_message(self, message_id, message, sender)
+    if message_id == hash("quit") then
+        msg.post("@system:", "exit", {code = 0})
+    end
+end
+
+```
+
+### reboot
+*Type:* MESSAGE
+Reboots the game engine with a specified set of arguments.
+Arguments will be translated into command line arguments. Sending the reboot
+command is equivalent to starting the engine with the same arguments.
+On startup the engine reads configuration from "game.project" in the
+project root.
+This message can only be sent to the designated @system socket.
+
+**Parameters**
+
+- `arg1` (string) - argument 1
+- `arg2` (string) - argument 2
+- `arg3` (string) - argument 3
+- `arg4` (string) - argument 4
+- `arg5` (string) - argument 5
+- `arg6` (string) - argument 6
+
+**Examples**
+
+How to reboot engine with a specific bootstrap collection.
+```
+local arg1 = '--config=bootstrap.main_collection=/my.collectionc'
+local arg2 = 'build/game.projectc'
+msg.post("@system:", "reboot", {arg1 = arg1, arg2 = arg2})
+
+```
+
 ### reboot
 *Type:* MESSAGE
 Reboots the game engine with a specified set of arguments.
@@ -69,6 +118,15 @@ This message can only be sent to the designated @system socket.
 
 msg.post("@system:", "resume_rendering")
 
+### resume_rendering
+*Type:* MESSAGE
+Resume rendering.
+This message can only be sent to the designated @system socket.
+
+**Examples**
+
+msg.post("@system:", "resume_rendering")
+
 ### set_update_frequency
 *Type:* MESSAGE
 Set game update-frequency (frame cap). This option is equivalent to display.update_frequency in
@@ -85,6 +143,44 @@ This message can only be sent to the designated @system socket.
 **Examples**
 
 msg.post("@system:", "set_update_frequency", { frequency = 60 } )
+
+### set_update_frequency
+*Type:* MESSAGE
+Set game update-frequency (frame cap). This option is equivalent to display.update_frequency in
+the "game.project" settings but set in run-time. If Vsync checked in "game.project", the rate will
+be clamped to a swap interval that matches any detected main monitor refresh rate. If Vsync is
+unchecked the engine will try to respect the rate in software using timers. There is no
+guarantee that the frame cap will be achieved depending on platform specifics and hardware settings.
+This message can only be sent to the designated @system socket.
+
+**Parameters**
+
+- `frequency` (number) - target frequency. 60 for 60 fps
+
+**Examples**
+
+msg.post("@system:", "set_update_frequency", { frequency = 60 } )
+
+### set_vsync
+*Type:* MESSAGE
+Set the vsync swap interval. The interval with which to swap the front and back buffers
+in sync with vertical blanks (v-blank), the hardware event where the screen image is updated
+with data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of
+2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank
+before swapping the buffers. Default value is 1.
+When setting the swap interval to 0 and having vsync disabled in
+"game.project", the engine will try to respect the set frame cap value from
+"game.project" in software instead.
+This setting may be overridden by driver settings.
+This message can only be sent to the designated @system socket.
+
+**Parameters**
+
+- `swap_interval` (number) - target swap interval.
+
+**Examples**
+
+msg.post("@system:", "set_vsync", { swap_interval = 1 } )
 
 ### set_vsync
 *Type:* MESSAGE
@@ -136,6 +232,51 @@ msg.post("@system:", "start_record", { file_name = "test_rec.ivf" } )
 To write a video in 60 fps given that the native game fps is 60:
 ```
 msg.post("@system:", "start_record", { file_name = "test_rec.ivf", frame_period = 1, fps = 60 } )
+
+```
+
+### start_record
+*Type:* MESSAGE
+Starts video recording of the game frame-buffer to file. Current video format is the
+open vp8 codec in the ivf container. It's possible to upload this format directly
+to YouTube. The VLC video player has native support but with the known issue that
+not the entire file is played back. It's probably an issue with VLC.
+The Miro Video Converter has support for vp8/ivf.
+   Video recording is only supported on desktop platforms.
+ Audio is currently not supported
+ Window width and height must be a multiple of 8 to be able to record video.
+This message can only be sent to the designated @system socket.
+
+**Parameters**
+
+- `file_name` (string) - file name to write the video to
+- `frame_period` (number) - frame period to record, ie write every nth frame. Default value is <code>2</code>
+- `fps` (number) - frames per second. Playback speed for the video. Default value is <code>30</code>. The fps value doens't affect the recording. It's only meta-data in the written video file.
+
+**Examples**
+
+Record a video in 30 fps given that the native game fps is 60:
+```
+msg.post("@system:", "start_record", { file_name = "test_rec.ivf" } )
+
+```
+
+To write a video in 60 fps given that the native game fps is 60:
+```
+msg.post("@system:", "start_record", { file_name = "test_rec.ivf", frame_period = 1, fps = 60 } )
+
+```
+
+### stop_record
+*Type:* MESSAGE
+Stops the currently active video recording.
+   Video recording is only supported on desktop platforms.
+This message can only be sent to the designated @system socket.
+
+**Examples**
+
+```
+msg.post("@system:", "stop_record")
 
 ```
 
@@ -1083,6 +1224,41 @@ This message can only be sent to the designated @system socket.
 
 ```
 msg.post("@system:", "toggle_physics_debug")
+
+```
+
+### toggle_physics_debug
+*Type:* MESSAGE
+Toggles the on-screen physics visual debugging mode which is very useful for
+tracking down issues related to physics. This mode visualizes
+all collision object shapes and normals at detected contact points. Toggling
+this mode on is equal to setting physics.debug in the "game.project" settings,
+but set in run-time.
+This message can only be sent to the designated @system socket.
+
+**Examples**
+
+```
+msg.post("@system:", "toggle_physics_debug")
+
+```
+
+### toggle_profile
+*Type:* MESSAGE
+Toggles the on-screen profiler.
+The profiler is a real-time tool that shows the numbers of milliseconds spent
+in each scope per frame as well as counters. The profiler is very useful for
+tracking down performance and resource problems.
+In addition to the on-screen profiler, Defold includes a web-based profiler that
+allows you to sample a series of data points and then analyze them in detail.
+The web profiler is available at http://:8002 where  is
+the IP address of the device you are running your game on.
+This message can only be sent to the designated @system socket.
+
+**Examples**
+
+```
+msg.post("@system:", "toggle_profile")
 
 ```
 

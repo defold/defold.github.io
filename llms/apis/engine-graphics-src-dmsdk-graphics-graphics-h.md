@@ -60,6 +60,16 @@ Defines how an attachment should be treated at the start and end of a render pas
 - `ATTACHMENT_OP_STORE` -     Store the attachment’s results after the pass finishes
 - `ATTACHMENT_OP_CLEAR` -     Clear the attachment to a predefined value at the beginning of the pass
 
+### BeginFrame
+*Type:* FUNCTION
+Begins frame rendering.
+Prepares the graphics context for rendering a new frame.
+This should be called at the start of each frame.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+
 ### BlendFactor
 *Type:* ENUM
 Blend factors for color blending.
@@ -104,6 +114,32 @@ Helps the driver optimize memory placement
 - `BUFFER_USAGE_DYNAMIC_DRAW` -    Updated occasionally, used many times
 - `BUFFER_USAGE_STATIC_DRAW` -     Set once, used many times (e.g. meshes, textures). Preferred for buffers that never change
 
+### Clear
+*Type:* FUNCTION
+Clears the render target buffers.
+Fills the specified buffers with predefined values. Commonly used at the
+beginning of a frame to clear the screen to a specific color and depth.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `flags` (uint32_t) - Bitmask specifying which buffers to clear (BUFFER_TYPE_*)
+- `red` (uint8_t) - Red component value (0-255)
+- `green` (uint8_t) - Green component value (0-255)
+- `blue` (uint8_t) - Blue component value (0-255)
+- `alpha` (uint8_t) - Alpha component value (0-255)
+- `depth` (float) - Depth value to clear depth buffer to
+- `stencil` (uint32_t) - Stencil value to clear stencil buffer to
+
+### CloseWindow
+*Type:* FUNCTION
+Closes the window associated with the graphics context.
+If a window is open, this will close it and clean up associated resources.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+
 ### CompareFunc
 *Type:* ENUM
 Depth and alpha test comparison functions.
@@ -120,6 +156,40 @@ Defines how incoming values are compared against stored ones
 - `COMPARE_FUNC_NOTEQUAL` -     Passes if incoming != stored
 - `COMPARE_FUNC_ALWAYS` -       Always passes (ignores stored values)
 
+### ContextParams
+*Type:* STRUCT
+Graphics context creation parameters.
+Defines the configuration for creating a new graphics context.
+This structure is used when initializing the graphics system and
+specifies window association, job system context, texture filtering defaults,
+resolution, memory limits, and various debugging/validation options.
+
+**Members**
+
+- `m_Window` (dmPlatform::HWindow) - Platform window handle to associate with the graphics context
+- `m_JobContext` (dmJobSystem::HJobContext) - Job system context for asynchronous operations
+- `m_DefaultTextureMinFilter` (dmGraphics::TextureFilter) - Default minification filter for textures
+- `m_DefaultTextureMagFilter` (dmGraphics::TextureFilter) - Default magnification filter for textures
+- `m_Width` (uint32_t) - Initial width of the rendering surface
+- `m_Height` (uint32_t) - Initial height of the rendering surface
+- `m_GraphicsMemorySize` (uint32_t) - Maximum allowed graphics memory in bytes (0 for default/unlimited) (Switch)
+- `m_SwapInterval` (uint32_t) - Vertical synchronization interval (1 for 60Hz, 2 for 30Hz, etc.) (Default = 1)
+- `m_GraphicsApiVersionMajorHint` (uint16_t) - Requested graphics API major version hint. A value of 0 lets the platform use its default.
+- `m_GraphicsApiVersionMinorHint` (uint16_t) - Requested graphics API minor version hint.
+- `m_VerifyGraphicsCalls` (bool) - Enable API call verification for debugging
+- `m_PrintDeviceInfo` (bool) - Print graphics device information at startup
+- `m_UseValidationLayers` (bool) - Enable validation layers for debugging (Vulkan/DirectX 12 only)
+
+### DeleteContext
+*Type:* FUNCTION
+Destroys a graphics context.
+Cleans up all resources associated with the graphics context.
+The context becomes invalid after this call.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context to destroy
+
 ### DeleteIndexBuffer
 *Type:* FUNCTION
 Delete the index buffer
@@ -127,6 +197,17 @@ Delete the index buffer
 **Parameters**
 
 - `buffer` (dmGraphics::HIndexBuffer) - the index buffer
+
+### DeleteProgram
+*Type:* FUNCTION
+Destroys a shader program and frees associated resources.
+Cleans up GPU memory and resources associated with the program handle.
+The handle becomes invalid after this call.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `program` (dmGraphics::HProgram) - Program handle to destroy
 
 ### DeleteRenderTarget
 *Type:* FUNCTION
@@ -169,6 +250,16 @@ Delete vertex stream declaration
 
 - `stream_declaration` (dmGraphics::HVertexStreamDeclaration) - the vertex stream declaration
 
+### DisableProgram
+*Type:* FUNCTION
+Deactivates the currently bound shader program.
+Unbinds any active program from the graphics pipeline, returning to the default state
+where no custom shader program is active.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+
 ### DisableState
 *Type:* FUNCTION
 
@@ -190,6 +281,54 @@ or to free up texture units for other bindings.
 - `context` (dmGraphics::HContext) - Graphics context
 - `unit` (uint32_t) - Texture unit index to disable. Must match the one previously used in <code>dmGraphics::EnableTexture</code>
 - `texture` (dmGraphics::HTexture) - Handle to the texture object to disable
+
+### DisableVertexBuffer
+*Type:* FUNCTION
+Unbinds a vertex buffer from the graphics pipeline.
+Removes the association between a vertex buffer and its binding index,
+freeing up the binding slot for other buffers.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `vertex_buffer` (dmGraphics::HVertexBuffer) - Vertex buffer handle to unbind
+
+### DisableVertexDeclaration
+*Type:* FUNCTION
+Unbinds a vertex declaration from the graphics pipeline.
+Removes the association between a vertex declaration and its binding index,
+freeing up the binding slot for other declarations.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `vertex_declaration` (dmGraphics::HVertexDeclaration) - Vertex declaration handle to unbind
+
+### Draw
+*Type:* FUNCTION
+Draws non-indexed primitives.
+Renders geometry using vertex data directly from the bound vertex buffers
+without index buffer indirection. The vertices are processed sequentially
+from the specified starting point.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `prim_type` (dmGraphics::PrimitiveType) - Type of primitives to draw
+- `first` (uint32_t) - Index of the first vertex to draw
+- `count` (uint32_t) - Number of vertices to draw
+- `instance_count` (uint32_t) - Number of instances to draw (for instanced rendering)
+
+### EnableProgram
+*Type:* FUNCTION
+Activates a shader program for rendering.
+Binds the specified program to the graphics pipeline, making it the active program
+for all subsequent rendering operations until another program is activated or disabled.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `program` (dmGraphics::HProgram) - Program handle to activate
 
 ### EnableState
 *Type:* FUNCTION
@@ -215,6 +354,33 @@ to different units. The shader must reference the correct unit
 - `id_index` (uint8_t) - Index for internal tracking or binding variation. Typically used when multiple texture IDs are managed within the same unit (e.g. array textures or multi-bind)
 - `texture` (dmGraphics::HTexture) - Handle to the texture object to enable and bind
 
+### EnableVertexBuffer
+*Type:* FUNCTION
+Binds a vertex buffer for rendering.
+Associates a vertex buffer with a specific binding index in the graphics pipeline.
+The buffer provides the actual vertex data that will be processed according to
+the active vertex declaration for that binding index.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `vertex_buffer` (dmGraphics::HVertexBuffer) - Vertex buffer handle
+- `binding_index` (uint32_t) - Binding index to associate with this buffer
+
+### EnableVertexDeclaration
+*Type:* FUNCTION
+Binds a vertex declaration for rendering.
+Associates a vertex declaration with a specific binding index in the graphics pipeline.
+The declaration defines how vertex data is interpreted and laid out in memory.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `vertex_declaration` (dmGraphics::HVertexDeclaration) - Vertex declaration handle
+- `binding_index` (uint32_t) - Binding index to associate with this declaration
+- `base_offset` (uint32_t) - Byte offset to add to all vertex attribute pointers
+- `program` (dmGraphics::HProgram) - Shader program to use with this declaration
+
 ### FaceWinding
 *Type:* ENUM
 
@@ -222,6 +388,66 @@ to different units. The shader must reference the correct unit
 
 - `FACE_WINDING_CCW`
 - `FACE_WINDING_CW`
+
+### Finalize
+*Type:* FUNCTION
+Finalizes the graphics system.
+Cleans up global graphics resources and shuts down the graphics system.
+This should be called when the application is exiting.
+
+### FindUniformLocation
+*Type:* FUNCTION
+Finds the location of a uniform variable in a shader program by name hash.
+Returns the uniform location that can be used with other uniform-setting functions.
+This is the preferred method when the uniform name is known at compile time
+as it avoids runtime string hashing.
+
+**Parameters**
+
+- `program` (dmGraphics::HProgram) - Shader program handle
+- `name_hash` (dmhash_t) - Hash of the uniform variable name
+
+**Returns**
+
+- `location` (dmGraphics::HUniformLocation) - Uniform location handle, or INVALID_UNIFORM_LOCATION if not found
+
+### FindUniformLocation
+*Type:* FUNCTION
+Finds the location of a uniform variable in a shader program by name string.
+Returns the uniform location that can be used with other uniform-setting functions.
+This method is useful when the uniform name is only known at runtime.
+
+**Parameters**
+
+- `program` (dmGraphics::HProgram) - Shader program handle
+- `name` (const char*) - Name of the uniform variable
+
+**Returns**
+
+- `location` (dmGraphics::HUniformLocation) - Uniform location handle, or INVALID_UNIFORM_LOCATION if not found
+
+### Flip
+*Type:* FUNCTION
+Flips screen buffers.
+Presents the rendered frame to the display.
+This should be called at the end of each frame after all rendering is complete.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+
+### GetAdapterFamily
+*Type:* FUNCTION
+Gets the adapter family from a string name.
+Converts a string identifier to the corresponding AdapterFamily enum value.
+
+**Parameters**
+
+- `adapter_name` (const char*) - String name of the adapter (e.g., "opengl", "vulkan")
+
+**Returns**
+
+- `family` (dmGraphics::AdapterFamily) - Corresponding adapter family enum value
 
 ### GetDisplayScaleFactor
 *Type:* FUNCTION
@@ -637,10 +863,6 @@ Context handle
 *Type:* TYPEDEF
 Index buffer handle
 
-### HPipelineState
-*Type:* TYPEDEF
-PipelineState handle
-
 ### HProgram
 *Type:* TYPEDEF
 Program handle
@@ -683,9 +905,35 @@ Defines the integer size used for vertex indices
 - `INDEXBUFFER_FORMAT_16` -    16-bit unsigned integers (max 65535 vertices)
 - `INDEXBUFFER_FORMAT_32` -    32-bit unsigned integers (supports larger meshes)
 
+### InstallAdapter
+*Type:* FUNCTION
+Installs a graphics adapter.
+Initializes the specified graphics backend (OpenGL, Vulkan, etc.).
+This must be called before creating any graphics context.
+
+**Parameters**
+
+- `family` (dmGraphics::AdapterFamily) - Graphics adapter family to install
+
+**Returns**
+
+- `success` (bool) - True if the adapter was successfully installed, false otherwise
+
+### INVALID_PROGRAM_HANDLE
+*Type:* CONSTANT
+Invalid program handle constant.
+Used to represent an uninitialized or invalid program handle.
+Can be used to check if program creation or loading failed.
+
 ### INVALID_STREAM_OFFSET
 *Type:* CONSTANT
 Invalid stream offset
+
+### INVALID_UNIFORM_LOCATION
+*Type:* CONSTANT
+Invalid uniform location constant.
+Used to represent an uninitialized or invalid uniform location.
+Can be used to check if uniform location lookup failed.
 
 ### IsExtensionSupported
 *Type:* FUNCTION
@@ -727,6 +975,20 @@ check if a specific texture format is supported
 *Type:* CONSTANT
 Max buffer color attachments
 
+### NewContext
+*Type:* FUNCTION
+Creates a new graphics context.
+Initializes the graphics system with the specified parameters.
+Only one graphics context can be active at a time.
+
+**Parameters**
+
+- `params` (const dmGraphics::ContextParams&) - Context creation parameters
+
+**Returns**
+
+- `context` (dmGraphics::HContext) - New graphics context handle, or null on failure
+
 ### NewIndexBuffer
 *Type:* FUNCTION
 Create new index buffer with initial data
@@ -745,6 +1007,23 @@ Create new index buffer with initial data
 **Returns**
 
 - `buffer` (dmGraphics::HIndexBuffer) - the index buffer
+
+### NewProgram
+*Type:* FUNCTION
+Creates a new shader program from a shader description.
+Compiles and links shader sources defined in the ShaderDesc into a GPU program.
+Returns a program handle that can be used for rendering.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `ddf` (dmGraphics::ShaderDesc*) - Shader description containing source code and parameters
+- `error_buffer` (char*) - Buffer to receive error messages (can be null)
+- `error_buffer_size` (uint32_t) - Size of the error buffer
+
+**Returns**
+
+- `program` (dmGraphics::HProgram) - New program handle, or INVALID_PROGRAM_HANDLE on failure
 
 ### NewRenderTarget
 *Type:* FUNCTION
@@ -971,6 +1250,18 @@ Set subset of index buffer data
 - `width` (uint32_t)
 - `height` (uint32_t)
 
+### SetSampler
+*Type:* FUNCTION
+Binds a texture sampler to a texture unit.
+Associates a texture with a specific sampler uniform in the shader,
+allowing the shader to access the texture data during rendering.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `location` (dmGraphics::HUniformLocation) - Uniform location of the sampler
+- `unit` (int32_t) - Texture unit index to bind to
+
 ### SetStencilFunc
 *Type:* FUNCTION
 
@@ -1089,6 +1380,24 @@ Set subset of vertex buffer data
 - `offset` (uint32_t) - the offset into the desination buffer (in bytes)
 - `size` (uint32_t) - the size of the buffer (in bytes). May be 0
 - `data` (void*) - the data
+
+### SetViewport
+*Type:* FUNCTION
+Sets the viewport for rendering.
+Defines the affine transformation from normalized device coordinates to window coordinates.
+This affects all subsequent rendering operations.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `x` (int32_t) - X coordinate of the viewport's origin (in pixels)
+- `y` (int32_t) - Y coordinate of the viewport's origin (in pixels)
+- `width` (int32_t) - Width of the viewport (in pixels)
+- `height` (int32_t) - Height of the viewport (in pixels)
+
+### ShaderDesc
+*Type:* STRUCT
+Shader program description (from graphics_ddf.h)
 
 ### StencilOp
 *Type:* ENUM

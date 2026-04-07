@@ -51,6 +51,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [dmGameSystem (GameSystem Gui)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-gui-h.md) - Built-in scripting functions
 - [dmGameSystem (Property)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-property-h.md) - Property functions
 - [dmGameSystem (Component Render Constants)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-render_constants-h.md) - Api for setting and updating component render constants
+- [dmGameSystem (Data Resource)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-resources-res_data-h.md) - Helper types and accessors for the data resource type (`
 - [dmGameSystem (Font Resource)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-resources-res_font-h.md) - Font resource functions
 - [dmScript (Script)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-script-h.md) - Built-in scripting functions
 - [dmGraphics (Graphics)](https://defold.com/llms/apis/engine-graphics-src-dmsdk-graphics-graphics-h.md) - Graphics API
@@ -58,6 +59,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [dmGraphics (Graphics OpenGL)](https://defold.com/llms/apis/engine-graphics-src-dmsdk-graphics-graphics_opengl-h.md) - Graphics OpenGL API
 - [dmGraphics (Graphics Vulkan)](https://defold.com/llms/apis/engine-graphics-src-dmsdk-graphics-graphics_vulkan-h.md) - Graphics Vulkan API
 - [dmGui (Gui)](https://defold.com/llms/apis/engine-gui-src-dmsdk-gui-gui-h.md) - Defold GUI system
+- [dmHid (Hid)](https://defold.com/llms/apis/engine-hid-src-dmsdk-hid-hid-h.md) - Used to add input to the engine
 - [dmPhysics (Physics)](https://defold.com/llms/apis/engine-physics-src-dmsdk-physics-physics-h.md) - Physics related structs and functions
 - [dmRender (Render)](https://defold.com/llms/apis/engine-render-src-dmsdk-render-render-h.md) - Api for render specific data
 - [dmResource (Resource)](https://defold.com/llms/apis/engine-resource-src-dmsdk-resource-resource-hpp.md) - Functions for managing resource and resource types
@@ -79,19 +81,17 @@ These are per-namespace API reference files generated for LLM usage.
 - [coroutine (Coroutine)](https://defold.com/llms/apis/coroutine-lua.md) - Documentation for the Lua coroutine standard library
 - [crash (Crash)](https://defold.com/llms/apis/crash-lua.md) - Native crash logging functions and constants
 - [debug (Debug)](https://defold.com/llms/apis/debug-lua.md) - Documentation for the Lua debug standard library
-- [editor (Editor)](https://defold.com/llms/apis/editor-lua.md) - Editor scripting documentation
 - [factory (Factory)](https://defold.com/llms/apis/factory-lua.md) - Functions for controlling factory components which are used to dynamically spawn game objects into the runtime
 - [font (Font)](https://defold.com/llms/apis/font-lua.md) - Functions, messages and properties used to manipulate font resources
-- [go (Game object)](https://defold.com/llms/apis/go-lua.md) - Functions, core hooks, messages and constants for manipulation of game objects
+- [go (Game object)](https://defold.com/llms/apis/go-lua.md) - Game object API documentation
 - [graphics (Graphics)](https://defold.com/llms/apis/graphics-lua.md) - Graphics functions and constants
-- [gui (GUI)](https://defold.com/llms/apis/gui-lua.md) - GUI core hooks, functions, messages, properties and constants for creation and manipulation of GUI nodes
+- [gui (GUI)](https://defold.com/llms/apis/gui-lua.md) - GUI API documentation
 - [html5 (HTML5)](https://defold.com/llms/apis/html5-lua.md) - HTML5 platform specific functions
 - [http (HTTP)](https://defold.com/llms/apis/http-lua.md) - Functions for performing HTTP and HTTPS requests
 - [image (Image)](https://defold.com/llms/apis/image-lua.md) - Functions for creating image objects
 - [io (Io)](https://defold.com/llms/apis/io-lua.md) - Documentation for the Lua io standard library
 - [json (JSON)](https://defold.com/llms/apis/json-lua.md) - Manipulation of JSON data strings
 - [label (Label)](https://defold.com/llms/apis/label-lua.md) - Functions to manipulate a label component
-- [liveupdate (LiveUpdate)](https://defold.com/llms/apis/liveupdate-lua.md) - Functions and constants to access resources
 - [math (Math)](https://defold.com/llms/apis/math-lua.md) - Documentation for the Lua math standard library
 - [model (Model)](https://defold.com/llms/apis/model-lua.md) - Model API documentation
 - [msg (Message)](https://defold.com/llms/apis/msg-lua.md) - Functions for passing messages and constructing URL objects

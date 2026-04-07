@@ -89,6 +89,15 @@ dot product between two vectors
 
 - `dot_product` (float) - the dot product
 
+### EulerToQuat
+*Type:* FUNCTION
+Converts euler angles (x, y, z) in degrees into a quaternion
+The error is guaranteed to be less than 0.001.
+
+**Parameters**
+
+- `xyz` (Vector3) - rotation (deg)
+
 ### Inverse
 *Type:* FUNCTION
 inverse matrix
@@ -393,6 +402,37 @@ A 4-tuple representing a rotation rotation. The xyz represents the axis, and the
 dmVMath::Quat p = dmVMath::Quat(x, y, z, w); // Create new rotation. W is the angle
 
 ```
+
+### QuatFromAngle
+*Type:* FUNCTION
+construct a quaternion from an axis index and angle
+
+**Parameters**
+
+- `axis_index` (uint32_t) - index of the rotation axis
+- `radians` (float) - angle of rotation in radians
+
+**Returns**
+
+- `q` (Quat) - quaternion describing the rotation
+
+### QuatToEuler
+*Type:* FUNCTION
+Converts a quaternion into euler angles (r0, r1, r2), based on YZX rotation order.
+To handle gimbal lock (singularity at r1 ~ +/- 90 degrees), the cut off is at r0 = +/- 88.85 degrees, which snaps to +/- 90.
+The provided quaternion is expected to be normalized.
+The error is guaranteed to be less than +/- 0.02 degrees
+
+**Parameters**
+
+- `q0` (float) - first imaginary axis
+- `q1` (float) - second imaginary axis
+- `q2` (float) - third imaginary axis
+- `q3` (float) - real part
+
+**Returns**
+
+- `euler` (Vector3) - euler angles in degrees
 
 ### Rotate
 *Type:* FUNCTION

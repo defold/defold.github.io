@@ -75,6 +75,10 @@ Use dmLogOnceFatal for one-shot logging
 
 - `return` (void)
 
+### dmLogFinalize
+*Type:* FUNCTION
+finalize the logging system.
+
 ### dmLogGetLevel
 *Type:* FUNCTION
 Get log system severity level.
@@ -96,6 +100,16 @@ Use dmLogOnceInfo for one-shot logging
 **Returns**
 
 - `return` (void)
+
+### dmLogInitialize
+*Type:* FUNCTION
+Running this function is only required in order to start the log server.
+The function never fails even if the log server cannot be started.
+Any startup errors are reported to stderr.
+
+**Parameters**
+
+- `params` (LogParams*) - log parameters
 
 ### dmLogRegisterListener
 *Type:* FUNCTION
@@ -164,6 +178,10 @@ Used with dmLogRegisterListener() and dmLogUnregisterListener()
 - `severity` (LogSeverity)
 - `domain` (const char*)
 - `formatted_string` (const char*) - null terminated string
+
+### LogParams
+*Type:* STRUCT
+Parameters for dmLogInitialize().
 
 ### LogSeverity
 *Type:* ENUM

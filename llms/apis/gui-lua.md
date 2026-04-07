@@ -3,12 +3,10 @@
 **Namespace:** `gui`
 **Language:** Lua
 **Type:** Defold Lua
-**File:** `gui_script.cpp`
-**Source:** `engine/gui/src/gui_script.cpp`
+**File:** `gui_ddf.proto`
+**Source:** `engine/gamesys/proto/gamesys/gui_ddf.proto`
 
-GUI core hooks, functions, messages, properties and constants for
-creation and manipulation of GUI nodes. The "gui" namespace is
-accessible only from gui scripts.
+GUI API documentation
 
 ## API
 

@@ -231,6 +231,86 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get the native Vulkan image handle from an engine ...",
+            "description": "Get the native Vulkan image handle from an engine texture handle.\nReturns <code>0</code> if the texture handle does not resolve to a Vulkan image.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanGetImage",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the Vulkan context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "the texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the Vulkan image handle",
+                    "name": "image",
+                    "types": [
+                        "VkImage"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the native Vulkan image view handle from an en...",
+            "description": "Get the native Vulkan image view handle from an engine texture handle.\nReturns <code>0</code> if the texture handle does not resolve to a Vulkan image view.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "VulkanGetImageView",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the Vulkan context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "the texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the Vulkan image view handle",
+                    "name": "image_view",
+                    "types": [
+                        "VkImageView"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get Vulkan instance handle. Only available when us...",
             "description": "Get Vulkan instance handle. Only available when using Mac/iOS.",
             "error": "",
