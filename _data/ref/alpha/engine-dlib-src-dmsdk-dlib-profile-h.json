@@ -1076,7 +1076,15 @@
                 }
             ],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "Status for the frame end operation",
+                    "name": "result",
+                    "types": [
+                        "ProfileResult"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -1176,7 +1184,15 @@
                 }
             ],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "Status for the log text operation",
+                    "name": "result",
+                    "types": [
+                        "ProfileResult"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -1302,6 +1318,37 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Enum to describe the result of a profiler operation",
+            "description": "Enum to describe the result of a profiler operation",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "PROFILE_RESULT_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "PROFILE_RESULT_NOT_INITIALIZED",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "PROFILE_RESULT_OUT_OF_SAMPLES",
+                    "type": ""
+                }
+            ],
+            "name": "ProfileResult",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
             "brief": "Start a new profile scope",
             "description": "Start a new profile scope",
             "error": "",
@@ -1329,7 +1376,15 @@
                 }
             ],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "Status for the scope begin operation",
+                    "name": "result",
+                    "types": [
+                        "ProfileResult"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -1361,7 +1416,15 @@
                 }
             ],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "Status for the scope end operation",
+                    "name": "result",
+                    "types": [
+                        "ProfileResult"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -1385,7 +1448,15 @@
                 }
             ],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "Status for the thread name operation",
+                    "name": "result",
+                    "types": [
+                        "ProfileResult"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
