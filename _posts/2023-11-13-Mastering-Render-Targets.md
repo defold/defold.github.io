@@ -3,7 +3,7 @@ layout: post
 title:  Mastering Render Targets
 excerpt: Learn how to master render targets in this guest post by forum user David.
 author: David Davabase
-tags: ["shaders", "code", "tutorial", "pc"]
+tags: ["shaders", "code", "tutorial"]
 ---
 
 In this guest post we invited Defold user David, aka "davabase", to share his experience learning to use render targets in Defold. This post was originally shared on [David's own blog](https://davabase.net/posts/mastering-render-targets-in-defold/).

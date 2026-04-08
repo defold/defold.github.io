@@ -3,7 +3,7 @@ layout: post
 title:  Defold user survey results
 excerpt: The results from the Defold user survey have been compiled and shared in this blog post.
 author: Björn Ritzl
-tags: ["survey", "network", "heroiclabs", "poki", "html5", "steam", "pc", "mobile", "shaders"]
+tags: ["survey", "network", "heroiclabs", "poki", "html5", "steam", "mobile", "shaders"]
 ---
 
 Some time ago we shared a survey with our users on Discord and on the Defold forum. The survey tried to find the answers to these questions:

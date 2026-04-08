@@ -3,7 +3,7 @@ layout: post
 title:  Defold Foundation x Poki Integration!
 excerpt: A quick update on new features from our partnership
 author: Björn Ritzl
-tags: ["news", "partner", "poki", "partnership", "html5"]
+tags: ["news", "partnership", "poki", "html5"]
 ---
 ![](/images/posts/defold-foundation-and-poki-integration/poki-defold.png)
 

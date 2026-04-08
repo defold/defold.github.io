@@ -3,7 +3,7 @@ layout: post
 title:  Watch the Defold 2022 showreel
 excerpt: The Defold 2022 showreel has been published on YouTube. The showreel contains some of the amazing games which have been released in 2022.
 author: Björn Ritzl
-tags: ["showreel", "poki", "steam", "pc"]
+tags: ["showreel", "poki", "steam"]
 ---
 
 # Defold 2022 showreel

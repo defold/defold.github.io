@@ -3,7 +3,7 @@ layout: post
 title: Monetize your games with GameDistribution
 excerpt: Today, we’re excited to speak to Björn Ritzl, Product Owner at Defold, and Cathy Besse, Developer Relations Manager at GameDistribution. Be sure to read on to discover more about Defold’s compatibility with GameDistribution’s platform.
 author: Maxime Buitenhuis
-tags: ["gamedistribution", "interview", "html5", "pc", "mobile"]
+tags: ["interview", "html5", "mobile"]
 ---
 
 _This is a guest post by Maxime Buitenhuis. Maxime works as Content Comms Manager at GameDistribution and as Editor-in-Chief at Pixel Vault._

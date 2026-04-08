@@ -3,7 +3,7 @@ layout: post
 title:  Developer Case Study - Mahjong Cards
 excerpt: In this developer case study we interview Artsiom Trubchyk from Indiesoft Llc about their game Mahjong Cards.
 author: Björn Ritzl
-tags: ["developer case study", "interview", "yandex", "poki", "html5", "pc"]
+tags: ["case study", "interview", "yandex", "poki", "html5"]
 ---
 
 Yandex.Games has quickly turned into one of the favorite places for Defold developers to release their HTML5 games. Yandex.Games has a large player base, an easy to integrate SDK and fast and smooth publishing and review process. In this blog post we'll look at the development process for Mahjong Cards, a game developed by Indiesoft Llc and launched on Yandex.Games a few months ago. We will also take a look at the Yandes.Games SDK integration created by Indiesoft and shared for free in the Defold Asset portal.

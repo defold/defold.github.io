@@ -3,7 +3,7 @@ layout: post
 title:  Defold 2024 Showreel
 excerpt: The Defold 2024 showreel has been published on YouTube. The showreel contains some of the amazing games which have been released in 2024.
 author: Björn Ritzl
-tags: ["news", "showreel", "poki", "steam", "pc"]
+tags: ["news", "showreel", "poki", "steam"]
 ---
 
 We are happy to share the Defold 2024 Showreel with some of the great games released in 2024. Have a look and let us know what you think!

@@ -3,7 +3,7 @@ layout: post
 title:  Defold user feedback survey results
 excerpt: The results from the Defold user survey have been compiled and shared in this blog post.
 author: Björn Ritzl
-tags: ["survey", "consoles", "nintendoswitch", "playstation", "xbox", "poki", "html5", "pc", "mobile"]
+tags: ["survey", "consoles", "nintendo", "playstation", "xbox", "poki", "html5", "mobile"]
 ---
 
 Some time ago we shared a survey with our users on Discord and on the Defold forum. The survey focused on three questions:

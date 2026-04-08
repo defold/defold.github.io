@@ -3,7 +3,7 @@ layout: post
 title:  Defold in 2025 - A Year in Review
 excerpt: Another year has gone by, and it’s time to reflect on the events and highlights of Defold in 2025.
 author: Paweł Jarosz
-tags: ["retrospective", "news", "network", "consoles", "xbox", "poki", "html5", "pc", "mobile", "shaders"]
+tags: ["retrospective", "news", "network", "consoles", "xbox", "poki", "html5", "mobile", "shaders"]
 ---
 
 # Defold in 2025 --- A year in Review

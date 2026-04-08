@@ -3,7 +3,7 @@ layout: post
 title:  Contributor Spotlight - Orestis Tsakiridis
 excerpt: In this Defold Contributor Spotlight we invited Orestis Tsakiridis to tell us a little bit about himself and why he is contributing to the Defold source code.
 author: Björn Ritzl
-tags: ["contributor spotlight", "interview", "pc"]
+tags: ["spotlight", "interview"]
 ---
 
 It is amazing how much the video games industry has changed in the last decade. Modern game engines have made game development accessible on a level that was completely unheard of fifteen years ago. Back then, game developers had to spend a significant amount of time on low level system integrations, rendering technology and performance optimizations while at the same time trying to create the games we love to play. The purpose of modern game engines is to take care of all of these nitty gritty details and complicated optimizations and integrations with the platforms on which games are run. Game developers can nowadays focus on creating awesome games and let game engine developers worry about rest. Today game engines are taken for granted; they are expected to "just work". And at the same time game engines are some of the most complex pieces of software written, created over the course of many years and thousands of man hours of work. And they are usually available for free.

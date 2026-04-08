@@ -3,7 +3,7 @@ layout: post
 title:  How to successfully release games on Poki with Defold
 excerpt: In this blog post we got the chance to interview Alexey Davydov, founder of Flazm, to learn how they use Defold to ship popular games on Poki.
 author: Björn Ritzl
-tags: ["developer case study", "interview", "poki", "consoles", "html5", "steam", "pc", "mobile"]
+tags: ["case study", "interview", "poki", "consoles", "html5", "steam", "mobile"]
 ---
 
 In this [series of developer case studies](https://defold.com/blog/#developer%20case%20study) we continue to cover the success of HTML5 game developers using Defold. This time we got the chance to interview Alexey Davydov, founder of Flazm, to learn how they use Defold to ship popular games on Poki.

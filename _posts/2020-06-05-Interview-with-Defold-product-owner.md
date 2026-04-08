@@ -3,7 +3,7 @@ layout: post
 title:  Interview with Defold Product Owner Björn Ritzl
 excerpt: May 2020 was very important for Defold. First, the Defold source code was made available. Second, Defold officially separated from King. Björn Ritzl, Defold product owner, explains why and how this happened.
 author: Björn Ritzl
-tags: ["interview", "network", "heroiclabs", "poki", "html5", "steam", "pc", "mobile", "shaders"]
+tags: ["interview", "network", "heroiclabs", "poki", "html5", "steam", "mobile", "shaders"]
 ---
 
 This interview was first published in [Game World Observer](https://gameworldobserver.com/2020/06/05/defold/).

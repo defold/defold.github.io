@@ -3,7 +3,7 @@ layout: post
 title:  Nintendo Switch access is now free!
 excerpt: We are happy to announce the decision to no longer charge a monthly fee for access to the Nintendo Switch build tools and game engine plugin. Approved Nintendo Switch developers can now request access to Defold through the Nintendo Developer Portal and will upon verification receive access to the required tools and documentation.
 author: Björn Ritzl
-tags: ["news", "nintendo", "consoles", "nintendoswitch"]
+tags: ["news", "nintendo", "consoles"]
 ---
 
 _The Defold Foundation will no longer charge a monthly fee for access to the Nintendo Switch build tools and game engine plugin._

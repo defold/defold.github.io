@@ -3,7 +3,7 @@ layout: post
 title:  Defold Newsletter 42
 excerpt: This week we have several new games to share and an update on Web Monetization in games made with Defold. We also have the latest Defold beta release notes.
 author: Björn Ritzl
-tags: ["newsletter", "steam", "pc", "mobile"]
+tags: ["newsletter", "steam", "mobile"]
 ---
 
 Hello, Defolder! 👋

@@ -3,7 +3,7 @@ layout: post
 title:  Defold Newsletter 21.7
 excerpt: Here's another packed newsletter with games, exciting news and the latest release notes.
 author: Björn Ritzl
-tags: ["newsletter", "steam", "pc", "mobile"]
+tags: ["newsletter", "steam", "mobile"]
 ---
 
 ## News

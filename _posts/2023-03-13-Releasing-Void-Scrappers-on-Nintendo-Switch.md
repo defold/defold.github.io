@@ -3,7 +3,7 @@ layout: post
 title:  Releasing Void Scrappers on Nintendo Switch
 excerpt: Void Scrappers was recently released for Nintendo Switch. What where the challenges and what can you do to make your own porting experience smoother?
 author: Björn Ritzl
-tags: ["creator spotlight", "interview", "nintendo switch", "consoles", "nintendoswitch", "steam", "pc"]
+tags: ["spotlight", "interview", "nintendo", "consoles", "steam"]
 ---
 
 __Welcome back to the blog Alex! It's been a few months since the release of [Void Scrappers on Steam](https://store.steampowered.com/app/2005210/Void_Scrappers/) and [our initial interview](https://defold.com/2022/11/24/Void-Scrappers-post-mortem/). The game received very positive reviews on Steam and seems to have been well received overall. How has these post-launch period been?__

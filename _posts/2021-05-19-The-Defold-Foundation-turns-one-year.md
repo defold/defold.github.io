@@ -3,7 +3,7 @@ layout: post
 title:  The Defold Foundation turns one year
 excerpt: Exactly one year ago we had the pleasure of announcing that King had made the decision to share the Defold source code and transfer ownership of Defold to the Defold Foundation. We are very proud of what we have achieved during our first 365 days of operations and we would like to take the opportunity to share some of the highlights.
 author: Björn Ritzl
-tags: ["news", "consoles", "nintendoswitch", "poki", "pc", "mobile"]
+tags: ["news", "consoles", "nintendo", "poki", "mobile"]
 ---
 
 STOCKHOLM, SWEDEN - May 19, 2021 - Exactly one year ago we had the pleasure of announcing that King had made the decision to share the Defold source code and transfer ownership of Defold to the Defold Foundation. We are very proud of what we have achieved during our first 365 days of operations and we would like to take the opportunity to share some of the highlights.

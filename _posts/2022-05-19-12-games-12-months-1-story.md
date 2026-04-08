@@ -3,7 +3,7 @@ layout: post
 title:  12 games, 12 months, 1 story
 excerpt: I gave myself a challenge. Create 12 games in 12 months. This is what I learned.
 author: Ian Campbell
-tags: ["developer case study", "creator spotlight", "mobile"]
+tags: ["case study", "spotlight", "mobile"]
 ---
 
 ## Introduction

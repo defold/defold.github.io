@@ -3,7 +3,7 @@ layout: post
 title:  Creator Spotlight - Erick - Kuyi Mobile
 excerpt: In this Defold Creator Spotlight we invited Erick to tell us a little bit about himself and his latest Defold projects.
 author: Paweł Jarosz
-tags: ["creator spotlight", "interview", "poki", "consoles", "steam", "pc", "mobile"]
+tags: ["spotlight", "interview", "poki", "consoles", "steam", "mobile"]
 ---
 
 In this Defold Creator Spotlight we invited Erick to tell us a little bit about himself and his latest Defold projects! Erick has a vast experience in game development and now runs Kuyi Mobile, and releases a lot of games, recently: [Bo’s Bedroom on Poki](https://poki.com/en/g/bos-bedroom).

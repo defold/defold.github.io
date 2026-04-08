@@ -3,7 +3,7 @@ layout: post
 title:  The Defold Foundation receives a generous donation from OP Games
 excerpt: The Defold Foundation today announced that it has received a generous donation from OP Games to fund development of the Defold game engine.
 author: Björn Ritzl
-tags: ["news", "op-games"]
+tags: ["news", "web", "partnership"]
 ---
 
 _The Defold Foundation today announced that it has received a generous donation from OP Games to fund development of the Defold game engine._

@@ -3,7 +3,7 @@ layout: post
 title:  A first look at the Defold 2021 roadmap
 excerpt: In this post we'll go through the Defold roadmap for 2021.
 author: Björn Ritzl
-tags: ["roadmap", "news", "consoles", "nintendoswitch", "playstation", "xbox", "pc", "mobile", "steam"]
+tags: ["roadmap", "news", "consoles", "nintendo", "playstation", "xbox", "mobile", "steam"]
 ---
 
 This roadmap outlines our plans for Defold in 2021. The contents of the roadmap is based on input from several stakeholders:
