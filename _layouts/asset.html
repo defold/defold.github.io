@@ -5,16 +5,7 @@ layout: page
 <div class="pagefind-hidden-meta" data-pagefind-filter="section">Assets</div>
 <div class="pagefind-hidden-meta" data-pagefind-meta="section">Assets</div>
 {%- assign asset = site.data.assets[page.asset] -%}
-{%- if asset.images.thumb contains "https" or asset.images.thumb contains "http" -%}
-	{%- assign thumb_base = "" -%}
-	{%- assign thumb = asset.images.thumb -%}
-{%- elsif asset.images.thumb.size > 0 -%}
-	{%- assign thumb_base = "/images/assets/" -%}
-	{%- assign thumb = asset.images.thumb -%}
-{%- else -%}
-	{%- assign thumb_base = "" -%}
-	{%- assign thumb = "/images/asset-nothumb.jpg" -%}
-{%- endif -%}
+{%- capture thumb_src -%}{% include asset_thumbnail_url.html asset=asset %}{%- endcapture -%}
 {%- assign project_link = asset.project_url | default: "" -%}
 {%- assign website_link = asset.website_url | default: "" -%}
 {%- assign primary_link = "" -%}
@@ -101,15 +92,14 @@ layout: page
 			<a class="asset-detail-backlink" href="/assets">← Back to Asset Portal</a>
 		</div>
 		<div class="page-detail-layout asset-detail-layout{% if has_release_panel %} asset-detail-layout-has-releases{% endif %}">
-			<div class="page-detail-media page-surface-panel page-illustration-panel">
-				<img src="{{ thumb_base }}{{ thumb }}" alt="{{ asset.name }} thumbnail" loading="eager"/>
-			</div>
+		<div class="page-detail-media page-surface-panel page-illustration-panel">
+			<img src="{{ thumb_src | strip }}" alt="{{ asset.name }} thumbnail" loading="eager"/>
+		</div>
 
 			{%- if has_release_panel -%}
 			<section class="asset-release-panel asset-detail-releases page-surface-panel" aria-labelledby="asset-releases-heading">
 				<div class="asset-release-panel-header">
 					<h2 id="asset-releases-heading">Releases</h2>
-					<p>Copy the latest package directly, or open older versions below.</p>
 				</div>
 				<div class="asset-release-list">
 					{%- if has_release_packages -%}
@@ -118,26 +108,17 @@ layout: page
 							{%- assign release_url = release.zip | default: "" -%}
 							{%- assign release_label = release.version | default: release.tag | default: "Latest release" -%}
 							{%- assign release_date = release.published_at | default: "" -%}
+							{%- assign release_date_label = "Newest release" -%}
+							{%- if release_date != blank -%}
+								{%- assign release_date_label = release_date | date: "%Y-%m-%d" -%}
+							{%- endif -%}
 							{%- if release_url.size > 0 and latest_release_rendered == false -%}
-							<button
-								type="button"
-								class="button primary asset-release-copy-button asset-release-copy-button-primary asset-copy-button"
-								data-copy-text="{{ release_url | escape_once }}"
-								data-default-label="Copy link"
-								data-copied-label="Copied link! ✓">
-								<span class="asset-release-copy-button-info">
-									<span class="asset-release-copy-button-version">{{ release_label }}</span>
-									{%- if release_date.size > 0 -%}
-									<span class="asset-release-copy-button-date">{{ release_date | date: "%Y-%m-%d" }}</span>
-									{%- else -%}
-									<span class="asset-release-copy-button-date">Newest release</span>
-									{%- endif -%}
-								</span>
-								<span class="asset-release-copy-button-action">
-									{% include site_icon.html name="clippy" class="asset-release-copy-button-icon" %}
-									<span data-copy-label>Copy latest</span>
-								</span>
-							</button>
+							{% include asset_release_copy_button.html
+								button_class="button primary asset-release-copy-button asset-release-copy-button-primary asset-copy-button"
+								copy_url=release_url
+								version_label=release_label
+								date_label=release_date_label
+								action_label="Copy latest" %}
 							{%- assign latest_release_rendered = true -%}
 							{%- endif -%}
 						{%- endfor -%}
@@ -154,47 +135,31 @@ layout: page
 									{%- assign release_url = release.zip | default: "" -%}
 									{%- assign release_label = release.version | default: release.tag | default: "Release package" -%}
 									{%- assign release_date = release.published_at | default: "" -%}
+									{%- assign release_date_label = "" -%}
+									{%- if release_date != blank -%}
+										{%- assign release_date_label = release_date | date: "%Y-%m-%d" -%}
+									{%- endif -%}
 									{%- if release_url.size > 0 and latest_release_skipped == false -%}
 										{%- assign latest_release_skipped = true -%}
 									{%- elsif release_url.size > 0 -%}
-									<button
-										type="button"
-										class="button secondary asset-release-copy-button asset-copy-button"
-										data-copy-text="{{ release_url | escape_once }}"
-										data-default-label="Copy link"
-										data-copied-label="Copied link! ✓">
-										<span class="asset-release-copy-button-info">
-											<span class="asset-release-copy-button-version">{{ release_label }}</span>
-											{%- if release_date.size > 0 -%}
-											<span class="asset-release-copy-button-date">{{ release_date | date: "%Y-%m-%d" }}</span>
-											{%- endif -%}
-										</span>
-										<span class="asset-release-copy-button-action">
-											{% include site_icon.html name="clippy" class="asset-release-copy-button-icon" %}
-											<span data-copy-label>Copy link</span>
-										</span>
-									</button>
+									{% include asset_release_copy_button.html
+										button_class="button secondary asset-release-copy-button asset-copy-button"
+										copy_url=release_url
+										version_label=release_label
+										date_label=release_date_label
+										action_label="Copy link" %}
 									{%- endif -%}
 								{%- endfor -%}
 							</div>
 						</details>
 						{%- endif -%}
 					{%- elsif asset.library_url.size > 0 -%}
-					<button
-						type="button"
-						class="button primary asset-release-copy-button asset-release-copy-button-primary asset-copy-button"
-						data-copy-text="{{ asset.library_url | escape_once }}"
-						data-default-label="Copy latest"
-						data-copied-label="Copied">
-						<span class="asset-release-copy-button-info">
-							<span class="asset-release-copy-button-version">Current package</span>
-							<span class="asset-release-copy-button-date">Library URL</span>
-						</span>
-						<span class="asset-release-copy-button-action">
-							{% include site_icon.html name="clippy" class="asset-release-copy-button-icon" %}
-							<span data-copy-label>Copy latest</span>
-						</span>
-					</button>
+					{% include asset_release_copy_button.html
+						button_class="button primary asset-release-copy-button asset-release-copy-button-primary asset-copy-button"
+						copy_url=asset.library_url
+						version_label="Current package"
+						date_label="Library URL"
+						action_label="Copy latest" %}
 					{%- endif -%}
 				</div>
 			</section>

@@ -1,14 +1,5 @@
 {%- assign asset = site.data.assets[include.id] -%}
-{%- if asset.images.thumb contains "https" or asset.images.thumb contains "http" -%}
-	{%- assign thumb_base = "" -%}
-	{%- assign thumb = asset.images.thumb -%}
-{%- elsif asset.images.thumb.size > 0 -%}
-	{%- assign thumb_base = "/images/assets/" -%}
-	{%- assign thumb = asset.images.thumb -%}
-{%- else -%}
-	{%- assign thumb_base = "" -%}
-	{%- assign thumb = "/images/asset-nothumb.jpg" -%}
-{%- endif -%}
+{%- capture thumb_src -%}{% include asset_thumbnail_url.html asset=asset %}{%- endcapture -%}
 {%- assign asset_tag_classes = asset.tags | join: "%%" | replace: " ", "" | split: "%%" | join: " " | downcase -%}
 {%- assign asset_tag_values = asset.tags | join: "%%" | replace: " ", "" | split: "%%" | join: "|" | downcase -%}
 {%- capture asset_tag_summary -%}
@@ -22,7 +13,7 @@
 <article class='asset asset-card {{ asset_tag_classes }}' data-asset-item="true" data-name="{{ asset.name | escape }}" data-description="{{ asset.description | escape }}" data-asset-tags="{{ asset_tag_values }}" data-asset-stars="{{ asset.stars | default: 0 }}" data-asset-timestamp="{{ asset.timestamp | default: 0 }}">
 	<a class="page-feature-card page-feature-card-no-badge asset-card-link" href="/assets/{{ include.id }}">
 		<span class="page-feature-card-media asset-card-media" aria-hidden="true">
-			<img src="{{ thumb_base }}{{ thumb }}" alt="" loading="lazy"/>
+			<img src="{{ thumb_src | strip }}" alt="" loading="lazy"/>
 		</span>
 		<span class="page-feature-card-copy asset-card-copy">
 			<span class="asset-card-header">
@@ -37,7 +28,7 @@
 				</span>
 				{%- endif -%}
 			</span>
-			<p class="asset-card-description">{%- if asset_description_preview.size > 100 -%}{{ asset_description_preview | slice: 0, 100 }}...{%- else -%}{{ asset_description_preview }}{%- endif -%}</p>
+			<p class="asset-card-description">{{ asset_description_preview | truncate: 103 }}</p>
 		</span>
 	</a>
 </article>

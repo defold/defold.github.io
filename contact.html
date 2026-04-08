@@ -14,6 +14,11 @@ nav: floating
 <img class="page-hero-graphic" src="/images/icons/icon-envelope.svg" alt="Defold contact illustration" loading="eager">
 {%- endcapture -%}
 
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="/support" text="Get support" %}
+{% include secondary_button.html link="mailto:business@defold.se" text="business@defold.se ↗" %}
+{%- endcapture -%}
+
 {% include page_hub_hero.html hero_class="contact-hub-hero" title="Contact Defold" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Contact routes overview" %}
 
 <div class="section dark page-dark-section gradient-background-top-dark">

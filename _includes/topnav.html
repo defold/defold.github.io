@@ -1,4 +1,4 @@
-<div class="nav {% if include.style == "floating" %}nav-floating lightest-text {% else %}nav-solid dark dark:darkest{% endif %}">
+<div class="nav {% if include.style == "floating" %}nav-floating{% else %}nav-solid{% endif %}">
 	<div class="container">
 		<div class="topnav-shell">
 			<a href="/" class="topnav-brand" aria-label="Defold home">
@@ -18,7 +18,7 @@
 
 			<div class="topnav-actions" aria-label="Quick links">
 				<ul>
-					<li><a href="/open">Open&nbsp;Source</a></li>
+					<li><a href="/open">Always&nbsp;Free</a></li>
 					<li><a href="/download">Download</a></li>
 					<li><a href="/donate" class="nav-donate-link">Donate&nbsp;&nbsp;<span class="nav-donate-heart" aria-hidden="true">❤️</span></a></li>
 				</ul>
@@ -37,7 +37,7 @@
 						<a href="/assets" class="topnav-mobile-link{% if page.url contains 'assets' %} active{% endif %}">Asset Portal</a>
 						<a href="/community" class="topnav-mobile-link{% if page.url contains 'community' %} active{% endif %}">Community</a>
 						<a href="/support" class="topnav-mobile-link{% if page.url contains 'support' %} active{% endif %}">Support</a>
-						<a href="/open" class="topnav-mobile-link{% if page.url contains 'open' %} active{% endif %}">Open Source</a>
+						<a href="/open" class="topnav-mobile-link{% if page.url contains 'open' %} active{% endif %}">Always Free</a>
 						<a href="/download" class="topnav-mobile-link{% if page.url contains 'download' %} active{% endif %}">Download</a>
 						<a href="/donate" class="topnav-mobile-link topnav-mobile-link-donate{% if page.url contains 'donate' %} active{% endif %}">Donate&nbsp;&nbsp;<span class="nav-donate-heart" aria-hidden="true">❤️</span></a>
 					</div>

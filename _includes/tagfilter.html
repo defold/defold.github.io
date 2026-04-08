@@ -1,4 +1,11 @@
-<div class="asset-hub-filter-shell" data-asset-filter-toolbar>
+{%- assign filter_panel_id = "asset-filter-panel" -%}
+<button type="button" class="asset-hub-mobile-toggle" data-asset-filter-toggle aria-expanded="false" aria-controls="{{ filter_panel_id }}">
+	<span class="asset-hub-mobile-toggle-copy">
+		<span class="asset-hub-mobile-toggle-label">Filters</span>
+		<span class="asset-hub-mobile-toggle-caption">Search, sort, and tags</span>
+	</span>
+</button>
+<div class="asset-hub-filter-shell" id="{{ filter_panel_id }}" data-asset-filter-toolbar data-asset-filter-panel>
 	{%- assign tags = site.data.tagindex | sort: "name" -%}
 	{%- assign tag_icons = site.data.asset_tag_icons -%}
 	{%- assign active_tag = include.tag | default: "" | downcase | remove: " " -%}

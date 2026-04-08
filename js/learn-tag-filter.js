@@ -41,6 +41,41 @@
 		return button.dataset.learnSortLabel || fallback;
 	};
 
+	const createDefaultFilterIcon = () => {
+		const siteIcon = document.createElement("span");
+		siteIcon.className = "site-icon asset-hub-filter-icon";
+		siteIcon.setAttribute("aria-hidden", "true");
+
+		const octicon = document.createElement("span");
+		octicon.className = "octicon";
+		octicon.setAttribute("style", "fill: currentColor; zoom: 1; vertical-align: middle;");
+
+		const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+		svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+		svg.setAttribute("width", "15");
+		svg.setAttribute("height", "16");
+		svg.setAttribute("viewBox", "0 0 15 16");
+
+		const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+		path.setAttribute("fill-rule", "evenodd");
+		path.setAttribute(
+			"d",
+			"M7.73 1.73C7.26 1.26 6.62 1 5.96 1H3.5C2.13 1 1 2.13 1 3.5v2.47c0 .66.27 1.3.73 1.77l6.06 6.06c.39.39 1.02.39 1.41 0l4.59-4.59a.996.996 0 0 0 0-1.41L7.73 1.73zM2.38 7.09c-.31-.3-.47-.7-.47-1.13V3.5c0-.88.72-1.59 1.59-1.59h2.47c.42 0 .83.16 1.13.47l6.14 6.13-4.73 4.73-6.13-6.15zM3.01 3h2v2H3V3h.01z"
+		);
+
+		svg.appendChild(path);
+		octicon.appendChild(svg);
+		siteIcon.appendChild(octicon);
+		return siteIcon;
+	};
+
+	const createFilterText = (text) => {
+		const label = document.createElement("span");
+		label.className = "asset-hub-filter-text";
+		label.textContent = text;
+		return label;
+	};
+
 	const trackEvent = (name, params) => {
 		const payload = {
 			...(params || {}),
@@ -140,7 +175,9 @@
 			let selectedTag = "all";
 			let sortOrder = normalize(catalog.dataset.initialSort) || (sortButtons[0]?.dataset.learnSort || "");
 			let requestedTag = "";
-			const hasPreRenderedChips = Boolean(chipRow.querySelector(".learn-tag-chip"));
+			const preRenderedChips = Array.from(chipRow.querySelectorAll(".learn-tag-chip"));
+			const hasPreRenderedTagChips = preRenderedChips.some((chip) => (chip.dataset.tag || "") !== "all");
+			const forceGeneratedTagChips = filterRoot.dataset.forceGeneratedChips === "true";
 
 			try {
 				const params = new URLSearchParams(window.location.search);
@@ -178,7 +215,7 @@
 			};
 
 			const renderChips = () => {
-				if (hasPreRenderedChips) {
+				if (hasPreRenderedTagChips && !forceGeneratedTagChips) {
 					return;
 				}
 
@@ -187,7 +224,8 @@
 				allChip.type = "button";
 				allChip.className = "learn-tag-chip filter";
 				allChip.dataset.tag = "all";
-				allChip.textContent = `All (${totalCount})`;
+				allChip.appendChild(createDefaultFilterIcon());
+				allChip.appendChild(createFilterText(`All (${totalCount})`));
 				chipRow.appendChild(allChip);
 
 				sortedTags.forEach((tag) => {
@@ -195,7 +233,8 @@
 					chip.type = "button";
 					chip.className = "learn-tag-chip filter";
 					chip.dataset.tag = tag;
-					chip.textContent = `${toLabel(tag)} (${tagStats.get(tag)})`;
+					chip.appendChild(createDefaultFilterIcon());
+					chip.appendChild(createFilterText(`${toLabel(tag)} (${tagStats.get(tag)})`));
 					chipRow.appendChild(chip);
 				});
 			};

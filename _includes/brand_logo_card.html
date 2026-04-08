@@ -1,0 +1,16 @@
+<a
+	class="page-surface-panel brand-logo-card"
+	href="{{ include.link }}"
+	{% if include.download %}data-brand-logo-download="true"{% endif %}
+	{% if include.target %} target="{{ include.target }}"{% endif %}
+	{% if include.rel %} rel="{{ include.rel }}"{% elsif include.target %} rel="noopener"{% endif %}>
+	<div class="brand-logo-card-stage brand-logo-card-stage-{{ include.stage | default: 'light' }}{% if include.stage_class %} {{ include.stage_class }}{% endif %}">
+		<img src="{{ include.image }}" alt="{{ include.title }}" loading="lazy">
+	</div>
+	<div class="brand-logo-card-copy">
+		<h4 class="brand-logo-card-title">{{ include.title }}</h4>
+		{%- if include.description and include.description != "" -%}
+		<p class="brand-logo-card-description">{{ include.description }}</p>
+		{%- endif -%}
+	</div>
+</a>

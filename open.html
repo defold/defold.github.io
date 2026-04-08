@@ -14,6 +14,11 @@ nav: floating
 <img class="page-hero-graphic" src="/images/icons/icon-gift.svg" alt="Defold open source graphic" loading="eager">
 {%- endcapture -%}
 
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="/license" text="Read the license" %}
+{% include secondary_button.html link="https://www.github.com/defold/defold" target="_blank" text="View on GitHub ↗" %}
+{%- endcapture -%}
+
 {% include page_hub_hero.html hero_class="open-hub-hero" title="Free and developer-friendly" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold open source illustration" %}
 
 <div class="section dark page-dark-section gradient-background-top-dark">
