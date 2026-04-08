@@ -7,7 +7,7 @@
 <div class="asset{% if include.card_class %} {{ include.card_class }}{% endif %}">
 <a class="page-feature-card page-feature-card-no-badge page-feature-card-with-media asset-card-link foundation-profile-card" href="{{ card_href }}"{% if card_target %} target="{{ card_target }}"{% endif %}{% if card_rel %} rel="{{ card_rel }}"{% endif %}{% if include.email %} aria-label="Email {{ include.name }} at {{ include.email }}"{% endif %}>
 <div class="page-feature-card-media asset-card-media foundation-profile-card-media" aria-hidden="true">
-<img src="{{ include.image }}" alt="" loading="lazy">
+<img src="{{ include.image }}" alt="Portrait of {{ include.name }}" loading="lazy">
 </div>
 <div class="page-feature-card-copy asset-card-copy">
 <div class="asset-card-title-group">

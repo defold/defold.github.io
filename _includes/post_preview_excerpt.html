@@ -4,7 +4,7 @@
 		{%- assign post_thumbnail = post_thumbnail | strip -%}
 		{%- if post_thumbnail != "" -%}
 	<div class="page-post-preview-media">
-		<img src="{{ post_thumbnail }}" alt="" loading="lazy">
+		<img src="{{ post_thumbnail }}" alt="{{ include.post.title }} preview image" loading="lazy">
 	</div>
 		{%- endif -%}
 	{%- endif -%}

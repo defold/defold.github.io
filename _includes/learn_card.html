@@ -5,7 +5,7 @@
 	<a class="page-feature-card page-feature-card-no-badge asset-card-link" href="{{ include.link }}">
 		{%- if include.image and include.image != "" -%}
 		<span class="page-feature-card-media asset-card-media" aria-hidden="true">
-			<img src="{{ include.image }}" alt="" loading="lazy"/>
+			<img src="{{ include.image }}" alt="{{ include.title }} preview image" loading="lazy"/>
 		</span>
 		{%- endif -%}
 		<span class="page-feature-card-copy asset-card-copy">

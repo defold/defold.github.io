@@ -25,7 +25,7 @@ The setup consists of three parts:
 
 - `gui` - a GUI scene with a short instruction label describing the available controls.
 
-<img src="setup.png">
+<img src="setup.png" alt="Orthographic zoom example setup diagram">
 
 ## How it works
 
