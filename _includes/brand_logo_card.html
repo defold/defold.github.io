@@ -1,6 +1,10 @@
+{%- assign brand_logo_link = include.link -%}
+{%- if brand_logo_link == blank and include.link_root and include.link_path -%}
+	{%- assign brand_logo_link = include.link_root | append: include.link_path -%}
+{%- endif -%}
 <a
 	class="page-surface-panel brand-logo-card"
-	href="{{ include.link }}"
+	href="{{ brand_logo_link }}"
 	{% if include.download %}data-brand-logo-download="true"{% endif %}
 	{% if include.target %} target="{{ include.target }}"{% endif %}
 	{% if include.rel %} rel="{{ include.rel }}"{% elsif include.target %} rel="noopener"{% endif %}>
