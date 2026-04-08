@@ -1,0 +1,22 @@
+{%- assign post = include.post -%}
+{%- capture post_thumbnail -%}{% include post_thumbnail_url.html post=post %}{%- endcapture -%}
+{%- assign post_thumbnail = post_thumbnail | strip -%}
+{%- assign post_excerpt = post.excerpt | strip_html | normalize_whitespace | strip -%}
+<article class="asset" data-learn-tag-item="true" data-learn-title="{{ post.title | escape }}" data-learn-description="{{ post_excerpt | escape }}" data-learn-author="{{ post.author | default: '' | escape }}" data-learn-date="{{ post.date | date: '%s' }}" data-learn-tags="{{ post.tags | join: '|' | escape }}">
+	<a class="page-feature-card page-feature-card-no-badge asset-card-link" href="{{ post.url }}">
+		{%- if post_thumbnail != "" -%}
+		<span class="page-feature-card-media asset-card-media" aria-hidden="true">
+			<img src="{{ post_thumbnail }}" alt="" loading="lazy"/>
+		</span>
+		{%- endif -%}
+		<span class="page-feature-card-copy asset-card-copy">
+			<span class="asset-card-header">
+				<span class="asset-card-title-group">
+					<h3 class="asset-card-title">{{ post.title }}</h3>
+					<span class="asset-card-tags">{{ post.date | date: "%b %d, %Y" }}</span>
+				</span>
+			</span>
+			<p class="asset-card-description">{{ post_excerpt | truncate: 120 }}</p>
+		</span>
+	</a>
+</article>

@@ -73,19 +73,9 @@
 					<div class="page-card-group-heading">
 						<p>Start with the newest Defold blog posts, then narrow the list by topic or switch the date order with the shared controls in the sidebar.</p>
 					</div>
-					<div class="page-feature-grid page-grid-two page-grid-flush" data-learn-sort-grid>
+					<div class="page-feature-grid page-grid-auto-fill page-grid-three page-grid-flush" data-learn-sort-grid>
 						{%- for post in site.posts -%}
-						<a
-							class="page-text-panel page-surface-panel page-post-panel-link"
-							href="{{ post.url }}"
-							data-learn-tag-item="true"
-							data-learn-title="{{ post.title | escape }}"
-							data-learn-description="{{ post.excerpt | strip_html | normalize_whitespace | escape }}"
-							data-learn-author=""
-							data-learn-date="{{ post.date | date: '%s' }}"
-							data-learn-tags="{{ post.tags | join: '|' | escape }}">
-							{% include post_preview_excerpt.html post=post linked_card=true show_thumbnail=true plain_excerpt=true %}
-						</a>
+							{% include post_catalog_card.html post=post %}
 						{%- endfor -%}
 					</div>
 				</section>
