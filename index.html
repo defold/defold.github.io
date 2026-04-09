@@ -9,53 +9,56 @@ heatmap: true
 <div class="section narrow lightest-text frontpage-top-banner page-hero">
 	<div class="container">
 		<div class="frontpage-top-banner-content">
-			<div class="frontpage-hero-intro center">
-				<img src="/images/logo/defold/logo/logo-ver-classic.svg" alt="Defold logo" fetchpriority="high" decoding="async"/>
-				<h1 class="textshadow main-header"><b>UNLEASH YOUR IMAGINATION</b></h1>
-			</div>
-				<div class="frontpage-feature-icons">
-					<a href="#free-forever" class="frontpage-feature-pill no-decoration">
-						<span class="frontpage-feature-pill-icon">
-							<img src="/images/icons/ic-32-fire.svg" alt="" aria-hidden="true" decoding="async"/>
-						</span>
-						<span class="frontpage-feature-pill-copy">
-							<span class="frontpage-feature-pill-title textshadow"><b>Free Forever</b></span>
-						</span>
-					</a>
-					<a href="#production-ready" class="frontpage-feature-pill no-decoration">
-						<span class="frontpage-feature-pill-icon">
-							<img src="/images/icons/ic-32-star.svg" alt="" aria-hidden="true" decoding="async"/>
-						</span>
-						<span class="frontpage-feature-pill-copy">
-							<span class="frontpage-feature-pill-title textshadow"><b>Battle Tested</b></span>
-						</span>
-					</a>
-					<a href="#cross-platform" class="frontpage-feature-pill no-decoration">
-						<span class="frontpage-feature-pill-icon">
-							<img src="/images/icons/ic-32-newest.svg" alt="" aria-hidden="true" decoding="async"/>
-						</span>
-						<span class="frontpage-feature-pill-copy">
-							<span class="frontpage-feature-pill-title textshadow"><b>Cross Platform</b></span>
-						</span>
-					</a>
-					<a href="#custom-configuration" class="frontpage-feature-pill no-decoration">
-						<span class="frontpage-feature-pill-icon">
-							<img src="/images/icons/ic-32-magglass.svg" alt="" aria-hidden="true" decoding="async"/>
-						</span>
-						<span class="frontpage-feature-pill-copy">
-							<span class="frontpage-feature-pill-title textshadow"><b>Source Available</b></span>
-						</span>
-					</a>
+			<div class="frontpage-hero-layout">
+				<div class="frontpage-hero-copy-column">
+					<picture class="frontpage-hero-logo">
+						<source srcset="/images/logo/defold/logo_with_text_tagline/logo-hor-classic-dark_tagline.svg" media="(prefers-color-scheme: light)">
+						<img src="/images/logo/defold/logo_with_text_tagline/logo-hor-classic-bright-tagline.svg" alt="Defold logo with tagline" fetchpriority="high" decoding="async"/>
+					</picture>
+					<div class="frontpage-hero-copy">
+						<h1>Lightweight and performance-focused.</h1>
+						<p>Defold is a completely free turn-key solution for cross-platform development of 2D and 3D games with source available.</p>
+					</div>
+					<div class="frontpage-top-banner-cta frontpage-top-download-cta">
+						<div class="frontpage-top-banner-actions">
+							{% include primary_button.html link="/download" text="DOWNLOAD DEFOLD NOW" %}
+						</div>
+					</div>
 				</div>
-			<div class="frontpage-top-banner-cta frontpage-top-download-cta">
-				<div class="frontpage-top-banner-actions">
-					{% include primary_button.html link="/download" text="DOWNLOAD NOW" %}
+				<div class="frontpage-hero-showcase-column">
+					{% include showcase_carousel.html label="Games made with Defold" wrapper_class="frontpage-hero-showcase-split" source_location="frontpage_hero" card_click_source="frontpage_banner" %}
 				</div>
 			</div>
-			{% include showcase_carousel.html label="Games made with Defold" source_location="frontpage_hero" card_click_source="frontpage_banner" more_button_source="frontpage_more_button" %}
+			<div class="frontpage-feature-icons">
+				<a href="#free-forever" class="frontpage-feature-pill no-decoration">
+					<span class="frontpage-feature-pill-icon">
+						<img src="/images/icons/ic-32-fire.svg" alt="" aria-hidden="true" decoding="async"/>
+					</span>
+					<h4 class="frontpage-feature-pill-title">Free forever</h4>
+				</a>
+				<a href="#cross-platform" class="frontpage-feature-pill no-decoration">
+					<span class="frontpage-feature-pill-icon">
+						<img src="/images/icons/ic-32-newest.svg" alt="" aria-hidden="true" decoding="async"/>
+					</span>
+					<h4 class="frontpage-feature-pill-title">Cross-platform</h4>
+				</a>
+				<a href="#production-ready" class="frontpage-feature-pill no-decoration">
+					<span class="frontpage-feature-pill-icon">
+						<img src="/images/icons/ic-32-star.svg" alt="" aria-hidden="true" decoding="async"/>
+					</span>
+					<h4 class="frontpage-feature-pill-title">Production ready</h4>
+				</a>
+				<a href="#custom-configuration" class="frontpage-feature-pill no-decoration">
+					<span class="frontpage-feature-pill-icon">
+						<img src="/images/icons/ic-32-magglass.svg" alt="" aria-hidden="true" decoding="async"/>
+					</span>
+					<h4 class="frontpage-feature-pill-title">Source available</h4>
+				</a>
+			</div>
 		</div>
 	</div>
 </div>
+
 
 {%- assign news = site.data.news | where: "show", true -%}
 {%- if news.size > 0 -%}

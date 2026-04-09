@@ -80,15 +80,29 @@
 		let animationFrameId = null;
 		let resizeTimer = null;
 		let impressionObserver = null;
+		let isPointerDown = false;
+		let isDragging = false;
+		let activePointerId = null;
+		let pointerStartX = 0;
+		let pointerStartY = 0;
+		let lastPointerX = 0;
+		let lastPointerTime = 0;
+		let pointerStartTranslate = 0;
+		let dragVelocityPxPerSec = 0;
+		let inertiaVelocityPxPerSec = 0;
+		let suppressClickUntil = 0;
+		let autoplayResumeAt = 0;
 
 		const seenImpressions = new Set();
+		const dragStartThresholdPx = 12;
+		const inertiaVelocityThresholdPxPerSec = 80;
+		const inertiaMaxVelocityPxPerSec = 2200;
+		const inertiaDecayPerSecond = 7;
+		const autoplayResumeDelayMs = 900;
 
 		function getCardsPerView() {
 			const width = carousel.clientWidth || window.innerWidth || 0;
-			if (width >= 1120) {
-				return 4;
-			}
-			if (width >= 760) {
+			if (width >= 1400) {
 				return 3;
 			}
 			if (width >= 520) {
@@ -130,7 +144,7 @@
 				srcset: sources.map(function(source) {
 					return source.path + ' ' + source.width + 'w';
 				}).join(', '),
-				sizes: '(min-width: 1200px) 22vw, (min-width: 800px) 30vw, (min-width: 560px) 45vw, 92vw'
+				sizes: '(min-width: 1400px) 26vw, (min-width: 980px) 32vw, (min-width: 640px) 48vw, 96vw'
 			};
 		}
 
@@ -168,12 +182,16 @@
 			const card = document.createElement('a');
 			card.href = '/showcase';
 			card.className = 'frontpage-showcase-card game-banner-link';
+			card.draggable = false;
 			card.dataset.gameId = game.id;
 			card.dataset.loopCopy = String(copyIndex);
 			card.dataset.baseIndex = String(baseIndex);
 			card.setAttribute('aria-label', game.name);
 			card.addEventListener('click', function() {
 				trackCardClick(game.id);
+				lastFrameTime = 0;
+				isSnapping = false;
+				targetTranslate = currentTranslate;
 			});
 
 			const media = document.createElement('span');
@@ -182,6 +200,7 @@
 			const img = document.createElement('img');
 			img.alt = game.name;
 			img.decoding = 'async';
+			img.draggable = false;
 			img.loading = copyIndex === 1 ? 'eager' : 'lazy';
 			img.sizes = imageData.sizes;
 			if (copyIndex === 1 && baseIndex < cardsPerView) {
@@ -229,6 +248,55 @@
 
 		function applyTransform() {
 			track.style.transform = 'translate3d(' + currentTranslate.toFixed(2) + 'px, 0, 0)';
+			updateCardDepth();
+		}
+
+		function setDraggingState(nextDragging) {
+			isDragging = nextDragging;
+			carousel.classList.toggle('is-dragging', nextDragging);
+		}
+
+		function clearAnimatedMotion() {
+			lastFrameTime = 0;
+			isSnapping = false;
+			targetTranslate = currentTranslate;
+			inertiaVelocityPxPerSec = 0;
+			autoplayResumeAt = 0;
+		}
+
+		function resetPointerState() {
+			isPointerDown = false;
+			activePointerId = null;
+			pointerStartX = 0;
+			pointerStartY = 0;
+			lastPointerX = 0;
+			lastPointerTime = 0;
+			pointerStartTranslate = currentTranslate;
+			dragVelocityPxPerSec = 0;
+			setDraggingState(false);
+		}
+
+		function resumeAutoplay(cancelSnap) {
+			lastFrameTime = 0;
+			inertiaVelocityPxPerSec = 0;
+			autoplayResumeAt = 0;
+
+			if (cancelSnap) {
+				isSnapping = false;
+				targetTranslate = currentTranslate;
+			}
+		}
+
+		function updateCardDepth() {
+			track.querySelectorAll('.frontpage-showcase-card').forEach(function(card) {
+				card.style.removeProperty('--frontpage-showcase-card-scale');
+				card.style.removeProperty('--frontpage-showcase-card-image-scale');
+				card.style.removeProperty('--frontpage-showcase-card-opacity');
+				card.style.removeProperty('--frontpage-showcase-card-copy-opacity');
+				card.style.removeProperty('--frontpage-showcase-card-lift');
+				card.style.removeProperty('--frontpage-showcase-card-shift');
+				card.classList.remove('is-focus-card');
+			});
 		}
 
 		function createDots() {
@@ -241,6 +309,7 @@
 				dot.setAttribute('aria-label', 'Show game set ' + (index + 1));
 				dot.addEventListener('click', function() {
 					scrollToDot(index);
+					resumeAutoplay(false);
 				});
 				dotsContainer.appendChild(dot);
 			});
@@ -367,6 +436,10 @@
 			logicalPages = buildPages(games, cardsPerView);
 			carousel.style.setProperty('--frontpage-showcase-visible-cards', String(cardsPerView));
 			track.innerHTML = '';
+			resetPointerState();
+			suppressClickUntil = 0;
+			inertiaVelocityPxPerSec = 0;
+			autoplayResumeAt = 0;
 
 			for (let copyIndex = 0; copyIndex < 3; copyIndex += 1) {
 				games.forEach(function(game, baseIndex) {
@@ -403,21 +476,39 @@
 			lastFrameTime = timestamp;
 
 			if (shouldAnimate()) {
-				if (isSnapping) {
+				let didMove = false;
+
+				if (isPointerDown || isDragging) {
+					didMove = false;
+				} else if (isSnapping) {
 					const distance = targetTranslate - currentTranslate;
 					currentTranslate += distance * Math.min(1, deltaSeconds * snapStrength);
+					didMove = true;
 
 					if (Math.abs(distance) <= 0.5) {
 						currentTranslate = normalizeTranslate(targetTranslate);
 						targetTranslate = currentTranslate;
 						isSnapping = false;
 					}
-				} else {
+				} else if (Math.abs(inertiaVelocityPxPerSec) >= inertiaVelocityThresholdPxPerSec) {
+					currentTranslate = normalizeTranslate(currentTranslate + inertiaVelocityPxPerSec * deltaSeconds);
+					inertiaVelocityPxPerSec *= Math.exp(-inertiaDecayPerSecond * deltaSeconds);
+					didMove = true;
+
+					if (Math.abs(inertiaVelocityPxPerSec) < inertiaVelocityThresholdPxPerSec) {
+						inertiaVelocityPxPerSec = 0;
+					}
+				} else if (timestamp >= autoplayResumeAt) {
 					currentTranslate = normalizeTranslate(currentTranslate - scrollSpeedPxPerSec * deltaSeconds);
+					didMove = true;
+				} else {
+					didMove = false;
 				}
 
-				applyTransform();
-				updateActiveDot();
+				if (didMove) {
+					applyTransform();
+					updateActiveDot();
+				}
 			}
 
 			animationFrameId = window.requestAnimationFrame(animate);
@@ -484,6 +575,125 @@
 			}
 		}
 
+		function setupInteractionHandling() {
+			const getEventTime = function(event) {
+				return typeof event.timeStamp === 'number' ? event.timeStamp : window.performance.now();
+			};
+
+			const finishPointerInteraction = function(event) {
+				if (!isPointerDown || event.pointerId !== activePointerId) {
+					return;
+				}
+
+				const releaseTime = getEventTime(event);
+				const didDrag = isDragging;
+				const releaseVelocity = Math.max(
+					-inertiaMaxVelocityPxPerSec,
+					Math.min(inertiaMaxVelocityPxPerSec, dragVelocityPxPerSec)
+				);
+
+				resetPointerState();
+
+				if (!didDrag) {
+					resumeAutoplay(false);
+					return;
+				}
+
+				suppressClickUntil = releaseTime + 400;
+
+				if (!prefersReducedMotion && Math.abs(releaseVelocity) >= inertiaVelocityThresholdPxPerSec) {
+					inertiaVelocityPxPerSec = releaseVelocity;
+					autoplayResumeAt = releaseTime + autoplayResumeDelayMs;
+					lastFrameTime = 0;
+				} else {
+					inertiaVelocityPxPerSec = 0;
+					autoplayResumeAt = releaseTime + Math.round(autoplayResumeDelayMs * 0.65);
+					lastFrameTime = 0;
+				}
+			};
+
+			viewport.addEventListener('click', function(event) {
+				if (getEventTime(event) > suppressClickUntil) {
+					resumeAutoplay(false);
+					return;
+				}
+
+				suppressClickUntil = 0;
+				event.preventDefault();
+				event.stopPropagation();
+			}, true);
+
+			viewport.addEventListener('pointerdown', function(event) {
+				if (event.button !== 0 || isPointerDown) {
+					return;
+				}
+
+				isPointerDown = true;
+				activePointerId = event.pointerId;
+				pointerStartX = event.clientX;
+				pointerStartY = event.clientY;
+				lastPointerX = event.clientX;
+				lastPointerTime = getEventTime(event);
+				pointerStartTranslate = currentTranslate;
+				dragVelocityPxPerSec = 0;
+				suppressClickUntil = 0;
+				clearAnimatedMotion();
+			}, { passive: true });
+
+			window.addEventListener('pointermove', function(event) {
+				if (!isPointerDown || event.pointerId !== activePointerId) {
+					return;
+				}
+
+				const deltaX = event.clientX - pointerStartX;
+				const deltaY = event.clientY - pointerStartY;
+				const movedFarEnough = Math.abs(deltaX) > dragStartThresholdPx;
+
+				if (!isDragging) {
+					if (!movedFarEnough) {
+						return;
+					}
+
+					if (Math.abs(deltaY) > Math.abs(deltaX)) {
+						resetPointerState();
+						resumeAutoplay(false);
+						return;
+					}
+
+					setDraggingState(true);
+				}
+
+				const moveTime = getEventTime(event);
+				const elapsedMs = moveTime - lastPointerTime;
+				const moveDeltaX = event.clientX - lastPointerX;
+				if (elapsedMs > 0) {
+					const instantaneousVelocity = moveDeltaX / (elapsedMs / 1000);
+					dragVelocityPxPerSec = dragVelocityPxPerSec === 0
+						? instantaneousVelocity
+						: dragVelocityPxPerSec * 0.7 + instantaneousVelocity * 0.3;
+				}
+
+				lastPointerX = event.clientX;
+				lastPointerTime = moveTime;
+				currentTranslate = normalizeTranslate(pointerStartTranslate + deltaX);
+				targetTranslate = currentTranslate;
+				applyTransform();
+				updateActiveDot();
+
+				if (event.cancelable) {
+					event.preventDefault();
+				}
+			}, { passive: false });
+
+			window.addEventListener('pointerup', finishPointerInteraction, { passive: true });
+			window.addEventListener('pointercancel', finishPointerInteraction, { passive: true });
+			window.addEventListener('focus', function() {
+				if (!isPointerDown && !isDragging) {
+					resumeAutoplay(false);
+				}
+			});
+		}
+
 		function setupResizeHandling() {
 			window.addEventListener('resize', function() {
 				clearTimeout(resizeTimer);
@@ -502,6 +712,7 @@
 		renderTrack(0);
 		trackMoreGamesButton();
 		setupVisibilityHandling();
+		setupInteractionHandling();
 		setupResizeHandling();
 		animationFrameId = window.requestAnimationFrame(animate);
 

@@ -12,9 +12,7 @@
 
 <div class="frontpage-hero-showcase{% if include.wrapper_class %} {{ include.wrapper_class }}{% endif %}">
 	<div class="frontpage-hero-showcase-header">
-		<div class="frontpage-hero-showcase-copy">
-			<p class="asset-hub-filter-label">{{ carousel_label }}</p>
-		</div>
+		<p class="asset-hub-filter-label">{{ carousel_label }}</p>
 		{%- if carousel_action_link and carousel_action_text -%}
 		<div class="frontpage-hero-showcase-action">
 			{% include secondary_button.html link=carousel_action_link text=carousel_action_text target=include.action_target %}
@@ -36,7 +34,7 @@
 											<img
 												src="/images/games/{{ game.images.third }}"
 												srcset="/images/games/{{ game.images.third }} 800w, /images/games/{{ game.images.half }} 1200w, /images/games/{{ game.images.full }} 2000w"
-												sizes="(min-width: 1200px) 22vw, (min-width: 800px) 30vw, (min-width: 560px) 45vw, 92vw"
+												sizes="(min-width: 1400px) 26vw, (min-width: 980px) 32vw, (min-width: 640px) 48vw, 96vw"
 												alt="{{ game.name }}"
 												loading="{% if rendered_initial_count < 2 %}eager{% else %}lazy{% endif %}"
 												{% if rendered_initial_count == 0 %}fetchpriority="high"{% endif %}
@@ -61,7 +59,7 @@
 									<img
 										src="/images/games/{{ game.images.third }}"
 										srcset="/images/games/{{ game.images.third }} 800w, /images/games/{{ game.images.half }} 1200w, /images/games/{{ game.images.full }} 2000w"
-										sizes="(min-width: 1200px) 22vw, (min-width: 800px) 30vw, (min-width: 560px) 45vw, 92vw"
+										sizes="(min-width: 1400px) 26vw, (min-width: 980px) 32vw, (min-width: 640px) 48vw, 96vw"
 										alt="{{ game.name }}"
 										loading="{% if forloop.index0 < 2 %}eager{% else %}lazy{% endif %}"
 										{% if forloop.first %}fetchpriority="high"{% endif %}
