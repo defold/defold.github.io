@@ -12,135 +12,149 @@
 {%- assign memberships=site.data.memberships -%}
 
 <div class="section darkest donors-and-partners-section" markdown="0">
-	{%- if platinum.size > 0 or include.empty -%}
 	<div class="container">
-		<div class="row">
-			<div class="columns twelve center">
-				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Platinum Partners</h5>
-				<div class="grid-150">
+		<div class="donors-and-partners-shell">
+			{%- if platinum.size > 0 or include.empty -%}
+			<div class="donors-and-partners-group">
+				<div class="donors-and-partners-group-heading">
+					<h5>Corporate Platinum Partners</h5>
+				</div>
+				<div class="donors-and-partners-grid donors-and-partners-grid-platinum">
 					{%- for partner in platinum -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" loading="lazy" style="max-height: 55px" alt="{{ partner.name }} logo"></a>
+						<a class="donors-and-partners-card donors-and-partners-card-platinum" href="{{ partner.link }}" target="_blank" rel="noopener">
+							<img class="donors-and-partners-logo donors-and-partners-logo-platinum" src="{{ partner.logo }}" loading="lazy" alt="{{ partner.name }} logo">
+						</a>
 					{%- endfor -%}
 				</div>
-				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
 			</div>
-		</div>
-	</div>
-	{%- endif -%}
+			{%- endif -%}
 
-	{%- if gold.size > 0 or include.empty -%}
-	<div class="container">
-		<div class="row">
-			<div class="columns twelve center">
-				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Gold Partners</h5>
-				<div class="grid-100">
+			{%- if gold.size > 0 or include.empty -%}
+			<div class="donors-and-partners-group">
+				<div class="donors-and-partners-group-heading">
+					<h5>Corporate Gold Partners</h5>
+				</div>
+				<div class="donors-and-partners-grid">
 					{%- for partner in gold -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" loading="lazy" style="max-height: 44px" alt="{{ partner.name }} logo"></a>
+						<a class="donors-and-partners-card donors-and-partners-card-standard" href="{{ partner.link }}" target="_blank" rel="noopener">
+							<img class="donors-and-partners-logo donors-and-partners-logo-standard" src="{{ partner.logo }}" loading="lazy" alt="{{ partner.name }} logo">
+						</a>
 					{%- endfor -%}
 				</div>
-				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
 			</div>
-		</div>
-	</div>
-	{%- endif -%}
+			{%- endif -%}
 
-	{%- if silver.size > 0 or include.empty -%}
-	<div class="container">
-		<div class="row">
-			<div class="columns twelve center">
-				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Silver Partners</h5>
-				<div class="grid-100">
+			{%- if silver.size > 0 or include.empty -%}
+			<div class="donors-and-partners-group">
+				<div class="donors-and-partners-group-heading">
+					<h5>Corporate Silver Partners</h5>
+				</div>
+				<div class="donors-and-partners-grid">
 					{%- for partner in silver -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" loading="lazy" style="max-height: 44px" alt="{{ partner.name }} logo"></a>
+						<a class="donors-and-partners-card donors-and-partners-card-standard" href="{{ partner.link }}" target="_blank" rel="noopener">
+							<img class="donors-and-partners-logo donors-and-partners-logo-standard" src="{{ partner.logo }}" loading="lazy" alt="{{ partner.name }} logo">
+						</a>
 					{%- endfor -%}
 				</div>
-				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
 			</div>
-		</div>
-	</div>
-	{%- endif -%}
+			{%- endif -%}
 
-	{%- if bronze.size > 0 or include.empty -%}
-	<div class="container">
-		<div class="row">
-			<div class="columns twelve center">
-				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Bronze Partners</h5>
-				<div class="grid-100">
+			{%- if bronze.size > 0 or include.empty -%}
+			<div class="donors-and-partners-group">
+				<div class="donors-and-partners-group-heading">
+					<h5>Corporate Bronze Partners</h5>
+				</div>
+				<div class="donors-and-partners-grid">
 					{%- for partner in bronze -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" loading="lazy" style="max-height: 33px" alt="{{ partner.name }} logo"></a>
+						<a class="donors-and-partners-card donors-and-partners-card-compact" href="{{ partner.link }}" target="_blank" rel="noopener">
+							<img class="donors-and-partners-logo donors-and-partners-logo-compact" src="{{ partner.logo }}" loading="lazy" alt="{{ partner.name }} logo">
+						</a>
 					{%- endfor -%}
 				</div>
-				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
 			</div>
-		</div>
-	</div>
-	{%- endif -%}
+			{%- endif -%}
 
-	{%- if special.size > 0 or include.empty -%}
-	<div class="container">
-		<div class="row">
-			<div class="columns twelve center">
-				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Special Partners</h5>
-				<div class="grid-100">
+			{%- if special.size > 0 or include.empty -%}
+			<div class="donors-and-partners-group">
+				<div class="donors-and-partners-group-heading">
+					<h5>Special Partners</h5>
+				</div>
+				<div class="donors-and-partners-grid">
 					{%- for partner in special -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" loading="lazy" style="max-height: 44px" alt="{{ partner.name }} logo"></a>
+						<a class="donors-and-partners-card donors-and-partners-card-special" href="{{ partner.link }}" target="_blank" rel="noopener">
+							<img class="donors-and-partners-logo donors-and-partners-logo-special" src="{{ partner.logo }}" loading="lazy" alt="{{ partner.name }} logo">
+						</a>
 					{%- endfor -%}
 				</div>
-				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
 			</div>
-		</div>
-	</div>
-	{%- endif -%}
+			{%- endif -%}
 
-	{%- if friends.size > 0 or include.empty -%}
-	<div class="container">
-		<div class="row">
-			<div class="columns twelve center">
-				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Friends of Defold</h5>
-				<div class="grid-100">
+			{%- if friends.size > 0 or include.empty -%}
+			<div class="donors-and-partners-group">
+				<div class="donors-and-partners-group-heading">
+					<h5>Friends of Defold</h5>
+				</div>
+				<div class="donors-and-partners-grid">
 					{%- for partner in friends -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" loading="lazy" style="max-height: 33px" alt="{{ partner.name }} logo"></a>
+						<a class="donors-and-partners-card donors-and-partners-card-friends" href="{{ partner.link }}" target="_blank" rel="noopener">
+							<img class="donors-and-partners-logo donors-and-partners-logo-friends" src="{{ partner.logo }}" loading="lazy" alt="{{ partner.name }} logo">
+						</a>
 					{%- endfor -%}
 				</div>
-				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
 			</div>
-		</div>
-	</div>
-	{%- endif -%}
+			{%- endif -%}
 
-	{%- if logodonors.size > 0 or linkdonors.size > 0 or namedonors.size > 0 -%}
-	<div class="container">
-		<div class="row">
-			<div class="columns twelve center">
-				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Top Community Donors</h5>
-				<div class="lightest-text grid-100">
+			{%- if logodonors.size > 0 or linkdonors.size > 0 or namedonors.size > 0 -%}
+			<div class="donors-and-partners-group">
+				<div class="donors-and-partners-group-heading">
+					<h5>Top Community Donors</h5>
+				</div>
+				<div class="donors-and-partners-grid donors-and-partners-grid-donors">
 					{%- for donor in logodonors -%}
-						{%- include donor.html donor=donor -%}
+						{%- if donor.link and donor.link != "" -%}
+							<a class="donors-and-partners-card donors-and-partners-card-donor" href="{{ donor.link }}" target="_blank" rel="noopener">
+								<img class="donors-and-partners-logo donors-and-partners-logo-donor" src="{{ donor.logo }}" loading="lazy" alt="{{ donor.name }} logo">
+							</a>
+						{%- else -%}
+							<div class="donors-and-partners-card donors-and-partners-card-donor">
+								<img class="donors-and-partners-logo donors-and-partners-logo-donor" src="{{ donor.logo }}" loading="lazy" alt="{{ donor.name }} logo">
+							</div>
+						{%- endif -%}
 					{%- endfor -%}
 					{%- for donor in linkdonors -%}
-						{%- include donor.html donor=donor -%}
+						<a class="donors-and-partners-card donors-and-partners-card-donor-text" href="{{ donor.link }}" target="_blank" rel="noopener">
+							<span class="donors-and-partners-name">{{ donor.name }}</span>
+						</a>
 					{%- endfor -%}
 					{%- for donor in namedonors -%}
-						{%- include donor.html donor=donor -%}
+						<div class="donors-and-partners-card donors-and-partners-card-donor-text">
+							<span class="donors-and-partners-name">{{ donor.name }}</span>
+						</div>
 					{%- endfor -%}
 				</div>
 			</div>
-		</div>
-	</div>
-	{%- endif -%}
+			{%- endif -%}
 
-	{%- if memberships.size > 0 -%}
-	<div class="container">
-		<div class="row">
-			<div class="columns twelve center">
-				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Memberships</h5>
-				<div class="lightest-text grid-100">
+			{%- if memberships.size > 0 -%}
+			<div class="donors-and-partners-group">
+				<div class="donors-and-partners-group-heading">
+					<h5>Memberships</h5>
+				</div>
+				<div class="donors-and-partners-grid donors-and-partners-grid-memberships">
 					{%- for membership in memberships -%}
-						<a href="{{ membership.link }}" target="_blank"><img src="{{ membership.logo }}" loading="lazy" style="max-height: 55px" alt="{{ membership.name }} logo"></a>
+						<a class="donors-and-partners-card donors-and-partners-card-platinum" href="{{ membership.link }}" target="_blank" rel="noopener">
+							<img class="donors-and-partners-logo donors-and-partners-logo-platinum" src="{{ membership.logo }}" loading="lazy" alt="{{ membership.name }} logo">
+						</a>
 					{%- endfor -%}
 				</div>
 			</div>
+			{%- endif -%}
+
+			{%- if include.button -%}
+			<div class="donors-and-partners-actions">
+				{% include secondary_button.html link="/donate" text="Become a partner" %}
+			</div>
+			{%- endif -%}
 		</div>
 	</div>
-	{%- endif -%}
 </div>
