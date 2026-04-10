@@ -92,3 +92,40 @@ heatmap: true
 {% include download_cta_section.html %}
 
 {% include donors_and_partners.html %}
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const pillLinks = document.querySelectorAll(".frontpage-feature-pill[href^=\"#\"]");
+		if (!pillLinks.length) {
+			return;
+		}
+
+		const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+		pillLinks.forEach((link) => {
+			link.addEventListener("click", (event) => {
+				const targetId = link.getAttribute("href");
+				if (!targetId || targetId === "#") {
+					return;
+				}
+
+				const target = document.querySelector(targetId);
+				if (!target) {
+					return;
+				}
+
+				event.preventDefault();
+				target.scrollIntoView({
+					behavior: prefersReducedMotion ? "auto" : "smooth",
+					block: "start"
+				});
+
+				if (window.history && window.history.pushState) {
+					window.history.pushState(null, "", targetId);
+				} else {
+					window.location.hash = targetId;
+				}
+			});
+		});
+	});
+</script>
