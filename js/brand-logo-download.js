@@ -1,16 +1,5 @@
 (() => {
-	const downloadLogo = async (card) => {
-		const url = card.getAttribute("href");
-		if (!url) {
-			return;
-		}
-
-		const response = await fetch(url, { mode: "cors" });
-		if (!response.ok) {
-			throw new Error(`Failed to download ${url}`);
-		}
-
-		const blob = await response.blob();
+	const triggerBlobDownload = (url, blob) => {
 		const objectUrl = URL.createObjectURL(blob);
 		const link = document.createElement("a");
 		const pathname = new URL(url, window.location.href).pathname;
@@ -22,6 +11,36 @@
 		link.click();
 		link.remove();
 		URL.revokeObjectURL(objectUrl);
+	};
+
+	const downloadFromUrl = async (url) => {
+		if (!url) {
+			return;
+		}
+
+		const response = await fetch(url, { mode: "cors" });
+		if (!response.ok) {
+			throw new Error(`Failed to download ${url}`);
+		}
+
+		const blob = await response.blob();
+		triggerBlobDownload(url, blob);
+	};
+
+	const downloadLogo = async (card) => {
+		const url = card.getAttribute("href");
+		const fallbackUrl = card.getAttribute("data-brand-logo-fallback");
+
+		try {
+			await downloadFromUrl(url);
+		} catch (error) {
+			if (fallbackUrl && fallbackUrl !== url) {
+				await downloadFromUrl(fallbackUrl);
+				return;
+			}
+
+			throw error;
+		}
 	};
 
 	document.addEventListener("DOMContentLoaded", () => {

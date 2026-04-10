@@ -1,11 +1,32 @@
 {%- assign brand_logo_link = include.link -%}
-{%- if brand_logo_link == blank and include.link_root and include.link_path -%}
+{%- assign brand_logo_download_link = blank -%}
+{%- assign brand_logo_vector_link = blank -%}
+{%- if include.image -%}
+	{%- assign brand_logo_download_link = include.image
+		| replace: "-320.png", ".png"
+		| replace: "-160.png", ".png"
+		| replace: "-128.png", ".png"
+		| replace: "-64.png", ".png" -%}
+{%- endif -%}
+{%- if include.link_root and include.link_path -%}
+	{%- assign brand_logo_vector_link = include.link_root | append: include.link_path -%}
+{%- endif -%}
+{%- if include.download and brand_logo_vector_link != blank -%}
+	{%- assign brand_logo_link = brand_logo_vector_link -%}
+{%- elsif include.download and brand_logo_download_link != blank -%}
+	{%- assign brand_logo_link = brand_logo_download_link -%}
+{%- elsif brand_logo_link == blank and brand_logo_vector_link != blank -%}
+	{%- assign brand_logo_link = brand_logo_vector_link -%}
+{%- elsif brand_logo_link == blank and include.link_root and include.link_path -%}
 	{%- assign brand_logo_link = include.link_root | append: include.link_path -%}
+{%- elsif brand_logo_link == blank and brand_logo_download_link != blank -%}
+	{%- assign brand_logo_link = brand_logo_download_link -%}
 {%- endif -%}
 <a
 	class="page-surface-panel brand-logo-card"
 	href="{{ brand_logo_link }}"
-	{% if include.download %}data-brand-logo-download="true"{% endif %}
+	{% if include.download and brand_logo_link != blank %}data-brand-logo-download="true"{% endif %}
+	{% if include.download and brand_logo_download_link != blank %} data-brand-logo-fallback="{{ brand_logo_download_link }}"{% endif %}
 	{% if include.target %} target="{{ include.target }}"{% endif %}
 	{% if include.rel %} rel="{{ include.rel }}"{% elsif include.target %} rel="noopener"{% endif %}>
 	<div class="brand-logo-card-stage brand-logo-card-stage-{{ include.stage | default: 'light' }}{% if include.stage_class %} {{ include.stage_class }}{% endif %}">

@@ -125,26 +125,12 @@
 
 		function getResponsiveImageData(game) {
 			const images = game.images || {};
-			const sources = [];
-
-			if (images.third) {
-				sources.push({ path: getImagePath(images.third), width: 800 });
-			}
-			if (images.half) {
-				sources.push({ path: getImagePath(images.half), width: 1200 });
-			}
-			if (images.full) {
-				sources.push({ path: getImagePath(images.full), width: 2000 });
-			}
-
-			const fallbackSource = sources[0] || { path: '', width: 2000 };
+			const preferredImage = images.third || '';
 
 			return {
-				src: fallbackSource.path,
-				srcset: sources.map(function(source) {
-					return source.path + ' ' + source.width + 'w';
-				}).join(', '),
-				sizes: '(min-width: 1400px) 26vw, (min-width: 980px) 32vw, (min-width: 640px) 48vw, 96vw'
+				src: getImagePath(preferredImage),
+				srcset: '',
+				sizes: ''
 			};
 		}
 
@@ -198,19 +184,17 @@
 			media.className = 'frontpage-showcase-card-media';
 
 			const img = document.createElement('img');
-			img.alt = game.name;
-			img.decoding = 'async';
-			img.draggable = false;
-			img.loading = copyIndex === 1 ? 'eager' : 'lazy';
-			img.sizes = imageData.sizes;
-			if (copyIndex === 1 && baseIndex < cardsPerView) {
-				img.fetchPriority = 'high';
+			if (imageData.src) {
+				img.alt = game.name;
+				img.decoding = 'async';
+				img.draggable = false;
+				img.loading = copyIndex === 1 ? 'eager' : 'lazy';
+				if (copyIndex === 1 && baseIndex < cardsPerView) {
+					img.fetchPriority = 'high';
+				}
+				img.src = imageData.src;
+				media.appendChild(img);
 			}
-			if (imageData.srcset) {
-				img.srcset = imageData.srcset;
-			}
-			img.src = imageData.src;
-			media.appendChild(img);
 
 			const copy = document.createElement('span');
 			copy.className = 'frontpage-showcase-card-copy';

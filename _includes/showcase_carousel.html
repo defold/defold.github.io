@@ -29,17 +29,18 @@
 							{%- unless rendered_initial_ids contains game_marker -%}
 								{%- assign game = showcase_games | where: "id", game_id | first -%}
 								{%- if game -%}
+									{%- assign game_image_src = game.images.third -%}
 									<a href="/showcase" class="frontpage-showcase-card game-banner-link" data-game-id="{{ game.id }}" aria-label="{{ game.name }}">
 										<span class="frontpage-showcase-card-media">
+											{% if game_image_src and game_image_src != "" %}
 											<img
-												src="/images/games/{{ game.images.third }}"
-												srcset="/images/games/{{ game.images.third }} 800w, /images/games/{{ game.images.half }} 1200w, /images/games/{{ game.images.full }} 2000w"
-												sizes="(min-width: 1400px) 26vw, (min-width: 980px) 32vw, (min-width: 640px) 48vw, 96vw"
+												src="/images/games/{{ game_image_src }}"
 												alt="{{ game.name }}"
-												loading="{% if rendered_initial_count < 2 %}eager{% else %}lazy{% endif %}"
-												{% if rendered_initial_count == 0 %}fetchpriority="high"{% endif %}
+												loading="{% if rendered_initial_count < 3 %}eager{% else %}lazy{% endif %}"
+												{% if rendered_initial_count < 3 %}fetchpriority="high"{% endif %}
 												decoding="async"
 											/>
+											{% endif %}
 										</span>
 										<span class="frontpage-showcase-card-copy">
 											<span class="frontpage-showcase-card-title">{{ game.name }}</span>
@@ -54,17 +55,18 @@
 					{%- endfor -%}
 					{%- if rendered_initial_count == 0 -%}
 						{%- for game in showcase_games limit: initial_showcase_limit -%}
+							{%- assign game_image_src = game.images.third -%}
 							<a href="/showcase" class="frontpage-showcase-card game-banner-link" data-game-id="{{ game.id }}" aria-label="{{ game.name }}">
 								<span class="frontpage-showcase-card-media">
+									{% if game_image_src and game_image_src != "" %}
 									<img
-										src="/images/games/{{ game.images.third }}"
-										srcset="/images/games/{{ game.images.third }} 800w, /images/games/{{ game.images.half }} 1200w, /images/games/{{ game.images.full }} 2000w"
-										sizes="(min-width: 1400px) 26vw, (min-width: 980px) 32vw, (min-width: 640px) 48vw, 96vw"
+										src="/images/games/{{ game_image_src }}"
 										alt="{{ game.name }}"
-										loading="{% if forloop.index0 < 2 %}eager{% else %}lazy{% endif %}"
-										{% if forloop.first %}fetchpriority="high"{% endif %}
+										loading="{% if forloop.index0 < 3 %}eager{% else %}lazy{% endif %}"
+										{% if forloop.index0 < 3 %}fetchpriority="high"{% endif %}
 										decoding="async"
 									/>
+									{% endif %}
 								</span>
 								<span class="frontpage-showcase-card-copy">
 									<span class="frontpage-showcase-card-title">{{ game.name }}</span>

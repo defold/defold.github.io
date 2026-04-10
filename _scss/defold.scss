@@ -4674,11 +4674,13 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	padding-top: clamp(2rem, 4vw, 3rem);
 	--community-newsletter-section-bg: #151b23;
 	--community-newsletter-embed-bg: transparent;
-	--community-newsletter-form-card-bg: linear-gradient(180deg, rgba(33, 40, 49, 0.96) 0%, rgba(20, 27, 34, 0.98) 100%);
-	--community-newsletter-form-card-border: rgba(255, 255, 255, 0.12);
-	--community-newsletter-form-card-shadow: 0 24px 48px rgba(4, 8, 12, 0.26);
+	--community-newsletter-embed-filter: invert(0.87) hue-rotate(180deg) brightness(0.98) contrast(1.01) saturate(0.92);
+	--community-newsletter-form-card-bg:
+		radial-gradient(circle at top left, rgba(57, 163, 228, 0.10), transparent 42%),
+		var(--surface-bg);
+	--community-newsletter-form-card-border: var(--surface-border);
+	--community-newsletter-form-card-shadow: var(--surface-shadow);
 	background-color: var(--community-newsletter-section-bg);
-	background-image: none;
 }
 
 .community-newsletter-shell {
@@ -4764,7 +4766,7 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	border-radius: inherit;
 	box-shadow: none;
 	background: var(--community-newsletter-embed-bg);
-	filter: invert(0.92) hue-rotate(180deg) saturate(0.78) brightness(1.08) contrast(0.9);
+	filter: var(--community-newsletter-embed-filter);
 }
 
 .community-newsletter-graphic {
@@ -6692,7 +6694,7 @@ img[alt="icon"] {
 .frontpage-hero-layout {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: clamp(2.2rem, 4vw, 5rem);
+	gap: clamp(3.2rem, 5.6vw, 6.8rem);
 	align-items: center;
 	width: 100%;
 	min-width: 0;
@@ -6706,7 +6708,7 @@ img[alt="icon"] {
 	gap: clamp(1.86rem, 2.9vw, 3rem);
 	min-width: 0;
 	max-width: none;
-	padding-right: clamp(0rem, 1.3vw, 0.75rem);
+	padding-right: clamp(0.45rem, 1.8vw, 1.5rem);
 	text-align: left;
 }
 
@@ -6716,6 +6718,7 @@ img[alt="icon"] {
 	justify-content: flex-start;
 	width: 100%;
 	min-width: 0;
+	padding-left: clamp(0.45rem, 1.8vw, 1.5rem);
 }
 
 .frontpage-hero-logo {
@@ -6777,7 +6780,7 @@ img[alt="icon"] {
 	gap: 0.78rem;
 	width: 100%;
 	min-height: clamp(148px, 12.8vw, 176px);
-	padding: 0.55rem 1.15rem 0.85rem;
+	padding: 0.55rem 1.15rem 1rem;
 	border-radius: var(--page-card-radius, 8px);
 	background: var(--frontpage-hero-card-bg);
 	border: 1px solid var(--frontpage-hero-card-border);
@@ -6900,7 +6903,7 @@ img[alt="icon"] {
 }
 
 .frontpage-hero-carousel .frontpage-showcase-card-media {
-	aspect-ratio: 3 / 2;
+	aspect-ratio: 4 / 3;
 }
 
 .frontpage-hero-carousel .frontpage-showcase-card-copy {
@@ -6949,13 +6952,17 @@ img[alt="icon"] {
 
 	.frontpage-hero-layout {
 		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-		gap: clamp(1.8rem, 3vw, 2.8rem);
+		gap: clamp(2.2rem, 3.6vw, 3.6rem);
 		min-height: clamp(42rem, 72svh, 54rem);
 	}
 
 	.frontpage-hero-copy-column {
 		max-width: 100%;
 		padding-right: 0;
+	}
+
+	.frontpage-hero-showcase-column {
+		padding-left: 0;
 	}
 
 	.frontpage-feature-icons {
@@ -7052,7 +7059,7 @@ img[alt="icon"] {
 
 	.frontpage-feature-pill {
 		min-height: 140px;
-		padding: 0.6rem 1.05rem 0.85rem;
+		padding: 0.6rem 1.05rem 1rem;
 	}
 
 	.frontpage-feature-pill-icon {
@@ -7149,7 +7156,7 @@ img[alt="icon"] {
 
 	.frontpage-feature-pill {
 		min-height: 132px;
-		padding: 0.45rem 0.95rem 0.75rem;
+		padding: 0.45rem 0.95rem 0.86rem;
 	}
 }
 
@@ -7840,7 +7847,7 @@ ul.page-checklist-negative li:before {
 
 .frontpage-showcase-card {
 	--frontpage-showcase-card-scale: 1;
-	--frontpage-showcase-card-image-scale: 1.18;
+	--frontpage-showcase-card-image-scale: 1;
 	--frontpage-showcase-card-opacity: 1;
 	--frontpage-showcase-card-copy-opacity: 1;
 	--frontpage-showcase-card-lift: 0px;
@@ -7884,7 +7891,7 @@ ul.page-checklist-negative li:before {
 .frontpage-showcase-card-media {
 	position: relative;
 	display: block;
-	aspect-ratio: 3 / 2;
+	aspect-ratio: 4 / 3;
 	overflow: hidden;
 	background:
 		radial-gradient(circle at top, rgba(255, 255, 255, 0.18), transparent 55%),
@@ -9206,6 +9213,7 @@ ul.page-checklist-negative li:before {
 	.community-newsletter-section {
 		--community-newsletter-section-bg: #f3f6fa;
 		--community-newsletter-embed-bg: var(--community-newsletter-section-bg);
+		--community-newsletter-embed-filter: none;
 		--community-newsletter-form-card-bg: rgba(255, 255, 255, 0.96);
 		--community-newsletter-form-card-border: rgba(20, 24, 28, 0.1);
 		--community-newsletter-form-card-shadow: 0 22px 40px rgba(20, 24, 28, 0.08);
@@ -9213,7 +9221,6 @@ ul.page-checklist-negative li:before {
 
 	.community-newsletter-embed,
 	.community-newsletter-form iframe {
-		filter: none;
 		background: transparent;
 	}
 
