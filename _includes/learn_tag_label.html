@@ -1,0 +1,14 @@
+{%- assign tag_slug = include.slug | default: "" | downcase | strip -%}
+{%- case tag_slug -%}
+{%- when "ui-art" -%}UI / Art
+{%- when "two-d" -%}2D
+{%- when "three-d" -%}3D
+{%- when "ios" -%}iOS
+{%- when "html5" -%}HTML5
+{%- when "macos" -%}macOS
+{%- else -%}
+	{%- assign label_words = tag_slug | replace: "-", " " | split: " " -%}
+	{%- for word in label_words -%}
+		{{- word | capitalize -}}{%- unless forloop.last -%} {%- endunless -%}
+	{%- endfor -%}
+{%- endcase -%}

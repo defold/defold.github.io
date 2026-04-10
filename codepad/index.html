@@ -18,16 +18,22 @@
             <img src="static/icon-script.svg" class="svg-image">
         </div>
     </div>
-    <div id="toolbar">Collection:
-        <select id="scene" onchange="codepad_change_scene()">
-            <!-- This will be populated at run-time -->
-        </select>
-        <button onclick="codepad_restart()">Restart</button>
-        <span id="defold_version"></span>
-        <div id="share-wrap">
-            <button id="codepad_share_button" onclick="codepad_share()"><img src="static/icon-share.svg" class="svg-image"><span class="label">Share</span></button>
-            <button onclick="codepad_save()"><img src="static/icon-share.svg" class="svg-image">Save</button>
-            <img src="static/icon-logo.svg" class="svg-image">
+    <div id="toolbar">
+        <div class="toolbar-main">
+            <img src="static/icon-logo.svg" class="svg-image toolbar-logo" alt="Defold logo">
+            <span class="toolbar-label">Example:</span>
+            <div class="toolbar-select-wrap">
+                <select id="scene" onchange="codepad_change_scene()">
+                    <!-- This will be populated at run-time -->
+                </select>
+            </div>
+            <button type="button" onclick="codepad_restart()"><img src="static/icon-reload.svg" class="svg-image" alt=""><span class="label">Restart</span></button>
+            <button type="button" onclick="codepad_reload()"><span class="toolbar-glyph" aria-hidden="true">🔥</span><span class="label">Hot Reload</span></button>
+            <span id="defold_version"></span>
+        </div>
+        <div id="share-wrap" class="toolbar-actions">
+            <button type="button" id="codepad_share_button" onclick="codepad_share()"><img src="static/icon-share.svg" class="svg-image"><span class="label">Share</span></button>
+            <button type="button" onclick="codepad_save()"><span class="toolbar-glyph" aria-hidden="true">⤓</span><span class="label">Download</span></button>
         </div>
     </div>
 
@@ -37,14 +43,13 @@
                 <div class="tabs-wrap"><input type="radio" id="console_tab" name="console_tab" value="console_tab" checked><label for="console_tab">Console</label></div>
                 <div id="console-wrap">
                     <div id="console"></div>
-                    <button onclick="codepad_clear_console()">Clear</button>
+                    <button type="button" onclick="codepad_clear_console()"><img src="static/icon-trash.svg" class="svg-image" alt=""><span class="label">Clear</span></button>
                 </div>
             </div>
             <div id="pane-editor" class="split split-horizontal">
                 <div id="files" class="tabs-wrap"></div>
                 <div id="editor-wrap">
                     <div id="editor"></div>
-                    <button onclick="codepad_reload()"><img src="static/icon-reload.svg" class="svg-image">Reload</button>
                 </div>
             </div>
         </div>

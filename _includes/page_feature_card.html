@@ -1,0 +1,42 @@
+{%- assign card_target = include.target | default: "_self" -%}
+{%- assign card_rel = include.rel -%}
+{%- assign card_heading_tag = include.heading_tag | default: "h3" -%}
+{%- assign render_badge_overlay = false -%}
+{%- if include.thumbnail and include.media_badge_overlay -%}
+{%- assign render_badge_overlay = true -%}
+{%- endif -%}
+{%- if card_target == "_blank" and card_rel == nil -%}
+{%- assign card_rel = "noopener" -%}
+{%- endif -%}
+<a class="page-feature-card{% if include.card_class %} {{ include.card_class }}{% endif %}{% if include.thumbnail %} page-feature-card-with-media{% endif %}{% if include.hide_badge %} page-feature-card-no-badge{% endif %}{% if render_badge_overlay %} page-feature-card-media-badge-overlay{% endif %}" href="{{ include.link }}"{% if card_target %} target="{{ card_target }}"{% endif %}{% if card_rel %} rel="{{ card_rel }}"{% endif %}>
+	{%- if include.thumbnail -%}
+	<span class="page-feature-card-media" aria-hidden="true">
+		<img src="{{ include.thumbnail }}" alt="{{ include.title }} preview image" loading="lazy">
+		{%- if render_badge_overlay -%}
+		<span class="page-feature-card-badge{% if include.badge_class %} {{ include.badge_class }}{% endif %}" aria-hidden="true">
+			<img src="{{ include.icon }}" alt="">
+		</span>
+		{%- endif -%}
+	</span>
+	{%- endif -%}
+	{%- unless include.hide_badge or render_badge_overlay -%}
+	{%- if include.badge_text -%}
+	<span class="page-feature-card-badge{% if include.badge_class %} {{ include.badge_class }}{% endif %} page-feature-card-badge-text{% if include.badge_wide %} page-feature-card-badge-wide{% endif %}" aria-hidden="true">{{ include.badge_text }}</span>
+	{%- elsif include.glyph -%}
+		<span class="page-feature-card-badge{% if include.badge_class %} {{ include.badge_class }}{% endif %}" aria-hidden="true">
+			<span class="page-feature-card-glyph {{ include.glyph }}"></span>
+		</span>
+	{%- else -%}
+		<span class="page-feature-card-badge{% if include.badge_class %} {{ include.badge_class }}{% endif %}" aria-hidden="true">
+			<img src="{{ include.icon }}" alt="">
+		</span>
+	{%- endif -%}
+	{%- endunless -%}
+	<span class="page-feature-card-copy">
+		<{{ card_heading_tag }}>{{ include.title }}</{{ card_heading_tag }}>
+		<p>{{ include.body | default: include.description }}</p>
+		{%- if include.cta_text -%}
+		<span class="button tertiary page-feature-card-cta" aria-hidden="true">{{ include.cta_text }}</span>
+		{%- endif -%}
+	</span>
+</a>

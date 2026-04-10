@@ -1,5 +1,58 @@
 ---
-layout: learn
+layout: page_with_learnnav
 title: Defold Documentation
+description: Use the Defold documentation hub to choose between manuals, tutorials, examples, videos, courses, and API reference.
 nav: floating
 ---
+
+<div class="section hero center blackwhite dark:darken-10" style='background-image: url("/images/hero/testimonials-background-0.5x.png");'>
+	<div class="container">
+		<div class="row">
+			<div class="column one-half left">
+				<h1>Documentation hub with clear onboarding routes</h1>
+				<p>Use this page when you need to choose between manuals, tutorials, examples, videos, and API reference.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section lightest dark:dark">
+	<div class="container">
+		<div class="row">
+			<div class="columns full">
+				<h2>Start here (first 15 minutes)</h2>
+				<p>If this is your first contact with Defold, start with one small build loop before opening deeper docs.</p>
+				<div class="center">
+					{% include primary_button.html text="Open Start Here Map" link="/learn/" %}
+					{% include secondary_button.html text="Open Getting Started Tutorial" link="/tutorials/getting-started/" %}
+				</div>
+				<br/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="columns full">
+				<h3>Quick picks</h3>
+				<div class="grid-250">
+					{% include card.html title="I need beginner flow" body="Use one guided tutorial path first, then move to manuals for deeper concepts." link="/tutorials/first-hour/" min-height="220px" topicon="/images/icons/icons-learn-export_ic-learn-tutorials.svg" %}
+					{% include card.html title="I am migrating" body="Map engine concepts first to avoid wrong assumptions in architecture and workflow." link="/manuals/migration-first-steps/" min-height="220px" topicon="/images/icons/ic-32-shuffle.svg" %}
+					{% include card.html title="I need API details now" body="Go straight to function-level reference when you already know the concept." link="/ref/stable/go" min-height="220px" topicon="/images/icons/icons-learn-export_ic-learn-apiref.svg" %}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="columns full">
+				<h3>Choose documentation surface</h3>
+				<div class="grid-250">
+					{% include card.html title="Manuals" body="Architecture, editor workflows, and Defold systems explained concept-first." link="/manuals/introduction/" min-height="220px" topicon="/images/icons/icons-learn-export_ic-learn-manuals.svg" %}
+					{% include card.html title="Tutorials" body="Step-by-step projects with visible outcomes and practical follow-up routes." link="/tutorials/" min-height="220px" topicon="/images/icons/icons-learn-export_ic-learn-tutorials.svg" %}
+					{% include card.html title="Examples" body="Focused implementation patterns when you need one concrete solution." link="/examples/" min-height="220px" topicon="/images/icons/icons-learn-export_ic-learn-lego.svg" %}
+					{% include card.html title="Videos" body="Visual walkthroughs for users who learn faster from demonstrations." link="/videos/" min-height="220px" topicon="/images/icons/icon-youtube.svg" %}
+					{% include card.html title="Courses" body="Longer structured tracks for guided progress across multiple sessions." link="/courses/" min-height="220px" topicon="/images/icons/icons-learn-export_ic-learn-toolbox.svg" %}
+					{% include card.html title="API Reference" body="Exact Lua/API signatures and behavior details for implementation work." link="/ref/stable/go" min-height="220px" topicon="/images/icons/icons-learn-export_ic-learn-apiref.svg" %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include learn_section.html %}

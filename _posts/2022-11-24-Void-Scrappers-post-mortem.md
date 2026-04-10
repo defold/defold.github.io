@@ -3,7 +3,7 @@ layout: post
 title:  Void Scrappers post mortem
 excerpt: Void Scrappers is a frantic space survival game released on Steam this year. Read on to learn about the development of the game.
 author: Björn Ritzl
-tags: ["creator spotlight", "interview"]
+tags: ["spotlight", "interview", "consoles", "nintendo", "playstation", "xbox", "steam", "mobile"]
 ---
 
 Alex, welcome back to another creator spotlight post! Last time we had the pleasure of interviewing you was in July 2020, [right after your Steam release of Fates of Ort](https://defold.com/2020/07/20/Creator-spotlight-Alex/). At that time you mentioned that you were in the very early stages of a space travel simulation game (codename Generation Ship) and from November 2021 we were able to follow the progress of this game in a [development diary on the Defold forum](https://forum.defold.com/t/generation-ship-game/69640). The game seemed to progress rather nicely up until sometime in April this year when the updates ceased and only two months later you made a surprise announcement of [Void Scrappers](https://store.steampowered.com/app/2005210/Void_Scrappers/), the frantic space survival game that we’ll focus on in this interview.

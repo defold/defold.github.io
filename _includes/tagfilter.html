@@ -1,30 +1,50 @@
-<div class="row compact" style="margin-bottom: 30px">
-	{%- assign alltags = site.data.assetindex | map: "tags" -%}
-	{%- assign tags = alltags | uniq | sort -%}
-	<p>TAGS</p>
-	<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 0 1rem; font-size: 0.9em;">
-		{%- if include.tag -%}
-			{%- assign class="" -%}
-		{%- else -%}
-			{%- assign class="active" -%}
-		{%- endif-%}
-		<a class="filter {{ class }}" href="/assets_{{ include.sort }}">ALL ({{ site.data.assetindex.size }})</a>
-		{%- for tag in tags -%}
-			{% assign tagged_assets = site.data.assetindex | where: "tags", tag %}
-			{% assign tag_no_space = tag | replace: " ", "" | downcase %}
-			{%- if tag_no_space == include.tag -%}
-				{%- assign class="active" -%}
-			{%- else -%}
-				{%- assign class="" -%}
-			{%- endif-%}
-			<a class="filter {{ class }}" href="/tags/{{ include.sort }}/{{ tag | replace: ' ' | downcase }}">{{ tag }} ({{ tagged_assets.size }})</a>
-		{%- endfor -%}
+{%- assign filter_panel_id = "asset-filter-panel" -%}
+<button type="button" class="asset-hub-mobile-toggle" data-asset-filter-toggle aria-expanded="false" aria-controls="{{ filter_panel_id }}">
+	<span class="asset-hub-mobile-toggle-copy">
+		<span class="asset-hub-mobile-toggle-label">Filters</span>
+		<span class="asset-hub-mobile-toggle-caption">Search, sort, and tags</span>
+	</span>
+</button>
+<div class="asset-hub-filter-shell" id="{{ filter_panel_id }}" data-asset-filter-toolbar data-asset-filter-panel>
+	{%- assign tags = site.data.tagindex | sort: "name" -%}
+	{%- assign tag_icons = site.data.asset_tag_icons -%}
+	{%- assign active_tag = include.tag | default: "" | downcase | remove: " " -%}
+	{%- assign active_sort = include.sort | default: "stars" -%}
+	{%- assign search_id = "asset-search-catalog" -%}
+	<div class="asset-hub-filter-group asset-hub-filter-search">
+		<p class="asset-hub-filter-label">Search</p>
+		{% include catalog_search_field.html id=search_id input_class="assetsearch" data_attribute_name="data-asset-search" placeholder="Search assets by name or description" aria_label="Search assets by name or description" %}
 	</div>
 
-	<br/>
-	{%- if include.tag -%}
-		<p>SORT BY: <a href="/tags/stars/{{ include.tag }}">Stars</a>, <a href="/tags/timestamp/{{ include.tag }}">Latest</a></p>
-	{%- else -%}
-		<p>SORT BY: <a href="/assets_stars">Stars</a>, <a href="/assets_timestamp">Latest</a></p>
-	{%- endif-%}
+	<div class="asset-hub-filter-group asset-hub-sort-row">
+		<p class="asset-hub-filter-label">Sort by</p>
+		<div class="asset-hub-sort-links">
+			<button type="button" class="filter{% if active_sort == 'stars' %} active{% endif %}" data-asset-sort="stars" aria-pressed="{% if active_sort == 'stars' %}true{% else %}false{% endif %}">
+				{% include site_icon.html name=tag_icons.stars class="asset-hub-filter-icon" %}
+				<span class="asset-hub-filter-text">Stars</span>
+			</button>
+			<button type="button" class="filter{% if active_sort == 'timestamp' %} active{% endif %}" data-asset-sort="timestamp" aria-pressed="{% if active_sort == 'timestamp' %}true{% else %}false{% endif %}">
+				{% include site_icon.html name=tag_icons.timestamp class="asset-hub-filter-icon" %}
+				<span class="asset-hub-filter-text">Latest</span>
+			</button>
+		</div>
+	</div>
+
+	<div class="asset-hub-filter-group">
+		<p class="asset-hub-filter-label">Tags</p>
+		<div class="asset-hub-filter-grid">
+			<button type="button" class="filter{% unless active_tag %} active{% endunless %}" data-asset-tag="all" aria-pressed="{% unless active_tag %}true{% else %}false{% endunless %}">
+				{% include site_icon.html name=tag_icons.all class="asset-hub-filter-icon" %}
+				<span class="asset-hub-filter-text">All ({{ site.data.assetindex.size }})</span>
+			</button>
+			{%- for tag in tags -%}
+				{%- assign tag_slug = tag.id | downcase | remove: " " -%}
+				{%- assign tag_icon = tag_icons[tag_slug] | default: tag_icons.default -%}
+				<button type="button" class="filter{% if tag_slug == active_tag %} active{% endif %}" data-asset-tag="{{ tag_slug }}" data-asset-tag-label="{{ tag.name }}" aria-pressed="{% if tag_slug == active_tag %}true{% else %}false{% endif %}">
+					{% include site_icon.html name=tag_icon class="asset-hub-filter-icon" %}
+					<span class="asset-hub-filter-text">{{ tag.name }} ({{ tag.assets.size }})</span>
+				</button>
+			{%- endfor -%}
+		</div>
+	</div>
 </div>

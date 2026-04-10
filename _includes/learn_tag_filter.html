@@ -1,0 +1,122 @@
+<div class="learn-tag-filter asset-hub-toolbar page-surface-panel" data-learn-tag-filter data-filter-singular="{{ include.filter_singular | default: 'tag' }}" data-result-items="{{ include.result_items | default: 'resources' }}" data-filter-excluded-tags="{{ include.exclude_tags | default: '' }}">
+	{%- assign excluded_tag_slugs = include.exclude_tags | default: "" | downcase | split: "|" -%}
+	{%- assign child_property = include.child_property | default: "" -%}
+	{%- assign search_suffix = include.result_items | default: "resources" | slugify -%}
+	{%- assign search_id = "learn-search-" | append: search_suffix -%}
+	{%- capture search_placeholder -%}Search {{ include.result_items | default: "resources" }} by title, description, or creator{%- endcapture -%}
+	<div class="asset-hub-filter-shell">
+		<div class="asset-hub-filter-group asset-hub-filter-search">
+			<h3 class="asset-hub-filter-label">Search</h3>
+			{% include catalog_search_field.html id=search_id input_class="learnsearch" data_attribute_name="data-learn-search" placeholder=search_placeholder aria_label=search_placeholder %}
+		</div>
+		<div class="asset-hub-filter-group">
+			<h3 class="asset-hub-filter-label">{{ include.label | default: "Filter by tags" }}</h3>
+			<div class="learn-tag-chip-row asset-hub-filter-grid" data-tag-chip-row>
+				{%- if include.items -%}
+				{%- assign total_items = 0 -%}
+				{%- if child_property != "" -%}
+					{%- for parent_item in include.items -%}
+						{%- assign child_items = parent_item[child_property] -%}
+						{%- assign total_items = total_items | plus: child_items.size -%}
+					{%- endfor -%}
+				{%- else -%}
+					{%- assign total_items = include.items.size -%}
+				{%- endif -%}
+				<button type="button" class="learn-tag-chip filter" data-tag="all" aria-pressed="true">
+					{% include site_icon.html name=site.data.asset_tag_icons.all class="asset-hub-filter-icon" %}
+					<span class="asset-hub-filter-text">All ({{ total_items }})</span>
+				</button>
+				{%- capture raw_tag_slugs -%}
+					{%- if child_property != "" -%}
+						{%- for parent_item in include.items -%}
+							{%- assign child_items = parent_item[child_property] -%}
+							{%- for item in child_items -%}
+								{%- if include.tag_property == "category" -%}
+									{%- assign item_tags = item.category | split: "|" -%}
+								{%- else -%}
+									{%- assign item_tags = item.tags -%}
+								{%- endif -%}
+								{%- for item_tag in item_tags -%}
+									{%- assign tag_slug = item_tag | downcase | strip | replace: " ", "-" -%}
+									{%- unless tag_slug == "" or excluded_tag_slugs contains tag_slug -%}
+										{{- tag_slug -}}||
+									{%- endunless -%}
+								{%- endfor -%}
+							{%- endfor -%}
+						{%- endfor -%}
+					{%- else -%}
+						{%- for item in include.items -%}
+							{%- if include.tag_property == "category" -%}
+								{%- assign item_tags = item.category | split: "|" -%}
+							{%- else -%}
+								{%- assign item_tags = item.tags -%}
+							{%- endif -%}
+							{%- for item_tag in item_tags -%}
+								{%- assign tag_slug = item_tag | downcase | strip | replace: " ", "-" -%}
+								{%- unless tag_slug == "" or excluded_tag_slugs contains tag_slug -%}
+									{{- tag_slug -}}||
+								{%- endunless -%}
+							{%- endfor -%}
+						{%- endfor -%}
+					{%- endif -%}
+				{%- endcapture -%}
+				{%- assign sorted_tag_slugs = raw_tag_slugs | split: "||" | uniq | sort -%}
+				{%- for tag_slug in sorted_tag_slugs -%}
+					{%- unless tag_slug == "" -%}
+						{%- assign tag_count = 0 -%}
+						{%- if child_property != "" -%}
+							{%- for parent_item in include.items -%}
+								{%- assign child_items = parent_item[child_property] -%}
+								{%- for item in child_items -%}
+									{%- if include.tag_property == "category" -%}
+										{%- assign item_tags = item.category | split: "|" -%}
+									{%- else -%}
+										{%- assign item_tags = item.tags -%}
+									{%- endif -%}
+									{%- assign item_has_tag = false -%}
+									{%- for item_tag in item_tags -%}
+										{%- assign normalized_item_tag = item_tag | downcase | strip | replace: " ", "-" -%}
+										{%- if normalized_item_tag == tag_slug -%}
+											{%- assign item_has_tag = true -%}
+											{%- break -%}
+										{%- endif -%}
+									{%- endfor -%}
+									{%- if item_has_tag -%}
+										{%- assign tag_count = tag_count | plus: 1 -%}
+									{%- endif -%}
+								{%- endfor -%}
+							{%- endfor -%}
+						{%- else -%}
+							{%- for item in include.items -%}
+								{%- if include.tag_property == "category" -%}
+									{%- assign item_tags = item.category | split: "|" -%}
+								{%- else -%}
+									{%- assign item_tags = item.tags -%}
+								{%- endif -%}
+								{%- assign item_has_tag = false -%}
+								{%- for item_tag in item_tags -%}
+									{%- assign normalized_item_tag = item_tag | downcase | strip | replace: " ", "-" -%}
+									{%- if normalized_item_tag == tag_slug -%}
+										{%- assign item_has_tag = true -%}
+										{%- break -%}
+									{%- endif -%}
+								{%- endfor -%}
+								{%- if item_has_tag -%}
+									{%- assign tag_count = tag_count | plus: 1 -%}
+								{%- endif -%}
+							{%- endfor -%}
+						{%- endif -%}
+						{%- capture tag_label -%}{% include learn_tag_label.html slug=tag_slug %}{%- endcapture -%}
+						{%- capture tag_icon -%}{% include learn_tag_icon_name.html slug=tag_slug %}{%- endcapture -%}
+						<button type="button" class="learn-tag-chip filter" data-tag="{{ tag_slug }}" aria-pressed="false">
+							{% include site_icon.html name=tag_icon class="asset-hub-filter-icon" %}
+							<span class="asset-hub-filter-text">{{ tag_label | strip }} ({{ tag_count }})</span>
+						</button>
+					{%- endunless -%}
+				{%- endfor -%}
+				{%- endif -%}
+			</div>
+		</div>
+		<p class="compact learn-tag-results" data-tag-results>Showing all {{ include.result_items | default: "resources" }}.</p>
+	</div>
+</div>

@@ -1,0 +1,59 @@
+---
+layout: page
+title: Defold Community
+description: Join the Defold community on the forum, Discord, Reddit, and Defold social channels.
+nav: floating
+---
+
+{%- capture page_hero_copy -%}
+<p>We're very proud of our lovely community, where everyone can ask questions and get answers from experienced, gentle, passionate and helpful people. The Defold team is also there to help you and share news and updates.</p>
+<p>Join us, we're waiting for you!</p>
+{%- endcapture -%}
+
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/community-forum-on-dark.svg" alt="Defold community graphic">
+{%- endcapture -%}
+
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="https://forum.defold.com" target="_blank" text="Open the forum ↗" %}
+{% include secondary_button.html link="/discord" text="Join Discord" %}
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="community-hub-hero" title="Hello World!" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold community illustration" %}
+
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Join the community!</h2>
+			<p>Ask questions, share what you're building, get feedback, follow updates from the Defold team and meet people building games with Defold.</p>
+		</div>
+		<div class="page-feature-grid">
+			{% include page_feature_card.html title="Forum" body="Post questions, search past answers, and talk with the Defold team and community. ↗" link="https://forum.defold.com" icon="/images/icons/icons-learn-export_ic-learn-forum.svg" card_class="page-feature-card-forum" target="_blank" rel="noopener" %}
+			{% include page_feature_card.html title="Discord" body="Jump into real-time chat, get quick feedback, and keep up with Defold developers. ↗" link="/discord" icon="/images/icons/icon-discord.svg" card_class="page-feature-card-discord" %}
+			{% include page_feature_card.html title="Reddit" body="Share progress, discover projects from other teams, and get broader community feedback. ↗" link="https://www.reddit.com/r/defold/" icon="/images/icons/icon-reddit.svg" card_class="page-feature-card-reddit" target="_blank" rel="noopener" %}
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-bottom-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Follow Defold</h2>
+			<p>Use these channels for release news, event updates, and day-to-day signals from the Defold ecosystem.</p>
+		</div>
+		<div class="page-feature-grid">
+			{% include page_feature_card.html title="X" body="Follow Defold on X. ↗" link="https://x.com/defold" icon="/images/icons/icon-x.svg" card_class="page-feature-card-x" target="_blank" rel="noopener" %}
+			{% include page_feature_card.html title="Bluesky" body="Follow Defold on BlueSky. ↗" link="https://bsky.app/profile/defold.com" icon="/images/icons/icon-bsky.svg" card_class="page-feature-card-bsky" target="_blank" rel="noopener" %}
+			{% include page_feature_card.html title="Mastodon" body="Follow Defold on Mastodon. ↗" link="https://mastodon.gamedev.place/@defold" icon="/images/icons/icon-mastodon.svg" card_class="page-feature-card-mastodon" target="_blank" rel="me noopener" %}
+			{% include page_feature_card.html title="LinkedIn" body="Follow Defold on LinkedIn. ↗" link="https://www.linkedin.com/company/defold-foundation" icon="/images/icons/icon-linkedin.svg" card_class="page-feature-card-linkedin" target="_blank" rel="noopener" %}
+			{% include page_feature_card.html title="YouTube" body="Subscribe to our channel. ↗" link="https://www.youtube.com/channel/UCrEYXG15n3V0Y8eK0RbCaLQ" icon="/images/icons/icon-youtube.svg" card_class="page-feature-card-youtube" target="_blank" rel="noopener" %}
+			{% include page_feature_card.html title="Steam" body="Add Defold to friends list. ↗" link="https://steamcommunity.com/id/defoldengine" icon="/images/icons/icon-steam.svg" card_class="page-feature-card-steam" target="_blank" rel="noopener" %}
+		</div>
+
+		<div class="page-illustration-panel page-illustration-banner" aria-hidden="true">
+			<img src="/images/beans/placeholder-beans-image.png" alt="">
+		</div>
+	</div>
+</div>
+
+{% include newsletter_section.html %}

@@ -3,7 +3,7 @@ layout: post
 title:  Defold adds support for PlayStation®5
 excerpt: We are happy to announce the immediate availability of PlayStation®5 development in the Defold game engine for approved PlayStation™ developers.
 author: Björn Ritzl
-tags: ["news", "playstation"]
+tags: ["news", "playstation", "consoles"]
 ---
 
 _The Defold Foundation is pleased to announce that the Defold game engine now officially supports PlayStation®5 game development._

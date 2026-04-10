@@ -3,7 +3,7 @@ layout: post
 title:  GameDistribution joins the Defold Foundation
 excerpt: The Defold Foundation welcomes GameDistribution as a corporate partner. The Defold Foundation will work together with GameDistribution to offer their publishing services to Defold developers.
 author: Björn Ritzl
-tags: ["news", "partner"]
+tags: ["news", "partnership", "html5"]
 ---
 
 _The Defold Foundation welcomes GameDistribution as a corporate partner. The Defold Foundation will work together with GameDistribution to offer their publishing services to Defold developers_

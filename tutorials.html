@@ -1,40 +1,16 @@
 ---
-layout: page
+layout: learn_hub
 title: Defold tutorials
+description: Follow Defold tutorials to build practical game-development skills with guided projects, onboarding paths, and topic-based walkthroughs.
 nav: floating
+hub_kind: tutorials
+hub_title: Tutorials
+hub_copy: Our tutorials section is the best place to start if you are new to game development or Defold to make visible progress quickly.
+hub_icon: /images/icons/icons-learn-export_ic-learn-tutorials.svg
+hub_icon_alt: Defold tutorials icon
+hub_aria_label: Defold tutorials overview
+filter_label: Filter by topic
+result_items: tutorials
+exclude_tags: tutorial|android|assets|desktop|html5|ios|linux|macos|team|windows
+show_learn_section: true
 ---
-
-<div class="section hero center blackwhite dark:darken-10" style='background-image: url("/images/hero/testimonials-background-0.5x.png");'>
-	<div class="container">
-		<div class="row">
-			<div class="column one-half left">
-				<h1>Learn by doing!</h1>
-				<p>Our tutorials section is the perfect place to start from if you are new to Defold game development.</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-{% include learnnav.html showmenu=true %}
-
-<div class="section lightest dark:dark">
-	<div class="container">
-		<div class="row">
-			<div class="columns full">
-				<h2>Tutorials</h2>
-			</div>
-		</div>
-		<div class="grid-250">
-			{%- for tutorial in site.data.learnindex.navigation.tutorials -%}
-				{%- assign image=tutorial.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}
-				{%- assign tutorial_slug = tutorial.path | split: "/" | last -%}
-				{%- assign tutorial_page_path = "tutorials/" | append: tutorial_slug | append: ".md" -%}
-				{%- assign tutorial_page = site.pages | where: "path", tutorial_page_path | first -%}
-				{%- assign difficulty = tutorial_page.difficulty | default: tutorial.difficulty -%}
-				{% include learn_card.html title=tutorial.name description=tutorial.description link=tutorial.path min-height="250px" image=image author=tutorial.author difficulty=difficulty %}
-			{%- endfor -%}
-		</div>
-	</div>
-</div>
-
-{% include learn_section.html %}

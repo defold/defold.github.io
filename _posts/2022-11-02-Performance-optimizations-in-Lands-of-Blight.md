@@ -3,7 +3,7 @@ layout: post
 title:  Performance optimizations in Lands of Blight
 excerpt: In this post d954mas shares how Lands of Blight was optimized to support a thousand active enemies in a single game
 author: d954mas
-tags: ["developer case study", "code", "poki", "html5"]
+tags: ["case study", "code", "poki", "html5", "mobile", "shaders"]
 ---
 
 Lands of Blight is an action adventure game where you take control of a character that automatically attacks every few seconds, and you need to survive the continuous waves of monsters. Simply walk around the area and attack as many monsters as you can while trying to escape their clutch.

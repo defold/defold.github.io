@@ -3,7 +3,7 @@ layout: post
 title:  The Defold Foundation partners with Poki
 excerpt: The Defold Foundation partners with Poki as a preferred partner for web game developers on Poki.com
 author: Björn Ritzl
-tags: ["news", "partner", "poki"]
+tags: ["news", "partnership", "poki", "mobile"]
 ---
 
 _The Defold Foundation partners with Poki as a preferred partner for web game developers on Poki.com_

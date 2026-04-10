@@ -3,7 +3,7 @@ layout: post
 title:  DefoldCon summary
 excerpt: Last week we had the pleasure of inviting our community to join an online Defold Conference event.
 author: Björn Ritzl
-tags: ["news", "social"]
+tags: ["news", "social", "mobile"]
 ---
 
 Last week we had the pleasure of inviting our community to join an online Defold Conference event, streamed to [our YouTube channel](https://www.youtube.com/defoldvideos). The event agenda:

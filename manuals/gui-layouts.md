@@ -75,7 +75,7 @@ When Auto Layout Selection is enabled, the engine automatically selects the best
 
 2. The score (S) is calculated with the area of the display (A), the area from the qualifier (A_Q), the aspect ratio of the display (R) and the aspect ratio of the qualifier (R_Q):
 
-<img src="https://latex.codecogs.com/svg.latex?\inline&space;S=\left|1&space;-&space;\frac{A}{A_Q}\right|&space;&plus;&space;\left|1&space;-&space;\frac{R}{R_Q}\right|" title="S=\left|1 - \frac{A}{A_Q}\right| + \left|1 - \frac{R}{R_Q}\right|" />
+<img src="https://latex.codecogs.com/svg.latex?\inline&space;S=\left|1&space;-&space;\frac{A}{A_Q}\right|&space;&plus;&space;\left|1&space;-&space;\frac{R}{R_Q}\right|" alt="S equals the absolute difference between A and A sub Q plus the absolute difference between R and R sub Q" title="S=\left|1 - \frac{A}{A_Q}\right| + \left|1 - \frac{R}{R_Q}\right|" />
 
 3. The profile with the lowest scoring qualifier is selected, if the orientation (landscape or portrait) of the qualifier matches the display.
 

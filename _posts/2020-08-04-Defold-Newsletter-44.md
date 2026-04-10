@@ -3,7 +3,7 @@ layout: post
 title:  Defold Newsletter 44
 excerpt: Here's another packed newsletter with games, extensions, a new Creator Spotlight and the latest beta release.
 author: Björn Ritzl
-tags: ["newsletter"]
+tags: ["newsletter", "html5", "mobile"]
 ---
 
 Hello, Defolder! 👋

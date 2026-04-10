@@ -1,27 +1,15 @@
 {%- assign assetids = include.assetids -%}
 
-<div class="row">
-	<h4>{{ include.title }}</h4>
+<div class="asset-hub-results">
+	<div class="asset-hub-results-header">
+		<div class="asset-hub-results-copy">
+			<p class="asset-hub-filter-label">Results</p>
+			<h3 data-asset-results-title>{{ include.title }}</h3>
+			<p class="compact asset-hub-results-summary" data-asset-results-summary>Showing {{ assetids.size }} of {{ assetids.size }} assets.</p>
+		</div>
+	</div>
 
-	<input id="search" class="assetsearch" type="text" placeholder="Type to filter..."/>
-	<script type="text/javascript">
-		const search = document.getElementById('search');
-		const inputHandler = function(e) {
-			const assets = document.getElementsByClassName("asset");
-			const searchFor = e.target.value.toLowerCase();
-			for (var i = 0; i < assets.length; i++) {
-				const asset = assets[i];
-				const name = asset.dataset.name.toString().toLowerCase();
-				const description = asset.dataset.description.toString().toLowerCase();
-				const visible = (searchFor == "" || name.indexOf(searchFor) != -1 || description.indexOf(searchFor) != -1);
-				asset.style.display = visible ? "block" : "none";
-			};
-		}
-		search.addEventListener('input', inputHandler);
-		search.addEventListener('propertychange', inputHandler); // for IE8
-	</script>
-
-	<div class="grid-250">
+	<div class="asset-hub-grid" data-asset-grid>
 		{%- for id in assetids -%}
 			{% include asset.html id=id %}
 		{%- endfor -%}

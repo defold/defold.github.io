@@ -1,0 +1,160 @@
+---
+layout: page
+title: Logo & Trademark
+description: The Defold name and logo are registered trademarks of the Defold Foundation. Read these guidelines before using the name, logo, or the Made with Defold mark.
+nav: floating
+---
+
+{%- assign logo_pack_link = "https://github.com/defold/assets-defold/archive/master.zip" -%}
+{%- assign logo_svg_root = "https://raw.githubusercontent.com/defold/assets-defold/master/assets-defold" -%}
+
+{%- capture page_hero_copy -%}
+<p>The Defold name and logo are registered trademarks of the Defold Foundation.</p>
+<p>Read these guidelines before using the name, logo, or the Made with Defold mark in products, services, websites, trailers, and other published materials.</p>
+{%- endcapture -%}
+
+{%- capture page_hero_actions -%}
+{% include primary_button.html link=logo_pack_link target="_blank" text="Download logo pack ⤓" %}
+{% include secondary_button.html link="#trademark-rules" text="Read the rules" %}
+{%- endcapture -%}
+
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/icon-defold.svg" alt="Defold logo and trademark illustration" loading="eager">
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="brand-hub-hero" title="Logo & Trademark" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold brand guidelines overview" %}
+
+<div class="section dark page-dark-section gradient-background-top-dark" id="trademark-rules">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Use the Defold name and logo correctly</h2>
+			<p>The rules below cover how the registered Defold name and logos may be used, when written permission is required, and which assets are safe to download and use as-is.</p>
+		</div>
+
+		<div class="page-feature-grid page-grid-three page-grid-flush">
+			<article class="page-surface-panel page-text-panel brand-guidelines-panel">
+				<h3>Defold name</h3>
+				<p>The Defold name is a registered trademark (®) of the Defold Foundation. You may use the Defold name without separate written permission as long as you follow these rules:</p>
+				<ul class="brand-guidelines-list brand-guidelines-list-positive">
+					<li>You may use the Defold name to refer to Defold products and services.</li>
+					<li>You may use the Defold name to describe the true connection between your product or service and Defold, for example compatibility or educational material.</li>
+					<li>You may use the Defold name in published materials if it is genuinely relevant and does not appear more prominently than your own trademarks, products, or services.</li>
+				</ul>
+			</article>
+
+			<article class="page-surface-panel page-text-panel brand-guidelines-panel">
+				<h3>Defold logo</h3>
+				<p>The Defold logo is also a registered trademark (®). Except for the Made with Defold logo, Defold logos may only be used under separate written permission from Defold.</p>
+				<ul class="brand-guidelines-list brand-guidelines-list-positive">
+					<li>Use official and unmodified Defold logos exactly as provided on this page.</li>
+					<li>Do not recolor, restyle, distort, rearrange, animate, or otherwise alter the logos.</li>
+					<li>Do not reduce the logos so far that they become unclear, fuzzy, or illegible.</li>
+					<li>Always leave enough clear space around the logos so they remain visually distinct.</li>
+				</ul>
+			</article>
+
+			<article class="page-surface-panel page-text-panel brand-guidelines-panel">
+				<h3>Use permission</h3>	
+				<p>You <strong>do not</strong> need a written permission to use the Made with Defold logo as long as you follow the general logo usage rules above.</p>
+				<div class="page-text-panel-actions">
+					{% include primary_button.html link=logo_pack_link target="_blank" text="Download logo pack ⤓" %}
+				</div>
+				<br>
+				<p>If you want to use any other Defold logo, please request a written permission first, because logos are protected by trademark laws.</p>
+				<p>Remember that we are open and we'll surely let you use the logo, if you want to use it properly.</p>
+				<div class="page-text-panel-actions">
+					{% include secondary_button.html link="mailto:trademark@defold.se" text="Request logo permission ↗" %}
+				</div>
+			</article>
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-bottom-dark">
+	<div class="container">
+		<div class="page-card-groups">
+			<section class="page-card-group">
+				<div class="page-card-group-heading">
+					<h3>Logo without text</h3>
+					<p>The symbol-only Defold logo is available in full-color and monochrome versions for use on dark and light backgrounds.</p>
+				</div>
+				<div class="brand-logo-grid">
+					{% include brand_logo_card.html title="Classic white" description="For dark backgrounds." image="/images/logo/defold/logo/logo-ver-classic-white-160.png" link_root=logo_svg_root link_path="/logo/logo-ver-classic.svg" stage="dark" stage_class="brand-logo-card-stage-tall" download=true %}
+					{% include brand_logo_card.html title="Outline white" description="For dark backgrounds." image="/images/logo/defold/logo/logo-ver-outline-white-160.png" link_root=logo_svg_root link_path="/logo/logo-ver-outline-white.svg" stage="dark" stage_class="brand-logo-card-stage-tall" download=true %}
+					{% include brand_logo_card.html title="Outline dark" description="For light backgrounds." image="/images/logo/defold/logo/logo-ver-outline-dark-160.png" link_root=logo_svg_root link_path="/logo/logo-ver-outline-dark.svg" stage="light" stage_class="brand-logo-card-stage-tall" download=true %}
+				</div>
+			</section>
+
+			<section class="page-card-group">
+				<div class="page-card-group-heading">
+					<h3>Logo with Defold text</h3>
+					<p>The main Defold lockups are available in both vertical and horizontal formats, with full-color and monochrome options.</p>
+				</div>
+
+				<div class="brand-logo-subgroup">
+					<h4 class="brand-logo-subgroup-title">Vertical lockups</h4>
+					<div class="brand-logo-grid">
+						{% include brand_logo_card.html title="Classic dark" description="Vertical, light background." image="/images/logo/defold/logo_with_text/logo-ver-classic-dark-160.png" link_root=logo_svg_root link_path="/logo_with_text/logo-ver-classic-dark.svg" stage="light" stage_class="brand-logo-card-stage-tall" download=true %}
+						{% include brand_logo_card.html title="Outline dark" description="Vertical, light background." image="/images/logo/defold/logo_with_text/logo-ver-outline-dark-160.png" link_root=logo_svg_root link_path="/logo_with_text/logo-ver-outline-dark.svg" stage="light" stage_class="brand-logo-card-stage-tall" download=true %}
+						{% include brand_logo_card.html title="Classic white" description="Vertical, dark background." image="/images/logo/defold/logo_with_text/logo-ver-classic-white-160.png" link_root=logo_svg_root link_path="/logo_with_text/logo-ver-classic-white.svg" stage="dark" stage_class="brand-logo-card-stage-tall" download=true %}
+						{% include brand_logo_card.html title="Outline white" description="Vertical, dark background." image="/images/logo/defold/logo_with_text/logo-ver-outline-white-160.png" link_root=logo_svg_root link_path="/logo_with_text/logo-ver-outline-white.svg" stage="dark" stage_class="brand-logo-card-stage-tall" download=true %}
+					</div>
+				</div>
+
+				<div class="brand-logo-subgroup">
+					<h4 class="brand-logo-subgroup-title">Horizontal lockups</h4>
+					<div class="brand-logo-grid">
+						{% include brand_logo_card.html title="Classic dark" description="Horizontal, light background." image="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png" link_root=logo_svg_root link_path="/logo_with_text/logo-hor-classic-dark.svg" stage="light" download=true %}
+						{% include brand_logo_card.html title="Outline dark" description="Horizontal, light background." image="/images/logo/defold/logo_with_text/logo-hor-outline-dark-160.png" link_root=logo_svg_root link_path="/logo_with_text/logo-hor-outline-dark.svg" stage="light" download=true %}
+						{% include brand_logo_card.html title="Classic white" description="Horizontal, dark background." image="/images/logo/defold/logo_with_text/logo-hor-classic-white-160.png" link_root=logo_svg_root link_path="/logo_with_text/logo-hor-classic-white.svg" stage="dark" download=true %}
+						{% include brand_logo_card.html title="Outline white" description="Horizontal, dark background." image="/images/logo/defold/logo_with_text/logo-hor-outline-white-160.png" link_root=logo_svg_root link_path="/logo_with_text/logo-hor-outline-white.svg" stage="dark" download=true %}
+					</div>
+				</div>
+			</section>
+
+			<section class="page-card-group">
+				<div class="page-card-group-heading">
+					<h3>Made with Defold logos</h3>
+					<p>The Made with Defold marks are the versions you may use without written permission, provided you follow the logo usage rules above.</p>
+				</div>
+
+				<div class="brand-logo-subgroup">
+					<h4 class="brand-logo-subgroup-title">Vertical lockups</h4>
+					<div class="brand-logo-grid">
+						{% include brand_logo_card.html title="Classic dark" description="Vertical, light background." image="/images/logo/defold/made_with_defold/logo-ver-classic-dark-160.png" link_root=logo_svg_root link_path="/made_with_defold/logo-ver-classic-dark.svg" stage="light" stage_class="brand-logo-card-stage-tall" download=true %}
+						{% include brand_logo_card.html title="Outline dark" description="Vertical, light background." image="/images/logo/defold/made_with_defold/logo-ver-outline-dark-160.png" link_root=logo_svg_root link_path="/made_with_defold/logo-ver-outline-dark.svg" stage="light" stage_class="brand-logo-card-stage-tall" download=true %}
+						{% include brand_logo_card.html title="Classic white" description="Vertical, dark background." image="/images/logo/defold/made_with_defold/logo-ver-classic-white-160.png" link_root=logo_svg_root link_path="/made_with_defold/logo-ver-classic-white.svg" stage="dark" stage_class="brand-logo-card-stage-tall" download=true %}
+						{% include brand_logo_card.html title="Outline white" description="Vertical, dark background." image="/images/logo/defold/made_with_defold/logo-ver-outline-white-160.png" link_root=logo_svg_root link_path="/made_with_defold/logo-ver-outline-white.svg" stage="dark" stage_class="brand-logo-card-stage-tall" download=true %}
+					</div>
+				</div>
+
+				<div class="brand-logo-subgroup">
+					<h4 class="brand-logo-subgroup-title">Horizontal lockups</h4>
+					<div class="brand-logo-grid">
+						{% include brand_logo_card.html title="Classic dark" description="Horizontal, light background." image="/images/logo/defold/made_with_defold/logo-hor-classic-dark-160.png" link_root=logo_svg_root link_path="/made_with_defold/logo-hor-classic-dark.svg" stage="light" download=true %}
+						{% include brand_logo_card.html title="Outline dark" description="Horizontal, light background." image="/images/logo/defold/made_with_defold/logo-hor-outline-dark-160.png" link_root=logo_svg_root link_path="/made_with_defold/logo-hor-outline-dark.svg" stage="light" download=true %}
+						{% include brand_logo_card.html title="Classic white" description="Horizontal, dark background." image="/images/logo/defold/made_with_defold/logo-hor-classic-white-160.png" link_root=logo_svg_root link_path="/made_with_defold/logo-hor-classic-white.svg" stage="dark" download=true %}
+						{% include brand_logo_card.html title="Outline white" description="Horizontal, dark background." image="/images/logo/defold/made_with_defold/logo-hor-outline-white-160.png" link_root=logo_svg_root link_path="/made_with_defold/logo-hor-outline-white.svg" stage="dark" download=true %}
+					</div>
+				</div>
+			</section>
+
+			<article class="page-surface-panel page-text-panel page-split-panel brand-logo-download-panel">
+				<div class="page-split-panel-media">
+					<img src="/images/icons/icon-bookmark.svg" alt="Brand assets download icon" loading="lazy">
+				</div>
+				<div class="page-split-panel-copy">
+					<h3>Download the official logo pack</h3>
+					<p>High-resolution versions of the Defold logo and the Made with Defold marks are available in the official brand asset archive.</p>
+					<div class="page-text-panel-actions">
+						{% include primary_button.html link=logo_pack_link target="_blank" text="Download logo pack ⤓" %}
+						{% include secondary_button.html link="mailto:trademark@defold.se" text="trademark@defold.se ↗" %}
+					</div>
+				</div>
+			</article>
+		</div>
+	</div>
+</div>
+
+{% include donors_and_partners.html %}
+<script src="/js/brand-logo-download.js" defer></script>

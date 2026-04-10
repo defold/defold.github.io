@@ -1,16 +1,19 @@
-<div class="section blue">
+<div class="section dark page-faq-section gradient-background-top-dark">
 	<div class="container">
-		<div class="row">
-			<div class="columns twelve">
-				<h4>Frequently Asked Questions</h4>
-				<p>Do you have a question that isn't answered here? Please <a href="/contact/#open-source">ask us</a> and we will do our best to answer!</p>
-				<div class="grid-350">
-					{%- for question in site.data.opensourcefaq -%}
-						{% include card.html title=question.q body=question.a %}
-					{%- endfor -%}
-				</div>
-				<p>Do you have a question that isn't answered here? Please <a href="/contact/#open-source">ask us</a> and we will do our best to answer!</p>
-			</div>
+		<div class="page-section-heading">
+			<h2>Frequently Asked Questions</h2>
+			<p>Do you have a question that isn't answered here? Please <a href="/contact/#open-source">ask us</a> and we will do our best to answer!</p>
+		</div>
+		<div class="page-faq-grid">
+			{%- for question in site.data.opensourcefaq -%}
+				<article class="page-faq-card page-surface-panel">
+					<h3>{{ question.q }}</h3>
+					<p>{{ question.a }}</p>
+				</article>
+			{%- endfor -%}
+		</div>
+		<div class="page-faq-footer page-surface-panel">
+			<p>Do you have a question that isn't answered here? Please <a href="/contact/#open-source">ask us</a> and we will do our best to answer!</p>
 		</div>
 	</div>
 </div>

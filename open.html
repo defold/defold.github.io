@@ -1,35 +1,53 @@
 ---
-layout: hero_and_text
-title: Free and Developer-Friendly
-description: Defold is a free to use, source available, game engine with a developer-friendly license. Defold is owned and developed by the Defold Foundation.
+layout: page
+title: Always free and Developer-Friendly
+description: Defold is free to use, source available, and built around a developer-friendly license. The Defold Foundation owns and develops the engine in the open.
 nav: floating
-background: /images/hero/defold-top-bg-transparent-2.png
-after: [always_free.html, opensource_faq.html, donors_and_partners.html]
 ---
 
-<div class="row">
-	<div class="columns three">
-		<h4>Developer friendly</h4>
-		<p>Defold is a source available game engine with a developer-friendly license derived from the popular Apache 2.0 License. The license grants you the freedom to develop games without worrying about licensing fees or royalties.</p>
+{%- capture page_hero_copy -%}
+<p>Defold is free to use, source available game engine with a developer-friendly license.</p>
+<p>The Defold Foundation owns and develops the engine in the open together with the community.</p>
+{%- endcapture -%}
 
-		{% include primary_button.html link="/license" text="Read the license" %}
-	</div>
-	<div class="columns three">
-		<h4>Source on GitHub</h4>
-		<p>Defold’s source code is available on GitHub, together with a wide range of open-source extensions, samples, and tutorials. GitHub is also where we manage issue tracking, pull requests, project planning, and our monthly releases.</p>
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/icon-gift.svg" alt="Defold open source graphic" loading="eager">
+{%- endcapture -%}
 
-		{% include primary_button.html link="https://www.github.com/defold/defold" text="Check on GitHub" %}
-	</div>
-	<div class="columns three">
-		<h4>Donate</h4>
-		<p>As a software foundation we rely on community donations and corporate partnerships to ensure an active ownership and long term sustainability. We invite you to support Defold by making a one-time or recurring donation.</p>
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="/license" text="Read the license" %}
+{% include secondary_button.html link="https://www.github.com/defold/defold" target="_blank" text="View on GitHub ↗" %}
+{%- endcapture -%}
 
-		{% include primary_button.html link="/donate" text="Learn more & Donate" %}
-	</div>
-	<div class="columns three">
-		<h4>Contribute</h4>
-		<p>As a free to use, source available project, Defold welcomes community contributions across all parts of the product. Contributions can take many forms, such as reporting issues, submitting pull requests, and improving documentation.</p>
+{% include page_hub_hero.html hero_class="open-hub-hero" title="Free and developer-friendly" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold open source illustration" %}
 
-		{% include primary_button.html link="/contribute" text="How to contribute" %}
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-card-groups">
+			<div class="page-card-group">
+				<div class="page-card-group-heading">
+					<h3>Source available</h3>
+					<p>The source code of the Defold engine, editor and building tools are available on GitHub. All the examples, tutorials, and many officially supported extensions are open sourced in the Defold GitHub organization. Read the terms and the source so you know exactly what Defold allows and how it is built.</p>
+				</div>
+				<div class="page-feature-grid page-grid-two">
+					{% include page_feature_card.html title="Developer-friendly License" body="Read the terms, understand the freedoms you get with Defold." link="/license" icon="/images/icons/icon-license.svg" card_class="page-feature-card-license" cta_text="Read the license ↗" %}
+					{% include page_feature_card.html title="Source on GitHub" body="Browse the engine source, watch issues, follow releases, and inspect the open development process." link="https://www.github.com/defold/defold" icon="/images/icons/icon-github.svg" card_class="page-feature-card-github" target="_blank" cta_text="View on GitHub ↗" %}
+				</div>
+			</div>
+			<div class="page-card-group">
+				<div class="page-card-group-heading">
+					<h3>Support and contribute</h3>
+					<p>Help keep the engine sustainable, then contribute improvements back to the project in the open.</p>
+				</div>
+				<div class="page-feature-grid page-grid-two">
+					{% include page_feature_card.html title="Support the Foundation" body="Defold is and always will be free to use. Help us fund ongoing development through donations and keep Defold sustainable long term." link="/donate" icon="/images/icons/icon-handshake.svg" card_class="page-feature-card-donate" cta_text="Support the Foundation ↗" %}
+					{% include page_feature_card.html title="Contribute" body="Report issues, improve or translate documentation, submit pull requests, and help shape the engine with the community." link="/contribute" icon="/images/icons/icon-contribute.svg" card_class="page-feature-card-contribute" cta_text="Contribute ↗" %}
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+
+{% include always_free.html variant="page-section" %}
+{% include opensource_faq.html %}
+{% include donors_and_partners.html %}

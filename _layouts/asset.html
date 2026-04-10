@@ -2,65 +2,245 @@
 layout: page
 ---
 <!-- Pagefind metadata and filters for assets -->
-<div style="display: none;" data-pagefind-filter="section">Assets</div>
-<div style="display: none;" data-pagefind-meta="section">Assets</div>
+<div class="pagefind-hidden-meta" data-pagefind-filter="section">Assets</div>
+<div class="pagefind-hidden-meta" data-pagefind-meta="section">Assets</div>
 {%- assign asset = site.data.assets[page.asset] -%}
-{%- if asset.images.hero contains "https" or asset.images.hero contains "http" -%}
-	{%- assign hero_base = "" -%}
-	{%- assign hero = asset.images.hero -%}
-{%- elsif asset.images.hero.size > 0 -%}
-	{%- assign hero_base = "/images/assets/" -%}
-	{%- assign hero = asset.images.hero -%}
-{%- else -%}
-	{%- assign hero_base = "" -%}
-	{%- assign hero = "/images/asset-nohero.jpg" -%}
+{%- capture thumb_src -%}{% include asset_thumbnail_url.html asset=asset %}{%- endcapture -%}
+{%- assign project_link = asset.project_url | default: "" -%}
+{%- assign website_link = asset.website_url | default: "" -%}
+{%- assign primary_link = "" -%}
+{%- assign primary_link_text = "" -%}
+{%- assign primary_link_icon = "browser" -%}
+{%- assign primary_link_icon_image = "" -%}
+{%- assign primary_link_description = "Open the main destination for this asset." -%}
+{%- assign learn_more_link = "" -%}
+{%- assign latest_release_link = "" -%}
+{%- if project_link.size > 0 -%}
+	{%- assign primary_link = project_link -%}
+	{%- if project_link contains "github.com/" or project_link contains "gitlab.com/" or project_link contains "gitflic.ru/project/" -%}
+		{%- assign primary_link_text = "View Repository" -%}
+		{%- assign primary_link_description = "Open the project repository with all releases and instructions. ↗" -%}
+		{%- if project_link contains "github.com/" -%}
+			{%- assign primary_link_icon_image = "/images/icons/icon-github.svg" -%}
+		{%- endif -%}
+	{%- else -%}
+		{%- assign primary_link_text = "Open project page" -%}
+		{%- assign primary_link_icon = "browser" -%}
+		{%- assign primary_link_description = "Open the main project page for more details. ↗" -%}
+	{%- endif -%}
+{%- elsif website_link.size > 0 -%}
+	{%- assign primary_link = website_link -%}
+	{%- assign primary_link_text = "Open website" -%}
+	{%- assign primary_link_icon = "browser" -%}
+	{%- assign primary_link_description = "Open the asset website for more details. ↗" -%}
+{%- endif -%}
+{%- if website_link.size > 0 -%}
+	{%- assign learn_more_link = website_link -%}
+{%- elsif project_link.size > 0 -%}
+	{%- assign learn_more_link = project_link -%}
+{%- endif -%}
+{%- assign release_entries = asset.release_tags -%}
+{%- if release_entries.size == 0 -%}
+	{%- assign release_entries = asset.releases -%}
+{%- endif -%}
+{%- assign latest_release_link = "" -%}
+{%- for release in release_entries -%}
+	{%- assign release_url = release.zip | default: "" -%}
+	{%- if release_url.size > 0 -%}
+		{%- assign latest_release_link = release_url -%}
+		{%- break -%}
+	{%- endif -%}
+{%- endfor -%}
+{%- if latest_release_link.size == 0 and asset.library_url.size > 0 -%}
+	{%- assign latest_release_link = asset.library_url -%}
+{%- endif -%}
+{%- assign show_primary_link_card = false -%}
+{%- assign same_primary_and_learn_more = false -%}
+{%- if primary_link.size > 0 -%}
+	{%- assign show_primary_link_card = true -%}
+	{%- if primary_link == learn_more_link -%}
+		{%- assign same_primary_and_learn_more = true -%}
+		{%- assign show_primary_link_card = false -%}
+	{%- endif -%}
+{%- endif -%}
+{%- assign has_action_cards = false -%}
+{%- if show_primary_link_card or learn_more_link.size > 0 or asset.forum_url.size > 0 or asset.asset_url.size > 0 -%}
+	{%- assign has_action_cards = true -%}
+{%- endif -%}
+{%- assign has_release_panel = false -%}
+{%- if release_entries.size > 0 or asset.library_url.size > 0 -%}
+	{%- assign has_release_panel = true -%}
+{%- endif -%}
+{%- assign older_release_count = 0 -%}
+{%- assign has_release_packages = false -%}
+{%- if release_entries.size > 0 -%}
+	{%- assign latest_release_seen = false -%}
+	{%- for release in release_entries -%}
+		{%- assign release_url = release.zip | default: "" -%}
+		{%- if release_url.size > 0 and latest_release_seen == false -%}
+			{%- assign latest_release_seen = true -%}
+			{%- assign has_release_packages = true -%}
+		{%- elsif release_url.size > 0 -%}
+			{%- assign older_release_count = older_release_count | plus: 1 -%}
+		{%- endif -%}
+	{%- endfor -%}
 {%- endif -%}
 
-<div class="section hero center blackwhite unpadded">
-	<img src="{{ hero_base }}{{ hero }}" width="100%" loading="lazy"/>
-</div>
-
-<div class="section dark">
+<div class="section dark page-dark-section gradient-background-top-dark">
 	<div class="container">
-		<div class="row">
-			<div class="columns nine" data-pagefind-body>
-				<h4>{{ asset.name }}</h4>
-				<p>{%- if asset.description_long.size > 0 -%}{{ asset.description_long }}{%- else -%}{{ asset.description }}{%- endif -%}</p>
+		<div class="asset-detail-backbar">
+			<a class="asset-detail-backlink" href="/assets">← Back to Asset Portal</a>
+		</div>
+		<div class="page-detail-layout asset-detail-layout{% if has_release_panel %} asset-detail-layout-has-releases{% endif %}">
+		<div class="page-detail-media page-surface-panel page-illustration-panel">
+			<img src="{{ thumb_src | strip }}" alt="{{ asset.name }} preview image" loading="eager"/>
+		</div>
 
-				{%- if asset.library_url.size > 0 -%}
-				<h5>Use as library</h5>
-				<p>This asset can be added as a <a href="https://defold.com/manuals/libraries/#setting-up-library-dependencies">library dependency</a> in your project:</p>
-				<ul>
-					{%- if asset.github_url.size > 0 -%}
-					<li>Use a specific version for development and release to avoid breaking changes: <a href="{{ asset.github_url }}/releases" target="_blank">{{ asset.github_url }}/releases</a></li>
+			{%- if has_release_panel -%}
+			<section class="asset-release-panel asset-detail-releases page-surface-panel" aria-labelledby="asset-releases-heading">
+				<div class="asset-release-panel-header">
+					<h2 id="asset-releases-heading">Releases</h2>
+				</div>
+				<div class="asset-release-list">
+					{%- if has_release_packages -%}
+						{%- assign latest_release_rendered = false -%}
+						{%- for release in release_entries -%}
+							{%- assign release_url = release.zip | default: "" -%}
+							{%- assign release_label = release.version | default: release.tag | default: "Latest release" -%}
+							{%- assign release_date = release.published_at | default: "" -%}
+							{%- assign release_date_label = "Newest release" -%}
+							{%- if release_date != blank -%}
+								{%- assign release_date_label = release_date | date: "%Y-%m-%d" -%}
+							{%- endif -%}
+							{%- if release_url.size > 0 and latest_release_rendered == false -%}
+							{% include asset_release_copy_button.html
+								button_class="button primary asset-release-copy-button asset-release-copy-button-primary asset-copy-button"
+								copy_url=release_url
+								version_label=release_label
+								date_label=release_date_label
+								action_label="Copy latest" %}
+							{%- assign latest_release_rendered = true -%}
+							{%- endif -%}
+						{%- endfor -%}
+
+						{%- if older_release_count > 0 -%}
+						<details class="asset-release-dropdown topnav-mobile-menu">
+							<summary class="topnav-mobile-trigger asset-release-dropdown-toggle">
+								<span class="topnav-mobile-trigger-label">Older releases</span>
+								<span class="asset-release-dropdown-count">{{ older_release_count }}</span>
+							</summary>
+							<div class="asset-release-dropdown-list">
+								{%- assign latest_release_skipped = false -%}
+								{%- for release in release_entries -%}
+									{%- assign release_url = release.zip | default: "" -%}
+									{%- assign release_label = release.version | default: release.tag | default: "Release package" -%}
+									{%- assign release_date = release.published_at | default: "" -%}
+									{%- assign release_date_label = "" -%}
+									{%- if release_date != blank -%}
+										{%- assign release_date_label = release_date | date: "%Y-%m-%d" -%}
+									{%- endif -%}
+									{%- if release_url.size > 0 and latest_release_skipped == false -%}
+										{%- assign latest_release_skipped = true -%}
+									{%- elsif release_url.size > 0 -%}
+									{% include asset_release_copy_button.html
+										button_class="button secondary asset-release-copy-button asset-copy-button"
+										copy_url=release_url
+										version_label=release_label
+										date_label=release_date_label
+										action_label="Copy link" %}
+									{%- endif -%}
+								{%- endfor -%}
+							</div>
+						</details>
+						{%- endif -%}
+					{%- elsif asset.library_url.size > 0 -%}
+					{% include asset_release_copy_button.html
+						button_class="button primary asset-release-copy-button asset-release-copy-button-primary asset-copy-button"
+						copy_url=asset.library_url
+						version_label="Current package"
+						date_label="Library URL"
+						action_label="Copy latest" %}
 					{%- endif -%}
-					<li>Use the latest version only while evaluating and testing the asset: <a href="{{ asset.library_url }}" target="_blank">{{ asset.library_url }}</a></li>
-				</ul>
-				{%- endif -%}
+				</div>
+			</section>
+			{%- endif -%}
 
-				{%- if asset.project_url.size > 0 or asset.website_url.size > 0 -%}
-				<h5>Learn more</h5>
-				<p>Learn more about {{ asset.name }} on the external project page:<br/>
-					<ul>
-						{%- if asset.project_url.size > 0 -%}
-						<li><a href="{{ asset.project_url }}" target="_blank">{{ asset.project_url }}</a></li>
-						{%- endif -%}
-						{%- if asset.website_url.size > 0 -%}
-						<li><a href="{{ asset.website_url }}" target="_blank">{{ asset.website_url }}</a></li>
-						{%- endif -%}
-					</ul>
-				</p>
-				{%- endif -%}
+			<article class="page-detail-main asset-detail-main" data-pagefind-body>
+				<h1>{{ asset.name }}</h1>
+				<p class="asset-detail-summary">{%- if asset.description_long.size > 0 -%}{{ asset.description_long }}{%- else -%}{{ asset.description }}{%- endif -%}</p>
 
-				{%- if asset.forum_url.size > 0 -%}
-				<h5>Discuss</h5>
-				<p>Discuss {{ asset.name }} on the Defold forum:<br/>
-					<a href="{{ asset.forum_url }}" target="_blank">{{ asset.forum_url }}</a>
-				</p>
+				{%- if has_action_cards -%}
+				<div class="page-action-card-grid">
+					{%- if show_primary_link_card -%}
+					<a class="page-route-card asset-detail-action-card" href="{{ primary_link }}" target="_blank" rel="noopener">
+						<span class="page-route-card-icon" aria-hidden="true">
+							{% if primary_link_icon_image.size > 0 %}
+							<img src="{{ primary_link_icon_image }}" alt="">
+							{% else %}
+							{% include site_icon.html name=primary_link_icon %}
+							{% endif %}
+						</span>
+						<span class="page-route-card-copy">
+							<h3>{{ primary_link_text }}</h3>
+							<p>{{ primary_link_description }}</p>
+						</span>
+					</a>
+					{%- endif -%}
+
+					{%- if learn_more_link.size > 0 -%}
+					<a class="page-route-card asset-detail-action-card" href="{{ learn_more_link }}" target="_blank" rel="noopener">
+						<span class="page-route-card-icon" aria-hidden="true">
+							{% if same_primary_and_learn_more %}
+							{% if primary_link_icon_image.size > 0 %}
+							<img src="{{ primary_link_icon_image }}" alt="">
+							{% else %}
+							{% include site_icon.html name=primary_link_icon %}
+							{% endif %}
+							{% else %}
+							{% include site_icon.html name="book" %}
+							{% endif %}
+						</span>
+						<span class="page-route-card-copy">
+							{% if same_primary_and_learn_more %}
+							<h3>{{ primary_link_text }}</h3>
+							<p>{{ primary_link_description }}</p>
+							{% else %}
+							<h3>Learn more</h3>
+							<p>Open the project website with more details. ↗</p>
+							{% endif %}
+						</span>
+					</a>
+					{%- endif -%}
+
+					{%- if asset.forum_url.size > 0 -%}
+					<a class="page-route-card asset-detail-action-card" href="{{ asset.forum_url }}" target="_blank" rel="noopener">
+						<span class="page-route-card-icon" aria-hidden="true">
+							{% include site_icon.html name="comment-discussion" %}
+						</span>
+						<span class="page-route-card-copy">
+							<h3>Discuss on Forum</h3>
+							<p>Read existing threads or ask follow-up questions on the Defold Forum. ↗</p>
+						</span>
+					</a>
+					{%- endif -%}
+
+					{%- if asset.asset_url.size > 0 -%}
+					<a class="page-route-card asset-detail-action-card" href="{{ asset.asset_url }}" target="_blank" rel="noopener">
+						<span class="page-route-card-icon" aria-hidden="true">
+							{% include site_icon.html name="git-pull-request" %}
+						</span>
+						<span class="page-route-card-copy">
+							<h3>Update this entry</h3>
+							<p>Refresh metadata, links, or other portal details directly in the source entry. ↗</p>
+						</span>
+					</a>
+					{%- endif -%}
+				</div>
 				{%- endif -%}
-			</div>
-			<div class="columns three">
-				<table>
+			</article>
+
+			<div class="page-detail-meta asset-detail-meta">
+				<table class="compact">
 					<tr>
 						<td valign="top">Author</td>
 						<td valign="top"><a href="/authors/{{ asset.author_id }}">{{ asset.author }}</a></td>
@@ -73,29 +253,37 @@ layout: page
 						<td valign="top">Platforms</td>
 						<td valign="top">{{ asset.platforms | join: "<br/>" }}</td>
 					</tr>
+					{%- if latest_release_link.size > 0 or asset.library_url.size > 0 -%}
+					<tr>
+						<td valign="top">Library</td>
+						<td valign="top"><a href="{{ latest_release_link | default: asset.library_url }}" target="_blank" rel="noopener">Latest zip</a></td>
+					</tr>
+					{%- endif -%}
 					<tr>
 						<td valign="top">Tags</td>
 						<td valign="top">
 							{%- for tag in asset.tags -%}
-								<a href="/tags/stars/{{ tag | downcase | remove: ' ' }}">{{ tag }}</a><br/>
+								{%- assign tag_slug = tag | downcase | remove: " " -%}
+								{%- assign tag_entry = site.data.tagindex | where: "id", tag_slug | first -%}
+								<a href="/tags/stars/{{ tag_slug }}">{{ tag_entry.name | default: tag }}</a>{% unless forloop.last %}<br/>{% endunless %}
 							{%- endfor -%}
 						</td>
 					</tr>
 					{%- if asset.stars.size > 0 -%}
 					<tr>
-						<td valign="top">GitHub</td>
-						<td valign="top"><a class="github-button" href="{{ asset.project_url }}" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star {{ asset.name }} on GitHub"></a></td>
-					</tr>
-					<!-- <tr>
 						<td valign="top">Stars</td>
-						<td valign="top"><a href="{{ asset.project_url }}" target="_blank">{{ asset.stars }}</a></td>
-					</tr> -->
+						<td valign="top">
+							{%- if project_link.size > 0 -%}
+							<a href="{{ project_link }}" target="_blank" rel="noopener">{{ asset.stars }}</a>
+							{%- else -%}
+							{{ asset.stars }}
+							{%- endif -%}
+						</td>
+					</tr>
 					{%- endif -%}
 				</table>
-				{% include secondary_button.html link=asset.asset_url text="Update asset" target="_blank" %}
 			</div>
 		</div>
 	</div>
 </div>
-
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="/js/asset-detail.js"></script>

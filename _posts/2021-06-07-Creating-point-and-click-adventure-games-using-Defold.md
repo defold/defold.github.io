@@ -3,7 +3,7 @@ layout: post
 title:  Creating point and click adventure games using Defold
 excerpt: In this post we will focus on how Defold game developer Marco Giorgini has created his own tools to create point and click adventure games in Defold.
 author: Björn Ritzl
-tags: ["developer case study", "interview"]
+tags: ["case study", "interview", "mobile"]
 ---
 
 Defold is a very versatile game engine with a design and structure that lends itself well to creation of games in many genres. The Defold editor has a complete scene editor where you can arrange objects into complex hierarchies to build levels, rooms and other scenes in your games. Combine this with a complete GUI editor, tilemap editor and advanced particle effect editor and you get a very powerful and easy to use game creation tool. And the editor requires a single download with no installation and runs on Windows, macOS and Linux.

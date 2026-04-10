@@ -1,20 +1,22 @@
-
-<div class="section dark">
+<div class="section dark page-dark-section gradient-background-bottom-dark news-and-blog-section">
 	<div class="container">
-		<div class="row center">
-			<div class="columns twelve">
-				<h2 class="frontpage-section-heading">What's new?</h2>
-			</div>
+		<div class="page-section-heading page-section-heading-center">
+			<h2>What's new?</h2>
+			<p>Follow recent blog posts and release news from the Defold team.</p>
 		</div>
-		<div class="row">
-			<div class="columns six">
+
+		<div class="page-feature-grid page-grid-two page-grid-flush">
+			<div class="page-card-group">
 				<h3>Blog updates</h3>
+				<div class="page-post-list">
 				{%- assign posts = site.posts -%}
 				{%- assign count = 0 -%}
 				{%- for post in posts -%}
 				{%- if post.tags contains "news" or post.tags contains "newsletter" -%}
 				{%- else -%}
-					{%- include post_preview_excerpt.html post=post title_link=true -%}
+					<a class="page-text-panel page-surface-panel page-post-panel-link" href="{{ post.url }}">
+						{%- include post_preview_excerpt.html post=post linked_card=true date_only=true -%}
+					</a>
 					{%- assign count = count | plus: 1 -%}
 				{%- endif -%}
 
@@ -22,13 +24,18 @@
 					{%- break -%}
 				{%- endif -%}
 				{%- endfor -%}
+				</div>
 			</div>
-			<div class="columns six">
-				<h3>Latest News</h3>
+			<div class="page-card-group">
+				<h3>Latest news</h3>
+				<div class="page-post-list">
 				{%- assign posts = site.posts | where: "tags", "news" -%}
 				{%- for post in posts limit: 3-%}
-					{%- include post_preview_excerpt.html post=post title_link=true -%}
+					<a class="page-text-panel page-surface-panel page-post-panel-link" href="{{ post.url }}">
+						{%- include post_preview_excerpt.html post=post linked_card=true date_only=true -%}
+					</a>
 				{%- endfor -%}
+				</div>
 			</div>
 		</div>
 	</div>

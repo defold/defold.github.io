@@ -1,16 +1,15 @@
 ---
-layout: page
+layout: page_with_learnnav
 ---
-{% include learnnav.html showmenu=true %}
 
 {%- assign page_locale = page.locale | default: "en" -%}
 {%- assign locale_info = site.data.localeindex | where: "locale", page_locale | first -%}
-<div style="display: none;" data-pagefind-filter="section">FAQ</div>
-<div style="display: none;" data-pagefind-meta="section">FAQ</div>
+<div class="pagefind-hidden-meta" data-pagefind-filter="section">FAQ</div>
+<div class="pagefind-hidden-meta" data-pagefind-meta="section">FAQ</div>
 <div class="section lightest dark:dark">
 	<div class="container">
 		<div class="row">
-			<div class="columns ten faq">
+			<div class="columns ten faq content-flow">
 				{%- if page_locale != "en" -%}
 				{%- capture urlprefix -%}/{{ locale_info.urlprefix }}/{%- endcapture -%}
 				<p><a href="{{ page.url | replace: urlprefix, "/" }}">Read this FAQ in English</a></p>
@@ -24,11 +23,11 @@ layout: page
 				<ul class="nobullet">
 				{%- for l in site.data.localeindex -%}
 					{%- if l.active -%}
-					<li style="padding-left: 2rem;">
+					<li class="learn-detail-list-item">
 						{%- if l.locale == "en" -%}
-							<a href='/faq/faq' style="text-decoration: none;">{{ l.name }}</a>
+							<a class="learn-detail-list-link" href='/faq/faq'>{{ l.name }}</a>
 						{%- else -%}
-							<a href='/{{ l.locale }}/faq/faq' style="text-decoration: none;">{{ l.name }}</a>
+							<a class="learn-detail-list-link" href='/{{ l.locale }}/faq/faq'>{{ l.name }}</a>
 						{%- endif -%}
 					</li>
 					{%- endif -%}

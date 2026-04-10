@@ -398,6 +398,248 @@ def include_matched_file(match):
         print("include_matched_file: file {} does not exists".format(path))
         sys.exit(1)
 
+LEARN_TAG_PRIORITY = [
+    "manual",
+    "tutorial",
+    "video",
+    "course",
+    "onboarding",
+    "beginner",
+    "migration",
+    "unity",
+    "godot",
+    "unreal",
+    "gamemaker",
+    "flash",
+    "architecture",
+    "workflow",
+    "project",
+    "scripting",
+    "components",
+    "gameplay",
+    "input",
+    "ui-art",
+    "two-d",
+    "three-d",
+    "rendering",
+    "shaders",
+    "physics",
+    "assets",
+    "animation",
+    "audio",
+    "platform",
+    "mobile",
+    "android",
+    "ios",
+    "web",
+    "html5",
+    "desktop",
+    "windows",
+    "linux",
+    "macos",
+    "console",
+    "team",
+    "editor",
+    "debugging",
+    "profiling",
+    "performance",
+    "optimization",
+    "network",
+    "multiplayer",
+    "native",
+    "extensions",
+    "monetization",
+    "ads",
+    "iap",
+    "practical"
+]
+
+LEARN_TAG_KEYWORDS = [
+    ("onboarding", ["install", "introduction", "getting started", "first hour", "first 15", "start here"]),
+    ("beginner", ["beginner", "new to", "first project"]),
+    ("migration", ["migration", "migrate", "moving from", "porting", "unity", "godot", "unreal", "gamemaker", "flash"]),
+    ("unity", ["unity"]),
+    ("godot", ["godot"]),
+    ("unreal", ["unreal"]),
+    ("gamemaker", ["gamemaker"]),
+    ("flash", ["flash"]),
+    ("architecture", ["building blocks", "architecture", "addressing", "message passing", "application lifecycle"]),
+    ("workflow", ["workflow", "pipeline", "tooling", "editor script", "project setup"]),
+    ("project", ["project setup", "project settings", "game.project", "libraries"]),
+    ("scripting", ["lua", "script", "module", "message", "addressing", "api reference"]),
+    ("components", ["component", "game object", "collection", "factory", "proxy"]),
+    ("gameplay", ["gameplay", "movement", "camera", "input", "controller", "state"]),
+    ("ui-art", ["gui", "ui ", "atlas", "tile", "sprite", "font", "layout", "art", "graphics"]),
+    ("two-d", ["2d", "sprite", "tilemap", "tile map", "flipbook"]),
+    ("three-d", ["3d", "model", "mesh", "rig", "camera", "material"]),
+    ("rendering", ["render", "shader", "material", "post processing", "pipeline"]),
+    ("shaders", ["shader", "shadertoy", "post effect", "post effects"]),
+    ("physics", ["physics", "collision", "kinematic", "box2d"]),
+    ("assets", ["asset", "resource", "texture", "font", "model", "atlas"]),
+    ("animation", ["animation", "spine", "flipbook"]),
+    ("audio", ["audio", "sound", "music"]),
+    ("platform", ["platform", "bundle", "bundling", "build", "release", "html5", "android", "ios", "desktop", "console", "web"]),
+    ("mobile", ["android", "ios", "mobile"]),
+    ("android", ["android"]),
+    ("ios", ["ios"]),
+    ("web", ["html5", "web"]),
+    ("html5", ["html5"]),
+    ("desktop", ["windows", "linux", "macos", "desktop"]),
+    ("windows", ["windows"]),
+    ("linux", ["linux"]),
+    ("macos", ["macos", "mac os"]),
+    ("console", ["nintendo", "playstation", "xbox", "console"]),
+    ("team", ["team", "version control", "collaboration", "studio", "evaluation"]),
+    ("editor", ["editor", "shortcuts", "preferences", "scriptable editor"]),
+    ("debugging", ["debug", "error", "logging", "crash"]),
+    ("profiling", ["profiler", "profiling"]),
+    ("performance", ["performance", "memory", "cpu", "gpu"]),
+    ("optimization", ["optimization", "optimize"]),
+    ("network", ["network", "socket", "http", "websocket"]),
+    ("multiplayer", ["multiplayer"]),
+    ("native", ["native", "c++", "java", "objc"]),
+    ("extensions", ["extension", "ext.manifest", "library"]),
+    ("monetization", ["monetization", "iap", "ad ", "ads", "in-app purchase"]),
+    ("ads", [" ad ", "ads", "admob", "advertising"]),
+    ("iap", ["iap", "in-app purchase"])
+]
+
+LEARN_MANUAL_SECTION_TAGS = {
+    "Basics": ["onboarding", "beginner", "workflow"],
+    "Building blocks": ["architecture", "components", "scripting"],
+    "Workflow": ["workflow", "editor", "team"],
+    "Scripting": ["scripting", "architecture"],
+    "Graphics": ["ui-art", "two-d", "three-d", "rendering"],
+    "Asset Pipeline": ["assets", "workflow"],
+    "Physics": ["physics", "gameplay"],
+    "Audio": ["audio"],
+    "Input": ["gameplay", "input"],
+    "GUI": ["ui-art", "two-d"],
+    "Platform-specific": ["platform", "mobile", "web", "desktop"],
+    "Networking": ["network", "multiplayer"],
+    "Optimization": ["optimization", "performance", "profiling"],
+    "Debugging": ["debugging", "profiling"],
+    "Native extensions": ["native", "extensions", "scripting"]
+}
+
+
+def normalize_learn_path_key(path):
+    path = (path or "").strip()
+    if not path:
+        return ""
+    if path.endswith("/"):
+        path = path[:-1]
+    return path.lower()
+
+
+def normalize_learn_tag(tag):
+    value = (tag or "").strip().lower()
+    value = re.sub(r"[^a-z0-9]+", "-", value)
+    value = value.strip("-")
+    return value
+
+
+def normalize_learn_tags(tags):
+    if isinstance(tags, str):
+        tags = [tags]
+    if not isinstance(tags, list):
+        tags = []
+    normalized = []
+    seen = set()
+    for tag in tags or []:
+        value = normalize_learn_tag(tag)
+        if value and value not in seen:
+            normalized.append(value)
+            seen.add(value)
+    return normalized
+
+
+def sort_learn_tags(tags):
+    priority = {tag: index for index, tag in enumerate(LEARN_TAG_PRIORITY)}
+    return sorted(tags, key=lambda tag: (priority.get(tag, len(LEARN_TAG_PRIORITY)), tag))
+
+
+def collect_existing_learn_tags(index):
+    existing = {
+        "manuals": {},
+        "tutorials": {},
+        "videos": {},
+        "courses": {}
+    }
+
+    navigation = index.get("navigation", {})
+    for section in navigation.get("manuals", []):
+        for item in section.get("items", []):
+            key = normalize_learn_path_key(item.get("path"))
+            tags = normalize_learn_tags(item.get("tags"))
+            if key and tags:
+                existing["manuals"][key] = tags
+
+    for section_name in ["tutorials", "videos", "courses"]:
+        for item in navigation.get(section_name, []):
+            key = normalize_learn_path_key(item.get("path"))
+            tags = normalize_learn_tags(item.get("tags"))
+            if key and tags:
+                existing[section_name][key] = tags
+
+    return existing
+
+
+def infer_learn_tags(surface, item, section_name=""):
+    name = (item.get("name") or "").lower()
+    description = (item.get("description") or "").lower()
+    author = (item.get("author") or "").lower()
+    path = normalize_learn_path_key(item.get("path"))
+    text = " ".join([name, description, author, path, (section_name or "").lower()])
+
+    tags = []
+    if surface == "manuals":
+        tags.append("manual")
+    elif surface == "tutorials":
+        tags.extend(["tutorial", "practical"])
+    elif surface == "videos":
+        tags.extend(["video", "practical"])
+    elif surface == "courses":
+        tags.extend(["course", "practical"])
+
+    for section_key, section_tags in LEARN_MANUAL_SECTION_TAGS.items():
+        if surface == "manuals" and section_key.lower() in (section_name or "").lower():
+            tags.extend(section_tags)
+
+    for tag, keywords in LEARN_TAG_KEYWORDS:
+        for keyword in keywords:
+            if keyword in text:
+                tags.append(tag)
+                break
+
+    return sort_learn_tags(normalize_learn_tags(tags))
+
+
+def apply_learn_tags(index, existing_tags):
+    navigation = index.get("navigation", {})
+
+    for section in navigation.get("manuals", []):
+        section_name = section.get("name", "")
+        for item in section.get("items", []):
+            key = normalize_learn_path_key(item.get("path"))
+            tags = normalize_learn_tags(item.get("tags"))
+            if not tags:
+                tags = existing_tags.get("manuals", {}).get(key, [])
+            if not tags:
+                tags = infer_learn_tags("manuals", item, section_name)
+            item["tags"] = sort_learn_tags(normalize_learn_tags(tags))
+
+    for section_name in ["tutorials", "videos", "courses"]:
+        for item in navigation.get(section_name, []):
+            key = normalize_learn_path_key(item.get("path"))
+            tags = normalize_learn_tags(item.get("tags"))
+            if not tags:
+                tags = existing_tags.get(section_name, {}).get(key, [])
+            if not tags:
+                tags = infer_learn_tags(section_name, item)
+            item["tags"] = sort_learn_tags(normalize_learn_tags(tags))
+
+
 
 def process_docs(download = False):
     with tmpdir() as tmp_dir:
@@ -436,10 +678,19 @@ def process_docs(download = False):
 
         print("...index")
         index_file = os.path.join("_data", "learnindex.json")
+        existing_learn_tags = {
+            "manuals": {},
+            "tutorials": {},
+            "videos": {},
+            "courses": {}
+        }
+        if os.path.exists(index_file):
+            existing_learn_tags = collect_existing_learn_tags(read_as_json(index_file))
         if os.path.exists(index_file):
             os.remove(index_file)
         shutil.copyfile(os.path.join(DOC_DIR, "docs", "en", "en.json"), index_file)
         index = read_as_json(index_file)
+        apply_learn_tags(index, existing_learn_tags)
 
         for locale in locales["languages"].keys():
             print("...manuals ({})".format(locale))
@@ -930,13 +1181,14 @@ def process_assets(tmp_dir):
         fix_tags_case(asset["tags"])
         fix_platforms_case(asset["platforms"])
         author_name = asset["author"]
-        library_url = asset["library_url"]
+        project_url = asset.get("project_url") or asset.get("github_url") or ""
 
         author_id = hashlib.md5(author_name.encode('utf-8')).hexdigest()
         asset["author_id"] = author_id
         asset["asset_url"] = "https://github.com/defold/asset-portal/blob/master/assets/%s.json" % asset_id
-        if "github.com" in library_url:
-            asset["github_url"] = re.sub(r"(.*github.com/.*?/.*?)/.*", r"\1", library_url)
+        asset["project_url"] = project_url
+        asset.pop("github_url", None)
+        asset.pop("latest_release_url", None)
         write_as_json(asset_file, asset, False)
 
         # build asset index

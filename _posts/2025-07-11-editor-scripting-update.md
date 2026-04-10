@@ -3,7 +3,7 @@ layout: post-with-example
 title:  Editor scripting improvements in the upcoming 1.10.4 version
 excerpt: Defold editor now supports editing scenes using editor scripts!
 author: Vlad Protsenko
-tags: ["editor", "scripting"]
+tags: ["editor", "scripting", "mobile"]
 ---
 
 Defold editor now supports editing scenes using editor scripts! The new capabilities were released incrementally over the last couple of months, and only ended up in release notes as a series of small entries like "Now you can edit tilemaps using editor scripts". But now that most of the work is done, we'd like to share an overview of the whole thing. We will do it by writing an editor script — together — that assembles the following scene:

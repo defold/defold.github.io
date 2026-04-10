@@ -1,60 +1,119 @@
 ---
-layout: hero_and_text
+layout: page
 title: Contribute to Defold
-description: Join the Defold contributor team and help us shape the future of Defold! Learn what you can help out with and how to best contribute to Defold.
+description: Join the Defold contributor team and help improve the engine, editor, extensions, documentation, and examples.
 nav: floating
-background: /images/hero/defold-top-bg-transparent-2.png
-after: [opensource_section.html, donors_and_partners.html]
 heatmap: false
 ---
 
-<h3>How to get involved</h3>
-<p>Defold is developed by a team of developers from the <a href="/foundation">Defold Foundation</a>. As a free to use, source available, project we also accept community contributions to any part of the product, including, but not limited to, the engine, editor, extensions and documentation.</p>
-<p>The source code is available on GitHub and it is divided into multiple repositories. Below is a list of the main repositories:</p>
+{%- capture page_hero_copy -%}
+<p>Defold is developed in the open by the <a href="/foundation">Defold Foundation</a> together with community contributors. You can help improve the engine, editor, extensions, documentation, tutorials, and examples.</p>
+<p>Start by choosing an area, reading the contribution guidelines, and keep each change focused, tested, and easy to review.</p>
+{%- endcapture -%}
 
-<div>
-	<div class="columns six">
-		<ul class="checkmark">
-			<li><a href="https://github.com/defold/defold" target="_blank">Engine and editor</a></li>
-			<li><a href="https://github.com/defold/extender" target="_blank">Extension build server</a></li>
-		</ul>
-	</div>
-	<div class="columns six">
-		<ul class="checkmark">
-			<li><a href="https://github.com/defold/doc" target="_blank">Manuals and Tutorials</a></li>
-			<li><a href="https://github.com/defold/examples" target="_blank">Examples</a></li>
-		</ul>
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="#contribution-areas" text="I want to help!" %}
+{% include secondary_button.html link="https://github.com/defold/defold/blob/dev/CONTRIBUTING.md" target="_blank" text="Contribution Guidelines ↗" %}
+{%- endcapture -%}
+
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/icon-git.svg" alt="Defold support illustration" loading="eager">
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="contribute-hub-hero" title="Contribute to Defold" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold contribution overview" %}
+
+<div class="section dark page-dark-section gradient-background-top-dark" id="contribution-areas">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Choose where to contribute</h2>
+			<p>You can contribute not only to the engine or editor source code - there are manuals, examples, tutorials and documentations that we;d love to get a glow up, or translation to your native language! Pick the repository that matches the kind of improvement you want to make.</p>
+		</div>
+
+		<div class="page-card-groups">
+			<div class="page-card-group">
+				<div class="page-card-group-heading">
+					<h3>Core source code and tooling</h3>
+					<p>Work on the runtime, editor, platform integrations, and infrastructure that supports native extension builds.</p>
+				</div>
+				<div class="page-feature-grid page-grid-two">
+					{% include page_feature_card.html title="Engine and editor" body="The main Defold repository for runtime code, editor work, platform support, build flow, and core engine systems. Check details in the repository. ↗" link="https://github.com/defold/defold" icon="/images/icons/icon-defold.svg" card_class="page-feature-card-github" badge_class="page-feature-card-badge-tight-canvas" target="_blank" rel="noopener" %}
+					{% include page_feature_card.html title="Extension build server" body="Improve the build service and tooling used to compile native extensions for Defold projects. Check details in the repository. ↗" link="https://github.com/defold/extender" icon="/images/icons/ic-git.svg" card_class="page-feature-card-reference" badge_class="page-feature-card-badge-tight-canvas" target="_blank" rel="noopener" %}
+				</div>
+			</div>
+
+			<div class="page-card-group">
+				<div class="page-card-group-heading">
+					<h3>Documentation and learning content</h3>
+					<p>Improve the learning materials that help new and returning users understand Defold faster.</p>
+				</div>
+				<div class="page-feature-grid page-grid-two">
+					{% include page_feature_card.html title="Manuals and tutorials" body="Update the documentation source for manuals, tutorials, and learning content published on the Defold site. Check details in the repository. ↗" link="https://github.com/defold/doc" icon="/images/icons/icons-learn-export_ic-learn-documents.svg" card_class="page-feature-card-manuals" target="_blank" rel="noopener" %}
+					{% include page_feature_card.html title="Examples" body="Improve example projects and sample code that show Defold concepts in small, practical use cases. Check details in the repository. ↗" link="https://github.com/defold/examples" icon="/images/icons/icons-learn-export_ic-learn-lego.svg" card_class="page-feature-card-examples" target="_blank" rel="noopener" %}
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
-<h3>Contribution guidelines</h3>
-<p>Before you make your first contribution it is recommended that you familiarize yourself with our contribution guidelines. The guidelines exist to ensure that your contribution is of good quality, does what it is supposed to do, has no unwanted side-effects and that you are legally allowed to make the contribution. Below is a short summary of the guidelines. Head over to GitHub to read the full guidelines.</p>
+<div class="section dark page-dark-section gradient-background-bottom-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>What good contributions look like?</h2>
+			<p>Before opening a pull request, make sure the change is scoped clearly, validated properly, and aligned with existing Defold patterns.</p>
+		</div>
 
-<div>
-	<div class="columns six">
-		<h4>Bugfixes</h4>
-		<ul class="checkmark">
-			<li>Does the contribution solve a single problem?</li>
-			<li>Is the contribution covered by unit tests?</li>
-			<li>Is the contribution tested on all applicable platforms?</li>
-			<li>Is the contribution following existing code style and patterns?</li>
-			<li>Are you legally entitled to make the contribution?</li>
-		</ul>
-	</div>
-	<div class="columns six">
-		<h4>New features</h4>
-		<ul class="checkmark">
-			<li>Does the contribution add a single feature?</li>
-			<li>Is the new functionality well designed?</li>
-			<li>Is the contribution covered by unit tests?</li>
-			<li>Is the contribution tested on all applicable platforms?</li>
-			<li>Is the contribution following existing code style and patterns?</li>
-			<li>Are you legally entitled to make the contribution?</li>
-		</ul>
+		<div class="page-route-grid">
+			<div class="page-text-panel page-surface-panel">
+				<h3>Bug fixes</h3>
+				<p>Fix one well-defined problem at a time and make it easy for reviewers to confirm the behavior change.</p>
+				<ul class="checkmark">
+					<li>Keep the contribution focused on a single bug or regression.</li>
+					<li>Add or update unit tests when the change should be covered by tests.</li>
+					<li>Test on all affected platforms when the bug is platform-specific.</li>
+					<li>Follow existing code style and implementation patterns.</li>
+					<li>Make sure you are legally entitled to submit the work.</li>
+				</ul>
+			</div>
+
+			<div class="page-text-panel page-surface-panel">
+				<h3>New features</h3>
+				<p>New functionality should be intentionally scoped, well designed, and justified by a real Defold use case.</p>
+				<ul class="checkmark">
+					<li>Keep the contribution to one clear feature or capability.</li>
+					<li>Confirm the design fits Defold’s existing architecture and workflows.</li>
+					<li>Add tests and validate the feature on all affected platforms.</li>
+					<li>Follow existing code style and implementation patterns.</li>
+					<li>Make sure you are legally entitled to submit the work.</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="page-text-panel page-surface-panel">
+			<h3>Before you open a pull request</h3>
+			<p>Use the official guide and the public discussion channels before investing in a large change. That reduces review churn and helps align the work with how Defold is maintained.</p>
+			<div class="page-button-grid page-grid-four">
+				<a class="button secondary" href="https://github.com/defold/defold/blob/dev/CONTRIBUTING.md" target="_blank" rel="noopener">Contribution Guidelines ↗</a>
+				<a class="button secondary" href="https://github.com/defold/defold/blob/dev/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">Code of Conduct ↗</a>
+				<a class="button secondary" href="https://forum.defold.com/c/source-code" target="_blank" rel="noopener">Source code forum ↗</a>
+				<a class="button secondary" href="/manuals/getting-help/">How to report issues?</a>
+			</div>
+		</div>
 	</div>
 </div>
 
-<br/>
-<div class="center">
-{% include primary_button.html link="https://github.com/defold/defold/blob/dev/CONTRIBUTING.md" target="_blank" text="Contribution guidelines" %}
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Other ways to help</h2>
+			<p>If you are not ready to submit code or docs yet, you can still help Defold by reporting issues clearly, helping other developers, or supporting the Foundation.</p>
+		</div>
+
+		<div class="page-feature-grid">
+			{% include page_feature_card.html title="Report an issue" body="Use the forum, editor issue reporting, and support docs to document bugs and share reproducible cases." link="/manuals/getting-help/" icon="/images/icons/icons-learn-export_ic-learn-forum.svg" card_class="page-feature-card-faq" %}
+			{% include page_feature_card.html title="Help Community" body="Answer questions, share workarounds, and support developers who are getting unstuck with Defold." link="/community" icon="/images/icons/ic-64-community.svg" card_class="page-feature-card-forum" %}
+			{% include page_feature_card.html title="Support Defold" body="Fund ongoing development through donations and partnerships if you want to help without opening a pull request." link="/donate" icon="/images/icons/icon-handshake.svg" card_class="page-feature-card-donate" %}
+		</div>
+	</div>
 </div>
+
+{% include donors_and_partners.html %}

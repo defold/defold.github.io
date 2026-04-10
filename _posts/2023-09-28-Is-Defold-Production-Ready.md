@@ -3,7 +3,7 @@ layout: post
 title:  Is Defold production ready?
 excerpt: From time to time we get asked if Defold is production ready. Our answer is that Defold is without a doubt a reliable and production ready game engine!
 author: Björn Ritzl
-tags: ["blog"]
+tags: ["poki", "html5", "steam", "mobile"]
 ---
 
 # Is Defold production ready?

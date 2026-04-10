@@ -1,112 +1,100 @@
 ---
-layout: hero_and_text
-title: Build server status page
-description: The Defold build servers are provided as a free service to all developers. Refer to this page to check their availability.
+layout: page
+title: Build server status
+description: The Defold build servers are provided as a free service to all developers. Use this page to check the current availability of the production and stage build clusters.
 nav: floating
 heatmap: false
-background: /images/hero/defold-top-bg-transparent-2.png
-after: [always_free.html, learn_section.html, donors_and_partners.html]
 ---
-<div id="prod" class="columns six">
-    <h2 class="panel-title">Production server</h2>
-    <div id="statusPanel" class="panel">
-        <div class="panel-heading">
-            <h3 id="statusTitle" class="panel-title">
-            </h3>
-        </div>
-    </div>
-    <div id="grid" class="grid-250">
-    </div>
+
+{%- capture page_hero_copy -%}
+<p>The Defold build servers are provided as a free service to all developers - check here the current availability of the production and stage build clusters.</p>
+{%- endcapture -%}
+
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/ic-git-blue.svg" alt="Defold build server status illustration" loading="eager">
+{%- endcapture -%}
+
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="https://build.defold.com" target="_blank" text="Production server ↗" %}
+{% include secondary_button.html link="https://build-stage.defold.com" target="_blank" text="Stage server ↗" %}
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="status-hub-hero" title="Build server status" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Build server status overview" %}
+
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Current server health</h2>
+			<p>Each card summarizes the overall health report and lists the platform builders returned by the public status endpoint.</p>
+		</div>
+
+		<div class="page-feature-grid page-grid-two page-grid-flush status-hub-grid">
+			<article class="page-surface-panel page-text-panel status-server-panel" data-status-root data-status-url="https://build.defold.com/health_report">
+				<div class="status-server-panel-header">
+					<div class="status-server-panel-copy">
+						<p class="status-server-panel-eyebrow">Production</p>
+						<h3>Production server</h3>
+						<p class="status-server-panel-link"><a href="https://build.defold.com" target="_blank">build.defold.com ↗</a></p>
+					</div>
+					<div class="status-server-overview">
+						<span class="status-health-pill status-health-pill-pending" data-status-title>Checking status</span>
+					</div>
+				</div>
+				<p class="status-server-panel-summary" data-status-summary>Loading the latest health report...</p>
+				<div class="status-server-grid" data-status-grid></div>
+			</article>
+
+			<article class="page-surface-panel page-text-panel status-server-panel" data-status-root data-status-url="https://build-stage.defold.com/health_report">
+				<div class="status-server-panel-header">
+					<div class="status-server-panel-copy">
+						<p class="status-server-panel-eyebrow">Stage</p>
+						<h3>Stage server</h3>
+						<p class="status-server-panel-link"><a href="https://build-stage.defold.com" target="_blank">build-stage.defold.com ↗</a></p>
+					</div>
+					<div class="status-server-overview">
+						<span class="status-health-pill status-health-pill-pending" data-status-title>Checking status</span>
+					</div>
+				</div>
+				<p class="status-server-panel-summary" data-status-summary>Loading the latest health report...</p>
+				<div class="status-server-grid" data-status-grid></div>
+			</article>
+		</div>
+	</div>
 </div>
 
-<div id="stage" class="columns six">
-    <h2 class="panel-title">Stage server</h2>
-    <div id="statusPanel" class="panel">
-        <div class="panel-heading">
-            <h3 id="statusTitle" class="panel-title">
-            </h3>
-        </div>
-    </div>
-    <div id="grid" class="grid-250">
-    </div>
+<div class="section dark page-dark-section gradient-background-bottom-dark">
+	<div class="container">
+		<div class="page-feature-grid page-grid-two page-grid-flush">
+			<article class="page-surface-panel page-text-panel page-split-panel status-info-panel">
+				<div class="page-split-panel-media">
+					<img src="/images/icons/icon-magnifying-glass.svg" alt="Server health overview icon" loading="lazy">
+				</div>
+				<div class="page-split-panel-copy">
+					<h3>What this page checks</h3>
+					<p>This page reads the public <code>health_report</code> endpoints exposed by the production and stage build servers, then summarizes the platform builders returned by each endpoint.</p>
+					<p>A stage issue does not necessarily affect production, but it can signal incoming maintenance, rollout work, or a partial environment problem.</p>
+				</div>
+			</article>
+
+			<article class="page-surface-panel page-text-panel page-split-panel status-info-panel">
+				<div class="page-split-panel-media">
+					<img src="/images/icons/icon-get-support.svg" alt="Support icon" loading="lazy">
+				</div>
+				<div class="page-split-panel-copy">
+					<h3>Need help?</h3>
+					<p>If the server looks healthy but your remote build still fails, check the build log first and then use the support channels or the source code discussion area for troubleshooting.</p>
+					<div class="page-text-panel-actions">
+						{% include primary_button.html link="/support" text="Get support" %}
+						{% include secondary_button.html link="https://forum.defold.com/c/source-code" target="_blank" text="Source code forum ↗" %}
+					</div>
+				</div>
+			</article>
+		</div>
+	</div>
 </div>
 
-<script type="text/javascript">
-    const OperationalStatus = "Operational";
-    const UnreachableStatus = "Unreachable";
-    const NotFullyOperationalStatus = "NotFullyOperational";
-    function addBlock(id, status, parent_block) {
-        var top_block = document.createElement("div");
-        top_block.classList.add("card");
-        top_block.classList.add("grey");
+{% include always_free.html %}
+{% include learn_section.html %}
+{% include donors_and_partners.html %}
 
-        var heading = document.createElement("h4");
-        heading.classList.add("heading");
-        heading.textContent = id;
-        top_block.appendChild(heading);
-
-        var inner_span = document.createElement("span");
-        inner_span.classList.add("label");
-        if (status == OperationalStatus) {
-            inner_span.classList.add("label-success");
-        } else if (status == UnreachableStatus) {
-            inner_span.classList.add("label-danger");
-        } else {
-            inner_span.classList.add("label-warning");
-        }
-        inner_span.textContent = status;
-
-        top_block.appendChild(inner_span);
-
-        parent_block.appendChild(top_block);
-    }
-    function handleResponse(response, rootId) {
-        var totalFullyOperatedPlatforms = 0;
-        var totalUnreachablePlatforms = 0;
-        var parentGrid = document.getElementById(rootId).querySelector("#grid");
-        var platformCount = 0;
-        for (var key in response) {
-            addBlock(key, response[key], parentGrid);
-            if (response[key] == OperationalStatus) {
-                totalFullyOperatedPlatforms++;
-            } else if (response[key] == UnreachableStatus) {
-                totalUnreachablePlatforms++;
-            }
-            platformCount++;
-        }
-        if (totalUnreachablePlatforms == platformCount) {
-            document.getElementById(rootId).querySelector("#statusPanel").classList.add("panel-danger");
-            document.getElementById(rootId).querySelector("#statusTitle").textContent = UnreachableStatus;
-        } else if (totalFullyOperatedPlatforms == platformCount) {
-            document.getElementById(rootId).querySelector("#statusPanel").classList.add("panel-success");
-            document.getElementById(rootId).querySelector("#statusTitle").textContent = OperationalStatus;
-        } else {
-            document.getElementById(rootId).querySelector("#statusPanel").classList.add("panel-warning");
-            document.getElementById(rootId).querySelector("#statusTitle").textContent = NotFullyOperationalStatus;
-        }
-    }
-    function handleError(err, rootId) {
-        document.getElementById(rootId).querySelector("#statusPanel").classList.add("panel-danger");
-        document.getElementById(rootId).querySelector("#statusTitle").textContent = UnreachableStatus;
-    }
-
-    var r = new XMLHttpRequest();
-    r.open("GET", "https://build-stage.defold.com/health_report");
-    r.onload = function(response) {
-        handleResponse(JSON.parse(response.target.responseText), "stage");
-    }
-    r.onerror = function(err) {
-        handleError(err, "stage");
-    }
-    r.send(null);
-
-    var r = new XMLHttpRequest();
-    r.open("GET", "https://build.defold.com/health_report");
-    r.onload = function(response) {
-        handleResponse(JSON.parse(response.target.responseText), "prod");
-    }
-    r.onerror = function(err) {
-        handleError(err, "prod");
-    }
-    r.send(null);
-</script>
+<script src="/js/status-page.js"></script>

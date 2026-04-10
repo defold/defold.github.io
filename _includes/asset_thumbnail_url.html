@@ -1,0 +1,8 @@
+{%- assign asset_thumb = include.asset.images.thumb | default: "" -%}
+{%- if asset_thumb contains "https" or asset_thumb contains "http" -%}
+{{ asset_thumb }}
+{%- elsif asset_thumb != blank -%}
+/images/assets/{{ asset_thumb }}
+{%- else -%}
+/images/asset-nothumb.jpg
+{%- endif -%}

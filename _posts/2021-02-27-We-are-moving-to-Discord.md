@@ -6,7 +6,7 @@ author: Björn Ritzl
 tags: ["news", "social"]
 ---
 <div class="center">
-<img src="/images/moving-to-discord.png"/>
+<img src="/images/moving-to-discord.png" alt="Announcement graphic about moving the Defold community from Slack to Discord"/>
 </div>
 
 ## We are moving to Discord!

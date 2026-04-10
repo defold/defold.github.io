@@ -3,7 +3,7 @@ layout: post
 title:  Vilnius Game Dev Meetup #25
 excerpt: A while back we were invited by Melsoft to attend the Lithuanian Game Developers Association meetup in Vilnius and do a talk about Defold.
 author: Björn Ritzl
-tags: ["news", "melsoft"]
+tags: ["news", "social"]
 ---
 
 The [Lithuanian Game Developers Association](https://www.lzka.lt/) (LŽKA) is a non-profit organization uniting Lithuanian game developers, representing the interests of the industry, promoting the professional development of game developers, mutual cooperation and promoting game development in Lithuania.

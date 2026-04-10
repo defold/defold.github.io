@@ -1,0 +1,21 @@
+{%- assign detail_locales = include.locales -%}
+{%- assign detail_path = include.path | split: "#" | first -%}
+{%- if site.data.localeindex.size > 1 and detail_locales and detail_path != "" -%}
+<div class="learn-detail-panel learn-detail-languages learn-sidebar-panel page-surface-panel page-text-panel">
+	<input class="toggle" type="checkbox" checked/>
+	<label class="togglelabel">Languages</label>
+	<ul class="nobullet">
+	{%- for l in site.data.localeindex -%}
+		{%- if l.active and detail_locales contains l.locale -%}
+		<li class="learn-detail-list-item">
+			{%- if l.locale == "en" -%}
+				<a class="learn-detail-list-link" href='{{ detail_path }}'>{{ l.name }}</a>
+			{%- else -%}
+				<a class="learn-detail-list-link" href='/{{ l.urlprefix }}{{ detail_path }}'>{{ l.name }}</a>
+			{%- endif -%}
+		</li>
+		{%- endif -%}
+	{%- endfor -%}
+	</ul>
+</div>
+{%- endif -%}
