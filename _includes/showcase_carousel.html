@@ -30,7 +30,7 @@
 								{%- assign game = showcase_games | where: "id", game_id | first -%}
 								{%- if game -%}
 									{%- assign game_image_src = game.images.third -%}
-									<a href="/showcase" class="frontpage-showcase-card game-banner-link" data-game-id="{{ game.id }}" aria-label="{{ game.name }}">
+									<a href="/showcase#{{ game.id }}" class="frontpage-showcase-card game-banner-link" data-game-id="{{ game.id }}" aria-label="{{ game.name }}">
 										<span class="frontpage-showcase-card-media">
 											{% if game_image_src and game_image_src != "" %}
 											<img
@@ -56,7 +56,7 @@
 					{%- if rendered_initial_count == 0 -%}
 						{%- for game in showcase_games limit: initial_showcase_limit -%}
 							{%- assign game_image_src = game.images.third -%}
-							<a href="/showcase" class="frontpage-showcase-card game-banner-link" data-game-id="{{ game.id }}" aria-label="{{ game.name }}">
+							<a href="/showcase#{{ game.id }}" class="frontpage-showcase-card game-banner-link" data-game-id="{{ game.id }}" aria-label="{{ game.name }}">
 								<span class="frontpage-showcase-card-media">
 									{% if game_image_src and game_image_src != "" %}
 									<img

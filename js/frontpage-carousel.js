@@ -166,7 +166,7 @@
 			const imageData = getResponsiveImageData(game);
 
 			const card = document.createElement('a');
-			card.href = '/showcase';
+			card.href = '/showcase#' + game.id;
 			card.className = 'frontpage-showcase-card game-banner-link';
 			card.draggable = false;
 			card.dataset.gameId = game.id;
