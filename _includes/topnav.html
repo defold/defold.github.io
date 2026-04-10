@@ -2,10 +2,10 @@
 	<div class="container">
 		<div class="topnav-shell">
 			<a href="/" class="topnav-brand" aria-label="Defold home">
-				<picture>
-					<source srcset="/images/logo/defold/logo/logo-ver-outline-dark.png" media="(prefers-color-scheme: light)">
-					<img class="topnav-brand-image" src="/images/logo/defold/logo/logo-ver-outline-bright.svg" alt="Defold home"/>
-				</picture>
+				<span class="topnav-brand-mark">
+					<img class="topnav-brand-image topnav-brand-image-dark" src="/images/logo/defold/logo/logo-ver-outline-bright.svg" alt="Defold home"/>
+					<img class="topnav-brand-image topnav-brand-image-light" src="/images/logo/defold/logo/logo-ver-outline-dark.png" alt="" aria-hidden="true"/>
+				</span>
 			</a>
 
 			<nav class="topnav-main-links" aria-label="Primary">
@@ -24,6 +24,13 @@
 					<li><a href="/open">Always&nbsp;Free</a></li>
 					<li><a href="/download">Download</a></li>
 					<li><a href="/donate" class="nav-donate-link">Donate&nbsp;&nbsp;<span class="nav-donate-heart" aria-hidden="true">❤️</span></a></li>
+					<li class="topnav-actions-theme">
+						<button class="theme-toggle-button" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light mode">
+							<span class="theme-toggle-button-track" aria-hidden="true">
+								<span class="theme-toggle-button-thumb"></span>
+							</span>
+						</button>
+					</li>
 				</ul>
 			</div>
 
@@ -45,6 +52,11 @@
 						<a href="/donate" class="topnav-mobile-link topnav-mobile-link-donate{% if page.url contains 'donate' %} active{% endif %}">Donate&nbsp;&nbsp;<span class="nav-donate-heart" aria-hidden="true">❤️</span></a>
 					</div>
 				</details>
+				<button class="theme-toggle-button topnav-mobile-theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light mode">
+					<span class="theme-toggle-button-track" aria-hidden="true">
+						<span class="theme-toggle-button-thumb"></span>
+					</span>
+				</button>
 			</div>
 		</div>
 	</div>

@@ -262,7 +262,7 @@ div.codehilite {
 	.highlight .il { color: var(--number) } /* Literal.Number.Integer.Long */
 }
 
-@media (prefers-color-scheme: dark) {
+@mixin fruity-dark-theme {
 	.codehilite,
 	.highlight {
 		--background: #1b2026;
@@ -466,4 +466,14 @@ div.codehilite {
 	.highlight .vi { color: #fb660a } /* Name.Variable.Instance */
 	.highlight .vm { color: #fb660a } /* Name.Variable.Magic */
 	.highlight .il { color: var(--number) } /* Literal.Number.Integer.Long */
+}
+
+html.theme-dark {
+	@include fruity-dark-theme;
+}
+
+@media (prefers-color-scheme: dark) {
+	html:not(.theme-light) {
+		@include fruity-dark-theme;
+	}
 }
