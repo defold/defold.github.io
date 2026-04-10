@@ -53,7 +53,6 @@
 				root.classList.add('js');
 				root.classList.toggle('theme-light', resolvedTheme === 'light');
 				root.classList.toggle('theme-dark', resolvedTheme === 'dark');
-				root.classList.toggle('dark-mode', resolvedTheme === 'dark');
 				root.dataset.theme = resolvedTheme;
 				root.dataset.themePreference = preferredTheme || 'system';
 				if (themeColorMeta) {
