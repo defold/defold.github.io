@@ -324,6 +324,15 @@ html.theme-dark {
 		color: #f0f2f6;
 	}
 
+	.learn-detail-main pre:has(> code.language-math),
+	.manual pre:has(> code.language-math),
+	.tutorial pre:has(> code.language-math),
+	.post pre:has(> code.language-math),
+	.content-flow pre:has(> code.language-math) {
+		background: rgba(255, 255, 255, 0.06);
+		border: 1px solid rgba(255, 255, 255, 0.10);
+	}
+
 	.learn-detail-main pre > code,
 	.manual pre > code,
 	.tutorial pre > code,
@@ -355,6 +364,18 @@ html.theme-dark {
 		line-height: 1.1;
 		text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
 		vertical-align: baseline;
+	}
+
+	.learn-detail-main .content-flow :where(p, li, td, th, dd, dt, blockquote, figcaption) a:not(.anchor-link),
+	.post.content-flow :where(p, li, td, th, dd, dt, blockquote, figcaption) a:not(.anchor-link),
+	.faq.content-flow :where(p, li, td, th, dd, dt, blockquote, figcaption) a:not(.anchor-link) {
+		color: #bfd5f2;
+	}
+
+	.learn-detail-main .content-flow :where(p, li, td, th, dd, dt, blockquote, figcaption) a:not(.anchor-link):hover,
+	.post.content-flow :where(p, li, td, th, dd, dt, blockquote, figcaption) a:not(.anchor-link):hover,
+	.faq.content-flow :where(p, li, td, th, dd, dt, blockquote, figcaption) a:not(.anchor-link):hover {
+		color: #e0eeff;
 	}
 
 	.learn-detail-main .sidenote,

@@ -816,7 +816,7 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 	display: none;
 	align-items: center;
 	line-height: 0;
-	margin-top: 10px;
+	margin-top: 14px;
 }
 
 .theme-toggle-button {
@@ -830,6 +830,7 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 	border: 0;
 	background: transparent;
 	box-shadow: none;
+	margin: 0;
 	line-height: 0;
 	cursor: pointer;
 	appearance: none;
@@ -4986,11 +4987,14 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 }
 
 .donors-and-partners-card {
+	--donors-and-partners-card-min-height: clamp(77px, 7.2vw, 94px);
+	--donors-and-partners-card-padding-block: clamp(0.35rem, 0.55vw, 0.5rem);
+	--donors-and-partners-card-padding-inline: clamp(0.5rem, 0.75vw, 0.68rem);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: clamp(96px, 9vw, 118px);
-	padding: clamp(0.9rem, 1.6vw, 1.3rem);
+	min-height: var(--donors-and-partners-card-min-height);
+	padding: var(--donors-and-partners-card-padding-block) var(--donors-and-partners-card-padding-inline);
 	border-radius: var(--page-card-radius, 8px);
 	border: 1px solid var(--donors-and-partners-card-border);
 	background: var(--donors-and-partners-card-bg);
@@ -5012,53 +5016,40 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 }
 
 .donors-and-partners-card-platinum {
-	--donors-and-partners-logo-max-height: 56px;
-	min-height: clamp(108px, 9.5vw, 128px);
+	--donors-and-partners-card-min-height: clamp(86px, 7.6vw, 102px);
 }
 
 .donors-and-partners-card-gold {
-	--donors-and-partners-logo-max-height: 48px;
-	min-height: clamp(88px, 8.4vw, 106px);
-	padding: clamp(0.82rem, 1.45vw, 1.15rem);
-}
-
-.donors-and-partners-card-standard {
-	--donors-and-partners-logo-max-height: 44px;
+	--donors-and-partners-card-min-height: clamp(70px, 6.7vw, 85px);
 }
 
 .donors-and-partners-card-special {
-	--donors-and-partners-logo-max-height: 27px;
-	min-height: clamp(52px, 4.8vw, 62px);
-	padding: clamp(0.42rem, 0.72vw, 0.62rem) clamp(0.7rem, 1.1vw, 0.9rem);
+	--donors-and-partners-card-min-height: clamp(42px, 3.8vw, 50px);
 }
 
 .donors-and-partners-card-membership {
-	--donors-and-partners-logo-max-height: 30px;
-	min-height: clamp(52px, 4.8vw, 62px);
-	padding: clamp(0.42rem, 0.72vw, 0.62rem) clamp(0.7rem, 1.1vw, 0.9rem);
+	--donors-and-partners-card-min-height: clamp(42px, 3.8vw, 50px);
 }
 
 .donors-and-partners-card-compact {
-	--donors-and-partners-logo-max-height: 26px;
-	min-height: clamp(70px, 6.4vw, 84px);
-	padding: clamp(0.68rem, 1.1vw, 0.88rem);
+	--donors-and-partners-card-min-height: clamp(56px, 5.1vw, 67px);
 }
 
 .donors-and-partners-card-friends {
-	--donors-and-partners-logo-max-height: 20px;
-	min-height: clamp(44px, 4.1vw, 54px);
-	padding: 0;
+	--donors-and-partners-card-min-height: clamp(35px, 3.3vw, 43px);
 }
 
 .donors-and-partners-card-donor {
-	--donors-and-partners-logo-max-height: 22px;
-	min-height: clamp(38px, 3.6vw, 46px);
-	padding: clamp(0.28rem, 0.52vw, 0.42rem) clamp(0.52rem, 0.82vw, 0.72rem);
+	--donors-and-partners-card-min-height: clamp(30px, 2.9vw, 37px);
+	--donors-and-partners-card-padding-block: clamp(0.28rem, 0.52vw, 0.42rem);
+	--donors-and-partners-card-padding-inline: clamp(0.52rem, 0.82vw, 0.72rem);
 }
 
 .donors-and-partners-card-donor-text {
-	min-height: clamp(38px, 3.6vw, 46px);
-	padding: clamp(0.28rem, 0.52vw, 0.42rem) clamp(0.52rem, 0.82vw, 0.72rem);
+	--donors-and-partners-card-min-height: clamp(30px, 2.9vw, 37px);
+	--donors-and-partners-card-padding-block: clamp(0.28rem, 0.52vw, 0.42rem);
+	--donors-and-partners-card-padding-inline: clamp(0.52rem, 0.82vw, 0.72rem);
+	min-height: var(--donors-and-partners-card-min-height);
 	background: var(--donors-and-partners-light-card-bg);
 	border-color: var(--donors-and-partners-light-card-border);
 	box-shadow: var(--donors-and-partners-light-card-shadow);
@@ -5074,7 +5065,8 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	width: auto;
 	max-width: 100%;
 	height: auto;
-	max-height: var(--donors-and-partners-logo-max-height, 44px);
+	max-height: calc(var(--donors-and-partners-card-min-height) - (2 * var(--donors-and-partners-card-padding-block)));
+	object-fit: contain;
 }
 
 .donors-and-partners-name {
@@ -5934,7 +5926,7 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	display: inline-flex;
 	align-items: center;
 	color: var(--theme-muted-color);
-	font-size: 1.28rem;
+	font-size: 0.9rem;
 	font-weight: 700;
 	line-height: 1.35;
 	text-decoration: none !important;
@@ -6297,7 +6289,7 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 
 .learn-detail-pager-label {
 	display: block;
-	font-size: 1.3rem;
+	font-size: 0.9rem;
 	font-weight: 700;
 	line-height: 1.25;
 	white-space: normal !important;
@@ -6307,7 +6299,7 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 .learn-detail-pager-title {
 	display: block;
 	max-width: 100%;
-	font-size: clamp(1.34rem, 1.15vw, 1.5rem);
+	font-size: clamp(0.8rem, 0.9vw, 1rem);
 	font-weight: 700;
 	line-height: 1.25;
 	white-space: normal !important;
@@ -7457,39 +7449,34 @@ img[alt="icon"] {
 	}
 
 	.donors-and-partners-card {
-		min-height: 86px;
-		padding: 0.9rem;
+		--donors-and-partners-card-min-height: 69px;
 	}
 
 	.donors-and-partners-card-gold {
-		min-height: 78px;
-		padding: 0.8rem;
+		--donors-and-partners-card-min-height: 62px;
 	}
 
 	.donors-and-partners-card-special {
-		min-height: 52px;
-		padding: 0.45rem 0.75rem;
+		--donors-and-partners-card-min-height: 42px;
 	}
 
 	.donors-and-partners-card-membership {
-		min-height: 52px;
-		padding: 0.45rem 0.75rem;
+		--donors-and-partners-card-min-height: 42px;
 	}
 
 	.donors-and-partners-card-compact {
-		min-height: 64px;
-		padding: 0.62rem 0.8rem;
+		--donors-and-partners-card-min-height: 51px;
 	}
 
 	.donors-and-partners-card-friends {
-		min-height: 44px;
-		padding: 0;
+		--donors-and-partners-card-min-height: 35px;
 	}
 
 	.donors-and-partners-card-donor,
 	.donors-and-partners-card-donor-text {
-		min-height: 38px;
-		padding: 0.28rem 0.52rem;
+		--donors-and-partners-card-min-height: 30px;
+		--donors-and-partners-card-padding-block: 0.28rem;
+		--donors-and-partners-card-padding-inline: 0.52rem;
 	}
 
 	.row > .column + .column,
@@ -8959,9 +8946,9 @@ ul.page-checklist-negative li:before {
 
 	.donors-and-partners-section {
 		--donors-and-partners-section-bg:
-			radial-gradient(circle at top left, rgba(57, 163, 228, 0.08), transparent 34%),
-			radial-gradient(circle at top right, rgba(255, 181, 68, 0.1), transparent 26%),
-			linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
+			radial-gradient(circle at top left, rgba(57, 163, 228, 0.06), transparent 34%),
+			radial-gradient(circle at top right, rgba(255, 181, 68, 0.08), transparent 26%),
+			linear-gradient(180deg, #fcfdff 0%, #f4f7fb 100%);
 		--donors-and-partners-copy-color: rgba(20, 24, 28, 0.72);
 		--donors-and-partners-heading-color: var(--darkest);
 		--donors-and-partners-card-bg: linear-gradient(180deg, rgba(31, 40, 50, 0.98) 0%, rgba(15, 22, 29, 1) 100%);
@@ -9014,11 +9001,14 @@ ul.page-checklist-negative li:before {
 	}
 
 	.donors-and-partners-card {
+		--donors-and-partners-card-min-height: clamp(96px, 9vw, 118px);
+		--donors-and-partners-card-padding-block: clamp(0.35rem, 0.55vw, 0.5rem);
+		--donors-and-partners-card-padding-inline: clamp(0.5rem, 0.75vw, 0.68rem);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		min-height: clamp(96px, 9vw, 118px);
-		padding: clamp(0.9rem, 1.6vw, 1.3rem);
+		min-height: var(--donors-and-partners-card-min-height);
+		padding: var(--donors-and-partners-card-padding-block) var(--donors-and-partners-card-padding-inline);
 		border-radius: var(--page-card-radius, 8px);
 		border: 1px solid var(--donors-and-partners-card-border);
 		background: var(--donors-and-partners-card-bg);
@@ -9040,53 +9030,40 @@ ul.page-checklist-negative li:before {
 	}
 
 	.donors-and-partners-card-platinum {
-		--donors-and-partners-logo-max-height: 56px;
-		min-height: clamp(108px, 9.5vw, 128px);
+		--donors-and-partners-card-min-height: clamp(86px, 7.6vw, 102px);
 	}
 
 	.donors-and-partners-card-gold {
-		--donors-and-partners-logo-max-height: 48px;
-		min-height: clamp(88px, 8.4vw, 106px);
-		padding: clamp(0.82rem, 1.45vw, 1.15rem);
-	}
-
-	.donors-and-partners-card-standard {
-		--donors-and-partners-logo-max-height: 44px;
+		--donors-and-partners-card-min-height: clamp(70px, 6.7vw, 85px);
 	}
 
 	.donors-and-partners-card-special {
-		--donors-and-partners-logo-max-height: 27px;
-		min-height: clamp(52px, 4.8vw, 62px);
-		padding: clamp(0.42rem, 0.72vw, 0.62rem) clamp(0.7rem, 1.1vw, 0.9rem);
+		--donors-and-partners-card-min-height: clamp(42px, 3.8vw, 50px);
 	}
 
 	.donors-and-partners-card-membership {
-		--donors-and-partners-logo-max-height: 30px;
-		min-height: clamp(52px, 4.8vw, 62px);
-		padding: clamp(0.42rem, 0.72vw, 0.62rem) clamp(0.7rem, 1.1vw, 0.9rem);
+		--donors-and-partners-card-min-height: clamp(42px, 3.8vw, 50px);
 	}
 
 	.donors-and-partners-card-compact {
-		--donors-and-partners-logo-max-height: 26px;
-		min-height: clamp(70px, 6.4vw, 84px);
-		padding: clamp(0.68rem, 1.1vw, 0.88rem);
+		--donors-and-partners-card-min-height: clamp(56px, 5.1vw, 67px);
 	}
 
 	.donors-and-partners-card-friends {
-		--donors-and-partners-logo-max-height: 20px;
-		min-height: clamp(44px, 4.1vw, 54px);
-		padding: 0;
+		--donors-and-partners-card-min-height: clamp(35px, 3.3vw, 43px);
 	}
 
 	.donors-and-partners-card-donor {
-		--donors-and-partners-logo-max-height: 22px;
-		min-height: clamp(38px, 3.6vw, 46px);
-		padding: clamp(0.28rem, 0.52vw, 0.42rem) clamp(0.52rem, 0.82vw, 0.72rem);
+		--donors-and-partners-card-min-height: clamp(30px, 2.9vw, 37px);
+		--donors-and-partners-card-padding-block: clamp(0.28rem, 0.52vw, 0.42rem);
+		--donors-and-partners-card-padding-inline: clamp(0.52rem, 0.82vw, 0.72rem);
 	}
 
 	.donors-and-partners-card-donor-text {
-		min-height: clamp(38px, 3.6vw, 46px);
-		padding: clamp(0.28rem, 0.52vw, 0.42rem) clamp(0.52rem, 0.82vw, 0.72rem);
+		--donors-and-partners-card-min-height: clamp(30px, 2.9vw, 37px);
+		--donors-and-partners-card-padding-block: clamp(0.28rem, 0.52vw, 0.42rem);
+		--donors-and-partners-card-padding-inline: clamp(0.52rem, 0.82vw, 0.72rem);
+		min-height: var(--donors-and-partners-card-min-height);
 		background: var(--donors-and-partners-card-bg);
 		border-color: var(--donors-and-partners-card-border);
 		box-shadow: var(--donors-and-partners-card-shadow);
@@ -9103,7 +9080,8 @@ ul.page-checklist-negative li:before {
 		width: auto;
 		max-width: 100%;
 		height: auto;
-		max-height: var(--donors-and-partners-logo-max-height, 44px);
+		max-height: calc(var(--donors-and-partners-card-min-height) - (2 * var(--donors-and-partners-card-padding-block)));
+		object-fit: contain;
 	}
 
 	.donors-and-partners-name {
@@ -10326,6 +10304,22 @@ html.theme-light {
 	}
 
 	.clipboard-check-icon { display: none; }
+}
+
+html.theme-dark .clipboard-button {
+	color: rgba(255, 255, 255, 0.9);
+	border-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(20, 24, 28, 0.72);
+}
+
+html.theme-dark .clipboard-button:hover {
+	background-color: rgba(10, 13, 17, 0.94);
+	border-color: rgba(255, 255, 255, 0.32);
+}
+
+html.theme-dark .clipboard-button:active {
+	background-color: rgba(5, 8, 11, 0.98);
+	border-color: rgba(255, 255, 255, 0.42);
 }
 
 /*******************************************************************************
