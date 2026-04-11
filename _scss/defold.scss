@@ -1135,10 +1135,40 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 	color: var(--dark);
 }
 
+.apimenu p {
+	margin: 0 0 0.375rem;
+}
+
+.apimenu form {
+	margin-bottom: 0.375rem;
+}
+
+.apimenu hr {
+	margin-top: 0.375rem;
+	margin-bottom: 0.5rem;
+}
+
+.apimenu input[type="checkbox"].toggle + .togglelabel {
+	padding-bottom: 0.175rem;
+}
+
+.apimenu input[type="checkbox"].toggle:checked + .togglelabel {
+	padding-bottom: 0.075rem;
+}
+
+.apimenu ul.nobullet {
+	margin-top: 0.125rem;
+	margin-bottom: 0.175rem;
+}
+
 .apimenu li {
 	overflow: hidden; 
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+.apimenu .nobullet li {
+	padding-bottom: 0.125rem;
 }
 
 .api-nav-item {
