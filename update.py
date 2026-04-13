@@ -1596,18 +1596,14 @@ def process_refdoc(download = False):
 
 
 
-def commit_changes(githubtoken):
-    if githubtoken is None:
-        print("You must specific a GitHub token")
-        sys.exit(1)
-
-    call("git config --global user.name 'services@defold.se'")
-    call("git config --global user.email 'services@defold.se'")
+def commit_changes():
+    call("git config user.name 'github-actions[bot]'")
+    call("git config user.email '41898282+github-actions[bot]@users.noreply.github.com'")
     call("git add -A")
     # only commit if the diff isn't empty, ie there is a change
     # https://stackoverflow.com/a/8123841/1266551
     call("git diff-index --quiet HEAD || git commit -m 'Site changes [skip-ci]'")
-    call("git push 'https://%s@github.com/defold/defold.github.io.git' HEAD:master" % (githubtoken))
+    call("git push")
 
 
 ALL_COMMANDS = [ "all", "help", "docs", "refdoc", "asset-portal", "games-showcase", "examples", "codepad", "commit", "extensions" ]
