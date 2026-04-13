@@ -1661,6 +1661,6 @@ for command in args.commands:
     elif command == "codepad":
         process_codepad(download = args.download)
     elif command == "commit":
-        commit_changes(args.githubtoken)
+        commit_changes()
     else:
         print("Unknown command {}".format(command))
