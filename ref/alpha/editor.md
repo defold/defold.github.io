@@ -1,10 +1,10 @@
 ---
 layout: api
 branch: alpha
-ref: engine-docs-editor-apidoc
-api_language: C++
+ref: editor-lua
+api_language: Lua
 title: API reference (Editor)
-type: Defold C++
+type: Defold Lua
 pagefind_exclude: true
 ---
 {% include anchor_headings.html html=content %}
