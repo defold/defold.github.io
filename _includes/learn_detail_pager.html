@@ -1,0 +1,24 @@
+<nav class="learn-detail-pager{% if include.class %} {{ include.class }}{% endif %}" aria-label="Page navigation">
+	<div class="learn-detail-pager-grid">
+		{%- if include.previous_link and include.previous_link != "" -%}
+		<a class="button secondary learn-detail-pager-button" href="{{ include.previous_link }}">
+			<span class="learn-detail-pager-label">⟵ Previous</span>
+			<span class="learn-detail-pager-title">{{ include.previous_title }}</span>
+		</a>
+		{%- endif -%}
+
+		{%- if include.hub_link and include.hub_link != "" -%}
+		<a class="button secondary learn-detail-pager-button learn-detail-pager-button-hub" href="{{ include.hub_link }}">
+			<span class="learn-detail-pager-label">↖ Get back to</span>
+			<span class="learn-detail-pager-title">{{ include.hub_title | default: "Hub" }}</span>
+		</a>
+		{%- endif -%}
+
+		{%- if include.next_link and include.next_link != "" -%}
+		<a class="button primary learn-detail-pager-button" href="{{ include.next_link }}">
+			<span class="learn-detail-pager-label">Next  ⟶</span>
+			<span class="learn-detail-pager-title">{{ include.next_title }}</span>
+		</a>
+		{%- endif -%}
+	</div>
+</nav>

@@ -3,7 +3,7 @@ layout: post
 title:  The making of BoxRob
 excerpt: In this post d954mas shares his experience of creating the game BoxRob
 author: d954mas
-tags: ["developer case study", "post mortem"]
+tags: ["case study", "post mortem", "poki", "html5"]
 ---
 
 BoxRob is a puzzle platform game created by forum user d954mas for 7Spot Games. d954mas did code and level design while idea, art, music, and all the rest come from 7Spot Games. In this blog post d954mas will share his experience working on the game, from initial idea to finished product.

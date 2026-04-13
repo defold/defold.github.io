@@ -1,29 +1,85 @@
 ---
 layout: page
 title: Join the Defold Discord server
+description: Join the Defold Discord server to chat with the community, get quick feedback, meet collaborators, and stay close to ongoing game-development discussions.
+nav: floating
 ---
 
-<div class="section hero center" style='background-image: url("/images/hero/grey-bg.jpg"); position: relative; overflow: hidden;'>
-	<div class="container" style="min-height: 70vh;">
-		<div class="row">
-			<div class="columns two">
-				<br/>
-			</div>
-			<div class="columns eight dark-text">
-				<img src="/images/logo/others/discord-black.png"/>
-				<br/>
-				<br/>
-				<br/>
-				<h2>Join the Defold community on Discord!</h2>
-				<p>The Defold community on Discord is a great way to stay in touch with fellow Defold developers, artists and amazing creators. You can discuss game development, get feedback and find beta testers for your game, ask for help when you are stuck or find someone to collaborate with on your next game.</p>
-				{% include primary_button.html link="https://discord.gg/cHBde7J" target="_blank" text="Join us on Discord!" %}
-				<br/>
-				<br/>
-				<p>PS. We also recommend that you join the <a href="//forum.defold.com">Defold user forum</a>. It is the recommended place for in-depth technical discussions and a guaranteed way of reaching the team creating Defold.</p>
-			</div>
-			<div class="columns two">
-				<br/>
+{%- capture page_hero_copy -%}
+<p>The Defold Discord server is the fastest way to stay in touch with fellow Defold developers, artists, and creators.</p>
+<p>Use it for quick questions, work-in-progress feedback, collaboration, and day-to-day conversation around games built with Defold.</p>
+{%- endcapture -%}
+
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="https://discord.gg/cHBde7J" target="_blank" text="Join the Discord ↗" %}
+{% include secondary_button.html link="https://forum.defold.com" target="_blank" text="Open the forum ↗" %}
+{%- endcapture -%}
+
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/icon-discord.svg" alt="Defold Discord icon" loading="eager">
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="discord-hub-hero" title="Join the Defold Discord" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold Discord overview" %}
+
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Why join the server?</h2>
+			<p>Discord works best when you want short feedback loops, quick back-and-forth, and a more conversational space around your work.</p>
+		</div>
+		<div class="page-feature-grid page-grid-four page-grid-flush">
+			<article class="page-text-feature-item">
+				<h3>Ask quick questions</h3>
+				<p>Get unstuck on small issues, sanity-check an approach, or ask where to look next before turning it into a deeper investigation.</p>
+			</article>
+
+			<article class="page-text-feature-item">
+				<h3>Show work in progress</h3>
+				<p>Share screenshots, clips, and prototypes to get early reactions, suggestions, and practical feedback from other developers.</p>
+			</article>
+
+			<article class="page-text-feature-item">
+				<h3>Meet collaborators</h3>
+				<p>Find people to test your game, discuss ideas with, or connect with artists, programmers, and other creators in the Defold scene.</p>
+			</article>
+
+			<article class="page-text-feature-item">
+				<h3>Stay close to the community</h3>
+				<p>Follow day-to-day discussion, see what others are building, and stay near the flow of activity around Defold between larger announcements.</p>
+			</article>
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-bottom-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Use the right channel for the job</h2>
+			<p>Discord is great for real-time conversation, but some topics are better handled in the forum or through the broader support pages.</p>
+		</div>
+
+		<div class="page-feature-grid page-grid-flush">
+			{% include page_feature_card.html title="Reddit" body="Use Reddit for casual discussion, showcases, and feedback from the community. ↗" link="https://www.reddit.com/r/defold/" icon="/images/icons/icon-reddit.svg" card_class="page-feature-card-reddit" target="_blank" rel="noopener" %}
+			{% include page_feature_card.html title="Forum" body="Use the forum for in-depth technical threads, searchable answers, and topics you want to reference later. ↗" link="https://forum.defold.com" icon="/images/icons/icon-forum.svg" card_class="page-feature-card-forum" target="_blank" rel="noopener" %}
+			{% include page_feature_card.html title="Support" body="Use the support page when you want the bigger picture around help channels, manuals, and professional support paths." link="/support" icon="/images/icons/icon-get-support.svg" card_class="page-feature-card-reference" %}
+		</div>
+
+		<div class="page-text-panel page-surface-panel">
+			<div class="page-split-panel">
+				<div class="page-split-panel-media">
+					<img src="/images/icons/icon-discord.svg" alt="">
+				</div>
+				<div class="page-split-panel-copy">
+					<h3>Ready to jump in?</h3>
+					<p>Join the server to say hello, share what you are building, or ask your first question. For deeper technical discussions and long-term reference, we still recommend posting on the forum too.</p>
+					<div class="page-text-panel-actions">
+						{% include primary_button.html link="https://discord.gg/cHBde7J" target="_blank" text="Join the Discord ↗" %}
+						{% include secondary_button.html link="https://forum.defold.com" target="_blank" text="Visit the forum ↗" %}
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+{% include newsletter_section.html %}

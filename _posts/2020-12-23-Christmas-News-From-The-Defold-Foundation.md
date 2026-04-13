@@ -3,7 +3,7 @@ layout: post
 title:  Christmas News from the Defold Foundation (#53)
 excerpt: Here's another packed newsletter with games, exciting news and the latest release notes.
 author: Björn Ritzl
-tags: ["newsletter"]
+tags: ["newsletter", "poki", "html5"]
 ---
 
 **We wish all of our users a Merry Christmas and a Happy New Year!**

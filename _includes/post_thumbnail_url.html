@@ -1,0 +1,26 @@
+{%- assign rendered_content = include.post.content | markdownify -%}
+{%- assign thumbnail = "" -%}
+
+{%- assign image_parts = rendered_content | split: "<img" -%}
+{%- for image_part in image_parts offset: 1 -%}
+	{%- assign candidate = "" -%}
+	{%- if image_part contains 'src="' -%}
+		{%- assign candidate = image_part | split: 'src="' | last | split: '"' | first | strip -%}
+	{%- elsif image_part contains "src='" -%}
+		{%- assign candidate = image_part | split: "src='" | last | split: "'" | first | strip -%}
+	{%- endif -%}
+
+	{%- assign candidate_downcase = candidate | downcase -%}
+	{%- if candidate != "" -%}
+		{%- unless candidate_downcase contains ".gif" -%}
+		{%- assign thumbnail = candidate -%}
+		{%- break -%}
+		{%- endunless -%}
+	{%- endif -%}
+{%- endfor -%}
+
+{%- if thumbnail == "" -%}
+	{%- assign thumbnail = include.post.opengraph_image | default: include.post.twitter_image | default: "" -%}
+{%- endif -%}
+
+{{- thumbnail -}}

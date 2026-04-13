@@ -3,7 +3,7 @@ layout: post
 title:  How does Defold provide console support?
 excerpt: How can Defold provide console support and stay compliant with Sony and Nintendo NDAs when the source code is available on GitHub?
 author: Björn Ritzl
-tags: ["blog", "tech", "nintendo switch", "playstation"]
+tags: ["consoles", "nintendo", "playstation", "xbox", "steam"]
 ---
 
 In a recent [post on LinkedIn](https://www.linkedin.com/posts/bugaj_in-response-to-my-game-engine-roundup-posts-activity-7113173425568808960-Vra_), Defold was mentioned as one of the few game engines with free console support. The author of the post, Stephan Vladimir Bugaj, writes that _"Of all the community supported engines, only Defold has core support for consoles (Switch and PS4 currently, PS5 and Xbox coming soon and in mid-2024, respectively). This is a major point in favor of Defold, and frankly I have no idea how they're doing this given the onerous requirements around securing PS and Xbox devkits, including SDK NDAs. If someone from the foundation wants to enlighten us, I'm keen to know."_

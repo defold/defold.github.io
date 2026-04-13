@@ -3,7 +3,7 @@ layout: post
 title:  The Defold engine code overview
 excerpt: An overview of the components of the Defold game engine runtime
 author: Mathias Westerdahl
-tags: ["engine", "code"]
+tags: ["engine", "code", "poki"]
 ---
 
 From time to time we get questions about how the Defold game engine runtime works in certain areas. And since we also accept contributions to our source code,

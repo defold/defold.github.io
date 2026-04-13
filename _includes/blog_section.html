@@ -1,23 +1,87 @@
+{%- capture blog_hero_copy -%}
+<p>The Defold blog collects release notes, engine news, developer stories and case studies, creator spotlights, interviews, deep dives, and practical updates from the Defold team and the community.</p>
+{%- endcapture -%}
 
-<div class="section">
-<div class="container">
-<div class="row">
-	<div class="columns twelve">
-		<h3>Blog updates</h3>
-		{%- assign posts = site.posts -%}
-		{%- assign count = 0 -%}
-		{%- for post in posts -%}
-		{%- if post.tags contains "news" or post.tags contains "newsletter" -%}
-		{%- else -%}
-			{%- include post_preview_excerpt.html post=post -%}
-			{%- assign count = count | plus: 1 -%}
-		{%- endif -%}
+{%- capture blog_hero_actions -%}
+{% include primary_button.html link="#blog-posts" text="Browse latest posts" %}
+{% include secondary_button.html link="/newsletter" text="Sign up for the newsletter" %}
+{%- endcapture -%}
 
-		{%- if count == 3 -%}
-			{%- break -%}
-		{%- endif -%}
-		{%- endfor -%}
+{%- capture blog_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/icon-blog.svg" alt="Defold blog section icon" loading="eager" decoding="async">
+{%- endcapture -%}
+
+{% include page_hub_hero.html title="Defold Blog" copy=blog_hero_copy actions=blog_hero_actions panel=blog_hero_panel aria_label="Defold blog illustration" %}
+
+{%- assign blog_tags = site.tags | sort -%}
+
+<div class="section asset-hub-section">
+	<div class="container">
+		<div class="asset-hub-catalog-layout" data-learn-tag-catalog data-default-title="All posts" data-initial-sort="date-desc">
+			<div class="asset-hub-sidebar">
+				<div class="learn-tag-filter asset-hub-toolbar page-surface-panel asset-hub-surface-panel" data-learn-tag-filter data-filter-singular="topic" data-result-items="posts">
+					<div class="asset-hub-filter-shell">
+						<div class="asset-hub-filter-group asset-hub-filter-search">
+							<h3 class="asset-hub-filter-label">Search</h3>
+							{% include catalog_search_field.html id="blog-search-posts" input_class="learnsearch" data_attribute_name="data-learn-search" placeholder="Search posts" aria_label="Search posts by title or description" %}
+						</div>
+						<div class="asset-hub-filter-group asset-hub-sort-row">
+							<h3 class="asset-hub-filter-label">Sort by</h3>
+							<div class="asset-hub-sort-links">
+								<button type="button" class="filter active" data-learn-sort="date-desc" data-learn-sort-label="Newest" aria-pressed="true">
+									{% include site_icon.html name=site.data.asset_tag_icons.timestamp class="asset-hub-filter-icon" %}
+									<span class="asset-hub-filter-text">Newest</span>
+								</button>
+								<button type="button" class="filter" data-learn-sort="date-asc" data-learn-sort-label="Oldest" aria-pressed="false">
+									{% include site_icon.html name=site.data.asset_tag_icons.timestamp class="asset-hub-filter-icon" %}
+									<span class="asset-hub-filter-text">Oldest</span>
+								</button>
+							</div>
+						</div>
+						<div class="asset-hub-filter-group">
+							<h3 class="asset-hub-filter-label">Tags</h3>
+							<div class="learn-tag-chip-row asset-hub-filter-grid" data-tag-chip-row>
+								<button type="button" class="learn-tag-chip filter" data-tag="all" aria-pressed="true">
+									{% include site_icon.html name=site.data.asset_tag_icons.all class="asset-hub-filter-icon" %}
+									<span class="asset-hub-filter-text">All ({{ site.posts.size }})</span>
+								</button>
+								{%- for tag in blog_tags -%}
+									{%- assign tag_name = tag[0] -%}
+									{%- assign tag_posts = tag[1] -%}
+									{%- assign tag_slug = tag_name | downcase | strip | replace: " ", "-" -%}
+									{%- capture tag_icon_name -%}{% include learn_tag_icon_name.html slug=tag_slug %}{%- endcapture -%}
+									{%- assign tag_icon_name = tag_icon_name | strip -%}
+									<button type="button" class="learn-tag-chip filter" data-tag="{{ tag_slug }}" aria-pressed="false">
+										{% include site_icon.html name=tag_icon_name class="asset-hub-filter-icon" %}
+										<span class="asset-hub-filter-text">{{ tag_name }} ({{ tag_posts.size }})</span>
+									</button>
+								{%- endfor -%}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="asset-hub-main">
+				<section class="page-card-group learn-tag-group asset-hub-results" data-learn-tag-group id="blog-posts">
+					<div class="asset-hub-results-header">
+						<div class="asset-hub-results-copy">
+							<p class="asset-hub-filter-label">Results</p>
+							<h3 data-learn-results-title>All posts</h3>
+							<p class="compact asset-hub-results-summary" data-tag-results>Showing {{ site.posts.size }} of {{ site.posts.size }} posts.</p>
+						</div>
+					</div>
+					<div class="page-card-group-heading">
+						<p>Start with the newest Defold blog posts, then narrow the list by topic or switch the date order with the shared controls in the sidebar.</p>
+					</div>
+					<div class="page-feature-grid page-grid-auto-fill page-grid-three page-grid-flush" data-learn-sort-grid>
+						{%- for post in site.posts -%}
+							{% include post_catalog_card.html post=post %}
+						{%- endfor -%}
+					</div>
+				</section>
+			</div>
+		</div>
 	</div>
 </div>
-</div>
-</div>
+
+{% include newsletter_section.html %}

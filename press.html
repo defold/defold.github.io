@@ -1,35 +1,41 @@
 ---
-layout: hero_and_text
+layout: page
 title: Defold Press and News Room
-description: The Defold Press and News Room is your one stop shop to Defold news stories and up to date press information and images.
+description: Find current Defold news, press contact details, and media resources for articles, interviews, and coverage.
 nav: floating
-background: /images/hero/defold-top-bg-transparent-2.png
-after: [subscribe.html, donors_and_partners.html]
 ---
 
-<div class="row">
-<h3>Defold in the News</h3>
-{% assign posts = site.posts | where: "tags", "news" %}
-{%- for post in posts limit: 5 -%}
-{%- include post_preview.html post=post -%}
-{%- endfor -%}
+{%- capture page_hero_copy -%}
+<p>Use the Defold Press and News Room for recent announcements, media contact, and current brand resources.</p>
+<p>If you are covering Defold, this page gives you the fastest path to the latest updates and the materials you need.</p>
+{%- endcapture -%}
 
-<a href="/news">More News ⇢</a>
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="mailto:press@defold.se" text="Contact press@defold.se" %}
+{% include secondary_button.html link="/press-kit" text="Open press kit" %}
+{%- endcapture -%}
+
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/icon-newsletter.svg" alt="Defold press and news illustration" loading="eager">
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="press-hub-hero" title="Press and News Room" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold press overview" %}
+
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Press resources</h2>
+			<p>Use these two paths for direct contact and official Defold brand materials.</p>
+		</div>
+		<div class="page-feature-grid page-grid-two">
+			{% include page_feature_card.html title="Press inquiries" body="Contact the Defold team for interviews, quotes, announcements, event requests, or other press questions." link="mailto:press@defold.se" icon="/images/icons/icon-letters.svg" card_class="page-feature-card-mail" cta_text="Email press@defold.se ↗" %}
+			{% include page_feature_card.html title="Press kit" body="Open the current Defold logos, Foundation images, and brand materials for articles, videos, and event coverage." link="/press-kit" icon="/images/icons/icons-learn-export_ic-learn-documents.svg" card_class="page-feature-card-manuals" cta_text="Open the press kit ↗" %}
+		</div>
+	</div>
 </div>
 
-<br/>
-<br/>
-<br/>
+{% include news_and_blog_section.html %}
 
-<div class="row">
-	<div class="columns six">
-		<h4>Press inquiries</h4>
-		<p>Contact us for press inquiries at <a href="mailto:press@defold.se">press@defold.se</a>.</p>
-		<p>For everything else, please see <a href="/contact">available options to get in touch</a>.</p>
-	</div>
-	<div class="columns six">
-		<h4>Press-kit</h4>
-		<p>Our current brand assets including the Defold logo and Defold Foundation images.</p>
-		<a href="/press-kit">Press-kit ⇢</a>
-	</div>
-</div>
+{% include newsletter_section.html title="Get Defold news in your inbox" body="Subscribe for Defold release news, product updates, showcase highlights, and other announcements worth following. Emails are occasional and you can unsubscribe at any time." %}
+
+{% include donors_and_partners.html %}

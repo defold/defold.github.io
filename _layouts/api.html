@@ -28,9 +28,9 @@ layout: base
 
 {%- unless api_index_exclude -%}
 <!-- Pagefind metadata and filters for API reference -->
-<div style="display: none;" data-pagefind-filter="section">API</div>
-<div style="display: none;" data-pagefind-meta="section">API</div>
-<div style="display: none;" data-pagefind-meta="api_language">{{ ref_api_language }}</div>
+<div class="pagefind-hidden-meta" data-pagefind-filter="section">API</div>
+<div class="pagefind-hidden-meta" data-pagefind-meta="section">API</div>
+<div class="pagefind-hidden-meta" data-pagefind-meta="api_language">{{ ref_api_language }}</div>
 {%- endunless -%}
 
 {%- if page.url contains branch -%}
@@ -40,13 +40,13 @@ layout: base
 {%- endif -%}
 
 {%- if api_index_exclude -%}
-<div id="page" class="lightest dark:dark" style="position: relative;" data-pagefind-ignore>
+<div id="page" class="lightest dark:dark" data-pagefind-ignore>
 {%- else -%}
-<div id="page" class="lightest dark:dark" style="position: relative;">
+<div id="page" class="lightest dark:dark">
 {%- endif -%}
 	<div id="pagecontent">
 		<div class="apimenu sidemenu dark:dark">
-			<p><a href="/learn"><img class="logo-hor-classic-160" src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png"/></a></p>
+			<p><a href="/learn"><img class="logo-hor-classic-160" src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png" alt="Defold Learn logo"/></a></p>
 			<form action="/search">
 				<input id="search" name="q" type="text" placeholder="Search..."/>
 			</form>
@@ -68,7 +68,7 @@ layout: base
 				<input id="collapsible_{{ category }}" class="toggle" type="checkbox" {{ checked }}/>
 				<label for="collapsible_{{ category }}" class="togglelabel">{{ category }}</label>
 				<ul class="nobullet">
-					<li style="padding-bottom: 0px;"><a href="/ref/{{page.branch}}/overview_{{clean_category}}" style="text-decoration: none;">Overview</a></li>
+					<li class="api-nav-item"><a class="api-nav-link" href="/ref/{{page.branch}}/overview_{{clean_category}}">Overview</a></li>
 
 					{%- assign namespaces = categoryrefs | map: "namespace" | uniq | sort_natural -%}
 					{%- for ns in namespaces -%}
@@ -77,20 +77,20 @@ layout: base
 							<label class="togglelabel">{{ ns }}</label>
 							<ul class="nobullet">
 							{%- for r in namespacerefs -%}
-								{%- assign textstyle = "text-decoration: none;" -%}
+								{%- assign api_link_class = "api-nav-link" -%}
 								{%- if page.url contains r.url -%}
-									{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
+									{%- assign api_link_class = api_link_class | append: " api-nav-link-current" -%}
 								{%- endif -%}
-								<li id="{{ r.namespace }}" style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{%- if r.api_language == "C++" or r.api_language == "C" -%}{{r.file}}{%- endif -%}{%- if r.type == "Extension" -%}{{r.name}}{%- endif -%}</a></li>
+								<li id="{{ r.namespace }}" class="api-nav-item"><a class="{{ api_link_class }}" href="{{ r.url }}">{%- if r.api_language == "C++" or r.api_language == "C" -%}{{r.file}}{%- endif -%}{%- if r.type == "Extension" -%}{{r.name}}{%- endif -%}</a></li>
 							{%- endfor -%}
 							</ul>
 						{%- else -%}
 							{%- for r in namespacerefs -%}
-								{%- assign textstyle = "text-decoration: none;" -%}
+								{%- assign api_link_class = "api-nav-link" -%}
 								{%- if page.url contains r.url -%}
-									{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
+									{%- assign api_link_class = api_link_class | append: " api-nav-link-current" -%}
 								{%- endif -%}
-								<li id="{{ r.namespace }}" style="padding-bottom: 0px;"><a href="{{ r.url }}" style="{{ textstyle }}">{{ r.namespace }}{%- if r.api_language == "C++" or r.api_language == "C" -%}&nbsp;-&nbsp;({{r.file}}){%- endif -%}{%- if r.type == "Extension" -%}&nbsp;-&nbsp;({{r.name}}){%- endif -%}</a></li>
+								<li id="{{ r.namespace }}" class="api-nav-item"><a class="{{ api_link_class }}" href="{{ r.url }}">{{ r.namespace }}{%- if r.api_language == "C++" or r.api_language == "C" -%}&nbsp;-&nbsp;({{r.file}}){%- endif -%}{%- if r.type == "Extension" -%}&nbsp;-&nbsp;({{r.name}}){%- endif -%}</a></li>
 							{%- endfor -%}
 						{%- endif -%}
 					{%- endfor -%}
@@ -101,11 +101,11 @@ layout: base
 				<label for="branch" class="togglelabel">Version</label>
 				<ul class="nobullet">
 					{%- for b in branches -%}
-						{%- assign textstyle = "text-decoration: none;" -%}
+						{%- assign api_link_class = "api-nav-link" -%}
 						{%- if page.branch == b -%}
-							{%- assign textstyle = "font-weight: bolder; font-style: italic; text-decoration: none;" -%}
+							{%- assign api_link_class = api_link_class | append: " api-nav-link-current" -%}
 						{%- endif -%}
-					<li style="padding-left: 2rem; padding-bottom: 0px;"><a href="{{ page_url | replace: 'BRANCH', b }}" style="{{ textstyle }}">{{ b }}</a></li>
+					<li class="api-nav-item api-nav-item-indented"><a class="{{ api_link_class }}" href="{{ page_url | replace: 'BRANCH', b }}">{{ b }}</a></li>
 					{%- endfor -%}
 				</ul>
 			</ul>
@@ -115,7 +115,7 @@ layout: base
 		<div class="apicontent lightest dark:dark" data-pagefind-body>
 			<div class="dropdownmenu">
 				<p>
-					<a href="/learn"><img src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png"/></a>
+					<a href="/learn"><img src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png" alt="Defold Learn logo"/></a>
 				</p>
 				<form action="/search">
 					<input id="search" name="q" type="text" placeholder="Search..."/>

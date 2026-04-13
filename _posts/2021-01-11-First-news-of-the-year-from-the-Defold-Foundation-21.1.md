@@ -3,7 +3,7 @@ layout: post
 title:  First news of the year from the Defold Foundation (Issue 21.1)
 excerpt: Here's another packed newsletter with games, exciting news and the latest release notes.
 author: Björn Ritzl
-tags: ["newsletter"]
+tags: ["newsletter", "html5"]
 ---
 
 ## News

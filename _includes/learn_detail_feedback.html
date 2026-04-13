@@ -1,0 +1,8 @@
+{%- assign feedback_link = include.link | default: page.github | default: "https://github.com/defold/doc" -%}
+{%- assign feedback_text = include.text | default: "Did you spot an error or do you have a suggestion? Please let us know on GitHub!" -%}
+{%- assign feedback_button_text = include.button_text | default: "GITHUB" -%}
+
+<div class="learn-detail-panel learn-detail-feedback page-surface-panel page-text-panel">
+	<p>{{ feedback_text }}</p>
+	{% include secondary_button.html text=feedback_button_text link=feedback_link %}
+</div>

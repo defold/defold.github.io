@@ -3,7 +3,7 @@ layout: post
 title:  Defold Newsletter 21.13
 excerpt: Here's another newsletter with games, exciting news and the latest release notes.
 author: Björn Ritzl
-tags: ["newsletter"]
+tags: ["newsletter", "html5"]
 ---
 
 ## Games

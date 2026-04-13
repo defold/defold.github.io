@@ -3,7 +3,7 @@ layout: post
 title:  Defold in 2023 - A Retrospective
 excerpt: Another year has gone by. Let's take a moment to reflect on some of the events and highlights of 2023!
 author: Björn Ritzl
-tags: ["news", "retrospective"]
+tags: ["news", "retrospective", "network", "heroiclabs", "consoles", "playstation", "xbox", "poki", "steam", "mobile", "shaders"]
 ---
 
 Another year has gone by. Let's take a moment to reflect on some of the events and highlights of 2023! Let's start by noting that we kept our monthly release cadence in 2023, with some minor deviation. In 2023 we did 11 releases (the twelth release was left as a public beta over the holidays).

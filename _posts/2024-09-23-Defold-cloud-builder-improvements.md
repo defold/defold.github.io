@@ -3,7 +3,7 @@ layout: post
 title:  Defold cloud builder improvements
 excerpt: We are happy to announce that we've finished a large overhaul of the build servers to simplify development, maintenance and the setup of local build servers.
 author: Björn Ritzl
-tags: ["news", "gcp", "extender"]
+tags: ["news", "engine", "code"]
 ---
 
 When the Defold extension system and the cloud builders were launched eight years ago it marked a milestone for Defold when game developers no longer had to rely on the Defold development team to provide integrations to third party services and platform specific features. Instead developers could write native code and add Lua bindings and have the code seamlessly integrated into the engine without installing any additional tools or SDKs. 

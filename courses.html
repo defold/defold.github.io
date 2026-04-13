@@ -1,36 +1,15 @@
 ---
-layout: page
+layout: learn_hub
 title: Defold courses
+description: Find Defold courses and structured learning tracks that connect tutorials, workflows, and engine concepts into longer study paths.
 nav: floating
+hub_kind: courses
+hub_title: Courses
+hub_copy: Find online courses and other structured learning material, when you want a longer guided track that connects multiple topics into one continuous learning path.
+hub_icon: /images/icons/icons-learn-export_ic-learn-toolbox.svg
+hub_icon_alt: Defold courses icon
+hub_aria_label: Defold courses overview
+filter_label: Filter by topic
+result_items: courses
+show_learn_section: true
 ---
-
-<div class="section hero center blackwhite dark:darken-10" style='background-image: url("/images/hero/testimonials-background-0.5x.png");'>
-	<div class="container">
-		<div class="row">
-			<div class="column one-half left">
-				<h1>Get educated!</h1>
-				<p>Find online courses and other educational material that will help you master Defold.</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-{% include learnnav.html showmenu=true %}
-
-<div class="section lightest dark:dark">
-	<div class="container">
-		<div class="row">
-			<div class="columns full">
-				<h2>Courses</h2>
-			</div>
-		</div>
-		<div class="grid-250">
-			{%- for course in site.data.learnindex.navigation.courses -%}
-				{%- assign image=course.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}
-				{% include learn_card.html title=course.name description=course.description link=course.path min-height="250px" image=image author=course.author %}
-			{%- endfor -%}
-		</div>
-	</div>
-</div>
-
-{% include learn_section.html %}

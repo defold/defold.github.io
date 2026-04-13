@@ -1,17 +1,1 @@
-<div class="section hero light center" style='background-image: url("/images/hero/orange-bg.jpg");'>
-	<div class="container">
-		<div class="row">
-			<div class="columns four">
-				<img src="/images/game-art-left@3x.png" class="slideinleft is-visible" loading="lazy"/>
-			</div>
-			<div class="columns four">
-				<h2>Ready to create something awesome?</h2>
-				<br/>
-				{% include primary_button.html link="/download" text="Download for free" %}
-			</div>
-			<div class="columns four">
-				<img src="/images/game-art-right@3x.png" class="slideinright is-visible" loading="lazy"/>
-			</div>
-		</div>
-	</div>
-</div>
+{% include download_cta_section.html title=include.title body=include.body button_text=include.button_text button_link=include.button_link %}

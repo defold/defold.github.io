@@ -1,21 +1,17 @@
 {%- assign game=include.game -%}
 {%- assign url=include.url -%}{%- unless url -%}{%- assign url = game.url -%}{%- endunless -%}
 
-<div class="section dark-text game">
+<div class="section game showcase-full-game-anchor" id="{{ game.id }}">
 	<div class="container">
-		<div class="row">
-			<div class="columns twelve">
-				<a href="{{ url }}" target="_blank" class="showcase-full-media hoverflash">
-					<img src="/images/games/{{ game.images.full }}" loading="lazy" alt="{{ game.name }}"/>
-				</a>
+		<article class="showcase-full-card">
+			<div class="row">
+				<div class="columns twelve">
+					<a href="{{ url }}" target="_blank" class="showcase-full-media hoverflash">
+						<img src="/images/games/{{ game.images.full }}" loading="lazy" alt="{{ game.name }}"/>
+					</a>
+				</div>
 			</div>
-		</div>
-	</div>
-</div>
-
-<div class="section dark left showcase-game-details-section">
-	<div class="container">
-		<div class="row">
+			<div class="row showcase-full-details-row">
 				<div class="columns eight compact showcase-game-copy">
 					<h4 class="showcase-game-title">{{ game.name }}</h4>
 					<p>{{ game.description }}</p>
@@ -50,10 +46,10 @@
 							<td class="lightest-text">{{ game.platforms }}</td>
 						</tr>
 						{%- endif -%}
-						{%- if game.downloads and game.downloads != "" -%}
+						{%- if game.players and game.players != "" -%}
 						<tr>
-							<td>Downloads</td>
-						<td class="lightest-text">{{ game.downloads }}</td>
+							<td>Players</td>
+						<td class="lightest-text">{{ game.players }}</td>
 					</tr>
 					{%- endif -%}
 					{%- if game.extrainfo and game.extrainfo != "" -%}
@@ -63,6 +59,7 @@
 					{%- endif -%}
 				</table>
 			</div>
-		</div>
+			</div>
+		</article>
 	</div>
 </div>

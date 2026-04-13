@@ -1,0 +1,198 @@
+{%- assign sidebar_kind = include.kind | default: "" -%}
+{%- assign sidebar_browse_label = include.browse_label | default: "Browse" -%}
+{%- assign sidebar_current_title = include.current_title | default: page.title -%}
+{%- assign nav_page_locale = include.page_locale | default: "en" -%}
+{%- assign nav_locale_info = include.locale_info -%}
+
+<div class="sidemenu learn-sidebar-panel page-surface-panel page-text-panel">
+{%- if sidebar_kind == "examples" -%}
+	{% assign all_categories = site.data.examplesindex | map: "category" | uniq | sort %}
+	{% for category in all_categories %}
+		{%- assign examples = site.data.examplesindex | where: "category", category -%}
+		{%- assign checked = "" -%}
+		{%- for example in examples -%}
+			{%- if page.url contains example.path -%}
+				{%- assign checked = "checked" -%}
+			{%- endif -%}
+		{%- endfor -%}
+		<input id="learn_sidebar_{{ sidebar_kind }}_{{ category | slugify }}" class="toggle" type="checkbox" {{ checked }}/>
+		<label for="learn_sidebar_{{ sidebar_kind }}_{{ category | slugify }}" class="togglelabel">{{ category | capitalize }}</label>
+		<ul class="nobullet">
+			{% for example in examples %}
+			{%- assign example_link = "/examples/" | append: example.path -%}
+			<li class="learn-sidebar-list-item">
+				<a href="{{ example_link }}" class="learn-sidebar-link{% if page.url contains example.path %} is-current{% endif %}"{% if page.url contains example.path %} aria-current="page"{% endif %}>{{ example.title }}</a>
+			</li>
+			{% endfor %}
+		</ul>
+	{% endfor %}
+{%- elsif sidebar_kind == "manuals" -%}
+	{%- for section in site.data.learnindex.navigation.manuals -%}
+		{%- assign checked = "" -%}
+		{%- if include.current_section_name == section.name -%}
+			{%- assign checked = "checked" -%}
+		{%- endif -%}
+		<input id="learn_sidebar_{{ sidebar_kind }}_{{ section.name | slugify }}" class="toggle" type="checkbox" {{ checked }}/>
+		<label for="learn_sidebar_{{ sidebar_kind }}_{{ section.name | slugify }}" class="togglelabel">{{ section.name }}</label>
+		<ul class="nobullet">
+			{%- for manual in section.items -%}
+			<li class="learn-sidebar-list-item">
+				{%- assign manual_url = manual.path -%}
+				{%- assign manual_label = manual.name -%}
+				{%- unless nav_page_locale == "en" -%}
+					{%- if manual.languages contains nav_page_locale -%}
+						{%- assign manual_url = "/" | append: nav_locale_info.urlprefix | append: manual.path -%}
+					{%- else -%}
+						{%- assign manual_label = manual.name | append: " (English)" -%}
+					{%- endif -%}
+				{%- endunless -%}
+				<a href="{{ manual_url }}" class="learn-sidebar-link{% if page.url contains manual.path %} is-current{% endif %}"{% if page.url contains manual.path %} aria-current="page"{% endif %}>{{ manual_label }}</a>
+			</li>
+			{%- endfor -%}
+		</ul>
+		{%- if section.divider -%}
+		<hr>
+		{%- endif -%}
+	{%- endfor -%}
+{%- elsif sidebar_kind == "tutorials" -%}
+	{%- assign tutorial_group_keys = "getting-started|gameplay|ui-art|rendering|web|scripting-input|more-tutorials" | split: "|" -%}
+	{%- for tutorial_group_key in tutorial_group_keys -%}
+		{%- capture tutorial_group_label -%}{% include learn_tutorial_group_label.html key=tutorial_group_key %}{%- endcapture -%}
+		{%- assign tutorial_group_count = 0 -%}
+		{%- assign tutorial_group_open = false -%}
+		{%- for tutorial in site.data.learnindex.navigation.tutorials -%}
+			{%- capture tutorial_group -%}{% include learn_tutorial_group_key.html tutorial=tutorial %}{%- endcapture -%}
+			{%- if tutorial_group == tutorial_group_key -%}
+				{%- assign tutorial_group_count = tutorial_group_count | plus: 1 -%}
+				{%- if page.url contains tutorial.path -%}
+					{%- assign tutorial_group_open = true -%}
+				{%- endif -%}
+			{%- endif -%}
+		{%- endfor -%}
+		{%- if tutorial_group_count > 0 -%}
+		<input id="learn_sidebar_{{ sidebar_kind }}_{{ tutorial_group_key }}" class="toggle" type="checkbox"{% if tutorial_group_open %} checked{% endif %}/>
+		<label for="learn_sidebar_{{ sidebar_kind }}_{{ tutorial_group_key }}" class="togglelabel">{{ tutorial_group_label | strip }}</label>
+		<ul class="nobullet">
+			{%- for tutorial in site.data.learnindex.navigation.tutorials -%}
+				{%- capture tutorial_group -%}{% include learn_tutorial_group_key.html tutorial=tutorial %}{%- endcapture -%}
+				{%- if tutorial_group == tutorial_group_key -%}
+					{%- assign tutorial_url = tutorial.path -%}
+					{%- assign tutorial_label = tutorial.name -%}
+					{%- unless nav_page_locale == "en" -%}
+						{%- if tutorial.locales contains nav_page_locale -%}
+							{%- assign tutorial_url = "/" | append: nav_locale_info.urlprefix | append: tutorial.path -%}
+						{%- else -%}
+							{%- assign tutorial_label = tutorial.name | append: " (English)" -%}
+						{%- endif -%}
+					{%- endunless -%}
+			<li class="learn-sidebar-list-item">
+				<a href="{{ tutorial_url }}" class="learn-sidebar-link{% if page.url contains tutorial.path %} is-current{% endif %}"{% if page.url contains tutorial.path %} aria-current="page"{% endif %}>{{ tutorial_label }}</a>
+			</li>
+				{%- endif -%}
+			{%- endfor -%}
+		</ul>
+		{%- endif -%}
+	{%- endfor -%}
+{%- endif -%}
+</div>
+
+<div class="dropdownmenu learn-sidebar-mobile page-surface-panel">
+	<details class="learn-mobile-nav">
+		<summary class="learn-mobile-nav-summary">
+			<span class="learn-mobile-nav-summary-copy">
+				<span class="learn-mobile-nav-summary-label">{{ sidebar_browse_label }}</span>
+				<span class="learn-mobile-nav-summary-current">{{ sidebar_current_title }}</span>
+			</span>
+		</summary>
+		<div class="learn-mobile-nav-list">
+		{%- if sidebar_kind == "examples" -%}
+			{% assign all_categories = site.data.examplesindex | map: "category" | uniq | sort %}
+			{% for category in all_categories %}
+				{%- assign examples = site.data.examplesindex | where: "category", category -%}
+				{%- assign category_open = false -%}
+				{%- for example in examples -%}
+					{%- if page.url contains example.path -%}
+						{%- assign category_open = true -%}
+					{%- endif -%}
+				{%- endfor -%}
+				<details class="learn-mobile-category"{% if category_open %} open{% endif %}>
+					<summary class="learn-mobile-category-summary">{{ category | capitalize }}</summary>
+					<ul class="learn-mobile-links nobullet">
+					{% for example in examples %}
+						<li>
+							<a href="/examples/{{ example.path }}" class="learn-mobile-link{% if page.url contains example.path %} is-current{% endif %}"{% if page.url contains example.path %} aria-current="page"{% endif %}>{{ example.title }}</a>
+						</li>
+					{% endfor %}
+					</ul>
+				</details>
+			{% endfor %}
+		{%- elsif sidebar_kind == "manuals" -%}
+			{%- for section in site.data.learnindex.navigation.manuals -%}
+				{%- assign section_open = false -%}
+				{%- if include.current_section_name == section.name -%}
+					{%- assign section_open = true -%}
+				{%- endif -%}
+				<details class="learn-mobile-category"{% if section_open %} open{% endif %}>
+					<summary class="learn-mobile-category-summary">{{ section.name }}</summary>
+					<ul class="learn-mobile-links nobullet">
+					{%- for manual in section.items -%}
+						{%- assign manual_url = manual.path -%}
+						{%- assign manual_label = manual.name -%}
+						{%- unless nav_page_locale == "en" -%}
+							{%- if manual.languages contains nav_page_locale -%}
+								{%- assign manual_url = "/" | append: nav_locale_info.urlprefix | append: manual.path -%}
+							{%- else -%}
+								{%- assign manual_label = manual.name | append: " (English)" -%}
+							{%- endif -%}
+						{%- endunless -%}
+						<li>
+							<a href="{{ manual_url }}" class="learn-mobile-link{% if page.url contains manual.path %} is-current{% endif %}"{% if page.url contains manual.path %} aria-current="page"{% endif %}>{{ manual_label }}</a>
+						</li>
+					{%- endfor -%}
+					</ul>
+				</details>
+			{%- endfor -%}
+		{%- elsif sidebar_kind == "tutorials" -%}
+			{%- assign tutorial_group_keys = "getting-started|gameplay|ui-art|rendering|web|scripting-input|more-tutorials" | split: "|" -%}
+			{%- for tutorial_group_key in tutorial_group_keys -%}
+				{%- capture tutorial_group_label -%}{% include learn_tutorial_group_label.html key=tutorial_group_key %}{%- endcapture -%}
+				{%- assign tutorial_group_count = 0 -%}
+				{%- assign tutorial_group_open = false -%}
+				{%- for tutorial in site.data.learnindex.navigation.tutorials -%}
+					{%- capture tutorial_group -%}{% include learn_tutorial_group_key.html tutorial=tutorial %}{%- endcapture -%}
+					{%- if tutorial_group == tutorial_group_key -%}
+						{%- assign tutorial_group_count = tutorial_group_count | plus: 1 -%}
+						{%- if page.url contains tutorial.path -%}
+							{%- assign tutorial_group_open = true -%}
+						{%- endif -%}
+					{%- endif -%}
+				{%- endfor -%}
+				{%- if tutorial_group_count > 0 -%}
+				<details class="learn-mobile-category"{% if tutorial_group_open %} open{% endif %}>
+					<summary class="learn-mobile-category-summary">{{ tutorial_group_label | strip }}</summary>
+					<ul class="learn-mobile-links nobullet">
+					{%- for tutorial in site.data.learnindex.navigation.tutorials -%}
+						{%- capture tutorial_group -%}{% include learn_tutorial_group_key.html tutorial=tutorial %}{%- endcapture -%}
+						{%- if tutorial_group == tutorial_group_key -%}
+							{%- assign tutorial_url = tutorial.path -%}
+							{%- assign tutorial_label = tutorial.name -%}
+							{%- unless nav_page_locale == "en" -%}
+								{%- if tutorial.locales contains nav_page_locale -%}
+									{%- assign tutorial_url = "/" | append: nav_locale_info.urlprefix | append: tutorial.path -%}
+								{%- else -%}
+									{%- assign tutorial_label = tutorial.name | append: " (English)" -%}
+								{%- endif -%}
+							{%- endunless -%}
+						<li>
+							<a href="{{ tutorial_url }}" class="learn-mobile-link{% if page.url contains tutorial.path %} is-current{% endif %}"{% if page.url contains tutorial.path %} aria-current="page"{% endif %}>{{ tutorial_label }}</a>
+						</li>
+						{%- endif -%}
+					{%- endfor -%}
+					</ul>
+				</details>
+				{%- endif -%}
+			{%- endfor -%}
+		{%- endif -%}
+		</div>
+	</details>
+</div>

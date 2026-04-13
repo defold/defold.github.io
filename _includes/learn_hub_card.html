@@ -1,0 +1,66 @@
+{%- assign hub_kind = include.kind | default: "" -%}
+{%- assign hub_item = include.item -%}
+
+{%- case hub_kind -%}
+{%- when "manuals" -%}
+	{%- assign manual = hub_item -%}
+	{%- assign manual_url = manual.path | split: "#" | first -%}
+	{%- assign manual_page = site.pages | where: "url", manual_url | first -%}
+	{%- if manual_page == nil -%}
+		{%- assign manual_url_last_char = manual_url | slice: -1, 1 -%}
+		{%- if manual_url_last_char != "/" -%}
+			{%- assign manual_page_lookup_url = manual_url | append: "/" -%}
+			{%- assign manual_page = site.pages | where: "url", manual_page_lookup_url | first -%}
+		{%- endif -%}
+	{%- endif -%}
+	{%- assign manual_card_title = manual_page.title | default: manual.name -%}
+	{%- capture manual_description -%}{{ manual_page.brief | default: manual.description }}{%- endcapture -%}
+	{%- assign manual_description = manual_description | strip_html | strip_newlines | strip -%}
+	{%- if manual_page -%}
+		{%- capture manual_excerpt_fallback -%}{{ manual_page.excerpt | strip_html | strip_newlines | strip }}{%- endcapture -%}
+		{%- assign manual_excerpt_fallback = manual_excerpt_fallback | strip -%}
+	{%- else -%}
+		{%- assign manual_excerpt_fallback = "" -%}
+	{%- endif -%}
+	{%- if manual_description == blank and manual_excerpt_fallback != blank -%}
+		{%- assign manual_description = manual_excerpt_fallback -%}
+	{%- endif -%}
+	{%- if manual_description == blank -%}
+		{%- if manual.path contains "http" -%}
+			{%- capture manual_description -%}External reference linked from the Defold manuals for {{ manual_card_title }}.{%- endcapture -%}
+		{%- else -%}
+			{%- capture manual_description -%}Reference guide covering {{ manual_card_title }} in Defold.{%- endcapture -%}
+		{%- endif -%}
+		{%- assign manual_description = manual_description | strip -%}
+	{%- endif -%}
+	{% include learn_card.html title=manual_card_title description=manual_description description_limit=220 link=manual.path tags=manual.tags %}
+
+{%- when "tutorials" -%}
+	{%- assign tutorial = hub_item -%}
+	{%- assign image = tutorial.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}
+	{%- assign tutorial_slug = tutorial.path | split: "/" | last -%}
+	{%- assign tutorial_page_path = "tutorials/" | append: tutorial_slug | append: ".md" -%}
+	{%- assign tutorial_page = site.pages | where: "path", tutorial_page_path | first -%}
+	{%- assign difficulty = tutorial_page.difficulty | default: tutorial.difficulty -%}
+	{% include learn_card.html title=tutorial.name description=tutorial.description description_limit=200 link=tutorial.path image=image author=tutorial.author difficulty=difficulty tags=tutorial.tags %}
+
+{%- when "examples" -%}
+	{%- assign example = hub_item -%}
+	{%- if example.thumbnail -%}
+		{%- assign image = example.path | append: "/" | append: example.thumbnail -%}
+	{%- else -%}
+		{%- assign image = "" -%}
+	{%- endif -%}
+	{%- assign example_category = example.category | split: "|" -%}
+	{%- assign example_link = "/examples/" | append: example.path -%}
+	{% include learn_card.html title=example.title description=example.brief link=example_link image=image tags=example_category %}
+
+{%- when "videos" -%}
+	{%- assign video = hub_item -%}
+	{% include learn_video_card.html title=video.name description=video.description embed=video.embed link=video.path author=video.author tags=video.tags %}
+
+{%- when "courses" -%}
+	{%- assign course = hub_item -%}
+	{%- assign image = course.image | default: "/images/icons/icons-learn-export_ic-learn-tutorials.svg" -%}
+	{% include learn_card.html title=course.name description=course.description link=course.path image=image author=course.author tags=course.tags %}
+{%- endcase -%}

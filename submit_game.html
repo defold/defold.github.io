@@ -1,0 +1,215 @@
+---
+layout: page
+title: Submit a Defold Showcase Game
+description: Share your game with the Defold showcase by opening a prefilled GitHub issue with the game details, platforms, release date, and image instructions.
+nav: floating
+---
+
+{%- capture page_hero_copy -%}
+<p>Want to feature your game in the Defold showcase? Fill in the details here and the site will open a prefilled GitHub issue for the showcase team.</p>
+<p>Add the showcase images directly on GitHub after the issue opens so the team can review the game and its presentation together.</p>
+{%- endcapture -%}
+
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/beans/beans-header-assets_header-code-left.png" alt="Defold bean holding a device" loading="eager">
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="submit-hub-hero" title="Submit Game" copy=page_hero_copy panel=page_hero_panel aria_label="Defold showcase game submission" %}
+
+<script type="text/javascript">
+	const showcaseMonthNames = [
+		"",
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December"
+	];
+
+	function showcase_slugify(value) {
+		return value
+			.toLowerCase()
+			.trim()
+			.replace(/[^a-z0-9]+/g, "_")
+			.replace(/^_+|_+$/g, "");
+	}
+
+	function showcase_release_date() {
+		const year = document.getElementById("game_release_year").value.trim();
+		const month = document.getElementById("game_release_month").value;
+		const day = document.getElementById("game_release_day").value.trim();
+
+		if (!year) {
+			return "";
+		}
+		if (month && day) {
+			return showcaseMonthNames[Number(month)] + " " + day + ", " + year;
+		}
+		if (month) {
+			return showcaseMonthNames[Number(month)] + " " + year;
+		}
+		return year;
+	}
+
+	function submit_game() {
+		var platforms = [];
+		if (document.getElementById("platform_windows").checked) { platforms.push("Windows"); }
+		if (document.getElementById("platform_macos").checked) { platforms.push("macOS"); }
+		if (document.getElementById("platform_linux").checked) { platforms.push("Linux"); }
+		if (document.getElementById("platform_steamos").checked) { platforms.push("SteamOS"); }
+		if (document.getElementById("platform_ios").checked) { platforms.push("iOS"); }
+		if (document.getElementById("platform_android").checked) { platforms.push("Android"); }
+		if (document.getElementById("platform_html5").checked) { platforms.push("HTML5"); }
+		if (document.getElementById("platform_poki").checked) { platforms.push("Poki"); }
+		if (document.getElementById("platform_facebookinstant").checked) { platforms.push("Facebook Instant"); }
+		if (document.getElementById("platform_ps4").checked) { platforms.push("Sony PlayStation 4"); }
+		if (document.getElementById("platform_ps5").checked) { platforms.push("Sony PlayStation 5"); }
+		if (document.getElementById("platform_xbox").checked) { platforms.push("Microsoft Xbox"); }
+		if (document.getElementById("platform_switch").checked) { platforms.push("Nintendo Switch"); }
+		if (document.getElementById("platform_switch2").checked) { platforms.push("Nintendo Switch 2"); }
+		if (document.getElementById("platform_other").checked) { platforms.push("Other"); }
+
+		var title = document.getElementById("game_title").value.trim();
+		var slug = showcase_slugify(title);
+		var game = {
+			id: slug,
+			name: title,
+			developer: document.getElementById("game_developer").value.trim(),
+			publisher: document.getElementById("game_publisher").value.trim(),
+			releasedate: showcase_release_date(),
+			platforms: platforms.join(", "),
+			downloads: document.getElementById("game_downloads").value.trim(),
+			license: document.getElementById("game_license").value.trim(),
+			description: document.getElementById("game_description").value.trim(),
+			images: {
+				full: slug ? slug + "-full.png" : "",
+				half: slug ? slug + "-half.png" : "",
+				third: slug ? slug + "-third.png" : ""
+			}
+		};
+
+		var instructions = [
+			"Please attach the showcase images directly on this GitHub issue.",
+			"Recommended filenames:",
+			"- " + (game.images.full || "<game-id>-full.png"),
+			"- " + (game.images.half || "<game-id>-half.png"),
+			"- " + (game.images.third || "<game-id>-third.png"),
+			"",
+			"Use the downloads field for store pages, web links, app listings, or other places where players can get the game."
+		].join("\n");
+
+		var url = "https://github.com/defold/games-showcase/issues/new"
+			+ "?title=" + encodeURIComponent(game.name)
+			+ "&body=" + encodeURIComponent(instructions + "\n\n" + JSON.stringify(game, null, 4));
+		window.open(url, "_blank");
+	}
+</script>
+
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Showcase details</h2>
+			<p>Describe the game clearly, pick the platforms it shipped on, and include the download links or store pages that help players find it.</p>
+		</div>
+
+		<div class="page-text-panel page-surface-panel submit-form-panel">
+			<form id="submit_game" class="submit-form-layout" action="javascript: submit_game()">
+				<div class="submit-form-grid">
+					<div class="submit-form-field">
+						<label for="game_title">Title</label>
+						<input id="game_title" type="text" name="title" required>
+					</div>
+
+					<div class="submit-form-field">
+						<label for="game_developer">Developer</label>
+						<input id="game_developer" type="text" name="developer" required>
+					</div>
+
+					<div class="submit-form-field submit-form-field-full">
+						<label for="game_publisher">Publisher (optional)</label>
+						<input id="game_publisher" type="text" name="publisher">
+					</div>
+
+					<div class="submit-form-field submit-form-field-full">
+						<label for="game_description">Description (max 500 characters)</label>
+						<textarea id="game_description" name="description" rows="5" maxlength="500" required></textarea>
+					</div>
+
+					<fieldset class="submit-form-field submit-form-field-full submit-form-fieldset">
+						<legend>Release date</legend>
+						<div class="submit-form-inline-grid">
+							<div class="submit-form-field">
+								<label for="game_release_year">Year</label>
+								<input id="game_release_year" type="number" name="release_year" min="1970" max="2100" required>
+							</div>
+							<div class="submit-form-field">
+								<label for="game_release_month">Month (optional)</label>
+								<select id="game_release_month" name="release_month">
+									<option value="">Month</option>
+									<option value="1">January</option>
+									<option value="2">February</option>
+									<option value="3">March</option>
+									<option value="4">April</option>
+									<option value="5">May</option>
+									<option value="6">June</option>
+									<option value="7">July</option>
+									<option value="8">August</option>
+									<option value="9">September</option>
+									<option value="10">October</option>
+									<option value="11">November</option>
+									<option value="12">December</option>
+								</select>
+							</div>
+							<div class="submit-form-field">
+								<label for="game_release_day">Day (optional)</label>
+								<input id="game_release_day" type="number" name="release_day" min="1" max="31">
+							</div>
+						</div>
+					</fieldset>
+
+					<fieldset class="submit-form-field submit-form-field-full submit-form-fieldset">
+						<legend>Platforms</legend>
+						<div class="submit-form-check-grid">
+							<label class="submit-form-check" for="platform_windows"><input type="checkbox" name="platforms" value="Windows" id="platform_windows"><span>Windows</span></label>
+							<label class="submit-form-check" for="platform_macos"><input type="checkbox" name="platforms" value="macOS" id="platform_macos"><span>macOS</span></label>
+							<label class="submit-form-check" for="platform_linux"><input type="checkbox" name="platforms" value="Linux" id="platform_linux"><span>Linux</span></label>
+							<label class="submit-form-check" for="platform_steamos"><input type="checkbox" name="platforms" value="SteamOS" id="platform_steamos"><span>SteamOS</span></label>
+							<label class="submit-form-check" for="platform_html5"><input type="checkbox" name="platforms" value="HTML5" id="platform_html5"><span>HTML5</span></label>
+							<label class="submit-form-check" for="platform_poki"><input type="checkbox" name="platforms" value="Poki" id="platform_poki"><span>Poki</span></label>
+							<label class="submit-form-check" for="platform_ios"><input type="checkbox" name="platforms" value="iOS" id="platform_ios"><span>iOS</span></label>
+							<label class="submit-form-check" for="platform_android"><input type="checkbox" name="platforms" value="Android" id="platform_android"><span>Android</span></label>
+							<label class="submit-form-check" for="platform_facebookinstant"><input type="checkbox" name="platforms" value="Facebook Instant" id="platform_facebookinstant"><span>Facebook Instant</span></label>
+							<label class="submit-form-check" for="platform_switch"><input type="checkbox" name="platforms" value="Nintendo Switch" id="platform_switch"><span>Nintendo Switch</span></label>
+							<label class="submit-form-check" for="platform_switch2"><input type="checkbox" name="platforms" value="Nintendo Switch 2" id="platform_switch2"><span>Nintendo Switch 2</span></label>
+							<label class="submit-form-check" for="platform_ps4"><input type="checkbox" name="platforms" value="Sony PlayStation 4" id="platform_ps4"><span>Sony PlayStation 4</span></label>
+							<label class="submit-form-check" for="platform_ps5"><input type="checkbox" name="platforms" value="Sony PlayStation 5" id="platform_ps5"><span>Sony PlayStation 5</span></label>
+							<label class="submit-form-check" for="platform_xbox"><input type="checkbox" name="platforms" value="Microsoft Xbox" id="platform_xbox"><span>Microsoft Xbox</span></label>
+							<label class="submit-form-check" for="platform_other"><input type="checkbox" name="platforms" value="Other" id="platform_other"><span>Other</span></label>
+						</div>
+					</fieldset>
+
+					<div class="submit-form-field submit-form-field-full">
+						<label for="game_downloads">Reach (optional, brag about your game's reach - downloads or players)</label>
+						<input id="game_downloads" type="text" name="downloads">
+					</div>
+
+					<div class="submit-form-field submit-form-field-full">
+						<label for="game_license">License (optional, for open source projects)</label>
+						<input id="game_license" type="text" name="license">
+					</div>
+				</div>
+
+				<div class="submit-form-actions">
+					<button class="button primary" type="submit">Create GitHub issue</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

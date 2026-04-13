@@ -1,30 +1,34 @@
 {%- assign asset = site.data.assets[include.id] -%}
-{%- if asset.images.thumb contains "https" or asset.images.thumb contains "http" -%}
-	{%- assign thumb_base = "" -%}
-	{%- assign thumb = asset.images.thumb -%}
-{%- elsif asset.images.thumb.size > 0 -%}
-	{%- assign thumb_base = "/images/assets/" -%}
-	{%- assign thumb = asset.images.thumb -%}
-{%- else -%}
-	{%- assign thumb_base = "" -%}
-	{%- assign thumb = "/images/asset-nothumb.jpg" -%}
-{%- endif -%}
-<div class='asset clickable left light-text compact {{ asset.tags | join: "%%" | replace: " ", "" | split: "%%" | join: " " | downcase }}' data-name="{{ asset.name }}" data-description="{{ asset.description }}">
-	<a href="/assets/{{ include.id }}">
-		<img src="{{ thumb_base }}{{ thumb }}" width="100%" height="190px" loading="lazy" style="object-fit: cover"/>
-		<div style="display: grid; grid-template-columns: 70% auto; grid-gap: 0;">
-			<div style="padding: 0px">
-				<b>{{ asset.name }}</b>
-				<p style="font-size: smaller; margin-bottom: 0px">{{ asset.tags | join: ", " | truncate: 30 }}</p>
-			</div>
-			<div style="padding: 0px">
+{%- capture thumb_src -%}{% include asset_thumbnail_url.html asset=asset %}{%- endcapture -%}
+{%- assign asset_tag_classes = asset.tags | join: "%%" | replace: " ", "" | split: "%%" | join: " " | downcase -%}
+{%- assign asset_tag_values = asset.tags | join: "%%" | replace: " ", "" | split: "%%" | join: "|" | downcase -%}
+{%- capture asset_tag_summary -%}
+	{%- for tag in asset.tags -%}
+		{%- assign tag_slug = tag | downcase | remove: " " -%}
+		{%- assign tag_entry = site.data.tagindex | where: "id", tag_slug | first -%}
+		{{ tag_entry.name | default: tag }}{% unless forloop.last %}, {% endunless %}
+	{%- endfor -%}
+{%- endcapture -%}
+{%- assign asset_description_preview = asset.description | strip_newlines | strip -%}
+<article class='asset asset-card {{ asset_tag_classes }}' data-asset-item="true" data-name="{{ asset.name | escape }}" data-description="{{ asset.description | escape }}" data-asset-tags="{{ asset_tag_values }}" data-asset-stars="{{ asset.stars | default: 0 }}" data-asset-timestamp="{{ asset.timestamp | default: 0 }}">
+	<a class="page-feature-card page-feature-card-no-badge asset-card-link" href="/assets/{{ include.id }}">
+		<span class="page-feature-card-media asset-card-media" aria-hidden="true">
+			<img src="{{ thumb_src | strip }}" alt="{{ asset.name }} preview image" loading="lazy"/>
+		</span>
+		<span class="page-feature-card-copy asset-card-copy">
+			<span class="asset-card-header">
+				<span class="asset-card-title-group">
+					<h3 class="asset-card-title">{{ asset.name }}</h3>
+					<span class="asset-card-tags">{{ asset_tag_summary | strip | truncate: 40 }}</span>
+				</span>
 				{%- if asset.stars.size > 0 -%}
-				<p class="right">{% include octicon.html icon="octicons/star.svg" color="#79838e" zoom="1" %} {{ asset.stars }}</p>
+				<span class="asset-card-stars">
+					{% include site_icon.html name="star" class="asset-card-stars-icon" %}
+					<span>{{ asset.stars }}</span>
+				</span>
 				{%- endif -%}
-			</div>
-		</div>
-		<div>
-			<p style="font-size: smaller">{{ asset.description }}</p>
-		</div>
+			</span>
+			<p class="asset-card-description">{{ asset_description_preview | truncate: 103 }}</p>
+		</span>
 	</a>
-</div>
+</article>

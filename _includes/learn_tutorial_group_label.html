@@ -1,0 +1,16 @@
+{%- assign tutorial_group_key = include.key | default: "more-tutorials" -%}
+{%- assign tutorial_group_label = "More tutorials" -%}
+{%- if tutorial_group_key == "getting-started" -%}
+	{%- assign tutorial_group_label = "Getting Started" -%}
+{%- elsif tutorial_group_key == "gameplay" -%}
+	{%- assign tutorial_group_label = "Gameplay" -%}
+{%- elsif tutorial_group_key == "ui-art" -%}
+	{%- assign tutorial_group_label = "UI & Art" -%}
+{%- elsif tutorial_group_key == "rendering" -%}
+	{%- assign tutorial_group_label = "Rendering" -%}
+{%- elsif tutorial_group_key == "web" -%}
+	{%- assign tutorial_group_label = "Web" -%}
+{%- elsif tutorial_group_key == "scripting-input" -%}
+	{%- assign tutorial_group_label = "Scripting & Input" -%}
+{%- endif -%}
+{{- tutorial_group_label -}}

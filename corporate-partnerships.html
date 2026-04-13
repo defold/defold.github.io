@@ -1,82 +1,166 @@
 ---
-layout: hero_and_text
+layout: page
 title: Defold Corporate Partnerships
-description: The Defold Foundation is funding Defold development through community donations, corporate partners, partnership deals and support contracts. The funds received from corporate partnerships are used for hiring developers to work on Defold, pay for hosting of services, purchase of hardware for testing and development and to pay for travel expenses when attending conferences.
+description: Fund Defold through corporate partnerships that provide dedicated development time, product visibility, and long-term support for the engine and its ecosystem.
 nav: floating
-background: /images/hero/defold-top-bg-transparent-2.png
-after: [donors_and_partners.html]
 heatmap: false
 ---
 
-<h3>Corporate partnerships</h3>
-<p>Our Corporate partnership program lets corporations and organizations fund development of specific functionality in or around the Defold product. Members of the Corporate partnership program will receive dedicated development time from the Defold Team to use on specific projects or features of your choice.</p>
+{%- capture page_hero_copy -%}
+<p>Our corporate partnership program lets corporations and organizations fund development of specific functionality in or around the Defold product.</p>
+<p>Corporate partners receive dedicated development time from the Defold team, prominent visibility across Defold channels, and invitations to special foundation events.</p>
+{%- endcapture -%}
 
-<p>In addition to the dedicated development time, corporate partners will get prominent mentions on the Defold site, in blog posts and newsletters and in the Defold editor. Corporate partners will also get invitations to participate at special events hosted by the foundation.</p>
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="#partnership-levels" text="Explore partnership levels" %}
+{% include secondary_button.html link="mailto:partner@defold.se" text="Email partner@defold.se ↗" %}
+{%- endcapture -%}
 
-<p>We offer the following levels of corporate partnership:</p>
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/partnerships.svg" alt="Defold partnership illustration" loading="eager">
+{%- endcapture -%}
 
-<div class="grid-350">
-	<div class="card grey">
-		<div>
-			<h4 class="center">Platinum</h4>
-			<h5 class="center">$48000/year ($4000/month)</h5>
-			<ul class="checkmark compact">
-				<li>Your company logo and link in the Platinum corporate partner section on the Defold site and GitHub</li>
-				<li>Your company logo on the Editor Splash Screen</li>
-				<li>Your advert in the bi-weekly Defold newsletter</li>
-				<li>Your company logo on marketing material</li>
-				<li>Your company name mentioned in presentations</li>
-				<li>You will be invited first to participate in special events</li>
-				<li>480 hours of development time</li>
-			</ul>
+{% include page_hub_hero.html hero_class="partnership-hub-hero" title="Defold Corporate Partnerships" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold corporate partnerships illustration" %}
+
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Why partner with Defold?</h2>
+			<p>Corporate partnerships help fund engine work directly while giving your organization dedicated collaboration time and stronger visibility in the Defold ecosystem.</p>
 		</div>
-	</div>
-	<div class="card grey">
-		<div>
-			<h4 class="center">Gold</h4>
-			<h5 class="center">$24000/year ($2000/month)</h5>
-			<ul class="checkmark compact">
-				<li>Your company logo and link in the Gold corporate partner section on the Defold site and GitHub</li>
-				<li>Your company logo on the Editor Splash Screen</li>
-				<li>Your advert in the bi-weekly Defold newsletter</li>
-				<li>Your company logo on marketing material</li>
-				<li>Your company name mentioned in presentations</li>
-				<li>You will be invited after Platinum partners to participate in special events</li>
-				<li>240 hours of development time</li>
-			</ul>
-		</div>
-	</div>
-	<div class="card grey">
-		<div>
-			<h4 class="center">Silver</h4>
-			<h5 class="center">$12000/year ($1000/month)</h5>
-			<ul class="checkmark">
-				<li>Your company logo and link in the Silver corporate partner section on the Defold site and GitHub</li>
-				<li>Your company logo on marketing material</li>
-				<li>Your company name mentioned in presentations</li>
-				<li>You will be invited after Gold partners to participate in special events</li>
-				<li>120 hours of development time</li>
-			</ul>
-		</div>
-	</div>
-	<div class="card grey">
-		<div>
-			<h4 class="center">Bronze</h4>
-			<h5 class="center">$6000/year ($500/month)</h5>
-			<ul class="checkmark">
-				<li>Your company logo and link in the Bronze corporate partner section on the Defold site and GitHub</li>
-				<li>Your company logo on marketing material</li>
-				<li>Your company name mentioned in presentations</li>
-				<li>You will be invited after Silver partners to participate in special events</li>
-				<li>60 hours of development time</li>
-			</ul>
+
+		<div class="page-feature-grid page-grid-four page-grid-flush">
+			<div class="page-text-feature-item">
+				<h3>Dedicated support time</h3>
+				<p>Use partnership hours on specific engine, editor, workflow, or ecosystem functionality important to your team.</p>
+			</div>
+
+			<div class="page-text-feature-item">
+				<h3>Prominent visibility</h3>
+				<p>Partners receive mentions on the website, in editor surfaces, blog posts, newsletters, and broader Defold marketing material.</p>
+			</div>
+
+			<div class="page-text-feature-item">
+				<h3>Event access</h3>
+				<p>Corporate partners are invited to participate in special events hosted by the Defold Foundation, in priority order by level.</p>
+			</div>
+
+			<div class="page-text-feature-item">
+				<h3>Long-term support</h3>
+				<p>Partnership funding helps keep Defold sustainable through developer salaries, hosting, test hardware, and ongoing product work.</p>
+			</div>
 		</div>
 	</div>
 </div>
 
-</br>
+{%- capture bronze_items -%}
+<li>Your company logo and link in the <strong>Bronze</strong> corporate partner section on the Defold website and GitHub</li>
+<li>Your company logo on marketing material</li>
+<li>Your company name mentioned in presentations</li>
+<li>You will be invited after Silver partners to participate in special events</li>
+<li>60 hours of development time</li>
+{%- endcapture -%}
 
-<p>If you are unable to find a suitable corporate partnership level you can reach out to us at <a href="mailto: partner@defold.se">partner@defold.se</a> to discuss a custom partnership level.</p>
+{%- capture silver_items -%}
+<li>Your company logo and link in the <strong>Silver</strong> corporate partner section on the Defold website and GitHub</li>
+<li>Your company logo on marketing material</li>
+<li>Your company name mentioned in presentations</li>
+<li>You will be invited after Gold partners to participate in special events</li>
+<li>120 hours of development time</li>
+{%- endcapture -%}
 
-<h3>Apply for Defold corporate partnership</h3>
-<p>Please get in touch with us at <a href="mailto: partner@defold.se">partner@defold.se</a> to initiate a corporate partnership discussion.</p>
+{%- capture gold_items -%}
+<li>Your company logo and link in the <strong>Gold</strong> corporate partner section on the Defold website and GitHub</li>
+<li>Your company logo on the Editor Splash Screen</li>
+<li>Your advert in the monthly Defold newsletter</li>
+<li>Your company logo on marketing material</li>
+<li>Your company name mentioned in presentations</li>
+<li>You will be invited after Platinum partners to participate in special events</li>
+<li>240 hours of development time</li>
+{%- endcapture -%}
+
+{%- capture platinum_items -%}
+<li>Your company logo and link in the <strong>Platinum</strong> corporate partner section on the Defold website and GitHub</li>
+<li>Your company logo on the Editor Splash Screen</li>
+<li>Your advert in the monthly Defold newsletter</li>
+<li>Your company logo on marketing material</li>
+<li>Your company name mentioned in presentations</li>
+<li>You will be invited first to participate in special events</li>
+<li>480 hours of development time</li>
+{%- endcapture -%}
+
+<div class="section dark page-dark-section gradient-background-bottom-dark" id="partnership-levels">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Partnership levels</h2>
+			<p>Choose the level that matches your organization’s budget and collaboration needs, from Bronze up to Platinum.</p>
+		</div>
+
+		<div class="page-tier-grid page-grid-four partnership-tier-grid">
+			{% include page_tier_card.html title="Bronze" price="$6,000 / year" subprice="($500 / month)" items=bronze_items tier_class="page-tier-card-bronze" link="#partnership-contact-panel" scroll_target="partnership-contact-panel" %}
+			{% include page_tier_card.html title="Silver" price="$12,000 / year" subprice="($1,000 / month)" items=silver_items tier_class="page-tier-card-silver" link="#partnership-contact-panel" scroll_target="partnership-contact-panel" %}
+			{% include page_tier_card.html title="Gold" price="$24,000 / year" subprice="($2,000 / month)" items=gold_items tier_class="page-tier-card-gold" link="#partnership-contact-panel" scroll_target="partnership-contact-panel" %}
+			{% include page_tier_card.html title="Platinum" price="$48,000 / year" subprice="($4,000 / month)" items=platinum_items tier_class="page-tier-card-platinum" link="#partnership-contact-panel" scroll_target="partnership-contact-panel" %}
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-text-panel page-surface-panel page-split-panel" id="partnership-contact-panel">
+			<div class="page-split-panel-media" aria-hidden="true">
+				<img src="/images/icons/icon-handshake.svg" alt="">
+			</div>
+			<div class="page-split-panel-copy">
+				<h3>Start supporting Defold!</h3>
+				<p>Reach out to us at <a href="mailto:partner@defold.se">partner@defold.se</a> to discuss a partnership level that fits your organization or create a custom partnership contract.</p>
+				<div class="page-text-panel-actions">
+					{% include primary_button.html link="mailto:partner@defold.se" text="Email partner@defold.se ↗" %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include donors_and_partners.html %}
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const tierLinks = document.querySelectorAll("[data-scroll-target]");
+		if (!tierLinks.length) {
+			return;
+		}
+
+		const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+		tierLinks.forEach((link) => {
+			link.addEventListener("click", (event) => {
+				const targetId = link.dataset.scrollTarget;
+				const target = document.getElementById(targetId);
+				if (!target) {
+					return;
+				}
+
+				event.preventDefault();
+
+				const rect = target.getBoundingClientRect();
+				const bottomPadding = 24;
+				const minTopPadding = 24;
+				const targetHeight = rect.height;
+				const offset = Math.max(window.innerHeight - targetHeight - bottomPadding, minTopPadding);
+				const top = Math.max(window.scrollY + rect.top - offset, 0);
+
+				window.scrollTo({
+					top,
+					behavior: prefersReducedMotion ? "auto" : "smooth"
+				});
+
+				if (window.history && window.history.replaceState) {
+					window.history.replaceState(null, "", `#${targetId}`);
+				} else {
+					window.location.hash = targetId;
+				}
+			});
+		});
+	});
+</script>

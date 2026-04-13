@@ -3,7 +3,7 @@ layout: post
 title:  Defold Newsletter 49
 excerpt: Here's another packed newsletter with games, exciting news and the latest release notes.
 author: Björn Ritzl
-tags: ["newsletter"]
+tags: ["newsletter", "network", "heroiclabs", "mobile", "shaders"]
 ---
 
 ## Compete for a chance to win $1500!

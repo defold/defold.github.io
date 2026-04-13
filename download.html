@@ -1,73 +1,99 @@
 ---
-layout: hero_and_text
+layout: page
 title: Download Defold
-description: Defold is a completely free to use game engine for development of console, desktop, mobile and web games. There's nothing to set up or configure, not even when building. Simply download the editor and get creative!
+description: Download the Defold editor for macOS, Windows, or Linux and start building games without extra setup, registration, or runtime fees.
 nav: floating
 heatmap: false
-background: /images/hero/defold-top-bg-transparent-2.png
-after: [always_free.html, learn_section.html, donors_and_partners.html]
 ---
 
-<script type="text/javascript">
-	function downloadEditor(select) {
-		window.location.href = select.value;
-		select.value = select.options[0].value;
-	}
-</script>
-<div class="row center">
-	<div class="columns four">
-		<span class="icon-apple blue-text" style="font-size: 50px"></span>
-		<p>Requires macOS 11 Big Sur or newer</p>
-		<form style="margin: 0;">
-			<select name="select" class="button primary download-select download-select-mac" onChange="downloadEditor(this)">
-				<option selected disabled hidden>Download for Mac</option>
-				<option value="https://github.com/defold/defold/releases/latest/download/Defold-arm64-macos.dmg">Apple Silicon Mac</option>
-				<option value="https://github.com/defold/defold/releases/latest/download/Defold-x86_64-macos.dmg">Intel Mac</option>
-			</select>
-		</form>
-		<p><a href="https://forum.defold.com/c/releasenotes" target="_blank">Release notes</a></p>
-	</div>
-	<div class="columns four">
-		<span class="icon-windows blue-text" style="font-size: 50px"></span>
-		<p>Requires Windows Vista or newer</p>
-		{% include primary_button.html link="https://github.com/defold/defold/releases/latest/download/Defold-x86_64-win32.zip" text="Download for Windows" %}
-		<p><a href="https://forum.defold.com/c/releasenotes" target="_blank">Release notes</a></p>
-	</div>
-	<div class="columns four">
-		<span class="icon-linux blue-text" style="font-size: 50px"></span>
-		<p>Requires Ubuntu 18.04 (64-bit) or newer</p>
-		<form style="margin: 0;">
-			<select name="select" class="button primary download-select download-select-linux" onChange="downloadEditor(this)">
-				<option selected disabled hidden>Download for Linux</option>
-				<option value="https://github.com/defold/defold/releases/latest/download/Defold-x86_64-linux.zip">As ZIP File</option>
-				<option value="https://github.com/defold/defold/releases/latest/download/Defold-x86_64-linux.tar.gz">As TAR.GZ File</option>
-			</select>
-		</form>
-		<p><a href="https://forum.defold.com/c/releasenotes" target="_blank">Release notes</a></p>
-	</div>
-</div>
+{%- capture page_hero_copy -%}
+<p>Defold is a completely free to use game engine for development of console, desktop, mobile and web games. There's nothing to set up or configure, not even when building. Simply download the editor and get creative!</p>
+{%- endcapture -%}
 
-<div class="row center">
-	<br/>
-	<p>Looking for older versions of Defold or the command line tools? Find them on <a href="https://github.com/defold/defold/releases" target="_blank">github.com</a></p>
-	<br/>
-</div>
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="#download-editor" text="Download for your OS" %}
+{% include secondary_button.html link="https://forum.defold.com/c/releasenotes" text="Release notes ↗" target="_blank" %}
+{%- endcapture -%}
 
-<div class="row center">
-	<div class="columns two">
-		<br/>
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/editor/nosetup-editor.png" alt="Defold editor screenshot" loading="eager">
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="download-hub-hero" title="Download Defold" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold editor screenshot" %}
+
+{%- capture download_actions_macos -%}
+{% include primary_button.html link="https://github.com/defold/defold/releases/latest/download/Defold-arm64-macos.dmg" text="Apple Silicon Mac ⤓" %}
+{% include secondary_button.html link="https://github.com/defold/defold/releases/latest/download/Defold-x86_64-macos.dmg" text="Intel Mac ⤓" %}
+{%- endcapture -%}
+
+{%- capture download_actions_windows -%}
+{% include primary_button.html link="https://github.com/defold/defold/releases/latest/download/Defold-x86_64-win32.zip" text="Windows ⤓" %}
+{%- endcapture -%}
+
+{%- capture download_actions_linux -%}
+{% include primary_button.html link="https://github.com/defold/defold/releases/latest/download/Defold-x86_64-linux.zip" text="Linux .zip ⤓" %}
+{% include secondary_button.html link="https://github.com/defold/defold/releases/latest/download/Defold-x86_64-linux.tar.gz" text="Linux .tar.gz ⤓" %}
+{%- endcapture -%}
+
+<div class="section dark page-dark-section gradient-background-bottom-dark" id="download-editor">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Download Defold for your platform</h2>
+			<p>Choose your platform, download, unzip, and start your first project!</p>
+		</div>
+
+		<div class="page-route-grid download-platform-grid">
+			{% include download_platform_card.html title="Apple macOS" body="Requires macOS 11 Big Sur or a&nbsp;newer version." icon="/images/logo/platform/macos.svg" actions=download_actions_macos card_class="download-platform-card-macos" %}
+			{% include download_platform_card.html title="Microsoft Windows" body="Requires Windows Vista or a&nbsp;newer version." icon="/images/logo/platform/windows.svg" actions=download_actions_windows card_class="download-platform-card-windows" %}
+			{% include download_platform_card.html title="Linux" body="Requires Ubuntu 18.04 (64-bit) or a&nbsp;newer version." icon="/images/logo/platform/linux.svg" actions=download_actions_linux card_class="download-platform-card-linux" %}
+		</div>
+
+		<div class="download-hub-links page-text-panel page-surface-panel">
+			<div class="download-hub-links-copy">
+				<h3>Need older versions?</h3>
+				<p>Use the official release archive for older editor versions, command line tools, and detailed release notes.</p>
+			</div>
+			<ul class="page-action-list">
+				<li><a href="https://github.com/defold/defold/releases" target="_blank" rel="noopener">Browse all versions and tools releases ↗</a></li>
+			</ul>
+		</div>
 	</div>
-	<div class="columns eight">
-		<div class="grid-250">
-			<iframe src="https://store.steampowered.com/widget/1365760" frameborder="0" width="100%" height="190" seamless="seamless" sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation"></iframe>
-			<a href="https://store.epicgames.com/en-US/p/defold-engine-mod-kit" target="_blank">
-				<div style="display: flex; justify-content: center; align-items: center; height: 190px;">
-					<img src="/images/logo/others/EGS-Logotype-2023-Horizontal-White-256px.png"/>
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Get Defold from a storefront</h2>
+			<p>Prefer to install Defold through Steam or Epic Games Store? Use these options instead of the direct desktop downloads above.</p>
+		</div>
+
+		<div class="download-store-grid">
+			<div class="download-store-panel page-surface-panel">
+				<div class="download-store-embed">
+					<iframe src="https://store.steampowered.com/widget/1365760" frameborder="0" width="100%" height="190" title="Steam widget for Defold" seamless="seamless" sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation"></iframe>
 				</div>
+			</div>
+			<a href="https://store.epicgames.com/en-US/p/defold-engine-mod-kit" target="_blank" rel="noopener" class="download-store-card page-surface-panel">
+				<span class="download-store-card-logo">
+					<img src="/images/logo/others/EGS-Logotype-2023-Horizontal-White-256px.png" alt="Epic Games Store">
+				</span>
+				<span class="download-store-card-label">Get Defold on Epic Games Store</span>
 			</a>
 		</div>
 	</div>
-	<div class="columns two">
-		<br/>
+</div>
+
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>What's after downloading?</h2>
+			<p>Unzip the package, open Defold and choose a tutorial or visit our learning resources.</p>
+		</div>
+
+		<div class="page-feature-grid">
+			{% include page_feature_card.html title="Unzip and launch" body="Unzip the editor on your system, and launch it - that's it! No setup, no additional downloads, just play!<br>Click here to read the details. ↗" link="/manuals/install/" icon="/images/icons/ic-64-box.svg" card_class="page-feature-card-manuals" %}
+			{% include page_feature_card.html title="Get started" body="If you're new to game development or Defold, start here and create your first project from tutorials.<br>Click here to read the details. ↗" link="/learn/" icon="/images/icons/icons-learn-export_ic-learn-tutorials.svg" card_class="page-feature-card-tutorials" %}
+			{% include page_feature_card.html title="Join Community!" body="Ask questions, share what you're building, get feedback, and engage with the community!<br>Click here to join us. ↗" link="/community/" icon="/images/icons/ic-64-community.svg" card_class="page-feature-card-manuals" %}
+		</div>
 	</div>
 </div>
+
+{% include always_free.html variant="page-section" %}
+{% include donors_and_partners.html %}

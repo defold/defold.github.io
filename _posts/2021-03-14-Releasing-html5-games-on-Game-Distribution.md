@@ -3,7 +3,7 @@ layout: post
 title:  Releasing HTML5 games on Game Distribution
 excerpt: In this blog post we'll look at how to add the Game Distribution SDK to an existing game or how to create one from scratch. We will also look at how to submit your game for distribution through the Game Distribution network.
 author: Björn Ritzl
-tags: ["tutorial", "gamedistribution", "html5"]
+tags: ["tutorial", "html5", "mobile"]
 ---
 
 Game Distribution recently joined the Defold Foundation as a corporate partner. GameDistribution is the biggest broker of high quality, cross-platform games and their network serves over 300M users a month with top HTML5 content. As part of the partnership the foundation integrated the Game Distribution SDK as a Defold native extension and added a Defold template project to the Defold editor with the Game Distribution SDK integrated.

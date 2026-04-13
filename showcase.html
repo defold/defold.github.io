@@ -1,65 +1,48 @@
 ---
 layout: page
 title: Defold Games Showcase
+description: Explore games made with Defold across genres and platforms, and see what studios and indie developers are shipping with the engine.
 nav: floating
 heatmap: true
 ---
 
-<div class="section narrow">
-	<div class="container">
-		<div class="row">
-			<div class="columns ten left">
-				<h1>Get inspired</h1>
-				<p>Your next hit game is just an idea away. See what’s made with Defold!</p>
-			</div>
-			<div class="columns two" style="vertical-align: bottom; height: 100%">
-				{% include secondary_button.html link="https://github.com/defold/games-showcase/tree/master?tab=readme-ov-file#submitting-a-game" text="Submit game" %}
-			</div>
-		</div>
-	</div>
+{%- capture page_hero_copy -%}
+<p>Your next hit game is just an idea away. Explore what developers are already shipping with Defold across genres and platforms.</p>
+{%- endcapture -%}
+
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="/submit_game" text="Submit game" %}
+{%- endcapture -%}
+
+{%- capture page_hero_panel -%}
+<div class="page-video-panel page-surface-panel">
+	<iframe
+		src="https://www.youtube-nocookie.com/embed/LiS5bPE5yJI"
+		title="Defold games showcase video"
+		loading="lazy"
+		referrerpolicy="strict-origin-when-cross-origin"
+		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+		allowfullscreen>
+	</iframe>
+</div>
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="showcase-hub-hero" title="Get inspired" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold games showcase video" %}
+
+<div class="page-dark-section gradient-background-top-dark dark">
+	{%- include games.html placement="showcase" -%}
 </div>
 
-<div class="section narrow">
-	<div class="container">
-		<div class="row">
-			<div class="columns twelve">
-				<div class="showcase-feature-video">
-					<iframe
-						src="https://www.youtube-nocookie.com/embed/LiS5bPE5yJI"
-						title="Defold games showcase video"
-						loading="lazy"
-						referrerpolicy="strict-origin-when-cross-origin"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						allowfullscreen>
-					</iframe>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="section narrow showcase-content-intro">
-	<div class="container">
-		<div class="row center">
-			<div class="columns twelve">
-				<h2>Made with Defold</h2>
-				<p>Explore games and community projects built with Defold.</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-{%- include games.html placement="showcase" -%}
-
-<div class="section">
+<div class="section dark page-dark-section gradient-background-bottom-dark">
 	<div class="container center">
-		<div class="row">
+		<div class="page-section-heading page-section-heading-center">
+			<h2>Want more games?</h2>
+			<p>Browse additional community submissions and archived showcase entries.</p>
+		</div>
+		<div>
 			{% include secondary_button.html link="/more-games" text="More games" %}
 		</div>
 	</div>
 </div>
 
-<div class="section left">
-	<div class="container">
-	</div>
-</div>
+{% include yellow_download_section.html %}

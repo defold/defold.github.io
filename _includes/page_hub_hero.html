@@ -1,0 +1,25 @@
+<div class="section dark page-hero{% if include.hero_class %} {{ include.hero_class }}{% endif %}" markdown="0">
+	{%- if include.backdrop and include.backdrop != "" -%}
+	<div class="page-hero-backdrop{% if include.backdrop_class %} {{ include.backdrop_class }}{% endif %}" aria-hidden="true">
+		{{ include.backdrop }}
+	</div>
+	{%- endif -%}
+	<div class="container">
+		<div class="page-hero-layout{% if include.layout_class %} {{ include.layout_class }}{% endif %}">
+			<div class="page-hero-copy{% if include.copy_class %} {{ include.copy_class }}{% endif %}">
+				<h1>{{ include.title }}</h1>
+				{{ include.copy }}
+				{%- if include.actions and include.actions != "" -%}
+				<div class="page-hero-actions">
+					{{ include.actions }}
+				</div>
+				{%- endif -%}
+			</div>
+			{%- if include.panel and include.panel != "" -%}
+			<aside class="page-hero-panel{% if include.panel_class %} {{ include.panel_class }}{% endif %}"{% if include.aria_label %} aria-label="{{ include.aria_label }}"{% endif %}>
+				{{ include.panel }}
+			</aside>
+			{%- endif -%}
+		</div>
+	</div>
+</div>

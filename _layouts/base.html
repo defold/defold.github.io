@@ -15,15 +15,143 @@
 	{% include head.html %}
 
 	<script>
-		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			document.documentElement.classList.add('dark-mode');
-		} else {
-			document.documentElement.classList.remove('dark-mode');
-		}
+		(function() {
+			var root = document.documentElement;
+			var storageKey = 'defold-theme';
+			var systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+			var themeColorMeta = document.querySelector('meta[name="theme-color"]:not([media])');
+
+			function getStoredTheme() {
+				try {
+					var storedTheme = localStorage.getItem(storageKey);
+					if (storedTheme === 'light' || storedTheme === 'dark') {
+						return storedTheme;
+					}
+				} catch (error) {
+				}
+				return null;
+			}
+
+			function resolveTheme(preferredTheme) {
+				if (preferredTheme === 'light' || preferredTheme === 'dark') {
+					return preferredTheme;
+				}
+				return systemTheme.matches ? 'dark' : 'light';
+			}
+
+			function emitThemeChange(theme, preference) {
+				document.dispatchEvent(new CustomEvent('defoldthemechange', {
+					detail: {
+						theme: theme,
+						preference: preference
+					}
+				}));
+			}
+
+			function applyTheme(preferredTheme) {
+				var resolvedTheme = resolveTheme(preferredTheme);
+				root.classList.add('js');
+				root.classList.toggle('theme-light', resolvedTheme === 'light');
+				root.classList.toggle('theme-dark', resolvedTheme === 'dark');
+				root.dataset.theme = resolvedTheme;
+				root.dataset.themePreference = preferredTheme || 'system';
+				if (themeColorMeta) {
+					themeColorMeta.setAttribute('content', resolvedTheme === 'dark' ? '#14181c' : '#fafafa');
+				}
+				return resolvedTheme;
+			}
+
+			function persistTheme(theme) {
+				try {
+					localStorage.setItem(storageKey, theme);
+				} catch (error) {
+				}
+			}
+
+			function clearTheme() {
+				try {
+					localStorage.removeItem(storageKey);
+				} catch (error) {
+				}
+			}
+
+			function updateToggleButtons() {
+				var theme = root.dataset.theme || resolveTheme(getStoredTheme());
+				var nextTheme = theme === 'dark' ? 'light' : 'dark';
+				var buttons = document.querySelectorAll('[data-theme-toggle]');
+				for (var i = 0; i < buttons.length; i += 1) {
+					var button = buttons[i];
+					button.dataset.theme = theme;
+					button.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+					button.setAttribute('aria-label', nextTheme === 'dark' ? 'Switch to dark mode' : 'Switch to light mode');
+					button.title = nextTheme === 'dark' ? 'Switch to dark mode' : 'Switch to light mode';
+				}
+			}
+
+			function setTheme(theme) {
+				if (theme !== 'light' && theme !== 'dark') {
+					return root.dataset.theme || resolveTheme(getStoredTheme());
+				}
+				persistTheme(theme);
+				applyTheme(theme);
+				updateToggleButtons();
+				emitThemeChange(theme, theme);
+				return theme;
+			}
+
+			function handleSystemThemeChange() {
+				if (getStoredTheme()) {
+					return;
+				}
+				var resolvedTheme = applyTheme(null);
+				updateToggleButtons();
+				emitThemeChange(resolvedTheme, 'system');
+			}
+
+			applyTheme(getStoredTheme());
+
+			if (typeof systemTheme.addEventListener === 'function') {
+				systemTheme.addEventListener('change', handleSystemThemeChange);
+			} else if (typeof systemTheme.addListener === 'function') {
+				systemTheme.addListener(handleSystemThemeChange);
+			}
+
+			window.DefoldTheme = {
+				getTheme: function() {
+					return root.dataset.theme || resolveTheme(getStoredTheme());
+				},
+				getPreference: function() {
+					return root.dataset.themePreference || (getStoredTheme() || 'system');
+				},
+				setTheme: setTheme,
+				toggle: function() {
+					return setTheme((root.dataset.theme || resolveTheme(getStoredTheme())) === 'dark' ? 'light' : 'dark');
+				},
+				reset: function() {
+					clearTheme();
+					var resolvedTheme = applyTheme(null);
+					updateToggleButtons();
+					emitThemeChange(resolvedTheme, 'system');
+					return resolvedTheme;
+				},
+				syncButtons: updateToggleButtons
+			};
+
+			document.addEventListener('DOMContentLoaded', function() {
+				updateToggleButtons();
+				var buttons = document.querySelectorAll('[data-theme-toggle]');
+				for (var i = 0; i < buttons.length; i += 1) {
+					buttons[i].addEventListener('click', function() {
+						window.DefoldTheme.toggle();
+					});
+				}
+			});
+		})();
 	</script>	
 </head>
 <body>
 {%- include googletagmanager_body.html -%}
 {{ content }}
+<script src="/js/transition.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,20 @@
+{%- assign action_label = include.action_label | default: "Copy latest" -%}
+{%- assign copied_label = include.copied_label | default: "Copied! ✓" -%}
+{%- assign button_class = include.button_class | default: "button secondary asset-release-copy-button asset-copy-button" -%}
+<button
+	type="button"
+	class="{{ button_class }}"
+	data-copy-text="{{ include.copy_url | escape_once }}"
+	data-default-label="{{ action_label }}"
+	data-copied-label="{{ copied_label }}">
+	<span class="asset-release-copy-button-info">
+		<span class="asset-release-copy-button-version">{{ include.version_label }}</span>
+		{%- if include.date_label != blank -%}
+		<span class="asset-release-copy-button-date">{{ include.date_label }}</span>
+		{%- endif -%}
+	</span>
+	<span class="asset-release-copy-button-action">
+		{% include site_icon.html name="clippy" class="asset-release-copy-button-icon" %}
+		<span data-copy-label>{{ action_label }}</span>
+	</span>
+</button>

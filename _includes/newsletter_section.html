@@ -1,0 +1,22 @@
+{%- assign newsletter_section_classes = include.section_classes | default: "section dark community-newsletter-section gradient-background-top-dark" -%}
+{%- assign newsletter_title = include.title | default: "Sign up for News!" -%}
+{%- assign newsletter_body = include.body | default: "We occasionally send product updates, game releases, practical tips, and everything else that's worth reading or watching regarding Defold. The emails are optional, sent sparingly, and you can opt out at any time." -%}
+
+<div class="{{ newsletter_section_classes }}"{% if include.section_id %} id="{{ include.section_id }}"{% endif %}>
+	<div class="container">
+		<div class="community-newsletter-shell">
+			<div class="community-newsletter-copy">
+				<h2 class="feature-heading community-newsletter-heading">
+					<img class="feature-heading-icon community-newsletter-graphic" src="/images/icons/icon-newsletter.svg" alt="" aria-hidden="true"/>
+					<span class="community-newsletter-heading-text">{{ newsletter_title }}</span>
+				</h2>
+				<p>{{ newsletter_body }}</p>
+			</div>
+			<div class="community-newsletter-form-shell">
+				<div class="community-newsletter-form">
+					{% include sendinblue.html %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

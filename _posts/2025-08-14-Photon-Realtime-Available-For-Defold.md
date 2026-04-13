@@ -3,7 +3,7 @@ layout: post
 title:  Photon Realtime integration
 excerpt: The Defold Foundation adds a Photon Realtime integration with the Defold game engine
 author: Björn Ritzl
-tags: ["news", "photon"]
+tags: ["news", "photon", "network"]
 ---
 
 _The Defold Foundation adds a Photon Realtime integration for the Defold game engine_

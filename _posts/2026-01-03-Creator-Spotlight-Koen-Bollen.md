@@ -3,7 +3,7 @@ layout: post
 title:  Creator Spotlight - Koen Bollen
 excerpt: In this Defold Creator Spotlight we invited Koen Bollen to tell us a little bit about himself and his latest Defold project - Sprint City.
 author: Paweł Jarosz
-tags: ["creator spotlight", "interview", "madewithdefold", "steam"]
+tags: ["spotlight", "interview", "steam", "consoles", "poki", "mobile", "shaders"]
 ---
 
 In the Creator Spotlight posts we invite Defold users to present themselves and share a bit of their background, their work and things that inspire them. It is an excellent opportunity for the community to come together, to recognise achievements and to share some of the great work done by Defold users.

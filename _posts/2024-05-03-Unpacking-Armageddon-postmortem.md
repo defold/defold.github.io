@@ -3,7 +3,7 @@ layout: post
 title:  Unpacking Armageddon
 excerpt: Unpacking Armageddon is a game made for Ludum Dare 55. Learn how it was made in this blog post.
 author: PlayMedusa
-tags: ["creator spotlight", "game jam", "post mortem", "ludum dare"]
+tags: ["spotlight", "game jam", "post mortem"]
 opengraph_image: https://www.defold.com/images/posts/unpackingarmageddon/unpacking-splash.png
 twitter_image: https://www.defold.com/images/posts/unpackingarmageddon/unpacking-splash.png
 ---

@@ -3,7 +3,7 @@ layout: post
 title:  The Defold Foundation is hosting a Web Monetization game jam
 excerpt: The Defold Foundation is inviting web game developers across the world to join a month long Web Monetization game jam, starting on the 1st of November.
 author: Björn Ritzl
-tags: ["news", "webmonetization", "game jam"]
+tags: ["news", "web", "game jam", "html5"]
 ---
 
 _The Defold Foundation is inviting web game developers across the world to join a month long Web Monetization game jam, starting on the 1st of November._

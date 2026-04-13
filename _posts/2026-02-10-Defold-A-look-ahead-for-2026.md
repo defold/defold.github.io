@@ -3,7 +3,7 @@ layout: post
 title:  A look ahead for 2026
 excerpt: This article outlines our plans for Defold.
 author: The Defold Foundation
-tags: ["roadmap"]
+tags: ["roadmap", "network", "consoles", "xbox", "shaders"]
 ---
 
 One of the most common questions we get is: “What’s next for Defold?”
