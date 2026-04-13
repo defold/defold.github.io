@@ -157,15 +157,6 @@ def download_file(url, destination, filename=None):
     return path
 
 
-def github_request(url, token):
-    try:
-        response = requests.get(url, headers={"Authorization": "token %s" % (token)})
-        response.raise_for_status()
-        return response.json()
-    except Exception as err:
-        print(err)
-
-
 def download_string(url):
     response = requests.get(url)
     if response.status_code != 200:
@@ -1592,10 +1583,6 @@ def process_refdoc(download = False):
     generate_llms_apis()
 
 
-
-
-
-
 def commit_changes():
     call("git config user.name 'github-actions[bot]'")
     call("git config user.email '41898282+github-actions[bot]@users.noreply.github.com'")
@@ -1611,7 +1598,6 @@ ALL_COMMANDS.sort()
 
 parser = ArgumentParser()
 parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ')')
-parser.add_argument("--githubtoken", dest="githubtoken", help="Authentication token for GitHub API and ")
 parser.add_argument("--extension", dest="extensions", action='append', help="Which extension to process")
 parser.add_argument("--download", dest="download", action='store_true', help="Download updated content for the command(s) in question")
 args = parser.parse_args()
@@ -1624,7 +1610,7 @@ asset-portal = Process the assets list (from asset-portal)
 games-showcase = Process the games list (from games-showcase)
 examples = Build the examples
 codepad = Build the Defold CodePad
-commit = Commit changed files (requires --githubtoken)
+commit = Commit changed files
 extensions = Process the docs for official extensions (use --extension to specify which extensions to process)
 all = Run all of the above commands
 help = Show this help
