@@ -44,6 +44,6 @@ jobs:
             { name: 'Build Jekyll site', run: 'bundle exec jekyll build' },
             { name: 'Install Pagefind Python', run: 'pip install "pagefind[extended]"' },
             { name: 'Index site with Pagefind', run: 'python3 -m pagefind' },
-            { if: "github.ref == 'refs/heads/master'", name: 'Upload Pages artifact', uses: 'actions/upload-pages-artifact@vfc324d3547104276b827a68afc52ff2a11cc49c9', with: { path: '_site' } },
+            { if: "github.ref == 'refs/heads/master'", name: 'Upload Pages artifact', uses: 'actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9', with: { path: '_site' } },
             { if: "github.ref == 'refs/heads/master'", name: 'Deploy to GitHub Pages', id: 'deployment', uses: 'actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128' }
         ]
