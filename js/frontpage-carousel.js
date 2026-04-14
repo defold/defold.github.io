@@ -10,12 +10,13 @@
 			: [];
 
 		const config = window.frontpageCarouselConfig || {};
-		const maxGames = Math.max(1, Number(config.maxGames) || 12);
+		const maxGames = Math.max(1, Number(config.maxGames) || 8);
 		const scrollSpeedPxPerSec = Math.max(6, Number(config.scrollSpeedPxPerSec) || 18);
 		const snapStrength = Math.max(4, Number(config.snapStrength) || 9);
 		const sourceLocation = config.sourceLocation || 'frontpage_hero';
 		const cardClickSourceLocation = config.cardClickSourceLocation || 'frontpage_banner';
 		const moreButtonSourceLocation = config.moreButtonSourceLocation || 'frontpage_more_button';
+		const loopCopies = 2;
 
 		const carousel = document.getElementById('frontpage-showcase-carousel');
 		const viewport = carousel ? carousel.querySelector('.frontpage-showcase-viewport') : null;
@@ -70,6 +71,9 @@
 		let logicalPages = [];
 		let dotAnchors = [];
 		let loopWidth = 0;
+		let cardGapPx = 0;
+		let cardWidthPx = 0;
+		let cardStridePx = 0;
 		let currentTranslate = 0;
 		let targetTranslate = 0;
 		let activeDotIndex = 0;
@@ -103,7 +107,7 @@
 		const autoplayResumeDelayMs = 900;
 
 		function getCardsPerView() {
-			const width = carousel.clientWidth || window.innerWidth || 0;
+			const width = window.innerWidth || document.documentElement.clientWidth || 0;
 			if (width >= 1400) {
 				return 3;
 			}
@@ -172,8 +176,6 @@
 			card.className = 'frontpage-showcase-card game-banner-link';
 			card.draggable = false;
 			card.dataset.gameId = game.id;
-			card.dataset.loopCopy = String(copyIndex);
-			card.dataset.baseIndex = String(baseIndex);
 			card.setAttribute('aria-label', game.name);
 			card.addEventListener('click', function() {
 				trackCardClick(game.id);
@@ -190,8 +192,8 @@
 				img.alt = game.name;
 				img.decoding = 'async';
 				img.draggable = false;
-				img.loading = copyIndex === 1 ? 'eager' : 'lazy';
-				if (copyIndex === 1 && baseIndex < cardsPerView) {
+				img.loading = copyIndex === 0 && baseIndex < cardsPerView ? 'eager' : 'lazy';
+				if (copyIndex === 0 && baseIndex < cardsPerView) {
 					img.fetchPriority = 'high';
 				}
 				img.src = imageData.src;
@@ -223,10 +225,10 @@
 			}
 
 			let normalized = value;
-			while (normalized >= 0) {
+			while (normalized > 0) {
 				normalized -= loopWidth;
 			}
-			while (normalized < -2 * loopWidth) {
+			while (normalized <= -loopWidth) {
 				normalized += loopWidth;
 			}
 			return normalized;
@@ -370,26 +372,23 @@
 			dotsContainer.hidden = logicalPages.length <= 1;
 		}
 
-		function measureLoopWidth() {
-			const firstCopyCard = track.querySelector('.frontpage-showcase-card[data-loop-copy="0"][data-base-index="0"]');
-			const middleCopyCard = track.querySelector('.frontpage-showcase-card[data-loop-copy="1"][data-base-index="0"]');
+		function measureCarouselGeometry() {
+			const trackStyles = window.getComputedStyle(track);
+			const resolvedGap = parseFloat(trackStyles.columnGap || trackStyles.gap || '0') || 0;
+			const viewportWidth = carousel.clientWidth || viewport.clientWidth || window.innerWidth || 0;
 
-			if (firstCopyCard && middleCopyCard) {
-				loopWidth = middleCopyCard.offsetLeft - firstCopyCard.offsetLeft;
-			} else {
-				loopWidth = 0;
-			}
-
-			if (loopWidth <= 0) {
-				loopWidth = track.scrollWidth / 3;
-			}
+			cardGapPx = resolvedGap;
+			cardWidthPx = cardsPerView > 0
+				? Math.max(0, (viewportWidth - cardGapPx * (cardsPerView - 1)) / cardsPerView)
+				: 0;
+			cardStridePx = cardWidthPx + cardGapPx;
+			loopWidth = games.length > 0 ? games.length * cardStridePx : 0;
 		}
 
 		function buildDotAnchors() {
 			dotAnchors = logicalPages.map(function(_, pageIndex) {
 				const baseIndex = pageIndex * cardsPerView;
-				const card = track.querySelector('.frontpage-showcase-card[data-loop-copy="1"][data-base-index="' + baseIndex + '"]');
-				return card ? -card.offsetLeft : -loopWidth;
+				return loopWidth > 0 ? -(baseIndex * cardStridePx) : 0;
 			});
 		}
 
@@ -435,7 +434,7 @@
 		}
 
 		function scrollToDot(dotIndex) {
-			if (!dotAnchors[dotIndex]) {
+			if (typeof dotAnchors[dotIndex] !== 'number') {
 				return;
 			}
 
@@ -488,25 +487,24 @@
 		function renderTrack(anchorDotIndex) {
 			cardsPerView = getCardsPerView();
 			logicalPages = buildPages(games, cardsPerView);
+			measureCarouselGeometry();
 			carousel.style.setProperty('--frontpage-showcase-visible-cards', String(cardsPerView));
+			buildDotAnchors();
+			createDots();
 			track.innerHTML = '';
 			resetPointerState();
 			suppressClickUntil = 0;
 			inertiaVelocityPxPerSec = 0;
 			autoplayResumeAt = 0;
 
-			for (let copyIndex = 0; copyIndex < 3; copyIndex += 1) {
+			for (let copyIndex = 0; copyIndex < loopCopies; copyIndex += 1) {
 				games.forEach(function(game, baseIndex) {
 					track.appendChild(createCard(game, copyIndex, baseIndex));
 				});
 			}
 
-			measureLoopWidth();
-			buildDotAnchors();
-			createDots();
-
 			const safeAnchorIndex = Math.max(0, Math.min(anchorDotIndex || 0, Math.max(dotAnchors.length - 1, 0)));
-			currentTranslate = dotAnchors[safeAnchorIndex] || -loopWidth;
+			currentTranslate = typeof dotAnchors[safeAnchorIndex] === 'number' ? dotAnchors[safeAnchorIndex] : 0;
 			currentTranslate = normalizeTranslate(currentTranslate);
 			targetTranslate = currentTranslate;
 			activeDotIndex = safeAnchorIndex;
@@ -759,11 +757,6 @@
 			window.addEventListener('resize', function() {
 				clearTimeout(resizeTimer);
 				resizeTimer = window.setTimeout(function() {
-					const nextCardsPerView = getCardsPerView();
-					if (nextCardsPerView === cardsPerView) {
-						return;
-					}
-
 					renderTrack(activeDotIndex);
 					lastFrameTime = 0;
 					requestAnimationIfNeeded();
