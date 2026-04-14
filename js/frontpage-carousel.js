@@ -78,8 +78,10 @@
 		let carouselInViewport = true;
 		let lastFrameTime = 0;
 		let animationFrameId = null;
+		let autoplayResumeTimer = null;
 		let resizeTimer = null;
 		let impressionObserver = null;
+		let carouselVisibilityObserver = null;
 		let isPointerDown = false;
 		let isDragging = false;
 		let activePointerId = null;
@@ -232,7 +234,6 @@
 
 		function applyTransform() {
 			track.style.transform = 'translate3d(' + currentTranslate.toFixed(2) + 'px, 0, 0)';
-			updateCardDepth();
 		}
 
 		function setDraggingState(nextDragging) {
@@ -246,6 +247,8 @@
 			targetTranslate = currentTranslate;
 			inertiaVelocityPxPerSec = 0;
 			autoplayResumeAt = 0;
+			clearAutoplayResumeTimer();
+			requestAnimationIfNeeded();
 		}
 
 		function resetPointerState() {
@@ -260,27 +263,93 @@
 			setDraggingState(false);
 		}
 
+		function setTrackAnimatingState(nextAnimating) {
+			carousel.classList.toggle('is-animating', nextAnimating);
+		}
+
+		function hasInertiaMotion() {
+			return Math.abs(inertiaVelocityPxPerSec) >= inertiaVelocityThresholdPxPerSec;
+		}
+
+		function clearAutoplayResumeTimer() {
+			if (autoplayResumeTimer !== null) {
+				window.clearTimeout(autoplayResumeTimer);
+				autoplayResumeTimer = null;
+			}
+		}
+
+		function stopAnimationLoop(cancelPendingFrame) {
+			if (cancelPendingFrame && animationFrameId !== null) {
+				window.cancelAnimationFrame(animationFrameId);
+			}
+
+			animationFrameId = null;
+			lastFrameTime = 0;
+			setTrackAnimatingState(false);
+		}
+
+		function scheduleAutoplayResume(now) {
+			clearAutoplayResumeTimer();
+
+			if (
+				!shouldAnimate()
+				|| isPointerDown
+				|| isDragging
+				|| isSnapping
+				|| hasInertiaMotion()
+				|| autoplayResumeAt <= now
+			) {
+				return;
+			}
+
+			autoplayResumeTimer = window.setTimeout(function() {
+				autoplayResumeTimer = null;
+				lastFrameTime = 0;
+				requestAnimationIfNeeded();
+			}, Math.max(0, autoplayResumeAt - now));
+		}
+
+		function shouldContinueAnimation(now) {
+			if (!shouldAnimate() || isPointerDown || isDragging) {
+				return false;
+			}
+
+			return isSnapping || hasInertiaMotion() || now >= autoplayResumeAt;
+		}
+
+		function requestAnimationIfNeeded(now) {
+			const frameTime = typeof now === 'number'
+				? now
+				: ((window.performance && typeof window.performance.now === 'function')
+					? window.performance.now()
+					: Date.now());
+
+			clearAutoplayResumeTimer();
+
+			if (shouldContinueAnimation(frameTime)) {
+				if (animationFrameId === null) {
+					setTrackAnimatingState(true);
+					animationFrameId = window.requestAnimationFrame(animate);
+				}
+				return;
+			}
+
+			stopAnimationLoop(false);
+			scheduleAutoplayResume(frameTime);
+		}
+
 		function resumeAutoplay(cancelSnap) {
 			lastFrameTime = 0;
 			inertiaVelocityPxPerSec = 0;
 			autoplayResumeAt = 0;
+			clearAutoplayResumeTimer();
 
 			if (cancelSnap) {
 				isSnapping = false;
 				targetTranslate = currentTranslate;
 			}
-		}
 
-		function updateCardDepth() {
-			track.querySelectorAll('.frontpage-showcase-card').forEach(function(card) {
-				card.style.removeProperty('--frontpage-showcase-card-scale');
-				card.style.removeProperty('--frontpage-showcase-card-image-scale');
-				card.style.removeProperty('--frontpage-showcase-card-opacity');
-				card.style.removeProperty('--frontpage-showcase-card-copy-opacity');
-				card.style.removeProperty('--frontpage-showcase-card-lift');
-				card.style.removeProperty('--frontpage-showcase-card-shift');
-				card.classList.remove('is-focus-card');
-			});
+			requestAnimationIfNeeded();
 		}
 
 		function createDots() {
@@ -383,6 +452,7 @@
 
 			targetTranslate = nextTarget;
 			isSnapping = true;
+			requestAnimationIfNeeded();
 		}
 
 		function observeImpressions() {
@@ -495,7 +565,8 @@
 				}
 			}
 
-			animationFrameId = window.requestAnimationFrame(animate);
+			animationFrameId = null;
+			requestAnimationIfNeeded(timestamp);
 		}
 
 		function trackMoreGamesButton() {
@@ -522,23 +593,26 @@
 
 		function setupVisibilityHandling() {
 			if ('IntersectionObserver' in window) {
-				const observer = new IntersectionObserver(function(entries) {
+				carouselVisibilityObserver = new IntersectionObserver(function(entries) {
 					entries.forEach(function(entry) {
 						if (entry.target !== carousel) {
 							return;
 						}
 
 						carouselInViewport = entry.isIntersecting && entry.intersectionRatio > 0.2;
+						lastFrameTime = 0;
+						requestAnimationIfNeeded();
 					});
 				}, {
 					threshold: [0, 0.2, 0.5]
 				});
-				observer.observe(carousel);
+				carouselVisibilityObserver.observe(carousel);
 			}
 
 			document.addEventListener('visibilitychange', function() {
 				pageVisible = !document.hidden;
 				lastFrameTime = 0;
+				requestAnimationIfNeeded();
 			});
 
 			if (reducedMotionMedia) {
@@ -549,6 +623,7 @@
 						isSnapping = false;
 						targetTranslate = currentTranslate;
 					}
+					requestAnimationIfNeeded();
 				};
 
 				if (typeof reducedMotionMedia.addEventListener === 'function') {
@@ -594,6 +669,8 @@
 					autoplayResumeAt = releaseTime + Math.round(autoplayResumeDelayMs * 0.65);
 					lastFrameTime = 0;
 				}
+
+				requestAnimationIfNeeded(releaseTime);
 			};
 
 			viewport.addEventListener('click', function(event) {
@@ -689,6 +766,7 @@
 
 					renderTrack(activeDotIndex);
 					lastFrameTime = 0;
+					requestAnimationIfNeeded();
 				}, 150);
 			});
 		}
@@ -698,14 +776,16 @@
 		setupVisibilityHandling();
 		setupInteractionHandling();
 		setupResizeHandling();
-		animationFrameId = window.requestAnimationFrame(animate);
+		requestAnimationIfNeeded();
 
 		window.addEventListener('beforeunload', function() {
-			if (animationFrameId) {
-				window.cancelAnimationFrame(animationFrameId);
-			}
+			stopAnimationLoop(true);
+			clearAutoplayResumeTimer();
 			if (impressionObserver) {
 				impressionObserver.disconnect();
+			}
+			if (carouselVisibilityObserver) {
+				carouselVisibilityObserver.disconnect();
 			}
 		}, { once: true });
 	}
