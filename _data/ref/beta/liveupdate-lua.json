@@ -1,0 +1,328 @@
+{
+    "elements": [
+        {
+            "brief": "Add resource mount",
+            "description": "Adds a resource mount to the resource system.\nThe mounts are persisted between sessions.\nAfter the mount succeeded, the resources are available to load. (i.e. no reboot required)",
+            "error": "",
+            "examples": "Add multiple mounts. Higher priority takes precedence.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">add_mount</span><span class=\"p\">(</span><span class=\"s2\">&quot;common&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;zip:/path/to/common_stuff.zip&quot;</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"kr\">function</span> <span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span> <span class=\"c1\">-- base pack</span>\n<span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">add_mount</span><span class=\"p\">(</span><span class=\"s2\">&quot;levelpack_1&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;zip:/path/to/levels_1_to_20.zip&quot;</span><span class=\"p\">,</span> <span class=\"mi\">20</span><span class=\"p\">,</span> <span class=\"kr\">function</span> <span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span> <span class=\"c1\">-- level pack</span>\n<span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">add_mount</span><span class=\"p\">(</span><span class=\"s2\">&quot;season_pack_1&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;zip:/path/to/easter_pack_1.zip&quot;</span><span class=\"p\">,</span> <span class=\"mi\">30</span><span class=\"p\">,</span> <span class=\"kr\">function</span> <span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span> <span class=\"c1\">-- season pack, overriding content in the other packs</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.add_mount",
+            "notes": [
+                "The request is asynchronous",
+                "Names cannot start with '_'",
+                "Priority must be >= 0"
+            ],
+            "parameters": [
+                {
+                    "doc": "Unique name of the mount",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The uri of the mount, including the scheme. Currently supported schemes are 'zip' and 'archive'.",
+                    "is_optional": "False",
+                    "name": "uri",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Priority of mount. Larger priority takes prescedence",
+                    "is_optional": "False",
+                    "name": "priority",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Callback after the asynchronous request completed",
+                    "is_optional": "False",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The result of the request",
+                    "name": "result",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get current mounts",
+            "description": "Get an array of the current mounts\nThis can be used to determine if a new mount is needed or not",
+            "error": "",
+            "examples": "Output the current resource mounts\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"s2\">&quot;MOUNTS&quot;</span><span class=\"p\">,</span> <span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">get_mounts</span><span class=\"p\">())</span>\n</code></pre></div>\n\nGive an output like:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DEBUG</span><span class=\"p\">:</span><span class=\"n\">SCRIPT</span><span class=\"p\">:</span> <span class=\"n\">MOUNTS</span><span class=\"p\">,</span>\n<span class=\"p\">{</span> <span class=\"cm\">--[[0x119667bf0]]</span>\n  <span class=\"mi\">1</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"cm\">--[[0x119667c50]]</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;liveupdate&quot;</span><span class=\"p\">,</span>\n    <span class=\"n\">uri</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;zip:/device/path/to/acchives/liveupdate.zip&quot;</span><span class=\"p\">,</span>\n    <span class=\"n\">priority</span> <span class=\"o\">=</span> <span class=\"mi\">5</span>\n  <span class=\"p\">},</span>\n  <span class=\"mi\">2</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"cm\">--[[0x119667d50]]</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;_base&quot;</span><span class=\"p\">,</span>\n    <span class=\"n\">uri</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;archive:build/default/game.dmanifest&quot;</span><span class=\"p\">,</span>\n    <span class=\"n\">priority</span> <span class=\"o\">=</span> <span class=\"o\">-</span><span class=\"mi\">10</span>\n  <span class=\"p\">}</span>\n<span class=\"p\">}</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.get_mounts",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Array of mounts",
+                    "name": "mounts",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "LIVEUPDATE_BUNDLED_RESOURCE_MISMATCH",
+            "description": "Mismatch between between expected bundled resources and actual bundled resources. The manifest expects a resource to be in the bundle, but it was not found in the bundle. This is typically the case when a non-excluded resource was modified between publishing the bundle and publishing the manifest.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.LIVEUPDATE_BUNDLED_RESOURCE_MISMATCH",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "LIVEUPDATE_ENGINE_VERSION_MISMATCH",
+            "description": "Mismatch between running engine version and engine versions supported by manifest.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.LIVEUPDATE_ENGINE_VERSION_MISMATCH",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "LIVEUPDATE_FORMAT_ERROR",
+            "description": "Failed to parse manifest data buffer. The manifest was probably produced by a different engine version.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.LIVEUPDATE_FORMAT_ERROR",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "LIVEUPDATE_INVAL",
+            "description": "Argument was invalid",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.LIVEUPDATE_INVAL",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "LIVEUPDATE_INVALID_HEADER",
+            "description": "The handled resource is invalid.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.LIVEUPDATE_INVALID_HEADER",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "LIVEUPDATE_INVALID_RESOURCE",
+            "description": "The header of the resource is invalid.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.LIVEUPDATE_INVALID_RESOURCE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "LIVEUPDATE_IO_ERROR",
+            "description": "I/O operation failed",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.LIVEUPDATE_IO_ERROR",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "LIVEUPDATE_MEM_ERROR",
+            "description": "Memory wasn't allocated",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.LIVEUPDATE_MEM_ERROR",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "LIVEUPDATE_OK",
+            "description": "LIVEUPDATE_OK",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.LIVEUPDATE_OK",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "LIVEUPDATE_SCHEME_MISMATCH",
+            "description": "Mismatch between scheme used to load resources. Resources are loaded with a different scheme than from manifest, for example over HTTP or directly from file. This is typically the case when running the game directly from the editor instead of from a bundle.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.LIVEUPDATE_SCHEME_MISMATCH",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "LIVEUPDATE_SIGNATURE_MISMATCH",
+            "description": "Mismatch between expected and actual integrity data for legacy liveupdate verification.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.LIVEUPDATE_SIGNATURE_MISMATCH",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "LIVEUPDATE_UNKNOWN",
+            "description": "Unspecified error",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.LIVEUPDATE_UNKNOWN",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "LIVEUPDATE_VERSION_MISMATCH",
+            "description": "Mismatch between manifest expected version and actual version.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.LIVEUPDATE_VERSION_MISMATCH",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Remove resource mount",
+            "description": "Remove a mount the resource system.\nThe remaining mounts are persisted between sessions.\nRemoving a mount does not affect any loaded resources.",
+            "error": "",
+            "examples": "Add multiple mounts. Higher priority takes precedence.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">remove_mount</span><span class=\"p\">(</span><span class=\"s2\">&quot;season_pack_1&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.remove_mount",
+            "notes": [
+                "The call is synchronous"
+            ],
+            "parameters": [
+                {
+                    "doc": "Unique name of the mount",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The result of the call",
+                    "name": "result",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "api_language": "Lua",
+        "brief": "LiveUpdate API documentation",
+        "description": "Functions and constants to access resources.",
+        "description_html": "<p>Functions and constants to access resources.</p>",
+        "file": "script_liveupdate.h",
+        "name": "LiveUpdate",
+        "namespace": "liveupdate",
+        "notes": [],
+        "path": "engine/liveupdate/src/script_liveupdate.h",
+        "type": "Defold Lua"
+    }
+}
