@@ -1,6 +1,6 @@
 ---
 layout: assetportal
-tag: localization
-title: Localization
+tag: tutorials
+title: Tutorials
 sort: timestamp
 ---

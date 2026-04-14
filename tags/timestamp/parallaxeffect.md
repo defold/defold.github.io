@@ -1,6 +1,6 @@
 ---
 layout: assetportal
-tag: template
-title: Template
+tag: parallaxeffect
+title: Parallax effect
 sort: timestamp
 ---

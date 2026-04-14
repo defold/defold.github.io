@@ -1,6 +1,6 @@
 ---
 layout: assetportal
-tag: text
-title: Text
+tag: fonts
+title: Fonts
 sort: timestamp
 ---

@@ -1,6 +1,6 @@
 ---
 layout: assetportal
-tag: device
-title: Device
+tag: video
+title: Video
 sort: stars
 ---

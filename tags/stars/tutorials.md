@@ -1,6 +1,6 @@
 ---
 layout: assetportal
-tag: text
-title: Text
+tag: tutorials
+title: Tutorials
 sort: stars
 ---

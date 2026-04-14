@@ -1,6 +1,6 @@
 ---
 layout: assetportal
-tag: device
-title: Device
+tag: meshcomponent
+title: Mesh component
 sort: timestamp
 ---
