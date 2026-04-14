@@ -2410,7 +2410,6 @@ input[type="button"] {
 	position: absolute;
 	border-radius: 50%;
 	pointer-events: none;
-	will-change: transform, opacity, filter;
 }
 
 .page-hero::before {
@@ -2421,7 +2420,7 @@ input[type="button"] {
 	background: radial-gradient(circle, rgba(253, 102, 35, 0.30) 0%, rgba(253, 102, 35, 0.18) 24%, rgba(253, 102, 35, 0.08) 46%, transparent 74%);
 	filter: blur(30px);
 	opacity: 0.9;
-	animation: pageHeroWarmDrift 34s linear infinite, pageHeroWarmGlow 17.5s ease-in-out infinite;
+	animation: pageHeroWarmDrift 34s linear infinite;
 }
 
 .page-hero::after {
@@ -2432,7 +2431,7 @@ input[type="button"] {
 	background: radial-gradient(circle, rgba(91, 192, 255, 0.28) 0%, rgba(91, 192, 255, 0.17) 22%, rgba(91, 192, 255, 0.07) 44%, transparent 72%);
 	filter: blur(32px);
 	opacity: 0.84;
-	animation: pageHeroCoolDrift 41s linear infinite reverse, pageHeroCoolGlow 22s ease-in-out infinite -6.5s;
+	animation: pageHeroCoolDrift 41s linear infinite reverse;
 }
 
 .page-hero > .container {
@@ -5114,29 +5113,6 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	}
 }
 
-@keyframes pageHeroWarmGlow {
-	0% {
-		opacity: 0.72;
-		filter: blur(34px) brightness(0.96);
-	}
-	25% {
-		opacity: 0.93;
-		filter: blur(23px) brightness(1.08);
-	}
-	50% {
-		opacity: 0.8;
-		filter: blur(29px) brightness(1.02);
-	}
-	75% {
-		opacity: 1;
-		filter: blur(20px) brightness(1.14);
-	}
-	100% {
-		opacity: 0.72;
-		filter: blur(34px) brightness(0.96);
-	}
-}
-
 @keyframes pageHeroCoolDrift {
 	0% {
 		transform: translate3d(1.1rem, 1.4rem, 0) scale(0.94);
@@ -5155,29 +5131,6 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	}
 	100% {
 		transform: translate3d(1.1rem, 1.4rem, 0) scale(0.94);
-	}
-}
-
-@keyframes pageHeroCoolGlow {
-	0% {
-		opacity: 0.66;
-		filter: blur(36px) brightness(0.94);
-	}
-	21% {
-		opacity: 0.86;
-		filter: blur(27px) brightness(1.02);
-	}
-	48% {
-		opacity: 0.97;
-		filter: blur(22px) brightness(1.12);
-	}
-	74% {
-		opacity: 0.78;
-		filter: blur(31px) brightness(0.98);
-	}
-	100% {
-		opacity: 0.66;
-		filter: blur(36px) brightness(0.94);
 	}
 }
 
