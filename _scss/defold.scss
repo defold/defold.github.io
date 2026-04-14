@@ -7652,6 +7652,8 @@ ul.page-checklist-negative li:before {
 	--frontpage-showcase-gap: 1rem;
 	--frontpage-showcase-visible-cards: 1;
 	--frontpage-showcase-edge-fade: clamp(92px, 14vw, 220px);
+	--frontpage-showcase-edge-overlay-strong: rgba(16, 22, 30, 0.94);
+	--frontpage-showcase-edge-overlay-soft: rgba(16, 22, 30, 0.68);
 	position: relative;
 	width: 100%;
 	padding-top: 0.5rem;
@@ -7790,30 +7792,45 @@ ul.page-checklist-negative li:before {
 }
 
 .frontpage-showcase-viewport {
+	position: relative;
 	overflow: hidden;
 	padding: 0.5rem;
 	margin: 0 -0.5rem;
 	touch-action: pan-y pinch-zoom;
 	user-select: none;
 	-webkit-user-select: none;
-	-webkit-mask-image: linear-gradient(
+	isolation: isolate;
+}
+
+.frontpage-showcase-viewport::before,
+.frontpage-showcase-viewport::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: var(--frontpage-showcase-edge-fade);
+	pointer-events: none;
+	z-index: 1;
+}
+
+.frontpage-showcase-viewport::before {
+	left: 0;
+	background: linear-gradient(
 		to right,
-		transparent 0,
-		#000 var(--frontpage-showcase-edge-fade),
-		#000 calc(100% - var(--frontpage-showcase-edge-fade)),
-		transparent 100%
+		var(--frontpage-showcase-edge-overlay-strong) 0%,
+		var(--frontpage-showcase-edge-overlay-soft) 38%,
+		rgba(16, 22, 30, 0) 100%
 	);
-	mask-image: linear-gradient(
-		to right,
-		transparent 0,
-		#000 var(--frontpage-showcase-edge-fade),
-		#000 calc(100% - var(--frontpage-showcase-edge-fade)),
-		transparent 100%
+}
+
+.frontpage-showcase-viewport::after {
+	right: 0;
+	background: linear-gradient(
+		to left,
+		var(--frontpage-showcase-edge-overlay-strong) 0%,
+		var(--frontpage-showcase-edge-overlay-soft) 38%,
+		rgba(16, 22, 30, 0) 100%
 	);
-	-webkit-mask-repeat: no-repeat;
-	mask-repeat: no-repeat;
-	-webkit-mask-size: 100% 100%;
-	mask-size: 100% 100%;
 }
 
 @media (pointer: fine) {
