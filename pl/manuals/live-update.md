@@ -10,13 +10,7 @@ toc:
 - Ustawienia Aktualizacji na żywo
 - Programowanie z wykluczonymi pełnomocnikami kolekcji
 - Pakowanie z funkcją Live update
-- Manifest
-- Aktualizacja manifestu w funkcji Live update
-- Weryfikacja manifestu
-- Obsługiwane wersje silnika Defold
-- Generowanie kluczy do podpisu
-- Programowanie z manifestem aktualizacji na żywo
-- Uwagi
+- Przestarzały przepływ pojedynczych zasobów i manifestów
 - Konfiguracja Amazon Web Service
 - Uwagi dotyczące rozwoju oprogramowania
 ---
@@ -43,13 +37,11 @@ Aby silnik mógł dynamicznie ładować taką kolekcję, możemy po prostu doda�
 
 ## Ustawienia Aktualizacji na żywo
 
-Kiedy kompilator tworzy pakiet aplikacji, musi gdzieś przechować te wykluczone zasoby. Ustawienia projektu dla Aktualizacji na żywo (Live update settings) określają lokalizację tych zasobów. Ustawienia te znajdują się w <kbd>Project ▸ Live update Settings...</kbd>. Kliknięcie w tę opcję spowoduje utworzenie pliku ustawień, jeśli jeszcze nie istnieje. W pliku `game.project` wybierz, które ustawienia Aktualizacji na żywo chcesz użyć podczas kompilacji. Dzięki temu można używać różnych ustawień Aktualizacji na żywo w różnych środowiskach, na przykład na żywo, w QA, w trybie deweloperskim itp.
+Kiedy kompilator tworzy pakiet aplikacji, musi gdzieś przechować te wykluczone zasoby. Ustawienia projektu dla Aktualizacji na żywo (Live update settings) określają lokalizację tych zasobów. Ustawienia te znajdują się w <kbd>Project ▸ Live update Settings...</kbd>. Kliknięcie w tę opcję spowoduje utworzenie pliku ustawień, jeśli jeszcze nie istnieje. W pliku `game.project` wybierz, które ustawienia Aktualizacji na żywo chcesz użyć podczas kompilacji. Dzięki temu można używać różnych ustawień Aktualizacji na żywo w różnych środowiskach, na przykład na produkcji, w QA lub w trybie deweloperskim.
 
-When Defold creates an application bundle it needs to store any excluded resources somewhere. The project settings for Live update govern the location for those resources. The settings are found under <kbd>Project ▸ Live update Settings...</kbd>. This will create a settings file if none exists. In *game.project*, select which liveupdate settings file to use when bundling. This allows for using different liveupdate settings for different environments, for example for live, QA, dev etc.
+![Live update settings](/manuals/images/live-update/05-liveupdate-settings-zip.png)
 
-![Live update settings](/manuals/images/live-update/aws-settings.png)
-
-Obecnie istnieją dwie metody, które Defold może wykorzystać do przechowywania zasobów. Wybierz metodę z rozwijanego menu *Mode* w oknie ustawień:
+Obecnie istnieją trzy metody, których Defold może użyć do przechowywania zasobów. Wybierz metodę z rozwijanego menu *Mode* w oknie ustawień:
 
 `Amazon`
 : Ta opcja mówi Defoldowi, aby automatycznie przesyłał wykluczone zasoby do Amazon Web Service (AWS) S3 bucket. Wprowadź nazwę swojego *Credential profile* (profilu uwierzytelnienia) AWS, wybierz odpowiedni *Bucket* (Kubełek) i podaj *Prefix*. Zobacz [szczegóły dotyczące](#setting_up_amazon_web_service).
@@ -57,80 +49,113 @@ Obecnie istnieją dwie metody, które Defold może wykorzystać do przechowywani
 `Zip`
 : Ta opcja mówi Defoldowi, aby utworzyć plik archiwum Zip z wykluczonymi zasobami. Archiwum jest zapisywane w lokalizacji określonej w ustawieniu *Export path* (ścieżka eksportu).
 
+`Folder`
+: Ta opcja mówi Defoldowi, aby utworzyć folder ze wszystkimi wykluczonymi zasobami. Działa podobnie jak `Zip`, ale używa katalogu zamiast archiwum. Może to być przydatne, jeśli chcesz dodatkowo przetworzyć pliki przed wysłaniem ich na serwer lub samodzielnie spakować je później do archiwum.
+
 ## Programowanie z wykluczonymi pełnomocnikami kolekcji
 
 Pełnomocnik kolekcji (collection proxy), które zostały wykluczone z kompilacji, działają jak zwykłe proksy kolekcji, z jedną ważną różnicą. Wysłanie im komunikatu `load`, podczas gdy wciąż mają zasoby, które nie są dostępne w składzie pakietu, spowoduje ich niepowodzenie.
 
-Dlatego zanim wyślemy komunikat `load`, musimy sprawdzić, czy brakuje jakichkolwiek zasobów. Jeśli tak, musimy je pobrać, a następnie przechować. Poniższy, przykładowy kod zakłada, że zasoby są przechowywane w Amazon S3, w kubełku o nazwie `"my-game-bucket"` z prefiksem `my-resources`.
+W aktualnym przepływie opartym na archiwach zwykle z góry określasz, które archiwum lub archiwa są potrzebne dla danego proxy, i montujesz je przed załadowaniem. Jeśli chcesz sprawdzić, czy proxy odwołuje się do wykluczonej zawartości, użyj `collectionproxy.get_resources()`. Starsza funkcja `collectionproxy.missing_resources()` należy do przestarzałego przepływu Live Update opartego na pobieraniu pojedynczych zasobów.
+
+Gdy włączona jest opcja *Strip Live Update Entries from Main Manifest*, która domyślnie jest aktywna przy publikowaniu archiwalnej zawartości Live Update:
+
+* jeśli żadne zamontowane archiwum nie zawiera wykluczonej zawartości dla danego proxy, `collectionproxy.get_resources("#proxy")` zwraca pustą tabelę `{}`;
+* po zamontowaniu odpowiedniego archiwum `collectionproxy.get_resources("#proxy")` zwraca niepustą tabelę z hashami zasobów tego proxy, na przykład:
 
 ```lua
-function init(self)
-    self.resources_pending = 0 -- <1>
-    msg.post("#", "attempt_load_resources")
-end
+{
+    "a1b2c3...", -- kolekcja docelowa
+    "d4e5f6...", -- obiekt gry
+    "7890ab...", -- skrypt
+}
+```
 
--- This function is called whenever we have tried to store a downloaded resource
--- necessary for our collection proxy to load.
-local function resource_store_response(self, hexdigest, status)
-    if status == true then
-        -- Successfully loaded resource
-        print("Resource data stored: " .. hexdigest)
+Poniższy przykład zakłada, że archiwum jest dostępne pod adresem URL określonym w ustawieniu `game.http_url`.
 
-        -- One less resource to go...
-        self.resources_pending = self.resources_pending - 1
+```lua
+-- Trzeba śledzić, które archiwum zawiera jaki kontent.
+-- W tym przykładzie używamy tylko jednego archiwum liveupdate zawierającego
+-- wszystkie zasoby potrzebne dla danego proxy.
+local lu_infos = {
+    liveupdate = {
+        name = "liveupdate",
+        priority = 10,
+    }
+}
 
-        -- That was all of them, time to load the proxied collection.
-        if self.resources_pending == 0 then
-            msg.post("#proxy", "load") -- <8>
-        end
-    else
-        -- ERROR! Failed to store the data!
-        print("Failed to store resource data: " .. hexdigest)
+local function get_lu_info_for_level(level_name)
+    if level_name == "level1" then
+        return lu_infos["liveupdate"]
     end
 end
 
+local function mount_zip(self, name, priority, path, callback)
+    liveupdate.add_mount(name, "zip:" .. path, priority, function(_uri, _path, _status) -- <1>
+        callback(_uri, _path, _status)
+    end)
+end
+
+local function has_mount(name)
+    for _, mount in ipairs(liveupdate.get_mounts()) do
+        if mount.name == name then
+            return true
+        end
+    end
+    return false
+end
+
+function init(self)
+    self.http_url = sys.get_config_string("game.http_url", nil) -- <2>
+
+    local level_name = "level1"
+    local info = get_lu_info_for_level(level_name) -- <3>
+
+    msg.post("#", "load_level", { level = "level1", info = info }) -- <4>
+end
+
 function on_message(self, message_id, message, sender)
-    if message_id == hash("attempt_load_resources") then
-        local missing_resources = collectionproxy.missing_resources("#proxy") -- <2>
+    if message_id == hash("load_level") then
+        local proxy_resources = collectionproxy.get_resources("#" .. message.level) -- <5>
 
-        -- initiate a download request for each of the missing resources that has not yet been tried.
-        for _,resource_hash in ipairs(missing_resources) do
-            msg.post("#", "attempt_download", { resource_hash = resource_hash})
+        -- Przy włączonym Strip Live Update Entries from Main Manifest ta tabela
+        -- jest pusta, dopóki odpowiednie archiwum nie zostanie zamontowane.
+        -- Po zamontowaniu zawiera hashe zasobów należących do proxy.
+        if message.info and #proxy_resources == 0 and not has_mount(message.info.name) then
+            msg.post("#", "download_archive", message) -- <6>
+        else
+            msg.post("#" .. message.level, "load")
         end
 
-        self.resources_pending = #missing_resources -- <3>
+    elseif message_id == hash("download_archive") then
+        local zip_filename = message.info.name .. ".zip"
+        local download_path = sys.get_save_file("mygame", zip_filename)
+        local url = self.http_url .. "/" .. zip_filename
 
-        -- if we're running from editor all resources are there from the start.
-        if self.resources_pending == 0 then
-            msg.post("#proxy", "load")
-        end
-    elseif message_id == hash("attempt_download") then
-        local manifest = resource.get_current_manifest() -- <4>
-        local base_url = "https://my-game-bucket.s3.amazonaws.com/my-resources/" -- <5>
-        http.request(base_url .. message.resource_hash, "GET", function(self, id, response)
-            if response.status == 200 or response.status == 304 then -- <6>
-                -- We got the response ok.
-                print("storing " .. message.resource_hash)
-                resource.store_resource(manifest, response.response, message.resource_hash, resource_store_response) -- <7>
+        http.request(url, "GET", function(self, id, response) -- <7>
+            if response.status == 200 or response.status == 304 then
+                mount_zip(self, message.info.name, message.info.priority, download_path, function(uri, path, status) -- <8>
+                    msg.post("#", "load_level", message)
+                end)
             else
-                -- ERROR! Failed to download resource!
-                print("Failed to download resource: " .. message.resource_hash)
+                print("Nie udało się pobrać archiwum ", download_path, "z", url, ":", response.status)
             end
-        end)
+        end, nil, nil, { path = download_path })
+
     elseif message_id == hash("proxy_loaded") then
         msg.post(sender, "init")
         msg.post(sender, "enable")
     end
 end
 ```
-1. Prosty licznik mówiący nam, ile zasobów musimy jeszcze pobrać i przechować, zanim będziemy mogli załadować kolekcję proxy. Należy zauważyć, że ten kod w ogóle nie zajmuje się obsługą błędów, więc w kodzie produkcyjnym należy śledzić operacje pobierania i przechowywania.
-2. Pobierz wszelkie zasoby, które musimy pobrać i przechować.
-3. Przechowaj liczbę brakujących zasobów, abyśmy mogli je zliczyć.
-4. Potrzebujemy bieżącego manifestu, ponieważ zawiera on listę wszystkich zasobów w bundlu oraz informacje, czy są dostępne, czy nie.
-5. Przechowujemy nasze zasoby na Amazon S3. Jeśli tworzysz archiwum Zip z zasobami, musisz hostować pliki w określonym miejscu i odnosić się do ich lokalizacji podczas pobierania ich za pomocą `http.request()`.
-6. Amazon zwraca status 304, gdy pliki są w pamięci podręcznej.
-7. Mamy dane w tym punkcie. Spróbujmy je przechować.
-8. Przechowywanie było udane, a liczba brakujących zasobów spadła do zera. Teraz bezpiecznie możemy wysłać komunikat `"load"` do kolekcji proxy. Należy zauważyć, że jeśli pobieranie lub przechowywanie zawiedzie w którymś momencie, licznik nigdy nie osiągnie zera.
+1. `liveupdate.add_mount()` montuje pojedyncze archiwum pod zadaną nazwą i priorytetem. Dane stają się natychmiast dostępne bez restartu silnika.
+2. Archiwum trzeba udostępnić online, na przykład na S3, skąd będzie można je pobrać.
+3. Na podstawie nazwy collection proxy trzeba określić, które archiwum lub archiwa należy pobrać i jak je zamontować.
+4. Przy starcie próbujemy załadować poziom.
+5. Za pomocą `collectionproxy.get_resources()` sprawdzamy wykluczoną zawartość proxy. Przy domyślnym ustawieniu stripped-manifest funkcja zwraca `{}` do momentu zamontowania odpowiedniego archiwum, a po zamontowaniu zwraca niepustą tabelę hashy zasobów proxy.
+6. Jeśli proxy korzysta z zawartości Live Update i odpowiednie archiwum nie jest jeszcze zamontowane, pobieramy je i montujemy przed załadowaniem proxy.
+7. Wysyłamy żądanie HTTP i pobieramy archiwum do `download_path`.
+8. Po pobraniu danych montujemy je w działającym silniku.
 
 Z kodem ładowania możemy przetestować aplikację. Jednak uruchamianie jej z edytora nie spowoduje pobierania niczego. Dzieje się tak, ponieważ funkcja Live update to funkcja paczki. W środowisku edytora nie wyklucza się żadnych zasobów. Aby upewnić się, że wszystko działa prawidłowo, trzeba utworzyć paczkę (bundle).
 
@@ -140,105 +165,23 @@ Pakowanie (bundle) z funkcją aktualizacji na żywo jest proste. Wybierz <kbd>Pr
 
 ![Bundle Live application](/manuals/images/live-update/bundle-app.png)
 
-Podczas pakowania wszelkie wykluczone zasoby zostaną pominięte w pakiecie aplikacji. Zaznaczając pole wyboru *Publish Live update content* (Opublikuj zawartość aktualizacji na żywo), informujesz Defolda, żeby albo przesyłał wykluczone zasoby na Amazon, albo tworzył archiwum Zip, w zależności od tego, jak skonfigurowałeś ustawienia aktualizacji na żywo (patrz wyżej). Plik manifestu dla paczki zostanie również uwzględniony w wykluczonych zasobach.
+Podczas pakowania wszelkie wykluczone zasoby zostaną pominięte w pakiecie aplikacji. Zaznaczając pole wyboru *Publish Live update content* (Opublikuj zawartość aktualizacji na żywo), informujesz Defolda, żeby albo przesyłał wykluczone zasoby na Amazon, albo tworzył archiwum Zip, w zależności od tego, jak skonfigurowałeś ustawienia aktualizacji na żywo (patrz wyżej). Opublikowana zawartość Live Update nadal zawiera `liveupdate.game.dmanifest`, czyli pełną listę zasobów potrzebnych do zdalnego dostarczania treści.
+
+Przy publikowaniu archiwalnej zawartości Live Update opcja *Strip Live Update Entries from Main Manifest* (`liveupdate.exclude_entries_from_main_manifest`) jest domyślnie włączona. Gdy ta opcja jest aktywna, zasoby przeznaczone wyłącznie dla Live Update są usuwane z dołączonego `game.dmanifest`, co zmniejsza rozmiar paczki i zużycie pamięci w czasie działania. Wyłączaj ją tylko wtedy, gdy potrzebujesz przestarzałego zachowania, w którym wykluczone wpisy nadal pozostają w dołączonym `game.dmanifest`.
+
+Przy ustawieniu domyślnym `collectionproxy.get_resources()` zwraca `{}` do momentu zamontowania odpowiedniego archiwum, a po zamontowaniu zwraca hashe zasobów tego proxy.
 
 Kliknij *Package* i wybierz lokalizację pakietu aplikacji. Teraz możesz uruchomić aplikację i sprawdzić, czy wszystko działa zgodnie z oczekiwaniami.
 
-## Manifest
+## Przestarzały przepływ pojedynczych zasobów i manifestów
 
-Manifest to wewnętrzna struktura danych zawierająca listę wszystkich zasobów zawartych w buildzie oraz wartość skrótu każdego zasobu. Funkcjonalność Live update wykorzystuje manifest do śledzenia, co jest częścią zbudowanej gry, co można załadować z zewnętrznych źródeł i, jeśli tak się stanie, sprawdzenie, czy załadowane dane są nietknięte.
+Starszy przepływ Live Update oparty na pobieraniu pojedynczych zasobów oraz ręcznej podmianie manifestu w czasie działania jest przestarzały i nie powinien być używany w nowych projektach.
 
-Z perspektywy użytkownika manifest to liczbowy uchwyt, ukrywający detale, jak jest zarządzany, w silniku.
+Dotyczy to w szczególności `collectionproxy.missing_resources()`, przestarzałych API manifestu (`liveupdate.get_current_manifest()`, `liveupdate.store_resource()`, `liveupdate.store_manifest()`, `liveupdate.store_archive()`, `liveupdate.is_using_liveupdate_data()`), a także starych aliasów `resource.get_current_manifest()`, `resource.store_resource()`, `resource.store_manifest()`, `resource.store_archive()` i `resource.is_using_liveupdate_data()`.
 
-## Aktualizacja manifestu w funkcji Live update
+Współczesny przepływ polega na publikowaniu archiwów Live Update, montowaniu ich za pomocą `liveupdate.add_mount()`, zarządzaniu nimi przy użyciu `liveupdate.get_mounts()` i `liveupdate.remove_mount()`, oraz opcjonalnym używaniu `collectionproxy.get_resources()`, gdy trzeba sprawdzić, czy dany proxy ma wykluczone zasoby. Stare klucze podpisywania manifestu nie są już częścią tego procesu: pola `publickey` i `privatekey` w `liveupdate.settings` są przestarzałe i nieużywane, a plik `game.public.der` nie jest już generowany ani dołączany do paczki.
 
-Z funkcją aktualizacji na żywo nowy manifest można przechowywać lokalnie w trakcie działania programu. Manifest lokalny zostanie użyty podczas uruchamiania aplikacji zamiast tego, który jest dołączony w pakiecie aplikacji. Jest to przydatne do modyfikowania lub dodawania zasobów aktualizacji na żywo do opublikowanej gry, które nie były znane podczas budowy, bez konieczności publikowania pełnej wersji.
-
-Podczas publikowania zasobów aktualizacji na żywo na Amazon Web Service lub do archiwum ZIP, manifest będzie uwzględniony w pakiecie obok zasobów. Nazwa pliku manifestu to `liveupdate.game.dmanifest`.
-
-Rozpoczęcie pracy z silnikiem Defold po raz pierwszy po przechowywaniu manifestu spowoduje utworzenie pliku identyfikatora paczki `bundle.ver` obok manifestu. Służy to do wykrywania, czy paczka uległa zmianie od czasu przechowywania manifestu, na przykład po pełnej aktualizacji sklepu z aplikacjami. Jeśli tak się stanie, przechowany manifest zostanie usunięty z systemu plików, a nowszy manifest z paczki zastąpi go. Oznacza to, że pełna aktualizacja sklepu z aplikacjami usunie wcześniej przechowywany manifest. Wszystkie istniejące zasoby aktualizacji na żywo pozostaną jednak nietknięte.
-
-### Weryfikacja manifestu
-
-Podczas przechowywania nowego manifestu jego dane zostaną zweryfikowane, zanim zostaną faktycznie zapisane na dysku. Weryfikacja składa się z kilku sprawdzeń:
-
-* Poprawny format pliku binarnego.
-* Obsługuje obecną wersję silnika lub jakąkolwiek inną obsługiwaną wersję z ustawień.
-* Sygnatura kryptograficzna.
-* Podpisany przy użyciu tej samej pary kluczy publicznych i prywatnych co załączony manifest.
-* Zweryfikowanie, że wszystkie zasoby, których manifest oczekuje w paczce, rzeczywiście znajdują się w niej.
-
-Z perspektywy użytkownika proces weryfikacji jest zupełnie niewidoczny, ale ważne jest zrozumienie kroków, które są zaangażowane, aby uniknąć najczęstszych problemów.
-
-<div class='important' markdown='1'>
-Jeśli widzisz błąd `"ERROR:RESOURCE: Byte mismatch in decrypted manifest signature. Different keys used for signing?"` w konsoli w trakcie budowania gry na HTML5, to prawdopodobnie oznacza, że Twój serwer WWW nie serwuje wykluczonych zasobów, ani zaktualizowanego pliku manifestu z właściwym typem MIME. Upewnij się, że typ MIME to `application/octet-stream`. Możesz dodać plik `.htaccess` z pojedynczą linią `AddType application/octet-stream .` do folderu, z którego pobierane są zasoby aktualizacji na żywo.
-</div>
-
-### Obsługiwane wersje silnika Defold
-
-Manifest zawsze będzie obsługiwać wersję Defolda używaną do jego generowania. Jeśli chcesz obsługiwać dodatkowe wersje silnika, dodaj je do listy w ustawieniach aktualizacji na żywo. Jest to przydatne, jeśli Twoja gra na żywo używa innej wersji Defolda niż ta, którą używasz do generowania manifestu.
-
-![Manifest supported engine versions](/manuals/images/live-update/engine-versions-settings.png)
-
-### Generowanie kluczy do podpisu
-
-Sygnatura manifestu służy do weryfikowania, że nikt ze złymi zamiarami nie będzie mógł grzebać w jego treści, i że załączony manifest i nowy manifest były podpisane tymi samymi kluczami. Podpisanie jest wykonywane w procesie budowania paczki (bundlowania).
-
-Do kryptograficznego podpisywania manifestu używa się pary kluczy publicznych/prywatnych. Podpisanie jest realizowane przy użyciu kluczy RSA o długości 512/1024/2048 bitów w formacie `.der`, które użytkownik musi dostarczyć. Możesz wygenerować je przykładowo za pomocą narzędzia `openssl`:
-
-```sh
-$ openssl genrsa -out private_raw.key 1024
-$ openssl pkcs8 -topk8 -inform pem -in private_raw.key -outform der -nocrypt -out private.der
-$ openssl rsa -in private_raw.key -outform DER -RSAPublicKey_out -pubout -out public.der
-```
-
-To spowoduje wygenerowanie plików `private_raw.key` (można go bezpiecznie usunąć), `private.der` i `public.der`. Aby użyć kluczy do podpisywania, otwórz widok ustawień aktualizacji na żywo (live update settings) i wskaz odpowiednie pola na wygenerowane klucze.
-
-![Manifest signature key-pair](/manuals/images/live-update/manifest-keys.png)
-
-### Programowanie z manifestem aktualizacji na żywo
-Dodając do powyższego przykładu skryptu, dodajmy poniższą funkcję zwrotną:
-
-```lua
-local function store_manifest_cb(self, status)
-    if status == resource.LIVEUPDATE_OK then
-        print("Successfully stored manifest!")
-    else
-        print("Failed to store manifest, status: ", status)
-    end
-end
-```
-i następujący kod do funkcji `on_message`, aby obsłużyć wiadomość `attempt_download_manifest`:
-
-```lua
-...
-elseif message_id == hash("attempt_download_manifest") then
-    local base_url = "https://my-game-bucket.s3.amazonaws.com/my-resources/" -- <1>
-    http.request(base_url .. MANIFEST_FILENAME, "GET", function(self, id, response)
-        if response.status == 200 or response.status == 304 then
-            -- We got the response ok.
-            print("verifying and storing manifest " .. MANIFEST_FILENAME)
-            resource.store_manifest(response.response, store_manifest_cb) -- <2>
-        else
-            -- ERROR! Failed to download manifest!
-            print("Failed to download manifest: " .. MANIFEST_FILENAME)
-        end
-    end)
-end
-```
-
-1. Manifest zostanie przechowywany na Amazon S3 obok reszty zasobów aktualizacji na żywo. Tak, jak poprzedniu, jeśli tworzysz archiwum Zip z zasobami, musisz hostować je gdzieś i podać referencję do ich lokalizacji podczas pobierania przy użyciu `http.request()`.
-2. Podobnie jak w przypadku pobierania i przechowywania zasobów, wywołanie `resource.store_manifest` przyjmuje dane manifestu do pobrania i funkcję zwrotną jako argumenty. Funkcja zwrotna zweryfikuje manifest i zapisze go w pamięci lokalnej.
-
-Jeśli `resource.store_manifest` zakończy się powodzeniem, nowy manifest będzie teraz w pamięci lokalnej. Następnym razem, gdy silnik zostanie uruchomiony, używany będzie ten nowy manifest zamiast tego, który był dołączony do gry.
-
-### Uwagi
-
-Istnieją pewne rzeczy, o których warto wiedzieć, jeśli planujesz użyć tej funkcji do przechowywania nowego manifestu z aktualizacją na żywo.
-
-* Możliwe jest tylko dodawanie lub modyfikowanie zasobów używanych przez kolekcje proxy oznaczone jako `Exclude` w nowym manifeście. Nie można dokonywać zmian w już dodanych zasobach lub zasobach, które nie znajdują się w wykluczonych pełnomocnikach kolekcji. Na przykład, wprowadzenie zmian w skrypcie używanym przez dołączoną kolekcję spowoduje, że system zasobów będzie szukał tego zasobu w archiwum danych paczki. Jednak ponieważ paczka gry nie zmieniła się (zmienił się tylko manifest), zmienionego skryptu nie można odnaleźć i w konsekwencji nie można go załadować.
-
-* Nawet jeśli funkcjonalność ta pozwala na bardzo szybkie wprowadzanie zmian lub łatanie błędów bez pełnego, nowego release aplikacji w sklepie, live update należy używać z zachowaniem szczególnej ostrożności. Dołączenie nowego manifestu powinno poprzedzać wszystko, co jest potrzebne przy faktycznym wydaniu nowej wersji gry (testowanie, QA, itd.).
+Podczas publikowania zawartości Live Update Defold nadal generuje plik `liveupdate.game.dmanifest`, ale jest on obsługiwany automatycznie jako część procesu bundlowania i publikacji. Nie trzeba już ręcznie pobierać ani zapisywać manifestów ani konfigurować par kluczy publicznych/prywatnych do podpisywania manifestu.
 
 ## Konfiguracja Amazon Web Service
 
