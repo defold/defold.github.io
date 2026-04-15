@@ -214,24 +214,57 @@
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
 
-{%- if page.url == "/" or page.url == "/index.html" -%}
-<link rel="preload" as="image" href="/images/icons/ic-32-fire.svg" type="image/svg+xml" media="(min-width: 801px)">
-<link rel="preload" as="image" href="/images/icons/ic-32-star.svg" type="image/svg+xml" media="(min-width: 801px)">
-<link rel="preload" as="image" href="/images/icons/ic-32-newest.svg" type="image/svg+xml" media="(min-width: 801px)">
-<link rel="preload" as="image" href="/images/icons/ic-32-magglass.svg" type="image/svg+xml" media="(min-width: 801px)">
-{%- assign homepage_showcase_games = site.data.games | where: "showcase", "full" -%}
-{%- assign homepage_showcase_preload_count = 0 -%}
-{%- for game_id in site.data.showcase_featured_full -%}
-	{%- if homepage_showcase_preload_count < 1 -%}
-		{%- assign homepage_showcase_game = homepage_showcase_games | where: "id", game_id | first -%}
-		{%- if homepage_showcase_game and homepage_showcase_game.images and homepage_showcase_game.images.third and homepage_showcase_game.images.third != "" -%}
-<link rel="preload" as="image" href="/images/games/{{ homepage_showcase_game.images.third }}" fetchpriority="high">
-			{%- assign homepage_showcase_preload_count = homepage_showcase_preload_count | plus: 1 -%}
-		{%- endif -%}
-	{%- endif -%}
-{%- endfor -%}
-{%- endif -%}
-
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/css/main.css">
 <!-- end CSS -->
+
+<script>
+(function() {
+	function enhanceImageLoading(img) {
+		if (!img || img.nodeType !== 1) {
+			return;
+		}
+		if (!img.hasAttribute("loading")) {
+			var className = img.getAttribute("class") || "";
+			var eager = /\b(page-hero-graphic|frontpage-hero-logo-image|topnav-brand-image)\b/.test(className);
+			img.setAttribute("loading", eager ? "eager" : "lazy");
+		}
+		if (!img.hasAttribute("decoding")) {
+			img.setAttribute("decoding", "async");
+		}
+	}
+
+	function scanImages(root) {
+		var images = root.getElementsByTagName ? root.getElementsByTagName("img") : [];
+		for (var index = 0; index < images.length; index += 1) {
+			enhanceImageLoading(images[index]);
+		}
+	}
+
+	if ("MutationObserver" in window) {
+		new MutationObserver(function(mutations) {
+			for (var index = 0; index < mutations.length; index += 1) {
+				var nodes = mutations[index].addedNodes;
+				for (var nodeIndex = 0; nodeIndex < nodes.length; nodeIndex += 1) {
+					var node = nodes[nodeIndex];
+					if (node.nodeType !== 1) {
+						continue;
+					}
+					if (node.tagName === "IMG") {
+						enhanceImageLoading(node);
+					}
+					else {
+						scanImages(node);
+					}
+				}
+			}
+		}).observe(document.documentElement, { childList: true, subtree: true });
+	}
+
+	if (document.addEventListener) {
+		document.addEventListener("DOMContentLoaded", function() {
+			scanImages(document);
+		});
+	}
+}());
+</script>

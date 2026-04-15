@@ -11,7 +11,7 @@ heatmap: false
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/editor/editor2-screenshot@3x.webp" alt="Defold editor screenshots" loading="eager">
+{% include webp_picture.html src="/images/editor/editor2-screenshot@3x.webp" alt="Defold editor screenshots" class="page-hero-graphic" loading="eager" %}
 {%- endcapture -%}
 
 {%- capture page_hero_backdrop -%}
@@ -24,7 +24,7 @@ heatmap: false
 	<div class="container">
 		<div class="product-hub-section-heading-split">
 			<div class="product-hub-section-heading-icon" aria-hidden="true">
-				<img src="/images/icons/ic-64-2d3d-blue.svg" alt="">
+				<img src="/images/icons/ic-64-2d3d-blue.svg" alt="" loading="lazy" decoding="async">
 			</div>
 			<div class="page-section-heading">
 				<h2>Build 2D and 3D games</h2>
@@ -36,13 +36,13 @@ heatmap: false
 			<div class="row feature-row-spaced product-hub-feature-row">
 				<div class="column one-half">
 					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
-						<img class="product-hub-visual-image product-hub-visual-image-wide slideinleft" src="/images/editor/editor-screenshot-hero-left-dragosha-3d.webp" alt="3D scene running in the Defold editor">
+						{% include webp_picture.html src="/images/editor/editor-screenshot-hero-left-dragosha-3d.webp" alt="3D scene running in the Defold editor" class="product-hub-visual-image product-hub-visual-image-wide slideinleft" loading="lazy" %}
 					</div>
 				</div>
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/cube_3d.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/cube_3d.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							3D components
 						</h3>
 						<p>All the visual components are actually in 3D, but with models and meshes, you can build truly immersive experiences. Keep the same Defold workflow when you move into 3D and mix runtime geometry, lighting, shaders, and particles in the project structure.</p>
@@ -64,7 +64,7 @@ heatmap: false
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/cube_2d.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/cube_2d.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							2D components
 						</h3>
 						<p>Use the editor as a fast 2D production toolchain with built-in support for the most common content types and animation workflows.</p>
@@ -84,7 +84,7 @@ heatmap: false
 				</div>
 				<div class="column one-half">
 					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
-						<img class="product-hub-visual-image product-hub-visual-image-wide slideinright" src="/images/editor/editor-screenshot-hero-right-dragosha@2x.webp" alt="2D game scene edited in Defold">
+						{% include webp_picture.html src="/images/editor/editor-screenshot-hero-right-dragosha@2x.webp" alt="2D game scene edited in Defold" class="product-hub-visual-image product-hub-visual-image-wide slideinright" loading="lazy" %}
 					</div>
 				</div>
 			</div>
@@ -92,13 +92,13 @@ heatmap: false
 			<div class="row feature-row-spaced product-hub-feature-row">
 				<div class="column one-half">
 					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
-						<img class="product-hub-visual-image product-hub-visual-image-wide slideinleft" src="/images/editor/editor-screenshot-gui-left@2x.webp" alt="Defold GUI editor with interface nodes and layout controls">
+						{% include webp_picture.html src="/images/editor/editor-screenshot-gui-left@2x.webp" alt="Defold GUI editor with interface nodes and layout controls" class="product-hub-visual-image product-hub-visual-image-wide slideinleft" loading="lazy" %}
 					</div>
 				</div>
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/gui.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/gui.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Graphical User Interfaces
 						</h3>
 						<p>Create astonishing user interfaces, popups, menus, and more using Defold's built-in artists friendly visual editor with all the core components and powerful features.</p>
@@ -125,7 +125,7 @@ heatmap: false
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/icon-particles.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/icon-particles.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Particle Effects
 						</h3>
 						<p>Juice up your visuals with Defold's particle effects, created in the built-in editor with live preview of emitter and modifier behavior.</p>
@@ -143,7 +143,7 @@ heatmap: false
 				</div>
 				<div class="column one-half">
 					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
-						<img class="product-hub-visual-image product-hub-visual-image-wide slideinright" src="/images/editor/editor-screenshot-hero-right@2x.webp" alt="Defold particle effect editor with live preview">
+						{% include webp_picture.html src="/images/editor/editor-screenshot-hero-right@2x.webp" alt="Defold particle effect editor with live preview" class="product-hub-visual-image product-hub-visual-image-wide slideinright" loading="lazy" %}
 					</div>
 				</div>
 			</div>
@@ -156,7 +156,7 @@ heatmap: false
 	<div class="container">
 		<div class="product-hub-section-heading-split">
 			<div class="product-hub-section-heading-icon" aria-hidden="true">
-				<img src="/images/icons/palette.svg" alt="">
+				<img src="/images/icons/palette.svg" alt="" loading="lazy" decoding="async">
 			</div>
 			<div class="page-section-heading">
 				<h2>Make it vivid</h2>
@@ -168,13 +168,13 @@ heatmap: false
 			<div class="row feature-row-spaced product-hub-feature-row">
 				<div class="column one-half">
 					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
-						<img class="product-hub-visual-image product-hub-visual-image-wide slideinleft" src="/images/editor/editor-screenshot-hero2-left@2x.webp" alt="Defold visual scene editor arranging game objects and assets">
+						{% include webp_picture.html src="/images/editor/editor-screenshot-hero2-left@2x.webp" alt="Defold visual scene editor arranging game objects and assets" class="product-hub-visual-image product-hub-visual-image-wide slideinleft" loading="lazy" %}
 					</div>
 				</div>
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/visual.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/visual.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Edit conveniently
 						</h3>
 						<p>Tweak your game levels, characters, items, bosses, screens, and game objects in convenient visual editors suited for each type.</p>
@@ -197,7 +197,7 @@ heatmap: false
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/flipbook.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/flipbook.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Animate everything
 						</h3>
 						<p>Defold has a powerful animation system for visual components and scripts. Animate sprites, models, UI, and script values without leaving the engine or building parallel tooling around it.</p>
@@ -216,7 +216,7 @@ heatmap: false
 				</div>
 				<div class="column one-half">
 					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
-						<img class="product-hub-visual-image product-hub-visual-image-wide slideinright" src="/images/editor/editor-combustion-skewed.webp" alt="Game scene with animated visual effects built in Defold">
+						{% include webp_picture.html src="/images/editor/editor-combustion-skewed.webp" alt="Game scene with animated visual effects built in Defold" class="product-hub-visual-image product-hub-visual-image-wide slideinright" loading="lazy" %}
 					</div>
 				</div>
 			</div>
@@ -224,13 +224,13 @@ heatmap: false
 			<div class="row feature-row-spaced product-hub-feature-row">
 				<div class="column one-half">
 					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
-						<img class="product-hub-visual-image product-hub-visual-image-wide slideinleft" src="/images/editor/editor-2-screenshot-left@2x.webp" alt="Defold editor working with skeletal animation content">
+						{% include webp_picture.html src="/images/editor/editor-2-screenshot-left@2x.webp" alt="Defold editor working with skeletal animation content" class="product-hub-visual-image product-hub-visual-image-wide slideinleft" loading="lazy" %}
 					</div>
 				</div>
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/animations.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/animations.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Skeletal animations and more
 						</h3>
 						<p>Use bone animations for models and property animations for movement, rotation, tweens and other values.</p>
@@ -248,7 +248,7 @@ heatmap: false
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/physics.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/physics.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Advanced physics simulations
 						</h3>
 						<p>Attach collision shapes and physics properties to your objects and have them interact in real time. React to collisions using code to create complex interactions.</p>
@@ -266,7 +266,7 @@ heatmap: false
 				</div>
 				<div class="column one-half">
 					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
-						<img class="product-hub-visual-image product-hub-visual-image-wide slideinright" src="/images/editor/editor-screenshot-3d-right@2x.webp" alt="3D physics scene running in the Defold editor">
+						{% include webp_picture.html src="/images/editor/editor-screenshot-3d-right@2x.webp" alt="3D physics scene running in the Defold editor" class="product-hub-visual-image product-hub-visual-image-wide slideinright" loading="lazy" %}
 					</div>
 				</div>
 			</div>
@@ -278,7 +278,7 @@ heatmap: false
 	<div class="container">
 		<div class="product-hub-section-heading-split">
 			<div class="product-hub-section-heading-icon" aria-hidden="true">
-				<img src="/images/icons/ic-64-ship-blue.svg" alt="">
+				<img src="/images/icons/ic-64-ship-blue.svg" alt="" loading="lazy" decoding="async">
 			</div>
 			<div class="page-section-heading">
 				<h2>Write once, ship to all platforms</h2>
@@ -291,13 +291,13 @@ heatmap: false
 			<div class="row feature-row-spaced product-hub-feature-row">
 				<div class="column one-half">
 					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
-						<img class="product-hub-visual-image product-hub-visual-image-wide slideinleft" src="/images/editor/editor-screenshot-hero-left@2x.webp" alt="Defold script editor and project workspace">
+						{% include webp_picture.html src="/images/editor/editor-screenshot-hero-left@2x.webp" alt="Defold script editor and project workspace" class="product-hub-visual-image product-hub-visual-image-wide slideinleft" loading="lazy" %}
 					</div>
 				</div>
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/lua.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/lua.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Write in Lua
 						</h3>
 						<p>Write all of your game logic using the Lua scripting language. Lua is a commonly used scripting language for games with an easy to learn syntax and great performance.</p>
@@ -325,7 +325,7 @@ heatmap: false
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/icon-cross-platform.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/icon-cross-platform.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Cross-platform deployment
 						</h3>
 						<p>The Defold APIs work across supported platforms, so you do not need to manage platform-specific paths, render pipelines, input methods, or purchasing systems for common cases.</p>
@@ -346,7 +346,7 @@ heatmap: false
 					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
 						<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-wide slideinright">
 							<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-right">
-								<img class="product-hub-visual-image product-hub-gif-image" src="/images/animations/platforms.gif" alt="Defold game exported across multiple supported platforms">
+								<img class="product-hub-visual-image product-hub-gif-image" src="/images/animations/platforms.gif" alt="Defold game exported across multiple supported platforms" loading="lazy" decoding="async">
 							</div>
 						</div>
 					</div>
@@ -360,7 +360,7 @@ heatmap: false
 	<div class="container">
 		<div class="product-hub-section-heading-split">
 			<div class="product-hub-section-heading-icon" aria-hidden="true">
-				<img src="/images/icons/ic-64-lightning.svg" alt="">
+				<img src="/images/icons/ic-64-lightning.svg" alt="" loading="lazy" decoding="async">
 			</div>
 			<div class="page-section-heading">
 				<h2>Fast in development, fast in action</h2>
@@ -375,7 +375,7 @@ heatmap: false
 					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
 						<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-wide slideinleft">
 							<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-left">
-								<img class="product-hub-visual-image product-hub-gif-image" src="/images/animations/hot-reload.gif" alt="Hot reload updating a running Defold game during development">
+								<img class="product-hub-visual-image product-hub-gif-image" src="/images/animations/hot-reload.gif" alt="Hot reload updating a running Defold game during development" loading="lazy" decoding="async">
 							</div>
 						</div>
 					</div>
@@ -383,7 +383,7 @@ heatmap: false
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/icon-rapid.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/icon-rapid.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Rapid workflow
 						</h3>
 						<p>We belive speed is key to productivity. And to obtain it, nothing can stand on your way. Defold build usually takes only a couple of seconds. You're even able to push new or updated content and game logic to an already running game on your desktop, phone or console.</p>
@@ -406,7 +406,7 @@ heatmap: false
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/icon-profiling.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/icon-profiling.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Profiling and debugging
 						</h3>
 						<p>We give you all the needed tools to help you find and fix bottlenecks and problems with your games easily.</p>
@@ -427,7 +427,7 @@ heatmap: false
 					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
 						<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-wide slideinright">
 							<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-right">
-								<img class="product-hub-visual-image product-hub-gif-image" src="/images/animations/analytics.gif" alt="Defold profiling and analytics tools inspecting game performance">
+								<img class="product-hub-visual-image product-hub-gif-image" src="/images/animations/analytics.gif" alt="Defold profiling and analytics tools inspecting game performance" loading="lazy" decoding="async">
 							</div>
 						</div>
 					</div>
@@ -439,7 +439,7 @@ heatmap: false
 					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
 						<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-wide slideinleft">
 							<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-left">
-								<img class="product-hub-visual-image product-hub-gif-image" src="/images/editor/screenshot/nikolay_armonik.webp" alt="Game built with Defold running smoothly on mobile hardware">
+								{% include webp_picture.html src="/images/editor/screenshot/nikolay_armonik.webp" alt="Game built with Defold running smoothly on mobile hardware" class="product-hub-visual-image product-hub-gif-image" loading="lazy" %}
 							</div>
 						</div>
 					</div>
@@ -447,7 +447,7 @@ heatmap: false
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/icon-performance.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/icon-performance.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Performant and stable
 						</h3>
 						<p>Defold is a modern game engine optimized for high performance, even on low-end devices, and extremely low footprint, with a well defined architecture and a stable release cycle. </p>
@@ -470,7 +470,7 @@ heatmap: false
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/icon-stars.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/icon-stars.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Production ready
 						</h3>
 						<p>Defold is a battle tested and production ready game engine. Integrations with popular third party analytics, app economy and game services are officially supported and maintained by the Defold Foundation.</p>
@@ -494,7 +494,7 @@ heatmap: false
 					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
 						<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-wide slideinright">
 							<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-right">
-								<img class="product-hub-visual-image product-hub-gif-image" src="/images/editor/screenshot/selim_anac.webp" alt="Production game built with Defold and third-party service integrations">
+								{% include webp_picture.html src="/images/editor/screenshot/selim_anac.webp" alt="Production game built with Defold and third-party service integrations" class="product-hub-visual-image product-hub-gif-image" loading="lazy" %}
 							</div>
 						</div>
 					</div>
@@ -508,7 +508,7 @@ heatmap: false
 	<div class="container">
 		<div class="product-hub-section-heading-split">
 			<div class="product-hub-section-heading-icon" aria-hidden="true">
-				<img src="/images/icons/puzzles.svg" alt="">
+				<img src="/images/icons/puzzles.svg" alt="" loading="lazy" decoding="async">
 			</div>
 			<div class="page-section-heading">
 				<h2>Scale up or down</h2>
@@ -527,13 +527,13 @@ heatmap: false
 			<div class="row feature-row-spaced product-hub-feature-row">
 				<div class="column one-half">
 					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
-						<img class="product-hub-visual-image product-hub-visual-image-wide slideinleft" src="/images/editor/image-extensions.webp" alt="Defold project using native extensions and external SDK integrations">
+						{% include webp_picture.html src="/images/editor/image-extensions.webp" alt="Defold project using native extensions and external SDK integrations" class="product-hub-visual-image product-hub-visual-image-wide slideinleft" loading="lazy" %}
 					</div>
 				</div>
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/icon-toolbox.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/icon-toolbox.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Native extensions
 						</h3>
 						<p>The Defold SDK lets you write engine extensions in C, C++, Objective-C, Java, and JavaScript without building a separate engine workflow around your project. Typical use cases include high-performance calculations, hardware access such as mobile cameras, and integrating external SDKs for ads, analytics, and services.</p>
@@ -558,7 +558,7 @@ heatmap: false
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/blocks.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/blocks.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Extendable and customizable
 						</h3>
 						<p>Easily add libraries and extend the engine with Native Extensions, Editor Scripts and custom UI. Customize the engine and editor to your needs with powerful Native Extensions, Editor Scripts and custom UI.</p>
@@ -577,7 +577,7 @@ heatmap: false
 				</div>
 				<div class="column one-half">
 					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
-						<img class="product-hub-visual-image product-hub-visual-image-wide slideinright" src="/images/editor/nosetup-editor@2x.webp" alt="Defold editor with built-in tools and no external setup required">
+						{% include webp_picture.html src="/images/editor/nosetup-editor@2x.webp" alt="Defold editor with built-in tools and no external setup required" class="product-hub-visual-image product-hub-visual-image-wide slideinright" loading="lazy" %}
 					</div>
 				</div>
 			</div>
@@ -585,13 +585,13 @@ heatmap: false
 			<div class="row feature-row-spaced product-hub-feature-row">
 				<div class="column one-half">
 					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
-						<img class="product-hub-visual-image product-hub-visual-image-wide slideinleft" src="/images/editor/editor-screenshot-duovikings.webp" alt="Game content delivered with Defold live update workflows">
+						{% include webp_picture.html src="/images/editor/editor-screenshot-duovikings.webp" alt="Game content delivered with Defold live update workflows" class="product-hub-visual-image product-hub-visual-image-wide slideinleft" loading="lazy" %}
 					</div>
 				</div>
 				<div class="column one-half">
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
-							<img class="feature-heading-icon" src="/images/icons/icon-live-update.svg" alt="" aria-hidden="true"/>
+							<img class="feature-heading-icon" src="/images/icons/icon-live-update.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 							Live Updates
 						</h3>
 						<p>Defold lets you ship a smaller base package first, then fetch and mount additional content later at runtime. Use it when you want faster HTML5 startup, episodic delivery, optional level packs, or delayed downloads for very large resources such as images, videos, and other heavy content.</p>
@@ -630,7 +630,7 @@ heatmap: false
 					</div>
 				</div>
 				<div class="product-hub-inline-visual product-hub-inline-visual-right" aria-hidden="true">
-					<img class="product-why-bean" src="/images/beans/bean-magGlass-01.png" alt="Defold bean character holding a magnifying glass">
+					<img class="product-why-bean" src="/images/beans/bean-magGlass-01.png" alt="Defold bean character holding a magnifying glass" loading="lazy" decoding="async">
 				</div>
 			</div>
 		</div>

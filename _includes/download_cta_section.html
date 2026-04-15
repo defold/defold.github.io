@@ -10,7 +10,7 @@
 	<div class="container">
 		<div class="page-download-cta-shell">
 			<div class="page-download-cta-art page-download-cta-art-left" aria-hidden="true">
-				<img src="{{ download_cta_left_image }}" alt="" class="slideinleft" loading="lazy" decoding="async">
+				{%- include webp_picture.html src=download_cta_left_image alt="" class="slideinleft" loading="lazy" -%}
 			</div>
 			<div class="page-download-cta-copy">
 				<div class="page-section-heading page-section-heading-center">
@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			<div class="page-download-cta-art page-download-cta-art-right" aria-hidden="true">
-				<img src="{{ download_cta_right_image }}" alt="" class="slideinright" loading="lazy" decoding="async">
+				{%- include webp_picture.html src=download_cta_right_image alt="" class="slideinright" loading="lazy" -%}
 			</div>
 		</div>
 	</div>

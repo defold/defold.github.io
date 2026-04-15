@@ -125,16 +125,24 @@
 			return groupedPages;
 		}
 
-		function getImagePath(filename) {
-			return filename ? '/images/games/' + filename : '';
+		function getImagePath(filenameOrPath) {
+			if (!filenameOrPath) {
+				return '';
+			}
+			if (/^(https?:)?\/\//.test(filenameOrPath) || filenameOrPath.charAt(0) === '/') {
+				return filenameOrPath;
+			}
+			return '/images/games/' + filenameOrPath;
 		}
 
 		function getResponsiveImageData(game) {
 			const images = game.images || {};
 			const preferredImage = images.third || '';
+			const fallbackImage = images.thirdFallback || '';
 
 			return {
-				src: getImagePath(preferredImage),
+				src: getImagePath(fallbackImage || preferredImage),
+				webpSrc: getImagePath(preferredImage),
 				srcset: '',
 				sizes: ''
 			};
@@ -181,6 +189,8 @@
 
 		function createCard(game, copyIndex, baseIndex) {
 			const imageData = getResponsiveImageData(game);
+			const isInitiallyVisible = copyIndex === 0 && baseIndex < cardsPerView;
+			const isLeadCard = isInitiallyVisible && baseIndex === 0;
 
 			const card = document.createElement('a');
 			card.href = '/showcase#' + game.id;
@@ -204,12 +214,24 @@
 				img.alt = game.name;
 				img.decoding = 'async';
 				img.draggable = false;
-				img.loading = copyIndex === 0 && baseIndex < cardsPerView ? 'eager' : 'lazy';
-				if (copyIndex === 0 && baseIndex === 0) {
-					img.fetchPriority = 'high';
+				img.loading = isInitiallyVisible ? 'eager' : 'lazy';
+				if (isLeadCard) {
+					img.setAttribute('fetchpriority', 'high');
 				}
 				img.src = imageData.src;
-				media.appendChild(img);
+				if (imageData.webpSrc && imageData.webpSrc !== imageData.src && /\.webp($|\?)/i.test(imageData.webpSrc)) {
+					const picture = document.createElement('picture');
+					const source = document.createElement('source');
+					picture.className = 'webp-fallback-picture';
+					source.srcset = imageData.webpSrc;
+					source.type = 'image/webp';
+					picture.appendChild(source);
+					picture.appendChild(img);
+					media.appendChild(picture);
+				}
+				else {
+					media.appendChild(img);
+				}
 			}
 
 			const copy = document.createElement('span');

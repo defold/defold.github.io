@@ -11,10 +11,10 @@
 <a class="page-feature-card{% if include.card_class %} {{ include.card_class }}{% endif %}{% if include.thumbnail %} page-feature-card-with-media{% endif %}{% if include.hide_badge %} page-feature-card-no-badge{% endif %}{% if render_badge_overlay %} page-feature-card-media-badge-overlay{% endif %}" href="{{ include.link }}"{% if card_target %} target="{{ card_target }}"{% endif %}{% if card_rel %} rel="{{ card_rel }}"{% endif %}>
 	{%- if include.thumbnail -%}
 	<span class="page-feature-card-media" aria-hidden="true">
-		<img src="{{ include.thumbnail }}" alt="{{ include.title }} preview image" loading="lazy">
+		<img src="{{ include.thumbnail }}" alt="{{ include.title }} preview image" loading="lazy" decoding="async">
 		{%- if render_badge_overlay -%}
 		<span class="page-feature-card-badge{% if include.badge_class %} {{ include.badge_class }}{% endif %}" aria-hidden="true">
-			<img src="{{ include.icon }}" alt="">
+			<img src="{{ include.icon }}" alt="" loading="lazy" decoding="async">
 		</span>
 		{%- endif -%}
 	</span>
@@ -28,7 +28,7 @@
 		</span>
 	{%- else -%}
 		<span class="page-feature-card-badge{% if include.badge_class %} {{ include.badge_class }}{% endif %}" aria-hidden="true">
-			<img src="{{ include.icon }}" alt="">
+			<img src="{{ include.icon }}" alt="" loading="lazy" decoding="async">
 		</span>
 	{%- endif -%}
 	{%- endunless -%}

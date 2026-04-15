@@ -31,16 +31,17 @@
 								{%- assign game = showcase_games | where: "id", game_id | first -%}
 								{%- if game -%}
 									{%- assign game_image_src = game.images.third -%}
+									{%- assign game_image_path = "/images/games/" | append: game_image_src -%}
+									{%- assign game_image_loading = "lazy" -%}
+									{%- assign game_image_fetchpriority = nil -%}
+									{%- if rendered_initial_count == 0 -%}
+										{%- assign game_image_loading = "eager" -%}
+										{%- assign game_image_fetchpriority = "high" -%}
+									{%- endif -%}
 									<a href="/showcase#{{ game.id }}" class="frontpage-showcase-card game-banner-link" data-game-id="{{ game.id }}" aria-label="{{ game.name }}">
 										<span class="frontpage-showcase-card-media">
 											{% if game_image_src and game_image_src != "" %}
-											<img
-												src="/images/games/{{ game_image_src }}"
-												alt="{{ game.name }}"
-												loading="{% if rendered_initial_count < 3 %}eager{% else %}lazy{% endif %}"
-												{% if rendered_initial_count == 0 %}fetchpriority="high"{% endif %}
-												decoding="async"
-											/>
+											{%- include webp_picture.html src=game_image_path alt=game.name loading=game_image_loading fetchpriority=game_image_fetchpriority -%}
 											{% endif %}
 										</span>
 										<span class="frontpage-showcase-card-copy">
@@ -57,16 +58,17 @@
 					{%- if rendered_initial_count == 0 -%}
 						{%- for game in showcase_games limit: initial_showcase_limit -%}
 							{%- assign game_image_src = game.images.third -%}
+							{%- assign game_image_path = "/images/games/" | append: game_image_src -%}
+							{%- assign game_image_loading = "lazy" -%}
+							{%- assign game_image_fetchpriority = nil -%}
+							{%- if forloop.first -%}
+								{%- assign game_image_loading = "eager" -%}
+								{%- assign game_image_fetchpriority = "high" -%}
+							{%- endif -%}
 							<a href="/showcase#{{ game.id }}" class="frontpage-showcase-card game-banner-link" data-game-id="{{ game.id }}" aria-label="{{ game.name }}">
 								<span class="frontpage-showcase-card-media">
 									{% if game_image_src and game_image_src != "" %}
-									<img
-										src="/images/games/{{ game_image_src }}"
-										alt="{{ game.name }}"
-										loading="{% if forloop.index0 < 3 %}eager{% else %}lazy{% endif %}"
-										{% if forloop.index0 == 0 %}fetchpriority="high"{% endif %}
-										decoding="async"
-									/>
+									{%- include webp_picture.html src=game_image_path alt=game.name loading=game_image_loading fetchpriority=game_image_fetchpriority -%}
 									{% endif %}
 								</span>
 								<span class="frontpage-showcase-card-copy">
@@ -93,13 +95,19 @@
 				{%- unless carousel_json_ids contains game_marker -%}
 					{%- assign game = showcase_games | where: "id", game_id | first -%}
 					{%- if game -%}
+						{%- assign game_image_fallback_src = "" -%}
+						{%- if game.images.third and game.images.third != "" -%}
+							{%- assign game_image_path = "/images/games/" | append: game.images.third -%}
+							{%- capture game_image_fallback_src -%}{%- include webp_fallback_src.html src=game_image_path -%}{%- endcapture -%}
+						{%- endif -%}
 						{%- if carousel_json_count > 0 -%},{%- endif -%}
 						{
 							"id": {{ game.id | jsonify }},
 							"name": {{ game.name | jsonify }},
 							"developer": {{ game.developer | jsonify }},
 							"images": {
-								"third": {{ game.images.third | jsonify }}
+								"third": {{ game.images.third | jsonify }},
+								"thirdFallback": {{ game_image_fallback_src | strip | jsonify }}
 							}
 						}
 						{%- assign carousel_json_count = carousel_json_count | plus: 1 -%}
@@ -112,13 +120,19 @@
 			{%- if carousel_json_count < carousel_max_games -%}
 				{%- assign game_marker = "|" | append: game.id | append: "|" -%}
 				{%- unless carousel_json_ids contains game_marker -%}
+					{%- assign game_image_fallback_src = "" -%}
+					{%- if game.images.third and game.images.third != "" -%}
+						{%- assign game_image_path = "/images/games/" | append: game.images.third -%}
+						{%- capture game_image_fallback_src -%}{%- include webp_fallback_src.html src=game_image_path -%}{%- endcapture -%}
+					{%- endif -%}
 					{%- if carousel_json_count > 0 -%},{%- endif -%}
 					{
 						"id": {{ game.id | jsonify }},
 						"name": {{ game.name | jsonify }},
 						"developer": {{ game.developer | jsonify }},
 						"images": {
-							"third": {{ game.images.third | jsonify }}
+							"third": {{ game.images.third | jsonify }},
+							"thirdFallback": {{ game_image_fallback_src | strip | jsonify }}
 						}
 					}
 					{%- assign carousel_json_count = carousel_json_count | plus: 1 -%}

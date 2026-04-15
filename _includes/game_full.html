@@ -1,5 +1,6 @@
 {%- assign game=include.game -%}
 {%- assign url=include.url -%}{%- unless url -%}{%- assign url = game.url -%}{%- endunless -%}
+{%- assign game_image_src = "/images/games/" | append: game.images.full -%}
 
 <div class="section game showcase-full-game-anchor" id="{{ game.id }}">
 	<div class="container">
@@ -7,7 +8,7 @@
 			<div class="row">
 				<div class="columns twelve">
 					<a href="{{ url }}" target="_blank" class="showcase-full-media hoverflash">
-						<img src="/images/games/{{ game.images.full }}" loading="lazy" alt="{{ game.name }}"/>
+						{%- include webp_picture.html src=game_image_src alt=game.name loading="lazy" -%}
 					</a>
 				</div>
 			</div>

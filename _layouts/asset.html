@@ -175,7 +175,7 @@ layout: page
 					<a class="page-route-card asset-detail-action-card" href="{{ primary_link }}" target="_blank" rel="noopener">
 						<span class="page-route-card-icon" aria-hidden="true">
 							{% if primary_link_icon_image.size > 0 %}
-							<img src="{{ primary_link_icon_image }}" alt="">
+							<img src="{{ primary_link_icon_image }}" alt="" loading="lazy" decoding="async">
 							{% else %}
 							{% include site_icon.html name=primary_link_icon %}
 							{% endif %}
@@ -192,7 +192,7 @@ layout: page
 						<span class="page-route-card-icon" aria-hidden="true">
 							{% if same_primary_and_learn_more %}
 							{% if primary_link_icon_image.size > 0 %}
-							<img src="{{ primary_link_icon_image }}" alt="">
+							<img src="{{ primary_link_icon_image }}" alt="" loading="lazy" decoding="async">
 							{% else %}
 							{% include site_icon.html name=primary_link_icon %}
 							{% endif %}
