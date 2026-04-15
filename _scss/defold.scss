@@ -524,6 +524,17 @@ html, body {
 	padding-bottom: clamp(4.2rem, 5.6vw, 5.4rem);
 }
 
+.section.learn-detail-shell.has-left-nav,
+.section.asset-hub-section {
+	padding-top: clamp(2.9rem, 3.7vw, 3.4rem);
+	padding-bottom: clamp(2.9rem, 3.7vw, 3.4rem);
+}
+
+#pagecontent > .section.learn-detail-shell.has-left-nav:first-of-type:not(.frontpage-top-banner),
+#pagecontent > .section.asset-hub-section:first-of-type:not(.frontpage-top-banner) {
+	padding-top: calc(2.8rem + clamp(0.7rem, 1.1vw, 1.4rem));
+}
+
 body {
 	background-color: var(--dark);
 	color: var(--lighter)

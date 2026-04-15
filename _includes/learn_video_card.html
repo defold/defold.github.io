@@ -2,6 +2,28 @@
 {%- assign video_id = include.embed | split: "/" | last -%}
 {%- assign video_thumbnail = "https://img.youtube.com/vi/" | append: video_id | append: "/hqdefault.jpg" -%}
 {%- assign card_target = include.target | default: "_blank" -%}
+{%- assign card_rel = include.rel -%}
+{%- if card_target == "_blank" and card_rel == nil -%}
+{%- assign card_rel = "noopener" -%}
+{%- endif -%}
 <article class="asset{% if include.class %} {{ include.class }}{% endif %}" data-learn-tag-item="true" data-learn-title="{{ include.title | escape }}" data-learn-description="{{ include.description | default: '' | escape }}" data-learn-author="{{ include.author | default: '' | escape }}" data-learn-tags="{{ learn_tags | escape }}">
-	{% include page_feature_card.html title=include.title body=include.description link=include.link icon="/images/icons/icon-youtube.svg" card_class="page-feature-card-youtube" target=card_target rel=include.rel thumbnail=video_thumbnail media_badge_overlay=true heading_tag="h4" %}
+	<a class="page-feature-card page-feature-card-youtube page-feature-card-with-media page-feature-card-media-badge-overlay asset-card-link" href="{{ include.link }}"{% if card_target %} target="{{ card_target }}"{% endif %}{% if card_rel %} rel="{{ card_rel }}"{% endif %}>
+		<span class="page-feature-card-media asset-card-media" aria-hidden="true">
+			<img src="{{ video_thumbnail }}" alt="{{ include.title }} preview image" loading="lazy">
+			<span class="page-feature-card-badge" aria-hidden="true">
+				<img src="/images/icons/icon-youtube.svg" alt="">
+			</span>
+		</span>
+		<span class="page-feature-card-copy asset-card-copy">
+			<span class="asset-card-header">
+				<span class="asset-card-title-group">
+					<h3 class="asset-card-title">{{ include.title }}</h3>
+					{%- if include.author -%}
+					<span class="asset-card-tags">By {{ include.author }}</span>
+					{%- endif -%}
+				</span>
+			</span>
+			<p class="asset-card-description">{{ include.description }}</p>
+		</span>
+	</a>
 </article>
