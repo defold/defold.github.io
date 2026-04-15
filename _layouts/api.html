@@ -44,6 +44,8 @@ layout: base
 {%- else -%}
 <div id="page" class="lightest dark:dark">
 {%- endif -%}
+	{% include topnav.html style=page.nav %}
+
 	<div id="pagecontent">
 		<div class="apimenu sidemenu dark:dark">
 			<p><a href="/learn"><img class="logo-hor-classic-160" src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png" alt="Defold Learn logo"/></a></p>
