@@ -12,6 +12,8 @@
 		const config = window.frontpageCarouselConfig || {};
 		const maxGames = Math.max(1, Number(config.maxGames) || 12);
 		const scrollSpeedPxPerSec = Math.max(6, Number(config.scrollSpeedPxPerSec) || 18);
+		const autoplayIntervalMs = Math.max(3200, Number(config.autoplayIntervalMs) || Math.round(96000 / scrollSpeedPxPerSec));
+		const autoplayEnabled = config.autoplay !== false;
 		const snapStrength = Math.max(4, Number(config.snapStrength) || 9);
 		const sourceLocation = config.sourceLocation || 'frontpage_hero';
 		const cardClickSourceLocation = config.cardClickSourceLocation || 'frontpage_banner';
@@ -33,19 +35,21 @@
 		const orderedGames = [];
 		const seenIds = new Set();
 
-		featuredIds.forEach(function(gameId) {
-			if (!gameId || seenIds.has(gameId)) {
-				return;
-			}
+		if (config.gamesAlreadyOrdered !== true) {
+			featuredIds.forEach(function(gameId) {
+				if (!gameId || seenIds.has(gameId)) {
+					return;
+				}
 
-			const game = byId.get(gameId);
-			if (!game) {
-				return;
-			}
+				const game = byId.get(gameId);
+				if (!game) {
+					return;
+				}
 
-			orderedGames.push(game);
-			seenIds.add(gameId);
-		});
+				orderedGames.push(game);
+				seenIds.add(gameId);
+			});
+		}
 
 		rawGames.forEach(function(game) {
 			if (!game || seenIds.has(game.id)) {
@@ -69,10 +73,12 @@
 		let cardsPerView = 1;
 		let logicalPages = [];
 		let dotAnchors = [];
+		let dotButtons = [];
 		let loopWidth = 0;
 		let currentTranslate = 0;
 		let targetTranslate = 0;
 		let activeDotIndex = 0;
+		let renderedActiveDotIndex = -1;
 		let isSnapping = false;
 		let pageVisible = !document.hidden;
 		let carouselInViewport = true;
@@ -134,8 +140,23 @@
 			};
 		}
 
+		function trackAnalyticsEvent(name, payload) {
+			const eventPayload = Object.assign({
+				page_path: window.location.pathname
+			}, payload || {});
+
+			if (typeof window.gtag === 'function') {
+				window.gtag('event', name, eventPayload);
+				return;
+			}
+
+			if (Array.isArray(window.dataLayer)) {
+				window.dataLayer.push(Object.assign({ event: name }, eventPayload));
+			}
+		}
+
 		function trackImpression(gameId) {
-			if (typeof gtag === 'undefined' || seenImpressions.has(gameId)) {
+			if (seenImpressions.has(gameId)) {
 				return;
 			}
 
@@ -145,20 +166,16 @@
 			}
 
 			seenImpressions.add(gameId);
-			gtag('event', 'game_impression', {
-				'game_id': game.id,
-				'source_location': sourceLocation
+			trackAnalyticsEvent('game_impression', {
+				game_id: game.id,
+				source_location: sourceLocation
 			});
 		}
 
 		function trackCardClick(gameId) {
-			if (typeof gtag === 'undefined') {
-				return;
-			}
-
-			gtag('event', 'game_click', {
-				'game_id': gameId,
-				'source_location': cardClickSourceLocation
+			trackAnalyticsEvent('game_click', {
+				game_id: gameId,
+				source_location: cardClickSourceLocation
 			});
 		}
 
@@ -170,8 +187,7 @@
 			card.className = 'frontpage-showcase-card game-banner-link';
 			card.draggable = false;
 			card.dataset.gameId = game.id;
-			card.dataset.loopCopy = String(copyIndex);
-			card.dataset.baseIndex = String(baseIndex);
+			card.dataset.carouselCopy = String(copyIndex);
 			card.setAttribute('aria-label', game.name);
 			card.addEventListener('click', function() {
 				trackCardClick(game.id);
@@ -188,8 +204,8 @@
 				img.alt = game.name;
 				img.decoding = 'async';
 				img.draggable = false;
-				img.loading = copyIndex === 1 ? 'eager' : 'lazy';
-				if (copyIndex === 1 && baseIndex < cardsPerView) {
+				img.loading = copyIndex === 0 && baseIndex < cardsPerView ? 'eager' : 'lazy';
+				if (copyIndex === 0 && baseIndex === 0) {
 					img.fetchPriority = 'high';
 				}
 				img.src = imageData.src;
@@ -260,6 +276,101 @@
 			setDraggingState(false);
 		}
 
+		function setTrackAnimatingState(nextAnimating) {
+			carousel.classList.toggle('is-animating', nextAnimating);
+		}
+
+		function hasInertiaMotion() {
+			return Math.abs(inertiaVelocityPxPerSec) >= inertiaVelocityThresholdPxPerSec;
+		}
+
+		function clearAutoplayResumeTimer() {
+			if (autoplayResumeTimer !== null) {
+				window.clearTimeout(autoplayResumeTimer);
+				autoplayResumeTimer = null;
+			}
+		}
+
+		function stopAnimationLoop(cancelPendingFrame) {
+			if (cancelPendingFrame && animationFrameId !== null) {
+				window.cancelAnimationFrame(animationFrameId);
+			}
+
+			animationFrameId = null;
+			lastFrameTime = 0;
+			setTrackAnimatingState(false);
+		}
+
+		function scheduleAutoplayResume(now) {
+			clearAutoplayResumeTimer();
+
+			if (
+				!autoplayEnabled
+				|| !shouldAnimate()
+				|| isPointerDown
+				|| isDragging
+				|| isSnapping
+				|| hasInertiaMotion()
+				|| dotAnchors.length <= 1
+			) {
+				return;
+			}
+
+			const nextAutoplayAt = autoplayResumeAt > now
+				? autoplayResumeAt
+				: now + autoplayIntervalMs;
+
+			autoplayResumeTimer = window.setTimeout(function() {
+				autoplayResumeTimer = null;
+				startAutoplayStep();
+			}, Math.max(0, nextAutoplayAt - now));
+		}
+
+		function shouldContinueAnimation(now) {
+			if (!shouldAnimate() || isPointerDown || isDragging) {
+				return false;
+			}
+
+			return isSnapping || hasInertiaMotion();
+		}
+
+		function startAutoplayStep() {
+			if (
+				!autoplayEnabled
+				|| !shouldAnimate()
+				|| isPointerDown
+				|| isDragging
+				|| isSnapping
+				|| hasInertiaMotion()
+				|| dotAnchors.length <= 1
+			) {
+				return;
+			}
+
+			scrollToDot((activeDotIndex + 1) % dotAnchors.length);
+		}
+
+		function requestAnimationIfNeeded(now) {
+			const frameTime = typeof now === 'number'
+				? now
+				: ((window.performance && typeof window.performance.now === 'function')
+					? window.performance.now()
+					: Date.now());
+
+			clearAutoplayResumeTimer();
+
+			if (shouldContinueAnimation(frameTime)) {
+				if (animationFrameId === null) {
+					setTrackAnimatingState(true);
+					animationFrameId = window.requestAnimationFrame(animate);
+				}
+				return;
+			}
+
+			stopAnimationLoop(false);
+			scheduleAutoplayResume(frameTime);
+		}
+
 		function resumeAutoplay(cancelSnap) {
 			lastFrameTime = 0;
 			inertiaVelocityPxPerSec = 0;
@@ -285,6 +396,8 @@
 
 		function createDots() {
 			dotsContainer.innerHTML = '';
+			dotButtons = [];
+			renderedActiveDotIndex = -1;
 
 			logicalPages.forEach(function(_, index) {
 				const dot = document.createElement('button');
@@ -296,6 +409,7 @@
 					resumeAutoplay(false);
 				});
 				dotsContainer.appendChild(dot);
+				dotButtons.push(dot);
 			});
 
 			dotsContainer.hidden = logicalPages.length <= 1;
@@ -343,9 +457,12 @@
 			});
 
 			activeDotIndex = closestIndex;
+			if (renderedActiveDotIndex === activeDotIndex) {
+				return;
+			}
 
-			const dots = dotsContainer.querySelectorAll('.game-carousel-dot');
-			dots.forEach(function(dot, index) {
+			renderedActiveDotIndex = activeDotIndex;
+			dotButtons.forEach(function(dot, index) {
 				const isActive = index === activeDotIndex;
 				dot.classList.toggle('active', isActive);
 				dot.setAttribute('aria-current', isActive ? 'true' : 'false');
@@ -410,7 +527,7 @@
 				threshold: [0.55]
 			});
 
-			track.querySelectorAll('.frontpage-showcase-card').forEach(function(card) {
+			track.querySelectorAll('.frontpage-showcase-card[data-carousel-copy="0"]').forEach(function(card) {
 				impressionObserver.observe(card);
 			});
 		}
@@ -420,6 +537,7 @@
 			logicalPages = buildPages(games, cardsPerView);
 			carousel.style.setProperty('--frontpage-showcase-visible-cards', String(cardsPerView));
 			track.innerHTML = '';
+			const trackFragment = document.createDocumentFragment();
 			resetPointerState();
 			suppressClickUntil = 0;
 			inertiaVelocityPxPerSec = 0;
@@ -427,13 +545,10 @@
 
 			for (let copyIndex = 0; copyIndex < 3; copyIndex += 1) {
 				games.forEach(function(game, baseIndex) {
-					track.appendChild(createCard(game, copyIndex, baseIndex));
+					trackFragment.appendChild(createCard(game, copyIndex, baseIndex));
 				});
 			}
-
-			measureLoopWidth();
-			buildDotAnchors();
-			createDots();
+			track.appendChild(trackFragment);
 
 			const safeAnchorIndex = Math.max(0, Math.min(anchorDotIndex || 0, Math.max(dotAnchors.length - 1, 0)));
 			currentTranslate = dotAnchors[safeAnchorIndex] || -loopWidth;
@@ -482,9 +597,6 @@
 					if (Math.abs(inertiaVelocityPxPerSec) < inertiaVelocityThresholdPxPerSec) {
 						inertiaVelocityPxPerSec = 0;
 					}
-				} else if (timestamp >= autoplayResumeAt) {
-					currentTranslate = normalizeTranslate(currentTranslate - scrollSpeedPxPerSec * deltaSeconds);
-					didMove = true;
 				} else {
 					didMove = false;
 				}
@@ -509,13 +621,13 @@
 					? logicalPages[activeDotIndex][0]
 					: games[0];
 
-				if (typeof gtag === 'undefined' || !trackedGame) {
+				if (!trackedGame) {
 					return;
 				}
 
-				gtag('event', 'game_click', {
-					'game_id': trackedGame.id,
-					'source_location': moreButtonSourceLocation
+				trackAnalyticsEvent('game_click', {
+					game_id: trackedGame.id,
+					source_location: moreButtonSourceLocation
 				});
 			});
 		}
@@ -710,9 +822,18 @@
 		}, { once: true });
 	}
 
+	function scheduleFrontpageCarouselInit() {
+		if ('requestIdleCallback' in window) {
+			window.requestIdleCallback(initFrontpageCarousel, { timeout: 1200 });
+			return;
+		}
+
+		window.setTimeout(initFrontpageCarousel, 120);
+	}
+
 	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initFrontpageCarousel);
+		document.addEventListener('DOMContentLoaded', scheduleFrontpageCarouselInit);
 	} else {
-		initFrontpageCarousel();
+		scheduleFrontpageCarouselInit();
 	}
 })();

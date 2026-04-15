@@ -222,7 +222,7 @@
 {%- assign homepage_showcase_games = site.data.games | where: "showcase", "full" -%}
 {%- assign homepage_showcase_preload_count = 0 -%}
 {%- for game_id in site.data.showcase_featured_full -%}
-	{%- if homepage_showcase_preload_count < 3 -%}
+	{%- if homepage_showcase_preload_count < 1 -%}
 		{%- assign homepage_showcase_game = homepage_showcase_games | where: "id", game_id | first -%}
 		{%- if homepage_showcase_game and homepage_showcase_game.images and homepage_showcase_game.images.third and homepage_showcase_game.images.third != "" -%}
 <link rel="preload" as="image" href="/images/games/{{ homepage_showcase_game.images.third }}" fetchpriority="high">
