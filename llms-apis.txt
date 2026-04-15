@@ -45780,6 +45780,7 @@ Set the callback function to receive purchase transaction events.
   - `error` (table) - a table containing error information. `nil` if there is no error. `error` - the error message. `reason` - the reason for the error, value can be one of the following constants
 - `iap.REASON_UNSPECIFIED`
 - `iap.REASON_USER_CANCELED`
+- `iap.REASON_ITEM_ALREADY_OWNED`
 
 ### PROVIDER_ID_AMAZON
 *Type:* VARIABLE
@@ -45804,6 +45805,10 @@ unspecified error reason
 ### REASON_USER_CANCELED
 *Type:* VARIABLE
 user canceled reason
+
+### REASON_ITEM_ALREADY_OWNED
+*Type:* VARIABLE
+the item is already owned by the user
 
 ### TRANS_STATE_FAILED
 *Type:* VARIABLE

@@ -408,7 +408,7 @@
                             ]
                         },
                         {
-                            "doc": "a table containing error information. `nil` if there is no error. `error` - the error message. `reason` - the reason for the error, value can be one of the following constants\n- `iap.REASON_UNSPECIFIED`\n- `iap.REASON_USER_CANCELED`",
+                            "doc": "a table containing error information. `nil` if there is no error. `error` - the error message. `reason` - the reason for the error, value can be one of the following constants\n- `iap.REASON_UNSPECIFIED`\n- `iap.REASON_USER_CANCELED`\n- `iap.REASON_ITEM_ALREADY_OWNED`",
                             "name": "error",
                             "types": [
                                 "table"
@@ -467,6 +467,14 @@
             "description": "user canceled reason",
             "examples": "",
             "name": "REASON_USER_CANCELED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "the item is already owned by the user",
+            "examples": "",
+            "name": "REASON_ITEM_ALREADY_OWNED",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
