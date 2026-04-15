@@ -4843,12 +4843,10 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	padding-top: clamp(2rem, 4vw, 3rem);
 	--community-newsletter-section-bg: #151b23;
 	--community-newsletter-embed-bg: transparent;
-	--community-newsletter-embed-filter: invert(0.87) hue-rotate(180deg) brightness(0.98) contrast(1.01) saturate(0.92);
-	--community-newsletter-form-card-bg:
-		radial-gradient(circle at top left, rgba(57, 163, 228, 0.10), transparent 42%),
-		var(--surface-bg);
-	--community-newsletter-form-card-border: var(--surface-border);
-	--community-newsletter-form-card-shadow: var(--surface-shadow);
+	--community-newsletter-embed-filter: none;
+	--community-newsletter-form-card-bg: transparent;
+	--community-newsletter-form-card-border: transparent;
+	--community-newsletter-form-card-shadow: none;
 	background-color: var(--community-newsletter-section-bg);
 }
 
@@ -4916,9 +4914,9 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	min-height: 410px;
 	margin-left: auto;
 	padding: 0;
-	border-radius: 1.6rem;
-	overflow: hidden;
-	border: 1px solid var(--community-newsletter-form-card-border);
+	border-radius: 0;
+	overflow: visible;
+	border: 0;
 	background: var(--community-newsletter-form-card-bg);
 	box-shadow: var(--community-newsletter-form-card-shadow);
 }
@@ -4932,7 +4930,7 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	height: 100%;
 	min-height: 410px;
 	border: 0;
-	border-radius: inherit;
+	border-radius: 0;
 	box-shadow: none;
 	background: var(--community-newsletter-embed-bg);
 	filter: var(--community-newsletter-embed-filter);
@@ -9510,11 +9508,11 @@ ul.page-checklist-negative li:before {
 
 	.community-newsletter-section {
 		--community-newsletter-section-bg: #f3f6fa;
-		--community-newsletter-embed-bg: var(--community-newsletter-section-bg);
+		--community-newsletter-embed-bg: transparent;
 		--community-newsletter-embed-filter: none;
-		--community-newsletter-form-card-bg: rgba(255, 255, 255, 0.96);
-		--community-newsletter-form-card-border: rgba(20, 24, 28, 0.1);
-		--community-newsletter-form-card-shadow: 0 22px 40px rgba(20, 24, 28, 0.08);
+		--community-newsletter-form-card-bg: transparent;
+		--community-newsletter-form-card-border: transparent;
+		--community-newsletter-form-card-shadow: none;
 	}
 
 	.community-newsletter-embed,
