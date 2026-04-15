@@ -7102,9 +7102,11 @@ img[alt="icon"] {
 	color: var(--lightest);
 }
 
-.frontpage-hero-carousel {
+.frontpage-showcase-carousel.frontpage-hero-carousel {
 	--frontpage-showcase-gap: clamp(1.25rem, 1.45vw, 1.7rem);
 	--frontpage-showcase-edge-fade: clamp(21px, 3.9vw, 57px);
+	--frontpage-showcase-edge-overlay-strong: rgba(16, 24, 32, 0.58);
+	--frontpage-showcase-edge-overlay-soft: rgba(16, 24, 32, 0.24);
 	padding-top: 0;
 }
 
@@ -7886,6 +7888,8 @@ ul.page-checklist-negative li:before {
 	--frontpage-showcase-gap: 1rem;
 	--frontpage-showcase-visible-cards: 1;
 	--frontpage-showcase-edge-fade: clamp(92px, 14vw, 220px);
+	--frontpage-showcase-edge-overlay-strong: rgba(22, 27, 33, 0.62);
+	--frontpage-showcase-edge-overlay-soft: rgba(22, 27, 33, 0.28);
 	position: relative;
 	width: 100%;
 	padding-top: 0.5rem;
@@ -8030,6 +8034,7 @@ ul.page-checklist-negative li:before {
 	touch-action: pan-y pinch-zoom;
 	user-select: none;
 	-webkit-user-select: none;
+	isolation: isolate;
 	-webkit-mask-image: linear-gradient(
 		to right,
 		transparent 0,
@@ -8048,6 +8053,50 @@ ul.page-checklist-negative li:before {
 	mask-repeat: no-repeat;
 	-webkit-mask-size: 100% 100%;
 	mask-size: 100% 100%;
+}
+
+.frontpage-showcase-viewport::before,
+.frontpage-showcase-viewport::after {
+	content: "";
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: var(--frontpage-showcase-edge-fade);
+	pointer-events: none;
+	z-index: 1;
+}
+
+.frontpage-showcase-viewport::before {
+	left: 0;
+	background: linear-gradient(
+		to right,
+		var(--frontpage-showcase-edge-overlay-strong) 0%,
+		var(--frontpage-showcase-edge-overlay-soft) 38%,
+		rgba(16, 22, 30, 0) 100%
+	);
+}
+
+.frontpage-showcase-viewport::after {
+	right: 0;
+	background: linear-gradient(
+		to left,
+		var(--frontpage-showcase-edge-overlay-strong) 0%,
+		var(--frontpage-showcase-edge-overlay-soft) 38%,
+		rgba(16, 22, 30, 0) 100%
+	);
+}
+
+@supports (-moz-appearance: none) {
+	.frontpage-showcase-viewport {
+		-webkit-mask-image: none;
+		mask-image: none;
+	}
+
+	.frontpage-showcase-viewport::before,
+	.frontpage-showcase-viewport::after {
+		display: block;
+	}
 }
 
 @media (pointer: fine) {
