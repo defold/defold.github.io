@@ -832,16 +832,7 @@
 		setupVisibilityHandling();
 		setupInteractionHandling();
 		setupResizeHandling();
-		animationFrameId = window.requestAnimationFrame(animate);
-
-		window.addEventListener('beforeunload', function() {
-			if (animationFrameId) {
-				window.cancelAnimationFrame(animationFrameId);
-			}
-			if (impressionObserver) {
-				impressionObserver.disconnect();
-			}
-		}, { once: true });
+		requestAnimationIfNeeded();
 	}
 
 	function scheduleFrontpageCarouselInit() {
