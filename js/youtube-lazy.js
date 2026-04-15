@@ -92,6 +92,21 @@ async function setThumbnail(thumbnailImg, videoId) {
 (function() {
     'use strict';
 
+    function trackAnalyticsEvent(name, payload) {
+        const eventPayload = Object.assign({
+            page_path: window.location.pathname
+        }, payload || {});
+
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', name, eventPayload);
+            return;
+        }
+
+        if (Array.isArray(window.dataLayer)) {
+            window.dataLayer.push(Object.assign({ event: name }, eventPayload));
+        }
+    }
+
     function initYoutubeLazy() {
         const lazyCards = document.querySelectorAll('.youtube-lazy-card');
         
@@ -156,13 +171,10 @@ async function setThumbnail(thumbnailImg, videoId) {
         container.style.opacity = '1';
         container.style.pointerEvents = 'auto';
         
-        // Optional: Track analytics
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'video_play', {
-                event_category: 'engagement',
-                event_label: embedUrl
-            });
-        }
+        trackAnalyticsEvent('video_play', {
+            event_category: 'engagement',
+            event_label: embedUrl
+        });
     }
 
     // Initialize when DOM is ready
