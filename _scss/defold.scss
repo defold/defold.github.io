@@ -10610,6 +10610,24 @@ dd {
 	}
 }
 
+/* Prefer content-sized metadata columns on wide API reference tables. */
+@media (min-width: 1101px) {
+	.apicontent table {
+		table-layout: auto;
+	}
+
+	.apicontent th:not(:last-child),
+	.apicontent td:not(:last-child) {
+		width: 1%;
+		white-space: nowrap;
+	}
+
+	.apicontent th:last-child,
+	.apicontent td:last-child {
+		width: auto;
+	}
+}
+
 /* Responsive tables for API reference */
 @media (max-width: 1100px) {
 	.apicontent table {
