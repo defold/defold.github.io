@@ -4843,7 +4843,8 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	padding-top: clamp(2rem, 4vw, 3rem);
 	--community-newsletter-section-bg: #151b23;
 	--community-newsletter-embed-bg: transparent;
-	--community-newsletter-embed-filter: none;
+	--community-newsletter-embed-filter: invert(1) hue-rotate(180deg) brightness(0.96) contrast(1.02) saturate(0.92);
+	--community-newsletter-embed-blend-mode: screen;
 	--community-newsletter-form-card-bg: transparent;
 	--community-newsletter-form-card-border: transparent;
 	--community-newsletter-form-card-shadow: none;
@@ -4863,33 +4864,37 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 }
 
 .community-newsletter-copy {
+	--community-newsletter-graphic-size: 32px;
 	display: grid;
-	gap: 0.12rem;
+	grid-template-columns: var(--community-newsletter-graphic-size) minmax(0, 1fr);
+	column-gap: 0.6rem;
+	row-gap: 0.12rem;
 	align-items: start;
 	align-content: start;
 	min-width: 0;
 }
 
 .community-newsletter-copy h2 {
+	grid-column: 1 / -1;
 	margin: 0;
 	color: var(--lightest);
 }
 
 .community-newsletter-copy .feature-heading {
-	display: flex;
+	display: grid;
+	grid-template-columns: var(--community-newsletter-graphic-size) minmax(0, 1fr);
 	width: 100%;
-	gap: 0.6rem;
+	column-gap: 0.6rem;
 	align-items: center;
-	flex-wrap: nowrap;
 }
 
 .community-newsletter-heading-text {
 	display: inline-block;
-	flex: 1 1 auto;
 	min-width: 0;
 }
 
 .community-newsletter-copy p {
+	grid-column: 2;
 	display: block;
 	width: 100%;
 	max-width: 42rem;
@@ -4934,13 +4939,13 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	box-shadow: none;
 	background: var(--community-newsletter-embed-bg);
 	filter: var(--community-newsletter-embed-filter);
+	mix-blend-mode: var(--community-newsletter-embed-blend-mode);
 }
 
 .community-newsletter-graphic {
 	display: block;
-	width: 36px;
-	height: 36px;
-	flex: 0 0 36px;
+	width: var(--community-newsletter-graphic-size);
+	height: var(--community-newsletter-graphic-size);
 	align-self: center;
 	margin-right: 0;
 	transform: none;
@@ -5636,7 +5641,8 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	}
 
 	.community-newsletter-copy {
-		gap: 0.9rem;
+		column-gap: 0.6rem;
+		row-gap: 0.9rem;
 	}
 
 	.community-newsletter-form-shell {
@@ -5827,10 +5833,8 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 		max-width: none;
 	}
 
-	.community-newsletter-graphic {
-		width: 32px;
-		height: 32px;
-		flex-basis: 32px;
+	.community-newsletter-copy {
+		--community-newsletter-graphic-size: 29px;
 	}
 }
 
@@ -7948,14 +7952,18 @@ ul.page-checklist-negative li:before {
 	grid-area: copy;
 	display: grid;
 	justify-items: center;
-	gap: 1.35rem;
+	gap: 1.49rem;
 	padding: clamp(0.85rem, 1.3vw, 1.3rem) 0 clamp(1.3rem, 1.8vw, 1.85rem);
 	text-align: center;
 }
 
 .page-download-cta-copy .page-section-heading {
 	margin-top: 0;
-	margin-bottom: 1.9rem;
+	margin-bottom: 2.09rem;
+}
+
+.page-download-cta-copy .page-section-heading h2 {
+	margin-bottom: 0.91rem;
 }
 
 .page-download-cta-copy .page-section-heading p {
@@ -9510,6 +9518,7 @@ ul.page-checklist-negative li:before {
 		--community-newsletter-section-bg: #f3f6fa;
 		--community-newsletter-embed-bg: transparent;
 		--community-newsletter-embed-filter: none;
+		--community-newsletter-embed-blend-mode: normal;
 		--community-newsletter-form-card-bg: transparent;
 		--community-newsletter-form-card-border: transparent;
 		--community-newsletter-form-card-shadow: none;
