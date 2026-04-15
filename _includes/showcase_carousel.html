@@ -86,7 +86,7 @@
 	window.frontpageGames = {% include games_json.html placement=showcase_placement %};
 	window.frontpageFeaturedGameIds = {{ site.data.showcase_featured_full | jsonify }};
 	window.frontpageCarouselConfig = {
-		maxGames: {{ include.max_games | default: 8 }},
+		maxGames: {{ include.max_games | default: 12 }},
 		scrollSpeedPxPerSec: {{ include.scroll_speed | default: 18.8 }},
 		snapStrength: {{ include.snap_strength | default: 9 }},
 		sourceLocation: {{ carousel_source_location | jsonify }},

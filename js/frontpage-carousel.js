@@ -10,13 +10,12 @@
 			: [];
 
 		const config = window.frontpageCarouselConfig || {};
-		const maxGames = Math.max(1, Number(config.maxGames) || 8);
+		const maxGames = Math.max(1, Number(config.maxGames) || 12);
 		const scrollSpeedPxPerSec = Math.max(6, Number(config.scrollSpeedPxPerSec) || 18);
 		const snapStrength = Math.max(4, Number(config.snapStrength) || 9);
 		const sourceLocation = config.sourceLocation || 'frontpage_hero';
 		const cardClickSourceLocation = config.cardClickSourceLocation || 'frontpage_banner';
 		const moreButtonSourceLocation = config.moreButtonSourceLocation || 'frontpage_more_button';
-		const loopCopies = 2;
 
 		const carousel = document.getElementById('frontpage-showcase-carousel');
 		const viewport = carousel ? carousel.querySelector('.frontpage-showcase-viewport') : null;
@@ -71,9 +70,6 @@
 		let logicalPages = [];
 		let dotAnchors = [];
 		let loopWidth = 0;
-		let cardGapPx = 0;
-		let cardWidthPx = 0;
-		let cardStridePx = 0;
 		let currentTranslate = 0;
 		let targetTranslate = 0;
 		let activeDotIndex = 0;
@@ -82,10 +78,8 @@
 		let carouselInViewport = true;
 		let lastFrameTime = 0;
 		let animationFrameId = null;
-		let autoplayResumeTimer = null;
 		let resizeTimer = null;
 		let impressionObserver = null;
-		let carouselVisibilityObserver = null;
 		let isPointerDown = false;
 		let isDragging = false;
 		let activePointerId = null;
@@ -107,7 +101,7 @@
 		const autoplayResumeDelayMs = 900;
 
 		function getCardsPerView() {
-			const width = window.innerWidth || document.documentElement.clientWidth || 0;
+			const width = carousel.clientWidth || window.innerWidth || 0;
 			if (width >= 1400) {
 				return 3;
 			}
@@ -176,6 +170,8 @@
 			card.className = 'frontpage-showcase-card game-banner-link';
 			card.draggable = false;
 			card.dataset.gameId = game.id;
+			card.dataset.loopCopy = String(copyIndex);
+			card.dataset.baseIndex = String(baseIndex);
 			card.setAttribute('aria-label', game.name);
 			card.addEventListener('click', function() {
 				trackCardClick(game.id);
@@ -192,8 +188,8 @@
 				img.alt = game.name;
 				img.decoding = 'async';
 				img.draggable = false;
-				img.loading = copyIndex === 0 && baseIndex < cardsPerView ? 'eager' : 'lazy';
-				if (copyIndex === 0 && baseIndex < cardsPerView) {
+				img.loading = copyIndex === 1 ? 'eager' : 'lazy';
+				if (copyIndex === 1 && baseIndex < cardsPerView) {
 					img.fetchPriority = 'high';
 				}
 				img.src = imageData.src;
@@ -225,10 +221,10 @@
 			}
 
 			let normalized = value;
-			while (normalized > 0) {
+			while (normalized >= 0) {
 				normalized -= loopWidth;
 			}
-			while (normalized <= -loopWidth) {
+			while (normalized < -2 * loopWidth) {
 				normalized += loopWidth;
 			}
 			return normalized;
@@ -236,6 +232,7 @@
 
 		function applyTransform() {
 			track.style.transform = 'translate3d(' + currentTranslate.toFixed(2) + 'px, 0, 0)';
+			updateCardDepth();
 		}
 
 		function setDraggingState(nextDragging) {
@@ -249,8 +246,6 @@
 			targetTranslate = currentTranslate;
 			inertiaVelocityPxPerSec = 0;
 			autoplayResumeAt = 0;
-			clearAutoplayResumeTimer();
-			requestAnimationIfNeeded();
 		}
 
 		function resetPointerState() {
@@ -265,93 +260,27 @@
 			setDraggingState(false);
 		}
 
-		function setTrackAnimatingState(nextAnimating) {
-			carousel.classList.toggle('is-animating', nextAnimating);
-		}
-
-		function hasInertiaMotion() {
-			return Math.abs(inertiaVelocityPxPerSec) >= inertiaVelocityThresholdPxPerSec;
-		}
-
-		function clearAutoplayResumeTimer() {
-			if (autoplayResumeTimer !== null) {
-				window.clearTimeout(autoplayResumeTimer);
-				autoplayResumeTimer = null;
-			}
-		}
-
-		function stopAnimationLoop(cancelPendingFrame) {
-			if (cancelPendingFrame && animationFrameId !== null) {
-				window.cancelAnimationFrame(animationFrameId);
-			}
-
-			animationFrameId = null;
-			lastFrameTime = 0;
-			setTrackAnimatingState(false);
-		}
-
-		function scheduleAutoplayResume(now) {
-			clearAutoplayResumeTimer();
-
-			if (
-				!shouldAnimate()
-				|| isPointerDown
-				|| isDragging
-				|| isSnapping
-				|| hasInertiaMotion()
-				|| autoplayResumeAt <= now
-			) {
-				return;
-			}
-
-			autoplayResumeTimer = window.setTimeout(function() {
-				autoplayResumeTimer = null;
-				lastFrameTime = 0;
-				requestAnimationIfNeeded();
-			}, Math.max(0, autoplayResumeAt - now));
-		}
-
-		function shouldContinueAnimation(now) {
-			if (!shouldAnimate() || isPointerDown || isDragging) {
-				return false;
-			}
-
-			return isSnapping || hasInertiaMotion() || now >= autoplayResumeAt;
-		}
-
-		function requestAnimationIfNeeded(now) {
-			const frameTime = typeof now === 'number'
-				? now
-				: ((window.performance && typeof window.performance.now === 'function')
-					? window.performance.now()
-					: Date.now());
-
-			clearAutoplayResumeTimer();
-
-			if (shouldContinueAnimation(frameTime)) {
-				if (animationFrameId === null) {
-					setTrackAnimatingState(true);
-					animationFrameId = window.requestAnimationFrame(animate);
-				}
-				return;
-			}
-
-			stopAnimationLoop(false);
-			scheduleAutoplayResume(frameTime);
-		}
-
 		function resumeAutoplay(cancelSnap) {
 			lastFrameTime = 0;
 			inertiaVelocityPxPerSec = 0;
 			autoplayResumeAt = 0;
-			clearAutoplayResumeTimer();
 
 			if (cancelSnap) {
 				isSnapping = false;
 				targetTranslate = currentTranslate;
 			}
+		}
 
-			requestAnimationIfNeeded();
+		function updateCardDepth() {
+			track.querySelectorAll('.frontpage-showcase-card').forEach(function(card) {
+				card.style.removeProperty('--frontpage-showcase-card-scale');
+				card.style.removeProperty('--frontpage-showcase-card-image-scale');
+				card.style.removeProperty('--frontpage-showcase-card-opacity');
+				card.style.removeProperty('--frontpage-showcase-card-copy-opacity');
+				card.style.removeProperty('--frontpage-showcase-card-lift');
+				card.style.removeProperty('--frontpage-showcase-card-shift');
+				card.classList.remove('is-focus-card');
+			});
 		}
 
 		function createDots() {
@@ -372,23 +301,26 @@
 			dotsContainer.hidden = logicalPages.length <= 1;
 		}
 
-		function measureCarouselGeometry() {
-			const trackStyles = window.getComputedStyle(track);
-			const resolvedGap = parseFloat(trackStyles.columnGap || trackStyles.gap || '0') || 0;
-			const viewportWidth = carousel.clientWidth || viewport.clientWidth || window.innerWidth || 0;
+		function measureLoopWidth() {
+			const firstCopyCard = track.querySelector('.frontpage-showcase-card[data-loop-copy="0"][data-base-index="0"]');
+			const middleCopyCard = track.querySelector('.frontpage-showcase-card[data-loop-copy="1"][data-base-index="0"]');
 
-			cardGapPx = resolvedGap;
-			cardWidthPx = cardsPerView > 0
-				? Math.max(0, (viewportWidth - cardGapPx * (cardsPerView - 1)) / cardsPerView)
-				: 0;
-			cardStridePx = cardWidthPx + cardGapPx;
-			loopWidth = games.length > 0 ? games.length * cardStridePx : 0;
+			if (firstCopyCard && middleCopyCard) {
+				loopWidth = middleCopyCard.offsetLeft - firstCopyCard.offsetLeft;
+			} else {
+				loopWidth = 0;
+			}
+
+			if (loopWidth <= 0) {
+				loopWidth = track.scrollWidth / 3;
+			}
 		}
 
 		function buildDotAnchors() {
 			dotAnchors = logicalPages.map(function(_, pageIndex) {
 				const baseIndex = pageIndex * cardsPerView;
-				return loopWidth > 0 ? -(baseIndex * cardStridePx) : 0;
+				const card = track.querySelector('.frontpage-showcase-card[data-loop-copy="1"][data-base-index="' + baseIndex + '"]');
+				return card ? -card.offsetLeft : -loopWidth;
 			});
 		}
 
@@ -434,7 +366,7 @@
 		}
 
 		function scrollToDot(dotIndex) {
-			if (typeof dotAnchors[dotIndex] !== 'number') {
+			if (!dotAnchors[dotIndex]) {
 				return;
 			}
 
@@ -451,7 +383,6 @@
 
 			targetTranslate = nextTarget;
 			isSnapping = true;
-			requestAnimationIfNeeded();
 		}
 
 		function observeImpressions() {
@@ -487,24 +418,25 @@
 		function renderTrack(anchorDotIndex) {
 			cardsPerView = getCardsPerView();
 			logicalPages = buildPages(games, cardsPerView);
-			measureCarouselGeometry();
 			carousel.style.setProperty('--frontpage-showcase-visible-cards', String(cardsPerView));
-			buildDotAnchors();
-			createDots();
 			track.innerHTML = '';
 			resetPointerState();
 			suppressClickUntil = 0;
 			inertiaVelocityPxPerSec = 0;
 			autoplayResumeAt = 0;
 
-			for (let copyIndex = 0; copyIndex < loopCopies; copyIndex += 1) {
+			for (let copyIndex = 0; copyIndex < 3; copyIndex += 1) {
 				games.forEach(function(game, baseIndex) {
 					track.appendChild(createCard(game, copyIndex, baseIndex));
 				});
 			}
 
+			measureLoopWidth();
+			buildDotAnchors();
+			createDots();
+
 			const safeAnchorIndex = Math.max(0, Math.min(anchorDotIndex || 0, Math.max(dotAnchors.length - 1, 0)));
-			currentTranslate = typeof dotAnchors[safeAnchorIndex] === 'number' ? dotAnchors[safeAnchorIndex] : 0;
+			currentTranslate = dotAnchors[safeAnchorIndex] || -loopWidth;
 			currentTranslate = normalizeTranslate(currentTranslate);
 			targetTranslate = currentTranslate;
 			activeDotIndex = safeAnchorIndex;
@@ -563,8 +495,7 @@
 				}
 			}
 
-			animationFrameId = null;
-			requestAnimationIfNeeded(timestamp);
+			animationFrameId = window.requestAnimationFrame(animate);
 		}
 
 		function trackMoreGamesButton() {
@@ -591,26 +522,23 @@
 
 		function setupVisibilityHandling() {
 			if ('IntersectionObserver' in window) {
-				carouselVisibilityObserver = new IntersectionObserver(function(entries) {
+				const observer = new IntersectionObserver(function(entries) {
 					entries.forEach(function(entry) {
 						if (entry.target !== carousel) {
 							return;
 						}
 
 						carouselInViewport = entry.isIntersecting && entry.intersectionRatio > 0.2;
-						lastFrameTime = 0;
-						requestAnimationIfNeeded();
 					});
 				}, {
 					threshold: [0, 0.2, 0.5]
 				});
-				carouselVisibilityObserver.observe(carousel);
+				observer.observe(carousel);
 			}
 
 			document.addEventListener('visibilitychange', function() {
 				pageVisible = !document.hidden;
 				lastFrameTime = 0;
-				requestAnimationIfNeeded();
 			});
 
 			if (reducedMotionMedia) {
@@ -621,7 +549,6 @@
 						isSnapping = false;
 						targetTranslate = currentTranslate;
 					}
-					requestAnimationIfNeeded();
 				};
 
 				if (typeof reducedMotionMedia.addEventListener === 'function') {
@@ -667,8 +594,6 @@
 					autoplayResumeAt = releaseTime + Math.round(autoplayResumeDelayMs * 0.65);
 					lastFrameTime = 0;
 				}
-
-				requestAnimationIfNeeded(releaseTime);
 			};
 
 			viewport.addEventListener('click', function(event) {
@@ -757,9 +682,13 @@
 			window.addEventListener('resize', function() {
 				clearTimeout(resizeTimer);
 				resizeTimer = window.setTimeout(function() {
+					const nextCardsPerView = getCardsPerView();
+					if (nextCardsPerView === cardsPerView) {
+						return;
+					}
+
 					renderTrack(activeDotIndex);
 					lastFrameTime = 0;
-					requestAnimationIfNeeded();
 				}, 150);
 			});
 		}
@@ -769,16 +698,14 @@
 		setupVisibilityHandling();
 		setupInteractionHandling();
 		setupResizeHandling();
-		requestAnimationIfNeeded();
+		animationFrameId = window.requestAnimationFrame(animate);
 
 		window.addEventListener('beforeunload', function() {
-			stopAnimationLoop(true);
-			clearAutoplayResumeTimer();
+			if (animationFrameId) {
+				window.cancelAnimationFrame(animationFrameId);
+			}
 			if (impressionObserver) {
 				impressionObserver.disconnect();
-			}
-			if (carouselVisibilityObserver) {
-				carouselVisibilityObserver.disconnect();
 			}
 		}, { once: true });
 	}
