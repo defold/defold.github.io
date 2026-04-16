@@ -675,17 +675,24 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 	margin: 0;
 }
 
+.api-search-form {
+	margin: 0;
+}
+
 .learnnav-search-field {
 	width: 100%;
 }
 
 .nav.learn .learnnav-search-field input,
-.nav.learn .learnnav-search-field input[type="text"] {
+.nav.learn .learnnav-search-field input[type="text"],
+.api-search-form .learnnav-search-field input,
+.api-search-form .learnnav-search-field input[type="text"] {
 	min-height: 32px;
 	padding: 0.38rem 0.75rem 0.38rem 2.8rem;
 }
 
-.nav.learn .learnnav-search-field .page-search-field-icon {
+.nav.learn .learnnav-search-field .page-search-field-icon,
+.api-search-form .learnnav-search-field .page-search-field-icon {
 	left: 0.7rem;
 	font-size: 1.18rem;
 }
@@ -1271,21 +1278,8 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 		content: url("/images/logo/defold/logo_with_text/logo-hor-classic-white-160.png");
 	}
 
-	.apicontent div.dropdownmenu input[type="text"] {
+	.apicontent div.dropdownmenu .page-search-field {
 		width: 100%;
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0.9rem 1rem;
-		border: 1px solid rgba(255, 255, 255, 0.12);
-		border-radius: 12px;
-		background: linear-gradient(180deg, rgba(19, 24, 30, 0.96) 0%, rgba(14, 18, 23, 0.98) 100%);
-		color: rgba(255, 255, 255, 0.95);
-		caret-color: rgba(255, 255, 255, 0.95);
-		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-	}
-
-	.apicontent div.dropdownmenu input[type="text"]::placeholder {
-		color: rgba(255, 255, 255, 0.72);
 	}
 
 	.apicontent select.dropdownmenu {
@@ -1322,7 +1316,7 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 	}
 
 	.apicontent select.dropdownmenu:focus-visible,
-	.apicontent div.dropdownmenu input[type="text"]:focus-visible {
+	.apicontent div.dropdownmenu .page-search-field input[type="text"]:focus-visible {
 		outline: none;
 		border-color: rgba(57, 163, 228, 0.55);
 		box-shadow: 0 0 0 3px rgba(57, 163, 228, 0.22), 0 12px 26px rgba(8, 16, 25, 0.2);
@@ -8927,7 +8921,9 @@ ul.page-checklist-negative li:before {
 	}
 
 	.nav.learn .page-search-field input,
-	.nav.learn .page-search-field input[type="text"] {
+	.nav.learn .page-search-field input[type="text"],
+	.api-search-form .page-search-field input,
+	.api-search-form .page-search-field input[type="text"] {
 		color: var(--darkest);
 		caret-color: var(--darkest);
 		background: linear-gradient(180deg, rgba(252, 254, 255, 0.98) 0%, rgba(239, 245, 251, 0.96) 100%);
@@ -8935,20 +8931,26 @@ ul.page-checklist-negative li:before {
 	}
 
 	.nav.learn .page-search-field input::placeholder,
-	.nav.learn .page-search-field input[type="text"]::placeholder {
+	.nav.learn .page-search-field input[type="text"]::placeholder,
+	.api-search-form .page-search-field input::placeholder,
+	.api-search-form .page-search-field input[type="text"]::placeholder {
 		color: rgba(39, 91, 142, 0.48);
 	}
 
 	.nav.learn .page-search-field input:focus,
-	.nav.learn .page-search-field input[type="text"]:focus {
+	.nav.learn .page-search-field input[type="text"]:focus,
+	.api-search-form .page-search-field input:focus,
+	.api-search-form .page-search-field input[type="text"]:focus {
 		background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(244, 248, 252, 0.98) 100%);
 	}
 
-	.nav.learn .page-search-field-icon {
+	.nav.learn .page-search-field-icon,
+	.api-search-form .page-search-field-icon {
 		color: rgba(39, 91, 142, 0.62);
 	}
 
-	.nav.learn .page-search-field:focus-within .page-search-field-icon {
+	.nav.learn .page-search-field:focus-within .page-search-field-icon,
+	.api-search-form .page-search-field:focus-within .page-search-field-icon {
 		color: rgba(20, 24, 28, 0.88);
 	}
 
