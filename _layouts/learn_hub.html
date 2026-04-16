@@ -23,7 +23,7 @@ layout: page_with_learnnav
 
 {% include page_hub_hero.html hero_class=hero_class title=hub_title copy=page_hero_copy panel=page_hero_panel aria_label=page.hub_aria_label %}
 
-<div class="section dark asset-hub-section">
+<div class="section dark asset-hub-section{% if page.theme_page_bg_dark %} theme-page-bg-dark{% endif %}">
 	<div class="container">
 		<div class="asset-hub-catalog-layout" data-learn-tag-catalog>
 			<div class="asset-hub-sidebar">

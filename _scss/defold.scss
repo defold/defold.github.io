@@ -92,7 +92,7 @@
 	--topnav-sticky-offset: 62px;
 	--page-section-padding-top: clamp(3.8rem, 5.4vw, 4.8rem);
 	--page-section-padding-bottom: clamp(3.8rem, 5.4vw, 4.8rem);
-	--page-section-inner-margin: clamp(2.6rem, 4vw, 3.4rem);
+	--page-section-inner-margin: clamp(2.0rem, 3.5vw, 3.0rem);
 	--page-section-heading-margin-top: clamp(1.1rem, 1.9vw, 1.7rem);
 	--page-section-heading-margin-bottom: clamp(1.8rem, 3.2vw, 2.8rem);
 	--page-content-cluster-gap: clamp(4rem, 5.6vw, 5rem);
@@ -3248,6 +3248,11 @@ a.page-tier-card:focus-visible {
 .asset-hub-section {
 	background: var(--catalog-section-bg);
 	color: var(--catalog-section-color);
+}
+
+html.theme-dark .asset-hub-section.theme-page-bg-dark,
+html.theme-dark .learn-detail-shell.theme-page-bg-dark {
+	background: var(--theme-page-bg);
 }
 
 .asset-hub-mobile-toggle {
