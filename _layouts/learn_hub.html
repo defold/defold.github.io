@@ -39,7 +39,6 @@ layout: page_with_learnnav
 				{%- when "courses" -%}
 					{% include learn_tag_filter.html label=filter_label result_items=result_items exclude_tags=exclude_tags items=site.data.learnindex.navigation.courses %}
 				{%- endcase -%}
-				{% include asset_hub_scroll_top.html %}
 			</div>
 			<div class="asset-hub-main">
 				{%- case hub_kind -%}
