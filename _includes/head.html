@@ -216,6 +216,11 @@
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/css/main.css">
+{%- if page.stylesheets -%}
+{%- for stylesheet in page.stylesheets -%}
+<link rel="stylesheet" type="text/css" href="/css/{{ stylesheet }}.css">
+{%- endfor -%}
+{%- endif -%}
 <!-- end CSS -->
 
 <script>
