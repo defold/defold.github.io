@@ -12,6 +12,9 @@ layout: page_with_learnnav
 {%- if hub_kind != "" -%}
 	{%- assign hero_class = hero_class | append: " learn-catalog-hero-" | append: hub_kind -%}
 {%- endif -%}
+{%- if page.compact_hub_hero -%}
+	{%- assign hero_class = hero_class | append: " learn-catalog-hero-compact" -%}
+{%- endif -%}
 
 {%- capture page_hero_copy -%}
 <p>{{ page.hub_copy }}</p>

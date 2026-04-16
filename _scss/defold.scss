@@ -89,7 +89,7 @@
 	--media-overlay-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
 	--page-hover-lift: -2px;
 	--button-hover-lift: -1px;
-	--topnav-sticky-offset: 62px;
+	--topnav-sticky-offset: 56px;
 	--page-section-padding-top: clamp(2.6rem, 4.2vw, 3.6rem);
 	--page-section-padding-bottom: clamp(2.6rem, 4.2vw, 3.6rem);
 	--page-section-inner-margin: clamp(2.8rem, 4.4vw, 3.8rem);
@@ -536,13 +536,13 @@ html, body {
 
 .section.learn-detail-shell.has-left-nav,
 .section.asset-hub-section {
-	padding-top: clamp(2.2rem, 3.2vw, 2.8rem);
-	padding-bottom: clamp(2.2rem, 3.2vw, 2.8rem);
+	padding-top: clamp(1.2rem, 2.2vw, 1.8rem);
+	padding-bottom: clamp(1.2rem, 2.2vw, 1.8rem);
 }
 
 #pagecontent > .section.learn-detail-shell.has-left-nav:first-of-type:not(.frontpage-top-banner),
 #pagecontent > .section.asset-hub-section:first-of-type:not(.frontpage-top-banner) {
-	padding-top: calc(2.4rem + clamp(0.7rem, 1.1vw, 1.4rem));
+	padding-top: calc(1.2rem + clamp(0.5rem, 0.8vw, 1.1rem));
 }
 
 body {
@@ -1060,11 +1060,11 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 	align-items: center;
 	justify-content: center;
 	position: fixed;
-	right: max(0.7rem, calc((100vw - 1200px) / 2 - 4rem));
-	bottom: calc(env(safe-area-inset-bottom, 0px) + 4.6rem);
+	right: 0.7rem;
+	bottom: calc(env(safe-area-inset-bottom, 0px) + 6.2rem);
 	z-index: 1100;
-	width: 42px;
-	height: 42px;
+	width: 50px;
+	height: 50px;
 	padding: 0;
 	border: 1px solid rgba(255, 255, 255, 0.16);
 	border-radius: 999px;
@@ -1078,6 +1078,18 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 	pointer-events: none;
 	transform: translateY(0.75rem) scale(0.92);
 	transition: opacity 180ms ease, transform 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+@media (min-width: 400px) {
+	.page-scroll-top-button {
+		right: max(0.7rem, calc((100vw - min(85vw, 1200px)) / 2 - 5.0rem));
+	}
+}
+
+@media (min-width: 800px) {
+	.page-scroll-top-button {
+		right: max(0.7rem, calc((100vw - min(80vw, 1200px)) / 2 - 5.4rem));
+	}
 }
 
 .page-scroll-top-button.is-visible {
@@ -1150,7 +1162,7 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 
 @media (max-width: 1000px) {
 	:root {
-		--topnav-sticky-offset: 52px;
+		--topnav-sticky-offset: 54px;
 	}
 
 	.nav.nav-floating > .container,
@@ -2339,7 +2351,7 @@ input[type="button"] {
 
 .download-store-embed {
 	height: 100%;
-	background: #171a21;
+	background: #171a2100;
 }
 
 .download-store-embed iframe {
@@ -2350,7 +2362,7 @@ input[type="button"] {
 	border: 0;
 	border-radius: 0;
 	box-shadow: none;
-	background: #171a21;
+	background: #171a2100;
 }
 
 .download-store-card {
@@ -2641,10 +2653,21 @@ input[type="button"] {
 	--page-hero-panel-min-height: clamp(112px, 14vw, 160px);
 }
 
+.learn-catalog-hero-compact {
+	--page-hero-graphic-width: min(100%, 160px);
+	--page-hero-panel-min-height: clamp(78px, 9.8vw, 112px);
+}
+
 #pagecontent > .section.page-hero.learn-catalog-hero:first-of-type:not(.frontpage-top-banner),
 .section.page-hero.learn-catalog-hero:not(.frontpage-top-banner) {
 	padding-top: clamp(2.2rem, 3vw, 3.1rem);
 	padding-bottom: clamp(2.8rem, 3.8vw, 3.8rem);
+}
+
+#pagecontent > .section.page-hero.learn-catalog-hero.learn-catalog-hero-compact:first-of-type:not(.frontpage-top-banner),
+.section.page-hero.learn-catalog-hero.learn-catalog-hero-compact:not(.frontpage-top-banner) {
+	padding-top: clamp(1.5rem, 2vw, 2.1rem);
+	padding-bottom: clamp(1.9rem, 2.6vw, 2.6rem);
 }
 
 .learn-catalog-hero .page-hero-graphic {
@@ -4920,7 +4943,7 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 }
 
 .donors-and-partners-card {
-	--donors-and-partners-card-min-height: clamp(66px, 6.1vw, 80px);
+	--donors-and-partners-card-min-height: clamp(71px, 6.5vw, 86px);
 	--donors-and-partners-card-padding-block: clamp(0.3rem, 0.45vw, 0.42rem);
 	--donors-and-partners-card-padding-inline: clamp(0.45rem, 0.65vw, 0.58rem);
 	display: flex;
@@ -4949,11 +4972,11 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 }
 
 .donors-and-partners-card-platinum {
-	--donors-and-partners-card-min-height: clamp(81px, 7.3vw, 97px);
+	--donors-and-partners-card-min-height: clamp(87px, 7.8vw, 104px);
 }
 
 .donors-and-partners-card-gold {
-	--donors-and-partners-card-min-height: clamp(66px, 6.3vw, 80px);
+	--donors-and-partners-card-min-height: clamp(71px, 6.7vw, 86px);
 }
 
 .donors-and-partners-card-special {
@@ -4961,11 +4984,11 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 }
 
 .donors-and-partners-card-membership {
-	--donors-and-partners-card-min-height: clamp(36px, 3.3vw, 43px);
+	--donors-and-partners-card-min-height: clamp(39px, 3.5vw, 46px);
 }
 
 .donors-and-partners-card-compact {
-	--donors-and-partners-card-min-height: clamp(53px, 4.9vw, 64px);
+	--donors-and-partners-card-min-height: clamp(57px, 5.2vw, 68px);
 }
 
 .donors-and-partners-card-friends {
@@ -7388,11 +7411,11 @@ img[alt="icon"] {
 	}
 
 	.donors-and-partners-card {
-		--donors-and-partners-card-min-height: 59px;
+		--donors-and-partners-card-min-height: 63px;
 	}
 
 	.donors-and-partners-card-gold {
-		--donors-and-partners-card-min-height: 58px;
+		--donors-and-partners-card-min-height: 62px;
 	}
 
 	.donors-and-partners-card-special {
@@ -7400,11 +7423,11 @@ img[alt="icon"] {
 	}
 
 	.donors-and-partners-card-membership {
-		--donors-and-partners-card-min-height: 36px;
+		--donors-and-partners-card-min-height: 39px;
 	}
 
 	.donors-and-partners-card-compact {
-		--donors-and-partners-card-min-height: 48px;
+		--donors-and-partners-card-min-height: 51px;
 	}
 
 	.donors-and-partners-card-friends {
@@ -7809,6 +7832,20 @@ ul.page-checklist-negative li:before {
 	background-size: 100% 100%, cover;
 }
 
+.frontpage-learn-section .page-feature-card {
+	grid-template-columns: 79px minmax(0, 1fr);
+}
+
+.frontpage-learn-section .page-feature-card-badge {
+	width: 79px;
+	height: 79px;
+}
+
+.frontpage-learn-section .page-feature-card-badge img {
+	max-width: 65px;
+	max-height: 65px;
+}
+
 .page-download-cta-section {
 	--page-hero-warm-size: clamp(42rem, 78vw, 74rem);
 	--page-hero-cool-size: clamp(40rem, 72vw, 68rem);
@@ -7857,7 +7894,7 @@ ul.page-checklist-negative li:before {
 }
 
 .page-download-cta-copy .page-section-heading h2 {
-	margin-bottom: 1.2rem;
+	margin-bottom: 1.5rem;
 }
 
 .page-download-cta-copy .page-section-heading p {
@@ -8650,7 +8687,7 @@ ul.page-checklist-negative li:before {
 			linear-gradient(180deg, #fcfdff 0%, #f4f7fb 100%);
 		--donors-and-partners-copy-color: rgba(20, 24, 28, 0.72);
 		--donors-and-partners-heading-color: var(--darkest);
-		--donors-and-partners-card-bg: linear-gradient(180deg, rgba(84, 114, 150, 0.98) 0%, rgba(55, 76, 104, 1) 100%);
+		--donors-and-partners-card-bg: linear-gradient(180deg, rgba(76, 92, 112, 0.98) 0%, rgba(48, 60, 76, 1) 100%);
 		--donors-and-partners-card-border: rgba(43, 78, 118, 0.22);
 		--donors-and-partners-card-shadow: 0 18px 34px rgba(39, 68, 102, 0.16);
 		--donors-and-partners-light-card-bg: rgba(255, 255, 255, 0.96);
@@ -8700,7 +8737,7 @@ ul.page-checklist-negative li:before {
 	}
 
 	.donors-and-partners-card {
-		--donors-and-partners-card-min-height: clamp(66px, 6.1vw, 80px);
+		--donors-and-partners-card-min-height: clamp(71px, 6.5vw, 86px);
 		--donors-and-partners-card-padding-block: clamp(0.3rem, 0.45vw, 0.42rem);
 		--donors-and-partners-card-padding-inline: clamp(0.45rem, 0.65vw, 0.58rem);
 		display: flex;
@@ -8729,11 +8766,11 @@ ul.page-checklist-negative li:before {
 	}
 
 	.donors-and-partners-card-platinum {
-		--donors-and-partners-card-min-height: clamp(81px, 7.3vw, 97px);
+		--donors-and-partners-card-min-height: clamp(87px, 7.8vw, 104px);
 	}
 
 	.donors-and-partners-card-gold {
-		--donors-and-partners-card-min-height: clamp(66px, 6.3vw, 80px);
+		--donors-and-partners-card-min-height: clamp(71px, 6.7vw, 86px);
 	}
 
 	.donors-and-partners-card-special {
@@ -8741,11 +8778,11 @@ ul.page-checklist-negative li:before {
 	}
 
 	.donors-and-partners-card-membership {
-		--donors-and-partners-card-min-height: clamp(36px, 3.3vw, 43px);
+		--donors-and-partners-card-min-height: clamp(39px, 3.5vw, 46px);
 	}
 
 	.donors-and-partners-card-compact {
-		--donors-and-partners-card-min-height: clamp(53px, 4.9vw, 64px);
+		--donors-and-partners-card-min-height: clamp(57px, 5.2vw, 68px);
 	}
 
 	.donors-and-partners-card-friends {
