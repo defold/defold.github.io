@@ -32,12 +32,8 @@
 								{%- if game -%}
 									{%- assign game_image_src = game.images.third -%}
 									{%- assign game_image_path = "/images/games/" | append: game_image_src -%}
-									{%- assign game_image_loading = "lazy" -%}
-									{%- assign game_image_fetchpriority = nil -%}
-									{%- if rendered_initial_count == 0 -%}
-										{%- assign game_image_loading = "eager" -%}
-										{%- assign game_image_fetchpriority = "high" -%}
-									{%- endif -%}
+									{%- assign game_image_loading = "eager" -%}
+									{%- assign game_image_fetchpriority = "high" -%}
 									<a href="/showcase#{{ game.id }}" class="frontpage-showcase-card game-banner-link" data-game-id="{{ game.id }}" aria-label="{{ game.name }}">
 										<span class="frontpage-showcase-card-media">
 											{% if game_image_src and game_image_src != "" %}
@@ -59,12 +55,8 @@
 						{%- for game in showcase_games limit: initial_showcase_limit -%}
 							{%- assign game_image_src = game.images.third -%}
 							{%- assign game_image_path = "/images/games/" | append: game_image_src -%}
-							{%- assign game_image_loading = "lazy" -%}
-							{%- assign game_image_fetchpriority = nil -%}
-							{%- if forloop.first -%}
-								{%- assign game_image_loading = "eager" -%}
-								{%- assign game_image_fetchpriority = "high" -%}
-							{%- endif -%}
+							{%- assign game_image_loading = "eager" -%}
+							{%- assign game_image_fetchpriority = "high" -%}
 							<a href="/showcase#{{ game.id }}" class="frontpage-showcase-card game-banner-link" data-game-id="{{ game.id }}" aria-label="{{ game.name }}">
 								<span class="frontpage-showcase-card-media">
 									{% if game_image_src and game_image_src != "" %}

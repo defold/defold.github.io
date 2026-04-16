@@ -190,7 +190,6 @@
 		function createCard(game, copyIndex, baseIndex) {
 			const imageData = getResponsiveImageData(game);
 			const isInitiallyVisible = copyIndex === 0 && baseIndex < cardsPerView;
-			const isLeadCard = isInitiallyVisible && baseIndex === 0;
 
 			const card = document.createElement('a');
 			card.href = '/showcase#' + game.id;
@@ -215,9 +214,7 @@
 				img.decoding = 'async';
 				img.draggable = false;
 				img.loading = isInitiallyVisible ? 'eager' : 'lazy';
-				if (isLeadCard) {
-					img.setAttribute('fetchpriority', 'high');
-				}
+				img.setAttribute('fetchpriority', 'high');
 				img.src = imageData.src;
 				if (imageData.webpSrc && imageData.webpSrc !== imageData.src && /\.webp($|\?)/i.test(imageData.webpSrc)) {
 					const picture = document.createElement('picture');

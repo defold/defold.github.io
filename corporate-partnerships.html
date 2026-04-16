@@ -17,7 +17,7 @@ heatmap: false
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/partnerships.svg" alt="Defold partnership illustration" loading="eager">
+<img class="page-hero-graphic" src="/images/icons/partnerships.svg" alt="Defold partnership illustration" loading="eager" fetchpriority="high">
 {%- endcapture -%}
 
 {% include page_hub_hero.html hero_class="partnership-hub-hero" title="Defold Corporate Partnerships" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold corporate partnerships illustration" %}

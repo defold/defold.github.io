@@ -16,7 +16,7 @@ nav: floating
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/icon-discord.svg" alt="Defold Discord icon" loading="eager">
+<img class="page-hero-graphic" src="/images/icons/icon-discord.svg" alt="Defold Discord icon" loading="eager" fetchpriority="high">
 {%- endcapture -%}
 
 {% include page_hub_hero.html hero_class="discord-hub-hero" title="Join the Defold Discord" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold Discord overview" %}

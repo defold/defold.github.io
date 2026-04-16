@@ -19,7 +19,7 @@ nav: floating
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/icon-defold.svg" alt="Defold logo and trademark illustration" loading="eager">
+<img class="page-hero-graphic" src="/images/icons/icon-defold.svg" alt="Defold logo and trademark illustration" loading="eager" fetchpriority="high">
 {%- endcapture -%}
 
 {% include page_hub_hero.html hero_class="brand-hub-hero" title="Logo & Trademark" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold brand guidelines overview" %}

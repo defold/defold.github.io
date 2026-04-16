@@ -17,7 +17,7 @@ heatmap: false
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/icon-heart.svg" alt="Defold support illustration" loading="eager">
+<img class="page-hero-graphic" src="/images/icons/icon-heart.svg" alt="Defold support illustration" loading="eager" fetchpriority="high">
 {%- endcapture -%}
 
 {% include page_hub_hero.html hero_class="donate-hub-hero" title="Help Defold grow" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold support illustration" %}
