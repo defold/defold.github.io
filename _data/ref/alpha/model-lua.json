@@ -106,6 +106,40 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "get current morph (blend shape) weights",
+            "description": "Returns a table of numbers with one entry per morph target on the first mesh of the model that has morph targets.\nValues reflect the rig state at call time (after animation, and any active script override from <a href=\"/ref/model#model.set_blend_weights\">model.set_blend_weights</a>).",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">w</span> <span class=\"o\">=</span> <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">get_blend_weights</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">for</span> <span class=\"n\">i</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"o\">#</span><span class=\"n\">w</span> <span class=\"kr\">do</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">i</span><span class=\"p\">,</span> <span class=\"n\">w</span><span class=\"p\">[</span><span class=\"n\">i</span><span class=\"p\">])</span>\n<span class=\"kr\">end</span>\n<span class=\"c1\">-- change the data in the table and then set the weights again</span>\n<span class=\"n\">w</span><span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mf\">0.75</span>\n<span class=\"n\">w</span><span class=\"p\">[</span><span class=\"mi\">2</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mf\">0.25</span>\n<span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">set_blend_weights</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"n\">w</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "model.get_blend_weights",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the model component",
+                    "is_optional": "False",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of weight values, or empty table if the model has no morph targets",
+                    "name": "weights",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "retrieve the game object corresponding to a model skeleton bone",
             "description": "Gets the id of the game object that corresponds to a model skeleton bone.\nThe returned game object can be used for parenting and transform queries.\nThis function has complexity <code>O(n)</code>, where <code>n</code> is the number of bones in the model skeleton.\nGame objects corresponding to a model skeleton bone can not be individually deleted.",
             "error": "",
@@ -277,6 +311,41 @@
                     "name": "complete_function",
                     "types": [
                         "function(self, message_id, message, sender)"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set morph (blend shape) weights from a table",
+            "description": "Copies numeric values from <code>weights</code> into each morph target slot for every mesh on the model that has morph targets.\nAt most as many weights are applied as each mesh has morph targets; extra entries in the table are ignored.\nMissing weights leave the tail zero-filled for meshes with more targets than entries.\nThe override is re-applied every frame after animations run, until cleared by omitting <code>weights</code> or passing <code>nil</code>.\nTo reset the weights, use <code>model.set_blend_weights(url)</code> or <code>model.set_blend_weights(url, nil)</code>.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- set the weights for the first 4 morph targets</span>\n<span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">set_blend_weights</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span> <span class=\"p\">})</span>\n<span class=\"c1\">-- clear the override, animation will continue if the weights are driven by an animation</span>\n<span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">set_blend_weights</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">)</span> <span class=\"c1\">-- clear script override</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "model.set_blend_weights",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the model component",
+                    "is_optional": "False",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "array of weight values (1-based indices). Omit or pass <code>nil</code> to clear the override and return morphs to animation only",
+                    "is_optional": "False",
+                    "name": "weights",
+                    "types": [
+                        "table",
+                        "nil"
                     ]
                 }
             ],
