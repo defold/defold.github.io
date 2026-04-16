@@ -215,10 +215,20 @@
 <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
 
 <!-- CSS -->
+{%- assign learn_layouts = "api|author|page_with_learnnav|learn|learn_hub|manual|tutorial|example|assetportal|asset|faq|post-with-example" | split: "|" -%}
+{%- assign load_learn_stylesheet = false -%}
+{%- if learn_layouts contains page.layout or page.stylesheets contains "learn" -%}
+{%- assign load_learn_stylesheet = true -%}
+{%- endif -%}
 <link rel="stylesheet" type="text/css" href="/css/main.css">
+{%- if load_learn_stylesheet -%}
+<link rel="stylesheet" type="text/css" href="/css/learn.css">
+{%- endif -%}
 {%- if page.stylesheets -%}
 {%- for stylesheet in page.stylesheets -%}
+{%- unless stylesheet == "learn" -%}
 <link rel="stylesheet" type="text/css" href="/css/{{ stylesheet }}.css">
+{%- endunless -%}
 {%- endfor -%}
 {%- endif -%}
 <!-- end CSS -->
