@@ -75,7 +75,7 @@
 	{%- else -%}
 		{%- assign schema_type = "BlogPosting" -%}
 	{%- endif -%}
-{%- elsif page.layout == "assetportal" or page.url == "/blog/" or page.url == "/news/" or page.url == "/showcase/" or page.url == "/more-games/" or page.url == "/authors/" or page.url == "/tutorials/" or page.url == "/videos/" or page.url == "/courses/" or page.url == "/manuals/" or page.url == "/documentation/" or page.url == "/assets/" -%}
+{%- elsif page.layout == "assetportal" or page.url == "/blog/" or page.url == "/news/" or page.url == "/showcase/" or page.url == "/more-games/" or page.url == "/authors/" or page.url == "/tutorials/" or page.url == "/videos/" or page.url == "/courses/" or page.url == "/manuals/" or page.url == "/assets/" -%}
 	{%- assign schema_type = "CollectionPage" -%}
 {%- endif -%}
 
