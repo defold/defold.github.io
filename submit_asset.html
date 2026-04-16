@@ -13,7 +13,7 @@ nav: floating
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/beans/beans-header-assets-games-01.png" alt="Submitting Defold assets" loading="eager">
+{% include webp_picture.html src="/images/beans/beans-header-assets-games-01.webp" alt="Submitting Defold assets" class="page-hero-graphic" loading="eager" %}
 {%- endcapture -%}
 
 {% include page_hub_hero.html hero_class="submit-hub-hero" title="Submit Asset" copy=page_hero_copy panel=page_hero_panel aria_label="Defold asset submission" %}
