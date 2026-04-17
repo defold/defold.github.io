@@ -138,6 +138,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [odin (extension-odin)](https://defold.com/llms/apis/extension-odin_odin.md) - Functions and constants for interacting with ODIN Voice
 - [pad (extension-pad)](https://defold.com/llms/apis/extension-pad_pad.md) - Functionality to work with Play Asset Delivery and the AssetPackManager
 - [permissions (extension-permissions)](https://defold.com/llms/apis/extension-permissions_permissions.md) - Functions and constants for interacting with permissions related APIs
+- [fusion (extension-photon-fusion)](https://defold.com/llms/apis/extension-photon-fusion_fusion.md) - Functions and constants for interacting with Photon Fusion
 - [realtime (extension-photon-realtime)](https://defold.com/llms/apis/extension-photon-realtime_realtime.md) - Functions and constants for interacting with Photon Realtime
 - [poki_sdk (extension-poki-sdk)](https://defold.com/llms/apis/extension-poki-sdk_poki_sdk.md) - Functions and constants for interacting with Poki SDK APIs
 - [push (extension-push)](https://defold.com/llms/apis/extension-push_push.md) - Functions and constants for interacting with local, as well as Apple''s and Google''s push notification services

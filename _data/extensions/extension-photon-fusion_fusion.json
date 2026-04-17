@@ -1,0 +1,1222 @@
+{
+    "elements": [
+        {
+            "description": "Initialize Fusion.\n",
+            "examples": "",
+            "name": "fusion.init",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "app_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "app_version",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Initialize Fusion from game.project settings.\n",
+            "examples": "",
+            "name": "fusion.init_from_settings",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Connect Fusion.\n",
+            "examples": "",
+            "name": "fusion.connect",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "user",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "server",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Disonnect Fusion.\n",
+            "examples": "",
+            "name": "fusion.disconnect",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Reconnect Fusion.\n",
+            "examples": "",
+            "name": "fusion.reconnect",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Start Fusion sync.\n",
+            "examples": "",
+            "name": "fusion.start",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Stop Fusion sync.\n",
+            "examples": "",
+            "name": "fusion.stop",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get connection state.\n",
+            "examples": "",
+            "name": "fusion.get_state",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "State\n",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get disconnect cause.\n",
+            "examples": "",
+            "name": "fusion.get_disconnect_cause",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "Cause\n",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Join or create random room.\n",
+            "examples": "",
+            "name": "fusion.join_or_create_room_random",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "create_room_options",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "matchmaking_options",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Join random room.\n",
+            "examples": "",
+            "name": "fusion.join_room_random",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "matchmaking_options",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Join room.\n",
+            "examples": "",
+            "name": "fusion.join_room",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "room_name",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "join_room_options",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Join or create room.\n",
+            "examples": "",
+            "name": "fusion.join_or_create_room",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "room_name",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "create_room_options",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "join_room_options",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Create room.\n",
+            "examples": "",
+            "name": "fusion.create_room",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "room_name",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "create_room_options",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Leave room.\n",
+            "examples": "",
+            "name": "fusion.leave_room",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "will_come_back",
+                    "types": [
+                        "boolean"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "send_auth_cookie",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Check if Fusion is connected.\n",
+            "examples": "",
+            "name": "fusion.is_connected",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Check if Fusion has config and is connected.\n",
+            "examples": "",
+            "name": "fusion.is_running",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Check if Fusion is started. Fusion is considered started after a call to.\n`fusion.start()` has received a `EventOnFusionStart` event.\n",
+            "examples": "",
+            "name": "fusion.is_started",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Check if Fusion is in a room.\n",
+            "examples": "",
+            "name": "fusion.is_in_room",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Enable/disable debugging.\n",
+            "examples": "",
+            "name": "fusion.enable_debug",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Register a scene object.\n",
+            "examples": "",
+            "name": "fusion.register_scene_object",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "scene",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "factory_url",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "owner_mode",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Create a networked game object. This will spawn a game object in the same.\nWay as when calling factory.create(). The function will also register the spawned object with Fusion as if manually calling register_object()\n",
+            "examples": "",
+            "name": "fusion.spawn",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "factory_url",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Initial position of created game object\n",
+                    "name": "position",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "Initial rotation of created game object\n",
+                    "name": "rotation",
+                    "types": [
+                        "quat"
+                    ]
+                },
+                {
+                    "doc": "The scene to which this object belongs\n",
+                    "name": "scene",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Owner mode of spawned object\n",
+                    "name": "owner_mode",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Of the spawned game object\n",
+                    "name": "hash"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Destroy a networked object.\n",
+            "examples": "",
+            "name": "fusion.despawn",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Register an object.\n",
+            "examples": "",
+            "name": "fusion.register_object",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "scene",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "factory_url",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "owner_mode",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Unregister a previously registered object.\n",
+            "examples": "",
+            "name": "fusion.unregister_object",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Change scene.\n",
+            "examples": "",
+            "name": "fusion.scene_change",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "index",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "sequence",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "data",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Send RPC.\n",
+            "examples": "",
+            "name": "fusion.rpc",
+            "parameters": [
+                {
+                    "doc": "0 = all, specific PlayerId = targeted\n",
+                    "name": "target_player",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "data",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set event listener.\n",
+            "examples": "",
+            "name": "fusion.on_event",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "listener",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get the player id of the local client\n",
+            "examples": "",
+            "name": "fusion.get_local_player_id",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "Player id of the local client\n",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get the player id of the current owner of an object\n",
+            "examples": "",
+            "name": "fusion.get_owner_id",
+            "parameters": [
+                {
+                    "doc": "Id of the object to get the owner for\n",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Player id of the object's owner\n",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Check if this client has authority over a game object. Use this to decide if user input should be handled or not.\n",
+            "examples": "",
+            "name": "fusion.has_authority",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Returns true if the client has authority\n",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Check if an object has an owner\n",
+            "examples": "",
+            "name": "fusion.has_owner",
+            "parameters": [
+                {
+                    "doc": "Id of the object\n",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "If the object has an owner\n",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Signal desire for the local client to own an object\n",
+            "examples": "",
+            "name": "fusion.want_authority",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "claim_ownership",
+                    "types": [
+                        "boolean"
+                    ]
+                },
+                {
+                    "doc": "Id of the object to own\n",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Explicitly clear the ownership cooldown\n",
+            "examples": "",
+            "name": "fusion.clear_owner_cooldown",
+            "parameters": [
+                {
+                    "doc": "Id of the object to clear cooldown for\n",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set the send rate of an object. This decided how much bandwidth to allocate\n",
+            "examples": "",
+            "name": "fusion.set_send_rate",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "send_rate",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Id of the object to send rate for\n",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set the local send rate divisor for an object. A value of `1` means the object sends every tick (highest rate). A value of `16` means it sends every 16th tick (lowest rate). This is a client-side optimization -- the object still exists on all clients but consumes less bandwidth when you are not the active authority.\n",
+            "examples": "",
+            "name": "fusion.set_local_send_rate",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "send_rate",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Id of the object to send rate for\n",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Reset the send rate of an object.\n",
+            "examples": "",
+            "name": "fusion.reset_send_rate",
+            "parameters": [
+                {
+                    "doc": "Id of the object to reset send rate for\n",
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get player count\n",
+            "examples": "",
+            "name": "fusion.player_count",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "Number of players\n",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get if this client is the room's master\n",
+            "examples": "",
+            "name": "fusion.is_master_client",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "True if this client is the room's master\n",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get round trip time\n",
+            "examples": "",
+            "name": "fusion.get_rtt",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "Round trip time in seconds\n",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get raw offset between server time and local time. A positive value means the server clock is ahead of the local clock.\n",
+            "examples": "",
+            "name": "fusion.network_time_diff",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "Time diff\n",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set global visibility key for an object\n",
+            "examples": "",
+            "name": "fusion.set_global_interest_key",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set area visibility key for an object\n",
+            "examples": "",
+            "name": "fusion.set_area_interest_key",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set user visibility key for an object\n",
+            "examples": "",
+            "name": "fusion.set_user_interest_key",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Set area visibility keys\n",
+            "examples": "",
+            "name": "fusion.set_area_keys",
+            "parameters": [
+                {
+                    "doc": "Area keys to set. Stored as a table of key value pairs (area_key->send_rate)\n",
+                    "name": "keys",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Add a user visibility key\n",
+            "examples": "",
+            "name": "fusion.add_user_key",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Remove a user visibility key from an object\n",
+            "examples": "",
+            "name": "fusion.remove_user_key",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "OWNERMODE_TRANSACTION\n",
+            "examples": "",
+            "name": "OWNERMODE_TRANSACTION",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "OWNERMODE_PLAYERATTACHED\n",
+            "examples": "",
+            "name": "OWNERMODE_PLAYERATTACHED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "OWNERMODE_DYNAMIC\n",
+            "examples": "",
+            "name": "OWNERMODE_DYNAMIC",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "OWNERMODE_MASTERCLIENT\n",
+            "examples": "",
+            "name": "OWNERMODE_MASTERCLIENT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "OWNERMODE_GAMEGLOBAL\n",
+            "examples": "",
+            "name": "OWNERMODE_GAMEGLOBAL",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "STATE_DISCONNECTED\n",
+            "examples": "",
+            "name": "STATE_DISCONNECTED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "STATE_CONNECTING\n",
+            "examples": "",
+            "name": "STATE_CONNECTING",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "STATE_CONNECTED\n",
+            "examples": "",
+            "name": "STATE_CONNECTED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "STATE_JOININGROOM\n",
+            "examples": "",
+            "name": "STATE_JOININGROOM",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "STATE_INROOM\n",
+            "examples": "",
+            "name": "STATE_INROOM",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "STATE_LEAVINGROOM\n",
+            "examples": "",
+            "name": "STATE_LEAVINGROOM",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "STATE_DISCONNECTING\n",
+            "examples": "",
+            "name": "STATE_DISCONNECTING",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_NONE\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_NONE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_DISCONNECTBYSERVERUSERLIMIT\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_DISCONNECTBYSERVERUSERLIMIT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_EXCEPTIONONCONNECT\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_EXCEPTIONONCONNECT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_DISCONNECTBYSERVER\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_DISCONNECTBYSERVER",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_DISCONNECTBYSERVERLOGIC\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_DISCONNECTBYSERVERLOGIC",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_TIMEOUTDISCONNECT\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_TIMEOUTDISCONNECT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_EXCEPTION\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_EXCEPTION",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_INVALIDAUTHENTICATION\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_INVALIDAUTHENTICATION",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_MAXCCUREACHED\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_MAXCCUREACHED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_INVALIDREGION\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_INVALIDREGION",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_OPERATIONNOTALLOWEDINCURRENTSTATE\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_OPERATIONNOTALLOWEDINCURRENTSTATE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_CUSTOMAUTHENTICATIONFAILED\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_CUSTOMAUTHENTICATIONFAILED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_CLIENTVERSIONTOOOLD\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_CLIENTVERSIONTOOOLD",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_CLIENTVERSIONINVALID\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_CLIENTVERSIONINVALID",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_DASHBOARDVERSIONINVALID\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_DASHBOARDVERSIONINVALID",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_AUTHENTICATIONTICKETEXPIRED\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_AUTHENTICATIONTICKETEXPIRED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "DISCONNECT_CAUSE_DISCONNECTBYOPERATIONLIMIT\n",
+            "examples": "",
+            "name": "DISCONNECT_CAUSE_DISCONNECTBYOPERATIONLIMIT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_OBJECT_READY\n",
+            "examples": "",
+            "name": "EVENT_OBJECT_READY",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_SUB_OBJECT_CREATED\n",
+            "examples": "",
+            "name": "EVENT_SUB_OBJECT_CREATED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_OBJECT_DESTROYED\n",
+            "examples": "",
+            "name": "EVENT_OBJECT_DESTROYED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_SUB_OBJECT_DESTROYED\n",
+            "examples": "",
+            "name": "EVENT_SUB_OBJECT_DESTROYED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_OBJECT_OWNER_CHANGED\n",
+            "examples": "",
+            "name": "EVENT_OBJECT_OWNER_CHANGED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_OBJECT_PREDICTION_OVERRIDE\n",
+            "examples": "",
+            "name": "EVENT_OBJECT_PREDICTION_OVERRIDE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_LOBBY_STATS\n",
+            "examples": "",
+            "name": "EVENT_LOBBY_STATS",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ROOM_JOINED\n",
+            "examples": "",
+            "name": "EVENT_ROOM_JOINED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_ROOM_LEFT\n",
+            "examples": "",
+            "name": "EVENT_ROOM_LEFT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_RPC\n",
+            "examples": "",
+            "name": "EVENT_RPC",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_SCENE_CHANGE\n",
+            "examples": "",
+            "name": "EVENT_SCENE_CHANGE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_DESTROYED_MAP_ACTOR\n",
+            "examples": "",
+            "name": "EVENT_DESTROYED_MAP_ACTOR",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_INTEREST_ENTER\n",
+            "examples": "",
+            "name": "EVENT_INTEREST_ENTER",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_INTEREST_EXIT\n",
+            "examples": "",
+            "name": "EVENT_INTEREST_EXIT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_FORCED_DISCONNECT\n",
+            "examples": "",
+            "name": "EVENT_FORCED_DISCONNECT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_FUSION_START\n",
+            "examples": "",
+            "name": "EVENT_FUSION_START",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_CONNECTED\n",
+            "examples": "",
+            "name": "EVENT_CONNECTED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_DISCONNECTED\n",
+            "examples": "",
+            "name": "EVENT_DISCONNECTED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        }
+    ],
+    "info": {
+        "api": "extension-photon-fusion/fusion_api",
+        "api_language": "Lua",
+        "brief": "fusion",
+        "description": "Functions and constants for interacting with Photon Fusion",
+        "group": "EXTENSIONS",
+        "name": "extension-photon-fusion",
+        "namespace": "fusion",
+        "type": "Extension"
+    }
+}
