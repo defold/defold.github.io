@@ -2,6 +2,31 @@
 * YouTube Lazy Loading Styles
 ******************************************************************************/
 
+.page-video-panel {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	background-color: #000;
+}
+
+.page-video-panel iframe {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+.page-feature-card-youtube.page-feature-card-with-media {
+	--feature-card-padding-inline: 1.7rem;
+	--feature-card-padding-top: 1.7rem;
+	--feature-card-padding-bottom: 1.85rem;
+}
+
+.page-feature-card-youtube {
+	--feature-card-accent: #ff0033;
+	--feature-card-tint: rgba(255, 0, 51, 0.14);
+}
+
 .youtube-lazy-card {
 	.youtube-thumbnail-container {
 		border-radius: 8px;
@@ -92,6 +117,34 @@
 @keyframes skeleton-loading {
 	0% { background-position: -200% 0; }
 	100% { background-position: 200% 0; }
+}
+
+@media (max-width: 699px) {
+	.page-feature-card-youtube.page-feature-card-with-media {
+		--feature-card-padding-inline: 1.4rem;
+		--feature-card-padding-top: 1.45rem;
+		--feature-card-padding-bottom: 1.55rem;
+	}
+}
+
+@mixin youtube-light-theme-content {
+	.page-feature-card-youtube .page-feature-card-badge img {
+		filter: brightness(0) saturate(100%) invert(18%) sepia(16%) saturate(842%) hue-rotate(169deg) brightness(92%) contrast(91%);
+	}
+
+	.frontpage-learn-section .page-feature-card-youtube .page-feature-card-badge img {
+		filter: brightness(0) saturate(100%);
+	}
+}
+
+html.theme-light {
+	@include youtube-light-theme-content;
+}
+
+@media (prefers-color-scheme: light) {
+	html:not(.theme-dark) {
+		@include youtube-light-theme-content;
+	}
 }
 
 /* Dark mode support for YouTube cards */

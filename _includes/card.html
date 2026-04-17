@@ -29,7 +29,7 @@
 		{%- else -%}
 			<div class="column full">
 				{%- if include.topicon -%}
-				<span style="zoom: {{ include.zoom }};"><img src="{{ include.topicon }}" width="20%" alt="{{ include.topicon_alt }}"/></span>
+				<span style="zoom: {{ include.zoom }};"><img src="{{ include.topicon }}" width="20%" alt="{{ include.topicon_alt }}" loading="lazy" decoding="async"/></span>
 				{%- endif -%}
 				<h4 class="left">{{ include.title }}</h4>
 				<p class="left">{{ include.body }}</p>

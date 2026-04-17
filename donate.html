@@ -4,6 +4,9 @@ title: Support Defold
 description: Support the Defold Foundation through community donations, GitHub Sponsors, Patreon, PayPal, or corporate partnerships that help keep the engine sustainable and free.
 nav: floating
 heatmap: false
+stylesheets:
+  - newsletter
+  - pages
 ---
 
 {%- capture page_hero_copy -%}
@@ -17,7 +20,7 @@ heatmap: false
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/icon-heart.svg" alt="Defold support illustration" loading="eager">
+<img class="page-hero-graphic" src="/images/icons/icon-heart.svg" alt="Defold support illustration" loading="eager" fetchpriority="high">
 {%- endcapture -%}
 
 {% include page_hub_hero.html hero_class="donate-hub-hero" title="Help Defold grow" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold support illustration" %}
@@ -63,7 +66,7 @@ heatmap: false
 		<div class="page-text-panel page-surface-panel donate-hub-panel">
 			<div class="donate-hub-panel-header">
 				<span class="donate-hub-panel-icon" aria-hidden="true">
-					<img src="/images/icons/icon-github.svg" alt="">
+					<img src="/images/icons/icon-github.svg" alt="" loading="lazy" decoding="async">
 				</span>
 				<div>
 					<h3>Support Defold directly via GitHub Sponsors:</h3>
@@ -81,7 +84,7 @@ heatmap: false
 		</div>
 
 		<div class="page-feature-grid page-grid-flush">
-			{% include page_feature_card.html title="Patreon" body="Support Defold through Patreon. ↗" link="https://www.patreon.com/bePatron?u=25380529" icon="/images/icons/icon-patreon.svg" card_class="page-feature-card-patreon" target="_blank" rel="noopener" %}
+			{% include page_feature_card.html title="Patreon" body="Support Defold through a Patreon subscription. ↗" link="https://www.patreon.com/bePatron?u=25380529" icon="/images/icons/icon-patreon.svg" card_class="page-feature-card-patreon" target="_blank" rel="noopener" %}
 			{% include page_feature_card.html title="PayPal" body="Make a direct donation through PayPal. ↗" link="https://www.paypal.com/donate/?hosted_button_id=G8L5TY724HQGE" icon="/images/icons/icon-paypal.svg" card_class="page-feature-card-paypal" target="_blank" rel="noopener" %}
 			{% include page_feature_card.html title="Partnership" body="Support Defold via a dedicated sponsorship." link="/corporate-partnerships" icon="/images/icons/icon-handshake.svg" card_class="page-feature-card-partnership" %}
 		</div>
@@ -102,7 +105,7 @@ heatmap: false
 		</div>
 
 		<div class="page-illustration-panel page-illustration-banner" aria-hidden="true">
-			<img src="/images/beans/placeholder-beans-image.png" alt="">
+			{% include webp_picture.html src="/images/beans/placeholder-beans-image.webp" alt="" loading="lazy" decoding="async" %}
 		</div>
 	</div>
 </div>

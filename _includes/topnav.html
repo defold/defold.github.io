@@ -3,8 +3,8 @@
 		<div class="topnav-shell">
 			<a href="/" class="topnav-brand" aria-label="Defold home">
 				<span class="topnav-brand-mark">
-					<img class="topnav-brand-image topnav-brand-image-dark" src="/images/logo/defold/logo/logo-ver-outline-bright.svg" alt="Defold home"/>
-					<img class="topnav-brand-image topnav-brand-image-light" src="/images/logo/defold/logo/logo-ver-outline-dark.png" alt="" aria-hidden="true"/>
+					<img class="topnav-brand-image topnav-brand-image-dark" src="/images/logo/defold/logo/logo-ver-outline-bright.svg" alt="Defold home page" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async"/>
+					<img class="topnav-brand-image topnav-brand-image-light" src="/images/logo/defold/logo/logo-ver-outline-dark.svg" alt="Defold home page" aria-hidden="true" loading="eager" fetchpriority="low" decoding="async"/>
 				</span>
 			</a>
 
@@ -21,7 +21,8 @@
 
 			<div class="topnav-actions" aria-label="Quick links">
 				<ul>
-					<li><a href="/open">Always&nbsp;Free</a></li>
+					<li><a href="/ref/stable/go">API</a></li>
+					<li><a href="/open">Free</a></li>
 					<li><a href="/download">Download</a></li>
 					<li><a href="/donate" class="nav-donate-link">Donate&nbsp;&nbsp;<span class="nav-donate-heart" aria-hidden="true">❤️</span></a></li>
 					<li class="topnav-actions-theme">
@@ -47,7 +48,8 @@
 						<a href="/assets" class="topnav-mobile-link{% if page.url contains 'assets' %} active{% endif %}">Asset Portal</a>
 						<a href="/community" class="topnav-mobile-link{% if page.url contains 'community' %} active{% endif %}">Community</a>
 						<a href="/support" class="topnav-mobile-link{% if page.url contains 'support' %} active{% endif %}">Support</a>
-						<a href="/open" class="topnav-mobile-link{% if page.url contains 'open' %} active{% endif %}">Always Free</a>
+						<a href="/ref/stable/go" class="topnav-mobile-link{% if page.url contains 'ref' %} active{% endif %}">API</a>
+						<a href="/open" class="topnav-mobile-link{% if page.url contains 'open' %} active{% endif %}">Free</a>
 						<a href="/download" class="topnav-mobile-link{% if page.url contains 'download' %} active{% endif %}">Download</a>
 						<a href="/donate" class="topnav-mobile-link topnav-mobile-link-donate{% if page.url contains 'donate' %} active{% endif %}">Donate&nbsp;&nbsp;<span class="nav-donate-heart" aria-hidden="true">❤️</span></a>
 					</div>
@@ -59,5 +61,6 @@
 				</button>
 			</div>
 		</div>
+
 	</div>
 </div>

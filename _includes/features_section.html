@@ -3,7 +3,7 @@
 		<div class="row feature-row-spaced">
 			<div class="column one-half">
 				<h2 id="no-setup" class="feature-heading">
-					<img class="feature-heading-icon" src="/images/icons/community-games-on-dark.svg" alt="" aria-hidden="true"/>
+					<img class="feature-heading-icon" src="/images/icons/community-games-on-dark.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 					All you need is Defold
 				</h2>
 				<p>Defold is a modern, powerful and production ready all-in-one game engine ecosystem for truly cross-platform game development with an incredibly small engine footprint.</p>
@@ -21,16 +21,18 @@
 				</div>
 			</div>
 			<div class="column one-half">
-				<img src="/images/editor/nosetup-editor.png" alt="Bring me Cakes by PotatoJam" class="slideinright features-section-image" loading="lazy"/>
+				{%- include webp_picture.html src="/images/editor/nosetup-editor.webp" alt="Bring me Cakes by PotatoJam" class="slideinright features-section-image" loading="lazy" -%}
 			</div>
 		</div>
 		<div class="row feature-row-spaced">
 			<div class="columns six">
-				{%- include platforms.html minmax=100 transition="fadein" -%}
+				<div class="fadein">
+					{%- include platforms.html minmax=100 -%}
+				</div>
 			</div>
 			<div class="columns six">
 				<h2 id="cross-platform" class="feature-heading">
-					<img class="feature-heading-icon" src="/images/icons/ic-64-ship-blue.svg" alt="" aria-hidden="true"/>
+					<img class="feature-heading-icon" src="/images/icons/ic-64-ship-blue.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 					Ship everywhere easily
 				</h2>
 				<p>Using just one code base, and without the need for external tools, Defold lets you publish your game to all of the major platforms:</p>
@@ -56,7 +58,7 @@
 		<div class="row feature-row-spaced">
 			<div class="column one-half">
 				<h2 id="no-setup" class="feature-heading">
-					<img class="feature-heading-icon" src="/images/icons/ic-no-setup.svg" alt="" aria-hidden="true"/>
+					<img class="feature-heading-icon" src="/images/icons/ic-no-setup.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 					No setup
 				</h2>
 				<p>Defold comes fully featured out of the box, with all the tools needed to build your games. There is nothing to set up or configure, and no registration is required — just download the editor. It has everything you need, including:</p>
@@ -75,16 +77,16 @@
 				</div>
 			</div>
 			<div class="column one-half">
-				<img src="/images/editor/editor-screenshot-hero-right-dragosha.png" alt="Isometric turn-based roguelike by Dragosha" class="slideinright features-section-image features-section-image-compact" loading="lazy"/>
+				{%- include webp_picture.html src="/images/editor/editor-screenshot-hero-right-dragosha.webp" alt="Isometric turn-based roguelike by Dragosha" class="slideinright features-section-image features-section-image-compact" loading="lazy" -%}
 			</div>
 		</div>
 		<div class="row feature-row-spaced">
 			<div class="column one-half">
-				<img src="/images/editor/editor-screenshot-hero-left-dragosha-3d.png" alt="Star Jammer by Ben James" class="slideinleft features-section-image features-section-image-compact" loading="lazy"/>
+				{%- include webp_picture.html src="/images/editor/editor-screenshot-hero-left-dragosha-3d.webp" alt="Star Jammer by Ben James" class="slideinleft features-section-image features-section-image-compact" loading="lazy" -%}
 			</div>
 			<div class="column one-half">
 				<h2 id="custom-configuration" class="feature-heading">
-					<img class="feature-heading-icon" src="/images/icons/ic-git-blue.svg" alt="" aria-hidden="true"/>
+					<img class="feature-heading-icon" src="/images/icons/ic-git-blue.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 					Customize it as you like
 				</h2>
 				<ul class="checkmark">
@@ -100,7 +102,7 @@
 		<div class="row feature-row-spaced">
 			<div class="column one-half">
 				<h2 id="free-forever" class="feature-heading">
-					<img class="feature-heading-icon" src="/images/icons/ic-64-free.svg" alt="" aria-hidden="true"/>
+					<img class="feature-heading-icon" src="/images/icons/ic-64-free.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 					Free. Forever.
 				</h2>
 				<ul class="checkmark">
@@ -112,16 +114,16 @@
 				</ul>
 			</div>
 			<div class="column one-half">
-				<img src="/images/editor/editor-screenshot-hero-right.png" alt="Particle effects editor with live preview" class="slideinright features-section-image features-section-image-compact" loading="lazy"/>
+				{%- include webp_picture.html src="/images/editor/editor-screenshot-hero-right.webp" alt="Particle effects editor with live preview" class="slideinright features-section-image features-section-image-compact" loading="lazy" -%}
 			</div>
 		</div>
 		<div class="row feature-row-spaced">
 			<div class="column one-half">
-				<img src="/images/editor/editor-screenshot-duovikings.png" alt="Duo Vikings by Flazm" class="slideinleft features-section-image features-section-image-compact" loading="lazy"/>
+				{%- include webp_picture.html src="/images/editor/editor-screenshot-duovikings.webp" alt="Duo Vikings by Flazm" class="slideinleft features-section-image features-section-image-compact" loading="lazy" -%}
 			</div>
 			<div class="column one-half">
 				<h2 id="production-ready" class="feature-heading">
-					<img class="feature-heading-icon" src="/images/icons/ic-64-performance-blue.svg" alt="" aria-hidden="true"/>
+					<img class="feature-heading-icon" src="/images/icons/ic-64-performance-blue.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 					Production ready
 				</h2>
 				<ul class="checkmark">

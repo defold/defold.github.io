@@ -3,6 +3,8 @@ layout: page
 title: Get Support
 description: Get help from the Defold community or contact the Defold team for professional support, integration work, and platform services.
 nav: floating
+stylesheets:
+  - newsletter
 ---
 
 {%- capture page_hero_copy -%}
@@ -15,12 +17,12 @@ nav: floating
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/icon-get-support.svg" alt="Defold support illustration" loading="eager">
+<img class="page-hero-graphic" src="/images/icons/icon-get-support.svg" alt="Defold support illustration" loading="eager" fetchpriority="high">
 {%- endcapture -%}
 
 {% include page_hub_hero.html hero_class="support-hub-hero" title="Get Support" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold support overview" %}
 
-<div class="section dark page-dark-section gradient-background-top-dark">
+<div class="section dark page-dark-section gradient-background-bottom-dark">
 	<div class="container">
 		<div class="page-section-heading">
 			<h2>Start with the community</h2>
@@ -32,9 +34,6 @@ nav: floating
 			{% include page_feature_card.html title="Report an issue" body="Use the help guides and manuals for reporting issues in the correct way." link="/manuals/getting-help/" icon="/images/icons/icons-learn-export_ic-learn-documents.svg" card_class="page-feature-card-manuals" %}
 		</div>
 	</div>
-</div>
-
-<div class="section dark page-dark-section gradient-background-bottom-dark" id="support-paths">
 	<div class="container">
 		<div class="page-section-heading">
 			<h2>Professional support</h2>

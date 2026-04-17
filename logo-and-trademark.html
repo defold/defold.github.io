@@ -3,6 +3,8 @@ layout: page
 title: Logo & Trademark
 description: The Defold name and logo are registered trademarks of the Defold Foundation. Read these guidelines before using the name, logo, or the Made with Defold mark.
 nav: floating
+stylesheets:
+  - pages
 ---
 
 {%- assign logo_pack_link = "https://github.com/defold/assets-defold/archive/master.zip" -%}
@@ -19,7 +21,7 @@ nav: floating
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/icon-defold.svg" alt="Defold logo and trademark illustration" loading="eager">
+<img class="page-hero-graphic" src="/images/icons/icon-defold.svg" alt="Defold logo and trademark illustration" loading="eager" fetchpriority="high">
 {%- endcapture -%}
 
 {% include page_hub_hero.html hero_class="brand-hub-hero" title="Logo & Trademark" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold brand guidelines overview" %}

@@ -1,0 +1,30 @@
+{%- assign image_src = include.src | default: "" | strip -%}
+{%- assign image_path = image_src | split: "?" | first -%}
+{%- assign image_ext = image_path | split: "." | last | downcase -%}
+{%- capture fallback_src_capture -%}{%- include webp_fallback_src.html src=image_src fallback=include.fallback -%}{%- endcapture -%}
+{%- assign fallback_src = fallback_src_capture | strip | default: image_src -%}
+{%- assign use_picture = false -%}
+{%- if image_ext == "webp" and fallback_src != image_src -%}
+	{%- assign use_picture = true -%}
+{%- endif -%}
+{%- assign image_alt = include.alt | default: "" -%}
+{%- assign image_class = include.class | default: "" -%}
+{%- assign image_loading = include.loading | default: "lazy" -%}
+{%- assign image_decoding = include.decoding | default: "async" -%}
+{%- assign image_fetchpriority = include.fetchpriority | default: "" -%}
+{%- if image_fetchpriority == "" and image_class contains "page-hero-graphic" -%}
+	{%- assign image_fetchpriority = "high" -%}
+{%- endif -%}
+{%- if use_picture -%}<picture class="webp-fallback-picture"><source srcset="{{ image_src }}" type="image/webp">{%- endif -%}
+<img
+	src="{{ fallback_src }}"
+	alt="{{ image_alt | escape }}"
+	{% if image_class != "" %}class="{{ image_class }}"{% endif %}
+	{% if include.width %}width="{{ include.width }}"{% endif %}
+	{% if include.height %}height="{{ include.height }}"{% endif %}
+	{% if include.aria_hidden %}aria-hidden="{{ include.aria_hidden }}"{% endif %}
+	loading="{{ image_loading }}"
+	decoding="{{ image_decoding }}"
+	{% if image_fetchpriority != "" %}fetchpriority="{{ image_fetchpriority }}"{% endif %}
+>
+{%- if use_picture -%}</picture>{%- endif -%}

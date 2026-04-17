@@ -11,7 +11,6 @@
 						<li><a href="/videos" class="{% if page.url contains 'videos' %}bold{% endif %}">Videos</a></li>
 						<li><a href="/courses" class="{% if page.url contains 'courses' %}bold{% endif %}">Courses</a></li>
 						<li><a href="/faq/faq" class="{% if page.url contains 'faq' %}bold{% endif %}">FAQ</a></li>
-						<li><a href="/ref/stable/go" class="{% if page.url contains 'ref' %}bold{% endif %}">API</a></li>
 						<li><a href="/codepad/" class="{% if page.url contains 'codepad' %}bold{% endif %}">Codepad</a></li>
 					</ul>
 					{%- else -%}
@@ -40,7 +39,6 @@
 					<a href="/videos" class="topnav-mobile-link{% if page.url contains 'videos' %} active{% endif %}">Videos</a>
 					<a href="/courses" class="topnav-mobile-link{% if page.url contains 'courses' %} active{% endif %}">Courses</a>
 					<a href="/faq/faq" class="topnav-mobile-link{% if page.url contains 'faq' %} active{% endif %}">FAQ</a>
-					<a href="/ref/stable/go" class="topnav-mobile-link{% if page.url contains 'ref' %} active{% endif %}">API ↗</a>
 					<a href="/codepad/" class="topnav-mobile-link{% if page.url contains 'codepad' %} active{% endif %}">Codepad ↗</a>
 					<form action="/search" class="learnnav-mobile-search learnnav-search-form">
 						{% include catalog_search_field.html id="learnnav-search-mobile" name="q" wrapper_class="learnnav-search-field" placeholder="Search..." aria_label="Search the learn section" %}

@@ -4,6 +4,8 @@ title: About Defold
 description: Learn what Defold is, how it became free and source available, and how the Defold Foundation supports ongoing cross-platform game engine development.
 nav: floating
 heatmap: false
+stylesheets:
+  - pages
 ---
 
 {%- capture page_hero_copy -%}
@@ -12,16 +14,12 @@ heatmap: false
 {%- endcapture -%}
 
 {%- capture page_hero_backdrop -%}
-<img src="/images/hero/defold-top-bg-transparent-2-high.png" alt="" loading="eager" decoding="async">
+{% include webp_picture.html src="/images/hero/defold-top-bg-transparent-2-high.webp" alt="Defold top transparent background" class="page-hero-graphic" loading="eager" %}
 {%- endcapture -%}
 
-{%- capture page_hero_panel -%}
-{% include showcase_carousel.html label="Games made with Defold" source_location="about_hero" card_click_source="about_showcase_card" more_button_source="about_showcase_more" %}
-{%- endcapture -%}
+{% include page_hub_hero.html hero_class="product-hub-hero" backdrop=page_hero_backdrop backdrop_class="page-hero-backdrop-wide" layout_class="page-hero-layout-stack" copy_class="page-hero-copy-centered" title="About Defold" copy=page_hero_copy actions=page_hero_actions %}
 
-{% include page_hub_hero.html hero_class="product-hub-hero about-hub-hero" backdrop=page_hero_backdrop backdrop_class="page-hero-backdrop-wide" layout_class="page-hero-layout-stack" copy_class="page-hero-copy-centered" panel_class="page-hero-panel-stack" title="About Defold" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Showcase of games made with Defold" %}
-
-<div class="section dark page-dark-section gradient-background-top-dark">
+<div class="section dark page-dark-section gradient-background-top-dark product-hub-section">
 	<div class="container">
 		<div class="page-text-panel page-surface-panel">
 			<div class="page-section-heading">
@@ -40,7 +38,7 @@ heatmap: false
 	</div>
 </div>
 
-<div class="section dark page-dark-section gradient-background-bottom-dark">
+<div class="section dark page-dark-section gradient-background-bottom-dark product-hub-section">
 	<div class="container">
 		<div class="page-section-heading">
 			<h2>How Defold got here</h2>
@@ -66,7 +64,7 @@ heatmap: false
 	</div>
 </div>
 
-<div class="section dark page-dark-section gradient-background-top-dark">
+<div class="section dark page-dark-section gradient-background-top-dark product-hub-section">
 	<div class="container">
 		<div class="page-section-heading">
 			<h2>News and operations</h2>

@@ -4,6 +4,15 @@ title: Defold - Official Homepage - Free, small and truly cross platform game en
 description: Defold is a free, cross-platform game engine for building 2D and 3D games on desktop, web, mobile, and consoles with one streamlined workflow.
 nav: floating
 heatmap: true
+preload_hero_showcase: true
+stylesheets:
+  - frontpage
+  - frontpage-carousel
+  - frontpage-carousel-enhancements
+  - newsletter
+deferred_stylesheets:
+  - frontpage-carousel-enhancements
+  - newsletter
 ---
 
 <div class="section narrow lightest-text frontpage-top-banner page-hero">
@@ -12,12 +21,12 @@ heatmap: true
 			<div class="frontpage-hero-layout">
 				<div class="frontpage-hero-copy-column">
 					<span class="frontpage-hero-logo">
-						<img class="frontpage-hero-logo-image frontpage-hero-logo-image-dark" src="/images/logo/defold/logo_with_text_tagline/logo-hor-classic-bright-tagline.svg" alt="Defold logo with tagline" fetchpriority="high" decoding="async"/>
-						<img class="frontpage-hero-logo-image frontpage-hero-logo-image-light" src="/images/logo/defold/logo_with_text_tagline/logo-hor-classic-dark_tagline.svg" alt="" aria-hidden="true" decoding="async"/>
+						<img class="frontpage-hero-logo-image frontpage-hero-logo-image-dark" src="/images/logo/defold/logo_with_text_tagline/logo-hor-classic-bright-tagline.svg" alt="Defold logo with tagline" loading="eager" fetchpriority="high" decoding="async"/>
+						<img class="frontpage-hero-logo-image frontpage-hero-logo-image-light" src="/images/logo/defold/logo_with_text_tagline/logo-hor-classic-dark_tagline.svg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async"/>
 					</span>
 					<div class="frontpage-hero-copy">
 						<h1>Lightweight and performant.</h1>
-						<p>Defold is a free, all-in-one game engine for development of&nbsp;2D and&nbsp;3D truly cross-platform games.</p>
+						<p>Defold is a free, powerful, all-in-one game engine for development of&nbsp;2D and&nbsp;3D truly cross-platform games.</p>
 					</div>
 					<div class="frontpage-top-banner-cta frontpage-top-download-cta">
 						<div class="frontpage-top-banner-actions">
@@ -32,27 +41,27 @@ heatmap: true
 			<div class="frontpage-feature-icons">
 				<a href="#free-forever" class="frontpage-feature-pill no-decoration">
 					<span class="frontpage-feature-pill-icon">
-						<img src="/images/icons/ic-32-fire.svg" alt="" aria-hidden="true" decoding="async"/>
+						<img src="/images/icons/ic-32-fire.svg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async"/>
 					</span>
-					<h4 class="frontpage-feature-pill-title">Free forever</h4>
+					<span class="frontpage-feature-pill-title">Free forever</span>
 				</a>
 				<a href="#cross-platform" class="frontpage-feature-pill no-decoration">
 					<span class="frontpage-feature-pill-icon">
-						<img src="/images/icons/ic-32-newest.svg" alt="" aria-hidden="true" decoding="async"/>
+						<img src="/images/icons/ic-32-newest.svg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async"/>
 					</span>
-					<h4 class="frontpage-feature-pill-title">Cross-platform</h4>
+					<span class="frontpage-feature-pill-title">Cross-platform</span>
 				</a>
 				<a href="#production-ready" class="frontpage-feature-pill no-decoration">
 					<span class="frontpage-feature-pill-icon">
-						<img src="/images/icons/ic-32-star.svg" alt="" aria-hidden="true" decoding="async"/>
+						<img src="/images/icons/ic-32-star.svg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async"/>
 					</span>
-					<h4 class="frontpage-feature-pill-title">Production ready</h4>
+					<span class="frontpage-feature-pill-title">Production ready</span>
 				</a>
 				<a href="#custom-configuration" class="frontpage-feature-pill no-decoration">
 					<span class="frontpage-feature-pill-icon">
-						<img src="/images/icons/ic-32-magglass.svg" alt="" aria-hidden="true" decoding="async"/>
+						<img src="/images/icons/ic-32-magglass.svg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async"/>
 					</span>
-					<h4 class="frontpage-feature-pill-title">Source available</h4>
+					<span class="frontpage-feature-pill-title">Source available</span>
 				</a>
 			</div>
 		</div>
@@ -86,8 +95,6 @@ heatmap: true
 {% include learn_section.html %}
 
 {% include news_and_blog_section.html %}
-
-{% include newsletter_section.html %}
 
 {% include download_cta_section.html %}
 

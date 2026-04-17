@@ -3,6 +3,9 @@ layout: page
 title: Join the Defold Discord server
 description: Join the Defold Discord server to chat with the community, get quick feedback, meet collaborators, and stay close to ongoing game-development discussions.
 nav: floating
+stylesheets:
+  - newsletter
+  - pages
 ---
 
 {%- capture page_hero_copy -%}
@@ -16,7 +19,7 @@ nav: floating
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/icon-discord.svg" alt="Defold Discord icon" loading="eager">
+<img class="page-hero-graphic" src="/images/icons/icon-discord.svg" alt="Defold Discord icon" loading="eager" fetchpriority="high">
 {%- endcapture -%}
 
 {% include page_hub_hero.html hero_class="discord-hub-hero" title="Join the Defold Discord" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold Discord overview" %}
@@ -67,7 +70,7 @@ nav: floating
 		<div class="page-text-panel page-surface-panel">
 			<div class="page-split-panel">
 				<div class="page-split-panel-media">
-					<img src="/images/icons/icon-discord.svg" alt="">
+					<img src="/images/icons/icon-discord.svg" alt="" loading="lazy" decoding="async">
 				</div>
 				<div class="page-split-panel-copy">
 					<h3>Ready to jump in?</h3>

@@ -4,6 +4,8 @@ title: Build server status
 description: The Defold build servers are provided as a free service to all developers. Use this page to check the current availability of the production and stage build clusters.
 nav: floating
 heatmap: false
+stylesheets:
+  - status
 ---
 
 {%- capture page_hero_copy -%}
@@ -11,7 +13,7 @@ heatmap: false
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/ic-git-blue.svg" alt="Defold build server status illustration" loading="eager">
+<img class="page-hero-graphic" src="/images/icons/icon-server.svg" alt="Defold build server status illustration" loading="eager" fetchpriority="high">
 {%- endcapture -%}
 
 {%- capture page_hero_actions -%}
@@ -60,9 +62,6 @@ heatmap: false
 			</article>
 		</div>
 	</div>
-</div>
-
-<div class="section dark page-dark-section gradient-background-bottom-dark">
 	<div class="container">
 		<div class="page-feature-grid page-grid-two page-grid-flush">
 			<article class="page-surface-panel page-text-panel page-split-panel status-info-panel">

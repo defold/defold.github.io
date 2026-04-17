@@ -1,0 +1,17 @@
+{%- assign image_src = include.src | default: "" | strip -%}
+{%- assign fallback_src = include.fallback | default: "" | strip -%}
+{%- assign image_path = image_src | split: "?" | first -%}
+{%- assign image_ext = image_path | split: "." | last | downcase -%}
+{%- if fallback_src == "" and image_ext == "webp" -%}
+	{%- assign image_base = image_path | replace: ".webp", "" -%}
+	{%- assign fallback_extensions = ".png|.jpg|.jpeg" | split: "|" -%}
+	{%- for fallback_extension in fallback_extensions -%}
+		{%- assign fallback_candidate = image_base | append: fallback_extension -%}
+		{%- assign fallback_file = site.static_files | where: "path", fallback_candidate | first -%}
+		{%- if fallback_file -%}
+			{%- assign fallback_src = fallback_candidate -%}
+			{%- break -%}
+		{%- endif -%}
+	{%- endfor -%}
+{%- endif -%}
+{{- fallback_src | default: image_src -}}

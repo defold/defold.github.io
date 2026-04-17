@@ -44,11 +44,13 @@ layout: base
 {%- else -%}
 <div id="page" class="lightest dark:dark">
 {%- endif -%}
+	{% include topnav.html style=page.nav %}
+
 	<div id="pagecontent">
 		<div class="apimenu sidemenu dark:dark">
-			<p><a href="/learn"><img class="logo-hor-classic-160" src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png" alt="Defold Learn logo"/></a></p>
-			<form action="/search">
-				<input id="search" name="q" type="text" placeholder="Search..."/>
+			<p><a href="/learn"><img class="logo-hor-classic-160" src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png" alt="Defold Learn logo" loading="lazy" decoding="async"/></a></p>
+			<form action="/search" class="api-search-form">
+				{% include catalog_search_field.html id="api-search-desktop" name="q" wrapper_class="learnnav-search-field" placeholder="Search..." aria_label="Search the API reference" %}
 			</form>
 			<hr>
 			<ul class="nobullet">
@@ -115,10 +117,10 @@ layout: base
 		<div class="apicontent lightest dark:dark" data-pagefind-body>
 			<div class="dropdownmenu">
 				<p>
-					<a href="/learn"><img src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png" alt="Defold Learn logo"/></a>
+					<a href="/learn"><img src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png" alt="Defold Learn logo" loading="lazy" decoding="async"/></a>
 				</p>
-				<form action="/search">
-					<input id="search" name="q" type="text" placeholder="Search..."/>
+				<form action="/search" class="api-search-form">
+					{% include catalog_search_field.html id="api-search-mobile" name="q" wrapper_class="learnnav-search-field" placeholder="Search..." aria_label="Search the API reference" %}
 				</form>
 			</div>
 			<select class="dropdownmenu" onchange="location = this.value;">

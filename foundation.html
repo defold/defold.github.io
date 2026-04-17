@@ -4,6 +4,8 @@ title: The Defold Foundation
 description: The Defold Foundation is the owner of the free to use, source available, game engine Defold. Learn about the Foundation objectives and get to know the Foundation board members.
 nav: floating
 permalink: /foundation/
+stylesheets:
+  - pages
 ---
 
 {%- capture page_hero_copy -%}
@@ -11,12 +13,12 @@ permalink: /foundation/
 {%- endcapture -%}
 
 {%- capture page_hero_backdrop -%}
-<img src="/images/hero/defold-top-bg-transparent-2-high.png" alt="" loading="eager" decoding="async">
+{% include webp_picture.html src="/images/hero/defold-top-bg-transparent-2-high.webp" alt="Defold top transparent background" class="page-hero-graphic" loading="eager" %}
 {%- endcapture -%}
 
 {% include page_hub_hero.html hero_class="product-hub-hero" backdrop=page_hero_backdrop backdrop_class="page-hero-backdrop-wide" layout_class="page-hero-layout-stack" copy_class="page-hero-copy-centered" title=page.title copy=page_hero_copy %}
 
-<div class="section dark page-dark-section gradient-background-top-dark" markdown="0">
+<div class="section dark page-dark-section gradient-background-top-dark product-hub-section" markdown="0">
 	<div class="container">
 		<div class="page-section-heading">
 			<h2>About the Foundation</h2>
@@ -46,7 +48,7 @@ permalink: /foundation/
 	</div>
 </div>
 
-<div class="section dark page-dark-section gradient-background-bottom-dark" markdown="0">
+<div class="section dark page-dark-section gradient-background-bottom-dark product-hub-section" markdown="0">
 	<div class="container">
 		<div class="page-section-heading">
 			<h2>Foundation board</h2>
@@ -60,7 +62,7 @@ permalink: /foundation/
 		</div>
 		<div class="page-text-panel page-surface-panel page-split-panel">
 			<div class="page-split-panel-media" aria-hidden="true">
-				<img src="/images/icons/icon-handshake.svg" alt="">
+				<img src="/images/icons/icon-handshake.svg" alt="" loading="lazy" decoding="async">
 			</div>
 			<div class="page-split-panel-copy">
 				<p>The Defold Foundation invites individuals and corporations to support the objectives and vision of the Foundation through donations and long-term partnerships that help fund the engine, infrastructure, and community services.</p>

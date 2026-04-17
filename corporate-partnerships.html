@@ -4,6 +4,8 @@ title: Defold Corporate Partnerships
 description: Fund Defold through corporate partnerships that provide dedicated development time, product visibility, and long-term support for the engine and its ecosystem.
 nav: floating
 heatmap: false
+stylesheets:
+  - pages
 ---
 
 {%- capture page_hero_copy -%}
@@ -17,7 +19,7 @@ heatmap: false
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/partnerships.svg" alt="Defold partnership illustration" loading="eager">
+<img class="page-hero-graphic" src="/images/icons/partnerships.svg" alt="Defold partnership illustration" loading="eager" fetchpriority="high">
 {%- endcapture -%}
 
 {% include page_hub_hero.html hero_class="partnership-hub-hero" title="Defold Corporate Partnerships" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold corporate partnerships illustration" %}
@@ -109,7 +111,7 @@ heatmap: false
 	<div class="container">
 		<div class="page-text-panel page-surface-panel page-split-panel" id="partnership-contact-panel">
 			<div class="page-split-panel-media" aria-hidden="true">
-				<img src="/images/icons/icon-handshake.svg" alt="">
+				<img src="/images/icons/icon-handshake.svg" alt="" loading="lazy" decoding="async">
 			</div>
 			<div class="page-split-panel-copy">
 				<h3>Start supporting Defold!</h3>

@@ -152,6 +152,10 @@
 <body>
 {%- include googletagmanager_body.html -%}
 {{ content }}
+<button class="page-scroll-top-button" type="button" data-scroll-top aria-label="Scroll to top" title="Scroll to top">
+	{% include site_icon.html name="arrow-up" class="page-scroll-top-icon" %}
+</button>
+<script src="/js/scroll-top-button.js" defer></script>
 <script src="/js/transition.js" defer></script>
 </body>
 </html>

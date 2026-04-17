@@ -1,7 +1,9 @@
 {%- assign game=include.game -%}
+{%- assign game_image_src = "/images/games/" | append: game.images.half -%}
+{%- assign game_image_alt = game.name | append: " screenshot" -%}
 <div class="game">
 	<a href="{{ game.url }}" target="_blank">
-		<img src="/images/games/{{ game.images.half }}" class="hoverflash" width="100%" loading="lazy" alt="{{ game.name }} screenshot"/>
+		{%- include webp_picture.html src=game_image_src class="hoverflash" width="100%" loading="lazy" alt=game_image_alt -%}
 	</a>
 		<br/><br/>
 			<div class="compact showcase-game-copy">

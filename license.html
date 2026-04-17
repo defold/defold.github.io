@@ -3,6 +3,8 @@ layout: page
 title: The Defold License
 description: Defold is created and distributed under the developer-friendly Defold License. The license is derived from Apache 2.0 and explains what you may build, distribute, modify, and commercialize.
 nav: floating
+stylesheets:
+  - pages
 ---
 
 {%- capture page_hero_copy -%}
@@ -16,7 +18,7 @@ nav: floating
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/icon-license.svg" alt="Defold license illustration" loading="eager">
+<img class="page-hero-graphic" src="/images/icons/icon-license.svg" alt="Defold license illustration" loading="eager" fetchpriority="high">
 {%- endcapture -%}
 
 {% include page_hub_hero.html hero_class="license-hub-hero" title="The Defold License" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold license overview" %}
@@ -188,5 +190,5 @@ nav: floating
 	</div>
 </div>
 
-{% include always_free.html variant="page-section" %}
+{% include always_free.html %}
 {% include donors_and_partners.html %}

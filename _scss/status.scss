@@ -1,0 +1,215 @@
+.status-hub-grid {
+	margin-bottom: 0;
+}
+
+.status-server-panel {
+	display: grid;
+	grid-template-rows: auto auto auto;
+	align-content: start;
+	gap: 1.35rem;
+	margin-top: 0;
+	padding: clamp(2rem, 3vw, 2.4rem);
+}
+
+.status-server-panel-header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 1rem 1.4rem;
+}
+
+.status-server-panel-copy {
+	min-width: 0;
+}
+
+.status-server-panel h3 {
+	margin-bottom: 0.4rem;
+}
+
+.status-server-panel-eyebrow {
+	margin: 0 0 0.45rem;
+	color: rgba(255, 255, 255, 0.66);
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	line-height: 1.13;
+	text-transform: uppercase;
+}
+
+.status-server-panel-link,
+.status-server-panel-summary {
+	margin: 0;
+}
+
+.status-server-panel-link a {
+	color: var(--lightest);
+}
+
+.status-server-panel-link a:hover {
+	color: #ffffff;
+}
+
+.status-server-overview {
+	display: flex;
+	align-items: center;
+	flex: 0 0 auto;
+}
+
+.status-server-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+	gap: 0.9rem;
+}
+
+.status-platform-card {
+	display: grid;
+	gap: 0.7rem;
+	padding: 1rem 1.05rem;
+	border: 1px solid rgba(255, 255, 255, 0.10);
+	border-radius: 8px;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.status-platform-card-operational {
+	border-color: rgba(87, 171, 90, 0.28);
+}
+
+.status-platform-card-unreachable {
+	border-color: rgba(253, 102, 35, 0.28);
+}
+
+.status-platform-card-degraded {
+	border-color: rgba(255, 201, 94, 0.28);
+}
+
+.status-platform-card-title {
+	margin: 0;
+	color: var(--lightest);
+	font-size: 1.47rem;
+	line-height: 1.47;
+}
+
+.status-health-pill {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	justify-self: start;
+	width: auto;
+	min-height: 2.2rem;
+	padding: 0.35rem 0.78rem;
+	border: 1px solid transparent;
+	border-radius: 999px;
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1.13;
+	letter-spacing: 0.01em;
+	text-align: center;
+}
+
+.status-health-pill-operational {
+	color: #dff6e0;
+	background: rgba(87, 171, 90, 0.16);
+	border-color: rgba(87, 171, 90, 0.28);
+}
+
+.status-health-pill-unreachable {
+	color: #ffe3d5;
+	background: rgba(253, 102, 35, 0.16);
+	border-color: rgba(253, 102, 35, 0.28);
+}
+
+.status-health-pill-degraded {
+	color: #fff0c6;
+	background: rgba(255, 201, 94, 0.14);
+	border-color: rgba(255, 201, 94, 0.26);
+}
+
+.status-health-pill-pending {
+	color: rgba(255, 255, 255, 0.84);
+	background: rgba(255, 255, 255, 0.08);
+	border-color: rgba(255, 255, 255, 0.12);
+}
+
+.status-info-panel {
+	margin-top: 0;
+}
+
+.status-info-panel code {
+	color: rgba(255, 255, 255, 0.94);
+}
+
+@media (max-width: 700px) {
+	.status-server-panel-header {
+		flex-direction: column;
+	}
+
+	.status-server-overview {
+		width: 100%;
+	}
+}
+
+@mixin status-light-theme-content {
+	.status-server-panel-eyebrow {
+		color: rgba(20, 24, 28, 0.58);
+	}
+
+	.status-server-panel-link a {
+		color: var(--defold-blue-darkest);
+	}
+
+	.status-server-panel-link a:hover {
+		color: var(--dark);
+	}
+
+	.status-platform-card {
+		border-color: rgba(27, 50, 74, 0.10);
+		background:
+			radial-gradient(circle at top left, rgba(57, 163, 228, 0.08), transparent 48%),
+			linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 242, 246, 0.96) 100%);
+		box-shadow: 0 12px 24px rgba(18, 45, 75, 0.06);
+	}
+
+	.status-platform-card-title {
+		color: var(--darkest);
+	}
+
+	.status-health-pill-operational {
+		color: #215c2c;
+		background: rgba(87, 171, 90, 0.14);
+		border-color: rgba(87, 171, 90, 0.24);
+	}
+
+	.status-health-pill-unreachable {
+		color: #8a3e1c;
+		background: rgba(253, 102, 35, 0.14);
+		border-color: rgba(253, 102, 35, 0.22);
+	}
+
+	.status-health-pill-degraded {
+		color: #7a5b11;
+		background: rgba(255, 201, 94, 0.16);
+		border-color: rgba(255, 201, 94, 0.24);
+	}
+
+	.status-health-pill-pending {
+		color: rgba(20, 24, 28, 0.82);
+		background: rgba(27, 50, 74, 0.06);
+		border-color: rgba(27, 50, 74, 0.12);
+	}
+
+	.status-info-panel code {
+		color: var(--darkest);
+	}
+}
+
+html.theme-light {
+	@include status-light-theme-content;
+}
+
+@media (prefers-color-scheme: light) {
+	html:not(.theme-dark) {
+		@include status-light-theme-content;
+	}
+}

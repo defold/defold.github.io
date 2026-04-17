@@ -4,6 +4,9 @@ title: Why Defold?
 description: We have spent a lot of time and effort making sure that certain key elements of the game development process are as smooth and effortless as possible, and we believe it makes Defold stand out from the crowd.
 nav: floating
 heatmap: false
+stylesheets:
+  - newsletter
+  - pages
 ---
 
 
@@ -12,13 +15,13 @@ heatmap: false
 <p>This is the philosophy behind the engine, and it is the reason many developers choose Defold over larger or more famous alternatives.</p>
 {%- endcapture -%}
 
-{%- capture page_hero_panel -%}
-<img class="page-hero-graphic" src="/images/icons/ic-32-magglass-blue.svg" alt="Why Defold game engine?"/>
+{%- capture page_hero_backdrop -%}
+{% include webp_picture.html src="/images/hero/defold-top-bg-transparent-2-high.webp" alt="Defold top transparent background" class="page-hero-graphic" loading="eager" %}
 {%- endcapture -%}
 
-{% include page_hub_hero.html hero_class="asset-hub-hero" title="Why Defold?" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Determine whether Defold is the right engine for your game" %}
+{% include page_hub_hero.html hero_class="product-hub-hero" backdrop=page_hero_backdrop backdrop_class="page-hero-backdrop-wide" layout_class="page-hero-layout-stack" copy_class="page-hero-copy-centered" title="Why Defold?" copy=page_hero_copy actions=page_hero_actions %}
 
-<div class="section dark page-dark-section gradient-background-top-dark" id="why-defold">
+<div class="section dark page-dark-section gradient-background-top-dark product-hub-section" id="why-defold">
 	<div class="container">
 		<div class="page-text-panel page-surface-panel why-hub-intro">
 			<div class="page-section-heading">
@@ -34,7 +37,7 @@ heatmap: false
 	</div>
 </div>
 
-<div class="section dark page-dark-section gradient-background-bottom-dark">
+<div class="section dark page-dark-section gradient-background-bottom-dark product-hub-section">
 	<div class="container">
 		<div class="page-section-heading">
 			<h2>Smooth daily development</h2>
@@ -92,7 +95,7 @@ heatmap: false
 	</div>
 </div>
 
-<div class="section dark page-dark-section gradient-background-top-dark">
+<div class="section dark page-dark-section gradient-background-top-dark product-hub-section">
 	<div class="container">
 		<div class="page-section-heading">
 			<h2>High performance games, rapid development</h2>
@@ -111,11 +114,11 @@ heatmap: false
 						</ul>
 					</div>
 					<div class="why-hub-lego-strip" aria-hidden="true">
-						<img src="/images/logo/lego-03-64.png" alt="">
-						<img src="/images/logo/lego-03-64.png" alt="">
-						<img src="/images/logo/lego-02-128.png" alt="">
-						<img src="/images/logo/lego-03-64.png" alt="">
-						<img src="/images/logo/lego-03-64.png" alt="">
+						<img src="/images/logo/lego-03-64.png" alt="" loading="lazy" decoding="async">
+						<img src="/images/logo/lego-03-64.png" alt="" loading="lazy" decoding="async">
+						<img src="/images/logo/lego-02-128.png" alt="" loading="lazy" decoding="async">
+						<img src="/images/logo/lego-03-64.png" alt="" loading="lazy" decoding="async">
+						<img src="/images/logo/lego-03-64.png" alt="" loading="lazy" decoding="async">
 					</div>
 				</div>
 			</div>
@@ -125,7 +128,7 @@ heatmap: false
 					<div class="column one-half">
 						<div class="product-hub-feature-copy">
 							<h3 class="feature-heading">
-								<img class="feature-heading-icon" src="/images/icons/ic-64-rocket-blue.svg" alt="" aria-hidden="true"/>
+								<img class="feature-heading-icon" src="/images/icons/ic-64-rocket-blue.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 								Iterative workflow
 							</h3>
 							<p>We have all heard the horror stories of developers waiting ages for a build to complete, only to find that their latest change caused a crash. Long turnaround times kill productivity and hamper creativity. Defold is built to keep experimentation fast and practical.</p>
@@ -143,7 +146,7 @@ heatmap: false
 						<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
 							<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-hot-reload slideinright">
 								<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-right">
-									<img class="product-hub-visual-image product-hub-gif-image" src="/images/animations/hot-reload.gif" alt="Hot reload updating a running Defold game during development">
+									<img class="product-hub-visual-image product-hub-gif-image" src="/images/animations/hot-reload.gif" alt="Hot reload updating a running Defold game during development" loading="lazy" decoding="async">
 								</div>
 							</div>
 						</div>
@@ -153,13 +156,13 @@ heatmap: false
 				<div class="row feature-row-spaced product-hub-feature-row">
 					<div class="column one-half">
 						<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
-							<img class="product-hub-visual-image product-hub-gif-image slideinleft" src="/images/beans/bean-intro_orange-01.png" alt="Defold bean character welcoming new users">
+							{% include webp_picture.html src="/images/beans/bean-intro_orange-01.webp" alt="Defold bean character welcoming new users" class="product-hub-visual-image product-hub-gif-image slideinleft" loading="lazy" decoding="async" %}
 						</div>
 					</div>
 					<div class="column one-half">
 						<div class="product-hub-feature-copy">
 							<h3 class="feature-heading">
-								<img class="feature-heading-icon" src="/images/icons/ic-64-community-blue.svg" alt="" aria-hidden="true"/>
+								<img class="feature-heading-icon" src="/images/icons/ic-64-community-blue.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
 								A great community &#10084;
 							</h3>
 							<p>The myth of the lone developer really is not true. Being able to share accomplishments, discuss design problems, or implementation details is part of the process of developing games, and being able to do so in a friendly and inclusive environment matters just as much for beginners as it does for experts.</p>
