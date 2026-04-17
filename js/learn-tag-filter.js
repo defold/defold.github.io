@@ -158,8 +158,43 @@
 			const items = Array.from(catalog.querySelectorAll("[data-learn-tag-item='true']"));
 			const sortButtons = Array.from(catalog.querySelectorAll("[data-learn-sort]"));
 			const sortGrid = catalog.querySelector("[data-learn-sort-grid]");
+			const filterToggle = catalog.querySelector("[data-asset-filter-toggle]");
+			const filterPanel = catalog.querySelector("[data-asset-filter-panel]");
 			if (!filterRoot || !chipRow || !items.length) {
 				return;
+			}
+
+			if (filterToggle && filterPanel) {
+				const desktopQuery = window.matchMedia("(min-width: 981px)");
+				let mobileExpanded = false;
+
+				const syncFilterPanel = () => {
+					if (desktopQuery.matches) {
+						filterPanel.hidden = false;
+						filterToggle.setAttribute("aria-expanded", "true");
+						return;
+					}
+
+					filterPanel.hidden = !mobileExpanded;
+					filterToggle.setAttribute("aria-expanded", mobileExpanded ? "true" : "false");
+				};
+
+				filterToggle.addEventListener("click", () => {
+					if (desktopQuery.matches) {
+						return;
+					}
+
+					mobileExpanded = !mobileExpanded;
+					syncFilterPanel();
+				});
+
+				if (typeof desktopQuery.addEventListener === "function") {
+					desktopQuery.addEventListener("change", syncFilterPanel);
+				} else if (typeof desktopQuery.addListener === "function") {
+					desktopQuery.addListener(syncFilterPanel);
+				}
+
+				syncFilterPanel();
 			}
 
 			const excludedTags = new Set(parseTags(filterRoot.dataset.filterExcludedTags));

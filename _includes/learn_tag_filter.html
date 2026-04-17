@@ -3,8 +3,15 @@
 	{%- assign child_property = include.child_property | default: "" -%}
 	{%- assign search_suffix = include.result_items | default: "resources" | slugify -%}
 	{%- assign search_id = "learn-search-" | append: search_suffix -%}
+	{%- assign filter_panel_id = "learn-filter-panel-" | append: search_suffix -%}
 	{%- capture search_placeholder -%}Search {{ include.result_items | default: "resources" }} by title, description, or creator{%- endcapture -%}
-	<div class="asset-hub-filter-shell">
+	<button type="button" class="asset-hub-mobile-toggle" data-asset-filter-toggle aria-expanded="false" aria-controls="{{ filter_panel_id }}">
+		<span class="asset-hub-mobile-toggle-copy">
+			<span class="asset-hub-mobile-toggle-label">Filters</span>
+			<span class="asset-hub-mobile-toggle-caption">Search and {{ include.filter_singular | default: "tag" }}s</span>
+		</span>
+	</button>
+	<div class="asset-hub-filter-shell" id="{{ filter_panel_id }}" data-asset-filter-panel>
 		<div class="asset-hub-filter-group asset-hub-filter-search">
 			<h3 class="asset-hub-filter-label">Search</h3>
 			{% include catalog_search_field.html id=search_id input_class="learnsearch" data_attribute_name="data-learn-search" placeholder=search_placeholder aria_label=search_placeholder %}

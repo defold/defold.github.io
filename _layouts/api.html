@@ -123,14 +123,44 @@ layout: base
 					{% include catalog_search_field.html id="api-search-mobile" name="q" wrapper_class="learnnav-search-field" placeholder="Search..." aria_label="Search the API reference" %}
 				</form>
 			</div>
-			<select class="dropdownmenu" onchange="location = this.value;">
-				{%- for r in refs -%}
-				<option value="{{ r.url }}">{{ r.namespace }}{%- if r.type == "Extension" -%}&nbsp;-&nbsp;({{r.name}}){%- endif -%}</option>
+			<select class="dropdownmenu" aria-label="API reference navigation" onchange="if(this.value){location = this.value;}">
+				{%- comment -%}Mirror the desktop sidebar: group by category ("Defold Lua", "Defold C", "Defold C++", "Extension"),
+				include the per-category Overview entry, and disambiguate duplicate namespaces with the file / extension name.{%- endcomment -%}
+				{%- for category in categories -%}
+					{%- assign categoryrefs = refs | where: "type", category | sort_natural: "namespace" -%}
+					{%- assign clean_category = category | remove: ' ' | replace: "C++", "cpp" | downcase -%}
+					{%- assign overview_url = "/ref/" | append: page.branch | append: "/overview_" | append: clean_category -%}
+				<optgroup label="{{ category }}">
+					{%- assign overview_selected = "" -%}
+					{%- if page.url contains overview_url -%}
+						{%- assign overview_selected = " selected" -%}
+					{%- endif -%}
+					<option value="{{ overview_url }}"{{ overview_selected }}>Overview</option>
+					{%- assign namespaces = categoryrefs | map: "namespace" | uniq | sort_natural -%}
+					{%- for ns in namespaces -%}
+						{%- assign namespacerefs = categoryrefs | where: "namespace", ns | sort_natural: "file" -%}
+						{%- for r in namespacerefs -%}
+							{%- assign option_selected = "" -%}
+							{%- if page.url contains r.url -%}
+								{%- assign option_selected = " selected" -%}
+							{%- endif -%}
+							{%- capture option_suffix -%}
+								{%- if r.api_language == "C++" or r.api_language == "C" -%}&nbsp;-&nbsp;({{ r.file }}){%- endif -%}
+								{%- if r.type == "Extension" -%}&nbsp;-&nbsp;({{ r.name }}){%- endif -%}
+							{%- endcapture -%}
+					<option value="{{ r.url }}"{{ option_selected }}>{{ r.namespace }}{{ option_suffix }}</option>
+						{%- endfor -%}
+					{%- endfor -%}
+				</optgroup>
 				{%- endfor -%}
 			</select>
-			<select class="dropdownmenu" onchange="location = this.value;">
+			<select class="dropdownmenu" aria-label="API reference version" onchange="if(this.value){location = this.value;}">
 				{%- for b in branches -%}
-				<option value="{{ page_url | replace: 'BRANCH', b }}">{{ b }}</option>
+					{%- assign branch_selected = "" -%}
+					{%- if page.branch == b -%}
+						{%- assign branch_selected = " selected" -%}
+					{%- endif -%}
+				<option value="{{ page_url | replace: 'BRANCH', b }}"{{ branch_selected }}>{{ b }}</option>
 				{%- endfor -%}
 			</select>
 

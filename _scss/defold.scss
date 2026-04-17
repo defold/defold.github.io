@@ -402,11 +402,14 @@ html.theme-dark {
 
 .features-section-image {
 	display: block;
+	max-width: 100%;
+	height: auto;
 	margin-inline: auto;
 }
 
 .webp-fallback-picture {
 	display: block;
+	max-width: 100%;
 }
 
 .showcase-full-media .webp-fallback-picture {
@@ -1062,6 +1065,18 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 	}
 }
 
+@media (min-width: 1400px) {
+	.page-scroll-top-button {
+		right: max(0.7rem, calc((100vw - min(80vw, 1200px)) / 2 - 8rem));
+	}
+}
+
+@media (min-width: 1800px) {
+	.page-scroll-top-button {
+		right: max(0.7rem, calc((100vw - min(80vw, 1200px)) / 2 - 11rem));
+	}
+}
+
 .page-scroll-top-button.is-visible {
 	opacity: 0.78;
 	visibility: visible;
@@ -1494,6 +1509,8 @@ input[type="button"] {
 	grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.95fr);
 	gap: clamp(1.4rem, 2.2vw, 2.2rem);
 	align-items: stretch;
+	padding-top: clamp(1.2rem, 2vw, 2.2rem);
+	padding-bottom: clamp(1.4rem, 2.4vw, 2.6rem);
 }
 
 .page-hero-layout-stack {
@@ -1522,8 +1539,8 @@ input[type="button"] {
 
 .page-hero-copy h1 {
 	max-width: none;
-	margin-top: 0.15rem;
-	margin-bottom: 0.72rem;
+	margin-top: clamp(0.6rem, 1.1vw, 1.4rem);
+	margin-bottom: clamp(1rem, 1.6vw, 2rem);
 	font-size: clamp(3.02rem, 4.16vw, 4.91rem);
 	line-height: 1.16;
 	letter-spacing: clamp(-0.16rem, -0.08vw, -0.04rem);
@@ -3016,19 +3033,19 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 		grid-template-columns: 1fr;
 	}
 
+	.download-hub-hero {
+		--page-hero-graphic-width: min(100%, 480px);
+		--page-hero-panel-min-height: auto;
+	}
+
+	.download-hub-hero .page-hero-graphic {
+		max-width: 100%;
+	}
+
 	.page-hero-copy h1 {
 		max-width: none;
 		margin-top: 0.7rem;
 		margin-bottom: 1.8rem;
-	}
-
-	.download-hub-links {
-		grid-template-columns: 1fr;
-		align-items: stretch;
-	}
-
-	.download-hub-links .page-action-list {
-		width: 100%;
 	}
 
 	.product-hub-split {
@@ -3106,6 +3123,10 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	.page-hero {
 		--page-hero-graphic-width: min(100%, 120px);
 		--page-hero-panel-min-height: clamp(78px, 22vw, 120px);
+	}
+
+	.download-hub-hero {
+		--page-hero-graphic-width: min(100%, 380px);
 	}
 
 	.page-feature-grid {
@@ -3854,6 +3875,12 @@ ul.page-checklist-negative li:before {
 
 .showcase-full-game-anchor {
 	scroll-margin-top: calc(var(--topnav-sticky-offset) + 2rem);
+}
+
+@media (max-width: 800px) {
+	.showcase-games-desktop-only {
+		display: none;
+	}
 }
 
 .showcase-full-card .row {

@@ -2,7 +2,7 @@
 {%- assign url=include.url -%}{%- unless url -%}{%- assign url = game.url -%}{%- endunless -%}
 {%- assign game_image_src = "/images/games/" | append: game.images.full -%}
 
-<div class="section game showcase-full-game-anchor" id="{{ game.id }}">
+<div class="section game showcase-full-game-anchor showcase-games-desktop-only" id="{{ game.id }}">
 	<div class="container">
 		<article class="showcase-full-card">
 			<div class="row">
