@@ -6,6 +6,7 @@ locale: en
 title: Photon Fusion
 toc:
 - Fusion Defold Intro
+- Overview
 - Simple Connection and Matchmaking
 - Shared Authority Replication
 - Engine-First Integration
@@ -15,8 +16,9 @@ toc:
 - Source code
 ---
 
-## Fusion Defold Intro
+# Fusion Defold Intro
 
+## Overview
 Photon Fusion Defold brings scalable multiplayer networking to Defold as a drop-in native extension. It is built on top of the same battle-tested infrastructure that powers thousands of live titles across every major platform. You get room-based matchmaking, efficient state replication with late join support, forecast physics prediction and flexible RPCs. And better, everything is designed from the ground up to feel native to Defold's workflow.
 
 
@@ -65,8 +67,8 @@ local id = fusion.spawn(factory_url, position, rotation, scene, owner_mode)
 ```
 
 ## Where to Go Next
-* [Quick Start Guide](quick-start-guide) — Build a multiplayer demo in 10 steps
 * [Installation](installation) — Requirements and installation
+* [Quick Start Guide](quick-start-guide) — Build a multiplayer demo in 10 steps
 * [Connection](connection) — Initialization, rooms and signals
 * [Replication](replication) — Authority, replication modes and properties
 * [Spawning](spawning) — Dynamic networked objects and sub-objects

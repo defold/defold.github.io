@@ -5,9 +5,11 @@ layout: manual
 locale: en
 title: Photon Fusion - Remote Procedure Calls
 toc:
+- RPCs
 - Overview
 ---
 
+# RPCs
 Replication handles continuous state - properties that change over time like position, health or score. But games also need one-shot events: a player fires a weapon, sends a chat message or triggers an ability. Remote Procedure Calls (RPCs) fill this gap by letting one client invoke a function on other clients without storing anything in the sync buffer.
 
 RPCs are fire-and-forget - they are delivered once and not retained. If a client joins after an RPC was sent, it will not receive that call. For state that must survive late joins, use replicated properties instead.

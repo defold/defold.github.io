@@ -5,6 +5,7 @@ layout: manual
 locale: en
 title: Photon Fusion - Replication
 toc:
+- Replication
 - How to replicate an object
 - Authority and Ownership
 - API Quick Reference
@@ -17,6 +18,7 @@ toc:
 - Interest events
 ---
 
+# Replication
 In a multiplayer game, each client runs its own copy of the simulation. Replication is the mechanism that keeps these copies consistent: one client (the authority) writes the definitive values for an object's properties, the server accepts them and distributes them to every other client. Without replication, each player would see a different game.
 
 Fusion replicates at the property level. Individual values like position, health or score are tracked independently. The server only sends properties that have changed since the last update, minimizing bandwidth.
