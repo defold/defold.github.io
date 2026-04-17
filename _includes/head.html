@@ -209,7 +209,9 @@
 <!-- FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+{%- assign fonts_url = "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,400..700&display=swap" -%}
+<link rel="preload" as="style" href="{{ fonts_url }}" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ fonts_url }}"></noscript>
 
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
@@ -218,9 +220,13 @@
 {%- assign learn_layouts = "api|page_with_learnnav|learn|learn_hub|manual|tutorial|example|faq|post-with-example" | split: "|" -%}
 {%- assign catalog_layouts = "learn_hub|assetportal|author" | split: "|" -%}
 {%- assign asset_detail_layouts = "asset" | split: "|" -%}
+{%- assign api_layouts = "api" | split: "|" -%}
+{%- assign code_layouts = "api|page_with_learnnav|learn|learn_hub|manual|tutorial|example|faq|post-with-example|post" | split: "|" -%}
 {%- assign load_learn_stylesheet = false -%}
 {%- assign load_catalog_stylesheet = false -%}
 {%- assign load_asset_detail_stylesheet = false -%}
+{%- assign load_api_stylesheet = false -%}
+{%- assign load_code_stylesheet = false -%}
 {%- assign deferred_stylesheet_list = page.deferred_stylesheets | default: "" -%}
 {%- if learn_layouts contains page.layout or page.stylesheets contains "learn" -%}
 {%- assign load_learn_stylesheet = true -%}
@@ -230,6 +236,12 @@
 {%- endif -%}
 {%- if asset_detail_layouts contains page.layout or page.stylesheets contains "asset-detail" -%}
 {%- assign load_asset_detail_stylesheet = true -%}
+{%- endif -%}
+{%- if api_layouts contains page.layout or page.stylesheets contains "api" -%}
+{%- assign load_api_stylesheet = true -%}
+{%- endif -%}
+{%- if code_layouts contains page.layout or page.stylesheets contains "code" -%}
+{%- assign load_code_stylesheet = true -%}
 {%- endif -%}
 <link rel="stylesheet" type="text/css" href="/css/main.css">
 {%- if load_catalog_stylesheet -%}
@@ -241,9 +253,16 @@
 {%- if load_learn_stylesheet -%}
 <link rel="stylesheet" type="text/css" href="/css/learn.css">
 {%- endif -%}
+{%- if load_api_stylesheet -%}
+<link rel="stylesheet" type="text/css" href="/css/api.css">
+{%- endif -%}
+{%- if load_code_stylesheet -%}
+<link rel="preload" as="style" href="/css/code.css" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" type="text/css" href="/css/code.css"></noscript>
+{%- endif -%}
 {%- if page.stylesheets -%}
 {%- for stylesheet in page.stylesheets -%}
-{%- unless stylesheet == "learn" or stylesheet == "catalog" or stylesheet == "asset-detail" -%}
+{%- unless stylesheet == "learn" or stylesheet == "catalog" or stylesheet == "asset-detail" or stylesheet == "api" or stylesheet == "code" -%}
 {%- if deferred_stylesheet_list contains stylesheet -%}
 <link rel="preload" as="style" href="/css/{{ stylesheet }}.css" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" type="text/css" href="/css/{{ stylesheet }}.css"></noscript>
