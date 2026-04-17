@@ -734,12 +734,9 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 	padding-bottom: 0.65rem;
 }
 .nav.nav-floating,
+.nav.nav-solid,
 .nav.learn {
-	background: rgba(20, 24, 28, 0.98);
-	border-bottom: 1px solid rgb(0, 0, 0);
-}
-.nav.nav-solid {
-	background: rgba(20, 24, 28, 0.98);
+	background: rgb(20, 24, 28);
 	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 .topnav-shell {
@@ -1445,11 +1442,10 @@ input[type="button"] {
 	aspect-ratio: 1;
 	background: radial-gradient(circle closest-side at 50% 50%,
 		rgba(253, 102, 35, 0.22) 0%,
-		rgba(253, 102, 35, 0.14) 22%,
-		rgba(253, 102, 35, 0.07) 45%,
-		rgba(253, 102, 35, 0.03) 70%,
-		rgba(253, 102, 35, 0.01) 88%,
-		transparent 100%);
+		rgba(253, 102, 35, 0.14) 20%,
+		rgba(253, 102, 35, 0.06) 42%,
+		rgba(253, 102, 35, 0.015) 62%,
+		transparent 82%);
 	opacity: 0.9;
 	animation: pageHeroWarmDrift 34s ease-in-out infinite;
 }
@@ -1461,11 +1457,10 @@ input[type="button"] {
 	aspect-ratio: 1;
 	background: radial-gradient(circle closest-side at 50% 50%,
 		rgba(91, 192, 255, 0.20) 0%,
-		rgba(91, 192, 255, 0.12) 22%,
-		rgba(91, 192, 255, 0.06) 45%,
-		rgba(91, 192, 255, 0.02) 70%,
-		rgba(91, 192, 255, 0.005) 88%,
-		transparent 100%);
+		rgba(91, 192, 255, 0.12) 20%,
+		rgba(91, 192, 255, 0.05) 42%,
+		rgba(91, 192, 255, 0.012) 62%,
+		transparent 82%);
 	opacity: 0.84;
 	animation: pageHeroCoolDrift 41s ease-in-out infinite;
 }
@@ -1569,12 +1564,22 @@ input[type="button"] {
 	z-index: 0;
 	width: clamp(180px, 22vw, 280px);
 	height: clamp(180px, 22vw, 280px);
-	border-radius: 999px;
 	transform: translate(-50%, -50%);
 	background:
-		radial-gradient(circle at 32% 28%, rgba(182, 224, 255, 0.20) 0%, rgba(182, 224, 255, 0.10) 22%, rgba(182, 224, 255, 0.03) 42%, transparent 62%),
-		radial-gradient(circle at 50% 54%, rgba(48, 122, 232, 0.26) 0%, rgba(36, 95, 205, 0.16) 26%, rgba(23, 71, 173, 0.08) 48%, transparent 78%),
-		radial-gradient(circle at 68% 74%, rgba(9, 24, 74, 0.08) 0%, rgba(9, 24, 74, 0.03) 26%, transparent 54%);
+		radial-gradient(circle closest-side at 40% 36%,
+			rgba(182, 224, 255, 0.20) 0%,
+			rgba(182, 224, 255, 0.08) 30%,
+			transparent 75%),
+		radial-gradient(circle closest-side at 50% 50%,
+			rgba(48, 122, 232, 0.28) 0%,
+			rgba(36, 95, 205, 0.16) 28%,
+			rgba(23, 71, 173, 0.06) 55%,
+			rgba(23, 71, 173, 0.015) 78%,
+			transparent 100%),
+		radial-gradient(circle closest-side at 62% 68%,
+			rgba(9, 24, 74, 0.10) 0%,
+			rgba(9, 24, 74, 0.03) 30%,
+			transparent 75%);
 	opacity: 0.55;
 	pointer-events: none;
 }
@@ -1637,22 +1642,20 @@ input[type="button"] {
 .asset-hub-hero::before {
 	background: radial-gradient(circle closest-side at 50% 50%,
 		rgba(253, 102, 35, 0.14) 0%,
-		rgba(253, 102, 35, 0.09) 22%,
-		rgba(253, 102, 35, 0.04) 45%,
-		rgba(253, 102, 35, 0.015) 70%,
-		rgba(253, 102, 35, 0.005) 88%,
-		transparent 100%);
+		rgba(253, 102, 35, 0.08) 20%,
+		rgba(253, 102, 35, 0.03) 42%,
+		rgba(253, 102, 35, 0.01) 62%,
+		transparent 82%);
 	opacity: 1;
 }
 
 .asset-hub-hero::after {
 	background: radial-gradient(circle closest-side at 50% 50%,
 		rgba(57, 163, 228, 0.16) 0%,
-		rgba(57, 163, 228, 0.10) 22%,
-		rgba(57, 163, 228, 0.05) 45%,
-		rgba(57, 163, 228, 0.02) 70%,
-		rgba(57, 163, 228, 0.005) 88%,
-		transparent 100%);
+		rgba(57, 163, 228, 0.09) 20%,
+		rgba(57, 163, 228, 0.04) 42%,
+		rgba(57, 163, 228, 0.012) 62%,
+		transparent 82%);
 	opacity: 1;
 }
 
@@ -4552,7 +4555,7 @@ ul.page-checklist-negative li:before {
 
 	.nav.nav-floating,
 	.nav.nav-solid {
-		background: rgba(248, 251, 255, 0.98);
+		background: rgb(248, 251, 255);
 		color: var(--darkest);
 		border-bottom: 1px solid rgba(39, 91, 142, 0.16);
 	}
@@ -4684,22 +4687,20 @@ ul.page-checklist-negative li:before {
 	.section.page-hero:not(.frontpage-top-banner)::before {
 		background: radial-gradient(circle closest-side at 50% 50%,
 			rgba(253, 102, 35, 0.14) 0%,
-			rgba(253, 102, 35, 0.09) 22%,
-			rgba(253, 102, 35, 0.04) 45%,
-			rgba(253, 102, 35, 0.015) 70%,
-			rgba(253, 102, 35, 0.005) 88%,
-			transparent 100%);
+			rgba(253, 102, 35, 0.08) 20%,
+			rgba(253, 102, 35, 0.03) 42%,
+			rgba(253, 102, 35, 0.01) 62%,
+			transparent 82%);
 		opacity: 1;
 	}
 
 	.section.page-hero:not(.frontpage-top-banner)::after {
 		background: radial-gradient(circle closest-side at 50% 50%,
 			rgba(57, 163, 228, 0.16) 0%,
-			rgba(57, 163, 228, 0.10) 22%,
-			rgba(57, 163, 228, 0.05) 45%,
-			rgba(57, 163, 228, 0.02) 70%,
-			rgba(57, 163, 228, 0.005) 88%,
-			transparent 100%);
+			rgba(57, 163, 228, 0.09) 20%,
+			rgba(57, 163, 228, 0.04) 42%,
+			rgba(57, 163, 228, 0.012) 62%,
+			transparent 82%);
 		opacity: 1;
 	}
 
