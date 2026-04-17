@@ -7,6 +7,7 @@ title: Photon Fusion - Spawning
 toc:
 - Spawn and Despawn
 - Events
+- Messages
 ---
 
 In single-player, instantiating a scene creates a local game object. In multiplayer, the same operation must create that game object on every connected client and assign it a network identity so the replication system can track it. This is what networked spawning does - it turns a local scene instantiation into a coordinated event across all peers.
@@ -42,4 +43,15 @@ fusion.on_event(function(self, event_id, data)
 		print("Object id", data)
 	end
 end)
+```
+
+## Messages
+Fusion will send a message to the created game object when it is ready:
+
+```lua
+function on_message(self, message_id, message, sender)
+	if message_id == fusion.EVENT_OBJECT_READY then
+		print("I am ready and will sync my state")
+	end
+end
 ```

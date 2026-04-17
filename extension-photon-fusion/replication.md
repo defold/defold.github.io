@@ -49,7 +49,6 @@ local function on_player_joined()
 end
 ```
 
-
 ### API Quick Reference
 
 ```lua
@@ -111,6 +110,15 @@ fusion.on_event(function(self, event_id, data)
 end)
 ```
 
+A message is also sent to the game object:
+
+```lua
+function on_message(self, message_id, message, sender)
+	if message_id == fusion.EVENT_OBJECT_OWNER_CHANGED then
+		print("I have a new owner!", message.owner)
+	end
+end
+```
 
 ## Interest Management (AOI)
 Interest management controls which objects each client receives updates for, reducing bandwidth in large worlds. Objects publish interest keys and clients subscribe to receive updates:
