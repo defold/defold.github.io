@@ -589,12 +589,12 @@ html, body {
 }
 
 #pagecontent > .section.page-hero:first-of-type:not(.frontpage-top-banner) {
-	padding-top: clamp(1.2rem, 2.0vw, 1.8rem);
+	padding-top: clamp(1.5rem, 2vw, 2.1rem);
 }
 
 .section.page-hero:not(.frontpage-top-banner) {
-	padding-top: clamp(1.2rem, 2.0vw, 1.8em);
-	padding-bottom: clamp(2.0rem, 2.6vw, 2.4rem);
+	padding-top: clamp(1.5rem, 2vw, 2.1rem);
+	padding-bottom: clamp(1.9rem, 2.6vw, 2.6rem);
 }
 
 body {
@@ -1411,10 +1411,10 @@ input[type="button"] {
 	overflow: hidden;
 	isolation: isolate;
 	background: var(--hero-bg);
-	padding-top: clamp(1.1rem, 2.2vw, 1.9rem);
-	padding-bottom: clamp(1.7rem, 3vw, 2.7rem);
-	--page-hero-graphic-width: min(100%, 360px);
-	--page-hero-panel-min-height: clamp(180px, 23vw, 280px);
+	padding-top: clamp(1.5rem, 2vw, 2.1rem);
+	padding-bottom: clamp(1.9rem, 2.6vw, 2.6rem);
+	--page-hero-graphic-width: min(100%, 220px);
+	--page-hero-panel-min-height: clamp(110px, 13vw, 180px);
 	--page-hero-warm-size: clamp(48rem, 90vw, 86rem);
 	--page-hero-cool-size: clamp(44rem, 82vw, 78rem);
 	--page-hero-warm-top: clamp(-20rem, -22vw, -12rem);
@@ -1493,13 +1493,14 @@ input[type="button"] {
 	display: grid;
 	grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.95fr);
 	gap: clamp(1.4rem, 2.2vw, 2.2rem);
-	align-items: center;
+	align-items: stretch;
 }
 
 .page-hero-layout-stack {
 	grid-template-columns: minmax(0, 1fr);
 	gap: clamp(1.6rem, 2.6vw, 2.4rem);
 	justify-items: center;
+	align-items: center;
 	text-align: center;
 }
 
@@ -1562,8 +1563,8 @@ input[type="button"] {
 	top: 50%;
 	left: 50%;
 	z-index: 0;
-	width: clamp(180px, 22vw, 280px);
-	height: clamp(180px, 22vw, 280px);
+	width: clamp(200px, 24vw, 300px);
+	height: clamp(200px, 24vw, 300px);
 	transform: translate(-50%, -50%);
 	background:
 		radial-gradient(circle closest-side at 40% 36%,
@@ -1585,8 +1586,10 @@ input[type="button"] {
 }
 
 .page-hero-panel-stack {
+	align-items: center;
 	width: 100%;
 	min-height: auto;
+	padding-bottom: 0;
 }
 
 .page-hero-panel-stack::before,
@@ -1613,30 +1616,12 @@ input[type="button"] {
 /* Shared hero modifiers */
 
 .download-hub-hero {
-	--page-hero-graphic-width: min(100%, 430px);
-}
-
-.donate-hub-hero {
-	--page-hero-graphic-width: min(100%, 230px);
-}
-
-.brand-hub-hero,
-.license-hub-hero,
-.partnership-hub-hero {
-	--page-hero-graphic-width: min(100%, 280px);
-}
-
-.asset-hub-hero {
-	--page-hero-graphic-width: min(100%, 324px);
+	--page-hero-graphic-width: min(100%, 320px);
 }
 
 .product-hub-hero {
 	--page-hero-graphic-width: min(100%, 860px);
 	background-color: #10161d;
-}
-
-.discord-hub-hero {
-	--page-hero-graphic-width: min(100%, 220px);
 }
 
 .asset-hub-hero::before {
@@ -3022,6 +3007,11 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 }
 
 @media (max-width: 980px) {
+	.page-hero {
+		--page-hero-graphic-width: min(100%, 150px);
+		--page-hero-panel-min-height: clamp(90px, 18vw, 150px);
+	}
+
 	.page-hero-layout {
 		grid-template-columns: 1fr;
 	}
@@ -3113,6 +3103,11 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 }
 
 @media (max-width: 700px) {
+	.page-hero {
+		--page-hero-graphic-width: min(100%, 120px);
+		--page-hero-panel-min-height: clamp(78px, 22vw, 120px);
+	}
+
 	.page-feature-grid {
 		grid-template-columns: 1fr;
 	}
