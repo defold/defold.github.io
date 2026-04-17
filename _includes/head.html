@@ -232,9 +232,6 @@
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
 
-<!-- Inline critical CSS to prevent FOUC while main.css loads async -->
-{%- include critical.html -%}
-
 <!-- CSS -->
 {%- assign learn_layouts = "api|page_with_learnnav|learn|learn_hub|manual|tutorial|example|faq|post-with-example" | split: "|" -%}
 {%- assign catalog_layouts = "learn_hub|assetportal|author" | split: "|" -%}
@@ -246,7 +243,6 @@
 {%- assign load_asset_detail_stylesheet = false -%}
 {%- assign load_api_stylesheet = false -%}
 {%- assign load_code_stylesheet = false -%}
-{%- assign deferred_stylesheet_list = page.deferred_stylesheets | default: "" -%}
 {%- if learn_layouts contains page.layout or page.stylesheets contains "learn" -%}
 {%- assign load_learn_stylesheet = true -%}
 {%- endif -%}
@@ -262,33 +258,26 @@
 {%- if code_layouts contains page.layout or page.stylesheets contains "code" -%}
 {%- assign load_code_stylesheet = true -%}
 {%- endif -%}
-<link rel="preload" as="style" href="/css/main.css" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" type="text/css" href="/css/main.css"></noscript>
+<link rel="stylesheet" type="text/css" href="/css/main.css">
 {%- if load_catalog_stylesheet -%}
-<link rel="preload" as="style" href="/css/catalog.css" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" type="text/css" href="/css/catalog.css"></noscript>
+<link rel="stylesheet" type="text/css" href="/css/catalog.css">
 {%- endif -%}
 {%- if load_asset_detail_stylesheet -%}
-<link rel="preload" as="style" href="/css/asset-detail.css" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" type="text/css" href="/css/asset-detail.css"></noscript>
+<link rel="stylesheet" type="text/css" href="/css/asset-detail.css">
 {%- endif -%}
 {%- if load_learn_stylesheet -%}
-<link rel="preload" as="style" href="/css/learn.css" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" type="text/css" href="/css/learn.css"></noscript>
+<link rel="stylesheet" type="text/css" href="/css/learn.css">
 {%- endif -%}
 {%- if load_api_stylesheet -%}
-<link rel="preload" as="style" href="/css/api.css" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" type="text/css" href="/css/api.css"></noscript>
+<link rel="stylesheet" type="text/css" href="/css/api.css">
 {%- endif -%}
 {%- if load_code_stylesheet -%}
-<link rel="preload" as="style" href="/css/code.css" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" type="text/css" href="/css/code.css"></noscript>
+<link rel="stylesheet" type="text/css" href="/css/code.css">
 {%- endif -%}
 {%- if page.stylesheets -%}
 {%- for stylesheet in page.stylesheets -%}
 {%- unless stylesheet == "learn" or stylesheet == "catalog" or stylesheet == "asset-detail" or stylesheet == "api" or stylesheet == "code" -%}
-<link rel="preload" as="style" href="/css/{{ stylesheet }}.css" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" type="text/css" href="/css/{{ stylesheet }}.css"></noscript>
+<link rel="stylesheet" type="text/css" href="/css/{{ stylesheet }}.css">
 {%- endunless -%}
 {%- endfor -%}
 {%- endif -%}
