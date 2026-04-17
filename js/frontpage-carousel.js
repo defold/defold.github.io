@@ -12,7 +12,7 @@
 		const config = window.frontpageCarouselConfig || {};
 		const maxGames = Math.max(1, Number(config.maxGames) || 12);
 		const scrollSpeedPxPerSec = Math.max(6, Number(config.scrollSpeedPxPerSec) || 18);
-		const autoplayIntervalMs = Math.max(3200, Number(config.autoplayIntervalMs) || Math.round(96000 / scrollSpeedPxPerSec));
+		const autoplayIntervalMs = Math.max(1200, Number(config.autoplayIntervalMs) || Math.round(72000 / scrollSpeedPxPerSec));
 		const autoplayEnabled = config.autoplay !== false;
 		const snapStrength = Math.max(4, Number(config.snapStrength) || 9);
 		const sourceLocation = config.sourceLocation || 'frontpage_hero';
@@ -98,6 +98,7 @@
 		let inertiaVelocityPxPerSec = 0;
 		let suppressClickUntil = 0;
 		let autoplayResumeAt = 0;
+		let autoplayResumeTimer = null;
 
 		const seenImpressions = new Set();
 		const dragStartThresholdPx = 12;
@@ -196,7 +197,8 @@
 			card.className = 'frontpage-showcase-card game-banner-link';
 			card.draggable = false;
 			card.dataset.gameId = game.id;
-			card.dataset.carouselCopy = String(copyIndex);
+			card.dataset.loopCopy = String(copyIndex);
+			card.dataset.baseIndex = String(baseIndex);
 			card.setAttribute('aria-label', game.name);
 			card.addEventListener('click', function() {
 				trackCardClick(game.id);
@@ -569,6 +571,10 @@
 			}
 			track.appendChild(trackFragment);
 
+			measureLoopWidth();
+			buildDotAnchors();
+			createDots();
+
 			const safeAnchorIndex = Math.max(0, Math.min(anchorDotIndex || 0, Math.max(dotAnchors.length - 1, 0)));
 			currentTranslate = dotAnchors[safeAnchorIndex] || -loopWidth;
 			currentTranslate = normalizeTranslate(currentTranslate);
@@ -607,6 +613,7 @@
 						currentTranslate = normalizeTranslate(targetTranslate);
 						targetTranslate = currentTranslate;
 						isSnapping = false;
+						scheduleAutoplayResume(timestamp);
 					}
 				} else if (Math.abs(inertiaVelocityPxPerSec) >= inertiaVelocityThresholdPxPerSec) {
 					currentTranslate = normalizeTranslate(currentTranslate + inertiaVelocityPxPerSec * deltaSeconds);
@@ -829,7 +836,24 @@
 		setupVisibilityHandling();
 		setupInteractionHandling();
 		setupResizeHandling();
-		requestAnimationIfNeeded();
+
+		animationFrameId = window.requestAnimationFrame(animate);
+
+		scheduleAutoplayResume(
+			(window.performance && typeof window.performance.now === 'function')
+				? window.performance.now()
+				: Date.now()
+		);
+
+		window.addEventListener('beforeunload', function() {
+			if (animationFrameId) {
+				window.cancelAnimationFrame(animationFrameId);
+			}
+			clearAutoplayResumeTimer();
+			if (impressionObserver) {
+				impressionObserver.disconnect();
+			}
+		}, { once: true });
 	}
 
 	function scheduleFrontpageCarouselInit() {

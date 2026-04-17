@@ -28,6 +28,7 @@
 	--frontpage-hero-card-border-hover: rgba(255, 255, 255, 0.2);
 	--frontpage-hero-card-shadow: 0 18px 34px rgba(3, 8, 13, 0.22);
 	--frontpage-hero-orb-size: 1100px;
+	--frontpage-hero-orb-size-warm: 1320px;
 	--frontpage-hero-orb-size-accent: 900px;
 	box-sizing: border-box;
 	position: relative;
@@ -49,8 +50,10 @@
 	}
 
 	&::before {
-		top: -320px;
-		left: -280px;
+		top: -380px;
+		left: -360px;
+		width: var(--frontpage-hero-orb-size-warm);
+		height: var(--frontpage-hero-orb-size-warm);
 		background: radial-gradient(circle closest-side at 50% 50%,
 			rgba(253, 102, 35, 0.34) 0%,
 			rgba(253, 102, 35, 0.20) 22%,
@@ -75,8 +78,8 @@
 	> .container::before {
 		content: "";
 		position: absolute;
-		top: -4%;
-		left: 34%;
+		top: 18%;
+		left: 8%;
 		width: var(--frontpage-hero-orb-size-accent);
 		height: var(--frontpage-hero-orb-size-accent);
 		pointer-events: none;
@@ -94,6 +97,7 @@
 @media (max-width: 1100px) {
 	.frontpage-top-banner {
 		--frontpage-hero-orb-size: 820px;
+		--frontpage-hero-orb-size-warm: 990px;
 		--frontpage-hero-orb-size-accent: 680px;
 	}
 }
@@ -101,6 +105,7 @@
 @media (max-width: 640px) {
 	.frontpage-top-banner {
 		--frontpage-hero-orb-size: 560px;
+		--frontpage-hero-orb-size-warm: 670px;
 		--frontpage-hero-orb-size-accent: 460px;
 	}
 }
