@@ -1,0 +1,25 @@
+<style>
+:root{color-scheme:dark;--lightest:#fafafa;--almostlightest:#f0f2f6;--lighter:#afb9c4;--light:#79838e;--grey:#272c31;--dark:#1e2226;--darker:#191d21;--darkest:#14181c;--defold-blue:#39a3e4;--defold-orange:#fd6623;--theme-page-bg:var(--darkest);--theme-heading-color:var(--lightest);--theme-copy-color:rgba(255,255,255,.76);--hero-bg:linear-gradient(160deg,#171e26 0%,#0f141a 100%)}
+html.theme-light,:root.theme-light{color-scheme:light;--theme-page-bg:#fafafa;--theme-heading-color:var(--darkest);--theme-copy-color:rgba(20,24,28,.72);--hero-bg:linear-gradient(160deg,rgba(250,250,250,.98) 0%,rgba(240,242,246,.96) 100%)}
+@media (prefers-color-scheme: light){:root:not(.theme-dark){color-scheme:light;--theme-page-bg:#fafafa;--theme-heading-color:var(--darkest);--theme-copy-color:rgba(20,24,28,.72);--hero-bg:linear-gradient(160deg,rgba(250,250,250,.98) 0%,rgba(240,242,246,.96) 100%)}}
+html{font-size:65%;-webkit-text-size-adjust:100%}
+html,body{max-width:100%;margin:0;padding:0}
+body{background-color:var(--dark);color:var(--lighter);font-family:"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:1.5rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+html.theme-light body,:root.theme-light body{background-color:var(--theme-page-bg);color:rgba(20,24,28,.72)}
+#page{position:relative;min-height:100vh}
+#pagecontent{overflow-x:hidden;display:block;background-repeat:no-repeat;background-position:center top}
+img,svg{max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+.site-header{position:sticky;top:0;z-index:50;background:var(--darkest)}
+html.theme-light .site-header{background:var(--theme-page-bg)}
+.topnav{display:flex;align-items:center;justify-content:space-between;min-height:5.6rem;padding:0 clamp(1rem,3vw,2.4rem)}
+.topnav-brand-image{display:block;height:2.4rem;width:auto}
+.page-hero{display:block;padding:clamp(1.2rem,2vw,1.8rem) 0 clamp(2rem,2.6vw,2.4rem)}
+.frontpage-top-banner{background:var(--hero-bg);padding:clamp(2rem,4vw,5rem) 0}
+.section{display:block;padding-left:clamp(1rem,3vw,2.4rem);padding-right:clamp(1rem,3vw,2.4rem)}
+.frontpage-hero-layout{display:grid;gap:2rem}
+.frontpage-hero-logo-image{display:block;max-width:100%;height:auto}
+.frontpage-hero-logo-image-light{display:none}
+html.theme-light .frontpage-hero-logo-image-dark,:root.theme-light .frontpage-hero-logo-image-dark{display:none}
+html.theme-light .frontpage-hero-logo-image-light,:root.theme-light .frontpage-hero-logo-image-light{display:block}
+</style>

@@ -6,7 +6,7 @@
 	<a class="page-feature-card page-feature-card-no-badge asset-card-link" href="{{ post.url }}">
 		{%- if post_thumbnail != "" -%}
 		<span class="page-feature-card-media asset-card-media" aria-hidden="true">
-			<img src="{{ post_thumbnail }}" alt="{{ post.title }} preview image" loading="lazy"/>
+			<img src="{{ post_thumbnail }}" alt="{{ post.title }} preview image" loading="lazy" decoding="async"/>
 		</span>
 		{%- endif -%}
 		<span class="page-feature-card-copy asset-card-copy">

@@ -1,12 +1,18 @@
-<script src="/js/clipboard.js"></script>
-
-<script>
+<script src="/js/clipboard.js" defer></script>
+<script defer>
 	(function() {
-		onDocumentLoad(function() {
+		function ready(callback) {
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', callback, { once: true });
+			} else {
+				callback();
+			}
+		}
+		ready(function() {
 			var elementsWithCode = document.querySelectorAll([
-				'pre.highlight', 			// Manuals
-				'div.codehilite pre', 		// API Reference
-				'figure.highlight > pre', 	// Examples
+				'pre.highlight',
+				'div.codehilite pre',
+				'figure.highlight > pre'
 			].join(','));
 			for (var el of elementsWithCode) {
 				var container = createCopyToClipboardButtonFor(el);
@@ -14,17 +20,5 @@
 				el.parentNode.appendChild(container);
 			}
 		});
-
-		function onDocumentLoad(callback) {
-			var hasRun = false;
-			var loadHandler = function (evt) {
-				if (hasRun) return;
-				hasRun = true;
-				callback();
-			};
-
-			document.addEventListener('DOMContentLoaded', loadHandler, false);
-			window.addEventListener('load', loadHandler, false); // older browsers
-		}
 	})();
 </script>
