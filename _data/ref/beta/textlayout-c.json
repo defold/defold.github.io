@@ -98,8 +98,32 @@
             "type": "STRUCT"
         },
         {
+            "brief": "Acquire a shared reference to a previously created...",
+            "description": "Acquire a shared reference to a previously created layout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutAcquire",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Create a text layout using a font collection\nif su...",
-            "description": "Create a text layout using a font collection\nif successful, the caller must call TextLayoutFree() on the layout",
+            "description": "Create a text layout using a font collection\nif successful, the caller owns the returned layout and must call TextLayoutRelease()",
             "error": "",
             "examples": "",
             "language": "",
@@ -158,30 +182,6 @@
                     ]
                 }
             ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Frees a previously created layout",
-            "description": "Frees a previously created layout",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "TextLayoutFree",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "the text layout",
-                    "is_optional": "False",
-                    "name": "layout",
-                    "types": [
-                        "HTextLayout"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -349,6 +349,30 @@
                     ]
                 }
             ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Release a previously created layout",
+            "description": "Release a previously created layout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutRelease",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
         },
