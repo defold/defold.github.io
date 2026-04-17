@@ -10,7 +10,6 @@ toc:
 - Shared Authority Replication
 - Engine-First Integration
 - Where to Go Next
-- Usage
 - License
 - Example
 - Source code
@@ -26,7 +25,7 @@ Getting players into the same session is the first challenge when creating a mul
 
 You do not need to provision or maintain any servers. Photon manages hosting, scaling and region routing worldwide.
 
-See [Connection & Matchmaking](/connection) for the full API.
+See [Connection & Matchmaking](connection) for the full API.
 
 
 ```lua
@@ -46,7 +45,7 @@ Replication works at the property level. Fusion tracks individual values (positi
 
 If you need extra security, you can even deploy **custom server-side plugins** that validate state changes before they reach other clients — useful for competitive games or anti-cheat.
 
-See [Replication](/replication) for details.
+See [Replication](replication) for details.
 
 
 ## Engine-First Integration
@@ -54,7 +53,7 @@ Fusion was designed with Defold's idioms in mind. You write gameplay code in Lua
 
 Spawning networked objects follows the same pattern: register an existing game object as networked or spawn it from Fusion using `fusion.spawn()` and it will be created on every client in the same room.
 
-The [Quick Start Guide](/quick-start-guide) walks through a full example in under 10 minutes.
+The [Quick Start Guide](quick-start-guide) walks through a full example in under 10 minutes.
 
 ```lua
 local factory_url = "example:/game#playerfactory"
@@ -66,24 +65,18 @@ local id = fusion.spawn(factory_url, position, rotation, scene, owner_mode)
 ```
 
 ## Where to Go Next
-* [Quick Start Guide](/quick-start-guide) — Build a multiplayer demo in 10 steps
-* [Installation](/installation) — Requirements and installation
-* [Connection](/connection) — Initialization, rooms and signals
-* [Replication](/replication) — Authority, replication modes and properties
-* [Spawning](/spawning) — Dynamic networked objects and sub-objects
-* [RPCs](/rpcs) — Remote procedure calls
+* [Quick Start Guide](quick-start-guide) — Build a multiplayer demo in 10 steps
+* [Installation](installation) — Requirements and installation
+* [Connection](connection) — Initialization, rooms and signals
+* [Replication](replication) — Authority, replication modes and properties
+* [Spawning](spawning) — Dynamic networked objects and sub-objects
+* [RPCs](rpcs) — Remote procedure calls
 * [Physics Replication] — Forecast smoothing for rigid bodies
-
-
-
-## Usage
-
-
 
 
 ## License
 
-You must read and agree to the [Exit Games End User License Terms](https://github.com/defold/extension-photon-fusion/blob/master/fusion/license.txt) before using Photon Realtime in your own project.
+You must read and agree to the [Exit Games End User License Terms](https://github.com/defold/extension-photon-fusion/blob/master/fusion/license.txt) before using Photon Fusion in your own project.
 
 
 ## Example
