@@ -725,25 +725,9 @@ html.theme-dark .learn-detail-shell.theme-page-bg-dark {
 @mixin learn-light-theme-content {
 	.nav.learn,
 	.nav.learn.learn-nav-dark {
-		background:
-			radial-gradient(circle at top left, rgba(57, 163, 228, 0.10), transparent 44%),
-			linear-gradient(180deg, rgba(248, 251, 255, 0.94) 0%, rgba(233, 241, 249, 0.90) 100%);
+		background: rgba(248, 251, 255, 0.98);
 		color: var(--darkest);
 		border-bottom: 1px solid rgba(39, 91, 142, 0.16);
-		box-shadow: 0 12px 28px rgba(18, 45, 75, 0.12);
-		-webkit-backdrop-filter: blur(14px);
-		backdrop-filter: blur(14px);
-	}
-
-	@supports (-moz-appearance: none) {
-		.nav.learn,
-		.nav.learn.learn-nav-dark {
-			background:
-				radial-gradient(circle at top left, rgba(57, 163, 228, 0.12), transparent 44%),
-				linear-gradient(180deg, rgba(248, 251, 255, 0.98) 0%, rgba(233, 241, 249, 0.95) 100%);
-			-webkit-backdrop-filter: none;
-			backdrop-filter: none;
-		}
 	}
 
 	.nav.learn a,
