@@ -42,7 +42,7 @@ jobs:
             { if: "env.ACTION == 'all'", name: 'Update everything', run: 'python update.py --download all commit' },
             { if: "startsWith(env.ACTION, 'extension-')", name: 'Update extension', run: 'python update.py --download --extension ${{ env.ACTION }} extensions refdoc commit' },
             { name: 'Build Jekyll site', run: 'bundle exec jekyll build' },
-            { name: 'Install Pagefind Python', run: 'pip install "pagefind[extended]"' },
+            { name: 'Install Pagefind Python', run: 'pip install "pagefind[extended]==1.5.2"' },
             { name: 'Index site with Pagefind', run: 'python3 -m pagefind' },
             { if: "github.ref == 'refs/heads/master'", name: 'Upload Pages artifact', uses: 'actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9', with: { path: '_site' } },
             { if: "github.ref == 'refs/heads/master'", name: 'Deploy to GitHub Pages', id: 'deployment', uses: 'actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128' }

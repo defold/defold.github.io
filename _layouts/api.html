@@ -49,8 +49,14 @@ layout: base
 	<div id="pagecontent">
 		<div class="apimenu sidemenu dark:dark">
 			<p><a href="/learn"><img class="logo-hor-classic-160" src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png" alt="Defold Learn logo" loading="lazy" decoding="async"/></a></p>
-			<form action="/search" class="api-search-form">
-				{% include catalog_search_field.html id="api-search-desktop" name="q" wrapper_class="learnnav-search-field" placeholder="Search..." aria_label="Search the API reference" %}
+			<form action="/search" class="api-search-form pagefind-nav-search" data-pagefind-nav-search data-pagefind-search-instance="api-search-desktop" data-pagefind-fixed-panel data-pagefind-ignore role="search">
+				{% include catalog_search_field.html id="api-search-desktop" name="q" wrapper_class="learnnav-search-field" data_attribute_name="data-pagefind-nav-search-input" placeholder="Search..." aria_label="Search the API reference" %}
+				<div id="api-search-desktop-results" class="pagefind-nav-results-panel pagefind-nav-results-panel-left" data-pagefind-nav-search-panel hidden>
+					<pagefind-config instance="api-search-desktop" bundle-path="/_pagefind/" excerpt-length="18"></pagefind-config>
+					<pagefind-summary instance="api-search-desktop"></pagefind-summary>
+					<pagefind-results instance="api-search-desktop" max-results="6" max-sub-results="3"></pagefind-results>
+					<a class="pagefind-nav-search-all-results" href="/search" data-pagefind-nav-search-all-results>View all results</a>
+				</div>
 			</form>
 			<hr>
 			<ul class="nobullet">
@@ -119,8 +125,14 @@ layout: base
 				<p>
 					<a href="/learn"><img src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png" alt="Defold Learn logo" loading="lazy" decoding="async"/></a>
 				</p>
-				<form action="/search" class="api-search-form">
-					{% include catalog_search_field.html id="api-search-mobile" name="q" wrapper_class="learnnav-search-field" placeholder="Search..." aria_label="Search the API reference" %}
+				<form action="/search" class="api-search-form pagefind-nav-search" data-pagefind-nav-search data-pagefind-search-instance="api-search-mobile" data-pagefind-ignore role="search">
+					{% include catalog_search_field.html id="api-search-mobile" name="q" wrapper_class="learnnav-search-field" data_attribute_name="data-pagefind-nav-search-input" placeholder="Search..." aria_label="Search the API reference" %}
+					<div id="api-search-mobile-results" class="pagefind-nav-results-panel pagefind-nav-results-panel-mobile" data-pagefind-nav-search-panel hidden>
+						<pagefind-config instance="api-search-mobile" bundle-path="/_pagefind/" excerpt-length="18"></pagefind-config>
+						<pagefind-summary instance="api-search-mobile"></pagefind-summary>
+						<pagefind-results instance="api-search-mobile" max-results="6" max-sub-results="3"></pagefind-results>
+						<a class="pagefind-nav-search-all-results" href="/search" data-pagefind-nav-search-all-results>View all results</a>
+					</div>
 				</form>
 			</div>
 			<select class="dropdownmenu" aria-label="API reference navigation" onchange="if(this.value){location = this.value;}">
