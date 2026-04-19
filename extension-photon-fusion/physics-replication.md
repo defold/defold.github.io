@@ -7,6 +7,7 @@ title: Photon Fusion - Physics Replication
 toc:
 - Physics Replication
 - Overview
+- Where to Go Next
 ---
 
 # Physics Replication
@@ -14,5 +15,11 @@ Physics bodies are challenging to replicate because they move continuously under
 
 Fusion solves this with velocity-based forecasting: remote clients predict where the body should be using its last known velocity, then a spring-damper system smoothly corrects any drift when the next server update arrives. The result is smooth motion on remote clients even under moderate packet loss or latency.
 
+
 ## Overview
 Fusion auto-detects the physics body and uses velocity-based forecast smoothing. Position, rotation, linear_velocity and angular_velocity are synced automatically.
+
+
+## Where to Go Next
+* [Back to the Introduction](index)
+* [Quick Start Guide](quick-start-guide) — Build a multiplayer demo in 10 steps

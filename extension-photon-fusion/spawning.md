@@ -16,6 +16,7 @@ In single-player, instantiating a scene creates a local game object. In multipla
 
 Despawning is the reverse: it removes the object from every client and frees its network identity. Late-joining clients automatically receive the current set of spawned objects when they enter the room.
 
+
 ## Spawn and Despawn
 Call `fusion.spawn()` to create a networked game object instance and `fusion.despawn()` to remove it from all clients.
 
@@ -46,6 +47,7 @@ fusion.on_event(function(self, event_id, data)
 	end
 end)
 ```
+
 
 ## Messages
 Fusion will send a message to the created game object when it is ready:

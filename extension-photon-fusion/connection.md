@@ -17,13 +17,11 @@ toc:
 ---
 
 # Connection & Matchmaking
-
 Before any game objects can sync, players must connect to a server and be grouped into a shared session. Photon uses a two-tier architecture: clients first connect to a master server for matchmaking, then get routed to a game server hosting a room. A room is an isolated session where a fixed group of players share game state, exchange RPCs and replicate objects.
 
 This page covers the full connection lifecycle, from initialization and server connection through room creation, joining and disconnection.
 
 ## Initialization
-
 Call `fusion.initialize_from_settings()` to load the App ID and version from *game.project* Settings, or pass them explicitly by calling `fusion.init()`.
 
 
@@ -37,7 +35,6 @@ fusion.init(app_id, app_version)
 ```
 
 ## Connecting
-
 Use `fusion.connect()` to connect to the master server:
 
 ```lua

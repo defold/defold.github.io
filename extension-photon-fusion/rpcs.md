@@ -14,6 +14,7 @@ Replication handles continuous state - properties that change over time like pos
 
 RPCs are fire-and-forget - they are delivered once and not retained. If a client joins after an RPC was sent, it will not receive that call. For state that must survive late joins, use replicated properties instead.
 
+
 ## Overview
 Fusion RPCs are sent using `fusion.rpc()`, either to a specific player or to all players. RPCs are received as events.
 

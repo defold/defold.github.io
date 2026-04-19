@@ -23,6 +23,7 @@ In a multiplayer game, each client runs its own copy of the simulation. Replicat
 
 Fusion replicates at the property level. Individual values like position, health or score are tracked independently. The server only sends properties that have changed since the last update, minimizing bandwidth.
 
+
 ## How to replicate an object
 Register a game object using `fusion.register_object()` to handle property sync for the game object. The authority client writes values to the server; remote clients receive and optionally smooth them.
 
@@ -35,6 +36,7 @@ fusion.register_object(factory_url, scene, owner_mode, id)
 ```
 
 Call `fusion.unregister_object(id)` to no longer handle property sync for a game object.
+
 
 ## Authority and Ownership
 Authority determines which client is allowed to write a networked object's properties. Only the authority client's values are accepted by the server - all other clients receive read-only copies. Fusion has several authority modes: Transaction, Player Attached, Dynamic and Master Client.
@@ -51,6 +53,7 @@ local function on_player_joined()
 end
 ```
 
+
 ### API Quick Reference
 
 ```lua
@@ -60,6 +63,7 @@ fusion.get_owner_id(id)            -- which player owns the specified game objec
 fusion.want_authority(true, id)    -- claim ownership of the specified game object
 fusion.want_authority(false, id)   -- release ownership of the specified game object
 ```
+
 
 ### Transaction (default)
 Server-confirmed ownership transfers. The current owner keeps authority until it explicitly releases with `fusion.want_authority(false)`, at which point the server marks the object as an orphan (unowned). Any other client can then claim it with `fusion.want_authority(true)`.
@@ -131,6 +135,7 @@ Interest management controls which objects each client receives updates for, red
 | Area     | `fusion.set_area_interest_key(key)` | `fusion.set_area_keys(keys)`   |
 | User     | `fusion.set_user_interest_key(key)` | `fusion.add_user_key(key)`     |
 | Global   | `fusion.set_global_interest_key()`  | Updates received automatically |
+
 
 ### Interest events
 
