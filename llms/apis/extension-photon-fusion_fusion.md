@@ -28,7 +28,7 @@ Connect Fusion.
 **Parameters**
 
 - `user` (string)
-- `server` (string)
+- `region` (string)
 
 ### fusion.disconnect
 *Type:* FUNCTION
@@ -215,7 +215,7 @@ Unregister a previously registered object.
 
 - `id` (string)
 
-### fusion.scene_change
+### fusion.change_scene
 *Type:* FUNCTION
 Change scene.
 
