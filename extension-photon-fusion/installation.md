@@ -29,6 +29,8 @@ To use the Photon Fusion SDK in your Defold project, add a version of the Photon
 
 ![](add-dependency.png)
 
+![](add-dependency-game-project.png)
+
 Select `Project->Fetch Libraries` once you have added the version to `game.project` to download the version and make it available in your project.
 
 
