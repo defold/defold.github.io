@@ -93,7 +93,6 @@ layout: page_with_learnnav
 			</div>
 			<div class="columns three learn-detail-sidebar">
 				<div class="learn-detail-sidebar-stack">
-					{% include learn_detail_feedback.html link=page.github %}
 					{% include learn_detail_languages.html locales=current_manual.languages path=current_manual.path %}
 					<div class="learn-detail-panel learn-detail-sections learn-sidebar-panel page-surface-panel page-text-panel">
 						<input class="toggle" type="checkbox" checked/>
@@ -106,6 +105,7 @@ layout: page_with_learnnav
 						{%- endfor -%}
 						</ul>
 					</div>
+					{% include learn_detail_feedback.html link=page.github %}
 				</div>
 			</div>
 		</div>
