@@ -72,7 +72,7 @@ local id = fusion.spawn(factory_url, position, rotation, scene, owner_mode)
 * [Spawning](spawning) — Dynamic networked objects and sub-objects
 * [RPCs](rpcs) — Remote procedure calls
 * [Physics Replication](physics-replication) — Forecast smoothing for rigid bodies
-
+* [Large Scenes](large-scenes) - pre-placed networked nodes
 
 ## Example
 [Refer to the example project](https://github.com/defold/extension-photon-fusion/blob/master/example) to see a complete example of how the integration works.
