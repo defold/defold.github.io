@@ -857,7 +857,7 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 }
 
 .topnav-actions-theme .theme-toggle-button {
-	min-height: 34px;
+	min-height: 36px;
 }
 
 .js .theme-toggle-button {
@@ -874,10 +874,11 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 }
 
 .theme-toggle-button-track {
+	position: relative;
 	display: inline-flex;
 	align-items: center;
-	width: 34px;
-	height: 18px;
+	width: 28px;
+	height: 20px;
 	padding: 2px;
 	border: 1px solid var(--theme-toggle-track-border);
 	border-radius: 999px;
@@ -887,9 +888,15 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 }
 
 .theme-toggle-button-thumb {
-	display: block;
-	width: 12px;
-	height: 12px;
+	position: absolute;
+	top: 1px;
+	left: 1px;
+	z-index: 1;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px;
+	height: 16px;
 	border-radius: 50%;
 	background: linear-gradient(180deg, #f6fbff 0%, #9ec8ff 100%);
 	box-shadow: 0 2px 6px rgba(26, 112, 235, 0.32);
@@ -897,10 +904,26 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 	transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
 
+.theme-toggle-button-thumb::before {
+	content: "";
+	display: block;
+	width: 11px;
+	height: 11px;
+	background-color: rgba(17, 24, 33, 0.98);
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M10.2 1.4a5.9 5.9 0 1 0 0 13.2A6.9 6.9 0 1 1 10.2 1.4Z'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M10.2 1.4a5.9 5.9 0 1 0 0 13.2A6.9 6.9 0 1 1 10.2 1.4Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
 .theme-toggle-button[data-theme="light"] .theme-toggle-button-thumb {
-	transform: translateX(16px);
+	transform: translateX(8px);
 	background: linear-gradient(180deg, #ffd27a 0%, #fd6623 100%);
 	box-shadow: 0 2px 6px rgba(253, 102, 35, 0.3);
+}
+
+.theme-toggle-button[data-theme="light"] .theme-toggle-button-thumb::before {
+	background-color: rgba(255, 255, 255, 0.98);
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-linecap='round' stroke-width='1.5'%3E%3Ccircle cx='8' cy='8' r='3' fill='black' stroke='black'/%3E%3Cpath d='M8,1.5V3.2M8,12.8V14.5M1.5,8H3.2M12.8,8H14.5M3.3,3.3L4.5,4.5M11.5,11.5L12.7,12.7M12.7,3.3L11.5,4.5M4.5,11.5L3.3,12.7'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-linecap='round' stroke-width='1.5'%3E%3Ccircle cx='8' cy='8' r='3' fill='black' stroke='black'/%3E%3Cpath d='M8,1.5V3.2M8,12.8V14.5M1.5,8H3.2M12.8,8H14.5M3.3,3.3L4.5,4.5M11.5,11.5L12.7,12.7M12.7,3.3L11.5,4.5M4.5,11.5L3.3,12.7'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .topnav-mobile {
@@ -1022,7 +1045,7 @@ input[type="checkbox"].toggle:checked + .togglelabel::after {
 .topnav-mobile-theme-toggle {
 	flex: 0 0 auto;
 	align-self: stretch;
-	min-height: 34px;
+	min-height: 36px;
 	padding-inline: 0.1rem;
 }
 
@@ -4736,7 +4759,7 @@ ul.page-checklist-negative li:before {
 	.press-hub-hero .page-hero-graphic,
 	.status-hub-hero .page-hero-graphic,
 	.support-hub-hero .page-hero-graphic {
-		filter: brightness(0) saturate(100%) invert(18%) sepia(16%) saturate(842%) hue-rotate(169deg) brightness(92%) contrast(91%);
+		filter: drop-shadow(0 18px 34px rgba(18, 45, 75, 0.14));
 	}
 
 	.page-hero-copy h1,
