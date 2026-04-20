@@ -118,6 +118,16 @@
 			return 1;
 		}
 
+		function getLayoutCards(width) {
+			if (width >= 1400) {
+				return 3.4;
+			}
+			if (width >= 520) {
+				return 2.3;
+			}
+			return 1.42;
+		}
+
 		function buildPages(items, pageSize) {
 			const groupedPages = [];
 			for (let index = 0; index < items.length; index += pageSize) {
@@ -554,9 +564,11 @@
 		}
 
 		function renderTrack(anchorDotIndex) {
+			const width = carousel.clientWidth || window.innerWidth || 0;
 			cardsPerView = getCardsPerView();
 			logicalPages = buildPages(games, cardsPerView);
 			carousel.style.setProperty('--frontpage-showcase-visible-cards', String(cardsPerView));
+			carousel.style.setProperty('--frontpage-showcase-layout-cards', String(getLayoutCards(width)));
 			track.innerHTML = '';
 			const trackFragment = document.createDocumentFragment();
 			resetPointerState();
