@@ -234,6 +234,7 @@
 
 <!-- CSS -->
 {%- assign learn_layouts = "api|page_with_learnnav|learn|learn_hub|manual|tutorial|example|faq|post-with-example" | split: "|" -%}
+{%- assign pagefind_nav_search_layouts = "api|page_with_learnnav|learn|learn_hub|manual|tutorial|example|faq|post-with-example" | split: "|" -%}
 {%- assign catalog_layouts = "learn_hub|assetportal|author" | split: "|" -%}
 {%- assign asset_detail_layouts = "asset" | split: "|" -%}
 {%- assign api_layouts = "api" | split: "|" -%}
@@ -281,7 +282,15 @@
 {%- endunless -%}
 {%- endfor -%}
 {%- endif -%}
+{%- if pagefind_nav_search_layouts contains page.layout -%}
+<link rel="stylesheet" href="/_pagefind/pagefind-component-ui.css">
+{%- endif -%}
 <!-- end CSS -->
+
+{%- if pagefind_nav_search_layouts contains page.layout -%}
+<script src="/_pagefind/pagefind-component-ui.js" type="module"></script>
+<script src="/js/learnnav-pagefind-search.js" type="module"></script>
+{%- endif -%}
 
 <script>
 (function() {

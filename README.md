@@ -131,7 +131,7 @@ bundle install
 The site uses Pagefind for search functionality. Install it using:
 
 ```sh
-pip3 install "pagefind[extended]"
+pip3 install "pagefind[extended]==1.5.2"
 ```
 
 The `serve.sh` script will automatically check for Pagefind installation and provide installation instructions if missing.

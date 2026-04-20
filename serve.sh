@@ -1,9 +1,12 @@
 #!/bin/bash
 
-# Check if Pagefind is installed
-if ! python3 -c "import pagefind" 2>/dev/null; then
-    echo "Pagefind is not installed. Please install it first:"
-    echo "pip3 install \"pagefind[extended]\""
+REQUIRED_PAGEFIND_VERSION="1.5.2"
+PAGEFIND_VERSION=$(python3 -m pagefind --version 2>/dev/null | awk '{print $2}')
+
+# Check if the Pagefind CLI can generate the component assets used by nav search.
+if [ "$PAGEFIND_VERSION" != "$REQUIRED_PAGEFIND_VERSION" ]; then
+    echo "Pagefind $REQUIRED_PAGEFIND_VERSION is required. Please install it first:"
+    echo "pip3 install \"pagefind[extended]==$REQUIRED_PAGEFIND_VERSION\""
     exit 1
 fi
 
