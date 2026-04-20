@@ -124,6 +124,7 @@
 
 		document.addEventListener("click", (event) => {
 			if (!form.contains(event.target)) {
+				window.clearTimeout(searchTimer);
 				setPanelOpen(false);
 			}
 		});
