@@ -6,19 +6,23 @@ This example demonstrates the difference between local and world particle emissi
 
 This example shows how particle emission space affects particle behavior when the emitter object moves. The setup consists of two UFO objects with identical particle effects, but different emission space settings.
 
+## Setup
+
 The example collection consists of 2 game objects that differ only in the particlefx used:
 
-- particlefx on the left has Emission Space property set to "Emitter":
+- particlefx on the left has `Emission Space` property set to `Emitter`:
 
-- particlefx on the right has Emission Space property set to "World":
+- particlefx on the right has `Emission Space` property set to `World`:
 
 Both game objects are animated up and down, so that you can see the difference between the emission space:
 
-Particles emitted in emitter space are "moving" with the object, so their position is always respective to the emitter actual origin.
+## How it works?
 
-Particles emitted in world space have positions respective to the world coordinates.
+Particles emitted in the **emitter** space are "moving" with the object, so their position is always respective to the emitter actual origin.
 
-Use this example to understand when to use local vs world emission space in your particle effects!
+Particles emitted in the **world** space have positions respective to the world coordinates.
+
+Use this example to understand when to use local or world emission space in your particle effects!
 
 ## Scripts
 
@@ -26,10 +30,12 @@ Use this example to understand when to use local vs world emission space in your
 
 ```lua
 function init(self)
-	--Start playing the particle effect in component "particles" in this game object:
-	particlefx.play("#particles")
-
-	-- Animate this object position on Y axis up and down forever
-	go.animate(".", "position.y", go.PLAYBACK_LOOP_PINGPONG, 600, go.EASING_INOUTSINE, 4)
+	particlefx.play("#particles") -- <1>
+	go.animate(".", "position.y", go.PLAYBACK_LOOP_PINGPONG, 500, go.EASING_INOUTSINE, 4) -- <2>
 end
+
+--[[
+1. Start playing the particle effect in component "particles" in this game object.
+2. Animate this object position on Y axis up and down forever
+]]
 ```

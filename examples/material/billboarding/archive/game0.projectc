@@ -78,6 +78,8 @@ memory_size = 512
 
 [shader]
 output_spirv = 0
+glsl_es_default_precision_float = mediump
+glsl_es_default_precision_int = highp
 
 [sound]
 gain = 1
@@ -117,6 +119,9 @@ max_bone_matrix_texture_height = 1024
 
 [mesh]
 max_count = 128
+
+[light]
+max_count = 64
 
 [gui]
 max_count = 64
@@ -219,9 +224,11 @@ track_cpu = 0
 enabled = 1
 sleep_between_server_updates = 0
 performance_timeline_enabled = 0
+max_sample_count = 4096
 
 [liveupdate]
 enabled = 1
+exclude_entries_from_main_manifest = 1
 settings = /liveupdate.settings
 mount_on_start = 1
 

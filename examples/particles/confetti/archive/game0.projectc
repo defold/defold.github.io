@@ -24,9 +24,9 @@ variable_dt = 0
 display_device_info = 0
 
 [render]
-clear_color_red = 1.0
-clear_color_green = 1.0
-clear_color_blue = 1.0
+clear_color_red = 0.160156
+clear_color_green = 0.164063
+clear_color_blue = 0.183594
 clear_color_alpha = 1
 
 [physics]
@@ -78,6 +78,8 @@ memory_size = 512
 
 [shader]
 output_spirv = 0
+glsl_es_default_precision_float = mediump
+glsl_es_default_precision_int = highp
 
 [sound]
 gain = 1
@@ -117,6 +119,9 @@ max_bone_matrix_texture_height = 1024
 
 [mesh]
 max_count = 128
+
+[light]
+max_count = 64
 
 [gui]
 max_count = 64
@@ -220,9 +225,11 @@ track_cpu = 0
 enabled = 1
 sleep_between_server_updates = 0
 performance_timeline_enabled = 0
+max_sample_count = 4096
 
 [liveupdate]
 enabled = 1
+exclude_entries_from_main_manifest = 1
 settings = /liveupdate.settings
 mount_on_start = 1
 

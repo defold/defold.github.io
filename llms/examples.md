@@ -113,10 +113,11 @@ These are per-example files generated for LLM usage.
 - [Modifiers](https://defold.com/llms/examples/particles/modifiers.md) - This example shows particle effect modifiers
 - [Particle effect](https://defold.com/llms/examples/particles/particlefx.md) - This example shows a simple particle effect
 - [Particle Effect Emission Space](https://defold.com/llms/examples/particles/particlefx_emission_space.md) - This example demonstrates the difference between local and world particle emission spaces
-- [Particle effect example - confetti](https://defold.com/llms/examples/particles/confetti.md) - This example shows a simple particle effect to imitate confetti
-- [Particle effect example - fire and smoke](https://defold.com/llms/examples/particles/fire_and_smoke.md) - This example shows a simple particle effect for imitating fire and smoke
-- [Particle effect example - fireworks](https://defold.com/llms/examples/particles/fireworks.md) - This example shows a fireworks effect made with particles
+- [Particle effect example - fire and smoke](https://defold.com/llms/examples/particles/fire_and_smoke.md) - This example shows a simple particle effect for imitating fire and smoke using two emitters and 3 modifiers in a single particlefx component
+- [ParticleFX - Confetti](https://defold.com/llms/examples/particles/confetti.md) - This example shows a simple particle effect to imitate confetti with multiple emitters and global multipliers for all of them
+- [ParticleFX - Fountain - Start Delay](https://defold.com/llms/examples/particles/particlefx_start_delay.md) - This example shows how the Start Delay emitter property can be used to sequence two emitters inside a single ParticleFX and create a simple fountain effect
 - [ParticleFX emitter properties](https://defold.com/llms/examples/particles/particlefx_set_get.md) - This example shows how to get and set ParticleFX emitter image, animation, and material at runtime
+- [Spawning Fireworks ParticleFX](https://defold.com/llms/examples/particles/fireworks.md) - This example shows how to spawn firework rockets with separate trail and burst particle effects, including a small dip before the burst
 
 ## Physics
 
