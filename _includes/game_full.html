@@ -1,14 +1,40 @@
 {%- assign game=include.game -%}
 {%- assign url=include.url -%}{%- unless url -%}{%- assign url = game.url -%}{%- endunless -%}
 {%- assign game_image_src = "/images/games/" | append: game.images.full -%}
+{%- assign game_mobile_image_name = game.images.half | default: game.images.full -%}
+{%- assign game_mobile_image_src = "/images/games/" | append: game_mobile_image_name -%}
+{%- assign game_image_path = game_image_src | split: "?" | first -%}
+{%- assign game_image_ext = game_image_path | split: "." | last | downcase -%}
+{%- capture game_fallback_src_capture -%}{%- include webp_fallback_src.html src=game_image_src -%}{%- endcapture -%}
+{%- assign game_fallback_src = game_fallback_src_capture | strip | default: game_image_src -%}
+{%- assign game_mobile_image_path = game_mobile_image_src | split: "?" | first -%}
+{%- assign game_mobile_image_ext = game_mobile_image_path | split: "." | last | downcase -%}
+{%- capture game_mobile_fallback_src_capture -%}{%- include webp_fallback_src.html src=game_mobile_image_src -%}{%- endcapture -%}
+{%- assign game_mobile_fallback_src = game_mobile_fallback_src_capture | strip | default: game_mobile_image_src -%}
 
-<div class="section game showcase-full-game-anchor showcase-games-desktop-only" id="{{ game.id }}">
+<div class="section game showcase-full-game-anchor" id="{{ game.id }}">
 	<div class="container">
 		<article class="showcase-full-card">
 			<div class="row">
 				<div class="columns twelve">
 					<a href="{{ url }}" target="_blank" class="showcase-full-media hoverflash">
-						{%- include webp_picture.html src=game_image_src alt=game.name loading="lazy" -%}
+						<picture class="webp-fallback-picture">
+							{%- if game_mobile_image_ext == "webp" and game_mobile_fallback_src != game_mobile_image_src -%}
+							<source srcset="{{ game_mobile_image_src }}" media="(max-width: 800px)" type="image/webp">
+							{%- endif -%}
+							{%- if game_mobile_image_src != game_image_src or game_mobile_fallback_src != game_fallback_src -%}
+							<source srcset="{{ game_mobile_fallback_src }}" media="(max-width: 800px)">
+							{%- endif -%}
+							{%- if game_image_ext == "webp" and game_fallback_src != game_image_src -%}
+							<source srcset="{{ game_image_src }}" type="image/webp">
+							{%- endif -%}
+							<img
+								src="{{ game_fallback_src }}"
+								alt="{{ game.name | escape }}"
+								loading="lazy"
+								decoding="async"
+							>
+						</picture>
 					</a>
 				</div>
 			</div>
