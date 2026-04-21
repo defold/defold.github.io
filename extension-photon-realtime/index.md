@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to integrate a game with the Photon Realtime SDK.
 github: https://github.com/defold/extension-photon-realtime
-language: en
 layout: manual
+locale: en
 title: Photon Realtime
 toc:
 - Defold Photon Realtime extension API documentation
