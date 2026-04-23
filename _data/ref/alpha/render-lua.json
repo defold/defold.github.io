@@ -766,6 +766,38 @@
             "type": "CONSTANT"
         },
         {
+            "brief": "sets the blend equation with separate equations for color and alpha",
+            "description": "Sets the blend equation with separate equations for the color and alpha channels.",
+            "error": "",
+            "examples": "Set add for color and reverse subtract for alpha:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_blend_equation_separate</span><span class=\"p\">(</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BLEND_EQUATION_ADD</span><span class=\"p\">,</span>\n                                   <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BLEND_EQUATION_REVERSE_SUBTRACT</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "render.set_blend_equation_separate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "color blend equation",
+                    "is_optional": "False",
+                    "name": "equation_color",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "alpha blend equation",
+                    "is_optional": "False",
+                    "name": "equation_alpha",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "sets the blending function",
             "description": "Specifies the arithmetic used when computing pixel values that are written to the frame\nbuffer. In RGBA mode, pixels can be drawn using a function that blends the source RGBA\npixel values with the destination pixel values already in the frame buffer.\nBlending is initially disabled.\n<code>source_factor</code> specifies which method is used to scale the source color components.\n<code>destination_factor</code> specifies which method is used to scale the destination color\ncomponents.\nSource color components are referred to as (R<sub>s</sub>,G<sub>s</sub>,B<sub>s</sub>,A<sub>s</sub>).\nDestination color components are referred to as (R<sub>d</sub>,G<sub>d</sub>,B<sub>d</sub>,A<sub>d</sub>).\nThe color specified by setting the blendcolor is referred to as (R<sub>c</sub>,G<sub>c</sub>,B<sub>c</sub>,A<sub>c</sub>).\nThe source scale factor is referred to as (s<sub>R</sub>,s<sub>G</sub>,s<sub>B</sub>,s<sub>A</sub>).\nThe destination scale factor is referred to as (d<sub>R</sub>,d<sub>G</sub>,d<sub>B</sub>,d<sub>A</sub>).\nThe color values have integer values between 0 and (k<sub>R</sub>,k<sub>G</sub>,k<sub>B</sub>,k<sub>A</sub>), where k<sub>c</sub> = 2<sup>m<sub>c</sub></sup> - 1 and m<sub>c</sub> is the number of bitplanes for that color. I.e for 8 bit color depth, color values are between <code>0</code> and <code>255</code>.\nAvailable factor constants and corresponding scale factors:\n<table>\n<thead>\n<tr>\n<th>Factor constant</th>\n<th>Scale factor (f<sub>R</sub>,f<sub>G</sub>,f<sub>B</sub>,f<sub>A</sub>)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ZERO</code></td>\n<td>(0,0,0,0)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ONE</code></td>\n<td>(1,1,1,1)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_SRC_COLOR</code></td>\n<td>(R<sub>s</sub>/k<sub>R</sub>,G<sub>s</sub>/k<sub>G</sub>,B<sub>s</sub>/k<sub>B</sub>,A<sub>s</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ONE_MINUS_SRC_COLOR</code></td>\n<td>(1,1,1,1) - (R<sub>s</sub>/k<sub>R</sub>,G<sub>s</sub>/k<sub>G</sub>,B<sub>s</sub>/k<sub>B</sub>,A<sub>s</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_DST_COLOR</code></td>\n<td>(R<sub>d</sub>/k<sub>R</sub>,G<sub>d</sub>/k<sub>G</sub>,B<sub>d</sub>/k<sub>B</sub>,A<sub>d</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ONE_MINUS_DST_COLOR</code></td>\n<td>(1,1,1,1) - (R<sub>d</sub>/k<sub>R</sub>,G<sub>d</sub>/k<sub>G</sub>,B<sub>d</sub>/k<sub>B</sub>,A<sub>d</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_SRC_ALPHA</code></td>\n<td>(A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA</code></td>\n<td>(1,1,1,1) - (A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_DST_ALPHA</code></td>\n<td>(A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ONE_MINUS_DST_ALPHA</code></td>\n<td>(1,1,1,1) - (A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_CONSTANT_COLOR</code></td>\n<td>(R<sub>c</sub>,G<sub>c</sub>,B<sub>c</sub>,A<sub>c</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR</code></td>\n<td>(1,1,1,1) - (R<sub>c</sub>,G<sub>c</sub>,B<sub>c</sub>,A<sub>c</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_CONSTANT_ALPHA</code></td>\n<td>(A<sub>c</sub>,A<sub>c</sub>,A<sub>c</sub>,A<sub>c</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA</code></td>\n<td>(1,1,1,1) - (A<sub>c</sub>,A<sub>c</sub>,A<sub>c</sub>,A<sub>c</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_SRC_ALPHA_SATURATE</code></td>\n<td>(i,i,i,1) where i = min(A<sub>s</sub>, k<sub>A</sub> - A<sub>d</sub>) /k<sub>A</sub></td>\n</tr>\n</tbody>\n</table>\nThe blended RGBA values of a pixel comes from the following equations:\n<ul>\n<li>R<sub>d</sub> = min(k<sub>R</sub>, R<sub>s</sub> * s<sub>R</sub> + R<sub>d</sub> * d<sub>R</sub>)</li>\n<li>G<sub>d</sub> = min(k<sub>G</sub>, G<sub>s</sub> * s<sub>G</sub> + G<sub>d</sub> * d<sub>G</sub>)</li>\n<li>B<sub>d</sub> = min(k<sub>B</sub>, B<sub>s</sub> * s<sub>B</sub> + B<sub>d</sub> * d<sub>B</sub>)</li>\n<li>A<sub>d</sub> = min(k<sub>A</sub>, A<sub>s</sub> * s<sub>A</sub> + A<sub>d</sub> * d<sub>A</sub>)</li>\n</ul>\nBlend function <code>(graphics.BLEND_FACTOR_SRC_ALPHA, graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA)</code> is useful for\ndrawing with transparency when the drawn objects are sorted from farthest to nearest.\nIt is also useful for drawing antialiased points and lines in arbitrary order.",
             "error": "",
@@ -787,6 +819,54 @@
                     "doc": "destination factor",
                     "is_optional": "False",
                     "name": "destination_factor",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "sets the blend function with separate factors for color and alpha",
+            "description": "Sets the blend function with separate blend factors for the color and alpha channels.",
+            "error": "",
+            "examples": "Set standard alpha blending with separate alpha:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_blend_func_separate</span><span class=\"p\">(</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BLEND_FACTOR_SRC_ALPHA</span><span class=\"p\">,</span>\n                               <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BLEND_FACTOR_ONE_MINUS_SRC_ALPHA</span><span class=\"p\">,</span>\n                               <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BLEND_FACTOR_ONE</span><span class=\"p\">,</span>\n                               <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BLEND_FACTOR_ONE_MINUS_SRC_ALPHA</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "render.set_blend_func_separate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "source color blend factor",
+                    "is_optional": "False",
+                    "name": "source_factor_color",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "destination color blend factor",
+                    "is_optional": "False",
+                    "name": "destination_factor_color",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "source alpha blend factor",
+                    "is_optional": "False",
+                    "name": "source_factor_alpha",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "destination alpha blend factor",
+                    "is_optional": "False",
+                    "name": "destination_factor_alpha",
                     "types": [
                         "number"
                     ]
