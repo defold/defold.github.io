@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to integrate and use the Poki SDK in in Defold.
 github: https://github.com/defold/extension-poki-sdk
-language: en
 layout: manual
+locale: en
 title: Defold Poki SDK extension API documentation
 toc:
 - Defold Poki SDK extension API documentation
