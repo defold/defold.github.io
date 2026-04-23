@@ -4,6 +4,7 @@ These are per-example files generated for LLM usage.
 
 ## Animation
 
+- [Animation Delay - Wave](https://defold.com/llms/examples/animation/animation_delay.md) - This example shows how to use the delay parameter of `go
 - [Animation State Machine](https://defold.com/llms/examples/animation/animation_states.md) - This example demonstrates how to create a character animation system using a Finite State Machine (FSM) with smooth transitions between different character states
 - [Cursor animation](https://defold.com/llms/examples/animation/cursor.md) - This example shows how to set and animate the normalized cursor value
 - [Custom easing - square wave](https://defold.com/llms/examples/animation/custom_easing.md) - This example shows how to define a custom easing curve and use it when animating with `go
