@@ -8,7 +8,7 @@ These are per-example files generated for LLM usage.
 - [Cancel animation](https://defold.com/llms/examples/animation/cancel_animation.md) - This example shows how to use `go
 - [Cursor animation](https://defold.com/llms/examples/animation/cursor.md) - This example shows how to set and animate the normalized cursor value
 - [Custom easing - square wave](https://defold.com/llms/examples/animation/custom_easing.md) - This example shows how to define a custom easing curve and use it when animating with `go
-- [Easing functions (tweens)](https://defold.com/llms/examples/animation/easing.md) - This example demonstrates different easing functions available in Defold
+- [Easing Functions (Tweens)](https://defold.com/llms/examples/animation/easing.md) - Demonstrates different easing functions available in Defold
 - [Euler Rotation](https://defold.com/llms/examples/animation/euler_rotation.md) - Shows how to animate Euler rotation
 - [Finite State Machines](https://defold.com/llms/examples/animation/animation_states.md) - Shows how to build a small Finite State Machine module and use it to control character and animation states
 - [Flipbook animation](https://defold.com/llms/examples/animation/flipbook.md) - This example shows how to use a flipbook animation in a sprite
