@@ -514,6 +514,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get instance generation",
+            "description": "Get instance generation counter.\nThe generation changes whenever a new game object instance is allocated, even if it later reuses the same identifier.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetGeneration",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Gameobject instance",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        "dmGameObject::HInstance"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Generation counter for the instance.",
+                    "name": "",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get instance identifier",
             "description": "Get instance identifier",
             "error": "",
