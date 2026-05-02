@@ -84,6 +84,29 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "check if the build contains excluded live update resources",
+            "description": "Checks if the bundled application was built with one or more resources\nexcluded from the main bundle, through a collection proxy with\n<code>Exclude</code> enabled.\nThis value is based on metadata in the bundled manifest. It does not check\nwhether any live update archive has been mounted or whether the excluded\nresources are currently available on device.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">is_built_with_excluded_files</span><span class=\"p\">()</span> <span class=\"kr\">then</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;The bundle expects live update content.&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "liveupdate.is_built_with_excluded_files",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the bundled application was built with excluded files",
+                    "name": "is_built_with_excluded_files",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "LIVEUPDATE_BUNDLED_RESOURCE_MISMATCH",
             "description": "Mismatch between between expected bundled resources and actual bundled resources. The manifest expects a resource to be in the bundle, but it was not found in the bundle. This is typically the case when a non-excluded resource was modified between publishing the bundle and publishing the manifest.",
             "error": "",
