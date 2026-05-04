@@ -7,7 +7,7 @@
 
 		<div class="page-feature-grid page-grid-two page-grid-flush">
 			<div class="page-card-group">
-				<h3>Blog updates</h3>
+				<h3 class="news-and-blog-section-column-title">Blog updates</h3>
 				<div class="page-post-list">
 				{%- assign posts = site.posts -%}
 				{%- assign count = 0 -%}
@@ -25,9 +25,12 @@
 				{%- endif -%}
 				{%- endfor -%}
 				</div>
+				<div class="page-text-panel-actions news-and-blog-section-actions">
+					{% include secondary_button.html link="/blog" text="More blog posts" %}
+				</div>
 			</div>
 			<div class="page-card-group">
-				<h3>Latest news</h3>
+				<h3 class="news-and-blog-section-column-title">Latest news</h3>
 				<div class="page-post-list">
 				{%- assign posts = site.posts | where: "tags", "news" -%}
 				{%- for post in posts limit: 3-%}
@@ -35,6 +38,9 @@
 						{%- include post_preview_excerpt.html post=post linked_card=true date_only=true -%}
 					</a>
 				{%- endfor -%}
+				</div>
+				<div class="page-text-panel-actions news-and-blog-section-actions">
+					{% include secondary_button.html link="/news" text="More news" %}
 				</div>
 			</div>
 		</div>

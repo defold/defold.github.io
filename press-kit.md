@@ -1,20 +1,36 @@
 ---
-layout: hero_and_text
-title: Defold Press-kit
-description: Our current brand assets including the Defold and Made with Defold logos. You will also find a selection of high-resolution photos of the Defold Foundation board members.
+layout: page
+title: Defold Press Kit
+description: Current Defold brand assets, logo and trademark guidance, and high-resolution Defold Foundation photos for press and media use.
 nav: floating
-background: /images/hero/defold-top-bg-transparent-2.png
-after: [donors_and_partners.html]
 ---
 
-[⇠ Back to Press room](/press)
+{%- capture page_hero_copy -%}
+<p>Use the Defold Press Kit for current brand assets, logo and trademark guidance, and high-resolution Defold Foundation photos.</p>
+<p>These resources are intended for articles, interviews, videos, event pages, and other coverage of Defold.</p>
+{%- endcapture -%}
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); grid-gap: 2rem; padding: 0px;">
-{%- include image_and_text_card.html image="/images/logo/logo-on-blue.png" link="/logo-and-trademark" image_height="267px" title="LOGOS" text="The Defold logotype and the Made with Defold logo represents the Defold product. View the different versions of the Defold logotype, including the Made with Defold logo here." -%}
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="/logo-and-trademark" text="Logo guidelines" %}
+{% include secondary_button.html link="/press" text="Press room" %}
+{%- endcapture -%}
 
-{%- include image_and_text_card.html image="/images/foundation/thumbs/GT1A2989.jpg" link="/foundation-photos" image_height="267px" title="FOUNDATION" text="Here you'll find high-resolution photos of the Defold Foundation board members." -%}
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/icons-learn-export_ic-learn-documents.svg" alt="Defold press kit illustration" loading="eager" fetchpriority="high">
+{%- endcapture -%}
+
+{% include page_hub_hero.html hero_class="press-kit-hub-hero" title="Defold Press Kit" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold press kit overview" %}
+
+<div class="section dark page-dark-section gradient-background-top-dark" markdown="0">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Press kit resources</h2>
+		</div>
+		<div class="page-feature-grid page-grid-two page-grid-flush">
+			{% include page_feature_card.html title="Logos and trademark" body="View Defold logo usage rules, download official logo assets, and find the Made with Defold marks for projects and media." link="/logo-and-trademark" thumbnail="/images/logo/logo-on-blue.png" card_class="page-feature-card-manuals" %}
+			{% include page_feature_card.html title="Foundation photos" body="Browse high-resolution photos of Defold Foundation board members for articles, interviews, event pages, and other coverage." link="/foundation-photos" thumbnail="/images/foundation/thumbs/Bjorn Ritzl_2020_RW.jpg" card_class="page-feature-card-reference"%}
+		</div>
+	</div>
 </div>
 
-<br/>
-
-[⇠ Back to Press room](/press)
+{% include donors_and_partners.html %}

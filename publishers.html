@@ -1,56 +1,91 @@
 ---
-layout: hero_and_text
+layout: page
 title: Defold for Publishers
-description: Defold is a cross-platform game engine with a proven track record of game releases on mobile, web, desktop and consoles. If you are a publisher looking to publish a game made with Defold you can rest assured that we've got your back!
+description: Defold helps game publishers ship cross-platform games on mobile, web, desktop, and consoles with proven integrations and technical support.
 nav: floating
-logo: true
-text: false
 heatmap: false
-background: /images/hero/defold-top-bg-transparent-2.png
-after: [yellow_download_section.html, donors_and_partners.html]
 ---
 
-<div class="row">
-	<h2>Publish Defold games </h2>
+{%- capture page_hero_copy -%}
+<p>Defold is a cross-platform game engine with a proven track record of game releases on mobile, web, desktop, and consoles.</p>
+<p>If you are a publisher looking to publish a game made with Defold, you can rest assured that we've got your back.</p>
+{%- endcapture -%}
 
-	<p>Defold is a cross-platform game engine with a proven track record of game releases on mobile, web, desktop and consoles. If you are a publisher looking to publish a game made with Defold you can rest assured that we've got your back!</p>
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="mailto:business@defold.se" text="Contact publishing support" %}
+{% include secondary_button.html link="/assets/" text="Browse integrations" %}
+{%- endcapture -%}
 
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/ic-64-ship-blue.svg" alt="Defold publishing support illustration" loading="eager" fetchpriority="high">
+{%- endcapture -%}
 
-	<h5>Ready for action</h5>
+{% include page_hub_hero.html hero_class="publishers-hub-hero" title="Defold for Publishers" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold publishing overview" %}
 
-	<p>We understand how important it is for publishers to be able to effortlessly integrate popular analytics, app economy and game services in their games. We have an extensive list of integrations ready for integration in Defold games. Examples:</p>
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Publish Defold games</h2>
+			<p>Defold gives publishing teams a stable cross-platform engine, production-ready service integrations, and direct support when a launch needs technical help.</p>
+		</div>
 
-	<div class="twocolumnlist">
-		<ul class="checkmark">
-			<li>AdMob</li>
-			<li>Apple Game Center</li>
-			<li>Apple Push Notification service</li>
-			<li>Facebook</li>
-			<li>Gameanalytics</li>
-			<li>Google Play Game Services</li>
-			<li>Google Play Instant</li>
-			<li>Firebase Analytics</li>
-			<li>Firebase Remote Config</li>
-			<li>Firebase Cloud Messaging</li>
-			<li>IronSource</li>
-			<li>In-app purchases for iOS, Android and Amazon</li>
-		</ul>
+		<div class="page-feature-grid page-grid-three page-grid-flush">
+			{% include page_feature_card.html title="Cross-platform" body="Publish games on mobile, web, desktop, and consoles using a game engine with a proven track record of shipped releases." link="/product" icon="/images/icons/icon-cross-platform.svg" card_class="page-feature-card-reference" cta_text="See product overview" %}
+			{% include page_feature_card.html title="Ready integrations" body="Use existing Defold integrations for analytics, app economy, monetization, platform services, and game services." link="/assets/" icon="/images/icons/icon-components.svg" card_class="page-feature-card-manuals" cta_text="Browse Asset Portal" %}
+			{% include page_feature_card.html title="Publishing support" body="Get help with technical issues, integrations, platform requirements, and questions during or after the publishing process." link="/support" icon="/images/icons/icon-toolbox.svg" card_class="page-feature-card-forum" cta_text="Get support" %}
+		</div>
 	</div>
-
-	<br/>
-
-	<p>There are many more integrations to discover in our <a href="https://defold.com/assets/">Asset Portal</a>. Are you missing an integration? <a href="mailto:business@defold.com">Let us know</a> and we can work with you to create the integration!</p>
-
-
-	<h5>Stable and well tested</h5>
-
-	<p>Defold is actively developed, with a new release every month. Each release goes through a two week beta period where the engine is tested by our global community of developers. This approach with short development cycles help us catch issues early, which in turn results in short turnaround time for fixes and a stable and well tested game engine at all times.</p> 
-
-	<p>We also work closely with platform holders such as Google and Apple to ensure that the engine and tools are always kept up-to-date with the latest OS versions. Defold is in fact one of the few game engines <a href="https://developer.android.com/games/engines/defold/defold-configure">recommended by Google for Android game development</a>.</p>
-
-
-	<h5>Technical Support</h5>
-
-	<p>We can assist you with technical issues or questions that may arise during or after the publishing processs. Please <a href="mailto:business@defold.com">reach out to us</a> to discuss which level of support you need!</p> 
 </div>
 
+<div class="section dark page-dark-section gradient-background-bottom-dark">
+	<div class="container">
+		<div class="page-text-panel page-surface-panel">
+			<h3>Ready for action</h3>
+			<p>We understand how important it is for publishers to be able to effortlessly integrate popular analytics, app economy and game services in their games. We have an extensive list of integrations ready for integration in Defold games. Examples:</p>
+
+			<div class="twocolumnlist">
+				<ul class="checkmark">
+					<li>AdMob</li>
+					<li>Apple Game Center</li>
+					<li>Apple Push Notification service</li>
+					<li>Facebook</li>
+					<li>GameAnalytics</li>
+					<li>Google Play Game Services</li>
+					<li>Google Play Instant</li>
+					<li>Firebase Analytics</li>
+					<li>Firebase Remote Config</li>
+					<li>Firebase Cloud Messaging</li>
+					<li>IronSource</li>
+					<li>In-app purchases for iOS, Android and Amazon</li>
+				</ul>
+			</div>
+
+			<p>There are many more integrations to discover in our <a href="/assets/">Asset Portal</a>. Are you missing an integration? <a href="mailto:business@defold.se">Let us know</a> and we can work with you to create the integration!</p>
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-top-dark">
+	<div class="container">
+		<div class="page-feature-grid page-grid-two page-grid-flush">
+			<div class="page-text-panel page-surface-panel">
+				<h3>Stable and well tested</h3>
+				<p>Defold is actively developed, with a new release every month. Each release goes through a two week beta period where the engine is tested by our global community of developers. This approach with short development cycles helps us catch issues early, which in turn results in short turnaround time for fixes and a stable and well tested game engine at all times.</p>
+				<p>We also work closely with platform holders such as Google and Apple to ensure that the engine and tools are always kept up-to-date with the latest OS versions. Defold is in fact one of the few game engines <a href="https://developer.android.com/games/engines/defold/defold-configure">recommended by Google for Android game development</a>.</p>
+			</div>
+
+			<div class="page-text-panel page-surface-panel">
+				<h3>Technical support</h3>
+				<p>We can assist you with technical issues or questions that may arise during or after the publishing process. Please <a href="mailto:business@defold.se">reach out to us</a> to discuss which level of support you need!</p>
+				<ul class="page-action-list">
+					<li><a href="mailto:business@defold.se">Contact us about publishing support</a></li>
+					<li><a href="/support/">See Defold support options</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include download_cta_section.html %}
+
+{% include donors_and_partners.html %}

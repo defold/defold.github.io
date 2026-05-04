@@ -1,36 +1,38 @@
 ---
-layout: hero_and_text
+layout: page
 title: Defold Foundation photos
-description: Photos of the Defold Foundation board members.
+description: High-resolution photos of the Defold Foundation board members for press, articles, interviews, and event coverage.
 nav: floating
-background: /images/hero/defold-top-bg-transparent-2.png
 ---
 
-[⇠ Back to Press-kit](/press-kit)
+{%- capture page_hero_copy -%}
+<p>Download high-resolution photos of the Defold Foundation board members for press, articles, interviews, event pages, and other coverage.</p>
+{%- endcapture -%}
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(267px, 1fr)); grid-gap: 2rem; padding: 0px;">
-{%- include image_and_text_card.html image="/images/foundation/thumbs/GT1A2780.jpg" link="/images/foundation/highres/GT1A2780.jpg" title="Björn, Sara, Elin and Mathias" text="(Click for high-resolution image)" -%}
+{%- capture page_hero_actions -%}
+{% include primary_button.html link="#foundation-photos" text="Browse photos" %}
+{% include secondary_button.html link="/press-kit" text="Back to press kit" %}
+{%- endcapture -%}
 
-{%- include image_and_text_card.html image="/images/foundation/thumbs/GT1A2904.jpg" link="/images/foundation/highres/GT1A2904.jpg" title="Elin, Sara, Mathias and Björn" text="(Click for high-resolution image)" -%}
+{%- capture page_hero_panel -%}
+<img class="page-hero-graphic" src="/images/icons/icon-loudspeaker.svg" alt="Defold Foundation photos illustration" loading="eager" fetchpriority="high">
+{%- endcapture -%}
 
-{%- include image_and_text_card.html image="/images/foundation/thumbs/GT1A2974.jpg" link="/images/foundation/highres/GT1A2974.jpg" title="Mathias, Björn, Elin and Sara" text="(Click for high-resolution image)" -%}
+{% include page_hub_hero.html hero_class="foundation-photos-hub-hero" title="Defold Foundation Photos" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Defold Foundation photos overview" %}
 
-{%- include image_and_text_card.html image="/images/foundation/thumbs/GT1A2985.jpg" link="/images/foundation/highres/GT1A2985.jpg" title="Mathias, Björn, Elin and Sara" text="(Click for high-resolution image)" -%}
-
-{%- include image_and_text_card.html image="/images/foundation/thumbs/GT1A2989.jpg" link="/images/foundation/highres/GT1A2989.jpg" title="Mathias, Björn, Elin and Sara" text="(Click for high-resolution image)" -%}
-
-{%- include image_and_text_card.html image="/images/foundation/thumbs/Sara Cederberg_2020_RW.jpg" link="/images/foundation/highres/Sara Cederberg_2020_RW.jpg" title="Sara Cederberg" text="(Click for high-resolution image)" -%}
-
-{%- include image_and_text_card.html image="/images/foundation/thumbs/Elin Eriksson_2020_RW.jpg" link="/images/foundation/highres/Elin Eriksson_2020_RW.jpg" title="Elin Eriksson" text="(Click for high-resolution image)" -%}
-
-{%- include image_and_text_card.html image="/images/foundation/thumbs/romain.jpg" link="/images/foundation/highres/romain.jpg" title="Romain Sididris" text="(Click for high-resolution image)" -%}
-
-{%- include image_and_text_card.html image="/images/foundation/thumbs/Mathias Westerdahl_2020_RW.jpg" link="/images/foundation/highres/Mathias Westerdahl_2020_RW.jpg" title="Mathias Westerdahl" text="(Click for high-resolution image)" -%}
-
-{%- include image_and_text_card.html image="/images/foundation/thumbs/Bjorn Ritzl_2020_RW.jpg" link="/images/foundation/highres/Bjorn Ritzl_2020_RW.jpg" title="Björn Ritzl" text="(Click for high-resolution image)" -%}
-
+<div class="section dark page-dark-section gradient-background-top-dark" id="foundation-photos" markdown="0">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Photo downloads</h2>
+			<p>Each card opens the original high-resolution image.</p>
+		</div>
+		<div class="page-feature-grid page-grid-auto-fill page-grid-three page-grid-flush">
+			{% include page_feature_card.html title="Sara Cederberg" body="High-resolution Foundation board member photo." link="/images/foundation/highres/Sara Cederberg_2020_RW.jpg" thumbnail="/images/foundation/thumbs/Sara Cederberg_2020_RW.jpg" hide_badge=true cta_text="Open high-resolution image" %}
+			{% include page_feature_card.html title="Romain Sididris" body="High-resolution Foundation board member photo." link="/images/foundation/highres/romain.jpg" thumbnail="/images/foundation/thumbs/romain.jpg" hide_badge=true cta_text="Open high-resolution image" %}
+			{% include page_feature_card.html title="Mathias Westerdahl" body="High-resolution Foundation board member photo." link="/images/foundation/highres/Mathias Westerdahl_2020_RW.jpg" thumbnail="/images/foundation/thumbs/Mathias Westerdahl_2020_RW.jpg" hide_badge=true cta_text="Open high-resolution image" %}
+			{% include page_feature_card.html title="Björn Ritzl" body="High-resolution Foundation board member photo." link="/images/foundation/highres/Bjorn Ritzl_2020_RW.jpg" thumbnail="/images/foundation/thumbs/Bjorn Ritzl_2020_RW.jpg" hide_badge=true cta_text="Open high-resolution image" %}
+		</div>
+	</div>
 </div>
 
-<br/>
-
-[⇠ Back to Press-kit](/press-kit)
+{% include donors_and_partners.html %}
