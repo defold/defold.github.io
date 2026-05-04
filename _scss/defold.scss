@@ -1653,6 +1653,10 @@ input[type="button"] {
 	filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.28));
 }
 
+html.theme-dark .press-kit-hub-hero .page-hero-graphic {
+	filter: brightness(0) invert(1) drop-shadow(0 18px 34px rgba(0, 0, 0, 0.28));
+}
+
 /* Shared hero modifiers */
 
 .download-hub-hero {
@@ -2707,8 +2711,11 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 .page-feature-card-cta {
 	margin-top: 1.25rem;
 	margin-bottom: auto;
-	padding-top: 1.25rem;
 	pointer-events: none;
+}
+
+.button.tertiary.page-feature-card-cta {
+	margin-top: 1.25rem;
 }
 
 .page-feature-card-forum {
@@ -4761,6 +4768,7 @@ ul.page-checklist-negative li:before {
 	.license-hub-hero .page-hero-graphic,
 	.open-hub-hero .page-hero-graphic,
 	.press-hub-hero .page-hero-graphic,
+	.publishers-hub-hero .page-hero-graphic,
 	.status-hub-hero .page-hero-graphic,
 	.support-hub-hero .page-hero-graphic {
 		filter: drop-shadow(0 18px 34px rgba(18, 45, 75, 0.14));
