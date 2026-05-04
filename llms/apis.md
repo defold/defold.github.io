@@ -47,12 +47,14 @@ These are per-namespace API reference files generated for LLM usage.
 - [dmGameObject (Script)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-script-h.md) - GameObject script API documentation
 - [dmGameSystem (Collection factory)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-components-comp_collection_factory-h.md) - API for spawning collections from a collection factory component
 - [dmGameSystem (Factory)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-components-comp_factory-h.md) - API for spawning gameobject instances from a factory component
+- [dmGameSystem (GameSystem GUI Component)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-components-comp_gui-h.md) - Per-property registration functions for GUI component extensions
 - [dmGameSystem (Model)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-components-comp_model-h.md) - API for interacting with model components
 - [dmGameSystem (GameSystem Gui)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-gui-h.md) - Built-in scripting functions
 - [dmGameSystem (Property)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-property-h.md) - Property functions
 - [dmGameSystem (Component Render Constants)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-render_constants-h.md) - Api for setting and updating component render constants
 - [dmGameSystem (Data Resource)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-resources-res_data-h.md) - Helper types and accessors for the data resource type (`
 - [dmGameSystem (Font Resource)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-resources-res_font-h.md) - Font resource functions
+- [dmGameSystem (Light Resource)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-resources-res_light-h.md) - Helper types and accessors for the light resource type (`
 - [dmScript (Script)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-script-h.md) - Built-in scripting functions
 - [dmGraphics (Graphics)](https://defold.com/llms/apis/engine-graphics-src-dmsdk-graphics-graphics-h.md) - Graphics API
 - [dmGraphics (Graphics)](https://defold.com/llms/apis/engine-graphics-src-dmsdk-graphics-graphics_native-h.md) - Platform specific native graphics functions
@@ -81,6 +83,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [coroutine (Coroutine)](https://defold.com/llms/apis/coroutine-lua.md) - Documentation for the Lua coroutine standard library
 - [crash (Crash)](https://defold.com/llms/apis/crash-lua.md) - Native crash logging functions and constants
 - [debug (Debug)](https://defold.com/llms/apis/debug-lua.md) - Documentation for the Lua debug standard library
+- [editor (Editor)](https://defold.com/llms/apis/editor-lua.md) - Editor scripting documentation
 - [factory (Factory)](https://defold.com/llms/apis/factory-lua.md) - Functions for controlling factory components which are used to dynamically spawn game objects into the runtime
 - [font (Font)](https://defold.com/llms/apis/font-lua.md) - Functions, messages and properties used to manipulate font resources
 - [go (Game object)](https://defold.com/llms/apis/go-lua.md) - Game object API documentation
@@ -92,6 +95,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [io (Io)](https://defold.com/llms/apis/io-lua.md) - Documentation for the Lua io standard library
 - [json (JSON)](https://defold.com/llms/apis/json-lua.md) - Manipulation of JSON data strings
 - [label (Label)](https://defold.com/llms/apis/label-lua.md) - Functions to manipulate a label component
+- [liveupdate (LiveUpdate)](https://defold.com/llms/apis/liveupdate-lua.md) - Functions and constants to access resources
 - [math (Math)](https://defold.com/llms/apis/math-lua.md) - Documentation for the Lua math standard library
 - [model (Model)](https://defold.com/llms/apis/model-lua.md) - Model API documentation
 - [msg (Message)](https://defold.com/llms/apis/msg-lua.md) - Functions for passing messages and constructing URL objects

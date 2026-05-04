@@ -345,7 +345,7 @@ At -1 (full left) the channels are at 100%/0%, and 1 they're at 0%/100%.
 <dt><code>pan</code></dt>
 <dd><span class="type">number</span> sound pan between -1 and 1, default is 0. The final pan of the sound will be an addition of this pan and the sound pan.</dd>
 <dt><code>speed</code></dt>
-<dd><span class="type">number</span> sound speed where 1.0 is normal speed, 0.5 is half speed and 2.0 is double speed. The final speed of the sound will be a multiplication of this speed and the sound speed.</dd>
+<dd><span class="type">number</span> sound speed where 1.0 is normal speed, 0.5 is half speed and 2.0 is double speed. Valid range is 0.0 to 50.0. The final speed of the sound will be a multiplication of this speed and the sound speed.</dd>
 <dt><code>start_time</code></dt>
 <dd><span class="type">number</span> start playback offset (seconds). Optional, mutually exclusive with <code>start_frame</code>.</dd>
 <dt><code>start_frame</code></dt>
@@ -496,7 +496,7 @@ has been manually stopped and a play_id was provided with the play_sound message
 ### speed
 *Type:* PROPERTY
 The speed on the sound-component where 1.0 is normal speed, 0.5 is half
-speed and 2.0 is double speed.
+speed and 2.0 is double speed. Valid range is 0.0 to 50.0.
 
 **Examples**
 

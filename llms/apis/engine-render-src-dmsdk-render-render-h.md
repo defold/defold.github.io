@@ -97,7 +97,7 @@ Get the vertex space (local or world)
 
 ### dmRender::RenderObject::MAX_TEXTURE_COUNT
 *Type:* CONSTANT
-The maximum number of textures the render object can hold (currently 8)
+The maximum number of textures the render object can hold (16)
 
 ### FrustumOptions
 *Type:* STRUCT
@@ -284,6 +284,10 @@ Shader constant handle
 *Type:* TYPEDEF
 Font map handle
 
+### HLightPrototype
+*Type:* TYPEDEF
+Light prototype handle. Used to create light instances.
+
 ### HMaterial
 *Type:* TYPEDEF
 Material instance handle
@@ -299,6 +303,10 @@ The render context
 ### HRenderListDispatch
 *Type:* TYPEDEF
 Render dispatch function handle.
+
+### HSampler
+*Type:* TYPEDEF
+Sampler handle
 
 ### IterateNamedConstants
 *Type:* FUNCTION
@@ -408,10 +416,11 @@ Each callback then represents a draw call, and will register a RenderObject
 **Parameters**
 
 - `m_WorldPosition` (dmVMath::Point3) - the world position of the object
+- `m_UserData` (uint64_t) - user data (available in the render dispatch callback)
 - `m_Order` (uint32_t) - the order to sort on (used if m_MajorOrder != RENDER_ORDER_WORLD)
 - `m_BatchKey` (uint32_t) - the batch key to sort on (note: only 48 bits are currently used by renderer)
 - `m_TagListKey` (uint32_t) - the key to the list of material tags
-- `m_UserData` (uint64_t) - user data (available in the render dispatch callback)
+- `m_FrustumHash` (uint32_t) - Last combined frustum cull key (note: engine internal use only!)
 - `m_MinorOrder` (uint32_t:4) - used to sort within a batch
 - `m_MajorOrder` (uint32_t:2) - If RENDER_ORDER_WORLD, then sorting is done based on the world position.
 Otherwise the sorting uses the m_Order value directly.

@@ -176,6 +176,17 @@ add a ttf font to a font collection
 
 - `ttfresource` (TTFResource*) - The ttfresource if successful. 0 otherwise.
 
+### ResFontGetVersion
+*Type:* FUNCTION
+
+**Parameters**
+
+- `font` (FontResource*) - The font resource
+
+**Returns**
+
+- `version` (uint32_t) - Monotonic layout version for the font resource.
+
 ### ResFontRemoveFont
 *Type:* FUNCTION
 remove a ttf font from a font collection

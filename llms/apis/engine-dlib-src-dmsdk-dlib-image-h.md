@@ -11,6 +11,38 @@ Image API functions.
 
 ## API
 
+### GetAstcBlockSize
+*Type:* FUNCTION
+Get the block size
+
+**Parameters**
+
+- `mem` (void*) - the .astc memory (including the header)
+- `memsize` (uint32_t) - the length of the memory blob
+- `width` (uint32_t*) - (out) the block width
+- `height` (uint32_t*) - (out) the block height
+- `depth` (uint32_t*) - (out) the block depth
+
+**Returns**
+
+- `result` (bool) - true if it's an astc file
+
+### GetAstcDimensions
+*Type:* FUNCTION
+Get the astc image size
+
+**Parameters**
+
+- `mem` (void*) - the .astc memory (including the header)
+- `memsize` (uint32_t) - the length of the memory blob
+- `width` (uint32_t*) - (out) the block width
+- `height` (uint32_t*) - (out) the block height
+- `depth` (uint32_t*) - (out) the block depth
+
+**Returns**
+
+- `result` (bool) - true if it's an astc file
+
 ### Result
 *Type:* ENUM
 result enumeration

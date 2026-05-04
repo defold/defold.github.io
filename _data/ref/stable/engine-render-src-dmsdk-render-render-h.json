@@ -298,7 +298,7 @@
         },
         {
             "brief": "The maximum number of textures the render object c...",
-            "description": "The maximum number of textures the render object can hold (currently 8)",
+            "description": "The maximum number of textures the render object can hold (16)",
             "error": "",
             "examples": "",
             "language": "",
@@ -877,6 +877,21 @@
             "type": "TYPEDEF"
         },
         {
+            "brief": "Light prototype handle. Used to create light insta...",
+            "description": "Light prototype handle. Used to create light instances.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HLightPrototype",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "Material instance handle",
             "description": "Material instance handle",
             "error": "",
@@ -929,6 +944,21 @@
             "language": "",
             "members": [],
             "name": "HRenderListDispatch",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Sampler handle",
+            "description": "Sampler handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HSampler",
             "notes": [],
             "parameters": [],
             "replaces": "",
@@ -1266,6 +1296,14 @@
                     ]
                 },
                 {
+                    "doc": "user data (available in the render dispatch callback)",
+                    "is_optional": "False",
+                    "name": "m_UserData",
+                    "types": [
+                        "uint64_t"
+                    ]
+                },
+                {
                     "doc": "the order to sort on (used if m_MajorOrder != RENDER_ORDER_WORLD)",
                     "is_optional": "False",
                     "name": "m_Order",
@@ -1290,11 +1328,11 @@
                     ]
                 },
                 {
-                    "doc": "user data (available in the render dispatch callback)",
+                    "doc": "Last combined frustum cull key (note: engine internal use only!)",
                     "is_optional": "False",
-                    "name": "m_UserData",
+                    "name": "m_FrustumHash",
                     "types": [
-                        "uint64_t"
+                        "uint32_t"
                     ]
                 },
                 {

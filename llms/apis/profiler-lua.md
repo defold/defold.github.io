@@ -159,7 +159,8 @@ Starts a profile scope.
 
 **Notes**
 
-- Must be correctly matched with a corresponding call to `profiler.scope_end()`
+- Must be correctly matched with a corresponding call to `profiler.scope_end()` in the same frame.
+Any scopes left open at the end of the frame are reported as errors and auto-closed.
 
 **Parameters**
 
@@ -178,6 +179,10 @@ profiler.scope_end()
 ### profiler.scope_end
 *Type:* FUNCTION
 End the current profile scope.
+
+**Notes**
+
+- Calling this without a matching `profiler.scope_begin()` raises a Lua error.
 
 ### profiler.set_ui_mode
 *Type:* FUNCTION

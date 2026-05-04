@@ -836,7 +836,7 @@ Sets the value of a boolean property on a component.
 
 **Parameters**
 
-- `instance` - Instance of the game object
+- `instance` (HInstance) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (bool) - Value of the property
@@ -851,7 +851,7 @@ Sets the value of a hash property on a component.
 
 **Parameters**
 
-- `instance` - Instance of the game object
+- `instance` (HInstance) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmhash_t) - Value of the property
@@ -866,7 +866,7 @@ Sets the value of a float property on a component.
 
 **Parameters**
 
-- `instance` - Instance of the game object
+- `instance` (HInstance) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (float) - Value of the property
@@ -881,7 +881,7 @@ Sets the value of a matrix4 property on a component.
 
 **Parameters**
 
-- `instance` - Instance of the game object
+- `instance` (HInstance) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmVMath::Matrix4) - Value of the property
@@ -896,7 +896,7 @@ Sets the value of a quaternion property on a component.
 
 **Parameters**
 
-- `instance` - Instance of the game object
+- `instance` (HInstance) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmVMath::Quat) - Value of the property
@@ -911,7 +911,7 @@ Sets the value of a URL property on a component.
 
 **Parameters**
 
-- `instance` - Instance of the game object
+- `instance` (HInstance) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmMessage::URL) - Value of the property
@@ -926,7 +926,7 @@ Sets the value of a vector3 property on a component.
 
 **Parameters**
 
-- `instance` - Instance of the game object
+- `instance` (HInstance) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmVMath::vector3) - Value of the property
@@ -941,7 +941,7 @@ Sets the value of a vector4 property on a component.
 
 **Parameters**
 
-- `instance` - Instance of the game object
+- `instance` (HInstance) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmVMath::Vector4) - Value of the property
@@ -984,8 +984,8 @@ Set gameobject instance x and y scale
 **Parameters**
 
 - `instance` (dmGameObject::HInstance) - Gameobject instance
-- `scale_x` - New x scale
-- `scale_y` - New y scale
+- `scale_x` (float) - New x scale
+- `scale_y` (float) - New y scale
 
 ### Spawn
 *Type:* FUNCTION

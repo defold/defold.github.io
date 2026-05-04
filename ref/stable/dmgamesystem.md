@@ -1,9 +1,9 @@
 ---
 layout: api
 branch: stable
-ref: engine-gamesys-src-dmsdk-gamesys-resources-res_font-h
+ref: engine-gamesys-src-dmsdk-gamesys-resources-res_light-h
 api_language: C++
-title: API reference (Font Resource)
+title: API reference (Light Resource)
 type: Defold C++
 pagefind_exclude: true
 ---

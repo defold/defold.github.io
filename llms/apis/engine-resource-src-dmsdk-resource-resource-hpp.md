@@ -42,8 +42,8 @@ Creates and inserts a resource into the factory
 
 - `factory` (dmResource::HFactory) - Factory handle
 - `name` (dmhash_t) - Resource name
-- `data` - Resource data
-- `data_size` - Resource data size
+- `data` (void*) - Resource data
+- `data_size` (uint32_t) - Resource data size
 - `resource` (void**) - (out) Created resource
 
 **Returns**
@@ -66,6 +66,41 @@ Decrypts a file
 **Returns**
 
 - `RESULT_OK` - on success
+
+### FResourceCreate
+*Type:* FUNCTION
+
+**Notes**
+
+- Deprecated in favor of ResourceTypeSetCreateFn
+
+### FResourceDestroy
+*Type:* FUNCTION
+
+**Notes**
+
+- Deprecated in favor of ResourceTypeSetDestroyFn
+
+### FResourcePostCreate
+*Type:* FUNCTION
+
+**Notes**
+
+- Deprecated in favor of ResourceTypeSetPostCreateFn
+
+### FResourcePreload
+*Type:* FUNCTION
+
+**Notes**
+
+- Deprecated in favor of ResourceTypeSetPreloadFn
+
+### FResourceRecreate
+*Type:* FUNCTION
+
+**Notes**
+
+- Deprecated in favor of ResourceTypeSetRecreateFn
 
 ### Get
 *Type:* FUNCTION

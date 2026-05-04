@@ -495,6 +495,10 @@ Release profile returned by #ProfileFrameBegin
 
 - `profile` (HProfile) - Profile to release
 
+**Returns**
+
+- `result` (ProfileResult) - Status for the frame end operation
+
 ### ProfileIdx
 *Type:* TYPEDEF
 Index type to hold internal references of samplers and properties
@@ -522,7 +526,11 @@ Log text via the registered profilers
 **Parameters**
 
 - `name` (const char*) - Name of the scope
-- `...` - Arguments for internal logging function
+- `...` (va_list) - Arguments for internal logging function
+
+**Returns**
+
+- `result` (ProfileResult) - Status for the log text operation
 
 ### ProfilePropertyFlags
 *Type:* ENUM
@@ -560,6 +568,16 @@ Register a new profiler. Can be done after the profiling has started.
 
 - `name` (const char*) - Name of the profiler
 
+### ProfileResult
+*Type:* ENUM
+Enum to describe the result of a profiler operation
+
+**Members**
+
+- `PROFILE_RESULT_OK`
+- `PROFILE_RESULT_NOT_INITIALIZED`
+- `PROFILE_RESULT_OUT_OF_SAMPLES`
+
 ### ProfileScopeBegin
 *Type:* FUNCTION
 Start a new profile scope
@@ -568,6 +586,10 @@ Start a new profile scope
 
 - `name` (const char*) - Name of the scope
 - `name_hash` (uint64_t) - Hashed name of the scope
+
+**Returns**
+
+- `result` (ProfileResult) - Status for the scope begin operation
 
 ### ProfileScopeEnd
 *Type:* FUNCTION
@@ -578,6 +600,10 @@ End the last added scope
 - `name` (const char*) - Name of the scope
 - `name_hash` (uint64_t) - Hashed name of the scope
 
+**Returns**
+
+- `result` (ProfileResult) - Status for the scope end operation
+
 ### ProfileSetThreadName
 *Type:* FUNCTION
 Set the current thread name to each registered profiler
@@ -585,6 +611,10 @@ Set the current thread name to each registered profiler
 **Parameters**
 
 - `name` (const char*) - Name of the thread
+
+**Returns**
+
+- `result` (ProfileResult) - Status for the thread name operation
 
 ### ProfileUnregisterProfiler
 *Type:* FUNCTION
