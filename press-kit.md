@@ -28,7 +28,7 @@ nav: floating
 		</div>
 		<div class="page-feature-grid page-grid-two page-grid-flush">
 			{% include page_feature_card.html title="Logos and trademark" body="View Defold logo usage rules, download official logo assets, and find the Made with Defold marks for projects and media." link="/logo-and-trademark" thumbnail="/images/logo/logo-on-blue.png" card_class="page-feature-card-manuals" %}
-			{% include page_feature_card.html title="Foundation photos" body="Browse high-resolution photos of Defold Foundation board members for articles, interviews, event pages, and other coverage." link="/foundation-photos" thumbnail="/images/foundation/thumbs/GT1A2989.jpg" card_class="page-feature-card-reference"%}
+			{% include page_feature_card.html title="Foundation photos" body="Browse high-resolution photos of Defold Foundation board members for articles, interviews, event pages, and other coverage." link="/foundation-photos" thumbnail="/images/foundation/thumbs/Bjorn Ritzl_2020_RW.jpg" card_class="page-feature-card-reference"%}
 		</div>
 	</div>
 </div>

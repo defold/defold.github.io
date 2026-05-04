@@ -14,7 +14,7 @@ STOCKHOLM, SWEDEN - May 19, 2020 - Mobile games company King today announced tha
 
 Developers from the original development team will leave King to work full time on Defold on behalf of the Defold Foundation. The foundation will work closely with the developer community and industry partners to drive new development in 2020 and beyond.
 
-The Defold Foundation board will be headed by Sara Cederberg (King) and include industry profiles such as Elin Eriksson (Women in Tech Sweden).
+The Defold Foundation board will be headed by Sara Cederberg (King) and include experienced industry profiles.
 
 “We’re hugely impressed by the Defold team, and look forward to seeing many great gaming experiences come to life. We’ve seen millions of players already playing the King games run on the Defold engine and we’re excited to see the community come together even more, with the support of the Defold Foundation.” says Tjodolf Sommestad, Chief Development Officer, King.
 
