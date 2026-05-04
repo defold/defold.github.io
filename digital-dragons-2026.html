@@ -1,0 +1,311 @@
+---
+layout: page
+title: Defold at Digital Dragons 2026
+description: Meet the Defold team at Digital Dragons 2026 in Cracow, Poland, May 17-19. Learn why Defold is a free, production-ready game engine for developers, publishers, and technology partners.
+nav: floating
+heatmap: false
+preload_image: /images/logo/others/digital_dragons_2026.webp
+preload_image_type: image/webp
+opengraph_image: /images/logo/others/digital_dragons_2026.webp
+opengraph_image_alt: Digital Dragons 2026 and Defold event landing page
+twitter_image: /images/logo/others/digital_dragons_2026.webp
+stylesheets:
+  - newsletter
+  - pages
+---
+
+{%- assign digital_dragons_utm = "utm_campaign=digital-dragons-2026" -%}
+{%- assign meeting_link = "mailto:business@defold.se?subject=Digital%20Dragons%202026%20meeting&" | append: digital_dragons_utm -%}
+{%- assign partnership_link = "mailto:partner@defold.se?subject=Digital%20Dragons%202026%20partnership&" | append: digital_dragons_utm -%}
+{%- assign assets_link = "/assets?" | append: digital_dragons_utm -%}
+{%- assign corporate_partnerships_link = "/corporate-partnerships?" | append: digital_dragons_utm -%}
+{%- assign open_link = "/open?" | append: digital_dragons_utm -%}
+{%- assign product_link = "/product?" | append: digital_dragons_utm -%}
+{%- assign publishers_link = "/publishers?" | append: digital_dragons_utm -%}
+{%- assign why_link = "/why?" | append: digital_dragons_utm -%}
+
+{%- capture page_hero_panel -%}
+<div class="page-surface-panel digital-dragons-logo-lockup">
+	<img class="digital-dragons-logo" src="/images/logo/others/digital_dragons_2026.webp" alt="Digital Dragons 2026 Cracow Poland May 17-19 logo" loading="eager" fetchpriority="high" decoding="async">
+	<span class="digital-dragons-logo-divider" aria-hidden="true"></span>
+	<img class="digital-dragons-defold-logo" src="/images/logo/defold/logo_with_text_tagline/logo-hor-classic-dark_tagline.svg" alt="Defold logo with tagline" loading="eager" fetchpriority="high" decoding="async">
+</div>
+{%- endcapture -%}
+
+{%- capture page_hero_copy -%}
+<p><strong>Digital Dragons 2026 - Cracow, Poland - May 17-19</strong></p>
+<p>Meet the Defold team at Digital Dragons, hosted at ICE Krakow Congress Centre, and see how a lightweight, production-ready game engine can help studios build, publishers ship, and partners reach more developers.</p>
+{%- endcapture -%}
+
+{%- capture page_hero_actions -%}
+<a class="button primary" href="{{ meeting_link }}" data-dd2026-cta="book-meeting">Book a meeting</a>
+<a class="button secondary" href="{{ product_link }}" data-dd2026-cta="developers">Explore Defold</a>
+{%- endcapture -%}
+
+{% include page_hub_hero.html layout_class="page-hero-layout-stack" copy_class="page-hero-copy-centered" panel_class="page-hero-panel-stack" title="Defold at Digital Dragons 2026" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel aria_label="Digital Dragons and Defold logos" %}
+
+<div class="section dark page-dark-section gradient-background-top-dark product-hub-section" id="digital-dragons-audiences">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>What are you looking for?</h2>
+			<p>Digital Dragons is a good moment to compare engines, publishing plans, and ecosystem opportunities. Defold is built for teams that want fast iteration, predictable shipping, and business terms that stay simple.</p>
+		</div>
+
+		<div class="page-feature-grid page-grid-three page-grid-flush">
+			{% include page_feature_card.html title="Publishers" body="Defold gives publishing teams proven technology, smooth service integrations, and support for teams shipping web, mobile, desktop, and console games." link=publishers_link icon="/images/icons/icon-loudspeaker.svg" card_class="page-feature-card-partnership" cta_text="Publisher overview" %}
+			{% include page_feature_card.html title="Developers" body="Use a fast editor, Lua scripting, visual tools, hot reload, and one codebase for multiple platforms without royalties or licensing fees." link=product_link icon="/images/icons/icons-learn-export_ic-learn-apiref.svg" card_class="page-feature-card-reference" cta_text="Product overview" %}
+			{% include page_feature_card.html title="Partners" body="Bring your SDK, service, middleware, or content pipeline to the Defold ecosystem and reach studios that value lightweight production workflows." link=corporate_partnerships_link icon="/images/icons/partnerships.svg" card_class="page-feature-card-contribute" cta_text="Partnership options" %}
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-bottom-dark product-hub-section">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Defold at a glance</h2>
+			<p>Defold is a free, source-available game engine for building 2D and 3D games from one compact production workflow. It includes a visual editor, Lua scripting, runtime, scene and GUI tools, particle and tilemap editors, debugger, profiler, build pipeline, asset system, native extensions, editor scripting, and deployment to web, mobile, desktop, and supported console platforms.</p>
+		</div>
+
+		<div class="product-hub-feature-stack">
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/ic-64-performance-blue.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
+							Built for shipping games
+						</h3>
+						<p>Teams choose Defold when download size, performance, fast iteration, and clear commercial terms matter. The engine is free to use, source available, extensible, and actively released on a predictable monthly cycle.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>No royalties, no fees</li>
+								<li>600M+ plays for Defold games on Poki in 2024</li>
+								<li>1.14MB empty HTML5 engine size, gzipped</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-right" aria-label="Defold editor screenshot">
+						{% include webp_picture.html src="/images/editor/editor-2-screenshot-right-rat.webp" alt="Defold editor with game project workspace" class="product-hub-visual-image product-hub-visual-image-wide slideinright is-visible" loading="lazy" %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-top-dark product-hub-section">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Why teams choose Defold</h2>
+			<p>Small engine. Fast workflow. Clear terms. Defold is built around the daily decisions that affect production speed, build size, and release planning.</p>
+		</div>
+
+		<div class="product-hub-feature-stack">
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/ic-no-setup.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
+							Start immediately, without setup
+						</h3>
+						<p>No setup marathon, no registration gate, no separate SDK stack before you can try an idea.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>Editor, runtime, scripting, debugger, and build tools included</li>
+								<li>Lua workflow with native extensions when you need deeper control</li>
+								<li>Fast builds and hot reload for quick iteration</li>
+								<li>Free forever, source available, no royalties</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
+						{% include webp_picture.html src="/images/editor/nosetup-editor@2x.webp" alt="Defold editor with built-in tools and no external setup required" class="product-hub-visual-image product-hub-visual-image-wide slideinright" loading="lazy" %}
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
+						<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-wide slideinleft">
+							<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-left">
+								<img class="product-hub-visual-image product-hub-gif-image" src="/images/animations/platforms.gif" alt="Defold game exported across multiple supported platforms" loading="lazy" decoding="async">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/ic-64-ship-blue.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
+							Reach many platforms from one project
+						</h3>
+						<p>Keep one codebase and a shared API surface for web, mobile, desktop, and supported console targets.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>HTML5, iOS, Android, Windows, macOS, Linux, Steam, Poki, and more</li>
+								<li>Small builds help web and mobile games load quickly</li>
+								<li>Live Update support for content delivery after release</li>
+								<li>Production games shipped by studios worldwide</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/ic-git-blue.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
+							Stay flexible without extra weight
+						</h3>
+						<p>Use clear building blocks instead of fighting a black box. Extend the engine, editor, and pipeline when production needs it.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>2D and 3D scenes, GUI, particles, shaders, and custom rendering</li>
+								<li>Native extensions for SDKs, services, and platform-specific code</li>
+								<li>Editor scripts and asset workflows for team pipelines</li>
+								<li>Monthly releases and a practical open ecosystem</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
+						{% include webp_picture.html src="/images/editor/image-extensions.webp" alt="Defold project using native extensions and external SDK integrations" class="product-hub-visual-image product-hub-visual-image-wide slideinright" loading="lazy" %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-bottom-dark product-hub-section">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Why teams bring Defold into production</h2>
+			<p>Defold keeps the core workflow compact while leaving room for custom rendering, native extensions, editor scripts, third-party services, and platform-specific publishing requirements.</p>
+		</div>
+
+		<div class="page-feature-grid page-grid-two page-grid-flush">
+			{% include page_feature_card.html title="Free forever" body="No up-front costs, no subscriptions, no seat licenses, and no royalties. Keep your budget focused on the game." link=open_link icon="/images/icons/ic-64-free.svg" card_class="page-feature-card-license" cta_text="Read more" %}
+			{% include page_feature_card.html title="Ship everywhere" body="Build from one codebase for web, mobile, desktop, and supported console platforms using shared APIs and a unified pipeline." link=product_link icon="/images/icons/ic-64-ship-blue.svg" card_class="page-feature-card-reference" cta_text="Read more" %}
+			{% include page_feature_card.html title="Production ready" body="Use battle-tested extensions for analytics, app economy, game services, asset workflows, and publishing integrations." link=assets_link icon="/images/icons/ic-64-performance-blue.svg" card_class="page-feature-card-contribute" cta_text="Browse assets" %}
+			{% include page_feature_card.html title="Lightweight by design" body="Small builds, low memory use, and fast startup make Defold a strong fit for web games, mobile games, and content that needs to load quickly." link=why_link icon="/images/icons/ic-64-lightning.svg" card_class="page-feature-card-faq" cta_text="Why Defold" %}
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-top-dark product-hub-section">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Small runtime, serious reach</h2>
+			<p>Defold is engineered to minimize memory use, disk space, and CPU load while still giving teams a complete editor and deployment flow. This is especially useful for web portals, mobile-first teams, and publishers balancing acquisition cost with player retention.</p>
+		</div>
+		<div class="product-hub-table-shell">
+			<div class="product-engine-size-table">
+				{%- include engine_size.html -%}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-bottom-dark product-hub-section" id="meet-defold">
+	<div class="container">
+		<div class="page-text-panel page-surface-panel page-split-panel">
+			<div class="page-split-panel-media" aria-hidden="true">
+				<img src="/images/icons/partnerships.svg" alt="" loading="lazy" decoding="async">
+			</div>
+			<div class="page-split-panel-copy">
+				<h2>Let's talk</h2>
+				<p>We want to meet game studios, indie developers, publishers, and technology providers at Digital Dragons. Bring your roadmap, integration plans, publishing questions, or prototype, and we will help you assess where Defold fits.</p>
+				<div class="page-text-panel-actions">
+					<a class="button primary" href="{{ meeting_link }}" data-dd2026-cta="meeting-panel">Book a meeting</a>
+					<a class="button secondary" href="{{ partnership_link }}" data-dd2026-cta="partner-email">Discuss partnership</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include newsletter_section.html title="Follow Defold News after Digital Dragons" body="Subscribe for release news, product updates, showcase highlights, and announcements from the Defold Foundation." %}
+
+{% include donors_and_partners.html button=true %}
+
+<script>
+(function () {
+	var campaignName = "digital-dragons-2026";
+	var basePayload = {
+		event_category: "event_landing",
+		event_label: "Digital Dragons 2026",
+		event_location: "Cracow, Poland",
+		event_dates: "2026-05-17/2026-05-19",
+		page_path: window.location.pathname,
+		transport_type: "beacon"
+	};
+
+	function trackDigitalDragonsEvent(eventName, details) {
+		var payload = Object.assign({}, basePayload, details || {});
+
+		if (typeof window.gtag === "function") {
+			window.gtag("event", eventName, payload);
+			return;
+		}
+
+		if (Array.isArray(window.dataLayer)) {
+			window.dataLayer.push(Object.assign({ event: eventName }, payload));
+		}
+	}
+
+	function decorateDigitalDragonsLinks() {
+		document.querySelectorAll("#pagecontent a[href]").forEach(function (link) {
+			var originalHref = link.getAttribute("href");
+
+			if (!originalHref || originalHref.charAt(0) === "#" || originalHref.indexOf("javascript:") === 0) {
+				return;
+			}
+
+			try {
+				var url = new URL(originalHref, window.location.href);
+
+				if (url.protocol !== "http:" && url.protocol !== "https:" && url.protocol !== "mailto:") {
+					return;
+				}
+
+				url.searchParams.set("utm_campaign", campaignName);
+
+				if (url.origin === window.location.origin && originalHref.charAt(0) === "/") {
+					link.setAttribute("href", url.pathname + url.search + url.hash);
+				} else {
+					link.setAttribute("href", url.toString());
+				}
+			} catch (error) {
+			}
+		});
+	}
+
+	function bindDigitalDragonsTracking() {
+		decorateDigitalDragonsLinks();
+		trackDigitalDragonsEvent("digital_dragons_2026_landing_view");
+
+		document.querySelectorAll("[data-dd2026-cta]").forEach(function (link) {
+			link.addEventListener("click", function () {
+				trackDigitalDragonsEvent("digital_dragons_2026_cta_click", {
+					event_label: link.getAttribute("data-dd2026-cta"),
+					link_url: link.href
+				});
+			});
+		});
+	}
+
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", bindDigitalDragonsTracking, { once: true });
+	} else {
+		bindDigitalDragonsTracking();
+	}
+})();
+</script>

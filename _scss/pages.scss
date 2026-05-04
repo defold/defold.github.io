@@ -639,3 +639,114 @@
 	text-align: center;
 	line-height: 1.28;
 }
+
+.digital-dragons-logo-lockup {
+	position: relative;
+	display: grid;
+	grid-template-columns: minmax(0, 1.08fr) auto minmax(0, 0.92fr);
+	gap: clamp(1.3rem, 3vw, 2.7rem);
+	align-items: center;
+	width: 100%;
+	max-width: 1120px;
+	padding: clamp(1.35rem, 2.7vw, 2.35rem);
+	border: 1px solid rgba(20, 24, 28, 0.08);
+	border-radius: 8px;
+	background:
+		radial-gradient(ellipse at 8% 10%, rgba(250, 91, 45, 0.12) 0%, rgba(250, 91, 45, 0.06) 28%, transparent 54%),
+		radial-gradient(ellipse at 94% 8%, rgba(70, 191, 222, 0.13) 0%, rgba(70, 191, 222, 0.06) 30%, transparent 56%),
+		radial-gradient(ellipse at 50% 106%, rgba(236, 202, 60, 0.12) 0%, rgba(236, 202, 60, 0.05) 34%, transparent 62%),
+		linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(248, 250, 252, 0.98) 100%);
+	box-shadow:
+		0 28px 60px rgba(0, 0, 0, 0.28),
+		inset 0 1px 0 rgba(255, 255, 255, 0.95);
+	margin-top: 0;
+	overflow: hidden;
+}
+
+.digital-dragons-logo-lockup::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	border-radius: inherit;
+	border-top: 4px solid rgba(250, 91, 45, 0.62);
+	border-right: 4px solid rgba(70, 191, 222, 0.58);
+	border-bottom: 4px solid rgba(236, 202, 60, 0.58);
+	border-left: 4px solid rgba(197, 42, 139, 0.56);
+	pointer-events: none;
+}
+
+.digital-dragons-logo-lockup::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background:
+		linear-gradient(116deg,
+			transparent 0%,
+			rgba(70, 191, 222, 0.045) 27%,
+			rgba(255, 255, 255, 0.18) 48%,
+			rgba(250, 91, 45, 0.04) 72%,
+			transparent 100%);
+	pointer-events: none;
+}
+
+.digital-dragons-logo-lockup img {
+	position: relative;
+	z-index: 2;
+	display: block;
+	max-width: 100%;
+	height: auto;
+	object-fit: contain;
+}
+
+.digital-dragons-logo {
+	justify-self: stretch;
+	width: 100%;
+	max-height: clamp(130px, 16vw, 190px);
+}
+
+.digital-dragons-defold-logo {
+	justify-self: stretch;
+	width: 100%;
+	max-height: clamp(94px, 11vw, 132px);
+}
+
+.digital-dragons-logo-divider {
+	position: relative;
+	z-index: 2;
+	width: 1px;
+	min-height: 110px;
+	background: linear-gradient(180deg, transparent 0%, rgba(20, 24, 28, 0.18) 50%, transparent 100%);
+}
+
+@media (max-width: 980px) {
+	.digital-dragons-logo-lockup {
+		grid-template-columns: minmax(0, 1fr);
+		justify-items: stretch;
+	}
+
+	.digital-dragons-logo-divider {
+		width: min(100%, 240px);
+		min-height: 1px;
+		height: 1px;
+		justify-self: center;
+		background: linear-gradient(90deg, transparent 0%, rgba(20, 24, 28, 0.18) 50%, transparent 100%);
+	}
+
+	.digital-dragons-logo,
+	.digital-dragons-defold-logo {
+		justify-self: center;
+		width: min(100%, 560px);
+	}
+
+	.digital-dragons-defold-logo {
+		max-height: 96px;
+	}
+}
+
+@media (max-width: 640px) {
+	.digital-dragons-logo-lockup {
+		padding: 1rem;
+	}
+}
