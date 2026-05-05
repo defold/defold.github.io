@@ -21,6 +21,7 @@ These are per-manual files generated for LLM usage.
 ## Editor
 
 - [Overview](https://defold.com/llms/manuals/editor.md)
+- [Scene Editing](https://defold.com/llms/manuals/scene-editing.md)
 - [Code editor](https://defold.com/llms/manuals/writing-code.md)
 - [Custom project templates](https://defold.com/llms/manuals/editor-templates.md)
 - [Editor scripts](https://defold.com/llms/manuals/editor-scripts.md)

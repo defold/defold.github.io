@@ -1,31 +1,4 @@
----
-brief: The Scene Editor is where you edit collections, game objects, GUIs, particle effects and other visual assets. This manual explains selection, tools, and how to navigate the scene view in 2D and 3D—including free camera mode and camera settings.
-github: https://github.com/defold/doc
-layout: manual
-locale: en
-title: The Defold scene editor
-toc:
-- The Defold scene editor
-- Opening the Scene Editor
-- Scene view navigation (camera controls)
-- Standard navigation (all visual editors)
-- 2D and 3D scene orientation
-- Toolbar overview
-- Selecting and manipulating objects
-- Selecting objects
-- Visibility filters
-- Grid settings
-- 'Camera type: Perspective vs Orthographic'
-- Free Camera Mode
-- Activating Free Camera Mode
-- Exiting Free Camera Mode
-- Looking around (mouse look)
-- Moving
-- Walking mode (optional)
-- Camera settings popup
----
-
-# The Defold scene editor
+# The Defold scene editor {#manuals:scene-editing}
 
 The **Scene Editor** is the visual editor used to build and edit scenes such as collections, game objects, and other visual assets.
 
@@ -51,14 +24,14 @@ The Scene Editor camera can be controlled with mouse and keyboard. The available
 These controls are available in visual editors:
 
 - **Pan**
-  - <kbd>Alt</kbd>/<kbd>⌥ Option</kbd> + <kbd>Left Mouse Button</kbd>
+  - `Alt`/`⌥ Option` + `Left Mouse Button`
 - **Zoom**
-  - <kbd>Mouse Wheel</kbd>, or
-  - <kbd>Ctrl</kbd>/<kbd>^ Control</kbd> + <kbd>Alt</kbd>/<kbd>⌥ Option</kbd> + <kbd>Left Mouse Button</kbd>
+  - `Mouse Wheel`, or
+  - `Ctrl`/`^ Control` + `Alt`/`⌥ Option` + `Left Mouse Button`
 - **Rotate/Orbit (3D) around selection**
-  - <kbd>Ctrl</kbd>/<kbd>^ Control</kbd> + <kbd>Left Mouse Button</kbd>
+  - `Ctrl`/`^ Control` + `Left Mouse Button`
 
-You may also use **Frame Selection** (<kbd>F</kbd>) to focus the camera on the current selection.
+You may also use **Frame Selection** (`F`) to focus the camera on the current selection.
 
 ## 2D and 3D scene orientation
 
@@ -72,42 +45,34 @@ The scene view can be used in both 2D and 3D workflows:
 
 You can access these functions via the toolbar and the **View** menu.
 
-![Scene Editor 3D](../images/editor/3d_scene.png)
-
 ## Toolbar overview
 
 In the top-right of the scene view there is a toolbar with commonly used tools and view options (left to right):
 
-- **Move tool** (<kbd>W</kbd>)
-- **Rotate tool** (<kbd>E</kbd>)
-- **Scale tool** (<kbd>R</kbd>)
+- **Move tool** (`W`)
+- **Rotate tool** (`E`)
+- **Scale tool** (`R`)
 - **Grid Settings** (`▦`)
-- **Align/Realign Camera 2D/3D** (`2D`) — toggles between 2D and 3D orientation (shortcut <kbd>.</kbd>)
+- **Align/Realign Camera 2D/3D** (`2D`) — toggles between 2D and 3D orientation (shortcut `.`)
 - **Camera Perspective/Orthographic**
 - **Visibility Filters** (`👁`)
-
-![Toolbar](../images/editor/toolbar.png)
 
 ## Selecting and manipulating objects
 
 ### Selecting objects
 
-<kbd>Left Mouse Click</kbd> on objects in the main window to select them. The rectangle (or cuboid) surrounding the object in the editor view will highlight with cyan to indicate what item is selected. The selected object is also highlighted in the `Outline` view as in the picture above.
+`Left Mouse Click` on objects in the main window to select them. The rectangle (or cuboid) surrounding the object in the editor view will highlight with cyan to indicate what item is selected. The selected object is also highlighted in the `Outline` view as in the picture above.
 
   You can also select objects by:
 
-  - <kbd>Left Mouse Click</kbd> and <kbd>Drag</kbd> to select all objects inside the selection region.
-  - <kbd>Left Mouse Click</kbd> objects in the `Outline`, and while holding <kbd>⇧ Shift</kbd> you can expand selection or while holding <kbd>Ctrl</kbd>/<kbd>⌘ Cmd</kbd> you can (un)select clicked.
+  - `Left Mouse Click` and `Drag` to select all objects inside the selection region.
+  - `Left Mouse Click` objects in the `Outline`, and while holding `⇧ Shift` you can expand selection or while holding `Ctrl`/`⌘ Cmd` you can (un)select clicked.
 
 #### Move tool
 
-![Move tool](../images/editor/icon_move.png)
+To move objects, use the *Move Tool*. You can find it in the Toolbar in the top right corner of the scene editor, or by pressing the `W` key.
 
-To move objects, use the *Move Tool*. You can find it in the Toolbar in the top right corner of the scene editor, or by pressing the <kbd>W</kbd> key.
-
-![Move object](../images/editor/move.png)![Move object 3D](../images/editor/move_3d.png)
-
-The gizmo changes and shows a set of manipulators - squares and arrows (selected manipulator will turn to orange color) that you can <kbd>Drag</kbd> to move:
+The gizmo changes and shows a set of manipulators - squares and arrows (selected manipulator will turn to orange color) that you can `Drag` to move:
 
 - one cyan center square handle to move the object only in the screen space,
 - 3 red, green and blue arrows along each axis to move the object only along the given X, Y or Z axis.
@@ -115,26 +80,18 @@ The gizmo changes and shows a set of manipulators - squares and arrows (selected
 
 #### Rotate tool
 
-![Rotate tool](../images/editor/icon_rotate.png)
+To rotate objects, use the *Rotate Tool* by selecting it in the Toolbar, or by pressing the `E` key.
 
-To rotate objects, use the *Rotate Tool* by selecting it in the Toolbar, or by pressing the <kbd>E</kbd> key.
-
-![Rotate object](../images/editor/rotate.png)![Rotate object 3D](../images/editor/rotate_3d.png)
-
-This tool consists of four circular manipulators (selected manipulator will turn to orange color) that you can <kbd>Drag</kbd> to rotate:
+This tool consists of four circular manipulators (selected manipulator will turn to orange color) that you can `Drag` to rotate:
 
 - one cyan (outer, biggest circle) manipulator that rotates the object in the screen space
 - 3 smaller red, green and blue circle manipulators allowing rotation around each of the X, Y and Z axes separately. For 2D orthographic view, the two of them are perpendicular to the X- and Y-axis, so the circles only appear as two lines crossing the object.
 
 #### Scale tool
 
-![Scale tool](../images/editor/icon_scale.png)
+To scale objects, use the *Scale Tool* by selecting it in the toolbar, or by pressing the `R` key.
 
-To scale objects, use the *Scale Tool* by selecting it in the toolbar, or by pressing the <kbd>R</kbd> key.
-
-![Scale object](../images/editor/scale.png)![Scale object 3D](../images/editor/scale_3d.png)
-
-This tool consists of a set of square/cube manipulators (selected manipulator will turn to orange color) that you can <kbd>Drag</kbd> to scale:
+This tool consists of a set of square/cube manipulators (selected manipulator will turn to orange color) that you can `Drag` to scale:
 
 - one cyan cube in the center scales the object uniformly in all axes (including Z).
 - 3 red, blue and green cube manipulators scale the object along each of the X, Y and Z axes separately.
@@ -142,15 +99,11 @@ This tool consists of a set of square/cube manipulators (selected manipulator wi
 
 ### Visibility filters
 
-Click on the Visibility Eye Icon (`👁`) in the Toolbar to toggle visibility of various component types as well as bounding boxes and guide lines (`Component Guides` or shortcut <kbd>Ctrl</kbd> + <kbd>H</kbd> (Win/Linux) or <kbd>^ Ctrl</kbd> + <kbd>⌘ Cmd</kbd> + <kbd>H</kbd>(Mac)).
-
-![Visibility filters](../images/editor/visibilityfilters.png)
+Click on the Visibility Eye Icon (`👁`) in the Toolbar to toggle visibility of various component types as well as bounding boxes and guide lines (`Component Guides` or shortcut `Ctrl` + `H` (Win/Linux) or `^ Ctrl` + `⌘ Cmd` + `H`(Mac)).
 
 ## Grid settings
 
 The grid can be customized to match your workflow (especially useful in 3D). Click the **Grid Settings** button (`▦`) to open the grid settings popup.
-
-![Grid Settings](../images/editor/grid_popup.png)
 
 Settings include:
 
@@ -180,20 +133,18 @@ For fast 3D navigation, the Scene Editor provides **Free Camera Mode**, a first-
 
 ### Activating Free Camera Mode
 
-- Hold <kbd>Right Mouse Button</kbd> — Free Camera Mode is active as long as the button is held
-- <kbd>Shift</kbd> + <kbd>`</kbd> (backtick) — toggles Free Camera Mode on, keeping it active after release
+- Hold `Right Mouse Button` — Free Camera Mode is active as long as the button is held
+- `Shift` + ``` (backtick) — toggles Free Camera Mode on, keeping it active after release
 
-<div class='sidenote' markdown='1'>
 On some keyboard layouts (e.g. Swedish) the backtick key is a dead key and may not trigger the shortcut as expected. You
 can rebind this shortcut in `File ▸ Preferences ▸ Keys` and enter a shortcut for `Scene -> Free Camera -> Activate`
-</div>
 
 When Free Camera Mode is active the Scene View is highlighted with a line around the edges.
 
 ### Exiting Free Camera Mode
 
-- Release <kbd>Right Mouse Button</kbd> (when activated by hold), or
-- <kbd>Left Mouse Button</kbd>, <kbd>Right Mouse Button</kbd> (press and release), or press <kbd>Esc</kbd> when Free Camera Mode was activated as a toggle.
+- Release `Right Mouse Button` (when activated by hold), or
+- `Left Mouse Button`, `Right Mouse Button` (press and release), or press `Esc` when Free Camera Mode was activated as a toggle.
 
 ### Looking around (mouse look)
 
@@ -208,21 +159,19 @@ You can also optionally invert the Y axis (see **Free camera settings** below).
 
 While Free Camera Mode is active:
 
-- <kbd>W</kbd> — forward
-- <kbd>S</kbd> — backward
-- <kbd>A</kbd> — left
-- <kbd>D</kbd> — right
-- <kbd>E</kbd> — up
-- <kbd>Q</kbd> — down
+- `W` — forward
+- `S` — backward
+- `A` — left
+- `D` — right
+- `E` — up
+- `Q` — down
 
-<div class='sidenote' markdown='1'>
 All movement keys can be rebound in `File ▸ Preferences ▸ Keys`. Then search for `Scene -> Free Camera`
-</div>
 
 Speed modifiers:
 
-- Hold <kbd>Shift</kbd> — move faster
-- Hold <kbd>Alt</kbd>/<kbd>⌥ Option</kbd> — move slower / more precisely
+- Hold `Shift` — move faster
+- Hold `Alt`/`⌥ Option` — move slower / more precisely
 
 ### Walking mode (optional)
 
@@ -235,8 +184,6 @@ When enabled:
 ## Camera settings popup
 
 The perspective camera button in the toolbar has a settings popup for camera-related preferences.
-
-![Perspective Camera Settings](../images/editor/camera_popup.png)
 
 The popup contains:
 
