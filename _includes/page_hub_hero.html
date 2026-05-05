@@ -1,4 +1,8 @@
 <div class="section dark page-hero{% if include.hero_class %} {{ include.hero_class }}{% endif %}" markdown="0">
+	{%- assign hero_panel_first = false -%}
+	{%- if include.panel_position == "top" or include.panel_first -%}
+	{%- assign hero_panel_first = true -%}
+	{%- endif -%}
 	{%- if include.backdrop and include.backdrop != "" -%}
 	<div class="page-hero-backdrop{% if include.backdrop_class %} {{ include.backdrop_class }}{% endif %}" aria-hidden="true">
 		{{ include.backdrop }}
@@ -6,6 +10,11 @@
 	{%- endif -%}
 	<div class="container">
 		<div class="page-hero-layout{% if include.layout_class %} {{ include.layout_class }}{% endif %}">
+			{%- if include.panel and include.panel != "" and hero_panel_first -%}
+			<aside class="page-hero-panel{% if include.panel_class %} {{ include.panel_class }}{% endif %}"{% if include.aria_label %} aria-label="{{ include.aria_label }}"{% endif %}>
+				{{ include.panel }}
+			</aside>
+			{%- endif -%}
 			<div class="page-hero-copy{% if include.copy_class %} {{ include.copy_class }}{% endif %}">
 				<h1>{{ include.title }}</h1>
 				{{ include.copy }}
@@ -15,7 +24,7 @@
 				</div>
 				{%- endif -%}
 			</div>
-			{%- if include.panel and include.panel != "" -%}
+			{%- if include.panel and include.panel != "" and hero_panel_first == false -%}
 			<aside class="page-hero-panel{% if include.panel_class %} {{ include.panel_class }}{% endif %}"{% if include.aria_label %} aria-label="{{ include.aria_label }}"{% endif %}>
 				{{ include.panel }}
 			</aside>

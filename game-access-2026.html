@@ -1,59 +1,66 @@
 ---
 layout: page
-title: Defold at Digital Dragons 2026
-description: Meet the Defold team at Digital Dragons 2026 in Cracow, Poland, May 17-19. Learn why Defold is a free, production-ready game engine for developers, publishers, and technology partners.
+title: Defold at Game Access 2026
+description: Meet Defold at Game Access Conference 2026 in Brno, Czech Republic, May 29-30. Learn why Defold is a free, production-ready game engine for developers, publishers, and technology partners.
 nav: floating
 heatmap: false
-preload_image: /images/logo/others/digital_dragons_2026.webp
+preload_image: /images/logo/others/game-access.webp
 preload_image_type: image/webp
-opengraph_image: /images/logo/others/digital_dragons_2026.webp
-opengraph_image_alt: Digital Dragons 2026 and Defold event landing page
-twitter_image: /images/logo/others/digital_dragons_2026.webp
+opengraph_image: /images/logo/others/game-access.webp
+opengraph_image_alt: Defold at Game Access 2026 landing page
+twitter_image: /images/logo/others/game-access.webp
 stylesheets:
   - newsletter
   - pages
 ---
 
-{%- assign digital_dragons_utm = "utm_campaign=digital-dragons-2026" -%}
-{%- assign meeting_link = "mailto:business@defold.se?subject=Digital%20Dragons%202026%20meeting&" | append: digital_dragons_utm -%}
-{%- assign partnership_link = "mailto:partner@defold.se?subject=Digital%20Dragons%202026%20partnership&" | append: digital_dragons_utm -%}
-{%- assign assets_link = "/assets?" | append: digital_dragons_utm -%}
-{%- assign corporate_partnerships_link = "/corporate-partnerships?" | append: digital_dragons_utm -%}
-{%- assign open_link = "/open?" | append: digital_dragons_utm -%}
-{%- assign product_link = "/product?" | append: digital_dragons_utm -%}
-{%- assign publishers_link = "/publishers?" | append: digital_dragons_utm -%}
-{%- assign why_link = "/why?" | append: digital_dragons_utm -%}
-
-{%- capture page_hero_panel -%}
-<div class="page-surface-panel digital-dragons-logo-lockup">
-	<img class="digital-dragons-logo" src="/images/logo/others/digital_dragons_2026.webp" alt="Digital Dragons 2026 Cracow Poland May 17-19 logo" loading="eager" fetchpriority="high" decoding="async">
-	<span class="digital-dragons-logo-divider" aria-hidden="true"></span>
-	<img class="digital-dragons-defold-logo" src="/images/logo/defold/logo_with_text_tagline/logo-hor-classic-dark_tagline.svg" alt="Defold logo with tagline" loading="eager" fetchpriority="high" decoding="async">
-</div>
-{%- endcapture -%}
+{%- assign game_access_utm = "utm_campaign=game-access-2026" -%}
+{%- assign meeting_link = "mailto:business@defold.se?subject=Game%20Access%202026%20meeting&" | append: game_access_utm -%}
+{%- assign partnership_link = "mailto:partner@defold.se?subject=Game%20Access%202026%20partnership&" | append: game_access_utm -%}
+{%- assign assets_link = "/assets?" | append: game_access_utm -%}
+{%- assign corporate_partnerships_link = "/corporate-partnerships?" | append: game_access_utm -%}
+{%- assign open_link = "/open?" | append: game_access_utm -%}
+{%- assign product_link = "/product?" | append: game_access_utm -%}
+{%- assign publishers_link = "/publishers?" | append: game_access_utm -%}
+{%- assign why_link = "/why?" | append: game_access_utm -%}
+{%- assign conference_link = "https://game-access.com/conference/?" | append: game_access_utm -%}
 
 {%- capture page_hero_copy -%}
-<p><strong>Digital Dragons 2026 - Cracow, Poland - May 17-19</strong></p>
-<p>Meet the Defold team at Digital Dragons, hosted at ICE Krakow Congress Centre, and see how a lightweight, production-ready game engine can help studios build, publishers ship, and partners reach more developers.</p>
+<p><strong>Game Access Conference '26 - Brno, Czech Republic - May 29-30</strong></p>
+<p>Meet Defold around Game Access at BVV, Hall P, and see why a lightweight, production-ready game engine fits studios preparing web, mobile, desktop, and console releases.</p>
 {%- endcapture -%}
 
 {%- capture page_hero_actions -%}
-<a class="button primary" href="{{ meeting_link }}" data-dd2026-cta="book-meeting">Book a meeting</a>
-<a class="button secondary" href="{{ product_link }}" data-dd2026-cta="developers">Explore Defold</a>
+<a class="button primary" href="{{ meeting_link }}" data-ga2026-cta="book-meeting">Book a meeting</a>
+<a class="button secondary" href="{{ product_link }}" data-ga2026-cta="developers">Explore Defold</a>
 {%- endcapture -%}
 
-{% include page_hub_hero.html layout_class="page-hero-layout-stack" copy_class="page-hero-copy-centered" panel_class="page-hero-panel-stack" title="Defold at Digital Dragons 2026" copy=page_hero_copy actions=page_hero_actions panel=page_hero_panel panel_position="top" aria_label="Digital Dragons and Defold logos" %}
+{%- capture page_hero_panel -%}
+{% include webp_picture.html src="/images/logo/others/game-access.webp" alt="Game Access Conference 2026" class="page-hero-graphic product-hub-visual-image-wide" loading="eager" %}
+{%- endcapture -%}
 
-<div class="section dark page-dark-section gradient-background-top-dark product-hub-section" id="digital-dragons-audiences">
+{% include page_hub_hero.html
+    layout_class="page-hero-layout-stack"
+    copy_class="page-hero-copy-centered"
+    panel_class="page-hero-panel-stack"
+    title="Defold at Game Access 2026"
+    copy=page_hero_copy
+    actions=page_hero_actions
+    panel=page_hero_panel
+    panel_position="top"
+    aria_label="Game Access 2026 event details"
+%}
+
+<div class="section dark page-dark-section gradient-background-top-dark product-hub-section" id="game-access-audiences">
 	<div class="container">
 		<div class="page-section-heading">
-			<h2>What are you looking for?</h2>
-			<p>Digital Dragons is a good moment to compare engines, publishing plans, and ecosystem opportunities. Defold is built for teams that want fast iteration, predictable shipping, and business terms that stay simple.</p>
+			<h2>What are you looking for at Game Access?</h2>
+			<p>Game Access brings developers, publishers, service providers, educators, and hardware teams together in Brno. Defold is built for teams that want fast iteration, predictable shipping, and business terms that stay simple.</p>
 		</div>
 
 		<div class="page-feature-grid page-grid-three page-grid-flush">
-			{% include page_feature_card.html title="Publishers" body="Defold gives publishing teams proven technology, smooth service integrations, and support for teams shipping web, mobile, desktop, and console games." link=publishers_link icon="/images/icons/icon-loudspeaker.svg" card_class="page-feature-card-partnership" cta_text="Publisher overview" %}
 			{% include page_feature_card.html title="Developers" body="Use a fast editor, Lua scripting, visual tools, hot reload, and one codebase for multiple platforms without royalties or licensing fees." link=product_link icon="/images/icons/icons-learn-export_ic-learn-apiref.svg" card_class="page-feature-card-reference" cta_text="Product overview" %}
+			{% include page_feature_card.html title="Publishers" body="Review the production, porting, and technical due diligence points that matter when you support Defold-powered teams." link=publishers_link icon="/images/icons/icon-loudspeaker.svg" card_class="page-feature-card-partnership" cta_text="Publisher overview" %}
 			{% include page_feature_card.html title="Partners" body="Bring your SDK, service, middleware, or content pipeline to the Defold ecosystem and reach studios that value lightweight production workflows." link=corporate_partnerships_link icon="/images/icons/icon-handshake.svg" card_class="page-feature-card-contribute" cta_text="Partnership options" %}
 		</div>
 	</div>
@@ -82,7 +89,7 @@ stylesheets:
 								<li>No royalties, no fees - completely free</li>
 								<li>Reach players - 600M+ plays for Defold games on Poki in 2024</li>
 								<li>Keep control - source available under a developer-friendly license</li>
-								<li>Write game logic using Lua, enhance it with native extensions (i.a. C++/C#)</li>
+								<li>Write game logic using Lua, enhance it with native extensions</li>
 								<li>Customize both engine and editor however you like</li>
 							</ul>
 						</div>
@@ -165,9 +172,9 @@ stylesheets:
 					<div class="product-hub-feature-copy">
 						<h3 class="feature-heading">
 							<img class="feature-heading-icon" src="/images/icons/ic-64-feather-blue.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
-							Keep your projects flexible nad lightweight
+							Keep projects flexible and lightweight
 						</h3>
-						<p>Defold is one of the smallest engines in the market, and gives you customization and flexibility options. Shrink or extend the engine, and editor whenever you need it.</p>
+						<p>Defold stays small by default and gives teams extension points when a project needs deeper control over engine features, SDKs, tools, or asset workflows.</p>
 						<div class="twocolumnlist">
 							<ul class="checkmark">
 								<li>Small size - only 1 MB empty HTML5 engine size, gzipped</li>
@@ -226,35 +233,36 @@ stylesheets:
 				<img src="/images/icons/partnerships.svg" alt="" loading="lazy" decoding="async">
 			</div>
 			<div class="page-split-panel-copy">
-				<h2>Let's talk</h2>
-				<p>We want to meet game studios, indie developers, publishers, and technology providers at Digital Dragons. Bring your roadmap, integration plans, publishing questions, or prototype, and we will help you assess where Defold fits.</p>
-				<p>We will be available in the Meet2Match application as well - search for Defold team members to book a meeting.</p>
+				<h2>Let's talk in Brno</h2>
+				<p>We want to meet game studios, indie developers, publishers, and technology providers at Game Access. Bring your roadmap, integration plans, publishing questions, or prototype, and we will help you assess where Defold fits.</p>
+				<p>Use the official Game Access networking flow or email us to schedule time around the conference.</p>
 				<div class="page-text-panel-actions">
-					<a class="button primary" href="{{ meeting_link }}" data-dd2026-cta="meeting-panel">Book a meeting</a>
-					<a class="button secondary" href="{{ partnership_link }}" data-dd2026-cta="partner-email">Discuss partnership</a>
+					<a class="button primary" href="{{ meeting_link }}" data-ga2026-cta="meeting-panel">Book a meeting</a>
+					<a class="button secondary" href="{{ partnership_link }}" data-ga2026-cta="partner-email">Discuss partnership</a>
+					<a class="button tertiary" href="{{ conference_link }}" target="_blank" rel="noopener" data-ga2026-cta="conference-site">Event website</a>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-{% include newsletter_section.html title="Follow Defold News after Digital Dragons" body="Subscribe for release news, product updates, showcase highlights, and announcements from the Defold Foundation." %}
+{% include newsletter_section.html title="Follow Defold News after Game Access" body="Subscribe for release news, product updates, showcase highlights, and announcements from the Defold Foundation." %}
 
 {% include donors_and_partners.html button=true %}
 
 <script>
 (function () {
-	var campaignName = "digital-dragons-2026";
+	var campaignName = "game-access-2026";
 	var basePayload = {
 		event_category: "event_landing",
-		event_label: "Digital Dragons 2026",
-		event_location: "Cracow, Poland",
-		event_dates: "2026-05-17/2026-05-19",
+		event_label: "Game Access 2026",
+		event_location: "Brno, Czech Republic",
+		event_dates: "2026-05-29/2026-05-30",
 		page_path: window.location.pathname,
 		transport_type: "beacon"
 	};
 
-	function trackDigitalDragonsEvent(eventName, details) {
+	function trackGameAccessEvent(eventName, details) {
 		var payload = Object.assign({}, basePayload, details || {});
 
 		if (typeof window.gtag === "function") {
@@ -267,7 +275,7 @@ stylesheets:
 		}
 	}
 
-	function decorateDigitalDragonsLinks() {
+	function decorateGameAccessLinks() {
 		document.querySelectorAll("#pagecontent a[href]").forEach(function (link) {
 			var originalHref = link.getAttribute("href");
 
@@ -294,14 +302,14 @@ stylesheets:
 		});
 	}
 
-	function bindDigitalDragonsTracking() {
-		decorateDigitalDragonsLinks();
-		trackDigitalDragonsEvent("digital_dragons_2026_landing_view");
+	function bindGameAccessTracking() {
+		decorateGameAccessLinks();
+		trackGameAccessEvent("game_access_2026_landing_view");
 
-		document.querySelectorAll("[data-dd2026-cta]").forEach(function (link) {
+		document.querySelectorAll("[data-ga2026-cta]").forEach(function (link) {
 			link.addEventListener("click", function () {
-				trackDigitalDragonsEvent("digital_dragons_2026_cta_click", {
-					event_label: link.getAttribute("data-dd2026-cta"),
+				trackGameAccessEvent("game_access_2026_cta_click", {
+					event_label: link.getAttribute("data-ga2026-cta"),
 					link_url: link.href
 				});
 			});
@@ -309,9 +317,9 @@ stylesheets:
 	}
 
 	if (document.readyState === "loading") {
-		document.addEventListener("DOMContentLoaded", bindDigitalDragonsTracking, { once: true });
+		document.addEventListener("DOMContentLoaded", bindGameAccessTracking, { once: true });
 	} else {
-		bindDigitalDragonsTracking();
+		bindGameAccessTracking();
 	}
 })();
 </script>
