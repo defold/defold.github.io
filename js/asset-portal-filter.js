@@ -6,15 +6,7 @@
 			.trim();
 
 	const normalizeTag = (value) => {
-		const normalized = normalize(value);
-		const aliases = {
-			fonts: "text",
-			meshcomponent: "mesh",
-			templateprojects: "template",
-			templates: "template"
-		};
-
-		return aliases[normalized.replace(/\s+/g, "")] || normalized.replace(/\s+/g, "");
+		return normalize(value).replace(/\s+/g, "");
 	};
 
 	const parseTags = (value) =>
@@ -46,6 +38,9 @@
 
 		return button.dataset.assetTagLabel || fallback;
 	};
+
+	const findTagButton = (tagButtons, tag) =>
+		tagButtons.find((button) => normalizeTag(button.dataset.assetTag) === tag);
 
 	document.addEventListener("DOMContentLoaded", () => {
 		const catalogs = Array.from(document.querySelectorAll("[data-asset-catalog]"));
@@ -106,7 +101,7 @@
 			let selectedTag = normalizeTag(catalog.dataset.initialTag) || "all";
 			let sortOrder = normalize(catalog.dataset.initialSort) === "timestamp" ? "timestamp" : "stars";
 
-			if (!tagButtons.some((button) => button.dataset.assetTag === selectedTag)) {
+			if (!findTagButton(tagButtons, selectedTag)) {
 				selectedTag = "all";
 			}
 
@@ -136,7 +131,7 @@
 
 				const parts = [`Showing ${visibleCount} of ${totalCount} assets`];
 				if (selectedTag !== "all") {
-					const activeTagButton = tagButtons.find((button) => button.dataset.assetTag === selectedTag);
+					const activeTagButton = findTagButton(tagButtons, selectedTag);
 					parts.push(`for ${getTagLabel(activeTagButton, defaultTitle)}`);
 				}
 
@@ -169,7 +164,7 @@
 				});
 
 				tagButtons.forEach((button) => {
-					const active = button.dataset.assetTag === selectedTag;
+					const active = normalizeTag(button.dataset.assetTag) === selectedTag;
 					button.classList.toggle("active", active);
 					button.setAttribute("aria-pressed", active ? "true" : "false");
 				});
@@ -184,7 +179,7 @@
 					if (selectedTag === "all") {
 						titleEl.textContent = defaultTitle;
 					} else {
-						const activeTagButton = tagButtons.find((button) => button.dataset.assetTag === selectedTag);
+						const activeTagButton = findTagButton(tagButtons, selectedTag);
 						titleEl.textContent = getTagLabel(activeTagButton, defaultTitle);
 					}
 				}
