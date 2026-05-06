@@ -84,6 +84,7 @@ These are per-example files generated for LLM usage.
 - [Sprite Vertex Color Attribute](https://defold.com/llms/examples/material/vertexcolor.md) - This example shows how to set and animate a vertex attribute
 - [Unlit](https://defold.com/llms/examples/material/unlit.md) - This example demonstrates how to create and apply an custom non-lit material to a 3D model
 - [UV Gradient](https://defold.com/llms/examples/material/uvgradient.md) - This example shows how to apply a basic shader to a full screen quad
+- [Wave Background](https://defold.com/llms/examples/material/wave_background.md) - Shows how to use a Time shader constant to achieve a moving wave effect
 
 ## Mesh
 

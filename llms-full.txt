@@ -514,6 +514,7 @@ This document contains Defold examples grouped by category.
 - [Sprite Vertex Color Attribute](#examples:material:vertexcolor) - This example shows how to set and animate a vertex attribute
 - [Unlit](#examples:material:unlit) - This example demonstrates how to create and apply an custom non-lit material to a 3D model
 - [UV Gradient](#examples:material:uvgradient) - This example shows how to apply a basic shader to a full screen quad
+- [Wave Background](#examples:material:wave_background) - Shows how to use a Time shader constant to achieve a moving wave effect
 
 ## Mesh
 
@@ -75151,6 +75152,18 @@ void main()
     gl_FragColor = vec4(var_texcoord0.x, var_texcoord0.y, 0.5, 1.0f);
 }
 ```
+
+<!-- material/wave_background -->
+
+# Wave Background {#examples:material:wave_background}
+
+Shows how to use a Time shader constant to achieve a moving wave effect
+
+[Project files](https://github.com/defold/examples/tree/master/material/wave_background)
+
+This example contains a game object with a sprite component. The `Image` and `Default Animation properties` of the sprite component cannot be left empty, otherwise an error will occur. In the example the built-in `/builtins/graphics/particle_blob.tilesource` is used and animation is set to `anim`. You can adjust the size of the wave background by modifying the `Size` property of the sprite component.
+
+Example uses a Fragment Constant of type `Time` introduced in Defold 1.12.3.
 
 <!-- mesh/triangle -->
 
