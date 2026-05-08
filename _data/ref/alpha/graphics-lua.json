@@ -586,6 +586,141 @@
             "type": "CONSTANT"
         },
         {
+            "brief": "Context feature flag indicating support for 3D (vo...",
+            "description": "Context feature flag indicating support for 3D (volume) textures.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "graphics.CONTEXT_FEATURE_3D_TEXTURES",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Context feature flag indicating support for ASTC c...",
+            "description": "Context feature flag indicating support for ASTC compressed 2D array textures.\nSome WebGL/GLES drivers fail array texture ASTC uploads while 2D ASTC works.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "graphics.CONTEXT_FEATURE_ASTC_ARRAY_TEXTURES",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Context feature flag indicating support for min/ma...",
+            "description": "Context feature flag indicating support for min/max blend equations.\nRequires GLES3+ or EXT_blend_minmax.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "graphics.CONTEXT_FEATURE_BLEND_EQUATION_MIN_MAX",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Context feature flag indicating support for comput...",
+            "description": "Context feature flag indicating support for compute shaders.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "graphics.CONTEXT_FEATURE_COMPUTE_SHADER",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Context feature flag indicating support for hardwa...",
+            "description": "Context feature flag indicating support for hardware instancing.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "graphics.CONTEXT_FEATURE_INSTANCING",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Context feature flag indicating support for render...",
+            "description": "Context feature flag indicating support for rendering to multiple color targets simultaneously.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "graphics.CONTEXT_FEATURE_MULTI_TARGET_RENDERING",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Context feature flag indicating support for storag...",
+            "description": "Context feature flag indicating support for storage buffers.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "graphics.CONTEXT_FEATURE_STORAGE_BUFFER",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Context feature flag indicating support for textur...",
+            "description": "Context feature flag indicating support for texture arrays.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "graphics.CONTEXT_FEATURE_TEXTURE_ARRAY",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Context feature flag indicating support for vertic...",
+            "description": "Context feature flag indicating support for vertical sync (vsync).",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "graphics.CONTEXT_FEATURE_VSYNC",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
             "brief": "",
             "description": "",
             "error": "",
@@ -629,6 +764,52 @@
             "returnvalues": [],
             "tparams": [],
             "type": "CONSTANT"
+        },
+        {
+            "brief": "get information about the currently installed graphics adapter",
+            "description": "Returns a table describing the active graphics context: the adapter family,\nits hardware limits, the list of driver-reported extensions, and the set of\noptional context features supported by the backend.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "graphics.get_adapter_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "table with the following fields:\n<code>family</code>         <span class=\"type\">string</span>   adapter family name (e.g. \"opengl\", \"vulkan\")\n  <code>version_major</code>  <span class=\"type\">number</span>   adapter API major version (e.g. 1 for Vulkan 1.4)\n  <code>version_minor</code>  <span class=\"type\">number</span>   adapter API minor version (e.g. 4 for Vulkan 1.4)\n<code>limits</code>         <span class=\"type\">table</span>    hardware/driver limits:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n n-Quoted\">`max_texture_size_2d`</span><span class=\"w\">              </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">2D</span><span class=\"w\"> </span><span class=\"n\">texture</span><span class=\"w\"> </span><span class=\"n\">dimension</span><span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"n\">texels</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_texture_size_3d`</span><span class=\"w\">              </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">3D</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">volume</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"n\">texture</span><span class=\"w\"> </span><span class=\"n\">dimension</span><span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"n\">texels</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_texture_size_cube`</span><span class=\"w\">            </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"k\">cube</span><span class=\"w\"> </span><span class=\"n\">map</span><span class=\"w\"> </span><span class=\"n\">face</span><span class=\"w\"> </span><span class=\"n\">dimension</span><span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"n\">texels</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_texture_array_layers`</span><span class=\"w\">         </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">layers</span><span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"n\">an</span><span class=\"w\"> </span><span class=\"k\">array</span><span class=\"w\"> </span><span class=\"n\">texture</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_framebuffer_width`</span><span class=\"w\">            </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">framebuffer</span><span class=\"w\"> </span><span class=\"n\">width</span><span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"n\">pixels</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_framebuffer_height`</span><span class=\"w\">           </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">framebuffer</span><span class=\"w\"> </span><span class=\"n\">height</span><span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"n\">pixels</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_color_attachments`</span><span class=\"w\">            </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">simultaneous</span><span class=\"w\"> </span><span class=\"n\">color</span><span class=\"w\"> </span><span class=\"n\">attachments</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_samplers_per_stage`</span><span class=\"w\">           </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">texture</span><span class=\"w\"> </span><span class=\"n\">samplers</span><span class=\"w\"> </span><span class=\"n\">per</span><span class=\"w\"> </span><span class=\"n\">shader</span><span class=\"w\"> </span><span class=\"n\">stage</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_textures_per_stage`</span><span class=\"w\">           </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">sampled</span><span class=\"w\"> </span><span class=\"n\">textures</span><span class=\"w\"> </span><span class=\"n\">per</span><span class=\"w\"> </span><span class=\"n\">shader</span><span class=\"w\"> </span><span class=\"n\">stage</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_vertex_attributes`</span><span class=\"w\">            </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">vertex</span><span class=\"w\"> </span><span class=\"n\">attributes</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_vertex_buffers`</span><span class=\"w\">               </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">vertex</span><span class=\"w\"> </span><span class=\"n\">buffer</span><span class=\"w\"> </span><span class=\"n\">bindings</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_compute_workgroup_size_x`</span><span class=\"w\">     </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">compute</span><span class=\"w\"> </span><span class=\"n\">workgroup</span><span class=\"w\"> </span><span class=\"n\">size</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">X</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_compute_workgroup_size_y`</span><span class=\"w\">     </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">compute</span><span class=\"w\"> </span><span class=\"n\">workgroup</span><span class=\"w\"> </span><span class=\"n\">size</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">Y</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_compute_workgroup_size_z`</span><span class=\"w\">     </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">compute</span><span class=\"w\"> </span><span class=\"n\">workgroup</span><span class=\"w\"> </span><span class=\"n\">size</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">Z</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_compute_workgroup_invocations`</span><span class=\"w\"> </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\"> </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">invocations</span><span class=\"w\"> </span><span class=\"n\">per</span><span class=\"w\"> </span><span class=\"n\">compute</span><span class=\"w\"> </span><span class=\"n\">workgroup</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_compute_shared_memory_size`</span><span class=\"w\">   </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">shared</span><span class=\"w\"> </span><span class=\"k\">memory</span><span class=\"w\"> </span><span class=\"n\">per</span><span class=\"w\"> </span><span class=\"n\">compute</span><span class=\"w\"> </span><span class=\"n\">workgroup</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">bytes</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_uniform_buffer_range`</span><span class=\"w\">         </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">bindable</span><span class=\"w\"> </span><span class=\"n\">uniform</span><span class=\"w\"> </span><span class=\"n\">buffer</span><span class=\"w\"> </span><span class=\"k\">range</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">bytes</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_storage_buffer_range`</span><span class=\"w\">         </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">bindable</span><span class=\"w\"> </span><span class=\"k\">storage</span><span class=\"w\"> </span><span class=\"n\">buffer</span><span class=\"w\"> </span><span class=\"k\">range</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">bytes</span><span class=\"p\">)</span><span class=\"w\"></span>\n</code></pre></div>\n\n<code>extensions</code>     <span class=\"type\">table</span>    array of driver-reported extension name strings\n<code>features</code>       <span class=\"type\">table</span>    array of supported context feature ids:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_MULTI_TARGET_RENDERING</span><span class=\"err\">`</span>  <span class=\"n\">multi</span><span class=\"o\">-</span><span class=\"n\">target</span> <span class=\"n\">rendering</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_TEXTURE_ARRAY</span><span class=\"err\">`</span>           <span class=\"n\">texture</span> <span class=\"n\">arrays</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_COMPUTE_SHADER</span><span class=\"err\">`</span>          <span class=\"n\">compute</span> <span class=\"n\">shaders</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_STORAGE_BUFFER</span><span class=\"err\">`</span>          <span class=\"n\">storage</span> <span class=\"n\">buffers</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_VSYNC</span><span class=\"err\">`</span>                   <span class=\"n\">vertical</span> <span class=\"n\">sync</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_INSTANCING</span><span class=\"err\">`</span>              <span class=\"n\">hardware</span> <span class=\"n\">instancing</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_3D_TEXTURES</span><span class=\"err\">`</span>             <span class=\"mi\">3</span><span class=\"n\">D</span> <span class=\"p\">(</span><span class=\"n\">volume</span><span class=\"p\">)</span> <span class=\"n\">textures</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_ASTC_ARRAY_TEXTURES</span><span class=\"err\">`</span>     <span class=\"n\">ASTC</span> <span class=\"n\">compressed</span> <span class=\"mi\">2</span><span class=\"n\">D</span> <span class=\"n\">array</span> <span class=\"n\">textures</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_BLEND_EQUATION_MIN_MAX</span><span class=\"err\">`</span>  <span class=\"n\">min</span><span class=\"o\">/</span><span class=\"n\">max</span> <span class=\"n\">blend</span> <span class=\"n\">equations</span>\n</code></pre></div>",
+                    "name": "info",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get the list of graphics adapters that have been registered with the engine",
+            "description": "get the list of graphics adapters that have been registered with the engine",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "graphics.get_engine_adapters",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of adapter family name strings (e.g. \"opengl\", \"vulkan\", \"webgpu\")",
+                    "name": "adapters",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "",
