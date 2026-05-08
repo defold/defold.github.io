@@ -66005,9 +66005,11 @@ Sets or clears the global file listener callback.
 
 - `callback` (function(self, event, data) | nil) - Callback invoked for file system events; pass nil to disable.
   - `self` (object) - The calling script instance.
-  - `event` (string) - One of onFileLoaded, onFileDeleted, onFileError, onArtboardsListed, onViewModelsListed, onViewModelInstanceNamesListed, onViewModelPropertiesListed, onViewModelEnumsListed
+  - `event` (string) - One of onFileLoaded, onFileDeleted, onFileError, onArtboardInstantiated, onArtboardsListed, onViewModelsListed, onViewModelInstanceInstantiated, onViewModelInstanceNamesListed, onViewModelPropertiesListed, onViewModelEnumsListed
   - `data` (table) - Additional fields vary by event. Common keys include
     - `file` (FileHandle) - File handle involved in the event.
+    - `artboard` (ArtboardHandle) - Instantiated artboard handle, when applicable.
+    - `viewModel` (ViewModelInstanceHandle) - Instantiated view model instance handle, when applicable.
     - `viewModelName` (string) - View model name for the request, when applicable.
     - `instanceNames` (table) - Array of instance name strings.
     - `artboardNames` (table) - Array of artboard name strings.
