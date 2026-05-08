@@ -112,7 +112,7 @@
 
 		if (!visibleCount) {
 			if (selectedTag !== "all" && rawQuery) {
-				resultEl.textContent = `No ${resultItems} match the current ${filterSingular} and search.`;
+				resultEl.textContent = `No ${resultItems} match the current ${filterSingular} and text filter.`;
 				return;
 			}
 
@@ -122,7 +122,7 @@
 			}
 
 			if (rawQuery) {
-				resultEl.textContent = `No ${resultItems} match the current search.`;
+				resultEl.textContent = `No ${resultItems} match the current text filter.`;
 				return;
 			}
 		}

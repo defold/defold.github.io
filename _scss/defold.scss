@@ -240,10 +240,11 @@ html.theme-dark {
 ******************************************************************************/
 
 /*******************************************************************************
-* Shared search field control
+* Shared search and filter field controls
 ******************************************************************************/
 
-.page-search-field {
+.page-search-field,
+.page-filter-field {
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -251,7 +252,9 @@ html.theme-dark {
 }
 
 .page-search-field input,
-.page-search-field input[type="text"] {
+.page-search-field input[type="text"],
+.page-filter-field input,
+.page-filter-field input[type="text"] {
 	width: 100%;
 	min-height: 44px;
 	padding: 0.75rem 0.95rem 0.75rem 3.6rem;
@@ -267,19 +270,24 @@ html.theme-dark {
 }
 
 .page-search-field input::placeholder,
-.page-search-field input[type="text"]::placeholder {
+.page-search-field input[type="text"]::placeholder,
+.page-filter-field input::placeholder,
+.page-filter-field input[type="text"]::placeholder {
 	color: var(--input-placeholder-color);
 }
 
 .page-search-field input:focus,
-.page-search-field input[type="text"]:focus {
+.page-search-field input[type="text"]:focus,
+.page-filter-field input:focus,
+.page-filter-field input[type="text"]:focus {
 	border-color: var(--input-focus-border);
 	outline: none;
 	background: var(--input-focus-bg);
 	box-shadow: var(--input-focus-shadow);
 }
 
-.page-search-field-icon {
+.page-search-field-icon,
+.page-filter-field-icon {
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -296,11 +304,13 @@ html.theme-dark {
 	transition: color 180ms ease;
 }
 
-.page-search-field:focus-within .page-search-field-icon {
+.page-search-field:focus-within .page-search-field-icon,
+.page-filter-field:focus-within .page-filter-field-icon {
 	color: var(--input-icon-focus-color);
 }
 
-.page-search-field-icon .octicon {
+.page-search-field-icon .octicon,
+.page-filter-field-icon .octicon {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -308,7 +318,8 @@ html.theme-dark {
 	height: 100%;
 }
 
-.page-search-field-icon .octicon svg {
+.page-search-field-icon .octicon svg,
+.page-filter-field-icon .octicon svg {
 	display: block;
 	padding-top: 0;
 	padding-right: 0;
