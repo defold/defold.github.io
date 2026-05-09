@@ -1,5 +1,9 @@
-<div class="page-search-field{% if include.wrapper_class %} {{ include.wrapper_class }}{% endif %}">
-	{% include site_icon.html name="search" class="page-search-field-icon" %}
+{%- assign field_type = include.field_type | default: "search" -%}
+{%- assign field_class = "page-" | append: field_type | append: "-field" -%}
+{%- assign field_icon_class = field_class | append: "-icon" -%}
+{%- assign field_icon_name = include.icon_name | default: "search" -%}
+<div class="{{ field_class }}{% if include.wrapper_class %} {{ include.wrapper_class }}{% endif %}">
+	{% include site_icon.html name=field_icon_name class=field_icon_class %}
 	<input
 		id="{{ include.id }}"
 		{% if include.name %}name="{{ include.name }}"{% endif %}

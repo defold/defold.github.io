@@ -125,7 +125,7 @@
 				}
 
 				if (!visibleCount) {
-					summaryEl.textContent = "No assets match the current tag and search.";
+					summaryEl.textContent = "No assets match the current filters.";
 					return;
 				}
 

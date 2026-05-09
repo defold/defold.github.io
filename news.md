@@ -32,8 +32,8 @@ stylesheets:
 				<div class="learn-tag-filter asset-hub-toolbar page-surface-panel asset-hub-surface-panel" data-learn-tag-filter data-filter-singular="topic" data-result-items="news posts" data-filter-excluded-tags="news">
 					<div class="asset-hub-filter-shell">
 						<div class="asset-hub-filter-group asset-hub-filter-search">
-							<h3 class="asset-hub-filter-label">Search</h3>
-							{% include catalog_search_field.html id="news-search-posts" input_class="learnsearch" data_attribute_name="data-learn-search" placeholder="Search news" aria_label="Search news by title or description" %}
+							<h3 class="asset-hub-filter-label">Filter</h3>
+							{% include catalog_search_field.html id="news-search-posts" input_class="learnsearch" data_attribute_name="data-learn-search" field_type="filter" icon_name="filter" placeholder="Filter news by title or description" aria_label="Filter news by title or description" %}
 						</div>
 						<div class="asset-hub-filter-group asset-hub-sort-row">
 							<h3 class="asset-hub-filter-label">Sort by</h3>
