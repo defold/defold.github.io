@@ -17,7 +17,7 @@ Defold udostępnia właściwości (ang. properties) dla obiektów gry, komponent
 * Systemowo zdefiniowane transformacje obiektów gry (pozycja, rotacja i skala) oraz specyficzne dla komponentów właściwości (na przykład rozmiar pikseli sprite'a lub masa obiektu kolizyjnego).
 * Właściwości zdefiniowane przez użytkownika w komponentach skryptów Lua (zobacz [dokumentację właściwości skryptów](/pl/manuals/script-properties)).
 * Właściwości węzłów GUI.
-* Stałe shaderów zdefiniowane w shaderach i plikach materiałów (zobacz [dokumentację materiałów](/manuals/material)).
+* Stałe shaderów zdefiniowane w shaderach i plikach materiałów (zobacz [dokumentację materiałów](/pl/manuals/material)).
 
 W zależności od miejsca, w którym znajduje się właściwość, dostęp do niej uzyskuje się za pomocą funkcji ogólnej lub funkcji przeznaczonej do właściwości. Wiele z tych właściwości można automatycznie animować. Zaleca się animowanie właściwości za pomocą wbudowanego systemu, zarówno z powodów wydajnościowych, jak i wygody, zamiast manipulować nimi samodzielnie (wewnątrz funkcji `update()`).
 
@@ -66,7 +66,7 @@ Wszystkie obiekty gry i niektóre typy komponentów mają właściwości, które
 | *scale.xy* | Lokalna nieliniowa skala obiektu gry w osiach X i Y. | `vector3` | `get+set` |
 
 <div class='sidenote' markdown='1'>
-Istnieją także konkretne funkcje do pracy z transformacją obiektu gry, takie jak `go.get_position()`, `go.set_position()`, `go.get_rotation()`, `go.set_rotation()`, `go.get_scale()` i `go.set_scale()`.
+Istnieją także konkretne funkcje do pracy z transformacją obiektu gry, takie jak `go.get_position()`, `go.set_position()`, `go.get_rotation()`, `go.set_rotation()`, `go.get_scale()`, `go.set_scale()` i `go.set_scale_xy()`.
 </div>
 
 *WŁAŚCIWOŚCI KOMPONENTÓW SPRITE*
@@ -116,7 +116,7 @@ Istnieją także konkretne funkcje do pracy z transformacją obiektu gry, takie 
 
 ## Właściwości węzłów GUI
 
-Węzły GUI również posiadają właściwości, ale są odczytywane i zapisywane za pomocą specjalnych funkcji getterów i setterów z API `gui`. Dla każdej właściwości istnieje funkcja gettera i settera. Istnieje także zestaw stałych zdefiniowanych do użycia jako odniesienie do właściwości podczas animacji. Jeśli potrzebujesz odnosić się do oddzielnych składowych właściwości, musisz używać nazwy ciągu znaków właściwości lub hasza nazwy ciągu znaków.
+Węzły GUI również posiadają właściwości, ale są odczytywane i zapisywane za pomocą specjalnych funkcji getterów i setterów z API gui. Dla każdej właściwości istnieje funkcja gettera i settera. Istnieje także zestaw stałych zdefiniowanych do użycia jako odniesienie do właściwości podczas animacji. Jeśli potrzebujesz odnosić się do oddzielnych składowych właściwości, musisz używać nazwy ciągu znaków właściwości lub hasza nazwy ciągu znaków.
 
 * `position` (lub `gui.PROP_POSITION`)
 * `rotation` (lub `gui.PROP_ROTATION`)

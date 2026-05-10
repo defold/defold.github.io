@@ -1,26 +1,26 @@
-The `adb` command line tool is an easy to use and versatile program that is used to interact with Android devices. You can download and install `adb` as part of the Android SDK Platform-Tools, for Mac, Linux or Windows.
+Narzędzie wiersza poleceń `adb` jest łatwym w użyciu i wszechstronnym programem służącym do komunikacji z urządzeniami z Androidem. `adb` można pobrać i zainstalować jako część Android SDK Platform-Tools dla systemów Mac, Linux lub Windows.
 
-Download the Android SDK Platform-Tools from: https://developer.android.com/studio/releases/platform-tools. You find the *adb* tool in */platform-tools/*. Alternatively, platform specific packages can be installed through respective package managers.
+Pobierz Android SDK Platform-Tools z: https://developer.android.com/studio/releases/platform-tools. Narzędzie *adb* znajdziesz w katalogu */platform-tools/*. Alternatywnie pakiety dla konkretnych systemów można zainstalować za pomocą odpowiednich menedżerów pakietów.
 
-On Ubuntu Linux:
+W Ubuntu Linux:
 
 ```
 $ sudo apt-get install android-tools-adb
 ```
 
-On Fedora 18/19:
+W Fedora 18/19:
 
 ```
 $ sudo yum install android-tools
 ```
 
-On macOS (Homebrew)
+W macOS (Homebrew)
 
 ```
 $ brew cask install android-platform-tools
 ```
 
-You can verify that `adb` works by connecting your Android device to your computer via USB and issue the following command:
+Możesz sprawdzić, czy `adb` działa, podłączając urządzenie z Androidem do komputera przez USB i wykonując następujące polecenie:
 
 ```
 $ adb devices
@@ -28,6 +28,6 @@ List of devices attached
 31002535c90ef000    device
 ```
 
-If your device does not show up, verify that you have enabled *USB debugging* on the Android device. Open the device *Settings* and look for *Developer options* (or *Development*).
+Jeśli urządzenie się nie pojawia, sprawdź, czy na urządzeniu z Androidem włączono *USB debugging*. Otwórz *Settings* urządzenia i poszukaj *Developer options* (lub *Development*).
 
-![Enable USB debugging](../images/android/usb_debugging.png)
+![Włącz debugowanie USB](../images/android/usb_debugging.png)
