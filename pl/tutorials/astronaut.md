@@ -4,10 +4,10 @@ difficulty: Beginner
 github: https://github.com/defold/tutorial-astronaut
 layout: tutorial
 locale: pl
-title: Tutorial z chodzącym astronautą
+title: Tutorial ruchu z widokiem z góry
 ---
 
-# Tutorial z chodzącym astronautą
+# Tutorial ruchu z widokiem z góry
 
 W tym tutorialu dla początkujących nauczysz się definiować i przechwytywać dane wejściowe gracza oraz poruszać i animować postać. Poznasz też podstawowe elementy Defold: obiekty gry (ang. game objects), komponenty (ang. components) i kolekcje (ang. collections).
 

@@ -129,7 +129,7 @@ Unity scenes share by default the same global game state and physics simulation,
 2. Create a separate game *world* at runtime, with its own game objects, physics world, engine operations and addressing namespace via a collection loaded at bootstrap or via a `Collection Proxy` component.
 
 Factories and Proxy components are also explained below.
-Read more about Collections in the [Building Blocks manual](/manual/building-blocks/#collections).
+Read more about Collections in the [Building Blocks manual](https://defold.com/llms/manuals/building-blocks.md).
 
 ## Code Writing
 
@@ -149,7 +149,7 @@ Defold supports the usage of transpilers that emit Lua code, such as [Teal](http
 
 In Defold Native Extensions can be written in several other languages: C, C++, C#, Objective-C, Java or JS depending on target platform. If you are very comfortable with C#, it’s technically possible to structure most of your game logic in a C# extension and just call it from a small Lua bootstrap script, though this requires some advanced API knowledge and is not recommended for beginners.
 
-Read more about extensions in [Defold Native Extensions manual](/manual/extensions.md).
+Read more about extensions in [Defold Native Extensions manual](https://defold.com/llms/manuals/extensions.md).
 
 ### From MonoBehaviours to Lua modules
 
@@ -227,7 +227,7 @@ An example showing how to utilise Defold script properties, factories, addressin
 
 Good manuals on code writing:
 - [Script manual](https://defold.com/llms/manuals/script.md)
-- [Writing code](/manual/writing-code)
+- [Writing code](https://defold.com/llms/manuals/writing-code.md)
 - [Debugging](https://defold.com/llms/manuals/debugging.md)
 
 ### Built-in Code Editor
