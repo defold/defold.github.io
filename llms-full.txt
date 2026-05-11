@@ -984,7 +984,7 @@ The table below presents similar Unity components for quick lookup, with links f
 | [Sound](#manuals:sound) | AudioSource | Defold has only a global sound source (not spatial). There is an official [FMOD extension](https://github.com/defold/extension-fmod) for Defold. |
 | [Factory](#manuals:factory) | Prefab Instantiate() | In Defold, a Factory is a component with a specific prototype (prefab). |
 | [Collection Factory](#manuals:collection-factory) | - (No direct component equivalent) | A Collection Factory component in Defold can spawn multiple Game Objects with parent-child relationships at once. |
-| [Collision Object](#manuals:physics-object) | Rigidbody + Collider | In Defold, physics objects and collision shapes are combined in a single component. |
+| [Collision Object](#manuals:physics-objects) | Rigidbody + Collider | In Defold, physics objects and collision shapes are combined in a single component. |
 | [Collision Shapes](#manuals:physics-shapes)  | BoxCollider / SphereCollider / CapsuleCollider | In Defold, shapes (box, sphere, capsule) are configured inside the Collision Object component. Both support collision shapes from tilemaps and convex hull data. |
 | [Camera](#manuals:camera) | Camera | In Unity, the camera has some more built-in rendering and post-processing settings, while Defold delegates it for custom control for user via the render script. |
 | [GUI](#manuals:gui) | UI Toolkit / Unity UI / uGUI Canvas | Defold GUI is a powerful component for building complete UIs and templates. Unity doesn’t have an equivalent single UI component, rather multiple UI frameworks. Defold has an extension for [Extension](https://github.com/britzl/extension-imgui) too. |
@@ -996,7 +996,7 @@ The table below presents similar Unity components for quick lookup, with links f
 
 #### Extensions and custom components
 
-Defold also has an official [Spine](#manuals:extension-spine) and [Rive](#manuals:extension-rive) components available via extensions.
+Defold also has official [Spine](/extension-spine/) and [Rive](/extension-rive/) components available via extensions.
 
 You can also create your own [custom Components](https://github.com/defold/extension-simpledata) using Native Extensions, like e.g. this community created [Object Interpolation Component](https://github.com/indiesoftby/defold-object-interpolation).
 
@@ -6293,7 +6293,7 @@ The Basis Universal transcoder supports many output formats, like `ASTC4x4`, `BC
 The following lossy compression formats are currently supported:
 
 | Format                            | Compression | Details  |
-| --------------------------------- | ----------- | -------------------------------- | ---- |
+| --------------------------------- | ----------- | -------------------------------- |
 | `TEXTURE_FORMAT_RGB`              | none        | 3 channel color. Alpha is discarded |
 | `TEXTURE_FORMAT_RGBA`             | none        | 3 channel color and full alpha.    |
 | `TEXTURE_FORMAT_RGB_16BPP`        | none        | 3 channel color. 5+6+5 bits. |
@@ -6341,8 +6341,8 @@ Base image (1024x512):
 
 ### Compression times
 
-| Preset     | Compression time | Relative time   |
-| ----------------------------- | --------------- |
+| Preset    | Compression time | Relative time |
+| --------- | ---------------- | ------------- |
 | `LOW`     | 0m0.143s         | 0.5x            |
 | `MEDIUM`  | 0m0.294s         | 1.0x            |
 | `HIGH`    | 0m1.764s         | 6.0x            |
@@ -6353,8 +6353,8 @@ Base image (1024x512):
 The comparison is done using the `basisu` tool (measuring the PSNR)
 100 dB means no signal loss (i.e. it's the same as the original image).
 
-| Preset     | Signal                                          |
-| ------------------------------------------------------------ |
+| Preset    | Signal                                           |
+| --------- | ------------------------------------------------ |
 | `LOW`     | Max:  34 Mean: 0.470 RMS: 1.088 PSNR: 47.399 dB |
 | `MEDIUM`  | Max:  35 Mean: 0.439 RMS: 1.061 PSNR: 47.620 dB |
 | `HIGH`    | Max:  37 Mean: 0.898 RMS: 1.606 PSNR: 44.018 dB |
@@ -6364,8 +6364,8 @@ The comparison is done using the `basisu` tool (measuring the PSNR)
 
 Original file size is 1572882 bytes.
 
-| Preset     | File Sizes | Ratio    |
-| ---------------------------------- |
+| Preset    | File Sizes | Ratio   |
+| --------- | ---------- | ------- |
 | `LOW`     | 357225     | 22.71 %  |
 | `MEDIUM`  | 365548     | 23.24 %  |
 | `HIGH`    | 277186     | 17.62 %  |
@@ -11026,7 +11026,7 @@ end
 
 #### `update(self, dt)`
 Called once each frame after `fixed_update` callback of all scripts (if Fixed Timestep is enabled). Parameter `dt` contains the delta time since the last frame.
-```luadifferent
+```lua
 function update(self, dt)
   self.age = self.age + dt -- increase age with the timestep
 end
@@ -14949,7 +14949,7 @@ Make sure to store the `manifest.private.der` and `manifest.public.der` files wh
 
 ## Application optimizations
 
-Read the [Optimization manual](#manuals:optimizations) on how to optimize your application for performance, size, memory and battery usage.
+Read the [Optimization manual](#manuals:optimization) on how to optimize your application for performance, size, memory and battery usage.
 
 ## Performance
 Always test on target hardware! Check game performance and optimize if needed. Use the [profiler](#manuals:profiling) to find bottlenecks in the code.
@@ -16943,12 +16943,12 @@ iconutil -c icns -o game.icns game.iconset
 ## Publishing your application
 You can publish your application to the Mac App Store, using a 3rd party store or portal such as Steam or itch.io or on your own through a website. Before publishing your application you need to prepare it for submission. The following steps are required regardless of how you intend to distribute the application:
 
-* 1) Make sure that anyone is able to run your game by adding the execute permissions (the default is that only the file owner has execute permissions):
+1. Make sure that anyone is able to run your game by adding the execute permissions (the default is that only the file owner has execute permissions):
 ```
 $ chmod +x Game.app/Contents/MacOS/Game
 ```
 
-* 2) Create an entitlements file specifying the permissions required by your game. For most games the following permissions are enough:
+2. Create an entitlements file specifying the permissions required by your game. For most games the following permissions are enough:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -16978,7 +16978,7 @@ Some applications may also need additional entitlements. The Steamworks extensio
 
 All of the entitlements that can be granted to an application are listed in the official [Apple developer documentation](https://developer.apple.com/documentation/bundleresources/entitlements).
 
-* 3) Sign your game using `codesign`:
+3. Sign your game using `codesign`:
 ```
 $ codesign --force --sign "Developer ID Application: Company Name" --options runtime --deep --timestamp --entitlements entitlement.plist Game.app
 ```
@@ -16986,9 +16986,9 @@ $ codesign --force --sign "Developer ID Application: Company Name" --options run
 ## Publishing outside the Mac App Store
 Apple requires all software distributed outside the Mac App Store to be notarized by Apple in order to run by default on macOS Catalina. Refer to the [official documentation](https://developer.apple.com/documentation/xcode/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow) to learn how to add notarization to a scripted build environment outside of Xcode. Brief summary of the steps involved are:
 
-* 1) Follow the above steps of adding permissions and signing the application.
+1. Follow the above steps of adding permissions and signing the application.
 
-* 2) Zip and upload your game for notarization using `altool`.
+2. Zip and upload your game for notarization using `altool`.
 ```
 $ xcrun altool --notarize-app
                --primary-bundle-id "com.acme.foobar"
@@ -17001,18 +17001,18 @@ altool[16765:378423] No errors uploading 'Game.zip'.
 RequestUUID = 2EFE2717-52EF-43A5-96DC-0797E4CA1041
 ```
 
-* 3) Check the status of your submission using the returned request UUID from the call to `altool --notarize-app`:
+3. Check the status of your submission using the returned request UUID from the call to `altool --notarize-app`:
 ```
 $ xcrun altool --notarization-info 2EFE2717-52EF-43A5-96DC-0797E4CA1041
                -u "AC_USERNAME"
 ```
 
-* 4) Wait until the status becomes `success` and staple the notarization ticket to the game:
+4. Wait until the status becomes `success` and staple the notarization ticket to the game:
 ```
 $ xcrun stapler staple "Game.app"
 ```
 
-* 5) Your game is now ready for distribution.
+5. Your game is now ready for distribution.
 
 ## Publishing to the Mac App Store
 The process when publishing to the Mac App Store is well documented in the [Apple Developer documentation](https://developer.apple.com/macos/submit/). Make sure to add permissions and codesign the application as described above before submitting.

@@ -87,7 +87,7 @@ The table below presents similar Unity components for quick lookup, with links f
 | [Sound](https://defold.com/llms/manuals/sound.md) | AudioSource | Defold has only a global sound source (not spatial). There is an official [FMOD extension](https://github.com/defold/extension-fmod) for Defold. |
 | [Factory](https://defold.com/llms/manuals/factory.md) | Prefab Instantiate() | In Defold, a Factory is a component with a specific prototype (prefab). |
 | [Collection Factory](https://defold.com/llms/manuals/collection-factory.md) | - (No direct component equivalent) | A Collection Factory component in Defold can spawn multiple Game Objects with parent-child relationships at once. |
-| [Collision Object](https://defold.com/llms/manuals/physics-object.md) | Rigidbody + Collider | In Defold, physics objects and collision shapes are combined in a single component. |
+| [Collision Object](https://defold.com/llms/manuals/physics-objects.md) | Rigidbody + Collider | In Defold, physics objects and collision shapes are combined in a single component. |
 | [Collision Shapes](https://defold.com/llms/manuals/physics-shapes.md)  | BoxCollider / SphereCollider / CapsuleCollider | In Defold, shapes (box, sphere, capsule) are configured inside the Collision Object component. Both support collision shapes from tilemaps and convex hull data. |
 | [Camera](https://defold.com/llms/manuals/camera.md) | Camera | In Unity, the camera has some more built-in rendering and post-processing settings, while Defold delegates it for custom control for user via the render script. |
 | [GUI](https://defold.com/llms/manuals/gui.md) | UI Toolkit / Unity UI / uGUI Canvas | Defold GUI is a powerful component for building complete UIs and templates. Unity doesn’t have an equivalent single UI component, rather multiple UI frameworks. Defold has an extension for [Extension](https://github.com/britzl/extension-imgui) too. |
@@ -99,7 +99,7 @@ The table below presents similar Unity components for quick lookup, with links f
 
 #### Extensions and custom components
 
-Defold also has an official [Spine](https://defold.com/llms/manuals/extension-spine.md) and [Rive](https://defold.com/llms/manuals/extension-rive.md) components available via extensions.
+Defold also has official [Spine](/extension-spine/) and [Rive](/extension-rive/) components available via extensions.
 
 You can also create your own [custom Components](https://github.com/defold/extension-simpledata) using Native Extensions, like e.g. this community created [Object Interpolation Component](https://github.com/indiesoftby/defold-object-interpolation).
 
