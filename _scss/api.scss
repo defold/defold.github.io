@@ -207,6 +207,102 @@ html.theme-dark .apicontent div.dropdownmenu img {
 	color: var(--defold-blue);
 }
 
+@media (max-width: 700px) {
+	.apicontent {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	.apicontent table {
+		display: block;
+		width: 100%;
+		min-width: 0;
+		overflow: visible;
+		white-space: normal;
+		background: transparent;
+		border: 0;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	.apicontent table tbody {
+		display: block;
+	}
+
+	.apicontent table tr {
+		display: block;
+		margin: 0 0 0.85rem;
+		padding: 0.9rem 1rem;
+		background: var(--table-bg);
+		border: 1px solid var(--table-border);
+		border-radius: var(--table-radius);
+		box-shadow: var(--table-shadow);
+	}
+
+	.apicontent table tr:has(> th) {
+		display: none;
+	}
+
+	.apicontent table.compact tr:has(> th:first-child:not(:empty)) {
+		display: block;
+		margin: 1.25rem 0 0.55rem;
+		padding: 0;
+		background: transparent;
+		border: 0;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	.apicontent table th,
+	.apicontent table td {
+		display: block;
+		width: 100% !important;
+		min-width: 0;
+		max-width: none;
+		padding: 0;
+		white-space: normal;
+		overflow-wrap: anywhere;
+		word-break: normal;
+	}
+
+	.apicontent table.compact tr:has(> th:first-child:not(:empty)) th:first-child {
+		display: block;
+		color: var(--theme-heading-color);
+		font-size: 0.8em;
+		font-weight: 800;
+		text-transform: uppercase;
+	}
+
+	.apicontent table.compact tr:has(> th:first-child:not(:empty)) th:not(:first-child) {
+		display: none;
+	}
+
+	.apicontent table td + td {
+		margin-top: 0.45rem;
+	}
+
+	.apicontent table td:empty {
+		display: none;
+	}
+
+	.apicontent table td:first-child {
+		font-weight: 700;
+	}
+
+	.apicontent table td:last-child {
+		color: var(--theme-copy-color);
+	}
+
+	.apicontent table td code {
+		white-space: normal;
+		overflow-wrap: anywhere;
+	}
+
+	.apicontent table table {
+		margin-top: 0.65rem;
+	}
+}
+
 /*******************************************************************************
 * Ref doc anchor links
 ******************************************************************************/
