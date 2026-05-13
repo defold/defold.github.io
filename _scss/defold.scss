@@ -5474,72 +5474,10 @@ dd {
 	}
 }
 
-/* Prefer content-sized metadata columns on wide API reference tables. */
-@media (min-width: 1101px) {
-	.apicontent table {
-		table-layout: auto;
-	}
-
-	.apicontent th:not(:last-child),
-	.apicontent td:not(:last-child) {
-		width: 1%;
-		white-space: nowrap;
-	}
-
-	.apicontent th:last-child,
-	.apicontent td:last-child {
-		width: auto;
-	}
-}
-
-/* Responsive tables for API reference */
-@media (max-width: 1100px) {
-	.apicontent table {
-		display: block;
-		width: 100%;
-		overflow-x: auto;
-		white-space: nowrap;
-		-webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-	}
-}
-
-@media (max-width: 1100px) {
-	.apicontent th,
-	.apicontent td {
-		white-space: nowrap;
-		min-width: 120px; /* Minimum width to ensure readability */
-	}
-	
-	/* Ensure first column (usually function names) has more space */
-	.apicontent th:first-child,
-	.apicontent td:first-child {
-		min-width: 150px;
-	}
-	
-	/* Limit last column width to reduce excessive scrolling */
-	.apicontent th:last-child,
-	.apicontent td:last-child {
-		max-width: 500px;
-		white-space: normal; /* Allow text wrapping in description column */
-		word-wrap: break-word;
-	}
-}
-
 /* Extra small screens */
 @media (max-width: 480px) {
 	dd {
 		margin-left: 0.5em;
-	}
-	
-	.apicontent th,
-	.apicontent td {
-		min-width: 100px;
-		font-size: 0.85em; /* Slightly smaller text on very small screens */
-	}
-	
-	.apicontent th:first-child,
-	.apicontent td:first-child {
-		min-width: 130px;
 	}
 }
 

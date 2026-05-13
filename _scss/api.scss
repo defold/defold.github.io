@@ -207,6 +207,66 @@ html.theme-dark .apicontent div.dropdownmenu img {
 	color: var(--defold-blue);
 }
 
+/*******************************************************************************
+* Ref doc tables
+******************************************************************************/
+
+/* Prefer content-sized metadata columns on wide API reference tables. */
+@media (min-width: 1100px) {
+	.apicontent table {
+		table-layout: auto;
+	}
+
+	.apicontent table th:not(:last-child),
+	.apicontent table td:not(:last-child) {
+		width: 1%;
+		white-space: nowrap;
+	}
+
+	.apicontent table th:last-child,
+	.apicontent table td:last-child {
+		width: auto;
+	}
+}
+
+/* Let medium-width API tables scroll while keeping names and descriptions readable. */
+@media (min-width: 701px) and (max-width: 1100px) {
+	.apicontent table {
+		display: block;
+		width: 100%;
+		table-layout: auto;
+		overflow-x: auto;
+		white-space: nowrap;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.apicontent table th:not(:last-child),
+	.apicontent table td:not(:last-child) {
+		width: 1%;
+		min-width: 120px;
+		white-space: nowrap;
+	}
+
+	.apicontent table th:first-child,
+	.apicontent table td:first-child {
+		min-width: 150px;
+		max-width: 500px;
+		white-space: normal;
+		overflow-wrap: anywhere;
+		word-break: normal;
+	}
+
+	.apicontent table th:last-child,
+	.apicontent table td:last-child {
+		width: auto;
+		max-width: 500px;
+		white-space: normal;
+		overflow-wrap: anywhere;
+		word-break: normal;
+	}
+}
+
+/* Mobile-friendly tables, fixing https://github.com/defold/defold.github.io/issues/240 */
 @media (max-width: 700px) {
 	.apicontent {
 		padding-left: 1rem;
@@ -300,6 +360,13 @@ html.theme-dark .apicontent div.dropdownmenu img {
 
 	.apicontent table table {
 		margin-top: 0.65rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.apicontent table th,
+	.apicontent table td {
+		font-size: 0.85em;
 	}
 }
 
