@@ -208,6 +208,169 @@ html.theme-dark .apicontent div.dropdownmenu img {
 }
 
 /*******************************************************************************
+* Ref doc tables
+******************************************************************************/
+
+/* Prefer content-sized metadata columns on wide API reference tables. */
+@media (min-width: 1100px) {
+	.apicontent table {
+		table-layout: auto;
+	}
+
+	.apicontent table th:not(:last-child),
+	.apicontent table td:not(:last-child) {
+		width: 1%;
+		white-space: nowrap;
+	}
+
+	.apicontent table th:last-child,
+	.apicontent table td:last-child {
+		width: auto;
+	}
+}
+
+/* Let medium-width API tables scroll while keeping names and descriptions readable. */
+@media (min-width: 701px) and (max-width: 1100px) {
+	.apicontent table {
+		display: block;
+		width: 100%;
+		table-layout: auto;
+		overflow-x: auto;
+		white-space: nowrap;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.apicontent table th:not(:last-child),
+	.apicontent table td:not(:last-child) {
+		width: 1%;
+		min-width: 120px;
+		white-space: nowrap;
+	}
+
+	.apicontent table th:first-child,
+	.apicontent table td:first-child {
+		min-width: 150px;
+		max-width: 500px;
+		white-space: normal;
+		overflow-wrap: anywhere;
+		word-break: normal;
+	}
+
+	.apicontent table th:last-child,
+	.apicontent table td:last-child {
+		width: auto;
+		max-width: 500px;
+		white-space: normal;
+		overflow-wrap: anywhere;
+		word-break: normal;
+	}
+}
+
+/* Mobile-friendly tables, fixing https://github.com/defold/defold.github.io/issues/240 */
+@media (max-width: 700px) {
+	.apicontent {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	.apicontent table {
+		display: block;
+		width: 100%;
+		min-width: 0;
+		overflow: visible;
+		white-space: normal;
+		background: transparent;
+		border: 0;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	.apicontent table tbody {
+		display: block;
+	}
+
+	.apicontent table tr {
+		display: block;
+		margin: 0 0 0.85rem;
+		padding: 0.9rem 1rem;
+		background: var(--table-bg);
+		border: 1px solid var(--table-border);
+		border-radius: var(--table-radius);
+		box-shadow: var(--table-shadow);
+	}
+
+	.apicontent table tr:has(> th) {
+		display: none;
+	}
+
+	.apicontent table.compact tr:has(> th:first-child:not(:empty)) {
+		display: block;
+		margin: 1.25rem 0 0.55rem;
+		padding: 0;
+		background: transparent;
+		border: 0;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	.apicontent table th,
+	.apicontent table td {
+		display: block;
+		width: 100% !important;
+		min-width: 0;
+		max-width: none;
+		padding: 0;
+		white-space: normal;
+		overflow-wrap: anywhere;
+		word-break: normal;
+	}
+
+	.apicontent table.compact tr:has(> th:first-child:not(:empty)) th:first-child {
+		display: block;
+		color: var(--theme-heading-color);
+		font-size: 0.8em;
+		font-weight: 800;
+		text-transform: uppercase;
+	}
+
+	.apicontent table.compact tr:has(> th:first-child:not(:empty)) th:not(:first-child) {
+		display: none;
+	}
+
+	.apicontent table td + td {
+		margin-top: 0.45rem;
+	}
+
+	.apicontent table td:empty {
+		display: none;
+	}
+
+	.apicontent table td:first-child {
+		font-weight: 700;
+	}
+
+	.apicontent table td:last-child {
+		color: var(--theme-copy-color);
+	}
+
+	.apicontent table td code {
+		white-space: normal;
+		overflow-wrap: anywhere;
+	}
+
+	.apicontent table table {
+		margin-top: 0.65rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.apicontent table th,
+	.apicontent table td {
+		font-size: 0.85em;
+	}
+}
+
+/*******************************************************************************
 * Ref doc anchor links
 ******************************************************************************/
 
