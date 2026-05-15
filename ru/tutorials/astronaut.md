@@ -27,7 +27,7 @@ title: Учебник по движению в игре с видом сверх
 4. Выберите *Location* для проекта на локальном диске.
 5. Нажмите <kbd>Create New Project</kbd>.
 
-![new project](/tutorials/images/top-down-movement.webp)
+![new project](/tutorials/images/top-down-start.webp)
 
 Редактор автоматически откроет файл "README" из корня проекта с полным текстом учебника, которому можно следовать.
 
