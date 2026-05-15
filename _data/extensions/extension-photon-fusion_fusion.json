@@ -42,13 +42,6 @@
                     "types": [
                         "string"
                     ]
-                },
-                {
-                    "doc": "",
-                    "name": "region",
-                    "types": [
-                        "string"
-                    ]
                 }
             ],
             "returnvalues": [],
@@ -319,13 +312,13 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Register a scene object.\n",
+            "description": "Create a map object.\n",
             "examples": "",
-            "name": "fusion.register_scene_object",
+            "name": "fusion.create_map_object",
             "parameters": [
                 {
                     "doc": "",
-                    "name": "scene",
+                    "name": "map",
                     "types": [
                         "number"
                     ]
@@ -421,9 +414,9 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Register an object.\n",
+            "description": "Create an object.\n",
             "examples": "",
-            "name": "fusion.register_object",
+            "name": "fusion.create_object",
             "parameters": [
                 {
                     "doc": "",
@@ -458,9 +451,9 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Unregister a previously registered object.\n",
+            "description": "Destroy a previously created object.\n",
             "examples": "",
-            "name": "fusion.unregister_object",
+            "name": "fusion.destroy_object",
             "parameters": [
                 {
                     "doc": "",
@@ -474,9 +467,9 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Change scene.\n",
+            "description": "Change map.\n",
             "examples": "",
-            "name": "fusion.change_scene",
+            "name": "fusion.map_change",
             "parameters": [
                 {
                     "doc": "",
@@ -665,7 +658,7 @@
         {
             "description": "Set the send rate of an object. This decided how much bandwidth to allocate\n",
             "examples": "",
-            "name": "fusion.set_send_rate",
+            "name": "fusion.set_room_send_rate",
             "parameters": [
                 {
                     "doc": "",
@@ -711,7 +704,7 @@
         {
             "description": "Reset the send rate of an object.\n",
             "examples": "",
-            "name": "fusion.reset_send_rate",
+            "name": "fusion.reset_room_send_rate",
             "parameters": [
                 {
                     "doc": "Id of the object to reset send rate for\n",
@@ -1097,6 +1090,22 @@
             "type": "VARIABLE"
         },
         {
+            "description": "EVENT_OBJECT_FORCE_ALIVE\n",
+            "examples": "",
+            "name": "EVENT_OBJECT_FORCE_ALIVE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_SUB_OBJECT_FORCE_ALIVE\n",
+            "examples": "",
+            "name": "EVENT_SUB_OBJECT_FORCE_ALIVE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
             "description": "EVENT_OBJECT_OWNER_CHANGED\n",
             "examples": "",
             "name": "EVENT_OBJECT_OWNER_CHANGED",
@@ -1105,9 +1114,9 @@
             "type": "VARIABLE"
         },
         {
-            "description": "EVENT_OBJECT_PREDICTION_OVERRIDE\n",
+            "description": "EVENT_PREDICTION_OVERRIDE\n",
             "examples": "",
-            "name": "EVENT_OBJECT_PREDICTION_OVERRIDE",
+            "name": "EVENT_PREDICTION_OVERRIDE",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
@@ -1145,9 +1154,9 @@
             "type": "VARIABLE"
         },
         {
-            "description": "EVENT_SCENE_CHANGE\n",
+            "description": "EVENT_MAP_CHANGE\n",
             "examples": "",
-            "name": "EVENT_SCENE_CHANGE",
+            "name": "EVENT_MAP_CHANGE",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"

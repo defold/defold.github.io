@@ -64657,7 +64657,6 @@ Connect Fusion.
 **Parameters**
 
 - `user` (string)
-- `region` (string)
 
 ### fusion.disconnect
 *Type:* FUNCTION
@@ -64786,13 +64785,13 @@ Enable/disable debugging.
 
 - `enable` (boolean)
 
-### fusion.register_scene_object
+### fusion.create_map_object
 *Type:* FUNCTION
-Register a scene object.
+Create a map object.
 
 **Parameters**
 
-- `scene` (number)
+- `map` (number)
 - `factory_url` (string)
 - `owner_mode` (number)
 - `id` (string)
@@ -64825,9 +64824,9 @@ Destroy a networked object.
 
 - `id` (string)
 
-### fusion.register_object
+### fusion.create_object
 *Type:* FUNCTION
-Register an object.
+Create an object.
 
 **Parameters**
 
@@ -64836,17 +64835,17 @@ Register an object.
 - `owner_mode` (number)
 - `id` (string)
 
-### fusion.unregister_object
+### fusion.destroy_object
 *Type:* FUNCTION
-Unregister a previously registered object.
+Destroy a previously created object.
 
 **Parameters**
 
 - `id` (string)
 
-### fusion.change_scene
+### fusion.map_change
 *Type:* FUNCTION
-Change scene.
+Change map.
 
 **Parameters**
 
@@ -64937,7 +64936,7 @@ Explicitly clear the ownership cooldown
 
 - `id` (string) - Id of the object to clear cooldown for
 
-### fusion.set_send_rate
+### fusion.set_room_send_rate
 *Type:* FUNCTION
 Set the send rate of an object. This decided how much bandwidth to allocate
 
@@ -64955,7 +64954,7 @@ Set the local send rate divisor for an object. A value of `1` means the object s
 - `send_rate` (number)
 - `id` (string) - Id of the object to send rate for
 
-### fusion.reset_send_rate
+### fusion.reset_room_send_rate
 *Type:* FUNCTION
 Reset the send rate of an object.
 
@@ -65155,13 +65154,21 @@ EVENT_OBJECT_DESTROYED
 *Type:* VARIABLE
 EVENT_SUB_OBJECT_DESTROYED
 
+### EVENT_OBJECT_FORCE_ALIVE
+*Type:* VARIABLE
+EVENT_OBJECT_FORCE_ALIVE
+
+### EVENT_SUB_OBJECT_FORCE_ALIVE
+*Type:* VARIABLE
+EVENT_SUB_OBJECT_FORCE_ALIVE
+
 ### EVENT_OBJECT_OWNER_CHANGED
 *Type:* VARIABLE
 EVENT_OBJECT_OWNER_CHANGED
 
-### EVENT_OBJECT_PREDICTION_OVERRIDE
+### EVENT_PREDICTION_OVERRIDE
 *Type:* VARIABLE
-EVENT_OBJECT_PREDICTION_OVERRIDE
+EVENT_PREDICTION_OVERRIDE
 
 ### EVENT_LOBBY_STATS
 *Type:* VARIABLE
@@ -65179,9 +65186,9 @@ EVENT_ROOM_LEFT
 *Type:* VARIABLE
 EVENT_RPC
 
-### EVENT_SCENE_CHANGE
+### EVENT_MAP_CHANGE
 *Type:* VARIABLE
-EVENT_SCENE_CHANGE
+EVENT_MAP_CHANGE
 
 ### EVENT_DESTROYED_MAP_ACTOR
 *Type:* VARIABLE
