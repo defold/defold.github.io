@@ -10,7 +10,7 @@ We invited Alex Asvegren from [8BitSkull](https://www.8bitskull.com/) back to th
 
 This time we talked about the studio strategy behind those games, the launch of Skull Horde, Steam marketing, localization, console plans, Defold performance, and what it means for a small indie studio to build a sustainable rhythm around compact power fantasies.
 
-![8BitSkull games made with Defold](/images/posts/newsletter-may-2026/8bitskull.webp)
+![8BitSkull games made with Defold](/images/posts/interview-8bitskull/8bitskull_games.webp)
 <div align="center">
 _8BitSkull has shipped four commercial Defold games: Skull Horde, Bore Blasters, Void Scrappers, and Fates of Ort_
 </div>
