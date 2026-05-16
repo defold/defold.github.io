@@ -216,7 +216,7 @@ The script code above is written in the Lua language. There are a few things to 
 
 ### Update
 
-The `init()` function is called exactly once, when the script component is instantiated into the running game. The function `update()`, however, is called once **each frame**. That makes the function ideal for real-time game logic.
+The `init()` function is called exactly once, when the script component is instantiated into the running game. The function `update()`, however, is called once **each frame**, so 60 times a second by default. That makes the function ideal for real-time game logic.
 
 The idea for the update is this: at some set interval do the following:
 
