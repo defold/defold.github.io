@@ -207,7 +207,7 @@ Create an object.
 - `map` (number)
 - `factory_url` (string)
 - `owner_mode` (number)
-- `script_properties` (table)
+- `options` (table)
 - `id` (string)
 
 ### fusion.destroy_object
@@ -541,6 +541,14 @@ PLUGIN_PLAYER_ID
 ### OBJECT_OWNER_PLAYER_ID
 *Type:* VARIABLE
 OBJECT_OWNER_PLAYER_ID
+
+### REPLICATION_MODE_NONE
+*Type:* VARIABLE
+REPLICATION_MODE_NONE
+
+### REPLICATION_MODE_AUTO
+*Type:* VARIABLE
+REPLICATION_MODE_AUTO
 
 ### EVENT_OBJECT_READY
 *Type:* VARIABLE
