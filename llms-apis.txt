@@ -47690,14 +47690,37 @@ Functions and constants for interacting with Poki SDK APIs
 - `topPercent` (number)
 - `topPx` (number)
 
-### poki_sdk.open_external_link
+### poki_sdk.get_user
 *Type:* FUNCTION
 
 **Parameters**
 
-- `url` (string)
+- `callback` (function)
+  - `self` (object) - The calling script instance
+  - `user` (table) - A table with the fields `username` and `avatar_url`, or `nil` if no user is logged in.
+  - `error` (string) - The rejection message if user accounts are unavailable, or `nil` otherwise.
 
-### poki_sdk.openExternalLink
+### poki_sdk.get_token
+*Type:* FUNCTION
+
+**Parameters**
+
+- `callback` (function)
+  - `self` (object) - The calling script instance
+  - `token` (string) - The Poki auth token, or `nil` if no user is logged in.
+  - `error` (string) - The rejection message if user accounts are unavailable, or `nil` otherwise.
+
+### poki_sdk.login
+*Type:* FUNCTION
+
+**Parameters**
+
+- `callback` (function)
+  - `self` (object) - The calling script instance
+  - `success` (boolean) - `true` if the login promise resolved, otherwise `false`.
+  - `error` (string) - The rejection message on failure, or `nil` on success.
+
+### poki_sdk.open_external_link
 *Type:* FUNCTION
 
 **Parameters**
