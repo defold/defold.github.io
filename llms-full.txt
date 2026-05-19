@@ -64792,8 +64792,9 @@ Create a map object.
 **Parameters**
 
 - `map` (number)
-- `factory_url` (string)
 - `owner_mode` (number)
+- `properties` (table) - Which script properties to sync
+
 - `id` (string)
 
 ### fusion.spawn
@@ -64808,9 +64809,11 @@ Way as when calling factory.create(). The function will also register the spawne
 
 - `rotation` (quat) - Initial rotation of created game object
 
-- `scene` (number) - The scene to which this object belongs
+- `map` (number) - The map to which this object belongs
 
 - `owner_mode` (number) - Owner mode of spawned object
+
+- `script_properties` (table)
 
 **Returns**
 
@@ -64830,9 +64833,10 @@ Create an object.
 
 **Parameters**
 
-- `scene` (number)
+- `map` (number)
 - `factory_url` (string)
 - `owner_mode` (number)
+- `script_properties` (table)
 - `id` (string)
 
 ### fusion.destroy_object
@@ -64853,19 +64857,28 @@ Change map.
 - `sequence` (number)
 - `data` (string)
 
-### fusion.rpc
+### fusion.send_rpc
 *Type:* FUNCTION
-Send RPC.
+Send an RPC event. Events can be sent to a specific player or all players, and.
+To a specific object or to all subscribers.
 
 **Parameters**
 
 - `target_player` (number) - 0 = all, specific PlayerId = targeted
 
-- `data` (string)
+- `data` (table)
 
 **Returns**
 
 - `boolean`
+
+### fusion.subscribe_rpc
+*Type:* FUNCTION
+Subscribe to RPC broadcat event. The events will be delivered as messages.
+
+### fusion.unsubscribe_rpc
+*Type:* FUNCTION
+Unsubscribe from a subscribed RPC event.
 
 ### fusion.on_event
 *Type:* FUNCTION
@@ -64985,6 +64998,14 @@ Get round trip time
 **Returns**
 
 - `number` - Round trip time in seconds
+
+### fusion.get_network_time
+*Type:* FUNCTION
+Get the network time
+
+**Returns**
+
+- `number` - Network time
 
 ### fusion.network_time_diff
 *Type:* FUNCTION
@@ -65137,6 +65158,18 @@ DISCONNECT_CAUSE_AUTHENTICATIONTICKETEXPIRED
 ### DISCONNECT_CAUSE_DISCONNECTBYOPERATIONLIMIT
 *Type:* VARIABLE
 DISCONNECT_CAUSE_DISCONNECTBYOPERATIONLIMIT
+
+### MASTER_CLIENT_PLAYER_ID
+*Type:* VARIABLE
+MASTER_CLIENT_PLAYER_ID
+
+### PLUGIN_PLAYER_ID
+*Type:* VARIABLE
+PLUGIN_PLAYER_ID
+
+### OBJECT_OWNER_PLAYER_ID
+*Type:* VARIABLE
+OBJECT_OWNER_PLAYER_ID
 
 ### EVENT_OBJECT_READY
 *Type:* VARIABLE

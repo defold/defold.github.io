@@ -325,16 +325,16 @@
                 },
                 {
                     "doc": "",
-                    "name": "factory_url",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "",
                     "name": "owner_mode",
                     "types": [
                         "number"
+                    ]
+                },
+                {
+                    "doc": "Which script properties to sync\n",
+                    "name": "properties",
+                    "types": [
+                        "table"
                     ]
                 },
                 {
@@ -375,8 +375,8 @@
                     ]
                 },
                 {
-                    "doc": "The scene to which this object belongs\n",
-                    "name": "scene",
+                    "doc": "The map to which this object belongs\n",
+                    "name": "map",
                     "types": [
                         "number"
                     ]
@@ -386,6 +386,13 @@
                     "name": "owner_mode",
                     "types": [
                         "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "script_properties",
+                    "types": [
+                        "table"
                     ]
                 }
             ],
@@ -420,7 +427,7 @@
             "parameters": [
                 {
                     "doc": "",
-                    "name": "scene",
+                    "name": "map",
                     "types": [
                         "number"
                     ]
@@ -437,6 +444,13 @@
                     "name": "owner_mode",
                     "types": [
                         "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "script_properties",
+                    "types": [
+                        "table"
                     ]
                 },
                 {
@@ -497,9 +511,9 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Send RPC.\n",
+            "description": "Send an RPC event. Events can be sent to a specific player or all players, and.\nTo a specific object or to all subscribers.\n",
             "examples": "",
-            "name": "fusion.rpc",
+            "name": "fusion.send_rpc",
             "parameters": [
                 {
                     "doc": "0 = all, specific PlayerId = targeted\n",
@@ -512,7 +526,7 @@
                     "doc": "",
                     "name": "data",
                     "types": [
-                        "string"
+                        "table"
                     ]
                 }
             ],
@@ -522,6 +536,22 @@
                     "name": "boolean"
                 }
             ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Subscribe to RPC broadcat event. The events will be delivered as messages.\n",
+            "examples": "",
+            "name": "fusion.subscribe_rpc",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Unsubscribe from a subscribed RPC event.\n",
+            "examples": "",
+            "name": "fusion.unsubscribe_rpc",
+            "parameters": [],
+            "returnvalues": [],
             "type": "FUNCTION"
         },
         {
@@ -751,6 +781,19 @@
             "returnvalues": [
                 {
                     "doc": "Round trip time in seconds\n",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get the network time\n",
+            "examples": "",
+            "name": "fusion.get_network_time",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "Network time\n",
                     "name": "number"
                 }
             ],
@@ -1053,6 +1096,30 @@
             "description": "DISCONNECT_CAUSE_DISCONNECTBYOPERATIONLIMIT\n",
             "examples": "",
             "name": "DISCONNECT_CAUSE_DISCONNECTBYOPERATIONLIMIT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "MASTER_CLIENT_PLAYER_ID\n",
+            "examples": "",
+            "name": "MASTER_CLIENT_PLAYER_ID",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "PLUGIN_PLAYER_ID\n",
+            "examples": "",
+            "name": "PLUGIN_PLAYER_ID",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "OBJECT_OWNER_PLAYER_ID\n",
+            "examples": "",
+            "name": "OBJECT_OWNER_PLAYER_ID",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
