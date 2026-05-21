@@ -126,6 +126,7 @@ These are per-example files generated for LLM usage.
 ## Physics
 
 - [Apply force](https://defold.com/llms/examples/physics/apply_force.md) - This example demonstrates how to apply directional force to all dynamic blocks on touch/click and draws debug direction lines
+- [Apply Linear Impluse](https://defold.com/llms/examples/physics/apply_linear_impulse.md) - This example demonstrates how to apply linear impluse to a dynamic cube on touch/click
 - [Dynamic physics](https://defold.com/llms/examples/physics/dynamic.md) - This example shows a simple setup with dynamic physics objects
 - [Fixed timestep interpolation](https://defold.com/llms/examples/physics/interpolation.md) - This example shows how to smooth physics motion in fixed update mode by interpolating a visual sprite while keeping the physics body fixed-step
 - [Hinge joint physics](https://defold.com/llms/examples/physics/hinge_joint.md) - This example shows a simple setup with a dynamic body physics object and two dynamic wheel physics object joined together with a joint of type "hinge"

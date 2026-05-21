@@ -126,6 +126,7 @@ This document contains Defold examples grouped by category.
 ## Physics
 
 - [Apply force](#examples:physics:apply_force) - This example demonstrates how to apply directional force to all dynamic blocks on touch/click and draws debug direction lines
+- [Apply Linear Impluse](#examples:physics:apply_linear_impulse) - This example demonstrates how to apply linear impluse to a dynamic cube on touch/click
 - [Dynamic physics](#examples:physics:dynamic) - This example shows a simple setup with dynamic physics objects
 - [Fixed timestep interpolation](#examples:physics:interpolation) - This example shows how to smooth physics motion in fixed update mode by interpolating a visual sprite while keeping the physics body fixed-step
 - [Hinge joint physics](#examples:physics:hinge_joint) - This example shows a simple setup with a dynamic body physics object and two dynamic wheel physics object joined together with a joint of type "hinge"
@@ -7383,6 +7384,20 @@ function final(self)
 	msg.post(".", "release_input_focus")
 end
 ```
+
+<!-- physics/apply_linear_impulse -->
+
+# Apply Linear Impluse {#examples:physics:apply_linear_impulse}
+
+This example demonstrates how to apply linear impluse to a dynamic cube on touch/click
+
+[Project files](https://github.com/defold/examples/tree/master/physics/apply_linear_impulse)
+
+The cube contains a dynamic collisionobject component.
+
+The below script applies a vertical linear impulse to the dynamic collisionobject on click/touch using the `b2d` API functions.
+
+Read more about the [Box2D API here](https://defold.com/ref/stable/b2d-lua/).
 
 <!-- physics/dynamic -->
 
