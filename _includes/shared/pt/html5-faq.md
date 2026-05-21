@@ -1,12 +1,12 @@
-#### Q: Why does my HTML5-app freeze at the splash screen in Chrome?
+#### P: Por que meu aplicativo HTML5 congela na tela inicial no Chrome?
 
-A: In some cases it is not possible to run a game in the browser locally from the filesystem. Running from the editor serves the game from a local web server. You can, for instance, use `SimpleHTTPServer` in Python:
+R: Em alguns casos, não é possível rodar um jogo localmente no navegador a partir do sistema de arquivos. Ao rodar pelo editor, o jogo é servido a partir de um servidor web local. Você pode, por exemplo, usar `SimpleHTTPServer` em Python:
 
 ```sh
 $ python -m SimpleHTTPServer [port]
 ```
 
 
-#### Q: Why does my game crash with error "Unexpected data size" while loading?
+#### P: Por que meu jogo trava com o erro "Unexpected data size" durante o carregamento?
 
-A: This usually happens when you are using Windows and make a build and commit it to Git. If you have the wrong line-ending configuration in Git it will change your line endings and thus also the data size. Follow these instructions to solve the problem: [https://docs.github.com/en/free-pro-team@latest/github/using-git/configuring-git-to-handle-line-endings](https://docs.github.com/en/free-pro-team@latest/github/using-git/configuring-git-to-handle-line-endings)
+R: Isso geralmente acontece quando você está usando Windows, faz uma build e a commita no Git. Se você tiver uma configuração errada de finais de linha no Git, ele mudará seus finais de linha e, portanto, também o tamanho dos dados. Siga estas instruções para resolver o problema: [https://docs.github.com/en/free-pro-team@latest/github/using-git/configuring-git-to-handle-line-endings](https://docs.github.com/en/free-pro-team@latest/github/using-git/configuring-git-to-handle-line-endings)

@@ -1,22 +1,22 @@
-Components are used to give specific expression and/or functionality to game objects. Components have to be contained inside game objects and are affected by the position, rotation and scale of the game object that contains the component:
+Componentes são usados para dar expressão e/ou funcionalidade específica aos objetos de jogo. Componentes precisam estar contidos dentro de objetos de jogo e são afetados pela posição, rotação e escala do objeto de jogo que contém o componente:
 
-![Components](/shared/images/components.png)
+![Componentes](/shared/images/components.png)
 
-Many components have type specific properties that can be manipulated and there are component type specific functions available for interacting with them in runtime:
+Muitos componentes têm propriedades específicas do tipo que podem ser manipuladas, e há funções específicas do tipo de componente disponíveis para interagir com eles em tempo de execução:
 
 ```lua
--- disable the can "body" sprite
+-- desabilita o sprite "body" da lata
 msg.post("can#body", "disable")
 
--- play "hoohoo" sound on "bean" in 1 second
+-- toca o som "hoohoo" em "bean" em 1 segundo
 sound.play("bean#hoohoo", { delay = 1, gain = 0.5 } )
 ```
 
-Components are either added in-place in a game object, or added to a game object as a reference to a component file:
+Componentes são adicionados no local em um objeto de jogo ou adicionados a um objeto de jogo como referência a um arquivo de componente:
 
-<kbd>Right-click</kbd> the game object in the *Outline* view and select <kbd>Add Component</kbd> (add in-place) or <kbd>Add Component File</kbd> (add as file reference).
+Use <kbd>Right-click</kbd> no objeto de jogo na visualização *Outline* e selecione <kbd>Add Component</kbd> (adicionar no local) ou <kbd>Add Component File</kbd> (adicionar como referência de arquivo).
 
-In most cases it makes most sense to create components in-place, but the following component types must be created in separate resource files before being added by reference to a game object:
+Na maioria dos casos, faz mais sentido criar componentes no local, mas os seguintes tipos de componente precisam ser criados em arquivos de recurso separados antes de serem adicionados por referência a um objeto de jogo:
 
 * Script
 * GUI

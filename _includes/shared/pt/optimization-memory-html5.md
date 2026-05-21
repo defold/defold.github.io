@@ -1,9 +1,9 @@
-## Heap size (HTML5)
-The heap size of a Defold HTML5 game can be configured from the [`heap_size` field](/manuals/project-settings/#heap-size) in *game.project*. Make sure to optimize memory usage of your game and set a minimal heap size.
+## Tamanho da heap (HTML5)
+O tamanho da heap de um jogo Defold HTML5 pode ser configurado pelo [campo `heap_size`](/manuals/project-settings/#heap-size) em *game.project*. Certifique-se de otimizar o uso de memória do seu jogo e definir um tamanho mínimo de heap.
 
-For small games, 32 MB is an achievable heap size. For larger games, aim for 64–128 MB. If, for example, you're at 58 MB and further optimization isn't feasible, you can settle on 64 MB without overthinking it. There’s no strict target size — it depends on the game. Just aim for smaller sizes, ideally in steps of powers of two. 
+Para jogos pequenos, 32 MB é um tamanho de heap viável. Para jogos maiores, mire em 64-128 MB. Se, por exemplo, você estiver em 58 MB e não for viável otimizar mais, pode ficar com 64 MB sem pensar demais. Não há um tamanho-alvo rígido; isso depende do jogo. Apenas mire em tamanhos menores, de preferência em passos de potências de dois.
 
-To check current heap usage you can launch your game and play the game in the most "resource heavy" level or section and monitor memory usage:
+Para verificar o uso atual da heap, você pode iniciar seu jogo, jogar o nível ou seção mais pesado em recursos e monitorar o uso de memória:
 
 ```lua
 if html5 then
@@ -12,10 +12,10 @@ if html5 then
 end
 ```
 
-You can also open the developer tools of your browser and write the following in the console:
+Você também pode abrir as ferramentas de desenvolvedor do seu navegador e escrever o seguinte no console:
 
 ```js
 HEAP8.length / 1024 / 1024
 ```
 
-If the memory usage remains at 32 MB, that's great! If not, follow the steps to [optimize the size of the engine itself and large assets such as sounds and textures](/manuals/optimization-size).
+Se o uso de memória permanecer em 32 MB, ótimo! Caso contrário, siga os passos para [otimizar o tamanho da própria engine e de assets grandes, como sons e texturas](/manuals/optimization-size).

@@ -20,19 +20,19 @@ toc:
 
 # O aplicativo de desenvolvimento móvel
 
-O aplicativo de desenvolvimento permite que você envie conteúdo para ele via wifi. Isso reduzirá bastante o tempo de iteração, pois você não precisa empacotar e instalar toda vez que desejar testar suas alterações. Você instala o aplicativo de desenvolvimento no(s) seu(s) dispositivo(s), inicia o aplicativo e então seleciona o dispositivo como um alvo de build a partir do editor.
+O aplicativo de desenvolvimento permite enviar conteúdo para ele via wifi. Isso reduz bastante o tempo de iteração, pois você não precisa empacotar e instalar o app toda vez que quiser testar suas alterações. Você instala o aplicativo de desenvolvimento nos seus dispositivos, inicia o aplicativo e então seleciona o dispositivo como alvo de build no editor.
 
 ## Instalando um aplicativo de desenvolvimento
 
-Qualquer aplicativo iOS ou Android que seja empacotado no modo Debug será capaz de atuar como um aplicativo de desenvolvimento. Na verdade, esta é a solução recomendada, pois o aplicativo de desenvolvimento terá as configurações de projeto corretas e usa as mesmas [extensões nativas](/manuals/extensions/) do projeto em que você está trabalhando.
+Qualquer aplicativo iOS ou Android que seja empacotado no modo Debug será capaz de atuar como um aplicativo de desenvolvimento. Na verdade, esta é a solução recomendada, pois o aplicativo de desenvolvimento terá as configurações de projeto corretas e usa as mesmas [extensões nativas](/pt/manuals/extensions/) do projeto em que você está trabalhando.
 
 A partir do Defold 1.4.0, é possível empacotar uma variante Debug do seu projeto sem nenhum conteúdo. Use esta opção para criar uma versão do seu aplicativo com extensões nativas, adequada para desenvolvimento iterativo conforme descrito neste manual.
 
-<img width="375" height="319" alt="image" src="https://github.com/user-attachments/assets/c911cd77-05fe-4996-bca7-9e8274667cdc" />
+![content less bundle](/manuals/images/dev-app/contentless-bundle.png)
 
 ### Instalando no iOS
 
-Siga as [instruções no manual do iOS](/manuals/ios/#creating-an-ios-application-bundle) para empacotar para iOS. Certifique-se de selecionar Debug como variante!
+Siga as [instruções no manual do iOS](/pt/manuals/ios/#creating-an-ios-application-bundle) para empacotar para iOS. Certifique-se de selecionar Debug como variante!
 
 ### Instalando no Android
 
@@ -46,7 +46,7 @@ Para iniciar seu jogo no seu dispositivo, o aplicativo de desenvolvimento e o ed
 2. Inicie o aplicativo de desenvolvimento no dispositivo.
 3. Selecione seu dispositivo em <kbd>Project ▸ Targets</kbd> no editor.
 4. Selecione <kbd>Project ▸ Build</kbd> para executar o jogo. Pode levar um tempo para o jogo iniciar, pois o conteúdo do jogo é transmitido para o dispositivo pela rede.
-5. Enquanto o jogo está em execução, você pode usar [hot reloading](/manuals/hot-reload/) como de costume.
+5. Enquanto o jogo está em execução, você pode usar [hot reloading](/pt/manuals/hot-reload/) como de costume.
 
 ### Conectando a um dispositivo iOS usando USB no Windows
 

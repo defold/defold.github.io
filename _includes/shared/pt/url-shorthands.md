@@ -1,17 +1,17 @@
   `.`
-  : Shorthand resolving to the current game object.
+  : Atalho que resolve para o objeto de jogo atual.
 
   `#`
-  : Shorthand resolving to the current component.
+  : Atalho que resolve para o componente atual.
 
-  For example:
+  Por exemplo:
 
   ```lua
-   -- Let this game object acquire input focus
+   -- Permite que este objeto de jogo adquira foco de entrada
    msg.post(".", "acquire_input_focus")
   ```
 
   ```lua
-   -- Post "reset" to the current script
+   -- Envia "reset" ao script atual
    msg.post("#", "reset")
   ```

@@ -1,10 +1,10 @@
-## Component max count optimizations
-The *game.project* settings file contains many values specifying the maximum number of a certain resource that can exist at the same time, often counted per loaded collection (also called world). The Defold engine will use these max values to preallocate memory for this amount of memory to avoid dynamic allocations and memory fragmentation while the game is running.
+## Otimizações de contagem máxima de componentes
+O arquivo de configurações *game.project* contém muitos valores que especificam o número máximo de determinado recurso que pode existir ao mesmo tempo, geralmente contado por coleção carregada (também chamada de mundo). A engine Defold usará esses valores máximos para pré-alocar memória para essa quantidade, evitando alocações dinâmicas e fragmentação de memória enquanto o jogo está em execução.
 
-The Defold data structures used to represent components and other resources are optimized to use as little memory as possible but care should still be taken when setting the values to avoid allocating more memory than is actually necessary.
+As estruturas de dados do Defold usadas para representar componentes e outros recursos são otimizadas para usar o mínimo de memória possível, mas ainda é preciso tomar cuidado ao definir os valores para evitar alocar mais memória do que realmente é necessário.
 
-To further optimize memory usage the Defold build process will analyse the content of the game and override the max counts if it is possible to know for certain the exact amount:
+Para otimizar ainda mais o uso de memória, o processo de build do Defold analisará o conteúdo do jogo e substituirá as contagens máximas se for possível saber com certeza a quantidade exata:
 
-* If a collection doesn't contain any factory components the exact amount of each component and Game Object will be allocated and the max count values will be ignored.
-* If a collection contains a factory component the spawned objects will be analysed and the max count will be used for components that can be spawned from the factories and for Game Objects.
-* If a collection contains a factory or a collection factory with activated "Dynamic Prototype" option, this collection will use the max counters.
+* Se uma coleção não contiver nenhum componente de fábrica, a quantidade exata de cada componente e objeto de jogo será alocada, e os valores de contagem máxima serão ignorados.
+* Se uma coleção contiver um componente de fábrica, os objetos gerados serão analisados e a contagem máxima será usada para componentes que podem ser gerados pelas fábricas e para objetos de jogo.
+* Se uma coleção contiver uma fábrica ou uma fábrica de coleção com a opção "Dynamic Prototype" ativada, essa coleção usará os contadores máximos.
