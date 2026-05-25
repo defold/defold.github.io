@@ -1020,6 +1020,14 @@
                     ]
                 },
                 {
+                    "doc": "lua stack index to check for an options table",
+                    "is_optional": "False",
+                    "name": "options_index",
+                    "types": [
+                        "int"
+                    ]
+                },
+                {
                     "doc": "json string",
                     "is_optional": "False",
                     "name": "json",
@@ -1066,7 +1074,7 @@
         },
         {
             "brief": "convert a Lua table to a Json string",
-            "description": "Convert a Lua table to a Json string",
+            "description": "Convert the Lua value at the supplied stack index to a Json string",
             "error": "",
             "examples": "",
             "language": "",
@@ -1080,6 +1088,22 @@
                     "name": "L",
                     "types": [
                         "lua_State*"
+                    ]
+                },
+                {
+                    "doc": "lua stack index of the value to encode",
+                    "is_optional": "False",
+                    "name": "index",
+                    "types": [
+                        "int"
+                    ]
+                },
+                {
+                    "doc": "lua stack index to check for an options table",
+                    "is_optional": "False",
+                    "name": "options_index",
+                    "types": [
+                        "int"
                     ]
                 },
                 {
