@@ -25,9 +25,10 @@ Call `fusion.spawn()` to create a networked game object instance and `fusion.des
 local factory_url = "example:/game#playerfactory"
 local position = vmath.vector3(100, 100, 0)
 local rotation = vmath.quat_rotation_z(math.rad(45))
-local scene = 1
+local map = 1
 local owner_mode = fusion.OWNERMODE_PLAYERATTACHED
-local id = fusion.spawn(factory_url, position, rotation, scene, owner_mode)
+local options = {}
+local id = fusion.spawn(factory_url, position, rotation, map, owner_mode, options)
 print("Created a networked game object with id", id)
 
 -- delete the game object

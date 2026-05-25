@@ -185,7 +185,9 @@ Not everything in a game is continuous state. One-shot events like chat messages
 
 ```lua
 local function send_message()
-	fusion.rpc(0, "show_message", "Hello!")
+	local player_id = 0 -- broadcast
+	local object_id = nil
+	fusion.rpc(player_id, object_id, "show_message", "Hello!")
 end
 
 function init(self)

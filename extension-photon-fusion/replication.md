@@ -25,17 +25,18 @@ Fusion replicates at the property level. Individual values like position, health
 
 
 ## How to replicate an object
-Register a game object using `fusion.register_object()` to handle property sync for the game object. The authority client writes values to the server; remote clients receive and optionally smooth them.
+Register a game object using `fusion.create_object()` to handle property sync for the game object. The authority client writes values to the server; remote clients receive and optionally smooth them.
 
 ```lua
+local map = 1
 local factory_url = "example:/game#playerfactory"
-local scene = 1
 local owner_mode = fusion.OWNERMODE_PLAYERATTACHED
+local options = {}
 local id = go.get_id()
-fusion.register_object(factory_url, scene, owner_mode, id)
+fusion.create_object(map, factory_url, scene, owner_mode, options, id)
 ```
 
-Call `fusion.unregister_object(id)` to no longer handle property sync for a game object.
+Call `fusion.destroy_object(id)` to no longer handle property sync for a game object.
 
 
 ## Authority and Ownership
@@ -45,11 +46,11 @@ Authority mode is decided when the object is registered with Fusion:
 
 ```lua
 local function on_player_joined()
-	fusion.register_object(scene, factory_url, fusion.OWNERMODE_TRANSACTION, id)
-	fusion.register_object(scene, factory_url, fusion.OWNERMODE_PLAYERATTACHED, id)
-	fusion.register_object(scene, factory_url, fusion.OWNERMODE_DYNAMIC, id)
-	fusion.register_object(scene, factory_url, fusion.OWNERMODE_MASTERCLIENT, id)
-	fusion.register_object(scene, factory_url, fusion.OWNERMODE_GAMEGLOBAL, id)
+	fusion.create_object(map, factory_url, fusion.OWNERMODE_TRANSACTION, options, id)
+	fusion.create_object(map, factory_url, fusion.OWNERMODE_PLAYERATTACHED, options, id)
+	fusion.create_object(map, factory_url, fusion.OWNERMODE_DYNAMIC, options, id)
+	fusion.create_object(map, factory_url, fusion.OWNERMODE_MASTERCLIENT, options, id)
+	fusion.create_object(map, factory_url, fusion.OWNERMODE_GAMEGLOBAL, options, id)
 end
 ```
 

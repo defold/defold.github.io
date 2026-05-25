@@ -21,10 +21,11 @@ Fusion RPCs are sent using `fusion.rpc()`, either to a specific player or to all
 ```lua
 -- set target_player to 0 to broadcast to all players
 local target_player = 0
+local target_object = 0
 local descriptor = hash("chathandler")
 local event = hash("on_message")
 local data = json.encode({ text = "Hello" })
-fusion.rpc(target_player, descriptor, event, data)
+fusion.rpc(target_player, target_object, descriptor, event, data)
 
 fusion.on_event(function(self, event_id, data)
 	if event_id == fusion.EVENT_RPC then
