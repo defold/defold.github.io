@@ -1,8 +1,8 @@
 ---
 brief: This manual covers the integration of a game with the FMOD Studio.
 github: https://github.com/defold/extension-fmod
-language: en
 layout: manual
+locale: en
 title: Defold extension FMOD API documentation
 toc:
 - FMOD
