@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to setup and use Firebase products in Defold.
 github: https://github.com/defold/extension-firebase
-language: en
 layout: manual
+locale: en
 title: Defold Firebase documentation
 toc:
 - Defold Firebase documentation
