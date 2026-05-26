@@ -35,24 +35,31 @@ This example contains a game object with a mesh component in the shape of a tria
 ### mesh.fp
 
 ```glsl
-varying mediump vec4 var_color;
+#version 140
+
+in mediump vec4 var_color;
+out vec4 out_fragColor;
 
 void main()
 {
-	gl_FragColor = var_color;
+	out_fragColor = var_color;
 }
 ```
 
 ### mesh.vp
 
 ```glsl
-uniform mediump mat4 mtx_worldview;
-uniform mediump mat4 mtx_proj;
+#version 140
 
-attribute mediump vec4 position;
-attribute mediump vec4 color0;
+uniform vs_uniforms {
+	mediump mat4 mtx_worldview;
+	mediump mat4 mtx_proj;
+};
 
-varying mediump vec4 var_color;
+in mediump vec4 position;
+in mediump vec4 color0;
+
+out mediump vec4 var_color;
 
 void main()
 {

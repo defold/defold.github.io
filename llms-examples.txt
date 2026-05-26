@@ -1453,7 +1453,7 @@ function on_input(self, action_id, action)
 			spine.play_anim("#spinemodel", hash("idle"), go.PLAYBACK_LOOP_FORWARD, properties)	
 			label.set_text("#label", "Click to run...")
 			self.state = "idle"
-		end			
+		end
 	end	
 end
 
@@ -1629,7 +1629,7 @@ function on_message(self, message_id, message, sender)
 		label.set_text("#speech", "I'm going...")
 		go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, message.position, go.EASING_INOUTCUBIC, 1.5, 0, landed)
 	elseif message_id == hash("i'm there") then -- <7>
-		label.set_text("#speech", "Great!")		
+		label.set_text("#speech", "Great!")
 	end
 end
 
@@ -1674,7 +1674,7 @@ Note that such a hierarchy must be created in a collection if you do it in the e
 
 ```lua
 function init(self)
-    msg.post(".", "acquire_input_focus") -- <1>
+	msg.post(".", "acquire_input_focus") -- <1>
 
 	local pos = go.get_position() -- <2>
 	go.animate(".", "position.y", go.PLAYBACK_LOOP_PINGPONG, pos.y + 300, go.EASING_INOUTSINE, 3) -- <3>
@@ -1684,8 +1684,8 @@ end
 
 
 function on_input(self, action_id, action)
-    if action_id == hash("touch") and action.pressed then
-    	if self.has_child then
+	if action_id == hash("touch") and action.pressed then
+		if self.has_child then
 			msg.post("child", "set_parent", { keep_world_transform = 1 }) -- <5>
 			label.set_text("#label", "Click to child...") -- <6>
 		else
@@ -1693,7 +1693,7 @@ function on_input(self, action_id, action)
 			label.set_text("#label", "Click to detach...") -- <8>
 		end
 		self.has_child = not self.has_child -- <9>
-    end 
+	end 
 end
 
 --[[
@@ -4509,7 +4509,7 @@ This example shows how to use a noise function to generate clouds, smoke or simi
 
 [Project files](https://github.com/defold/examples/tree/master/material/noise)
 
-This example contains a game object with a model component. The model component uses the `/builtins/assets/meshes/quad.dae` mesh, which is a rectangle 1 by 1 unit large. The game object is scaled to the dimensions of the screen so that the mesh covers the entire screen.
+This example contains a game object with a model component. The model component uses the `/builtins/assets/meshes/quad.gltf` mesh, which is a rectangle 1 by 1 unit large. The game object is scaled to the dimensions of the screen so that the mesh covers the entire screen.
 
 The shader applies multiple layers of noise to the uv coordinate to create a two dimensional flowing cloud or smoke like look. The shader also receives a time value from `noise.script` and applies this in the calculation to apply movement to the visual effect.
 
@@ -5183,7 +5183,7 @@ This example shows how to apply a basic shader to a full screen quad.
 
 [Project files](https://github.com/defold/examples/tree/master/material/uvgradient)
 
-This example contains a game object with a model component. The model component uses the `/builtins/assets/meshes/quad.dae` mesh, which is a rectangle 1 by 1 unit large. The game object is scaled to the dimensions of the screen so that the mesh covers the entire screen.
+This example contains a game object with a model component. The model component uses the `/builtins/assets/meshes/quad.gltf` mesh, which is a rectangle 1 by 1 unit large. The game object is scaled to the dimensions of the screen so that the mesh covers the entire screen.
 
 The shader is very basic and sets the fragment color based on the UV position, thus creating a color gradient. This is a good starting point when experimenting with graphical effects using a shader.
 
@@ -5192,11 +5192,14 @@ The shader is very basic and sets the fragment color based on the UV position, t
 ### uvgradient.fp
 
 ```glsl
-varying mediump vec2 var_texcoord0;
+#version 140
+
+in mediump vec2 var_texcoord0;
+out vec4 out_fragColor;
 
 void main()
 {  
-    gl_FragColor = vec4(var_texcoord0.x, var_texcoord0.y, 0.5, 1.0f);
+    out_fragColor = vec4(var_texcoord0.x, var_texcoord0.y, 0.5, 1.0f);
 }
 ```
 
@@ -5299,24 +5302,31 @@ This example contains a game object with a mesh component in the shape of a tria
 ### mesh.fp
 
 ```glsl
-varying mediump vec4 var_color;
+#version 140
+
+in mediump vec4 var_color;
+out vec4 out_fragColor;
 
 void main()
 {
-	gl_FragColor = var_color;
+	out_fragColor = var_color;
 }
 ```
 
 ### mesh.vp
 
 ```glsl
-uniform mediump mat4 mtx_worldview;
-uniform mediump mat4 mtx_proj;
+#version 140
 
-attribute mediump vec4 position;
-attribute mediump vec4 color0;
+uniform vs_uniforms {
+	mediump mat4 mtx_worldview;
+	mediump mat4 mtx_proj;
+};
 
-varying mediump vec4 var_color;
+in mediump vec4 position;
+in mediump vec4 color0;
+
+out mediump vec4 var_color;
 
 void main()
 {
@@ -5714,29 +5724,37 @@ end
 ### cubemap_model.fp
 
 ```glsl
-varying mediump vec3 vReflect;
+#version 140
+
+in mediump vec3 vReflect;
+out vec4 out_FragColor;
 
 uniform samplerCube envMap;
 
-void main() {
-	gl_FragColor = textureCube(envMap, vReflect);
+void main()
+{
+	out_FragColor = texture(envMap, vReflect);
 }
 ```
 
 ### cubemap_model.vp
 
 ```glsl
-uniform mediump mat4 view_proj;
-uniform mediump mat4 world;
-uniform mediump mat4 normal_transform;
-uniform mediump mat4 world_view;
-uniform mediump vec4 cameraPosition;
+#version 140
 
-attribute mediump vec3 position;
-attribute mediump vec3 normal;
-attribute mediump vec2 texcoord0;
+uniform vs_uniforms {
+	mediump mat4 view_proj;
+	mediump mat4 world;
+	mediump mat4 normal_transform;
+	mediump mat4 world_view;
+	mediump vec4 cameraPosition;
+};
 
-varying mediump vec3 vReflect;
+in mediump vec3 position;
+in mediump vec3 normal;
+in mediump vec2 texcoord0;
+
+out mediump vec3 vReflect;
 
 void main()
 {
@@ -8536,8 +8554,8 @@ local function create_texture(width, height)
 	local create_texture_params = {
 		width  = width,
 		height = height,
-		type   = resource.TEXTURE_TYPE_2D,
-		format = resource.TEXTURE_FORMAT_RGBA,
+		type   = graphics.TEXTURE_TYPE_2D,
+		format = graphics.TEXTURE_FORMAT_RGBA,
 	}
 	local my_texture_id = resource.create_texture("/my_custom_texture.texturec", create_texture_params)
 
@@ -8557,7 +8575,7 @@ local function create_texture(width, height)
 	end
 
 	-- set the pixels on the texture
-	local set_texture_params = { width=width, height=height, x=0, y=0, type=resource.TEXTURE_TYPE_2D, format=resource.TEXTURE_FORMAT_RGBA, num_mip_maps=1 }
+	local set_texture_params = { width=width, height=height, x=0, y=0, type=graphics.TEXTURE_TYPE_2D, format=graphics.TEXTURE_FORMAT_RGBA, num_mip_maps=1 }
 	resource.set_texture(my_texture_id, set_texture_params, buf)
 	
 	return my_texture_id
@@ -8734,13 +8752,13 @@ local function replace_atlas_image()
 	-- we want to update only a sub region of the atlas starting at a
 	-- certain position and with a certain size
 	local texture_info = {
-		type = resource.TEXTURE_TYPE_2D,
+		type = graphics.TEXTURE_TYPE_2D,
 		width = width,
 		height = height,
-		format = resource.TEXTURE_FORMAT_RGBA,
+		format = graphics.TEXTURE_FORMAT_RGBA,
 		x = x,
 		y = y,
-		compression_type = resource.COMPRESSION_TYPE_DEFAULT,
+		compression_type = graphics.COMPRESSION_TYPE_DEFAULT,
 		num_mip_maps = texture.mipmaps,
 	}
 	-- update the atlas texture with the pixels from the provided buffer
@@ -9179,24 +9197,30 @@ end
 ### multi_sample_sprite.fp
 
 ```glsl
-varying mediump vec2 var_texcoord0;
+#version 140
+
+in mediump vec2 var_texcoord0;
+out vec4 out_fragColor;
 
 uniform lowp sampler2D texture1_sampler;
 uniform lowp sampler2D texture2_sampler;
-uniform lowp vec4 tint;
-uniform lowp vec4 mix_amount;
+
+uniform fs_uniforms {
+    lowp vec4 tint;
+    lowp vec4 mix_amount;
+};
 
 void main()
 {
     // Pre-multiply alpha since all runtime textures already are
     lowp vec4 tint_pm = vec4(tint.xyz * tint.w, tint.w);
     // sample from both textures
-    lowp vec4 color1 = texture2D(texture1_sampler, var_texcoord0.xy);
-    lowp vec4 color2 = texture2D(texture2_sampler, var_texcoord0.xy);
+    lowp vec4 color1 = texture(texture1_sampler, var_texcoord0.xy);
+    lowp vec4 color2 = texture(texture2_sampler, var_texcoord0.xy);
     // mix (interpolate) the colors by the mix_amount
     lowp vec4 colormix = mix(color1, color2, mix_amount.x);
     // apply tint
-    gl_FragColor = colormix * tint_pm;
+    out_fragColor = colormix * tint_pm;
 }
 ```
 

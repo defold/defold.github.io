@@ -220,7 +220,7 @@ var FileLoader = {
 var EngineLoader = {
     arc_sha1: "",
     wasm_sha1: "",
-    wasm_size: 3077580,
+    wasm_size: 3080420,
     wasmjs_sha1: "",
     wasmjs_size: 281444,
     wasm_pthread_sha1: "",
@@ -229,10 +229,10 @@ var EngineLoader = {
     wasmjs_pthread_size: 250000,
     asmjs_sha1: "",
     asmjs_size: 4000000,
-    wasm_file: "/examples/wasm/3e0ca3b508222417b219514d681c1b35.wasm",
-    wasm_pthread_file: "/examples/wasm/3e0ca3b508222417b219514d681c1b35.wasm",
-    wasmjs_file: "/examples/wasm/8e1d19ac5b7c8a92c527e658ea4f70a5.wasm.js",
-    wasmjs_pthread_file: "/examples/wasm/8e1d19ac5b7c8a92c527e658ea4f70a5.wasm.js",
+    wasm_file: "/examples/wasm/53cc59594fa33a003cc04278f7097695.wasm",
+    wasm_pthread_file: "/examples/wasm/53cc59594fa33a003cc04278f7097695.wasm",
+    wasmjs_file: "/examples/wasm/8b2f02ec8ba0e5eccb59966a80f6650e.wasm.js",
+    wasmjs_pthread_file: "/examples/wasm/8b2f02ec8ba0e5eccb59966a80f6650e.wasm.js",
     wasm_instantiate_progress: 0,
 
     stream_wasm: "false" === "true",
