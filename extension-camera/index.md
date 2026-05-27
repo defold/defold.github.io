@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to use the camera on macOS, iOS and Android in Defold.
 github: https://github.com/defold/extension-camera
-language: en
 layout: manual
+locale: en
 title: Defold camera extension API documentation
 toc:
 - Defold camera extension API documentation
