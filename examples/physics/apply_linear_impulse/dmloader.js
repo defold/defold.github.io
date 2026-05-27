@@ -92,8 +92,8 @@ var CUSTOM_PARAMETERS = {
         }
         CUSTOM_PARAMETERS.resize_window_prev_inner_width = innerWidth;
         CUSTOM_PARAMETERS.resize_window_prev_inner_height = innerHeight;
-        var width = 960;
-        var height = 640;
+        var width = 720;
+        var height = 720;
         var targetRatio = width / height;
         var actualRatio = innerWidth / innerHeight;
     
