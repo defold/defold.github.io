@@ -14,14 +14,14 @@ In this guest post we invited Paweł Jarosz, developer of [Witchcrafter: Empire 
 
 I had many problems understanding shaders, but after getting a grasp - it is so easy, convenient and powerful! I present to you **my twisted version of understanding shaders**, hoping it will help other aspiring devs ;)
 
-This is my slow path from a total noob to a less-noob-ish shader programmer :smiley: It is meant for someone totally new, so don't mind a plain style and many simplifications or depictions (not exactly totally *true*, because saying them totally *true* demands more explanations and those explanations demands more explanations and so on, and so on ;) ) Later things will be clear for you and you will get to know easily how it is *really* working.
+This is my slow path from a total noob to a less-noob-ish shader programmer :smiley: It is meant for someone totally new, so don't mind a plain style and many simplifications or depictions (not exactly totally *true*, because saying them totally *true* demands more explanations and those explanations demand more explanations and so on, and so on ;) ) Later things will be clear for you and you will get to know easily how it is *really* working.
 
 The post is full of useful links and you should check them all - additionally I am encouraging you to check out the whole [awesome Defold documentation](https://defold.com/manuals/shader/) after reading this post. :bookmark:
 
 
 ### Drawing a picture 🖌
 
-You use sprites for visual things in your games. Defold uses (*Nerd's babble alert!* 🚨) OpenGL (a framework to draw graphics) to draw your sprite to the screen. There is a special way of telling the graphics card ***how*** it should be drawn. There are two programs that runs for **every** *pixel* **every** frame before the final color of that particular pixel is displayed on the screen.
+You use sprites for visual things in your games. Defold uses (*Nerd's babble alert!* 🚨) OpenGL (a framework to draw graphics) to draw your sprite to the screen. There is a special way of telling the graphics card ***how*** it should be drawn. There are two programs that run for the visual data drawn on the screen every frame before the final color is displayed.
 
 Those are (*OMG more babble!* 🚨) the **vertex program** and the **fragment program**. They are joined together in something called a **[material](https://defold.com/manuals/material/)**.
 
@@ -34,7 +34,7 @@ Those are (*OMG more babble!* 🚨) the **vertex program** and the **fragment pr
 
 In Poland we say *"How a horse looks like? Everybody see!"* ([a not-so-scientific explanation of Mr. Chmielowski in his *New Athens (encyclopedia)*](https://pl.wikiquote.org/wiki/Koń_jaki_jest,_każdy_widzi) :D )
 
-**Material** *is* like it looks like - in our real world we have materials like silk, wool or cotton. They have, let's think, a texture and a colour! (pun intended, you will get it soon :D ). In the world of computers it specifies how a sprites/particles/meshes or other visual assets are rendered (displayed on a screen) to *resemble* something 🖥️.
+**Material** *is* like it looks like - in our real world we have materials like silk, wool or cotton. They have, let's think, a texture and a colour! (pun intended, you will get it soon :D ). In the world of computers it specifies how sprites/particles/meshes or other visual assets are rendered (displayed on a screen) to *resemble* something 🖥️.
 
 
 ### Recipe for an image 📜
@@ -48,7 +48,7 @@ In a 3D engine (like Defold) *everything* visual is a bunch of points ([vertices
 ![](/images/posts/shaders-for-beginners/retro-wave.jpg)
 (source: https://wallpapersden.com/retro-wave-wallpaper/2560x1440/)
 
-But a screen is consisting only of pixels, and each of them can glow in one of many different colors for us, so we can see a picture as a whole. So we are taking a picture of primitives we have (continuous geometry) and chop it into a handful of small pieces 🔪 (aka rasterize it into fragments). Then, we have an interpolated colour of a fragment (and we can modify it), so we can finally light that one diode in our newest OLED monitor. And another diode. And another...
+But a screen consists only of pixels, and each of them can glow in one of many different colors for us, so we can see a picture as a whole. So we are taking a picture of primitives we have (continuous geometry) and chop it into a handful of small pieces 🔪 (aka rasterize it into fragments). Then, we have an interpolated colour of a fragment (and we can modify it), so we can finally light that one diode in our newest OLED monitor. And another diode. And another...
 
 
 ### Vertex program 📐
@@ -67,7 +67,7 @@ The fragment program simply defines what color each fragment (pixel) should have
 After reading the above and getting a grasp of what it is, you should [read about those programs in the manuals](https://defold.com/manuals/shader/) for a deeper understanding.
 
 
-### Excersises 💪
+### Exercises 💪
 
 You must **try** something in order to stop being afraid of that thing. You must face that monster before it hits you. But when it hits you, you will probably blink in white (games are teaching!)
 
@@ -85,7 +85,7 @@ We will make that effect in shaders, but normally it might be more efficient to 
 
 Create an empty project in Defold with a sprite.
 
-Add an image - make an atlas and add that image into it. Add a game object with a sprite component to your collection and set the sprite image and a default animation to your new image. Do I need to describe it? ? It is probably a thing you did a dozen times in Defold :D
+Add an image - make an atlas and add that image into it. Add a game object with a sprite component to your collection and set the sprite image and a default animation to your new image. Do I need to describe it? It is probably a thing you did a dozen times in Defold :D
 
 ![](/images/posts/shaders-for-beginners/example1.png)
 
@@ -101,74 +101,91 @@ Save it (save frequently! 👁️) and open your new fragment program. (and do b
 
 Magic explained line by line, just like [here](https://defold.com/manuals/shader/), but, you know, without Nerd's babble (it's a professional documentation! 👁️)
 
-The code is written in [GLSL (OpenGL Shading Language)](https://www.khronos.org/opengl/wiki/OpenGL_Shading_Language), which is somewhat similar to C. You will notice I commented out some lines that are useless here. (if there is a useless code remove it! don't leave comments! 👁️) **For now just focus on the essence** which is for each fragment to:
+The code is written in [GLSL (OpenGL Shading Language)](https://www.khronos.org/opengl/wiki/OpenGL_Shading_Language), which is somewhat similar to C. You will notice I commented out some lines that are useless here. (if there is useless code remove it! don't leave comments! 👁️) **For now just focus on the essence** which is for each fragment to:
 
-1. Get a position from vertex program
+1. Get interpolated UV coordinates from the vertex program
 2. Get your image data
 3. Get a **color** of that particular pixel by sampling your texture at an interpolated position
-4. and write it to the output (`gl_FragColor`)
+4. and write it to the fragment output
 
-```c
-/*1*/ varying mediump vec2 var_texcoord0; // position of your fragment = output from vertex shader = input for fragment shader
+Current Defold shaders can be written with `#version 140`. In the examples below we use `in` for data coming into the fragment program, and explicitly `out` for the final, output color.
 
-/*2*/ uniform lowp sampler2D texture_sampler;  // your image = texture data used like a reference here to create an image = this is automatically assigned by Defold engine, because you specified an image for a sprite
-//uniform lowp vec4 tint;  //vector representing a color in RGBA (red, green, blue, alpha)
-// above are uniform variables - passed to the fragment program (first by engine, second by user)
+```glsl
+#version 140  // declare the GLSL version
 
-void main() //this is hmm, a main function of your program, it looks like it has no output (void), but you'll know it's not particularly true
+in vec2 var_texcoord0;  // define the inputs
+
+out vec4 color_out;  // define the outputs
+
+uniform sampler2D texture_sampler;  // uniform sampler declaration (this is where our texture is, the image)
+
+void main()
 {
-    //lowp vec4 tint_pm = vec4(tint.xyz * tint.w, tint.w);
-
-    /*3+4*/ gl_FragColor = texture2D(texture_sampler, var_texcoord0.xy); // * tint_pm;  I commented out multiplying the color by tint, texture2D() is a function that takes sampler data and interpolated position and gives you a color of the fragment as a vector in RGBA (red, green blue, alpha)
+    color_out = texture(texture_sampler, var_texcoord0.xy);
 }
 ```
 
-Save it. Open you collection with a game object with a sprite and change its **Material** property to your new material.
+Save it. Open your collection with a game object with a sprite and change its **Material** property to your new material.
 
 ![](/images/posts/shaders-for-beginners/example4.png)
 
-If everything is ok, you should see a sprite as it was. Nothing changed. It's because we got the texture data and *put it to* a graphic card just like we received it. So now, let's have a fun:
+If everything is ok, you should see a sprite as it was. Nothing changed. It's because we got the texture data and *put it to* a graphic card just like we received it. Using the `texture()` function we took the color of the texture sampler named `texture_sampler` at a given point `var_texcoord0.xy` - so the actual point/fragment for which this main program is being run, and we assigned this color to the output color, so in the end, that's what we'll see on the screen - a proper pixel from a texture for every pixel of the screen.
 
-Get back to your fragment program and add in the last line of main:
+So now, let's have fun:
 
-```c
-gl_FragColor = texture2D(texture_sampler, var_texcoord0.xy) * vec4(1.0, 0.0, 0.0, 1.0);
+Get back to your fragment program and multiply our sampled texture color by some other color, for example like this:
+
+```glsl
+void main()
+{
+    color_out = texture(texture_sampler, var_texcoord0.xy) * vec4(1.0, 0.0, 0.0, 1.0);
+}
 ```
 
-So I just added `* vec4(1.0, 0.0, 0.0, 1.0)` - multiplied the color by another color (red, because vector represents the color in RGBA with normalized values, so full red, no green, no blue and non-transparent) so whatever the color of the pixel was it will have 0 * blue color and 0 * green color. Save it. Then check in your collection whether the sprite has changed (ooh I love Defold ❤️, you don't even need to build your project to check, if such simple shader is working, changes are visible in Editor immediately!). Your image should be more *aggressive* now:
+So I just added `* vec4(1.0, 0.0, 0.0, 1.0)` - multiplied the color by another color (red, because vector represents the color in RGBA with normalized values, so full red, no green, no blue and non-transparent) so whatever the color of the pixel was it will have 0 * blue color and 0 * green color and only 1 * red color.
+
+Save it. Then check in your collection whether the sprite has changed (ooh I love Defold ❤️, you don't even need to build your project to check, if such simple shader is working, changes are visible in Editor immediately!). Your image should be more "*aggressive*" now:
 
 ![](/images/posts/shaders-for-beginners/example5.png)
 
-That's it, you wrote your first post-process effect! But we wanted to blink in white, so let's change the values in the vector to: (1.0, 1.0, 1.0, 1.0) - and you will see that this will not affect your sprite much - because any value multiplied by 1.0 will be still the same value. You can tinker a little bit with the vector, probably you will get to the solution that you could multiply it by e.g. 10.0 (value in the end will be normalized anyway) to get a very bright image, but it's still not pure white everywhere.
+That's it, you wrote your first sprite material effect! But we wanted to blink in white, so let's change the values in the vector to: (1.0, 1.0, 1.0, 1.0) - and you will see that this will not affect your sprite much - because any value multiplied by 1.0 will be still the same value. You can tinker a little bit with the vector, probably you will get to the solution that you could multiply it by e.g. 10.0 (value in the end will be normalized anyway) to get a very bright image, but it's still not pure white everywhere.
 
 So, just try to leave a vector part here:
 
-```c
-gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0)
+```glsl
+void main()
+{
+    color_out = vec4(1.0, 1.0, 1.0, 1.0);
+}
 ```
 
 You will get:
 
 ![](/images/posts/shaders-for-beginners/example6.png)
 
-It's because you set the colour of *every* pixel of that texture to white. And you see that the texture is rectangular, even if you have a character on a transparent background. Let's assume for now you have some transparent part, ok? Hmm. Use that tip to distinguish background and sprite!
+It's because you set the colour of *every* pixel of that texture to white. And you see that the texture is rectangular, even if you have a character on a transparent background - let's assume for now you have some transparent part, ok? Hmm. Use that tip to distinguish background and sprite!
 
-Check, if colour of the pixel has `alpha = 0` and if so, use the old way for setting a colour, if not, it's a part of your character, so set the colour to white. I will tidy up the code a little bit (finally! 👁️)
+Check, if colour of the pixel has `alpha > 0` and if so, it's a part of your character, so set the colour to white, otherwise just past the value from the texture sample, as it is anyway transparent. I will tidy up the code a little bit (finally! 👁️):
 
-```c
-varying mediump vec2 var_texcoord0; // as it was
-uniform lowp sampler2D texture_sampler; // as it was
+```glsl
+#version 140
+
+in vec2 var_texcoord0;
+
+out vec4 color_out;
+
+uniform sampler2D texture_sampler;
 
 void main()
 {
-    // write a color of the current fragment to a variable (lowp = low precision (it's enough))
-    lowp vec4 color_of_pixel = texture2D(texture_sampler, var_texcoord0.xy);
+    vec4 color_of_pixel = texture(texture_sampler, var_texcoord0.xy);
 
-    if(color_of_pixel.a != 0.0) // when alpha value of the color is not 0 (not transparent) (you can get components of this vector like .r, .b, .g and .a)
+    if (color_of_pixel.a > 0.0) // when alpha value of the color is greater than 0 (not transparent) (you can get components of this vector like .r, .b, .g and .a)
     {
         color_of_pixel = vec4(1.0, 1.0, 1.0, 1.0);  // then it's your character - turn the color to white
     }
-    gl_FragColor = color_of_pixel;  // write the color_of_pixel to the output gl_FragColor
+
+    color_out = color_of_pixel;  // write the color_of_pixel to the output
 }
 ```
 
@@ -185,28 +202,50 @@ The only thing left is that we should switch blink on and off.
 
 We will tell the shader to turn on the blink effect and after some time to - turn it off.
 
-We will do it by setting a **constant** of the fragment program. If you didn't remove it, you should already have on in your material - tint. We will use it. You can rename it however you like it (for example blink_effect_trigger 👁️)
+We will do it by setting a **constant** of the fragment program. In the material editor, add a new Fragment Constant:
+
+- **Name:** `blink_effect_trigger`
+- **Type:** `User`
+- **Value:** `0, 0, 0, 0`
+
+In the shader, regular value constants like this go into a small `uniform` block, while the texture sampler stays as a plain `uniform sampler2D`. The block name can be arbitrary, but the member name must match the material constant name: `blink_effect_trigger`. Defold still lets us set that member from Lua with `go.set("#sprite", "blink_effect_trigger", ...)`.
 
 ![](/images/posts/shaders-for-beginners/example8.png)
 
 **in runtime! - it should be confusing now, but if you will treat each run of the fragment program as a separate operation you will understand that it is indeed a constant specified *before* the "*runtime*" of the fragment program**
 
-Open your fragment program and add that constant as a uniform variable at the top (I hope you really renamed it! 👁️):
-
-```c
-uniform lowp vec4 blink_effect_trigger;
-```
+Open your fragment program and add that constant to the shader (I hope you really named it! 👁️).
 
 Wrap your current `if(){}` statement with another if or just add another condition to your `if()` (let's choose the second solution 👁️):
 
-```c
-if((blink_effect_trigger.r == 1.0) && (color_of_pixel.a != 0.0))
+```glsl
+#version 140
+
+in vec2 var_texcoord0;
+
+out vec4 color_out;
+
+uniform sampler2D texture_sampler;
+
+uniform blink_effect
 {
-    color_of_pixel = vec4(1.0, 1.0, 1.0, 1.0);
+    vec4 blink_effect_trigger;
+};
+
+void main()
+{
+    vec4 color_of_pixel = texture(texture_sampler, var_texcoord0.xy);
+
+    if (blink_effect_trigger.x > 0.5 && color_of_pixel.a > 0.0)
+    {
+        color_of_pixel = vec4(1.0, 1.0, 1.0, 1.0);
+    }
+
+    color_out = color_of_pixel;
 }
 ```
 
-This will mean that only, when the X component of the vector ***blink_effect_trigger*** is set to 1.0, our post-process blink will be working.
+This will mean that only when the X component of the vector ***blink_effect_trigger*** is greater than 0.5, our blink shader effect will be working.
 
 Yes, you can test it without building and running your code, just in Defold Editor! Save everything and your sprite should be white now, but change the X of vector ***blink_effect_trigger*** to 0:
 
@@ -214,7 +253,7 @@ Yes, you can test it without building and running your code, just in Defold Edit
 
 Click somewhere outside (to confirm your change) and save. Check out your sprite - it should be like on a color TV! 📺
 
-So we can now manually turn on and off our post-process! 🥳
+So we can now manually turn on and off our sprite material effect! 🥳
 
 Now you will need to create a Lua script:
 
@@ -230,11 +269,11 @@ Open your script and leave only init function. Write here only:
 
 ```lua
 function init(self)
-	go.set("#sprite", "blink_effect_trigger", vmath.vector4(1)) -- set property of "#sprite" component called "blink_effect_trigger" to vector of four components all equal to 1) = aka turn on your post-process
+	go.set("#sprite", "blink_effect_trigger", vmath.vector4(1)) -- set property of "#sprite" component called "blink_effect_trigger" to vector of four components all equal to 1 = aka turn on your sprite material effect
 end
 ```
 
-You told your sprite to set its constant ***blink_effect_trigger*** to vector with 1, meaning the post-process will be turned on!
+You told your sprite to set its constant ***blink_effect_trigger*** to vector with 1, meaning the sprite material effect will be turned on!
 
 Now, finally, after so much time without building our game - save it and build it!
 
@@ -242,7 +281,7 @@ You should see:
 
 ![](/images/posts/shaders-for-beginners/example12.png)
 
-We just told that shady guy to turn on the post-process in runtime, at the very beginning of the program (aka in init)!
+We just told that shady guy to turn on the sprite material effect in runtime, at the very beginning of the program (aka in init)!
 
 **Champagne pops!** 🍾
 
@@ -254,14 +293,14 @@ Ok, ok, here's a fancy script:
 
 ```lua
 function init(self)
-	go.set("#sprite", "blink_effect_trigger", vmath.vector4(0)) -- at first turn off the post-process
+	go.set("#sprite", "blink_effect_trigger", vmath.vector4(0)) -- at first turn off the sprite material effect
 
 	timer.delay(1, true, function() -- every second
 
-		go.set("#sprite", "blink_effect_trigger", vmath.vector4(1)) --blink
+		go.set("#sprite", "blink_effect_trigger", vmath.vector4(1)) -- blink
 
-		timer.delay(0.1, false, function()  --and after 0.1 sec
-			go.set("#sprite", "blink_effect_trigger", vmath.vector4(0))  -- turn of the post-process
+		timer.delay(0.1, false, function()  -- and after 0.1 sec
+			go.set("#sprite", "blink_effect_trigger", vmath.vector4(0))  -- turn off the sprite material effect
 		end)
 
 	end)
@@ -277,7 +316,7 @@ Aaaaand open another champagne! 🍾
 
 ### Summary 🎣
 
-It's not perfect and you can utilize shaders for much better effects - but hey, in few minutes you learned basics of computer graphics, OpenGL and how to write fragment programs, set up everything in Defold, test it, use shader constants and communicate with your shaders from a Lua script! I'm proud of you!
+It's not perfect and you can utilize shaders for much better effects - but hey, in a few minutes you learned basics of computer graphics, OpenGL and how to write fragment programs, set up everything in Defold, test it, use shader constants and communicate with your shaders from a Lua script! I'm proud of you!
 
 I was using such shader for enemies hit indication in a [current demo](https://paweljarosz.itch.io/witchcrafter) of my **[Witchcrafter](https://store.steampowered.com/app/1374370/Witchcrafter_Empire_Legends/)** and I'm using fragment program on a hero sprite to modify his equipment even! And [I wrote everything about it in details (with code) here](https://forum.defold.com/t/using-an-if-statement-in-a-material-fragment-script/66621/3)!
 
