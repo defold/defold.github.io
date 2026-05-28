@@ -84,8 +84,6 @@ end
 
 Upewnij się, że [wygenerujesz symbole debugowania](/pl/manuals/debugging-native-code/#symbolicate-a-callstack) dla każdej wydanej wersji, aby móc debugować awarie. Przechowuj je razem z pakietem aplikacji.
 
-Upewnij się, że zachowujesz pliki `manifest.private.der` i `manifest.public.der`, które są generowane w katalogu głównym projektu podczas pierwszego bundlowania. To publiczny i prywatny klucz podpisywania archiwum gry oraz manifestu archiwum. Potrzebujesz tych plików, aby odtworzyć wcześniejsze wydanie swojej gry.
-
 ## Optymalizacje aplikacji
 
 Przeczytaj [instrukcję optymalizacji](/pl/manuals/optimization), aby dowiedzieć się, jak optymalizować aplikację pod kątem wydajności, rozmiaru, zużycia pamięci i energii baterii.

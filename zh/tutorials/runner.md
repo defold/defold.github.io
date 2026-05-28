@@ -42,7 +42,7 @@ title: 无尽跑酷游戏教程
 当编辑器安装并启动后，是时候创建一个新项目并准备就绪了。从"Empty Project"模板创建一个[新项目](/zh/manuals/project-setup/#creating-a-new-project)。
 
 <div class='sidenote' markdown='1'>
-本教程使用Spine功能，该功能在Defold 1.2.188版本后已移至其自己的扩展。如果您使用的是较新版本，请将[Spine扩展](https://github.com/defold/extension-spine)添加到*game.project*的依赖项部分。
+本教程使用 [Spine 扩展](https://github.com/defold/extension-spine) 提供的 Spine 功能。请将该扩展添加到 *game.project* 的依赖项部分。
 </div>
 
 ## 编辑器

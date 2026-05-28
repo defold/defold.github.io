@@ -185,8 +185,7 @@ The following texture compressors are supported by default. The data is uncompre
 | `BasisU`                          | All RGB/RGBA formats      | Basis Universal high quality, lossy compression. Lower quality level results in smaller size. |
 | `ASTC`                            | All ASTC formats          | ASTC lossy compression. Lower quality level results in smaller size.                          |
 
-Defold 1.9.7 refactored the texture compressor pipeline to support installable compressors, which is the first step in
-enabling implementing a texture compression algorithm in an extension (such as WEBP, or something completely custom).
+Defold supports installable compressors in the texture compressor pipeline. This makes it possible to implement a texture compression algorithm in an extension, such as WEBP or something completely custom.
 
 ## Example image
 

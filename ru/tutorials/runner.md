@@ -42,7 +42,7 @@ title: Учебник Endless runner
 После установки и запуска редактора создайте новый проект и подготовьте его к работе. Создайте [новый проект](/ru/manuals/project-setup/#creating-a-new-project) на основе шаблона "Empty Project".
 
 <div class='sidenote' markdown='1'>
-В этом учебнике используются возможности Spine, которые после Defold 1.2.188 были вынесены в отдельное расширение. Если вы используете более новую версию, добавьте [Spine Extension](https://github.com/defold/extension-spine) в раздел dependencies файла *game.project*.
+В этом учебнике используются возможности Spine из [Spine Extension](https://github.com/defold/extension-spine). Добавьте расширение в раздел dependencies файла *game.project*.
 </div>
 
 ## Редактор

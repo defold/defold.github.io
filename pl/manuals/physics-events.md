@@ -14,7 +14,7 @@ toc:
 
 # Obsługa zdarzeń fizyki w silniku Defold
 
-Wcześniej interakcje fizyczne w silniku Defold obsługiwano przez rozgłaszanie wiadomości do wszystkich komponentów obiektów, które się zderzały. Począwszy od wersji 1.6.4 Defold oferuje bardziej scentralizowane podejście za pośrednictwem funkcji `physics.set_event_listener()`. Funkcja ta pozwala ustawić własny słuchacz, który obsłuży wszystkie zdarzenia interakcji fizycznych w jednym miejscu, co upraszcza kod i poprawia wydajność.
+Defold oferuje scentralizowaną obsługę zdarzeń fizyki za pośrednictwem funkcji `physics.set_event_listener()`. Funkcja ta pozwala ustawić własny słuchacz, który obsłuży wszystkie zdarzenia interakcji fizycznych w jednym miejscu, co upraszcza kod i poprawia wydajność.
 
 ## Ustawianie słuchacza świata fizycznego
 

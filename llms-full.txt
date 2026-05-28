@@ -2351,7 +2351,7 @@ You can learn more about the different options in the [Project Setup manual](#ma
 
 ## Editor Language
 
-In the bottom left corner of the starting screen you can see a Language selection - select from the available currently localizations (since Defold 1.11.2). This is also available in the Editor in `File ▸ Preferences ▸ General ▸ Editor Language`.
+In the bottom left corner of the starting screen you can see a Language selection - select from the currently available localizations. This is also available in the Editor in `File ▸ Preferences ▸ General ▸ Editor Language`.
 
 ## The Editor panes
 
@@ -2387,13 +2387,13 @@ This view shows the content of the file currently being edited, but in a hierarc
    - `Drag and drop` to move items. Drop a game object on another game object in a collection to create a parent-child relationship.
    - `Right Mouse Click` to open a _Context Menu_ from where you can add items, delete selected items etc.
 
-It is possible to toggle the visibility of game objects and visual components by clicking on the little `👁` Eye Icon to the right of an element in the list (Defold 1.9.8 and newer).
+It is possible to toggle the visibility of game objects and visual components by clicking on the little `👁` Eye Icon to the right of an element in the list.
 
 ### 4. Properties pane
 
 This view shows properties associated with the currently selected item, like Id, URL, Position, Rotation, Scale, and/or other component specific properties and also custom properties for scripts.
 
-You can also `Drag` the `↕` Up-Down Arrow and move mouse to change value of the given numerical property (1.10.2+).
+You can also `Drag` the `↕` Up-Down Arrow and move mouse to change value of the given numerical property.
 
 ### 5. Tools pane
 
@@ -2513,9 +2513,9 @@ $ > ./path/to/Defold.app/Contents/MacOS/Defold
 
 ## Editor Server
 
-When the Editor opens a project, it will start a web server on a random port. The server may be used to interact with the editor from other applications. Since 1.11.0, the port is written to the `.internal/editor.port` file.
+When the Editor opens a project, it will start a web server on a random port. The server may be used to interact with the editor from other applications. The port is written to the `.internal/editor.port` file.
 
-Additionally, since 1.11.0 the editor executable has a command line option `--port` (or `-p`), which allows specifying the port during launch, e.g.::
+Additionally, the editor executable has a command line option `--port` (or `-p`), which allows specifying the port during launch, e.g.::
 ```shell
 # Windows
 .\path\to\Defold\Defold.exe --port 8181
@@ -5154,8 +5154,6 @@ The project cache can be deleted manually by deleting the files in `build/defaul
 
 ## Local cache
 
-Added in Defold 1.2.187
-
 The local cache is an optional second cache where compiled assets are stored in an external file location on the same machine or on a network drive. Thanks to its external location the contents of the cache survives a cleanup of the project cache. It can also be shared by multiple developers working on the same project. The cache is currently only available when building using the command line tools. It is enabled through the `resource-cache-local` option:
 ```sh
 java -jar bob.jar --resource-cache-local /Users/john.doe/defold_local_cache
@@ -5166,8 +5164,6 @@ Compiled assets are accessed from the local cache based on a computed checksum w
 Files stored in the local cache are stored indefinitely. It is up to the developer to manually remove old/unused files.
 
 ## Remote cache
-
-Added in Defold 1.2.187
 
 The remote cache is an optional third cache where compiled assets are stored on a server and accessed through HTTP request. The cache is currently only available when building using the command line tools. It is enabled through the `resource-cache-remote` option:
 ```sh
@@ -5480,10 +5476,6 @@ Mounting an archive doesn't copy or move the archive. The engine only stores the
 To actually use the live update content, you need to download and mount the data to your game.
 Read more about about how to [script with live update here](#manuals:live-update-scripting).
 
-The legacy single-resource Live Update flow is deprecated. Avoid `collectionproxy.missing_resources()`, the deprecated manifest APIs (`liveupdate.get_current_manifest()`, `liveupdate.store_resource()`, `liveupdate.store_manifest()`, `liveupdate.store_archive()`, `liveupdate.is_using_liveupdate_data()`), and the old `resource.*` helper aliases (`resource.get_current_manifest()`, `resource.store_resource()`, `resource.store_manifest()`, `resource.store_archive()`, `resource.is_using_liveupdate_data()`) in new projects.
-
-Current projects should publish archives, mount them with `liveupdate.add_mount()`, manage them with `liveupdate.get_mounts()` and `liveupdate.remove_mount()`, and use `collectionproxy.get_resources()` when they need to inspect excluded content for a proxy. Legacy manifest-signing keys are no longer part of this pipeline: `liveupdate.settings` `publickey` and `privatekey` are deprecated and unused, and `game.public.der` is no longer generated or bundled.
-
 ## Development caveats
 
 Debugging
@@ -5615,7 +5607,7 @@ Playback
 
 ## Runtime Texture and Atlas creation
 
-Starting from Defold 1.4.2 it is possible to create a texture and an atlas at runtime.
+It is possible to create a texture and an atlas at runtime.
 
 ### Creating a Texture resource at runtime
 
@@ -6330,8 +6322,7 @@ The following texture compressors are supported by default. The data is uncompre
 | `BasisU`                          | All RGB/RGBA formats      | Basis Universal high quality, lossy compression. Lower quality level results in smaller size. |
 | `ASTC`                            | All ASTC formats          | ASTC lossy compression. Lower quality level results in smaller size.                          |
 
-Defold 1.9.7 refactored the texture compressor pipeline to support installable compressors, which is the first step in
-enabling implementing a texture compression algorithm in an extension (such as WEBP, or something completely custom).
+Defold supports installable compressors in the texture compressor pipeline. This makes it possible to implement a texture compression algorithm in an extension, such as WEBP or something completely custom.
 
 ## Example image
 
@@ -10033,7 +10024,7 @@ end
 
 # Defold Physics Event Handling {#manuals:physics-events}
 
-Previously, physics interactions in Defold were handled by broadcasting messages to all components of colliding objects. However, starting with version 1.6.4, Defold offers a more centralized approach through the `physics.set_event_listener()` function. This function allows you to set a custom listener to handle all physics interaction events in one place, thereby streamlining your code and improving efficiency.
+Defold offers centralized physics event handling through the `physics.set_event_listener()` function. This function allows you to set a custom listener to handle all physics interaction events in one place, thereby streamlining your code and improving efficiency.
 
 ## Setting the Physics World Listener
 
@@ -10837,7 +10828,6 @@ end
 ```
 
 ## Raw gamepads
-(From Defold 1.2.183)
 
 Gamepad input bindings also provide a separate binding named `Raw` to give the unfiltered (without applied deadzone) button, axis and hat input of any connected gamepad.
 ```lua
@@ -10865,11 +10855,8 @@ It includes binaries for Windows, Linux and macOS. Run it from the command line:
 The tool will ask you to press different buttons on your connected controller. It will then output a new gamepads file with correct mappings for your controller. Save the new file, or merge it with your existing gamepads file, then update the setting in *game.project*:
 
 ### Unidentified gamepads
-(From Defold 1.2.186)
 
 When a gamepad is connected and no mapping exists for the gamepad the gamepad will only generate "connected", "disconnected" and "raw" actions. In this case you need to manually map the raw gamepad data to actions in your game.
-
-(From Defold 1.4.8)
 
 It is possible to check if an input action for a gamepad is from an unknown gamepad or not by reading the `gamepad_unknown` value from the action:
 ```lua
@@ -10902,7 +10889,6 @@ If your game is running from inside an `iframe` you must also make sure that the
 ```
 
 ### Standard gamepad
-(From Defold 1.4.1)
 
 If a connected gamepad is identified by the browser as a standard gamepad it will use the mapping for "Standard Gamepad" in the [gamepads settings file](#manuals:input-gamepads) (a Standard Gamepad mapping is included in the `default.gamepads` file in `/builtins`). A standard gamepad is defined as having 16 buttons and 2 analog sticks with a button layout similar to a PlayStation or Xbox controller (see the [W3C definition and button layout](https://w3c.github.io/gamepad/#dfn-standard-gamepad) for more information). If the connected gamepad is not identified as a standard gamepad Defold will look for a mapping matching the hardware gamepad type in the gamepad settings file.
 
@@ -10910,50 +10896,49 @@ If a connected gamepad is identified by the browser as a standard gamepad it wil
 On Windows, only XBox 360 controllers are currently supported. To hook up your 360 controller to your Windows machine, [make sure it is setup correctly](http://www.wikihow.com/Use-Your-Xbox-360-Controller-for-Windows).
 
 ## Gamepads on Android
-(From Defold 1.2.183)
 
 Gamepads are supported in Android builds and generate the same input events as on other platforms. Support for gamepads is based on the [Android input system for key and motion events](https://developer.android.com/training/game-controllers/controller-input). The Android input events will be translated to Defold gamepad events using the same *gamepad* file as described above.
 
 When adding additional gamepad bindings on Android you can use the following lookup tables to translate from the Android input events to *gamepad* file values:
 
-| Key event to button index   | Index | Version |
-|-----------------------------|-------|---------|
-| `AKEYCODE_BUTTON_A`           | 0     | 1.2.183 |
-| `AKEYCODE_BUTTON_B`           | 1     | 1.2.183 |
-| `AKEYCODE_BUTTON_C`           | 2     | 1.2.183 |
-| `AKEYCODE_BUTTON_X`           | 3     | 1.2.183 |
-| `AKEYCODE_BUTTON_L1`          | 4     | 1.2.183 |
-| `AKEYCODE_BUTTON_R1`          | 5     | 1.2.183 |
-| `AKEYCODE_BUTTON_Y`           | 6     | 1.2.183 |
-| `AKEYCODE_BUTTON_Z`           | 7     | 1.2.183 |
-| `AKEYCODE_BUTTON_L2`          | 8     | 1.2.183 |
-| `AKEYCODE_BUTTON_R2`          | 9     | 1.2.183 |
-| `AKEYCODE_DPAD_CENTER`        | 10    | 1.2.183 |
-| `AKEYCODE_DPAD_DOWN`          | 11    | 1.2.183 |
-| `AKEYCODE_DPAD_LEFT`          | 12    | 1.2.183 |
-| `AKEYCODE_DPAD_RIGHT`         | 13    | 1.2.183 |
-| `AKEYCODE_DPAD_UP`            | 14    | 1.2.183 |
-| `AKEYCODE_BUTTON_START`       | 15    | 1.2.183 |
-| `AKEYCODE_BUTTON_SELECT`      | 16    | 1.2.183 |
-| `AKEYCODE_BUTTON_THUMBL`      | 17    | 1.2.183 |
-| `AKEYCODE_BUTTON_THUMBR`      | 18    | 1.2.183 |
-| `AKEYCODE_BUTTON_MODE`        | 19    | 1.2.183 |
-| `AKEYCODE_BUTTON_1`           | 20    | 1.2.186 |
-| `AKEYCODE_BUTTON_2`           | 21    | 1.2.186 |
-| `AKEYCODE_BUTTON_3`           | 22    | 1.2.186 |
-| `AKEYCODE_BUTTON_4`           | 23    | 1.2.186 |
-| `AKEYCODE_BUTTON_5`           | 24    | 1.2.186 |
-| `AKEYCODE_BUTTON_6`           | 25    | 1.2.186 |
-| `AKEYCODE_BUTTON_7`           | 26    | 1.2.186 |
-| `AKEYCODE_BUTTON_8`           | 27    | 1.2.186 |
-| `AKEYCODE_BUTTON_9`           | 28    | 1.2.186 |
-| `AKEYCODE_BUTTON_10`          | 29    | 1.2.186 |
-| `AKEYCODE_BUTTON_11`          | 30    | 1.2.186 |
-| `AKEYCODE_BUTTON_12`          | 31    | 1.2.186 |
-| `AKEYCODE_BUTTON_13`          | 32    | 1.2.186 |
-| `AKEYCODE_BUTTON_14`          | 33    | 1.2.186 |
-| `AKEYCODE_BUTTON_15`          | 34    | 1.2.186 |
-| `AKEYCODE_BUTTON_16`          | 35    | 1.2.186 |
+| Key event to button index   | Index |
+|-----------------------------|-------|
+| `AKEYCODE_BUTTON_A`           | 0     |
+| `AKEYCODE_BUTTON_B`           | 1     |
+| `AKEYCODE_BUTTON_C`           | 2     |
+| `AKEYCODE_BUTTON_X`           | 3     |
+| `AKEYCODE_BUTTON_L1`          | 4     |
+| `AKEYCODE_BUTTON_R1`          | 5     |
+| `AKEYCODE_BUTTON_Y`           | 6     |
+| `AKEYCODE_BUTTON_Z`           | 7     |
+| `AKEYCODE_BUTTON_L2`          | 8     |
+| `AKEYCODE_BUTTON_R2`          | 9     |
+| `AKEYCODE_DPAD_CENTER`        | 10    |
+| `AKEYCODE_DPAD_DOWN`          | 11    |
+| `AKEYCODE_DPAD_LEFT`          | 12    |
+| `AKEYCODE_DPAD_RIGHT`         | 13    |
+| `AKEYCODE_DPAD_UP`            | 14    |
+| `AKEYCODE_BUTTON_START`       | 15    |
+| `AKEYCODE_BUTTON_SELECT`      | 16    |
+| `AKEYCODE_BUTTON_THUMBL`      | 17    |
+| `AKEYCODE_BUTTON_THUMBR`      | 18    |
+| `AKEYCODE_BUTTON_MODE`        | 19    |
+| `AKEYCODE_BUTTON_1`           | 20    |
+| `AKEYCODE_BUTTON_2`           | 21    |
+| `AKEYCODE_BUTTON_3`           | 22    |
+| `AKEYCODE_BUTTON_4`           | 23    |
+| `AKEYCODE_BUTTON_5`           | 24    |
+| `AKEYCODE_BUTTON_6`           | 25    |
+| `AKEYCODE_BUTTON_7`           | 26    |
+| `AKEYCODE_BUTTON_8`           | 27    |
+| `AKEYCODE_BUTTON_9`           | 28    |
+| `AKEYCODE_BUTTON_10`          | 29    |
+| `AKEYCODE_BUTTON_11`          | 30    |
+| `AKEYCODE_BUTTON_12`          | 31    |
+| `AKEYCODE_BUTTON_13`          | 32    |
+| `AKEYCODE_BUTTON_14`          | 33    |
+| `AKEYCODE_BUTTON_15`          | 34    |
+| `AKEYCODE_BUTTON_16`          | 35    |
 
 ([Android `KeyEvent` definitions](https://developer.android.com/ndk/reference/group/input#group___input_1gafccd240f973cf154952fb917c9209719))
 
@@ -12143,11 +12128,10 @@ If the security and availability of the builds servers are of concern to you we 
 ## Securing your downloadable content
 The Defold Live Update system allows developers to exclude content from the main game bundle for download and use at a later time. A typical use case is to download additional levels, maps or worlds as the player progresses through the game.
 
-When excluded content is downloaded and prepared for use in a game, the content will be cryptographically verified by the engine before use to ensure that it has not been tampered with. The verification consists of a number of checks:
+When excluded content is downloaded and prepared for use in a game, the content will be verified by the engine before use. The verification consists of a number of checks:
 
 * Is the binary format correct?
 * Is the downloaded content supported by the currently running engine version?
-* Is the downloaded content signed with the correct public-private key pair?
 * Is the downloaded content complete and not missing any files?
 
 You can read more about this process in the [Live Update manual](#manuals:live-update).
@@ -12874,7 +12858,7 @@ local mode = camera.get_orthographic_mode("main:/go#camera")
 
 The render API in Defold lets developers perform something called frustum culling. When frustum culling is enabled any graphics that lies outside of a defined bounding box or frustum will be ignored. In a large game world where only a portion is visible at a time, frustum culling can dramatically reduce the amount of data that needs to be sent to the GPU for rendering, thus increasing performance and saving battery (on mobile devices). It is common to use the view and projection of the camera to create the bounding box. The default render script uses the view and projection (from the camera) to calculate a frustum.
 
-Frustum culling is implemented in the engine per component type. Current status (Defold 1.9.0):
+Frustum culling is implemented in the engine per component type. Current status:
 
 | Component   | Supported |
 |-------------|-----------|
@@ -14575,15 +14559,13 @@ Bob is a command line tool for building Defold projects outside of the normal ed
 
 Bob is able to build data (corresponding to the build step of selecting the editor menu item `Project ▸ Build`), create data archives and create standalone, distributable application bundles (corresponding to the editor menu item `Project ▸ Bundle ▸ ...` options)
 
-Bob is distributed as a Java _JAR_ archive containing everything needed to build. You find the latest *bob.jar* distribution on the [GitHub Releases page](https://github.com/defold/defold/releases). Select a release, then download *bob/bob.jar*. If you are using Defold 1.12.0 or newer, you will need OpenJDK 25 to run it. For older versions of Defold, you will need openJDK 21.
+Bob is distributed as a Java _JAR_ archive containing everything needed to build. You find the latest *bob.jar* distribution on the [GitHub Releases page](https://github.com/defold/defold/releases). Select a release, then download *bob/bob.jar*. You will need OpenJDK 25 to run it.
 
-Compatible OpenJDK 25 mirrors (from Defold 1.12.0):
+Compatible OpenJDK 25 mirrors:
 * [OpenJDK 25 by Microsoft](https://learn.microsoft.com/en-us/java/openjdk/download#openjdk-25)
 * [OpenJDK 25 by Adoptium Working Group](https://github.com/adoptium/temurin25-binaries/releases) / [Adoptium.net](https://adoptium.net/)
 
 If you are on Windows you want the `.msi` file installer for OpenJDK.
-
-Legacy Live Update manifest-signing flags `--manifest-private-key` and `--manifest-public-key` have been removed from Bob. The `publickey` and `privatekey` entries in `liveupdate.settings` are now deprecated and unused, `game.public.der` is no longer generated or bundled, and the deprecated manifest/archive validation flow now checks supported engine versions instead of bundled key signatures.
 
 ## Usage
 
@@ -14726,11 +14708,10 @@ Available commands:
 
 Available platforms and architectures:
 
-`x86_64-darwin` (Defold 1.3.5 and older)
-`x86_64-macos` (Defold 1.3.6 and newer)
+`x86_64-macos`
 : macOS 64 bit
 
-`arm64-macos` (Defold 1.5.0 and older)
+`arm64-macos`
 : macOS Apple Silicon (ARM)
 
 `x86_64-win32`
@@ -14745,9 +14726,8 @@ Available platforms and architectures:
 `x86_64-ios`
 : iOS macOS 64 bit (iOS Simulator)
 
-`armv7-darwin` (Defold 1.3.5 and older)
-`armv7-ios` (Defold 1.3.6 and newer)
-: iOS with available 32-bit `armv7-darwin` and 64-bit `arm64-darwin` architectures. By default, `--architectures` argument value is `armv7-darwin,arm64-darwin`.
+`arm64-ios`
+: iOS 64 bit. By default, `--architectures` argument value is `arm64-ios`.
 
 `armv7-android`
 : Android with available 32 bit `armv7-android` and 64 bit `arm64-android` architectures. By default, `--architectures` argument value is `armv7-android,arm64-android`.
@@ -14765,7 +14745,7 @@ $
 
 You can string commands together to perform a sequence of tasks in one go. The following example resolves libraries, wipes the build directory, builds archive data and bundles a macOS application (named *My Game.app*):
 ```sh
-$ java -jar bob.jar --archive --platform x86-darwin resolve distclean build bundle
+$ java -jar bob.jar --archive --platform x86_64-macos resolve distclean build bundle
 100%
 $ ls -al build/default/
 total 70784
@@ -14946,8 +14926,6 @@ end
 
 Make sure to [generate debug symbols](#manuals:debugging-native-code) for each released version so that you can debug crashes. Store these together with the application bundle.
 
-Make sure to store the `manifest.private.der` and `manifest.public.der` files which are generated in the project root during the first bundle. These are the public and private signing keys for the game archive and archive manifest. You need these files in order to recreate a previous build of your game.
-
 ## Application optimizations
 
 Read the [Optimization manual](#manuals:optimization) on how to optimize your application for performance, size, memory and battery usage.
@@ -15003,7 +14981,7 @@ The development app allows you to push content to it over wifi. This will greatl
 
 Any iOS or Android application that is bundled in Debug mode will be able to act as a development app. In fact, this is the recommended solution as the development app will have the correct project settings and uses the same [native extensions](#manuals:extensions) as the project you are working on.
 
-Starting with Defold 1.4.0 it is possible to bundle a Debug variant of your project without any content. Use this option to create a version of your application with native extensions, suitable for iterative development as described in this manual.
+It is possible to bundle a Debug variant of your project without any content. Use this option to create a version of your application with native extensions, suitable for iterative development as described in this manual.
 
 ### Installing on iOS
 
@@ -15990,7 +15968,7 @@ You should **never** upload your application to Google Play if it was signed usi
 
 ## Creating a keystore
 
-The Android signing process in Defold changed in version 1.2.173 from using a stand-alone key and certificate to a keystore. [More information in this forum post](https://forum.defold.com/t/upcoming-change-to-the-android-build-pipeline/66084).
+Defold uses a keystore for the Android signing process. [More information is available in this forum post](https://forum.defold.com/t/upcoming-change-to-the-android-build-pipeline/66084).
 
 You can create a keystore [using Android Studio](https://developer.android.com/studio/publish/app-signing#generate-key) or from a terminal/command prompt:
 ```bash
@@ -16333,8 +16311,6 @@ Forum user Sergey Lerg has put together [a video tutorial showing the process](h
 Once you have the storyboard file you can reference it from *game.project*.
 
 ### Creating an icon asset catalog
-
-This is required from Defold 1.2.175.
 
 Using an asset catalog is Apple's preferred way to manage your application's icons. In fact it is the only way to provide the icon used in the App Store listing. You create an asset catalog in the same way as a storyboard, using Xcode. Start Xcode and create a new project. Select iOS and Single View App:
 

@@ -50,7 +50,7 @@ title: Defold 引擎和编辑器常见问题
 
 #### 问: 我在 Defold 中使用什么编程语言？
 
-答: Defold 项目中的游戏逻辑主要使用 Lua 语言编写（特别是 Lua 5.1/LuaJIT，详情请参考 [Lua 手册](/zh/manuals/lua)）。Lua 是一种轻量级的动态语言，快速且非常强大。从 1.8.1 版本开始，Defold 支持使用能生成 Lua 代码的转译器。安装转译器扩展后，你可以使用替代语言——如 [Teal](https://github.com/defold/extension-teal)——来编写静态类型检查的 Lua。你也可以使用原生代码（根据平台不同，可以是 C/C++、Objective-C、Java 和 JavaScript）来[为 Defold 引擎扩展新功能](/zh/manuals/extensions/)。在构建[自定义材质](/zh/manuals/material/)时，使用 OpenGL ES SL 着色器语言来编写顶点和片段着色器。
+答: Defold 项目中的游戏逻辑主要使用 Lua 语言编写（特别是 Lua 5.1/LuaJIT，详情请参考 [Lua 手册](/zh/manuals/lua)）。Lua 是一种轻量级的动态语言，快速且非常强大。Defold 支持使用能生成 Lua 代码的转译器。安装转译器扩展后，你可以使用替代语言——如 [Teal](https://github.com/defold/extension-teal)——来编写静态类型检查的 Lua。你也可以使用原生代码（根据平台不同，可以是 C/C++、Objective-C、Java 和 JavaScript）来[为 Defold 引擎扩展新功能](/zh/manuals/extensions/)。在构建[自定义材质](/zh/manuals/material/)时，使用 OpenGL ES SL 着色器语言来编写顶点和片段着色器。
 
 
 #### 问: 我可以使用 C++ 来编写游戏逻辑吗？

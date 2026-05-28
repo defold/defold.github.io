@@ -52,8 +52,6 @@ end
 
 Make sure to [generate debug symbols](https://defold.com/llms/manuals/debugging-native-code.md) for each released version so that you can debug crashes. Store these together with the application bundle.
 
-Make sure to store the `manifest.private.der` and `manifest.public.der` files which are generated in the project root during the first bundle. These are the public and private signing keys for the game archive and archive manifest. You need these files in order to recreate a previous build of your game.
-
 ## Application optimizations
 
 Read the [Optimization manual](https://defold.com/llms/manuals/optimization.md) on how to optimize your application for performance, size, memory and battery usage.

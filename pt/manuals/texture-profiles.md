@@ -224,8 +224,7 @@ Os seguintes compressores de textura são suportados por padrão. Os dados são 
 | `ASTC`                            | Todos os formatos ASTC    | Compressão ASTC com perdas. Nível de qualidade menor resulta em tamanho menor.                |
 
 <div class='sidenote' markdown='1'>
-O Defold 1.9.7 refatorou o pipeline de compressores de textura para suportar compressores instaláveis, o que é o primeiro passo para
-permitir implementar um algoritmo de compressão de textura em uma extensão (como WEBP ou algo totalmente personalizado).
+O Defold suporta compressores instaláveis no pipeline de compressores de textura. Isso permite implementar um algoritmo de compressão de textura em uma extensão, como WEBP ou algo completamente personalizado.
 </div>
 
 ## Imagem de exemplo

@@ -221,7 +221,7 @@ Domyślnie obsługiwane są następujące kompresory tekstur. Dane zostaną zdek
 | `ASTC`                            | All ASTC formats          | ASTC lossy compression. Lower quality level results in smaller size.                          |
 
 <div class='sidenote' markdown='1'>
-Defold 1.9.7 przebudował pipeline kompresji tekstur tak, aby obsługiwał instalowalne kompresory, co jest pierwszym krokiem do umożliwienia implementowania algorytmu kompresji tekstur w rozszerzeniu, na przykład WEBP albo czegoś całkowicie własnego.
+Defold obsługuje instalowalne kompresory w pipeline kompresji tekstur. Umożliwia to implementowanie algorytmu kompresji tekstur w rozszerzeniu, na przykład WEBP albo czegoś całkowicie własnego.
 </div>
 
 ## Example image

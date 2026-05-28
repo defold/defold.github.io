@@ -6,7 +6,7 @@ The development app allows you to push content to it over wifi. This will greatl
 
 Any iOS or Android application that is bundled in Debug mode will be able to act as a development app. In fact, this is the recommended solution as the development app will have the correct project settings and uses the same [native extensions](https://defold.com/llms/manuals/extensions.md) as the project you are working on.
 
-Starting with Defold 1.4.0 it is possible to bundle a Debug variant of your project without any content. Use this option to create a version of your application with native extensions, suitable for iterative development as described in this manual.
+It is possible to bundle a Debug variant of your project without any content. Use this option to create a version of your application with native extensions, suitable for iterative development as described in this manual.
 
 ### Installing on iOS
 
