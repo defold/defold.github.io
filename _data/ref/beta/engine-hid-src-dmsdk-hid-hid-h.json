@@ -284,6 +284,21 @@
             "type": "CONSTANT"
         },
         {
+            "brief": "max number of characters for a guid",
+            "description": "max number of characters for a guid",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmHID::MAX_GAMEPAD_GUID_LENGTH",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
             "brief": "Maximum number of gamepad hats supported",
             "description": "Maximum number of gamepad hats supported",
             "error": "",
@@ -359,6 +374,89 @@
             "type": "CONSTANT"
         },
         {
+            "brief": "Formats a gamepad guid into the 32-character SDL h...",
+            "description": "Formats a gamepad guid into the 32-character SDL hex representation.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FormatGamepadGuid",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the parsed guid",
+                    "is_optional": "False",
+                    "name": "guid",
+                    "types": [
+                        "GamepadGuid*"
+                    ]
+                },
+                {
+                    "doc": "output buffer of size dmHID::MAX_GAMEPAD_GUID_LENGTH + 1",
+                    "is_optional": "False",
+                    "name": "buffer",
+                    "types": [
+                        "char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Parsed SDL-style gamepad guid",
+            "description": "Parsed SDL-style gamepad guid.\nThe struct matches SDL's 16-byte guid layout and can be converted back to\nthe 32-character hexadecimal guid string with dmHID::FormatGamepadGuid().",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "How device is communicating. E.g.0x0003 for USB devices and 0x0005 for Bluetooth devices.",
+                    "name": "m_Bus",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "SDL CRC16 signature, typically used when vendor and product ids are unavailable",
+                    "name": "m_CRC16",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "USB vendor id. E.g. Nintendo 0x057e, Sony 0x054c, or Microsoft 0x045e",
+                    "name": "m_Vendor",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "USB product id",
+                    "name": "m_Product",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Device or firmware version encoded in the guid",
+                    "name": "m_Version",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Driver signature byte from the SDL guid layout",
+                    "name": "m_DriverSignature",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "Driver-specific data byte from the SDL guid layout",
+                    "name": "m_DriverData",
+                    "type": "uint8_t"
+                }
+            ],
+            "name": "GamepadGuid",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
             "brief": "Contains the current state of a gamepad",
             "description": "Contains the current state of a gamepad",
             "error": "",
@@ -426,6 +524,14 @@
             "notes": [],
             "parameters": [
                 {
+                    "doc": "context in which to find the gamepad",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmHID::HContext"
+                    ]
+                },
+                {
                     "doc": "Handle to gamepad",
                     "is_optional": "False",
                     "name": "gamepad",
@@ -489,6 +595,54 @@
                     "name": "success",
                     "types": [
                         "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Retrieves the guid of a given gamepad.",
+            "description": "Retrieves the guid of a given gamepad.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetGamepadDeviceGuid",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "context in which to find the gamepad",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmHID::HContext"
+                    ]
+                },
+                {
+                    "doc": "Handle to gamepad",
+                    "is_optional": "False",
+                    "name": "gamepad",
+                    "types": [
+                        "dmHID::HGamepad"
+                    ]
+                },
+                {
+                    "doc": "(out) the guid",
+                    "is_optional": "False",
+                    "name": "guid",
+                    "types": [
+                        "GamepadGuid*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the gamepad had a guid",
+                    "name": "result",
+                    "types": [
+                        "boold"
                     ]
                 }
             ],
@@ -1827,11 +1981,6 @@
                     "type": "int32_t"
                 },
                 {
-                    "doc": "Begin, end, etc",
-                    "name": "m_Phase",
-                    "type": "Phase"
-                },
-                {
                     "doc": "Current x",
                     "name": "m_X",
                     "type": "int32_t"
@@ -1875,6 +2024,11 @@
                     "doc": "Touch id",
                     "name": "m_Id",
                     "type": "int32_t"
+                },
+                {
+                    "doc": "Begin, end, etc",
+                    "name": "m_Phase",
+                    "type": "Phase"
                 }
             ],
             "name": "Touch",

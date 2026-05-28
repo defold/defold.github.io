@@ -467,6 +467,38 @@
             "type": "CONSTANT"
         },
         {
+            "brief": "Destroy a fixture from a body.",
+            "description": "Destroy a fixture from a body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.destroy_fixture",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "1-based fixture index from <code>b2d.body.get_fixtures</code>",
+                    "is_optional": "False",
+                    "name": "fixture_index",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Print the body representation to the log output",
             "description": "Print the body representation to the log output",
             "error": "",
@@ -683,6 +715,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get the fixtures attached to this body.",
+            "description": "Get the fixtures attached to this body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_fixtures",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of fixture info tables with <code>index</code>, <code>type</code>, <code>sensor</code>, <code>density</code>, <code>friction</code>, <code>restitution</code>, and <code>child_count</code>",
+                    "name": "fixtures",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the gravity scale of the body.",
             "description": "Get the gravity scale of the body.",
             "error": "",
@@ -772,6 +836,70 @@
                     "name": "inertia",
                     "types": [
                         "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the joints attached to this body.",
+            "description": "Get the joints attached to this body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_joints",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of <code>b2Joint</code> handles created by <code>b2d.joint</code>",
+                    "name": "joints",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the joints attached to this body.",
+            "description": "Get the joints attached to this body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_joints",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of <code>b2Joint</code> handles created by <code>b2d.joint</code>",
+                    "name": "joints",
+                    "types": [
+                        "table"
                     ]
                 }
             ],
@@ -2212,7 +2340,7 @@
         },
         {
             "brief": "This resets the mass properties to the sum of the ...",
-            "description": "This resets the mass properties to the sum of the mass properties of the fixtures.\nThis normally does not need to be called unless you called SetMassData to override",
+            "description": "This resets the mass properties to the sum of the mass properties of the shapes.\nThis normally does not need to be called unless you called SetMassData to override",
             "error": "",
             "examples": "",
             "language": "",
@@ -2268,7 +2396,7 @@
         },
         {
             "brief": "Set the active state of the body",
-            "description": "Set the active state of the body. An inactive body is not\nsimulated and cannot be collided with or woken up.\nIf you pass a flag of true, all fixtures will be added to the\nbroad-phase.\nIf you pass a flag of false, all fixtures will be removed from\nthe broad-phase and all contacts will be destroyed.\nFixtures and joints are otherwise unaffected. You may continue\nto create/destroy fixtures and joints on inactive bodies.\nFixtures on an inactive body are implicitly inactive and will\nnot participate in collisions, ray-casts, or queries.\nJoints connected to an inactive body are implicitly inactive.\nAn inactive body is still owned by a b2World object and remains\nin the body list.",
+            "description": "Set the active state of the body. An inactive body is not\nsimulated and cannot be collided with or woken up.\nIf you pass a flag of true, all shapes will be added to the\nbroad-phase.\nIf you pass a flag of false, all shapes will be removed from\nthe broad-phase and all contacts will be destroyed.\nShapes and joints are otherwise unaffected. You may continue\nto create/destroy shapes and joints on inactive bodies.\nShapes on an inactive body are implicitly inactive and will\nnot participate in collisions, ray-casts, or queries.\nJoints connected to an inactive body are implicitly inactive.\nAn inactive body is still owned by a b2World object and remains\nin the body list.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3016,11 +3144,11 @@
         "brief": "Box2D b2Body documentation",
         "description": "Functions for interacting with Box2D bodies.",
         "description_html": "<p>Functions for interacting with Box2D bodies.</p>",
-        "file": "script_box2d_body.cpp",
+        "file": "script_box2d_body_v2.cpp",
         "name": "b2d.body",
         "namespace": "b2d.body",
         "notes": [],
-        "path": "engine/gamesys/src/gamesys/scripts/box2d/script_box2d_body.cpp",
+        "path": "engine/gamesys/src/gamesys/scripts/box2d/v2/script_box2d_body_v2.cpp",
         "type": "Defold Lua"
     }
 }

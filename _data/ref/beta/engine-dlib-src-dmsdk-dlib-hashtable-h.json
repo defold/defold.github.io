@@ -94,7 +94,7 @@
             ],
             "parameters": [
                 {
-                    "doc": "Pointer to user allocated continous data-block ((table_size<em>sizeof(uint32_t)) + (capacity</em>sizeof(dmHashTable::Entry))",
+                    "doc": "Pointer to user allocated continous data-block (see dmHashTable::GetMemorySize)",
                     "is_optional": "False",
                     "name": "user_allocated",
                     "types": [
@@ -289,6 +289,46 @@
                     "name": "iterator",
                     "types": [
                         "dmHashTable<T>::Iterator"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Returns the number of bytes needed for user alloca...",
+            "description": "Returns the number of bytes needed for user allocated memory.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetMemorySize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Hashtable size, ie number of buckets. table_size &lt; 0xffffffff",
+                    "is_optional": "False",
+                    "name": "table_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Capacity. capacity &lt; 0xffffffff",
+                    "is_optional": "False",
+                    "name": "capacity",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Number of bytes needed.",
+                    "name": "memory_size",
+                    "types": [
+                        "uint32_t"
                     ]
                 }
             ],

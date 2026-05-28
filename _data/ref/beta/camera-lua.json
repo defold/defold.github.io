@@ -243,6 +243,40 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "get orthographic auto zoom",
+            "description": "Gets the orthographic zoom calculated from the current window and project dimensions\nin auto-fit and auto-cover modes. Returns 1.0 in fixed mode.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "camera.get_orthographic_auto_zoom",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "camera id",
+                    "is_optional": "False",
+                    "name": "camera",
+                    "types": [
+                        "url",
+                        "number",
+                        "nil"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the calculated orthographic auto zoom.",
+                    "name": "orthographic_auto_zoom",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "get orthographic zoom mode",
             "description": "get orthographic zoom mode",
             "error": "",
@@ -278,7 +312,7 @@
         },
         {
             "brief": "get orthographic zoom",
-            "description": "get orthographic zoom",
+            "description": "Gets the positive user-controlled orthographic zoom multiplier. In auto-fit and auto-cover\nmodes, this value is multiplied with camera.get_orthographic_auto_zoom(camera).",
             "error": "",
             "examples": "",
             "language": "",
@@ -300,7 +334,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "the zoom level when the camera uses orthographic projection.",
+                    "doc": "the positive zoom multiplier when the camera uses orthographic projection.",
                     "name": "orthographic_zoom",
                     "types": [
                         "number"
@@ -380,7 +414,7 @@
         },
         {
             "brief": "auto-cover orthographic zoom mode",
-            "description": "Computes zoom so the original display area covers the entire window while preserving aspect ratio.\nEquivalent to using max(window_width/width, window_height/height).",
+            "description": "Computes zoom so the original display area covers the entire window while preserving aspect ratio.\nEquivalent to using max(window_width/width, window_height/height).\nThe result is multiplied by the user-controlled orthographic zoom.",
             "error": "",
             "examples": "",
             "language": "",
@@ -395,7 +429,7 @@
         },
         {
             "brief": "auto-fit orthographic zoom mode",
-            "description": "Computes zoom so the original display area (game.project width/height) fits inside the window\nwhile preserving aspect ratio. Equivalent to using min(window_width/width, window_height/height).",
+            "description": "Computes zoom so the original display area (game.project width/height) fits inside the window\nwhile preserving aspect ratio. Equivalent to using min(window_width/width, window_height/height).\nThe result is multiplied by the user-controlled orthographic zoom.",
             "error": "",
             "examples": "",
             "language": "",
@@ -721,7 +755,7 @@
         },
         {
             "brief": "set orthographic zoom",
-            "description": "set orthographic zoom",
+            "description": "Sets the positive user-controlled orthographic zoom multiplier. In auto-fit and auto-cover\nmodes, this value is multiplied with camera.get_orthographic_auto_zoom(camera).",
             "error": "",
             "examples": "",
             "language": "",
@@ -740,7 +774,7 @@
                     ]
                 },
                 {
-                    "doc": "the zoom level when the camera uses orthographic projection.",
+                    "doc": "the positive zoom multiplier when the camera uses orthographic projection.",
                     "is_optional": "False",
                     "name": "orthographic_zoom",
                     "types": [
@@ -841,8 +875,23 @@
             "type": "PROPERTY"
         },
         {
+            "brief": "<span class=\"type\">float</span> camera orthographic_auto_zoom",
+            "description": "<span class=\"mark\">READ ONLY</span> The zoom calculated from the current window and project dimensions\nin auto fit and auto cover modes. The value is 1.0 in fixed mode.\nThe type of the property is float.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">orthographic_auto_zoom</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#camera&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;orthographic_auto_zoom&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "orthographic_auto_zoom",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "PROPERTY"
+        },
+        {
             "brief": "<span class=\"type\">float</span> camera orthographic_zoom",
-            "description": "Zoom level when using an orthographic projection.\nThe type of the property is float.",
+            "description": "Positive zoom multiplier when using an orthographic projection. In auto fit and auto cover\nmodes, this value is multiplied with the calculated orthographic_auto_zoom value.\nThe type of the property is float.",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">orthographic_zoom</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#camera&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;orthographic_zoom&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#camera&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;orthographic_zoom&quot;</span><span class=\"p\">,</span> <span class=\"mf\">2.0</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;#camera&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;orthographic_zoom&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_ONCE_PINGPONG</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_INOUTQUAD</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -921,7 +970,7 @@
                     ]
                 },
                 {
-                    "doc": "zoom level when the camera is using an orthographic projection",
+                    "doc": "positive zoom multiplier when the camera is using an orthographic projection",
                     "is_optional": "False",
                     "name": "orthographic_zoom",
                     "types": [
