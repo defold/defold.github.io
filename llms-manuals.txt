@@ -5284,8 +5284,8 @@ Use [`resource.create_texture(path, params)`](https://defold.com/ref/stable/reso
   local params = {
     width  = 128,
     height = 128,
-    type   = resource.TEXTURE_TYPE_2D,
-    format = resource.TEXTURE_FORMAT_RGBA,
+    type   = graphics.TEXTURE_TYPE_2D,
+    format = graphics.TEXTURE_FORMAT_RGBA,
   }
   local my_texture_id = resource.create_texture("/my_custom_texture.texturec", params)
 ```
@@ -5307,7 +5307,7 @@ Once the texture has been created you can use [`resource.set_texture(path, param
       end
   end
 
-  local params = { width=width, height=height, x=0, y=0, type=resource.TEXTURE_TYPE_2D, format=resource.TEXTURE_FORMAT_RGBA, num_mip_maps=1 }
+  local params = { width=width, height=height, x=0, y=0, type=graphics.TEXTURE_TYPE_2D, format=graphics.TEXTURE_FORMAT_RGBA, num_mip_maps=1 }
   resource.set_texture(my_texture_id, params, buf)
 ```
 
@@ -6241,7 +6241,7 @@ go.set(".", "position.y", 200)
 go.animate(".", "position.y", go.PLAYBACK_LOOP_PINGPONG, 100, go.EASING_OUTBOUNCE, 2)
 ```
 
-To stop all animations of a given property, call `go.cancel_animations()`, or for GUI nodes, `gui.cancel_animation()`:
+To stop all animations of a given property, call `go.cancel_animations()`, or for GUI nodes, `gui.cancel_animations()`:
 ```lua
 -- Stop euler z rotation animation on the current game object
 go.cancel_animations(".", "euler.z")
@@ -6267,7 +6267,7 @@ gui.animate(node, hash("position.x"), 100, gui.EASING_INOUTQUAD, 0.5)
 
 ## Completion callbacks
 
-The property animation functions `go.animate()` and `gui.animate()` support an optional Lua callback function as the last argument. This function will be called when the animation has played to the end. The function is never called for looping animations, nor when an animation is manually canceled via `go.cancel_animations()` or `gui.cancel_animation()`. The callback can be used to trigger events on animation completion or to chain multiple animations together.
+The property animation functions `go.animate()` and `gui.animate()` support an optional Lua callback function as the last argument. This function will be called when the animation has played to the end. The function is never called for looping animations, nor when an animation is manually canceled via `go.cancel_animations()` or `gui.cancel_animations()`. The callback can be used to trigger events on animation completion or to chain multiple animations together.
 
 ## Easing
 
@@ -7779,7 +7779,7 @@ The default render script is tailor made for 2D games and does not work with 3D 
   function update()
     ...
     render.set_depth_mask(true)
-    render.enable_state(render.STATE_DEPTH_TEST)
+    render.enable_state(graphics.STATE_DEPTH_TEST)
     render.set_projection(stretch_projection(-1000, 1000))  -- orthographic
     render.draw(self.model_pred)
     render.set_depth_mask(false)
@@ -12608,25 +12608,25 @@ function update(self)
 
     -- render models
     --
-    render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
-    render.enable_state(render.STATE_CULL_FACE)
-    render.enable_state(render.STATE_DEPTH_TEST)
+    render.set_blend_func(graphics.BLEND_FACTOR_SRC_ALPHA, graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA)
+    render.enable_state(graphics.STATE_CULL_FACE)
+    render.enable_state(graphics.STATE_DEPTH_TEST)
     render.set_depth_mask(true)
     render.draw(predicates.model_pred)
     render.set_depth_mask(false)
-    render.disable_state(render.STATE_DEPTH_TEST)
-    render.disable_state(render.STATE_CULL_FACE)
+    render.disable_state(graphics.STATE_DEPTH_TEST)
+    render.disable_state(graphics.STATE_CULL_FACE)
 
      -- render world (sprites, tilemaps, particles etc)
      --
-    render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
-    render.enable_state(render.STATE_DEPTH_TEST)
-    render.enable_state(render.STATE_STENCIL_TEST)
-    render.enable_state(render.STATE_BLEND)
+    render.set_blend_func(graphics.BLEND_FACTOR_SRC_ALPHA, graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA)
+    render.enable_state(graphics.STATE_DEPTH_TEST)
+    render.enable_state(graphics.STATE_STENCIL_TEST)
+    render.enable_state(graphics.STATE_BLEND)
     render.draw(predicates.tile)
     render.draw(predicates.particle)
-    render.disable_state(render.STATE_STENCIL_TEST)
-    render.disable_state(render.STATE_DEPTH_TEST)
+    render.disable_state(graphics.STATE_STENCIL_TEST)
+    render.disable_state(graphics.STATE_DEPTH_TEST)
 
     -- debug
     render.draw_debug3d()
@@ -12636,10 +12636,10 @@ function update(self)
     local camera_gui = state.cameras.camera_gui
     render.set_view(camera_gui.view)
     render.set_projection(camera_gui.proj)
-    render.enable_state(render.STATE_STENCIL_TEST)
+    render.enable_state(graphics.STATE_STENCIL_TEST)
     render.draw(predicates.gui, camera_gui.frustum)
     render.draw(predicates.text, camera_gui.frustum)
-    render.disable_state(render.STATE_STENCIL_TEST)
+    render.disable_state(graphics.STATE_STENCIL_TEST)
 end
 ```
 
@@ -12687,7 +12687,7 @@ render.set_render_target(render.RENDER_TARGET_DEFAULT)
 render.disable_material()
 
 -- bind the render target result texture to whatever is getting rendered via the predicate
-render.enable_texture(0, "my_render_target", render.BUFFER_COLOR0_BIT)
+render.enable_texture(0, "my_render_target", graphics.BUFFER_TYPE_COLOR0_BIT)
 render.draw(self.my_tile_predicate)
 ```
 
@@ -13239,11 +13239,11 @@ function init(self)
     -- Create a texture resource like usual, but add the "storage" flag
     -- so it can be used as the backing storage for compute programs
     local t_backing = resource.create_texture("/my_backing_texture.texturec", {
-        type   = resource.TEXTURE_TYPE_IMAGE_2D,
+        type   = graphics.TEXTURE_TYPE_IMAGE_2D,
         width  = 128,
         height = 128,
-        format = resource.TEXTURE_FORMAT_RGBA32F,
-        flags  = resource.TEXTURE_USAGE_FLAG_STORAGE + resource.TEXTURE_USAGE_FLAG_SAMPLE,
+        format = graphics.TEXTURE_FORMAT_RGBA32F,
+        flags  = graphics.TEXTURE_USAGE_FLAG_STORAGE + graphics.TEXTURE_USAGE_FLAG_SAMPLE,
     })
 
     -- get the texture handle from the resource
@@ -13299,11 +13299,11 @@ function init(self)
     -- Create a texture resource like usual, but add the "storage" flag
     -- so it can be used as the backing storage for compute programs
     local t_backing = resource.create_texture("/my_backing_texture.texturec", {
-        type   = resource.TEXTURE_TYPE_IMAGE_2D,
+        type   = graphics.TEXTURE_TYPE_IMAGE_2D,
         width  = 128,
         height = 128,
-        format = resource.TEXTURE_FORMAT_RGBA32F,
-        flags  = resource.TEXTURE_USAGE_FLAG_STORAGE + resource.TEXTURE_USAGE_FLAG_SAMPLE,
+        format = graphics.TEXTURE_FORMAT_RGBA32F,
+        flags  = graphics.TEXTURE_USAGE_FLAG_STORAGE + graphics.TEXTURE_USAGE_FLAG_SAMPLE,
     })
 
     local textures = {
@@ -16358,7 +16358,7 @@ It is sometimes necessary to provide additional arguments to a game before it or
 
 ### Engine arguments
 
-It is possible to specify additional engine arguments when the engine is configured and loaded. These extra engine arguments can at runtime be retrieved using `sys.get_config()`. To add the key-value pairs you modify the `engine_arguments` field of the `extra_params` object that is passed to the engine when loaded in `index.html`:
+It is possible to specify additional engine arguments when the engine is configured and loaded. These extra engine arguments can at runtime be retrieved using `sys.get_config_string()`. To add the key-value pairs you modify the `engine_arguments` field of the `extra_params` object that is passed to the engine when loaded in `index.html`:
 
 ```
     <script id='engine-setup' type='text/javascript'>
@@ -16373,8 +16373,8 @@ You can also add `--config=foo1=bar1, --config=foo2=bar2` to the engine argument
 
 At runtime you get the values like this:
 ```lua
-local foo1 = sys.get_config("foo1")
-local foo2 = sys.get_config("foo2")
+local foo1 = sys.get_config_string("foo1")
+local foo2 = sys.get_config_string("foo2")
 print(foo1) -- bar1
 print(foo2) -- bar2
 ```
