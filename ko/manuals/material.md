@@ -54,7 +54,7 @@ Defold는 모바일 장치에서 렌더링 하기 위해 OpenGL ES 2.0을 사용
 ![Shader files](/manuals/images/materials/materials_shader_files.png)
 
 ### Material tags
-당신의 렌더 스크립트(render script)가 새 메터리얼을 사용하는 컴포넌트를 렌더링 할 수 있으므로 당신은 메터리얼을 위한 태그(tag)를 설정해야 합니다. 태그는 엔진에서 render.predicate()에 의해 함께 렌더링해야 하는 컴포넌트들을 수집하기위해 사용되며 비트마스크(bitmask)로 표시됩니다. 이를 수행하는 방법을 알고 싶다면 [Rendering](/manuals/rendering)문서를 참고 바랍니다.
+당신의 렌더 스크립트(render script)가 새 메터리얼을 사용하는 컴포넌트를 렌더링 할 수 있으므로 당신은 메터리얼을 위한 태그(tag)를 설정해야 합니다. 태그는 엔진에서 render.predicate()에 의해 함께 렌더링해야 하는 컴포넌트들을 수집하기위해 사용되며 비트마스크(bitmask)로 표시됩니다. 이를 수행하는 방법을 알고 싶다면 [Rendering](/ko/manuals/render)문서를 참고 바랍니다.
 
 > 프로젝트에서 사용할 수 있는 최대 태그의 수는 32개 입니다.
 
@@ -131,7 +131,7 @@ void main()
 유니폼(Uniforms)은 엔진에서 버텍스와 프레그먼트 쉐이더 프로그램으로 전달되는 값입니다. 이들은 쉐이더 프로그램에서 uniform 키워드로 선언되며 material 파일에서 vertex_constant 속성이나 fragment_constant 속성으로 정의되어야 합니다. 쉐이더 상수(shader constatns)는 각 렌더 패스(render pass)에서 일정하며 각 프레임당 한 번씩 발생합니다. 아래 타입을 사용할 수 있습니다.
 
 #### CONSTANT_TYPE_USER
-쉐이더 프로그램으로 보내려는 커스텀 데이터를 위해 사용되는 커스텀 상수(custom constant)입니다. 상수 정의(constant definition)에 있는 상수를 초기값으로 사용할 수 있지만 sprite.set_constant(),  sprite.reset_constant(), tilemap.set_constant(), tilemap.reset_constant(), particlefx.set_constant(), particlefx.reset_constant() 함수를 통해 변경할 수 있습니다.
+쉐이더 프로그램으로 보내려는 커스텀 데이터를 위해 사용되는 커스텀 상수(custom constant)입니다. 상수 정의(constant definition)에 있는 상수를 초기값으로 사용할 수 있지만 go.set() 또는 go.animate() 함수를 통해 변경할 수 있으며 go.get()으로 값을 읽을 수 있습니다.
 #### CONSTANT_TYPE_WORLD
 월드 메트릭스(world matrix)
 #### CONSTANT_TYPE_VIEW

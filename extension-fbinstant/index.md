@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to setup and create games for Facebook Instant Games using Defold.
 github: https://github.com/defold/extension-fbinstant
-language: en
 layout: manual
+locale: en
 title: Facebook Instant Games extension
 toc:
 - Facebook Instant Games extension

@@ -21,12 +21,6 @@ from scripts import dedupe_examples_wasm
 from argparse import ArgumentParser
 from contextlib import contextmanager
 
-from markdown import Markdown
-from markdown import Extension
-from markdown.util import AtomicString
-import xml.etree.ElementTree as etree
-from markdown.inlinepatterns import Pattern
-
 
 SHA1 = {}
 
@@ -138,6 +132,10 @@ def unzip(filename, destination):
     zip_ref = zipfile.ZipFile(filename, 'r')
     zip_ref.extractall(destination)
     zip_ref.close()
+
+def create_markdown():
+    from markdown import Markdown
+    return Markdown(extensions=['markdown.extensions.fenced_code','markdown.extensions.def_list', 'markdown.extensions.codehilite','markdown.extensions.tables'])
 
 
 def download_file(url, destination, filename=None):
@@ -820,7 +818,7 @@ def parse_extension_parameters(parameters):
     return params
 
 def parse_script_api_members(api_name, api):
-    md = Markdown(extensions=['markdown.extensions.fenced_code','markdown.extensions.def_list', 'markdown.extensions.codehilite','markdown.extensions.tables'])
+    md = create_markdown()
     elements = []
     members = api["members"]
     for m in members:
@@ -1101,16 +1099,59 @@ def process_codepad(download = False):
         rmcopytree(os.path.join(input_dir, "build", "default", "DefoldCodePad"), codepad_dir)
 
 
-def fix_tags_case(list):
-    if list:
-        for i,v in enumerate(list):
-            if v.lower() == "gui":
-                list[i] = "GUI"
-            elif v.lower() == "ai":
-                list[i] = "AI"
-            elif v.islower():
-                list[i] = v.capitalize()
-    return list
+ASSET_ALLOWED_TAG_NAMES = None
+
+def normalize_asset_tag_id(tag):
+    return re.sub(r"[^a-z0-9]+", "", (tag or "").lower())
+
+def get_asset_allowed_tag_names():
+    global ASSET_ALLOWED_TAG_NAMES
+    if ASSET_ALLOWED_TAG_NAMES is None:
+        with open("_config.yml") as f:
+            config = yaml.safe_load(f) or {}
+        tags = config.get("asset_allowed_tags", [])
+        ASSET_ALLOWED_TAG_NAMES = {}
+        for tag in tags:
+            tag_name = tag.get("name") if isinstance(tag, dict) else str(tag)
+            tag_id = tag.get("id") if isinstance(tag, dict) else normalize_asset_tag_id(tag_name)
+            ASSET_ALLOWED_TAG_NAMES[normalize_asset_tag_id(tag_id)] = tag_name
+            ASSET_ALLOWED_TAG_NAMES[normalize_asset_tag_id(tag_name)] = tag_name
+    return ASSET_ALLOWED_TAG_NAMES
+
+def fix_tags_case(tags, asset_id=None):
+    if tags:
+        allowed_tags = get_asset_allowed_tag_names()
+        normalized_tags = []
+        seen = set()
+        for tag in tags:
+            tag_id = normalize_asset_tag_id(tag)
+            if tag_id not in allowed_tags:
+                asset_label = " in {}".format(asset_id) if asset_id else ""
+                raise ValueError("Unknown asset tag{}: {}".format(asset_label, tag))
+
+            normalized_tag = allowed_tags[tag_id]
+            normalized_tag_id = normalize_asset_tag_id(normalized_tag)
+            if normalized_tag_id and normalized_tag_id not in seen:
+                normalized_tags.append(normalized_tag)
+                seen.add(normalized_tag_id)
+        tags[:] = normalized_tags
+    return tags
+
+def validate_asset_tags(asset_source_dir):
+    allowed_tags = get_asset_allowed_tag_names()
+    unknown_tags = []
+    for filename in find_files(asset_source_dir, "*.json"):
+        asset_id = os.path.basename(filename).replace(".json", "")
+        asset = read_as_json(filename)
+        for tag in asset.get("tags", []):
+            if normalize_asset_tag_id(tag) not in allowed_tags:
+                unknown_tags.append("{}: {}".format(asset_id, tag))
+
+    if unknown_tags:
+        details = "\n".join(unknown_tags[:50])
+        if len(unknown_tags) > 50:
+            details += "\n... and {} more".format(len(unknown_tags) - 50)
+        raise ValueError("Unknown asset tags:\n{}".format(details))
 
 def fix_platforms_case(platforms):
     if platforms:
@@ -1130,6 +1171,9 @@ def fix_platforms_case(platforms):
     return platforms
 
 def process_assets(tmp_dir):
+    asset_source_dir = os.path.join(tmp_dir, "asset-portal-master", "assets")
+    validate_asset_tags(asset_source_dir)
+
     # Jekyll assets collection
     asset_collection_dir = "assets"
     rmmkdir(asset_collection_dir)
@@ -1152,13 +1196,13 @@ def process_assets(tmp_dir):
 
     # image data
     image_dir = os.path.join("images", "assets")
-    rmcopytree(os.path.join(tmp_dir, "asset-portal-master", "assets", "images"), image_dir)
+    rmcopytree(os.path.join(asset_source_dir, "images"), image_dir)
 
     assetindex = []
     authorindex = {}
     tagindex = {}
     platformindex = {}
-    for filename in find_files(os.path.join(tmp_dir, "asset-portal-master", "assets"), "*.json"):
+    for filename in find_files(asset_source_dir, "*.json"):
         basename = os.path.basename(filename)
         print("Processing asset: {}".format(basename))
         asset_id = basename.replace(".json", "")
@@ -1169,7 +1213,7 @@ def process_assets(tmp_dir):
 
         # read asset and add additional data
         asset = read_as_json(asset_file)
-        fix_tags_case(asset["tags"])
+        fix_tags_case(asset["tags"], asset_id)
         fix_platforms_case(asset["platforms"])
         author_name = asset["author"]
         project_url = asset.get("project_url") or asset.get("github_url") or ""
@@ -1473,7 +1517,7 @@ def process_refdoc(download = False):
                         elements.extend(api["elements"])
 
             # do per namespace processing and generate index and dummy file per namespace
-            md = Markdown(extensions=['markdown.extensions.fenced_code','markdown.extensions.def_list', 'markdown.extensions.codehilite','markdown.extensions.tables'])
+            md = create_markdown()
             for namespace_key in namespaces:
                 api = namespaces[namespace_key]
 

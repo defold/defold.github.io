@@ -1,51 +1,51 @@
-## Downloading
+## Download
 
-Go to the [Defold download page](https://defold.com/download/) where you will find Download buttons for macOS, Windows and Linux (Ubuntu):
+Acesse a [página de download do Defold](https://defold.com/download/), onde você encontrará botões Download para macOS, Windows e Linux (Ubuntu):
 
-![download editor](/shared/images/editor_download.png)
+![baixar editor](/shared/images/editor_download.png)
 
-## Installation
+## Instalação
 
-Installation on macOS
-: The downloaded file is a DMG image containing the program.
+Instalação no macOS
+:: O arquivo baixado é uma imagem DMG que contém o programa.
 
-  1. Locate the file "Defold-x86_64-macos.dmg" and double click it to open the image.
-  2. Drag the application "Defold" to the "Applications" folder link.
+  1. Localize o arquivo "Defold-x86_64-macos.dmg" e dê um clique duplo nele para abrir a imagem.
+  2. Arraste a aplicação "Defold" para o link da pasta "Applications".
 
-  To start the editor, open your "Applications" folder and <kbd>double click</kbd> the file "Defold".
+  Para iniciar o editor, abra sua pasta "Applications" e dê um <kbd>clique duplo</kbd> no arquivo "Defold".
 
   ![Defold macOS](/shared/images/macos_content.png)
 
-Installation on Windows
-: The downloaded file is a ZIP archive that needs to be extracted:
+Instalação no Windows
+:: O arquivo baixado é um arquivo ZIP que precisa ser extraído:
 
-  1. Locate the archive file "Defold-x86_64-win32.zip", <kbd>press and hold</kbd> (or <kbd>right-click</kbd>) the folder, select *Extract All*, and then follow the instructions to extract the archive to a folder named "Defold".
-    2. Move the folder "Defold" to your preferred location (e.g. `D:\Defold`). You should not move Defold to `C:\Program Files (x86)\` or `C:\Program Files\` since this will prevent the editor from updating.
+  1. Localize o arquivo "Defold-x86_64-win32.zip", <kbd>pressione e segure</kbd> (ou <kbd>clique com o botão direito</kbd>) a pasta, selecione *Extract All* e siga as instruções para extrair o arquivo para uma pasta chamada "Defold".
+    2. Mova a pasta "Defold" para o local de sua preferência (por exemplo, `D:\Defold`). Você não deve mover o Defold para `C:\Program Files (x86)\` ou `C:\Program Files\`, pois isso impedirá que o editor seja atualizado.
 
-  To start the editor, open the folder "Defold" and <kbd>double click</kbd> the file "Defold.exe".
+  Para iniciar o editor, abra a pasta "Defold" e dê um <kbd>clique duplo</kbd> no arquivo "Defold.exe".
 
   ![Defold windows](/shared/images/windows_content.png)
 
-Installation on Linux
-: The downloaded file is a ZIP archive that needs to be extracted:
+Instalação no Linux
+:: O arquivo baixado é um arquivo ZIP que precisa ser extraído:
 
-  1. From a terminal, locate the archive file "Defold-x86_64-linux.zip" unzip it to a target Directory called "Defold".
+  1. Em um terminal, localize o arquivo "Defold-x86_64-linux.zip" e descompacte-o em um diretório de destino chamado "Defold".
 
      ```bash
      $ unzip Defold-x86_64-linux.zip -d Defold
      ```
 
-  To start the editor, change directory to where you extracted the application, then run the `Defold` executable, or <kbd>double click</kbd> it on your desktop.
+  Para iniciar o editor, mude para o diretório onde você extraiu a aplicação e execute o executável `Defold`, ou dê um <kbd>clique duplo</kbd> nele na sua área de trabalho.
 
   ```bash
   $ cd Defold
   $ ./Defold
   ```
 
-  There is a helper to install a desktop entry on the `Help > Create Desktop Entry` menu.
+  Há um auxiliar para instalar uma entrada de desktop no menu `Help > Create Desktop Entry`.
 
-  If you run into any problems starting the editor, opening a project or running a Defold game please refer to the [Linux section of the FAQ](/faq/faq#linux-questions).
+  Se você tiver problemas para iniciar o editor, abrir um projeto ou rodar um jogo Defold, consulte a [seção de Linux da FAQ](/faq/faq#linux-questions).
 
-## Install an old version
+## Instalar uma versão antiga
 
-Every beta and stable version of Defold is also [available on GitHub](https://github.com/defold/defold/releases).
+Todas as versões beta e estáveis do Defold também estão [disponíveis no GitHub](https://github.com/defold/defold/releases).

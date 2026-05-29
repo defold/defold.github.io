@@ -1,8 +1,8 @@
-Bundle resources are additional files and folders located as a part of your application bundle using the [*Bundle Resources* field](/manuals/project-settings/#bundle-resources) in *game.project*.
+Zasoby pakietu aplikacji to dodatkowe pliki i katalogi dołączane do pakietu za pomocą pola [*Bundle Resources*](/manuals/project-settings/#bundle-resources) w *game.project*.
 
-The *Bundle Resources* field should contain a comma separated list of directories containing resource files and folders that should be copied as-is into the resulting package when bundling. The directories must be specified with an absolute path from the project root, for example `/res`. The resource directory must contain subfolders named by `platform`, or `architecture-platform`.
+Pole *Bundle Resources* powinno zawierać listę katalogów rozdzielonych przecinkami. Katalogi te muszą zawierać pliki zasobów i podkatalogi, które podczas tworzenia pakietu zostaną skopiowane bez zmian do wynikowej aplikacji. Katalogi trzeba podawać jako ścieżki bezwzględne, liczone od katalogu głównego projektu, na przykład `/res`. Katalog zasobów musi zawierać podkatalogi nazwane według schematu `platform` albo `architecture-platform`.
 
-Supported platforms are `ios`, `android`, `osx`, `win32`, `linux`, `web`, `switch` A subfolder named `common` is also allowed, containing resource files common for all platforms. Example:
+Obsługiwane platformy to `ios`, `android`, `osx`, `win32`, `linux`, `web`, `switch`. Dozwolony jest również podkatalog `common`, zawierający pliki zasobów wspólne dla wszystkich platform. Przykład:
 
 ```
 res
@@ -17,4 +17,4 @@ res
             └── filepaths.xml
 ```
 
-You can use [`sys.get_application_path()`](/ref/stable/sys/#sys.get_application_path:) to get the path to where the application is stored. Use this application base path to create the final absolute path to the files you need access to. Once you have the absolute path of these files you can use the `io.*` and `os.*` functions to access the files.
+Możesz użyć [`sys.get_application_path()`](/ref/stable/sys/#sys.get_application_path:) do pobrania ścieżki do katalogu, w którym znajduje się aplikacja. Użyj tej bazowej ścieżki aplikacji, aby zbudować końcową ścieżkę bezwzględną do plików, do których chcesz uzyskać dostęp. Gdy już znasz bezwzględną ścieżkę do tych plików, możesz użyć funkcji `io.*` i `os.*`, aby uzyskać do nich dostęp.

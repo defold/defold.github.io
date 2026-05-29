@@ -2,7 +2,7 @@
 <button type="button" class="asset-hub-mobile-toggle" data-asset-filter-toggle aria-expanded="false" aria-controls="{{ filter_panel_id }}">
 	<span class="asset-hub-mobile-toggle-copy">
 		<span class="asset-hub-mobile-toggle-label">Filters</span>
-		<span class="asset-hub-mobile-toggle-caption">Search, sort, and tags</span>
+		<span class="asset-hub-mobile-toggle-caption">Filter, sort, and tags</span>
 	</span>
 </button>
 <div class="asset-hub-filter-shell" id="{{ filter_panel_id }}" data-asset-filter-toolbar data-asset-filter-panel>
@@ -12,8 +12,8 @@
 	{%- assign active_sort = include.sort | default: "stars" -%}
 	{%- assign search_id = "asset-search-catalog" -%}
 	<div class="asset-hub-filter-group asset-hub-filter-search">
-		<p class="asset-hub-filter-label">Search</p>
-		{% include catalog_search_field.html id=search_id input_class="assetsearch" data_attribute_name="data-asset-search" placeholder="Search assets by name or description" aria_label="Search assets by name or description" %}
+		<p class="asset-hub-filter-label">Filter</p>
+		{% include catalog_search_field.html id=search_id input_class="assetsearch" data_attribute_name="data-asset-search" field_type="filter" icon_name="filter" placeholder="Filter assets by name or description" aria_label="Filter assets by name or description" %}
 	</div>
 
 	<div class="asset-hub-filter-group asset-hub-sort-row">

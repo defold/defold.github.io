@@ -1,26 +1,26 @@
-The `adb` command line tool is an easy to use and versatile program that is used to interact with Android devices. You can download and install `adb` as part of the Android SDK Platform-Tools, for Mac, Linux or Windows.
+A ferramenta de linha de comando `adb` é um programa fácil de usar e versátil usado para interagir com dispositivos Android. Você pode baixar e instalar o `adb` como parte do Android SDK Platform-Tools, para macOS, Linux ou Windows.
 
-Download the Android SDK Platform-Tools from: https://developer.android.com/studio/releases/platform-tools. You find the *adb* tool in */platform-tools/*. Alternatively, platform specific packages can be installed through respective package managers.
+Baixe o Android SDK Platform-Tools em: https://developer.android.com/studio/releases/platform-tools. Você encontrará a ferramenta *adb* em */platform-tools/*. Como alternativa, pacotes específicos de plataforma podem ser instalados pelos respectivos gerenciadores de pacotes.
 
-On Ubuntu Linux:
+No Ubuntu Linux:
 
 ```
 $ sudo apt-get install android-tools-adb
 ```
 
-On Fedora 18/19:
+No Fedora 18/19:
 
 ```
 $ sudo yum install android-tools
 ```
 
-On macOS (Homebrew)
+No macOS (Homebrew)
 
 ```
 $ brew cask install android-platform-tools
 ```
 
-You can verify that `adb` works by connecting your Android device to your computer via USB and issue the following command:
+Você pode verificar se o `adb` funciona conectando seu dispositivo Android ao computador via USB e executando o seguinte comando:
 
 ```
 $ adb devices
@@ -28,6 +28,6 @@ List of devices attached
 31002535c90ef000    device
 ```
 
-If your device does not show up, verify that you have enabled *USB debugging* on the Android device. Open the device *Settings* and look for *Developer options* (or *Development*).
+Se o seu dispositivo não aparecer, verifique se você habilitou *USB debugging* no dispositivo Android. Abra *Settings* no dispositivo e procure por *Developer options* (ou *Development*).
 
-![Enable USB debugging](../images/android/usb_debugging.png)
+![Habilitar depuração USB](../images/android/usb_debugging.png)

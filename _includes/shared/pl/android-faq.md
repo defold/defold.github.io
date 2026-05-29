@@ -1,9 +1,9 @@
-#### Q: Is it possible to hide the navigation and status bars on Android?
-A: Yes, set the *immersive_mode* setting in the *Android* section of your *game.project* file. This lets your app take over the whole screen and capture all touch events on the screen.
+#### P: Czy można ukryć paski nawigacji i stanu w Androidzie?
+O: Tak, ustaw opcję *immersive_mode* w sekcji *Android* w pliku *game.project*. Dzięki temu aplikacja może przejąć cały ekran i przechwytywać wszystkie zdarzenia dotykowe na ekranie.
 
 
-#### Q: Why am I'm getting "Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]" when installing a Defold game on device?
-A: Android detects that you try to install the app with a new certificate. When bundling debug builds, each build will be signed with a temporary certificate. Uninstall the old app before installing the new version:
+#### P: Dlaczego podczas instalowania gry Defold na urządzeniu pojawia się błąd "Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]"?
+O: Android wykrywa, że próbujesz zainstalować aplikację z nowym certyfikatem. Podczas tworzenia pakietów debugowych każda kompilacja jest podpisywana tymczasowym certyfikatem. Przed zainstalowaniem nowej wersji odinstaluj starą aplikację:
 
 ```
 $ adb uninstall com.defold.examples
@@ -15,8 +15,8 @@ Success
 ```
 
 
-#### Q: Why am I getting errors about conflicting properties in AndroidManifest.xml when building with certain extensions?
-A: This can happen when two or more extensions provide an Android Manifest stub containing the same property tag but with different values. This has for instance happened with Firebase and AdMob. The build error looks similar to this:
+#### P: Dlaczego podczas budowania z niektórymi rozszerzeniami pojawiają się błędy o sprzecznych właściwościach w AndroidManifest.xml?
+O: Może się tak zdarzyć, gdy dwa lub więcej rozszerzeń dostarcza szablon manifestu Androida zawierający ten sam tag właściwości, ale z różnymi wartościami. Taka sytuacja miała na przykład miejsce z Firebase i AdMob. Błąd budowania wygląda podobnie do tego:
 
 ```
 SEVERE: /tmp/job4531953598647135356/upload/AndroidManifest.xml:32:13-58
@@ -27,4 +27,4 @@ Suggestion: add 'tools:replace="android:resource"' to <property> element at
 AndroidManifest.xml to override. 
 ```
 
-You can read more about the issue and the workaround in reported Defold issue [#9453](https://github.com/defold/defold/issues/9453#issuecomment-2367367269) and Google issue [#327696048](https://issuetracker.google.com/issues/327696048?pli=1).
+Więcej informacji o tym problemie i obejściu znajdziesz w zgłoszonym problemie Defold [#9453](https://github.com/defold/defold/issues/9453#issuecomment-2367367269) oraz w problemie Google [#327696048](https://issuetracker.google.com/issues/327696048?pli=1).

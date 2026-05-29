@@ -1,6 +1,6 @@
 # Defold Physics Event Handling {#manuals:physics-events}
 
-Previously, physics interactions in Defold were handled by broadcasting messages to all components of colliding objects. However, starting with version 1.6.4, Defold offers a more centralized approach through the `physics.set_event_listener()` function. This function allows you to set a custom listener to handle all physics interaction events in one place, thereby streamlining your code and improving efficiency.
+Defold offers centralized physics event handling through the `physics.set_event_listener()` function. This function allows you to set a custom listener to handle all physics interaction events in one place, thereby streamlining your code and improving efficiency.
 
 ## Setting the Physics World Listener
 

@@ -214,13 +214,36 @@
         {
             "description": "",
             "examples": "",
-            "name": "poki_sdk.open_external_link",
+            "name": "poki_sdk.get_user",
             "parameters": [
                 {
                     "doc": "",
-                    "name": "url",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "A table with the fields `username` and `avatar_url`, or `nil` if no user is logged in.",
+                            "name": "user",
+                            "types": [
+                                "table"
+                            ]
+                        },
+                        {
+                            "doc": "The rejection message if user accounts are unavailable, or `nil` otherwise.",
+                            "name": "error",
+                            "types": [
+                                "string"
+                            ]
+                        }
+                    ],
                     "types": [
-                        "string"
+                        "function"
                     ]
                 }
             ],
@@ -230,7 +253,85 @@
         {
             "description": "",
             "examples": "",
-            "name": "poki_sdk.openExternalLink",
+            "name": "poki_sdk.get_token",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "The Poki auth token, or `nil` if no user is logged in.",
+                            "name": "token",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "The rejection message if user accounts are unavailable, or `nil` otherwise.",
+                            "name": "error",
+                            "types": [
+                                "string"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "poki_sdk.login",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "`true` if the login promise resolved, otherwise `false`.",
+                            "name": "success",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "The rejection message on failure, or `nil` on success.",
+                            "name": "error",
+                            "types": [
+                                "string"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "poki_sdk.open_external_link",
             "parameters": [
                 {
                     "doc": "",

@@ -7,7 +7,7 @@ stylesheets:
   - submit
 ---
 
-{%- assign tags = site.data.tagindex | sort: "name" -%}
+{%- assign tags = site.asset_allowed_tags -%}
 
 {%- capture page_hero_copy -%}
 <p>Share your extension, template, tool, or sample with the Defold community. Fill in the key details here and the site will open a prefilled GitHub issue for the final submission.</p>

@@ -26,7 +26,7 @@ toc:
 
 任何以Debug模式打包的iOS或Android应用程序都可以作为开发应用。事实上，这是推荐的解决方案，因为开发应用将具有正确的项目设置，并使用与您正在处理的项目相同的[原生扩展](/zh/manuals/extensions/)。
 
-从Defold 1.4.0开始，可以打包项目的Debug变体而不包含任何内容。使用此选项创建带有原生扩展的应用程序版本，适用于本手册中描述的迭代开发。
+可以打包项目的Debug变体而不包含任何内容。使用此选项创建带有原生扩展的应用程序版本，适用于本手册中描述的迭代开发。
 
 ![content less bundle](/manuals/images/dev-app/contentless-bundle.png)
 

@@ -213,6 +213,47 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Blend equation operations",
+            "description": "Blend equation operations.\nDetermines how source and destination colors are combined during blending",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "                Source + Destination",
+                    "name": "BLEND_EQUATION_ADD",
+                    "type": ""
+                },
+                {
+                    "doc": "           Source - Destination",
+                    "name": "BLEND_EQUATION_SUBTRACT",
+                    "type": ""
+                },
+                {
+                    "doc": "   Destination - Source",
+                    "name": "BLEND_EQUATION_REVERSE_SUBTRACT",
+                    "type": ""
+                },
+                {
+                    "doc": "                Min(Source, Destination)",
+                    "name": "BLEND_EQUATION_MIN",
+                    "type": ""
+                },
+                {
+                    "doc": "                Max(Source, Destination)",
+                    "name": "BLEND_EQUATION_MAX",
+                    "type": ""
+                }
+            ],
+            "name": "BlendEquation",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
             "brief": "Blend factors for color blending",
             "description": "Blend factors for color blending.\nDefines how source and destination colors are combined",
             "error": "",
@@ -3665,6 +3706,46 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Set separate blend equations for color and alpha c...",
+            "description": "Set separate blend equations for color and alpha channels.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetBlendEquationSeparate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "equation_color",
+                    "types": [
+                        "dmGraphics::BlendEquation"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "equation_alpha",
+                    "types": [
+                        "dmGraphics::BlendEquation"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "",
             "description": "",
             "error": "",
@@ -3694,6 +3775,62 @@
                     "doc": "",
                     "is_optional": "False",
                     "name": "destination_factor",
+                    "types": [
+                        "dmGraphics::BlendFactor"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set separate blend factors for color and alpha cha...",
+            "description": "Set separate blend factors for color and alpha channels.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetBlendFuncSeparate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "src_factor_color",
+                    "types": [
+                        "dmGraphics::BlendFactor"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "dst_factor_color",
+                    "types": [
+                        "dmGraphics::BlendFactor"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "src_factor_alpha",
+                    "types": [
+                        "dmGraphics::BlendFactor"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "dst_factor_alpha",
                     "types": [
                         "dmGraphics::BlendFactor"
                     ]

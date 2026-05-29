@@ -178,7 +178,7 @@ local mode = camera.get_orthographic_mode("main:/go#camera")
 
 The render API in Defold lets developers perform something called frustum culling. When frustum culling is enabled any graphics that lies outside of a defined bounding box or frustum will be ignored. In a large game world where only a portion is visible at a time, frustum culling can dramatically reduce the amount of data that needs to be sent to the GPU for rendering, thus increasing performance and saving battery (on mobile devices). It is common to use the view and projection of the camera to create the bounding box. The default render script uses the view and projection (from the camera) to calculate a frustum.
 
-Frustum culling is implemented in the engine per component type. Current status (Defold 1.9.0):
+Frustum culling is implemented in the engine per component type. Current status:
 
 | Component   | Supported |
 |-------------|-----------|
@@ -256,25 +256,25 @@ function update(self)
 
     -- render models
     --
-    render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
-    render.enable_state(render.STATE_CULL_FACE)
-    render.enable_state(render.STATE_DEPTH_TEST)
+    render.set_blend_func(graphics.BLEND_FACTOR_SRC_ALPHA, graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA)
+    render.enable_state(graphics.STATE_CULL_FACE)
+    render.enable_state(graphics.STATE_DEPTH_TEST)
     render.set_depth_mask(true)
     render.draw(predicates.model_pred)
     render.set_depth_mask(false)
-    render.disable_state(render.STATE_DEPTH_TEST)
-    render.disable_state(render.STATE_CULL_FACE)
+    render.disable_state(graphics.STATE_DEPTH_TEST)
+    render.disable_state(graphics.STATE_CULL_FACE)
 
      -- render world (sprites, tilemaps, particles etc)
      --
-    render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
-    render.enable_state(render.STATE_DEPTH_TEST)
-    render.enable_state(render.STATE_STENCIL_TEST)
-    render.enable_state(render.STATE_BLEND)
+    render.set_blend_func(graphics.BLEND_FACTOR_SRC_ALPHA, graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA)
+    render.enable_state(graphics.STATE_DEPTH_TEST)
+    render.enable_state(graphics.STATE_STENCIL_TEST)
+    render.enable_state(graphics.STATE_BLEND)
     render.draw(predicates.tile)
     render.draw(predicates.particle)
-    render.disable_state(render.STATE_STENCIL_TEST)
-    render.disable_state(render.STATE_DEPTH_TEST)
+    render.disable_state(graphics.STATE_STENCIL_TEST)
+    render.disable_state(graphics.STATE_DEPTH_TEST)
 
     -- debug
     render.draw_debug3d()
@@ -284,10 +284,10 @@ function update(self)
     local camera_gui = state.cameras.camera_gui
     render.set_view(camera_gui.view)
     render.set_projection(camera_gui.proj)
-    render.enable_state(render.STATE_STENCIL_TEST)
+    render.enable_state(graphics.STATE_STENCIL_TEST)
     render.draw(predicates.gui, camera_gui.frustum)
     render.draw(predicates.text, camera_gui.frustum)
-    render.disable_state(render.STATE_STENCIL_TEST)
+    render.disable_state(graphics.STATE_STENCIL_TEST)
 end
 ```
 
@@ -340,7 +340,7 @@ render.set_render_target(render.RENDER_TARGET_DEFAULT)
 render.disable_material()
 
 -- bind the render target result texture to whatever is getting rendered via the predicate
-render.enable_texture(0, "my_render_target", render.BUFFER_COLOR0_BIT)
+render.enable_texture(0, "my_render_target", graphics.BUFFER_TYPE_COLOR0_BIT)
 render.draw(self.my_tile_predicate)
 ```
 

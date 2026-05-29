@@ -10,4 +10,4 @@ toc:
 
 # Grafika 2D
 
-Przeniesiono do [Instrukcja do grafiki](/manuals/graphics).
+Przeniesiono do [Instrukcja do grafiki](/pl/manuals/graphics).

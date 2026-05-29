@@ -30,7 +30,7 @@ Any resources referenced by the base game package, will not be excluded.
 
 When Defold creates an application bundle it needs to store any excluded resources somewhere. The project settings for Live update govern the location for those resources. The settings are found under `Project ▸ Live update Settings...`. This will create a settings file if none exists. In *game.project*, select which live-update settings file to use when bundling. This allows for using different live-update settings for different environments, for example live, QA, development etc.
 
-There are currently two ways that Defold can store the resources. Choose the method in the *Mode* dropdown in the settings window:
+There are currently three ways that Defold can store the resources. Choose the method in the *Mode* dropdown in the settings window:
 
 `Zip`
 : This option tells Defold to create a Zip archive file with any excluded resources. The archive is saved at the location specified in the *Export path* setting.
@@ -114,10 +114,6 @@ Mounting an archive doesn't copy or move the archive. The engine only stores the
 
 To actually use the live update content, you need to download and mount the data to your game.
 Read more about about how to [script with live update here](https://defold.com/llms/manuals/live-update-scripting.md).
-
-The legacy single-resource Live Update flow is deprecated. Avoid `collectionproxy.missing_resources()`, the deprecated manifest APIs (`liveupdate.get_current_manifest()`, `liveupdate.store_resource()`, `liveupdate.store_manifest()`, `liveupdate.store_archive()`, `liveupdate.is_using_liveupdate_data()`), and the old `resource.*` helper aliases (`resource.get_current_manifest()`, `resource.store_resource()`, `resource.store_manifest()`, `resource.store_archive()`, `resource.is_using_liveupdate_data()`) in new projects.
-
-Current projects should publish archives, mount them with `liveupdate.add_mount()`, manage them with `liveupdate.get_mounts()` and `liveupdate.remove_mount()`, and use `collectionproxy.get_resources()` when they need to inspect excluded content for a proxy. Legacy manifest-signing keys are no longer part of this pipeline: `liveupdate.settings` `publickey` and `privatekey` are deprecated and unused, and `game.public.der` is no longer generated or bundled.
 
 ## Development caveats
 

@@ -1790,7 +1790,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Required props: <dl><dt><code>title <small>string, message</small></code></dt><dd>OS dialog window title, either a string or a localization message</dd></dl>  Optional props: <dl><dt><code>header <small>component</small></code></dt><dd>top part of the dialog, defaults to <code>editor.ui.heading({text = props.title})</code></dd><dt><code>content <small>component</small></code></dt><dd>content of the dialog</dd><dt><code>buttons <small>component[]</small></code></dt><dd>array of <code>editor.ui.dialog_button(...)</code> components, footer of the dialog. Defaults to a single Close button</dd></dl>",
+                    "doc": "Required props: <dl><dt><code>title <small>string, message</small></code></dt><dd>OS dialog window title, either a string or a localization message</dd></dl>  Optional props: <dl><dt><code>header <small>component</small></code></dt><dd>top part of the dialog, defaults to <code>editor.ui.heading({text = props.title})</code></dd><dt><code>content <small>component</small></code></dt><dd>content of the dialog</dd><dt><code>width <small>number</small></code></dt><dd>initial width of the dialog window in pixels</dd><dt><code>height <small>number</small></code></dt><dd>initial height of the dialog window in pixels</dd><dt><code>resizable <small>boolean</small></code></dt><dd>determines if the dialog window can be resized by the user</dd><dt><code>buttons <small>component[]</small></code></dt><dd>array of <code>editor.ui.dialog_button(...)</code> components, footer of the dialog. Defaults to a single Close button</dd><dt><code>modal <small>boolean</small></code></dt><dd>if set to <code>false</code>, the dialog window stays on top but does not block interaction with the editor</dd></dl>",
                     "is_optional": "False",
                     "name": "props",
                     "types": [
@@ -2616,8 +2616,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "show a modal dialog and await a result",
-            "description": "Show a modal dialog and await a result",
+            "brief": "show a dialog and await a result",
+            "description": "Show a dialog and await a result",
             "error": "",
             "examples": "",
             "language": "",

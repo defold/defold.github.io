@@ -145,7 +145,7 @@
                             ]
                         },
                         {
-                            "doc": "One of onFileLoaded, onFileDeleted, onFileError, onArtboardsListed, onViewModelsListed, onViewModelInstanceNamesListed, onViewModelPropertiesListed, onViewModelEnumsListed",
+                            "doc": "One of onFileLoaded, onFileDeleted, onFileError, onArtboardInstantiated, onArtboardsListed, onViewModelsListed, onViewModelInstanceInstantiated, onViewModelInstanceNamesListed, onViewModelPropertiesListed, onViewModelEnumsListed",
                             "name": "event",
                             "types": [
                                 "string"
@@ -160,6 +160,20 @@
                                     "name": "file",
                                     "types": [
                                         "FileHandle"
+                                    ]
+                                },
+                                {
+                                    "doc": "Instantiated artboard handle, when applicable.",
+                                    "name": "artboard",
+                                    "types": [
+                                        "ArtboardHandle"
+                                    ]
+                                },
+                                {
+                                    "doc": "Instantiated view model instance handle, when applicable.",
+                                    "name": "viewModel",
+                                    "types": [
+                                        "ViewModelInstanceHandle"
                                     ]
                                 },
                                 {

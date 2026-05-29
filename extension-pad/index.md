@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to download and use additional asset packs using Play Asset Delivery.
 github: https://github.com/defold/extension-pad
-language: en
 layout: manual
+locale: en
 title: Play Asset Delivery
 toc:
 - Play Asset Delivery
@@ -90,7 +90,7 @@ rm resources.pb
 # move compiled AndroidManifest.xml to correct location
 mkdir manifest
 mv AndroidManifest.xml manifest/AndroidManifest.xml
-# create an uncompressed zip archive of asset pack
+# create an uncompressed zip archive of the asset pack
 zip -r -0 ../assetpack.zip .
 ```
 
@@ -106,7 +106,7 @@ assetpack.zip
 
 ### Add asset pack to the application bundle
 
-When the asset pack has been produced it needs to be merged into the the main application bundle. Unzip the asset pack archive it and write the files to the main application bundle.
+When the asset pack has been produced it needs to be merged into the the main application bundle. Unzip the asset pack archive and write the files to the main application bundle.
 
 ```sh
 # unzip asset pack to folder 'assetpack'

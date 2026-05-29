@@ -1,10 +1,10 @@
 ---
-brief: Esse manual descreve como depurar e executar nos dispositivos Andoid.
+brief: Este manual descreve como depurar uma build em execução em um dispositivo Android.
 github: https://github.com/defold/doc
 layout: manual
 locale: pt
-title: Depuração no Andoid.
+title: Depuração no Android
 toc: []
 ---
 
-Mover para [Debugging Native Code on Android](/manuals/debugging-native-code-android)
+Movido para [Depuração de código nativo no Android](/pt/manuals/debugging-native-code-android)

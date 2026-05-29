@@ -1,5 +1,5 @@
-This file can be used to test transclusion. This whole file will be transcluded as is, with whitespace preservation.
+Ten plik można wykorzystać do testowania transkluzji. Cały ten plik zostanie transkludowany bez zmian, z zachowaniem białych znaków.
 
-Note that any file references need are relative to the document where the file is inserted.
+Zwróć uwagę, że wszelkie odwołania do plików muszą być względne względem dokumentu, do którego plik jest wstawiany.
 
-![shared image](/shared/images/logo.png)
+![współdzielony obraz](/shared/images/logo.png)

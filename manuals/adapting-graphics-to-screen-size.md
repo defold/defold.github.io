@@ -61,7 +61,7 @@ msg.post("@render:", "use_fixed_projection", { zoom = 4 })
 ```
 
 <div class='sidenote' markdown='1'>
-The same result can be achieved by attaching a [Camera component](manuals/camera/) to a game object and check *Orthographic Projection* and set *Orthographic Zoom* to 4.0:
+The same result can be achieved by attaching a [Camera component](/manuals/camera/) to a game object and check *Orthographic Projection* and set *Orthographic Zoom* to 4.0:
 
 ![](../images/screen_size/retro-camera_zoom.png)
 </div>

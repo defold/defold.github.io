@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to integrate and use Xsolla services in Defold.
 github: https://github.com/defold/extension-xsolla
-language: en
 layout: manual
+locale: en
 title: Xsolla documentation
 toc:
 - Xsolla documentation

@@ -564,7 +564,7 @@ If you have prior experience with Unity, this guide helps you become productive 
 
 Defold is a completely free, truly cross-platform 3D game engine with an Editor for Windows, Linux, and macOS. The full source code is available on [Github](https://github.com/defold/defold/).
 
-Defold is focused on performance, even on low-end devices. Its component-based and data-driven architecture is a bit similar to Unity’s DOTS approach.
+Defold is focused on performance, even on low-end devices. It uses a small component model where many gameplay interactions are handled through code and message passing.
 
 Defold is much smaller than Unity. Engine size with empty project is between 1-3 MB on all platforms. You can strip out additional parts of the engine, and move some game content into [Live Update](#manuals:live-update) to download separately later. A size comparison and other reasons to choose Defold are described on the [Why Defold webpage](https://defold.com/why/).
 
@@ -625,6 +625,14 @@ You can create parent-child relationships between game objects. In Defold, this 
 ### Components
 In both engines, Game Objects can be extended with **"Components"**. Defold provides a minimal set of essential components. There is less distinction between 2D and 3D than in Unity (e.g., colliders), so there are fewer components overall, and some from Unity you may miss.
 
+#### Behaviour components
+
+In Unity, "component" usually means a `MonoBehaviour` that is attached to a `GameObject`. You can create your own by inheriting from `MonoBehaviour` or you can use their built-in components like Light, some physics stuff, something something, so on and so forth.
+
+In Defold, Component refers exclusively to what would be the equivalent built-in components in Unity, or something, but defold does not treat a script as a monobehaviour and does not require any explicit "marking" in order to attach to a gameobject, other than creating listener events/callbacks.
+
+Custom gameplay behaviour is usually not added as many separate script components on the same game object. Instead, it is commonly implemented in Lua modules and used by one host `.script`, or handled by a larger system script that controls many objects. The Code Writing section below covers this in more detail.
+
 Read more about [Defold Components here](#manuals:components).
 
 The table below presents similar Unity components for quick lookup, with links for each Defold component manual:
@@ -637,7 +645,7 @@ The table below presents similar Unity components for quick lookup, with links f
 | [Sound](#manuals:sound) | AudioSource | Defold has only a global sound source (not spatial). There is an official [FMOD extension](https://github.com/defold/extension-fmod) for Defold. |
 | [Factory](#manuals:factory) | Prefab Instantiate() | In Defold, a Factory is a component with a specific prototype (prefab). |
 | [Collection Factory](#manuals:collection-factory) | - (No direct component equivalent) | A Collection Factory component in Defold can spawn multiple Game Objects with parent-child relationships at once. |
-| [Collision Object](#manuals:physics-object) | Rigidbody + Collider | In Defold, physics objects and collision shapes are combined in a single component. |
+| [Collision Object](#manuals:physics-objects) | Rigidbody + Collider | In Defold, physics objects and collision shapes are combined in a single component. |
 | [Collision Shapes](#manuals:physics-shapes)  | BoxCollider / SphereCollider / CapsuleCollider | In Defold, shapes (box, sphere, capsule) are configured inside the Collision Object component. Both support collision shapes from tilemaps and convex hull data. |
 | [Camera](#manuals:camera) | Camera | In Unity, the camera has some more built-in rendering and post-processing settings, while Defold delegates it for custom control for user via the render script. |
 | [GUI](#manuals:gui) | UI Toolkit / Unity UI / uGUI Canvas | Defold GUI is a powerful component for building complete UIs and templates. Unity doesn’t have an equivalent single UI component, rather multiple UI frameworks. Defold has an extension for [Extension](https://github.com/britzl/extension-imgui) too. |
@@ -649,7 +657,7 @@ The table below presents similar Unity components for quick lookup, with links f
 
 #### Extensions and custom components
 
-Defold also has an official [Spine](#manuals:extension-spine) and [Rive](#manuals:extension-rive) components available via extensions.
+Defold also has official [Spine](/extension-spine/) and [Rive](/extension-rive/) components available via extensions.
 
 You can also create your own [custom Components](https://github.com/defold/extension-simpledata) using Native Extensions, like e.g. this community created [Object Interpolation Component](https://github.com/indiesoftby/defold-object-interpolation).
 
@@ -679,18 +687,11 @@ Unity scenes share by default the same global game state and physics simulation,
 2. Create a separate game *world* at runtime, with its own game objects, physics world, engine operations and addressing namespace via a collection loaded at bootstrap or via a `Collection Proxy` component.
 
 Factories and Proxy components are also explained below.
-Read more about Collections in the [Building Blocks manual](/manual/building-blocks/#collections).
+Read more about Collections in the [Building Blocks manual](#manuals:building-blocks).
 
 ## Code Writing
 
-A common pitfall for developers coming from Unity is treating Defold scripts like `MonoBehaviour` and attaching one to *every* game object. While you can definitely write in an object oriented way, there are even libraries to help you with this, the recommended way, especially with many of the same game objects is to use scripts as systems or managers. A single script can control hundreds or thousands of objects and their components, while having no scripts of their own, thanks to powerful addressing and messaging in Defold. Creating a separate script for each object is rarely necessary and can lead to a counterproductive complexity.
-
-An example showing how to utilise Defold script properties, factories, addressing, and messaging to control multiple units can be found [here](https://defold.com/examples/factory/spawn_manager/).
-
-Good manuals on code writing:
-- [Script manual](#manuals:script)
-- [Writing code](/manual/writing-code)
-- [Debugging](#manuals:debugging)
+A Defold equivalent to `MonoBehaviour` scripts is a Script component, but there are some worth knowing differences.
 
 ### Lua
 
@@ -704,9 +705,88 @@ Defold supports the usage of transpilers that emit Lua code, such as [Teal](http
 
 ### C++/C# Native Extensions
 
-In Defold you can write Native Extensions in C++ and C#. If you are very comfortable with C#, it’s technically possible to structure most of your game logic in a C# extension and just call it from a small Lua bootstrap script, though this requires some advanced API knowledge and is not recommended for beginners.
+In Defold Native Extensions can be written in several other languages: C, C++, C#, Objective-C, Java or JS depending on target platform. If you are very comfortable with C#, it’s technically possible to structure most of your game logic in a C# extension and just call it from a small Lua bootstrap script, though this requires some advanced API knowledge and is not recommended for beginners.
 
-Read more about extensions in [Defold Native Extensions manual](/manual/extensions.md).
+Read more about extensions in [Defold Native Extensions manual](#manuals:extensions).
+
+### From MonoBehaviours to Lua modules
+
+Unity has an open scripting model. Because `MonoBehaviour` is the primary way to add behaviour in the editor, many Unity projects start with one controller-style script per important GameObject: `PlayerController`, `EnemyController`, `BulletController`, `GameManager`, `EnemyManager`, and so on.
+
+Defold is more specific about its default architecture. A game object may have a `.script`, but you rarely need to create a script for every Game Object, because a single script in Defold can control hundreds or thousands of other objects and their components, without them even having any scripts of their own, thanks to the Defold's powerful addressing and message passing. Creating scripts to match each Game Object is rarely necessary and can lead to counterproductive complexity.
+
+For reusable gameplay behaviour, Unity developers often move toward composition: smaller `MonoBehaviour` scripts such as `Health.cs`, `Attack.cs`, or `EnemyFinder.cs` attached to the same GameObject. In Defold, you usually keep one attached `.script` as the host or coordinator and put reusable logic in regular Lua modules.
+
+In Unity, this composition might look like this:
+```text
+Player
+├── PlayerMovement.cs
+├── PlayerAttack.cs
+├── EnemyFinder.cs
+└── Health.cs
+```
+
+In Defold, the same responsibilities are often split between one attached script and reusable modules:
+```text
+player.go
+├── sprite
+├── collisionobject
+└── player.script
+
+modules/
+├── player_movement.lua
+├── player_attack.lua
+├── enemy_finder.lua
+└── health.lua
+```
+
+The attached `.script` becomes the host or coordinator. The Lua modules contain reusable logic, similar to how small `MonoBehaviour` scripts often contain one responsibility in Unity.
+```lua
+local movement = require "modules.player_movement"
+local attack = require "modules.player_attack"
+local finder = require "modules.enemy_finder"
+local health = require "modules.health"
+
+function init(self)
+    self.movement = movement.new(self)
+    self.attack = attack.new(self)
+    self.finder = finder.new(self)
+    self.health = health.new(self)
+end
+
+function update(self, dt)
+    self.movement:update(dt)
+    self.attack:update(dt)
+    self.finder:update(dt)
+end
+
+function on_message(self, message_id, message, sender)
+    self.health:on_message(message_id, message, sender)
+    self.attack:on_message(message_id, message, sender)
+end
+```
+
+The important difference is not that Defold prevents modular architecture - it is where composition happens and how gameplay code communicates:
+
+| Unity | Defold |
+|---|---|
+| Attach several `MonoBehaviour` scripts in the Inspector | Attach one `.script` and compose Lua modules in code |
+| Use `GetComponent()` or serialized fields to connect behaviours | Store module instances on `self` and use addresses/messages between objects |
+| Each component can have its own lifecycle methods | The host script routes `init()`, `update()`, `on_message()`, `final()`, etc. |
+| Many architectural styles are possible | Messaging-oriented, explicit code composition is the common practice |
+
+This can feel unusual at first, especially if you are used to configuring behaviour by adding components in the Inspector. In Defold, many things that you might configure visually in Unity can instead be created, connected, enabled, disabled, or updated through code. Defold's messaging system helps decouple logic: the sender posts data to an address, and the receiver decides what to do with it.
+
+This approach, even though recommended, is not enforced and you can still write your scripts however you like, including attaching multiple scripts per game object or getting closer to an object oriented style of programming, and there are even libraries to help you with this ([defold-oop](https://github.com/xiyoo0812/defold-oop) or [lua-class](https://github.com/d954mas/lua-class)).
+
+For many objects of the same type, such as bullets, enemies, particles, tiles, or simple interactive elements, it is often better to control them from a system or manager script rather than giving each object a separate script. Use per-object scripts when an object has its own meaningful state and behaviour. Use modules when you want reusable logic. Use system scripts when one script can efficiently control many objects.
+
+An example showing how to utilise Defold script properties, factories, addressing, and messaging to control multiple units can be found [here](https://defold.com/examples/factory/spawn_manager/).
+
+Good manuals on code writing:
+- [Script manual](#manuals:script)
+- [Writing code](#manuals:writing-code)
+- [Debugging](#manuals:debugging)
 
 ### Built-in Code Editor
 
@@ -1931,7 +2011,7 @@ You can learn more about the different options in the [Project Setup manual](#ma
 
 ## Editor Language
 
-In the bottom left corner of the starting screen you can see a Language selection - select from the available currently localizations (since Defold 1.11.2). This is also available in the Editor in `File ▸ Preferences ▸ General ▸ Editor Language`.
+In the bottom left corner of the starting screen you can see a Language selection - select from the currently available localizations. This is also available in the Editor in `File ▸ Preferences ▸ General ▸ Editor Language`.
 
 ## The Editor panes
 
@@ -1967,13 +2047,13 @@ This view shows the content of the file currently being edited, but in a hierarc
    - `Drag and drop` to move items. Drop a game object on another game object in a collection to create a parent-child relationship.
    - `Right Mouse Click` to open a _Context Menu_ from where you can add items, delete selected items etc.
 
-It is possible to toggle the visibility of game objects and visual components by clicking on the little `👁` Eye Icon to the right of an element in the list (Defold 1.9.8 and newer).
+It is possible to toggle the visibility of game objects and visual components by clicking on the little `👁` Eye Icon to the right of an element in the list.
 
 ### 4. Properties pane
 
 This view shows properties associated with the currently selected item, like Id, URL, Position, Rotation, Scale, and/or other component specific properties and also custom properties for scripts.
 
-You can also `Drag` the `↕` Up-Down Arrow and move mouse to change value of the given numerical property (1.10.2+).
+You can also `Drag` the `↕` Up-Down Arrow and move mouse to change value of the given numerical property.
 
 ### 5. Tools pane
 
@@ -2093,9 +2173,9 @@ $ > ./path/to/Defold.app/Contents/MacOS/Defold
 
 ## Editor Server
 
-When the Editor opens a project, it will start a web server on a random port. The server may be used to interact with the editor from other applications. Since 1.11.0, the port is written to the `.internal/editor.port` file.
+When the Editor opens a project, it will start a web server on a random port. The server may be used to interact with the editor from other applications. The port is written to the `.internal/editor.port` file.
 
-Additionally, since 1.11.0 the editor executable has a command line option `--port` (or `-p`), which allows specifying the port during launch, e.g.::
+Additionally, the editor executable has a command line option `--port` (or `-p`), which allows specifying the port during launch, e.g.::
 ```shell
 # Windows
 .\path\to\Defold\Defold.exe --port 8181
@@ -4734,8 +4814,6 @@ The project cache can be deleted manually by deleting the files in `build/defaul
 
 ## Local cache
 
-Added in Defold 1.2.187
-
 The local cache is an optional second cache where compiled assets are stored in an external file location on the same machine or on a network drive. Thanks to its external location the contents of the cache survives a cleanup of the project cache. It can also be shared by multiple developers working on the same project. The cache is currently only available when building using the command line tools. It is enabled through the `resource-cache-local` option:
 ```sh
 java -jar bob.jar --resource-cache-local /Users/john.doe/defold_local_cache
@@ -4746,8 +4824,6 @@ Compiled assets are accessed from the local cache based on a computed checksum w
 Files stored in the local cache are stored indefinitely. It is up to the developer to manually remove old/unused files.
 
 ## Remote cache
-
-Added in Defold 1.2.187
 
 The remote cache is an optional third cache where compiled assets are stored on a server and accessed through HTTP request. The cache is currently only available when building using the command line tools. It is enabled through the `resource-cache-remote` option:
 ```sh
@@ -4975,7 +5051,7 @@ Any resources referenced by the base game package, will not be excluded.
 
 When Defold creates an application bundle it needs to store any excluded resources somewhere. The project settings for Live update govern the location for those resources. The settings are found under `Project ▸ Live update Settings...`. This will create a settings file if none exists. In *game.project*, select which live-update settings file to use when bundling. This allows for using different live-update settings for different environments, for example live, QA, development etc.
 
-There are currently two ways that Defold can store the resources. Choose the method in the *Mode* dropdown in the settings window:
+There are currently three ways that Defold can store the resources. Choose the method in the *Mode* dropdown in the settings window:
 
 `Zip`
 : This option tells Defold to create a Zip archive file with any excluded resources. The archive is saved at the location specified in the *Export path* setting.
@@ -5059,10 +5135,6 @@ Mounting an archive doesn't copy or move the archive. The engine only stores the
 
 To actually use the live update content, you need to download and mount the data to your game.
 Read more about about how to [script with live update here](#manuals:live-update-scripting).
-
-The legacy single-resource Live Update flow is deprecated. Avoid `collectionproxy.missing_resources()`, the deprecated manifest APIs (`liveupdate.get_current_manifest()`, `liveupdate.store_resource()`, `liveupdate.store_manifest()`, `liveupdate.store_archive()`, `liveupdate.is_using_liveupdate_data()`), and the old `resource.*` helper aliases (`resource.get_current_manifest()`, `resource.store_resource()`, `resource.store_manifest()`, `resource.store_archive()`, `resource.is_using_liveupdate_data()`) in new projects.
-
-Current projects should publish archives, mount them with `liveupdate.add_mount()`, manage them with `liveupdate.get_mounts()` and `liveupdate.remove_mount()`, and use `collectionproxy.get_resources()` when they need to inspect excluded content for a proxy. Legacy manifest-signing keys are no longer part of this pipeline: `liveupdate.settings` `publickey` and `privatekey` are deprecated and unused, and `game.public.der` is no longer generated or bundled.
 
 ## Development caveats
 
@@ -5195,7 +5267,7 @@ Playback
 
 ## Runtime Texture and Atlas creation
 
-Starting from Defold 1.4.2 it is possible to create a texture and an atlas at runtime.
+It is possible to create a texture and an atlas at runtime.
 
 ### Creating a Texture resource at runtime
 
@@ -5204,8 +5276,8 @@ Use [`resource.create_texture(path, params)`](https://defold.com/ref/stable/reso
   local params = {
     width  = 128,
     height = 128,
-    type   = resource.TEXTURE_TYPE_2D,
-    format = resource.TEXTURE_FORMAT_RGBA,
+    type   = graphics.TEXTURE_TYPE_2D,
+    format = graphics.TEXTURE_FORMAT_RGBA,
   }
   local my_texture_id = resource.create_texture("/my_custom_texture.texturec", params)
 ```
@@ -5227,7 +5299,7 @@ Once the texture has been created you can use [`resource.set_texture(path, param
       end
   end
 
-  local params = { width=width, height=height, x=0, y=0, type=resource.TEXTURE_TYPE_2D, format=resource.TEXTURE_FORMAT_RGBA, num_mip_maps=1 }
+  local params = { width=width, height=height, x=0, y=0, type=graphics.TEXTURE_TYPE_2D, format=graphics.TEXTURE_FORMAT_RGBA, num_mip_maps=1 }
   resource.set_texture(my_texture_id, params, buf)
 ```
 
@@ -5874,7 +5946,7 @@ The Basis Universal transcoder supports many output formats, like `ASTC4x4`, `BC
 The following lossy compression formats are currently supported:
 
 | Format                            | Compression | Details  |
-| --------------------------------- | ----------- | -------------------------------- | ---- |
+| --------------------------------- | ----------- | -------------------------------- |
 | `TEXTURE_FORMAT_RGB`              | none        | 3 channel color. Alpha is discarded |
 | `TEXTURE_FORMAT_RGBA`             | none        | 3 channel color and full alpha.    |
 | `TEXTURE_FORMAT_RGB_16BPP`        | none        | 3 channel color. 5+6+5 bits. |
@@ -5910,8 +5982,7 @@ The following texture compressors are supported by default. The data is uncompre
 | `BasisU`                          | All RGB/RGBA formats      | Basis Universal high quality, lossy compression. Lower quality level results in smaller size. |
 | `ASTC`                            | All ASTC formats          | ASTC lossy compression. Lower quality level results in smaller size.                          |
 
-Defold 1.9.7 refactored the texture compressor pipeline to support installable compressors, which is the first step in
-enabling implementing a texture compression algorithm in an extension (such as WEBP, or something completely custom).
+Defold supports installable compressors in the texture compressor pipeline. This makes it possible to implement a texture compression algorithm in an extension, such as WEBP or something completely custom.
 
 ## Example image
 
@@ -5922,8 +5993,8 @@ Base image (1024x512):
 
 ### Compression times
 
-| Preset     | Compression time | Relative time   |
-| ----------------------------- | --------------- |
+| Preset    | Compression time | Relative time |
+| --------- | ---------------- | ------------- |
 | `LOW`     | 0m0.143s         | 0.5x            |
 | `MEDIUM`  | 0m0.294s         | 1.0x            |
 | `HIGH`    | 0m1.764s         | 6.0x            |
@@ -5934,8 +6005,8 @@ Base image (1024x512):
 The comparison is done using the `basisu` tool (measuring the PSNR)
 100 dB means no signal loss (i.e. it's the same as the original image).
 
-| Preset     | Signal                                          |
-| ------------------------------------------------------------ |
+| Preset    | Signal                                           |
+| --------- | ------------------------------------------------ |
 | `LOW`     | Max:  34 Mean: 0.470 RMS: 1.088 PSNR: 47.399 dB |
 | `MEDIUM`  | Max:  35 Mean: 0.439 RMS: 1.061 PSNR: 47.620 dB |
 | `HIGH`    | Max:  37 Mean: 0.898 RMS: 1.606 PSNR: 44.018 dB |
@@ -5945,8 +6016,8 @@ The comparison is done using the `basisu` tool (measuring the PSNR)
 
 Original file size is 1572882 bytes.
 
-| Preset     | File Sizes | Ratio    |
-| ---------------------------------- |
+| Preset    | File Sizes | Ratio   |
+| --------- | ---------- | ------- |
 | `LOW`     | 357225     | 22.71 %  |
 | `MEDIUM`  | 365548     | 23.24 %  |
 | `HIGH`    | 277186     | 17.62 %  |
@@ -6076,9 +6147,9 @@ end
 
 <!-- /manuals/model-animation -->
 
-# 3D skinned animation {#manuals:model-animation}
+# 3D model animation {#manuals:model-animation}
 
-Skeletal animation of 3D models use the bones of the model to apply deformation to vertices in the model.
+Model components can play skeletal animations and morph target animations imported from glTF files. Skeletal animation uses the bones of the model to apply deformation to vertices in the model. Morph target animation, also known as blend shape animation, changes the shape of the model by animating weights for alternate vertex positions.
 
 For details on how to import 3D data into a Model for animation, see the [Model documentation](#manuals:model).
 
@@ -6092,9 +6163,142 @@ function init(self)
 end
 ```
 
-Defold currently supports only baked animations. Animations need to have matrices for each animated bone each keyframe, and not position, rotation and scale as separate keys.
+Defold currently supports only baked skeletal animations. Skeletal animations need to have matrices for each animated bone each keyframe, and not position, rotation and scale as separate keys.
 
 Animations are also linearly interpolated. If you do more advanced curve interpolation the animations needs to be prebaked from the exporter.
+
+### Morph targets
+
+Morph targets are alternative shapes for the same mesh. Each target stores position, normal and tangent deltas, and each target has a blend weight that controls how much of that shape is applied. A weight of `0` means that the target has no effect, while a weight of `1` applies the full target shape. Values outside that range can also be useful for exaggerated effects if the shader and asset are authored for it.
+
+Defold imports morph targets and initial morph weights from glTF model data. glTF animations that animate morph weights are imported into the model animation set and can be played with [`model.play_anim()`](https://defold.com/ref/model#model.play_anim), just like skeletal animations:
+```lua
+function init(self)
+    model.play_anim("#model", "smile", go.PLAYBACK_LOOP_FORWARD)
+end
+```
+
+Morph target data can be used on its own or together with skeletal animation, but a model component can only play one model animation at a time. This means that you cannot play one skeletal animation and one separate morph target animation at the same time using `model.play_anim()`. If a model has animation data but no skeleton, only morph target animation data will be used.
+
+You can still combine skeletal animation playback with morph target changes that come from other sources, for example by setting morph target weights from script with `model.set_blend_weights()`.
+
+You can also read and override morph target weights from script. [`model.get_blend_weights()`](https://defold.com/ref/model#model.get_blend_weights) returns the current weights for the first mesh in the model that has morph targets. [`model.set_blend_weights()`](https://defold.com/ref/model#model.set_blend_weights) applies a script override to every morphed mesh in the model:
+```lua
+function init(self)
+    local weights = model.get_blend_weights("#model")
+    weights[1] = 0.75
+    weights[2] = 0.25
+    model.set_blend_weights("#model", weights)
+end
+```
+
+The weight table uses one-based Lua indices in the same order as the morph targets in the mesh. Extra values are ignored, and missing values are treated as zero for meshes with more morph targets than the table contains. The script override is applied after animation every frame until it is cleared:
+```lua
+model.set_blend_weights("#model")     -- clear the override
+model.set_blend_weights("#model", nil) -- also clears the override
+```
+
+### Shader support
+
+To render morph targets, the model material vertex shader needs to sample the generated `morph_targets` texture and apply the weighted deltas to the vertex data. The morph target texture is a 2D array texture where each morph target uses three array layers: position delta, normal delta and tangent delta.
+
+The engine provides the current morph weights to a vertex shader uniform named `morph_targets_weights`. Each `vec4` stores four weights, so `morph_targets_weights[2]` has room for eight morph targets.
+
+The following example shows the relevant vertex shader parts for a non-instanced model material:
+```glsl
+#version 140
+
+in highp vec4 position;
+in mediump vec2 texcoord0;
+in mediump vec3 normal;
+in mediump vec4 tangent;
+
+out mediump vec2 var_texcoord0;
+out mediump vec3 var_normal;
+out mediump vec4 var_tangent;
+
+uniform vs_uniforms
+{
+    mediump mat4 mtx_worldview;
+    mediump mat4 mtx_proj;
+    mediump mat4 mtx_normal;
+    // Each vec4 stores four blend weights. Use morph_targets_weights[1]
+    // for up to 4 morph targets, [2] for up to 8, [3] for up to 12, etc.
+    mediump vec4 morph_targets_weights[2];
+};
+
+uniform sampler2DArray morph_targets;
+
+vec2 get_morph_uv(int vertex_index, int width, int height)
+{
+    int x = vertex_index % width;
+    int y = vertex_index / width;
+    return vec2(
+        (float(x) + 0.5) / float(width),
+        (float(y) + 0.5) / float(height)
+    );
+}
+
+void apply_morph_target(vec2 uv, float weight, int target,
+    inout vec3 position_delta, inout vec3 normal_delta, inout vec3 tangent_delta)
+{
+    if (weight == 0.0) {
+        return;
+    }
+
+    int position_layer = target * 3 + 0;
+    int normal_layer = target * 3 + 1;
+    int tangent_layer = target * 3 + 2;
+
+    position_delta += weight * texture(morph_targets, vec3(uv, position_layer)).xyz;
+    normal_delta += weight * texture(morph_targets, vec3(uv, normal_layer)).xyz;
+    tangent_delta += weight * texture(morph_targets, vec3(uv, tangent_layer)).xyz;
+}
+
+void get_morph_target_data(int vertex_index,
+    out vec3 position_delta, out vec3 normal_delta, out vec3 tangent_delta)
+{
+    position_delta = vec3(0.0);
+    normal_delta = vec3(0.0);
+    tangent_delta = vec3(0.0);
+
+#ifndef EDITOR
+    ivec3 texture_size = textureSize(morph_targets, 0);
+    vec2 uv = get_morph_uv(vertex_index, texture_size.x, texture_size.y);
+
+    apply_morph_target(uv, morph_targets_weights[0].x, 0, position_delta, normal_delta, tangent_delta);
+    apply_morph_target(uv, morph_targets_weights[0].y, 1, position_delta, normal_delta, tangent_delta);
+    apply_morph_target(uv, morph_targets_weights[0].z, 2, position_delta, normal_delta, tangent_delta);
+    apply_morph_target(uv, morph_targets_weights[0].w, 3, position_delta, normal_delta, tangent_delta);
+    apply_morph_target(uv, morph_targets_weights[1].x, 4, position_delta, normal_delta, tangent_delta);
+    apply_morph_target(uv, morph_targets_weights[1].y, 5, position_delta, normal_delta, tangent_delta);
+    apply_morph_target(uv, morph_targets_weights[1].z, 6, position_delta, normal_delta, tangent_delta);
+    apply_morph_target(uv, morph_targets_weights[1].w, 7, position_delta, normal_delta, tangent_delta);
+#endif
+}
+
+void main()
+{
+    vec3 position_delta;
+    vec3 normal_delta;
+    vec3 tangent_delta;
+    get_morph_target_data(gl_VertexIndex, position_delta, normal_delta, tangent_delta);
+
+    vec3 morphed_position = position.xyz + position_delta;
+    vec3 morphed_normal = normalize(normal + normal_delta);
+    vec3 morphed_tangent = normalize(tangent.xyz + tangent_delta);
+
+    var_texcoord0 = texcoord0;
+    var_normal = normalize((mtx_normal * vec4(morphed_normal, 0.0)).xyz);
+    var_tangent = vec4(normalize((mtx_normal * vec4(morphed_tangent, 0.0)).xyz), tangent.w);
+
+    gl_Position = mtx_proj * mtx_worldview * vec4(morphed_position, 1.0);
+}
+```
+
+The `#ifndef EDITOR` wrapper is needed because model animation preview is not available in the editor yet, so the generated morph target texture data is only available at runtime. Increase the `morph_targets_weights` array size and add more `apply_morph_target()` calls if the mesh has more morph targets.
+
+The shader example above uses `textureSize()` and does not work on OpenGL ES 2.0.
 
 ### The bone hierarchy
 
@@ -6161,7 +6365,7 @@ go.set(".", "position.y", 200)
 go.animate(".", "position.y", go.PLAYBACK_LOOP_PINGPONG, 100, go.EASING_OUTBOUNCE, 2)
 ```
 
-To stop all animations of a given property, call `go.cancel_animations()`, or for GUI nodes, `gui.cancel_animation()`:
+To stop all animations of a given property, call `go.cancel_animations()`, or for GUI nodes, `gui.cancel_animations()`:
 ```lua
 -- Stop euler z rotation animation on the current game object
 go.cancel_animations(".", "euler.z")
@@ -6187,7 +6391,7 @@ gui.animate(node, hash("position.x"), 100, gui.EASING_INOUTQUAD, 0.5)
 
 ## Completion callbacks
 
-The property animation functions `go.animate()` and `gui.animate()` support an optional Lua callback function as the last argument. This function will be called when the animation has played to the end. The function is never called for looping animations, nor when an animation is manually canceled via `go.cancel_animations()` or `gui.cancel_animation()`. The callback can be used to trigger events on animation completion or to chain multiple animations together.
+The property animation functions `go.animate()` and `gui.animate()` support an optional Lua callback function as the last argument. This function will be called when the animation has played to the end. The function is never called for looping animations, nor when an animation is manually canceled via `go.cancel_animations()` or `gui.cancel_animations()`. The callback can be used to trigger events on animation completion or to chain multiple animations together.
 
 ## Easing
 
@@ -7590,7 +7794,7 @@ With the model created you need to specify a number of properties:
 Apart from the properties *Id*, *Position* and *Rotation* the following component specific properties exist:
 
 *Mesh*
-: This property should refer to the glTF *.gltf* file that contains the mesh to use. If the file contains multiple meshes, only the first one is read.
+: This property should refer to the glTF *.gltf* file that contains the mesh to use. If the file contains morph targets, they are imported together with the mesh. If the file contains multiple meshes, only the first one is read.
 
 *Create GO Bones*
 : Check this to create a game object for every bone of the model. You can use the game objects to attach other game objects such as weapons to hand bones and so on.
@@ -7642,6 +7846,8 @@ model.play_anim("#model", "run", go.PLAYBACK_NONE)
 -- animate the cursor
 go.animate("#model", "cursor", go.PLAYBACK_LOOP_PINGPONG, 1, go.EASING_LINEAR, 10)
 ```
+
+Models can also use glTF morph target animations. Morph target weights are animated with `model.play_anim()` like other model animations, and can be read or overridden at runtime using [`model.get_blend_weights()`](https://defold.com/ref/model#model.get_blend_weights) and [`model.set_blend_weights()`](https://defold.com/ref/model#model.set_blend_weights). See the [morph targets section](#manuals:model-animation#morph-targets) in the model animation manual for details.
 
 ### Changing properties
 
@@ -7699,7 +7905,7 @@ The default render script is tailor made for 2D games and does not work with 3D 
   function update()
     ...
     render.set_depth_mask(true)
-    render.enable_state(render.STATE_DEPTH_TEST)
+    render.enable_state(graphics.STATE_DEPTH_TEST)
     render.set_projection(stretch_projection(-1000, 1000))  -- orthographic
     render.draw(self.model_pred)
     render.set_depth_mask(false)
@@ -9613,7 +9819,7 @@ end
 
 # Defold Physics Event Handling {#manuals:physics-events}
 
-Previously, physics interactions in Defold were handled by broadcasting messages to all components of colliding objects. However, starting with version 1.6.4, Defold offers a more centralized approach through the `physics.set_event_listener()` function. This function allows you to set a custom listener to handle all physics interaction events in one place, thereby streamlining your code and improving efficiency.
+Defold offers centralized physics event handling through the `physics.set_event_listener()` function. This function allows you to set a custom listener to handle all physics interaction events in one place, thereby streamlining your code and improving efficiency.
 
 ## Setting the Physics World Listener
 
@@ -10417,7 +10623,6 @@ end
 ```
 
 ## Raw gamepads
-(From Defold 1.2.183)
 
 Gamepad input bindings also provide a separate binding named `Raw` to give the unfiltered (without applied deadzone) button, axis and hat input of any connected gamepad.
 ```lua
@@ -10445,11 +10650,8 @@ It includes binaries for Windows, Linux and macOS. Run it from the command line:
 The tool will ask you to press different buttons on your connected controller. It will then output a new gamepads file with correct mappings for your controller. Save the new file, or merge it with your existing gamepads file, then update the setting in *game.project*:
 
 ### Unidentified gamepads
-(From Defold 1.2.186)
 
 When a gamepad is connected and no mapping exists for the gamepad the gamepad will only generate "connected", "disconnected" and "raw" actions. In this case you need to manually map the raw gamepad data to actions in your game.
-
-(From Defold 1.4.8)
 
 It is possible to check if an input action for a gamepad is from an unknown gamepad or not by reading the `gamepad_unknown` value from the action:
 ```lua
@@ -10482,7 +10684,6 @@ If your game is running from inside an `iframe` you must also make sure that the
 ```
 
 ### Standard gamepad
-(From Defold 1.4.1)
 
 If a connected gamepad is identified by the browser as a standard gamepad it will use the mapping for "Standard Gamepad" in the [gamepads settings file](#manuals:input-gamepads) (a Standard Gamepad mapping is included in the `default.gamepads` file in `/builtins`). A standard gamepad is defined as having 16 buttons and 2 analog sticks with a button layout similar to a PlayStation or Xbox controller (see the [W3C definition and button layout](https://w3c.github.io/gamepad/#dfn-standard-gamepad) for more information). If the connected gamepad is not identified as a standard gamepad Defold will look for a mapping matching the hardware gamepad type in the gamepad settings file.
 
@@ -10490,50 +10691,49 @@ If a connected gamepad is identified by the browser as a standard gamepad it wil
 On Windows, only XBox 360 controllers are currently supported. To hook up your 360 controller to your Windows machine, [make sure it is setup correctly](http://www.wikihow.com/Use-Your-Xbox-360-Controller-for-Windows).
 
 ## Gamepads on Android
-(From Defold 1.2.183)
 
 Gamepads are supported in Android builds and generate the same input events as on other platforms. Support for gamepads is based on the [Android input system for key and motion events](https://developer.android.com/training/game-controllers/controller-input). The Android input events will be translated to Defold gamepad events using the same *gamepad* file as described above.
 
 When adding additional gamepad bindings on Android you can use the following lookup tables to translate from the Android input events to *gamepad* file values:
 
-| Key event to button index   | Index | Version |
-|-----------------------------|-------|---------|
-| `AKEYCODE_BUTTON_A`           | 0     | 1.2.183 |
-| `AKEYCODE_BUTTON_B`           | 1     | 1.2.183 |
-| `AKEYCODE_BUTTON_C`           | 2     | 1.2.183 |
-| `AKEYCODE_BUTTON_X`           | 3     | 1.2.183 |
-| `AKEYCODE_BUTTON_L1`          | 4     | 1.2.183 |
-| `AKEYCODE_BUTTON_R1`          | 5     | 1.2.183 |
-| `AKEYCODE_BUTTON_Y`           | 6     | 1.2.183 |
-| `AKEYCODE_BUTTON_Z`           | 7     | 1.2.183 |
-| `AKEYCODE_BUTTON_L2`          | 8     | 1.2.183 |
-| `AKEYCODE_BUTTON_R2`          | 9     | 1.2.183 |
-| `AKEYCODE_DPAD_CENTER`        | 10    | 1.2.183 |
-| `AKEYCODE_DPAD_DOWN`          | 11    | 1.2.183 |
-| `AKEYCODE_DPAD_LEFT`          | 12    | 1.2.183 |
-| `AKEYCODE_DPAD_RIGHT`         | 13    | 1.2.183 |
-| `AKEYCODE_DPAD_UP`            | 14    | 1.2.183 |
-| `AKEYCODE_BUTTON_START`       | 15    | 1.2.183 |
-| `AKEYCODE_BUTTON_SELECT`      | 16    | 1.2.183 |
-| `AKEYCODE_BUTTON_THUMBL`      | 17    | 1.2.183 |
-| `AKEYCODE_BUTTON_THUMBR`      | 18    | 1.2.183 |
-| `AKEYCODE_BUTTON_MODE`        | 19    | 1.2.183 |
-| `AKEYCODE_BUTTON_1`           | 20    | 1.2.186 |
-| `AKEYCODE_BUTTON_2`           | 21    | 1.2.186 |
-| `AKEYCODE_BUTTON_3`           | 22    | 1.2.186 |
-| `AKEYCODE_BUTTON_4`           | 23    | 1.2.186 |
-| `AKEYCODE_BUTTON_5`           | 24    | 1.2.186 |
-| `AKEYCODE_BUTTON_6`           | 25    | 1.2.186 |
-| `AKEYCODE_BUTTON_7`           | 26    | 1.2.186 |
-| `AKEYCODE_BUTTON_8`           | 27    | 1.2.186 |
-| `AKEYCODE_BUTTON_9`           | 28    | 1.2.186 |
-| `AKEYCODE_BUTTON_10`          | 29    | 1.2.186 |
-| `AKEYCODE_BUTTON_11`          | 30    | 1.2.186 |
-| `AKEYCODE_BUTTON_12`          | 31    | 1.2.186 |
-| `AKEYCODE_BUTTON_13`          | 32    | 1.2.186 |
-| `AKEYCODE_BUTTON_14`          | 33    | 1.2.186 |
-| `AKEYCODE_BUTTON_15`          | 34    | 1.2.186 |
-| `AKEYCODE_BUTTON_16`          | 35    | 1.2.186 |
+| Key event to button index   | Index |
+|-----------------------------|-------|
+| `AKEYCODE_BUTTON_A`           | 0     |
+| `AKEYCODE_BUTTON_B`           | 1     |
+| `AKEYCODE_BUTTON_C`           | 2     |
+| `AKEYCODE_BUTTON_X`           | 3     |
+| `AKEYCODE_BUTTON_L1`          | 4     |
+| `AKEYCODE_BUTTON_R1`          | 5     |
+| `AKEYCODE_BUTTON_Y`           | 6     |
+| `AKEYCODE_BUTTON_Z`           | 7     |
+| `AKEYCODE_BUTTON_L2`          | 8     |
+| `AKEYCODE_BUTTON_R2`          | 9     |
+| `AKEYCODE_DPAD_CENTER`        | 10    |
+| `AKEYCODE_DPAD_DOWN`          | 11    |
+| `AKEYCODE_DPAD_LEFT`          | 12    |
+| `AKEYCODE_DPAD_RIGHT`         | 13    |
+| `AKEYCODE_DPAD_UP`            | 14    |
+| `AKEYCODE_BUTTON_START`       | 15    |
+| `AKEYCODE_BUTTON_SELECT`      | 16    |
+| `AKEYCODE_BUTTON_THUMBL`      | 17    |
+| `AKEYCODE_BUTTON_THUMBR`      | 18    |
+| `AKEYCODE_BUTTON_MODE`        | 19    |
+| `AKEYCODE_BUTTON_1`           | 20    |
+| `AKEYCODE_BUTTON_2`           | 21    |
+| `AKEYCODE_BUTTON_3`           | 22    |
+| `AKEYCODE_BUTTON_4`           | 23    |
+| `AKEYCODE_BUTTON_5`           | 24    |
+| `AKEYCODE_BUTTON_6`           | 25    |
+| `AKEYCODE_BUTTON_7`           | 26    |
+| `AKEYCODE_BUTTON_8`           | 27    |
+| `AKEYCODE_BUTTON_9`           | 28    |
+| `AKEYCODE_BUTTON_10`          | 29    |
+| `AKEYCODE_BUTTON_11`          | 30    |
+| `AKEYCODE_BUTTON_12`          | 31    |
+| `AKEYCODE_BUTTON_13`          | 32    |
+| `AKEYCODE_BUTTON_14`          | 33    |
+| `AKEYCODE_BUTTON_15`          | 34    |
+| `AKEYCODE_BUTTON_16`          | 35    |
 
 ([Android `KeyEvent` definitions](https://developer.android.com/ndk/reference/group/input#group___input_1gafccd240f973cf154952fb917c9209719))
 
@@ -10607,7 +10807,7 @@ end
 
 #### `update(self, dt)`
 Called once each frame after `fixed_update` callback of all scripts (if Fixed Timestep is enabled). Parameter `dt` contains the delta time since the last frame.
-```luadifferent
+```lua
 function update(self, dt)
   self.age = self.age + dt -- increase age with the timestep
 end
@@ -11723,11 +11923,10 @@ If the security and availability of the builds servers are of concern to you we 
 ## Securing your downloadable content
 The Defold Live Update system allows developers to exclude content from the main game bundle for download and use at a later time. A typical use case is to download additional levels, maps or worlds as the player progresses through the game.
 
-When excluded content is downloaded and prepared for use in a game, the content will be cryptographically verified by the engine before use to ensure that it has not been tampered with. The verification consists of a number of checks:
+When excluded content is downloaded and prepared for use in a game, the content will be verified by the engine before use. The verification consists of a number of checks:
 
 * Is the binary format correct?
 * Is the downloaded content supported by the currently running engine version?
-* Is the downloaded content signed with the correct public-private key pair?
 * Is the downloaded content complete and not missing any files?
 
 You can read more about this process in the [Live Update manual](#manuals:live-update).
@@ -12454,7 +12653,7 @@ local mode = camera.get_orthographic_mode("main:/go#camera")
 
 The render API in Defold lets developers perform something called frustum culling. When frustum culling is enabled any graphics that lies outside of a defined bounding box or frustum will be ignored. In a large game world where only a portion is visible at a time, frustum culling can dramatically reduce the amount of data that needs to be sent to the GPU for rendering, thus increasing performance and saving battery (on mobile devices). It is common to use the view and projection of the camera to create the bounding box. The default render script uses the view and projection (from the camera) to calculate a frustum.
 
-Frustum culling is implemented in the engine per component type. Current status (Defold 1.9.0):
+Frustum culling is implemented in the engine per component type. Current status:
 
 | Component   | Supported |
 |-------------|-----------|
@@ -12528,25 +12727,25 @@ function update(self)
 
     -- render models
     --
-    render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
-    render.enable_state(render.STATE_CULL_FACE)
-    render.enable_state(render.STATE_DEPTH_TEST)
+    render.set_blend_func(graphics.BLEND_FACTOR_SRC_ALPHA, graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA)
+    render.enable_state(graphics.STATE_CULL_FACE)
+    render.enable_state(graphics.STATE_DEPTH_TEST)
     render.set_depth_mask(true)
     render.draw(predicates.model_pred)
     render.set_depth_mask(false)
-    render.disable_state(render.STATE_DEPTH_TEST)
-    render.disable_state(render.STATE_CULL_FACE)
+    render.disable_state(graphics.STATE_DEPTH_TEST)
+    render.disable_state(graphics.STATE_CULL_FACE)
 
      -- render world (sprites, tilemaps, particles etc)
      --
-    render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
-    render.enable_state(render.STATE_DEPTH_TEST)
-    render.enable_state(render.STATE_STENCIL_TEST)
-    render.enable_state(render.STATE_BLEND)
+    render.set_blend_func(graphics.BLEND_FACTOR_SRC_ALPHA, graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA)
+    render.enable_state(graphics.STATE_DEPTH_TEST)
+    render.enable_state(graphics.STATE_STENCIL_TEST)
+    render.enable_state(graphics.STATE_BLEND)
     render.draw(predicates.tile)
     render.draw(predicates.particle)
-    render.disable_state(render.STATE_STENCIL_TEST)
-    render.disable_state(render.STATE_DEPTH_TEST)
+    render.disable_state(graphics.STATE_STENCIL_TEST)
+    render.disable_state(graphics.STATE_DEPTH_TEST)
 
     -- debug
     render.draw_debug3d()
@@ -12556,10 +12755,10 @@ function update(self)
     local camera_gui = state.cameras.camera_gui
     render.set_view(camera_gui.view)
     render.set_projection(camera_gui.proj)
-    render.enable_state(render.STATE_STENCIL_TEST)
+    render.enable_state(graphics.STATE_STENCIL_TEST)
     render.draw(predicates.gui, camera_gui.frustum)
     render.draw(predicates.text, camera_gui.frustum)
-    render.disable_state(render.STATE_STENCIL_TEST)
+    render.disable_state(graphics.STATE_STENCIL_TEST)
 end
 ```
 
@@ -12607,7 +12806,7 @@ render.set_render_target(render.RENDER_TARGET_DEFAULT)
 render.disable_material()
 
 -- bind the render target result texture to whatever is getting rendered via the predicate
-render.enable_texture(0, "my_render_target", render.BUFFER_COLOR0_BIT)
+render.enable_texture(0, "my_render_target", graphics.BUFFER_TYPE_COLOR0_BIT)
 render.draw(self.my_tile_predicate)
 ```
 
@@ -13159,11 +13358,11 @@ function init(self)
     -- Create a texture resource like usual, but add the "storage" flag
     -- so it can be used as the backing storage for compute programs
     local t_backing = resource.create_texture("/my_backing_texture.texturec", {
-        type   = resource.TEXTURE_TYPE_IMAGE_2D,
+        type   = graphics.TEXTURE_TYPE_IMAGE_2D,
         width  = 128,
         height = 128,
-        format = resource.TEXTURE_FORMAT_RGBA32F,
-        flags  = resource.TEXTURE_USAGE_FLAG_STORAGE + resource.TEXTURE_USAGE_FLAG_SAMPLE,
+        format = graphics.TEXTURE_FORMAT_RGBA32F,
+        flags  = graphics.TEXTURE_USAGE_FLAG_STORAGE + graphics.TEXTURE_USAGE_FLAG_SAMPLE,
     })
 
     -- get the texture handle from the resource
@@ -13219,11 +13418,11 @@ function init(self)
     -- Create a texture resource like usual, but add the "storage" flag
     -- so it can be used as the backing storage for compute programs
     local t_backing = resource.create_texture("/my_backing_texture.texturec", {
-        type   = resource.TEXTURE_TYPE_IMAGE_2D,
+        type   = graphics.TEXTURE_TYPE_IMAGE_2D,
         width  = 128,
         height = 128,
-        format = resource.TEXTURE_FORMAT_RGBA32F,
-        flags  = resource.TEXTURE_USAGE_FLAG_STORAGE + resource.TEXTURE_USAGE_FLAG_SAMPLE,
+        format = graphics.TEXTURE_FORMAT_RGBA32F,
+        flags  = graphics.TEXTURE_USAGE_FLAG_STORAGE + graphics.TEXTURE_USAGE_FLAG_SAMPLE,
     })
 
     local textures = {
@@ -14155,15 +14354,13 @@ Bob is a command line tool for building Defold projects outside of the normal ed
 
 Bob is able to build data (corresponding to the build step of selecting the editor menu item `Project ▸ Build`), create data archives and create standalone, distributable application bundles (corresponding to the editor menu item `Project ▸ Bundle ▸ ...` options)
 
-Bob is distributed as a Java _JAR_ archive containing everything needed to build. You find the latest *bob.jar* distribution on the [GitHub Releases page](https://github.com/defold/defold/releases). Select a release, then download *bob/bob.jar*. If you are using Defold 1.12.0 or newer, you will need OpenJDK 25 to run it. For older versions of Defold, you will need openJDK 21.
+Bob is distributed as a Java _JAR_ archive containing everything needed to build. You find the latest *bob.jar* distribution on the [GitHub Releases page](https://github.com/defold/defold/releases). Select a release, then download *bob/bob.jar*. You will need OpenJDK 25 to run it.
 
-Compatible OpenJDK 25 mirrors (from Defold 1.12.0):
+Compatible OpenJDK 25 mirrors:
 * [OpenJDK 25 by Microsoft](https://learn.microsoft.com/en-us/java/openjdk/download#openjdk-25)
 * [OpenJDK 25 by Adoptium Working Group](https://github.com/adoptium/temurin25-binaries/releases) / [Adoptium.net](https://adoptium.net/)
 
 If you are on Windows you want the `.msi` file installer for OpenJDK.
-
-Legacy Live Update manifest-signing flags `--manifest-private-key` and `--manifest-public-key` have been removed from Bob. The `publickey` and `privatekey` entries in `liveupdate.settings` are now deprecated and unused, `game.public.der` is no longer generated or bundled, and the deprecated manifest/archive validation flow now checks supported engine versions instead of bundled key signatures.
 
 ## Usage
 
@@ -14306,11 +14503,10 @@ Available commands:
 
 Available platforms and architectures:
 
-`x86_64-darwin` (Defold 1.3.5 and older)
-`x86_64-macos` (Defold 1.3.6 and newer)
+`x86_64-macos`
 : macOS 64 bit
 
-`arm64-macos` (Defold 1.5.0 and older)
+`arm64-macos`
 : macOS Apple Silicon (ARM)
 
 `x86_64-win32`
@@ -14325,9 +14521,8 @@ Available platforms and architectures:
 `x86_64-ios`
 : iOS macOS 64 bit (iOS Simulator)
 
-`armv7-darwin` (Defold 1.3.5 and older)
-`armv7-ios` (Defold 1.3.6 and newer)
-: iOS with available 32-bit `armv7-darwin` and 64-bit `arm64-darwin` architectures. By default, `--architectures` argument value is `armv7-darwin,arm64-darwin`.
+`arm64-ios`
+: iOS 64 bit. By default, `--architectures` argument value is `arm64-ios`.
 
 `armv7-android`
 : Android with available 32 bit `armv7-android` and 64 bit `arm64-android` architectures. By default, `--architectures` argument value is `armv7-android,arm64-android`.
@@ -14345,7 +14540,7 @@ $
 
 You can string commands together to perform a sequence of tasks in one go. The following example resolves libraries, wipes the build directory, builds archive data and bundles a macOS application (named *My Game.app*):
 ```sh
-$ java -jar bob.jar --archive --platform x86-darwin resolve distclean build bundle
+$ java -jar bob.jar --archive --platform x86_64-macos resolve distclean build bundle
 100%
 $ ls -al build/default/
 total 70784
@@ -14526,11 +14721,9 @@ end
 
 Make sure to [generate debug symbols](#manuals:debugging-native-code) for each released version so that you can debug crashes. Store these together with the application bundle.
 
-Make sure to store the `manifest.private.der` and `manifest.public.der` files which are generated in the project root during the first bundle. These are the public and private signing keys for the game archive and archive manifest. You need these files in order to recreate a previous build of your game.
-
 ## Application optimizations
 
-Read the [Optimization manual](#manuals:optimizations) on how to optimize your application for performance, size, memory and battery usage.
+Read the [Optimization manual](#manuals:optimization) on how to optimize your application for performance, size, memory and battery usage.
 
 ## Performance
 Always test on target hardware! Check game performance and optimize if needed. Use the [profiler](#manuals:profiling) to find bottlenecks in the code.
@@ -14583,7 +14776,7 @@ The development app allows you to push content to it over wifi. This will greatl
 
 Any iOS or Android application that is bundled in Debug mode will be able to act as a development app. In fact, this is the recommended solution as the development app will have the correct project settings and uses the same [native extensions](#manuals:extensions) as the project you are working on.
 
-Starting with Defold 1.4.0 it is possible to bundle a Debug variant of your project without any content. Use this option to create a version of your application with native extensions, suitable for iterative development as described in this manual.
+It is possible to bundle a Debug variant of your project without any content. Use this option to create a version of your application with native extensions, suitable for iterative development as described in this manual.
 
 ### Installing on iOS
 
@@ -15570,7 +15763,7 @@ You should **never** upload your application to Google Play if it was signed usi
 
 ## Creating a keystore
 
-The Android signing process in Defold changed in version 1.2.173 from using a stand-alone key and certificate to a keystore. [More information in this forum post](https://forum.defold.com/t/upcoming-change-to-the-android-build-pipeline/66084).
+Defold uses a keystore for the Android signing process. [More information is available in this forum post](https://forum.defold.com/t/upcoming-change-to-the-android-build-pipeline/66084).
 
 You can create a keystore [using Android Studio](https://developer.android.com/studio/publish/app-signing#generate-key) or from a terminal/command prompt:
 ```bash
@@ -15913,8 +16106,6 @@ Forum user Sergey Lerg has put together [a video tutorial showing the process](h
 Once you have the storyboard file you can reference it from *game.project*.
 
 ### Creating an icon asset catalog
-
-This is required from Defold 1.2.175.
 
 Using an asset catalog is Apple's preferred way to manage your application's icons. In fact it is the only way to provide the icon used in the App Store listing. You create an asset catalog in the same way as a storyboard, using Xcode. Start Xcode and create a new project. Select iOS and Single View App:
 
@@ -16278,7 +16469,7 @@ It is sometimes necessary to provide additional arguments to a game before it or
 
 ### Engine arguments
 
-It is possible to specify additional engine arguments when the engine is configured and loaded. These extra engine arguments can at runtime be retrieved using `sys.get_config()`. To add the key-value pairs you modify the `engine_arguments` field of the `extra_params` object that is passed to the engine when loaded in `index.html`:
+It is possible to specify additional engine arguments when the engine is configured and loaded. These extra engine arguments can at runtime be retrieved using `sys.get_config_string()`. To add the key-value pairs you modify the `engine_arguments` field of the `extra_params` object that is passed to the engine when loaded in `index.html`:
 
 ```
     <script id='engine-setup' type='text/javascript'>
@@ -16293,8 +16484,8 @@ You can also add `--config=foo1=bar1, --config=foo2=bar2` to the engine argument
 
 At runtime you get the values like this:
 ```lua
-local foo1 = sys.get_config("foo1")
-local foo2 = sys.get_config("foo2")
+local foo1 = sys.get_config_string("foo1")
+local foo2 = sys.get_config_string("foo2")
 print(foo1) -- bar1
 print(foo2) -- bar2
 ```
@@ -16524,12 +16715,12 @@ iconutil -c icns -o game.icns game.iconset
 ## Publishing your application
 You can publish your application to the Mac App Store, using a 3rd party store or portal such as Steam or itch.io or on your own through a website. Before publishing your application you need to prepare it for submission. The following steps are required regardless of how you intend to distribute the application:
 
-* 1) Make sure that anyone is able to run your game by adding the execute permissions (the default is that only the file owner has execute permissions):
+1. Make sure that anyone is able to run your game by adding the execute permissions (the default is that only the file owner has execute permissions):
 ```
 $ chmod +x Game.app/Contents/MacOS/Game
 ```
 
-* 2) Create an entitlements file specifying the permissions required by your game. For most games the following permissions are enough:
+2. Create an entitlements file specifying the permissions required by your game. For most games the following permissions are enough:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -16559,7 +16750,7 @@ Some applications may also need additional entitlements. The Steamworks extensio
 
 All of the entitlements that can be granted to an application are listed in the official [Apple developer documentation](https://developer.apple.com/documentation/bundleresources/entitlements).
 
-* 3) Sign your game using `codesign`:
+3. Sign your game using `codesign`:
 ```
 $ codesign --force --sign "Developer ID Application: Company Name" --options runtime --deep --timestamp --entitlements entitlement.plist Game.app
 ```
@@ -16567,9 +16758,9 @@ $ codesign --force --sign "Developer ID Application: Company Name" --options run
 ## Publishing outside the Mac App Store
 Apple requires all software distributed outside the Mac App Store to be notarized by Apple in order to run by default on macOS Catalina. Refer to the [official documentation](https://developer.apple.com/documentation/xcode/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow) to learn how to add notarization to a scripted build environment outside of Xcode. Brief summary of the steps involved are:
 
-* 1) Follow the above steps of adding permissions and signing the application.
+1. Follow the above steps of adding permissions and signing the application.
 
-* 2) Zip and upload your game for notarization using `altool`.
+2. Zip and upload your game for notarization using `altool`.
 ```
 $ xcrun altool --notarize-app
                --primary-bundle-id "com.acme.foobar"
@@ -16582,18 +16773,18 @@ altool[16765:378423] No errors uploading 'Game.zip'.
 RequestUUID = 2EFE2717-52EF-43A5-96DC-0797E4CA1041
 ```
 
-* 3) Check the status of your submission using the returned request UUID from the call to `altool --notarize-app`:
+3. Check the status of your submission using the returned request UUID from the call to `altool --notarize-app`:
 ```
 $ xcrun altool --notarization-info 2EFE2717-52EF-43A5-96DC-0797E4CA1041
                -u "AC_USERNAME"
 ```
 
-* 4) Wait until the status becomes `success` and staple the notarization ticket to the game:
+4. Wait until the status becomes `success` and staple the notarization ticket to the game:
 ```
 $ xcrun stapler staple "Game.app"
 ```
 
-* 5) Your game is now ready for distribution.
+5. Your game is now ready for distribution.
 
 ## Publishing to the Mac App Store
 The process when publishing to the Mac App Store is well documented in the [Apple Developer documentation](https://developer.apple.com/macos/submit/). Make sure to add permissions and codesign the application as described above before submitting.

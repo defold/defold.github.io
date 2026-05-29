@@ -137,7 +137,11 @@
 }
 
 .status-info-panel code {
-	color: rgba(255, 255, 255, 0.94);
+	color: var(--lightest);
+	background: rgba(9, 13, 17, 0.64);
+	border-color: rgba(255, 255, 255, 0.18);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+	font-weight: 700;
 }
 
 @media (max-width: 700px) {
@@ -201,6 +205,9 @@
 
 	.status-info-panel code {
 		color: var(--darkest);
+		background: rgba(27, 50, 74, 0.07);
+		border-color: rgba(27, 50, 74, 0.16);
+		box-shadow: none;
 	}
 }
 

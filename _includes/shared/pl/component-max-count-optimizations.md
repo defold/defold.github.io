@@ -1,10 +1,11 @@
-## Component max count optimizations
-The *game.project* settings file contains many values specifying the maximum number of a certain resource that can exist at the same time, often counted per loaded collection (also called world). The Defold engine will use these max values to preallocate memory for this amount of memory to avoid dynamic allocations and memory fragmentation while the game is running.
+## Optymalizacja limitów liczby komponentów
 
-The Defold data structures used to represent components and other resources are optimized to use as little memory as possible but care should still be taken when setting the values to avoid allocating more memory than is actually necessary.
+Plik ustawień *game.project* zawiera wiele wartości określających maksymalną liczbę danego zasobu, który może istnieć jednocześnie, zwykle w przeliczeniu na załadowaną kolekcję, nazywaną też światem (ang. world). Silnik Defold używa tych wartości do wstępnej alokacji pamięci, aby ograniczyć dynamiczne alokacje i fragmentację pamięci podczas działania gry.
 
-To further optimize memory usage the Defold build process will analyse the content of the game and override the max counts if it is possible to know for certain the exact amount:
+Struktury danych Defold używane do reprezentowania komponentów i innych zasobów są zoptymalizowane pod kątem jak najmniejszego zużycia pamięci, ale przy ustawianiu tych wartości nadal trzeba zachować ostrożność, aby nie przydzielać więcej pamięci, niż naprawdę potrzeba.
 
-* If a collection doesn't contain any factory components the exact amount of each component and Game Object will be allocated and the max count values will be ignored.
-* If a collection contains a factory component the spawned objects will be analysed and the max count will be used for components that can be spawned from the factories and for Game Objects.
-* If a collection contains a factory or a collection factory with activated "Dynamic Prototype" option, this collection will use the max counters.
+Aby dodatkowo zoptymalizować zużycie pamięci, proces budowania w Defold analizuje zawartość gry i nadpisuje wartości maksymalne tam, gdzie można z całkowitą pewnością określić dokładną liczbę:
+
+* Jeśli kolekcja nie zawiera żadnych komponentów `Factory`, zostanie zaalokowana dokładna liczba każdego komponentu i obiektu gry, a wartości maksymalne zostaną zignorowane.
+* Jeśli kolekcja zawiera komponent `Factory`, obiekty tworzone przez tę fabrykę zostaną przeanalizowane, a dla komponentów możliwych do utworzenia przez `Factory` oraz dla obiektów gry zostaną użyte wartości maksymalne.
+* Jeśli kolekcja zawiera komponent `Factory` albo `Collection factory` z włączoną opcją `Dynamic Prototype`, ta kolekcja będzie używać liczników maksymalnych.

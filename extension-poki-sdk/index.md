@@ -21,6 +21,7 @@ toc:
 - Creating shareable urls and changing the Poki.com url
 - Reading Poki.com url params
 - Moving the Poki Pill on mobile
+- User account APIs
 - Example
 - Source code
 - API
@@ -186,9 +187,31 @@ The default position is `move_pill(0, 24)`.
 poki_sdk.move_pill(50, -100)
 ```
 
+## User account APIs
+
+Most games should call `poki_sdk.get_user()` after load and treat `user == nil` with `error == nil` as "not signed in yet".
+
+```lua
+poki_sdk.get_user(function(self, user, error)
+  if error then
+    return
+  end
+
+  if user then
+    print("Welcome", user.username)
+  else
+    print("User not logged in")
+  end
+end)
+```
+
+Use `poki_sdk.login()` only in response to a user action that requires an account. A successful login can refresh the page and reload the game, so your game should call `poki_sdk.get_user()` again after load.
+
+`poki_sdk.get_token()` is mainly for games that verify Poki users on their own backend. It returns `token == nil` when no user is logged in and the token is short-lived.
+
 ## Example
 
-[Refer to the example project](https://github.com/defold/extension-poki-sdk/blob/master/main/poki-sdk.gui_script) to see a complete exameple of how the intergation works.
+[Refer to the example project](https://github.com/defold/extension-poki-sdk/blob/main/example/poki-sdk.gui_script) to see a complete example of how the integration works.
 
 
 ## Source code
@@ -211,6 +234,10 @@ poki_sdk.shareable_url(params, callback) -- in JS it's PokiSDK.shareableURL({}).
 local value = poki_sdk.get_url_param(key) -- in JS it's PokiSDK.getURLParam('id')
 poki_sdk.measure(category, what, action) -- in JS it's PokiSDK.measure(category, what, action)
 poki_sdk.move_pill(topPercent, topPx) -- in JS it's PokiSDK.movePill(topPercent, topPx)
+poki_sdk.get_user(callback) -- in JS it's PokiSDK.getUser().then(user => {})
+poki_sdk.get_token(callback) -- in JS it's PokiSDK.getToken().then(token => {})
+poki_sdk.login(callback) -- in JS it's PokiSDK.login().then(() => {})
+poki_sdk.open_external_link(url) -- in JS it's PokiSDK.openExternalLink(url)
 ```
 ## API reference
 [API Reference - poki_sdk](/extension-poki-sdk/poki_sdk_api)

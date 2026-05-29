@@ -46564,7 +46564,6 @@ Connect Fusion.
 **Parameters**
 
 - `user` (string)
-- `region` (string)
 
 ### fusion.disconnect
 *Type:* FUNCTION
@@ -46693,15 +46692,16 @@ Enable/disable debugging.
 
 - `enable` (boolean)
 
-### fusion.register_scene_object
+### fusion.create_map_object
 *Type:* FUNCTION
-Register a scene object.
+Create a map object.
 
 **Parameters**
 
-- `scene` (number)
-- `factory_url` (string)
+- `map` (number)
 - `owner_mode` (number)
+- `properties` (table) - Which script properties to sync
+
 - `id` (string)
 
 ### fusion.spawn
@@ -46716,9 +46716,11 @@ Way as when calling factory.create(). The function will also register the spawne
 
 - `rotation` (quat) - Initial rotation of created game object
 
-- `scene` (number) - The scene to which this object belongs
+- `map` (number) - The map to which this object belongs
 
 - `owner_mode` (number) - Owner mode of spawned object
+
+- `script_properties` (table)
 
 **Returns**
 
@@ -46732,28 +46734,29 @@ Destroy a networked object.
 
 - `id` (string)
 
-### fusion.register_object
+### fusion.create_object
 *Type:* FUNCTION
-Register an object.
+Create an object.
 
 **Parameters**
 
-- `scene` (number)
+- `map` (number)
 - `factory_url` (string)
 - `owner_mode` (number)
+- `options` (table)
 - `id` (string)
 
-### fusion.unregister_object
+### fusion.destroy_object
 *Type:* FUNCTION
-Unregister a previously registered object.
+Destroy a previously created object.
 
 **Parameters**
 
 - `id` (string)
 
-### fusion.change_scene
+### fusion.map_change
 *Type:* FUNCTION
-Change scene.
+Change map.
 
 **Parameters**
 
@@ -46761,19 +46764,28 @@ Change scene.
 - `sequence` (number)
 - `data` (string)
 
-### fusion.rpc
+### fusion.send_rpc
 *Type:* FUNCTION
-Send RPC.
+Send an RPC event. Events can be sent to a specific player or all players, and.
+To a specific object or to all subscribers.
 
 **Parameters**
 
 - `target_player` (number) - 0 = all, specific PlayerId = targeted
 
-- `data` (string)
+- `data` (table)
 
 **Returns**
 
 - `boolean`
+
+### fusion.subscribe_rpc
+*Type:* FUNCTION
+Subscribe to RPC broadcat event. The events will be delivered as messages.
+
+### fusion.unsubscribe_rpc
+*Type:* FUNCTION
+Unsubscribe from a subscribed RPC event.
 
 ### fusion.on_event
 *Type:* FUNCTION
@@ -46844,7 +46856,7 @@ Explicitly clear the ownership cooldown
 
 - `id` (string) - Id of the object to clear cooldown for
 
-### fusion.set_send_rate
+### fusion.set_room_send_rate
 *Type:* FUNCTION
 Set the send rate of an object. This decided how much bandwidth to allocate
 
@@ -46862,7 +46874,7 @@ Set the local send rate divisor for an object. A value of `1` means the object s
 - `send_rate` (number)
 - `id` (string) - Id of the object to send rate for
 
-### fusion.reset_send_rate
+### fusion.reset_room_send_rate
 *Type:* FUNCTION
 Reset the send rate of an object.
 
@@ -46893,6 +46905,14 @@ Get round trip time
 **Returns**
 
 - `number` - Round trip time in seconds
+
+### fusion.get_network_time
+*Type:* FUNCTION
+Get the network time
+
+**Returns**
+
+- `number` - Network time
 
 ### fusion.network_time_diff
 *Type:* FUNCTION
@@ -47046,6 +47066,26 @@ DISCONNECT_CAUSE_AUTHENTICATIONTICKETEXPIRED
 *Type:* VARIABLE
 DISCONNECT_CAUSE_DISCONNECTBYOPERATIONLIMIT
 
+### MASTER_CLIENT_PLAYER_ID
+*Type:* VARIABLE
+MASTER_CLIENT_PLAYER_ID
+
+### PLUGIN_PLAYER_ID
+*Type:* VARIABLE
+PLUGIN_PLAYER_ID
+
+### OBJECT_OWNER_PLAYER_ID
+*Type:* VARIABLE
+OBJECT_OWNER_PLAYER_ID
+
+### REPLICATION_MODE_NONE
+*Type:* VARIABLE
+REPLICATION_MODE_NONE
+
+### REPLICATION_MODE_AUTO
+*Type:* VARIABLE
+REPLICATION_MODE_AUTO
+
 ### EVENT_OBJECT_READY
 *Type:* VARIABLE
 EVENT_OBJECT_READY
@@ -47062,13 +47102,21 @@ EVENT_OBJECT_DESTROYED
 *Type:* VARIABLE
 EVENT_SUB_OBJECT_DESTROYED
 
+### EVENT_OBJECT_FORCE_ALIVE
+*Type:* VARIABLE
+EVENT_OBJECT_FORCE_ALIVE
+
+### EVENT_SUB_OBJECT_FORCE_ALIVE
+*Type:* VARIABLE
+EVENT_SUB_OBJECT_FORCE_ALIVE
+
 ### EVENT_OBJECT_OWNER_CHANGED
 *Type:* VARIABLE
 EVENT_OBJECT_OWNER_CHANGED
 
-### EVENT_OBJECT_PREDICTION_OVERRIDE
+### EVENT_PREDICTION_OVERRIDE
 *Type:* VARIABLE
-EVENT_OBJECT_PREDICTION_OVERRIDE
+EVENT_PREDICTION_OVERRIDE
 
 ### EVENT_LOBBY_STATS
 *Type:* VARIABLE
@@ -47086,9 +47134,9 @@ EVENT_ROOM_LEFT
 *Type:* VARIABLE
 EVENT_RPC
 
-### EVENT_SCENE_CHANGE
+### EVENT_MAP_CHANGE
 *Type:* VARIABLE
-EVENT_SCENE_CHANGE
+EVENT_MAP_CHANGE
 
 ### EVENT_DESTROYED_MAP_ACTOR
 *Type:* VARIABLE
@@ -47650,14 +47698,37 @@ Functions and constants for interacting with Poki SDK APIs
 - `topPercent` (number)
 - `topPx` (number)
 
-### poki_sdk.open_external_link
+### poki_sdk.get_user
 *Type:* FUNCTION
 
 **Parameters**
 
-- `url` (string)
+- `callback` (function)
+  - `self` (object) - The calling script instance
+  - `user` (table) - A table with the fields `username` and `avatar_url`, or `nil` if no user is logged in.
+  - `error` (string) - The rejection message if user accounts are unavailable, or `nil` otherwise.
 
-### poki_sdk.openExternalLink
+### poki_sdk.get_token
+*Type:* FUNCTION
+
+**Parameters**
+
+- `callback` (function)
+  - `self` (object) - The calling script instance
+  - `token` (string) - The Poki auth token, or `nil` if no user is logged in.
+  - `error` (string) - The rejection message if user accounts are unavailable, or `nil` otherwise.
+
+### poki_sdk.login
+*Type:* FUNCTION
+
+**Parameters**
+
+- `callback` (function)
+  - `self` (object) - The calling script instance
+  - `success` (boolean) - `true` if the login promise resolved, otherwise `false`.
+  - `error` (string) - The rejection message on failure, or `nil` on success.
+
+### poki_sdk.open_external_link
 *Type:* FUNCTION
 
 **Parameters**
@@ -47992,9 +48063,11 @@ Sets or clears the global file listener callback.
 
 - `callback` (function(self, event, data) | nil) - Callback invoked for file system events; pass nil to disable.
   - `self` (object) - The calling script instance.
-  - `event` (string) - One of onFileLoaded, onFileDeleted, onFileError, onArtboardsListed, onViewModelsListed, onViewModelInstanceNamesListed, onViewModelPropertiesListed, onViewModelEnumsListed
+  - `event` (string) - One of onFileLoaded, onFileDeleted, onFileError, onArtboardInstantiated, onArtboardsListed, onViewModelsListed, onViewModelInstanceInstantiated, onViewModelInstanceNamesListed, onViewModelPropertiesListed, onViewModelEnumsListed
   - `data` (table) - Additional fields vary by event. Common keys include
     - `file` (FileHandle) - File handle involved in the event.
+    - `artboard` (ArtboardHandle) - Instantiated artboard handle, when applicable.
+    - `viewModel` (ViewModelInstanceHandle) - Instantiated view model instance handle, when applicable.
     - `viewModelName` (string) - View model name for the request, when applicable.
     - `instanceNames` (table) - Array of instance name strings.
     - `artboardNames` (table) - Array of artboard name strings.

@@ -147,7 +147,7 @@ Playback
 
 ## 运行时纹理和图集创建
 
-从 Defold 1.4.2 开始，可以在运行时创建纹理和图集。
+可以在运行时创建纹理和图集。
 
 ### 在运行时创建纹理资源
 
@@ -157,8 +157,8 @@ Playback
   local params = {
     width  = 128,
     height = 128,
-    type   = resource.TEXTURE_TYPE_2D,
-    format = resource.TEXTURE_FORMAT_RGBA,
+    type   = graphics.TEXTURE_TYPE_2D,
+    format = graphics.TEXTURE_FORMAT_RGBA,
   }
   local my_texture_id = resource.create_texture("/my_custom_texture.texturec", params)
 ```
@@ -181,7 +181,7 @@ Playback
       end
   end
 
-  local params = { width=width, height=height, x=0, y=0, type=resource.TEXTURE_TYPE_2D, format=resource.TEXTURE_FORMAT_RGBA, num_mip_maps=1 }
+  local params = { width=width, height=height, x=0, y=0, type=graphics.TEXTURE_TYPE_2D, format=graphics.TEXTURE_FORMAT_RGBA, num_mip_maps=1 }
   resource.set_texture(my_texture_id, params, buf)
 ```
 

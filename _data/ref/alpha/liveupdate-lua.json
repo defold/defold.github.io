@@ -2,15 +2,16 @@
     "elements": [
         {
             "brief": "Add resource mount",
-            "description": "Adds a resource mount to the resource system.\nThe mounts are persisted between sessions.\nAfter the mount succeeded, the resources are available to load. (i.e. no reboot required)",
+            "description": "Adds a resource mount to the resource system.\nAfter the mount succeeded, the resources are available to load. (i.e. no reboot required)",
             "error": "",
-            "examples": "Add multiple mounts. Higher priority takes precedence.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">add_mount</span><span class=\"p\">(</span><span class=\"s2\">&quot;common&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;zip:/path/to/common_stuff.zip&quot;</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"kr\">function</span> <span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span> <span class=\"c1\">-- base pack</span>\n<span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">add_mount</span><span class=\"p\">(</span><span class=\"s2\">&quot;levelpack_1&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;zip:/path/to/levels_1_to_20.zip&quot;</span><span class=\"p\">,</span> <span class=\"mi\">20</span><span class=\"p\">,</span> <span class=\"kr\">function</span> <span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span> <span class=\"c1\">-- level pack</span>\n<span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">add_mount</span><span class=\"p\">(</span><span class=\"s2\">&quot;season_pack_1&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;zip:/path/to/easter_pack_1.zip&quot;</span><span class=\"p\">,</span> <span class=\"mi\">30</span><span class=\"p\">,</span> <span class=\"kr\">function</span> <span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span> <span class=\"c1\">-- season pack, overriding content in the other packs</span>\n</code></pre></div>",
+            "examples": "Add multiple mounts. Higher priority takes precedence.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">add_mount</span><span class=\"p\">(</span><span class=\"s2\">&quot;common&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;zip:/path/to/common_stuff.zip&quot;</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"kr\">function</span> <span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">name</span><span class=\"p\">,</span> <span class=\"n\">uri</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span> <span class=\"c1\">-- base pack</span>\n<span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">add_mount</span><span class=\"p\">(</span><span class=\"s2\">&quot;levelpack_1&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;zip:/path/to/levels_1_to_20.zip&quot;</span><span class=\"p\">,</span> <span class=\"mi\">20</span><span class=\"p\">,</span> <span class=\"kr\">function</span> <span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">name</span><span class=\"p\">,</span> <span class=\"n\">uri</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span> <span class=\"c1\">-- level pack</span>\n<span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">add_mount</span><span class=\"p\">(</span><span class=\"s2\">&quot;season_pack_1&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;zip:/path/to/easter_pack_1.zip&quot;</span><span class=\"p\">,</span> <span class=\"mi\">30</span><span class=\"p\">,</span> <span class=\"kr\">function</span> <span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">name</span><span class=\"p\">,</span> <span class=\"n\">uri</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span> <span class=\"c1\">-- season pack, overriding content in the other packs</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "liveupdate.add_mount",
             "notes": [
                 "The request is asynchronous",
-                "Names cannot start with '_'",
+                "Mounts are active for the current session only",
+                "Names cannot be '_base' or '_builtin'",
                 "Priority must be >= 0"
             ],
             "parameters": [
@@ -19,7 +20,8 @@
                     "is_optional": "False",
                     "name": "name",
                     "types": [
-                        "string"
+                        "string",
+                        "hash"
                     ]
                 },
                 {
@@ -39,11 +41,11 @@
                     ]
                 },
                 {
-                    "doc": "Callback after the asynchronous request completed",
+                    "doc": "Callback after the asynchronous request completed\n- <code>name</code> <span class=\"type\">hash</span> Unique name of the mount\n- <code>uri</code> <span class=\"type\">string</span> The uri of the mount\n- <code>result</code> <span class=\"type\">number</span> The result of the request",
                     "is_optional": "False",
                     "name": "callback",
                     "types": [
-                        "function"
+                        "function(self, name, uri, result)"
                     ]
                 }
             ],
@@ -64,7 +66,7 @@
             "brief": "Get current mounts",
             "description": "Get an array of the current mounts\nThis can be used to determine if a new mount is needed or not",
             "error": "",
-            "examples": "Output the current resource mounts\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"s2\">&quot;MOUNTS&quot;</span><span class=\"p\">,</span> <span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">get_mounts</span><span class=\"p\">())</span>\n</code></pre></div>\n\nGive an output like:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DEBUG</span><span class=\"p\">:</span><span class=\"n\">SCRIPT</span><span class=\"p\">:</span> <span class=\"n\">MOUNTS</span><span class=\"p\">,</span>\n<span class=\"p\">{</span> <span class=\"cm\">--[[0x119667bf0]]</span>\n  <span class=\"mi\">1</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"cm\">--[[0x119667c50]]</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;liveupdate&quot;</span><span class=\"p\">,</span>\n    <span class=\"n\">uri</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;zip:/device/path/to/acchives/liveupdate.zip&quot;</span><span class=\"p\">,</span>\n    <span class=\"n\">priority</span> <span class=\"o\">=</span> <span class=\"mi\">5</span>\n  <span class=\"p\">},</span>\n  <span class=\"mi\">2</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"cm\">--[[0x119667d50]]</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;_base&quot;</span><span class=\"p\">,</span>\n    <span class=\"n\">uri</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;archive:build/default/game.dmanifest&quot;</span><span class=\"p\">,</span>\n    <span class=\"n\">priority</span> <span class=\"o\">=</span> <span class=\"o\">-</span><span class=\"mi\">10</span>\n  <span class=\"p\">}</span>\n<span class=\"p\">}</span>\n</code></pre></div>",
+            "examples": "Output the current resource mounts\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"s2\">&quot;MOUNTS&quot;</span><span class=\"p\">,</span> <span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">get_mounts</span><span class=\"p\">())</span>\n</code></pre></div>\n\nGive an output like:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DEBUG</span><span class=\"p\">:</span><span class=\"n\">SCRIPT</span><span class=\"p\">:</span> <span class=\"n\">MOUNTS</span><span class=\"p\">,</span>\n<span class=\"p\">{</span> <span class=\"cm\">--[[0x119667bf0]]</span>\n  <span class=\"mi\">1</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"cm\">--[[0x119667c50]]</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">:</span> <span class=\"p\">[</span><span class=\"n\">liveupdate</span><span class=\"p\">],</span>\n    <span class=\"n\">uri</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;zip:/device/path/to/acchives/liveupdate.zip&quot;</span><span class=\"p\">,</span>\n    <span class=\"n\">priority</span> <span class=\"o\">=</span> <span class=\"mi\">5</span>\n  <span class=\"p\">},</span>\n  <span class=\"mi\">2</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"cm\">--[[0x119667d50]]</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">:</span> <span class=\"p\">[</span><span class=\"n\">_base</span><span class=\"p\">],</span>\n    <span class=\"n\">uri</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;archive:build/default/game.dmanifest&quot;</span><span class=\"p\">,</span>\n    <span class=\"n\">priority</span> <span class=\"o\">=</span> <span class=\"o\">-</span><span class=\"mi\">10</span>\n  <span class=\"p\">}</span>\n<span class=\"p\">}</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "liveupdate.get_mounts",
@@ -303,14 +305,15 @@
         },
         {
             "brief": "Remove resource mount",
-            "description": "Remove a mount the resource system.\nThe remaining mounts are persisted between sessions.\nRemoving a mount does not affect any loaded resources.",
+            "description": "Remove a mount the resource system.\nRemoving a mount does not affect any loaded resources.",
             "error": "",
             "examples": "Add multiple mounts. Higher priority takes precedence.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">liveupdate</span><span class=\"p\">.</span><span class=\"n\">remove_mount</span><span class=\"p\">(</span><span class=\"s2\">&quot;season_pack_1&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "liveupdate.remove_mount",
             "notes": [
-                "The call is synchronous"
+                "The call is synchronous",
+                "Names cannot be '_base' or '_builtin'"
             ],
             "parameters": [
                 {
@@ -318,7 +321,8 @@
                     "is_optional": "False",
                     "name": "name",
                     "types": [
-                        "string"
+                        "string",
+                        "hash"
                     ]
                 }
             ],

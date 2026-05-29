@@ -146,7 +146,7 @@ Playback
 
 ## Создание текстуры и атласа во время выполнения
 
-Начиная с версии Defold 1.4.2 стало возможно создавать текстуры и атласы во время выполнения.
+Можно создавать текстуры и атласы во время выполнения.
 
 ### Создание ресурса текстуры во время выполнения
 
@@ -156,8 +156,8 @@ Playback
   local params = {
     width  = 128,
     height = 128,
-    type   = resource.TEXTURE_TYPE_2D,
-    format = resource.TEXTURE_FORMAT_RGBA,
+    type   = graphics.TEXTURE_TYPE_2D,
+    format = graphics.TEXTURE_FORMAT_RGBA,
   }
   local my_texture_id = resource.create_texture("/my_custom_texture.texturec", params)
 ```
@@ -180,7 +180,7 @@ Playback
       end
   end
 
-  local params = { width=width, height=height, x=0, y=0, type=resource.TEXTURE_TYPE_2D, format=resource.TEXTURE_FORMAT_RGBA, num_mip_maps=1 }
+  local params = { width=width, height=height, x=0, y=0, type=graphics.TEXTURE_TYPE_2D, format=graphics.TEXTURE_FORMAT_RGBA, num_mip_maps=1 }
   resource.set_texture(my_texture_id, params, buf)
 ```
 

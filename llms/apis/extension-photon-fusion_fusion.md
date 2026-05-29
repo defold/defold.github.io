@@ -28,7 +28,6 @@ Connect Fusion.
 **Parameters**
 
 - `user` (string)
-- `region` (string)
 
 ### fusion.disconnect
 *Type:* FUNCTION
@@ -157,15 +156,16 @@ Enable/disable debugging.
 
 - `enable` (boolean)
 
-### fusion.register_scene_object
+### fusion.create_map_object
 *Type:* FUNCTION
-Register a scene object.
+Create a map object.
 
 **Parameters**
 
-- `scene` (number)
-- `factory_url` (string)
+- `map` (number)
 - `owner_mode` (number)
+- `properties` (table) - Which script properties to sync
+
 - `id` (string)
 
 ### fusion.spawn
@@ -180,9 +180,11 @@ Way as when calling factory.create(). The function will also register the spawne
 
 - `rotation` (quat) - Initial rotation of created game object
 
-- `scene` (number) - The scene to which this object belongs
+- `map` (number) - The map to which this object belongs
 
 - `owner_mode` (number) - Owner mode of spawned object
+
+- `script_properties` (table)
 
 **Returns**
 
@@ -196,28 +198,29 @@ Destroy a networked object.
 
 - `id` (string)
 
-### fusion.register_object
+### fusion.create_object
 *Type:* FUNCTION
-Register an object.
+Create an object.
 
 **Parameters**
 
-- `scene` (number)
+- `map` (number)
 - `factory_url` (string)
 - `owner_mode` (number)
+- `options` (table)
 - `id` (string)
 
-### fusion.unregister_object
+### fusion.destroy_object
 *Type:* FUNCTION
-Unregister a previously registered object.
+Destroy a previously created object.
 
 **Parameters**
 
 - `id` (string)
 
-### fusion.change_scene
+### fusion.map_change
 *Type:* FUNCTION
-Change scene.
+Change map.
 
 **Parameters**
 
@@ -225,19 +228,28 @@ Change scene.
 - `sequence` (number)
 - `data` (string)
 
-### fusion.rpc
+### fusion.send_rpc
 *Type:* FUNCTION
-Send RPC.
+Send an RPC event. Events can be sent to a specific player or all players, and.
+To a specific object or to all subscribers.
 
 **Parameters**
 
 - `target_player` (number) - 0 = all, specific PlayerId = targeted
 
-- `data` (string)
+- `data` (table)
 
 **Returns**
 
 - `boolean`
+
+### fusion.subscribe_rpc
+*Type:* FUNCTION
+Subscribe to RPC broadcat event. The events will be delivered as messages.
+
+### fusion.unsubscribe_rpc
+*Type:* FUNCTION
+Unsubscribe from a subscribed RPC event.
 
 ### fusion.on_event
 *Type:* FUNCTION
@@ -308,7 +320,7 @@ Explicitly clear the ownership cooldown
 
 - `id` (string) - Id of the object to clear cooldown for
 
-### fusion.set_send_rate
+### fusion.set_room_send_rate
 *Type:* FUNCTION
 Set the send rate of an object. This decided how much bandwidth to allocate
 
@@ -326,7 +338,7 @@ Set the local send rate divisor for an object. A value of `1` means the object s
 - `send_rate` (number)
 - `id` (string) - Id of the object to send rate for
 
-### fusion.reset_send_rate
+### fusion.reset_room_send_rate
 *Type:* FUNCTION
 Reset the send rate of an object.
 
@@ -357,6 +369,14 @@ Get round trip time
 **Returns**
 
 - `number` - Round trip time in seconds
+
+### fusion.get_network_time
+*Type:* FUNCTION
+Get the network time
+
+**Returns**
+
+- `number` - Network time
 
 ### fusion.network_time_diff
 *Type:* FUNCTION
@@ -510,6 +530,26 @@ DISCONNECT_CAUSE_AUTHENTICATIONTICKETEXPIRED
 *Type:* VARIABLE
 DISCONNECT_CAUSE_DISCONNECTBYOPERATIONLIMIT
 
+### MASTER_CLIENT_PLAYER_ID
+*Type:* VARIABLE
+MASTER_CLIENT_PLAYER_ID
+
+### PLUGIN_PLAYER_ID
+*Type:* VARIABLE
+PLUGIN_PLAYER_ID
+
+### OBJECT_OWNER_PLAYER_ID
+*Type:* VARIABLE
+OBJECT_OWNER_PLAYER_ID
+
+### REPLICATION_MODE_NONE
+*Type:* VARIABLE
+REPLICATION_MODE_NONE
+
+### REPLICATION_MODE_AUTO
+*Type:* VARIABLE
+REPLICATION_MODE_AUTO
+
 ### EVENT_OBJECT_READY
 *Type:* VARIABLE
 EVENT_OBJECT_READY
@@ -526,13 +566,21 @@ EVENT_OBJECT_DESTROYED
 *Type:* VARIABLE
 EVENT_SUB_OBJECT_DESTROYED
 
+### EVENT_OBJECT_FORCE_ALIVE
+*Type:* VARIABLE
+EVENT_OBJECT_FORCE_ALIVE
+
+### EVENT_SUB_OBJECT_FORCE_ALIVE
+*Type:* VARIABLE
+EVENT_SUB_OBJECT_FORCE_ALIVE
+
 ### EVENT_OBJECT_OWNER_CHANGED
 *Type:* VARIABLE
 EVENT_OBJECT_OWNER_CHANGED
 
-### EVENT_OBJECT_PREDICTION_OVERRIDE
+### EVENT_PREDICTION_OVERRIDE
 *Type:* VARIABLE
-EVENT_OBJECT_PREDICTION_OVERRIDE
+EVENT_PREDICTION_OVERRIDE
 
 ### EVENT_LOBBY_STATS
 *Type:* VARIABLE
@@ -550,9 +598,9 @@ EVENT_ROOM_LEFT
 *Type:* VARIABLE
 EVENT_RPC
 
-### EVENT_SCENE_CHANGE
+### EVENT_MAP_CHANGE
 *Type:* VARIABLE
-EVENT_SCENE_CHANGE
+EVENT_MAP_CHANGE
 
 ### EVENT_DESTROYED_MAP_ACTOR
 *Type:* VARIABLE

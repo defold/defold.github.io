@@ -1,41 +1,41 @@
-## Slice-9 texturing
+## Texturização Slice-9
 
-GUI box nodes and Sprite components sometimes feature elements that are context sensitive in regard to their size: panels and dialogs that need to be resized to fit the containing content or a health bar that need to be resized to show the remaining health of an enemy. These may cause visual problems when you apply texturing to the resized node or sprite.
+Nós box de GUI e componentes Sprite às vezes têm elementos sensíveis ao contexto em relação ao tamanho: painéis e diálogos que precisam ser redimensionados para caber no conteúdo contido, ou uma barra de vida que precisa ser redimensionada para mostrar a vida restante de um inimigo. Isso pode causar problemas visuais quando você aplica texturização ao nó ou sprite redimensionado.
 
-Normally, the engine scales the texture to fit the rectangular boundaries, but by defining slice-9 edge areas it is possible to limit what parts of the texture that should scale:
+Normalmente, a engine escala a textura para caber nos limites retangulares, mas ao definir áreas de borda slice-9 é possível limitar quais partes da textura devem ser escaladas:
 
-![GUI scaling](/shared/images/gui_slice9_scaling.png)
+![Escala de GUI](/shared/images/gui_slice9_scaling.png)
 
-The *Slice9* box node consists of 4 numbers that specify the number of pixels for the left, top, right and bottom margin that should not be regularly scaled:
+O nó box *Slice9* consiste em 4 números que especificam o número de pixels para as margens esquerda, superior, direita e inferior que não devem ser escaladas normalmente:
 
-![Slice 9 properties](/shared/images/gui_slice9_properties.png)
+![Propriedades Slice 9](/shared/images/gui_slice9_properties.png)
 
-The margins are set clockwise, starting on the left edge:
+As margens são definidas no sentido horário, começando pela borda esquerda:
 
-![Slice 9 sections](/shared/images/gui_slice9.png)
+![Seções Slice 9](/shared/images/gui_slice9.png)
 
-- Corner segments are never scaled.
-- Edge segments are scaled along a single axis. The left and right edge segments are scaled vertically. The top and bottom edge segments are scaled horizontally.
-- The central texture area is scaled horizontally and vertically as needed.
+- Segmentos de canto nunca são escalados.
+- Segmentos de borda são escalados ao longo de um único eixo. Os segmentos das bordas esquerda e direita são escalados verticalmente. Os segmentos das bordas superior e inferior são escalados horizontalmente.
+- A área central da textura é escalada horizontal e verticalmente conforme necessário.
 
-The *Slice9* texture scaling described above is only applied when you change box node's or sprite's size:
+A escala de textura *Slice9* descrita acima é aplicada somente quando você altera o tamanho do nó box ou do sprite:
 
-![GUI box node size](/shared/images/gui_slice9_size.png)
+![Tamanho do nó box de GUI](/shared/images/gui_slice9_size.png)
 
-![Sprite size](/shared/images/sprite_slice9_size.png)
+![Tamanho do Sprite](/shared/images/sprite_slice9_size.png)
 
 <div class='important' markdown='1'>
-If you change scale parameter of the box node or sprite (or on the game object) - the node or sprite and texture is scaled without applying *Slice9* parameters.
+Se você alterar o parâmetro de escala do nó box ou do sprite (ou no objeto de jogo), o nó ou sprite e a textura serão escalados sem aplicar os parâmetros *Slice9*.
 </div>
 
 <div class='important' markdown='1'>
-When using slice-9 texturing on Sprites the [Sprite Trim Mode of the image](https://defold.com/manuals/atlas/#image-properties) must be set to Off.
+Ao usar texturização slice-9 em Sprites, o [Sprite Trim Mode da imagem](https://defold.com/manuals/atlas/#image-properties) deve ser definido como Off.
 </div>
 
 
-### Mipmaps and slice-9
-Due to the way mipmapping works in the renderer, scaling of texture segments can sometimes exhibit artifacts. This happens when you _scale down_ segments below the original texture size. The renderer then selects a lower resolution mipmap for the segment, resulting in visual artifacts.
+### Mipmaps e slice-9
+Devido à forma como o mipmapping funciona no renderizador, a escala de segmentos de textura às vezes pode exibir artefatos. Isso acontece quando você _reduz a escala_ dos segmentos abaixo do tamanho original da textura. O renderizador então seleciona um mipmap de resolução menor para o segmento, resultando em artefatos visuais.
 
-![Slice 9 mipmapping](/shared/images/gui_slice9_mipmap.png)
+![Mipmapping Slice 9](/shared/images/gui_slice9_mipmap.png)
 
-To avoid this problem, make sure that the texture's segments that will be scaled are small enough never to be scaled down, only up.
+Para evitar esse problema, certifique-se de que os segmentos da textura que serão escalados sejam pequenos o suficiente para nunca serem reduzidos, apenas ampliados.

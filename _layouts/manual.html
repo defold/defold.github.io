@@ -36,13 +36,15 @@ layout: page_with_learnnav
 {%- assign next_manual_link = "" -%}
 {%- if previous_manual -%}
 	{%- assign previous_manual_link = previous_manual.path -%}
-	{%- if page_locale != "en" and previous_manual.languages contains page_locale -%}
+	{%- assign previous_manual_locales = previous_manual.locales | default: previous_manual.languages -%}
+	{%- if page_locale != "en" and previous_manual_locales contains page_locale -%}
 		{%- assign previous_manual_link = "/" | append: locale_info.urlprefix | append: previous_manual.path -%}
 	{%- endif -%}
 {%- endif -%}
 {%- if next_manual -%}
 	{%- assign next_manual_link = next_manual.path -%}
-	{%- if page_locale != "en" and next_manual.languages contains page_locale -%}
+	{%- assign next_manual_locales = next_manual.locales | default: next_manual.languages -%}
+	{%- if page_locale != "en" and next_manual_locales contains page_locale -%}
 		{%- assign next_manual_link = "/" | append: locale_info.urlprefix | append: next_manual.path -%}
 	{%- endif -%}
 {%- endif -%}
@@ -93,7 +95,8 @@ layout: page_with_learnnav
 			</div>
 			<div class="columns three learn-detail-sidebar">
 				<div class="learn-detail-sidebar-stack">
-					{% include learn_detail_languages.html locales=current_manual.languages path=current_manual.path %}
+					{%- assign current_manual_locales = current_manual.locales | default: current_manual.languages -%}
+					{% include learn_detail_languages.html locales=current_manual_locales path=current_manual.path %}
 					<div class="learn-detail-panel learn-detail-sections learn-sidebar-panel page-surface-panel page-text-panel">
 						<input class="toggle" type="checkbox" checked/>
 						<label class="togglelabel">On this page</label>

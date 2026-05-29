@@ -39,8 +39,9 @@
 			<li class="learn-sidebar-list-item">
 				{%- assign manual_url = manual.path -%}
 				{%- assign manual_label = manual.name -%}
+				{%- assign manual_locales = manual.locales | default: manual.languages -%}
 				{%- unless nav_page_locale == "en" -%}
-					{%- if manual.languages contains nav_page_locale -%}
+					{%- if manual_locales contains nav_page_locale -%}
 						{%- assign manual_url = "/" | append: nav_locale_info.urlprefix | append: manual.path -%}
 					{%- else -%}
 						{%- assign manual_label = manual.name | append: " (English)" -%}
@@ -138,8 +139,9 @@
 					{%- for manual in section.items -%}
 						{%- assign manual_url = manual.path -%}
 						{%- assign manual_label = manual.name -%}
+						{%- assign manual_locales = manual.locales | default: manual.languages -%}
 						{%- unless nav_page_locale == "en" -%}
-							{%- if manual.languages contains nav_page_locale -%}
+							{%- if manual_locales contains nav_page_locale -%}
 								{%- assign manual_url = "/" | append: nav_locale_info.urlprefix | append: manual.path -%}
 							{%- else -%}
 								{%- assign manual_label = manual.name | append: " (English)" -%}

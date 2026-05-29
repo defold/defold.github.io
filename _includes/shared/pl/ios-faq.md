@@ -1,15 +1,15 @@
-#### Q: I am unable to install my Defold game using a free Apple Developer account.
-A: Make sure that you are using the same bundle identifier in your Defold project as you used in the Xcode project when you generated the mobile provisioning profile.
+#### P: Nie mogę zainstalować mojej gry Defold, korzystając z darmowego konta Apple Developer.
+O: Upewnij się, że w projekcie Defold używasz tego samego identyfikatora bundla, którego użyłeś w projekcie Xcode podczas generowania profilu provisioning dla urządzeń mobilnych.
 
-#### Q: How can I check the entitlements of a bundled application?
-A: From [Inspect the entitlements of a built app](https://developer.apple.com/library/archive/technotes/tn2415/_index.html#//apple_ref/doc/uid/DTS40016427-CH1-APPENTITLEMENTS):
+#### P: Jak mogę sprawdzić uprawnienia zbudowanej aplikacji?
+O: Zobacz [Sprawdzanie uprawnień zbudowanej aplikacji](https://developer.apple.com/library/archive/technotes/tn2415/_index.html#//apple_ref/doc/uid/DTS40016427-CH1-APPENTITLEMENTS):
 
 ```sh
 codesign -d --ent :- /path/to/the.app
 ```
 
-#### Q: How can I check the entitlements of a provisioning profile
-A: From [Inspecting a profile's entitlements](https://developer.apple.com/library/archive/technotes/tn2415/_index.html#//apple_ref/doc/uid/DTS40016427-CH1-PROFILESENTITLEMENTS):
+#### P: Jak mogę sprawdzić uprawnienia profilu provisioning?
+O: Zobacz [Sprawdzanie uprawnień profilu provisioning](https://developer.apple.com/library/archive/technotes/tn2415/_index.html#//apple_ref/doc/uid/DTS40016427-CH1-PROFILESENTITLEMENTS):
 
 ```sh
 security cms -D -i /path/to/iOSTeamProfile.mobileprovision

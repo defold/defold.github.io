@@ -42,12 +42,12 @@ Anúncios intersticiais são experiências grandes em tela cheia com animações
 
 ### Anúncios com recompensa
 
-Anúncios com recompensa (também conhecidos como anúncios com incentivos) são opcionais e, portanto, menos intrusivos do que muitas outras formas de anúncios. Os anúncios com recompensa são geralmente experiências em tela cheia, como os anúncios intersticiais. O usuário pode escolher uma recompensa em troca de visualizar o anúncio - por exemplo, *loot*, vidas, tempo ou alguma outra moeda ou benefício no jogo. Os anúncios com recompensa geralmente têm o custo mais alto (CPM), mas o número de visualizações está diretamente relacionado às taxas de aceitação do usuário. Os anúncios com recompensa só terão um ótimo desempenho se as recompensas forem valiosas o suficiente e oferecidas no momento certo.
+Anúncios com recompensa (também conhecidos como anúncios com incentivo) são opcionais e, portanto, menos intrusivos do que muitas outras formas de anúncios. Os anúncios com recompensa geralmente são experiências em tela cheia, como os anúncios intersticiais. O usuário pode escolher uma recompensa em troca de visualizar o anúncio - por exemplo, *loot*, moedas, vidas, tempo ou algum outro benefício dentro do jogo. Os anúncios com recompensa geralmente têm o custo mais alto (CPM), mas o número de visualizações está diretamente relacionado às taxas de aceitação do usuário. Os anúncios com recompensa só terão ótimo desempenho se as recompensas forem valiosas o suficiente e oferecidas no momento certo.
 
 
 ## Redes de anúncios
 
-O [Portal de Assets da Defold](/tags/stars/ads/) contém vários assets que se integram com provedores de anúncios:
+O [Portal de Assets do Defold](/tags/stars/ads/) contém vários assets que se integram com provedores de anúncios:
 
 * [AdMob](https://defold.com/assets/admob-defold/) - Mostra anúncios usando a rede Google AdMob.
 * [Enhance](https://defold.com/assets/enhance/) - Suporta uma série de redes de anúncios diferentes. Requer uma etapa adicional de pós-build.
@@ -63,7 +63,7 @@ Quando você decidir sobre uma rede de anúncios para integrar ao seu jogo, voc�
 
 # Combinando anúncios e compras dentro do aplicativo
 
-É bastante comum em jogos mobile oferecer uma [compra dentro do aplicativo](/manuals/iap) para se livrar dos anúncios permanentemente.
+É bastante comum em jogos mobile oferecer uma [compra dentro do aplicativo](/pt/manuals/iap) para se livrar dos anúncios permanentemente.
 
 
 ## Saiba mais

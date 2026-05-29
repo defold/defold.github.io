@@ -7,6 +7,8 @@ stylesheets:
   - submit
 ---
 
+{%- assign tags = site.asset_allowed_tags -%}
+
 {%- capture page_hero_copy -%}
 <p>Want to feature your game in the Defold showcase? Fill in the details here and the site will open a prefilled GitHub issue for the showcase team.</p>
 <p>Add the showcase images directly on GitHub after the issue opens so the team can review the game and its presentation together.</p>
@@ -78,6 +80,11 @@ stylesheets:
 		if (document.getElementById("platform_switch2").checked) { platforms.push("Nintendo Switch 2"); }
 		if (document.getElementById("platform_other").checked) { platforms.push("Other"); }
 
+		var tags = [];
+		{%- for tag in tags -%}
+		if (document.getElementById("tag-{{ tag.id }}").checked) { tags.push({{ tag.name | jsonify }}); }
+		{% endfor %}
+
 		var title = document.getElementById("game_title").value.trim();
 		var slug = showcase_slugify(title);
 		var game = {
@@ -87,6 +94,7 @@ stylesheets:
 			publisher: document.getElementById("game_publisher").value.trim(),
 			releasedate: showcase_release_date(),
 			platforms: platforms.join(", "),
+			tags: tags,
 			downloads: document.getElementById("game_downloads").value.trim(),
 			license: document.getElementById("game_license").value.trim(),
 			description: document.getElementById("game_description").value.trim(),
@@ -194,6 +202,15 @@ stylesheets:
 							<label class="submit-form-check" for="platform_ps5"><input type="checkbox" name="platforms" value="Sony PlayStation 5" id="platform_ps5"><span>Sony PlayStation 5</span></label>
 							<label class="submit-form-check" for="platform_xbox"><input type="checkbox" name="platforms" value="Microsoft Xbox" id="platform_xbox"><span>Microsoft Xbox</span></label>
 							<label class="submit-form-check" for="platform_other"><input type="checkbox" name="platforms" value="Other" id="platform_other"><span>Other</span></label>
+						</div>
+					</fieldset>
+
+					<fieldset class="submit-form-field submit-form-field-full submit-form-fieldset">
+						<legend>Tags (select 1-3 most fitting)</legend>
+						<div class="submit-form-check-grid">
+						{%- for tag in tags -%}
+							<label class="submit-form-check" for="tag-{{ tag.id }}"><input type="checkbox" name="tags" value="{{ tag.name }}" id="tag-{{ tag.id }}"><span>{{ tag.name }}</span></label>
+						{%- endfor -%}
 						</div>
 					</fieldset>
 

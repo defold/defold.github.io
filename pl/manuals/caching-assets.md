@@ -25,11 +25,9 @@ Defold wykorzystuje trzy poziomy bufora:
 
 Defold domyślnie buforuje skompilowane zasoby w katalogu `build/default` projektu w Defoldzie. Bufor projektu przyspieszy kolejne kompilacje, ponieważ będą ponownie kompilowane tylko zmienione zasoby, podczas gdy zasoby bez zmian będą wykorzystywane z bufora projektu. Ten bufor jest zawsze włączony i używany zarówno przez edytor, jak i narzędzia wiersza poleceń.
 
-Bufor projektu można usunąć ręcznie, usuwając pliki w katalogu `build/default`, lub wydając polecenie `clean` za pomocą [narzędzia do kompilacji wiersza poleceń Bob](/manuals/bob).
+Bufor projektu można usunąć ręcznie, usuwając pliki w katalogu `build/default`, lub wydając polecenie `clean` za pomocą [narzędzia do kompilacji wiersza poleceń Bob](/pl/manuals/bob).
 
 ## Local cache (Bufor lokalny)
-
-Dodano w wersji Defold 1.2.187.
 
 Bufor lokalny to opcjonalny, drugi bufor, w którym skompilowane zasoby są przechowywane w zewnętrznym miejscu na tym samym komputerze lub na dysku sieciowym. Dzięki swojemu zewnętrznemu położeniu zawartość bufora przetrwa oczyszczenie bufora projektu. Może być również współdzielony przez kilku programistów pracujących nad tym samym projektem. Bufor jest obecnie dostępny tylko podczas kompilacji za pomocą narzędzi wiersza poleceń. Jest aktywowany za pomocą opcji `resource-cache-local`:
 
@@ -45,8 +43,6 @@ Pliki przechowywane w buforze lokalnym są przechowywane na stałe. To programis
 
 
 ## Remote cache (Bufor zdalny)
-
-Dodano w wersji Defold 1.2.187.
 
 Bufor zdalny to opcjonalny, trzeci bufor, w którym skompilowane zasoby są przechowywane na serwerze i dostępne za pomocą żądania HTTP. Bufor jest obecnie dostępny tylko podczas kompilacji za pomocą narzędzi wiersza poleceń. Jest aktywowany za pomocą opcji `resource-cache-remote`:
 
