@@ -15,7 +15,7 @@ toc:
 
 # Defold Firebase documentation
 
-This extension allows you to interact with Firebase in a uniform way for games on iOS and Android. The extension contains the core functionality to create and initialise a Firebase application. The various Firebase products are available in individual extensions:
+This extension allows you to interact with Firebase in a uniform way for games on iOS, macOS, and Android. The extension contains the core functionality to create and initialise a Firebase application. The various Firebase products are available in individual extensions:
 
 * [Firebase Analytics](https://github.com/defold/extension-firebase-analytics)
 * [Firebase Remote Config](https://github.com/defold/extension-firebase-remoteconfig)
@@ -35,8 +35,8 @@ The steps below taken from the [official Google Firebase Guides](https://firebas
 * When prompted, enter your app's package name. It's important to enter the package name your app is using; this can only be set when you add an app to your Firebase project.
 * During the process, you'll download a `google-services.json` file. You can download this file again at any time.
 
-#### 1.3 Setup for iOS
-* Click Add Firebase to your iOS app and follow the setup steps. If you're importing an existing Google project, this may happen automatically and you can just download the config file.
+#### 1.3 Setup for Apple platforms
+* Click Add Firebase to your Apple app and follow the setup steps. If you're importing an existing Google project, this may happen automatically and you can just download the config file.
 * When prompted, enter your app's bundle ID. It's important to enter the bundle ID your app is using; this can only be set when you add an app to your Firebase project.
 * During the process, you'll download a `GoogleService-Info.plist` file. You can download this file again at any time.
 
@@ -90,6 +90,25 @@ $ ./generate_xml_from_google_services_json.py -i google-services.json -o google-
 
 * Open `game.project` and set the `Bundle Resources` entry under the `Project` section to `/bundle` to match the folder created in the step above. Read more about the `Bundle Resources` setting in the [Defold manual](https://www.defold.com/manuals/project-settings/#project).
 
+#### 2.4 Setup for macOS
+* Copy the generated `GoogleService-Info.plist` file to a folder structure like this:
+
+```
+<project_root>
+ |
+ +-bundle
+    |
+    +-osx
+       |
+       +-Contents
+          |
+          +-Resources
+             |
+             +-GoogleService-Info.plist
+```
+
+* Open `game.project` and set the `Bundle Resources` entry under the `Project` section to `/bundle` to match the folder created in the step above.
+
 
 ## Usage
 
@@ -101,12 +120,15 @@ function init(self)
             if message_id == firebase.MSG_INITIALIZED then
                -- firebase is ready to use!
 
-               -- installation auth token can be used for configuring test devices for A/B tests
-               firebase.get_installation_auth_token()
-               -- retrieve Firebase installation ID for example, to create segments of app installs for BiqQuery import,
-               -- or toperform testing during Firebase In-App Messaging development,
-               -- you can identify and target the correct devices using the corresponding Firebase installation IDs.
-               firebase.get_installation_id()
+               local system_name = sys.get_sys_info().system_name
+               if system_name == "Android" or system_name == "iPhone OS" then
+                  -- installation auth token can be used for configuring test devices for A/B tests
+                  firebase.get_installation_auth_token()
+                  -- retrieve Firebase installation ID for example, to create segments of app installs for BigQuery import,
+                  -- or to perform testing during Firebase In-App Messaging development,
+                  -- you can identify and target the correct devices using the corresponding Firebase installation IDs.
+                  firebase.get_installation_id()
+               end
             elseif message_id == firebase.MSG_INSTALLATION_ID then
                 print("id:", message.id)
             elseif message_id == firebase.MSG_INSTALLATION_AUTH_TOKEN then
@@ -121,6 +143,8 @@ end
 ```
 
 It is possible to override the values within GoogleService-Info.plist/google-services.xml by passing an optional table of options to init(). See the [Defold manual](https://defold.com/extension-firebase/api/) for details but be aware of implications for analytics as described in Google's [Firebase documentation](https://firebase.google.com/docs/projects/multiprojects#reliable-analytics)
+
+Firebase Installations token and ID APIs are intended for Android and iOS in this extension. On macOS editor runs, Firebase itself can initialize, but Installations may fail when it tries to write to Keychain because the editor launches a raw debug executable without app signing entitlements.
 
 ## Source code
 
