@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to setup and use Firebase Remote Config in Defold.
 github: https://github.com/defold/extension-firebase-remoteconfig
-language: en
 layout: manual
+locale: en
 title: Defold Firebase Remote Config documentation
 toc:
 - Defold Firebase Remote Config documentation
