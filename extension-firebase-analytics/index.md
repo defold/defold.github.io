@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to setup and use Firebase Analytics in Defold.
 github: https://github.com/defold/extension-firebase-analytics
-language: en
 layout: manual
+locale: en
 title: Defold Firebase Analytics documentation
 toc:
 - Defold Firebase Analytics documentation
