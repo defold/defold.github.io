@@ -1,12 +1,12 @@
 {
     "elements": [
         {
-            "description": "Initialise Firebase",
+            "description": "Initialize Firebase.",
             "examples": "",
             "name": "firebase.initialize",
             "parameters": [
                 {
-                    "doc": "Optional table with initialisation parameters to use instead of those specified in google-services.xml/plist When passing this, disable creation of the default Firebase App by specifying firebase.no_auto_init in game.project Valid keys in the table are api_key, app_id, database_url, messaging_sender_id, project_id, storage_bucket. All values are strings.",
+                    "doc": "Optional table with initialization parameters to use instead of those specified in google-services.xml/plist. When passing this, disable creation of the default Firebase App by specifying firebase.no_auto_init in game.project. Valid keys in the table are api_key, app_id, database_url, messaging_sender_id, project_id, storage_bucket. All values are strings.",
                     "name": "options",
                     "types": [
                         "table"
@@ -30,7 +30,7 @@
             "name": "firebase.set_callback",
             "parameters": [
                 {
-                    "doc": "Callback function that is executed on any event in the SDK.",
+                    "doc": "Callback function that is executed on any event in the SDK, or nil to remove the current callback.",
                     "name": "callback",
                     "parameters": [
                         {
@@ -55,14 +55,14 @@
                                     "doc": "for MSG_INSTALLATION_AUTH_TOKEN",
                                     "name": "token",
                                     "types": [
-                                        "number"
+                                        "string"
                                     ]
                                 },
                                 {
                                     "doc": "for MSG_INSTALLATION_ID",
                                     "name": "id",
                                     "types": [
-                                        "number"
+                                        "string"
                                     ]
                                 },
                                 {

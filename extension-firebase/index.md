@@ -23,7 +23,7 @@ This extension allows you to interact with Firebase in a uniform way for games o
 
 ## Setup
 ### 1. Firebase setup
-The steps below taken from the [official Google Firebase Guides](https://firebase.google.com/docs/cpp/setup).
+The steps below are taken from the [official Google Firebase Guides](https://firebase.google.com/docs/cpp/setup).
 
 #### 1.1 Create a Firebase project
 * Create a Firebase project in the [Firebase console](https://console.firebase.google.com/), if you don't already have one. Click Add project. If you already have an existing Google project associated with your mobile app, select it from the Project name drop down menu. Otherwise, enter a project name to create a new project.
@@ -142,7 +142,7 @@ function init(self)
 end
 ```
 
-It is possible to override the values within GoogleService-Info.plist/google-services.xml by passing an optional table of options to init(). See the [Defold manual](https://defold.com/extension-firebase/api/) for details but be aware of implications for analytics as described in Google's [Firebase documentation](https://firebase.google.com/docs/projects/multiprojects#reliable-analytics)
+It is possible to override the values within GoogleService-Info.plist/google-services.xml by passing an optional table of options to `firebase.initialize(options)`. See the [Defold manual](https://defold.com/extension-firebase/api/) for the supported option keys, but be aware of implications for analytics as described in Google's [Firebase documentation](https://firebase.google.com/docs/projects/multiprojects#reliable-analytics)
 
 Firebase Installations token and ID APIs are intended for Android and iOS in this extension. On macOS editor runs, Firebase itself can initialize, but Installations may fail when it tries to write to Keychain because the editor launches a raw debug executable without app signing entitlements.
 

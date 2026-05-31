@@ -10,11 +10,11 @@ Functions and constants for interacting with Firebase
 
 ### firebase.initialize
 *Type:* FUNCTION
-Initialise Firebase
+Initialize Firebase.
 
 **Parameters**
 
-- `options` (table) - Optional table with initialisation parameters to use instead of those specified in google-services.xml/plist When passing this, disable creation of the default Firebase App by specifying firebase.no_auto_init in game.project Valid keys in the table are api_key, app_id, database_url, messaging_sender_id, project_id, storage_bucket. All values are strings.
+- `options` (table) - Optional table with initialization parameters to use instead of those specified in google-services.xml/plist. When passing this, disable creation of the default Firebase App by specifying firebase.no_auto_init in game.project. Valid keys in the table are api_key, app_id, database_url, messaging_sender_id, project_id, storage_bucket. All values are strings.
 
 ### firebase.get_installation_auth_token
 *Type:* FUNCTION
@@ -26,12 +26,12 @@ Sets a callback function for receiving events from the SDK. Call `firebase.set_c
 
 **Parameters**
 
-- `callback` (function) - Callback function that is executed on any event in the SDK.
+- `callback` (function) - Callback function that is executed on any event in the SDK, or nil to remove the current callback.
   - `self` (object) - The calling script instance
   - `message_id` (number) - One of message types: `firebase.MSG_INITIALIZED` `firebase.MSG_INSTALLATION_AUTH_TOKEN` `firebase.MSG_INSTALLATION_ID` `firebase.MSG_ERROR`
   - `message` (table) - A table holding the data
-    - `token` (number) - for MSG_INSTALLATION_AUTH_TOKEN
-    - `id` (number) - for MSG_INSTALLATION_ID
+    - `token` (string) - for MSG_INSTALLATION_AUTH_TOKEN
+    - `id` (string) - for MSG_INSTALLATION_ID
     - `error` (string) - The error message (if an error occurred or `nil` otherwise)
 
 ### firebase.get_installation_id
