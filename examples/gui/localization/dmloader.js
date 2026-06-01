@@ -220,19 +220,17 @@ var FileLoader = {
 var EngineLoader = {
     arc_sha1: "",
     wasm_sha1: "",
-    wasm_size: 3631286,
+    wasm_size: 3660300,
     wasmjs_sha1: "",
-    wasmjs_size: 281450,
+    wasmjs_size: 284251,
     wasm_pthread_sha1: "",
     wasm_pthread_size: 2000000,
     wasmjs_pthread_sha1: "",
     wasmjs_pthread_size: 250000,
-    asmjs_sha1: "",
-    asmjs_size: 4000000,
-    wasm_file: "/examples/wasm/87e93b3f65de74fb8f9f1bb8b1b7d8c4.wasm",
-    wasm_pthread_file: "/examples/wasm/87e93b3f65de74fb8f9f1bb8b1b7d8c4.wasm",
-    wasmjs_file: "/examples/wasm/cfc7fe7a9776e536497bcd35329b3ed1.wasm.js",
-    wasmjs_pthread_file: "/examples/wasm/cfc7fe7a9776e536497bcd35329b3ed1.wasm.js",
+    wasm_file: "/examples/wasm/ea535eff232ea87fb4f22f9119e5463a.wasm",
+    wasm_pthread_file: "/examples/wasm/ea535eff232ea87fb4f22f9119e5463a.wasm",
+    wasmjs_file: "/examples/wasm/21ebf583c42bfa175e7fbc3924cdb93d.wasm.js",
+    wasmjs_pthread_file: "/examples/wasm/21ebf583c42bfa175e7fbc3924cdb93d.wasm.js",
     wasm_instantiate_progress: 0,
 
     stream_wasm: "false" === "true",
@@ -379,11 +377,7 @@ var EngineLoader = {
         EngineLoader.loadAndRunScriptAsync(EngineLoader.getWasmJSName(exeName), EngineLoader.getWasmJSSize(), EngineLoader.getWasmJSSha1());
     },
 
-    loadAsmJsAsync: function(exeName) {
-        EngineLoader.loadAndRunScriptAsync(exeName + '_asmjs.js', EngineLoader.asmjs_size, EngineLoader.asmjs_sha1);
-    },
-
-    // load and start engine script (asm.js or wasm.js)
+    // load and start the wasm loader script
     loadAndRunScriptAsync: function(src, expectedLength, expectedSHA1) {
         FileLoader.load(src, "text",
             function(delta) {
@@ -564,22 +558,24 @@ var GameArchiveLoader = {
         this._files = json.content;
 
         var isWASMSupported = Module['isWASMSupported'];
-        if (isWASMSupported) {
-            EngineLoader.loadWasmAsync(exeName);
-            totalSize += EngineLoader.getWasmSize() + EngineLoader.getWasmJSSize();
-        } else {
-            EngineLoader.loadAsmJsAsync(exeName);
-            totalSize += EngineLoader.asmjs_size;
+        if (!isWASMSupported) {
+            const error = new Error("WebAssembly is not supported in this browser.");
+            if (typeof CUSTOM_PARAMETERS["start_error"] === "function") {
+                CUSTOM_PARAMETERS["start_error"](error);
+            } else {
+                throw error;
+            }
+            return;
         }
+        EngineLoader.loadWasmAsync(exeName);
+        totalSize += EngineLoader.getWasmSize() + EngineLoader.getWasmJSSize();
         if (!Module['isDMFSSupported']) {
             // we can download in parallel here because we will not rely on FS, otherwise
             // we have to wait until after the [w]asm is loaded.
             this.downloadContent();
         }
         ProgressUpdater.resetCurrent();
-        if (isWASMSupported) {
-            EngineLoader.updateWasmInstantiateProgress(totalSize);
-        }
+        EngineLoader.updateWasmInstantiateProgress(totalSize);
         ProgressUpdater.setupTotal(totalSize + EngineLoader.wasm_instantiate_progress);
     },
 
@@ -896,8 +892,8 @@ var Progress = {
 /* ********************************************************************* */
 
 var Module = {
-    engineVersion: "1.12.4",
-    engineSdkSha1: "4aa85afd4bc85579691c6f7768e92d60d68139fa",
+    engineVersion: "1.13.0",
+    engineSdkSha1: "7819175d5d4ba2c2eedc8b5b8ba57c1cbaf30935",
     noInitialRun: true,
 
     _filesToPreload: [],

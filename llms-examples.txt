@@ -99,6 +99,7 @@ This document contains Defold examples grouped by category.
 - [GLTF](#examples:model:gltf) - This example demonstrates how to use a glTF model
 - [GPU Skinning](#examples:model:skinning) - This example demonstrates GPU skinning
 - [Model Vertex Color](#examples:model:modelvertexcolor) - This example demonstrates how to apply a vertex color shader using exported attributes from a 3D model
+- [Morph Target Animation](#examples:model:morph-target) - Shows how to play glTF morph target animations with a morph-capable model material
 - [Skybox](#examples:model:skybox) - This example shows how to create a skybox using a cubemap texture
 
 ## Movement
@@ -5902,6 +5903,169 @@ void main()
 }
 ```
 
+<!-- model/morph-target -->
+
+# Morph Target Animation {#examples:model:morph-target}
+
+Shows how to play glTF morph target animations with a morph-capable model material.
+
+[Project files](https://github.com/defold/examples/tree/master/model/morph-target)
+
+This example plays morph target animations from a glTF model. The model uses a small custom material based on Defold's built-in model material, with the extra shader bindings needed to render morph target deformation.
+
+## What You'll Learn
+
+- How to use a glTF file that contains morph targets and weight animations
+- How to play a named model animation with `model.play_anim()`
+- How to cycle between several morph target animations with input
+- How to create a model material to apply morph target data
+
+## Setup
+
+The collection contains one camera and one `morph_target` game object.
+
+`morph_target`
+: Contains a Model component, `morph_target.script`, and `info.gui`. The Model component uses `/assets/models/MorphStressTest.glb` for mesh, skeleton, and animation data. The glTF file contains eight morph targets and three animations: `TheWave`, `Pulse`, and `Individuals`.
+
+`camera`
+: Contains a perspective Camera component positioned above and in front of the model.
+
+`info`
+: Contains a GUI component with instructions for the example.
+
+The glTF model has two material slots, `Base` and `TestMaterial`. Both slots use `/assets/materials/morph_target.material`; the blue and orange textures only make the two parts of the model easier to distinguish. Custom material has vertex constants `morph_targets_weights` of type `User` for applying weighted morph targets.
+
+## How It Works
+
+`morph_target.script` stores the animation names in a small table. In `init()`, it acquires input focus and starts `TheWave` with:
+```lua
+model.play_anim("#model", "TheWave", go.PLAYBACK_LOOP_FORWARD)
+```
+
+The animations in the glTF file target the model's morph weights. As the animation plays, Defold updates the material constant named `morph_targets_weights` and binds the model's morph target texture to the material sampler named `morph_targets`.
+
+The stock model material is useful as a starting point, but it does not apply morph target deltas by itself. This example therefore uses `/assets/materials/morph_target.material`, which declares the expected morph target bindings and uses `/assets/materials/morph_target.vp` to sample the morph target texture. The vertex shader reads the active weights, samples the position delta for each target, and adds the weighted result to the base vertex position before projection.
+
+When you click or touch the screen, `on_input()` advances to the next animation name and calls `model.play_anim()` again. The example loops through `TheWave`, `Pulse`, and `Individuals`.
+
+## Credits
+
+The `MorphStressTest.glb` asset is CC-BY 4.0, Copyright 2021 Analytical Graphics, Inc. Model by Ed Mackey.
+[https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/MorphStressTest](https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/MorphStressTest)
+
+## Scripts
+
+### morph_target.script
+
+```lua
+local ANIMATIONS = {
+	"TheWave",
+	"Pulse",
+	"Individuals"
+}
+
+function init(self)
+	self.animation = 1
+	msg.post("#", "acquire_input_focus")
+	model.play_anim("#model", ANIMATIONS[self.animation], go.PLAYBACK_LOOP_FORWARD) -- <1>
+end
+
+function on_input(self, action_id, action)
+	if action.pressed then
+		self.animation = self.animation + 1
+		if self.animation > 3 then
+			self.animation = 1
+		end
+		model.play_anim("#model", ANIMATIONS[self.animation], go.PLAYBACK_LOOP_FORWARD)
+	end
+end
+
+--[[
+1. Play the morph target animation named "TheWave" from the glTF file in a loop.
+]]
+```
+
+### morph_target.vp
+
+```glsl
+#version 140
+
+in highp vec4 position;
+in mediump vec2 texcoord0;
+in mediump vec3 normal;
+
+out highp vec4 var_position;
+out mediump vec3 var_normal;
+out mediump vec2 var_texcoord0;
+out mediump vec4 var_light;
+
+uniform vs_uniforms
+{
+    mediump mat4 mtx_worldview;
+    mediump mat4 mtx_view;
+    mediump mat4 mtx_proj;
+    mediump mat4 mtx_normal;
+    mediump vec4 light;
+    mediump vec4 morph_targets_weights[2];
+};
+
+uniform sampler2DArray morph_targets;
+
+vec2 get_morph_uv(int index, int width, int height)
+{
+    int x = index % width;
+    int y = index / width;
+
+    return vec2(
+        (float(x) + 0.5) / float(width),
+        (float(y) + 0.5) / float(height)
+    );
+}
+
+void apply_weighted_morph_target(in vec2 uv, in float weight, inout vec3 p, in int target)
+{
+    if (weight == 0.0) {
+        return;
+    }
+
+    int pos_layer = target * 3;
+    p += weight * texture(morph_targets, vec3(uv, pos_layer)).xyz;
+}
+
+vec3 get_morph_position_delta(int vertex_index)
+{
+    vec3 position_delta = vec3(0.0);
+
+#ifndef EDITOR
+    ivec3 morph_texture_size = textureSize(morph_targets, 0);
+    vec2 uv = get_morph_uv(vertex_index, morph_texture_size.x, morph_texture_size.y);
+
+    apply_weighted_morph_target(uv, morph_targets_weights[0].x, position_delta, 0);
+    apply_weighted_morph_target(uv, morph_targets_weights[0].y, position_delta, 1);
+    apply_weighted_morph_target(uv, morph_targets_weights[0].z, position_delta, 2);
+    apply_weighted_morph_target(uv, morph_targets_weights[0].w, position_delta, 3);
+    apply_weighted_morph_target(uv, morph_targets_weights[1].x, position_delta, 4);
+    apply_weighted_morph_target(uv, morph_targets_weights[1].y, position_delta, 5);
+    apply_weighted_morph_target(uv, morph_targets_weights[1].z, position_delta, 6);
+    apply_weighted_morph_target(uv, morph_targets_weights[1].w, position_delta, 7);
+#endif
+
+    return position_delta;
+}
+
+void main()
+{
+    vec3 morphed_position = position.xyz + get_morph_position_delta(gl_VertexIndex);
+    vec4 p = mtx_worldview * vec4(morphed_position, 1.0);
+
+    var_light = mtx_view * vec4(light.xyz, 1.0);
+    var_position = p;
+    var_texcoord0 = texcoord0;
+    var_normal = normalize((mtx_normal * vec4(normal, 0.0)).xyz);
+    gl_Position = mtx_proj * p;
+}
+```
+
 <!-- model/skybox -->
 
 # Skybox {#examples:model:skybox}
@@ -7421,17 +7585,17 @@ This example shows how a Box2D body can be pushed instantly with a linear impuls
 
 ## Setup
 
-The collection contains a cube game object with a sprite, a dynamic collision object, and `/example/cube.script`. A static platform collision object catches the cube after the impulse. The project enables fixed-step physics and uses Box2D through Defold's built-in `b2d` API.
+The collection contains a cube game object with a sprite, a dynamic collision object, and `/example/apply_linear_impulse.script`. A static platform collision object catches the cube after the impulse. The project enables fixed-step physics and uses Box2D through Defold's built-in `b2d` API.
 
 ## How It Works
 
-The script acquires input focus and listens for the built-in `touch` action. When the player clicks or touches the screen, it gets the cube's Box2D body, reads the body's current world position, and applies an upward linear impulse at that point.
+The script acquires input focus and listens for the built-in `touch` action. When the player clicks or touches the screen, it gets the cube's Box2D body, reads the body's current center of mass, and applies an upward linear impulse at that point.
 
 Read more about the [Box2D API here](https://defold.com/ref/stable/b2d-lua/).
 
 ## Scripts
 
-### cube.script
+### apply_linear_impulse.script
 
 ```lua
 function init(self)
@@ -7441,9 +7605,9 @@ end
 function on_input(self, action_id, action)
 	if action_id == hash("touch") and action.pressed then -- <2>
 		local body = b2d.get_body("#collisionobject") -- <3>
-		local position = b2d.body.get_position(body) -- <4>
+		local center = b2d.body.get_world_center(body) -- <4>
 
-		b2d.body.apply_linear_impulse(body, vmath.vector3(0, 600, 0), position) -- <5>
+		b2d.body.apply_linear_impulse(body, vmath.vector3(0, 600, 0), center) -- <5>
 	end
 end
 
@@ -7455,7 +7619,7 @@ end
 1. The cube game object receives touch and mouse input.
 2. The built-in touch action is sent when clicking or touching the screen.
 3. b2d.get_body() gets the Box2D body from the cube collision object.
-4. The body's current world position is used as the impulse application point.
+4. The body's world center of mass is used as the impulse application point.
 5. apply_linear_impulse() immediately changes the body's velocity upward.
 6. Input focus is released when the script instance is destroyed.
 --]]

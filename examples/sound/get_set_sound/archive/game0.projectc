@@ -117,6 +117,8 @@ max_count = 128
 split_meshes = 0
 max_bone_matrix_texture_width = 1024
 max_bone_matrix_texture_height = 1024
+max_morph_target_texture_width = 1024
+max_morph_target_texture_height = 1024
 
 [mesh]
 max_count = 128
@@ -223,6 +225,7 @@ subpixels = 1
 
 [profiler]
 track_cpu = 0
+track_detailed_memory = 0
 enabled = 1
 sleep_between_server_updates = 0
 performance_timeline_enabled = 0
@@ -230,9 +233,7 @@ max_sample_count = 4096
 
 [liveupdate]
 enabled = 1
-exclude_entries_from_main_manifest = 1
 settings = /liveupdate.settings
-mount_on_start = 1
 
 [tilemap]
 max_count = 16

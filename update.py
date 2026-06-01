@@ -32,6 +32,7 @@ GAMESSHOWCASE_ZIP = "games-showcase-master.zip"
 
 EXAMPLES_DEFOLD_CHANNEL = "beta"
 EXAMPLES_BUILD_SERVER = "https://build-stage.defold.com/"
+EXAMPLE_CODE_FILE_PATTERNS = "*.script|*.gui_script|*.lua|*.vp|*.fp|*.cp|*.glsl|*.render_script"
 
 ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
 GAMES_JSON = os.path.join("_data", "games.json")
@@ -205,6 +206,17 @@ def find_files(root_dir, file_patterns):
                     matches.append(os.path.join(root, filename))
     matches.sort()
     return matches
+
+def example_include_name(filename):
+    file, ext = os.path.splitext(os.path.basename(filename))
+    return file + "_" + ext.replace(".", "") + ".md"
+
+def split_example_scripts(scripts):
+    if isinstance(scripts, str):
+        return [s.strip() for s in scripts.split(",") if s.strip()]
+    if isinstance(scripts, list):
+        return [str(s).strip() for s in scripts if str(s).strip()]
+    return []
 
 def write_as_json(filename, data, ensure_ascii=True):
     with open(filename, "w") as f:
@@ -1032,18 +1044,31 @@ def process_examples(download = False):
                             image_path = "https://www.defold.com/examples/%s/%s" % (fm["path"], first_image)
                             fm["opengraph_image"] = image_path
                             fm["twitter_image"] = image_path
+
+                print("...copying example scripts")
+                os.makedirs(os.path.join(includes_dir, category, example), exist_ok=True)
+                copied_scripts = set()
+                for script in find_files(os.path.join(example_src_dir, "example"), EXAMPLE_CODE_FILE_PATTERNS):
+                    include_name = example_include_name(script)
+                    copied_scripts.add(include_name)
+                    tgt = os.path.join(includes_dir, category, example, include_name)
+                    shutil.copyfile(script, tgt)
+
+                frontmatter_scripts = split_example_scripts(fm.get("scripts"))
+                if frontmatter_scripts:
+                    missing_scripts = []
+                    for script in frontmatter_scripts:
+                        if script != os.path.basename(script) or example_include_name(script) not in copied_scripts:
+                            missing_scripts.append(script)
+                    if missing_scripts:
+                        print("ERROR: {} references missing example script(s): {}".format(fm["path"], ", ".join(missing_scripts)))
+                        sys.exit(1)
+
                 examplesindex.append(fm)
                 replace_frontmatter(md_file, fm)
 
                 print("...copying example.md")
                 shutil.copyfile(md_file, os.path.join(example_dst_dir, "index.md"))
-
-                print("...copying example scripts")
-                os.makedirs(os.path.join(includes_dir, category, example), exist_ok=True)
-                for script in find_files(os.path.join(example_src_dir, "example"), "*.script|*.gui_script|*.lua|*.vp|*.fp"):
-                    file, ext = os.path.splitext(os.path.basename(script))
-                    tgt = os.path.join(includes_dir, category, example, file + "_" + ext.replace(".", "") + ".md")
-                    shutil.copyfile(script, tgt)
 
                 print("...copying images")
                 for image in find_files(example_src_dir, "*.png|*.jpg|*.gif|*.webp|*.webm"):

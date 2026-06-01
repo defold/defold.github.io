@@ -4680,7 +4680,7 @@ When `Use Fixed Timestep` is `false` and/or Fixed Update Frequency is `0`, at th
 
 :::sidenote
 Note that after **each** component type’s update, all messages are dispatched - this is not marked in the table below to keep it clean.
-:::’
+:::
 
 | Step | Engine Phase | Lua Callback | Comment |
 |-|-|-|-|
@@ -4694,7 +4694,7 @@ When `Use Fixed Timestep` is `true` and Fixed Update Frequency is non-zero, at t
 
 :::sidenote
 Note that after **each** component type’s update, all messages are dispatched - this is not marked in the table below to keep it clean.
-:::’
+:::
 
 Then it loops:
 
@@ -12403,7 +12403,7 @@ local function handle_response(self, id, response)
 	end
 end
 
-http.request("https://www.foobar.com/myimage.png", "GET", handle_response)
+http.request("https://www.foobar.com/myimage.png", "GET", handle_response, nil, nil, options)
 ```
 
 Another use-case for loading large amounts of data over the network is sound streaming, when "chunks" of sound data are loaded from a URL and fed into a sound resource. A complete example can be found in the [Sound Streaming manual](/sound-streaming#sound-streaming).

@@ -313,6 +313,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Apply a linear impulse to the center of mass.",
+            "description": "Apply a linear impulse to the center of mass.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.apply_linear_impulse_to_center",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "world impulse vector",
+                    "is_optional": "False",
+                    "name": "impulse",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Apply a torque. This affects the angular velocity\n...",
             "description": "Apply a torque. This affects the angular velocity\nwithout affecting the linear velocity of the center of mass.\nThis wakes up the body.",
             "error": "",
@@ -465,6 +497,85 @@
             "returnvalues": [],
             "tparams": [],
             "type": "CONSTANT"
+        },
+        {
+            "brief": "Compute the world AABB of all body shapes.",
+            "description": "Compute the world AABB of all body shapes.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.compute_aabb",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "table with <code>lower</code> and <code>upper</code> vector3 fields",
+                    "name": "aabb",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Create a chain and attach its segment shapes to this body.",
+            "description": "Chains are one-sided connected segments with optional ghost vertices at\nthe ends of open chains. Ghost vertices are creation-time chain data only and\ncannot be added to arbitrary shapes, bodies, or joints after creation.\n<dl>\n<dt><code>definition.vertices</code></dt>\n<dd><span class=\"type\">table</span> array of local <code>vector3</code> vertices. Open chains require at least 2 vertices. Loop chains require at least 4 vertices.</dd>\n<dt><code>definition.loop</code></dt>\n<dd><span class=\"type\">boolean</span> true to create a closed loop chain.</dd>\n<dt><code>definition.prev_vertex</code></dt>\n<dd><span class=\"type\">vector3</span> optional ghost vertex before the first vertex for open chains.</dd>\n<dt><code>definition.next_vertex</code></dt>\n<dd><span class=\"type\">vector3</span> optional ghost vertex after the last vertex for open chains.</dd>\n<dt><code>definition.friction</code></dt>\n<dd><span class=\"type\">number</span> optional friction.</dd>\n<dt><code>definition.restitution</code></dt>\n<dd><span class=\"type\">number</span> optional restitution.</dd>\n<dt><code>definition.material</code></dt>\n<dd><span class=\"type\">number</span> optional material id.</dd>\n<dt><code>definition.filter</code></dt>\n<dd><span class=\"type\">table</span> optional filter with <code>category_bits</code>, <code>mask_bits</code>, and <code>group_index</code>.</dd>\n<dt><code>definition.enable_sensor_events</code></dt>\n<dd><span class=\"type\">boolean</span> true to enable sensor events for chain segments.</dd>\n</dl>",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">chain</span><span class=\"p\">,</span> <span class=\"n\">segments</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">body</span><span class=\"p\">.</span><span class=\"n\">create_chain</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n    <span class=\"n\">vertices</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n        <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">64</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">16</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">64</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n    <span class=\"p\">},</span>\n    <span class=\"n\">prev_vertex</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">96</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n    <span class=\"n\">next_vertex</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">96</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n    <span class=\"n\">friction</span> <span class=\"o\">=</span> <span class=\"mf\">0.6</span><span class=\"p\">,</span>\n<span class=\"p\">})</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.create_chain",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "the chain definition",
+                    "is_optional": "False",
+                    "name": "definition",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "created chain handle",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain"
+                    ]
+                },
+                {
+                    "doc": "array of shape info tables for the chain segments",
+                    "name": "segments",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "Destroy a fixture from a body.",
@@ -514,6 +625,70 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable or disable contact events on all body shapes.",
+            "description": "Enable or disable contact events on all body shapes.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.enable_contact_events",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "true to enable contact events",
+                    "is_optional": "False",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable or disable hit events on all body shapes.",
+            "description": "Enable or disable hit events on all body shapes.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.enable_hit_events",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "true to enable hit events",
+                    "is_optional": "False",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
                     ]
                 }
             ],
@@ -708,6 +883,38 @@
                     "name": "velocity",
                     "types": [
                         "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get touching contact data for a body.",
+            "description": "Get touching contact data for a body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_contact_data",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of contact tables",
+                    "name": "contacts",
+                    "types": [
+                        "table"
                     ]
                 }
             ],
@@ -1483,6 +1690,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get the body name.",
+            "description": "Get the body name.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_name",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "body name, or nil if no name is set",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the next body in the world's body list.",
             "description": "Get the next body in the world's body list.",
             "error": "",
@@ -1602,6 +1841,38 @@
                 {
                     "doc": "the rotational inertia, usually in kg-m^2.",
                     "name": "inertia",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the sleep velocity threshold.",
+            "description": "Get the sleep velocity threshold.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_sleep_threshold",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "velocity threshold in Defold units per second",
+                    "name": "threshold",
                     "types": [
                         "number"
                     ]
@@ -2315,6 +2586,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Validate a body handle.",
+            "description": "Validate a body handle.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.is_valid",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the body handle still refers to a live Box2D body",
+                    "name": "valid",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "This resets the mass properties to the sum of the ...",
             "description": "This resets the mass properties to the sum of the mass properties of the fixtures.\nThis normally does not need to be called unless you called SetMassData to override",
             "error": "",
@@ -2939,6 +3242,70 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Set the body name.",
+            "description": "Set the body name.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.set_name",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "body name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the sleep velocity threshold.",
+            "description": "Set the sleep velocity threshold.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.set_sleep_threshold",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "velocity threshold in Defold units per second",
+                    "is_optional": "False",
+                    "name": "threshold",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "You can disable sleeping on this body. If you disable sleeping, the body will be woken.",
             "description": "You can disable sleeping on this body. If you disable sleeping, the body will be woken.",
             "error": "",
@@ -2962,6 +3329,54 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set velocity to reach a target transform.",
+            "description": "Set velocity to reach a target transform.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.set_target_transform",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "target world position",
+                    "is_optional": "False",
+                    "name": "position",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "target world angle in radians",
+                    "is_optional": "False",
+                    "name": "angle",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "time step used to compute velocity",
+                    "is_optional": "False",
+                    "name": "time_step",
+                    "types": [
+                        "number"
                     ]
                 }
             ],
