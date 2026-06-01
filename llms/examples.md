@@ -99,6 +99,7 @@ These are per-example files generated for LLM usage.
 - [GLTF](https://defold.com/llms/examples/model/gltf.md) - This example demonstrates how to use a glTF model
 - [GPU Skinning](https://defold.com/llms/examples/model/skinning.md) - This example demonstrates GPU skinning
 - [Model Vertex Color](https://defold.com/llms/examples/model/modelvertexcolor.md) - This example demonstrates how to apply a vertex color shader using exported attributes from a 3D model
+- [Morph Target Animation](https://defold.com/llms/examples/model/morph-target.md) - Shows how to play glTF morph target animations on a Model component
 - [Skybox](https://defold.com/llms/examples/model/skybox.md) - This example shows how to create a skybox using a cubemap texture
 
 ## Movement
