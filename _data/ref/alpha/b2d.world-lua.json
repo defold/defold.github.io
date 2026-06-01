@@ -1,0 +1,1561 @@
+{
+    "elements": [
+        {
+            "brief": "Cast a mover capsule.",
+            "description": "The capsule table has <code>center1</code>, <code>center2</code>, and <code>radius</code> fields. The return\nvalue is the fraction of <code>translation</code> that can be traveled before collision,\nor 1 if there is no hit.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.cast_mover",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "capsule table with <code>center1</code>, <code>center2</code>, and <code>radius</code>",
+                    "is_optional": "False",
+                    "name": "capsule",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "capsule displacement",
+                    "is_optional": "False",
+                    "name": "translation",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "optional query filter with <code>category_bits</code> and <code>mask_bits</code>",
+                    "is_optional": "True",
+                    "name": "filter",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "travel fraction before collision",
+                    "name": "fraction",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Cast a ray.",
+            "description": "Cast a ray.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.cast_ray",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "world ray origin",
+                    "is_optional": "False",
+                    "name": "origin",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "world ray translation",
+                    "is_optional": "False",
+                    "name": "translation",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>",
+                    "is_optional": "False",
+                    "name": "filter",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "optional maximum result count",
+                    "is_optional": "False",
+                    "name": "max_results",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of hit tables with <code>fixture</code>, <code>shape</code>, <code>point</code>, <code>normal</code>, and <code>fraction</code>",
+                    "name": "hits",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "table with <code>node_visits</code> and <code>leaf_visits</code>",
+                    "name": "stats",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Cast a ray and collect hits.",
+            "description": "The translation is the ray displacement from <code>origin</code>. Result order is not\nguaranteed by Box2D.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.cast_ray",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "ray start position",
+                    "is_optional": "False",
+                    "name": "origin",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "ray displacement",
+                    "is_optional": "False",
+                    "name": "translation",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "optional query filter with <code>category_bits</code> and <code>mask_bits</code>",
+                    "is_optional": "True",
+                    "name": "filter",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "optional maximum result count. Omit or pass 0 for unlimited results.",
+                    "is_optional": "True",
+                    "name": "max_results",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of cast hit tables",
+                    "name": "hits",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "tree stats table",
+                    "name": "stats",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Cast a ray and return the closest hit.",
+            "description": "Cast a ray and return the closest hit.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.cast_ray_closest",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "world ray origin",
+                    "is_optional": "False",
+                    "name": "origin",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "world ray translation",
+                    "is_optional": "False",
+                    "name": "translation",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>",
+                    "is_optional": "False",
+                    "name": "filter",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "hit table with <code>fixture</code>, <code>shape</code>, <code>point</code>, <code>normal</code>, <code>fraction</code>, <code>node_visits</code>, and <code>leaf_visits</code>, or nil",
+                    "name": "hit",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Cast a ray and return the closest hit.",
+            "description": "The translation is the ray displacement from <code>origin</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.cast_ray_closest",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "ray start position",
+                    "is_optional": "False",
+                    "name": "origin",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "ray displacement",
+                    "is_optional": "False",
+                    "name": "translation",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "optional query filter with <code>category_bits</code> and <code>mask_bits</code>",
+                    "is_optional": "True",
+                    "name": "filter",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "closest cast hit table with <code>node_visits</code> and <code>leaf_visits</code>, or <code>nil</code> on miss",
+                    "name": "hit",
+                    "types": [
+                        "table",
+                        "nil"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Cast a shape.",
+            "description": "Uses Box2D v2 time-of-impact for fixture child shapes that support distance proxies.\nGrid fixture children are skipped.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.cast_shape",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "shape table using the same format as the <code>shape</code> field in <code>b2d.body.create_fixture</code>",
+                    "is_optional": "False",
+                    "name": "shape",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "world shape translation",
+                    "is_optional": "False",
+                    "name": "translation",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>",
+                    "is_optional": "False",
+                    "name": "filter",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "optional maximum result count",
+                    "is_optional": "False",
+                    "name": "max_results",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of hit tables with <code>fixture</code>, <code>shape</code>, <code>point</code>, <code>normal</code>, and <code>fraction</code>",
+                    "name": "hits",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "table with <code>node_visits</code> and <code>leaf_visits</code>",
+                    "name": "stats",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Cast a shape and collect hits.",
+            "description": "The shape table uses the same circle, capsule, segment, polygon, and box formats\nas <code>b2d.body.create_shape</code>. The translation is the shape displacement.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.cast_shape",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "shape table",
+                    "is_optional": "False",
+                    "name": "shape",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "shape displacement",
+                    "is_optional": "False",
+                    "name": "translation",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "optional query filter with <code>category_bits</code> and <code>mask_bits</code>",
+                    "is_optional": "True",
+                    "name": "filter",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "optional maximum result count. Omit or pass 0 for unlimited results.",
+                    "is_optional": "True",
+                    "name": "max_results",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of cast hit tables",
+                    "name": "hits",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "tree stats table",
+                    "name": "stats",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Collide a mover capsule against the world.",
+            "description": "The capsule table has <code>center1</code>, <code>center2</code>, and <code>radius</code> fields. Plane result\ntables include <code>shape</code>, <code>normal</code>, <code>offset</code>, and <code>hit</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.collide_mover",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "capsule table with <code>center1</code>, <code>center2</code>, and <code>radius</code>",
+                    "is_optional": "False",
+                    "name": "capsule",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "optional query filter with <code>category_bits</code> and <code>mask_bits</code>",
+                    "is_optional": "True",
+                    "name": "filter",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "optional maximum result count. Omit or pass 0 for unlimited results.",
+                    "is_optional": "True",
+                    "name": "max_results",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of plane result tables",
+                    "name": "planes",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable or disable continuous collision.",
+            "description": "Enable or disable continuous collision.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.enable_continuous",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "true to enable continuous collision",
+                    "is_optional": "False",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable or disable world sleeping.",
+            "description": "Enable or disable world sleeping.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.enable_sleeping",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "true to allow sleeping",
+                    "is_optional": "False",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable or disable speculative collision.",
+            "description": "Enable or disable speculative collision.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.enable_speculative",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "true to enable speculative collision",
+                    "is_optional": "False",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable or disable warm starting.",
+            "description": "Enable or disable warm starting.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.enable_warm_starting",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "true to enable warm starting",
+                    "is_optional": "False",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Apply an explosion impulse.",
+            "description": "The definition table requires <code>position</code>, <code>radius</code>, <code>falloff</code>, and\n<code>impulse_per_length</code>. It may also include <code>mask_bits</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.explode",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "explosion definition",
+                    "is_optional": "False",
+                    "name": "definition",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the number of awake bodies.",
+            "description": "Get the number of awake bodies.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.get_awake_body_count",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "awake body count",
+                    "name": "count",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get world counters.",
+            "description": "The returned table contains <code>body_count</code>, <code>shape_count</code>, <code>contact_count</code>,\n<code>joint_count</code>, <code>island_count</code>, <code>stack_used</code>, <code>static_tree_height</code>,\n<code>tree_height</code>, <code>byte_count</code>, <code>task_count</code>, and <code>color_counts</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.get_counters",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "world counters",
+                    "name": "counters",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get world gravity.",
+            "description": "Get world gravity.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.get_gravity",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "gravity vector",
+                    "name": "gravity",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the hit event threshold.",
+            "description": "Get the hit event threshold.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.get_hit_event_threshold",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "hit event threshold in project units per second",
+                    "name": "threshold",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the maximum linear speed.",
+            "description": "Get the maximum linear speed.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.get_maximum_linear_speed",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "maximum linear speed in project units per second",
+                    "name": "speed",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get world profiling data.",
+            "description": "The returned table contains Box2D timing fields including <code>step</code>, <code>pairs</code>,\n<code>collide</code>, <code>solve</code>, <code>merge_islands</code>, <code>prepare_stages</code>, <code>solve_constraints</code>,\n<code>prepare_constraints</code>, <code>integrate_velocities</code>, <code>warm_start</code>,\n<code>solve_impulses</code>, <code>integrate_positions</code>, <code>relax_impulses</code>,\n<code>apply_restitution</code>, <code>store_impulses</code>, <code>split_islands</code>, <code>transforms</code>,\n<code>hit_events</code>, <code>refit</code>, <code>bullets</code>, <code>sleep_islands</code>, and <code>sensors</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.get_profile",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "world profiling data",
+                    "name": "profile",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the restitution threshold.",
+            "description": "Get the restitution threshold.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.get_restitution_threshold",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "restitution threshold in project units per second",
+                    "name": "threshold",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get whether continuous collision is enabled.",
+            "description": "Get whether continuous collision is enabled.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.is_continuous_enabled",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if continuous collision is enabled",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Check whether the world is locked.",
+            "description": "The world is locked during callbacks and some simulation phases. Functions\nmarked as locked during callbacks cannot be called while this returns true.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.is_locked",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the world is locked",
+                    "name": "locked",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get whether world sleeping is enabled.",
+            "description": "Get whether world sleeping is enabled.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.is_sleeping_enabled",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if sleeping is enabled",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Check whether a world handle is valid.",
+            "description": "Check whether a world handle is valid.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.is_valid",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the world handle is valid",
+                    "name": "valid",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get whether warm starting is enabled.",
+            "description": "Get whether warm starting is enabled.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.is_warm_starting_enabled",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if warm starting is enabled",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Overlap an AABB.",
+            "description": "Overlap an AABB.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.overlap_aabb",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "table with <code>lower</code> and <code>upper</code> vector3 fields",
+                    "is_optional": "False",
+                    "name": "aabb",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>",
+                    "is_optional": "False",
+                    "name": "filter",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "optional maximum result count",
+                    "is_optional": "False",
+                    "name": "max_results",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of fixture info tables",
+                    "name": "fixtures",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "table with <code>node_visits</code> and <code>leaf_visits</code>",
+                    "name": "stats",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Find shapes overlapping an AABB.",
+            "description": "The AABB table has <code>lower</code> and <code>upper</code> <code>vector3</code> fields.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.overlap_aabb",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "AABB table with <code>lower</code> and <code>upper</code>",
+                    "is_optional": "False",
+                    "name": "aabb",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "optional query filter with <code>category_bits</code> and <code>mask_bits</code>",
+                    "is_optional": "True",
+                    "name": "filter",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "optional maximum result count. Omit or pass 0 for unlimited results.",
+                    "is_optional": "True",
+                    "name": "max_results",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of shape info tables",
+                    "name": "hits",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "tree stats table",
+                    "name": "stats",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Overlap a shape.",
+            "description": "Overlap a shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.overlap_shape",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "shape table using the same format as the <code>shape</code> field in <code>b2d.body.create_fixture</code>",
+                    "is_optional": "False",
+                    "name": "shape",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>",
+                    "is_optional": "False",
+                    "name": "filter",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "optional maximum result count",
+                    "is_optional": "False",
+                    "name": "max_results",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of fixture info tables",
+                    "name": "fixtures",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "table with <code>node_visits</code> and <code>leaf_visits</code>",
+                    "name": "stats",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Find shapes overlapping a shape proxy.",
+            "description": "The shape table uses the same circle, capsule, segment, polygon, and box formats\nas <code>b2d.body.create_shape</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.overlap_shape",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "shape table",
+                    "is_optional": "False",
+                    "name": "shape",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "optional query filter with <code>category_bits</code> and <code>mask_bits</code>",
+                    "is_optional": "True",
+                    "name": "filter",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "optional maximum result count. Omit or pass 0 for unlimited results.",
+                    "is_optional": "True",
+                    "name": "max_results",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of shape info tables",
+                    "name": "hits",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "tree stats table",
+                    "name": "stats",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Rebuild the static broad-phase tree.",
+            "description": "Rebuild the static broad-phase tree.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.rebuild_static_tree",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set contact solver tuning.",
+            "description": "Set contact solver tuning.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.set_contact_tuning",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "contact stiffness frequency in hertz",
+                    "is_optional": "False",
+                    "name": "hertz",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "contact damping ratio",
+                    "is_optional": "False",
+                    "name": "damping_ratio",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "pushout velocity in project units per second",
+                    "is_optional": "False",
+                    "name": "pushout",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set world gravity.",
+            "description": "Set world gravity.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.set_gravity",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "gravity vector",
+                    "is_optional": "False",
+                    "name": "gravity",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the hit event threshold.",
+            "description": "Set the hit event threshold.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.set_hit_event_threshold",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "hit event threshold in project units per second",
+                    "is_optional": "False",
+                    "name": "threshold",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set joint solver tuning.",
+            "description": "Set joint solver tuning.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.set_joint_tuning",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "joint stiffness frequency in hertz",
+                    "is_optional": "False",
+                    "name": "hertz",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "joint damping ratio",
+                    "is_optional": "False",
+                    "name": "damping_ratio",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the maximum linear speed.",
+            "description": "Set the maximum linear speed.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.set_maximum_linear_speed",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "maximum linear speed in project units per second",
+                    "is_optional": "False",
+                    "name": "speed",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the restitution threshold.",
+            "description": "Collisions below this relative speed use inelastic collision response.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.world.set_restitution_threshold",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "world",
+                    "is_optional": "False",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                },
+                {
+                    "doc": "restitution threshold in project units per second",
+                    "is_optional": "False",
+                    "name": "threshold",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "api_language": "Lua",
+        "brief": "Box2D b2World documentation",
+        "description": "Query and cast functions for the Defold-owned Box2D v2 world.",
+        "description_html": "<p>Query and cast functions for the Defold-owned Box2D v2 world.</p>",
+        "file": "script_box2d_world_v2.cpp",
+        "name": "b2d.world",
+        "namespace": "b2d.world",
+        "notes": [],
+        "path": "engine/gamesys/src/gamesys/scripts/box2d/v2/script_box2d_world_v2.cpp",
+        "type": "Defold Lua"
+    }
+}

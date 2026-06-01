@@ -3633,6 +3633,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get the world owning a joint.",
+            "description": "Get the world owning a joint.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.joint.get_world",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "joint",
+                    "is_optional": "False",
+                    "name": "joint",
+                    "types": [
+                        "b2Joint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "owning world",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get whether the joint is active.",
             "description": "Get whether the joint is active.",
             "error": "",
@@ -3816,6 +3848,38 @@
                 {
                     "doc": "true if the spring is enabled",
                     "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Validate a joint handle.",
+            "description": "Validate a joint handle.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.joint.is_valid",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "joint",
+                    "is_optional": "False",
+                    "name": "joint",
+                    "types": [
+                        "b2Joint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the joint handle still refers to a live Box2D joint",
+                    "name": "valid",
                     "types": [
                         "boolean"
                     ]
