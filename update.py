@@ -993,7 +993,7 @@ def process_examples(download = False):
                     shutil.copyfile(bob_jar, bob_out)
                     game_project = os.path.join(example_src_dir, "game.project")
                     replace_in_file(game_project, r"title = .*", r"title = Defold-examples")
-                    subprocess.call([ "java", "-jar", bob_out, "--archive", "--platform", "js-web", "--architectures", "wasm-web", "--variant", "debug", "--build-server", EXAMPLES_BUILD_SERVER, "resolve", "build", "bundle" ], cwd=example_src_dir)
+                    subprocess.call([ "java", "-jar", bob_out, "--archive", "--platform", "wasm-web", "--architectures", "wasm-web", "--variant", "debug", "--build-server", EXAMPLES_BUILD_SERVER, "resolve", "build", "bundle" ], cwd=example_src_dir)
                     os.remove(bob_out)
 
                     print("...copying %s" % example)
@@ -1089,7 +1089,7 @@ def process_codepad(download = False):
         input_dir = os.path.join(tmp_dir, "codepad-master")
         subprocess.call([ "java", "-jar", os.path.join(tmp_dir, bob_jar),
             "--archive",
-            "--platform", "js-web",
+            "--platform", "wasm-web",
             "--architectures", "wasm-web",
             "--variant", "debug",
             "resolve", "distclean", "build", "bundle"
