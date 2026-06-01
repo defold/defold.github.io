@@ -5,7 +5,7 @@ category: model
 layout: example
 opengraph_image: https://www.defold.com/examples/model/morph-target/thumbnail.webp
 path: model/morph-target
-scripts: morph_target.script, model_target.vp
+scripts: morph_target.script, morph_target.vp
 tags: model, animation
 thumbnail: thumbnail.webp
 title: Morph Target Animation
