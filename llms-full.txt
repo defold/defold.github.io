@@ -58635,9 +58635,10 @@ Sets a callback function for receiving events from the SDK. Call `firebase.remot
 
 - `callback` (function) - Callback function that is executed on any event in the SDK.
   - `self` (object) - The calling script instance
-  - `message_id` (number) - One of message types: `firebase.remoteconfig.MSG_ERROR` `firebase.remoteconfig.MSG_INITIALIZED` `firebase.remoteconfig.MSG_DEFAULTS_SET` `firebase.remoteconfig.MSG_SETTINGS_UPDATED` `firebase.remoteconfig.MSG_FETCHED` `firebase.remoteconfig.MSG_ACTIVATED`
+  - `message_id` (number) - One of message types: `firebase.remoteconfig.MSG_ERROR` `firebase.remoteconfig.MSG_INITIALIZED` `firebase.remoteconfig.MSG_DEFAULTS_SET` `firebase.remoteconfig.MSG_SETTINGS_UPDATED` `firebase.remoteconfig.MSG_FETCHED` `firebase.remoteconfig.MSG_ACTIVATED` `firebase.remoteconfig.MSG_CONFIG_UPDATED`
   - `message` (table) - A table holding the data
     - `error` (string) - The error message (if an error occurred or `nil` otherwise)
+    - `updated_keys` (table) - An array of strings representing the updated parameter keys for `MSG_CONFIG_UPDATED`
 
 ### firebase.remoteconfig.fetch
 *Type:* FUNCTION
@@ -58650,6 +58651,14 @@ Asynchronously activates the most recently fetched configs, so that the fetched 
 ### firebase.remoteconfig.fetch_and_activate
 *Type:* FUNCTION
 Asynchronously fetches and then activates the fetched configs. Generates MSG_FETCHED and MSG_ACTIVATED or MSG_ERROR
+
+### firebase.remoteconfig.add_update_listener
+*Type:* FUNCTION
+Starts listening for real-time config updates from Remote Config. Generates MSG_CONFIG_UPDATED or MSG_ERROR. Real-time updates automatically fetch new values but do not activate them; call `activate()` when the updated values should take effect.
+
+### firebase.remoteconfig.remove_update_listener
+*Type:* FUNCTION
+Stops the active real-time config update listener.
 
 ### firebase.remoteconfig.get_boolean
 *Type:* FUNCTION
@@ -58734,6 +58743,10 @@ Event generated when the remote config has been activated
 ### MSG_SETTINGS_UPDATED
 *Type:* VARIABLE
 Event generated when remote config settings have been updated
+
+### MSG_CONFIG_UPDATED
+*Type:* VARIABLE
+Event generated when real-time Remote Config has automatically fetched updated values. The message table contains `updated_keys`.
 
 ###
 *Type:* TABLE

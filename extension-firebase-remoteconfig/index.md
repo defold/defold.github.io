@@ -30,6 +30,8 @@ Follow the [main setup guide for integration of Firebase in Defold](https://www.
 ## Usage
 
 ```lua
+local pending_updated_keys = nil
+
 local function firebase_config_callback(self, message_id, message)
     if message_id == firebase.remoteconfig.MSG_ERROR then
         -- an error was detected when performing a remote config operation
@@ -55,6 +57,7 @@ local function firebase_config_callback(self, message_id, message)
 
         -- get and activate new remote config values from the server
         firebase.remoteconfig.fetch_and_activate()
+        firebase.remoteconfig.add_update_listener()
     elseif message_id == firebase.remoteconfig.MSG_FETCHED then
         print("Data fetched")
         pprint(firebase.remoteconfig.get_keys())
@@ -62,6 +65,16 @@ local function firebase_config_callback(self, message_id, message)
         -- a recently fetched remote config has been activated and is now ready
         -- for use
         print(firebase.remoteconfig.get_string("holiday_theme")) -- Easter
+        if pending_updated_keys then
+            for _, key in ipairs(pending_updated_keys) do
+                print("Updated value:", key, firebase.remoteconfig.get_string(key))
+            end
+            pending_updated_keys = nil
+        end
+    elseif message_id == firebase.remoteconfig.MSG_CONFIG_UPDATED then
+        -- real-time Remote Config has fetched updated values
+        pending_updated_keys = message.updated_keys
+        firebase.remoteconfig.activate()
     elseif message_id == firebase.remoteconfig.MSG_SETTINGS_UPDATED then
         print("Settings updated")
     end
@@ -83,6 +96,8 @@ function init(self)
     firebase.initialize()
 end
 ```
+
+Call `firebase.remoteconfig.remove_update_listener()` when real-time updates are no longer needed.
 
 ## Source code
 
