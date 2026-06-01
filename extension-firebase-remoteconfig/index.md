@@ -18,8 +18,8 @@ This extension allows you to interact with Firebase Remote Config in a uniform w
 
 
 ## Installation
-To use Firabase in your Defold project, add a version of the Firebase extension to your `game.project` dependencies from the list of available [Firebase Releases](https://github.com/defold/extension-firebase/releases) and corresponding [Firebase Config Release](https://github.com/defold/extension-firebase-remoteconfig/releases).
-Find the version you want for both extensions, copy the URLs to ZIP archive of the release and add it to the project dependencies.
+To use Firebase in your Defold project, add a version of the Firebase extension to your `game.project` dependencies from the list of available [Firebase releases](https://github.com/defold/extension-firebase/releases) and the corresponding [Firebase Remote Config releases](https://github.com/defold/extension-firebase-remoteconfig/releases).
+Find the version you want for both extensions, copy the URLs to the ZIP archives of the releases and add them to the project dependencies.
 
 ![](add-dependency.png)
 
@@ -55,9 +55,9 @@ local function firebase_config_callback(self, message_id, message)
 
         -- get and activate new remote config values from the server
         firebase.remoteconfig.fetch_and_activate()
-    elseif message_id == irebase.remoteconfig.MSG_FETCHED then
-        print("Data Fetched")
-        pprint("KEYS:", firebase.remoteconfig.get_keys())
+    elseif message_id == firebase.remoteconfig.MSG_FETCHED then
+        print("Data fetched")
+        pprint(firebase.remoteconfig.get_keys())
     elseif message_id == firebase.remoteconfig.MSG_ACTIVATED then
         -- a recently fetched remote config has been activated and is now ready
         -- for use
@@ -73,14 +73,14 @@ function init(self)
         return
     end
 
-    -- initialise firebase and check that it was successful
-     firebase.set_callback(function(self, message_id, message)
+    -- initialize firebase and check that it was successful
+    firebase.set_callback(function(self, message_id, message)
         if message_id == firebase.MSG_INITIALIZED then
             firebase.remoteconfig.set_callback(firebase_config_callback)
             firebase.remoteconfig.initialize()
         end
     end)
-     firebase.initialize()
+    firebase.initialize()
 end
 ```
 

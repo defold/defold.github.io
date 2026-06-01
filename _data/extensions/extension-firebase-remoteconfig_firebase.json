@@ -1,7 +1,7 @@
 {
     "elements": [
         {
-            "description": "Initialise Firebase Remote Config. Generates MSG_INITIALIZED or MSG_ERROR",
+            "description": "Initializes Firebase Remote Config. Generates MSG_INITIALIZED or MSG_ERROR",
             "examples": "",
             "name": "firebase.remoteconfig.initialize",
             "parameters": [],
@@ -9,7 +9,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Sets a callback function for receiving events from the SDK. Call `firebase.set_callback(nil)` to remove callback",
+            "description": "Sets a callback function for receiving events from the SDK. Call `firebase.remoteconfig.set_callback(nil)` to remove callback",
             "examples": "",
             "name": "firebase.remoteconfig.set_callback",
             "parameters": [
@@ -25,7 +25,7 @@
                             ]
                         },
                         {
-                            "doc": "One of message types: `firebase.remoteconfig.MSG_INITIALIZED` `firebase.remoteconfig.MSG_INSTALLATION_AUTH_TOKEN` `firebase.remoteconfig.MSG_INSTALLATION_ID` `firebase.remoteconfig.MSG_DEFAULTS_SET` `firebase.remoteconfig.MSG_FETCHED` `firebase.remoteconfig.MSG_ACTIVATED` `firebase.remoteconfig.MSG_SETTINGS_UPDATED` `firebase.remoteconfig.MSG_ERROR`",
+                            "doc": "One of message types: `firebase.remoteconfig.MSG_ERROR` `firebase.remoteconfig.MSG_INITIALIZED` `firebase.remoteconfig.MSG_DEFAULTS_SET` `firebase.remoteconfig.MSG_SETTINGS_UPDATED` `firebase.remoteconfig.MSG_FETCHED` `firebase.remoteconfig.MSG_ACTIVATED`",
                             "name": "message_id",
                             "types": [
                                 "number"
@@ -153,12 +153,12 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Sets the default values.",
+            "description": "Sets the default values. Generates MSG_DEFAULTS_SET or MSG_ERROR",
             "examples": "",
             "name": "firebase.remoteconfig.set_defaults",
             "parameters": [
                 {
-                    "doc": "Key-value pairs representing the default values. Generates MSG_DEFAULTS_SET or MSG_ERROR",
+                    "doc": "Key-value pairs representing the default values",
                     "name": "defaults",
                     "types": [
                         "table"
@@ -169,15 +169,15 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Sets the minimum fetch interval.",
+            "description": "Sets the minimum fetch interval. Generates MSG_SETTINGS_UPDATED or MSG_ERROR",
             "examples": "",
             "name": "firebase.remoteconfig.set_minimum_fetch_interval",
             "parameters": [
                 {
-                    "doc": "The minimum interval in milliseconds between successive fetch calls. Generates MSG_SETTINGS_UPDATED or MSG_ERROR",
+                    "doc": "The minimum interval in seconds between successive fetch calls",
                     "name": "minimum_fetch_interval",
                     "types": [
-                        "int"
+                        "number"
                     ]
                 }
             ],
@@ -185,15 +185,15 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Sets the timeout that specifies how long the client should wait for a connection to the Firebase Remote Config servers",
+            "description": "Sets the timeout that specifies how long the client should wait for a connection to the Firebase Remote Config servers. Generates MSG_SETTINGS_UPDATED or MSG_ERROR",
             "examples": "",
             "name": "firebase.remoteconfig.set_timeout",
             "parameters": [
                 {
-                    "doc": "The timeout interval in milliseconds. Generates MSG_SETTINGS_UPDATED or MSG_ERROR",
-                    "name": "minimum_fetch_interval",
+                    "doc": "The timeout interval in seconds",
+                    "name": "timeout",
                     "types": [
-                        "int"
+                        "number"
                     ]
                 }
             ],
