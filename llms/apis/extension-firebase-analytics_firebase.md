@@ -31,7 +31,7 @@ Log an event without parameters.
 
 **Parameters**
 
-- `name` (string) - Event name
+- `event_name` (string) - Event name
 
 ### firebase.analytics.log_string
 *Type:* FUNCTION
@@ -39,9 +39,9 @@ Log an event with one string parameter.
 
 **Parameters**
 
-- `name` (string) - Event name
-- `PARAMeter_name` (string) - Parameter name
-- `PARAMeter_value` (string) - Parameter value
+- `event_name` (string) - Event name
+- `param_name` (string) - Parameter name
+- `param` (string) - Parameter value
 
 ### firebase.analytics.log_int
 *Type:* FUNCTION
@@ -49,9 +49,9 @@ Log an event with one integer parameter.
 
 **Parameters**
 
-- `name` (string) - Event name
-- `PARAMeter_name` (string) - Parameter name
-- `PARAMeter_value` (number) - Parameter value
+- `event_name` (string) - Event name
+- `param_name` (string) - Parameter name
+- `param` (number) - Parameter value
 
 ### firebase.analytics.log_number
 *Type:* FUNCTION
@@ -59,9 +59,9 @@ Log an event with one float parameter.
 
 **Parameters**
 
-- `name` (string) - Event name
-- `PARAMeter_name` (string) - Parameter name
-- `PARAMeter_value` (number) - Parameter value
+- `event_name` (string) - Event name
+- `param_name` (string) - Parameter name
+- `param` (number) - Parameter value
 
 ### firebase.analytics.log_table
 *Type:* FUNCTION
@@ -69,16 +69,16 @@ Log an event with table parameters.
 
 **Parameters**
 
-- `name` (string) - Event name
-- `parameters_table` (table) - Table with parameters (key-value pairs)
+- `event_name` (string) - Event name
+- `parameters` (table) - Table with parameters (key-value pairs)
 
-### firebase.analytics.set_default_event_params
+### firebase.analytics.set_default_event_parameters
 *Type:* FUNCTION
-Log an event with table parameters.
+Set default parameters that will be included with future events.
 
 **Parameters**
 
-- `default_params` (table) - Table with default parameters (key-value pairs)
+- `parameters` (table) - Table with default parameters (key-value pairs)
 
 ### firebase.analytics.set_user_id
 *Type:* FUNCTION
@@ -111,7 +111,7 @@ Sets whether analytics collection is enabled for this app on this device.
 
 **Parameters**
 
-- `key` (boolean) - The value
+- `enabled` (boolean) - The value
 
 ### MSG_ERROR
 *Type:* VARIABLE

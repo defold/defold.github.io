@@ -70,7 +70,7 @@
             "parameters": [
                 {
                     "doc": "Event name",
-                    "name": "name",
+                    "name": "event_name",
                     "types": [
                         "string"
                     ]
@@ -86,21 +86,21 @@
             "parameters": [
                 {
                     "doc": "Event name",
-                    "name": "name",
+                    "name": "event_name",
                     "types": [
                         "string"
                     ]
                 },
                 {
                     "doc": "Parameter name",
-                    "name": "PARAMeter_name",
+                    "name": "param_name",
                     "types": [
                         "string"
                     ]
                 },
                 {
                     "doc": "Parameter value",
-                    "name": "PARAMeter_value",
+                    "name": "param",
                     "types": [
                         "string"
                     ]
@@ -116,21 +116,21 @@
             "parameters": [
                 {
                     "doc": "Event name",
-                    "name": "name",
+                    "name": "event_name",
                     "types": [
                         "string"
                     ]
                 },
                 {
                     "doc": "Parameter name",
-                    "name": "PARAMeter_name",
+                    "name": "param_name",
                     "types": [
                         "string"
                     ]
                 },
                 {
                     "doc": "Parameter value",
-                    "name": "PARAMeter_value",
+                    "name": "param",
                     "types": [
                         "number"
                     ]
@@ -146,21 +146,21 @@
             "parameters": [
                 {
                     "doc": "Event name",
-                    "name": "name",
+                    "name": "event_name",
                     "types": [
                         "string"
                     ]
                 },
                 {
                     "doc": "Parameter name",
-                    "name": "PARAMeter_name",
+                    "name": "param_name",
                     "types": [
                         "string"
                     ]
                 },
                 {
                     "doc": "Parameter value",
-                    "name": "PARAMeter_value",
+                    "name": "param",
                     "types": [
                         "number"
                     ]
@@ -176,14 +176,14 @@
             "parameters": [
                 {
                     "doc": "Event name",
-                    "name": "name",
+                    "name": "event_name",
                     "types": [
                         "string"
                     ]
                 },
                 {
                     "doc": "Table with parameters (key-value pairs)",
-                    "name": "parameters_table",
+                    "name": "parameters",
                     "types": [
                         "table"
                     ]
@@ -193,13 +193,13 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Log an event with table parameters.",
+            "description": "Set default parameters that will be included with future events.",
             "examples": "",
-            "name": "firebase.analytics.set_default_event_params",
+            "name": "firebase.analytics.set_default_event_parameters",
             "parameters": [
                 {
                     "doc": "Table with default parameters (key-value pairs)",
-                    "name": "default_params",
+                    "name": "parameters",
                     "types": [
                         "table"
                     ]
@@ -270,7 +270,7 @@
             "parameters": [
                 {
                     "doc": "The value",
-                    "name": "key",
+                    "name": "enabled",
                     "types": [
                         "boolean"
                     ]
