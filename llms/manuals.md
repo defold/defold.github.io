@@ -240,6 +240,7 @@ These are per-manual files generated for LLM usage.
 - [Facebook](https://defold.com/extension-facebook)
 - [Facebook Instant Games](https://defold.com/extension-fbinstant)
 - [Poki](https://defold.com/extension-poki-sdk)
+- [Wavedash](https://docs.wavedash.com/engines/defold)
 
 ## Desktop
 
