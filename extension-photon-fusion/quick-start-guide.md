@@ -73,6 +73,8 @@ Connection is a two-step flow: reach the Photon master server first, then join o
 
 
 ```lua
+-- lobby.script
+
 function init(self)
 	-- initialize random seed from current time
 	math.randomseed(os.time())
@@ -107,15 +109,25 @@ Now spawning can be triggered when a client enters the room.
 When the `fusion.EVENT_ROOM_JOINED` event is received in the event handler that was registered on step 5, it is time to spawn a player instance by calling `fusion.spawn()`. This function handles the network side: it assigns a unique ID, sends a spawn message to the cloud-based server, which is propagated to the other clients that then create a matching instance. This is also automatically handled for late joiners, as the server will be responsible for caching and distributing not only the spawn/destroy, but also the current state of every networked scene/object.
 
 ```lua
+-- lobby.script
+
+local function spawn_player(self)
+	local pos = vmath.vector3(math.random(100, 700), math.random(100, 500), 0)
+	local id = fusion.spawn("#playerfactory", pos)
+	print("joined room and spawned player with id:", id, "at:", pos)
+end
+
+function init(self)
+	...
+
 	fusion.on_event(function(self, event, data)
 		if event_id == fusion.EVENT_CONNECTED then
 			fusion.join_or_create_room("lobby")
 		elseif event_id == fusion.EVENT_ROOM_JOINED then
-			local pos = vmath.vector3(math.random(100, 700), math.random(100, 500), 0)
-			local id = fusion.spawn("#playerfactory", pos)
-			print("joined room and spawned player with id:", id, "at:", pos)
+			spawn_player(self)
 		end
 	end)
+end
 ```
 
 The scripts should be working now, and it is possible to connect to Photon, create/join rooms. The player game object is also being spawned but sits still. Let's add input to move it around.
@@ -125,6 +137,8 @@ The scripts should be working now, and it is possible to connect to Photon, crea
 Only the authority client (in this case the one that spawned it) should process input. Everyone else will automatically get the position updates through replication which also smooths it automatically. Here is the code for the Script component to be attached to the player scene.
 
 ```lua
+-- player.script
+
 local SPEED = 200
 
 function init(self)
@@ -155,7 +169,7 @@ end
 function update(self, dt)
 	if fusion.has_authority() then
 		local pos = go.get_position()
-		pos = pos + dir * SPEED * dt
+		pos = pos + self.dir * SPEED * dt
 		go.set_position(pos)
 	end
 end
@@ -177,18 +191,56 @@ Defold can easily launch multiple instances from the same editor, which makes lo
 
 
 ## Step 10 - Custom Properties
-Not implemented yet.
+Position, rotation and scale is automatically replicated, but gameplay data like health, score or other more specific data needs to be added manually. It is possible to replicate game object properties of any accepted property type
+
+```lua
+-- player.script
+go.property("health", 10)
+go.property("berserk", true)
+go.property("direction", vmath.vector3(0, 1, 0))
+-- and so on
+
+...
+```
+
+In order to replicate a game object script property you need to explicily specify it when the game object is spawned:
+
+```lua
+-- lobby.script
+
+local function spawn_player(self)
+	local factory_url = "example:/game#playerfactory"
+	local position = vmath.vector3(math.random(100, 700), math.random(100, 500), 0)
+	local rotation = vmath.quat_rotation_z(math.rad(45))
+	local map = 1
+	local owner_mode = fusion.OWNERMODE_PLAYERATTACHED
+	local options = {
+		properties = {
+			-- id of the script component -> list of properties to replicate
+			player = { "health", "berserk", "direction" }
+		}
+	}
+	local id = fusion.spawn(factory_url, position, rotation, map, owner_mode, options)
+	print("joined room and spawned player with id:", id, "at:", pos)
+end
+```
 
 
 ## Step 11 - RPCs
 Not everything in a game is continuous state. One-shot events like chat messages, hit notifications or ability triggers (anything that requires a modification on an object the local client does not own, for example) may be better sent as RPCs. Be aware that RPCs fire once, and while they are reliably delivered, they are not stored in server state buffer, so late joiners won't receive them.
 
 ```lua
+-- player.script
+
 local function send_message()
 	local player_id = 0 -- broadcast
 	local object_id = nil
 	fusion.rpc(player_id, object_id, "show_message", "Hello!")
 end
+```
+
+```lua
+-- lobby.script
 
 function init(self)
 	fusion.on_event(function(self, event, data)
@@ -205,6 +257,8 @@ To test the RPCs you can add the above code to the movement script and then also
 
 
 ```lua
+-- player.script
+
 function on_input(self, action_id, action)
 	if action_id == hash("say_hi") then
 		send_message()
