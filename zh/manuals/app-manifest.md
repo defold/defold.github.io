@@ -20,6 +20,7 @@ toc:
 - 排除 Basis Universal
 - 使用 Android 支持库
 - 图形
+- 使用完整文本布局系统
 - 最低 Safari 版本（仅适用于 js-web 和 wasm-web）
 - 最低 Firefox 版本（仅适用于 js-web 和 wasm-web）
 - 最低 Chrome 版本（仅适用于 js-web 和 wasm-web）
@@ -95,6 +96,10 @@ toc:
 * OpenGL - 仅包含 OpenGL。
 * Vulkan - 仅包含 Vulkan。
 * OpenGL and Vulkan - 同时包含 OpenGL 和 Vulkan。Vulkan 将是默认选项，如果 Vulkan 不可用则回退到 OpenGL。
+
+## 使用完整文本布局系统
+
+启用后（`true`），在项目中使用 True Type 字体（`.ttf`）时，可以为 SDF 类型字体使用运行时生成。更多详细信息请阅读[字体手册](https://defold.com/zh/manuals/font/#enabling-runtime-fonts)。
 
 ## 最低 Safari 版本（仅适用于 js-web 和 wasm-web）
 YAML 字段名称：**`minSafariVersion`**

@@ -63,7 +63,7 @@ toc:
             /res                         -- 平台需要的任何资源
             /external
                 README.md                -- 关于如何构建或打包任何外部库的说明/脚本
-        /bundleres                       -- 应该打包的资源（参见 game.project 和 [bundle_resources 设置](/zh/manuals/project-settings/#project)）
+        /bundleres                       -- 应该打包的资源（参见 game.project 和 [bundle_resources 设置]([physics scale setting](/zh/manuals/project-settings/#project)）
             /<platform>
         game.project
         game.appmanifest                 -- 任何额外的应用配置信息

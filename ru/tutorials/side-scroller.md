@@ -11,13 +11,14 @@ title: Учебник Side scroller
 
 Учебник встроен в редактор Defold, и к нему легко получить доступ:
 
-1. Запустите Defold.
-2. Выберите слева *New Project*.
-3. Откройте вкладку *From Tutorial*.
-4. Выберите "Side scroller tutorial".
-5. Выберите папку на локальном диске и нажмите *Create New Project*.
+Запустите Defold и:
+1. Выберите `Create From` ▸ `TUTORIALS` слева.
+2. Выберите "Side Scroller Tutorial".
+3. При желании переименуйте проект.
+4. Выберите папку для проекта на локальном диске.
+5. Нажмите `Create New Project`.
 
-![new project](/tutorials/images/new-side-scroller.png)
+![new project](/tutorials/images/new-side-scroller.webp)
 
 Редактор автоматически откроет файл "README" из корня проекта, в котором находится полный текст учебника.
 

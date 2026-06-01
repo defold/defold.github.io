@@ -17,7 +17,7 @@ title: 横版卷轴游戏教程
 4. 选择"横版卷轴游戏教程"。
 5. 在本地驱动器上选择项目的位置，然后点击*创建新项目*。
 
-![新建项目](/tutorials/images/new-side-scroller.png)
+![新建项目](/tutorials/images/new-side-scroller.webp)
 
 编辑器会自动从项目根目录打开"README"文件，其中包含完整的教程文本。
 

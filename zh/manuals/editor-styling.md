@@ -15,10 +15,10 @@ toc:
 您可以使用自定义样式表修改编辑器的颜色、字体排版及其他视觉元素：
 
 * 在用户目录下创建文件夹并命名为 `.defold`.
-   * Windows 路径 `C:\Users\**Your Username**\.defold`
-   * macOS 路径 `/Users/**Your Username**/.defold`
-   * Linux 路径 `~/.defold`
- *  在 `.defold` 目录下创建一个 `editor.css` 文件.
+  * Windows 路径 `C:\Users\**Your Username**\.defold`
+  * macOS 路径 `/Users/**Your Username**/.defold`
+  * Linux 路径 `~/.defold`
+* 在 `.defold` 目录下创建一个 `editor.css` 文件.
 
 编辑器启动时会加载您的自定义样式表并将其应用在默认样式之上。编辑器使用 JavaFX 编写用户界面，所以样式表几乎等价于浏览器中用于网页的 CSS 文件。官方默认的样式表保存于 [GitHub 上](https://github.com/defold/defold/tree/editor-dev/editor/styling/stylesheets/base)。
 
