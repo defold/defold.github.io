@@ -75,20 +75,24 @@ def insert_property_block(content: str, values: Dict[str, str]) -> str:
         return content
 
     def repl(match: re.Match[str]) -> str:
-        asmjs_line = match.group(0)
+        anchor_line = match.group(0)
+        indent = match.group("indent")
+        newline = "\r\n" if anchor_line.endswith("\r\n") else "\n"
         block = (
-            f"{asmjs_line}"
-            f"    wasm_file: \"{values['wasm_file']}\",\n"
-            f"    wasm_pthread_file: \"{values['wasm_pthread_file']}\",\n"
-            f"    wasmjs_file: \"{values['wasmjs_file']}\",\n"
-            f"    wasmjs_pthread_file: \"{values['wasmjs_pthread_file']}\",\n"
+            f"{anchor_line}"
+            f"{indent}wasm_file: \"{values['wasm_file']}\",{newline}"
+            f"{indent}wasm_pthread_file: \"{values['wasm_pthread_file']}\",{newline}"
+            f"{indent}wasmjs_file: \"{values['wasmjs_file']}\",{newline}"
+            f"{indent}wasmjs_pthread_file: \"{values['wasmjs_pthread_file']}\",{newline}"
         )
         return block
 
-    pattern = re.compile(r"    asmjs_size:\s*\d+,\n")
-    if not pattern.search(content):
-        raise RuntimeError("Failed to locate asmjs_size line in dmloader.js")
-    return pattern.sub(repl, content, count=1)
+    for property_name in ("wasmjs_pthread_size", "wasm_pthread_size", "wasmjs_size", "wasm_size"):
+        pattern = re.compile(rf"^(?P<indent>[ \t]*){property_name}:\s*\d+,\s*(?:\r?\n)", re.MULTILINE)
+        if pattern.search(content):
+            return pattern.sub(repl, content, count=1)
+
+    raise RuntimeError("Failed to locate a WASM loader size property in dmloader.js")
 
 
 def set_string_property(content: str, key: str, value: str) -> str:
