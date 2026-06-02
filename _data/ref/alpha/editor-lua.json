@@ -477,6 +477,21 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "download the latest version of the project library dependencies and reload library-provided editor scripts.",
+            "description": "Download the latest version of the project library dependencies and reload library-provided editor scripts.\nThis function may replace library-provided editor commands, hooks, routes, and UI contributed by editor scripts, so it should typically be the last operation performed by a command.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "editor.fetch_libraries",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "get a value of a node property inside the editor.",
             "description": "Get a value of a node property inside the editor.\nSome properties might be read-only, and some might be unavailable in different contexts, so you should use <code>editor.can_get()</code> before reading them and <code>editor.can_set()</code> before making the editor set them.",
             "error": "",
