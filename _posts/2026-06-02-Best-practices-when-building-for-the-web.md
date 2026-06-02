@@ -6,8 +6,6 @@ author: Björn Ritzl
 tags: ["blog", "poki", "html5"]
 ---
 
-# Best practices when building for the web
-
 This is a practical guide for Defold developers building for the web. Pay attention to each of the topics in this guide as they are crucial to your success on Poki and the web in general.
 
 
