@@ -39,5 +39,5 @@ The source code is available on [GitHub](https://github.com/defold/extension-pho
 
 
 ## Where to Go Next
-* [Back to the Introduction](index)
-* [Quick Start Guide](quick-start-guide) — Build a multiplayer demo in 10 steps
+* [Back to the Introduction](..)
+* [Quick Start Guide](../quick-start-guide) — Build a multiplayer demo in 10 steps

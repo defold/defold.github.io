@@ -48,7 +48,7 @@ To create a new extension, create a folder in the project root. This folder will
 
   Supported platforms are `ios`, `android`, `osx`, `win32`, `linux`, `web`.
 
-Supported `arc-platform` pairs are `arm64-ios`, `x86_64-ios`, `armv7-android`, `arm64-android`, `arm64-osx`, `x86_64-osx`, `x86-win32`, `x86_64-win32`, `arm64-linux`, `x86_64-linux`, `js-web`, `wasm-web` and `wasm_pthread-web`.
+Supported `arc-platform` pairs are `arm64-ios`, `x86_64-ios`, `armv7-android`, `arm64-android`, `arm64-osx`, `x86_64-osx`, `x86-win32`, `x86_64-win32`, `arm64-linux`, `x86_64-linux`, `wasm-web` and `wasm_pthread-web`.
 
 *manifests*
 : This optional folder contains additional files used in the build or bundling process. See below for details.

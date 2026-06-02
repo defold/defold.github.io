@@ -53,7 +53,7 @@ toc:
 
 ## Animation set
 
-![Animation set](/manuals/images/icons/animationset.png) 动画集资源包含一组.dae文件或其他.animationset文件，从中读取动画。将一个.animationset文件添加到另一个文件中很方便，如果您在多个模型之间共享部分动画集。有关详细信息，请参阅[模型动画手册](/zh/manuals/model-animation/)。
+![Animation set](/manuals/images/icons/animationset.png) 动画集资源包含一组glTF文件或其他.animationset文件，从中读取动画。将一个.animationset文件添加到另一个文件中很方便，如果您在多个模型之间共享部分动画集。有关详细信息，请参阅[模型动画手册](/zh/manuals/model-animation/)。
 
 ## Atlas
 
@@ -169,7 +169,7 @@ msg.post("#weapon", "disable")
 
 ## Model
 
-![Model](/manuals/images/icons/model.png) 3D模型组件可以将glTF和Collada网格、骨骼和动画资源导入到您的游戏中。有关更多信息，请参阅[模型手册](/zh/manuals/model/)。
+![Model](/manuals/images/icons/model.png) 3D模型组件可以将glTF网格、骨骼和动画资源导入到您的游戏中。有关更多信息，请参阅[模型手册](/zh/manuals/model/)。
 
 ## ParticleFX
 

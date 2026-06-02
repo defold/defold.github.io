@@ -268,14 +268,14 @@ end
 
 After that when you press the key bound to the `say_hi` action, the message "Hello!" is printed on both clients.
 
-See [RPCs](rpcs) for broadcast RPCs and more target delivery variations.
+See [RPCs](../rpcs) for broadcast RPCs and more target delivery variations.
 
 ## Next Steps
 This guide covered basics of connect, spawn, replicate, RPCs. Each of these topics has a dedicated manual page that goes deeper. Here is a list of suggested next learning steps:
 
-* [Connection](connection) - full connection lifecycle
-* [Replication](replication) - authority and replication modes
-* [Spawning](spawning) - spawn configuration and sub-objects
-* [RPCs](rpcs) - object and broadcast RPCs
-* [Physics Replication](physics-replication) - forecast smoothing
-* [Large Scenes](large-scenes) - pre-placed networked nodes
+* [Connection](../connection) - full connection lifecycle
+* [Replication](../replication) - authority and replication modes
+* [Spawning](../spawning) - spawn configuration and sub-objects
+* [RPCs](../rpcs) - object and broadcast RPCs
+* [Physics Replication](../physics-replication) - forecast smoothing
+* [Large Scenes](../large-scenes) - pre-placed networked nodes

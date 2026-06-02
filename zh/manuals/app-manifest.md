@@ -21,11 +21,11 @@ toc:
 - 使用 Android 支持库
 - 图形
 - 使用完整文本布局系统
-- 最低 Safari 版本（仅适用于 js-web 和 wasm-web）
-- 最低 Firefox 版本（仅适用于 js-web 和 wasm-web）
-- 最低 Chrome 版本（仅适用于 js-web 和 wasm-web）
-- 初始内存（仅适用于 js-web 和 wasm-web）
-- 栈大小（仅适用于 js-web 和 wasm-web）
+- 最低 Safari 版本（仅适用于 wasm-web）
+- 最低 Firefox 版本（仅适用于 wasm-web）
+- 最低 Chrome 版本（仅适用于 wasm-web）
+- 初始内存（仅适用于 wasm-web）
+- 栈大小（仅适用于 wasm-web）
 ---
 
 # 应用程序清单
@@ -101,32 +101,32 @@ toc:
 
 启用后（`true`），在项目中使用 True Type 字体（`.ttf`）时，可以为 SDF 类型字体使用运行时生成。更多详细信息请阅读[字体手册](https://defold.com/zh/manuals/font/#enabling-runtime-fonts)。
 
-## 最低 Safari 版本（仅适用于 js-web 和 wasm-web）
+## 最低 Safari 版本（仅适用于 wasm-web）
 YAML 字段名称：**`minSafariVersion`**
 默认值：**90000**
 
 支持的最低 Safari 版本。不能低于 90000。更多信息请查看 Emscripten 编译器选项[链接](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-safari-version)。
 
-## 最低 Firefox 版本（仅适用于 js-web 和 wasm-web）
+## 最低 Firefox 版本（仅适用于 wasm-web）
 YAML 字段名称：**`minFirefoxVersion`**
 默认值：**34**
 
 支持的最低 Firefox 版本。不能低于 34。更多信息请查看 Emscripten 编译器选项[链接](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-firefox-version)。
 
-## 最低 Chrome 版本（仅适用于 js-web 和 wasm-web）
+## 最低 Chrome 版本（仅适用于 wasm-web）
 YAML 字段名称：**`minChromeVersion`**
 默认值：**32**
 
 支持的最低 Chrome 版本。不能低于 32。更多信息请查看 Emscripten 编译器选项[链接](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-chrome-version)。
 
-## 初始内存（仅适用于 js-web 和 wasm-web）
+## 初始内存（仅适用于 wasm-web）
 YAML 字段名称：**`initialMemory`**
 默认值：**33554432**
 
-为 Web 应用程序分配的内存大小。如果 ALLOW_MEMORY_GROWTH=0（js-web）- 这是 Web 应用程序可以使用的内存总量。更多信息请查看[链接](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory)。单位为字节。注意该值必须是 WebAssembly 页面大小（64KiB）的倍数。
+为 Web 应用程序分配的内存大小。如果 ALLOW_MEMORY_GROWTH=0，这是 Web 应用程序可以使用的内存总量。更多信息请查看[链接](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory)。单位为字节。注意该值必须是 WebAssembly 页面大小（64KiB）的倍数。
 该选项与 *game.project* 中的 `html5.heap_size` [相关](https://defold.com/zh/manuals/html5/#heap-size)。通过应用程序清单配置的选项在编译期间设置，并用作 `INITIAL_MEMORY` 选项的默认值。*game.project* 中的值会覆盖应用程序清单中的值，并在运行时使用。
 
-## 栈大小（仅适用于 js-web 和 wasm-web）
+## 栈大小（仅适用于 wasm-web）
 YAML 字段名称：**`stackSize`**
 默认值：**5242880**
 

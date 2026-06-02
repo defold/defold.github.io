@@ -53,7 +53,7 @@ Ten słowniczek daje krótkie opisy wszystkich rzeczy, z którymi możesz się s
 
 ## Animation set (Zestaw animacji)
 
-![Animation set](/manuals/images/icons/animationset.png) Zasób Animation set zawiera listę plików .dae lub innych plików .animationset, z których odczytywane są animacje. Dodawanie jednego pliku .animationset do drugiego jest wygodne, jeśli chcesz współdzielić częściowe zestawy animacji między kilkoma modelami. Szczegóły znajdziesz w [instrukcji animacji modeli](/pl/manuals/model-animation/).
+![Animation set](/manuals/images/icons/animationset.png) Zasób Animation set zawiera listę plików glTF lub innych plików .animationset, z których odczytywane są animacje. Dodawanie jednego pliku .animationset do drugiego jest wygodne, jeśli chcesz współdzielić częściowe zestawy animacji między kilkoma modelami. Szczegóły znajdziesz w [instrukcji animacji modeli](/pl/manuals/model-animation/).
 
 ## Atlas (Atlas)
 

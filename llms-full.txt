@@ -735,7 +735,7 @@ This glossary gives a brief description to all the things you encounter in Defol
 
 ## Animation set
 
- An animation set resource contains a list of .dae files or other .animationset files from where to read animations. Adding one .animationset files to another is handy if you share partial sets of animations between several models. See the [model animation manual](#manuals:model-animation) for details.
+ An animation set resource contains a list of glTF files or other .animationset files from where to read animations. Adding one .animationset files to another is handy if you share partial sets of animations between several models. See the [model animation manual](#manuals:model-animation) for details.
 
 ## Atlas
 
@@ -5230,7 +5230,7 @@ Learn more about GUIs in the [GUI manual](#manuals:gui).
 Defold currently support models, skeletons and animations in GL Transmission Format *.glTF* format. You can use tools such as Maya, 3D Max, Sketchup and Blender to create and/or convert 3D models into glTF format. Blender is a powerful and popular 3D modeling, animation and rendering program. It runs on Windows, macOS and Linux and is freely available for download at http://www.blender.org
 
 ## Importing to Defold
-To import the model, simply drag and drop the *.gltf* file or *.dae* file and the corresponding texture image into the *Assets Pane* somewhere.
+To import the model, simply drag and drop the *.gltf* file and the corresponding texture image into the *Assets Pane* somewhere.
 
 ## Using a model
 Once you have the model imported into Defold you can use it in a [Model component](#manuals:model).
@@ -14869,8 +14869,8 @@ Available platforms and architectures:
 `armv7-android`
 : Android with available 32 bit `armv7-android` and 64 bit `arm64-android` architectures. By default, `--architectures` argument value is `armv7-android,arm64-android`.
 
-`js-web`
-: HTML5 with available `js-web`, `wasm-web` and `wasm_pthread-web` architectures. By default, `--architectures` argument value is `js-web,wasm-web`.
+`wasm-web`
+: HTML5 with available `wasm-web` and `wasm_pthread-web` architectures. By default, `--architectures` argument value is `wasm-web`.
 
 By default, Bob looks in the current directory for a project to build. If you change the current dir to a Defold project and invoke bob, it builds the data for the project in the default output directory *build/default*.
 ```sh
@@ -15319,7 +15319,7 @@ It is important that you match the correct engine with the callstack, otherwise 
 * Android - the `projecttitle.apk.symbols/lib/` bundle output folder contains the debug symbols for the target architectures.
 * Linux - the executable contain the debug symbols.
 * Windows - the `dmengine.pdb` file in `build/x86_64-win32` contains the debug symbols for Windows builds.
-* HTML5 - the `dmengine.js.symbols` file in `build/js-web` or `build/wasm-web` contains the debug symbols for HTML5 builds.
+* HTML5 - the `dmengine.js.symbols` file in `build/wasm-web` contains the debug symbols for HTML5 builds.
 
 It is very important that your save the debug symbols somewhere for each public release you make of your game and that you know which release the debug symbols belong to. You will not be able to debug any native crashes if you do not have the debug symbols! Also, you should keep an unstripped version of the engine. This allows for the best symbolication of the callstack.
 
@@ -17257,7 +17257,7 @@ To create a new extension, create a folder in the project root. This folder will
 
   Supported platforms are `ios`, `android`, `osx`, `win32`, `linux`, `web`.
 
-Supported `arc-platform` pairs are `arm64-ios`, `x86_64-ios`, `armv7-android`, `arm64-android`, `arm64-osx`, `x86_64-osx`, `x86-win32`, `x86_64-win32`, `arm64-linux`, `x86_64-linux`, `js-web`, `wasm-web` and `wasm_pthread-web`.
+Supported `arc-platform` pairs are `arm64-ios`, `x86_64-ios`, `armv7-android`, `arm64-android`, `arm64-osx`, `x86_64-osx`, `x86-win32`, `x86_64-win32`, `arm64-linux`, `x86_64-linux`, `wasm-web` and `wasm_pthread-web`.
 
 *manifests*
 : This optional folder contains additional files used in the build or bundling process. See below for details.
@@ -17817,32 +17817,32 @@ Select which graphics backend to use.
 
 If enabled (`true`), it will allow to use runtime generation for SDF type fonts, when using True Type Fonts (`.ttf`) in the project. Read more details in the [Font Manual](#manuals:font).
 
-## Minimum Safari version (js-web and wasm-web only)
+## Minimum Safari version (wasm-web only)
 YAML field name: **`minSafariVersion`**
 Default value: **90000**
 
 Minimum supported version of Safari. Cannot be less than 90000. For more information look Emscripten compiler options [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-safari-version).
 
-## Minimum Firefox version (js-web and wasm-web only)
+## Minimum Firefox version (wasm-web only)
 YAML field name: **`minFirefoxVersion`**
 Default value: **34**
 
 Minimum supported version of Firefox. Cannot be less than 34. For more information look Emscripten compiler options [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-firefox-version).
 
-## Minimum Chrome version (js-web and wasm-web only)
+## Minimum Chrome version (wasm-web only)
 YAML field name: **`minChromeVersion`**
 Default value: **32**
 
 Minimum supported version of Chrome. Cannot be less than 32. For more information look Emscripten compiler options [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-chrome-version).
 
-## Initial memory (js-web and wasm-web only)
+## Initial memory (wasm-web only)
 YAML field name: **`initialMemory`**
 Default value: **33554432**
 
-The size of memory that allocated for web application. In case if ALLOW_MEMORY_GROWTH=0 (js-web) - there is a total amount of memory that web application can use. for more information look [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory). Value in bytes. Note that value must be a multiple of WebAssembly page size (64KiB).
+The size of memory that allocated for web application. If ALLOW_MEMORY_GROWTH=0, this is the total amount of memory that web application can use. for more information look [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory). Value in bytes. Note that value must be a multiple of WebAssembly page size (64KiB).
 That options relates to `html5.heap_size` in *game.project* [link](#manuals:html5). Option that configured via application manifest is set during compilation and used as default value for `INITIAL_MEMORY` option. Value from *game.project* overrides value from application manifest and used in runtime.
 
-## Stack size (js-web and wasm-web only)
+## Stack size (wasm-web only)
 YAML field name: **`stackSize`**
 Default value: **5242880**
 

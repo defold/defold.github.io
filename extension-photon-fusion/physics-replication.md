@@ -21,5 +21,5 @@ Fusion auto-detects the physics body and uses velocity-based forecast smoothing.
 
 
 ## Where to Go Next
-* [Back to the Introduction](index)
-* [Quick Start Guide](quick-start-guide) — Build a multiplayer demo in 10 steps
+* [Back to the Introduction](..)
+* [Quick Start Guide](../quick-start-guide) — Build a multiplayer demo in 10 steps

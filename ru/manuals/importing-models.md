@@ -20,7 +20,7 @@ toc:
 ![Model in Blender](/manuals/images/model/blender.png)
 
 ## Импортирование в Defold
-Чтобы импортировать модель, просто перетащите файл *.gltf* или *.dae* и соответствующее изображение текстуры в панель *Assets*.
+Чтобы импортировать модель, просто перетащите файл *.gltf* и соответствующее изображение текстуры в панель *Assets*.
 
 ![Imported model assets](/manuals/images/model/assets.png)
 
