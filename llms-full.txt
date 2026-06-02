@@ -735,7 +735,7 @@ This glossary gives a brief description to all the things you encounter in Defol
 
 ## Animation set
 
- An animation set resource contains a list of .dae files or other .animationset files from where to read animations. Adding one .animationset files to another is handy if you share partial sets of animations between several models. See the [model animation manual](#manuals:model-animation) for details.
+ An animation set resource contains a list of glTF files or other .animationset files from where to read animations. Adding one .animationset files to another is handy if you share partial sets of animations between several models. See the [model animation manual](#manuals:model-animation) for details.
 
 ## Atlas
 
@@ -5230,7 +5230,7 @@ Learn more about GUIs in the [GUI manual](#manuals:gui).
 Defold currently support models, skeletons and animations in GL Transmission Format *.glTF* format. You can use tools such as Maya, 3D Max, Sketchup and Blender to create and/or convert 3D models into glTF format. Blender is a powerful and popular 3D modeling, animation and rendering program. It runs on Windows, macOS and Linux and is freely available for download at http://www.blender.org
 
 ## Importing to Defold
-To import the model, simply drag and drop the *.gltf* file or *.dae* file and the corresponding texture image into the *Assets Pane* somewhere.
+To import the model, simply drag and drop the *.gltf* file and the corresponding texture image into the *Assets Pane* somewhere.
 
 ## Using a model
 Once you have the model imported into Defold you can use it in a [Model component](#manuals:model).
@@ -17257,7 +17257,7 @@ To create a new extension, create a folder in the project root. This folder will
 
   Supported platforms are `ios`, `android`, `osx`, `win32`, `linux`, `web`.
 
-Supported `arc-platform` pairs are `arm64-ios`, `x86_64-ios`, `armv7-android`, `arm64-android`, `arm64-osx`, `x86_64-osx`, `x86-win32`, `x86_64-win32`, `arm64-linux`, `x86_64-linux`, `js-web`, `wasm-web` and `wasm_pthread-web`.
+Supported `arc-platform` pairs are `arm64-ios`, `x86_64-ios`, `armv7-android`, `arm64-android`, `arm64-osx`, `x86_64-osx`, `x86-win32`, `x86_64-win32`, `arm64-linux`, `x86_64-linux`, `wasm-web` and `wasm_pthread-web`.
 
 *manifests*
 : This optional folder contains additional files used in the build or bundling process. See below for details.

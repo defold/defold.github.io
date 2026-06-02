@@ -2,7 +2,7 @@
 Defold currently support models, skeletons and animations in GL Transmission Format *.glTF* format. You can use tools such as Maya, 3D Max, Sketchup and Blender to create and/or convert 3D models into glTF format. Blender is a powerful and popular 3D modeling, animation and rendering program. It runs on Windows, macOS and Linux and is freely available for download at http://www.blender.org
 
 ## Importing to Defold
-To import the model, simply drag and drop the *.gltf* file or *.dae* file and the corresponding texture image into the *Assets Pane* somewhere.
+To import the model, simply drag and drop the *.gltf* file and the corresponding texture image into the *Assets Pane* somewhere.
 
 ## Using a model
 Once you have the model imported into Defold you can use it in a [Model component](https://defold.com/llms/manuals/model.md).

@@ -53,7 +53,7 @@ Este glossário fornece uma breve descrição de tudo que você encontra no Defo
 
 ## Conjunto de animação
 
-![Conjunto de animação](/manuals/images/icons/animationset.png) Um recurso de conjunto de animação contém uma lista de arquivos .dae ou outros arquivos .animationset de onde ler animações. Adicionar um arquivo .animationset a outro é útil se você compartilhar conjuntos parciais de animações entre vários modelos. Consulte o [manual de animação de modelo](/pt/manuals/model-animation/) para detalhes.
+![Conjunto de animação](/manuals/images/icons/animationset.png) Um recurso de conjunto de animação contém uma lista de arquivos glTF ou outros arquivos .animationset de onde ler animações. Adicionar um arquivo .animationset a outro é útil se você compartilhar conjuntos parciais de animações entre vários modelos. Consulte o [manual de animação de modelo](/pt/manuals/model-animation/) para detalhes.
 
 ## Atlas
 

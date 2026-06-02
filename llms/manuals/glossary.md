@@ -4,7 +4,7 @@ This glossary gives a brief description to all the things you encounter in Defol
 
 ## Animation set
 
- An animation set resource contains a list of .dae files or other .animationset files from where to read animations. Adding one .animationset files to another is handy if you share partial sets of animations between several models. See the [model animation manual](https://defold.com/llms/manuals/model-animation.md) for details.
+ An animation set resource contains a list of glTF files or other .animationset files from where to read animations. Adding one .animationset files to another is handy if you share partial sets of animations between several models. See the [model animation manual](https://defold.com/llms/manuals/model-animation.md) for details.
 
 ## Atlas
 
