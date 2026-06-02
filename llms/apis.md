@@ -129,6 +129,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [crypt (extension-crypt)](https://defold.com/llms/apis/extension-crypt_crypt.md) - Functions and constants for interacting with various hash and encode/decode algorithms
 - [facebook (extension-facebook)](https://defold.com/llms/apis/extension-facebook_facebook.md) - Functions and constants for interacting with Facebook APIs
 - [firebase (extension-firebase-analytics)](https://defold.com/llms/apis/extension-firebase-analytics_firebase.md) - Functions and constants for interacting with Firebase
+- [firebase (extension-firebase-crashlytics)](https://defold.com/llms/apis/extension-firebase-crashlytics_firebase.md) - Functions and constants for interacting with Firebase
 - [firebase (extension-firebase-remoteconfig)](https://defold.com/llms/apis/extension-firebase-remoteconfig_firebase.md) - Functions and constants for interacting with Firebase
 - [firebase (extension-firebase)](https://defold.com/llms/apis/extension-firebase_firebase.md) - Functions and constants for interacting with Firebase
 - [fmod (extension-fmod)](https://defold.com/llms/apis/extension-fmod_fmod.md) - FMOD Low Level API for audio playback and manipulation
