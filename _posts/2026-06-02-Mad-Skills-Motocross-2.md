@@ -19,7 +19,7 @@ _Mad Skills Motocross 2 was created for Poki with Defold_
 
 The core appeal is easy to understand but hard to master. You race across bumpy dirt tracks, manage jumps, landings, acceleration, and momentum, and try to beat rivals, friends, or leaderboard times. It is part arcade racer, part physics challenge, and it has a very loyal audience among players who like motocross games and especially the whole Mad Skills franchise.
 
-The web version brought the series to Poki's audience with daily competitive modes and a rebuilt from scratch in the Defold engine experience by Refold Games, a game studio of the founders of the Defold Foundation.
+The web version brought the series to Poki's audience with daily competitive modes and a rebuild from scratch in the Defold engine experience by Refold Games, a game studio from the founders of the Defold Foundation.
 
 ![Mad Skills Motocross 2 gameplay](/images/posts/msm2/gameplay.webp)
 <div align="center">
@@ -69,7 +69,7 @@ At every update, the simulation advances with a fixed delta time and receives th
 
 <div align="center"><p style="font-size: larger"><i>"We had an initial version of the physics engine up and running in Defold in a matter of days."</i></p></div>
 
-After that, iit took some additional time to match the bike and rider positions from the physics engine with the Defold game objects and to generate the meshes for the track from the track geometry, but thanks to Eugene’s efforts this was also achieved with great results!
+After that, it took some additional time to match the bike and rider positions from the physics engine with the Defold game objects and to generate the meshes for the track from the track geometry, but thanks to Eugene’s efforts this was also achieved with great results!
 
 ##### And for the visual part, you rebuilt the biker and tracks as dynamic meshes. Why did you choose meshes over sprites or prebaked animation?
 
@@ -90,7 +90,7 @@ Meshes did not become a bottleneck, and that gave us the freedom to build the sc
 
 I also want to mention [RenderDoc](https://renderdoc.org/). It helped a lot when debugging graphics and render-related issues.
 
-**Paweł:** And later on Eugene was invited to the Made with Defold Jam 2025 as a speaker and presemted a great lecture about [Meshes in Defold that you can now watch online here](https://www.youtube.com/watch?v=mveAyod93cA), and trust me, it's worth watching, if you would like to do anything with meshes. Check out also the [open source online examples](https://github.com/mozok/Meshes-In-Defold)!
+**Paweł:** And later on Eugene was invited to the Made with Defold Jam 2025 as a speaker and presented a great lecture about [Meshes in Defold that you can now watch online here](https://www.youtube.com/watch?v=mveAyod93cA), and trust me, it's worth watching, if you would like to do anything with meshes. Check out also the [open source online examples](https://github.com/mozok/Meshes-In-Defold)!
 
 **Sergey:** For the bike and rider, we also used a mesh. Initially we used regular sprites, but with a perspective camera the wheels and other elements started to flicker as the rotation angles and positions changed. Unfortunately, adjusting the Z positions pushed sprites noticeably farther away in a way that did not feel right.
 
@@ -149,7 +149,7 @@ _Mad Skills Motocross 2 Haunted Race_
 
 **Eugene:** As we already ported many projects, rebuilding some from scratch, one important thing is that porting project is much easier if you have access to original code! And one more: Mesh component is a great tool, one just need to figure it out.
 
-**Paweł:** It was very scary for me to add any online features like leaderboards, online features, stuff like this, but when you face it, it's not so difficult. Maybe because we already had a nicely working server infrastructure, because now only this part sounds scary to me, but there are a lot of solutions, also for Defold, that simplifies it a lot. Client side implementation is usually very simple and straightforward.
+**Paweł:** It was very scary for me to add any online features like leaderboards, stuff like this, but when you face it, it's not so difficult. Maybe because we already had a nicely working server infrastructure, because now only this part sounds scary to me, but there are a lot of solutions, also for Defold, that simplifies it a lot. Client side implementation is usually very simple and straightforward.
 
 ##### Thank you very much for the interview, and we wish Refold and Turborilla continued success with Mad Skills Motocross 2 on Poki!
 
