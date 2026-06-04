@@ -1,49 +1,90 @@
-name: CI
+name: Update generated site
 
 permissions:
-    contents: write
-    pages: write
-    id-token: write
+  contents: write
 
 on:
-    push: {}
-    repository_dispatch: {}
-    workflow_dispatch:
-        inputs:
-            action:
-                description: 'Which action/command to run'
-                required: true
-                default: 'all'
+  repository_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Which action/command to run'
+        required: true
+        default: 'all'
+
+concurrency:
+  group: generated-site-update
+  cancel-in-progress: false
 
 jobs:
-    update_site:
-        runs-on: ubuntu-latest
-        if: "!contains(github.event.head_commit.message, 'skip-ci')"
-        env:
-            # Unify action from repository_dispatch (github.event.action)
-            # and workflow_dispatch (github.event.inputs.action)
-            ACTION: ${{ github.event.action || github.event.inputs.action}}
-        steps: [
-            { name: 'Checkout', uses: 'actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd' },
-            { name: 'Setup Ruby', uses: 'ruby/setup-ruby@4c56a21280b36d862b5fc31348f463d60bdc55d5', with: { 'ruby-version': '3.3.5', 'bundler-cache': true } },
-            { name: 'Install Python', uses: 'actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405', with: { python-version: 3.10.5, architecture: x64 } },
-            { name: 'Install Java', uses: 'actions/setup-java@f2beeb24e141e01a676f977032f5a29d81c9e27e', with: { java-version: '25', distribution: 'temurin'} },
-            { name: 'Install Requests', run: 'pip install --user requests' },
-            { name: 'Install PyYAML', run: 'pip install --user pyyaml' },
-            { name: 'Install Markdown', run: 'pip install --user markdown==3.4.1' },
-            { name: 'Install Pygments', run: 'pip install --user pygments==2.13.0' },
-            { name: 'Show action & event', run: 'echo "Event: ${{ github.event_name }} Action: ${{ env.ACTION }}"' },
-            { if: "env.ACTION == 'asset-portal'", name: 'Update assets', run: 'python update.py --download asset-portal commit' },
-            { if: "env.ACTION == 'games-showcase'", name: 'Update games', run: 'python update.py --download games-showcase commit' },
-            { if: "env.ACTION == 'docs'", name: 'Update docs', run: 'python update.py --download docs commit' },
-            { if: "env.ACTION == 'refdoc'", name: 'Update refdoc', run: 'python update.py --download refdoc commit' },
-            { if: "env.ACTION == 'examples'", name: 'Update examples', run: 'python update.py --download examples commit' },
-            { if: "env.ACTION == 'codepad'", name: 'Update codepad', run: 'python update.py --download codepad commit' },
-            { if: "env.ACTION == 'all'", name: 'Update everything', run: 'python update.py --download all commit' },
-            { if: "startsWith(env.ACTION, 'extension-')", name: 'Update extension', run: 'python update.py --download --extension ${{ env.ACTION }} extensions refdoc commit' },
-            { name: 'Build Jekyll site', run: 'bundle exec jekyll build' },
-            { name: 'Install Pagefind Python', run: 'pip install "pagefind[extended]==1.5.2"' },
-            { name: 'Index site with Pagefind', run: 'python3 -m pagefind' },
-            { if: "github.ref == 'refs/heads/master'", name: 'Upload Pages artifact', uses: 'actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9', with: { path: '_site' } },
-            { if: "github.ref == 'refs/heads/master'", name: 'Deploy to GitHub Pages', id: 'deployment', uses: 'actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128' }
-        ]
+  update_site:
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.head_commit.message || '', 'skip-ci') }}
+    env:
+      ACTION: ${{ github.event.action || github.event.inputs.action }}
+      EXAMPLES_REF: ${{ github.event.client_payload.examples_sha || github.event.client_payload.after || github.event.client_payload.sha || 'master' }}
+      CHANGED_EXAMPLES: ${{ github.event.client_payload.changed_examples_csv || '' }}
+      CHANGED_EXAMPLES_JSON: ${{ toJson(github.event.client_payload.changed_examples) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Refresh checkout
+        run: |
+          git fetch origin master
+          git checkout master
+          git reset --hard origin/master
+
+      - name: Install Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
+        with:
+          python-version: 3.10.5
+          architecture: x64
+
+      - name: Install Java
+        if: env.ACTION == 'examples' || env.ACTION == 'codepad' || env.ACTION == 'all'
+        uses: actions/setup-java@f2beeb24e141e01a676f977032f5a29d81c9e27e
+        with:
+          java-version: '25'
+          distribution: 'temurin'
+
+      - name: Install Python dependencies
+        run: python -m pip install --user requests pyyaml markdown==3.4.1 pygments==2.13.0
+
+      - name: Show action and event
+        run: 'echo "Event: ${{ github.event_name }} Action: ${{ env.ACTION }}"'
+
+      - if: env.ACTION == 'asset-portal'
+        name: Update assets
+        run: python update.py --download asset-portal commit
+
+      - if: env.ACTION == 'games-showcase'
+        name: Update games
+        run: python update.py --download games-showcase commit
+
+      - if: env.ACTION == 'docs'
+        name: Update docs
+        run: python update.py --download docs commit
+
+      - if: env.ACTION == 'refdoc'
+        name: Update refdoc
+        run: python update.py --download refdoc commit
+
+      - if: env.ACTION == 'examples'
+        name: Update examples
+        run: python update.py --download --examples-ref "$EXAMPLES_REF" --changed-examples "$CHANGED_EXAMPLES" --changed-examples-json "$CHANGED_EXAMPLES_JSON" examples commit
+
+      - if: env.ACTION == 'codepad'
+        name: Update codepad
+        run: python update.py --download codepad commit
+
+      - if: env.ACTION == 'all'
+        name: Update everything
+        run: python update.py --download all
+
+      - if: startsWith(env.ACTION, 'extension-')
+        name: Update extension
+        run: python update.py --download --extension "$ACTION" extensions refdoc commit
