@@ -999,8 +999,6 @@ def process_extension(extension_name, download = False):
 
 def process_examples(download = False, examples_ref = "master", changed_examples = None):
     examples_sha1 = get_sha1(EXAMPLES_DEFOLD_CHANNEL)
-    changed_examples = sorted(set(changed_examples or []))
-    incremental = len(changed_examples) > 0
 
     if download:
         if os.path.exists(EXAMPLES_ZIP):
@@ -1020,14 +1018,9 @@ def process_examples(download = False, examples_ref = "master", changed_examples
     rebuild = True
 
     includes_dir = os.path.join("_includes", "examples")
-    if incremental:
-        makedirs(includes_dir)
-    else:
-        rmmkdir(includes_dir)
+    rmmkdir(includes_dir)
 
     print("Processing examples")
-    if incremental:
-        print("Incremental examples: {}".format(", ".join(changed_examples)))
     with tmpdir() as tmp_dir:
         shutil.copyfile(EXAMPLES_ZIP, os.path.join(tmp_dir, EXAMPLES_ZIP))
         unzip(os.path.join(tmp_dir, EXAMPLES_ZIP), tmp_dir)
@@ -1036,11 +1029,7 @@ def process_examples(download = False, examples_ref = "master", changed_examples
             print("Unable to find unzipped examples directory")
             sys.exit(1)
 
-        data_index_file = os.path.join("_data", "examplesindex.json")
         examplesindex = []
-        changed_set = set(changed_examples)
-        if incremental and os.path.exists(data_index_file):
-            examplesindex = [e for e in read_as_json(data_index_file) if e.get("path") not in changed_set]
 
         category_dirs = os.listdir(unzipped_examples_dir)
         for category in category_dirs:
@@ -1049,7 +1038,7 @@ def process_examples(download = False, examples_ref = "master", changed_examples
             if os.path.isfile(category_src_dir) or category == ".github":
                 continue
 
-            if rebuild and not incremental:
+            if rebuild:
                 rmmkdir(category_dst_dir)
 
             for example in os.listdir(category_src_dir):
@@ -1058,8 +1047,6 @@ def process_examples(download = False, examples_ref = "master", changed_examples
                 example_path = "%s/%s" % (category, example)
 
                 if os.path.isfile(example_src_dir):
-                    continue
-                if incremental and example_path not in changed_set:
                     continue
 
                 print("..processing %s" % example)

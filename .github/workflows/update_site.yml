@@ -25,8 +25,6 @@ jobs:
     env:
       ACTION: ${{ github.event.action || github.event.inputs.action }}
       EXAMPLES_REF: ${{ github.event.client_payload.examples_sha || github.event.client_payload.after || github.event.client_payload.sha || 'master' }}
-      CHANGED_EXAMPLES: ${{ github.event.client_payload.changed_examples_csv || '' }}
-      CHANGED_EXAMPLES_JSON: ${{ toJson(github.event.client_payload.changed_examples) }}
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
@@ -82,7 +80,7 @@ jobs:
 
       - if: env.ACTION == 'examples'
         name: Update examples
-        run: python update.py --download --examples-ref "$EXAMPLES_REF" --changed-examples "$CHANGED_EXAMPLES" --changed-examples-json "$CHANGED_EXAMPLES_JSON" examples commit
+        run: python update.py --download --examples-ref "$EXAMPLES_REF" examples commit
 
       - if: env.ACTION == 'codepad'
         name: Update codepad
