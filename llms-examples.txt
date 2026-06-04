@@ -82,7 +82,7 @@ This document contains Defold examples grouped by category.
 - [Screenspace](#examples:material:screenspace) - This example shows how to create a custom material with two textures that blend together to create a pattern effect using screen space coordinates
 - [Sprite local UV](#examples:material:sprite_local_uv) - This example shows how to get local UV coordinates of a sprite regardless of sprite size
 - [Sprite Vertex Color Attribute](#examples:material:vertexcolor) - This example shows how to set and animate a vertex attribute
-- [Unlit](#examples:material:unlit) - This example demonstrates how to create and apply an custom non-lit material to a 3D model
+- [Unlit](#examples:material:unlit) - This example shows how to create and apply an unlit material to a 3D model
 - [UV Gradient](#examples:material:uvgradient) - This example shows how to apply a basic shader to a full screen quad
 - [Wave Background](#examples:material:wave_background) - Shows how to use a Time shader constant to achieve a moving wave effect
 
@@ -93,7 +93,7 @@ This document contains Defold examples grouped by category.
 
 ## Model
 
-- [AABB](#examples:model:aabb) - This example demonstrates how to use the `model
+- [AABB - framing objects with a camera](#examples:model:aabb) - This example shows how to use `model
 - [Character](#examples:model:character) - This example shows how to view and play skeletal animations on a glTF model
 - [Cubemap Reflection](#examples:model:cubemap) - This example shows how to use a cubemap to draw environment reflections on a model
 - [GLTF - Infinite Track](#examples:model:gltf) - This example shows how to use glTF models to build an infinite scrolling track
@@ -5100,13 +5100,56 @@ void main()
 
 # Unlit {#examples:material:unlit}
 
-This example demonstrates how to create and apply an custom non-lit material to a 3D model.
+This example shows how to create and apply an unlit material to a 3D model.
 
 [Project files](https://github.com/defold/examples/tree/master/material/unlit)
 
-In industry-established terms, a material that is not affected by lighting is called "unlit" or "non-lit". It is used to create retro-style graphics or for effects that should not depend on lighting (headlights, lamps).
+An unlit material renders a surface without any lighting calculation. It does not react to lights, normals, shadows, or specular highlights. The final color comes directly from the material inputs, usually a texture and a tint.
 
-This example contains a game object with a model that has an `unlit` material applied to it. The material is assigned custom vertex and fragment shaders. The shader is very simple and just transfers the texture color to the model. This is an excellent starting point for creating new materials and for creating effects that do not depend on lighting. The shaders are written in GLSL 1.40, which is available from Defold 1.9.2.
+This is useful for stylized 3D, retro-looking models, previews, debug objects, lamps, signs, and examples where the model should keep the same texture colors regardless of scene lighting.
+
+## What You'll Learn
+
+- How a Model component uses a custom material
+- Which constants and samplers an unlit model material needs
+- How a vertex shader transforms model vertices to the screen
+- How a fragment shader samples a texture without lighting
+
+## Setup
+
+The collection contains two game objects: `train` and `camera`.
+
+`train`
+: Contains a Model component using `/assets/models/kenney_train-kit/train-locomotive-b.glb`. The model's `colormap` material slot uses `/example/unlit.material`, and its `texture0` sampler uses the train kit `colormap.png` texture.
+
+`camera`
+: Contains a perspective Camera component and `orbit_camera.script`. Drag or touch to orbit the camera around the model, and use the mouse wheel to zoom.
+
+## Material
+
+`unlit.material` connects the model to two shader programs:
+
+- `unlit.vp` for vertex transformation
+- `unlit.fp` for fragment color output
+
+The material uses `Vertex Space: Local`, so the vertex shader receives model vertices in local space. It also declares the `mtx_view` and `mtx_proj` vertex constants, which Defold fills from the active camera, and the `texture0` sampler used by the fragment shader.
+
+The material also declares a user fragment constant named `tint`. The fragment shader multiplies the sampled texture color by this tint, which keeps the material compatible with the standard model tint workflow.
+
+## How It Works
+
+The vertex shader receives each vertex position, its texture coordinates, and the model's world matrix. It passes the texture coordinates to the fragment shader, then transforms the local vertex position with:
+```glsl
+mtx_proj * mtx_view * mtx_world * vec4(position.xyz, 1.0)
+```
+
+That moves the vertex from model space to world space, then through the camera view and projection matrices into clip space.
+
+The fragment shader receives the interpolated texture coordinates, samples `texture0`, applies the premultiplied `tint`, and writes the result to `final_color`. There are no light directions, normal calculations, shadow maps, or specular terms. The texture color is the final surface color.
+
+This is why unlit models look flat and evenly colored compared with Defold's built-in lit model material. The surface still has perspective and texture detail, but its brightness does not change when the model rotates or when lights are added to the scene.
+
+## Credits
 
 The model used in this example is from Kenney's [Train Pack](https://kenney.nl/assets/train-kit), licensed under CC0.
 
@@ -5439,21 +5482,51 @@ void main()
 
 <!-- model/aabb -->
 
-# AABB {#examples:model:aabb}
+# AABB - framing objects with a camera {#examples:model:aabb}
 
-This example demonstrates how to use the `model.get_aabb()` function in a 3D scene.
+This example shows how to use `model.get_aabb()` to frame moving 3D objects with a camera.
 
 [Project files](https://github.com/defold/examples/tree/master/model/aabb)
 
-This example shows how to work with Axis-Aligned Bounding Boxes (AABB) in a 3D scene. The setup consists of falling cubes that are dynamically tracked by a camera using their combined bounding box. The example demonstrates:
+An axis-aligned bounding box, or AABB, is the smallest box aligned to the world X, Y, and Z axes that contains an object. Because it is described by only two corners, `min` and `max`, it is cheap to compare, combine, and use for visibility or spatial tests.
 
-* How to create and manage a dynamic bounding box that updates with moving objects
-* Using `model.get_aabb()` to get object bounds
-* Camera positioning based on bounding box size
-* Dynamic object spawning with factory
-* Smooth camera transitions
+This example spawns falling crate models with an unlit material and keeps the camera focused on all visible crates. Each crate reports its local AABB, and the script combines those bounds into one scene-sized box used for camera placement.
 
-Press SPACE or click to spawn new cubes. The camera will automatically adjust to keep all objects in view based on their combined bounding box.
+Press SPACE, click, or touch the screen to spawn another crate.
+
+## What You'll Learn
+
+- How to read the local bounds of a Model component with `model.get_aabb()`
+- How to combine several local AABBs into one world-space bounding box
+- How to position a perspective camera from the combined bounds
+- How to spawn model game objects from factories
+
+## Setup
+
+The collection contains three game objects: `camera`, `main`, and `ground`.
+
+`camera`
+: Contains a perspective Camera component. `aabb.script` reads its field of view and orientation, then moves it each frame so the combined bounds stay visible.
+
+`main`
+: Contains `aabb.script` and two Factory components. The factories spawn `/example/box1.go` and `/example/box2.go`, which are crate model game objects using two Kenney crate glTF assets and the shared unlit material.
+
+`ground`
+: Contains a static 3D collision object and a simple sprite plane. The crates fall onto this surface so the tracked bounds keep changing as new crates are added.
+
+The models use an unlit material so the texture colors stay clear and even without setting up lights. For the material and shaders details, see the [Unlit material example](https://defold.com/examples/material/unlit/).
+
+## How It Works
+
+`model.get_aabb()` returns the model's local-space bounds. For a crate, that means the two corners of a box that encloses the crate mesh before the game object position is applied. The box stays axis-aligned, so the script can merge many crates by taking the smallest X, Y, and Z values for the combined `min` corner and the largest values for the combined `max` corner.
+
+When a crate is spawned, the script stores its local AABB. Every frame, it adds the crate's current game object position to that local `min` and `max`, turning the bounds into world-space values before comparing them with the accumulated scene bounds.
+
+The combined AABB describes the full pile of crates. The script computes a center point and radius from the combined corners, smooths those values with `vmath.lerp()`, and places the camera far enough away for that radius to fit inside the camera field of view.
+
+Input creates another crate through one of the two factories. The same bounds update code then expands the camera target automatically, so the full pile remains in view.
+
+## Credits
 
 The models used in this example are from Kenney's [Prototype Kit](https://kenney.nl/assets/prototype-kit), licensed under CC0.
 
@@ -5783,7 +5856,6 @@ This example uses three glTF model assets from Kenney's Toy Car Kit to build a s
 
 - How to place multiple glTF model components in one collection
 - How to loop repeated road segments to fake an infinite track
-- How the unlit material works
 
 ## Setup
 
@@ -5795,15 +5867,13 @@ The collection contains three game objects: `car`, `camera`, and `track`.
 
 `track` contains six copies of `track-road-wide-straight.glb` and a `gate.glb` model. `gltf.script` moves the whole game object along the Z axis and wraps it back to the start once the last road section passes the camera.
 
+The models use an unlit material so the texture colors stay clear and even without setting up lights. For the material and shaders details, see the [Unlit material example](https://defold.com/examples/material/unlit/).
+
 ## How It Works
 
 The script keeps a single Z position in `self.current_z`. Every frame it advances that value by `self.speed * dt`, then applies it to the `track` game object.
 
 Once the track reaches the loop point, the script subtracts the loop length and starts again. That creates the illusion of a long road without needing to spawn or destroy any models.
-
-The unlit material using two shaders `unlit.vp` and `unlit.fp`.
-
-This gives a unique look to the models by omitting any lighting calculations and showing just the albedo color from the textures for the models, check out the comparison with a default built-in model material (on the left):
 
 ## Credits
 
@@ -5839,71 +5909,6 @@ end
 5. Wrap the track when it reaches the end of the visible road.
 6. Apply the updated position to the `track` game object.
 ]]
-```
-
-### unlit.fp
-
-```glsl
-#version 140
-
-// Inputs should match the vertex shader's outputs.
-in vec2 var_texcoord0;
-
-// The texture to sample.
-uniform lowp sampler2D texture0;
-
-// The final color of the fragment.
-out lowp vec4 final_color;
-
-uniform fs_uniforms
-{
-    mediump vec4 tint;
-};
-
-void main()
-{
-    // Pre-multiply alpha since all runtime textures already are
-    vec4 tint_pm = vec4(tint.xyz * tint.w, tint.w);
-
-    // Sample the texture at the fragment's texture coordinates.
-    vec4 color = texture(texture0, var_texcoord0.xy) * tint_pm;
-
-    // Output the sampled color.
-    final_color = color;
-}
-```
-
-### unlit.vp
-
-```glsl
-#version 140
-
-// The model's vertex position and texture coordinates.
-in vec4 position;
-in vec2 texcoord0;
-
-// The model's world matrix.
-in mat4 mtx_world;
-
-// The projection and view matrices.
-uniform general_vp
-{
-    mat4 mtx_view;
-    mat4 mtx_proj;
-};
-
-// The output of a vertex shader are passed to the fragment shader.
-// The texture coordinates of the vertex.
-out vec2 var_texcoord0;
-
-void main()
-{
-    // Pass the texture coordinates to the fragment shader.
-    var_texcoord0 = texcoord0;
-
-    // Transform the vertex position to clip space.
-    gl_Position = mtx_proj * mtx_view * mtx_world * vec4(position.xyz, 1.0);
-}
 ```
 
 <!-- model/skinning -->

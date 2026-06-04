@@ -82,7 +82,7 @@ These are per-example files generated for LLM usage.
 - [Screenspace](https://defold.com/llms/examples/material/screenspace.md) - This example shows how to create a custom material with two textures that blend together to create a pattern effect using screen space coordinates
 - [Sprite local UV](https://defold.com/llms/examples/material/sprite_local_uv.md) - This example shows how to get local UV coordinates of a sprite regardless of sprite size
 - [Sprite Vertex Color Attribute](https://defold.com/llms/examples/material/vertexcolor.md) - This example shows how to set and animate a vertex attribute
-- [Unlit](https://defold.com/llms/examples/material/unlit.md) - This example demonstrates how to create and apply an custom non-lit material to a 3D model
+- [Unlit](https://defold.com/llms/examples/material/unlit.md) - This example shows how to create and apply an unlit material to a 3D model
 - [UV Gradient](https://defold.com/llms/examples/material/uvgradient.md) - This example shows how to apply a basic shader to a full screen quad
 - [Wave Background](https://defold.com/llms/examples/material/wave_background.md) - Shows how to use a Time shader constant to achieve a moving wave effect
 
@@ -93,7 +93,7 @@ These are per-example files generated for LLM usage.
 
 ## Model
 
-- [AABB](https://defold.com/llms/examples/model/aabb.md) - This example demonstrates how to use the `model
+- [AABB - framing objects with a camera](https://defold.com/llms/examples/model/aabb.md) - This example shows how to use `model
 - [Character](https://defold.com/llms/examples/model/character.md) - This example shows how to view and play skeletal animations on a glTF model
 - [Cubemap Reflection](https://defold.com/llms/examples/model/cubemap.md) - This example shows how to use a cubemap to draw environment reflections on a model
 - [GLTF - Infinite Track](https://defold.com/llms/examples/model/gltf.md) - This example shows how to use glTF models to build an infinite scrolling track
