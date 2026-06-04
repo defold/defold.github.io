@@ -8,7 +8,7 @@ path: model/aabb
 scripts: aabb.script
 tags: model
 thumbnail: thumbnail.webp
-title: AABB - framing objects with a camera
+title: AABB to frame objects with a camera
 twitter_image: https://www.defold.com/examples/model/aabb/thumbnail.webp
 
 ---

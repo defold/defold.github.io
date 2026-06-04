@@ -3,7 +3,7 @@ author: aglitchman
 brief: This example shows how to create and apply an unlit material to a 3D model.
 category: material
 layout: example
-name: Unlit (3D)
+name: Unlit Material (3D)
 opengraph_image: https://www.defold.com/examples/material/unlit/thumbnail.webp
 path: material/unlit
 scripts: unlit.vp, unlit.fp

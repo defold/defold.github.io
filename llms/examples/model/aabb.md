@@ -1,4 +1,4 @@
-# AABB - framing objects with a camera
+# AABB to frame objects with a camera
 
 This example shows how to use `model.get_aabb()` to frame moving 3D objects with a camera.
 
