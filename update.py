@@ -259,6 +259,52 @@ def load_frontmatter(filename):
     parts = read_as_string(filename).split("---", maxsplit = 2)
     return yaml.safe_load(parts[1])
 
+def normalize_example_path(path):
+    path = path.strip().strip("/")
+    if not path:
+        return None
+    parts = path.split("/")
+    if len(parts) < 2:
+        return None
+    if parts[0].startswith("."):
+        return None
+    return "/".join(parts[:2])
+
+def parse_changed_examples(value):
+    if not value:
+        return []
+    paths = []
+    for item in re.split(r"[\s,]+", value):
+        normalized = normalize_example_path(item)
+        if normalized:
+            paths.append(normalized)
+    return sorted(set(paths))
+
+def parse_changed_examples_json(value):
+    if not value or value == "null":
+        return []
+    try:
+        data = json.loads(value)
+    except json.JSONDecodeError:
+        return parse_changed_examples(value)
+    if isinstance(data, str):
+        return parse_changed_examples(data)
+    if not isinstance(data, list):
+        return []
+    paths = []
+    for item in data:
+        normalized = normalize_example_path(str(item))
+        if normalized:
+            paths.append(normalized)
+    return sorted(set(paths))
+
+def find_unzipped_repo_dir(root, prefix):
+    for entry in os.listdir(root):
+        path = os.path.join(root, entry)
+        if os.path.isdir(path) and entry.startswith(prefix):
+            return path
+    return None
+
 def replace_frontmatter(filename, d):
     parts = read_as_string(filename).split("---", maxsplit = 2)
     content = parts[2].strip()
@@ -951,13 +997,15 @@ def process_extension(extension_name, download = False):
             write_as_json(extension_data_file, refdoc)
 
 
-def process_examples(download = False):
+def process_examples(download = False, examples_ref = "master", changed_examples = None):
     examples_sha1 = get_sha1(EXAMPLES_DEFOLD_CHANNEL)
+    changed_examples = sorted(set(changed_examples or []))
+    incremental = len(changed_examples) > 0
 
     if download:
         if os.path.exists(EXAMPLES_ZIP):
             os.remove(EXAMPLES_ZIP)
-        download_file("https://github.com/defold/examples/archive/refs/heads/master.zip", ".", EXAMPLES_ZIP)
+        download_file("https://github.com/defold/examples/archive/{}.zip".format(examples_ref), ".", EXAMPLES_ZIP)
         download_bob(examples_sha1)
 
     if not os.path.exists(EXAMPLES_ZIP):
@@ -972,15 +1020,28 @@ def process_examples(download = False):
     rebuild = True
 
     includes_dir = os.path.join("_includes", "examples")
-    rmmkdir(includes_dir)
+    if incremental:
+        makedirs(includes_dir)
+    else:
+        rmmkdir(includes_dir)
 
     print("Processing examples")
+    if incremental:
+        print("Incremental examples: {}".format(", ".join(changed_examples)))
     with tmpdir() as tmp_dir:
         shutil.copyfile(EXAMPLES_ZIP, os.path.join(tmp_dir, EXAMPLES_ZIP))
         unzip(os.path.join(tmp_dir, EXAMPLES_ZIP), tmp_dir)
-        unzipped_examples_dir = os.path.join(tmp_dir, "examples-master")
+        unzipped_examples_dir = find_unzipped_repo_dir(tmp_dir, "examples-")
+        if not unzipped_examples_dir:
+            print("Unable to find unzipped examples directory")
+            sys.exit(1)
 
+        data_index_file = os.path.join("_data", "examplesindex.json")
         examplesindex = []
+        changed_set = set(changed_examples)
+        if incremental and os.path.exists(data_index_file):
+            examplesindex = [e for e in read_as_json(data_index_file) if e.get("path") not in changed_set]
+
         category_dirs = os.listdir(unzipped_examples_dir)
         for category in category_dirs:
             category_src_dir = os.path.join(unzipped_examples_dir, category)
@@ -988,14 +1049,17 @@ def process_examples(download = False):
             if os.path.isfile(category_src_dir) or category == ".github":
                 continue
 
-            if rebuild:
+            if rebuild and not incremental:
                 rmmkdir(category_dst_dir)
 
             for example in os.listdir(category_src_dir):
                 example_src_dir = os.path.join(category_src_dir, example)
                 example_dst_dir = os.path.join(category_dst_dir, example)
+                example_path = "%s/%s" % (category, example)
 
                 if os.path.isfile(example_src_dir):
+                    continue
+                if incremental and example_path not in changed_set:
                     continue
 
                 print("..processing %s" % example)
@@ -1005,17 +1069,19 @@ def process_examples(download = False):
                     shutil.copyfile(bob_jar, bob_out)
                     game_project = os.path.join(example_src_dir, "game.project")
                     replace_in_file(game_project, r"title = .*", r"title = Defold-examples")
-                    subprocess.call([ "java", "-jar", bob_out, "--archive", "--platform", "wasm-web", "--architectures", "wasm-web", "--variant", "debug", "--build-server", EXAMPLES_BUILD_SERVER, "resolve", "build", "bundle" ], cwd=example_src_dir)
+                    subprocess.run([ "java", "-jar", bob_out, "--archive", "--platform", "wasm-web", "--architectures", "wasm-web", "--variant", "debug", "--build-server", EXAMPLES_BUILD_SERVER, "resolve", "build", "bundle" ], cwd=example_src_dir, check=True)
                     os.remove(bob_out)
 
                     print("...copying %s" % example)
-                    index_file = find_file(os.path.join(example_src_dir, "build", "default"), "index.html")
-                    print(index_file, os.path.dirname(index_file))
-                    if not index_file:
+                    bundle_index_file = find_file(os.path.join(example_src_dir, "build", "default"), "index.html")
+                    if not bundle_index_file:
                         print("File index.html not found")
                         sys.exit(1)
+                    print(bundle_index_file, os.path.dirname(bundle_index_file))
 
-                    bundle_dir = os.path.dirname(index_file)
+                    bundle_dir = os.path.dirname(bundle_index_file)
+                    rmtree(example_dst_dir)
+                    makedirs(category_dst_dir)
                     shutil.copytree(bundle_dir, example_dst_dir)
                     os.remove(os.path.join(example_dst_dir, "index.html"))
                 else:
@@ -1025,7 +1091,7 @@ def process_examples(download = False):
                 md_file = os.path.join(example_src_dir, "example.md")
                 fm = load_frontmatter(md_file)
                 fm["category"] = category
-                fm["path"] = "%s/%s" % (category, example)
+                fm["path"] = example_path
                 fm["layout"] = "example"
                 if "thumbnail" in fm:
                     image_path = "https://www.defold.com/examples/%s/%s" % (fm["path"], fm["thumbnail"])
@@ -1075,12 +1141,26 @@ def process_examples(download = False):
                     tgt = os.path.join(example_dst_dir, os.path.basename(image))
                     shutil.copyfile(image, tgt)
 
+        if incremental:
+            source_paths = set()
+            for category in os.listdir(unzipped_examples_dir):
+                category_src_dir = os.path.join(unzipped_examples_dir, category)
+                if os.path.isfile(category_src_dir) or category == ".github":
+                    continue
+                for example in os.listdir(category_src_dir):
+                    example_src_dir = os.path.join(category_src_dir, example)
+                    if not os.path.isfile(example_src_dir):
+                        source_paths.add("%s/%s" % (category, example))
+            for removed_path in sorted(changed_set - source_paths):
+                print("..removing deleted example %s" % removed_path)
+                rmtree(os.path.join("examples", removed_path))
+                rmtree(os.path.join(includes_dir, removed_path))
+
         print("...generating index")
-        index_file = os.path.join("_data", "examplesindex.json")
-        if os.path.exists(index_file):
-            os.remove(index_file)
+        if os.path.exists(data_index_file):
+            os.remove(data_index_file)
         examplesindex.sort(key=lambda x: x.get("path").lower())
-        write_as_json(os.path.join("_data", "examplesindex.json"), examplesindex)
+        write_as_json(data_index_file, examplesindex)
 
         print("...generating llms/examples")
         generate_llms_examples()
@@ -1656,10 +1736,23 @@ def commit_changes():
     call("git config user.name 'github-actions[bot]'")
     call("git config user.email '41898282+github-actions[bot]@users.noreply.github.com'")
     call("git add -A")
-    # only commit if the diff isn't empty, ie there is a change
-    # https://stackoverflow.com/a/8123841/1266551
-    call("git diff-index --quiet HEAD || git commit -m 'Site changes [skip-ci]'")
-    call("git push")
+    if subprocess.call([ "git", "diff", "--cached", "--quiet" ]) == 0:
+        print("No changes to commit")
+        return
+
+    subprocess.run([ "git", "commit", "-m", "Site changes" ], check=True)
+    for attempt in range(1, 4):
+        print("Pushing generated changes (attempt {})".format(attempt))
+        try:
+            subprocess.run([ "git", "fetch", "origin", "master" ], check=True)
+            subprocess.run([ "git", "rebase", "origin/master" ], check=True)
+            subprocess.run([ "git", "push", "origin", "HEAD:master" ], check=True)
+            return
+        except subprocess.CalledProcessError:
+            subprocess.call([ "git", "rebase", "--abort" ])
+            if attempt == 3:
+                raise
+            subprocess.run([ "git", "fetch", "origin", "master" ], check=True)
 
 
 ALL_COMMANDS = [ "all", "help", "docs", "refdoc", "asset-portal", "games-showcase", "examples", "codepad", "commit", "extensions" ]
@@ -1669,6 +1762,9 @@ parser = ArgumentParser()
 parser.add_argument('commands', nargs="+", help='Commands (' + ', '.join(ALL_COMMANDS) + ')')
 parser.add_argument("--extension", dest="extensions", action='append', help="Which extension to process")
 parser.add_argument("--download", dest="download", action='store_true', help="Download updated content for the command(s) in question")
+parser.add_argument("--examples-ref", dest="examples_ref", default="master", help="Git ref to import from defold/examples")
+parser.add_argument("--changed-examples", dest="changed_examples", default="", help="Comma or whitespace separated example paths to import incrementally")
+parser.add_argument("--changed-examples-json", dest="changed_examples_json", default="", help="JSON array of example paths to import incrementally")
 args = parser.parse_args()
 
 help = """
@@ -1706,7 +1802,9 @@ for command in args.commands:
         for extension in args.extensions:
             process_extension(extension, download = args.download)
     elif command == "examples":
-        process_examples(download = args.download)
+        changed_examples = parse_changed_examples(args.changed_examples)
+        changed_examples.extend(parse_changed_examples_json(args.changed_examples_json))
+        process_examples(download = args.download, examples_ref = args.examples_ref, changed_examples = changed_examples)
     elif command == "refdoc":
         process_refdoc(download = args.download)
     elif command == "asset-portal":
