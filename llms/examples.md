@@ -96,10 +96,11 @@ These are per-example files generated for LLM usage.
 - [AABB](https://defold.com/llms/examples/model/aabb.md) - This example demonstrates how to use the `model
 - [Character](https://defold.com/llms/examples/model/character.md) - This example shows how to view and play skeletal animations on a glTF model
 - [Cubemap Reflection](https://defold.com/llms/examples/model/cubemap.md) - This example shows how to use a cubemap to draw environment reflections on a model
-- [GLTF](https://defold.com/llms/examples/model/gltf.md) - This example demonstrates how to use a glTF model
+- [GLTF - Infinite Track](https://defold.com/llms/examples/model/gltf.md) - This example shows how to use glTF models to build an infinite scrolling track
 - [GPU Skinning](https://defold.com/llms/examples/model/skinning.md) - This example demonstrates GPU skinning
 - [Model Vertex Color](https://defold.com/llms/examples/model/modelvertexcolor.md) - This example demonstrates how to apply a vertex color shader using exported attributes from a 3D model
 - [Morph Target Animation](https://defold.com/llms/examples/model/morph-target.md) - Shows how to play glTF morph target animations with a morph-capable model material
+- [Morph Target Weights](https://defold.com/llms/examples/model/morph-target-weights.md) - Shows how to override morph target weights on a Model component with `model
 - [Skybox](https://defold.com/llms/examples/model/skybox.md) - This example shows how to create a skybox using a cubemap texture
 
 ## Movement
