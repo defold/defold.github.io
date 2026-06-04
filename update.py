@@ -1029,6 +1029,7 @@ def process_examples(download = False, examples_ref = "master", changed_examples
             print("Unable to find unzipped examples directory")
             sys.exit(1)
 
+        data_index_file = os.path.join("_data", "examplesindex.json")
         examplesindex = []
 
         category_dirs = os.listdir(unzipped_examples_dir)
@@ -1127,21 +1128,6 @@ def process_examples(download = False, examples_ref = "master", changed_examples
                 for image in find_files(example_src_dir, "*.png|*.jpg|*.gif|*.webp|*.webm"):
                     tgt = os.path.join(example_dst_dir, os.path.basename(image))
                     shutil.copyfile(image, tgt)
-
-        if incremental:
-            source_paths = set()
-            for category in os.listdir(unzipped_examples_dir):
-                category_src_dir = os.path.join(unzipped_examples_dir, category)
-                if os.path.isfile(category_src_dir) or category == ".github":
-                    continue
-                for example in os.listdir(category_src_dir):
-                    example_src_dir = os.path.join(category_src_dir, example)
-                    if not os.path.isfile(example_src_dir):
-                        source_paths.add("%s/%s" % (category, example))
-            for removed_path in sorted(changed_set - source_paths):
-                print("..removing deleted example %s" % removed_path)
-                rmtree(os.path.join("examples", removed_path))
-                rmtree(os.path.join(includes_dir, removed_path))
 
         print("...generating index")
         if os.path.exists(data_index_file):
