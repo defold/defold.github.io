@@ -3454,6 +3454,178 @@
             "type": "VARIABLE"
         },
         {
+            "brief": "load an image file for reading",
+            "description": "Load an image file for reading",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "image.load_file",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "External file path, resolved against project root if relative",
+                    "is_optional": "False",
+                    "name": "path",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "image userdata",
+                    "name": "image",
+                    "types": [
+                        "image"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "return the color of a pixel from a loaded image.",
+            "description": "Return the color of a pixel from a loaded image.\nCoordinates are 1-based, with <code>1, 1</code> at the top-left corner.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "image.pixel",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "image userdata returned by <code>image.load_file()</code>",
+                    "is_optional": "False",
+                    "name": "image",
+                    "types": [
+                        "image"
+                    ]
+                },
+                {
+                    "doc": "1-based horizontal pixel coordinate",
+                    "is_optional": "False",
+                    "name": "x",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "1-based vertical pixel coordinate",
+                    "is_optional": "False",
+                    "name": "y",
+                    "types": [
+                        "integer"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "red channel, 0-255",
+                    "name": "r",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "green channel, 0-255",
+                    "name": "g",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "blue channel, 0-255",
+                    "name": "b",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "alpha channel, 0-255",
+                    "name": "a",
+                    "types": [
+                        "integer"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "iterate over pixels in a loaded image.",
+            "description": "Iterate over pixels in a loaded image.\nThe iterator returns pixels row by row from top-left to bottom-right. Coordinates are 1-based.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">local</span><span class=\"w\"> </span><span class=\"n\">img</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">image</span><span class=\"o\">.</span><span class=\"n\">load_file</span><span class=\"p\">(</span><span class=\"s2\">&quot;assets/source.png&quot;</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"n\">local</span><span class=\"w\"> </span><span class=\"n\">width</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">height</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">image</span><span class=\"o\">.</span><span class=\"n\">size</span><span class=\"p\">(</span><span class=\"n\">img</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"k\">for</span><span class=\"w\"> </span><span class=\"n\">x</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">y</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">r</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">g</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">b</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">a</span><span class=\"w\"> </span><span class=\"ow\">in</span><span class=\"w\"> </span><span class=\"n\">image</span><span class=\"o\">.</span><span class=\"n\">pixels</span><span class=\"p\">(</span><span class=\"n\">img</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"n\">do</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">y</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">r</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">g</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">b</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">a</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"n\">end</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "image.pixels",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "image userdata returned by <code>image.load_file()</code>",
+                    "is_optional": "False",
+                    "name": "image",
+                    "types": [
+                        "image"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "iterator function returning <code>x, y, r, g, b, a</code> for each pixel",
+                    "name": "iterator",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "return the width and height of a loaded image.",
+            "description": "Return the width and height of a loaded image.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "image.size",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "image userdata returned by <code>image.load_file()</code>",
+                    "is_optional": "False",
+                    "name": "image",
+                    "types": [
+                        "image"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "image width in pixels",
+                    "name": "width",
+                    "types": [
+                        "integer"
+                    ]
+                },
+                {
+                    "doc": "image height in pixels",
+                    "name": "height",
+                    "types": [
+                        "integer"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "decode JSON string to Lua value",
             "description": "Decode JSON string to Lua value",
             "error": "",
