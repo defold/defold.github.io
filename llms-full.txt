@@ -510,7 +510,7 @@ This document contains Defold examples grouped by category.
 - [Billboarding](#examples:material:billboarding) - This example shows how to make sprites and particle sprites face the camera using a custom vertex shader
 - [Custom Sprite](#examples:material:custom_sprite) - This example demonstrates a simple way to create and apply a custom sprite shader for changing colors and customizing an outline
 - [Noise shader](#examples:material:noise) - This example shows how to use a noise function to generate clouds, smoke or similar effect using a shader
-- [Repeating Background](#examples:material:repeating_background) - Create a scrolling background using a repeating texture on a model quad
+- [Repeating Background](#examples:material:repeating_background) - Create a full-screen scrolling background using a repeated texture on a glTF quad
 - [Screenspace](#examples:material:screenspace) - This example shows how to create a custom material with two textures that blend together to create a pattern effect using screen space coordinates
 - [Sprite local UV](#examples:material:sprite_local_uv) - This example shows how to get local UV coordinates of a sprite regardless of sprite size
 - [Sprite Vertex Color Attribute](#examples:material:vertexcolor) - This example shows how to set and animate a vertex attribute
@@ -74933,17 +74933,78 @@ void main()
 
 # Repeating Background {#examples:material:repeating_background}
 
-Create a scrolling background using a repeating texture on a model quad.
+Create a full-screen scrolling background using a repeated texture on a glTF quad.
 
 [Project files](https://github.com/defold/examples/tree/master/material/repeating_background)
 
-A repeating, scrolling texture can add visual interest to a static background. This example demonstrates how to create an infinitely tiling background using a model quad with a repeating texture. The effect is achieved by scrolling the UV coordinates over time, creating smooth, continuous motion.
+A repeating, scrolling texture is useful for reward screens, menu backgrounds, water, clouds, stars, and other effects where a small tile should fill a large area. This example uses a Model component with Defold's built-in `/builtins/assets/gltf/quad.gltf` mesh, a custom material, and a texture sampler set to repeat.
 
-The script driving the effect works as follows:
+## What You'll Learn
 
-* Each frame it reads the current window size and scales the `background` game object so the quad covers the full viewport. The rotation is set via `euler.z` (Rotation Z in the IDE).
-* It converts the window size into a UV repeat scale (`uv_params.x/y`) so the texture tiles across the screen.
-* It advances a scrolling offset based on `scroll_speed` and `tile_size`, wraps it to the 0..1 range, and sends `uv_params` to the model material.
+- How to render a repeated texture on a full-screen glTF quad.
+- How `WRAP_MODE_REPEAT` lets UV coordinates outside 0..1 tile the texture.
+- How to pass repeat scale and scroll speed through a `CONSTANT_TYPE_USER` material constant.
+- How to rotate repeated UV coordinates without rotating the full-screen quad.
+- How to use `CONSTANT_TYPE_TIME` so Lua does not need to update the scroll offset every frame.
+
+## Setup
+
+The collection contains:
+
+- `background` game object with a Model component
+- `camera` with camera component (orthographic) that just frames the example view
+- `ui` game object with example UI elements (coins, texts)
+
+The `repeating_background` script exposes these properties:
+
+- `tile_size`: the intended on-screen size of one texture tile, in pixels.
+- `scroll_speed`: the scroll speed in pixels per second. Only the x and y components are used.
+- `pattern_angle`: the angle, in degrees, used to rotate the repeated texture pattern in the shader.
+
+The `background` game object itself is not rotated. Rotating the game object would rotate the screen-covering quad, so the visible result would be a rotated rectangle clipped by the viewport. To keep the background full-screen, leave the quad axis-aligned and rotate the UV coordinates in the fragment shader instead.
+
+The model uses built-in `quad.gltf`, assigns `repeating_background.material`, and binds a `bg_icon.png` image to the material sampler named `texture0`.
+
+The material has these important settings:
+
+- **Vertex program:** `/example/repeating_background.vp`
+- **Fragment program:** `/example/repeating_background.fp`
+- **Sampler:** `texture0` with `Wrap U` and `Wrap V` set to `Repeat`
+- **Fragment constant:** `uv_params` of type `User`
+- **Fragment constant:** `rotation_params` of type `User`
+- **Fragment constant:** `time_data` of type `Time`
+
+`uv_params` is packed as follows:
+
+- `uv_params.x`: how many tiles fit across the current window width.
+- `uv_params.y`: how many tiles fit across the current window height.
+- `uv_params.z`: horizontal scroll speed in UV tiles per second.
+- `uv_params.w`: vertical scroll speed in UV tiles per second.
+
+`rotation_params` stores `cos(angle)` and `sin(angle)` for the UV rotation. The shader uses these values to rotate the repeated texture coordinates inside the quad.
+
+## How It Works
+
+This example uses Defold's built-in glTF quad asset and `#version 140` shader syntax to use a modern rendering pipeline.
+
+The scrolling offset is calculated with the passing time, received automatically from the built-in `Time` material constant, so the script does not need an `update()` callback just to animate the texture (available since Defold 1.12.3).
+
+`repeating_background.script` reads the window size on startup, scales the one-unit glTF quad to cover the viewport, converts the window size to a repeat scale, and sends `uv_params` and `rotation_params` to the Model component. It also registers a window listener so the layout is recalculated only when the window is resized.
+
+The shader does the continuous motion. The vertex shader only transforms the quad and forwards `texcoord0`. The fragment shader centers the UVs around the middle of the quad, scales them by `uv_params.xy`, rotates them with `rotation_params`, subtracts a time-based scroll offset, and samples `texture0` using repeated UV coordinates.
+
+Because the scrolling offset is calculated from the engine-provided `Time` constant, no `update()` callback is needed just to animate the material. Lua only changes material data when the screen size or exposed properties determine a new repeat scale.
+
+`pattern_angle` rotates the texture pattern and its local U/V axes. After the pattern is rotated, `scroll_speed.x` scrolls along the rotated U axis and `scroll_speed.y` scrolls along the rotated V axis. For example, keep `scroll_speed` at `(50, 0, 0)` and change `pattern_angle` to rotate a one-direction scrolling pattern; change both x and y in `scroll_speed` for diagonal movement in the pattern's local space.
+
+## Related Example
+
+This example and `sprite/texture_scrolling` both animate UV coordinates with the `Time` material constant, but they solve different problems.
+
+- Use this example for a full-screen model background where a single texture should repeat freely outside the 0..1 UV range. The key material feature is `WRAP_MODE_REPEAT`.
+- Use `sprite/texture_scrolling` for Sprite components, especially sprites using an atlas. The key material feature there is the `Texture Transform 2D` vertex attribute, which converts atlas UVs to local sprite UVs so scrolling stays inside the current atlas region.
+
+## Credits
 
 The asset used in this example is from Kenney's [Puzzle Pack 2](https://www.kenney.nl/assets/puzzle-pack-2), licensed under CC0.
 
@@ -74952,57 +75013,56 @@ The asset used in this example is from Kenney's [Puzzle Pack 2](https://www.kenn
 ### repeating_background.script
 
 ```lua
--- Size of a single tile in pixels
-go.property("tile_size", 128)
--- Scroll speed vector (x, y, z) in pixels per second
-go.property("scroll_speed", vmath.vector3(50, 0, 0))
+go.property("tile_size", 128) -- <1>
+go.property("scroll_speed", vmath.vector3(50, 0, 0)) -- <2>
+go.property("pattern_angle", 15) -- <3>
 
--- Applies layout based on current window size
--- Scales the game object to fill the entire window and calculates UV scale
-local function apply_layout(self)
-	local width, height = window.get_size()
-	-- Scale the game object to match window dimensions
-	go.set(".", "scale", vmath.vector3(width, height, 1))
+local function apply_layout(self, width, height)
+	go.set(".", "scale", vmath.vector3(width, height, 1)) -- <4>
 
-	-- Calculate how many tiles fit in the window (for UV tiling)
-	self.uv_scale = vmath.vector3(width / self.tile_size, height / self.tile_size, 0)
+	local uv_params = vmath.vector4(
+		width / self.tile_size,
+		height / self.tile_size,
+		self.scroll_speed.x / self.tile_size,
+		self.scroll_speed.y / self.tile_size
+	) -- <5>
+	go.set("#model", "uv_params", uv_params) -- <6>
 
-	-- Send UV parameters to the shader: scale (x, y) and offset (z, w)
-	local uv_params = vmath.vector4(self.uv_scale.x, self.uv_scale.y, self.offset.x, self.offset.y)
-	go.set("#model", "uv_params", uv_params)
+	local angle = math.rad(self.pattern_angle)
+	local rotation_params = vmath.vector4(math.cos(angle), math.sin(angle), 0, 0) -- <7>
+	go.set("#model", "rotation_params", rotation_params) -- <8>
 end
 
--- Updates UV offset for scrolling animation
--- Moves the texture offset based on scroll speed and wraps it using modulo
-local function update_uv_params(self, dt)
-	-- Calculate offset delta in tile units (0-1 range)
-	local delta = self.scroll_speed * dt / self.tile_size
-	-- Update offset (subtract because we want to scroll in the direction of scroll_speed)
-	self.offset = self.offset - delta
-	-- Wrap offset to 0-1 range to create seamless repeating
-	self.offset.x = self.offset.x % 1
-	self.offset.y = self.offset.y % 1
-
-	-- Send updated UV parameters to the shader
-	local uv_params = vmath.vector4(self.uv_scale.x, self.uv_scale.y, self.offset.x, self.offset.y)
-	go.set("#model", "uv_params", uv_params)
+local function on_window_event(self, event, data)
+	if event == window.WINDOW_EVENT_RESIZED then
+		apply_layout(self, data.width, data.height) -- <9>
+	end
 end
 
--- Initialize the script
--- Sets up the initial UV offset to zero
 function init(self)
-	self.offset = vmath.vector3(0)
+	local width, height = window.get_size()
+	apply_layout(self, width, height) -- <10>
+	window.set_listener(on_window_event) -- <11>
 end
 
 function final(self)
+	window.set_listener(nil) -- <12>
 end
 
--- Update function called every frame
--- Applies layout and updates UV parameters for scrolling
-function update(self, dt)
-	apply_layout(self)
-	update_uv_params(self, dt)
-end
+--[[
+1. `tile_size` is the size, in pixels, of one repeated texture tile on screen.
+2. `scroll_speed` is measured in pixels per second. Only x and y are used.
+3. `pattern_angle` rotates the repeated texture coordinates inside the quad. It does not rotate the game object.
+4. The glTF quad is one unit wide and high, so scaling the game object to the window size makes it cover the viewport.
+5. The shader receives repeat scale in `uv_params.xy` and normalized scroll speed in `uv_params.zw`.
+6. `uv_params` is a user material constant on the Model component.
+7. Store cosine and sine so the shader can rotate UV coordinates without recalculating trigonometry per pixel.
+8. `rotation_params` is another user material constant on the Model component.
+9. Recalculate the layout only when the window size changes.
+10. Apply the initial layout before the first frame is rendered.
+11. Listen for resize events instead of recalculating the layout every frame.
+12. Clear the window listener when the script is finalized.
+]]
 ```
 
 ### repeating_background.vp
@@ -75012,23 +75072,19 @@ end
 
 in vec4 position;
 in vec2 texcoord0;
-uniform vp_uniforms
+
+uniform vs_uniforms
 {
-    mat4 mtx_worldview;
-    mat4 mtx_proj;
-    vec4 uv_params;
+	mat4 mtx_worldview;
+	mat4 mtx_proj;
 };
 
 out vec2 var_texcoord0;
 
 void main()
 {
-    // uv_params.x = repeat scale on U axis (tiles across width)
-    // uv_params.y = repeat scale on V axis (tiles across height)
-    // uv_params.z = scroll offset on U axis (normalized 0..1)
-    // uv_params.w = scroll offset on V axis (normalized 0..1)
-    var_texcoord0 = texcoord0 * uv_params.xy + uv_params.zw;
-    gl_Position = mtx_proj * mtx_worldview * vec4(position.xyz, 1.0);
+	var_texcoord0 = texcoord0;
+	gl_Position = mtx_proj * mtx_worldview * vec4(position.xyz, 1.0);
 }
 ```
 
@@ -75043,9 +75099,25 @@ out vec4 out_fragColor;
 
 uniform mediump sampler2D texture0;
 
+uniform fs_uniforms
+{
+	vec4 uv_params;
+	vec4 rotation_params;
+	vec4 time_data;
+};
+
 void main()
 {
-    out_fragColor = texture(texture0, var_texcoord0);
+	vec2 repeat_scale = uv_params.xy;
+	vec2 scroll_speed = uv_params.zw;
+	vec2 scroll_offset = fract(time_data.x * scroll_speed);
+	vec2 centered_uv = (var_texcoord0 - 0.5) * repeat_scale;
+	vec2 rotated_uv = vec2(
+		centered_uv.x * rotation_params.x - centered_uv.y * rotation_params.y,
+		centered_uv.x * rotation_params.y + centered_uv.y * rotation_params.x
+	);
+	vec2 uv = rotated_uv - scroll_offset;
+	out_fragColor = texture(texture0, uv);
 }
 ```
 
