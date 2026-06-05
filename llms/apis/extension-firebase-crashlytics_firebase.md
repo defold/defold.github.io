@@ -10,7 +10,7 @@ Functions and constants for interacting with Firebase
 
 ### firebase.crashlytics.initialize
 *Type:* FUNCTION
-Initializes Crashlytics and returns true if the core Firebase extension is available and the default FirebaseApp has been initialized.
+Initializes Crashlytics and returns true if the core Firebase extension is available and the default FirebaseApp has been initialized. After successful initialization, Defold dmLogWarning messages are automatically added as Crashlytics logs for subsequent reports.
 
 **Returns**
 

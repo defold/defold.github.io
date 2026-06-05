@@ -71,6 +71,8 @@ if firebase.crashlytics.did_crash_on_previous_execution() then
 end
 ```
 
+After Crashlytics is initialized, Defold `dmLogWarning()` messages are automatically added to Crashlytics logs and included with the next fatal, non-fatal, or ANR report.
+
 To report uncaught Lua runtime errors, install a Defold error handler after Crashlytics is initialized:
 
 ```lua
