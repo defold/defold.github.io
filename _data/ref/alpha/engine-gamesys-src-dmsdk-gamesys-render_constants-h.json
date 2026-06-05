@@ -182,6 +182,86 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Helper function to get material constants of compo...",
+            "description": "Helper function to get material constants of components that use them: sprite, label, tile maps, spine and models\nSprite and Label should not use value ptr. Deleting a gameobject (that included sprite(s) or label(s)) will rearrange the\nobject pool for components (due to EraseSwap in the Free for the object pool). This result in the original animation value pointer will still point\nto the original memory location in the component object pool.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetMaterialConstant",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the material",
+                    "is_optional": "False",
+                    "name": "material",
+                    "types": [
+                        "dmRender::HMaterial"
+                    ]
+                },
+                {
+                    "doc": "the name of the property",
+                    "is_optional": "False",
+                    "name": "name_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "the index of the constant value to get, if it is an array",
+                    "is_optional": "False",
+                    "name": "value_index",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "the property descriptor",
+                    "is_optional": "False",
+                    "name": "out_desc",
+                    "types": [
+                        "dmGameObject::PropertyDesc&"
+                    ]
+                },
+                {
+                    "doc": "should the property pointer be used (m_ValuePtr)",
+                    "is_optional": "False",
+                    "name": "use_value_ptr",
+                    "types": [
+                        "bool"
+                    ]
+                },
+                {
+                    "doc": "callback to resolve property",
+                    "is_optional": "False",
+                    "name": "callback",
+                    "types": [
+                        "CompGetConstantCallback"
+                    ]
+                },
+                {
+                    "doc": "callback user data",
+                    "is_optional": "False",
+                    "name": "callback_user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the result",
+                    "name": "result",
+                    "types": [
+                        "dmGameObject::PropertyResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Destroys a render constants container",
             "description": "Destroys a render constants container",
             "error": "",
@@ -364,6 +444,78 @@
             "returnvalues": [],
             "tparams": [],
             "type": "TYPEDEF"
+        },
+        {
+            "brief": "Helper function to set material constants of compo...",
+            "description": "Helper function to set material constants of components that use them: sprite, label, tile maps, spine and models",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetMaterialConstant",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the material",
+                    "is_optional": "False",
+                    "name": "material",
+                    "types": [
+                        "dmRender::HMaterial"
+                    ]
+                },
+                {
+                    "doc": "the name of the property",
+                    "is_optional": "False",
+                    "name": "name_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "index of the constant value to set, if the material constant is an array",
+                    "is_optional": "False",
+                    "name": "value_index",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "the property",
+                    "is_optional": "False",
+                    "name": "var",
+                    "types": [
+                        "dmGameObject::PropertyVar"
+                    ]
+                },
+                {
+                    "doc": "the callback used to set the property",
+                    "is_optional": "False",
+                    "name": "callback",
+                    "types": [
+                        "CompGetConstantCallback"
+                    ]
+                },
+                {
+                    "doc": "callback user data",
+                    "is_optional": "False",
+                    "name": "callback_user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the result",
+                    "name": "result",
+                    "types": [
+                        "dmGameObject::PropertyResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "Set a render constant by name. The constant must e...",
