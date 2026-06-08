@@ -65123,6 +65123,9 @@ To a specific object or to all subscribers.
 
 - `target_player` (number) - 0 = all, specific PlayerId = targeted
 
+- `target_object` (hash) - Id of game object, nil for broadcast
+
+- `event` (hash)
 - `data` (table)
 
 **Returns**
@@ -65133,9 +65136,21 @@ To a specific object or to all subscribers.
 *Type:* FUNCTION
 Subscribe to RPC broadcat event. The events will be delivered as messages.
 
+**Parameters**
+
+- `rpc_event` (hash) - Event to subscribe to
+
+- `id` (hash?) - Subscriber id
+
 ### fusion.unsubscribe_rpc
 *Type:* FUNCTION
 Unsubscribe from a subscribed RPC event.
+
+**Parameters**
+
+- `rpc_event` (hash) - Event to unsubscribe to
+
+- `id` (hash?) - Which object should unsubscribe
 
 ### fusion.on_event
 *Type:* FUNCTION
@@ -65276,13 +65291,29 @@ Get raw offset between server time and local time. A positive value means the se
 *Type:* FUNCTION
 Set global visibility key for an object
 
+**Parameters**
+
+- `id` (hash) - Object to set global visibility key for
+
 ### fusion.set_area_interest_key
 *Type:* FUNCTION
 Set area visibility key for an object
 
+**Parameters**
+
+- `key` (hash) - Area key
+
+- `id` (hash) - Object to set area visibility key for
+
 ### fusion.set_user_interest_key
 *Type:* FUNCTION
 Set user visibility key for an object
+
+**Parameters**
+
+- `key` (hash) - User key
+
+- `id` (hash) - Object to set user visibility key for
 
 ### fusion.set_area_keys
 *Type:* FUNCTION
@@ -65296,9 +65327,19 @@ Set area visibility keys
 *Type:* FUNCTION
 Add a user visibility key
 
+**Parameters**
+
+- `key` (hash) - User key to add
+
 ### fusion.remove_user_key
 *Type:* FUNCTION
 Remove a user visibility key from an object
+
+**Parameters**
+
+- `key` (hash) - User key to remove
+
+- `id` (hash) - Object to remove user visibility key from
 
 ### OWNERMODE_TRANSACTION
 *Type:* VARIABLE

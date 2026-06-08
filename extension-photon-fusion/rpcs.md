@@ -7,6 +7,7 @@ title: Photon Fusion - Remote Procedure Calls
 toc:
 - RPCs
 - Overview
+- Subscribe
 ---
 
 # RPCs
@@ -22,18 +23,33 @@ Fusion RPCs are sent using `fusion.rpc()`, either to a specific player or to all
 -- set target_player to 0 to broadcast to all players
 local target_player = 0
 local target_object = 0
-local descriptor = hash("chathandler")
-local event = hash("on_message")
-local data = json.encode({ text = "Hello" })
-fusion.rpc(target_player, target_object, descriptor, event, data)
+local event = hash("chat_message")
+local data = { text = "Hello" }
+fusion.rpc(target_player, target_object, event, data)
 
 fusion.on_event(function(self, event_id, data)
 	if event_id == fusion.EVENT_RPC then
-		print(data.descriptor_type)		-- "chathandler"
-		print(data.event)				-- "on_message"
-		
-		local message = json.decode(data.bytes)
+		print(data.event)				-- "chat_message"
 		print(message.text)				-- "Hello"
 	end
 end)
+```
+
+
+## Subscribe
+
+```lua
+function init(self)
+	fusion.subscribe_rpc(hash("some_message"))
+end
+
+function final(self)
+	fusion.unsubscribe_rpc(hash("some_message"))
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("some_message") then
+		pprint(message)
+	end
+end
 ```

@@ -523,6 +523,20 @@
                     ]
                 },
                 {
+                    "doc": "Id of game object, nil for broadcast\n",
+                    "name": "target_object",
+                    "types": [
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "event",
+                    "types": [
+                        "hash"
+                    ]
+                },
+                {
                     "doc": "",
                     "name": "data",
                     "types": [
@@ -542,7 +556,22 @@
             "description": "Subscribe to RPC broadcat event. The events will be delivered as messages.\n",
             "examples": "",
             "name": "fusion.subscribe_rpc",
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "Event to subscribe to\n",
+                    "name": "rpc_event",
+                    "types": [
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "Subscriber id\n",
+                    "name": "id",
+                    "types": [
+                        "hash?"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
@@ -550,7 +579,22 @@
             "description": "Unsubscribe from a subscribed RPC event.\n",
             "examples": "",
             "name": "fusion.unsubscribe_rpc",
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "Event to unsubscribe to\n",
+                    "name": "rpc_event",
+                    "types": [
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "Which object should unsubscribe\n",
+                    "name": "id",
+                    "types": [
+                        "hash?"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
@@ -816,7 +860,15 @@
             "description": "Set global visibility key for an object\n",
             "examples": "",
             "name": "fusion.set_global_interest_key",
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "Object to set global visibility key for\n",
+                    "name": "id",
+                    "types": [
+                        "hash"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
@@ -824,7 +876,22 @@
             "description": "Set area visibility key for an object\n",
             "examples": "",
             "name": "fusion.set_area_interest_key",
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "Area key\n",
+                    "name": "key",
+                    "types": [
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "Object to set area visibility key for\n",
+                    "name": "id",
+                    "types": [
+                        "hash"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
@@ -832,7 +899,22 @@
             "description": "Set user visibility key for an object\n",
             "examples": "",
             "name": "fusion.set_user_interest_key",
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "User key\n",
+                    "name": "key",
+                    "types": [
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "Object to set user visibility key for\n",
+                    "name": "id",
+                    "types": [
+                        "hash"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
@@ -856,7 +938,15 @@
             "description": "Add a user visibility key\n",
             "examples": "",
             "name": "fusion.add_user_key",
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "User key to add\n",
+                    "name": "key",
+                    "types": [
+                        "hash"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
@@ -864,7 +954,22 @@
             "description": "Remove a user visibility key from an object\n",
             "examples": "",
             "name": "fusion.remove_user_key",
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "User key to remove\n",
+                    "name": "key",
+                    "types": [
+                        "hash"
+                    ]
+                },
+                {
+                    "doc": "Object to remove user visibility key from\n",
+                    "name": "id",
+                    "types": [
+                        "hash"
+                    ]
+                }
+            ],
             "returnvalues": [],
             "type": "FUNCTION"
         },
