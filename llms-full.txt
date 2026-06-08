@@ -5124,7 +5124,7 @@ When the assets are imported into Defold they can be used by the various compone
 * Images can be used to create many kinds of visual components frequently used in 2D games. Read more about [how to import and use 2D graphics here](#manuals:importing-graphics).
 * Sounds can be used by the [Sound component](#manuals:sound) to play sounds.
 * Fonts are used by the [Label component](#manuals:label) and by [text nodes](#manuals:gui-text) in a GUI.
-* glTF models can be used by the [Model component](#manuals:model) to show 3D models with animations. Read more about [how to import and use 3D models here](#manuals:importing-models).
+* glTF models (*.gltf* and *.glb*) can be used by the [Model component](#manuals:model) to show 3D models with animations. Import any texture images used by the model as separate assets and assign them on the Model component material texture properties. Read more about [how to import and use 3D models here](#manuals:importing-models).
 
 ## Editing external assets
 
@@ -5229,16 +5229,34 @@ Learn more about GUIs in the [GUI manual](#manuals:gui).
 <!-- /manuals/importing-models -->
 
 # Importing 3D models {#manuals:importing-models}
-Defold currently support models, skeletons and animations in GL Transmission Format *.glTF* format. You can use tools such as Maya, 3D Max, Sketchup and Blender to create and/or convert 3D models into glTF format. Blender is a powerful and popular 3D modeling, animation and rendering program. It runs on Windows, macOS and Linux and is freely available for download at http://www.blender.org
+Defold supports models, skeletons and animations in the glTF 2.0 (GL Transmission Format) format. Use *.gltf* or *.glb* files for 3D models. The glTF is a modern format designed for transferring and loading 3D data in game engines and real-time applications.
+
+You can use tools such as Maya, 3ds Max, SketchUp and Blender to create or convert 3D models to glTF.
+
+Blender is a powerful and popular 3D modeling, animation and rendering program. It runs on Windows, macOS and Linux and is freely available from [https://www.blender.org](https://www.blender.org).
 
 ## Importing to Defold
-To import the model, simply drag and drop the *.gltf* file and the corresponding texture image into the *Assets Pane* somewhere.
+To import a model, drag and drop the *.gltf* or *.glb* file into the Defold editor *Assets pane*.
+
+glTF can be stored in two common ways:
+
+* *.glb* is a single binary file. It contains the model data and may also contain packed texture images. This is convenient when you want to move or store a model as one file.
+* *.gltf* is a text-based JSON file. It usually references a separate *.bin* file for mesh data and separate texture images such as *.png* or *.jpg*. When using this variant, add all referenced files to the project and keep their relative paths intact.
+
+If the model should use a texture in Defold, import the texture image as a separate asset. Even when the source glTF/GLB file contains embedded images, textures must be assigned to the Model component through the component material texture properties.
 
 ## Using a model
-Once you have the model imported into Defold you can use it in a [Model component](#manuals:model).
+Once you have imported the model, use it in a [Model component](#manuals:model):
+
+1. Create a Model file from the *Assets* pane with `New... ▸ Model`, or add a Model component directly to a game object with `Add Component ▸ Model`.
+2. Set the *Mesh* property to the imported *.gltf* or *.glb* file containing the mesh.
+3. For an animated model, set the *Skeleton* property to the *.gltf* or *.glb* file containing the skeleton. This is often the same file used for *Mesh* when mesh, skeleton and animations are exported together.
+4. Create an *Animation Set* file for the animations and assign it to the *Animations* property. Set *Default Animation* if you want an animation to start automatically.
+5. Set the *Material* property to a material suitable for the model. The built-in *model.material*, *model_instances.material*, *model_skinned.material* and *model_skinned_instances.material* files are useful starting points.
+6. Set the material texture properties, such as *Texture*, to the imported texture image files. If the material uses multiple textures, assign each texture in the corresponding material texture field.
 
 ## Exporting to glTF
-The exported *.gltf* file contain all the vertices, edges and faces that make up the model, as well as _UV coordinates_ (what part of the texture image maps to a certain part of the mesh) if you have defined them, the bones in the skeleton and animation data.
+The exported *.gltf* or *.glb* file contains all the vertices, edges and faces that make up the model, as well as _UV coordinates_ (what part of the texture image maps to a certain part of the mesh) if you have defined them, the bones in the skeleton and animation data.
 
 * A detailed description on polygon meshes can be found on http://en.wikipedia.org/wiki/Polygon_mesh.
 
@@ -5251,12 +5269,7 @@ Defold imposes some limitations on exported animation data:
 * Animations are also linearly interpolated. If you do more advanced curve interpolation the animations needs to be prebaked from the exporter.
 
 ### Requirements
-When you export a model it's good to know that we don't yet support all features.
-Currently known issues/not supported features from the glTF format:
-
-* Morph target animations
-* Material properties
-* Embedded textures
+When you export a model, keep in mind that glTF support can differ between tools and engines. Use glTF 2.0, make sure the model has correct UV coordinates if it uses textures, and import texture images separately when they should be assigned to a Model component.
 
 While our ambition is to fully support the glTF format, we're not fully there yet.
 If a feature is missing, please make a feature request for it in [our repo](https://github.com/defold/defold/issues)
@@ -5269,7 +5282,16 @@ When all vertices are selected you unwrap the mesh to get the UV layout:
 You can then proceed to export the UV layout to an image that can be used as a texture:
 
 ### Exporting using Blender
-You export your model using the Export menu option. Select the model before you select the Export menu option and check "Selection Only" to only export the model.
+Export your model from Blender using `File ▸ Export ▸ glTF 2.0 (.glb/.gltf)`.
+
+Select the object or objects before exporting and enable *Selected Objects* if you only want to export the selection.
+
+Choose one of the *Format* options:
+
+* *glTF Binary (.glb)* creates one file. Use this when you want the model to be easy to move or store as a single asset.
+* *glTF Separate (.gltf + .bin + textures)* creates separate files for the model description, binary data and textures. Use this when you want to edit texture images or assign them in Defold separately.
+
+If the model contains animations, enable animation export and make sure the animations are baked. If the model uses textures, make sure the mesh has a UV unwrap and that texture images are exported in a format Defold can import, such as PNG or JPEG.
 
 <!-- /manuals/adapting-graphics-to-screen-size -->
 
@@ -8138,13 +8160,13 @@ With the model created you need to specify a number of properties:
 Apart from the properties *Id*, *Position* and *Rotation* the following component specific properties exist:
 
 *Mesh*
-: This property should refer to the glTF *.gltf* file that contains the mesh to use. If the file contains morph targets, they are imported together with the mesh. If the file contains multiple meshes, only the first one is read.
+: This property should refer to the glTF *.gltf* or *.glb* file that contains the mesh to use. If the file contains morph targets, they are imported together with the mesh. If the file contains multiple meshes, only the first one is read.
 
 *Create GO Bones*
 : Check this to create a game object for every bone of the model. You can use the game objects to attach other game objects such as weapons to hand bones and so on.
 
 *Skeleton*
-: This property should refer to the glTF *.gltf* file that contains the skeleton to use for animation. Note that Defold requires a single root bone in your hierarchy.
+: This property should refer to the glTF *.gltf* or *.glb* file that contains the skeleton to use for animation. Note that Defold requires a single root bone in your hierarchy.
 
 *Animations*
 : Set this to the *Animation Set File* that contains the animations you want to use on the model.
@@ -8214,7 +8236,7 @@ A model also has a number of different properties that can be manipulated using 
 
 ## Material
 
-3D software commonly allows you to set properties on your object vertices, like coloring and texturing. This information goes into the glTF *.gltf* file that you export from your 3D software. Depending on the requirements of your game you will have to select and/or create appropriate and _performant_ materials for your objects. A material combines _shader programs_ with a set of parameters for rendering of the object.
+3D software commonly allows you to set properties on your object vertices, like coloring and texturing. This information goes into the glTF *.gltf* or *.glb* file that you export from your 3D software. Depending on the requirements of your game you will have to select and/or create appropriate and _performant_ materials for your objects. A material combines _shader programs_ with a set of parameters for rendering of the object.
 
 There are a number of built-in materials that you can use as a starting point:
 
