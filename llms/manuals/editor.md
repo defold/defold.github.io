@@ -206,7 +206,7 @@ Additionally, the editor executable has a command line option `--port` (or `-p`)
 
 ## Editor Styling
 
-Editor appearance can be changed with custom styling. Read more in the [Editor Styling manual](https://defold.com/llms/manuals/editor-styling.md.md).
+Editor appearance can be changed with custom styling. Read more in the [Editor Styling manual](https://defold.com/llms/manuals/editor-styling.md).
 
 ## FAQ
 #### Q: What are the system requirements for the editor?
