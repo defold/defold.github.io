@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to setup and use push notifications in Defold.
 github: https://github.com/defold/extension-push
-language: en
 layout: manual
+locale: en
 title: Defold Push notification documentation
 toc:
 - Defold Push notification documentation
