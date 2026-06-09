@@ -7,6 +7,7 @@ title: Photon Fusion - Replication
 toc:
 - Replication
 - How to replicate an object
+- Replicate script properties
 - Authority and Ownership
 - API Quick Reference
 - Transaction (default)
@@ -33,10 +34,42 @@ local factory_url = "example:/game#playerfactory"
 local owner_mode = fusion.OWNERMODE_PLAYERATTACHED
 local options = {}
 local id = go.get_id()
-fusion.create_object(map, factory_url, scene, owner_mode, options, id)
+fusion.create_object(map, factory_url, owner_mode, options, id)
 ```
 
 Call `fusion.destroy_object(id)` to no longer handle property sync for a game object.
+
+
+## Replicate script properties
+Position, rotation and scale is automatically replicated, but gameplay data like health, score or other more specific data needs to be added manually. It is possible to replicate game object properties of any accepted property type:
+
+```lua
+go.property("health", 10)
+go.property("berserk", true)
+go.property("direction", vmath.vector3(0, 1, 0))
+-- and so on
+```
+
+In order to replicate a game object script property you need to explicily specify it when the game object is spawned or created:
+
+```lua
+local options = {
+	properties = {
+		-- id of the script component -> list of properties to replicate
+		player = { "health", "berserk", "direction" }
+	}
+}
+fusion.create_object(factory_url, map, owner_mode, options, id)
+fusion.spawn(factory_url, position, rotation, map, owner_mode, options)
+```
+
+It is also possible to disable replication of the game object position, rotation and scale by setting the `replication_mode` option to `fusion.REPLICATION_MODE_NONE`:
+
+```lua
+local options = {
+	replication_mode = fusion.REPLICATION_MODE_NONE
+}
+```
 
 
 ## Authority and Ownership
@@ -46,11 +79,11 @@ Authority mode is decided when the object is registered with Fusion:
 
 ```lua
 local function on_player_joined()
-	fusion.create_object(map, factory_url, fusion.OWNERMODE_TRANSACTION, options, id)
-	fusion.create_object(map, factory_url, fusion.OWNERMODE_PLAYERATTACHED, options, id)
-	fusion.create_object(map, factory_url, fusion.OWNERMODE_DYNAMIC, options, id)
-	fusion.create_object(map, factory_url, fusion.OWNERMODE_MASTERCLIENT, options, id)
-	fusion.create_object(map, factory_url, fusion.OWNERMODE_GAMEGLOBAL, options, id)
+	fusion.create_object(factory_url, map, fusion.OWNERMODE_TRANSACTION, options, id)
+	fusion.create_object(factory_url, map, fusion.OWNERMODE_PLAYERATTACHED, options, id)
+	fusion.create_object(factory_url, map, fusion.OWNERMODE_DYNAMIC, options, id)
+	fusion.create_object(factory_url, map, fusion.OWNERMODE_MASTERCLIENT, options, id)
+	fusion.create_object(factory_url, map, fusion.OWNERMODE_GAMEGLOBAL, options, id)
 end
 ```
 
