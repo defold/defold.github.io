@@ -7,6 +7,7 @@ title: Photon Fusion - Large Scenes
 toc:
 - Large Scenes
 - Overview
+- Where to Go Next
 ---
 
 # Large Scenes
@@ -31,3 +32,8 @@ end
 ```
 
 Late-joining clients automatically receive current state from the server cache.
+
+
+## Where to Go Next
+* [Back to the Introduction](..)
+* [Quick Start Guide](../quick-start-guide) — Build a multiplayer demo in 10 steps

@@ -9,6 +9,7 @@ toc:
 - Spawn and Despawn
 - Events
 - Messages
+- Where to Go Next
 ---
 
 # Spawning
@@ -60,3 +61,8 @@ function on_message(self, message_id, message, sender)
 	end
 end
 ```
+
+
+## Where to Go Next
+* [Back to the Introduction](..)
+* [Quick Start Guide](../quick-start-guide) — Build a multiplayer demo in 10 steps
