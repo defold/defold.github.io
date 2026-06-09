@@ -139,7 +139,7 @@ _Mad Skills Motocross 2 Haunted Race_
 
 ##### What do you think Defold brought to this project that would have been harder in another engine?
 
-**Paweł:** The short answer is: a lot less friction. Defold give us a small, web-friendly base, a powerful path for low-level code functionalities through native extensions, and runtime meshes that were great for the whole visual approach. That combination made it realistic to rebuild the game for the web from scratch without dragging a lot of mobile baggage along with it. And iteration speed while developing games in Defold is incredible. It also helped that the project stayed readable. We were not dealing with huge callback chains or a lot of platform-specific glue. The code stayed modular, and the important systems remained easy to reason about.
+**Paweł:** The short answer is: a lot less friction. Defold gave us a small, web-friendly base, a powerful path for low-level code functionalities through native extensions, and runtime meshes that were great for the whole visual approach. That combination made it realistic to rebuild the game for the web from scratch without dragging a lot of mobile baggage along with it. And iteration speed while developing games in Defold is incredible. It also helped that the project stayed readable. We were not dealing with huge callback chains or a lot of platform-specific glue. The code stayed modular, and the important systems remained easy to reason about.
 
 **Eugene:** Defold is small, fast and efficient.
 
