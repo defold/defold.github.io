@@ -7,7 +7,9 @@ title: Photon Fusion - Remote Procedure Calls
 toc:
 - RPCs
 - Overview
-- Subscribe
+- RPC modes
+- RPC events
+- RPC messages
 - Where to Go Next
 ---
 
@@ -37,7 +39,51 @@ end)
 ```
 
 
-## Subscribe
+## RPC modes
+It is possible to target a specific player, all players (broadcast) or the owner of an object.
+
+```lua
+-- broadcast to all players
+local target_player = 0
+local target_object = 0
+local event = hash("chat_message")
+local data = { text = "Hello" }
+fusion.rpc(target_player, target_object, event, data)
+
+
+-- send to a specific player
+local target_player = 1234
+local target_object = 0
+local event = hash("chat_message")
+local data = { text = "Hello" }
+fusion.rpc(target_player, target_object, event, data)
+
+
+-- send to the owner of an object
+local target_player = fusion.OBJECT_OWNER_PLAYER_ID
+local target_object = 1234
+local event = hash("chat_message")
+local data = { text = "Hello" }
+fusion.rpc(target_player, target_object, event, data)
+```
+
+
+## RPC events
+All incoming RPCs are received as events of type `fusion.EVENT_RPC` in the `fusion.on_event` listener:
+
+```lua
+fusion.on_event(function(self, event_id, data)
+	if event_id == fusion.EVENT_RPC then
+		print(data.event)				-- "chat_message"
+		print(message.text)				-- "Hello"
+	end
+end)
+```
+
+
+## RPC messages
+RPCs can also be received as Defold messages. An RPC targeting the owner of an object is sent as a Defold message to the game object associated with the object. Broadcast and player targeted RPCs can be subscribed to and will in such a case be received as Defold messages by the subscribing game objects:
+
 
 ```lua
 function init(self)
