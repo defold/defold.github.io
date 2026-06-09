@@ -22,6 +22,31 @@
     "project_url": "https://github.com/wraplord/extension-dragonbones",
     "release_tags": [
         {
+            "published_at": "2026-05-29T10:59:24Z",
+            "version": "0.6.4",
+            "zip": "https://github.com/wraplord/extension-dragonbones/archive/refs/tags/0.6.4.zip"
+        },
+        {
+            "published_at": "2026-05-27T15:32:28Z",
+            "version": "0.6.3",
+            "zip": "https://github.com/wraplord/extension-dragonbones/archive/refs/tags/0.6.3.zip"
+        },
+        {
+            "published_at": "2026-05-27T10:35:35Z",
+            "version": "0.6.2",
+            "zip": "https://github.com/wraplord/extension-dragonbones/archive/refs/tags/0.6.2.zip"
+        },
+        {
+            "published_at": "2026-05-27T00:24:09Z",
+            "version": "0.6.1",
+            "zip": "https://github.com/wraplord/extension-dragonbones/archive/refs/tags/0.6.1.zip"
+        },
+        {
+            "published_at": "2026-05-10T10:55:37Z",
+            "version": "0.6.0",
+            "zip": "https://github.com/wraplord/extension-dragonbones/archive/refs/tags/0.6.0.zip"
+        },
+        {
             "published_at": "2026-04-23T15:59:32Z",
             "version": "0.5.4",
             "zip": "https://github.com/wraplord/extension-dragonbones/archive/refs/tags/0.5.4.zip"
@@ -103,6 +128,36 @@
         }
     ],
     "releases": [
+        {
+            "message": "Minor fix",
+            "published_at": "2026-05-29T10:59:24Z",
+            "tag": "0.6.4",
+            "zip": "https://github.com/wraplord/extension-dragonbones/archive/refs/tags/0.6.4.zip"
+        },
+        {
+            "message": "- To prevent drawing on top/below sprites, material tag has been change to 'tile'. The old tag is similar to tile but has different blend function.\n- load message has a new property texture_name to enable dynamic spawning of '/BatchDragonModel'.  This is useful for culling since dragonbone model can be spawn and deleted for example if it's far away from hero.",
+            "published_at": "2026-05-27T15:32:28Z",
+            "tag": "0.6.3",
+            "zip": "https://github.com/wraplord/extension-dragonbones/archive/refs/tags/0.6.3.zip"
+        },
+        {
+            "message": "Moving the camera led to wrong renditions. This will fix  it by offsetting instance transform.",
+            "published_at": "2026-05-27T10:35:35Z",
+            "tag": "0.6.2",
+            "zip": "https://github.com/wraplord/extension-dragonbones/archive/refs/tags/0.6.2.zip"
+        },
+        {
+            "message": "Bug when camera is moving far away from origin",
+            "published_at": "2026-05-27T00:24:09Z",
+            "tag": "0.6.1",
+            "zip": "https://github.com/wraplord/extension-dragonbones/archive/refs/tags/0.6.1.zip"
+        },
+        {
+            "message": "The dragonbones.fade_in_animation function has been updated. The new signature is\n`fade_in_animation(instance, animation_name, config)`\nThe config is a table with fields:\n      layer = blending layer default 0\n      loop = -1 means use the value set in editor, 0 means loop infinitely, [1\\~N] means repeat N times.\n      fade_in_time = fadeIn time to enable blending and layering.\n      time_scale = default 1.0 [(-N\\~0) Reverse play, 0 Stop play, (0~1) Slow play, 1 Normal play, (1\\~N) Fast play]",
+            "published_at": "2026-05-10T10:55:37Z",
+            "tag": "0.6.0",
+            "zip": "https://github.com/wraplord/extension-dragonbones/archive/refs/tags/0.6.0.zip"
+        },
         {
             "message": "Fix texture thin black bars by using blend_factor_one",
             "published_at": "2026-04-23T15:59:32Z",
