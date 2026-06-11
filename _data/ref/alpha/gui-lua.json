@@ -3886,17 +3886,17 @@
             "type": "CONSTANT"
         },
         {
-            "brief": "convert screen position to the local node position",
-            "description": "Convert the screen position to the local position of supplied node",
+            "brief": "convert a screen position to a node position",
+            "description": "Converts a screen-space position to the local position value for the supplied node.\nThe conversion takes the parent transform, anchors, adjust mode, and adjust reference into account.",
             "error": "",
-            "examples": "",
+            "examples": "Animate a node to the pressed pointer position:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;.&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;acquire_input_focus&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">marker</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;marker&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">on_input</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">action_id</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">action_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;touch&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">pressed</span> <span class=\"kr\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">screen_position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">screen_x</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">screen_y</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">target_position</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">screen_to_local</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">marker</span><span class=\"p\">,</span> <span class=\"n\">screen_position</span><span class=\"p\">)</span>\n        <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">marker</span><span class=\"p\">,</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">PROP_POSITION</span><span class=\"p\">,</span> <span class=\"n\">target_position</span><span class=\"p\">,</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">EASING_OUTQUAD</span><span class=\"p\">,</span> <span class=\"mf\">0.2</span><span class=\"p\">)</span>\n        <span class=\"kr\">return</span> <span class=\"kc\">true</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "gui.screen_to_local",
             "notes": [],
             "parameters": [
                 {
-                    "doc": "node used for getting local transformation matrix",
+                    "doc": "node whose local position space should be used",
                     "is_optional": "False",
                     "name": "node",
                     "types": [
@@ -3904,7 +3904,7 @@
                     ]
                 },
                 {
-                    "doc": "screen position",
+                    "doc": "screen-space position",
                     "is_optional": "False",
                     "name": "screen_position",
                     "types": [
@@ -3915,7 +3915,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "local position",
+                    "doc": "local position value for the node",
                     "name": "local_position",
                     "types": [
                         "vector3"
