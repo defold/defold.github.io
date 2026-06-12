@@ -129,7 +129,7 @@ These are per-example files generated for LLM usage.
 
 - [Apply force](https://defold.com/llms/examples/physics/apply_force.md) - This example demonstrates how to apply directional force to all dynamic blocks on touch/click and draws debug direction lines
 - [Apply Linear Impulse](https://defold.com/llms/examples/physics/apply_linear_impulse.md) - Apply a linear impulse to a dynamic physics body on click or touch
-- [Box2D Chain Terrain](https://defold.com/llms/examples/physics/box2d_chain_terrain.md) - Create Box2D chain terrain from script using scripting with Box2D V2 (legacy) and V3
+- [Box2D Chain Terrain](https://defold.com/llms/examples/physics/box2d_chain_terrain.md) - Create Box2D chain terrain from script using Box2D V2 legacy and Box2D V3
 - [Dynamic physics](https://defold.com/llms/examples/physics/dynamic.md) - This example shows a simple setup with dynamic physics objects
 - [Fixed timestep interpolation](https://defold.com/llms/examples/physics/interpolation.md) - This example shows how to smooth physics motion in fixed update mode by interpolating a visual sprite while keeping the physics body fixed-step
 - [Hinge joint physics](https://defold.com/llms/examples/physics/hinge_joint.md) - This example shows a simple setup with a dynamic body physics object and two dynamic wheel physics object joined together with a joint of type "hinge"
