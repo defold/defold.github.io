@@ -1231,6 +1231,82 @@ def validate_asset_tags(asset_source_dir):
             details += "\n... and {} more".format(len(unknown_tags) - 50)
         raise ValueError("Unknown asset tags:\n{}".format(details))
 
+ASSET_EXTERNAL_ACTION_TYPES = set(["buy", "support", "donate", "sponsor", "external"])
+ASSET_EXTERNAL_ACTION_HOSTS = [
+    "itch.io",
+    "patreon.com",
+    "ko-fi.com",
+    "paypal.com",
+    "paypal.me",
+    "buy.stripe.com",
+    "checkout.stripe.com",
+    "gumroad.com",
+    "github.com",
+    "opencollective.com",
+]
+ASSET_EXTERNAL_ACTION_BLOCKED_LABELS = [
+    "official defold purchase",
+    "official defold checkout",
+    "defold checkout",
+]
+
+def asset_external_action_host_allowed(host):
+    host = (host or "").lower().rstrip(".")
+    if host.startswith("www."):
+        host = host[4:]
+    for allowed_host in ASSET_EXTERNAL_ACTION_HOSTS:
+        if host == allowed_host or host.endswith("." + allowed_host):
+            return True
+    return False
+
+def validate_asset_external_actions(asset_source_dir):
+    errors = []
+    for filename in find_files(asset_source_dir, "*.json"):
+        asset_id = os.path.basename(filename).replace(".json", "")
+        asset = read_as_json(filename)
+        external_actions = asset.get("external_actions", [])
+
+        if external_actions in (None, ""):
+            continue
+        if not isinstance(external_actions, list):
+            errors.append("{}: external_actions must be an array".format(asset_id))
+            continue
+        if len(external_actions) > 3:
+            errors.append("{}: external_actions can contain at most 3 entries".format(asset_id))
+
+        for index, action in enumerate(external_actions):
+            label = "{} external_actions[{}]".format(asset_id, index)
+            if not isinstance(action, dict):
+                errors.append("{} must be an object".format(label))
+                continue
+
+            action_type = (action.get("type") or "external").lower()
+            if action_type not in ASSET_EXTERNAL_ACTION_TYPES:
+                errors.append("{} has unsupported type: {}".format(label, action.get("type")))
+
+            action_label = (action.get("label") or "").strip()
+            if not action_label:
+                errors.append("{} must have a label".format(label))
+            elif len(action_label) > 50:
+                errors.append("{} label must be 50 characters or fewer".format(label))
+            elif action_label.lower() in ASSET_EXTERNAL_ACTION_BLOCKED_LABELS:
+                errors.append("{} label is misleading: {}".format(label, action_label))
+
+            action_url = (action.get("url") or "").strip()
+            parsed_url = urlparse(action_url)
+            if parsed_url.scheme != "https":
+                errors.append("{} URL must use https://".format(label))
+            elif not parsed_url.netloc:
+                errors.append("{} URL must include a host".format(label))
+            elif not asset_external_action_host_allowed(parsed_url.hostname):
+                errors.append("{} URL host is not allowlisted: {}".format(label, parsed_url.hostname))
+
+    if errors:
+        details = "\n".join(errors[:50])
+        if len(errors) > 50:
+            details += "\n... and {} more".format(len(errors) - 50)
+        raise ValueError("Invalid asset external_actions:\n{}".format(details))
+
 def fix_platforms_case(platforms):
     if platforms:
         if platforms[0].lower() == "*":
@@ -1251,6 +1327,7 @@ def fix_platforms_case(platforms):
 def process_assets(tmp_dir):
     asset_source_dir = os.path.join(tmp_dir, "asset-portal-master", "assets")
     validate_asset_tags(asset_source_dir)
+    validate_asset_external_actions(asset_source_dir)
 
     # Jekyll assets collection
     asset_collection_dir = "assets"
