@@ -39,15 +39,55 @@ A: Registramos datos de uso de manera anónima de nuestros sitios y el editor De
 A: Defold fue creado por Ragnar Svensson y Christian Murray. Empezaron trabajando en el motor, editor y servidores in 2009. King y Defold empezaron una asociación en 2013 y King adquirió Defold en 2014. Lee la historia completa [aquí](/about).
 
 
+## Preguntas sobre desarrollo de juegos
+
 #### Q: ¿Puedo hacer juegos 3D en Defold?
 
 A: ¡Absolutamente! El motor es un motor 3D completo. Sin embargo, las herramientas fueron creadas para el 2D así que tendrás que hacer un montón de trabajo pesado. Un mejor soporte 3D está en planeación.
 
 
+## Preguntas sobre lenguajes de programación
+
 #### Q: ¿Qué lenguaje de programación utilizo en Defold?
 
-A: La lógica del juego en tu proyecto Defold está escrita principalmente en el lenguaje Lua (específicamente Lua 5.1/LuaJIT, refiere al [manual Lua](/manuals/lua) para más detalles). Lua es un lenguaje dinámico ligero que es rápido y poderoso. También puedes usar lenguaje nativo (C/C++, Objective-C, Java and JavaScript dependiendo de la plataforma) para extender el motor Defold con nuevas funcionalidades. Cuando crees materiales personalizados, se utiliza OpenGL ES SL shader language para escribir vértices y fragmentos
-shaders.
+A: La lógica del juego en tu proyecto Defold está escrita principalmente en el lenguaje Lua (específicamente Lua 5.1/LuaJIT, refiere al [manual Lua](/es/manuals/lua) para más detalles). Lua es un lenguaje dinámico ligero que es rápido y poderoso. Defold soporta transpiladores que emiten código Lua. Con una extensión de transpilador instalada, puedes usar lenguajes alternativos, como [Teal](https://github.com/defold/extension-teal), para escribir Lua con comprobación estática. También puedes usar lenguaje nativo (C/C++, Objective-C, Java and JavaScript dependiendo de la plataforma) para [extender el motor Defold con nuevas funcionalidades](/es/manuals/extensions/). Cuando crees [materiales personalizados](/es/manuals/material/), se utiliza OpenGL ES SL shader language para escribir vertex y fragment shaders.
+
+
+#### Q: ¿Puedo usar C++ para escribir la lógica del juego?
+
+A: El soporte de C++ existe en Defold principalmente para escribir extensiones nativas que interactúan con SDKs de terceros o APIs específicas de plataforma. El [dmSDK](https://defold.com/ref/stable/dmGameObject/) (la API C++ de Defold usada en extensiones nativas) se ampliará gradualmente con más funcionalidad para que sea posible escribir toda la lógica del juego en C++ si un desarrollador lo desea. Lua seguirá siendo el lenguaje principal usado para la lógica del juego, pero con la API C++ ampliada también será posible escribir lógica de juego usando C++. El trabajo para ampliar la API C++ consiste principalmente en mover archivos header privados existentes a la sección pública y limpiar APIs para uso público.
+
+
+#### Q: ¿Puedo usar TypeScript con Defold?
+
+A: TypeScript no está soportado oficialmente. La comunidad mantiene un conjunto de herramientas, [ts-defold](https://ts-defold.dev/), para escribir TypeScript y transpilarlo a Lua directamente desde VSCode.
+
+
+#### Q: ¿Puedo usar Haxe con Defold?
+
+A: Haxe no está soportado oficialmente. La comunidad mantiene [hxdefold](https://github.com/hxdefold/hxdefold) para escribir Haxe y transpilarlo a Lua.
+
+
+#### Q: ¿Puedo usar C# con Defold?
+
+A: La Defold Foundation agregó soporte para C# y lo puso a disposición como dependencia de biblioteca. C# es un lenguaje de programación ampliamente adoptado y ayudará a estudios y desarrolladores muy invertidos en C# a hacer la transición a Defold.
+
+
+#### Q: Me preocupa que agregar soporte de C# tenga un impacto negativo en Defold. ¿Debería preocuparme?
+
+Defold NO se está alejando de Lua como lenguaje principal de scripting. El soporte de C# se agrega como un nuevo lenguaje para extensiones. No afectará al motor a menos que elijas usar extensiones C# en tu proyecto.
+
+El soporte de C# tendrá un costo (tamaño del ejecutable, rendimiento en runtime, etc.), pero eso lo decide cada desarrollador o estudio.
+
+En cuanto a C# en sí, es un cambio relativamente menor, ya que el sistema de extensiones ya soporta muchos lenguajes (C/C++/Java/Objective-C/Zig). Los SDKs se mantendrán sincronizados generando los bindings de C#. Esto mantendrá los bindings actualizados con un esfuerzo mínimo.
+
+La Defold Foundation antes se oponía a agregar soporte de C# en Defold, pero cambió de opinión por varias razones:
+
+* Los estudios y desarrolladores siguen solicitando soporte de C#.
+* El soporte de C# se ha limitado solo a extensiones (es decir, bajo esfuerzo).
+* El núcleo del motor no se verá afectado.
+* Las APIs de C# pueden mantenerse sincronizadas con un esfuerzo mínimo si se generan.
+* El soporte de C# se basará en DotNet 9 con NativeAOT, generando así bibliotecas estáticas que el pipeline de build existente puede enlazar (igual que cualquier otra extensión de Defold).
 
 
 ## Preguntas de Plataforma
@@ -78,14 +118,16 @@ A: Con un click puedes publicar en Nintendo Switch, iOS, Android y HTML5 así co
 
 #### Q: ¿De cuál API de rendering depende Defold?
 
-A: Defold utiliza WebGL en builds HTML5, Metal en iOS y macOS y Vulkan o OpenGL ES 2.0 en las otras plataformas. Como desarrollador solo tienes que preocuparte por un render API utilizando un rendering pipeline completamente codificable.
+A: Como desarrollador solo tienes que preocuparte por una única API de render usando un [rendering pipeline completamente scriptable](/es/manuals/render/). La API de render scripts de Defold traduce las operaciones de render a las siguientes APIs gráficas:
+
+{% include shared/es/graphics-api.md %}
 
 
 #### Q: ¿Hay alguna forma de saber qué versión estoy corriendo?
 
 A: Si, selecciona la opción "About" en el menú Help. El popup muestra claramente la versión beta de Defold y, más importante, el release específico SHA1. Para la versión de runtime, usa [`sys.get_engine_info()`](/ref/sys/#sys.get_engine_info).
 
-La última version beta disponible para descarga desde http://d.defold.com/beta puede revisarse abriendo http://d.defold.com/beta/info.json (el mismo archivo existe para versiones estables: http://d.defold.com/stable/info.json)
+La última version beta disponible para descarga desde [http://d.defold.com/beta](http://d.defold.com/beta) puede revisarse abriendo [http://d.defold.com/beta/info.json](http://d.defold.com/beta/info.json) (el mismo archivo existe para versiones estables: [http://d.defold.com/stable/info.json](http://d.defold.com/stable/info.json))
 
 
 #### Q: ¿Hay alguna forma de saber en que plataforma está corriendo el juego?
@@ -156,7 +198,7 @@ A: Si, lo hace. Son llamadas [colecciones](/es/manuals/building-blocks/#collecti
 
 #### Q: No puedo agregar un objeto de juego como hijo de otro objeto de juego, ¿por qué?
 
-A: Probablemente sea que trataste de añadir un hijo en el archivo de objeto de juego y eso no es posible. Para entender por qué, hay que recordar que las jerarquías padre-hijo son estrictamente una jerarquía de transformación del gráfico de la escena _(scene-graph_). Un objeto de juego que no se haya colocado (o aparecido) en una escena (colección) no es parte del gráfico de la escena y no puede ser parte de la jerarquía de éste.
+A: Probablemente sea que trataste de añadir un hijo en el archivo de objeto de juego y eso no es posible. Solo es posible en el archivo de colección. Para entender por qué, hay que recordar que las jerarquías padre-hijo son estrictamente una jerarquía de transformación del gráfico de la escena _(scene-graph_). Un objeto de juego que no se haya colocado (o aparecido) en una escena (colección) no es parte del gráfico de la escena y no puede ser parte de la jerarquía de éste. Puedes obtener un id del padre del objeto de juego usando [`go.get_parent()`](https://defold.com/ref/stable/go-lua/#go.get_parent:id).
 
 
 #### Q: ¿Por quéno puedo transmitir mensajes a todos los hijos de un objeto de juego?
@@ -184,7 +226,7 @@ A: El shader de sprites integrado que es usado por defecto en todos los sprites 
 
 #### Q: Si selecciono la coordenada z de un sprite a 100 no se renderiza. ¿Por qué?
 
-A: La posición Z de un objeto de juego controla el orden del renderizado. Los valores bajos son dibujados antes de los valores más altos. En el script de render por defecto los objetos del juego con una profundidad del rango -1 a 1 son dibujados, cualquier cosa con el número más bajo o alto no serán dibujados. Puedes leer más sobre el script de render en la [documentación de Render](/manuals/render) oficial. En nodos GUI el valor Z es ignorado y no afecta el orden del renderizado. En lugar de eso los nodos son renderizados en el orden que son enlistados y de acuerdo a las jerarquías de los hijos (y por capas). Lee más sobre el renderizado de GUI y optimización de llamadas de dibujo (draw call) utilizando capas en la [documentación de GUI](/manuals/gui) oficial.
+A: La posición Z de un objeto de juego controla el orden del renderizado. Los valores bajos son dibujados antes de los valores más altos. En el script de render por defecto los objetos del juego con una profundidad del rango -1 a 1 son dibujados, cualquier cosa con el número más bajo o alto no serán dibujados. Puedes leer más sobre el script de render en la [documentación de Render](/es/manuals/render) oficial. En nodos GUI el valor Z es ignorado y no afecta el orden del renderizado. En lugar de eso los nodos son renderizados en el orden que son enlistados y de acuerdo a las jerarquías de los hijos (y por capas). Lee más sobre el renderizado de GUI y optimización de llamadas de dibujo (draw call) utilizando capas en la [documentación de GUI](/es/manuals/gui) oficial.
 
 
 #### Q: ¿Cambiar la proyección del rango Z a -100 hasta 100 afectaría el rendimiento?
@@ -214,22 +256,22 @@ A: Todo está basado por componente. Es posible crear un objeto sin cabeza con m
 
 #### Q: ¿Es posible cambiar el archivo de audio asociado con un componente de audio en ejecución?
 
-A: En general todos los recursos están estadísticamente declarados con el beneficio que obtienes control de recursos de manera libre. Puedes usar las [propiedades de recursos](/manuals/script-properties/#resource-properties) para cambiar qué recurso es asignado al componente.
+A: En general todos los recursos están estadísticamente declarados con el beneficio que obtienes control de recursos de manera libre. Puedes usar las [propiedades de recursos](/es/manuals/script-properties/#resource-properties) para cambiar qué recurso es asignado al componente.
 
 
 #### Q: ¿Hay una forma de accesar a las propiedades de la forma de colisión de físicas?
 
-A: No, por el momento no es posible.
+A: Sí, revisa la API de físicas, especialmente [`physics.get_shape()`](https://defold.com/ref/stable/physics-lua/#physics.get_shape:url-shape) y [`physics.set_shape()`](https://defold.com/ref/stable/physics-lua/#physics.set_shape:url-shape-table).
 
 
 #### Q: ¿Hay alguna forma rápida de renderizar los objetos colisionadores en mi escena? (como Box2D's debugdraw)
 
-A: Si, utiliza la bandera *physics.debug* en *game.project*. (Refiere a la [documentación de opciones del proyecto](/manuals/project-settings/#debug) oficial).
+A: Si, utiliza la bandera *physics.debug* en *game.project*. (Refiere a la [documentación de opciones del proyecto](/es/manuals/project-settings/#debug) oficial).
 
 
 #### Q: ¿Cuáles son los costos de rendimiento por tener muchos contactos/colisiones?
 
-A: Defold utiliza una versión modificada de Box2D en el fondo y el costo de rendimiento debe ser similar. Siempre puedes ver cuánto tiempo el motor tarda en las físicas sacando el [profiler](/manuals/debugging). También deberías considerar que tipo de colisiones usas. Objetos estáticos utilizan menos rendimiento, por ejemplo. Refiere a la [documentación de Físicas](/manuals/physics) en Defold para más detalles.
+A: Defold utiliza una versión modificada de Box2D en el fondo y el costo de rendimiento debe ser similar. Siempre puedes ver cuánto tiempo el motor tarda en las físicas sacando el [profiler](/es/manuals/debugging). También deberías considerar que tipo de colisiones usas. Objetos estáticos utilizan menos rendimiento, por ejemplo. Refiere a la [documentación de Físicas](/es/manuals/physics) en Defold para más detalles.
 
 
 #### Q: ¿Cuál es el impacto en el rendimiento por tener muchos componentes de efectos de partículas?
@@ -239,12 +281,12 @@ A: Depende de si están reproduciéndose o no. Un ParticleFx que no esté reprod
 
 #### Q: ¿Cómo recibo input a un objeto del juego dentro de una colección cargada por un proxy de colección?
 
-A: Cada proxy de colección cargado tiene su propio input stack. El Input está enrutado desde el input stack de la colección principal por el componente de proxy a los objetos en la colección. Esto significa que no es suficiente para el objeto del juego cargado en la colección el adquirir enfoque en el input, el objeto que aún mantiene _(holds_) el componente proxy necesita adquirir el enfoque de input también. Mira la [documentación de Input](/manuals/input) para más detalles.
+A: Cada proxy de colección cargado tiene su propio input stack. El Input está enrutado desde el input stack de la colección principal por el componente de proxy a los objetos en la colección. Esto significa que no es suficiente para el objeto del juego cargado en la colección el adquirir enfoque en el input, el objeto que aún mantiene _(holds_) el componente proxy necesita adquirir el enfoque de input también. Mira la [documentación de Input](/es/manuals/input) para más detalles.
 
 
 #### Q: ¿Puedo usar propiedades de script de tipo string?
 
-A: No. Defold soporta propiedades de tipo [hash](/ref/builtins#hash). Éstas pueen ser usadas para indicar tipos, identificadores de estado o claves de cualquier tipo. Los Hashes también pueden ser usados para guardar id's de objeto (paths) pero propiedades de [url](/ref/msg#msg.url) son usualmente prefereidas ya que el editor automáticamente puebla un desplegable con URLs relevantes para ti. Ver la [documentación de propiedades de Script](/manuals/script-properties) para más detalles.
+A: No. Defold soporta propiedades de tipo [hash](/ref/builtins#hash). Éstas pueen ser usadas para indicar tipos, identificadores de estado o claves de cualquier tipo. Los Hashes también pueden ser usados para guardar id's de objeto (paths) pero propiedades de [url](/ref/msg#msg.url) son usualmente prefereidas ya que el editor automáticamente puebla un desplegable con URLs relevantes para ti. Ver la [documentación de propiedades de Script](/es/manuals/script-properties) para más detalles.
 
 
 #### Q: ¿Cómo acceso a las células individuales de una matrix? (creadas usando [vmath.matrix4()](/ref/vmath/#vmath.matrix4:m1) o similares)?

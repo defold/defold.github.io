@@ -1,8 +1,8 @@
-Bundle resources are additional files and folders located as a part of your application bundle using the [*Bundle Resources* field](/manuals/project-settings/#bundle-resources) in *game.project*.
+Los recursos de bundle son archivos y carpetas adicionales ubicados como parte del bundle de tu aplicación usando el [campo *Bundle Resources*](/manuals/project-settings/#bundle-resources) en *game.project*.
 
-The *Bundle Resources* field should contain a comma separated list of directories containing resource files and folders that should be copied as-is into the resulting package when bundling. The directories must be specified with an absolute path from the project root, for example `/res`. The resource directory must contain subfolders named by `platform`, or `architecture-platform`.
+El campo *Bundle Resources* debe contener una lista separada por comas de directorios que contienen archivos de recursos y carpetas que deben copiarse tal cual en el paquete resultante al crear el bundle. Los directorios deben especificarse con una ruta absoluta desde la raíz del proyecto, por ejemplo `/res`. El directorio de recursos debe contener subcarpetas con nombres según `platform` o `architecture-platform`.
 
-Supported platforms are `ios`, `android`, `osx`, `win32`, `linux`, `web`, `switch` A subfolder named `common` is also allowed, containing resource files common for all platforms. Example:
+Las plataformas soportadas son `ios`, `android`, `osx`, `win32`, `linux`, `web`, `switch`. También se permite una subcarpeta llamada `common`, que contiene archivos de recursos comunes para todas las plataformas. Ejemplo:
 
 ```
 res
@@ -17,4 +17,4 @@ res
             └── filepaths.xml
 ```
 
-You can use [`sys.get_application_path()`](/ref/stable/sys/#sys.get_application_path:) to get the path to where the application is stored. Use this application base path to create the final absolute path to the files you need access to. Once you have the absolute path of these files you can use the `io.*` and `os.*` functions to access the files.
+Puedes usar [`sys.get_application_path()`](/ref/stable/sys/#sys.get_application_path:) para obtener la ruta donde está almacenada la aplicación. Usa esta ruta base de la aplicación para crear la ruta absoluta final a los archivos a los que necesitas acceder. Una vez que tengas la ruta absoluta de estos archivos, puedes usar las funciones `io.*` y `os.*` para acceder a los archivos.

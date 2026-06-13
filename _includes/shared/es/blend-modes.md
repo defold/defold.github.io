@@ -1,13 +1,13 @@
-The *Blend Mode* property defines how the component graphics should be blended with the graphics behind it. These are the available blend modes and how they are calculated:
+La propiedad *Blend Mode* define cómo deben mezclarse los gráficos del componente con los gráficos que hay detrás. Estos son los modos de mezcla disponibles y cómo se calculan:
 
 Alpha
-: Normal blending: `src.a * src.rgb + (1 - src.a) * dst.rgb`
+: Mezcla normal: `src.a * src.rgb + (1 - src.a) * dst.rgb`
 
 Add
-: Brighten the background with the color values of the corresponding pixels of the component: `src.rgb + dst.rgb`
+: Aclara el fondo con los valores de color de los píxeles correspondientes del componente: `src.rgb + dst.rgb`
 
 Multiply
-: Darken the background with values of the corresponding pixels of the component: `src.rgb * dst.rgb`
+: Oscurece el fondo con los valores de los píxeles correspondientes del componente: `src.rgb * dst.rgb`
 
 Screen
-: Opposite of Multiply. Brighten background and values of the corresponding pixels of the component: `src.rgb - dst.rgb * dst.rgb`
+: Lo opuesto a Multiply. Aclara el fondo y los valores de los píxeles correspondientes del componente: `src.rgb - dst.rgb * dst.rgb`

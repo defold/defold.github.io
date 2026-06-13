@@ -1,8 +1,7 @@
+## Manifiesto de privacidad de Apple
 
-## Apple Privacy Manifest
+El manifiesto de privacidad es una lista de propiedades que registra los tipos de datos recopilados por tu app o por un SDK de terceros, y las API con razones requeridas que usa tu app o el SDK de terceros. Para cada tipo de dato que recopila tu app o el SDK de terceros, y para cada categoría de API con razones requeridas que utiliza, la app o el SDK de terceros debe registrar los motivos en su archivo de manifiesto de privacidad incluido en el bundle.
 
-The privacy manifest is a property list that records the types of data collected by your app or third-party SDK, and the required reasons APIs your app or third-party SDK uses. For each type of data your app or third-party SDK collects and category of required reasons API it uses, the app or third-party SDK needs to record the reasons in its bundled privacy manifest file.
+Defold proporciona un manifiesto de privacidad predeterminado mediante el campo Privacy Manifest del archivo *game.project*. Al crear un bundle de la aplicación, el manifiesto de privacidad se fusionará con cualquier manifiesto de privacidad de las dependencias del proyecto y se incluirá en el bundle de la aplicación.
 
-Defold provides a default privacy manifest through the Privacy Manifest field in the *game.project* file. When creating an application bundle the privacy manifest will be merged with any privacy manifests in the project dependencies and included in the application bundle.
-
-Read more about privacy manifests in the [official documentation from Apple](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files?language=objc).
+Lee más sobre los manifiestos de privacidad en la [documentación oficial de Apple](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files?language=objc).

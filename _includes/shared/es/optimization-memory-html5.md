@@ -1,9 +1,9 @@
-## Heap size (HTML5)
-The heap size of a Defold HTML5 game can be configured from the [`heap_size` field](/manuals/project-settings/#heap-size) in *game.project*. Make sure to optimize memory usage of your game and set a minimal heap size.
+## Tamaño del heap (HTML5)
+El tamaño del heap de un juego HTML5 de Defold se puede configurar desde el [campo `heap_size`](/manuals/project-settings/#heap-size) en *game.project*. Asegúrate de optimizar el uso de memoria de tu juego y definir un tamaño de heap mínimo.
 
-For small games, 32 MB is an achievable heap size. For larger games, aim for 64–128 MB. If, for example, you're at 58 MB and further optimization isn't feasible, you can settle on 64 MB without overthinking it. There’s no strict target size — it depends on the game. Just aim for smaller sizes, ideally in steps of powers of two. 
+Para juegos pequeños, 32 MB es un tamaño de heap alcanzable. Para juegos más grandes, apunta a 64–128 MB. Si, por ejemplo, estás en 58 MB y no es viable optimizar más, puedes quedarte en 64 MB sin pensarlo demasiado. No hay un tamaño objetivo estricto: depende del juego. Simplemente apunta a tamaños más pequeños, idealmente en incrementos de potencias de dos.
 
-To check current heap usage you can launch your game and play the game in the most "resource heavy" level or section and monitor memory usage:
+Para comprobar el uso actual del heap, puedes iniciar tu juego y jugar el nivel o la sección con más carga de recursos, y monitorizar el uso de memoria:
 
 ```lua
 if html5 then
@@ -12,10 +12,10 @@ if html5 then
 end
 ```
 
-You can also open the developer tools of your browser and write the following in the console:
+También puedes abrir las herramientas de desarrollador de tu navegador y escribir lo siguiente en la consola:
 
 ```js
 HEAP8.length / 1024 / 1024
 ```
 
-If the memory usage remains at 32 MB, that's great! If not, follow the steps to [optimize the size of the engine itself and large assets such as sounds and textures](/manuals/optimization-size).
+Si el uso de memoria se mantiene en 32 MB, ¡excelente! Si no, sigue los pasos para [optimizar el tamaño del motor en sí y de assets grandes como sonidos y texturas](/manuals/optimization-size).

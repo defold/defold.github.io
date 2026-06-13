@@ -18,7 +18,7 @@ Desarrollar aplicaciones de Defold para la plataforma Windows es un proceso senc
 
 ## Configuraciones del Proyecto
 
-La configuración de la aplicación específica para Windows se realiza desde la [Sección de Windows](/manuals/project-settings/#windows) del archivo de configuración *game.project*.
+La configuración de la aplicación específica para Windows se realiza desde la [Sección de Windows](/es/manuals/project-settings/#windows) del archivo de configuración *game.project*.
 
 ## Icono de la aplicación
 
