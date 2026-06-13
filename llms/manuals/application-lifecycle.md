@@ -64,7 +64,7 @@ end
 
 ## Update Loop
 
-The Update Loop runs through a specific sequence once per frame. This sequence can be defined by 5 main phases:
+The `Update Loop` runs through a specific sequence once per frame. This sequence can be defined by 5 main phases:
 
 1. Input (processing and handling)
 2. Update (including Fixed, Regular, Late and engine components’ updates)
@@ -80,7 +80,7 @@ Any game object that has acquired input focus and contains collection proxy comp
 
 ### Update Phase
 
-The `Update` phase is a part of the Update Loop. It is started once for the root collection, and then runs recursively for each enabled collection proxy.
+The `Update` phase is a part of the `Update Loop`. It is started once for the root collection, and then runs recursively for each enabled collection proxy.
 
 Within a collection, Defold processes callbacks by component type: it iterates over all instances of a component type that implements the relevant stage, calls the Lua callback for each instance, flushes messages, then moves on to the next component type.
 

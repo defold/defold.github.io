@@ -141,7 +141,7 @@ Se você tiver entradas para esses atributos no material, o tipo semântico padr
 
 ### Definindo dados personalizados de atributo de vértice
 
-Semelhante às constantes de shader definidas pelo usuário, você também pode atualizar atributos de vértice em tempo de execução chamando go.get, go.set e go.animate:
+Semelhante às constantes de shader definidas pelo usuário, você também pode atualizar atributos de vértice em tempo de execução chamando `go.get`, `go.set` e `go.animate`:
 
 ![Custom material attribute](/manuals/images/materials/set_custom_attribute.png)
 

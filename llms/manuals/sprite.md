@@ -92,7 +92,7 @@ A sprite also has a number of different properties that can be manipulated using
 : The non-uniform scale of the sprite (`vector3`).
 
 `size`
-: The size of the sprite (`vector3`). Can only be changed if sprite size-mode is set to manual.
+: The size of the sprite (`vector3`). Can only be changed if sprite `Size Mode` is set to `Manual`.
 
 ## Material constants
 
@@ -103,7 +103,7 @@ go.animate("#sprite", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1),
 ```
 
 `tint`
-: The color tint of the sprite (`vector4`). The vector4 is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.
+: The color tint of the sprite (`vector4`). The `vector4` is used to represent the tint with `x`, `y`, `z`, and `w` corresponding to the red, green, blue and alpha tint.
 
 ## Material attributes
 

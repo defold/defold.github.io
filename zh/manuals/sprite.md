@@ -78,14 +78,14 @@ toc:
 : 精灵的非均匀缩放（`vector3`）。
 
 `size`
-: 精灵的大小（`vector3`）。只有当精灵的大小模式设置为手动时才能更改。
+: 精灵的大小（`vector3`）。只有当精灵的`大小模式`设置为`手动`时才能更改。
 
 ## 材质常量
 
 {% include shared/zh/material-constants.md component='sprite' variable='tint' %}
 
 `tint`
-: 精灵的颜色色调（`vector4`）。vector4 用于表示色调，其中 x、y、z 和 w 分别对应红色、绿色、蓝色和 alpha 色调。
+: 精灵的颜色色调（`vector4`）。`vector4` 用于表示色调，其中 `x`、`y`、`z` 和 `w` 分别对应红色、绿色、蓝色和 alpha 色调。
 
 ## 材质属性
 

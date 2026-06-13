@@ -87,7 +87,7 @@ function update(self, dt)
 end
 ```
 
-User-defined script properties can also be accessed through the get, set and animate functions, the same way as any other property:
+User-defined script properties can also be accessed through the `get`, `set` and `animate` functions, the same way as any other property:
 
 ```lua
 -- another.script

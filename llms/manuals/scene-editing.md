@@ -99,7 +99,7 @@ This tool consists of a set of square/cube manipulators (selected manipulator wi
 
 ### Visibility filters
 
-Click on the Visibility Eye Icon (`👁`) in the Toolbar to toggle visibility of various component types as well as bounding boxes and guide lines (`Component Guides` or shortcut `Ctrl` + `H` (Win/Linux) or `^ Ctrl` + `⌘ Cmd` + `H`(Mac)).
+Click on the **Visibility Eye Icon** (`👁`) in the Toolbar to toggle visibility of various component types as well as bounding boxes and guide lines (`Component Guides` or shortcut `Ctrl` + `H` (Win/Linux) or `^ Ctrl` + `⌘ Cmd` + `H`(Mac)).
 
 ## Grid settings
 

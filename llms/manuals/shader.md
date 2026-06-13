@@ -76,16 +76,16 @@ Samplers
 UV coordinates
 : A 2D coordinate is associated with a vertex and it maps to a point on a 2D texture. A portion, or the whole, of the texture can therefore be painted onto the shape described by a set of vertices.
 
-  A UV-map is typically generated in the 3D modeling program and stored in the mesh. The texture coordinates for each vertex are provided to the vertex shader as an attribute. A varying variable is then used to find the UV coordinate for each fragment as interpolated from the vertex values.
+  A UV-map is typically generated in the 3D modeling program and stored in the mesh. The texture coordinates for each vertex are provided to the vertex shader as an attribute. A `varying` variable is then used to find the UV coordinate for each fragment as interpolated from the vertex values.
 
 Varying variables
-: Varying types of variables are used to pass information between the vertex stage and the fragment stage.
+: `Varying` types of variables are used to pass information between the vertex stage and the fragment stage.
 
   1. A varying variable is set in the vertex shader for each vertex.
   2. During rasterization this value is interpolated for each fragment on the primitive being rendered. The distance of the fragment to the shape's vertices dictates the interpolated value.
   3. The variable is set for each call to the fragment shader and can be used for fragment calculations.
 
-  For instance, setting a varying to a `vec3` RGB color value on each corners of a triangle will interpolate the colors across the whole shape. Similarly, setting texture map lookup coordinates (or *UV-coordinates*) on each vertex in a rectangle allows the fragment shader to look up texture color values for the whole area of the shape.
+  For instance, setting a `varying` to a `vec3` RGB color value on each corners of a triangle will interpolate the colors across the whole shape. Similarly, setting texture map lookup coordinates (or *UV-coordinates*) on each vertex in a rectangle allows the fragment shader to look up texture color values for the whole area of the shape.
 
 ## Writing modern GLSL shaders
 

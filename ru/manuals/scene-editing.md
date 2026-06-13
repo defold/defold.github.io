@@ -142,7 +142,7 @@ toc:
 
 ### Фильтры видимости
 
-Нажмите на значок глаза (`👁`) на панели инструментов, чтобы переключать видимость различных типов компонентов, а также рамок и направляющих линий (`Component Guides`, сочетание клавиш <kbd>Ctrl</kbd> + <kbd>H</kbd> в Windows/Linux или <kbd>^ Ctrl</kbd> + <kbd>⌘ Cmd</kbd> + <kbd>H</kbd> на Mac).
+Нажмите на **значок глаза** (`👁`) на панели инструментов, чтобы переключать видимость различных типов компонентов, а также рамок и направляющих линий (`Component Guides`, сочетание клавиш <kbd>Ctrl</kbd> + <kbd>H</kbd> в Windows/Linux или <kbd>^ Ctrl</kbd> + <kbd>⌘ Cmd</kbd> + <kbd>H</kbd> на Mac).
 
 ![Visibility filters](/manuals/images/editor/visibilityfilters.png)
 

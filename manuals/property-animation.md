@@ -15,7 +15,7 @@ toc:
 
 # Property animation
 
-All numeric properties (numbers, vector3, vector4 and quaternions) and shader constants can be animated with the built-in animation system, using the function `go.animate()`. The engine will automatically "tween" properties for you according to given playback modes and easing functions. You can also specify custom easing functions.
+All numeric properties (`numbers`, `vector3`, `vector4` and quaternions) and shader constants can be animated with the built-in animation system, using the function `go.animate()`. The engine will automatically "tween" properties for you according to given playback modes and easing functions. You can also specify custom easing functions.
 
   ![Property animation](../images/animation/property_animation.png)
   ![Bounce loop](../images/animation/bounce.gif)

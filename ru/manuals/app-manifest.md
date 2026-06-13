@@ -127,7 +127,7 @@ toc:
 Имя поля в YAML: **`initialMemory`**
 Значение по умолчанию: **33554432**
 
-Размер памяти, выделяемой для веб-приложения. Если ALLOW_MEMORY_GROWTH=0, это общий объём памяти, который может использовать веб-приложение. Подробнее см. [здесь](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory). Значение задаётся в байтах. Обратите внимание, что оно должно быть кратно размеру страницы WebAssembly (64KiB).
+Размер памяти, выделяемой для веб-приложения. Если `ALLOW_MEMORY_GROWTH=0`, это общий объём памяти, который может использовать веб-приложение. Подробнее см. [здесь](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory). Значение задаётся в байтах. Обратите внимание, что оно должно быть кратно размеру страницы WebAssembly (64KiB).
 
 Этот параметр связан с `html5.heap_size` в *game.project*: [ссылка](https://defold.com/ru/manuals/html5/#heap-size). Значение, настроенное через манифест приложения, задаётся во время компиляции и используется как значение по умолчанию для параметра `INITIAL_MEMORY`. Значение из *game.project* переопределяет значение из манифеста приложения и используется во время выполнения.
 

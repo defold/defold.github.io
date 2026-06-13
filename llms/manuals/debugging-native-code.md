@@ -73,7 +73,7 @@ It is important that you match the correct engine with the callstack, otherwise 
 * Windows - the `dmengine.pdb` file in `build/x86_64-win32` contains the debug symbols for Windows builds.
 * HTML5 - the `dmengine.js.symbols` file in `build/wasm-web` contains the debug symbols for HTML5 builds.
 
-It is very important that your save the debug symbols somewhere for each public release you make of your game and that you know which release the debug symbols belong to. You will not be able to debug any native crashes if you do not have the debug symbols! Also, you should keep an unstripped version of the engine. This allows for the best symbolication of the callstack.
+It is very important that your save the debug symbols somewhere for each public release you make of your game and that you know which release the debug symbols belong to. You will not be able to debug any native crashes if you do not have the debug symbols! Also, you should keep an `unstripped` version of the engine. This allows for the best symbolication of the callstack.
 
 ### Uploading symbols to Google Play
 You can [upload the debug symbols to Google Play](https://developer.android.com/studio/build/shrink-code#android_gradle_plugin_version_40_or_earlier_and_other_build_systems) so that any crashes logged in Google Play will show symbolicated call stacks. Zip the contents of the `projecttitle.apk.symbols/lib/` bundle output folder. The folder includes one or more sub folders with architecture names such as `arm64-v8a` and `armeabi-v7a`.

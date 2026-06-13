@@ -683,7 +683,7 @@ A Collection in Defold is essentially a text file with a static scene descriptio
 
 #### Game Worlds
 
-Unity scenes share by default the same global game state and physics simulation, effectively the same *world*. In Defold, you have two options:
+Unity scenes share by default the same global game state and physics simulation, effectively the same *world* (*game world*). In Defold, you have two options:
 1. Instantiate game objects from a single game object file via a `Factory` or a collection file via a `Collection Factory` to a given, instantiated already *world*, like prefabs.
 2. Create a separate game *world* at runtime, with its own game objects, physics world, engine operations and addressing namespace via a collection loaded at bootstrap or via a `Collection Proxy` component.
 
@@ -1043,7 +1043,7 @@ Motion tweens allow the animation of various properties of an object, including 
 
 ## Defold—property animation
 
-Defold works with pixel images as opposed to vector graphics, thus it does not have an equivalent for shape tweening. However, motion tweening has a powerful equivalent in [property animation](https://defold.com/ref/go/#go.animate). This is accomplished via script, using the `go.animate()` function. The go.animate() function tweens a property (such as color, scale, rotation or position) from the starting value to the desired end value, using one of many available easing functions (including custom ones). Where Flash required user implementation of more advanced easing functions, Defold includes [many easing functions](#manuals:animation) built-into the engine.
+Defold works with pixel images as opposed to vector graphics, thus it does not have an equivalent for shape tweening. However, motion tweening has a powerful equivalent in [property animation](https://defold.com/ref/go/#go.animate). This is accomplished via script, using the `go.animate()` function. The `go.animate()` function tweens a property (such as color, scale, rotation or position) from the starting value to the desired end value, using one of many available easing functions (including custom ones). Where Flash required user implementation of more advanced easing functions, Defold includes [many easing functions](#manuals:animation) built-into the engine.
 
 Where Flash makes use of keyframes of graphics on a timeline for animation, one of the main methods of graphic animation in Defold is by flipbook animation of imported image sequences. Animations are organized in a game object component known as an atlas. In this instance we have an atlas for a game character with an animation sequence called "run". This consists of a series of png files:
 
@@ -1112,7 +1112,7 @@ Defold includes a modified version of the Box2D physics engine, which can simula
 
 The collision object includes the following properties:
 
-A box shape has been used as this was most appropriate for the bullet graphic. The other shape used for 2D collisions, sphere, will be used for the target. Setting the type to Kinematic means resolving collisions is done by your script as opposed to the built-in physics engine (for more information on the other types, please refer to the [physics manual](#manuals:physics)). The group and mask properties determine what collision group the object belongs to and what collision group it should be checked against, respectively. The current setup means a "bullet" can only collide with a "target". Imagine the setup was changed to the below:
+A box shape has been used as this was most appropriate for the bullet graphic. The other shape used for 2D collisions, sphere, will be used for the target. Setting the type to Kinematic means resolving collisions is done by your script as opposed to the built-in physics engine (for more information on the other types, please refer to the [physics manual](#manuals:physics)). The *Group* and *Mask* properties determine what collision group the object belongs to and what collision group it should be checked against, respectively. The current setup means a "bullet" can only collide with a "target". Imagine the setup was changed to the below:
 
 Now, bullets can collide with targets and other bullets. For reference, we have set up a collision object for the target that looks as follows:
 
@@ -1150,7 +1150,7 @@ on_reload
 
 The callback functions listed above are all optional and can be removed if not used. For details on how to set up input, please refer to the [input manual](#manuals:input). A common pitfall occurs when working with collection proxies - please refer to [this section](#manuals:input) of the input manual for more information.
 
-As discussed in the collision detection section, collision events are dealt with through the sending of messages to the game objects involved. Their respective script components receive the message in their on_message callback functions.
+As discussed in the collision detection section, collision events are dealt with through the sending of messages to the game objects involved. Their respective script components receive the message in their `on_message` callback functions.
 
 ## Flash—button symbols
 
@@ -1955,7 +1955,7 @@ Defold resolves name collisions by simply ignoring all but the last reference to
 
 # Ignoring files {#manuals:project-defignore}
 
-It is possible to configure the Defold editor and tools to ignore files and folders in a project. This can be useful if the project contains files with file extensions which conflict with file extensions used by Defold. One such example is Go language files with the .go file extension which is the same as the editor uses for game object files.
+It is possible to configure the Defold editor and tools to ignore files and folders in a project. This can be useful if the project contains files with file extensions which conflict with file extensions used by Defold. One such example is Go language files with the `.go` file extension which is the same as the editor uses for game object files.
 
 ## The `.defignore` file
 The files and folders to exclude are defined in a file named `.defignore` in the project root. The file should list files and folders to exclude, one per line. Example:
@@ -2318,7 +2318,7 @@ This tool consists of a set of square/cube manipulators (selected manipulator wi
 
 ### Visibility filters
 
-Click on the Visibility Eye Icon (`👁`) in the Toolbar to toggle visibility of various component types as well as bounding boxes and guide lines (`Component Guides` or shortcut `Ctrl` + `H` (Win/Linux) or `^ Ctrl` + `⌘ Cmd` + `H`(Mac)).
+Click on the **Visibility Eye Icon** (`👁`) in the Toolbar to toggle visibility of various component types as well as bounding boxes and guide lines (`Component Guides` or shortcut `Ctrl` + `H` (Win/Linux) or `^ Ctrl` + `⌘ Cmd` + `H`(Mac)).
 
 ## Grid settings
 
@@ -2533,7 +2533,7 @@ You can create custom menu items and editor lifecycle hooks using Lua files with
 
 ## Editor script runtime
 
-Editor scripts run inside an editor, in a Lua VM emulated by Java VM. All scripts share the same single environment, which means they can interact with each other. You can require Lua modules, just as with `.script` files, but Lua version that is running inside the editor is different, so make sure your shared code is compatible. Editor uses Lua version 5.2.x, more specifically [luaj](https://github.com/luaj/luaj) runtime, which is currently the only viable solution to run Lua on JVM. Besides that, there are some restrictions:
+Editor scripts run inside an editor, in a Lua VM emulated by Java VM. All scripts share the same single environment, which means they can interact with each other. You can `require` Lua modules, just as with `.script` files, but Lua version that is running inside the editor is different, so make sure your shared code is compatible. Editor uses Lua version 5.2.x, more specifically [luaj](https://github.com/luaj/luaj) runtime, which is currently the only viable solution to run Lua on JVM. Besides that, there are some restrictions:
 - there is no `debug` package;
 - there is no `os.execute`, though we provide a similar `editor.execute()`;
 - there is no `os.tmpname` and `io.tmpfile` — currently editor scripts can access files only inside the project directory;
@@ -4626,7 +4626,7 @@ end
 
 ## Update Loop
 
-The Update Loop runs through a specific sequence once per frame. This sequence can be defined by 5 main phases:
+The `Update Loop` runs through a specific sequence once per frame. This sequence can be defined by 5 main phases:
 
 1. Input (processing and handling)
 2. Update (including Fixed, Regular, Late and engine components’ updates)
@@ -4642,7 +4642,7 @@ Any game object that has acquired input focus and contains collection proxy comp
 
 ### Update Phase
 
-The `Update` phase is a part of the Update Loop. It is started once for the root collection, and then runs recursively for each enabled collection proxy.
+The `Update` phase is a part of the `Update Loop`. It is started once for the root collection, and then runs recursively for each enabled collection proxy.
 
 Within a collection, Defold processes callbacks by component type: it iterates over all instances of a component type that implements the relevant stage, calls the Lua callback for each instance, flushes messages, then moves on to the next component type.
 
@@ -5425,7 +5425,7 @@ Fonts added to your project are automatically converted into a texture format th
 
 By default, the conversion to rasterized glyph images happens at build time (offline). This has the drawback that each font needs to rasterize all possible glyphs in the build stage, producing potentially very large textures that consume memory and also increase the bundle size.
 
-By using "runtime fonts", the .ttf fonts will be bundled as-is, and the rasterization will happen on-demand at runtime. This minimizes both runtime memory usage and the bundle size.
+By using "runtime fonts", the `.ttf` fonts will be bundled as-is, and the rasterization will happen on-demand at runtime. This minimizes both runtime memory usage and the bundle size.
 
 ## Text layout support (e.g. Right-to-left)
 
@@ -5437,7 +5437,7 @@ See [Enabling Runtime Fonts](#manuals:font#enabling-runtime-fonts)
 ## Font collection
 
 The `.fontc` file format is also known as a font collection. In offline mode, only one font is associated with it.
-When using runtime fonts, you can associate more than one font file (.ttf) with the font collection.
+When using runtime fonts, you can associate more than one font file (`.ttf`) with the font collection.
 
 This allows for using the a font collection when rendering multiple texts in different languages, while also keeping the memory footprint low.
 E.g. loading a collection with the Japanese font, then associate that font with the current main font, followed by unloading the Japanese font collection.
@@ -5573,7 +5573,7 @@ For more information about shader uniforms, see the [Shader manual](#manuals:sha
 
 ## Enabling Runtime Fonts
 
-It is possible to use runtime generation for SDF type fonts, when using TrueType (.ttf) fonts.
+It is possible to use runtime generation for SDF type fonts, when using TrueType (`.ttf`) fonts.
 This approach can greatly reduce the download size and runtime memory consumption of a Defold game.
 The small downside is the asynchronous nature of generating each glyph.
 
@@ -5584,7 +5584,7 @@ This builds a custom engine that has this feature enabled.
 
 This feature is currently experimental, but with the intention to be used as the default workflow in the future.
 
-The `font.runtime_generation` setting affects all .ttf fonts in the project.
+The `font.runtime_generation` setting affects all `.ttf` fonts in the project.
 
 ### Font Scripting
 
@@ -5601,7 +5601,7 @@ It is also possible to manually update the glyph cache by calling `font.prewarm_
 
 ### Adding/removing fonts to a font collection
 
-For runtime fonts, it's possible to add or remove fonts (.ttf) to a font collection.
+For runtime fonts, it's possible to add or remove fonts (`.ttf`) to a font collection.
 This is useful when a large font has been split up into multiple files for different character sets (e.g. CJK)
 
 Adding a font to a font collection doesn't automatically load or render all the glyphs.
@@ -6376,7 +6376,7 @@ Animations can be played either once or in a loop. How the animation plays is de
 
 # Property animation {#manuals:property-animation}
 
-All numeric properties (numbers, vector3, vector4 and quaternions) and shader constants can be animated with the built-in animation system, using the function `go.animate()`. The engine will automatically "tween" properties for you according to given playback modes and easing functions. You can also specify custom easing functions.
+All numeric properties (`numbers`, `vector3`, `vector4` and quaternions) and shader constants can be animated with the built-in animation system, using the function `go.animate()`. The engine will automatically "tween" properties for you according to given playback modes and easing functions. You can also specify custom easing functions.
 
 ## Property animation
 
@@ -7019,13 +7019,13 @@ Locked rotation
 : Setting this property totally disables rotation on the collision object, no matter what forces are brought to it.
 
 Bullet
-: Setting this property enables continuous collision detection (CCD) between the collision object and other dynamic collision objects. The Bullet property is ignored if the Type is not set to `Dynamic`.
+: Setting this property enables continuous collision detection (CCD) between the collision object and other dynamic collision objects. The *Bullet* property is ignored if the *Type* is not set to `Dynamic`.
 
 Group
 : The name of the collision group the object should belong to. You can have 16 different groups and you name them as you see fit for your game. For example "players", "bullets", "enemies" and "world". If the *Collision Shape* is set to a tile map, this field is not used but the groups names are taken from the tile source. [Learn more about collision groups](#manuals:physics-groups).
 
 Mask
-: The other _groups_ this object should collide with. You can name one group or specify multiple groups in a comma separated list. If you leave the Mask field empty, the object will not collide with anything. [Learn more about collision groups](#manuals:physics-groups).
+: The other _groups_ this object should collide with. You can name one group or specify multiple groups in a comma separated list. If you leave the *Mask* field empty, the object will not collide with anything. [Learn more about collision groups](#manuals:physics-groups).
 
 Generate Collision Events
 : If enabled, will allow this object to send collision events
@@ -7104,13 +7104,13 @@ Orthographic Mode
 
 ## Using the camera
 
-All cameras are automatically enabled and updated during a frame, and the lua `camera` module is available in all script contexts. Since Defold 1.8.1 there is no longer a need to explicitly enable a camera via sending an `acquire_camera_focus` message to the camera component. The old acquire and release messages are still available, but it is recommended to instead use the "enable" and "disable" messages like for any other component that you wish to enable or disable:
+All cameras are automatically enabled and updated during a frame, and the lua `camera` module is available in all script contexts. Since Defold 1.8.1 there is no longer a need to explicitly enable a camera via sending an `acquire_camera_focus` message to the camera component. The old acquire and release messages are still available, but it is recommended to instead use the `enable` and `disable` messages like for any other component that you wish to enable or disable:
 ```lua
 msg.post("#camera", "disable")
 msg.post("#camera", "enable")
 ```
 
-To list all currently available cameras, you can use camera.get_cameras():
+To list all currently available cameras, you can use `camera.get_cameras()`:
 ```lua
 -- Note: The render calls are only available in a render script.
 --       The camera.get_cameras() function can be used anywhere,
@@ -7154,7 +7154,7 @@ camera.get_fov("main:/go#camera")
 render.set_camera("main:/go#camera")
 ```
 
-Each frame, the camera component that currently has camera focus will send a `set_view_projection` message to the "@render" socket:
+Each frame, the camera component that currently has camera focus will send a `set_view_projection` message to the `@render` socket:
 ```lua
 -- builtins/render/default.render_script
 --
@@ -7790,12 +7790,12 @@ go.animate("#mesh", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1), g
 ```
 
 `tint`
-: The color tint of the mesh (`vector4`). The vector4 is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.
+: The color tint of the mesh (`vector4`). The `vector4` is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.
 
 ## Vertex local vs world space
 If the Vertex Space setting of the mesh material is set to Local Space the data will be provided as-is to you in your shader, and you will have to transform vertices/normals as usual on the GPU.
 
-If the Vertex Space setting of the mesh material is set to World Space you have to either provide a default “position” and “normal”, stream, or you can select it from the dropdown, when editing the mesh. This is so that the engine can transform the data to world space for batching with other objects.
+If the Vertex Space setting of the mesh material is set to World Space you have to either provide a default `position` and `normal`, stream, or you can select it from the dropdown, when editing the mesh. This is so that the engine can transform the data to world space for batching with other objects.
 
 <!-- /manuals/model -->
 
@@ -8457,7 +8457,7 @@ A sprite also has a number of different properties that can be manipulated using
 : The non-uniform scale of the sprite (`vector3`).
 
 `size`
-: The size of the sprite (`vector3`). Can only be changed if sprite size-mode is set to manual.
+: The size of the sprite (`vector3`). Can only be changed if sprite `Size Mode` is set to `Manual`.
 
 ## Material constants
 
@@ -8468,7 +8468,7 @@ go.animate("#sprite", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1),
 ```
 
 `tint`
-: The color tint of the sprite (`vector4`). The vector4 is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.
+: The color tint of the sprite (`vector4`). The `vector4` is used to represent the tint with `x`, `y`, `z`, and `w` corresponding to the red, green, blue and alpha tint.
 
 ## Material attributes
 
@@ -8824,7 +8824,7 @@ Texture (box and pie nodes)
 : The texture to draw on the node. This is a reference to an image or animation in an atlas or tile source.
 
 Material (box, pie nodes, text and particlefx nodes)
-: The material to use when drawing the node. This can either be a material added to the Materials section of the outline or left blank to use the default material assigned to the GUI component.
+: The material to use when drawing the node. This can either be a material added to the Materials section of the *Outline* or left blank to use the default material assigned to the GUI component.
 
 Slice 9 (box nodes)
 : Set to preserve the pixel size of the node's texture around the edges when the node is resized. See the [Box node documentation](#manuals:gui-box) for details.
@@ -9258,7 +9258,7 @@ If the GUI component has been added to a game object somewhere in your game, the
 
 ## The "gui" namespace
 
-GUI scripts have access to the `gui` name space and [all the gui functions](https://defold.com/ref/gui). The `go` namespace is not available so you will need to separate game object logic into script components and communicate between the GUI and game object scripts. Any attempt to use the `go` functions will cause an error:
+GUI scripts have access to the `gui` name space and [all the `gui` functions](https://defold.com/ref/gui). The `go` namespace is not available so you will need to separate game object logic into script components and communicate between the GUI and game object scripts. Any attempt to use the `go` functions will cause an error:
 ```lua
 function init(self)
    local id = go.get_id()
@@ -9285,7 +9285,7 @@ msg.post("hud#gui", "set_stats", stats)
 
 GUI nodes can be manipulated by a GUI script attached to the component. Each node must have a unique *Id* that is set in the editor:
 
-The *Id* allows a script to get hold of a reference to the node and manipulate it with the [gui namespace functions](https://defold.com/ref/gui):
+The *Id* allows a script to get hold of a reference to the node and manipulate it with the [`gui` namespace functions](https://defold.com/ref/gui):
 ```lua
 -- extend the health bar by 10 units
 local healthbar_node = gui.get_node("healthbar")
@@ -9744,7 +9744,7 @@ The `"collision_response"` message is sent when one of the colliding objects is 
 `own_group`
 : the collision group of the collision object (`hash`)
 
-The collision_response message is only adequate to resolve collisions where you don't need any details on the actual intersection of the objects, for example if you want to detect if a bullet hits an enemy. There is only one of these messages sent for any colliding pair of objects each frame.
+The `collision_response` message is only adequate to resolve collisions where you don't need any details on the actual intersection of the objects, for example if you want to detect if a bullet hits an enemy. There is only one of these messages sent for any colliding pair of objects each frame.
 ```Lua
 function on_message(self, message_id, message, sender)
     -- check for the message
@@ -10304,7 +10304,7 @@ Gamepad Triggers
 
 ### Accelerometer input
 
-In addition to the five different trigger types listed above Defold also supports accelerometer input in native Android and iOS applications. Check the Use Accelerometer box in the Input section of your *game.project* file.
+In addition to the five different trigger types listed above Defold also supports accelerometer input in native Android and iOS applications. Check the *Use Accelerometer* box in the *Input* section of your *game.project* file.
 ```lua
 function on_input(self, action_id, action)
     if action.acc_x and action.acc_y and action.acc_z then
@@ -10483,7 +10483,7 @@ Mouse button inputs `MOUSE_BUTTON_LEFT`, `MOUSE_BUTTON_RIGHT` and `MOUSE_BUTTON_
 The examples below use the actions shown in the image above. As with all input you are free to name your input actions any way you want to.
 
 ## Mouse buttons
-Mouse buttons generate pressed, released and repeated events. Example showing how to detect input for the left mouse button (either pressed or released):
+Mouse buttons generate `pressed`, `released` and `repeated` events. Example showing how to detect input for the left mouse button (either pressed or released):
 ```lua
 function on_input(self, action_id, action)
     if action_id == hash("mouse_button_left") then
@@ -10552,7 +10552,7 @@ The [Defold-Input asset](https://defold.com/assets/defoldinput/) can be used to 
 Detecting when the user has clicked or tapped on a visual component is a very common operation that is needed in many games. It could be user interaction with a button or other UI element or the interaction with a game object such as a player controlled unit in a strategy game, some treasure on a level in a dungeon crawler or a quest giver in an RPG. The approach to use varies depending on the type of visual component.
 
 ### Detecting interaction with GUI nodes
-For UI elements there is the `gui.pick_node(node, x, y)` function that will return true or false depending on if the specified coordinate is within the bounds of a gui node or not. Refer to the [API docs](https://defold.com/ref/gui/#gui.pick_node:node-x-y), the [pointer over example](https://defold.com/examples/gui/pointer_over/) or the [button example](https://defold.com/examples/gui/button/) to learn more.
+For UI elements there is the `gui.pick_node(node, x, y)` function that will return `true` or `false` depending on if the specified coordinate is within the bounds of a gui node or not. Refer to the [API docs](https://defold.com/ref/gui/#gui.pick_node:node-x-y), the [pointer over example](https://defold.com/examples/gui/pointer_over/) or the [button example](https://defold.com/examples/gui/button/) to learn more.
 
 ### Detecting interaction with game objects
 For game objects it is more complicated to detect interaction since things such as camera translation and render script projection will impact the required calculations. There are two general approaches to detecting interaction with game objects:
@@ -10584,7 +10584,7 @@ Gamepad triggers allow you to bind standard gamepad input to game functions. Gam
 The examples below use the actions shown in the image above. As with all input you are free to name your input actions any way you want to.
 
 ## Digital buttons
-Digital buttons generate pressed, released and repeated events. Example showing how to detect input for a digital button (either pressed or released):
+Digital buttons generate `pressed`, `released` and `repeated` events. Example showing how to detect input for a digital button (either pressed or released):
 ```lua
 function on_input(self, action_id, action)
     if action_id == hash("gamepad_lpad_left") then
@@ -10608,7 +10608,7 @@ function on_input(self, action_id, action)
 end
 ```
 
-Analog sticks also generate pressed and released events when moved in the cardinal directions above a certain threshold value. This makes it easy to also use an analog stick as digital directional input:
+Analog sticks also generate `pressed` and `released` events when moved in the cardinal directions above a certain threshold value. This makes it easy to also use an analog stick as digital directional input:
 ```lua
 function on_input(self, action_id, action)
     if action_id == hash("gamepad_lstick_down") and action.pressed then
@@ -11168,7 +11168,7 @@ function update(self, dt)
 end
 ```
 
-User-defined script properties can also be accessed through the get, set and animate functions, the same way as any other property:
+User-defined script properties can also be accessed through the `get`, `set` and `animate` functions, the same way as any other property:
 ```lua
 -- another.script
 
@@ -11962,7 +11962,7 @@ Lua modules allow you to structure your project and create reusable library code
 
 ## Requiring Lua files
 
-Lua code stored in files with file ending ".lua" somewhere in your game project structure can be required into script and gui script files. To create a new Lua module file, right click the folder you want to create it in in the *Assets* view, then select `New... ▸ Lua Module`. Give the file a unique name and press `Ok`:
+Lua code stored in files with file ending ".lua" somewhere in your game project structure can be loaded with `require` into script and gui script files. To create a new Lua module file, right click the folder you want to create it in in the *Assets* view, then select `New... ▸ Lua Module`. Give the file a unique name and press `Ok`:
 
 Suppose the following code is added to the file "`main/anim.lua`":
 ```lua
@@ -11981,7 +11981,7 @@ function direction_animation(direction, char)
 end
 ```
 
-Then it's possible for any script to require this file and use the function:
+Then it's possible for any script to load this file with `require` and use the function:
 ```lua
 require "main.anim"
 
@@ -12000,7 +12000,7 @@ end
 
 The function `require` loads the given module. It starts by looking into the `package.loaded` table to determine whether the module is already loaded. If it is, then `require` returns the value stored at `package.loaded[module_name]`. Otherwise, it loads and evaluates the file via a loader.
 
-The syntax of the filename string provided to `require` is a bit special. Lua replaces '.' characters in the filename string with path separators: '/' on macOS and Linux and '\\' on Windows.
+The syntax of the filename string provided to `require` is a bit special. Lua replaces `.` characters in the filename string with path separators: `/` on macOS and Linux and `\\` on Windows.
 
 Note that it is usually a bad idea to use the global scope to store state and define functions like we did above. You risk naming collisions, exposing the state of the module or introduce coupling between users of the module.
 
@@ -12046,7 +12046,7 @@ If you hot reload the module file the code is run again, but nothing happens wit
 
 First, the table created in "module.lua" is created in local scope and a _reference_ to that table is returned to the user. Reloading "module.lua" evaluates the module code again but that creates a new table in the local scope instead of updating the table `m` refers to.
 
-Secondly, Lua caches required files. The first time a file is required, it is put in the table [`package.loaded`](https://defold.com/ref/package/#package.loaded) so it can be read faster on subsequent requires. You can force a file to be re-read from disk by setting the file's entry to nil: `package.loaded["my_module"] = nil`.
+Secondly, Lua caches files loaded with `require`. The first time a file is required, it is put in the table [`package.loaded`](https://defold.com/ref/package/#package.loaded) so it can be read faster on subsequent `require` calls. You can force a file to be re-read from disk by setting the file's entry to `nil`: `package.loaded["my_module"] = nil`.
 
 To properly hot reload a module, you need to reload the module, reset the cache and then reload all files that uses the module. This is far from optimal.
 
@@ -13067,7 +13067,7 @@ If you have entries for these attributes in the material, the default semantic t
 
 ### Setting custom vertex attribute data
 
-Similar to user defined shader constants, you can also update vertex attributes in runtime by calling go.get, go.set and go.animate:
+Similar to user defined shader constants, you can also update vertex attributes in runtime by calling `go.get`, `go.set` and `go.animate`:
 
 ```lua
 go.set("#sprite", "tint", vmath.vector4(1,0,0,1))
@@ -13374,7 +13374,7 @@ render.dispatch_compute(32, 32, 32, {constants = constants})
 
 Currently, generating any type of output from a compute program can only be done via `storage textures`. A storage texture is similar to a "regular texture" except that they support more functionality and configurability. Storage textures, as the name implies, can be used as a generic buffer that you can read and write data to from a compute program. You can then bind the same buffer to a different shader program for reading.
 
-To create a storage texture in Defold, you need to do this from a regular .script file. Render scripts does not have this functionality as dynamic textures need to be created via the resource API which is only available in regular .script files.
+To create a storage texture in Defold, you need to do this from a regular .script file. Render scripts does not have this functionality as dynamic textures need to be created via the `resource` API which is only available in regular .script files.
 ```lua
 -- In a .script file:
 function init(self)
@@ -13577,16 +13577,16 @@ Samplers
 UV coordinates
 : A 2D coordinate is associated with a vertex and it maps to a point on a 2D texture. A portion, or the whole, of the texture can therefore be painted onto the shape described by a set of vertices.
 
-  A UV-map is typically generated in the 3D modeling program and stored in the mesh. The texture coordinates for each vertex are provided to the vertex shader as an attribute. A varying variable is then used to find the UV coordinate for each fragment as interpolated from the vertex values.
+  A UV-map is typically generated in the 3D modeling program and stored in the mesh. The texture coordinates for each vertex are provided to the vertex shader as an attribute. A `varying` variable is then used to find the UV coordinate for each fragment as interpolated from the vertex values.
 
 Varying variables
-: Varying types of variables are used to pass information between the vertex stage and the fragment stage.
+: `Varying` types of variables are used to pass information between the vertex stage and the fragment stage.
 
   1. A varying variable is set in the vertex shader for each vertex.
   2. During rasterization this value is interpolated for each fragment on the primitive being rendered. The distance of the fragment to the shape's vertices dictates the interpolated value.
   3. The variable is set for each call to the fragment shader and can be used for fragment calculations.
 
-  For instance, setting a varying to a `vec3` RGB color value on each corners of a triangle will interpolate the colors across the whole shape. Similarly, setting texture map lookup coordinates (or *UV-coordinates*) on each vertex in a rectangle allows the fragment shader to look up texture color values for the whole area of the shape.
+  For instance, setting a `varying` to a `vec3` RGB color value on each corners of a triangle will interpolate the colors across the whole shape. Similarly, setting texture map lookup coordinates (or *UV-coordinates*) on each vertex in a rectangle allows the fragment shader to look up texture color values for the whole area of the shape.
 
 ## Writing modern GLSL shaders
 
@@ -15002,7 +15002,7 @@ It is important that you match the correct engine with the callstack, otherwise 
 * Windows - the `dmengine.pdb` file in `build/x86_64-win32` contains the debug symbols for Windows builds.
 * HTML5 - the `dmengine.js.symbols` file in `build/wasm-web` contains the debug symbols for HTML5 builds.
 
-It is very important that your save the debug symbols somewhere for each public release you make of your game and that you know which release the debug symbols belong to. You will not be able to debug any native crashes if you do not have the debug symbols! Also, you should keep an unstripped version of the engine. This allows for the best symbolication of the callstack.
+It is very important that your save the debug symbols somewhere for each public release you make of your game and that you know which release the debug symbols belong to. You will not be able to debug any native crashes if you do not have the debug symbols! Also, you should keep an `unstripped` version of the engine. This allows for the best symbolication of the callstack.
 
 ### Uploading symbols to Google Play
 You can [upload the debug symbols to Google Play](https://developer.android.com/studio/build/shrink-code#android_gradle_plugin_version_40_or_earlier_and_other_build_systems) so that any crashes logged in Google Play will show symbolicated call stacks. Zip the contents of the `projecttitle.apk.symbols/lib/` bundle output folder. The folder includes one or more sub folders with architecture names such as `arm64-v8a` and `armeabi-v7a`.
@@ -16351,7 +16351,7 @@ You can't modify files of the default html/css template in `builtins` folder. Fo
 The canvas shouldn't be styled with any border or padding. If you do, mouse input coordinates will be wrong.
 
 In *game.project* it is possible to turn-off the `Fullscreen` button and the `Made with Defold` link.
-Defold provides a dark and light theme for the index.html. The light theme is set by default but it is possible to change by changing `Custom CSS` file. There is also four predefined scale modes to chose from in the `Scale Mode` field.
+Defold provides a dark and light theme for the `index.html`. The light theme is set by default but it is possible to change by changing `Custom CSS` file. There is also four predefined scale modes to chose from in the `Scale Mode` field.
 
 The calculations for all scale modes include current screen DPI in case if you turn on `High Dpi` option in *game.project* (`Display` section)
 
@@ -16503,7 +16503,7 @@ It is possible to specify additional engine arguments when the engine is configu
     }
 ```
 
-You can also add `--config=foo1=bar1, --config=foo2=bar2` to the engine arguments field in the HTML5 section of *game.project* and it will be injected into the generated index.html file.
+You can also add `--config=foo1=bar1, --config=foo2=bar2` to the engine arguments field in the HTML5 section of *game.project* and it will be injected into the generated `index.html` file.
 
 At runtime you get the values like this:
 ```lua
@@ -17520,7 +17520,7 @@ Minimum supported version of Chrome. Cannot be less than 32. For more informatio
 YAML field name: **`initialMemory`**
 Default value: **33554432**
 
-The size of memory that allocated for web application. If ALLOW_MEMORY_GROWTH=0, this is the total amount of memory that web application can use. for more information look [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory). Value in bytes. Note that value must be a multiple of WebAssembly page size (64KiB).
+The size of memory that allocated for web application. If `ALLOW_MEMORY_GROWTH=0`, this is the total amount of memory that web application can use. for more information look [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory). Value in bytes. Note that value must be a multiple of WebAssembly page size (64KiB).
 That options relates to `html5.heap_size` in *game.project* [link](#manuals:html5). Option that configured via application manifest is set during compilation and used as default value for `INITIAL_MEMORY` option. Value from *game.project* overrides value from application manifest and used in runtime.
 
 ## Stack size (wasm-web only)
@@ -17959,7 +17959,7 @@ where *profile* can be:
 * **metrics** - runs VictoriaMetrics + Grafana as metrics backend and tool for visualization
 For more information about `docker compose` arguments see https://docs.docker.com/reference/cli/docker/compose/.
 
-When docker compose is up you can use **http://localhost:9000** as Build server address in Editor's preference or as `--build-server` value if you use Bob to build the project.
+When docker compose is up you can use **http://localhost:9000** as `Build server address` in Editor's preference or as `--build-server` value if you use Bob to build the project.
 
 Several profiles can be passed to command line. For example:
 ```sh

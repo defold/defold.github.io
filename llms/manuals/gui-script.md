@@ -45,7 +45,7 @@ If the GUI component has been added to a game object somewhere in your game, the
 
 ## The "gui" namespace
 
-GUI scripts have access to the `gui` name space and [all the gui functions](https://defold.com/ref/gui). The `go` namespace is not available so you will need to separate game object logic into script components and communicate between the GUI and game object scripts. Any attempt to use the `go` functions will cause an error:
+GUI scripts have access to the `gui` name space and [all the `gui` functions](https://defold.com/ref/gui). The `go` namespace is not available so you will need to separate game object logic into script components and communicate between the GUI and game object scripts. Any attempt to use the `go` functions will cause an error:
 ```lua
 function init(self)
    local id = go.get_id()
@@ -72,7 +72,7 @@ msg.post("hud#gui", "set_stats", stats)
 
 GUI nodes can be manipulated by a GUI script attached to the component. Each node must have a unique *Id* that is set in the editor:
 
-The *Id* allows a script to get hold of a reference to the node and manipulate it with the [gui namespace functions](https://defold.com/ref/gui):
+The *Id* allows a script to get hold of a reference to the node and manipulate it with the [`gui` namespace functions](https://defold.com/ref/gui):
 ```lua
 -- extend the health bar by 10 units
 local healthbar_node = gui.get_node("healthbar")

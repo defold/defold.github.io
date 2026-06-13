@@ -13,7 +13,7 @@ Gamepad triggers allow you to bind standard gamepad input to game functions. Gam
 The examples below use the actions shown in the image above. As with all input you are free to name your input actions any way you want to.
 
 ## Digital buttons
-Digital buttons generate pressed, released and repeated events. Example showing how to detect input for a digital button (either pressed or released):
+Digital buttons generate `pressed`, `released` and `repeated` events. Example showing how to detect input for a digital button (either pressed or released):
 ```lua
 function on_input(self, action_id, action)
     if action_id == hash("gamepad_lpad_left") then
@@ -37,7 +37,7 @@ function on_input(self, action_id, action)
 end
 ```
 
-Analog sticks also generate pressed and released events when moved in the cardinal directions above a certain threshold value. This makes it easy to also use an analog stick as digital directional input:
+Analog sticks also generate `pressed` and `released` events when moved in the cardinal directions above a certain threshold value. This makes it easy to also use an analog stick as digital directional input:
 ```lua
 function on_input(self, action_id, action)
     if action_id == hash("gamepad_lstick_down") and action.pressed then

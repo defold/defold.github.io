@@ -73,14 +73,14 @@ Orthographic Mode
 
 ## Używanie kamery
 
-Wszystkie kamery są automatycznie włączane i aktualizowane w każdej klatce, a moduł Lua `camera` jest dostępny we wszystkich kontekstach skryptowych. Od Defold 1.8.1 nie trzeba już jawnie włączać kamery przez wysłanie do komponentu wiadomości `acquire_camera_focus`. Stare wiadomości acquire i release nadal istnieją, ale zaleca się używanie wiadomości enable i disable, tak samo jak w przypadku innych komponentów, które chcesz włączać i wyłączać:
+Wszystkie kamery są automatycznie włączane i aktualizowane w każdej klatce, a moduł Lua `camera` jest dostępny we wszystkich kontekstach skryptowych. Od Defold 1.8.1 nie trzeba już jawnie włączać kamery przez wysłanie do komponentu wiadomości `acquire_camera_focus`. Stare wiadomości acquire i release nadal istnieją, ale zaleca się używanie wiadomości `enable` i `disable`, tak samo jak w przypadku innych komponentów, które chcesz włączać i wyłączać:
 
 ```lua
 msg.post("#camera", "disable")
 msg.post("#camera", "enable")
 ```
 
-Aby wyświetlić listę wszystkich obecnie dostępnych kamer, możesz użyć camera.get_cameras():
+Aby wyświetlić listę wszystkich obecnie dostępnych kamer, możesz użyć `camera.get_cameras()`:
 
 ```lua
 -- Uwaga: wywołania render są dostępne tylko w skrypcie renderującym.
@@ -129,7 +129,7 @@ camera.get_fov("main:/go#camera")
 render.set_camera("main:/go#camera")
 ```
 
-W każdej klatce komponent kamery, który ma aktualnie fokus kamery, wysyła wiadomość `set_view_projection` do gniazda "@render":
+W każdej klatce komponent kamery, który ma aktualnie fokus kamery, wysyła wiadomość `set_view_projection` do gniazda `@render`:
 
 ```lua
 -- builtins/render/default.render_script

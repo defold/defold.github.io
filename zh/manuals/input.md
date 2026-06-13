@@ -86,7 +86,7 @@ toc:
 
 ### 加速度计输入
 
-除了上面列出的五种不同触发器类型外，Defold还在原生Android和iOS应用程序中支持加速度计输入。在*game.project*文件的Input部分中勾选Use Accelerometer框。
+除了上面列出的五种不同触发器类型外，Defold还在原生Android和iOS应用程序中支持加速度计输入。在*game.project*文件的*Input*部分中勾选*Use Accelerometer*框。
 
 ```lua
 function on_input(self, action_id, action)
