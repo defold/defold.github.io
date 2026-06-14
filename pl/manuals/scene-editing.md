@@ -11,9 +11,9 @@ toc:
 - Standardowa nawigacja (wszystkie edytory wizualne)
 - Orientacja sceny 2D i 3D
 - Przegląd paska narzędzi
-- Zaznaczanie i manipulowanie obiektami
+- Zaznaczanie i manipulowanie obiektami {manipulating-objects}
 - Zaznaczanie obiektów
-- Filtry widoczności
+- Filtry widoczności {filtry-widocznosci}
 - Ustawienia siatki
 - 'Typ kamery: Perspective i Orthographic'
 - Free Camera Mode
@@ -88,7 +88,7 @@ W prawym górnym rogu widoku sceny znajduje się pasek narzędzi z często używ
 
 ![Pasek narzędzi](/manuals/images/editor/toolbar.png)
 
-## Zaznaczanie i manipulowanie obiektami
+## Zaznaczanie i manipulowanie obiektami {#manipulating-objects}
 
 ### Zaznaczanie obiektów
 
@@ -140,7 +140,7 @@ To narzędzie składa się z zestawu kwadratowych lub sześciennych manipulator�
 - 3 czerwone, niebieskie i zielone sześcienne manipulatory skalują obiekt osobno wzdłuż osi X, Y i Z,
 - 3 czerwone, zielone i niebieskie kwadratowe manipulatory z przezroczystym wypełnieniem skalują obiekt osobno na płaszczyznach X-Y, X-Z lub Y-Z.
 
-### Filtry widoczności
+### Filtry widoczności {#filtry-widocznosci}
 
 Kliknij **ikonę oka** (`👁`) na pasku narzędzi, aby przełączać widoczność różnych typów komponentów oraz obwiedni i linii pomocniczych (`Component Guides` albo skrót <kbd>Ctrl</kbd> + <kbd>H</kbd> w Windows/Linux lub <kbd>^ Ctrl</kbd> + <kbd>⌘ Cmd</kbd> + <kbd>H</kbd> na Macu).
 

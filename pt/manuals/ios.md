@@ -8,9 +8,9 @@ toc:
 - Desenvolvimento para iOS
 - O processo de assinatura de código da Apple
 - Desenvolvendo com uma conta gratuita de desenvolvedor Apple
-- Criando um pacote de aplicação iOS
+- Criando um pacote de aplicação iOS {creating-an-ios-application-bundle}
 - Instalando e iniciando o pacote em um iPhone conectado
-- Criando um storyboard
+- Criando um storyboard {creating-a-storyboard}
 - Criando um catálogo de assets de ícones
 - Instalando um pacote de aplicação iOS
 - Informações de Export Compliance
@@ -99,7 +99,7 @@ Esse arquivo de provisionamento pode ser usado junto com sua identidade de assin
 
 Quando o provisionamento expirar, você precisará compilar o app novamente no Xcode e obter um novo arquivo de provisionamento temporário conforme descrito acima.
 
-## Criando um pacote de aplicação iOS
+## Criando um pacote de aplicação iOS {#creating-an-ios-application-bundle}
 
 Quando você tiver a identidade de assinatura de código e o perfil de provisionamento, estará pronto para criar um pacote de aplicação autônomo para seu jogo a partir do editor. Basta selecionar <kbd>Projeto ▸ Empacotar... ▸ Aplicação iOS...</kbd> no menu.
 
@@ -132,7 +132,7 @@ $ brew install ios-deploy
 
 Se o editor não conseguir detectar o local de instalação da ferramenta ios-deploy, você precisará especificá-lo em [Preferências](/pt/manuals/editor-preferences/#tools). 
 
-### Criando um storyboard
+### Criando um storyboard {#creating-a-storyboard}
 
 Você cria um arquivo de storyboard usando o Xcode. Inicie o Xcode e crie um novo projeto. Selecione iOS e Single View App:
 

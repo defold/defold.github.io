@@ -7,10 +7,10 @@ title: 编辑器首选项
 toc:
 - 编辑器首选项
 - 通用
-- 代码
+- 代码 {code}
 - 在Visual Studio Code中打开脚本文件
-- 扩展
-- 工具
+- 扩展 {extensions}
+- 工具 {tools}
 - 键映射
 ---
 
@@ -50,7 +50,7 @@ Engine Arguments
 ```
 
 
-## 代码
+## 代码 {#code}
 
 ![](/manuals/images/editor/preferences_code.png)
 
@@ -88,7 +88,7 @@ Zoom on Scroll
 这里的 `.` 字符是必需的，用于打开整个工作区，而不是单个文件。
 
 
-## 扩展
+## 扩展 {#extensions}
 
 ![](/manuals/images/editor/preferences_extensions.png)
 
@@ -104,7 +104,7 @@ Build Server Password
 Build Server Headers
 : 构建原生扩展时发送到构建服务器的额外标头。对于使用CloudFlare服务或类似服务的扩展器很重要。
 
-## 工具
+## 工具 {#tools}
 
 ![](/manuals/images/editor/preferences_tools.png)
 

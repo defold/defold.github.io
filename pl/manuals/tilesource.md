@@ -8,7 +8,7 @@ toc:
 - Źródło kafelków
 - Tworzenie źródła kafelków
 - Animacje poklatkowe źródła kafelków
-- Kształty kolizji źródła kafelków
+- Kształty kolizji źródła kafelków {tile-source-collision-shapes}
 ---
 
 # Źródło kafelków
@@ -93,7 +93,7 @@ Flip horizontal
 Flip vertical
 : Odbija animację w pionie.
 
-## Kształty kolizji źródła kafelków
+## Kształty kolizji źródła kafelków {#tile-source-collision-shapes}
 
 Defold używa obrazu wskazanego we właściwości *Collision*, aby wygenerować wypukły kształt dla każdego kafelka. Kształt obrysowuje tę część kafelka, która zawiera informacje o kolorze, czyli nie jest w 100% przezroczysta.
 

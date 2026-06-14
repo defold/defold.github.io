@@ -37,13 +37,13 @@ This will give the following result:
 
 This is better. The window and graphics both have a good size, but if we look closer there is an obvious problem:
 
-The graphics look blurred! This is caused by the way the zoomed in graphics is sampled from the texture when rendered by the GPU. The default setting in the *game.project* file under the Graphics section is *linear*:
+The graphics look blurred! This is caused by the way the zoomed in graphics is sampled from the texture when rendered by the GPU. The default setting in the *game.project* file under the *Graphics* section is *linear*:
 
 Changing this to *nearest* will give the result we are after:
 
-Now we have crisp pixel-perfect graphics for our retro game. There are even more things to consider, such as disabling sub-pixels for sprites in *game.project*:
+Now we have crisp *pixel-perfect* graphics for our retro game. There are even more things to consider, such as disabling sub-pixels for sprites in *game.project*:
 
-When the Subpixels option is disabled sprites will never get rendered on half pixels and instead always snap to the nearest full pixel.
+When the *Subpixels* option is disabled sprites will never get rendered on half pixels and instead always snap to the nearest full pixel.
 
 ## High resolution graphics
 
@@ -66,11 +66,11 @@ This will create a high dpi back buffer on displays that support it. The game wi
 
 ## Creating an adaptive GUI
 
-The system for creating GUI components is built around a number of basic building blocks, or [nodes](https://defold.com/llms/manuals/gui.md), and while it may seem overly simple it can be used to create anything from buttons to complex menus and popups. The GUIs that you create can be configured to automatically adapt to screen size and orientation changes. You can for instance keep nodes anchored to the top, bottom or sides of the screen and nodes can either keep their size or stretch. The relationship between nodes as well as their size and appearance can also be configured to change when the screen size or orientation changes.
+The system for creating GUI components is built around a number of basic building blocks, or [nodes](https://defold.com/llms/manuals/gui.md), and while it may seem overly simple it can be used to create anything from buttons to complex menus and popups. The GUIs that you create can be configured to automatically adapt to screen size and orientation changes. You can for instance keep *nodes* anchored to the top, bottom or sides of the screen and nodes can either keep their size or stretch. The relationship between *nodes* as well as their size and appearance can also be configured to change when the screen size or orientation changes.
 
-### Node properties
+### *Node* properties
 
-Each node in a gui has a pivot point, a horizontal and vertical anchor as well as an adjust mode.
+Each *node* in a gui has a pivot point, a horizontal and vertical anchor as well as an adjust mode.
 
 * The pivot point defines the center point of a node.
 * The anchor mode controls how the node’s vertical and horizontal position is altered when the scene boundaries, or the parent node’s boundaries are stretched to fit the physical screen size.
@@ -84,4 +84,4 @@ Defold supports GUIs that automatically adapt to screen orientation changes on m
 
 ## Testing different screen sizes
 
-The Debug menu contains an option to simulate the resolution of either a certain device model resolution or a custom resolution. While the application is running you can select `Debug->Simulate Resolution` and pick one of the device models from the list. The running application window will resize and you'll be able to see how your game looks in a different resolution or with a different aspect ratio.
+The *Debug* menu contains an option to simulate the resolution of either a certain device model resolution or a custom resolution. While the application is running you can select `Debug->Simulate Resolution` and pick one of the device models from the list. The running application window will resize and you'll be able to see how your game looks in a different resolution or with a different aspect ratio.

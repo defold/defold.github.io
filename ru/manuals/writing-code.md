@@ -11,7 +11,7 @@ toc:
 - Написание нативного кода
 - Использование встроенного редактора кода
 - Автодополнение кода
-- Настройка анализа кода (Linting)
+- Настройка анализа кода (Linting) {linting-configuration}
 - Использование внешнего редактора кода
 - Visual Studio Code — Defold Kit
 - Программная документация
@@ -49,7 +49,7 @@ Defold имеет встроенный редактор кода, который
 
 ![](/images/editor/apireference.png)
 
-### Настройка анализа кода (Linting)
+### Настройка анализа кода (Linting) {#linting-configuration}
 
 Встроенный редактор кода выполняет анализ кода с помощью [Luacheck](https://luacheck.readthedocs.io/en/stable/index.html) и [Lua language server](https://luals.github.io/wiki/diagnostics/). Чтобы настроить Luacheck, создайте файл `.luacheckrc` в корне проекта. Смотрите [страницу конфигурации Luacheck](https://luacheck.readthedocs.io/en/stable/config.html) для списка доступных параметров. Defold использует следующие параметры по умолчанию:
 

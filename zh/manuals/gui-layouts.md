@@ -6,7 +6,7 @@ locale: zh
 title: Defold中的GUI布局
 toc:
 - 布局
-- 创建显示配置文件
+- 创建显示配置文件 {creating-display-profiles}
 - 自动布局选择（显示配置文件）
 - GUI布局
 - 动态配置文件选择
@@ -20,7 +20,7 @@ toc:
 
 Defold支持GUI自动适应移动设备上的屏幕方向变化。通过使用此功能，您可以设计适应各种屏幕尺寸的方向和纵横比的GUI。还可以创建与特定设备型号匹配的布局。
 
-## 创建显示配置文件
+## 创建显示配置文件 {#creating-display-profiles}
 
 默认情况下，*game.project*设置指定使用内置的显示配置文件设置文件（"builtins/render/default.display_profiles"）。默认配置文件是"Landscape"（1280像素宽和720像素高）和"Portrait"（720像素宽和1280像素高）。配置文件上没有设置设备型号，因此它们将匹配任何设备。
 

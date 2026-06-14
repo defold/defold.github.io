@@ -5,7 +5,7 @@ layout: manual
 locale: pl
 title: Strumieniowanie dźwięku w Defold
 toc:
-- Strumieniowanie dźwięku
+- Strumieniowanie dźwięku {sound-streaming}
 - Przykład
 - Jak włączyć strumieniowanie dźwięków
 - Najprostszy sposób
@@ -14,7 +14,7 @@ toc:
 - Pamięć podręczna fragmentów dźwięku
 ---
 
-# Strumieniowanie dźwięku
+# Strumieniowanie dźwięku {#sound-streaming}
 
 Domyślnie dane dźwiękowe są wczytywane w całości, ale czasem korzystniejsze może być ładowanie ich partiami, jeszcze przed użyciem. Nazywa się to strumieniowaniem.
 

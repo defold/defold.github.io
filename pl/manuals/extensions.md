@@ -13,7 +13,7 @@ toc:
 - Prosty przykład rozszerzenia
 - Cykl życia rozszerzenia
 - Zdefiniowane identyfikatory platform
-- Dzienniki serwera budowania
+- Dzienniki serwera budowania {build-server-logs}
 - Przykłady rozszerzeń
 ---
 
@@ -246,7 +246,7 @@ Następujące identyfikatory są definiowane przez serwer budowania dla każdej 
 * `DM_PLATFORM_LINUX`
 * `DM_PLATFORM_HTML5`
 
-## Dzienniki serwera budowania
+## Dzienniki serwera budowania {#build-server-logs}
 
 Dzienniki serwera budowania są dostępne, gdy projekt korzysta z natywnych rozszerzeń. Dziennik serwera budowania (`log.txt`) jest pobierany razem z własnym silnikiem podczas budowania projektu, przechowywany w pliku `.internal/%platform%/build.zip` i rozpakowywany także do folderu budowania projektu.
 

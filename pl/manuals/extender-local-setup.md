@@ -6,7 +6,7 @@ locale: pl
 title: Konfiguracja lokalnego serwera budowania
 toc:
 - Konfiguracja lokalnego serwera budowania
-- Jak uruchomić lokalny Extender ze wstępnie skonfigurowanymi artefaktami
+- Jak uruchomić lokalny Extender ze wstępnie skonfigurowanymi artefaktami {how-to-run-local-extender-with-preconfigured-artifacts}
 - A co z macOS i iOS?
 - Jak uruchomić lokalny Extender z artefaktami zbudowanymi lokalnie
 ---
@@ -17,7 +17,7 @@ Istnieją dwa sposoby uruchomienia lokalnego serwera budowania, znanego też jak
 1. Uruchomienie lokalnego serwera budowania z wcześniej przygotowanymi artefaktami.
 2. Uruchomienie lokalnego serwera budowania z artefaktami zbudowanymi lokalnie.
 
-## Jak uruchomić lokalny Extender ze wstępnie skonfigurowanymi artefaktami
+## Jak uruchomić lokalny Extender ze wstępnie skonfigurowanymi artefaktami {#how-to-run-local-extender-with-preconfigured-artifacts}
 
 Zanim uruchomisz lokalny serwer budowania, musisz zainstalować następujące oprogramowanie:
 

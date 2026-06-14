@@ -9,8 +9,8 @@ toc:
 - 设置输入绑定
 - 触发器类型
 - 加速度计输入
-- 输入焦点
-- 输入分派和 on_input()
+- 输入焦点 {input-focus}
+- 输入分派和 on_input() {input-dispatch-and-on_input}
 - 输入焦点和集合代理组件
 - 释放输入
 - 消耗输入
@@ -30,7 +30,7 @@ toc:
   1. 键盘 (包括按键输入和文本输入)
   2. 鼠标 (位置, 按键, 滚轮输入)
   3. 单点/多点触摸屏 (iOS, Android 设备和 HTML5 手机端)
-  4. 游戏手柄 (操作系统负责将其输入发送给游戏然后映射给脚本. 详见 [游戏手柄配置文件](#gamepads-settings-file))
+  4. 游戏手柄 (操作系统负责将其输入发送给游戏然后映射给脚本. 详见 [游戏手柄配置文件](/zh/manuals/input-gamepads/#gamepads-settings-file))
 
 输入绑定
 : 在输入发送到脚本之前，来自设备的原始输入通过输入绑定表转换为有意义的*操作*。
@@ -96,7 +96,7 @@ function on_input(self, action_id, action)
 end
 ```
 
-## 输入焦点
+## 输入焦点 {#input-focus}
 
 要在脚本组件或GUI脚本中监听输入操作，应将`acquire_input_focus`消息发送到持有该组件的游戏对象：
 
@@ -112,7 +112,7 @@ msg.post(".", "acquire_input_focus")
 如果已经获取输入焦点的游戏对象再次这样做，其组件将被移动到栈顶。
 
 
-## 输入分派和 on_input()
+## 输入分派和 on_input() {#input-dispatch-and-on_input}
 
 输入操作根据输入栈进行分派，从顶部到底部。
 

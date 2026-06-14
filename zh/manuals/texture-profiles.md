@@ -9,10 +9,10 @@ toc:
 - Basis Universal
 - ASTC
 - 纹理配置文件
-- 路径设置
+- 路径设置 {path-settings}
 - 配置文件
 - 纹理格式
-- 压缩器
+- 压缩器 {compressors}
 - 示例图像
 - 压缩时间
 - 信号损失
@@ -100,7 +100,7 @@ ASTC支持各种块大小，从4×4到12×12个图素，对应的比特率从每
 
 ![纹理配置文件偏好设置](/manuals/images/texture_profiles/texture_profiles_preferences.png)
 
-## 路径设置
+## 路径设置 {#path-settings}
 
 纹理配置文件的*路径设置*部分包含路径模式列表以及处理匹配路径的资源时使用的*配置文件*。路径表示为"Ant Glob"模式（有关详细信息，请参阅[文档](http://ant.apache.org/manual/dirtasks.html#patterns)）。可以使用以下通配符表示模式：
 
@@ -212,7 +212,7 @@ Basis Universal转码器支持许多输出格式，如`ASTC4x4`、`BCx`、`ETC2`
 `TEXTURE_FORMAT_RGBA_ASTC_12X12`
 
 
-## 压缩器
+## 压缩器 {#compressors}
 
 默认情况下支持以下纹理压缩器。当纹理文件加载到内存时，数据将被解压缩。
 

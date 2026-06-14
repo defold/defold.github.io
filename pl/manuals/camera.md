@@ -13,9 +13,9 @@ toc:
 - Zoomowanie kamery
 - Adaptacyjny zoom
 - Śledzenie obiektu gry
-- Konwersja współrzędnych myszy na współrzędne świata
+- Konwersja współrzędnych myszy na współrzędne świata {converting-mouse-to-world-coordinates}
 - Manipulacja w czasie działania
-- Rozwiązania kamer od społeczności
+- Rozwiązania kamer od społeczności {third-party-camera-solutions}
 ---
 
 # Kamery
@@ -256,7 +256,7 @@ Możesz sprawić, aby kamera śledziła obiekt gry, ustawiając obiekt gry, do k
 
 Innym sposobem jest aktualizowanie co klatkę pozycji obiektu gry, do którego przypisany jest komponent Camera, zgodnie z ruchem śledzonego obiektu.
 
-### Konwersja współrzędnych myszy na współrzędne świata
+### Konwersja współrzędnych myszy na współrzędne świata {#converting-mouse-to-world-coordinates}
 
 Gdy kamera została przesunięta, przybliżona lub korzysta z innej projekcji niż domyślna rozciągnięta projekcja ortograficzna, współrzędne myszy dostarczane do funkcji cyklu życia `on_input()` przestają odpowiadać współrzędnym świata obiektów gry. Trzeba wtedy ręcznie uwzględnić zmianę widoku albo projekcji. Kod konwertujący współrzędne myszy i ekranu na współrzędne świata wygląda tak:
 
@@ -319,7 +319,7 @@ Kamera ma kilka właściwości, którymi można sterować przy użyciu `go.get()
 : Obliczona macierz projekcji kamery. Tylko do odczytu (`matrix4`).
 
 
-## Rozwiązania kamer od społeczności
+## Rozwiązania kamer od społeczności {#third-party-camera-solutions}
 
 Społeczność stworzyła rozwiązania kamerowe implementujące typowe funkcje, takie jak trzęsienie ekranu, śledzenie obiektów gry, konwersję współrzędnych ekranu na współrzędne świata i wiele innych. Można je pobrać z portalu zasobów Defold:
 

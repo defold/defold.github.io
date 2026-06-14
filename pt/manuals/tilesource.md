@@ -8,7 +8,7 @@ toc:
 - Tile source
 - Criando um tile source
 - Animações flip-book de tile source
-- Formas de colisão de tile source
+- Formas de colisão de tile source {tile-source-collision-shapes}
 ---
 
 # Tile source
@@ -93,7 +93,7 @@ Flip horizontal
 Flip vertical
 : Inverte a animação verticalmente.
 
-## Formas de colisão de tile source
+## Formas de colisão de tile source {#tile-source-collision-shapes}
 
 O Defold usa uma imagem especificada na propriedade *Collision* para gerar uma forma _convexa_ para cada tile. A forma contornará a parte do tile que tem informação de cor, ou seja, que não é 100% transparente.
 

@@ -7,7 +7,7 @@ title: Defold中的GUI粒子特效
 toc:
 - GUI ParticleFX节点
 - 添加ParticleFX节点
-- 控制效果
+- 控制效果 {controlling-the-effect}
 ---
 
 # GUI ParticleFX节点
@@ -22,7 +22,7 @@ toc:
 
 ![Particle fx](/manuals/images/gui-particlefx/create.png)
 
-## 控制效果
+## 控制效果 {#controlling-the-effect}
 
 您可以通过脚本控制节点来启动和停止效果：
 

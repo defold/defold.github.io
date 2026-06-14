@@ -7,7 +7,7 @@ title: Particle fx de GUI en Defold
 toc:
 - Nodos ParticleFX de GUI
 - Añadir nodos Particle FX
-- Controlar el efecto
+- Controlar el efecto {controlling-the-effect}
 ---
 
 # Nodos ParticleFX de GUI
@@ -22,7 +22,7 @@ Puedes usar como origen del efecto los efectos de partículas que hayas añadido
 
 ![Particle fx](/manuals/images/gui-particlefx/create.png)
 
-## Controlar el efecto
+## Controlar el efecto {#controlling-the-effect}
 
 Puedes iniciar y detener el efecto controlando el nodo desde un script:
 

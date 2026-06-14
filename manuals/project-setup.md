@@ -6,7 +6,7 @@ locale: en
 title: Project setup
 toc:
 - Project setup
-- Creating a new local project
+- Creating a new local project {creating-a-new-project}
 - Adding the project to GitHub
 - Open an existing project
 - Open a recent project
@@ -16,7 +16,7 @@ toc:
 
 You can easily create a new project from within the Defold editor. You also have the option to open an existing project already located on your computer.
 
-## Creating a new local project
+## Creating a new local project {#creating-a-new-project}
 
 Click the <kbd>New Project</kbd> option and select what kind of project you would like to create. Specify a location on your hard drive where the project files will be stored. Click <kbd>Create New Project</kbd> to create the project in the location you've chosen. You can create a new project from a Template:
 

@@ -138,7 +138,7 @@ A: Да, посмотрите [`sys.get_sys_info()`](/ref/sys#sys.get_sys_info).
 {% include shared/ru/editor-faq.md %}
 
 
-## Вопросы о Linux
+## Вопросы о Linux {#linux-questions}
 {% include shared/ru/linux-faq.md %}
 
 

@@ -7,8 +7,8 @@ title: Desenvolvimento Defold para a plataforma Android
 toc:
 - Desenvolvimento Android
 - Processo de assinatura Android e Google Play
-- Criando um keystore
-- Criando um pacote de aplicativo Android
+- Criando um keystore {creating-a-keystore}
+- Criando um pacote de aplicativo Android {creating-an-android-application-bundle}
 - Instalando um pacote de aplicativo Android
 - Permissões
 - 'android.permission.INTERNET e android.permission.ACCESS_NETWORK_STATE (Nível de proteção: normal)'
@@ -31,7 +31,7 @@ Quando você cria um pacote de aplicativo Android a partir do editor Defold ou d
 Você **nunca** deve enviar sua aplicação para o Google Play se ela foi assinada usando um keystore de depuração. Sempre use um keystore dedicado que você mesmo criou.
 </div>
 
-## Criando um keystore
+## Criando um keystore {#creating-a-keystore}
 
 <div class='sidenote' markdown='1'>
 O Defold usa um keystore no processo de assinatura Android. [Mais informações estão disponíveis neste post do fórum](https://forum.defold.com/t/upcoming-change-to-the-android-build-pipeline/66084).
@@ -50,7 +50,7 @@ Certifique-se de armazenar o keystore e a senha associada em um local seguro. Se
 </div>
 
 
-## Criando um pacote de aplicativo Android
+## Criando um pacote de aplicativo Android {#creating-an-android-application-bundle}
 
 O editor permite criar facilmente um pacote de aplicativo independente para seu jogo. Antes de empacotar, você pode especificar qual(is) ícone(s) usar para o aplicativo, definir o código de versão etc. no arquivo *game.project* de [configurações do projeto](/pt/manuals/project-settings/#android).
 

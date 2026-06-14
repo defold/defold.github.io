@@ -11,7 +11,7 @@ toc:
 - Standard navigation (all visual editors)
 - 2D and 3D scene orientation
 - Toolbar overview
-- Selecting and manipulating objects
+- Selecting and manipulating objects {manipulating-objects}
 - Selecting objects
 - Visibility filters
 - Grid settings
@@ -88,7 +88,7 @@ In the top-right of the scene view there is a toolbar with commonly used tools a
 
 ![Toolbar](../images/editor/toolbar.png)
 
-## Selecting and manipulating objects
+## Selecting and manipulating objects {#manipulating-objects}
 
 ### Selecting objects
 

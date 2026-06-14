@@ -1,41 +1,41 @@
-## Slice-9 texturing
+## Slice-9 텍스쳐링
 
-GUI box nodes and Sprite components sometimes feature elements that are context sensitive in regard to their size: panels and dialogs that need to be resized to fit the containing content or a health bar that need to be resized to show the remaining health of an enemy. These may cause visual problems when you apply texturing to the resized node or sprite.
+GUI box 노드와 Sprite 컴포넌트에는 크기에 따라 달라지는 요소가 들어갈 때가 있습니다. 포함하는 컨텐츠에 맞게 크기를 조정해야 하는 패널과 대화상자, 또는 적의 남은 체력을 보여 주기 위해 크기를 조정해야 하는 체력 바가 그런 예입니다. 크기가 조정된 노드나 스프라이트에 텍스쳐링을 적용하면 시각적인 문제가 생길 수 있습니다.
 
-Normally, the engine scales the texture to fit the rectangular boundaries, but by defining slice-9 edge areas it is possible to limit what parts of the texture that should scale:
+일반적으로 엔진은 사각형 경계에 맞도록 텍스쳐를 스케일하지만, slice-9 가장자리 영역을 정의하면 텍스쳐의 어느 부분을 스케일할지 제한할 수 있습니다:
 
-![GUI scaling](/shared/images/gui_slice9_scaling.png)
+![GUI 스케일링](/shared/images/gui_slice9_scaling.png)
 
-The *Slice9* box node consists of 4 numbers that specify the number of pixels for the left, top, right and bottom margin that should not be regularly scaled:
+*Slice9* box 노드는 일반적인 방식으로 스케일하지 않을 왼쪽, 위쪽, 오른쪽, 아래쪽 여백의 픽셀 수를 지정하는 숫자 4개로 구성됩니다:
 
-![Slice 9 properties](/shared/images/gui_slice9_properties.png)
+![Slice 9 프로퍼티](/shared/images/gui_slice9_properties.png)
 
-The margins are set clockwise, starting on the left edge:
+여백은 왼쪽 가장자리에서 시작해 시계 방향으로 설정합니다:
 
-![Slice 9 sections](/shared/images/gui_slice9.png)
+![Slice 9 섹션](/shared/images/gui_slice9.png)
 
-- Corner segments are never scaled.
-- Edge segments are scaled along a single axis. The left and right edge segments are scaled vertically. The top and bottom edge segments are scaled horizontally.
-- The central texture area is scaled horizontally and vertically as needed.
+- 모서리 세그먼트는 절대 스케일되지 않습니다.
+- 가장자리 세그먼트는 단일 축을 따라 스케일됩니다. 왼쪽 및 오른쪽 가장자리 세그먼트는 세로로 스케일됩니다. 위쪽 및 아래쪽 가장자리 세그먼트는 가로로 스케일됩니다.
+- 중앙 텍스쳐 영역은 필요에 따라 가로와 세로로 스케일됩니다.
 
-The *Slice9* texture scaling described above is only applied when you change box node's or sprite's size:
+위에서 설명한 *Slice9* 텍스쳐 스케일링은 box 노드나 스프라이트의 크기를 변경할 때만 적용됩니다:
 
-![GUI box node size](/shared/images/gui_slice9_size.png)
+![GUI box 노드 크기](/shared/images/gui_slice9_size.png)
 
-![Sprite size](/shared/images/sprite_slice9_size.png)
+![스프라이트 크기](/shared/images/sprite_slice9_size.png)
 
 <div class='important' markdown='1'>
-If you change scale parameter of the box node or sprite (or on the game object) - the node or sprite and texture is scaled without applying *Slice9* parameters.
+box 노드나 스프라이트(또는 게임 오브젝트)의 scale 파라미터를 변경하면 *Slice9* 파라미터를 적용하지 않고 노드나 스프라이트와 텍스쳐가 스케일됩니다.
 </div>
 
 <div class='important' markdown='1'>
-When using slice-9 texturing on Sprites the [Sprite Trim Mode of the image](https://defold.com/manuals/atlas/#image-properties) must be set to Off.
+Sprite 컴포넌트에서 slice-9 텍스쳐링을 사용할 때는 이미지의 [Sprite Trim Mode](https://defold.com/manuals/atlas/#image-properties)를 Off로 설정해야 합니다.
 </div>
 
 
-### Mipmaps and slice-9
-Due to the way mipmapping works in the renderer, scaling of texture segments can sometimes exhibit artifacts. This happens when you _scale down_ segments below the original texture size. The renderer then selects a lower resolution mipmap for the segment, resulting in visual artifacts.
+### 밉맵과 slice-9
+렌더러에서 밉맵이 동작하는 방식 때문에 텍스쳐 세그먼트를 스케일할 때 아티팩트가 나타날 수 있습니다. 이는 세그먼트를 원래 텍스쳐 크기보다 작게 _축소_할 때 발생합니다. 그러면 렌더러가 해당 세그먼트에 더 낮은 해상도의 밉맵을 선택하여 시각적인 아티팩트가 생깁니다.
 
-![Slice 9 mipmapping](/shared/images/gui_slice9_mipmap.png)
+![Slice 9 밉맵](/shared/images/gui_slice9_mipmap.png)
 
-To avoid this problem, make sure that the texture's segments that will be scaled are small enough never to be scaled down, only up.
+이 문제를 피하려면 스케일될 텍스쳐 세그먼트가 충분히 작아서 절대 축소되지 않고 확대만 되도록 해야 합니다.

@@ -1,15 +1,15 @@
-#### Q: I am unable to install my Defold game using a free Apple Developer account.
-A: Make sure that you are using the same bundle identifier in your Defold project as you used in the Xcode project when you generated the mobile provisioning profile.
+#### Q: 무료 Apple Developer 계정으로 Defold 게임을 설치할 수 없습니다.
+A: mobile provisioning profile을 생성할 때 Xcode 프로젝트에서 사용한 bundle identifier와 Defold 프로젝트에서 사용하는 bundle identifier가 같은지 확인하세요.
 
-#### Q: How can I check the entitlements of a bundled application?
-A: From [Inspect the entitlements of a built app](https://developer.apple.com/library/archive/technotes/tn2415/_index.html#//apple_ref/doc/uid/DTS40016427-CH1-APPENTITLEMENTS):
+#### Q: 번들된 어플리케이션의 entitlements는 어떻게 확인할 수 있나요?
+A: [빌드된 앱의 entitlements 검사](https://developer.apple.com/library/archive/technotes/tn2415/_index.html#//apple_ref/doc/uid/DTS40016427-CH1-APPENTITLEMENTS)에서:
 
 ```sh
 codesign -d --ent :- /path/to/the.app
 ```
 
-#### Q: How can I check the entitlements of a provisioning profile
-A: From [Inspecting a profile's entitlements](https://developer.apple.com/library/archive/technotes/tn2415/_index.html#//apple_ref/doc/uid/DTS40016427-CH1-PROFILESENTITLEMENTS):
+#### Q: provisioning profile의 entitlements는 어떻게 확인할 수 있나요?
+A: [프로파일의 entitlements 검사](https://developer.apple.com/library/archive/technotes/tn2415/_index.html#//apple_ref/doc/uid/DTS40016427-CH1-PROFILESENTITLEMENTS)에서:
 
 ```sh
 security cms -D -i /path/to/iOSTeamProfile.mobileprovision

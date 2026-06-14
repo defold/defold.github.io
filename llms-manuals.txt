@@ -1043,7 +1043,7 @@ Motion tweens allow the animation of various properties of an object, including 
 
 ## Defold—property animation
 
-Defold works with pixel images as opposed to vector graphics, thus it does not have an equivalent for shape tweening. However, motion tweening has a powerful equivalent in [property animation](https://defold.com/ref/go/#go.animate). This is accomplished via script, using the `go.animate()` function. The `go.animate()` function tweens a property (such as color, scale, rotation or position) from the starting value to the desired end value, using one of many available easing functions (including custom ones). Where Flash required user implementation of more advanced easing functions, Defold includes [many easing functions](#manuals:animation) built-into the engine.
+Defold works with pixel images as opposed to vector graphics, thus it does not have an equivalent for shape tweening. However, motion tweening has a powerful equivalent in [property animation](https://defold.com/ref/go/#go.animate). This is accomplished via script, using the `go.animate()` function. The `go.animate()` function tweens a property (such as color, scale, rotation or position) from the starting value to the desired end value, using one of many available easing functions (including custom ones). Where Flash required user implementation of more advanced easing functions, Defold includes [many easing functions](#manuals:property-animation) built-into the engine.
 
 Where Flash makes use of keyframes of graphics on a timeline for animation, one of the main methods of graphic animation in Defold is by flipbook animation of imported image sequences. Animations are organized in a game object component known as an atlas. In this instance we have an atlas for a game character with an animation sequence called "run". This consists of a series of png files:
 
@@ -1314,7 +1314,7 @@ The engine, editor and build server generates logging information that can be ve
 
 You can easily create a new project from within the Defold editor. You also have the option to open an existing project already located on your computer.
 
-## Creating a new local project
+## Creating a new local project {#creating-a-new-project}
 
 Click the `New Project` option and select what kind of project you would like to create. Specify a location on your hard drive where the project files will be stored. Click `Create New Project` to create the project in the location you've chosen. You can create a new project from a Template:
 
@@ -1869,7 +1869,7 @@ Before we can add this library to another project we need a way to locate the li
 
 Libraries are referred to via a standard URL. For a project hosted on GitHub it would be the URL to a project release:
 
-It is recommend to always depend on a specific release of a library project instead of on the master branch. This way it is up to you as a developer to decide when to incorporate changes from a library project as opposed to always getting the latest (and potentially breaking) changes from the master branch of a library project.
+It is recommend to always depend on a specific release of a library project instead of on the `master` branch. This way it is up to you as a developer to decide when to incorporate changes from a library project as opposed to always getting the latest (and potentially breaking) changes from the `master` branch of a library project.
 
 It is recommended to always review third-party libraries before use. Learn more [securing your use of third-party software](#manuals:application-security).
 
@@ -2014,7 +2014,7 @@ You can learn more about the different options in the [Project Setup manual](#ma
 
 In the bottom left corner of the starting screen you can see a Language selection - select from the currently available localizations. This is also available in the Editor in `File ▸ Preferences ▸ General ▸ Editor Language`.
 
-## The Editor panes
+## The Editor panes {#the-editor-views}
 
 The Defold Editor is separated into a set of panes, or views, that display specific information.
 
@@ -2026,7 +2026,7 @@ Lists all the files and folders that are part of your project in a tree structur
    - `Drag and Drop` to add files from elsewhere on your disk to the project or move files and folders to new locations in the project.
    - `Right Mouse Click` to open a _Context Menu_ from where you can create new files or folders, rename, delete, track file dependencies and more.
 
-### 2. Scene Editor pane
+### 2. Scene Editor pane {#the-scene-editor}
 
 Double-clicking a collection, game object, or visual component file opens the *Scene Editor* — the visual editor for building and editing scenes. Script files and other non-visual resources open in their own dedicated editors instead.
 
@@ -2276,7 +2276,7 @@ In the top-right of the scene view there is a toolbar with commonly used tools a
 - **Camera Perspective/Orthographic**
 - **Visibility Filters** (`👁`)
 
-## Selecting and manipulating objects
+## Selecting and manipulating objects {#manipulating-objects}
 
 ### Selecting objects
 
@@ -4991,13 +4991,13 @@ This will give the following result:
 
 This is better. The window and graphics both have a good size, but if we look closer there is an obvious problem:
 
-The graphics look blurred! This is caused by the way the zoomed in graphics is sampled from the texture when rendered by the GPU. The default setting in the *game.project* file under the Graphics section is *linear*:
+The graphics look blurred! This is caused by the way the zoomed in graphics is sampled from the texture when rendered by the GPU. The default setting in the *game.project* file under the *Graphics* section is *linear*:
 
 Changing this to *nearest* will give the result we are after:
 
-Now we have crisp pixel-perfect graphics for our retro game. There are even more things to consider, such as disabling sub-pixels for sprites in *game.project*:
+Now we have crisp *pixel-perfect* graphics for our retro game. There are even more things to consider, such as disabling sub-pixels for sprites in *game.project*:
 
-When the Subpixels option is disabled sprites will never get rendered on half pixels and instead always snap to the nearest full pixel.
+When the *Subpixels* option is disabled sprites will never get rendered on half pixels and instead always snap to the nearest full pixel.
 
 ## High resolution graphics
 
@@ -5020,11 +5020,11 @@ This will create a high dpi back buffer on displays that support it. The game wi
 
 ## Creating an adaptive GUI
 
-The system for creating GUI components is built around a number of basic building blocks, or [nodes](#manuals:gui), and while it may seem overly simple it can be used to create anything from buttons to complex menus and popups. The GUIs that you create can be configured to automatically adapt to screen size and orientation changes. You can for instance keep nodes anchored to the top, bottom or sides of the screen and nodes can either keep their size or stretch. The relationship between nodes as well as their size and appearance can also be configured to change when the screen size or orientation changes.
+The system for creating GUI components is built around a number of basic building blocks, or [nodes](#manuals:gui), and while it may seem overly simple it can be used to create anything from buttons to complex menus and popups. The GUIs that you create can be configured to automatically adapt to screen size and orientation changes. You can for instance keep *nodes* anchored to the top, bottom or sides of the screen and nodes can either keep their size or stretch. The relationship between *nodes* as well as their size and appearance can also be configured to change when the screen size or orientation changes.
 
-### Node properties
+### *Node* properties
 
-Each node in a gui has a pivot point, a horizontal and vertical anchor as well as an adjust mode.
+Each *node* in a gui has a pivot point, a horizontal and vertical anchor as well as an adjust mode.
 
 * The pivot point defines the center point of a node.
 * The anchor mode controls how the node’s vertical and horizontal position is altered when the scene boundaries, or the parent node’s boundaries are stretched to fit the physical screen size.
@@ -5038,7 +5038,7 @@ Defold supports GUIs that automatically adapt to screen orientation changes on m
 
 ## Testing different screen sizes
 
-The Debug menu contains an option to simulate the resolution of either a certain device model resolution or a custom resolution. While the application is running you can select `Debug->Simulate Resolution` and pick one of the device models from the list. The running application window will resize and you'll be able to see how your game looks in a different resolution or with a different aspect ratio.
+The *Debug* menu contains an option to simulate the resolution of either a certain device model resolution or a custom resolution. While the application is running you can select `Debug->Simulate Resolution` and pick one of the device models from the list. The running application window will resize and you'll be able to see how your game looks in a different resolution or with a different aspect ratio.
 
 <!-- /manuals/live-update -->
 
@@ -9554,7 +9554,7 @@ Collection proxies
 : Through collection proxies it is possible to load more than one top level collection, or *game world* into the engine. When doing so it is important to know that each top level collection is a separate physical world. Physics interactions ([collisions, triggers](#manuals:physics-messages) and [ray-casts](#manuals:physics-ray-casts)) only happen between objects belonging to the same world. So even if the collision objects from two worlds visually sits right on top of each other, there cannot be any physics interaction between them.
 
 Collisions not detected
-: If you have problems with collisions not being handled or detected properly then make sure to read up on [physics debugging in the Debugging manual](#manuals:debugging).
+: If you have problems with collisions not being handled or detected properly then make sure to read up on [physics debugging in the Debugging manual](#manuals:debugging-game-logic).
 
 <!-- /manuals/physics-shapes -->
 
@@ -9676,7 +9676,7 @@ Collision shapes in 3D physics can be rotated around all axis.
 Collision shapes in 2D physics can only be rotated around the z-axis. Rotation around the x or y axis will yield incorrect results and should be avoided, even when rotating 180 degrees to essentially flip the shape along the x or y axis. To flip a physics shape it is recommended to use [`physics.set_hlip(url, flip)`](https://defold.com/ref/stable/physics/?#physics.set_hflip:url-flip) and [`physics.set_vlip(url, flip)`](https://defold.com/ref/stable/physics/?#physics.set_vflip:url-flip).
 
 # Debugging
-You can [enable Physics debugging](#manuals:debugging) to see the collision shapes at runtime.
+You can [enable Physics debugging](#manuals:debugging-game-logic) to see the collision shapes at runtime.
 
 <!-- /manuals/physics-groups -->
 
@@ -10252,7 +10252,7 @@ Devices
   1. Keyboard (single key as well as text input)
   2. Mouse (position, button clicks and mouse wheel actions)
   3. Single and multi-touch (on iOS and Android devices and HTML5 on mobile)
-  4. Gamepads (as supported through the operating system and mapped in the [gamepads](#gamepads-settings-file) file)
+  4. Gamepads (as supported through the operating system and mapped in the [gamepads](#manuals:input-gamepads) file)
 
 Input bindings
 : Before input is sent to a script the raw input from the device is translated into meaningful *actions* via the input bindings table.
@@ -10325,7 +10325,7 @@ This message instructs the engine to add input capable components (script compon
 
 If a game object that has already acquired input focus does so again, its component(s) will be moved to the top of the stack.
 
-## Input dispatch and on_input()
+## Input dispatch and on_input() {#input-dispatch-and-on_input}
 
 Input actions are dispatched according to the input stack, from the top to the bottom.
 
@@ -15738,11 +15738,11 @@ Banner ads are text, image or video based and cover a relatively small part of t
 
 ### Interstitial ads
 
-Interstitial ads are large full screen experiences with animations and sometimes also interactive rich media content. Interstitial ads are typically shown in between levels or game sessions as it is a natural break in the game experience. Interstitial ads typically generate less views than banner ads, but the cost (CPM) is much higher than for banner ads, resulting in significant overall ad revenue.
+Interstitial ads are large full screen experiences with animations and sometimes also interactive *rich media* content. Interstitial ads are typically shown in between levels or game sessions as it is a natural break in the game experience. Interstitial ads typically generate less views than banner ads, but the cost (CPM) is much higher than for banner ads, resulting in significant overall ad revenue.
 
 ### Rewarded ads
 
-Rewarded ads (also know as Incentivized ads) are optional and therefore less obtrusive than many other forms of ads. Rewarded ads are usually full screen experiences like interstitial ads. The user can choose a reward in exchange for viewing the ad - for instance loot, coins, lives, time or some other in-game currency or benefit. Rewarded ads usually has the highest cost (CPM), but the number of views is directly related to user opt-in rates. Rewarded ads will only generate great performance if the rewards are valuable enough and offered at the right time.
+Rewarded ads (also know as Incentivized ads) are optional and therefore less obtrusive than many other forms of ads. Rewarded ads are usually full screen experiences like interstitial ads. The user can choose a reward in exchange for viewing the ad - for instance *loot*, coins, lives, time or some other in-game currency or benefit. Rewarded ads usually has the highest cost (CPM), but the number of views is directly related to user opt-in rates. Rewarded ads will only generate great performance if the rewards are valuable enough and offered at the right time.
 
 ## Ad networks
 
@@ -15756,7 +15756,7 @@ The [Defold Asset Portal](https://defold.com/tags/stars/ads/) contains several a
 
 # How to integrate ads in your game
 
-When you have decided on an ad network to integrate in your game you need to follow the installation and usage instructions for that particular asset. What you typically do is to first add the extension as a [project dependency](#manuals:libraries). Once you have the asset added to your project you can proceed with the integration and call the functions specific to the asset to load and show ads.
+When you have decided on an ad network to integrate in your game you need to follow the installation and usage instructions for that particular *asset*. What you typically do is to first add the extension as a [project dependency](#manuals:libraries). Once you have the asset added to your project you can proceed with the integration and call the functions specific to the asset to load and show ads.
 
 # Combining ads and in-app purchases
 
@@ -15807,7 +15807,7 @@ If you want the editor to automatically create random debug certificates, leave 
 
 If you want to sign your bundle with a particular keystore, specify the *Keystore* and *Keystore password*. The *Keystore* is expected to have the `.keystore` file extension while the password is expected to be stored in a text file with the `.txt` extension. It is also possible to specify a *Key password* if the key in the keystore uses a different password than the keystore itself:
 
-Defold supports the creation of both APK and AAB files. Select APK or AAB from the Bundle Format drop down.
+Defold supports the creation of both APK and AAB files. Select APK or AAB from the *Bundle Format* drop down.
 
 Press `Create Bundle` when you have configured the application bundle settings. You will then be prompted to specify where on your computer the bundle will be created.
 
@@ -15889,7 +15889,7 @@ Success
 
 You can install and launch an *`.apk`* file using the editor's "Install on connected device" and "Launch installed app" check-boxes in the Bundle dialog:
 
-For this feature to work, you will need ADB installed and *USB debugging* enabled on the connected device. If the editor can't detect the install location of the ADB command line tool, you will need to specify it in [Preferences](#manuals:editor-preferences).
+For this feature to work, you will need *ADB* installed and *USB debugging* enabled on the connected device. If the editor can't detect the install location of the ADB command line tool, you will need to specify it in [Preferences](#manuals:editor-preferences).
 
 #### Installing an AAB
 
@@ -15900,7 +15900,7 @@ An *.aab* file can be uploaded to Google Play via the [Google Play developer con
 The Defold engine requires a number of different permissions for all engine features to work. The permissions are defined in the `AndroidManifest.xml`, specified in the *game.project* [project settings file](#manuals:project-settings). You can read more about Android permissions in [the official docs](https://developer.android.com/guide/topics/permissions/overview). The following permissions are requested in the default manifest:
 
 ### android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE (Protection level: normal)
-Allows applications to open network sockets and access information about networks. These permission are needed for internet access. ([Android official docs](https://developer.android.com/reference/android/Manifest.permission#INTERNET)) and ([Android official docs](https://developer.android.com/reference/android/Manifest.permission#ACCESS_NETWORK_STATE)).
+Allows applications to open *network sockets* and access information about networks. These permission are needed for internet access. ([Android official docs](https://developer.android.com/reference/android/Manifest.permission#INTERNET)) and ([Android official docs](https://developer.android.com/reference/android/Manifest.permission#ACCESS_NETWORK_STATE)).
 
 ### android.permission.WAKE_LOCK (Protection level: normal)
 Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming. This permission is needed to temporarily prevent the device from sleeping while receiving a push notification. ([Android official docs](https://developer.android.com/reference/android/Manifest.permission#WAKE_LOCK))
@@ -16810,7 +16810,7 @@ $ xcrun stapler staple "Game.app"
 5. Your game is now ready for distribution.
 
 ## Publishing to the Mac App Store
-The process when publishing to the Mac App Store is well documented in the [Apple Developer documentation](https://developer.apple.com/macos/submit/). Make sure to add permissions and codesign the application as described above before submitting.
+The process when publishing to the Mac App Store is well documented in the [Apple Developer documentation](https://developer.apple.com/macos/submit/). Make sure to add permissions and `codesign` the application as described above before submitting.
 
 Note: The game does not have to be notarized when publishing to the Mac App Store.
 

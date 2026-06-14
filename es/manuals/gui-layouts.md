@@ -6,7 +6,7 @@ locale: es
 title: Layouts de GUI en Defold
 toc:
 - Layouts
-- Crear perfiles de pantalla
+- Crear perfiles de pantalla {creating-display-profiles}
 - Selección automática de layout (Auto Layout Selection, Display Profiles)
 - Layouts de GUI
 - Selección dinámica de perfiles
@@ -20,7 +20,7 @@ toc:
 
 Defold soporta GUIs que se adaptan automáticamente a cambios de orientación de pantalla en dispositivos móviles. Al usar esta funcionalidad puedes diseñar GUIs que se adapten a la orientación y la relación de aspecto de un rango de tamaños de pantalla. También es posible crear layouts que coincidan con modelos de dispositivo concretos.
 
-## Crear perfiles de pantalla
+## Crear perfiles de pantalla {#creating-display-profiles}
 
 Por defecto, la configuración de *game.project* especifica que se usa un archivo integrado de configuración de perfiles de pantalla ("builtins/render/default.display_profiles"). Los perfiles predeterminados son "Landscape" (1280 píxeles de ancho y 720 píxeles de alto) y "Portrait" (720 píxeles de ancho y 1280 píxeles de alto). No se establece ningún modelo de dispositivo en los perfiles, por lo que coincidirán con cualquier dispositivo.
 

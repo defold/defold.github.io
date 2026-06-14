@@ -9,7 +9,7 @@ toc:
 - Definiowanie właściwości skryptu
 - Uzyskiwanie dostępu do właściwości skryptu
 - Obiekty tworzone przez fabryki
-- Właściwości zasobów
+- Właściwości zasobów {resource-properties}
 ---
 
 # Właściwości skryptu
@@ -129,7 +129,7 @@ Wartości właściwości przekazane przez `factory.create()` i `collectionfactor
 Jeśli kilka komponentów skryptu dołączonych do obiektu gry definiuje tę samą właściwość, każdy komponent zostanie zainicjalizowany wartością przekazaną przez `factory.create()` lub `collectionfactory.create()`.
 
 
-## Właściwości zasobów
+## Właściwości zasobów {#resource-properties}
 
 Właściwości zasobów definiuje się dokładnie tak samo jak właściwości skryptu dla podstawowych typów danych:
 

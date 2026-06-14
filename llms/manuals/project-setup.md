@@ -2,7 +2,7 @@
 
 You can easily create a new project from within the Defold editor. You also have the option to open an existing project already located on your computer.
 
-## Creating a new local project
+## Creating a new local project {#creating-a-new-project}
 
 Click the `New Project` option and select what kind of project you would like to create. Specify a location on your hard drive where the project files will be stored. Click `Create New Project` to create the project in the location you've chosen. You can create a new project from a Template:
 

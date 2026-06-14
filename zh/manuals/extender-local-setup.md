@@ -6,7 +6,7 @@ locale: zh
 title: 设置本地构建服务器
 toc:
 - 构建服务器本地设置
-- 如何使用预配置构件运行本地Extender
+- 如何使用预配置构件运行本地Extender {how-to-run-local-extender-with-preconfigured-artifacts}
 - 那么macOS和iOS呢？
 - 如何使用本地构建的构件运行本地Extender
 ---
@@ -17,7 +17,7 @@ toc:
 1. 使用预配置构件运行本地构建服务器。
 2. 使用本地构建的构件运行本地构建服务器。
 
-## 如何使用预配置构件运行本地Extender
+## 如何使用预配置构件运行本地Extender {#how-to-run-local-extender-with-preconfigured-artifacts}
 
 在运行本地云构建器之前，您需要安装以下软件：
 

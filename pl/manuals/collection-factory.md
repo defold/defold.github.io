@@ -6,9 +6,9 @@ locale: pl
 title: Fabryki kolekcji
 toc:
 - Fabryki kolekcji
-- Tworzenie kolekcji
+- Tworzenie kolekcji {spawning-a-collection}
 - Właściwości
-- Dynamiczne ładowanie zasobów fabryki
+- Dynamiczne ładowanie zasobów fabryki {dynamic-loading-of-factory-resources}
 - Dynamiczny prototyp
 ---
 
@@ -20,7 +20,7 @@ Kolekcje są w Defold wygodnym mechanizmem tworzenia szablonów wielokrotnego u�
 
 Za pomocą komponentu fabryki kolekcji możesz tworzyć w świecie gry zawartość pliku kolekcji. To odpowiednik utworzenia przez fabrykę wszystkich obiektów gry zapisanych w kolekcji, a następnie odtworzenia relacji rodzic-dziecko pomiędzy nimi. Typowym zastosowaniem jest tworzenie przeciwników złożonych z wielu obiektów gry, na przykład wroga i jego broni.
 
-## Tworzenie kolekcji
+## Tworzenie kolekcji {#spawning-a-collection}
 
 Załóżmy, że chcemy mieć obiekt gry postaci oraz osobny obiekt gry tarczy będący dzieckiem tej postaci. Budujemy taką hierarchię w pliku kolekcji i zapisujemy ją jako "bean.collection".
 
@@ -98,7 +98,7 @@ function init(self)
 end
 ```
 
-## Dynamiczne ładowanie zasobów fabryki
+## Dynamiczne ładowanie zasobów fabryki {#dynamic-loading-of-factory-resources}
 
 Po zaznaczeniu pola *<kbd>Load Dynamically</kbd>* we właściwościach komponentu fabryki kolekcji silnik opóźni ładowanie zasobów powiązanych z fabryką.
 

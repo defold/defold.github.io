@@ -9,12 +9,12 @@ toc:
 - Abrindo o Scene Editor
 - Navegação na visualização de cena (controles de câmera)
 - Navegação padrão (todos os editores visuais)
-- Orientação de cena 2D e 3D
+- Orientação de cena 2D e 3D {2d-and-3d-scene-orientation}
 - Visão geral da barra de ferramentas
-- Selecionando e manipulando objetos
+- Selecionando e manipulando objetos {manipulating-objects}
 - Selecionando objetos
-- Filtros de visibilidade
-- Configurações da grade
+- Filtros de visibilidade {visibility-filters}
+- Configurações da grade {grid-settings}
 - 'Tipo de câmera: Perspective vs Orthographic'
 - Free Camera Mode
 - Ativando o Free Camera Mode
@@ -60,7 +60,7 @@ Estes controles estão disponíveis em editores visuais:
 
 Você também pode usar **Frame Selection** (<kbd>F</kbd>) para focar a câmera na seleção atual.
 
-## Orientação de cena 2D e 3D
+## Orientação de cena 2D e 3D {#2d-and-3d-scene-orientation}
 
 A visualização de cena pode ser usada em fluxos de trabalho 2D e 3D:
 
@@ -88,7 +88,7 @@ No canto superior direito da visualização de cena há uma barra de ferramentas
 
 ![Toolbar](/manuals/images/editor/toolbar.png)
 
-## Selecionando e manipulando objetos
+## Selecionando e manipulando objetos {#manipulating-objects}
 
 ### Selecionando objetos
 
@@ -140,13 +140,13 @@ Essa ferramenta consiste em um conjunto de manipuladores quadrados/cúbicos (o m
 - 3 manipuladores cúbicos vermelho, azul e verde escalam o objeto ao longo dos eixos X, Y e Z separadamente.
 - 3 manipuladores quadrados vermelho, verde e azul (com contorno e preenchimento transparente) escalam o objeto nos planos X-Y, X-Z ou Y-Z separadamente.
 
-### Filtros de visibilidade
+### Filtros de visibilidade {#visibility-filters}
 
 Clique no **Visibility Eye Icon** (`👁`) na barra de ferramentas para alternar a visibilidade de vários tipos de componentes, além de caixas delimitadoras e linhas-guia (`Component Guides` ou o atalho <kbd>Ctrl</kbd> + <kbd>H</kbd> (Win/Linux) ou <kbd>^ Ctrl</kbd> + <kbd>⌘ Cmd</kbd> + <kbd>H</kbd>(Mac)).
 
 ![Visibility filters](/manuals/images/editor/visibilityfilters.png)
 
-## Configurações da grade
+## Configurações da grade {#grid-settings}
 
 A grade pode ser personalizada para se ajustar ao seu fluxo de trabalho (especialmente útil em 3D). Clique no botão **Grid Settings** (`▦`) para abrir o popup de configurações da grade.
 

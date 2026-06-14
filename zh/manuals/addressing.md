@@ -13,7 +13,7 @@ toc:
 - 游戏对象路径
 - 绝对寻址
 - 哈希标识符
-- URL
+- URL {urls}
 - 构建URL对象
 ---
 
@@ -200,7 +200,7 @@ local relative_id = hash("my_object")
 go.set_position(pos, relative_id)
 ```
 
-## URL
+## URL {#urls}
 
 为了完整理解，让我们看看Defold地址的完整格式：URL。
 

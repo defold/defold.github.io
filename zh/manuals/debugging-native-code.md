@@ -10,7 +10,7 @@ toc:
 - 使用打印调试
 - 分析崩溃日志
 - 从设备获取崩溃日志
-- 符号化调用堆栈
+- 符号化调用堆栈 {symbolicate-a-callstack}
 - 将符号上传到 Google Play
 - 符号化 Android 调用堆栈
 - 符号化 iOS 调用堆栈
@@ -85,7 +85,7 @@ $ adb shell "run-as com.defold.example sh -c 'cat /data/data/com.defold.example/
 在 `Xcode -> Devices` 窗口中，您也可以选择崩溃日志。
 
 
-## 符号化调用堆栈
+## 符号化调用堆栈 {#symbolicate-a-callstack}
 
 如果您从 `_crash` 文件或 [日志文件](/zh/manuals/debugging-game-and-system-logs) 获取调用堆栈，您可以对其进行符号化。这意味着将调用堆栈中的每个地址转换为文件名和行号，这反过来有助于找出根本原因。
 

@@ -6,7 +6,7 @@ locale: pt
 title: Configurar servidor de build local
 toc:
 - Configuração local do servidor de build
-- Como executar o Extender local com artefatos pré-configurados
+- Como executar o Extender local com artefatos pré-configurados {how-to-run-local-extender-with-preconfigured-artifacts}
 - E macOS e iOS?
 - Como executar o Extender local com artefatos compilados localmente
 ---
@@ -17,7 +17,7 @@ Há duas variantes para executar o servidor de build local (também conhecido co
 1. Executar o servidor de build local com artefatos pré-configurados.
 2. Executar o servidor de build local com artefatos compilados localmente.
 
-## Como executar o Extender local com artefatos pré-configurados
+## Como executar o Extender local com artefatos pré-configurados {#how-to-run-local-extender-with-preconfigured-artifacts}
 
 Antes de executar um cloud builder local, você precisa instalar o seguinte software:
 

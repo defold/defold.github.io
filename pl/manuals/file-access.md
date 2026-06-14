@@ -9,7 +9,7 @@ toc:
 - Funkcje dostępu do plików i folderów
 - Lokalizacje plików i folderów
 - Jak zapisywać i odczytywać pliki specyficzne dla aplikacji
-- Jak uzyskiwać dostęp do plików dołączonych do aplikacji
+- Jak uzyskiwać dostęp do plików dołączonych do aplikacji {how-to-access-files-bundled-with-the-application}
 - Dostęp do plików systemowych
 - Rozszerzenia
 ---
@@ -88,7 +88,7 @@ Podczas zapisywania i odczytywania plików specyficznych dla aplikacji, takich j
 
 [Sprawdź przykład pokazujący, jak używać `sys.save()` i `sys.load()`](/examples/file/sys_save_load/).
 
-### Jak uzyskiwać dostęp do plików dołączonych do aplikacji
+### Jak uzyskiwać dostęp do plików dołączonych do aplikacji {#how-to-access-files-bundled-with-the-application}
 Pliki możesz dołączać do aplikacji za pomocą zasobów pakietu i zasobów niestandardowych.
 
 #### Zasoby niestandardowe

@@ -10,12 +10,12 @@ toc:
 - Obsługa układu tekstu, np. right-to-left
 - Kolekcja fontów
 - Tworzenie fontu
-- Właściwości
+- Właściwości {properties}
 - Fonty typu Distance field
 - Bitmap BMFonts
 - Artefakty i dobre praktyki
 - Pamięć podręczna fontu
-- Włączanie runtime fonts
+- Włączanie runtime fonts {enabling-runtime-fonts}
 - Skryptowanie fontów
 - Dodawanie i usuwanie fontów z kolekcji fontów
 - Wstępne podgrzewanie glifów
@@ -69,7 +69,7 @@ Przeciągnij font, którego chcesz użyć, do panelu *Assets* i upuść go w odp
 
 Ustaw właściwość *Font* na plik fontu i skonfiguruj pozostałe właściwości według potrzeb.
 
-## Właściwości
+## Właściwości {#properties}
 
 *Font*
 : Plik TTF, OTF albo *`.fnt`* używany do wygenerowania danych fontu.
@@ -205,7 +205,7 @@ Na przykład, aby wygenerować gradient w shaderze fragmentu, wystarczy napisać
 
 Więcej informacji o uniformach shaderów znajdziesz w [Shader manual](/pl/manuals/shader).
 
-## Włączanie runtime fonts
+## Włączanie runtime fonts {#enabling-runtime-fonts}
 
 Można używać generowania w czasie działania dla fontów typu SDF, gdy korzystasz z fontów TrueType (`.ttf`).
 Takie podejście może znacznie zmniejszyć rozmiar pobieranych danych i zużycie pamięci w runtime gry Defold.

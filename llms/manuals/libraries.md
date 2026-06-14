@@ -18,7 +18,7 @@ Before we can add this library to another project we need a way to locate the li
 
 Libraries are referred to via a standard URL. For a project hosted on GitHub it would be the URL to a project release:
 
-It is recommend to always depend on a specific release of a library project instead of on the master branch. This way it is up to you as a developer to decide when to incorporate changes from a library project as opposed to always getting the latest (and potentially breaking) changes from the master branch of a library project.
+It is recommend to always depend on a specific release of a library project instead of on the `master` branch. This way it is up to you as a developer to decide when to incorporate changes from a library project as opposed to always getting the latest (and potentially breaking) changes from the `master` branch of a library project.
 
 It is recommended to always review third-party libraries before use. Learn more [securing your use of third-party software](https://defold.com/llms/manuals/application-security.md).
 

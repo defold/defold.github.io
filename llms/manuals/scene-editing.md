@@ -57,7 +57,7 @@ In the top-right of the scene view there is a toolbar with commonly used tools a
 - **Camera Perspective/Orthographic**
 - **Visibility Filters** (`👁`)
 
-## Selecting and manipulating objects
+## Selecting and manipulating objects {#manipulating-objects}
 
 ### Selecting objects
 

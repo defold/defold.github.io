@@ -7,8 +7,8 @@ title: Desarrollo de Defold para la plataforma Android
 toc:
 - Desarrollo en Android
 - Proceso de firmado de Android y Google Play
-- Crear un keystore
-- Crear un bundle de aplicación Android
+- Crear un keystore {creating-a-keystore}
+- Crear un bundle de aplicación Android {creating-an-android-application-bundle}
 - Instalar un bundle de aplicación Android
 - Permisos
 - 'android.permission.INTERNET y android.permission.ACCESS_NETWORK_STATE (Nivel de protección: normal)'
@@ -31,7 +31,7 @@ Cuando creas un bundle de aplicación Android desde el editor Defold o desde la 
 **Nunca** debes subir tu aplicación a Google Play si se firmó con un keystore de depuración. Usa siempre un keystore dedicado que hayas creado tú mismo.
 </div>
 
-## Crear un keystore
+## Crear un keystore {#creating-a-keystore}
 
 <div class='sidenote' markdown='1'>
 Defold usa un keystore para el proceso de firmado de Android. [Hay más información disponible en esta publicación del foro](https://forum.defold.com/t/upcoming-change-to-the-android-build-pipeline/66084).
@@ -50,7 +50,7 @@ Asegúrate de guardar el keystore y la contraseña asociada en un lugar seguro. 
 </div>
 
 
-## Crear un bundle de aplicación Android
+## Crear un bundle de aplicación Android {#creating-an-android-application-bundle}
 
 El editor te permite crear fácilmente un bundle de aplicación independiente para tu juego. Antes de crear el bundle, puedes especificar qué iconos usar para la app, definir el código de versión, etc. en el [archivo de configuración del proyecto](/es/manuals/project-settings/#android) *game.project*.
 
@@ -64,7 +64,7 @@ Si quieres firmar tu bundle con un keystore concreto, especifica *Keystore* y *K
 
 ![Firmado de bundle Android](/manuals/images/android/sign_bundle2.png)
 
-Defold permite crear archivos APK y AAB. Selecciona APK o AAB en el menú desplegable Bundle Format.
+Defold permite crear archivos APK y AAB. Selecciona APK o AAB en el menú desplegable *Bundle Format*.
 
 Pulsa <kbd>Create Bundle</kbd> cuando hayas configurado las opciones del bundle de la aplicación. Luego se te pedirá que especifiques en qué lugar de tu computadora se creará el bundle.
 
@@ -93,7 +93,7 @@ Puedes instalar y ejecutar un archivo *`.apk`* usando las casillas "Install on c
 
 ![Instalar y ejecutar APK](/manuals/images/android/install_and_launch.png)
 
-Para que esta funcionalidad funcione, necesitarás tener ADB instalado y *USB debugging* activado en el dispositivo conectado. Si el editor no puede detectar la ubicación de instalación de la herramienta de línea de comando ADB, tendrás que especificarla en [Preferences](/es/manuals/editor-preferences/#tools).
+Para que esta funcionalidad funcione, necesitarás tener *ADB* instalado y *USB debugging* activado en el dispositivo conectado. Si el editor no puede detectar la ubicación de instalación de la herramienta de línea de comando ADB, tendrás que especificarla en [Preferences](/es/manuals/editor-preferences/#tools).
 
 #### Instalar un AAB
 
@@ -104,7 +104,7 @@ Un archivo *.aab* se puede subir a Google Play mediante la [consola para desarro
 El motor Defold requiere varios permisos para que funcionen todas sus funcionalidades. Los permisos se definen en `AndroidManifest.xml`, especificado en el [archivo de configuración del proyecto](/es/manuals/project-settings/#android) *game.project*. Puedes leer más sobre los permisos de Android en [la documentación oficial](https://developer.android.com/guide/topics/permissions/overview). En el manifiesto predeterminado se solicitan los siguientes permisos:
 
 ### android.permission.INTERNET y android.permission.ACCESS_NETWORK_STATE (Nivel de protección: normal)
-Permite que las aplicaciones abran sockets de red y accedan a información sobre redes. Estos permisos son necesarios para el acceso a internet. ([Documentación oficial de Android](https://developer.android.com/reference/android/Manifest.permission#INTERNET)) y ([documentación oficial de Android](https://developer.android.com/reference/android/Manifest.permission#ACCESS_NETWORK_STATE)).
+Permite que las aplicaciones abran *sockets de red* y accedan a información sobre redes. Estos permisos son necesarios para el acceso a internet. ([Documentación oficial de Android](https://developer.android.com/reference/android/Manifest.permission#INTERNET)) y ([documentación oficial de Android](https://developer.android.com/reference/android/Manifest.permission#ACCESS_NETWORK_STATE)).
 
 ### android.permission.WAKE_LOCK (Nivel de protección: normal)
 Permite usar PowerManager WakeLocks para evitar que el procesador entre en suspensión o que la pantalla se atenúe. Este permiso es necesario para evitar temporalmente que el dispositivo entre en suspensión mientras recibe una notificación push. ([Documentación oficial de Android](https://developer.android.com/reference/android/Manifest.permission#WAKE_LOCK))

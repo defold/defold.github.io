@@ -163,4 +163,4 @@ physics.set_shape("#collisionobject", "my_box_shape", box_data)
 
 
 # Отладка
-Вы можете [включить отладку физики](/ru/manuals/debugging/#debugging-problems-with-physics), чтобы видеть формы столкновений во время выполнения.
+Вы можете [включить отладку физики](/ru/manuals/debugging-game-logic/#debugging-problems-with-physics), чтобы видеть формы столкновений во время выполнения.

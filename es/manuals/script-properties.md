@@ -9,7 +9,7 @@ toc:
 - Definir una propiedad de script
 - Acceder a propiedades de script
 - Objetos creados con factory
-- Propiedades de recursos
+- Propiedades de recursos {resource-properties}
 ---
 
 # Propiedades de script
@@ -129,7 +129,7 @@ Los valores de propiedades proporcionados mediante `factory.create()` y `collect
 Si varios componentes script adjuntos a un objeto de juego definen la misma propiedad, cada componente se inicializará con el valor proporcionado a `factory.create()` o `collectionfactory.create()`.
 
 
-## Propiedades de recursos
+## Propiedades de recursos {#resource-properties}
 
 Las propiedades de recursos se definen igual que las propiedades de script para los tipos de datos básicos:
 

@@ -11,7 +11,7 @@ toc:
 - Pestaña Breakpoints
 - Biblioteca debug de Lua
 - Checklist de depuración
-- Depuración de problemas con físicas
+- Depuración de problemas con físicas {debugging-problems-with-physics}
 ---
 
 # Depuración de la lógica del juego
@@ -164,7 +164,7 @@ A veces encontrar un bug puede ser un proceso difícil y lento, que requiere rec
 
 ¡Buena caza!
 
-## Depuración de problemas con físicas
+## Depuración de problemas con físicas {#debugging-problems-with-physics}
 
 Si tienes problemas con físicas y las colisiones no funcionan como se esperaba, se recomienda activar la depuración de físicas. Marca la casilla *Debug* en la sección *Physics* del archivo *game.project*:
 

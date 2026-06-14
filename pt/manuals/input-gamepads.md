@@ -11,9 +11,9 @@ toc:
 - Vários gamepads
 - Conexão e desconexão
 - Gamepads brutos
-- Arquivo de configurações de gamepads
+- Arquivo de configurações de gamepads {gamepads-settings-file}
 - Gamepads não identificados
-- Gamepads em HTML5
+- Gamepads em HTML5 {gamepads-in-html5}
 - Gamepad padrão
 - Gamepads no Windows
 - Gamepads no Android
@@ -119,7 +119,7 @@ function on_input(self, action_id, action)
 end
 ```
 
-## Arquivo de configurações de gamepads
+## Arquivo de configurações de gamepads {#gamepads-settings-file}
 A configuração de entrada de gamepad usa um arquivo de mapeamento separado para cada tipo de gamepad de hardware. Mapeamentos de gamepad para hardwares específicos são definidos em um arquivo *gamepads*. O Defold vem com um arquivo gamepads integrado com configurações para gamepads comuns:
 
 ![Gamepad settings](/manuals/images/input/gamepads.png)
@@ -156,7 +156,7 @@ function on_input(self, action_id, action)
 end
 ``` 
 
-## Gamepads em HTML5
+## Gamepads em HTML5 {#gamepads-in-html5}
 Gamepads têm suporte em builds HTML5 e geram os mesmos eventos de entrada que em outras plataformas. O suporte a gamepads é baseado na [Gamepad API](https://www.w3.org/TR/gamepad/), que é compatível com a maioria dos navegadores ([consulte esta tabela de suporte](https://caniuse.com/?search=gamepad)). Se o navegador não oferecer suporte à Gamepad API, o Defold ignorará silenciosamente quaisquer Gamepad triggers no seu projeto. Você pode verificar se o navegador oferece suporte à Gamepad API conferindo se a função `getGamepads` existe no objeto `navigator`:
 
 ```lua

@@ -97,7 +97,7 @@ R: Sì, consulta [`sys.get_sys_info()`](/ref/sys#sys.get_sys_info).
 {% include shared/it/editor-faq.md %}
 
 
-## Domande su Linux
+## Domande su Linux {#linux-questions}
 {% include shared/it/linux-faq.md %}
 
 

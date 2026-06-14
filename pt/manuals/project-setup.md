@@ -6,7 +6,7 @@ locale: pt
 title: Configuração de projeto
 toc:
 - Configuração de projeto
-- Criando um novo projeto local
+- Criando um novo projeto local {creating-a-new-project}
 - Adicionando o projeto ao GitHub
 - Abrir um projeto existente
 - Abrir um projeto recente
@@ -16,7 +16,7 @@ toc:
 
 Você pode criar facilmente um novo projeto dentro do editor Defold. Também tem a opção de abrir um projeto existente já localizado no seu computador.
 
-## Criando um novo projeto local
+## Criando um novo projeto local {#creating-a-new-project}
 
 Clique na opção <kbd>New Project</kbd> e selecione que tipo de projeto você deseja criar. Especifique um local no seu disco rígido onde os arquivos do projeto serão armazenados. Clique em <kbd>Create New Project</kbd> para criar o projeto no local escolhido. Você pode criar um novo projeto a partir de um Template:
 

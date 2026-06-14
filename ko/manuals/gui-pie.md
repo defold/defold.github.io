@@ -12,18 +12,18 @@ toc:
 
 # GUI 파이 노드
 
-파이 노드는 단순한 원부터 파이 모양, 사각 도넛 모양까지 원형 또는 타원형 오브젝트를 만드는 데 사용됩니다.
+파이 노드는 단순한 원부터 파이 모양과 사각 도넛 모양까지, 원형이나 타원형 오브젝트를 만드는 데 사용됩니다.
 
 ## 파이 노드 만들기
 
-*Outline*의 *Nodes* 섹션을 <kbd>Right click</kbd>하고 <kbd>Add ▸ Pie</kbd>를 선택합니다. 새 파이 노드가 선택되며 해당 속성을 수정할 수 있습니다.
+*Outline*의 *Nodes* 섹션에서 <kbd>마우스 오른쪽 버튼</kbd>을 누르고 <kbd>Add ▸ Pie</kbd>를 선택합니다. 새 파이 노드가 선택되며 해당 프로퍼티를 수정할 수 있습니다.
 
-![Create pie node](/manuals/images/gui-pie/create.png)
+![파이 노드 만들기](/manuals/images/gui-pie/create.png)
 
-다음 속성은 파이 노드에만 있습니다:
+다음 프로퍼티는 파이 노드에만 있습니다:
 
 Inner Radius
-: X축을 따라 표현되는 노드의 내부 반지름입니다.
+: X축을 기준으로 표현되는 노드의 내부 반지름입니다.
 
 Outer Bounds
 : 노드의 외부 경계 모양입니다.
@@ -32,32 +32,32 @@ Outer Bounds
   - `Rectangle`은 노드를 노드의 바운딩 박스까지 확장합니다.
 
 Perimeter Vertices
-: 모양을 만드는 데 사용할 세그먼트 수입니다. 노드의 360도 둘레를 완전히 둘러싸는 데 필요한 정점 수로 표현됩니다.
+: 모양을 만드는 데 사용할 세그먼트 수입니다. 노드의 360도 둘레를 완전히 감싸는 데 필요한 정점 수로 표현됩니다.
 
 Pie Fill Angle
-: 파이가 얼마나 채워져야 하는지입니다. 오른쪽에서 시작하는 반시계 방향 각도로 표현됩니다.
+: 파이에서 채워질 양입니다. 오른쪽에서 시작해 반시계 방향으로 잰 각도로 표현됩니다.
 
 ![Properties](/manuals/images/gui-pie/properties.png)
 
-노드에 텍스처를 설정하면 텍스처 이미지가 평평하게 적용되며, 텍스처의 모서리는 노드 바운딩 박스의 모서리와 대응됩니다.
+노드에 텍스쳐를 설정하면 텍스쳐 이미지가 평면으로 적용되며, 텍스쳐의 모서리는 노드 바운딩 박스의 모서리와 대응됩니다.
 
 ## 런타임에 파이 노드 수정하기
 
-파이 노드는 크기, 피벗, 색상 등을 설정하는 모든 일반 노드 조작 함수에 응답합니다. 파이 노드 전용 함수와 속성도 몇 가지 있습니다:
+파이 노드는 크기, 피벗, 색상 등을 설정하는 모든 일반 노드 조작 함수로 다룰 수 있습니다. 파이 노드 전용 함수와 프로퍼티도 몇 가지 있습니다:
 
 ```lua
 local pienode = gui.get_node("my_pie_node")
 
--- get the outer bounds
+-- 외부 경계 가져오기
 local fill_angle = gui.get_fill_angle(pienode)
 
--- increase perimeter vertices
+-- 둘레 정점 수 늘리기
 local vertices = gui.get_perimeter_vertices(pienode)
 gui.set_perimeter_vertices(pienode, vertices + 1)
 
--- change outer bounds
+-- 외부 경계 변경하기
 gui.set_outer_bounds(pienode, gui.PIEBOUNDS_RECTANGLE)
 
--- animate the inner radius
+-- 내부 반지름 애니메이션하기
 gui.animate(pienode, "inner_radius", 100, gui.EASING_INOUTSINE, 2, 0, nil, gui.PLAYBACK_LOOP_PINGPONG)
 ```

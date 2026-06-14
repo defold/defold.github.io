@@ -1,5 +1,5 @@
-This file can be used to test transclusion. This whole file will be transcluded as is, with whitespace preservation.
+이 파일은 transclusion을 테스트하는 데 사용할 수 있습니다. 이 파일 전체는 공백을 보존한 채 그대로 삽입됩니다.
 
-Note that any file references need are relative to the document where the file is inserted.
+파일 참조는 파일이 삽입되는 문서를 기준으로 상대 경로여야 합니다.
 
-![shared image](/shared/images/logo.png)
+![공유 이미지](/shared/images/logo.png)

@@ -11,7 +11,7 @@ toc:
 - Escrevendo código nativo
 - Usando o editor de código integrado
 - Autocompletar código
-- Configuração de linting
+- Configuração de linting {linting-configuration}
 - Usando um editor de código externo
 - Visual Studio Code - Defold Kit
 - Software de documentação
@@ -50,7 +50,7 @@ Pressionar <kbd>CTRL</kbd> + <kbd>Space</kbd> mostrará informações adicionais
 
 ![](/images/editor/apireference.png)
 
-### Configuração de linting
+### Configuração de linting {#linting-configuration}
 
 O editor de código integrado realiza linting de código usando [Luacheck](https://luacheck.readthedocs.io/en/stable/index.html) e [Lua language server](https://luals.github.io/wiki/diagnostics/). Para configurar o Luacheck, crie um arquivo `.luacheckrc` na raiz do projeto. Você pode ler a [página de configuração do Luacheck](https://luacheck.readthedocs.io/en/stable/config.html) para ver a lista de opções disponíveis. O Defold usa os seguintes padrões para a configuração do Luacheck:
 

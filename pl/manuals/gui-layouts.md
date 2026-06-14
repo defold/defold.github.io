@@ -6,7 +6,7 @@ locale: pl
 title: Układy GUI w Defold
 toc:
 - Układy
-- Tworzenie profili wyświetlania
+- Tworzenie profili wyświetlania {creating-display-profiles}
 - Auto Layout Selection (Display Profiles)
 - Układy GUI
 - Dynamiczny wybór profilu
@@ -20,7 +20,7 @@ toc:
 
 Defold obsługuje GUI, które automatycznie dostosowuje się do zmian orientacji ekranu na urządzeniach mobilnych. Dzięki tej funkcji możesz projektować GUI dopasowujące się do orientacji i proporcji obrazu na ekranach o różnych rozmiarach. Możliwe jest też tworzenie układów dopasowanych do konkretnych modeli urządzeń.
 
-## Tworzenie profili wyświetlania
+## Tworzenie profili wyświetlania {#creating-display-profiles}
 
 Domyślnie ustawienia w pliku *game.project* wskazują wbudowany plik ustawień profili wyświetlania ("builtins/render/default.display_profiles"). Domyślne profile to "Landscape" (1280 pikseli szerokości i 720 pikseli wysokości) oraz "Portrait" (720 pikseli szerokości i 1280 pikseli wysokości). W tych profilach nie ustawiono modeli urządzeń, więc będą pasować do dowolnego urządzenia.
 

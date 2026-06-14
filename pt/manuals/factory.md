@@ -8,7 +8,7 @@ toc:
 - Componentes de fábrica
 - Endereçamento de objetos criados por fábrica
 - Rastreamento de objetos criados e objetos pai
-- Carregamento dinâmico de recursos de fábrica
+- Carregamento dinâmico de recursos de fábrica {dynamic-loading-of-factory-resources}
 - Protótipo dinâmico
 - Limites de instâncias
 - Pooling de objetos de jogo
@@ -188,7 +188,7 @@ function final(self)
 end
 ```
 
-## Carregamento dinâmico de recursos de fábrica
+## Carregamento dinâmico de recursos de fábrica {#dynamic-loading-of-factory-resources}
 
 Ao marcar a caixa *Load Dynamically* nas propriedades da fábrica, a engine adia o carregamento dos recursos associados à fábrica.
 

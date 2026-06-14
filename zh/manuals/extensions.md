@@ -13,7 +13,7 @@ toc:
 - 一个简单的扩展示例
 - 扩展生命周期
 - 已定义的平台标识符
-- 构建服务器日志
+- 构建服务器日志 {build-server-logs}
 - 扩展示例
 ---
 
@@ -246,7 +246,7 @@ print(reverse_s) --> ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba
 * `DM_PLATFORM_LINUX`
 * `DM_PLATFORM_HTML5`
 
-## 构建服务器日志
+## 构建服务器日志 {#build-server-logs}
 
 当项目使用原生扩展时，构建服务器日志可用。构建服务器日志（`log.txt`）在项目构建时与自定义引擎一起下载，并存储在项目的 `.internal/%platform%/build.zip` 文件中，同时也解压到项目的构建文件夹中。
 

@@ -8,7 +8,7 @@ toc:
 - 瓦片图源
 - 创建瓦片图源
 - 瓦片图源翻页动画
-- 瓦片图源碰撞形状
+- 瓦片图源碰撞形状 {tile-source-collision-shapes}
 ---
 
 # 瓦片图源
@@ -93,7 +93,7 @@ Flip horizontal
 Flip vertical
 : 垂直翻转动画。
 
-## 瓦片图源碰撞形状
+## 瓦片图源碰撞形状 {#tile-source-collision-shapes}
 
 Defold 使用在 *Collision* 属性中指定的图像为每个瓦片生成一个 _凸_ 形状。该形状将勾勒出瓦片具有颜色信息的部分，即不是 100% 透明的部分。
 

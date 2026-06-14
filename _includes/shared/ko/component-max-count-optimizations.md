@@ -1,10 +1,10 @@
-## Component max count optimizations
-The *game.project* settings file contains many values specifying the maximum number of a certain resource that can exist at the same time, often counted per loaded collection (also called world). The Defold engine will use these max values to preallocate memory for this amount of memory to avoid dynamic allocations and memory fragmentation while the game is running.
+## 컴포넌트 최대 개수 최적화 {#component-max-count-optimizations}
+*game.project* 설정 파일에는 동시에 존재할 수 있는 특정 리소스의 최대 개수를 지정하는 값이 많이 포함되어 있으며, 보통 로드된 컬렉션(월드라고도 함)별로 계산됩니다. Defold 엔진은 게임 실행 중 동적 할당과 메모리 단편화를 피하기 위해 이 최대값들을 사용하여 해당 수량만큼 메모리를 미리 할당합니다.
 
-The Defold data structures used to represent components and other resources are optimized to use as little memory as possible but care should still be taken when setting the values to avoid allocating more memory than is actually necessary.
+컴포넌트와 기타 리소스를 표현하는 데 사용되는 Defold 데이터 구조는 가능한 한 적은 메모리를 사용하도록 최적화되어 있지만, 실제로 필요한 것보다 더 많은 메모리를 할당하지 않도록 값을 설정할 때 여전히 주의해야 합니다.
 
-To further optimize memory usage the Defold build process will analyse the content of the game and override the max counts if it is possible to know for certain the exact amount:
+메모리 사용량을 더 최적화하기 위해 Defold 빌드 프로세스는 게임의 컨텐츠를 분석하고, 정확한 수량을 확실히 알 수 있는 경우 최대 개수를 재정의합니다.
 
-* If a collection doesn't contain any factory components the exact amount of each component and Game Object will be allocated and the max count values will be ignored.
-* If a collection contains a factory component the spawned objects will be analysed and the max count will be used for components that can be spawned from the factories and for Game Objects.
-* If a collection contains a factory or a collection factory with activated "Dynamic Prototype" option, this collection will use the max counters.
+* 컬렉션에 팩토리 컴포넌트가 없으면 각 컴포넌트와 게임 오브젝트의 정확한 수량이 할당되며 최대 개수 값은 무시됩니다.
+* 컬렉션에 팩토리 컴포넌트가 있으면 스폰된 오브젝트가 분석되고, 팩토리에서 스폰될 수 있는 컴포넌트와 게임 오브젝트에는 최대 개수가 사용됩니다.
+* 컬렉션에 "Dynamic Prototype" 옵션이 활성화된 팩토리 또는 컬렉션 팩토리가 포함되어 있으면 이 컬렉션은 최대 개수 카운터를 사용합니다.

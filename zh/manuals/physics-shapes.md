@@ -162,4 +162,4 @@ physics.set_shape("#collisionobject", "my_box_shape", box_data)
 
 
 # 调试
-您可以[启用物理调试](/zh/manuals/debugging/#debugging-problems-with-physics)以在运行时查看碰撞形状。
+您可以[启用物理调试](/zh/manuals/debugging-game-logic/#debugging-problems-with-physics)以在运行时查看碰撞形状。

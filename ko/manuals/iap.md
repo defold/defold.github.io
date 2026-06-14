@@ -1,5 +1,5 @@
 ---
-brief: 인앱 구매(또는 인앱 결제)를 사용하면 플레이어나 앱 사용자에게 추가 콘텐츠 또는 기능에 대한 요금을 청구할 수 있습니다. 이 매뉴얼은 이 기능에 사용할 수 있는 Defold API를 설명합니다.
+brief: 인앱 구매(또는 인앱 결제)를 사용하면 플레이어나 앱 사용자에게 추가 컨텐츠 또는 기능에 대한 요금을 청구할 수 있습니다. 이 매뉴얼은 이 기능에 사용할 수 있는 Defold API를 설명합니다.
 github: https://github.com/defold/doc
 layout: manual
 locale: ko

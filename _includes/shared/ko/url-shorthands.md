@@ -1,17 +1,17 @@
   `.`
-  : Shorthand resolving to the current game object.
+  : 현재 게임 오브젝트로 해석되는 약칭입니다.
 
   `#`
-  : Shorthand resolving to the current component.
+  : 현재 컴포넌트로 해석되는 약칭입니다.
 
-  For example:
+  예를 들어:
 
   ```lua
-   -- Let this game object acquire input focus
+   -- 현재 게임 오브젝트가 입력 포커스를 얻도록 합니다
    msg.post(".", "acquire_input_focus")
   ```
 
   ```lua
-   -- Post "reset" to the current script
+   -- 현재 스크립트에 "reset"을 보냅니다
    msg.post("#", "reset")
   ```

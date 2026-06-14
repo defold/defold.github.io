@@ -10,7 +10,7 @@ toc:
 - Trigger types
 - Accelerometer input
 - Input focus
-- Input dispatch and on_input()
+- Input dispatch and on_input() {input-dispatch-and-on_input}
 - Input focus and collection proxy components
 - Releasing input
 - Consuming input
@@ -30,7 +30,7 @@ Devices
   1. Keyboard (single key as well as text input)
   2. Mouse (position, button clicks and mouse wheel actions)
   3. Single and multi-touch (on iOS and Android devices and HTML5 on mobile)
-  4. Gamepads (as supported through the operating system and mapped in the [gamepads](#gamepads-settings-file) file)
+  4. Gamepads (as supported through the operating system and mapped in the [gamepads](/manuals/input-gamepads/#gamepads-settings-file) file)
 
 Input bindings
 : Before input is sent to a script the raw input from the device is translated into meaningful *actions* via the input bindings table.
@@ -112,7 +112,7 @@ This message instructs the engine to add input capable components (script compon
 If a game object that has already acquired input focus does so again, its component(s) will be moved to the top of the stack.
 
 
-## Input dispatch and on_input()
+## Input dispatch and on_input() {#input-dispatch-and-on_input}
 
 Input actions are dispatched according to the input stack, from the top to the bottom.
 

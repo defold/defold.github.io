@@ -6,9 +6,9 @@ locale: es
 title: Manual de factory de colección
 toc:
 - Componentes factory de colección
-- Generar una colección
+- Generar una colección {spawning-a-collection}
 - Propiedades
-- Carga dinámica de recursos de factory
+- Carga dinámica de recursos de factory {dynamic-loading-of-factory-resources}
 - Prototipo dinámico
 ---
 
@@ -20,7 +20,7 @@ Las colecciones proporcionan un mecanismo potente para crear plantillas reutiliz
 
 Con un componente factory de colección puedes generar el contenido de un archivo de colección en un mundo de juego. Esto es análogo a generar todos los objetos de juego dentro de la colección con una factory y luego construir la jerarquía padre-hijo entre los objetos. Un caso de uso típico es generar enemigos compuestos por varios objetos de juego (enemigo + arma, por ejemplo).
 
-## Generar una colección
+## Generar una colección {#spawning-a-collection}
 
 Supongamos que queremos un objeto de juego de personaje y un objeto de juego de escudo separado como hijo del personaje. Construimos la jerarquía de objetos de juego en un archivo de colección y lo guardamos como "bean.collection".
 
@@ -98,7 +98,7 @@ function init(self)
 end
 ```
 
-## Carga dinámica de recursos de factory
+## Carga dinámica de recursos de factory {#dynamic-loading-of-factory-resources}
 
 Al marcar la casilla *Load Dynamically* en las propiedades de factory de colección, el motor pospone la carga de los recursos asociados con la factory.
 

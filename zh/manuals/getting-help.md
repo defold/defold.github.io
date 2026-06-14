@@ -5,16 +5,16 @@ layout: manual
 locale: zh
 title: 如何获取帮助
 toc:
-- 获取帮助
+- 获取帮助 {getting-help}
 - 在论坛上报告问题
 - 必需信息
 - 分享代码
-- 从编辑器报告问题
+- 从编辑器报告问题 {report-a-problem-from-the-editor}
 - 在Discord上讨论问题
-- 日志文件
+- 日志文件 {log-files}
 ---
 
-# 获取帮助
+# 获取帮助 {#getting-help}
 
 如果您在使用Defold时遇到问题，我们希望听到您的反馈，以便我们能够解决问题和/或帮助您解决难题！有多种方式可以讨论和报告问题。请选择最适合您的方式：
 
@@ -83,7 +83,7 @@ print("Hello code!")
 ```
 
 
-## 从编辑器报告问题
+## 从编辑器报告问题 {#report-a-problem-from-the-editor}
 
 编辑器提供了一种方便的方式来报告问题。从编辑器中选择<kbd>帮助->报告问题</kbd>菜单选项来报告问题。
 
@@ -101,7 +101,7 @@ print("Hello code!")
 如果您在使用Defold时遇到问题，可以尝试在[Discord](https://www.defold.com/discord/)上提问。但是，我们建议将复杂问题和深入讨论发布在论坛上。另请注意，我们不接受通过Discord提交的错误报告。
 
 
-# 日志文件
+# 日志文件 {#log-files}
 
 引擎、编辑器和构建服务器生成日志信息，这在寻求帮助和调试问题时非常有价值。报告问题时始终提供日志文件：
 

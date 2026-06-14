@@ -139,7 +139,7 @@ A: Sí, checa [`sys.get_sys_info()`](/ref/sys#sys.get_sys_info).
 {% include shared/es/editor-faq.md %}
 
 
-## Preguntas de Linux
+## Preguntas de Linux {#linux-questions}
 {% include shared/es/linux-faq.md %}
 
 

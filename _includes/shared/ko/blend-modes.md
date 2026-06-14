@@ -1,13 +1,13 @@
-The *Blend Mode* property defines how the component graphics should be blended with the graphics behind it. These are the available blend modes and how they are calculated:
+*Blend Mode* 프로퍼티는 컴포넌트 그래픽을 그 뒤에 있는 그래픽과 어떻게 블렌딩할지 정의합니다. 사용 가능한 블렌드 모드와 계산 방식은 다음과 같습니다:
 
 Alpha
-: Normal blending: `src.a * src.rgb + (1 - src.a) * dst.rgb`
+: 일반 블렌딩: `src.a * src.rgb + (1 - src.a) * dst.rgb`
 
 Add
-: Brighten the background with the color values of the corresponding pixels of the component: `src.rgb + dst.rgb`
+: 컴포넌트의 대응하는 픽셀 색상 값으로 배경을 밝게 합니다: `src.rgb + dst.rgb`
 
 Multiply
-: Darken the background with values of the corresponding pixels of the component: `src.rgb * dst.rgb`
+: 컴포넌트의 대응하는 픽셀 값으로 배경을 어둡게 합니다: `src.rgb * dst.rgb`
 
 Screen
-: Opposite of Multiply. Brighten background and values of the corresponding pixels of the component: `src.rgb - dst.rgb * dst.rgb`
+: Multiply의 반대입니다. 컴포넌트의 대응하는 픽셀 값과 배경을 밝게 합니다: `src.rgb - dst.rgb * dst.rgb`

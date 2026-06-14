@@ -33,7 +33,7 @@ If you want the editor to automatically create random debug certificates, leave 
 
 If you want to sign your bundle with a particular keystore, specify the *Keystore* and *Keystore password*. The *Keystore* is expected to have the `.keystore` file extension while the password is expected to be stored in a text file with the `.txt` extension. It is also possible to specify a *Key password* if the key in the keystore uses a different password than the keystore itself:
 
-Defold supports the creation of both APK and AAB files. Select APK or AAB from the Bundle Format drop down.
+Defold supports the creation of both APK and AAB files. Select APK or AAB from the *Bundle Format* drop down.
 
 Press `Create Bundle` when you have configured the application bundle settings. You will then be prompted to specify where on your computer the bundle will be created.
 
@@ -115,7 +115,7 @@ Success
 
 You can install and launch an *`.apk`* file using the editor's "Install on connected device" and "Launch installed app" check-boxes in the Bundle dialog:
 
-For this feature to work, you will need ADB installed and *USB debugging* enabled on the connected device. If the editor can't detect the install location of the ADB command line tool, you will need to specify it in [Preferences](https://defold.com/llms/manuals/editor-preferences.md).
+For this feature to work, you will need *ADB* installed and *USB debugging* enabled on the connected device. If the editor can't detect the install location of the ADB command line tool, you will need to specify it in [Preferences](https://defold.com/llms/manuals/editor-preferences.md).
 
 #### Installing an AAB
 
@@ -126,7 +126,7 @@ An *.aab* file can be uploaded to Google Play via the [Google Play developer con
 The Defold engine requires a number of different permissions for all engine features to work. The permissions are defined in the `AndroidManifest.xml`, specified in the *game.project* [project settings file](https://defold.com/llms/manuals/project-settings.md). You can read more about Android permissions in [the official docs](https://developer.android.com/guide/topics/permissions/overview). The following permissions are requested in the default manifest:
 
 ### android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE (Protection level: normal)
-Allows applications to open network sockets and access information about networks. These permission are needed for internet access. ([Android official docs](https://developer.android.com/reference/android/Manifest.permission#INTERNET)) and ([Android official docs](https://developer.android.com/reference/android/Manifest.permission#ACCESS_NETWORK_STATE)).
+Allows applications to open *network sockets* and access information about networks. These permission are needed for internet access. ([Android official docs](https://developer.android.com/reference/android/Manifest.permission#INTERNET)) and ([Android official docs](https://developer.android.com/reference/android/Manifest.permission#ACCESS_NETWORK_STATE)).
 
 ### android.permission.WAKE_LOCK (Protection level: normal)
 Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming. This permission is needed to temporarily prevent the device from sleeping while receiving a push notification. ([Android official docs](https://developer.android.com/reference/android/Manifest.permission#WAKE_LOCK))

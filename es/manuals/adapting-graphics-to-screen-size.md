@@ -11,7 +11,7 @@ toc:
 - Gráficos de alta resolución
 - Configuración High DPI y pantallas retina
 - Crear una GUI adaptativa
-- Propiedades de nodo
+- Propiedades de *nodo*
 - Layouts
 - Probar distintos tamaños de pantalla
 ---
@@ -74,7 +74,7 @@ Esto es mejor. Tanto la ventana como los gráficos tienen un buen tamaño, pero 
 
 ![](/manuals/images/screen_size/retro-zoomed_linear.png)
 
-¡Los gráficos se ven borrosos! Esto se debe a la forma en que los gráficos ampliados se muestrean desde la textura al ser renderizados por la GPU. La configuración predeterminada en el archivo *game.project*, en la sección Graphics, es *linear*:
+¡Los gráficos se ven borrosos! Esto se debe a la forma en que los gráficos ampliados se muestrean desde la textura al ser renderizados por la GPU. La configuración predeterminada en el archivo *game.project*, en la sección *Graphics*, es *linear*:
 
 ![](/manuals/images/screen_size/retro-settings_linear.png)
 
@@ -84,11 +84,11 @@ Cambiar esto a *nearest* dará el resultado que buscamos:
 
 ![](/manuals/images/screen_size/retro-zoomed_nearest.png)
 
-Ahora tenemos gráficos nítidos y pixel-perfect para nuestro juego retro. Hay aún más cosas que considerar, como desactivar subpíxeles para sprites en *game.project*:
+Ahora tenemos gráficos nítidos y *pixel-perfect* para nuestro juego retro. Hay aún más cosas que considerar, como desactivar subpíxeles para sprites en *game.project*:
 
 ![](/manuals/images/screen_size/retro-subpixels.png)
 
-Cuando la opción Subpixels está desactivada, los sprites nunca se renderizarán en medios píxeles y, en su lugar, siempre se ajustarán al píxel completo más cercano.
+Cuando la opción *Subpixels* está desactivada, los sprites nunca se renderizarán en medios píxeles y, en su lugar, siempre se ajustarán al píxel completo más cercano.
 
 ## Gráficos de alta resolución
 
@@ -115,11 +115,11 @@ Esto creará un back buffer High DPI en las pantallas que lo soporten. El juego 
 
 ## Crear una GUI adaptativa
 
-El sistema para crear componentes GUI se basa en una serie de bloques de construcción básicos, o [nodos](/es/manuals/gui/#node-types), y aunque puede parecer demasiado simple, se puede usar para crear desde botones hasta menús y popups complejos. Las GUIs que crees pueden configurarse para adaptarse automáticamente a cambios de tamaño y orientación de pantalla. Por ejemplo, puedes mantener nodos anclados a la parte superior, inferior o a los lados de la pantalla, y los nodos pueden conservar su tamaño o estirarse. La relación entre nodos, así como su tamaño y apariencia, también puede configurarse para cambiar cuando cambia el tamaño o la orientación de la pantalla.
+El sistema para crear componentes GUI se basa en una serie de bloques de construcción básicos, o [nodos](/es/manuals/gui/#node-types), y aunque puede parecer demasiado simple, se puede usar para crear desde botones hasta menús y popups complejos. Las GUIs que crees pueden configurarse para adaptarse automáticamente a cambios de tamaño y orientación de pantalla. Por ejemplo, puedes mantener *nodos* anclados a la parte superior, inferior o a los lados de la pantalla, y los *nodos* pueden conservar su tamaño o estirarse. La relación entre nodos, así como su tamaño y apariencia, también puede configurarse para cambiar cuando cambia el tamaño o la orientación de la pantalla.
 
-### Propiedades de nodo
+### Propiedades de *nodo*
 
-Cada nodo de una GUI tiene un punto de pivote, un anclaje horizontal y vertical, además de un modo de ajuste.
+Cada *nodo* de una GUI tiene un punto de pivote, un anclaje horizontal y vertical, además de un modo de ajuste.
 
 * El punto de pivote define el punto central de un nodo.
 * El modo de anclaje controla cómo se altera la posición vertical y horizontal del nodo cuando los límites de la escena, o los límites del nodo padre, se estiran para ajustarse al tamaño físico de la pantalla.
@@ -134,6 +134,6 @@ Defold soporta GUIs que se adaptan automáticamente a cambios de orientación de
 
 ## Probar distintos tamaños de pantalla
 
-El menú Debug contiene una opción para simular la resolución de un modelo de dispositivo concreto o una resolución personalizada. Mientras la aplicación está en ejecución, puedes seleccionar <kbd>Debug->Simulate Resolution</kbd> y elegir uno de los modelos de dispositivo de la lista. La ventana de la aplicación en ejecución se redimensionará y podrás ver cómo se ve tu juego en una resolución distinta o con una relación de aspecto distinta.
+El menú *Debug* contiene una opción para simular la resolución de un modelo de dispositivo concreto o una resolución personalizada. Mientras la aplicación está en ejecución, puedes seleccionar <kbd>Debug->Simulate Resolution</kbd> y elegir uno de los modelos de dispositivo de la lista. La ventana de la aplicación en ejecución se redimensionará y podrás ver cómo se ve tu juego en una resolución distinta o con una relación de aspecto distinta.
 
 ![](/manuals/images/screen_size/simulate-resolution.png)

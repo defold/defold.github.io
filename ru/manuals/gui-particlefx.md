@@ -7,7 +7,7 @@ title: GUI-нода Particle FX
 toc:
 - GUI-нода Particle FX
 - Добавление ноды Particle FX
-- Управление эффектом
+- Управление эффектом {controlling-the-effect}
 ---
 
 # GUI-нода Particle FX
@@ -22,7 +22,7 @@ toc:
 
 ![Particle fx](/manuals/images/gui-particlefx/create.png)
 
-## Управление эффектом
+## Управление эффектом {#controlling-the-effect}
 
 Можно запускать и останавливать эффект, управляя нодой из скрипта:
 

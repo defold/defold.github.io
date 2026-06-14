@@ -7,4 +7,4 @@ title: Defold의 Spine 모델 컴포넌트
 toc: []
 ---
 
-[이 매뉴얼은 이동되었습니다](/extension-spine)
+[이 매뉴얼은 이동했습니다](/extension-spine)

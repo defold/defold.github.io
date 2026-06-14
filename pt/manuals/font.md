@@ -10,12 +10,12 @@ toc:
 - Suporte a layout de texto (por exemplo, da direita para a esquerda)
 - Coleção de fontes
 - Criando uma fonte
-- Propriedades
+- Propriedades {properties}
 - Fontes de campo de distância
 - Bitmap BMFonts
 - Artefatos e boas práticas
 - Cache de fontes
-- Habilitando fontes em runtime
+- Habilitando fontes em runtime {enabling-runtime-fonts}
 - Script de fontes
 - Adicionando/removendo fontes de uma coleção de fontes
 - Pré-aquecendo glifos
@@ -69,7 +69,7 @@ Arraste a fonte que deseja usar para o navegador *Assets* e solte-a em um local 
 
 Defina a propriedade *Font* para o arquivo de fonte e ajuste as propriedades da fonte conforme necessário.
 
-## Propriedades
+## Propriedades {#properties}
 
 *Font*
 : O arquivo TTF, OTF ou *`.fnt`* a usar para gerar os dados da fonte.
@@ -204,7 +204,7 @@ Por exemplo, para gerar um gradiente em um fragment shader, basta escrever:
 
 Para mais informações sobre uniforms de shader, consulte o [manual de shader](/pt/manuals/shader).
 
-## Habilitando fontes em runtime
+## Habilitando fontes em runtime {#enabling-runtime-fonts}
 
 É possível usar geração em runtime para fontes do tipo SDF ao usar fontes TrueType (`.ttf`).
 Essa abordagem pode reduzir bastante o tamanho do download e o consumo de memória em runtime de um jogo Defold.

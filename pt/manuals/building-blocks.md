@@ -6,7 +6,7 @@ locale: pt
 title: Os blocos de construção do Defold
 toc:
 - Blocos de construção
-- Coleções
+- Coleções {collections}
 - Objetos de jogo
 - Componentes
 - Objetos adicionados no local ou por referência
@@ -30,7 +30,7 @@ Objeto de jogo
 Componente
 : Componentes são entidades colocadas em objetos de jogo para dar a eles representação visual, sonora e/ou lógica no jogo. Eles normalmente são usados para criar sprites de personagens, arquivos de script, efeitos sonoros ou efeitos de partículas.
 
-## Coleções
+## Coleções {#collections}
 
 Coleções são estruturas em árvore que contêm objetos de jogo e outras coleções. Uma coleção sempre é armazenada em um arquivo.
 

@@ -6,7 +6,7 @@ locale: pt
 title: Manual do construtor de projetos do Defold
 toc:
 - Bob the builder
-- Uso
+- Uso {usage}
 ---
 
 # Bob the builder
@@ -23,7 +23,7 @@ Mirrors compatíveis do OpenJDK 25:
 
 No Windows, use o instalador `.msi` do OpenJDK.
 
-## Uso
+## Uso {#usage}
 
 Bob é executado a partir de um shell ou da linha de comando chamando `java` (ou `java.exe` no Windows) e fornecendo o arquivo Java do Bob como argumento:
 

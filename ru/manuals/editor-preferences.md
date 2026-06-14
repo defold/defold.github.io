@@ -7,10 +7,10 @@ title: Настройки редактора
 toc:
 - Настройки редактора
 - Общие сведения
-- Програмный код
+- Програмный код {code}
 - Открытие скриптов в Visual Studio Code
-- Расширения
-- Инструменты
+- Расширения {extensions}
+- Инструменты {tools}
 - Сочетания клавиш
 ---
 
@@ -50,7 +50,7 @@ Engine Arguments
 ```
 
 
-## Програмный код
+## Програмный код {#code}
 
 ![](/manuals/images/editor/preferences_code.png)
 
@@ -88,7 +88,7 @@ Zoom on Scroll
 Символ `.` здесь необходим для открытия всей рабочей области, а не отдельного файла.
 
 
-## Расширения
+## Расширения {#extensions}
 
 ![](/manuals/images/editor/preferences_extensions.png)
 
@@ -104,7 +104,7 @@ Build Server Password
 Build Server Headers
 : дополнительные заголовки, передаваемые серверу сборки при создании собственных расширений. Это важно при использовании сервиса CloudFlare или аналогичных с extender.
 
-## Инструменты
+## Инструменты {#tools}
 
 ![](/manuals/images/editor/preferences_tools.png)
 

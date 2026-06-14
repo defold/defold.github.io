@@ -30,7 +30,7 @@ You can learn more about the different options in the [Project Setup manual](htt
 
 In the bottom left corner of the starting screen you can see a Language selection - select from the currently available localizations. This is also available in the Editor in `File ▸ Preferences ▸ General ▸ Editor Language`.
 
-## The Editor panes
+## The Editor panes {#the-editor-views}
 
 The Defold Editor is separated into a set of panes, or views, that display specific information.
 
@@ -42,7 +42,7 @@ Lists all the files and folders that are part of your project in a tree structur
    - `Drag and Drop` to add files from elsewhere on your disk to the project or move files and folders to new locations in the project.
    - `Right Mouse Click` to open a _Context Menu_ from where you can create new files or folders, rename, delete, track file dependencies and more.
 
-### 2. Scene Editor pane
+### 2. Scene Editor pane {#the-scene-editor}
 
 Double-clicking a collection, game object, or visual component file opens the *Scene Editor* — the visual editor for building and editing scenes. Script files and other non-visual resources open in their own dedicated editors instead.
 

@@ -10,7 +10,7 @@ toc:
 - Usar depuração com print
 - Analisar um log de travamento
 - Obtendo o log de travamento de um dispositivo
-- Simbolicar uma callstack
+- Simbolicar uma callstack {symbolicate-a-callstack}
 - Enviando símbolos para o Google Play
 - Simbolicar uma callstack do Android
 - Simbolicar uma callstack do iOS
@@ -85,7 +85,7 @@ No iTunes, você pode visualizar/baixar o container de um app.
 Na janela `Xcode -> Devices`, você também pode selecionar os logs de travamento.
 
 
-## Simbolicar uma callstack
+## Simbolicar uma callstack {#symbolicate-a-callstack}
 
 Se você obtiver uma callstack de um arquivo `_crash` ou de um [arquivo de log](/pt/manuals/debugging-game-and-system-logs), poderá simbolicá-la. Isso significa traduzir cada endereço na callstack para um nome de arquivo e número de linha, o que por sua vez ajuda a encontrar a causa raiz.
 

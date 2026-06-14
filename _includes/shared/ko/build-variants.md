@@ -1,37 +1,37 @@
-## Build variants
+## 빌드 변형
 
-When you bundle a game, you need to choose what type of engine you wish to use. You have three basic options:
+게임을 번들링할 때는 사용할 엔진 유형을 선택해야 합니다. 기본 옵션은 세 가지입니다:
 
   * Debug
   * Release
   * Headless
 
-These different versions are also referred to as `Build variants`
+이 서로 다른 버전은 `Build variants`라고도 부릅니다.
 
 <div class='sidenote' markdown='1'>
-When you choose <kbd>Project ▸ Build</kbd> you'll always get the debug version.
+<kbd>Project ▸ Build</kbd>를 선택하면 항상 디버그 버전이 만들어집니다.
 </div>
 
 
 ### Debug
 
-This type of executable is typically used during development of a game as it has several useful debugging features included:
+이 유형의 실행 파일은 여러 유용한 디버깅 기능을 포함하고 있으므로 일반적으로 게임 개발 중에 사용됩니다:
 
-* Profiler - Used for gathering performance and usage counters. Learn how to use the profiler in the [Profiling manual](/manuals/profiling/).
-* Logging - The engine will log system information, warnings and errors when logging is enabled. The engine will also output logs from the Lua `print()` function and from native extensions logging using `dmLogInfo()`, `dmLogError()` and so on. Learn how to read these logs in the [Game and System Logs manual](https://defold.com/manuals/debugging-game-and-system-logs/).
-* Hot reload - Hot-reload is a powerful feature which lets a developer reload resource while the game is running. Learn how to use this in the [Hot-Reload manual](https://defold.com/manuals/hot-reload/).
-* Engine services - It is possible to connect to and interact with a debug version of a game through a number of different open TCP ports and services. The services include the hot-reload feature, remote log access and the profiler mentioned above, but also other services to remotely interact with the engine. Learn more about the engine services [in the developer documentation](https://github.com/defold/defold/blob/dev/engine/docs/DEBUG_PORTS_AND_SERVICES.md).
+* 프로파일러 - 성능 및 사용량 카운터를 수집하는 데 사용됩니다. 프로파일러 사용 방법은 [프로파일링 매뉴얼](/manuals/profiling/)에서 확인하세요.
+* 로깅 - 로깅이 활성화되어 있으면 엔진이 시스템 정보, 경고, 오류를 로그에 기록합니다. 엔진은 Lua `print()` 함수의 로그와 `dmLogInfo()`, `dmLogError()` 등을 사용하는 네이티브 익스텐션의 로그도 출력합니다. 이러한 로그를 읽는 방법은 [게임 및 시스템 로그 매뉴얼](https://defold.com/manuals/debugging-game-and-system-logs/)에서 확인하세요.
+* 핫 리로드 - 핫 리로드는 게임이 실행 중일 때 개발자가 리소스를 다시 로드할 수 있게 해 주는 강력한 기능입니다. 사용 방법은 [핫 리로드 매뉴얼](https://defold.com/manuals/hot-reload/)에서 확인하세요.
+* 엔진 서비스 - 여러 열린 TCP 포트와 서비스를 통해 게임의 디버그 버전에 연결하고 상호작용할 수 있습니다. 이 서비스에는 위에서 언급한 핫 리로드 기능, 원격 로그 액세스, 프로파일러뿐 아니라 엔진과 원격으로 상호작용하기 위한 다른 서비스도 포함됩니다. 엔진 서비스에 대한 자세한 내용은 [개발자 문서](https://github.com/defold/defold/blob/dev/engine/docs/DEBUG_PORTS_AND_SERVICES.md)에서 확인하세요.
 
 
 ### Release
 
-This variant has the debugging features disabled. This options should be chosen when the game is ready to be released to the app store or in other ways shared with players. It is not recommended to release a game with the debugging features enabled for a number of reasons:
+이 변형은 디버깅 기능이 비활성화되어 있습니다. 게임을 앱 스토어에 릴리스하거나 다른 방식으로 플레이어에게 공유할 준비가 되었을 때 이 옵션을 선택해야 합니다. 다음과 같은 여러 이유로 디버깅 기능이 활성화된 게임을 릴리스하는 것은 권장되지 않습니다:
 
-* The debugging features take up a little bit of size in the binary, and [it is a best practice to try to keep the binary size of a released game as small as possible](https://defold.com/manuals/optimization/#optimize-application-size).
-* The debugging features takes a little bit of CPU time as well. This can impact the performance of the game if a user has a low-end hardware. On mobile phones the increased CPU usage will also contribute to heating and battery drain.
-* The debugging features may expose information about the game that is not intended for the eyes of the players, either from a security, cheating or fraud perspective.
+* 디버깅 기능은 바이너리에서 약간의 크기를 차지하며, [릴리스된 게임의 바이너리 크기를 가능한 한 작게 유지하는 것이 모범 사례입니다](https://defold.com/manuals/optimization/#optimize-application-size).
+* 디버깅 기능은 CPU 시간도 약간 사용합니다. 사용자가 저사양 하드웨어를 사용하는 경우 게임 성능에 영향을 줄 수 있습니다. 모바일 폰에서는 CPU 사용량 증가가 발열과 배터리 소모에도 영향을 줍니다.
+* 디버깅 기능은 보안, 치팅 또는 부정행위 관점에서 플레이어에게 공개되어서는 안 되는 게임 정보를 노출할 수 있습니다.
 
 
 ### Headless
 
-This executable runs without any graphics and sound. It means that you can run the game unit/smoke tests on a CI server, or even have it as a game server in the cloud.
+이 실행 파일은 그래픽과 사운드 없이 실행됩니다. 즉 CI 서버에서 게임 유닛/스모크 테스트를 실행하거나, 클라우드에서 게임 서버로 사용할 수도 있습니다.

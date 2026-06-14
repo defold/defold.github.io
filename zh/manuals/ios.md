@@ -8,9 +8,9 @@ toc:
 - iOS 开发
 - Apple 的代码签名过程
 - 使用免费的 Apple 开发者账户进行开发
-- 创建 iOS 应用包
+- 创建 iOS 应用包 {creating-an-ios-application-bundle}
 - 在已连接的 iPhone 上安装和启动包
-- 创建故事板
+- 创建故事板 {creating-a-storyboard}
 - 创建图标资源目录
 - 安装 iOS 应用包
 - 出口合规信息
@@ -99,7 +99,7 @@ iOS 要求 _所有_ 你想要在手机或平板电脑上运行的应用 _必须_
 
 当配置文件过期时，你需要在 Xcode 中再次构建应用并获取新的临时配置文件，如上所述。
 
-## 创建 iOS 应用包
+## 创建 iOS 应用包 {#creating-an-ios-application-bundle}
 
 当你拥有代码签名身份和配置文件后，你就可以从编辑器中为你的游戏创建独立的应用包。只需从菜单中选择 <kbd>Project ▸ Bundle... ▸ iOS Application...</kbd>。
 
@@ -132,7 +132,7 @@ $ brew install ios-deploy
 
 如果编辑器无法检测到 ios-deploy 工具的安装位置，你需要在 [首选项](/zh/manuals/editor-preferences/#tools) 中指定它。 
 
-### 创建故事板
+### 创建故事板 {#creating-a-storyboard}
 
 你使用 Xcode 创建故事板文件。启动 Xcode 并创建一个新项目。选择 iOS 和单视图应用：
 

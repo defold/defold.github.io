@@ -1,9 +1,9 @@
 ---
-brief: Defold의 Facebook.
+brief: Defold에서 Facebook 사용.
 github: https://github.com/defold/doc
 layout: manual
 locale: ko
-title: Defold의 Facebook
+title: Defold에서 Facebook 사용
 toc: []
 ---
 

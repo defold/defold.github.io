@@ -8,7 +8,7 @@ toc:
 - Desenvolvimento para HTML5
 - Tamanho do heap
 - Testando uma build HTML5
-- Criando um pacote HTML5
+- Criando um pacote HTML5 {creating-html5-bundle}
 - Problemas conhecidos e limitações
 - Personalizando o pacote HTML5
 - Downscale Fit e Fit
@@ -72,7 +72,7 @@ Você não pode testar o pacote HTML5 abrindo o arquivo `index.html` em um naveg
 Se você vir um erro `"wasm streaming compile failed: TypeError: Failed to execute ‘compile’ on ‘WebAssembly’: Incorrect response MIME type. Expected ‘application/wasm’."` no console, certifique-se de que seu servidor usa o tipo MIME `application/wasm` para arquivos `.wasm`.
 </div>
 
-## Criando um pacote HTML5
+## Criando um pacote HTML5 {#creating-html5-bundle}
 
 Criar conteúdo HTML5 com o Defold é simples e segue o mesmo padrão de todas as outras plataformas compatíveis: selecione <kbd>Projeto ▸ Empacotar... ▸ Aplicação HTML5...</kbd> no menu:
 

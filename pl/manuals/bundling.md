@@ -7,7 +7,7 @@ title: Tworzenie pakietu aplikacji
 toc:
 - Tworzenie pakietu aplikacji
 - Tworzenie pakietu w edytorze
-- Raporty budowania
+- Raporty budowania {build-reports}
 - Android
 - iOS
 - macOS
@@ -33,7 +33,7 @@ Pakiet aplikacji tworzysz z menu projektu, wybierając <kbd>Project ▸ Bundle..
 
 Wybranie dowolnej z tych opcji otworzy okno dialogowe Bundle dla tej konkretnej platformy.
 
-### Raporty budowania
+### Raporty budowania {#build-reports}
 
 Podczas tworzenia pakietu gry możesz utworzyć raport budowania. To bardzo przydatne, gdy chcesz lepiej ocenić rozmiar wszystkich zasobów wchodzących w skład pakietu gry. Po prostu zaznacz pole wyboru *Generate build report* podczas tworzenia pakietu.
 
@@ -55,7 +55,7 @@ Tworzenie pakietu aplikacji dla macOS (.app) opisano w [podręczniku macOS](/pl/
 
 ### Linux
 
-Tworzenie pakietu aplikacji dla systemu Linux nie wymaga żadnej konkretnej konfiguracji ani opcjonalnych ustawień specyficznych dla platformy w *game.project* [pliku ustawień projektu](/pl/manuals/project-settings/#linux).
+Tworzenie pakietu aplikacji dla systemu Linux nie wymaga żadnej konkretnej konfiguracji ani opcjonalnych ustawień specyficznych dla platformy w *game.project* [pliku ustawień projektu](/pl/manuals/project-settings/).
 
 ### Windows
 

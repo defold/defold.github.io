@@ -8,9 +8,9 @@ toc:
 - Tworzenie na iOS
 - Proces podpisywania kodu przez Apple
 - Tworzenie przy użyciu bezpłatnego konta Apple Developer
-- Tworzenie pakietu aplikacji iOS
+- Tworzenie pakietu aplikacji iOS {creating-an-ios-application-bundle}
 - Instalowanie i uruchamianie pakietu na podłączonym iPhonie
-- Tworzenie storyboardu
+- Tworzenie storyboardu {creating-a-storyboard}
 - Tworzenie katalogu zasobów ikon
 - Instalowanie pakietu aplikacji iOS
 - Informacje o zgodności eksportowej
@@ -99,7 +99,7 @@ Ten plik provisioningowy możesz wykorzystać razem z tożsamością podpisywani
 
 Gdy profil wygaśnie, musisz ponownie zbudować aplikację w Xcode i uzyskać nowy tymczasowy plik provisioningowy, jak opisano powyżej.
 
-## Tworzenie pakietu aplikacji iOS
+## Tworzenie pakietu aplikacji iOS {#creating-an-ios-application-bundle}
 
 Gdy masz tożsamość podpisywania kodu i profil provisioningowy, możesz utworzyć samodzielny pakiet aplikacji dla swojej gry z poziomu edytora. Po prostu wybierz <kbd>Project ▸ Bundle... ▸ iOS Application...</kbd> z menu.
 
@@ -132,7 +132,7 @@ $ brew install ios-deploy
 
 Jeśli edytor nie może wykryć lokalizacji instalacji narzędzia ios-deploy, musisz podać ją w [Preferences](/pl/manuals/editor-preferences/#tools).
 
-### Tworzenie storyboardu
+### Tworzenie storyboardu {#creating-a-storyboard}
 
 Storyboard tworzysz w Xcode. Uruchom Xcode i utwórz nowy projekt. Wybierz iOS i Single View App:
 

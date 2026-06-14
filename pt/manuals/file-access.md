@@ -9,7 +9,7 @@ toc:
 - Funções para acesso a arquivos e pastas
 - Localizações de arquivos e pastas
 - Como salvar e carregar arquivos específicos da aplicação
-- Como acessar arquivos empacotados com a aplicação
+- Como acessar arquivos empacotados com a aplicação {how-to-access-files-bundled-with-the-application}
 - Acesso a arquivos do sistema
 - Extensões
 ---
@@ -88,7 +88,7 @@ Ao salvar e carregar arquivos específicos da aplicação, como recordes, config
 
 [Veja o exemplo que mostra como usar `sys.save()` e `sys.load()`](/examples/file/sys_save_load/).
 
-### Como acessar arquivos empacotados com a aplicação
+### Como acessar arquivos empacotados com a aplicação {#how-to-access-files-bundled-with-the-application}
 Você pode incluir arquivos com sua aplicação usando bundle resources e custom resources.
 
 #### Custom Resources

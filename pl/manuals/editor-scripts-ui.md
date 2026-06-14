@@ -17,7 +17,7 @@ toc:
 - Komponenty wejściowe
 - Komponenty związane z dialogami
 - Komponenty pomocnicze
-- Reaktywność
+- Reaktywność {reactivity}
 - Zasady reaktywności
 - Hooki
 - '**use_state**'
@@ -219,7 +219,7 @@ Dodatkowo edytor definiuje kilka komponentów pomocniczych:
 - **`separator`** to cienka linia używana do oddzielania bloków zawartości
 - **`scroll`** to komponent opakowujący, który pokazuje paski przewijania, gdy opakowany komponent nie mieści się w przydzielonej przestrzeni
 
-## Reaktywność
+## Reaktywność {#reactivity}
 
 Ponieważ komponenty są **niezmiennymi userdata**, po ich utworzeniu nie da się ich zmieniać. Jak więc sprawić, żeby UI zmieniało się w czasie? Odpowiedź: **komponenty reaktywne**.
 

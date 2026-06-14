@@ -291,7 +291,7 @@ Finalmente, crea un nuevo archivo *hero.script* y agrégalo al objeto de juego.
 <div class='sidenote' markdown='1'>
 La razón por la que manejamos la colisión nosotros mismos es que si en su lugar definiéramos el tipo del objeto de colisión del personaje como dynamic, el motor realizaría una simulación newtoniana de los cuerpos involucrados. Para un juego como este, dicha simulación está lejos de ser óptima, así que en lugar de pelear con el motor de físicas usando varias fuerzas, tomamos control total.
 
-Ahora, para hacer eso y manejar bien la colisión se necesita un poco de matemática vectorial. En la [documentación de Physics](/es/manuals/physics#resolving-kinematic-collisions) se da una explicación detallada sobre cómo resolver colisiones cinemáticas.
+Ahora, para hacer eso y manejar bien la colisión se necesita un poco de matemática vectorial. En la [documentación de Physics](/es/manuals/physics-resolving-collisions/) se da una explicación detallada sobre cómo resolver colisiones cinemáticas.
 </div>
 
 ```lua
