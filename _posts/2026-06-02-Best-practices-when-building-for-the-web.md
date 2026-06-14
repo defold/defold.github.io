@@ -54,6 +54,11 @@ As a general guideline, games should aim for under 20MB total size. Smaller is a
 
 Defold's lightweight runtime and HTML5-focused tooling align very well with browser player expectations.
 
+![Poki For Developers performance metrics dashboard](/images/posts/web-tips/data-display.webp)
+<div align="center">
+_Poki For Developers shows performance metrics such as gameplays, earnings, engagement time, and monetization_
+</div>
+
 
 ### Controls need to feel great everywhere
 
@@ -77,6 +82,11 @@ Most games on Poki will be played both on desktop and mobile. It is important to
 
 ### What Poki looks at during testing
 
+![Poki Inspector event log and warnings](/images/posts/web-tips/poki-inspector.webp)
+<div align="center">
+_Poki Inspector helps verify SDK events, initial errors, warnings, loading time, file size, and scaling behavior_
+</div>
+
 The most important metrics during testing include:
 
 * Average Playtime: 5+ minutes
@@ -85,6 +95,11 @@ The most important metrics during testing include:
 * File Size: Under 20MB
 
 In general, strong playtime suggests replayability, strong conversion suggests low friction, and small file sizes improve accessibility globally.
+
+![Poki Player Fit Test statistics](/images/posts/web-tips/stats-2.webp)
+<div align="center">
+_Player Fit Test statistics help compare playtime distribution between tested versions_
+</div>
 
 
 ### The biggest mistake developers make
@@ -98,4 +113,11 @@ A simple question often separates successful web games from unsuccessful ones: "
 
 The games that stand out on Poki are usually not the most technically complex. They are the games that remove friction, respect the player's time, load quickly, feel satisfying immediately, and create strong replayability. Web success comes from understanding player behavior first, and building around that reality from the very beginning.
 
-For even more tips and recommendations head over to the [Poki Developer guide](https://developers.poki.com/guide).
+
+### Worth reading
+
+For even more tips and recommendations head over to the:
+
+* [Poki Developer guide](https://developers.poki.com/guide).
+* [Poki For Developers](https://sdk.poki.com/what-is-p4d)
+* [Optimizing HTML5 Games: 10 Years of Learnings](https://gitnation.com/contents/optimizing-html5-games-10-years-of-learnings)
