@@ -4,6 +4,7 @@ These are per-example files generated for LLM usage.
 
 ## Animation
 
+- [3D Animations - Skinned Model](https://defold.com/llms/examples/animation/3d_animations.md) - Learn how to play 3D animations from a GLB model using skinned model material
 - [Animation Delay - Wave](https://defold.com/llms/examples/animation/animation_delay.md) - This example shows how to use the delay parameter of `go
 - [Cancel animation](https://defold.com/llms/examples/animation/cancel_animation.md) - This example shows how to use `go
 - [Cursor animation](https://defold.com/llms/examples/animation/cursor.md) - This example shows how to set and animate the normalized cursor value
